@@ -1,0 +1,37 @@
+<!-- Render sections -->
+{% if nav_item.children %}
+  <li>
+    <hr />
+    <span class="section">{{ nav_item.title }}</span>
+    <ul>
+
+      <!-- Render links of section -->
+      {% for nav_item in nav_item.children %}
+        {% include 'toc.html' %}
+      {% endfor %}
+    </ul>
+  </li>
+
+<!-- Render link -->
+{% else %}
+  <li>
+    <a class="{% if nav_item.active %}current{% endif %}"
+      title="{{ nav_item.title }}" href="{{ nav_item.url }}" >
+      {{ nav_item.title }}
+    </a>
+
+    <!-- Expand active pages -->
+    {% if nav_item == current_page %}
+      <ul>
+        {% for toc_item in toc %}
+          <li class="anchor">
+            <a class="{% if loop.first %}current{% endif %}"
+              title="{{ toc_item.title }}" href="{{ toc_item.url }}">
+              {{ toc_item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </li>
+{% endif %}

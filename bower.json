@@ -1,0 +1,30 @@
+{
+  "name": "materializr",
+  "version": "0.1.0",
+  "description": "A material design template for mkdocs",
+  "homepage": "https://github.com/squidfunk/materializr",
+  "authors": [
+    "squidfunk <martin.donath@squidfunk.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules"
+  ],
+  "dependencies": {
+    "classlist": "~2014.12.13",
+    "fastclick": "~1.0.6",
+    "lunr.js": "~0.5.10",
+    "pegasus": "~0.3.1",
+    "respond": "~1.4.2"
+  },
+  "devDependencies": {
+    "bourbon": "~4.2.2",
+    "quantum-colors": "~1.0.1",
+    "quantum-shadows": "~1.0.0"
+  }
+}

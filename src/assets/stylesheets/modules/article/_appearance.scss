@@ -1,0 +1,152 @@
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Article appearance
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Article
+ */
+.article {
+  color: $black;
+
+
+  /*
+   * Differing top and bottom rubberband backgrounds in iOS web application
+   */
+  .ios.standalone & {
+    background: linear-gradient(
+      to bottom, $white 50%, $primary 50%);
+
+    /* Hack [iOS]: Mitigate black bounding box with linear gradient */
+    .wrapper {
+      background: linear-gradient(
+        to bottom, $white 50%, $white 50%);
+    }
+  }
+
+  /*
+   * Headlines and chapters in primary color
+   */
+  h1, h2, p > code, td > code {
+    color: $primary;
+  }
+
+  /*
+   * Code listing in negative colors
+   */
+  pre {
+    background: $black;
+    color: $white;
+  }
+
+  /*
+   * Color links
+   */
+  a {
+    color: $primary;
+
+    /*
+     * Hovered link
+     */
+    &:hover,
+    &:focus {
+      color: $accent;
+    }
+  }
+
+  /*
+   * Data tables
+   */
+  table {
+    @include drop-shadow(1);
+
+    border-radius: 3px;
+
+    /*
+     * Table heading
+     */
+    th {
+      background: mix($primary, $white, 75%);
+      color: $white;
+
+      /*
+       * Round upper left border
+       */
+      &:first-child {
+        border-top-left-radius: 3px;
+      }
+
+      /*
+       * Round upper right border
+       */
+      &:last-child {
+        border-top-right-radius: 3px;
+      }
+    }
+
+    /*
+     * Table cell
+     */
+    td {
+      border-top: 1px solid rgba($black, 0.05);
+    }
+  }
+}
+
+/*
+ * Article footer
+ */
+.footer {
+  background: $primary;
+  color: $white;
+}
+
+/*
+ * Copyright and theme information
+ */
+.copyright {
+  color: $black-light;
+}
+
+/*
+ * Pagination
+ */
+.pagination {
+
+  /*
+   * Inherit color for links
+   */
+  a,
+  a:hover,
+  a:focus {
+    color: inherit;
+  }
+
+  /*
+   * Smaller font size for direction
+   */
+  .direction {
+    color: $white-light;
+  }
+}

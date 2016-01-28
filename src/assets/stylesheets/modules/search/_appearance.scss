@@ -1,0 +1,139 @@
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Search appearance
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Search bar
+ */
+.bar.search {
+  opacity: 0;
+
+  /*
+   * Search input
+   */
+  .query {
+    background: transparent;
+    color: $black;
+
+    /*
+     * Search input placeholder
+     */
+    @include placeholder {
+      color: $black-lighter;
+    }
+  }
+
+  /*
+   * Pushed/clicked icon
+   */
+  .button .icon:active {
+    background: $black-lightest;
+  }
+}
+
+/*
+ * Search results
+ */
+.results {
+  @include drop-shadow(2);
+
+  background: $white;
+  color: $black;
+  opacity: 0;
+
+  /*
+   * Active search mode
+   */
+  #toggle-search:checked ~ .main &,
+  .toggle-search & {
+    opacity: 1;
+  }
+
+  /*
+   * Search meta data
+   */
+  .meta {
+    background: $primary;
+    color: $white;
+  }
+
+  /*
+   * Search result item link
+   */
+  .list a {
+    border-bottom: 1px solid $black-lightest;
+
+    /*
+     * Remove border on last element
+     */
+    &:last-child {
+      border-bottom: none;
+    }
+
+    /*
+     * Active item link
+     */
+    &:active {
+      background: $black-lightest;
+    }
+  }
+}
+
+/*
+ * Article link
+ */
+.result span {
+  color: $black-light;
+}
+
+/*
+ * Active search bar
+ */
+#toggle-search:checked ~ .header,
+.toggle-search .header {
+  background: $white;
+  color: $black-light;
+
+  /*
+   * Add darker status bar overlay in search mode
+   */
+  &:before {
+    background: $black-light;
+  }
+
+  /*
+   * Fade out default header bar
+   */
+  .bar.default {
+    opacity: 0;
+  }
+
+  /*
+   * Fade in search header bar
+   */
+  .bar.search {
+    opacity: 1;
+  }
+}
