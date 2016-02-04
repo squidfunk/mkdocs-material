@@ -1,0 +1,54 @@
+# Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+# Project information
+site_name: materializr
+site_description: A material design theme for MkDocs
+site_author: Martin Donath
+site_url: https://squidfunk.com/materializr
+
+# Repository
+repo_name: GitHub
+repo_url: https://github.com/squidfunk/materializr
+
+# Copyright
+copyright: Copyright (c) 2016 Martin Donath
+
+# Documentation and theme
+docs_dir: docs
+theme_dir: materializr
+
+# Extra variables
+extra:
+  color:
+  version: 0.1.0
+  logo:
+  author:
+    github: squidfunk
+    twitter: squidfunk
+
+# Extensions
+markdown_extensions:
+  - fenced_code
+  - codehilite(css_class=code)
+
+# Page tree
+pages:
+  - About: index.md

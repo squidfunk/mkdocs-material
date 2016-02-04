@@ -1,17 +1,10 @@
-<!-- Top-level navigation -->
 <nav aria-label="top navigation">
-
-  <!-- Default bar -->
   <div class="bar default">
-
-    <!-- Toggle drawer -->
     <div class="button button-menu" role="button" aria-label="Menu">
       <label class="toggle-button icon icon-menu" for="toggle-drawer">
         <span></span>
       </label>
     </div>
-
-    <!-- Page title -->
     <div class="stretch">
       <div class="title">
         {% if current_page %}
@@ -33,54 +26,31 @@
         {% endif %}
       </div>
     </div>
-
-    <!-- Twitter -->
-    {% if config.extra.author.twitter %}
+    {% if config.extra.author and config.extra.author.twitter %}
       <div class="button button-twitter" role="button" aria-label="Twitter">
-        <a href="https://twitter.com/{{ config.extra.author.twitter }}"
-          title="@{{ config.extra.author.twitter }} on Twitter" target="_blank"
-          class="toggle-button icon icon-twitter"></a>
+        <a href="https://twitter.com/{{ config.extra.author.twitter }}" title="@{{ config.extra.author.twitter }} on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
       </div>
     {% endif %}
-
-    <!-- GitHub -->
-    {% if config.extra.author.github %}
+    {% if config.extra.author and config.extra.author.github %}
       <div class="button button-github" role="button" aria-label="GitHub">
-        <a href="https://github.com/{{ config.extra.author.github }}"
-          title="@{{ config.extra.author.github }} on GitHub" target="_blank"
-          class="toggle-button icon icon-github"></a>
+        <a href="https://github.com/{{ config.extra.author.github }}" title="@{{ config.extra.author.github }} on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
       </div>
     {% endif %}
-
-    <!-- Open search -->
     <div class="button button-search" role="button" aria-label="Search">
-      <label class="toggle-button icon icon-search" title="Search"
-        for="toggle-search"></label>
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
     </div>
   </div>
-
-  <!-- Search bar -->
   <div class="bar search">
-
-    <!-- Close search -->
     <div class="button button-close" role="button" aria-label="Close">
-      <label class="toggle-button icon icon-back"
-        for="toggle-search"></label>
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
     </div>
-
-    <!-- Search form -->
     <div class="stretch">
       <div class="field">
-        <input class="query" type="text" placeholder="Search"
-          autocapitalize="off" autocorrect="off" autocomplete="off"
-          spellcheck="false" />
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
       </div>
     </div>
-
-    <!-- Empty search -->
     <div class="button button-reset" role="button" aria-label="Search">
-      <button class="toggle-button icon icon-close"
-        id="reset-search"></button>
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
     </div>
   </div>
 </nav>

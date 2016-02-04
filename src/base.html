@@ -17,6 +17,8 @@
       <!-- Site title -->
       {% if page_title %}
         <title>{{ page_title }} - {{ site_name }}</title>
+      {% elif page_description %}
+        <title>{{ site_name }} - {{ page_description }}</title>
       {% else %}
         <title>{{ site_name }}</title>
       {% endif %}
@@ -44,10 +46,10 @@
       content="black-translucent" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png"
-      href="{{ base_url }}/assets/images/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png"
-      href="{{ base_url }}/assets/images/favicon-16x16.png" sizes="16x16" />
+    <link rel="shortcut icon" type="image/x-icon"
+      href="{{ icon | default('/assets/images/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon"
+      href="{{ icon | default('/assets/images/favicon.ico') }}" />
 
     <!-- Webfonts -->
     <link rel="stylesheet" type="text/css"
@@ -56,8 +58,14 @@
       href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" />
 
     <!-- Theme-related and custom stylesheets -->
-    <link rel="stylesheet" type="text/css"
-      href="{{ base_url }}/assets/stylesheets/application.css" />
+    {% if config.extra.color %}
+      {% set color = config.extra.color %}
+      <link rel="stylesheet" type="text/css"
+        href="{{ base_url }}/assets/stylesheets/application.{{ color }}.css" />
+    {% else %}
+      <link rel="stylesheet" type="text/css"
+        href="{{ base_url }}/assets/stylesheets/application.css" />
+    {% endif %}
     {% for path in extra_css %}
       <link rel="stylesheet" type="text/css" href="{{ path }}" />
     {% endfor %}
@@ -115,9 +123,9 @@
             Documentation built with
             <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
             using the
-            <a href="https://github.com/squidfunk/materialize"
+            <a href="https://github.com/squidfunk/materializr"
               target="_blank">
-              Materialize
+              Materializr
             </a>
             theme.
           </aside>

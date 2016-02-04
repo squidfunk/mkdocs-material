@@ -1,0 +1,3 @@
+recursive-include materializr *.ico *.js *.css *.html *.eot *.svg *.ttf *.woff
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]

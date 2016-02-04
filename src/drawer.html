@@ -1,0 +1,98 @@
+{% if repo_name == 'GitHub' %}
+  {% set repo_id = repo_url | replace('https://github.com/', '') %}
+{% endif %}
+
+<!-- Navigation -->
+<nav aria-label="navigation">
+
+  <!-- Project information -->
+  <a href="{{ repo_url }}" class="project">
+
+    <!-- Name and logo -->
+    <div class="banner">
+
+      <!-- Version -->
+      {% if config.extra.logo %}
+        <div class="logo">
+          <img src="{{ config.extra.logo }}" />
+        </div>
+      {% endif %}
+
+      <!-- Project name and verison -->
+      <div class="name">
+        <strong>{{ site_name }} {{ config.extra.version }}</strong>
+
+        <!-- Project repository name -->
+        {% if repo_id %}
+          <br />
+          {{ repo_id }}
+        {% endif %}
+      </div>
+    </div>
+  </a>
+
+  <!-- Repository and table of contents -->
+  <div class="scrollable">
+    <div class="wrapper">
+
+      <!-- Repository -->
+      {% if repo_name == 'GitHub' %}
+        <ul class="repo">
+          <li class="repo-download">
+            <a href="https://github.com/{{ repo_id }}/archive/master.zip"
+              target="_blank" aria-label="Download {{ repo_id }} on GitHub">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/{{ repo_id }}"
+              target="_blank" aria-label="Star {{ repo_id }} on GitHub">
+              <i class="icon icon-star"></i> Star
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr />
+      {% endif %}
+
+      <!-- Table of contents -->
+      <ul class="toc">
+        {% for nav_item in nav %}
+          {% include "toc.html" %}
+        {% endfor %}
+
+        <!-- Author-related links -->
+        {% if config.extra.author %}
+          <li>
+            <hr />
+            <span class="section">The author</span>
+            <ul>
+
+              <!-- Twitter -->
+              {% if config.extra.author.twitter %}
+                <li>
+                  <a href="https://twitter.com/{{ config.extra.author.twitter }}"
+                    title="@{{ config.extra.author.twitter }} on Twitter"
+                    target="_blank">
+                    @{{ config.extra.author.twitter }} on Twitter
+                  </a>
+                </li>
+              {% endif %}
+
+              <!-- GitHub -->
+              {% if config.extra.author.github %}
+                <li>
+                  <a href="https://github.com/{{ config.extra.author.github }}"
+                    title="@{{ config.extra.author.twitter }} on GitHub"
+                    target="_blank">
+                    @{{ config.extra.author.github }} on GitHub
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

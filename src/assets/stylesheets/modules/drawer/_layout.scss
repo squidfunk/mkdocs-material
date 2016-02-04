@@ -90,7 +90,7 @@
 
     /* [tablet landscape+]: Revert fixed positioning */
     @include break-from-device(tablet landscape) {
-      position: initial;
+      position: static;
     }
 
     /*
@@ -121,6 +121,9 @@
         @include break-from-device(screen) {
           width: 48px;
         }
+
+        /* Hack [IE]: Left-align horizontal rule */
+        margin-right: auto;
       }
 
       /*
@@ -169,6 +172,7 @@
   .banner {
     display: table;
     width: 100%;
+    height: 104px;
     padding: 20px;
   }
 
@@ -178,15 +182,15 @@
   .logo {
     display: table-cell;
     width: 64px;
-    height: 64px;
+    padding-right: 12px;
 
     /*
      * Project logo image
      */
     img {
       display: block;
-      width: 100%;
-      height: auto;
+      width: 64px;
+      height: 64px;
     }
   }
 
@@ -195,9 +199,9 @@
    */
   .name {
     display: table-cell;
-    font-size: 16px;
+    padding-left: 4px;
+    font-size: 14px;
     line-height: 1.25em;
-    padding-left: 16px;
     vertical-align: middle;
 
     /* [tablet portait+]: Slightly larger project name */
@@ -205,13 +209,19 @@
       margin: 26px 0 0 5px;
     }
   }
+
+  /*
+   * Shrink font, if a logo is given.
+   */
+  .logo + .name {
+    font-size: 12px;
+  }
 }
 
 /*
  * Repository
  */
 .repo {
-  padding: 0 16px;
   margin: 24px 0;
   text-align: center;
 

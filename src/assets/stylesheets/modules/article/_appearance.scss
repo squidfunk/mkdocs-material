@@ -28,8 +28,6 @@
  * Article
  */
 .article {
-  color: $black;
-
 
   /*
    * Differing top and bottom rubberband backgrounds in iOS web application
@@ -50,14 +48,6 @@
    */
   h1, h2, p > code, td > code {
     color: $primary;
-  }
-
-  /*
-   * Code listing in negative colors
-   */
-  pre {
-    background: $black;
-    color: $white;
   }
 
   /*

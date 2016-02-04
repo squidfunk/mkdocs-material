@@ -25,51 +25,44 @@
  * ------------------------------------------------------------------------- */
 
 /*
- * Comments
+ * Background
  */
-.c,
-.cm {
-  color: #666;
+pre {
+  background: darken($white, 3.5%);
+  color: $black;
+}
+
+/*
+ * Operators and comments
+ */
+.o, .c, .c1, .cm {
+  color: $black-light;
 }
 
 /*
  * Keywords
  */
 .k {
-  color: $pink-500;
+  color: #A71D5D;
 }
 
 /*
- * Types
+ * Types and functions
  */
-.kt, .kd {
-  color: $light-blue-300;
+.kt, .kd, .n.f {
+  color: #0086B3;
 }
 
 /*
  * Strings
  */
 .s {
-  color: $lime-300;
-}
-
-/*
- * Operators and names
- */
-.o, .na {
-  color: $white-light;
+  color: #183691;
 }
 
 /*
  * Numbers
  */
 .mi {
-  color: $deep-purple-300;
-}
-
-/*
- * Functions
- */
-.n.f {
-  color: saturate(mix($green-300, $teal-300, 50%), 50%);
+  color: #9575CD;
 }

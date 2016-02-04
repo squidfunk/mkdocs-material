@@ -1,7 +1,7 @@
 {
   "name": "materializr",
   "version": "0.1.0",
-  "description": "A material design template for mkdocs",
+  "description": "A material design theme for MkDocs",
   "homepage": "https://github.com/squidfunk/materializr",
   "authors": [
     "squidfunk <martin.donath@squidfunk.com>"
@@ -15,6 +15,7 @@
     "bower_components",
     "node_modules"
   ],
+  "private": true,
   "dependencies": {
     "classlist": "~2014.12.13",
     "fastclick": "~1.0.6",

@@ -293,6 +293,17 @@ hr {
 }
 
 /*
+ * Hide menu button
+ */
+.button-menu {
+
+  /* [tablet landscape+]: Hide button */
+  @include break-from-device(tablet landscape) {
+    display: none;
+  }
+}
+
+/*
  * Stretch content to remaining space
  */
 .stretch {
@@ -306,9 +317,14 @@ hr {
   .header & {
     padding: 0 20px;
 
-    /* [tablet portait+]: Increase vertical spacing */
-    @include break-from-device(tablet portrait) {
+    /* [tablet portait]: Increase vertical spacing */
+    @include break-at-device(tablet portrait) {
       padding: 0 24px;
+    }
+
+    /* [tablet portait+]: Account for missing menu icon */
+    @include break-from-device(tablet portrait) {
+      padding: 0 (24px - 8px) 0 16px;
     }
   }
 

@@ -77,13 +77,13 @@
  * Project information
  */
 .project {
-  color: $white;
 
   /* [tablet landscape-]: Add drop shadow */
   @include break-to-device(tablet landscape) {
     @include drop-shadow(1);
 
     background: $primary;
+    color: $white;
   }
 
   /*

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2016 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -105,7 +105,7 @@ gulp.task('assets:stylesheets', function() {
       ]))
     .pipe(gulpif(args.sourcemaps, sourcemaps.write()))
     .pipe(gulpif(args.production, mincss()))
-    .pipe(gulp.dest('dist/assets/stylesheets/'));
+    .pipe(gulp.dest('materializr/assets/stylesheets/'));
 });
 
 /*
@@ -127,7 +127,7 @@ gulp.task('assets:javascripts', function() {
     .pipe(concat('application.js'))
     .pipe(gulpif(args.sourcemaps, sourcemaps.write()))
     .pipe(gulpif(args.production, uglify()))
-    .pipe(gulp.dest('dist/assets/javascripts/'));
+    .pipe(gulp.dest('materializr/assets/javascripts/'));
 });
 
 /*
@@ -138,8 +138,8 @@ gulp.task('assets:modernizr', [
   'assets:javascripts'
 ], function() {
   return gulp.src([
-    'dist/assets/stylesheets/application.css',
-    'dist/assets/javascripts/application.js'
+    'materializr/assets/stylesheets/application.css',
+    'materializr/assets/javascripts/application.js'
   ]).pipe(
       modernizr({
         options: [
@@ -153,14 +153,14 @@ gulp.task('assets:modernizr', [
     .pipe(addsrc.append('bower_components/respond/dest/respond.src.js'))
     .pipe(concat('modernizr.js'))
     .pipe(gulpif(args.production, uglify()))
-    .pipe(gulp.dest('dist/assets/javascripts'));
+    .pipe(gulp.dest('materializr/assets/javascripts'));
 });
 
 /*
  * Copy static assets like images and webfonts.
  */
 gulp.task('assets:static', function() {
-  return gulp.src('src/assets/{fonts,images}/*.{jpg,png,gif}')
+  return gulp.src('src/assets/{fonts,images}/*.{ico,jpg,png,gif}')
     .pipe(gulpif(args.production,
       minimage({
         optimizationLevel: 5,
@@ -168,18 +168,19 @@ gulp.task('assets:static', function() {
         interlaced: true
       })))
     .pipe(addsrc.append('src/assets/{fonts,images}/*.{eot,svg,ttf,woff}'))
-    .pipe(gulp.dest('dist/assets/'));
+    .pipe(gulp.dest('materializr/assets/'));
 });
 
 /*
  * Minify views.
  */
 gulp.task('assets:views', args.production ? [
+  'assets:modernizr',
   'assets:revisions:clean',
   'assets:revisions'
 ] : [], function() {
   return gulp.src([
-    'src/views/*.html'
+    'src/*.html'
   ]).pipe(
       minhtml({
         collapseBooleanAttributes: true,
@@ -190,19 +191,19 @@ gulp.task('assets:views', args.production ? [
     .pipe(compact())
     .pipe(gulpif(args.production,
       addsrc.append([
-        'dist/manifest.json',
-        'dist/**/*.css'
+        'materializr/manifest.json',
+        'materializr/**/*.css'
       ])))
     .pipe(gulpif(args.production, collect()))
     .pipe(ignore.exclude(/manifest\.json$/))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('materializr'));
 });
 
 /*
  * Clean outdated revisions.
  */
 gulp.task('assets:revisions:clean', function() {
-  return gulp.src(['dist/**/*.{css,js,png,jpg,gif}'])
+  return gulp.src(['materializr/**/*.{css,js,png,jpg,gif}'])
     .pipe(ignore.include(/-[a-f0-9]{8}\.(css|js|png|jpg|gif)$/))
     .pipe(vinyl(clean));
 });
@@ -216,12 +217,12 @@ gulp.task('assets:revisions', [
   'assets:javascripts',
   'assets:static'
 ], function() {
-  return gulp.src(['dist/**/*.{css,js,png,jpg,gif}'])
+  return gulp.src(['materializr/**/*.{css,js,png,jpg,gif}'])
     .pipe(ignore.exclude(/-[a-f0-9]{8}\.(css|js|png|jpg|gif)$/))
     .pipe(rev())
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('materializr'))
     .pipe(rev.manifest('manifest.json'))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('materializr'));
 });
 
 /*
@@ -258,7 +259,7 @@ gulp.task('assets:watch', function() {
 
   /* Minify views */
   gulp.watch([
-    'src/views/*.html'
+    'src/*.html'
   ], ['assets:views']);
 });
 

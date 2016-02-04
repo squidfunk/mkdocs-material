@@ -171,8 +171,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /* Register resize handler and fire once */
-  window.addEventListener('resize', check);
-  check();
+  if (!Modernizr.ios) {
+    window.addEventListener('resize', check);
+    check();
+  }
 
 /* ----------------------------------------------------------------------------
  * Initialize search index
@@ -257,6 +259,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.classList.remove('toggle-search');
                 document.body.classList.remove('locked');
                 toggle.checked = false;
+
+                /* Don't catch anchors if the search doesn't cover the page */
+                if (matchMedia('only screen and (min-width: 960px)').matches)
+                  return;
 
                 /* Prevent default to intercept scroll-to behaviour and
                    stop propagation, as this interferes with the link-lock in
@@ -347,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(function() {
 
         /* This additional check is necessary to handle fast subsequent clicks
-           on the toggle and the timeout to lock the body must be canceled */
+           on the toggle and the timeout to lock the body must be cancelled */
         if (this.checked) {
           if (lock)
             list.add('locked');

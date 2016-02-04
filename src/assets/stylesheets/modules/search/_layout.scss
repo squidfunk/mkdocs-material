@@ -45,6 +45,11 @@
       font-size: 20px;
       padding: 12px 0;
     }
+
+    /* Hack [IE]: Hide redundant clear button */
+    &::-ms-clear {
+      display: none;
+    }
   }
 }
 
@@ -56,12 +61,14 @@
   top: 0;
   left: 0;
   width: 0;
+  height: 100%;
   z-index: 2;
-  overflow: scroll;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
   /* [tablet landscape+]: Limit results to five entries */
   @include break-from-device(tablet landscape) {
+    height: auto;
     top: 64px;
   }
 
@@ -78,8 +85,7 @@
 
     /* [tablet landscape+]: Limit results to five entries */
     @include break-from-device(tablet landscape) {
-      position: initial;
-      bottom: auto;
+      position: static;
       max-height: 413px;
     }
 
@@ -184,9 +190,9 @@
 }
 
 /*
- * Prevent flickering on scroll in IE9
+ * Switch visibility, if browser doesn't support 3D transforms
  */
-.ie9 {
+.no-csstransforms3d {
 
   /*
    * Hide search results
@@ -207,13 +213,6 @@
     .results {
       display: block;
       overflow: auto;
-    }
-
-    /*
-     * Article and footer may shine through, so make them invisible
-     */
-    .article, .footer {
-      visibility: hidden;
     }
   }
 }

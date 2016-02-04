@@ -27,8 +27,8 @@
 /*
  * Primary and accent color
  */
-$primary: $indigo-500;
-$accent:  $teal-500;
+$primary: $indigo-500 !default;
+$accent:  $teal-500   !default;
 
 /*
  * Black opacities

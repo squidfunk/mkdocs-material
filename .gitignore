@@ -20,3 +20,15 @@
 
 # Mac OS X internals
 .DS_Store
+
+# Bower and NPM libraries
+bower_components
+node_modules
+
+# Build files
+build
+MANIFEST
+
+# Distribution files
+dist
+mkdocs_materializr.egg-info

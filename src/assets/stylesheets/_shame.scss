@@ -21,18 +21,5 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Here should be nothing
+ * Nothing to see here, move along
  * ------------------------------------------------------------------------- */
-
-/* [tablet portait+]: Slightly larger project name */
-@include break-from-device(tablet landscape) {
-  .project .name {
-    color: $black;
-  }
-}
-
-@include break-from-device(tablet landscape) {
-  .button-menu {
-    display: none;
-  }
-}

@@ -59,6 +59,13 @@
 }
 
 /*
+ * No color transition for project link
+ */
+.project {
+  transition: none;
+}
+
+/*
  * Project logo image
  */
 .project .logo img {
