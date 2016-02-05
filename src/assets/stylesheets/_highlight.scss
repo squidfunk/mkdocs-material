@@ -25,11 +25,24 @@
  * ------------------------------------------------------------------------- */
 
 /*
- * Background
+ * Inline code
+ */
+code {
+  color: $primary;
+}
+
+/*
+ * Code block
  */
 pre {
-  background: darken($white, 3.5%);
-  color: $black;
+  background: rgba($black, 0.05);
+
+  /*
+   * Ensure correct color
+   */
+  &, code {
+    color: $black;
+  }
 }
 
 /*
@@ -42,7 +55,7 @@ pre {
 /*
  * Keywords
  */
-.k {
+.k, .kn {
   color: #A71D5D;
 }
 
@@ -61,8 +74,8 @@ pre {
 }
 
 /*
- * Numbers
+ * Constants and numbers
  */
-.mi {
+.mi, .bp {
   color: #9575CD;
 }
