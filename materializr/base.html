@@ -30,13 +30,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="shortcut icon" type="image/x-icon" href="{{ icon | default('/assets/images/favicon.ico') }}">
     <link rel="icon" type="image/x-icon" href="{{ icon | default('/assets/images/favicon.ico') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono">
-    {% if config.extra.theme %}
-      {% set theme = config.extra.theme %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.{{ theme }}.css">
+    {% if config.extra.color %}
+      {% set color = config.extra.color %}
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.{{ color }}.css">
     {% else %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-dd5b6433.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
     {% endif %}
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
@@ -54,17 +54,19 @@
       {% include "header.html" %}
     </header>
     <main class="main">
+      {% set h1 = "\x3c/h1\x3e" in content %}
       <div class="drawer">
         {% include "drawer.html" %}
       </div>
       <article class="article">
         <div class="wrapper">
-          {% if page_title %}
-            <h1>{{ page_title }}</h1>
-          {% else %}
-            <h1>{{ site_name }}</h1>
+          {% if not h1 %}
+            {% if page_title %}
+              <h1>{{ page_title }}</h1>
+            {% else %}
+              <h1>{{ site_name }}</h1>
+            {% endif %}
           {% endif %}
-          <hr>
           {{ content }}
           <aside class="copyright" role="note">
             {% if copyright %}
@@ -93,13 +95,13 @@
         </div>
       </div>
     </main>
-    <script src="{{ base_url }}/assets/javascripts/modernizr-e95367ea.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
     {% set repo_id = repo_url | replace('https://github.com/', '') %}
     <script>
       var base_url = '{{ base_url }}';
       var repo_id  = '{{ repo_id }}';
     </script>
-    <script src="{{ base_url }}/assets/javascripts/application-3bd5fcbd.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/application.js"></script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}

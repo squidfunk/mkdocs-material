@@ -4,7 +4,7 @@
     <span class="section">{{ nav_item.title }}</span>
     <ul>
       {% for nav_item in nav_item.children %}
-        {% include 'toc.html' %}
+        {% include 'nav.html' %}
       {% endfor %}
     </ul>
   </li>
@@ -16,11 +16,21 @@
     {% if nav_item == current_page %}
       <ul>
         {% for toc_item in toc %}
+          {% if h1 %}
+            {% for toc_item in toc_item.children %}
+              <li class="anchor">
+                <a title="{{ toc_item.title }}" href="{{ toc_item.url }}">
+                  {{ toc_item.title }}
+                </a>
+              </li>
+            {% endfor %}
+          {% else %}
           <li class="anchor">
-            <a class="{% if loop.first %}current{% endif %}" title="{{ toc_item.title }}" href="{{ toc_item.url }}">
+            <a title="{{ toc_item.title }}" href="{{ toc_item.url }}">
               {{ toc_item.title }}
             </a>
           </li>
+          {% endif %}
         {% endfor %}
       </ul>
     {% endif %}
