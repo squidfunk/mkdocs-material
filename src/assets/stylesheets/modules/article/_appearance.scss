@@ -46,8 +46,15 @@
   /*
    * Headlines and chapters in primary color
    */
-  h1, h2, p > code, td > code {
+  h1, h2 {
     color: $primary;
+  }
+
+  /*
+   * Lower border for main headline
+   */
+  h1 {
+    border-bottom: 1px solid $black-lightest;
   }
 
   /*

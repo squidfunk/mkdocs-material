@@ -30,9 +30,17 @@
 .article {
 
   /*
-   * Section titles should be bold
+   * Third-level headlines should be bold
    */
   h3 {
     font-weight: 700;
+  }
+
+  /*
+   * Fourth-level headlines should be italic
+   */
+  h4 {
+    font-weight: 400;
+    font-style: italic;
   }
 }

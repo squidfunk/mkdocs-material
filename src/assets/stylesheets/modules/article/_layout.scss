@@ -29,7 +29,7 @@
  */
 .article {
   font-size: 14px;
-  line-height: 24px;
+  line-height: 1.7em;
 
   /* [tablet landscape+]: Indent to account for drawer */
   @include break-from-device(tablet landscape) {
@@ -40,8 +40,8 @@
    * Clearfix
    */
   &:after {
-    display: block;
     content: " ";
+    display: block;
     clear: both;
   }
 
@@ -83,21 +83,20 @@
   }
 
   /*
-   * Article headlines
+   * Article headline
    */
   h1 {
     font-size: 24px;
-    line-height: 32px;
-    padding-top: 20px;
-    margin-bottom: 42px;
+    line-height: 1.333334em;
+    padding: 20px 0 42px;
   }
 
   /*
-   * Article chapters - account for fixed header offset
+   * Article chapters
    */
   h2 {
     font-size: 20px;
-    line-height: 28px;
+    line-height: 1.4em;
     padding-top: (36px + 56px);
     margin-top: (0px - 56px);
 
@@ -111,17 +110,24 @@
   }
 
   /*
+   * Sub headlines
+   */
+  h3, h4 {
+    font-size: 1.0em;
+  }
+
+  /*
    * Paragraphs and section titles
    */
-  p, h3, li {
-    font-size: 14px;
-    margin-top: 20px;
+  p, h3, h4, ul, ol {
+    margin-top: 1.5em;
   }
 
   /*
    * List elements
    */
   li {
+    margin-top: 0.75em;
     margin-left: 18px;
 
     /*
@@ -136,8 +142,8 @@
    * Add icon for elements of an unordered list
    */
   ul li:before {
+    content: "\e602";
     display: inline-block;
-    content: '\e602';
     font-family: 'Icon';
     font-size: 16px;
     width: 1.2em;
@@ -153,27 +159,35 @@
   }
 
   /*
+   * Add spacing at top of separator
+   */
+  hr {
+    margin-top: 1.5em;
+  }
+
+  /*
+   * Limit images to article container
+   */
+  img {
+    max-width: 100%;
+  }
+
+  /*
    * Code listing container
    */
   pre {
     padding: 16px;
-    margin: 20px -16px 0;
+    margin: 1.5em -16px 0;
+    line-height: 1.5em;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-
-    /*
-     * Code listing
-     */
-    code {
-      line-height: 21px;
-    }
   }
 
   /*
    * Data tables
    */
   table {
-    margin: 40px 0 20px;
+    margin: 3.0em 0 1.5em;
     font-size: 13px;
 
     /*
@@ -210,8 +224,8 @@
    * Data table wrapper, in case javascript is available
    */
   .data {
-    margin: 20px -16px;
-    padding: 20px 0;
+    margin: 1.5em -16px;
+    padding: 1.5em 0;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     text-align: center;
@@ -227,7 +241,7 @@
 
     /* [tablet portait+]: Increase spacing */
     @include break-from-device(tablet portrait) {
-      margin: 20px -24px;
+      margin: 1.5em -24px;
 
       /*
        * Data table
@@ -261,8 +275,8 @@
      * Increase spacing for code blocks
      */
     pre {
-      padding: 20px 24px;
-      margin: 20px -24px 0;
+      padding: 1.5em 24px;
+      margin: 1.5em -24px 0;
     }
   }
 }
