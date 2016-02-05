@@ -503,12 +503,14 @@ document.addEventListener('DOMContentLoaded', function() {
  * ------------------------------------------------------------------------- */
 
   /* Get Stars for current repository */
-  pegasus('https://api.github.com/repos/' + repo_id + '/stargazers').then(
+  pegasus('https://api.github.com/repos/' + repo_id).then(
 
     /* Request successful, we got the stars */
     function(data, xhr) {
-      var count = data.length;
-      if (count > 1000)
+      var count = data.stargazers_count;
+      if (count > 10000)
+        count = (count / 1000).toFixed(0) + "k";
+      else if (count > 1000)
         count = (count / 1000).toFixed(1) + "k";
 
       /* Set number of stars */
