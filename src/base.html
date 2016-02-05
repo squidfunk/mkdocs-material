@@ -53,7 +53,7 @@
 
     <!-- Webfonts -->
     <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700" />
+      href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" />
     <link rel="stylesheet" type="text/css"
       href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" />
 
@@ -95,6 +95,14 @@
     <!-- Main content -->
     <main class="main">
 
+      <!--
+        This is a nasty hack that checks whether the content contains a
+        h1 headline. If it does, the variable h1 is set to true. This is
+        necessary for correctly rendering the table of contents which is
+        embedded into the navigation and the actual headline.
+      -->
+      {% set h1 = "\x3c/h1\x3e" in content %}
+
       <!-- Drawer with navigation -->
       <div class="drawer">
         {% include "drawer.html" %}
@@ -105,12 +113,13 @@
         <div class="wrapper">
 
           <!-- Headline -->
-          {% if page_title %}
-            <h1>{{ page_title }}</h1>
-          {% else %}
-            <h1>{{ site_name }}</h1>
+          {% if not h1 %}
+            {% if page_title %}
+              <h1>{{ page_title }}</h1>
+            {% else %}
+              <h1>{{ site_name }}</h1>
+            {% endif %}
           {% endif %}
-          <hr />
 
           <!-- Article content -->
           {{ content }}
