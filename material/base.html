@@ -28,11 +28,15 @@
     <meta name="apple-mobile-web-app-title" content="{{ site_name }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ icon | default(base_url + '/assets/images/favicon.ico') }}">
-    <link rel="icon" type="image/x-icon" href="{{ icon | default(base_url + '/assets/images/favicon.ico') }}">
+    {% if config.extra.logo %}
+      <link rel="apple-touch-icon" href="{{ base_url }}/{{ config.extra.logo }}">
+    {% endif %}
+    {% set icon = icon | default('assets/images/favicon-e565ddfa.ico') %}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ base_url }}/{{ icon }}">
+    <link rel="icon" type="image/x-icon" href="{{ base_url }}/{{ icon }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono">
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
+    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-334f02ec.css">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
@@ -90,13 +94,13 @@
         </div>
       </div>
     </main>
-    <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/modernizr-79394028.js"></script>
     {% set repo_id = repo_url | replace('https://github.com/', '') %}
     <script>
       var base_url = '{{ base_url }}';
       var repo_id  = '{{ repo_id }}';
     </script>
-    <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/application-1a680198.js"></script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}

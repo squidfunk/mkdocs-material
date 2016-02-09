@@ -45,11 +45,18 @@
     <meta name="apple-mobile-web-app-status-bar-style"
       content="black-translucent" />
 
+    <!-- Web application icon on iOS -->
+    {% if config.extra.logo %}
+      <link rel="apple-touch-icon"
+        href="{{ base_url }}/{{ config.extra.logo }}">
+    {% endif %}
+
     <!-- Favicon -->
+    {% set icon = icon | default('assets/images/favicon.ico') %}
     <link rel="shortcut icon" type="image/x-icon"
-      href="{{ icon | default(base_url + '/assets/images/favicon.ico') }}" />
+      href="{{ base_url }}/{{ icon }}" />
     <link rel="icon" type="image/x-icon"
-      href="{{ icon | default(base_url + '/assets/images/favicon.ico') }}" />
+      href="{{ base_url }}/{{ icon }}" />
 
     <!-- Webfonts -->
     <link rel="stylesheet" type="text/css"

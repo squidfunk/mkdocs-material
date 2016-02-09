@@ -30,7 +30,6 @@
 .article {
   font-size: 14px;
   line-height: 1.7em;
-  overflow-x: hidden;
 
   /* [tablet landscape+]: Indent to account for drawer */
   @include break-from-device(tablet landscape) {
@@ -154,7 +153,8 @@
    */
   ul li:before {
     content: "\e602";
-    display: inline-block;
+    display: block;
+    float: left;
     font-family: 'Icon';
     font-size: 16px;
     width: 1.2em;
@@ -333,7 +333,7 @@
  * Copyright and theme information
  */
 .copyright {
-  margin: 20px 0;
+  margin: 1.5em 0;
 
   /* [tablet landscape+]: Add bottom spacing */
   @include break-from-device(tablet landscape) {

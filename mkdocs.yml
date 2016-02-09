@@ -19,10 +19,10 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: mkdocs-material
+site_name: Material
 site_description: A material design theme for MkDocs
 site_author: Martin Donath
-site_url: https://github.com/squidfunk/mkdocs-material
+site_url: http://squidfunk.github.io/mkdocs-material/
 
 # Repository
 repo_name: GitHub
@@ -33,19 +33,17 @@ copyright: Copyright (c) 2016 Martin Donath
 
 # Documentation and theme
 theme_dir: material
-theme: amelia
 
-# Extra variables
+# Options
 extra:
   version: 0.1.0
-  logo:
+  logo: images/logo.png
   author:
     github: squidfunk
     twitter: squidfunk
 
 # Extensions
 markdown_extensions:
-  - fenced_code
   - codehilite(css_class=code)
   - admonition
   - toc:
@@ -53,4 +51,7 @@ markdown_extensions:
 
 # Page tree
 pages:
-- Home: index.md
+  - Material: index.md
+  - Getting started: getting-started.md
+  - Customization: customization.md
+  - License: license.md
