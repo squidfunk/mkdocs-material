@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         /* Index articles */
         var articles = {};
         data.docs.map(function(article) {
-          articles.location = base_url + article.location;
+          article.location = base_url + article.location;
           articles[article.location] = article;
           index.add(article);
         });
@@ -236,12 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
             title.innerHTML = article.title;
             teaser.appendChild(title);
 
-            /* Create url element */
-            var url = document.createElement('span');
-            url.innerHTML = window.location.host
-              + article.location.split('#')[0];
-            teaser.appendChild(url);
-
             // /* Create text element */
             // var text = document.createElement('p');
             // text.innerHTML = article.text.truncate(140);
@@ -252,9 +246,14 @@ document.addEventListener('DOMContentLoaded', function() {
             link.href = article.location;
             link.appendChild(teaser);
 
+            /* Create url element */
+            var url = document.createElement('span');
+            url.innerHTML = link.href.split('#')[0];
+            teaser.appendChild(url);
+
             /* Close search and jump to anchor when on same page */
-            var parts = article.location.split('#');
-            if (parts[0] == window.location.pathname) {
+            var parts = link.href.split('#');
+            if (parts[0] == window.location.href.split('#')[0]) {
               link.addEventListener('click', function(e) {
                 document.body.classList.remove('toggle-search');
                 document.body.classList.remove('locked');

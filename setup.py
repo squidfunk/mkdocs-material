@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 setup(
     name = 'mkdocs-material',
     version = '0.1.0',
-    url = 'https://github.com/squidfunk/mkdocs-material',
+    url = 'http://squidfunk.github.io/mkdocs-material/',
     license = 'MIT',
     description = 'A material design theme for MkDocs',
     author = 'Martin Donath',
