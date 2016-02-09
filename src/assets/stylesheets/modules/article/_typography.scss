@@ -44,3 +44,22 @@
     font-style: italic;
   }
 }
+
+/*
+ * Admonition support
+ */
+.admonition-title {
+  font-weight: 700;
+}
+
+/*
+ * Permalink support
+ */
+.article {
+  h2, h3, h4, h5, h6 {
+    a {
+      font-weight: 400;
+      font-style: normal;
+    }
+  }
+}

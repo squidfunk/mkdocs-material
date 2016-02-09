@@ -28,7 +28,8 @@ node_modules
 # Build files
 build
 MANIFEST
+site
 
 # Distribution files
 dist
-mkdocs_materializr.egg-info
+mkdocs_material.egg-info

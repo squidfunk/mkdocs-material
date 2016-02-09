@@ -147,3 +147,35 @@
     color: $white-light;
   }
 }
+
+/*
+ * Admonition support
+ */
+.admonition {
+  background: mix($primary, $white, 10%);
+
+  /*
+   * Embedded code blocks
+   */
+  pre {
+    background: $white-lighter;
+  }
+
+  /*
+   * A warning hint
+   */
+  &.warning {
+    background: mix($red-500, $white, 10%);
+  }
+}
+
+/*
+ * Permalink support
+ */
+.article {
+  h2, h3, h4, h5, h6 {
+    a {
+      color: $black-lighter;
+    }
+  }
+}

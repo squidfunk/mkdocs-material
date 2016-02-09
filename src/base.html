@@ -47,9 +47,9 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon"
-      href="{{ icon | default('/assets/images/favicon.ico') }}" />
+      href="{{ icon | default(base_url + '/assets/images/favicon.ico') }}" />
     <link rel="icon" type="image/x-icon"
-      href="{{ icon | default('/assets/images/favicon.ico') }}" />
+      href="{{ icon | default(base_url + '/assets/images/favicon.ico') }}" />
 
     <!-- Webfonts -->
     <link rel="stylesheet" type="text/css"
@@ -58,14 +58,8 @@
       href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" />
 
     <!-- Theme-related and custom stylesheets -->
-    {% if config.extra.color %}
-      {% set color = config.extra.color %}
-      <link rel="stylesheet" type="text/css"
-        href="{{ base_url }}/assets/stylesheets/application.{{ color }}.css" />
-    {% else %}
-      <link rel="stylesheet" type="text/css"
-        href="{{ base_url }}/assets/stylesheets/application.css" />
-    {% endif %}
+    <link rel="stylesheet" type="text/css"
+      href="{{ base_url }}/assets/stylesheets/application.css" />
     {% for path in extra_css %}
       <link rel="stylesheet" type="text/css" href="{{ path }}" />
     {% endfor %}
@@ -101,7 +95,7 @@
         necessary for correctly rendering the table of contents which is
         embedded into the navigation and the actual headline.
       -->
-      {% set h1 = "\x3c/h1\x3e" in content %}
+      {% set h1 = "\x3ch1 id=" in content %}
 
       <!-- Drawer with navigation -->
       <div class="drawer">
@@ -132,9 +126,9 @@
             Documentation built with
             <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
             using the
-            <a href="https://github.com/squidfunk/materializr"
+            <a href="https://github.com/squidfunk/mkdocs-material"
               target="_blank">
-              Materializr
+              Material
             </a>
             theme.
           </aside>

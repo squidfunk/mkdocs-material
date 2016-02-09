@@ -1,8 +1,8 @@
 {
-  "name": "materializr",
+  "name": "mkdocs-material",
   "version": "0.1.0",
   "description": "A material design theme for MkDocs",
-  "homepage": "https://github.com/squidfunk/materializr",
+  "homepage": "https://github.com/squidfunk/mkdocs-material",
   "authors": [
     "squidfunk <martin.donath@squidfunk.com>"
   ],

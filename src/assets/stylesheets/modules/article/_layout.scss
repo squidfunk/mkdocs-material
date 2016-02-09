@@ -30,6 +30,7 @@
 .article {
   font-size: 14px;
   line-height: 1.7em;
+  overflow-x: hidden;
 
   /* [tablet landscape+]: Indent to account for drawer */
   @include break-from-device(tablet landscape) {
@@ -113,13 +114,23 @@
    * Sub headlines
    */
   h3, h4 {
-    font-size: 1.0em;
+    font-size: 14px;
+    padding-top: (20px + 56px);
+    margin-top: (0 - 56px);
+
+    /*
+     * No offset correction in iOS web application
+     */
+    .ios.standalone & {
+      padding-top: 20px;
+      margin-top: 0;
+    }
   }
 
   /*
    * Paragraphs and section titles
    */
-  p, h3, h4, ul, ol {
+  p, ul, ol {
     margin-top: 1.5em;
   }
 
@@ -268,6 +279,22 @@
       .ios.standalone & {
         padding-top: 28px;
         margin-top: 8px;
+      }
+    }
+
+    /*
+     * Sub headlines
+     */
+    h3, h4 {
+      padding-top: (20px + 64px);
+      margin-top: (0 - 64px);
+
+      /*
+       * No offset correction in iOS web application
+       */
+      .ios.standalone & {
+        padding-top: 20px;
+        margin-top: 0;
       }
     }
 
@@ -464,6 +491,50 @@
      */
     .stretch {
       padding: 0 8px;
+    }
+  }
+}
+
+/*
+ * Admonition support
+ */
+.admonition {
+  margin: 20px -16px 0;
+  padding: 20px 16px;
+
+  /*
+   * Remove redundant margin of first child
+   */
+  > :first-child {
+    margin-top: 0;
+  }
+
+  /* [tablet portait+]: Increase horizontal spacing */
+  @include break-from-device(tablet portrait) {
+    margin: 20px -24px 0;
+    padding: 20px 24px;
+  }
+}
+
+/*
+ * Permalink support
+ */
+.article {
+
+  /*
+   * Hide link to main headline
+   */
+  h1 a {
+    display: none;
+  }
+
+  /*
+   * Align permalinks on the right
+   */
+  h2, h3, h4, h5, h6 {
+    a {
+      float: right;
+      margin-left: 20px;
     }
   }
 }

@@ -19,25 +19,24 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: materializr
+site_name: mkdocs-material
 site_description: A material design theme for MkDocs
 site_author: Martin Donath
-site_url: https://squidfunk.com/materializr
+site_url: https://github.com/squidfunk/mkdocs-material
 
 # Repository
 repo_name: GitHub
-repo_url: https://github.com/squidfunk/materializr
+repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
 copyright: Copyright (c) 2016 Martin Donath
 
 # Documentation and theme
-docs_dir: docs
-theme_dir: materializr
+theme_dir: material
+theme: amelia
 
 # Extra variables
 extra:
-  color:
   version: 0.1.0
   logo:
   author:
@@ -48,7 +47,10 @@ extra:
 markdown_extensions:
   - fenced_code
   - codehilite(css_class=code)
+  - admonition
+  - toc:
+      permalink: ¶
 
 # Page tree
 pages:
-  - About: index.md
+- Home: index.md

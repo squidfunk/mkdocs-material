@@ -28,16 +28,11 @@
     <meta name="apple-mobile-web-app-title" content="{{ site_name }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ icon | default('/assets/images/favicon.ico') }}">
-    <link rel="icon" type="image/x-icon" href="{{ icon | default('/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ icon | default(base_url + '/assets/images/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ icon | default(base_url + '/assets/images/favicon.ico') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono">
-    {% if config.extra.color %}
-      {% set color = config.extra.color %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.{{ color }}.css">
-    {% else %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
-    {% endif %}
+    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
@@ -54,7 +49,7 @@
       {% include "header.html" %}
     </header>
     <main class="main">
-      {% set h1 = "\x3c/h1\x3e" in content %}
+      {% set h1 = "\x3ch1 id=" in content %}
       <div class="drawer">
         {% include "drawer.html" %}
       </div>
@@ -75,8 +70,8 @@
             Documentation built with
             <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
             using the
-            <a href="https://github.com/squidfunk/materializr" target="_blank">
-              Materializr
+            <a href="https://github.com/squidfunk/mkdocs-material" target="_blank">
+              Material
             </a>
             theme.
           </aside>

@@ -23,9 +23,6 @@
  * Dependencies
  * ------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------
- * Palette
- * ------------------------------------------------------------------------- */
-/* ----------------------------------------------------------------------------
  * Application
  * ------------------------------------------------------------------------- */
 /*
@@ -222,7 +219,7 @@ h1, h2, h3, h4, h5, h6 {
  * Inline code
  */
 code {
-  color: #e91e63; }
+  color: #3f51b5; }
 
 /*
  * Code block
@@ -555,7 +552,7 @@ body {
    */ }
   @supports (-webkit-appearance: none) {
     body {
-      background: #e91e63; } }
+      background: #3f51b5; } }
   .ios body {
     background: white; }
 
@@ -605,7 +602,7 @@ hr {
  */
 .header {
   box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.24), 0 3px 8px rgba(0, 0, 0, 0.05);
-  background: #e91e63;
+  background: #3f51b5;
   color: white;
   /*
    * Add status bar overlay for iOS web application
@@ -1066,9 +1063,9 @@ pre, code {
      * Hovered link
      */ }
     .drawer .toc a.current {
-      color: #e91e63; }
+      color: #3f51b5; }
     .drawer .toc a:hover, .drawer .toc a:focus {
-      color: #3d5afe; }
+      color: #009688; }
   .drawer .section {
     color: rgba(0, 0, 0, 0.54); }
   .drawer .wrapper {
@@ -1102,7 +1099,7 @@ pre, code {
  */
 .repo a {
   box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.24), 0 3px 8px rgba(0, 0, 0, 0.05);
-  background: #3d5afe;
+  background: #009688;
   color: white;
   border-radius: 3px;
   /*
@@ -1486,23 +1483,23 @@ pre span {
    * Data tables
    */ }
   .ios.standalone .article {
-    background: -webkit-linear-gradient(top, white 50%, #e91e63 50%);
-    background: linear-gradient(to bottom, white 50%, #e91e63 50%);
+    background: -webkit-linear-gradient(top, white 50%, #3f51b5 50%);
+    background: linear-gradient(to bottom, white 50%, #3f51b5 50%);
     /* Hack [iOS]: Mitigate black bounding box with linear gradient */ }
     .ios.standalone .article .wrapper {
       background: -webkit-linear-gradient(top, white 50%, white 50%);
       background: linear-gradient(to bottom, white 50%, white 50%); }
   .article h1, .article h2 {
-    color: #e91e63; }
+    color: #3f51b5; }
   .article h1 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .article a {
-    color: #e91e63;
+    color: #3f51b5;
     /*
      * Hovered link
      */ }
     .article a:hover, .article a:focus {
-      color: #3d5afe; }
+      color: #009688; }
   .article table {
     box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.24), 0 3px 8px rgba(0, 0, 0, 0.05);
     border-radius: 3px;
@@ -1513,7 +1510,7 @@ pre span {
      * Table cell
      */ }
     .article table th {
-      background: #ef568a;
+      background: #6f7dc8;
       color: white;
       /*
        * Round upper left border
@@ -1532,7 +1529,7 @@ pre span {
  * Article footer
  */
 .footer {
-  background: #e91e63;
+  background: #3f51b5;
   color: white; }
 
 /*
@@ -1557,6 +1554,28 @@ pre span {
     color: inherit; }
   .pagination .direction {
     color: rgba(255, 255, 255, 0.7); }
+
+/*
+ * Admonition support
+ */
+.admonition {
+  background: #eceef8;
+  /*
+   * Embedded code blocks
+   */
+  /*
+   * A warning hint
+   */ }
+  .admonition pre {
+    background: rgba(255, 255, 255, 0.3); }
+  .admonition.warning {
+    background: #fce8e9; }
+
+/*
+ * Permalink support
+ */
+.article h2 a, .article h3 a, .article h4 a, .article h5 a, .article h6 a {
+  color: rgba(0, 0, 0, 0.26); }
 
 /*
  * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
@@ -1588,6 +1607,7 @@ pre span {
 .article {
   font-size: 14px;
   line-height: 1.7em;
+  overflow-x: hidden;
   /* [tablet landscape+]: Indent to account for drawer */
   /*
    * Clearfix
@@ -1675,8 +1695,16 @@ pre span {
       padding-top: 36px;
       margin: 0; }
   .article h3, .article h4 {
-    font-size: 1.0em; }
-  .article p, .article h3, .article h4, .article ul, .article ol {
+    font-size: 14px;
+    padding-top: 76px;
+    margin-top: -56px;
+    /*
+     * No offset correction in iOS web application
+     */ }
+    .ios.standalone .article h3, .ios.standalone .article h4 {
+      padding-top: 20px;
+      margin-top: 0; }
+  .article p, .article ul, .article ol {
     margin-top: 1.5em; }
   .article li {
     margin-top: 0.75em;
@@ -1845,6 +1873,35 @@ pre span {
       padding: 11px 0 13px; }
 
 /*
+ * Admonition support
+ */
+.admonition {
+  margin: 20px -16px 0;
+  padding: 20px 16px;
+  /*
+   * Remove redundant margin of first child
+   */
+  /* [tablet portait+]: Increase horizontal spacing */ }
+  .admonition > :first-child {
+    margin-top: 0; }
+
+/*
+ * Permalink support
+ */
+.article {
+  /*
+   * Hide link to main headline
+   */
+  /*
+   * Align permalinks on the right
+   */ }
+  .article h1 a {
+    display: none; }
+  .article h2 a, .article h3 a, .article h4 a, .article h5 a, .article h6 a {
+    float: right;
+    margin-left: 20px; }
+
+/*
  * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1883,6 +1940,19 @@ pre span {
   .article h4 {
     font-weight: 400;
     font-style: italic; }
+
+/*
+ * Admonition support
+ */
+.admonition-title {
+  font-weight: 700; }
+
+/*
+ * Permalink support
+ */
+.article h2 a, .article h3 a, .article h4 a, .article h5 a, .article h6 a {
+  font-weight: 400;
+  font-style: normal; }
 
 /*
  * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
@@ -2091,7 +2161,7 @@ pre span {
   .toggle-search .results {
     opacity: 1; }
   .results .meta {
-    background: #e91e63;
+    background: #3f51b5;
     color: white; }
   .results .list a {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -2365,8 +2435,6 @@ pre span {
 /* ----------------------------------------------------------------------------
  * Nothing to see here, move along
  * ------------------------------------------------------------------------- */
-.admonition {
-  background: red; }
 @media only screen and (min-width: 960px) {
   .backdrop {
     background: #f2f2f2; }
@@ -2417,7 +2485,7 @@ pre span {
     background: #f2f2f2; }
   .project {
     box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.24), 0 3px 8px rgba(0, 0, 0, 0.05);
-    background: #e91e63;
+    background: #3f51b5;
     color: white; }
   .drawer {
     position: fixed;
@@ -2448,6 +2516,8 @@ pre span {
   .article {/*
      * Account for larged header bar and anchors
      *//*
+     * Sub headlines
+     *//*
      * Increase spacing for code blocks
      */ }
   .article h2 {
@@ -2458,6 +2528,14 @@ pre span {
   .ios.standalone .article h2 {
     padding-top: 28px;
     margin-top: 8px; }
+  .article h3, .article h4 {
+    padding-top: 84px;
+    margin-top: -64px;/*
+       * No offset correction in iOS web application
+       */ }
+  .ios.standalone .article h3, .ios.standalone .article h4 {
+    padding-top: 20px;
+    margin-top: 0; }
   .article pre {
     padding: 1.5em 24px;
     margin: 1.5em -24px 0; }
@@ -2476,6 +2554,9 @@ pre span {
     bottom: 40px; }
   .pagination .stretch {
     padding: 0 8px; }
+  .admonition {
+    margin: 20px -24px 0;
+    padding: 20px 24px; }
   .bar.search .query {
     font-size: 20px;
     padding: 12px 0; }
@@ -2581,4 +2662,4 @@ pre span {
        * Color header
        */ }
   .article table th {
-    color: #e91e63; } }
+    color: #3f51b5; } }

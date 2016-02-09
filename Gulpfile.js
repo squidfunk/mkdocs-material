@@ -105,7 +105,7 @@ gulp.task('assets:stylesheets', function() {
       ]))
     .pipe(gulpif(args.sourcemaps, sourcemaps.write()))
     .pipe(gulpif(args.production, mincss()))
-    .pipe(gulp.dest('materializr/assets/stylesheets/'));
+    .pipe(gulp.dest('material/assets/stylesheets/'));
 });
 
 /*
@@ -127,7 +127,7 @@ gulp.task('assets:javascripts', function() {
     .pipe(concat('application.js'))
     .pipe(gulpif(args.sourcemaps, sourcemaps.write()))
     .pipe(gulpif(args.production, uglify()))
-    .pipe(gulp.dest('materializr/assets/javascripts/'));
+    .pipe(gulp.dest('material/assets/javascripts/'));
 });
 
 /*
@@ -138,8 +138,8 @@ gulp.task('assets:modernizr', [
   'assets:javascripts'
 ], function() {
   return gulp.src([
-    'materializr/assets/stylesheets/application.css',
-    'materializr/assets/javascripts/application.js'
+    'material/assets/stylesheets/application.css',
+    'material/assets/javascripts/application.js'
   ]).pipe(
       modernizr({
         options: [
@@ -153,22 +153,22 @@ gulp.task('assets:modernizr', [
     .pipe(addsrc.append('bower_components/respond/dest/respond.src.js'))
     .pipe(concat('modernizr.js'))
     .pipe(gulpif(args.production, uglify()))
-    .pipe(gulp.dest('materializr/assets/javascripts'));
+    .pipe(gulp.dest('material/assets/javascripts'));
 });
 
 /*
  * Copy static assets like images and webfonts.
  */
 gulp.task('assets:static', function() {
-  return gulp.src('src/assets/{fonts,images}/*.{ico,jpg,png,gif}')
+  return gulp.src('src/assets/{fonts,images}/*.{jpg,png,gif}')
     .pipe(gulpif(args.production,
       minimage({
         optimizationLevel: 5,
         progressive: true,
         interlaced: true
       })))
-    .pipe(addsrc.append('src/assets/{fonts,images}/*.{eot,svg,ttf,woff}'))
-    .pipe(gulp.dest('materializr/assets/'));
+    .pipe(addsrc.append('src/assets/{fonts,images}/*.{ico,eot,svg,ttf,woff}'))
+    .pipe(gulp.dest('material/assets/'));
 });
 
 /*
@@ -191,20 +191,20 @@ gulp.task('assets:views', args.production ? [
     .pipe(compact())
     .pipe(gulpif(args.production,
       addsrc.append([
-        'materializr/manifest.json',
-        'materializr/**/*.css'
+        'material/manifest.json',
+        'material/**/*.css'
       ])))
     .pipe(gulpif(args.production, collect()))
     .pipe(ignore.exclude(/manifest\.json$/))
-    .pipe(gulp.dest('materializr'));
+    .pipe(gulp.dest('material'));
 });
 
 /*
  * Clean outdated revisions.
  */
 gulp.task('assets:revisions:clean', function() {
-  return gulp.src(['materializr/**/*.{css,js,png,jpg,gif}'])
-    .pipe(ignore.include(/-[a-f0-9]{8}\.(css|js|png|jpg|gif)$/))
+  return gulp.src(['material/**/*.{ico,css,js,png,jpg,gif}'])
+    .pipe(ignore.include(/-[a-f0-9]{8}\.(ico|css|js|png|jpg|gif)$/))
     .pipe(vinyl(clean));
 });
 
@@ -217,12 +217,12 @@ gulp.task('assets:revisions', [
   'assets:javascripts',
   'assets:static'
 ], function() {
-  return gulp.src(['materializr/**/*.{css,js,png,jpg,gif}'])
+  return gulp.src(['material/**/*.{ico,css,js,png,jpg,gif}'])
     .pipe(ignore.exclude(/-[a-f0-9]{8}\.(css|js|png|jpg|gif)$/))
     .pipe(rev())
-    .pipe(gulp.dest('materializr'))
+    .pipe(gulp.dest('material'))
     .pipe(rev.manifest('manifest.json'))
-    .pipe(gulp.dest('materializr'));
+    .pipe(gulp.dest('material'));
 });
 
 /*

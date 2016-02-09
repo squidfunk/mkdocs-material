@@ -22,9 +22,9 @@ from setuptools import setup, find_packages
 
 # Package description
 setup(
-    name = 'mkdocs-materializr',
+    name = 'mkdocs-material',
     version = '0.1.0',
-    url = 'https://github.com/squidfunk/materializr',
+    url = 'https://github.com/squidfunk/mkdocs-material',
     license = 'MIT',
     description = 'A material design theme for MkDocs',
     author = 'Martin Donath',
@@ -33,7 +33,7 @@ setup(
     include_package_data = True,
     entry_points = {
         'mkdocs.themes': [
-            'materializr = materializr',
+            'material = material',
         ]
     },
     zip_safe = False
