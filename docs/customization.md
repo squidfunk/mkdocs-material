@@ -68,6 +68,10 @@ $primary: $red-400;
 $accent:  $teal-a700;
 ```
 
+The color variables are defined by the SASS library [quantum-colors][] and
+resemble all the colors contained in the material design palette.
+[This page][material-colors] offers a really good overview of the palette.
+
 ### Building
 
 When you finished making your changes, you can build the theme by invoking:
@@ -84,3 +88,5 @@ variable pointing to the aforementioned directory in your original
 
 [MkDocs]: http://www.mkdocs.org
 [MkDocs documentation]: http://www.mkdocs.org/user-guide/styling-your-docs/#customising-a-theme
+[quantum-colors]: https://github.com/nkpfstr/quantum-colors
+[material-colors]: http://www.materialui.co/colors
