@@ -29,6 +29,7 @@ setup(
     description = 'A material design theme for MkDocs',
     author = 'Martin Donath',
     author_email = 'martin.donath@squidfunk.com',
+    keywords = ['mkdocs', 'documentation', 'theme'],
     packages = find_packages(),
     include_package_data = True,
     entry_points = {

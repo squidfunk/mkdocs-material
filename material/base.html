@@ -25,6 +25,9 @@
         <meta name="author" content="{{ site_author }}">
       {% endif %}
     {% endblock %}
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:title" content="{{ site_name }}">
+    <meta property="og:image" content="{{ canonical_url }}/{{ base_url }}/{{ config.extra.logo }}">
     <meta name="apple-mobile-web-app-title" content="{{ site_name }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
