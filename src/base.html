@@ -82,6 +82,18 @@
   </head>
   <body>
 
+    <!--
+      Sadly the jinja template engine is not very flexible - it doesn't support
+      regular expressions out-of-the-box. Since there might be a slash at the
+      end of the repository name, we just do a string comparison and kill it.
+    -->
+    {% if repo_name == 'GitHub' %}
+      {% set repo_id = repo_url | replace('https://github.com/', '') %}
+      {% if repo_id[-1:] == '/' %}
+        {% set repo_id = repo_id[:-1] %}
+      {% endif %}
+    {% endif %}
+
     <!-- Backdrop -->
     <div class="backdrop">
       <div class="backdrop-paper"></div>
@@ -170,7 +182,6 @@
     <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
 
     <!-- Theme-related and custom javascripts -->
-    {% set repo_id = repo_url | replace('https://github.com/', '') %}
     <script>
       var base_url = '{{ base_url }}';
       var repo_id  = '{{ repo_id }}';

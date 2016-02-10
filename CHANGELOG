@@ -1,3 +1,7 @@
+mkdocs-material-0.x.x (2016-xx-xx) [in progress]
+
+  * Fixed #1: GitHub stars don't work if the repo_url ends with a '/'
+
 mkdocs-material-0.1.0 (2016-02-09)
 
   * Initial release
