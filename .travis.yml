@@ -20,11 +20,15 @@
 
 language: node_js
 
+# Node.js versions
+node_js:
+  - "4.1"
+  - "0.11"
+
 # Install dependencies
 before_script:
 
-  # Install gulp and bower
-  - npm install -g gulp
+  # Install bower
   - npm install -g bower
 
   # Install project dependencies

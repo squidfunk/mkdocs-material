@@ -1,5 +1,5 @@
 {
-  "name": "Material",
+  "name": "mkdocs-material",
   "version": "0.1.0",
   "description": "A material design theme for MkDocs",
   "homepage": "http://squidfunk.github.io/mkdocs-material/",
@@ -17,15 +17,15 @@
   ],
   "private": true,
   "dependencies": {
-    "classlist": "~2014.12.13",
-    "fastclick": "~1.0.6",
-    "lunr.js": "~0.5.10",
-    "pegasus": "~0.3.1",
-    "respond": "~1.4.2"
+    "classlist": "^2014.12.13",
+    "fastclick": "^1.0.6",
+    "lunr.js": "^0.6.0",
+    "pegasus": "^0.3.2",
+    "respond": "^1.4.2"
   },
   "devDependencies": {
-    "bourbon": "~4.2.2",
-    "quantum-colors": "~1.0.1",
-    "quantum-shadows": "~1.0.0"
+    "bourbon": "^4.2.6",
+    "quantum-colors": "^1.0.1",
+    "quantum-shadows": "^1.0.0",
   }
 }

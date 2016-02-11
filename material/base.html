@@ -34,12 +34,12 @@
     {% if config.extra.logo %}
       <link rel="apple-touch-icon" href="{{ base_url }}/{{ config.extra.logo }}">
     {% endif %}
-    {% set icon = icon | default('assets/images/favicon-e565ddfa.ico') %}
+    {% set icon = icon | default('assets/images/favicon-e565ddfa3b.ico') %}
     <link rel="shortcut icon" type="image/x-icon" href="{{ base_url }}/{{ icon }}">
     <link rel="icon" type="image/x-icon" href="{{ base_url }}/{{ icon }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono">
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-1f184bc3.css">
+    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-5ffbc5b035.css">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
@@ -103,12 +103,12 @@
         </div>
       </div>
     </main>
-    <script src="{{ base_url }}/assets/javascripts/modernizr-79394028.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/modernizr-e5e5f05404.js"></script>
     <script>
       var base_url = '{{ base_url }}';
       var repo_id  = '{{ repo_id }}';
     </script>
-    <script src="{{ base_url }}/assets/javascripts/application-d84ecdee.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/application-c6d2e828bd.js"></script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}

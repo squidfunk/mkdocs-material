@@ -27,7 +27,7 @@
 var gulp       = require('gulp');
 var addsrc     = require('gulp-add-src');
 var args       = require('yargs').argv;
-var autoprefix = require('autoprefixer-core');
+var autoprefix = require('autoprefixer');
 var child      = require('child_process');
 var clean      = require('del');
 var collect    = require('gulp-rev-collector');
@@ -35,7 +35,7 @@ var compact    = require('gulp-remove-empty-lines');
 var concat     = require('gulp-concat');
 var ignore     = require('gulp-ignore');
 var gulpif     = require('gulp-if');
-var mincss     = require('gulp-minify-css');
+var mincss     = require('gulp-cssnano');
 var minhtml    = require('gulp-htmlmin');
 var minimage   = require('gulp-image-optimization');
 var modernizr  = require('gulp-modernizr');
@@ -54,7 +54,7 @@ var vinyl      = require('vinyl-paths');
  * Locals
  * ------------------------------------------------------------------------- */
 
-/* Application server */
+/* MkDocs server */
 var server = null;
 
 /* ----------------------------------------------------------------------------
@@ -204,7 +204,7 @@ gulp.task('assets:views', args.production ? [
  */
 gulp.task('assets:revisions:clean', function() {
   return gulp.src(['material/**/*.{ico,css,js,png,jpg,gif}'])
-    .pipe(ignore.include(/-[a-f0-9]{8}\.(ico|css|js|png|jpg|gif)$/))
+    .pipe(ignore.include(/-[a-f0-9]{8,}\.(ico|css|js|png|jpg|gif)$/))
     .pipe(vinyl(clean));
 });
 
@@ -218,7 +218,7 @@ gulp.task('assets:revisions', [
   'assets:static'
 ], function() {
   return gulp.src(['material/**/*.{ico,css,js,png,jpg,gif}'])
-    .pipe(ignore.exclude(/-[a-f0-9]{8}\.(css|js|png|jpg|gif)$/))
+    .pipe(ignore.exclude(/-[a-f0-9]{8,}\.(css|js|png|jpg|gif)$/))
     .pipe(rev())
     .pipe(gulp.dest('material'))
     .pipe(rev.manifest('manifest.json'))
@@ -268,22 +268,22 @@ gulp.task('assets:watch', function() {
  * ------------------------------------------------------------------------- */
 
 /*
- * Build application server.
+ * Build documentation.
  */
-gulp.task('server:build', [
+gulp.task('mkdocs:build', [
   'assets:build'
 ], function() {
   return child.spawnSync('mkdocs', ['build']);
 });
 
 /*
- * Restart application server.
+ * Restart MkDocs server.
  */
-gulp.task('server:spawn', function() {
+gulp.task('mkdocs:serve', function() {
   if (server)
     server.kill();
 
-  /* Spawn application server */
+  /* Spawn MkDocs server */
   server = child.spawn('mkdocs', ['serve', '-a', '0.0.0.0:8000']);
 
   /* Pretty print server log output */
@@ -305,23 +305,25 @@ gulp.task('server:spawn', function() {
  * ------------------------------------------------------------------------- */
 
 /*
- * Build assets and application server.
+ * Build assets and documentation.
  */
 gulp.task('build', [
-  'assets:build',
-  'server:build'
-]);
+  'assets:build'
+].concat(args.mkdocs
+  ? 'mkdocs:build'
+  : []));
 
 /*
- * Start asset and server watchdogs.
+ * Start asset and MkDocs watchdogs.
  */
 gulp.task('watch', [
   'assets:build',
 ], function() {
   return gulp.start([
-    'assets:watch',
-    'server:spawn'
-  ]);
+    'assets:watch'
+  ].concat(args.mkdocs
+    ? 'mkdocs:serve'
+    : []));
 });
 
 /*
