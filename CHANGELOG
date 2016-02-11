@@ -2,6 +2,7 @@ mkdocs-material-0.x.x (2016-xx-xx) [in progress]
 
   * Fixed #1: GitHub stars don't work if the repo_url ends with a '/'
   * Updated npm and bower dependencies to most recent versions
+  * Changed footer/copyright link to Material theme to GitHub pages
   * Made MkDocs building/serving in build process optional
   * Set up continuous integration with travis-ci.org
 
