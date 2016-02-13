@@ -20,12 +20,13 @@
       {% if repo_name == 'GitHub' %}
         <ul class="repo">
           <li class="repo-download">
-            <a href="https://github.com/{{ repo_id }}/archive/master.zip" target="_blank" aria-label="Download {{ repo_id }} on GitHub">
+            {% set version = config.extra.version | default('master') %}
+            <a href="{{ repo_url }}/archive/{{ version }}.zip" target="_blank" aria-label="Download {{ repo_id }} from GitHub">
               <i class="icon icon-download"></i> Download
             </a>
           </li>
           <li class="repo-stars">
-            <a href="https://github.com/{{ repo_id }}" target="_blank" aria-label="Star {{ repo_id }} on GitHub">
+            <a href="{{ repo_url }}" target="_blank" aria-label="Star {{ repo_id }} on GitHub">
               <i class="icon icon-star"></i> Star
               <span class="count">&ndash;</span>
             </a>
