@@ -36,7 +36,7 @@ theme_dir: material
 
 # Options
 extra:
-  version: 0.1.1
+  version: 0.1.2
   logo: images/logo.png
   font:
     text: Ubuntu

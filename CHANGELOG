@@ -1,4 +1,4 @@
-mkdocs-material-0.x.x (2016-xx-xx)
+mkdocs-material-0.1.2 (2016-02-16)
 
   * Fixed styles for deep navigational hierarchies
   * Fixed webfont delivery problem when hosted in subdirectories

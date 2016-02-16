@@ -7,7 +7,7 @@ Google's [material design][] guidelines. MkDocs is an excellent static site
 documentation generator that is meant for building good looking project
 documentation.
 
-![Material Screenshot](/images/screen.png)
+![Material Screenshot](images/screen.png)
 
 This theme is **optimized for all sorts of devices** and is built from scratch
 without any bloated Javascript or CSS Frameworks with **only 24kb of JS and
@@ -24,8 +24,8 @@ browsers.
 
 - Well-tested and **optimized CSS and Javascript**, including a cross-browser
   fixed/sticky header, a drawer that even works without Javascript using
-  the `checkbox:checked` hack with fallbacks, **responsive tables** that scroll
-  when the screen is too small and **well-defined print styles**.
+  the `:checked` hack with fallbacks, **responsive tables** that scroll when
+  the screen is too small and **well-defined print styles**.
 
 - Extra configuration options like **project logo**, links to the authors
   **GitHub and Twitter accounts** and display of the **amount of stars** the
@@ -38,7 +38,7 @@ browsers.
 - **Web application capability** on iOS - when the page is saved to the
   homescreen, it behaves and looks like a native application.
 
-See the [getting started guide](/getting-started) for instructions how to get
+See the [getting started guide](getting-started.md) for instructions how to get
 it up and running.
 
 [material design]: https://www.google.com/design/spec/material-design

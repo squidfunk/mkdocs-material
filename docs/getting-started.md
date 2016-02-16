@@ -116,7 +116,8 @@ extra:
 
 If you want to change the fonts or colors - you are lucky. The Material theme
 is built with a sophisticated asset pipeline. See
-[this article](/customization) for more information on advanced customization.
+[this article](customization.md) for more information on advanced
+customization.
 
 ## Extensions
 
@@ -174,8 +175,13 @@ This will print the following:
 !!! note
     Nothing to see here, move along.
 
-The Material template adds a light color for the `note` class and a red color
-for the `warning` class. More colors can be freely defined.
+The Material template adds a neutral color for the `note` class and a red color
+for the `warning` class.
+
+!!! warning
+    You shall not pass.
+
+More colors can be freely defined.
 
 ## Full example
 
@@ -186,7 +192,7 @@ Below is a full example configuration for a mkdocs.yml:
 site_name: 'My Project'
 site_description: 'A short description of my project'
 site_author: 'John Doe'
-site_url: 'https://github.com/my-github-handle/my-project'
+site_url: 'https://my-github-handle.github.io/my-project'
 
 # Repository
 repo_name: 'GitHub'
