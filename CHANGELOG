@@ -1,5 +1,6 @@
 mkdocs-material-0.x.x (2016-xx-xx)
 
+  * Fixed styles for deep navigational hierarchies
   * Fixed webfont delivery problem when hosted in subdirectories
   * Added option to configure fonts in mkdocs.yml with fallbacks
   * Set download link to latest version if available

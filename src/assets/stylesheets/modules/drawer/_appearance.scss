@@ -50,8 +50,15 @@
      * Hovered link
      */
     &:hover, &:focus {
-      color: $accent;
+      color: $primary;
     }
+  }
+
+  /*
+   * Color anchors menu
+   */
+  .anchor a {
+    border-left: 2px solid $primary;
   }
 
   /*

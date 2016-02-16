@@ -66,10 +66,25 @@
   }
 
   /*
-   * Links to chapters inside the current article
+   * Links to anchors
    */
   .toc li.anchor a {
-    padding: 10px 24px 10px 48px;
+    margin-left: 12px;
+    padding: 10px 24px 10px 12px;
+  }
+
+  /*
+   * Nested links
+   */
+  .toc li ul {
+    margin-left: 12px;
+  }
+
+  /*
+   *
+   */
+  .current + ul {
+    margin-bottom: 9px;
   }
 
   /*
@@ -77,7 +92,6 @@
    */
   .section {
     display: block;
-    font-size: 11px;
     padding: 14.5px 24px;
   }
 

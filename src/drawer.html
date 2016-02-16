@@ -55,43 +55,43 @@
       {% endif %}
 
       <!-- Table of contents -->
-      <ul class="toc">
-        {% for nav_item in nav %}
-          {% include "nav.html" %}
-        {% endfor %}
+      <div class="toc">
+        <ul>
+          {% for nav_item in nav %}
+            {% include "nav.html" %}
+          {% endfor %}
+        </ul>
 
         <!-- Author-related links -->
         {% if config.extra.author %}
-          <li>
-            <hr />
-            <span class="section">The author</span>
-            <ul>
+          <hr />
+          <span class="section">The author</span>
+          <ul>
 
-              <!-- Twitter -->
-              {% if config.extra.author.twitter %}
-                {% set author = config.extra.author.twitter %}
-                <li>
-                  <a href="https://twitter.com/{{ author }}" target="_blank"
-                    title="@{{ author }} on Twitter">
-                    @{{ author }} on Twitter
-                  </a>
-                </li>
-              {% endif %}
+            <!-- Twitter -->
+            {% if config.extra.author.twitter %}
+              {% set author = config.extra.author.twitter %}
+              <li>
+                <a href="https://twitter.com/{{ author }}" target="_blank"
+                  title="@{{ author }} on Twitter">
+                  @{{ author }} on Twitter
+                </a>
+              </li>
+            {% endif %}
 
-              <!-- GitHub -->
-              {% if config.extra.author.github %}
-                {% set author = config.extra.author.github %}
-                <li>
-                  <a href="https://github.com/{{ author }}" target="_blank"
-                    title="@{{ author }} on GitHub">
-                    @{{ author }} on GitHub
-                  </a>
-                </li>
-              {% endif %}
-            </ul>
-          </li>
+            <!-- GitHub -->
+            {% if config.extra.author.github %}
+              {% set author = config.extra.author.github %}
+              <li>
+                <a href="https://github.com/{{ author }}" target="_blank"
+                  title="@{{ author }} on GitHub">
+                  @{{ author }} on GitHub
+                </a>
+              </li>
+            {% endif %}
+          </ul>
         {% endif %}
-      </ul>
+      </div>
     </div>
   </div>
 </nav>
