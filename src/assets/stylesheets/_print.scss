@@ -32,7 +32,7 @@
   /*
    * Hide non-relevant elements
    */
-  .header, .project, .footer {
+  .header, .drawer, .headerlink, .footer {
     display: none;
   }
 
@@ -42,10 +42,21 @@
   .article {
 
     /*
+     * Remove top spacing
+     */
+    .wrapper {
+      padding-top: 0;
+    }
+
+    /*
      * Remove color in all code blocks
      */
     pre, pre * {
       color: $black !important;
+    }
+
+    pre {
+      border: 1px solid $black-lightest;
     }
 
     /*

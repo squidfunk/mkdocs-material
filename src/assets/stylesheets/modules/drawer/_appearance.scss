@@ -31,7 +31,7 @@
 
   /* [tablet landscape-]: Light gray background */
   @include break-to-device(tablet landscape) {
-    background: darken($white, 5%);
+    background: $white;
   }
 
   /*
@@ -66,17 +66,6 @@
    */
   .section {
     color: $black-light;
-  }
-
-  /*
-   * Content wrapper
-   */
-  .wrapper {
-
-    /* [tablet landscape-]: Light gray background */
-    @include break-to-device(tablet landscape) {
-      background: darken($white, 5%);
-    }
   }
 }
 
@@ -113,7 +102,7 @@
    */
   &:hover .logo img,
   &:focus .logo img {
-    @include drop-shadow(3);
+    @include drop-shadow(2);
   }
 }
 
@@ -121,8 +110,6 @@
  * Repository buttons
  */
 .repo a {
-  @include drop-shadow(1);
-
   background: $accent;
   color: $white;
   border-radius: 3px;
@@ -131,7 +118,7 @@
    * Hovered button
    */
   &:hover, &:focus {
-    @include drop-shadow(3);
+    @include drop-shadow(2);
 
     opacity: 0.8;
   }
