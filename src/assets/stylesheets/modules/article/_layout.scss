@@ -127,6 +127,22 @@
   }
 
   /*
+   * Align permalinks on the right
+   */
+  .headerlink {
+    float: right;
+    margin-left: 20px;
+    font-size: 14px;
+
+    /*
+     * Hide permalink to main headline
+     */
+    h1 & {
+      display: none;
+    }
+  }
+
+  /*
    * Paragraphs and section titles
    */
   p, ul, ol {
@@ -513,28 +529,5 @@
   @include break-from-device(tablet portrait) {
     margin: 20px -24px 0;
     padding: 20px 24px;
-  }
-}
-
-/*
- * Permalink support
- */
-.article {
-
-  /*
-   * Hide link to main headline
-   */
-  h1 a {
-    display: none;
-  }
-
-  /*
-   * Align permalinks on the right
-   */
-  h2, h3, h4, h5, h6 {
-    a {
-      float: right;
-      margin-left: 20px;
-    }
   }
 }

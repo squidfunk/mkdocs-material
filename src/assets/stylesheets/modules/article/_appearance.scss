@@ -44,9 +44,9 @@
   }
 
   /*
-   * Headlines and chapters in primary color
+   * Headlines, chapters, links and inline code
    */
-  h1, h2 {
+  h1, h2, a, code {
     color: $primary;
   }
 
@@ -58,18 +58,18 @@
   }
 
   /*
-   * Color links
+   * Hovered and focused links
    */
-  a {
-    color: $primary;
+  a:hover,
+  a:focus {
+    color: $accent;
+  }
 
-    /*
-     * Hovered link
-     */
-    &:hover,
-    &:focus {
-      color: $accent;
-    }
+  /*
+   * Light permalinks
+   */
+  .headerlink {
+    color: $black-lighter;
   }
 
   /*
@@ -134,10 +134,8 @@
   /*
    * Inherit color for links
    */
-  a,
-  a:hover,
-  a:focus {
-    color: inherit;
+  a .title, a .button {
+    color: $white;
   }
 
   /*
@@ -166,16 +164,5 @@
    */
   &.warning {
     background: mix($red-500, $white, 10%);
-  }
-}
-
-/*
- * Permalink support
- */
-.article {
-  h2, h3, h4, h5, h6 {
-    a {
-      color: $black-lighter;
-    }
   }
 }

@@ -38,6 +38,9 @@ theme_dir: material
 extra:
   version: 0.1.1
   logo: images/logo.png
+  font:
+    text: Ubuntu
+    code: Ubuntu Mono
   author:
     github: squidfunk
     twitter: squidfunk

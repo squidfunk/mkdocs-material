@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav aria-label="navigation">
+<nav aria-label="Navigation">
 
   <!-- Project information -->
   <a href="{{ repo_url }}" class="project">
@@ -36,14 +36,16 @@
         <ul class="repo">
           <li class="repo-download">
             {% set version = config.extra.version | default('master') %}
-            <a href="{{ repo_url }}/archive/{{ version }}.zip"
-              target="_blank" aria-label="Download {{ repo_id }} from GitHub">
+            <a href="{{ repo_url }}/archive/{{ version }}.zip" target="_blank"
+              title="Download {{ repo_id }} from GitHub"
+              data-action="download">
               <i class="icon icon-download"></i> Download
             </a>
           </li>
           <li class="repo-stars">
-            <a href="{{ repo_url }}"
-              target="_blank" aria-label="Star {{ repo_id }} on GitHub">
+            <a href="{{ repo_url }}" target="_blank"
+              title="Star {{ repo_id }} on GitHub"
+              data-action="star">
               <i class="icon icon-star"></i> Star
               <span class="count">&ndash;</span>
             </a>
@@ -67,22 +69,22 @@
 
               <!-- Twitter -->
               {% if config.extra.author.twitter %}
+                {% set author = config.extra.author.twitter %}
                 <li>
-                  <a href="https://twitter.com/{{ config.extra.author.twitter }}"
-                    title="@{{ config.extra.author.twitter }} on Twitter"
-                    target="_blank">
-                    @{{ config.extra.author.twitter }} on Twitter
+                  <a href="https://twitter.com/{{ author }}" target="_blank"
+                    title="@{{ author }} on Twitter">
+                    @{{ author }} on Twitter
                   </a>
                 </li>
               {% endif %}
 
               <!-- GitHub -->
               {% if config.extra.author.github %}
+                {% set author = config.extra.author.github %}
                 <li>
-                  <a href="https://github.com/{{ config.extra.author.github }}"
-                    title="@{{ config.extra.author.twitter }} on GitHub"
-                    target="_blank">
-                    @{{ config.extra.author.github }} on GitHub
+                  <a href="https://github.com/{{ author }}" target="_blank"
+                    title="@{{ author }} on GitHub">
+                    @{{ author }} on GitHub
                   </a>
                 </li>
               {% endif %}

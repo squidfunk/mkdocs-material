@@ -64,15 +64,52 @@
     <link rel="icon" type="image/x-icon"
       href="{{ base_url }}/{{ icon }}" />
 
-    <!-- Webfonts -->
-    <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" />
-    <link rel="stylesheet" type="text/css"
-      href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" />
+    <!-- Configure icons (placed here to omit issues with subdirectories) -->
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('{{ base_url }}/assets/fonts/icon.eot?52m981');
+      	src: url('{{ base_url }}/assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('{{ base_url }}/assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('{{ base_url }}/assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('{{ base_url }}/assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
 
-    <!-- Theme-related and custom stylesheets -->
+    <!-- Theme-related stylesheets -->
     <link rel="stylesheet" type="text/css"
       href="{{ base_url }}/assets/stylesheets/application.css" />
+
+    <!-- Configure webfonts -->
+    {% if config.extra.font != 'none' %}
+      {% set text = 'Ubuntu' %}
+      {% if config.extra.font and config.extra.font.text %}
+        {% set text = config.extra.font.text %}
+      {% endif %}
+      {% set code = 'Ubuntu Mono' %}
+      {% if config.extra.font and config.extra.font.code %}
+        {% set code = config.extra.font.code %}
+      {% endif %}
+      {% set font = text + ':400,700|' + code | replace('+', ' ') %}
+      <link rel="stylesheet" type="text/css"
+        href="//fonts.googleapis.com/css?family={{ font }}" />
+      <style>
+        body, input {
+          font-family: '{{ text }}', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: '{{ code }}', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    {% endif %}
+
+    <!-- Custom stylesheets -->
     {% for path in extra_css %}
       <link rel="stylesheet" type="text/css" href="{{ path }}" />
     {% endfor %}

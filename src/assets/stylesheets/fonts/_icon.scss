@@ -21,28 +21,22 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Font faces
+ * Font faces - defined in base.html for correct path resolution
  * ------------------------------------------------------------------------- */
 
-/*
- * Base URL and path for icon font.
- */
-$base: '../..';
-$path: $base + '/assets/fonts/';
-
-/*
- * Icon font
- */
-@font-face {
-	font-family: 'Icon';
-	src: url($path + 'icon.eot?52m981');
-	src: url($path + 'icon.eot?#iefix52m981') format('embedded-opentype'),
-		   url($path + 'icon.woff?52m981') format('woff'),
-		   url($path + 'icon.ttf?52m981') format('truetype'),
-		   url($path + 'icon.svg?52m981#icon') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
+// /*
+//  * Icon font
+//  */
+// @font-face {
+// 	font-family: 'Icon';
+// 	src: url('/assets/fonts/icon.eot?52m981');
+// 	src: url('/assets/fonts/icon.eot?#iefix52m981') format('embedded-opentype'),
+// 		   url('/assets/fonts/icon.woff?52m981') format('woff'),
+// 		   url('/assets/fonts/icon.ttf?52m981') format('truetype'),
+// 		   url('/assets/fonts/icon.svg?52m981#icon') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
 
 /* ----------------------------------------------------------------------------
  * Representational classes
