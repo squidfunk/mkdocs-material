@@ -150,7 +150,8 @@
  * Admonition support
  */
 .admonition {
-  background: mix($light-blue-500, $white, 10%);
+  background: $light-blue-400;
+  color: $white;
 
   /*
    * Embedded code blocks
@@ -163,6 +164,6 @@
    * A warning hint
    */
   &.warning {
-    background: mix($red-500, $white, 10%);
+    background: $red-400;
   }
 }

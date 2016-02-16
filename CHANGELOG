@@ -4,6 +4,7 @@ mkdocs-material-0.x.x (2016-xx-xx)
   * Fixed webfont delivery problem when hosted in subdirectories
   * Fixed print styles in mobile/tablet configuration
   * Added option to configure fonts in mkdocs.yml with fallbacks
+  * Changed styles for admonition notes and warnings
   * Set download link to latest version if available
   * Set up tracking of outgoing links and actions for Google Analytics
 

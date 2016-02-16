@@ -530,4 +530,31 @@
     margin: 20px -24px 0;
     padding: 20px 24px;
   }
+
+  /*
+   * Admonition title, if given
+   */
+  .admonition-title {
+    font-size: 20px;
+
+    /*
+     * Default icon
+     */
+    &:before {
+      content: "\e611";
+      display: block;
+      float: left;
+      font-family: 'Icon';
+      font-size: 24px;
+      vertical-align: -0.1em;
+      margin-right: 5px;
+    }
+  }
+
+  /*
+   * Warning icon
+   */
+  &.warning .admonition-title:before {
+    content: "\e610";
+  }
 }
