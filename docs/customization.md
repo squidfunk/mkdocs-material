@@ -26,23 +26,28 @@ Further assistance on including extra CSS and Javascript can be found in the
 ## Fundamental changes
 
 If you want to make larger adjustments like changing the color palette or
-typography, you should check out the repository of the project and compile
-the SASS sources with your changes. The project design is very modular, so
-most things can be changed by tweaking a few variables.
+typography, you should check out or download the repository of the project and
+compile the SASS sources with your changes. The project design is very modular,
+so most things can be tweaked by changing a few variables.
 
 ### Setup
 
-In order to compile the project, you need `node`, `bower` and `gulp` up and
-running. It's best to use the most recent versions, but it should also work if
-your installations are not too dated. The project itself is hosted on GitHub,
-so the next thing you should do is clone the project from GitHub:
+In order to compile the project, you need `node` with a version greater than
+`0.11` up and running. Then, make sure `bower` is installed or install it:
+
+``` sh
+npm install -g bower
+```
+
+The project itself is hosted on GitHub, so the next
+thing you should do is clone the project from GitHub:
 
 ``` sh
 git clone https://github.com/squidfunk/mkdocs-material
 ```
 
 Then you change the directory and install all dependencies specified in the
-`package.json` and `bower.json`:
+`package.json` and `bower.json` with the following command:
 
 ``` sh
 cd mkdocs-material
@@ -52,12 +57,12 @@ npm install && bower install
 ### Development
 
 The asset pipeline is contained in `Gulpfile.js`, which you can start with
-`gulp watch`. This will also run `mkdocs serve`, to monitor changes to the
-documentation. Point your browser to [localhost:8000](http://localhost:8000)
-and you should see this very documentation in front of your eyes.
+`gulp watch`. If you specify the `--mkdocs` flag, this will also run
+`mkdocs serve`, to monitor changes to the documentation. Point your browser to [localhost:8000](http://localhost:8000) and you should see this very
+documentation in front of your eyes.
 
 ``` sh
-gulp watch
+gulp watch --mkdocs
 ```
 
 For example, changing the color palette is as simple as changing the `$primary`
@@ -80,11 +85,18 @@ When you finished making your changes, you can build the theme by invoking:
 gulp build --production
 ```
 
-The `production` flag triggers the production-level compilation and
+The `--production` flag triggers the production-level compilation and
 minification of all CSS and Javascript sources. When the command is ready,
 the final theme is located in the `material` directory. Add the `theme_dir`
 variable pointing to the aforementioned directory in your original
-`mkdocs.yml` and you should see your documentation with your changes!
+`mkdocs.yml`:
+
+``` yaml
+theme_dir: 'mkdocs-material/material'
+```
+
+Now you can run `mkdocs build` and you should see your documentation with your
+changes to the original Material theme.
 
 [MkDocs]: http://www.mkdocs.org
 [MkDocs documentation]: http://www.mkdocs.org/user-guide/styling-your-docs/#customising-a-theme

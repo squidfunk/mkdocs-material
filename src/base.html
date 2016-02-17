@@ -96,7 +96,7 @@
       {% if config.extra.font and config.extra.font.code %}
         {% set code = config.extra.font.code %}
       {% endif %}
-      {% set font = text + ':400,700|' + code | replace('+', ' ') %}
+      {% set font = text + ':400,700|' + code | replace(' ', '+') %}
       <link rel="stylesheet" type="text/css"
         href="//fonts.googleapis.com/css?family={{ font }}" />
       <style>

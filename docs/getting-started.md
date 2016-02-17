@@ -4,7 +4,7 @@
 
 ### Installing MkDocs
 
-In order to install [MkDocs][], Python and `pip` - the Python package manager -
+In order to install [MkDocs][], Python and `pip` – the Python package manager –
 need to be up and running. Assuming you are a developer and have a basic
 understanding of how things work and what StackOverflow is, we won't provide
 guidelines on setting those up. You can verify if you're already good to go
@@ -76,19 +76,6 @@ on and customize the theme through some options.
 The Material theme adds some extra variables for configuration via your
 project's `mkdocs.yml`. See the following section for all available options.
 
-### Adding a logo
-
-If your project has a logo, you can add it to the drawer/navigation by defining
-the variable `extra.logo`. Ideally, the image of your logo should have
-rectangular shape with a minimum resolution of 128x128. The logo will also be
-used as a web application icon on iOS. Simply create the folder `docs/images`,
-add your image and reference it via:
-
-``` yaml
-extra:
-  logo: 'images/logo.png'
-```
-
 ### Adding a version
 
 In order to add the current version next to the project banner inside the
@@ -97,6 +84,46 @@ drawer, you can set the variable `extra.version`:
 ``` yaml
 extra:
   version: '0.1.0'
+```
+
+This will also change the link behind the download button to point to the
+archive with the respective version on GitHub, assuming a release tagged with
+this exact version identifier.
+
+### Adding a logo
+
+If your project has a logo, you can add it to the drawer/navigation by defining
+the variable `extra.logo`. Ideally, the image of your logo should have
+rectangular shape with a minimum resolution of 128x128 and leave some room
+towards the edges. The logo will also be used as a web application icon on iOS.
+Simply create the folder `docs/images`, add your image and reference it via:
+
+``` yaml
+extra:
+  logo: 'images/logo.png'
+```
+
+### Changing the font family
+
+Material uses the [Ubuntu font family][] by default, specifically the regular
+sans-serif type for text and the monospaced type for code. Both fonts are
+loaded from [Google Fonts][] and can be easily changed to other fonts, like for
+example Google's own [Roboto font][]:
+
+``` yaml
+extra:
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+```
+
+The text font will be loaded in font-weights 400 and 700, the monospaced font
+in regular weight. If you want to load fonts from other destinations or don't
+want to use the Google Fonts loading magic, just set `extra.font` to `'none'`:
+
+``` yaml
+extra:
+  font: 'none'
 ```
 
 ### Adding a GitHub and Twitter account
@@ -114,9 +141,8 @@ extra:
 
 ### More advanced customization
 
-If you want to change the fonts or colors - you are lucky. The Material theme
-is built with a sophisticated asset pipeline. See
-[this article](customization.md) for more information on advanced
+If you want to change the colors or general appearance of the Material theme,
+see [this article](customization.md) for more information on advanced
 customization.
 
 ## Extensions
@@ -170,7 +196,7 @@ In order to add a note, use the following syntax inside your article:
     Nothing to see here, move along.
 ```
 
-This will print the following:
+This will print the following block:
 
 !!! note
     Nothing to see here, move along.
@@ -209,6 +235,9 @@ theme: 'material'
 extra:
   version: '0.1.0'
   logo: 'images/logo.png'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
   author:
     github: 'my-github-handle'
     twitter: 'my-twitter-handle'
@@ -222,8 +251,11 @@ markdown_extensions:
 ```
 
 [MkDocs]: http://www.mkdocs.org
+[Ubuntu font family]: http://font.ubuntu.com
+[Google Fonts]: https://www.google.com/fonts
+[Roboto font]: https://www.google.com/fonts/specimen/Roboto
 [Markdown extensions]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-[highlight.js]: https://highlightjs.org/
+[highlight.js]: https://highlightjs.org
 [extra]: http://www.mkdocs.org/user-guide/styling-your-docs/#customising-a-theme
 [permalinks]: https://en.wikipedia.org/wiki/Permalink
 [Admonition]: https://pythonhosted.org/Markdown/extensions/admonition.html
