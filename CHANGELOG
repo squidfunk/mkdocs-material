@@ -1,3 +1,7 @@
+mkdocs-material-0.x.x (2016-xx-xx)
+
+  * Fixed #2: Ordered lists within an unordered list have ::before content
+
 mkdocs-material-0.1.2 (2016-02-16)
 
   * Fixed styles for deep navigational hierarchies

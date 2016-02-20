@@ -150,6 +150,13 @@
   }
 
   /*
+   * Smaler top spacing for nested lists
+   */
+  li ul, li ol {
+    margin-top: 0.75em;
+  }
+
+  /*
    * List elements
    */
   li {
@@ -167,7 +174,7 @@
   /*
    * Add icon for elements of an unordered list
    */
-  ul li:before {
+  ul > li:before {
     content: "\e602";
     display: block;
     float: left;
