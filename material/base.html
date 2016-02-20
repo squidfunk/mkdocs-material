@@ -77,6 +77,7 @@
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
+    <script src="{{ base_url }}/assets/javascripts/modernizr-4ab42b99fd.js"></script>
     {% block extrahead %}{% endblock %}
   </head>
   <body>
@@ -137,7 +138,6 @@
         </div>
       </div>
     </main>
-    <script src="{{ base_url }}/assets/javascripts/modernizr-4ab42b99fd.js"></script>
     <script>
       var base_url = '{{ base_url }}';
       var repo_id  = '{{ repo_id }}';

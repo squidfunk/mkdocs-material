@@ -114,6 +114,9 @@
       <link rel="stylesheet" type="text/css" href="{{ path }}" />
     {% endfor %}
 
+    <!-- Modernizr -->
+    <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+
     <!-- Custom header -->
     {% block extrahead %}{% endblock %}
   </head>
@@ -214,9 +217,6 @@
         </div>
       </div>
     </main>
-
-    <!-- Modernizr -->
-    <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
 
     <!-- Theme-related and custom javascripts -->
     <script>
