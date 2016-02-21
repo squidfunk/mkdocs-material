@@ -2,6 +2,7 @@ mkdocs-material-0.x.x (2016-xx-xx)
 
   * Fixed #3: Ordered lists within an unordered list have ::before content
   * Fixed #4: Click on Logo/Title without Github-Repository: "None"
+  * Fixed #5: Page without headlines renders empty list in table of contents
   * Moved Modernizr to top to ensure basic usability in IE8
 
 mkdocs-material-0.1.2 (2016-02-16)

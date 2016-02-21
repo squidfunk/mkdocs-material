@@ -13,25 +13,21 @@
       {{ nav_item.title }}
     </a>
     {% if nav_item == current_page %}
-      <ul>
-        {% for toc_item in toc %}
-          {% if h1 %}
-            {% for toc_item in toc_item.children %}
-              <li class="anchor">
-                <a title="{{ toc_item.title }}" href="{{ toc_item.url }}">
-                  {{ toc_item.title }}
-                </a>
-              </li>
-            {% endfor %}
-          {% else %}
-          <li class="anchor">
-            <a title="{{ toc_item.title }}" href="{{ toc_item.url }}">
-              {{ toc_item.title }}
-            </a>
-          </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+      {% if h1 %}
+        {% set toc_item = toc | first %}
+        {% set toc = toc_item.children %}
+      {% endif %}
+      {% if toc %}
+        <ul>
+          {% for toc_item in toc %}
+            <li class="anchor">
+              <a title="{{ toc_item.title }}" href="{{ toc_item.url }}">
+                {{ toc_item.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
     {% endif %}
   </li>
 {% endif %}
