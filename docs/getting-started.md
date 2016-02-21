@@ -202,10 +202,17 @@ This will print the following block:
     Nothing to see here, move along.
 
 The Material template adds a neutral color for the `note` class and a red color
-for the `warning` class.
+for the `warning` class. You can also add a custom title:
 
-!!! warning
-    You shall not pass.
+``` markdown
+!!! warning "Don't try this at home"
+    If you do, you will regret it.
+```
+
+This will print:
+
+!!! warning "Don't try this at home"
+    If you do, you will regret it.
 
 More colors can be freely defined.
 
