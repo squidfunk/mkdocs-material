@@ -502,24 +502,26 @@ document.addEventListener('DOMContentLoaded', function() {
  * ------------------------------------------------------------------------- */
 
   /* Get Stars for current repository */
-  pegasus('https://api.github.com/repos/' + repo_id).then(
+  if (repo_id) {
+    pegasus('https://api.github.com/repos/' + repo_id).then(
 
-    /* Request successful, we got the stars */
-    function(data, xhr) {
-      var count = data.stargazers_count;
-      if (count > 10000)
-        count = (count / 1000).toFixed(0) + 'k';
-      else if (count > 1000)
-        count = (count / 1000).toFixed(1) + 'k';
+      /* Request successful, we got the stars */
+      function(data, xhr) {
+        var count = data.stargazers_count;
+        if (count > 10000)
+          count = (count / 1000).toFixed(0) + 'k';
+        else if (count > 1000)
+          count = (count / 1000).toFixed(1) + 'k';
 
-      /* Set number of stars */
-      var stars = document.querySelector('.repo-stars .count');
-      stars.innerHTML = count;
-    },
+        /* Set number of stars */
+        var stars = document.querySelector('.repo-stars .count');
+        stars.innerHTML = count;
+      },
 
-    /* Handle error */
-    function(data, xhr) {
-      console.error(data, xhr.status);
-    }
-  );
+      /* Handle error */
+      function(data, xhr) {
+        console.error(data, xhr.status);
+      }
+    );
+  }
 });

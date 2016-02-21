@@ -1,5 +1,6 @@
 <nav aria-label="Navigation">
-  <a href="{{ repo_url }}" class="project">
+  {% set home = repo_url | default('/', true) %}
+  <a href="{{ home }}" class="project">
     <div class="banner">
       {% if config.extra.logo %}
         <div class="logo">
@@ -17,7 +18,7 @@
   </a>
   <div class="scrollable">
     <div class="wrapper">
-      {% if repo_name == 'GitHub' %}
+      {% if repo_name == 'GitHub' and repo_url %}
         <ul class="repo">
           <li class="repo-download">
             {% set version = config.extra.version | default('master') %}

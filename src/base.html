@@ -127,7 +127,7 @@
       regular expressions out-of-the-box. Since there might be a slash at the
       end of the repository name, we just do a string comparison and kill it.
     -->
-    {% if repo_name == 'GitHub' %}
+    {% if repo_name == 'GitHub' and repo_url %}
       {% set repo_id = repo_url | replace('https://github.com/', '') %}
       {% if repo_id[-1:] == '/' %}
         {% set repo_id = repo_id[:-1] %}
