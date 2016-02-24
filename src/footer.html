@@ -7,7 +7,7 @@
       {% if previous_page %}
         <a href="{{ previous_page.url }}" title="{{ previous_page.title }}">
           <span class="direction">
-            {{ config.extra.get("i18n", {}).prev | default("Prev") }}
+            {{ config.extra.get("i18n", {}).prev | default("Previous") }}
           </span>
           <div class="page">
             <div class="button button-previous"

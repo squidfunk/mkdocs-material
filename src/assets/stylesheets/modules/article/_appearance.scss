@@ -76,6 +76,7 @@
    */
   .headerlink {
     color: $black-lighter;
+    border: none;
   }
 
   /*
@@ -123,6 +124,13 @@
 .footer {
   background: $primary;
   color: $white;
+
+  /*
+   * Remove bottom border on links
+   */
+  a {
+    border: none;
+  }
 }
 
 /*
