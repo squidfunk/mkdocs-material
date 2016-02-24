@@ -74,14 +74,14 @@
   }
 
   /*
-   * Nested links
+   * Nested links and anchors
    */
   .toc li ul {
     margin-left: 12px;
   }
 
   /*
-   *
+   * Nested anchors
    */
   .current + ul {
     margin-bottom: 9px;

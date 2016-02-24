@@ -54,6 +54,9 @@
       }
     </style>
     <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-eaf860cca2.css">
+    {% if config.extra.palette %}
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/palettes-05ab2406df.css">
+    {% endif %}
     {% if config.extra.font != "none" %}
       {% set text = config.extra.get("font", {}).text | default("Ubuntu") %}
       {% set code = config.extra.get("font", {}).code | default("Ubuntu Mono") %}
@@ -74,7 +77,10 @@
     <script src="{{ base_url }}/assets/javascripts/modernizr-4ab42b99fd.js"></script>
     {% block extrahead %}{% endblock %}
   </head>
-  <body>
+  {% set palette = config.extra.get("palette", {}) %}
+  {% set primary = palette.primary | replace(' ', '-') | lower %}
+  {% set accent  = palette.accent  | replace(' ', '-') | lower %}
+  <body class="{% if primary %}palette-primary-{{ primary }}{% endif %} {% if accent %}palette-accent-{{ accent }}{% endif %}">
     {% if repo_name == "GitHub" and repo_url %}
       {% set repo_id = repo_url | replace("https://github.com/", "") %}
       {% if repo_id[-1:] == "/" %}

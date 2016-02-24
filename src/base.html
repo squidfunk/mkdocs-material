@@ -86,6 +86,12 @@
     <link rel="stylesheet" type="text/css"
       href="{{ base_url }}/assets/stylesheets/application.css" />
 
+    <!-- Extra palettes -->
+    {% if config.extra.palette %}
+      <link rel="stylesheet" type="text/css"
+        href="{{ base_url }}/assets/stylesheets/palettes.css" />
+    {% endif %}
+
     <!-- Configure webfonts -->
     {% if config.extra.font != "none" %}
       {% set text = config.extra.get("font", {}).text | default("Ubuntu") %}
@@ -114,7 +120,15 @@
     <!-- Custom header -->
     {% block extrahead %}{% endblock %}
   </head>
-  <body>
+
+  <!-- Define palette -->
+  {% set palette = config.extra.get("palette", {}) %}
+  {% set primary = palette.primary | replace(' ', '-') | lower %}
+  {% set accent  = palette.accent  | replace(' ', '-') | lower %}
+  <body class="
+    {% if primary %}palette-primary-{{ primary }}{% endif %}
+    {% if accent %}palette-accent-{{ accent }}{% endif %}
+  ">
 
     <!--
       Sadly the jinja template engine is not very flexible - it doesn't support
