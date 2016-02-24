@@ -1,4 +1,4 @@
-mkdocs-material-0.2.0 (2016-xx-xx)
+mkdocs-material-0.2.0 (2016-02-24)
 
   * Fixed #6: Include multiple color palettes via mkdocs.yml
   * Fixed #7: Better colors for links inside admonition notes and warnings

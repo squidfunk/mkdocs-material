@@ -36,17 +36,11 @@ theme_dir: material
 
 # Options
 extra:
-  version: 0.1.3
+  version: 0.2.0
   logo: images/logo.png
-  font:
-    text: Ubuntu
-    code: Ubuntu Mono
   author:
     github: squidfunk
     twitter: squidfunk
-  i18n:
-    prev: Prev
-    next: Next
 
 # Extensions
 markdown_extensions:
