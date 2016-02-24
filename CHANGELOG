@@ -1,6 +1,7 @@
 mkdocs-material-0.2.0 (2016-xx-xx)
 
   * Fixed #6: Include multiple color palettes via mkdocs.yml
+  * Fixed #7: Better colors for links inside admonition notes and warnings
   * Fixed #9: Text for prev/next footer navigation should be customizable
   * Refactored templates (replaced if/else with modifiers where possible)
 

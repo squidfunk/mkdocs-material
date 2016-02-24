@@ -58,10 +58,16 @@
   }
 
   /*
+   * Underline links
+   */
+  a {
+    border-bottom: 1px dotted;
+  }
+
+  /*
    * Hovered and focused links
    */
-  a:hover,
-  a:focus {
+  a:hover, a:focus {
     color: $accent;
   }
 
@@ -165,5 +171,12 @@
    */
   &.warning {
     background: $red-400;
+  }
+
+  /*
+   * Headlines, chapters, links and inline code
+   */
+  a, a:hover {
+    color: $white;
   }
 }
