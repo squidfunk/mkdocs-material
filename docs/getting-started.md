@@ -4,11 +4,11 @@
 
 ### Installing MkDocs
 
-In order to install [MkDocs][], Python and `pip` – the Python package manager –
-need to be up and running. Assuming you are a developer and have a basic
-understanding of how things work and what StackOverflow is, we won't provide
-guidelines on setting those up. You can verify if you're already good to go
-with the following commands:
+Before installing [MkDocs][], you need to make sure you have Python and `pip`
+– the Python package manager – up and running. Assuming you are a developer and
+have a basic understanding of how things work and what StackOverflow is, we
+won't provide guidelines on setting those up. You can verify if you're already
+good to go with the following commands:
 
 ``` sh
 python --version
@@ -103,6 +103,31 @@ extra:
   logo: 'images/logo.png'
 ```
 
+### Changing the color palette
+
+Material defines a default hue for every primary and accent color on Google's
+material design [color palette][]. This makes it very easy to change the
+overall look of the theme. Just set the variables `extra.palette.primary` and
+`extra.palette.accent` to one of the colors defined in the palette:
+
+``` yaml
+extra:
+  palette:
+    primary: 'indigo'
+    accent: 'light blue'
+```
+
+Color names can be written upper- or lowercase but must match the names of the
+material design [color palette][]. Valid values are: _red_, _pink_, _purple_,
+_deep purple_, _indigo_, _blue_, _light blue_, _cyan_, _teal_, _green_, _light
+green_, _lime_, _yellow_, _amber_, _orange_, _deep orange_, _brown_, _grey_ and
+_blue grey_. The last three colors can only be used as a primary color.
+
+If the color is set via this configuration, an additional CSS file called
+`palettes.css` is included that defines the color palettes. If you want to
+keep things lean, clone the repository and recompile the theme with your
+custom colors set. See [this article](customization.md) for more information.
+
 ### Changing the font family
 
 Material uses the [Ubuntu font family][] by default, specifically the regular
@@ -117,13 +142,26 @@ extra:
     code: 'Roboto Mono'
 ```
 
-The text font will be loaded in font-weights 400 and 700, the monospaced font
-in regular weight. If you want to load fonts from other destinations or don't
-want to use the Google Fonts loading magic, just set `extra.font` to `'none'`:
+The text font will be loaded in font-weights 400 and **700**, the monospaced
+font in regular weight. If you want to load fonts from other destinations or
+don't want to use the Google Fonts loading magic, just set `extra.font` to
+`'none'`:
 
 ``` yaml
 extra:
   font: 'none'
+```
+
+### Localization
+
+The **Previous** and **Next** labels in the footer can easily be changed by
+defining the variables `extra.i18n.prev` and `extra.i18n.next`:
+
+``` yaml
+extra:
+  i18n:
+    prev: 'Previous'
+    next: 'Next'
 ```
 
 ### Adding a GitHub and Twitter account
@@ -141,9 +179,8 @@ extra:
 
 ### More advanced customization
 
-If you want to change the colors or general appearance of the Material theme,
-see [this article](customization.md) for more information on advanced
-customization.
+If you want to change the general appearance of the Material theme, see
+[this article](customization.md) for more information on advanced customization.
 
 ## Extensions
 
@@ -242,9 +279,15 @@ theme: 'material'
 extra:
   version: '0.1.0'
   logo: 'images/logo.png'
+  palette:
+    primary: 'indigo'
+    accent: 'light blue'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
+  i18n:
+    prev: 'Previous'
+    next: 'Next'
   author:
     github: 'my-github-handle'
     twitter: 'my-twitter-handle'
@@ -258,6 +301,7 @@ markdown_extensions:
 ```
 
 [MkDocs]: http://www.mkdocs.org
+[color palette]: http://www.materialui.co/colors
 [Ubuntu font family]: http://font.ubuntu.com
 [Google Fonts]: https://www.google.com/fonts
 [Roboto font]: https://www.google.com/fonts/specimen/Roboto

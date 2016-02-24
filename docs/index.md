@@ -14,12 +14,26 @@ CSS that weighs less than 30kb (minified, gzipped and excluding Google Fonts
 and Analytics). Yet, it is highly customizable and degrades gracefully in older
 browsers.
 
+## Quick start
+
+Install with `pip`:
+
+``` sh
+pip install mkdocs-material
+```
+
+Add the following line to your `mkdocs.yml`:
+
+``` yaml
+theme: 'material'
+```
+
 ## Features
 
 - Beautiful, readable and very user-friendly design based on Google's material
   design guidelines, packed in a full responsive template with a well-defined
-  color palette, great typography, as well as a beautiful search interface and
-  footer.
+  and [easily customizable color palette][], great typography, as well as a
+  beautiful search interface and footer.
 
 - Well-tested and optimized Javascript and CSS including a cross-browser
   fixed/sticky header, a drawer that even works without Javascript using
@@ -34,7 +48,7 @@ browsers.
   built on-top of [Gulp][] with `npm` and `bower` and modular and abstracted
   style definitions built with [SASS][].
 
-- Web application capability on iOS - when the page is saved to the homescreen,
+- Web application capability on iOS – when the page is saved to the homescreen,
   it behaves and looks like a native application.
 
 See the [getting started guide](getting-started.md) for instructions how to get
@@ -44,6 +58,7 @@ it up and running.
 [material design]: https://www.google.com/design/spec/material-design
 [checkbox hack]: http://tutorialzine.com/2015/08/quick-tip-css-only-dropdowns-with-the-checkbox-hack/
 [project logo]: getting-started.md#adding-a-logo
+[easily customizable color palette]: getting-started.md#changing-the-color-palette
 [GitHub and Twitter accounts]: getting-started.md#adding-a-github-and-twitter-account
 [extendable and customizable]: customization.md
 [Gulp]: http://gulpjs.com
