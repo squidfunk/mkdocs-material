@@ -34,7 +34,7 @@
     {% if config.extra.logo %}
       <link rel="apple-touch-icon" href="{{ base_url }}/{{ config.extra.logo }}">
     {% endif %}
-    {% set icon = icon | default('assets/images/favicon-e565ddfa3b.ico') %}
+    {% set icon = icon | default("assets/images/favicon-e565ddfa3b.ico") %}
     <link rel="shortcut icon" type="image/x-icon" href="{{ base_url }}/{{ icon }}">
     <link rel="icon" type="image/x-icon" href="{{ base_url }}/{{ icon }}">
     <style>
@@ -54,15 +54,9 @@
       }
     </style>
     <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-eaf860cca2.css">
-    {% if config.extra.font != 'none' %}
-      {% set text = 'Ubuntu' %}
-      {% if config.extra.font and config.extra.font.text %}
-        {% set text = config.extra.font.text %}
-      {% endif %}
-      {% set code = 'Ubuntu Mono' %}
-      {% if config.extra.font and config.extra.font.code %}
-        {% set code = config.extra.font.code %}
-      {% endif %}
+    {% if config.extra.font != "none" %}
+      {% set text = config.extra.get("font", {}).text | default("Ubuntu") %}
+      {% set code = config.extra.get("font", {}).code | default("Ubuntu Mono") %}
       {% set font = text + ':400,700|' + code | replace(' ', '+') %}
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ font }}">
       <style>
@@ -81,9 +75,9 @@
     {% block extrahead %}{% endblock %}
   </head>
   <body>
-    {% if repo_name == 'GitHub' and repo_url %}
-      {% set repo_id = repo_url | replace('https://github.com/', '') %}
-      {% if repo_id[-1:] == '/' %}
+    {% if repo_name == "GitHub" and repo_url %}
+      {% set repo_id = repo_url | replace("https://github.com/", "") %}
+      {% if repo_id[-1:] == "/" %}
         {% set repo_id = repo_id[:-1] %}
       {% endif %}
     {% endif %}
@@ -104,11 +98,7 @@
       <article class="article">
         <div class="wrapper">
           {% if not h1 %}
-            {% if page_title %}
-              <h1>{{ page_title }}</h1>
-            {% else %}
-              <h1>{{ site_name }}</h1>
-            {% endif %}
+            <h1>{{ page_title | default(site_name, true)}}</h1>
           {% endif %}
           {{ content }}
           <aside class="copyright" role="note">

@@ -6,7 +6,9 @@
     <div class="previous">
       {% if previous_page %}
         <a href="{{ previous_page.url }}" title="{{ previous_page.title }}">
-          <span class="direction">Previous</span>
+          <span class="direction">
+            {{ config.extra.get("i18n", {}).prev | default("Prev") }}
+          </span>
           <div class="page">
             <div class="button button-previous"
               role="button" aria-label="Previous">
@@ -26,7 +28,9 @@
     <div class="next">
       {% if next_page %}
         <a href="{{ next_page.url }}" title="{{ next_page.title }}">
-          <span class="direction">Next</span>
+          <span class="direction">
+            {{ config.extra.get("i18n", {}).next | default("Next") }}
+          </span>
           <div class="page">
             <div class="stretch">
               <div class="title">

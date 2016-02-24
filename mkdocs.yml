@@ -44,13 +44,16 @@ extra:
   author:
     github: squidfunk
     twitter: squidfunk
+  i18n:
+    prev: Prev
+    next: Next
 
 # Extensions
 markdown_extensions:
   - codehilite(css_class=code)
   - admonition
   - toc:
-      permalink: ¶
+      permalink: '#'
 
 # Page tree
 pages:

@@ -6,7 +6,7 @@
 
       <!-- Render pages of section -->
       {% for nav_item in nav_item.children %}
-        {% include 'nav.html' %}
+        {% include "nav.html" %}
       {% endfor %}
     </ul>
   </li>
@@ -29,8 +29,7 @@
         with the children of the anchor.
       -->
       {% if h1 %}
-        {% set toc_item = toc | first %}
-        {% set toc = toc_item.children %}
+        {% set toc = (toc | first).children %}
       {% endif %}
 
       <!-- Render anchors of active page -->

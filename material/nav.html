@@ -3,7 +3,7 @@
     <span class="section">{{ nav_item.title }}</span>
     <ul>
       {% for nav_item in nav_item.children %}
-        {% include 'nav.html' %}
+        {% include "nav.html" %}
       {% endfor %}
     </ul>
   </li>
@@ -14,8 +14,7 @@
     </a>
     {% if nav_item == current_page %}
       {% if h1 %}
-        {% set toc_item = toc | first %}
-        {% set toc = toc_item.children %}
+        {% set toc = (toc | first).children %}
       {% endif %}
       {% if toc %}
         <ul>

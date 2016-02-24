@@ -1,5 +1,5 @@
 <nav aria-label="Navigation">
-  {% set home = repo_url | default('/', true) %}
+  {% set home = repo_url | default("/", true) %}
   <a href="{{ home }}" class="project">
     <div class="banner">
       {% if config.extra.logo %}
@@ -18,17 +18,17 @@
   </a>
   <div class="scrollable">
     <div class="wrapper">
-      {% if repo_name == 'GitHub' and repo_url %}
+      {% if repo_name == "GitHub" and repo_url %}
         <ul class="repo">
           <li class="repo-download">
-            {% set version = config.extra.version | default('master') %}
-            <a href="{{ repo_url }}/archive/{{ version }}.zip" target="_blank" title="Download {{ site_name }} from GitHub" data-action="download">
+            {% set version = config.extra.version | default("master") %}
+            <a href="{{ repo_url }}/archive/{{ version }}.zip" target="_blank" title="Download" data-action="download">
               <i class="icon icon-download"></i> Download
             </a>
           </li>
           <li class="repo-stars">
-            <a href="{{ repo_url }}" target="_blank" title="Star {{ site_name }} on GitHub" data-action="star">
-              <i class="icon icon-star"></i> Star
+            <a href="{{ repo_url }}/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
               <span class="count">&ndash;</span>
             </a>
           </li>

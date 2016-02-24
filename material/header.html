@@ -19,21 +19,19 @@
             {% endfor %}
           </span>
         {% endif %}
-        {% if page_title %}
-          {{ page_title }}
-        {% else %}
-          {{ site_name }}
-        {% endif %}
+        {{ page_title | default(site_name, true) }}
       </div>
     </div>
-    {% if config.extra.author and config.extra.author.twitter %}
+    {% if config.extra.get("author", {}).twitter %}
+      {% set author = config.extra.author.twitter %}
       <div class="button button-twitter" role="button" aria-label="Twitter">
-        <a href="https://twitter.com/{{ config.extra.author.twitter }}" title="@{{ config.extra.author.twitter }} on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+        <a href="https://twitter.com/{{ author }}" title="@{{ author }} on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
       </div>
     {% endif %}
-    {% if config.extra.author and config.extra.author.github %}
+    {% if config.extra.get("author", {}).github %}
+      {% set author = config.extra.author.github %}
       <div class="button button-github" role="button" aria-label="GitHub">
-        <a href="https://github.com/{{ config.extra.author.github }}" title="@{{ config.extra.author.github }} on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+        <a href="https://github.com/{{ author }}" title="@{{ author }} on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
       </div>
     {% endif %}
     <div class="button button-search" role="button" aria-label="Search">
