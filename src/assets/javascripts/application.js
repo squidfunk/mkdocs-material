@@ -373,6 +373,9 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('keyup', function(e) {
     var code = e.keyCode || e.which;
     if (code == 27) {
+      query.blur();
+
+      /* Exit locked state */
       document.body.classList.remove('toggle-search');
       document.body.classList.remove('locked');
       toggle.checked = false;

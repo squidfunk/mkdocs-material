@@ -1,3 +1,9 @@
+mkdocs-material-0.x.x (2016-xx-xx)
+
+  In progress
+
+  * Fixed #10: Invisible header after closing search bar with ESC key
+
 mkdocs-material-0.2.0 (2016-02-24)
 
   * Fixed #6: Include multiple color palettes via mkdocs.yml
