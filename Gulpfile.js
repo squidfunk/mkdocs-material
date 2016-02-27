@@ -254,7 +254,7 @@ gulp.task('assets:watch', function() {
 
   /* Copy static assets */
   gulp.watch([
-    'assets/assets/{fonts,images}/*'
+    'src/assets/{fonts,images}/*'
   ], ['assets:static']);
 
   /* Minify views */
