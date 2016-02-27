@@ -3,6 +3,8 @@ mkdocs-material-0.x.x (2016-xx-xx)
   In progress
 
   * Fixed #10: Invisible header after closing search bar with ESC key
+  * Corrected wrong path for static asset monitoring in Gulpfile.js
+  * Set up tracking of site search for Google Analytics
 
 mkdocs-material-0.2.0 (2016-02-24)
 

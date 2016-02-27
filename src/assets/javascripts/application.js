@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             /* Close search and jump to anchor when on same page */
             var parts = link.href.split('#');
-            if (parts[0] == window.location.href.split('#')[0]) {
+            if (parts[0] == document.location.href.split('#')[0]) {
               link.addEventListener('click', function(e) {
                 document.body.classList.remove('toggle-search');
                 document.body.classList.remove('locked');
