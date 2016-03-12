@@ -179,6 +179,19 @@ extra:
     twitter: 'my-twitter-handle'
 ```
 
+### Google Analytics integration
+
+Material makes it easy to integrate site tracking with Google Analytics.
+Besides basic tracking, clicks on all outgoing links can be tracked, clicks on
+the download and star button, as well as how site search is used. Tracking can
+be activated in your project's `mkdocs.yml`:
+
+``` yaml
+google_analytics:
+  - 'UA-XXXXXXXX-X'
+  - 'auto'
+```
+
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
@@ -293,6 +306,11 @@ extra:
   author:
     github: 'my-github-handle'
     twitter: 'my-twitter-handle'
+
+# Google Analytics
+google_analytics:
+  - 'UA-XXXXXXXX-X'
+  - 'auto'
 
 # Extensions
 markdown_extensions:

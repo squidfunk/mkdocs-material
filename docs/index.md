@@ -41,8 +41,8 @@ theme: 'material'
   the screen is too small and well-defined print styles.
 
 - Extra configuration options like a [project logo][], links to the authors
-  [GitHub and Twitter accounts][] and display of the amount of stars the
-  project has on GitHub.
+  [GitHub and Twitter accounts][], display of the amount of stars the
+  project has on GitHub and [Google Analytics integration][].
 
 - Easily [extendable and customizable][] due to a well-designed asset pipeline
   built on-top of [Gulp][] with `npm` and `bower` and modular and abstracted
@@ -60,6 +60,7 @@ it up and running.
 [project logo]: getting-started.md#adding-a-logo
 [easily customizable color palette]: getting-started.md#changing-the-color-palette
 [GitHub and Twitter accounts]: getting-started.md#adding-a-github-and-twitter-account
+[Google Analytics integration]: getting-started.md#google-analytics-integration
 [extendable and customizable]: customization.md
 [Gulp]: http://gulpjs.com
 [SASS]: http://sass-lang.com
