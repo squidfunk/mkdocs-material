@@ -2,6 +2,7 @@ mkdocs-material-0.2.1 (2016-03-12)
 
   * Fixed #10: Invisible header after closing search bar with ESC key
   * Fixed #13: Table cells don't wrap
+  * Fixed empty list in table of contents when no headline is defined
   * Corrected wrong path for static asset monitoring in Gulpfile.js
   * Set up tracking of site search for Google Analytics
 

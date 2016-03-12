@@ -33,7 +33,7 @@
       {% endif %}
 
       <!-- Render anchors of active page -->
-      {% if toc %}
+      {% if toc and (toc | first) %}
         <ul>
           {% for toc_item in toc %}
 

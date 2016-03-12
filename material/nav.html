@@ -16,7 +16,7 @@
       {% if h1 %}
         {% set toc = (toc | first).children %}
       {% endif %}
-      {% if toc %}
+      {% if toc and (toc | first) %}
         <ul>
           {% for toc_item in toc %}
             <li class="anchor">
