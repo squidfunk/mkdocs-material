@@ -58,11 +58,11 @@
     {% endif %}
 
     <!-- Favicon -->
-    {% set icon = icon | default("assets/images/favicon.ico") %}
+    {% set favicon = favicon | default("assets/images/favicon.ico") %}
     <link rel="shortcut icon" type="image/x-icon"
-      href="{{ base_url }}/{{ icon }}" />
+      href="{{ base_url }}/{{ favicon }}" />
     <link rel="icon" type="image/x-icon"
-      href="{{ base_url }}/{{ icon }}" />
+      href="{{ base_url }}/{{ favicon }}" />
 
     <!-- Configure icons (placed here to omit issues with subdirectories) -->
     <style>

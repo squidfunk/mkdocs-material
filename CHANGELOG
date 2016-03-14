@@ -1,3 +1,7 @@
+mkdocs-material-0.x.x (2016-xx-xx)
+
+  * Fixed #16: Favicon could not be set through mkdocs.yml
+
 mkdocs-material-0.2.1 (2016-03-12)
 
   * Fixed #10: Invisible header after closing search bar with ESC key
