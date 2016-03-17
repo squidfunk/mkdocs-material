@@ -8,7 +8,7 @@
         </div>
       {% endif %}
       <div class="name">
-        <strong>{{ site_name }} {{ config.extra.version }}</strong>
+        <strong>{{ site_name }} <span class="version">{{ config.extra.version }}</span></strong>
         {% if repo_id %}
           <br>
           {{ repo_id }}
