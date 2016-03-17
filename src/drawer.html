@@ -17,7 +17,12 @@
 
       <!-- Project name and verison -->
       <div class="name">
-        <strong>{{ site_name }} {{ config.extra.version }}</strong>
+        <strong>
+          {{ site_name }}
+          <span class="version">
+            {{ config.extra.version }}
+          </span>
+        </strong>
 
         <!-- Project repository name -->
         {% if repo_id %}
