@@ -205,8 +205,9 @@ have to switch them on explicitly.
 
 ### CodeHilite (recommended)
 
-This extensions adds code highlighting to fenced code blocks. It might not be
-the best code highlighter, but it works without JavaScript and on the server:
+This extensions uses [Pygments][] (install with `pip install pygments`) to add
+code highlighting to fenced code blocks. It might not be the best code
+highlighter, but it works without JavaScript and on the server:
 
 ``` yaml
 markdown_extensions:
@@ -220,12 +221,12 @@ further instructions
 ### Permalinks
 
 In order to add [permalinks][] to the headers of your article, set the
-`markdown_extensions.toc.permalink` variable to a symbol, e.g. `¶`:
+`markdown_extensions.toc.permalink` variable to a symbol, e.g. `#`:
 
 ``` yaml
 markdown_extensions:
   - toc:
-    permalink: '¶'
+    permalink: '#'
 ```
 
 The symbol can be chosen freely, it can even be a WebFont icon.
@@ -317,7 +318,7 @@ markdown_extensions:
   - codehilite(css_class=code)
   - admonition
   - toc:
-      permalink: '¶'
+      permalink: '#'
 ```
 
 [MkDocs]: http://www.mkdocs.org
@@ -326,6 +327,7 @@ markdown_extensions:
 [Google Fonts]: https://www.google.com/fonts
 [Roboto font]: https://www.google.com/fonts/specimen/Roboto
 [Markdown extensions]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+[Pygments]: http://pygments.org
 [highlight.js]: https://highlightjs.org
 [extra]: http://www.mkdocs.org/user-guide/styling-your-docs/#customising-a-theme
 [permalinks]: https://en.wikipedia.org/wiki/Permalink
