@@ -93,20 +93,6 @@
     th {
       background: mix($primary, $white, 75%);
       color: $white;
-
-      /*
-       * Round upper left border
-       */
-      &:first-child {
-        border-top-left-radius: 3px;
-      }
-
-      /*
-       * Round upper right border
-       */
-      &:last-child {
-        border-top-right-radius: 3px;
-      }
     }
 
     /*
