@@ -93,20 +93,6 @@
     th {
       background: mix($primary, $white, 75%);
       color: $white;
-
-      /*
-       * Round upper left border
-       */
-      &:first-child {
-        border-top-left-radius: 3px;
-      }
-
-      /*
-       * Round upper right border
-       */
-      &:last-child {
-        border-top-right-radius: 3px;
-      }
     }
 
     /*
@@ -114,6 +100,46 @@
      */
     td {
       border-top: 1px solid rgba($black, 0.05);
+    }
+
+    /*
+     * First and last line round borders
+     */
+    tr {
+      &:first-child {
+        th {
+          /*
+           * Round upper left border
+           */
+          &:first-child {
+            border-top-left-radius: 3px;
+          }
+
+          /*
+           * Round upper right border
+           */
+          &:last-child {
+            border-top-right-radius: 3px;
+          }
+        }
+      }
+      &:last-child {
+        th {
+          /*
+           * Round upper left border
+           */
+          &:first-child {
+            border-bottom-left-radius: 3px;
+          }
+
+          /*
+           * Round upper right border
+           */
+          &:last-child {
+            border-bottom-right-radius: 3px;
+          }
+        }
+      }
     }
   }
 }
