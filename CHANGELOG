@@ -1,8 +1,9 @@
-mkdocs-material-0.x.x (2016-xx-xx)
+mkdocs-material-0.2.2 (2016-03-20)
 
   * Fixed #15: Document pygments dependency for codehilite
   * Fixed #16: Favicon could not be set through mkdocs.yml
   * Fixed #17: Put version into own container for styling
+  * Fixed #20: Fix rounded borders for tables
 
 mkdocs-material-0.2.1 (2016-03-12)
 
