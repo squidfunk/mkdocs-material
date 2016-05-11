@@ -1,3 +1,8 @@
+mkdocs-material-0.2.3 (2016-XX-XX)
+
+  * Fixed #25: Highlight inline fenced blocks
+  * Fixed #30: Suboptimal syntax highlighting for PHP
+
 mkdocs-material-0.2.2 (2016-03-20)
 
   * Fixed #15: Document pygments dependency for codehilite

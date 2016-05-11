@@ -55,8 +55,22 @@ pre {
 /*
  * Types and functions
  */
-.kt, .kd, .n.f {
+.kt, .kd {
   color: #0086B3;
+}
+
+/*
+ * Function definition
+ */
+.nf, .n.f {
+  color: #795da3;
+}
+
+/*
+ * Classes
+ */
+.nx {
+  color: #0086b3;
 }
 
 /*
