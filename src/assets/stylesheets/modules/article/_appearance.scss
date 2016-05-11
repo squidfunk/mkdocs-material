@@ -46,8 +46,15 @@
   /*
    * Headlines, chapters, links and inline code
    */
-  h1, h2, a, code {
+  h1, h2, a {
     color: $primary;
+  }
+
+  /*
+   * Inline code
+   */
+  code {
+    background: #eee;
   }
 
   /*
