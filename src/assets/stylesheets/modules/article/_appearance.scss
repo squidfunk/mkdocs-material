@@ -58,6 +58,18 @@
   }
 
   /*
+   * Keyboard tags
+   */
+  kbd {
+    color: #555;
+    background-color: #fcfcfc;
+    border: solid 1px #ccc;
+    border-bottom-color: #bbb;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 #bbb;
+  }
+
+  /*
    * Lower border for main headline
    */
   h1 {

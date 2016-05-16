@@ -194,6 +194,15 @@
   }
 
   /*
+   * Keyboard tags
+   */
+  kbd {
+    display: inline-block;
+    padding: 3px 5px;
+    line-height: 10px;
+  }
+
+  /*
    * Add spacing at top of separator
    */
   hr {
