@@ -1,6 +1,7 @@
-mkdocs-material-0.2.3 (2016-XX-XX)
+mkdocs-material-0.2.3 (2016-05-16)
 
   * Fixed #25: Highlight inline fenced blocks
+  * Fixed #26: Better highlighting for keystrokes
   * Fixed #30: Suboptimal syntax highlighting for PHP
 
 mkdocs-material-0.2.2 (2016-03-20)
