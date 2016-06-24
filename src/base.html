@@ -58,7 +58,7 @@
     {% endif %}
 
     <!-- Favicon -->
-    {% set favicon = favicon | default("assets/images/favicon.ico") %}
+    {% set favicon = favicon | default("assets/images/favicon.ico", true) %}
     <link rel="shortcut icon" type="image/x-icon"
       href="{{ base_url }}/{{ favicon }}" />
     <link rel="icon" type="image/x-icon"
