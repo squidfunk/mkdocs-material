@@ -61,7 +61,7 @@
       {% set text = config.extra.get("font", {}).text | default("Ubuntu") %}
       {% set code = config.extra.get("font", {}).code | default("Ubuntu Mono") %}
       {% set font = text + ':400,700|' + code | replace(' ', '+') %}
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ font }}">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">
       <style>
         body, input {
           font-family: '{{ text }}', Helvetica, Arial, sans-serif;
@@ -74,7 +74,7 @@
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
-    <script src="{{ base_url }}/assets/javascripts/modernizr-d41d8cd98f.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/modernizr-4ab42b99fd.js"></script>
     {% block extrahead %}{% endblock %}
   </head>
   {% set palette = config.extra.get("palette", {}) %}
@@ -151,7 +151,7 @@
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
           m.parentNode.insertBefore(a,m)
         })(window, document,
-          'script', '//www.google-analytics.com/analytics.js', 'ga');
+          'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         /* General initialization */
         ga('create', '{{ google_analytics[0] }}', '{{ google_analytics[1] }}');
         ga('set', 'anonymizeIp', true);

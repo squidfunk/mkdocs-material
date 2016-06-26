@@ -1,6 +1,7 @@
 mkdocs-material-0.2.4 (2016-06-xx)
 
   * Fixed improperly set set default favicon
+  * Fixed #33: Protocol relative URL for webfonts doesn't work with file://
   * Fixed #34: IE11 on Windows 7 doesn't honor max-width on main tag
 
 mkdocs-material-0.2.3 (2016-05-16)

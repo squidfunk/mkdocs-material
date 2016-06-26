@@ -98,7 +98,7 @@
       {% set code = config.extra.get("font", {}).code | default("Ubuntu Mono") %}
       {% set font = text + ':400,700|' + code | replace(' ', '+') %}
       <link rel="stylesheet" type="text/css"
-        href="//fonts.googleapis.com/css?family={{ font }}" />
+        href="https://fonts.googleapis.com/css?family={{ font }}" />
       <style>
         body, input {
           font-family: '{{ text }}', Helvetica, Arial, sans-serif;
@@ -241,7 +241,7 @@
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
           m.parentNode.insertBefore(a,m)
         })(window, document,
-          'script', '//www.google-analytics.com/analytics.js', 'ga');
+          'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
         /* General initialization */
         ga('create', '{{ google_analytics[0] }}', '{{ google_analytics[1] }}');
