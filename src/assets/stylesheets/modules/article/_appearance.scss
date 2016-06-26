@@ -121,6 +121,14 @@
       border-top: 1px solid rgba($black, 0.05);
     }
   }
+
+  /*
+   * Blockquote styles
+   */
+  blockquote {
+    border-left: 2px solid $black-light;
+    color: $black-light;
+  }
 }
 
 /*
