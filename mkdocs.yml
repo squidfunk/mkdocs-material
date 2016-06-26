@@ -36,7 +36,7 @@ theme_dir: material
 
 # Options
 extra:
-  version: 0.2.3
+  version: 0.2.4
   logo: images/logo.png
   author:
     github: squidfunk

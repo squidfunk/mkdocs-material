@@ -1,7 +1,6 @@
 # Material
 
 [![Travis CI][travis-image]][travis-link]
-[![PyPI Downloads][pypi-dl-image]][pypi-dl-link]
 [![PyPI Version][pypi-v-image]][pypi-v-link]
 
 A material design theme for [MkDocs](http://www.mkdocs.org).
@@ -51,7 +50,5 @@ IN THE SOFTWARE.
 
 [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg
 [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
-[pypi-dl-image]: https://img.shields.io/pypi/dm/mkdocs-material.png
-[pypi-dl-link]: https://pypi.python.org/pypi/mkdocs-material
 [pypi-v-image]: https://img.shields.io/pypi/v/mkdocs-material.png
 [pypi-v-link]: https://pypi.python.org/pypi/mkdocs-material
