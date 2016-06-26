@@ -73,6 +73,14 @@ time, mark, audio, video {
 }
 
 /*
+ * Enforce correct rendering of main element - missing in user agent stylesheet
+ * of IE11 on Windows 7.
+ */
+main {
+  display: block;
+}
+
+/*
  * Reset list styles
  */
 ul {
