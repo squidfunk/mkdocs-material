@@ -41,11 +41,19 @@
       {% if repo_name == "GitHub" and repo_url %}
         <ul class="repo">
           <li class="repo-download">
-            {% set version = config.extra.version | default("master") %}
-            <a href="{{ repo_url }}/archive/{{ version }}.zip" target="_blank"
-              title="Download" data-action="download">
-              <i class="icon icon-download"></i> Download
-            </a>
+            {% if config.extra.github.download_release %}
+              {% set version = config.extra.version | default("../latest") %}
+              <a href="{{ repo_url }}/releases/tag/{{ version }}" target="_blank"
+                title="Download" data-action="download">
+                <i class="icon icon-download"></i> Download
+              </a>
+            {% else %}
+              {% set version = config.extra.version | default("master") %}
+              <a href="{{ repo_url }}/archive/{{ version }}.zip" target="_blank"
+                title="Download" data-action="download">
+                <i class="icon icon-download"></i> Download
+              </a>
+            {% endif %}
           </li>
           <li class="repo-stars">
             <a href="{{ repo_url }}/stargazers" target="_blank"
