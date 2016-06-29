@@ -26,7 +26,7 @@
       {% if repo_name == "GitHub" and repo_url %}
         <ul class="repo">
           <li class="repo-download">
-            {% if config.extra.github.download_release %}
+            {% if config.extra.github and config.extra.github.download_release %}
               {% set version = config.extra.version | default("../latest") %}
               <a href="{{ repo_url }}/releases/tag/{{ version }}" target="_blank" title="Download" data-action="download">
                 <i class="icon icon-download"></i> Download
