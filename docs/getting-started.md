@@ -103,6 +103,25 @@ extra:
   logo: 'images/logo.png'
 ```
 
+### Link to GitHub releases page
+
+If your project has a GitHub url configured, the default behavior is that a
+downlink button is displayed, linking to the source download of the given
+`extra.version` or `master` branch. To link to the releases page instead,
+set `extra.github.download_release` to `true`. It will link to the release of
+the given `extra.version` or when no `extra.version` is given, the latest
+release:
+
+``` yaml
+repo_name: GitHub
+repo_url: https://github.com/squidfunk/mkdocs-material
+
+extra:
+  github:
+    download_release: true
+```
+
+
 ### Changing the color palette
 
 Material defines a default hue for every primary and accent color on Google's
