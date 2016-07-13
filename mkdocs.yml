@@ -24,9 +24,7 @@ site_description: Documentation for Arcadia Analytics
 site_author: 
 site_url: http://docs.arcadiaanalytics.com
 
-# Repository
-repo_name: GitHub
-repo_url: https://github.com/arcadia/analytics-doc
+
 
 # Copyright
 copyright: Copyright (c) 2016 Arcadia Healthcare Solutions

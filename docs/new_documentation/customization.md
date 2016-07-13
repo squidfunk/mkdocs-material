@@ -1,3 +1,9 @@
+Status: Client-Ready
+Author: Luke Shulman
+CreateDate: 2015-07-10
+ModifyDate: 2016-04-22
+AAVersion: 4.10
+
 # Customization
 
 ## A good starting point

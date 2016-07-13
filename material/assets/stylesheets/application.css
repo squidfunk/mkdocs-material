@@ -1127,6 +1127,11 @@ pre, code, kbd {
   text-overflow: ellipsis;
   color: #757575; }
 
+.sechead {
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87); }
+
 .ullist {
   height: auto;
   margin: 0;

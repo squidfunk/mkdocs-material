@@ -5,7 +5,7 @@
     <div class='section'>
     <a href="{{ '#hide' + cnt_item }}" class="{% if not nav_item.active %}hide{% endif %}" id="{{ 'hide' + cnt_item }}">+ </a>
     <a href="{{ '#show' + cnt_item }}" class="show" id="{{ 'show' + cnt_item }}">-</a>
-    <span>{{ nav_item.title }} </span>
+    <span class="sechead">{{ nav_item.title }} </span>
     <ul class="{% if not nav_item.active %}list {% else %} ullist{% endif %}">
 
       <!-- Render pages of section -->

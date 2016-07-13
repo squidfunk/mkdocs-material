@@ -85,6 +85,8 @@
     <!-- Theme-related stylesheets -->
     <link rel="stylesheet" type="text/css"
       href="{{ base_url }}/assets/stylesheets/application.css" />
+    <!-- Font Awesome Custom Embed -->
+    <script src="https://use.fontawesome.com/0645c09032.js"></script>
 
     <!-- Extra palettes -->
     {% if config.extra.palette %}
@@ -185,6 +187,11 @@
           {% endif %}
 
           <!-- Article content -->
+          {% if 'status' in meta %}
+            <div class='arcadia-status'>
+              <i class="fa fa-exclamation-circle"></i>
+              </div>
+          {% endif %}
           {{ content }}
 
           <!-- Copyright and theme information -->
