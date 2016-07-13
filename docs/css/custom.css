@@ -16,7 +16,7 @@
     display: none; 
 }
 
-.hide:target > .list {
+.hide:target ~ ul {
     display:inline; 
 }
 
