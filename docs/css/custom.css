@@ -1,0 +1,45 @@
+.list {
+    display:none; 
+    height:auto;
+    margin:0;
+    float: left;
+}
+.show {
+    display: none;
+
+}
+
+.hide:target + .show {
+    display: inline; 
+}
+.hide:target {
+    display: none; 
+}
+
+.hide:target > .list {
+    display:inline; 
+}
+
+/*style the (+) and (-) */
+.hide, .show {
+
+}
+
+.hide:hover, .show:hover {
+	color: #eee;
+	text-shadow: 0 0 1px #666;
+
+
+.list p{
+    height:auto;
+    margin:0;
+}
+.question {
+	float: left;
+	height: auto;
+	width: 90%;
+	line-height: 20px;
+	padding-left: 20px;
+	margin-bottom: 25px;
+	font-style: italic;
+}

@@ -1,15 +1,23 @@
 {% if nav_item.children %}
   <li>
-    <span class="section">{{ nav_item.title }}</span>
+    <div class="section">
+    <a href="#hide1" class="hide" id="hide1">+</a>
+    <a href="#show1" class="show" id="show1">-</a>
+    {{ nav_item.title }}
+    </div>
+    <div class="list">
     <ul>
       {% for nav_item in nav_item.children %}
+
         {% include "nav.html" %}
+
       {% endfor %}
     </ul>
+    </div>
   </li>
 {% else %}
   <li>
-    <a class="{% if nav_item.active %}current{% endif %}" title="{{ nav_item.title }}" href="{{ nav_item.url }}">
+    <a class="{% if nav_item.active %}current{% endif %} section" title="{{ nav_item.title }}" href="{{ nav_item.url }}">
       {{ nav_item.title }}
     </a>
     {% if nav_item == current_page %}

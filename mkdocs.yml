@@ -33,6 +33,7 @@ copyright: Copyright (c) 2016 Martin Donath
 
 # Documentation and theme
 theme_dir: material
+extra_css: ['css/custom.css']
 
 # Options
 extra:
@@ -52,8 +53,8 @@ markdown_extensions:
       permalink: '#'
 
 # Page tree
-pages:
-  - Material: index.md
-  - Getting started: getting-started.md
-  - Customization: customization.md
-  - License: license.md
+# pages:
+#   - Material: index.md
+#   - Getting started: getting-started.md
+#   - Customization: customization.md
+#   - License: license.md
