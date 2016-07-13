@@ -3,7 +3,29 @@
     height:auto;
     margin:0;
     float: left;
+    margin-left: 12px;
+	padding: 10px 24px 10px 12px;
+	font-weight: 400;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #757575;
 }
+
+
+.ullist {
+    height:auto;
+    margin:0;
+    float: left;
+    margin-left: 12px;
+	padding: 10px 24px 10px 12px;
+	font-weight: 400;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #757575;
+}
+
 .show {
     display: none;
 

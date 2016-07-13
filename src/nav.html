@@ -1,11 +1,12 @@
 <!-- Render sections -->
 {% if nav_item.children %}
+
   <li>
     <div class='section'>
-    <a href="#hide1" class="{% if not nav_item.active %}hide{% endif %}" id="hide1">+ </a>
-    <a href="#show1" class="show" id="show1">-</a>
+    <a href="{{ '#hide' + cnt_item }}" class="{% if not nav_item.active %}hide{% endif %}" id="{{ 'hide' + cnt_item }}">+ </a>
+    <a href="{{ '#show' + cnt_item }}" class="show" id="{{ 'show' + cnt_item }}">-</a>
     {{ nav_item.title }} 
-    <ul class="{% if not nav_item.active %}list{% endif %}">
+    <ul class="{% if not nav_item.active %}list {% else %} ullist{% endif %}">
 
       <!-- Render pages of section -->
       {% for nav_item in nav_item.children %}
@@ -38,7 +39,7 @@
 
       <!-- Render anchors of active page -->
       {% if toc and (toc | first) %}
-        <ul>
+        <ul class="ullist">
           {% for toc_item in toc %}
 
             <!-- Render anchor -->
