@@ -567,7 +567,7 @@ body {
    */ }
   @supports (-webkit-appearance: none) {
     body {
-      background: #e84e40; } }
+      background: #1565C0; } }
   .ios body {
     background: white; }
 
@@ -617,7 +617,7 @@ hr {
  */
 .header {
   box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.24), 0 3px 8px rgba(0, 0, 0, 0.05);
-  background: #e84e40;
+  background: #1565C0;
   color: white;
   /*
    * Add status bar overlay for iOS web application
@@ -1078,11 +1078,11 @@ pre, code, kbd {
      * Hovered link
      */ }
     .drawer .toc a.current {
-      color: #e84e40; }
+      color: #1565C0; }
     .drawer .toc a:hover, .drawer .toc a:focus {
-      color: #e84e40; }
+      color: #1565C0; }
   .drawer .anchor a {
-    border-left: 2px solid #e84e40; }
+    border-left: 2px solid #1565C0; }
   .drawer .section {
     color: rgba(0, 0, 0, 0.54); }
 
@@ -1109,11 +1109,77 @@ pre, code, kbd {
   .project:focus .logo img {
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.23), 0 8px 25px rgba(0, 0, 0, 0.05); }
 
+/* adds for hidiing
+
+
+
+*/
+.list {
+  display: none;
+  height: auto;
+  margin: 0;
+  float: left;
+  margin-left: 12px;
+  padding: 10px 24px 10px 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #757575; }
+
+.ullist {
+  height: auto;
+  margin: 0;
+  float: left;
+  margin-left: 12px;
+  padding: 10px 24px 10px 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #757575; }
+
+.show {
+  display: none; }
+
+.hide:target + .show {
+  display: inline; }
+
+.hide:target {
+  display: none; }
+
+.hide:target ~ ul {
+  display: inline; }
+
+li {
+  padding-bottom: 10px; }
+
+/* style the (+) and (-)  */
+.hide, .show {
+  padding-right: 3px !important; }
+
+.hide:hover, .show:hover {
+  color: #eee;
+  text-shadow: 0 0 1px #666; }
+
+.list p {
+  height: auto;
+  margin: 0; }
+
+.question {
+  float: left;
+  height: auto;
+  width: 90%;
+  line-height: 20px;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  font-style: italic; }
+
 /*
  * Repository buttons
  */
 .repo a {
-  background: #00bfa5;
+  background: #8bc34a;
   color: white;
   border-radius: 3px;
   /*
@@ -1520,14 +1586,14 @@ pre span {
    * Blockquote styles
    */ }
   .ios.standalone .article {
-    background: -webkit-linear-gradient(top, white 50%, #e84e40 50%);
-    background: linear-gradient(to bottom, white 50%, #e84e40 50%);
+    background: -webkit-linear-gradient(top, white 50%, #1565C0 50%);
+    background: linear-gradient(to bottom, white 50%, #1565C0 50%);
     /* Hack [iOS]: Mitigate black bounding box with linear gradient */ }
     .ios.standalone .article .wrapper {
       background: -webkit-linear-gradient(top, white 50%, white 50%);
       background: linear-gradient(to bottom, white 50%, white 50%); }
   .article h1, .article h2, .article a {
-    color: #e84e40; }
+    color: #1565C0; }
   .article code {
     background: #eee; }
   .article kbd {
@@ -1542,7 +1608,7 @@ pre span {
   .article a {
     border-bottom: 1px dotted; }
   .article a:hover, .article a:focus {
-    color: #00bfa5; }
+    color: #8bc34a; }
   .article .headerlink {
     color: rgba(0, 0, 0, 0.26);
     border: none; }
@@ -1556,7 +1622,7 @@ pre span {
      * Table cell
      */ }
     .article table th {
-      background: #ee7a70;
+      background: #508cd0;
       color: white; }
     .article table td {
       border-top: 1px solid rgba(0, 0, 0, 0.05); }
@@ -1568,7 +1634,7 @@ pre span {
  * Article footer
  */
 .footer {
-  background: #e84e40;
+  background: #1565C0;
   color: white;
   /*
    * Remove bottom border on links
@@ -2237,7 +2303,7 @@ pre span {
   .toggle-search .results {
     opacity: 1; }
   .results .meta {
-    background: #e84e40;
+    background: #1565C0;
     color: white; }
   .results .list a {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -2561,7 +2627,7 @@ pre span {
     background: white; }
   .project {
     box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.24), 0 3px 8px rgba(0, 0, 0, 0.05);
-    background: #e84e40;
+    background: #1565C0;
     color: white; }
   .drawer {
     position: fixed;
@@ -2744,4 +2810,4 @@ pre span {
        * Color header
        */ }
   .article table th {
-    color: #e84e40; } }
+    color: #1565C0; } }

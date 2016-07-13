@@ -1,11 +1,11 @@
 <!-- Render sections -->
 {% if nav_item.children %}
 
-  <li>
+  <li class="{% if nav_item.active %}current {% endif %}">
     <div class='section'>
     <a href="{{ '#hide' + cnt_item }}" class="{% if not nav_item.active %}hide{% endif %}" id="{{ 'hide' + cnt_item }}">+ </a>
     <a href="{{ '#show' + cnt_item }}" class="show" id="{{ 'show' + cnt_item }}">-</a>
-    {{ nav_item.title }} 
+    <span>{{ nav_item.title }} </span>
     <ul class="{% if not nav_item.active %}list {% else %} ullist{% endif %}">
 
       <!-- Render pages of section -->
@@ -18,7 +18,7 @@
 
 <!-- Render page link -->
 {% else %}
-  <li>
+  <li class="{% if nav_item.active %}current{% endif %}">
     <a class="{% if nav_item.active %}current{% endif %}"
       title="{{ nav_item.title }}" href="{{ nav_item.url }}" >
       {{ nav_item.title }}

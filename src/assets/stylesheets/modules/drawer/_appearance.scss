@@ -105,6 +105,85 @@
     @include drop-shadow(2);
   }
 }
+/* adds for hidiing
+
+
+
+*/
+.list {
+    display:none; 
+    height:auto;
+    margin:0;
+    float: left;
+    margin-left: 12px;
+  padding: 10px 24px 10px 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #757575;
+}
+
+
+.ullist {
+    height:auto;
+    margin:0;
+    float: left;
+    margin-left: 12px;
+  padding: 10px 24px 10px 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #757575;
+}
+
+.show {
+    display: none;
+
+}
+
+.hide:target + .show {
+    display: inline; 
+}
+
+.hide:target {
+    display: none; 
+}
+
+.hide:target ~ ul {
+    display:inline; 
+}
+
+li {
+  
+  padding-bottom: 10px;
+}
+
+/* style the (+) and (-)  */
+.hide, .show {
+  padding-right: 3px !important; 
+}
+
+.hide:hover, .show:hover {
+  color: #eee;
+  text-shadow: 0 0 1px #666; }
+
+
+.list p{
+    height:auto;
+    margin:0;
+}
+
+.question {
+  float: left;
+  height: auto;
+  width: 90%;
+  line-height: 20px;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  font-style: italic;
+}
 
 /*
  * Repository buttons

@@ -44,7 +44,7 @@
 
 /*style the (+) and (-) */
 .hide, .show {
-
+	padding-right: 3px;
 }
 
 .hide:hover, .show:hover {

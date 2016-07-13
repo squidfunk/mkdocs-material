@@ -69,8 +69,8 @@ For example, changing the color palette is as simple as changing the `$primary`
 and `$accent` variables in `src/assets/stylesheets/_palette.scss`:
 
 ``` css
-$primary: $red-400;
-$accent:  $teal-a700;
+$primary: $indigo-800;
+$accent:  $red-400;
 ```
 
 The color variables are defined by the SASS library [quantum-colors][] and
