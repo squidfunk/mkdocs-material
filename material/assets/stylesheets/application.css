@@ -578,6 +578,18 @@ hr {
   border: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.12); }
 
+/* Custom Arcadia */
+.arcadia-status {
+  text-align: center;
+  font-color: rgba(0, 0, 0, 0.54);
+  border-left: 6px solid #757575;
+  margin: auto;
+  width: 25%;
+  background-color: rgba(0, 0, 0, 0.12); }
+
+.arcadia-status i {
+  padding-right: 10px; }
+
 /*
  * Toggle button
  */
@@ -1784,7 +1796,7 @@ pre span {
     display: block;
     clear: both; }
   .article .wrapper {
-    padding: 116px 16px 92px;
+    padding: 116px 16px 92px 10px;
     /* [tablet portait+]: Increase top spacing */ }
   .ios.standalone .article {
     position: absolute;
@@ -2653,7 +2665,7 @@ pre span {
   .project .name {
     margin: 26px 0 0 5px; }
   .article .wrapper {
-    padding: 128px 24px 96px; }
+    padding: 128px 24px 96px 10px; }
   .article .data {
     margin: 1.5em -24px;/*
        * Data table

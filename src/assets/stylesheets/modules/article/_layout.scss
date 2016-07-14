@@ -49,11 +49,11 @@
    * Article wrapper
    */
   .wrapper {
-    padding: 116px 16px 92px;
+    padding: 116px 16px 92px 10px;
 
     /* [tablet portait+]: Increase top spacing */
     @include break-from-device(tablet portrait) {
-      padding: 128px 24px 96px;
+      padding: 128px 24px 96px 10px;
     }
   }
 

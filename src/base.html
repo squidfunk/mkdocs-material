@@ -187,18 +187,37 @@
           {% endif %}
 
           <!-- Article content -->
-          {% if 'status' in meta %}
-            <div class='arcadia-status'>
-              <i class="fa fa-exclamation-circle"></i>
-              </div>
-          {% endif %}
+  
           {{ content }}
+                  {% if 'status' in meta %}
+                    {% if meta['status'][0] == 'Development' %}
 
+            <div class='arcadia-status body'>
+              <i class="fa fa-exclamation-circle"> </i> Development: This is page is currently in development and subject to change based on feedback.
+              </div>
+
+              {% elif meta['status'][0] == 'Engineering-Feature-Dev' %}
+              <div class='arcadia-status body'>
+              <i class="fa fa-exclamation-circle"> </i> Feature-Dev: The Features on this page are currently under development and may not be availble until Version {{ meta['aaversion'][0]}} 
+              </div>
+              {% elif meta['status'][0] == 'Client-Ready' %}
+                 <div class='arcadia-status body'>
+              <i class="fa fa-exclamation-circle"> </i> Client-Ready: This page is client ready as of Version {{ meta['aaversion'][0]}} 
+              </div>
+              {% elif meta['status'][0] == 'Internal-Only' %}
+              <div class='arcadia-status body'>
+              <i class="fa fa-exclamation-circle"> </i> Internal-Only: This page should be used internal to Arcadia only.  
+              </div>
+              {% endif %}
+          {% endif %}
           <!-- Copyright and theme information -->
           <aside class="copyright" role="note">
             {% if copyright %}
               {{ copyright }} &ndash;
             {% endif %}
+                {% if 'createdate' in meta %}
+      <p>Page Created On {{ meta['createdate'][0] }}  and modified on {{ meta['modifydate'][0] }} by {{ meta['author'][0] }}</p>
+    {% endif %}
             Documentation built with
             <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
             using the
