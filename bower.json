@@ -21,7 +21,8 @@
     "fastclick": "^1.0.6",
     "lunr.js": "^0.6.0",
     "pegasus": "^0.3.2",
-    "respond": "^1.4.2"
+    "respond": "^1.4.2",
+    "jquery": "3.0.0"
   },
   "devDependencies": {
     "bourbon": "^4.2.6",

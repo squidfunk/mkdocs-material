@@ -119,6 +119,7 @@ gulp.task('assets:javascripts', function() {
     'bower_components/fastclick/lib/fastclick.js',
     'bower_components/pegasus/dist/pegasus.js',
     'bower_components/lunr.js/lunr.js',
+    'bower_components/jquery/dist/jquery.js',
 
     /* Application javascripts */
     'src/assets/javascripts/application.js',

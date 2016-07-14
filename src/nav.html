@@ -1,13 +1,12 @@
 <!-- Render sections -->
 {% if nav_item.children %}
 
-  <li class="{% if nav_item.active %}current {% endif %}">
-    <div class='section'>
-    <a href="{{ '#hide' + cnt_item  }}{% if cnt_sub_item %}{{ cnt_sub_item }}{% endif %}" class="{% if not nav_item.active %}hide{% endif %}" id="{{ 'hide' + cnt_item }}{% if cnt_sub_item %}{{ cnt_sub_item }}{% endif %}">+</a>
-    <a href="{{ '#show' + cnt_item }}{% if cnt_sub_item %}{{ cnt_sub_item }}{% endif %}" class="show" id="{{ 'show' + cnt_item }}{% if cnt_sub_item %}{{ cnt_sub_item }}{% endif %}">-</a>
-    <span class="sechead">{{ nav_item.title }} </span>
+  <li class="{% if nav_item.active %}current {% else %} collapse {% endif %}  {% if not sub_item %} sechead {% else %} section {% endif %}">
+  + {{ nav_item.title }} 
+    <div>
+     
 
-    <ul class="{% if not nav_item.active and not sub_item %}list {% if not nav_item.active and sub_item %}sublist{% else %}ullist{% endif %}">
+    <ul class="{% if not nav_item.active and not sub_item %}list {% elif not nav_item.active and sub_item %}sublist{% else %}ullist{% endif %}">
 
       <!-- Render pages of section -->
       {% for nav_item in nav_item.children %}
@@ -21,7 +20,7 @@
 
 <!-- Render page link -->
 {% else %}
-  <li class="{% if nav_item.active %}current{% endif %}">
+  <li class="{% if nav_item.active %}current{% endif %}minpage">
     <a class="{% if nav_item.active %}current{% endif %}"
       title="{{ nav_item.title }}" href="{{ nav_item.url }}" >
       {{ nav_item.title }}

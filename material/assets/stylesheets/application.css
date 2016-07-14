@@ -1127,7 +1127,7 @@ pre, code, kbd {
 
 */
 .list {
-  display: none;
+  display: block;
   height: auto;
   margin: 0;
   float: left;
@@ -1145,32 +1145,24 @@ pre, code, kbd {
   color: rgba(0, 0, 0, 0.87); }
 
 .ullist {
-  height: auto;
-  margin: 0;
-  float: left;
-  margin-left: 12px;
-  padding: 10px 24px 10px 12px;
-  font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #757575; }
+  padding-top: 10px; }
+
+.sublist {
+  padding-top: 10px; }
 
 .show {
-  display: none; }
-
-.hide:target + .show {
-  display: inline; }
-
-.hide:target {
-  display: none; }
-
-.hide:target ~ ul {
-  display: inline; }
-
-:target .hide ul {
   display: block; }
 
+.hide:target + .show {
+  display: block; }
+
+.hide:target {
+  display: block; }
+
+/*
+.hide:target ~ ul {
+    display:inline; 
+} */
 li {
   padding-bottom: 10px; }
 
