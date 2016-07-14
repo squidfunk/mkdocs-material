@@ -3,13 +3,16 @@
 
   <li class="{% if nav_item.active %}current {% endif %}">
     <div class='section'>
-    <a href="{{ '#hide' + cnt_item }}" class="{% if not nav_item.active %}hide{% endif %}" id="{{ 'hide' + cnt_item }}">+ </a>
-    <a href="{{ '#show' + cnt_item }}" class="show" id="{{ 'show' + cnt_item }}">-</a>
+    <a href="{{ '#hide' + cnt_item  }}{% if cnt_sub_item %}{{ cnt_sub_item }}{% endif %}" class="{% if not nav_item.active %}hide{% endif %}" id="{{ 'hide' + cnt_item }}{% if cnt_sub_item %}{{ cnt_sub_item }}{% endif %}">+</a>
+    <a href="{{ '#show' + cnt_item }}{% if cnt_sub_item %}{{ cnt_sub_item }}{% endif %}" class="show" id="{{ 'show' + cnt_item }}{% if cnt_sub_item %}{{ cnt_sub_item }}{% endif %}">-</a>
     <span class="sechead">{{ nav_item.title }} </span>
-    <ul class="{% if not nav_item.active %}list {% else %} ullist{% endif %}">
+
+    <ul class="{% if not nav_item.active and not sub_item %}list {% if not nav_item.active and sub_item %}sublist{% else %}ullist{% endif %}">
 
       <!-- Render pages of section -->
       {% for nav_item in nav_item.children %}
+        {% set cnt_sub_item = loop.index|string %}
+        {% set sub_item = True %}
         {% include "nav.html" %}
       {% endfor %}
     </ul>

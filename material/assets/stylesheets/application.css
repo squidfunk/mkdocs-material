@@ -1168,6 +1168,9 @@ pre, code, kbd {
 .hide:target ~ ul {
   display: inline; }
 
+:target .hide ul {
+  display: block; }
+
 li {
   padding-bottom: 10px; }
 
