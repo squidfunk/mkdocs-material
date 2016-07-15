@@ -1,54 +1,1 @@
-<nav aria-label="Header">
-  <div class="bar default">
-    <div class="button button-menu" role="button" aria-label="Menu">
-      <label class="toggle-button icon icon-menu" for="toggle-drawer">
-        <span></span>
-      </label>
-    </div>
-    <div class="stretch">
-      <div class="title">
-        {% if current_page %}
-          <span class="path">
-            {% for doc in current_page.ancestors %}
-              {% if doc.link %}
-                <a href="{{ doc.link | e }}">{{ doc.title }}</a>
-                <i class="icon icon-link"></i>
-              {% else %}
-                {{ doc.title }} <i class="icon icon-link"></i>
-              {% endif %}
-            {% endfor %}
-          </span>
-        {% endif %}
-        {{ page_title | default(site_name, true) }}
-      </div>
-    </div>
-    {% if config.extra.get("author", {}).twitter %}
-      {% set author = config.extra.author.twitter %}
-      <div class="button button-twitter" role="button" aria-label="Twitter">
-        <a href="https://twitter.com/{{ author }}" title="@{{ author }} on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
-      </div>
-    {% endif %}
-    {% if config.extra.get("author", {}).github %}
-      {% set author = config.extra.author.github %}
-      <div class="button button-github" role="button" aria-label="GitHub">
-        <a href="https://github.com/{{ author }}" title="@{{ author }} on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
-      </div>
-    {% endif %}
-    <div class="button button-search" role="button" aria-label="Search">
-      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
-    </div>
-  </div>
-  <div class="bar search">
-    <div class="button button-close" role="button" aria-label="Close">
-      <label class="toggle-button icon icon-back" for="toggle-search"></label>
-    </div>
-    <div class="stretch">
-      <div class="field">
-        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
-      </div>
-    </div>
-    <div class="button button-reset" role="button" aria-label="Search">
-      <button class="toggle-button icon icon-close" id="reset-search"></button>
-    </div>
-  </div>
-</nav>
+<nav aria-label="Header">  <div class="bar default">    <div class="button button-menu" role="button" aria-label="Menu">      <label class="toggle-button icon icon-menu" for="toggle-drawer">        <span></span>      </label>    </div>    <div class="stretch">      <div class="title">        {% if current_page %}          <span class="path">            {% for doc in current_page.ancestors %}              {% if doc.link %}                <a href="{{ doc.link | e }}">{{ doc.title }}</a>                <i class="icon icon-link"></i>              {% else %}                {{ doc.title }} <i class="icon icon-link"></i>              {% endif %}            {% endfor %}          </span>        {% endif %}        {{ page_title | default(site_name, true) }}      </div>    </div>    {% if config.extra.get("author", {}).twitter %}      {% set author = config.extra.author.twitter %}      <div class="button button-twitter" role="button" aria-label="Twitter">        <a href="https://twitter.com/{{ author }}" title="@{{ author }} on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>      </div>    {% endif %}    {% if config.extra.get("author", {}).github %}      {% set author = config.extra.author.github %}      <div class="button button-github" role="button" aria-label="GitHub">        <a href="https://github.com/{{ author }}" title="@{{ author }} on GitHub" target="_blank" class="toggle-button icon icon-github"></a>      </div>    {% endif %}    <div class="button button-search" role="button" aria-label="Search">      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>    </div>  </div>  <div class="bar search">    <div class="button button-close" role="button" aria-label="Close">      <label class="toggle-button icon icon-back" for="toggle-search"></label>    </div>    <div class="stretch">      <div class="field">        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">      </div>    </div>    <div class="button button-reset" role="button" aria-label="Search">      <button class="toggle-button icon icon-close" id="reset-search"></button>    </div>  </div></nav>

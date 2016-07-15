@@ -1,32 +1,1 @@
-{% if nav_item.children %}
-  <li>
-    <span class="section">{{ nav_item.title }}</span>
-    <ul>
-      {% for nav_item in nav_item.children %}
-        {% include "nav.html" %}
-      {% endfor %}
-    </ul>
-  </li>
-{% else %}
-  <li>
-    <a class="{% if nav_item.active %}current{% endif %}" title="{{ nav_item.title }}" href="{{ nav_item.url }}">
-      {{ nav_item.title }}
-    </a>
-    {% if nav_item == current_page %}
-      {% if h1 %}
-        {% set toc = (toc | first).children %}
-      {% endif %}
-      {% if toc and (toc | first) %}
-        <ul>
-          {% for toc_item in toc %}
-            <li class="anchor">
-              <a title="{{ toc_item.title }}" href="{{ toc_item.url }}">
-                {{ toc_item.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endif %}
-  </li>
-{% endif %}
+{% if nav_item.children %}  <li class="{% if nav_item.active %}current {% else %} collapse {% endif %} {% if not sub_item %} sechead {% else %} section {% endif %}">  + {{ nav_item.title }}     <div>    <ul class="{% if not nav_item.active and not sub_item %}list {% elif not nav_item.active and sub_item %}sublist{% else %}ullist{% endif %}">      {% for nav_item in nav_item.children %}        {% set cnt_sub_item = loop.index|string %}        {% set sub_item = True %}        {% include "nav.html" %}      {% endfor %}    </ul>  </div>  </li>{% else %}  <li class="{% if nav_item.active %}current{% endif %} minpage">    <a class="{% if nav_item.active %}current{% endif %}" title="{{ nav_item.title }}" href="{{ nav_item.url }}">      {{ nav_item.title }}    </a>    {% if nav_item == current_page %}      {% if h1 %}        {% set toc = (toc | first).children %}      {% endif %}      {% if toc and (toc | first) %}        <ul class="ullist">          {% for toc_item in toc %}            <li class="anchor">              <a title="{{ toc_item.title }}" href="{{ toc_item.url }}">                {{ toc_item.title }}              </a>            </li>          {% endfor %}        </ul>      {% endif %}    {% endif %}  </li>{% endif %}

@@ -1,19 +1,26 @@
 <!-- Render sections -->
 {% if nav_item.children %}
-  <li>
-    <span class="section">{{ nav_item.title }}</span>
-    <ul>
+
+  <li class="{% if nav_item.active %}current {% else %} collapse {% endif %}  {% if not sub_item %} sechead {% else %} section {% endif %}">
+  + {{ nav_item.title }} 
+    <div>
+     
+
+    <ul class="{% if not nav_item.active and not sub_item %}list {% elif not nav_item.active and sub_item %}sublist{% else %}ullist{% endif %}">
 
       <!-- Render pages of section -->
       {% for nav_item in nav_item.children %}
+        {% set cnt_sub_item = loop.index|string %}
+        {% set sub_item = True %}
         {% include "nav.html" %}
       {% endfor %}
     </ul>
+  </div>
   </li>
 
 <!-- Render page link -->
 {% else %}
-  <li>
+  <li class="{% if nav_item.active %}current{% endif %}minpage">
     <a class="{% if nav_item.active %}current{% endif %}"
       title="{{ nav_item.title }}" href="{{ nav_item.url }}" >
       {{ nav_item.title }}
@@ -34,7 +41,7 @@
 
       <!-- Render anchors of active page -->
       {% if toc and (toc | first) %}
-        <ul>
+        <ul class="ullist">
           {% for toc_item in toc %}
 
             <!-- Render anchor -->

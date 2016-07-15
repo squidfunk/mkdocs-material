@@ -1,180 +1,1 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
-<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
-<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
-<!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
-    {% block htmltitle %}
-      {% if page_title %}
-        <title>{{ page_title }} - {{ site_name }}</title>
-      {% elif page_description %}
-        <title>{{ site_name }} - {{ page_description }}</title>
-      {% else %}
-        <title>{{ site_name }}</title>
-      {% endif %}
-      {% if page_description %}
-        <meta name="description" content="{{ page_description }}">
-      {% endif %}
-      {% if canonical_url %}
-        <link rel="canonical" href="{{ canonical_url }}">
-      {% endif %}
-      {% if site_author %}
-        <meta name="author" content="{{ site_author }}">
-      {% endif %}
-    {% endblock %}
-    <meta property="og:url" content="{{ canonical_url }}">
-    <meta property="og:title" content="{{ site_name }}">
-    <meta property="og:image" content="{{ canonical_url }}/{{ base_url }}/{{ config.extra.logo }}">
-    <meta name="apple-mobile-web-app-title" content="{{ site_name }}">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    {% if config.extra.logo %}
-      <link rel="apple-touch-icon" href="{{ base_url }}/{{ config.extra.logo }}">
-    {% endif %}
-    {% set favicon = favicon | default("assets/images/favicon-e565ddfa3b.ico", true) %}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ base_url }}/{{ favicon }}">
-    <link rel="icon" type="image/x-icon" href="{{ base_url }}/{{ favicon }}">
-    <style>
-      @font-face {
-      	font-family: 'Icon';
-      	src: url('{{ base_url }}/assets/fonts/icon.eot?52m981');
-      	src: url('{{ base_url }}/assets/fonts/icon.eot?#iefix52m981')
-               format('embedded-opentype'),
-      		   url('{{ base_url }}/assets/fonts/icon.woff?52m981')
-               format('woff'),
-      		   url('{{ base_url }}/assets/fonts/icon.ttf?52m981')
-               format('truetype'),
-      		   url('{{ base_url }}/assets/fonts/icon.svg?52m981#icon')
-               format('svg');
-      	font-weight: normal;
-      	font-style: normal;
-      }
-    </style>
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-a422ff04cc.css">
-    {% if config.extra.palette %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/palettes-05ab2406df.css">
-    {% endif %}
-    {% if config.extra.font != "none" %}
-      {% set text = config.extra.get("font", {}).text | default("Ubuntu") %}
-      {% set code = config.extra.get("font", {}).code | default("Ubuntu Mono") %}
-      {% set font = text + ':400,700|' + code | replace(' ', '+') %}
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">
-      <style>
-        body, input {
-          font-family: '{{ text }}', Helvetica, Arial, sans-serif;
-        }
-        pre, code {
-          font-family: '{{ code }}', 'Courier New', 'Courier', monospace;
-        }
-      </style>
-    {% endif %}
-    {% for path in extra_css %}
-      <link rel="stylesheet" href="{{ path }}">
-    {% endfor %}
-    <script src="{{ base_url }}/assets/javascripts/modernizr-4ab42b99fd.js"></script>
-    {% block extrahead %}{% endblock %}
-  </head>
-  {% set palette = config.extra.get("palette", {}) %}
-  {% set primary = palette.primary | replace(' ', '-') | lower %}
-  {% set accent  = palette.accent  | replace(' ', '-') | lower %}
-  <body class="{% if primary %}palette-primary-{{ primary }}{% endif %} {% if accent %}palette-accent-{{ accent }}{% endif %}">
-    {% if repo_name == "GitHub" and repo_url %}
-      {% set repo_id = repo_url | replace("https://github.com/", "") %}
-      {% if repo_id[-1:] == "/" %}
-        {% set repo_id = repo_id[:-1] %}
-      {% endif %}
-    {% endif %}
-    <div class="backdrop">
-      <div class="backdrop-paper"></div>
-    </div>
-    <input class="toggle" type="checkbox" id="toggle-drawer">
-    <input class="toggle" type="checkbox" id="toggle-search">
-    <label class="toggle-button overlay" for="toggle-drawer"></label>
-    <header class="header">
-      {% include "header.html" %}
-    </header>
-    <main class="main">
-      {% set h1 = "\x3ch1 id=" in content %}
-      <div class="drawer">
-        {% include "drawer.html" %}
-      </div>
-      <article class="article">
-        <div class="wrapper">
-          {% if not h1 %}
-            <h1>{{ page_title | default(site_name, true)}}</h1>
-          {% endif %}
-          {{ content }}
-          <aside class="copyright" role="note">
-            {% if copyright %}
-              {{ copyright }} &ndash;
-            {% endif %}
-            Documentation built with
-            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
-            using the
-            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
-              Material
-            </a>
-            theme.
-          </aside>
-          {% block footer %}
-            <footer class="footer">
-              {% include "footer.html" %}
-            </footer>
-          {% endblock %}
-        </div>
-      </article>
-      <div class="results" role="status" aria-live="polite">
-        <div class="scrollable">
-          <div class="wrapper">
-            <div class="meta"></div>
-            <div class="list"></div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <script>
-      var base_url = '{{ base_url }}';
-      var repo_id  = '{{ repo_id }}';
-    </script>
-    <script src="{{ base_url }}/assets/javascripts/application-997097ee0c.js"></script>
-    {% for path in extra_javascript %}
-      <script src="{{ path }}"></script>
-    {% endfor %}
-    {% if google_analytics %}
-      <script>
-        (function(i,s,o,g,r,a,m){
-          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
-          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
-          m.parentNode.insertBefore(a,m)
-        })(window, document,
-          'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-        /* General initialization */
-        ga('create', '{{ google_analytics[0] }}', '{{ google_analytics[1] }}');
-        ga('set', 'anonymizeIp', true);
-        ga('send', 'pageview');
-        /* Track outbound links */
-        var buttons = document.querySelectorAll('a');
-        Array.prototype.map.call(buttons, function(item) {
-          if (item.host != document.location.host) {
-            item.addEventListener('click', function() {
-              var action = item.getAttribute('data-action') || 'follow';
-              ga('send', 'event', 'outbound', action, item.href);
-            });
-          }
-        });
-        /* Register handler to log search on blur */
-        var query = document.querySelector('.query');
-        query.addEventListener('blur', function() {
-          if (this.value) {
-            var path = document.location.pathname;
-            ga('send', 'pageview', path + '?q=' + this.value);
-          }
-        });
-      </script>
-    {% endif %}
-  </body>
-</html>
+<!DOCTYPE html><!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]--><!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]--><!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]--><!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->  <head>    <meta charset="utf-8">    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">    {% block htmltitle %}      {% if page_title %}        <title>{{ page_title }} - {{ site_name }}</title>      {% elif page_description %}        <title>{{ site_name }} - {{ page_description }}</title>      {% else %}        <title>{{ site_name }}</title>      {% endif %}      {% if page_description %}        <meta name="description" content="{{ page_description }}">      {% endif %}      {% if canonical_url %}        <link rel="canonical" href="{{ canonical_url }}">      {% endif %}      {% if site_author %}        <meta name="author" content="{{ site_author }}">      {% endif %}    {% endblock %}    <meta property="og:url" content="{{ canonical_url }}">    <meta property="og:title" content="{{ site_name }}">    <meta property="og:image" content="{{ canonical_url }}/{{ base_url }}/{{ config.extra.logo }}">    <meta name="apple-mobile-web-app-title" content="{{ site_name }}">    <meta name="apple-mobile-web-app-capable" content="yes">    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">    {% if config.extra.logo %}      <link rel="apple-touch-icon" href="{{ base_url }}/{{ config.extra.logo }}">    {% endif %}    {% set favicon = favicon | default("assets/images/favicon.ico", true) %}    <link rel="shortcut icon" type="image/x-icon" href="{{ base_url }}/{{ favicon }}">    <link rel="icon" type="image/x-icon" href="{{ base_url }}/{{ favicon }}">    <style>      @font-face {      	font-family: 'Icon';      	src: url('{{ base_url }}/assets/fonts/icon.eot?52m981');      	src: url('{{ base_url }}/assets/fonts/icon.eot?#iefix52m981')               format('embedded-opentype'),      		   url('{{ base_url }}/assets/fonts/icon.woff?52m981')               format('woff'),      		   url('{{ base_url }}/assets/fonts/icon.ttf?52m981')               format('truetype'),      		   url('{{ base_url }}/assets/fonts/icon.svg?52m981#icon')               format('svg');      	font-weight: normal;      	font-style: normal;      }    </style>    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">    <script src="https://use.fontawesome.com/0645c09032.js"></script>    {% if config.extra.palette %}      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/palettes.css">    {% endif %}    {% if config.extra.font != "none" %}      {% set text = config.extra.get("font", {}).text | default("Ubuntu") %}      {% set code = config.extra.get("font", {}).code | default("Ubuntu Mono") %}      {% set font = text + ':400,700|' + code | replace(' ', '+') %}      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">      <style>        body, input {          font-family: '{{ text }}', Helvetica, Arial, sans-serif;        }        pre, code {          font-family: '{{ code }}', 'Courier New', 'Courier', monospace;        }      </style>    {% endif %}    {% for path in extra_css %}      <link rel="stylesheet" href="{{ path }}">    {% endfor %}    <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>    {% block extrahead %}{% endblock %}  </head>  {% set palette = config.extra.get("palette", {}) %}  {% set primary = palette.primary | replace(' ', '-') | lower %}  {% set accent  = palette.accent  | replace(' ', '-') | lower %}  <body class="{% if primary %}palette-primary-{{ primary }}{% endif %} {% if accent %}palette-accent-{{ accent }}{% endif %}">    {% if repo_name == "GitHub" and repo_url %}      {% set repo_id = repo_url | replace("https://github.com/", "") %}      {% if repo_id[-1:] == "/" %}        {% set repo_id = repo_id[:-1] %}      {% endif %}    {% endif %}    <div class="backdrop">      <div class="backdrop-paper"></div>    </div>    <input class="toggle" type="checkbox" id="toggle-drawer">    <input class="toggle" type="checkbox" id="toggle-search">    <label class="toggle-button overlay" for="toggle-drawer"></label>    <header class="header">      {% include "header.html" %}    </header>    <main class="main">      {% set h1 = "\x3ch1 id=" in content %}      <div class="drawer">        {% include "drawer.html" %}      </div>      <article class="article">        <div class="wrapper">          {% if not h1 %}            <h1>{{ page_title | default(site_name, true)}}</h1>          {% endif %}          {{ content }}                  {% if 'status' in meta %}                    {% if meta['status'][0] == 'Development' %}            <div class="arcadia-status body">              <i class="fa fa-exclamation-circle"> </i> Development: This is page is currently in development and subject to change based on feedback.              </div>              {% elif meta['status'][0] == 'Engineering-Feature-Dev' %}              <div class="arcadia-status body">              <i class="fa fa-exclamation-circle"> </i> Feature-Dev: The Features on this page are currently under development and may not be availble until Version {{ meta['aaversion'][0]}}               </div>              {% elif meta['status'][0] == 'Client-Ready' %}                 <div class="arcadia-status body">              <i class="fa fa-exclamation-circle"> </i> Client-Ready: This page is client ready as of Version {{ meta['aaversion'][0]}}               </div>              {% elif meta['status'][0] == 'Internal-Only' %}              <div class="arcadia-status body">              <i class="fa fa-exclamation-circle"> </i> Internal-Only: This page should be used internal to Arcadia only.                </div>              {% endif %}          {% endif %}          <aside class="copyright" role="note">            {% if copyright %}              {{ copyright }} &ndash;            {% endif %}                {% if 'createdate' in meta %}      <p>Page Created On {{ meta['createdate'][0] }}  and modified on {{ meta['modifydate'][0] }} by {{ meta['author'][0] }}</p>    {% endif %}            Documentation built with            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>            using the            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">              Material            </a>            theme.          </aside>          {% block footer %}            <footer class="footer">              {% include "footer.html" %}            </footer>          {% endblock %}        </div>      </article>      <div class="results" role="status" aria-live="polite">        <div class="scrollable">          <div class="wrapper">            <div class="meta"></div>            <div class="list"></div>          </div>        </div>      </div>    </main>    <script>      var base_url = '{{ base_url }}';      var repo_id  = '{{ repo_id }}';    </script>    <script src="{{ base_url }}/assets/javascripts/application.js"></script>    {% for path in extra_javascript %}      <script src="{{ path }}"></script>    {% endfor %}    {% if google_analytics %}      <script>        (function(i,s,o,g,r,a,m){          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;          m.parentNode.insertBefore(a,m)        })(window, document,          'script', 'https://www.google-analytics.com/analytics.js', 'ga');        /* General initialization */        ga('create', '{{ google_analytics[0] }}', '{{ google_analytics[1] }}');        ga('set', 'anonymizeIp', true);        ga('send', 'pageview');        /* Track outbound links */        var buttons = document.querySelectorAll('a');        Array.prototype.map.call(buttons, function(item) {          if (item.host != document.location.host) {            item.addEventListener('click', function() {              var action = item.getAttribute('data-action') || 'follow';              ga('send', 'event', 'outbound', action, item.href);            });          }        });        /* Register handler to log search on blur */        var query = document.querySelector('.query');        query.addEventListener('blur', function() {          if (this.value) {            var path = document.location.pathname;            ga('send', 'pageview', path + '?q=' + this.value);          }        });      </script>    {% endif %}  </body></html>

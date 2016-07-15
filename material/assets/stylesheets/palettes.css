@@ -1,1 +1,1852 @@
-@supports (-webkit-appearance:none){.palette-primary-red{background:#e84e40}}.palette-primary-red .footer,.palette-primary-red .header{background:#e84e40}.palette-primary-red .drawer .toc a.current,.palette-primary-red .drawer .toc a:focus,.palette-primary-red .drawer .toc a:hover{color:#e84e40}.palette-primary-red .drawer .anchor a{border-left:2px solid #e84e40}.ios.standalone .palette-primary-red .article{background:-webkit-linear-gradient(top,#fff 50%,#e84e40 0);background:linear-gradient(180deg,#fff 50%,#e84e40 0)}.palette-primary-red .article a,.palette-primary-red .article code,.palette-primary-red .article h1,.palette-primary-red .article h2{color:#e84e40}.palette-primary-red .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-red .article table th{background:#ee7a70}.palette-primary-red .results .meta{background:#e84e40}@supports (-webkit-appearance:none){.palette-primary-pink{background:#e91e63}}.palette-primary-pink .footer,.palette-primary-pink .header{background:#e91e63}.palette-primary-pink .drawer .toc a.current,.palette-primary-pink .drawer .toc a:focus,.palette-primary-pink .drawer .toc a:hover{color:#e91e63}.palette-primary-pink .drawer .anchor a{border-left:2px solid #e91e63}.ios.standalone .palette-primary-pink .article{background:-webkit-linear-gradient(top,#fff 50%,#e91e63 0);background:linear-gradient(180deg,#fff 50%,#e91e63 0)}.palette-primary-pink .article a,.palette-primary-pink .article code,.palette-primary-pink .article h1,.palette-primary-pink .article h2{color:#e91e63}.palette-primary-pink .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-pink .article table th{background:#ef568a}.palette-primary-pink .results .meta{background:#e91e63}@supports (-webkit-appearance:none){.palette-primary-purple{background:#ab47bc}}.palette-primary-purple .footer,.palette-primary-purple .header{background:#ab47bc}.palette-primary-purple .drawer .toc a.current,.palette-primary-purple .drawer .toc a:focus,.palette-primary-purple .drawer .toc a:hover{color:#ab47bc}.palette-primary-purple .drawer .anchor a{border-left:2px solid #ab47bc}.ios.standalone .palette-primary-purple .article{background:-webkit-linear-gradient(top,#fff 50%,#ab47bc 0);background:linear-gradient(180deg,#fff 50%,#ab47bc 0)}.palette-primary-purple .article a,.palette-primary-purple .article code,.palette-primary-purple .article h1,.palette-primary-purple .article h2{color:#ab47bc}.palette-primary-purple .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-purple .article table th{background:#c075cd}.palette-primary-purple .results .meta{background:#ab47bc}@supports (-webkit-appearance:none){.palette-primary-deep-purple{background:#7e57c2}}.palette-primary-deep-purple .footer,.palette-primary-deep-purple .header{background:#7e57c2}.palette-primary-deep-purple .drawer .toc a.current,.palette-primary-deep-purple .drawer .toc a:focus,.palette-primary-deep-purple .drawer .toc a:hover{color:#7e57c2}.palette-primary-deep-purple .drawer .anchor a{border-left:2px solid #7e57c2}.ios.standalone .palette-primary-deep-purple .article{background:-webkit-linear-gradient(top,#fff 50%,#7e57c2 0);background:linear-gradient(180deg,#fff 50%,#7e57c2 0)}.palette-primary-deep-purple .article a,.palette-primary-deep-purple .article code,.palette-primary-deep-purple .article h1,.palette-primary-deep-purple .article h2{color:#7e57c2}.palette-primary-deep-purple .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-deep-purple .article table th{background:#9e81d1}.palette-primary-deep-purple .results .meta{background:#7e57c2}@supports (-webkit-appearance:none){.palette-primary-indigo{background:#3f51b5}}.palette-primary-indigo .footer,.palette-primary-indigo .header{background:#3f51b5}.palette-primary-indigo .drawer .toc a.current,.palette-primary-indigo .drawer .toc a:focus,.palette-primary-indigo .drawer .toc a:hover{color:#3f51b5}.palette-primary-indigo .drawer .anchor a{border-left:2px solid #3f51b5}.ios.standalone .palette-primary-indigo .article{background:-webkit-linear-gradient(top,#fff 50%,#3f51b5 0);background:linear-gradient(180deg,#fff 50%,#3f51b5 0)}.palette-primary-indigo .article a,.palette-primary-indigo .article code,.palette-primary-indigo .article h1,.palette-primary-indigo .article h2{color:#3f51b5}.palette-primary-indigo .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-indigo .article table th{background:#6f7dc8}.palette-primary-indigo .results .meta{background:#3f51b5}@supports (-webkit-appearance:none){.palette-primary-blue{background:#5677fc}}.palette-primary-blue .footer,.palette-primary-blue .header{background:#5677fc}.palette-primary-blue .drawer .toc a.current,.palette-primary-blue .drawer .toc a:focus,.palette-primary-blue .drawer .toc a:hover{color:#5677fc}.palette-primary-blue .drawer .anchor a{border-left:2px solid #5677fc}.ios.standalone .palette-primary-blue .article{background:-webkit-linear-gradient(top,#fff 50%,#5677fc 0);background:linear-gradient(180deg,#fff 50%,#5677fc 0)}.palette-primary-blue .article a,.palette-primary-blue .article code,.palette-primary-blue .article h1,.palette-primary-blue .article h2{color:#5677fc}.palette-primary-blue .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-blue .article table th{background:#8099fd}.palette-primary-blue .results .meta{background:#5677fc}@supports (-webkit-appearance:none){.palette-primary-light-blue{background:#03a9f4}}.palette-primary-light-blue .footer,.palette-primary-light-blue .header{background:#03a9f4}.palette-primary-light-blue .drawer .toc a.current,.palette-primary-light-blue .drawer .toc a:focus,.palette-primary-light-blue .drawer .toc a:hover{color:#03a9f4}.palette-primary-light-blue .drawer .anchor a{border-left:2px solid #03a9f4}.ios.standalone .palette-primary-light-blue .article{background:-webkit-linear-gradient(top,#fff 50%,#03a9f4 0);background:linear-gradient(180deg,#fff 50%,#03a9f4 0)}.palette-primary-light-blue .article a,.palette-primary-light-blue .article code,.palette-primary-light-blue .article h1,.palette-primary-light-blue .article h2{color:#03a9f4}.palette-primary-light-blue .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-light-blue .article table th{background:#42bff7}.palette-primary-light-blue .results .meta{background:#03a9f4}@supports (-webkit-appearance:none){.palette-primary-cyan{background:#00bcd4}}.palette-primary-cyan .footer,.palette-primary-cyan .header{background:#00bcd4}.palette-primary-cyan .drawer .toc a.current,.palette-primary-cyan .drawer .toc a:focus,.palette-primary-cyan .drawer .toc a:hover{color:#00bcd4}.palette-primary-cyan .drawer .anchor a{border-left:2px solid #00bcd4}.ios.standalone .palette-primary-cyan .article{background:-webkit-linear-gradient(top,#fff 50%,#00bcd4 0);background:linear-gradient(180deg,#fff 50%,#00bcd4 0)}.palette-primary-cyan .article a,.palette-primary-cyan .article code,.palette-primary-cyan .article h1,.palette-primary-cyan .article h2{color:#00bcd4}.palette-primary-cyan .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-cyan .article table th{background:#40cddf}.palette-primary-cyan .results .meta{background:#00bcd4}@supports (-webkit-appearance:none){.palette-primary-teal{background:#009688}}.palette-primary-teal .footer,.palette-primary-teal .header{background:#009688}.palette-primary-teal .drawer .toc a.current,.palette-primary-teal .drawer .toc a:focus,.palette-primary-teal .drawer .toc a:hover{color:#009688}.palette-primary-teal .drawer .anchor a{border-left:2px solid #009688}.ios.standalone .palette-primary-teal .article{background:-webkit-linear-gradient(top,#fff 50%,#009688 0);background:linear-gradient(180deg,#fff 50%,#009688 0)}.palette-primary-teal .article a,.palette-primary-teal .article code,.palette-primary-teal .article h1,.palette-primary-teal .article h2{color:#009688}.palette-primary-teal .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-teal .article table th{background:#40b0a6}.palette-primary-teal .results .meta{background:#009688}@supports (-webkit-appearance:none){.palette-primary-green{background:#259b24}}.palette-primary-green .footer,.palette-primary-green .header{background:#259b24}.palette-primary-green .drawer .toc a.current,.palette-primary-green .drawer .toc a:focus,.palette-primary-green .drawer .toc a:hover{color:#259b24}.palette-primary-green .drawer .anchor a{border-left:2px solid #259b24}.ios.standalone .palette-primary-green .article{background:-webkit-linear-gradient(top,#fff 50%,#259b24 0);background:linear-gradient(180deg,#fff 50%,#259b24 0)}.palette-primary-green .article a,.palette-primary-green .article code,.palette-primary-green .article h1,.palette-primary-green .article h2{color:#259b24}.palette-primary-green .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-green .article table th{background:#5cb45b}.palette-primary-green .results .meta{background:#259b24}@supports (-webkit-appearance:none){.palette-primary-light-green{background:#7cb342}}.palette-primary-light-green .footer,.palette-primary-light-green .header{background:#7cb342}.palette-primary-light-green .drawer .toc a.current,.palette-primary-light-green .drawer .toc a:focus,.palette-primary-light-green .drawer .toc a:hover{color:#7cb342}.palette-primary-light-green .drawer .anchor a{border-left:2px solid #7cb342}.ios.standalone .palette-primary-light-green .article{background:-webkit-linear-gradient(top,#fff 50%,#7cb342 0);background:linear-gradient(180deg,#fff 50%,#7cb342 0)}.palette-primary-light-green .article a,.palette-primary-light-green .article code,.palette-primary-light-green .article h1,.palette-primary-light-green .article h2{color:#7cb342}.palette-primary-light-green .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-light-green .article table th{background:#9dc671}.palette-primary-light-green .results .meta{background:#7cb342}@supports (-webkit-appearance:none){.palette-primary-lime{background:#c0ca33}}.palette-primary-lime .footer,.palette-primary-lime .header{background:#c0ca33}.palette-primary-lime .drawer .toc a.current,.palette-primary-lime .drawer .toc a:focus,.palette-primary-lime .drawer .toc a:hover{color:#c0ca33}.palette-primary-lime .drawer .anchor a{border-left:2px solid #c0ca33}.ios.standalone .palette-primary-lime .article{background:-webkit-linear-gradient(top,#fff 50%,#c0ca33 0);background:linear-gradient(180deg,#fff 50%,#c0ca33 0)}.palette-primary-lime .article a,.palette-primary-lime .article code,.palette-primary-lime .article h1,.palette-primary-lime .article h2{color:#c0ca33}.palette-primary-lime .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-lime .article table th{background:#d0d766}.palette-primary-lime .results .meta{background:#c0ca33}@supports (-webkit-appearance:none){.palette-primary-yellow{background:#f9a825}}.palette-primary-yellow .footer,.palette-primary-yellow .header{background:#f9a825}.palette-primary-yellow .drawer .toc a.current,.palette-primary-yellow .drawer .toc a:focus,.palette-primary-yellow .drawer .toc a:hover{color:#f9a825}.palette-primary-yellow .drawer .anchor a{border-left:2px solid #f9a825}.ios.standalone .palette-primary-yellow .article{background:-webkit-linear-gradient(top,#fff 50%,#f9a825 0);background:linear-gradient(180deg,#fff 50%,#f9a825 0)}.palette-primary-yellow .article a,.palette-primary-yellow .article code,.palette-primary-yellow .article h1,.palette-primary-yellow .article h2{color:#f9a825}.palette-primary-yellow .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-yellow .article table th{background:#fbbe5c}.palette-primary-yellow .results .meta{background:#f9a825}@supports (-webkit-appearance:none){.palette-primary-amber{background:#ffb300}}.palette-primary-amber .footer,.palette-primary-amber .header{background:#ffb300}.palette-primary-amber .drawer .toc a.current,.palette-primary-amber .drawer .toc a:focus,.palette-primary-amber .drawer .toc a:hover{color:#ffb300}.palette-primary-amber .drawer .anchor a{border-left:2px solid #ffb300}.ios.standalone .palette-primary-amber .article{background:-webkit-linear-gradient(top,#fff 50%,#ffb300 0);background:linear-gradient(180deg,#fff 50%,#ffb300 0)}.palette-primary-amber .article a,.palette-primary-amber .article code,.palette-primary-amber .article h1,.palette-primary-amber .article h2{color:#ffb300}.palette-primary-amber .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-amber .article table th{background:#ffc640}.palette-primary-amber .results .meta{background:#ffb300}@supports (-webkit-appearance:none){.palette-primary-orange{background:#fb8c00}}.palette-primary-orange .footer,.palette-primary-orange .header{background:#fb8c00}.palette-primary-orange .drawer .toc a.current,.palette-primary-orange .drawer .toc a:focus,.palette-primary-orange .drawer .toc a:hover{color:#fb8c00}.palette-primary-orange .drawer .anchor a{border-left:2px solid #fb8c00}.ios.standalone .palette-primary-orange .article{background:-webkit-linear-gradient(top,#fff 50%,#fb8c00 0);background:linear-gradient(180deg,#fff 50%,#fb8c00 0)}.palette-primary-orange .article a,.palette-primary-orange .article code,.palette-primary-orange .article h1,.palette-primary-orange .article h2{color:#fb8c00}.palette-primary-orange .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-orange .article table th{background:#fca940}.palette-primary-orange .results .meta{background:#fb8c00}@supports (-webkit-appearance:none){.palette-primary-deep-orange{background:#ff7043}}.palette-primary-deep-orange .footer,.palette-primary-deep-orange .header{background:#ff7043}.palette-primary-deep-orange .drawer .toc a.current,.palette-primary-deep-orange .drawer .toc a:focus,.palette-primary-deep-orange .drawer .toc a:hover{color:#ff7043}.palette-primary-deep-orange .drawer .anchor a{border-left:2px solid #ff7043}.ios.standalone .palette-primary-deep-orange .article{background:-webkit-linear-gradient(top,#fff 50%,#ff7043 0);background:linear-gradient(180deg,#fff 50%,#ff7043 0)}.palette-primary-deep-orange .article a,.palette-primary-deep-orange .article code,.palette-primary-deep-orange .article h1,.palette-primary-deep-orange .article h2{color:#ff7043}.palette-primary-deep-orange .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-deep-orange .article table th{background:#ff9472}.palette-primary-deep-orange .results .meta{background:#ff7043}@supports (-webkit-appearance:none){.palette-primary-brown{background:#795548}}.palette-primary-brown .footer,.palette-primary-brown .header{background:#795548}.palette-primary-brown .drawer .toc a.current,.palette-primary-brown .drawer .toc a:focus,.palette-primary-brown .drawer .toc a:hover{color:#795548}.palette-primary-brown .drawer .anchor a{border-left:2px solid #795548}.ios.standalone .palette-primary-brown .article{background:-webkit-linear-gradient(top,#fff 50%,#795548 0);background:linear-gradient(180deg,#fff 50%,#795548 0)}.palette-primary-brown .article a,.palette-primary-brown .article code,.palette-primary-brown .article h1,.palette-primary-brown .article h2{color:#795548}.palette-primary-brown .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-brown .article table th{background:#9b8076}.palette-primary-brown .results .meta{background:#795548}@supports (-webkit-appearance:none){.palette-primary-grey{background:#757575}}.palette-primary-grey .footer,.palette-primary-grey .header{background:#757575}.palette-primary-grey .drawer .toc a.current,.palette-primary-grey .drawer .toc a:focus,.palette-primary-grey .drawer .toc a:hover{color:#757575}.palette-primary-grey .drawer .anchor a{border-left:2px solid #757575}.ios.standalone .palette-primary-grey .article{background:-webkit-linear-gradient(top,#fff 50%,#757575 0);background:linear-gradient(180deg,#fff 50%,#757575 0)}.palette-primary-grey .article a,.palette-primary-grey .article code,.palette-primary-grey .article h1,.palette-primary-grey .article h2{color:#757575}.palette-primary-grey .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-grey .article table th{background:#989898}.palette-primary-grey .results .meta{background:#757575}@supports (-webkit-appearance:none){.palette-primary-blue-grey{background:#546e7a}}.palette-primary-blue-grey .footer,.palette-primary-blue-grey .header{background:#546e7a}.palette-primary-blue-grey .drawer .toc a.current,.palette-primary-blue-grey .drawer .toc a:focus,.palette-primary-blue-grey .drawer .toc a:hover{color:#546e7a}.palette-primary-blue-grey .drawer .anchor a{border-left:2px solid #546e7a}.ios.standalone .palette-primary-blue-grey .article{background:-webkit-linear-gradient(top,#fff 50%,#546e7a 0);background:linear-gradient(180deg,#fff 50%,#546e7a 0)}.palette-primary-blue-grey .article a,.palette-primary-blue-grey .article code,.palette-primary-blue-grey .article h1,.palette-primary-blue-grey .article h2{color:#546e7a}.palette-primary-blue-grey .article .headerlink{color:rgba(0,0,0,.26)}.palette-primary-blue-grey .article table th{background:#7f929b}.palette-primary-blue-grey .results .meta{background:#546e7a}.palette-accent-red .article a:focus,.palette-accent-red .article a:hover{color:#ff2d6f}.palette-accent-red .repo a{background:#ff2d6f}.palette-accent-pink .article a:focus,.palette-accent-pink .article a:hover{color:#f50057}.palette-accent-pink .repo a{background:#f50057}.palette-accent-purple .article a:focus,.palette-accent-purple .article a:hover{color:#e040fb}.palette-accent-purple .repo a{background:#e040fb}.palette-accent-deep-purple .article a:focus,.palette-accent-deep-purple .article a:hover{color:#7c4dff}.palette-accent-deep-purple .repo a{background:#7c4dff}.palette-accent-indigo .article a:focus,.palette-accent-indigo .article a:hover{color:#536dfe}.palette-accent-indigo .repo a{background:#536dfe}.palette-accent-blue .article a:focus,.palette-accent-blue .article a:hover{color:#6889ff}.palette-accent-blue .repo a{background:#6889ff}.palette-accent-light-blue .article a:focus,.palette-accent-light-blue .article a:hover{color:#0091ea}.palette-accent-light-blue .repo a{background:#0091ea}.palette-accent-cyan .article a:focus,.palette-accent-cyan .article a:hover{color:#00b8d4}.palette-accent-cyan .repo a{background:#00b8d4}.palette-accent-teal .article a:focus,.palette-accent-teal .article a:hover{color:#00bfa5}.palette-accent-teal .repo a{background:#00bfa5}.palette-accent-green .article a:focus,.palette-accent-green .article a:hover{color:#12c700}.palette-accent-green .repo a{background:#12c700}.palette-accent-light-green .article a:focus,.palette-accent-light-green .article a:hover{color:#64dd17}.palette-accent-light-green .repo a{background:#64dd17}.palette-accent-lime .article a:focus,.palette-accent-lime .article a:hover{color:#aeea00}.palette-accent-lime .repo a{background:#aeea00}.palette-accent-yellow .article a:focus,.palette-accent-yellow .article a:hover{color:#ffd600}.palette-accent-yellow .repo a{background:#ffd600}.palette-accent-amber .article a:focus,.palette-accent-amber .article a:hover{color:#ffab00}.palette-accent-amber .repo a{background:#ffab00}.palette-accent-orange .article a:focus,.palette-accent-orange .article a:hover{color:#ff9100}.palette-accent-orange .repo a{background:#ff9100}.palette-accent-deep-orange .article a:focus,.palette-accent-deep-orange .article a:hover{color:#ff6e40}.palette-accent-deep-orange .repo a{background:#ff6e40}@media only screen and (max-width:959px){.palette-primary-red .project{background:#e84e40}.palette-primary-pink .project{background:#e91e63}.palette-primary-purple .project{background:#ab47bc}.palette-primary-deep-purple .project{background:#7e57c2}.palette-primary-indigo .project{background:#3f51b5}.palette-primary-blue .project{background:#5677fc}.palette-primary-light-blue .project{background:#03a9f4}.palette-primary-cyan .project{background:#00bcd4}.palette-primary-teal .project{background:#009688}.palette-primary-green .project{background:#259b24}.palette-primary-light-green .project{background:#7cb342}.palette-primary-lime .project{background:#c0ca33}.palette-primary-yellow .project{background:#f9a825}.palette-primary-amber .project{background:#ffb300}.palette-primary-orange .project{background:#fb8c00}.palette-primary-deep-orange .project{background:#ff7043}.palette-primary-brown .project{background:#795548}.palette-primary-grey .project{background:#757575}.palette-primary-blue-grey .project{background:#546e7a}}
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+/* ----------------------------------------------------------------------------
+ * Dependencies
+ * ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Application
+ * ------------------------------------------------------------------------- */
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+/* ----------------------------------------------------------------------------
+ * Palette
+ * ------------------------------------------------------------------------- */
+/*
+ * Primary and accent color
+ */
+/*
+ * Black opacities
+ */
+/*
+ * White opacities
+ */
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+/* ----------------------------------------------------------------------------
+ * Defaults
+ * ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+/*
+ * Choose minimum and maximum device widths.
+ */
+/*
+ * Select minimum and maximum widths for a device breakpoint.
+ */
+/* ----------------------------------------------------------------------------
+ * Mixins for numeric breakpoints
+ * ------------------------------------------------------------------------- */
+/*
+ * A minimum-maximum media query breakpoint.
+ */
+/*
+ * An orientation media query breakpoint.
+ */
+/*
+ * A maximum-aspect-ratio media query breakpoint.
+ */
+/* ----------------------------------------------------------------------------
+ * Mixins for device breakpoints
+ * ------------------------------------------------------------------------- */
+/*
+ * A minimum-maximum media query device breakpoint.
+ */
+/*
+ * A minimum media query device breakpoint.
+ */
+/*
+ * A maximum media query device breakpoint.
+ */
+/* ----------------------------------------------------------------------------
+ * Palette
+ * ------------------------------------------------------------------------- */
+/*
+ * Build primary palette
+ */
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-red {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-red {
+      background: #e84e40; } }
+  .palette-primary-red .header, .palette-primary-red .footer {
+    background: #e84e40; }
+  .palette-primary-red .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-red .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-red .drawer .toc a.current {
+        color: #e84e40; }
+      .palette-primary-red .drawer .toc a:hover, .palette-primary-red .drawer .toc a:focus {
+        color: #e84e40; }
+    .palette-primary-red .drawer .anchor a {
+      border-left: 2px solid #e84e40; }
+  .palette-primary-red .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-red .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-red .article {
+      background: -webkit-linear-gradient(top, white 50%, #e84e40 50%);
+      background: linear-gradient(to bottom, white 50%, #e84e40 50%); }
+    .palette-primary-red .article h1, .palette-primary-red .article h2, .palette-primary-red .article a, .palette-primary-red .article code {
+      color: #e84e40; }
+    .palette-primary-red .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-red .article table th {
+      background: #ee7a70; }
+  .palette-primary-red .results .meta {
+    background: #e84e40; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-pink {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-pink {
+      background: #e91e63; } }
+  .palette-primary-pink .header, .palette-primary-pink .footer {
+    background: #e91e63; }
+  .palette-primary-pink .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-pink .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-pink .drawer .toc a.current {
+        color: #e91e63; }
+      .palette-primary-pink .drawer .toc a:hover, .palette-primary-pink .drawer .toc a:focus {
+        color: #e91e63; }
+    .palette-primary-pink .drawer .anchor a {
+      border-left: 2px solid #e91e63; }
+  .palette-primary-pink .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-pink .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-pink .article {
+      background: -webkit-linear-gradient(top, white 50%, #e91e63 50%);
+      background: linear-gradient(to bottom, white 50%, #e91e63 50%); }
+    .palette-primary-pink .article h1, .palette-primary-pink .article h2, .palette-primary-pink .article a, .palette-primary-pink .article code {
+      color: #e91e63; }
+    .palette-primary-pink .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-pink .article table th {
+      background: #ef568a; }
+  .palette-primary-pink .results .meta {
+    background: #e91e63; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-purple {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-purple {
+      background: #ab47bc; } }
+  .palette-primary-purple .header, .palette-primary-purple .footer {
+    background: #ab47bc; }
+  .palette-primary-purple .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-purple .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-purple .drawer .toc a.current {
+        color: #ab47bc; }
+      .palette-primary-purple .drawer .toc a:hover, .palette-primary-purple .drawer .toc a:focus {
+        color: #ab47bc; }
+    .palette-primary-purple .drawer .anchor a {
+      border-left: 2px solid #ab47bc; }
+  .palette-primary-purple .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-purple .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-purple .article {
+      background: -webkit-linear-gradient(top, white 50%, #ab47bc 50%);
+      background: linear-gradient(to bottom, white 50%, #ab47bc 50%); }
+    .palette-primary-purple .article h1, .palette-primary-purple .article h2, .palette-primary-purple .article a, .palette-primary-purple .article code {
+      color: #ab47bc; }
+    .palette-primary-purple .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-purple .article table th {
+      background: #c075cd; }
+  .palette-primary-purple .results .meta {
+    background: #ab47bc; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-deep-purple {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-deep-purple {
+      background: #7e57c2; } }
+  .palette-primary-deep-purple .header, .palette-primary-deep-purple .footer {
+    background: #7e57c2; }
+  .palette-primary-deep-purple .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-deep-purple .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-deep-purple .drawer .toc a.current {
+        color: #7e57c2; }
+      .palette-primary-deep-purple .drawer .toc a:hover, .palette-primary-deep-purple .drawer .toc a:focus {
+        color: #7e57c2; }
+    .palette-primary-deep-purple .drawer .anchor a {
+      border-left: 2px solid #7e57c2; }
+  .palette-primary-deep-purple .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-deep-purple .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-deep-purple .article {
+      background: -webkit-linear-gradient(top, white 50%, #7e57c2 50%);
+      background: linear-gradient(to bottom, white 50%, #7e57c2 50%); }
+    .palette-primary-deep-purple .article h1, .palette-primary-deep-purple .article h2, .palette-primary-deep-purple .article a, .palette-primary-deep-purple .article code {
+      color: #7e57c2; }
+    .palette-primary-deep-purple .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-deep-purple .article table th {
+      background: #9e81d1; }
+  .palette-primary-deep-purple .results .meta {
+    background: #7e57c2; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-indigo {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-indigo {
+      background: #3f51b5; } }
+  .palette-primary-indigo .header, .palette-primary-indigo .footer {
+    background: #3f51b5; }
+  .palette-primary-indigo .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-indigo .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-indigo .drawer .toc a.current {
+        color: #3f51b5; }
+      .palette-primary-indigo .drawer .toc a:hover, .palette-primary-indigo .drawer .toc a:focus {
+        color: #3f51b5; }
+    .palette-primary-indigo .drawer .anchor a {
+      border-left: 2px solid #3f51b5; }
+  .palette-primary-indigo .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-indigo .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-indigo .article {
+      background: -webkit-linear-gradient(top, white 50%, #3f51b5 50%);
+      background: linear-gradient(to bottom, white 50%, #3f51b5 50%); }
+    .palette-primary-indigo .article h1, .palette-primary-indigo .article h2, .palette-primary-indigo .article a, .palette-primary-indigo .article code {
+      color: #3f51b5; }
+    .palette-primary-indigo .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-indigo .article table th {
+      background: #6f7dc8; }
+  .palette-primary-indigo .results .meta {
+    background: #3f51b5; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-blue {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-blue {
+      background: #2196F3; } }
+  .palette-primary-blue .header, .palette-primary-blue .footer {
+    background: #2196F3; }
+  .palette-primary-blue .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-blue .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-blue .drawer .toc a.current {
+        color: #2196F3; }
+      .palette-primary-blue .drawer .toc a:hover, .palette-primary-blue .drawer .toc a:focus {
+        color: #2196F3; }
+    .palette-primary-blue .drawer .anchor a {
+      border-left: 2px solid #2196F3; }
+  .palette-primary-blue .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-blue .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-blue .article {
+      background: -webkit-linear-gradient(top, white 50%, #2196F3 50%);
+      background: linear-gradient(to bottom, white 50%, #2196F3 50%); }
+    .palette-primary-blue .article h1, .palette-primary-blue .article h2, .palette-primary-blue .article a, .palette-primary-blue .article code {
+      color: #2196F3; }
+    .palette-primary-blue .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-blue .article table th {
+      background: #59b0f6; }
+  .palette-primary-blue .results .meta {
+    background: #2196F3; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-light-blue {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-light-blue {
+      background: #03a9f4; } }
+  .palette-primary-light-blue .header, .palette-primary-light-blue .footer {
+    background: #03a9f4; }
+  .palette-primary-light-blue .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-light-blue .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-light-blue .drawer .toc a.current {
+        color: #03a9f4; }
+      .palette-primary-light-blue .drawer .toc a:hover, .palette-primary-light-blue .drawer .toc a:focus {
+        color: #03a9f4; }
+    .palette-primary-light-blue .drawer .anchor a {
+      border-left: 2px solid #03a9f4; }
+  .palette-primary-light-blue .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-light-blue .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-light-blue .article {
+      background: -webkit-linear-gradient(top, white 50%, #03a9f4 50%);
+      background: linear-gradient(to bottom, white 50%, #03a9f4 50%); }
+    .palette-primary-light-blue .article h1, .palette-primary-light-blue .article h2, .palette-primary-light-blue .article a, .palette-primary-light-blue .article code {
+      color: #03a9f4; }
+    .palette-primary-light-blue .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-light-blue .article table th {
+      background: #42bff7; }
+  .palette-primary-light-blue .results .meta {
+    background: #03a9f4; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-cyan {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-cyan {
+      background: #00bcd4; } }
+  .palette-primary-cyan .header, .palette-primary-cyan .footer {
+    background: #00bcd4; }
+  .palette-primary-cyan .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-cyan .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-cyan .drawer .toc a.current {
+        color: #00bcd4; }
+      .palette-primary-cyan .drawer .toc a:hover, .palette-primary-cyan .drawer .toc a:focus {
+        color: #00bcd4; }
+    .palette-primary-cyan .drawer .anchor a {
+      border-left: 2px solid #00bcd4; }
+  .palette-primary-cyan .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-cyan .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-cyan .article {
+      background: -webkit-linear-gradient(top, white 50%, #00bcd4 50%);
+      background: linear-gradient(to bottom, white 50%, #00bcd4 50%); }
+    .palette-primary-cyan .article h1, .palette-primary-cyan .article h2, .palette-primary-cyan .article a, .palette-primary-cyan .article code {
+      color: #00bcd4; }
+    .palette-primary-cyan .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-cyan .article table th {
+      background: #40cddf; }
+  .palette-primary-cyan .results .meta {
+    background: #00bcd4; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-teal {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-teal {
+      background: #009688; } }
+  .palette-primary-teal .header, .palette-primary-teal .footer {
+    background: #009688; }
+  .palette-primary-teal .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-teal .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-teal .drawer .toc a.current {
+        color: #009688; }
+      .palette-primary-teal .drawer .toc a:hover, .palette-primary-teal .drawer .toc a:focus {
+        color: #009688; }
+    .palette-primary-teal .drawer .anchor a {
+      border-left: 2px solid #009688; }
+  .palette-primary-teal .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-teal .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-teal .article {
+      background: -webkit-linear-gradient(top, white 50%, #009688 50%);
+      background: linear-gradient(to bottom, white 50%, #009688 50%); }
+    .palette-primary-teal .article h1, .palette-primary-teal .article h2, .palette-primary-teal .article a, .palette-primary-teal .article code {
+      color: #009688; }
+    .palette-primary-teal .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-teal .article table th {
+      background: #40b0a6; }
+  .palette-primary-teal .results .meta {
+    background: #009688; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-green {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-green {
+      background: #259b24; } }
+  .palette-primary-green .header, .palette-primary-green .footer {
+    background: #259b24; }
+  .palette-primary-green .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-green .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-green .drawer .toc a.current {
+        color: #259b24; }
+      .palette-primary-green .drawer .toc a:hover, .palette-primary-green .drawer .toc a:focus {
+        color: #259b24; }
+    .palette-primary-green .drawer .anchor a {
+      border-left: 2px solid #259b24; }
+  .palette-primary-green .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-green .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-green .article {
+      background: -webkit-linear-gradient(top, white 50%, #259b24 50%);
+      background: linear-gradient(to bottom, white 50%, #259b24 50%); }
+    .palette-primary-green .article h1, .palette-primary-green .article h2, .palette-primary-green .article a, .palette-primary-green .article code {
+      color: #259b24; }
+    .palette-primary-green .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-green .article table th {
+      background: #5cb45b; }
+  .palette-primary-green .results .meta {
+    background: #259b24; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-light-green {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-light-green {
+      background: #7cb342; } }
+  .palette-primary-light-green .header, .palette-primary-light-green .footer {
+    background: #7cb342; }
+  .palette-primary-light-green .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-light-green .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-light-green .drawer .toc a.current {
+        color: #7cb342; }
+      .palette-primary-light-green .drawer .toc a:hover, .palette-primary-light-green .drawer .toc a:focus {
+        color: #7cb342; }
+    .palette-primary-light-green .drawer .anchor a {
+      border-left: 2px solid #7cb342; }
+  .palette-primary-light-green .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-light-green .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-light-green .article {
+      background: -webkit-linear-gradient(top, white 50%, #7cb342 50%);
+      background: linear-gradient(to bottom, white 50%, #7cb342 50%); }
+    .palette-primary-light-green .article h1, .palette-primary-light-green .article h2, .palette-primary-light-green .article a, .palette-primary-light-green .article code {
+      color: #7cb342; }
+    .palette-primary-light-green .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-light-green .article table th {
+      background: #9dc671; }
+  .palette-primary-light-green .results .meta {
+    background: #7cb342; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-lime {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-lime {
+      background: #c0ca33; } }
+  .palette-primary-lime .header, .palette-primary-lime .footer {
+    background: #c0ca33; }
+  .palette-primary-lime .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-lime .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-lime .drawer .toc a.current {
+        color: #c0ca33; }
+      .palette-primary-lime .drawer .toc a:hover, .palette-primary-lime .drawer .toc a:focus {
+        color: #c0ca33; }
+    .palette-primary-lime .drawer .anchor a {
+      border-left: 2px solid #c0ca33; }
+  .palette-primary-lime .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-lime .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-lime .article {
+      background: -webkit-linear-gradient(top, white 50%, #c0ca33 50%);
+      background: linear-gradient(to bottom, white 50%, #c0ca33 50%); }
+    .palette-primary-lime .article h1, .palette-primary-lime .article h2, .palette-primary-lime .article a, .palette-primary-lime .article code {
+      color: #c0ca33; }
+    .palette-primary-lime .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-lime .article table th {
+      background: #d0d766; }
+  .palette-primary-lime .results .meta {
+    background: #c0ca33; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-yellow {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-yellow {
+      background: #f9a825; } }
+  .palette-primary-yellow .header, .palette-primary-yellow .footer {
+    background: #f9a825; }
+  .palette-primary-yellow .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-yellow .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-yellow .drawer .toc a.current {
+        color: #f9a825; }
+      .palette-primary-yellow .drawer .toc a:hover, .palette-primary-yellow .drawer .toc a:focus {
+        color: #f9a825; }
+    .palette-primary-yellow .drawer .anchor a {
+      border-left: 2px solid #f9a825; }
+  .palette-primary-yellow .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-yellow .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-yellow .article {
+      background: -webkit-linear-gradient(top, white 50%, #f9a825 50%);
+      background: linear-gradient(to bottom, white 50%, #f9a825 50%); }
+    .palette-primary-yellow .article h1, .palette-primary-yellow .article h2, .palette-primary-yellow .article a, .palette-primary-yellow .article code {
+      color: #f9a825; }
+    .palette-primary-yellow .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-yellow .article table th {
+      background: #fbbe5c; }
+  .palette-primary-yellow .results .meta {
+    background: #f9a825; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-amber {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-amber {
+      background: #ffb300; } }
+  .palette-primary-amber .header, .palette-primary-amber .footer {
+    background: #ffb300; }
+  .palette-primary-amber .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-amber .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-amber .drawer .toc a.current {
+        color: #ffb300; }
+      .palette-primary-amber .drawer .toc a:hover, .palette-primary-amber .drawer .toc a:focus {
+        color: #ffb300; }
+    .palette-primary-amber .drawer .anchor a {
+      border-left: 2px solid #ffb300; }
+  .palette-primary-amber .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-amber .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-amber .article {
+      background: -webkit-linear-gradient(top, white 50%, #ffb300 50%);
+      background: linear-gradient(to bottom, white 50%, #ffb300 50%); }
+    .palette-primary-amber .article h1, .palette-primary-amber .article h2, .palette-primary-amber .article a, .palette-primary-amber .article code {
+      color: #ffb300; }
+    .palette-primary-amber .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-amber .article table th {
+      background: #ffc640; }
+  .palette-primary-amber .results .meta {
+    background: #ffb300; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-orange {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-orange {
+      background: #fb8c00; } }
+  .palette-primary-orange .header, .palette-primary-orange .footer {
+    background: #fb8c00; }
+  .palette-primary-orange .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-orange .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-orange .drawer .toc a.current {
+        color: #fb8c00; }
+      .palette-primary-orange .drawer .toc a:hover, .palette-primary-orange .drawer .toc a:focus {
+        color: #fb8c00; }
+    .palette-primary-orange .drawer .anchor a {
+      border-left: 2px solid #fb8c00; }
+  .palette-primary-orange .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-orange .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-orange .article {
+      background: -webkit-linear-gradient(top, white 50%, #fb8c00 50%);
+      background: linear-gradient(to bottom, white 50%, #fb8c00 50%); }
+    .palette-primary-orange .article h1, .palette-primary-orange .article h2, .palette-primary-orange .article a, .palette-primary-orange .article code {
+      color: #fb8c00; }
+    .palette-primary-orange .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-orange .article table th {
+      background: #fca940; }
+  .palette-primary-orange .results .meta {
+    background: #fb8c00; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-deep-orange {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-deep-orange {
+      background: #ff7043; } }
+  .palette-primary-deep-orange .header, .palette-primary-deep-orange .footer {
+    background: #ff7043; }
+  .palette-primary-deep-orange .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-deep-orange .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-deep-orange .drawer .toc a.current {
+        color: #ff7043; }
+      .palette-primary-deep-orange .drawer .toc a:hover, .palette-primary-deep-orange .drawer .toc a:focus {
+        color: #ff7043; }
+    .palette-primary-deep-orange .drawer .anchor a {
+      border-left: 2px solid #ff7043; }
+  .palette-primary-deep-orange .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-deep-orange .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-deep-orange .article {
+      background: -webkit-linear-gradient(top, white 50%, #ff7043 50%);
+      background: linear-gradient(to bottom, white 50%, #ff7043 50%); }
+    .palette-primary-deep-orange .article h1, .palette-primary-deep-orange .article h2, .palette-primary-deep-orange .article a, .palette-primary-deep-orange .article code {
+      color: #ff7043; }
+    .palette-primary-deep-orange .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-deep-orange .article table th {
+      background: #ff9472; }
+  .palette-primary-deep-orange .results .meta {
+    background: #ff7043; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-brown {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-brown {
+      background: #795548; } }
+  .palette-primary-brown .header, .palette-primary-brown .footer {
+    background: #795548; }
+  .palette-primary-brown .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-brown .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-brown .drawer .toc a.current {
+        color: #795548; }
+      .palette-primary-brown .drawer .toc a:hover, .palette-primary-brown .drawer .toc a:focus {
+        color: #795548; }
+    .palette-primary-brown .drawer .anchor a {
+      border-left: 2px solid #795548; }
+  .palette-primary-brown .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-brown .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-brown .article {
+      background: -webkit-linear-gradient(top, white 50%, #795548 50%);
+      background: linear-gradient(to bottom, white 50%, #795548 50%); }
+    .palette-primary-brown .article h1, .palette-primary-brown .article h2, .palette-primary-brown .article a, .palette-primary-brown .article code {
+      color: #795548; }
+    .palette-primary-brown .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-brown .article table th {
+      background: #9b8076; }
+  .palette-primary-brown .results .meta {
+    background: #795548; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-grey {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-grey {
+      background: #757575; } }
+  .palette-primary-grey .header, .palette-primary-grey .footer {
+    background: #757575; }
+  .palette-primary-grey .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-grey .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-grey .drawer .toc a.current {
+        color: #757575; }
+      .palette-primary-grey .drawer .toc a:hover, .palette-primary-grey .drawer .toc a:focus {
+        color: #757575; }
+    .palette-primary-grey .drawer .anchor a {
+      border-left: 2px solid #757575; }
+  .palette-primary-grey .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-grey .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-grey .article {
+      background: -webkit-linear-gradient(top, white 50%, #757575 50%);
+      background: linear-gradient(to bottom, white 50%, #757575 50%); }
+    .palette-primary-grey .article h1, .palette-primary-grey .article h2, .palette-primary-grey .article a, .palette-primary-grey .article code {
+      color: #757575; }
+    .palette-primary-grey .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-grey .article table th {
+      background: #989898; }
+  .palette-primary-grey .results .meta {
+    background: #757575; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-primary-blue-grey {
+  /* Hack [Chrome, Opera]: Set background color in Chrome and Opera */
+  /*
+     * Application header and footer
+     */
+  /*
+     * Drawer container
+     */
+  /*
+     * Project information
+     */
+  /*
+     * Article
+     */
+  /*
+     * Search meta data
+     */ }
+  @supports (-webkit-appearance: none) {
+    .palette-primary-blue-grey {
+      background: #546e7a; } }
+  .palette-primary-blue-grey .header, .palette-primary-blue-grey .footer {
+    background: #546e7a; }
+  .palette-primary-blue-grey .drawer {
+    /*
+       * Color links
+       */
+    /*
+       * Color anchors menu
+       */ }
+    .palette-primary-blue-grey .drawer .toc a {
+      /*
+         * Current active element
+         */
+      /*
+         * Hovered link
+         */ }
+      .palette-primary-blue-grey .drawer .toc a.current {
+        color: #546e7a; }
+      .palette-primary-blue-grey .drawer .toc a:hover, .palette-primary-blue-grey .drawer .toc a:focus {
+        color: #546e7a; }
+    .palette-primary-blue-grey .drawer .anchor a {
+      border-left: 2px solid #546e7a; }
+  .palette-primary-blue-grey .project {
+    /* [tablet landscape-]: Set background color */ }
+  .palette-primary-blue-grey .article {
+    /*
+       * Differing top and bottom rubberband backgrounds in iOS web application
+       */
+    /*
+       * Headlines, chapters, links and inline code
+       */
+    /*
+       * Light permalinks
+       */
+    /*
+       * Data table headings
+       */ }
+    .ios.standalone .palette-primary-blue-grey .article {
+      background: -webkit-linear-gradient(top, white 50%, #546e7a 50%);
+      background: linear-gradient(to bottom, white 50%, #546e7a 50%); }
+    .palette-primary-blue-grey .article h1, .palette-primary-blue-grey .article h2, .palette-primary-blue-grey .article a, .palette-primary-blue-grey .article code {
+      color: #546e7a; }
+    .palette-primary-blue-grey .article .headerlink {
+      color: rgba(0, 0, 0, 0.26); }
+    .palette-primary-blue-grey .article table th {
+      background: #7f929b; }
+  .palette-primary-blue-grey .results .meta {
+    background: #546e7a; }
+
+/*
+ * Build accent palette
+ */
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-red {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-red .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-red .article a:hover,
+    .palette-accent-red .article a:focus {
+      color: #ff2d6f; }
+  .palette-accent-red .repo a {
+    background: #ff2d6f; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-pink {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-pink .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-pink .article a:hover,
+    .palette-accent-pink .article a:focus {
+      color: #f50057; }
+  .palette-accent-pink .repo a {
+    background: #f50057; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-purple {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-purple .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-purple .article a:hover,
+    .palette-accent-purple .article a:focus {
+      color: #e040fb; }
+  .palette-accent-purple .repo a {
+    background: #e040fb; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-deep-purple {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-deep-purple .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-deep-purple .article a:hover,
+    .palette-accent-deep-purple .article a:focus {
+      color: #7c4dff; }
+  .palette-accent-deep-purple .repo a {
+    background: #7c4dff; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-indigo {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-indigo .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-indigo .article a:hover,
+    .palette-accent-indigo .article a:focus {
+      color: #536dfe; }
+  .palette-accent-indigo .repo a {
+    background: #536dfe; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-blue {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-blue .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-blue .article a:hover,
+    .palette-accent-blue .article a:focus {
+      color: #448AFF; }
+  .palette-accent-blue .repo a {
+    background: #448AFF; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-light-blue {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-light-blue .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-light-blue .article a:hover,
+    .palette-accent-light-blue .article a:focus {
+      color: #0091ea; }
+  .palette-accent-light-blue .repo a {
+    background: #0091ea; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-cyan {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-cyan .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-cyan .article a:hover,
+    .palette-accent-cyan .article a:focus {
+      color: #00b8d4; }
+  .palette-accent-cyan .repo a {
+    background: #00b8d4; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-teal {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-teal .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-teal .article a:hover,
+    .palette-accent-teal .article a:focus {
+      color: #00bfa5; }
+  .palette-accent-teal .repo a {
+    background: #00bfa5; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-green {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-green .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-green .article a:hover,
+    .palette-accent-green .article a:focus {
+      color: #12c700; }
+  .palette-accent-green .repo a {
+    background: #12c700; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-light-green {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-light-green .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-light-green .article a:hover,
+    .palette-accent-light-green .article a:focus {
+      color: #64dd17; }
+  .palette-accent-light-green .repo a {
+    background: #64dd17; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-lime {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-lime .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-lime .article a:hover,
+    .palette-accent-lime .article a:focus {
+      color: #aeea00; }
+  .palette-accent-lime .repo a {
+    background: #aeea00; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-yellow {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-yellow .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-yellow .article a:hover,
+    .palette-accent-yellow .article a:focus {
+      color: #ffd600; }
+  .palette-accent-yellow .repo a {
+    background: #ffd600; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-amber {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-amber .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-amber .article a:hover,
+    .palette-accent-amber .article a:focus {
+      color: #ffab00; }
+  .palette-accent-amber .repo a {
+    background: #ffab00; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-orange {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-orange .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-orange .article a:hover,
+    .palette-accent-orange .article a:focus {
+      color: #ff9100; }
+  .palette-accent-orange .repo a {
+    background: #ff9100; }
+
+/*
+   * Device specific background hacks related to rubberband
+   */
+.palette-accent-deep-orange {
+  /*
+     * Article
+     */
+  /*
+     * Repository buttons
+     */ }
+  .palette-accent-deep-orange .article {
+    /*
+       * Hovered and focused links
+       */ }
+    .palette-accent-deep-orange .article a:hover,
+    .palette-accent-deep-orange .article a:focus {
+      color: #ff6e40; }
+  .palette-accent-deep-orange .repo a {
+    background: #ff6e40; }
+  @media only screen and (max-width: 959px) {
+  .palette-primary-red .project {
+    background: #e84e40; }
+  .palette-primary-pink .project {
+    background: #e91e63; }
+  .palette-primary-purple .project {
+    background: #ab47bc; }
+  .palette-primary-deep-purple .project {
+    background: #7e57c2; }
+  .palette-primary-indigo .project {
+    background: #3f51b5; }
+  .palette-primary-blue .project {
+    background: #2196F3; }
+  .palette-primary-light-blue .project {
+    background: #03a9f4; }
+  .palette-primary-cyan .project {
+    background: #00bcd4; }
+  .palette-primary-teal .project {
+    background: #009688; }
+  .palette-primary-green .project {
+    background: #259b24; }
+  .palette-primary-light-green .project {
+    background: #7cb342; }
+  .palette-primary-lime .project {
+    background: #c0ca33; }
+  .palette-primary-yellow .project {
+    background: #f9a825; }
+  .palette-primary-amber .project {
+    background: #ffb300; }
+  .palette-primary-orange .project {
+    background: #fb8c00; }
+  .palette-primary-deep-orange .project {
+    background: #ff7043; }
+  .palette-primary-brown .project {
+    background: #795548; }
+  .palette-primary-grey .project {
+    background: #757575; }
+  .palette-primary-blue-grey .project {
+    background: #546e7a; } }

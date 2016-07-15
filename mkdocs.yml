@@ -19,30 +19,26 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Material
-site_description: A material design theme for MkDocs
-site_author: Martin Donath
-site_url: http://squidfunk.github.io/mkdocs-material/
+site_name: Arcadia Analytics Wiki
+site_description: Documentation for Arcadia Analytics
+site_author: 
+site_url: http://docs.arcadiaanalytics.com
 
-# Repository
-repo_name: GitHub
-repo_url: https://github.com/squidfunk/mkdocs-material
+
 
 # Copyright
-copyright: Copyright (c) 2016 Martin Donath
+copyright: Copyright (c) 2016 Arcadia Healthcare Solutions
 
 # Documentation and theme
 theme_dir: material
 
 # Options
 extra:
-  version: 0.2.4
-  logo: images/logo.png
-  github:
-    download_release: true
+  version: 4.11
+  logo: images/Mountain_64.png
   author:
-    github: squidfunk
-    twitter: squidfunk
+    github: arcadia
+    twitter: ArcadiaHealthIT
 
 # Extensions
 markdown_extensions:
@@ -52,8 +48,8 @@ markdown_extensions:
       permalink: '#'
 
 # Page tree
-pages:
-  - Material: index.md
-  - Getting started: getting-started.md
-  - Customization: customization.md
-  - License: license.md
+# pages:
+#   - Material: index.md
+#   - Getting started: getting-started.md
+#   - Customization: customization.md
+#   - License: license.md

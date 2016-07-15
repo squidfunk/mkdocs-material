@@ -51,6 +51,24 @@ hr {
   border-top: 1px solid $black-lightest;
 }
 
+/* Custom Arcadia */
+.arcadia-status {
+  text-align: center;
+  font-color: $black-light;
+  border-left: 6px solid $grey-600;
+  margin: auto;
+  width: 25%;
+  background-color: $black-lightest;
+
+
+
+
+
+}
+.arcadia-status i {
+  padding-right: 10px;
+}
+
 /*
  * Toggle button
  */

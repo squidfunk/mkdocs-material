@@ -69,8 +69,10 @@
       <!-- Table of contents -->
       <div class="toc">
         <ul>
-          {% for nav_item in nav %}
+        {% for nav_item in nav %}
+            {% set cnt_item = loop.index|string %}
             {% include "nav.html" %}
+            
           {% endfor %}
         </ul>
 

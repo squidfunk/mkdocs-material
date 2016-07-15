@@ -528,3 +528,20 @@ document.addEventListener('DOMContentLoaded', function() {
     );
   }
 });
+
+
+
+/* ----------------------------------------------------------------------------
+ * Collapse logic
+ * ------------------------------------------------------------------------- */
+
+ (function($){
+  toggles = $('li.collapse');
+  toggles.click(function(event){
+    if (toggles.is(event.target)) {
+      $(event.target).children().toggle();
+      event.stopPropagation();
+    }
+  });
+  toggles.children().hide();
+})(jQuery);
