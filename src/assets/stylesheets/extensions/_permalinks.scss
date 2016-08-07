@@ -20,55 +20,44 @@
  * IN THE SOFTWARE.
  */
 
-'use strict';
-
 /* ----------------------------------------------------------------------------
- * Imports
+ * Permalinks extension
  * ------------------------------------------------------------------------- */
 
-import FastClick from 'fastclick';
-import Sidebar from './components/sidebar';
-import ScrollSpy from './components/scrollspy';
+/*
+ * Scope in content for greater specificity
+ */
+.md-content {
 
-/* ----------------------------------------------------------------------------
- * Application
- * ------------------------------------------------------------------------- */
-
-/* Initialize application upon DOM ready */
-document.addEventListener('DOMContentLoaded', function() {
-  'use strict';
-
-  /* Test for iOS */
-  Modernizr.addTest('ios', function() {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-  });
-
-  /* Test for web application context */
-  Modernizr.addTest('standalone', function() {
-    return !!navigator.standalone;
-  });
-
-  /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body);
-
-
-  var width = window.matchMedia("(min-width: 1200px)");
-  var handler = function() {
-    if (width.matches) {
-      sidebar.listen();
-    } else {
-      sidebar.unlisten();
-    }
+  /*
+   * Permalink
+   */
+  .headerlink {
+    display: inline-block;
+    margin-left: 1.0rem;
+    opacity: 0;
+    color: $md-color-black--lighter;
+    transform: translate3d(0, 0.5rem, 0);
+    transition: opacity  .125s .25s,
+                transform .25s .25s,
+                color     .25s;
   }
 
-  var sidebar = new Sidebar('.md-sidebar--primary');
-  handler(); // check listen!
+  /*
+   * Only show permalinks in hover state
+   */
+  h1, h2, h3, h4, h5, h6 {
+    &:hover .headerlink {
+      margin-left: 1.0rem;
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
 
-  var toc = new Sidebar('.md-sidebar--secondary');
-  toc.listen();
-
-  var spy = new ScrollSpy('.md-nav--toc .md-nav__item a');
-  spy.listen();
-
-  window.addEventListener('resize', handler);
-});
+      /*
+       * Active link
+       */
+      &:hover {
+        color: $md-color-accent;
+      }
+    }
+  }
+}

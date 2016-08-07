@@ -1,0 +1,134 @@
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Footer
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Application footer
+ */
+.md-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+
+  /*
+   * Pagination container
+   */
+  &-pagination {
+    background: $md-color-black;
+    color: $md-color-white;
+  }
+
+  /*
+   * Link to previous and next page
+   */
+  &-nav {
+    overflow: auto;
+    padding: 0.4rem;
+
+    /*
+     * Links to previous and next page
+     */
+    &__link {
+      padding-top: 2.8rem;
+      padding-bottom: 0.8rem;
+
+      /* [mobile landscape +]: Set proportional width */
+      @include break-from-device(mobile landscape) {
+        width: 50%;
+      }
+
+      /*
+       * Link to previous page
+       */
+      &--prev {
+        float: left;
+        width: 25%;
+
+        /*
+         * Title
+         */
+        .md-footer-nav__title {
+
+          /* [mobile portrait -]: Hide title for previous page */
+          @include break-to-device(mobile portrait) {
+            display: none;
+          }
+        }
+      }
+
+      /*
+       * Link to next page
+       */
+      &--next {
+        float: right;
+        width: 75%;
+        text-align: right;
+      }
+    }
+
+    /*
+     * Icon
+     */
+    &__icon {
+      display: inline-block;
+      font-size: 2.4rem;
+      padding: 0.8rem;
+      margin: 0.4rem;
+      cursor: pointer;
+      border-radius: 100%;
+      transition: background .25s;
+
+      /*
+       * Pushed/clicked icon
+       */
+      &:active {
+        background: $md-color-white--lightest;
+      }
+    }
+
+    /*
+     * Title
+     */
+    &__title {
+      position: relative;
+      padding: 0 0.4rem;
+      font-size: 1.8rem;
+      line-height: 4.8rem;
+    }
+
+    /*
+     * Direction
+     */
+    &__direction {
+      position: absolute;
+      left: 0;
+      right: 0;
+      padding: 0 0.4rem;
+      margin-top: -2.0rem;
+      font-size: 1.5rem;
+      color: $md-color-white--light;
+    }
+  }
+}

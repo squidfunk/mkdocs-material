@@ -20,55 +20,45 @@
  * IN THE SOFTWARE.
  */
 
-'use strict';
-
 /* ----------------------------------------------------------------------------
- * Imports
+ * Icon set
  * ------------------------------------------------------------------------- */
 
-import FastClick from 'fastclick';
-import Sidebar from './components/sidebar';
-import ScrollSpy from './components/scrollspy';
+/*
+ * Base icon class
+ */
+.md-icon {
+	font-family: "Icon";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
 
-/* ----------------------------------------------------------------------------
- * Application
- * ------------------------------------------------------------------------- */
+	/* Better Font Rendering */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
 
-/* Initialize application upon DOM ready */
-document.addEventListener('DOMContentLoaded', function() {
-  'use strict';
-
-  /* Test for iOS */
-  Modernizr.addTest('ios', function() {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-  });
-
-  /* Test for web application context */
-  Modernizr.addTest('standalone', function() {
-    return !!navigator.standalone;
-  });
-
-  /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body);
-
-
-  var width = window.matchMedia("(min-width: 1200px)");
-  var handler = function() {
-    if (width.matches) {
-      sidebar.listen();
-    } else {
-      sidebar.unlisten();
-    }
+/*
+ * Build icon set
+ */
+@each $name, $code in (
+  "search":   "e600",
+  "back":     "e601",
+  "link":     "e602",
+  "close":    "e603",
+  "menu":     "e604",
+  "forward":  "e605",
+  "twitter":  "e606",
+  "github":   "e607",
+  "download": "e608",
+  "star":     "e609",
+  "warning":  "e610",
+  "note":     "e611"
+) {
+  .md-icon--#{$name}:before {
+    content: unquote("\"\\#{$code}\"");
   }
-
-  var sidebar = new Sidebar('.md-sidebar--primary');
-  handler(); // check listen!
-
-  var toc = new Sidebar('.md-sidebar--secondary');
-  toc.listen();
-
-  var spy = new ScrollSpy('.md-nav--toc .md-nav__item a');
-  spy.listen();
-
-  window.addEventListener('resize', handler);
-});
+}

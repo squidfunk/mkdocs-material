@@ -41,14 +41,17 @@ var minimage   = require('gulp-image-optimization');
 var modernizr  = require('gulp-modernizr');
 var mqpacker   = require('css-mqpacker');
 var notifier   = require('node-notifier');
+var path       = require('path');
 var plumber    = require('gulp-plumber');
 var postcss    = require('gulp-postcss');
 var rev        = require('gulp-rev');
 var sass       = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
+var stream     = require('webpack-stream');
 var uglify     = require('gulp-uglify');
 var util       = require('gulp-util');
 var vinyl      = require('vinyl-paths');
+var webpack    = require('webpack');
 
 /* ----------------------------------------------------------------------------
  * Locals
@@ -72,9 +75,10 @@ gulp.src = function() {
         util.log(util.colors.red(
           'Error (' + error.plugin + '): ' + error.message
         ));
+        var file = error.relativePath.split('/').pop();
         notifier.notify({
-          title: 'Error (' + error.plugin + ')',
-          message: error.message.split('\n')[0]
+          title: 'Error (' + error.plugin + '): ' + file,
+          message: error.messageOriginal
         });
         this.emit('end');
       }));
@@ -93,9 +97,9 @@ gulp.task('assets:stylesheets', function() {
     .pipe(
       sass({
         includePaths: [
-          'bower_components/bourbon/app/assets/stylesheets/',
-          'bower_components/quantum-colors/',
-          'bower_components/quantum-shadows/'
+          'bower_components/modular-scale/stylesheets',
+          'bower_components/quantum-colors',
+          'bower_components/quantum-shadows'
         ]
       }))
     .pipe(
@@ -105,29 +109,60 @@ gulp.task('assets:stylesheets', function() {
       ]))
     .pipe(gulpif(args.sourcemaps, sourcemaps.write()))
     .pipe(gulpif(args.production, mincss()))
-    .pipe(gulp.dest('material/assets/stylesheets/'));
+    .pipe(gulp.dest('material/assets/stylesheets'));
 });
 
 /*
- * Build javascripts from Bower components and source.
+ * Build javascripts by transpiling ES6 with babel.
  */
 gulp.task('assets:javascripts', function() {
-  return gulp.src([
-
-    /* Bower components */
-    'bower_components/classlist/classList.js',
-    'bower_components/fastclick/lib/fastclick.js',
-    'bower_components/pegasus/dist/pegasus.js',
-    'bower_components/lunr.js/lunr.js',
-
-    /* Application javascripts */
-    'src/assets/javascripts/application.js',
-    'src/assets/javascripts/standalone.js'
-  ]).pipe(gulpif(args.sourcemaps, sourcemaps.init()))
-    .pipe(concat('application.js'))
-    .pipe(gulpif(args.sourcemaps, sourcemaps.write()))
-    .pipe(gulpif(args.production, uglify()))
-    .pipe(gulp.dest('material/assets/javascripts/'));
+  return gulp.src('src/assets/javascripts/**/*.js')
+    .pipe(
+      stream({
+        entry: 'application.js',
+        output: {
+          filename: 'application.js'
+        },
+        module: {
+          loaders: [{
+            loader: 'babel-loader',
+            test: path.join(__dirname, 'src/assets/javascripts'),
+            query: {
+              presets: 'es2015'
+            }
+          }]
+        },
+        plugins: [
+          new webpack.NoErrorsPlugin(),
+          new webpack.ResolverPlugin(
+            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(
+              '.bower.json', ['main']
+            )
+          )
+        ].concat(
+          args.production ? [
+            new webpack.optimize.UglifyJsPlugin({
+              compress: {
+                warnings: false
+              }
+            })
+          ] : []),
+        stats: {
+          colors: true
+        },
+        resolve: {
+          modulesDirectories: [
+            'src/assets/javascripts',
+            'node_modules',
+            'bower_components'
+          ],
+          extensions: [
+            '', '.js'
+          ]
+        },
+        devtool: args.sourcemaps ? 'source-map' : ''
+      }))
+    .pipe(gulp.dest('material/assets/javascripts'));
 });
 
 /*
@@ -138,8 +173,8 @@ gulp.task('assets:modernizr', [
   'assets:javascripts'
 ], function() {
   return gulp.src([
-    'material/assets/stylesheets/application.css',
-    'material/assets/javascripts/application.js'
+    'material/assets/stylesheets/*.css',
+    'material/assets/javascripts/*.js'
   ]).pipe(
       modernizr({
         options: [
@@ -150,7 +185,6 @@ gulp.task('assets:modernizr', [
           'testProp'                   /* Test for properties */
         ]
       }))
-    .pipe(addsrc.append('bower_components/respond/dest/respond.src.js'))
     .pipe(concat('modernizr.js'))
     .pipe(gulpif(args.production, uglify()))
     .pipe(gulp.dest('material/assets/javascripts'));
@@ -168,7 +202,7 @@ gulp.task('assets:static', function() {
         interlaced: true
       })))
     .pipe(addsrc.append('src/assets/{fonts,images}/*.{ico,eot,svg,ttf,woff}'))
-    .pipe(gulp.dest('material/assets/'));
+    .pipe(gulp.dest('material/assets'));
 });
 
 /*

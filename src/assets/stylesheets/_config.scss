@@ -20,55 +20,63 @@
  * IN THE SOFTWARE.
  */
 
-'use strict';
-
 /* ----------------------------------------------------------------------------
- * Imports
+ * Typography
  * ------------------------------------------------------------------------- */
 
-import FastClick from 'fastclick';
-import Sidebar from './components/sidebar';
-import ScrollSpy from './components/scrollspy';
+/*
+ * Modular typographic scale
+ */
+$ms-base: 1.6rem;
+$ms-ratio: $major-third;
 
 /* ----------------------------------------------------------------------------
- * Application
+ * Breakpoints
  * ------------------------------------------------------------------------- */
 
-/* Initialize application upon DOM ready */
-document.addEventListener('DOMContentLoaded', function() {
-  'use strict';
+/*
+ * Device-specific breakpoints
+ */
+$break-devices: (
+  mobile: (
+    portrait:  px2em(220px)  px2em(479px),
+    landscape: px2em(480px)  px2em(719px)
+  ),
+  tablet: (
+    portrait:  px2em(720px)  px2em(959px),
+    landscape: px2em(960px)  px2em(1199px)
+  ),
+  screen: (
+    small:     px2em(1200px) px2em(1599px),
+    medium:    px2em(1600px) px2em(1999px),
+    large:     px2em(2000px)
+  )
+);
 
-  /* Test for iOS */
-  Modernizr.addTest('ios', function() {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-  });
+/* ----------------------------------------------------------------------------
+ * Colors
+ * ------------------------------------------------------------------------- */
 
-  /* Test for web application context */
-  Modernizr.addTest('standalone', function() {
-    return !!navigator.standalone;
-  });
+/*
+ * Primary and accent colors
+ */
+$md-color-primary:         $indigo-500;
+$md-color-primary--light:  $indigo-100;
+$md-color-primary--dark:   $indigo-700;
+$md-color-accent:          $indigo-a200;
 
-  /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body);
+/*
+ * Shades of black
+ */
+$md-color-black:           rgba(black, 0.87);
+$md-color-black--light:    rgba(black, 0.54);
+$md-color-black--lighter:  rgba(black, 0.26);
+$md-color-black--lightest: rgba(black, 0.07);
 
-
-  var width = window.matchMedia("(min-width: 1200px)");
-  var handler = function() {
-    if (width.matches) {
-      sidebar.listen();
-    } else {
-      sidebar.unlisten();
-    }
-  }
-
-  var sidebar = new Sidebar('.md-sidebar--primary');
-  handler(); // check listen!
-
-  var toc = new Sidebar('.md-sidebar--secondary');
-  toc.listen();
-
-  var spy = new ScrollSpy('.md-nav--toc .md-nav__item a');
-  spy.listen();
-
-  window.addEventListener('resize', handler);
-});
+/*
+ * Shades of white
+ */
+$md-color-white:           rgba(white, 1.00);
+$md-color-white--light:    rgba(white, 0.70);
+$md-color-white--lighter:  rgba(white, 0.30);
+$md-color-white--lightest: rgba(white, 0.12);

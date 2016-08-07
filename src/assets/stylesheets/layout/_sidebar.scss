@@ -1,0 +1,166 @@
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Sidebar
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Sidebar content
+ */
+.md-sidebar {
+  position: relative;
+  width: 24.2rem;
+  float: left;
+  overflow: visible;
+
+  /*
+   * Lock sidebar to container height (account for fixed header)
+   */
+  &.md-js__sidebar--locked {
+    position: fixed;
+    top: 5.6rem;
+  }
+
+  /* [tablet landscape -]: Convert navigation to drawer */
+  @include break-to-device(tablet landscape) {
+
+    /*
+     * Render primary sidebar as a slideout container
+     */
+    &--primary {
+      position: fixed;
+      top: 0;
+      width: 24.2em;
+      height: 100%;
+      z-index: 3;
+      background: $md-color-white;
+      transition: transform .25s cubic-bezier(0.4, 0.0, 0.2, 1.0);
+      transform: translate3d(-24.2em, 0, 0);
+
+      /*
+       * Just hide drawer, if browser doesn't support 3D transforms
+       */
+      .no-csstransforms3d & {
+        display: none;
+      }
+
+      /*
+       * Expanded drawer
+       */
+      #md-toggle-drawer:checked ~ .md-container & {
+        transform: translate3d(0, 0, 0);
+
+        /*
+         * Just show drawer, if browser doesn't support 3D transforms
+         */
+        .no-csstransforms3d & {
+          display: block;
+        }
+      }
+    }
+  }
+
+  /*
+   * Secondary sidebar with table of contents
+   */
+  &--secondary {
+    display: none;
+
+    /* [tablet landscape +]: Show table of contents next to body copy */
+    @include break-from-device(tablet landscape) {
+      display: block;
+      float: right;
+
+      /*
+       * Hack to align right in case of locked sidebar
+       */
+      &.md-js__sidebar--locked {
+        margin-left: 100%;
+        transform: translate(-100%, 0);
+
+        /* [screen small +]: Limit to grid */
+        @include break-from-device(screen small) {
+          margin-left: 120rem;
+        }
+      }
+    }
+  }
+
+  /*
+   * Wrapper for scrolling on overflow
+   */
+  &__scrollwrap {
+    margin: 2.4rem 0.4rem;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    /* [tablet landscape +]: Adjust margins */
+    @include break-to-device(tablet landscape) {
+
+      /*
+       * Adjust margins for primary scrollbar
+       */
+      .md-sidebar--primary & {
+        margin: 0;
+      }
+    }
+
+    /*
+     * Limit height to window, if JavaScript is available
+     */
+    .js & {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    /*
+     * Override native scrollbar styles
+     */
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+      height: 0.4rem;
+
+      /*
+       * Style scrollbar thumb
+       */
+      &-thumb {
+        background: $md-color-black--lighter;
+      }
+    }
+  }
+
+  /*
+   * Actual sidebar content
+   */
+  &__inner {
+    padding: 1.2rem;
+
+    /* [screen small +]: Add line for reference */
+    @include break-from-device(screen small) {
+      border-right: px2rem(1px) solid $md-color-black--lightest;
+    }
+  }
+}

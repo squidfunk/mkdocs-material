@@ -29,29 +29,34 @@ repo_name: GitHub
 repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
-copyright: Copyright (c) 2016 Martin Donath
+copyright: 'Copyright &copy 2016 Martin Donath'
 
 # Documentation and theme
 theme_dir: material
+theme: amelia
 
 # Options
 extra:
-  version: 0.2.1
+  version: 0.2.4
   logo: images/logo.png
+  font:
+    text: Ubuntu
+    mono: Ubuntu Mono
   author:
     github: squidfunk
     twitter: squidfunk
 
 # Extensions
 markdown_extensions:
-  - codehilite(css_class=code)
+  - codehilite
   - admonition
   - toc:
-      permalink: '#'
+      permalink: '¶'
 
 # Page tree
 pages:
   - Material: index.md
   - Getting started: getting-started.md
+  - Specimen: specimen.md
   - Customization: customization.md
   - License: license.md

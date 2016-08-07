@@ -25,156 +25,71 @@
         <meta name="author" content="{{ site_author }}">
       {% endif %}
     {% endblock %}
-    <meta property="og:url" content="{{ canonical_url }}">
-    <meta property="og:title" content="{{ site_name }}">
-    <meta property="og:image" content="{{ canonical_url }}/{{ base_url }}/{{ config.extra.logo }}">
-    <meta name="apple-mobile-web-app-title" content="{{ site_name }}">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    {% if config.extra.logo %}
-      <link rel="apple-touch-icon" href="{{ base_url }}/{{ config.extra.logo }}">
-    {% endif %}
-    {% set icon = icon | default("assets/images/favicon-e565ddfa3b.ico") %}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ base_url }}/{{ icon }}">
-    <link rel="icon" type="image/x-icon" href="{{ base_url }}/{{ icon }}">
     <style>
       @font-face {
-      	font-family: 'Icon';
-      	src: url('{{ base_url }}/assets/fonts/icon.eot?52m981');
-      	src: url('{{ base_url }}/assets/fonts/icon.eot?#iefix52m981')
-               format('embedded-opentype'),
-      		   url('{{ base_url }}/assets/fonts/icon.woff?52m981')
-               format('woff'),
-      		   url('{{ base_url }}/assets/fonts/icon.ttf?52m981')
-               format('truetype'),
-      		   url('{{ base_url }}/assets/fonts/icon.svg?52m981#icon')
-               format('svg');
+      	font-family: "Icon";
+      	src: url({{ base_url }}/assets/fonts/icon.eot?52m981);
+      	src: url({{ base_url }}/assets/fonts/icon.eot?#iefix52m981)
+                 format("embedded-opentype"),
+      		   url({{ base_url }}/assets/fonts/icon.woff?52m981)
+                 format("woff"),
+      		   url({{ base_url }}/assets/fonts/icon.ttf?52m981)
+                 format("truetype"),
+      		   url({{ base_url }}/assets/fonts/icon.svg?52m981#icon)
+                 format("svg");
       	font-weight: normal;
       	font-style: normal;
       }
     </style>
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-20d5debb47.css">
-    {% if config.extra.palette %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/palettes-05ab2406df.css">
-    {% endif %}
-    {% if config.extra.font != "none" %}
-      {% set text = config.extra.get("font", {}).text | default("Ubuntu") %}
-      {% set code = config.extra.get("font", {}).code | default("Ubuntu Mono") %}
-      {% set font = text + ':400,700|' + code | replace(' ', '+') %}
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ font }}">
-      <style>
-        body, input {
-          font-family: '{{ text }}', Helvetica, Arial, sans-serif;
-        }
-        pre, code {
-          font-family: '{{ code }}', 'Courier New', 'Courier', monospace;
-        }
-      </style>
-    {% endif %}
+    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-fe75383308.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+300,400,700|Roboto+Mono">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
-    <script src="{{ base_url }}/assets/javascripts/modernizr-4ab42b99fd.js"></script>
-    {% block extrahead %}{% endblock %}
+    <script src="{{ base_url }}/assets/javascripts/modernizr-d1e05123d4.js"></script>
   </head>
-  {% set palette = config.extra.get("palette", {}) %}
-  {% set primary = palette.primary | replace(' ', '-') | lower %}
-  {% set accent  = palette.accent  | replace(' ', '-') | lower %}
-  <body class="{% if primary %}palette-primary-{{ primary }}{% endif %} {% if accent %}palette-accent-{{ accent }}{% endif %}">
-    {% if repo_name == "GitHub" and repo_url %}
-      {% set repo_id = repo_url | replace("https://github.com/", "") %}
-      {% if repo_id[-1:] == "/" %}
-        {% set repo_id = repo_id[:-1] %}
-      {% endif %}
-    {% endif %}
-    <div class="backdrop">
-      <div class="backdrop-paper"></div>
-    </div>
-    <input class="toggle" type="checkbox" id="toggle-drawer">
-    <input class="toggle" type="checkbox" id="toggle-search">
-    <label class="toggle-button overlay" for="toggle-drawer"></label>
-    <header class="header">
-      {% include "header.html" %}
-    </header>
-    <main class="main">
-      {% set h1 = "\x3ch1 id=" in content %}
-      <div class="drawer">
-        {% include "drawer.html" %}
-      </div>
-      <article class="article">
-        <div class="wrapper">
-          {% if not h1 %}
-            <h1>{{ page_title | default(site_name, true)}}</h1>
+  <body>
+    <input class="md-toggle" type="checkbox" id="md-toggle-drawer">
+    <input class="md-toggle" type="checkbox" id="md-toggle-search">
+    <label class="md-overlay" for="md-toggle-drawer"></label>
+    {% include "header.html" %}
+    <div class="md-container">
+      <main class="md-main">
+        <div class="md-grid md-main__inner">
+          {% set h1 = "\x3ch1 id=" in content %}
+          {% if nav %}
+            {% include "nav.html" %}
           {% endif %}
-          {{ content }}
-          <aside class="copyright" role="note">
-            {% if copyright %}
-              {{ copyright }} &ndash;
-            {% endif %}
-            Documentation built with
-            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
-            using the
-            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
-              Material
-            </a>
-            theme.
-          </aside>
-          {% block footer %}
-            <footer class="footer">
-              {% include "footer.html" %}
-            </footer>
-          {% endblock %}
-        </div>
-      </article>
-      <div class="results" role="status" aria-live="polite">
-        <div class="scrollable">
-          <div class="wrapper">
-            <div class="meta"></div>
-            <div class="list"></div>
+          {% if toc %}
+            {% include "toc.html" %}
+          {% endif %}
+          <div class="md-content md-content--typeset">
+            <article class="md-content__inner">
+              {{ content }}
+              <hr>
+              <small class="md-content__copyright">
+                {% if copyright %}
+                  {{ copyright }} &ndash;
+                {% endif %}
+                This document was created with
+                <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+                and the
+                <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">Material</a>
+                theme.
+              </small>
+            </article>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+      {% include "footer.html" %}
+    </div>
     <script>
       var base_url = '{{ base_url }}';
-      var repo_id  = '{{ repo_id }}';
+      var repo_url = '{{ repo_url }}';
     </script>
-    <script src="{{ base_url }}/assets/javascripts/application-997097ee0c.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/application-a7f7c32389.js"></script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}
-    {% if google_analytics %}
-      <script>
-        (function(i,s,o,g,r,a,m){
-          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
-          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
-          m.parentNode.insertBefore(a,m)
-        })(window, document,
-          'script', '//www.google-analytics.com/analytics.js', 'ga');
-        /* General initialization */
-        ga('create', '{{ google_analytics[0] }}', '{{ google_analytics[1] }}');
-        ga('set', 'anonymizeIp', true);
-        ga('send', 'pageview');
-        /* Track outbound links */
-        var buttons = document.querySelectorAll('a');
-        Array.prototype.map.call(buttons, function(item) {
-          if (item.host != document.location.host) {
-            item.addEventListener('click', function() {
-              var action = item.getAttribute('data-action') || 'follow';
-              ga('send', 'event', 'outbound', action, item.href);
-            });
-          }
-        });
-        /* Register handler to log search on blur */
-        var query = document.querySelector('.query');
-        query.addEventListener('blur', function() {
-          if (this.value) {
-            var path = document.location.pathname;
-            ga('send', 'pageview', path + '?q=' + this.value);
-          }
-        });
-      </script>
-    {% endif %}
   </body>
 </html>

@@ -16,8 +16,14 @@
     "url": "https://github.com/squidfunk/mkdocs-material.git"
   },
   "private": true,
+  "dependencies": {
+    "fastclick": "^1.0.6",
+    "whatwg-fetch": "^1.0.0"
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
     "css-mqpacker": "^4.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
@@ -40,6 +46,8 @@
     "gulp-util": "^3.0.7",
     "node-notifier": "^4.5.0",
     "vinyl-paths": "^2.1.0",
+    "webpack": "^1.13.1",
+    "webpack-stream": "^3.2.0",
     "yargs": "^3.32.0"
   }
 }

@@ -1,42 +1,38 @@
-{% if include_next_prev %}
-  <nav class="pagination" aria-label="Footer">
-    <div class="previous">
-      {% if previous_page %}
-        <a href="{{ previous_page.url }}" title="{{ previous_page.title }}">
-          <span class="direction">
-            {{ config.extra.get("i18n", {}).prev | default("Previous") }}
-          </span>
-          <div class="page">
-            <div class="button button-previous" role="button" aria-label="Previous">
-              <i class="icon icon-back"></i>
+<footer class="md-footer">
+  {% if previous_page or next_page %}
+    <div class="md-footer-pagination">
+      <nav class="md-grid md-footer-nav">
+        {% if previous_page %}
+          <a href="{{ previous_page.url }}" title="{{ previous_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--back md-footer-nav__icon"></i>
             </div>
-            <div class="stretch">
-              <div class="title">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
                 {{ previous_page.title }}
-              </div>
+              </span>
             </div>
-          </div>
-        </a>
-      {% endif %}
-    </div>
-    <div class="next">
-      {% if next_page %}
-        <a href="{{ next_page.url }}" title="{{ next_page.title }}">
-          <span class="direction">
-            {{ config.extra.get("i18n", {}).next | default("Next") }}
-          </span>
-          <div class="page">
-            <div class="stretch">
-              <div class="title">
+          </a>
+        {% endif %}
+        {% if next_page %}
+          <a href="{{ next_page.url }}" title="{{ next_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
                 {{ next_page.title }}
-              </div>
+              </span>
             </div>
-            <div class="button button-next" role="button" aria-label="Next">
-              <i class="icon icon-forward"></i>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--forward md-footer-nav__icon"></i>
             </div>
-          </div>
-        </a>
-      {% endif %}
+          </a>
+        {% endif %}
+      </nav>
     </div>
-  </nav>
-{% endif %}
+  {% endif %}
+</footer>

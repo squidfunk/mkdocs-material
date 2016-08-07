@@ -20,55 +20,58 @@
  * IN THE SOFTWARE.
  */
 
-'use strict';
-
 /* ----------------------------------------------------------------------------
- * Imports
+ * Header
  * ------------------------------------------------------------------------- */
 
-import FastClick from 'fastclick';
-import Sidebar from './components/sidebar';
-import ScrollSpy from './components/scrollspy';
+/*
+ * Application header (stays always on top)
+ */
+.md-header {
+  @include drop-shadow(1);
 
-/* ----------------------------------------------------------------------------
- * Application
- * ------------------------------------------------------------------------- */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5.6rem;
+  z-index: 1;
+  background: $md-color-primary;
+  color: $md-color-white;
 
-/* Initialize application upon DOM ready */
-document.addEventListener('DOMContentLoaded', function() {
-  'use strict';
+  /*
+   * Navigation within header
+   */
+  &-nav {
+    padding: 0.4rem;
 
-  /* Test for iOS */
-  Modernizr.addTest('ios', function() {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-  });
+    /*
+     * Icon
+     */
+    &__icon {
+      display: inline-block;
+      font-size: 2.4rem;
+      padding: 0.8rem;
+      margin: 0.4rem;
+      cursor: pointer;
+      border-radius: 100%;
+      transition: background .25s;
 
-  /* Test for web application context */
-  Modernizr.addTest('standalone', function() {
-    return !!navigator.standalone;
-  });
+      /*
+       * Pushed/clicked icon
+       */
+      &:active {
+        background: $md-color-white--lightest;
+      }
+    }
 
-  /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body);
-
-
-  var width = window.matchMedia("(min-width: 1200px)");
-  var handler = function() {
-    if (width.matches) {
-      sidebar.listen();
-    } else {
-      sidebar.unlisten();
+    /*
+     * Title
+     */
+    &__title {
+      padding: 0 2.0rem;
+      font-size: 1.8rem;
+      line-height: 4.8rem;
     }
   }
-
-  var sidebar = new Sidebar('.md-sidebar--primary');
-  handler(); // check listen!
-
-  var toc = new Sidebar('.md-sidebar--secondary');
-  toc.listen();
-
-  var spy = new ScrollSpy('.md-nav--toc .md-nav__item a');
-  spy.listen();
-
-  window.addEventListener('resize', handler);
-});
+}

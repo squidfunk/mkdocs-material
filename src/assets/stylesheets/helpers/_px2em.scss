@@ -20,55 +20,35 @@
  * IN THE SOFTWARE.
  */
 
-'use strict';
-
 /* ----------------------------------------------------------------------------
- * Imports
+ * Pixel conversion helpers
  * ------------------------------------------------------------------------- */
 
-import FastClick from 'fastclick';
-import Sidebar from './components/sidebar';
-import ScrollSpy from './components/scrollspy';
-
-/* ----------------------------------------------------------------------------
- * Application
- * ------------------------------------------------------------------------- */
-
-/* Initialize application upon DOM ready */
-document.addEventListener('DOMContentLoaded', function() {
-  'use strict';
-
-  /* Test for iOS */
-  Modernizr.addTest('ios', function() {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-  });
-
-  /* Test for web application context */
-  Modernizr.addTest('standalone', function() {
-    return !!navigator.standalone;
-  });
-
-  /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body);
-
-
-  var width = window.matchMedia("(min-width: 1200px)");
-  var handler = function() {
-    if (width.matches) {
-      sidebar.listen();
-    } else {
-      sidebar.unlisten();
-    }
+/*
+ * Convert font size in px to em.
+ *
+ * @param  {Number} $size Font size in px
+ * @param  {Number} $base Base font size
+ * @return {Number}       Font size in em
+ */
+@function px2em($size, $base: 16px) {
+  @if unit($size) == px {
+    @return ($size / $base) * 1em;
+  } @else {
+    @error "Invalid unit: #{$size} - must be px";
   }
+}
 
-  var sidebar = new Sidebar('.md-sidebar--primary');
-  handler(); // check listen!
-
-  var toc = new Sidebar('.md-sidebar--secondary');
-  toc.listen();
-
-  var spy = new ScrollSpy('.md-nav--toc .md-nav__item a');
-  spy.listen();
-
-  window.addEventListener('resize', handler);
-});
+/*
+ * Convert font size in px to rem.
+ *
+ * @param  {Number} $size Font size in px
+ * @return {Number}       Font size in rem
+ */
+@function px2rem($size, $base: 10px) {
+  @if unit($size) == px {
+    @return ($size / $base) * 1rem;
+  } @else {
+    @error "Invalid unit: #{$size} - must be px";
+  }
+}

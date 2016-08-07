@@ -20,55 +20,90 @@
  * IN THE SOFTWARE.
  */
 
-'use strict';
-
 /* ----------------------------------------------------------------------------
- * Imports
+ * Navigation
  * ------------------------------------------------------------------------- */
 
-import FastClick from 'fastclick';
-import Sidebar from './components/sidebar';
-import ScrollSpy from './components/scrollspy';
+/*
+ * Nested navigation
+ */
+.md-nav {
 
-/* ----------------------------------------------------------------------------
- * Application
- * ------------------------------------------------------------------------- */
+  /*
+   * Set font sizes
+   */
+  &, h3 {
+    font-size: ms(-1);
+    line-height: 1.2;
+  }
 
-/* Initialize application upon DOM ready */
-document.addEventListener('DOMContentLoaded', function() {
-  'use strict';
+  /*
+   * Table of contents
+   */
+  &--toc {
+    border-left: px2rem(4px) solid $md-color-primary;
+  }
 
-  /* Test for iOS */
-  Modernizr.addTest('ios', function() {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-  });
+  /*
+   * List of items
+   */
+  &__list {
+    list-style: none;
 
-  /* Test for web application context */
-  Modernizr.addTest('standalone', function() {
-    return !!navigator.standalone;
-  });
+    /*
+     * 2nd+ level list
+     */
+    & & {
+      margin-left: 1.2rem;
+    }
 
-  /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body);
+    /*
+     * Hide list by default
+     */
+    .md-nav__toggle ~ & {
+      max-height: 0;
+      overflow: hidden;
+    }
 
-
-  var width = window.matchMedia("(min-width: 1200px)");
-  var handler = function() {
-    if (width.matches) {
-      sidebar.listen();
-    } else {
-      sidebar.unlisten();
+    /*
+     * Expand list, if toggle is checked
+     */
+    .md-nav__toggle:checked ~ & {
+      max-height: 100%;
     }
   }
 
-  var sidebar = new Sidebar('.md-sidebar--primary');
-  handler(); // check listen!
+  /*
+   * List item
+   */
+  &__item {
+    margin: 0.8rem 0 0;
+    line-height: 1.6rem;
+  }
 
-  var toc = new Sidebar('.md-sidebar--secondary');
-  toc.listen();
+  /*
+   * Link inside item
+   */
+  &__link {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color .125s;
 
-  var spy = new ScrollSpy('.md-nav--toc .md-nav__item a');
-  spy.listen();
+    /*
+     * Marked item
+     */
+    &--marked {
+      color: $md-color-black--light;
+    }
 
-  window.addEventListener('resize', handler);
-});
+    /*
+     * Current or hovered item
+     */
+    &:hover,
+    &:active,
+    &--active {
+      color: $md-color-accent;
+    }
+  }
+}

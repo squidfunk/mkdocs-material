@@ -1,4 +1,4 @@
-# Material for MkDocs
+# Material <small>for MkDocs</small>
 
 ## Beautiful documentation
 
@@ -6,8 +6,6 @@ Material is a theme for [MkDocs][], an excellent static site generator geared
 towards project documentation. It is built using Google's [material design][]
 guidelines, full responsive, optimized for touch and pointer devices as well
 as all sorts of screen sizes.
-
-![Material Screenshot](images/screen.png)
 
 Material is very lightweight – it is built from scratch using Javascript and
 CSS that weighs less than 30kb (minified, gzipped and excluding Google Fonts

@@ -21,35 +21,5 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Dependencies
+ * Admonition extension
  * ------------------------------------------------------------------------- */
-
-@import "modular-scale";
-@import "quantum-colors";
-@import "quantum-shadows";
-
-/* ----------------------------------------------------------------------------
- * Application
- * ------------------------------------------------------------------------- */
-
-@import "helpers/break";
-@import "helpers/px2em";
-
-@import "config";
-
-@import "base/icons";
-@import "base/reset";
-@import "base/typeset";
-
-@import "layout/base";
-@import "layout/content";
-@import "layout/header";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/sidebar";
-
-@import "extensions/admonition";
-@import "extensions/codehilite";
-@import "extensions/permalinks";
-
-@import "shame";

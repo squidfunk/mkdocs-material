@@ -16,15 +16,8 @@
     "node_modules"
   ],
   "private": true,
-  "dependencies": {
-    "classlist": "^2014.12.13",
-    "fastclick": "^1.0.6",
-    "lunr.js": "^0.6.0",
-    "pegasus": "^0.3.2",
-    "respond": "^1.4.2"
-  },
   "devDependencies": {
-    "bourbon": "^4.2.6",
+    "modular-scale": "^2.1.1",
     "quantum-colors": "^1.0.1",
     "quantum-shadows": "^1.0.0"
   }

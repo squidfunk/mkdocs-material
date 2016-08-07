@@ -1,32 +1,13 @@
-{% if nav_item.children %}
-  <li>
-    <span class="section">{{ nav_item.title }}</span>
-    <ul>
-      {% for nav_item in nav_item.children %}
-        {% include "nav.html" %}
-      {% endfor %}
-    </ul>
-  </li>
-{% else %}
-  <li>
-    <a class="{% if nav_item.active %}current{% endif %}" title="{{ nav_item.title }}" href="{{ nav_item.url }}">
-      {{ nav_item.title }}
-    </a>
-    {% if nav_item == current_page %}
-      {% if h1 %}
-        {% set toc = (toc | first).children %}
-      {% endif %}
-      {% if toc and (toc | first) %}
-        <ul>
-          {% for toc_item in toc %}
-            <li class="anchor">
-              <a title="{{ toc_item.title }}" href="{{ toc_item.url }}">
-                {{ toc_item.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endif %}
-  </li>
-{% endif %}
+<div class="md-sidebar md-sidebar--primary md-js__sidebar">
+  <div class="md-sidebar__scrollwrap">
+    <nav class="md-sidebar__inner md-nav">
+      <h3>Navigation</h3>
+      <ul class="md-nav__list">
+        {% for nav_item in nav %}
+          {% set path = "md-toggle-nav-" + loop.index | string %}
+          {% include "nav-item.html" %}
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</div>

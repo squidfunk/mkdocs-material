@@ -20,55 +20,41 @@
  * IN THE SOFTWARE.
  */
 
-'use strict';
-
 /* ----------------------------------------------------------------------------
- * Imports
+ * Main content
  * ------------------------------------------------------------------------- */
 
-import FastClick from 'fastclick';
-import Sidebar from './components/sidebar';
-import ScrollSpy from './components/scrollspy';
+/*
+ * Content container
+ */
+.md-content {
 
-/* ----------------------------------------------------------------------------
- * Application
- * ------------------------------------------------------------------------- */
+  /* [tablet landscape +]: Add space for table of contents */
+  @include break-from-device(tablet landscape) {
+    margin-right: 24.2rem;
+  }
 
-/* Initialize application upon DOM ready */
-document.addEventListener('DOMContentLoaded', function() {
-  'use strict';
+  /* [screen small +]: Add space for table of contents */
+  @include break-from-device(screen small) {
+    margin-left: 24.2rem;
+  }
 
-  /* Test for iOS */
-  Modernizr.addTest('ios', function() {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-  });
+  /*
+   * Define padding
+   */
+  &__inner {
+    margin: 2.4rem 1.6rem;
 
-  /* Test for web application context */
-  Modernizr.addTest('standalone', function() {
-    return !!navigator.standalone;
-  });
-
-  /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body);
-
-
-  var width = window.matchMedia("(min-width: 1200px)");
-  var handler = function() {
-    if (width.matches) {
-      sidebar.listen();
-    } else {
-      sidebar.unlisten();
+    /* [screen small +]: Add space for table of contents */
+    @include break-from-device(screen small) {
+      margin: 2.4rem 2.4rem;
     }
   }
 
-  var sidebar = new Sidebar('.md-sidebar--primary');
-  handler(); // check listen!
-
-  var toc = new Sidebar('.md-sidebar--secondary');
-  toc.listen();
-
-  var spy = new ScrollSpy('.md-nav--toc .md-nav__item a');
-  spy.listen();
-
-  window.addEventListener('resize', handler);
-});
+  /*
+   * Copyright and theme information
+   */
+  &__copyright {
+    display: block;
+  }
+}

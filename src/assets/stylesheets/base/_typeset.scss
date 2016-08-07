@@ -1,0 +1,334 @@
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Font definitions
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Default fonts
+ */
+body, kbd {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-feature-settings: "kern", "onum", "liga";
+
+  /* Enable font-smoothing in Webkit and FF */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /*
+   * Use system fonts, if browser doesn't support webfonts
+   */
+  .no-fontface & {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
+
+/*
+ * Proportionally spaced fonts
+ */
+pre, code {
+  font-family: "Roboto Mono", "Courier New", Courier, monospace;
+
+  /*
+   * Use system fonts, if browser doesn't support webfonts
+   */
+  .no-fontface & {
+    font-family: "Courier New", Courier, monospace;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Typeset
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Content that is typeset
+ */
+.md-content--typeset {
+  font-size: ms(0);
+  line-height: 1.6;
+
+  /*
+   * Body copy
+   */
+  p {
+    margin: 2.0rem 0;
+  }
+
+  /*
+   * 1st level headline
+   */
+  h1 {
+    font-size: ms(3);
+    font-weight: 300;
+    line-height: 1.3;
+    letter-spacing: -.01em;
+    color: $md-color-black--light;
+
+    /*
+     * Correct anchor offset
+     */
+    &:before {
+      content: " ";
+      display: block;
+      padding-top: (5.6rem + 2.4rem + 3.0rem);
+      margin-top: -(5.6rem + 2.4rem + 3.0rem);
+    }
+  }
+
+  /*
+   * 2nd level headline
+   */
+  h2 {
+    font-size: ms(2);
+    font-weight: 300;
+    line-height: 1.4;
+    margin-top: 4.0rem;
+    letter-spacing: -.01em;
+
+    /*
+     * Correct anchor offset
+     */
+    &:before {
+      content: " ";
+      display: block;
+      padding-top: (5.6rem + 2.4rem + 0.2rem);
+      margin-top: -(5.6rem + 2.4rem + 0.2rem);
+    }
+  }
+
+  /*
+   * 3rd level headline
+   */
+  h3 {
+    font-size: ms(1);
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 3.2rem;
+    letter-spacing: -.01em;
+
+    /*
+     * Correct anchor offset
+     */
+    &:before {
+      content: " ";
+      display: block;
+      padding-top: (5.6rem + 2.4rem + 0.4rem);
+      margin-top: -(5.6rem + 2.4rem + 0.4rem);
+    }
+  }
+
+  /*
+   * 2nd + 3rd level headline
+   */
+  h2 + h3 {
+    margin-top: 1.6rem;
+  }
+
+  /*
+   * 4th, 5th and 6th level headline
+   */
+  h4 {
+    font-size: ms(0);
+    font-weight: 700;
+    margin-top: 1.6rem;
+    letter-spacing: -.01em;
+
+    /*
+     * Correct anchor offset
+     */
+    &:before {
+      position: relative;
+      z-index: -4;
+      content: " ";
+      display: block;
+      padding-top: (5.6rem + 2.4rem + 0.8rem);
+      margin-top: -(5.6rem + 2.4rem + 0.8rem);
+    }
+  }
+
+  /*
+   * 5th and 6th level headline
+   */
+  h5, h6 {
+    font-size: ms(-1);
+    font-weight: 700;
+    margin-top: 1.6rem;
+    letter-spacing: -.01em;
+    color: $md-color-black--light;
+
+    /*
+     * Correct anchor offset
+     */
+    &:before {
+      position: relative;
+      z-index: -5;
+      content: " ";
+      display: block;
+      padding-top: (5.6rem + 2.4rem + 1.0rem);
+      margin-top: -(5.6rem + 2.4rem + 1.0rem);
+    }
+  }
+
+  /*
+   * Overrides for 5th level headline
+   */
+  h5 {
+    text-transform: uppercase;
+  }
+
+  /*
+   * Links
+   */
+  a {
+    color: $md-color-primary;
+    transition: color .125s;
+
+    /*
+     * Active links
+     */
+    &:hover,
+    &:active {
+      color: $md-color-accent;
+    }
+  }
+
+  /*
+   * Inline code blocks
+   */
+  code {
+    font-size: 85%;
+    font-weight: 400;
+    word-break: break-word;
+    padding: 0.1rem 0.4rem;
+    background: #f7f7f7;
+    color: #37474f;
+  }
+
+  /*
+   * Formatted code blocks
+   */
+  pre {
+    font-size: 85%;
+    line-height: 1.4;
+    padding: 1.0rem 1.2rem;
+    overflow-x: scroll;
+    background: #f7f7f7;
+    color: #37474f;
+  }
+
+  /*
+   * Keyboard tags
+   */
+  kbd {
+    display: inline-block;
+    font-size: 85%;
+    line-height: 1.0rem;
+    word-break: break-word;
+    padding: 0.4rem 0.5rem 0.5rem;
+    vertical-align: 0.1rem;
+    color: #555;
+    background-color: #FCFCFC;
+    border: px2rem(1px) solid #CCCCCC;
+    border-bottom-color: #BBBBBB;
+    border-radius: px2rem(3px);
+    box-shadow: 0 #{-(px2rem(1px))} 0 #BBBBBB inset;
+  }
+
+  /*
+   * Smaller text
+   */
+  small {
+    color: $md-color-black--light;
+  }
+
+  /*
+   * Horizontal separators
+   */
+  hr {
+    margin: 2.4rem 0;
+    border-bottom: px2rem(1px) dotted $md-color-black--lighter;
+  }
+
+  /*
+   * Blockquotes, possibly nested
+   */
+  blockquote {
+    padding-left: 1.2rem;
+    border-left: px2rem(4px) solid $md-color-black--lighter;
+    color: $md-color-black--light;
+  }
+
+  /*
+   * Unordered lists
+   */
+  ul {
+    list-style-type: disc;
+  }
+
+  /*
+   * Ordered lists
+   */
+  ol ol {
+    list-style-type: lower-alpha;
+
+    /*
+     * Triply nested ordered list
+     */
+    ol {
+      list-style-type: lower-roman;
+    }
+  }
+
+  /*
+   * Unordered and ordered lists
+   */
+  ul, ol {
+    margin-left: 1.0rem;
+
+    /*
+     * List elements
+     */
+    li {
+      margin-bottom: 1.0rem;
+      margin-left: 2.0rem;
+
+      /*
+       * Remove margin on last element
+       */
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      /*
+       * Nested lists
+       */
+      ul, ol {
+        padding-top: 1.0rem;
+        margin-bottom: 1.0rem;
+        margin-left: 1.0rem;
+      }
+    }
+  }
+}

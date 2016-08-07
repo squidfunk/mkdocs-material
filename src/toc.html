@@ -20,17 +20,30 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Main navigation -->
-<div class="md-sidebar md-sidebar--primary md-js__sidebar">
+<!-- Table of contents -->
+<div class="md-sidebar md-sidebar--secondary md-js__sidebar">
   <div class="md-sidebar__scrollwrap">
-    <nav class="md-sidebar__inner md-nav">
-      <h3>Navigation</h3>
-      <ul class="md-nav__list">
-        {% for nav_item in nav %}
-          {% set path = "md-toggle-nav-" + loop.index | string %}
-          {% include "nav-item.html" %}
-        {% endfor %}
-      </ul>
+    <nav class="md-sidebar__inner md-nav md-nav--toc">
+
+      <!--
+        The top-level anchor must be skipped if the article contains a h1
+        headline, since it would be redundant to the link to the current page
+        that is located just above the anchor. Therefore we directly continue
+        with the children of the anchor.
+      -->
+      {% if h1 %}
+        {% set toc = (toc | first).children %}
+      {% endif %}
+
+      <!-- Render item list -->
+      {% if toc and (toc | first) %}
+        <h3>Table of contents</h3>
+        <ul class="md-nav__list">
+          {% for toc_item in toc %}
+            {% include "toc-item.html" %}
+          {% endfor %}
+        </ul>
+      {% endif %}
     </nav>
   </div>
 </div>

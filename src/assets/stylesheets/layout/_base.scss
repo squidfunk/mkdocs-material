@@ -1,0 +1,171 @@
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Grid
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Stretch container to viewport
+ */
+html {
+  height: 100%;
+}
+
+/*
+ * Stretch body to container and leave room for footer.
+ */
+body {
+  position: relative;
+  min-height: 100%;
+}
+
+/*
+ * Horizontal separators
+ */
+hr {
+  display: block;
+  height: 1px;
+  padding: 0;
+  border: 0;
+}
+
+/*
+ * Template-wide grid
+ */
+.md-grid {
+  max-width: 120rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+ * Prevent collapse of margin when setting margin on child element
+ */
+.md-container,
+.md-main {
+  overflow: auto;
+}
+
+/*
+ * Add top spacing to acount for header
+ */
+.md-main {
+  margin-top: 5.6rem;
+
+  /*
+   * bottom spacing to account for footer
+   */
+  &__inner {
+    margin-top: 3.0rem;
+    margin-bottom: 9.2rem;
+    overflow: auto;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Navigational elements
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Toggle checkbox (should never be visibile)
+ */
+.md-toggle {
+  display: none !important;
+}
+
+/*
+ * Overlay below expanded drawer
+ */
+.md-overlay {
+  position: fixed;
+  top: 0;
+  width: 0;
+  height: 0;
+  z-index: 2;
+  opacity: 0;
+  background: $md-color-black--light;
+  transition: opacity .25s,
+              width    .0s .25s,
+              height   .0s .25s;
+
+  /* [tablet landscape -]: Trigger overlay */
+  @include break-to-device(tablet landscape) {
+
+    /*
+     * Expanded drawer
+     */
+    #md-toggle-drawer:checked ~ & {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      transition: opacity .25s,
+                  width    .0s,
+                  height   .0s;
+    }
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Flexible elements, implemented with table layout
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Flexible layout container
+ */
+.md-flex {
+  display: table;
+
+  /*
+   * Flexible layout container cell/element
+   */
+  &__cell {
+    display: table-cell;
+    vertical-align: top;
+
+    /*
+     * Shrink to minimum width
+     */
+    &--shrink {
+      width: 1%;
+    }
+
+    /*
+     * Stretch to maximum width
+     */
+    &--stretch {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+    }
+  }
+
+  /*
+   * Apply ellipsis in case of overflowing text
+   */
+  &__ellipsis {
+    display: table-cell;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

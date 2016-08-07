@@ -123,8 +123,6 @@ _deep purple_, _indigo_, _blue_, _light blue_, _cyan_, _teal_, _green_, _light
 green_, _lime_, _yellow_, _amber_, _orange_, _deep orange_, _brown_, _grey_ and
 _blue grey_. The last three colors can only be used as a primary color.
 
-![Material Screenshot](images/colors.png)
-
 If the color is set via this configuration, an additional CSS file called
 `palettes.css` is included that defines the color palettes. If you want to
 keep things lean, clone the repository and recompile the theme with your
@@ -203,14 +201,14 @@ MkDocs supports several [Markdown extensions][]. The following extensions are
 not enabled by default (see the link for which are enabled by default), so you
 have to switch them on explicitly.
 
-### CodeHilite (recommended)
+### CodeHilite <small>recommended</small>
 
 This extensions adds code highlighting to fenced code blocks. It might not be
 the best code highlighter, but it works without JavaScript and on the server:
 
 ``` yaml
 markdown_extensions:
-  - codehilite(css_class=code)
+  - codehilite
 ```
 
 If you want more extensive highlighting, you can use a JavaScript library like
@@ -257,20 +255,28 @@ The Material template adds a neutral color for the `note` class and a red color
 for the `warning` class. You can also add a custom title:
 
 ``` markdown
-!!! warning "Don't try this at home"
-    If you do, you will regret it.
+!!! warning
+    MkDocs supports several [Markdown extensions][]. The following extensions are
+    not enabled by default (see the link for which are enabled by default), so you
+    have to switch them on explicitly.
 ```
 
 This will print:
 
-!!! warning "Don't try this at home"
-    If you do, you will regret it.
+!!! warning
+    MkDocs supports several [Markdown extensions][]. The following extensions are
+    not enabled by default (see the link for which are enabled by default), so you
+    have to switch them on explicitly.
 
 More colors can be freely defined.
 
+> MkDocs supports several [Markdown extensions][]. The following extensions are
+> not enabled by default (see the link for which are enabled by default), so you
+> have to switch them on explicitly.
+
 ## Full example
 
-Below is a full example configuration for a mkdocs.yml:
+Below is a full example configuration for a `mkdocs.yml`:
 
 ``` yaml
 # Project information
