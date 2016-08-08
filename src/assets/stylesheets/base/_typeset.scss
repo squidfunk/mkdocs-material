@@ -101,10 +101,10 @@ pre, code {
    * 2nd level headline
    */
   h2 {
+    margin-top: 4.0rem;
     font-size: ms(2);
     font-weight: 300;
     line-height: 1.4;
-    margin-top: 4.0rem;
     letter-spacing: -.01em;
 
     /*
@@ -122,10 +122,10 @@ pre, code {
    * 3rd level headline
    */
   h3 {
+    margin-top: 3.2rem;
     font-size: ms(1);
     font-weight: 400;
     line-height: 1.5;
-    margin-top: 3.2rem;
     letter-spacing: -.01em;
 
     /*
@@ -150,17 +150,15 @@ pre, code {
    * 4th, 5th and 6th level headline
    */
   h4 {
+    margin-top: 1.6rem;
     font-size: ms(0);
     font-weight: 700;
-    margin-top: 1.6rem;
     letter-spacing: -.01em;
 
     /*
      * Correct anchor offset
      */
     &:before {
-      position: relative;
-      z-index: -4;
       content: " ";
       display: block;
       padding-top: (5.6rem + 2.4rem + 0.8rem);
@@ -172,9 +170,9 @@ pre, code {
    * 5th and 6th level headline
    */
   h5, h6 {
+    margin-top: 1.6rem;
     font-size: ms(-1);
     font-weight: 700;
-    margin-top: 1.6rem;
     letter-spacing: -.01em;
     color: $md-color-black--light;
 
@@ -182,8 +180,6 @@ pre, code {
      * Correct anchor offset
      */
     &:before {
-      position: relative;
-      z-index: -5;
       content: " ";
       display: block;
       padding-top: (5.6rem + 2.4rem + 1.0rem);
@@ -218,24 +214,24 @@ pre, code {
    * Inline code blocks
    */
   code {
+    padding: 0.1rem 0.4rem;
     font-size: 85%;
     font-weight: 400;
     word-break: break-word;
-    padding: 0.1rem 0.4rem;
-    background: #f7f7f7;
-    color: #37474f;
+    background: #F7F7F7;
+    color: #37474F;
   }
 
   /*
    * Formatted code blocks
    */
   pre {
-    font-size: 85%;
-    line-height: 1.4;
     padding: 1.0rem 1.2rem;
     overflow-x: scroll;
-    background: #f7f7f7;
-    color: #37474f;
+    font-size: 85%;
+    line-height: 1.4;
+    background: #F7F7F7;
+    color: #37474F;
   }
 
   /*
@@ -243,13 +239,13 @@ pre, code {
    */
   kbd {
     display: inline-block;
+    padding: 0.4rem 0.5rem 0.5rem;
+    vertical-align: 0.1rem;
     font-size: 85%;
     line-height: 1.0rem;
     word-break: break-word;
-    padding: 0.4rem 0.5rem 0.5rem;
-    vertical-align: 0.1rem;
-    color: #555;
     background-color: #FCFCFC;
+    color: #555555;
     border: px2rem(1px) solid #CCCCCC;
     border-bottom-color: #BBBBBB;
     border-radius: px2rem(3px);
