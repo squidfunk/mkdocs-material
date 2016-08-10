@@ -87,11 +87,12 @@
   }
 
   /*
-   * Search bar within header
+   * Search bar within header - the right aligment removes jitter
    */
   &-search {
     position: relative;
     margin: 0.6rem 0.4rem 0.6rem 0;
+    text-align: right;
 
     /*
      * Icon
@@ -106,16 +107,16 @@
     }
 
     /*
-     * Search field - the float is a hack for non-jittery transitions
+     * Search field
      */
     &__input {
+      display: inline-block;
       width: 23.0rem;
       height: 3.6rem;
       padding-left: 4.4rem;
       padding-right: 0.8rem;
-      float: right;
       font-size: ms(0);
-      background: $md-color-primary--dark;
+      background: $md-color-white--lightest;
       color: $md-color-white;
       border-radius: px2rem(2px);
       transition: color            .25s,
@@ -126,7 +127,7 @@
        * Placeholder color
        */
       &::placeholder {
-        color: $md-color-white--light;
+        color: $md-color-white;
         transition: color .25s;
       }
 

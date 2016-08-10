@@ -215,7 +215,7 @@ If you want more extensive highlighting, you can use a JavaScript library like
 [highlight.js][], which is not included in Material. See [this link][extra] for
 further instructions
 
-### Permalinks
+### Permalinks <small>recommended</small>
 
 In order to add [permalinks][] to the headers of your article, set the
 `markdown_extensions.toc.permalink` variable to a symbol, e.g. `¶`:
