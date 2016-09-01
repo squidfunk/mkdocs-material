@@ -1,0 +1,179 @@
+/*
+ * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Search
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Application search
+ */
+.md-search {
+  position: relative;
+
+  /*
+   * Search overlay
+   */
+  &__overlay {
+    display: none;
+
+    /* [mobile -]: Only show overlay on mobile */
+    @include break-to-device(mobile) {
+      display: block;
+      position: absolute;
+      top: 0.4rem;
+      left: 0.4rem;
+      width: 4.0rem;
+      height: 4.0rem;
+      overflow: hidden;
+      z-index: 0;
+      opacity: 0;
+      background: #EEEEEE;
+      border-radius: 100%;
+      transform-orgin: center;
+      transition: opacity   .2s .2s,
+                  transform .3s .1s;
+
+      /*
+       * Expanded overlay
+       */
+      #md-toggle-search:checked ~ .md-header & {
+        z-index: 1;
+        opacity: 1;
+        transform: scale(40);
+        transition: opacity   .1s,
+                    transform .4s;
+      }
+    }
+  }
+
+  /*
+   * Inner wrapper
+   */
+  &__inner {
+    padding: 0.8rem 0.8rem 0;
+
+    /* [tablet +]: Header-embedded search */
+    @include break-from-device(tablet) {
+      padding: 0.4rem;
+    }
+  }
+
+  /*
+   * Search form
+   */
+  &__form {
+    position: relative;
+    text-align: right;
+    border-radius: px2rem(2px);
+
+    /* [mobile -]: Add drop-shadow on mobile */
+    @include break-to-device(mobile) {
+      @include z-depth(2);
+    }
+  }
+
+  /*
+   * Icon
+   */
+  &__icon {
+    position: absolute;
+    top: 0.8rem;
+    left: 1.2rem;
+    font-size: 2.4rem;
+    transition: color .25s;
+    cursor: pointer;
+
+
+    /* [mobile -]: Use back arrow as search icon */
+    @include break-to-device(mobile) {
+      top: 1.2rem;
+
+      /* Hack: @extend doesn't work in media queries, so override manually */
+      &:before {
+        content: "arrow_back";
+      }
+    }
+  }
+
+  /*
+   * Search field
+   */
+  &__input {
+    padding: 0 0.8rem 0 6.4rem;
+    border-radius: px2rem(2px);
+
+    /*
+     * Placeholder and icon color in active state
+     */
+    + .md-search__icon,
+    &::placeholder {
+      color: $md-color-black--light;
+    }
+
+    /* [mobile -]: Full-screen search bar */
+    @include break-to-device(mobile) {
+      width: 100%;
+      height: 4.8rem;
+      font-size: 1.8rem;
+    }
+
+    /* [tablet +]: Header-embedded search */
+    @include break-from-device(tablet) {
+      width: 23.0rem;
+      height: 4.0rem;
+      padding-left: 4.8rem;
+      font-size: ms(0);
+      background: $md-color-white--lightest;
+      color: $md-color-white;
+      transition: color            .25s,
+                  background-color .25s,
+                  width            .25s cubic-bezier(0.1, 0.7, 0.1, 1.0);
+
+      /*
+       * Placeholder color
+       */
+      + .md-search__icon,
+      &::placeholder {
+        color: $md-color-white;
+        transition: color .25s;
+      }
+
+      /*
+       * Active search field
+       */
+      &:focus {
+        background: $md-color-white;
+        color: $md-color-black;
+        width: 40.0rem;
+
+        /*
+         * Placeholder and icon color in active state
+         */
+        + .md-search__icon,
+        &::placeholder {
+          color: $md-color-black--light;
+        }
+      }
+    }
+  }
+}

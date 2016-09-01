@@ -25,8 +25,8 @@
  * ------------------------------------------------------------------------- */
 
 @import "modular-scale";
-@import "quantum-colors";
-@import "quantum-shadows";
+@import "material-color";
+@import "material-shadows";
 
 /* ----------------------------------------------------------------------------
  * Application
@@ -46,6 +46,7 @@
 @import "layout/header";
 @import "layout/footer";
 @import "layout/nav";
+@import "layout/search";
 @import "layout/sidebar";
 
 @import "extensions/admonition";

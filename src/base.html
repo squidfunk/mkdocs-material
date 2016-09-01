@@ -61,31 +61,17 @@
       {% endif %}
     {% endblock %}
 
-    <!-- Configure icons (placed here to omit issues with subdirectories) -->
-    <style>
-      @font-face {
-      	font-family: "Icon";
-      	src: url({{ base_url }}/assets/fonts/icon.eot?52m981);
-      	src: url({{ base_url }}/assets/fonts/icon.eot?#iefix52m981)
-                 format("embedded-opentype"),
-      		   url({{ base_url }}/assets/fonts/icon.woff?52m981)
-                 format("woff"),
-      		   url({{ base_url }}/assets/fonts/icon.ttf?52m981)
-                 format("truetype"),
-      		   url({{ base_url }}/assets/fonts/icon.svg?52m981#icon)
-                 format("svg");
-      	font-weight: normal;
-      	font-style: normal;
-      }
-    </style>
-
     <!-- Theme-related stylesheets -->
     <link rel="stylesheet" type="text/css"
         href="{{ base_url }}/assets/stylesheets/application.css" />
 
     <!-- Web fonts -->
     <link rel="stylesheet" type="text/css"
-        href="//fonts.googleapis.com/css?family=Roboto+300,400,700|Roboto+Mono" />
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- Custom stylesheets -->
     {% for path in extra_css %}

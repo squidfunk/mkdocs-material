@@ -93,7 +93,7 @@ class ScrollSpy {
     [].forEach.call(this.el_, (el) => {
       el.classList.remove('md-nav__link--marked');
     });
-  };
+  }
 
   /**
    * Register listener for all relevant events
@@ -105,7 +105,7 @@ class ScrollSpy {
 
     /* Initial update */
     this.update();
-  };
+  }
 
   /**
    * Unregister listener for all relevant events
@@ -117,7 +117,7 @@ class ScrollSpy {
 
     /* Perform reset */
     this.reset();
-  };
+  }
 }
 
 /* ----------------------------------------------------------------------------

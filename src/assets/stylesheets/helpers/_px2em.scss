@@ -33,7 +33,7 @@
  */
 @function px2em($size, $base: 16px) {
   @if unit($size) == px {
-    @return ($size / $base) * 1em;
+    @return ($size / $base) * 1.0em;
   } @else {
     @error "Invalid unit: #{$size} - must be px";
   }
@@ -47,7 +47,7 @@
  */
 @function px2rem($size, $base: 10px) {
   @if unit($size) == px {
-    @return ($size / $base) * 1rem;
+    @return ($size / $base) * 1.0rem;
   } @else {
     @error "Invalid unit: #{$size} - must be px";
   }

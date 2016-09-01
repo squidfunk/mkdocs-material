@@ -71,4 +71,54 @@ document.addEventListener('DOMContentLoaded', function() {
   spy.listen();
 
   window.addEventListener('resize', handler);
+
+  /* Intercept click on search mode toggle */
+  var offset = 0;
+  var toggle = document.getElementById('md-toggle-search');
+  toggle.addEventListener('click', function(e) {
+    var list = document.body.classList;
+    var lock = !matchMedia('only screen and (min-width: 960px)').matches;
+
+    /* Exiting search mode */
+    if (list.contains('md-js__body--locked')) {
+      list.remove('md-js__body--locked');
+
+      /* Scroll to former position, but wait for 100ms to prevent flashes
+         on iOS. A short timeout seems to do the trick */
+      if (lock)
+        setTimeout(function() {
+          window.scrollTo(0, offset);
+        }, 100);
+
+    /* Entering search mode */
+    } else {
+      offset = window.scrollY;
+
+      /* First timeout: scroll to top after transition, to omit flickering */
+      if (lock)
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 400);
+
+      /* Second timeout: Lock body after finishing transition and scrolling to
+         top and focus input field. Sadly, the focus event is not dispatched
+         on iOS Safari and there's nothing we can do about it. */
+      setTimeout(function() {
+
+        /* This additional check is necessary to handle fast subsequent clicks
+           on the toggle and the timeout to lock the body must be cancelled */
+        if (this.checked) {
+          if (lock)
+            list.add('md-js__body--locked');
+          setTimeout(function() {
+            document.getElementById('md-search').focus();
+          }, 200);
+        }
+      }.bind(this), 450);
+    }
+  });
+
+
+
+
 });

@@ -23,3 +23,54 @@
 /* ----------------------------------------------------------------------------
  * Nothing to see here, move along
  * ------------------------------------------------------------------------- */
+
+// Specificity?
+.md-content .admonition-title {
+  margin: 0;
+  + * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.md-search__suggest {
+  background: $md-color-white;
+  border-radius: 0 0 px2rem(3px) px2rem(3px);
+  color: black;
+  text-align: left;
+  border-top: px2rem(1px) solid $md-color-black--lightest;
+  display: none;
+
+  .md-search__input:focus ~ & {
+    display: block;
+  }
+}
+
+.md-search__input:focus {
+  border-radius: px2rem(3px) px2rem(3px) 0 0;
+}
+
+@include break-to-device(mobile landscape) {
+  .md-search__inner {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 56px;
+    opacity: 0;
+    z-index: 2;
+    transform: translate3d(5%, 0, 0);
+    transition: transform .3s .15s cubic-bezier(0.1, 0.7, 0.1, 1.0), opacity .15s .15s;
+
+    #md-toggle-search:checked ~ .md-header & {
+      transform: translate3d(0, 0, 0);
+      left: 0;
+      opacity: 1;
+    }
+  }
+
+  .md-search__suggest {
+    position: relative;
+    z-index: 2;
+  }
+}

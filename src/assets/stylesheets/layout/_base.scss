@@ -37,6 +37,14 @@ html {
 body {
   position: relative;
   min-height: 100%;
+
+  /*
+   * Lock body to viewport height (e.g. in search mode)
+   */
+  &.md-js__body--locked {
+    height: 100%;
+    overflow: hidden;
+  }
 }
 
 /*
@@ -53,7 +61,7 @@ hr {
  * Template-wide grid
  */
 .md-grid {
-  max-width: 120rem;
+  max-width: 120.0rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -73,7 +81,7 @@ hr {
   margin-top: 5.6rem;
 
   /*
-   * bottom spacing to account for footer
+   * Bottom spacing to account for footer
    */
   &__inner {
     margin-top: 3.0rem;
@@ -87,7 +95,7 @@ hr {
  * ------------------------------------------------------------------------- */
 
 /*
- * Toggle checkbox (should never be visibile)
+ * Toggle checkbox (should never be visible)
  */
 .md-toggle {
   display: none !important;

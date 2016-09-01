@@ -100,7 +100,7 @@
 
         /* [screen small +]: Limit to grid */
         @include break-from-device(screen small) {
-          margin-left: 120rem;
+          margin-left: 120.0rem;
         }
       }
     }
@@ -114,7 +114,7 @@
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 
-    /* [tablet landscape +]: Adjust margins */
+    /* [tablet landscape -]: Adjust margins */
     @include break-to-device(tablet landscape) {
 
       /*

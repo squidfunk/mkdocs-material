@@ -97,9 +97,9 @@ gulp.task('assets:stylesheets', function() {
     .pipe(
       sass({
         includePaths: [
-          'bower_components/modular-scale/stylesheets',
-          'bower_components/quantum-colors',
-          'bower_components/quantum-shadows'
+          'node_modules/modularscale-sass/stylesheets',
+          'node_modules/material-design-color',
+          'node_modules/material-shadows'
         ]
       }))
     .pipe(
@@ -153,8 +153,7 @@ gulp.task('assets:javascripts', function() {
         resolve: {
           modulesDirectories: [
             'src/assets/javascripts',
-            'node_modules',
-            'bower_components'
+            'node_modules'
           ],
           extensions: [
             '', '.js'

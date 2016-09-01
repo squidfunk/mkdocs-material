@@ -9,7 +9,8 @@
   "license": "MIT",
   "main": "Gulpfile.js",
   "scripts": {
-    "start": "gulp watch"
+    "start": "./node_modules/.bin/gulp watch --mkdocs",
+    "build": "./node_modules/.bin/gulp build --production"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,9 @@
   "private": true,
   "dependencies": {
     "fastclick": "^1.0.6",
+    "material-colors": "^1.0.0",
+    "material-shadows": "^3.0.0",
+    "modularscale-sass": "^2.1.1",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {

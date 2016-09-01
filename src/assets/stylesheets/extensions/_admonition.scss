@@ -23,3 +23,91 @@
 /* ----------------------------------------------------------------------------
  * Admonition extension
  * ------------------------------------------------------------------------- */
+
+/*
+ * Admonition
+ */
+.admonition {
+  position: relative;
+  padding: 0.8rem 1.6rem;
+  margin: 2.0rem 0;
+  background: rgba($clr-blue-a200, 0.05);
+  border-left: px2rem(32px) solid $clr-blue-a200;
+  border-radius: px2rem(2px);
+
+  /*
+   * Icon
+   */
+  &:before {
+    content: "edit";
+    display: block;
+    position: absolute;
+    top: 0.2rem;
+    left: -2.6rem;
+    float: left;
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-size: 2.0rem;
+    vertical-align: -0.1em;
+    color: $md-color-white;
+  }
+
+  /*
+   * Title
+   */
+  &-title {
+    font-size: ms(-1);
+    font-weight: 700;
+    line-height: 2.0rem;
+    text-transform: uppercase;
+    color: $clr-blue-a400;
+  }
+
+  /*
+   * Build representational classes
+   */
+  @each $names, $appearance in (
+  	tip idea: $clr-teal-a700 "whatshot",
+    success check: $clr-green-a400 "done",
+    warning: $clr-orange-a400 "warning",
+    failure fail: $clr-red-a200 "clear",
+    danger fatal: $clr-red-a400 "flash_on",
+    bug error: $clr-pink-a400 "bug_report"
+  ) {
+    $tint: nth($appearance, 1);
+    $icon: nth($appearance, 2);
+
+    /*
+     * Define base class
+     */
+    &.#{nth($names, 1)} {
+      background: rgba($tint, 0.05);
+      border-color: $tint;
+
+      /*
+       * Icon
+       */
+      &:before {
+        content: $icon;
+      }
+
+      /*
+       * Set color for title
+       */
+      .admonition-title {
+        color: $tint;
+      }
+    }
+
+    /*
+     * Define synonyms for base class
+     */
+    @if length($names) > 1 {
+      @for $n from 2 through length($names) {
+        &.#{nth($names, $n)} {
+          @extend .admonition.#{nth($names, 1)};
+        }
+      }
+    }
+  }
+}

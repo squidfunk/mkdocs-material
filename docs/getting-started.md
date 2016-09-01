@@ -270,9 +270,21 @@ This will print:
 
 More colors can be freely defined.
 
-> MkDocs supports several [Markdown extensions][]. The following extensions are
-> not enabled by default (see the link for which are enabled by default), so you
-> have to switch them on explicitly.
+!!! hint "hint, note <small>default</small>"
+
+!!! tip "tip, idea"
+
+!!! check "check, success"
+
+!!! warning
+
+!!! failure "fail, failure"
+
+!!! fatal "fatal, danger"
+
+!!! bug "error, bug"
+
+!!! bug
 
 ## Full example
 

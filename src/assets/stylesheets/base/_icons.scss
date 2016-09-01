@@ -28,13 +28,16 @@
  * Base icon class
  */
 .md-icon {
-	font-family: "Icon";
+	font-family: "Material Icons";
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
+	white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
 
 	/* Better Font Rendering */
 	-webkit-font-smoothing: antialiased;
@@ -42,23 +45,16 @@
 }
 
 /*
- * Build icon set
+ * Build representational classes
  */
-@each $name, $code in (
-  "search":   "e600",
-  "back":     "e601",
-  "link":     "e602",
-  "close":    "e603",
-  "menu":     "e604",
-  "forward":  "e605",
-  "twitter":  "e606",
-  "github":   "e607",
-  "download": "e608",
-  "star":     "e609",
-  "warning":  "e610",
-  "note":     "e611"
+@each $ligature, $name in (
+	"arrow_back": "back",
+	"arrow_forward": "forward",
+	"close": "close",
+	"menu": "menu",
+  "search": "search"
 ) {
   .md-icon--#{$name}:before {
-    content: unquote("\"\\#{$code}\"");
+    content: $ligature;
   }
 }

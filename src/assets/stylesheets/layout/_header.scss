@@ -28,7 +28,7 @@
  * Application header (stays always on top)
  */
 .md-header {
-  @include drop-shadow(1);
+  @include z-depth(2);
 
   position: fixed;
   top: 0;
@@ -50,6 +50,8 @@
      */
     &__icon {
       display: inline-block;
+      position: relative;
+      z-index: 1;
       font-size: 2.4rem;
       padding: 0.8rem;
       margin: 0.4rem;
@@ -64,8 +66,8 @@
         background: $md-color-white--lightest;
       }
 
-      /* [tablet portrait +]: Hide the search icon */
-      @include break-from-device(tablet landscape) {
+      /* [tablet +]: Hide the search icon */
+      @include break-from-device(tablet) {
 
         /*
          * Search icon
@@ -83,70 +85,6 @@
       padding: 0 2.0rem;
       font-size: 1.8rem;
       line-height: 4.8rem;
-    }
-  }
-
-  /*
-   * Search bar within header - the right aligment removes jitter
-   */
-  &-search {
-    position: relative;
-    margin: 0.6rem 0.4rem 0.6rem 0;
-    text-align: right;
-
-    /*
-     * Icon
-     */
-    &__icon {
-      position: absolute;
-      top: 0.6rem;
-      left: 1.2rem;
-      font-size: 2.4rem;
-      transition: color .25s;
-      cursor: pointer;
-    }
-
-    /*
-     * Search field
-     */
-    &__input {
-      display: inline-block;
-      width: 23.0rem;
-      height: 3.6rem;
-      padding-left: 4.4rem;
-      padding-right: 0.8rem;
-      font-size: ms(0);
-      background: $md-color-white--lightest;
-      color: $md-color-white;
-      border-radius: px2rem(2px);
-      transition: color            .25s,
-                  background-color .25s,
-                  width            .25s cubic-bezier(0.1, 0.7, 0.1, 1);
-
-      /*
-       * Placeholder color
-       */
-      &::placeholder {
-        color: $md-color-white;
-        transition: color .25s;
-      }
-
-      /*
-       * Active search field
-       */
-      &:focus {
-        background: $md-color-white;
-        color: $md-color-black;
-        width: 40rem;
-
-        /*
-         * Placeholder and icon color in active state
-         */
-        + .md-header-search__icon,
-        &::placeholder {
-          color: $md-color-black--light;
-        }
-      }
     }
   }
 }

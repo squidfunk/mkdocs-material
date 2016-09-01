@@ -25,28 +25,14 @@
         <meta name="author" content="{{ site_author }}">
       {% endif %}
     {% endblock %}
-    <style>
-      @font-face {
-      	font-family: "Icon";
-      	src: url({{ base_url }}/assets/fonts/icon.eot?52m981);
-      	src: url({{ base_url }}/assets/fonts/icon.eot?#iefix52m981)
-                 format("embedded-opentype"),
-      		   url({{ base_url }}/assets/fonts/icon.woff?52m981)
-                 format("woff"),
-      		   url({{ base_url }}/assets/fonts/icon.ttf?52m981)
-                 format("truetype"),
-      		   url({{ base_url }}/assets/fonts/icon.svg?52m981#icon)
-                 format("svg");
-      	font-weight: normal;
-      	font-style: normal;
-      }
-    </style>
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-76344d4d6f.css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+300,400,700|Roboto+Mono">
+    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-8e9e9d1cff.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
-    <script src="{{ base_url }}/assets/javascripts/modernizr-d1e05123d4.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/modernizr-31a00ebfc6.js"></script>
   </head>
   <body>
     <input class="md-toggle" type="checkbox" id="md-toggle-drawer">
@@ -87,7 +73,7 @@
       var base_url = '{{ base_url }}';
       var repo_url = '{{ repo_url }}';
     </script>
-    <script src="{{ base_url }}/assets/javascripts/application-a7f7c32389.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/application-e9877e2824.js"></script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}
