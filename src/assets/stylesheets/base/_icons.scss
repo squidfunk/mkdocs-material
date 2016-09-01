@@ -28,30 +28,30 @@
  * Base icon class
  */
 .md-icon {
-	font-family: "Material Icons";
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	white-space: nowrap;
+  font-family: "Material Icons";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
 
-	/* Better Font Rendering */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /*
  * Build representational classes
  */
 @each $ligature, $name in (
-	"arrow_back": "back",
-	"arrow_forward": "forward",
-	"close": "close",
-	"menu": "menu",
+  "arrow_back": "back",
+  "arrow_forward": "forward",
+  "close": "close",
+  "menu": "menu",
   "search": "search"
 ) {
   .md-icon--#{$name}:before {

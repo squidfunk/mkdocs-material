@@ -67,7 +67,7 @@
    * Build representational classes
    */
   @each $names, $appearance in (
-  	tip idea: $clr-teal-a700 "whatshot",
+    tip idea: $clr-teal-a700 "whatshot",
     success check: $clr-green-a400 "done",
     warning: $clr-orange-a400 "warning",
     failure fail: $clr-red-a200 "clear",
