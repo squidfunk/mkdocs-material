@@ -19,7 +19,7 @@
   "private": true,
   "dependencies": {
     "fastclick": "^1.0.6",
-    "material-colors": "^1.0.0",
+    "material-design-color": "^2.3.1",
     "material-shadows": "^3.0.0",
     "modularscale-sass": "^2.1.1",
     "whatwg-fetch": "^1.0.0"
