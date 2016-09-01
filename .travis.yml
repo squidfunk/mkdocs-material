@@ -27,13 +27,7 @@ node_js:
 
 # Install dependencies
 before_script:
-
-  # Install bower
-  - npm install -g bower
-
-  # Install project dependencies
   - npm install
-  - bower install
 
 # Perform build and tests
-script: gulp build --production
+script: npm run build
