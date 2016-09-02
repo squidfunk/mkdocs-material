@@ -61,6 +61,34 @@
     line-height: 2.0rem;
     text-transform: uppercase;
     color: $clr-blue-a400;
+
+    /*
+     * Ensure smaller spacing to next element
+     */
+    html & {
+      margin-bottom: 1.6rem;
+    }
+
+    /*
+     * Ensure smaller spacing to next element
+     */
+    html & + * {
+      margin-top: 1.6rem;
+    }
+  }
+
+  /*
+   * Remove spacing on first element
+   */
+  :first-child {
+    margin-top: 0;
+  }
+
+  /*
+   * Remove spacing on last element
+   */
+  :last-child {
+    margin-bottom: 0;
   }
 
   /*
@@ -69,7 +97,7 @@
   @each $names, $appearance in (
     tip idea: $clr-teal-a700 "whatshot",
     success check: $clr-green-a400 "done",
-    warning: $clr-orange-a400 "warning",
+    warning warn: $clr-orange-a400 "warning",
     failure fail: $clr-red-a200 "clear",
     danger fatal: $clr-red-a400 "flash_on",
     bug error: $clr-pink-a400 "bug_report"

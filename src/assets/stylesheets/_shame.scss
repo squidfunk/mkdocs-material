@@ -24,15 +24,6 @@
  * Nothing to see here, move along
  * ------------------------------------------------------------------------- */
 
-// Specificity?
-.md-content .admonition-title {
-  margin: 0;
-  + * {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
 .md-search__suggest {
   background: $md-color-white;
   border-radius: 0 0 px2rem(3px) px2rem(3px);

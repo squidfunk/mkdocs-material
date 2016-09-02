@@ -48,8 +48,10 @@ extra:
 
 # Extensions
 markdown_extensions:
-  - codehilite
   - admonition
+  - codehilite
+  - footnotes
+  - meta
   - toc:
       permalink: '¶'
 
@@ -57,6 +59,12 @@ markdown_extensions:
 pages:
   - Material: index.md
   - Getting started: getting-started.md
+  - Extensions:
+    - Admonition: extensions/admonition.md
+    - Codehilite: extensions/codehilite.md
+    - Footnotes: extensions/footnotes.md
+    - Permalinks: extensions/permalinks.md
+    - Meta: extensions/meta.md
   - Specimen: specimen.md
   - Customization: customization.md
   - License: license.md

@@ -46,6 +46,7 @@ var plumber    = require('gulp-plumber');
 var postcss    = require('gulp-postcss');
 var rev        = require('gulp-rev');
 var sass       = require('gulp-sass');
+// var sasslint   = require('gulp-sass-lint');
 var sourcemaps = require('gulp-sourcemaps');
 var stream     = require('webpack-stream');
 var uglify     = require('gulp-uglify');
@@ -93,6 +94,7 @@ gulp.src = function() {
  */
 gulp.task('assets:stylesheets', function() {
   return gulp.src('src/assets/stylesheets/*.scss')
+    // .pipe(gulpif(args.production, sasslint()))
     .pipe(gulpif(args.sourcemaps, sourcemaps.init()))
     .pipe(
       sass({
@@ -135,7 +137,7 @@ gulp.task('assets:javascripts', function() {
         plugins: [
           new webpack.NoErrorsPlugin(),
           new webpack.ResolverPlugin(
-            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(
+            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(          // TODO: remove?
               '.bower.json', ['main']
             )
           )

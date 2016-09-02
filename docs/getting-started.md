@@ -1,3 +1,11 @@
+Title:   My Document
+Summary: A brief description of my document.
+Authors: Waylan Limberg
+         John Doe
+Date:    October 2, 2007
+blank-value:
+base_url: http://example.com
+
 # Getting started
 
 ## Installation
@@ -269,22 +277,6 @@ This will print:
     have to switch them on explicitly.
 
 More colors can be freely defined.
-
-!!! hint "hint, note <small>default</small>"
-
-!!! tip "tip, idea"
-
-!!! check "check, success"
-
-!!! warning
-
-!!! failure "fail, failure"
-
-!!! fatal "fatal, danger"
-
-!!! bug "error, bug"
-
-!!! bug
 
 ## Full example
 

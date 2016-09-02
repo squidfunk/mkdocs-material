@@ -25,9 +25,9 @@
  * ------------------------------------------------------------------------- */
 
 /*
- * Scope in content for greater specificity
+ * Scoped in typesetted content for greater specificity
  */
-.md-content {
+.md-content--typeset {
 
   /*
    * Permalink
@@ -41,26 +41,47 @@
     transition: opacity  .125s .25s,
                 transform .25s .25s,
                 color     .25s;
-
   }
 
   /*
-   * Only show permalinks in active state
+   * All headers with permalinks have ids
    */
-  h1, h2, h3, h4, h5, h6 {
+  [id] {
+
+    /*
+     * Make permalink visible on hover
+     */
     &:hover  .headerlink,
     &:target .headerlink {
-      margin-left: 1.0rem;
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }
 
     /*
-     * Active or targeted link
+     * Active or targeted permalink
      */
     &:hover  .headerlink:hover,
     &:target .headerlink {
       color: $md-color-accent;
+    }
+  }
+
+  /*
+   * Correct anchor offset of headlines
+   */
+  @each $level, $delta in (
+    h1: 3.0rem,
+    h2: 0.2rem,
+    h3: 0.4rem,
+    h4: 0.6rem,
+    h5: 1.0rem,
+    h6: 1.0rem
+  ) {
+    #{$level}[id]:before {
+      content: " ";
+      display: block;
+      padding-top: (5.6rem + 2.4rem + $delta);
+      margin-top: -(5.6rem + 2.4rem + $delta);
     }
   }
 }
