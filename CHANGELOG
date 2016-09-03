@@ -1,3 +1,30 @@
+mkdocs-material-1.0.0-rc.1 (2016-XX-XX)
+
+  IN PROGRESS ...
+
+  The theme has been entirely rewritten from scratch to better reflect the
+  idea of what a documentation theme using the Material Design guidelines
+  should look like. It is heavily inspired by Google's own documentation
+  theme, but doesn't copy it blindly.
+
+  * Introduced Webpack for more sophisticated JavaScript bundling
+  * Introduced ESLint and SassLint for code style checks
+  * Introduced more accurate Material Design colors and shadows
+  * Introduced a Modular Scale for harmonic font sizing
+  * Rewrite of CSS using the BEM methodology
+  * Rewrite of JavaScript using ES6 and Babel as a transpiler
+  * Rewrite of Admonition, Permalinks and Codehilite integration
+  * Rewrite of the complete typographical system
+  * Removed Bower as a dependency in favor of npm
+  * Removed custom icon build in favor of the Material Design iconset
+  * Removed _blank targets on links due to vulnerability: http://bit.ly/1Mk2Rtw
+  * Added support for Metadata and Footnotes Markdown extensions
+  * Added build and watch scripts in package.json
+  * Added support for collapsible sections in navigation
+  * Added support for separate table of contents
+  * Added support for better accessibility through REM-based layout
+  * Added more detailed documentation on specimen, extensions etc.
+
 mkdocs-material-0.2.4 (2016-06-26)
 
   * Fixed improperly set default favicon
