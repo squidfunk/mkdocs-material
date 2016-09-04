@@ -1,0 +1,119 @@
+# Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+options:
+  merge-default-rules: true
+  formatter: stylish
+
+rules:
+  attribute-quotes: 2
+  bem-depth: 2
+  border-zero: 2
+  brace-style: 2
+  class-name-format:
+    - 2
+    - convention: hyphenatedbem
+  clean-import-paths: 2
+  empty-args: 2
+  empty-line-between-blocks: 2
+  extends-before-declarations: 2
+  extends-before-mixins: 2
+  final-newline: 2
+  function-name-format:
+    - 2
+    - allow-leading-underscore: false
+  force-attribute-nesting: 0
+  force-element-nesting: 0
+  force-pseudo-nesting: 0
+  hex-length:
+    - 2
+    - style: long
+  hex-notation:
+    - 2
+    - style: uppercase
+  id-name-format:
+    - 2
+  indentation: 0
+  leading-zero:
+    - 2
+    - include: true
+  mixin-name-format:
+    - 2
+    - convention: hyphenatedbem
+    - allow-leading-underscore: false
+  mixins-before-declarations:
+    - 2
+    - exclude:
+      - break-at
+      - break-at-orientation
+      - break-at-ratio
+      - break-at-device
+      - break-from-device
+      - break-to-device
+  nesting-depth: 0
+  no-color-keywords: 2
+  no-color-literals: 2
+  no-css-comments: 2
+  no-debug: 2
+  no-duplicate-properties: 0
+  no-empty-rulesets: 2
+  no-important: 2
+  no-invalid-hex: 2
+  no-mergeable-selectors: 0
+  no-misspelled-properties: 0
+  no-qualifying-elements:
+    - 2
+    - allow-element-with-attribute: true
+  no-trailing-zero: 0
+  no-transition-all: 2
+  no-url-protocols: 2
+  no-vendor-prefixes: 0
+  one-declaration-per-line: 2
+  placeholder-name-format:
+    - 2
+    - convention: hyphenatedbem
+  property-sort-order:
+    - 2
+    - order: smacss
+  property-units:
+    - 2
+    - global: [rem, em, s]
+  pseudo-element: 2
+  quotes:
+    - 2
+    - style: double
+  shorthand-values: 2
+  single-line-per-selector: 0
+  space-after-bang: 2
+  space-after-colon: 2
+  space-after-comma: 2
+  space-around-operator: 2
+  space-before-bang: 2
+  space-before-brace: 2
+  space-before-colon: 2
+  space-between-parens: 2
+  trailing-semicolon: 2
+  url-quotes: 2
+  variable-for-property: 2
+  variable-name-format:
+    - 2
+    - convention: hyphenatedbem
+    - allow-leading-underscore: false
+  zero-unit: 2

@@ -1,71 +1,60 @@
-/*
- * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
- * deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- * sell copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE.
- */
+////
+/// Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
 
-/* ----------------------------------------------------------------------------
- * Footnotes extension
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Footnotes extension
+/// ---------------------------------------------------------------------------
 
-/*
- * Scoped in typesetted content for greater specificity
- */
+/// Scoped in typesetted content for greater specificity
 .md-content--typeset {
 
-  /*
-   * Footnote
-   */
+  /// Footnote
   .footnote {
-    @extend small;
+    color: $md-color-black--light;
+    font-size: smaller;
 
-    /*
-     * Remove additional spacing on footnotes
-     */
+    /// Remove additional spacing on footnotes
     > ol {
       margin-left: 0;
 
-      /*
-       * Single footnote
-       */
+      /// Single footnote
       > li {
 
         // TODO: this doesn't work entirely
-        // &:before {
+        // &::before {
         //   display: block;
         //   content: " ";
         //   padding-top: (5.6rem + 2.4rem + 0.4rem);
         //   margin-top: -(5.6rem + 2.4rem + 0.4rem);
         // }
 
-        /*
-         * Make permalink visible on hover
-         */
+        /// Make back references visible on hover
         &:hover  .footnote-backref,
         &:target .footnote-backref {
-          opacity: 1;
           transform: translate3d(0, 0, 0);
+          opacity: 1;
         }
 
-        /*
-         * Active or targeted permalink
-         */
+        /// Active or targeted back reference
         &:hover  .footnote-backref:hover,
         &:target .footnote-backref {
           color: $md-color-accent;
@@ -73,44 +62,36 @@
       }
     }
 
-    /*
-     * Correct anchor offset;
-     */
-    &-ref:before {
+    /// Correct anchor offset
+    &-ref::before {
       position: absolute;
+      margin-top: -(5.6rem + 2.4rem + 0.4rem);
+      padding-top: (5.6rem + 2.4rem + 0.4rem);
       content: " ";
       pointer-events: none;
-      padding-top: (5.6rem + 2.4rem + 0.4rem);
-      margin-top: -(5.6rem + 2.4rem + 0.4rem);
     }
 
-    /*
-     * Make backref transparent for custom icon
-     */
+    /// Make back reference text transparent for icon
     &-backref {
-      @extend .md-icon;
+      @extend %md-icon;
 
       position: absolute;
-      font-size: 2.0rem;
-      vertical-align: middle;
-      opacity: 0;
-      color: $md-color-black--lighter;
       transform: translate3d(0.5rem, 0, 0);
-      transition: opacity  .125s .125s,
-                  transform .25s .125s,
-                  color     .25s;
+      transition: transform 0.25s  0.125s,
+                  color     0.25s,
+                  opacity   0.125s 0.125s;
+      color: $md-color-black--lighter;
+      font-size: 2.0rem;
+      opacity: 0;
+      vertical-align: middle;
 
-      /*
-       * Hack: remove Unicode arrow for icon
-       */
-      &:first-letter {
+      /// Hack: remove Unicode arrow for icon
+      &::first-letter {
         font-size: 0;
       }
 
-      /*
-       * Icon
-       */
-      &:after {
+      /// Back reference icon
+      &::after {
         content: "keyboard_return";
       }
     }

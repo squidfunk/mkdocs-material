@@ -1,48 +1,70 @@
-/*
- * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
- * deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- * sell copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE.
- */
+////
+/// Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
 
-/* ----------------------------------------------------------------------------
- * Variables
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Variables
+/// ---------------------------------------------------------------------------
 
-/*
- * Device-specific breakpoints
- *
- * @type Map
- */
+////
+/// Device-specific breakpoints
+///
+/// @example
+///   $break-devices: (
+///     mobile: (
+///       portrait:  px2em(220px)  px2em(479px),
+///       landscape: px2em(480px)  px2em(719px)
+///     ),
+///     tablet: (
+///       portrait:  px2em(720px)  px2em(959px),
+///       landscape: px2em(960px)  px2em(1199px)
+///     ),
+///     screen: (
+///       small:     px2em(1200px) px2em(1599px),
+///       medium:    px2em(1600px) px2em(1999px),
+///       large:     px2em(2000px)
+///     )
+///   );
+///
+/// @group  helpers
+/// @access private
+/// @type   Map
+////
 $break-devices: () !default;
 
-/* ----------------------------------------------------------------------------
- * Breakpoint helpers
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Breakpoint helpers
+/// ---------------------------------------------------------------------------
 
-/*
- * Choose minimum and maximum device widths
- *
- * @param  {Map}  $devices Map of devices
- * @return {List}          Minimum and maximum width
- */
+////
+/// Choose minimum and maximum device widths
+///
+/// @group  helpers
+/// @access private
+/// @param  {Map}  $devices Map of devices
+/// @return {List}          Minimum and maximum width
+////
 @function break-select-min-max($devices) {
-  $min: 1000000; $max: 0;
+  $min: 1000000;
+  $max: 0;
   @each $key, $value in $devices {
     @while type-of($value) == map {
       $value: break-select-min-max($value);
@@ -68,12 +90,14 @@ $break-devices: () !default;
   @return $min, $max;
 }
 
-/*
- * Select minimum and maximum widths for a device breakpoint
- *
- * @param  {String} $device Device
- * @return {List}           Minimum and maximum width
- */
+////
+/// Select minimum and maximum widths for a device breakpoint
+///
+/// @group  helpers
+/// @access private
+/// @param  {String} $device Device
+/// @return {List}           Minimum and maximum width
+////
 @function break-select-device($device) {
   $current: $break-devices;
   @for $n from 1 through length($device) {
@@ -90,22 +114,25 @@ $break-devices: () !default;
   @return break-select-min-max($current);
 }
 
-/* ----------------------------------------------------------------------------
- * Breakpoint mixins
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Breakpoint mixins
+/// ---------------------------------------------------------------------------
 
-/*
- * A minimum-maximum media query breakpoint
- *
- * @param {Number|List} $breakpoint Number or number pair
- */
+////
+/// A minimum-maximum media query breakpoint
+///
+/// @group  helpers
+/// @access public
+/// @param {Number|List} $breakpoint Number or number pair
+////
 @mixin break-at($breakpoint) {
   @if type-of($breakpoint) == number {
     @media only screen and (min-width: $breakpoint) {
       @content;
     }
   } @elseif type-of($breakpoint) == list {
-    $min: nth($breakpoint, 1); $max: nth($breakpoint, 2);
+    $min: nth($breakpoint, 1);
+    $max: nth($breakpoint, 2);
     @if type-of($min) == number and type-of($max) == number {
       @media only screen and (min-width: $min) and (max-width: $max) {
         @content;
@@ -118,11 +145,13 @@ $break-devices: () !default;
   }
 }
 
-/*
- * An orientation media query breakpoint
- *
- * @param {String} $breakpoint Orientation
- */
+////
+/// An orientation media query breakpoint
+///
+/// @group  helpers
+/// @access public
+/// @param {String} $breakpoint Orientation
+////
 @mixin break-at-orientation($breakpoint) {
   @if type-of($breakpoint) == string {
     @media only screen and (orientation: $breakpoint) {
@@ -133,11 +162,13 @@ $break-devices: () !default;
   }
 }
 
-/*
- * A maximum-aspect-ratio media query breakpoint
- *
- * @param {Number} $breakpoint Ratio
- */
+////
+/// A maximum-aspect-ratio media query breakpoint
+///
+/// @group  helpers
+/// @access public
+/// @param {Number} $breakpoint Ratio
+////
 @mixin break-at-ratio($breakpoint) {
   @if type-of($breakpoint) == number {
     @media only screen and (max-aspect-ratio: $breakpoint) {
@@ -148,11 +179,13 @@ $break-devices: () !default;
   }
 }
 
-/*
- * A minimum-maximum media query device breakpoint
- *
- * @param {String|List} $breakpoint Device
- */
+////
+/// A minimum-maximum media query device breakpoint
+///
+/// @group  helpers
+/// @access public
+/// @param {String|List} $breakpoint Device
+////
 @mixin break-at-device($device) {
   @if type-of($device) == string {
     $device: $device,;
@@ -160,7 +193,8 @@ $break-devices: () !default;
   @if type-of($device) == list {
     $breakpoint: break-select-device($device);
     @if nth($breakpoint, 2) != null {
-      $min: nth($breakpoint, 1); $max: nth($breakpoint, 2);
+      $min: nth($breakpoint, 1);
+      $max: nth($breakpoint, 2);
       @media only screen and (min-width: $min) and (max-width: $max) {
         @content;
       }
@@ -172,11 +206,13 @@ $break-devices: () !default;
   }
 }
 
-/*
- * A minimum media query device breakpoint
- *
- * @param {String|List} $breakpoint Device
- */
+////
+/// A minimum media query device breakpoint
+///
+/// @group  helpers
+/// @access public
+/// @param {String|List} $breakpoint Device
+////
 @mixin break-from-device($device) {
   @if type-of($device) == string {
     $device: $device,;
@@ -192,11 +228,13 @@ $break-devices: () !default;
   }
 }
 
-/*
- * A maximum media query device breakpoint
- *
- * @param {String|List} $breakpoint Device
- */
+////
+/// A maximum media query device breakpoint
+///
+/// @group  helpers
+/// @access public
+/// @param {String|List} $breakpoint Device
+////
 @mixin break-to-device($device) {
   @if type-of($device) == string {
     $device: $device,;

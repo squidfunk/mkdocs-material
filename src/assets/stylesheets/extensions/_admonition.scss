@@ -1,139 +1,116 @@
-/*
- * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
- * deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- * sell copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE.
- */
+////
+/// Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
 
-/* ----------------------------------------------------------------------------
- * Admonition extension
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Admonition extension
+/// ---------------------------------------------------------------------------
 
-/*
- * Admonition
- */
+/// Admonition
 .admonition {
   position: relative;
-  padding: 0.8rem 1.6rem;
   margin: 2.0rem 0;
-  background: rgba($clr-blue-a200, 0.05);
+  padding: 0.8rem 1.6rem;
   border-left: px2rem(32px) solid $clr-blue-a200;
   border-radius: px2rem(2px);
+  background: transparentize($clr-blue-a200, 0.95);
 
-  /*
-   * Icon
-   */
-  &:before {
-    content: "edit";
+  /// Icon
+  &::before {
     display: block;
     position: absolute;
     top: 0.2rem;
     left: -2.6rem;
     float: left;
-    font-family: "Material Icons";
-    font-weight: normal;
-    font-size: 2.0rem;
-    vertical-align: -0.1em;
     color: $md-color-white;
+    font-family: "Material Icons";
+    font-size: 2.0rem;
+    font-weight: normal;
+    content: "edit";
+    vertical-align: -0.1em;
   }
 
-  /*
-   * Title
-   */
+  /// Title
   &-title {
+    color: $clr-blue-a400;
     font-size: ms(-1);
     font-weight: 700;
     line-height: 2.0rem;
     text-transform: uppercase;
-    color: $clr-blue-a400;
 
-    /*
-     * Ensure smaller spacing to next element
-     */
+    /// Ensure smaller spacing to next element
     html & {
       margin-bottom: 1.6rem;
     }
 
-    /*
-     * Ensure smaller spacing to next element
-     */
+    /// Ensure smaller spacing to next element
     html & + * {
       margin-top: 1.6rem;
     }
   }
 
-  /*
-   * Remove spacing on first element
-   */
+  /// Remove spacing on first element
   :first-child {
     margin-top: 0;
   }
 
-  /*
-   * Remove spacing on last element
-   */
+  /// Remove spacing on last element
   :last-child {
     margin-bottom: 0;
   }
 
-  /*
-   * Build representational classes
-   */
+  /// Build representational classes
   @each $names, $appearance in (
     tip idea: $clr-teal-a700 "whatshot",
-    success check: $clr-green-a400 "done",
+    success check done: $clr-green-a400 "done",
     warning warn: $clr-orange-a400 "warning",
-    failure fail: $clr-red-a200 "clear",
+    failure fail missing: $clr-red-a200 "clear",
     danger fatal: $clr-red-a400 "flash_on",
-    bug error: $clr-pink-a400 "bug_report"
+    error bug: $clr-pink-a400 "bug_report"
   ) {
     $tint: nth($appearance, 1);
     $icon: nth($appearance, 2);
 
-    /*
-     * Define base class
-     */
+    /// Define base class
+    &%#{nth($names, 1)},
     &.#{nth($names, 1)} {
-      background: rgba($tint, 0.05);
       border-color: $tint;
+      background: transparentize($tint, 0.95);
 
-      /*
-       * Icon
-       */
-      &:before {
+      /// Icon
+      &::before {
         content: $icon;
       }
 
-      /*
-       * Set color for title
-       */
+      /// Set color for title
       .admonition-title {
         color: $tint;
       }
     }
 
-    /*
-     * Define synonyms for base class
-     */
+    /// Define synonyms for base class
     @if length($names) > 1 {
       @for $n from 2 through length($names) {
         &.#{nth($names, $n)} {
-          @extend .admonition.#{nth($names, 1)};
+          @extend .admonition%#{nth($names, 1)};
         }
       }
     }

@@ -1,42 +1,38 @@
-/*
- * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
- * deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- * sell copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE.
- */
+////
+/// Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
 
-/* ----------------------------------------------------------------------------
- * Typography
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Typography
+/// ---------------------------------------------------------------------------
 
-/*
- * Modular typographic scale
- */
+/// Modular typographic scale
 $ms-base: 1.6rem;
 $ms-ratio: $major-third;
 
-/* ----------------------------------------------------------------------------
- * Breakpoints
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Breakpoints
+/// ---------------------------------------------------------------------------
 
-/*
- * Device-specific breakpoints
- */
+/// Device-specific breakpoints
 $break-devices: (
   mobile: (
     portrait:  px2em(220px)  px2em(479px),
@@ -53,30 +49,24 @@ $break-devices: (
   )
 );
 
-/* ----------------------------------------------------------------------------
- * Colors
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Colors
+/// ---------------------------------------------------------------------------
 
-/*
- * Primary and accent colors
- */
+/// Primary and accent colors
 $md-color-primary:         $clr-indigo-500;
 $md-color-primary--light:  $clr-indigo-100;
 $md-color-primary--dark:   $clr-indigo-700;
 $md-color-accent:          $clr-indigo-a200;
 
-/*
- * Shades of black
- */
-$md-color-black:           rgba(black, 0.87);
-$md-color-black--light:    rgba(black, 0.54);
-$md-color-black--lighter:  rgba(black, 0.26);
-$md-color-black--lightest: rgba(black, 0.07);
+/// Shades of black
+$md-color-black:           hsla(0, 0%, 0%, 0.87);
+$md-color-black--light:    hsla(0, 0%, 0%, 0.54);
+$md-color-black--lighter:  hsla(0, 0%, 0%, 0.26);
+$md-color-black--lightest: hsla(0, 0%, 0%, 0.07);
 
-/*
- * Shades of white
- */
-$md-color-white:           rgba(white, 1.00);
-$md-color-white--light:    rgba(white, 0.70);
-$md-color-white--lighter:  rgba(white, 0.30);
-$md-color-white--lightest: rgba(white, 0.12);
+/// Shades of white
+$md-color-white:           hsla(0, 0%, 100%, 1.00);
+$md-color-white--light:    hsla(0, 0%, 100%, 0.70);
+$md-color-white--lighter:  hsla(0, 0%, 100%, 0.30);
+$md-color-white--lightest: hsla(0, 0%, 100%, 0.12);

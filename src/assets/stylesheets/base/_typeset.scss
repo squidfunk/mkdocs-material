@@ -1,297 +1,244 @@
-/*
- * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
- * deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- * sell copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE.
- */
+////
+/// Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
 
-/* ----------------------------------------------------------------------------
- * Font definitions
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Font definitions
+/// ---------------------------------------------------------------------------
 
-/*
- * Default fonts
- */
+/// Default fonts
 body, kbd {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
 
-  /* Enable font-smoothing in Webkit and FF */
+  /// Enable font-smoothing in Webkit and FF
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /*
-   * Use system fonts, if browser doesn't support webfonts
-   */
+  /// Use system fonts, if browser doesn't support webfonts
   .no-fontface & {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 }
 
-/*
- * Proportionally spaced fonts
- */
+/// Proportionally spaced fonts
 pre, code {
   font-family: "Roboto Mono", "Courier New", Courier, monospace;
 
-  /*
-   * Use system fonts, if browser doesn't support webfonts
-   */
+  /// Use system fonts, if browser doesn't support webfonts
   .no-fontface & {
     font-family: "Courier New", Courier, monospace;
   }
 }
 
-/* ----------------------------------------------------------------------------
- * Typeset
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Typeset
+/// ---------------------------------------------------------------------------
 
-/*
- * Content that is typeset
- */
+/// Content that is typeset
 .md-content--typeset {
   font-size: ms(0);
   line-height: 1.6;
 
-  /*
-   * Body copy
-   */
+  /// Body copy
   p {
     margin: 1.25em 0;
   }
 
-  /*
-   * 1st level headline
-   */
+  /// 1st level headline
   h1 {
+    color: $md-color-black--light;
     font-size: ms(3);
     font-weight: 300;
+    letter-spacing: -0.01em;
     line-height: 1.3;
-    letter-spacing: -.01em;
-    color: $md-color-black--light;
   }
 
-  /*
-   * 2nd level headline
-   */
+  /// 2nd level headline
   h2 {
     margin-top: 4.0rem;
     font-size: ms(2);
     font-weight: 300;
+    letter-spacing: -0.01em;
     line-height: 1.4;
-    letter-spacing: -.01em;
   }
 
-  /*
-   * 3rd level headline
-   */
+  /// 3rd level headline
   h3 {
     margin-top: 3.2rem;
     font-size: ms(1);
     font-weight: 400;
+    letter-spacing: -0.01em;
     line-height: 1.5;
-    letter-spacing: -.01em;
   }
 
-  /*
-   * 2nd + 3rd level headline
-   */
+  /// 3rd level headline following an 2nd level headline
   h2 + h3 {
     margin-top: 1.6rem;
   }
 
-  /*
-   * 4th level headline
-   */
+  /// 4th level headline
   h4 {
     margin-top: 1.6rem;
     font-size: ms(0);
     font-weight: 700;
-    letter-spacing: -.01em;
+    letter-spacing: -0.01em;
   }
 
-  /*
-   * 5th and 6th level headline
-   */
-  h5, h6 {
+  /// 5th and 6th level headline
+  h5,
+  h6 {
     margin-top: 1.6rem;
+    color: $md-color-black--light;
     font-size: ms(-1);
     font-weight: 700;
-    letter-spacing: -.01em;
-    color: $md-color-black--light;
+    letter-spacing: -0.01em;
   }
 
-  /*
-   * Overrides for 5th level headline
-   */
+  /// Overrides for 5th level headline
   h5 {
     text-transform: uppercase;
   }
 
-  /*
-   * Links
-   */
+  /// Links
   a {
     color: $md-color-primary;
 
-    /*
-     * Also enable transition on pseudo elements
-     */
+    /// Also enable transition on pseudo elements
     &,
-    &:before {
-      transition: color .125s;
+    &::before {
+      transition: color 0.125s;
     }
 
-    /*
-     * Active links
-     */
+    /// Active links
     &:hover,
     &:active {
       color: $md-color-accent;
     }
   }
 
-  /*
-   * Inline code blocks
-   */
+  /// Inline code blocks
   code {
     padding: 0.1rem 0.4rem;
+    background: #F7F7F7;
+    color: #37474F;
     font-size: 85%;
     font-weight: 400;
     word-break: break-word;
-    background: #F7F7F7;
-    color: #37474F;
   }
 
-  /*
-   * Formatted code blocks
-   */
+  /// Formatted code blocks
   pre {
+    margin: 2.0rem 0;
     padding: 1.0rem 1.2rem;
-    overflow-x: scroll;
+    background: #F7F7F7;
+    color: #37474F;
     font-size: 85%;
     line-height: 1.4;
-    background: #F7F7F7;
-    color: #37474F;
+    overflow-x: scroll;
+
+    /// Reset, if pre is inside code
+    > code {
+      font-size: inherit;
+    }
   }
 
-  /*
-   * Keyboard tags
-   */
+  /// Keyboard tags
   kbd {
     display: inline-block;
     padding: 0.4rem 0.5rem 0.5rem;
-    vertical-align: 0.1rem;
-    font-size: 85%;
-    line-height: 1.0rem;
-    word-break: break-word;
+    border: px2rem(1px) solid #CCCCCC;
+    border-radius: px2rem(3px);
+    border-bottom-color: #BBBBBB;
     background-color: #FCFCFC;
     color: #555555;
-    border: px2rem(1px) solid #CCCCCC;
-    border-bottom-color: #BBBBBB;
-    border-radius: px2rem(3px);
+    font-size: 85%;
+    line-height: 1.0rem;
     box-shadow: 0 #{-(px2rem(1px))} 0 #BBBBBB inset;
+    vertical-align: 0.1rem;
+    word-break: break-word;
   }
 
-  /*
-   * Smaller text
-   */
+  /// Smaller text
   small {
-    font-size: smaller;
     color: $md-color-black--light;
+    font-size: smaller;
   }
 
-  /*
-   * Superscript and subscript
-   */
+  /// Superscript and subscript
   sup,
   sub {
     margin-left: 0.1rem;
   }
 
-  /*
-   * Horizontal separators
-   */
+  /// Horizontal separators
   hr {
     margin: 2.4rem 0;
     border-bottom: px2rem(1px) dotted $md-color-black--lighter;
   }
 
-  /*
-   * Blockquotes, possibly nested
-   */
+  /// Blockquotes, possibly nested
   blockquote {
     padding-left: 1.2rem;
     border-left: px2rem(4px) solid $md-color-black--lighter;
     color: $md-color-black--light;
   }
 
-  /*
-   * Unordered lists
-   */
+  /// Unordered lists
   ul {
     list-style-type: disc;
   }
 
-  /*
-   * Ordered lists
-   */
+  /// Ordered lists
   ol ol {
     list-style-type: lower-alpha;
 
-    /*
-     * Triply nested ordered list
-     */
+    /// Triply nested ordered list
     ol {
       list-style-type: lower-roman;
     }
   }
 
-  /*
-   * Unordered and ordered lists
-   */
+  /// Unordered and ordered lists
   ul,
   ol {
     margin-left: 1.0rem;
 
-    /*
-     * List elements
-     */
+    /// List elements
     li {
       margin-bottom: 1.0rem;
       margin-left: 2.0rem;
 
-      /*
-       * Remove margin on last element
-       */
+      /// Remove margin on last element
       &:last-child {
         margin-bottom: 0;
       }
 
-      /*
-       * Nested lists
-       */
+      /// Nested lists
       ul,
       ol {
-        padding-top: 1.0rem;
         margin-bottom: 1.0rem;
         margin-left: 1.0rem;
+        padding-top: 1.0rem;
       }
     }
   }

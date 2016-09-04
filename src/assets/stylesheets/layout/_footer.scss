@@ -1,116 +1,96 @@
-/*
- * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
- * deal in the Software without restriction, including without limitation the
- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- * sell copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE.
- */
+////
+/// Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
 
-/* ----------------------------------------------------------------------------
- * Footer
- * ------------------------------------------------------------------------- */
+/// ---------------------------------------------------------------------------
+/// Footer
+/// ---------------------------------------------------------------------------
 
-/*
- * Application footer
- */
+/// Application footer
 .md-footer {
   position: absolute;
-  width: 100%;
   bottom: 0;
+  width: 100%;
 
-  /*
-   * Pagination container
-   */
+  /// Pagination container
   &-pagination {
     background: $md-color-black;
     color: $md-color-white;
   }
 
-  /*
-   * Link to previous and next page
-   */
+  /// Footer navigation
   &-nav {
-    overflow: auto;
     padding: 0.4rem;
+    overflow: auto;
 
-    /*
-     * Links to previous and next page
-     */
+    /// Links to previous and next page
     &__link {
       padding-top: 2.8rem;
       padding-bottom: 0.8rem;
 
-      /* [mobile landscape +]: Set proportional width */
+      /// [mobile landscape +]: Set proportional width
       @include break-from-device(mobile landscape) {
         width: 50%;
       }
 
-      /*
-       * Link to previous page
-       */
+      /// Link to previous page
       &--prev {
-        float: left;
         width: 25%;
+        float: left;
 
-        /*
-         * Title
-         */
+        /// Title
         .md-footer-nav__title {
 
-          /* [mobile portrait -]: Hide title for previous page */
+          /// [mobile portrait -]: Hide title for previous page
           @include break-to-device(mobile portrait) {
             display: none;
           }
         }
       }
 
-      /*
-       * Link to next page
-       */
+      /// Link to next page
       &--next {
-        float: right;
         width: 75%;
+        float: right;
         text-align: right;
       }
     }
 
-    /*
-     * Icon
-     */
+    /// Link icon
     &__icon {
       display: inline-block;
-      font-size: 2.4rem;
-      padding: 0.8rem;
       margin: 0.4rem;
-      cursor: pointer;
+      padding: 0.8rem;
+      transition: background 0.25s;
       border-radius: 100%;
-      transition: background .25s;
+      font-size: 2.4rem;
+      cursor: pointer;
 
-      /*
-       * Pushed/clicked icon
-       */
+      /// Pushed/clicked icon
       &:active {
         background: $md-color-white--lightest;
       }
     }
 
-    /*
-     * Title
-     */
+    /// Link title
     &__title {
       position: relative;
       padding: 0 0.4rem;
@@ -118,17 +98,15 @@
       line-height: 4.8rem;
     }
 
-    /*
-     * Direction
-     */
+    /// Link direction
     &__direction {
       position: absolute;
-      left: 0;
       right: 0;
-      padding: 0 0.4rem;
+      left: 0;
       margin-top: -2.0rem;
-      font-size: 1.5rem;
+      padding: 0 0.4rem;
       color: $md-color-white--light;
+      font-size: 1.5rem;
     }
   }
 }

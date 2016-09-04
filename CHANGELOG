@@ -10,7 +10,7 @@ mkdocs-material-1.0.0-rc.1 (2016-XX-XX)
   * Introduced Webpack for more sophisticated JavaScript bundling
   * Introduced ESLint and SassLint for code style checks
   * Introduced more accurate Material Design colors and shadows
-  * Introduced a Modular Scale for harmonic font sizing
+  * Introduced Modular Scales for harmonic font sizing
   * Rewrite of CSS using the BEM methodology
   * Rewrite of JavaScript using ES6 and Babel as a transpiler
   * Rewrite of Admonition, Permalinks and Codehilite integration
@@ -18,8 +18,8 @@ mkdocs-material-1.0.0-rc.1 (2016-XX-XX)
   * Removed Bower as a dependency in favor of npm
   * Removed custom icon build in favor of the Material Design iconset
   * Removed _blank targets on links due to vulnerability: http://bit.ly/1Mk2Rtw
-  * Added support for Metadata and Footnotes Markdown extensions
   * Added build and watch scripts in package.json
+  * Added support for Metadata and Footnotes Markdown extensions
   * Added support for collapsible sections in navigation
   * Added support for separate table of contents
   * Added support for better accessibility through REM-based layout
