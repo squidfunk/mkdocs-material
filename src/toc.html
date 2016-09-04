@@ -37,7 +37,7 @@
 
       <!-- Render item list -->
       {% if toc and (toc | first) %}
-        <h3>Table of contents</h3>
+        <h3 class="md-nav__title">Table of contents</h3>
         <ul class="md-nav__list">
           {% for toc_item in toc %}
             {% include "toc-item.html" %}

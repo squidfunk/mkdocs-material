@@ -33,7 +33,9 @@ html {
 }
 
 // All elements shall inherit the document default
-*, *::before, *::after {
+*,
+*::before,
+*::after {
           box-sizing: inherit;
      -moz-box-sizing: inherit;
   -webkit-box-sizing: inherit;
@@ -46,17 +48,81 @@ html {
   text-size-adjust: none;
 }
 
-// Reset spacing and borders for all tags
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
-pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd,
-q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol,
-ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr,
-th, td, article, aside, canvas, details, embed, figure, figcaption, footer,
-header, hgroup, main, menu, nav, output, ruby, section, summary, time, mark,
-audio, video {
+// Remove margin in all browsers
+body {
   margin: 0;
-  padding: 0;
-  border: 0;
+}
+
+// Add correct display property in IE < 9
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+  display: block;
+}
+
+// Reset horizontal rules in FF
+hr {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+// Reset link styles
+a {
+  color: inherit;
+  text-decoration: none;
+
+  // Remove outline on focused or active links
+  &:active,
+  &:hover {
+    outline-width: 0;
+  }
+}
+
+// Remove gaps in links underline in iOS >= 8 and Safari >= 8
+a {
+  -webkit-text-decoration-skip: objects;
+}
+
+// Reset tap outlines on iOS and Android
+a,
+button,
+label,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+// Correct font-size in all browsers
+small {
+  font-size: 80%;
+}
+
+// Prevent subscript and superscript from affecting line-height
+sub,
+sup {
+  position: relative;
+  font-size: 80%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+// Correct subscript offset
+sub {
+  bottom: -0.25em;
+}
+
+// Correct superscript offset
+sup {
+  top: -0.5em;
+}
+
+img {
+  border-style: none;
 }
 
 // Reset table styles
@@ -66,7 +132,8 @@ table {
 }
 
 // Reset table cell styles
-td, th {
+td,
+th {
   font-weight: normal;
   text-align: left;
   vertical-align: top;
@@ -88,13 +155,4 @@ input {
   appearance: none;
 }
 
-// Reset link styles
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
-// Reset tap outlines on iOS and Android
-a, button, label, input {
-  -webkit-tap-highlight-color: transparent;
-}

@@ -104,7 +104,7 @@ rules:
     - 2
     - style: double
   shorthand-values: 2
-  single-line-per-selector: 0
+  single-line-per-selector: 2
   space-after-bang: 2
   space-after-colon: 2
   space-after-comma: 2

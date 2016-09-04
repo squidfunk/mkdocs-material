@@ -26,12 +26,14 @@
 
 // Nested navigation
 .md-nav {
+  font-size: ms(-1);
+  line-height: 1.2;
 
-  // Set font sizes
-  &,
-  h3 {
-    font-size: ms(-1);
-    line-height: 1.2;
+  // Title
+  &__title {
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
   }
 
   // Table of contents
@@ -41,6 +43,8 @@
 
   // List of items
   &__list {
+    margin: 0;
+    padding: 0;
     list-style: none;
 
     // 2nd+ level list

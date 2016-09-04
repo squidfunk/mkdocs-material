@@ -25,7 +25,8 @@
 // ----------------------------------------------------------------------------
 
 // Default fonts
-body, kbd {
+body,
+kbd {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
@@ -41,7 +42,8 @@ body, kbd {
 }
 
 // Proportionally spaced fonts
-pre, code {
+pre,
+code {
   font-family: "Roboto Mono", "Courier New", Courier, monospace;
 
   // Use system fonts, if browser doesn't support webfonts
@@ -66,6 +68,7 @@ pre, code {
 
   // 1st level headline
   h1 {
+    margin: 0 0 4.0rem;
     color: $md-color-black--light;
     font-size: ms(3);
     font-weight: 300;
@@ -75,7 +78,7 @@ pre, code {
 
   // 2nd level headline
   h2 {
-    margin-top: 4.0rem;
+    margin: 4.0rem 0 1.6rem;
     font-size: ms(2);
     font-weight: 300;
     letter-spacing: -0.01em;
@@ -84,7 +87,7 @@ pre, code {
 
   // 3rd level headline
   h3 {
-    margin-top: 3.2rem;
+    margin: 3.2rem 0 1.6rem;
     font-size: ms(1);
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -98,7 +101,7 @@ pre, code {
 
   // 4th level headline
   h4 {
-    margin-top: 1.6rem;
+    margin: 1.6rem 0;
     font-size: ms(0);
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -107,7 +110,7 @@ pre, code {
   // 5th and 6th level headline
   h5,
   h6 {
-    margin-top: 1.6rem;
+    margin: 1.6rem 0;
     color: $md-color-black--light;
     font-size: ms(-1);
     font-weight: 700;
@@ -117,6 +120,12 @@ pre, code {
   // Overrides for 5th level headline
   h5 {
     text-transform: uppercase;
+  }
+
+  // Horizontal separators
+  hr {
+    margin: 2.4rem 0;
+    border-bottom: px2rem(1px) dotted $md-color-black--lighter;
   }
 
   // Links
@@ -181,19 +190,12 @@ pre, code {
   // Smaller text
   small {
     color: $md-color-black--light;
-    font-size: smaller;
   }
 
   // Superscript and subscript
   sup,
   sub {
     margin-left: 0.1rem;
-  }
-
-  // Horizontal separators
-  hr {
-    margin: 2.4rem 0;
-    border-bottom: px2rem(1px) dotted $md-color-black--lighter;
   }
 
   // Blockquotes, possibly nested
