@@ -20,11 +20,11 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Header
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Header
+// ----------------------------------------------------------------------------
 
-/// Application header (stays always on top)
+// Application header (stays always on top)
 .md-header {
   @include z-depth(2);
 
@@ -37,11 +37,11 @@
   color: $md-color-white;
   z-index: 1;
 
-  /// Navigation within header
+  // Navigation within header
   &-nav {
     padding: 0.4rem;
 
-    /// Header icon
+    // Header icon
     &__icon {
       display: inline-block;
       position: relative;
@@ -53,22 +53,22 @@
       cursor: pointer;
       z-index: 1;
 
-      /// Pushed/clicked icon
+      // Pushed/clicked icon
       &:active {
         background: $md-color-white--lightest;
       }
 
-      /// [tablet +]: Hide the search icon from tablet
+      // [tablet +]: Hide the search icon from tablet
       @include break-from-device(tablet) {
 
-        /// Search icon
+        // Search icon
         &.md-icon--search {
           display: none;
         }
       }
     }
 
-    /// Header title
+    // Header title
     &__title {
       padding: 0 2.0rem;
       font-size: 1.8rem;

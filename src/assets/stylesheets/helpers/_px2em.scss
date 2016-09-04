@@ -20,11 +20,11 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Pixel conversion helpers
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Pixel conversion helpers
+// ----------------------------------------------------------------------------
 
-////
+///
 /// Convert font size in px to em.
 ///
 /// @group  helpers
@@ -32,7 +32,7 @@
 /// @param  {Number} $size Font size in px
 /// @param  {Number} $base Base font size
 /// @return {Number}       Font size in em
-////
+///
 @function px2em($size, $base: 16px) {
   @if unit($size) == px {
     @return ($size / $base) * 1.0em;
@@ -41,7 +41,7 @@
   }
 }
 
-////
+///
 /// Convert font size in px to rem.
 ///
 /// @group  helpers
@@ -49,7 +49,7 @@
 /// @param  {Number} $size Font size in px
 /// @param  {Number} $base Base font size
 /// @return {Number}       Font size in rem
-////
+///
 @function px2rem($size, $base: 10px) {
   @if unit($size) == px {
     @return ($size / $base) * 1.0rem;

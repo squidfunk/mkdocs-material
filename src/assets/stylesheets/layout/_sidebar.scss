@@ -20,27 +20,27 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Sidebar
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Sidebar
+// ----------------------------------------------------------------------------
 
-/// Sidebar content
+// Sidebar content
 .md-sidebar {
   position: relative;
   width: 24.2rem;
   float: left;
   overflow: visible;
 
-  /// Lock sidebar to container height (account for fixed header)
+  // Lock sidebar to container height (account for fixed header)
   &.md-js__sidebar--locked {
     position: fixed;
     top: 5.6rem;
   }
 
-  /// [tablet landscape -]: Convert navigation to drawer
+  // [tablet landscape -]: Convert navigation to drawer
   @include break-to-device(tablet landscape) {
 
-    /// Render primary sidebar as a slideout container
+    // Render primary sidebar as a slideout container
     &--primary {
       position: fixed;
       top: 0;
@@ -51,16 +51,16 @@
       background: $md-color-white;
       z-index: 3;
 
-      /// Just hide drawer, if browser doesn't support 3D transforms
+      // Just hide drawer, if browser doesn't support 3D transforms
       .no-csstransforms3d & {
         display: none;
       }
 
-      /// Expanded drawer
+      // Expanded drawer
       .md-toggle--drawer:checked ~ .md-container & {
         transform: translate3d(0, 0, 0);
 
-        /// Just show drawer, if browser doesn't support 3D transforms
+        // Just show drawer, if browser doesn't support 3D transforms
         .no-csstransforms3d & {
           display: block;
         }
@@ -68,21 +68,21 @@
     }
   }
 
-  /// Secondary sidebar with table of contents
+  // Secondary sidebar with table of contents
   &--secondary {
     display: none;
 
-    /// [tablet landscape +]: Show table of contents next to body copy
+    // [tablet landscape +]: Show table of contents next to body copy
     @include break-from-device(tablet landscape) {
       display: block;
       float: right;
 
-      /// Hack to align right in case of locked sidebar
+      // Hack to align right in case of locked sidebar
       &.md-js__sidebar--locked {
         margin-left: 100%;
         transform: translate(-100%, 0);
 
-        /// [screen small +]: Limit to grid
+        // [screen small +]: Limit to grid
         @include break-from-device(screen small) {
           margin-left: 120.0rem;
         }
@@ -90,22 +90,22 @@
     }
   }
 
-  /// Wrapper for scrolling on overflow
+  // Wrapper for scrolling on overflow
   &__scrollwrap {
     margin: 2.4rem 0.4rem;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 
-    /// [tablet landscape -]: Adjust margins
+    // [tablet landscape -]: Adjust margins
     @include break-to-device(tablet landscape) {
 
-      /// Adjust margins for primary scrollbar
+      // Adjust margins for primary scrollbar
       .md-sidebar--primary & {
         margin: 0;
       }
     }
 
-    /// Limit height to window, if JavaScript is available
+    // Limit height to window, if JavaScript is available
     .js & {
       position: absolute;
       top: 0;
@@ -114,23 +114,23 @@
       left: 0;
     }
 
-    /// Override native scrollbar styles
+    // Override native scrollbar styles
     &::-webkit-scrollbar {
       width: 0.4rem;
       height: 0.4rem;
 
-      /// Style scrollbar thumb
+      // Style scrollbar thumb
       &-thumb {
         background: $md-color-black--lighter;
       }
     }
   }
 
-  /// Actual sidebar content
+  // Actual sidebar content
   &__inner {
     padding: 1.2rem;
 
-    /// [screen small +]: Add line for reference
+    // [screen small +]: Add line for reference
     @include break-from-device(screen small) {
       border-right: px2rem(1px) solid $md-color-black--lightest;
     }

@@ -20,11 +20,11 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Icon set
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Icon set
+// ----------------------------------------------------------------------------
 
-/// Base icon class
+// Base icon class
 %md-icon,
 .md-icon {
   font-family: "Material Icons";
@@ -38,12 +38,12 @@
   word-wrap: normal;
   direction: ltr;
 
-  /// Enable font-smoothing in Webkit and FF
+  // Enable font-smoothing in Webkit and FF
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/// Build representational classes
+// Build representational classes
 @each $ligature, $name in (
   "arrow_back": "back",
   "arrow_forward": "forward",

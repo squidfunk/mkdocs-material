@@ -20,23 +20,23 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Footnotes extension
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Footnotes extension
+// ----------------------------------------------------------------------------
 
-/// Scoped in typesetted content for greater specificity
+// Scoped in typesetted content for greater specificity
 .md-content--typeset {
 
-  /// Footnote
+  // Footnote
   .footnote {
     color: $md-color-black--light;
     font-size: smaller;
 
-    /// Remove additional spacing on footnotes
+    // Remove additional spacing on footnotes
     > ol {
       margin-left: 0;
 
-      /// Single footnote
+      // Single footnote
       > li {
 
         // TODO: this doesn't work entirely
@@ -47,14 +47,14 @@
         //   margin-top: -(5.6rem + 2.4rem + 0.4rem);
         // }
 
-        /// Make back references visible on hover
+        // Make back references visible on hover
         &:hover  .footnote-backref,
         &:target .footnote-backref {
           transform: translate3d(0, 0, 0);
           opacity: 1;
         }
 
-        /// Active or targeted back reference
+        // Active or targeted back reference
         &:hover  .footnote-backref:hover,
         &:target .footnote-backref {
           color: $md-color-accent;
@@ -62,7 +62,7 @@
       }
     }
 
-    /// Correct anchor offset
+    // Correct anchor offset
     &-ref::before {
       position: absolute;
       margin-top: -(5.6rem + 2.4rem + 0.4rem);
@@ -71,7 +71,7 @@
       pointer-events: none;
     }
 
-    /// Make back reference text transparent for icon
+    // Make back reference text transparent for icon
     &-backref {
       @extend %md-icon;
 
@@ -85,12 +85,12 @@
       opacity: 0;
       vertical-align: middle;
 
-      /// Hack: remove Unicode arrow for icon
+      // Hack: remove Unicode arrow for icon
       &::first-letter {
         font-size: 0;
       }
 
-      /// Back reference icon
+      // Back reference icon
       &::after {
         content: "keyboard_return";
       }

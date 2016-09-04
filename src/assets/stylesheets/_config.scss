@@ -20,19 +20,19 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Typography
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Typography
+// ----------------------------------------------------------------------------
 
-/// Modular typographic scale
+// Modular typographic scale
 $ms-base: 1.6rem;
 $ms-ratio: $major-third;
 
-/// ---------------------------------------------------------------------------
-/// Breakpoints
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Breakpoints
+// ----------------------------------------------------------------------------
 
-/// Device-specific breakpoints
+// Device-specific breakpoints
 $break-devices: (
   mobile: (
     portrait:  px2em(220px)  px2em(479px),
@@ -49,23 +49,23 @@ $break-devices: (
   )
 );
 
-/// ---------------------------------------------------------------------------
-/// Colors
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Colors
+// ----------------------------------------------------------------------------
 
-/// Primary and accent colors
+// Primary and accent colors
 $md-color-primary:         $clr-indigo-500;
 $md-color-primary--light:  $clr-indigo-100;
 $md-color-primary--dark:   $clr-indigo-700;
 $md-color-accent:          $clr-indigo-a200;
 
-/// Shades of black
+// Shades of black
 $md-color-black:           hsla(0, 0%, 0%, 0.87);
 $md-color-black--light:    hsla(0, 0%, 0%, 0.54);
 $md-color-black--lighter:  hsla(0, 0%, 0%, 0.26);
 $md-color-black--lightest: hsla(0, 0%, 0%, 0.07);
 
-/// Shades of white
+// Shades of white
 $md-color-white:           hsla(0, 0%, 100%, 1.00);
 $md-color-white--light:    hsla(0, 0%, 100%, 0.70);
 $md-color-white--lighter:  hsla(0, 0%, 100%, 0.30);

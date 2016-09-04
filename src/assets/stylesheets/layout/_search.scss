@@ -20,19 +20,19 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Search
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Search
+// ----------------------------------------------------------------------------
 
-/// Application search
+// Application search
 .md-search {
   position: relative;
 
-  /// Search overlay
+  // Search overlay
   &__overlay {
     display: none;
 
-    /// [mobile -]: Only show overlay on mobile
+    // [mobile -]: Only show overlay on mobile
     @include break-to-device(mobile) {
       display: block;
       position: absolute;
@@ -49,7 +49,7 @@
       overflow: hidden;
       z-index: 0;
 
-      /// Expanded overlay
+      // Expanded overlay
       .md-toggle--search:checked ~ .md-header & {
         transform: scale(40);
         transition: transform 0.4s,
@@ -60,29 +60,29 @@
     }
   }
 
-  /// Inner wrapper
+  // Inner wrapper
   &__inner {
     padding: 0.8rem 0.8rem 0;
 
-    /// [tablet +]: Header-embedded search
+    // [tablet +]: Header-embedded search
     @include break-from-device(tablet) {
       padding: 0.4rem;
     }
   }
 
-  /// Search form
+  // Search form
   &__form {
     position: relative;
     border-radius: px2rem(2px);
     text-align: right;
 
-    /// [mobile -]: Add drop-shadow on mobile
+    // [mobile -]: Add drop-shadow on mobile
     @include break-to-device(mobile) {
       @include z-depth(2);
     }
   }
 
-  /// Icon
+  // Icon
   &__icon {
     position: absolute;
     top: 0.8rem;
@@ -91,36 +91,36 @@
     font-size: 2.4rem;
     cursor: pointer;
 
-    /// [mobile -]: Use back arrow as search icon
+    // [mobile -]: Use back arrow as search icon
     @include break-to-device(mobile) {
       top: 1.2rem;
 
-      /// Hack: @extend doesn't work in media queries, so override manually
+      // Hack: @extend doesn't work in media queries, so override manually
       &::before {
         content: "arrow_back";
       }
     }
   }
 
-  /// Search field
+  // Search field
   &__input {
     padding: 0 0.8rem 0 6.4rem;
     border-radius: px2rem(2px);
 
-    /// Placeholder and icon color in active state
+    // Placeholder and icon color in active state
     + .md-search__icon,
     &::placeholder {
       color: $md-color-black--light;
     }
 
-    /// [mobile -]: Full-screen search bar
+    // [mobile -]: Full-screen search bar
     @include break-to-device(mobile) {
       width: 100%;
       height: 4.8rem;
       font-size: 1.8rem;
     }
 
-    /// [tablet +]: Header-embedded search
+    // [tablet +]: Header-embedded search
     @include break-from-device(tablet) {
       width: 23.0rem;
       height: 4.0rem;
@@ -132,20 +132,20 @@
       color: $md-color-white;
       font-size: ms(0);
 
-      /// Placeholder color
+      // Placeholder color
       + .md-search__icon,
       &::placeholder {
         transition: color 0.25s;
         color: $md-color-white;
       }
 
-      /// Active search field
+      // Active search field
       &:focus {
         width: 40.0rem;
         background: $md-color-white;
         color: $md-color-black;
 
-        /// Placeholder and icon color in active state
+        // Placeholder and icon color in active state
         + .md-search__icon,
         &::placeholder {
           color: $md-color-black--light;

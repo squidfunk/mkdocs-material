@@ -20,65 +20,65 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Navigation
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Navigation
+// ----------------------------------------------------------------------------
 
-/// Nested navigation
+// Nested navigation
 .md-nav {
 
-  /// Set font sizes
+  // Set font sizes
   &,
   h3 {
     font-size: ms(-1);
     line-height: 1.2;
   }
 
-  /// Table of contents
+  // Table of contents
   &--toc {
     border-left: px2rem(4px) solid $md-color-primary;
   }
 
-  /// List of items
+  // List of items
   &__list {
     list-style: none;
 
-    /// 2nd+ level list
+    // 2nd+ level list
     & & {
       margin-left: 1.2rem;
     }
 
-    /// Hide list by default
+    // Hide list by default
     .md-nav__toggle ~ & {
       max-height: 0;
       overflow: hidden;
     }
 
-    /// Expand list, if toggle is checked
+    // Expand list, if toggle is checked
     .md-nav__toggle:checked ~ & {
       max-height: 100%;
     }
   }
 
-  /// List item
+  // List item
   &__item {
     margin: 0.8rem 0 0;
     line-height: 1.6rem;
   }
 
-  /// Link inside item
+  // Link inside item
   &__link {
     display: block;
     transition: color 0.125s;
     text-overflow: ellipsis;
     overflow: hidden;
 
-    /// Marked item
+    // Marked item
     &--marked {
       color: $md-color-black--light;
     }
 
-    /// Current or hovered item
+    // Current or hovered item
     &:hover,
     &:active,
     &--active {

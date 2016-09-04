@@ -20,14 +20,14 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Permalinks extension
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Permalinks extension
+// ----------------------------------------------------------------------------
 
-/// Scoped in typesetted content for greater specificity
+// Scoped in typesetted content for greater specificity
 .md-content--typeset {
 
-  /// Permalink
+  // Permalink
   .headerlink {
     display: inline-block;
     margin-left: 1.0rem;
@@ -39,24 +39,24 @@
     opacity: 0;
   }
 
-  /// All headers with permalinks have ids
+  // All headers with permalinks have ids
   [id] {
 
-    /// Make permalink visible on hover
+    // Make permalink visible on hover
     &:hover  .headerlink,
     &:target .headerlink {
       transform: translate3d(0, 0, 0);
       opacity: 1;
     }
 
-    /// Active or targeted permalink
+    // Active or targeted permalink
     &:hover  .headerlink:hover,
     &:target .headerlink {
       color: $md-color-accent;
     }
   }
 
-  /// Correct anchor offset of headlines
+  // Correct anchor offset of headlines
   @each $level, $delta in (
     h1: 3.0rem,
     h2: 0.2rem,

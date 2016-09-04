@@ -20,11 +20,11 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Admonition extension
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Admonition extension
+// ----------------------------------------------------------------------------
 
-/// Admonition
+// Admonition
 .admonition {
   position: relative;
   margin: 2.0rem 0;
@@ -33,7 +33,7 @@
   border-radius: px2rem(2px);
   background: transparentize($clr-blue-a200, 0.95);
 
-  /// Icon
+  // Icon
   &::before {
     display: block;
     position: absolute;
@@ -48,7 +48,7 @@
     vertical-align: -0.1em;
   }
 
-  /// Title
+  // Title
   &-title {
     color: $clr-blue-a400;
     font-size: ms(-1);
@@ -56,28 +56,28 @@
     line-height: 2.0rem;
     text-transform: uppercase;
 
-    /// Ensure smaller spacing to next element
+    // Ensure smaller spacing to next element
     html & {
       margin-bottom: 1.6rem;
     }
 
-    /// Ensure smaller spacing to next element
+    // Ensure smaller spacing to next element
     html & + * {
       margin-top: 1.6rem;
     }
   }
 
-  /// Remove spacing on first element
+  // Remove spacing on first element
   :first-child {
     margin-top: 0;
   }
 
-  /// Remove spacing on last element
+  // Remove spacing on last element
   :last-child {
     margin-bottom: 0;
   }
 
-  /// Build representational classes
+  // Build representational classes
   @each $names, $appearance in (
     tip idea: $clr-teal-a700 "whatshot",
     success check done: $clr-green-a400 "done",
@@ -89,24 +89,24 @@
     $tint: nth($appearance, 1);
     $icon: nth($appearance, 2);
 
-    /// Define base class
+    // Define base class
     &%#{nth($names, 1)},
     &.#{nth($names, 1)} {
       border-color: $tint;
       background: transparentize($tint, 0.95);
 
-      /// Icon
+      // Icon
       &::before {
         content: $icon;
       }
 
-      /// Set color for title
+      // Set color for title
       .admonition-title {
         color: $tint;
       }
     }
 
-    /// Define synonyms for base class
+    // Define synonyms for base class
     @if length($names) > 1 {
       @for $n from 2 through length($names) {
         &.#{nth($names, $n)} {

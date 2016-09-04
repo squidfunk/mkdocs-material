@@ -20,53 +20,53 @@
 /// DEALINGS
 ////
 
-/// ---------------------------------------------------------------------------
-/// Footer
-/// ---------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Footer
+// ----------------------------------------------------------------------------
 
-/// Application footer
+// Application footer
 .md-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
 
-  /// Pagination container
+  // Pagination container
   &-pagination {
     background: $md-color-black;
     color: $md-color-white;
   }
 
-  /// Footer navigation
+  // Footer navigation
   &-nav {
     padding: 0.4rem;
     overflow: auto;
 
-    /// Links to previous and next page
+    // Links to previous and next page
     &__link {
       padding-top: 2.8rem;
       padding-bottom: 0.8rem;
 
-      /// [mobile landscape +]: Set proportional width
+      // [mobile landscape +]: Set proportional width
       @include break-from-device(mobile landscape) {
         width: 50%;
       }
 
-      /// Link to previous page
+      // Link to previous page
       &--prev {
         width: 25%;
         float: left;
 
-        /// Title
+        // Title
         .md-footer-nav__title {
 
-          /// [mobile portrait -]: Hide title for previous page
+          // [mobile portrait -]: Hide title for previous page
           @include break-to-device(mobile portrait) {
             display: none;
           }
         }
       }
 
-      /// Link to next page
+      // Link to next page
       &--next {
         width: 75%;
         float: right;
@@ -74,7 +74,7 @@
       }
     }
 
-    /// Link icon
+    // Link icon
     &__icon {
       display: inline-block;
       margin: 0.4rem;
@@ -84,13 +84,13 @@
       font-size: 2.4rem;
       cursor: pointer;
 
-      /// Pushed/clicked icon
+      // Pushed/clicked icon
       &:active {
         background: $md-color-white--lightest;
       }
     }
 
-    /// Link title
+    // Link title
     &__title {
       position: relative;
       padding: 0 0.4rem;
@@ -98,7 +98,7 @@
       line-height: 4.8rem;
     }
 
-    /// Link direction
+    // Link direction
     &__direction {
       position: absolute;
       right: 0;
