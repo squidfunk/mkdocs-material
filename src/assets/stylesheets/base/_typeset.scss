@@ -45,6 +45,8 @@ kbd {
 pre,
 code {
   font-family: "Roboto Mono", "Courier New", Courier, monospace;
+  font-weight: 500;
+  font-feature-settings: "kern", "onum", "liga";
 
   // Use system fonts, if browser doesn't support webfonts
   .no-fontface & {
@@ -61,8 +63,11 @@ code {
   font-size: ms(0);
   line-height: 1.6;
 
-  // Body copy
-  p {
+  // Default spacing
+  p,
+  ul,
+  ol,
+  blockquote {
     margin: 1.25em 0;
   }
 
@@ -147,12 +152,17 @@ code {
 
   // Inline code blocks
   code {
-    padding: 0.1rem 0.4rem;
+    margin: 0 0.4rem;
+    padding: 0.1rem 0;
     background: #F7F7F7;
     color: #37474F;
     font-size: 85%;
-    font-weight: 400;
+    box-shadow: 0.4rem 0 0 #F7F7F7,
+               -0.4rem 0 0 #F7F7F7;
     word-break: break-word;
+
+    // Hack: Make FF >= 34 behave correctly
+    box-decoration-break: clone;
   }
 
   // Formatted code blocks
@@ -224,6 +234,7 @@ code {
   ul,
   ol {
     margin-left: 1.0rem;
+    padding: 0;
 
     // List elements
     li {

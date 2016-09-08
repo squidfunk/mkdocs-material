@@ -21,45 +21,40 @@
 -->
 
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<html class="no-js">
   <head>
 
     <!-- Charset and viewport -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,
-        user-scalable=no, initial-scale=1, maximum-scale=1" />
+          user-scalable=no, initial-scale=1, maximum-scale=1" />
 
-    <!-- General meta tags -->
-    {% block htmltitle %}
+    <!-- Site title -->
+    {% if page_title %}
+      <title>{{ page_title }} - {{ site_name }}</title>
+    {% elif page_description %}
+      <title>{{ site_name }} - {{ page_description }}</title>
+    {% else %}
+      <title>{{ site_name }}</title>
+    {% endif %}
 
-      <!-- Site title -->
-      {% if page_title %}
-        <title>{{ page_title }} - {{ site_name }}</title>
-      {% elif page_description %}
-        <title>{{ site_name }} - {{ page_description }}</title>
-      {% else %}
-        <title>{{ site_name }}</title>
-      {% endif %}
+    <!-- Site description -->
+    {% if page_description %}
+      <meta name="description" content="{{ page_description }}" />
+    {% endif %}
 
-      <!-- Site description -->
-      {% if page_description %}
-        <meta name="description" content="{{ page_description }}" />
-      {% endif %}
+    <!-- Canonical -->
+    {% if canonical_url %}
+      <link rel="canonical" href="{{ canonical_url }}" />
+    {% endif %}
 
-      <!-- Canonical -->
-      {% if canonical_url %}
-        <link rel="canonical" href="{{ canonical_url }}" />
-      {% endif %}
+    <!-- Author -->
+    {% if site_author %}
+      <meta name="author" content="{{ site_author }}" />
+    {% endif %}
 
-      <!-- Author -->
-      {% if site_author %}
-        <meta name="author" content="{{ site_author }}" />
-      {% endif %}
-    {% endblock %}
+    <!-- Generator banner -->
+    <meta name="generator" content="mkdocs+$theme-name$#$theme-version$" />
 
     <!-- Theme-related stylesheets -->
     <link rel="stylesheet" type="text/css"
@@ -67,9 +62,9 @@
 
     <!-- Web fonts -->
     <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" />
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" />
     <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" />
+        href="https://fonts.googleapis.com/css?family=Roboto+Mono:500,700" />
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/icon?family=Material+Icons">
 

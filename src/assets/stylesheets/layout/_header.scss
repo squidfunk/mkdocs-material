@@ -47,15 +47,14 @@
       position: relative;
       margin: 0.4rem;
       padding: 0.8rem;
-      transition: background 0.25s;
-      border-radius: 100%;
+      transition: opacity 0.25s;
       font-size: 2.4rem;
       cursor: pointer;
       z-index: 1;
 
       // Pushed/clicked icon
-      &:active {
-        background: $md-color-white--lightest;
+      &:hover {
+        opacity: 0.7;
       }
 
       // [tablet +]: Hide the search icon from tablet

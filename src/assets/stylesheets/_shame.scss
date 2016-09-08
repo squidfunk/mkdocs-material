@@ -54,7 +54,7 @@
     transform: translate3d(5%, 0, 0);
     transition: transform .3s .15s cubic-bezier(0.1, 0.7, 0.1, 1.0), opacity .15s .15s;
 
-    #md-toggle-search:checked ~ .md-header & {
+    .md-toggle--search:checked ~ .md-header & {
       transform: translate3d(0, 0, 0);
       left: 0;
       opacity: 1;
@@ -65,4 +65,23 @@
     position: relative;
     z-index: 2;
   }
+}
+
+.md-icon--github {
+  &::before {
+    content: " ";
+    display: block;
+    background-image: url("../images/icons/github-white.svg"); // TODO: user default source icon otherwise
+    background-size: 2.4rem 2.4rem;
+    background-repeat: no-repeat;
+    // width: 12.4rem;
+    height: 2.4rem;
+  }
+}
+
+.md-header-nav__source {
+  display: table;
+  white-space: nowrap;
+
+
 }

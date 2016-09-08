@@ -77,7 +77,7 @@
       display: block;
       float: right;
 
-      // Hack to align right in case of locked sidebar
+      // Hack: align right in case of locked sidebar
       &.md-js__sidebar--locked {
         margin-left: 100%;
         transform: translate(-100%, 0);

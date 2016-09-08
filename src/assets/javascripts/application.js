@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var toc = new Sidebar('.md-sidebar--secondary');
   toc.listen();
 
-  var spy = new ScrollSpy('.md-nav--toc .md-nav__item a');
+  var spy = new ScrollSpy('.md-nav--toc .md-nav__link');
   spy.listen();
 
   window.addEventListener('resize', handler);

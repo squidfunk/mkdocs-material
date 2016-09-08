@@ -43,7 +43,7 @@
       transform-origin: center;
       transition: transform 0.3s 0.1s,
                   opacity   0.2s 0.2s;
-      border-radius: 100%;
+      border-radius: 2.0rem;                                                    // TODO: correct?
       background: #EEEEEE;
       opacity: 0;
       overflow: hidden;
@@ -137,6 +137,11 @@
       &::placeholder {
         transition: color 0.25s;
         color: $md-color-white;
+      }
+
+      // Hovered search field
+      &:hover {
+        background: $md-color-white--lighter;
       }
 
       // Active search field

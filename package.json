@@ -42,6 +42,7 @@
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.1.0",
     "gulp-remove-empty-lines": "0.0.2",
+    "gulp-replace": "^0.5.4",
     "gulp-rev": "^7.0.0",
     "gulp-rev-collector": "^1.0.2",
     "gulp-sass": "^2.2.0",

@@ -58,6 +58,30 @@
           class="md-nav__link md-nav__link--active">
         {{ nav_item.title }}
       </a>
+
+      <!-- <nav class="md-nav md-nav--toc"> -->
+
+        <!--
+          The top-level anchor must be skipped if the article contains a h1
+          headline, since it would be redundant to the link to the current page
+          that is located just above the anchor. Therefore we directly continue
+          with the children of the anchor.
+        -->
+        <!-- {% if h1 %}
+          {% set toc = (toc | first).children %}
+        {% endif %} -->
+
+        <!-- Render item list -->
+        <!-- {% if toc and (toc | first) %}
+          <h3 class="md-nav__title">Table of contents</h3>
+          <ul class="md-nav__list">
+            {% for toc_item in toc %}
+              {% include "toc-item.html" %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </nav> -->
+
     {% else %}
       <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
           class="md-nav__link">

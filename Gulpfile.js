@@ -44,9 +44,10 @@ var notifier   = require('node-notifier');
 var path       = require('path');
 var plumber    = require('gulp-plumber');
 var postcss    = require('gulp-postcss');
+var replace    = require('gulp-replace');
 var rev        = require('gulp-rev');
 var sass       = require('gulp-sass');
-// var sasslint   = require('gulp-sass-lint');
+var sasslint   = require('gulp-sass-lint');
 var sourcemaps = require('gulp-sourcemaps');
 var stream     = require('webpack-stream');
 var uglify     = require('gulp-uglify');
@@ -76,7 +77,13 @@ gulp.src = function() {
         util.log(util.colors.red(
           'Error (' + error.plugin + '): ' + error.message
         ));
-        var file = error.relativePath.split('/').pop();
+
+        /* Extract file where error happened, if existent */
+        var file = error.relativePath
+          ? error.relativePath.split('/').pop()
+          : '';
+
+        /* Dispatch system-level notification */
         notifier.notify({
           title: 'Error (' + error.plugin + '): ' + file,
           message: error.messageOriginal
@@ -92,9 +99,21 @@ gulp.src = function() {
 /*
  * Build stylesheets from SASS source.
  */
+gulp.task('assets:lint:stylesheets', function() {
+  return gulp.src('src/assets/stylesheets/*.scss')
+    .pipe(gulpif(args.production,
+      sasslint({
+        configFile: './.sass-lint.yml'
+      })))
+    .pipe(gulpif(args.production, sasslint.format()))
+    .pipe(gulpif(args.production, sasslint.failOnError()));
+});
+
+/*
+ * Build stylesheets from SASS source.
+ */
 gulp.task('assets:stylesheets', function() {
   return gulp.src('src/assets/stylesheets/*.scss')
-    // .pipe(gulpif(args.production, sasslint()))
     .pipe(gulpif(args.sourcemaps, sourcemaps.init()))
     .pipe(
       sass({
@@ -136,11 +155,6 @@ gulp.task('assets:javascripts', function() {
         },
         plugins: [
           new webpack.NoErrorsPlugin(),
-          new webpack.ResolverPlugin(
-            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(          // TODO: remove?
-              '.bower.json', ['main']
-            )
-          )
         ].concat(
           args.production ? [
             new webpack.optimize.UglifyJsPlugin({
@@ -195,15 +209,14 @@ gulp.task('assets:modernizr', [
  * Copy static assets like images and webfonts.
  */
 gulp.task('assets:static', function() {
-  return gulp.src('src/assets/{fonts,images}/*.{jpg,png,gif}')
+  return gulp.src('src/assets/images/**/*')
     .pipe(gulpif(args.production,
       minimage({
         optimizationLevel: 5,
         progressive: true,
         interlaced: true
       })))
-    .pipe(addsrc.append('src/assets/{fonts,images}/*.{ico,eot,svg,ttf,woff}'))
-    .pipe(gulp.dest('material/assets'));
+    .pipe(gulp.dest('material/assets/images'));
 });
 
 /*
@@ -214,6 +227,7 @@ gulp.task('assets:views', args.production ? [
   'assets:revisions:clean',
   'assets:revisions'
 ] : [], function() {
+  var metadata = require('./package.json');
   return gulp.src([
     'src/*.html'
   ]).pipe(
@@ -221,8 +235,11 @@ gulp.task('assets:views', args.production ? [
         collapseBooleanAttributes: true,
         removeComments: true,
         removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true
+        removeStyleLinkTypeAttributes: true,
+        customAttrCollapse: /(content)/
       }))
+    .pipe(replace('$theme-name$', metadata.name))
+    .pipe(replace('$theme-version$', metadata.version))
     .pipe(compact())
     .pipe(gulpif(args.production,
       addsrc.append([

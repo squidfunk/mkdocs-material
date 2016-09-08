@@ -5,10 +5,9 @@ urna lobortis consectetur ut vitae urna. Donec eu viverra sapien. Nam
 tempor auctor lacus et congue. Quisque id congue velit. Lorem ipsum dolor
 sit amet, consectetur adipiscing elit.
 
-#### Headline on fourth level
+## Headline on fourth level
 
 Footnotes[^1] have a label[^@#$%] and the footnote's content.
-
 ### 2nd Headline on fourth level
 
 [^1]: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at nisl ac
