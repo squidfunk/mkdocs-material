@@ -35,9 +35,13 @@
 ///
 @function px2em($size, $base: 16px) {
   @if unit($size) == px {
-    @return ($size / $base) * 1.0em;
+    @if unit($base) == px {
+      @return ($size / $base) * 1.0em;
+    } @else {
+      @error "Invalid base: #{$base} - unit must be 'px'";
+    }
   } @else {
-    @error "Invalid unit: #{$size} - must be px";
+    @error "Invalid size: #{$size} - unit must be 'px'";
   }
 }
 
@@ -52,8 +56,12 @@
 ///
 @function px2rem($size, $base: 10px) {
   @if unit($size) == px {
-    @return ($size / $base) * 1.0rem;
+    @if unit($base) == px {
+      @return ($size / $base) * 1.0rem;
+    } @else {
+      @error "Invalid base: #{$base} - unit must be 'px'";
+    }
   } @else {
-    @error "Invalid unit: #{$size} - must be px";
+    @error "Invalid size: #{$size} - unit must be 'px'";
   }
 }
