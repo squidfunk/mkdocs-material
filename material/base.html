@@ -20,14 +20,14 @@
       <meta name="author" content="{{ site_author }}">
     {% endif %}
     <meta name="generator" content="mkdocs+mkdocs-material#0.2.1">
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-9be6329335.css">
+    <script src="{{ base_url }}/assets/javascripts/modernizr-772e114b08.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:500,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:500">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-6e34e5e667.css">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
-    <script src="{{ base_url }}/assets/javascripts/modernizr-772e114b08.js"></script>
   </head>
   <body>
     <input class="md-toggle md-toggle--drawer" type="checkbox" id="drawer">
@@ -36,7 +36,7 @@
     {% include "header.html" %}
     <div class="md-container">
       <main class="md-main">
-        <div class="md-grid md-main__inner">
+        <div class="md-main__inner md-grid">
           {% set h1 = "\x3ch1 id=" in content %}
           {% if nav %}
             {% include "nav.html" %}
@@ -46,6 +46,7 @@
           {% endif %}
           <div class="md-content md-content--typeset">
             <article class="md-content__inner">
+                                                          <div class="floater">Edit on GitHub</div>
               {{ content }}
               <hr>
               <small class="md-content__copyright">
@@ -72,7 +73,7 @@
       var base_url = '{{ base_url }}';
       var repo_url = '{{ repo_url }}';
     </script>
-    <script src="{{ base_url }}/assets/javascripts/application-56219c4975.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/application-ac947cb450.js"></script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}

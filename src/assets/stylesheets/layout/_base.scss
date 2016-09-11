@@ -132,6 +132,7 @@ hr {
   // Flexible layout container cell/element
   &__cell {
     display: table-cell;
+    position: relative;
     vertical-align: top;
 
     // Shrink to minimum width

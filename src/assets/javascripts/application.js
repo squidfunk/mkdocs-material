@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   /* Intercept click on search mode toggle */
   var offset = 0;
-  var toggle = document.getElementById('md-toggle-search');
+  var toggle = document.getElementById('search');
   toggle.addEventListener('click', function(e) {
     var list = document.body.classList;
     var lock = !matchMedia('only screen and (min-width: 960px)').matches;

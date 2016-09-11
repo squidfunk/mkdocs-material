@@ -67,21 +67,222 @@
   }
 }
 
-.md-icon--github {
+// .md-icon--github {
+//   &::before {
+//     content: " ";
+//     display: block;
+//     background-image: url("../images/icons/github-white.svg"); // TODO: user default source icon otherwise
+//     background-size: 2.4rem 2.4rem;
+//     background-repeat: no-repeat;
+//     width:  2.4rem;
+//     height: 2.4rem;
+//   }
+// }
+
+// override locally
+
+.md-header-source {
+  position: relative;
+  display: table-cell;
+  // background: black;
+  white-space: nowrap;
+  min-width: 23.0rem;
+  max-width: 23.0rem;
+  height: 4.8rem;
+  font-size: 1.3rem;
+  vertical-align: middle;
+  padding-right: 0.8rem;
+  padding-left: 4.0rem;
+  transition: opacity .25s;
+  &:hover {
+    opacity: 0.7;
+  }
+
   &::before {
     content: " ";
     display: block;
     background-image: url("../images/icons/github-white.svg"); // TODO: user default source icon otherwise
     background-size: 2.4rem 2.4rem;
     background-repeat: no-repeat;
-    // width: 12.4rem;
+    width:  2.4rem;
     height: 2.4rem;
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .title {
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .count {
+    color: $md-color-white--light;
+    // display: none;
+    // text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.1rem;
   }
 }
 
-.md-header-nav__source {
-  display: table;
-  white-space: nowrap;
 
 
+
+
+
+
+.checklist {
+
+  li {
+    position: relative;
+    list-style-type: none;
+
+    &::before {
+      @extend %md-icon;
+
+      position: absolute;
+      appearance: none;
+      color: blue;
+
+      content: "check_box";
+      font-size: 2.4rem;
+    }
+  }
+
+  input[type="checkbox"]:checked {
+    width: 20px;
+    // & ~ .checklist li::after {
+    //   color: red;
+    // }
+  }
+}
+
+// Inline code blocks
+ins.critic, del.critic, mark {
+  margin: 0 0.4rem;
+  padding: 0.1rem 0;
+  word-break: break-word;
+  box-decoration-break: clone;
+
+  border-radius: 0.2rem;
+
+  // &::before {
+  //   @extend %md-icon;
+  //
+  //   color: $md-color-black--light;
+  //
+  //   font-size: 1.6rem;
+  //   padding-right: 0.2rem;
+  //   vertical-align: -0.2rem;
+  // }
+}
+
+ins.critic {
+  background: #DDFFDD;
+  box-shadow: 0.4rem 0 0 #DDFFDD,
+             -0.4rem 0 0 #DDFFDD;
+  text-decoration: none;
+  // &::before {
+  //   content: "add";
+  // }
+}
+
+del.critic {
+  background: #FFDDDD;
+  box-shadow: 0.4rem 0 0 #FFDDDD,
+             -0.4rem 0 0 #FFDDDD;
+             //
+            //  &::before {
+            //    content: "remove";
+            //  }
+}
+
+// Not critic-specific!
+mark {
+  background: #FFFF00;
+  box-shadow: 0.4rem 0 0 #FFFF00,
+             -0.4rem 0 0 #FFFF00; // ligher yellow...
+}
+
+.critic.comment {
+  margin: 0 0.4rem;
+  padding: 0.1rem 0;
+  border-radius: 0.2rem;
+  background: #F0F0F0;
+  color: #37474F;
+  // font-size: 85%;
+  box-shadow: 0.4rem 0 0 #F0F0F0,
+             -0.4rem 0 0 #F0F0F0; // darker than code!!!
+  box-decoration-break: clone;
+
+  &::before {
+    @extend %md-icon;
+
+    color: $md-color-black--lighter;
+
+    content: "chat";
+    font-size: 1.6rem;
+    padding-right: 0.2rem;
+    vertical-align: -0.2rem;
+  }
+}
+
+article {
+  overflow: auto;
+}
+.floater {
+  display: none;
+  float: right;
+  margin-top: 9px;
+  font-size: 13px;
+  padding-left: 2.6rem;
+
+  &::before {
+    @extend %md-icon;
+
+    content: "edit";
+  }
+}
+
+.task-list-item {
+  list-style-type: none;
+}
+
+.task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+
+
+.task-list-item {
+  position: relative;
+}
+
+.task-list-item input[type="checkbox"] {
+  opacity: 0;
+}
+
+.task-list-item input[type="checkbox"] + label {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  width: 16px;
+  margin-top: -8px;
+  height: 16px;
+  border-radius: 2px;
+  background: #CCC;
+}
+
+.task-list-item input[type="checkbox"]:checked + label::before {
+  display: block;
+  margin-top: -4px;
+  margin-left: 2px;
+  font-size: 1.2em;
+  line-height: 1;
+  border-radius: 2px;
+  content: "✔";
+  color: #1EBB52;
 }

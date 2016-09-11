@@ -1,7 +1,7 @@
 <footer class="md-footer">
   {% if previous_page or next_page %}
     <div class="md-footer-pagination">
-      <nav class="md-grid md-footer-nav">
+      <nav class="md-footer-nav md-grid">
         {% if previous_page %}
           <a href="{{ previous_page.url }}" title="{{ previous_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -154,6 +154,7 @@ code {
   code {
     margin: 0 0.4rem;
     padding: 0.1rem 0;
+    border-radius: 0.2rem;
     background: #F7F7F7;
     color: #37474F;
     font-size: 85%;
@@ -161,7 +162,6 @@ code {
                -0.4rem 0 0 #F7F7F7;
     word-break: break-word;
 
-    // Hack: Make FF >= 34 behave correctly
     box-decoration-break: clone;
   }
 

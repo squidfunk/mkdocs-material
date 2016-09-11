@@ -21,12 +21,12 @@
 # Mac OS X internals
 .DS_Store
 
-# Bower and NPM libraries
-bower_components
+# NPM libraries
 node_modules
 
 # Build files
 build
+manifest.json
 MANIFEST
 site
 

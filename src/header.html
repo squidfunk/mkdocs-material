@@ -24,7 +24,7 @@
 <header class="md-header">
 
   <!-- Top-level navigation -->
-  <nav class="md-grid md-header-nav">
+  <nav class="md-header-nav md-grid">
     <div class="md-flex">
 
       <!-- Button to toggle drawer -->
@@ -34,17 +34,17 @@
       </div>
 
       <!-- Header title -->
-      <div class="md-flex__cell md-flex__cell--stretch md-header-nav__title">
-        <span class="md-flex__ellipsis">
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
           {{ page_title | default(site_name, true) }}
         </span>
       </div>
 
       <!-- Button to open search dialogue -->
-      <div class="md-flex__cell md-flex__cell--shrink md-search">
+      <div class="md-flex__cell md-flex__cell--shrink">                         <!-- TODO: put search tag somewhere... -->
         <label class="md-icon md-icon--search md-header-nav__icon"
             for="search"></label>
-        <div class="md-search__overlay"></div>
+        <div class="md-search__overlay"></div>                                  <!-- name this header overlay? the other one search? -->
         <div class="md-search__inner">
           <form class="md-search__form">
             <input type="text" class="md-search__input"
@@ -70,19 +70,15 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> 
 
-      <!-- Link to GitHub profile -->
-      <div class="md-flex__cell md-flex__cell--shrink md-header-nav__source">
-        <a href="{{ repo_url }}" title="GitHub" class="md-header-nav__link">
-          GitHub <small>135 Stars</small>
-
-          <!-- <i class="md-icon--github md-header-nav__icon">
-
-          </i>
-          <span class="md-header-nav__icon-title">
-
-          </span> -->
+      <!-- Link to repository -->
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="{{ repo_url }}" title="GitHub" class="md-header-source">
+          <div class="md-header-source__inner">
+            <div class="title">squidfunk/mkdocs-material</div>
+            <div class="count">0.2.4 – 177 Stars – 46 Forks</div>
+          </div>
         </a>
       </div>
     </div>

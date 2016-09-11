@@ -1,17 +1,17 @@
 <header class="md-header">
-  <nav class="md-grid md-header-nav">
+  <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
         <label class="md-icon md-icon--menu md-header-nav__icon" for="drawer"></label>
       </div>
-      <div class="md-flex__cell md-flex__cell--stretch md-header-nav__title">
-        <span class="md-flex__ellipsis">
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
           {{ page_title | default(site_name, true) }}
         </span>
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink md-search">
+      <div class="md-flex__cell md-flex__cell--shrink">                         
         <label class="md-icon md-icon--search md-header-nav__icon" for="search"></label>
-        <div class="md-search__overlay"></div>
+        <div class="md-search__overlay"></div>                                  
         <div class="md-search__inner">
           <form class="md-search__form">
             <input type="text" class="md-search__input" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" id="query">
@@ -34,10 +34,13 @@
             </div>
           </form>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink md-header-nav__source">
-        <a href="{{ repo_url }}" title="GitHub" class="md-header-nav__link">
-          GitHub <small>135 Stars</small>
+      </div> 
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="{{ repo_url }}" title="GitHub" class="md-header-source">
+          <div class="md-header-source__inner">
+            <div class="title">squidfunk/mkdocs-material</div>
+            <div class="count">0.2.4 – 177 Stars – 46 Forks</div>
+          </div>
         </a>
       </div>
     </div>
