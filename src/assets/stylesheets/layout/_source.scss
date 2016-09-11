@@ -1,0 +1,95 @@
+////
+/// Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Source
+// ----------------------------------------------------------------------------
+
+// Repository containing source
+.md-source {
+  display: table-cell;
+  position: relative;
+  min-width: 23.0rem;
+  max-width: 23.0rem;
+  height: 4.8rem;
+  padding: 0 1.2rem;
+  transition: opacity 0.25s;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  // Hovered source information
+  &:hover {
+    opacity: 0.7;
+  }
+
+  // Repository is hosted on platform
+  &--bitbucket,
+  &--github,
+  &--gitlab {
+    padding-left: 4.0rem;
+
+    // Platform icon
+    &::before {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0.8rem;
+      width:  2.4rem;
+      height: 2.4rem;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-size: 2.4rem 2.4rem;
+      content: "";
+    }
+  }
+
+  // Code is hosted on BitBucket
+  &--bitbucket::before {
+    background-image: url("../images/icons/bitbucket-white.svg");
+  }
+
+  // Code is hosted on GitHub
+  &--github::before {
+    background-image: url("../images/icons/github-white.svg");
+  }
+
+  // Code is hosted on GitLab
+  &--gitlab::before {
+    background-image: url("../images/icons/gitlab-white.svg");
+  }
+
+  // Repository name
+  &__repository {
+    font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  // Repository statistics
+  &__stats {
+    color: $md-color-white--light;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+}

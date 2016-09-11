@@ -34,12 +34,21 @@
             </div>
           </form>
         </div>
-      </div> 
+      </div>
+      {% if "github." in repo_url %}
+        {% set platform = "md-source--github" %}
+      {% elif "gitlab." in repo_url %}
+        {% set platform = "md-source--gitlab" %}
+      {% elif "bitbucket." in repo_url %}
+        {% set platform = "md-source--bitbucket" %}
+      {% else %}
+        {% set platform = "" %}
+      {% endif %}
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="{{ repo_url }}" title="GitHub" class="md-header-source">
-          <div class="md-header-source__inner">
-            <div class="title">squidfunk/mkdocs-material</div>
-            <div class="count">0.2.4 – 177 Stars – 46 Forks</div>
+        <a href="{{ repo_url }}" title="Go to repository" class="md-source {{ platform }}">
+          <div class="md-source__repository">{{ repo_name }}</div>
+          <div class="md-source__stats">
+            0.2.4 &middot; 177 Stars &middot; 46 Forks
           </div>
         </a>
       </div>
