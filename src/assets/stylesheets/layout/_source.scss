@@ -34,7 +34,7 @@
   padding: 0 1.2rem;
   transition: opacity 0.25s;
   font-size: 1.3rem;
-  line-height: 1.4;
+  line-height: 1.2;
   white-space: nowrap;
   vertical-align: middle;
 
@@ -86,10 +86,39 @@
     overflow: hidden;
   }
 
-  // Repository statistics
-  &__stats {
+  // Source facts (statistics etc.)
+  &__facts {
+    margin: 0;
+    padding: 0;
     color: $md-color-white--light;
     font-size: 1.1rem;
     font-weight: 700;
+    list-style-type: none;
+  }
+
+  // Fact
+  &__fact {
+    float: left;
+    transform: translateY(0%);
+    transition: opacity   0.25s,
+                transform 0.25s cubic-bezier(0.1, 0.7, 0.1, 1.0);
+    opacity: 1;
+
+    &--hidden {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    &::before {
+      margin: 0 0.2rem;
+      content: "\00B7";
+    }
+
+    &:first-child {
+
+      &::before {
+        display: none;
+      }
+    }
   }
 }

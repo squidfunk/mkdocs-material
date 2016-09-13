@@ -36,42 +36,42 @@
   background: $md-color-primary;
   color: $md-color-white;
   z-index: 1;
+}
 
-  // Navigation within header
-  &-nav {
-    padding: 0.4rem;
+// Navigation within header
+.md-header-nav {
+  padding: 0.4rem;
 
-    // Header icon
-    &__icon {
-      display: inline-block;
-      position: relative;
-      margin: 0.4rem;
-      padding: 0.8rem;
-      transition: opacity 0.25s;
-      font-size: 2.4rem;
-      cursor: pointer;
-      z-index: 1;
+  // Header icon
+  &__icon {
+    display: inline-block;
+    position: relative;
+    margin: 0.4rem;
+    padding: 0.8rem;
+    transition: opacity 0.25s;
+    font-size: 2.4rem;
+    cursor: pointer;
+    z-index: 1;
 
-      // Hovered icon
-      &:hover {
-        opacity: 0.7;
-      }
-
-      // [tablet +]: Hide the search icon from tablet
-      @include break-from-device(tablet) {
-
-        // Search icon
-        &.md-icon--search {
-          display: none;
-        }
-      }
+    // Hovered icon
+    &:hover {
+      opacity: 0.7;
     }
 
-    // Header title
-    &__title {
-      padding: 0 2.0rem;
-      font-size: 1.8rem;
-      line-height: 4.8rem;
+    // [tablet +]: Hide the search icon from tablet
+    @include break-from-device(tablet) {
+
+      // Search icon
+      &.md-icon--search {
+        display: none;
+      }
     }
+  }
+
+  // Header title
+  &__title {
+    padding: 0 2.0rem;
+    font-size: 1.8rem;
+    line-height: 4.8rem;
   }
 }

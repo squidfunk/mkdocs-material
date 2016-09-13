@@ -71,7 +71,7 @@ rules:
       - break-at-device
       - break-from-device
       - break-to-device
-  nesting-depth: 0
+  nesting-depth: 2
   no-color-keywords: 2
   no-color-literals: 2
   no-css-comments: 2

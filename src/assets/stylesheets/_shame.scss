@@ -24,17 +24,26 @@
 // Nothing to see here, move along
 // ----------------------------------------------------------------------------
 
-
 .md-search__suggest {
+  @include z-depth(8);
+
   background: $md-color-white;
   border-radius: 0 0 px2rem(3px) px2rem(3px);
   color: #000000;
   text-align: left;
   border-top: px2rem(1px) solid $md-color-black--lightest;
-  display: none;
+  display: none; // TODO: doesnt work due to display: none;
+  opacity: 0;
+
+  // overflow: auto;
+  transition: opacity .3s;
+  // pointer-events: none;
+
 
   .md-search__input:focus ~ & {
+    // animation: anima .3s;
     display: block;
+    opacity: 1;
   }
 }
 
@@ -65,6 +74,10 @@
     position: relative;
     z-index: 2;
   }
+}
+
+.md-search-term {
+
 }
 
 .checklist {
@@ -163,21 +176,13 @@ mark {
   }
 }
 
-article {
-  overflow: auto;
-}
-.floater {
-  display: none;
+.md-button {
   float: right;
   margin-top: 9px;
   font-size: 13px;
   padding-left: 2.6rem;
-
-  &::before {
-    @extend %md-icon;
-
-    content: "edit";
-  }
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .task-list-item {
@@ -188,9 +193,9 @@ article {
   margin: 0 4px 0.25em -20px;
   vertical-align: middle;
 }
-
-
-
+//
+//
+//
 .task-list-item {
   position: relative;
 }
@@ -221,3 +226,11 @@ article {
   content: "✔";
   color: #1EBB52;
 }
+
+.codehilite .hll {
+  background: #FFFF00;
+  display: block;
+  margin: 0 -16px;
+  padding: 0 16px;
+}
+

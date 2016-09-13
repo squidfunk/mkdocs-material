@@ -30,17 +30,17 @@
 /// @example
 ///   $break-devices: (
 ///     mobile: (
-///       portrait:  px2em(220px)  px2em(479px),
-///       landscape: px2em(480px)  px2em(719px)
+///       portrait:  220px  479px,
+///       landscape: 480px  719px
 ///     ),
 ///     tablet: (
-///       portrait:  px2em(720px)  px2em(959px),
-///       landscape: px2em(960px)  px2em(1199px)
+///       portrait:  720px  959px,
+///       landscape: 960px  1199px
 ///     ),
 ///     screen: (
-///       small:     px2em(1200px) px2em(1599px),
-///       medium:    px2em(1600px) px2em(1999px),
-///       large:     px2em(2000px)
+///       small:     1200px 1599px,
+///       medium:    1600px 1999px,
+///       large:     2000px
 ///     )
 ///   );
 ///
