@@ -5,6 +5,13 @@
 
 A material design theme for [MkDocs](http://www.mkdocs.org).
 
+**Note: the theme is currently undergoing a complete rewrite for 1.0.0 which should be
+released shortly.**
+
+* To get a glimpse, checkout the 
+[rework](https://github.com/squidfunk/mkdocs-material/tree/rework) branch
+* To give feedback on the rework version, please see issues [#46](https://github.com/squidfunk/mkdocs-material/issues/46)
+
 [![iOS](docs/images/screen.png)](http://squidfunk.github.io/mkdocs-material/)
 
 ## Quick start
