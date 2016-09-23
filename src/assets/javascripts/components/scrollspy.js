@@ -53,11 +53,10 @@ class ScrollSpy {
    * @param {Event} ev - Event
    */
   update(ev) {
-    let index = this.index_;
 
     /* Scroll direction is down */
     if (this.offset_ <= window.pageYOffset) {
-      for (let i = this.index_; i < this.el_.length; i++) {
+      for (let i = this.index_ + 1; i < this.el_.length; i++) {
         let anchor = document.querySelector(this.el_[i].hash);
         if (anchor.offsetTop <= window.pageYOffset) {
           if (i > 0)
