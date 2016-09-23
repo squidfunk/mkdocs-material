@@ -171,6 +171,7 @@ mark {
   background: #FFFF00;
   box-shadow: 0.4rem 0 0 #FFFF00,
              -0.4rem 0 0 #FFFF00; // ligher yellow...
+  overflow: auto; // TODO: remove this, just needed to rebuild
 }
 
 .critic.comment {
