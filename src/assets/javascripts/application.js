@@ -118,6 +118,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // document.querySelector('[for="nav-3"]').addEventListener('click', function() {
+  //   var el = document.querySelector('[for="nav-3"] + nav');
+  //
+  //   // TODO: do via class and disable transforms!!!
+  //   el.style.maxHeight = '100%';
+  //   var rect = el.getBoundingClientRect();
+  //   el.style.maxHeight = '0';
+  //
+  //   // console.log(rect.height);
+  //   el.style.maxHeight = '120px';
+  // });
+
+
 // setTimeout(function() {
   fetch('https://api.github.com/repos/squidfunk/mkdocs-material')
     .then(function(response) {

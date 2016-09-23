@@ -42,7 +42,7 @@
     margin: 2.4rem 1.6rem;
 
     // Hack: this is necessary for floating the edit button
-    overflow: auto;
+    // overflow: auto;
 
     // [screen +]: Increase spacing
     @include break-from-device(screen) {

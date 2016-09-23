@@ -61,7 +61,7 @@ kbd {
 // ----------------------------------------------------------------------------
 
 // Content that is typeset
-.md-content--typeset {
+.md-typeset {
   font-size: ms(0);
   line-height: 1.6;
 
@@ -187,11 +187,35 @@ kbd {
     color: $md-code-color;
     font-size: 85%;
     line-height: 1.4;
-    overflow-x: scroll;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 
     // Reset, if pre is inside code
     > code {
       font-size: inherit;
+    }
+  }
+
+  // Full-width container
+  > div > pre,
+  > pre > code {
+
+    // [mobile -]: Stretch to whole width
+    @include break-to-device(mobile) {
+      margin: 1.0em -1.6rem;
+      padding: 1.0rem 1.6rem;
+      border-radius: 0;
+    }
+
+    // Override native scrollbar styles
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+      height: 0.4rem;
+
+      // Style scrollbar thumb
+      &-thumb {
+        background: $md-color-black--lighter;
+      }
     }
   }
 

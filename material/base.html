@@ -56,8 +56,8 @@
               </div>
             </div>
           {% endif %}
-          <div class="md-content md-content--typeset">
-            <article class="md-content__inner">
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
               {% block content %}
                 {% if edit_uri %}
                   <a class="md-button md-button--edit" href="{{ edit_uri }}">
@@ -91,7 +91,7 @@
       var base_url = '{{ base_url }}';
       var repo_url = '{{ repo_url }}';
     </script>
-    <script src="{{ base_url }}/assets/javascripts/application-409da39d08.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/application-caa33c61a6.js"></script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}
