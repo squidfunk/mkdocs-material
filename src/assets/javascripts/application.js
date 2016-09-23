@@ -118,7 +118,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+// setTimeout(function() {
+  fetch('https://api.github.com/repos/squidfunk/mkdocs-material')
+    .then(function(response) {
+      return response.json()
+    }).then(function(data) {
+      var stars = data.stargazers_count;
+      var forks = data.forks_count;
+      // store in session!!!
+      var list = document.querySelector('.md-source__facts');
+      // list.innerHTML += '<li class="md-source__fact">' + stars + ' Stars</li>\n';
+      // list.innerHTML += '<li>' + forks + ' Forks</li>\n';
+
+      var li = document.createElement('li');
+      li.className = 'md-source__fact md-source__fact--hidden';
+      li.innerText = stars + ' Stars';
+      list.appendChild(li);
 
 
+      setTimeout(function(li) {
+        li.classList.remove('md-source__fact--hidden');
+      }, 100, li);
+
+      li = document.createElement('li');
+      li.className = 'md-source__fact md-source__fact--hidden';
+      li.innerText = forks + ' Forks';
+      list.appendChild(li);
+
+      setTimeout(function(li) {
+        li.classList.remove('md-source__fact--hidden');
+      }, 500, li);
+
+      // setTimeout(function() {
+      //   li.classList.remove('md-source__fact--hidden');
+      // }, 100);
+
+    }).catch(function(ex) {
+      console.log('parsing failed', ex)
+    });
+// }, 1000);
 
 });

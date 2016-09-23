@@ -25,7 +25,7 @@ site_author: Martin Donath
 site_url: http://squidfunk.github.io/mkdocs-material/
 
 # Repository
-repo_name: GitHub
+repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
@@ -33,7 +33,6 @@ copyright: 'Copyright &copy 2016 Martin Donath'
 
 # Documentation and theme
 theme_dir: material
-theme: amelia
 
 # Options
 extra:
@@ -48,11 +47,11 @@ extra:
 
 # Extensions
 markdown_extensions:
-  - admonition
-  - codehilite
-  - footnotes
-  - meta
-  - toc:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
       permalink: '¶'
 
 # Page tree
@@ -65,6 +64,10 @@ pages:
     - Footnotes: extensions/footnotes.md
     - Permalinks: extensions/permalinks.md
     - Meta: extensions/meta.md
+  - Foo:
+    - Test:
+      - Permalinks: extensions/permalinks.md
+      - Meta: index.md
   - Specimen: specimen.md
   - Customization: customization.md
   - License: license.md

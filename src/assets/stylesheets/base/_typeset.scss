@@ -25,8 +25,7 @@
 // ----------------------------------------------------------------------------
 
 // Default fonts
-body,
-kbd {
+body {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
@@ -43,9 +42,10 @@ kbd {
 
 // Proportionally spaced fonts
 pre,
-code {
+code,
+kbd {
   font-family: "Roboto Mono", "Courier New", Courier, monospace;
-  font-weight: 500;
+  font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
 
   // Use system fonts, if browser doesn't support webfonts
@@ -60,6 +60,7 @@ code {
 
 // Content that is typeset
 .md-content--typeset {
+  color: $md-color-black;
   font-size: ms(0);
   line-height: 1.6;
 
@@ -68,7 +69,7 @@ code {
   ul,
   ol,
   blockquote {
-    margin: 1.25em 0;
+    margin: 1.0em 0;
   }
 
   // 1st level headline
@@ -155,23 +156,34 @@ code {
     margin: 0 0.4rem;
     padding: 0.1rem 0;
     border-radius: 0.2rem;
-    background: #F7F7F7;
-    color: #37474F;
+    background: $md-code-background;
+    color: $md-code-color;
     font-size: 85%;
-    box-shadow: 0.4rem 0 0 #F7F7F7,
-               -0.4rem 0 0 #F7F7F7;
+    box-shadow: 0.4rem 0 0 $md-code-background,
+               -0.4rem 0 0 $md-code-background;
     word-break: break-word;
-
     box-decoration-break: clone;
+  }
+
+  // Disable containing block inside headlines
+  h1 code,
+  h2 code,
+  h3 code,
+  h4 code,
+  h5 code,
+  h6 code {
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   // Formatted code blocks
   pre {
-    margin: 2.0rem 0;
+    margin: 1.0em 0;
     padding: 1.0rem 1.2rem;
     border-radius: 0.2rem;
-    background: #F7F7F7;
-    color: #37474F;
+    background: $md-code-background;
+    color: $md-code-color;
     font-size: 85%;
     line-height: 1.4;
     overflow-x: scroll;
@@ -182,25 +194,26 @@ code {
     }
   }
 
-  // Keyboard tags
+  // Keystrokes
   kbd {
     display: inline-block;
     padding: 0.4rem 0.5rem 0.5rem;
-    border: px2rem(1px) solid #CCCCCC;
+    border: px2rem(1px) solid darken($md-keyboard-background, 20%);
     border-radius: px2rem(3px);
-    border-bottom-color: #BBBBBB;
-    background-color: #FCFCFC;
-    color: #555555;
+    border-bottom-color: darken($md-keyboard-background, 25%);
+    background-color: $md-keyboard-background;
+    color: $md-keyboard-color;
     font-size: 85%;
     line-height: 1.0rem;
-    box-shadow: 0 #{-(px2rem(1px))} 0 #BBBBBB inset;
+    box-shadow: 0 #{-(px2rem(1px))} 0
+      darken($md-keyboard-background, 30%) inset;
     vertical-align: 0.1rem;
     word-break: break-word;
   }
 
   // Smaller text
   small {
-    color: $md-color-black--light;
+    opacity: 0.75;
   }
 
   // Superscript and subscript
@@ -239,8 +252,14 @@ code {
 
     // List elements
     li {
-      margin-bottom: 1.0rem;
+      margin-bottom: 0.5em;
       margin-left: 2.0rem;
+
+      // Decrease vertical spacing
+      p,
+      blockquote {
+        margin: 0.5em 0;
+      }
 
       // Remove margin on last element
       &:last-child {

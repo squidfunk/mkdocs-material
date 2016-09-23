@@ -1,0 +1,9 @@
+<nav class="md-nav md-nav--primary">
+  <label class="md-nav__title" for="drawer">Navigation</label>
+  <ul class="md-nav__list">
+    {% for nav_item in nav %}
+      {% set path = "nav-" + loop.index | string %}
+      {% include "partials/nav-item.html" %}
+    {% endfor %}
+  </ul>
+</nav>

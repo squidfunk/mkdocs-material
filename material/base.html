@@ -20,11 +20,11 @@
       <meta name="author" content="{{ site_author }}">
     {% endif %}
     <meta name="generator" content="mkdocs+mkdocs-material#0.2.1">
-    <script src="{{ base_url }}/assets/javascripts/modernizr-772e114b08.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/modernizr-d3fe1698b6.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:500">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-07c02d33cc.css">
+    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-cbcef7edd5.css">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
@@ -33,21 +33,39 @@
     <input class="md-toggle md-toggle--drawer" type="checkbox" id="drawer">
     <input class="md-toggle md-toggle--search" type="checkbox" id="search">
     <label class="md-overlay" for="drawer"></label>
-    {% include "header.html" %}
+    {% include "partials/header.html" %}
     <div class="md-container">
       <main class="md-main">
         <div class="md-main__inner md-grid">
           {% set h1 = "\x3ch1 id=" in content %}
           {% if nav %}
-            {% include "nav.html" %}
+            <div class="md-sidebar md-sidebar--primary md-js__sidebar">
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  {% include "partials/nav.html" %}
+                </div>
+              </div>
+            </div>
           {% endif %}
           {% if toc %}
-            {% include "toc.html" %}
+            <div class="md-sidebar md-sidebar--secondary md-js__sidebar">
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  {% include "partials/toc.html" %}
+                </div>
+              </div>
+            </div>
           {% endif %}
           <div class="md-content md-content--typeset">
             <article class="md-content__inner">
-                                                          <div class="floater">Edit on GitHub</div>
-              {{ content }}
+              {% block content %}
+                {% if edit_uri %}
+                  <a class="md-button md-button--edit" href="{{ edit_uri }}">
+                    Edit
+                  </a>
+                {% endif %}
+                {{ content }}
+              {% endblock %}
               <hr>
               <small class="md-content__copyright">
                 {% if copyright %}
@@ -67,13 +85,13 @@
           </div>
         </div>
       </main>
-      {% include "footer.html" %}
+      {% include "partials/footer.html" %}
     </div>
     <script>
       var base_url = '{{ base_url }}';
       var repo_url = '{{ repo_url }}';
     </script>
-    <script src="{{ base_url }}/assets/javascripts/application-ac947cb450.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/application-48691dba51.js"></script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}

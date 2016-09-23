@@ -1,4 +1,4 @@
-# Specimen
+# Specimen should get a very long name, so we see how it behaves with the new edit url feature that is awesome
 
 ## Typography
 
@@ -39,6 +39,86 @@ the `<small>` tag directly inside Markdown.
 
 ### Unordered lists
 
+## Checklists
+
+This is inline hilighted text `#!js var test = 0;` that is just awesome LOL
+
+* [ ] foo
+* [x] bar
+* [ ] baz
+    * [ ] foo
+    * [x] bar
+    * [ ] baz
+
+<ul>
+  <li class="task-list-item">
+    <input type="checkbox" disabled><label></label> This needs to be done
+  </li>
+  <li class="task-list-item">
+    <input type="checkbox" disabled checked><label></label> This is done
+
+    <ul>
+      <li class="task-list-item">
+        <input type="checkbox" disabled><label></label> This needs to be done
+      </li>
+      <li class="task-list-item">
+        <input type="checkbox" disabled checked><label></label> This is done
+      </li>
+    </ul>
+  </li>
+</ul>
+
+Another default list:
+
+* No checklist
+* Foobar
+
+    ``` js
+    function() test {
+      var foo = 12;
+      return foo;
+    }
+    ```
+
+Here is some {--*incorrect*--} Markdown.  I am adding this {++here.++}.  Here is some more {--text
+that I am removing--}text.  And here is even more {++text that I
+am ++}adding.{~~
+
+~>  ~~}Paragraph was deleted and replaced with some spaces.{~~  ~>
+
+~~}Spaces were removed and a paragraph was added.
+
+And here is a comment on {==some
+==text== ==} asdhsjakh dkah dkash dkjas hdkash dksa sahdka kas dksa hdksah dksa kdsa kdask dask {>>This works quite well. I just wanted to comment on it.<<}. Substitutions {~~is~>are~~} great!
+
+### Test {--headline--} [`with code`](http://google.com) and ==foo== [without](http://google.com)
+
+This is also ==something that is marked (tm)==. Very cool.
+
+Escape \{>>This text is preserved<<}.
+
+General block handling.
+
+{--
+
+* test
+* test
+* test
+    * test
+* test
+
+--}
+
+{++
+
+* test
+* test
+* test
+    * test
+* test
+
+++}
+
 ## Code
 
 ### Listing
@@ -46,7 +126,7 @@ the `<small>` tag directly inside Markdown.
 Pre-formatted code blocks can host code examples and use the pygments extension
 (if installed and enabled in `mkdocs.yml`) for syntax highlighting:
 
-``` c
+``` c hl_lines="14 15 20"
 /*!
  * Scan a buffer for a valid variable-sized integer.
  *

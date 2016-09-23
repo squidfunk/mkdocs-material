@@ -24,76 +24,72 @@
 // Footnotes extension
 // ----------------------------------------------------------------------------
 
-// Scoped in typesetted content for greater specificity
-.md-content--typeset {
+// Footnote
+.footnote {
+  color: $md-color-black--light;
+  font-size: 80%;
 
-  // Footnote
-  .footnote {
-    color: $md-color-black--light;
-    font-size: 80%;
+  // Remove additional spacing on footnotes
+  ol {
+    margin-left: 0;
+  }
 
-    // Remove additional spacing on footnotes
-    > ol {
-      margin-left: 0;
+  // Single footnote
+  li {
 
-      // Single footnote
-      > li {
+    // TODO: this doesn't work entirely
+    // &::before {
+    //   display: block;
+    //   content: "";
+    //   padding-top: (5.6rem + 2.4rem + 0.4rem);
+    //   margin-top: -(5.6rem + 2.4rem + 0.4rem);
+    // }
 
-        // TODO: this doesn't work entirely
-        // &::before {
-        //   display: block;
-        //   content: " ";
-        //   padding-top: (5.6rem + 2.4rem + 0.4rem);
-        //   margin-top: -(5.6rem + 2.4rem + 0.4rem);
-        // }
-
-        // Make back references visible on hover
-        &:hover  .footnote-backref,
-        &:target .footnote-backref {
-          transform: translate3d(0, 0, 0);
-          opacity: 1;
-        }
-
-        // Active or targeted back reference
-        &:hover  .footnote-backref:hover,
-        &:target .footnote-backref {
-          color: $md-color-accent;
-        }
-      }
+    // Make back references visible on hover
+    &:hover  .footnote-backref,
+    &:target .footnote-backref {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
     }
 
-    // Correct anchor offset
-    &-ref::before {
-      position: absolute;
-      margin-top: -(5.6rem + 2.4rem + 0.4rem);
-      padding-top: (5.6rem + 2.4rem + 0.4rem);
-      content: " ";
-      pointer-events: none;
+    // Active or targeted back reference
+    &:hover  .footnote-backref:hover,
+    &:target .footnote-backref {
+      color: $md-color-accent;
+    }
+  }
+
+  // Correct anchor offset
+  &-ref::before {
+    position: absolute;
+    margin-top: -(5.6rem + 2.4rem);
+    padding-top: (5.6rem + 2.4rem);
+    content: "";
+    pointer-events: none;
+  }
+
+  // Make back reference text transparent for icon
+  &-backref {
+    @extend %md-icon;
+
+    position: absolute;
+    transform: translate3d(0.5rem, 0, 0);
+    transition: transform 0.25s  0.125s,
+                color     0.25s,
+                opacity   0.125s 0.125s;
+    color: $md-color-black--lighter;
+    font-size: 2.0rem;
+    opacity: 0;
+    vertical-align: middle;
+
+    // Hack: remove Unicode arrow for icon
+    &::first-letter {
+      font-size: 0;
     }
 
-    // Make back reference text transparent for icon
-    &-backref {
-      @extend %md-icon;
-
-      position: absolute;
-      transform: translate3d(0.5rem, 0, 0);
-      transition: transform 0.25s  0.125s,
-                  color     0.25s,
-                  opacity   0.125s 0.125s;
-      color: $md-color-black--lighter;
-      font-size: 2.0rem;
-      opacity: 0;
-      vertical-align: middle;
-
-      // Hack: remove Unicode arrow for icon
-      &::first-letter {
-        font-size: 0;
-      }
-
-      // Back reference icon
-      &::after {
-        content: "keyboard_return";
-      }
+    // Back reference icon
+    &::after {
+      content: "keyboard_return";
     }
   }
 }

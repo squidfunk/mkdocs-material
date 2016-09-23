@@ -1,0 +1,13 @@
+<nav class="md-nav md-nav--secondary">
+  {% if h1 %}
+    {% set toc = (toc | first).children %}
+  {% endif %}
+  {% if toc and (toc | first) %}
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list">
+      {% for toc_item in toc %}
+        {% include "partials/toc-item.html" %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</nav>

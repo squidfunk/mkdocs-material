@@ -21,33 +21,54 @@
 -->
 
 <!-- Main navigation item with nested items -->
-{% if nav_item.children %}
-  <li class="md-nav__item">
+{% if nav_item.children or nav_item == current_page %}
+  <li class="md-nav__item md-nav__item--nested">
+    {% if nav_item == current_page %}
+      {% set path = "toc" %}
+    {% endif %}
 
-    <!-- Active checkbox expands items contained within section -->
-    {% if nav_item.active %}
+    <!-- Active checkbox expands items contained within nested section -->
+    {% if nav_item.active and not nav_item == current_page %}
       <input class="md-toggle md-nav__toggle" type="checkbox"
           id="{{ path }}" checked />
     {% else %}
       <input class="md-toggle md-nav__toggle" type="checkbox"
           id="{{ path }}" />
     {% endif %}
-    <label class="md-nav__link" for="{{ path }}">
-      {{ nav_item.title }}
-      <!--
-        <i class="md-icon md-icon--link md-nav__icon"></i>
-      -->
-    </label>
-    <ul class="md-nav__list">
 
-      <!-- Render nested item list -->
-      {% for nav_item in nav_item.children %}
-        {% set temp = path %}
-        {% set path = path + "-" + loop.index | string %}
-        {% include "nav-item.html" %}
-        {% set path = temp %}
-      {% endfor %}
-    </ul>
+    <!-- Expand active pages -->
+    {% if nav_item == current_page %}
+      <label class="md-nav__link md-nav__link--active"
+          for="{{ path }}">
+        {{ nav_item.title }}
+      </label>
+      <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
+          class="md-nav__link md-nav__link--active">
+        {{ nav_item.title }}
+      </a>
+
+      <!-- Show table of contents -->
+      {% include "partials/toc.html" %}
+    {% else %}
+      <label class="md-nav__link" for="{{ path }}">
+        {{ nav_item.title }}
+      </label>
+      <nav class="md-nav">
+        <label class="md-nav__title" for="{{ path }}">
+          {{ nav_item.title }}
+        </label>
+        <ul class="md-nav__list">
+
+          <!-- Render nested item list -->
+          {% for nav_item in nav_item.children %}
+            {% set temp = path %}
+            {% set path = path + "-" + loop.index | string %}
+            {% include "partials/nav-item.html" %}
+            {% set path = temp %}
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
   </li>
 
 <!-- Main navigation item -->
@@ -58,30 +79,6 @@
           class="md-nav__link md-nav__link--active">
         {{ nav_item.title }}
       </a>
-
-      <!-- <nav class="md-nav md-nav--toc"> -->
-
-        <!--
-          The top-level anchor must be skipped if the article contains a h1
-          headline, since it would be redundant to the link to the current page
-          that is located just above the anchor. Therefore we directly continue
-          with the children of the anchor.
-        -->
-        <!-- {% if h1 %}
-          {% set toc = (toc | first).children %}
-        {% endif %} -->
-
-        <!-- Render item list -->
-        <!-- {% if toc and (toc | first) %}
-          <h3 class="md-nav__title">Table of contents</h3>
-          <ul class="md-nav__list">
-            {% for toc_item in toc %}
-              {% include "toc-item.html" %}
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </nav> -->
-
     {% else %}
       <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
           class="md-nav__link">

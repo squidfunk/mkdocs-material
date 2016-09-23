@@ -54,17 +54,34 @@ $break-devices: (
 // ----------------------------------------------------------------------------
 
 // Primary and accent colors
-$md-color-primary:         $clr-indigo-500;
-$md-color-accent:          $clr-indigo-a200;
+$md-color-primary:                    $clr-indigo-500;
+$md-color-accent:                     $clr-indigo-a200;
 
 // Shades of black
-$md-color-black:           hsla(0, 0%, 0%, 0.87);
-$md-color-black--light:    hsla(0, 0%, 0%, 0.54);
-$md-color-black--lighter:  hsla(0, 0%, 0%, 0.26);
-$md-color-black--lightest: hsla(0, 0%, 0%, 0.07);
+$md-color-black:                      hsla(0, 0%, 0%, 0.87);
+$md-color-black--light:               hsla(0, 0%, 0%, 0.54);
+$md-color-black--lighter:             hsla(0, 0%, 0%, 0.26);
+$md-color-black--lightest:            hsla(0, 0%, 0%, 0.07);
 
 // Shades of white
-$md-color-white:           hsla(0, 0%, 100%, 1.00);
-$md-color-white--light:    hsla(0, 0%, 100%, 0.70);
-$md-color-white--lighter:  hsla(0, 0%, 100%, 0.30);
-$md-color-white--lightest: hsla(0, 0%, 100%, 0.12);
+$md-color-white:                      hsla(0, 0%, 100%, 1.00);
+$md-color-white--light:               hsla(0, 0%, 100%, 0.70);
+$md-color-white--lighter:             hsla(0, 0%, 100%, 0.30);
+$md-color-white--lightest:            hsla(0, 0%, 100%, 0.12);
+
+// ----------------------------------------------------------------------------
+// Sizing and spacing
+// ----------------------------------------------------------------------------
+
+// Icons
+$md-icon-size:                        $ms-base * 1.5;
+$md-icon-padding:                     $ms-base * 0.5;
+$md-icon-margin:                      $ms-base * 0.25;
+
+// Code blocks
+$md-code-background:                  #F7F7F7;
+$md-code-color:                       #37474F;
+
+// Keystrokes
+$md-keyboard-background:              #FCFCFC;
+$md-keyboard-color:                   #555555;

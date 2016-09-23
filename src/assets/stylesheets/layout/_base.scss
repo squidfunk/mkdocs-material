@@ -24,9 +24,11 @@
 // Grid
 // ----------------------------------------------------------------------------
 
-// Stretch container to viewport
+// Stretch container to viewport and set base font-size to 10px for simple
+// calculations base on relative ems (rems).
 html {
   height: 100%;
+  font-size: 62.5%;
 
   // [screen medium +] Set base font-size to 11px
   @include break-from-device(screen medium) {
@@ -35,7 +37,7 @@ html {
 
   // [screen large +] Set base font-size to 12px
   @include break-from-device(screen large) {
-    font-size: 75.00%;
+    font-size: 75%;
   }
 }
 
@@ -76,9 +78,9 @@ hr {
 .md-main {
   margin-top: 5.6rem;
 
-  // Bottom spacing to account for footer
+  // Bottom spacing to account for header and footer
   &__inner {
-    margin-top: 3.0rem;
+    margin-top: 2.4rem + 0.6rem;
     margin-bottom: 9.2rem;
     overflow: auto;
   }
@@ -106,8 +108,8 @@ hr {
   opacity: 0;
   z-index: 2;
 
-  // [tablet landscape -]: Trigger overlay
-  @include break-to-device(tablet landscape) {
+  // [tablet -]: Trigger overlay
+  @include break-to-device(tablet) {
 
     // Expanded drawer
     .md-toggle--drawer:checked ~ & {

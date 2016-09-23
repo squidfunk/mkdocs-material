@@ -26,7 +26,14 @@
 
 // Application search
 .md-search {
-  position: relative;
+  // position: relative;
+  padding: 0.8rem 0.8rem 0;
+
+  // [tablet +]: Header-embedded search
+  @include break-from-device(tablet) {
+    padding: 0.4rem;
+    padding-right: 3.2rem;
+  }
 
   // Search overlay
   &__overlay {
@@ -60,17 +67,6 @@
     }
   }
 
-  // Inner wrapper
-  &__inner {
-    padding: 0.8rem 0.8rem 0;
-
-    // [tablet +]: Header-embedded search
-    @include break-from-device(tablet) {
-      padding: 0.4rem;
-      padding-right: 3.2rem;
-    }
-  }
-
   // Search form
   &__form {
     position: relative;
@@ -86,10 +82,10 @@
   // Icon
   &__icon {
     position: absolute;
-    top: 0.8rem;
-    left: 1.2rem;
+    top: $md-icon-padding;
+    left: $md-icon-padding + $md-icon-margin;
     transition: color 0.25s;
-    font-size: 2.4rem;
+    font-size: $md-icon-size;
     cursor: pointer;
 
     // [mobile -]: Use back arrow as search icon
@@ -105,7 +101,7 @@
 
   // Search field
   &__input {
-    padding: 0 0.8rem 0 6.4rem;
+    padding: 0 1.6rem 0 6.4rem;
     border-radius: px2rem(2px);
     text-overflow: ellipsis;
 

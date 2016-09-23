@@ -42,9 +42,7 @@ html {
 }
 
 // Prevent adjustments of font size after orientation changes in IE and iOS
-// and set base font-size to 10px for simple rem calculations.
 html {
-  font-size: 62.5%;
   text-size-adjust: none;
 }
 

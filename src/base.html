@@ -63,7 +63,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" />
     <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto+Mono:500" />
+        href="https://fonts.googleapis.com/css?family=Roboto+Mono:400" />
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -86,7 +86,7 @@
     <label class="md-overlay" for="drawer"></label>
 
     <!-- Application header -->
-    {% include "header.html" %}
+    {% include "partials/header.html" %}
 
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
@@ -105,22 +105,43 @@
 
           <!-- Main navigation -->
           {% if nav %}
-            {% include "nav.html" %}
+            <div class="md-sidebar md-sidebar--primary md-js__sidebar">
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  {% include "partials/nav.html" %}
+                </div>
+              </div>
+            </div>
           {% endif %}
 
           <!-- Table of contents -->
           {% if toc %}
-            {% include "toc.html" %}
+            <div class="md-sidebar md-sidebar--secondary md-js__sidebar">
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  {% include "partials/toc.html" %}
+                </div>
+              </div>
+            </div>
           {% endif %}
 
           <!-- Article -->
           <div class="md-content md-content--typeset">
             <article class="md-content__inner">
 
-                                                                <!-- TODO: test -->
-                                                          <div class="floater">Edit on GitHub</div>
+              <!-- Content block -->
+              {% block content %}
 
-              {{ content }}
+                <!-- Edit button, if URL was defined -->
+                {% if edit_uri %}
+                  <a class="md-button md-button--edit" href="{{ edit_uri }}">
+                    Edit
+                  </a>
+                {% endif %}
+
+                <!-- Content -->
+                {{ content }}
+              {% endblock %}
 
               <!-- Copyright and theme information -->
               <hr />
@@ -144,7 +165,7 @@
       </main>
 
       <!-- Application footer -->
-      {% include "footer.html" %}
+      {% include "partials/footer.html" %}
     </div>
 
     <!-- Theme-related and custom javascripts -->

@@ -54,12 +54,12 @@
       display: block;
       position: absolute;
       top: 50%;
-      left: 0.8rem;
-      width:  2.4rem;
-      height: 2.4rem;
+      left: $md-icon-padding;
+      width:  $md-icon-size;
+      height: $md-icon-size;
       transform: translateY(-50%);
       background-repeat: no-repeat;
-      background-size: 2.4rem 2.4rem;
+      background-size: $md-icon-size $md-icon-size;
       content: "";
     }
   }

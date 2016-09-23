@@ -36,7 +36,7 @@
   // Icon
   &::before {
     display: block;
-    position: absolute;
+    position: absolute;     // TODO: inherit icon!
     top: 0.2rem;
     left: -2.6rem;
     float: left;
@@ -53,7 +53,7 @@
     color: $clr-blue-a400;
     font-size: ms(-1);
     font-weight: 700;
-    line-height: 2.0rem;
+    line-height: 2;
     text-transform: uppercase;
 
     // Ensure smaller spacing to next element
@@ -79,6 +79,7 @@
 
   // Build representational classes
   @each $names, $appearance in (
+    summary tldr: $clr-light-blue-a400 "subject",
     tip idea: $clr-teal-a700 "whatshot",
     success check done: $clr-green-a400 "done",
     warning warn: $clr-orange-a400 "warning",

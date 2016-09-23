@@ -77,7 +77,27 @@
 }
 
 .md-search-term {
+  position: relative;
+  padding: 0 0.8rem 0 4.8rem;
+  line-height: 4.0rem; // don't use line height????
+  font-size: 1.6rem;
 
+  &::before {
+    @extend %md-icon;
+
+    position: absolute;
+
+    content: "access_time";
+    font-size: 2.4rem;
+    line-height: 4.0rem; // this sucks...
+    left: 1.2rem;
+    color: $md-color-black--lighter;
+  }
+  transition: background .25s;
+  cursor: pointer;
+  &:hover {
+    background: mix($md-color-white, $md-color-primary, 90%);
+  }
 }
 
 .checklist {
@@ -234,3 +254,48 @@ mark {
   padding: 0 16px;
 }
 
+// [tablet -]: Adjust spacing on screens
+@include break-to-device(tablet) {
+  .md-sidebar--primary {
+    .md-nav--secondary .md-nav {
+      position: static; // TODO DODODODODO
+
+      .md-nav__item {
+        padding-left: 1.2rem;
+      }
+    }
+    // second level list!
+    .md-nav--secondary .md-nav__list .md-nav__list {
+      position: static;
+      pointer-events: initial; //!!!
+    }
+    .md-nav__item {
+      // transition: background .25s;
+      //
+      // & :hover {
+      //   background: lighten($md-color-primary, 50%);
+      // }
+    }
+  }
+}
+
+// .md-nav--secondary > .md-nav__title {
+//   // -webkit-overflow-scrolling: touch;
+//   @include z-depth(1);
+// }
+// .md-nav__toggle:checked ~ .md-nav > .md-nav__list {
+//
+//   > :first-child {
+//     border-top: 0;
+//   }
+//
+// 	background:
+// 		linear-gradient(white 10%, rgba(255,255,255,0)), // cover
+//     linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 60%); // shadow
+// 	background-repeat: no-repeat;
+// 	background-color: white;
+// 	background-size: 100% 20px, 100% 4px;
+//
+// 	/* Opera doesn't support this in the shorthand */
+// 	background-attachment: local, scroll;
+// }

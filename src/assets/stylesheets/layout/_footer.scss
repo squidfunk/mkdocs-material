@@ -83,12 +83,9 @@
 
   // Link icon
   &__icon {
-    display: inline-block;
-    margin: 0.4rem;
-    padding: 0.8rem;
+    @extend %md-icon__button;
+
     transition: background 0.25s;
-    font-size: 2.4rem;
-    cursor: pointer;
   }
 
   // Link title

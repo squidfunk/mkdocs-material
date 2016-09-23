@@ -24,9 +24,8 @@
 // Icon set
 // ----------------------------------------------------------------------------
 
-// Base icon class
-%md-icon,
-.md-icon {
+// Icon placeholders
+%md-icon {
   font-family: "Material Icons";
   font-style: normal;
   font-variant: normal;
@@ -41,17 +40,31 @@
   // Enable font-smoothing in Webkit and FF
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  // Icon rendered as button
+  &__button {
+    display: inline-block;
+    margin: $md-icon-margin;
+    padding: $md-icon-padding;
+    font-size: $md-icon-size;
+    cursor: pointer;
+  }
 }
 
-// Build representational classes
-@each $ligature, $name in (
-  "arrow_back": "back",
-  "arrow_forward": "forward",
-  "close": "close",
-  "menu": "menu",
-  "search": "search"
-) {
-  .md-icon--#{$name}::before {
-    content: $ligature;
+// Representational classes
+.md-icon {
+  @extend %md-icon;
+
+  // Build representational classes
+  @each $ligature, $name in (
+    "arrow_back": "back",
+    "arrow_forward": "forward",
+    "close": "close",
+    "menu": "menu",
+    "search": "search"
+  ) {
+    &--#{$name}::before {
+      content: $ligature;
+    }
   }
 }

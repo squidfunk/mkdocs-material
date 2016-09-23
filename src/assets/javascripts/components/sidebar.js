@@ -92,7 +92,7 @@ class Sidebar {
    */
   reset() {
     this.el_.classList.remove('md-js__sidebar--locked');
-    this.el_.style.height_ = '';
+    this.el_.style.height = '';
 
     /* Reset parameters */
     this.height_ = 0;

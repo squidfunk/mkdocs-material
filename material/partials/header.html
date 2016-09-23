@@ -9,31 +9,9 @@
           {{ page_title | default(site_name, true) }}
         </span>
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink">                         
+      <div class="md-flex__cell md-flex__cell--shrink">
         <label class="md-icon md-icon--search md-header-nav__icon" for="search"></label>
-        <div class="md-search__overlay"></div>                                  
-        <div class="md-search__inner">
-          <form class="md-search__form">
-            <input type="text" class="md-search__input" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" id="query">
-            <label class="md-icon md-icon--search md-search__icon" for="query"></label>
-            <div class="md-search__suggest">
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-              FOO<br>
-            </div>
-          </form>
-        </div>
+        {% include "partials/search.html" %}
       </div>
       {% if "github." in repo_url %}
         {% set platform = "md-source--github" %}
@@ -47,13 +25,11 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="{{ repo_url }}" title="Go to repository" class="md-source {{ platform }}">
           <div class="md-source__repository">{{ repo_name }}</div>
-          <div class="md-source__stats">
-            0.2.4 &middot; 177 Stars &middot; 46 Forks
-          </div>
+          <ul class="md-source__facts">
+            <li class="md-source__fact">v0.2.4</li>                             
+          </ul>
         </a>
       </div>
     </div>
-  </nav>
-  <nav class="md-header-search">
   </nav>
 </header>

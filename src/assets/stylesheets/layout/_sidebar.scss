@@ -37,19 +37,20 @@
     top: 5.6rem;
   }
 
-  // [tablet landscape -]: Convert navigation to drawer
-  @include break-to-device(tablet landscape) {
+  // [tablet -]: Convert navigation to drawer
+  @include break-to-device(tablet) {
 
     // Render primary sidebar as a slideout container
     &--primary {
       position: fixed;
       top: 0;
-      width: 24.2em;
+      left: -24.2rem;
+      width: 24.2rem;
       height: 100%;
-      transform: translate3d(-24.2em, 0, 0);
+      transform: translate3d(0, 0, 0);
       transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1.0);
       background: $md-color-white;
-      z-index: 3;
+      z-index: 2;
 
       // Just hide drawer, if browser doesn't support 3D transforms
       .no-csstransforms3d & {
@@ -58,12 +59,17 @@
 
       // Expanded drawer
       .md-toggle--drawer:checked ~ .md-container & {
-        transform: translate3d(0, 0, 0);
+        transform: translate3d(24.2rem, 0, 0);
 
         // Just show drawer, if browser doesn't support 3D transforms
         .no-csstransforms3d & {
           display: block;
         }
+      }
+
+      // Hide overflow for nested navigation
+      .md-sidebar__scrollwrap {
+        overflow: hidden;
       }
     }
   }
@@ -82,8 +88,8 @@
         margin-left: 100%;
         transform: translate(-100%, 0);
 
-        // [screen small +]: Limit to grid
-        @include break-from-device(screen small) {
+        // [screen +]: Limit to grid
+        @include break-from-device(screen) {
           margin-left: 120.0rem;
         }
       }
@@ -94,10 +100,10 @@
   &__scrollwrap {
     margin: 2.4rem 0.4rem;
     overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+    // -webkit-overflow-scrolling: touch;                 // TODO: define on sidebar
 
-    // [tablet landscape -]: Adjust margins
-    @include break-to-device(tablet landscape) {
+    // [tablet -]: Adjust margins
+    @include break-to-device(tablet) {
 
       // Adjust margins for primary scrollbar
       .md-sidebar--primary & {
@@ -128,10 +134,9 @@
 
   // Actual sidebar content
   &__inner {
-    padding: 1.2rem;
 
-    // [screen small +]: Add line for reference
-    @include break-from-device(screen small) {
+    // [screen +]: Add line for reference
+    @include break-from-device(screen) {
       border-right: px2rem(1px) solid $md-color-black--lightest;
     }
   }

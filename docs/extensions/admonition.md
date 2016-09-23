@@ -41,6 +41,9 @@ TODO: NESTED...
 
 !!! hint "hint, note <small>default</small>"
 
+!!! summary "summary, tldr"
+    This is a very long text, yes. I'm so sorry.
+
 !!! tip "tip, idea"
 
 !!! success "success, check, done"

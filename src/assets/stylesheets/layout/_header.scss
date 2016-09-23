@@ -44,13 +44,10 @@
 
   // Header icon
   &__icon {
-    display: inline-block;
+    @extend %md-icon__button;
+
     position: relative;
-    margin: 0.4rem;
-    padding: 0.8rem;
     transition: opacity 0.25s;
-    font-size: 2.4rem;
-    cursor: pointer;
     z-index: 1;
 
     // Hovered icon

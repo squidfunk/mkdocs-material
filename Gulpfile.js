@@ -262,6 +262,7 @@ gulp.task('assets:build:modernizr', [
  */
 gulp.task('assets:build:images:svg', function() {
   return gulp.src('src/assets/images/**/*.svg')
+    .pipe(gulpif(watch, changed('material/assets/images')))
     .pipe(gulpif(args.production, minsvg()))
     .pipe(gulpif(args.production, rev()))
     .pipe(gulp.dest('material/assets/images'))
@@ -302,7 +303,7 @@ gulp.task('assets:build:views', args.production ? [
   'assets:build:images'
 ] : [], function() {
   var metadata = require('./package.json');
-  return gulp.src('src/*.html')
+  return gulp.src('src/**/*.html')
     .pipe(gulpif(watch, changed('material')))
     .pipe(
       minhtml({
@@ -354,7 +355,7 @@ gulp.task('assets:watch', function() {
 
   /* Minify views */
   gulp.watch([
-    'src/*.html'
+    'src/**/*.html'
   ], ['assets:build:views']);
 });
 
@@ -413,7 +414,8 @@ gulp.task('build', [
  * Start asset and MkDocs watchdogs.
  */
 gulp.task('watch', [
-  'assets:build',
+  'assets:clean',
+  'assets:build'
 ], function() {
   return gulp.start([
     'assets:watch'
