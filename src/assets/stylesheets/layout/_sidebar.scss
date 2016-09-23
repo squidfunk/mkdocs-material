@@ -48,7 +48,8 @@
       width: 24.2rem;
       height: 100%;
       transform: translate3d(0, 0, 0);
-      transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1.0);
+      transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1.0),
+                  box-shadow 0.25s;
       background: $md-color-white;
       z-index: 2;
 
@@ -59,6 +60,8 @@
 
       // Expanded drawer
       .md-toggle--drawer:checked ~ .md-container & {
+        @include z-depth(8);
+
         transform: translate3d(24.2rem, 0, 0);
 
         // Just show drawer, if browser doesn't support 3D transforms
@@ -100,7 +103,7 @@
   &__scrollwrap {
     margin: 2.4rem 0.4rem;
     overflow-y: scroll;
-    // -webkit-overflow-scrolling: touch;                 // TODO: define on sidebar
+    // -webkit-overflow-scrolling: touch;                                       // TODO: problems with iOS
 
     // [tablet -]: Adjust margins
     @include break-to-device(tablet) {

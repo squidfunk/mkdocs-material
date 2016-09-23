@@ -1,0 +1,17 @@
+{% if "github." in repo_url %}
+  {% set platform = "md-source--github" %}
+{% elif "gitlab." in repo_url %}
+  {% set platform = "md-source--gitlab" %}
+{% elif "bitbucket." in repo_url %}
+  {% set platform = "md-source--bitbucket" %}
+{% else %}
+  {% set platform = "" %}
+{% endif %}
+<a href="{{ repo_url }}" title="Go to repository" class="md-source {{ platform }}">
+  <div class="md-source__repository">
+    {{ repo_name }}
+    <ul class="md-source__facts">
+      <li class="md-source__fact">v0.2.4</li>                             
+    </ul>
+  </div>
+</a>

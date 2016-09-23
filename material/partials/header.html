@@ -13,22 +13,10 @@
         <label class="md-icon md-icon--search md-header-nav__icon" for="search"></label>
         {% include "partials/search.html" %}
       </div>
-      {% if "github." in repo_url %}
-        {% set platform = "md-source--github" %}
-      {% elif "gitlab." in repo_url %}
-        {% set platform = "md-source--gitlab" %}
-      {% elif "bitbucket." in repo_url %}
-        {% set platform = "md-source--bitbucket" %}
-      {% else %}
-        {% set platform = "" %}
-      {% endif %}
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="{{ repo_url }}" title="Go to repository" class="md-source {{ platform }}">
-          <div class="md-source__repository">{{ repo_name }}</div>
-          <ul class="md-source__facts">
-            <li class="md-source__fact">v0.2.4</li>                             
-          </ul>
-        </a>
+        <div class="md-header-nav__source">
+          {% include "partials/source.html" %}
+        </div>
       </div>
     </div>
   </nav>

@@ -71,4 +71,17 @@
     font-size: 1.8rem;
     line-height: 4.8rem;
   }
+
+  // Repository containing source
+  &__source {
+    display: none;
+
+    // [tablet landscape +]: Show the reposistory from tablet
+    @include break-from-device(tablet landscape) {
+      display: block;
+      width: 23.0rem;
+      max-width: 23.0rem;
+      padding-right: 1.2rem;
+    }
+  }
 }

@@ -26,17 +26,11 @@
 
 // Repository containing source
 .md-source {
-  display: table-cell;
-  position: relative;
-  min-width: 23.0rem;
-  max-width: 23.0rem;
-  height: 4.8rem;
-  padding: 0 1.2rem;
+  display: block;
   transition: opacity 0.25s;
   font-size: 1.3rem;
   line-height: 1.2;
   white-space: nowrap;
-  vertical-align: middle;
 
   // Hovered source information
   &:hover {
@@ -47,20 +41,17 @@
   &--bitbucket,
   &--github,
   &--gitlab {
-    padding-left: 4.0rem;
 
     // Platform icon
     &::before {
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: $md-icon-padding;
-      width:  $md-icon-size;
-      height: $md-icon-size;
-      transform: translateY(-50%);
+      display: inline-block;
+      width: 4.8rem;
+      height: 4.8rem;
       background-repeat: no-repeat;
+      background-position: center;
       background-size: $md-icon-size $md-icon-size;
       content: "";
+      vertical-align: middle;
     }
   }
 
@@ -81,18 +72,23 @@
 
   // Repository name
   &__repository {
+    display: inline-block;
+    max-width: 100%;
+    margin-left: -4.4rem;
+    padding-left: 4.0rem;
     font-weight: 700;
     text-overflow: ellipsis;
     overflow: hidden;
+    vertical-align: middle;
   }
 
   // Source facts (statistics etc.)
   &__facts {
     margin: 0;
     padding: 0;
-    color: $md-color-white--light;
     font-size: 1.1rem;
     font-weight: 700;
+    opacity: 0.75;
     list-style-type: none;
   }
 
@@ -104,21 +100,21 @@
                 transform 0.25s cubic-bezier(0.1, 0.7, 0.1, 1.0);
     opacity: 1;
 
+    // Facts are hidden by default
     &--hidden {
       transform: translateY(100%);
       opacity: 0;
     }
 
+    // Middle dots before fact
     &::before {
       margin: 0 0.2rem;
       content: "\00B7";
     }
 
-    &:first-child {
-
-      &::before {
-        display: none;
-      }
+    // Remove middle dot on first fact
+    &:first-child::before {
+      display: none;
     }
   }
 }

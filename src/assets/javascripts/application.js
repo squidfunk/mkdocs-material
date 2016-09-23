@@ -126,28 +126,31 @@ document.addEventListener('DOMContentLoaded', function() {
       var stars = data.stargazers_count;
       var forks = data.forks_count;
       // store in session!!!
-      var list = document.querySelector('.md-source__facts');
-      // list.innerHTML += '<li class="md-source__fact">' + stars + ' Stars</li>\n';
-      // list.innerHTML += '<li>' + forks + ' Forks</li>\n';
+      var lists = document.querySelectorAll('.md-source__facts');
+      [].forEach.call(lists, function(list) {
+        // list.innerHTML += '<li class="md-source__fact">' + stars + ' Stars</li>\n';
+        // list.innerHTML += '<li>' + forks + ' Forks</li>\n';
 
-      var li = document.createElement('li');
-      li.className = 'md-source__fact md-source__fact--hidden';
-      li.innerText = stars + ' Stars';
-      list.appendChild(li);
+        var li = document.createElement('li');
+        li.className = 'md-source__fact md-source__fact--hidden';
+        li.innerText = stars + ' Stars';
+        list.appendChild(li);
 
 
-      setTimeout(function(li) {
-        li.classList.remove('md-source__fact--hidden');
-      }, 100, li);
+        setTimeout(function(li) {
+          li.classList.remove('md-source__fact--hidden');
+        }, 100, li);
 
-      li = document.createElement('li');
-      li.className = 'md-source__fact md-source__fact--hidden';
-      li.innerText = forks + ' Forks';
-      list.appendChild(li);
+        li = document.createElement('li');
+        li.className = 'md-source__fact md-source__fact--hidden';
+        li.innerText = forks + ' Forks';
+        list.appendChild(li);
 
-      setTimeout(function(li) {
-        li.classList.remove('md-source__fact--hidden');
-      }, 500, li);
+        setTimeout(function(li) {
+          li.classList.remove('md-source__fact--hidden');
+        }, 500, li);
+      })
+
 
       // setTimeout(function() {
       //   li.classList.remove('md-source__fact--hidden');

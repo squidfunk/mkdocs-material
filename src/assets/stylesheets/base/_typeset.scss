@@ -26,6 +26,7 @@
 
 // Default fonts
 body {
+  color: $md-color-black;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
@@ -44,6 +45,7 @@ body {
 pre,
 code,
 kbd {
+  color: $md-color-black;
   font-family: "Roboto Mono", "Courier New", Courier, monospace;
   font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
@@ -60,7 +62,6 @@ kbd {
 
 // Content that is typeset
 .md-content--typeset {
-  color: $md-color-black;
   font-size: ms(0);
   line-height: 1.6;
 

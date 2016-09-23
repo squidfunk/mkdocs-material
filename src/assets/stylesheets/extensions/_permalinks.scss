@@ -44,14 +44,16 @@
 
     // Make permalink visible on hover
     &:hover  .headerlink,
-    &:target .headerlink {
+    &:target .headerlink,
+    & .headerlink:focus {
       transform: translate3d(0, 0, 0);
       opacity: 1;
     }
 
     // Active or targeted permalink
     &:hover  .headerlink:hover,
-    &:target .headerlink {
+    &:target .headerlink,
+    & .headerlink:focus {
       color: $md-color-accent;
     }
   }
