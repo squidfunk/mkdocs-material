@@ -330,6 +330,12 @@
   // [screen +]: Tree-like navigation
   @include break-from-device(screen) {
 
+    // Animation is only possible if JavaScript is available, as the max-height
+    // property must be calculated before transitioning.
+    &.md-nav--transitioning {
+      transition: max-height 0.4s cubic-bezier(0.86, 0.0, 0.07, 1.0);
+    }
+
     // Hide nested navigation by default
     .md-nav__toggle ~ & {
       max-height: 0;
@@ -337,7 +343,8 @@
     }
 
     // Expand nested navigation, if toggle is checked
-    .md-nav__toggle:checked ~ & {
+    .md-nav__toggle:checked ~ &,
+    &.md-nav--toggled {
       max-height: 100%;
     }
 
@@ -356,14 +363,15 @@
       // Item contains a nested list
       .md-nav__item--nested > &::after {
         display: inline-block;
-        transform-origin: 0.5em 0.475em;
-        transition: transform 0.25s;
+        transform-origin: 0.45em 0.485em;
+        transform-style: preserve-3d;
+        transition: transform 0.4s;
         vertical-align: -0.125em;
       }
 
       // Rotate icon for expanded lists
       .md-nav__item--nested .md-nav__toggle:checked ~ &::after {
-        transform: rotate(180deg);
+        transform: rotateX(180deg);
       }
     }
   }

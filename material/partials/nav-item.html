@@ -1,39 +1,37 @@
-{% if nav_item.children or nav_item == current_page %}
+{% if nav_item.children %}
   <li class="md-nav__item md-nav__item--nested">
-    {% if nav_item == current_page %}
-      {% set path = "toc" %}
-    {% endif %}
-    {% if nav_item.active and not nav_item == current_page %}
+    {% if nav_item.active %}
       <input class="md-toggle md-nav__toggle" type="checkbox" id="{{ path }}" checked>
     {% else %}
       <input class="md-toggle md-nav__toggle" type="checkbox" id="{{ path }}">
     {% endif %}
-    {% if nav_item == current_page %}
-      <label class="md-nav__link md-nav__link--active" for="{{ path }}">
+    <label class="md-nav__link" for="{{ path }}">
+      {{ nav_item.title }}
+    </label>
+    <nav class="md-nav">
+      <label class="md-nav__title" for="{{ path }}">
         {{ nav_item.title }}
       </label>
-      <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link md-nav__link--active">
-        {{ nav_item.title }}
-      </a>
-      {% include "partials/toc.html" %}
-    {% else %}
-      <label class="md-nav__link" for="{{ path }}">
-        {{ nav_item.title }}
-      </label>
-      <nav class="md-nav">
-        <label class="md-nav__title" for="{{ path }}">
-          {{ nav_item.title }}
-        </label>
-        <ul class="md-nav__list">
-          {% for nav_item in nav_item.children %}
-            {% set temp = path %}
-            {% set path = path + "-" + loop.index | string %}
-            {% include "partials/nav-item.html" %}
-            {% set path = temp %}
-          {% endfor %}
-        </ul>
-      </nav>
-    {% endif %}
+      <ul class="md-nav__list">
+        {% for nav_item in nav_item.children %}
+          {% set temp = path %}
+          {% set path = path + "-" + loop.index | string %}
+          {% include "partials/nav-item.html" %}
+          {% set path = temp %}
+        {% endfor %}
+      </ul>
+    </nav>
+  </li>
+{% elif nav_item == current_page %}
+  <li class="md-nav__item">
+    <input class="md-toggle md-nav__toggle" type="checkbox" id="toc">
+    <label class="md-nav__link md-nav__link--active" for="toc">
+      {{ nav_item.title }}
+    </label>
+    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link md-nav__link--active">
+      {{ nav_item.title }}
+    </a>
+    {% include "partials/toc.html" %}
   </li>
 {% else %}
   <li class="md-nav__item">

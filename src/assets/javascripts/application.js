@@ -29,6 +29,7 @@
 import FastClick from 'fastclick';
 import Sidebar from './components/sidebar';
 import ScrollSpy from './components/scrollspy';
+import Expander from './components/expander';
 
 /* ----------------------------------------------------------------------------
  * Application
@@ -118,16 +119,78 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // var toc = new Sidebar('.md-sidebar--secondary');
+  // toc.listen();
+
+  var toggles = document.querySelectorAll('.md-nav__item--nested > .md-nav__link');
+  [].forEach.call(toggles, (toggle) => {
+    let nav = toggle.nextElementSibling;
+
+    // 1.
+
+    nav.style.maxHeight = nav.getBoundingClientRect().height + 'px';
+
+    toggle.addEventListener('click', function () {
+      let first = nav.getBoundingClientRect().height;
+      if (first) {
+        console.log('closing');
+        nav.style.maxHeight = first + 'px'; // reset!
+        requestAnimationFrame(() => {
+
+          nav.classList.add('md-nav--transitioning');
+          nav.style.maxHeight = '0px';
+        });
+      } else {
+        console.log('opening');
+
+        /* Toggle and read height */
+        nav.style.maxHeight = '';
+
+        nav.classList.add('md-nav--toggled');
+        let last = nav.getBoundingClientRect().height;
+        nav.classList.remove('md-nav--toggled');
+
+        // Initial state
+        nav.style.maxHeight = '0px';
+
+        /* Enable animations */
+        requestAnimationFrame(() => {
+          nav.classList.add('md-nav--transitioning');
+          nav.style.maxHeight = last + 'px';
+        });
+      }
+
+    });
+
+    // Capture the end with transitionend
+    nav.addEventListener('transitionend', function() {
+      this.classList.remove('md-nav--transitioning');
+      if (this.getBoundingClientRect().height > 0) {
+        this.style.maxHeight = '100%';
+      }
+    });
+  });
+
   // document.querySelector('[for="nav-3"]').addEventListener('click', function() {
   //   var el = document.querySelector('[for="nav-3"] + nav');
   //
   //   // TODO: do via class and disable transforms!!!
-  //   el.style.maxHeight = '100%';
-  //   var rect = el.getBoundingClientRect();
-  //   el.style.maxHeight = '0';
+  //   el.style.maxHeight = '100%'; // class !?
   //
-  //   // console.log(rect.height);
-  //   el.style.maxHeight = '120px';
+  //   var rect = el.getBoundingClientRect();
+  //
+  //   console.log(rect);
+  //
+  //   el.style.maxHeight = '0px';
+  //   requestAnimationFrame(function() {
+  //     el.classList.add('md-nav--transitioning');
+  //     el.style.maxHeight = rect.height + 'px';
+  //   });
+  //
+  //   // Capture the end with transitionend
+  //   el.addEventListener('transitionend', function() {
+  //     el.classList.remove('md-nav--transitioning');
+  //   });
   // });
 
 

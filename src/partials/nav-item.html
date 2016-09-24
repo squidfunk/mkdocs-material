@@ -21,14 +21,11 @@
 -->
 
 <!-- Main navigation item with nested items -->
-{% if nav_item.children or nav_item == current_page %}
+{% if nav_item.children %}
   <li class="md-nav__item md-nav__item--nested">
-    {% if nav_item == current_page %}
-      {% set path = "toc" %}
-    {% endif %}
 
     <!-- Active checkbox expands items contained within nested section -->
-    {% if nav_item.active and not nav_item == current_page %}
+    {% if nav_item.active %}
       <input class="md-toggle md-nav__toggle" type="checkbox"
           id="{{ path }}" checked />
     {% else %}
@@ -37,38 +34,44 @@
     {% endif %}
 
     <!-- Expand active pages -->
-    {% if nav_item == current_page %}
-      <label class="md-nav__link md-nav__link--active"
-          for="{{ path }}">
+    <label class="md-nav__link" for="{{ path }}">
+      {{ nav_item.title }}
+    </label>
+    <nav class="md-nav">
+      <label class="md-nav__title" for="{{ path }}">
         {{ nav_item.title }}
       </label>
-      <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
-          class="md-nav__link md-nav__link--active">
-        {{ nav_item.title }}
-      </a>
+      <ul class="md-nav__list">
 
-      <!-- Show table of contents -->
-      {% include "partials/toc.html" %}
-    {% else %}
-      <label class="md-nav__link" for="{{ path }}">
-        {{ nav_item.title }}
-      </label>
-      <nav class="md-nav">
-        <label class="md-nav__title" for="{{ path }}">
-          {{ nav_item.title }}
-        </label>
-        <ul class="md-nav__list">
+        <!-- Render nested item list -->
+        {% for nav_item in nav_item.children %}
+          {% set temp = path %}
+          {% set path = path + "-" + loop.index | string %}
+          {% include "partials/nav-item.html" %}
+          {% set path = temp %}
+        {% endfor %}
+      </ul>
+    </nav>
+  </li>
 
-          <!-- Render nested item list -->
-          {% for nav_item in nav_item.children %}
-            {% set temp = path %}
-            {% set path = path + "-" + loop.index | string %}
-            {% include "partials/nav-item.html" %}
-            {% set path = temp %}
-          {% endfor %}
-        </ul>
-      </nav>
-    {% endif %}
+<!-- Main navigation item with nested items -->
+{% elif nav_item == current_page %}
+  <li class="md-nav__item">
+
+    <!-- Active checkbox expands items contained within nested section -->
+    <input class="md-toggle md-nav__toggle" type="checkbox" id="toc" />
+
+    <!-- Expand active pages -->
+    <label class="md-nav__link md-nav__link--active" for="toc">
+      {{ nav_item.title }}
+    </label>
+    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
+        class="md-nav__link md-nav__link--active">
+      {{ nav_item.title }}
+    </a>
+
+    <!-- Show table of contents -->
+    {% include "partials/toc.html" %}
   </li>
 
 <!-- Main navigation item -->

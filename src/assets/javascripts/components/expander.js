@@ -23,104 +23,71 @@
 'use strict';
 
 /* ----------------------------------------------------------------------------
- * Sidebar scroll-spy
+ * Navigation expander
  * ------------------------------------------------------------------------- */
 
-class ScrollSpy {
+class Expander {
 
   /**
    * Constructor
    *
    * @constructor
-   * @param {(string|HTMLCollection)} el - Selector or HTML elements
+   * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === 'string') ? document.querySelectorAll(el) : el;
-
-    /* Initialize index for currently active element */
-    this.index_  = 0;
-    this.offset_ = window.pageYOffset;
+    this.el_ = (typeof el === 'string') ? document.querySelector(el) : el;
 
     /* Event listener */
     this.handler_ = ev => {
       this.update(ev);
     };
-  }
+  };
 
   /**
-   * Update state of sidebar and hash
+   * Update state of expandable element
    *
    * @param {Event} ev - Event
    */
   update(ev) {
-
-    /* Scroll direction is down */
-    if (this.offset_ <= window.pageYOffset) {
-      for (let i = this.index_ + 1; i < this.el_.length; i++) {
-        let anchor = document.querySelector(this.el_[i].hash);                  // TODO: improve performance by caching
-        if (anchor.offsetTop <= window.pageYOffset) {
-          if (i > 0)
-            this.el_[i - 1].classList.add('md-nav__link--marked');
-          this.index_ = i;
-        } else {
-          break;
-        }
-      }
-
-    /* Scroll direction is up */
-    } else {
-      for (let i = this.index_; i >= 0; i--) {
-        let anchor = document.querySelector(this.el_[i].hash);
-        if (anchor.offsetTop > window.pageYOffset) {
-          if (i > 0)
-            this.el_[i - 1].classList.remove('md-nav__link--marked');
-        } else {
-          this.index_ = i;
-          break;
-        }
-      }
-    }
-
-    /* Remember current offset for next cycle */
-    this.offset_ = window.pageYOffset;
-  }
+    console.log("foo");
+  };
 
   /**
-   * Reset state of sidebar
+   * Reset state of expandable element
    */
   reset() {
-    [].forEach.call(this.el_, el => {
-      el.classList.remove('md-nav__link--marked');
-    });
-  }
+    // this.el_.classList.remove('md-js__sidebar--locked');
+    // this.el_.style.height = '';
+    //
+    // /* Reset parameters */
+    // this.height_ = 0;
+    // this.locked_ = false;
+  };
 
   /**
    * Register listener for all relevant events
    */
   listen() {
-    ['scroll', 'resize', 'orientationchange'].forEach(name => {
+    ['click'].forEach(name => {
       window.addEventListener(name, this.handler_, false);
     });
-
-    /* Initial update */
-    this.update();
-  }
+  };
 
   /**
    * Unregister listener for all relevant events
    */
   unlisten() {
-    ['scroll', 'resize', 'orientationchange'].forEach(name => {
+    ['click'].forEach(name => {
       window.removeEventListener(name, this.handler_, false);
     });
 
     /* Perform reset */
     this.reset();
-  }
+  };
 }
 
 /* ----------------------------------------------------------------------------
  * Exports
  * ------------------------------------------------------------------------- */
 
-export default ScrollSpy;
+export default Expander;

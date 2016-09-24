@@ -42,7 +42,7 @@ class Sidebar {
     this.locked_ = false;
 
     /* Event listener */
-    this.handler_ = (ev) => {
+    this.handler_ = ev => {
       this.update(ev);
     };
   };
@@ -103,7 +103,7 @@ class Sidebar {
    * Register listener for all relevant events
    */
   listen() {
-    ['scroll', 'resize', 'orientationchange'].forEach((name) => {
+    ['scroll', 'resize', 'orientationchange'].forEach(name => {
       window.addEventListener(name, this.handler_, false);
     });
 
@@ -115,7 +115,7 @@ class Sidebar {
    * Unregister listener for all relevant events
    */
   unlisten() {
-    ['scroll', 'resize', 'orientationchange'].forEach((name) => {
+    ['scroll', 'resize', 'orientationchange'].forEach(name => {
       window.removeEventListener(name, this.handler_, false);
     });
 
