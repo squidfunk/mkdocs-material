@@ -37,6 +37,10 @@ class Sidebar {
   constructor(el) {
     this.el_ = (typeof el === 'string') ? document.querySelector(el) : el;
 
+    /* Grab inner and outer container */
+    this.inner_ = this.el_.parentNode;
+    this.outer_ = this.el_.parentNode.parentNode;
+
     /* Initialize parameters */
     this.height_ = 0;
     this.locked_ = false;
@@ -53,8 +57,8 @@ class Sidebar {
    * @param {Event} ev - Event
    */
   update(ev) {
-    let container = this.el_.parentNode;
-    let bounds = container.getBoundingClientRect();
+    let bounds = this.inner_.getBoundingClientRect();
+    let parent = this.outer_.offsetTop;
 
     /* Determine top and bottom offsets */
     let top    = bounds.top    + window.pageYOffset,
@@ -67,14 +71,14 @@ class Sidebar {
     /* Calculate new bounds */
     let offset = top - upper;
     let height = window.innerHeight - Math.max(lower - bottom, 0)
-               - Math.max(offset, container.parentNode.offsetTop);
+               - Math.max(offset, parent);
 
     /* If height changed, update element */
     if (height != this.height_)
       this.el_.style.height = (this.height_ = height) + 'px';
 
     /* Sidebar should be locked, as we're below parent offset */
-    if (offset < container.parentNode.offsetTop) {
+    if (offset < parent) {
       if (!this.locked_) {
         this.el_.classList.add('md-js__sidebar--locked');
         this.locked_ = true;
