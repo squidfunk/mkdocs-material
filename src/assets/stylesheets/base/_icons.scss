@@ -59,9 +59,7 @@
   @each $ligature, $name in (
     "arrow_back": "back",
     "arrow_forward": "forward",
-    "close": "close",
-    "menu": "menu",
-    "search": "search"
+    "close": "close"
   ) {
     &--#{$name}::before {
       content: $ligature;

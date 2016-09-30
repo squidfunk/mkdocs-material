@@ -20,11 +20,13 @@
  * IN THE SOFTWARE.
  */
 
+"use strict"
+
 /* ----------------------------------------------------------------------------
- * Sidebar sticky-scroll handler
+ * Search
  * ------------------------------------------------------------------------- */
 
-class Sidebar {
+class Search {
 
   /**
    * Constructor
@@ -33,17 +35,7 @@ class Sidebar {
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === "string")
-      ? document.querySelector(el)
-      : el
-
-    /* Grab inner and outer container */
-    this.inner_ = this.el_.parentNode
-    this.outer_ = this.el_.parentNode.parentNode
-
-    /* Initialize parameters */
-    this.height_ = 0
-    this.locked_ = false
+    this.el_ = (typeof el === "string") ? document.querySelector(el) : el
 
     /* Event listener */
     this.handler_ = ev => {
@@ -58,38 +50,7 @@ class Sidebar {
    * @return {void}
    */
   update() {
-    const bounds = this.inner_.getBoundingClientRect()
-    const parent = this.outer_.offsetTop
 
-    /* Determine top and bottom offsets */
-    const top    = bounds.top    + window.pageYOffset,
-          bottom = bounds.bottom + window.pageYOffset
-
-    /* Determine current y-offset at top and bottom of window */
-    const upper  = window.pageYOffset,
-          lower  = window.pageYOffset + window.innerHeight
-
-    /* Calculate new bounds */
-    const offset = top - upper
-    const height = window.innerHeight - Math.max(lower - bottom, 0)
-               - Math.max(offset, parent)
-
-    /* If height changed, update element */
-    if (height !== this.height_)
-      this.el_.style.height = `${this.height_ = height}px`
-
-    /* Sidebar should be locked, as we're below parent offset */
-    if (offset < parent) {
-      if (!this.locked_) {
-        this.el_.classList.add("md-js__sidebar--locked")
-        this.locked_ = true
-      }
-
-    /* Sidebar should be unlocked, if locked */
-    } else if (this.locked_) {
-      this.el_.classList.remove("md-js__sidebar--locked")
-      this.locked_ = false
-    }
   }
 
   /**
@@ -98,12 +59,7 @@ class Sidebar {
    * @return {void}
    */
   reset() {
-    this.el_.classList.remove("md-js__sidebar--locked")
-    this.el_.style.height = ""
 
-    /* Reset parameters */
-    this.height_ = 0
-    this.locked_ = false
   }
 
   /**
@@ -112,9 +68,9 @@ class Sidebar {
    * @return {void}
    */
   listen() {
-    ["scroll", "resize", "orientationchange"].forEach(name => {
-      window.addEventListener(name, this.handler_, false)
-    })
+    // ['scroll', 'resize', 'orientationchange'].forEach(name => {
+    //   window.addEventListener(name, this.handler_, false);
+    // });
 
     /* Initial update */
     this.update()
@@ -126,9 +82,9 @@ class Sidebar {
    * @return {void}
    */
   unlisten() {
-    ["scroll", "resize", "orientationchange"].forEach(name => {
-      window.removeEventListener(name, this.handler_, false)
-    })
+    // ['scroll', 'resize', 'orientationchange'].forEach(name => {
+    //   window.removeEventListener(name, this.handler_, false);
+    // });
 
     /* Perform reset */
     this.reset()
@@ -139,4 +95,4 @@ class Sidebar {
  * Exports
  * ------------------------------------------------------------------------- */
 
-export default Sidebar
+export default Search

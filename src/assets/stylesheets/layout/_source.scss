@@ -37,6 +37,14 @@
     opacity: 0.7;
   }
 
+  // Necessary for vertical alignment
+  &::before {
+    display: inline-block;
+    height: 4.8rem;
+    content: "";
+    vertical-align: middle;
+  }
+
   // Repository is hosted on platform
   &--bitbucket,
   &--github,
@@ -44,14 +52,16 @@
 
     // Platform icon
     &::before {
-      display: inline-block;
       width: 4.8rem;
-      height: 4.8rem;
       background-repeat: no-repeat;
       background-position: center;
       background-size: $md-icon-size $md-icon-size;
-      content: "";
-      vertical-align: middle;
+    }
+
+    // Adjust repository information for platform icon
+    .md-source__repository {
+      margin-left: -4.4rem;
+      padding-left: 4.0rem;
     }
   }
 
@@ -74,8 +84,7 @@
   &__repository {
     display: inline-block;
     max-width: 100%;
-    margin-left: -4.4rem;
-    padding-left: 4.0rem;
+    margin-left: 0.8rem;
     font-weight: 700;
     text-overflow: ellipsis;
     overflow: hidden;

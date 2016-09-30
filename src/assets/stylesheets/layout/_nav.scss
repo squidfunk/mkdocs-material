@@ -97,7 +97,7 @@
     }
 
     // Hide link to table of contents by default - this will only match the
-    // table of contents inside the drawer below and including tablet portrait.
+    // table of contents inside the drawer below and including tablet portrait
     html &[for="toc"] {
       display: none;
 
@@ -159,7 +159,7 @@
       }
 
       // List title - higher specificity is necessary to ensure that the title
-      // inside the drawer is always styled accordingly.
+      // inside the drawer is always styled accordingly
       html & .md-nav__title {
         position: relative;
         padding: 0.4rem 1.6rem 0.4rem 5.6rem;
@@ -296,7 +296,7 @@
     }
 
     // Show link to table of contents - higher specificity is necessary to
-    // display the table of contents inside the drawer.
+    // display the table of contents inside the drawer
     html &__link[for="toc"] {
       display: block;
 
@@ -331,9 +331,9 @@
   @include break-from-device(screen) {
 
     // Animation is only possible if JavaScript is available, as the max-height
-    // property must be calculated before transitioning.
+    // property must be calculated before transitioning
     &.md-nav--transitioning {
-      transition: max-height 0.4s cubic-bezier(0.86, 0.0, 0.07, 1.0);
+      transition: max-height 0.25s cubic-bezier(0.86, 0.0, 0.07, 1.0);
     }
 
     // Hide nested navigation by default
@@ -363,10 +363,15 @@
       // Item contains a nested list
       .md-nav__item--nested > &::after {
         display: inline-block;
-        transform-origin: 0.45em 0.485em;
+        transform-origin: 0.45em 0.45em;
         transform-style: preserve-3d;
-        transition: transform 0.4s;
         vertical-align: -0.125em;
+
+        // Only animate icon when JavaScript is available, as the height can
+        // not be animated anyway, and better no fun than half the fun
+        .js & {
+          transition: transform 0.4s;
+        }
       }
 
       // Rotate icon for expanded lists

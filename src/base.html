@@ -170,8 +170,8 @@
 
     <!-- Theme-related and custom javascripts -->
     <script>
-      var base_url = '{{ base_url }}';
-      var repo_url = '{{ repo_url }}';
+      window.baseUrl = '{{ base_url }}';                                        // TODO: define in global scope and use IIFE
+      window.repoUrl = '{{ repo_url }}';
     </script>
     <script src="{{ base_url }}/assets/javascripts/application.js"></script>
     {% for path in extra_javascript %}

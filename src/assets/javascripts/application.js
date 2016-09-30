@@ -20,221 +20,313 @@
  * IN THE SOFTWARE.
  */
 
-'use strict';
-
 /* ----------------------------------------------------------------------------
  * Imports
  * ------------------------------------------------------------------------- */
 
-import FastClick from 'fastclick';
-import Sidebar from './components/sidebar';
-import ScrollSpy from './components/scrollspy';
-import Expander from './components/expander';
+import FastClick from "fastclick"
+import lunr from "lunr"
+
+// import Expander from "./components/expander"
+import Sidebar from "./components/sidebar"
+import ScrollSpy from "./components/scrollspy"
+
+// import Search from './components/search';
 
 /* ----------------------------------------------------------------------------
  * Application
  * ------------------------------------------------------------------------- */
 
 /* Initialize application upon DOM ready */
-document.addEventListener('DOMContentLoaded', function() {
-  'use strict';
+document.addEventListener("DOMContentLoaded", () => {
 
   /* Test for iOS */
-  Modernizr.addTest('ios', function() {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-  });
+  Modernizr.addTest("ios", () => {
+    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
+  })
 
   /* Test for web application context */
-  Modernizr.addTest('standalone', function() {
-    return !!navigator.standalone;
-  });
+  Modernizr.addTest("standalone", () => {
+    return !!navigator.standalone
+  })
 
   /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body);
+  FastClick.attach(document.body)
 
+  const width = window.matchMedia("(min-width: 1200px)")
 
-  var width = window.matchMedia("(min-width: 1200px)");
-  var handler = function() {
+  const sidebar = new Sidebar(".md-sidebar--primary")
+  const handler = function() {
     if (width.matches) {
-      sidebar.listen();
+      sidebar.listen()
     } else {
-      sidebar.unlisten();
+      sidebar.unlisten()
     }
   }
+  handler() // check listen!
 
-  var sidebar = new Sidebar('.md-sidebar--primary');
-  handler(); // check listen!
+  const toc = new Sidebar(".md-sidebar--secondary")
+  toc.listen()
 
-  var toc = new Sidebar('.md-sidebar--secondary');
-  toc.listen();
+  const spy =
+    new ScrollSpy(".md-sidebar--secondary .md-nav--secondary .md-nav__link")
+  spy.listen()
 
-  var spy = new ScrollSpy('.md-sidebar--secondary .md-nav--secondary .md-nav__link');
-  spy.listen();
+  window.addEventListener("resize", handler)
 
-  window.addEventListener('resize', handler);
+  const query = document.getElementById("query")
+  query.addEventListener("focus", () => {
+    document.querySelector(".md-search").classList.add("md-js__search--locked")
+  })
 
   /* Intercept click on search mode toggle */
-  var offset = 0;
-  var toggle = document.getElementById('search');
-  toggle.addEventListener('click', function(e) {
-    var list = document.body.classList;
-    var lock = !matchMedia('only screen and (min-width: 960px)').matches;
+  let offset = 0
+  const toggle = document.getElementById("search")
+  toggle.addEventListener("click", ev => {
+    const list = document.body.classList
+    const lock = !matchMedia("only screen and (min-width: 960px)").matches
 
     /* Exiting search mode */
-    if (list.contains('md-js__body--locked')) {
-      list.remove('md-js__body--locked');
+    if (list.contains("md-js__body--locked")) {
+      list.remove("md-js__body--locked")
 
       /* Scroll to former position, but wait for 100ms to prevent flashes
          on iOS. A short timeout seems to do the trick */
       if (lock)
-        setTimeout(function() {
-          window.scrollTo(0, offset);
-        }, 100);
+        setTimeout(() => {
+          window.scrollTo(0, offset)
+        }, 100)
 
     /* Entering search mode */
     } else {
-      offset = window.scrollY;
+      offset = window.scrollY
 
       /* First timeout: scroll to top after transition, to omit flickering */
       if (lock)
-        setTimeout(function() {
-          window.scrollTo(0, 0);
-        }, 400);
+        setTimeout(() => {
+          window.scrollTo(0, 0)
+        }, 400)
 
       /* Second timeout: Lock body after finishing transition and scrolling to
          top and focus input field. Sadly, the focus event is not dispatched
          on iOS Safari and there's nothing we can do about it. */
-      setTimeout(function() {
+      setTimeout(() => {
 
         /* This additional check is necessary to handle fast subsequent clicks
            on the toggle and the timeout to lock the body must be cancelled */
-        if (this.checked) {
+        if (ev.target.checked) {
           if (lock)
-            list.add('md-js__body--locked');
-          setTimeout(function() {
-            document.getElementById('md-search').focus();
-          }, 200);
+            list.add("md-js__body--locked")
+          setTimeout(() => {
+            document.getElementById("md-search").focus()
+          }, 200)
         }
-      }.bind(this), 450);
+      }, 450)
     }
-  });
+  })
 
   // var toc = new Sidebar('.md-sidebar--secondary');
   // toc.listen();
 
-  var toggles = document.querySelectorAll('.md-nav__item--nested > .md-nav__link');
-  [].forEach.call(toggles, (toggle) => {
-    let nav = toggle.nextElementSibling;
+  const toggles =
+    document.querySelectorAll(".md-nav__item--nested > .md-nav__link");
+  [].forEach.call(toggles, togglex => {
+    const nav = togglex.nextElementSibling
 
     // 1.
 
-    nav.style.maxHeight = nav.getBoundingClientRect().height + 'px';
+    nav.style.maxHeight = `${nav.getBoundingClientRect().height}px`
 
-    toggle.addEventListener('click', function () {
-      let first = nav.getBoundingClientRect().height;
+    togglex.addEventListener("click", () => {
+      const first = nav.getBoundingClientRect().height
       if (first) {
-        console.log('closing');
-        nav.style.maxHeight = first + 'px'; // reset!
+        // console.log('closing');
+        nav.style.maxHeight = `${first}px` // reset!
         requestAnimationFrame(() => {
 
-          nav.classList.add('md-nav--transitioning');
-          nav.style.maxHeight = '0px';
-        });
+          nav.classList.add("md-nav--transitioning")
+          nav.style.maxHeight = "0px"
+        })
       } else {
-        console.log('opening');
+        // console.log('opening');
 
         /* Toggle and read height */
-        nav.style.maxHeight = '';
+        nav.style.maxHeight = ""
 
-        nav.classList.add('md-nav--toggled');
-        let last = nav.getBoundingClientRect().height;
-        nav.classList.remove('md-nav--toggled');
+        nav.classList.add("md-nav--toggled")
+        const last = nav.getBoundingClientRect().height
+        nav.classList.remove("md-nav--toggled")
 
         // Initial state
-        nav.style.maxHeight = '0px';
+        nav.style.maxHeight = "0px"
 
         /* Enable animations */
         requestAnimationFrame(() => {
-          nav.classList.add('md-nav--transitioning');
-          nav.style.maxHeight = last + 'px';
-        });
+          nav.classList.add("md-nav--transitioning")
+          nav.style.maxHeight = `${last}px`
+        })
       }
 
-    });
+    })
 
     // Capture the end with transitionend
-    nav.addEventListener('transitionend', function() {
-      this.classList.remove('md-nav--transitioning');
-      if (this.getBoundingClientRect().height > 0) {
-        this.style.maxHeight = '100%';
+    nav.addEventListener("transitionend", ev => {
+      ev.target.classList.remove("md-nav--transitioning")
+      if (ev.target.getBoundingClientRect().height > 0) {
+        ev.target.style.maxHeight = "100%"
       }
-    });
-  });
-
-  // document.querySelector('[for="nav-3"]').addEventListener('click', function() {
-  //   var el = document.querySelector('[for="nav-3"] + nav');
-  //
-  //   // TODO: do via class and disable transforms!!!
-  //   el.style.maxHeight = '100%'; // class !?
-  //
-  //   var rect = el.getBoundingClientRect();
-  //
-  //   console.log(rect);
-  //
-  //   el.style.maxHeight = '0px';
-  //   requestAnimationFrame(function() {
-  //     el.classList.add('md-nav--transitioning');
-  //     el.style.maxHeight = rect.height + 'px';
-  //   });
-  //
-  //   // Capture the end with transitionend
-  //   el.addEventListener('transitionend', function() {
-  //     el.classList.remove('md-nav--transitioning');
-  //   });
-  // });
-
+    })
+  })
 
 // setTimeout(function() {
-  fetch('https://api.github.com/repos/squidfunk/mkdocs-material')
-    .then(function(response) {
+  fetch("https://api.github.com/repos/squidfunk/mkdocs-material")
+    .then(response => {
       return response.json()
-    }).then(function(data) {
-      var stars = data.stargazers_count;
-      var forks = data.forks_count;
+    })
+    .then(data => {
+      const stars = data.stargazers_count
+      const forks = data.forks_count
       // store in session!!!
-      var lists = document.querySelectorAll('.md-source__facts');
-      [].forEach.call(lists, function(list) {
-        // list.innerHTML += '<li class="md-source__fact">' + stars + ' Stars</li>\n';
-        // list.innerHTML += '<li>' + forks + ' Forks</li>\n';
+      const lists = document.querySelectorAll(".md-source__facts"); // TODO 2x list in drawer and header
+      [].forEach.call(lists, list => {
 
-        var li = document.createElement('li');
-        li.className = 'md-source__fact md-source__fact--hidden';
-        li.innerText = stars + ' Stars';
-        list.appendChild(li);
+        let li = document.createElement("li")
+        li.className = "md-source__fact md-source__fact--hidden"
+        li.innerText = `${stars} Stars`
+        list.appendChild(li)
 
+        setTimeout(lix => {
+          lix.classList.remove("md-source__fact--hidden")
+        }, 100, li)
 
-        setTimeout(function(li) {
-          li.classList.remove('md-source__fact--hidden');
-        }, 100, li);
+        li = document.createElement("li")
+        li.className = "md-source__fact md-source__fact--hidden"
+        li.innerText = `${forks} Forks`
+        list.appendChild(li)
 
-        li = document.createElement('li');
-        li.className = 'md-source__fact md-source__fact--hidden';
-        li.innerText = forks + ' Forks';
-        list.appendChild(li);
-
-        setTimeout(function(li) {
-          li.classList.remove('md-source__fact--hidden');
-        }, 500, li);
+        setTimeout(lix => {
+          lix.classList.remove("md-source__fact--hidden")
+        }, 500, li)
       })
-
 
       // setTimeout(function() {
       //   li.classList.remove('md-source__fact--hidden');
       // }, 100);
 
-    }).catch(function(ex) {
-      console.log('parsing failed', ex)
-    });
+    })
+    .catch(() => {
+      // console.log("parsing failed", ex)
+
+    })
+
+    // setTimeout(function() {
+  fetch("/mkdocs/search_index.json") // TODO: prepend BASE URL!!!
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      // console.log(data)
+
+          /* Create index */
+      const index = lunr(() => {
+        /* eslint-disable no-invalid-this, lines-around-comment */
+        this.field("title", {boost: 10})
+        this.field("text")
+        this.ref("location")
+        /* eslint-enable no-invalid-this, lines-around-comment */
+      })
+
+          /* Index articles */
+      const articles = {}
+      data.docs.forEach(article => {
+
+            // TODO: match for two whitespaces, then replace unnecessary whitespace after string
+        article.text = article.text.replace(/\s(\.,\:)\s/gi, (string, g1) => {
+          return `${g1} `
+        })
+        // TODO: window.baseUrl sucks...
+        article.location = window.baseUrl + article.location
+        articles[article.location] = article
+        index.add(article)
+      })
+
+          /* Register keyhandler to execute search on key up */
+      const queryx = document.getElementById("query")
+      queryx.addEventListener("keyup", () => {
+        const container = document.querySelector(".md-search-result__list")
+        while (container.firstChild)
+          container.removeChild(container.firstChild)
+
+            // /* Abort, if the query is empty */
+            // var bar = document.querySelector('.bar.search');
+            // if (!query.value.length) {
+            //   while (meta.firstChild)
+            //     meta.removeChild(meta.firstChild);
+            //
+            //   /* Restore state */
+            //   bar.classList.remove('non-empty');
+            //   return;
+            // }
+
+            /* Show reset button */
+            // bar.classList.add('non-empty');
+
+            /* Execute search */
+        const results = index.search(query.value)
+        results.forEach(result => {
+          const article = articles[result.ref]
+
+              /* Create a link referring to the article */
+          const link = document.createElement("a")
+          link.classList.add("md-search-result__link")
+          link.href = article.location
+
+              // /* Create article container */
+          const li = document.createElement("li")
+          li.classList.add("md-search-result__item")
+          li.appendChild(link)
+
+              /* Create title element */
+          const title = document.createElement("div")
+          title.classList.add("md-search-result__title")
+
+              // article.title.split(//)
+
+          title.innerHTML = article.title
+          link.appendChild(title)
+
+              /* Create text element */
+          const text = document.createElement("p")
+          text.classList.add("md-search-result__description")
+          text.innerHTML = article.text // .truncate(140);
+          link.appendChild(text)
+
+          container.appendChild(li)
+        })
+
+            /* Show number of search results */
+            // var number = document.createElement('strong');
+
+        const meta = document.querySelector(".md-search-result__meta")
+        meta.innerHTML = `${results.length} search result${
+          results.length !== 1
+            ? "s"
+            : ""}`
+
+            /* Update number */
+            // while (meta.firstChild)
+            //   meta.removeChild(meta.firstChild);
+            // meta.appendChild(number);
+      })
+
+          // setTimeout(function() {
+          //   li.classList.remove('md-source__fact--hidden');
+          // }, 100);
+
+    })
+    .catch(() => {
+      // console.log("parsing failed", ex)
+    })
 // }, 1000);
 
-});
+})

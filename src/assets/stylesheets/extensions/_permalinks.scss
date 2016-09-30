@@ -31,7 +31,7 @@
   .headerlink {
     display: inline-block;
     margin-left: 1.0rem;
-    transform: translate3d(0, 0.5rem, 0);
+    transform: translate(0, 0.5rem);
     transition: transform 0.25s  0.25s,
                 color     0.25s,
                 opacity   0.125s 0.25s;
@@ -46,7 +46,7 @@
     &:hover  .headerlink,
     &:target .headerlink,
     & .headerlink:focus {
-      transform: translate3d(0, 0, 0);
+      transform: translate(0, 0);
       opacity: 1;
     }
 

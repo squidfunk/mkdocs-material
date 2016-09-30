@@ -20,8 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-'use strict';
-
 /* ----------------------------------------------------------------------------
  * Navigation expander
  * ------------------------------------------------------------------------- */
@@ -35,59 +33,59 @@ class Expander {
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === 'string') ? document.querySelector(el) : el;
+    this.el_ = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
 
     /* Event listener */
     this.handler_ = ev => {
-      this.update(ev);
-    };
-  };
+      this.update(ev)
+    }
+  }
 
   /**
    * Update state of expandable element
    *
    * @param {Event} ev - Event
+   * @return {void}
    */
-  update(ev) {
-    console.log("foo");
-  };
+  update() {}
 
   /**
    * Reset state of expandable element
+   *
+   * @return {void}
    */
-  reset() {
-    // this.el_.classList.remove('md-js__sidebar--locked');
-    // this.el_.style.height = '';
-    //
-    // /* Reset parameters */
-    // this.height_ = 0;
-    // this.locked_ = false;
-  };
+  reset() {}
 
   /**
    * Register listener for all relevant events
+   *
+   * @return {void}
    */
   listen() {
-    ['click'].forEach(name => {
-      window.addEventListener(name, this.handler_, false);
-    });
-  };
+    ["click"].forEach(name => {
+      window.addEventListener(name, this.handler_, false)
+    })
+  }
 
   /**
    * Unregister listener for all relevant events
+   *
+   * @return {void}
    */
   unlisten() {
-    ['click'].forEach(name => {
-      window.removeEventListener(name, this.handler_, false);
-    });
+    ["click"].forEach(name => {
+      window.removeEventListener(name, this.handler_, false)
+    })
 
     /* Perform reset */
-    this.reset();
-  };
+    this.reset()
+  }
 }
 
 /* ----------------------------------------------------------------------------
  * Exports
  * ------------------------------------------------------------------------- */
 
-export default Expander;
+export default Expander

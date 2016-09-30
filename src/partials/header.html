@@ -27,10 +27,20 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
 
+      <!-- Link to home -->
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="{{ homepage_url }}" title="{{ site_name }}"
+            class="md-icon md-header-nav__icon md-header-nav__icon--home">
+          layers
+        </a>
+      </div>
+
       <!-- Button to toggle drawer -->
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__icon"
-            for="drawer"></label>
+        <label class="md-icon md-header-nav__icon md-header-nav__icon--menu"
+            for="drawer">
+          menu
+        </label>
       </div>
 
       <!-- Header title -->
@@ -42,8 +52,10 @@
 
       <!-- Button to open search dialogue -->
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--search md-header-nav__icon"
-            for="search"></label>
+        <label class="md-icon md-header-nav__icon md-header-nav__icon--search"
+            for="search">
+          search
+        </label>
 
         <!-- Search interface -->
         {% include "partials/search.html" %}

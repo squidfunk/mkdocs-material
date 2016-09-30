@@ -24,28 +24,161 @@
 // Nothing to see here, move along
 // ----------------------------------------------------------------------------
 
-.md-search__suggest {
-  @include z-depth(8);
+@include break-from-device(screen) {
 
-  background: $md-color-white;
-  border-radius: 0 0 px2rem(3px) px2rem(3px);
-  color: #000000;
-  text-align: left;
-  border-top: px2rem(1px) solid $md-color-black--lightest;
-  display: none; // TODO: doesnt work due to display: none;
-  opacity: 0;
+  // .md-search__form {
+  //   background: red;
+  //   width: 23.0rem;
+  //   transition: width 0.6s;
+  //
+  //   .md-js__search--locked & {
+  //     background: blue;
+  //     width: 66.8rem;
+  //   }
+  // }
 
-  // overflow: auto;
-  transition: opacity .3s;
-  // pointer-events: none;
+  // .md-search__input {
+  //   width: 100% !important;
+  // }
+
+  .md-search__output {
+    @include z-depth(6);
+
+    width: 100%;
+    max-height: 0vh; // TODO: can this be done in percent!?!?!?
+    opacity: 0;
+    transition: opacity .4s, max-height .4s;
+    .md-js__search--locked & {
+      max-height: 75vh;
+      opacity: 1;
+    }
+
+    position: absolute; // must be absolute, or header nav will stretch
+    background: $md-color-white;
+    // color: red;
+    border-top: px2rem(1px) solid $md-color-black--lightest; // TODO: box-shadow inset!
+    text-align: left;                                        // TODO: wrap with another div for this effect
+    border-radius: 0 0 px2rem(3px) px2rem(3px);
+    z-index: -1;
+
+    // Override native scrollbar styles
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+      height: 0.4rem;
+
+      // Style scrollbar thumb
+      &-thumb {
+        background-color: $md-color-black--lighter;
+
+        // Hovered scrollbar thumb
+        &:hover {
+          background-color: $md-color-accent;
+        }
+      }
+    }
+  }
+
+  // Scroll shadow!
+  .md-search__output {
+
+  	background:
+  		linear-gradient(white 10%, rgba(255,255,255,0)), // cover
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0) 60%); // shadow
+  	background-repeat: no-repeat;
+  	background-color: white;
+  	background-size: 100% 20px, 100% 5px;
+
+  	/* Opera doesn't support this in the shorthand */
+  	background-attachment: local, scroll;
+  }
+
+  .md-search-result {
 
 
-  .md-search__input:focus ~ & {
-    // animation: anima .3s;
-    display: block;
-    opacity: 1;
+    &__meta {
+      color: $md-color-black--light;
+      padding-left: 4.8rem;
+      padding-right: 1.6rem;
+      line-height: 4.0rem;
+      font-size: ms(-1);
+
+    }
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      border-top: px2rem(1px) solid $md-color-black--lightest;
+    }
+
+    &__item {
+      // background: yellow;
+
+      // border-top: px2rem(1px) solid $md-color-black--lightest;
+    }
+
+
+    &__link {
+      overflow: auto;
+      display: block;
+      padding-left: 4.8rem;
+      padding-right: 1.6rem;
+
+      &:hover {
+        background: yellow;
+      }
+    }
+
+    &__title {
+      color: $md-color-black;
+      font-size: ms(0);
+      line-height: 1.4;
+      margin-top: 0.5em;
+    }
+
+    &__description {
+      color: $md-color-black--light;
+      font-size: ms(-1);
+      line-height: 1.4;
+      margin: 0.5em 0;;
+    }
   }
 }
+
+// .md-nav--secondary > .md-nav__title {
+//   // -webkit-overflow-scrolling: touch;
+//   @include z-depth(1);
+// }
+
+
+// // add light border for more contrast
+// .md-typeset pre {
+//   border: 1px solid rgba(0,0,0,0.0125);
+// }
+
+
+// .md-search__suggest {
+//
+//
+//   background: $md-color-white;
+//   border-radius: 0 0 px2rem(3px) px2rem(3px);
+//   color: #000000;
+//   text-align: left;
+//   border-top: px2rem(1px) solid $md-color-black--lightest;
+//   display: none; // TODO: doesnt work due to display: none;
+//   opacity: 0;
+//
+//   // overflow: auto;
+//   transition: opacity .3s;
+//   // pointer-events: none;
+//
+//
+//   .md-search__input:focus ~ & {
+//     // animation: anima .3s;
+//     display: block;
+//     opacity: 1;
+//   }
+// }
 
 .md-search__input:focus {
   border-radius: px2rem(3px) px2rem(3px) 0 0;
@@ -99,6 +232,14 @@
     background: mix($md-color-white, $md-color-primary, 90%);
   }
 }
+
+
+
+
+
+
+
+
 
 .checklist {
 
@@ -253,4 +394,8 @@ mark {
   display: block;
   margin: 0 -16px;
   padding: 0 16px;
+}
+
+.md-search__output {
+  overflow-y: auto; // necessary for rounded borders
 }

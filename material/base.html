@@ -88,10 +88,10 @@
       {% include "partials/footer.html" %}
     </div>
     <script>
-      var base_url = '{{ base_url }}';
-      var repo_url = '{{ repo_url }}';
+      window.baseUrl = '{{ base_url }}';                                        // TODO: define in global scope and use IIFE
+      window.repoUrl = '{{ repo_url }}';
     </script>
-    <script src="{{ base_url }}/assets/javascripts/application-db87fe00d3.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/application-29b6c4d53e.js"></script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}

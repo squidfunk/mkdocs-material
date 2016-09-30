@@ -55,11 +55,29 @@
       opacity: 0.7;
     }
 
-    // [tablet +]: Hide the search icon from tablet
+    // [tablet +]: Hide the search icon
     @include break-from-device(tablet) {
 
       // Search icon
-      &.md-icon--search {
+      &--search {
+        display: none;
+      }
+    }
+
+    // [tablet -]: Hide the home icon
+    @include break-to-device(tablet) {
+
+      // Home icon
+      &--home {
+        display: none;
+      }
+    }
+
+    // [screen +]: Hide the menu icon
+    @include break-from-device(screen) {
+
+      // Menu icon
+      &--menu {
         display: none;
       }
     }
