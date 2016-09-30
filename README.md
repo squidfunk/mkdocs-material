@@ -55,7 +55,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 
-[travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg
+[travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
 [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
 [pypi-v-image]: https://img.shields.io/pypi/v/mkdocs-material.png
 [pypi-v-link]: https://pypi.python.org/pypi/mkdocs-material
