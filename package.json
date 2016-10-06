@@ -32,6 +32,7 @@
     "babel-loader": "^6.2.4",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.13.2",
+    "babel-register": "^6.16.3",
     "css-mqpacker": "^4.0.0",
     "del": "^2.2.0",
     "eslint": "^3.6.1",
