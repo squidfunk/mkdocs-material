@@ -21,50 +21,10 @@
 # IN THE SOFTWARE.
 
 # Check, if all changes are added to the index
-CWD_CLEAN="$(git diff-index HEAD --)"
+CHANGED="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 
-# This variables stores the state of the stash.
-#   0 = not restored yet.
-#   1 = stash was already reset
-STASH_POPPED=0
-
-# Pop the stash in case of trap
-function cleanup {
-  if test -n "$CWD_CLEAN"; then
-    if test "$STASH_POPPED" != 1 ; then
-      # Pop the changes (= stash) back to the work space
-      git stash pop -q
-	  fi
-  fi
-	exit
-}
-
-# Register signal handler
-trap cleanup SIGHUP SIGINT SIGTERM
-
-# Stash all changes that were not added to the commit
-if test -n "$CWD_CLEAN"; then
-  git stash -q --keep-index --include-untracked
+# Perform install and prune of NPM dependencies if package.json changed
+if $(echo "$CHANGED" | grep --quiet package.json); then
+  echo "Hook[post-merge]: Updating dependencies..."
+  npm install && npm prune
 fi
-
-# Run the check and print indicator
-echo "Hook[pre-commit]: Running linter..."
-STD_OUT=$(npm run pre-commit --silent)
-
-# Grab exit code of check
-HAD_ERROR=$?
-
-# Pop the changes (= stash) back to the work space
-if test -n "$CWD_CLEAN"; then
-  git stash pop -q
-  STASH_POPPED=1
-fi
-
-# In case of error, print output of check
-if test "$HAD_ERROR" != 0 ; then
-  echo ${STD_OUT}
-  exit 1
-fi
-
-# Reset indicator and exit
-exit 0
