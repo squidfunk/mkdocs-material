@@ -21,8 +21,9 @@
 # Mac OS X internals
 .DS_Store
 
-# Dependencies
+# NPM-related
 /node_modules
+/npm-debug.log
 
 # Build files
 /build
