@@ -21,10 +21,10 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Navigation
+// Rules
 // ----------------------------------------------------------------------------
 
-// Nested navigation
+// Navigation container
 .md-nav {
   font-size: ms(-1);
   line-height: 1.3;
@@ -113,7 +113,7 @@
     }
 
     // Marked item
-    &--marked {
+    &[data-md-marked] {
       color: $md-color-black--light;
     }
 

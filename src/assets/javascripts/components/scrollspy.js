@@ -24,22 +24,28 @@
  * Sidebar scroll-spy
  * ------------------------------------------------------------------------- */
 
+export default
 class ScrollSpy {
 
   /**
    * Constructor
    *
    * @constructor
-   * @param {(string|HTMLCollection)} el - Selector or HTML elements
+   * @param {(string|HTMLCollection)} els - Selector or HTML elements
    */
-  constructor(el) {
-    this.el_ = (typeof el === "string")
-      ? document.querySelectorAll(el)
-      : el
+  constructor(els) {
+    this.els_ = (typeof els === "string")
+      ? document.querySelectorAll(els)
+      : els
 
     /* Initialize index for currently active element */
-    this.index_  = 0
+    this.index_ = 0
     this.offset_ = window.pageYOffset
+
+    /* Index anchor nodes for fast lookup */
+    this.anchors_ = [].map.call(this.els_, el => {
+      return document.querySelector(el.hash)
+    })
 
     /* Event listener */
     this.handler_ = ev => {
@@ -48,7 +54,7 @@ class ScrollSpy {
   }
 
   /**
-   * Update state of sidebar and hash
+   * Update state of sidebar
    *
    * @param {Event} ev - Event (omitted)
    * @return {void}
@@ -57,11 +63,10 @@ class ScrollSpy {
 
     /* Scroll direction is down */
     if (this.offset_ <= window.pageYOffset) {
-      for (let i = this.index_ + 1; i < this.el_.length; i++) {
-        const anchor = document.querySelector(this.el_[i].hash)                 // TODO: improve performance by caching
-        if (anchor.offsetTop <= window.pageYOffset) {
+      for (let i = this.index_ + 1; i < this.els_.length; i++) {
+        if (this.anchors_[i].offsetTop <= window.pageYOffset) {
           if (i > 0)
-            this.el_[i - 1].classList.add("md-nav__link--marked")
+            this.els_[i - 1].dataset.mdMarked = true
           this.index_ = i
         } else {
           break
@@ -71,10 +76,9 @@ class ScrollSpy {
     /* Scroll direction is up */
     } else {
       for (let i = this.index_; i >= 0; i--) {
-        const anchor = document.querySelector(this.el_[i].hash)
-        if (anchor.offsetTop > window.pageYOffset) {
+        if (this.anchors_[i].offsetTop > window.pageYOffset) {
           if (i > 0)
-            this.el_[i - 1].classList.remove("md-nav__link--marked")
+            delete this.els_[i - 1].dataset.mdMarked
         } else {
           this.index_ = i
           break
@@ -92,8 +96,8 @@ class ScrollSpy {
    * @return {void}
    */
   reset() {
-    [].forEach.call(this.el_, el => {
-      el.classList.remove("md-nav__link--marked")
+    [].forEach.call(this.els_, el => {
+      delete el.dataset.mdMarked
     })
   }
 
@@ -125,9 +129,3 @@ class ScrollSpy {
     this.reset()
   }
 }
-
-/* ----------------------------------------------------------------------------
- * Exports
- * ------------------------------------------------------------------------- */
-
-export default ScrollSpy

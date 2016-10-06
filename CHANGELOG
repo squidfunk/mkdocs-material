@@ -15,6 +15,7 @@ mkdocs-material-1.0.0-rc.1 (2016-XX-XX)
   * Rewrite of JavaScript using ES6 and Babel as a transpiler
   * Rewrite of Admonition, Permalinks and Codehilite integration
   * Rewrite of the complete typographical system
+  * Rewrite of Gulp asset pipeline in ES6 and separate tasks
   * Removed Bower as a dependency in favor of npm
   * Removed custom icon build in favor of the Material Design iconset
   * Removed _blank targets on links due to vulnerability: http://bit.ly/1Mk2Rtw

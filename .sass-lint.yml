@@ -21,6 +21,7 @@
 files:
   ignore:
     - src/assets/stylesheets/_shame.scss
+    - src/assets/stylesheets/extensions/_codehilite.scss # Temporary disabled
 
 options:
   merge-default-rules: true

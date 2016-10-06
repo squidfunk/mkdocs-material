@@ -21,10 +21,10 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Sidebar
+// Rules
 // ----------------------------------------------------------------------------
 
-// Sidebar content
+// Sidebar container
 .md-sidebar {
   position: relative;
   width: 24.2rem;
@@ -32,7 +32,7 @@
   overflow: visible;
 
   // Lock sidebar to container height (account for fixed header)
-  &.md-js__sidebar--locked {
+  &[data-md-locked] {
     position: fixed;
     top: 5.6rem;
   }
@@ -87,7 +87,7 @@
       float: right;
 
       // Hack: align right in case of locked sidebar
-      &.md-js__sidebar--locked {
+      &[data-md-locked] {
         margin-left: 100%;
         transform: translate(-100%, 0);
 

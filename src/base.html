@@ -65,7 +65,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto+Mono:400" />
     <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
     <!-- Theme-related stylesheets -->
     <link rel="stylesheet" type="text/css"
@@ -105,7 +105,8 @@
 
           <!-- Main navigation -->
           {% if nav %}
-            <div class="md-sidebar md-sidebar--primary md-js__sidebar">
+            <div class="md-sidebar md-sidebar--primary"
+                data-md-sidebar="primary">
               <div class="md-sidebar__scrollwrap">
                 <div class="md-sidebar__inner">
                   {% include "partials/nav.html" %}
@@ -116,7 +117,8 @@
 
           <!-- Table of contents -->
           {% if toc %}
-            <div class="md-sidebar md-sidebar--secondary md-js__sidebar">
+            <div class="md-sidebar md-sidebar--secondary"
+                data-md-sidebar="secondary">
               <div class="md-sidebar__scrollwrap">
                 <div class="md-sidebar__inner">
                   {% include "partials/toc.html" %}
@@ -169,11 +171,21 @@
     </div>
 
     <!-- Theme-related and custom javascripts -->
-    <script>
-      window.baseUrl = '{{ base_url }}';                                        // TODO: define in global scope and use IIFE
-      window.repoUrl = '{{ repo_url }}';
-    </script>
     <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+    <script>
+
+      /* Configuration for application */
+      var config = {
+        url: {
+          base: "{{ base_url }}",
+          repo: "{{ repo_url }}"
+        }
+      };
+
+      /* Initialize application */
+      var app = new Application(config);
+      app.initialize();
+    </script>
     {% for path in extra_javascript %}
       <script src="{{ path }}"></script>
     {% endfor %}

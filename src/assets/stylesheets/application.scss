@@ -29,7 +29,7 @@
 @import "material-shadows";
 
 // ----------------------------------------------------------------------------
-// Application
+// Local imports
 // ----------------------------------------------------------------------------
 
 @import "helpers/break";
@@ -37,8 +37,8 @@
 
 @import "config";
 
-@import "base/icons";
 @import "base/reset";
+@import "base/icons";
 @import "base/typeset";
 
 @import "layout/base";

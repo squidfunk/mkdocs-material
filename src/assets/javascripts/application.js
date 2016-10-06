@@ -28,14 +28,30 @@ import FastClick from "fastclick"
 import lunr from "lunr"
 
 // import Expander from "./components/expander"
-import Sidebar from "./components/sidebar"
-import ScrollSpy from "./components/scrollspy"
+
+import Material from "./components/Material"
 
 // import Search from './components/search';
 
 /* ----------------------------------------------------------------------------
  * Application
  * ------------------------------------------------------------------------- */
+
+class Application {
+
+  /**
+   * @return {void}
+   */
+  initialize() {
+    const material = new Material()
+    material.initialize()
+  }
+}
+
+export default Application
+
+// TODO: wrap in function call
+// application module export
 
 /* Initialize application upon DOM ready */
 document.addEventListener("DOMContentLoaded", () => {
@@ -52,27 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Attack FastClick to mitigate 300ms delay on touch devices */
   FastClick.attach(document.body)
-
-  const width = window.matchMedia("(min-width: 1200px)")
-
-  const sidebar = new Sidebar(".md-sidebar--primary")
-  const handler = function() {
-    if (width.matches) {
-      sidebar.listen()
-    } else {
-      sidebar.unlisten()
-    }
-  }
-  handler() // check listen!
-
-  const toc = new Sidebar(".md-sidebar--secondary")
-  toc.listen()
-
-  const spy =
-    new ScrollSpy(".md-sidebar--secondary .md-nav--secondary .md-nav__link")
-  spy.listen()
-
-  window.addEventListener("resize", handler)
 
   const query = document.getElementById("query")
   query.addEventListener("focus", () => {
@@ -230,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
           /* Create index */
       const index = lunr(() => {
         /* eslint-disable no-invalid-this, lines-around-comment */
-        this.field("title", {boost: 10})
+        this.field("title", { boost: 10 })
         this.field("text")
         this.ref("location")
         /* eslint-enable no-invalid-this, lines-around-comment */

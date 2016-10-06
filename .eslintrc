@@ -1,8 +1,27 @@
 {
   "extends": "eslint:recommended",
   "ecmaFeatures": {
+    "arrowFunctions": true,
+    "binaryLiterals": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": true,
+    "generators": true,
     "globalReturn": true,
-    "modules": true
+    "modules": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralDuplicateProperties": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "octalLiterals": true,
+    "regexUFlag": true,
+    "regexYFlag": true,
+    "spread": true,
+    "superInFunctions": false,
+    "templateStrings": true,
+    "unicodeCodePointEscapes": true
   },
   "env": {
     "browser": true,
@@ -10,10 +29,10 @@
     "node": true
   },
   "globals": {
-    "describe": true,
     "before": true,
-    "it": true,
+    "describe": true,
     "expect": true,
+    "it": true,
     "Modernizr": true,
     "navigator": true
   },
@@ -34,7 +53,7 @@
     "block-spacing": 2,
     "brace-style": 2,
     "camelcase": [2, {
-      "properties": "always",
+      "properties": "always"
     }],
     "comma-dangle": [2, "never"],
     "comma-style": [2, "last"],
@@ -71,13 +90,12 @@
     "lines-around-comment": 2,
     "lines-around-directive": 2,
     "max-depth": 2,
-    "max-len": [2, {
+    "max-len": [1, {
       "ignorePattern": "\/\/ TODO"
     }],
     "max-nested-callbacks": 2,
     "max-params": 2,
     "max-statements-per-line": 2,
-    "multiline-ternary": 2,
     "new-cap": 2,
     "newline-per-chained-call": 2,
     "no-array-constructor": 2,
@@ -86,6 +104,7 @@
     "no-confusing-arrow": [2, {
       "allowParens": false
     }],
+    "no-console": 1,
     "no-duplicate-imports": 2,
     "no-eq-null": 2,
     "no-eval": 2,
@@ -97,7 +116,7 @@
     "no-labels": 2,
     "no-lone-blocks": 2,
     "no-loop-func": 2,
-    "no-multiple-empty-lines": [2, {
+    "no-multiple-empty-lines": [1, {
       "max": 1
     }],
     "no-nested-ternary": 2,
@@ -118,6 +137,7 @@
     "no-unneeded-ternary": 2,
     "no-unsafe-negation": 2,
     "no-unused-expressions": 2,
+    "no-unused-vars": 1,
     "no-use-before-define": 2,
     "no-useless-call": 2,
     "no-useless-computed-key": 2,
@@ -126,8 +146,7 @@
     "no-var": 2,
     "no-whitespace-before-property": 2,
     "no-with": 2,
-    "object-curly-newline": 2,
-    "object-curly-spacing": 2,
+    "object-curly-spacing": [2, "always"],
     "object-property-newline": 2,
     "object-shorthand": 2,
     "one-var-declaration-per-line": 2,
@@ -139,7 +158,7 @@
     "prefer-template": 2,
     "quotes": [2, "double"],
     "radix": 2,
-    "require-jsdoc": [2, {
+    "require-jsdoc": [1, {
       "require": {
         "FunctionDeclaration": true,
         "MethodDefinition": true,
@@ -167,7 +186,7 @@
     "strict": 2,
     "template-curly-spacing": 2,
     "unicode-bom": 2,
-    "valid-jsdoc": [2, {
+    "valid-jsdoc": [1, {
       "prefer": {
         "arg": "param",
         "argument": "param",

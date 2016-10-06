@@ -22,8 +22,8 @@ language: node_js
 
 # Node.js versions
 node_js:
-  - '4.1'
-  - '0.11'
+  - 4.5.0
+  - 6.7.0
 
 # Install dependencies
 before_script:
