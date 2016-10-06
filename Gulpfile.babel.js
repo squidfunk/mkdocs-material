@@ -90,7 +90,7 @@ gulp.src = (...glob) => {
  * Helper function to load a task
  */
 const load = task => {
-  return require(`./tasks/${task}.js`)(gulp, config, args)
+  return require(`./tasks/${task}`)(gulp, config, args)
 }
 
 /* ----------------------------------------------------------------------------
@@ -216,6 +216,14 @@ gulp.task("assets:clean", [
   "assets:images:clean",
   "assets:javascripts:clean",
   "assets:stylesheets:clean"
+])
+
+/*
+ * Lint sources
+ */
+gulp.task("assets:lint", [
+  "assets:javascripts:lint",
+  "assets:stylesheets:lint"
 ])
 
 /* ----------------------------------------------------------------------------

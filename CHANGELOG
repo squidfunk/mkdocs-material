@@ -11,6 +11,7 @@ mkdocs-material-1.0.0-rc.1 (2016-XX-XX)
   * Introduced ESLint and SassLint for code style checks
   * Introduced more accurate Material Design colors and shadows
   * Introduced modular scales for harmonic font sizing
+  * Introduced pre-commit hook for linting
   * Rewrite of CSS using the BEM methodology and SassDoc guidelines
   * Rewrite of JavaScript using ES6 and Babel as a transpiler
   * Rewrite of Admonition, Permalinks and Codehilite integration
