@@ -11,13 +11,13 @@ mkdocs-material-1.0.0-rc.1 (2016-XX-XX)
   * Introduced ESLint and SassLint for code style checks
   * Introduced more accurate Material Design colors and shadows
   * Introduced modular scales for harmonic font sizing
-  * Introduced pre-commit hook for linting
+  * Introduced git-hooks for better development workflow
   * Rewrite of CSS using the BEM methodology and SassDoc guidelines
   * Rewrite of JavaScript using ES6 and Babel as a transpiler
   * Rewrite of Admonition, Permalinks and Codehilite integration
   * Rewrite of the complete typographical system
   * Rewrite of Gulp asset pipeline in ES6 and separation of tasks
-  * Removed Bower as a dependency in favor of npm
+  * Removed Bower as a dependency in favor of NPM
   * Removed custom icon build in favor of the Material Design iconset
   * Removed _blank targets on links due to vulnerability: http://bit.ly/1Mk2Rtw
   * Removed unversioned assets from build directory
@@ -88,7 +88,7 @@ mkdocs-material-0.1.2 (2016-02-16)
 mkdocs-material-0.1.1 (2016-02-11)
 
   * Fixed #1: GitHub stars don't work if the repo_url ends with a '/'
-  * Updated npm and bower dependencies to most recent versions
+  * Updated NPM and Bower dependencies to most recent versions
   * Changed footer/copyright link to Material theme to GitHub pages
   * Made MkDocs building/serving in build process optional
   * Set up continuous integration with travis-ci.org
