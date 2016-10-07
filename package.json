@@ -2,24 +2,33 @@
   "name": "mkdocs-material",
   "version": "0.2.1",
   "description": "A material design theme for MkDocs",
-  "homepage": "http://squidfunk.github.io/mkdocs-material/",
-  "authors": [
-    "squidfunk <martin.donath@squidfunk.com>"
+  "keywords": [
+    "mkdocs",
+    "documentation",
+    "theme"
   ],
-  "license": "MIT",
-  "main": "Gulpfile.js",
-  "scripts": {
-    "build": "./node_modules/.bin/gulp build --clean",
-    "clean": "./node_modules/.bin/gulp clean",
-    "pre-commit": "./node_modules/.bin/gulp assets:lint",
-    "start": "./node_modules/.bin/gulp watch --mkdocs --no-lint --no-revision",
-    "test": "./node_modules/.bin/karma start ./tests/karma.conf.js"
+  "homepage": "http://squidfunk.github.io/mkdocs-material/",
+  "bugs": {
+    "url" : "https://github.com/squidfunk/mkdocs-material/issues",
+    "email" : "martin.donath@squidfunk.com"
   },
+  "license": "MIT",
+  "author": {
+    "name": "Martin Donath",
+    "email": "martin.donath@squidfunk.com"
+  },
+  "contributors": [],
   "repository": {
     "type": "git",
     "url": "https://github.com/squidfunk/mkdocs-material.git"
   },
-  "private": true,
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build --clean --optimize --revision",
+    "clean": "./node_modules/.bin/gulp clean",
+    "pre-commit": "./node_modules/.bin/gulp assets:lint",
+    "start": "./node_modules/.bin/gulp watch --no-lint",
+    "test": "./node_modules/.bin/gulp test"
+  },
   "dependencies": {
     "fastclick": "^1.0.6",
     "lunr": "^0.7.1",
@@ -42,6 +51,7 @@
     "del": "^2.2.0",
     "eslint": "^3.6.1",
     "eslint-plugin-mocha": "^4.6.0",
+    "gemini": "^4.11.3",
     "git-hooks": "^1.1.6",
     "gulp": "^3.9.1",
     "gulp-changed": "^1.3.2",
@@ -73,10 +83,15 @@
     "mocha": "^3.1.0",
     "node-notifier": "^4.5.0",
     "sass-lint": "^1.9.1",
+    "selenium-standalone": "^5.7.2",
     "through2": "^2.0.1",
     "vinyl-paths": "^2.1.0",
     "webpack": "^1.13.1",
     "webpack-stream": "^3.2.0",
     "yargs": "^3.32.0"
-  }
+  },
+  "engines": {
+    "node": ">=4.5.0"
+  },
+  "private": true
 }
