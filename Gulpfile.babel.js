@@ -43,6 +43,7 @@ const config = {
 
 const args = yargs
   .default("clean",      false)        /* Clean before build */
+  .default("karma",      false)        /* Karma watchdog */
   .default("lint",       true)         /* Lint sources */
   .default("mkdocs",     false)        /* MkDocs watchdog */
   .default("optimize",   true)         /* Optimize sources */
@@ -273,6 +274,16 @@ gulp.task("mkdocs:serve",
   load("mkdocs/serve"))
 
 /* ----------------------------------------------------------------------------
+ * Tests
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Start karma test runner
+ */
+gulp.task("tests:unit:watch",
+  load("tests/unit/watch"))
+
+/* ----------------------------------------------------------------------------
  * Interface
  * ------------------------------------------------------------------------- */
 
@@ -306,8 +317,14 @@ gulp.task("watch", [
   "assets:build",
   "views:build"
 ], () => {
+
+  /* Start MkDocs server */
   if (args.mkdocs)
     gulp.start("mkdocs:serve")
+
+  /* Start karma test runner */
+  if (args.karma)
+    gulp.start("tests:unit:watch")
 
   /* Rebuild stylesheets */
   gulp.watch([

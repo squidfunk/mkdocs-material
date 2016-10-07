@@ -1,0 +1,9 @@
+{
+  "presets": ["es2015"],
+  "plugins": [
+    "add-module-exports",
+    ["transform-react-jsx", {
+      "pragma": "createElement"
+    }]
+  ]
+}

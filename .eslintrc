@@ -29,10 +29,6 @@
     "node": true
   },
   "globals": {
-    "before": true,
-    "describe": true,
-    "expect": true,
-    "it": true,
     "Modernizr": true,
     "navigator": true
   },
@@ -198,5 +194,6 @@
       "requireReturnDescription": true
     }],
     "yield-star-spacing": 2
-  }
+  },
+  "root": true
 }

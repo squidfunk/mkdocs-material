@@ -123,7 +123,7 @@ $break-devices: () !default;
 ///
 /// @group  helpers
 /// @access public
-/// @param {Number|List} $breakpoint Number or number pair
+/// @param  {Number|List} $breakpoint Number or number pair
 ///
 @mixin break-at($breakpoint) {
   @if type-of($breakpoint) == number {
@@ -150,7 +150,7 @@ $break-devices: () !default;
 ///
 /// @group  helpers
 /// @access public
-/// @param {String} $breakpoint Orientation
+/// @param  {String} $breakpoint Orientation
 ///
 @mixin break-at-orientation($breakpoint) {
   @if type-of($breakpoint) == string {
@@ -167,7 +167,7 @@ $break-devices: () !default;
 ///
 /// @group  helpers
 /// @access public
-/// @param {Number} $breakpoint Ratio
+/// @param  {Number} $breakpoint Ratio
 ///
 @mixin break-at-ratio($breakpoint) {
   @if type-of($breakpoint) == number {
@@ -184,7 +184,7 @@ $break-devices: () !default;
 ///
 /// @group  helpers
 /// @access public
-/// @param {String|List} $breakpoint Device
+/// @param  {String|List} $breakpoint Device
 ///
 @mixin break-at-device($device) {
   @if type-of($device) == string {
@@ -211,7 +211,7 @@ $break-devices: () !default;
 ///
 /// @group  helpers
 /// @access public
-/// @param {String|List} $breakpoint Device
+/// @param  {String|List} $breakpoint Device
 ///
 @mixin break-from-device($device) {
   @if type-of($device) == string {
@@ -233,7 +233,7 @@ $break-devices: () !default;
 ///
 /// @group  helpers
 /// @access public
-/// @param {String|List} $breakpoint Device
+/// @param  {String|List} $breakpoint Device
 ///
 @mixin break-to-device($device) {
   @if type-of($device) == string {

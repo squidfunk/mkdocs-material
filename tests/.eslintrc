@@ -1,0 +1,23 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "mocha"
+  ],
+  "rules": {
+    "mocha/no-exclusive-tests": 2,
+    "mocha/no-global-tests": 2,
+    "mocha/no-identical-title": 2,
+    "mocha/no-mocha-arrows": 2,
+    "mocha/no-pending-tests": 1,
+    "mocha/no-skipped-tests": 1,
+    "no-use-before-define": 0,
+    "prefer-arrow-callback": 0
+  }
+}
