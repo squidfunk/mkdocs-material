@@ -1,6 +1,9 @@
 {
   "presets": ["es2015"],
   "plugins": [
-    "add-module-exports"
+    "add-module-exports",
+    ["transform-react-jsx", {
+      "pragma": "JSX.createElement"
+    }]
   ]
 }

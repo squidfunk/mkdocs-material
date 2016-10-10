@@ -35,6 +35,7 @@ const config = {
     src: "src/assets",                 /* Source directory for assets */
     build: "material/assets"           /* Target directory for assets */
   },
+  lib: "lib",                          /* Libraries */
   views: {
     src: "src",                        /* Source directory for views */
     build: "material"                  /* Target directory for views */
@@ -43,11 +44,11 @@ const config = {
 
 const args = yargs
   .default("clean",      false)        /* Clean before build */
-  .default("karma",      false)        /* Karma watchdog */
+  .default("karma",      true)         /* Karma watchdog */
   .default("lint",       true)         /* Lint sources */
-  .default("mkdocs",     false)        /* MkDocs watchdog */
-  .default("optimize",   true)         /* Optimize sources */
-  .default("revision",   true)         /* Revision assets */
+  .default("mkdocs",     true)         /* MkDocs watchdog */
+  .default("optimize",   false)        /* Optimize sources */
+  .default("revision",   false)        /* Revision assets */
   .default("sourcemaps", false)        /* Create sourcemaps */
   .argv
 
@@ -91,7 +92,7 @@ gulp.src = (...glob) => {
  * Helper function to load a task
  */
 const load = task => {
-  return require(`./tasks/${task}`)(gulp, config, args)
+  return require(`./${config.lib}/tasks/${task}`)(gulp, config, args)
 }
 
 /* ----------------------------------------------------------------------------
@@ -219,14 +220,6 @@ gulp.task("assets:clean", [
   "assets:stylesheets:clean"
 ])
 
-/*
- * Lint sources
- */
-gulp.task("assets:lint", [
-  "assets:javascripts:lint",
-  "assets:stylesheets:lint"
-])
-
 /* ----------------------------------------------------------------------------
  * Views
  * ------------------------------------------------------------------------- */
@@ -317,6 +310,7 @@ gulp.task("watch", [
   "assets:build",
   "views:build"
 ], () => {
+  process.env.WATCH = true
 
   /* Start MkDocs server */
   if (args.mkdocs)

@@ -20,6 +20,7 @@
 
 files:
   ignore:
+    - node_modules/**
     - src/assets/stylesheets/_shame.scss
     - src/assets/stylesheets/extensions/_codehilite.scss # Temporary disabled
 

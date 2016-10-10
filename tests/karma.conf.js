@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+const path = require("path")
 const webpack = require("webpack")
 
 /* ----------------------------------------------------------------------------
@@ -34,7 +35,7 @@ module.exports = karma => {
     /* Include babel polyfill to support older browsers */
     files: [
       "node_modules/babel-polyfill/dist/polyfill.js",
-      "tests/unit/*.spec.jsx"
+      "tests/unit/*.spec.+(js|jsx)"
     ],
 
     /* Test reporters */
@@ -47,27 +48,47 @@ module.exports = karma => {
 
     /* Preprocess test files */
     preprocessors: {
-      "tests/unit/*.spec.jsx": ["webpack", "sourcemap"]
+      "tests/unit/*.spec.+(js|jsx)": ["webpack", "sourcemap"]
     },
 
     /* Configuration for webpack */
     webpack: {
-      devtool: "inline-source-map",
-      plugins: [
-
-        /* Inject DOM node creation helper for JSX support */
-        new webpack.ProvidePlugin({
-          createElement: "./_lib/create-element.js"
-        })
-      ],
       module: {
+
+        /* Transpile ES6 to ES5 with Babel */
         loaders: [
           {
-            test: /\.jsx?$/,
-            loader: "babel-loader"
+            loader: "babel-loader",
+            test: /\.jsx?$/
           }
         ]
-      }
+      },
+      plugins: [
+
+        /* Don't emit assets that include errors */
+        new webpack.NoErrorsPlugin(),
+
+        /* Provide JSX helper */
+        new webpack.ProvidePlugin({
+          JSX: path.join(process.cwd(), "lib/providers/jsx.js")
+        })
+      ],
+
+      /* Module resolver */
+      resolve: {
+        modulesDirectories: [
+          "src/assets/javascripts",
+          "node_modules"
+        ],
+        extensions: [
+          "",
+          ".js",
+          ".jsx"
+        ]
+      },
+
+      /* Sourcemap support */
+      devtool: "inline-source-map"
     },
 
     /* Suppress messages by webpack */
@@ -85,12 +106,13 @@ module.exports = karma => {
   }
 
   /* Setup for continuous integration */
-  if (process.env.CONTINUOUS_INTEGRATION) {
+  if (process.env.CI) {
     // TODO TBD
 
   /* Setup for local development environment */
-  } else if (process.env.GULP) {
+  } else if (process.env.WATCH) {
     delete config.reporters
+    delete config.client.captureConsole
 
   /* Setup for local testing */
   } else {
