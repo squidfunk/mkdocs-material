@@ -5,6 +5,13 @@
 
 A material design theme for [MkDocs](http://www.mkdocs.org).
 
+**Note: the theme is currently undergoing a complete rewrite for 1.0.0 which should be
+released shortly.**
+
+* To get a glimpse, checkout the 
+[rework](https://github.com/squidfunk/mkdocs-material/tree/rework) branch
+* To give feedback on the rework version, please see issues [#46](https://github.com/squidfunk/mkdocs-material/issues/46)
+
 [![iOS](docs/images/screen.png)](http://squidfunk.github.io/mkdocs-material/)
 
 ## Quick start
@@ -48,7 +55,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 
-[travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg
+[travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
 [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
 [pypi-v-image]: https://img.shields.io/pypi/v/mkdocs-material.png
 [pypi-v-link]: https://pypi.python.org/pypi/mkdocs-material

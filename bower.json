@@ -20,7 +20,7 @@
     "classlist": "^2014.12.13",
     "fastclick": "^1.0.6",
     "lunr.js": "^0.6.0",
-    "pegasus": "^0.3.2",
+    "pegasus": "0.3.3",
     "respond": "^1.4.2"
   },
   "devDependencies": {

@@ -38,6 +38,8 @@ theme_dir: material
 extra:
   version: 0.2.4
   logo: images/logo.png
+  github:
+    download_release: true
   author:
     github: squidfunk
     twitter: squidfunk
