@@ -33,11 +33,7 @@ so most things can be tweaked by changing a few variables.
 ### Setup
 
 In order to compile the project, you need `node` with a version greater than
-`0.11` up and running. Then, make sure `bower` is installed or install it:
-
-``` sh
-npm install -g bower
-```
+`0.11` up and running.
 
 The project itself is hosted on GitHub, so the next
 thing you should do is clone the project from GitHub:
@@ -51,7 +47,7 @@ Then you change the directory and install all dependencies specified in the
 
 ``` sh
 cd mkdocs-material
-npm install && bower install
+npm install
 ```
 
 ### Development
