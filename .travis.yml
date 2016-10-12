@@ -19,11 +19,21 @@
 # IN THE SOFTWARE.
 
 language: node_js
+sudo: false
 
 # Node.js versions
 node_js:
   - 4.5.0
   - 6.7.0
+
+# Update GCC to 4.8 to build Gemini
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.8
+      - g++-4.8
 
 # Install dependencies
 before_script:
