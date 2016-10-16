@@ -1,13 +1,14 @@
-{% if "github." in repo_url %}
-  {% set platform = "md-source--github" %}
-{% elif "gitlab." in repo_url %}
-  {% set platform = "md-source--gitlab" %}
-{% elif "bitbucket." in repo_url %}
-  {% set platform = "md-source--bitbucket" %}
+{% set platform = config.extra.repo_icon or repo_url %}
+{% if "github" in platform %}
+  {% set repo_icon = "md-source--github" %}
+{% elif "gitlab" in platform %}
+  {% set repo_icon = "md-source--gitlab" %}
+{% elif "bitbucket" in platform %}
+  {% set repo_icon = "md-source--bitbucket" %}
 {% else %}
-  {% set platform = "" %}
+  {% set repo_icon = "" %}
 {% endif %}
-<a href="{{ repo_url }}" title="Go to repository" class="md-source {{ platform }}">
+<a href="{{ repo_url }}" title="Go to repository" class="md-source {{ repo_icon }}">
   <div class="md-source__repository">
     {{ repo_name }}
     <ul class="md-source__facts">

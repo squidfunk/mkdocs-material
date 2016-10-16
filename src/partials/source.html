@@ -24,19 +24,20 @@
   Check whether the repository is hosted on one of the supported code hosting
   platforms (Github, Gitlab or Bitbucket) to show icon.
 -->
-{% if "github." in repo_url %}
-  {% set platform = "md-source--github" %}
-{% elif "gitlab." in repo_url %}
-  {% set platform = "md-source--gitlab" %}
-{% elif "bitbucket." in repo_url %}
-  {% set platform = "md-source--bitbucket" %}
+{% set platform = config.extra.repo_icon or repo_url %}
+{% if "github" in platform %}
+  {% set repo_icon = "md-source--github" %}
+{% elif "gitlab" in platform %}
+  {% set repo_icon = "md-source--gitlab" %}
+{% elif "bitbucket" in platform %}
+  {% set repo_icon = "md-source--bitbucket" %}
 {% else %}
-  {% set platform = "" %}
+  {% set repo_icon = "" %}
 {% endif %}
 
 <!-- Repository containing source -->
 <a href="{{ repo_url }}" title="Go to repository"
-    class="md-source {{ platform }}">
+    class="md-source {{ repo_icon }}">
   <div class="md-source__repository">
     {{ repo_name }}
     <ul class="md-source__facts">
