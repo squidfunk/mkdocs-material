@@ -6,7 +6,9 @@
       {% include "partials/nav-item.html" %}
     {% endfor %}
   </ul>
-  <div class="md-nav__source">
-    {% include "partials/source.html" %}
-  </div>
+  {% if repo_url %}
+    <div class="md-nav__source">
+      {% include "partials/source.html" %}
+    </div>
+  {% endif %}
 </nav>
