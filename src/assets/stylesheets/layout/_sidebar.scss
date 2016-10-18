@@ -37,6 +37,12 @@
     top: 5.6rem;
   }
 
+  // Omit repaint of whole page by promoting primary sidebar - not the
+  // secondary sidebar, because then the thick line becomes jittery
+  &--primary {
+    backface-visibility: hidden;
+  }
+
   // [tablet -]: Convert navigation to drawer
   @include break-to-device(tablet) {
 
