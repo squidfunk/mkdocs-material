@@ -284,15 +284,11 @@ gulp.task("tests:unit:watch",
  * Build assets and documentation
  */
 gulp.task("build", [
-  "clean"
-], () => {
-  return gulp.start([
-    "assets:build",
-    "views:build"
-  ].concat(args.mkdocs
-    ? "mkdocs:build"
-    : []))
-})
+  "assets:build",
+  "views:build"
+].concat(args.mkdocs
+  ? "mkdocs:build"
+  : []))
 
 /*
  * Clean assets and documentation
