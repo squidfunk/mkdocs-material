@@ -132,7 +132,7 @@ kbd {
   // Horizontal separators
   hr {
     margin: 2.4rem 0;
-    border-bottom: px2rem(1px) dotted $md-color-black--lighter;
+    border-bottom: 0.1rem dotted $md-color-black--lighter;
   }
 
   // Links
@@ -223,14 +223,14 @@ kbd {
   kbd {
     display: inline-block;
     padding: 0.4rem 0.5rem 0.5rem;
-    border: px2rem(1px) solid darken($md-keyboard-background, 20%);
-    border-radius: px2rem(3px);
+    border: 0.1rem solid darken($md-keyboard-background, 20%);
+    border-radius: 0.2rem;
     border-bottom-color: darken($md-keyboard-background, 25%);
     background-color: $md-keyboard-background;
     color: $md-keyboard-color;
     font-size: 85%;
     line-height: 1.0rem;
-    box-shadow: 0 #{-(px2rem(1px))} 0
+    box-shadow: 0 -0.1rem 0
       darken($md-keyboard-background, 30%) inset;
     vertical-align: 0.1rem;
     word-break: break-word;
@@ -250,7 +250,7 @@ kbd {
   // Blockquotes, possibly nested
   blockquote {
     padding-left: 1.2rem;
-    border-left: px2rem(4px) solid $md-color-black--lighter;
+    border-left: 0.4rem solid $md-color-black--lighter;
     color: $md-color-black--light;
   }
 

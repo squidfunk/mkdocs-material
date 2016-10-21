@@ -48,7 +48,7 @@
     max-height: 0vh; // TODO: can this be done in percent!?!?!?
     opacity: 0;
     transition: opacity .4s, max-height .4s;
-    .md-js__search--locked & {
+    [data-md-locked] & {
       max-height: 75vh;
       opacity: 1;
     }
@@ -56,9 +56,9 @@
     position: absolute; // must be absolute, or header nav will stretch
     background: $md-color-white;
     // color: red;
-    border-top: px2rem(1px) solid $md-color-black--lightest; // TODO: box-shadow inset!
+    border-top: 0.1rem solid $md-color-black--lightest; // TODO: box-shadow inset!
     text-align: left;                                        // TODO: wrap with another div for this effect
-    border-radius: 0 0 px2rem(3px) px2rem(3px);
+    border-radius: 0 0 0.3rem 0.3rem;
     z-index: -1;
 
     // Override native scrollbar styles
@@ -108,13 +108,13 @@
       margin: 0;
       padding: 0;
       list-style-type: none;
-      border-top: px2rem(1px) solid $md-color-black--lightest;
+      border-top: 0.1rem solid $md-color-black--lightest;
     }
 
     &__item {
       // background: yellow;
 
-      // border-top: px2rem(1px) solid $md-color-black--lightest;
+      // border-top: 0.1rem solid $md-color-black--lightest;
     }
 
 
@@ -161,10 +161,10 @@
 //
 //
 //   background: $md-color-white;
-//   border-radius: 0 0 px2rem(3px) px2rem(3px);
+//   border-radius: 0 0 0.3rem 0.3rem;
 //   color: #000000;
 //   text-align: left;
-//   border-top: px2rem(1px) solid $md-color-black--lightest;
+//   border-top: 0.1rem solid $md-color-black--lightest;
 //   display: none; // TODO: doesnt work due to display: none;
 //   opacity: 0;
 //
@@ -181,7 +181,7 @@
 // }
 
 .md-search__input:focus {
-  border-radius: px2rem(3px) px2rem(3px) 0 0;
+  border-radius: 0.3rem 0.3rem 0 0;
 }
 
 @include break-to-device(mobile landscape) {
@@ -399,3 +399,5 @@ mark {
 .md-search__output {
   overflow-y: auto; // necessary for rounded borders
 }
+
+// TODO: integrate stylelint and property order!

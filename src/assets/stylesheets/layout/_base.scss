@@ -47,7 +47,7 @@ body {
   min-height: 100%;
 
   // Lock body to viewport height (e.g. in search mode)
-  &.md-js__body--locked {
+  &[data-md-locked] {
     height: 100%;
     overflow: hidden;
   }
@@ -56,7 +56,7 @@ body {
 // Horizontal separators
 hr {
   display: block;
-  height: px2rem(1px);
+  height: 0.1rem;
   padding: 0;
   border: 0;
 }

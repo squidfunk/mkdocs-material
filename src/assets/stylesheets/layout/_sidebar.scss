@@ -37,8 +37,8 @@
     top: 5.6rem;
   }
 
-  // Omit repaint of whole page by promoting primary sidebar - not the
-  // secondary sidebar, because then the thick line becomes jittery
+  // Omit repaint of whole page by promoting primary sidebar to a separate
+  // layer, but not the secondary sidebar to omit jittering
   &--primary {
     backface-visibility: hidden;
   }
@@ -151,7 +151,7 @@
 
     // [screen +]: Add line for reference
     @include break-from-device(screen) {
-      border-right: px2rem(1px) solid $md-color-black--lightest;
+      border-right: 0.1rem solid $md-color-black--lightest;
     }
   }
 }

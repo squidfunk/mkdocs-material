@@ -74,7 +74,7 @@
   // Search form
   &__form {
     position: relative;
-    border-radius: px2rem(2px);
+    border-radius: 0.2rem;
     text-align: right;
 
     // [mobile -]: Add drop-shadow on mobile
@@ -88,7 +88,7 @@
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1.0);
 
       // Active search field
-      .md-js__search--locked & {
+      [data-md-locked] & {
         width: 66.8rem;
       }
     }
@@ -117,7 +117,7 @@
   // Search field
   &__input {
     padding: 0 1.6rem 0 6.4rem;
-    border-radius: px2rem(2px);
+    border-radius: 0.2rem;
     text-overflow: ellipsis;
 
     // Placeholder and icon color in active state
@@ -157,8 +157,8 @@
       }
 
       // Active search field
-      .md-js__search--locked & {
-        border-radius: px2rem(3px) px2rem(3px) 0 0;
+      [data-md-locked] & {
+        border-radius: 0.3rem 0.3rem 0 0;
         background: $md-color-white;
         color: $md-color-black;
         text-overflow: none;

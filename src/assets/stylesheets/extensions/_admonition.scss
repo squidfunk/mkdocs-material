@@ -26,27 +26,11 @@
 
 // Admonition extension
 .admonition {
-  position: relative;
   margin: 2.0rem 0;
-  padding: 0.8rem 1.6rem;
-  border-left: px2rem(32px) solid $clr-blue-a200;
-  border-radius: px2rem(2px);
+  padding: 0.8rem 1.2rem;
+  border-left: 0.4rem solid $clr-blue-a200;
+  border-radius: 0 0.2rem 0.2rem 0;
   background: transparentize($clr-blue-a200, 0.95);
-
-  // Icon
-  &::before {
-    display: block;
-    position: absolute;     // TODO: inherit icon!
-    top: 0.2rem;
-    left: -2.6rem;
-    float: left;
-    color: $md-color-white;
-    font-family: "Material Icons";
-    font-size: 2.0rem;
-    font-weight: normal;
-    content: "edit";
-    vertical-align: -0.1em;
-  }
 
   // Title
   &-title {
@@ -56,14 +40,24 @@
     line-height: 2;
     text-transform: uppercase;
 
-    // Ensure smaller spacing to next element
+    // Remove bottom spacing for title
     html & {
-      margin-bottom: 1.6rem;
+      margin-bottom: 0;
     }
 
-    // Ensure smaller spacing to next element
+    // Remove top spacing for first element following title
     html & + * {
-      margin-top: 1.6rem;
+      margin-top: 0;
+    }
+
+    // Icon
+    &::before {
+      @extend %md-icon;
+
+      margin-right: 0.45em;
+      font-size: 2.0rem;
+      content: "edit";
+      vertical-align: -0.25em;
     }
   }
 
@@ -82,9 +76,9 @@
     summary tldr: $clr-light-blue-a400 "subject",
     tip idea: $clr-teal-a700 "whatshot",
     success check done: $clr-green-a400 "done",
-    warning warn: $clr-orange-a400 "warning",
+    warning attention important: $clr-orange-a400 "warning",
     failure fail missing: $clr-red-a200 "clear",
-    danger fatal: $clr-red-a400 "flash_on",
+    danger caution: $clr-red-a400 "flash_on",
     error bug: $clr-pink-a400 "bug_report"
   ) {
     $tint: nth($appearance, 1);
@@ -96,14 +90,14 @@
       border-color: $tint;
       background: transparentize($tint, 0.95);
 
-      // Icon
-      &::before {
-        content: $icon;
-      }
-
       // Set color for title
       .admonition-title {
         color: $tint;
+
+        // Icon
+        &::before {
+          content: $icon;
+        }
       }
     }
 
