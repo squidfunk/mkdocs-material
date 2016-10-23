@@ -1507,7 +1507,7 @@ mark {
     transition: transform 0.3s 0.1s, opacity   0.2s 0.2s;
     transition: transform 0.3s 0.1s, opacity   0.2s 0.2s, -webkit-transform 0.3s 0.1s;
     border-radius: 2.0rem;
-    background: #EEEEEE;
+    background: white;
     opacity: 0;
     overflow: hidden;
     z-index: 1; }
@@ -1574,3 +1574,5 @@ mark {
   @media only screen and (min-width: 60em) and (min-width: 75em){
   .md-sidebar--secondary[data-md-locked]{
     margin-left: 120.0rem; } }
+
+/*# sourceMappingURL=application.css.map */
