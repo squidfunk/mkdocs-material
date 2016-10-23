@@ -48,7 +48,7 @@
     // Make back references visible on hover
     &:hover  .footnote-backref,
     &:target .footnote-backref {
-      transform: translate3d(0, 0, 0);
+      transform: translateX(0);
       opacity: 1;
     }
 
@@ -73,7 +73,7 @@
     @extend %md-icon;
 
     position: absolute;
-    transform: translate3d(0.5rem, 0, 0);
+    transform: translateX(0.5rem);
     transition: transform 0.25s  0.125s,
                 color     0.25s,
                 opacity   0.125s 0.125s;

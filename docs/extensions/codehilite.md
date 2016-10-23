@@ -543,7 +543,7 @@ io.write("\n")
 
 ``` mysql
 SELECT
-  Employees.EmployeeID`,
+  Employees.EmployeeID,
   Employees.Name,
   Employees.Salary,
   Manager.Name AS Manager

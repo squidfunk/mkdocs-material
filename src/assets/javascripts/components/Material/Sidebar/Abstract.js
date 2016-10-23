@@ -24,8 +24,7 @@
  * Definition
  * ------------------------------------------------------------------------- */
 
-export default
-class Abstract {
+export default class Abstract {
 
   /**
    * Dispatch update on next repaint
@@ -33,8 +32,8 @@ class Abstract {
    * @constructor
    */
   constructor() {
-    // if (new.target === this.constructor)
-    //   throw new TypeError("Cannot construct abstract instance")
+    if (this === Abstract)
+      throw new TypeError("Cannot construct abstract instance")
 
     /* Dispatch update on next repaint */
     this.handler_ = ev => {
@@ -48,7 +47,6 @@ class Abstract {
    * Update state
    *
    * @abstract
-   * @return {void}
    */
   update() {
     throw new Error("update(): not implemented")
@@ -58,7 +56,6 @@ class Abstract {
    * Reset state
    *
    * @abstract
-   * @return {void}
    */
   reset() {
     throw new Error("reset(): not implemented")
@@ -66,8 +63,6 @@ class Abstract {
 
   /**
    * Register listener for all relevant events
-   *
-   * @return {void}
    */
   listen() {
     ["scroll", "resize", "orientationchange"].forEach(name => {
@@ -80,8 +75,6 @@ class Abstract {
 
   /**
    * Unregister listener for all relevant events
-   *
-   * @return {void}
    */
   unlisten() {
     ["scroll", "resize", "orientationchange"].forEach(name => {

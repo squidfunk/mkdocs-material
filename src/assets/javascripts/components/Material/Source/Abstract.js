@@ -21,76 +21,18 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Search
+ * Definition
  * ------------------------------------------------------------------------- */
 
-class Search {
+export default
+class Abstract {
 
   /**
-   * Constructor
+   * Dispatch update on next repaint
    *
    * @constructor
-   * @param {(string|HTMLElement)} el - Selector or HTML element
    */
-  constructor(el) {
-    this.el_ = (typeof el === "string") ? document.querySelector(el) : el
-
-    /* Event listener */
-    this.handler_ = ev => {
-      this.update(ev)
-    }
-  }
-
-  /**
-   * Update state and height of sidebar
-   *
-   * @param {Event} ev - Event
-   * @return {void}
-   */
-  update() {
-
-  }
-
-  /**
-   * Reset state and height of sidebar
-   *
-   * @return {void}
-   */
-  reset() {
-
-  }
-
-  /**
-   * Register listener for all relevant events
-   *
-   * @return {void}
-   */
-  listen() {
-    // ['scroll', 'resize', 'orientationchange'].forEach(name => {
-    //   window.addEventListener(name, this.handler_, false);
-    // });
-
-    /* Initial update */
-    this.update()
-  }
-
-  /**
-   * Unregister listener for all relevant events
-   *
-   * @return {void}
-   */
-  unlisten() {
-    // ['scroll', 'resize', 'orientationchange'].forEach(name => {
-    //   window.removeEventListener(name, this.handler_, false);
-    // });
-
-    /* Perform reset */
-    this.reset()
-  }
+  // constructor() {
+  //
+  // }
 }
-
-/* ----------------------------------------------------------------------------
- * Exports
- * ------------------------------------------------------------------------- */
-
-export default Search

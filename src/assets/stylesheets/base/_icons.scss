@@ -58,8 +58,7 @@
   // Build representational classes
   @each $ligature, $name in (
     "arrow_back": "back",
-    "arrow_forward": "forward",
-    "close": "close"
+    "arrow_forward": "forward"
   ) {
     &--#{$name}::before {
       content: $ligature;

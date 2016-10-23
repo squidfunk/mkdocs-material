@@ -71,19 +71,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const query = document.getElementById("query")
   query.addEventListener("focus", () => {
-    document.querySelector(".md-search").classList.add("md-js__search--locked")
+    document.querySelector(".md-search").dataset.mdLocked = ""
   })
 
   /* Intercept click on search mode toggle */
   let offset = 0
   const toggle = document.getElementById("search")
-  toggle.addEventListener("click", ev => {
-    const list = document.body.classList
+  toggle.addEventListener("click", () => {   // TODO: click may be the wrong event...
+    const list = document.body // classList md bla
     const lock = !matchMedia("only screen and (min-width: 960px)").matches
 
     /* Exiting search mode */
-    if (list.contains("md-js__body--locked")) {
-      list.remove("md-js__body--locked")
+    if (list.dataset.mdLocked) {
+      delete list.dataset.mdLocked
 
       /* Scroll to former position, but wait for 100ms to prevent flashes
          on iOS. A short timeout seems to do the trick */
@@ -109,16 +109,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* This additional check is necessary to handle fast subsequent clicks
            on the toggle and the timeout to lock the body must be cancelled */
-        if (ev.target.checked) {
-          if (lock)
-            list.add("md-js__body--locked")
-          setTimeout(() => {
-            document.getElementById("md-search").focus()
-          }, 200)
-        }
+        // if (ev.target.checked) {
+        if (lock)
+          list.dataset.mdLocked = ""
+        setTimeout(() => {
+          document.getElementById("query").focus()
+        }, 200)
+        // }
       }, 450)
     }
   })
+
+  // TODO: only do this on MOBILE and TABLET
+  const toggleSearchClose = document.querySelector(".md-search__icon")
+  toggleSearchClose.setAttribute("for", "search")                               // TODO: override query with search, when on mobile!!!
+  // toggleSearchClose.addEventListener("click", ev => {
+  //   ev.preventDefault()
+  //   // ev.target
+  //
+  //   const search = document.getElementById("search")
+  //   search.checked = false
+  // })
 
   // var toc = new Sidebar('.md-sidebar--secondary');
   // toc.listen();
@@ -179,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json()
     })
     .then(data => {
+      // console.log(data)
       const stars = data.stargazers_count
       const forks = data.forks_count
       // store in session!!!
@@ -223,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // console.log(data)
 
           /* Create index */
-      const index = lunr(() => {
+      const index = lunr(function() {
         /* eslint-disable no-invalid-this, lines-around-comment */
         this.field("title", { boost: 10 })
         this.field("text")
@@ -290,10 +302,21 @@ document.addEventListener("DOMContentLoaded", () => {
           title.innerHTML = article.title
           link.appendChild(title)
 
+          /* Truncate a string after the given number of characters */
+          const truncate = function(string, n) {
+            let i = n
+            if (string.length > i) {
+              while (string[i] !== " " && --i > 0);
+              return `${string.substring(0, i)}&hellip;`
+            }
+            return string
+          }
+
               /* Create text element */
           const text = document.createElement("p")
           text.classList.add("md-search-result__description")
-          text.innerHTML = article.text // .truncate(140);
+          text.innerHTML = truncate(article.text) // .truncate(140);
+          text.innerHTML = truncate(article.text, 140) // .truncate(140);
           link.appendChild(text)
 
           container.appendChild(li)
@@ -323,5 +346,14 @@ document.addEventListener("DOMContentLoaded", () => {
       // console.log("parsing failed", ex)
     })
 // }, 1000);
+
+  fetch(
+      "https://api.github.com/repos/squidfunk/mkdocs-material/releases/latest")
+    .then(response => {
+      return response.json()
+    })
+    // .then(data => {
+    //   // console.log(data)
+    // })
 
 })

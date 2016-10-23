@@ -105,8 +105,9 @@
   &__fact {
     float: left;
     transform: translateY(0%);
-    transition: opacity   0.25s,
-                transform 0.25s cubic-bezier(0.1, 0.7, 0.1, 1.0);
+    transition:
+      transform 0.25s cubic-bezier(0.1, 0.7, 0.1, 1.0),
+      opacity   0.25s;
     opacity: 1;
 
     // Facts are hidden by default

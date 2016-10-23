@@ -53,6 +53,7 @@ markdown_extensions:
   - markdown.extensions.meta
   - markdown.extensions.toc:
       permalink: '¶'
+  - pymdownx.superfences
 
 # Page tree
 pages:

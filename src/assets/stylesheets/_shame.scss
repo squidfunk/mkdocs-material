@@ -24,42 +24,85 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-@include break-from-device(screen) {
+// TODO: cleanup redundant data-md-locked,
+// --> use hidden checkbox for reasons of label/button/trigger easyness...
+// TODO: set label for magnifying glasses onto search toggle
+// --> this way we can always use the search toggle and only need the locked state on the body!
+// --> question: how does this play with directly focusing the search field!?
 
-  // .md-search__form {
-  //   background: red;
-  //   width: 23.0rem;
-  //   transition: width 0.6s;
-  //
-  //   .md-js__search--locked & {
-  //     background: blue;
-  //     width: 66.8rem;
-  //   }
+.md-search__output {
+  overflow-y: auto; // necessary for rounded borders
+  // &::after {
+  //   display: block;
+  //   content: "";
+  //   width: 100%;
+  //   height: 20px;
+  //   background: red; // TODO: white shadow overlay to fade out result scrolling
   // }
 
-  // .md-search__input {
-  //   width: 100% !important;
-  // }
+  [data-md-locked] & {
+    opacity: 1;
+  }
 
+  width: 100%;
+
+  opacity: 0;
+  transition: opacity .4s, max-height .4s;
+
+
+  text-align: left;                                        // TODO: wrap with another div for this effect
+
+  z-index: -1; // ??? wherefor? probably not necessary anymore.
+}
+
+@include break-to-device(tablet portrait) {
+  .md-search__output {
+    position: absolute;
+    top: 5.6rem;
+    bottom: 0;
+
+    background:
+  		linear-gradient(white 10%, rgba(255,255,255,0)), // cover
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.125) 20%,
+      rgba(0, 0, 0, 0) 60%); // shadow
+  	background-repeat: no-repeat;
+  	background-color: white;
+  	background-size: 100% 20px, 100% 10px;
+
+  	// Opera doesn't support this in the shorthand
+  	background-attachment: local, scroll;
+  }
+  .md-search-result__item {
+    // margin: 0.8rem;
+  }
+  .md-search-result__link {
+    padding: 0 1.6rem;
+    // background: white;
+    // border-radius: 0.2rem;
+    // @include z-depth(2);
+  }
+  .md-search-result__meta {
+    padding-left: 1.6rem;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.07);
+  }
+}
+
+@include break-from-device(tablet landscape) {
+
+  // Scroll shadow - WIP
   .md-search__output {
     @include z-depth(6);
 
-    width: 100%;
-    max-height: 0vh; // TODO: can this be done in percent!?!?!?
-    opacity: 0;
-    transition: opacity .4s, max-height .4s;
-    [data-md-locked] & {
-      max-height: 75vh;
-      opacity: 1;
-    }
-
-    position: absolute; // must be absolute, or header nav will stretch
     background: $md-color-white;
     // color: red;
     border-top: 0.1rem solid $md-color-black--lightest; // TODO: box-shadow inset!
-    text-align: left;                                        // TODO: wrap with another div for this effect
-    border-radius: 0 0 0.3rem 0.3rem;
-    z-index: -1;
+    border-radius: 0 0 0.3rem 0.3rem; // ???
+    position: absolute; // must be absolute, or header nav will stretch
+    max-height: 0vh; // TODO: can this be done in percent!?!?!?
+    [data-md-locked] & {
+      max-height: 75vh;
+    }
 
     // Override native scrollbar styles
     &::-webkit-scrollbar {
@@ -76,10 +119,6 @@
         }
       }
     }
-  }
-
-  // Scroll shadow!
-  .md-search__output {
 
   	background:
   		linear-gradient(white 10%, rgba(255,255,255,0)), // cover
@@ -91,57 +130,58 @@
   	/* Opera doesn't support this in the shorthand */
   	background-attachment: local, scroll;
   }
+}
 
-  .md-search-result {
+.md-search-result {
 
 
-    &__meta {
-      color: $md-color-black--light;
-      padding-left: 4.8rem;
-      padding-right: 1.6rem;
-      line-height: 4.0rem;
-      font-size: ms(-1);
+  &__meta {
+    color: $md-color-black--light;
+    padding-left: 4.8rem;
+    padding-right: 1.6rem;
+    line-height: 4.0rem;
+    font-size: ms(-1);
 
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border-top: 0.1rem solid $md-color-black--lightest;
+  }
+
+  &__item {
+    // background: yellow;
+
+    // border-top: 0.1rem solid $md-color-black--lightest;
+  }
+
+
+  &__link {
+    overflow: auto;
+    display: block;
+    padding-left: 4.8rem;
+    padding-right: 1.6rem;
+    transition: background 0.25s;
+
+    &:hover {
+      background: transparentize($md-color-accent, 0.9);
     }
+  }
 
-    &__list {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-      border-top: 0.1rem solid $md-color-black--lightest;
-    }
+  &__title {
+    color: $md-color-black;
+    font-size: ms(0);
+    line-height: 1.4;
+    margin-top: 0.5em;
+  }
 
-    &__item {
-      // background: yellow;
-
-      // border-top: 0.1rem solid $md-color-black--lightest;
-    }
-
-
-    &__link {
-      overflow: auto;
-      display: block;
-      padding-left: 4.8rem;
-      padding-right: 1.6rem;
-
-      &:hover {
-        background: yellow;
-      }
-    }
-
-    &__title {
-      color: $md-color-black;
-      font-size: ms(0);
-      line-height: 1.4;
-      margin-top: 0.5em;
-    }
-
-    &__description {
-      color: $md-color-black--light;
-      font-size: ms(-1);
-      line-height: 1.4;
-      margin: 0.5em 0;;
-    }
+  &__description {
+    color: $md-color-black--light;
+    font-size: ms(-1);
+    line-height: 1.4;
+    margin: 0.5em 0;;
   }
 }
 
@@ -180,28 +220,12 @@
 //   }
 // }
 
-.md-search__input:focus {
-  border-radius: 0.3rem 0.3rem 0 0;
-}
+// TODO: only on tablet and bind to search active state!
+// .md-search__input:focus {
+//   border-radius: 0.3rem 0.3rem 0 0;
+// }
 
 @include break-to-device(mobile landscape) {
-  .md-search__inner {
-    position: fixed;
-    top: 0;
-    left: 100%;
-    width: 100%;
-    height: 56px;
-    opacity: 0;
-    z-index: 2;
-    transform: translate3d(5%, 0, 0);
-    transition: transform .3s .15s cubic-bezier(0.1, 0.7, 0.1, 1.0), opacity .15s .15s;
-
-    .md-toggle--search:checked ~ .md-header & {
-      transform: translate3d(0, 0, 0);
-      left: 0;
-      opacity: 1;
-    }
-  }
 
   .md-search__suggest {
     position: relative;
@@ -396,8 +420,29 @@ mark {
   padding: 0 16px;
 }
 
-.md-search__output {
-  overflow-y: auto; // necessary for rounded borders
+// TODO: integrate stylelint and property order!
+
+
+.md-typeset {
+  sup {
+    // background: $md-color-black--lighter;
+    padding: 0 0.125em;
+    border-radius: 0.2em;
+    // font-weight: bold;
+    // color: $md-color-white;
+    &[id]:target {
+      background: orange;
+    }
+
+    a {
+      // color: white;
+    }
+  }
 }
 
-// TODO: integrate stylelint and property order!
+// TODO: remove jitter
+// .md-search,
+// .md-search__inner,
+// .md-search__form {
+//   text-align: right;
+// }

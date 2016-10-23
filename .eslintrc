@@ -191,6 +191,7 @@
         "virtual": "abstract"
       },
       "requireParamDescription": true,
+      "requireReturn": false,
       "requireReturnDescription": true
     }],
     "yield-star-spacing": 2

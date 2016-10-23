@@ -26,8 +26,7 @@ import Abstract from "./Abstract"
  * Definition
  * ------------------------------------------------------------------------- */
 
-export default
-class Position extends Abstract {
+export default class Position extends Abstract {
 
   /**
    * Set sidebars to locked state and limit height to parent node
@@ -44,8 +43,15 @@ class Position extends Abstract {
       : el
 
     /* Index inner and outer container */
-    this.inner_ = this.el_.parentNode
-    this.outer_ = this.el_.parentNode.parentNode
+    const inner = this.el_.parentNode
+    const outer = this.el_.parentNode.parentNode
+
+    /* Get top and bottom bounds */
+    this.offset_ = outer.offsetTop
+    this.bounds_ = {
+      top: inner.offsetTop,
+      bottom: inner.offsetTop + inner.offsetHeight
+    }
 
     /* Initialize current height */
     this.height_ = 0
@@ -55,45 +61,34 @@ class Position extends Abstract {
    * Update locked state and height
    *
    * @param {Event} ev - Event (omitted)
-   * @return {void}
    */
   update() {
-    const bounds = this.inner_.getBoundingClientRect()                          // TODO: thresholds can be calculated as a function
-    const parent = this.outer_.offsetTop
-
-    /* Determine top and bottom offsets */
-    const top    = bounds.top    + window.pageYOffset,
-          bottom = bounds.bottom + window.pageYOffset
-
-    /* Determine current y-offset at top and bottom of window */
-    const upper  = window.pageYOffset,
-          lower  = window.pageYOffset + window.innerHeight
+    const scroll = window.pageYOffset
+    const expand = window.innerHeight
 
     /* Calculate new bounds */
-    const offset = top - upper
-    const height = window.innerHeight
-                 - Math.max(lower - bottom, 0)
-                 - Math.max(offset, parent)
+    const offset = this.bounds_.top - scroll
+    const height = expand
+                 - Math.max(0, scroll + expand - this.bounds_.bottom)
+                 - Math.max(offset, this.offset_)
 
     /* If height changed, update element */
     if (height !== this.height_)
       this.el_.style.height = `${this.height_ = height}px`
 
     /* Sidebar should be locked, as we're below parent offset */
-    if (offset < parent) {
+    if (offset < this.offset_) {
       if (!this.el_.dataset.mdLocked)
-        this.el_.dataset.mdLocked = true
+        this.el_.dataset.mdLocked = ""
 
     /* Sidebar should be unlocked, if locked */
-    } else if (this.el_.dataset.mdLocked) {
+    } else if (typeof this.el_.dataset.mdLocked === "string") {
       delete this.el_.dataset.mdLocked
     }
   }
 
   /**
    * Reset locked state and height
-   *
-   * @return {void}
    */
   reset() {
     delete this.el_.dataset.mdLocked

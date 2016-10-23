@@ -53,9 +53,10 @@
       left: -24.2rem;
       width: 24.2rem;
       height: 100%;
-      transform: translate3d(0, 0, 0);
-      transition: transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1.0),
-                  box-shadow 0.25s;
+      transform: translateX(0);
+      transition:
+        transform  0.25s cubic-bezier(0.4, 0.0, 0.2, 1.0),
+        box-shadow 0.25s;
       background: $md-color-white;
       z-index: 2;
 
@@ -68,7 +69,7 @@
       .md-toggle--drawer:checked ~ .md-container & {
         @include z-depth(8);
 
-        transform: translate3d(24.2rem, 0, 0);
+        transform: translateX(24.2rem);
 
         // Just show drawer, if browser doesn't support 3D transforms
         .no-csstransforms3d & {
@@ -146,7 +147,7 @@
     }
   }
 
-  // Actual sidebar content
+  // Sidebar content
   &__inner {
 
     // [screen +]: Add line for reference

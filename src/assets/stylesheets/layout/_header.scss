@@ -42,7 +42,7 @@
 .md-header-nav {
   padding: 0.4rem;
 
-  // Header icon
+  // Icons
   &__icon {
     @extend %md-icon__button;
 
@@ -55,8 +55,13 @@
       opacity: 0.7;
     }
 
-    // [tablet +]: Hide the search icon
-    @include break-from-device(tablet) {
+    // Hide search icon, if JavaScript is not available.
+    .no-js &--search {
+      display: none;
+    }
+
+    // [tablet landscape +]: Hide the search icon
+    @include break-from-device(tablet landscape) {
 
       // Search icon
       &--search {

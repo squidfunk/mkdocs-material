@@ -26,14 +26,13 @@ import Abstract from "./Abstract"
  * Definition
  * ------------------------------------------------------------------------- */
 
-export default
-class Marker extends Abstract {
+export default class Marker extends Abstract {
 
   /**
    * Mark anchors within the table of contents above current page y-offset
    *
    * @constructor
-   * @param {(string|HTMLCollection)} els - Selector or HTML elements
+   * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
    */
   constructor(els) {
     super()
@@ -57,16 +56,16 @@ class Marker extends Abstract {
    * Update anchor states
    *
    * @param {Event} ev - Event (omitted)
-   * @return {void}
    */
   update() {
+    const offset = window.pageYOffset
 
     /* Scroll direction is down */
-    if (this.offset_ <= window.pageYOffset) {
+    if (this.offset_ <= offset) {
       for (let i = this.index_ + 1; i < this.els_.length; i++) {
-        if (this.anchors_[i].offsetTop <= window.pageYOffset) {
+        if (this.anchors_[i].offsetTop <= offset) {
           if (i > 0)
-            this.els_[i - 1].dataset.mdMarked = true
+            this.els_[i - 1].dataset.mdMarked = ""
           this.index_ = i
         } else {
           break
@@ -76,7 +75,7 @@ class Marker extends Abstract {
     /* Scroll direction is up */
     } else {
       for (let i = this.index_; i >= 0; i--) {
-        if (this.anchors_[i].offsetTop > window.pageYOffset) {
+        if (this.anchors_[i].offsetTop > offset) {
           if (i > 0)
             delete this.els_[i - 1].dataset.mdMarked
         } else {
@@ -87,13 +86,11 @@ class Marker extends Abstract {
     }
 
     /* Remember current offset for next iteration */
-    this.offset_ = window.pageYOffset
+    this.offset_ = offset
   }
 
   /**
    * Reset anchor states
-   *
-   * @return {void}
    */
   reset() {
     [].forEach.call(this.els_, el => {

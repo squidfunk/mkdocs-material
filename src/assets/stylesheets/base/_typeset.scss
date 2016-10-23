@@ -25,7 +25,8 @@
 // ----------------------------------------------------------------------------
 
 // Default fonts
-body {
+body,
+input {
   color: $md-color-black;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -160,8 +161,9 @@ kbd {
     background: $md-code-background;
     color: $md-code-color;
     font-size: 85%;
-    box-shadow: 0.4rem 0 0 $md-code-background,
-               -0.4rem 0 0 $md-code-background;
+    box-shadow:
+       0.4rem 0 0 $md-code-background,
+      -0.4rem 0 0 $md-code-background;
     word-break: break-word;
     box-decoration-break: clone;
   }
