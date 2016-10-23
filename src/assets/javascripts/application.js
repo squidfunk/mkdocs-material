@@ -29,6 +29,7 @@ import lunr from "lunr"
 
 // import Expander from "./components/expander"
 
+import GithubSourceFacts from "./components/GithubSourceFacts"
 import Material from "./components/Material"
 
 // import Search from './components/search';
@@ -40,11 +41,40 @@ import Material from "./components/Material"
 class Application {
 
   /**
+   * Constructor.
+   *
+   * @constructor
+   * @param  {object} config Configuration object
+   * @return {void}
+   */
+  constructor(config) {
+    this.config = config
+  }
+
+  /**
    * @return {void}
    */
   initialize() {
     const material = new Material()
     material.initialize()
+
+    if (this.hasGithubRepo()) {
+      const githubSource = new GithubSourceFacts(
+        this.config.storage,
+        this.config.repo.url
+      )
+      githubSource.initialize()
+    }
+  }
+
+  /**
+   * Is this application about a Github repository?
+   *
+   * @return {bool} - true if `repo.icon` or `repo.url` contains 'github'
+   */
+  hasGithubRepo() {
+    return this.config.repo.icon === "github"
+      || this.config.repo.url.includes("github")
   }
 }
 
@@ -185,48 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
 // setTimeout(function() {
-  fetch("https://api.github.com/repos/squidfunk/mkdocs-material")
-    .then(response => {
-      return response.json()
-    })
-    .then(data => {
-      // console.log(data)
-      const stars = data.stargazers_count
-      const forks = data.forks_count
-      // store in session!!!
-      const lists = document.querySelectorAll(".md-source__facts"); // TODO 2x list in drawer and header
-      [].forEach.call(lists, list => {
-
-        let li = document.createElement("li")
-        li.className = "md-source__fact md-source__fact--hidden"
-        li.innerText = `${stars} Stars`
-        list.appendChild(li)
-
-        setTimeout(lix => {
-          lix.classList.remove("md-source__fact--hidden")
-        }, 100, li)
-
-        li = document.createElement("li")
-        li.className = "md-source__fact md-source__fact--hidden"
-        li.innerText = `${forks} Forks`
-        list.appendChild(li)
-
-        setTimeout(lix => {
-          lix.classList.remove("md-source__fact--hidden")
-        }, 500, li)
-      })
-
-      // setTimeout(function() {
-      //   li.classList.remove('md-source__fact--hidden');
-      // }, 100);
-
-    })
-    .catch(() => {
-      // console.log("parsing failed", ex)
-
-    })
-
-    // setTimeout(function() {
   fetch("/mkdocs/search_index.json") // TODO: prepend BASE URL!!!
     .then(response => {
       return response.json()

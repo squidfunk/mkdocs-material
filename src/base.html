@@ -178,8 +178,12 @@
       var config = {
         url: {
           base: "{{ base_url }}",
-          repo: "{{ repo_url }}"
-        }
+        },
+        repo: {
+          url: "{{ repo_url }}",
+          icon: "{{ repo_icon }}",
+        },
+        storage: window.sessionStorage,
       };
 
       /* Initialize application */
