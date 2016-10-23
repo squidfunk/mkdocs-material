@@ -12,7 +12,9 @@
   <div class="md-source__repository">
     {{ repo_name }}
     <ul class="md-source__facts">
-      <li class="md-source__fact">v0.2.4</li>                             
+      {% if config.extra.version %}
+        <li class="md-source__fact">v{{ config.extra.version }}</li>
+      {% endif %}
     </ul>
   </div>
 </a>
