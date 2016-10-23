@@ -62,12 +62,14 @@ $md-color-black:                      hsla(0, 0%, 0%, 0.87);
 $md-color-black--light:               hsla(0, 0%, 0%, 0.54);
 $md-color-black--lighter:             hsla(0, 0%, 0%, 0.26);
 $md-color-black--lightest:            hsla(0, 0%, 0%, 0.07);
+$md-color-black--transparent:         hsla(0, 0%, 0%, 0);
 
 // Shades of white
 $md-color-white:                      hsla(0, 0%, 100%, 1.00);
 $md-color-white--light:               hsla(0, 0%, 100%, 0.70);
 $md-color-white--lighter:             hsla(0, 0%, 100%, 0.30);
 $md-color-white--lightest:            hsla(0, 0%, 100%, 0.12);
+$md-color-white--transparent:         hsla(0, 0%, 100%, 0);
 
 // ----------------------------------------------------------------------------
 // Variables: sizing and spacing

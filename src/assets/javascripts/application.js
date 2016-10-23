@@ -100,59 +100,74 @@ document.addEventListener("DOMContentLoaded", () => {
   FastClick.attach(document.body)
 
   const query = document.getElementById("query")
-  query.addEventListener("focus", () => {
-    document.querySelector(".md-search").dataset.mdLocked = ""
-  })
+  // query.addEventListener("focus", () => {
+  //   document.querySelector(".md-search").dataset.mdLocked = ""
+  // })
 
   /* Intercept click on search mode toggle */
-  let offset = 0
-  const toggle = document.getElementById("search")
-  toggle.addEventListener("click", () => {   // TODO: click may be the wrong event...
-    const list = document.body // classList md bla
-    const lock = !matchMedia("only screen and (min-width: 960px)").matches
-
-    /* Exiting search mode */
-    if (list.dataset.mdLocked) {
-      delete list.dataset.mdLocked
-
-      /* Scroll to former position, but wait for 100ms to prevent flashes
-         on iOS. A short timeout seems to do the trick */
-      if (lock)
-        setTimeout(() => {
-          window.scrollTo(0, offset)
-        }, 100)
-
-    /* Entering search mode */
-    } else {
-      offset = window.scrollY
-
-      /* First timeout: scroll to top after transition, to omit flickering */
-      if (lock)
-        setTimeout(() => {
-          window.scrollTo(0, 0)
-        }, 400)
-
-      /* Second timeout: Lock body after finishing transition and scrolling to
-         top and focus input field. Sadly, the focus event is not dispatched
-         on iOS Safari and there's nothing we can do about it. */
-      setTimeout(() => {
-
-        /* This additional check is necessary to handle fast subsequent clicks
-           on the toggle and the timeout to lock the body must be cancelled */
-        // if (ev.target.checked) {
-        if (lock)
-          list.dataset.mdLocked = ""
-        setTimeout(() => {
-          document.getElementById("query").focus()
-        }, 200)
-        // }
-      }, 450)
-    }
-  })
+  // const offset = 0
+  // const toggle = document.getElementById("search")
+  // toggle.addEventListener("click", () => {
+  //   const list = document.body // classList md bla
+  //   const lock = !matchMedia("only screen and (min-width: 960px)").matches
+  //
+  //   /* Exiting search mode */
+  //   if (list.dataset.mdLocked) {
+  //     delete list.dataset.mdLocked
+  //
+  //     /* Scroll to former position, but wait for 100ms to prevent flashes
+  //        on iOS. A short timeout seems to do the trick */
+  //     if (lock)
+  //       setTimeout(() => {
+  //         window.scrollTo(0, offset)
+  //       }, 100)
+  //
+  //   /* Entering search mode */
+  //   } else {
+  //     offset = window.scrollY
+  //
+  //     /* First timeout: scroll to top after transition, to omit flickering */
+  //     if (lock)
+  //       setTimeout(() => {
+  //         window.scrollTo(0, 0)
+  //       }, 400)
+  //
+  //     /* Second timeout: Lock body after finishing transition and scrolling
+  //        to top and focus input field. Sadly, the focus event is not
+  //        dispatched on iOS Safari and there's nothing we can do about it. */
+  //     setTimeout(() => {
+  //
+  //       /* This additional check is necessary to handle fast subsequent
+  //          clicks on the toggle and the timeout to lock the body must be
+  //          cancelled */
+  //       // if (ev.target.checked) {
+  //       if (lock)
+  //         list.dataset.mdLocked = ""
+  //       setTimeout(() => {
+  //         document.getElementById("query").focus()
+  //       }, 200)
+  //       // }
+  //     }, 450)
+  //   }
+  // })
 
   // TODO: only do this on MOBILE and TABLET
-  const toggleSearchClose = document.querySelector(".md-search__icon")
-  toggleSearchClose.setAttribute("for", "search")                               // TODO: override query with search, when on mobile!!!
+  // const toggleSearchClose = document.querySelector(".md-search__icon")
+  // toggleSearchClose.setAttribute("for", "search")                               // TODO: override query with search, when on mobile!!!
+  document.getElementById("query").addEventListener("focus", () => {
+    document.getElementById("search").checked = true
+  })
+
+  // should be registered on body, but leads to problems
+  document.querySelector(".md-container").addEventListener("click", () => {
+    if (document.getElementById("search").checked)
+      document.getElementById("search").checked = false
+  })
+
+  // stop propagation, if search is active...
+  document.querySelector(".md-search").addEventListener("click", ev => {
+    ev.stopPropagation()
+  })
   // toggleSearchClose.addEventListener("click", ev => {
   //   ev.preventDefault()
   //   // ev.target
@@ -202,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
           nav.style.maxHeight = `${last}px`
         })
       }
-
     })
 
     // Capture the end with transitionend

@@ -29,15 +29,15 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+
+  // Footer container
+  &__inner {
+    background: $md-color-black;
+    color: $md-color-white;
+  }
 }
 
-// Pagination container
-.md-footer-pagination {
-  background: $md-color-black;
-  color: $md-color-white;
-}
-
-// Footer navigation
+// Navigation within footer
 .md-footer-nav {
   padding: 0.4rem;
   overflow: auto;

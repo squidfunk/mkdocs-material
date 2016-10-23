@@ -43,7 +43,7 @@
     display: none;
     pointer-events: none;
 
-    // [tablet portrait -]: Show overlay
+    // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
       display: block;
       position: absolute;
@@ -70,7 +70,7 @@
       }
     }
 
-    // Set scale factors (currently selected by trial)
+    // Set scale factors
     .md-toggle--search:checked ~ .md-header & {
 
       // [mobile portrait -]: Scale up 45 times
@@ -83,7 +83,7 @@
         transform: scale(60);
       }
 
-      // [mobile landscape]: Scale up 75 times
+      // [tablet portrait]: Scale up 75 times
       @include break-at-device(tablet portrait) {
         transform: scale(75);
       }
@@ -120,7 +120,7 @@
       }
     }
 
-    // [tablet landscape +]: Make relative for inner positioning
+    // [tablet landscape +]: Make relative for inner layout
     @include break-from-device(tablet landscape) {
       position: relative;
     }
@@ -132,47 +132,26 @@
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       width: 23.0rem;
+
+      // Hack: omit jitter when form is resized
+      float: right;
+
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1.0);
       border-radius: 0.2rem;
 
-      // Active search field
-      [data-md-locked] & {
+      // Enlarge search field when active
+      .md-toggle--search:checked ~ .md-header & {
         width: 66.8rem;
       }
     }
   }
 
-  // Icon
-  &__icon {
-    position: absolute;
-    top: $md-icon-padding;
-    left: $md-icon-padding + $md-icon-margin;                                   // TODO: solve in some other way...
-    transition: color 0.25s;
-    font-size: $md-icon-size;
-    cursor: pointer;
-
-    // Set search icon on pseudo class, so it can be overridden for mobile
-    // and tablet when the search is rendered in an overlay
-    &::before {
-      content: "search";
-    }
-
-    // [tablet portrait -]: Use back arrow as search icon
-    @include break-to-device(tablet portrait) {
-      top: 1.6rem;
-      left: 1.6rem;
-
-      // Show back arrow instead of search icon
-      &::before {
-        content: "arrow_back";
-      }
-    }
-  }
-
-  // Search field
+  // Search input
   &__input {
+    position: relative;
     padding: 0 1.6rem 0 7.2rem;
     text-overflow: ellipsis;
+    z-index: 1;
 
     // Placeholder and icon color in active state
     + .md-search__icon,
@@ -212,8 +191,8 @@
         background: $md-color-white--lightest;
       }
 
-      // Active search field
-      [data-md-locked] & {
+      // Set light background on active search field
+      .md-toggle--search:checked ~ .md-header & {
         border-radius: 0.2rem 0.2rem 0 0;
         background: $md-color-white;
         color: $md-color-black;
@@ -223,6 +202,114 @@
         + .md-search__icon,
         &::placeholder {
           color: $md-color-black--light;
+        }
+      }
+    }
+  }
+
+  // Icon
+  &__icon {
+    position: absolute;
+    top: $md-icon-padding;
+    left: $md-icon-padding + $md-icon-margin;
+    transition: color 0.25s;
+    font-size: $md-icon-size;
+    cursor: pointer;
+    z-index: 1;
+
+    // Set search icon on pseudo class, so it can be overridden for mobile
+    // and tablet when the search is rendered in an overlay
+    &::before {
+      content: "search";
+    }
+
+    // [tablet portrait -]: Full-screen search bar
+    @include break-to-device(tablet portrait) {
+      top: 1.6rem;
+      left: 1.6rem;
+
+      // Show back arrow instead of search icon
+      &::before {
+        content: "arrow_back";
+      }
+    }
+  }
+
+  // Search output container
+  &__output {
+    width: 100%;
+    border-radius: 0 0 0.2rem 0.2rem;
+    overflow: hidden;
+
+    // [tablet portrait -]: Full-screen search bar
+    @include break-to-device(tablet portrait) {
+      position: absolute;
+      top: 5.6rem;
+      bottom: 0;
+    }
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      @include z-depth(6);
+
+      transition: opacity 0.4s;
+      opacity: 0;
+
+      // Show search output in active state
+      .md-toggle--search:checked ~ .md-header & {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Wrapper for scrolling on overflow
+  &__scrollwrap {
+    height: 100%;
+
+    // Pure CSS scrolling shadows, taken from
+    // http://lea.verou.me/2012/04/background-attachment-local/
+    background:
+  		linear-gradient(
+        to bottom,
+        $md-color-white 10%,
+        $md-color-white--transparent),
+      linear-gradient(
+        to bottom,
+        $md-color-black--lighter,
+        $md-color-black--lightest 35%,
+        $md-color-black--transparent 60%);
+
+    // Hack: Opera doesn't support this in the shorthand
+    background-attachment: local, scroll;
+    background-color: $md-color-white;
+    background-repeat: no-repeat;
+    background-size: 100% 2.0rem, 100% 1.0rem;
+
+    box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
+    overflow-y: auto;
+
+    // [tablet landscape +]: Limit height to viewport
+    @include break-from-device(tablet landscape) {
+      max-height: 0;
+
+      // Expand in active state
+      .md-toggle--search:checked ~ .md-header & {
+        max-height: 75vh;
+      }
+
+      // Override native scrollbar styles
+      &::-webkit-scrollbar {
+        width: 0.4rem;
+        height: 0.4rem;
+
+        // Style scrollbar thumb
+        &-thumb {
+          background-color: $md-color-black--lighter;
+
+          // Hovered scrollbar thumb
+          &:hover {
+            background-color: $md-color-accent;
+          }
         }
       }
     }

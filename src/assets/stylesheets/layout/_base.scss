@@ -30,12 +30,12 @@ html {
   height: 100%;
   font-size: 62.5%;
 
-  // [screen medium +] Set base font-size to 11px
+  // [screen medium +]: Set base font-size to 11px
   @include break-from-device(screen medium) {
     font-size: 68.75%;
   }
 
-  // [screen large +] Set base font-size to 12px
+  // [screen large +]: Set base font-size to 12px
   @include break-from-device(screen large) {
     font-size: 75%;
   }

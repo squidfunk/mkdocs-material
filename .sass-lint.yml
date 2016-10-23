@@ -73,7 +73,9 @@ rules:
       - break-at-device
       - break-from-device
       - break-to-device
-  nesting-depth: 2
+  nesting-depth:
+    - 2
+    - max-depth: 3
   no-color-keywords: 2
   no-color-literals: 2
   no-css-comments: 2
@@ -100,7 +102,7 @@ rules:
     - order: smacss
   property-units:
     - 2
-    - global: [rem, em, s]
+    - global: [rem, em, s, vh]
   pseudo-element: 2
   quotes:
     - 2

@@ -22,10 +22,10 @@
 
 <!-- Application footer -->
 <footer class="md-footer">
+  <div class="md-footer__inner">
 
-  <!-- Link to previous and/or next page -->
-  {% if previous_page or next_page %}
-    <div class="md-footer-pagination">
+    <!-- Link to previous and/or next page -->
+    {% if previous_page or next_page %}
       <nav class="md-footer-nav md-grid">
 
         <!-- Link to previous page -->
@@ -68,6 +68,6 @@
           </a>
         {% endif %}
       </nav>
-    </div>
-  {% endif %}
+    {% endif %}
+  </div>
 </footer>
