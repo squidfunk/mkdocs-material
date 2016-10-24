@@ -30,6 +30,11 @@
   bottom: 0;
   width: 100%;
 
+  // Hide for print
+  @media print {
+    display: none;
+  }
+
   // Footer container
   &__inner {
     background: $md-color-black;

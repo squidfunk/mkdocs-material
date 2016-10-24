@@ -37,6 +37,11 @@
                 opacity   0.125s 0.25s;
     color: $md-color-black--lighter;
     opacity: 0;
+
+    // Hide for print
+    @media print {
+      display: none;
+    }
   }
 
   // All headers with permalinks have ids

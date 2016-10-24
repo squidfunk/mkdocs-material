@@ -31,6 +31,11 @@
   float: left;
   overflow: visible;
 
+  // Hide for print
+  @media print {
+    display: none;
+  }
+
   // Lock sidebar to container height (account for fixed header)
   &[data-md-locked] {
     position: fixed;

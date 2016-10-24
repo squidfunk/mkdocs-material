@@ -36,6 +36,11 @@
   background: $md-color-primary;
   color: $md-color-white;
   z-index: 1;
+
+  // Hide for print
+  @media print {
+    display: none;
+  }
 }
 
 // Navigation within header

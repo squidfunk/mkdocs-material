@@ -46,10 +46,14 @@ body {
   position: relative;
   min-height: 100%;
 
-  // Lock body to viewport height (e.g. in search mode)
-  &[data-md-locked] {
-    height: 100%;
-    overflow: hidden;
+  // [tablet portrait -]: Lock body to disable scroll bubbling
+  @include break-to-device(tablet portrait) {
+
+    // Lock body to viewport height (e.g. in search mode)
+    &[data-md-locked] {
+      height: 100%;
+      overflow: hidden;
+    }
   }
 }
 
@@ -159,4 +163,13 @@ hr {
     white-space: nowrap;
     overflow: hidden;
   }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: print styles
+// ----------------------------------------------------------------------------
+
+// Add margins to page
+@page {
+  margin: 25mm;
 }

@@ -102,7 +102,7 @@ rules:
     - order: smacss
   property-units:
     - 2
-    - global: [rem, em, s, vh]
+    - global: [rem, em, s, vh, mm]
   pseudo-element: 2
   quotes:
     - 2
