@@ -151,6 +151,16 @@ kbd {
     &:active {
       color: $md-color-accent;
     }
+
+    // Add links for print
+    @media print {
+
+      // Show link reference
+      &::after {
+        color: $md-color-black--light;
+        content: " [" attr(href) "]";
+      }
+    }
   }
 
   // Inline code blocks
@@ -166,6 +176,12 @@ kbd {
       -0.4rem 0 0 $md-code-background;
     word-break: break-word;
     box-decoration-break: clone;
+
+    // Remove box-shadows for print
+    @media print {
+      box-shadow: none;
+      box-decoration-break: initial;
+    }
   }
 
   // Disable containing block inside headlines
@@ -300,6 +316,43 @@ kbd {
         margin-left: 1.0rem;
         padding-top: 1.0rem;
       }
+    }
+  }
+
+  // Data tables
+  table {
+    margin: 1.5em 0;                                                            // TODO: check spacing
+    font-size: ms(-1);
+    overflow: hidden;
+
+    // Semi-cool overflow solution, in case JavaScript is not available
+    .no-js & {
+      display: inline-block;
+      max-width: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    // Table heading
+    th {
+      min-width: 10.0rem;
+      padding: 1.2rem 1.6rem;
+      border-bottom: 0.1rem solid $md-color-black--light;
+      color: $md-color-black;
+      font-weight: 700;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    // Table cell
+    td {
+      padding: 1.2rem 1.6rem;
+      border-top: 0.1rem solid $md-color-black--lightest;
+      vertical-align: top;
+    }
+
+    tr:first-child td {
+      border-top: 0;
     }
   }
 }
