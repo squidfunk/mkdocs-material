@@ -18,28 +18,5 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-language: node_js
-sudo: false
-
-# Node.js versions
-node_js:
-  - 4
-  - 5
-  - 6
-
-# Update GCC to 4.8 to build Gemini
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-4.8
-      - g++-4.8
-
-# Install dependencies
-before_script:
-  - pip install -r requirements.txt
-  - npm install
-
-# Perform build and tests
-script: npm run build
+pygments
+pymdown-extensions
