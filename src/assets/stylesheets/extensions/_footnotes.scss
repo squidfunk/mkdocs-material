@@ -24,72 +24,68 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Footnotes extension
-.footnote {
-  color: $md-color-black--light;
-  font-size: 80%;
+// Scoped in typesetted content for greater specificity
+.md-typeset {
 
-  // Remove additional spacing on footnotes
-  ol {
-    margin-left: 0;
-  }
+  // Footnotes extension
+  .footnote {
+    color: $md-color-black--light;
+    font-size: 80%;
 
-  // Single footnote
-  li {
-
-    // TODO: this doesn't work entirely
-    // &::before {
-    //   display: block;
-    //   content: "";
-    //   padding-top: (5.6rem + 2.4rem + 0.4rem);
-    //   margin-top: -(5.6rem + 2.4rem + 0.4rem);
-    // }
-
-    // Make back references visible on hover
-    &:hover  .footnote-backref,
-    &:target .footnote-backref {
-      transform: translateX(0);
-      opacity: 1;
+    // Remove additional spacing on footnotes
+    ol {
+      margin-left: 0;
     }
 
-    // Active or targeted back reference
-    &:hover  .footnote-backref:hover,
-    &:target .footnote-backref {
-      color: $md-color-accent;
-    }
-  }
+    // Single footnote
+    li {
 
-  // Correct anchor offset
-  &-ref::before {
-    position: absolute;
-    margin-top: -(5.6rem + 2.4rem);
-    padding-top: (5.6rem + 2.4rem);
-    content: "";
-    pointer-events: none;
-  }
+      // Make back references visible on hover
+      &:hover  .footnote-backref,
+      &:target .footnote-backref {
+        transform: translateX(0);
+        opacity: 1;
+      }
 
-  // Make back reference text transparent for icon
-  &-backref {
-    @extend %md-icon;
-
-    position: absolute;
-    transform: translateX(0.5rem);
-    transition: transform 0.25s  0.125s,
-                color     0.25s,
-                opacity   0.125s 0.125s;
-    color: $md-color-black--lighter;
-    font-size: 2.0rem;
-    opacity: 0;
-    vertical-align: middle;
-
-    // Hack: remove Unicode arrow for icon
-    &::first-letter {
-      font-size: 0;
+      // Active or targeted back reference
+      &:hover  .footnote-backref:hover,
+      &:target .footnote-backref {
+        color: $md-color-accent;
+      }
     }
 
-    // Back reference icon
-    &::after {
-      content: "keyboard_return";
+    // Correct anchor offset
+    &-ref::before {
+      position: absolute;
+      margin-top: -(5.6rem + 2.4rem);
+      padding-top: (5.6rem + 2.4rem);
+      content: "";
+      pointer-events: none;
+    }
+
+    // Make back reference text transparent for icon
+    &-backref {
+      @extend %md-icon;
+
+      position: absolute;
+      transform: translateX(0.5rem);
+      transition: transform 0.25s  0.125s,
+                  color     0.25s,
+                  opacity   0.125s 0.125s;
+      color: $md-color-black--lighter;
+      font-size: 2.0rem;
+      opacity: 0;
+      vertical-align: middle;
+
+      // Hack: remove Unicode arrow for icon
+      &::first-letter {
+        font-size: 0;
+      }
+
+      // Back reference icon
+      &::after {
+        content: "keyboard_return";
+      }
     }
   }
 }

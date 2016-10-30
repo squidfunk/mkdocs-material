@@ -105,12 +105,11 @@ $codehilite-error: #A61717;
 $codehilite-whitespace: transparent;
 
 // ----------------------------------------------------------------------------
-// Rules
+// Rules: syntax highlighting
 // ----------------------------------------------------------------------------
 
 // Codehilite extension
-.codehilite,
-.code {
+.codehilite {
 
   // Operators
   .o { color: $codehilite-operator; }
@@ -206,6 +205,10 @@ $codehilite-whitespace: transparent;
     }
   }
 }
+
+// ----------------------------------------------------------------------------
+// Rules: layout
+// ----------------------------------------------------------------------------
 
 // Scoped in typesetted content for greater specificity
 .md-typeset {
