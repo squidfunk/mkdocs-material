@@ -1,18 +1,158 @@
-# Codehilite
+# CodeHilite
 
-## Usage
+[CodeHilite][] is an extension that adds syntax highlighting to codeblocks and
+is included in the standard Markdown library. The highlighting process is
+executed during compilation of the Markdown file.
 
-This extensions adds code highlighting to fenced code blocks. It might not be
-the best code highlighter, but it works without JavaScript and on the server:
+## Installation
+
+CodeHilite parses code blocks and wraps them in `pre` tags. If [Pygments][] is
+installed, which is a generic syntax highlighter with support for over
+[300 languages][], CodeHilite will also highlight the code block. Pygments can
+be installed with the following command:
+
+``` bash
+pip install pygments
+```
+
+To enable CodeHilite, add the following lines to your `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
   - codehilite
 ```
 
+## Usage
+
+### Specifying the language
+
+The CodeHilite extension uses the same syntax as regular Markdown code blocks,
+but needs to know the language of the code block. This can be done in three
+different ways.
+
+#### via Markdown syntax <small>recommended</small>
+
+In Markdown, code blocks can be opened and closed by writing three backticks on
+separate lines. To add code highlighting to those blocks, the easiest way is
+to specify the language directly after the opening block.
+
+Example:
+
+```` markdown
+``` python
+import tensorflow as tf
+```
+````
+
+Result:
+
+``` python
+import tensorflow as tf
+```
+
+#### via Shebang
+
+Alternatively, if the first line of a code block contains a shebang, the
+language is derived from the path referenced in the shebang. This will only
+work for code blocks that are indented using four spaces, not for those
+encapsulated in three backticks.
+
+Example:
+
+```` markdown
+    #!/usr/bin/python
+    import tensorflow as tf
+````
+
+Result:
+
+``` python
+#!/usr/bin/python
+import tensorflow as tf
+```
+
+#### via three colons
+
+If the first line starts with three colons followed by a language identifier,
+the first line is stripped. This will only work for code blocks that are
+indented using four spaces, not for those encapsulated in three backticks.
+
+Example:
+
+``` markdown
+    :::python
+    import tensorflow as tf
+```
+
+Result:
+
+    :::python
+    import tensorflow as tf
+
+### Adding line numbers
+
+Line numbers can be added by enabling the `linenums` flag in your `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - codehilite(linenums=true)
+```
+
+Example:
+
+```` markdown
+``` python
+""" Bubble sort """
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+````
+
+Result:
+
+    #!python
+    """ Bubble sort """
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+
+### Highlighting specific lines
+
+Specific lines can be highlighted by passing the line numbers to the `hl_lines`
+argument placed right after the language identifier. Line counts start at 1.
+
+Example:
+
+```` markdown
+``` python hl_lines="3 4"
+""" Bubble sort """
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+````
+
+Result:
+
+    #!python hl_lines="3 4"
+    """ Bubble sort """
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+
+
 ## Supported languages <small>excerpt</small>
 
-Codehilite uses [Pygments][], a generic syntax highlighter with support for
+CodeHilite uses [Pygments][], a generic syntax highlighter with support for
 over [300 languages][], so the following list of examples is just an excerpt.
 
 ### Bash
@@ -701,5 +841,6 @@ end
 </main-Tag>
 ```
 
+[CodeHilite]: https://pythonhosted.org/Markdown/extensions/code_hilite.html
 [Pygments]: http://pygments.org
 [300 languages]: http://pygments.org/languages

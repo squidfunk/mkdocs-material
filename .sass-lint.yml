@@ -22,7 +22,6 @@ files:
   ignore:
     - node_modules/**
     - src/assets/stylesheets/_shame.scss
-    - src/assets/stylesheets/extensions/_codehilite.scss
 
 options:
   merge-default-rules: true
@@ -75,7 +74,7 @@ rules:
       - break-to-device
   nesting-depth:
     - 2
-    - max-depth: 3
+    - max-depth: 4
   no-color-keywords: 2
   no-color-literals: 2
   no-css-comments: 2

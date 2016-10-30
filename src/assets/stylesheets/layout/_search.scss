@@ -122,12 +122,15 @@
 
     // [tablet landscape +]: Make relative for inner layout
     @include break-from-device(tablet landscape) {
+      display: table;
       position: relative;
+      clear: both;
     }
   }
 
   // Search form
   &__form {
+    position: relative;
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
@@ -138,9 +141,18 @@
 
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1.0);
       border-radius: 0.2rem;
+    }
 
-      // Enlarge search field when active
-      .md-toggle--search:checked ~ .md-header & {
+    // Set maximum width
+    .md-toggle--search:checked ~ .md-header & {
+
+      // [tablet landscape]: Do not overlay title
+      @include break-at-device(tablet landscape) {
+        width: 46.8rem;
+      }
+
+      // [screen +]: Match content width
+      @include break-from-device(screen) {
         width: 66.8rem;
       }
     }
@@ -237,13 +249,13 @@
 
   // Search output container
   &__output {
+    position: absolute;
     width: 100%;
     border-radius: 0 0 0.2rem 0.2rem;
     overflow: hidden;
 
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
-      position: absolute;
       top: 5.6rem;
       bottom: 0;
     }
@@ -252,6 +264,7 @@
     @include break-from-device(tablet landscape) {
       @include z-depth(6);
 
+      top: 4.0rem;
       transition: opacity 0.4s;
       opacity: 0;
 
@@ -278,8 +291,6 @@
         $md-color-black--lighter,
         $md-color-black--lightest 35%,
         $md-color-black--transparent 60%);
-
-    // Hack: Opera doesn't support this in the shorthand
     background-attachment: local, scroll;
     background-color: $md-color-white;
     background-repeat: no-repeat;

@@ -36,7 +36,7 @@ Result:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-### Change the title
+### Changing the title
 
 By default, the block title will equal the type qualifier. However, it can
 easily be changed by adding a quoted string after the type qualifier.
@@ -57,10 +57,10 @@ Result:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-### Remove the title
+### Removing the title
 
-Similar to setting a [custom title](#change-the-title), the icon and title can
-be omitted by providing an empty string after the type qualifier:
+Similar to setting a [custom title](#changing-the-title), the icon and title
+can be omitted by providing an empty string after the type qualifier:
 
 Example:
 

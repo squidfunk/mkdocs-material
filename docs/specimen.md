@@ -184,3 +184,17 @@ Code can also be written within `fenced inline code blocks`, however syntax
 highlighting will only work on code listings.
 
 ## Tables
+
+| Feature / Implementation | protobluff | protobuf-c | nanopb  | lwpb | pbc |
+|--------------------------|------------|------------|---------|------|-----|
+| Message types            | yes        | yes        | yes     | yes  | yes |
+| Nested message types     | yes        | yes        | yes     | yes  | yes |
+| Cyclic message types     | yes        | yes        | partial | yes  | yes |
+| Scalar types             | yes        | yes        | yes     | yes  | yes |
+| Default values           | yes        | yes        | yes     | yes  | yes |
+| Enumerations             | yes        | yes        | yes     | yes  | yes |
+| Extensions               | yes        | -          | yes     | -    | yes |
+| Oneofs                   | yes        | yes        | yes     | -    | -   |
+| Packages                 | yes        | yes        | yes     | yes  | yes |
+| Packed option            | yes        | yes        | yes     | yes  | yes |
+| Deprecations             | yes        | partial    | -       | -    | -   |

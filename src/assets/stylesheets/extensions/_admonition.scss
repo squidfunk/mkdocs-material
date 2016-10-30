@@ -30,7 +30,7 @@
   padding: 0.8rem 1.2rem;
   border-left: 0.4rem solid $clr-blue-a200;
   border-radius: 0 0.2rem 0.2rem 0;
-  background: transparentize($clr-blue-a200, 0.95);
+  background: transparentize($clr-blue-a200, 0.9);
 
   // Title
   &-title {
@@ -88,7 +88,7 @@
     &%#{nth($names, 1)},
     &.#{nth($names, 1)} {
       border-color: $tint;
-      background: transparentize($tint, 0.95);
+      background: transparentize($tint, 0.9);
 
       // Set color for title
       .admonition-title {

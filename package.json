@@ -25,7 +25,7 @@
   "scripts": {
     "build": "./node_modules/.bin/gulp build --clean --optimize --revision",
     "clean": "./node_modules/.bin/gulp clean",
-    "pre-commit": "./node_modules/.bin/eslint . && ./node_modules/.bin/sass-lint -c .sass-lint.yml -vq",
+    "pre-commit": "./node_modules/.bin/sass-lint -c .sass-lint.yml -vq",
     "start": "./node_modules/.bin/gulp watch --no-lint",
     "test": "./node_modules/.bin/gulp test"
   },

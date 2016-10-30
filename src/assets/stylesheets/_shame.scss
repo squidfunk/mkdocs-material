@@ -24,6 +24,15 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// TODO today:
+// 1. refactor search JavaScript (production-ready, namespacing not important)
+// 2. include table styles
+// 3. make nav bar production ready (webkit overflow scrolling)
+// 4. refactor footnotes extension
+// TODO: Indexing... meta search result, always show!
+// TODO: offset error in table of contents on specimen on checklists stuff
+// --> breaks on multiple <a> tags
+
 @include break-to-device(tablet portrait) {
   .md-search-result__link {
     padding: 0 1.6rem;
@@ -36,11 +45,17 @@
 .md-search-result {
 
   &__meta {
+    background: $md-color-black--lightest;
     color: $md-color-black--light;
     padding-left: 4.8rem;
     padding-right: 1.6rem;
     line-height: 4.0rem;
     font-size: ms(-1);
+  }
+
+  &__item {
+
+    box-shadow: 0 -0.1rem 0 rgba(0, 0, 0, 0.07);
   }
 
   &__list {
@@ -51,7 +66,7 @@
   }
 
   &__link {
-    overflow: auto;
+    overflow: auto; // TODO: this must be here, because the inner margins may not collapse...
     display: block;
     padding-left: 4.8rem;
     padding-right: 1.6rem;
@@ -62,18 +77,25 @@
     }
   }
 
+  &__article {
+    margin: 1.0em 0;
+  }
+
   &__title {
     color: $md-color-black;
     font-size: ms(0);
+    font-weight: 400;
     line-height: 1.4;
     margin-top: 0.5em;
+    margin-bottom: 0;
   }
 
-  &__description {
+  &__teaser {
     color: $md-color-black--light;
     font-size: ms(-1);
     line-height: 1.4;
     margin: 0.5em 0;;
+    word-break: break-word;
   }
 }
 
@@ -223,12 +245,12 @@ del.critic {
             //  }
 }
 
-// Not critic-specific!
+// Not critic-specific, also used for code hilite!
 mark {
   background: #FFFF00;
   box-shadow: 0.4rem 0 0 #FFFF00,
              -0.4rem 0 0 #FFFF00; // ligher yellow...
-  overflow: auto; // TODO: remove this, just needed to rebuild
+  // overflow: auto; // TODO: remove this, just needed to rebuild
 }
 
 .critic.comment {
@@ -305,29 +327,4 @@ mark {
   color: #1EBB52;
 }
 
-.codehilite .hll {
-  background: #FFFF00;
-  display: block;
-  margin: 0 -16px;
-  padding: 0 16px;
-}
-
 // TODO: integrate stylelint and property order!
-
-
-.md-typeset {
-  sup {
-    // background: $md-color-black--lighter;
-    padding: 0 0.125em;
-    border-radius: 0.2em;
-    // font-weight: bold;
-    // color: $md-color-white;
-    &[id]:target {
-      background: orange;
-    }
-
-    a {
-      // color: white;
-    }
-  }
-}
