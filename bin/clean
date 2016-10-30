@@ -20,51 +20,12 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Check, if all changes are added to the index
-CWD_CLEAN="$(git diff-index HEAD --)"
-
-# This variables stores the state of the stash.
-#   0 = not restored yet.
-#   1 = stash was already reset
-STASH_POPPED=0
-
-# Pop the stash in case of trap
-function cleanup {
-  if test -n "$CWD_CLEAN"; then
-    if test "$STASH_POPPED" != 1 ; then
-      # Pop the changes (= stash) back to the work space
-      git stash pop -q
-	  fi
-  fi
-	exit
-}
-
-# Register signal handler
-trap cleanup SIGHUP SIGINT SIGTERM
-
-# Stash all changes that were not added to the commit
-if test -n "$CWD_CLEAN"; then
-  git stash -q --keep-index --include-untracked
-fi
-
-# Run the check and print indicator
-echo "Hook[pre-commit]: Running linter..."
-STD_OUT=$(npm run lint --silent)
-
-# Grab exit code of check
-HAD_ERROR=$?
-
-# Pop the changes (= stash) back to the work space
-if test -n "$CWD_CLEAN"; then
-  git stash pop -q
-  STASH_POPPED=1
-fi
-
-# In case of error, print output of check
-if test "$HAD_ERROR" != 0 ; then
-  echo ${STD_OUT}
+# Check if "npm install" was executed
+if [ ! -d ../node_modules ]; then
+  echo "\"node_modules\" not found:"
+  echo "npm install"
   exit 1
 fi
 
-# Reset indicator and exit
-exit 0
+# Run command
+$(pwd)/node_modules/.bin/gulp clean
