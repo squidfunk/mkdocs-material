@@ -52,9 +52,7 @@ class GithubSourceFacts {
     // Retrieve the facts, then invoke paint
     if (!facts) {
       fetch(this.apiRepoUrl)
-        .then(response => {
-          return response.json()
-        })
+        .then(response => response.json())
         .then(data => {
           const repoFacts = {
             stars: data.stargazers_count,

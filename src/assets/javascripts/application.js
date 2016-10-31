@@ -87,14 +87,11 @@ export default Application
 document.addEventListener("DOMContentLoaded", () => {
 
   /* Test for iOS */
-  Modernizr.addTest("ios", () => {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
-  })
+  Modernizr.addTest("ios", () =>
+    !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
 
   /* Test for web application context */
-  Modernizr.addTest("standalone", () => {
-    return !!navigator.standalone
-  })
+  Modernizr.addTest("standalone", () => !!navigator.standalone)
 
   /* Attack FastClick to mitigate 300ms delay on touch devices */
   FastClick.attach(document.body)
@@ -230,9 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // setTimeout(function() {
   fetch("/mkdocs/search_index.json") // TODO: prepend BASE URL!!!
-    .then(response => {
-      return response.json()
-    })
+    .then(response => response.json())
     .then(data => {
       // console.log(data)
 
@@ -250,9 +245,10 @@ document.addEventListener("DOMContentLoaded", () => {
       data.docs.forEach(article => {
 
             // TODO: match for two whitespaces, then replace unnecessary whitespace after string
-        article.text = article.text.replace(/\s(\.,\:)\s/gi, (string, g1) => {
-          return `${g1} `
-        })
+        article.text = article.text.replace(
+          /\s(\.,\:)\s/gi,
+          (string, g1) => `${g1} `
+        )
         // TODO: window.baseUrl sucks...
         article.location = window.baseUrl + article.location
         articles[article.location] = article
@@ -348,14 +344,5 @@ document.addEventListener("DOMContentLoaded", () => {
       // console.log("parsing failed", ex)
     })
 // }, 1000);
-
-  fetch(
-      "https://api.github.com/repos/squidfunk/mkdocs-material/releases/latest")
-    .then(response => {
-      return response.json()
-    })
-    // .then(data => {
-    //   // console.log(data)
-    // })
 
 })

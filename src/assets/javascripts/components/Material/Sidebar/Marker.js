@@ -47,9 +47,9 @@ export default class Marker extends Abstract {
     this.offset_ = window.pageYOffset
 
     /* Index anchor nodes for fast lookup */
-    this.anchors_ = [].map.call(this.els_, el => {
-      return document.querySelector(el.hash)
-    })
+    this.anchors_ = [].map.call(this.els_, el =>
+      document.querySelector(el.hash)
+    )
   }
 
   /**
