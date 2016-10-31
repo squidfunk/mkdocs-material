@@ -21,7 +21,7 @@
 # IN THE SOFTWARE.
 
 # Check if "npm install" was executed
-if [ ! -d ../node_modules ]; then
+if [[ ! -d ../node_modules ]]; then
   echo "\"node_modules\" not found:"
   echo "npm install"
   exit 1
