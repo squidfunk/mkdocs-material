@@ -23,11 +23,12 @@
     "url": "https://github.com/squidfunk/mkdocs-material.git"
   },
   "scripts": {
-    "build": "./node_modules/.bin/gulp build --clean --optimize --revision",
-    "clean": "./node_modules/.bin/gulp clean",
-    "pre-commit": "./node_modules/.bin/sass-lint -c .sass-lint.yml -vq",
-    "start": "./node_modules/.bin/gulp watch --no-lint",
-    "test": "./node_modules/.bin/gulp test"
+    "build": "$(npm bin)/gulp build --clean --optimize --revision",
+    "clean": "$(npm bin)/gulp clean",
+    "lint": "$(npm bin)/gulp lint",
+    "pre-commit": "npm run lint",
+    "start": "$(npm bin)/gulp watch --no-lint",
+    "test": "$(npm bin)/gulp test"
   },
   "dependencies": {
     "fastclick": "^1.0.6",
