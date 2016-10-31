@@ -92,7 +92,7 @@ gulp.src = (...glob) => {
  * Helper function to load a task
  */
 const load = task => {
-  require(`./${config.lib}/tasks/${task}`)(gulp, config, args)
+  return require(`./${config.lib}/tasks/${task}`)(gulp, config, args)
 }
 
 /* ----------------------------------------------------------------------------
