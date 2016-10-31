@@ -19,7 +19,7 @@
 # IN THE SOFTWARE.
 
 language: node_js
-sudo: true
+sudo: false
 
 # Node.js versions
 node_js:
@@ -38,7 +38,7 @@ addons:
 
 # Install dependencies
 before_script:
-  - sudo pip install -r requirements.txt
+  - pip install --user -r requirements.txt
 
 # Perform build and tests
 script: npm run build
