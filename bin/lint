@@ -27,5 +27,18 @@ if [ ! -d ../node_modules ]; then
   exit 1
 fi
 
-# Run command
+# Run ESLint
+$(pwd)/node_modules/.bin/eslint .
+ESLINT=$?
+
+# Run Sass-Lint
 $(pwd)/node_modules/.bin/sass-lint -c .sass-lint.yml -vq
+SASSLINT=$?
+
+# If one command failed, exit with error
+if [ $ESLINT == 1 ] || [ $SASSLINT == 1 ]; then
+  exit 1
+fi;
+
+# Otherwise return with success
+exit 0

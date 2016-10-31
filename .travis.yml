@@ -39,7 +39,6 @@ addons:
 # Install dependencies
 before_script:
   - sudo pip install -r requirements.txt
-  - npm install
 
 # Perform build and tests
 script: npm run build

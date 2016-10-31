@@ -22,7 +22,6 @@
 
 # Check if "npm install" was executed
 if [ ! -d $(pwd)/node_modules ]; then
-  ls $(pwd)
   echo "\"node_modules\" not found:"
   echo "npm install"
   exit 1

@@ -1,4 +1,7 @@
 /build
 /material
 /site
-/lib
+
+# Temporary
+/tests/regression
+/lib/tasks/tests/regression
