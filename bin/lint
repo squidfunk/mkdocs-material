@@ -20,19 +20,22 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# Resolve root directory
+ROOT=$(dirname $0)/..
+
 # Check if "npm install" was executed
-if [[ ! -d $(pwd)/node_modules ]]; then
+if [[ ! -d $ROOT/node_modules ]]; then
   echo "\"node_modules\" not found:"
   echo "npm install"
   exit 1
 fi
 
 # Run ESLint
-$(pwd)/node_modules/.bin/eslint .
+$ROOT/node_modules/.bin/eslint .
 ESLINT=$?
 
 # Run Sass-Lint
-$(pwd)/node_modules/.bin/sass-lint -c .sass-lint.yml -vq
+$ROOT/node_modules/.bin/sass-lint -c .sass-lint.yml -vq
 SASSLINT=$?
 
 # If one command failed, exit with error

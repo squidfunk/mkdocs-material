@@ -20,12 +20,15 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# Resolve root directory
+ROOT=$(dirname $0)/..
+
 # Check if "npm install" was executed
-if [[ ! -d $(pwd)/node_modules ]]; then
+if [[ ! -d $ROOT/node_modules ]]; then
   echo "\"node_modules\" not found:"
   echo "npm install"
   exit 1
 fi
 
 # Run command
-$(pwd)/node_modules/.bin/gulp clean
+$ROOT/node_modules/.bin/gulp clean
