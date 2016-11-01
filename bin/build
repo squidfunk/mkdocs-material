@@ -21,7 +21,7 @@
 # IN THE SOFTWARE.
 
 # Resolve root directory
-ROOT=$(dirname $0)/..
+ROOT=`dirname $0`/..
 
 # Check if "npm install" was executed
 if [[ ! -d $ROOT/node_modules ]]; then
