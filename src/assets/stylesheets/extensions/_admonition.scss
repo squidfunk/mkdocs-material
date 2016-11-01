@@ -26,19 +26,29 @@
 
 // Admonition extension
 .admonition {
+  position: relative;
   margin: 2.0rem 0;
   padding: 0.8rem 1.2rem;
-  border-left: 0.4rem solid $clr-blue-a200;
-  border-radius: 0 0.2rem 0.2rem 0;
-  background: transparentize($clr-blue-a200, 0.9);
+  border-left: 3.2rem solid transparentize($clr-blue-a200, 0.6);
+  border-radius: 0.2rem;
+  background: transparentize($clr-blue-a200, 0.85);
+  font-size: ms(-1);
+
+  // Icon
+  &::before {
+    @extend %md-icon;
+
+    position: absolute;
+    left: -2.6rem;
+    color: $md-color-white;
+    font-size: 2.0rem;
+    content: "edit";
+    vertical-align: -0.25em;
+  }
 
   // Title
   &-title {
-    color: $clr-blue-a400;
-    font-size: ms(-1);
     font-weight: 700;
-    line-height: 2;
-    text-transform: uppercase;
 
     // Remove bottom spacing for title
     html & {
@@ -48,16 +58,6 @@
     // Remove top spacing for first element following title
     html & + * {
       margin-top: 0;
-    }
-
-    // Icon
-    &::before {
-      @extend %md-icon;
-
-      margin-right: 0.45em;
-      font-size: 2.0rem;
-      content: "edit";
-      vertical-align: -0.25em;
     }
   }
 
@@ -87,17 +87,12 @@
     // Define base class
     &%#{nth($names, 1)},
     &.#{nth($names, 1)} {
-      border-color: $tint;
-      background: transparentize($tint, 0.9);
+      border-color: transparentize($tint, 0.6);
+      background: transparentize($tint, 0.85);
 
-      // Set color for title
-      .admonition-title {
-        color: $tint;
-
-        // Icon
-        &::before {
-          content: $icon;
-        }
+      // Icon
+      &::before {
+        content: $icon;
       }
     }
 
