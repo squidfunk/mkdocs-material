@@ -51,9 +51,18 @@ markdown_extensions:
   - markdown.extensions.codehilite(guess_lang=false)
   - markdown.extensions.footnotes
   - markdown.extensions.meta
-  - markdown.extensions.toc:
-      permalink: '¶'
+  - markdown.extensions.toc(permalink=true)
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
   - pymdownx.superfences
+  - pymdownx.tasklist(custom_checkbox=true)
+  - pymdownx.tilde
+
 
 # Page tree
 pages:
@@ -63,7 +72,10 @@ pages:
     - Admonition: extensions/admonition.md
     - Codehilite: extensions/codehilite.md
     - Footnotes: extensions/footnotes.md
+    - Metadata: extensions/metadata.md
     - Permalinks: extensions/permalinks.md
+    - PyMdown:
+      - Overview: extensions/pymdown/overview.md
   - Specimen: specimen.md
   - Customization: customization.md
   - License: license.md

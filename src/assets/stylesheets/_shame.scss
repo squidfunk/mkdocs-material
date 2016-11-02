@@ -25,10 +25,10 @@
 // ----------------------------------------------------------------------------
 
 // TODO today:
-// 1. refactor search JavaScript (production-ready, namespacing not important)
+// x refactor search JavaScript (production-ready, namespacing not important)
+// x refactor footnotes extension
 // 2. include table styles
 // 3. make nav bar production ready (webkit overflow scrolling)
-// 4. refactor footnotes extension
 // TODO: Indexing... meta search result, always show!
 // TODO: offset error in table of contents on specimen on checklists stuff
 // --> breaks on multiple <a> tags
@@ -104,106 +104,31 @@
 //   @include z-depth(1);
 // }
 
-
-// // add light border for more contrast
-// .md-typeset pre {
-//   border: 1px solid rgba(0,0,0,0.0125);
-// }
-
-
-// .md-search__suggest {
+// .checklist {
 //
-//
-//   background: $md-color-white;
-//   border-radius: 0 0 0.3rem 0.3rem;
-//   color: #000000;
-//   text-align: left;
-//   border-top: 0.1rem solid $md-color-black--lightest;
-//   display: none; // TODO: doesnt work due to display: none;
-//   opacity: 0;
-//
-//   // overflow: auto;
-//   transition: opacity .3s;
-//   // pointer-events: none;
-//
-//
-//   .md-search__input:focus ~ & {
-//     // animation: anima .3s;
-//     display: block;
-//     opacity: 1;
-//   }
-// }
-
-// TODO: only on tablet and bind to search active state!
-// .md-search__input:focus {
-//   border-radius: 0.3rem 0.3rem 0 0;
-// }
-
-// @include break-to-device(mobile landscape) {
-//
-//   .md-search__suggest {
+//   li {
 //     position: relative;
-//     z-index: 2;
+//     list-style-type: none;
+//
+//     &::before {
+//       @extend %md-icon;
+//
+//       position: absolute;
+//       appearance: none;
+//       color: blue;
+//
+//       content: "check_box";
+//       font-size: 2.4rem;
+//     }
+//   }
+//
+//   input[type="checkbox"]:checked {
+//     width: 20px;
+//     // & ~ .checklist li::after {
+//     //   color: red;
+//     // }
 //   }
 // }
-//
-// .md-search-term {
-//   position: relative;
-//   padding: 0 0.8rem 0 4.8rem;
-//   line-height: 4.0rem; // don't use line height????
-//   font-size: 1.6rem;
-//
-//   &::before {
-//     @extend %md-icon;
-//
-//     position: absolute;
-//
-//     content: "access_time";
-//     font-size: 2.4rem;
-//     line-height: 4.0rem; // this sucks...
-//     left: 1.2rem;
-//     color: $md-color-black--lighter;
-//   }
-//   transition: background .25s;
-//   cursor: pointer;
-//   &:hover {
-//     background: mix($md-color-white, $md-color-primary, 90%);
-//   }
-// }
-
-
-
-
-
-
-
-
-
-.checklist {
-
-  li {
-    position: relative;
-    list-style-type: none;
-
-    &::before {
-      @extend %md-icon;
-
-      position: absolute;
-      appearance: none;
-      color: blue;
-
-      content: "check_box";
-      font-size: 2.4rem;
-    }
-  }
-
-  input[type="checkbox"]:checked {
-    width: 20px;
-    // & ~ .checklist li::after {
-    //   color: red;
-    // }
-  }
-}
 
 // Inline code blocks
 ins.critic, del.critic, mark {
@@ -286,43 +211,49 @@ mark {
 }
 
 .task-list-item {
-  list-style-type: none;
-}
-
-.task-list-item input {
-  margin: 0 4px 0.25em -20px;
-  vertical-align: middle;
-}
-//
-//
-//
-.task-list-item {
-  position: relative;
+  list-style-type: none !important;
 }
 
 .task-list-item input[type="checkbox"] {
-  opacity: 0;
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
 }
 
-.task-list-item input[type="checkbox"] + label {
-  display: block;
+.task-list-control {
+  display: inline; /* Ensure label is inline incase theme sets it to block.*/
+}
+
+.task-list-control {
+  position: relative;
+  display: inline-block;
+  color: #555;
+  cursor: pointer;
+}
+
+.task-list-control input[type="checkbox"] {
   position: absolute;
-  top: 50%;
-  left: -24px;
-  width: 16px;
-  margin-top: -8px;
-  height: 16px;
-  border-radius: 2px;
-  background: #CCC;
+  opacity: 0;
+  z-index: -1; /* Put the input behind the label so it doesn't overlay text */
 }
 
-.task-list-item input[type="checkbox"]:checked + label::before {
+.task-list-indicator {
+  position: absolute;
+  top: -8px;
+  left: -18px;
+  display: block;
+  width:  14px;
+  height: 14px;
+  color: #eee;
+  background-color: #eee;
+  border-radius: .25rem;
+}
+
+.task-list-control input[type="checkbox"]:checked + .task-list-indicator::before {
   display: block;
   margin-top: -4px;
   margin-left: 2px;
-  font-size: 1.2em;
+  font-size: 16px;
   line-height: 1;
-  border-radius: 2px;
   content: "✔";
   color: #1EBB52;
 }

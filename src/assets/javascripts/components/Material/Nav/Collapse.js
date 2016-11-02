@@ -20,79 +20,71 @@
  * IN THE SOFTWARE.
  */
 
-import Abstract from "./Abstract"
-
 /* ----------------------------------------------------------------------------
  * Definition
  * ------------------------------------------------------------------------- */
 
-export default class Position extends Abstract {
+export default class Collapse {
 
   /**
-   * Set sidebars to locked state and limit height to parent node
+   * Expand or collapse navigation on toggle
    *
    * @constructor
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    super()
-
-    /* Resolve elements */
     this.el_ = (typeof el === "string")
       ? document.querySelector(el)
       : el
-
-    /* Index inner and outer container */
-    const inner = this.el_.parentNode
-    const outer = this.el_.parentNode.parentNode
-
-    /* Get top and bottom bounds */
-    this.offset_ = outer.offsetTop
-    this.bounds_ = {
-      top: inner.offsetTop,
-      bottom: inner.offsetTop + inner.offsetHeight
-    }
-
-    /* Initialize current height */
-    this.height_ = 0
   }
 
   /**
-   * Update locked state and height
-   *
-   * @param {Event} ev - Event (omitted)
+   * Make expand and collapse transition smoothly
    */
   update() {
-    const scroll = window.pageYOffset
-    const expand = window.innerHeight
+    const current = this.el_.getBoundingClientRect().height
 
-    /* Calculate new bounds */
-    const offset = this.bounds_.top - scroll
-    const height = expand
-                 - Math.max(0, scroll + expand - this.bounds_.bottom)
-                 - Math.max(offset, this.offset_)
+    /* Expanded, so collapse */
+    if (current) {
+      this.el_.style.maxHeight = `${current}px`
+      requestAnimationFrame(() => {
+        this.el_.dataset.mdAnimated = ""
+        this.el_.style.maxHeight = "0px"
+      })
 
-    /* If height changed, update element */
-    if (height !== this.height_)
-      this.el_.style.height = `${this.height_ = height}px`
+    /* Collapsed, so expand */
+    } else {
+      this.el_.style.maxHeight = ""
+      this.el_.dataset.mdExpanded = ""
 
-    /* Sidebar should be locked, as we're below parent offset */
-    if (offset < this.offset_) {
-      if (!this.el_.dataset.mdLocked)
-        this.el_.dataset.mdLocked = ""
+      /* Read height and unset pseudo-toggled state */
+      const height = this.el_.getBoundingClientRect().height
+      delete this.el_.dataset.mdExpanded
 
-    /* Sidebar should be unlocked, if locked */
-    } else if (typeof this.el_.dataset.mdLocked === "string") {
-      delete this.el_.dataset.mdLocked
+      /* Set initial state and animate */
+      this.el_.style.maxHeight = "0px"
+      requestAnimationFrame(() => {
+        this.el_.dataset.mdAnimated = ""
+        this.el_.style.maxHeight = `${height}px`
+      })
     }
+
+    /* Remove state on end of transition */
+    const end = function(ev) {
+      delete ev.target.dataset.mdAnimated
+      ev.target.style.maxHeight = ""
+
+      /* Only fire once, so remove event listener again */
+      ev.target.removeEventListener("transitionend", end, false)
+    }
+    this.el_.addEventListener("transitionend", end, false)
   }
 
   /**
-   * Reset locked state and height
+   * Nothing to reset
    */
   reset() {
-    delete this.el_.dataset.mdLocked
-    this.el_.style.height = ""
-    this.height_ = 0
+    this.el_.style.maxHeight = ""
+    delete this.el_.dataset.mdToggled
   }
 }

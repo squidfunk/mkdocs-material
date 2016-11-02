@@ -20,57 +20,21 @@
  * IN THE SOFTWARE.
  */
 
-import chai from "chai"
+import Abstract from "../Abstract"
 
-import Marker from
-  "../../src/assets/javascripts/components/Material/Sidebar/Marker"
+/* ----------------------------------------------------------------------------
+ * Definition
+ * ------------------------------------------------------------------------- */
 
-describe("Karma test runner", function() {
-  chai.should()
+export default class Offset extends Abstract {
 
-  // TODO: sandbox shit! should be okay once?
-  beforeEach(function() {
-
-    for (let i = 0; i < 25; i++)
-      document.body.appendChild(
-        <p id={`anchor_${i + 1}`}>{i + 1}</p>
-      )
-
-    document.body.appendChild(
-      <ul>
-        {[...Array(25)].map((_, i) => {
-          return (
-            <li>
-              <a href={`#anchor_${i + 1}`}>{i + 1}</a>
-            </li>
-          )
-        })}
-      </ul>
-    )
-  })
-
-  it("should compile JSX correctly",
-    shouldCompileJSXCorrectly)
-})
-
-// iframe?
-function shouldCompileJSXCorrectly(cb) {
-  const marker = new Marker("a")
-  marker.listen()
-
-  // window.location.hash = "#_5"
-  // window.addEventListener("hashchange", function(e) {
-  //   console.log(document.querySelectorAll("[data-md-marked]"))
-  //   cb()
-  // })
-  window.scrollTo(200, 200)
-  setTimeout(() => {
-    console.log(document.querySelectorAll("[data-md-marked]"))
-    cb()
-  }, 100)
-
-  // console.log(marker)
-  // return true
-
+  /**
+   * Listener which monitors changes to the offset of the viewport
+   *
+   * @constructor
+   * @param {Function} handler - Event handler to execute
+   */
+  constructor(handler) {
+    super(window, ["scroll"], handler)
+  }
 }
-

@@ -20,68 +20,16 @@
  * IN THE SOFTWARE.
  */
 
+import Media from "./Viewport/Media"
+import Offset from "./Viewport/Offset"
+import Resize from "./Viewport/Resize"
+
 /* ----------------------------------------------------------------------------
- * Definition
+ * Module
  * ------------------------------------------------------------------------- */
 
-export default class Abstract {
-
-  /**
-   * Dispatch update on next repaint
-   *
-   * @constructor
-   */
-  constructor() {
-    if (this === Abstract)
-      throw new TypeError("Cannot construct abstract instance")
-
-    /* Dispatch update on next repaint */
-    this.handler_ = ev => {
-      window.requestAnimationFrame(() => {
-        this.update(ev)
-      })
-    }
-  }
-
-  /**
-   * Update state
-   *
-   * @abstract
-   */
-  update() {
-    throw new Error("update(): not implemented")
-  }
-
-  /**
-   * Reset state
-   *
-   * @abstract
-   */
-  reset() {
-    throw new Error("reset(): not implemented")
-  }
-
-  /**
-   * Register listener for all relevant events
-   */
-  listen() {
-    ["scroll", "resize", "orientationchange"].forEach(name => {
-      window.addEventListener(name, this.handler_, false)
-    })
-
-    /* Initial update */
-    this.update()
-  }
-
-  /**
-   * Unregister listener for all relevant events
-   */
-  unlisten() {
-    ["scroll", "resize", "orientationchange"].forEach(name => {
-      window.removeEventListener(name, this.handler_, false)
-    })
-
-    /* Final reset */
-    this.reset()
-  }
+export default {
+  Media,
+  Offset,
+  Resize
 }

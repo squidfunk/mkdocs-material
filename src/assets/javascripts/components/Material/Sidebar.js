@@ -20,14 +20,72 @@
  * IN THE SOFTWARE.
  */
 
-import Marker from "./Sidebar/Marker"
-import Position from "./Sidebar/Position"
-
 /* ----------------------------------------------------------------------------
  * Definition
  * ------------------------------------------------------------------------- */
 
-export default {
-  Marker,
-  Position
+export default class Sidebar {
+
+  /**
+   * Set sidebars to locked state and limit height to parent node
+   *
+   * @constructor
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   */
+  constructor(el) {
+    this.el_ = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+
+    /* Index inner and outer container */
+    const inner = this.el_.parentNode
+    const outer = this.el_.parentNode.parentNode
+
+    /* Get top and bottom bounds */
+    this.offset_ = outer.offsetTop
+    this.bounds_ = {
+      top: inner.offsetTop,
+      bottom: inner.offsetTop + inner.offsetHeight
+    }
+
+    /* Initialize current height */
+    this.height_ = 0
+  }
+
+  /**
+   * Update locked state and height
+   */
+  update() {
+    const scroll = window.pageYOffset
+    const expand = window.innerHeight
+
+    /* Calculate new bounds */
+    const offset = this.bounds_.top - scroll
+    const height = expand
+                 - Math.max(0, scroll + expand - this.bounds_.bottom)
+                 - Math.max(offset, this.offset_)
+
+    /* If height changed, update element */
+    if (height !== this.height_)
+      this.el_.style.height = `${this.height_ = height}px`
+
+    /* Sidebar should be locked, as we're below parent offset */
+    if (offset < this.offset_) {
+      if (!this.el_.dataset.mdLocked)
+        this.el_.dataset.mdLocked = ""
+
+    /* Sidebar should be unlocked, if locked */
+    } else if (typeof this.el_.dataset.mdLocked === "string") {
+      delete this.el_.dataset.mdLocked
+    }
+  }
+
+  /**
+   * Reset locked state and height
+   */
+  reset() {
+    delete this.el_.dataset.mdLocked
+    this.el_.style.height = ""
+    this.height_ = 0
+  }
 }

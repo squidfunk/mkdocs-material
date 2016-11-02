@@ -20,56 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import Nav from "./Material/Nav"
-import Search from "./Material/Search"
-import Listener from "./Material/Listener"
-import Sidebar from "./Material/Sidebar"
+import Blur from "./Nav/Blur"
+import Collapse from "./Nav/Collapse"
 
 /* ----------------------------------------------------------------------------
  * Module
  * ------------------------------------------------------------------------- */
 
 export default {
-  Nav,
-  Search,
-  Listener,
-  Sidebar
+  Blur,
+  Collapse
 }
-
-/* ----------------------------------------------------------------------------
- * Definition
- * ------------------------------------------------------------------------- */
-
-// export default class Material {
-//
-
-//
-
-//
-//   static initializeSearch() {
-//
-//   }
-//
-//   /**
-//    * Initialize all components
-//    */
-//   static initialize() {
-//
-//     const search = new Search.Lock("#search", () => {
-//       document.getElementById("query").focus()
-//     })
-//     search.listen() // TODO when this is commented out, focusing the search somehow breaks things...
-//
-//     const searchx = document.getElementById("search")
-//     const initialize = () => {
-//       const foo = new Search.Index()
-//       console.log(foo)
-//
-//       searchx.removeEventListener("change", initialize)
-//     }
-//     searchx.addEventListener("change", initialize)
-//     console.log(searchx)
-//
-//     // TODO nav bar is blurry until 959px, when expanded...
-//   }
-// }

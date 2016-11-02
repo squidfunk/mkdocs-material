@@ -55,4 +55,7 @@
 @import "extensions/footnotes";
 @import "extensions/permalinks";
 
+@import "extensions/pymdown/critic";
+@import "extensions/pymdown/tasklist";
+
 @import "shame";

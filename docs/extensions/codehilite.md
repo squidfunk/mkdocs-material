@@ -11,7 +11,7 @@ installed, which is a generic syntax highlighter with support for over
 [300 languages][], CodeHilite will also highlight the code block. Pygments can
 be installed with the following command:
 
-``` bash
+``` sh
 pip install pygments
 ```
 
@@ -158,7 +158,7 @@ over [300 languages][], so the following list of examples is just an excerpt.
 ### Bash
 
 ``` bash
-#!/bin/sh
+#!/bin/bash
 
 for OPT in "$@"
 do

@@ -20,24 +20,19 @@
  * IN THE SOFTWARE.
  */
 
-import Abstract from "./Abstract"
-
 /* ----------------------------------------------------------------------------
  * Definition
  * ------------------------------------------------------------------------- */
 
-export default class Marker extends Abstract {
+export default class Blur {
 
   /**
-   * Mark anchors within the table of contents above current page y-offset
+   * Blur anchors within the navigation above current page y-offset
    *
    * @constructor
    * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
    */
   constructor(els) {
-    super()
-
-    /* Resolve elements */
     this.els_ = (typeof els === "string")
       ? document.querySelectorAll(els)
       : els
@@ -54,8 +49,6 @@ export default class Marker extends Abstract {
 
   /**
    * Update anchor states
-   *
-   * @param {Event} ev - Event (omitted)
    */
   update() {
     const offset = window.pageYOffset
@@ -65,7 +58,7 @@ export default class Marker extends Abstract {
       for (let i = this.index_ + 1; i < this.els_.length; i++) {
         if (this.anchors_[i].offsetTop <= offset) {
           if (i > 0)
-            this.els_[i - 1].dataset.mdMarked = ""
+            this.els_[i - 1].dataset.mdBlurred = ""
           this.index_ = i
         } else {
           break
@@ -77,7 +70,7 @@ export default class Marker extends Abstract {
       for (let i = this.index_; i >= 0; i--) {
         if (this.anchors_[i].offsetTop > offset) {
           if (i > 0)
-            delete this.els_[i - 1].dataset.mdMarked
+            delete this.els_[i - 1].dataset.mdBlurred
         } else {
           this.index_ = i
           break
@@ -94,7 +87,7 @@ export default class Marker extends Abstract {
    */
   reset() {
     [].forEach.call(this.els_, el => {
-      delete el.dataset.mdMarked
+      delete el.dataset.mdBlurred
     })
   }
 }

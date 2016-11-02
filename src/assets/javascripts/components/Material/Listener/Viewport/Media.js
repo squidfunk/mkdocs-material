@@ -20,56 +20,38 @@
  * IN THE SOFTWARE.
  */
 
-import Nav from "./Material/Nav"
-import Search from "./Material/Search"
-import Listener from "./Material/Listener"
-import Sidebar from "./Material/Sidebar"
-
-/* ----------------------------------------------------------------------------
- * Module
- * ------------------------------------------------------------------------- */
-
-export default {
-  Nav,
-  Search,
-  Listener,
-  Sidebar
-}
-
 /* ----------------------------------------------------------------------------
  * Definition
  * ------------------------------------------------------------------------- */
 
-// export default class Material {
-//
+export default class Media {
 
-//
+  /**
+   * Listener which checks for media queries on dimension changes
+   *
+   * @constructor
+   * @param {string} query - Media query
+   * @param {Function} handler - Event handler to execute
+   */
+  constructor(query, handler) {
+    this.media_   = window.matchMedia(query)
+    this.handler_ = media => {
+      handler(media)
+    }
+  }
 
-//
-//   static initializeSearch() {
-//
-//   }
-//
-//   /**
-//    * Initialize all components
-//    */
-//   static initialize() {
-//
-//     const search = new Search.Lock("#search", () => {
-//       document.getElementById("query").focus()
-//     })
-//     search.listen() // TODO when this is commented out, focusing the search somehow breaks things...
-//
-//     const searchx = document.getElementById("search")
-//     const initialize = () => {
-//       const foo = new Search.Index()
-//       console.log(foo)
-//
-//       searchx.removeEventListener("change", initialize)
-//     }
-//     searchx.addEventListener("change", initialize)
-//     console.log(searchx)
-//
-//     // TODO nav bar is blurry until 959px, when expanded...
-//   }
-// }
+  /**
+   * Register listener for media query check
+   */
+  listen() {
+    this.media_.addListener(this.handler_)
+    this.handler_(this.media_)
+  }
+
+  /**
+   * Unregister listener for media query check
+   */
+  unlisten() {
+    this.media_.removeListener(this.handler_)
+  }
+}

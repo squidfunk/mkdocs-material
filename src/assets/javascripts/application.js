@@ -25,7 +25,6 @@
  * ------------------------------------------------------------------------- */
 
 import FastClick from "fastclick"
-import lunr from "lunr"
 
 // import Expander from "./components/expander"
 
@@ -48,22 +47,107 @@ class Application {
    * @return {void}
    */
   constructor(config) {
-    this.config = config
+    this.config_ = config
   }
 
   /**
-   * @return {void}
+   * Initialize all components
    */
   initialize() {
-    const material = new Material()
-    material.initialize()
 
+    /* Initialize sticky sidebars */
+    this.initializeSidebar("[data-md-sidebar=primary]", "(min-width: 1200px)")
+    this.initializeSidebar("[data-md-sidebar=secondary]")
+
+    /* Initialize navigation style modifiers */
+    this.initializeNavBlur("[data-md-sidebar=secondary] .md-nav__link")
+    this.initializeNavCollapse("[data-md-collapse]", "(min-width: 1200px)")
+
+    // TODO
     if (this.hasGithubRepo()) {
       const githubSource = new GithubSourceFacts(
-        this.config.storage,
-        this.config.repo.url
+        this.config_.storage,
+        this.config_.repo.url
       )
       githubSource.initialize()
+    }
+
+  }
+
+  /**
+   * Initialize sidebar within optional media query range
+   *
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   * @param {string} [query] - Media query
+   */
+  initializeSidebar(el, query = null) {
+    const sidebar = new Material.Sidebar(el)
+    const listeners = [
+      new Material.Listener.Viewport.Offset(() => sidebar.update()),
+      new Material.Listener.Viewport.Resize(() => sidebar.update())
+    ]
+
+    /* Initialize depending on media query */
+    if (typeof query === "string" && query.length) {
+      new Material.Listener.Viewport.Media(query, media => {
+        if (media.matches) {
+          sidebar.update()
+          for (const listener of listeners)
+            listener.listen()
+        } else {
+          sidebar.reset()
+          for (const listener of listeners)
+            listener.unlisten()
+        }
+      }).listen()
+
+    /* Initialize without media query */
+    } else {
+      sidebar.update()
+      for (const listener of listeners)
+        listener.listen()
+    }
+  }
+
+  /**
+   * Initialize blurring of anchors above page y-offset
+   *
+   * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
+   */
+  initializeNavBlur(els) {
+    const blur = new Material.Nav.Blur(els)
+    const listeners = [
+      new Material.Listener.Viewport.Offset(() => blur.update())
+    ]
+
+    /* Initialize blur and listeners */
+    blur.update()
+    for (const listener of listeners)
+      listener.listen()
+  }
+
+  /**
+   * Initialize collapsible nested navigation elements
+   *
+   * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
+   * @param {string} [query] - Media query
+   */
+  initializeNavCollapse(els, query = null) {
+    const collapsibles = document.querySelectorAll(els)
+    for (const collapsible of collapsibles) {
+      const collapse = new Material.Nav.Collapse(collapsible)
+      const listener = new Material.Listener.Toggle(
+        collapsible.previousElementSibling, () => collapse.update())
+
+      /* Initialize depending on media query */
+      new Material.Listener.Viewport.Media(query, media => {
+        if (media.matches) {
+          listener.listen()
+        } else {
+          collapse.reset()
+          listener.unlisten()
+        }
+      }).listen()
     }
   }
 
@@ -73,12 +157,39 @@ class Application {
    * @return {bool} - true if `repo.icon` or `repo.url` contains 'github'
    */
   hasGithubRepo() {
-    return this.config.repo.icon === "github"
-      || this.config.repo.url.includes("github")
+    return this.config_.repo.icon === "github"
+      || this.config_.repo.url.includes("github")
   }
 }
 
 export default Application
+
+// const consume = reader =>  {
+//   let total = 0, body = ""
+//   return new Promise((resolve, reject) => {
+//     function pump() {
+//       reader.read().then(({ done, value }) => {
+//         if (done) {
+//           console.log(body)
+//           resolve()
+//           return
+//         }
+//         total += value.byteLength
+//         // value +=
+//         body += value
+//         console.log(`received ${value.byteLength}, total: ${total}`)
+//         pump()
+//       })
+//       .catch(reject)
+//     }
+//     pump()
+//   })
+// }
+//
+// fetch("/mkdocs/search_index.json")
+//   .then(res => consume(res.body.getReader()))
+//   .then(() => console.log("consumed entire body"))
+//   .catch(e => console.log(e))
 
 // TODO: wrap in function call
 // application module export
@@ -99,61 +210,13 @@ document.addEventListener("DOMContentLoaded", () => {
   /* Attack FastClick to mitigate 300ms delay on touch devices */
   FastClick.attach(document.body)
 
-  const query = document.getElementById("query")
   // query.addEventListener("focus", () => {
   //   document.querySelector(".md-search").dataset.mdLocked = ""
   // })
 
   /* Intercept click on search mode toggle */
-  // const offset = 0
-  // const toggle = document.getElementById("search")
-  // toggle.addEventListener("click", () => {
-  //   const list = document.body // classList md bla
-  //   const lock = !matchMedia("only screen and (min-width: 960px)").matches
-  //
-  //   /* Exiting search mode */
-  //   if (list.dataset.mdLocked) {
-  //     delete list.dataset.mdLocked
-  //
-  //     /* Scroll to former position, but wait for 100ms to prevent flashes
-  //        on iOS. A short timeout seems to do the trick */
-  //     if (lock)
-  //       setTimeout(() => {
-  //         window.scrollTo(0, offset)
-  //       }, 100)
-  //
-  //   /* Entering search mode */
-  //   } else {
-  //     offset = window.scrollY
-  //
-  //     /* First timeout: scroll to top after transition, to omit flickering */
-  //     if (lock)
-  //       setTimeout(() => {
-  //         window.scrollTo(0, 0)
-  //       }, 400)
-  //
-  //     /* Second timeout: Lock body after finishing transition and scrolling
-  //        to top and focus input field. Sadly, the focus event is not
-  //        dispatched on iOS Safari and there's nothing we can do about it. */
-  //     setTimeout(() => {
-  //
-  //       /* This additional check is necessary to handle fast subsequent
-  //          clicks on the toggle and the timeout to lock the body must be
-  //          cancelled */
-  //       // if (ev.target.checked) {
-  //       if (lock)
-  //         list.dataset.mdLocked = ""
-  //       setTimeout(() => {
-  //         document.getElementById("query").focus()
-  //       }, 200)
-  //       // }
-  //     }, 450)
-  //   }
-  // })
 
-  // TODO: only do this on MOBILE and TABLET
-  // const toggleSearchClose = document.querySelector(".md-search__icon")
-  // toggleSearchClose.setAttribute("for", "search")                               // TODO: override query with search, when on mobile!!!
+  // TODO: this needs to be abstracted...
   document.getElementById("query").addEventListener("focus", () => {
     document.getElementById("search").checked = true
   })
@@ -176,177 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
   //   search.checked = false
   // })
 
-  // var toc = new Sidebar('.md-sidebar--secondary');
-  // toc.listen();
-
-  const toggles =
-    document.querySelectorAll(".md-nav__item--nested > .md-nav__link");
-  [].forEach.call(toggles, togglex => {
-    const nav = togglex.nextElementSibling
-
-    // 1.
-
-    nav.style.maxHeight = `${nav.getBoundingClientRect().height}px`
-
-    togglex.addEventListener("click", () => {
-      const first = nav.getBoundingClientRect().height
-      if (first) {
-        // console.log('closing');
-        nav.style.maxHeight = `${first}px` // reset!
-        requestAnimationFrame(() => {
-
-          nav.classList.add("md-nav--transitioning")
-          nav.style.maxHeight = "0px"
-        })
-      } else {
-        // console.log('opening');
-
-        /* Toggle and read height */
-        nav.style.maxHeight = ""
-
-        nav.classList.add("md-nav--toggled")
-        const last = nav.getBoundingClientRect().height
-        nav.classList.remove("md-nav--toggled")
-
-        // Initial state
-        nav.style.maxHeight = "0px"
-
-        /* Enable animations */
-        requestAnimationFrame(() => {
-          nav.classList.add("md-nav--transitioning")
-          nav.style.maxHeight = `${last}px`
-        })
-      }
-    })
-
-    // Capture the end with transitionend
-    nav.addEventListener("transitionend", ev => {
-      ev.target.classList.remove("md-nav--transitioning")
-      if (ev.target.getBoundingClientRect().height > 0) {
-        ev.target.style.maxHeight = "100%"
-      }
-    })
-  })
-
-// setTimeout(function() {
-  fetch("/mkdocs/search_index.json") // TODO: prepend BASE URL!!!
-    .then(response => {
-      return response.json()
-    })
-    .then(data => {
-      // console.log(data)
-
-          /* Create index */
-      const index = lunr(function() {
-        /* eslint-disable no-invalid-this, lines-around-comment */
-        this.field("title", { boost: 10 })
-        this.field("text")
-        this.ref("location")
-        /* eslint-enable no-invalid-this, lines-around-comment */
-      })
-
-          /* Index articles */
-      const articles = {}
-      data.docs.forEach(article => {
-
-            // TODO: match for two whitespaces, then replace unnecessary whitespace after string
-        article.text = article.text.replace(/\s(\.,\:)\s/gi, (string, g1) => {
-          return `${g1} `
-        })
-        // TODO: window.baseUrl sucks...
-        article.location = window.baseUrl + article.location
-        articles[article.location] = article
-        index.add(article)
-      })
-
-          /* Register keyhandler to execute search on key up */
-      const queryx = document.getElementById("query")
-      queryx.addEventListener("keyup", () => {
-        const container = document.querySelector(".md-search-result__list")
-        while (container.firstChild)
-          container.removeChild(container.firstChild)
-
-            // /* Abort, if the query is empty */
-            // var bar = document.querySelector('.bar.search');
-            // if (!query.value.length) {
-            //   while (meta.firstChild)
-            //     meta.removeChild(meta.firstChild);
-            //
-            //   /* Restore state */
-            //   bar.classList.remove('non-empty');
-            //   return;
-            // }
-
-            /* Show reset button */
-            // bar.classList.add('non-empty');
-
-            /* Execute search */
-        const results = index.search(query.value)
-        results.forEach(result => {
-          const article = articles[result.ref]
-
-              /* Create a link referring to the article */
-          const link = document.createElement("a")
-          link.classList.add("md-search-result__link")
-          link.href = article.location
-
-              // /* Create article container */
-          const li = document.createElement("li")
-          li.classList.add("md-search-result__item")
-          li.appendChild(link)
-
-              /* Create title element */
-          const title = document.createElement("div")
-          title.classList.add("md-search-result__title")
-
-              // article.title.split(//)
-
-          title.innerHTML = article.title
-          link.appendChild(title)
-
-          /* Truncate a string after the given number of characters */
-          const truncate = function(string, n) {
-            let i = n
-            if (string.length > i) {
-              while (string[i] !== " " && --i > 0);
-              return `${string.substring(0, i)}&hellip;`
-            }
-            return string
-          }
-
-              /* Create text element */
-          const text = document.createElement("p")
-          text.classList.add("md-search-result__description")
-          text.innerHTML = truncate(article.text) // .truncate(140);
-          text.innerHTML = truncate(article.text, 140) // .truncate(140);
-          link.appendChild(text)
-
-          container.appendChild(li)
-        })
-
-            /* Show number of search results */
-            // var number = document.createElement('strong');
-
-        const meta = document.querySelector(".md-search-result__meta")
-        meta.innerHTML = `${results.length} search result${
-          results.length !== 1
-            ? "s"
-            : ""}`
-
-            /* Update number */
-            // while (meta.firstChild)
-            //   meta.removeChild(meta.firstChild);
-            // meta.appendChild(number);
-      })
-
-          // setTimeout(function() {
-          //   li.classList.remove('md-source__fact--hidden');
-          // }, 100);
-
-    })
-    .catch(() => {
-      // console.log("parsing failed", ex)
-    })
 // }, 1000);
 
   fetch(

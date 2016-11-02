@@ -84,25 +84,27 @@ class GithubSourceFacts {
   static paint({ stars, forks }) {
     const lists = document.querySelectorAll(".md-source__facts"); // TODO 2x list in drawer and header
 
+    // TODO: use ... of ...
     [].forEach.call(lists, list => {
-
-      let li = document.createElement("li")
-      li.className = "md-source__fact md-source__fact--hidden"
-      li.innerText = `${stars} Stars`
-      list.appendChild(li)
-
-      setTimeout(lix => {
-        lix.classList.remove("md-source__fact--hidden")
+      let li = (
+        <li class="md-source__fact md-source__fact--hidden">
+          {stars} Stars
+        </li>
+      )
+      setTimeout(fact => {
+        fact.classList.remove("md-source__fact--hidden")
       }, 100, li)
-
-      li = document.createElement("li")
-      li.className = "md-source__fact md-source__fact--hidden"
-      li.innerText = `${forks} Forks`
       list.appendChild(li)
 
-      setTimeout(lix => {
-        lix.classList.remove("md-source__fact--hidden")
+      li = (
+        <li class="md-source__fact md-source__fact--hidden">
+          {forks} Forks
+        </li>
+      )
+      setTimeout(fact => {
+        fact.classList.remove("md-source__fact--hidden")
       }, 500, li)
+      list.appendChild(li)
     })
   }
 }

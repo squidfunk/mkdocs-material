@@ -20,56 +20,22 @@
  * IN THE SOFTWARE.
  */
 
-import Nav from "./Material/Nav"
-import Search from "./Material/Search"
-import Listener from "./Material/Listener"
-import Sidebar from "./Material/Sidebar"
-
-/* ----------------------------------------------------------------------------
- * Module
- * ------------------------------------------------------------------------- */
-
-export default {
-  Nav,
-  Search,
-  Listener,
-  Sidebar
-}
+import Abstract from "./Abstract"
 
 /* ----------------------------------------------------------------------------
  * Definition
  * ------------------------------------------------------------------------- */
 
-// export default class Material {
-//
+export default class Toggle extends Abstract {
 
-//
-
-//
-//   static initializeSearch() {
-//
-//   }
-//
-//   /**
-//    * Initialize all components
-//    */
-//   static initialize() {
-//
-//     const search = new Search.Lock("#search", () => {
-//       document.getElementById("query").focus()
-//     })
-//     search.listen() // TODO when this is commented out, focusing the search somehow breaks things...
-//
-//     const searchx = document.getElementById("search")
-//     const initialize = () => {
-//       const foo = new Search.Index()
-//       console.log(foo)
-//
-//       searchx.removeEventListener("change", initialize)
-//     }
-//     searchx.addEventListener("change", initialize)
-//     console.log(searchx)
-//
-//     // TODO nav bar is blurry until 959px, when expanded...
-//   }
-// }
+  /**
+   * Listener which monitors state changes of a toggle
+   *
+   * @constructor
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   * @param {Function} handler - Event handler to execute
+   */
+  constructor(el, handler) {
+    super(el, ["click"], handler)
+  }
+}

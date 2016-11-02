@@ -20,56 +20,49 @@
  * IN THE SOFTWARE.
  */
 
-import Nav from "./Material/Nav"
-import Search from "./Material/Search"
-import Listener from "./Material/Listener"
-import Sidebar from "./Material/Sidebar"
-
-/* ----------------------------------------------------------------------------
- * Module
- * ------------------------------------------------------------------------- */
-
-export default {
-  Nav,
-  Search,
-  Listener,
-  Sidebar
-}
-
 /* ----------------------------------------------------------------------------
  * Definition
  * ------------------------------------------------------------------------- */
 
-// export default class Material {
-//
+export default class Abstract {
 
-//
+  /**
+   * Abstract listener
+   *
+   * @constructor
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   * @param {Array.<string>} events - Event names to listen on
+   * @param {Function} handler - Event handler to execute
+   */
+  constructor(el, events, handler) {
+    if (this === Abstract)
+      throw new Error("Cannot construct abstract instance")
 
-//
-//   static initializeSearch() {
-//
-//   }
-//
-//   /**
-//    * Initialize all components
-//    */
-//   static initialize() {
-//
-//     const search = new Search.Lock("#search", () => {
-//       document.getElementById("query").focus()
-//     })
-//     search.listen() // TODO when this is commented out, focusing the search somehow breaks things...
-//
-//     const searchx = document.getElementById("search")
-//     const initialize = () => {
-//       const foo = new Search.Index()
-//       console.log(foo)
-//
-//       searchx.removeEventListener("change", initialize)
-//     }
-//     searchx.addEventListener("change", initialize)
-//     console.log(searchx)
-//
-//     // TODO nav bar is blurry until 959px, when expanded...
-//   }
-// }
+    /* Resolve element */
+    this.el_ = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+
+    /* Set event names and handler */
+    this.events_  = events
+    this.handler_ = handler
+  }
+
+  /**
+   * Register listener for all relevant events
+   */
+  listen() {
+    this.events_.forEach(name => {
+      this.el_.addEventListener(name, this.handler_, false)
+    })
+  }
+
+  /**
+   * Unregister listener for all relevant events
+   */
+  unlisten() {
+    this.events_.forEach(name => {
+      this.el_.removeEventListener(name, this.handler_, false)
+    })
+  }
+}

@@ -42,7 +42,6 @@
   "rules": {
     "array-callback-return": 2,
     "array-bracket-spacing": 2,
-    "arrow-body-style": [2, "always"],
     "arrow-parens": [2, "as-needed"],
     "arrow-spacing": 2,
     "block-scoped-var": 2,
