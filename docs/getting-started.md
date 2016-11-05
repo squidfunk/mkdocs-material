@@ -175,14 +175,14 @@ extra:
 
 ### Localization
 
-The **Previous** and **Next** labels in the footer can easily be changed by
-defining the variables `extra.i18n.prev` and `extra.i18n.next`:
+The following texts and labels can easily be changed by defining variables:
 
 ``` yaml
 extra:
   i18n:
-    prev: 'Previous'
-    next: 'Next'
+    prev: 'Previous'  # "Previous" label in the footer
+    next: 'Next'      # "Next" label in the footer
+    search: 'Search'  # "Search" placeholder in the search bar
 ```
 
 ### Adding a GitHub and Twitter account
