@@ -30,7 +30,7 @@
   // Footnotes extension
   .footnote {
     color: $md-color-black--light;
-    font-size: 80%;
+    font-size: ms(-1);
 
     // Remove additional spacing on footnotes
     ol {
@@ -53,39 +53,39 @@
         color: $md-color-accent;
       }
     }
+  }
 
-    // Correct anchor offset
-    &-ref::before {
-      position: absolute;
-      margin-top: -(5.6rem + 2.4rem);
-      padding-top: (5.6rem + 2.4rem);
-      content: "";
-      pointer-events: none;
+  // Footnote reference with corrected anchor offset
+  .footnote-ref::before {
+    position: absolute;
+    margin-top: -(5.6rem + 2.4rem);
+    padding-top: (5.6rem + 2.4rem);
+    content: "";
+    pointer-events: none;
+  }
+
+  // Footnote back-reference
+  .footnote-backref {
+    @extend %md-icon;
+
+    position: absolute;
+    transform: translateX(0.5rem);
+    transition: transform 0.25s  0.125s,
+                color     0.25s,
+                opacity   0.125s 0.125s;
+    color: $md-color-black--lighter;
+    font-size: 1.5625em;
+    opacity: 0;
+    vertical-align: middle;
+
+    // Hack: remove Unicode arrow for icon
+    &::first-letter {
+      font-size: 0;
     }
 
-    // Make back reference text transparent for icon
-    &-backref {
-      @extend %md-icon;
-
-      position: absolute;
-      transform: translateX(0.5rem);
-      transition: transform 0.25s  0.125s,
-                  color     0.25s,
-                  opacity   0.125s 0.125s;
-      color: $md-color-black--lighter;
-      font-size: 2.0rem;
-      opacity: 0;
-      vertical-align: middle;
-
-      // Hack: remove Unicode arrow for icon
-      &::first-letter {
-        font-size: 0;
-      }
-
-      // Back reference icon
-      &::after {
-        content: "keyboard_return";
-      }
+    // Back reference icon
+    &::after {
+      content: "keyboard_return";
     }
   }
 }

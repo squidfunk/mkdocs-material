@@ -76,6 +76,7 @@ pages:
     - Permalinks: extensions/permalinks.md
     - PyMdown:
       - Overview: extensions/pymdown/overview.md
+      - Tasklist: extensions/pymdown/tasklist.md
   - Specimen: specimen.md
   - Customization: customization.md
   - License: license.md

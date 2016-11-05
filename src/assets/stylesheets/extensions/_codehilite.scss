@@ -225,13 +225,6 @@ $codehilite-whitespace: transparent;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 
-    // [mobile -]: Stretch to whole width
-    @include break-to-device(mobile) {
-      margin: 1.0em -1.6rem;
-      padding: 1.0rem 1.6rem 0.8rem;
-      border-radius: 0;
-    }
-
     // Override native scrollbar styles
     &::-webkit-scrollbar {
       width: 0.4rem;
@@ -264,6 +257,7 @@ $codehilite-whitespace: transparent;
   // Block with line numbers
   .codehilitetable {
     display: block;
+    margin: 1.0em 0;
     border-radius: 0.2em;
     font-size: ms(0);
     overflow: hidden;
@@ -328,11 +322,22 @@ $codehilite-whitespace: transparent;
   }
 
   // Full-width container
+  > .codehilite {
+
+    // [mobile -]: Stretch to whole width
+    @include break-to-device(mobile) {
+      margin: 1.0em -1.6rem;
+      padding: 1.0rem 1.6rem 0.8rem;
+      border-radius: 0;
+    }
+  }
+
+  // Full-width container
   > .codehilitetable {
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 0 -1.6rem;
+      margin: 1.0em -1.6rem;
       border-radius: 0;
 
       // Increase spacing

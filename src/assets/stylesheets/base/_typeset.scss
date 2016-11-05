@@ -61,7 +61,10 @@ kbd {
 // Rules: typesetted content
 // ----------------------------------------------------------------------------
 
-// Content that is typeset
+// Content that is typeset - if possible, all margins, paddings and font sizes
+// should be set in ems, so nested blocks (e.g. Admonition) render correctly,
+// except headlines that should only appear on the top level and need to have
+// consistent spacing due to layout issues
 .md-typeset {
   font-size: ms(0);
   line-height: 1.6;
@@ -132,7 +135,7 @@ kbd {
 
   // Horizontal separators
   hr {
-    margin: 2.4rem 0;
+    margin: 1.5em 0;
     border-bottom: 0.1rem dotted $md-color-black--lighter;
   }
 
@@ -171,14 +174,16 @@ kbd {
     font-size: 85%;
   }
 
-  // Inline code blocks
+  // Inline code blocks, correct relative ems for smaller font size
   code {
-    margin: 0 0.4rem;
-    padding: 0.1rem 0;
+    $correct: 1 / 0.85;
+
+    margin: 0 0.25em * $correct;
+    padding: 0.0625em * $correct 0;
     border-radius: 0.2rem;
     box-shadow:
-       0.4rem 0 0 $md-code-background,
-      -0.4rem 0 0 $md-code-background;
+       0.25em * $correct 0 0 $md-code-background,
+      -0.25em * $correct 0 0 $md-code-background;
     word-break: break-word;
     box-decoration-break: clone;
 
@@ -245,19 +250,36 @@ kbd {
 
   // Keystrokes
   kbd {
-    display: inline-block;
-    padding: 0.4rem 0.5rem 0.5rem;
+    $correct: 1 / 0.85;
+
+    padding: 0 0.25em * $correct;
     border: 0.1rem solid darken($md-keyboard-background, 20%);
     border-radius: 0.2rem;
     border-bottom-color: darken($md-keyboard-background, 25%);
     background-color: $md-keyboard-background;
     color: $md-keyboard-color;
     font-size: 85%;
-    line-height: 1.0rem;
-    box-shadow: 0 -0.1rem 0
-      darken($md-keyboard-background, 30%) inset;
-    vertical-align: 0.1rem;
+    box-shadow: 0 0.1rem 0 darken($md-keyboard-background, 30%);
     word-break: break-word;
+  }
+
+  // Text insertion and deletion markers
+  del,
+  ins {
+    color: $clr-red-500;
+  }
+
+  // Text highlighting marker
+  mark {
+    margin: 0 0.25em;
+    padding: 0.0625em 0;
+    border-radius: 0.2rem;
+    background: transparentize($clr-yellow-500, 0.5);
+    box-shadow:
+       0.25em 0 0 transparentize($clr-yellow-500, 0.5),
+      -0.25em 0 0 transparentize($clr-yellow-500, 0.5);
+    word-break: break-word;
+    box-decoration-break: clone;
   }
 
   // Smaller text
@@ -268,7 +290,7 @@ kbd {
   // Superscript and subscript
   sup,
   sub {
-    margin-left: 0.1rem;
+    margin-left: 0.0625em * 1 / 0.8;
   }
 
   // Blockquotes, possibly nested
@@ -296,13 +318,13 @@ kbd {
   // Unordered and ordered lists
   ul,
   ol {
-    margin-left: 1.0rem;
+    margin-left: 0.625em;
     padding: 0;
 
     // List elements
     li {
       margin-bottom: 0.5em;
-      margin-left: 2.0rem;
+      margin-left: 1.25em;
 
       // Decrease vertical spacing
       p,
@@ -318,16 +340,14 @@ kbd {
       // Nested lists
       ul,
       ol {
-        margin-bottom: 1.0rem;
-        margin-left: 1.0rem;
-        padding-top: 1.0rem;
+        margin: 0.5em 0 0.5em 0.625em;
       }
     }
   }
 
   // Data tables
   table {
-    margin: 1.5em 0;                                                            // TODO: check spacing
+    margin: 1.5em 0;
     font-size: ms(-1);
     overflow: hidden;
 

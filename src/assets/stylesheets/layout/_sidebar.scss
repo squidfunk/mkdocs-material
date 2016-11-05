@@ -133,15 +133,15 @@
     &::-webkit-scrollbar {
       width: 0.4rem;
       height: 0.4rem;
+    }
 
-      // Style scrollbar thumb
-      &-thumb {
-        background-color: $md-color-black--lighter;
+    // Style scrollbar thumb
+    &::-webkit-scrollbar-thumb {
+      background-color: $md-color-black--lighter;
 
-        // Hovered scrollbar thumb
-        &:hover {
-          background-color: $md-color-accent;
-        }
+      // Hovered scrollbar thumb
+      &:hover {
+        background-color: $md-color-accent;
       }
     }
   }

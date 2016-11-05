@@ -24,15 +24,6 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// TODO today:
-// x refactor search JavaScript (production-ready, namespacing not important)
-// x refactor footnotes extension
-// 2. include table styles
-// 3. make nav bar production ready (webkit overflow scrolling)
-// TODO: Indexing... meta search result, always show!
-// TODO: offset error in table of contents on specimen on checklists stuff
-// --> breaks on multiple <a> tags
-
 @include break-to-device(tablet portrait) {
   .md-search-result__link {
     padding: 0 1.6rem;
@@ -99,108 +90,6 @@
   }
 }
 
-// .md-nav--secondary > .md-nav__title {
-//   // -webkit-overflow-scrolling: touch;
-//   @include z-depth(1);
-// }
-
-// .checklist {
-//
-//   li {
-//     position: relative;
-//     list-style-type: none;
-//
-//     &::before {
-//       @extend %md-icon;
-//
-//       position: absolute;
-//       appearance: none;
-//       color: blue;
-//
-//       content: "check_box";
-//       font-size: 2.4rem;
-//     }
-//   }
-//
-//   input[type="checkbox"]:checked {
-//     width: 20px;
-//     // & ~ .checklist li::after {
-//     //   color: red;
-//     // }
-//   }
-// }
-
-// Inline code blocks
-ins.critic, del.critic, mark {
-  margin: 0 0.4rem;
-  padding: 0.1rem 0;
-  word-break: break-word;
-  box-decoration-break: clone;
-
-  border-radius: 0.2rem;
-
-  // &::before {
-  //   @extend %md-icon;
-  //
-  //   color: $md-color-black--light;
-  //
-  //   font-size: 1.6rem;
-  //   padding-right: 0.2rem;
-  //   vertical-align: -0.2rem;
-  // }
-}
-
-ins.critic {
-  background: #DDFFDD;
-  box-shadow: 0.4rem 0 0 #DDFFDD,
-             -0.4rem 0 0 #DDFFDD;
-  text-decoration: none;
-  // &::before {
-  //   content: "add";
-  // }
-}
-
-del.critic {
-  background: #FFDDDD;
-  box-shadow: 0.4rem 0 0 #FFDDDD,
-             -0.4rem 0 0 #FFDDDD;
-             //
-            //  &::before {
-            //    content: "remove";
-            //  }
-}
-
-// Not critic-specific, also used for code hilite!
-mark {
-  background: #FFFF00;
-  box-shadow: 0.4rem 0 0 #FFFF00,
-             -0.4rem 0 0 #FFFF00; // ligher yellow...
-  // overflow: auto; // TODO: remove this, just needed to rebuild
-}
-
-.critic.comment {
-  margin: 0 0.4rem;
-  padding: 0.1rem 0;
-  border-radius: 0.2rem;
-  background: #F0F0F0;
-  color: #37474F;
-  // font-size: 85%;
-  box-shadow: 0.4rem 0 0 #F0F0F0,
-             -0.4rem 0 0 #F0F0F0; // darker than code!!!
-  box-decoration-break: clone;
-
-  &::before {
-    @extend %md-icon;
-
-    color: $md-color-black--lighter;
-
-    content: "chat";
-    font-size: 1.6rem;
-    padding-right: 0.2rem;
-    vertical-align: -0.2rem;
-  }
-}
-
 .md-button {
   float: right;
   margin-top: 9px;
@@ -209,53 +98,3 @@ mark {
   font-weight: 700;
   text-transform: uppercase;
 }
-
-.task-list-item {
-  list-style-type: none !important;
-}
-
-.task-list-item input[type="checkbox"] {
-  margin: 0 4px 0.25em -20px;
-  vertical-align: middle;
-}
-
-.task-list-control {
-  display: inline; /* Ensure label is inline incase theme sets it to block.*/
-}
-
-.task-list-control {
-  position: relative;
-  display: inline-block;
-  color: #555;
-  cursor: pointer;
-}
-
-.task-list-control input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  z-index: -1; /* Put the input behind the label so it doesn't overlay text */
-}
-
-.task-list-indicator {
-  position: absolute;
-  top: -8px;
-  left: -18px;
-  display: block;
-  width:  14px;
-  height: 14px;
-  color: #eee;
-  background-color: #eee;
-  border-radius: .25rem;
-}
-
-.task-list-control input[type="checkbox"]:checked + .task-list-indicator::before {
-  display: block;
-  margin-top: -4px;
-  margin-left: 2px;
-  font-size: 16px;
-  line-height: 1;
-  content: "✔";
-  color: #1EBB52;
-}
-
-// TODO: integrate stylelint and property order!

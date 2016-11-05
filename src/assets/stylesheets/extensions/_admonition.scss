@@ -27,7 +27,7 @@
 // Admonition extension
 .admonition {
   position: relative;
-  margin: 2.0rem 0;
+  margin: 1.5625em 0;
   padding: 0.8rem 1.2rem;
   border-left: 3.2rem solid transparentize($clr-blue-a200, 0.6);
   border-radius: 0.2rem;
@@ -44,21 +44,6 @@
     font-size: 2.0rem;
     content: "edit";
     vertical-align: -0.25em;
-  }
-
-  // Title
-  &-title {
-    font-weight: 700;
-
-    // Remove bottom spacing for title
-    html & {
-      margin-bottom: 0;
-    }
-
-    // Remove top spacing for first element following title
-    html & + * {
-      margin-top: 0;
-    }
   }
 
   // Remove spacing on first element
@@ -104,5 +89,20 @@
         }
       }
     }
+  }
+}
+
+// Title
+.admonition-title {
+  font-weight: 700;
+
+  // Remove bottom spacing for title
+  html & {
+    margin-bottom: 0;
+  }
+
+  // Remove top spacing for first element following title
+  html & + * {
+    margin-top: 0;
   }
 }

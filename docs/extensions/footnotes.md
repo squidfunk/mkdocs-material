@@ -82,4 +82,3 @@ Result:
 <a href="#fn:2">Jump to footnote at the bottom of the page</a>
 
 [Footnotes]: https://pythonhosted.org/Markdown/extensions/footnotes.html
-[PyMdown Extensions]: https://facelessuser.github.io/pymdown-extensions

@@ -14,6 +14,33 @@ Naturally, the Material theme defines __bold__ and _italic_ styles, makes it
 easy to write `fenced inline code blocks`, [links](#) and <kbd>Keyboard</kbd>
 <kbd>+</kbd> <kbd>Commands</kbd>.
 
+* test
+* test
+* Material's typographical system follows the idea of __vertical rhythm__, which
+  means it tries to establish a _consistent visual rhythm_ to the content of the
+  page to make reading pleasant and easy on the eyes. It's a simple concept but
+  rather hard to implement correctly. Luckily, the Material theme has already
+    1. test
+    2. test
+        1.  Material's typographical system follows the idea of __vertical rhythm__, which
+            means it tries to establish a _consistent visual rhythm_ to the content of the
+            page to make reading pleasant and easy on the eyes. It's a simple concept but
+            rather hard to implement correctly. Luckily, the Material theme has already
+        2.  Material's typographical system follows the idea of __vertical rhythm__, which
+            means it tries to establish a _consistent visual rhythm_ to the content of the
+            page to make reading pleasant and easy on the eyes. It's a simple concept but
+            rather hard to implement correctly. Luckily, the Material theme has already
+        3.  Material's typographical system follows the idea of __vertical rhythm__, which
+            means it tries to establish a _consistent visual rhythm_ to the content of the
+            page to make reading pleasant and easy on the eyes. It's a simple concept but
+            rather hard to implement correctly. Luckily, the Material theme has already
+    3. test
+        1. test
+        2. test
+        3. test
+    * test
+* test
+
 ### Headings <small>w/ or w/o secondary text</small>
 
 Besides the default HTML headings `<h2>` to `<h6>`, the representational
