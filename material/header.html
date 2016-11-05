@@ -44,10 +44,10 @@
     </div>
     <div class="stretch">
       <div class="field">
-        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+        <input class="query" type="text" placeholder="{{ config.extra.get('i18n', {}).search | default('Search') }}" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
       </div>
     </div>
-    <div class="button button-reset" role="button" aria-label="Search">
+    <div class="button button-reset" role="button" aria-label="{{ config.extra.get('i18n', {}).search | default('Search') }}">
       <button class="toggle-button icon icon-close" id="reset-search"></button>
     </div>
   </div>
