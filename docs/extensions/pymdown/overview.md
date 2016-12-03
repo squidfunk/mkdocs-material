@@ -31,7 +31,7 @@ pip install pymdown-extensions
 ### New features
 
 - Arithmatex
-- Inlinehilite
-- Tasklist
+- [Inlinehilite](inlinehilite.md)
+- [Tasklist](tasklist.md)
 
 [PyMdown Extensions]: http://facelessuser.github.io/pymdown-extensions/
