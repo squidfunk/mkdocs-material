@@ -30,51 +30,69 @@
           user-scalable=no, initial-scale=1, maximum-scale=1" />
 
     <!-- Site title -->
-    {% if page_title %}
-      <title>{{ page_title }} - {{ site_name }}</title>
-    {% elif page_description %}
-      <title>{{ site_name }} - {{ page_description }}</title>
-    {% else %}
-      <title>{{ site_name }}</title>
-    {% endif %}
+    {%- block htmltitle -%}
+      {% if page.title %}
+        <title>{{ page.title }} - {{ config.site_name }}</title>
+      {% elif config.site_description %}
+        <title>{{ config.site_name }} - {{ config.site_description }}</title>
+      {% else %}
+        <title>{{ config.site_name }}</title>
+      {% endif %}
+    {% endblock %}
 
     <!-- Site description -->
-    {% if page_description %}
-      <meta name="description" content="{{ page_description }}" />
+    {% if config.site_description %}
+      <meta name="description" content="{{ config.site_description }}" />
     {% endif %}
 
     <!-- Canonical -->
-    {% if canonical_url %}
-      <link rel="canonical" href="{{ canonical_url }}" />
+    {% if page.canonical_url %}
+      <link rel="canonical" href="{{ page.canonical_url }}" />
     {% endif %}
 
     <!-- Author -->
-    {% if site_author %}
-      <meta name="author" content="{{ site_author }}" />
+    {% if config.site_author %}
+      <meta name="author" content="{{ config.site_author }}" />
     {% endif %}
 
-    <!-- Generator banner -->
-    <meta name="generator" content="mkdocs+$theme-name$#$theme-version$" />
+    <!-- Favicon -->
+    {% if config.site_favicon %}
+      <link rel="shortcut icon" href="{{ base_url }}/{{ config.site_favicon }}">
+    {% else %}
+      <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.ico">
+    {% endif %}
 
-    <!-- Modernizr -->
-    <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+    {%- block site_meta -%}
+      <!-- Generator banner -->
+      <meta name="generator" content="mkdocs+$theme-name$#$theme-version$" />
+    {% endblock %}
 
-    <!-- Web fonts -->
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" />
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto+Mono:400" />
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    {%- block libs -%}
+      <!-- Modernizr -->
+      <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+    {% endblock %}
 
-    <!-- Theme-related stylesheets -->
-    <link rel="stylesheet" type="text/css"
-        href="{{ base_url }}/assets/stylesheets/application.css" />
+    {%- block styles -%}
+      <!-- Web fonts -->
+      <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" />
+      <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto+Mono:400" />
+      <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-    <!-- Custom stylesheets -->
-    {% for path in extra_css %}
-      <link rel="stylesheet" type="text/css" href="{{ path }}" />
-    {% endfor %}
+      <!-- Theme-related stylesheets -->
+      <link rel="stylesheet" type="text/css"
+          href="{{ base_url }}/assets/stylesheets/application.css" />
+
+      <!-- Custom stylesheets -->
+      {% for path in extra_css %}
+        <link rel="stylesheet" type="text/css" href="{{ path }}" />
+      {% endfor %}
+    {% endblock %}
+
+    {%- block extrahead -%}
+    {% endblock %}
   </head>
   <body>
 
@@ -101,22 +119,24 @@
             necessary for correctly rendering the table of contents which is
             embedded into the navigation and the actual headline.
           -->
-          {% set h1 = "\x3ch1 id=" in content %}
+          {% set h1 = "\x3ch1 id=" in page.content %}
 
           <!-- Main navigation -->
-          {% if nav %}
-            <div class="md-sidebar md-sidebar--primary"
-                data-md-sidebar="primary">
-              <div class="md-sidebar__scrollwrap">
-                <div class="md-sidebar__inner">
-                  {% include "partials/nav.html" %}
+          {%- block site_nav -%}
+            {% if nav %}
+              <div class="md-sidebar md-sidebar--primary"
+                  data-md-sidebar="primary">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    {% include "partials/nav.html" %}
+                  </div>
                 </div>
               </div>
-            </div>
-          {% endif %}
+            {% endif %}
+          {% endblock %}
 
           <!-- Table of contents -->
-          {% if toc %}
+          {% if page.toc %}
             <div class="md-sidebar md-sidebar--secondary"
                 data-md-sidebar="secondary">
               <div class="md-sidebar__scrollwrap">
@@ -132,7 +152,7 @@
             <article class="md-content__inner md-typeset">
 
               <!-- Content block -->
-              {% block content %}
+              {%- block content -%}
 
                 <!-- Edit button, if URL was defined -->
                 {% if edit_uri %}
@@ -142,23 +162,19 @@
                 {% endif %}
 
                 <!-- Content -->
-                {{ content }}
+                {{ page.content }}
               {% endblock %}
 
               <!-- Copyright and theme information -->
               <hr />
               <small class="md-content__copyright">
-                {% if copyright %}
-                  {{ copyright }} &ndash;
+                {% if config.copyright %}
+                  {{ config.copyright }} &ndash;
                 {% endif %}
                 This document was created with
-                <a href="http://www.mkdocs.org">
-                  MkDocs
-                </a>
+                <a href="http://www.mkdocs.org">MkDocs</a>
                 and the
-                <a href="http://squidfunk.github.io/mkdocs-material/">
-                  Material
-                </a>
+                <a href="http://squidfunk.github.io/mkdocs-material/">Material</a>
                 theme.
               </small>
             </article>
@@ -167,31 +183,48 @@
       </main>
 
       <!-- Application footer -->
-      {% include "partials/footer.html" %}
+      {%- block footer -%}
+        {% include "partials/footer.html" %}
+      {% endblock %}
     </div>
 
     <!-- Theme-related and custom javascripts -->
-    <script src="{{ base_url }}/assets/javascripts/application.js"></script>
-    <script>
+    {%- block scripts -%}
+      <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+      <script>
 
-      /* Configuration for application */
-      var config = {
-        url: {
-          base: "{{ base_url }}",
-        },
-        repo: {
-          url: "{{ repo_url }}",
-          icon: "{{ repo_icon }}",
-        },
-        storage: window.sessionStorage,
-      };
+        /* Configuration for application */
+        var config = {
+          url: {
+            base: "{{ base_url }}",
+          },
+          repo: {
+            url: "{{ config.repo_url }}",
+            icon: "{{ repo_icon }}",
+          },
+          storage: window.sessionStorage,
+        };
 
-      /* Initialize application */
-      var app = new Application(config);
-      app.initialize();
-    </script>
-    {% for path in extra_javascript %}
-      <script src="{{ path }}"></script>
-    {% endfor %}
+        /* Initialize application */
+        var app = new Application(config);
+        app.initialize();
+      </script>
+      {% for path in extra_javascript %}
+        <script src="{{ path }}"></script>
+      {% endfor %}
+    {% endblock %}
+
+    {%- block analytics -%}
+      {% if config.google_analytics %}
+      <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', '{{ config.google_analytics[0] }}', '{{ config.google_analytics[1] }}');
+          ga('send', 'pageview');
+      </script>
+      {% endif %}
+    {% endblock %}
   </body>
 </html>

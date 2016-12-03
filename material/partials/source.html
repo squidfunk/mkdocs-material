@@ -1,4 +1,4 @@
-{% set platform = config.extra.repo_icon or repo_url %}
+{% set platform = config.extra.repo_icon or config.repo_url %}
 {% if "github" in platform %}
   {% set repo_icon = "md-source--github" %}
 {% elif "gitlab" in platform %}
@@ -8,9 +8,9 @@
 {% else %}
   {% set repo_icon = "" %}
 {% endif %}
-<a href="{{ repo_url }}" title="Go to repository" class="md-source {{ repo_icon }}">
+<a href="{{ config.repo_url }}" title="Go to repository" class="md-source {{ repo_icon }}">
   <div class="md-source__repository">
-    {{ repo_name }}
+    {{ config.repo_name }}
     <ul class="md-source__facts">
       {% if config.extra.version %}
         <li class="md-source__fact">v{{ config.extra.version }}</li>
