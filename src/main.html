@@ -30,27 +30,27 @@
           user-scalable=no, initial-scale=1, maximum-scale=1" />
 
     <!-- Site title -->
-    {% if page_title %}
-      <title>{{ page_title }} - {{ site_name }}</title>
-    {% elif page_description %}
-      <title>{{ site_name }} - {{ page_description }}</title>
+    {% if page.title %}
+      <title>{{ page.title }} - {{ config.site_name }}</title>
+    {% elif config.site_description %}
+      <title>{{ config.site_name }} - {{ config.site_description }}</title>
     {% else %}
-      <title>{{ site_name }}</title>
+      <title>{{ config.site_name }}</title>
     {% endif %}
 
     <!-- Site description -->
-    {% if page_description %}
-      <meta name="description" content="{{ page_description }}" />
+    {% if config.site_description %}
+      <meta name="description" content="{{ config.site_description }}" />
     {% endif %}
 
     <!-- Canonical -->
-    {% if canonical_url %}
-      <link rel="canonical" href="{{ canonical_url }}" />
+    {% if page.canonical_url %}
+      <link rel="canonical" href="{{ page.canonical_url }}" />
     {% endif %}
 
     <!-- Author -->
-    {% if site_author %}
-      <meta name="author" content="{{ site_author }}" />
+    {% if config.site_author %}
+      <meta name="author" content="{{ config.site_author }}" />
     {% endif %}
 
     <!-- Generator banner -->
@@ -101,7 +101,7 @@
             necessary for correctly rendering the table of contents which is
             embedded into the navigation and the actual headline.
           -->
-          {% set h1 = "\x3ch1 id=" in content %}
+          {% set h1 = "\x3ch1 id=" in page.content %}
 
           <!-- Main navigation -->
           {% if nav %}
@@ -116,7 +116,7 @@
           {% endif %}
 
           <!-- Table of contents -->
-          {% if toc %}
+          {% if page.toc %}
             <div class="md-sidebar md-sidebar--secondary"
                 data-md-sidebar="secondary">
               <div class="md-sidebar__scrollwrap">
@@ -142,14 +142,14 @@
                 {% endif %}
 
                 <!-- Content -->
-                {{ content }}
+                {{ page.content }}
               {% endblock %}
 
               <!-- Copyright and theme information -->
               <hr />
               <small class="md-content__copyright">
-                {% if copyright %}
-                  {{ copyright }} &ndash;
+                {% if config.copyright %}
+                  {{ config.copyright }} &ndash;
                 {% endif %}
                 This document was created with
                 <a href="http://www.mkdocs.org">
@@ -180,7 +180,7 @@
           base: "{{ base_url }}",
         },
         repo: {
-          url: "{{ repo_url }}",
+          url: "{{ config.repo_url }}",
           icon: "{{ repo_icon }}",
         },
         storage: window.sessionStorage,

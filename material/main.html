@@ -3,28 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
-    {% if page_title %}
-      <title>{{ page_title }} - {{ site_name }}</title>
-    {% elif page_description %}
-      <title>{{ site_name }} - {{ page_description }}</title>
+    {% if page.title %}
+      <title>{{ page.title }} - {{ config.site_name }}</title>
+    {% elif config.site_description %}
+      <title>{{ config.site_name }} - {{ config.site_description }}</title>
     {% else %}
-      <title>{{ site_name }}</title>
+      <title>{{ config.site_name }}</title>
     {% endif %}
-    {% if page_description %}
-      <meta name="description" content="{{ page_description }}">
+    {% if config.site_description %}
+      <meta name="description" content="{{ config.site_description }}">
     {% endif %}
-    {% if canonical_url %}
-      <link rel="canonical" href="{{ canonical_url }}">
+    {% if page.canonical_url %}
+      <link rel="canonical" href="{{ page.canonical_url }}">
     {% endif %}
-    {% if site_author %}
-      <meta name="author" content="{{ site_author }}">
+    {% if config.site_author %}
+      <meta name="author" content="{{ config.site_author }}">
     {% endif %}
     <meta name="generator" content="mkdocs+mkdocs-material#0.2.1">
-    <script src="{{ base_url }}/assets/javascripts/modernizr-dede1352ed.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-9cd3c99a66.css">
+    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
@@ -37,7 +37,7 @@
     <div class="md-container">
       <main class="md-main">
         <div class="md-main__inner md-grid">
-          {% set h1 = "\x3ch1 id=" in content %}
+          {% set h1 = "\x3ch1 id=" in page.content %}
           {% if nav %}
             <div class="md-sidebar md-sidebar--primary" data-md-sidebar="primary">
               <div class="md-sidebar__scrollwrap">
@@ -47,7 +47,7 @@
               </div>
             </div>
           {% endif %}
-          {% if toc %}
+          {% if page.toc %}
             <div class="md-sidebar md-sidebar--secondary" data-md-sidebar="secondary">
               <div class="md-sidebar__scrollwrap">
                 <div class="md-sidebar__inner">
@@ -64,12 +64,12 @@
                     Edit
                   </a>
                 {% endif %}
-                {{ content }}
+                {{ page.content }}
               {% endblock %}
               <hr>
               <small class="md-content__copyright">
-                {% if copyright %}
-                  {{ copyright }} &ndash;
+                {% if config.copyright %}
+                  {{ config.copyright }} &ndash;
                 {% endif %}
                 This document was created with
                 <a href="http://www.mkdocs.org">
@@ -95,7 +95,7 @@
           base: "{{ base_url }}",
         },
         repo: {
-          url: "{{ repo_url }}",
+          url: "{{ config.repo_url }}",
           icon: "{{ repo_icon }}",
         },
         storage: window.sessionStorage,
