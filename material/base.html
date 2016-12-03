@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    {%- block htmltitle -%}
+      {% if page.title %}
+        <title>{{ page.title }} - {{ config.site_name }}</title>
+      {% elif config.site_description %}
+        <title>{{ config.site_name }} - {{ config.site_description }}</title>
+      {% else %}
+        <title>{{ config.site_name }}</title>
+      {% endif %}
+    {% endblock %}
+    {% if config.site_description %}
+      <meta name="description" content="{{ config.site_description }}">
+    {% endif %}
+    {% if page.canonical_url %}
+      <link rel="canonical" href="{{ page.canonical_url }}">
+    {% endif %}
+    {% if config.site_author %}
+      <meta name="author" content="{{ config.site_author }}">
+    {% endif %}
+    {% if config.site_favicon %}
+      <link rel="shortcut icon" href="{{ base_url }}/{{ config.site_favicon }}">
+    {% else %}
+      <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.ico">
+    {% endif %}
+    {%- block site_meta -%}
+      <meta name="generator" content="mkdocs+mkdocs-material#0.2.1">
+    {% endblock %}
+    {%- block libs -%}
+      <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+    {% endblock %}
+    {%- block styles -%}
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
+      {% for path in extra_css %}
+        <link rel="stylesheet" href="{{ path }}">
+      {% endfor %}
+    {% endblock %}
+    {%- block extrahead -%}
+    {% endblock %}
+  </head>
+  <body>
+    <input class="md-toggle md-toggle--drawer" type="checkbox" id="drawer">
+    <input class="md-toggle md-toggle--search" type="checkbox" id="search">
+    <label class="md-overlay" for="drawer"></label>
+    {% include "partials/header.html" %}
+    <div class="md-container">
+      <main class="md-main">
+        <div class="md-main__inner md-grid">
+          {% set h1 = "\x3ch1 id=" in page.content %}
+          {%- block site_nav -%}
+            {% if nav %}
+              <div class="md-sidebar md-sidebar--primary" data-md-sidebar="primary">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    {% include "partials/nav.html" %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endblock %}
+          {% if page.toc %}
+            <div class="md-sidebar md-sidebar--secondary" data-md-sidebar="secondary">
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  {% include "partials/toc.html" %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              {%- block content -%}
+                {% if edit_uri %}
+                  <a class="md-button md-button--edit" href="{{ edit_uri }}">
+                    Edit
+                  </a>
+                {% endif %}
+                {{ page.content }}
+              {% endblock %}
+              <hr>
+              <small class="md-content__copyright">
+                {% if config.copyright %}
+                  {{ config.copyright }} &ndash;
+                {% endif %}
+                This document was created with
+                <a href="http://www.mkdocs.org">MkDocs</a>
+                and the
+                <a href="http://squidfunk.github.io/mkdocs-material/">Material</a>
+                theme.
+              </small>
+            </article>
+          </div>
+        </div>
+      </main>
+      {%- block footer -%}
+        {% include "partials/footer.html" %}
+      {% endblock %}
+    </div>
+    {%- block scripts -%}
+      <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+      <script>
+        /* Configuration for application */
+        var config = {
+          url: {
+            base: "{{ base_url }}",
+          },
+          repo: {
+            url: "{{ config.repo_url }}",
+            icon: "{{ repo_icon }}",
+          },
+          storage: window.sessionStorage,
+        };
+        /* Initialize application */
+        var app = new Application(config);
+        app.initialize();
+      </script>
+      {% for path in extra_javascript %}
+        <script src="{{ path }}"></script>
+      {% endfor %}
+    {% endblock %}
+    {%- block analytics -%}
+      {% if config.google_analytics %}
+      <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', '{{ config.google_analytics[0] }}', '{{ config.google_analytics[1] }}');
+          ga('send', 'pageview');
+      </script>
+      {% endif %}
+    {% endblock %}
+  </body>
+</html>

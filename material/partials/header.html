@@ -13,20 +13,26 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <span class="md-flex__ellipsis md-header-nav__title">
-          {{ page.title | default(config.site_name, true) }}
+          {%- block site_name -%}
+            {{ page.title | default(config.site_name, true) }}
+          {% endblock %}
         </span>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-header-nav__icon md-header-nav__icon--search" for="search">
-          search
-        </label>
-        {% include "partials/search.html" %}
+        {%- block search_box -%}
+          <label class="md-icon md-header-nav__icon md-header-nav__icon--search" for="search">
+            search
+          </label>
+          {% include "partials/search.html" %}
+        {% endblock %}
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         <div class="md-header-nav__source">
-          {% if config.repo_url %}
-            {% include "partials/source.html" %}
-          {% endif %}
+          {%- block repo -%}
+            {% if config.repo_url %}
+              {% include "partials/source.html" %}
+            {% endif %}
+          {% endblock %}
         </div>
       </div>
     </div>
