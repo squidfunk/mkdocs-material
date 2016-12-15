@@ -27,15 +27,6 @@ node_js:
   - 5
   - 6
 
-# Update GCC to 4.8 to build Gemini
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-4.8
-      - g++-4.8
-
 # Install dependencies
 before_script:
   - pip install --user -r requirements.txt
