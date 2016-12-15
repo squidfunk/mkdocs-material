@@ -50,7 +50,7 @@ body {
   @include break-to-device(tablet portrait) {
 
     // Lock body to viewport height (e.g. in search mode)
-    &[data-md-locked] {
+    &[data-md-state="lock"] {
       height: 100%;
       overflow: hidden;
     }
@@ -117,7 +117,7 @@ hr {
   @include break-to-device(tablet) {
 
     // Expanded drawer
-    .md-toggle--drawer:checked ~ & {
+    [data-md-toggle="drawer"]:checked ~ & {
       width: 100%;
       height: 100%;
       transition:

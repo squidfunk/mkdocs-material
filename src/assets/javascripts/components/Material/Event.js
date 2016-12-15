@@ -20,16 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import Media from "./Viewport/Media"
-import Offset from "./Viewport/Offset"
-import Resize from "./Viewport/Resize"
+import Listener from "./Event/Listener"
+import MatchMedia from "./Event/MatchMedia"
 
 /* ----------------------------------------------------------------------------
  * Module
  * ------------------------------------------------------------------------- */
 
 export default {
-  Media,
-  Offset,
-  Resize
+  Listener,
+  MatchMedia
 }

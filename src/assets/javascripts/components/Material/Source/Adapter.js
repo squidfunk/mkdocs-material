@@ -20,21 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-import Abstract from "../Abstract"
+import GitHub from "./Adapter/GitHub"
 
 /* ----------------------------------------------------------------------------
- * Definition
+ * Module
  * ------------------------------------------------------------------------- */
 
-export default class Resize extends Abstract {
-
-  /**
-   * Listener which monitors changes to the dimensions of the viewport
-   *
-   * @constructor
-   * @param {Function} handler - Event handler to execute
-   */
-  constructor(handler) {
-    super(window, ["resize", "orientationchange"], handler)
-  }
+export default {
+  GitHub
 }

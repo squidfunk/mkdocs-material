@@ -21,7 +21,7 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Definition
+ * Class
  * ------------------------------------------------------------------------- */
 
 export default class Blur {
@@ -48,6 +48,13 @@ export default class Blur {
   }
 
   /**
+   * Initialize anchor states
+   */
+  setup() {
+    this.update()
+  }
+
+  /**
    * Update anchor states
    */
   update() {
@@ -58,7 +65,7 @@ export default class Blur {
       for (let i = this.index_ + 1; i < this.els_.length; i++) {
         if (this.anchors_[i].offsetTop <= offset) {
           if (i > 0)
-            this.els_[i - 1].dataset.mdBlurred = ""
+            this.els_[i - 1].dataset.mdState = "blur"
           this.index_ = i
         } else {
           break
@@ -70,7 +77,7 @@ export default class Blur {
       for (let i = this.index_; i >= 0; i--) {
         if (this.anchors_[i].offsetTop > offset) {
           if (i > 0)
-            delete this.els_[i - 1].dataset.mdBlurred
+            delete this.els_[i - 1].dataset.mdState
         } else {
           this.index_ = i
           break
@@ -86,8 +93,11 @@ export default class Blur {
    * Reset anchor states
    */
   reset() {
-    [].forEach.call(this.els_, el => {
-      delete el.dataset.mdBlurred
-    })
+    for (const el of this.els_)
+      delete el.dataset.mdState
+
+    /* Reset index and page y-offset */
+    this.index_  = 0
+    this.offset_ = window.pageYOffset
   }
 }

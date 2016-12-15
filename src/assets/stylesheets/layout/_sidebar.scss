@@ -37,7 +37,7 @@
   }
 
   // Lock sidebar to container height (account for fixed header)
-  &[data-md-locked] {
+  &[data-md-state="lock"] {
     position: fixed;
     top: 5.6rem;
   }
@@ -65,7 +65,7 @@
       }
 
       // Expanded drawer
-      .md-toggle--drawer:checked ~ .md-container & {
+      [data-md-toggle="drawer"]:checked ~ .md-container & {
         @include z-depth(8);
 
         transform: translateX(24.2rem);
@@ -93,7 +93,7 @@
       float: right;
 
       // Hack: align right in case of locked sidebar
-      &[data-md-locked] {
+      &[data-md-state="lock"] {
         margin-left: 100%;
         transform: translate(-100%, 0);
 

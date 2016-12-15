@@ -26,11 +26,11 @@
 
     <!-- Active checkbox expands items contained within nested section -->
     {% if nav_item.active %}
-      <input class="md-toggle md-nav__toggle" type="checkbox"
-          id="{{ path }}" checked />
+      <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}"
+          type="checkbox" id="{{ path }}" checked />
     {% else %}
-      <input class="md-toggle md-nav__toggle" type="checkbox"
-          id="{{ path }}" />
+      <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}"
+          type="checkbox" id="{{ path }}" />
     {% endif %}
 
     <!-- Expand active pages -->
@@ -54,12 +54,13 @@
     </nav>
   </li>
 
-<!-- Main navigation item with nested items -->
+<!-- Current navigation item -->
 {% elif nav_item == current_page %}
   <li class="md-nav__item">
 
     <!-- Active checkbox expands items contained within nested section -->
-    <input class="md-toggle md-nav__toggle" type="checkbox" id="toc" />
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc"
+        type="checkbox" id="toc" />
 
     <!-- Expand active pages -->
     <label class="md-nav__link md-nav__link--active" for="toc">

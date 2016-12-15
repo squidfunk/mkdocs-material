@@ -14,7 +14,7 @@ markdown_extensions:
   - toc(permalink=true)
 ```
 
-This will add a link containing the paragraph symbol "¶" at the end of each
+This will add a link containing the paragraph symbol `¶` at the end of each
 headline (exactly like on the page you're currently viewing), which the
 Material theme will make appear on hover. In order to change the text of the
 permalink, a string can be passed, e.g.:

@@ -20,14 +20,35 @@
  * IN THE SOFTWARE.
  */
 
-import Toggle from "./Listener/Toggle"
-import Viewport from "./Listener/Viewport"
-
 /* ----------------------------------------------------------------------------
- * Module
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default {
-  Toggle,
-  Viewport
+export default class MatchMedia {
+
+  /**
+   * Media query listener
+   *
+   * This class listens for state changes of media queries and automatically
+   * switches the given listeners on or off.
+   *
+   * @constructor
+   * @param {string} query - Media query to test for
+   * @param {Listener} listener - Event listener
+   */
+  constructor(query, listener) {
+    this.handler_ = mq => {
+      if (mq.matches)
+        listener.listen()
+      else
+        listener.unlisten()
+    }
+
+    /* Initialize media query listener */
+    const media = window.matchMedia(query)
+    media.addListener(this.handler_)
+
+    /* Always check at initialization */
+    this.handler_(media)
+  }
 }

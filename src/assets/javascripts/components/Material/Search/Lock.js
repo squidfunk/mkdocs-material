@@ -21,102 +21,68 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Definition
+ * Class
  * ------------------------------------------------------------------------- */
 
 export default class Lock {
 
   /**
-   * Lock body for full-screen search bar
+   * Lock body for full-screen search modal
    *
    * @constructor
    * @param {(string|HTMLElement)} el - Selector or HTML element
-   * @param {Function} handler - Callback to execute in active search mode
    */
-  constructor(el, handler) {
+  constructor(el) {
     this.el_ = (typeof el === "string")
       ? document.querySelector(el)
       : el
-
-    /* Initialize page y-offset and callback */
-    this.offset_ = 0
-    this.handler_ = handler
-
-    /* Dispatch update on next repaint */
-    this.handler_ = ev => {
-      this.update(ev)
-    }
   }
 
   /**
-   * Update state
-   *
-   * @param {Event} ev - Event
+   * Setup locked state
    */
-  update(ev) {
+  setup() {
+    this.update()
+  }
+
+  /**
+   * Update locked state
+   */
+  update() {
 
     /* Entering search mode */
-    if (ev.target.checked) {
-      this.offset_ = window.scrollY
+    if (this.el_.checked) {
+      this.offset_ = window.pageYOffset
 
-      /* First timeout: scroll to top after transition, to omit flickering */
+      /* Scroll to top after transition, to omit flickering */
       setTimeout(() => {
         window.scrollTo(0, 0)
-      }, 400)
 
-      /* Second timeout: Lock body after finishing transition and scrolling
-         to top and focus input field. Sadly, the focus event is not dispatched
-         on iOS Safari and there's nothing we can do about it. */
-      setTimeout(() => {
-
-        /* This additional check is necessary to handle fast subsequent clicks
-           on the toggle and the timeout to lock the body must be cancelled */
-        if (ev.target.checked) {
-          document.body.dataset.mdLocked = ""
-          setTimeout(this.handler_, 200)
+        /* Lock body after finishing transition */
+        if (this.el_.checked) {
+          document.body.dataset.mdState = "lock"
         }
       }, 400)
 
     /* Exiting search mode */
     } else {
-      delete document.body.dataset.mdLocked
+      delete document.body.dataset.mdState
 
       /* Scroll to former position, but wait for 100ms to prevent flashes on
          iOS. A short timeout seems to do the trick */
       setTimeout(() => {
-        window.scrollTo(0, this.offset_)
+        if (typeof this.offset_ !== "undefined")
+          window.scrollTo(0, this.offset_)
       }, 100)
     }
   }
 
   /**
-   * Reset state
-   *
-   * @param {Event} ev - Event
+   * Reset locked state and page y-offset
    */
   reset() {
-    delete document.body.dataset.mdLocked
-    window.scrollTo(0, this.offset_)
-  }
-
-  /**
-   * Register listener for all relevant events
-   */
-  listen() {
-    ["change"].forEach(name => {
-      this.el_.addEventListener(name, this.handler_, false)
-    })
-  }
-
-  /**
-   * Unregister listener for all relevant events
-   */
-  unlisten() {
-    ["change"].forEach(name => {
-      this.el_.removeEventListener(name, this.handler_, false)
-    })
-
-    /* Final reset */
-    this.reset()
+    if (document.body.dataset.mdState)
+      window.scrollTo(0, this.offset_)
+    delete document.body.dataset.mdState
   }
 }

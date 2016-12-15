@@ -20,234 +20,180 @@
  * IN THE SOFTWARE.
  */
 
-/* ----------------------------------------------------------------------------
- * Imports
- * ------------------------------------------------------------------------- */
-
 import FastClick from "fastclick"
-
-// import Expander from "./components/expander"
-
-import GithubSourceFacts from "./components/GithubSourceFacts"
 import Material from "./components/Material"
-
-// import Search from './components/search';
 
 /* ----------------------------------------------------------------------------
  * Application
  * ------------------------------------------------------------------------- */
 
-class Application {
+export default class Application {
 
   /**
-   * Constructor.
+   * Create the application
    *
    * @constructor
    * @param  {object} config Configuration object
-   * @return {void}
    */
   constructor(config) {
     this.config_ = config
   }
 
   /**
-   * Initialize all components
+   * Initialize all components and listeners
    */
   initialize() {
 
-    /* Initialize sticky sidebars */
-    this.initializeSidebar("[data-md-sidebar=primary]", "(min-width: 1200px)")
-    this.initializeSidebar("[data-md-sidebar=secondary]")
+    /* Initialize Modernizr and Fastclick */
+    new Material.Event.Listener(document, "DOMContentLoaded", () => {
 
-    /* Initialize navigation style modifiers */
-    this.initializeNavBlur("[data-md-sidebar=secondary] .md-nav__link")
-    this.initializeNavCollapse("[data-md-collapse]", "(min-width: 1200px)")
+      /* Test for iOS */
+      Modernizr.addTest("ios", () => {
+        return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
+      })
 
-    // TODO
-    if (this.hasGithubRepo()) {
-      const githubSource = new GithubSourceFacts(
-        this.config_.storage,
-        this.config_.repo.url
-      )
-      githubSource.initialize()
+      /* Test for web application context */
+      Modernizr.addTest("standalone", () => {
+        return !!navigator.standalone
+      })
+
+      /* Attack FastClick to mitigate 300ms delay on touch devices */
+      FastClick.attach(document.body)
+    }).listen()
+
+    /* Cross-browser helper to dispatch/fire an event */
+    const dispatch = (el, event) => {
+      return document.createEvent
+        ? el.dispatchEvent(new Event(event))
+        : el.fireEvent(`on${event}`, document.createEventObject())
     }
 
-  }
+    /* Truncate a string after the given number of characters - this is not
+       a reasonable approach, since the summaries kind of suck. It would be
+       better to create something more intelligent, highlighting the search
+       occurrences and making a better summary out of it */
+    const truncate = function(string, n) {
+      let i = n
+      if (string.length > i) {
+        while (string[i] !== " " && --i > 0);
+        return `${string.substring(0, i)}...`
+      }
+      return string
+    }
 
-  /**
-   * Initialize sidebar within optional media query range
-   *
-   * @param {(string|HTMLElement)} el - Selector or HTML element
-   * @param {string} [query] - Media query
-   */
-  initializeSidebar(el, query = null) {
-    const sidebar = new Material.Sidebar(el)
-    const listeners = [
-      new Material.Listener.Viewport.Offset(() => sidebar.update()),
-      new Material.Listener.Viewport.Resize(() => sidebar.update())
-    ]
+    /* Component: sidebar with navigation */
+    new Material.Event.MatchMedia("(min-width: 1200px)",
+      new Material.Event.Listener(window, [
+        "scroll", "resize", "orientationchange"
+      ], new Material.Sidebar("[data-md-sidebar=primary]")))
 
-    /* Initialize depending on media query */
-    if (typeof query === "string" && query.length) {
-      new Material.Listener.Viewport.Media(query, media => {
-        if (media.matches) {
-          sidebar.update()
-          for (const listener of listeners)
-            listener.listen()
-        } else {
-          sidebar.reset()
-          for (const listener of listeners)
-            listener.unlisten()
+    /* Component: sidebar with table of contents */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(window, [
+        "scroll", "resize", "orientationchange"
+      ], new Material.Sidebar("[data-md-sidebar=secondary]")))
+
+    /* Component: link blurring for table of contents */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(window, "scroll",
+        new Material.Nav.Blur("[data-md-sidebar=secondary] .md-nav__link")))
+
+    /* Component: collapsible elements for navigation */
+    const collapsibles = document.querySelectorAll("[data-md-collapse]")
+    for (const collapse of collapsibles)
+      new Material.Event.MatchMedia("(min-width: 1200px)",
+        new Material.Event.Listener(collapse.previousElementSibling, "click",
+          new Material.Nav.Collapse(collapse)))
+
+    /* Component: search body lock for mobile */
+    new Material.Event.MatchMedia("(max-width: 959px)",
+      new Material.Event.Listener("[data-md-toggle=search]", "change",
+        new Material.Search.Lock("[data-md-toggle=search]")))
+
+    /* Component: search results */
+    new Material.Event.Listener(document.forms.search.query, [
+      "focus", "keyup"
+    ], new Material.Search.Result("[data-md-search-result]", () => {
+      return fetch(`${this.config_.url.base}/mkdocs/search_index.json`)
+        .then(response => response.json())
+        .then(data => {
+          return data.docs.map(doc => {
+            doc.location = this.config_.url.base + doc.location
+            doc.text = truncate(doc.text, 140)
+            return doc
+          })
+        })
+    })).listen()
+
+    /* Listener: prevent touches on overlay if navigation is active */
+    new Material.Event.MatchMedia("(max-width: 1199px)",
+      new Material.Event.Listener("[data-md-overlay]", "touchstart",
+        ev => ev.preventDefault()))
+
+    /* Listener: close drawer when anchor links are clicked */
+    new Material.Event.MatchMedia("(max-width: 959px)",
+      new Material.Event.Listener("[data-md-sidebar=primary] [href^='#']",
+        "click", () => {
+          const toggle = document.querySelector("[data-md-toggle=drawer]")
+          if (toggle.checked) {
+            toggle.checked = false
+            dispatch(toggle, "change")
+          }
+        }))
+
+    /* Listener: focus input after activating search */
+    new Material.Event.Listener("[data-md-toggle=search]", "change", ev => {
+      setTimeout(toggle => {
+        const query = document.forms.search.query
+        if (toggle.checked)
+          query.focus()
+      }, 400, ev.target)
+    }).listen()
+
+    /* Listener: activate search on focus */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(document.forms.search.query, "focus", () => {
+        const toggle = document.querySelector("[data-md-toggle=search]")
+        if (!toggle.checked) {
+          toggle.checked = true
+          dispatch(toggle, "change")
         }
-      }).listen()
+      }))
 
-    /* Initialize without media query */
-    } else {
-      sidebar.update()
-      for (const listener of listeners)
-        listener.listen()
-    }
-  }
-
-  /**
-   * Initialize blurring of anchors above page y-offset
-   *
-   * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
-   */
-  initializeNavBlur(els) {
-    const blur = new Material.Nav.Blur(els)
-    const listeners = [
-      new Material.Listener.Viewport.Offset(() => blur.update())
-    ]
-
-    /* Initialize blur and listeners */
-    blur.update()
-    for (const listener of listeners)
-      listener.listen()
-  }
-
-  /**
-   * Initialize collapsible nested navigation elements
-   *
-   * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
-   * @param {string} [query] - Media query
-   */
-  initializeNavCollapse(els, query = null) {
-    const collapsibles = document.querySelectorAll(els)
-    for (const collapsible of collapsibles) {
-      const collapse = new Material.Nav.Collapse(collapsible)
-      const listener = new Material.Listener.Toggle(
-        collapsible.previousElementSibling, () => collapse.update())
-
-      /* Initialize depending on media query */
-      new Material.Listener.Viewport.Media(query, media => {
-        if (media.matches) {
-          listener.listen()
-        } else {
-          collapse.reset()
-          listener.unlisten()
+    /* Listener: disable search when clicking outside */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(document.body, "click", () => {
+        const toggle = document.querySelector("[data-md-toggle=search]")
+        if (toggle.checked) {
+          toggle.checked = false
+          dispatch(toggle, "change")
         }
-      }).listen()
-    }
-  }
+      }))
 
-  /**
-   * Is this application about a Github repository?
-   *
-   * @return {bool} - true if `repo.icon` or `repo.url` contains 'github'
-   */
-  hasGithubRepo() {
-    return this.config_.repo.icon === "github"
-      || this.config_.repo.url.includes("github")
+    /* Listener: fix unclickable toggle due to blur handler */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener("[data-md-toggle=search]", "click",
+        ev => ev.stopPropagation()))
+
+    /* Listener: prevent search from closing when clicking */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener("[data-md-search]", "click",
+        ev => ev.stopPropagation()))
+
+    /* Retrieve the facts for the given repository type */
+    ;(() => {
+      const el = document.querySelector("[data-md-source]")
+      switch (el.dataset.mdSource) {
+        case "github": return new Material.Source.Adapter.GitHub(el).fetch()
+        default: return Promise.resolve([])
+      }
+
+    /* Render repository source information */
+    })().then(facts => {
+      const sources = document.querySelectorAll("[data-md-source]")
+      for (const source of sources)
+        new Material.Source.Repository(source)
+          .initialize(facts)
+    })
   }
 }
-
-export default Application
-
-// const consume = reader =>  {
-//   let total = 0, body = ""
-//   return new Promise((resolve, reject) => {
-//     function pump() {
-//       reader.read().then(({ done, value }) => {
-//         if (done) {
-//           console.log(body)
-//           resolve()
-//           return
-//         }
-//         total += value.byteLength
-//         // value +=
-//         body += value
-//         console.log(`received ${value.byteLength}, total: ${total}`)
-//         pump()
-//       })
-//       .catch(reject)
-//     }
-//     pump()
-//   })
-// }
-//
-// fetch("/mkdocs/search_index.json")
-//   .then(res => consume(res.body.getReader()))
-//   .then(() => console.log("consumed entire body"))
-//   .catch(e => console.log(e))
-
-// TODO: wrap in function call
-// application module export
-
-/* Initialize application upon DOM ready */
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* Test for iOS */
-  Modernizr.addTest("ios", () => {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
-  })
-
-  /* Test for web application context */
-  Modernizr.addTest("standalone", () => {
-    return !!navigator.standalone
-  })
-
-  /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body)
-
-  // query.addEventListener("focus", () => {
-  //   document.querySelector(".md-search").dataset.mdLocked = ""
-  // })
-
-  /* Intercept click on search mode toggle */
-
-  // TODO: this needs to be abstracted...
-  document.getElementById("query").addEventListener("focus", () => {
-    document.getElementById("search").checked = true
-  })
-
-  // should be registered on body, but leads to problems
-  document.querySelector(".md-container").addEventListener("click", () => {
-    if (document.getElementById("search").checked)
-      document.getElementById("search").checked = false
-  })
-
-  // stop propagation, if search is active...
-  document.querySelector(".md-search").addEventListener("click", ev => {
-    ev.stopPropagation()
-  })
-  // toggleSearchClose.addEventListener("click", ev => {
-  //   ev.preventDefault()
-  //   // ev.target
-  //
-  //   const search = document.getElementById("search")
-  //   search.checked = false
-  // })
-
-// }, 1000);
-
-  fetch(
-      "https://api.github.com/repos/squidfunk/mkdocs-material/releases/latest")
-    .then(response => {
-      return response.json()
-    })
-    // .then(data => {
-    //   // console.log(data)
-    // })
-
-})

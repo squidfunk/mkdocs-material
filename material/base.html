@@ -20,19 +20,19 @@
       <meta name="author" content="{{ site_author }}">
     {% endif %}
     <meta name="generator" content="mkdocs+mkdocs-material#0.2.1">
-    <script src="{{ base_url }}/assets/javascripts/modernizr-dede1352ed.js"></script>
+    <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-9cd3c99a66.css">
+    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
   </head>
   <body>
-    <input class="md-toggle md-toggle--drawer" type="checkbox" id="drawer">
-    <input class="md-toggle md-toggle--search" type="checkbox" id="search">
-    <label class="md-overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-overlay for="drawer"></label>
     {% include "partials/header.html" %}
     <div class="md-container">
       <main class="md-main">
@@ -87,6 +87,12 @@
       </main>
       {% include "partials/footer.html" %}
     </div>
+    {% for extension in config.markdown_extensions %}
+      {% if extension == "pymdownx.arithmatex" %}
+        {% set path = "mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" %}
+        <script src="https://cdn.mathjax.org/{{ path }}"></script>
+      {% endif %}
+    {% endfor %}
     <script src="{{ base_url }}/assets/javascripts/application.js"></script>
     <script>
       /* Configuration for application */

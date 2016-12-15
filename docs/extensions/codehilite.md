@@ -6,8 +6,8 @@ executed during compilation of the Markdown file.
 
 ## Installation
 
-CodeHilite parses code blocks and wraps them in `pre` tags. If [Pygments][] is
-installed, which is a generic syntax highlighter with support for over
+CodeHilite parses code blocks and wraps them in `<pre>` tags. If [Pygments][]
+is installed, which is a generic syntax highlighter with support for over
 [300 languages][], CodeHilite will also highlight the code block. Pygments can
 be installed with the following command:
 

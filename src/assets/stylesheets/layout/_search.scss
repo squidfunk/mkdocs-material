@@ -62,7 +62,7 @@
       z-index: 1;
 
       // Expanded overlay
-      .md-toggle--search:checked ~ .md-header & {
+      [data-md-toggle="search"]:checked ~ .md-header & {
         transition:
           transform 0.4s,
           opacity   0.1s;
@@ -71,7 +71,7 @@
     }
 
     // Set scale factors
-    .md-toggle--search:checked ~ .md-header & {
+    [data-md-toggle="search"]:checked ~ .md-header & {
 
       // [mobile portrait -]: Scale up 45 times
       @include break-to-device(mobile portrait) {
@@ -109,7 +109,7 @@
       z-index: 2;
 
       // Active search modal
-      .md-toggle--search:checked ~ .md-header & {
+      [data-md-toggle="search"]:checked ~ .md-header & {
         left: 0;
         transform: translateX(0);
         transition:
@@ -144,7 +144,7 @@
     }
 
     // Set maximum width
-    .md-toggle--search:checked ~ .md-header & {
+    [data-md-toggle="search"]:checked ~ .md-header & {
 
       // [tablet landscape]: Do not overlay title
       @include break-at-device(tablet landscape) {
@@ -204,7 +204,7 @@
       }
 
       // Set light background on active search field
-      .md-toggle--search:checked ~ .md-header & {
+      [data-md-toggle="search"]:checked ~ .md-header & {
         border-radius: 0.2rem 0.2rem 0 0;
         background: $md-color-white;
         color: $md-color-black;
@@ -269,7 +269,7 @@
       opacity: 0;
 
       // Show search output in active state
-      .md-toggle--search:checked ~ .md-header & {
+      [data-md-toggle="search"]:checked ~ .md-header & {
         opacity: 1;
       }
     }
@@ -299,12 +299,22 @@
     box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
     overflow-y: auto;
 
+    // [tablet landscape]: Set absolute width to omit unnecessary reflow
+    @include break-at-device(tablet landscape) {
+      width: 46.8rem;
+    }
+
+    // [screen +]: Set absolute width to omit unnecessary reflow
+    @include break-from-device(screen) {
+      width: 66.8rem;
+    }
+
     // [tablet landscape +]: Limit height to viewport
     @include break-from-device(tablet landscape) {
       max-height: 0;
 
       // Expand in active state
-      .md-toggle--search:checked ~ .md-header & {
+      [data-md-toggle="search"]:checked ~ .md-header & {
         max-height: 75vh;
       }
 

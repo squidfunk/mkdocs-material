@@ -21,23 +21,18 @@
 -->
 
 <!-- Search interface -->
-<div class="md-search">
+<div class="md-search" data-md-search>
   <div class="md-search__overlay"></div>
   <div class="md-search__inner">
-    <form class="md-search__form">
-      <input type="text" class="md-search__input"
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query"
           placeholder="Search" autocapitalize="off" autocorrect="off"
-          autocomplete="off" spellcheck="false" id="query" />
+          autocomplete="off" spellcheck="false" />
       <label class="md-icon md-search__icon" for="search"></label>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap">
-        <div class="md-search-result">
-          <div class="md-search-result__meta">
-            Indexing
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
+        <div class="md-search-result" data-md-search-result></div>
       </div>
     </div>
   </div>

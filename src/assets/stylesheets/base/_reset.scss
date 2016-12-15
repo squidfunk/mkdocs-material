@@ -24,21 +24,16 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Enfore correct box model - the prefixed versions are necessary for older
-// browsers, i.e. Chrome < 10, Firefox < 29, Safari < 6 and Android < 4
+// Enfore correct box model
 html {
-          box-sizing: border-box;
-     -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 // All elements shall inherit the document default
 *,
 *::before,
 *::after {
-          box-sizing: inherit;
-     -moz-box-sizing: inherit;
-  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 // Prevent adjustments of font size after orientation changes in IE and iOS
@@ -49,19 +44,6 @@ html {
 // Remove margin in all browsers
 body {
   margin: 0;
-}
-
-// Add correct display property in IE < 9
-article,
-aside,
-figcaption,
-figure,
-footer,
-header,
-main,
-nav,
-section {
-  display: block;
 }
 
 // Reset horizontal rules in FF
@@ -82,7 +64,7 @@ a {
   }
 }
 
-// Remove gaps in links underline in iOS >= 8 and Safari >= 8
+// Remove gaps in underlined links in iOS >= 8 and Safari >= 8
 a {
   -webkit-text-decoration-skip: objects;
 }

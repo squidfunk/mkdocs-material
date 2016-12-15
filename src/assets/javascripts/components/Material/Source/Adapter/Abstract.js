@@ -20,22 +20,71 @@
  * IN THE SOFTWARE.
  */
 
-import Abstract from "./Abstract"
+import Cookies from "js-cookie"
 
 /* ----------------------------------------------------------------------------
- * Definition
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default class Toggle extends Abstract {
+export default class Abstract {
 
   /**
-   * Listener which monitors state changes of a toggle
+   * Retrieve source information
    *
    * @constructor
    * @param {(string|HTMLElement)} el - Selector or HTML element
-   * @param {Function} handler - Event handler to execute
    */
-  constructor(el, handler) {
-    super(el, ["click"], handler)
+  constructor(el) {
+    this.el_ = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+
+    /* Retrieve base URL */
+    this.base_ = this.el_.href
+  }
+
+  /**
+   * Retrieve data from Cookie or fetch from respective API
+   *
+   * @return {Promise} Promise that returns an array of facts
+   */
+  fetch() {
+    return new Promise(resolve => {
+      const cached = Cookies.getJSON(".cache-source")
+      if (typeof cached !== "undefined") {
+        resolve(cached)
+
+      /* If the data is not cached in a cookie, invoke fetch */
+      } else {
+        this.fetch_().then(data => {
+          Cookies.set(".cache-source", data)
+          resolve(data)
+        })
+      }
+    })
+  }
+
+  /**
+   * Abstract private function that fetches relevant repository information
+   *
+   * @abstract
+   * @return {Promise} Promise that provides the facts in an array
+   */
+  fetch_() {
+    throw new Error("fetch_(): Not implemented")
+  }
+
+  /**
+   * Format a number with suffix
+   *
+   * @param {Number} number - Number to format
+   * @return {Number} Formatted number
+   */
+  format_(number) {
+    if (number > 10000)
+      return `${(number / 1000).toFixed(0)}k`
+    else if (number > 1000)
+      return `${(number / 1000).toFixed(1)}k`
+    return number
   }
 }
