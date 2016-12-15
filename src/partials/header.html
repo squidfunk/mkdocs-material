@@ -46,7 +46,14 @@
       <!-- Header title -->
       <div class="md-flex__cell md-flex__cell--stretch">
         <span class="md-flex__ellipsis md-header-nav__title">
-          {%- block site_name -%}
+          {% block site_name %}
+            {% if page %}
+              {% for parent in page.ancestors %}
+                <span class="md-header-nav__parent">
+                  {{ parent.title }}
+                </span>
+              {% endfor %}
+            {% endif %}
             {{ page.title | default(config.site_name, true) }}
           {% endblock %}
         </span>
@@ -54,9 +61,9 @@
 
       <!-- Button to open search dialogue -->
       <div class="md-flex__cell md-flex__cell--shrink">
-        {%- block search_box -%}
-          <label class="md-icon md-header-nav__icon md-header-nav__icon--search"
-              for="search">
+        {% block search_box %}
+          <label class="md-icon md-header-nav__icon
+                md-header-nav__icon--search" for="search">
             search
           </label>
 
@@ -68,7 +75,7 @@
       <!-- Repository containing source -->
       <div class="md-flex__cell md-flex__cell--shrink">
         <div class="md-header-nav__source">
-          {%- block repo -%}
+          {% block repo %}
             {% if config.repo_url %}
               {% include "partials/source.html" %}
             {% endif %}

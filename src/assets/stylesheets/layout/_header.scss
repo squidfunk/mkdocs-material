@@ -100,6 +100,23 @@
     line-height: 4.8rem;
   }
 
+  // Parent page title
+  &__parent {
+    color: $md-color-white--light;
+
+    // Ancestor separator
+    &::after {
+      display: inline;
+      color: $md-color-white--lighter;
+      content: "/";
+    }
+
+    // [mobile portrait -]: Hide on very small screens
+    @include break-to-device(mobile portrait) {
+      display: none;
+    }
+  }
+
   // Repository containing source
   &__source {
     display: none;

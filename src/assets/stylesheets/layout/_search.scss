@@ -34,8 +34,8 @@
 
   // [tablet landscape +]: Header-embedded search
   @include break-from-device(tablet landscape) {
+    margin-right: 2.8rem;
     padding: 0.4rem;
-    padding-right: 3.2rem;
   }
 
   // Search modal overlay

@@ -153,8 +153,9 @@
               {% block content %}
 
                 <!-- Edit button, if URL was defined -->
-                {% if edit_uri %}
-                  <a class="md-button md-button--edit" href="{{ edit_uri }}">
+                {% if config.edit_uri %}
+                  <a class="md-button md-button--edit"
+                      href="{{ page.edit_url }}">
                     Edit
                   </a>
                 {% endif %}
