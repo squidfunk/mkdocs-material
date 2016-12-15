@@ -51,7 +51,6 @@
     <div class="md-container">
       <main class="md-main">
         <div class="md-main__inner md-grid">
-          {% set h1 = "\x3ch1 id=" in page.content %}
           {% block site_nav %}
             {% if nav %}
               <div class="md-sidebar md-sidebar--primary" data-md-sidebar="primary">
@@ -79,6 +78,9 @@
                   <a class="md-button md-button--edit" href="{{ edit_uri }}">
                     Edit
                   </a>
+                {% endif %}
+                {% if not "\x3ch1 id=" in page.content %}
+                  <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
                 {{ page.content }}
               {% endblock %}

@@ -117,14 +117,6 @@
       <main class="md-main">
         <div class="md-main__inner md-grid">
 
-          <!--
-            This is a nasty hack that checks whether the content contains a
-            h1 headline. If it does, the variable h1 is set to true. This is
-            necessary for correctly rendering the table of contents which is
-            embedded into the navigation and the actual headline.
-          -->
-          {% set h1 = "\x3ch1 id=" in page.content %}
-
           <!-- Block: navigation -->
           {% block site_nav %}
 
@@ -165,6 +157,15 @@
                   <a class="md-button md-button--edit" href="{{ edit_uri }}">
                     Edit
                   </a>
+                {% endif %}
+
+                <!--
+                  This is a nasty hack that checks whether the content contains
+                  a h1 headline. If it doesn't, the page title (or respectively
+                  site name) is used as the main headline.
+                -->
+                {% if not "\x3ch1 id=" in page.content %}
+                  <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
 
                 <!-- Content -->

@@ -200,6 +200,13 @@ kbd {
     margin: 0;
     background: transparent;
     box-shadow: none; }
+  .md-typeset a > code {
+    margin: inherit;
+    padding: inherit;
+    border-radius: none;
+    background: inherit;
+    color: inherit;
+    box-shadow: none; }
   .md-typeset pre {
     margin: 1.0em 0;
     padding: 1.0rem 1.2rem;
@@ -280,6 +287,7 @@ kbd {
       .md-typeset ol li ol {
         margin: 0.5em 0 0.5em 0.625em; }
   .md-typeset table {
+    width: 90%;
     margin: 1.5em 0;
     font-size: 1.28rem;
     overflow: hidden; }
@@ -300,6 +308,12 @@ kbd {
       padding: 1.2rem 1.6rem;
       border-top: 0.1rem solid rgba(0, 0, 0, 0.07);
       vertical-align: top; }
+    .md-typeset table th[align="right"],
+    .md-typeset table td[align="right"] {
+      text-align: right; }
+    .md-typeset table th[align="center"],
+    .md-typeset table td[align="center"] {
+      text-align: center; }
     .md-typeset table tr:first-child td {
       border-top: 0; }
 

@@ -25,12 +25,12 @@
   {% set toc = page.toc %}
 
   <!--
-    The top-level anchor must be skipped if the article contains a h1 headline,
-    since it would be redundant to the link to the current page that is located
-    just above the anchor. Therefore we directly continue with the children of
-    the anchor.
+    This is a nasty hack that checks whether the content contains a h1
+    headline. If it does, the top-level anchor must be skipped, since it would
+    be redundant to the link to the current page that is located just above the
+    anchor. Therefore we directly continue with the children of the anchor.
   -->
-  {% if h1 %}
+  {% if "\x3ch1 id=" in page.content %}
     {% set toc = (toc | first).children %}
   {% endif %}
 
