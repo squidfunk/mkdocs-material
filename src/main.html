@@ -20,27 +20,4 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Table of contents -->
-<nav class="md-nav md-nav--secondary">
-  {% set toc = page.toc %}
-
-  <!--
-    The top-level anchor must be skipped if the article contains a h1 headline,
-    since it would be redundant to the link to the current page that is located
-    just above the anchor. Therefore we directly continue with the children of
-    the anchor.
-  -->
-  {% if h1 %}
-    {% set toc = (toc | first).children %}
-  {% endif %}
-
-  <!-- Render item list -->
-  {% if toc and (toc | first) %}
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list">
-      {% for toc_item in toc %}
-        {% include "partials/toc-item.html" %}
-      {% endfor %}
-    </ul>
-  {% endif %}
-</nav>
+{% extends "base.html" %}

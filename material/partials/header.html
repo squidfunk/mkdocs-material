@@ -2,7 +2,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="{{ homepage_url }}" title="{{ site_name }}" class="md-icon md-header-nav__icon md-header-nav__icon--home">
+        <a href="{{ nav.homepage.url }}" title="{{ config.site_name }}" class="md-icon md-header-nav__icon md-header-nav__icon--home">
           layers
         </a>
       </div>
@@ -13,20 +13,26 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <span class="md-flex__ellipsis md-header-nav__title">
-          {{ page_title | default(site_name, true) }}
+          {%- block site_name -%}
+            {{ page.title | default(config.site_name, true) }}
+          {% endblock %}
         </span>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-header-nav__icon md-header-nav__icon--search" for="search">
-          search
-        </label>
-        {% include "partials/search.html" %}
+        {%- block search_box -%}
+          <label class="md-icon md-header-nav__icon md-header-nav__icon--search" for="search">
+            search
+          </label>
+          {% include "partials/search.html" %}
+        {% endblock %}
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         <div class="md-header-nav__source">
-          {% if repo_url %}
-            {% include "partials/source.html" %}
-          {% endif %}
+          {%- block repo -%}
+            {% if config.repo_url %}
+              {% include "partials/source.html" %}
+            {% endif %}
+          {% endblock %}
         </div>
       </div>
     </div>

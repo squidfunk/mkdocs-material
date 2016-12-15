@@ -1,4 +1,5 @@
 <nav class="md-nav md-nav--secondary">
+  {% set toc = page.toc %}
   {% if h1 %}
     {% set toc = (toc | first).children %}
   {% endif %}

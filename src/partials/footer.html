@@ -25,12 +25,12 @@
   <div class="md-footer__inner">
 
     <!-- Link to previous and/or next page -->
-    {% if previous_page or next_page %}
+    {% if page.previous_page or page.next_page %}
       <nav class="md-footer-nav md-grid">
 
         <!-- Link to previous page -->
-        {% if previous_page %}
-          <a href="{{ previous_page.url }}" title="{{ previous_page.title }}"
+        {% if page.previous_page %}
+          <a href="{{ page.previous_page.url }}" title="{{ page.previous_page.title }}"
               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
               rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -42,15 +42,15 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                {{ previous_page.title }}
+                {{ page.previous_page.title }}
               </span>
             </div>
           </a>
         {% endif %}
 
         <!-- Link to next page -->
-        {% if next_page %}
-          <a href="{{ next_page.url }}" title="{{ next_page.title }}"
+        {% if page.next_page %}
+          <a href="{{ page.next_page.url }}" title="{{ page.next_page.title }}"
               class="md-flex md-footer-nav__link md-footer-nav__link--next"
               rel="next">
             <div class="md-flex__cell md-flex__cell--stretch
@@ -59,7 +59,7 @@
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                {{ next_page.title }}
+                {{ page.next_page.title }}
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

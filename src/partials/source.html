@@ -24,7 +24,7 @@
   Check whether the repository is hosted on one of the supported code hosting
   platforms (Github, Gitlab or Bitbucket) to show icon.
 -->
-{% set platform = config.extra.repo_icon or repo_url %}
+{% set platform = config.extra.repo_icon or config.repo_url %}
 {% if "github" in platform %}
   {% set repo_type = "github" %}
   {% set repo_icon = "md-source--github" %}                                     <!-- TODO: remove this in favor of type -->
@@ -40,7 +40,7 @@
 {% endif %}
 
 <!-- Repository containing source -->
-<a href="{{ repo_url }}" title="Go to repository"
+<a href="{{ config.repo_url }}" title="Go to repository"
     class="md-source {{ repo_icon }}" data-md-source="{{ repo_type }}">         <!-- use <> for custom / private repo -->
   <div class="md-source__repository">
     {{ repo_name }}
