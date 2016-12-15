@@ -206,6 +206,16 @@ kbd {
     box-shadow: none;
   }
 
+  // Reset code if it's inside a link
+  a > code {
+    margin: inherit;
+    padding: inherit;
+    border-radius: none;
+    background: inherit;
+    color: inherit;
+    box-shadow: none;
+  }
+
   // Unformatted code blocks
   pre {
     margin: 1.0em 0;
@@ -347,6 +357,7 @@ kbd {
 
   // Data tables
   table {
+    width: 90%;
     margin: 1.5em 0;
     font-size: ms(-1);
     overflow: hidden;
@@ -375,6 +386,16 @@ kbd {
       padding: 1.2rem 1.6rem;
       border-top: 0.1rem solid $md-color-black--lightest;
       vertical-align: top;
+    }
+
+    th[align="right"],
+    td[align="right"] {
+      text-align: right;
+    }
+
+    th[align="center"],
+    td[align="center"] {
+      text-align: center;
     }
 
     tr:first-child td {

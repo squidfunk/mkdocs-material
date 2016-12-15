@@ -77,7 +77,6 @@ There are three other extensions that add further syntactic sugar:
 - Inlinehilite --- own documentation file
 - Critic --- own documentation file
 
-
 [PyMdown Extensions]: http://facelessuser.github.io/pymdown-extensions/
 [usage notes]: https://facelessuser.github.io/pymdown-extensions/usage_notes/
 [BetterEm]: https://facelessuser.github.io/pymdown-extensions/extensions/betterem/

@@ -527,7 +527,7 @@ func main() {
   <body>
     <p>Hello world! This is HTML5 Boilerplate.</p>
   </body>
-</html>  
+</html>
 ```
 
 ### Java

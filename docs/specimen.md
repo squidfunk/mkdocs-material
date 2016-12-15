@@ -64,36 +64,52 @@ the `<small>` tag directly inside Markdown.
 
 ### Ordered lists
 
+This is an ordered list of sentences for the sake of checking the styling is &#128076;!
+
+1. The first sentence, free from markup.
+2. The second sentence includes _italic_ text, and a [link](#) that should hopefully help it trigger a second line overflow to make sure spacing is a-ok.
+3. The third sentence highlights some enjoyable fruits:
+    1. Mangoes, **yum**!
+    2. Blueberries
+    3. Strawberries
+    4. Apples (in particular)
+        1. Sundowner
+
+            My favourite &#128149;
+
+        2. Granny Smith
+4. An this is just a footer sentence just to make sure.
+
 ### Unordered lists
 
-## Checklists
+Let's do that again, this time without the numbering.
 
-This is inline hilighted text `#!js var test = 0;` that is just awesome LOL
+- Free from markup, just like a bird.
+- Let's try some [link](#) with some inline code `var home = '127.0.0.1'`, and now some extra __fluff__ to ensure we're using more than a single line.
+- These are some varietes of beer.
+    - Lager
 
-* [ ] foo
-* [x] bar
-* [ ] baz
-    * [ ] foo
-    * [x] bar
-    * [ ] baz
+        Lager is a type of beer that is conditioned at low temperatures, normally at the brewery. It may be pale, golden, amber, or dark.
 
-<ul>
-  <li class="task-list-item">
-    <input type="checkbox" disabled><label></label> This needs to be done
-  </li>
-  <li class="task-list-item">
-    <input type="checkbox" disabled checked><label></label> This is done
+    - Kölsch
 
-    <ul>
-      <li class="task-list-item">
-        <input type="checkbox" disabled><label></label> This needs to be done
-      </li>
-      <li class="task-list-item">
-        <input type="checkbox" disabled checked><label></label> This is done
-      </li>
-    </ul>
-  </li>
-</ul>
+        Kölsch is a beer brewed in Cologne, Germany. It is a clear, top-fermented beer with a bright, straw-yellow hue similar to other beers brewed from mainly Pilsener malt.
+
+    - Siason
+
+        Saison is a pale ale that is generally around 7% ABV, highly carbonated, fruity, spicy, and often bottle conditioned
+
+    - IPA
+
+- An this is just a footer sentence just to make sure.
+
+We can also use the alternative Markdown styling for lists (`*`, `+` or `-`), even mixing them:
+
+* As shown by this item, which is a `*`.
++ This item uses `+`.
+    * And it also includes an nested item for good measure.
+- The final item uses `-`.
+- And for good measure, this also uses `-`.
 
 Another default list:
 
@@ -106,6 +122,19 @@ Another default list:
       return foo;
     }
     ```
+
+## Checklists
+
+Checklists are supported by the [PyMdown Extension][], [Tasklist][]:
+
+* [ ] foo
+* [x] bar
+* [ ] baz
+    * [ ] foo
+    * [x] bar
+    * [ ] baz
+
+### Critic
 
 Here is some {--*incorrect*--} Markdown.  I am adding this {++here.++}.  Here is some more {--text
 that I am removing--}text.  And here is even more {++text that I
@@ -147,6 +176,13 @@ General block handling.
 ++}
 
 ## Code
+
+### Inline
+
+Code can also be written `inline`, however syntax
+highlighting will only work on code listings unless you are using [inlinehilite][], which allows magic like `#!js var test = 0;`!
+
+There has also been some recent conjecture about how articles will style [links that include `inline code` samples](https://www.impressivewebs.com/fixing-styles-on-code-tags-nested-inside-links/), so let's make sure we get that right too.
 
 ### Listing
 
@@ -205,10 +241,7 @@ pb_varint_scan(const uint8_t data[], size_t left) {
 }
 ```
 
-### Inline
-
-Code can also be written within `fenced inline code blocks`, however syntax
-highlighting will only work on code listings.
+For more examples of coding highlighting, see the [codehilite][] extensions page.
 
 ## Tables
 
@@ -225,3 +258,40 @@ highlighting will only work on code listings.
 | Packages                 | yes        | yes        | yes     | yes  | yes |
 | Packed option            | yes        | yes        | yes     | yes  | yes |
 | Deprecations             | yes        | partial    | -       | -    | -   |
+
+Tables might also include alignment indiciators:
+
+| Left Align   | Center Align   | Right Align   |
+| :----------- | :------------: | ------------: |
+| Hi           | there          | friend        |
+| How          | are            | you?          |
+
+And if you're using something like [Pandoc](http://pandoc.org/), you might get tables with `colgroup`, which is fun?
+
+<table>
+  <colgroup>
+    <col width="30%">
+    <col width="70%">
+  </colgroup>
+  <thead>
+    <tr class="header">
+      <th>Company</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='http://google.com'>Google</a></td>
+      <td>A search engine (among other things).</td>
+    </tr>
+    <tr>
+      <td><a href='http://bing.com'>Bing</a></td>
+      <td>Another search engine, from Microsoft.</td>
+    </tr>
+  </tbody>
+</table>
+
+[codehilite]: extensions/codehilite.md
+[inlinehilite]: extensions/pymdown/inlinehilite.md
+[PyMdown Extension]: extensions/pymdown/overview.md
+[Tasklist]: extensions/pymdown/tasklist.md
