@@ -22,14 +22,14 @@
 
 <!-- Main navigation -->
 <nav class="md-nav md-nav--primary">
-  <label class="md-nav__title" for="drawer">{{ site_name }}</label>
+  <label class="md-nav__title" for="drawer">{{ config.site_name }}</label>
   <ul class="md-nav__list">
     {% for nav_item in nav %}
       {% set path = "nav-" + loop.index | string %}
       {% include "partials/nav-item.html" %}
     {% endfor %}
   </ul>
-  {% if repo_url %}
+  {% if config.repo_url %}
     <div class="md-nav__source">
       {% include "partials/source.html" %}
     </div>

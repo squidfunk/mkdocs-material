@@ -21,18 +21,36 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Definition
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default
-class Abstract {
+export default class Repository {
 
   /**
-   * Dispatch update on next repaint
+   * Render repository information
    *
    * @constructor
+   * @param {(string|HTMLElement)} el - Selector or HTML element
    */
-  // constructor() {
-  //
-  // }
+  constructor(el) {
+    this.el_ = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+  }
+
+  /**
+   * Initialize the source repository
+   *
+   * @param {Array.<string>} facts - Facts to be rendered
+   */
+  initialize(facts) {
+    this.el_.children[0].appendChild(
+      <ul class="md-source__facts">
+        {facts.map(fact => <li class="md-source__fact">{fact}</li>)}
+      </ul>
+    )
+
+    /* Finish rendering with animation */
+    this.el_.dataset.mdState = "done"
+  }
 }

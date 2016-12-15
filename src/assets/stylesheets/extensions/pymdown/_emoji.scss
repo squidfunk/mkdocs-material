@@ -24,59 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Scoped in typesetted content to match specificity of regular content
-.md-typeset {
-
-  // Permalinks extension
-  .headerlink {
-    display: inline-block;
-    margin-left: 1.0rem;
-    transform: translate(0, 0.5rem);
-    transition: transform 0.25s  0.25s,
-                color     0.25s,
-                opacity   0.125s 0.25s;
-    color: $md-color-black--lighter;
-    opacity: 0;
-
-    // Hide for print
-    @media print {
-      display: none;
-    }
-  }
-
-  // All headers with permalinks have ids
-  [id] {
-
-    // Make permalink visible on hover
-    &:hover  .headerlink,
-    &:target .headerlink,
-    & .headerlink:focus {
-      transform: translate(0, 0);
-      opacity: 1;
-    }
-
-    // Active or targeted permalink
-    &:hover  .headerlink:hover,
-    &:target .headerlink,
-    & .headerlink:focus {
-      color: $md-color-accent;
-    }
-  }
-
-  // Correct anchor offset of active targets
-  @each $level, $delta in (
-    h1: 3.0rem,
-    h2: 0.2rem,
-    h3: 0.4rem,
-    h4: 0.6rem,
-    h5: 1.0rem,
-    h6: 1.0rem
-  ) {
-    #{$level}[id]:target::before {
-      display: block;
-      margin-top: -(5.6rem + 2.4rem + $delta);
-      padding-top: (5.6rem + 2.4rem + $delta);
-      content: "";
-    }
-  }
+// Correct alignment of emojis
+.emoji {
+  vertical-align: text-top;
 }

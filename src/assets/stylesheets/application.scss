@@ -55,7 +55,10 @@
 @import "extensions/footnotes";
 @import "extensions/permalinks";
 
+@import "extensions/pymdown/arithmatex";
 @import "extensions/pymdown/critic";
+@import "extensions/pymdown/emoji";
+@import "extensions/pymdown/inlinehilite";
 @import "extensions/pymdown/tasklist";
 
 @import "shame";

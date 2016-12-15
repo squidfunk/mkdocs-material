@@ -24,6 +24,40 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Show source facts
+@keyframes md-source__facts--done {
+
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 1.3rem;
+  }
+}
+
+// Show source fact
+@keyframes md-source__fact--done {
+
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
 // Source container
 .md-source {
   display: block;
@@ -98,25 +132,25 @@
     font-size: 1.1rem;
     font-weight: 700;
     opacity: 0.75;
+    overflow: auto;
     list-style-type: none;
+
+    // Show after the data was loaded
+    [data-md-state="done"] & {
+      animation: md-source__facts--done 0.25s ease-in;
+    }
   }
 
   // Fact
   &__fact {
     float: left;
-    transform: translateY(0%);
-    transition:
-      transform 0.25s cubic-bezier(0.1, 0.7, 0.1, 1.0),
-      opacity   0.25s;
-    opacity: 1;
 
-    // Facts are hidden by default
-    &--hidden {
-      transform: translateY(100%);
-      opacity: 0;
+    // Show after the data was loaded
+    [data-md-state="done"] & {
+      animation: md-source__fact--done 0.4s ease-out;
     }
 
-    // Middle dots before fact
+    // Middle dot before fact
     &::before {
       margin: 0 0.2rem;
       content: "\00B7";

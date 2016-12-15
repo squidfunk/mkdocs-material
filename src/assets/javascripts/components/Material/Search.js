@@ -20,14 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import Index from "./Search/Index"
 import Lock from "./Search/Lock"
+import Result from "./Search/Result"
 
 /* ----------------------------------------------------------------------------
  * Module
  * ------------------------------------------------------------------------- */
 
 export default {
-  Index,
-  Lock
+  Lock,
+  Result
 }

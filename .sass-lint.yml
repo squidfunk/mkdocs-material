@@ -21,6 +21,8 @@
 files:
   ignore:
     - node_modules/**
+    - src/assets/stylesheets/extensions/pymdown/_arithmatex.scss
+    - src/assets/stylesheets/extensions/pymdown/_inlinehilite.scss
     - src/assets/stylesheets/_shame.scss
 
 options:

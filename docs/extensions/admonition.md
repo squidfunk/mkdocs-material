@@ -85,7 +85,8 @@ paragraphs and other blocks – except code blocks, because the parser from the
 standard Markdown library does not account for those.
 
 However, the [PyMdown Extensions][] package adds an extension called
-`superfences`, which makes it possible to nest code blocks within other blocks.
+[SuperFences][], which makes it possible to nest code blocks within other
+blocks.
 
 Example:
 
@@ -310,3 +311,4 @@ Qualifiers:
 
 [Admonition]: https://pythonhosted.org/Markdown/extensions/admonition.html
 [PyMdown Extensions]: https://facelessuser.github.io/pymdown-extensions
+[SuperFences]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/

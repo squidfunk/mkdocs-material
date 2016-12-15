@@ -21,37 +21,57 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Definition
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default class Media {
+export default class Listener {
 
   /**
-   * Listener which checks for media queries on dimension changes
+   * Generic event listener
    *
    * @constructor
-   * @param {string} query - Media query
-   * @param {Function} handler - Event handler to execute
+   * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
+   * @param {Array.<string>} events - Event names
+   * @param {(object|function)} handler - Handler to be invoked
    */
-  constructor(query, handler) {
-    this.media_   = window.matchMedia(query)
-    this.handler_ = media => {
-      handler(media)
-    }
+  constructor(els, events, handler) {
+    this.els_ = (typeof els === "string")
+      ? document.querySelectorAll(els)
+      : [].concat(els)
+
+    /* Set handler as function or directly as object */
+    this.handler_ = typeof handler === "function"
+      ? { update: handler }
+      : handler
+
+    /* Initialize event names and update handler */
+    this.events_ = [].concat(events)
+    this.update_ = ev => this.handler_.update(ev)
   }
 
   /**
-   * Register listener for media query check
+   * Register listener for all relevant events
    */
   listen() {
-    this.media_.addListener(this.handler_)
-    this.handler_(this.media_)
+    for (const el of this.els_)
+      for (const event of this.events_)
+        el.addEventListener(event, this.update_, false)
+
+    /* Execute setup handler, if implemented */
+    if (typeof this.handler_.setup === "function")
+      this.handler_.setup()
   }
 
   /**
-   * Unregister listener for media query check
+   * Unregister listener for all relevant events
    */
   unlisten() {
-    this.media_.removeListener(this.handler_)
+    for (const el of this.els_)
+      for (const event of this.events_)
+        el.removeEventListener(event, this.update_)
+
+    /* Execute reset handler, if implemented */
+    if (typeof this.handler_.reset === "function")
+      this.handler_.reset()
   }
 }

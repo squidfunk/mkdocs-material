@@ -21,7 +21,7 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Definition
+ * Class
  * ------------------------------------------------------------------------- */
 
 export default class Sidebar {
@@ -37,7 +37,7 @@ export default class Sidebar {
       ? document.querySelector(el)
       : el
 
-    /* Index inner and outer container */
+    /* Retrieve inner and outer container */
     const inner = this.el_.parentNode
     const outer = this.el_.parentNode.parentNode
 
@@ -50,6 +50,13 @@ export default class Sidebar {
 
     /* Initialize current height */
     this.height_ = 0
+  }
+
+  /**
+   * Initialize sidebar state
+   */
+  setup() {
+    this.update()
   }
 
   /**
@@ -71,12 +78,12 @@ export default class Sidebar {
 
     /* Sidebar should be locked, as we're below parent offset */
     if (offset < this.offset_) {
-      if (!this.el_.dataset.mdLocked)
-        this.el_.dataset.mdLocked = ""
+      if (this.el_.dataset.mdState !== "lock")
+        this.el_.dataset.mdState = "lock"
 
     /* Sidebar should be unlocked, if locked */
-    } else if (typeof this.el_.dataset.mdLocked === "string") {
-      delete this.el_.dataset.mdLocked
+    } else if (this.el_.dataset.mdState === "lock") {
+      delete this.el_.dataset.mdState
     }
   }
 
@@ -84,7 +91,7 @@ export default class Sidebar {
    * Reset locked state and height
    */
   reset() {
-    delete this.el_.dataset.mdLocked
+    delete this.el_.dataset.mdState
     this.el_.style.height = ""
     this.height_ = 0
   }

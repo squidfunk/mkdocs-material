@@ -52,9 +52,11 @@ markdown_extensions:
   - markdown.extensions.footnotes
   - markdown.extensions.meta
   - markdown.extensions.toc(permalink=true)
-  - pymdownx.betterem
+  - pymdownx.arithmatex
+  - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
   - pymdownx.critic
+  - pymdownx.githubemoji
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
@@ -77,6 +79,7 @@ pages:
     - PyMdown:
       - Overview: extensions/pymdown/overview.md
       - Inline Hilite: extensions/pymdown/inlinehilite.md
+      - Arithmatex: extensions/pymdown/arithmatex.md
       - Tasklist: extensions/pymdown/tasklist.md
   - Specimen: specimen.md
   - Customization: customization.md

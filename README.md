@@ -4,7 +4,7 @@
 [![PyPI Downloads][pypi-dl-image]][pypi-dl-link]
 [![PyPI Version][pypi-v-image]][pypi-v-link]
 
-A material design theme for [MkDocs](http://www.mkdocs.org).
+A material design theme for [MkDocs 0.16](http://www.mkdocs.org).
 
 [![iOS](docs/images/screen.png)](http://squidfunk.github.io/mkdocs-material/)
 

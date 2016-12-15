@@ -20,21 +20,40 @@
  * IN THE SOFTWARE.
  */
 
-import Abstract from "../Abstract"
+import Abstract from "./Abstract"
 
 /* ----------------------------------------------------------------------------
- * Definition
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default class Offset extends Abstract {
+export default class GitHub extends Abstract {
 
   /**
-   * Listener which monitors changes to the offset of the viewport
+   * Retrieve source information from GitHub
    *
    * @constructor
-   * @param {Function} handler - Event handler to execute
+   * @param {(string|HTMLElement)} el - Selector or HTML element
    */
-  constructor(handler) {
-    super(window, ["scroll"], handler)
+  constructor(el) {
+    super(el)
+
+    /* Adjust base URL to reach API endpoints */
+    this.base_ = this.base_.replace("github.com/", "api.github.com/repos/")
+  }
+
+  /**
+   * Fetch relevant source information from GitHub
+   *
+   * @return {function} Promise returning an array of facts
+   */
+  fetch_() {
+    return fetch(this.base_)
+      .then(response => response.json())
+      .then(data => {
+        return [
+          `${this.format_(data.stargazers_count)} Stars`,
+          `${this.format_(data.forks_count)} Forks`
+        ]
+      })
   }
 }

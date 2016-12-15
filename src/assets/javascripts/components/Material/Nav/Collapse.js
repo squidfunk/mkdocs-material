@@ -21,7 +21,7 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Definition
+ * Class
  * ------------------------------------------------------------------------- */
 
 export default class Collapse {
@@ -39,7 +39,7 @@ export default class Collapse {
   }
 
   /**
-   * Make expand and collapse transition smoothly
+   * Animate expand and collapse smoothly
    */
   update() {
     const current = this.el_.getBoundingClientRect().height
@@ -48,43 +48,43 @@ export default class Collapse {
     if (current) {
       this.el_.style.maxHeight = `${current}px`
       requestAnimationFrame(() => {
-        this.el_.dataset.mdAnimated = ""
+        this.el_.dataset.mdState = "animate"
         this.el_.style.maxHeight = "0px"
       })
 
     /* Collapsed, so expand */
     } else {
+      this.el_.dataset.mdState = "expand"
       this.el_.style.maxHeight = ""
-      this.el_.dataset.mdExpanded = ""
 
       /* Read height and unset pseudo-toggled state */
       const height = this.el_.getBoundingClientRect().height
-      delete this.el_.dataset.mdExpanded
+      delete this.el_.dataset.mdState
 
       /* Set initial state and animate */
       this.el_.style.maxHeight = "0px"
       requestAnimationFrame(() => {
-        this.el_.dataset.mdAnimated = ""
+        this.el_.dataset.mdState = "animate"
         this.el_.style.maxHeight = `${height}px`
       })
     }
 
     /* Remove state on end of transition */
     const end = function(ev) {
-      delete ev.target.dataset.mdAnimated
+      delete ev.target.dataset.mdState
       ev.target.style.maxHeight = ""
 
-      /* Only fire once, so remove event listener again */
+      /* Only fire once, so directly remove event listener */
       ev.target.removeEventListener("transitionend", end, false)
     }
     this.el_.addEventListener("transitionend", end, false)
   }
 
   /**
-   * Nothing to reset
+   * Reset height and pseudo-toggled state
    */
   reset() {
+    delete this.el_.dataset.mdState
     this.el_.style.maxHeight = ""
-    delete this.el_.dataset.mdToggled
   }
 }

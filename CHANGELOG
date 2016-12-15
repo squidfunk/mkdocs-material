@@ -32,11 +32,12 @@ mkdocs-material-1.0.0-rc.1 (2016-XX-XX)
   * Added more detailed documentation on specimen, extensions etc.
   * Added a 404.html error page for deployment on GitHub Pages
   * Fixed live reload chain in watch mode when saving a template
+  * Fixed variable references to work with mkdocs 0.16
 
 mkdocs-material-0.2.4 (2016-06-26)
 
   * Fixed improperly set default favicon
-  * Fixed #33: Protocol relative URL for web fonts doesn't work with file://
+  * Fixed #33: Protocol relative URL for webfonts doesn't work with file://
   * Fixed #34: IE11 on Windows 7 doesn't honor max-width on main tag
   * Fixed #35: Add styling for blockquotes
 
