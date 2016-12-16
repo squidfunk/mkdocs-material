@@ -74,8 +74,8 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               {% block content %}
-                {% if edit_uri %}
-                  <a class="md-button md-button--edit" href="{{ edit_uri }}">
+                {% if config.edit_uri %}
+                  <a class="md-button md-button--edit" href="{{ page.edit_url }}">
                     Edit
                   </a>
                 {% endif %}
