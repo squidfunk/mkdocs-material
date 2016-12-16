@@ -219,7 +219,7 @@
     }
   }
 
-  // Icon
+  // Icons
   &__icon {
     position: absolute;
     top: $md-icon-padding;
@@ -334,5 +334,77 @@
         }
       }
     }
+  }
+}
+
+// Search result
+.md-search-result {
+
+  // Search metadata
+  &__meta {
+    padding: 0 1.6rem;
+    background: $md-color-black--lightest;
+    color: $md-color-black--light;
+    font-size: ms(-1);
+    line-height: 4.0rem;
+
+    // [tablet landscape +]: Increase left indent
+    @include break-from-device(tablet landscape) {
+      padding-left: 4.8rem;
+    }
+  }
+
+  // List of items
+  &__list {
+    margin: 0;
+    padding: 0;
+    border-top: 0.1rem solid $md-color-black--lightest;
+    list-style: none;
+  }
+
+  // List item
+  &__item {
+    box-shadow: 0 -0.1rem 0 $md-color-black--lightest;
+  }
+
+  // Link inside item
+  &__link {
+    display: block;
+    padding: 0 1.6rem;
+    transition: background 0.25s;
+    overflow: auto;
+
+    // Hovered link
+    &:hover {
+      background: transparentize($md-color-accent, 0.9);
+    }
+
+    // [tablet landscape +]: Increase left indent
+    @include break-from-device(tablet landscape) {
+      padding-left: 4.8rem;
+    }
+  }
+
+  // Search result content
+  &__article {
+    margin: 1.0em 0;
+  }
+
+  // Search result title
+  &__title {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    color: $md-color-black;
+    font-size: ms(0);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  &__teaser {
+    margin: 0.5em 0;;
+    color: $md-color-black--light;
+    font-size: ms(-1);
+    line-height: 1.4;
+    word-break: break-word;
   }
 }
