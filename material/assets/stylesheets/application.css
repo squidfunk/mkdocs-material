@@ -1105,8 +1105,9 @@ hr {
   transition: color     0.25s, opacity   0.125s 0.25s, -webkit-transform 0.25s  0.25s;
   transition: transform 0.25s  0.25s, color     0.25s, opacity   0.125s 0.25s;
   transition: transform 0.25s  0.25s, color     0.25s, opacity   0.125s 0.25s, -webkit-transform 0.25s  0.25s;
-  color: rgba(0, 0, 0, 0.26);
   opacity: 0; }
+  html body .md-typeset .headerlink {
+    color: rgba(0, 0, 0, 0.26); }
 
 .md-typeset [id]:hover .headerlink,
 .md-typeset [id]:target .headerlink,

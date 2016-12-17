@@ -35,8 +35,12 @@
     transition: transform 0.25s  0.25s,
                 color     0.25s,
                 opacity   0.125s 0.25s;
-    color: $md-color-black--lighter;
     opacity: 0;
+
+    // Higher specificity for color due to palettes integration
+    html body & {
+      color: $md-color-black--lighter;
+    }
 
     // Hide for print
     @media print {
