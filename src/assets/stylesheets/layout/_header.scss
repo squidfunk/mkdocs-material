@@ -33,7 +33,8 @@
   right: 0;
   left: 0;
   height: 5.6rem;
-  background: $md-color-primary;
+  transition: background-color 0.25s;
+  background-color: $md-color-primary;
   color: $md-color-white;
   z-index: 1;
 

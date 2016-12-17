@@ -31,6 +31,7 @@
 
   // Table of contents
   &--secondary {
+    transition: border-left 0.25s;
     border-left: 0.4rem solid $md-color-primary;
   }
 
@@ -148,14 +149,14 @@
 
     // Adjust styles for primary navigation
     &--primary {
-      background: $md-color-white;
+      background-color: $md-color-white;
 
       // Move subsequent navigations off
       .md-nav__toggle ~ .md-nav {
         @include z-depth(4);
 
         left: 0.4rem;
-        background: $md-color-white;
+        background-color: $md-color-white;
       }
 
       // List title - higher specificity is necessary to ensure that the title
@@ -163,7 +164,7 @@
       html & .md-nav__title {
         position: relative;
         padding: 0.4rem 1.6rem 0.4rem 5.6rem;
-        background: $md-color-black--lightest;
+        background-color: $md-color-black--lightest;
         color: $md-color-black--light;
         font-size: 1.8rem;
         font-weight: 400;
@@ -222,7 +223,7 @@
 
         // Color of icon should inherit link color on hover
         &:hover::after {
-          color: $md-color-accent;
+          color: inherit;
         }
       }
 
@@ -324,7 +325,7 @@
     &__source {
       display: block;
       padding: 0.4rem;
-      background: $md-color-black;
+      background-color: $md-color-black;
       color: $md-color-white;
     }
   }

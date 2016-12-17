@@ -45,6 +45,9 @@ extra:
   author:
     github: squidfunk
     twitter: squidfunk
+  palette:
+    primary: indigo
+    accent: indigo
 
 # Extensions
 markdown_extensions:

@@ -87,6 +87,12 @@
       <link rel="stylesheet" type="text/css"
           href="{{ base_url }}/assets/stylesheets/application.css" />
 
+      <!-- Extra palettes -->
+      {% if config.extra.palette %}
+        <link rel="stylesheet" type="text/css"
+            href="{{ base_url }}/assets/stylesheets/application.palettes.css" />
+      {% endif %}
+
       <!-- Custom stylesheets -->
       {% for path in extra_css %}
         <link rel="stylesheet" type="text/css" href="{{ path }}" />
@@ -94,9 +100,19 @@
     {% endblock %}
 
     <!-- Block: custom front matter -->
-    {%- block extrahead -%}{% endblock %}
+    {% block extrahead %}{% endblock %}
   </head>
-  <body>
+
+  <!-- Integrate palette colors, if defined -->
+  {% set palette = config.extra.get("palette", {}) %}
+  {% set primary = palette.primary | replace(" ", "-") | lower %}
+  {% set accent  = palette.accent  | replace(" ", "-") | lower %}
+  {% if primary or accent %}
+    <body data-md-palette-primary="{{ primary }}"
+        data-md-palette-accent="{{ accent }}">
+  {% else %}
+    <body>
+  {% endif %}
 
     <!-- State toggles -->
     <input class="md-toggle" data-md-toggle="drawer"
@@ -233,15 +249,40 @@
     {% block analytics %}
       {% if config.google_analytics %}
       <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||
-        function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
-        a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;
-        a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script',
-        '//www.google-analytics.com/analytics.js','ga');
-        ga('create',
-          '{{ config.google_analytics[0] }}',
-          '{{ config.google_analytics[1] }}');
-        ga('send', 'pageview');
+        (function(i,s,o,g,r,a,m){
+          i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+          m.parentNode.insertBefore(a,m)
+        })(window, document,
+          "script", "https://www.google-analytics.com/analytics.js", "ga");
+
+        /* General initialization */
+        ga("create",
+          "{{ config.google_analytics[0] }}",
+          "{{ config.google_analytics[1] }}");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+
+        /* Track outbound links */
+        var links = document.getElementsByTagName("a");
+        Array.prototype.map.call(links, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener("click", function() {
+              var action = item.getAttribute("data-action") || "follow";
+              ga("send", "event", "outbound", action, item.href);
+            });
+          }
+        });
+
+        /* Register handler to log search on blur */
+        var query = document.forms.search.query;
+        query.addEventListener("blur", function() {
+          if (this.value) {
+            var path = document.location.pathname;
+            ga("send", "pageview", path + "?q=" + this.value);
+          }
+        });
       </script>
       {% endif %}
     {% endblock %}

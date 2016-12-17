@@ -31,7 +31,7 @@
   padding: 0.8rem 1.2rem;
   border-left: 3.2rem solid transparentize($clr-blue-a200, 0.6);
   border-radius: 0.2rem;
-  background: transparentize($clr-blue-a200, 0.85);
+  background-color: transparentize($clr-blue-a200, 0.85);
   font-size: ms(-1);
 
   // Icon
@@ -73,7 +73,7 @@
     &%#{nth($names, 1)},
     &.#{nth($names, 1)} {
       border-color: transparentize($tint, 0.6);
-      background: transparentize($tint, 0.85);
+      background-color: transparentize($tint, 0.85);
 
       // Icon
       &::before {

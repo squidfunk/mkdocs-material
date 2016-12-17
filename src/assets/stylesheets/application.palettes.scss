@@ -1,0 +1,171 @@
+////
+/// Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Dependencies
+// ----------------------------------------------------------------------------
+
+@import "modular-scale";
+@import "material-color";
+@import "material-shadows";
+
+// ----------------------------------------------------------------------------
+// Local imports
+// ----------------------------------------------------------------------------
+
+@import "helpers/break";
+@import "helpers/px2em";
+
+@import "config";
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Build primary palette
+@each $name, $color in (
+  "red":         $clr-red-400,
+  "pink":        $clr-pink-500,
+  "purple":      $clr-purple-400,
+  "deep-purple": $clr-deep-purple-400,
+  "indigo":      $clr-indigo-500,
+  "blue":        $clr-blue-500,
+  "light-blue":  $clr-light-blue-500,
+  "cyan":        $clr-cyan-500,
+  "teal":        $clr-teal-500,
+  "green":       $clr-green-500,
+  "light-green": $clr-light-green-600,
+  "lime":        $clr-lime-600,
+  "yellow":      $clr-yellow-800,
+  "amber":       $clr-amber-600,
+  "orange":      $clr-orange-600,
+  "deep-orange": $clr-deep-orange-400,
+  "brown":       $clr-brown-500,
+  "grey":        $clr-grey-600,
+  "blue-grey":   $clr-blue-grey-600
+) {
+  [data-md-palette-primary="#{$name}"] {
+
+    // Links in typesetted content
+    .md-typeset a {
+      color: $color;
+    }
+
+    // Application header (stays always on top)
+    .md-header {
+      background-color: $color;
+    }
+
+    // Table of contents
+    .md-nav--secondary {
+      border-left: 0.4rem solid $color;
+    }
+  }
+}
+
+// Build accent palette
+@each $name, $color in (
+  "red":         $clr-red-a400,
+  "pink":        $clr-pink-a400,
+  "purple":      $clr-purple-a200,
+  "deep-purple": $clr-deep-purple-a200,
+  "indigo":      $clr-indigo-a200,
+  "blue":        $clr-blue-a200,
+  "light-blue":  $clr-light-blue-a700,
+  "cyan":        $clr-cyan-a700,
+  "teal":        $clr-teal-a700,
+  "green":       $clr-green-a700,
+  "light-green": $clr-light-green-a700,
+  "lime":        $clr-lime-a700,
+  "yellow":      $clr-yellow-a700,
+  "amber":       $clr-amber-a700,
+  "orange":      $clr-orange-a400,
+  "deep-orange": $clr-deep-orange-a200
+) {
+  [data-md-palette-accent="#{$name}"] {
+
+    // Typesetted content
+    .md-typeset {
+
+      // Hovered and active links
+      a:hover,
+      a:active {
+        color: $color;
+      }
+
+      // Hovered scrollbar thumb
+      pre::-webkit-scrollbar-thumb:hover,
+      .codehilite::-webkit-scrollbar-thumb:hover {
+        background-color: $color;
+      }
+
+      // Active or targeted back reference
+      .footnote li:hover  .footnote-backref:hover,
+      .footnote li:target .footnote-backref {
+        color: $color;
+      }
+
+      // Active or targeted permalink
+      [id]:hover  .headerlink:hover,
+      [id]:target .headerlink,
+      [id] .headerlink:focus {
+        color: $color;
+      }
+    }
+
+    // Current or hovered link
+    .md-nav__link:hover,
+    .md-nav__link:active,
+    .md-nav__link--active {
+      color: $color;
+    }
+
+    // [tablet portrait -]: Show table of contents in drawer
+    @include break-to-device(tablet portrait) {
+
+      // Show link to table of contents - higher specificity is necessary to
+      // display the table of contents inside the drawer
+      html & .md-nav__link[for="toc"]::after {
+        color: $color;
+      }
+    }
+
+    // Search result
+    .md-search-result {
+
+      // Hovered scrollbar thumb
+      &__scrollwrap::-webkit-scrollbar-thumb:hover {
+        background-color: $color;
+      }
+
+      // Hovered link
+      &__link:hover {
+        background-color: transparentize($color, 0.9);
+      }
+    }
+
+    // Wrapper for scrolling on overflow
+    .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
+      background-color: $color;
+    }
+  }
+}

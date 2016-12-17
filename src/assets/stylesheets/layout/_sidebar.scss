@@ -56,7 +56,7 @@
       transition:
         transform  0.25s cubic-bezier(0.4, 0.0, 0.2, 1.0),
         box-shadow 0.25s;
-      background: $md-color-white;
+      background-color: $md-color-white;
       z-index: 2;
 
       // Just hide drawer, if browser doesn't support 3D transforms

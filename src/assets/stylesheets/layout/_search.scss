@@ -56,7 +56,7 @@
         transform 0.3s 0.1s,
         opacity   0.2s 0.2s;
       border-radius: 2.0rem;
-      background: $md-color-white;
+      background-color: $md-color-white;
       opacity: 0;
       overflow: hidden;
       z-index: 1;
@@ -187,7 +187,7 @@
         background-color 0.25s,
         color            0.25s;
       border-radius: 0.2rem;
-      background: $md-color-black--lighter;
+      background-color: $md-color-black--lighter;
       color: $md-color-white;
       font-size: ms(0);
 
@@ -200,13 +200,13 @@
 
       // Hovered search field
       &:hover {
-        background: $md-color-white--lightest;
+        background-color: $md-color-white--lightest;
       }
 
       // Set light background on active search field
       [data-md-toggle="search"]:checked ~ .md-header & {
         border-radius: 0.2rem 0.2rem 0 0;
-        background: $md-color-white;
+        background-color: $md-color-white;
         color: $md-color-black;
         text-overflow: none;
 
@@ -343,7 +343,7 @@
   // Search metadata
   &__meta {
     padding: 0 1.6rem;
-    background: $md-color-black--lightest;
+    background-color: $md-color-black--lightest;
     color: $md-color-black--light;
     font-size: ms(-1);
     line-height: 4.0rem;
@@ -376,7 +376,7 @@
 
     // Hovered link
     &:hover {
-      background: transparentize($md-color-accent, 0.9);
+      background-color: transparentize($md-color-accent, 0.9);
     }
 
     // [tablet landscape +]: Increase left indent
@@ -400,6 +400,7 @@
     line-height: 1.4;
   }
 
+  // Search result teaser
   &__teaser {
     margin: 0.5em 0;;
     color: $md-color-black--light;

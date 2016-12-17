@@ -196,7 +196,7 @@ $codehilite-whitespace: transparent;
     display: block;
     margin: 0 -1.2rem;
     padding: 0 1.2rem;
-    background: transparentize($clr-yellow-500, 0.5);
+    background-color: transparentize($clr-yellow-500, 0.5);
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
@@ -219,7 +219,7 @@ $codehilite-whitespace: transparent;
     margin: 1.0em 0;
     padding: 1.0rem 1.2rem 0.8rem;
     border-radius: 0.2rem;
-    background: $md-code-background;
+    background-color: $md-code-background;
     color: $md-code-color;
     line-height: 1.4;
     overflow: auto;
@@ -248,7 +248,7 @@ $codehilite-whitespace: transparent;
       min-width: 100%;
       margin: 0;
       padding: 0;
-      background: transparent;
+      background-color: transparent;
       overflow: visible;
       vertical-align: top;
     }
@@ -299,7 +299,7 @@ $codehilite-whitespace: transparent;
     // Disable pointer-events, so code can be easily copied without
     // accidentally also copying the line numbers
     .linenos {
-      background: $md-color-black--lightest;
+      background-color: $md-color-black--lightest;
       color: $md-color-black--lighter;
       user-select: none;
 
@@ -307,7 +307,7 @@ $codehilite-whitespace: transparent;
       pre {
         margin: 0;
         padding: 0;
-        background: transparent;
+        background-color: transparent;
         color: inherit;
         text-align: right;
       }
