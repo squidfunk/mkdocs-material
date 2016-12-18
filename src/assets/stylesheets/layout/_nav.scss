@@ -118,10 +118,14 @@
       color: $md-color-black--light;
     }
 
-    // Current or hovered item
-    &:hover,
+    // Active item
     &:active,
     &--active {
+      color: $md-color-primary;
+    }
+
+    // Hovered item
+    &:hover {
       color: $md-color-accent;
     }
   }
@@ -216,7 +220,6 @@
           top: 50%;
           right: 1.2rem;
           transform: translateY(-50%) rotate(-90deg);
-          transition: inherit;
           color: $md-color-black--light;
           font-size: 2.4rem;
         }
@@ -306,7 +309,7 @@
       // Unrotate icon for table of contents
       &::after {
         transform: translateY(-50%);
-        color: $md-color-accent;
+        color: inherit;
         content: "toc";
       }
 

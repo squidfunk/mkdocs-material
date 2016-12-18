@@ -522,7 +522,9 @@ hr {
         display: none; }
     .md-nav__link[data-md-state="blur"] {
       color: rgba(0, 0, 0, 0.54); }
-    .md-nav__link:hover, .md-nav__link:active, .md-nav__link--active {
+    .md-nav__link:active, .md-nav__link--active {
+      color: #3f51b5; }
+    .md-nav__link:hover {
       color: #536dfe; }
   .md-nav__source {
     display: none; }
@@ -1300,7 +1302,7 @@ hr {
   html .md-nav__link[for="toc"]::after {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    color: #536dfe;
+    color: inherit;
     content: "toc"; }
 
   html .md-nav__link[for="toc"] + .md-nav__link {
@@ -1464,8 +1466,6 @@ hr {
     right: 1.2rem;
     -webkit-transform: translateY(-50%) rotate(-90deg);
     transform: translateY(-50%) rotate(-90deg);
-    -webkit-transition: inherit;
-    transition: inherit;
     color: rgba(0, 0, 0, 0.54);
     font-size: 2.4rem; }
 

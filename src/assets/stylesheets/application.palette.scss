@@ -110,6 +110,12 @@ button[data-md-color-accent] {
         border-left: 0.4rem solid $color;
       }
     }
+
+    // Current or hovered link
+    .md-nav__link:active,
+    .md-nav__link--active {
+      color: $color;
+    }
   }
 }
 
@@ -171,20 +177,8 @@ button[data-md-color-accent] {
     }
 
     // Current or hovered link
-    .md-nav__link:hover,
-    .md-nav__link:active,
-    .md-nav__link--active {
+    .md-nav__link:hover {
       color: $color;
-    }
-
-    // [tablet portrait -]: Show table of contents in drawer
-    @include break-to-device(tablet portrait) {
-
-      // Show link to table of contents - higher specificity is necessary to
-      // display the table of contents inside the drawer
-      html & .md-nav__link[for="toc"]::after {
-        color: $color;
-      }
     }
 
     // Search container scrollbar thumb
