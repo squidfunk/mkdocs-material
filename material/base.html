@@ -38,7 +38,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.palettes.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.palette.css">
       {% endif %}
       {% for path in extra_css %}
         <link rel="stylesheet" href="{{ path }}">
@@ -50,7 +50,7 @@
   {% set primary = palette.primary | replace(" ", "-") | lower %}
   {% set accent  = palette.accent  | replace(" ", "-") | lower %}
   {% if primary or accent %}
-    <body data-md-palette-primary="{{ primary }}" data-md-palette-accent="{{ accent }}">
+    <body data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
   {% else %}
     <body>
   {% endif %}

@@ -41,7 +41,27 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Build primary palette
+// Color tile
+button[data-md-color-primary],
+button[data-md-color-accent] {
+  width: 10.0rem;
+  padding: 0.4rem 0.8rem;
+  transition:
+    background-color 0.25s,
+    opacity 0.25s;
+  border-radius: 0.2rem;
+  color: $md-color-white;
+  font-size: ms(-1);
+  text-align: left;
+  cursor: pointer;
+
+  // Hovered color tile
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+// Build primary colors
 @each $name, $color in (
   "red":         $clr-red-400,
   "pink":        $clr-pink-500,
@@ -63,7 +83,14 @@
   "grey":        $clr-grey-600,
   "blue-grey":   $clr-blue-grey-600
 ) {
-  [data-md-palette-primary="#{$name}"] {
+
+  // Color tile for presentation                                                // TODO. comments
+  button[data-md-color-primary="#{$name}"] {
+    background-color: $color;
+  }
+
+  // Color palette
+  [data-md-color-primary="#{$name}"] {
 
     // Links in typesetted content
     .md-typeset a {
@@ -75,14 +102,18 @@
       background-color: $color;
     }
 
-    // Table of contents
-    .md-nav--secondary {
-      border-left: 0.4rem solid $color;
+    // [tablet landscape +]: Add border to table of contents
+    @include break-from-device(tablet landscape) {
+
+      // Table of contents
+      .md-nav--secondary {
+        border-left: 0.4rem solid $color;
+      }
     }
   }
 }
 
-// Build accent palette
+// Build accent colors
 @each $name, $color in (
   "red":         $clr-red-a400,
   "pink":        $clr-pink-a400,
@@ -101,7 +132,14 @@
   "orange":      $clr-orange-a400,
   "deep-orange": $clr-deep-orange-a200
 ) {
-  [data-md-palette-accent="#{$name}"] {
+
+  // Color tile for presentation
+  button[data-md-color-accent="#{$name}"] {
+    background-color: $color;
+  }
+
+  // Color palette
+  [data-md-color-accent="#{$name}"] {
 
     // Typesetted content
     .md-typeset {
@@ -149,18 +187,14 @@
       }
     }
 
-    // Search result
-    .md-search-result {
+    // Search container scrollbar thumb
+    .md-search__scrollwrap::-webkit-scrollbar-thumb:hover {
+      background-color: $color;
+    }
 
-      // Hovered scrollbar thumb
-      &__scrollwrap::-webkit-scrollbar-thumb:hover {
-        background-color: $color;
-      }
-
-      // Hovered link
-      &__link:hover {
-        background-color: transparentize($color, 0.9);
-      }
+    // Hovered search result link
+    .md-search-result__link:hover {
+      background-color: transparentize($color, 0.9);
     }
 
     // Wrapper for scrolling on overflow

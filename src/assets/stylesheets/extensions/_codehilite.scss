@@ -334,6 +334,7 @@ $codehilite-whitespace: transparent;
 
   // Full-width container
   > .codehilitetable {
+    box-shadow: none;
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {

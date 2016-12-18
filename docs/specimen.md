@@ -1,297 +1,271 @@
-# Specimen should get a very long name, so we see how it behaves with the new edit url feature that is awesome
+# Specimen
 
 ## Typography
 
 ### Body copy
 
-Material's typographical system follows the idea of __vertical rhythm__, which
-means it tries to establish a _consistent visual rhythm_ to the content of the
-page to make reading pleasant and easy on the eyes. It's a simple concept but
-rather hard to implement correctly. Luckily, the Material theme has already
-done this for you, so sit back, relax, and start writing your documentation.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero,
+mollis sed massa vel, *ornare viverra ex*. Mauris a ullamcorper lacus. Nullam
+urna elit, malesuada eget finibus ut, ullamcorper ac tortor. Vestibulum sodales
+pulvinar nisl, pharetra aliquet est. Quisque volutpat erat ac nisi accumsan
+tempor.
 
-Naturally, the Material theme defines __bold__ and _italic_ styles, makes it
-easy to write `fenced inline code blocks`, [links](#) and <kbd>Keyboard</kbd>
-<kbd>+</kbd> <kbd>Commands</kbd>.
+**Sed suscipit**, orci non pretium pretium, quam mi gravida metus, vel
+venenatis justo est condimentum diam. Maecenas non ornare justo. Nam a ipsum
+eros. [Nulla aliquam](/) orci sit amet nisl posuere malesuada. Proin aliquet
+nulla velit, quis ultricies orci feugiat et. `Ut tincidunt sollicitudin`
+tincidunt. Aenean ullamcorper sit amet nulla at interdum.
 
-* test
-* test
-* Material's typographical system follows the idea of __vertical rhythm__, which
-  means it tries to establish a _consistent visual rhythm_ to the content of the
-  page to make reading pleasant and easy on the eyes. It's a simple concept but
-  rather hard to implement correctly. Luckily, the Material theme has already
-    1. test
-    2. test
-        1.  Material's typographical system follows the idea of __vertical rhythm__, which
-            means it tries to establish a _consistent visual rhythm_ to the content of the
-            page to make reading pleasant and easy on the eyes. It's a simple concept but
-            rather hard to implement correctly. Luckily, the Material theme has already
-        2.  Material's typographical system follows the idea of __vertical rhythm__, which
-            means it tries to establish a _consistent visual rhythm_ to the content of the
-            page to make reading pleasant and easy on the eyes. It's a simple concept but
-            rather hard to implement correctly. Luckily, the Material theme has already
-        3.  Material's typographical system follows the idea of __vertical rhythm__, which
-            means it tries to establish a _consistent visual rhythm_ to the content of the
-            page to make reading pleasant and easy on the eyes. It's a simple concept but
-            rather hard to implement correctly. Luckily, the Material theme has already
-    3. test
-        1. test
-        2. test
-        3. test
-    * test
-* test
+### Headings
 
-### Headings <small>w/ or w/o secondary text</small>
+#### The 4th level
 
-Besides the default HTML headings `<h2>` to `<h6>`, the representational
-classes `.h2` to `.h6` are defined to allow easy inline styling. The `<h1>`
-should be only defined once and is integrated into the collapsing header.
+##### The 5th level
 
-Secondary text can be introduced to all headings (including `<h1>`) by using
-the `<small>` tag directly inside Markdown.
+###### The 6th level
 
-## Blockquotes
+### Headings <small>with secondary text</small>
 
-> Text can also be written in blockquotes, for example to paraphrase
-> something or someone.
->
-> > And blockquotes can be nested?
->
-> This is correct. Furthermore, they can contain __bold__ and _italic_ text,
-> `fenced inline code blocks`, [links](#), headings and all kind of stuff.
+#### The 4th level <small>with secondary text</small>
 
-## Lists
+##### The 5th level <small>with secondary text</small>
 
-### Ordered lists
+###### The 6th level <small>with secondary text</small>
 
-This is an ordered list of sentences for the sake of checking the styling is &#128076;!
+### Blockquotes
 
-1. The first sentence, free from markup.
-2. The second sentence includes _italic_ text, and a [link](#) that should hopefully help it trigger a second line overflow to make sure spacing is a-ok.
-3. The third sentence highlights some enjoyable fruits:
-    1. Mangoes, **yum**!
-    2. Blueberries
-    3. Strawberries
-    4. Apples (in particular)
-        1. Sundowner
+> Morbi eget dapibus felis. Vivamus venenatis porttitor tortor sit amet rutrum.
+  Pellentesque aliquet quam enim, eu volutpat urna rutrum a. Nam vehicula nunc
+  mauris, a ultricies libero efficitur sed. *Class aptent* taciti sociosqu ad
+  litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie
+  imperdiet consectetur.
 
-            My favourite &#128149;
+#### Blockquote nesting
 
-        2. Granny Smith
-4. An this is just a footer sentence just to make sure.
+> **Sed aliquet**, neque at rutrum mollis, neque nisi tincidunt nibh, vitae
+  faucibus lacus nunc at lacus. Nunc scelerisque, quam id cursus sodales, lorem
+  [libero fermentum](/) urna, ut efficitur elit ligula et nunc.
 
-### Unordered lists
+> > Mauris dictum mi lacus, sit amet pellentesque urna vehicula fringilla.
+    Ut sit amet placerat ante. Proin sed elementum nulla. Nunc vitae sem odio.
+    Suspendisse ac eros arcu. Vivamus orci erat, volutpat a tempor et, rutrum.
+    eu odio.
 
-Let's do that again, this time without the numbering.
+> > > `Suspendisse rutrum facilisis risus`, eu posuere neque commodo a.
+      Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed nec leo
+      bibendum, sodales mauris ut, tincidunt massa.
 
-- Free from markup, just like a bird.
-- Let's try some [link](#) with some inline code `var home = '127.0.0.1'`, and now some extra __fluff__ to ensure we're using more than a single line.
-- These are some varietes of beer.
-    - Lager
+#### Other content blocks
 
-        Lager is a type of beer that is conditioned at low temperatures, normally at the brewery. It may be pale, golden, amber, or dark.
-
-    - Kölsch
-
-        Kölsch is a beer brewed in Cologne, Germany. It is a clear, top-fermented beer with a bright, straw-yellow hue similar to other beers brewed from mainly Pilsener malt.
-
-    - Siason
-
-        Saison is a pale ale that is generally around 7% ABV, highly carbonated, fruity, spicy, and often bottle conditioned
-
-    - IPA
-
-- An this is just a footer sentence just to make sure.
-
-We can also use the alternative Markdown styling for lists (`*`, `+` or `-`), even mixing them:
-
-* As shown by this item, which is a `*`.
-+ This item uses `+`.
-    * And it also includes an nested item for good measure.
-- The final item uses `-`.
-- And for good measure, this also uses `-`.
-
-Another default list:
-
-* No checklist
-* Foobar
-
-    ``` js
-    function() test {
-      var foo = 12;
-      return foo;
+> Vestibulum vitae orci quis ante viverra ultricies ut eget turpis. Sed eu
+  lectus dapibus, eleifend nulla varius, lobortis turpis. In ac hendrerit nisl,
+  sit amet laoreet nibh.
+  ``` js hl_lines="8"
+  var _extends = function(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        target[key] = source[key];
+      }
     }
+    return target;
+  };
+  ```
+
+  > > Praesent at `:::js return target`, sodales nibh vel, tempor felis. Fusce
+      vel lacinia lacus. Suspendisse rhoncus nunc non nisi iaculis ultrices.
+      Donec consectetur mauris non neque imperdiet, eget volutpat libero.
+
+### Lists
+
+#### Unordered lists
+
+* Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus tellus
+  non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor lobortis orci,
+  at elementum urna sodales vitae. In in vehicula nulla, quis ornare libero.
+
+    * Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis.
+    * Nam vulputate tincidunt fringilla.
+    * Nullam dignissim ultrices urna non auctor.
+
+* Aliquam metus eros, pretium sed nulla venenatis, faucibus auctor ex. Proin ut
+  eros sed sapien ullamcorper consequat. Nunc ligula ante, fringilla at aliquam
+  ac, aliquet sed mauris.
+
+* Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
+  accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh
+  lacinia sed. Aenean in finibus diam.
+
+#### Ordered lists
+
+1. Integer vehicula feugiat magna, a mollis tellus. Nam mollis ex ante, quis
+  elementum eros tempor rutrum. Aenean efficitur lobortis lacinia. Nulla
+  consectetur feugiat sodales.
+
+2. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+  ridiculus mus. Aliquam ornare feugiat quam et egestas. Nunc id erat et quam
+  pellentesque lacinia eu vel odio.
+
+    1. Vivamus venenatis porttitor tortor sit amet rutrum. Pellentesque aliquet
+      quam enim, eu volutpat urna rutrum a. Nam vehicula nunc mauris, a
+      ultricies libero efficitur sed.
+
+        1. Mauris dictum mi lacus
+        2. Ut sit amet placerat ante
+        3. Suspendisse ac eros arcu
+
+    2. Morbi eget dapibus felis. Vivamus venenatis porttitor tortor sit amet
+      rutrum. Pellentesque aliquet quam enim, eu volutpat urna rutrum a. Sed
+      aliquet, neque at rutrum mollis, neque nisi tincidunt nibh.
+
+    3. Pellentesque eget `:::js var _extends` ornare tellus, ut gravida mi.
+    ``` js hl_lines="1"
+    var _extends = function(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          target[key] = source[key];
+        }
+      }
+      return target;
+    };
     ```
 
-## Checklists
+3. Vivamus id mi enim. Integer id turpis sapien. Ut condimentum lobortis
+  sagittis. Aliquam purus tellus, faucibus eget urna at, iaculis venenatis
+  nulla. Vivamus a pharetra leo.
 
-Checklists are supported by the [PyMdown Extension][], [Tasklist][]:
+### Code blocks
 
-* [ ] foo
-* [x] bar
-* [ ] baz
-    * [ ] foo
-    * [x] bar
-    * [ ] baz
+#### Inline
 
-### Critic
+Morbi eget `dapibus felis`. Vivamus *`venenatis porttitor`* tortor sit amet
+rutrum. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+per inceptos himenaeos. [`Pellentesque aliquet quam enim`](/), eu volutpat urna
+rutrum a.
 
-Here is some {--*incorrect*--} Markdown.  I am adding this {++here.++}.  Here is some more {--text
-that I am removing--}text.  And here is even more {++text that I
-am ++}adding.{~~
+Nam vehicula nunc `:::js return target` mauris, a ultricies libero efficitur
+sed. Sed molestie imperdiet consectetur. Vivamus a pharetra leo. Pellentesque
+eget ornare tellus, ut gravida mi. Fusce vel lacinia lacus.
 
-~>  ~~}Paragraph was deleted and replaced with some spaces.{~~  ~>
+#### Listing
 
-~~}Spaces were removed and a paragraph was added.
+    #!js hl_lines="8"
+    var _extends = function(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          target[key] = source[key];
+        }
+      }
+      return target;
+    };
 
-And here is a comment on {==some
-==text== ==} asdhsjakh dkah dkash dkjas hdkash dksa sahdka kas dksa hdksah dksa kdsa kdask dask {>>This works quite well. I just wanted to comment on it.<<}. Substitutions {~~is~>are~~} great!
+### Horizontal rules
 
-### Test {--headline--} [`with code`](http://google.com) and ==foo== [without](http://google.com)
+Aenean in finibus diam. Duis mollis est eget nibh volutpat, fermentum aliquet
+dui mollis. Nam vulputate tincidunt fringilla. Nullam dignissim ultrices urna
+non auctor.
 
-This is also ==something that is marked (tm)==. Very cool.
+***
 
-Escape \{>>This text is preserved<<}.
+Integer vehicula feugiat magna, a mollis tellus. Nam mollis ex ante, quis
+elementum eros tempor rutrum. Aenean efficitur lobortis lacinia. Nulla
+consectetur feugiat sodales.
 
-General block handling.
+### Data tables
 
-{--
+| Sollicitudo / Pellentesi | consectetur | adipiscing | elit    | arcu | sed |
+| ------------------------ | ----------- | ---------- | ------- | ---- | --- |
+| Vivamus a pharetra       | yes         | yes        | yes     | yes  | yes |
+| Ornare viverra ex        | yes         | yes        | yes     | yes  | yes |
+| Mauris a ullamcorper     | yes         | yes        | partial | yes  | yes |
+| Nullam urna elit         | yes         | yes        | yes     | yes  | yes |
+| Malesuada eget finibus   | yes         | yes        | yes     | yes  | yes |
+| Ullamcorper              | yes         | yes        | yes     | yes  | yes |
+| Vestibulum sodales       | yes         | -          | yes     | -    | yes |
+| Pulvinar nisl            | yes         | yes        | yes     | -    | -   |
+| Pharetra aliquet est     | yes         | yes        | yes     | yes  | yes |
+| Sed suscipit             | yes         | yes        | yes     | yes  | yes |
+| Orci non pretium         | yes         | partial    | -       | -    | -   |
 
-* test
-* test
-* test
-    * test
-* test
+Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus tellus
+non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor lobortis orci,
+at elementum urna sodales vitae. In in vehicula nulla, quis ornare libero.
 
---}
+| Left       | Center   | Right   |
+| :--------- | :------: | ------: |
+| Lorem      | *dolor*  | `amet`  |
+| [ipsum](/) | **sit**  |         |
 
-{++
+Vestibulum vitae orci quis ante viverra ultricies ut eget turpis. Sed eu
+lectus dapibus, eleifend nulla varius, lobortis turpis. In ac hendrerit nisl,
+sit amet laoreet nibh.
 
-* test
-* test
-* test
-    * test
-* test
+## Colors
 
-++}
+### Primary colors
 
-## Code
+Click on a tile to change the primary color of the theme:
 
-### Inline
+<button data-md-color-primary="red">Red</button>
+<button data-md-color-primary="pink">Pink</button>
+<button data-md-color-primary="purple">Purple</button>
+<button data-md-color-primary="deep-purple">Deep Purple</button>
+<button data-md-color-primary="indigo">Indigo</button>
+<button data-md-color-primary="blue">Blue</button>
+<button data-md-color-primary="light-blue">Light Blue</button>
+<button data-md-color-primary="cyan">Cyan</button>
+<button data-md-color-primary="teal">Teal</button>
+<button data-md-color-primary="green">Green</button>
+<button data-md-color-primary="light-green">Light Green</button>
+<button data-md-color-primary="lime">Lime</button>
+<button data-md-color-primary="yellow">Yellow</button>
+<button data-md-color-primary="amber">Amber</button>
+<button data-md-color-primary="orange">Orange</button>
+<button data-md-color-primary="deep-orange">Deep Orange</button>
+<button data-md-color-primary="brown">Brown</button>
+<button data-md-color-primary="grey">Grey</button>
+<button data-md-color-primary="blue-grey">Blue Grey</button>
 
-Code can also be written `inline`, however syntax
-highlighting will only work on code listings unless you are using [inlinehilite][], which allows magic like `#!js var test = 0;`!
+<script>
+  var buttons = document.querySelectorAll("button[data-md-color-primary]");
+  Array.prototype.forEach.call(buttons, function(button) {
+    button.addEventListener("click", function() {
+      document.body.dataset.mdColorPrimary = this.dataset.mdColorPrimary;
+    })
+  })
+</script>
 
-There has also been some recent conjecture about how articles will style [links that include `inline code` samples](https://www.impressivewebs.com/fixing-styles-on-code-tags-nested-inside-links/), so let's make sure we get that right too.
+### Accent colors
 
-### Listing
+Click on a tile to change the accent color of the theme:
 
-Pre-formatted code blocks can host code examples and use the pygments extension
-(if installed and enabled in `mkdocs.yml`) for syntax highlighting:
+<button data-md-color-accent="red">Red</button>
+<button data-md-color-accent="pink">Pink</button>
+<button data-md-color-accent="purple">Purple</button>
+<button data-md-color-accent="deep-purple">Deep Purple</button>
+<button data-md-color-accent="indigo">Indigo</button>
+<button data-md-color-accent="blue">Blue</button>
+<button data-md-color-accent="light-blue">Light Blue</button>
+<button data-md-color-accent="cyan">Cyan</button>
+<button data-md-color-accent="teal">Teal</button>
+<button data-md-color-accent="green">Green</button>
+<button data-md-color-accent="light-green">Light Green</button>
+<button data-md-color-accent="lime">Lime</button>
+<button data-md-color-accent="yellow">Yellow</button>
+<button data-md-color-accent="amber">Amber</button>
+<button data-md-color-accent="orange">Orange</button>
+<button data-md-color-accent="deep-orange">Deep Orange</button>
+<button data-md-color-accent="brown">Brown</button>
+<button data-md-color-accent="grey">Grey</button>
+<button data-md-color-accent="blue-grey">Blue Grey</button>
 
-``` c hl_lines="14 15 20"
-/*!
- * Scan a buffer for a valid variable-sized integer.
- *
- * This function checks if an underrun might happen reading a variable-sized
- * integer from a buffer. Only underruns can be checked using this method,
- * overflows may still happen, but are properly reported by the unpack
- * functions. SSE2 intrinsics are used if the compiler supports it.
- *
- * \param[in] data[] Source buffer
- * \param[in] left   Remaining bytes
- * \return           Bytes read
- */
-extern size_t
-pb_varint_scan(const uint8_t data[], size_t left) {
-  assert(data && left);
-  left = left > 10 ? 10 : left;
-
-#ifdef __SSE2__
-
-  /* Mapping: remaining bytes ==> bitmask */
-  static const int mask_map[] = {
-    0x0000, 0x0001, 0x0003, 0x0007,
-    0x000F, 0x001F, 0x003F, 0x007F,
-    0x00FF, 0x01FF, 0x03FF
-  };
-
-  /* Load buffer into 128-bit integer and create high-bit mask */
-  __m128i temp = _mm_loadu_si128((const __m128i *)data);
-  __m128i high = _mm_set1_epi8(0x80);
-
-  /* Intersect and extract mask with high-bits set */
-  int mask = _mm_movemask_epi8(_mm_and_si128(temp, high));
-  mask = (mask & mask_map[left]) ^ mask_map[left];
-
-  /* Count trailing zeroes */
-  return mask ? __builtin_ctz(mask) + 1 : 0;
-
-#else
-
-  /* Linear scan */
-  size_t size = 0;
-  while (data[size++] & 0x80)
-    if (!--left)
-      return 0;
-  return size;
-
-#endif /* __SSE2__ */
-
-}
-```
-
-For more examples of coding highlighting, see the [codehilite][] extensions page.
-
-## Tables
-
-| Feature / Implementation | protobluff | protobuf-c | nanopb  | lwpb | pbc |
-|--------------------------|------------|------------|---------|------|-----|
-| Message types            | yes        | yes        | yes     | yes  | yes |
-| Nested message types     | yes        | yes        | yes     | yes  | yes |
-| Cyclic message types     | yes        | yes        | partial | yes  | yes |
-| Scalar types             | yes        | yes        | yes     | yes  | yes |
-| Default values           | yes        | yes        | yes     | yes  | yes |
-| Enumerations             | yes        | yes        | yes     | yes  | yes |
-| Extensions               | yes        | -          | yes     | -    | yes |
-| Oneofs                   | yes        | yes        | yes     | -    | -   |
-| Packages                 | yes        | yes        | yes     | yes  | yes |
-| Packed option            | yes        | yes        | yes     | yes  | yes |
-| Deprecations             | yes        | partial    | -       | -    | -   |
-
-Tables might also include alignment indiciators:
-
-| Left Align   | Center Align   | Right Align   |
-| :----------- | :------------: | ------------: |
-| Hi           | there          | friend        |
-| How          | are            | you?          |
-
-And if you're using something like [Pandoc](http://pandoc.org/), you might get tables with `colgroup`, which is fun?
-
-<table>
-  <colgroup>
-    <col width="30%">
-    <col width="70%">
-  </colgroup>
-  <thead>
-    <tr class="header">
-      <th>Company</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href='http://google.com'>Google</a></td>
-      <td>A search engine (among other things).</td>
-    </tr>
-    <tr>
-      <td><a href='http://bing.com'>Bing</a></td>
-      <td>Another search engine, from Microsoft.</td>
-    </tr>
-  </tbody>
-</table>
-
-[codehilite]: extensions/codehilite.md
-[inlinehilite]: extensions/pymdown/inlinehilite.md
-[PyMdown Extension]: extensions/pymdown/overview.md
-[Tasklist]: extensions/pymdown/tasklist.md
+<script>
+  var buttons = document.querySelectorAll("button[data-md-color-accent]");
+  Array.prototype.forEach.call(buttons, function(button) {
+    button.addEventListener("click", function() {
+      document.body.dataset.mdColorAccent = this.dataset.mdColorAccent;
+    })
+  })
+</script>

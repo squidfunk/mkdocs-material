@@ -87,10 +87,10 @@
       <link rel="stylesheet" type="text/css"
           href="{{ base_url }}/assets/stylesheets/application.css" />
 
-      <!-- Extra palettes -->
+      <!-- Extra color palette -->
       {% if config.extra.palette %}
         <link rel="stylesheet" type="text/css"
-            href="{{ base_url }}/assets/stylesheets/application.palettes.css" />
+            href="{{ base_url }}/assets/stylesheets/application.palette.css" />
       {% endif %}
 
       <!-- Custom stylesheets -->
@@ -103,13 +103,13 @@
     {% block extrahead %}{% endblock %}
   </head>
 
-  <!-- Integrate palette colors, if defined -->
+  <!-- Integrate color palette, if defined -->
   {% set palette = config.extra.get("palette", {}) %}
   {% set primary = palette.primary | replace(" ", "-") | lower %}
   {% set accent  = palette.accent  | replace(" ", "-") | lower %}
   {% if primary or accent %}
-    <body data-md-palette-primary="{{ primary }}"
-        data-md-palette-accent="{{ accent }}">
+    <body data-md-color-primary="{{ primary }}"
+        data-md-color-accent="{{ accent }}">
   {% else %}
     <body>
   {% endif %}

@@ -1,12 +1,15 @@
 # Tasklist
 
-The [Tasklist][] extension included in the [PyMdown Extensions][] package adds
-support for styled checkbox lists. This is useful for keeping track of tasks
-and showing what has been done and has yet to be done.
+The [Tasklist][1] extension included in the [PyMdown Extensions][2] package
+adds support for styled checkbox lists. This is useful for keeping track of
+tasks and showing what has been done and has yet to be done.
+
+  [1]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
+  [2]: https://facelessuser.github.io/pymdown-extensions
 
 ## Installation
 
-Make sure that the PyMdown Extensions package [is installed][] and add the
+Make sure that the PyMdown Extensions package [is installed][3] and add the
 following lines to your `mkdocs.yml`:
 
 ``` yaml
@@ -16,6 +19,8 @@ markdown_extensions:
 
 The `custom_checkbox` flag adds additional markup for better styling, so it is
 highly recommended to add this flag, as the Material theme supports it.
+
+  [3]: /extensions/pymdown/overview/#installation
 
 ## Usage
 
@@ -49,7 +54,3 @@ Result:
     * [ ] Praesent sed risus massa
 * [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
 * [ ] Nulla vel eros venenatis, imperdiet enim id, faucibus nisi
-
-[Tasklist]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
-[PyMdown Extensions]: https://facelessuser.github.io/pymdown-extensions
-[is installed]: /extensions/pymdown/overview/#installation

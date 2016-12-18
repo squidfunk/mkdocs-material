@@ -1,9 +1,11 @@
 # Permalinks
 
-Permalinks are a feature of the [Table of Contents][] extension, which is part
+Permalinks are a feature of the [Table of Contents][1] extension, which is part
 of the standard Markdown library. The extension inserts an anchor at the end of
 each headline, which makes it possible to directly link to a subpart of the
 document.
+
+  [1]: https://pythonhosted.org/Markdown/extensions/toc.html
 
 ## Installation
 
@@ -27,5 +29,3 @@ markdown_extensions:
 ## Usage
 
 When enabled, permalinks are inserted automatically.
-
-[Table of Contents]: https://pythonhosted.org/Markdown/extensions/toc.html

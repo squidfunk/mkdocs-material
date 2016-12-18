@@ -356,9 +356,11 @@ kbd {
   }
 
   // Data tables
-  table {
-    width: 90%;
-    margin: 1.5em 0;
+  table:not([class]) {
+    @include z-depth(2);
+
+    margin: 2.0em 0;
+    border-radius: 0.2rem;
     font-size: ms(-1);
     overflow: hidden;
 
@@ -366,40 +368,61 @@ kbd {
     .no-js & {
       display: inline-block;
       max-width: 100%;
+      margin: 0.8em 0;
       overflow: auto;
       -webkit-overflow-scrolling: touch;
     }
 
-    // Table heading
+    // Table headings and cells
+    th,
+    td {
+
+      // Right align contents
+      &[align="right"] {
+        text-align: right;
+      }
+
+      // Center contents
+      &[align="center"] {
+        text-align: center;
+      }
+    }
+
+    // Table headings
     th {
       min-width: 10.0rem;
       padding: 1.2rem 1.6rem;
-      border-bottom: 0.1rem solid $md-color-black--light;
-      color: $md-color-black;
-      font-weight: 700;
+      background-color: $md-color-black--light;
+      color: $md-color-white;
       text-align: left;
       vertical-align: top;
     }
 
-    // Table cell
+    // Table cells
     td {
       padding: 1.2rem 1.6rem;
       border-top: 0.1rem solid $md-color-black--lightest;
       vertical-align: top;
     }
 
-    th[align="right"],
-    td[align="right"] {
-      text-align: right;
-    }
-
-    th[align="center"],
-    td[align="center"] {
-      text-align: center;
-    }
-
+    // Remove top border on first row
     tr:first-child td {
       border-top: 0;
+    }
+  }
+
+  // Data table wrapper, in case JavaScript is available
+  .md-typeset__table {
+    margin: 1.6em -1.6rem;
+    text-align: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    // Data tables
+    table {
+      display: inline-block;
+      margin: 0 1.6rem;
+      text-align: left;
     }
   }
 }

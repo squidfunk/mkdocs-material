@@ -1,8 +1,10 @@
 # Admonition
 
-[Admonition][] is an extension included in the standard Markdown library that
+[Admonition][1] is an extension included in the standard Markdown library that
 makes it possible to add block-styled side content to your documentation, for
 example summaries, hints, notes or warnings.
+
+  [1]: https://pythonhosted.org/Markdown/extensions/admonition.html
 
 ## Installation
 
@@ -84,9 +86,12 @@ Blocks can contain all kinds of text content, including headlines, lists,
 paragraphs and other blocks – except code blocks, because the parser from the
 standard Markdown library does not account for those.
 
-However, the [PyMdown Extensions][] package adds an extension called
-[SuperFences][], which makes it possible to nest code blocks within other
+However, the [PyMdown Extensions][2] package adds an extension called
+[SuperFences][3], which makes it possible to nest code blocks within other
 blocks.
+
+  [2]: https://facelessuser.github.io/pymdown-extensions
+  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 Example:
 
@@ -308,7 +313,3 @@ Qualifiers:
 
 * `error`
 * `bug`
-
-[Admonition]: https://pythonhosted.org/Markdown/extensions/admonition.html
-[PyMdown Extensions]: https://facelessuser.github.io/pymdown-extensions
-[SuperFences]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/

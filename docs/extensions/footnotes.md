@@ -1,7 +1,9 @@
 # Footnotes
 
-[Footnotes][] is another extension included in the standard Markdown library.
+[Footnotes][1] is another extension included in the standard Markdown library.
 As the name says, it adds the ability to add footnotes to your documentation.
+
+  [1]: https://pythonhosted.org/Markdown/extensions/footnotes.html
 
 ## Installation
 
@@ -80,5 +82,3 @@ Result:
     massa, nec semper lorem quam in massa.
 
 <a href="#fn:2">Jump to footnote at the bottom of the page</a>
-
-[Footnotes]: https://pythonhosted.org/Markdown/extensions/footnotes.html

@@ -59,6 +59,19 @@ export default class Application {
 
       /* Attack FastClick to mitigate 300ms delay on touch devices */
       FastClick.attach(document.body)
+
+      /* Wrap all data tables */
+      const tables = document.querySelectorAll("table:not([class])")
+      for (const table of tables) {
+        const wrap = document.createElement("div")
+        wrap.classList.add("md-typeset__table")
+        if (table.nextSibling) {
+          table.parentNode.insertBefore(wrap, table.nextSibling)
+        } else {
+          table.parentNode.appendChild(wrap)
+        }
+        wrap.appendChild(table)
+      }
     }).listen()
 
     /* Cross-browser helper to dispatch/fire an event */

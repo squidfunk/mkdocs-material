@@ -581,6 +581,40 @@ var Application =
 
 	        /* Attack FastClick to mitigate 300ms delay on touch devices */
 	        _fastclick2.default.attach(document.body);
+
+	        /* Wrap all data tables */
+	        var tables = document.querySelectorAll("table:not([class])");
+	        var _iteratorNormalCompletion = true;
+	        var _didIteratorError = false;
+	        var _iteratorError = undefined;
+
+	        try {
+	          for (var _iterator = tables[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	            var table = _step.value;
+
+	            var wrap = document.createElement("div");
+	            wrap.classList.add("md-typeset__table");
+	            if (table.nextSibling) {
+	              table.parentNode.insertBefore(wrap, table.nextSibling);
+	            } else {
+	              table.parentNode.appendChild(wrap);
+	            }
+	            wrap.appendChild(table);
+	          }
+	        } catch (err) {
+	          _didIteratorError = true;
+	          _iteratorError = err;
+	        } finally {
+	          try {
+	            if (!_iteratorNormalCompletion && _iterator.return) {
+	              _iterator.return();
+	            }
+	          } finally {
+	            if (_didIteratorError) {
+	              throw _iteratorError;
+	            }
+	          }
+	        }
 	      }).listen();
 
 	      /* Cross-browser helper to dispatch/fire an event */
@@ -612,27 +646,27 @@ var Application =
 
 	      /* Component: collapsible elements for navigation */
 	      var collapsibles = document.querySelectorAll("[data-md-collapse]");
-	      var _iteratorNormalCompletion = true;
-	      var _didIteratorError = false;
-	      var _iteratorError = undefined;
+	      var _iteratorNormalCompletion2 = true;
+	      var _didIteratorError2 = false;
+	      var _iteratorError2 = undefined;
 
 	      try {
-	        for (var _iterator = collapsibles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	          var collapse = _step.value;
+	        for (var _iterator2 = collapsibles[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	          var collapse = _step2.value;
 
 	          new _Material2.default.Event.MatchMedia("(min-width: 1200px)", new _Material2.default.Event.Listener(collapse.previousElementSibling, "click", new _Material2.default.Nav.Collapse(collapse)));
 	        } /* Component: search body lock for mobile */
 	      } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
 	      } finally {
 	        try {
-	          if (!_iteratorNormalCompletion && _iterator.return) {
-	            _iterator.return();
+	          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	            _iterator2.return();
 	          }
 	        } finally {
-	          if (_didIteratorError) {
-	            throw _iteratorError;
+	          if (_didIteratorError2) {
+	            throw _iteratorError2;
 	          }
 	        }
 	      }
@@ -715,27 +749,27 @@ var Application =
 	        /* Render repository source information */
 	      })().then(function (facts) {
 	        var sources = document.querySelectorAll("[data-md-source]");
-	        var _iteratorNormalCompletion2 = true;
-	        var _didIteratorError2 = false;
-	        var _iteratorError2 = undefined;
+	        var _iteratorNormalCompletion3 = true;
+	        var _didIteratorError3 = false;
+	        var _iteratorError3 = undefined;
 
 	        try {
-	          for (var _iterator2 = sources[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	            var source = _step2.value;
+	          for (var _iterator3 = sources[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	            var source = _step3.value;
 
 	            new _Material2.default.Source.Repository(source).initialize(facts);
 	          }
 	        } catch (err) {
-	          _didIteratorError2 = true;
-	          _iteratorError2 = err;
+	          _didIteratorError3 = true;
+	          _iteratorError3 = err;
 	        } finally {
 	          try {
-	            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	              _iterator2.return();
+	            if (!_iteratorNormalCompletion3 && _iterator3.return) {
+	              _iterator3.return();
 	            }
 	          } finally {
-	            if (_didIteratorError2) {
-	              throw _iteratorError2;
+	            if (_didIteratorError3) {
+	              throw _iteratorError3;
 	            }
 	          }
 	        }

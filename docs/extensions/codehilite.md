@@ -1,14 +1,16 @@
 # CodeHilite
 
-[CodeHilite][] is an extension that adds syntax highlighting to codeblocks and
+[CodeHilite][1] is an extension that adds syntax highlighting to codeblocks and
 is included in the standard Markdown library. The highlighting process is
 executed during compilation of the Markdown file.
 
+  [1]: https://pythonhosted.org/Markdown/extensions/code_hilite.html
+
 ## Installation
 
-CodeHilite parses code blocks and wraps them in `<pre>` tags. If [Pygments][]
+CodeHilite parses code blocks and wraps them in `<pre>` tags. If [Pygments][2]
 is installed, which is a generic syntax highlighter with support for over
-[300 languages][], CodeHilite will also highlight the code block. Pygments can
+[300 languages][3], CodeHilite will also highlight the code block. Pygments can
 be installed with the following command:
 
 ``` sh
@@ -21,6 +23,9 @@ To enable CodeHilite, add the following lines to your `mkdocs.yml`:
 markdown_extensions:
   - codehilite
 ```
+
+  [2]: http://pygments.org
+  [3]: http://pygments.org/languages
 
 ## Usage
 
@@ -840,7 +845,3 @@ end
   <![CDATA[ some CData ]]>
 </main-Tag>
 ```
-
-[CodeHilite]: https://pythonhosted.org/Markdown/extensions/code_hilite.html
-[Pygments]: http://pygments.org
-[300 languages]: http://pygments.org/languages
