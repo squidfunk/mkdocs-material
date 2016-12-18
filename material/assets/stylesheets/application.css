@@ -1224,14 +1224,6 @@ hr {
   opacity: 0;
   z-index: -1; }
 
-.md-button {
-  float: right;
-  margin-top: 9px;
-  font-size: 13px;
-  padding-left: 2.6rem;
-  font-weight: 700;
-  text-transform: uppercase; }
-
 @media print {
 
   .md-typeset a::after {

@@ -202,6 +202,29 @@ Vestibulum vitae orci quis ante viverra ultricies ut eget turpis. Sed eu
 lectus dapibus, eleifend nulla varius, lobortis turpis. In ac hendrerit nisl,
 sit amet laoreet nibh.
 
+<table>
+  <colgroup>
+    <col width="30%">
+    <col width="70%">
+  </colgroup>
+  <thead>
+    <tr class="header">
+      <th>Table</th>
+      <th>with colgroups (Pandoc)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lorem</td>
+      <td>ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+      <td>Sed sagittis</td>
+      <td>eleifend rutrum. Donec vitae suscipit est.</td>
+    </tr>
+  </tbody>
+</table>
+
 ## Colors
 
 ### Primary colors

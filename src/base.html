@@ -168,14 +168,6 @@
               <!-- Block: content -->
               {% block content %}
 
-                <!-- Edit button, if URL was defined -->
-                {% if config.edit_uri %}
-                  <a class="md-button md-button--edit"
-                      href="{{ page.edit_url }}">
-                    Edit
-                  </a>
-                {% endif %}
-
                 <!--
                   This is a nasty hack that checks whether the content contains
                   a h1 headline. If it doesn't, the page title (or respectively
@@ -202,6 +194,13 @@
                   Material
                 </a>
                 theme.
+
+                <!-- Edit button, if URL was defined -->
+                {% if config.edit_uri %}
+                  <a href="{{ page.edit_url }}">
+                    Edit this page
+                  </a>
+                {% endif %}
               </small>
             </article>
           </div>
