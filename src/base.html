@@ -123,7 +123,9 @@
     <label class="md-overlay" data-md-overlay for="drawer"></label>
 
     <!-- Application header -->
-    {% include "partials/header.html" %}
+    {% block header %}
+      {% include "partials/header.html" %}
+    {% endblock %}
 
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
