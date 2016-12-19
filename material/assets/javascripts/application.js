@@ -739,6 +739,7 @@ var Application =
 	      /* Retrieve the facts for the given repository type */
 	      ;(function () {
 	        var el = document.querySelector("[data-md-source]");
+	        if (!el) return Promise.resolve([]);
 	        switch (el.dataset.mdSource) {
 	          case "github":
 	            return new _Material2.default.Source.Adapter.GitHub(el).fetch();

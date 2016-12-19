@@ -196,6 +196,7 @@ export default class Application {
     /* Retrieve the facts for the given repository type */
     ;(() => {
       const el = document.querySelector("[data-md-source]")
+      if (!el) return Promise.resolve([])
       switch (el.dataset.mdSource) {
         case "github": return new Material.Source.Adapter.GitHub(el).fetch()
         default: return Promise.resolve([])
