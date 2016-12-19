@@ -3,7 +3,7 @@
   <head>
     {% block site_meta %}
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
       {% if config.site_description %}
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
@@ -18,7 +18,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.ico">
       {% endif %}
-      <meta name="generator" content="mkdocs+mkdocs-material#0.2.1">
+      <meta name="generator" content="mkdocs+mkdocs-material#1.0.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page.title %}
