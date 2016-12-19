@@ -355,6 +355,11 @@ kbd {
     }
   }
 
+  // Limit images to container
+  img {
+    max-width: 100%;
+  }
+
   // Data tables
   table:not([class]) {
     @include z-depth(2);
