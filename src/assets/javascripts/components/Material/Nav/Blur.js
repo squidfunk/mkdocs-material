@@ -74,7 +74,7 @@ export default class Blur {
 
     /* Scroll direction is up */
     } else {
-      for (let i = this.index_; i >= 0; i--) {
+      for (let i = this.index_; i > 0; i--) {
         if (this.anchors_[i].offsetTop > offset) {
           if (i > 0)
             delete this.els_[i - 1].dataset.mdState
