@@ -20,16 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import Cookies from "js-cookie"
-
 /* ----------------------------------------------------------------------------
  * Class
  * ------------------------------------------------------------------------- */
 
-export default class Abstract {
+export default class Position {
 
   /**
-   * Retrieve source information
+   * Set sidebars to locked state and limit height to parent node
    *
    * @constructor
    * @param {(string|HTMLElement)} el - Selector or HTML element
@@ -39,53 +37,62 @@ export default class Abstract {
       ? document.querySelector(el)
       : el
 
-    /* Retrieve base URL */
-    this.base_ = this.el_.href
+    /* Retrieve inner and outer container */
+    this.inner_ = this.el_.parentNode
+    this.outer_ = this.el_.parentNode.parentNode
+
+    /* Initialize top offset and current height */
+    this.offset_ = this.outer_.offsetTop
+    this.height_ = 0
   }
 
   /**
-   * Retrieve data from Cookie or fetch from respective API
-   *
-   * @return {Promise} Promise that returns an array of facts
+   * Initialize sidebar state
    */
-  fetch() {
-    return new Promise(resolve => {
-      const cached = Cookies.getJSON(".cache-source")
-      if (typeof cached !== "undefined") {
-        resolve(cached)
-
-      /* If the data is not cached in a cookie, invoke fetch and set
-         a cookie that automatically expires in 15 minutes */
-      } else {
-        this.fetch_().then(data => {
-          Cookies.set(".cache-source", data, { expires: 1 / 96 })
-          resolve(data)
-        })
-      }
-    })
+  setup() {
+    this.update()
   }
 
   /**
-   * Abstract private function that fetches relevant repository information
-   *
-   * @abstract
-   * @return {Promise} Promise that provides the facts in an array
+   * Update locked state and height
    */
-  fetch_() {
-    throw new Error("fetch_(): Not implemented")
+  update() {
+    const scroll = window.pageYOffset
+    const expand = window.innerHeight
+
+    /* Calculate bounds of sidebar container  */
+    this.bounds_ = {
+      top: this.inner_.offsetTop,
+      bottom: this.inner_.offsetTop + this.inner_.offsetHeight
+    }
+
+    /* Calculate new offset and height */
+    const offset = this.bounds_.top - scroll
+    const height = expand
+                 - Math.max(0, scroll + expand - this.bounds_.bottom)
+                 - Math.max(offset, this.offset_)
+
+    /* If height changed, update element */
+    if (height !== this.height_)
+      this.el_.style.height = `${this.height_ = height}px`
+
+    /* Sidebar should be locked, as we're below parent offset */
+    if (offset < this.offset_) {
+      if (this.el_.dataset.mdState !== "lock")
+        this.el_.dataset.mdState = "lock"
+
+    /* Sidebar should be unlocked, if locked */
+    } else if (this.el_.dataset.mdState === "lock") {
+      delete this.el_.dataset.mdState
+    }
   }
 
   /**
-   * Format a number with suffix
-   *
-   * @param {Number} number - Number to format
-   * @return {Number} Formatted number
+   * Reset locked state and height
    */
-  format_(number) {
-    if (number > 10000)
-      return `${(number / 1000).toFixed(0)}k`
-    else if (number > 1000)
-      return `${(number / 1000).toFixed(1)}k`
-    return number
+  reset() {
+    delete this.el_.dataset.mdState
+    this.el_.style.height = ""
+    this.height_ = 0
   }
 }

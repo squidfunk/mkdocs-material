@@ -60,6 +60,10 @@ export default class Blur {
   update() {
     const offset = window.pageYOffset
 
+    /* Exit when there are no anchors */
+    if (this.anchors_.length === 0)
+      return
+
     /* Scroll direction is down */
     if (this.offset_ <= offset) {
       for (let i = this.index_ + 1; i < this.els_.length; i++) {
@@ -74,7 +78,7 @@ export default class Blur {
 
     /* Scroll direction is up */
     } else {
-      for (let i = this.index_; i > 0; i--) {
+      for (let i = this.index_; i >= 0; i--) {
         if (this.anchors_[i].offsetTop > offset) {
           if (i > 0)
             delete this.els_[i - 1].dataset.mdState

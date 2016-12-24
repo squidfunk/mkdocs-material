@@ -94,17 +94,23 @@ export default class Application {
       return string
     }
 
+    /* Component: sidebar container */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(window, [
+        "resize", "orientationchange"
+      ], new Material.Sidebar.Container("[data-md-container]")))
+
     /* Component: sidebar with navigation */
     new Material.Event.MatchMedia("(min-width: 1200px)",
       new Material.Event.Listener(window, [
         "scroll", "resize", "orientationchange"
-      ], new Material.Sidebar("[data-md-sidebar=primary]")))
+      ], new Material.Sidebar.Position("[data-md-sidebar=primary]")))
 
     /* Component: sidebar with table of contents */
     new Material.Event.MatchMedia("(min-width: 960px)",
       new Material.Event.Listener(window, [
         "scroll", "resize", "orientationchange"
-      ], new Material.Sidebar("[data-md-sidebar=secondary]")))
+      ], new Material.Sidebar.Position("[data-md-sidebar=secondary]")))
 
     /* Component: link blurring for table of contents */
     new Material.Event.MatchMedia("(min-width: 960px)",
