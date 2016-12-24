@@ -308,7 +308,7 @@
 
       // Unrotate icon for table of contents
       &::after {
-        transform: translateY(-50%);
+        transform: translateY(-50%);                                            // TODO: just use arrow_right in case of mobile navigation
         color: inherit;
         content: "toc";
       }

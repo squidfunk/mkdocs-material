@@ -32,9 +32,10 @@
     display: inline-block;
     margin-left: 1.0rem;
     transform: translate(0, 0.5rem);
-    transition: transform 0.25s  0.25s,
-                color     0.25s,
-                opacity   0.125s 0.25s;
+    transition:
+      transform 0.25s  0.25s,
+      color     0.25s,
+      opacity   0.125s 0.25s;
     opacity: 0;
 
     // Higher specificity for color due to palettes integration

@@ -70,9 +70,10 @@
 
     position: absolute;
     transform: translateX(0.5rem);
-    transition: transform 0.25s  0.125s,
-                color     0.25s,
-                opacity   0.125s 0.125s;
+    transition:
+      transform 0.25s  0.125s,
+      color     0.25s,
+      opacity   0.125s 0.125s;
     color: $md-color-black--lighter;
     font-size: 1.5625em;
     opacity: 0;
