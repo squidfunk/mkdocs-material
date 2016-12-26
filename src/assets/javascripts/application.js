@@ -99,24 +99,24 @@ export default class Application {
       new Material.Event.MatchMedia("(min-width: 960px)",
         new Material.Event.Listener(window, [
           "resize", "orientationchange"
-        ], new Material.Sidebar.Container("[data-md-container]")))
+        ], new Material.Sidebar.Container("[data-md-component=container]")))
 
     /* Component: sidebar with navigation */
     new Material.Event.MatchMedia("(min-width: 1200px)",
       new Material.Event.Listener(window, [
         "scroll", "resize", "orientationchange"
-      ], new Material.Sidebar.Position("[data-md-sidebar=primary]")))
+      ], new Material.Sidebar.Position("[data-md-component=navigation]")))
 
     /* Component: sidebar with table of contents */
     new Material.Event.MatchMedia("(min-width: 960px)",
       new Material.Event.Listener(window, [
         "scroll", "resize", "orientationchange"
-      ], new Material.Sidebar.Position("[data-md-sidebar=secondary]")))
+      ], new Material.Sidebar.Position("[data-md-component=toc]")))
 
     /* Component: link blurring for table of contents */
     new Material.Event.MatchMedia("(min-width: 960px)",
       new Material.Event.Listener(window, "scroll",
-        new Material.Nav.Blur("[data-md-sidebar=secondary] .md-nav__link")))
+        new Material.Nav.Blur("[data-md-component=toc] .md-nav__link")))
 
     /* Component: collapsible elements for navigation */
     const collapsibles = document.querySelectorAll("[data-md-collapse]")
@@ -133,7 +133,7 @@ export default class Application {
     /* Component: search results */
     new Material.Event.Listener(document.forms.search.query, [
       "focus", "keyup"
-    ], new Material.Search.Result("[data-md-search-result]", () => {
+    ], new Material.Search.Result("[data-md-component=result]", () => {
       return fetch(`${this.config_.url.base}/mkdocs/search_index.json`)
         .then(response => response.json())
         .then(data => {
@@ -147,12 +147,12 @@ export default class Application {
 
     /* Listener: prevent touches on overlay if navigation is active */
     new Material.Event.MatchMedia("(max-width: 1199px)",
-      new Material.Event.Listener("[data-md-overlay]", "touchstart",
+      new Material.Event.Listener("[data-md-component=overlay]", "touchstart",
         ev => ev.preventDefault()))
 
     /* Listener: close drawer when anchor links are clicked */
     new Material.Event.MatchMedia("(max-width: 959px)",
-      new Material.Event.Listener("[data-md-sidebar=primary] [href^='#']",
+      new Material.Event.Listener("[data-md-component=navigation] [href^='#']",
         "click", () => {
           const toggle = document.querySelector("[data-md-toggle=drawer]")
           if (toggle.checked) {
@@ -197,7 +197,7 @@ export default class Application {
 
     /* Listener: prevent search from closing when clicking */
     new Material.Event.MatchMedia("(min-width: 960px)",
-      new Material.Event.Listener("[data-md-search]", "click",
+      new Material.Event.Listener("[data-md-component=search]", "click",
         ev => ev.stopPropagation()))
 
     /* Retrieve the facts for the given repository type */

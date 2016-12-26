@@ -120,7 +120,7 @@
         type="checkbox" id="search" />
 
     <!-- Overlay for expanded drawer -->
-    <label class="md-overlay" data-md-overlay for="drawer"></label>
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
 
     <!-- Application header -->
     {% block header %}
@@ -132,7 +132,7 @@
 
       <!-- Main container -->
       <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-container>
+        <div class="md-main__inner md-grid" data-md-component="container">
 
           <!-- Block: navigation -->
           {% block site_nav %}
@@ -140,7 +140,7 @@
             <!-- Main navigation -->
             {% if nav %}
               <div class="md-sidebar md-sidebar--primary"
-                  data-md-sidebar="primary">
+                  data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     {% include "partials/nav.html" %}
@@ -152,7 +152,7 @@
             <!-- Table of contents -->
             {% if page.toc %}
               <div class="md-sidebar md-sidebar--secondary"
-                  data-md-sidebar="secondary">
+                  data-md-component="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     {% include "partials/toc.html" %}
