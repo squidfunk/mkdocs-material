@@ -78,8 +78,8 @@ hr {
   overflow: auto;
 }
 
-// Content wrapper - use display: table for to make variable-sized sticky
-// footers work and fixed table-layout for IE
+// Content wrapper - use display: table to make variable-height sticky footers
+// work and fixed table-layout for IE, taken from http://bit.ly/2hZohXL
 .md-container {
   display: table;
   width: 100%;
