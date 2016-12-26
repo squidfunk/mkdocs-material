@@ -95,10 +95,11 @@ export default class Application {
     }
 
     /* Component: sidebar container */
-    new Material.Event.MatchMedia("(min-width: 960px)",
-      new Material.Event.Listener(window, [
-        "resize", "orientationchange"
-      ], new Material.Sidebar.Container("[data-md-container]")))
+    if (!Modernizr.csscalc)
+      new Material.Event.MatchMedia("(min-width: 960px)",
+        new Material.Event.Listener(window, [
+          "resize", "orientationchange"
+        ], new Material.Sidebar.Container("[data-md-container]")))
 
     /* Component: sidebar with navigation */
     new Material.Event.MatchMedia("(min-width: 1200px)",

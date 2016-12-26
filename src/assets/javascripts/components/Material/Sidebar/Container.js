@@ -52,11 +52,8 @@ export default class Container {
    * Update minimum height
    */
   update() {
-    const height = window.innerHeight - this.parent_.offsetTop
-    const margin = this.parent_.offsetHeight - this.el_.offsetHeight
-
-    /* Set new minimum height */
-    this.el_.style.minHeight = `${height - margin}px`
+    const height = this.parent_.offsetHeight - this.el_.offsetTop
+    this.el_.style.minHeight = `${height}px`
   }
 
   /**

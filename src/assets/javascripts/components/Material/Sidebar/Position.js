@@ -37,12 +37,9 @@ export default class Position {
       ? document.querySelector(el)
       : el
 
-    /* Retrieve inner and outer container */
-    this.inner_ = this.el_.parentNode
-    this.outer_ = this.el_.parentNode.parentNode
-
-    /* Initialize top offset and current height */
-    this.offset_ = this.outer_.offsetTop
+    /* Initialize parent container, top offset and current height */
+    this.parent_ = this.el_.parentNode
+    this.offset_ = this.el_.offsetTop - this.parent_.offsetTop
     this.height_ = 0
   }
 
@@ -55,29 +52,35 @@ export default class Position {
 
   /**
    * Update locked state and height
+   *
+   * The inner height of the window (= the visible area) is the maximum
+   * possible height for the stretching sidebar. This height must be deducted
+   * by the top offset of the parent container, which accounts for the fixed
+   * header, setting the baseline. Depending on the page y-offset, the top
+   * offset of the sidebar must be taken into account, as well as the case
+   * where the window is scrolled beyond the sidebar container.
    */
   update() {
-    const scroll = window.pageYOffset
-    const expand = window.innerHeight
+    const offset  = window.pageYOffset
+    const visible = window.innerHeight
 
     /* Calculate bounds of sidebar container  */
     this.bounds_ = {
-      top: this.inner_.offsetTop,
-      bottom: this.inner_.offsetTop + this.inner_.offsetHeight
+      top: this.parent_.offsetTop,
+      bottom: this.parent_.offsetTop + this.parent_.offsetHeight
     }
 
     /* Calculate new offset and height */
-    const offset = this.bounds_.top - scroll
-    const height = expand
-                 - Math.max(0, scroll + expand - this.bounds_.bottom)
-                 - Math.max(offset, this.offset_)
+    const height = visible - this.bounds_.top
+                 - Math.max(0, this.offset_ - offset)
+                 - Math.max(0, offset + visible - this.bounds_.bottom)
 
     /* If height changed, update element */
     if (height !== this.height_)
       this.el_.style.height = `${this.height_ = height}px`
 
     /* Sidebar should be locked, as we're below parent offset */
-    if (offset < this.offset_) {
+    if (offset >= this.offset_) {
       if (this.el_.dataset.mdState !== "lock")
         this.el_.dataset.mdState = "lock"
 

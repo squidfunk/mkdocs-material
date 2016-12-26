@@ -44,7 +44,7 @@ html {
 // Stretch body to container and leave room for footer.
 body {
   position: relative;
-  min-height: 100%;
+  height: 100%;
 
   // [tablet portrait -]: Lock body to disable scroll bubbling
   @include break-to-device(tablet portrait) {
@@ -78,15 +78,30 @@ hr {
   overflow: auto;
 }
 
-// Add top spacing to acount for header
-.md-main {
-  margin-top: 5.6rem;
+// Content wrapper - use display: table for to make variable-sized sticky
+// footers work and fixed table-layout for IE
+.md-container {
+  display: table;
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+}
 
-  // Bottom spacing to account for header and footer
+// The main content should stretch to maximum height in the table
+.md-main {
+  display: table-row;
+  height: 100%;
+
+  // Top-spacing to account for header and some additional padding
   &__inner {
-    margin-top: 2.4rem + 0.6rem;
-    margin-bottom: 9.2rem;
+    margin-top: 5.6rem;
+    padding-top: 2.4rem + 0.6rem;
     overflow: auto;
+
+    // If the browser supports calc(), no JavaScript is necessary
+    .csscalc & {
+      min-height: calc(100% - #{5.6rem - 3.0rem});
+    }
   }
 }
 
