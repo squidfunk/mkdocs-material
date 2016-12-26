@@ -47,7 +47,7 @@
 
   // Links to previous and next page
   &__link {
-    padding-top: 2.8rem;
+    padding-top: 4.8rem;
     padding-bottom: 0.8rem;
     transition: opacity 0.25s;
 
@@ -149,11 +149,11 @@
 // Social media links
 .md-footer-social {
   margin: 0 0.8rem;
-  padding: 1.2rem 0;
-  text-align: center;
+  padding: 0.4rem 0 1.2rem;
 
   // [tablet portrait +]: Show next to copyright information
   @include break-from-device(tablet portrait) {
+    padding: 1.2rem 0;
     float: right;
   }
 
