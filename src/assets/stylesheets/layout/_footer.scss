@@ -32,18 +32,18 @@
   @media print {
     display: none;
   }
-
-  // Footer container
-  &__inner {
-    background-color: $md-color-black;
-    color: $md-color-white;
-  }
 }
 
 // Navigation within footer
 .md-footer-nav {
-  padding: 0.4rem;
-  overflow: auto;
+  background-color: $md-color-black;
+  color: $md-color-white;
+
+  // Set spacing
+  &__inner {
+    padding: 0.4rem;
+    overflow: auto;
+  }
 
   // Links to previous and next page
   &__link {
@@ -108,5 +108,69 @@
     padding: 0 2.0rem;
     color: $md-color-white--light;
     font-size: 1.5rem;
+  }
+}
+
+// Non-navigational information
+.md-footer-meta {
+  background: opacify($md-color-black, 0.025);
+
+  // Set spacing
+  &__inner {
+    padding: 0.4rem;
+    overflow: auto;
+  }
+
+  // Use a decent color for non-hovered links and ensure specificity
+  html &.md-typeset a {
+    color: $md-color-white--lighter;
+  }
+}
+
+// Copyright and theme information
+.md-footer-copyright {
+  margin: 0 1.2rem;
+  padding: 0.8rem 0;
+  color: $md-color-white--lightest;
+  font-size: ms(-1);
+
+  // [tablet portrait +]: Show next to social media links
+  @include break-from-device(tablet portrait) {
+    max-width: 75%;
+    float: left;
+  }
+
+  // Highlight copyright information
+  &__highlight {
+    color: $md-color-white--light;
+  }
+}
+
+// Social media links
+.md-footer-social {
+  margin: 0 0.8rem;
+  padding: 1.2rem 0;
+  text-align: center;
+
+  // [tablet portrait +]: Show next to copyright information
+  @include break-from-device(tablet portrait) {
+    float: right;
+  }
+
+  // Link with icon
+  &__link {
+    display: inline-block;
+    width: 3.2rem;
+    height: 3.2rem;
+    border: 0.1rem solid $md-color-white--lightest;
+    border-radius: 100%;
+    color: $md-color-white--light;
+    font-size: 1.6rem;
+    text-align: center;
+
+    // Adjust line-height to match height for correct alignment
+    &::before {
+      line-height: 3.2rem;
+    }
   }
 }

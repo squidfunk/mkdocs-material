@@ -22,11 +22,11 @@
 
 <!-- Application footer -->
 <footer class="md-footer">
-  <div class="md-footer__inner">
 
-    <!-- Link to previous and/or next page -->
-    {% if page.previous_page or page.next_page %}
-      <nav class="md-footer-nav md-grid">
+  <!-- Link to previous and/or next page -->
+  {% if page.previous_page or page.next_page %}
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
 
         <!-- Link to previous page -->
         {% if page.previous_page %}
@@ -34,7 +34,7 @@
               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
               rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--back md-footer-nav__icon"></i>
+              <i class="md-icon md-footer-nav__icon">arrow_back</i>
             </div>
             <div class="md-flex__cell md-flex__cell--stretch
                   md-footer-nav__title">
@@ -63,11 +63,42 @@
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--forward md-footer-nav__icon"></i>
+              <i class="md-icon md-footer-nav__icon">arrow_forward</i>
             </div>
           </a>
         {% endif %}
       </nav>
-    {% endif %}
+    </div>
+  {% endif %}
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        {% if config.copyright %}
+          <span class="md-footer-copyright__highlight">
+            {{ config.copyright }}
+          </span>
+        {% endif %}
+        <br />
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and the
+        <a href="http://squidfunk.github.io/mkdocs-material/">Material</a>
+        theme
+      </div>
+
+      <!-- Link to social media accounts, if any -->
+      {% if config.extra.social %}
+        <div class="md-footer-social">
+          {% for social in config.extra.social %}
+            <a href="{{ social.link }}" class="md-footer-social__link
+                  socicon-{{ social.type }}"></a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
   </div>
 </footer>

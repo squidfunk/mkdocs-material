@@ -37,17 +37,19 @@ theme_dir: material
 
 # Options
 extra:
-  version: 0.2.4
-  logo: images/logo.png
-  font:
-    text: Ubuntu
-    mono: Ubuntu Mono
-  author:
-    github: squidfunk
-    twitter: squidfunk
   palette:
     primary: indigo
     accent: indigo
+  font:
+    text: Ubuntu
+    mono: Ubuntu Mono
+  social:
+    - type: github
+      link: https://github.com/squidfunk
+    - type: twitter
+      link: https://twitter.com/squidfunk
+    - type: linkedin
+      link: https://de.linkedin.com/in/martin-donath-20a95039
 
 # Extensions
 markdown_extensions:

@@ -82,6 +82,12 @@
       <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
+      <!-- Social icon webfont, if necessary -->
+      {% if config.extra.social %}
+        <link rel="stylesheet" type="text/css"
+            href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css">
+      {% endif %}
+
       <!-- Theme-related stylesheets -->
       <link rel="stylesheet" type="text/css"
           href="{{ base_url }}/assets/stylesheets/application.css" />
@@ -181,28 +187,6 @@
                 <!-- Content -->
                 {{ page.content }}
               {% endblock %}
-
-              <!-- Copyright and theme information -->
-              <hr />
-              <small class="md-content__copyright">
-                {% if config.copyright %}
-                  {{ config.copyright }} &ndash;
-                {% endif %}
-                This document was created with
-                <a href="http://www.mkdocs.org">MkDocs</a>
-                and the
-                <a href="http://squidfunk.github.io/mkdocs-material/">
-                  Material
-                </a>
-                theme.
-
-                <!-- Edit button, if URL was defined -->
-                {% if config.edit_uri %}
-                  <a href="{{ page.edit_url }}">
-                    Edit this page
-                  </a>
-                {% endif %}
-              </small>
             </article>
           </div>
         </div>

@@ -36,7 +36,10 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400">
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-ca351710b4.css">
+      {% if config.extra.social %}
+        <link rel="stylesheet" href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css">
+      {% endif %}
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-5c79a378e0.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-535e87ca3f.palette.css">
       {% endif %}
@@ -91,24 +94,6 @@
                 {% endif %}
                 {{ page.content }}
               {% endblock %}
-              <hr>
-              <small class="md-content__copyright">
-                {% if config.copyright %}
-                  {{ config.copyright }} &ndash;
-                {% endif %}
-                This document was created with
-                <a href="http://www.mkdocs.org">MkDocs</a>
-                and the
-                <a href="http://squidfunk.github.io/mkdocs-material/">
-                  Material
-                </a>
-                theme.
-                {% if config.edit_uri %}
-                  <a href="{{ page.edit_url }}">
-                    Edit this page
-                  </a>
-                {% endif %}
-              </small>
             </article>
           </div>
         </div>
