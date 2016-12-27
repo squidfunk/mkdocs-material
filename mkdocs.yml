@@ -71,7 +71,6 @@ markdown_extensions:
   - pymdownx.tasklist(custom_checkbox=true)
   - pymdownx.tilde
 
-
 # Page tree
 pages:
   - Material: index.md

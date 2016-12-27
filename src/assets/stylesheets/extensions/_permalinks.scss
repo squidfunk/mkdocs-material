@@ -52,6 +52,12 @@
   // All headers with permalinks have ids
   [id] {
 
+    // Add spacing to anchor for offset
+    &::before {
+      display: block;
+      content: "";
+    }
+
     // Make permalink visible on hover
     &:hover  .headerlink,
     &:target .headerlink,
@@ -68,7 +74,7 @@
     }
   }
 
-  // Correct anchor offset of active targets
+  // Correct anchor offset for link blurring
   @each $level, $delta in (
     h1: 3.0rem,
     h2: 0.2rem,
@@ -77,11 +83,17 @@
     h5: 1.0rem,
     h6: 1.0rem
   ) {
+
+    // Un-targeted anchor
+    #{$level}[id]::before {
+      margin-top: -$delta;
+      padding-top: $delta;
+    }
+
+    // Targeted anchor (56px from header, 24px from sidebar offset)
     #{$level}[id]:target::before {
-      display: block;
       margin-top: -(5.6rem + 2.4rem + $delta);
       padding-top: (5.6rem + 2.4rem + $delta);
-      content: "";
     }
   }
 }
