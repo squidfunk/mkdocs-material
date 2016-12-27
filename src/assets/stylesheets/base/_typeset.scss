@@ -273,12 +273,6 @@ kbd {
     word-break: break-word;
   }
 
-  // Text insertion and deletion markers
-  del,
-  ins {
-    color: $clr-red-500;
-  }
-
   // Text highlighting marker
   mark {
     margin: 0 0.25em;

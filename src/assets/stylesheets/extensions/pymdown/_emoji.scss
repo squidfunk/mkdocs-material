@@ -24,7 +24,11 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Correct alignment of emojis
-.emoji {
-  vertical-align: text-top;
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Correct alignment of emojis
+  .emoji {
+    vertical-align: text-top;
+  }
 }

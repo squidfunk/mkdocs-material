@@ -41,8 +41,8 @@ extra:
     primary: indigo
     accent: indigo
   font:
-    text: Ubuntu
-    mono: Ubuntu Mono
+    text: Roboto
+    mono: Roboto Mono
   social:
     - type: github
       link: https://github.com/squidfunk
@@ -82,11 +82,7 @@ pages:
     - Footnotes: extensions/footnotes.md
     - Metadata: extensions/metadata.md
     - Permalinks: extensions/permalinks.md
-    - PyMdown:
-      - Overview: extensions/pymdown/overview.md
-      - Inline Hilite: extensions/pymdown/inlinehilite.md
-      - Arithmatex: extensions/pymdown/arithmatex.md
-      - Tasklist: extensions/pymdown/tasklist.md
+    - PyMdown: extensions/pymdown.md
   - Specimen: specimen.md
   - Customization: customization.md
   - License: license.md
