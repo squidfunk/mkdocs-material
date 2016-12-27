@@ -20,51 +20,31 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Check, if all changes are added to the index
-CWD_CLEAN="$(git diff-index HEAD --)"
+# Patch file to store unindexed changes
+PATCH_FILE=".working-tree.patch"
 
-# This variables stores the state of the stash.
-#   0 = not restored yet.
-#   1 = stash was already reset
-STASH_POPPED=0
-
-# Pop the stash in case of trap
+# Revert changes that have been registered in the patch file
 function cleanup {
-  if test -n "$CWD_CLEAN"; then
-    if test "$STASH_POPPED" != 1 ; then
-      # Pop the changes (= stash) back to the work space
-      git stash pop -q
-	  fi
+  EXIT_CODE=$?
+  if [ -f "$PATCH_FILE" ]; then
+    git apply "$PATCH_FILE" 2> /dev/null
+    rm "$PATCH_FILE"
   fi
-	exit
+	exit $EXIT_CODE
 }
 
-# Register signal handler
-trap cleanup SIGHUP SIGINT SIGTERM
+# Register signal handlers
+trap cleanup EXIT SIGINT SIGHUP
 
-# Stash all changes that were not added to the commit
-if test -n "$CWD_CLEAN"; then
-  git stash -q --keep-index --include-untracked
-fi
+# Cancel any changes to the working tree that are not going to be committed
+git diff > "$PATCH_FILE"
+git checkout -- .
+
+# Filter relevant files for linting
+FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep "\.js\|scss$")
 
 # Run the check and print indicator
-echo "Hook[pre-commit]: Running linter..."
-STD_OUT=$(npm run lint --silent)
-
-# Grab exit code of check
-HAD_ERROR=$?
-
-# Pop the changes (= stash) back to the work space
-if test -n "$CWD_CLEAN"; then
-  git stash pop -q
-  STASH_POPPED=1
+if [ "$FILES" ]; then
+  echo "Hook[pre-commit]: Running linter..."
+  npm run lint --silent || exit 1
 fi
-
-# In case of error, print output of check
-if test "$HAD_ERROR" != 0 ; then
-  echo ${STD_OUT}
-  exit 1
-fi
-
-# Reset indicator and exit
-exit 0
