@@ -73,20 +73,13 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
     {% endblock %}
 
-    <!-- Block: webfonts and stylesheets -->
-    {% block styles %}
-      <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700" />
-      <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Roboto+Mono:400" />
-      <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <!-- Block: webfonts -->
+    {% block webfonts %}
+      {% include "partials/webfonts.html" %}
+    {% endblock %}
 
-      <!-- Social icon webfont, if necessary -->
-      {% if config.extra.social %}
-        <link rel="stylesheet" type="text/css"
-            href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css">
-      {% endif %}
+    <!-- Block: stylesheets -->
+    {% block styles %}
 
       <!-- Theme-related stylesheets -->
       <link rel="stylesheet" type="text/css"
@@ -253,7 +246,7 @@
         Array.prototype.map.call(links, function(item) {
           if (item.host != document.location.host) {
             item.addEventListener("click", function() {
-              var action = item.getAttribute("data-action") || "follow";
+              var action = item.getAttribute("data-md-action") || "follow";
               ga("send", "event", "outbound", action, item.href);
             });
           }

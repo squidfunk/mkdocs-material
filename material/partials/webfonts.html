@@ -1,0 +1,18 @@
+{% if config.extra.font != "none" %}
+  {% set text = config.extra.get("font", {}).text | default("Roboto") %}
+  {% set code = config.extra.get("font", {}).code | default("Roboto Mono") %}
+  {% set font = text + ':300,400,400i,700|' + code | replace(' ', '+') %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">
+  <style>
+    body, input {
+      font-family: "{{ text }}", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    pre, code, kbd {
+      font-family: "{{ code }}", "Courier New", Courier, monospace;
+    }
+  </style>
+{% endif %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% if config.extra.social %}
+  <link rel="stylesheet" href="https://file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css">
+{% endif %}

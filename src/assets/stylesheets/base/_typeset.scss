@@ -28,7 +28,7 @@
 body,
 input {
   color: $md-color-black;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  // font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
 
@@ -47,7 +47,7 @@ pre,
 code,
 kbd {
   color: $md-color-black;
-  font-family: "Roboto Mono", "Courier New", Courier, monospace;
+  // font-family: "Roboto Mono", "Courier New", Courier, monospace;
   font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
 
