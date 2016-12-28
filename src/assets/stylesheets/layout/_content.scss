@@ -41,17 +41,21 @@
   &__inner {
     margin: 2.4rem 1.6rem;
 
-    // Hack: this is necessary for floating the edit button
-    // overflow: auto;
-
     // [screen +]: Increase spacing
     @include break-from-device(screen) {
       margin: 2.4rem;
     }
   }
 
-  // Copyright and theme information
-  &__copyright {
-    display: block;
+  // Icons (edit button)
+  &__edit {
+    @extend %md-icon__button;
+
+    float: right;
+
+    // [tablet portrait -]: Align edit link with search icon
+    @include break-to-device(tablet portrait) {
+      margin-right: -0.8rem;
+    }
   }
 }

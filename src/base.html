@@ -74,8 +74,8 @@
     {% endblock %}
 
     <!-- Block: webfonts -->
-    {% block webfonts %}
-      {% include "partials/webfonts.html" %}
+    {% block fonts %}
+      {% include "partials/fonts.html" %}
     {% endblock %}
 
     <!-- Block: stylesheets -->
@@ -164,6 +164,14 @@
           <!-- Article -->
           <div class="md-content">
             <article class="md-content__inner md-typeset">
+
+              <!-- Edit button, if URL was defined -->
+               {% if config.edit_uri %}
+                 <a href="{{ page.edit_url }}" title="Edit this page"
+                      class="md-icon md-content__edit">
+                   edit
+                 </a>
+               {% endif %}
 
               <!-- Block: content -->
               {% block content %}

@@ -32,11 +32,11 @@
     {% block libs %}
       <script src="{{ base_url }}/assets/javascripts/modernizr-934476c231.js"></script>
     {% endblock %}
-    {% block webfonts %}
-      {% include "partials/webfonts.html" %}
+    {% block fonts %}
+      {% include "partials/fonts.html" %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-7515027b77.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-7b7465c8b1.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-535e87ca3f.palette.css">
       {% endif %}
@@ -85,6 +85,11 @@
           {% endblock %}
           <div class="md-content">
             <article class="md-content__inner md-typeset">
+               {% if config.edit_uri %}
+                 <a href="{{ page.edit_url }}" title="Edit this page" class="md-icon md-content__edit">
+                   edit
+                 </a>
+               {% endif %}
               {% block content %}
                 {% if not "\x3ch1 id=" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
