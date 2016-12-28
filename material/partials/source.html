@@ -1,4 +1,4 @@
-{% set platform = config.repo_url %}
+{% set platform = config.extra.repo_icon or config.repo_url %}
 {% if "github" in platform %}
   {% set repo_type = "github" %}
 {% elif "gitlab" in platform %}
