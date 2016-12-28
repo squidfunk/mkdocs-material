@@ -183,6 +183,19 @@ export default class Application {
         }
       }))
 
+    /* Listener: disable search when ESC key is pressed */
+    new Material.Event.Listener(window, "keyup", ev => {
+      const code = ev.keyCode || ev.which
+      if (code === 27) {
+        const toggle = document.querySelector("[data-md-toggle=search]")
+        if (toggle.checked) {
+          toggle.checked = false
+          dispatch(toggle, "change")
+          document.forms.search.query.blur()
+        }
+      }
+    }).listen()
+
     /* Listener: fix unclickable toggle due to blur handler */
     new Material.Event.MatchMedia("(min-width: 960px)",
       new Material.Event.Listener("[data-md-toggle=search]", "click",
