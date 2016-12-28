@@ -51,8 +51,12 @@ body {
 
     // Lock body to viewport height (e.g. in search mode)
     &[data-md-state="lock"] {
-      height: 100%;
       overflow: hidden;
+
+      // Hide container on iOS, or the body will not be locked correctly
+      .ios & .md-container {
+        display: none;
+      }
     }
   }
 }

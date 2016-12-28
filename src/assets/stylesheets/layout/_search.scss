@@ -298,6 +298,7 @@
 
     box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     // [tablet landscape]: Set absolute width to omit unnecessary reflow
     @include break-at-device(tablet landscape) {
