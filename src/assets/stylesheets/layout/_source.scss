@@ -88,6 +88,13 @@
     vertical-align: middle;
     fill: $md-color-white;
 
+    // Align SVG, do not scale, as this will incur strange formatting bugs
+    // in Internet Explorer and Edge
+    svg {
+      margin-top: 1.2rem;
+      margin-left: 1.2rem;
+    }
+
     // Correct alignment, if icon is present
     + .md-source__repository {
       margin-left: -4.4rem;

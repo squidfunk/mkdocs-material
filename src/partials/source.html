@@ -39,10 +39,11 @@
 <a href="{{ config.repo_url }}" title="Go to repository" class="md-source"
     data-md-source="{{ repo_type }}">
   {% if repo_type %}
-    <svg class="md-source__icon">
-      <use xlink:href="#{{ repo_type }}" x="12" y="12"
-          width="24" height="24"></use>
-    </svg>
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#{{ repo_type }}" width="24" height="24"></use>
+      </svg>
+    </div>
   {% endif %}
   <div class="md-source__repository">
     {{ config.repo_name }}
