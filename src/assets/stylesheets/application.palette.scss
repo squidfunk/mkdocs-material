@@ -102,6 +102,30 @@ button[data-md-color-accent] {
       background-color: $color;
     }
 
+    // Current or hovered link
+    .md-nav__link:active,
+    .md-nav__link--active {
+      color: $color;
+    }
+
+    // [tablet portrait -]: Layered navigation
+    @include break-to-device(tablet portrait) {
+
+      // Repository containing source
+      .md-nav__source {
+        background-color: mix($color, $md-color-black, 75%);
+      }
+    }
+
+    // [tablet -]: Layered navigation
+    @include break-to-device(tablet) {
+
+      // Site title in main navigation
+      html & .md-nav--primary .md-nav__title--site {
+        background-color: $color;
+      }
+    }
+
     // [tablet landscape +]: Add border to table of contents
     @include break-from-device(tablet landscape) {
 
@@ -109,12 +133,6 @@ button[data-md-color-accent] {
       .md-nav--secondary {
         border-left: 0.4rem solid $color;
       }
-    }
-
-    // Current or hovered link
-    .md-nav__link:active,
-    .md-nav__link--active {
-      color: $color;
     }
   }
 }

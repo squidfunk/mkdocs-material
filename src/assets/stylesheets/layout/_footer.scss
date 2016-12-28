@@ -122,7 +122,7 @@
 
   // Use a decent color for non-hovered links and ensure specificity
   html &.md-typeset a {
-    color: $md-color-white--lighter;
+    color: $md-color-white--light;
   }
 }
 
@@ -130,7 +130,7 @@
 .md-footer-copyright {
   margin: 0 1.2rem;
   padding: 0.8rem 0;
-  color: $md-color-white--lightest;
+  color: $md-color-white--lighter;
   font-size: ms(-1);
 
   // [tablet portrait +]: Show next to social media links

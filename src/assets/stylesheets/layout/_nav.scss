@@ -363,7 +363,7 @@
     &__source {
       display: block;
       padding: 0.4rem;
-      background-color: darken($md-color-primary, 10%);
+      background-color: mix($md-color-primary, $md-color-black, 75%);
       color: $md-color-white;
     }
   }
