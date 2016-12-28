@@ -100,8 +100,9 @@ export default class Blur {
    * Reset anchor states
    */
   reset() {
-    for (const el of this.els_)
+    Array.prototype.forEach.call(this.els_, el => {
       el.dataset.mdState = ""
+    })
 
     /* Reset index and page y-offset */
     this.index_  = 0

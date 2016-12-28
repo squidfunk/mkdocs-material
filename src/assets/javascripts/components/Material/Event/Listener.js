@@ -53,9 +53,11 @@ export default class Listener {
    * Register listener for all relevant events
    */
   listen() {
-    for (const el of this.els_)
-      for (const event of this.events_)
+    Array.prototype.forEach.call(this.els_, el => {
+      this.events_.forEach(event => {
         el.addEventListener(event, this.update_, false)
+      })
+    })
 
     /* Execute setup handler, if implemented */
     if (typeof this.handler_.setup === "function")
@@ -66,9 +68,11 @@ export default class Listener {
    * Unregister listener for all relevant events
    */
   unlisten() {
-    for (const el of this.els_)
-      for (const event of this.events_)
+    Array.prototype.forEach.call(this.els_, el => {
+      this.events_.forEach(event => {
         el.removeEventListener(event, this.update_)
+      })
+    })
 
     /* Execute reset handler, if implemented */
     if (typeof this.handler_.reset === "function")

@@ -62,7 +62,7 @@ export default class Application {
 
       /* Wrap all data tables */
       const tables = document.querySelectorAll("table:not([class])")
-      for (const table of tables) {
+      Array.prototype.forEach.call(tables, table => {
         const wrap = document.createElement("div")
         wrap.classList.add("md-typeset__table")
         if (table.nextSibling) {
@@ -71,7 +71,7 @@ export default class Application {
           table.parentNode.appendChild(wrap)
         }
         wrap.appendChild(table)
-      }
+      })
     }).listen()
 
     /* Cross-browser helper to dispatch/fire an event */
@@ -108,10 +108,11 @@ export default class Application {
     /* Component: collapsible elements for navigation */
     const collapsibles =
       document.querySelectorAll("[data-md-component=collapsible]")
-    for (const collapse of collapsibles)
+    Array.prototype.forEach.call(collapsibles, collapse => {
       new Material.Event.MatchMedia("(min-width: 1200px)",
         new Material.Event.Listener(collapse.previousElementSibling, "click",
           new Material.Nav.Collapse(collapse)))
+    })
 
     /* Component: pane monitor for iOS scrolling fixes */
     new Material.Event.MatchMedia("(max-width: 1199px)",
@@ -218,9 +219,10 @@ export default class Application {
     /* Render repository source information */
     })().then(facts => {
       const sources = document.querySelectorAll("[data-md-source]")
-      for (const source of sources)
+      Array.prototype.forEach.call(sources, source => {
         new Material.Source.Repository(source)
           .initialize(facts)
+      })
     })
   }
 }

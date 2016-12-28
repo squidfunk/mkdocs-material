@@ -111,7 +111,7 @@ export default class Result {
 
       /* Perform search on index and render documents */
       const result = this.index_.search(ev.target.value)
-      for (const item of result) {
+      result.forEach(item => {
         const doc = this.data_[item.ref]
         this.list_.appendChild(
           <li class="md-search-result__item">
@@ -128,7 +128,7 @@ export default class Result {
             </a>
           </li>
         )
-      }
+      })
 
       /* Update search metadata */
       this.meta_.textContent =

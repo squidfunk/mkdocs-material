@@ -48,23 +48,23 @@ export default class Scrolling {
 
     /* Find all toggles and check which one is active */
     const toggles = this.el_.querySelectorAll("[data-md-toggle]")
-    for (const toggle of toggles) {
-      if (!toggle.checked)
-        return
+    Array.prototype.forEach.call(toggles, toggle => {
+      if (toggle.checked) {
 
-      /* Find corresponding navigational pane */
-      let pane = toggle.nextElementSibling
-      while (pane.tagName !== "NAV")
-        pane = pane.nextElementSibling
+        /* Find corresponding navigational pane */
+        let pane = toggle.nextElementSibling
+        while (pane.tagName !== "NAV")
+          pane = pane.nextElementSibling
 
-      /* Find current and parent list elements */
-      const parent = toggle.parentNode.parentNode
-      const target = pane.children[pane.children.length - 1]
+        /* Find current and parent list elements */
+        const parent = toggle.parentNode.parentNode
+        const target = pane.children[pane.children.length - 1]
 
-      /* Always reset all lists when transitioning */
-      parent.style.webkitOverflowScrolling = ""
-      target.style.webkitOverflowScrolling = "touch"
-    }
+        /* Always reset all lists when transitioning */
+        parent.style.webkitOverflowScrolling = ""
+        target.style.webkitOverflowScrolling = "touch"
+      }
+    })
   }
 
   /**
@@ -116,22 +116,22 @@ export default class Scrolling {
 
     /* Find all toggles and check which one is active */
     const toggles = this.el_.querySelectorAll("[data-md-toggle]")
-    for (const toggle of toggles) {
-      if (!toggle.checked)
-        return
+    Array.prototype.forEach.call(toggles, toggle => {
+      if (toggle.checked) {
 
-      /* Find corresponding navigational pane */
-      let pane = toggle.nextElementSibling
-      while (pane.tagName !== "NAV")
-        pane = pane.nextElementSibling
+        /* Find corresponding navigational pane */
+        let pane = toggle.nextElementSibling
+        while (pane.tagName !== "NAV")
+          pane = pane.nextElementSibling
 
-      /* Find current and parent list elements */
-      const parent = toggle.parentNode.parentNode
-      const target = pane.children[pane.children.length - 1]
+        /* Find current and parent list elements */
+        const parent = toggle.parentNode.parentNode
+        const target = pane.children[pane.children.length - 1]
 
-      /* Always reset all lists when transitioning */
-      parent.style.webkitOverflowScrolling = ""
-      target.style.webkitOverflowScrolling = ""
-    }
+        /* Always reset all lists when transitioning */
+        parent.style.webkitOverflowScrolling = ""
+        target.style.webkitOverflowScrolling = ""
+      }
+    })
   }
 }
