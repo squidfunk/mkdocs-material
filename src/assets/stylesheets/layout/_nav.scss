@@ -93,7 +93,7 @@
 
       // Item contains a nested list
       .md-nav__item--nested > & {
-        content: "expand_more";
+        content: "keyboard_arrow_down";
       }
     }
 
@@ -167,10 +167,10 @@
       // inside the drawer is always styled accordingly
       html & .md-nav__title {
         position: relative;
-        padding: 0.4rem 1.6rem 0.4rem 5.6rem;
+        min-height: 5.6rem;
+        padding: 0.4rem 1.6rem;
         background-color: $md-color-black--lightest;
         color: $md-color-black--light;
-        font-size: 1.8rem;
         font-weight: 400;
         line-height: 4.8rem;
         white-space: nowrap;
@@ -180,6 +180,7 @@
         &::before {
           display: block;
           position: absolute;
+          top: 0.4rem;
           left: 0.4rem;
           width: 4.0rem;
           height: 4.0rem;
@@ -206,6 +207,11 @@
         // Increase spacing to account for icon
         &--nested > .md-nav__link {
           padding-right: 4.8rem;
+
+          // Replace icon with right arrow
+          &::after {
+            content: "keyboard_arrow_right";
+          }
         }
       }
 
@@ -217,9 +223,7 @@
         // Rotate icon
         &::after {
           position: absolute;
-          top: 50%;
           right: 1.2rem;
-          transform: translateY(-50%) rotate(-90deg);
           color: $md-color-black--light;
           font-size: 2.4rem;
         }
@@ -262,7 +266,7 @@
 
       // Animate appearance, if browser supports 3D transforms
       .csstransforms3d & {
-        display: block;
+        display: flex;
         transform: translateX(100%);
         transition:
           transform 0.25s cubic-bezier(0.8, 0.0, 0.6, 1.0),
@@ -273,7 +277,7 @@
 
     // Expand nested navigation, if toggle is checked
     .md-nav__toggle:checked ~ & {
-      display: block;
+      display: flex;
 
       // Animate appearance, if browser supports 3D transforms
       .csstransforms3d & {
@@ -289,7 +293,7 @@
     .md-nav__title,
     .md-nav__item {
       font-size: 1.6rem;
-      line-height: 1.4;
+      line-height: 1.5;
     }
   }
 
@@ -308,7 +312,6 @@
 
       // Unrotate icon for table of contents
       &::after {
-        transform: translateY(-50%);                                            // TODO: just use arrow_right in case of mobile navigation
         color: inherit;
         content: "toc";
       }
