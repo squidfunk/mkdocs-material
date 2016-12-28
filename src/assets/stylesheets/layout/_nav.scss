@@ -389,13 +389,9 @@
       max-height: 100%;
     }
 
-    // List title
-    &__title {
-
-      // Hide titles for nested navigation
-      & + .md-nav__list & {
-        display: none;
-      }
+    // Hide titles for nested navigation
+    &__item--nested > .md-nav > &__title {
+      display: none;
     }
 
     // Link inside item
