@@ -41,10 +41,9 @@ export default class Blur {
     this.index_  = 0
     this.offset_ = window.pageYOffset
 
-    /* Index anchor node offsets for fast lookup, and deduct the static offset
-       of the header (56px) and sidebar offset (24px), see _permalinks.scss */
+    /* Index anchor node offsets for fast lookup */
     this.anchors_ = [].map.call(this.els_, el => {
-      return document.querySelector(el.hash).offsetTop - (56 + 24)
+      return document.querySelector(el.hash)
     })
   }
 
@@ -57,6 +56,9 @@ export default class Blur {
 
   /**
    * Update anchor states
+   *
+   * Deduct the static offset of the header (56px) and sidebar offset (24px),
+   * see _permalinks.scss for more information.
    */
   update() {
     const offset = window.pageYOffset
@@ -68,7 +70,7 @@ export default class Blur {
     /* Scroll direction is down */
     if (this.offset_ <= offset) {
       for (let i = this.index_ + 1; i < this.els_.length; i++) {
-        if (this.anchors_[i] <= offset) {
+        if (this.anchors_[i].offsetTop - (56 + 24) <= offset) {
           if (i > 0)
             this.els_[i - 1].dataset.mdState = "blur"
           this.index_ = i
@@ -80,7 +82,7 @@ export default class Blur {
     /* Scroll direction is up */
     } else {
       for (let i = this.index_; i >= 0; i--) {
-        if (this.anchors_[i] > offset) {
+        if (this.anchors_[i].offsetTop - (56 + 24) > offset) {
           if (i > 0)
             this.els_[i - 1].dataset.mdState = ""
         } else {
