@@ -20,31 +20,19 @@
   IN THE SOFTWARE.
 -->
 
-<!--
-  Check whether the repository is hosted on one of the supported code hosting
-  platforms (Github, Gitlab or Bitbucket) to show icon.
--->
-{% set platform = config.repo_url %}
-{% if "github" in platform %}
-  {% set repo_type = "github" %}
-{% elif "gitlab" in platform %}
-  {% set repo_type = "gitlab" %}
-{% elif "bitbucket" in platform %}
-  {% set repo_type = "bitbucket" %}
-{% else %}
-  {% set repo_type = "" %}
-{% endif %}
+<!-- Hidden container for inline SVGs -->
+<div class="md-svg">
 
-<!-- Repository containing source -->
-<a href="{{ config.repo_url }}" title="Go to repository" class="md-source"
-    data-md-source="{{ repo_type }}">
-  {% if repo_type %}
-    <svg class="md-source__icon">
-      <use xlink:href="#{{ repo_type }}" x="12" y="12"
-          width="24" height="24"></use>
-    </svg>
+  <!--
+    Check whether the repository is hosted on one of the supported code hosting
+    platforms (Github, Gitlab or Bitbucket) to show icon.
+  -->
+  {% set platform = config.extra.repo_icon or config.repo_url %}
+  {% if "github" in platform %}
+    {% include "assets/images/icons/github.svg" %}
+  {% elif "gitlab" in platform %}
+    {% include "assets/images/icons/gitlab.svg" %}
+  {% elif "bitbucket" in platform %}
+    {% include "assets/images/icons/bitbucket.svg" %}
   {% endif %}
-  <div class="md-source__repository">
-    {{ config.repo_name }}
-  </div>
-</a>
+</div>

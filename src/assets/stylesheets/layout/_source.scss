@@ -72,53 +72,34 @@
   }
 
   // Necessary for vertical alignment
-  &::before {
+  &::after {
     display: inline-block;
     height: 4.8rem;
     content: "";
     vertical-align: middle;
   }
 
-  // Repository is hosted on platform
-  &--bitbucket,
-  &--github,
-  &--gitlab {
+  // Repository platform icon
+  &__icon {
+    display: inline-block;
+    width: 4.8rem;
+    height: 4.8rem;
+    content: "";
+    vertical-align: middle;
+    fill: $md-color-white;
 
-    // Platform icon
-    &::before {
-      width: 4.8rem;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: $md-icon-size $md-icon-size;
-    }
-
-    // Adjust repository information for platform icon
-    .md-source__repository {
+    // Correct alignment, if icon is present
+    + .md-source__repository {
       margin-left: -4.4rem;
       padding-left: 4.0rem;
     }
-  }
-
-  // Code is hosted on BitBucket
-  &--bitbucket::before {
-    background-image: url("../images/icons/bitbucket-white.svg");
-  }
-
-  // Code is hosted on GitHub
-  &--github::before {
-    background-image: url("../images/icons/github-white.svg");
-  }
-
-  // Code is hosted on GitLab
-  &--gitlab::before {
-    background-image: url("../images/icons/gitlab-white.svg");
   }
 
   // Repository name
   &__repository {
     display: inline-block;
     max-width: 100%;
-    margin-left: 0.8rem;
+    margin-left: 1.2rem;
     font-weight: 700;
     text-overflow: ellipsis;
     overflow: hidden;

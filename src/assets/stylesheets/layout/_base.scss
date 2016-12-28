@@ -65,6 +65,11 @@ hr {
   border: 0;
 }
 
+// Inline SVG container
+.md-svg {
+  display: none;
+}
+
 // Template-wide grid
 .md-grid {
   max-width: 120.0rem;
