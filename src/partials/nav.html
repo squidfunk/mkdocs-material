@@ -22,16 +22,26 @@
 
 <!-- Main navigation -->
 <nav class="md-nav md-nav--primary">
-  <label class="md-nav__title" for="drawer">{{ config.site_name }}</label>
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <i class="md-icon md-nav__icon">
+      {% if config.extra.logo %}
+        <img src="{{ base_url }}/{{ config.extra.logo }}"
+            width="24" height="24" />
+      {% else %}
+        school
+      {% endif %}
+    </i>
+    {{ config.site_name }}
+  </label>
+  {% if config.repo_url %}
+    <div class="md-nav__source">
+      {% include "partials/source.html" %}
+    </div>
+  {% endif %}
   <ul class="md-nav__list">
     {% for nav_item in nav %}
       {% set path = "nav-" + loop.index | string %}
       {% include "partials/nav-item.html" %}
     {% endfor %}
   </ul>
-  {% if config.repo_url %}
-    <div class="md-nav__source">
-      {% include "partials/source.html" %}
-    </div>
-  {% endif %}
 </nav>

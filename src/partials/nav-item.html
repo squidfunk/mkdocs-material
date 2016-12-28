@@ -38,7 +38,9 @@
       {{ nav_item.title }}
     </label>
     <nav class="md-nav" data-md-component="collapsible">
-      <label class="md-nav__title" for="{{ path }}"></label>
+      <label class="md-nav__title" for="{{ path }}">
+        {{ nav_item.title}}
+      </label>
       <ul class="md-nav__list">
 
         <!-- Render nested item list -->

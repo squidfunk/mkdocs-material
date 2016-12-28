@@ -19,7 +19,7 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Material
+site_name: Material for MkDocs
 site_description: A material design theme for MkDocs
 site_author: Martin Donath
 site_url: http://squidfunk.github.io/mkdocs-material/

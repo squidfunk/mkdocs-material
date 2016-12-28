@@ -50,6 +50,11 @@
       display: none;
       content: "arrow_back";
     }
+
+    // Hide icon by default
+    .md-nav__icon {
+      display: none;
+    }
   }
 
   // List of items
@@ -77,6 +82,11 @@
         padding-bottom: 0;
       }
     }
+  }
+
+  // Icon
+  &__icon {
+    @extend %md-icon, %md-icon__button;
   }
 
   // Link inside item
@@ -159,7 +169,6 @@
       .md-nav__toggle ~ .md-nav {
         @include z-depth(4);
 
-        left: 0.4rem;
         background-color: $md-color-white;
       }
 
@@ -167,8 +176,8 @@
       // inside the drawer is always styled accordingly
       html & .md-nav__title {
         position: relative;
-        min-height: 5.6rem;
-        padding: 0.4rem 1.6rem;
+        height: 11.2rem;
+        padding: 6.0rem 1.6rem 0.4rem;
         background-color: $md-color-black--lightest;
         color: $md-color-black--light;
         font-weight: 400;
@@ -187,9 +196,32 @@
           color: $md-color-black--light;
         }
 
-        // Remove border for first ist item
+        // Remove border for first list item
         ~ .md-nav__list > .md-nav__item:first-child {
           border-top: 0;
+        }
+
+        // Site title in main navigation
+        &--site {
+          position: relative;
+          background-color: $md-color-primary;
+          color: $md-color-white;
+
+          // Site logo
+          .md-nav__icon {
+            display: block;
+            position: absolute;
+            top: 0.4rem;
+            left: 0.4rem;
+            width: 6.4rem;
+            height: 6.4rem;
+            font-size: 4.8rem;
+          }
+
+          // Hide back arrow icon
+          &::before {
+            display: none;
+          }
         }
       }
 
@@ -331,7 +363,7 @@
     &__source {
       display: block;
       padding: 0.4rem;
-      background-color: $md-color-black;
+      background-color: darken($md-color-primary, 10%);
       color: $md-color-white;
     }
   }
