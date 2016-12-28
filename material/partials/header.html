@@ -3,7 +3,11 @@
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="{{ nav.homepage.url }}" title="{{ config.site_name }}" class="md-icon md-header-nav__icon md-header-nav__icon--home">
-          layers
+          {% if config.extra.logo %}
+            <img src="{{ base_url }}/{{ config.extra.logo }}" width="24" height="24">
+          {% else %}
+            school
+          {% endif %}
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
