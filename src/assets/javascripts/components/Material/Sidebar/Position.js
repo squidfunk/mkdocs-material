@@ -37,9 +37,8 @@ export default class Position {
       ? document.querySelector(el)
       : el
 
-    /* Initialize parent container, top offset and current height */
+    /* Initialize parent container and current height */
     this.parent_ = this.el_.parentNode
-    this.offset_ = this.el_.offsetTop - this.parent_.offsetTop
     this.height_ = 0
   }
 
@@ -47,6 +46,7 @@ export default class Position {
    * Initialize sidebar state
    */
   setup() {
+    this.offset_ = this.el_.offsetTop - this.parent_.offsetTop
     this.update()
   }
 

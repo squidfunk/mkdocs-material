@@ -86,9 +86,7 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
                {% if config.edit_uri %}
-                 <a href="{{ page.edit_url }}" title="Edit this page" class="md-icon md-content__edit">
-                   edit
-                 </a>
+                 <a href="{{ page.edit_url }}" title="Edit this page" class="md-icon md-content__edit">edit</a>
                {% endif %}
               {% block content %}
                 {% if not "\x3ch1 id=" in page.content %}
@@ -111,7 +109,7 @@
           <script src="https://cdn.mathjax.org/{{ path }}"></script>
         {% endif %}
       {% endfor %}
-      <script src="{{ base_url }}/assets/javascripts/application-7d27d432c4.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-e4e6991dc0.js"></script>
       <script>
         /* Configuration for application */
         var config = {
