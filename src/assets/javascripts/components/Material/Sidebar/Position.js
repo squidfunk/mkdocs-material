@@ -86,7 +86,7 @@ export default class Position {
 
     /* Sidebar should be unlocked, if locked */
     } else if (this.el_.dataset.mdState === "lock") {
-      delete this.el_.dataset.mdState
+      this.el_.dataset.mdState = ""
     }
   }
 
@@ -94,7 +94,7 @@ export default class Position {
    * Reset locked state and height
    */
   reset() {
-    delete this.el_.dataset.mdState
+    this.el_.dataset.mdState = ""
     this.el_.style.height = ""
     this.height_ = 0
   }

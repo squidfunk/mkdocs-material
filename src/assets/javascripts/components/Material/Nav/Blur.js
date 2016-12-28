@@ -82,7 +82,7 @@ export default class Blur {
       for (let i = this.index_; i >= 0; i--) {
         if (this.anchors_[i] > offset) {
           if (i > 0)
-            delete this.els_[i - 1].dataset.mdState
+            this.els_[i - 1].dataset.mdState = ""
         } else {
           this.index_ = i
           break
@@ -99,7 +99,7 @@ export default class Blur {
    */
   reset() {
     for (const el of this.els_)
-      delete el.dataset.mdState
+      el.dataset.mdState = ""
 
     /* Reset index and page y-offset */
     this.index_  = 0

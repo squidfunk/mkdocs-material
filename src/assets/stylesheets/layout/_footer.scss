@@ -90,7 +90,7 @@
     transition: background 0.25s;
   }
 
-  // Link title
+  // Link title - set line height to match icon for correct alignment
   &__title {
     position: relative;
     padding: 0 2.0rem;
@@ -169,7 +169,7 @@
 
     // Adjust line-height to match height for correct alignment
     &::before {
-      line-height: 3.2rem;
+      line-height: 2.0;
     }
   }
 }

@@ -119,11 +119,18 @@ export default class Application {
         new Material.Nav.Blur("[data-md-component=toc] .md-nav__link")))
 
     /* Component: collapsible elements for navigation */
-    const collapsibles = document.querySelectorAll("[data-md-collapse]")
+    const collapsibles =
+      document.querySelectorAll("[data-md-component=collapsible]")
     for (const collapse of collapsibles)
       new Material.Event.MatchMedia("(min-width: 1200px)",
         new Material.Event.Listener(collapse.previousElementSibling, "click",
           new Material.Nav.Collapse(collapse)))
+
+    /* Component: pane monitor for iOS scrolling fixes */
+    new Material.Event.MatchMedia("(max-width: 1199px)",
+      new Material.Event.Listener(
+        "[data-md-component=navigation] [data-md-toggle]", "change",
+          new Material.Nav.Scrolling("[data-md-component=navigation] nav")))
 
     /* Component: search body lock for mobile */
     new Material.Event.MatchMedia("(max-width: 959px)",

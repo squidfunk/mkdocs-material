@@ -22,6 +22,7 @@
 
 import Blur from "./Nav/Blur"
 import Collapse from "./Nav/Collapse"
+import Scrolling from "./Nav/Scrolling"
 
 /* ----------------------------------------------------------------------------
  * Module
@@ -29,5 +30,6 @@ import Collapse from "./Nav/Collapse"
 
 export default {
   Blur,
-  Collapse
+  Collapse,
+  Scrolling
 }

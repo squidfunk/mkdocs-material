@@ -66,7 +66,7 @@ export default class Lock {
 
     /* Exiting search mode */
     } else {
-      delete document.body.dataset.mdState
+      document.body.dataset.mdState = ""
 
       /* Scroll to former position, but wait for 100ms to prevent flashes on
          iOS. A short timeout seems to do the trick */
@@ -81,8 +81,8 @@ export default class Lock {
    * Reset locked state and page y-offset
    */
   reset() {
-    if (document.body.dataset.mdState)
+    if (document.body.dataset.mdState === "lock")
       window.scrollTo(0, this.offset_)
-    delete document.body.dataset.mdState
+    document.body.dataset.mdState = ""
   }
 }

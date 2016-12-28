@@ -59,7 +59,7 @@ export default class Collapse {
 
       /* Read height and unset pseudo-toggled state */
       const height = this.el_.getBoundingClientRect().height
-      delete this.el_.dataset.mdState
+      this.el_.dataset.mdState = ""
 
       /* Set initial state and animate */
       this.el_.style.maxHeight = "0px"
@@ -70,8 +70,8 @@ export default class Collapse {
     }
 
     /* Remove state on end of transition */
-    const end = function(ev) {
-      delete ev.target.dataset.mdState
+    const end = ev => {
+      ev.target.dataset.mdState = ""
       ev.target.style.maxHeight = ""
 
       /* Only fire once, so directly remove event listener */
@@ -84,7 +84,7 @@ export default class Collapse {
    * Reset height and pseudo-toggled state
    */
   reset() {
-    delete this.el_.dataset.mdState
+    this.el_.dataset.mdState = ""
     this.el_.style.maxHeight = ""
   }
 }
