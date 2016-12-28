@@ -171,6 +171,11 @@
       color: $md-color-black--light;
     }
 
+    // Remove the "x" rendered by Internet Explorer
+    &::-ms-clear {
+      display: none;
+    }
+
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
       width: 100%;
