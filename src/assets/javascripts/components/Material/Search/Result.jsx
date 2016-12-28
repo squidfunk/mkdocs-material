@@ -54,6 +54,19 @@ export default class Result {
     /* Inject created elements */
     this.el_.appendChild(this.meta_)
     this.el_.appendChild(this.list_)
+
+    /* Truncate a string after the given number of characters - this is not
+       a reasonable approach, since the summaries kind of suck. It would be
+       better to create something more intelligent, highlighting the search
+       occurrences and making a better summary out of it */
+    this.truncate_ = function(string, n) {
+      let i = n
+      if (string.length > i) {
+        while (string[i] !== " " && --i > 0);
+        return `${string.substring(0, i)}...`
+      }
+      return string
+    }
   }
 
   /**
@@ -109,7 +122,7 @@ export default class Result {
                   {doc.title}
                 </h1>
                 <p class="md-search-result__teaser">
-                  {doc.text}
+                  {this.truncate_(doc.text, 140)}
                 </p>
               </article>
             </a>

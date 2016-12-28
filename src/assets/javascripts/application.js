@@ -81,19 +81,6 @@ export default class Application {
         : el.fireEvent(`on${event}`, document.createEventObject())
     }
 
-    /* Truncate a string after the given number of characters - this is not
-       a reasonable approach, since the summaries kind of suck. It would be
-       better to create something more intelligent, highlighting the search
-       occurrences and making a better summary out of it */
-    const truncate = function(string, n) {
-      let i = n
-      if (string.length > i) {
-        while (string[i] !== " " && --i > 0);
-        return `${string.substring(0, i)}...`
-      }
-      return string
-    }
-
     /* Component: sidebar container */
     if (!Modernizr.csscalc)
       new Material.Event.MatchMedia("(min-width: 960px)",
@@ -146,7 +133,6 @@ export default class Application {
         .then(data => {
           return data.docs.map(doc => {
             doc.location = this.config_.url.base + doc.location
-            doc.text = truncate(doc.text, 140)
             return doc
           })
         })
