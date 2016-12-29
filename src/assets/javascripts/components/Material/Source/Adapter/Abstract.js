@@ -41,6 +41,7 @@ export default class Abstract {
 
     /* Retrieve base URL */
     this.base_ = this.el_.href
+    this.salt_ = this.hash_(this.base_)
   }
 
   /**
@@ -50,7 +51,7 @@ export default class Abstract {
    */
   fetch() {
     return new Promise(resolve => {
-      const cached = Cookies.getJSON(".cache-source")
+      const cached = Cookies.getJSON(`${this.salt_}.cache-source`)
       if (typeof cached !== "undefined") {
         resolve(cached)
 
@@ -58,7 +59,7 @@ export default class Abstract {
          a cookie that automatically expires in 15 minutes */
       } else {
         this.fetch_().then(data => {
-          Cookies.set(".cache-source", data, { expires: 1 / 96 })
+          Cookies.set(`${this.salt_}.cache-source`, data, { expires: 1 / 96 })
           resolve(data)
         })
       }
@@ -87,5 +88,23 @@ export default class Abstract {
     else if (number > 1000)
       return `${(number / 1000).toFixed(1)}k`
     return number
+  }
+
+  /**
+   * Simple hash function
+   *
+   * Taken from http://stackoverflow.com/a/7616484/1065584
+   *
+   * @param {string} str - Input string
+   * @return {string} Hashed string
+   */
+  hash_(str) {
+    let hash = 0
+    if (str.length === 0) return hash
+    for (let i = 0, len = str.length; i < len; i++) {
+      hash  = ((hash << 5) - hash) + str.charCodeAt(i)
+      hash |= 0 // Convert to 32bit integer
+    }
+    return hash
   }
 }
