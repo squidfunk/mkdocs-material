@@ -74,13 +74,6 @@ export default class Application {
       })
     }).listen()
 
-    /* Cross-browser helper to dispatch/fire an event */
-    const dispatch = (el, event) => {
-      return document.createEvent
-        ? el.dispatchEvent(new Event(event))
-        : el.fireEvent(`on${event}`, document.createEventObject())
-    }
-
     /* Component: sidebar container */
     if (!Modernizr.csscalc)
       new Material.Event.MatchMedia("(min-width: 960px)",
@@ -151,11 +144,11 @@ export default class Application {
           const toggle = document.querySelector("[data-md-toggle=drawer]")
           if (toggle.checked) {
             toggle.checked = false
-            dispatch(toggle, "change")
+            toggle.dispatchEvent(new CustomEvent("change"))
           }
         }))
 
-    /* Listener: focus input after activating search */
+    /* Listener: focus input after opening search */
     new Material.Event.Listener("[data-md-toggle=search]", "change", ev => {
       setTimeout(toggle => {
         const query = document.forms.search.query
@@ -164,23 +157,23 @@ export default class Application {
       }, 400, ev.target)
     }).listen()
 
-    /* Listener: activate search on focus */
+    /* Listener: open search on focus */
     new Material.Event.MatchMedia("(min-width: 960px)",
       new Material.Event.Listener(document.forms.search.query, "focus", () => {
         const toggle = document.querySelector("[data-md-toggle=search]")
         if (!toggle.checked) {
           toggle.checked = true
-          dispatch(toggle, "change")
+          toggle.dispatchEvent(new CustomEvent("change"))
         }
       }))
 
-    /* Listener: disable search when clicking outside */
+    /* Listener: close search when clicking outside */
     new Material.Event.MatchMedia("(min-width: 960px)",
       new Material.Event.Listener(document.body, "click", () => {
         const toggle = document.querySelector("[data-md-toggle=search]")
         if (toggle.checked) {
           toggle.checked = false
-          dispatch(toggle, "change")
+          toggle.dispatchEvent(new CustomEvent("change"))
         }
       }))
 
@@ -191,7 +184,7 @@ export default class Application {
         const toggle = document.querySelector("[data-md-toggle=search]")
         if (toggle.checked) {
           toggle.checked = false
-          dispatch(toggle, "change")
+          toggle.dispatchEvent(new CustomEvent("change"))
           document.forms.search.query.blur()
         }
       }

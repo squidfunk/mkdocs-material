@@ -43,6 +43,7 @@
     "chai": "^3.5.0",
     "core-js": "^2.4.1",
     "css-mqpacker": "^4.0.0",
+    "custom-event-polyfill": "^0.3.0",
     "del": "^2.2.0",
     "eslint": "^3.6.1",
     "eslint-plugin-mocha": "^4.6.0",
