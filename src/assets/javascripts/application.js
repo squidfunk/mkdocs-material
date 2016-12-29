@@ -72,6 +72,25 @@ export default class Application {
         }
         wrap.appendChild(table)
       })
+
+      /* Force 1px scroll offset to trigger overflow scrolling */
+      if (Modernizr.ios) {
+        const scrollable = document.querySelectorAll("[data-md-scrollfix]")
+        Array.prototype.forEach.call(scrollable, item => {
+          item.addEventListener("touchstart", () => {
+            const top = item.scrollTop
+
+            /* We're at the top of the container */
+            if (top === 0) {
+              item.scrollTop = 1
+
+            /* We're at the bottom of the container */
+            } else if (top + item.offsetHeight === item.scrollHeight) {
+              item.scrollTop = top - 1
+            }
+          })
+        })
+      }
     }).listen()
 
     /* Component: sidebar container */

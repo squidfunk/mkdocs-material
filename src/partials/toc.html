@@ -37,7 +37,7 @@
   <!-- Render item list -->
   {% if toc and (toc | first) %}
     <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list">
+    <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc %}
         {% include "partials/toc-item.html" %}
       {% endfor %}
