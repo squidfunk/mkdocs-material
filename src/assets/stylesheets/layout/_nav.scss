@@ -196,9 +196,32 @@
           color: $md-color-black--light;
         }
 
-        // Remove border for first list item
-        ~ .md-nav__list > .md-nav__item:first-child {
-          border-top: 0;
+        // Main lists
+        ~ .md-nav__list {
+
+          // Pure CSS scrolling shadows, taken from
+          // http://lea.verou.me/2012/04/background-attachment-local/
+          background:
+            linear-gradient(
+              to bottom,
+              $md-color-white 10%,
+              $md-color-white--transparent),
+            linear-gradient(
+              to bottom,
+              $md-color-black--lighter,
+              $md-color-black--lightest 35%,
+              $md-color-black--transparent 60%);
+          background-attachment: local, scroll;
+          background-color: $md-color-white;
+          background-repeat: no-repeat;
+          background-size: 100% 2.0rem, 100% 1.0rem;
+
+          box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
+
+          // Remove border for first list item
+          & > .md-nav__item:first-child {
+            border-top: 0;
+          }
         }
 
         // Site title in main navigation
