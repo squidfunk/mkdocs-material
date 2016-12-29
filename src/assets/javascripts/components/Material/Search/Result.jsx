@@ -113,10 +113,18 @@ export default class Result {
       const result = this.index_.search(ev.target.value)
       result.forEach(item => {
         const doc = this.data_[item.ref]
+
+        /* Check if it's a anchor link on the current page */
+        let [pathname] = doc.location.split("#")
+        pathname = pathname.replace(/^(\/?\.{2})+/g, "")
+
+        /* Append search result */
         this.list_.appendChild(
           <li class="md-search-result__item">
             <a href={doc.location} title={doc.title}
-              class="md-search-result__link">
+              class="md-search-result__link" data-md-rel={
+                pathname === document.location.pathname
+              ? "anchor" : ""}>
               <article class="md-search-result__article">
                 <h1 class="md-search-result__title">
                   {doc.title}
@@ -128,6 +136,25 @@ export default class Result {
             </a>
           </li>
         )
+      })
+
+      /* Bind click handlers for anchors */
+      const anchors = this.list_.querySelectorAll("[data-md-rel=anchor]")
+      Array.prototype.forEach.call(anchors, anchor => {
+        anchor.addEventListener("click", ev2 => {
+          const toggle = document.querySelector("[data-md-toggle=search]")
+          if (toggle.checked) {
+            toggle.checked = false
+            toggle.dispatchEvent(new CustomEvent("change"))
+          }
+
+          /* Hack: prevent default, as the navigation needs to be delayed due
+             to the search body lock on mobile */
+          ev2.preventDefault()
+          setTimeout(() => {
+            document.location.href = anchor.href
+          }, 100)
+        })
       })
 
       /* Update search metadata */
