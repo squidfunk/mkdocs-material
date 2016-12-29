@@ -157,8 +157,8 @@ Result:
 
 ## Supported languages <small>excerpt</small>
 
-CodeHilite uses [Pygments][], a generic syntax highlighter with support for
-over [300 languages][], so the following list of examples is just an excerpt.
+CodeHilite uses [Pygments][2], a generic syntax highlighter with support for
+over [300 languages][3], so the following list of examples is just an excerpt.
 
 ### Bash
 
