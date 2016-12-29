@@ -87,6 +87,12 @@
   // Icon
   &__icon {
     @extend %md-icon, %md-icon__button;
+
+    // Stretch image
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 
   // Link inside item
