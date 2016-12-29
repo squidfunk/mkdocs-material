@@ -27,6 +27,12 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
+  // Remove pseudo elements inserted by permalinks extension
+  html & [id^="fn:"]::before,
+  html & [id^="fnref:"]::before {
+    display: none;
+  }
+
   // Footnotes extension
   .footnote {
     color: $md-color-black--light;
