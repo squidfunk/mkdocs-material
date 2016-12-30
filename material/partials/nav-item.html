@@ -24,14 +24,22 @@
   </li>
 {% elif nav_item == page %}
   <li class="md-nav__item">
+    {% set toc = page.toc %}
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    <label class="md-nav__link md-nav__link--active" for="toc">
-      {{ nav_item.title }}
-    </label>
+    {% if "\x3ch1 id=" in page.content %}
+      {% set toc = (toc | first).children %}
+    {% endif %}
+    {% if toc and (toc | first) %}
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        {{ nav_item.title }}
+      </label>
+    {% endif %}
     <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link md-nav__link--active">
       {{ nav_item.title }}
     </a>
-    {% include "partials/toc.html" %}
+    {% if page.toc %}
+      {% include "partials/toc.html" %}
+    {% endif %}
   </li>
 {% else %}
   <li class="md-nav__item">

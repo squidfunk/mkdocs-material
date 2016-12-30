@@ -57,22 +57,32 @@
 <!-- Main navigation item with nested items -->
 {% elif nav_item == page %}
   <li class="md-nav__item">
+    {% set toc = page.toc %}
 
     <!-- Active checkbox expands items contained within nested section -->
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc"
         type="checkbox" id="toc" />
 
+    <!-- Nasty hack - see partials/toc.html for more information -->
+    {% if "\x3ch1 id=" in page.content %}
+      {% set toc = (toc | first).children %}
+    {% endif %}
+
     <!-- Expand active pages -->
-    <label class="md-nav__link md-nav__link--active" for="toc">
-      {{ nav_item.title }}
-    </label>
+    {% if toc and (toc | first) %}
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        {{ nav_item.title }}
+      </label>
+    {% endif %}
     <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
         class="md-nav__link md-nav__link--active">
       {{ nav_item.title }}
     </a>
 
     <!-- Show table of contents -->
-    {% include "partials/toc.html" %}
+    {% if page.toc %}
+      {% include "partials/toc.html" %}
+    {% endif %}
   </li>
 
 <!-- Main navigation item -->
