@@ -27,6 +27,12 @@ node_js:
   - 5
   - 6
 
+# Cache dependencie
+cache:
+  pip: true
+  directories:
+    - node_modules
+
 # Install dependencies
 before_script:
   - pip install --user -r requirements.txt
