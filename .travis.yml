@@ -27,7 +27,7 @@ node_js:
   - 5
   - 6
 
-# Cache dependencie
+# Cache dependencies
 cache:
   pip: true
   directories:
