@@ -188,7 +188,7 @@
   /*
    * Inline code snippets must not wrap
    */
-  p > code {
+  p > code, li > code {
     white-space: nowrap;
     padding: 2px 4px;
   }
