@@ -96,7 +96,7 @@
 
   // Header title - set line height to match icon for correct alignment
   &__title {
-    padding: 0 2.0rem;
+    padding: 0 2rem;
     font-size: 1.8rem;
     line-height: 4.8rem;
   }
@@ -125,8 +125,8 @@
     // [tablet landscape +]: Show the reposistory from tablet
     @include break-from-device(tablet landscape) {
       display: block;
-      width: 23.0rem;
-      max-width: 23.0rem;
+      width: 23rem;
+      max-width: 23rem;
       padding-right: 1.2rem;
     }
   }

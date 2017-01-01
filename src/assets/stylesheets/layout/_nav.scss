@@ -20,6 +20,8 @@
 /// DEALINGS
 ////
 
+// postcss-bem-linter: define nav
+
 // ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
@@ -183,7 +185,7 @@
       html & .md-nav__title {
         position: relative;
         height: 11.2rem;
-        padding: 6.0rem 1.6rem 0.4rem;
+        padding: 6rem 1.6rem 0.4rem;
         background-color: $md-color-black--lightest;
         color: $md-color-black--light;
         font-weight: 400;
@@ -197,8 +199,8 @@
           position: absolute;
           top: 0.4rem;
           left: 0.4rem;
-          width: 4.0rem;
-          height: 4.0rem;
+          width: 4rem;
+          height: 4rem;
           color: $md-color-black--light;
         }
 
@@ -211,17 +213,20 @@
             linear-gradient(
               to bottom,
               $md-color-white 10%,
-              $md-color-white--transparent),
+              $md-color-white--transparent
+            ),
             linear-gradient(
               to bottom,
               $md-color-black--lighter,
               $md-color-black--lightest 35%,
-              $md-color-black--transparent 60%);
+              $md-color-black--transparent 60%
+            );
           background-attachment: local, scroll;
           background-color: $md-color-white;
           background-repeat: no-repeat;
-          background-size: 100% 2.0rem, 100% 1.0rem;
+          background-size: 100% 2rem, 100% 1rem;
 
+          // End of scrolling shadow definition
           box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
 
           // Remove border for first list item
@@ -306,7 +311,7 @@
 
         // 4th level link
         .md-nav .md-nav__link {
-          padding-left: 4.0rem;
+          padding-left: 4rem;
         }
 
         // 5th level link
@@ -330,7 +335,7 @@
         display: flex;
         transform: translateX(100%);
         transition:
-          transform 0.25s cubic-bezier(0.8, 0.0, 0.6, 1.0),
+          transform 0.25s cubic-bezier(0.8, 0, 0.6, 1),
           opacity   0.125s 0.05s;
         opacity: 0;
       }
@@ -344,7 +349,7 @@
       .csstransforms3d & {
         transform: translateX(0);
         transition:
-          transform 0.25s cubic-bezier(0.4, 0.0, 0.2, 1.0),
+          transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
           opacity   0.125s 0.125s;
         opacity: 1;
       }
@@ -403,7 +408,7 @@
     // Animation is only possible if JavaScript is available, as the max-height
     // property must be calculated before transitioning
     &[data-md-state="animate"] {
-      transition: max-height 0.25s cubic-bezier(0.86, 0.0, 0.07, 1.0);
+      transition: max-height 0.25s cubic-bezier(0.86, 0, 0.07, 1);
     }
 
     // Hide nested navigation by default

@@ -24,17 +24,19 @@
 // Rules: font definitions
 // ----------------------------------------------------------------------------
 
+// Enable font-smoothing in Webkit and FF
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 // Default fonts
 body,
 input {
   color: $md-color-black;
   // font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
-
-  // Enable font-smoothing in Webkit and FF
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
 
   // Use system fonts, if browser doesn't support webfonts
   .no-fontface & {
@@ -48,8 +50,8 @@ code,
 kbd {
   color: $md-color-black;
   // font-family: "Roboto Mono", "Courier New", Courier, monospace;
-  font-weight: 400;
   font-feature-settings: "kern", "onum", "liga";
+  font-weight: 400;
 
   // Use system fonts, if browser doesn't support webfonts
   .no-fontface & {
@@ -74,12 +76,12 @@ kbd {
   ul,
   ol,
   blockquote {
-    margin: 1.0em 0;
+    margin: 1em 0;
   }
 
   // 1st level headline
   h1 {
-    margin: 0 0 4.0rem;
+    margin: 0 0 4rem;
     color: $md-color-black--light;
     font-size: ms(3);
     font-weight: 300;
@@ -89,7 +91,7 @@ kbd {
 
   // 2nd level headline
   h2 {
-    margin: 4.0rem 0 1.6rem;
+    margin: 4rem 0 1.6rem;
     font-size: ms(2);
     font-weight: 300;
     letter-spacing: -0.01em;
@@ -182,7 +184,7 @@ kbd {
     padding: 0.0625em * $correct 0;
     border-radius: 0.2rem;
     box-shadow:
-       0.25em * $correct 0 0 $md-code-background,
+      +0.25em * $correct 0 0 $md-code-background,
       -0.25em * $correct 0 0 $md-code-background;
     word-break: break-word;
     box-decoration-break: clone;
@@ -218,8 +220,8 @@ kbd {
 
   // Unformatted code blocks
   pre {
-    margin: 1.0em 0;
-    padding: 1.0rem 1.2rem;
+    margin: 1em 0;
+    padding: 1rem 1.2rem;
     border-radius: 0.2rem;
     line-height: 1.4;
     overflow: auto;
@@ -227,8 +229,8 @@ kbd {
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 1.0em -1.6rem;
-      padding: 1.0rem 1.6rem;
+      margin: 1em -1.6rem;
+      padding: 1rem 1.6rem;
       border-radius: 0;
     }
 
@@ -280,7 +282,7 @@ kbd {
     border-radius: 0.2rem;
     background-color: transparentize($clr-yellow-500, 0.5);
     box-shadow:
-       0.25em 0 0 transparentize($clr-yellow-500, 0.5),
+      +0.25em 0 0 transparentize($clr-yellow-500, 0.5),
       -0.25em 0 0 transparentize($clr-yellow-500, 0.5);
     word-break: break-word;
     box-decoration-break: clone;
@@ -309,21 +311,21 @@ kbd {
     list-style-type: disc;
   }
 
-  // Ordered lists
-  ol ol {
-    list-style-type: lower-alpha;
-
-    // Triply nested ordered list
-    ol {
-      list-style-type: lower-roman;
-    }
-  }
-
   // Unordered and ordered lists
   ul,
   ol {
     margin-left: 0.625em;
     padding: 0;
+
+    // Nested ordered lists
+    ol {
+      list-style-type: lower-alpha;
+
+      // Triply nested ordered list
+      ol {
+        list-style-type: lower-roman;
+      }
+    }
 
     // List elements
     li {
@@ -358,7 +360,7 @@ kbd {
   table:not([class]) {
     @include z-depth(2);
 
-    margin: 2.0em 0;
+    margin: 2em 0;
     border-radius: 0.2rem;
     font-size: ms(-1);
     overflow: hidden;
@@ -389,7 +391,7 @@ kbd {
 
     // Table headings
     th {
-      min-width: 10.0rem;
+      min-width: 10rem;
       padding: 1.2rem 1.6rem;
       background-color: $md-color-black--light;
       color: $md-color-white;

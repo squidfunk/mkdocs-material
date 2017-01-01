@@ -112,7 +112,7 @@ $codehilite-whitespace: transparent;
 .codehilite {
 
   // Operators
-  .o { color: $codehilite-operator; }
+  .o  { color: $codehilite-operator; }
   .ow { color: $codehilite-operator-word; }
 
   // Generics
@@ -216,8 +216,8 @@ $codehilite-whitespace: transparent;
   // If code blocks are wrapped with codehilite, the styles must be adjusted
   // so the marker stretches to the whole width and the padding is respected
   .codehilite {
-    margin: 1.0em 0;
-    padding: 1.0rem 1.2rem 0.8rem;
+    margin: 1em 0;
+    padding: 1rem 1.2rem 0.8rem;
     border-radius: 0.2rem;
     background-color: $md-code-background;
     color: $md-code-color;
@@ -257,7 +257,7 @@ $codehilite-whitespace: transparent;
   // Block with line numbers
   .codehilitetable {
     display: block;
-    margin: 1.0em 0;
+    margin: 1em 0;
     border-radius: 0.2em;
     font-size: ms(0);
     overflow: hidden;
@@ -286,7 +286,7 @@ $codehilite-whitespace: transparent;
 
     // Add spacing to line number container
     .linenodiv {
-      padding: 1.0rem 1.2rem 0.8rem;
+      padding: 1rem 1.2rem 0.8rem;
 
       // Stretch the line number container vertically, so it always aligns with
       // the code container, even when there's a scrollbar.
@@ -326,8 +326,8 @@ $codehilite-whitespace: transparent;
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 1.0em -1.6rem;
-      padding: 1.0rem 1.6rem 0.8rem;
+      margin: 1em -1.6rem;
+      padding: 1rem 1.6rem 0.8rem;
       border-radius: 0;
     }
   }
@@ -338,13 +338,13 @@ $codehilite-whitespace: transparent;
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 1.0em -1.6rem;
+      margin: 1em -1.6rem;
       border-radius: 0;
 
       // Increase spacing
       .codehilite,
       .linenodiv {
-        padding: 1.0rem 1.6rem;
+        padding: 1rem 1.6rem;
       }
     }
   }

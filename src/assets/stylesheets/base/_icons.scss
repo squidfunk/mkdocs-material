@@ -37,10 +37,6 @@
   word-wrap: normal;
   direction: ltr;
 
-  // Enable font-smoothing in Webkit and FF
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
   // Icon rendered as button
   &__button {
     display: inline-block;

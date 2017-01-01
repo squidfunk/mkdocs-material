@@ -52,18 +52,6 @@ hr {
   box-sizing: content-box;
 }
 
-// Reset link styles
-a {
-  color: inherit;
-  text-decoration: none;
-
-  // Remove outline on focused or active links
-  &:active,
-  &:hover {
-    outline-width: 0;
-  }
-}
-
 // Remove gaps in underlined links in iOS >= 8 and Safari >= 8
 a {
   -webkit-text-decoration-skip: objects;
@@ -75,6 +63,18 @@ button,
 label,
 input {
   -webkit-tap-highlight-color: transparent;
+}
+
+// Reset link styles
+a {
+  color: inherit;
+  text-decoration: none;
+
+  // Remove outline on focused or active links
+  &:active,
+  &:hover {
+    outline-width: 0;
+  }
 }
 
 // Correct font-size in all browsers

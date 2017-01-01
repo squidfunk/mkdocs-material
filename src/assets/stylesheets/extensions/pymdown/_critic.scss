@@ -41,7 +41,7 @@
   del.critic {
     background-color: $codehilite-diff-deleted;                                 // TODO: dependent on order of inclusion
     box-shadow:
-       0.25em 0 0 $codehilite-diff-deleted,
+      +0.25em 0 0 $codehilite-diff-deleted,
       -0.25em 0 0 $codehilite-diff-deleted;
   }
 
@@ -49,7 +49,7 @@
   ins.critic {
     background-color: $codehilite-diff-inserted;
     box-shadow:
-       0.25em 0 0 $codehilite-diff-inserted,
+      +0.25em 0 0 $codehilite-diff-inserted,
       -0.25em 0 0 $codehilite-diff-inserted;
   }
 
@@ -58,7 +58,7 @@
     background-color: $md-code-background;                                      // TODO: rename, centralize somehow
     color: $md-code-color;
     box-shadow:
-       0.25em 0 0 $md-code-background,
+      +0.25em 0 0 $md-code-background,
       -0.25em 0 0 $md-code-background;
 
     // Icon

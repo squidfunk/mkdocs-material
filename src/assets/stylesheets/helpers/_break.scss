@@ -107,8 +107,7 @@ $break-devices: () !default;
       @error "Invalid device map: #{$devices}";
     }
   }
-  @if type-of($current) == list or
-      type-of($current) == number {
+  @if type-of($current) == list or type-of($current) == number {
     $current: (default: $current);
   }
   @return break-select-min-max($current);
@@ -158,7 +157,7 @@ $break-devices: () !default;
       @content;
     }
   } @else {
-   @error "Invalid breakpoint: #{$breakpoint}";
+    @error "Invalid breakpoint: #{$breakpoint}";
   }
 }
 
@@ -175,7 +174,7 @@ $break-devices: () !default;
       @content;
     }
   } @else {
-   @error "Invalid breakpoint: #{$breakpoint}";
+    @error "Invalid breakpoint: #{$breakpoint}";
   }
 }
 

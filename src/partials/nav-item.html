@@ -54,7 +54,7 @@
     </nav>
   </li>
 
-<!-- Main navigation item with nested items -->
+<!-- Currently active page -->
 {% elif nav_item == page %}
   <li class="md-nav__item">
     {% set toc = page.toc %}
@@ -68,7 +68,7 @@
       {% set toc = (toc | first).children %}
     {% endif %}
 
-    <!-- Expand active pages -->
+    <!-- Render table of contents, if not empty -->
     {% if toc and (toc | first) %}
       <label class="md-nav__link md-nav__link--active" for="toc">
         {{ nav_item.title }}

@@ -1,12 +1,9 @@
-mkdocs-material-1.0.0 (2016-12-18)
+mkdocs-material-1.0.0 (2017-01-12)
 
-  The theme has been entirely rewritten from scratch to better reflect the
-  idea of what a documentation theme using the Material Design guidelines
-  should look like. It is heavily inspired by Google's own documentation
-  theme, but doesn't copy it blindly.
+  The theme has been entirely rewritten from scratch.
 
   * Introduced Webpack for more sophisticated JavaScript bundling
-  * Introduced ESLint and SassLint for code style checks
+  * Introduced ESLint and Stylelint for code style checks
   * Introduced more accurate Material Design colors and shadows
   * Introduced modular scales for harmonic font sizing
   * Introduced git-hooks for better development workflow

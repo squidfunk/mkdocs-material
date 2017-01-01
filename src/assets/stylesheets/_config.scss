@@ -32,6 +32,8 @@ $ms-ratio: $major-third;
 // Variables: breakpoints
 // ----------------------------------------------------------------------------
 
+// stylelint-disable unit-whitelist
+
 // Device-specific breakpoints
 $break-devices: (
   mobile: (
@@ -49,6 +51,8 @@ $break-devices: (
   )
 );
 
+// stylelint-enable unit-whitelist
+
 // ----------------------------------------------------------------------------
 // Variables: base colors
 // ----------------------------------------------------------------------------
@@ -65,9 +69,9 @@ $md-color-black--lightest:            hsla(0, 0%, 0%, 0.07);
 $md-color-black--transparent:         hsla(0, 0%, 0%, 0);
 
 // Shades of white
-$md-color-white:                      hsla(0, 0%, 100%, 1.00);
-$md-color-white--light:               hsla(0, 0%, 100%, 0.70);
-$md-color-white--lighter:             hsla(0, 0%, 100%, 0.30);
+$md-color-white:                      hsla(0, 0%, 100%, 1);
+$md-color-white--light:               hsla(0, 0%, 100%, 0.7);
+$md-color-white--lighter:             hsla(0, 0%, 100%, 0.3);
 $md-color-white--lightest:            hsla(0, 0%, 100%, 0.12);
 $md-color-white--transparent:         hsla(0, 0%, 100%, 0);
 

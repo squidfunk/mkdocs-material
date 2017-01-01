@@ -31,12 +31,12 @@ fi
 `npm bin`/eslint .
 ESLINT=$?
 
-# Run Sass-Lint
-`npm bin`/sass-lint -c .sass-lint.yml -vq
-SASSLINT=$?
+# Run Stylelint
+`npm bin`/stylelint `find src/assets -name *.scss`
+STYLELINT=$?
 
 # If one command failed, exit with error
-if [ $ESLINT == 1 ] || [ $SASSLINT == 1 ]; then
+if [ $ESLINT -gt 0 ] || [ $STYLELINT -gt 0 ]; then
   exit 1
 fi;
 

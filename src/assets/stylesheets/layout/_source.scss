@@ -26,7 +26,6 @@
 
 // Show source facts
 @keyframes md-source__facts--done {
-
   0% {
     height: 0;
   }
@@ -38,7 +37,6 @@
 
 // Show source fact
 @keyframes md-source__fact--done {
-
   0% {
     transform: translateY(100%);
     opacity: 0;
@@ -98,7 +96,7 @@
     // Correct alignment, if icon is present
     + .md-source__repository {
       margin-left: -4.4rem;
-      padding-left: 4.0rem;
+      padding-left: 4rem;
     }
   }
 
@@ -119,9 +117,9 @@
     padding: 0;
     font-size: 1.1rem;
     font-weight: 700;
+    list-style-type: none;
     opacity: 0.75;
     overflow: auto;
-    list-style-type: none;
 
     // Show after the data was loaded
     [data-md-state="done"] & {
