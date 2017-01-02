@@ -83,4 +83,5 @@ pages:
     - PyMdown: extensions/pymdown.md
   - Specimen: specimen.md
   - Customization: customization.md
+  - Contributing: contributing.md
   - License: license.md

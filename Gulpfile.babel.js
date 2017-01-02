@@ -313,8 +313,8 @@ gulp.task("watch", [
     gulp.start("mkdocs:serve")
 
   /* Start karma test runner */
-  if (args.karma)
-    gulp.start("tests:unit:watch")
+  // if (args.karma)
+  //   gulp.start("tests:unit:watch")
 
   /* Rebuild stylesheets */
   gulp.watch([
