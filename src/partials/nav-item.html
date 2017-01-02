@@ -57,7 +57,7 @@
 <!-- Currently active page -->
 {% elif nav_item == page %}
   <li class="md-nav__item">
-    {% set toc = page.toc %}
+    {% set toc_ = page.toc %}
 
     <!-- Active checkbox expands items contained within nested section -->
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc"
@@ -65,11 +65,11 @@
 
     <!-- Nasty hack - see partials/toc.html for more information -->
     {% if "\x3ch1 id=" in page.content %}
-      {% set toc = (toc | first).children %}
+      {% set toc_ = (toc_ | first).children %}
     {% endif %}
 
     <!-- Render table of contents, if not empty -->
-    {% if toc and (toc | first) %}
+    {% if toc_ and (toc_ | first) %}
       <label class="md-nav__link md-nav__link--active" for="toc">
         {{ nav_item.title }}
       </label>

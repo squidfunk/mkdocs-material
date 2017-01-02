@@ -22,7 +22,7 @@
 
 <!-- Table of contents -->
 <nav class="md-nav md-nav--secondary">
-  {% set toc = page.toc %}
+  {% set toc_ = page.toc %}
 
   <!--
     This is a nasty hack that checks whether the content contains a h1
@@ -31,14 +31,14 @@
     anchor. Therefore we directly continue with the children of the anchor.
   -->
   {% if "\x3ch1 id=" in page.content %}
-    {% set toc = (toc | first).children %}
+    {% set toc_ = (toc_ | first).children %}
   {% endif %}
 
   <!-- Render item list -->
-  {% if toc and (toc | first) %}
+  {% if toc_ and (toc_ | first) %}
     <label class="md-nav__title" for="toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
-      {% for toc_item in toc %}
+      {% for toc_item in toc_ %}
         {% include "partials/toc-item.html" %}
       {% endfor %}
     </ul>
