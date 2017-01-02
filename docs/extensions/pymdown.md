@@ -41,7 +41,7 @@ markdown_extensions:
   - pymdownx.arithmatex
 ```
 
-## Extensions
+## Usage
 
 ### GitHub Flavored Markdown
 

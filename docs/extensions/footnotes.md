@@ -58,7 +58,7 @@ Result:
 
 <a href="#fn:1">Jump to footnote at the bottom of the page</a>
 
-[^1]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  [^1]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 #### on multiple lines
 
@@ -76,9 +76,9 @@ Example:
 
 Result:
 
-[^2]:
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+  [^2]:
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+      nulla. Curabitur feugiat, tortor non consequat finibus, justo purus
+      auctor massa, nec semper lorem quam in massa.
 
 <a href="#fn:2">Jump to footnote at the bottom of the page</a>

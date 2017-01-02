@@ -26,8 +26,8 @@ pip install mkdocs && mkdocs --version
 
     Material requires MkDocs >= 0.16.
 
-Furthermore, it is highly recommended to install [Pygments][2] and the
-[PyMdown Extensions][3] to get the most out of the Material theme:
+Furthermore, it is highly recommended to install [Pygments][2] and the [PyMdown
+Extensions][3] to get the most out of the Material theme:
 
 ```sh
 pip install pygments
@@ -241,7 +241,7 @@ If you want to link your social accounts, the Material theme provides an easy
 way for doing this in the footer of the documentation using the automatically
 included [Socicon][8] webfont. The syntax is simple - the `type` denotes the
 name of the social service, e.g. `github`, `twitter` or `linkedin` and the
-link, well, resembles the link:
+`link`, well, resembles the link:
 
 ``` yaml
 extra:

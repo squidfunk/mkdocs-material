@@ -1,9 +1,9 @@
 # Material <small>for MkDocs</small>
 
-## Beautiful documentation
+## Build beautiful documentation
 
-Material is a theme for [MkDocs][], an excellent static site generator geared
-towards project documentation. It is built using Google's [material design][]
+Material is a theme for [MkDocs][1], an excellent static site generator geared
+towards project documentation. It is built using Google's [material design][2]
 guidelines, full responsive, optimized for touch and pointer devices as well
 as all sorts of screen sizes.
 
@@ -12,9 +12,12 @@ CSS that weighs less than 30kb (minified, gzipped and excluding Google Fonts
 and Analytics). Yet, it is highly customizable and degrades gracefully in older
 browsers.
 
+  [1]: http://www.mkdocs.org
+  [2]: https://www.google.com/design/spec/material-design
+
 ## Quick start
 
-Install with `pip`:
+Install the latest version of Material with `pip`:
 
 ``` sh
 pip install mkdocs-material
@@ -52,8 +55,7 @@ theme: 'material'
 See the [getting started guide](getting-started.md) for instructions how to get
 it up and running.
 
-[MkDocs]: http://www.mkdocs.org
-[material design]: https://www.google.com/design/spec/material-design
+
 [checkbox hack]: http://tutorialzine.com/2015/08/quick-tip-css-only-dropdowns-with-the-checkbox-hack/
 [project logo]: getting-started.md#adding-a-logo
 [easily customizable color palette]: getting-started.md#changing-the-color-palette

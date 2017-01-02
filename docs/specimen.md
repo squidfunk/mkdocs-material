@@ -1,8 +1,6 @@
 # Specimen
 
-## Typography
-
-### Body copy
+## Body copy
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras arcu libero,
 mollis sed massa vel, *ornare viverra ex*. Mauris a ullamcorper lacus. Nullam
@@ -16,7 +14,9 @@ eros. [Nulla aliquam](/) orci sit amet nisl posuere malesuada. Proin aliquet
 nulla velit, quis ultricies orci feugiat et. `Ut tincidunt sollicitudin`
 tincidunt. Aenean ullamcorper sit amet nulla at interdum.
 
-### Headings
+## Headings
+
+### The 3rd level
 
 #### The 4th level
 
@@ -24,7 +24,9 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
 
 ###### The 6th level
 
-### Headings <small>with secondary text</small>
+## Headings <small>with secondary text</small>
+
+### The 3rd level <small>with secondary text</small>
 
 #### The 4th level <small>with secondary text</small>
 
@@ -32,7 +34,7 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
 
 ###### The 6th level <small>with secondary text</small>
 
-### Blockquotes
+## Blockquotes
 
 > Morbi eget dapibus felis. Vivamus venenatis porttitor tortor sit amet rutrum.
   Pellentesque aliquet quam enim, eu volutpat urna rutrum a. Nam vehicula nunc
@@ -40,7 +42,7 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
   litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie
   imperdiet consectetur.
 
-#### Blockquote nesting
+### Blockquote nesting
 
 > **Sed aliquet**, neque at rutrum mollis, neque nisi tincidunt nibh, vitae
   faucibus lacus nunc at lacus. Nunc scelerisque, quam id cursus sodales, lorem
@@ -55,7 +57,7 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
       Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed nec leo
       bibendum, sodales mauris ut, tincidunt massa.
 
-#### Other content blocks
+### Other content blocks
 
 > Vestibulum vitae orci quis ante viverra ultricies ut eget turpis. Sed eu
   lectus dapibus, eleifend nulla varius, lobortis turpis. In ac hendrerit nisl,
@@ -76,9 +78,9 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
       vel lacinia lacus. Suspendisse rhoncus nunc non nisi iaculis ultrices.
       Donec consectetur mauris non neque imperdiet, eget volutpat libero.
 
-### Lists
+## Lists
 
-#### Unordered lists
+### Unordered lists
 
 * Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus tellus
   non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor lobortis orci,
@@ -96,7 +98,7 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
   accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh
   lacinia sed. Aenean in finibus diam.
 
-#### Ordered lists
+### Ordered lists
 
 1. Integer vehicula feugiat magna, a mollis tellus. Nam mollis ex ante, quis
   elementum eros tempor rutrum. Aenean efficitur lobortis lacinia. Nulla
@@ -135,9 +137,9 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
   sagittis. Aliquam purus tellus, faucibus eget urna at, iaculis venenatis
   nulla. Vivamus a pharetra leo.
 
-### Code blocks
+## Code blocks
 
-#### Inline
+### Inline
 
 Morbi eget `dapibus felis`. Vivamus *`venenatis porttitor`* tortor sit amet
 rutrum. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
@@ -148,7 +150,7 @@ Nam vehicula nunc `:::js return target` mauris, a ultricies libero efficitur
 sed. Sed molestie imperdiet consectetur. Vivamus a pharetra leo. Pellentesque
 eget ornare tellus, ut gravida mi. Fusce vel lacinia lacus.
 
-#### Listing
+### Listing
 
     #!js hl_lines="8"
     var _extends = function(target) {
@@ -161,7 +163,7 @@ eget ornare tellus, ut gravida mi. Fusce vel lacinia lacus.
       return target;
     };
 
-### Horizontal rules
+## Horizontal rules
 
 Aenean in finibus diam. Duis mollis est eget nibh volutpat, fermentum aliquet
 dui mollis. Nam vulputate tincidunt fringilla. Nullam dignissim ultrices urna
@@ -173,7 +175,7 @@ Integer vehicula feugiat magna, a mollis tellus. Nam mollis ex ante, quis
 elementum eros tempor rutrum. Aenean efficitur lobortis lacinia. Nulla
 consectetur feugiat sodales.
 
-### Data tables
+## Data tables
 
 | Sollicitudo / Pellentesi | consectetur | adipiscing | elit    | arcu | sed |
 | ------------------------ | ----------- | ---------- | ------- | ---- | --- |
@@ -224,68 +226,3 @@ sit amet laoreet nibh.
     </tr>
   </tbody>
 </table>
-
-## Colors
-
-### Primary colors
-
-Click on a tile to change the primary color of the theme:
-
-<button data-md-color-primary="red">Red</button>
-<button data-md-color-primary="pink">Pink</button>
-<button data-md-color-primary="purple">Purple</button>
-<button data-md-color-primary="deep-purple">Deep Purple</button>
-<button data-md-color-primary="indigo">Indigo</button>
-<button data-md-color-primary="blue">Blue</button>
-<button data-md-color-primary="light-blue">Light Blue</button>
-<button data-md-color-primary="cyan">Cyan</button>
-<button data-md-color-primary="teal">Teal</button>
-<button data-md-color-primary="green">Green</button>
-<button data-md-color-primary="light-green">Light Green</button>
-<button data-md-color-primary="lime">Lime</button>
-<button data-md-color-primary="yellow">Yellow</button>
-<button data-md-color-primary="amber">Amber</button>
-<button data-md-color-primary="orange">Orange</button>
-<button data-md-color-primary="deep-orange">Deep Orange</button>
-<button data-md-color-primary="brown">Brown</button>
-<button data-md-color-primary="grey">Grey</button>
-<button data-md-color-primary="blue-grey">Blue Grey</button>
-
-<script>
-  var buttons = document.querySelectorAll("button[data-md-color-primary]");
-  Array.prototype.forEach.call(buttons, function(button) {
-    button.addEventListener("click", function() {
-      document.body.dataset.mdColorPrimary = this.dataset.mdColorPrimary;
-    })
-  })
-</script>
-
-### Accent colors
-
-Click on a tile to change the accent color of the theme:
-
-<button data-md-color-accent="red">Red</button>
-<button data-md-color-accent="pink">Pink</button>
-<button data-md-color-accent="purple">Purple</button>
-<button data-md-color-accent="deep-purple">Deep Purple</button>
-<button data-md-color-accent="indigo">Indigo</button>
-<button data-md-color-accent="blue">Blue</button>
-<button data-md-color-accent="light-blue">Light Blue</button>
-<button data-md-color-accent="cyan">Cyan</button>
-<button data-md-color-accent="teal">Teal</button>
-<button data-md-color-accent="green">Green</button>
-<button data-md-color-accent="light-green">Light Green</button>
-<button data-md-color-accent="lime">Lime</button>
-<button data-md-color-accent="yellow">Yellow</button>
-<button data-md-color-accent="amber">Amber</button>
-<button data-md-color-accent="orange">Orange</button>
-<button data-md-color-accent="deep-orange">Deep Orange</button>
-
-<script>
-  var buttons = document.querySelectorAll("button[data-md-color-accent]");
-  Array.prototype.forEach.call(buttons, function(button) {
-    button.addEventListener("click", function() {
-      document.body.dataset.mdColorAccent = this.dataset.mdColorAccent;
-    })
-  })
-</script>
