@@ -375,18 +375,9 @@ kbd {
     }
 
     // Table headings and cells
-    th,
-    td {
-
-      // Right align contents
-      &[align="right"] {
-        text-align: right;
-      }
-
-      // Center contents
-      &[align="center"] {
-        text-align: center;
-      }
+    th:not([align]),
+    td:not([align]) {
+      text-align: left;
     }
 
     // Table headings
@@ -395,7 +386,6 @@ kbd {
       padding: 1.2rem 1.6rem;
       background-color: $md-color-black--light;
       color: $md-color-white;
-      text-align: left;
       vertical-align: top;
     }
 
