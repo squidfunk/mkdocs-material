@@ -62,5 +62,5 @@ push your branch to GitHub and send a PR to `mkdocs-material:master`. If we
 suggest changes, make the required updates, rebase your branch and push
 the changes to your GitHub repository, which will automatiaclly update your PR.
 
-Afer your PR is merged, you can safely delete your branch and pull the changes
+After your PR is merged, you can safely delete your branch and pull the changes
 from the main (upstream) repository.
