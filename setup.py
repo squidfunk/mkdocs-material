@@ -22,19 +22,19 @@ from setuptools import setup, find_packages
 
 # Package description
 setup(
-    name = 'mkdocs-material',
-    version = '1.0.0',
-    url = 'http://squidfunk.github.io/mkdocs-material/',
-    license = 'MIT',
-    description = 'A material design theme for MkDocs',
-    author = 'Martin Donath',
-    author_email = 'martin.donath@squidfunk.com',
-    keywords = ['mkdocs', 'documentation', 'theme'],
+    name = "mkdocs-material",
+    version = "1.0.0",
+    url = "http://squidfunk.github.io/mkdocs-material/",
+    license = "MIT",
+    description = "A material design theme for MkDocs",
+    author = "Martin Donath",
+    author_email = "martin.donath@squidfunk.com",
+    keywords = ["mkdocs", "documentation", "theme"],
     packages = find_packages(),
     include_package_data = True,
     entry_points = {
-        'mkdocs.themes': [
-            'material = material',
+        "mkdocs.themes": [
+            "material = material",
         ]
     },
     zip_safe = False
