@@ -144,6 +144,7 @@ kbd {
   // Links
   a {
     color: $md-color-primary;
+    word-break: break-word;
 
     // Also enable transition on pseudo elements
     &,
