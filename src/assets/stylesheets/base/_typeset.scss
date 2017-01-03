@@ -412,7 +412,6 @@ kbd {
   // Data table wrapper, in case JavaScript is available
   .md-typeset__table {
     margin: 1.6em -1.6rem;
-    text-align: center;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 
@@ -420,7 +419,6 @@ kbd {
     table {
       display: inline-block;
       margin: 0 1.6rem;
-      text-align: left;
     }
   }
 }
