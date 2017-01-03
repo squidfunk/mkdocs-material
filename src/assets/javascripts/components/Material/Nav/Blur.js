@@ -43,7 +43,7 @@ export default class Blur {
 
     /* Index anchor node offsets for fast lookup */
     this.anchors_ = [].map.call(this.els_, el => {
-      return document.querySelector(el.hash)
+      return document.getElementById(el.hash.substring(1))
     })
   }
 
