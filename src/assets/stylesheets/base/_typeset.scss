@@ -289,6 +289,12 @@ kbd {
     box-decoration-break: clone;
   }
 
+  // Abbreviations
+  abbr {
+    border-bottom: 0.1rem dotted $md-color-black--light;
+    cursor: help;
+  }
+
   // Smaller text
   small {
     opacity: 0.75;
