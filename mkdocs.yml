@@ -78,7 +78,6 @@ pages:
     - Admonition: extensions/admonition.md
     - Codehilite: extensions/codehilite.md
     - Footnotes: extensions/footnotes.md
-    - Metadata: extensions/metadata.md
     - Permalinks: extensions/permalinks.md
     - PyMdown: extensions/pymdown.md
   - Specimen: specimen.md
