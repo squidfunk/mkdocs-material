@@ -43,7 +43,7 @@ extra:
     text: Roboto
     mono: Roboto Mono
   social:
-    - type: github
+    - type: github-alt
       link: https://github.com/squidfunk
     - type: twitter
       link: https://twitter.com/squidfunk

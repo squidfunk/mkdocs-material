@@ -102,6 +102,7 @@ The directory layout of the Material theme is as follows:
 │  ├─ nav-item.html                    # Main navigation item
 │  ├─ nav.html                         # Main navigation
 │  ├─ search.html                      # Search box
+│  ├─ social.html                      # Social links
 │  ├─ source.html                      # Repository information
 │  ├─ svgs.html                        # Inline SVG definitions
 │  ├─ toc-item.html                    # Table of contents item
@@ -151,6 +152,7 @@ The Material theme provides the following template blocks:
 | `site_meta`  | Wraps the meta tags in the document head        |
 | `site_name`  | Wraps the site name in the header bar           |
 | `site_nav`   | Wraps the site navigation and table of contents |
+| `social`     | Wraps the social links in the footer            |
 | `styles`     | Wraps the stylesheets (also extra sources)      |
 
 For more on this topic refer to the [MkDocs documentation][4]

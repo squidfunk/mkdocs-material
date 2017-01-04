@@ -89,15 +89,10 @@
           Material for MkDocs</a>
       </div>
 
-      <!-- Link to social media accounts, if any -->
-      {% if config.extra.social %}
-        <div class="md-footer-social">
-          {% for social in config.extra.social %}
-            <a href="{{ social.link }}" class="md-footer-social__link
-                  socicon-{{ social.type }}"></a>
-          {% endfor %}
-        </div>
-      {% endif %}
+      <!-- Social links -->
+      {% block social %}
+        {% include "partials/social.html" %}
+      {% endblock %}
     </div>
   </div>
 </footer>

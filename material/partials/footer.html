@@ -49,13 +49,9 @@
         <a href="http://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
-      {% if config.extra.social %}
-        <div class="md-footer-social">
-          {% for social in config.extra.social %}
-            <a href="{{ social.link }}" class="md-footer-social__link socicon-{{ social.type }}"></a>
-          {% endfor %}
-        </div>
-      {% endif %}
+      {% block social %}
+        {% include "partials/social.html" %}
+      {% endblock %}
     </div>
   </div>
 </footer>

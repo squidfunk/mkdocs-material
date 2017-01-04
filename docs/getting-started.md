@@ -239,9 +239,9 @@ extra:
 
 If you want to link your social accounts, the Material theme provides an easy
 way for doing this in the footer of the documentation using the automatically
-included [Socicon][8] webfont. The syntax is simple - the `type` denotes the
-name of the social service, e.g. `github`, `twitter` or `linkedin` and the
-`link`, well, resembles the link:
+included [FontAwesome][8] webfont. The syntax is simple – the `type` denotes
+the name of the social service, e.g. `github`, `twitter` or `linkedin` and
+the `link`, well, resembles the link:
 
 ``` yaml
 extra:
@@ -254,9 +254,11 @@ extra:
       link: 'https://de.linkedin.com/in/martin-donath-20a95039'
 ```
 
-The links are generated in order.
+The links are generated in order and the type of the link must match the name
+of the FontAwesome glyph. The `fa` is automatically added, so `github` will
+result in `fa fa-github`.
 
-  [8]: http://www.socicon.com/chart.php
+  [8]: http://fontawesome.io/icons/
 
 ### Google Analytics integration
 
