@@ -59,12 +59,12 @@
   // Build representational classes
   @each $names, $appearance in (
     summary tldr: $clr-light-blue-a400 "subject",
-    tip idea: $clr-teal-a700 "whatshot",
+    tip hint important : $clr-teal-a700 "whatshot",
     success check done: $clr-green-a400 "done",
-    warning attention important: $clr-orange-a400 "warning",
+    warning caution attention: $clr-orange-a400 "warning",
     failure fail missing: $clr-red-a200 "clear",
-    danger caution: $clr-red-a400 "flash_on",
-    error bug: $clr-pink-a400 "bug_report"
+    danger error: $clr-red-a400 "flash_on",
+    bug: $clr-pink-a400 "bug_report"
   ) {
     $tint: nth($appearance, 1);
     $icon: nth($appearance, 2);

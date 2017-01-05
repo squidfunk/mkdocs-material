@@ -2,7 +2,7 @@
 
 [Admonition][1] is an extension included in the standard Markdown library that
 makes it possible to add block-styled side content to your documentation, for
-example summaries, hints, notes or warnings.
+example summaries, notes, hints or warnings.
 
   [1]: https://pythonhosted.org/Markdown/extensions/admonition.html
 
@@ -25,7 +25,7 @@ four spaces.
 Example:
 
 ``` markdown
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -33,7 +33,7 @@ Example:
 
 Result:
 
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -46,7 +46,7 @@ easily be changed by adding a quoted string after the type qualifier.
 Example:
 
 ``` markdown
-!!! hint "Phasellus posuere in sem ut cursus"
+!!! note "Phasellus posuere in sem ut cursus"
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -54,7 +54,7 @@ Example:
 
 Result:
 
-!!! hint "Phasellus posuere in sem ut cursus"
+!!! note "Phasellus posuere in sem ut cursus"
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -67,7 +67,7 @@ can be omitted by providing an empty string after the type qualifier:
 Example:
 
 ``` markdown
-!!! hint ""
+!!! note ""
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -75,7 +75,7 @@ Example:
 
 Result:
 
-!!! hint ""
+!!! note ""
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -95,7 +95,7 @@ blocks.
 
 Example:
 
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -125,14 +125,14 @@ Example:
 Admonition supports user-defined type qualifiers which may influence the style
 of the inserted block. Following is a list of type qualifiers supported by the
 Material theme, whereas the default type, and thus fallback for unknown type
-qualifiers, is [hint](#hint).
+qualifiers, is [note](#note).
 
-### Hint
+### Note
 
 Example:
 
 ``` markdown
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -140,15 +140,15 @@ Example:
 
 Result:
 
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
 Qualifiers:
 
-* `hint`
 * `note`
+* `seealso`
 
 ### Summary
 
@@ -194,7 +194,8 @@ Result:
 Qualifiers:
 
 * `tip`
-* `idea`
+* `hint`
+* `important`
 
 ### Success
 
@@ -241,8 +242,8 @@ Result:
 Qualifiers:
 
 * `warning`
+* `caution`
 * `attention`
-* `important`
 
 ### Failure
 
@@ -289,14 +290,14 @@ Result:
 Qualifiers:
 
 * `danger`
-* `caution`
+* `error`
 
-### Error
+### Bug
 
 Example:
 
 ``` markdown
-!!! error
+!!! bug
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -304,12 +305,11 @@ Example:
 
 Result:
 
-!!! error
+!!! bug
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
 Qualifiers:
 
-* `error`
 * `bug`
