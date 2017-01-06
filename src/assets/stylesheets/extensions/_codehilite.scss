@@ -296,7 +296,7 @@ $codehilite-whitespace: transparent;
       }
     }
 
-    // Disable pointer-events, so code can be easily copied without
+    // Disable user selection, so code can be easily copied without
     // accidentally also copying the line numbers
     .linenos {
       background-color: $md-color-black--lightest;

@@ -71,6 +71,9 @@ kbd {
   font-size: ms(0);
   line-height: 1.6;
 
+  // Colors should be kept when printing
+  -webkit-print-color-adjust: exact;
+
   // Default spacing
   p,
   ul,
