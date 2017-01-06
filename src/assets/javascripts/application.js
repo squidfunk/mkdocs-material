@@ -141,8 +141,9 @@ export default class Application {
     new Material.Event.Listener(document.forms.search.query, [
       "focus", "keyup"
     ], new Material.Search.Result("[data-md-component=result]", () => {
-      return fetch(`${this.config_.url.base}/mkdocs/search_index.json`)
-        .then(response => response.json())
+      return fetch(`${this.config_.url.base}/mkdocs/search_index.json`, {
+        credentials: "same-origin"
+      }).then(response => response.json())
         .then(data => {
           return data.docs.map(doc => {
             doc.location = this.config_.url.base + doc.location
