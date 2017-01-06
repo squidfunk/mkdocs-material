@@ -38,13 +38,11 @@
         {% endblock %}
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        {% block repo %}
-          {% if config.repo_url %}
-            <div class="md-header-nav__source">
-              {% include "partials/source.html" %}
-            </div>
-          {% endif %}
-        {% endblock %}
+        {% if config.repo_url %}
+          <div class="md-header-nav__source">
+            {% include "partials/source.html" %}
+          </div>
+        {% endif %}
       </div>
     </div>
   </nav>
