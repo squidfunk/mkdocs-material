@@ -20,7 +20,7 @@ are recommended to be used together with the Material theme:
 
 ``` yaml
 markdown_extensions:
-  - pymdownx.betterem
+  - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.githubemoji

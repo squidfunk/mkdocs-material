@@ -151,7 +151,7 @@
 
       // [screen +]: Match content width
       @include break-from-device(screen) {
-        width: 66.8rem;
+        width: 68.8rem;
       }
     }
   }
@@ -313,7 +313,7 @@
 
     // [screen +]: Set absolute width to omit unnecessary reflow
     @include break-from-device(screen) {
-      width: 66.8rem;
+      width: 68.8rem;
     }
 
     // [tablet landscape +]: Limit height to viewport

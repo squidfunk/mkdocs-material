@@ -79,11 +79,11 @@
 
       <!-- Repository containing source -->
       <div class="md-flex__cell md-flex__cell--shrink">
-        {% if config.repo_url %}
           <div class="md-header-nav__source">
-            {% include "partials/source.html" %}
+            {% if config.repo_url %}
+              {% include "partials/source.html" %}
+            {% endif %}
           </div>
-        {% endif %}
       </div>
     </div>
   </nav>
