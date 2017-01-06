@@ -1,10 +1,11 @@
+{% import "partials/i18n.html" as i18n %}
 <nav class="md-nav md-nav--secondary">
   {% set toc_ = page.toc %}
   {% if "\x3ch1 id=" in page.content %}
     {% set toc_ = (toc_ | first).children %}
   {% endif %}
   {% if toc_ and (toc_ | first) %}
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="toc">{{ i18n.t('toc.title') }}</label>
     <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc_ %}
         {% include "partials/toc-item.html" %}

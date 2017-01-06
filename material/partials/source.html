@@ -1,3 +1,4 @@
+{% import "partials/i18n.html" as i18n %}
 {% set platform = config.extra.repo_icon or config.repo_url %}
 {% if "github" in platform %}
   {% set repo_type = "github" %}
@@ -8,7 +9,7 @@
 {% else %}
   {% set repo_type = "" %}
 {% endif %}
-<a href="{{ config.repo_url }}" title="Go to repository" class="md-source" data-md-source="{{ repo_type }}">
+<a href="{{ config.repo_url }}" title="{{ i18n.t('source.link.title') }}" class="md-source" data-md-source="{{ repo_type }}">
   {% if repo_type %}
     <div class="md-source__icon">
       <svg viewBox="0 0 24 24" width="24" height="24">

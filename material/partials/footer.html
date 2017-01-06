@@ -1,3 +1,4 @@
+{% import "partials/i18n.html" as i18n %}
 <footer class="md-footer">
   {% if page.previous_page or page.next_page %}
     <div class="md-footer-nav">
@@ -10,7 +11,7 @@
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  Previous
+                  {{ i18n.t('footer.previous') }}
                 </span>
                 {{ page.previous_page.title }}
               </span>
@@ -22,7 +23,7 @@
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  Next
+                  {{ i18n.t('footer.next') }}
                 </span>
                 {{ page.next_page.title }}
               </span>
