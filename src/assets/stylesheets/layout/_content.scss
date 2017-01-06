@@ -57,5 +57,10 @@
     @include break-to-device(tablet portrait) {
       margin-right: -0.8rem;
     }
+
+    // Hide for print
+    @media print {
+      display: none;
+    }
   }
 }

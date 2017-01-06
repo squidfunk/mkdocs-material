@@ -20,6 +20,8 @@
   IN THE SOFTWARE.
 -->
 
+{% import "partials/i18n.html" as i18n %}
+
 <!DOCTYPE html>
 <html class="no-js">
   <head>
@@ -170,7 +172,8 @@
 
               <!-- Edit button, if URL was defined -->
                {% if config.edit_uri %}
-                 <a href="{{ page.edit_url }}" title="Edit this page"
+                 <a href="{{ page.edit_url }}"
+                      title="{{ i18n.t('edit.link.title') }}"
                       class="md-icon md-content__edit">edit</a>
                {% endif %}
 
@@ -196,7 +199,7 @@
 
       <!-- Application footer -->
       {% block footer %}
-        {% include "partials/footer.html" with context %}
+        {% include "partials/footer.html" %}
       {% endblock %}
     </div>
 
