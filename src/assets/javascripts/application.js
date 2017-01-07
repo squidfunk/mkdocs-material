@@ -101,7 +101,7 @@ export default class Application {
         ], new Material.Sidebar.Container("[data-md-component=container]")))
 
     /* Component: sidebar with navigation */
-    new Material.Event.MatchMedia("(min-width: 1200px)",
+    new Material.Event.MatchMedia("(min-width: 1220px)",
       new Material.Event.Listener(window, [
         "scroll", "resize", "orientationchange"
       ], new Material.Sidebar.Position("[data-md-component=navigation]")))
@@ -121,13 +121,13 @@ export default class Application {
     const collapsibles =
       document.querySelectorAll("[data-md-component=collapsible]")
     Array.prototype.forEach.call(collapsibles, collapse => {
-      new Material.Event.MatchMedia("(min-width: 1200px)",
+      new Material.Event.MatchMedia("(min-width: 1220px)",
         new Material.Event.Listener(collapse.previousElementSibling, "click",
           new Material.Nav.Collapse(collapse)))
     })
 
     /* Component: pane monitor for iOS scrolling fixes */
-    new Material.Event.MatchMedia("(max-width: 1199px)",
+    new Material.Event.MatchMedia("(max-width: 1219px)",
       new Material.Event.Listener(
         "[data-md-component=navigation] [data-md-toggle]", "change",
           new Material.Nav.Scrolling("[data-md-component=navigation] nav")))
@@ -153,7 +153,7 @@ export default class Application {
     })).listen()
 
     /* Listener: prevent touches on overlay if navigation is active */
-    new Material.Event.MatchMedia("(max-width: 1199px)",
+    new Material.Event.MatchMedia("(max-width: 1219px)",
       new Material.Event.Listener("[data-md-component=overlay]", "touchstart",
         ev => ev.preventDefault()))
 
