@@ -46,18 +46,3 @@
     cursor: pointer;
   }
 }
-
-// Representational classes
-.md-icon {
-  @extend %md-icon;
-
-  // Build representational classes
-  @each $ligature, $name in (
-    "arrow_back": "back",
-    "arrow_forward": "forward"
-  ) {
-    &--#{$name}::before {
-      content: $ligature;
-    }
-  }
-}

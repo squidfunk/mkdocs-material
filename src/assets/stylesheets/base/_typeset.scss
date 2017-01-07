@@ -66,7 +66,7 @@ kbd {
 // Content that is typeset - if possible, all margins, paddings and font sizes
 // should be set in ems, so nested blocks (e.g. Admonition) render correctly,
 // except headlines that should only appear on the top level and need to have
-// consistent spacing due to layout issues
+// consistent spacing due to layout constraints.
 .md-typeset {
   font-size: ms(0);
   line-height: 1.6;
@@ -149,7 +149,7 @@ kbd {
     color: $md-color-primary;
     word-break: break-word;
 
-    // Also enable transition on pseudo elements
+    // Also enable color transition on pseudo elements
     &,
     &::before {
       transition: color 0.125s;
@@ -161,10 +161,10 @@ kbd {
       color: $md-color-accent;
     }
 
-    // Add links for print
+    // Add URLs for print
     @media print {
 
-      // Show link reference
+      // Show link URL
       &::after {
         color: $md-color-black--light;
         content: " [" attr(href) "]";
@@ -254,7 +254,7 @@ kbd {
       }
     }
 
-    // Reset, if code is inside pre
+    // Reset, if code is wrapped inside pre tag
     > code {
       margin: 0;
       background-color: transparent;
@@ -298,7 +298,7 @@ kbd {
     cursor: help;
   }
 
-  // Smaller text
+  // Small text
   small {
     opacity: 0.75;
   }

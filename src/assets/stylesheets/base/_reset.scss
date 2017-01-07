@@ -24,7 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Enfore correct box model
+// Enforce correct box model
 html {
   box-sizing: border-box;
 }
@@ -77,7 +77,7 @@ a {
   }
 }
 
-// Correct font-size in all browsers
+// Normalize font-size in all browsers
 small {
   font-size: 80%;
 }
@@ -101,6 +101,7 @@ sup {
   top: -0.5em;
 }
 
+// Remove borders on images
 img {
   border-style: none;
 }

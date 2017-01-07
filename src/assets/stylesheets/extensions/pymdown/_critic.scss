@@ -47,7 +47,7 @@
 
   // Addition
   ins.critic {
-    background-color: $codehilite-diff-inserted;
+    background-color: $codehilite-diff-inserted;                                // TODO: dependent on order of inclusion
     box-shadow:
       +0.25em 0 0 $codehilite-diff-inserted,
       -0.25em 0 0 $codehilite-diff-inserted;

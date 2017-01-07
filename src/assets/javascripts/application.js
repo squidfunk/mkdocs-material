@@ -44,7 +44,7 @@ export default class Application {
    */
   initialize() {
 
-    /* Initialize Modernizr and Fastclick */
+    /* Initialize Modernizr and FastClick */
     new Material.Event.Listener(document, "DOMContentLoaded", () => {
 
       /* Test for iOS */
@@ -60,7 +60,7 @@ export default class Application {
       /* Attack FastClick to mitigate 300ms delay on touch devices */
       FastClick.attach(document.body)
 
-      /* Wrap all data tables */
+      /* Wrap all data tables for better overflow scrolling */
       const tables = document.querySelectorAll("table:not([class])")
       Array.prototype.forEach.call(tables, table => {
         const wrap = document.createElement("div")
@@ -126,7 +126,7 @@ export default class Application {
           new Material.Nav.Collapse(collapse)))
     })
 
-    /* Component: pane monitor for iOS scrolling fixes */
+    /* Component: active pane monitor for iOS scrolling fixes */
     new Material.Event.MatchMedia("(max-width: 1219px)",
       new Material.Event.Listener(
         "[data-md-component=navigation] [data-md-toggle]", "change",
@@ -220,7 +220,7 @@ export default class Application {
       new Material.Event.Listener("[data-md-component=search]", "click",
         ev => ev.stopPropagation()))
 
-    /* Retrieve the facts for the given repository type */
+    /* Retrieve facts for the given repository type */
     ;(() => {
       const el = document.querySelector("[data-md-source]")
       if (!el) return Promise.resolve([])

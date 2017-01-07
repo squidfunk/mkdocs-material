@@ -41,7 +41,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Color tile
+// Color tile for presentation in theme documentation
 button[data-md-color-primary],
 button[data-md-color-accent] {
   width: 13rem;
@@ -85,7 +85,7 @@ button[data-md-color-accent] {
   "blue-grey":   $clr-blue-grey-600
 ) {
 
-  // Color tile for presentation                                                // TODO. comments
+  // Color tile for presentation in theme documentation
   button[data-md-color-primary="#{$name}"] {
     background-color: $color;
   }
@@ -158,7 +158,7 @@ button[data-md-color-accent] {
   "deep-orange": $clr-deep-orange-a200
 ) {
 
-  // Color tile for presentation
+  // Color tile for presentation in theme documentation
   button[data-md-color-accent="#{$name}"] {
     background-color: $color;
   }
