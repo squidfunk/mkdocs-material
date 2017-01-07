@@ -273,6 +273,27 @@ google_analytics:
   - 'auto'
 ```
 
+### Localization <small>L10N</small>
+
+In order to localize the labels (e.g. "Previous" and "Next" in the footer),
+you can override the file `partials/i18n.html` to provide your own translations
+inside the macro `t`:
+
+``` jinja
+{% macro t(key) %}{{ {
+  "edit.link.title": "Edit this page",
+  "footer.previous": "Previous",
+  "footer.next": "Next",
+  "search.placeholder": "Search",
+  "source.link.title": "Go to repository",
+  "toc.title": "Table of contents"
+}[key] }}{% endmacro %}
+```
+
+Just copy the file from the original theme and make your adjustments. See the
+section on [overriding partials](customization.md/#overriding-partials) in the
+customization guide.
+
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
