@@ -15,8 +15,8 @@ The PyMdown Extensions package can be installed with the following command:
 pip install pymdown-extensions
 ```
 
-The following list of extensions that are part of the PyMdown Extensions package
-are recommended to be used together with the Material theme:
+The following list of extensions that are part of the PyMdown Extensions
+package are recommended to be used together with the Material theme:
 
 ``` yaml
 markdown_extensions:
@@ -31,14 +31,6 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist(custom_checkbox=true)
   - pymdownx.tilde
-```
-
-Additionally, there is a [MathJax integration](#arithmatex) which should only
-be switched on if needed, as it adds a few hundred kb of JavaScript:
-
-``` yaml
-markdown_extensions:
-  - pymdownx.arithmatex
 ```
 
 ## Usage
@@ -138,31 +130,32 @@ The portion of text that should be erased must be enclosed in two tildes
 
 #### Caret
 
-[Caret][11] is the sister extension of [Tilde](#tilde) and makes it possible to
+[Caret][11] is the sister extension of [Tilde][12] and makes it possible to
 highlight ^^inserted text^^. The portion of text that should be marked as added
 must be enclosed in two carets `^^...^^`.
 
   [11]: https://facelessuser.github.io/pymdown-extensions/extensions/caret/
+  [12]: #tilde
 
 #### Mark
 
-[Mark][12] adds the ability to ==highlight text== like it was marked with a
+[Mark][13] adds the ability to ==highlight text== like it was marked with a
 ==yellow text marker==. The portion of text that should be highlighted must be
 enclosed in two equal signs `==...==`.
 
-  [12]: https://facelessuser.github.io/pymdown-extensions/extensions/mark/
+  [13]: https://facelessuser.github.io/pymdown-extensions/extensions/mark/
 
 #### SmartSymbols
 
-[SmartSymbols][13] converts markup for special characters into their
+[SmartSymbols][14] converts markup for special characters into their
 corresponding symbols, e.g. arrows (<--, -->, <-->), trademark and copyright
 symbols ((c), (tm), (r)) and fractions (1/2, 1/4, ...).
 
-  [13]: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
+  [14]: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
 
 #### Critic
 
-[Critic][14] implements [Critic Markup][15], a Markdown extension that enables
+[Critic][15] implements [Critic Markup][16], a Markdown extension that enables
 the tracking of changes (additions, deletions and comments) on documents.
 During compilation of the Markdown document, changes can be rendered (default),
 accepted or rejected.
@@ -171,21 +164,21 @@ Text can be {--deleted--} and replacement text {++added++}. This can also be
 combined in {~~one~>a single~~} operation. {==Highlighting==} is also possible
 {>>and comments can be added inline<<}.
 
-  [14]: https://facelessuser.github.io/pymdown-extensions/extensions/critic/
-  [15]: http://criticmarkup.com/
+  [15]: https://facelessuser.github.io/pymdown-extensions/extensions/critic/
+  [16]: http://criticmarkup.com/
 
 ### Math and code highlighting
 
 #### Arithmatex
 
-[Arithmatex][16] integrates Material with [MathJax][17] which parses
+[Arithmatex][17] integrates Material with [MathJax][18] which parses
 block-style and inline equations written in TeX markup and outputs them in
-mathematical notation. See [this thread][18] for a short introduction and quick
+mathematical notation. See [this thread][19] for a short introduction and quick
 reference on how to write equations in TeX syntax.
 
-  [16]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
-  [17]: https://www.mathjax.org/
-  [18]: http://meta.math.stackexchange.com/questions/5020/
+  [17]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
+  [18]: https://www.mathjax.org/
+  [19]: http://meta.math.stackexchange.com/questions/5020/
 
 ##### Blocks
 
@@ -221,9 +214,9 @@ Lorem ipsum dolor sit amet: $p(x|y) = \frac{p(y|x)p(x)}{p(y)}$
 
 #### Inlinehilite
 
-[Inlinehilite][19] adds support for inline code highlighting. It's useful for
+[Inlinehilite][20] adds support for inline code highlighting. It's useful for
 short snippets included within body copy, e.g. `#!js var test = 0;` and can be
 achived by prefixing inline code with a shebang and language identifier,
 e.g. `#!js`.
 
-  [19]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
+  [20]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/

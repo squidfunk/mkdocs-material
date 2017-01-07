@@ -19,7 +19,7 @@ JavaScript files to the `docs` directory.
 
 If you want to tweak some colors or change the spacing of certain elements,
 you can do this in a separate stylesheet. The easiest way is by creating a
-new stylesheet file in your docs directory:
+new stylesheet file in your `docs` directory:
 
 ``` sh
 mkdir docs/stylesheets
@@ -40,7 +40,7 @@ saving, as the MkDocs development server implements live reloading. Cool, huh?
 
 The same is true for additional JavaScript. If you want to integrate another
 syntax highlighter or add some custom logic to your theme, create a new
-JavaScript file in your docs directory:
+JavaScript file in your `docs` directory:
 
 ``` sh
 mkdir docs/javascripts
@@ -99,6 +99,7 @@ The directory layout of the Material theme is as follows:
 │  ├─ fonts.html                       # Webfont definitions
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
+│  ├─ i18n.html                        # Localized labels
 │  ├─ nav-item.html                    # Main navigation item
 │  ├─ nav.html                         # Main navigation
 │  ├─ search.html                      # Search box
@@ -183,6 +184,7 @@ Next, all dependencies need to be installed, which is done with:
 
 ``` sh
 cd mkdocs-material
+pip install -r requirements.txt
 npm install
 ```
 
@@ -199,8 +201,7 @@ npm run start
 
 This will also start the MkDocs development server which will monitor changes
 on assets, templates and documentation. Point your browser to
-[localhost:8000](http://localhost:8000) and you should see this very
-documentation in front of your eyes.
+[localhost:8000][10] and you should see this documentation in front of you.
 
 For example, changing the color palette is as simple as changing the
 `$md-color-primary` and `$md-color-accent` variables in
@@ -211,7 +212,14 @@ $md-color-primary: $clr-red-400;
 $md-color-accent:  $clr-teal-a700;
 ```
 
+!!! warning "Automatically generated files"
+
+    Never make any changes in the `material` directory, as the contents of this
+    directory are automatically generated from the `src` directory and will be
+    overriden when the theme is built.
+
   [9]: http://gulpjs.com
+  [10]: http://localhost:8000
 
 ### Build process
 

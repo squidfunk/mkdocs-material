@@ -18,8 +18,8 @@ markdown_extensions:
 ## Usage
 
 Admonition blocks follow a simple syntax: every block is started with `!!!`,
-followed by a single keyword which is used as the [type qualifier](#types) of
-the block. The content of the block then follows on the next line, indented by
+followed by a single keyword which is used as the [type qualifier][2] of the
+block. The content of the block then follows on the next line, indented by
 four spaces.
 
 Example:
@@ -37,6 +37,8 @@ Result:
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+
+  [2]: #types
 
 ### Changing the title
 
@@ -61,8 +63,8 @@ Result:
 
 ### Removing the title
 
-Similar to setting a [custom title](#changing-the-title), the icon and title
-can be omitted by providing an empty string after the type qualifier:
+Similar to setting a [custom title][3], the icon and title can be omitted by
+providing an empty string after the type qualifier:
 
 Example:
 
@@ -80,18 +82,20 @@ Result:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
+  [3]: #changing-the-title
+
 ### Embedded code blocks
 
 Blocks can contain all kinds of text content, including headlines, lists,
 paragraphs and other blocks – except code blocks, because the parser from the
 standard Markdown library does not account for those.
 
-However, the [PyMdown Extensions][2] package adds an extension called
-[SuperFences][3], which makes it possible to nest code blocks within other
+However, the [PyMdown Extensions][4] package adds an extension called
+[SuperFences][5], which makes it possible to nest code blocks within other
 blocks.
 
-  [2]: https://facelessuser.github.io/pymdown-extensions
-  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+  [4]: https://facelessuser.github.io/pymdown-extensions
+  [5]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 Example:
 
@@ -125,7 +129,9 @@ Example:
 Admonition supports user-defined type qualifiers which may influence the style
 of the inserted block. Following is a list of type qualifiers supported by the
 Material theme, whereas the default type, and thus fallback for unknown type
-qualifiers, is [note](#note).
+qualifiers, is [note][6].
+
+  [6]: #note
 
 ### Note
 

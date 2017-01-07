@@ -26,8 +26,8 @@ pip install mkdocs && mkdocs --version
 
     Material requires MkDocs >= 0.16.
 
-Furthermore, it is highly recommended to install [Pygments][2] and the [PyMdown
-Extensions][3] to get the most out of the Material theme:
+Furthermore, it is highly recommended to install [Pygments][2] and the
+[PyMdown Extensions][3] to get the most out of the Material theme:
 
 ```sh
 pip install pygments
@@ -71,8 +71,9 @@ repository into a subfolder of your project's root directory:
 git clone https://github.com/squidfunk/mkdocs-material.git
 ```
 
-This is especially useful if you want to extend the theme and use partials.
-The theme will reside in the folder `mkdocs-material/material`.
+This is especially useful if you want to extend the theme and override some
+parts of the theme. The theme will reside in the folder
+`mkdocs-material/material`.
 
 ## Usage
 
@@ -96,9 +97,11 @@ as you go - very handy. Spin it up with the following command:
 mkdocs serve
 ```
 
-Now you can point your browser to [localhost:8000](http://localhost:8000) and
-the Material theme should be visible. You can now start writing your
-documentation, or read on and customize the theme through some options.
+Now you can point your browser to [localhost:8000][4] and the Material theme
+should be visible. You can now start writing your documentation, or read on and
+customize the theme through some options.
+
+  [4]: http://localhost:8000
 
 ## Options
 
@@ -108,7 +111,7 @@ project's `mkdocs.yml`. See the following section for all available options.
 ### Changing the color palette
 
 Material defines a default hue for every primary and accent color on Google's
-material design [color palette][4]. This makes it very easy to change the
+material design [color palette][5]. This makes it very easy to change the
 overall look of the theme. Just set the primary and accent colors using the
 following variables in your `mkdocs.yml`:
 
@@ -127,10 +130,11 @@ green`, `lime`, `yellow`, `amber`, `orange`, `deep orange`, `brown`, `grey` and
 
 If the color is set via this configuration, an additional CSS file that
 defines the color palette is included. If you want to keep things lean, clone
-the repository and recompile the theme with your custom colors set. See [this
-article](customization.md) for more information.
+the repository and recompile the theme with your custom colors set. See
+[this article][6] for more information.
 
-  [4]: http://www.materialui.co/colors
+  [5]: http://www.materialui.co/colors
+  [6]: customization.md
 
 #### Primary colors
 
@@ -197,10 +201,10 @@ Click on a tile to change the accent color of the theme:
 
 ### Changing the font family
 
-Material uses the [Roboto font family][5] by default, specifically the regular
-sans-serif type for text and the monospaced type for code. Both fonts are
-loaded from [Google Fonts][6] and can easily be changed to other fonts, like
-for example the [Ubuntu font family][7]:
+Material uses the [Roboto font family][7] by default, specifically the regular
+sans-serif type for text and the `monospaced` type for code. Both fonts are
+loaded from [Google Fonts][8] and can easily be changed to other fonts, like
+for example the [Ubuntu font family][9]:
 
 ``` yaml
 extra:
@@ -209,7 +213,7 @@ extra:
     code: 'Ubuntu Mono'
 ```
 
-The text font will be loaded in font-weights 400 and **700**, the monospaced
+The text font will be loaded in font-weights 400 and **700**, the `monospaced`
 font in regular weight. If you want to load fonts from other destinations or
 don't want to use the Google Fonts loading magic, just set `font` to `'none'`:
 
@@ -218,9 +222,9 @@ extra:
   font: 'none'
 ```
 
-  [5]: https://fonts.google.com/specimen/Roboto
-  [6]: https://fonts.google.com/
-  [7]: https://fonts.google.com/specimen/Ubuntu
+  [7]: https://fonts.google.com/specimen/Roboto
+  [8]: https://fonts.google.com/
+  [9]: https://fonts.google.com/specimen/Ubuntu
 
 ### Adding a logo
 
@@ -239,7 +243,7 @@ extra:
 
 If you want to link your social accounts, the Material theme provides an easy
 way for doing this in the footer of the documentation using the automatically
-included [FontAwesome][8] webfont. The syntax is simple – the `type` denotes
+included [FontAwesome][10] webfont. The syntax is simple – the `type` denotes
 the name of the social service, e.g. `github`, `twitter` or `linkedin` and
 the `link`, well, resembles the link:
 
@@ -258,7 +262,7 @@ The links are generated in order and the type of the link must match the name
 of the FontAwesome glyph. The `fa` is automatically added, so `github` will
 result in `fa fa-github`.
 
-  [8]: http://fontawesome.io/icons/
+  [10]: http://fontawesome.io/icons/
 
 ### Google Analytics integration
 
@@ -291,19 +295,22 @@ inside the macro `t`:
 ```
 
 Just copy the file from the original theme and make your adjustments. See the
-section on [overriding partials](customization.md/#overriding-partials) in the
-customization guide.
+section on [overriding partials][11] in the customization guide.
+
+  [11]: customization.md#overriding-partials
 
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article](customization.md) for more information on advanced customization.
+[this article][12] for more information on advanced customization.
+
+  [12]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][9]. The following extensions are
-not enabled by default (see the link for which are enabled by default) but
-highly recommended, so they should be switched on at all times:
+MkDocs supports several [Markdown extensions][13]. The following extensions
+are not enabled by default (see the link for which are enabled by default)
+but highly recommended, so they should be switched on at all times:
 
 ``` yaml
 markdown_extensions:
@@ -312,16 +319,29 @@ markdown_extensions:
   - toc(permalink=true)
 ```
 
+!!! warning "Migrating from Material 0.2.x"
+
+    The [CodeHilite][14] extension was included with
+    `codehilite(css_class=code)` which switched the CSS class from
+    `.codehilite` to `.code`. The current version of the theme doesn't require
+    that and defines styles for the default `.codehilite` class, so the part
+    `css_class=code` needs to be removed.
+
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition](extensions/admonition.md)
-* [Codehilite](extensions/codehilite.md)
-* [Permalinks](extensions/permalinks.md)
-* [Footnotes](extensions/footnotes.md)
-* [PyMdown Extensions](extensions/pymdown.md)
+* [Admonition][15]
+* [Codehilite][14]
+* [Permalinks][16]
+* [Footnotes][17]
+* [PyMdown Extensions][18]
 
-  [9]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [13]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [14]: extensions/codehilite.md
+  [15]: extensions/admonition.md
+  [16]: extensions/permalinks.md
+  [17]: extensions/footnotes.md
+  [18]: extensions/pymdown.md
 
 ## Full example
 
