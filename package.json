@@ -35,7 +35,7 @@
     "gulp-rev": "^7.0.0",
     "gulp-rev-collector": "^1.0.2",
     "gulp-sass": "^3.0.0",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sourcemaps": "^2.2.2",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "node-notifier": "^4.5.0",
