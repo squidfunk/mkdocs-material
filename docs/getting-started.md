@@ -279,7 +279,7 @@ google_analytics:
 
 ### Localization <small>L10N</small>
 
-In order to localize the labels (e.g. "Previous" and "Next" in the footer),
+In order to localize the labels (e.g. *Previous* and *Next* in the footer),
 you can override the file `partials/i18n.html` to provide your own translations
 inside the macro `t`:
 
@@ -296,6 +296,12 @@ inside the macro `t`:
 
 Just copy the file from the original theme and make your adjustments. See the
 section on [overriding partials][11] in the customization guide.
+
+!!! warning "Migrating from Material 0.2.x"
+
+    In 0.2.x, localization was done within the `extra` configuration of your
+    `mkdocs.yml`. With 1.0.0 this is no longer possible as the configuration
+    will be ignored.
 
   [11]: customization.md#overriding-partials
 

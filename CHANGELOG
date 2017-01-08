@@ -1,6 +1,4 @@
-mkdocs-material-1.0.0 (2017-01-12)
-
-  The theme has been entirely rewritten from scratch.
+mkdocs-material-1.0.0 (2017-01-13)
 
   * Introduced Webpack for more sophisticated JavaScript bundling
   * Introduced ESLint and Stylelint for code style checks
@@ -27,7 +25,7 @@ mkdocs-material-1.0.0 (2017-01-12)
   * Added more detailed documentation on specimen, extensions etc.
   * Added a 404.html error page for deployment on GitHub Pages
   * Fixed live reload chain in watch mode when saving a template
-  * Fixed variable references to work with mkdocs 0.16
+  * Fixed variable references to work with MkDocs 0.16
 
 mkdocs-material-0.2.4 (2016-06-26)
 
@@ -44,7 +42,7 @@ mkdocs-material-0.2.3 (2016-05-16)
 
 mkdocs-material-0.2.2 (2016-03-20)
 
-  * Fixed #15: Document pygments dependency for codehilite
+  * Fixed #15: Document Pygments dependency for CodeHilite
   * Fixed #16: Favicon could not be set through mkdocs.yml
   * Fixed #17: Put version into own container for styling
   * Fixed #20: Fix rounded borders for tables
@@ -87,7 +85,7 @@ mkdocs-material-0.1.1 (2016-02-11)
   * Updated NPM and Bower dependencies to most recent versions
   * Changed footer/copyright link to Material theme to GitHub pages
   * Made MkDocs building/serving in build process optional
-  * Set up continuous integration with travis-ci.org
+  * Set up continuous integration with Travis
 
 mkdocs-material-0.1.0 (2016-02-09)
 
