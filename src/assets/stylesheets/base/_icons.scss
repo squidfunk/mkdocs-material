@@ -46,3 +46,8 @@
     cursor: pointer;
   }
 }
+
+// Representational classes
+.md-icon {
+  @extend %md-icon;
+}
