@@ -361,8 +361,10 @@ kbd {
     }
   }
 
-  // Limit images to container
-  img {
+  // Limit width to container
+  iframe,
+  img,
+  svg {
     max-width: 100%;
   }
 
