@@ -412,6 +412,11 @@ kbd {
     tr:first-child td {
       border-top: 0;
     }
+
+    // Do not wrap links in tables
+    a {
+      word-break: normal;
+    }
   }
 
   // Data table wrapper, in case JavaScript is available
