@@ -24,7 +24,8 @@ markdown_extensions:
   - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
   - pymdownx.critic
-  - pymdownx.githubemoji
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
@@ -55,21 +56,20 @@ start and end tokens. Read the documentation for [usage notes][3].
   [2]: https://facelessuser.github.io/pymdown-extensions/extensions/betterem/
   [3]: https://facelessuser.github.io/pymdown-extensions/usage_notes/
 
-#### GitHub Emoji
+#### Emoji
 
-[GitHub Emoji][4] adds the ability to insert emojis, which does not only
-include the :octocat: emojis, but also a :shit:-load of emojis that we use in
+[Emoji][4] adds the ability to insert a :shit:-load of emojis that we use in
 our daily lives. See the [Emoji Cheat Sheet][5] for a list of all available
 emojis. Happy scrolling :tada:
 
-  [4]: https://facelessuser.github.io/pymdown-extensions/extensions/githubemoji/
+  [4]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
   [5]: http://www.webpagefx.com/tools/emoji-cheat-sheet/
 
 #### MagicLink
 
 [MagicLink][6] detects links in Markdown and auto-generates the necessary
-markup, so no special syntax is required. It auto-links HTTP(S) and FTP links,
-as well as references to email addresses:
+markup, so no special syntax is required. It auto-links `http[s]://` and
+`ftp://` links, as well as references to email addresses:
 
   [6]: https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
 
