@@ -191,26 +191,26 @@ adding another JavaScript file **before** the MathJax runtime in
 `extra_javascript` which contains your MathJax configuration, e.g.:
 
 ``` js
-MathJax.Hub.Config({		
-  config: ["MMLorHTML.js"],		
-  extensions: ["tex2jax.js"],		
-  jax: ["input/TeX"],		
-  tex2jax: {		
-    inlineMath: [ ["\\(","\\)"] ],		
-    displayMath: [ ["\\[","\\]"] ]		
-  },		
-  TeX: {		
-    TagSide: "right",		
-    TagIndent: ".8em",		
-    MultLineWidth: "85%",		
-    equationNumbers: {		
-      autoNumber: "AMS",		
-    }		
-  },		
-  displayAlign: 'left',		
-  showProcessingMessages: false,		
-  messageStyle: 'none'		
-});
+window.MathJax = {
+  tex2jax: {
+    inlineMath: [ ["\\(","\\)"] ],
+    displayMath: [ ["\\[","\\]"] ]
+  },
+  TeX: {
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  displayAlign: "left",
+  showProcessingMessages: false,
+  messageStyle: "none"
+};
 ```
 
 In your `mkdocs.yml`, include it with:
