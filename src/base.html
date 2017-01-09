@@ -203,18 +203,8 @@
       {% endblock %}
     </div>
 
-    <!-- Block: extension- and theme-related JavaScript -->
+    <!-- Block: theme-related JavaScript -->
     {% block scripts %}
-      {% for extension in config.markdown_extensions %}
-
-        <!-- MathJax integration -->
-        {% if extension == "pymdownx.arithmatex" %}
-          {% set path = "mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" %}
-          <script src="https://cdn.mathjax.org/{{ path }}"></script>
-        {% endif %}
-      {% endfor %}
-
-      <!-- Theme-related and custom JavaScript -->
       <script src="{{ base_url }}/assets/javascripts/application.js"></script>
       <script>
 

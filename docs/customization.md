@@ -29,7 +29,8 @@ touch docs/stylesheets/extra.css
 Then, add the following line to your `mkdocs.yml`:
 
 ``` yaml
-extra_css: ['stylesheets/extra.css']
+extra_css:
+  - 'stylesheets/extra.css'
 ```
 
 Spin up the development server with `mkdocs serve` and start typing your
@@ -50,7 +51,8 @@ touch docs/javascripts/extra.js
 Then, add the following line to your `mkdocs.yml`:
 
 ``` yaml
-extra_javascript: ['javascripts/extra.js']
+extra_javascript:
+  - 'javascripts/extra.js'
 ```
 
 Further assistance can be found in the [MkDocs documentation][2].

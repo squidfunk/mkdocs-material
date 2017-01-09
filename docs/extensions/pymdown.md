@@ -20,6 +20,7 @@ package are recommended to be used together with the Material theme:
 
 ``` yaml
 markdown_extensions:
+  - pymdownx.arithmatex
   - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
   - pymdownx.critic
@@ -167,20 +168,57 @@ combined in {~~one~>a single~~} operation. {==Highlighting==} is also possible
   [15]: https://facelessuser.github.io/pymdown-extensions/extensions/critic/
   [16]: http://criticmarkup.com/
 
-### Math and code highlighting
+### Arithmatex <small>MathJax</small>
 
-#### Arithmatex
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 [Arithmatex][17] integrates Material with [MathJax][18] which parses
 block-style and inline equations written in TeX markup and outputs them in
 mathematical notation. See [this thread][19] for a short introduction and quick
 reference on how to write equations in TeX syntax.
 
+Besides activating the extension in the `mkdocs.yml`, the MathJax JavaScript
+runtime needs to be included. This can be done with
+[additional JavaScript][20]:
+
+``` yaml
+extra_js:
+  - 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'
+```
+
+If you want to override the default MathJax configuration, you can do this by
+adding another JavaScript file **before** the MathJax runtime in `extra_js`
+which contains your MathJax configuration, e.g.:
+
+``` js
+MathJax.Hub.Config({		
+  config: ["MMLorHTML.js"],		
+  extensions: ["tex2jax.js"],		
+  jax: ["input/TeX"],		
+  tex2jax: {		
+    inlineMath: [ ["\\(","\\)"] ],		
+    displayMath: [ ["\\[","\\]"] ]		
+  },		
+  TeX: {		
+    TagSide: "right",		
+    TagIndent: ".8em",		
+    MultLineWidth: "85%",		
+    equationNumbers: {		
+      autoNumber: "AMS",		
+    }		
+  },		
+  displayAlign: 'left',		
+  showProcessingMessages: false,		
+  messageStyle: 'none'		
+});
+```
+
   [17]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
   [18]: https://www.mathjax.org/
   [19]: http://meta.math.stackexchange.com/questions/5020/
+  [20]: ../customization.md#additional-javascript
 
-##### Blocks
+#### Blocks
 
 Blocks are enclosed in `:::tex $$...$$` which are placed on separate lines.
 
@@ -198,7 +236,7 @@ $$
 \frac{n!}{k!(n-k)!} = \binom{n}{k}
 $$
 
-##### Inline
+#### Inline
 
 Inline equations need to be enclosed in `:::tex $...$`:
 
@@ -212,11 +250,11 @@ Result:
 
 Lorem ipsum dolor sit amet: $p(x|y) = \frac{p(y|x)p(x)}{p(y)}$
 
-#### Inlinehilite
+### InlineHilite
 
-[Inlinehilite][20] adds support for inline code highlighting. It's useful for
+[InlineHilite][21] adds support for inline code highlighting. It's useful for
 short snippets included within body copy, e.g. `#!js var test = 0;` and can be
 achived by prefixing inline code with a shebang and language identifier,
 e.g. `#!js`.
 
-  [20]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
+  [21]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
