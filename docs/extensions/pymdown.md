@@ -182,13 +182,13 @@ runtime needs to be included. This can be done with
 [additional JavaScript][20]:
 
 ``` yaml
-extra_js:
+extra_javascript:
   - 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'
 ```
 
 If you want to override the default MathJax configuration, you can do this by
-adding another JavaScript file **before** the MathJax runtime in `extra_js`
-which contains your MathJax configuration, e.g.:
+adding another JavaScript file **before** the MathJax runtime in
+`extra_javascript` which contains your MathJax configuration, e.g.:
 
 ``` js
 MathJax.Hub.Config({		
@@ -211,6 +211,14 @@ MathJax.Hub.Config({
   showProcessingMessages: false,		
   messageStyle: 'none'		
 });
+```
+
+In your `mkdocs.yml`, include it with:
+
+``` yaml
+extra_javascript:
+  - 'extra.js'
+  - 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'
 ```
 
   [17]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
