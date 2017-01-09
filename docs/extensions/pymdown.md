@@ -165,6 +165,13 @@ Text can be {--deleted--} and replacement text {++added++}. This can also be
 combined in {~~one~>a single~~} operation. {==Highlighting==} is also possible
 {>>and comments can be added inline<<}.
 
+{==
+
+This can also be applied to blocks, by putting the opening and closing tags on
+separate lines and adding a new line between the tag and the content each.
+
+==}
+
   [15]: https://facelessuser.github.io/pymdown-extensions/extensions/critic/
   [16]: http://criticmarkup.com/
 

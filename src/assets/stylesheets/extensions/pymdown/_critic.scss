@@ -54,7 +54,7 @@
   }
 
   // Comment
-  .comment.critic {
+  .critic.comment {
     background-color: $md-code-background;                                      // TODO: rename, centralize somehow
     color: $md-code-color;
     box-shadow:
@@ -69,6 +69,25 @@
       color: $md-color-black--lighter;
       content: "chat";
       vertical-align: -0.125em;
+    }
+  }
+
+  // Block
+  .critic.block {
+    display: block;
+    margin: 1em 0;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+    box-shadow: none;
+
+    // Decrease spacing on first element
+    :first-child {
+      margin-top: 0.5em;
+    }
+
+    // Decrease spacing on last element
+    :last-child {
+      margin-bottom: 0.5em;
     }
   }
 }
