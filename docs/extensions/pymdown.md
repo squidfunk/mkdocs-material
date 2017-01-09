@@ -59,32 +59,41 @@ start and end tokens. Read the documentation for [usage notes][3].
 #### Emoji
 
 [Emoji][4] adds the ability to insert a :shit:-load of emojis that we use in
-our daily lives. See the [Emoji Cheat Sheet][5] for a list of all available
+our daily lives. See the [EmojiOne demo][5] for a list of all available
 emojis. Happy scrolling :tada:
 
+!!! warning "Legal disclaimer"
+
+    Material has no affiliation with [EmojiOne][6] which is released under
+    [CC BY 4.0][7]. When including EmojiOne images or CSS, please read the
+    [EmojiOne license][8] to ensure proper usage and attribution.
+
   [4]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
-  [5]: http://www.webpagefx.com/tools/emoji-cheat-sheet/
+  [5]: http://emojione.com/demo/
+  [6]: http://emojione.com
+  [7]: https://creativecommons.org/licenses/by/4.0/legalcode
+  [8]: http://emojione.com/licensing/
 
 #### MagicLink
 
-[MagicLink][6] detects links in Markdown and auto-generates the necessary
+[MagicLink][9] detects links in Markdown and auto-generates the necessary
 markup, so no special syntax is required. It auto-links `http[s]://` and
 `ftp://` links, as well as references to email addresses:
 
-  [6]: https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
+  [9]: https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
 
 #### SuperFences
 
-[SuperFences][7] provides the ability to nest code blocks under blockquotes,
-lists and other block elements, which the [Fenced Code Blocks][8] extension
+[SuperFences][10] provides the ability to nest code blocks under blockquotes,
+lists and other block elements, which the [Fenced Code Blocks][11] extension
 from the standard Markdown library doesn't parse correctly.
 
-  [7]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
-  [8]: https://pythonhosted.org/Markdown/extensions/fenced_code_blocks.html
+  [10]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+  [11]: https://pythonhosted.org/Markdown/extensions/fenced_code_blocks.html
 
 #### Tasklist
 
-[Tasklist][9] adds support for styled checkbox lists. This is useful for
+[Tasklist][12] adds support for styled checkbox lists. This is useful for
 keeping track of tasks and showing what has been done and has yet to be done.
 Checkbox lists are like regular lists, but prefixed with `[ ]` for empty or
 `[x]` for filled checkboxes.
@@ -117,46 +126,46 @@ Result:
 * [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
 * [ ] Nulla vel eros venenatis, imperdiet enim id, faucibus nisi
 
-[9]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
+[12]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
 
 #### Tilde
 
-[Tilde][10] provides an easy way to ~~strike through~~ cross out text.
+[Tilde][13] provides an easy way to ~~strike through~~ cross out text.
 The portion of text that should be erased must be enclosed in two tildes
 `~~...~~`, and the extension will take care of the rest.
 
-  [10]: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
+  [13]: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
 
 ### More syntactic sugar
 
 #### Caret
 
-[Caret][11] is the sister extension of [Tilde][12] and makes it possible to
+[Caret][14] is the sister extension of [Tilde][15] and makes it possible to
 highlight ^^inserted text^^. The portion of text that should be marked as added
 must be enclosed in two carets `^^...^^`.
 
-  [11]: https://facelessuser.github.io/pymdown-extensions/extensions/caret/
-  [12]: #tilde
+  [14]: https://facelessuser.github.io/pymdown-extensions/extensions/caret/
+  [15]: #tilde
 
 #### Mark
 
-[Mark][13] adds the ability to ==highlight text== like it was marked with a
+[Mark][16] adds the ability to ==highlight text== like it was marked with a
 ==yellow text marker==. The portion of text that should be highlighted must be
 enclosed in two equal signs `==...==`.
 
-  [13]: https://facelessuser.github.io/pymdown-extensions/extensions/mark/
+  [16]: https://facelessuser.github.io/pymdown-extensions/extensions/mark/
 
 #### SmartSymbols
 
-[SmartSymbols][14] converts markup for special characters into their
+[SmartSymbols][17] converts markup for special characters into their
 corresponding symbols, e.g. arrows (<--, -->, <-->), trademark and copyright
 symbols ((c), (tm), (r)) and fractions (1/2, 1/4, ...).
 
-  [14]: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
+  [17]: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
 
 #### Critic
 
-[Critic][15] implements [Critic Markup][16], a Markdown extension that enables
+[Critic][18] implements [Critic Markup][19], a Markdown extension that enables
 the tracking of changes (additions, deletions and comments) on documents.
 During compilation of the Markdown document, changes can be rendered (default),
 accepted or rejected.
@@ -172,21 +181,21 @@ separate lines and adding a new line between the tag and the content each.
 
 ==}
 
-  [15]: https://facelessuser.github.io/pymdown-extensions/extensions/critic/
-  [16]: http://criticmarkup.com/
+  [18]: https://facelessuser.github.io/pymdown-extensions/extensions/critic/
+  [19]: http://criticmarkup.com/
 
 ### Arithmatex <small>MathJax</small>
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-[Arithmatex][17] integrates Material with [MathJax][18] which parses
+[Arithmatex][20] integrates Material with [MathJax][21] which parses
 block-style and inline equations written in TeX markup and outputs them in
-mathematical notation. See [this thread][19] for a short introduction and quick
+mathematical notation. See [this thread][22] for a short introduction and quick
 reference on how to write equations in TeX syntax.
 
 Besides activating the extension in the `mkdocs.yml`, the MathJax JavaScript
 runtime needs to be included. This can be done with
-[additional JavaScript][20]:
+[additional JavaScript][23]:
 
 ``` yaml
 extra_javascript:
@@ -228,10 +237,10 @@ extra_javascript:
   - 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'
 ```
 
-  [17]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
-  [18]: https://www.mathjax.org/
-  [19]: http://meta.math.stackexchange.com/questions/5020/
-  [20]: ../customization.md#additional-javascript
+  [20]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
+  [21]: https://www.mathjax.org/
+  [22]: http://meta.math.stackexchange.com/questions/5020/
+  [23]: ../customization.md#additional-javascript
 
 #### Blocks
 
@@ -267,9 +276,9 @@ Lorem ipsum dolor sit amet: $p(x|y) = \frac{p(y|x)p(x)}{p(y)}$
 
 ### InlineHilite
 
-[InlineHilite][21] adds support for inline code highlighting. It's useful for
+[InlineHilite][24] adds support for inline code highlighting. It's useful for
 short snippets included within body copy, e.g. `#!js var test = 0;` and can be
 achived by prefixing inline code with a shebang and language identifier,
 e.g. `#!js`.
 
-  [21]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
+  [24]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
