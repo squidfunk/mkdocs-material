@@ -299,7 +299,7 @@ section on [overriding partials][11] in the customization guide.
 
 !!! warning "Migrating from Material 0.2.x"
 
-    In 0.2.x, localization was done within the `extra` configuration of your
+    In 0.2.x localization was done within the `extra` configuration of your
     `mkdocs.yml`. With 1.0.0 this is no longer possible as the configuration
     will be ignored.
 
@@ -325,26 +325,18 @@ markdown_extensions:
   - toc(permalink=true)
 ```
 
-!!! warning "Migrating from Material 0.2.x"
-
-    The [CodeHilite][14] extension was included with
-    `codehilite(css_class=code)` which switched the CSS class from
-    `.codehilite` to `.code`. The current version of the theme doesn't require
-    that and defines styles for the default `.codehilite` class, so the part
-    `css_class=code` needs to be removed.
-
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][15]
-* [Codehilite][14]
+* [Admonition][14]
+* [Codehilite][15]
 * [Permalinks][16]
 * [Footnotes][17]
 * [PyMdown Extensions][18]
 
   [13]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [14]: extensions/codehilite.md
-  [15]: extensions/admonition.md
+  [14]: extensions/admonition.md
+  [15]: extensions/codehilite.md
   [16]: extensions/permalinks.md
   [17]: extensions/footnotes.md
   [18]: extensions/pymdown.md

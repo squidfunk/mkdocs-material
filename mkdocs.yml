@@ -77,7 +77,7 @@ pages:
   - Getting started: getting-started.md
   - Extensions:
     - Admonition: extensions/admonition.md
-    - Codehilite: extensions/codehilite.md
+    - CodeHilite: extensions/codehilite.md
     - Footnotes: extensions/footnotes.md
     - Permalinks: extensions/permalinks.md
     - PyMdown: extensions/pymdown.md
