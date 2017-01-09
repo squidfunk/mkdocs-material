@@ -27,12 +27,6 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Remove pseudo elements inserted by permalinks extension
-  html & [id^="fn:"]::before,
-  html & [id^="fnref:"]::before {
-    display: none;
-  }
-
   // Footnotes extension
   .footnote {
     color: $md-color-black--light;
@@ -43,8 +37,32 @@
       margin-left: 0;
     }
 
-    // Single footnote
+    // Footnote
     li {
+      transition: color 0.25s;
+
+      // Un-targeted footnote
+      &::before {
+        display: block;
+        height: 0;
+      }
+
+      // Darken color for targete footnote
+      &:target {
+        color: $md-color-black;
+      }
+
+      // Targeted footnote
+      &:target::before {
+        margin-top: -(5.6rem + 2.4rem + 1rem);
+        padding-top: (5.6rem + 2.4rem + 1rem);
+        pointer-events: none;
+      }
+
+      // Remove spacing on first element
+      :first-child {
+        margin-top: 0;
+      }
 
       // Make back references visible on hover
       &:hover  .footnote-backref,
@@ -59,15 +77,6 @@
         color: $md-color-accent;
       }
     }
-  }
-
-  // Footnote reference with corrected anchor offset
-  .footnote-ref::before {
-    position: absolute;
-    margin-top: -(5.6rem + 2.4rem);
-    padding-top: (5.6rem + 2.4rem);
-    content: "";
-    pointer-events: none;
   }
 
   // Footnote back-reference

@@ -54,8 +54,14 @@
 
     // Add spacing to anchor for offset
     &::before {
-      display: block;
+      display: inline-block;
       content: "";
+    }
+
+    // Targeted anchor
+    &:target::before {
+      margin-top: -(5.6rem + 2.4rem + 1.8rem);
+      padding-top: (5.6rem + 2.4rem + 1.8rem);
     }
 
     // Make permalink visible on hover
@@ -90,6 +96,7 @@
 
     // Un-targeted anchor
     #{$level}[id]::before {
+      display: block;
       margin-top: -$delta;
       padding-top: $delta;
     }
