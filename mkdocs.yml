@@ -43,6 +43,7 @@ extra:
   author:
     github: squidfunk
     twitter: squidfunk
+    linkedin: squidfunk
 
 # Extensions
 markdown_extensions:

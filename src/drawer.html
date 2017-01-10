@@ -80,6 +80,17 @@
           <span class="section">The author</span>
           <ul>
 
+            <!-- Linkedin -->
+            {% if config.extra.author.linkedin %}
+            {% set author = config.extra.author.linkedin %}
+            <li>
+              <a href="https://linkedin.com/in/{{ author }}" target="_blank"
+                title="@{{ author }} on Linkedin">
+                @{{ author }} on Linkedin
+              </a>
+            </li>
+            {% endif %}
+
             <!-- Twitter -->
             {% if config.extra.author.twitter %}
               {% set author = config.extra.author.twitter %}

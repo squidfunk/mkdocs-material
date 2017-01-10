@@ -30,6 +30,16 @@
       </div>
     </div>
 
+    <!-- Linkedin -->
+    {% if config.extra.get("author", {}).linkedin %}
+    {% set author = config.extra.author.linkedin %}
+    <div class="button button-linkedin" role="button" aria-label="Linkedin">
+      <a href="https://linkedin.com/in/{{ author }}"
+        title="@{{ author }} on Linkedin" target="_blank"
+        class="toggle-button icon icon-linkedin"></a>
+    </div>
+    {% endif %}
+
     <!-- Twitter -->
     {% if config.extra.get("author", {}).twitter %}
       {% set author = config.extra.author.twitter %}
