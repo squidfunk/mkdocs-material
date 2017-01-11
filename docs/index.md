@@ -3,14 +3,13 @@
 ## Build beautiful documentation
 
 Material is a theme for [MkDocs][1], an excellent static site generator geared
-towards project documentation. It is built using Google's [material design][2]
-guidelines, full responsive, optimized for touch and pointer devices as well
-as all sorts of screen sizes.
+towards project documentation. It is built using Google's [Material Design][2]
+guidelines, fully responsive and optimized for touch and pointer devices.
 
 Material is very lightweight – it is built from scratch using Javascript and
-CSS that weighs less than 30kb (minified, gzipped and excluding Google Fonts
-and Analytics). Yet, it is highly customizable and degrades gracefully in older
-browsers.
+CSS that weighs approximately 30kb (minified, gzipped and excluding Google
+Fonts and Analytics). Yet, it is highly customizable and degrades gracefully in
+older browsers.
 
   [1]: http://www.mkdocs.org
   [2]: https://www.google.com/design/spec/material-design
@@ -29,38 +28,34 @@ Add the following line to your `mkdocs.yml`:
 theme: 'material'
 ```
 
+For detailed instructions see the [getting started guide][3].
+
+  [3]: getting-started.md
+
 ## Features
 
-- Beautiful, readable and very user-friendly design based on Google's material
-  design guidelines, packed in a full responsive template with a well-defined
-  and [easily customizable color palette][], great typography, as well as a
-  beautiful search interface and footer.
+* Beautiful, readable and very user-friendly design based on Google's Material
+  Design guidelines, packed in a full responsive template with a well-defined
+  and [easily customizable color palette][4], great typography, as well as a
+  beautiful search interface.
 
-- Well-tested and optimized Javascript and CSS including a cross-browser
-  fixed/sticky header, a drawer that even works without Javascript using
-  the [checkbox hack][] with fallbacks, responsive tables that scroll when
-  the screen is too small and well-defined print styles.
+* Responsive specimen like code blocks, tables that work on all screen sizes,
+  working with and without JavaScript which makes it gracefully degrade in
+  older browsers.
 
-- Extra configuration options like a [project logo][], links to the authors
-  [GitHub and Twitter accounts][], display of the amount of stars the
-  project has on GitHub and [Google Analytics integration][].
+- Extra configuration options like a [project logo][5], links to
+  [social accounts][6], display of the amount of stars your project has on
+  GitHub and [Google Analytics integration][7].
 
-- Easily [extendable and customizable][] due to a well-designed asset pipeline
-  built on-top of [Gulp][] with `npm` and `bower` and modular and abstracted
-  style definitions built with [SASS][].
+- Easily [extendable and customizable][8] due to a well-designed asset pipeline
+  built on-top of modern web technologies and modular and abstracted
+  style definitions..
 
 - Web application capability on iOS – when the page is saved to the homescreen,
   it behaves and looks like a native application.
 
-See the [getting started guide](getting-started.md) for instructions how to get
-it up and running.
-
-
-[checkbox hack]: http://tutorialzine.com/2015/08/quick-tip-css-only-dropdowns-with-the-checkbox-hack/
-[project logo]: getting-started.md#adding-a-logo
-[easily customizable color palette]: getting-started.md#changing-the-color-palette
-[GitHub and Twitter accounts]: getting-started.md#adding-a-github-and-twitter-account
-[Google Analytics integration]: getting-started.md#google-analytics-integration
-[extendable and customizable]: customization.md
-[Gulp]: http://gulpjs.com
-[SASS]: http://sass-lang.com
+  [4]: getting-started.md#changing-the-color-palette
+  [5]: getting-started.md#adding-a-logo
+  [6]: getting-started.md#adding-social-links
+  [7]: getting-started.md#google-analytics-integration
+  [8]: customization.md
