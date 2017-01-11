@@ -50,4 +50,17 @@
 // Representational classes
 .md-icon {
   @extend %md-icon;
+
+  // Build representational classes
+  @each $ligature, $name in (
+    "arrow_back": "arrow-back",
+    "arrow_forward": "arrow-forward",
+    "menu": "menu",
+    "search": "search",
+    "school": "home"
+  ) {
+    &--#{$name}::before {
+      content: $ligature;
+    }
+  }
 }

@@ -62,7 +62,7 @@
     }
 
     // Hide search icon, if JavaScript is not available.
-    .no-js &--search {
+    .no-js & .md-icon--search {
       display: none;
     }
 
@@ -70,7 +70,7 @@
     @include break-from-device(tablet landscape) {
 
       // Search icon
-      &--search {
+      &.md-icon--search {
         display: none;
       }
     }
@@ -79,7 +79,7 @@
     @include break-to-device(tablet) {
 
       // Home icon
-      &--home {
+      &.md-icon--home {
         display: none;
       }
     }
@@ -88,7 +88,7 @@
     @include break-from-device(screen) {
 
       // Menu icon
-      &--menu {
+      &.md-icon--menu {
         display: none;
       }
     }
