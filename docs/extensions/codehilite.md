@@ -26,7 +26,7 @@ markdown_extensions:
 
 !!! warning "Migrating from Material 0.2.x"
 
-    In 0.2.x the [CodeHilite][1] extension was included with
+    In 0.2.x the CodeHilite extension was included with
     `codehilite(css_class=code)` which switched the CSS class from
     `.codehilite` to `.code`. The current version of the theme doesn't require
     that and defines styles for the default `.codehilite` class, so the part
