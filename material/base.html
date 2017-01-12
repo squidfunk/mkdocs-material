@@ -1,4 +1,4 @@
-{% import "partials/i18n.html" as i18n %}
+{% import "partials/language.html" as lang %}
 <!DOCTYPE html>
 <html class="no-js">
   <head>
@@ -34,7 +34,15 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-facb31f4a3.js"></script>
     {% endblock %}
     {% block fonts %}
-      {% include "partials/fonts.html" %}
+      {% if config.extra.font != "none" %}
+        {% set text = config.extra.get("font", {}).text | default("Roboto") %}
+        {% set code = config.extra.get("font", {}).code
+                    | default("Roboto Mono") %}
+        {% set font = text + ':300,400,400i,700|' + code | replace(' ', '+') %}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">
+        <style>body,input{font-family:"{{ text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ code }}","Courier New",Courier,monospace}</style>
+      {% endif %}
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     {% endblock %}
     {% block styles %}
       <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-ff220fd69d.css">
@@ -55,7 +63,18 @@
   {% else %}
     <body>
   {% endif %}
-    {% include "partials/svgs.html" %}
+    <svg class="md-svg">
+      <defs>
+        {% set platform = config.extra.repo_icon or config.repo_url %}
+        {% if "github" in platform %}
+          {% include "assets/images/icons/github-1da075986e.svg" %}
+        {% elif "gitlab" in platform %}
+          {% include "assets/images/icons/gitlab-5ad3f9f9e5.svg" %}
+        {% elif "bitbucket" in platform %}
+          {% include "assets/images/icons/bitbucket-670608a71a.svg" %}
+        {% endif %}
+      </defs>
+    </svg>
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
@@ -88,7 +107,7 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
                {% if config.edit_uri %}
-                 <a href="{{ page.edit_url }}" title="{{ i18n.t('edit.link.title') }}" class="md-icon md-content__edit">edit</a>
+                 <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__edit">edit</a>
                {% endif %}
               {% block content %}
                 {% if not "\x3ch1 id=" in page.content %}

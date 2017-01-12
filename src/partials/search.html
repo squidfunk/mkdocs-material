@@ -20,7 +20,7 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/i18n.html" as i18n %}
+{% import "partials/language.html" as lang %}
 
 <!-- Search interface -->
 <div class="md-search" data-md-component="search">
@@ -28,7 +28,7 @@
   <div class="md-search__inner">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query"
-          placeholder="{{ i18n.t('search.placeholder') }}"
+          placeholder="{{ lang.t('search.placeholder') }}"
           accesskey="s" autocapitalize="off" autocorrect="off"
           autocomplete="off" spellcheck="false" />
       <label class="md-icon md-search__icon" for="search"></label>

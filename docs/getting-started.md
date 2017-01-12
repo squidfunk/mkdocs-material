@@ -281,8 +281,8 @@ google_analytics:
 ### Localization <small>L10N</small>
 
 In order to localize the labels (e.g. *Previous* and *Next* in the footer),
-you can override the file `partials/i18n.html` to provide your own translations
-inside the macro `t`:
+you can override the file `partials/language.html` to provide your own
+translations inside the macro `t`:
 
 ``` jinja
 {% macro t(key) %}{{ {

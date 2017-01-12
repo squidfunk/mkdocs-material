@@ -20,7 +20,7 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/i18n.html" as i18n %}
+{% import "partials/language.html" as lang %}
 
 <!-- Application footer -->
 <footer class="md-footer">
@@ -44,7 +44,7 @@
                   md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  {{ i18n.t('footer.previous') }}
+                  {{ lang.t('footer.previous') }}
                 </span>
                 {{ page.previous_page.title }}
               </span>
@@ -61,7 +61,7 @@
                   md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  {{ i18n.t('footer.next') }}
+                  {{ lang.t('footer.next') }}
                 </span>
                 {{ page.next_page.title }}
               </span>
