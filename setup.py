@@ -26,7 +26,7 @@ setup(
     version = "1.0.0",
     url = "http://squidfunk.github.io/mkdocs-material/",
     license = "MIT",
-    description = "A material design theme for MkDocs",
+    description = "A Material Design theme for MkDocs",
     author = "Martin Donath",
     author_email = "martin.donath@squidfunk.com",
     keywords = ["mkdocs", "documentation", "theme"],

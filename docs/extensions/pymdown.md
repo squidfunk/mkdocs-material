@@ -45,7 +45,7 @@ the Markdown experience closer to GitHub Flavored Markdown (GFM).
 The PyMdown Extensions package adds a shorthand to enable all of the included
 extensions that provide the GFM experience. However, usage of the shorthand is
 discouraged, because some extensions are not supported, as the Material theme
-uses the counterparts included in the standard Markdown library.
+uses some incompatible extensions included in the standard Markdown library.
 
 #### BetterEm
 
@@ -132,7 +132,7 @@ Result:
 
 [Tilde][13] provides an easy way to ~~strike through~~ cross out text.
 The portion of text that should be erased must be enclosed in two tildes
-`~~...~~`, and the extension will take care of the rest.
+`~~...~~` and the extension will take care of the rest.
 
   [13]: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
 
@@ -171,13 +171,13 @@ During compilation of the Markdown document, changes can be rendered (default),
 accepted or rejected.
 
 Text can be {--deleted--} and replacement text {++added++}. This can also be
-combined in {~~one~>a single~~} operation. {==Highlighting==} is also possible
-{>>and comments can be added inline<<}.
+combined into {~~one~>a single~~} operation. {==Highlighting==} is also
+possible {>>and comments can be added inline<<}.
 
 {==
 
-This can also be applied to blocks, by putting the opening and closing tags on
-separate lines and adding a new line between the tag and the content each.
+Formatting can also be applied to blocks, by putting the opening and closing
+tags on separate lines and adding new lines between the tags and the content.
 
 ==}
 
@@ -194,7 +194,7 @@ mathematical notation. See [this thread][22] for a short introduction and quick
 reference on how to write equations in TeX syntax.
 
 Besides activating the extension in the `mkdocs.yml`, the MathJax JavaScript
-runtime needs to be included. This can be done with
+runtime needs to be included. This must be done with
 [additional JavaScript][23]:
 
 ``` yaml
@@ -233,7 +233,7 @@ In your `mkdocs.yml`, include it with:
 
 ``` yaml
 extra_javascript:
-  - 'extra.js'
+  - 'javascripts/extra.js'
   - 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'
 ```
 

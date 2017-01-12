@@ -26,7 +26,7 @@ pip show mkdocs-material | grep -E ^Version
 * Introduced git-hooks for better development workflow
 * Rewrite of CSS using the BEM methodology and SassDoc guidelines
 * Rewrite of JavaScript using ES6 and Babel as a transpiler
-* Rewrite of Admonition, Permalinks and Codehilite integration
+* Rewrite of Admonition, Permalinks and CodeHilite integration
 * Rewrite of the complete typographical system
 * Rewrite of Gulp asset pipeline in ES6 and separation of tasks
 * Removed Bower as a dependency in favor of NPM

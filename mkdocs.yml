@@ -20,7 +20,7 @@
 
 # Project information
 site_name: Material for MkDocs
-site_description: A material design theme for MkDocs
+site_description: A Material Design theme for MkDocs
 site_author: Martin Donath
 site_url: http://squidfunk.github.io/mkdocs-material/
 
@@ -39,9 +39,6 @@ extra:
   palette:
     primary: indigo
     accent: indigo
-  font:
-    text: Roboto
-    mono: Roboto Mono
   social:
     - type: github-alt
       link: https://github.com/squidfunk

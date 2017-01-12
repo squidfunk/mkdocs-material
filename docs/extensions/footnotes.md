@@ -39,7 +39,7 @@ Lorem ipsum[^1] dolor sit amet, consectetur adipiscing elit.[^2]
 
 ### Inserting the content
 
-The footnote content is also initiated with a label, which must match the label
+The footnote content is also declared with a label, which must match the label
 used for the footnote reference. It can be inserted at an arbitrary position in
 the document and is always rendered at the bottom of the page. Furthermore, a
 backlink is automatically added to the footnote reference.

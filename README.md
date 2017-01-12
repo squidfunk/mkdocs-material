@@ -4,7 +4,7 @@
 [![Codacy][codacy-image]][codacy-link]
 [![PyPI][pypi-image]][pypi-link]
 
-A material design theme for [MkDocs](http://www.mkdocs.org).
+A Material Design theme for [MkDocs](http://www.mkdocs.org).
 
 TBD: [![_](docs/images/screen.png)](http://squidfunk.github.io/mkdocs-material/)
 

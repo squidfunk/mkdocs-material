@@ -1,7 +1,7 @@
 {
   "name": "mkdocs-material",
   "version": "1.0.0",
-  "description": "A material design theme for MkDocs",
+  "description": "A Material Design theme for MkDocs",
   "keywords": [
     "mkdocs",
     "documentation",

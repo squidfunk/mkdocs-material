@@ -4,7 +4,7 @@
 
 ### Installing MkDocs
 
-Before installing [MkDocs][1], you need to make sure you have Python and `pip`
+Before installing [MkDocs][2], you need to make sure you have Python and `pip`
 – the Python package manager – up and running. You can verify if you're already
 good to go with the following commands:
 
@@ -26,17 +26,18 @@ pip install mkdocs && mkdocs --version
 
     Material requires MkDocs >= 0.16.
 
-Furthermore, it is highly recommended to install [Pygments][2] and the
-[PyMdown Extensions][3] to get the most out of the Material theme:
+Furthermore, it is highly recommended to install [Pygments][3] and the
+[PyMdown Extensions][4] to get the most out of the Material theme:
 
 ```sh
 pip install pygments
 pip install pymdown-extensions
 ```
 
-  [1]: http://www.mkdocs.org
-  [2]: http://pygments.org
-  [3]: http://facelessuser.github.io/pymdown-extensions/
+  [1]: https://hub.docker.com/r/squidfunk/mkdocs-material/
+  [2]: http://www.mkdocs.org
+  [3]: http://pygments.org
+  [4]: http://facelessuser.github.io/pymdown-extensions/
 
 ### Installing Material
 
@@ -48,11 +49,11 @@ Material can be installed with `pip`:
 pip install mkdocs-material
 ```
 
-!!! warning "Installation on Mac OS X"
+!!! warning "Installation on macOS"
 
-    When you're running the pre-installed version of Python on OS X, `pip` tries
-    to install packages in a folder for which your user might not have the
-    adequate permissions. There are two possible solutions to this:
+    When you're running the pre-installed version of Python on macOS, `pip`
+    tries to install packages in a folder for which your user might not have
+    the adequate permissions. There are two possible solutions to this:
 
     1. **Installing in user space** (recommended): Provide the `--user` flag
       to the install command and `pip` will install the package in a user-site
@@ -60,11 +61,11 @@ pip install mkdocs-material
 
     2. **Switching to a homebrewed Python**: Upgrade your Python installation
       to a self-contained solution by installing Python with Homebrew. This
-      will also eliminate any problems you may be having with `pip`.
+      should eliminate a lot of problems you may be having with `pip`.
 
 #### by cloning from GitHub
 
-Material can also be used without system-wide installation by cloning the
+Material can also be used without a system-wide installation by cloning the
 repository into a subfolder of your project's root directory:
 
 ``` sh
@@ -84,24 +85,24 @@ your `mkdocs.yml`. If you installed Material using pip:
 theme: 'material'
 ```
 
-When you cloned Material from GitHub, use:
+If you cloned Material from GitHub:
 
 ``` yaml
 theme_dir: 'mkdocs-material/material'
 ```
 
-That's it. MkDocs includes a development server, so you can view your changes
-as you go - very handy. Spin it up with the following command:
+MkDocs includes a development server, so you can view your changes as you go.
+The development server can be started with the following command:
 
 ``` sh
 mkdocs serve
 ```
 
-Now you can point your browser to [localhost:8000][4] and the Material theme
-should be visible. You can now start writing your documentation, or read on and
-customize the theme through some options.
+Now you can point your browser to [localhost:8000][5] and the Material theme
+should be visible. From here on, you can start writing your documentation, or
+read on and customize the theme through some options.
 
-  [4]: http://localhost:8000
+  [5]: http://localhost:8000
 
 ## Options
 
@@ -111,7 +112,7 @@ project's `mkdocs.yml`. See the following section for all available options.
 ### Changing the color palette
 
 Material defines a default hue for every primary and accent color on Google's
-material design [color palette][5]. This makes it very easy to change the
+Material Design [color palette][6]. This makes it very easy to change the
 overall look of the theme. Just set the primary and accent colors using the
 following variables in your `mkdocs.yml`:
 
@@ -122,19 +123,19 @@ extra:
     accent: 'light blue'
 ```
 
-Color names can be written upper- or lowercase but must match the names of the
-material design color palette. Valid values are: `red`, `pink`, `purple`,
-`deep purple`, `indigo`, `blue`, `light blue`, `cyan`, `teal`, `green`, `light
-green`, `lime`, `yellow`, `amber`, `orange`, `deep orange`, `brown`, `grey` and
-`blue grey`. The last three colors can only be used as a primary color.
+Color names are case-insensitive, but must match the names of the Material
+Design color palette. Valid values are: `red`, `pink`, `purple`, `deep purple`,
+`indigo`, `blue`, `light blue`, `cyan`, `teal`, `green`, `light green`, `lime`,
+`yellow`, `amber`, `orange`, `deep orange`, `brown`, `grey` and `blue grey`.
+The last three colors can only be used as a primary color.
 
 If the color is set via this configuration, an additional CSS file that
 defines the color palette is included. If you want to keep things lean, clone
-the repository and recompile the theme with your custom colors set. See
-[this article][6] for more information.
+the repository and recompile the theme with your custom colors set. See the
+guide on [customization][7] for more information.
 
-  [5]: http://www.materialui.co/colors
-  [6]: customization.md
+  [6]: http://www.materialui.co/colors
+  [7]: customization.md
 
 #### Primary colors
 
@@ -201,10 +202,10 @@ Click on a tile to change the accent color of the theme:
 
 ### Changing the font family
 
-Material uses the [Roboto font family][7] by default, specifically the regular
+Material uses the [Roboto font family][8] by default, specifically the regular
 sans-serif type for text and the `monospaced` type for code. Both fonts are
-loaded from [Google Fonts][8] and can easily be changed to other fonts, like
-for example the [Ubuntu font family][9]:
+loaded from [Google Fonts][9] and can easily be changed to other fonts, like
+for example the [Ubuntu font family][10]:
 
 ``` yaml
 extra:
@@ -222,9 +223,9 @@ extra:
   font: 'none'
 ```
 
-  [7]: https://fonts.google.com/specimen/Roboto
-  [8]: https://fonts.google.com/
-  [9]: https://fonts.google.com/specimen/Ubuntu
+  [8]: https://fonts.google.com/specimen/Roboto
+  [9]: https://fonts.google.com/
+  [10]: https://fonts.google.com/specimen/Ubuntu
 
 ### Adding a logo
 
@@ -243,9 +244,9 @@ extra:
 
 If you want to link your social accounts, the Material theme provides an easy
 way for doing this in the footer of the documentation using the automatically
-included [FontAwesome][10] webfont. The syntax is simple – the `type` denotes
-the name of the social service, e.g. `github`, `twitter` or `linkedin` and
-the `link`, well, resembles the link:
+included [FontAwesome][11] webfont. The syntax is simple – the `type` must
+denote the name of the social service, e.g. `github`, `twitter` or `linkedin`
+and the `link` must contain the URL you want to link to:
 
 ``` yaml
 extra:
@@ -258,11 +259,11 @@ extra:
       link: 'https://de.linkedin.com/in/martin-donath-20a95039'
 ```
 
-The links are generated in order and the type of the link must match the name
-of the FontAwesome glyph. The `fa` is automatically added, so `github` will
-result in `fa fa-github`.
+The links are generated in order and the `type` of the links must match the
+name of the FontAwesome glyph. The `fa` is automatically added, so `github`
+will result in `fa fa-github`.
 
-  [10]: http://fontawesome.io/icons/
+  [11]: http://fontawesome.io/icons/
 
 ### Google Analytics integration
 
@@ -295,7 +296,7 @@ inside the macro `t`:
 ```
 
 Just copy the file from the original theme and make your adjustments. See the
-section on [overriding partials][11] in the customization guide.
+section on [overriding partials][12] in the customization guide.
 
 !!! warning "Migrating from Material 0.2.x"
 
@@ -303,18 +304,18 @@ section on [overriding partials][11] in the customization guide.
     `mkdocs.yml`. With 1.0.0 this is no longer possible as the configuration
     will be ignored.
 
-  [11]: customization.md#overriding-partials
+  [12]: customization.md#overriding-partials
 
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][12] for more information on advanced customization.
+[this article][13] for more information on advanced customization.
 
-  [12]: customization.md
+  [13]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][13]. The following extensions
+MkDocs supports several [Markdown extensions][14]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -328,18 +329,18 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][14]
-* [Codehilite][15]
-* [Permalinks][16]
-* [Footnotes][17]
-* [PyMdown Extensions][18]
+* [Admonition][15]
+* [Codehilite][16]
+* [Permalinks][17]
+* [Footnotes][18]
+* [PyMdown Extensions][19]
 
-  [13]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [14]: extensions/admonition.md
-  [15]: extensions/codehilite.md
-  [16]: extensions/permalinks.md
-  [17]: extensions/footnotes.md
-  [18]: extensions/pymdown.md
+  [14]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [15]: extensions/admonition.md
+  [16]: extensions/codehilite.md
+  [17]: extensions/permalinks.md
+  [18]: extensions/footnotes.md
+  [19]: extensions/pymdown.md
 
 ## Full example
 

@@ -34,6 +34,7 @@ Example:
 Result:
 
 !!! note
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -42,8 +43,8 @@ Result:
 
 ### Changing the title
 
-By default, the block title will equal the type qualifier. However, it can
-easily be changed by adding a quoted string after the type qualifier.
+By default, the block title will equal the type qualifier in titlecase. However,
+it can easily be changed by adding a quoted string after the type qualifier.
 
 Example:
 
@@ -57,6 +58,7 @@ Example:
 Result:
 
 !!! note "Phasellus posuere in sem ut cursus"
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -78,6 +80,7 @@ Example:
 Result:
 
 !!! note ""
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -100,6 +103,7 @@ blocks.
 Example:
 
 !!! note
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -147,6 +151,7 @@ Example:
 Result:
 
 !!! note
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -170,6 +175,7 @@ Example:
 Result:
 
 !!! summary
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -193,6 +199,7 @@ Example:
 Result:
 
 !!! tip
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -217,6 +224,7 @@ Example:
 Result:
 
 !!! success
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -241,6 +249,7 @@ Example:
 Result:
 
 !!! warning
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -265,6 +274,7 @@ Example:
 Result:
 
 !!! failure
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -289,6 +299,7 @@ Example:
 Result:
 
 !!! danger
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -312,6 +323,7 @@ Example:
 Result:
 
 !!! bug
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.

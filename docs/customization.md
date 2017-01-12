@@ -35,7 +35,7 @@ extra_css:
 
 Spin up the development server with `mkdocs serve` and start typing your
 changes in your additional stylesheet file – you can see them instantly after
-saving, as the MkDocs development server implements live reloading. Cool, huh?
+saving, as the MkDocs development server implements live reloading.
 
 ### Additional JavaScript
 
