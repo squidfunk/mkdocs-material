@@ -41,7 +41,8 @@ git diff > "$PATCH_FILE"
 git checkout -- .
 
 # Filter relevant files for linting
-FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep "\.js\|scss$")
+FILES=$(git diff --cached --name-only --diff-filter=ACMR | \
+  grep "\.\(js\|jsx\|scss\)$")
 
 # Run the check and print indicator
 if [ "$FILES" ]; then
