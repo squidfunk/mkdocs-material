@@ -34,3 +34,17 @@
 # Distribution files
 /dist
 /mkdocs_material.egg-info
+
+.idea/dbnavigator.xml
+
+.idea/misc.xml
+
+.idea/modules.xml
+
+.idea/noto-mkdocs-theme.iml
+
+material/__init__.pyc
+
+.idea/workspace.xml
+
+.idea/vcs.xml
