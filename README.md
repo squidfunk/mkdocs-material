@@ -1,13 +1,7 @@
-# Material
-
 [![Travis][travis-image]][travis-link]
 [![Dependencies][deps-image]][deps-link]
 [![Codacy][codacy-image]][codacy-link]
 [![PyPI][pypi-image]][pypi-link]
-
-A Material Design theme for [MkDocs](http://www.mkdocs.org).
-
-TBD: [![_](docs/images/material.png)](http://squidfunk.github.io/mkdocs-material/)
 
   [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg
   [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
@@ -17,6 +11,12 @@ TBD: [![_](docs/images/material.png)](http://squidfunk.github.io/mkdocs-material
   [codacy-link]: https://www.codacy.com/app/squidfunk/mkdocs-material?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=squidfunk/mkdocs-material&amp;utm_campaign=Badge_Grade
   [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
   [pypi-link]: https://pypi.python.org/pypi/mkdocs-material
+
+# Material for MkDocs
+
+A Material Design theme for [MkDocs](http://www.mkdocs.org).
+
+[![Material for MkDocs](docs/images/material.png)](docs/images/material.png)
 
 ## Quick start
 
