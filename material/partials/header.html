@@ -1,0 +1,43 @@
+<header class="md-header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="{{ nav.homepage.url }}" title="{{ config.site_name }}" class="md-icon {% if not config.extra.logo %} md-icon--home {% endif %} md-header-nav__icon">
+          {% if config.extra.logo %}
+            <img src="{{ base_url }}/{{ config.extra.logo }}" width="24" height="24">
+          {% endif %}
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__icon" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          {% block site_name %}
+            {% if page %}
+              {% for parent in page.ancestors %}
+                <span class="md-header-nav__parent">
+                  {{ parent.title }}
+                </span>
+              {% endfor %}
+            {% endif %}
+            {{ page.title | default(config.site_name, true) }}
+          {% endblock %}
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        {% block search_box %}
+          <label class="md-icon md-icon--search md-header-nav__icon" for="search"></label>
+          {% include "partials/search.html" %}
+        {% endblock %}
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            {% if config.repo_url %}
+              {% include "partials/source.html" %}
+            {% endif %}
+          </div>
+      </div>
+    </div>
+  </nav>
+</header>

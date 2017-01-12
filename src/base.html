@@ -1,273 +1,269 @@
+<!--
+  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+{% import "partials/i18n.html" as i18n %}
+
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<html class="no-js">
   <head>
 
-    <!-- Charset and viewport -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,
-      user-scalable=no, initial-scale=1, maximum-scale=1" />
-
-    <!-- General meta tags -->
-    {% block htmltitle %}
-
-      <!-- Site title -->
-      {% if page_title %}
-        <title>{{ page_title }} - {{ site_name }}</title>
-      {% elif page_description %}
-        <title>{{ site_name }} - {{ page_description }}</title>
-      {% else %}
-        <title>{{ site_name }}</title>
-      {% endif %}
+    <!-- Block: metatags -->
+    {% block site_meta %}
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       <!-- Site description -->
-      {% if page_description %}
-        <meta name="description" content="{{ page_description }}" />
+      {% if config.site_description %}
+        <meta name="description" content="{{ config.site_description }}" />
       {% endif %}
 
       <!-- Canonical -->
-      {% if canonical_url %}
-        <link rel="canonical" href="{{ canonical_url }}" />
+      {% if page.canonical_url %}
+        <link rel="canonical" href="{{ page.canonical_url }}" />
       {% endif %}
 
       <!-- Author -->
-      {% if site_author %}
-        <meta name="author" content="{{ site_author }}" />
+      {% if config.site_author %}
+        <meta name="author" content="{{ config.site_author }}" />
+      {% endif %}
+
+      <!-- Favicon -->
+      {% if config.site_favicon %}
+        <link rel="shortcut icon"
+            href="{{ base_url }}/{{ config.site_favicon }}">
+      {% else %}
+        <link rel="shortcut icon"
+            href="{{ base_url }}/assets/images/favicon.ico">
+      {% endif %}
+
+      <!-- Generator banner -->
+      <meta name="generator" content="mkdocs+$theme-name$#$theme-version$" />
+    {% endblock %}
+
+    <!-- Block: site title -->
+    {% block htmltitle %}
+      {% if page.title %}
+        <title>{{ page.title }} - {{ config.site_name }}</title>
+      {% elif config.site_description %}
+        <title>{{ config.site_name }} - {{ config.site_description }}</title>
+      {% else %}
+        <title>{{ config.site_name }}</title>
       {% endif %}
     {% endblock %}
 
-    <!-- Open graph tags -->
-    <meta property="og:url" content="{{ canonical_url }}" />
-    <meta property="og:title" content="{{ site_name }}"/>
-    <meta property="og:image"
-      content="{{ canonical_url }}/{{ base_url }}/{{ config.extra.logo }}" />
+    <!-- Block: JavaScript libraries -->
+    {% block libs %}
+      <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+    {% endblock %}
 
-    <!-- Web application capability on iOS -->
-    <meta name="apple-mobile-web-app-title" content="{{ site_name }}" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent" />
+    <!-- Block: webfonts -->
+    {% block fonts %}
+      {% include "partials/fonts.html" %}
+    {% endblock %}
 
-    <!-- Web application icon on iOS -->
-    {% if config.extra.logo %}
-      <link rel="apple-touch-icon"
-        href="{{ base_url }}/{{ config.extra.logo }}">
-    {% endif %}
+    <!-- Block: stylesheets -->
+    {% block styles %}
 
-    <!-- Favicon -->
-    {% set favicon = favicon | default("assets/images/favicon.ico", true) %}
-    <link rel="shortcut icon" type="image/x-icon"
-      href="{{ base_url }}/{{ favicon }}" />
-    <link rel="icon" type="image/x-icon"
-      href="{{ base_url }}/{{ favicon }}" />
-
-    <!-- Configure icons (placed here to omit issues with subdirectories) -->
-    <style>
-      @font-face {
-      	font-family: 'Icon';
-      	src: url('{{ base_url }}/assets/fonts/icon.eot?52m981');
-      	src: url('{{ base_url }}/assets/fonts/icon.eot?#iefix52m981')
-               format('embedded-opentype'),
-      		   url('{{ base_url }}/assets/fonts/icon.woff?52m981')
-               format('woff'),
-      		   url('{{ base_url }}/assets/fonts/icon.ttf?52m981')
-               format('truetype'),
-      		   url('{{ base_url }}/assets/fonts/icon.svg?52m981#icon')
-               format('svg');
-      	font-weight: normal;
-      	font-style: normal;
-      }
-    </style>
-
-    <!-- Theme-related stylesheets -->
-    <link rel="stylesheet" type="text/css"
-      href="{{ base_url }}/assets/stylesheets/application.css" />
-
-    <!-- Extra palettes -->
-    {% if config.extra.palette %}
+      <!-- Theme-related stylesheets -->
       <link rel="stylesheet" type="text/css"
-        href="{{ base_url }}/assets/stylesheets/palettes.css" />
-    {% endif %}
+          href="{{ base_url }}/assets/stylesheets/application.css" />
 
-    <!-- Configure webfonts -->
-    {% if config.extra.font != "none" %}
-      {% set text = config.extra.get("font", {}).text | default("Ubuntu") %}
-      {% set code = config.extra.get("font", {}).code | default("Ubuntu Mono") %}
-      {% set font = text + ':400,700|' + code | replace(' ', '+') %}
-      <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family={{ font }}" />
-      <style>
-        body, input {
-          font-family: '{{ text }}', Helvetica, Arial, sans-serif;
-        }
-        pre, code {
-          font-family: '{{ code }}', 'Courier New', 'Courier', monospace;
-        }
-      </style>
-    {% endif %}
+      <!-- Extra color palette -->
+      {% if config.extra.palette %}
+        <link rel="stylesheet" type="text/css"
+            href="{{ base_url }}/assets/stylesheets/application.palette.css" />
+      {% endif %}
 
-    <!-- Custom stylesheets -->
-    {% for path in extra_css %}
-      <link rel="stylesheet" type="text/css" href="{{ path }}" />
-    {% endfor %}
+      <!-- Custom stylesheets -->
+      {% for path in extra_css %}
+        <link rel="stylesheet" type="text/css" href="{{ path }}" />
+      {% endfor %}
+    {% endblock %}
 
-    <!-- Modernizr -->
-    <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
-
-    <!-- Custom header -->
+    <!-- Block: custom front matter -->
     {% block extrahead %}{% endblock %}
   </head>
 
-  <!-- Define palette -->
+  <!-- Integrate color palette, if defined -->
   {% set palette = config.extra.get("palette", {}) %}
-  {% set primary = palette.primary | replace(' ', '-') | lower %}
-  {% set accent  = palette.accent  | replace(' ', '-') | lower %}
-  <body class="
-    {% if primary %}palette-primary-{{ primary }}{% endif %}
-    {% if accent %}palette-accent-{{ accent }}{% endif %}
-  ">
+  {% set primary = palette.primary | replace(" ", "-") | lower %}
+  {% set accent  = palette.accent  | replace(" ", "-") | lower %}
+  {% if primary or accent %}
+    <body data-md-color-primary="{{ primary }}"
+        data-md-color-accent="{{ accent }}">
+  {% else %}
+    <body>
+  {% endif %}
 
-    <!--
-      Sadly the jinja template engine is not very flexible - it doesn't support
-      regular expressions out-of-the-box. Since there might be a slash at the
-      end of the repository name, we just do a string comparison and kill it.
-    -->
-    {% if repo_name == "GitHub" and repo_url %}
-      {% set repo_id = repo_url | replace("https://github.com/", "") %}
-      {% if repo_id[-1:] == "/" %}
-        {% set repo_id = repo_id[:-1] %}
-      {% endif %}
-    {% endif %}
-
-    <!-- Backdrop -->
-    <div class="backdrop">
-      <div class="backdrop-paper"></div>
-    </div>
+    <!-- Inline SVGs -->
+    {% include "partials/svgs.html" %}
 
     <!-- State toggles -->
-    <input class="toggle" type="checkbox" id="toggle-drawer" />
-    <input class="toggle" type="checkbox" id="toggle-search" />
+    <input class="md-toggle" data-md-toggle="drawer"
+        type="checkbox" id="drawer" />
+    <input class="md-toggle" data-md-toggle="search"
+        type="checkbox" id="search" />
 
     <!-- Overlay for expanded drawer -->
-    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
 
-    <!-- Header -->
-    <header class="header">
-      {% include "header.html" %}
-    </header>
+    <!-- Application header -->
+    {% block header %}
+      {% include "partials/header.html" %}
+    {% endblock %}
 
-    <!-- Main content -->
-    <main class="main">
+    <!-- Container, necessary for web-application context -->
+    <div class="md-container">
 
-      <!--
-        This is a nasty hack that checks whether the content contains a
-        h1 headline. If it does, the variable h1 is set to true. This is
-        necessary for correctly rendering the table of contents which is
-        embedded into the navigation and the actual headline.
-      -->
-      {% set h1 = "\x3ch1 id=" in content %}
+      <!-- Main container -->
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
 
-      <!-- Drawer with navigation -->
-      <div class="drawer">
-        {% include "drawer.html" %}
-      </div>
+          <!-- Block: navigation -->
+          {% block site_nav %}
 
-      <!-- Article -->
-      <article class="article">
-        <div class="wrapper">
-
-          <!-- Headline -->
-          {% if not h1 %}
-            <h1>{{ page_title | default(site_name, true)}}</h1>
-          {% endif %}
-
-          <!-- Article content -->
-          {{ content }}
-
-          <!-- Copyright and theme information -->
-          <aside class="copyright" role="note">
-            {% if copyright %}
-              {{ copyright }} &ndash;
+            <!-- Main navigation -->
+            {% if nav %}
+              <div class="md-sidebar md-sidebar--primary"
+                  data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    {% include "partials/nav.html" %}
+                  </div>
+                </div>
+              </div>
             {% endif %}
-            Documentation built with
-            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
-            using the
-            <a href="http://squidfunk.github.io/mkdocs-material/"
-              target="_blank">
-              Material
-            </a>
-            theme.
-          </aside>
 
-          <!-- Footer -->
-          {% block footer %}
-            <footer class="footer">
-              {% include "footer.html" %}
-            </footer>
+            <!-- Table of contents -->
+            {% if page.toc %}
+              <div class="md-sidebar md-sidebar--secondary"
+                  data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    {% include "partials/toc.html" %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
           {% endblock %}
-        </div>
-      </article>
 
-      <!-- Search results -->
-      <div class="results" role="status" aria-live="polite">
-        <div class="scrollable">
-          <div class="wrapper">
-            <div class="meta"></div>
-            <div class="list"></div>
+          <!-- Article -->
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+
+              <!-- Edit button, if URL was defined -->
+               {% if config.edit_uri %}
+                 <a href="{{ page.edit_url }}"
+                      title="{{ i18n.t('edit.link.title') }}"
+                      class="md-icon md-content__edit">edit</a>
+               {% endif %}
+
+              <!-- Block: content -->
+              {% block content %}
+
+                <!--
+                  This is a nasty hack that checks whether the content contains
+                  a h1 headline. If it doesn't, the page title (or respectively
+                  site name) is used as the main headline.
+                -->
+                {% if not "\x3ch1 id=" in page.content %}
+                  <h1>{{ page.title | default(config.site_name, true)}}</h1>
+                {% endif %}
+
+                <!-- Content -->
+                {{ page.content }}
+              {% endblock %}
+            </article>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
 
-    <!-- Theme-related and custom javascripts -->
-    <script>
-      var base_url = '{{ base_url }}';
-      var repo_id  = '{{ repo_id }}';
-    </script>
-    <script src="{{ base_url }}/assets/javascripts/application.js"></script>
-    {% for path in extra_javascript %}
-      <script src="{{ path }}"></script>
-    {% endfor %}
+      <!-- Application footer -->
+      {% block footer %}
+        {% include "partials/footer.html" %}
+      {% endblock %}
+    </div>
 
-    <!-- Google Analytics -->
-    {% if google_analytics %}
+    <!-- Block: theme-related JavaScript -->
+    {% block scripts %}
+      <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+      <script>
+
+        /* Configuration for application */
+        var config = {
+          url: {
+            base: "{{ base_url }}",
+          }
+        };
+
+        /* Initialize application */
+        var app = new Application(config);
+        app.initialize();
+      </script>
+      {% for path in extra_javascript %}
+        <script src="{{ path }}"></script>
+      {% endfor %}
+    {% endblock %}
+
+    <!-- Block: analytic scripts -->
+    {% block analytics %}
+      {% if config.google_analytics %}
       <script>
         (function(i,s,o,g,r,a,m){
-          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
           []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
           m.parentNode.insertBefore(a,m)
         })(window, document,
-          'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+          "script", "https://www.google-analytics.com/analytics.js", "ga");
 
         /* General initialization */
-        ga('create', '{{ google_analytics[0] }}', '{{ google_analytics[1] }}');
-        ga('set', 'anonymizeIp', true);
-        ga('send', 'pageview');
+        ga("create",
+          "{{ config.google_analytics[0] }}",
+          "{{ config.google_analytics[1] }}");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
 
         /* Track outbound links */
-        var buttons = document.querySelectorAll('a');
-        Array.prototype.map.call(buttons, function(item) {
+        var links = document.getElementsByTagName("a");
+        Array.prototype.map.call(links, function(item) {
           if (item.host != document.location.host) {
-            item.addEventListener('click', function() {
-              var action = item.getAttribute('data-action') || 'follow';
-              ga('send', 'event', 'outbound', action, item.href);
+            item.addEventListener("click", function() {
+              var action = item.getAttribute("data-md-action") || "follow";
+              ga("send", "event", "outbound", action, item.href);
             });
           }
         });
 
         /* Register handler to log search on blur */
-        var query = document.querySelector('.query');
-        query.addEventListener('blur', function() {
+        var query = document.forms.search.query;
+        query.addEventListener("blur", function() {
           if (this.value) {
             var path = document.location.pathname;
-            ga('send', 'pageview', path + '?q=' + this.value);
+            ga("send", "pageview", path + "?q=" + this.value);
           }
         });
       </script>
-    {% endif %}
+      {% endif %}
+    {% endblock %}
   </body>
 </html>

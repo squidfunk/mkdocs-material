@@ -1,0 +1,156 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Sidebar container
+.md-sidebar {
+  position: relative;
+  width: 24.2rem;
+  float: left;
+  overflow: visible;
+
+  // Hide for print
+  @media print {
+    display: none;
+  }
+
+  // Lock sidebar to container height (account for fixed header)
+  &[data-md-state="lock"] {
+    position: fixed;
+    top: 5.6rem;
+  }
+
+  // [tablet -]: Convert navigation to drawer
+  @include break-to-device(tablet) {
+
+    // Render primary sidebar as a slideout container
+    &--primary {
+      position: fixed;
+      top: 0;
+      left: -24.2rem;
+      width: 24.2rem;
+      height: 100%;
+      transform: translateX(0);
+      transition:
+        transform  0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.25s;
+      background-color: $md-color-white;
+      z-index: 2;
+
+      // Just hide drawer, if browser doesn't support 3D transforms
+      .no-csstransforms3d & {
+        display: none;
+      }
+
+      // Expanded drawer
+      [data-md-toggle="drawer"]:checked ~ .md-container & {
+        @include z-depth(8);
+
+        transform: translateX(24.2rem);
+
+        // Just show drawer, if browser doesn't support 3D transforms
+        .no-csstransforms3d & {
+          display: block;
+        }
+      }
+
+      // Hide overflow for nested navigation
+      .md-sidebar__scrollwrap {
+        overflow: hidden;
+      }
+    }
+  }
+
+  // Secondary sidebar with table of contents
+  &--secondary {
+    display: none;
+
+    // [tablet landscape +]: Show table of contents next to body copy
+    @include break-from-device(tablet landscape) {
+      display: block;
+      float: right;
+
+      // Hack: align right in case of locked sidebar
+      &[data-md-state="lock"] {
+        margin-left: 100%;
+        transform: translate(-100%, 0);
+
+        // [screen +]: Limit to grid
+        @include break-from-device(screen) {
+          margin-left: 122rem;
+        }
+      }
+    }
+  }
+
+  // Wrapper for scrolling on overflow
+  &__scrollwrap {
+    margin: 2.4rem 0.4rem;
+    overflow-y: scroll;
+
+    // [tablet -]: Adjust margins
+    @include break-to-device(tablet) {
+
+      // Adjust margins for primary scrollbar
+      .md-sidebar--primary & {
+        margin: 0;
+      }
+    }
+
+    // Limit height to window, if JavaScript is available
+    .js & {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    // Override native scrollbar styles
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+      height: 0.4rem;
+    }
+
+    // Style scrollbar thumb
+    &::-webkit-scrollbar-thumb {
+      background-color: $md-color-black--lighter;
+
+      // Hovered scrollbar thumb
+      &:hover {
+        background-color: $md-color-accent;
+      }
+    }
+  }
+
+  // Sidebar content
+  &__inner {
+
+    // [screen +]: Add line for reference
+    @include break-from-device(screen) {
+      border-right: 0.1rem solid $md-color-black--lightest;
+    }
+  }
+}

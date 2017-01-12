@@ -1,180 +1,120 @@
+{% import "partials/i18n.html" as i18n %}
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<html class="no-js">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
-    {% block htmltitle %}
-      {% if page_title %}
-        <title>{{ page_title }} - {{ site_name }}</title>
-      {% elif page_description %}
-        <title>{{ site_name }} - {{ page_description }}</title>
+    {% block site_meta %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      {% if config.site_description %}
+        <meta name="description" content="{{ config.site_description }}">
+      {% endif %}
+      {% if page.canonical_url %}
+        <link rel="canonical" href="{{ page.canonical_url }}">
+      {% endif %}
+      {% if config.site_author %}
+        <meta name="author" content="{{ config.site_author }}">
+      {% endif %}
+      {% if config.site_favicon %}
+        <link rel="shortcut icon" href="{{ base_url }}/{{ config.site_favicon }}">
       {% else %}
-        <title>{{ site_name }}</title>
+        <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.ico">
       {% endif %}
-      {% if page_description %}
-        <meta name="description" content="{{ page_description }}">
-      {% endif %}
-      {% if canonical_url %}
-        <link rel="canonical" href="{{ canonical_url }}">
-      {% endif %}
-      {% if site_author %}
-        <meta name="author" content="{{ site_author }}">
+      <meta name="generator" content="mkdocs+mkdocs-material#1.0.0">
+    {% endblock %}
+    {% block htmltitle %}
+      {% if page.title %}
+        <title>{{ page.title }} - {{ config.site_name }}</title>
+      {% elif config.site_description %}
+        <title>{{ config.site_name }} - {{ config.site_description }}</title>
+      {% else %}
+        <title>{{ config.site_name }}</title>
       {% endif %}
     {% endblock %}
-    <meta property="og:url" content="{{ canonical_url }}">
-    <meta property="og:title" content="{{ site_name }}">
-    <meta property="og:image" content="{{ canonical_url }}/{{ base_url }}/{{ config.extra.logo }}">
-    <meta name="apple-mobile-web-app-title" content="{{ site_name }}">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    {% if config.extra.logo %}
-      <link rel="apple-touch-icon" href="{{ base_url }}/{{ config.extra.logo }}">
-    {% endif %}
-    {% set favicon = favicon | default("assets/images/favicon-e565ddfa3b.ico", true) %}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ base_url }}/{{ favicon }}">
-    <link rel="icon" type="image/x-icon" href="{{ base_url }}/{{ favicon }}">
-    <style>
-      @font-face {
-      	font-family: 'Icon';
-      	src: url('{{ base_url }}/assets/fonts/icon.eot?52m981');
-      	src: url('{{ base_url }}/assets/fonts/icon.eot?#iefix52m981')
-               format('embedded-opentype'),
-      		   url('{{ base_url }}/assets/fonts/icon.woff?52m981')
-               format('woff'),
-      		   url('{{ base_url }}/assets/fonts/icon.ttf?52m981')
-               format('truetype'),
-      		   url('{{ base_url }}/assets/fonts/icon.svg?52m981#icon')
-               format('svg');
-      	font-weight: normal;
-      	font-style: normal;
-      }
-    </style>
-    <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-e576885f03.css">
-    {% if config.extra.palette %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/palettes-2d6c5d2926.css">
-    {% endif %}
-    {% if config.extra.font != "none" %}
-      {% set text = config.extra.get("font", {}).text | default("Ubuntu") %}
-      {% set code = config.extra.get("font", {}).code | default("Ubuntu Mono") %}
-      {% set font = text + ':400,700|' + code | replace(' ', '+') %}
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">
-      <style>
-        body, input {
-          font-family: '{{ text }}', Helvetica, Arial, sans-serif;
-        }
-        pre, code {
-          font-family: '{{ code }}', 'Courier New', 'Courier', monospace;
-        }
-      </style>
-    {% endif %}
-    {% for path in extra_css %}
-      <link rel="stylesheet" href="{{ path }}">
-    {% endfor %}
-    <script src="{{ base_url }}/assets/javascripts/modernizr-2216498cab.js"></script>
+    {% block libs %}
+      <script src="{{ base_url }}/assets/javascripts/modernizr-9f4ef1018a.js"></script>
+    {% endblock %}
+    {% block fonts %}
+      {% include "partials/fonts.html" %}
+    {% endblock %}
+    {% block styles %}
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-ff220fd69d.css">
+      {% if config.extra.palette %}
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
+      {% endif %}
+      {% for path in extra_css %}
+        <link rel="stylesheet" href="{{ path }}">
+      {% endfor %}
+    {% endblock %}
     {% block extrahead %}{% endblock %}
   </head>
   {% set palette = config.extra.get("palette", {}) %}
-  {% set primary = palette.primary | replace(' ', '-') | lower %}
-  {% set accent  = palette.accent  | replace(' ', '-') | lower %}
-  <body class="{% if primary %}palette-primary-{{ primary }}{% endif %} {% if accent %}palette-accent-{{ accent }}{% endif %}">
-    {% if repo_name == "GitHub" and repo_url %}
-      {% set repo_id = repo_url | replace("https://github.com/", "") %}
-      {% if repo_id[-1:] == "/" %}
-        {% set repo_id = repo_id[:-1] %}
-      {% endif %}
-    {% endif %}
-    <div class="backdrop">
-      <div class="backdrop-paper"></div>
-    </div>
-    <input class="toggle" type="checkbox" id="toggle-drawer">
-    <input class="toggle" type="checkbox" id="toggle-search">
-    <label class="toggle-button overlay" for="toggle-drawer"></label>
-    <header class="header">
-      {% include "header.html" %}
-    </header>
-    <main class="main">
-      {% set h1 = "\x3ch1 id=" in content %}
-      <div class="drawer">
-        {% include "drawer.html" %}
-      </div>
-      <article class="article">
-        <div class="wrapper">
-          {% if not h1 %}
-            <h1>{{ page_title | default(site_name, true)}}</h1>
-          {% endif %}
-          {{ content }}
-          <aside class="copyright" role="note">
-            {% if copyright %}
-              {{ copyright }} &ndash;
+  {% set primary = palette.primary | replace(" ", "-") | lower %}
+  {% set accent  = palette.accent  | replace(" ", "-") | lower %}
+  {% if primary or accent %}
+    <body data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
+  {% else %}
+    <body>
+  {% endif %}
+    {% include "partials/svgs.html" %}
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    {% block header %}
+      {% include "partials/header.html" %}
+    {% endblock %}
+    <div class="md-container">
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          {% block site_nav %}
+            {% if nav %}
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    {% include "partials/nav.html" %}
+                  </div>
+                </div>
+              </div>
             {% endif %}
-            Documentation built with
-            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
-            using the
-            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
-              Material
-            </a>
-            theme.
-          </aside>
-          {% block footer %}
-            <footer class="footer">
-              {% include "footer.html" %}
-            </footer>
+            {% if page.toc %}
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    {% include "partials/toc.html" %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
           {% endblock %}
-        </div>
-      </article>
-      <div class="results" role="status" aria-live="polite">
-        <div class="scrollable">
-          <div class="wrapper">
-            <div class="meta"></div>
-            <div class="list"></div>
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+               {% if config.edit_uri %}
+                 <a href="{{ page.edit_url }}" title="{{ i18n.t('edit.link.title') }}" class="md-icon md-content__edit">edit</a>
+               {% endif %}
+              {% block content %}
+                {% if not "\x3ch1 id=" in page.content %}
+                  <h1>{{ page.title | default(config.site_name, true)}}</h1>
+                {% endif %}
+                {{ page.content }}
+              {% endblock %}
+            </article>
           </div>
         </div>
-      </div>
-    </main>
-    <script>
-      var base_url = '{{ base_url }}';
-      var repo_id  = '{{ repo_id }}';
-    </script>
-    <script src="{{ base_url }}/assets/javascripts/application-82b5011116.js"></script>
-    {% for path in extra_javascript %}
-      <script src="{{ path }}"></script>
-    {% endfor %}
-    {% if google_analytics %}
-      <script>
-        (function(i,s,o,g,r,a,m){
-          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
-          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
-          m.parentNode.insertBefore(a,m)
-        })(window, document,
-          'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-        /* General initialization */
-        ga('create', '{{ google_analytics[0] }}', '{{ google_analytics[1] }}');
-        ga('set', 'anonymizeIp', true);
-        ga('send', 'pageview');
-        /* Track outbound links */
-        var buttons = document.querySelectorAll('a');
-        Array.prototype.map.call(buttons, function(item) {
-          if (item.host != document.location.host) {
-            item.addEventListener('click', function() {
-              var action = item.getAttribute('data-action') || 'follow';
-              ga('send', 'event', 'outbound', action, item.href);
-            });
-          }
-        });
-        /* Register handler to log search on blur */
-        var query = document.querySelector('.query');
-        query.addEventListener('blur', function() {
-          if (this.value) {
-            var path = document.location.pathname;
-            ga('send', 'pageview', path + '?q=' + this.value);
-          }
-        });
-      </script>
-    {% endif %}
+      </main>
+      {% block footer %}
+        {% include "partials/footer.html" %}
+      {% endblock %}
+    </div>
+    {% block scripts %}
+      <script src="{{ base_url }}/assets/javascripts/application-ca9b3745c3.js"></script>
+      <script>var config={url:{base:"{{ base_url }}"}},app=new Application(config);app.initialize()</script>
+      {% for path in extra_javascript %}
+        <script src="{{ path }}"></script>
+      {% endfor %}
+    {% endblock %}
+    {% block analytics %}
+      {% if config.google_analytics %}
+      <script>!function(e,t,a,n,o,c,i){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=t.createElement(a),i=t.getElementsByTagName(a)[0],c.async=1,c.src=n,i.parentNode.insertBefore(c,i)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","{{ config.google_analytics[0] }}","{{ config.google_analytics[1] }}"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var t=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",t,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
+      {% endif %}
+    {% endblock %}
   </body>
 </html>

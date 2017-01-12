@@ -1,0 +1,434 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules: font definitions
+// ----------------------------------------------------------------------------
+
+// Enable font-smoothing in Webkit and FF
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Default fonts
+body,
+input {
+  color: $md-color-black;
+  // font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-feature-settings: "kern", "onum", "liga";
+  font-weight: 400;
+
+  // Use system fonts, if browser doesn't support webfonts
+  .no-fontface & {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
+
+// Proportionally spaced fonts
+pre,
+code,
+kbd {
+  color: $md-color-black;
+  // font-family: "Roboto Mono", "Courier New", Courier, monospace;
+  font-feature-settings: "kern", "onum", "liga";
+  font-weight: 400;
+
+  // Use system fonts, if browser doesn't support webfonts
+  .no-fontface & {
+    font-family: "Courier New", Courier, monospace;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: typesetted content
+// ----------------------------------------------------------------------------
+
+// Content that is typeset - if possible, all margins, paddings and font sizes
+// should be set in ems, so nested blocks (e.g. Admonition) render correctly,
+// except headlines that should only appear on the top level and need to have
+// consistent spacing due to layout constraints.
+.md-typeset {
+  font-size: ms(0);
+  line-height: 1.6;
+
+  // Colors should be kept when printing
+  -webkit-print-color-adjust: exact;
+
+  // Default spacing
+  p,
+  ul,
+  ol,
+  blockquote {
+    margin: 1em 0;
+  }
+
+  // 1st level headline
+  h1 {
+    margin: 0 0 4rem;
+    color: $md-color-black--light;
+    font-size: ms(3);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  // 2nd level headline
+  h2 {
+    margin: 4rem 0 1.6rem;
+    font-size: ms(2);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+  }
+
+  // 3rd level headline
+  h3 {
+    margin: 3.2rem 0 1.6rem;
+    font-size: ms(1);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+
+  // 3rd level headline following an 2nd level headline
+  h2 + h3 {
+    margin-top: 1.6rem;
+  }
+
+  // 4th level headline
+  h4 {
+    margin: 1.6rem 0;
+    font-size: ms(0);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  // 5th and 6th level headline
+  h5,
+  h6 {
+    margin: 1.6rem 0;
+    color: $md-color-black--light;
+    font-size: ms(-1);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  // Overrides for 5th level headline
+  h5 {
+    text-transform: uppercase;
+  }
+
+  // Horizontal separators
+  hr {
+    margin: 1.5em 0;
+    border-bottom: 0.1rem dotted $md-color-black--lighter;
+  }
+
+  // Links
+  a {
+    color: $md-color-primary;
+    word-break: break-word;
+
+    // Also enable color transition on pseudo elements
+    &,
+    &::before {
+      transition: color 0.125s;
+    }
+
+    // Hovered and active links
+    &:hover,
+    &:active {
+      color: $md-color-accent;
+    }
+
+    // Add URLs for print
+    @media print {
+
+      // Show link URL
+      &::after {
+        color: $md-color-black--light;
+        content: " [" attr(href) "]";
+      }
+    }
+  }
+
+  // Code blocks
+  code,
+  pre {
+    background-color: $md-code-background;
+    color: $md-code-color;
+    font-size: 85%;
+  }
+
+  // Inline code blocks, correct relative ems for smaller font size
+  code {
+    $correct: 1 / 0.85;
+
+    margin: 0 0.25em * $correct;
+    padding: 0.0625em * $correct 0;
+    border-radius: 0.2rem;
+    box-shadow:
+      +0.25em * $correct 0 0 $md-code-background,
+      -0.25em * $correct 0 0 $md-code-background;
+    word-break: break-word;
+    box-decoration-break: clone;
+
+    // Remove box-shadows for print
+    @media print {
+      box-shadow: none;
+      box-decoration-break: initial;
+    }
+  }
+
+  // Disable containing block inside headlines
+  h1 code,
+  h2 code,
+  h3 code,
+  h4 code,
+  h5 code,
+  h6 code {
+    margin: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  // Reset code if it's inside a link
+  a > code {
+    margin: inherit;
+    padding: inherit;
+    border-radius: none;
+    background-color: inherit;
+    color: inherit;
+    box-shadow: none;
+  }
+
+  // Unformatted code blocks
+  pre {
+    margin: 1em 0;
+    padding: 1rem 1.2rem;
+    border-radius: 0.2rem;
+    line-height: 1.4;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    // [mobile -]: Stretch to whole width
+    @include break-to-device(mobile) {
+      margin: 1em -1.6rem;
+      padding: 1rem 1.6rem;
+      border-radius: 0;
+    }
+
+    // Override native scrollbar styles
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+      height: 0.4rem;
+    }
+
+    // Style scrollbar thumb
+    &::-webkit-scrollbar-thumb {
+      background-color: $md-color-black--lighter;
+
+      // Hovered scrollbar thumb
+      &:hover {
+        background-color: $md-color-accent;
+      }
+    }
+
+    // Reset, if code is wrapped inside pre tag
+    > code {
+      margin: 0;
+      background-color: transparent;
+      font-size: inherit;
+      box-shadow: none;
+      box-decoration-break: none;
+    }
+  }
+
+  // Keystrokes
+  kbd {
+    $correct: 1 / 0.85;
+
+    padding: 0 0.25em * $correct;
+    border: 0.1rem solid darken($md-keyboard-background, 20%);
+    border-radius: 0.2rem;
+    border-bottom-color: darken($md-keyboard-background, 25%);
+    background-color: $md-keyboard-background;
+    color: $md-keyboard-color;
+    font-size: 85%;
+    box-shadow: 0 0.1rem 0 darken($md-keyboard-background, 30%);
+    word-break: break-word;
+  }
+
+  // Text highlighting marker
+  mark {
+    margin: 0 0.25em;
+    padding: 0.0625em 0;
+    border-radius: 0.2rem;
+    background-color: transparentize($clr-yellow-500, 0.5);
+    box-shadow:
+      +0.25em 0 0 transparentize($clr-yellow-500, 0.5),
+      -0.25em 0 0 transparentize($clr-yellow-500, 0.5);
+    word-break: break-word;
+    box-decoration-break: clone;
+  }
+
+  // Abbreviations
+  abbr {
+    border-bottom: 0.1rem dotted $md-color-black--light;
+    cursor: help;
+  }
+
+  // Small text
+  small {
+    opacity: 0.75;
+  }
+
+  // Superscript and subscript
+  sup,
+  sub {
+    margin-left: 0.0625em * 1 / 0.8;
+  }
+
+  // Blockquotes, possibly nested
+  blockquote {
+    padding-left: 1.2rem;
+    border-left: 0.4rem solid $md-color-black--lighter;
+    color: $md-color-black--light;
+  }
+
+  // Unordered lists
+  ul {
+    list-style-type: disc;
+  }
+
+  // Unordered and ordered lists
+  ul,
+  ol {
+    margin-left: 0.625em;
+    padding: 0;
+
+    // Nested ordered lists
+    ol {
+      list-style-type: lower-alpha;
+
+      // Triply nested ordered list
+      ol {
+        list-style-type: lower-roman;
+      }
+    }
+
+    // List elements
+    li {
+      margin-bottom: 0.5em;
+      margin-left: 1.25em;
+
+      // Decrease vertical spacing
+      p,
+      blockquote {
+        margin: 0.5em 0;
+      }
+
+      // Remove margin on last element
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      // Nested lists
+      ul,
+      ol {
+        margin: 0.5em 0 0.5em 0.625em;
+      }
+    }
+  }
+
+  // Limit width to container
+  iframe,
+  img,
+  svg {
+    max-width: 100%;
+  }
+
+  // Data tables
+  table:not([class]) {
+    @include z-depth(2);
+
+    margin: 2em 0;
+    border-radius: 0.2rem;
+    font-size: ms(-1);
+    overflow: hidden;
+
+    // Semi-cool overflow solution, in case JavaScript is not available
+    .no-js & {
+      display: inline-block;
+      max-width: 100%;
+      margin: 0.8em 0;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    // Table headings and cells
+    th:not([align]),
+    td:not([align]) {
+      text-align: left;
+    }
+
+    // Table headings
+    th {
+      min-width: 10rem;
+      padding: 1.2rem 1.6rem;
+      background-color: $md-color-black--light;
+      color: $md-color-white;
+      vertical-align: top;
+    }
+
+    // Table cells
+    td {
+      padding: 1.2rem 1.6rem;
+      border-top: 0.1rem solid $md-color-black--lightest;
+      vertical-align: top;
+    }
+
+    // Remove top border on first row
+    tr:first-child td {
+      border-top: 0;
+    }
+
+    // Do not wrap links in tables
+    a {
+      word-break: normal;
+    }
+  }
+
+  // Data table wrapper, in case JavaScript is available
+  .md-typeset__table {
+    margin: 1.6em -1.6rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    // Data tables
+    table {
+      display: inline-block;
+      margin: 0 1.6rem;
+    }
+  }
+}

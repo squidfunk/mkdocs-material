@@ -1,0 +1,21 @@
+<nav class="md-nav md-nav--primary">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <i class="md-icon {% if not config.extra.logo %} md-icon--home {% endif %} md-nav__icon">
+      {% if config.extra.logo %}
+        <img src="{{ base_url }}/{{ config.extra.logo }}">
+      {% endif %}
+    </i>
+    {{ config.site_name }}
+  </label>
+  {% if config.repo_url %}
+    <div class="md-nav__source">
+      {% include "partials/source.html" %}
+    </div>
+  {% endif %}
+  <ul class="md-nav__list" data-md-scrollfix>
+    {% for nav_item in nav %}
+      {% set path = "nav-" + loop.index | string %}
+      {% include "partials/nav-item.html" %}
+    {% endfor %}
+  </ul>
+</nav>

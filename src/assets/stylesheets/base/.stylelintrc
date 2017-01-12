@@ -1,0 +1,7 @@
+{
+  "extends": "../../../../.stylelintrc",
+  "rules": {
+    "font-weight-notation": null,
+    "property-no-vendor-prefix": null
+  }
+}

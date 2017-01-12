@@ -1,0 +1,418 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Search container
+.md-search {
+
+  // Hide search, if JavaScript is not available.
+  .no-js & {
+    display: none;
+  }
+
+  // [tablet landscape +]: Header-embedded search
+  @include break-from-device(tablet landscape) {
+    margin-right: 2.8rem;
+    padding: 0.4rem;
+  }
+
+  // Search modal overlay
+  &__overlay {
+    display: none;
+    pointer-events: none;
+
+    // [tablet portrait -]: Full-screen search bar
+    @include break-to-device(tablet portrait) {
+      display: block;
+      position: absolute;
+      top: 0.4rem;
+      left: 0.4rem;
+      width: 4rem;
+      height: 4rem;
+      transform-origin: center;
+      transition:
+        transform 0.3s 0.1s,
+        opacity   0.2s 0.2s;
+      border-radius: 2rem;
+      background-color: $md-color-white;
+      opacity: 0;
+      overflow: hidden;
+      z-index: 1;
+
+      // Expanded overlay
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        transition:
+          transform 0.4s,
+          opacity   0.1s;
+        opacity: 1;
+      }
+    }
+
+    // Set scale factors
+    [data-md-toggle="search"]:checked ~ .md-header & {
+
+      // [mobile portrait -]: Scale up 45 times
+      @include break-to-device(mobile portrait) {
+        transform: scale(45);
+      }
+
+      // [mobile landscape]: Scale up 60 times
+      @include break-at-device(mobile landscape) {
+        transform: scale(60);
+      }
+
+      // [tablet portrait]: Scale up 75 times
+      @include break-at-device(tablet portrait) {
+        transform: scale(75);
+      }
+    }
+  }
+
+  // Search modal wrapper
+  &__inner {
+    width: 100%;
+
+    // [tablet portrait -]: Put search modal off-canvas by default
+    @include break-to-device(tablet portrait) {
+      position: fixed;
+      top: 0;
+      left: 100%;
+      height: 100%;
+      transform: translateX(5%);
+      transition:
+        left      0s    0.3s,
+        transform 0.15s 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity   0.15s 0.15s;
+      opacity: 0;
+      z-index: 2;
+
+      // Active search modal
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        left: 0;
+        transform: translateX(0);
+        transition:
+          left      0s    0s,
+          transform 0.15s 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
+          opacity   0.15s 0.15s;
+        opacity: 1;
+      }
+    }
+
+    // [tablet landscape +]: Make relative for inner layout
+    @include break-from-device(tablet landscape) {
+      display: table;
+      position: relative;
+      clear: both;
+    }
+  }
+
+  // Search form
+  &__form {
+    position: relative;
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      width: 23rem;
+      // Hack: omit jitter when form is resized
+      float: right;
+      transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+      border-radius: 0.2rem;
+    }
+
+    // Set maximum width
+    [data-md-toggle="search"]:checked ~ .md-header & {
+
+      // [tablet landscape]: Do not overlay title
+      @include break-at-device(tablet landscape) {
+        width: 46.8rem;
+      }
+
+      // [screen +]: Match content width
+      @include break-from-device(screen) {
+        width: 68.8rem;
+      }
+    }
+  }
+
+  // Search input
+  &__input {
+    position: relative;
+    padding: 0 1.6rem 0 7.2rem;
+    text-overflow: ellipsis;
+    z-index: 1;
+
+    // Placeholder and icon color in active state
+    + .md-search__icon,
+    &::placeholder {
+      color: $md-color-black--light;
+    }
+
+    // Remove the "x" rendered by Internet Explorer
+    &::-ms-clear {
+      display: none;
+    }
+
+    // [tablet portrait -]: Full-screen search bar
+    @include break-to-device(tablet portrait) {
+      width: 100%;
+      height: 5.6rem;
+      font-size: 1.8rem;
+    }
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      width: 100%;
+      height: 4rem;
+      padding-left: 4.8rem;
+      transition:
+        background-color 0.25s,
+        color            0.25s;
+      border-radius: 0.2rem;
+      background-color: $md-color-black--lighter;
+      color: $md-color-white;
+      font-size: ms(0);
+
+      // Placeholder color
+      + .md-search__icon,
+      &::placeholder {
+        transition: color 0.25s;
+        color: $md-color-white;
+      }
+
+      // Hovered search field
+      &:hover {
+        background-color: $md-color-white--lightest;
+      }
+
+      // Set light background on active search field
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        border-radius: 0.2rem 0.2rem 0 0;
+        background-color: $md-color-white;
+        color: $md-color-black;
+        text-overflow: none;
+
+        // Placeholder and icon color in active state
+        + .md-search__icon,
+        &::placeholder {
+          color: $md-color-black--light;
+        }
+      }
+    }
+  }
+
+  // Icons
+  &__icon {
+    position: absolute;
+    top: $md-icon-padding;
+    left: $md-icon-padding + $md-icon-margin;
+    transition: color 0.25s;
+    font-size: $md-icon-size;
+    cursor: pointer;
+    z-index: 1;
+
+    // Set search icon on pseudo class, so it can be overridden for mobile
+    // and tablet when the search is rendered in an overlay
+    &::before {
+      content: "search";
+    }
+
+    // [tablet portrait -]: Full-screen search bar
+    @include break-to-device(tablet portrait) {
+      top: 1.6rem;
+      left: 1.6rem;
+
+      // Show back arrow instead of search icon
+      &::before {
+        content: "arrow_back";
+      }
+    }
+  }
+
+  // Search output container
+  &__output {
+    position: absolute;
+    width: 100%;
+    border-radius: 0 0 0.2rem 0.2rem;
+    overflow: hidden;
+
+    // [tablet portrait -]: Full-screen search bar
+    @include break-to-device(tablet portrait) {
+      top: 5.6rem;
+      bottom: 0;
+    }
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      @include z-depth(6);
+
+      top: 4rem;
+      transition: opacity 0.4s;
+      opacity: 0;
+
+      // Show search output in active state
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Wrapper for scrolling on overflow
+  &__scrollwrap {
+    height: 100%;
+
+    // Pure CSS scrolling shadows, taken from
+    // http://lea.verou.me/2012/04/background-attachment-local/
+    background:
+      linear-gradient(
+        to bottom,
+        $md-color-white 10%,
+        $md-color-white--transparent
+      ),
+      linear-gradient(
+        to bottom,
+        $md-color-black--lighter,
+        $md-color-black--lightest 35%,
+        $md-color-black--transparent 60%
+      );
+    background-attachment: local, scroll;
+    background-color: $md-color-white;
+    background-repeat: no-repeat;
+    background-size: 100% 2rem, 100% 1rem;
+
+    // End of scrolling shadow definition
+    box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    // [tablet landscape]: Set absolute width to omit unnecessary reflow
+    @include break-at-device(tablet landscape) {
+      width: 46.8rem;
+    }
+
+    // [screen +]: Set absolute width to omit unnecessary reflow
+    @include break-from-device(screen) {
+      width: 68.8rem;
+    }
+
+    // [tablet landscape +]: Limit height to viewport
+    @include break-from-device(tablet landscape) {
+      max-height: 0;
+
+      // Expand in active state
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        max-height: 75vh;
+      }
+
+      // Override native scrollbar styles
+      &::-webkit-scrollbar {
+        width: 0.4rem;
+        height: 0.4rem;
+      }
+
+      // Style scrollbar thumb
+      &::-webkit-scrollbar-thumb {
+        background-color: $md-color-black--lighter;
+
+        // Hovered scrollbar thumb
+        &:hover {
+          background-color: $md-color-accent;
+        }
+      }
+    }
+  }
+}
+
+// Search result
+.md-search-result {
+
+  // Search metadata
+  &__meta {
+    padding: 0 1.6rem;
+    background-color: $md-color-black--lightest;
+    color: $md-color-black--light;
+    font-size: ms(-1);
+    line-height: 4rem;
+
+    // [tablet landscape +]: Increase left indent
+    @include break-from-device(tablet landscape) {
+      padding-left: 4.8rem;
+    }
+  }
+
+  // List of items
+  &__list {
+    margin: 0;
+    padding: 0;
+    border-top: 0.1rem solid $md-color-black--lightest;
+    list-style: none;
+  }
+
+  // List item
+  &__item {
+    box-shadow: 0 -0.1rem 0 $md-color-black--lightest;
+  }
+
+  // Link inside item
+  &__link {
+    display: block;
+    padding: 0 1.6rem;
+    transition: background 0.25s;
+    overflow: auto;
+
+    // Hovered link
+    &:hover {
+      background-color: transparentize($md-color-accent, 0.9);
+    }
+
+    // [tablet landscape +]: Increase left indent
+    @include break-from-device(tablet landscape) {
+      padding-left: 4.8rem;
+    }
+  }
+
+  // Search result content
+  &__article {
+    margin: 1em 0;
+  }
+
+  // Search result title
+  &__title {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    color: $md-color-black;
+    font-size: ms(0);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  // Search result teaser
+  &__teaser {
+    margin: 0.5em 0;
+    color: $md-color-black--light;
+    font-size: ms(-1);
+    line-height: 1.4;
+    word-break: break-word;
+  }
+}

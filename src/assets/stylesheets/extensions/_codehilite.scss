@@ -1,0 +1,351 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+// Operators
+$codehilite-operator: inherit;
+$codehilite-operator-word: inherit;
+
+// Generics
+$codehilite-generic-emph: #000000;
+$codehilite-generic-error: #AA0000;
+$codehilite-generic-heading: #999999;
+$codehilite-generic-output: #888888;
+$codehilite-generic-prompt: #555555;
+$codehilite-generic-strong: inherit;
+$codehilite-generic-subheading: #AAAAAA;
+$codehilite-generic-traceback: #AA0000;
+
+// Diffs
+$codehilite-diff-deleted: #FFDDDD;
+$codehilite-diff-inserted: #DDFFDD;
+
+// Keywords
+$codehilite-keyword: #3B78E7;
+$codehilite-keyword-constant: #A71D5D;
+$codehilite-keyword-declaration: #3B78E7;
+$codehilite-keyword-namespace: #3B78E7;
+$codehilite-keyword-pseudo: #A71D5D;
+$codehilite-keyword-reserved: #3E61A2;
+$codehilite-keyword-type: #3E61A2;
+
+// Comments
+$codehilite-comment: #999999;
+$codehilite-comment-multiline: #999999;
+$codehilite-comment-preproc: #666666;
+$codehilite-comment-single: #999999;
+$codehilite-comment-shebang: #999999;
+$codehilite-comment-special: #999999;
+
+// Names
+$codehilite-name-attribute: #C2185B;
+$codehilite-name-builtin: #C2185B;
+$codehilite-name-builtin-pseudo: #3E61A2;
+$codehilite-name-class: #C2185B;
+$codehilite-name-constant: #3E61A2;
+$codehilite-name-decorator: #666666;
+$codehilite-name-entity: #666666;
+$codehilite-name-exception: #C2185B;
+$codehilite-name-function: #C2185B;
+$codehilite-name-label: #3B5179;
+$codehilite-name-namespace: #EC407A;
+$codehilite-name-tag: #3B78E7;
+$codehilite-name-variable: #3E61A2;
+$codehilite-name-variable-class: #3E61A2;
+$codehilite-name-variable-instance: #3E61A2;
+$codehilite-name-variable-global: #3E61A2;
+$codehilite-name-extension: #EC407A;
+
+// Numbers
+$codehilite-literal-number: #E74C3C;
+$codehilite-literal-number-float: #E74C3C;
+$codehilite-literal-number-hex: #E74C3C;
+$codehilite-literal-number-integer: #E74C3C;
+$codehilite-literal-number-integer-long: #E74C3C;
+$codehilite-literal-number-oct: #E74C3C;
+
+// Strings
+$codehilite-literal-string: #0D904F;
+$codehilite-literal-string-backticks: #0D904F;
+$codehilite-literal-string-char: #0D904F;
+$codehilite-literal-string-doc: #999999;
+$codehilite-literal-string-double: #0D904F;
+$codehilite-literal-string-escape: #183691;
+$codehilite-literal-string-heredoc: #183691;
+$codehilite-literal-string-interpol: #183691;
+$codehilite-literal-string-other: #183691;
+$codehilite-literal-string-regex: #009926;
+$codehilite-literal-string-single: #0D904F;
+$codehilite-literal-string-symbol: #0D904F;
+
+// Miscellaneous
+$codehilite-error: #A61717;
+$codehilite-whitespace: transparent;
+
+// ----------------------------------------------------------------------------
+// Rules: syntax highlighting
+// ----------------------------------------------------------------------------
+
+// Codehilite extension
+.codehilite {
+
+  // Operators
+  .o  { color: $codehilite-operator; }
+  .ow { color: $codehilite-operator-word; }
+
+  // Generics
+  .ge { color: $codehilite-generic-emph; }
+  .gr { color: $codehilite-generic-error; }
+  .gh { color: $codehilite-generic-heading; }
+  .go { color: $codehilite-generic-output; }
+  .gp { color: $codehilite-generic-prompt; }
+  .gs { color: $codehilite-generic-strong; }
+  .gu { color: $codehilite-generic-subheading; }
+  .gt { color: $codehilite-generic-traceback; }
+
+  // Diffs
+  .gd { background-color: $codehilite-diff-deleted; }
+  .gi { background-color: $codehilite-diff-inserted; }
+
+  // Keywords
+  .k  { color: $codehilite-keyword; }
+  .kc { color: $codehilite-keyword-constant; }
+  .kd { color: $codehilite-keyword-declaration; }
+  .kn { color: $codehilite-keyword-namespace; }
+  .kp { color: $codehilite-keyword-pseudo; }
+  .kr { color: $codehilite-keyword-reserved; }
+  .kt { color: $codehilite-keyword-type; }
+
+  // Comments
+  .c  { color: $codehilite-comment; }
+  .cm { color: $codehilite-comment-multiline; }
+  .cp { color: $codehilite-comment-preproc; }
+  .c1 { color: $codehilite-comment-single; }
+  .ch { color: $codehilite-comment-shebang; }
+  .cs { color: $codehilite-comment-special; }
+
+  // Names
+  .na { color: $codehilite-name-attribute; }
+  .nb { color: $codehilite-name-builtin; }
+  .bp { color: $codehilite-name-builtin-pseudo; }
+  .nc { color: $codehilite-name-class; }
+  .no { color: $codehilite-name-constant; }
+  .nd { color: $codehilite-name-entity; }
+  .ni { color: $codehilite-name-entity; }
+  .ne { color: $codehilite-name-exception; }
+  .nf { color: $codehilite-name-function; }
+  .nl { color: $codehilite-name-label; }
+  .nn { color: $codehilite-name-namespace; }
+  .nt { color: $codehilite-name-tag; }
+  .nv { color: $codehilite-name-variable; }
+  .vc { color: $codehilite-name-variable-class; }
+  .vg { color: $codehilite-name-variable-global; }
+  .vi { color: $codehilite-name-variable-instance; }
+  .nx { color: $codehilite-name-extension; }
+
+  // Numbers
+  .m  { color: $codehilite-literal-number; }
+  .mf { color: $codehilite-literal-number-float; }
+  .mh { color: $codehilite-literal-number-hex; }
+  .mi { color: $codehilite-literal-number-integer; }
+  .il { color: $codehilite-literal-number-integer-long; }
+  .mo { color: $codehilite-literal-number-oct; }
+
+  // Strings
+  .s  { color: $codehilite-literal-string; }
+  .sb { color: $codehilite-literal-string-backticks; }
+  .sc { color: $codehilite-literal-string-char; }
+  .sd { color: $codehilite-literal-string-doc; }
+  .s2 { color: $codehilite-literal-string-double; }
+  .se { color: $codehilite-literal-string-escape; }
+  .sh { color: $codehilite-literal-string-heredoc; }
+  .si { color: $codehilite-literal-string-interpol; }
+  .sx { color: $codehilite-literal-string-other; }
+  .sr { color: $codehilite-literal-string-regex; }
+  .s1 { color: $codehilite-literal-string-single; }
+  .ss { color: $codehilite-literal-string-symbol; }
+
+  // Miscellaneous
+  .err { color: $codehilite-error; }
+  .w { color: $codehilite-whitespace; }
+
+  // Highlighted lines
+  .hll {
+    display: block;
+    margin: 0 -1.2rem;
+    padding: 0 1.2rem;
+    background-color: transparentize($clr-yellow-500, 0.5);
+
+    // [mobile -]: Stretch to whole width
+    @include break-to-device(mobile) {
+      margin: 0 -1.6rem;
+      padding: 0 1.6rem;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: layout
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // If code blocks are wrapped with codehilite, the styles must be adjusted
+  // so the marker stretches to the whole width and the padding is respected
+  .codehilite {
+    margin: 1em 0;
+    padding: 1rem 1.2rem 0.8rem;
+    border-radius: 0.2rem;
+    background-color: $md-code-background;
+    color: $md-code-color;
+    line-height: 1.4;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    // Override native scrollbar styles
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+      height: 0.4rem;
+    }
+
+    // Style scrollbar thumb
+    &::-webkit-scrollbar-thumb {
+      background-color: $md-color-black--lighter;
+
+      // Hovered scrollbar thumb
+      &:hover {
+        background-color: $md-color-accent;
+      }
+    }
+
+    // Hack: set pre-tag to inline-block, in order to stetch the content on
+    // overflow correctly to the whole width
+    pre {
+      display: inline-block;
+      min-width: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      overflow: visible;
+      vertical-align: top;
+    }
+  }
+
+  // Block with line numbers
+  .codehilitetable {
+    display: block;
+    margin: 1em 0;
+    border-radius: 0.2em;
+    font-size: ms(0);
+    overflow: hidden;
+
+    // Set table elements to block layout, because otherwise the whole flexbox
+    // hacking won't work correctly
+    tbody,
+    td {
+      display: block;
+      padding: 0;
+    }
+
+    // We need to use flexbox layout, because otherwise it's not possible to
+    // make the code container scroll while keeping the line numbers static
+    tr {
+      display: flex;
+    }
+
+    // The pre tags are nested inside a table, so we need to remove the
+    // margin because it collapses below all the overflows
+    .codehilite,
+    .linenodiv {
+      margin: 0;
+      border-radius: 0;
+    }
+
+    // Add spacing to line number container
+    .linenodiv {
+      padding: 1rem 1.2rem 0.8rem;
+
+      // Stretch the line number container vertically, so it always aligns with
+      // the code container, even when there's a scrollbar.
+      &,
+      & > pre {
+        height: 100%;
+      }
+    }
+
+    // Disable user selection, so code can be easily copied without
+    // accidentally also copying the line numbers
+    .linenos {
+      background-color: $md-color-black--lightest;
+      color: $md-color-black--lighter;
+      user-select: none;
+
+      // Reset spacings
+      pre {
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        color: inherit;
+        text-align: right;
+      }
+    }
+
+    // The table cell containing the code container wrapper and code should
+    // stretch horizontally to the remaining space
+    .code {
+      flex: 1;
+      overflow: hidden;
+    }
+  }
+
+  // Full-width container
+  > .codehilite {
+
+    // [mobile -]: Stretch to whole width
+    @include break-to-device(mobile) {
+      margin: 1em -1.6rem;
+      padding: 1rem 1.6rem 0.8rem;
+      border-radius: 0;
+    }
+  }
+
+  // Full-width container
+  > .codehilitetable {
+    box-shadow: none;
+
+    // [mobile -]: Stretch to whole width
+    @include break-to-device(mobile) {
+      margin: 1em -1.6rem;
+      border-radius: 0;
+
+      // Increase spacing
+      .codehilite,
+      .linenodiv {
+        padding: 1rem 1.6rem;
+      }
+    }
+  }
+}

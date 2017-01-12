@@ -1,0 +1,175 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Application footer
+.md-footer {
+
+  // Hide for print
+  @media print {
+    display: none;
+  }
+}
+
+// Navigation within footer
+.md-footer-nav {
+  background-color: $md-color-black;
+  color: $md-color-white;
+
+  // Set spacing
+  &__inner {
+    padding: 0.4rem;
+    overflow: auto;
+  }
+
+  // Links to previous and next page
+  &__link {
+    padding-top: 2.8rem;
+    padding-bottom: 0.8rem;
+    transition: opacity 0.25s;
+
+    // [mobile landscape +]: Set proportional width
+    @include break-from-device(mobile landscape) {
+      width: 50%;
+    }
+
+    // Hovered link
+    &:hover {
+      opacity: 0.7;
+    }
+
+    // Link to previous page
+    &--prev {
+      width: 25%;
+      float: left;
+
+      // Title
+      .md-footer-nav__title {
+
+        // [mobile portrait -]: Hide title for previous page
+        @include break-to-device(mobile portrait) {
+          display: none;
+        }
+      }
+    }
+
+    // Link to next page
+    &--next {
+      width: 75%;
+      float: right;
+      text-align: right;
+    }
+  }
+
+  // Icons
+  &__icon {
+    @extend %md-icon__button;
+
+    transition: background 0.25s;
+  }
+
+  // Link title - set line height to match icon for correct alignment
+  &__title {
+    position: relative;
+    padding: 0 2rem;
+    font-size: 1.8rem;
+    line-height: 4.8rem;
+  }
+
+  // Link direction
+  &__direction {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin-top: -2rem;
+    padding: 0 2rem;
+    color: $md-color-white--light;
+    font-size: 1.5rem;
+  }
+}
+
+// Non-navigational information
+.md-footer-meta {
+  background: opacify($md-color-black, 0.025);
+
+  // Set spacing
+  &__inner {
+    padding: 0.4rem;
+    overflow: auto;
+  }
+
+  // Use a decent color for non-hovered links and ensure specificity
+  html &.md-typeset a {
+    color: $md-color-white--light;
+  }
+}
+
+// Copyright and theme information
+.md-footer-copyright {
+  margin: 0 1.2rem;
+  padding: 0.8rem 0;
+  color: $md-color-white--lighter;
+  font-size: ms(-1);
+
+  // [tablet portrait +]: Show next to social media links
+  @include break-from-device(tablet portrait) {
+    max-width: 75%;
+    float: left;
+  }
+
+  // Highlight copyright information
+  &__highlight {
+    color: $md-color-white--light;
+  }
+}
+
+// Social media links
+.md-footer-social {
+  margin: 0 0.8rem;
+  padding: 0.4rem 0 1.2rem;
+
+  // [tablet portrait +]: Show next to copyright information
+  @include break-from-device(tablet portrait) {
+    padding: 1.2rem 0;
+    float: right;
+  }
+
+  // Link with icon
+  &__link {
+    display: inline-block;
+    width: 3.2rem;
+    height: 3.2rem;
+    border: 0.1rem solid $md-color-white--lightest;
+    border-radius: 100%;
+    color: $md-color-white--light;
+    font-size: 1.6rem;
+    text-align: center;
+
+    // Adjust line-height to match height for correct alignment
+    &::before {
+      line-height: 1.9;
+    }
+  }
+}

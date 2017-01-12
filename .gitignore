@@ -1,4 +1,4 @@
-# Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -18,18 +18,19 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Mac OS X internals
+# macOS internals
 .DS_Store
 
-# Bower and NPM libraries
-bower_components
-node_modules
+# NPM-related
+/node_modules
+/npm-debug.log
 
 # Build files
-build
-MANIFEST
-site
+/build
+/manifest.json
+/MANIFEST
+/site
 
 # Distribution files
-dist
-mkdocs_material.egg-info
+/dist
+/mkdocs_material.egg-info

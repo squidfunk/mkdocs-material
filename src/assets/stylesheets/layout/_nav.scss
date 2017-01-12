@@ -1,0 +1,455 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Navigation container
+.md-nav {
+  font-size: ms(-1);
+  line-height: 1.3;
+
+  // Table of contents
+  &--secondary {
+    transition: border-left 0.25s;
+    border-left: 0.4rem solid $md-color-primary;
+  }
+
+  // List title
+  &__title {
+    display: block;
+    padding: 1.2rem 1.2rem 0;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    // Icon, hidden by default
+    &::before {
+      @extend %md-icon, %md-icon__button;
+
+      display: none;
+      content: "arrow_back";
+    }
+
+    // Hide icon by default
+    .md-nav__icon {
+      display: none;
+    }
+  }
+
+  // List of items
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  // List item
+  &__item {
+    padding: 0.625em 1.2rem 0;
+
+    // Add bottom spacing to last item
+    &:last-child {
+      padding-bottom: 1.2rem;
+    }
+
+    // 2nd+ level items
+    & & {
+      padding-right: 0;
+
+      // Remove bottom spacing for nested items
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  // Icon
+  &__icon {
+    @extend %md-icon, %md-icon__button;
+
+    // Stretch image
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // Link inside item
+  &__link {
+    display: block;
+    transition: color 0.125s;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    overflow: hidden;
+
+    // Icon
+    &::after {
+      @extend %md-icon;
+
+      // Item contains a nested list
+      .md-nav__item--nested > & {
+        content: "keyboard_arrow_down";
+      }
+    }
+
+    // Hide link to table of contents by default - this will only match the
+    // table of contents inside the drawer below and including tablet portrait
+    html &[for="toc"] {
+      display: none;
+
+      // Hide table of contents by default
+      & ~ .md-nav {
+        display: none;
+      }
+
+      // Hide icon for current item
+      + .md-nav__link::after {
+        display: none;
+      }
+    }
+
+    // Blurred item
+    &[data-md-state="blur"] {
+      color: $md-color-black--light;
+    }
+
+    // Active item
+    &:active,
+    &--active {
+      color: $md-color-primary;
+    }
+
+    // Hovered item
+    &:hover {
+      color: $md-color-accent;
+    }
+  }
+
+  // Repository containing source
+  &__source {
+    display: none;
+  }
+
+  // [tablet -]: Layered navigation
+  @include break-to-device(tablet) {
+
+    // Stretch primary navigation to drawer
+    &--primary,
+    &--primary .md-nav {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      flex-direction: column;
+      height: 100%;
+      z-index: 1;
+    }
+
+    // Adjust styles for primary navigation
+    &--primary {
+      background-color: $md-color-white;
+
+      // Move subsequent navigations off
+      .md-nav__toggle ~ .md-nav {
+        @include z-depth(4);
+
+        background-color: $md-color-white;
+      }
+
+      // List title - higher specificity is necessary to ensure that the title
+      // inside the drawer is always styled accordingly
+      html & .md-nav__title {
+        position: relative;
+        height: 11.2rem;
+        padding: 6rem 1.6rem 0.4rem;
+        background-color: $md-color-black--lightest;
+        color: $md-color-black--light;
+        font-weight: 400;
+        line-height: 4.8rem;
+        white-space: nowrap;
+        cursor: pointer;
+
+        // Icon
+        &::before {
+          display: block;
+          position: absolute;
+          top: 0.4rem;
+          left: 0.4rem;
+          width: 4rem;
+          height: 4rem;
+          color: $md-color-black--light;
+        }
+
+        // Main lists
+        ~ .md-nav__list {
+
+          // Pure CSS scrolling shadows, taken from
+          // http://lea.verou.me/2012/04/background-attachment-local/
+          background:
+            linear-gradient(
+              to bottom,
+              $md-color-white 10%,
+              $md-color-white--transparent
+            ),
+            linear-gradient(
+              to bottom,
+              $md-color-black--lighter,
+              $md-color-black--lightest 35%,
+              $md-color-black--transparent 60%
+            );
+          background-attachment: local, scroll;
+          background-color: $md-color-white;
+          background-repeat: no-repeat;
+          background-size: 100% 2rem, 100% 1rem;
+
+          // End of scrolling shadow definition
+          box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
+
+          // Remove border for first list item
+          & > .md-nav__item:first-child {
+            border-top: 0;
+          }
+        }
+
+        // Site title in main navigation
+        &--site {
+          position: relative;
+          background-color: $md-color-primary;
+          color: $md-color-white;
+
+          // Site logo
+          .md-nav__icon {
+            display: block;
+            position: absolute;
+            top: 0.4rem;
+            left: 0.4rem;
+            width: 6.4rem;
+            height: 6.4rem;
+            font-size: 4.8rem;
+          }
+
+          // Hide back arrow icon
+          &::before {
+            display: none;
+          }
+        }
+      }
+
+      // List of items
+      .md-nav__list {
+        flex: 1;
+        overflow-y: scroll;
+      }
+
+      // List item
+      .md-nav__item {
+        padding: 0;
+        border-top: 0.1rem solid $md-color-black--lightest;
+
+        // Increase spacing to account for icon
+        &--nested > .md-nav__link {
+          padding-right: 4.8rem;
+
+          // Replace icon with right arrow
+          &::after {
+            content: "keyboard_arrow_right";
+          }
+        }
+      }
+
+      // Link inside item
+      .md-nav__link {
+        position: relative;
+        padding: 1.6rem;
+
+        // Rotate icon
+        &::after {
+          position: absolute;
+          top: 50%;
+          right: 1.2rem;
+          margin-top: -1.2rem;
+          color: $md-color-black--light;
+          font-size: 2.4rem;
+        }
+
+        // Color of icon should inherit link color on hover
+        &:hover::after {
+          color: inherit;
+        }
+      }
+
+      // Set nested navigation for table of contents to static
+      .md-nav--secondary .md-nav {
+        position: static;
+
+        // 3rd level link
+        .md-nav__link {
+          padding-left: 2.8rem;
+        }
+
+        // 4th level link
+        .md-nav .md-nav__link {
+          padding-left: 4rem;
+        }
+
+        // 5th level link
+        .md-nav .md-nav .md-nav__link {
+          padding-left: 5.2rem;
+        }
+
+        // 6th level link
+        .md-nav .md-nav .md-nav .md-nav__link {
+          padding-left: 6.4rem;
+        }
+      }
+    }
+
+    // Hide nested navigation by default
+    .md-nav__toggle ~ & {
+      display: none;
+
+      // Animate appearance, if browser supports 3D transforms
+      .csstransforms3d & {
+        display: flex;
+        transform: translateX(100%);
+        transition:
+          transform 0.25s cubic-bezier(0.8, 0, 0.6, 1),
+          opacity   0.125s 0.05s;
+        opacity: 0;
+      }
+    }
+
+    // Expand nested navigation, if toggle is checked
+    .md-nav__toggle:checked ~ & {
+      display: flex;
+
+      // Animate appearance, if browser supports 3D transforms
+      .csstransforms3d & {
+        transform: translateX(0);
+        transition:
+          transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity   0.125s 0.125s;
+        opacity: 1;
+      }
+    }
+
+    // List item
+    .md-nav__title,
+    .md-nav__item {
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
+  }
+
+  // [tablet portrait -]: Show table of contents in drawer
+  @include break-to-device(tablet portrait) {
+
+    // Remove border on secondary navigation
+    &--secondary {
+      border-left: 0;
+    }
+
+    // Show link to table of contents - higher specificity is necessary to
+    // display the table of contents inside the drawer
+    html &__link[for="toc"] {
+      display: block;
+      padding-right: 4.8rem;
+
+      // Unrotate icon for table of contents
+      &::after {
+        color: inherit;
+        content: "toc";
+      }
+
+      // Hide link to current item
+      + .md-nav__link {
+        display: none;
+      }
+
+      // Show table of contents
+      & ~ .md-nav {
+        display: flex;
+      }
+    }
+
+    // Repository containing source
+    &__source {
+      display: block;
+      padding: 0.4rem;
+      background-color: mix($md-color-primary, $md-color-black, 75%);
+      color: $md-color-white;
+    }
+  }
+
+  // [screen +]: Tree-like navigation
+  @include break-from-device(screen) {
+
+    // Animation is only possible if JavaScript is available, as the max-height
+    // property must be calculated before transitioning
+    &[data-md-state="animate"] {
+      transition: max-height 0.25s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    // Hide nested navigation by default
+    .md-nav__toggle ~ & {
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    // Expand nested navigation, if toggle is checked
+    .md-nav__toggle:checked ~ &,
+    &[data-md-state="expand"] {
+      max-height: 100%;
+    }
+
+    // Hide titles for nested navigation
+    &__item--nested > .md-nav > &__title {
+      display: none;
+    }
+
+    // Link inside item
+    &__link {
+
+      // Item contains a nested list
+      .md-nav__item--nested > &::after {
+        display: inline-block;
+        transform-origin: 0.45em 0.45em;
+        transform-style: preserve-3d;
+        vertical-align: -0.125em;
+
+        // Only animate icon when JavaScript is available, as the height can
+        // not be animated anyway, and better no fun than half the fun
+        .js & {
+          transition: transform 0.4s;
+        }
+      }
+
+      // Rotate icon for expanded lists
+      .md-nav__item--nested .md-nav__toggle:checked ~ &::after {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+}

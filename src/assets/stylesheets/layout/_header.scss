@@ -1,0 +1,133 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Application header (stays always on top)
+.md-header {
+  @include z-depth(2);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5.6rem;
+  transition: background-color 0.25s;
+  background-color: $md-color-primary;
+  color: $md-color-white;
+  z-index: 1;
+
+  // Hide for print
+  @media print {
+    display: none;
+  }
+}
+
+// Navigation within header
+.md-header-nav {
+  padding: 0.4rem;
+
+  // Icons
+  &__icon {
+    @extend %md-icon__button;
+
+    position: relative;
+    transition: opacity 0.25s;
+    z-index: 1;
+
+    // Hovered icon
+    &:hover {
+      opacity: 0.7;
+    }
+
+    // Hide search icon, if JavaScript is not available.
+    .no-js & .md-icon--search {
+      display: none;
+    }
+
+    // [tablet landscape +]: Hide the search icon
+    @include break-from-device(tablet landscape) {
+
+      // Search icon
+      &.md-icon--search {
+        display: none;
+      }
+    }
+
+    // [tablet -]: Hide the home icon
+    @include break-to-device(tablet) {
+
+      // Home icon
+      &.md-icon--home {
+        display: none;
+      }
+    }
+
+    // [screen +]: Hide the menu icon
+    @include break-from-device(screen) {
+
+      // Menu icon
+      &.md-icon--menu {
+        display: none;
+      }
+    }
+  }
+
+  // Header title - set line height to match icon for correct alignment
+  &__title {
+    padding: 0 2rem;
+    font-size: 1.8rem;
+    line-height: 4.8rem;
+  }
+
+  // Parent page title
+  &__parent {
+    color: $md-color-white--light;
+
+    // Ancestor separator
+    &::after {
+      display: inline;
+      color: $md-color-white--lighter;
+      content: "/";
+    }
+
+    // [mobile portrait -]: Hide on very small screens
+    @include break-to-device(mobile portrait) {
+      display: none;
+    }
+  }
+
+  // Repository containing source
+  &__source {
+    display: none;
+
+    // [tablet landscape +]: Show the reposistory from tablet
+    @include break-from-device(tablet landscape) {
+      display: block;
+      width: 23rem;
+      max-width: 23rem;
+      padding-right: 1.2rem;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 # Contributing
 
-Interested in contributing to the Material theme? Before you do, please read
-the following guidelines.
+Interested in contributing to the Material theme? Want to report a bug? Before
+you do, please read the following guidelines.
 
 ## Submission context
 
@@ -15,8 +15,12 @@ For quick questions there's no need to open an issue as you can reach us on
 ### Found a bug?
 
 If you found a bug in the source code, you can help us by submitting an issue
-to our GitHub Repository. Even better, you can submit a Pull Request with a
-fix. However, before doing so, read the submission guidelines.
+to the [issue tracker][2] in our GitHub repository. Even better, you can submit
+a Pull Request with a fix. However, before doing so, please read the
+[submission guidelines][3].
+
+  [2]: https://github.com/squidfunk/mkdocs-material/issues
+  [3]: #submission-guidelines
 
 ### Missing a feature?
 
@@ -47,20 +51,31 @@ readily available.
 We want to fix all the issues as soon as possible, but before fixing a bug we
 need to reproduce and confirm it. In order to reproduce bugs we will
 systematically ask you to provide a minimal reproduction scenario using the
-custom issue template.
+custom issue template. Please stick to the issue template.
 
 Unfortunately we are not able to investigate / fix bugs without a minimal
-reproduction, so if we don't hear back from you we are going to close issues
-that don't have enough information to be reproduced.
+reproduction scenario, so if we don't hear back from you we may close the issue.
 
 ### Submitting a Pull Request (PR)
 
 Search GitHub for an open or closed PR that relates to your submission. You
-don't want to duplicate effort. Fork the project, make your changes in **a new
-git branch** and commit your changes with a descriptive commit message. Then
-push your branch to GitHub and send a PR to `mkdocs-material:master`. If we
-suggest changes, make the required updates, rebase your branch and push
-the changes to your GitHub repository, which will automatiaclly update your PR.
+don't want to duplicate effort. If you do not find a related issue or PR,
+go ahead.
+
+1. **Development**: Fork the project, set up the [development environment][4],
+  make your changes in a separate git branch and add descriptive messages to
+  your commits.
+
+2. **Build**: Before submitting a pull requests, build the theme. This is a
+  mandatory requirement for your PR to get accepted, as the theme should at
+  all times be installable through GitHub.
+
+3. **Pull Request**: After building the theme, commit the compiled output, push
+  your branch to GitHub and send a PR to `mkdocs-material:master`. If we
+  suggest changes, make the required updates, rebase your branch and push the
+  changes to your GitHub repository, which will automatically update your PR.
 
 After your PR is merged, you can safely delete your branch and pull the changes
 from the main (upstream) repository.
+
+  [4]: http://localhost:8000/customization/#theme-development

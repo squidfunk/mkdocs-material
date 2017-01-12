@@ -1,4 +1,4 @@
-# Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -19,41 +19,67 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Material
-site_description: A material design theme for MkDocs
+site_name: Material for MkDocs
+site_description: A Material Design theme for MkDocs
 site_author: Martin Donath
 site_url: http://squidfunk.github.io/mkdocs-material/
 
 # Repository
-repo_name: GitHub
+repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
-copyright: Copyright (c) 2016 Martin Donath
+copyright: 'Copyright &copy; 2016 Martin Donath'
 
 # Documentation and theme
 theme_dir: material
 
 # Options
 extra:
-  version: 0.2.4
-  logo: images/logo.png
-  github:
-    download_release: true
-  author:
-    github: squidfunk
-    twitter: squidfunk
+  palette:
+    primary: indigo
+    accent: indigo
+  social:
+    - type: github-alt
+      link: https://github.com/squidfunk
+    - type: twitter
+      link: https://twitter.com/squidfunk
+    - type: linkedin
+      link: https://de.linkedin.com/in/martin-donath-20a95039
 
 # Extensions
 markdown_extensions:
-  - codehilite(css_class=code)
-  - admonition
-  - toc:
-      permalink: '#'
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite(guess_lang=false)
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc(permalink=true)
+  - pymdownx.arithmatex
+  - pymdownx.betterem(smart_enable=all)
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist(custom_checkbox=true)
+  - pymdownx.tilde
 
 # Page tree
 pages:
   - Material: index.md
   - Getting started: getting-started.md
+  - Extensions:
+    - Admonition: extensions/admonition.md
+    - CodeHilite: extensions/codehilite.md
+    - Footnotes: extensions/footnotes.md
+    - Permalinks: extensions/permalinks.md
+    - PyMdown: extensions/pymdown.md
+  - Specimen: specimen.md
   - Customization: customization.md
+  - Release notes: release-notes.md
+  - Contributing: contributing.md
   - License: license.md

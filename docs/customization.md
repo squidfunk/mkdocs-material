@@ -1,104 +1,240 @@
 # Customization
 
-## A good starting point
+## A great starting point
 
 Project documentation is as diverse as the projects themselves and the Material
-theme is a good starting point for making it look good. However, as you write
+theme is a good starting point for making it look great. However, as you write
 your documentation, you may reach some point where some small adjustments are
 necessary to preserve the style.
 
-## Small tweaks
+## Adding assets
 
-[MkDocs][] provides a simple way for making small adjustments, that is changing
-some margins, centering text, etc. Simply put the CSS and Javascript files that
-contain your adjustments in the `docs` directory (ideally in subdirectories of
-their own) and include them via the `extra_css` and `extra_javascript`
-variables in your `mkdocs.yml`:
+[MkDocs][1] provides several ways to interfere with themes. In order to make a
+few tweaks to an existing theme, you can just add your stylesheets and
+JavaScript files to the `docs` directory.
 
-``` yaml
-extra_css: ['/stylesheets/extra.css']
-extra_javascript: ['/javascripts/extra.js']
-```
+  [1]: http://www.mkdocs.org
 
-Further assistance on including extra CSS and Javascript can be found in the
-[MkDocs documentation][].
+### Additional stylesheets
 
-## Fundamental changes
-
-If you want to make larger adjustments like changing the color palette or
-typography, you should check out or download the repository of the project and
-compile the SASS sources with your changes. The project design is very modular,
-so most things can be tweaked by changing a few variables.
-
-### Setup
-
-In order to compile the project, you need `node` with a version greater than
-`0.11` up and running. Then, make sure `bower` is installed or install it:
+If you want to tweak some colors or change the spacing of certain elements,
+you can do this in a separate stylesheet. The easiest way is by creating a
+new stylesheet file in your `docs` directory:
 
 ``` sh
-npm install -g bower
+mkdir docs/stylesheets
+touch docs/stylesheets/extra.css
 ```
 
-The project itself is hosted on GitHub, so the next
-thing you should do is clone the project from GitHub:
+Then, add the following line to your `mkdocs.yml`:
+
+``` yaml
+extra_css:
+  - 'stylesheets/extra.css'
+```
+
+Spin up the development server with `mkdocs serve` and start typing your
+changes in your additional stylesheet file – you can see them instantly after
+saving, as the MkDocs development server implements live reloading.
+
+### Additional JavaScript
+
+The same is true for additional JavaScript. If you want to integrate another
+syntax highlighter or add some custom logic to your theme, create a new
+JavaScript file in your `docs` directory:
+
+``` sh
+mkdir docs/javascripts
+touch docs/javascripts/extra.js
+```
+
+Then, add the following line to your `mkdocs.yml`:
+
+``` yaml
+extra_javascript:
+  - 'javascripts/extra.js'
+```
+
+Further assistance can be found in the [MkDocs documentation][2].
+
+  [2]: http://www.mkdocs.org/user-guide/styling-your-docs/#customizing-a-theme
+
+## Extending the theme
+
+If you want to alter the HTML source (e.g. add or remove some part), you can
+extend the theme. From version 0.16 on MkDocs implements [theme extension][3],
+an easy way to override parts of a theme without forking and changing the
+main theme.
+
+  [3]: http://www.mkdocs.org/user-guide/styling-your-docs/#using-the-theme_dir
+
+### Setup and theme structure
+
+Reference the Material theme as usual in your `mkdocs.yml`, and create a
+new folder for overrides, e.g. `theme`, which you reference using `theme_dir`:
+
+``` yaml
+theme: 'material'
+theme_dir: 'theme'
+```
+
+!!! warning "Theme extension prerequisites"
+
+    As the `theme_dir` variable is used for the theme extension process, the
+    Material theme needs to be installed via `pip` and referenced with the
+    `theme` parameter in your `mkdocs.yml`.
+
+The structure in the theme directory must mirror the directory structure of the
+original theme, as any file in the theme directory will replace the file with
+the same name which is part of the original theme. Besides, further assets
+may also be put in the theme directory.
+
+The directory layout of the Material theme is as follows:
+
+``` sh
+.
+├─ assets/
+│  ├─ images/                          # Images and icons
+│  ├─ javascripts/                     # JavaScript
+│  └─ stylesheets/                     # Stylesheets
+├─ partials/
+│  ├─ fonts.html                       # Webfont definitions
+│  ├─ footer.html                      # Footer bar
+│  ├─ header.html                      # Header bar
+│  ├─ i18n.html                        # Localized labels
+│  ├─ nav-item.html                    # Main navigation item
+│  ├─ nav.html                         # Main navigation
+│  ├─ search.html                      # Search box
+│  ├─ social.html                      # Social links
+│  ├─ source.html                      # Repository information
+│  ├─ svgs.html                        # Inline SVG definitions
+│  ├─ toc-item.html                    # Table of contents item
+│  └─ toc.html                         # Table of contents
+├─ 404.html                            # 404 error page
+├─ base.html                           # Base template
+└─ main.html                           # Default page
+```
+
+### Overriding partials
+
+In order to override the footer, we can replace the `footer.html` partial with
+our own partial. To do this, create the file `partials/footer.html` in the
+theme directory. MkDocs will now use the new partial when rendering the theme.
+This can be done with any file.
+
+### Overriding template blocks
+
+Besides overriding partials, one can also override so called template blocks,
+which are defined inside the Material theme and wrap specific features. To
+override a template block, create a `main.html` inside the theme directory and
+define the block, e.g.:
+
+``` jinja
+{% extends "base.html" %}
+
+{% block htmltitle %}
+  <title>Lorem ipsum dolor sit amet</title>
+{% endblock %}
+```
+
+The Material theme provides the following template blocks:
+
+| Block name   | Wrapped contents                                |
+| ------------ | ----------------------------------------------- |
+| `analytics`  | Wraps the Google Analytics integration          |
+| `content`    | Wraps the main content                          |
+| `extrahead`  | Empty block to define additional meta tags      |
+| `fonts`      | Wraps the webfont definitions                   |
+| `footer`     | Wraps the footer with navigation and copyright  |
+| `header`     | Wraps the fixed header bar                      |
+| `htmltitle`  | Wraps the `<title>` tag                         |
+| `libs`       | Wraps the JavaScript libraries, e.g. Modernizr  |
+| `repo`       | Wraps the repository link in the header bar     |
+| `scripts`    | Wraps the JavaScript application logic          |
+| `search_box` | Wraps the search form in the header bar         |
+| `site_meta`  | Wraps the meta tags in the document head        |
+| `site_name`  | Wraps the site name in the header bar           |
+| `site_nav`   | Wraps the site navigation and table of contents |
+| `social`     | Wraps the social links in the footer            |
+| `styles`     | Wraps the stylesheets (also extra sources)      |
+
+For more on this topic refer to the [MkDocs documentation][4]
+
+  [4]: http://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
+
+## Theme development
+
+The Material theme is built on modern technologies like ES6, [Webpack][5],
+[Babel][6] and [SASS][7]. If you want to make more fundamental changes, it may
+be necessary to make the adjustments directly in the source of the Material
+theme and recompile it. This is fairly easy.
+
+  [5]: https://webpack.github.io/
+  [6]: https://babeljs.io
+  [7]: http://sass-lang.com
+
+### Environment setup
+
+In order to start development on the Material theme, a [Node.js][8] version of
+at least 4 is required. Clone the repository from GitHub:
 
 ``` sh
 git clone https://github.com/squidfunk/mkdocs-material
 ```
 
-Then you change the directory and install all dependencies specified in the
-`package.json` and `bower.json` with the following command:
+Next, all dependencies need to be installed, which is done with:
 
 ``` sh
 cd mkdocs-material
-npm install && bower install
+pip install -r requirements.txt
+npm install
 ```
 
-### Development
+  [8]: https://nodejs.org
 
-The asset pipeline is contained in `Gulpfile.js`, which you can start with
-`gulp watch`. If you specify the `--mkdocs` flag, this will also run
-`mkdocs serve`, to monitor changes to the documentation. Point your browser to [localhost:8000](http://localhost:8000) and you should see this very
-documentation in front of your eyes.
+### Development mode
+
+The Material theme uses a sophisticated asset pipeline using [Gulp][9] and
+Webpack which can be started with the following command:
 
 ``` sh
-gulp watch --mkdocs
+npm run start
 ```
 
-For example, changing the color palette is as simple as changing the `$primary`
-and `$accent` variables in `src/assets/stylesheets/_palette.scss`:
+This will also start the MkDocs development server which will monitor changes
+on assets, templates and documentation. Point your browser to
+[localhost:8000][10] and you should see this documentation in front of you.
+
+For example, changing the color palette is as simple as changing the
+`$md-color-primary` and `$md-color-accent` variables in
+`src/assets/stylesheets/_config.scss`:
 
 ``` css
-$primary: $red-400;
-$accent:  $teal-a700;
+$md-color-primary: $clr-red-400;
+$md-color-accent:  $clr-teal-a700;
 ```
 
-The color variables are defined by the SASS library [quantum-colors][] and
-resemble all the colors contained in the material design palette.
-[This page][material-colors] offers a really good overview of the palette.
+!!! warning "Automatically generated files"
 
-### Building
+    Never make any changes in the `material` directory, as the contents of this
+    directory are automatically generated from the `src` directory and will be
+    overriden when the theme is built.
+
+  [9]: http://gulpjs.com
+  [10]: http://localhost:8000
+
+### Build process
 
 When you finished making your changes, you can build the theme by invoking:
 
 ``` sh
-gulp build --production
+npm run build
 ```
 
-The `--production` flag triggers the production-level compilation and
-minification of all CSS and Javascript sources. When the command is ready,
-the final theme is located in the `material` directory. Add the `theme_dir`
-variable pointing to the aforementioned directory in your original
-`mkdocs.yml`:
-
-``` yaml
-theme_dir: 'mkdocs-material/material'
-```
+This triggers the production-level compilation and minification of all
+stylesheets and JavaScript sources. When the command is ready, the final
+theme is located in the `material` directory. Add the `theme_dir` variable
+pointing to the aforementioned directory in your original `mkdocs.yml`.
 
 Now you can run `mkdocs build` and you should see your documentation with your
 changes to the original Material theme.
-
-[MkDocs]: http://www.mkdocs.org
-[MkDocs documentation]: http://www.mkdocs.org/user-guide/styling-your-docs/#customising-a-theme
-[quantum-colors]: https://github.com/nkpfstr/quantum-colors
-[material-colors]: http://www.materialui.co/colors

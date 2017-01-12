@@ -1,0 +1,108 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Admonition extension
+.admonition {
+  position: relative;
+  margin: 1.5625em 0;
+  padding: 0.8rem 1.2rem;
+  border-left: 3.2rem solid transparentize($clr-blue-a200, 0.6);
+  border-radius: 0.2rem;
+  background-color: transparentize($clr-blue-a200, 0.85);
+  font-size: ms(-1);
+
+  // Icon
+  &::before {
+    @extend %md-icon;
+
+    position: absolute;
+    left: -2.6rem;
+    color: $md-color-white;
+    font-size: 2rem;
+    content: "edit";
+    vertical-align: -0.25em;
+  }
+
+  // Remove spacing on first element
+  :first-child {
+    margin-top: 0;
+  }
+
+  // Remove spacing on last element
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  // Build representational classes
+  @each $names, $appearance in (
+    summary tldr: $clr-light-blue-a400 "subject",
+    tip hint important : $clr-teal-a700 "whatshot",
+    success check done: $clr-green-a400 "done",
+    warning caution attention: $clr-orange-a400 "warning",
+    failure fail missing: $clr-red-a200 "clear",
+    danger error: $clr-red-a400 "flash_on",
+    bug: $clr-pink-a400 "bug_report"
+  ) {
+    $tint: nth($appearance, 1);
+    $icon: nth($appearance, 2);
+
+    // Define base class
+    &%#{nth($names, 1)},
+    &.#{nth($names, 1)} {
+      border-color: transparentize($tint, 0.6);
+      background-color: transparentize($tint, 0.85);
+
+      // Icon
+      &::before {
+        content: $icon;
+      }
+    }
+
+    // Define synonyms for base class
+    @if length($names) > 1 {
+      @for $n from 2 through length($names) {
+        &.#{nth($names, $n)} {
+          @extend .admonition%#{nth($names, 1)};
+        }
+      }
+    }
+  }
+}
+
+// Title
+.admonition-title {
+  font-weight: 700;
+
+  // Remove bottom spacing for title
+  html & {
+    margin-bottom: 0;
+  }
+
+  // Remove top spacing for first element following title
+  html & + * {
+    margin-top: 0;
+  }
+}

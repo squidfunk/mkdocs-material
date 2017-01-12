@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -20,511 +20,222 @@
  * IN THE SOFTWARE.
  */
 
-/* Hey, there's your missing semicolon, lunr.js! */
-;
-
-/* Truncate a string after the given number of characters */
-String.prototype.truncate = function(n) {
-  if (this.length > n) {
-    while (this[n] != ' ' && --n > 0);
-    return this.substring(0, n) + '&hellip;';
-  }
-  return this;
-}
-
-/* Wrap an HTMLElement around each element in an HTMLElement array */
-HTMLElement.prototype.wrap = function (elms) {
-  if (!elms.length) elms = [elms];
-  for (var i = elms.length - 1; i >= 0; i--) {
-    var child = (i > 0) ? this.cloneNode(true) : this;
-    var el = elms[i];
-
-    /* Cache current parent and sibling */
-    var parent  = el.parentNode,
-        sibling = el.nextSibling;
-
-    /* Wrap the element and remove it from its current parent */
-    child.appendChild(el);
-    if (sibling) {
-      parent.insertBefore(child, sibling);
-    } else {
-      parent.appendChild(child);
-    }
-  }
-}
+import FastClick from "fastclick"
+import Material from "./components/Material"
 
 /* ----------------------------------------------------------------------------
- * Application logic
+ * Application
  * ------------------------------------------------------------------------- */
 
-/* Initialize application upon DOM ready */
-document.addEventListener('DOMContentLoaded', function() {
-  'use strict';
+export default class Application {
 
-  /* Test for iOS */
-  Modernizr.addTest('ios', function() {
-    return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g);
-  });
+  /**
+   * Create the application
+   *
+   * @constructor
+   * @param  {object} config Configuration object
+   */
+  constructor(config) {
+    this.config_ = config
+  }
 
-  /* Test for web application context */
-  Modernizr.addTest('standalone', function() {
-    return !!navigator.standalone;
-  });
+  /**
+   * Initialize all components and listeners
+   */
+  initialize() {
 
-  /* Attack FastClick to mitigate 300ms delay on touch devices */
-  FastClick.attach(document.body);
+    /* Initialize Modernizr and FastClick */
+    new Material.Event.Listener(document, "DOMContentLoaded", () => {
 
-  /* Grab relevant elements from the DOM */
-  var toggle  = document.getElementById('toggle-search'),
-      reset   = document.getElementById('reset-search'),
-      drawer  = document.querySelector('.drawer'),
-      anchors = document.querySelectorAll('.anchor'),
-      search  = document.querySelector('.search .field'),
-      query   = document.querySelector('.query'),
-      meta    = document.querySelector('.results .meta');
+      /* Test for iOS */
+      Modernizr.addTest("ios", () => {
+        return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
+      })
 
-/* ----------------------------------------------------------------------------
- * Initialize drawer
- * ------------------------------------------------------------------------- */
+      /* Test for web application context */
+      Modernizr.addTest("standalone", () => {
+        return !!navigator.standalone
+      })
 
-  /* Automatically close drawer when anchors are clicked */
-  Array.prototype.forEach.call(anchors, function(item) {
-    item.querySelector('a').addEventListener('click', function() {
-      document.getElementById('toggle-drawer').checked = false;
-      document.body.classList.remove('toggle-drawer');
-    });
-  });
+      /* Attack FastClick to mitigate 300ms delay on touch devices */
+      FastClick.attach(document.body)
 
-  /* Align drawer to window offset */
-  var pageYOffsetLast = window.pageYOffset;
-  var align = function() {
-    var boundary = window.pageYOffset + window.innerHeight;
-    var clipping = Math.max(0, window.innerHeight - drawer.offsetHeight);
-
-    /* Ensure alignment with footer if at end of document */
-    if (boundary > document.body.clientHeight - (96 - clipping)) {
-      if (drawer.style.position != 'absolute') {
-        drawer.style.position = 'absolute';
-        drawer.style.top      = null;
-        drawer.style.bottom   = 0;
-      }
-
-    /* Pin drawer to top, if window is higher than drawer */
-    } else if (drawer.offsetHeight < window.innerHeight) {
-      if (drawer.style.position != 'fixed') {
-        drawer.style.position = 'fixed';
-        drawer.style.top = 0;
-        drawer.style.bottom = null;
-      }
-
-    /* If the drawer is not pinned, check if we need to pin it */
-    } else if (drawer.style.position != 'fixed') {
-
-      /* Pin drawer to bottom of window */
-      if (boundary > drawer.offsetTop + drawer.offsetHeight) {
-        drawer.style.position = 'fixed';
-        drawer.style.top = null;
-        drawer.style.bottom = -96 + 'px';
-
-      /* Pin drawer to top of window */
-      } else if (window.pageYOffset < drawer.offsetTop) {
-        drawer.style.position = 'fixed';
-        drawer.style.top = 0;
-        drawer.style.bottom = null;
-      }
-
-    /* If the drawer is pinned, check if we have to unpin it */
-    } else {
-      if (window.pageYOffset > pageYOffsetLast) {
-        if (drawer.style.top) {
-          drawer.style.position = 'absolute';
-          drawer.style.top = Math.max(0, pageYOffsetLast) + 'px';
-          drawer.style.bottom = null;
+      /* Wrap all data tables for better overflow scrolling */
+      const tables = document.querySelectorAll("table:not([class])")
+      Array.prototype.forEach.call(tables, table => {
+        const wrap = document.createElement("div")
+        wrap.classList.add("md-typeset__table")
+        if (table.nextSibling) {
+          table.parentNode.insertBefore(wrap, table.nextSibling)
+        } else {
+          table.parentNode.appendChild(wrap)
         }
-      } else if (drawer.style.bottom) {
-        drawer.style.position = 'absolute';
-        drawer.style.top = (boundary - drawer.offsetHeight) + 'px';
-        drawer.style.bottom = null;
-      }
-    }
+        wrap.appendChild(table)
+      })
 
-    /* Update last offset (mitigiate negative offsets in Safari) */
-    pageYOffsetLast = Math.max(0, window.pageYOffset);
-  }
+      /* Force 1px scroll offset to trigger overflow scrolling */
+      if (Modernizr.ios) {
+        const scrollable = document.querySelectorAll("[data-md-scrollfix]")
+        Array.prototype.forEach.call(scrollable, item => {
+          item.addEventListener("touchstart", () => {
+            const top = item.scrollTop
 
-  /* Check for media query events */
-  var check = function() {
-    var main = document.querySelector('.main');
-    window.removeEventListener('scroll', align);
+            /* We're at the top of the container */
+            if (top === 0) {
+              item.scrollTop = 1
 
-    /* Reset drawer position when entering collapsed mode */
-    if (matchMedia("only screen and (max-width: 959px)").matches) {
-      drawer.style.position = null;
-      drawer.style.top      = null;
-      drawer.style.bottom   = null;
-
-    /* Check if the scroll handler needs to be registered */
-    } else if (drawer.offsetHeight + 96 < main.offsetHeight) {
-      window.addEventListener('scroll', align);
-      align();
-    }
-  }
-
-  /* Register resize handler and fire once */
-  if (!Modernizr.ios) {
-    window.addEventListener('resize', check);
-    check();
-  }
-
-/* ----------------------------------------------------------------------------
- * Initialize search index
- * ------------------------------------------------------------------------- */
-
-  /* Initialize index */
-  var initialize = function() {
-    pegasus(base_url + '/mkdocs/search_index.json').then(
-
-      /* Request successful, we got the index */
-      function(data, xhr) {
-
-        /* Create index */
-        var index = lunr(function() {
-          this.field('title', { boost: 10 });
-          this.field('text');
-          this.ref('location');
-        });
-
-        /* Index articles */
-        var articles = {};
-        data.docs.map(function(article) {
-          article.location = base_url + article.location;
-          articles[article.location] = article;
-          index.add(article);
-        });
-
-        /* Register keyhandler to execute search on key up */
-        query.addEventListener('keyup', function() {
-          var container = document.querySelector('.results .list');
-          while (container.firstChild)
-            container.removeChild(container.firstChild);
-
-          /* Abort, if the query is empty */
-          var bar = document.querySelector('.bar.search');
-          if (!query.value.length) {
-            while (meta.firstChild)
-              meta.removeChild(meta.firstChild);
-
-            /* Restore state */
-            bar.classList.remove('non-empty');
-            return;
-          }
-
-          /* Show reset button */
-          bar.classList.add('non-empty');
-
-          /* Execute search */
-          var results = index.search(query.value);
-          results.map(function(result) {
-            var article = articles[result.ref];
-
-            /* Create article container */
-            var teaser = document.createElement('article');
-            teaser.classList.add('result');
-
-            /* Create title element */
-            var title = document.createElement('h1');
-            title.innerHTML = article.title;
-            teaser.appendChild(title);
-
-            // /* Create text element */
-            // var text = document.createElement('p');
-            // text.innerHTML = article.text.truncate(140);
-            // teaser.appendChild(text);
-
-            /* Create a link referring to the article */
-            var link = document.createElement('a');
-            link.href = article.location;
-            link.appendChild(teaser);
-
-            /* Create url element */
-            var url = document.createElement('span');
-            url.innerHTML = link.href.split('#')[0];
-            teaser.appendChild(url);
-
-            /* Close search and jump to anchor when on same page */
-            var parts = link.href.split('#');
-            if (parts[0] == document.location.href.split('#')[0]) {
-              link.addEventListener('click', function(e) {
-                document.body.classList.remove('toggle-search');
-                document.body.classList.remove('locked');
-                toggle.checked = false;
-
-                /* Don't catch anchors if the search doesn't cover the page */
-                if (matchMedia('only screen and (min-width: 960px)').matches)
-                  return;
-
-                /* Prevent default to intercept scroll-to behaviour and
-                   stop propagation, as this interferes with the link-lock in
-                   the web application context, which opens all internal links
-                   inside the same context */
-                e.preventDefault();
-                e.stopPropagation();
-
-                /* Scroll to chapter, if given */
-                if (parts.length != 1) {
-                  var chapter = document.getElementById(parts[1]);
-                  if (chapter) {
-
-                    /* Scroll to chapter, but wait for 100ms to prevent flashes
-                       on iOS. A short timeout seems to do the trick */
-                    setTimeout(function() {
-                      chapter.scrollIntoView && chapter.scrollIntoView() ||
-                        window.scrollTo(0, chapter.offsetTop);
-                    }, 100);
-                  }
-                }
-              });
+            /* We're at the bottom of the container */
+            } else if (top + item.offsetHeight === item.scrollHeight) {
+              item.scrollTop = top - 1
             }
-
-            /* Add article to search results */
-            container.appendChild(link);
-          });
-
-          /* Show number of search results */
-          var number = document.createElement('strong');
-          number.innerHTML = results.length + ' search result'
-            + (results.length != 1 ? 's' : '');
-
-          /* Update number */
-          while (meta.firstChild)
-            meta.removeChild(meta.firstChild);
-          meta.appendChild(number);
-        });
-      },
-
-      /* Handle error */
-      function(data, xhr) {
-        console.error(data, xhr.status);
+          })
+        })
       }
-    );
+    }).listen()
 
-    /* Remove listener, as we only have to initialize once */
-    toggle.removeEventListener('click', initialize);
-  };
+    /* Component: sidebar container */
+    if (!Modernizr.csscalc)
+      new Material.Event.MatchMedia("(min-width: 960px)",
+        new Material.Event.Listener(window, [
+          "resize", "orientationchange"
+        ], new Material.Sidebar.Container("[data-md-component=container]")))
 
-  /* Initialize on first click */
-  toggle.addEventListener('click', initialize);
+    /* Component: sidebar with navigation */
+    new Material.Event.MatchMedia("(min-width: 1220px)",
+      new Material.Event.Listener(window, [
+        "scroll", "resize", "orientationchange"
+      ], new Material.Sidebar.Position("[data-md-component=navigation]")))
 
-/* ----------------------------------------------------------------------------
- * Initialize search modal
- * ------------------------------------------------------------------------- */
+    /* Component: sidebar with table of contents */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(window, [
+        "scroll", "resize", "orientationchange"
+      ], new Material.Sidebar.Position("[data-md-component=toc]")))
 
-  /* Intercept click on search mode toggle */
-  var offset = 0;
-  toggle.addEventListener('click', function(e) {
-    var list = document.body.classList;
-    var lock = !matchMedia('only screen and (min-width: 960px)').matches;
+    /* Component: link blurring for table of contents */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(window, "scroll",
+        new Material.Nav.Blur("[data-md-component=toc] .md-nav__link")))
 
-    /* Exiting search mode */
-    if (list.contains('locked')) {
-      list.remove('locked');
+    /* Component: collapsible elements for navigation */
+    const collapsibles =
+      document.querySelectorAll("[data-md-component=collapsible]")
+    Array.prototype.forEach.call(collapsibles, collapse => {
+      new Material.Event.MatchMedia("(min-width: 1220px)",
+        new Material.Event.Listener(collapse.previousElementSibling, "click",
+          new Material.Nav.Collapse(collapse)))
+    })
 
-      /* Scroll to former position, but wait for 100ms to prevent flashes
-         on iOS. A short timeout seems to do the trick */
-      if (lock)
-        setTimeout(function() {
-          window.scrollTo(0, offset);
-        }, 100);
+    /* Component: active pane monitor for iOS scrolling fixes */
+    new Material.Event.MatchMedia("(max-width: 1219px)",
+      new Material.Event.Listener(
+        "[data-md-component=navigation] [data-md-toggle]", "change",
+          new Material.Nav.Scrolling("[data-md-component=navigation] nav")))
 
-    /* Entering search mode */
-    } else {
-      offset = window.scrollY;
+    /* Component: search body lock for mobile */
+    new Material.Event.MatchMedia("(max-width: 959px)",
+      new Material.Event.Listener("[data-md-toggle=search]", "change",
+        new Material.Search.Lock("[data-md-toggle=search]")))
 
-      /* First timeout: scroll to top after transition, to omit flickering */
-      if (lock)
-        setTimeout(function(){
-          window.scrollTo(0, 0);
-        }, 400);
+    /* Component: search results */
+    new Material.Event.Listener(document.forms.search.query, [
+      "focus", "keyup"
+    ], new Material.Search.Result("[data-md-component=result]", () => {
+      return fetch(`${this.config_.url.base}/mkdocs/search_index.json`, {
+        credentials: "same-origin"
+      }).then(response => response.json())
+        .then(data => {
+          return data.docs.map(doc => {
+            doc.location = this.config_.url.base + doc.location
+            return doc
+          })
+        })
+    })).listen()
 
-      /* Second timeout: Lock body after finishing transition and scrolling to
-         top and focus input field. Sadly, the focus event is not dispatched
-         on iOS Safari and there's nothing we can do about it. */
-      setTimeout(function() {
+    /* Listener: prevent touches on overlay if navigation is active */
+    new Material.Event.MatchMedia("(max-width: 1219px)",
+      new Material.Event.Listener("[data-md-component=overlay]", "touchstart",
+        ev => ev.preventDefault()))
 
-        /* This additional check is necessary to handle fast subsequent clicks
-           on the toggle and the timeout to lock the body must be cancelled */
-        if (this.checked) {
-          if (lock)
-            list.add('locked');
-          setTimeout(function() {
-            query.focus();
-          }, 200);
+    /* Listener: close drawer when anchor links are clicked */
+    new Material.Event.MatchMedia("(max-width: 959px)",
+      new Material.Event.Listener("[data-md-component=navigation] [href^='#']",
+        "click", () => {
+          const toggle = document.querySelector("[data-md-toggle=drawer]")
+          if (toggle.checked) {
+            toggle.checked = false
+            toggle.dispatchEvent(new CustomEvent("change"))
+          }
+        }))
+
+    /* Listener: focus input after opening search */
+    new Material.Event.Listener("[data-md-toggle=search]", "change", ev => {
+      setTimeout(toggle => {
+        const query = document.forms.search.query
+        if (toggle.checked)
+          query.focus()
+      }, 400, ev.target)
+    }).listen()
+
+    /* Listener: open search on focus */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(document.forms.search.query, "focus", () => {
+        const toggle = document.querySelector("[data-md-toggle=search]")
+        if (!toggle.checked) {
+          toggle.checked = true
+          toggle.dispatchEvent(new CustomEvent("change"))
         }
-      }.bind(this), 450);
-    }
-  });
+      }))
 
-  /* Dispatch input focus on touch of search section */
-  search.addEventListener('touchstart', function() {
-    query.focus();
-  });
-
-  /* Exit search mode when pressing ESC */
-  window.addEventListener('keyup', function(e) {
-    var code = e.keyCode || e.which;
-    if (code == 27) {
-      query.blur();
-
-      /* Exit locked state */
-      document.body.classList.remove('toggle-search');
-      document.body.classList.remove('locked');
-      toggle.checked = false;
-    }
-  });
-
-  /* Delete search results upon click on "x" */
-  var empty = document.getElementById('reset-search');
-  empty.addEventListener('click', function() {
-    var container = document.querySelector('.results .list');
-    while (container.firstChild)
-      container.removeChild(container.firstChild);
-
-    /* Hide search button */
-    var bar = document.querySelector('.bar.search');
-    bar.classList.remove('non-empty');
-
-    /* Reset number of search results */
-    meta.innerHTML = '';
-
-    /* Empty search input */
-    query.value = '';
-    query.focus();
-  });
-
-/* ----------------------------------------------------------------------------
- * Initialize scroll spy
- * ------------------------------------------------------------------------- */
-
-  /* Retrieve vertical offset of article chapters */
-  var chapters = document.querySelectorAll('h2');
-  chapters = Array.prototype.map.call(chapters, function(item) {
-    return item.offsetTop;
-  });
-
-  /* Update currently active chapter, if the new chapter is two thirds
-     into the viewport - account for iOS web application context */
-  var visible = null;
-  document.addEventListener('scroll', function() {
-    var offset = window.scrollY + (window.innerHeight / 3),
-        active = chapters.length - 1;
-    for (var c = 0; c < active; c++)
-      if (offset < chapters[c + 1])
-        active = c;
-
-    /* Update anchors, if a new chapter became visible */
-    if (active != visible) {
-      visible = active;
-      Array.prototype.forEach.call(anchors, function(item, index) {
-        var link = item.querySelector('a');
-        if (index != visible || link.classList.add('current'))
-          link.classList.remove('current');
-      });
-    }
-  });
-
-/* ----------------------------------------------------------------------------
- * Fix syntax highlighting
- * ------------------------------------------------------------------------- */
-
-  /* Fix highlighting for function calls */
-  var functions = document.querySelectorAll('.n + .p');
-  Array.prototype.forEach.call(functions, function(item) {
-    var text = item.innerText || item.textContent;
-    if (text && text[0] == '(')
-      item.previousSibling.classList.add('f');
-  });
-
-/* ----------------------------------------------------------------------------
- * Progressive structure enhancement
- * ------------------------------------------------------------------------- */
-
-  /* Wrap all data tables */
-  var tables = document.querySelectorAll('table');
-  Array.prototype.forEach.call(tables, function(item) {
-    var wrapper = document.createElement('div');
-    wrapper.classList.add('data');
-    wrapper.wrap(item);
-  });
-
-/* ----------------------------------------------------------------------------
- * Fix overflow scrolling on iOS
- * ------------------------------------------------------------------------- */
-
-  /* Force 1px scroll offset to trigger overflow scrolling */
-  if (Modernizr.ios) {
-    var scrollable = document.querySelectorAll(
-      '.scrollable, .standalone .article');
-    Array.prototype.forEach.call(scrollable, function(item) {
-      item.addEventListener('touchstart', function() {
-        var top = this.scrollTop;
-
-        /* We're at the top of the container */
-        if (top == 0) {
-          this.scrollTop = 1;
-
-        /* We're at the bottom of the container */
-        } else if (top + this.offsetHeight == this.scrollHeight) {
-          this.scrollTop = top - 1;
+    /* Listener: close search when clicking outside */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(document.body, "click", () => {
+        const toggle = document.querySelector("[data-md-toggle=search]")
+        if (toggle.checked) {
+          toggle.checked = false
+          toggle.dispatchEvent(new CustomEvent("change"))
         }
-      });
-    });
-  }
+      }))
 
-  /* Prevent scrolling on project, overlay and header */
-  var prevented = document.querySelectorAll('.project, .overlay, .header');
-  Array.prototype.forEach.call(prevented, function(item) {
-    item.addEventListener('touchmove', function(e) {
-      e.preventDefault();
-    });
-  });
-
-/* ----------------------------------------------------------------------------
- * Fallback for browsers that don't support :checked
- * ------------------------------------------------------------------------- */
-
-  /* Set representative class on body for active toggle */
-  var toggles = document.querySelectorAll('.toggle');
-  Array.prototype.forEach.call(toggles, function(item) {
-    item.addEventListener('click', function() {
-      document.body.classList.toggle(this.id);
-    });
-  });
-
-/* ----------------------------------------------------------------------------
- * Initialize GitHub star button
- * ------------------------------------------------------------------------- */
-
-  /* Get Stars for current repository */
-  if (repo_id) {
-    pegasus('https://api.github.com/repos/' + repo_id).then(
-
-      /* Request successful, we got the stars */
-      function(data, xhr) {
-        var count = data.stargazers_count;
-        if (count > 10000)
-          count = (count / 1000).toFixed(0) + 'k';
-        else if (count > 1000)
-          count = (count / 1000).toFixed(1) + 'k';
-
-        /* Set number of stars */
-        var stars = document.querySelector('.repo-stars .count');
-        stars.innerHTML = count;
-      },
-
-      /* Handle error */
-      function(data, xhr) {
-        console.error(data, xhr.status);
+    /* Listener: disable search when ESC key is pressed */
+    new Material.Event.Listener(window, "keyup", ev => {
+      const code = ev.keyCode || ev.which
+      if (code === 27) {
+        const toggle = document.querySelector("[data-md-toggle=search]")
+        if (toggle.checked) {
+          toggle.checked = false
+          toggle.dispatchEvent(new CustomEvent("change"))
+          document.forms.search.query.blur()
+        }
       }
-    );
+    }).listen()
+
+    /* Listener: fix unclickable toggle due to blur handler */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener("[data-md-toggle=search]", "click",
+        ev => ev.stopPropagation()))
+
+    /* Listener: prevent search from closing when clicking */
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener("[data-md-component=search]", "click",
+        ev => ev.stopPropagation()))
+
+    /* Retrieve facts for the given repository type */
+    ;(() => {
+      const el = document.querySelector("[data-md-source]")
+      if (!el) return Promise.resolve([])
+      switch (el.dataset.mdSource) {
+        case "github": return new Material.Source.Adapter.GitHub(el).fetch()
+        default: return Promise.resolve([])
+      }
+
+    /* Render repository source information */
+    })().then(facts => {
+      const sources = document.querySelectorAll("[data-md-source]")
+      Array.prototype.forEach.call(sources, source => {
+        new Material.Source.Repository(source)
+          .initialize(facts)
+      })
+    })
   }
-});
+}

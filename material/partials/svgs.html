@@ -1,0 +1,10 @@
+<div class="md-svg">
+  {% set platform = config.extra.repo_icon or config.repo_url %}
+  {% if "github" in platform %}
+    {% include "assets/images/icons/github-1da075986e.svg" %}
+  {% elif "gitlab" in platform %}
+    {% include "assets/images/icons/gitlab-5ad3f9f9e5.svg" %}
+  {% elif "bitbucket" in platform %}
+    {% include "assets/images/icons/bitbucket-670608a71a.svg" %}
+  {% endif %}
+</div>

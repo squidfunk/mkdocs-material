@@ -1,18 +1,19 @@
 # Material
 
-[![Travis CI][travis-image]][travis-link]
-[![PyPI Version][pypi-v-image]][pypi-v-link]
+[![Travis][travis-image]][travis-link]
+[![Codacy][codacy-image]][codacy-link]
+[![PyPI][pypi-image]][pypi-link]
 
-A material design theme for [MkDocs](http://www.mkdocs.org).
+A Material Design theme for [MkDocs](http://www.mkdocs.org).
 
-**Note: the theme is currently undergoing a complete rewrite for 1.0.0 which should be
-released shortly.**
+TBD: [![_](docs/images/screen.png)](http://squidfunk.github.io/mkdocs-material/)
 
-* To get a glimpse, checkout the 
-[rework](https://github.com/squidfunk/mkdocs-material/tree/rework) branch
-* To give feedback on the rework version, please see issues [#46](https://github.com/squidfunk/mkdocs-material/issues/46)
-
-[![iOS](docs/images/screen.png)](http://squidfunk.github.io/mkdocs-material/)
+  [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg
+  [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
+  [codacy-image]: https://api.codacy.com/project/badge/Grade/fe07aa1fa91d453cb69711d3885c5d7e
+  [codacy-link]: https://www.codacy.com/app/squidfunk/mkdocs-material?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=squidfunk/mkdocs-material&amp;utm_campaign=Badge_Grade
+  [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
+  [pypi-link]: https://pypi.python.org/pypi/mkdocs-material
 
 ## Quick start
 
@@ -35,7 +36,7 @@ http://squidfunk.github.io/mkdocs-material/
 
 **MIT License**
 
-Copyright (c) 2016 Martin Donath
+Copyright (c) 2016-2017 Martin Donath
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
@@ -54,8 +55,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
-
-[travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
-[travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
-[pypi-v-image]: https://img.shields.io/pypi/v/mkdocs-material.png
-[pypi-v-link]: https://pypi.python.org/pypi/mkdocs-material

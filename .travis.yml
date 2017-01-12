@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -19,20 +19,23 @@
 # IN THE SOFTWARE.
 
 language: node_js
+sudo: false
 
 # Node.js versions
 node_js:
   - 4
+  - 5
+  - 6
+
+# Cache dependencies
+cache:
+  pip: true
+  directories:
+    - node_modules
 
 # Install dependencies
 before_script:
-
-  # Install bower
-  - npm install -g bower
-
-  # Install project dependencies
-  - npm install
-  - bower install
+  - pip install --user -r requirements.txt
 
 # Perform build and tests
-script: gulp build --production
+script: npm run build

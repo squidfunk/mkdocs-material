@@ -1,4 +1,4 @@
-# Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -22,19 +22,19 @@ from setuptools import setup, find_packages
 
 # Package description
 setup(
-    name = 'mkdocs-material',
-    version = '0.2.4',
-    url = 'http://squidfunk.github.io/mkdocs-material/',
-    license = 'MIT',
-    description = 'A material design theme for MkDocs',
-    author = 'Martin Donath',
-    author_email = 'martin.donath@squidfunk.com',
-    keywords = ['mkdocs', 'documentation', 'theme'],
+    name = "mkdocs-material",
+    version = "1.0.0",
+    url = "http://squidfunk.github.io/mkdocs-material/",
+    license = "MIT",
+    description = "A Material Design theme for MkDocs",
+    author = "Martin Donath",
+    author_email = "martin.donath@squidfunk.com",
+    keywords = ["mkdocs", "documentation", "theme"],
     packages = find_packages(),
     include_package_data = True,
     entry_points = {
-        'mkdocs.themes': [
-            'material = material',
+        "mkdocs.themes": [
+            "material = material",
         ]
     },
     zip_safe = False
