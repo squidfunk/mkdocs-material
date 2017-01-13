@@ -40,6 +40,7 @@
   &[data-md-state="lock"] {
     position: fixed;
     top: 5.6rem;
+    backface-visibility: hidden;
   }
 
   // [tablet -]: Convert navigation to drawer
