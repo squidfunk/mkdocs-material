@@ -108,7 +108,7 @@
   // Wrapper for scrolling on overflow
   &__scrollwrap {
     margin: 2.4rem 0.4rem;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     // [tablet -]: Adjust margins
     @include break-to-device(tablet) {
