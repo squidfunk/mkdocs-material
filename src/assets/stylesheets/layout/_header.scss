@@ -48,8 +48,8 @@
 .md-header-nav {
   padding: 0.4rem;
 
-  // Icons
-  &__icon {
+  // Icon buttons
+  &__button {
     @extend %md-icon__button;
 
     position: relative;
@@ -61,8 +61,13 @@
       opacity: 0.7;
     }
 
+    // Set correct display on image
+    &.md-logo img {
+      display: block;
+    }
+
     // Hide search icon, if JavaScript is not available.
-    .no-js & .md-icon--search {
+    .no-js &.md-icon--search {
       display: none;
     }
 
@@ -75,11 +80,12 @@
       }
     }
 
-    // [tablet -]: Hide the home icon
+    // [tablet -]: Hide the home icon or logo
     @include break-to-device(tablet) {
 
-      // Home icon
-      &.md-icon--home {
+      // Home icon or logo
+      &.md-icon--home,
+      &.md-logo {
         display: none;
       }
     }

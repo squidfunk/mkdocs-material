@@ -51,8 +51,8 @@
       content: "arrow_back";
     }
 
-    // Hide icon by default
-    .md-nav__icon {
+    // Hide button by default
+    .md-nav__button {
       display: none;
     }
   }
@@ -84,8 +84,8 @@
     }
   }
 
-  // Icon
-  &__icon {
+  // Icon buttons
+  &__button {
     @extend %md-icon, %md-icon__button;
 
     // Stretch image
@@ -240,7 +240,7 @@
           color: $md-color-white;
 
           // Site logo
-          .md-nav__icon {
+          .md-nav__button {
             display: block;
             position: absolute;
             top: 0.4rem;
