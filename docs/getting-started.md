@@ -41,7 +41,7 @@ pip install pymdown-extensions
 
 ### Installing Material
 
-#### by using pip
+#### using pip
 
 Material can be installed with `pip`:
 
@@ -63,7 +63,23 @@ pip install mkdocs-material
       to a self-contained solution by installing Python with Homebrew. This
       should eliminate a lot of problems you may be having with `pip`.
 
-#### by cloning from GitHub
+#### using choco
+
+If you're on Windows you can use [Chocolatey][5] to install [Material][6]:
+
+``` dos
+choco install mkdocs-material
+```
+
+This will also install all required dependencies like [Python][7] and
+[MkDocs][8].
+
+  [5]: https://chocolatey.org
+  [6]: https://chocolatey.org/packages/mkdocs-material
+  [7]: https://chocolatey.org/packages/python
+  [8]: https://chocolatey.org/packages/mkdocs
+
+#### cloning from GitHub
 
 Material can also be used without a system-wide installation by cloning the
 repository into a subfolder of your project's root directory:
@@ -75,21 +91,6 @@ git clone https://github.com/squidfunk/mkdocs-material.git
 This is especially useful if you want to extend the theme and override some
 parts of the theme. The theme will reside in the folder
 `mkdocs-material/material`.
-
-### Installing using Chocolatey
-
-If you're on Windows you can use [Chocolatey][5] to install [mkdocs-material][6]:
-
-``` dos
-choco install mkdocs-material
-```
-
-Installing [mkdocs-material][6] will take care of installing all required dependencies like [mkdocs][7] and [Python][8].
-
-  [5]: https://chocolatey.org
-  [6]: https://chocolatey.org/packages/mkdocs-material
-  [7]: https://chocolatey.org/packages/mkdocs
-  [8]: https://chocolatey.org/packages/Python
 
 ## Usage
 
