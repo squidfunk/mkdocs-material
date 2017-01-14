@@ -18,18 +18,23 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import json
 from setuptools import setup, find_packages
+
+# Load package.json contents
+with open("package.json") as data:
+    package = json.load(data)
 
 # Package description
 setup(
-    name = "mkdocs-material",
-    version = "1.0.1",
-    url = "http://squidfunk.github.io/mkdocs-material/",
-    license = "MIT",
-    description = "A Material Design theme for MkDocs",
-    author = "Martin Donath",
-    author_email = "martin.donath@squidfunk.com",
-    keywords = ["mkdocs", "documentation", "theme"],
+    name = package["name"],
+    version = package["version"],
+    url = package["homepage"],
+    license = package["license"],
+    description = package["description"],
+    author = package["author"]["name"],
+    author_email = package["author"]["email"],
+    keywords = package["keywords"],
     packages = find_packages(),
     include_package_data = True,
     entry_points = {
