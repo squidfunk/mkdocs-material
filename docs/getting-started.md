@@ -76,8 +76,8 @@ This will also install all required dependencies like [Python][7] and
 
   [5]: https://chocolatey.org
   [6]: https://chocolatey.org/packages/mkdocs-material
-  [8]: https://chocolatey.org/packages/python
-  [7]: https://chocolatey.org/packages/mkdocs
+  [7]: https://chocolatey.org/packages/python
+  [8]: https://chocolatey.org/packages/mkdocs
 
 #### cloning from GitHub
 
