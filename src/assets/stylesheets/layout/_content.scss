@@ -35,8 +35,8 @@
   // [screen +]: Add space for table of contents
   @include break-from-device(screen) {
     margin-left: 24.2rem;
-    // Hack: setting overflow to auto is necessary in combination with floating
-    // the inner container left, as this omits massive repaints
+    // Hack: setting overflow to auto induces margin collapse which omits
+    // massive repaints because of the margins of the inner elements
     overflow: auto;
   }
 
@@ -47,8 +47,6 @@
     // [screen +]: Increase spacing
     @include break-from-device(screen) {
       margin: 2.4rem;
-      // Hack: necessary to omit massive repaints when scrolling
-      float: left;
 
       // Hack: remove bottom spacing, due to margin collapse
       :last-child {
