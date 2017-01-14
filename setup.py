@@ -23,7 +23,7 @@ from setuptools import setup, find_packages
 # Package description
 setup(
     name = "mkdocs-material",
-    version = "1.0.0",
+    version = "1.0.1",
     url = "http://squidfunk.github.io/mkdocs-material/",
     license = "MIT",
     description = "A Material Design theme for MkDocs",

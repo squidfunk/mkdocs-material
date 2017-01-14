@@ -1,3 +1,10 @@
+mkdocs-material-1.0.1 (2017-01-14)
+
+  * Fixed massive repaints happening when scrolling
+  * Fixed footer back reference positions in case of overflow
+  * Fixed header logo from showing when the menu icon is rendered
+  * Changed scrollbar behavior to only show when content overflows
+
 mkdocs-material-1.0.0 (2017-01-13)
 
   * Introduced Webpack for more sophisticated JavaScript bundling
