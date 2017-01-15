@@ -265,14 +265,14 @@
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
-      @include z-depth(6);
-
       top: 4rem;
       transition: opacity 0.4s;
       opacity: 0;
 
       // Show search output in active state
       [data-md-toggle="search"]:checked ~ .md-header & {
+        @include z-depth(6);
+
         opacity: 1;
       }
     }
