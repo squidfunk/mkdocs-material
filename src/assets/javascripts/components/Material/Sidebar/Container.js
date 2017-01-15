@@ -20,14 +20,46 @@
  * IN THE SOFTWARE.
  */
 
-import Container from "./Sidebar/Container"
-import Position from "./Sidebar/Position"
-
 /* ----------------------------------------------------------------------------
- * Module
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default {
-  Container,
-  Position
+export default class Container {
+
+  /**
+   * Monitor window height to stretch sidebar container to viewport
+   *
+   * @constructor
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   */
+  constructor(el) {
+    this.el_ = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+
+    /* Retrieve parent node */
+    this.parent_ = this.el_.parentNode
+  }
+
+  /**
+   * Initialize container state
+   */
+  setup() {
+    this.update()
+  }
+
+  /**
+   * Update minimum height
+   */
+  update() {
+    const height = this.parent_.offsetHeight - this.el_.offsetTop
+    this.el_.style.minHeight = `${height}px`
+  }
+
+  /**
+   * Reset minimum height
+   */
+  reset() {
+    this.el_.style.minHeight = ""
+  }
 }
