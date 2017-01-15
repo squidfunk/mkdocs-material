@@ -106,23 +106,6 @@ hr {
     margin-top: 5.6rem;
     padding-top: 2.4rem + 0.6rem;
     overflow: auto;
-
-    // If the browser supports calc(), no JavaScript is necessary
-    .csscalc & {
-      min-height: calc(100% - #{5.6rem - 3rem});
-
-      // Hack: Firefox doesn't correctly calculate min-height, as it takes the
-      // top margin into account which leads to the container overflowing its
-      // parent. For this reason we use this hack here to target only Firefox
-      // and see if we can find a better solution later.
-
-      // stylelint-disable-next-line function-url-quotes
-      @-moz-document url-prefix() {
-        & {
-          min-height: calc(100% - 5.6rem);
-        }
-      }
-    }
   }
 }
 
