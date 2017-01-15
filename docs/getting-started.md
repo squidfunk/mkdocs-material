@@ -28,7 +28,7 @@ pip install mkdocs && mkdocs --version
 # mkdocs, version 0.16.0
 ```
 
-!!! warning "MkDocs for Material requirements"
+!!! warning "MkDocs version requirements"
 
     Material requires MkDocs >= 0.16.
 

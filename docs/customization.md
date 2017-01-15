@@ -196,7 +196,7 @@ The Material theme uses a sophisticated asset pipeline using [Gulp][9] and
 Webpack which can be started with the following command:
 
 ``` sh
-npm run start
+npm start
 ```
 
 This will also start the MkDocs development server which will monitor changes
