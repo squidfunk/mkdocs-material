@@ -83,8 +83,8 @@
     }
   }
 
-  // Icons
-  &__icon {
+  // Icon buttons
+  &__button {
     @extend %md-icon__button;
 
     transition: background 0.25s;

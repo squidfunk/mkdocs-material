@@ -25,6 +25,6 @@ CHANGED="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 
 # Perform install and prune of NPM dependencies if package.json changed
 if $(echo "$CHANGED" | grep --quiet package.json); then
-  echo "Hook[post-merge]: Updating dependencies..."
+  echo "Hook[post-merge]: Updating dependencies"
   npm install && npm prune
 fi

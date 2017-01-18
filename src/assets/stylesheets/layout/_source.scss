@@ -118,7 +118,7 @@
     font-weight: 700;
     list-style-type: none;
     opacity: 0.75;
-    overflow: auto;
+    overflow: hidden;
 
     // Show after the data was loaded
     [data-md-state="done"] & {

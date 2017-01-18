@@ -1,4 +1,4 @@
-# Release Notes
+# Release notes
 
 ## Upgrading
 
@@ -17,7 +17,18 @@ pip show mkdocs-material | grep -E ^Version
 
 ## Changelog
 
-### 1.0.0 <small> _  January 13, 2017</small>
+### 1.0.2 <small> _ January 15, 2017</small>
+
+  * Fixed horizontal scrollbar in content area
+
+### 1.0.1 <small> _ January 14, 2017</small>
+
+* Fixed massive repaints happening when scrolling
+* Fixed footer back reference positions in case of overflow
+* Fixed header logo from showing when the menu icon is rendered
+* Changed scrollbar behavior to only show when content overflows
+
+### 1.0.0 <small> _ January 13, 2017</small>
 
 * Introduced Webpack for more sophisticated JavaScript bundling
 * Introduced ESLint and Stylelint for code style checks

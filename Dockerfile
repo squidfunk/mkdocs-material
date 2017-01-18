@@ -19,9 +19,10 @@
 # IN THE SOFTWARE.
 
 FROM jfloff/alpine-python:2.7-slim
+MAINTAINER Martin Donath <martin.donath@squidfunk.com>
 
-# Set work directory
-WORKDIR /usr/src
+# Set working directory
+WORKDIR /docs
 
 # Install packages
 COPY requirements.txt .

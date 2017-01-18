@@ -28,6 +28,7 @@
 .md-sidebar {
   position: relative;
   width: 24.2rem;
+  padding: 2.4rem 0;
   float: left;
   overflow: visible;
 
@@ -40,6 +41,7 @@
   &[data-md-state="lock"] {
     position: fixed;
     top: 5.6rem;
+    backface-visibility: hidden;
   }
 
   // [tablet -]: Convert navigation to drawer
@@ -107,25 +109,22 @@
 
   // Wrapper for scrolling on overflow
   &__scrollwrap {
-    margin: 2.4rem 0.4rem;
-    overflow-y: scroll;
+    max-height: 100%;
+    margin: 0 0.4rem;
+    overflow-y: auto;
 
     // [tablet -]: Adjust margins
     @include break-to-device(tablet) {
 
-      // Adjust margins for primary scrollbar
+      // Stretch scrollwrap for primary sidebar
       .md-sidebar--primary & {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         margin: 0;
       }
-    }
-
-    // Limit height to window, if JavaScript is available
-    .js & {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
     }
 
     // Override native scrollbar styles
