@@ -1,0 +1,39 @@
+{
+  "breakpoints": [
+    {
+      "name": "mobile-portrait",
+      "size": {
+        "width": 320,
+        "height": 600
+      }
+    },
+    {
+      "name": "mobile-landscape",
+      "size": {
+        "width": 480,
+        "height": 600
+      }
+    },
+    {
+      "name": "tablet-portrait",
+      "size": {
+        "width": 720,
+        "height": 600
+      }
+    },
+    {
+      "name": "tablet-landscape",
+      "size": {
+        "width": 960,
+        "height": 600
+      }
+    },
+    {
+      "name": "screen",
+      "size": {
+        "width": 1220,
+        "height": 600
+      }
+    }
+  ]
+}

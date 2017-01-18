@@ -22,3 +22,6 @@
 /build
 /material
 /site
+
+# Gemini reports
+/gemini-report

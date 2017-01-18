@@ -31,6 +31,9 @@
 /MANIFEST
 /site
 
+# Gemini reports
+/gemini-report
+
 # Distribution files
 /dist
 /mkdocs_material.egg-info

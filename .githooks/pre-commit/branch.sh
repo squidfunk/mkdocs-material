@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,11 +20,15 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-rootUrl: http://localhost:8000/
-gridUrl: http://localhost:4444/wd/hub
+# Determine current branch
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+echo -n "Hook[pre-commit]: Checking branch..."
 
-# Browsers to run tests on
-browsers:
-  chrome:
-    desiredCapabilities:
-      browserName: chrome
+# If we're on master, abort commit
+if [[ "$BRANCH" == "master" ]]; then
+	echo "Commits on master are only allowed via Pull Requests. Aborting."
+	exit 1
+fi
+
+# We're good
+exit 0

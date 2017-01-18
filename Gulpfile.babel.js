@@ -35,7 +35,10 @@ const config = {
     src: "src/assets",                 /* Source directory for assets */
     build: "material/assets"           /* Target directory for assets */
   },
-  lib: "lib",                          /* Libraries */
+  lib: "lib",                          /* Libraries and tasks */
+  tests: {
+    visual: "tests/visual"             /* Visual regression tests */
+  },
   views: {
     src: "src",                        /* Source directory for views */
     build: "material"                  /* Target directory for views */
@@ -228,12 +231,11 @@ gulp.task("assets:clean", [
  * Minify views
  */
 gulp.task("views:build", (args.revision ? [
-  "assets:images:build",
-  "assets:stylesheets:build",
-  "assets:javascripts:build"
+  "assets:build"
 ] : []).concat(args.clean ? [
   "views:clean"
-] : []), load("views/build"))
+] : []),
+  load("views/build"))
 
 /*
  * Clean views
@@ -271,10 +273,18 @@ gulp.task("mkdocs:serve",
  * ------------------------------------------------------------------------- */
 
 /*
+ * Run visual tests
+ */
+gulp.task("tests:visual:run", [
+  // "assets:build",
+  // "views:build"
+], load("tests/visual/run"))
+
+/*
  * Start karma test runner
  */
 gulp.task("tests:unit:watch",
-  load("tests/unit/watch"))
+  () => {})
 
 /* ----------------------------------------------------------------------------
  * Interface
@@ -286,9 +296,9 @@ gulp.task("tests:unit:watch",
 gulp.task("build", [
   "assets:build",
   "views:build"
-].concat(args.mkdocs
-  ? "mkdocs:build"
-  : []))
+].concat(args.mkdocs ? [
+  "mkdocs:build"
+] : []))
 
 /*
  * Clean assets and documentation

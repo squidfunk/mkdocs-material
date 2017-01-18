@@ -19,7 +19,7 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Material for MkDocs
+site_name: Material for MkDocs Tests
 site_description: A Material Design theme for MkDocs
 site_author: Martin Donath
 site_url: http://squidfunk.github.io/mkdocs-material/
@@ -31,8 +31,9 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 # Copyright
 copyright: 'Copyright &copy; 2016 Martin Donath'
 
-# Theme directory
-theme_dir: material
+# Documentation and theme directories
+docs_dir: fixtures
+theme_dir: ../../material
 
 # Options
 extra:
@@ -70,16 +71,5 @@ markdown_extensions:
 
 # Page tree
 pages:
-  - Material: index.md
-  - Getting started: getting-started.md
   - Extensions:
     - Admonition: extensions/admonition.md
-    - CodeHilite: extensions/codehilite.md
-    - Footnotes: extensions/footnotes.md
-    - Permalinks: extensions/permalinks.md
-    - PyMdown: extensions/pymdown.md
-  - Specimen: specimen.md
-  - Customization: customization.md
-  - Release notes: release-notes.md
-  - Contributing: contributing.md
-  - License: license.md
