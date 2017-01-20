@@ -45,7 +45,7 @@
     "css-mqpacker": "^5.0.1",
     "custom-event-polyfill": "^0.3.0",
     "del": "^2.2.2",
-    "eslint": "^3.13.1",
+    "eslint": "^3.14.0",
     "eslint-plugin-mocha": "^4.8.0",
     "fastclick": "^1.0.6",
     "git-hooks": "^1.1.7",
