@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Material Design theme for MkDocs",
   "keywords": [
     "mkdocs",
@@ -37,7 +37,7 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-polyfill": "^6.20.0",
-    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2015": "^6.22.0",
     "babel-register": "^6.18.0",
     "babel-root-import": "^4.1.5",
     "chai": "^3.5.0",
@@ -45,7 +45,7 @@
     "css-mqpacker": "^5.0.1",
     "custom-event-polyfill": "^0.3.0",
     "del": "^2.2.2",
-    "eslint": "^3.13.1",
+    "eslint": "^3.14.0",
     "eslint-plugin-mocha": "^4.8.0",
     "fastclick": "^1.0.6",
     "gemini": "^4.14.3",
