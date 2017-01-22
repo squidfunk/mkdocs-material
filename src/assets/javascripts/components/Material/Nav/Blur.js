@@ -41,6 +41,9 @@ export default class Blur {
     this.index_  = 0
     this.offset_ = window.pageYOffset
 
+    /* Necessary state to correctly reset the index */
+    this.dir_ = 0
+
     /* Index anchor node offsets for fast lookup */
     this.anchors_ = [].map.call(this.els_, el => {
       return document.getElementById(el.hash.substring(1))
@@ -62,6 +65,14 @@ export default class Blur {
    */
   update() {
     const offset = window.pageYOffset
+    const dir = Math.sign(this.offset_ - offset)
+
+    /* Hack: reset index if direction changed, to catch very fast scrolling,
+       because otherwise we would have to register a timer and that sucks */
+    if (this.dir_ !== dir)
+      this.index_ = dir < 0
+        ? this.index_ = 0
+        : this.index_ = this.els_.length - 1
 
     /* Exit when there are no anchors */
     if (this.anchors_.length === 0)
@@ -92,8 +103,9 @@ export default class Blur {
       }
     }
 
-    /* Remember current offset for next iteration */
+    /* Remember current offset and direction for next iteration */
     this.offset_ = offset
+    this.dir_ = dir
   }
 
   /**
