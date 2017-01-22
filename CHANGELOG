@@ -1,6 +1,12 @@
+mkdocs-material-1.0.3 (2017-01-22)
+
+  * Fixed #117: Table of contents items don't blur on fast scrolling
+  * Refactored sidebar positioning logic
+  * Further reduction of repaints
+
 mkdocs-material-1.0.2 (2017-01-15)
 
-  * Fixed horizontal scrollbar in content area
+  * Fixed #108: Horizontal scrollbar in content area
 
 mkdocs-material-1.0.1 (2017-01-14)
 
