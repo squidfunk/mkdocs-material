@@ -18,11 +18,17 @@
 
 ### Package versions
 
-- Python: `python --version`
-- MkDocs: `mkdocs --version`
-- Material: `pip show mkdocs-material | grep -E ^Version`
+* Python: `python --version`
+* MkDocs: `mkdocs --version`
+* Material: `pip show mkdocs-material | grep -E ^Version`
+
+### Project configuration
+
+``` yaml
+The contents of your mkdocs.yml
+```
 
 ### System information
 
-- OS: [The operating system you're running]
-- Browser: [The browser used, if relevant]
+* OS: [The operating system you're running]
+* Browser: [The browser used, if relevant]
