@@ -150,6 +150,36 @@ export default class Application {
             return doc
           })
         })
+        .then(data => {
+
+          /*
+           * The MkDocs search index provides all pages as specified in the
+           * mkdocs.yml in order with an entry for the content of the whole
+           * page followed by separate entries for all subsections also in
+           * order of appearance.
+           */
+
+          // 1. Reduce docs so that useless entries are not included, using a
+          // quick spliting hack - only one test is necessary.
+          const reduced = data.reduce((docs, doc) => {
+            if (docs.length && doc.location.split(
+                docs[docs.length - 1].location).length > 1)
+              docs.pop()
+            return docs.concat(doc)
+          }, [])
+
+          // 2. Trim texts
+          const trimmed = reduced.map(doc => {
+            doc.text = doc.text
+              .replace(/\n/g, " ")               /* Remove newlines */
+              .replace(/\s+/g, " ")              /* Compact whitespace */
+              .replace(/\s+([,.:;!?])/g,         /* Correct punctuation */
+                (_, char) => char)
+            return doc
+          })
+
+          return trimmed
+        })
     })).listen()
 
     /* Listener: prevent touches on overlay if navigation is active */
