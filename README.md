@@ -1,13 +1,8 @@
-# Material
-
 [![Travis][travis-image]][travis-link]
 [![Dependencies][deps-image]][deps-link]
 [![Codacy][codacy-image]][codacy-link]
+[![Docker][docker-image]][docker-link]
 [![PyPI][pypi-image]][pypi-link]
-
-A Material Design theme for [MkDocs](http://www.mkdocs.org).
-
-TBD: [![_](docs/images/material.png)](http://squidfunk.github.io/mkdocs-material/)
 
   [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg
   [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
@@ -15,8 +10,17 @@ TBD: [![_](docs/images/material.png)](http://squidfunk.github.io/mkdocs-material
   [deps-link]: https://david-dm.org/squidfunk/mkdocs-material?type=dev
   [codacy-image]: https://api.codacy.com/project/badge/Grade/fe07aa1fa91d453cb69711d3885c5d7e
   [codacy-link]: https://www.codacy.com/app/squidfunk/mkdocs-material?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=squidfunk/mkdocs-material&amp;utm_campaign=Badge_Grade
+  [docker-image]: https://img.shields.io/docker/pulls/squidfunk/mkdocs-material.svg
+  [docker-link]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
   [pypi-link]: https://pypi.python.org/pypi/mkdocs-material
+
+
+# Material for MkDocs
+
+A Material Design theme for [MkDocs](http://www.mkdocs.org).
+
+[![Material for MkDocs](docs/images/material.png)](http://squidfunk.github.io/mkdocs-material/)
 
 ## Quick start
 

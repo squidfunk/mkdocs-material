@@ -20,7 +20,7 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/i18n.html" as i18n %}
+{% import "partials/language.html" as lang %}
 
 <!-- Application footer -->
 <footer class="md-footer">
@@ -38,13 +38,13 @@
               rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back
-                    md-footer-nav__icon"></i>
+                    md-footer-nav__button"></i>
             </div>
             <div class="md-flex__cell md-flex__cell--stretch
                   md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  {{ i18n.t('footer.previous') }}
+                  {{ lang.t('footer.previous') }}
                 </span>
                 {{ page.previous_page.title }}
               </span>
@@ -61,14 +61,14 @@
                   md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  {{ i18n.t('footer.next') }}
+                  {{ lang.t('footer.next') }}
                 </span>
                 {{ page.next_page.title }}
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-forward
-                    md-footer-nav__icon"></i>
+                    md-footer-nav__button"></i>
             </div>
           </a>
         {% endif %}

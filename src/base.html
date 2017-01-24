@@ -20,7 +20,7 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/i18n.html" as i18n %}
+{% import "partials/language.html" as lang %}
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -77,7 +77,28 @@
 
     <!-- Block: webfonts -->
     {% block fonts %}
-      {% include "partials/fonts.html" %}
+      {% if config.extra.font != "none" %}
+        {% set text = config.extra.get("font", {}).text | default("Roboto") %}
+        {% set code = config.extra.get("font", {}).code
+                    | default("Roboto Mono") %}
+        {% set font = text + ':300,400,400i,700|' + code | replace(' ', '+') %}
+        <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family={{ font }}" />
+        <style>
+          body, input {
+            font-family: "{{ text }}", "Helvetica Neue",
+              Helvetica, Arial, sans-serif;
+          }
+          pre, code, kbd {
+            font-family: "{{ code }}", "Courier New",
+              Courier, monospace;
+          }
+        </style>
+      {% endif %}
+
+      <!-- Material icons as a default iconset -->
+      <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     {% endblock %}
 
     <!-- Block: stylesheets -->
@@ -114,8 +135,24 @@
     <body>
   {% endif %}
 
-    <!-- Inline SVGs -->
-    {% include "partials/svgs.html" %}
+    <!-- Hidden container for inline SVGs -->
+    <svg class="md-svg">
+      <defs>
+
+        <!--
+          Check whether the repository is hosted on one of the supported code
+          hosting platforms (Github, Gitlab or Bitbucket) to show icon.
+        -->
+        {% set platform = config.extra.repo_icon or config.repo_url %}
+        {% if "github" in platform %}
+          {% include "assets/images/icons/github.svg" %}
+        {% elif "gitlab" in platform %}
+          {% include "assets/images/icons/gitlab.svg" %}
+        {% elif "bitbucket" in platform %}
+          {% include "assets/images/icons/bitbucket.svg" %}
+        {% endif %}
+      </defs>
+    </svg>
 
     <!-- State toggles -->
     <input class="md-toggle" data-md-toggle="drawer"
@@ -173,7 +210,7 @@
               <!-- Edit button, if URL was defined -->
                {% if config.edit_uri %}
                  <a href="{{ page.edit_url }}"
-                      title="{{ i18n.t('edit.link.title') }}"
+                      title="{{ lang.t('edit.link.title') }}"
                       class="md-icon md-content__edit">edit</a>
                {% endif %}
 

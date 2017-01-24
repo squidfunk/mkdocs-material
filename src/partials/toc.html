@@ -20,7 +20,7 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/i18n.html" as i18n %}
+{% import "partials/language.html" as lang %}
 
 <!-- Table of contents -->
 <nav class="md-nav md-nav--secondary">
@@ -38,7 +38,7 @@
 
   <!-- Render item list -->
   {% if toc_ and (toc_ | first) %}
-    <label class="md-nav__title" for="toc">{{ i18n.t('toc.title') }}</label>
+    <label class="md-nav__title" for="toc">{{ lang.t('toc.title') }}</label>
     <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc_ %}
         {% include "partials/toc-item.html" %}

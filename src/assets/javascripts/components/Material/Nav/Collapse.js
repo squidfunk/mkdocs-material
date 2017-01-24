@@ -40,6 +40,10 @@ export default class Collapse {
 
   /**
    * Animate expand and collapse smoothly
+   *
+   * Internet Explorer 11 is very slow at recognizing changes on the dataset
+   * which results in the menu not expanding or collapsing properly. THerefore,
+   * for reasons of compatibility, the attribute accessors are used.
    */
   update() {
     const current = this.el_.getBoundingClientRect().height
@@ -48,34 +52,34 @@ export default class Collapse {
     if (current) {
       this.el_.style.maxHeight = `${current}px`
       requestAnimationFrame(() => {
-        this.el_.dataset.mdState = "animate"
+        this.el_.setAttribute("data-md-state", "animate")
         this.el_.style.maxHeight = "0px"
       })
 
     /* Collapsed, so expand */
     } else {
-      this.el_.dataset.mdState = "expand"
+      this.el_.setAttribute("data-md-state", "expand")
       this.el_.style.maxHeight = ""
 
       /* Read height and unset pseudo-toggled state */
       const height = this.el_.getBoundingClientRect().height
-      this.el_.dataset.mdState = ""
+      this.el_.removeAttribute("data-md-state")
 
       /* Set initial state and animate */
       this.el_.style.maxHeight = "0px"
       requestAnimationFrame(() => {
-        this.el_.dataset.mdState = "animate"
+        this.el_.setAttribute("data-md-state", "animate")
         this.el_.style.maxHeight = `${height}px`
       })
     }
 
     /* Remove state on end of transition */
     const end = ev => {
-      ev.target.dataset.mdState = ""
+      ev.target.removeAttribute("data-md-state")
       ev.target.style.maxHeight = ""
 
       /* Only fire once, so directly remove event listener */
-      ev.target.removeEventListener("transitionend", end, false)
+      ev.target.removeEventListener("transitionend", end)
     }
     this.el_.addEventListener("transitionend", end, false)
   }

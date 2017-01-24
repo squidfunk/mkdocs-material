@@ -20,7 +20,7 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/i18n.html" as i18n %}
+{% import "partials/language.html" as lang %}
 
 <!--
   Check whether the repository is hosted on one of the supported code hosting
@@ -39,7 +39,7 @@
 
 <!-- Repository containing source -->
 {% block repo %}
-  <a href="{{ config.repo_url }}" title="{{ i18n.t('source.link.title') }}"
+  <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}"
       class="md-source" data-md-source="{{ repo_type }}">
     {% if repo_type %}
       <div class="md-source__icon">

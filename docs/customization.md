@@ -98,16 +98,14 @@ The directory layout of the Material theme is as follows:
 │  ├─ javascripts/                     # JavaScript
 │  └─ stylesheets/                     # Stylesheets
 ├─ partials/
-│  ├─ fonts.html                       # Webfont definitions
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
-│  ├─ i18n.html                        # Localized labels
+│  ├─ language.html                    # Localized labels
 │  ├─ nav-item.html                    # Main navigation item
 │  ├─ nav.html                         # Main navigation
 │  ├─ search.html                      # Search box
 │  ├─ social.html                      # Social links
 │  ├─ source.html                      # Repository information
-│  ├─ svgs.html                        # Inline SVG definitions
 │  ├─ toc-item.html                    # Table of contents item
 │  └─ toc.html                         # Table of contents
 ├─ 404.html                            # 404 error page
@@ -198,7 +196,7 @@ The Material theme uses a sophisticated asset pipeline using [Gulp][9] and
 Webpack which can be started with the following command:
 
 ``` sh
-npm run start
+npm start
 ```
 
 This will also start the MkDocs development server which will monitor changes

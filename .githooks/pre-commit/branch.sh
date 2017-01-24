@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,29 +20,15 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-import json
-from setuptools import setup, find_packages
+# Determine current branch
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+echo "Hook[pre-commit]: Checking branch..."
 
-# Load package.json contents
-with open("package.json") as data:
-    package = json.load(data)
+# If we're on master, abort commit
+if [[ "$BRANCH" == "master" ]]; then
+	echo "Commits on master are only allowed via Pull Requests. Aborting."
+	exit 1
+fi
 
-# Package description
-setup(
-    name = package["name"],
-    version = package["version"],
-    url = package["homepage"],
-    license = package["license"],
-    description = package["description"],
-    author = package["author"]["name"],
-    author_email = package["author"]["email"],
-    keywords = package["keywords"],
-    packages = find_packages(),
-    include_package_data = True,
-    entry_points = {
-        "mkdocs.themes": [
-            "material = material",
-        ]
-    },
-    zip_safe = False
-)
+# We're good
+exit 0

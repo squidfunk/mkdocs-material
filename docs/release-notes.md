@@ -1,4 +1,4 @@
-# Release Notes
+# Release notes
 
 ## Upgrading
 
@@ -12,12 +12,33 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.0.0
+# Version 1.0.3
 ```
 
 ## Changelog
 
-### 1.0.0 <small> _  January 13, 2017</small>
+### 1.0.3 <small> _ January 22, 2017</small>
+
+* Fixed [#117][117]: Table of contents items don't blur on fast scrolling
+* Refactored sidebar positioning logic
+* Further reduction of repaints
+
+  [117]: https://github.com/squidfunk/mkdocs-material/issues/117
+
+### 1.0.2 <small> _ January 15, 2017</small>
+
+* Fixed [#108][108]: Horizontal scrollbar in content area
+
+  [108]: https://github.com/squidfunk/mkdocs-material/issues/108
+
+### 1.0.1 <small> _ January 14, 2017</small>
+
+* Fixed massive repaints happening when scrolling
+* Fixed footer back reference positions in case of overflow
+* Fixed header logo from showing when the menu icon is rendered
+* Changed scrollbar behavior to only show when content overflows
+
+### 1.0.0 <small> _ January 13, 2017</small>
 
 * Introduced Webpack for more sophisticated JavaScript bundling
 * Introduced ESLint and Stylelint for code style checks

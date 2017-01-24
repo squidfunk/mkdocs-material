@@ -83,24 +83,21 @@
   .footnote-backref {
     @extend %md-icon;
 
-    position: absolute;
+    display: inline-block;
     transform: translateX(0.5rem);
     transition:
       transform 0.25s  0.125s,
       color     0.25s,
       opacity   0.125s 0.125s;
     color: $md-color-black--lighter;
-    font-size: 1.5625em;
-    opacity: 0;
-    vertical-align: middle;
-
     // Hack: remove Unicode arrow for icon
-    &::first-letter {
-      font-size: 0;
-    }
+    font-size: 0;
+    opacity: 0;
+    vertical-align: text-bottom;
 
     // Back reference icon
-    &::after {
+    &::before {
+      font-size: 1.6rem;
       content: "keyboard_return";
     }
   }
