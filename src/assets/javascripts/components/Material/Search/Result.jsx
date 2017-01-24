@@ -89,8 +89,47 @@ export default class Result {
           /* eslint-enable no-invalid-this, lines-around-comment */
         })
 
+        /*
+         * The MkDocs search index provides all pages as specified in the
+         * mkdocs.yml in order with an entry for the content of the whole
+         * page followed by separate entries for all subsections also in
+         * order of appearance.
+         */
+
+        // 1. Reduce docs so that useless entries are not included, using a
+        // quick spliting hack - only one test is necessary.
+        const main = []
+        const reduced = data.reduce((docs, doc) => {
+          if (docs.length && doc.location.split(
+              `${docs[docs.length - 1].location}#`).length > 1)
+            main.push(docs.pop())
+          doc.main = main.length - 1 // main entry
+          return docs.concat(doc)
+        }, [])
+
+        // now we have the main pages.
+
+        // Only return top-level pages
+        // const reduced = data.reduce((docs, doc) => {
+        //   if (!doc.location.match("#"))
+        //     docs.push(doc)
+        //   return docs
+        // }, [])
+
+        // 2. Trim texts
+        const trimmed = reduced.map(doc => {
+          doc.text = doc.text
+            .replace(/\n/g, " ")               /* Remove newlines */
+            .replace(/\s+/g, " ")              /* Compact whitespace */
+            .replace(/\s+([,.:;!?])/g,         /* Correct punctuation */
+              (_, char) => char)
+          return doc
+        })
+
+        const data2 = trimmed
+
         /* Index documents */
-        this.data_ = data.reduce((docs, doc) => {
+        this.data_ = data2.reduce((docs, doc) => {
           this.index_.add(doc)
           docs[doc.location] = doc
           return docs
@@ -111,12 +150,35 @@ export default class Result {
 
       /* Perform search on index and render documents */
       const result = this.index_.search(ev.target.value)
+
+      // process results!
+      const re = new RegExp(`\\b${ev.target.value}`, "img")
+      // result.map(item => {
+      //   // console.time("someFunction")
+      //   text = text.replace(re, "*XXX*") // do in parallel and collect!
+      //   // console.timeEnd("someFunction")
+      // })
+
       result.forEach(item => {
         const doc = this.data_[item.ref]
+        // console.log(item.score)
 
         /* Check if it's a anchor link on the current page */
         let [pathname] = doc.location.split("#")
         pathname = pathname.replace(/^(\/?\.{2})+/g, "")
+
+        // TODO: match in children but show top level entry with merged
+        // sentences split top level and main entries! index one top level,
+        // when there is no child
+
+        let text = doc.text
+        // const re = new RegExp(`\\b${ev.target.value}`, "img")
+        // console.time("someFunction")
+        text = text.replace(re, string => {
+          return `<b style="color: red">${string}</b>`
+        })
+        // console.log(text)
+        // console.timeEnd("someFunction")
 
         /* Append search result */
         this.list_.appendChild(
@@ -130,12 +192,12 @@ export default class Result {
                   {doc.title}
                 </h1>
                 <p class="md-search-result__teaser">
-                  {this.truncate_(doc.text, 140)}
+                  {{ __html: text }}
                 </p>
               </article>
             </a>
           </li>
-        )
+        ) /* {this.truncate_(doc.text, 140)} */
       })
 
       /* Bind click handlers for anchors */
