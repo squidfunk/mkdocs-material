@@ -46,7 +46,7 @@ export default class Position {
    * Initialize sidebar state
    */
   setup() {
-    this.offset_ = this.el_.offsetTop - this.parent_.offsetTop
+    this.offset_ = this.el_.offsetTop - 56
     this.update()
   }
 
@@ -55,18 +55,18 @@ export default class Position {
    *
    * The inner height of the window (= the visible area) is the maximum
    * possible height for the stretching sidebar. This height must be deducted
-   * by the top offset of the parent container, which accounts for the fixed
-   * header, setting the baseline. Depending on the page y-offset, the top
-   * offset of the sidebar must be taken into account, as well as the case
-   * where the window is scrolled beyond the sidebar container.
+   * by the height of the fixed header (56px). Depending on the page y-offset,
+   * the top offset of the sidebar must be taken into account, as well as the
+   * case where the window is scrolled beyond the sidebar container.
    */
   update() {
     const offset  = window.pageYOffset
     const visible = window.innerHeight
 
-    /* Calculate bounds of sidebar container  */
+    /* Set bounds of sidebar container - must be calculated on every run, as
+       the height of the content might change due to loading images etc. */
     this.bounds_ = {
-      top: this.parent_.offsetTop,
+      top: 56,
       bottom: this.parent_.offsetTop + this.parent_.offsetHeight
     }
 

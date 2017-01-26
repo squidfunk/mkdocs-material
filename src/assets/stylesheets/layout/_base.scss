@@ -93,6 +93,7 @@ hr {
   display: table;
   width: 100%;
   height: 100%;
+  padding-top: 5.6rem;
   table-layout: fixed;
 }
 
@@ -103,7 +104,6 @@ hr {
 
   // Top-spacing to account for header and some additional padding
   &__inner {
-    margin-top: 5.6rem;
     padding-top: 2.4rem + 0.6rem;
     overflow: auto;
 
