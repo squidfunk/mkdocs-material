@@ -26,8 +26,6 @@
 
 // Application header (stays always on top)
 .md-header {
-  // @include z-depth(2);
-
   position: fixed;
   top: 0;
   right: 0;
@@ -37,6 +35,11 @@
   background-color: $md-color-primary;
   color: $md-color-white;
   z-index: 1;
+
+  // Always show shadow, in case JavaScript is not available
+  .no-js & {
+    @include z-depth(2);
+  }
 
   // Hide for print
   @media print {
