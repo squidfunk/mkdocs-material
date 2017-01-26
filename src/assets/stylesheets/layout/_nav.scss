@@ -26,7 +26,7 @@
 
 // Navigation container
 .md-nav {
-  font-size: ms(-1);
+  font-size: 1.4rem;
   line-height: 1.3;
 
   // Table of contents
@@ -176,6 +176,13 @@
         @include z-depth(4);
 
         background-color: $md-color-white;
+      }
+
+      // List title and item
+      .md-nav__title,
+      .md-nav__item {
+        font-size: 1.6rem;
+        line-height: 1.5;
       }
 
       // List title - higher specificity is necessary to ensure that the title
@@ -353,13 +360,6 @@
           opacity   0.125s 0.125s;
         opacity: 1;
       }
-    }
-
-    // List item
-    .md-nav__title,
-    .md-nav__item {
-      font-size: 1.6rem;
-      line-height: 1.5;
     }
   }
 
