@@ -26,7 +26,7 @@
 
 // Application header (stays always on top)
 .md-header {
-  @include z-depth(2);
+  // @include z-depth(2);
 
   position: fixed;
   top: 0;

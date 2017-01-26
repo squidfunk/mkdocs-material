@@ -1,7 +1,7 @@
 // TODO: proof of concept - needs refactor
 .md-tabs {
   width: 100%;
-  background: mix($md-color-primary, $md-color-black, 75%);
+  background: $md-color-primary; //mix($md-color-primary, $md-color-black, 75%);
   overflow: scroll;
 
   &__list {
@@ -36,8 +36,4 @@
       box-shadow: 0 -0.2rem 0 mix($md-color-accent, $md-color-white, 25) inset;
     }
   }
-}
-
-.md-header {
-  box-shadow: none !important;
 }

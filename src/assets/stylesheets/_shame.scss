@@ -23,3 +23,21 @@
 // ----------------------------------------------------------------------------
 // Nothing to see here, move along
 // ----------------------------------------------------------------------------
+
+.md-tabs__list {
+  transition: opacity 0.1s;
+}
+
+.bigger5 {
+  .md-tabs__list {
+    opacity: 0;
+  }
+}
+
+.bigger48 {
+  .md-header {
+    @include z-depth(2);
+
+    transition: box-shadow 0.25s;
+  }
+}

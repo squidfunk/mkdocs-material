@@ -44,6 +44,22 @@ export default class Application {
    */
   initialize() {
 
+    // TODO: just a proof of concept
+    window.addEventListener("scroll", () => {
+
+      if (window.pageYOffset > 5) {
+        document.body.classList.add("bigger5")
+      } else {
+        document.body.classList.remove("bigger5")
+      }
+
+      if (window.pageYOffset > 48) {
+        document.body.classList.add("bigger48")
+      } else {
+        document.body.classList.remove("bigger48")
+      }
+    })
+
     /* Initialize Modernizr and FastClick */
     new Material.Event.Listener(document, "DOMContentLoaded", () => {
 
