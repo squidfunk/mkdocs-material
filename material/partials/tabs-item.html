@@ -1,0 +1,11 @@
+<li class="md-tabs__item">
+  {% if nav_item.children and nav_item.children | length > 0 %}
+  <a href="{{ nav_item.children[0].url }}" title="{{ nav_item.title }}" class="md-tabs__link {% if nav_item.active %} md-tabs__link--active {% endif %}">
+    {{ nav_item.title }}
+  </a>
+  {% else %}
+    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-tabs__link {% if nav_item.active %} md-tabs__link--active {% endif %}">
+      {{ nav_item.title }}
+    </a>
+  {% endif %}
+</li>

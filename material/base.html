@@ -31,7 +31,7 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-facb31f4a3.js"></script>
     {% endblock %}
     {% block fonts %}
       {% if config.extra.font != "none" %}
@@ -82,6 +82,10 @@
       {% include "partials/header.html" %}
     {% endblock %}
     <div class="md-container">
+      {% set feature = config.extra.get("feature", {}) %}
+      {% if feature.tabs %}
+        {% include "partials/tabs.html" %}
+      {% endif %}
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           {% block site_nav %}

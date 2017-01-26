@@ -170,6 +170,10 @@
 
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
+      {% set feature = config.extra.get("feature", {}) %}
+      {% if feature.tabs %}
+        {% include "partials/tabs.html" %}
+      {% endif %}
 
       <!-- Main container -->
       <main class="md-main">
