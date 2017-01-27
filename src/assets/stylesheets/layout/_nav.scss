@@ -129,18 +129,18 @@
       }
     }
 
-    // Blurred item
+    // Blurred link
     &[data-md-state="blur"] {
       color: $md-color-black--light;
     }
 
-    // Active item
+    // Active link
     &:active,
     &--active {
       color: $md-color-primary;
     }
 
-    // Hovered item
+    // Hovered link
     &:hover {
       color: $md-color-accent;
     }

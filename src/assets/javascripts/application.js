@@ -44,22 +44,6 @@ export default class Application {
    */
   initialize() {
 
-    // TODO: just a proof of concept
-    window.addEventListener("scroll", () => {
-
-      if (window.pageYOffset > 5) {
-        document.body.classList.add("bigger5")
-      } else {
-        document.body.classList.remove("bigger5")
-      }
-
-      if (window.pageYOffset > 48) {
-        document.body.classList.add("bigger48")
-      } else {
-        document.body.classList.remove("bigger48")
-      }
-    })
-
     /* Initialize Modernizr and FastClick */
     new Material.Event.Listener(document, "DOMContentLoaded", () => {
 
@@ -109,6 +93,16 @@ export default class Application {
       }
     }).listen()
 
+    /* Component: header shadow toggle */
+    new Material.Event.Listener(window, [
+      "scroll", "resize", "orientationchange"
+    ], new Material.Header.Shadow("[data-md-component=container]")).listen()
+
+    /* Component: tabs visibility toggle */
+    new Material.Event.Listener(window, [
+      "scroll", "resize", "orientationchange"
+    ], new Material.Tabs.Toggle("[data-md-component=tabs]")).listen()
+
     /* Component: sidebar container */
     if (!Modernizr.csscalc)
       new Material.Event.MatchMedia("(min-width: 960px)",
@@ -131,7 +125,7 @@ export default class Application {
     /* Component: link blurring for table of contents */
     new Material.Event.MatchMedia("(min-width: 960px)",
       new Material.Event.Listener(window, "scroll",
-        new Material.Nav.Blur("[data-md-component=toc] .md-nav__link")))
+        new Material.Nav.Blur("[data-md-component=toc] [href]")))
 
     /* Component: collapsible elements for navigation */
     const collapsibles =

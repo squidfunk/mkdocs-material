@@ -20,24 +20,42 @@
  * IN THE SOFTWARE.
  */
 
-import Event from "./Material/Event"
-import Header from "./Material/Header"
-import Nav from "./Material/Nav"
-import Search from "./Material/Search"
-import Sidebar from "./Material/Sidebar"
-import Source from "./Material/Source"
-import Tabs from "./Material/tabs"
-
 /* ----------------------------------------------------------------------------
- * Module
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default {
-  Event,
-  Header,
-  Nav,
-  Search,
-  Sidebar,
-  Source,
-  Tabs
+export default class Toggle {
+
+  /**
+   * Show tabs depending on scroll offset
+   *
+   * @constructor
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   */
+  constructor(el) {
+    this.el_ = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+
+    /* Initialize height and state */
+    this.height_ = 5
+    this.active_ = false
+  }
+
+  /**
+   * Update visibility
+   */
+  update() {
+    const active = window.pageYOffset >= this.height_
+    if (active !== this.active_)
+      this.el_.dataset.mdState = (this.active_ = active) ? "hidden" : ""
+  }
+
+  /**
+   * Reset visibility
+   */
+  reset() {
+    this.el_.dataset.mdState = ""
+    this.active_ = false
+  }
 }

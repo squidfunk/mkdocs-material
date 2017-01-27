@@ -41,6 +41,15 @@
     @include z-depth(2);
   }
 
+  // Show and animate shadow
+  &[data-md-state="shadow"] {
+    @include z-depth(3);
+
+    transition:
+      background-color 0.25s,
+      box-shadow 0.25s;
+  }
+
   // Hide for print
   @media print {
     display: none;

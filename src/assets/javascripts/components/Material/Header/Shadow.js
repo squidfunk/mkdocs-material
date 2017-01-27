@@ -20,24 +20,56 @@
  * IN THE SOFTWARE.
  */
 
-import Event from "./Material/Event"
-import Header from "./Material/Header"
-import Nav from "./Material/Nav"
-import Search from "./Material/Search"
-import Sidebar from "./Material/Sidebar"
-import Source from "./Material/Source"
-import Tabs from "./Material/tabs"
-
 /* ----------------------------------------------------------------------------
- * Module
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default {
-  Event,
-  Header,
-  Nav,
-  Search,
-  Sidebar,
-  Source,
-  Tabs
+export default class Shadow {
+
+  /**
+   * Show the header shadow depending on scroll offset
+   *
+   * @constructor
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   */
+  constructor(el) {
+    this.el_ = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+
+    /* Grab parent and header */
+    this.el_     = this.el_.parentNode
+    this.header_ = this.el_.parentNode.previousElementSibling
+
+    /* Initialize height and state */
+    this.height_ = 0
+    this.active_ = false
+  }
+
+  /**
+   * Calculate total height of previous nodes
+   */
+  setup() {
+    let current = this.el_
+    while ((current = current.previousElementSibling))
+      this.height_ += current.offsetHeight
+  }
+
+  /**
+   * Update shadow state
+   */
+  update() {
+    const active = window.pageYOffset >= this.height_
+    if (active !== this.active_)
+      this.header_.dataset.mdState = (this.active_ = active) ? "shadow" : ""
+  }
+
+  /**
+   * Reset shadow state
+   */
+  reset() {
+    this.header_.dataset.mdState = ""
+    this.height_ = 0
+    this.active_ = false
+  }
 }
