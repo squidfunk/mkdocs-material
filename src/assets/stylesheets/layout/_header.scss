@@ -26,6 +26,8 @@
 
 // Application header (stays always on top)
 .md-header {
+  @include z-depth(3);
+
   position: fixed;
   top: 0;
   right: 0;
@@ -41,13 +43,18 @@
     @include z-depth(2);
   }
 
-  // Show and animate shadow
-  &[data-md-state="shadow"] {
-    @include z-depth(3);
+  // [screen +]: Show shadow depending on scroll offset
+  @include break-from-device(screen) {
+    box-shadow: none;
 
-    transition:
-      background-color 0.25s,
-      box-shadow 0.25s;
+    // Show and animate shadow
+    &[data-md-state="shadow"] {
+      @include z-depth(3);
+
+      transition:
+        background-color 0.25s,
+        box-shadow 0.25s;
+    }
   }
 
   // Hide for print

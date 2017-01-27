@@ -30,6 +30,11 @@
   background: $md-color-primary;
   overflow-x: scroll;
 
+  // [tablet -]: Hide tabs for tablet and below, as they don't make any sense
+  @include break-to-device(tablet) {
+    display: none;
+  }
+
   // List of items
   &__list {
     margin: 0;

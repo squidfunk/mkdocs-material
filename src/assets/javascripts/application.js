@@ -94,9 +94,10 @@ export default class Application {
     }).listen()
 
     /* Component: header shadow toggle */
-    new Material.Event.Listener(window, [
-      "scroll", "resize", "orientationchange"
-    ], new Material.Header.Shadow("[data-md-component=container]")).listen()
+    new Material.Event.MatchMedia("(min-width: 1220px)",
+      new Material.Event.Listener(window, [
+        "scroll", "resize", "orientationchange"
+      ], new Material.Header.Shadow("[data-md-component=container]")))
 
     /* Component: tabs visibility toggle */
     new Material.Event.Listener(window, [
@@ -116,8 +117,13 @@ export default class Application {
         "scroll", "resize", "orientationchange"
       ], new Material.Sidebar.Position("[data-md-component=navigation]")))
 
-    /* Component: sidebar with table of contents */
-    new Material.Event.MatchMedia("(min-width: 960px)",
+    /* Component: sidebar with table of contents - register two separate
+       listeners, as the offset at the top might change */
+    new Material.Event.MatchMedia("(min-width: 960px) and (max-width: 1219px)",
+      new Material.Event.Listener(window, [
+        "scroll", "resize", "orientationchange"
+      ], new Material.Sidebar.Position("[data-md-component=toc]")))
+    new Material.Event.MatchMedia("(min-width: 1220px)",
       new Material.Event.Listener(window, [
         "scroll", "resize", "orientationchange"
       ], new Material.Sidebar.Position("[data-md-component=toc]")))

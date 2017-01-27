@@ -26,7 +26,7 @@ import Nav from "./Material/Nav"
 import Search from "./Material/Search"
 import Sidebar from "./Material/Sidebar"
 import Source from "./Material/Source"
-import Tabs from "./Material/tabs"
+import Tabs from "./Material/Tabs"
 
 /* ----------------------------------------------------------------------------
  * Module
