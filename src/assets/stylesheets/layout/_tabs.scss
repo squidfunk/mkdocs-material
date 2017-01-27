@@ -40,9 +40,7 @@
     margin: 0;
     margin-left: 0.4rem;
     padding: 0;
-    transition:
-      transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
-      opacity   0.1s;
+    transition: opacity   0.1s;
     list-style: none;
     white-space: nowrap;
   }
@@ -57,7 +55,9 @@
     display: block;
     padding-right: 1.2rem;
     padding-left: 1.2rem;
-    transition: color 0.25s;
+    transition:
+      color 0.25s,
+      transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1);
     color: $md-color-white--light;
     font-size: 1.4rem;
     line-height: 4.8rem;
@@ -69,9 +69,11 @@
     }
   }
 
-  // Hide tabs upon scrolling
-  &[data-md-state="hidden"] .md-tabs__list {
+  // Hide tabs upon scrolling - disable transition to minimizes repaints whilte
+  // scrolling down, while scrolling up seems to be okay
+  &[data-md-state="hidden"] .md-tabs__link {
     transform: translateY(10%);
+    transition: none;
     opacity: 0;
   }
 }

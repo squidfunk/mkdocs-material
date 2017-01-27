@@ -34,7 +34,8 @@
   </a>
 
   <!-- Main navigation item -->
-  {% else %}
+
+  {% elif nav_item.url == base_url %}
     <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
         class="md-tabs__link
           {% if nav_item.active %}
