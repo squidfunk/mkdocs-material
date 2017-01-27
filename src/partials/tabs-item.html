@@ -33,14 +33,22 @@
     {{ nav_item.title }}
   </a>
 
-  <!-- Main navigation item -->
-
+  <!-- Home page -->
   {% elif nav_item.url == base_url %}
+
+    <!--
+      Hack: the item should be active, if we're sure that we're on the first
+      level of the tree and the current item doesn't have children
+    -->
     <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
         class="md-tabs__link
-          {% if nav_item.active %}
-            md-tabs__link--active
-          {% endif %}">
+          {% for nav_item_ in nav %}
+          {{nav_item_.children | length}}
+            {% if nav_item_.url == page.url and
+                  nav_item_.children | length == 0 %}
+              md-tabs__link--active
+            {% endif %}
+          {% endfor %}">
       {{ nav_item.title }}
     </a>
   {% endif %}

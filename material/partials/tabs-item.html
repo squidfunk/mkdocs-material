@@ -4,7 +4,7 @@
     {{ nav_item.title }}
   </a>
   {% elif nav_item.url == base_url %}
-    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-tabs__link {% if nav_item.active %} md-tabs__link--active {% endif %}">
+    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-tabs__link {% for nav_item_ in nav %} {{nav_item_.children | length}} {% if nav_item_.url == page.url and nav_item_.children | length == 0 %} md-tabs__link--active {% endif %} {% endfor %}">
       {{ nav_item.title }}
     </a>
   {% endif %}
