@@ -84,7 +84,7 @@
     "material-shadows": "^3.0.1",
     "mocha": "^3.2.0",
     "modularscale-sass": "^2.1.1",
-    "node-notifier": "^4.6.1",
+    "node-notifier": "^5.0.0",
     "postcss-pseudo-classes": "^0.1.0",
     "selenium-standalone": "^5.9.1",
     "stylelint": "^7.7.1",
