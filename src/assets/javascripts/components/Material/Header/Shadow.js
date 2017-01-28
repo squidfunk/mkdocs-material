@@ -53,6 +53,7 @@ export default class Shadow {
     let current = this.el_
     while ((current = current.previousElementSibling))
       this.height_ += current.offsetHeight
+    this.update()
   }
 
   /**

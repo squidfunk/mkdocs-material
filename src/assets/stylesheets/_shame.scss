@@ -23,3 +23,60 @@
 // ----------------------------------------------------------------------------
 // Nothing to see here, move along
 // ----------------------------------------------------------------------------
+
+// TODO: ONLY for screen+
+.md-nav--primary {
+
+  // // WE'RE IN THE TOP LEVEL LIST
+  & > .md-nav__list {
+    > .md-nav__item > .md-nav__link {
+      display: none;
+    }
+    // the single nested entry that is active
+    > .md-nav__item--nested > .md-nav__toggle:checked ~ .md-nav__link {
+      display: block;
+      margin-top: 0;      // TODO: this really sucks... refactor into margin collapse if possible
+      padding-top: 1.2rem;  // TODO: first write gemini tests!
+      font-weight: 700;
+      cursor: text;
+      pointer-events: none;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    > .md-nav__item--nested > .md-nav__toggle:checked ~ .md-nav {
+      margin-left: -1.2rem;
+    }
+  }
+
+  // WE'RE IN THE SUB LIST
+  // TODO: SET THE ACTIVE ITEM
+  // LINK IS ALREADY ACTIVE, MAYBE CHANGE
+  // & > .md-nav__list {
+  //   > .md-nav__item {
+  //     display: none;
+  //   }
+  //
+  //   > .md-nav__item--active {
+  //     display: block;
+  //
+  //     // OVERRIDE EXPAND...
+  //     > .md-nav__link {
+  //       font-weight: 700;
+  //
+  //       &::after {
+  //         display: none;
+  //       }
+  //     }
+  //   }
+  // }
+  //     [data-md-tier="1"] > .md-nav__list > .md-nav__item {
+  //       padding-left: 0 !important;
+  //
+  //       // data-attribute for LEVEL
+  //       // data-md-level=0,1,2,3,4
+  //       // fix nested nav selectors in nav.scss (and toc!)
+  //     }
+}

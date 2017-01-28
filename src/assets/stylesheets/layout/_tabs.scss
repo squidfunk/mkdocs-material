@@ -29,6 +29,7 @@
   width: 100%;
   background: $md-color-primary;
   overflow-x: scroll;
+  overflow-y: hidden;
 
   // [tablet -]: Hide tabs for tablet and below, as they don't make any sense
   @include break-to-device(tablet) {
@@ -40,7 +41,6 @@
     margin: 0;
     margin-left: 0.4rem;
     padding: 0;
-    transition: opacity   0.1s;
     list-style: none;
     white-space: nowrap;
   }
@@ -48,31 +48,41 @@
   // List item
   &__item {
     display: inline-block;
-  }
-
-  // Link inside item
-  &__link {
-    display: block;
+    height: 4.8rem;
     padding-right: 1.2rem;
     padding-left: 1.2rem;
+  }
+
+  // Link inside item - could be defined as block elements and aligned via
+  // line height, but this would imply more repaints when scrolling
+  &__link {
+    display: block;
+    margin-top: 1.6rem;
     transition:
       color 0.25s,
-      transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1);
+      transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity 0.1s;
     color: $md-color-white--light;
     font-size: 1.4rem;
-    line-height: 4.8rem;
 
     // Active or hovered link
     &--active,
     &:hover {
       color: $md-color-white;
     }
+
+    // Delay transitions by a small amount
+    @for $i from 2 through 16 {
+      .md-tabs__item:nth-child(#{$i}) & {
+        transition-delay: 0.02s * ($i - 1);
+      }
+    }
   }
 
   // Hide tabs upon scrolling - disable transition to minimizes repaints whilte
   // scrolling down, while scrolling up seems to be okay
   &[data-md-state="hidden"] .md-tabs__link {
-    transform: translateY(10%);
+    transform: translateY(50%);
     transition: none;
     opacity: 0;
   }

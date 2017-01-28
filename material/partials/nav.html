@@ -1,4 +1,4 @@
-<nav class="md-nav md-nav--primary">
+<nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
     <i class="{% if config.extra.logo %} md-logo {% else %} md-icon md-icon--home {% endif %} md-nav__button">
       {% if config.extra.logo %}
@@ -15,6 +15,7 @@
   <ul class="md-nav__list" data-md-scrollfix>
     {% for nav_item in nav %}
       {% set path = "nav-" + loop.index | string %}
+      {% set level = 1 %}
       {% include "partials/nav-item.html" %}
     {% endfor %}
   </ul>

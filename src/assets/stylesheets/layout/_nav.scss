@@ -66,7 +66,7 @@
 
   // List item
   &__item {
-    padding: 0.625em 1.2rem 0;
+    padding: 0 1.2rem;
 
     // Add bottom spacing to last item
     &:last-child {
@@ -98,6 +98,7 @@
   // Link inside item
   &__link {
     display: block;
+    margin-top: 0.625em;
     transition: color 0.125s;
     text-overflow: ellipsis;
     cursor: pointer;
@@ -289,6 +290,7 @@
       // Link inside item
       .md-nav__link {
         position: relative;
+        margin-top: 0;
         padding: 1.6rem;
 
         // Rotate icon
@@ -429,7 +431,8 @@
       display: none;
     }
 
-    // Link inside item
+    // Link inside item - ideally the link display method would be set to
+    // inline on screen, but this doesn't work with text ellipsis
     &__link {
 
       // Item contains a nested list
