@@ -63,7 +63,7 @@ const resolve = (breakpoints, expr) => {
  * Functions
  * ------------------------------------------------------------------------- */
 
-/**
+/*
  * TODO
  */
 const generate = components => {
