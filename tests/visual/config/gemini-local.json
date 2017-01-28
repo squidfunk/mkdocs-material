@@ -1,6 +1,6 @@
 {
   "rootUrl": "http://localhost:8000",
-  "screenshotsDir": "./tests/visual/baseline",
+  "screenshotsDir": "./tests/visual/baseline/local",
   "browsers": {
     "local-chrome": {
       "desiredCapabilities": {
@@ -10,6 +10,6 @@
   },
   "system": {
     "projectRoot": "./",
-    "sourceRoot": "src/assets/stylesheets"
+    "sourceRoot": "./src/assets/stylesheets"
   }
 }

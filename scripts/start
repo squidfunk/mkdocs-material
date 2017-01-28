@@ -28,4 +28,4 @@ if [[ ! -d `npm bin` ]]; then
 fi
 
 # Run command
-`npm bin`/gulp watch --no-lint
+`npm bin`/gulp watch --no-lint $@

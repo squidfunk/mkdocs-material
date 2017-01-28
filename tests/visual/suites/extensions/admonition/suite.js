@@ -20,7 +20,7 @@
 * IN THE SOFTWARE.
 */
 
-import generate from "../../generate.js"
+import generate from "../../../generate.js"
 
 /* ----------------------------------------------------------------------------
  * Tests
@@ -32,10 +32,10 @@ generate({
    * Admonition block
    *
    * The admonition block looks the same on everything above tablet
-   * portrait, so we can save a few testcases.
+   * portrait, so we can save a few test cases.
    */
-  ".admonition": {
-    "url": "/extensions/admonition",
+  "admonition": {
+    "url": "/extensions/admonition/_",
     "capture": "#default + .admonition",
     "break": "-@tablet-portrait",
     "suite": {

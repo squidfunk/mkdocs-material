@@ -28,4 +28,4 @@ if [[ ! -d `npm bin` ]]; then
 fi
 
 # Run command
-`npm bin`/gulp test
+`npm bin`/gulp tests:visual:run --clean --optimize --revision $@

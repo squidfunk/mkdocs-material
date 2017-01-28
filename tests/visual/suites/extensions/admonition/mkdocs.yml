@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,12 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Check if "npm install" was executed
-if [[ ! -d `npm bin` ]]; then
-  echo "\"node_modules\" not found:"
-  echo "npm install"
-  exit 1
-fi
-
-# Run command
-`npm bin`/gulp build --clean --optimize --revision $@
+# Test suite
+site_name: Admonition Test
+markdown_extensions:
+  - markdown.extensions.admonition

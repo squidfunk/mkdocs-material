@@ -27,7 +27,8 @@
     "clean": "scripts/clean",
     "lint": "scripts/lint",
     "start": "scripts/start",
-    "test": "scripts/test"
+    "test:visual:run": "scripts/test/visual/run",
+    "test:visual:update": "scripts/test/visual/update"
   },
   "dependencies": {},
   "devDependencies": {
@@ -45,6 +46,7 @@
     "css-mqpacker": "^5.0.1",
     "custom-event-polyfill": "^0.3.0",
     "del": "^2.2.2",
+    "ecstatic": "^2.1.0",
     "eslint": "^3.14.0",
     "eslint-plugin-mocha": "^4.8.0",
     "fastclick": "^1.0.6",
