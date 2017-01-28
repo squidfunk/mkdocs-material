@@ -1,4 +1,4 @@
-# Admonition Tests
+# Suite
 
 <style>
   .md-header {

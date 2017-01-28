@@ -20,109 +20,86 @@
 * IN THE SOFTWARE.
 */
 
-import generate from "../../../generate.js"
+import spec from "~/tests/visual/helpers/spec"
 
 /* ----------------------------------------------------------------------------
  * Tests
  * ------------------------------------------------------------------------- */
 
-generate({
-
-  /*
-   * Admonition block
-   *
-   * The admonition block looks the same on everything above tablet
-   * portrait, so we can save a few test cases.
-   */
+/*
+ * Admonition block
+ *
+ * The admonition block looks the same on everything above tablet
+ * portrait, so we can save a few test cases.
+ */
+spec.generate({
   "admonition": {
     "url": "/extensions/admonition/_",
     "capture": "#default + .admonition",
     "break": "-@tablet-portrait",
     "suite": {
 
-      /*
-       * Admonition block with a custom title
-       */
+      /* Admonition block with a custom title */
       "#custom-title": {
         "capture": "#custom-title + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with a long title
-       */
+      /* Admonition block with a long title */
       "#long-title": {
         "capture": "#long-title + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with an empty title
-       */
+      /* Admonition block with an empty title */
       "#empty-title": {
         "capture": "#empty-title + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with style "note"
-       */
+      /* Admonition block of type "note" */
       "#note": {
         "capture": "#note + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with style "summary"
-       */
+      /* Admonition block of type "summary" */
       "#summary": {
         "capture": "#summary + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with style "tip"
-       */
+      /* Admonition block of type "tip" */
       "#tip": {
         "capture": "#tip + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with style "success"
-       */
+      /* Admonition block of type "success" */
       "#success": {
         "capture": "#success + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with style "warning"
-       */
+      /* Admonition block of type "warning" */
       "#warning": {
         "capture": "#warning + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with style "failure"
-       */
+      /* Admonition block of type "failure" */
       "#failure": {
         "capture": "#failure + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with style "danger"
-       */
+      /* Admonition block of type "danger" */
       "#danger": {
         "capture": "#danger + .admonition",
         "break": "@screen"
       },
 
-      /*
-       * Admonition block with style "bug"
-       */
+      /* Admonition block of type "bug" */
       "#bug": {
         "capture": "#bug + .admonition",
         "break": "@screen"
