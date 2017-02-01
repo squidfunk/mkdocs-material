@@ -1,29 +1,30 @@
 /*
-* Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to
-* deal in the Software without restriction, including without limitation the
-* rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-* sell copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-* IN THE SOFTWARE.
-*/
+ * Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
 
 import config from "../config.json"
+import path from "path"
 
 /* ----------------------------------------------------------------------------
- * Helper
+ * Functions
  * ------------------------------------------------------------------------- */
 
 /**
@@ -59,14 +60,14 @@ const resolve = (breakpoints, expr) => {
   return breakpoints.slice(from, to)
 }
 
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/*
- * TODO
+/**
+ * Generate a Gemini test suite for the component
+ *
+ * @param {string} dirname - Directory of the test suite
+ * @param {Array.<object>} components - Component specifications                // TODO: document syntax and specificagtion
  */
-const generate = components => {
+const generate = (dirname, components) => {
+  const base = path.relative(`${__dirname}/../suites`, dirname)
 
   /* Generate a suite for every component */
   for (const name of Object.keys(components)) {
@@ -75,77 +76,60 @@ const generate = components => {
     /* Create suite */
     gemini.suite(name, suite => {
       if (component.url)
-        suite.setUrl(component.url)
+        suite.setUrl(path.join(base, component.url, "_"))
 
       /* The capture selector is assumed to exist */
       suite.setCaptureElements(component.capture)
 
-      /* Resolve and apply relevant breakpoints */
-      const breakpoints = resolve(config.breakpoints, component.break)
-      for (const breakpoint of breakpoints) {
-        suite.capture(`@${breakpoint.name}`, actions => {
-          actions.setWindowSize(breakpoint.size.width, breakpoint.size.height)
-        })
+      /* Generate a subsuite for every state */
+      const states = component.states || [{ name: "", wait: 0 }]
+      for (const state of states) {
+        const test = subsuite => {
+
+          /* Resolve and apply relevant breakpoints */
+          const breakpoints = resolve(config.breakpoints, component.break)
+          for (const breakpoint of breakpoints) {
+            subsuite.capture(`@${breakpoint.name}`, actions => {
+
+              /* Set window size according to breakpoint */
+              actions.setWindowSize(
+                breakpoint.size.width, breakpoint.size.height)
+
+              /* Add the name as a CSS class to the captured element */
+              if (state.name)
+                actions.executeJS(new Function(`
+                  document.querySelector(
+                    "${component.capture}"
+                  ).classList.add("${state.name}")
+                `))
+
+              /* Execute function inside an IIFE */
+              if (state.exec)
+                actions.executeJS(new Function(`(${state.exec})()`))
+
+              /* Wait the specified time before taking a screenshot */
+              if (state.wait)
+                actions.wait(state.wait)
+            })
+          }
+        }
+
+        /* No state sub-suite if the name is empty */
+        if (state.name.length > 0)
+          gemini.suite(state.name, subsuite => test(subsuite))
+        else
+          test(suite)
       }
 
       /* Generate sub-suites */
-      generate(component.suite || {})
+      generate(dirname, component.suite || {})
     })
-
-    /* Set component states to default, if none given */
-    // const states = component.states
-    //   ? component.states
-    //   : [{ name: "", wait: 0 }]
-    //
-    // let done = 0
-    // for (const state of states) {
-    //   gemini.suite(`${name}${state.name}`, suite => {
-    //
-    //     /* Set URL of page to capture */
-    //     if (component.url)
-    //       suite.setUrl(component.url)
-    //
-    //     /* Set elements to capture */
-    //     if (component.capture)
-    //       suite.setCaptureElements(component.capture)
-    //
-    //     // TODO: otherwise throw error
-    //     if (component.break) {
-    //       const breakpoints = resolve(config.breakpoints, component.break)
-    //
-    //       // iterate breakpoints
-    //       for (const breakpoint of breakpoints) {
-    //         suite.capture(`@${breakpoint.name}`, actions => {
-    //           actions.setWindowSize(
-    //             breakpoint.size.width, breakpoint.size.height)
-    //           if (state.wait)
-    //             actions.wait(state.wait)
-    //           if (state.name) {
-    //             // eval, as its executed at the frontend
-    //             if (typeof state.name === "string") {
-    //               actions.executeJS(new Function(`
-    //                 document.querySelector(
-    //                   "${component.capture}"
-    //                 ).classList.add("${state.name}")
-    //                 `)
-    //               )
-    //             } else {
-    //               actions.executeJS(state.name)
-    //             }
-    //           }
-    //         })
-    //       }
-    //     }
-    //
-    //     // nested suites
-    //     if (!done && component.suite) {
-    //       done = 1
-    //       generate(component.suite)
-    //     }
-    //   })
-    // }
   }
 }
+
+/* ----------------------------------------------------------------------------
+ * Exports
+ * ------------------------------------------------------------------------- */
 
 export default {
   generate
