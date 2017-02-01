@@ -45,7 +45,7 @@ const config = {
   }
 }
 
-const args = yargs
+let args = yargs
   .default("clean",      false)        /* Clean before build */
   .default("karma",      true)         /* Karma watchdog */
   .default("lint",       true)         /* Lint sources */
@@ -54,6 +54,12 @@ const args = yargs
   .default("revision",   false)        /* Revision assets */
   .default("sourcemaps", false)        /* Create sourcemaps */
   .argv
+
+/* Only use the last value seen, so overrides are possible */
+args = Object.keys(args).reduce((result, arg) => {
+  result[arg] = [].concat(args[arg]).pop()
+  return result
+}, {})
 
 /* ----------------------------------------------------------------------------
  * Overrides and helpers
@@ -278,10 +284,11 @@ gulp.task("mkdocs:serve",
 /*
  * Generate visual tests
  */
-gulp.task("tests:visual:generate", (args.clean ? [
-  // "assets:build",              // TODO: only commented out for dev
-  // "views:build",
+gulp.task("tests:visual:generate", [
   "tests:visual:clean"
+].concat(args.clean ? [
+  "assets:build",
+  "views:build"
 ] : []),
   load("tests/visual/generate"))
 

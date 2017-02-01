@@ -75,8 +75,10 @@ const generate = (dirname, components) => {
 
     /* Create suite */
     gemini.suite(name, suite => {
-      if (component.url)
-        suite.setUrl(path.join(base, component.url, "_"))
+      if (component.dir || component.url)
+        suite.setUrl(path.join(
+          base, component.dir ? component.dir : "",
+          "_",  component.url ? component.url  : ""))
 
       /* The capture selector is assumed to exist */
       suite.setCaptureElements(component.capture)

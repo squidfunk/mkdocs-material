@@ -60,7 +60,7 @@ spec.generate(__dirname, {
 
           /* Long list title with ellipsis */
           "~overflow": {
-            "url": "/_overflow",
+            "dir": "_overflow",
             "capture": ".md-nav--primary .md-nav__title",
             "states": [
               { "name": "", "wait": 250, "exec": open }
@@ -152,7 +152,7 @@ spec.generate(__dirname, {
 
       /* Active link */
       "md-nav__link--active": {
-        "capture": ".md-nav--primary .md-nav__link--active",
+        "capture": ".md-nav--primary .md-nav__item .md-nav__link--active",
         "states": [
           { "name": "",       "wait": 250, "exec": open },
           { "name": ":focus", "wait": 250, "exec": open },
