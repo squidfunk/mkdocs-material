@@ -30,6 +30,7 @@ node_js:
 # Cache dependencies
 cache:
   pip: true
+  yarn: true
   directories:
     - node_modules
 
@@ -38,4 +39,4 @@ before_script:
   - pip install --user -r requirements.txt
 
 # Perform build and tests
-script: npm run build
+script: yarn run build
