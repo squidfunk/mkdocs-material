@@ -45,6 +45,7 @@ spec.generate(__dirname, {
   "md-nav--primary": {
     "url": "/",
     "capture": ".md-nav--primary",
+    "break": "+@tablet-landscape",
     "states": [
       { "name": "", "wait": 250, "exec": open }
     ],
@@ -53,6 +54,7 @@ spec.generate(__dirname, {
       /* List title */
       "md-nav__title": {
         "capture": ".md-nav--primary .md-nav__title",
+        "break": "+@tablet-landscape",
         "states": [
           { "name": "", "wait": 250, "exec": open }
         ],
@@ -62,6 +64,7 @@ spec.generate(__dirname, {
           "~overflow": {
             "dir": "_overflow",
             "capture": ".md-nav--primary .md-nav__title",
+            "break": "+@tablet-landscape",
             "states": [
               { "name": "", "wait": 250, "exec": open }
             ]
@@ -69,27 +72,21 @@ spec.generate(__dirname, {
         }
       },
 
-      /* List of items */
-      "md-nav__list": {
-        "capture": ".md-nav--primary .md-nav__list",
-        "states": [
-          { "name": "", "wait": 250, "exec": open }
-        ]
-      },
-
       /* List item */
       "md-nav__item": {
         "capture": ".md-nav--primary .md-nav__item",
+        "break": "+@tablet-landscape",
         "states": [
           { "name": "", "wait": 250, "exec": open }
         ],
         "suites": {
 
-          /* Last list item */
+          /* Last list item */                                                  // TODO: this is not captured!
           ":last-child": {
             "capture":
               ".md-nav--primary > .md-nav__list >" +
               ".md-nav__item:last-child",
+            "break": "+@tablet-landscape",
             "states": [
               { "name": "", "wait": 250, "exec": open }
             ]
@@ -100,6 +97,7 @@ spec.generate(__dirname, {
       /* Item contains a nested list */
       "md-nav__item--nested": {
         "capture": ".md-nav--primary .md-nav__item--nested",
+        "break": "+@tablet-landscape",
         "states": [
           { "name": "", "wait": 250, "exec": open }
         ],
@@ -110,6 +108,7 @@ spec.generate(__dirname, {
             "capture":
               ".md-nav--primary .md-nav__item--nested " +
               ".md-nav__link",
+            "break": "+@tablet-landscape",
             "states": [
               { "name": "",       "wait": 250, "exec": open },
               { "name": ":focus", "wait": 250, "exec": open },
@@ -122,6 +121,7 @@ spec.generate(__dirname, {
             "capture":
               ".md-nav--primary .md-nav__item--nested " +
               ".md-nav__link--active",
+            "break": "+@tablet-landscape",
             "states": [
               { "name": "",       "wait": 250, "exec": open },
               { "name": ":focus", "wait": 250, "exec": open },
@@ -131,18 +131,10 @@ spec.generate(__dirname, {
         }
       },
 
-      /* Button with logo */
-      "md-nav__button": {
-        "capture": ".md-nav--primary .md-nav__button",
-        "break": "-@tablet-landscape",
-        "states": [
-          { "name": "", "wait": 250, "exec": open }
-        ]
-      },
-
       /* Link inside item */
       "md-nav__link": {
         "capture": ".md-nav--primary .md-nav__item:nth-child(2) .md-nav__link",
+        "break": "+@tablet-landscape",
         "states": [
           { "name": "",       "wait": 250, "exec": open },
           { "name": ":focus", "wait": 250, "exec": open },
@@ -153,6 +145,7 @@ spec.generate(__dirname, {
       /* Active link */
       "md-nav__link--active": {
         "capture": ".md-nav--primary .md-nav__item .md-nav__link--active",
+        "break": "+@tablet-landscape",
         "states": [
           { "name": "",       "wait": 250, "exec": open },
           { "name": ":focus", "wait": 250, "exec": open },

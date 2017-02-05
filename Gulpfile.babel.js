@@ -285,8 +285,8 @@ gulp.task("mkdocs:serve",
  * Generate visual tests
  */
 gulp.task("tests:visual:generate", [
-  "tests:visual:clean"
 ].concat(args.clean ? [
+  "tests:visual:clean",
   "assets:build",
   "views:build"
 ] : []),

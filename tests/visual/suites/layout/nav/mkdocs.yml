@@ -24,8 +24,8 @@ pages:
   - Lorem ipsum dolor sit amet: index.md
   - Consectetur adipiscing elit: empty.md
   - Etiam condimentum lacinia urna id vestibulum: empty.md
-  - Maecenas tincidunt nulla dui: empty.md
   - A dapibus turpis iaculis at:
     - Donec tortor sem: empty.md
     - Scelerisque ut congue id: empty.md
     - Pretium ac risus: empty.md
+  - Maecenas tincidunt nulla dui: empty.md

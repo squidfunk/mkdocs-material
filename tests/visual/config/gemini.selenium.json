@@ -9,7 +9,10 @@
     }
   },
   "system": {
-    "projectRoot": "./",
-    "sourceRoot": "./src/assets/stylesheets"
+    "projectRoot": ".",
+    "sourceRoot": "./tests/visual/data",
+    "coverage": {
+      "enabled": false
+    }
   }
 }

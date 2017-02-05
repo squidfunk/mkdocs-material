@@ -40,6 +40,10 @@ addons:
 env:
   - CXX=g++-4.8
 
+# Limit clone depth to 5, to speed up build
+git:
+  depth: 5
+
 # Cache dependencies
 cache:
   pip: true
