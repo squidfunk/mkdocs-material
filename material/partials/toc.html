@@ -1,10 +1,10 @@
 {% import "partials/language.html" as lang %}
 <nav class="md-nav md-nav--secondary">
   {% set toc_ = page.toc %}
-  {% if "\x3ch1 id=" in page.content %}
+  {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
     {% set toc_ = (toc_ | first).children %}
   {% endif %}
-  {% if toc_ and (toc_ | first) %}
+  {% if toc_ | first is defined %}
     <label class="md-nav__title" for="toc">{{ lang.t('toc.title') }}</label>
     <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc_ %}

@@ -62,13 +62,13 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc"
         type="checkbox" id="toc" />
 
-    <!-- Nasty hack - see partials/toc.html for more information -->
-    {% if "\x3ch1 id=" in page.content %}
+    <!-- Hack: see partials/toc.html for more information -->
+    {% if toc_ | first is defined %}
       {% set toc_ = (toc_ | first).children %}
     {% endif %}
 
     <!-- Render table of contents, if not empty -->
-    {% if toc_ and (toc_ | first) %}
+    {% if toc_ | first is defined %}
       <label class="md-nav__link md-nav__link--active" for="toc">
         {{ nav_item.title }}
       </label>
@@ -79,7 +79,7 @@
     </a>
 
     <!-- Show table of contents -->
-    {% if page.toc %}
+    {% if toc_ | first is defined %}
       {% include "partials/toc.html" %}
     {% endif %}
   </li>
