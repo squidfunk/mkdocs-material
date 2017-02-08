@@ -23,9 +23,9 @@ sudo: false
 
 # Node.js versions
 node_js:
-  - 4
   - 5
   - 6
+  - 7
 
 # Install a C++11 compatible compiler
 addons:
@@ -47,6 +47,7 @@ git:
 # Cache dependencies
 cache:
   pip: true
+  yarn: true
   directories:
     - node_modules
 
@@ -55,4 +56,4 @@ before_script:
   - pip install --user -r requirements.txt
 
 # Perform build and tests
-script: npm run build
+script: yarn run build
