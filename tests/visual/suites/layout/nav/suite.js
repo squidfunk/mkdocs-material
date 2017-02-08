@@ -79,9 +79,9 @@ spec.generate(__dirname, {
         "states": [
           { "name": "", "wait": 250, "exec": open }
         ],
-        "suites": {
+        "suite": {
 
-          /* Last list item */                                                  // TODO: this is not captured!
+          /* Last list item */
           ":last-child": {
             "capture":
               ".md-nav--primary > .md-nav__list >" +
@@ -101,26 +101,13 @@ spec.generate(__dirname, {
         "states": [
           { "name": "", "wait": 250, "exec": open }
         ],
-        "suites": {
+        "suite": {
 
           /* Link inside item that contains a nested list */
           "md-nav__link": {
             "capture":
               ".md-nav--primary .md-nav__item--nested " +
               ".md-nav__link",
-            "break": "+@tablet-landscape",
-            "states": [
-              { "name": "",       "wait": 250, "exec": open },
-              { "name": ":focus", "wait": 250, "exec": open },
-              { "name": ":hover", "wait": 250, "exec": open }
-            ]
-          },
-
-          /* Active link inside item that contains a nested list */
-          "md-nav__link--active": {
-            "capture":
-              ".md-nav--primary .md-nav__item--nested " +
-              ".md-nav__link--active",
             "break": "+@tablet-landscape",
             "states": [
               { "name": "",       "wait": 250, "exec": open },

@@ -23,6 +23,6 @@ site_name: Pneumonoultramicroscopicsilicovolcanoconiosis
 pages:
   - Pneumonoultramicroscopicsilicovolcanoconiosis: index.md
   - Supercalifragilisticexpialidocious:
-    - Pseudopseudohypoparathyroidism: empty.md
-    - Floccinaucinihilipilification: empty.md
-    - Antidisestablishmentarianism: empty.md
+    - Pseudopseudohypoparathyroidism: default.md
+    - Floccinaucinihilipilification: default.md
+    - Antidisestablishmentarianism: default.md
