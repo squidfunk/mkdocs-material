@@ -25,19 +25,12 @@ sudo: false
 node_js:
   - 5
   - 6
-  - 7
-
-# Environment variables
-env:
-  global:
-     secure: U8r1b4Wejuuj3j4E69kKKk4gG877UomF3XH2Sj3ujELaGn644WeTvSpMwlnPEq/Vlo17z+OctUqLp2jbWUHuZUA/+2V1clZlWDnQNAG9xEEm6zrxsR0NF8q7v6itix9gWZpRd1Ynlbq4uW0sZM/IJCvY7f4H1p2yB4JAsnHj9WjlFfrnDssTNx6WF9my8fgfyZeI9pZbVI8+fV6YTfbYs5qVVlydP33BNNN4tsC4GZ+Bc4VYiIUmiwDJMP/Nd2hMV9SIVf7LnaKK7ucH2fFW7xXhuFPsxc+ZX6Qyb5cfuaE5Ta65RXDtMSfPd8O3d8sHjpjEC7jlnlzyo6WumWNIvAXhWkbmHQbdIFpZCYYkD6GMNoET/eJJBwmzpqV4wsMCxx1MNb7/OWdvrf9rGvv6+ZZ+xZvGzzupIDXusXjsm/Xa+WI1fBDtuhRRtM3fBcb596T9NkpAjKCQBZYBCrKn/teDgUNd2uCcNpJxni0EuQiWcIQ0Mkc3XISfvVXliSZDNc3x5FTl1GsCZqmKiio2ZU+cO92XIkJoztKuNbC7N+0oZMBPcL294Kl245khMRWJYqBlWG+oFS1MQwDMGvScIpB8ojgsFzpolV1wJdtCjANbNs6Z6e4sEaNr7Ry8sLWu6ltSpo1h3xNv8mzObMjMEeDUNJ6i8JtjyVWnwhT2eXE=
-     secure: ZMPpw2nMwzH9Y+gHY+ana8oa9HL1Lhi631GFv38Vh6NYWSW/Mx7lpB3jh9BWoxpLRrJTztLfbt68rDxjTEcn6/FfJY6EMkmfBRYYCQOhtwAbgozvXiS/F6sEVMPHX+D3wjlM3FrH6uMKYEYm3XIchp3E/U76NhunpJNyzk9vnOySp/CH7ToXhHVh/NttdCQsE7JfJQoFyatayrg7gOsiiNqL7Zz1fYm02uhUq5e4Vb29jKX3QQLgrNmkElHpBxlBHdxaiMmtY57slhLgBLM8WRLL+0hWO6H74xFs4TSTVN9ECko7bpNQLUH2P7tStk4Jf+tLNryOjUhECeehptQhEAYVW1bHS+eRIv5kYugMpu0M12KF4w5s+gkbhaW1Pbs2AvSy+yZjTChzLkjgxdk9j048y+GroCuQuG3nBl2M2Bx7j2aJToOh9+EFIoCi9qezAsrEMdjVgp0dWsInXnOJEb+te3UX/UuMN9lCzVFEorkvN5eVFE2okggPEfHcO2TfRP6khSuTpgRUfBnOUwViDCsZaYxrA3Tbf7ChQKgs4Oy0C0QqBqbKt/wGI2YpZggX6iRp+XgZxNofmSF7xthnQmLyy3M2hfwj5+WWFfrBrAsCBfudbhToSEUc5Xmw9iopXsbkBabCF8wjSCdh/2+bvm5Z6B/7mxYdRwM8OsRr8D4=
 
 # Build visual tests on Node.js 7
 matrix:
   include:
     - node_js: 7
-      script: yarn run build && yarn run test:visual:run
+      script: yarn run test:visual:run
 
 # Install a C++11 compatible compiler
 addons:
