@@ -9,7 +9,8 @@
         "platform": "Windows 10",
         "screenResolution": "1280x1024",
         "recordVideo": "false"
-      }
+      },
+      "retry": 1
     },
     "firefox": {
       "desiredCapabilities": {
@@ -18,7 +19,8 @@
         "platform": "Windows 10",
         "screenResolution": "1280x1024",
         "recordVideo": "false"
-      }
+      },
+      "retry": 1
     },
     "edge": {
       "desiredCapabilities": {
@@ -26,7 +28,8 @@
         "platform": "Windows 10",
         "screenResolution": "1280x1024",
         "recordVideo": "false"
-      }
+      },
+      "retry": 1
     },
     "ie11": {
       "desiredCapabilities": {
@@ -35,7 +38,8 @@
         "platform": "Windows 10",
         "screenResolution": "1280x1024",
         "recordVideo": "false"
-      }
+      },
+      "retry": 1
     },
     "ie10": {
       "desiredCapabilities": {
@@ -44,7 +48,8 @@
         "platform": "Windows 8",
         "screenResolution": "1280x1024",
         "recordVideo": "false"
-      }
+      },
+      "retry": 1
     }
   },
   "system": {

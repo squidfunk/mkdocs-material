@@ -31,20 +31,17 @@ node_js:
 matrix:
   include:
     - node_js: 7
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-4.8
+            - g++-4.8
+      env:
+        - CXX=g++-4.8
+      install: yarn install
       script: yarn run test:visual:run --no-clean
-
-# Install a C++11 compatible compiler
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-4.8
-      - g++-4.8
-
-# Set C++ compiler as default
-env:
-  - CXX=g++-4.8
 
 # Limit clone depth to 5, to speed up build
 git:
@@ -56,6 +53,9 @@ cache:
   yarn: true
   directories:
     - node_modules
+
+# Do not install optional dependencies by default
+install: yarn install --ignore-optional
 
 # Install dependencies
 before_script:
