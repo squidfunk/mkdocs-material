@@ -27,10 +27,10 @@ node_js:
   - 6
   - 7
 
-# Build visual tests on Node.js 7
+# Build visual tests separately
 matrix:
   include:
-    - node_js: 7
+    - node_js: 5
       addons:
         apt:
           sources:
