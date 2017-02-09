@@ -41,7 +41,7 @@ const open = () => {
 /*
  * Main navigation
  */
-spec.generate(__dirname, {
+spec.register(__dirname, {
   "md-nav--primary": {
     "url": "/",
     "capture": ".md-nav--primary",
@@ -84,7 +84,7 @@ spec.generate(__dirname, {
           /* Last list item */
           ":last-child": {
             "capture":
-              ".md-nav--primary > .md-nav__list >" +
+              ".md-nav--primary > .md-nav__list > " +
               ".md-nav__item:last-child",
             "break": "+@tablet-landscape",
             "states": [

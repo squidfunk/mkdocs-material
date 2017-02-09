@@ -22,6 +22,14 @@
 
 import config from "../config.json"
 import path from "path"
+import yargs from "yargs"
+
+/* ----------------------------------------------------------------------------
+ * Configuration and arguments
+ * ------------------------------------------------------------------------- */
+
+/* Parse arguments from command line */
+const args = yargs.argv
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -61,7 +69,50 @@ const resolve = (breakpoints, expr) => {
 }
 
 /**
- * Generate a Gemini test suite for the component
+ * Filter a set of test suites using a regular expression
+ *
+ * @param {Array.<object>} components - Component specifications
+ * @param {Array.<string>} parent - Parent test suite names
+ * @return {boolean} Whether at least one suite was kept
+ */
+const filter = (components, parent = []) => {
+  const regexp = new RegExp(args.grep.replace(" ", ".*?"), "i")
+  return Object.keys(components).reduce((match, name) => {
+    const component = components[name]
+
+    /* Deep-copy current path and call recursive */
+    const temp = parent.slice(0).concat(name)
+    const keep = filter(component.suite || {}, temp)
+
+    /* Remove all states that do not match the regular expression */
+    component.states = (component.states || [{ name: "", wait: 0 }]).reduce(
+      (states, state) => {
+        const fullname = temp.slice(0)
+          .concat(state.name.length ? [state.name] : [])
+          .join(" ")
+        if (regexp.test(fullname))
+          states.push(state)
+        return states
+      }, [])
+
+    /* Keep komponent, if there is at least one state or the component has
+       matching subsuites, so it needs to be kept */
+    if (component.states.length || keep) {
+      if (keep) {
+        delete component.capture
+        delete component.break
+      }
+      return true
+    }
+
+    /* Otherwise, delete component */
+    delete components[name]
+    return match
+  }, false)
+}
+
+/**
+ * Generate Gemini test suites for the given components
  *
  * @param {string} dirname - Directory of the test suite
  * @param {Array.<object>} components - Component specifications                // TODO: document syntax and specificagtion
@@ -81,11 +132,11 @@ const generate = (dirname, components) => {
           "_",  component.url ? component.url  : ""))
 
       /* The capture selector is assumed to exist */
-      suite.setCaptureElements(component.capture)
+      if (component.capture)
+        suite.setCaptureElements(component.capture)
 
       /* Generate a subsuite for every state */
-      const states = component.states || [{ name: "", wait: 0 }]
-      for (const state of states) {
+      for (const state of component.states) {
         const test = subsuite => {
 
           /* Resolve and apply relevant breakpoints */
@@ -129,10 +180,22 @@ const generate = (dirname, components) => {
   }
 }
 
+/**
+ * Register Gemini test suites for the given components
+ *
+ * @param {string} dirname - Directory of the test suite
+ * @param {Array.<object>} components - Component specifications
+ */
+const register = (dirname, components) => {
+  if (args.grep)
+    filter(components)
+  generate(dirname, components)
+}
+
 /* ----------------------------------------------------------------------------
  * Exports
  * ------------------------------------------------------------------------- */
 
 export default {
-  generate
+  register
 }

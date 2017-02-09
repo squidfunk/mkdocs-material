@@ -32,7 +32,7 @@ import spec from "~/tests/visual/helpers/spec"
  * The admonition block looks the same on everything above tablet
  * portrait, so we can save a few test cases.
  */
-spec.generate(__dirname, {
+spec.register(__dirname, {
   "admonition": {
     "url": "/",
     "capture": "#default + .admonition",
