@@ -10,7 +10,7 @@
         "screenResolution": "1280x1024",
         "recordVideo": "false"
       },
-      "retry": 1
+      "retry": 3
     },
     "firefox": {
       "desiredCapabilities": {
@@ -20,7 +20,7 @@
         "screenResolution": "1280x1024",
         "recordVideo": "false"
       },
-      "retry": 1
+      "retry": 3
     },
     "edge": {
       "desiredCapabilities": {
@@ -29,7 +29,7 @@
         "screenResolution": "1280x1024",
         "recordVideo": "false"
       },
-      "retry": 1
+      "retry": 3
     },
     "ie11": {
       "desiredCapabilities": {
@@ -39,7 +39,7 @@
         "screenResolution": "1280x1024",
         "recordVideo": "false"
       },
-      "retry": 1
+      "retry": 3
     },
     "ie10": {
       "desiredCapabilities": {
@@ -49,7 +49,7 @@
         "screenResolution": "1280x1024",
         "recordVideo": "false"
       },
-      "retry": 1
+      "retry": 3
     }
   },
   "system": {
