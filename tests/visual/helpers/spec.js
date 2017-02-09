@@ -136,42 +136,43 @@ const generate = (dirname, components) => {
         suite.setCaptureElements(component.capture)
 
       /* Generate a subsuite for every state */
-      for (const state of component.states) {
+      const states = component.states || [{ name: "", wait: 0 }]
+      for (const state of states) {
         const test = subsuite => {
 
-          /* Resolve and apply relevant breakpoints */
+            /* Resolve and apply relevant breakpoints */
           const breakpoints = resolve(config.breakpoints, component.break)
           for (const breakpoint of breakpoints) {
             subsuite.capture(`@${breakpoint.name}`, actions => {
 
-              /* Set window size according to breakpoint */
+                /* Set window size according to breakpoint */
               actions.setWindowSize(
-                breakpoint.size.width, breakpoint.size.height)
+                  breakpoint.size.width, breakpoint.size.height)
 
-              /* Add the name as a CSS class to the captured element */
+                /* Add the name as a CSS class to the captured element */
               if (state.name)
                 actions.executeJS(new Function(`
-                  document.querySelector(
-                    "${component.capture}"
-                  ).classList.add("${state.name}")
-                `))
+                    document.querySelector(
+                      "${component.capture}"
+                    ).classList.add("${state.name}")
+                  `))
 
-              /* Execute function inside an IIFE */
+                /* Execute function inside an IIFE */
               if (state.exec)
                 actions.executeJS(new Function(`(${state.exec})()`))
 
-              /* Wait the specified time before taking a screenshot */
+                /* Wait the specified time before taking a screenshot */
               if (state.wait)
                 actions.wait(state.wait)
             })
           }
         }
 
-        /* No state sub-suite if the name is empty */
+          /* No state sub-suite if the name is empty */
         if (state.name.length > 0)
           gemini.suite(state.name, subsuite => test(subsuite))
         else
-          test(suite)
+            test(suite)
       }
 
       /* Generate sub-suites */
