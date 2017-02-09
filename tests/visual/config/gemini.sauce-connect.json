@@ -14,15 +14,8 @@
     "firefox": {
       "desiredCapabilities": {
         "browserName": "firefox",
+        "version": "47.0",
         "platform": "Windows 10",
-        "screenResolution": "1280x1024",
-        "recordVideo": "false"
-      }
-    },
-    "safari": {
-      "desiredCapabilities": {
-        "browserName": "safari",
-        "platform": "macOS 10.12",
         "screenResolution": "1280x1024",
         "recordVideo": "false"
       }
