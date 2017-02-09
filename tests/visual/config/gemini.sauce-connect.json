@@ -22,8 +22,7 @@
     },
     "edge": {
       "desiredCapabilities": {
-        "browserName": "edge",
-        "version": "14.14393",
+        "browserName": "MicrosoftEdge",
         "platform": "Windows 10",
         "screenResolution": "1280x1024",
         "recordVideo": "false"
