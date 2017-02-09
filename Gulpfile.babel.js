@@ -311,6 +311,12 @@ gulp.task("tests:visual:update",
 gulp.task("tests:visual:clean",
   load("tests/visual/clean"))
 
+/*
+ * Open a SauceConnect session for manual testing
+ */
+gulp.task("tests:visual:session",
+  load("tests/visual/session"))
+
 /* ----------------------------------------------------------------------------
  * Interface
  * ------------------------------------------------------------------------- */

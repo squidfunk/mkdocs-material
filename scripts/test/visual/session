@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,48 +20,12 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-language: node_js
-sudo: false
+# Check if "npm install" was executed
+if [[ ! -d `npm bin` ]]; then
+  echo "\"node_modules\" not found:"
+  echo "npm install"
+  exit 1
+fi
 
-# Node.js versions
-node_js:
-  - 5
-  - 6
-  - 7
-
-# Build visual tests on Node.js 7
-matrix:
-  include:
-    - node_js: 7
-      script: yarn run test:visual:run
-
-# Install a C++11 compatible compiler
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-4.8
-      - g++-4.8
-
-# Set C++ compiler as default
-env:
-  - CXX=g++-4.8
-
-# Limit clone depth to 5, to speed up build
-git:
-  depth: 5
-
-# Cache dependencies
-cache:
-  pip: true
-  yarn: true
-  directories:
-    - node_modules
-
-# Install dependencies
-before_script:
-  - pip install --user -r requirements.txt
-
-# Perform build and tests
-script: yarn run build
+# Run command
+`npm bin`/gulp tests:visual:session $@
