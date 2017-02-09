@@ -54,12 +54,14 @@ cache:
   directories:
     - node_modules
 
+# Install yarn, as Travis doesn't support it out of the box
+before_install: npm install -g yarn
+
 # Do not install optional dependencies by default
 install: yarn install --ignore-optional
 
 # Install dependencies
-before_script:
-  - pip install --user -r requirements.txt
+before_script: pip install --user -r requirements.txt
 
 # Perform build and tests
 script: yarn run build
