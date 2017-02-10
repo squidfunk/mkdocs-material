@@ -33,7 +33,6 @@ matrix:
     - node_js: 5
       addons:
         artifacts:
-          debug: true
           paths:
             - gemini-report
         apt:
