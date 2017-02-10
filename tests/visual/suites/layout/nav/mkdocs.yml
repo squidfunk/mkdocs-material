@@ -29,3 +29,7 @@ pages:
     - Scelerisque ut congue id: default.md
     - Pretium ac risus: default.md
   - Maecenas tincidunt nulla dui: default.md
+
+# Reset webfonts because of flaky tests
+extra:
+  font: none

@@ -34,14 +34,9 @@ body {
 body,
 input {
   color: $md-color-black;
-  // font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-feature-settings: "kern", "onum", "liga";
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-
-  // Use system fonts, if browser doesn't support webfonts
-  .no-fontface & {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
 }
 
 // Proportionally spaced fonts
@@ -49,14 +44,9 @@ pre,
 code,
 kbd {
   color: $md-color-black;
-  // font-family: "Roboto Mono", "Courier New", Courier, monospace;
   font-feature-settings: "kern", "onum", "liga";
+  font-family: "Courier New", Courier, monospace;
   font-weight: 400;
-
-  // Use system fonts, if browser doesn't support webfonts
-  .no-fontface & {
-    font-family: "Courier New", Courier, monospace;
-  }
 }
 
 // ----------------------------------------------------------------------------

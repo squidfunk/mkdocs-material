@@ -26,3 +26,7 @@ pages:
     - Pseudopseudohypoparathyroidism: default.md
     - Floccinaucinihilipilification: default.md
     - Antidisestablishmentarianism: default.md
+
+# Reset webfonts because of flaky tests
+extra:
+  font: none

@@ -22,3 +22,7 @@
 site_name: Admonition Test
 markdown_extensions:
   - markdown.extensions.admonition
+
+# Reset webfonts because of flaky tests
+extra:
+  font: none

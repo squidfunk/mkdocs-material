@@ -31,7 +31,13 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr-facb31f4a3.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-5b0c41c2b5.js"></script>
+    {% endblock %}
+    {% block styles %}
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-ee6a3f36b0.css">
+      {% if config.extra.palette %}
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
+      {% endif %}
     {% endblock %}
     {% block fonts %}
       {% if config.extra.font != "none" %}
@@ -44,15 +50,9 @@
       {% endif %}
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     {% endblock %}
-    {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-180dae0b60.css">
-      {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
-      {% endif %}
-      {% for path in extra_css %}
-        <link rel="stylesheet" href="{{ path }}">
-      {% endfor %}
-    {% endblock %}
+    {% for path in extra_css %}
+      <link rel="stylesheet" href="{{ path }}">
+    {% endfor %}
     {% block extrahead %}{% endblock %}
   </head>
   {% set palette = config.extra.get("palette", {}) %}
