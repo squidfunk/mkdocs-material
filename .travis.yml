@@ -35,7 +35,7 @@ matrix:
         artifacts:
           debug: true
           paths:
-            ./gemini-report/*
+            gemini-report/*
         apt:
           sources:
             - ubuntu-toolchain-r-test
@@ -69,5 +69,3 @@ before_script: pip install --user -r requirements.txt
 
 # Perform build and tests
 script: yarn run build
-
-after_script: find /home/travis/build/
