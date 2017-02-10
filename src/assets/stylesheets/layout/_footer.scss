@@ -50,8 +50,8 @@
     padding-bottom: 0.8rem;
     transition: opacity 0.25s;
 
-    // [mobile landscape +]: Set proportional width
-    @include break-from-device(mobile landscape) {
+    // [tablet +]: Set proportional width
+    @include break-from-device(tablet) {
       width: 50%;
     }
 
@@ -68,8 +68,8 @@
       // Title
       .md-footer-nav__title {
 
-        // [mobile portrait -]: Hide title for previous page
-        @include break-to-device(mobile portrait) {
+        // [mobile -]: Hide title for previous page
+        @include break-to-device(mobile) {
           display: none;
         }
       }

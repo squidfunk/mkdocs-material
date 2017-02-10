@@ -19,7 +19,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.ico">
       {% endif %}
-      <meta name="generator" content="mkdocs+mkdocs-material#1.0.3">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.0.3">
     {% endblock %}
     {% block htmltitle %}
       {% if page.title %}
@@ -45,7 +45,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-bc099a55ca.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-180dae0b60.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
       {% endif %}

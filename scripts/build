@@ -28,4 +28,4 @@ if [[ ! -d `npm bin` ]]; then
 fi
 
 # Run command
-`npm bin`/gulp build --clean --optimize --revision
+`npm bin`/gulp build --clean --optimize --revision "$@"
