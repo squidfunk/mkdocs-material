@@ -41,7 +41,7 @@ matrix:
       env:
         - CXX=g++-4.8
       install: yarn install
-      script: yarn run test:visual:run -- --no-clean
+      script: yarn run test:visual:run
 
 # Limit clone depth to 5, to speed up build
 git:
