@@ -25,7 +25,8 @@
         "browserName": "MicrosoftEdge",
         "platform": "Windows 10",
         "screenResolution": "1280x1024",
-        "recordVideo": "false"
+        "recordVideo": "false",
+        "tolerance": 3.5
       }
     },
     "ie11": {
