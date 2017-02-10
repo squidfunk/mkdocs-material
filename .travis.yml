@@ -32,6 +32,7 @@ matrix:
   include:
     - node_js: 5
       addons:
+        artifacts: true
         apt:
           sources:
             - ubuntu-toolchain-r-test
