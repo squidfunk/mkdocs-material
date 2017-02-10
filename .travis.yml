@@ -32,7 +32,10 @@ matrix:
   include:
     - node_js: 5
       addons:
-        artifacts: true
+        artifacts:
+          debug: true
+          paths:
+            $HOME/gemini-report/*
         apt:
           sources:
             - ubuntu-toolchain-r-test
