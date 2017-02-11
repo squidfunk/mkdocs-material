@@ -46,6 +46,6 @@ FILES=$(git diff --cached --name-only --diff-filter=ACMR | \
 
 # Run the check and print indicator
 if [ "$FILES" ]; then
-  echo "Hook[pre-commit]: Running linter..."
+  echo "Hook[pre-commit]: Running linter"
   npm run lint --silent || exit 1
 fi

@@ -22,7 +22,7 @@
 
 # Determine current branch
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
-echo "Hook[pre-commit]: Checking branch..."
+echo "Hook[pre-commit]: Checking branch"
 
 # If we're on master, abort commit
 if [[ "$BRANCH" == "master" ]]; then
