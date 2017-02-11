@@ -19,7 +19,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs+mkdocs-material#1.0.3">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.0.3">
     {% endblock %}
     {% block htmltitle %}
       {% if page.title and not page.is_homepage %}
@@ -29,7 +29,13 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr-facb31f4a3.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-5b0c41c2b5.js"></script>
+    {% endblock %}
+    {% block styles %}
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-932e030699.css">
+      {% if config.extra.palette %}
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
+      {% endif %}
     {% endblock %}
     {% block fonts %}
       {% if config.extra.font != "none" %}
@@ -42,15 +48,9 @@
       {% endif %}
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     {% endblock %}
-    {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-22ac52ce22.css">
-      {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
-      {% endif %}
-      {% for path in extra_css %}
-        <link rel="stylesheet" href="{{ path }}">
-      {% endfor %}
-    {% endblock %}
+    {% for path in extra_css %}
+      <link rel="stylesheet" href="{{ path }}">
+    {% endfor %}
     {% block extrahead %}{% endblock %}
   </head>
   {% set palette = config.extra.get("palette", {}) %}
@@ -112,7 +112,7 @@
                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__edit">edit</a>
                {% endif %}
               {% block content %}
-                {% if not "\x3ch1 id=" in page.content %}
+                {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
                 {{ page.content }}
@@ -126,8 +126,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-baa758dc1b.js"></script>
-      <script>var config={url:{base:"{{ base_url }}"}},app=new Application(config);app.initialize()</script>
+      <script src="{{ base_url }}/assets/javascripts/application-c7c31dee65.js"></script>
+      <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
       {% endfor %}

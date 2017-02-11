@@ -84,7 +84,7 @@
     }
   }
 
-  // Icon buttons
+  // Button with logo
   &__button {
     @extend %md-icon, %md-icon__button;
 
@@ -141,7 +141,8 @@
       color: $md-color-primary;
     }
 
-    // Hovered link
+    // Focused or hovered item
+    &:focus,
     &:hover {
       color: $md-color-accent;
     }

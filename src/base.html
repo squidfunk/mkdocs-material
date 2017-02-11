@@ -56,7 +56,8 @@
       {% endif %}
 
       <!-- Generator banner -->
-      <meta name="generator" content="mkdocs+$theme-name$#$theme-version$" />
+      <meta name="generator"
+        content="mkdocs-{{ mkdocs_version }}, $theme-name$-$theme-version$" />
     {% endblock %}
 
     <!-- Block: site title -->
@@ -71,6 +72,20 @@
     <!-- Block: JavaScript libraries -->
     {% block libs %}
       <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+    {% endblock %}
+
+    <!-- Block: stylesheets -->
+    {% block styles %}
+
+      <!-- Theme-related stylesheets -->
+      <link rel="stylesheet" type="text/css"
+          href="{{ base_url }}/assets/stylesheets/application.css" />
+
+      <!-- Extra color palette -->
+      {% if config.extra.palette %}
+        <link rel="stylesheet" type="text/css"
+            href="{{ base_url }}/assets/stylesheets/application.palette.css" />
+      {% endif %}
     {% endblock %}
 
     <!-- Block: webfonts -->
@@ -99,24 +114,10 @@
           href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     {% endblock %}
 
-    <!-- Block: stylesheets -->
-    {% block styles %}
-
-      <!-- Theme-related stylesheets -->
-      <link rel="stylesheet" type="text/css"
-          href="{{ base_url }}/assets/stylesheets/application.css" />
-
-      <!-- Extra color palette -->
-      {% if config.extra.palette %}
-        <link rel="stylesheet" type="text/css"
-            href="{{ base_url }}/assets/stylesheets/application.palette.css" />
-      {% endif %}
-
-      <!-- Custom stylesheets -->
-      {% for path in extra_css %}
-        <link rel="stylesheet" type="text/css" href="{{ path }}" />
-      {% endfor %}
-    {% endblock %}
+    <!-- Custom stylesheets -->
+    {% for path in extra_css %}
+      <link rel="stylesheet" type="text/css" href="{{ path }}" />
+    {% endfor %}
 
     <!-- Block: custom front matter -->
     {% block extrahead %}{% endblock %}
@@ -220,11 +221,11 @@
               {% block content %}
 
                 <!--
-                  This is a nasty hack that checks whether the content contains
-                  a h1 headline. If it doesn't, the page title (or respectively
-                  site name) is used as the main headline.
+                  Hack: check whether the content contains a h1 headline. If it
+                  doesn't, the page title (or respectively site name) is used
+                  as the main headline.
                 -->
-                {% if not "\x3ch1 id=" in page.content %}
+                {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
 
@@ -246,17 +247,7 @@
     {% block scripts %}
       <script src="{{ base_url }}/assets/javascripts/application.js"></script>
       <script>
-
-        /* Configuration for application */
-        var config = {
-          url: {
-            base: "{{ base_url }}",
-          }
-        };
-
-        /* Initialize application */
-        var app = new Application(config);
-        app.initialize();
+        app.initialize({ url: { base: "{{ base_url }}", } });
       </script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>

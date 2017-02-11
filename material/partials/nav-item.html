@@ -26,10 +26,10 @@
   <li class="md-nav__item">
     {% set toc_ = page.toc %}
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    {% if "\x3ch1 id=" in page.content %}
+    {% if toc_ | first is defined %}
       {% set toc_ = (toc_ | first).children %}
     {% endif %}
-    {% if toc_ and (toc_ | first) %}
+    {% if toc_ | first is defined %}
       <label class="md-nav__link md-nav__link--active" for="toc">
         {{ nav_item.title }}
       </label>
@@ -37,7 +37,7 @@
     <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link md-nav__link--active">
       {{ nav_item.title }}
     </a>
-    {% if page.toc %}
+    {% if toc_ | first is defined %}
       {% include "partials/toc.html" %}
     {% endif %}
   </li>

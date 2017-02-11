@@ -31,7 +31,7 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 # Copyright
 copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
 
-# Documentation and theme
+# Theme directory
 theme_dir: material
 
 # Options
