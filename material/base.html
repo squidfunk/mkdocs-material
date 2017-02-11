@@ -124,8 +124,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-7f35cda7dd.js"></script>
-      <script>var config={url:{base:"{{ base_url }}"}},app=new Application(config);app.initialize()</script>
+      <script src="{{ base_url }}/assets/javascripts/application-39a173f6f5.js"></script>
+      <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
       {% endfor %}
