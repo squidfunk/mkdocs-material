@@ -245,17 +245,7 @@
     {% block scripts %}
       <script src="{{ base_url }}/assets/javascripts/application.js"></script>
       <script>
-
-        /* Configuration for application */
-        var config = {
-          url: {
-            base: "{{ base_url }}",
-          }
-        };
-
-        /* Initialize application */
-        var app = new Application(config);
-        app.initialize();
+        app.initialize({ url: { base: "{{ base_url }}", } });
       </script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
