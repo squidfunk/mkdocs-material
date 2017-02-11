@@ -103,6 +103,7 @@
     "karma-webpack": "^2.0.1",
     "mocha": "^3.2.0",
     "moniker": "^0.1.2",
+    "saucelabs": "^1.4.0",
     "sauce-connect-launcher": "^1.2.0",
     "selenium-standalone": "^6.0.0"
   },
