@@ -28,7 +28,7 @@ if [[ ! -d `npm bin` ]]; then
 fi
 
 # Run ESLint
-`npm bin`/eslint .
+`npm bin`/eslint --max-warnings 0 .
 ESLINT=$?
 
 # Run Stylelint

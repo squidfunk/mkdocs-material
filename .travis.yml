@@ -23,19 +23,48 @@ sudo: false
 
 # Node.js versions
 node_js:
-  - 4
   - 5
   - 6
+  - 7
+
+# Build visual tests separately
+matrix:
+  include:
+    - node_js: 5
+      addons:
+        artifacts:
+          paths:
+            - gemini-report
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-4.8
+            - g++-4.8
+      env:
+        - CXX=g++-4.8
+      install: yarn install
+      script: yarn run test:visual:run
+
+# Limit clone depth to 5, to speed up build
+git:
+  depth: 5
 
 # Cache dependencies
 cache:
   pip: true
+  yarn: true
   directories:
     - node_modules
 
+# Install yarn as Travis doesn't support it out of the box
+before_install: npm install -g yarn
+
+# Do not install optional dependencies by default
+install: yarn install --ignore-optional
+
 # Install dependencies
-before_script:
-  - pip install --user -r requirements.txt
+before_script: pip install --user -r requirements.txt
 
 # Perform build and tests
-script: npm run build
+script: yarn run build

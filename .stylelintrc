@@ -180,7 +180,6 @@
       "z-index"
     ],
     "property-no-vendor-prefix": true,
-    "root-no-standard-properties": true,
     "selector-class-pattern": "^[a-z0-9]+(-[a-z0-9]+)*(__[a-z]+)?(--[a-z]+)?$",
     "selector-descendant-combinator-no-non-space": null,
     "string-quotes": "double",

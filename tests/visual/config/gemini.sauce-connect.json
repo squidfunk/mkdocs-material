@@ -1,0 +1,49 @@
+{
+  "rootUrl": "http://localhost:8000",
+  "gridUrl": "http://ondemand.saucelabs.com/wd/hub",
+  "screenshotsDir": "./tests/visual/baseline/ci",
+  "browsers": {
+    "chrome": {
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "platform": "Windows 10",
+        "screenResolution": "1280x1024",
+        "recordVideo": "false"
+      }
+    },
+    "firefox": {
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "version": "47.0",
+        "platform": "Windows 10",
+        "screenResolution": "1280x1024",
+        "recordVideo": "false"
+      }
+    },
+    "edge": {
+      "desiredCapabilities": {
+        "browserName": "MicrosoftEdge",
+        "platform": "Windows 10",
+        "screenResolution": "1280x1024",
+        "recordVideo": "false",
+        "tolerance": 3.5
+      }
+    },
+    "ie11": {
+      "desiredCapabilities": {
+        "browserName": "internet explorer",
+        "version": "11.103",
+        "platform": "Windows 10",
+        "screenResolution": "1280x1024",
+        "recordVideo": "false"
+      }
+    }
+  },
+  "system": {
+    "projectRoot": ".",
+    "sourceRoot": "./tests/visual/data",
+    "coverage": {
+      "enabled": false
+    }
+  }
+}
