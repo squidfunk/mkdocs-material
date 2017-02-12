@@ -76,7 +76,7 @@ const resolve = (breakpoints, expr) => {
  * @return {boolean} Whether at least one suite was kept
  */
 const filter = (components, parent = []) => {
-  const regexp = new RegExp(args.grep.replace(" ", ".*?"), "i")
+  const pattern = new RegExp(args.grep.replace(/\s+/, ".*?"), "gi")
   return Object.keys(components).reduce((match, name) => {
     const component = components[name]
 
@@ -90,18 +90,18 @@ const filter = (components, parent = []) => {
         const fullname = temp.slice(0)
           .concat(state.name.length ? [state.name] : [])
           .join(" ")
-        if (regexp.test(fullname))
+        if (fullname.match(pattern))
           states.push(state)
         return states
       }, [])
 
-    /* Keep komponent, if there is at least one state or the component has
+    /* Keep component, if there is at least one state or the component has
        matching subsuites, so it needs to be kept */
-    if (component.states.length || keep) {
-      if (keep) {
-        delete component.capture
-        delete component.break
-      }
+    if (component.states.length) {
+      return true
+    } else if (keep) {
+      delete component.capture
+      delete component.break
       return true
     }
 

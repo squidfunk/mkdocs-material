@@ -25,9 +25,9 @@ pages:
   - Consectetur adipiscing elit: default.md
   - Etiam condimentum lacinia urna id vestibulum: default.md
   - A dapibus turpis iaculis at:
-    - Donec tortor sem: default.md
-    - Scelerisque ut congue id: default.md
-    - Pretium ac risus: default.md
+    - Donec tortor sem: nested.md
+    - Scelerisque ut congue id: nested.md
+    - Pretium ac risus: nested.md
   - Maecenas tincidunt nulla dui: default.md
 
 # Reset webfonts because of flaky tests

@@ -4,7 +4,7 @@
 [![Docker][docker-image]][docker-link]
 [![PyPI][pypi-image]][pypi-link]
 
-  [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg
+  [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
   [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
   [deps-image]: https://david-dm.org/squidfunk/mkdocs-material/dev-status.svg
   [deps-link]: https://david-dm.org/squidfunk/mkdocs-material?type=dev

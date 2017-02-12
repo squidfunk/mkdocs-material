@@ -47,16 +47,23 @@ spec.register(__dirname, {
     "capture": ".md-nav--primary",
     "break": "+@tablet-landscape",
     "states": [
-      { "name": "", "wait": 250, "exec": open }
+      { "name": "", "exec": open }
     ],
     "suite": {
+
+      /* Expanded nested navigation */
+      "~nested": {
+        "url": "/nested",
+        "capture": ".md-nav--primary",
+        "break": "@screen"
+      },
 
       /* List title */
       "md-nav__title": {
         "capture": ".md-nav--primary .md-nav__title",
         "break": "+@tablet-landscape",
         "states": [
-          { "name": "", "wait": 250, "exec": open }
+          { "name": "", "exec": open }
         ],
         "suite": {
 
@@ -66,7 +73,7 @@ spec.register(__dirname, {
             "capture": ".md-nav--primary .md-nav__title",
             "break": "+@tablet-landscape",
             "states": [
-              { "name": "", "wait": 250, "exec": open }
+              { "name": "", "exec": open }
             ]
           }
         }
@@ -77,21 +84,8 @@ spec.register(__dirname, {
         "capture": ".md-nav--primary .md-nav__item",
         "break": "+@tablet-landscape",
         "states": [
-          { "name": "", "wait": 250, "exec": open }
-        ],
-        "suite": {
-
-          /* Last list item */
-          ":last-child": {
-            "capture":
-              ".md-nav--primary > .md-nav__list > " +
-              ".md-nav__item:last-child",
-            "break": "+@tablet-landscape",
-            "states": [
-              { "name": "", "wait": 250, "exec": open }
-            ]
-          }
-        }
+          { "name": "", "exec": open }
+        ]
       },
 
       /* Item contains a nested list */
@@ -99,7 +93,7 @@ spec.register(__dirname, {
         "capture": ".md-nav--primary .md-nav__item--nested",
         "break": "+@tablet-landscape",
         "states": [
-          { "name": "", "wait": 250, "exec": open }
+          { "name": "", "exec": open }
         ],
         "suite": {
 
@@ -110,10 +104,44 @@ spec.register(__dirname, {
               ".md-nav__link",
             "break": "+@tablet-landscape",
             "states": [
-              { "name": "",       "wait": 250, "exec": open },
-              { "name": ":focus", "wait": 250, "exec": open },
-              { "name": ":hover", "wait": 250, "exec": open }
+              { "name": "",       "exec": open },
+              { "name": ":focus", "exec": open },
+              { "name": ":hover", "exec": open }
             ]
+          },
+
+          /* Second-level navigation */
+          "md-nav": {
+            "url": "/nested",
+            "capture": ".md-nav--primary .md-nav",
+            "break": "+@tablet-landscape",
+            "states": [
+              { "name": "", "exec": open }
+            ],
+            "suite": {
+
+              /* List title */
+              "md-nav__title": {
+                "capture": ".md-nav--primary .md-nav .md-nav__title",
+                "break": "@tablet-landscape",
+                "states": [
+                  { "name": "", "exec": open }
+                ],
+                "suite": {
+
+                  /* Long list title with ellipsis */
+                  "~overflow": {
+                    "dir": "_overflow",
+                    "url": "/nested",
+                    "capture": ".md-nav--primary .md-nav .md-nav__title",
+                    "break": "@tablet-landscape",
+                    "states": [
+                      { "name": "", "exec": open }
+                    ]
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -123,21 +151,36 @@ spec.register(__dirname, {
         "capture": ".md-nav--primary .md-nav__item:nth-child(2) .md-nav__link",
         "break": "+@tablet-landscape",
         "states": [
-          { "name": "",       "wait": 250, "exec": open },
-          { "name": ":focus", "wait": 250, "exec": open },
-          { "name": ":hover", "wait": 250, "exec": open }
+          { "name": "",       "exec": open },
+          { "name": ":focus", "exec": open },
+          { "name": ":hover", "exec": open }
         ]
       },
 
       /* Active link */
       "md-nav__link--active": {
-        "capture": ".md-nav--primary .md-nav__item .md-nav__link--active",
+        "capture": ".md-nav--primary .md-nav__item a.md-nav__link--active",
         "break": "+@tablet-landscape",
         "states": [
-          { "name": "",       "wait": 250, "exec": open },
-          { "name": ":focus", "wait": 250, "exec": open },
-          { "name": ":hover", "wait": 250, "exec": open }
-        ]
+          { "name": "",       "exec": open },
+          { "name": ":focus", "exec": open },
+          { "name": ":hover", "exec": open }
+        ],
+        "suite": {
+
+          /* Active link with link to table of contents */
+          "~toc": {
+            "capture":
+              ".md-nav--primary .md-nav__item " +
+              "label.md-nav__link--active",
+            "break": "@tablet-portrait",
+            "states": [
+              { "name": "",       "exec": open },
+              { "name": ":focus", "exec": open },
+              { "name": ":hover", "exec": open }
+            ]
+          }
+        }
       }
     }
   }
