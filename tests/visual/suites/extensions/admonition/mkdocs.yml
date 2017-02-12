@@ -19,15 +19,11 @@
 # IN THE SOFTWARE.
 
 # Test suite
-<<<<<<< HEAD
 site_name: Test
 pages:
   - Lorem ipsum dolor sit amet: index.md
 
 # Extensions
-=======
-site_name: Test/Admonition
->>>>>>> master
 markdown_extensions:
   - markdown.extensions.admonition
 
