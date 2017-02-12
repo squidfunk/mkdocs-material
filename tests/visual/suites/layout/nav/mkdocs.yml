@@ -26,9 +26,15 @@ pages:
   - Etiam condimentum lacinia urna id vestibulum: _.md
   - A dapibus turpis iaculis at:
     - Donec tortor sem: nested.md
+<<<<<<< HEAD
     - Scelerisque ut congue id: secondary.md
     - Pretium ac risus: _.md
   - Maecenas tincidunt nulla dui: _.md
+=======
+    - Scelerisque ut congue id: nested.md
+    - Pretium ac risus: nested.md
+  - Maecenas tincidunt nulla dui: default.md
+>>>>>>> master
 
 # Reset webfonts because of flaky tests
 extra:

@@ -24,8 +24,13 @@ pages:
   - Pneumonoultramicroscopicsilicovolcanoconiosis: index.md
   - Supercalifragilisticexpialidocious:
     - Pseudopseudohypoparathyroidism: nested.md
+<<<<<<< HEAD
     - Floccinaucinihilipilification: _.md
     - Antidisestablishmentarianism: _.md
+=======
+    - Floccinaucinihilipilification: nested.md
+    - Antidisestablishmentarianism: nested.md
+>>>>>>> master
 
 # Reset webfonts because of flaky tests
 extra:

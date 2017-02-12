@@ -119,7 +119,7 @@ spec.register(__dirname, {
             ]
           },
 
-          /* 2nd+ level navigation */
+          /* Second-level navigation */
           "md-nav": {
             "url": "/nested",
             "capture": ".md-nav--primary .md-nav",
