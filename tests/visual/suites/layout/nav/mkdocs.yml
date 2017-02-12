@@ -19,16 +19,16 @@
 # IN THE SOFTWARE.
 
 # Test suite
-site_name: Test/Navigation
+site_name: Test
 pages:
   - Lorem ipsum dolor sit amet: index.md
-  - Consectetur adipiscing elit: default.md
-  - Etiam condimentum lacinia urna id vestibulum: default.md
+  - Consectetur adipiscing elit: _.md
+  - Etiam condimentum lacinia urna id vestibulum: _.md
   - A dapibus turpis iaculis at:
     - Donec tortor sem: nested.md
-    - Scelerisque ut congue id: nested.md
-    - Pretium ac risus: nested.md
-  - Maecenas tincidunt nulla dui: default.md
+    - Scelerisque ut congue id: secondary.md
+    - Pretium ac risus: _.md
+  - Maecenas tincidunt nulla dui: _.md
 
 # Reset webfonts because of flaky tests
 extra:

@@ -34,12 +34,21 @@ const open = () => {
   drawer.checked = true
 }
 
+/**
+ * Blur the first anchor link
+ */
+const blur = () => {
+  const anchor = document.querySelector(
+    ".md-sidebar--secondary .md-nav--secondary .md-nav__link")
+  anchor.dataset.mdState = "blur"
+}
+
 /* ----------------------------------------------------------------------------
  * Tests
  * ------------------------------------------------------------------------- */
 
 /*
- * Main navigation
+ * Main navigation and table of contents
  */
 spec.register(__dirname, {
   "md-nav--primary": {
@@ -110,7 +119,7 @@ spec.register(__dirname, {
             ]
           },
 
-          /* Second-level navigation */
+          /* 2nd+ level navigation */
           "md-nav": {
             "url": "/nested",
             "capture": ".md-nav--primary .md-nav",
@@ -178,6 +187,63 @@ spec.register(__dirname, {
               { "name": "",       "exec": open },
               { "name": ":focus", "exec": open },
               { "name": ":hover", "exec": open }
+            ]
+          }
+        }
+      },
+
+      /* Table of contents */
+      "md-nav--secondary": {
+        "url": "/secondary",
+        "capture": ".md-nav--primary .md-nav--secondary",
+        "break": "@tablet-portrait",
+        "states": [
+          { "name": "", "exec": open }
+        ]
+      }
+    }
+  },
+
+  /* Table of contents */
+  "md-nav--secondary": {
+    "url": "/secondary",
+    "capture": ".md-sidebar--secondary .md-nav--secondary",
+    "break": "+@tablet-landscape",
+    "suite": {
+
+      /* List title */
+      "md-nav__title": {
+        "capture": ".md-sidebar--secondary .md-nav--secondary .md-nav__title",
+        "break": "+@tablet-landscape"
+      },
+
+      /* List item */
+      "md-nav__item": {
+        "capture": ".md-sidebar--secondary .md-nav--secondary .md-nav__item",
+        "break": "+@tablet-landscape"
+      },
+
+      /* Link inside item */
+      "md-nav__link": {
+        "capture": ".md-sidebar--secondary .md-nav--secondary .md-nav__link",
+        "break": "+@tablet-landscape",
+        "states": [
+          { "name": "" },
+          { "name": ":focus" },
+          { "name": ":hover" }
+        ],
+        "suite": {
+
+          /* Blurred link */
+          "~blurred": {
+            "capture":
+              ".md-sidebar--secondary .md-nav--secondary " +
+              ".md-nav__link",
+            "break": "+@tablet-landscape",
+            "states": [
+              { "name": "",       "exec": blur },
+              { "name": ":focus", "exec": blur },
+              { "name": ":hover", "exec": blur }
             ]
           }
         }
