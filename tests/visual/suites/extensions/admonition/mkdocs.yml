@@ -19,7 +19,7 @@
 # IN THE SOFTWARE.
 
 # Test suite
-site_name: Admonition Test
+site_name: Test/Admonition
 markdown_extensions:
   - markdown.extensions.admonition
 

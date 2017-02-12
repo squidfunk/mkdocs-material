@@ -1,5 +1,3 @@
-# Suite
-
 <style>
   *,
   *::before,
@@ -7,3 +5,5 @@
     transition: none !important;
   }
 </style>
+
+# Suite
