@@ -1,11 +1,12 @@
 [![Travis][travis-image]][travis-link]
-[![Dependencies][deps-image]][deps-link]
+<!---[![Dependencies][deps-image]][deps-link]
 [![Codacy][codacy-image]][codacy-link]
 [![Docker][docker-image]][docker-link]
-[![PyPI][pypi-image]][pypi-link]
+[![PyPI][pypi-image]][pypi-link]-->
 
-  [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
-  [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
+  [travis-image]: https://travis-ci.org/sbuckpesch/ssml.io.svg?branch=master
+  [travis-link]: https://travis-ci.org/sbuckpesch/ssml.io
+  <!--
   [deps-image]: https://david-dm.org/squidfunk/mkdocs-material/dev-status.svg
   [deps-link]: https://david-dm.org/squidfunk/mkdocs-material?type=dev
   [codacy-image]: https://api.codacy.com/project/badge/Grade/fe07aa1fa91d453cb69711d3885c5d7e
@@ -14,12 +15,15 @@
   [docker-link]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
   [pypi-link]: https://pypi.python.org/pypi/mkdocs-material
+-->
 
+# SSML reference
 
-# Material for MkDocs
+Comprehensive guide and reference for [SSML markup](https://www.w3.org/TR/speech-synthesis11/).
 
-A Material Design theme for [MkDocs](http://www.mkdocs.org).
+Find all docs online at https://ssml.io/
 
+<!--
 [![Material for MkDocs](docs/images/material.png)](http://squidfunk.github.io/mkdocs-material/)
 
 ## Quick start
@@ -35,15 +39,15 @@ Add the following line to your `mkdocs.yml`:
 ``` yaml
 theme: 'material'
 ```
+-->
 
-For detailed installation instructions and a demo, visit
-http://squidfunk.github.io/mkdocs-material/
+
 
 ## License
 
 **MIT License**
 
-Copyright (c) 2016-2017 Martin Donath
+Copyright (c) 2017 Sebastian Buckpesch
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
