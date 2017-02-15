@@ -19,17 +19,17 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Material for MkDocs
-site_description: A Material Design theme for MkDocs
-site_author: Martin Donath
-site_url: http://squidfunk.github.io/mkdocs-material/
+site_name: SSML Reference
+site_description: A comprehensive guide to write audio markup
+site_author: Sebastian Buckpesch <s.buckpesch@gmail.com>
+site_url: https://ssml.io/
 
 # Repository
-repo_name: squidfunk/mkdocs-material
-repo_url: https://github.com/squidfunk/mkdocs-material
+repo_name: sbuckpesch/ssml.io
+repo_url: https://github.com/sbuckpesch/ssml.io
 
 # Copyright
-copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
+copyright: 'Copyright &copy; 2017 Sebastian Buckpesch'
 
 # Theme directory
 theme_dir: material
@@ -37,15 +37,22 @@ theme_dir: material
 # Options
 extra:
   palette:
-    primary: indigo
-    accent: indigo
+    primary: cyan
+    accent: purple
+  font:
+    text: 'Open Sans'
+    code: 'Ubuntu Mono'
   social:
     - type: github-alt
-      link: https://github.com/squidfunk
+      link: https://github.com/sbuckpesch
     - type: twitter
-      link: https://twitter.com/squidfunk
+      link: https://twitter.com/sbuckpesch
     - type: linkedin
-      link: https://de.linkedin.com/in/martin-donath-20a95039
+      link: https://de.linkedin.com/in/sbuckpesch
+
+google_analytics:
+  - 'UA-92035396-1'
+  - 'auto'
 
 # Extensions
 markdown_extensions:
@@ -70,7 +77,7 @@ markdown_extensions:
 
 # Page tree
 pages:
-  - Material: index.md
+  - Home: index.md
   - Getting started: getting-started.md
   - Extensions:
     - Admonition: extensions/admonition.md
