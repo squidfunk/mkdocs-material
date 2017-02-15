@@ -20,7 +20,7 @@
 
 # Project information
 site_name: SSML Reference
-site_description: A comprehensive guide to write audio markup
+site_description: A comprehensive guide to write audio markup.
 site_author: Sebastian Buckpesch <s.buckpesch@gmail.com>
 site_url: https://ssml.io/
 
