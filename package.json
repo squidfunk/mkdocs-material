@@ -31,7 +31,9 @@
     "test:visual:update": "scripts/test/visual/update",
     "test:visual:session": "scripts/test/visual/session"
   },
-  "dependencies": {},
+  "dependencies": {
+    "global": "^4.3.1"
+  },
   "devDependencies": {
     "autoprefixer": "^6.6.1",
     "babel-core": "^6.0.0",
@@ -103,8 +105,8 @@
     "karma-webpack": "^2.0.1",
     "mocha": "^3.2.0",
     "moniker": "^0.1.2",
-    "saucelabs": "^1.4.0",
     "sauce-connect-launcher": "^1.2.0",
+    "saucelabs": "^1.4.0",
     "selenium-standalone": "^6.0.0"
   },
   "engines": {
