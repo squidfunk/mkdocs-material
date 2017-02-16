@@ -27,24 +27,24 @@ node_js:
   - 6
   - 7
 
-# Build visual tests separately
-matrix:
-  include:
-    - node_js: 5
-      addons:
-        artifacts:
-          paths:
-            - gemini-report
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - gcc-4.8
-            - g++-4.8
-      env:
-        - CXX=g++-4.8
-      install: yarn install
-      script: yarn run test:visual:run
+# Build visual tests separately - temporary disabled until tests are stable
+# matrix:
+#   include:
+#     - node_js: 5
+#       addons:
+#         artifacts:
+#           paths:
+#             - gemini-report
+#         apt:
+#           sources:
+#             - ubuntu-toolchain-r-test
+#           packages:
+#             - gcc-4.8
+#             - g++-4.8
+#       env:
+#         - CXX=g++-4.8
+#       install: yarn install
+#       script: yarn run test:visual:run
 
 # Limit clone depth to 5, to speed up build
 git:
