@@ -78,13 +78,6 @@ export const initialize = config => {
     }
   }).listen()
 
-  /* Component: sidebar container */
-  if (!Modernizr.csscalc)
-    new Material.Event.MatchMedia("(min-width: 960px)",
-      new Material.Event.Listener(window, [
-        "resize", "orientationchange"
-      ], new Material.Sidebar.Container("[data-md-component=container]")))
-
   /* Component: sidebar with navigation */
   new Material.Event.MatchMedia("(min-width: 1220px)",
     new Material.Event.Listener(window, [

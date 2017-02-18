@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import Container from "./Sidebar/Container"
 import Position from "./Sidebar/Position"
 
 /* ----------------------------------------------------------------------------
@@ -28,6 +27,5 @@ import Position from "./Sidebar/Position"
  * ------------------------------------------------------------------------- */
 
 export default {
-  Container,
   Position
 }
