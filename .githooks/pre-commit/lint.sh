@@ -22,6 +22,7 @@
 
 # Patch file to store unindexed changes
 PATCH_FILE=".working-tree.patch"
+MESSAGE="Terminated with errors"
 
 # Revert changes that have been registered in the patch file
 function cleanup {
@@ -46,6 +47,16 @@ FILES=$(git diff --cached --name-only --diff-filter=ACMR | \
 
 # Run the check and print indicator
 if [ "$FILES" ]; then
-  echo "Hook[pre-commit]: Running linter"
-  npm run lint --silent || exit 1
+  npm run lint --silent
+
+  # If we're on master, abort commit
+  if [ $? -gt 0 ]; then
+    echo -e "\x1B[31m✗\x1B[0m Linter - \x1B[31m$MESSAGE\x1B[0m"
+  	exit 1
+  else
+    echo -e "\x1B[32m✓\x1B[0m Linter"
+  fi
 fi
+
+# We're good
+exit 0

@@ -22,12 +22,14 @@
 
 # Determine current branch
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
-echo "Hook[pre-commit]: Checking branch"
+MESSAGE="Commits on master are only allowed via Pull Requests. Aborting."
 
 # If we're on master, abort commit
 if [[ "$BRANCH" == "master" ]]; then
-	echo "Commits on master are only allowed via Pull Requests. Aborting."
+  echo -e "\x1B[31m✗\x1B[0m Branch: $BRANCH - \x1B[31m$MESSAGE\x1B[0m"
 	exit 1
+else
+  echo -e "\x1B[32m✓\x1B[0m Branch: $BRANCH"
 fi
 
 # We're good
