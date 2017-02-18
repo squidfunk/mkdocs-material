@@ -1,3 +1,8 @@
+mkdocs-material-1.0.5 (2017-02-18)
+
+  * Fixed #153: Sidebar flows out of constrained area in Chrome 56
+  * Fixed #159: Footer jitter due to JavaScript if content is short
+
 mkdocs-material-1.0.4 (2017-02-16)
 
   * Fixed #142: Documentation build errors if h1 is defined as raw HTML
