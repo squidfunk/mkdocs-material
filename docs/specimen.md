@@ -137,6 +137,24 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
   sagittis. Aliquam purus tellus, faucibus eget urna at, iaculis venenatis
   nulla. Vivamus a pharetra leo.
 
+### Definition lists
+
+Lorem ipsum dolor sit amet
+
+:   Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus
+    tellus non sem sollicitudin, quis rutrum leo facilisis. Nulla tempor
+    lobortis orci, at elementum urna sodales vitae. In in vehicula nulla.
+
+    Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis.
+    Nam vulputate tincidunt fringilla.
+    Nullam dignissim ultrices urna non auctor.
+
+Cras arcu libero
+
+:   Aliquam metus eros, pretium sed nulla venenatis, faucibus auctor ex. Proin
+    ut eros sed sapien ullamcorper consequat. Nunc ligula ante, fringilla at
+    aliquam ac, aliquet sed mauris.
+
 ## Code blocks
 
 ### Inline
