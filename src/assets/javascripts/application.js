@@ -27,6 +27,7 @@ import Material from "./components/Material"
  * Application
  * ------------------------------------------------------------------------- */
 
+// TODO ./node_modules/.bin/gulp assets:javascripts:flow:annotate && ./node_modules/.bin/flow check
 export const initialize = config => {
 
   /* Initialize Modernizr and FastClick */
@@ -35,11 +36,6 @@ export const initialize = config => {
     /* Test for iOS */
     Modernizr.addTest("ios", () => {
       return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
-    })
-
-    /* Test for web application context */
-    Modernizr.addTest("standalone", () => {
-      return !!navigator.standalone
     })
 
     /* Attach FastClick to mitigate 300ms delay on touch devices */
@@ -140,7 +136,7 @@ export const initialize = config => {
     new Material.Event.Listener("[data-md-component=navigation] [href^='#']",
       "click", () => {
         const toggle = document.querySelector("[data-md-toggle=drawer]")
-        if (toggle.checked) {
+        if (toggle instanceof HTMLInputElement && toggle.checked) {
           toggle.checked = false
           toggle.dispatchEvent(new CustomEvent("change"))
         }
@@ -150,7 +146,7 @@ export const initialize = config => {
   new Material.Event.Listener("[data-md-toggle=search]", "change", ev => {
     setTimeout(toggle => {
       const query = document.forms.search.query
-      if (toggle.checked)
+      if (toggle instanceof HTMLInputElement && toggle.checked)
         query.focus()
     }, 400, ev.target)
   }).listen()
@@ -159,7 +155,7 @@ export const initialize = config => {
   new Material.Event.MatchMedia("(min-width: 960px)",
     new Material.Event.Listener(document.forms.search.query, "focus", () => {
       const toggle = document.querySelector("[data-md-toggle=search]")
-      if (!toggle.checked) {
+      if (toggle instanceof HTMLInputElement && !toggle.checked) {
         toggle.checked = true
         toggle.dispatchEvent(new CustomEvent("change"))
       }
@@ -169,7 +165,7 @@ export const initialize = config => {
   new Material.Event.MatchMedia("(min-width: 960px)",
     new Material.Event.Listener(document.body, "click", () => {
       const toggle = document.querySelector("[data-md-toggle=search]")
-      if (toggle.checked) {
+      if (toggle instanceof HTMLInputElement && toggle.checked) {
         toggle.checked = false
         toggle.dispatchEvent(new CustomEvent("change"))
       }
@@ -180,7 +176,7 @@ export const initialize = config => {
     const code = ev.keyCode || ev.which
     if (code === 27) {
       const toggle = document.querySelector("[data-md-toggle=search]")
-      if (toggle.checked) {
+      if (toggle instanceof HTMLInputElement && toggle.checked) {
         toggle.checked = false
         toggle.dispatchEvent(new CustomEvent("change"))
         document.forms.search.query.blur()

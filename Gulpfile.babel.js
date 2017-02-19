@@ -146,6 +146,12 @@ gulp.task("assets:images:clean",
  * ------------------------------------------------------------------------- */
 
 /*
+ * Annotate javascript
+ */
+gulp.task("assets:javascripts:flow:annotate",
+  load("assets/javascripts/flow/annotate"))
+
+/*
  * Build application logic
  */
 gulp.task("assets:javascripts:build:application",

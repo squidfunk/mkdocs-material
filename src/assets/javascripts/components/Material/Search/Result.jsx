@@ -32,8 +32,13 @@ export default class Result {
    * Perform search and update results on keyboard events
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - TODO
+   * @property {(Object|Array<Object>|Function)} data_ - TODO (very dirty)
+   * @property {React$Element|HTMLElement} meta_ - TODO
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
-   * @param {(Array.<object>|Function)} data - Promise or array providing data
+   * @param {(Array<Object>|Function)} data - Promise or array providing data     // TODO ????
    */
   constructor(el, data) {
     this.el_ = (typeof el === "string")

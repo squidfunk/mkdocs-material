@@ -30,6 +30,10 @@ export default class Lock {
    * Lock body for full-screen search modal
    *
    * @constructor
+   *
+   * @property {HTMLInputElement} el_ - TODO
+   * @property {number} offset_ - TODO
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {

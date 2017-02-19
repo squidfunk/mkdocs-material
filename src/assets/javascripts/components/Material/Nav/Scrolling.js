@@ -30,6 +30,9 @@ export default class Scrolling {
    * Set overflow scrolling on the current active pane (for iOS)
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - Navigation
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
