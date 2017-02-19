@@ -38,7 +38,7 @@ export default class Blur {
       : els
 
     /* Initialize index and page y-offset */
-    this.index_  = 0
+    this.index_ = 0
     this.offset_ = window.pageYOffset
 
     /* Necessary state to correctly reset the index */
