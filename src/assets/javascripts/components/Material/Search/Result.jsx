@@ -35,7 +35,8 @@ export default class Result {
    *
    * @property {HTMLElement} el_ - TODO
    * @property {(Object|Array<Object>|Function)} data_ - TODO (very dirty)
-   * @property {React$Element|HTMLElement} meta_ - TODO
+   * @property {*} meta_ - TODO (must be done like this, as React$Component does not return the correct thing)
+   * @property {*} list_ - TODO (must be done like this, as React$Component does not return the correct thing)
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    * @param {(Array<Object>|Function)} data - Promise or array providing data     // TODO ????

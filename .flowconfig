@@ -1,2 +1,5 @@
 [ignore]
-<PROJECT_ROOT>/node_modules
+.*/node_modules/.*
+
+[options]
+strip_root=true

@@ -146,12 +146,6 @@ gulp.task("assets:images:clean",
  * ------------------------------------------------------------------------- */
 
 /*
- * Annotate javascript
- */
-gulp.task("assets:javascripts:flow:annotate",
-  load("assets/javascripts/flow/annotate"))
-
-/*
  * Build application logic
  */
 gulp.task("assets:javascripts:build:application",
@@ -165,7 +159,7 @@ gulp.task("assets:javascripts:build:modernizr", [
 ], load("assets/javascripts/build/modernizr"))
 
 /*
- * Build application logic and modernizr
+ * Build application logic and Modernizr
  */
 gulp.task("assets:javascripts:build", (args.clean ? [
   "assets:javascripts:clean"
@@ -183,6 +177,12 @@ gulp.task("assets:javascripts:build", (args.clean ? [
  */
 gulp.task("assets:javascripts:clean",
   load("assets/javascripts/clean"))
+
+/*
+ * Annotate JavaScript
+ */
+gulp.task("assets:javascripts:annotate",
+  load("assets/javascripts/annotate"))
 
 /*
  * Lint JavaScript

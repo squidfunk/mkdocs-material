@@ -37,9 +37,12 @@ export default class Lock {
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof HTMLInputElement))
+      throw new ReferenceError
+    this.el_ = ref
   }
 
   /**

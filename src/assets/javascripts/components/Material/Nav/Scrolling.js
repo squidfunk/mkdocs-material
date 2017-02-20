@@ -36,9 +36,12 @@ export default class Scrolling {
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.el_ = ref
   }
 
   /**
@@ -52,12 +55,19 @@ export default class Scrolling {
     /* Find all toggles and check which one is active */
     const toggles = this.el_.querySelectorAll("[data-md-toggle]")
     Array.prototype.forEach.call(toggles, toggle => {
-      if (toggle.checked) {
+      if (toggle instanceof HTMLInputElement && toggle.checked) {
 
         /* Find corresponding navigational pane */
         let pane = toggle.nextElementSibling
-        while (pane.tagName !== "NAV")
+        if (!(pane instanceof HTMLElement))
+          throw new ReferenceError
+        while (pane.tagName !== "NAV" && pane.nextElementSibling)
           pane = pane.nextElementSibling
+
+        /* Check references */
+        if (!(toggle.parentNode instanceof HTMLElement) ||
+            !(toggle.parentNode.parentNode instanceof HTMLElement))
+          throw new ReferenceError
 
         /* Find current and parent list elements */
         const parent = toggle.parentNode.parentNode
@@ -76,34 +86,48 @@ export default class Scrolling {
    * @param {Event} ev - Change event
    */
   update(ev) {
+    const target = ev.target
+    if (!(target instanceof HTMLElement))
+      throw new ReferenceError
 
     /* Find corresponding navigational pane */
-    let pane = ev.target.nextElementSibling
-    while (pane.tagName !== "NAV")
+    let pane = target.nextElementSibling
+    if (!(pane instanceof HTMLElement))
+      throw new ReferenceError
+    while (pane.tagName !== "NAV" && pane.nextElementSibling)
       pane = pane.nextElementSibling
 
-    /* Find current and parent list elements */
-    const parent = ev.target.parentNode.parentNode
-    const target = pane.children[pane.children.length - 1]
+    /* Check references */
+    if (!(target.parentNode instanceof HTMLElement) ||
+        !(target.parentNode.parentNode instanceof HTMLElement))
+      throw new ReferenceError
+
+    /* Find parent and active panes */
+    const parent = target.parentNode.parentNode
+    const active = pane.children[pane.children.length - 1]
 
     /* Always reset all lists when transitioning */
     parent.style.webkitOverflowScrolling = ""
-    target.style.webkitOverflowScrolling = ""
+    active.style.webkitOverflowScrolling = ""
 
-    /* Set overflow scrolling on parent */
-    if (!ev.target.checked) {
+    /* Set overflow scrolling on parent pane */
+    if (!target.checked) {
       const end = () => {
-        parent.style.webkitOverflowScrolling = "touch"
-        pane.removeEventListener("transitionend", end)
+        if (pane instanceof HTMLElement) {
+          parent.style.webkitOverflowScrolling = "touch"
+          pane.removeEventListener("transitionend", end)
+        }
       }
       pane.addEventListener("transitionend", end, false)
     }
 
-    /* Set overflow scrolling on target */
-    if (ev.target.checked) {
+    /* Set overflow scrolling on active pane */
+    if (target.checked) {
       const end = () => {
-        target.style.webkitOverflowScrolling = "touch"
-        pane.removeEventListener("transitionend", end, false)
+        if (pane instanceof HTMLElement) {
+          active.style.webkitOverflowScrolling = "touch"
+          pane.removeEventListener("transitionend", end)
+        }
       }
       pane.addEventListener("transitionend", end, false)
     }
@@ -120,20 +144,27 @@ export default class Scrolling {
     /* Find all toggles and check which one is active */
     const toggles = this.el_.querySelectorAll("[data-md-toggle]")
     Array.prototype.forEach.call(toggles, toggle => {
-      if (toggle.checked) {
+      if (toggle instanceof HTMLInputElement && toggle.checked) {
 
         /* Find corresponding navigational pane */
         let pane = toggle.nextElementSibling
-        while (pane.tagName !== "NAV")
+        if (!(pane instanceof HTMLElement))
+          throw new ReferenceError
+        while (pane.tagName !== "NAV" && pane.nextElementSibling)
           pane = pane.nextElementSibling
 
-        /* Find current and parent list elements */
+        /* Check references */
+        if (!(toggle.parentNode instanceof HTMLElement) ||
+            !(toggle.parentNode.parentNode instanceof HTMLElement))
+          throw new ReferenceError
+
+        /* Find parent and active panes */
         const parent = toggle.parentNode.parentNode
-        const target = pane.children[pane.children.length - 1]
+        const active = pane.children[pane.children.length - 1]
 
         /* Always reset all lists when transitioning */
         parent.style.webkitOverflowScrolling = ""
-        target.style.webkitOverflowScrolling = ""
+        active.style.webkitOverflowScrolling = ""
       }
     })
   }

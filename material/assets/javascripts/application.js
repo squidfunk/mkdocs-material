@@ -880,11 +880,13 @@ var Listener = function () {
    * Generic event listener
    *
    * @constructor
-   * @property {(HTMLCollection<HTMLElement>)} els_ - Event targets
+   *
+   * @property {(Array<EventTarget>)} els_ - Event targets
    * @property {Object} handler_- Event handlers
    * @property {Array<string>} events_ - Event names
    * @property {Function} update_ - Update handler
-   * @param {?(string|EventTarget|HTMLCollection<HTMLElement>)} els -
+   *
+   * @param {?(string|EventTarget|NodeList<EventTarget>)} els -
    *   Selector or Event targets
    * @param {(string|Array<string>)} events - Event names
    * @param {(Object|Function)} handler - Handler to be invoked
@@ -894,8 +896,7 @@ var Listener = function () {
 
     _classCallCheck(this, Listener);
 
-    this.els_ = Array.prototype.slice.call(typeof els === "string" ? document.querySelectorAll(els) : [els]);
-    console.log(this.els_);
+    this.els_ = Array.prototype.slice.call(typeof els === "string" ? document.querySelectorAll(els) : [].concat(els));
 
     /* Set handler as function or directly as object */
     this.handler_ = typeof handler === "function" ? { update: handler } : handler;
@@ -5825,7 +5826,9 @@ var MatchMedia =
  * switches the given listeners on or off.
  *
  * @constructor
+ *
  * @property {Function} handler_ - Media query event handler
+ *
  * @param {string} query - Media query to test for
  * @param {Listener} listener - Event listener
  */
@@ -5931,11 +5934,13 @@ var Blur = function () {
    * Blur links within the table of contents above current page y-offset
    *
    * @constructor
+   *
    * @property {NodeList<HTMLElement>} els_ - Table of contents links
    * @property {Array<HTMLElement>} anchors_ - Referenced anchor nodes
    * @property {number} index_ - Current link index
    * @property {number} offset_ - Current page y-offset
    * @property {boolean} dir_ - Scroll direction change
+   *
    * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
    */
   function Blur(els) {
@@ -6078,13 +6083,17 @@ var Collapse = function () {
    * Expand or collapse navigation on toggle
    *
    * @constructor
+   *
    * @property {HTMLElement} el_ - Navigation list
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   function Collapse(el) {
     _classCallCheck(this, Collapse);
 
-    this.el_ = typeof el === "string" ? document.querySelector(el) || new HTMLElement() : el;
+    var ref = typeof el === "string" ? document.querySelector(el) : el;
+    if (!(ref instanceof HTMLElement)) throw new ReferenceError();
+    this.el_ = ref;
   }
 
   /**
@@ -6203,13 +6212,17 @@ var Scrolling = function () {
    * Set overflow scrolling on the current active pane (for iOS)
    *
    * @constructor
+   *
    * @property {HTMLElement} el_ - Navigation
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   function Scrolling(el) {
     _classCallCheck(this, Scrolling);
 
-    this.el_ = typeof el === "string" ? document.querySelector(el) : el;
+    var ref = typeof el === "string" ? document.querySelector(el) : el;
+    if (!(ref instanceof HTMLElement)) throw new ReferenceError();
+    this.el_ = ref;
   }
 
   /**
@@ -6227,13 +6240,17 @@ var Scrolling = function () {
       /* Find all toggles and check which one is active */
       var toggles = this.el_.querySelectorAll("[data-md-toggle]");
       Array.prototype.forEach.call(toggles, function (toggle) {
-        if (toggle.checked) {
+        if (toggle instanceof HTMLInputElement && toggle.checked) {
 
           /* Find corresponding navigational pane */
           var pane = toggle.nextElementSibling;
-          while (pane.tagName !== "NAV") {
+          if (!(pane instanceof HTMLElement)) throw new ReferenceError();
+          while (pane.tagName !== "NAV" && pane.nextElementSibling) {
             pane = pane.nextElementSibling;
-          } /* Find current and parent list elements */
+          } /* Check references */
+          if (!(toggle.parentNode instanceof HTMLElement) || !(toggle.parentNode.parentNode instanceof HTMLElement)) throw new ReferenceError();
+
+          /* Find current and parent list elements */
           var parent = toggle.parentNode.parentNode;
           var target = pane.children[pane.children.length - 1];
 
@@ -6253,36 +6270,46 @@ var Scrolling = function () {
   }, {
     key: "update",
     value: function update(ev) {
+      var target = ev.target;
+      if (!(target instanceof HTMLElement)) throw new ReferenceError();
 
       /* Find corresponding navigational pane */
-      var pane = ev.target.nextElementSibling;
-      while (pane.tagName !== "NAV") {
+      var pane = target.nextElementSibling;
+      if (!(pane instanceof HTMLElement)) throw new ReferenceError();
+      while (pane.tagName !== "NAV" && pane.nextElementSibling) {
         pane = pane.nextElementSibling;
-      } /* Find current and parent list elements */
-      var parent = ev.target.parentNode.parentNode;
-      var target = pane.children[pane.children.length - 1];
+      } /* Check references */
+      if (!(target.parentNode instanceof HTMLElement) || !(target.parentNode.parentNode instanceof HTMLElement)) throw new ReferenceError();
+
+      /* Find parent and active panes */
+      var parent = target.parentNode.parentNode;
+      var active = pane.children[pane.children.length - 1];
 
       /* Always reset all lists when transitioning */
       parent.style.webkitOverflowScrolling = "";
-      target.style.webkitOverflowScrolling = "";
+      active.style.webkitOverflowScrolling = "";
 
-      /* Set overflow scrolling on parent */
-      if (!ev.target.checked) {
+      /* Set overflow scrolling on parent pane */
+      if (!target.checked) {
         (function () {
           var end = function end() {
-            parent.style.webkitOverflowScrolling = "touch";
-            pane.removeEventListener("transitionend", end);
+            if (pane instanceof HTMLElement) {
+              parent.style.webkitOverflowScrolling = "touch";
+              pane.removeEventListener("transitionend", end);
+            }
           };
           pane.addEventListener("transitionend", end, false);
         })();
       }
 
-      /* Set overflow scrolling on target */
-      if (ev.target.checked) {
+      /* Set overflow scrolling on active pane */
+      if (target.checked) {
         (function () {
           var end = function end() {
-            target.style.webkitOverflowScrolling = "touch";
-            pane.removeEventListener("transitionend", end, false);
+            if (pane instanceof HTMLElement) {
+              active.style.webkitOverflowScrolling = "touch";
+              pane.removeEventListener("transitionend", end);
+            }
           };
           pane.addEventListener("transitionend", end, false);
         })();
@@ -6303,19 +6330,23 @@ var Scrolling = function () {
       /* Find all toggles and check which one is active */
       var toggles = this.el_.querySelectorAll("[data-md-toggle]");
       Array.prototype.forEach.call(toggles, function (toggle) {
-        if (toggle.checked) {
+        if (toggle instanceof HTMLInputElement && toggle.checked) {
 
           /* Find corresponding navigational pane */
           var pane = toggle.nextElementSibling;
-          while (pane.tagName !== "NAV") {
+          if (!(pane instanceof HTMLElement)) throw new ReferenceError();
+          while (pane.tagName !== "NAV" && pane.nextElementSibling) {
             pane = pane.nextElementSibling;
-          } /* Find current and parent list elements */
+          } /* Check references */
+          if (!(toggle.parentNode instanceof HTMLElement) || !(toggle.parentNode.parentNode instanceof HTMLElement)) throw new ReferenceError();
+
+          /* Find parent and active panes */
           var parent = toggle.parentNode.parentNode;
-          var target = pane.children[pane.children.length - 1];
+          var active = pane.children[pane.children.length - 1];
 
           /* Always reset all lists when transitioning */
           parent.style.webkitOverflowScrolling = "";
-          target.style.webkitOverflowScrolling = "";
+          active.style.webkitOverflowScrolling = "";
         }
       });
     }
@@ -6408,12 +6439,18 @@ var Lock = function () {
    * Lock body for full-screen search modal
    *
    * @constructor
+   *
+   * @property {HTMLInputElement} el_ - TODO
+   * @property {number} offset_ - TODO
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   function Lock(el) {
     _classCallCheck(this, Lock);
 
-    this.el_ = typeof el === "string" ? document.querySelector(el) : el;
+    var ref = typeof el === "string" ? document.querySelector(el) : el;
+    if (!(ref instanceof HTMLInputElement)) throw new ReferenceError();
+    this.el_ = ref;
   }
 
   /**
@@ -6526,8 +6563,14 @@ var Result = function () {
    * Perform search and update results on keyboard events
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - TODO
+   * @property {(Object|Array<Object>|Function)} data_ - TODO (very dirty)
+   * @property {*} meta_ - TODO (must be done like this, as React$Component does not return the correct thing)
+   * @property {*} list_ - TODO (must be done like this, as React$Component does not return the correct thing)
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
-   * @param {(Array.<object>|Function)} data - Promise or array providing data
+   * @param {(Array<Object>|Function)} data - Promise or array providing data     // TODO ????
    */
   function Result(el, data) {
     _classCallCheck(this, Result);
