@@ -68,7 +68,7 @@ matrix:
         - docker
 
       # If we're not on a release branch, exit early and indicate success
-      before_install: "[[ $TRAVIS_BRANCH =~ ^[0-9.]+$ ]] && exit 0"
+      before_install: echo "$TRAVIS_BRANCH" | grep -qvE '^[0-9.]+$' && exit 0
 
       # Don't install anything, as we're only using the pre-built files
       install: ":"
