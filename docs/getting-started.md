@@ -6,7 +6,7 @@
 
     The official [Docker image][1] for Material comes with all dependencies
     pre-installed and ready-to-use with the latest version published on PyPI,
-    packaged in a very small image (27MB compressed).
+    packaged in a very small image (28MB compressed).
 
 ### Installing MkDocs
 
