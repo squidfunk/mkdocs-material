@@ -246,7 +246,7 @@ extra:
 ```
 
   [12]: https://fonts.google.com/specimen/Roboto
-  [13]: https://fonts.google.com/
+  [13]: https://fonts.google.com
   [14]: https://fonts.google.com/specimen/Ubuntu
 
 ### Adding a logo
@@ -300,6 +300,21 @@ google_analytics:
   - 'auto'
 ```
 
+### Disqus integation
+
+Material for MkDocs is integrated with [Disqus][16], so if you want to add a
+comments section to your documentation set the shortname of your Disqus project
+in your `mkdocs.yml`:
+
+``` yaml
+extra:
+  disqus: 'your-disqus-shortname'
+```
+
+The necessary JavaScript is automatically included.
+
+  [16]: https://disqus.com
+
 ### Localization <small>L10N</small>
 
 In order to localize the labels (e.g. *Previous* and *Next* in the footer),
@@ -309,6 +324,7 @@ translations inside the macro `t`:
 ``` jinja
 {% macro t(key) %}{{ {
   "edit.link.title": "Edit this page",
+  "comments": "Comments",
   "footer.previous": "Previous",
   "footer.next": "Next",
   "search.placeholder": "Search",
@@ -318,7 +334,7 @@ translations inside the macro `t`:
 ```
 
 Just copy the file from the original theme and make your adjustments. See the
-section on [overriding partials][16] in the customization guide.
+section on [overriding partials][17] in the customization guide.
 
 !!! warning "Migrating from Material 0.2.x"
 
@@ -326,18 +342,18 @@ section on [overriding partials][16] in the customization guide.
     `mkdocs.yml`. With 1.0.0 this is no longer possible as the configuration
     will be ignored.
 
-  [16]: customization.md#overriding-partials
+  [17]: customization.md#overriding-partials
 
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][17] for more information on advanced customization.
+[this article][18] for more information on advanced customization.
 
-  [17]: customization.md
+  [18]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][18]. The following extensions
+MkDocs supports several [Markdown extensions][19]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -351,18 +367,18 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][19]
-* [Codehilite][20]
-* [Permalinks][21]
-* [Footnotes][22]
-* [PyMdown Extensions][23]
+* [Admonition][20]
+* [Codehilite][21]
+* [Permalinks][22]
+* [Footnotes][23]
+* [PyMdown Extensions][24]
 
-  [18]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [19]: extensions/admonition.md
-  [20]: extensions/codehilite.md
-  [21]: extensions/permalinks.md
-  [22]: extensions/footnotes.md
-  [23]: extensions/pymdown.md
+  [19]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [20]: extensions/admonition.md
+  [21]: extensions/codehilite.md
+  [22]: extensions/permalinks.md
+  [23]: extensions/footnotes.md
+  [24]: extensions/pymdown.md
 
 ## Full example
 
@@ -380,7 +396,7 @@ repo_name: 'GitHub'
 repo_url: 'https://github.com/my-github-handle/my-project'
 
 # Copyright
-copyright: 'Copyright &copy; 2016 John Doe'
+copyright: 'Copyright &copy; 2016 - 2017 John Doe'
 
 # Documentation and theme
 theme: 'material'
@@ -394,13 +410,14 @@ extra:
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
+  disqus: 'your-disqus-shortname'
   social:
     - type: 'github'
-      link: 'https://github.com/squidfunk'
+      link: 'https://github.com/john-doe'
     - type: 'twitter'
-      link: 'https://twitter.com/squidfunk'
+      link: 'https://twitter.com/jonh-doe'
     - type: 'linkedin'
-      link: 'https://de.linkedin.com/in/martin-donath-20a95039'
+      link: 'https://de.linkedin.com/in/john-doe'
 
 # Google Analytics
 google_analytics:
