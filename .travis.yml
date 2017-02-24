@@ -38,6 +38,7 @@ git:
 # Cache dependencies
 cache:
   pip: true
+  yarn: true
   directories:
     - node_modules
 
