@@ -38,7 +38,6 @@ git:
 # Cache dependencies
 cache:
   pip: true
-  yarn: true
   directories:
     - node_modules
 
@@ -63,12 +62,15 @@ matrix:
   include:
 
     # Build release and docker image and send to PyPI and Docker Hub.
-    - python: 2
+    - node_js: 5
       services:
         - docker
 
       # If we're not on a release branch, exit early and indicate success
-      before_install: [[ $TRAVIS_BRANCH" =~ ^[0-9.]+$ ]] && exit 0
+      before_install: "[[ $TRAVIS_BRANCH =~ ^[0-9.]+$ ]] && exit 0"
+
+      # Don't install anything, as we're only using the pre-built files
+      install: ":"
 
       # Perform build
       script:
