@@ -44,7 +44,7 @@ cache:
 
 # Install yarn as Travis doesn't support it out of the box
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - npm install -g yarn
 
 # Install dependencies
 install:
