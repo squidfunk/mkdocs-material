@@ -50,14 +50,17 @@ function initialize(config) { // eslint-disable-line func-style
     /* Wrap all data tables for better overflow scrolling */
     const tables = document.querySelectorAll("table:not([class])")
     Array.prototype.forEach.call(tables, table => {
-      const wrap = document.createElement("div")
-      wrap.classList.add("md-typeset__table")
+      const wrap = (
+        <div class="md-typeset__scrollwrap">
+          <div class="md-typeset__table"></div>
+        </div>
+      )
       if (table.nextSibling) {
         table.parentNode.insertBefore(wrap, table.nextSibling)
       } else {
         table.parentNode.appendChild(wrap)
       }
-      wrap.appendChild(table)
+      wrap.children[0].appendChild(table)
     })
 
     /* Force 1px scroll offset to trigger overflow scrolling */

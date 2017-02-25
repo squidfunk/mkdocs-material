@@ -367,18 +367,18 @@ kbd {
   table:not([class]) {
     @include z-depth(2);
 
-    margin: 2em 0;
+    display: inline-block;
+    max-width: 100%;
     border-radius: 0.2rem;
     font-size: ms(-1);
-    overflow: hidden;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 
-    // Semi-cool overflow solution, in case JavaScript is not available
-    .no-js & {
-      display: inline-block;
-      max-width: 100%;
-      margin: 0.8em 0;
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
+    // Due to margin collapse because of the necessary inline-block hack, we
+    // cannot increase the bottom margin on the table, so we just increase the
+    // top margin on the following element
+    & + * {
+      margin-top: 1.5em;
     }
 
     // Table headings and cells
@@ -414,16 +414,25 @@ kbd {
     }
   }
 
-  // Data table wrapper, in case JavaScript is available
-  .md-typeset__table {
-    margin: 1.6em -1.6rem;
+  // Wrapper for scrolling on overflow
+  &__scrollwrap {
+    margin: 1em -1.6rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  // Data table wrapper, in case JavaScript is available
+  .md-typeset__table {
+    display: inline-block;
+    margin-bottom: 0.5em;
+    padding: 0 1.6rem;
 
     // Data tables
     table {
-      display: inline-block;
-      margin: 0 1.6rem;
+      display: table;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
     }
   }
 }
