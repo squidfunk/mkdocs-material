@@ -31,7 +31,7 @@ function cleanup {
     git apply "$PATCH_FILE" 2> /dev/null
     rm "$PATCH_FILE"
   fi
-	exit $EXIT_CODE
+  exit $EXIT_CODE
 }
 
 # Register signal handlers
@@ -45,16 +45,24 @@ git checkout -- .
 FILES=$(git diff --cached --name-only --diff-filter=ACMR | \
   grep "\.\(js\|jsx\|scss\)$")
 
-# Run the check and print indicator
+# Run check and print indicator
 if [ "$FILES" ]; then
-  npm run lint --silent
 
-  # If we're on master, abort commit
+  # If linter terminated with errors, abort commit
   if [ $? -gt 0 ]; then
     echo -e "\x1B[31m✗\x1B[0m Linter - \x1B[31m$MESSAGE\x1B[0m"
-  	exit 1
+    exit 1
   else
     echo -e "\x1B[32m✓\x1B[0m Linter"
+  fi
+
+  # If flow terminated with errors, abort commit
+  npm run flow --silent > /dev/null
+  if [ $? -gt 0 ]; then
+    echo -e "\x1B[31m✗\x1B[0m Flow - \x1B[31m$MESSAGE\x1B[0m"
+    exit 1
+  else
+    echo -e "\x1B[32m✓\x1B[0m Flow"
   fi
 fi
 

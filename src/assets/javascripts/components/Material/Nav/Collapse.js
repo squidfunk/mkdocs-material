@@ -30,12 +30,18 @@ export default class Collapse {
    * Expand or collapse navigation on toggle
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - Navigation list
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.el_ = ref
   }
 
   /**
@@ -75,11 +81,16 @@ export default class Collapse {
 
     /* Remove state on end of transition */
     const end = ev => {
-      ev.target.removeAttribute("data-md-state")
-      ev.target.style.maxHeight = ""
+      const target = ev.target
+      if (!(target instanceof HTMLElement))
+        throw new ReferenceError
+
+      /* Reset height and state */
+      target.removeAttribute("data-md-state")
+      target.style.maxHeight = ""
 
       /* Only fire once, so directly remove event listener */
-      ev.target.removeEventListener("transitionend", end)
+      target.removeEventListener("transitionend", end)
     }
     this.el_.addEventListener("transitionend", end, false)
   }

@@ -30,14 +30,22 @@ export default class Listener {
    * Generic event listener
    *
    * @constructor
-   * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
-   * @param {Array.<string>} events - Event names
-   * @param {(object|function)} handler - Handler to be invoked
+   *
+   * @property {(Array<EventTarget>)} els_ - Event targets
+   * @property {Object} handler_- Event handlers
+   * @property {Array<string>} events_ - Event names
+   * @property {Function} update_ - Update handler
+   *
+   * @param {?(string|EventTarget|NodeList<EventTarget>)} els -
+   *   Selector or Event targets
+   * @param {(string|Array<string>)} events - Event names
+   * @param {(Object|Function)} handler - Handler to be invoked
    */
   constructor(els, events, handler) {
-    this.els_ = (typeof els === "string")
-      ? document.querySelectorAll(els)
-      : [].concat(els)
+    this.els_ = Array.prototype.slice.call(
+      (typeof els === "string")
+        ? document.querySelectorAll(els)
+        : [].concat(els))
 
     /* Set handler as function or directly as object */
     this.handler_ = typeof handler === "function"
@@ -53,7 +61,7 @@ export default class Listener {
    * Register listener for all relevant events
    */
   listen() {
-    Array.prototype.forEach.call(this.els_, el => {
+    this.els_.forEach(el => {
       this.events_.forEach(event => {
         el.addEventListener(event, this.update_, false)
       })
@@ -68,7 +76,7 @@ export default class Listener {
    * Unregister listener for all relevant events
    */
   unlisten() {
-    Array.prototype.forEach.call(this.els_, el => {
+    this.els_.forEach(el => {
       this.events_.forEach(event => {
         el.removeEventListener(event, this.update_)
       })
