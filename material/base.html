@@ -1,5 +1,3 @@
-'
-'
 {% import "partials/language.html" as lang %}
 <!DOCTYPE html>
 <html class="no-js">
@@ -36,7 +34,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-4b280ca4d9.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-a7dac97dbb.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
       {% endif %}
@@ -143,7 +141,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-f7ac33b6fb.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-0dae3d4464.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
