@@ -31,7 +31,7 @@ function cleanup {
     git apply "$PATCH_FILE" 2> /dev/null
     rm "$PATCH_FILE"
   fi
-	exit $EXIT_CODE
+  exit $EXIT_CODE
 }
 
 # Register signal handlers
@@ -51,7 +51,7 @@ if [ "$FILES" ]; then
   # If linter terminated with errors, abort commit
   if [ $? -gt 0 ]; then
     echo -e "\x1B[31m✗\x1B[0m Linter - \x1B[31m$MESSAGE\x1B[0m"
-  	exit 1
+    exit 1
   else
     echo -e "\x1B[32m✓\x1B[0m Linter"
   fi
@@ -60,7 +60,7 @@ if [ "$FILES" ]; then
   npm run flow --silent > /dev/null
   if [ $? -gt 0 ]; then
     echo -e "\x1B[31m✗\x1B[0m Flow - \x1B[31m$MESSAGE\x1B[0m"
-  	exit 1
+    exit 1
   else
     echo -e "\x1B[32m✓\x1B[0m Flow"
   fi
