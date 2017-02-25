@@ -57,7 +57,7 @@ if [ "$FILES" ]; then
   fi
 
   # If flow terminated with errors, abort commit
-  npm run flow --silent
+  npm run flow --silent > /dev/null
   if [ $? -gt 0 ]; then
     echo -e "\x1B[31m✗\x1B[0m Flow - \x1B[31m$MESSAGE\x1B[0m"
   	exit 1
