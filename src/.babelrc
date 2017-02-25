@@ -5,8 +5,6 @@
   "plugins": [
     ["transform-react-jsx", {
       "pragma": "JSX.createElement"
-    }],
-    "syntax-flow",
-    "transform-flow-strip-types"
+    }]
   ]
 }

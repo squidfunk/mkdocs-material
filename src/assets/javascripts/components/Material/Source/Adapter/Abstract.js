@@ -32,12 +32,21 @@ export default class Abstract {
    * Retrieve source information
    *
    * @constructor
-   * @param {(string|HTMLElement)} el - Selector or HTML element
+   *
+   * @property {HTMLAnchorElement} el_ - TODO
+   * @property {string} base_ - TODO
+   * @property {number} salt_ - TODO
+   *
+   * @param {(string|HTMLAnchorElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+
+    if (!(ref instanceof HTMLAnchorElement))
+      throw new ReferenceError
+    this.el_ = ref
 
     /* Retrieve base URL */
     this.base_ = this.el_.href
@@ -47,7 +56,7 @@ export default class Abstract {
   /**
    * Retrieve data from Cookie or fetch from respective API
    *
-   * @return {Promise} Promise that returns an array of facts
+   * @return {Promise<*>} Promise that returns an array of facts                  // TODO: @returns {Promise.<string, Error>}
    */
   fetch() {
     return new Promise(resolve => {
@@ -70,7 +79,6 @@ export default class Abstract {
    * Abstract private function that fetches relevant repository information
    *
    * @abstract
-   * @return {Promise} Promise that provides the facts in an array
    */
   fetch_() {
     throw new Error("fetch_(): Not implemented")
@@ -79,15 +87,15 @@ export default class Abstract {
   /**
    * Format a number with suffix
    *
-   * @param {Number} number - Number to format
-   * @return {Number} Formatted number
+   * @param {number} number - Number to format
+   * @return {string} Formatted number
    */
   format_(number) {
     if (number > 10000)
       return `${(number / 1000).toFixed(0)}k`
     else if (number > 1000)
       return `${(number / 1000).toFixed(1)}k`
-    return number
+    return `${number}`
   }
 
   /**
@@ -96,7 +104,7 @@ export default class Abstract {
    * Taken from http://stackoverflow.com/a/7616484/1065584
    *
    * @param {string} str - Input string
-   * @return {string} Hashed string
+   * @return {number} Hashed string
    */
   hash_(str) {
     let hash = 0

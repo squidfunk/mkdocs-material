@@ -83,7 +83,7 @@ export default class Collapse {
     const end = ev => {
       const target = ev.target
       if (!(target instanceof HTMLElement))
-        return
+        throw new ReferenceError
 
       /* Reset height and state */
       target.removeAttribute("data-md-state")

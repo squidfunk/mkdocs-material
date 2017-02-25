@@ -55,9 +55,11 @@ let args = yargs
   .default("sourcemaps", false)        /* Create sourcemaps */
   .argv
 
-/* Only use the last value seen, so overrides are possible */
+/* Only use the last seen value if boolean, so overrides are possible */
 args = Object.keys(args).reduce((result, arg) => {
-  result[arg] = [].concat(args[arg]).pop()
+  result[arg] = Array.isArray(args[arg]) && typeof args[arg][0] === "boolean"     // TODO: ugly
+    ? [].concat(args[arg]).pop()
+    : args[arg]
   return result
 }, {})
 
@@ -147,16 +149,25 @@ gulp.task("assets:images:clean",
 
 /*
  * Build application logic
+ *
+ * When revisioning, the build must be serialized due to race conditions
+ * happening when two tasks try to write manifest.json simultaneously
  */
-gulp.task("assets:javascripts:build:application",
-  load("assets/javascripts/build/application"))
+gulp.task("assets:javascripts:build:application", args.revision ? [
+  "assets:stylesheets:build"
+] : [], load("assets/javascripts/build/application"))
 
 /*
  * Build custom modernizr
+ *
+ * When revisioning, the build must be serialized due to race conditions
+ * happening when two tasks try to write manifest.json simultaneously
  */
 gulp.task("assets:javascripts:build:modernizr", [
   "assets:stylesheets:build"
-], load("assets/javascripts/build/modernizr"))
+].concat(args.revision ? [
+  "assets:javascripts:build:application"
+] : []), load("assets/javascripts/build/modernizr"))
 
 /*
  * Build application logic and Modernizr

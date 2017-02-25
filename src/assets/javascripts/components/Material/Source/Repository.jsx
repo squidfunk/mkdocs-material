@@ -30,18 +30,24 @@ export default class Repository {
    * Render repository information
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - TODO
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.el_ = ref
   }
 
   /**
    * Initialize the source repository
    *
-   * @param {Array.<string>} facts - Facts to be rendered
+   * @param {Array<string>} facts - Facts to be rendered
    */
   initialize(facts) {
     if (facts.length)

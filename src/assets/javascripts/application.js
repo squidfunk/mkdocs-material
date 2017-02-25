@@ -27,7 +27,11 @@ import Material from "./components/Material"
  * Application
  * ------------------------------------------------------------------------- */
 
-// TODO ./node_modules/.bin/gulp assets:javascripts:flow:annotate && ./node_modules/.bin/flow check
+/**
+ * [initialize description]
+ *
+ * @param {Object} config - TODO // TODO: define via type declaration!?
+ */
 export const initialize = config => {
 
   /* Initialize Modernizr and FastClick */
@@ -37,6 +41,9 @@ export const initialize = config => {
     Modernizr.addTest("ios", () => {
       return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
     })
+
+    if (!(document.body instanceof HTMLElement))
+      throw new ReferenceError
 
     /* Attach FastClick to mitigate 300ms delay on touch devices */
     FastClick.attach(document.body)
@@ -197,7 +204,10 @@ export const initialize = config => {
   /* Retrieve facts for the given repository type */
   ;(() => {
     const el = document.querySelector("[data-md-source]")
-    if (!el) return Promise.resolve([])
+    if (!el)
+      return Promise.resolve([])
+    else if (!(el instanceof HTMLAnchorElement))
+      throw new ReferenceError
     switch (el.dataset.mdSource) {
       case "github": return new Material.Source.Adapter.GitHub(el).fetch()
       default: return Promise.resolve([])

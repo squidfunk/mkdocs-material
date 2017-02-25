@@ -31,12 +31,12 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-4b280ca4d9.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.palette.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
       {% endif %}
     {% endblock %}
     {% block fonts %}
@@ -67,11 +67,11 @@
       <defs>
         {% set platform = config.extra.repo_icon or config.repo_url %}
         {% if "github" in platform %}
-          {% include "assets/images/icons/github.svg" %}
+          {% include "assets/images/icons/github-1da075986e.svg" %}
         {% elif "gitlab" in platform %}
-          {% include "assets/images/icons/gitlab.svg" %}
+          {% include "assets/images/icons/gitlab-5ad3f9f9e5.svg" %}
         {% elif "bitbucket" in platform %}
-          {% include "assets/images/icons/bitbucket.svg" %}
+          {% include "assets/images/icons/bitbucket-670608a71a.svg" %}
         {% endif %}
       </defs>
     </svg>
@@ -124,7 +124,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-e546393d04.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>

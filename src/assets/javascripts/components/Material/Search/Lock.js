@@ -32,6 +32,7 @@ export default class Lock {
    * @constructor
    *
    * @property {HTMLInputElement} el_ - TODO
+   * @property {HTMLElement} lock_ - Element to lock
    * @property {number} offset_ - TODO
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
@@ -43,6 +44,11 @@ export default class Lock {
     if (!(ref instanceof HTMLInputElement))
       throw new ReferenceError
     this.el_ = ref
+
+    /* Retrieve element to lock (= body) */
+    if (!document.body)
+      throw new ReferenceError
+    this.lock_ = document.body
   }
 
   /**
@@ -67,13 +73,13 @@ export default class Lock {
 
         /* Lock body after finishing transition */
         if (this.el_.checked) {
-          document.body.dataset.mdState = "lock"
+          this.lock_.dataset.mdState = "lock"
         }
       }, 400)
 
     /* Exiting search mode */
     } else {
-      document.body.dataset.mdState = ""
+      this.lock_.dataset.mdState = ""
 
       /* Scroll to former position, but wait for 100ms to prevent flashes on
          iOS. A short timeout seems to do the trick */
@@ -88,8 +94,8 @@ export default class Lock {
    * Reset locked state and page y-offset
    */
   reset() {
-    if (document.body.dataset.mdState === "lock")
+    if (this.lock_.dataset.mdState === "lock")
       window.scrollTo(0, this.offset_)
-    document.body.dataset.mdState = ""
+    this.lock_.dataset.mdState = ""
   }
 }

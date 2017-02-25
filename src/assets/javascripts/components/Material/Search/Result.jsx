@@ -35,16 +35,20 @@ export default class Result {
    *
    * @property {HTMLElement} el_ - TODO
    * @property {(Object|Array<Object>|Function)} data_ - TODO (very dirty)
-   * @property {*} meta_ - TODO (must be done like this, as React$Component does not return the correct thing)
-   * @property {*} list_ - TODO (must be done like this, as React$Component does not return the correct thing)
+   * @property {*} meta_ - // TODO (must be done like this, as React$Component does not return the correct thing) (React$Element<*>|Element)
+   * @property {*} list_ - // TODO (must be done like this, as React$Component does not return the correct thing)
+   * @property {Object} index_ - TODO
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    * @param {(Array<Object>|Function)} data - Promise or array providing data     // TODO ????
    */
   constructor(el, data) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.el_ = ref
 
     /* Set data and create metadata and list elements */
     this.data_ = data
@@ -60,19 +64,26 @@ export default class Result {
     /* Inject created elements */
     this.el_.appendChild(this.meta_)
     this.el_.appendChild(this.list_)
+  }
 
-    /* Truncate a string after the given number of characters - this is not
-       a reasonable approach, since the summaries kind of suck. It would be
-       better to create something more intelligent, highlighting the search
-       occurrences and making a better summary out of it */
-    this.truncate_ = function(string, n) {
-      let i = n
-      if (string.length > i) {
-        while (string[i] !== " " && --i > 0);
-        return `${string.substring(0, i)}...`
-      }
-      return string
+  /**
+   * Truncate a string after the given number of character
+   *
+   * This is not a reasonable approach, since the summaries kind of suck. It
+   * would be better to create something more intelligent, highlighting the
+   * search occurrences and making a better summary out of it
+   *
+   * @param {string} string - TODO
+   * @param {number} n - TODO
+   * @return {string} TODO
+   */
+  truncate_(string, n) {
+    let i = n
+    if (string.length > i) {
+      while (string[i] !== " " && --i > 0);
+      return `${string.substring(0, i)}...`
     }
+    return string
   }
 
   /**
@@ -110,13 +121,19 @@ export default class Result {
           : init(this.data_)
       }, 250)
 
-    /* Execute search on new input event after clearing current list */
+    /* Execute search on new input event */
     } else if (ev.type === "keyup") {
+      const target = ev.target
+      if (!(target instanceof HTMLInputElement))
+        throw new ReferenceError
+
+      /* Clear current list */
       while (this.list_.firstChild)
         this.list_.removeChild(this.list_.firstChild)
 
       /* Perform search on index and render documents */
-      const result = this.index_.search(ev.target.value)
+      let result = this.index_.search(target.value)
+      result += 3
       result.forEach(item => {
         const doc = this.data_[item.ref]
 
@@ -149,7 +166,7 @@ export default class Result {
       Array.prototype.forEach.call(anchors, anchor => {
         anchor.addEventListener("click", ev2 => {
           const toggle = document.querySelector("[data-md-toggle=search]")
-          if (toggle.checked) {
+          if (toggle instanceof HTMLInputElement && toggle.checked) {
             toggle.checked = false
             toggle.dispatchEvent(new CustomEvent("change"))
           }
