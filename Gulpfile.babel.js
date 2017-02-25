@@ -57,7 +57,7 @@ let args = yargs
 
 /* Only use the last seen value if boolean, so overrides are possible */
 args = Object.keys(args).reduce((result, arg) => {
-  result[arg] = Array.isArray(args[arg]) && typeof args[arg][0] === "boolean"     // TODO: ugly
+  result[arg] = Array.isArray(args[arg]) && typeof args[arg][0] === "boolean"
     ? [].concat(args[arg]).pop()
     : args[arg]
   return result
