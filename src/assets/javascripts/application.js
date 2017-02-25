@@ -27,23 +27,25 @@ import Material from "./components/Material"
  * Application
  * ------------------------------------------------------------------------- */
 
-export const initialize = config => {
+/**
+ * Initialize Material for MkDocs
+ *
+ * @param {Object} config - Configuration
+ */
+function initialize(config) { // eslint-disable-line func-style
 
   /* Initialize Modernizr and FastClick */
   new Material.Event.Listener(document, "DOMContentLoaded", () => {
+    if (!(document.body instanceof HTMLElement))
+      throw new ReferenceError
+
+    /* Attach FastClick to mitigate 300ms delay on touch devices */
+    FastClick.attach(document.body)
 
     /* Test for iOS */
     Modernizr.addTest("ios", () => {
       return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
     })
-
-    /* Test for web application context */
-    Modernizr.addTest("standalone", () => {
-      return !!navigator.standalone
-    })
-
-    /* Attach FastClick to mitigate 300ms delay on touch devices */
-    FastClick.attach(document.body)
 
     /* Wrap all data tables for better overflow scrolling */
     const tables = document.querySelectorAll("table:not([class])")
@@ -119,7 +121,7 @@ export const initialize = config => {
       new Material.Search.Lock("[data-md-toggle=search]")))
 
   /* Component: search results */
-  new Material.Event.Listener(document.forms.search.query, [
+  new Material.Event.Listener("[data-md-component=query]", [
     "focus", "keyup"
   ], new Material.Search.Result("[data-md-component=result]", () => {
     return fetch(`${config.url.base}/mkdocs/search_index.json`, {
@@ -143,6 +145,8 @@ export const initialize = config => {
     new Material.Event.Listener("[data-md-component=navigation] [href^='#']",
       "click", () => {
         const toggle = document.querySelector("[data-md-toggle=drawer]")
+        if (!(toggle instanceof HTMLInputElement))
+          throw new ReferenceError
         if (toggle.checked) {
           toggle.checked = false
           toggle.dispatchEvent(new CustomEvent("change"))
@@ -152,16 +156,23 @@ export const initialize = config => {
   /* Listener: focus input after opening search */
   new Material.Event.Listener("[data-md-toggle=search]", "change", ev => {
     setTimeout(toggle => {
-      const query = document.forms.search.query
-      if (toggle.checked)
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
+      if (toggle.checked) {
+        const query = document.querySelector("[data-md-component=query]")
+        if (!(query instanceof HTMLInputElement))
+          throw new ReferenceError
         query.focus()
+      }
     }, 400, ev.target)
   }).listen()
 
   /* Listener: open search on focus */
   new Material.Event.MatchMedia("(min-width: 960px)",
-    new Material.Event.Listener(document.forms.search.query, "focus", () => {
+    new Material.Event.Listener("[data-md-component=query]", "focus", () => {
       const toggle = document.querySelector("[data-md-toggle=search]")
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
       if (!toggle.checked) {
         toggle.checked = true
         toggle.dispatchEvent(new CustomEvent("change"))
@@ -172,6 +183,8 @@ export const initialize = config => {
   new Material.Event.MatchMedia("(min-width: 960px)",
     new Material.Event.Listener(document.body, "click", () => {
       const toggle = document.querySelector("[data-md-toggle=search]")
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
       if (toggle.checked) {
         toggle.checked = false
         toggle.dispatchEvent(new CustomEvent("change"))
@@ -183,10 +196,15 @@ export const initialize = config => {
     const code = ev.keyCode || ev.which
     if (code === 27) {
       const toggle = document.querySelector("[data-md-toggle=search]")
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
       if (toggle.checked) {
         toggle.checked = false
         toggle.dispatchEvent(new CustomEvent("change"))
-        document.forms.search.query.blur()
+        const query = document.querySelector("[data-md-component=query]")
+        if (!(query instanceof HTMLInputElement))
+          throw new ReferenceError
+        query.focus()
       }
     }
   }).listen()
@@ -204,13 +222,16 @@ export const initialize = config => {
   /* Retrieve facts for the given repository type */
   ;(() => {
     const el = document.querySelector("[data-md-source]")
-    if (!el) return Promise.resolve([])
+    if (!el)
+      return Promise.resolve([])
+    else if (!(el instanceof HTMLAnchorElement))
+      throw new ReferenceError
     switch (el.dataset.mdSource) {
       case "github": return new Material.Source.Adapter.GitHub(el).fetch()
       default: return Promise.resolve([])
     }
 
-  /* Render repository source information */
+  /* Render repository information */
   })().then(facts => {
     const sources = document.querySelectorAll("[data-md-source]")
     Array.prototype.forEach.call(sources, source => {
@@ -218,4 +239,12 @@ export const initialize = config => {
         .initialize(facts)
     })
   })
+}
+
+/* ----------------------------------------------------------------------------
+ * Exports
+ * ------------------------------------------------------------------------- */
+
+export {
+  initialize
 }

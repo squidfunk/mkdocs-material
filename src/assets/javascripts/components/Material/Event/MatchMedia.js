@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+import Listener from "./Listener" // eslint-disable-line no-unused-vars
+
 /* ----------------------------------------------------------------------------
  * Class
  * ------------------------------------------------------------------------- */
@@ -33,6 +35,9 @@ export default class MatchMedia {
    * switches the given listeners on or off.
    *
    * @constructor
+   *
+   * @property {Function} handler_ - Media query event handler
+   *
    * @param {string} query - Media query to test for
    * @param {Listener} listener - Event listener
    */
