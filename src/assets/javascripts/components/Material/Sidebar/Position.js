@@ -31,10 +31,10 @@ export default class Position {
    *
    * @constructor
    *
-   * @property {HTMLElement} el_ - TODO
-   * @property {HTMLElement} parent_ - TODO
-   * @property {number} height_ - TODO
-   * @property {number} offset_ - TODO
+   * @property {HTMLElement} el_ - Sidebar
+   * @property {HTMLElement} parent_ - Sidebar container
+   * @property {number} height_ - Current sidebar height
+   * @property {number} offset_ - Current page y-offset
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */

@@ -33,14 +33,15 @@ export default class Result {
    *
    * @constructor
    *
-   * @property {HTMLElement} el_ - TODO
-   * @property {(Object|Array<Object>|Function)} data_ - TODO (very dirty)
-   * @property {*} meta_ - // TODO (must be done like this, as React$Component does not return the correct thing) (React$Element<*>|Element)
-   * @property {*} list_ - // TODO (must be done like this, as React$Component does not return the correct thing)
-   * @property {Object} index_ - TODO
+   * @property {HTMLElement} el_ - Search result container
+   * @property {(Array<Object>|Function)} data_ - Raw document data
+   * @property {Object} docs_ - Indexed documents
+   * @property {HTMLElement} meta_ - Search meta information
+   * @property {HTMLElement} list_ - Search result list
+   * @property {Object} index_ - Search index
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
-   * @param {(Array<Object>|Function)} data - Promise or array providing data     // TODO ????
+   * @param {(Array<Object>|Function)} data - Function providing data or array
    */
   constructor(el, data) {
     const ref = (typeof el === "string")
@@ -73,9 +74,9 @@ export default class Result {
    * would be better to create something more intelligent, highlighting the
    * search occurrences and making a better summary out of it
    *
-   * @param {string} string - TODO
-   * @param {number} n - TODO
-   * @return {string} TODO
+   * @param {string} string - String to be truncated
+   * @param {number} n - Number of characters
+   * @return {string} Truncated string
    */
   truncate_(string, n) {
     let i = n
@@ -107,7 +108,7 @@ export default class Result {
         })
 
         /* Index documents */
-        this.data_ = data.reduce((docs, doc) => {
+        this.docs_ = data.reduce((docs, doc) => {
           this.index_.add(doc)
           docs[doc.location] = doc
           return docs
@@ -132,10 +133,9 @@ export default class Result {
         this.list_.removeChild(this.list_.firstChild)
 
       /* Perform search on index and render documents */
-      let result = this.index_.search(target.value)
-      result += 3
+      const result = this.index_.search(target.value)
       result.forEach(item => {
-        const doc = this.data_[item.ref]
+        const doc = this.docs_[item.ref]
 
         /* Check if it's a anchor link on the current page */
         let [pathname] = doc.location.split("#")
@@ -166,7 +166,9 @@ export default class Result {
       Array.prototype.forEach.call(anchors, anchor => {
         anchor.addEventListener("click", ev2 => {
           const toggle = document.querySelector("[data-md-toggle=search]")
-          if (toggle instanceof HTMLInputElement && toggle.checked) {
+          if (!(toggle instanceof HTMLInputElement))
+            throw new ReferenceError
+          if (toggle.checked) {
             toggle.checked = false
             toggle.dispatchEvent(new CustomEvent("change"))
           }

@@ -31,9 +31,9 @@ export default class Lock {
    *
    * @constructor
    *
-   * @property {HTMLInputElement} el_ - TODO
-   * @property {HTMLElement} lock_ - Element to lock
-   * @property {number} offset_ - TODO
+   * @property {HTMLInputElement} el_ - Lock toggle
+   * @property {HTMLElement} lock_ - Element to lock (document body)
+   * @property {number} offset_ - Current page y-offset
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */

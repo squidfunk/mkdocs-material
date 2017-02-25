@@ -31,7 +31,7 @@ export default class Scrolling {
    *
    * @constructor
    *
-   * @property {HTMLElement} el_ - Navigation
+   * @property {HTMLElement} el_ - Primary navigation
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
@@ -55,7 +55,9 @@ export default class Scrolling {
     /* Find all toggles and check which one is active */
     const toggles = this.el_.querySelectorAll("[data-md-toggle]")
     Array.prototype.forEach.call(toggles, toggle => {
-      if (toggle instanceof HTMLInputElement && toggle.checked) {
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
+      if (toggle.checked) {
 
         /* Find corresponding navigational pane */
         let pane = toggle.nextElementSibling
@@ -144,7 +146,9 @@ export default class Scrolling {
     /* Find all toggles and check which one is active */
     const toggles = this.el_.querySelectorAll("[data-md-toggle]")
     Array.prototype.forEach.call(toggles, toggle => {
-      if (toggle instanceof HTMLInputElement && toggle.checked) {
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
+      if (toggle.checked) {
 
         /* Find corresponding navigational pane */
         let pane = toggle.nextElementSibling

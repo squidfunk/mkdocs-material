@@ -29,13 +29,13 @@ import Cookies from "js-cookie"
 export default class Abstract {
 
   /**
-   * Retrieve source information
+   * Retrieve repository information
    *
    * @constructor
    *
-   * @property {HTMLAnchorElement} el_ - TODO
-   * @property {string} base_ - TODO
-   * @property {number} salt_ - TODO
+   * @property {HTMLAnchorElement} el_ - Link to repository
+   * @property {string} base_ - API base URL
+   * @property {number} salt_ - Unique identifier
    *
    * @param {(string|HTMLAnchorElement)} el - Selector or HTML element
    */
@@ -56,7 +56,7 @@ export default class Abstract {
   /**
    * Retrieve data from Cookie or fetch from respective API
    *
-   * @return {Promise<*>} Promise that returns an array of facts                  // TODO: @returns {Promise.<string, Error>}
+   * @return {Promise<Array<string>>} Promise that returns an array of facts
    */
   fetch() {
     return new Promise(resolve => {
