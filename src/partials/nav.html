@@ -22,6 +22,8 @@
 
 <!-- Main navigation -->
 <nav class="md-nav md-nav--primary" data-md-level="0">
+
+  <!-- Site title -->
   <label class="md-nav__title md-nav__title--site" for="drawer">
     {% if config.extra.logo %}
       <i class="md-logo md-nav__button">
@@ -32,11 +34,15 @@
     {% endif %}
     {{ config.site_name }}
   </label>
+
+  <!-- Repository containing source -->
   {% if config.repo_url %}
     <div class="md-nav__source">
       {% include "partials/source.html" %}
     </div>
   {% endif %}
+
+  <!-- Render item list -->
   <ul class="md-nav__list" data-md-scrollfix>
     {% for nav_item in nav %}
       {% set path = "nav-" + loop.index | string %}
