@@ -12,10 +12,14 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.1.0
+# Version 1.1.1
 ```
 
 ## Changelog
+
+### 1.1.1 <small> _ February 26, 2017</small>
+
+* Fixed incorrectly displayed nested lists when using tabs
 
 ### 1.1.0 <small> _ February 26, 2017</small>
 
