@@ -1,11 +1,11 @@
-mkdocs-material-1.1.0 (2017-xx-xx)
+mkdocs-material-1.1.0 (2017-02-26)
 
   * Added tabs navigation feature (optional)
   * Added Disqus integration (optional)
   * Added a high resolution Favicon with the new logo
   * Added static type checking using Facebook's Flow
-  * Fixed #175: Tables cannot be set to 100% width
   * Fixed #173: Dictionary elements have no bottom spacing
+  * Fixed #175: Tables cannot be set to 100% width
   * Fixed race conditions in build related to asset revisioning
   * Fixed accidentally re-introduced Permalink on top-level headline
   * Fixed alignment of logo in drawer on IE11

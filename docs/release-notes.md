@@ -12,10 +12,28 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.0.4
+# Version 1.1.0
 ```
 
 ## Changelog
+
+### 1.1.0 <small> _ February 26, 2017</small>
+
+* Added tabs navigation feature (optional)
+* Added Disqus integration (optional)
+* Added a high resolution Favicon with the new logo
+* Added static type checking using Facebook's Flow
+* Fixed [#173][173]: Dictionary elements have no bottom spacing
+* Fixed [#175][175]: Tables cannot be set to 100% width
+* Fixed race conditions in build related to asset revisioning
+* Fixed accidentally re-introduced Permalink on top-level headline
+* Fixed alignment of logo in drawer on IE11
+* Refactored styles related to tables
+* Refactored and automated Docker build and PyPI release
+* Refactored build scripts
+
+  [173]: https://github.com/squidfunk/mkdocs-material/issues/173
+  [175]: https://github.com/squidfunk/mkdocs-material/issues/175
 
 ### 1.0.5 <small> _ February 18, 2017</small>
 
