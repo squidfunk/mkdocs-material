@@ -42,14 +42,16 @@ export default class Shadow {
     const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
-    if (!(ref instanceof Node) ||
-        !(ref.parentNode instanceof HTMLElement) ||
-        !(ref.parentNode.previousElementSibling instanceof HTMLElement))
+    if (!(ref instanceof HTMLElement) ||
+        !(ref.parentNode instanceof HTMLElement))
       throw new ReferenceError
 
     /* Grab parent and header */
-    this.el_     = ref.parentNode
-    this.header_ = ref.parentNode.previousElementSibling
+    this.el_ = ref.parentNode
+    if (!(this.el_.parentNode instanceof HTMLElement) ||
+        !(this.el_.parentNode.previousElementSibling instanceof HTMLElement))
+      throw new ReferenceError
+    this.header_ = this.el_.parentNode.previousElementSibling
 
     /* Initialize height and state */
     this.height_ = 0

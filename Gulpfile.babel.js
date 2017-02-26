@@ -154,28 +154,28 @@ gulp.task("assets:images:clean",
 /*
  * Build application logic
  *
- * When revisioning, the build must be serialized due to race conditions
- * happening when two tasks try to write manifest.json simultaneously
+ * When revisioning assets, the build must be serialized due to possible race
+ * conditions when two tasks try to write manifest.json simultaneously
  */
 
 gulp.task("assets:javascripts:build:application", [
-  args.revision ? "assets:javascripts:build:application" : false,
   args.clean ? "assets:javascripts:clean" : false,
-  args.lint ? "assets:javascripts:lint" : false
+  args.lint ? "assets:javascripts:lint" : false,
+  args.revision ? "assets:stylesheets:build" : false
 ].filter(t => t),
   load("assets/javascripts/build/application"))
 
 /*
  * Build custom modernizr
  *
- * When revisioning, the build must be serialized due to race conditions
- * happening when two tasks try to write manifest.json simultaneously
+ * When revisioning assets, the build must be serialized due to possible race
+ * conditions when two tasks try to write manifest.json simultaneously
  */
 gulp.task("assets:javascripts:build:modernizr", [
   "assets:stylesheets:build",
-  args.revision ? "assets:javascripts:build:application" : false,
   args.clean ? "assets:javascripts:clean" : false,
-  args.lint ? "assets:javascripts:lint" : false
+  args.lint ? "assets:javascripts:lint" : false,
+  args.revision ? "assets:javascripts:build:application" : false
 ].filter(t => t),
   load("assets/javascripts/build/modernizr"))
 
@@ -261,10 +261,10 @@ gulp.task("assets:clean", [
  */
 
 gulp.task("views:build", [
+  args.clean ? "views:clean" : false,
   args.revision ? "assets:images:build" : false,
   args.revision ? "assets:stylesheets:build" : false,
-  args.revision ? "assets:javascripts:build" : false,
-  args.clean ? "views:clean" : false
+  args.revision ? "assets:javascripts:build" : false
 ].filter(t => t),
   load("views/build"))
 
@@ -285,8 +285,7 @@ gulp.task("mkdocs:build", [
   "assets:build",
   "views:build",
   "mkdocs:clean"
-].filter(t => t),
-  load("mkdocs/build"))
+], load("mkdocs/build"))
 
 /*
  * Clean documentation build

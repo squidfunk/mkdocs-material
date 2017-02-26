@@ -112,6 +112,9 @@
     max-height: 100%;
     margin: 0 0.4rem;
     overflow-y: auto;
+    // Hack: putting the scroll wrapper on the GPU massively reduces jitter
+    // when locking the sidebars into place
+    backface-visibility: hidden;
 
     // [tablet -]: Adjust margins
     @include break-to-device(tablet) {
