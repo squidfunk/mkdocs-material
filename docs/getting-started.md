@@ -8,6 +8,8 @@
     pre-installed and ready-to-use with the latest version published on PyPI,
     packaged in a very small image (28MB compressed).
 
+  [1]: https://hub.docker.com/r/squidfunk/mkdocs-material/
+
 ### Installing MkDocs
 
 Before installing [MkDocs][2], you need to make sure you have Python and `pip`
@@ -40,7 +42,6 @@ pip install pygments
 pip install pymdown-extensions
 ```
 
-  [1]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [2]: http://www.mkdocs.org
   [3]: http://pygments.org
   [4]: http://facelessuser.github.io/pymdown-extensions/

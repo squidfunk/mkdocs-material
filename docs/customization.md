@@ -174,7 +174,8 @@ theme and recompile it. This is fairly easy.
 ### Environment setup
 
 In order to start development on the Material theme, a [Node.js][8] version of
-at least 4 is required. Clone the repository from GitHub:
+at least 5 is required, as well as the package manager [yarn][9] which is a
+better version of `npm`. First, clone the repository:
 
 ``` sh
 git clone https://github.com/squidfunk/mkdocs-material
@@ -185,23 +186,24 @@ Next, all dependencies need to be installed, which is done with:
 ``` sh
 cd mkdocs-material
 pip install -r requirements.txt
-npm install
+yarn install
 ```
 
   [8]: https://nodejs.org
+  [9]: https://yarnpkg.com/
 
 ### Development mode
 
-The Material theme uses a sophisticated asset pipeline using [Gulp][9] and
+The Material theme uses a sophisticated asset pipeline using [Gulp][10] and
 Webpack which can be started with the following command:
 
 ``` sh
-npm start
+yarn start
 ```
 
 This will also start the MkDocs development server which will monitor changes
 on assets, templates and documentation. Point your browser to
-[localhost:8000][10] and you should see this documentation in front of you.
+[localhost:8000][11] and you should see this documentation in front of you.
 
 For example, changing the color palette is as simple as changing the
 `$md-color-primary` and `$md-color-accent` variables in
@@ -218,15 +220,15 @@ $md-color-accent:  $clr-teal-a700;
     directory are automatically generated from the `src` directory and will be
     overriden when the theme is built.
 
-  [9]: http://gulpjs.com
-  [10]: http://localhost:8000
+  [10]: http://gulpjs.com
+  [11]: http://localhost:8000
 
 ### Build process
 
 When you finished making your changes, you can build the theme by invoking:
 
 ``` sh
-npm run build
+yarn run build
 ```
 
 This triggers the production-level compilation and minification of all
