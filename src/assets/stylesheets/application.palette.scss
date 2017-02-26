@@ -103,19 +103,15 @@ button[data-md-color-accent] {
       background-color: $color;
     }
 
-    // Link inside item
-    .md-nav__link {
+    // Current or hovered link
+    .md-nav__link:active,
+    .md-nav__item--active > .md-nav__link {
+      color: $color;
+    }
 
-      // Current or hovered link
-      &:active,
-      .md-nav__item--active > & {
-        color: $color;
-      }
-
-      // Reset active color for nested list titles
-      .md-nav__item--nested > & {
-        color: inherit;
-      }
+    // Reset active color for nested list titles
+    .md-nav__item--nested > .md-nav__link {
+      color: inherit;
     }
 
     // [tablet portrait -]: Layered navigation
