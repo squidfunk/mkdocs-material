@@ -64,7 +64,8 @@
     warning caution attention: $clr-orange-a400 "warning",
     failure fail missing: $clr-red-a200 "clear",
     danger error: $clr-red-a400 "flash_on",
-    bug: $clr-pink-a400 "bug_report"
+    bug: $clr-pink-a400 "bug_report",
+    quote cite: $clr-grey "format_quote"
   ) {
     $tint: nth($appearance, 1);
     $icon: nth($appearance, 2);
