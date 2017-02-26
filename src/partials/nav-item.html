@@ -20,9 +20,15 @@
   IN THE SOFTWARE.
 -->
 
+<!-- Determine class according to level -->
+{% set class = "md-nav__item" %}
+{% if nav_item.active %}
+  {% set class = "md-nav__item md-nav__item--active" %}
+{% endif %}
+
 <!-- Main navigation item with nested items -->
 {% if nav_item.children %}
-  <li class="md-nav__item md-nav__item--nested">
+  <li class="{{ class }} md-nav__item--nested">
 
     <!-- Active checkbox expands items contained within nested section -->
     {% if nav_item.active %}
@@ -57,7 +63,7 @@
 
 <!-- Currently active page -->
 {% elif nav_item == page %}
-  <li class="md-nav__item">
+  <li class="{{ class }}">
     {% set toc_ = page.toc %}
 
     <!-- Active checkbox expands items contained within nested section -->
@@ -88,17 +94,10 @@
 
 <!-- Main navigation item -->
 {% else %}
-  <li class="md-nav__item">
-    {% if nav_item.active %}
-      <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
-          class="md-nav__link md-nav__link--active">
-        {{ nav_item.title }}
-      </a>
-    {% else %}
-      <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
-          class="md-nav__link">
-        {{ nav_item.title }}
-      </a>
-    {% endif %}
+  <li class="{{ class }}">
+    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
+        class="md-nav__link">
+      {{ nav_item.title }}
+    </a>
   </li>
 {% endif %}
