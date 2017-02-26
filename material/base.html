@@ -19,7 +19,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.0.3">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.0.5">
     {% endblock %}
     {% block htmltitle %}
       {% if page.title and not page.is_homepage %}
@@ -29,10 +29,10 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr-5b0c41c2b5.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-932e030699.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-a7dac97dbb.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
       {% endif %}
@@ -117,6 +117,23 @@
                 {% endif %}
                 {{ page.content }}
               {% endblock %}
+              {% if config.extra.disqus and not page.is_homepage %}
+                <h2>{{ lang.t('comments') }}</h2>
+                <div id="disqus_thread"></div>
+                <script>
+                  var disqus_config = function () {
+                    this.page.url = "{{ page.canonical_url }}";
+                    this.page.identifier =
+                      "{{ page.canonical_url | replace(config.site_url, "") }}";
+                  };
+                  (function() {
+                    var d = document, s = d.createElement("script");
+                    s.src = "//{{ config.extra.disqus }}.disqus.com/embed.js";
+                    s.setAttribute("data-timestamp", +new Date());
+                    (d.head || d.body).appendChild(s);
+                  })();
+                </script>
+              {% endif %}
             </article>
           </div>
         </div>
@@ -126,7 +143,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-c7c31dee65.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-8dc3dfc020.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>

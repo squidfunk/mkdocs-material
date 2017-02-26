@@ -141,7 +141,7 @@
       color: $md-color-primary;
     }
 
-    // Focused or hovered item
+    // Focused or hovered link
     &:focus,
     &:hover {
       color: $md-color-accent;
@@ -155,6 +155,7 @@
 
   // [tablet -]: Layered navigation
   @include break-to-device(tablet) {
+    background-color: $md-color-white;
 
     // Stretch primary navigation to drawer
     &--primary,
@@ -171,14 +172,6 @@
 
     // Adjust styles for primary navigation
     &--primary {
-      background-color: $md-color-white;
-
-      // Move subsequent navigations off
-      .md-nav__toggle ~ .md-nav {
-        @include z-depth(4);
-
-        background-color: $md-color-white;
-      }
 
       // List title and item
       .md-nav__title,
@@ -304,7 +297,8 @@
           font-size: 2.4rem;
         }
 
-        // Color of icon should inherit link color on hover
+        // Color of icon should inherit link color on focus or hover
+        &:focus::after,
         &:hover::after {
           color: inherit;
         }

@@ -27,19 +27,29 @@
 export default class Shadow {
 
   /**
-   * Show the header shadow depending on scroll offset
+   * Show or hide header shadow depending on page y-offset
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - Content container
+   * @property {HTMLElement} header_ - Header
+   * @property {number} height_ - Offset height of previous nodes
+   * @property {boolean} active_ - Header shadow state
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof Node) ||
+        !(ref.parentNode instanceof HTMLElement) ||
+        !(ref.parentNode.previousElementSibling instanceof HTMLElement))
+      throw new ReferenceError
 
     /* Grab parent and header */
-    this.el_     = this.el_.parentNode
-    this.header_ = this.el_.parentNode.previousElementSibling
+    this.el_     = ref.parentNode
+    this.header_ = ref.parentNode.previousElementSibling
 
     /* Initialize height and state */
     this.height_ = 0
@@ -51,8 +61,11 @@ export default class Shadow {
    */
   setup() {
     let current = this.el_
-    while ((current = current.previousElementSibling))
+    while ((current = current.previousElementSibling)) {
+      if (!(current instanceof HTMLElement))
+        throw new ReferenceError
       this.height_ += current.offsetHeight
+    }
     this.update()
   }
 

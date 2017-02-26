@@ -55,9 +55,11 @@ let args = yargs
   .default("sourcemaps", false)        /* Create sourcemaps */
   .argv
 
-/* Only use the last value seen, so overrides are possible */
+/* Only use the last seen value if boolean, so overrides are possible */
 args = Object.keys(args).reduce((result, arg) => {
-  result[arg] = [].concat(args[arg]).pop()
+  result[arg] = Array.isArray(args[arg]) && typeof args[arg][0] === "boolean"
+    ? [].concat(args[arg]).pop()
+    : args[arg]
   return result
 }, {})
 
@@ -151,9 +153,13 @@ gulp.task("assets:images:clean",
 
 /*
  * Build application logic
+ *
+ * When revisioning, the build must be serialized due to race conditions
+ * happening when two tasks try to write manifest.json simultaneously
  */
 
 gulp.task("assets:javascripts:build:application", [
+  args.revision ? "assets:javascripts:build:application" : false,
   args.clean ? "assets:javascripts:clean" : false,
   args.lint ? "assets:javascripts:lint" : false
 ].filter(t => t),
@@ -161,16 +167,20 @@ gulp.task("assets:javascripts:build:application", [
 
 /*
  * Build custom modernizr
+ *
+ * When revisioning, the build must be serialized due to race conditions
+ * happening when two tasks try to write manifest.json simultaneously
  */
 gulp.task("assets:javascripts:build:modernizr", [
   "assets:stylesheets:build",
+  args.revision ? "assets:javascripts:build:application" : false,
   args.clean ? "assets:javascripts:clean" : false,
   args.lint ? "assets:javascripts:lint" : false
 ].filter(t => t),
   load("assets/javascripts/build/modernizr"))
 
 /*
- * Build application logic and modernizr
+ * Build application logic and Modernizr
  */
 gulp.task("assets:javascripts:build", [
   "assets:javascripts:build:application",
@@ -182,6 +192,12 @@ gulp.task("assets:javascripts:build", [
  */
 gulp.task("assets:javascripts:clean",
   load("assets/javascripts/clean"))
+
+/*
+ * Annotate JavaScript
+ */
+gulp.task("assets:javascripts:annotate",
+  load("assets/javascripts/annotate"))
 
 /*
  * Lint JavaScript
@@ -358,10 +374,6 @@ gulp.task("watch", [
   /* Start MkDocs server */
   if (args.mkdocs)
     gulp.start("mkdocs:serve")
-
-  /* Start karma test runner */
-  // if (args.karma)
-  //   gulp.start("tests:unit:watch")
 
   /* Rebuild stylesheets */
   gulp.watch([

@@ -1,3 +1,15 @@
+mkdocs-material-1.0.5 (2017-02-18)
+
+  * Fixed #153: Sidebar flows out of constrained area in Chrome 56
+  * Fixed #159: Footer jitter due to JavaScript if content is short
+
+mkdocs-material-1.0.4 (2017-02-16)
+
+  * Fixed #142: Documentation build errors if h1 is defined as raw HTML
+  * Fixed #164: PyPI release does not build and install
+  * Fixed offsets of targeted headlines
+  * Increased sidebar font size by 0.12rem
+
 mkdocs-material-1.0.3 (2017-01-22)
 
   * Fixed #117: Table of contents items don't blur on fast scrolling

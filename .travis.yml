@@ -21,30 +21,15 @@
 language: node_js
 sudo: false
 
+# -----------------------------------------------------------------------------
+# Regular builds
+# -----------------------------------------------------------------------------
+
 # Node.js versions
 node_js:
   - 5
   - 6
   - 7
-
-# Build visual tests separately
-matrix:
-  include:
-    - node_js: 5
-      addons:
-        artifacts:
-          paths:
-            - gemini-report
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - gcc-4.8
-            - g++-4.8
-      env:
-        - CXX=g++-4.8
-      install: yarn install
-      script: yarn run test:visual:run
 
 # Limit clone depth to 5, to speed up build
 git:
@@ -58,13 +43,72 @@ cache:
     - node_modules
 
 # Install yarn as Travis doesn't support it out of the box
-before_install: npm install -g yarn
-
-# Do not install optional dependencies by default
-install: yarn install --ignore-optional
+before_install:
+  - npm install -g yarn
 
 # Install dependencies
-before_script: pip install --user -r requirements.txt
+install:
+  - yarn install --ignore-optional
+  - pip install --user -r requirements.txt
 
 # Perform build and tests
-script: yarn run build
+script:
+  - yarn run build
+
+# -----------------------------------------------------------------------------
+# Additional builds
+# -----------------------------------------------------------------------------
+
+# Matrix for additional builds
+matrix:
+  include:
+
+    # Build release and docker image and send to PyPI and Docker Hub.
+    - node_js: 5
+      services:
+        - docker
+      env:
+        - __TASK=RELEASE
+
+      # If we're not on a release branch, exit early and indicate success
+      before_install:
+        - echo "$TRAVIS_BRANCH" | grep -qvE "^[0-9.]+$" && exit 0; :;
+
+      # Install wheel for build
+      install:
+        - pip install wheel
+
+      # Perform build
+      script:
+        - python setup.py build sdist bdist_wheel --universal
+        - docker build -t $TRAVIS_REPO_SLUG .
+
+      # If build was successful, publish
+      after_success:
+
+        # Install twine and push release to PyPI
+        - pip install twine
+        - twine upload -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
+
+        # Push to Docker Hub
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker tag $TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG:$TRAVIS_BRANCH
+        - docker tag $TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG:latest
+        - docker push $TRAVIS_REPO_SLUG
+
+#      # Build visual tests separately - temporary disabled until tests stable
+#     - node_js: 5
+#       addons:
+#         artifacts:
+#           paths:
+#             - gemini-report
+#         apt:
+#           sources:
+#             - ubuntu-toolchain-r-test
+#           packages:
+#             - gcc-4.8
+#             - g++-4.8
+#       env:
+#         - CXX=g++-4.8
+#       install: yarn install
+#       script: yarn run test:visual:run

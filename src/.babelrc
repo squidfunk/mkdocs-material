@@ -4,7 +4,7 @@
   ],
   "plugins": [
     ["transform-react-jsx", {
-      "pragma": "JSX.createElement"
+      "pragma": "Jsx.createElement"
     }]
   ]
 }

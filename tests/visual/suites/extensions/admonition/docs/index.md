@@ -1,5 +1,9 @@
 # Suite
 
+For this test, the header is set to `display: none`, as Gemini aligns the
+elements to be captured with the top of the page, thus getting blocked by the
+fixed positioned header.
+
 <style>
   .md-header {
     display: none;

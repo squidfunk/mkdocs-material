@@ -27,9 +27,16 @@
 export default class Blur {
 
   /**
-   * Blur anchors within the navigation above current page y-offset
+   * Blur links within the table of contents above current page y-offset
    *
    * @constructor
+   *
+   * @property {NodeList<HTMLElement>} els_ - Table of contents links
+   * @property {Array<HTMLElement>} anchors_ - Referenced anchor nodes
+   * @property {number} index_ - Current link index
+   * @property {number} offset_ - Current page y-offset
+   * @property {boolean} dir_ - Scroll direction change
+   *
    * @param {(string|NodeList<HTMLElement>)} els - Selector or HTML elements
    */
   constructor(els) {
@@ -38,27 +45,28 @@ export default class Blur {
       : els
 
     /* Initialize index and page y-offset */
-    this.index_  = 0
+    this.index_ = 0
     this.offset_ = window.pageYOffset
 
     /* Necessary state to correctly reset the index */
     this.dir_ = false
 
     /* Index anchor node offsets for fast lookup */
-    this.anchors_ = [].map.call(this.els_, el => {
-      return document.getElementById(el.hash.substring(1))
-    })
+    this.anchors_ = [].reduce.call(this.els_, (anchors, el) => {
+      return anchors.concat(
+        document.getElementById(el.hash.substring(1)) || [])
+    }, [])
   }
 
   /**
-   * Initialize anchor states
+   * Initialize blur states
    */
   setup() {
     this.update()
   }
 
   /**
-   * Update anchor states
+   * Update blur states
    *
    * Deduct the static offset of the header (56px) and sidebar offset (24px),
    * see _permalinks.scss for more information.
@@ -67,7 +75,7 @@ export default class Blur {
     const offset = window.pageYOffset
     const dir = this.offset_ - offset < 0
 
-    /* Hack: reset index if direction changed, to catch very fast scrolling,
+    /* Hack: reset index if direction changed to catch very fast scrolling,
        because otherwise we would have to register a timer and that sucks */
     if (this.dir_ !== dir)
       this.index_ = dir
@@ -109,7 +117,7 @@ export default class Blur {
   }
 
   /**
-   * Reset anchor states
+   * Reset blur states
    */
   reset() {
     Array.prototype.forEach.call(this.els_, el => {

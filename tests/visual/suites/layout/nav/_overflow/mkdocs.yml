@@ -23,9 +23,9 @@ site_name: Pneumonoultramicroscopicsilicovolcanoconiosis
 pages:
   - Pneumonoultramicroscopicsilicovolcanoconiosis: index.md
   - Supercalifragilisticexpialidocious:
-    - Pseudopseudohypoparathyroidism: default.md
-    - Floccinaucinihilipilification: default.md
-    - Antidisestablishmentarianism: default.md
+    - Pseudopseudohypoparathyroidism: nested.md
+    - Floccinaucinihilipilification: _.md
+    - Antidisestablishmentarianism: _.md
 
 # Reset webfonts because of flaky tests
 extra:

@@ -12,10 +12,28 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.0.3
+# Version 1.0.4
 ```
 
 ## Changelog
+
+### 1.0.5 <small> _ February 18, 2017</small>
+
+* Fixed [#153][153]: Sidebar flows out of constrained area in Chrome 56
+* Fixed [#159][159]: Footer jitter due to JavaScript if content is short
+
+  [153]: https://github.com/squidfunk/mkdocs-material/issues/153
+  [159]: https://github.com/squidfunk/mkdocs-material/issues/159
+
+### 1.0.4 <small> _ February 16, 2017</small>
+
+* Fixed [#142][142]: Documentation build errors if `h1` is defined as raw HTML
+* Fixed [#164][164]: PyPI release does not build and install
+* Fixed offsets of targeted headlines
+* Increased sidebar font size by `0.12rem`
+
+  [142]: https://github.com/squidfunk/mkdocs-material/issues/142
+  [164]: https://github.com/squidfunk/mkdocs-material/issues/164
 
 ### 1.0.3 <small> _ January 22, 2017</small>
 

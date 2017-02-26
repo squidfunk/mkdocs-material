@@ -19,7 +19,11 @@
 # IN THE SOFTWARE.
 
 # Test suite
-site_name: Admonition Test
+site_name: Test
+pages:
+  - Lorem ipsum dolor sit amet: index.md
+
+# Extensions
 markdown_extensions:
   - markdown.extensions.admonition
 

@@ -30,21 +30,27 @@ export default class Repository {
    * Render repository information
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - Repository information
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.el_ = ref
   }
 
   /**
-   * Initialize the source repository
+   * Initialize the repository
    *
-   * @param {Array.<string>} facts - Facts to be rendered
+   * @param {Array<string>} facts - Facts to be rendered
    */
   initialize(facts) {
-    if (facts.length)
+    if (facts.length && this.el_.children.length)
       this.el_.children[this.el_.children.length - 1].appendChild(
         <ul class="md-source__facts">
           {facts.map(fact => <li class="md-source__fact">{fact}</li>)}

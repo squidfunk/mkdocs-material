@@ -27,18 +27,26 @@
 export default class Toggle {
 
   /**
-   * Show tabs depending on scroll offset
+   * Toggle tabs visibility depending on page y-offset
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - Content container
+   * @property {number} offset_ - Toggle page-y offset
+   * @property {boolean} active_ - Tabs visibility
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    */
   constructor(el) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof Node))
+      throw new ReferenceError
+    this.el_ = ref
 
-    /* Initialize height and state */
-    this.height_ = 5
+    /* Initialize offset and state */
+    this.offset_ = 5
     this.active_ = false
   }
 
@@ -46,7 +54,7 @@ export default class Toggle {
    * Update visibility
    */
   update() {
-    const active = window.pageYOffset >= this.height_
+    const active = window.pageYOffset >= this.offset_
     if (active !== this.active_)
       this.el_.dataset.mdState = (this.active_ = active) ? "hidden" : ""
   }
