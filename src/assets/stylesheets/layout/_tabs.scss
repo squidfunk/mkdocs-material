@@ -79,11 +79,12 @@
     }
   }
 
-  // Hide tabs upon scrolling - disable transition to minimizes repaints whilte
-  // scrolling down, while scrolling up seems to be okay
+  // Fade-out tabs background upon scrolling
   &[data-md-state="hidden"] {
     background: $md-color-primary;
 
+    // Hide tabs upon scrolling - disable transition to minimizes repaints whilte
+    // scrolling down, while scrolling up seems to be okay
     .md-tabs__link {
       transform: translateY(50%);
       transition:

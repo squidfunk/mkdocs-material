@@ -7,7 +7,9 @@ mkdocs-material-1.1.0 (2017-xx-xx)
   * Fixed #175: Tables cannot be set to 100% width
   * Fixed #173: Dictionary elements have no bottom spacing
   * Fixed race conditions in build related to asset revisioning
+  * Fixed accidentally re-introduced Permalink on top-level headline
   * Refactored and automated Docker build and PyPI release
+  * Refactored build scripts
   * Refactored styles related to tables
 
 mkdocs-material-1.0.5 (2017-02-18)

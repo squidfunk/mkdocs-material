@@ -135,6 +135,20 @@ button[data-md-color-accent] {
         border-left: 0.4rem solid $color;
       }
     }
+
+    // [screen +]: Set background color for tabs
+    @include break-from-device(screen) {
+
+      // Tabs with outline
+      .md-tabs {
+        background: mix($color, $md-color-black, 75%);
+
+        // Fade-out tabs background upon scrolling
+        &[data-md-state="hidden"] {
+          background: $color;
+        }
+      }
+    }
   }
 }
 
