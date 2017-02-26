@@ -21,18 +21,18 @@
 # IN THE SOFTWARE.
 
 # Check if "npm install" was executed
-if [[ ! -d `npm bin` ]]; then
+if [[ ! -d $(npm bin) ]]; then
   echo "\"node_modules\" not found:"
   echo "npm install"
   exit 1
 fi
 
 # Run ESLint
-`npm bin`/eslint --max-warnings 0 .
+$(npm bin)/eslint --max-warnings 0 .
 ESLINT=$?
 
 # Run Stylelint
-`npm bin`/stylelint `find src/assets -name *.scss`
+$(npm bin)/stylelint `find src/assets -name *.scss`
 STYLELINT=$?
 
 # If one command failed, exit with error

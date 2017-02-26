@@ -21,12 +21,12 @@
 # IN THE SOFTWARE.
 
 # Check if "npm install" was executed
-if [[ ! -d `npm bin` ]]; then
+if [[ ! -d $(npm bin) ]]; then
   echo "\"node_modules\" not found:"
   echo "npm install"
   exit 1
 fi
 
 # Run command
-`npm bin`/gulp clean && \
-`npm bin`/gulp watch --no-lint "$@"
+$(npm bin)/gulp clean && \
+$(npm bin)/gulp watch --no-lint "$@"
