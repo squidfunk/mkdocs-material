@@ -26,6 +26,9 @@
 
 // Content container
 .md-content {
+  // Hack: setting overflow to hidden induces new layer borders which omits
+  // massive repaints because of the margins of the inner elements
+  overflow: hidden;
 
   // [tablet landscape +]: Add space for table of contents
   @include break-from-device(tablet landscape) {
@@ -35,9 +38,6 @@
   // [screen +]: Add space for table of contents
   @include break-from-device(screen) {
     margin-left: 24.2rem;
-    // Hack: setting overflow to auto induces margin collapse which omits
-    // massive repaints because of the margins of the inner elements
-    overflow: auto;
   }
 
   // Define spacing
@@ -55,20 +55,43 @@
     }
   }
 
-  // Icons (edit button)
-  &__edit {
+  // Icons
+  &__icon {
     @extend %md-icon__button;
 
+    position: relative;
+    margin-top: 0.8rem;
     float: right;
+
+    // TODO
+    html body .md-typeset & {
+      color: $md-color-black--lighter;
+    }
 
     // [tablet portrait -]: Align edit link with search icon
     @include break-to-device(tablet portrait) {
       margin-right: -0.8rem;
+
+      // TODO
+      & + & {
+        margin-right: 0.4rem;
+      }
     }
 
     // Hide for print
     @media print {
       display: none;
+    }
+
+    // TODO
+    & + &::before {
+      display: block;
+      position: absolute;
+      top: -0.4rem;
+      right: -0.4rem;
+      height: 4.8rem;
+      border-right: 0.1rem solid $md-color-black--lighter;
+      content: "";
     }
   }
 }

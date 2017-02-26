@@ -36,6 +36,11 @@
     display: none;
   }
 
+  // Hide for print
+  @media print {
+    display: none;
+  }
+
   // List of items
   &__list {
     margin: 0;
@@ -82,6 +87,7 @@
   // Fade-out tabs background upon scrolling
   &[data-md-state="hidden"] {
     background: $md-color-primary;
+    pointer-events: none;
 
     // Hide tabs upon scrolling - disable transition to minimizes repaints whilte
     // scrolling down, while scrolling up seems to be okay

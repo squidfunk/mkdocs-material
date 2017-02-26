@@ -32,7 +32,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-e17eeafcbc.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-646a8e0c44.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-892b79c5c5.palette.css">
       {% endif %}
@@ -108,14 +108,25 @@
           {% endblock %}
           <div class="md-content">
             <article class="md-content__inner md-typeset">
-               {% if config.edit_uri %}
-                 <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__edit">edit</a>
-               {% endif %}
+              {% if config.edit_uri %}
+                <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">edit</a>
+              {% endif %}
               {% block content %}
+                {% if page.meta.source %}
+                  <a href="{{ page.edit_url }}" title="{{ lang.t('source.link.title') }}" class="md-icon md-content__icon">folder_open</a>
+                {% endif %}
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
                 {{ page.content }}
+                {% if page.meta.source %}
+                  <hr>
+                  <ul>
+                    {% for file in page.meta.source %}
+                      <li><a href="#"><code>{{ file }}</code></a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
               {% endblock %}
               {% if config.extra.disqus and not page.is_homepage %}
                 <h2>{{ lang.t('comments') }}</h2>

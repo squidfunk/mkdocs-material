@@ -30,7 +30,7 @@
   width: 24.2rem;
   padding: 2.4rem 0;
   float: left;
-  overflow: visible;
+  overflow: hidden;
 
   // Hide for print
   @media print {
@@ -41,7 +41,6 @@
   &[data-md-state="lock"] {
     position: fixed;
     top: 5.6rem;
-    backface-visibility: hidden;
   }
 
   // [tablet -]: Convert navigation to drawer

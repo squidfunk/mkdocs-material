@@ -1,3 +1,6 @@
+source: src/assets/javascripts/application.js
+        src/assets/stylesheets/application.scss
+
 # Getting started
 
 ## Installation
