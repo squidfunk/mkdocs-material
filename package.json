@@ -44,6 +44,7 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-register": "^6.23.0",
     "babel-root-import": "^4.1.5",
+    "chalk": "^1.1.3",
     "core-js": "^2.4.1",
     "css-mqpacker": "^5.0.1",
     "custom-event-polyfill": "^0.3.0",
@@ -93,13 +94,11 @@
     "yargs": "^6.6.0"
   },
   "optionalDependencies": {
-    "chai": "^3.5.0",
     "eslint-plugin-mocha": "^4.8.0",
     "gemini": "^4.14.3",
-    "mocha": "^3.2.0",
     "moniker": "^0.1.2",
-    "saucelabs": "^1.4.0",
     "sauce-connect-launcher": "^1.2.0",
+    "saucelabs": "^1.4.0",
     "selenium-standalone": "^6.0.0"
   },
   "engines": {
