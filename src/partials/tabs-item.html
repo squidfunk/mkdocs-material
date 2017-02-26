@@ -20,9 +20,36 @@
   IN THE SOFTWARE.
 -->
 
-{% extends "base.html" %}
+<!-- Home page -->
+{% if nav_item.is_homepage %}
+  <li class="md-tabs__item">
+    {% if not page.ancestors | length and nav | selectattr("url", page.url) %}
+      <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
+          class="md-tabs__link md-tabs__link--active">
+        {{ nav_item.title }}
+      </a>
+    {% else %}
+      <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
+          class="md-tabs__link">
+        {{ nav_item.title }}
+      </a>
+    {% endif %}
+  </li>
 
-<!-- Content block -->
-{% block content %}
-  <h1>404 - Not found</h1>
-{% endblock %}
+<!-- Main navigation item with nested items -->
+{% elif nav_item.children and nav_item.children | length > 0 %}
+  <li class="md-tabs__item">
+    {% if nav_item.active %}
+      <a href="{{ (nav_item.children | first).url }}"
+          title="{{ nav_item.title }}"
+          class="md-tabs__link md-tabs__link--active">
+        {{ nav_item.title }}
+      </a>
+    {% else %}
+      <a href="{{ (nav_item.children | first).url }}"
+          title="{{ nav_item.title }}" class="md-tabs__link">
+        {{ nav_item.title }}
+      </a>
+    {% endif %}
+  </li>
+{% endif %}

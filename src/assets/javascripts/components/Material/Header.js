@@ -20,16 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-import clean from "del"
-import vinyl from "vinyl-paths"
+import Shadow from "./Header/Shadow"
 
 /* ----------------------------------------------------------------------------
- * Task: clean views
+ * Module
  * ------------------------------------------------------------------------- */
 
-export default (gulp, config) => {
-  return () => {
-    return gulp.src(`${config.views.build}/**/*.{html,py}`)
-      .pipe(vinyl(clean))
-  }
+export default {
+  Shadow
 }

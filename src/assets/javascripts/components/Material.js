@@ -21,10 +21,12 @@
  */
 
 import Event from "./Material/Event"
+import Header from "./Material/Header"
 import Nav from "./Material/Nav"
 import Search from "./Material/Search"
 import Sidebar from "./Material/Sidebar"
 import Source from "./Material/Source"
+import Tabs from "./Material/Tabs"
 
 /* ----------------------------------------------------------------------------
  * Module
@@ -32,8 +34,10 @@ import Source from "./Material/Source"
 
 export default {
   Event,
+  Header,
   Nav,
   Search,
   Sidebar,
-  Source
+  Source,
+  Tabs
 }

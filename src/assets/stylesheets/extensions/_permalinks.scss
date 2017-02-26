@@ -85,7 +85,7 @@
     padding-top: 0.8rem;
 
     // Hide anchor for top-level heading, as it makes no sense
-    &.headerlink {
+    .headerlink {
       display: none;
     }
   }

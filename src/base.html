@@ -52,20 +52,18 @@
             href="{{ base_url }}/{{ config.site_favicon }}">
       {% else %}
         <link rel="shortcut icon"
-            href="{{ base_url }}/assets/images/favicon.ico">
+            href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
 
       <!-- Generator banner -->
       <meta name="generator"
-        content="mkdocs-{{ mkdocs_version }}, $theme-name$-$theme-version$" />
+          content="mkdocs-{{ mkdocs_version }}, $theme-name$-$theme-version$" />
     {% endblock %}
 
     <!-- Block: site title -->
     {% block htmltitle %}
-      {% if page.title %}
+      {% if page.title and not page.is_homepage %}
         <title>{{ page.title }} - {{ config.site_name }}</title>
-      {% elif config.site_description %}
-        <title>{{ config.site_name }} - {{ config.site_description }}</title>
       {% else %}
         <title>{{ config.site_name }}</title>
       {% endif %}
@@ -98,7 +96,7 @@
                     | default("Roboto Mono") %}
         {% set font = text + ':300,400,400i,700|' + code | replace(' ', '+') %}
         <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family={{ font }}" />
+            href="https://fonts.googleapis.com/css?family={{ font }}" />
         <style>
           body, input {
             font-family: "{{ text }}", "Helvetica Neue",
@@ -171,6 +169,10 @@
 
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
+      {% set feature = config.extra.get("feature", {}) %}
+      {% if feature.tabs %}
+        {% include "partials/tabs.html" %}
+      {% endif %}
 
       <!-- Main container -->
       <main class="md-main">

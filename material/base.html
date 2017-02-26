@@ -17,15 +17,13 @@
       {% if config.site_favicon %}
         <link rel="shortcut icon" href="{{ base_url }}/{{ config.site_favicon }}">
       {% else %}
-        <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.0.5">
     {% endblock %}
     {% block htmltitle %}
-      {% if page.title %}
+      {% if page.title and not page.is_homepage %}
         <title>{{ page.title }} - {{ config.site_name }}</title>
-      {% elif config.site_description %}
-        <title>{{ config.site_name }} - {{ config.site_description }}</title>
       {% else %}
         <title>{{ config.site_name }}</title>
       {% endif %}
@@ -34,9 +32,9 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-a7dac97dbb.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-45f91e8d31.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-49c4a440b6.palette.css">
       {% endif %}
     {% endblock %}
     {% block fonts %}
@@ -82,6 +80,10 @@
       {% include "partials/header.html" %}
     {% endblock %}
     <div class="md-container">
+      {% set feature = config.extra.get("feature", {}) %}
+      {% if feature.tabs %}
+        {% include "partials/tabs.html" %}
+      {% endif %}
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           {% block site_nav %}
@@ -141,7 +143,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-8dc3dfc020.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-30ac6a1727.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
