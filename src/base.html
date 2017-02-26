@@ -211,14 +211,21 @@
             <article class="md-content__inner md-typeset">
 
               <!-- Edit button, if URL was defined -->
-               {% if config.edit_uri %}
-                 <a href="{{ page.edit_url }}"
-                      title="{{ lang.t('edit.link.title') }}"
-                      class="md-icon md-content__edit">edit</a>
-               {% endif %}
+              {% if config.edit_uri %}
+                <a href="{{ page.edit_url }}"
+                    title="{{ lang.t('edit.link.title') }}"
+                    class="md-icon md-content__icon">edit</a>
+              {% endif %}
 
               <!-- Block: content -->
               {% block content %}
+
+                <!-- Linked source files -->
+                {% if page.meta.source %}
+                  <a href="{{ page.edit_url }}"
+                      title="{{ lang.t('source.link.title') }}"
+                      class="md-icon md-content__icon">folder_open</a>
+                {% endif %}
 
                 <!--
                   Hack: check whether the content contains a h1 headline. If it
@@ -231,6 +238,15 @@
 
                 <!-- Content -->
                 {{ page.content }}
+
+                {% if page.meta.source %}
+                  <hr>
+                  <ul>
+                    {% for file in page.meta.source %}
+                      <li><a href="#"><code>{{ file }}</code></a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
               {% endblock %}
 
               <!-- Disqus integration -->
