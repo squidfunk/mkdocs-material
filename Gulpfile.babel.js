@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+import chalk from "chalk"
 import gulp from "gulp"
 import notifier from "node-notifier"
 import plumber from "gulp-plumber"
@@ -30,6 +31,7 @@ import yargs from "yargs"
  * Configuration and arguments
  * ------------------------------------------------------------------------- */
 
+/* General configuration */
 const config = {
   assets: {
     src: "src/assets",                 /* Source directory for assets */
@@ -45,14 +47,104 @@ const config = {
   }
 }
 
+/* Commandline arguments */
 let args = yargs
-  .default("clean",      false)        /* Clean before build */
-  .default("karma",      true)         /* Karma watchdog */
-  .default("lint",       true)         /* Lint sources */
-  .default("mkdocs",     true)         /* MkDocs watchdog */
-  .default("optimize",   false)        /* Optimize sources */
-  .default("revision",   false)        /* Revision assets */
-  .default("sourcemaps", false)        /* Create sourcemaps */
+  .locale("en")
+  .usage(`\n${chalk.yellow("Usage:")} yarn run <command> -- [options]`)
+  .wrap(84)
+  .updateStrings({
+    "Commands:": chalk.yellow("Commands:"),
+    "Examples:": chalk.yellow("Examples:")
+  })
+
+  /* Commands */
+  .command("build", chalk.grey("build assets and views"))
+  .command("clean", chalk.grey("clean build artifacts"))
+  .command("flow", chalk.grey("type check with flow"))
+  .command("help", chalk.grey("display this message"))
+  .command("lint", chalk.grey("lint sources"))
+  .command("start", chalk.grey("start development server"))
+  .command("test:visual:run", chalk.grey("run visual tests"))
+  .command("test:visual:session", chalk.grey("start test server"))
+  .command("test:visual:update", chalk.grey("update reference images"))
+
+  /* Options */
+  .group([
+    "help", "clean"
+  ], chalk.yellow("Options:"))
+  .help("help", chalk.grey("display this message"))
+  .option("clean", {
+    describe: chalk.grey("clean artifacts before command"),
+    default: false,
+    global: true
+  })
+
+  /* Build options */
+  .group([
+    "lint", "optimize", "revision", "sourcemaps", "mkdocs"
+  ], chalk.yellow("Build Options:"))
+  .option("lint", {
+    describe: chalk.grey("lint sources before build"),
+    default: true,
+    global: true
+  })
+  .option("optimize", {
+    describe: chalk.grey("optimize and minify assets"),
+    default: true,
+    global: true
+  })
+  .option("revision", {
+    describe: chalk.grey("revision assets for cache busting"),
+    default: false,
+    global: true
+  })
+  .option("sourcemaps", {
+    describe: chalk.grey("generate sourcemaps for assets"),
+    default: false,
+    global: true
+  })
+  .option("mkdocs", {
+    describe: chalk.grey("build documentation or start watchdog"),
+    default: true,
+    global: true
+  })
+
+  /* Test options */
+  .group([
+    "grep", "browser"
+  ], chalk.yellow("Test Options:"))
+  .option("grep", {
+    describe: chalk.grey("only execute tests matching a regex"),
+    global: true
+  })
+  .option("browser", {
+    describe: chalk.grey("only execute tests for the given browser"),
+    global: true
+  })
+
+  /* Example commands */
+  .example("yarn run build")
+  .example("yarn run build -- --no-optimize")
+  .example("yarn run clean")
+  .example("yarn run flow")
+  .example("yarn run lint")
+  .example("yarn run start")
+  .example("yarn run test:visual:run")
+  .example("yarn run test:visual:run -- --no-clean")
+  .example("yarn run test:visual:run -- --grep nav")
+  .example("yarn run test:visual:run -- --browser ie11")
+  .example("yarn run test:visual:session")
+  .example("yarn run test:visual:update")
+
+  /* Document Environment variables */
+  .epilogue(
+    `${chalk.yellow("Environment:")}\n` +
+    `  SAUCE=${chalk.grey("<true|false)>")}\n` +
+    `  SAUCE_USERNAME=${chalk.grey("<username>")}\n` +
+    `  SAUCE_ACCESS_KEY=${chalk.grey("<key>")}`
+  )
+
+  /* Apply to process.argv */
   .argv
 
 /* Only use the last seen value if boolean, so overrides are possible */
@@ -394,6 +486,11 @@ gulp.task("watch", [
     `${config.views.src}/**/*.html`
   ], ["views:build"])
 })
+
+/*
+ * Print help message
+ */
+gulp.task("help")
 
 /*
  * Build assets by default
