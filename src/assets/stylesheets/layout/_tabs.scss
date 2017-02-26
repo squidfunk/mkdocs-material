@@ -27,9 +27,9 @@
 // Tabs with outline
 .md-tabs {
   width: 100%;
-  background: $md-color-primary;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  transition: background 0.25s;
+  background: mix($md-color-primary, $md-color-black, 75%);
+  overflow: auto;
 
   // [tablet -]: Hide tabs for tablet and below, as they don't make any sense
   @include break-to-device(tablet) {
@@ -81,9 +81,72 @@
 
   // Hide tabs upon scrolling - disable transition to minimizes repaints whilte
   // scrolling down, while scrolling up seems to be okay
-  &[data-md-state="hidden"] .md-tabs__link {
-    transform: translateY(50%);
-    transition: none;
-    opacity: 0;
+  &[data-md-state="hidden"] {
+    background: $md-color-primary;
+
+    .md-tabs__link {
+      transform: translateY(50%);
+      transition:
+        color 0.25s,
+        transform 0s 0.4s,
+        opacity 0.1s;
+      opacity: 0;
+    }
+  }
+
+  // [screen +]: Adjust main navigation styles
+  @include break-from-device(screen) {
+
+    // Hide 1st level nested items, as they are listed in the tabs by setting
+    // font-size to zero, as we need to preserve bottom padding
+    ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
+      font-size: 0;
+    }
+
+    // We're on the 2nd+ level
+    &--active ~ .md-main {
+
+      // Adjust 1st level styles
+      .md-nav--primary {
+
+        // Hide site title
+        .md-nav__title--site {
+          display: none;
+        }
+
+        // Hide 1st level normal items
+        & > .md-nav__list > .md-nav__item {
+          font-size: 0;
+
+          // Show 1st level nested items and induce margin collapse
+          &--nested {
+            font-size: 1.4rem;
+            overflow: auto;
+
+            // Render link same as main navigation title
+            > .md-nav__link {
+              margin-top: 1.2rem;
+              font-weight: 700;
+              pointer-events: none;
+
+              // Hide icon for expansion
+              &::after {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      // Always expand nested navigation on 2nd level
+      .md-nav[data-md-level="1"] {
+        max-height: initial;
+
+        // Remove left spacing on 2nd level items
+        > .md-nav__list > .md-nav__item {
+          padding-left: 0;
+        }
+      }
+    }
   }
 }

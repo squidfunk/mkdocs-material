@@ -20,34 +20,28 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Main navigation item with nested items -->
-{% if nav_item.children and nav_item.children | length > 0 %}
+<!-- Home page -->
+{% if nav_item.is_homepage %}
   <li class="md-tabs__item">
-    <a href="{{ nav_item.children[0].url }}" title="{{ nav_item.title }}"
+    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
         class="md-tabs__link
-          {% if nav_item.active %}
-            md-tabs__link--active
-          {% endif %}">
+          {% for nav_item_ in nav %}
+            {% if nav_item_.url == page.url %}
+              md-tabs__link--active
+            {% endif %}
+          {% endfor %}">
       {{ nav_item.title }}
     </a>
   </li>
 
-<!-- Home page -->
-{% elif nav_item.url == base_url %}
+<!-- Main navigation item with nested items -->
+{% elif nav_item.children and nav_item.children | length > 0 %}
   <li class="md-tabs__item">
-
-    <!--
-      Hack: the item should be active, if we're sure that we're on the first
-      level of the tree and the current item doesn't have children
-    -->
-    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
-        class="md-tabs__link
-          {% for nav_item_ in nav %}
-            {% if nav_item_.url == page.url and
-                  nav_item_.children | length == 0 %}
-              md-tabs__link--active
-            {% endif %}
-          {% endfor %}">
+    <a href="{{ (nav_item.children | first).url }}"
+        title="{{ nav_item.title }}" class="md-tabs__link
+          {% if nav_item.active %}
+            md-tabs__link--active
+          {% endif %}">
       {{ nav_item.title }}
     </a>
   </li>

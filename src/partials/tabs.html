@@ -20,8 +20,12 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Tabs with outline -->
-<nav class="md-tabs" data-md-component="tabs">
+<!-- Tabs with outline (level denotes the active level) -->
+<nav class="md-tabs
+      {% if page.ancestors | length > 0 %}
+        md-tabs--active
+      {% endif %}"
+    data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       {% for nav_item in nav %}
