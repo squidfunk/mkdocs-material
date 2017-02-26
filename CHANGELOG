@@ -1,3 +1,7 @@
+mkdocs-material-1.1.1 (2017-02-26)
+
+  * Fixed incorrectly displayed nested lists when using tabs
+
 mkdocs-material-1.1.0 (2017-02-26)
 
   * Added tabs navigation feature (optional)
