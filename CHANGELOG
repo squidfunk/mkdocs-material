@@ -1,16 +1,17 @@
 mkdocs-material-1.1.0 (2017-xx-xx)
 
-  * Added static type checking using Facebook's Flow
-  * Added Disqus integration (optional)
   * Added tabs navigation feature (optional)
+  * Added Disqus integration (optional)
   * Added a high resolution Favicon with the new logo
+  * Added static type checking using Facebook's Flow
   * Fixed #175: Tables cannot be set to 100% width
   * Fixed #173: Dictionary elements have no bottom spacing
   * Fixed race conditions in build related to asset revisioning
   * Fixed accidentally re-introduced Permalink on top-level headline
+  * Fixed alignment of logo in drawer on IE11
+  * Refactored styles related to tables
   * Refactored and automated Docker build and PyPI release
   * Refactored build scripts
-  * Refactored styles related to tables
 
 mkdocs-material-1.0.5 (2017-02-18)
 

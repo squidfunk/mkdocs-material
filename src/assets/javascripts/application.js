@@ -90,9 +90,10 @@ function initialize(config) { // eslint-disable-line func-style
     ], new Material.Header.Shadow("[data-md-component=container]")))
 
   /* Component: tabs visibility toggle */
-  new Material.Event.Listener(window, [
-    "scroll", "resize", "orientationchange"
-  ], new Material.Tabs.Toggle("[data-md-component=tabs]")).listen()
+  if (document.querySelector("[data-md-component=tabs]"))
+    new Material.Event.Listener(window, [
+      "scroll", "resize", "orientationchange"
+    ], new Material.Tabs.Toggle("[data-md-component=tabs]")).listen()
 
   /* Component: sidebar with navigation */
   new Material.Event.MatchMedia("(min-width: 1220px)",
