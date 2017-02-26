@@ -4,13 +4,21 @@
 and is included in the standard Markdown library. The highlighting process is
 executed during compilation of the Markdown file.
 
+!!! fail "Syntax highlighting not working?"
+
+    Please ensure that [Pygments][2] is installed. See the next section for
+    further directions on how to set up Pygments or use the official
+    [Docker image][3] with all dependencies pre-installed.
+
   [1]: https://pythonhosted.org/Markdown/extensions/code_hilite.html
+  [2]: http://pygments.org
+  [3]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
 ## Installation
 
 CodeHilite parses code blocks and wraps them in `<pre>` tags. If [Pygments][2]
 is installed, which is a generic syntax highlighter with support for over
-[300 languages][3], CodeHilite will also highlight the code block. Pygments can
+[300 languages][4], CodeHilite will also highlight the code block. Pygments can
 be installed with the following command:
 
 ``` sh
@@ -32,8 +40,7 @@ markdown_extensions:
     that and defines styles for the default `.codehilite` class, so the part
     `css_class=code` needs to be removed.
 
-  [2]: http://pygments.org
-  [3]: http://pygments.org/languages
+  [4]: http://pygments.org/languages
 
 ## Usage
 

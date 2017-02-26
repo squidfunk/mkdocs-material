@@ -42,6 +42,8 @@ extra:
     primary: indigo
     accent: indigo
   social:
+    - type: globe
+      link: http://struct.cc
     - type: github-alt
       link: https://github.com/squidfunk
     - type: twitter
