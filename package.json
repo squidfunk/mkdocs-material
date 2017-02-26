@@ -26,6 +26,7 @@
     "build": "scripts/build",
     "clean": "scripts/clean",
     "flow": "scripts/flow",
+    "help": "scripts/help",
     "lint": "scripts/lint",
     "start": "scripts/start",
     "test:visual:run": "scripts/test/visual/run",
