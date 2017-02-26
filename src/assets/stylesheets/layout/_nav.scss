@@ -137,8 +137,13 @@
 
     // Active link
     &:active,
-    &--active {
+    .md-nav__item--active > & {
       color: $md-color-primary;
+    }
+
+    // Reset active color for nested list titles
+    .md-nav__item--nested > & {
+      color: inherit;
     }
 
     // Focused or hovered link

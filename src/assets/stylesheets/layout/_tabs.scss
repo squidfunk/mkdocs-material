@@ -119,8 +119,9 @@
         & > .md-nav__list > .md-nav__item {
           font-size: 0;
 
-          // Show 1st level nested items and induce margin collapse
+          // Reset font-size for nested items and induce margin collapse
           &--nested {
+            display: none;
             font-size: 1.4rem;
             overflow: auto;
 
@@ -135,6 +136,11 @@
                 display: none;
               }
             }
+          }
+
+          // Show 1st level active nested items
+          &--active {
+            display: block;
           }
         }
       }
