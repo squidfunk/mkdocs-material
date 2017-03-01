@@ -27,7 +27,7 @@ site_url: http://squidfunk.github.io/mkdocs-material/
 # Repository
 repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
-edit_uri: tree/master/docs
+#edit_uri: tree/master/docs
 
 # Copyright
 copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
@@ -37,8 +37,8 @@ theme_dir: material
 
 # Options
 extra:
-  feature:
-    tabs: true
+  #feature:
+  #  tabs: true
   palette:
     primary: indigo
     accent: indigo

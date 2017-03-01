@@ -108,10 +108,10 @@
           {% endblock %}
           <div class="md-content">
             <article class="md-content__inner md-typeset">
-              {% if config.edit_uri %}
-                <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">edit</a>
-              {% endif %}
               {% block content %}
+                {% if config.edit_uri %}
+                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">edit</a>
+                {% endif %}
                 {% if page.meta.source %}
                   <a href="{{ page.edit_url }}" title="{{ lang.t('source.link.title') }}" class="md-icon md-content__icon">folder_open</a>
                 {% endif %}
