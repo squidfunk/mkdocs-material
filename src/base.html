@@ -210,15 +210,15 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
 
-              <!-- Edit button, if URL was defined -->
-              {% if config.edit_uri %}
-                <a href="{{ page.edit_url }}"
-                    title="{{ lang.t('edit.link.title') }}"
-                    class="md-icon md-content__icon">edit</a>
-              {% endif %}
-
               <!-- Block: content -->
               {% block content %}
+
+                <!-- Edit button, if URL was defined -->
+                {% if config.edit_uri %}
+                  <a href="{{ page.edit_url }}"
+                      title="{{ lang.t('edit.link.title') }}"
+                      class="md-icon md-content__icon">edit</a>
+                {% endif %}
 
                 <!-- Linked source files -->
                 {% if page.meta.source %}
