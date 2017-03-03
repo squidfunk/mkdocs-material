@@ -12,10 +12,20 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.1.1
+# Version 1.2.0
 ```
 
 ## Changelog
+
+### 1.2.0 <small> _ March 3, 2017</small>
+
+* Added `quote` (synonym: `cite`) style for Admonition
+* Added help message to build pipeline
+* Fixed wrong navigation link colors when applying palette
+* Fixed [#197][197]: Link missing in tabs navigation on deeply nested items
+* Removed unnecessary dev dependencies
+
+  [197]: https://github.com/squidfunk/mkdocs-material/issues/197
 
 ### 1.1.1 <small> _ February 26, 2017</small>
 
