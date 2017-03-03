@@ -1,3 +1,11 @@
+mkdocs-material-1.2.0 (2017-03-03)
+
+  * Added quote (synonym: cite) style for Admonition
+  * Added help message to build pipeline
+  * Fixed wrong navigation link colors when applying palette
+  * Fixed #197: Link missing in tabs navigation on deeply nested items
+  * Removed unnecessary dev dependencies
+
 mkdocs-material-1.1.1 (2017-02-26)
 
   * Fixed incorrectly displayed nested lists when using tabs
