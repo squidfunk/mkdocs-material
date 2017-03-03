@@ -37,8 +37,8 @@ theme_dir: material
 
 # Options
 extra:
-  #feature:
-  #  tabs: true
+  # feature:
+  #   tabs: true
   palette:
     primary: indigo
     accent: indigo
