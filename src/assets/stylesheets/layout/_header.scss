@@ -37,6 +37,8 @@
   background-color: $md-color-primary;
   color: $md-color-white;
   z-index: 1;
+  // Hack: putting the header on the GPU avoids unnecessary repaints
+  backface-visibility: hidden;
 
   // Always show shadow, in case JavaScript is not available
   .no-js & {

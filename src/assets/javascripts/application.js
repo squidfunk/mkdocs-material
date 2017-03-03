@@ -87,7 +87,9 @@ function initialize(config) { // eslint-disable-line func-style
   new Material.Event.MatchMedia("(min-width: 1220px)",
     new Material.Event.Listener(window, [
       "scroll", "resize", "orientationchange"
-    ], new Material.Header.Shadow("[data-md-component=container]")))
+    ], new Material.Header.Shadow(
+      "[data-md-component=container]",
+      "[data-md-component=header]")))
 
   /* Component: tabs visibility toggle */
   if (document.querySelector("[data-md-component=tabs]"))
@@ -99,18 +101,24 @@ function initialize(config) { // eslint-disable-line func-style
   new Material.Event.MatchMedia("(min-width: 1220px)",
     new Material.Event.Listener(window, [
       "scroll", "resize", "orientationchange"
-    ], new Material.Sidebar.Position("[data-md-component=navigation]")))
+    ], new Material.Sidebar.Position(
+      "[data-md-component=navigation]",
+      "[data-md-component=header]")))
 
   /* Component: sidebar with table of contents - register two separate
      listeners, as the offset at the top might change */
   new Material.Event.MatchMedia("(min-width: 960px) and (max-width: 1219px)",
     new Material.Event.Listener(window, [
       "scroll", "resize", "orientationchange"
-    ], new Material.Sidebar.Position("[data-md-component=toc]")))
+    ], new Material.Sidebar.Position(
+      "[data-md-component=toc]",
+      "[data-md-component=header]")))
   new Material.Event.MatchMedia("(min-width: 1220px)",
     new Material.Event.Listener(window, [
       "scroll", "resize", "orientationchange"
-    ], new Material.Sidebar.Position("[data-md-component=toc]")))
+    ], new Material.Sidebar.Position(
+      "[data-md-component=toc]",
+      "[data-md-component=header]")))
 
   /* Component: link blurring for table of contents */
   new Material.Event.MatchMedia("(min-width: 960px)",
