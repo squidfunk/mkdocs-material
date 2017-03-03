@@ -37,21 +37,24 @@ export default class Shadow {
    * @property {boolean} active_ - Header shadow state
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
+   * @param {(string|HTMLElement)} header - Selector or HTML element
    */
-  constructor(el) {
-    const ref = (typeof el === "string")
+  constructor(el, header) {
+    let ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
     if (!(ref instanceof HTMLElement) ||
         !(ref.parentNode instanceof HTMLElement))
       throw new ReferenceError
-
-    /* Grab parent and header */
     this.el_ = ref.parentNode
-    if (!(this.el_.parentNode instanceof HTMLElement) ||
-        !(this.el_.parentNode.previousElementSibling instanceof HTMLElement))
+
+    /* Retrieve header */
+    ref = (typeof header === "string")
+      ? document.querySelector(header)
+      : header
+    if (!(ref instanceof HTMLElement))
       throw new ReferenceError
-    this.header_ = this.el_.parentNode.previousElementSibling
+    this.header_ = ref
 
     /* Initialize height and state */
     this.height_ = 0

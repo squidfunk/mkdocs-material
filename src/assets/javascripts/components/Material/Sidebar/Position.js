@@ -33,22 +33,32 @@ export default class Position {
    *
    * @property {HTMLElement} el_ - Sidebar
    * @property {HTMLElement} parent_ - Sidebar container
+   * @property {HTMLElement} header_ - Header
    * @property {number} height_ - Current sidebar height
    * @property {number} offset_ - Current page y-offset
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
+   * @param {(string|HTMLElement)} header - Selector or HTML element
    */
-  constructor(el) {
-    const ref = (typeof el === "string")
+  constructor(el, header) {
+    let ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
     if (!(ref instanceof HTMLElement) ||
         !(ref.parentNode instanceof HTMLElement))
       throw new ReferenceError
     this.el_ = ref
-
-    /* Initialize parent container and current height */
     this.parent_ = ref.parentNode
+
+    /* Retrieve header */
+    ref = (typeof header === "string")
+      ? document.querySelector(header)
+      : header
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.header_ = ref
+
+    /* Initialize current height */
     this.height_ = 0
   }
 
@@ -56,7 +66,13 @@ export default class Position {
    * Initialize sidebar state
    */
   setup() {
-    this.offset_ = this.el_.offsetTop - 56
+    const top = Array.prototype.reduce.call(
+      this.parent_.children, (offset, child) => {
+        return Math.max(offset, child.offsetTop)
+      }, 0)
+
+    /* Set lock offset for element with largest top offset */
+    this.offset_ = top - this.header_.offsetHeight
     this.update()
   }
 
@@ -68,15 +84,21 @@ export default class Position {
    * by the height of the fixed header (56px). Depending on the page y-offset,
    * the top offset of the sidebar must be taken into account, as well as the
    * case where the window is scrolled beyond the sidebar container.
+   *
+   * @param {Event?} ev - Event
    */
-  update() {
+  update(ev) {
     const offset  = window.pageYOffset
     const visible = window.innerHeight
+
+    /* Update offset, in case window is resized */
+    if (ev && ev.type === "resize")
+      this.setup()
 
     /* Set bounds of sidebar container - must be calculated on every run, as
        the height of the content might change due to loading images etc. */
     const bounds = {
-      top: 56,
+      top: this.header_.offsetHeight,
       bottom: this.parent_.offsetTop + this.parent_.offsetHeight
     }
 

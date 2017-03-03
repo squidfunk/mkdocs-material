@@ -88,6 +88,8 @@
     // Align SVG, do not scale, as this will incur strange formatting bugs
     // in Internet Explorer and Edge
     svg {
+      width: 2.4rem;
+      height: 2.4rem;
       margin-top: 1.2rem;
       margin-left: 1.2rem;
     }
