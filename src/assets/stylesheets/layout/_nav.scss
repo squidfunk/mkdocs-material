@@ -33,6 +33,11 @@
   &--secondary {
     transition: border-left 0.25s;
     border-left: 0.4rem solid $md-color-primary;
+
+    // Highlight active links (used for page-related meta navigation)
+    .md-nav__link--active {
+      color: $md-color-primary;
+    }
   }
 
   // List title
@@ -309,28 +314,38 @@
         }
       }
 
-      // Set nested navigation for table of contents to static
-      .md-nav--secondary .md-nav {
-        position: static;
+      // Table of contents inside navigation
+      .md-nav--secondary {
 
-        // 3rd level link
+        // Set links to static to avoid unnecessary layering
         .md-nav__link {
-          padding-left: 2.8rem;
+          position: static;
         }
 
-        // 4th level link
-        .md-nav .md-nav__link {
-          padding-left: 4rem;
-        }
+        // Set nested navigation for table of contents to static
+        .md-nav {
+          position: static;
+          background-color: transparent;
 
-        // 5th level link
-        .md-nav .md-nav .md-nav__link {
-          padding-left: 5.2rem;
-        }
+          // 3rd level link
+          .md-nav__link {
+            padding-left: 2.8rem;
+          }
 
-        // 6th level link
-        .md-nav .md-nav .md-nav .md-nav__link {
-          padding-left: 6.4rem;
+          // 4th level link
+          .md-nav .md-nav__link {
+            padding-left: 4rem;
+          }
+
+          // 5th level link
+          .md-nav .md-nav .md-nav__link {
+            padding-left: 5.2rem;
+          }
+
+          // 6th level link
+          .md-nav .md-nav .md-nav .md-nav__link {
+            padding-left: 6.4rem;
+          }
         }
       }
     }

@@ -5,13 +5,17 @@
     {% block site_meta %}
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      {% if config.site_description %}
+      {% if page and page.meta.description %}
+        <meta name="description" content="{{ page.meta.description | first }}">
+      {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
       {% if page.canonical_url %}
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
-      {% if config.site_author %}
+      {% if page and page.meta.author %}
+        <meta name="author" content="{{ page.meta.author | first }}">
+      {% elif config.site_author %}
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       {% if config.site_favicon %}
@@ -22,7 +26,9 @@
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.2.0">
     {% endblock %}
     {% block htmltitle %}
-      {% if page.title and not page.is_homepage %}
+      {% if page and page.meta.title %}
+        <title>{{ page.meta.title | first }}</title>
+      {% elif page and page.title and not page.is_homepage %}
         <title>{{ page.title }} - {{ config.site_name }}</title>
       {% else %}
         <title>{{ config.site_name }}</title>
@@ -32,9 +38,9 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-248e5b02e7.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-a0d49b40f6.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-892b79c5c5.palette.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-66fa0d9bba.palette.css">
       {% endif %}
     {% endblock %}
     {% block fonts %}
@@ -112,39 +118,30 @@
                 {% if config.edit_uri %}
                   <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">edit</a>
                 {% endif %}
-                {% if page.meta.source %}
-                  <a href="{{ page.edit_url }}" title="{{ lang.t('source.link.title') }}" class="md-icon md-content__icon">folder_open</a>
-                {% endif %}
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
                 {{ page.content }}
-                {% if page.meta.source %}
-                  <hr>
-                  <ul>
+                {% block source %}
+                  {% if page.meta.source %}
+                    <h2 id="__source">{{ lang.t('meta.source') }}</h2>
+                    {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
-                      <li><a href="#"><code>{{ file }}</code></a></li>
+                      <a href="{{
+                        [repo_url, path, file] | join('/') | replace('//', '/')
+                      }}" title="{{ file }}" class="md-source-file">
+                        {{ file }}
+                      </a>
                     {% endfor %}
-                  </ul>
+                  {% endif %}
+                {% endblock %}
+              {% endblock %}
+              {% block disqus %}
+                {% if config.extra.disqus and not page.is_homepage %}
+                  <h2 id="__comments">{{ lang.t('meta.comments') }}</h2>
+                  {% include "partials/disqus.html" %}
                 {% endif %}
               {% endblock %}
-              {% if config.extra.disqus and not page.is_homepage %}
-                <h2>{{ lang.t('comments') }}</h2>
-                <div id="disqus_thread"></div>
-                <script>
-                  var disqus_config = function () {
-                    this.page.url = "{{ page.canonical_url }}";
-                    this.page.identifier =
-                      "{{ page.canonical_url | replace(config.site_url, "") }}";
-                  };
-                  (function() {
-                    var d = document, s = d.createElement("script");
-                    s.src = "//{{ config.extra.disqus }}.disqus.com/embed.js";
-                    s.setAttribute("data-timestamp", +new Date());
-                    (d.head || d.body).appendChild(s);
-                  })();
-                </script>
-              {% endif %}
             </article>
           </div>
         </div>
@@ -154,7 +151,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-3873210def.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-7aa26ad9ec.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>

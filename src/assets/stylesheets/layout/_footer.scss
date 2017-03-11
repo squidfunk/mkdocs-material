@@ -116,6 +116,8 @@
 
   // Set spacing
   &__inner {
+    // Hack: omit subpixel rounding issues when scaling up the base font
+    margin-bottom: -0.1rem;
     padding: 0.4rem;
     overflow: auto;
   }
