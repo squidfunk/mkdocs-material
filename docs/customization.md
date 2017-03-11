@@ -4,8 +4,8 @@
 
 Project documentation is as diverse as the projects themselves and the Material
 theme is a good starting point for making it look great. However, as you write
-your documentation, you may reach some point where some small adjustments are
-necessary to preserve the style.
+your documentation, you may reach a point where some small adjustments are
+necessary to preserve the desired style.
 
 ## Adding assets
 
@@ -230,16 +230,16 @@ $md-color-accent:  $clr-teal-a700;
 
 ### Build process
 
-When you finished making your changes, you can build the theme by invoking:
+When you've finished making your changes, you can build the theme by invoking:
 
 ``` sh
 yarn run build
 ```
 
 This triggers the production-level compilation and minification of all
-stylesheets and JavaScript sources. When the command is ready, the final
-theme is located in the `material` directory. Add the `theme_dir` variable
-pointing to the aforementioned directory in your original `mkdocs.yml`.
+stylesheets and JavaScript sources. When the command exits, the final theme is
+located in the `material` directory. Add the `theme_dir` variable pointing to
+the aforementioned directory in your original `mkdocs.yml`.
 
 Now you can run `mkdocs build` and you should see your documentation with your
 changes to the original Material theme.
