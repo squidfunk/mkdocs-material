@@ -21,18 +21,18 @@
 # IN THE SOFTWARE.
 
 # Check if "yarn install" was executed
-if [[ ! -d $(yarn bin) ]]; then
+if [[ ! -d "$(yarn bin)" ]]; then
   echo "\"node_modules\" not found:"
   echo "yarn install"
   exit 1
 fi
 
 # Run ESLint
-$(yarn bin)/eslint --max-warnings 0 .
+"$(yarn bin)"/eslint --max-warnings 0 .
 ESLINT=$?
 
 # Run Stylelint
-$(yarn bin)/stylelint `find src/assets -name *.scss`
+"$(yarn bin)"/stylelint `find src/assets -name *.scss`
 STYLELINT=$?
 
 # If one command failed, exit with error
