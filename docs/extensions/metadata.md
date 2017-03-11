@@ -29,7 +29,7 @@ Example:
 ``` markdown
 title: Lorem ipsum dolor sit amet
 description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
-path: tree/master/path/to/file
+path: path/to/file
 source: file.js
 
 # Headline
@@ -48,7 +48,7 @@ title: Lorem ipsum dolor sit amet
 ```
 
 This will set the `title` tag inside the document `head` for the current page
-to the provided value. It will also override the default behaviour of Material
+to the provided value. It will also override the default behavior of Material
 for MkDocs which appends the site title using a dash as a separator to the page
 title.
 

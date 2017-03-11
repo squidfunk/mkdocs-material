@@ -91,7 +91,7 @@ parts of the theme. The theme will reside in the folder
 
     When you're running the pre-installed version of Python on macOS, `pip`
     tries to install packages in a folder for which your user might not have
-    the adequate permissions. There are two possible solutions to this:
+    the adequate permissions. There are two possible solutions for this:
 
     1. **Installing in user space** (recommended): Provide the `--user` flag
       to the install command and `pip` will install the package in a user-site
@@ -103,11 +103,10 @@ parts of the theme. The theme will reside in the folder
 
 !!! failure "Error: unrecognized theme 'material'"
 
-    If you run into this error, the most likely reason is that you installed
+    If you run into this error, the most common reason is that you installed
     MkDocs through some package manager (e.g. Homebrew or `apt-get`) and the
     Material theme through `pip`, so both packages end up in different
-    locations. MkDocs only checks it's install location for themes. To fix
-    this, ensure that you installed MkDocs through `pip`.
+    locations. MkDocs only checks it's install location for themes.
 
 ## Usage
 
@@ -124,7 +123,7 @@ If you cloned Material from GitHub:
 theme_dir: 'mkdocs-material/material'
 ```
 
-MkDocs includes a development server, so you can view your changes as you go.
+MkDocs includes a development server, so you can review your changes as you go.
 The development server can be started with the following command:
 
 ``` sh
@@ -140,7 +139,7 @@ read on and customize the theme through some options.
 ## Options
 
 The Material theme adds some extra variables for configuration via your
-project's `mkdocs.yml`. See the following section for all available options.
+project's `mkdocs.yml`. See the following sections for all available options.
 
 ### Changing the color palette
 
@@ -249,11 +248,11 @@ extra:
 
 The text font will be loaded in font-weights 400 and **700**, the `monospaced`
 font in regular weight. If you want to load fonts from other destinations or
-don't want to use the Google Fonts loading magic, just set `font` to `'none'`:
+don't want to use the Google Fonts loading magic, just set `font` to `false`:
 
 ``` yaml
 extra:
-  font: 'none'
+  font: false
 ```
 
   [12]: https://fonts.google.com/specimen/Roboto
@@ -271,15 +270,15 @@ repo_url: 'https://github.com/my-github-handle/my-project'
 ```
 
 Material will render the name of the repository next to the search bar on
-big screens and as part of the main navigation pane on smaller screen sizes.
+big screens and as part of the main navigation drawer on smaller screen sizes.
 Furthermore, if `repo_url` points to a GitHub, BitBucket or GitLab repository,
-the respective logo will be shown next to the name of the repository.
+the respective service logo will be shown next to the name of the repository.
 Additionally, for GitHub, the number of stars and forks is shown.
 
 !!! warning "Why is there an edit button at the top of every article?"
 
     If the `repo_url` is set to a GitHub or BitBucket repository, and the
-    `repo_name` is set to *GitHub* or *BitBucket* (which is the default), an
+    `repo_name` is set to *GitHub* or *BitBucket* (implied by default), an
     edit button will appear at the top of every article. This is the automatic
     behavior that MkDocs implements. See the [MkDocs documentation][15] on more
     guidance regarding the `edit_uri` attribute, which defines whether the edit
@@ -349,7 +348,8 @@ extra:
   disqus: 'your-disqus-shortname'
 ```
 
-The necessary JavaScript is automatically included.
+A new entry at the bottom of the table of contents is generated that is linking
+to the comments section. The necessary JavaScript is automatically included.
 
   [17]: https://disqus.com
 
@@ -357,7 +357,7 @@ The necessary JavaScript is automatically included.
 
 Material for MkDocs supports internationalization (i18n). In order to translate
 the labels (e.g. *Previous* and *Next* in the footer), you can override the
-file `partials/language.html` to provide your own translations inside the
+file `partials/language.html` and provide your own translations inside the
 macro `t`:
 
 ``` jinja
