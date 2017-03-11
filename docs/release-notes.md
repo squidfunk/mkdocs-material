@@ -12,10 +12,26 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.2.0
+# Version 1.3.0
 ```
 
 ## Changelog
+
+### 1.3.0 <small> _ March 11, 2017</small>
+
+* Added support for page-specific title and description using metadata
+* Added support for linking source files to documentation
+* Fixed jitter and offset of sidebar when zooming browser
+* Fixed incorrectly initialized tablet sidebar height
+* Fixed regression for [#1][1]: GitHub stars break if repo_url ends with a `/`
+* Fixed undesired white line below copyright footer due to base font scaling
+* Fixed issue with whitespace in path for scripts
+* Fixed [#205][205]: support non-fixed (static) header
+* Refactored footnote references for better visibility
+* Reduced repaints to a minimum for non-tabs configuration
+* Reduced contrast of edit button (slightly)
+
+  [205]: https://github.com/squidfunk/mkdocs-material/issues/197
 
 ### 1.2.0 <small> _ March 3, 2017</small>
 
