@@ -97,7 +97,8 @@
 
     <!-- Block: webfonts -->
     {% block fonts %}
-      {% if config.extra.font != "none" %}
+      <!-- TODO: remove the second check in the next major version -->
+      {% if config.extra.font != false and config.extra.font != "none" %}
         {% set text = config.extra.get("font", {}).text | default("Roboto") %}
         {% set code = config.extra.get("font", {}).code
                     | default("Roboto Mono") %}
