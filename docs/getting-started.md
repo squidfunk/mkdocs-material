@@ -56,20 +56,6 @@ Material can be installed with `pip`:
 pip install mkdocs-material
 ```
 
-!!! warning "Installation on macOS"
-
-    When you're running the pre-installed version of Python on macOS, `pip`
-    tries to install packages in a folder for which your user might not have
-    the adequate permissions. There are two possible solutions to this:
-
-    1. **Installing in user space** (recommended): Provide the `--user` flag
-      to the install command and `pip` will install the package in a user-site
-      location. This is the recommended way.
-
-    2. **Switching to a homebrewed Python**: Upgrade your Python installation
-      to a self-contained solution by installing Python with Homebrew. This
-      should eliminate a lot of problems you may be having with `pip`.
-
 #### using choco
 
 If you're on Windows you can use [Chocolatey][5] to install [Material][6]:
@@ -98,6 +84,30 @@ git clone https://github.com/squidfunk/mkdocs-material.git
 This is especially useful if you want to extend the theme and override some
 parts of the theme. The theme will reside in the folder
 `mkdocs-material/material`.
+
+### Troubleshooting
+
+!!! warning "Installation on macOS"
+
+    When you're running the pre-installed version of Python on macOS, `pip`
+    tries to install packages in a folder for which your user might not have
+    the adequate permissions. There are two possible solutions to this:
+
+    1. **Installing in user space** (recommended): Provide the `--user` flag
+      to the install command and `pip` will install the package in a user-site
+      location. This is the recommended way.
+
+    2. **Switching to a homebrewed Python**: Upgrade your Python installation
+      to a self-contained solution by installing Python with Homebrew. This
+      should eliminate a lot of problems you may be having with `pip`.
+
+!!! failure "Error: unrecognized theme 'material'"
+
+    If you run into this error, the most likely reason is that you installed
+    MkDocs through some package manager (e.g. Homebrew or `apt-get`) and the
+    Material theme through `pip`, so both packages end up in different
+    locations. MkDocs only checks it's install location for themes. To fix
+    this, ensure that you installed MkDocs through `pip`.
 
 ## Usage
 
@@ -369,6 +379,19 @@ section on [overriding partials][18] and the general guide on
 
   [18]: customization.md#overriding-partials
   [19]: customization.md#extending-the-theme
+
+### Tabs
+
+From version 1.1.0 on, Material supports another layer on top of the main
+navigation for larger screens in the form of tabs. This is especially useful
+for larger documentation projects with a few top-level sections. Tabs can be
+enabled by setting the respective feature flag to true:
+
+``` yaml
+extra:
+  feature:
+    tabs: true
+```
 
 ### More advanced customization
 
