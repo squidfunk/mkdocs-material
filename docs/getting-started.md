@@ -6,7 +6,9 @@
 
     The official [Docker image][1] for Material comes with all dependencies
     pre-installed and ready-to-use with the latest version published on PyPI,
-    packaged in a very small image (27MB compressed).
+    packaged in a very small image (28MB compressed).
+
+  [1]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
 ### Installing MkDocs
 
@@ -40,7 +42,6 @@ pip install pygments
 pip install pymdown-extensions
 ```
 
-  [1]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [2]: http://www.mkdocs.org
   [3]: http://pygments.org
   [4]: http://facelessuser.github.io/pymdown-extensions/
@@ -54,20 +55,6 @@ Material can be installed with `pip`:
 ``` sh
 pip install mkdocs-material
 ```
-
-!!! warning "Installation on macOS"
-
-    When you're running the pre-installed version of Python on macOS, `pip`
-    tries to install packages in a folder for which your user might not have
-    the adequate permissions. There are two possible solutions to this:
-
-    1. **Installing in user space** (recommended): Provide the `--user` flag
-      to the install command and `pip` will install the package in a user-site
-      location. This is the recommended way.
-
-    2. **Switching to a homebrewed Python**: Upgrade your Python installation
-      to a self-contained solution by installing Python with Homebrew. This
-      should eliminate a lot of problems you may be having with `pip`.
 
 #### using choco
 
@@ -98,6 +85,29 @@ This is especially useful if you want to extend the theme and override some
 parts of the theme. The theme will reside in the folder
 `mkdocs-material/material`.
 
+### Troubleshooting
+
+!!! warning "Installation on macOS"
+
+    When you're running the pre-installed version of Python on macOS, `pip`
+    tries to install packages in a folder for which your user might not have
+    the adequate permissions. There are two possible solutions for this:
+
+    1. **Installing in user space** (recommended): Provide the `--user` flag
+      to the install command and `pip` will install the package in a user-site
+      location. This is the recommended way.
+
+    2. **Switching to a homebrewed Python**: Upgrade your Python installation
+      to a self-contained solution by installing Python with Homebrew. This
+      should eliminate a lot of problems you may be having with `pip`.
+
+!!! failure "Error: unrecognized theme 'material'"
+
+    If you run into this error, the most common reason is that you installed
+    MkDocs through some package manager (e.g. Homebrew or `apt-get`) and the
+    Material theme through `pip`, so both packages end up in different
+    locations. MkDocs only checks it's install location for themes.
+
 ## Usage
 
 In order to enable the Material theme just add one of the following lines to
@@ -113,7 +123,7 @@ If you cloned Material from GitHub:
 theme_dir: 'mkdocs-material/material'
 ```
 
-MkDocs includes a development server, so you can view your changes as you go.
+MkDocs includes a development server, so you can review your changes as you go.
 The development server can be started with the following command:
 
 ``` sh
@@ -129,7 +139,7 @@ read on and customize the theme through some options.
 ## Options
 
 The Material theme adds some extra variables for configuration via your
-project's `mkdocs.yml`. See the following section for all available options.
+project's `mkdocs.yml`. See the following sections for all available options.
 
 ### Changing the color palette
 
@@ -238,16 +248,43 @@ extra:
 
 The text font will be loaded in font-weights 400 and **700**, the `monospaced`
 font in regular weight. If you want to load fonts from other destinations or
-don't want to use the Google Fonts loading magic, just set `font` to `'none'`:
+don't want to use the Google Fonts loading magic, just set `font` to `false`:
 
 ``` yaml
 extra:
-  font: 'none'
+  font: false
 ```
 
   [12]: https://fonts.google.com/specimen/Roboto
-  [13]: https://fonts.google.com/
+  [13]: https://fonts.google.com
   [14]: https://fonts.google.com/specimen/Ubuntu
+
+### Adding a source repository
+
+To include a link to the repository of your project within your documentation,
+set the following variables via your project's `mkdocs.yml`:
+
+``` yaml
+repo_name: 'my-github-handle/my-project'
+repo_url: 'https://github.com/my-github-handle/my-project'
+```
+
+Material will render the name of the repository next to the search bar on
+big screens and as part of the main navigation drawer on smaller screen sizes.
+Furthermore, if `repo_url` points to a GitHub, BitBucket or GitLab repository,
+the respective service logo will be shown next to the name of the repository.
+Additionally, for GitHub, the number of stars and forks is shown.
+
+!!! warning "Why is there an edit button at the top of every article?"
+
+    If the `repo_url` is set to a GitHub or BitBucket repository, and the
+    `repo_name` is set to *GitHub* or *BitBucket* (implied by default), an
+    edit button will appear at the top of every article. This is the automatic
+    behavior that MkDocs implements. See the [MkDocs documentation][15] on more
+    guidance regarding the `edit_uri` attribute, which defines whether the edit
+    button is show or not.
+
+  [15]: http://www.mkdocs.org/user-guide/configuration/#edit_uri
 
 ### Adding a logo
 
@@ -266,7 +303,7 @@ extra:
 
 If you want to link your social accounts, the Material theme provides an easy
 way for doing this in the footer of the documentation using the automatically
-included [FontAwesome][15] webfont. The syntax is simple – the `type` must
+included [FontAwesome][16] webfont. The syntax is simple – the `type` must
 denote the name of the social service, e.g. `github`, `twitter` or `linkedin`
 and the `link` must contain the URL you want to link to:
 
@@ -285,7 +322,7 @@ The links are generated in order and the `type` of the links must match the
 name of the FontAwesome glyph. The `fa` is automatically added, so `github`
 will result in `fa fa-github`.
 
-  [15]: http://fontawesome.io/icons/
+  [16]: http://fontawesome.io/icons/
 
 ### Google Analytics integration
 
@@ -300,17 +337,36 @@ google_analytics:
   - 'auto'
 ```
 
-### Localization <small>L10N</small>
+### Disqus integation
 
-In order to localize the labels (e.g. *Previous* and *Next* in the footer),
-you can override the file `partials/language.html` to provide your own
-translations inside the macro `t`:
+Material for MkDocs is integrated with [Disqus][17], so if you want to add a
+comments section to your documentation set the shortname of your Disqus project
+in your `mkdocs.yml`:
+
+``` yaml
+extra:
+  disqus: 'your-disqus-shortname'
+```
+
+A new entry at the bottom of the table of contents is generated that is linking
+to the comments section. The necessary JavaScript is automatically included.
+
+  [17]: https://disqus.com
+
+### Localization
+
+Material for MkDocs supports internationalization (i18n). In order to translate
+the labels (e.g. *Previous* and *Next* in the footer), you can override the
+file `partials/language.html` and provide your own translations inside the
+macro `t`:
 
 ``` jinja
 {% macro t(key) %}{{ {
   "edit.link.title": "Edit this page",
   "footer.previous": "Previous",
   "footer.next": "Next",
+  "meta.comments": "Comments",
+  "meta.source": "Source",
   "search.placeholder": "Search",
   "source.link.title": "Go to repository",
   "toc.title": "Table of contents"
@@ -318,26 +374,35 @@ translations inside the macro `t`:
 ```
 
 Just copy the file from the original theme and make your adjustments. See the
-section on [overriding partials][16] in the customization guide.
+section on [overriding partials][18] and the general guide on
+[theme extension][19] in the customization guide.
 
-!!! warning "Migrating from Material 0.2.x"
+  [18]: customization.md#overriding-partials
+  [19]: customization.md#extending-the-theme
 
-    In 0.2.x localization was done within the `extra` configuration of your
-    `mkdocs.yml`. With 1.0.0 this is no longer possible as the configuration
-    will be ignored.
+### Tabs
 
-  [16]: customization.md#overriding-partials
+From version 1.1.0 on, Material supports another layer on top of the main
+navigation for larger screens in the form of tabs. This is especially useful
+for larger documentation projects with a few top-level sections. Tabs can be
+enabled by setting the respective feature flag to true:
+
+``` yaml
+extra:
+  feature:
+    tabs: true
+```
 
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][17] for more information on advanced customization.
+[this article][20] for more information on advanced customization.
 
-  [17]: customization.md
+  [20]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][18]. The following extensions
+MkDocs supports several [Markdown extensions][21]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -351,18 +416,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][19]
-* [Codehilite][20]
-* [Permalinks][21]
-* [Footnotes][22]
-* [PyMdown Extensions][23]
+* [Admonition][22]
+* [Codehilite][23]
+* [Footnotes][24]
+* [Metadata][25]
+* [Permalinks][26]
+* [PyMdown Extensions][27]
 
-  [18]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [19]: extensions/admonition.md
-  [20]: extensions/codehilite.md
-  [21]: extensions/permalinks.md
-  [22]: extensions/footnotes.md
-  [23]: extensions/pymdown.md
+  [21]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [22]: extensions/admonition.md
+  [23]: extensions/codehilite.md
+  [24]: extensions/footnotes.md
+  [25]: extensions/metadata.md
+  [26]: extensions/permalinks.md
+  [27]: extensions/pymdown.md
 
 ## Full example
 
@@ -376,11 +443,11 @@ site_author: 'John Doe'
 site_url: 'https://my-github-handle.github.io/my-project'
 
 # Repository
-repo_name: 'GitHub'
+repo_name: 'my-github-handle/my-project'
 repo_url: 'https://github.com/my-github-handle/my-project'
 
 # Copyright
-copyright: 'Copyright &copy; 2016 John Doe'
+copyright: 'Copyright &copy; 2016 - 2017 John Doe'
 
 # Documentation and theme
 theme: 'material'
@@ -396,11 +463,11 @@ extra:
     code: 'Roboto Mono'
   social:
     - type: 'github'
-      link: 'https://github.com/squidfunk'
+      link: 'https://github.com/john-doe'
     - type: 'twitter'
-      link: 'https://twitter.com/squidfunk'
+      link: 'https://twitter.com/jonh-doe'
     - type: 'linkedin'
-      link: 'https://de.linkedin.com/in/martin-donath-20a95039'
+      link: 'https://de.linkedin.com/in/john-doe'
 
 # Google Analytics
 google_analytics:
@@ -411,7 +478,5 @@ google_analytics:
 markdown_extensions:
   - admonition
   - codehilite(guess_lang=false)
-  - footnotes
-  - meta
   - toc(permalink=true)
 ```

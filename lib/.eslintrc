@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "no-invalid-this": 0,
+    "max-params": 0
+  }
+}

@@ -12,10 +12,76 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.0.3
+# Version 1.3.0
 ```
 
 ## Changelog
+
+### 1.3.0 <small> _ March 11, 2017</small>
+
+* Added support for page-specific title and description using metadata
+* Added support for linking source files to documentation
+* Fixed jitter and offset of sidebar when zooming browser
+* Fixed incorrectly initialized tablet sidebar height
+* Fixed regression for [#1][1]: GitHub stars break if repo_url ends with a `/`
+* Fixed undesired white line below copyright footer due to base font scaling
+* Fixed issue with whitespace in path for scripts
+* Fixed [#205][205]: support non-fixed (static) header
+* Refactored footnote references for better visibility
+* Reduced repaints to a minimum for non-tabs configuration
+* Reduced contrast of edit button (slightly)
+
+  [205]: https://github.com/squidfunk/mkdocs-material/issues/197
+
+### 1.2.0 <small> _ March 3, 2017</small>
+
+* Added `quote` (synonym: `cite`) style for Admonition
+* Added help message to build pipeline
+* Fixed wrong navigation link colors when applying palette
+* Fixed [#197][197]: Link missing in tabs navigation on deeply nested items
+* Removed unnecessary dev dependencies
+
+  [197]: https://github.com/squidfunk/mkdocs-material/issues/197
+
+### 1.1.1 <small> _ February 26, 2017</small>
+
+* Fixed incorrectly displayed nested lists when using tabs
+
+### 1.1.0 <small> _ February 26, 2017</small>
+
+* Added tabs navigation feature (optional)
+* Added Disqus integration (optional)
+* Added a high resolution Favicon with the new logo
+* Added static type checking using Facebook's Flow
+* Fixed [#173][173]: Dictionary elements have no bottom spacing
+* Fixed [#175][175]: Tables cannot be set to 100% width
+* Fixed race conditions in build related to asset revisioning
+* Fixed accidentally re-introduced Permalink on top-level headline
+* Fixed alignment of logo in drawer on IE11
+* Refactored styles related to tables
+* Refactored and automated Docker build and PyPI release
+* Refactored build scripts
+
+  [173]: https://github.com/squidfunk/mkdocs-material/issues/173
+  [175]: https://github.com/squidfunk/mkdocs-material/issues/175
+
+### 1.0.5 <small> _ February 18, 2017</small>
+
+* Fixed [#153][153]: Sidebar flows out of constrained area in Chrome 56
+* Fixed [#159][159]: Footer jitter due to JavaScript if content is short
+
+  [153]: https://github.com/squidfunk/mkdocs-material/issues/153
+  [159]: https://github.com/squidfunk/mkdocs-material/issues/159
+
+### 1.0.4 <small> _ February 16, 2017</small>
+
+* Fixed [#142][142]: Documentation build errors if `h1` is defined as raw HTML
+* Fixed [#164][164]: PyPI release does not build and install
+* Fixed offsets of targeted headlines
+* Increased sidebar font size by `0.12rem`
+
+  [142]: https://github.com/squidfunk/mkdocs-material/issues/142
+  [164]: https://github.com/squidfunk/mkdocs-material/issues/164
 
 ### 1.0.3 <small> _ January 22, 2017</small>
 

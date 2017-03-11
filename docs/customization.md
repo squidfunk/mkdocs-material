@@ -4,8 +4,8 @@
 
 Project documentation is as diverse as the projects themselves and the Material
 theme is a good starting point for making it look great. However, as you write
-your documentation, you may reach some point where some small adjustments are
-necessary to preserve the style.
+your documentation, you may reach a point where some small adjustments are
+necessary to preserve the desired style.
 
 ## Adding assets
 
@@ -98,6 +98,7 @@ The directory layout of the Material theme is as follows:
 │  ├─ javascripts/                     # JavaScript
 │  └─ stylesheets/                     # Stylesheets
 ├─ partials/
+│  ├─ disqus.html                      # Disqus integration
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
 │  ├─ language.html                    # Localized labels
@@ -106,6 +107,8 @@ The directory layout of the Material theme is as follows:
 │  ├─ search.html                      # Search box
 │  ├─ social.html                      # Social links
 │  ├─ source.html                      # Repository information
+│  ├─ tabs-item.html                   # Tabs navigation item
+│  ├─ tabs.html                        # Tabs navigation
 │  ├─ toc-item.html                    # Table of contents item
 │  └─ toc.html                         # Table of contents
 ├─ 404.html                            # 404 error page
@@ -141,6 +144,7 @@ The Material theme provides the following template blocks:
 | ------------ | ----------------------------------------------- |
 | `analytics`  | Wraps the Google Analytics integration          |
 | `content`    | Wraps the main content                          |
+| `disqus`     | Wraps the disqus integration                    |
 | `extrahead`  | Empty block to define additional meta tags      |
 | `fonts`      | Wraps the webfont definitions                   |
 | `footer`     | Wraps the footer with navigation and copyright  |
@@ -149,6 +153,7 @@ The Material theme provides the following template blocks:
 | `libs`       | Wraps the JavaScript libraries, e.g. Modernizr  |
 | `repo`       | Wraps the repository link in the header bar     |
 | `scripts`    | Wraps the JavaScript application logic          |
+| `source`     | Wraps the linked source files                   |
 | `search_box` | Wraps the search form in the header bar         |
 | `site_meta`  | Wraps the meta tags in the document head        |
 | `site_name`  | Wraps the site name in the header bar           |
@@ -174,7 +179,8 @@ theme and recompile it. This is fairly easy.
 ### Environment setup
 
 In order to start development on the Material theme, a [Node.js][8] version of
-at least 4 is required. Clone the repository from GitHub:
+at least 5 is required, as well as the package manager [yarn][9] which is a
+better version of `npm`. First, clone the repository:
 
 ``` sh
 git clone https://github.com/squidfunk/mkdocs-material
@@ -185,23 +191,24 @@ Next, all dependencies need to be installed, which is done with:
 ``` sh
 cd mkdocs-material
 pip install -r requirements.txt
-npm install
+yarn install
 ```
 
   [8]: https://nodejs.org
+  [9]: https://yarnpkg.com/
 
 ### Development mode
 
-The Material theme uses a sophisticated asset pipeline using [Gulp][9] and
+The Material theme uses a sophisticated asset pipeline using [Gulp][10] and
 Webpack which can be started with the following command:
 
 ``` sh
-npm start
+yarn start
 ```
 
 This will also start the MkDocs development server which will monitor changes
 on assets, templates and documentation. Point your browser to
-[localhost:8000][10] and you should see this documentation in front of you.
+[localhost:8000][11] and you should see this documentation in front of you.
 
 For example, changing the color palette is as simple as changing the
 `$md-color-primary` and `$md-color-accent` variables in
@@ -218,21 +225,21 @@ $md-color-accent:  $clr-teal-a700;
     directory are automatically generated from the `src` directory and will be
     overriden when the theme is built.
 
-  [9]: http://gulpjs.com
-  [10]: http://localhost:8000
+  [10]: http://gulpjs.com
+  [11]: http://localhost:8000
 
 ### Build process
 
-When you finished making your changes, you can build the theme by invoking:
+When you've finished making your changes, you can build the theme by invoking:
 
 ``` sh
-npm run build
+yarn run build
 ```
 
 This triggers the production-level compilation and minification of all
-stylesheets and JavaScript sources. When the command is ready, the final
-theme is located in the `material` directory. Add the `theme_dir` variable
-pointing to the aforementioned directory in your original `mkdocs.yml`.
+stylesheets and JavaScript sources. When the command exits, the final theme is
+located in the `material` directory. Add the `theme_dir` variable pointing to
+the aforementioned directory in your original `mkdocs.yml`.
 
 Now you can run `mkdocs build` and you should see your documentation with your
 changes to the original Material theme.

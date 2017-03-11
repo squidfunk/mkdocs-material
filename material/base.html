@@ -5,36 +5,46 @@
     {% block site_meta %}
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      {% if config.site_description %}
+      {% if page and page.meta.description %}
+        <meta name="description" content="{{ page.meta.description | first }}">
+      {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
       {% if page.canonical_url %}
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
-      {% if config.site_author %}
+      {% if page and page.meta.author %}
+        <meta name="author" content="{{ page.meta.author | first }}">
+      {% elif config.site_author %}
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       {% if config.site_favicon %}
         <link rel="shortcut icon" href="{{ base_url }}/{{ config.site_favicon }}">
       {% else %}
-        <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs+mkdocs-material#1.0.3">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.3.0">
     {% endblock %}
     {% block htmltitle %}
-      {% if page.title %}
+      {% if page and page.meta.title %}
+        <title>{{ page.meta.title | first }}</title>
+      {% elif page and page.title and not page.is_homepage %}
         <title>{{ page.title }} - {{ config.site_name }}</title>
-      {% elif config.site_description %}
-        <title>{{ config.site_name }} - {{ config.site_description }}</title>
       {% else %}
         <title>{{ config.site_name }}</title>
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr-facb31f4a3.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
+    {% endblock %}
+    {% block styles %}
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-1d1da4857d.css">
+      {% if config.extra.palette %}
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-66fa0d9bba.palette.css">
+      {% endif %}
     {% endblock %}
     {% block fonts %}
-      {% if config.extra.font != "none" %}
+      {% if config.extra.font != false and config.extra.font != "none" %}
         {% set text = config.extra.get("font", {}).text | default("Roboto") %}
         {% set code = config.extra.get("font", {}).code
                     | default("Roboto Mono") %}
@@ -44,15 +54,9 @@
       {% endif %}
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     {% endblock %}
-    {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-f3ab63f78a.css">
-      {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
-      {% endif %}
-      {% for path in extra_css %}
-        <link rel="stylesheet" href="{{ path }}">
-      {% endfor %}
-    {% endblock %}
+    {% for path in extra_css %}
+      <link rel="stylesheet" href="{{ path }}">
+    {% endfor %}
     {% block extrahead %}{% endblock %}
   </head>
   {% set palette = config.extra.get("palette", {}) %}
@@ -82,6 +86,10 @@
       {% include "partials/header.html" %}
     {% endblock %}
     <div class="md-container">
+      {% set feature = config.extra.get("feature", {}) %}
+      {% if feature.tabs %}
+        {% include "partials/tabs.html" %}
+      {% endif %}
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           {% block site_nav %}
@@ -106,14 +114,33 @@
           {% endblock %}
           <div class="md-content">
             <article class="md-content__inner md-typeset">
-               {% if config.edit_uri %}
-                 <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__edit">edit</a>
-               {% endif %}
               {% block content %}
-                {% if not "\x3ch1 id=" in page.content %}
+                {% if config.edit_uri %}
+                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">edit</a>
+                {% endif %}
+                {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
                 {{ page.content }}
+                {% block source %}
+                  {% if page.meta.source %}
+                    <h2 id="__source">{{ lang.t('meta.source') }}</h2>
+                    {% set path = (page.meta.path | default([""]) | first) %}
+                    {% for file in page.meta.source %}
+                      <a href="{{
+                        [repo_url, path, file] | join('/') | replace('//', '/')
+                      }}" title="{{ file }}" class="md-source-file">
+                        {{ file }}
+                      </a>
+                    {% endfor %}
+                  {% endif %}
+                {% endblock %}
+              {% endblock %}
+              {% block disqus %}
+                {% if config.extra.disqus and not page.is_homepage %}
+                  <h2 id="__comments">{{ lang.t('meta.comments') }}</h2>
+                  {% include "partials/disqus.html" %}
+                {% endif %}
               {% endblock %}
             </article>
           </div>
@@ -124,8 +151,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-9f4632d68f.js"></script>
-      <script>var config={url:{base:"{{ base_url }}"}},app=new Application(config);app.initialize()</script>
+      <script src="{{ base_url }}/assets/javascripts/application-42beea1040.js"></script>
+      <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
       {% endfor %}

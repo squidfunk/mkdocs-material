@@ -32,13 +32,24 @@ export default class Result {
    * Perform search and update results on keyboard events
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - Search result container
+   * @property {(Array<Object>|Function)} data_ - Raw document data
+   * @property {Object} docs_ - Indexed documents
+   * @property {HTMLElement} meta_ - Search meta information
+   * @property {HTMLElement} list_ - Search result list
+   * @property {Object} index_ - Search index
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
-   * @param {(Array.<object>|Function)} data - Promise or array providing data
+   * @param {(Array<Object>|Function)} data - Function providing data or array
    */
   constructor(el, data) {
-    this.el_ = (typeof el === "string")
+    const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.el_ = ref
 
     /* Set data and create metadata and list elements */
     this.data_ = data
@@ -54,19 +65,26 @@ export default class Result {
     /* Inject created elements */
     this.el_.appendChild(this.meta_)
     this.el_.appendChild(this.list_)
+  }
 
-    /* Truncate a string after the given number of characters - this is not
-       a reasonable approach, since the summaries kind of suck. It would be
-       better to create something more intelligent, highlighting the search
-       occurrences and making a better summary out of it */
-    this.truncate_ = function(string, n) {
-      let i = n
-      if (string.length > i) {
-        while (string[i] !== " " && --i > 0);
-        return `${string.substring(0, i)}...`
-      }
-      return string
+  /**
+   * Truncate a string after the given number of character
+   *
+   * This is not a reasonable approach, since the summaries kind of suck. It
+   * would be better to create something more intelligent, highlighting the
+   * search occurrences and making a better summary out of it
+   *
+   * @param {string} string - String to be truncated
+   * @param {number} n - Number of characters
+   * @return {string} Truncated string
+   */
+  truncate_(string, n) {
+    let i = n
+    if (string.length > i) {
+      while (string[i] !== " " && --i > 0);
+      return `${string.substring(0, i)}...`
     }
+    return string
   }
 
   /**
@@ -129,7 +147,7 @@ export default class Result {
         const data2 = trimmed
 
         /* Index documents */
-        this.data_ = data2.reduce((docs, doc) => {
+        this.docs_ = data2.reduce((docs, doc) => {
           this.index_.add(doc)
           docs[doc.location] = doc
           return docs
@@ -143,16 +161,21 @@ export default class Result {
           : init(this.data_)
       }, 250)
 
-    /* Execute search on new input event after clearing current list */
+    /* Execute search on new input event */
     } else if (ev.type === "keyup") {
+      const target = ev.target
+      if (!(target instanceof HTMLInputElement))
+        throw new ReferenceError
+
+      /* Clear current list */
       while (this.list_.firstChild)
         this.list_.removeChild(this.list_.firstChild)
 
       /* Perform search on index and render documents */
-      const result = this.index_.search(ev.target.value)
+      const result = this.index_.search(target.value)
 
       // process results!
-      const re = new RegExp(`\\b${ev.target.value}`, "img")
+      const re = new RegExp(`\\b${target.value}`, "img")
       // result.map(item => {
       //   // console.time("someFunction")
       //   text = text.replace(re, "*XXX*") // do in parallel and collect!
@@ -205,6 +228,8 @@ export default class Result {
       Array.prototype.forEach.call(anchors, anchor => {
         anchor.addEventListener("click", ev2 => {
           const toggle = document.querySelector("[data-md-toggle=search]")
+          if (!(toggle instanceof HTMLInputElement))
+            throw new ReferenceError
           if (toggle.checked) {
             toggle.checked = false
             toggle.dispatchEvent(new CustomEvent("change"))

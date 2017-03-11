@@ -29,22 +29,24 @@ import Abstract from "./Abstract"
 export default class GitHub extends Abstract {
 
   /**
-   * Retrieve source information from GitHub
+   * Retrieve repository information from GitHub
    *
    * @constructor
-   * @param {(string|HTMLElement)} el - Selector or HTML element
+   * @param {(string|HTMLAnchorElement)} el - Selector or HTML element
    */
   constructor(el) {
     super(el)
 
-    /* Adjust base URL to reach API endpoints */
-    this.base_ = this.base_.replace("github.com/", "api.github.com/repos/")
+    /* Adjust base URL to reach API endpoints and remove trailing slash */
+    this.base_ = this.base_
+      .replace("github.com/", "api.github.com/repos/")
+      .replace(/\/$/, "")
   }
 
   /**
-   * Fetch relevant source information from GitHub
+   * Fetch relevant repository information from GitHub
    *
-   * @return {function} Promise returning an array of facts
+   * @return {Promise<Array<string>>} Promise returning an array of facts
    */
   fetch_() {
     return fetch(this.base_)

@@ -26,6 +26,9 @@
 
 // Content container
 .md-content {
+  // Hack: setting overflow to hidden induces new layer borders which omits
+  // massive repaints because of the margins of the inner elements
+  overflow: hidden;
 
   // [tablet landscape +]: Add space for table of contents
   @include break-from-device(tablet landscape) {
@@ -35,9 +38,6 @@
   // [screen +]: Add space for table of contents
   @include break-from-device(screen) {
     margin-left: 24.2rem;
-    // Hack: setting overflow to auto induces margin collapse which omits
-    // massive repaints because of the margins of the inner elements
-    overflow: auto;
   }
 
   // Define spacing
@@ -47,23 +47,27 @@
     // [screen +]: Increase spacing
     @include break-from-device(screen) {
       margin: 2.4rem;
+    }
 
-      // Hack: remove bottom spacing, due to margin collapse
-      :last-child {
-        margin-bottom: 0;
-      }
+    // Hack: remove bottom spacing of last element, due to margin collapse
+    > :last-child {
+      margin-bottom: 0;
     }
   }
 
-  // Icons (edit button)
-  &__edit {
+  // Icons
+  &__icon {
     @extend %md-icon__button;
 
+    position: relative;
+    margin: 0.8rem 0;
+    padding-right: 0;
+    padding-left: 0;
     float: right;
 
-    // [tablet portrait -]: Align edit link with search icon
-    @include break-to-device(tablet portrait) {
-      margin-right: -0.8rem;
+    // Override default link color for icons
+    html body .md-typeset & {
+      color: $md-color-black--lighter;
     }
 
     // Hide for print

@@ -169,7 +169,7 @@
     "space-unary-ops": 2,
     "spaced-comment": [2, "always", {
       "line": {
-        "markers": ["/"],
+        "markers": ["/", ":"],
         "exceptions": ["-", "+"]
       },
       "block": {

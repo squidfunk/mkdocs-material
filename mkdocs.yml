@@ -31,15 +31,19 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 # Copyright
 copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
 
-# Documentation and theme
+# Theme directory
 theme_dir: material
 
 # Options
 extra:
+  feature:
+    tabs: false
   palette:
     primary: indigo
     accent: indigo
   social:
+    - type: globe
+      link: http://struct.cc
     - type: github-alt
       link: https://github.com/squidfunk
     - type: twitter
@@ -51,6 +55,7 @@ extra:
 markdown_extensions:
   - markdown.extensions.admonition
   - markdown.extensions.codehilite(guess_lang=false)
+  - markdown.extensions.def_list
   - markdown.extensions.footnotes
   - markdown.extensions.meta
   - markdown.extensions.toc(permalink=true)
@@ -76,6 +81,7 @@ pages:
     - Admonition: extensions/admonition.md
     - CodeHilite: extensions/codehilite.md
     - Footnotes: extensions/footnotes.md
+    - Metadata: extensions/metadata.md
     - Permalinks: extensions/permalinks.md
     - PyMdown: extensions/pymdown.md
   - Specimen: specimen.md

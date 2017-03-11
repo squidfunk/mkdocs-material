@@ -2,9 +2,6 @@
   "presets": ["es2015"],
   "plugins": [
     "add-module-exports",
-    "babel-root-import",
-    ["transform-react-jsx", {
-      "pragma": "JSX.createElement"
-    }]
+    "babel-root-import"
   ]
 }

@@ -26,13 +26,18 @@
 
 // Navigation container
 .md-nav {
-  font-size: ms(-1);
+  font-size: 1.4rem;
   line-height: 1.3;
 
   // Table of contents
   &--secondary {
     transition: border-left 0.25s;
     border-left: 0.4rem solid $md-color-primary;
+
+    // Highlight active links (used for page-related meta navigation)
+    .md-nav__link--active {
+      color: $md-color-primary;
+    }
   }
 
   // List title
@@ -66,7 +71,7 @@
 
   // List item
   &__item {
-    padding: 0.625em 1.2rem 0;
+    padding: 0 1.2rem;
 
     // Add bottom spacing to last item
     &:last-child {
@@ -84,7 +89,7 @@
     }
   }
 
-  // Icon buttons
+  // Button with logo
   &__button {
     @extend %md-icon, %md-icon__button;
 
@@ -98,6 +103,7 @@
   // Link inside item
   &__link {
     display: block;
+    margin-top: 0.625em;
     transition: color 0.125s;
     text-overflow: ellipsis;
     cursor: pointer;
@@ -129,18 +135,24 @@
       }
     }
 
-    // Blurred item
+    // Blurred link
     &[data-md-state="blur"] {
       color: $md-color-black--light;
     }
 
-    // Active item
+    // Active link
     &:active,
-    &--active {
+    .md-nav__item--active > & {
       color: $md-color-primary;
     }
 
-    // Hovered item
+    // Reset active color for nested list titles
+    .md-nav__item--nested > & {
+      color: inherit;
+    }
+
+    // Focused or hovered link
+    &:focus,
     &:hover {
       color: $md-color-accent;
     }
@@ -153,6 +165,7 @@
 
   // [tablet -]: Layered navigation
   @include break-to-device(tablet) {
+    background-color: $md-color-white;
 
     // Stretch primary navigation to drawer
     &--primary,
@@ -169,13 +182,12 @@
 
     // Adjust styles for primary navigation
     &--primary {
-      background-color: $md-color-white;
 
-      // Move subsequent navigations off
-      .md-nav__toggle ~ .md-nav {
-        @include z-depth(4);
-
-        background-color: $md-color-white;
+      // List title and item
+      .md-nav__title,
+      .md-nav__item {
+        font-size: 1.6rem;
+        line-height: 1.5;
       }
 
       // List title - higher specificity is necessary to ensure that the title
@@ -282,6 +294,7 @@
       // Link inside item
       .md-nav__link {
         position: relative;
+        margin-top: 0;
         padding: 1.6rem;
 
         // Rotate icon
@@ -294,34 +307,45 @@
           font-size: 2.4rem;
         }
 
-        // Color of icon should inherit link color on hover
+        // Color of icon should inherit link color on focus or hover
+        &:focus::after,
         &:hover::after {
           color: inherit;
         }
       }
 
-      // Set nested navigation for table of contents to static
-      .md-nav--secondary .md-nav {
-        position: static;
+      // Table of contents inside navigation
+      .md-nav--secondary {
 
-        // 3rd level link
+        // Set links to static to avoid unnecessary layering
         .md-nav__link {
-          padding-left: 2.8rem;
+          position: static;
         }
 
-        // 4th level link
-        .md-nav .md-nav__link {
-          padding-left: 4rem;
-        }
+        // Set nested navigation for table of contents to static
+        .md-nav {
+          position: static;
+          background-color: transparent;
 
-        // 5th level link
-        .md-nav .md-nav .md-nav__link {
-          padding-left: 5.2rem;
-        }
+          // 3rd level link
+          .md-nav__link {
+            padding-left: 2.8rem;
+          }
 
-        // 6th level link
-        .md-nav .md-nav .md-nav .md-nav__link {
-          padding-left: 6.4rem;
+          // 4th level link
+          .md-nav .md-nav__link {
+            padding-left: 4rem;
+          }
+
+          // 5th level link
+          .md-nav .md-nav .md-nav__link {
+            padding-left: 5.2rem;
+          }
+
+          // 6th level link
+          .md-nav .md-nav .md-nav .md-nav__link {
+            padding-left: 6.4rem;
+          }
         }
       }
     }
@@ -353,13 +377,6 @@
           opacity   0.125s 0.125s;
         opacity: 1;
       }
-    }
-
-    // List item
-    .md-nav__title,
-    .md-nav__item {
-      font-size: 1.6rem;
-      line-height: 1.5;
     }
   }
 
@@ -429,7 +446,8 @@
       display: none;
     }
 
-    // Link inside item
+    // Link inside item - ideally the link display method would be set to
+    // inline on screen, but this doesn't work with text ellipsis
     &__link {
 
       // Item contains a nested list

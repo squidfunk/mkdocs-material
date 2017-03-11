@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+import chalk from "chalk"
 import gulp from "gulp"
 import notifier from "node-notifier"
 import plumber from "gulp-plumber"
@@ -30,27 +31,129 @@ import yargs from "yargs"
  * Configuration and arguments
  * ------------------------------------------------------------------------- */
 
+/* General configuration */
 const config = {
   assets: {
     src: "src/assets",                 /* Source directory for assets */
     build: "material/assets"           /* Target directory for assets */
   },
-  lib: "lib",                          /* Libraries */
+  lib: "lib",                          /* Libraries and tasks */
+  tests: {
+    visual: "tests/visual"             /* Base directory for visual tests */
+  },
   views: {
     src: "src",                        /* Source directory for views */
     build: "material"                  /* Target directory for views */
   }
 }
 
-const args = yargs
-  .default("clean",      false)        /* Clean before build */
-  .default("karma",      true)         /* Karma watchdog */
-  .default("lint",       true)         /* Lint sources */
-  .default("mkdocs",     true)         /* MkDocs watchdog */
-  .default("optimize",   false)        /* Optimize sources */
-  .default("revision",   false)        /* Revision assets */
-  .default("sourcemaps", false)        /* Create sourcemaps */
+/* Commandline arguments */
+let args = yargs
+  .locale("en")
+  .usage(`\n${chalk.yellow("Usage:")} yarn run <command> -- [options]`)
+  .wrap(84)
+  .updateStrings({
+    "Commands:": chalk.yellow("Commands:"),
+    "Examples:": chalk.yellow("Examples:")
+  })
+
+  /* Commands */
+  .command("build", chalk.grey("build assets and views"))
+  .command("clean", chalk.grey("clean build artifacts"))
+  .command("flow", chalk.grey("type check with flow"))
+  .command("help", chalk.grey("display this message"))
+  .command("lint", chalk.grey("lint sources"))
+  .command("start", chalk.grey("start development server"))
+  .command("test:visual:run", chalk.grey("run visual tests"))
+  .command("test:visual:session", chalk.grey("start test server"))
+  .command("test:visual:update", chalk.grey("update reference images"))
+
+  /* Options */
+  .group([
+    "help", "clean"
+  ], chalk.yellow("Options:"))
+  .help("help", chalk.grey("display this message"))
+  .option("clean", {
+    describe: chalk.grey("clean artifacts before command"),
+    default: false,
+    global: true
+  })
+
+  /* Build options */
+  .group([
+    "lint", "optimize", "revision", "sourcemaps", "mkdocs"
+  ], chalk.yellow("Build Options:"))
+  .option("lint", {
+    describe: chalk.grey("lint sources before build"),
+    default: true,
+    global: true
+  })
+  .option("optimize", {
+    describe: chalk.grey("optimize and minify assets"),
+    default: true,
+    global: true
+  })
+  .option("revision", {
+    describe: chalk.grey("revision assets for cache busting"),
+    default: false,
+    global: true
+  })
+  .option("sourcemaps", {
+    describe: chalk.grey("generate sourcemaps for assets"),
+    default: false,
+    global: true
+  })
+  .option("mkdocs", {
+    describe: chalk.grey("build documentation or start watchdog"),
+    default: true,
+    global: true
+  })
+
+  /* Test options */
+  .group([
+    "grep", "browser"
+  ], chalk.yellow("Test Options:"))
+  .option("grep", {
+    describe: chalk.grey("only execute tests matching a regex"),
+    global: true
+  })
+  .option("browser", {
+    describe: chalk.grey("only execute tests for the given browser"),
+    global: true
+  })
+
+  /* Example commands */
+  .example("yarn run build")
+  .example("yarn run build -- --no-optimize")
+  .example("yarn run clean")
+  .example("yarn run flow")
+  .example("yarn run lint")
+  .example("yarn run start")
+  .example("yarn run test:visual:run")
+  .example("yarn run test:visual:run -- --no-clean")
+  .example("yarn run test:visual:run -- --grep nav")
+  .example("yarn run test:visual:run -- --browser ie11")
+  .example("yarn run test:visual:session")
+  .example("yarn run test:visual:update")
+
+  /* Document Environment variables */
+  .epilogue(
+    `${chalk.yellow("Environment:")}\n` +
+    `  SAUCE=${chalk.grey("<true|false)>")}\n` +
+    `  SAUCE_USERNAME=${chalk.grey("<username>")}\n` +
+    `  SAUCE_ACCESS_KEY=${chalk.grey("<key>")}`
+  )
+
+  /* Apply to process.argv */
   .argv
+
+/* Only use the last seen value if boolean, so overrides are possible */
+args = Object.keys(args).reduce((result, arg) => {
+  result[arg] = Array.isArray(args[arg]) && typeof args[arg][0] === "boolean"
+    ? [].concat(args[arg]).pop()
+    : args[arg]
+  return result
+}, {})
 
 /* ----------------------------------------------------------------------------
  * Overrides and helpers
@@ -90,9 +193,16 @@ gulp.src = (...glob) => {
 
 /*
  * Helper function to load a task
+ *
+ * This function returns a callback that will require the task with the given
+ * name and execute the function that is returned by this task. It omits the
+ * need to load all tasks upfront, speeding up the build a gazillion times.
  */
 const load = task => {
-  return require(`./${config.lib}/tasks/${task}`)(gulp, config, args)
+  return done => {
+    return require(`./${config.lib}/tasks/${task}`)
+      .call(gulp, gulp, config, args)(done)
+  }
 }
 
 /* ----------------------------------------------------------------------------
@@ -102,26 +212,26 @@ const load = task => {
 /*
  * Copy favicon
  */
-gulp.task("assets:images:build:ico",
+gulp.task("assets:images:build:ico", [
+  args.clean ? "assets:images:clean" : false
+].filter(t => t),
   load("assets/images/build/ico"))
 
 /*
  * Copy and minify vector graphics
  */
-gulp.task("assets:images:build:svg",
+gulp.task("assets:images:build:svg", [
+  args.clean ? "assets:images:clean" : false
+].filter(t => t),
   load("assets/images/build/svg"))
 
 /*
  * Copy images
  */
-gulp.task("assets:images:build", args.clean ? [
-  "assets:images:clean"
-] : [], () => {
-  return gulp.start([
-    "assets:images:build:ico",
-    "assets:images:build:svg"
-  ])
-})
+gulp.task("assets:images:build", [
+  "assets:images:build:ico",
+  "assets:images:build:svg"
+])
 
 /*
  * Clean images generated by build
@@ -135,36 +245,51 @@ gulp.task("assets:images:clean",
 
 /*
  * Build application logic
+ *
+ * When revisioning assets, the build must be serialized due to possible race
+ * conditions when two tasks try to write manifest.json simultaneously
  */
-gulp.task("assets:javascripts:build:application",
+
+gulp.task("assets:javascripts:build:application", [
+  args.clean ? "assets:javascripts:clean" : false,
+  args.lint ? "assets:javascripts:lint" : false,
+  args.revision ? "assets:stylesheets:build" : false
+].filter(t => t),
   load("assets/javascripts/build/application"))
 
 /*
  * Build custom modernizr
+ *
+ * When revisioning assets, the build must be serialized due to possible race
+ * conditions when two tasks try to write manifest.json simultaneously
  */
 gulp.task("assets:javascripts:build:modernizr", [
-  "assets:stylesheets:build"
-], load("assets/javascripts/build/modernizr"))
+  "assets:stylesheets:build",
+  args.clean ? "assets:javascripts:clean" : false,
+  args.lint ? "assets:javascripts:lint" : false,
+  args.revision ? "assets:javascripts:build:application" : false
+].filter(t => t),
+  load("assets/javascripts/build/modernizr"))
 
 /*
- * Build application logic and modernizr
+ * Build application logic and Modernizr
  */
-gulp.task("assets:javascripts:build", (args.clean ? [
-  "assets:javascripts:clean"
-] : []).concat(args.lint ? [
-  "assets:javascripts:lint"
-] : []), () => {
-  return gulp.start([
-    "assets:javascripts:build:application",
-    "assets:javascripts:build:modernizr"
-  ])
-})
+gulp.task("assets:javascripts:build", [
+  "assets:javascripts:build:application",
+  "assets:javascripts:build:modernizr"
+])
 
 /*
  * Clean JavaScript generated by build
  */
 gulp.task("assets:javascripts:clean",
   load("assets/javascripts/clean"))
+
+/*
+ * Annotate JavaScript
+ */
+gulp.task("assets:javascripts:annotate",
+  load("assets/javascripts/annotate"))
 
 /*
  * Lint JavaScript
@@ -179,11 +304,10 @@ gulp.task("assets:javascripts:lint",
 /*
  * Build stylesheets from SASS source
  */
-gulp.task("assets:stylesheets:build", (args.clean ? [
-  "assets:stylesheets:clean"
-] : []).concat(args.lint ? [
-  "assets:stylesheets:lint"
-] : []),
+gulp.task("assets:stylesheets:build", [
+  args.clean ? "assets:stylesheets:clean" : false,
+  args.lint ? "assets:stylesheets:lint" : false
+].filter(t => t),
   load("assets/stylesheets/build"))
 
 /*
@@ -227,13 +351,14 @@ gulp.task("assets:clean", [
 /*
  * Minify views
  */
-gulp.task("views:build", (args.revision ? [
-  "assets:images:build",
-  "assets:stylesheets:build",
-  "assets:javascripts:build"
-] : []).concat(args.clean ? [
-  "views:clean"
-] : []), load("views/build"))
+
+gulp.task("views:build", [
+  args.clean ? "views:clean" : false,
+  args.revision ? "assets:images:build" : false,
+  args.revision ? "assets:stylesheets:build" : false,
+  args.revision ? "assets:javascripts:build" : false
+].filter(t => t),
+  load("views/build"))
 
 /*
  * Clean views
@@ -267,14 +392,44 @@ gulp.task("mkdocs:serve",
   load("mkdocs/serve"))
 
 /* ----------------------------------------------------------------------------
- * Tests
+ * Visual tests
  * ------------------------------------------------------------------------- */
 
 /*
- * Start karma test runner
+ * Generate visual tests
  */
-gulp.task("tests:unit:watch",
-  load("tests/unit/watch"))
+gulp.task("tests:visual:generate", [
+  args.clean ? "tests:visual:clean" : false,
+  args.clean ? "assets:build" : false,
+  args.clean ? "views:build" : false
+].filter(t => t),
+  load("tests/visual/generate"))
+
+/*
+ * Run visual tests
+ */
+gulp.task("tests:visual:run", [
+  "tests:visual:generate"
+], load("tests/visual/run"))
+
+/*
+ * Update reference images for visual tests
+ */
+gulp.task("tests:visual:update",
+  load("tests/visual/update"))
+
+/*
+ * Clean files generated by visual tests
+ */
+gulp.task("tests:visual:clean",
+  load("tests/visual/clean"))
+
+/*
+ * Open a SauceConnect session for manual testing
+ */
+gulp.task("tests:visual:session", [
+  "tests:visual:generate"
+], load("tests/visual/session"))
 
 /* ----------------------------------------------------------------------------
  * Interface
@@ -285,10 +440,9 @@ gulp.task("tests:unit:watch",
  */
 gulp.task("build", [
   "assets:build",
-  "views:build"
-].concat(args.mkdocs
-  ? "mkdocs:build"
-  : []))
+  "views:build",
+  args.mkdocs ? "mkdocs:build" : false
+].filter(f => f))
 
 /*
  * Clean assets and documentation
@@ -312,10 +466,6 @@ gulp.task("watch", [
   if (args.mkdocs)
     gulp.start("mkdocs:serve")
 
-  /* Start karma test runner */
-  // if (args.karma)
-  //   gulp.start("tests:unit:watch")
-
   /* Rebuild stylesheets */
   gulp.watch([
     `${config.assets.src}/stylesheets/**/*.scss`
@@ -336,6 +486,11 @@ gulp.task("watch", [
     `${config.views.src}/**/*.html`
   ], ["views:build"])
 })
+
+/*
+ * Print help message
+ */
+gulp.task("help")
 
 /*
  * Build assets by default

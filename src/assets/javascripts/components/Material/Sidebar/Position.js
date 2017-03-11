@@ -30,23 +30,51 @@ export default class Position {
    * Set sidebars to locked state and limit height to parent node
    *
    * @constructor
+   *
+   * @property {HTMLElement} el_ - Sidebar
+   * @property {HTMLElement} parent_ - Sidebar container
+   * @property {HTMLElement} header_ - Header
+   * @property {number} height_ - Current sidebar height
+   * @property {number} offset_ - Current page y-offset
+   * @property {boolean} pad_ - Pad when header is fixed
+   *
    * @param {(string|HTMLElement)} el - Selector or HTML element
+   * @param {(string|HTMLElement)} header - Selector or HTML element
    */
-  constructor(el) {
-    this.el_ = (typeof el === "string")
+  constructor(el, header) {
+    let ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
+    if (!(ref instanceof HTMLElement) ||
+        !(ref.parentNode instanceof HTMLElement))
+      throw new ReferenceError
+    this.el_ = ref
+    this.parent_ = ref.parentNode
 
-    /* Initialize parent container and current height */
-    this.parent_ = this.el_.parentNode
+    /* Retrieve header */
+    ref = (typeof header === "string")
+      ? document.querySelector(header)
+      : header
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.header_ = ref
+
+    /* Initialize current height and test whether header is fixed */
     this.height_ = 0
+    this.pad_ = window.getComputedStyle(this.header_).position === "fixed"
   }
 
   /**
    * Initialize sidebar state
    */
   setup() {
-    this.offset_ = this.el_.offsetTop - this.parent_.offsetTop
+    const top = Array.prototype.reduce.call(
+      this.parent_.children, (offset, child) => {
+        return Math.max(offset, child.offsetTop)
+      }, 0)
+
+    /* Set lock offset for element with largest top offset */
+    this.offset_ = top - (this.pad_ ? this.header_.offsetHeight : 0)
     this.update()
   }
 
@@ -55,25 +83,31 @@ export default class Position {
    *
    * The inner height of the window (= the visible area) is the maximum
    * possible height for the stretching sidebar. This height must be deducted
-   * by the top offset of the parent container, which accounts for the fixed
-   * header, setting the baseline. Depending on the page y-offset, the top
-   * offset of the sidebar must be taken into account, as well as the case
-   * where the window is scrolled beyond the sidebar container.
+   * by the height of the fixed header (56px). Depending on the page y-offset,
+   * the top offset of the sidebar must be taken into account, as well as the
+   * case where the window is scrolled beyond the sidebar container.
+   *
+   * @param {Event?} ev - Event
    */
-  update() {
+  update(ev) {
     const offset  = window.pageYOffset
     const visible = window.innerHeight
 
-    /* Calculate bounds of sidebar container  */
-    this.bounds_ = {
-      top: this.parent_.offsetTop,
+    /* Update offset, in case window is resized */
+    if (ev && ev.type === "resize")
+      this.setup()
+
+    /* Set bounds of sidebar container - must be calculated on every run, as
+       the height of the content might change due to loading images etc. */
+    const bounds = {
+      top: this.pad_ ? this.header_.offsetHeight : 0,
       bottom: this.parent_.offsetTop + this.parent_.offsetHeight
     }
 
     /* Calculate new offset and height */
-    const height = visible - this.bounds_.top
+    const height = visible - bounds.top
                  - Math.max(0, this.offset_ - offset)
-                 - Math.max(0, offset + visible - this.bounds_.bottom)
+                 - Math.max(0, offset + visible - bounds.bottom)
 
     /* If height changed, update element */
     if (height !== this.height_)

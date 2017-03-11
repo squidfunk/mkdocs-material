@@ -37,6 +37,23 @@
   background-color: $md-color-primary;
   color: $md-color-white;
   z-index: 1;
+  // Hack: putting the header on the GPU avoids unnecessary repaints
+  backface-visibility: hidden;
+
+  // Always show shadow, in case JavaScript is not available
+  .no-js & {
+    @include z-depth(2);
+  }
+
+  // [screen +]: Show shadow depending on scroll offset
+  @include break-from-device(screen) {
+    box-shadow: none;
+
+    // Show and animate shadow
+    &[data-md-state="shadow"] {
+      @include z-depth(2);
+    }
+  }
 
   // Hide for print
   @media print {
