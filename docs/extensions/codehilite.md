@@ -4,7 +4,7 @@
 and is included in the standard Markdown library. The highlighting process is
 executed during compilation of the Markdown file.
 
-!!! fail "Syntax highlighting not working?"
+!!! failure "Syntax highlighting not working?"
 
     Please ensure that [Pygments][2] is installed. See the next section for
     further directions on how to set up Pygments or use the official
