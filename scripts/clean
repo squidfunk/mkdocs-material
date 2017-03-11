@@ -21,11 +21,11 @@
 # IN THE SOFTWARE.
 
 # Check if "yarn install" was executed
-if [[ ! -d $(yarn bin) ]]; then
+if [[ ! -d "$(yarn bin)" ]]; then
   echo "\"node_modules\" not found:"
   echo "yarn install"
   exit 1
 fi
 
 # Run command
-$(yarn bin)/gulp clean "$@"
+"$(yarn bin)"/gulp clean "$@"

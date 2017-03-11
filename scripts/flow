@@ -21,18 +21,18 @@
 # IN THE SOFTWARE.
 
 # Check if "yarn install" was executed
-if [[ ! -d $(yarn bin) ]]; then
+if [[ ! -d "$(yarn bin)" ]]; then
   echo "\"node_modules\" not found:"
   echo "yarn install"
   exit 1
 fi
 
 # Annotate source files
-$(yarn bin)/gulp assets:javascripts:annotate "$@"
+"$(yarn bin)"/gulp assets:javascripts:annotate "$@"
 FLOW_JSDOC=$?
 
 # Run flow typecheck
-$(yarn bin)/flow check tmp
+"$(yarn bin)"/flow check tmp
 FLOW=$?
 
 # If one command failed, exit with error
