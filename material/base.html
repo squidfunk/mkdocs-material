@@ -38,13 +38,13 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-ba019b7fca.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-1d1da4857d.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-66fa0d9bba.palette.css">
       {% endif %}
     {% endblock %}
     {% block fonts %}
-      {% if config.extra.font != "none" %}
+      {% if config.extra.font != false and config.extra.font != "none" %}
         {% set text = config.extra.get("font", {}).text | default("Roboto") %}
         {% set code = config.extra.get("font", {}).code
                     | default("Roboto Mono") %}
