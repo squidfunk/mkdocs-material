@@ -7,6 +7,7 @@ mkdocs-material-1.x.x (2017-xx-xx)
   * Fixed incorrectly initialized tablet sidebar height
   * Fixed regression for #1: GitHub stars break if the repo_url ends with a '/'
   * Fixed undesired white line below copyright footer due to base font scaling
+  * Fixed issue with whitespace in path for scripts
   * Reduced repaints to a minimum for non-tabs configuration
   * Slightly reduced contrast of edit button
 
