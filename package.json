@@ -92,7 +92,7 @@
     "webpack": "^2.2.1",
     "webpack-stream": "^3.2.0",
     "whatwg-fetch": "^2.0.1",
-    "yargs": "^6.6.0"
+    "yargs": "^7.0.2"
   },
   "optionalDependencies": {
     "eslint-plugin-mocha": "^4.8.0",
