@@ -233,5 +233,10 @@ button[data-md-color-accent] {
     .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
       background-color: $color;
     }
+
+    // Source file icon
+    .md-source-file:hover::before {
+      background-color: $color;
+    }
   }
 }

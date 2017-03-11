@@ -149,3 +149,60 @@
     }
   }
 }
+
+// Source file
+.md-source-file {
+  display: inline-block;
+  margin: 1em 0.5em 1em 0;
+  padding-right: 0.5rem;
+  border-radius: 0.2rem;
+  background: $md-color-black--lightest;
+  font-size: ms(-1);
+  list-style-type: none;
+  cursor: pointer;
+  overflow: hidden;
+
+  // Icon
+  &::before {
+    @extend %md-icon;
+
+    display: inline-block;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    background: $md-color-black--lighter;
+    color: $md-color-white;
+    font-size: ms(0);
+    content: "clear_all";
+    vertical-align: middle;
+  }
+
+  // Some properties need to be set with higher specificity due to the default
+  // styling of text links inside typesetted content
+  html & {
+    transition:
+      background 0.4s,
+      color 0.4s,
+      box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    // Icon
+    &::before {
+      transition: inherit;
+    }
+  }
+
+  // Color needs even higher specifity because custom color palettes are set
+  // using the body and override text links inside typesetted content
+  html body .md-typeset & {
+    color: $md-color-black--light;
+  }
+
+  // Hovered source file
+  &:hover {
+    @include z-depth-focus;
+
+    // Icon
+    &::before {
+      background: $md-color-accent;
+    }
+  }
+}

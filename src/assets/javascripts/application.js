@@ -107,13 +107,7 @@ function initialize(config) { // eslint-disable-line func-style
 
   /* Component: sidebar with table of contents - register two separate
      listeners, as the offset at the top might change */
-  new Material.Event.MatchMedia("(min-width: 960px) and (max-width: 1219px)",
-    new Material.Event.Listener(window, [
-      "scroll", "resize", "orientationchange"
-    ], new Material.Sidebar.Position(
-      "[data-md-component=toc]",
-      "[data-md-component=header]")))
-  new Material.Event.MatchMedia("(min-width: 1220px)",
+  new Material.Event.MatchMedia("(min-width: 960px)",
     new Material.Event.Listener(window, [
       "scroll", "resize", "orientationchange"
     ], new Material.Sidebar.Position(

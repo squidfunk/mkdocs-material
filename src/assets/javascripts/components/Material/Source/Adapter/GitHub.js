@@ -37,8 +37,10 @@ export default class GitHub extends Abstract {
   constructor(el) {
     super(el)
 
-    /* Adjust base URL to reach API endpoints */
-    this.base_ = this.base_.replace("github.com/", "api.github.com/repos/")
+    /* Adjust base URL to reach API endpoints and remove trailing slash */
+    this.base_ = this.base_
+      .replace("github.com/", "api.github.com/repos/")
+      .replace(/\/$/, "")
   }
 
   /**

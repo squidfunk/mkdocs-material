@@ -60,38 +60,19 @@
     @extend %md-icon__button;
 
     position: relative;
-    margin-top: 0.8rem;
+    margin: 0.8rem 0;
+    padding-right: 0;
+    padding-left: 0;
     float: right;
 
-    // TODO
+    // Override default link color for icons
     html body .md-typeset & {
       color: $md-color-black--lighter;
-    }
-
-    // [tablet portrait -]: Align edit link with search icon
-    @include break-to-device(tablet portrait) {
-      margin-right: -0.8rem;
-
-      // TODO
-      & + & {
-        margin-right: 0.4rem;
-      }
     }
 
     // Hide for print
     @media print {
       display: none;
-    }
-
-    // TODO
-    & + &::before {
-      display: block;
-      position: absolute;
-      top: -0.4rem;
-      right: -0.5rem;
-      height: 4.8rem;
-      border-right: 0.2rem solid $md-color-black--lighter;
-      content: "";
     }
   }
 }

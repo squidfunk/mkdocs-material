@@ -31,8 +31,11 @@
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <!-- Site description -->
-      {% if config.site_description %}
+      <!-- Page description -->
+      {% if page and page.meta.description %}
+        <meta name="description"
+            content="{{ page.meta.description | first }}" />
+      {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}" />
       {% endif %}
 
@@ -41,8 +44,10 @@
         <link rel="canonical" href="{{ page.canonical_url }}" />
       {% endif %}
 
-      <!-- Author -->
-      {% if config.site_author %}
+      <!-- Page author -->
+      {% if page and page.meta.author %}
+        <meta name="author" content="{{ page.meta.author | first }}" />
+      {% elif config.site_author %}
         <meta name="author" content="{{ config.site_author }}" />
       {% endif %}
 
@@ -57,12 +62,14 @@
 
       <!-- Generator banner -->
       <meta name="generator"
-          content="mkdocs-{{ mkdocs_version }}, $theme-name$-$theme-version$" />
+          content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$" />
     {% endblock %}
 
     <!-- Block: site title -->
     {% block htmltitle %}
-      {% if page.title and not page.is_homepage %}
+      {% if page and page.meta.title %}
+        <title>{{ page.meta.title | first }}</title>
+      {% elif page and page.title and not page.is_homepage %}
         <title>{{ page.title }} - {{ config.site_name }}</title>
       {% else %}
         <title>{{ config.site_name }}</title>
@@ -220,13 +227,6 @@
                       class="md-icon md-content__icon">edit</a>
                 {% endif %}
 
-                <!-- Linked source files -->
-                {% if page.meta.source %}
-                  <a href="{{ page.edit_url }}"
-                      title="{{ lang.t('source.link.title') }}"
-                      class="md-icon md-content__icon">folder_open</a>
-                {% endif %}
-
                 <!--
                   Hack: check whether the content contains a h1 headline. If it
                   doesn't, the page title (or respectively site name) is used
@@ -239,34 +239,36 @@
                 <!-- Content -->
                 {{ page.content }}
 
-                {% if page.meta.source %}
-                  <hr>
-                  <ul>
+                <!-- Source files -->
+                {% block source %}
+                  {% if page.meta.source %}
+                    <h2 id="__source">{{ lang.t('meta.source') }}</h2>
+                    {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
-                      <li><a href="#"><code>{{ file }}</code></a></li>
+
+                      <!--
+                        Hack: here, we just glue all parts of the source file
+                        path together, ensure that there are slashes and remove
+                        double slashes afterwards. Not beautiful, but it will
+                        catch a lot of use cases.
+                      -->
+                      <a href="{{
+                        [repo_url, path, file] | join('/') | replace('//', '/')
+                      }}" title="{{ file }}" class="md-source-file">
+                        {{ file }}
+                      </a>
                     {% endfor %}
-                  </ul>
-                {% endif %}
+                  {% endif %}
+                {% endblock %}
               {% endblock %}
 
               <!-- Disqus integration -->
-              {% if config.extra.disqus and not page.is_homepage %}
-                <h2>{{ lang.t('comments') }}</h2>
-                <div id="disqus_thread"></div>
-                <script>
-                  var disqus_config = function () {
-                    this.page.url = "{{ page.canonical_url }}";
-                    this.page.identifier =
-                      "{{ page.canonical_url | replace(config.site_url, "") }}";
-                  };
-                  (function() {
-                    var d = document, s = d.createElement("script");
-                    s.src = "//{{ config.extra.disqus }}.disqus.com/embed.js";
-                    s.setAttribute("data-timestamp", +new Date());
-                    (d.head || d.body).appendChild(s);
-                  })();
-                </script>
-              {% endif %}
+              {% block disqus %}
+                {% if config.extra.disqus and not page.is_homepage %}
+                  <h2 id="__comments">{{ lang.t('meta.comments') }}</h2>
+                  {% include "partials/disqus.html" %}
+                {% endif %}
+              {% endblock %}
             </article>
           </div>
         </div>

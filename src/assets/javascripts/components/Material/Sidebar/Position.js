@@ -36,6 +36,7 @@ export default class Position {
    * @property {HTMLElement} header_ - Header
    * @property {number} height_ - Current sidebar height
    * @property {number} offset_ - Current page y-offset
+   * @property {boolean} pad_ - Pad when header is fixed
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    * @param {(string|HTMLElement)} header - Selector or HTML element
@@ -58,8 +59,9 @@ export default class Position {
       throw new ReferenceError
     this.header_ = ref
 
-    /* Initialize current height */
+    /* Initialize current height and test whether header is fixed */
     this.height_ = 0
+    this.pad_ = window.getComputedStyle(this.header_).position === "fixed"
   }
 
   /**
@@ -72,7 +74,7 @@ export default class Position {
       }, 0)
 
     /* Set lock offset for element with largest top offset */
-    this.offset_ = top - this.header_.offsetHeight
+    this.offset_ = top - (this.pad_ ? this.header_.offsetHeight : 0)
     this.update()
   }
 
@@ -98,7 +100,7 @@ export default class Position {
     /* Set bounds of sidebar container - must be calculated on every run, as
        the height of the content might change due to loading images etc. */
     const bounds = {
-      top: this.header_.offsetHeight,
+      top: this.pad_ ? this.header_.offsetHeight : 0,
       bottom: this.parent_.offsetTop + this.parent_.offsetHeight
     }
 

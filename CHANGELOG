@@ -1,3 +1,15 @@
+mkdocs-material-1.x.x (2017-xx-xx)
+
+  * Added possibility for non-fixed (static) header
+  * Added support for page-specific title and description using metadata
+  * Added support for the linking of source files to pages
+  * Fixed jitter and offset of sidebar when zooming browser
+  * Fixed incorrectly initialized tablet sidebar height
+  * Fixed regression for #1: GitHub stars break if the repo_url ends with a '/'
+  * Fixed undesired white line below copyright footer due to base font scaling
+  * Reduced repaints to a minimum for non-tabs configuration
+  * Slightly reduced contrast of edit button
+
 mkdocs-material-1.2.0 (2017-03-03)
 
   * Added quote (synonym: cite) style for Admonition
