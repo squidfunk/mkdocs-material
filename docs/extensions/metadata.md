@@ -14,7 +14,7 @@ Add the following lines to your `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
-  - metadata
+  - meta
 ```
 
 ## Usage
