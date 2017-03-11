@@ -370,16 +370,18 @@ Material theme including more information regarding installation and usage:
 
 * [Admonition][20]
 * [Codehilite][21]
-* [Permalinks][22]
-* [Footnotes][23]
-* [PyMdown Extensions][24]
+* [Footnotes][22]
+* [Metadata][23]
+* [Permalinks][24]
+* [PyMdown Extensions][25]
 
   [19]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
   [20]: extensions/admonition.md
   [21]: extensions/codehilite.md
-  [22]: extensions/permalinks.md
-  [23]: extensions/footnotes.md
-  [24]: extensions/pymdown.md
+  [22]: extensions/footnotes.md
+  [23]: extensions/metadata.md
+  [24]: extensions/permalinks.md
+  [25]: extensions/pymdown.md
 
 ## Full example
 

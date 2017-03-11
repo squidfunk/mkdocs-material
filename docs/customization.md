@@ -98,6 +98,7 @@ The directory layout of the Material theme is as follows:
 │  ├─ javascripts/                     # JavaScript
 │  └─ stylesheets/                     # Stylesheets
 ├─ partials/
+│  ├─ disqus.html                      # Disqus integration
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
 │  ├─ language.html                    # Localized labels
@@ -106,6 +107,8 @@ The directory layout of the Material theme is as follows:
 │  ├─ search.html                      # Search box
 │  ├─ social.html                      # Social links
 │  ├─ source.html                      # Repository information
+│  ├─ tabs-item.html                   # Tabs navigation item
+│  ├─ tabs.html                        # Tabs navigation
 │  ├─ toc-item.html                    # Table of contents item
 │  └─ toc.html                         # Table of contents
 ├─ 404.html                            # 404 error page
@@ -141,6 +144,7 @@ The Material theme provides the following template blocks:
 | ------------ | ----------------------------------------------- |
 | `analytics`  | Wraps the Google Analytics integration          |
 | `content`    | Wraps the main content                          |
+| `disqus`     | Wraps the disqus integration                    |
 | `extrahead`  | Empty block to define additional meta tags      |
 | `fonts`      | Wraps the webfont definitions                   |
 | `footer`     | Wraps the footer with navigation and copyright  |
@@ -149,6 +153,7 @@ The Material theme provides the following template blocks:
 | `libs`       | Wraps the JavaScript libraries, e.g. Modernizr  |
 | `repo`       | Wraps the repository link in the header bar     |
 | `scripts`    | Wraps the JavaScript application logic          |
+| `source`     | Wraps the linked source files                   |
 | `search_box` | Wraps the search form in the header bar         |
 | `site_meta`  | Wraps the meta tags in the document head        |
 | `site_name`  | Wraps the site name in the header bar           |
