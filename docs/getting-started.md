@@ -250,6 +250,33 @@ extra:
   [13]: https://fonts.google.com
   [14]: https://fonts.google.com/specimen/Ubuntu
 
+### Adding a source repository
+
+To include a link to the repository of your project within your documentation,
+set the following variables via your project's `mkdocs.yml`:
+
+``` yaml
+repo_name: 'my-github-handle/my-project'
+repo_url: 'https://github.com/my-github-handle/my-project'
+```
+
+Material will render the name of the repository next to the search bar on
+big screens and as part of the main navigation pane on smaller screen sizes.
+Furthermore, if `repo_url` points to a GitHub, BitBucket or GitLab repository,
+the respective logo will be shown next to the name of the repository.
+Additionally, for GitHub, the number of stars and forks is shown.
+
+!!! warning "Why is there an edit button at the top of every article?"
+
+    If the `repo_url` is set to a GitHub or BitBucket repository, and the
+    `repo_name` is set to *GitHub* or *BitBucket* (which is the default), an
+    edit button will appear at the top of every article. This is the automatic
+    behavior that MkDocs implements. See the [MkDocs documentation][15] on more
+    guidance regarding the `edit_uri` attribute, which defines whether the edit
+    button is show or not.
+
+  [15]: http://www.mkdocs.org/user-guide/configuration/#edit_uri
+
 ### Adding a logo
 
 Material makes it easy to add your logo. Your logo should have rectangular
@@ -267,7 +294,7 @@ extra:
 
 If you want to link your social accounts, the Material theme provides an easy
 way for doing this in the footer of the documentation using the automatically
-included [FontAwesome][15] webfont. The syntax is simple – the `type` must
+included [FontAwesome][16] webfont. The syntax is simple – the `type` must
 denote the name of the social service, e.g. `github`, `twitter` or `linkedin`
 and the `link` must contain the URL you want to link to:
 
@@ -286,7 +313,7 @@ The links are generated in order and the `type` of the links must match the
 name of the FontAwesome glyph. The `fa` is automatically added, so `github`
 will result in `fa fa-github`.
 
-  [15]: http://fontawesome.io/icons/
+  [16]: http://fontawesome.io/icons/
 
 ### Google Analytics integration
 
@@ -303,7 +330,7 @@ google_analytics:
 
 ### Disqus integation
 
-Material for MkDocs is integrated with [Disqus][16], so if you want to add a
+Material for MkDocs is integrated with [Disqus][17], so if you want to add a
 comments section to your documentation set the shortname of your Disqus project
 in your `mkdocs.yml`:
 
@@ -314,20 +341,22 @@ extra:
 
 The necessary JavaScript is automatically included.
 
-  [16]: https://disqus.com
+  [17]: https://disqus.com
 
-### Localization <small>L10N</small>
+### Localization
 
-In order to localize the labels (e.g. *Previous* and *Next* in the footer),
-you can override the file `partials/language.html` to provide your own
-translations inside the macro `t`:
+Material for MkDocs supports internationalization (i18n). In order to translate
+the labels (e.g. *Previous* and *Next* in the footer), you can override the
+file `partials/language.html` to provide your own translations inside the
+macro `t`:
 
 ``` jinja
 {% macro t(key) %}{{ {
   "edit.link.title": "Edit this page",
-  "comments": "Comments",
   "footer.previous": "Previous",
   "footer.next": "Next",
+  "meta.comments": "Comments",
+  "meta.source": "Source",
   "search.placeholder": "Search",
   "source.link.title": "Go to repository",
   "toc.title": "Table of contents"
@@ -335,26 +364,22 @@ translations inside the macro `t`:
 ```
 
 Just copy the file from the original theme and make your adjustments. See the
-section on [overriding partials][17] in the customization guide.
+section on [overriding partials][18] and the general guide on
+[theme extension][19] in the customization guide.
 
-!!! warning "Migrating from Material 0.2.x"
-
-    In 0.2.x localization was done within the `extra` configuration of your
-    `mkdocs.yml`. With 1.0.0 this is no longer possible as the configuration
-    will be ignored.
-
-  [17]: customization.md#overriding-partials
+  [18]: customization.md#overriding-partials
+  [19]: customization.md#extending-the-theme
 
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][18] for more information on advanced customization.
+[this article][20] for more information on advanced customization.
 
-  [18]: customization.md
+  [20]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][19]. The following extensions
+MkDocs supports several [Markdown extensions][21]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -368,20 +393,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][20]
-* [Codehilite][21]
-* [Footnotes][22]
-* [Metadata][23]
-* [Permalinks][24]
-* [PyMdown Extensions][25]
+* [Admonition][22]
+* [Codehilite][23]
+* [Footnotes][24]
+* [Metadata][25]
+* [Permalinks][26]
+* [PyMdown Extensions][27]
 
-  [19]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [20]: extensions/admonition.md
-  [21]: extensions/codehilite.md
-  [22]: extensions/footnotes.md
-  [23]: extensions/metadata.md
-  [24]: extensions/permalinks.md
-  [25]: extensions/pymdown.md
+  [21]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [22]: extensions/admonition.md
+  [23]: extensions/codehilite.md
+  [24]: extensions/footnotes.md
+  [25]: extensions/metadata.md
+  [26]: extensions/permalinks.md
+  [27]: extensions/pymdown.md
 
 ## Full example
 
@@ -395,7 +420,7 @@ site_author: 'John Doe'
 site_url: 'https://my-github-handle.github.io/my-project'
 
 # Repository
-repo_name: 'GitHub'
+repo_name: 'my-github-handle/my-project'
 repo_url: 'https://github.com/my-github-handle/my-project'
 
 # Copyright
@@ -413,7 +438,6 @@ extra:
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
-  disqus: 'your-disqus-shortname'
   social:
     - type: 'github'
       link: 'https://github.com/john-doe'
@@ -431,7 +455,5 @@ google_analytics:
 markdown_extensions:
   - admonition
   - codehilite(guess_lang=false)
-  - footnotes
-  - meta
   - toc(permalink=true)
 ```
