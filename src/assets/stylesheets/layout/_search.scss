@@ -346,6 +346,8 @@
 
 // Search result
 .md-search-result {
+  color: $md-color-black;
+  word-break: break-word;
 
   // Search metadata
   &__meta {
@@ -377,42 +379,75 @@
   // Link inside item
   &__link {
     display: block;
-    padding: 0 1.6rem;
     transition: background 0.25s;
-    overflow: auto;
+    overflow: hidden;
 
     // Hovered link
     &:hover {
       background-color: transparentize($md-color-accent, 0.9);
     }
 
+    // Add a little spacing on the last link
+    &:last-child {
+      padding-bottom: 0.8rem;
+    }
+  }
+
+  // Article - document or section
+  &__article {
+    position: relative;
+    padding: 0 1.6rem;
+    overflow: auto;
+
     // [tablet landscape +]: Increase left indent
     @include break-from-device(tablet landscape) {
       padding-left: 4.8rem;
     }
+
+    // Document
+    &--document {
+      padding-left: 0;
+
+      // Icon
+      &::before {
+        @extend %md-icon, %md-icon__button;
+
+        position: absolute;
+        left: 0;
+        color: $md-color-black--light;
+        content: "find_in_page";
+      }
+
+      // Title
+      .md-search-result__title {
+        margin: 1.3rem 0;
+        font-size: ms(0);
+        font-weight: 400;
+        line-height: 1.4;
+      }
+    }
   }
 
-  // Search result content
-  &__article {
-    margin: 1em 0;
-  }
-
-  // Search result title
+  // Title
   &__title {
-    margin-top: 0.5em;
-    margin-bottom: 0;
-    color: $md-color-black;
-    font-size: ms(0);
-    font-weight: 400;
+    margin: 0.5em 0;
+    font-size: ms(-1);
+    font-weight: 700;
     line-height: 1.4;
   }
 
-  // Search result teaser
+  // Teaser
   &__teaser {
     margin: 0.5em 0;
     color: $md-color-black--light;
     font-size: ms(-1);
     line-height: 1.4;
-    word-break: break-word;
+  }
+
+  // Highlighting
+  em {
+    font-style: normal;
+    font-weight: 700;
+    text-decoration: underline;
   }
 }

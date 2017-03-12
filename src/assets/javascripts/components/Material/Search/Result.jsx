@@ -107,51 +107,36 @@ export default class Result {
           /* eslint-enable no-invalid-this, lines-around-comment */
         })
 
-        /*
-         * The MkDocs search index provides all pages as specified in the
-         * mkdocs.yml in order with an entry for the content of the whole
-         * page followed by separate entries for all subsections also in
-         * order of appearance.
-         */
+        /* Preprocess and index sections and documents */
+        this.docs_ = data.reduce((docs, doc) => {
+          const [path, hash] = doc.location.split("#")
 
-        // 1. Reduce docs so that useless entries are not included, using a
-        // quick spliting hack - only one test is necessary.
-        const main = []
-        const reduced = data.reduce((docs, doc) => {
-          if (docs.length && doc.location.split(
-              `${docs[docs.length - 1].location}#`).length > 1)
-            main.push(docs.pop())
-          doc.main = main.length - 1 // main entry
-          return docs.concat(doc)
-        }, [])
+          /* Associate section with parent document */
+          if (hash) {
+            doc.parent = docs.get(path)
 
-        // now we have the main pages.
+            /* Override page title with document title if first section */
+            if (doc.parent && !doc.parent.done) {
+              doc.parent.title = doc.title
+              doc.parent.text  = doc.text
+              doc.parent.done  = true
+            }
+          }
 
-        // Only return top-level pages
-        // const reduced = data.reduce((docs, doc) => {
-        //   if (!doc.location.match("#"))
-        //     docs.push(doc)
-        //   return docs
-        // }, [])
-
-        // 2. Trim texts
-        const trimmed = reduced.map(doc => {
+          /* Some cleanup on the text */
           doc.text = doc.text
             .replace(/\n/g, " ")               /* Remove newlines */
             .replace(/\s+/g, " ")              /* Compact whitespace */
             .replace(/\s+([,.:;!?])/g,         /* Correct punctuation */
               (_, char) => char)
-          return doc
-        })
 
-        const data2 = trimmed
-
-        /* Index documents */
-        this.docs_ = data2.reduce((docs, doc) => {
-          this.index_.add(doc)
-          docs[doc.location] = doc
+          /* Index sections and documents, but skip top-level headline */
+          if (!doc.parent || doc.parent.title !== doc.title) {
+            this.index_.add(doc)
+            docs.set(doc.location, doc)
+          }
           return docs
-        }, {})
+        }, new Map)
       }
 
       /* Initialize index after short timeout to account for transition */
@@ -171,57 +156,102 @@ export default class Result {
       while (this.list_.firstChild)
         this.list_.removeChild(this.list_.firstChild)
 
-      /* Perform search on index and render documents */
-      const result = this.index_.search(target.value)
+      /* Perform search on index and group sections by document */
+      const result = this.index_
+        .search(target.value)
+        .reduce((items, item) => {
+          const doc = this.docs_.get(item.ref)
+          if (doc.parent) {
+            const ref = doc.parent.location
+            items.set(ref, (items.get(ref) || []).concat(item))
+          }
+          return items
+        }, new Map)
+
+      /* Assemble highlight regex from query string */
+      const match = new RegExp(
+        `\\b(${target.value.trim().replace(" ", "|")})`, "img")
+
+      /* Render results */
+      result.forEach((items, ref) => {
+        const doc = this.docs_.get(ref)
+
+        // TODO: unify teaser and stuff again and use modifier --document --section
+        // TODO: write a highlight function which receives a document --> can be abstracted later
+
+        /* Append search result */
+        this.list_.appendChild(
+          <li class="md-search-result__item">
+            <a href={doc.location} title={doc.title}
+                class="md-search-result__link">
+              <article class="md-search-result__article
+                    md-search-result__article--document">
+                <h1 class="md-search-result__title">
+                  {{ __html:
+                      doc.title.replace(match, string => `<em>${string}</em>`)
+                  }}
+                </h1>
+                <p class="md-search-result__teaser">
+                  {{ __html:
+                      doc.text.replace(match, string => `<em>${string}</em>`)
+                  }}
+                </p>
+              </article>
+            </a>
+            {items.map(item => {
+              const section = this.docs_.get(item.ref)
+              return (
+                <a href={section.location} title={section.title}
+                    class="md-search-result__link" data-md-rel="anchor">
+                  <article class="md-search-result__article
+                        md-search-result__article--section">
+                    <h1 class="md-search-result__title">
+                      {{ __html:
+                          section.title.replace(match,
+                            string => `<em>${string}</em>`)
+                      }}
+                    </h1>
+                    <p class="md-search-result__teaser">
+                      {{ __html:
+                          section.text.replace(match,
+                            string => `<em>${string}</em>`)
+                      }}
+                    </p>
+                  </article>
+                </a>
+              )
+            })}
+          </li>
+        ) /* {this.truncate_(doc.text, 140)} */
+      })
 
       // process results!
-      const re = new RegExp(`\\b${target.value}`, "img")
+      // const re = new RegExp(`\\b${target.value}`, "img")
       // result.map(item => {
       //   // console.time("someFunction")
       //   text = text.replace(re, "*XXX*") // do in parallel and collect!
       //   // console.timeEnd("someFunction")
       // })
 
-      result.forEach(item => {
-        const doc = this.data_[item.ref]
-        // console.log(item.score)
-
-        /* Check if it's a anchor link on the current page */
-        let [pathname] = doc.location.split("#")
-        pathname = pathname.replace(/^(\/?\.{2})+/g, "")
-
-        // TODO: match in children but show top level entry with merged
-        // sentences split top level and main entries! index one top level,
-        // when there is no child
-
-        let text = doc.text
-        // const re = new RegExp(`\\b${ev.target.value}`, "img")
-        // console.time("someFunction")
-        text = text.replace(re, string => {
-          return `<b style="color: red">${string}</b>`
-        })
-        // console.log(text)
-        // console.timeEnd("someFunction")
-
-        /* Append search result */
-        this.list_.appendChild(
-          <li class="md-search-result__item">
-            <a href={doc.location} title={doc.title}
-              class="md-search-result__link" data-md-rel={
-                pathname === document.location.pathname
-              ? "anchor" : ""}>
-              <article class="md-search-result__article">
-                <h1 class="md-search-result__title">
-                  {doc.title}
-                </h1>
-                <p class="md-search-result__teaser">
-                  {{ __html: text }}
-                </p>
-              </article>
-            </a>
-          </li>
-        ) /* {this.truncate_(doc.text, 140)} */
-      })
+      // result.forEach(item => {
+      //   const doc = this.docs_[item.ref]
+      //   // console.log(item.score)
+      //
+      //   /* Check if it's a anchor link on the current page */
+      //   let [pathname] = doc.location.split("#")
+      //   pathname = pathname.replace(/^(\/?\.{2})+/g, "")
+      //
+      //   // TODO: match in children but show top level entry with merged
+      //   // sentences split top level and main entries! index one top level,
+      //   // when there is no child
+      //
+      //   let text = doc.text
+      //   // const re = new RegExp(`\\b${ev.target.value}`, "img")
+      //   // console.time("someFunction")
+      //   text = text.replace(re, string => {
+      //     return `<b style="color: red">${string}</b>`
+      //   })
+      // })
 
       /* Bind click handlers for anchors */
       const anchors = this.list_.querySelectorAll("[data-md-rel=anchor]")
