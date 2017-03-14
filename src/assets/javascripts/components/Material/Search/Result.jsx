@@ -72,7 +72,7 @@ export default class Result {
    *
    * This is not a reasonable approach, since the summaries kind of suck. It
    * would be better to create something more intelligent, highlighting the
-   * search occurrences and making a better summary out of it
+   * search occurrences and making a better summary out of it.
    *
    * @param {string} string - String to be truncated
    * @param {number} n - Number of characters
@@ -171,13 +171,11 @@ export default class Result {
       /* Assemble highlight regex from query string */
       const match = new RegExp(
         `\\b(${target.value.trim().replace(" ", "|")})`, "img")
+      const highlight = string => `<em>${string}</em>`
 
       /* Render results */
       result.forEach((items, ref) => {
         const doc = this.docs_.get(ref)
-
-        // TODO: unify teaser and stuff again and use modifier --document --section
-        // TODO: write a highlight function which receives a document --> can be abstracted later
 
         /* Append search result */
         this.list_.appendChild(
@@ -187,15 +185,12 @@ export default class Result {
               <article class="md-search-result__article
                     md-search-result__article--document">
                 <h1 class="md-search-result__title">
-                  {{ __html:
-                      doc.title.replace(match, string => `<em>${string}</em>`)
-                  }}
+                  {{ __html: doc.title.replace(match, highlight) }}
                 </h1>
-                <p class="md-search-result__teaser">
-                  {{ __html:
-                      doc.text.replace(match, string => `<em>${string}</em>`)
-                  }}
-                </p>
+                {doc.text.length ?
+                  <p class="md-search-result__teaser">
+                    {{ __html: doc.text.replace(match, highlight) }}
+                  </p> : {}}
               </article>
             </a>
             {items.map(item => {
@@ -203,20 +198,14 @@ export default class Result {
               return (
                 <a href={section.location} title={section.title}
                     class="md-search-result__link" data-md-rel="anchor">
-                  <article class="md-search-result__article
-                        md-search-result__article--section">
+                  <article class="md-search-result__article">
                     <h1 class="md-search-result__title">
-                      {{ __html:
-                          section.title.replace(match,
-                            string => `<em>${string}</em>`)
-                      }}
+                      {{ __html: section.title.replace(match, highlight) }}
                     </h1>
-                    <p class="md-search-result__teaser">
-                      {{ __html:
-                          section.text.replace(match,
-                            string => `<em>${string}</em>`)
-                      }}
-                    </p>
+                    {section.text.length ?
+                      <p class="md-search-result__teaser">
+                        {{ __html: section.text.replace(match, highlight) }}
+                      </p> : {}}
                   </article>
                 </a>
               )
@@ -224,34 +213,6 @@ export default class Result {
           </li>
         ) /* {this.truncate_(doc.text, 140)} */
       })
-
-      // process results!
-      // const re = new RegExp(`\\b${target.value}`, "img")
-      // result.map(item => {
-      //   // console.time("someFunction")
-      //   text = text.replace(re, "*XXX*") // do in parallel and collect!
-      //   // console.timeEnd("someFunction")
-      // })
-
-      // result.forEach(item => {
-      //   const doc = this.docs_[item.ref]
-      //   // console.log(item.score)
-      //
-      //   /* Check if it's a anchor link on the current page */
-      //   let [pathname] = doc.location.split("#")
-      //   pathname = pathname.replace(/^(\/?\.{2})+/g, "")
-      //
-      //   // TODO: match in children but show top level entry with merged
-      //   // sentences split top level and main entries! index one top level,
-      //   // when there is no child
-      //
-      //   let text = doc.text
-      //   // const re = new RegExp(`\\b${ev.target.value}`, "img")
-      //   // console.time("someFunction")
-      //   text = text.replace(re, string => {
-      //     return `<b style="color: red">${string}</b>`
-      //   })
-      // })
 
       /* Bind click handlers for anchors */
       const anchors = this.list_.querySelectorAll("[data-md-rel=anchor]")
@@ -276,7 +237,7 @@ export default class Result {
 
       /* Update search metadata */
       this.meta_.textContent =
-        `${result.length} search result${result.length !== 1 ? "s" : ""}`
+        `${result.size} search result${result.size !== 1 ? "s" : ""}`           // TODO "20 references in 8 documents"
     }
   }
 }

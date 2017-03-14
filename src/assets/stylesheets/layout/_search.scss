@@ -406,7 +406,6 @@
 
     // Document
     &--document {
-      padding-left: 0;
 
       // Icon
       &::before {
@@ -414,8 +413,13 @@
 
         position: absolute;
         left: 0;
-        color: $md-color-black--light;
+        color: $md-color-black--lighter;
         content: "find_in_page";
+
+        // [tablet portrait -]: Hide page icon
+        @include break-to-device(tablet portrait) {
+          display: none;
+        }
       }
 
       // Title
@@ -436,13 +440,35 @@
     line-height: 1.4;
   }
 
+  // stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix
+
   // Teaser
   &__teaser {
+    display: -webkit-box;
+    max-height: 3.3rem;
     margin: 0.5em 0;
     color: $md-color-black--light;
     font-size: ms(-1);
     line-height: 1.4;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    // [mobile -]: Increase number of lines
+    @include break-to-device(mobile) {
+      max-height: 5rem;
+      -webkit-line-clamp: 3;
+    }
+
+    // [tablet landscape]: Increase number of lines
+    @include break-at-device(tablet landscape) {
+      max-height: 5rem;
+      -webkit-line-clamp: 3;
+    }
   }
+
+  // stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix
 
   // Highlighting
   em {
