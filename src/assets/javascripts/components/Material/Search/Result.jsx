@@ -53,7 +53,7 @@ export default class Result {
     this.el_ = ref
 
     /* Retrieve metadata and list element */
-    const [meta, list] = this.el_.children
+    const [meta, list] = Array.prototype.slice.call(this.el_.children)
 
     /* Set data, metadata and list elements */
     this.data_ = data
