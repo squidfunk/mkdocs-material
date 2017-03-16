@@ -20,12 +20,12 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Check if "yarn install" was executed
-if [[ ! -d "$(yarn bin)" ]]; then
+# Check if "npm install" was executed
+if [[ ! -d "$(npm bin)" ]]; then
   echo "\"node_modules\" not found:"
-  echo "yarn install"
+  echo "npm install"
   exit 1
 fi
 
 # Run command
-"$(yarn bin)"/gulp build --clean --optimize --revision "$@"
+"$(npm bin)"/gulp build --clean --optimize --revision "$@"
