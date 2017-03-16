@@ -38,22 +38,22 @@ git:
 # Cache dependencies
 cache:
   pip: true
-  yarn: true
+  # yarn: true
   directories:
     - node_modules
 
 # Install yarn as Travis doesn't support it out of the box
-before_install:
-  - npm install -g yarn@v0.22.0
+# before_install:
+#   - npm install -g yarn@v0.22.0
 
 # Install dependencies
 install:
-  - yarn install --ignore-optional
+  - npm install --no-optional
   - pip install --user -r requirements.txt
 
 # Perform build and tests
 script:
-  - yarn run build
+  - npm run build
 
 # -----------------------------------------------------------------------------
 # Additional builds
