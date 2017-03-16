@@ -71,7 +71,7 @@
         type="checkbox" id="toc" />
 
     <!-- Hack: see partials/toc.html for more information -->
-    {% if toc_ | first is defined %}
+    {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
       {% set toc_ = (toc_ | first).children %}
     {% endif %}
 
