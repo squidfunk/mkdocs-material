@@ -62,9 +62,9 @@ export default class Result {
 
     /* Load messages for metadata display */
     this.message_ = {
-      none: this.meta_.dataset.mdMessageNone,
-      one: this.meta_.dataset.mdMessageOne,
-      other: this.meta_.dataset.mdMessageOther
+      none: this.meta_.dataset.mdLangResultNone,
+      one: this.meta_.dataset.mdLangResultOne,
+      other: this.meta_.dataset.mdLangResultOther
     }
   }
 
