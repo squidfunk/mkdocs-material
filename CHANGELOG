@@ -1,3 +1,7 @@
+mkdocs-material 1.x.x (2017-xx-xx)
+
+  * TBD
+
 mkdocs-material-1.4.1 (2017-16-03)
 
   * Fixed invalid destructuring attempt on NodeList (in Safari, Edge, IE)
