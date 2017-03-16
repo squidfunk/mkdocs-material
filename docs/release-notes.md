@@ -12,10 +12,17 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.3.0
+# Version 1.4.0
 ```
 
 ## Changelog
+
+### 1.4.0 <small> _ March 16, 2017</small>
+
+* Added support for grouping searched sections by documents
+* Added support for localization of search results
+* Fixed #216: table of contents icon doesn't show if h1 is not present
+* Reworked style and layout of search results for better usability
 
 ### 1.3.0 <small> _ March 11, 2017</small>
 
