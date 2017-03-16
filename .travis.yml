@@ -44,7 +44,10 @@ cache:
 
 # Install yarn as Travis doesn't support it out of the box
 before_install:
-  - npm install -g yarn@v0.22.0
+  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  - apt-get update -qq
+  - apt-get install -y -qq yarn
 
 # Install dependencies
 install:
