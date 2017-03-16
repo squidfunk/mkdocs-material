@@ -20,9 +20,12 @@ pip show mkdocs-material | grep -E ^Version
 ### 1.4.0 <small> _ March 16, 2017</small>
 
 * Added support for grouping searched sections by documents
+* Added support for highlighting of search terms
 * Added support for localization of search results
-* Fixed #216: table of contents icon doesn't show if h1 is not present
+* Fixed [#216][216]: table of contents icon doesn't show if `h1` is not present
 * Reworked style and layout of search results for better usability
+
+  [216]: https://github.com/squidfunk/mkdocs-material/issues/216
 
 ### 1.3.0 <small> _ March 11, 2017</small>
 
@@ -30,7 +33,7 @@ pip show mkdocs-material | grep -E ^Version
 * Added support for linking source files to documentation
 * Fixed jitter and offset of sidebar when zooming browser
 * Fixed incorrectly initialized tablet sidebar height
-* Fixed regression for [#1][1]: GitHub stars break if repo_url ends with a `/`
+* Fixed regression for [#1][1]: GitHub stars break if `repo_url` ends with a `/`
 * Fixed undesired white line below copyright footer due to base font scaling
 * Fixed issue with whitespace in path for scripts
 * Fixed [#205][205]: support non-fixed (static) header
@@ -38,7 +41,7 @@ pip show mkdocs-material | grep -E ^Version
 * Reduced repaints to a minimum for non-tabs configuration
 * Reduced contrast of edit button (slightly)
 
-  [205]: https://github.com/squidfunk/mkdocs-material/issues/197
+  [205]: https://github.com/squidfunk/mkdocs-material/issues/205
 
 ### 1.2.0 <small> _ March 3, 2017</small>
 
