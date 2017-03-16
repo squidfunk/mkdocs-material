@@ -28,27 +28,27 @@ fi
 # Filter relevant files for linting
 FILES=$(git diff --cached --name-only)
 
-# Load the patterns we want to skip into an array
-mapfile -t BLACKLIST < .travisignore
+# Resolve the patterns we want to skip
+BLACKLIST=$(< .travisignore)
 
 # Remove the pattern from the list of changes
-for $pattern in "${BLACKLIST[@]}"; do
-	CHANGES=( ${CHANGES[@]/$pattern/} )
+for f in $BLACKLIST; do
+	FILES=( ${FILES[@]/$f/} )
 
   # If we've exhausted the list of changes before we've finished going
   # through patterns, that's okay, just quit the loop
-	if [[ ${#CHANGES[@]} -eq 0 ]]; then
+	if [[ ${#FILES[@]} -eq 0 ]]; then
 		break
 	fi
 done
 
 # If there's changes left, then we have stuff to build, leave the commit alone
-if [[ ${#CHANGES[@]} -gt 0 ]]; then
+if [[ ${#FILES[@]} -gt 0 ]]; then
 	exit
 fi
 
 # Prefix the commit message with "[skip ci]"
-sed -i '1s/$/ [skip ci]/' "$1"
+sed -i '' '1s/$/ [skip ci]/' "$1"
 
 # We're good
 exit 0
