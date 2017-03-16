@@ -1,0 +1,5 @@
+.github/*
+docs/*
+material/*
+CHANGELOG
+*.md
