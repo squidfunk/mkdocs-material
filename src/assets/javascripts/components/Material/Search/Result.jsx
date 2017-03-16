@@ -38,6 +38,7 @@ export default class Result {
    * @property {Object} docs_ - Indexed documents
    * @property {HTMLElement} meta_ - Search meta information
    * @property {HTMLElement} list_ - Search result list
+   * @property {Object} message_ - Search result messages
    * @property {Object} index_ - Search index
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
@@ -51,20 +52,20 @@ export default class Result {
       throw new ReferenceError
     this.el_ = ref
 
-    /* Set data and create metadata and list elements */
-    this.data_ = data
-    this.meta_ = (
-      <div class="md-search-result__meta">
-        Type to start searching
-      </div>
-    )
-    this.list_ = (
-      <ol class="md-search-result__list"></ol>
-    )
+    /* Retrieve metadata and list element */
+    const [meta, list] = this.el_.children
 
-    /* Inject created elements */
-    this.el_.appendChild(this.meta_)
-    this.el_.appendChild(this.list_)
+    /* Set data, metadata and list elements */
+    this.data_ = data
+    this.meta_ = meta
+    this.list_ = list
+
+    /* Load messages for metadata display */
+    this.message_ = {
+      none: this.meta_.dataset.mdMessageNone,
+      one: this.meta_.dataset.mdMessageOne,
+      other: this.meta_.dataset.mdMessageOther
+    }
   }
 
   /**
@@ -236,8 +237,17 @@ export default class Result {
       })
 
       /* Update search metadata */
-      this.meta_.textContent =
-        `${result.size} search result${result.size !== 1 ? "s" : ""}`           // TODO "20 references in 8 documents"
+      switch (result.size) {
+        case 0:
+          this.meta_.textContent = this.message_.none
+          break
+        case 1:
+          this.meta_.textContent = this.message_.one
+          break
+        default:
+          this.meta_.textContent =
+            this.message_.other.replace("#", result.size)
+      }
     }
   }
 }
