@@ -30,7 +30,7 @@
   <li class="{{ class }}">
     {% set toc_ = page.toc %}
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    {% if toc_ | first is defined %}
+    {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
       {% set toc_ = (toc_ | first).children %}
     {% endif %}
     {% if toc_ | first is defined %}
