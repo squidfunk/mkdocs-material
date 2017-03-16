@@ -47,8 +47,8 @@ if [[ ${#FILES[@]} -gt 0 ]]; then
 	exit
 fi
 
-# Prefix the commit message with "[skip ci]"
-sed -i '' '1s/$/ [skip ci]/' "$1"
+# Don't build this commit
+sed -i '' '1s/$/ [ci skip]/' "$1"
 
 # We're good
 exit 0
