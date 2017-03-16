@@ -1,6 +1,7 @@
 mkdocs-material-1.4.0 (2017-16-03)
 
   * Added support for grouping searched sections by documents
+  * Added support for highlighting of search terms
   * Added support for localization of search results
   * Fixed #216: table of contents icon doesn't show if h1 is not present
   * Reworked style and layout of search results for better usability
