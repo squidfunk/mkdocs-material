@@ -35,7 +35,15 @@
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result"></div>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta"
+              data-md-message-none="{{ lang.t('search.message.none') }}"
+              data-md-message-one="{{ lang.t('search.message.one') }}"
+              data-md-message-other="{{ lang.t('search.message.other') }}">
+            {{ lang.t('search.message.placeholder') }}
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
       </div>
     </div>
   </div>

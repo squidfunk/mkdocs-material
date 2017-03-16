@@ -346,6 +346,8 @@
 
 // Search result
 .md-search-result {
+  color: $md-color-black;
+  word-break: break-word;
 
   // Search metadata
   &__meta {
@@ -377,42 +379,101 @@
   // Link inside item
   &__link {
     display: block;
-    padding: 0 1.6rem;
     transition: background 0.25s;
-    overflow: auto;
+    overflow: hidden;
 
     // Hovered link
     &:hover {
       background-color: transparentize($md-color-accent, 0.9);
     }
 
+    // Add a little spacing on the last link
+    &:last-child {
+      padding-bottom: 0.8rem;
+    }
+  }
+
+  // Article - document or section
+  &__article {
+    position: relative;
+    padding: 0 1.6rem;
+    overflow: auto;
+
     // [tablet landscape +]: Increase left indent
     @include break-from-device(tablet landscape) {
       padding-left: 4.8rem;
     }
+
+    // Document
+    &--document {
+
+      // Icon
+      &::before {
+        @extend %md-icon, %md-icon__button;
+
+        position: absolute;
+        left: 0;
+        color: $md-color-black--lighter;
+        content: "find_in_page";
+
+        // [tablet portrait -]: Hide page icon
+        @include break-to-device(tablet portrait) {
+          display: none;
+        }
+      }
+
+      // Title
+      .md-search-result__title {
+        margin: 1.3rem 0;
+        font-size: ms(0);
+        font-weight: 400;
+        line-height: 1.4;
+      }
+    }
   }
 
-  // Search result content
-  &__article {
-    margin: 1em 0;
-  }
-
-  // Search result title
+  // Title
   &__title {
-    margin-top: 0.5em;
-    margin-bottom: 0;
-    color: $md-color-black;
-    font-size: ms(0);
-    font-weight: 400;
+    margin: 0.5em 0;
+    font-size: ms(-1);
+    font-weight: 700;
     line-height: 1.4;
   }
 
-  // Search result teaser
+  // stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix
+
+  // Teaser
   &__teaser {
+    display: -webkit-box;
+    max-height: 3.3rem;
     margin: 0.5em 0;
     color: $md-color-black--light;
     font-size: ms(-1);
     line-height: 1.4;
-    word-break: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    // [mobile -]: Increase number of lines
+    @include break-to-device(mobile) {
+      max-height: 5rem;
+      -webkit-line-clamp: 3;
+    }
+
+    // [tablet landscape]: Increase number of lines
+    @include break-at-device(tablet landscape) {
+      max-height: 5rem;
+      -webkit-line-clamp: 3;
+    }
+  }
+
+  // stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix
+
+  // Highlighting
+  em {
+    font-style: normal;
+    font-weight: 700;
+    text-decoration: underline;
   }
 }

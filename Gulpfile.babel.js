@@ -90,7 +90,7 @@ let args = yargs
   })
   .option("optimize", {
     describe: chalk.grey("optimize and minify assets"),
-    default: true,
+    default: false,
     global: true
   })
   .option("revision", {

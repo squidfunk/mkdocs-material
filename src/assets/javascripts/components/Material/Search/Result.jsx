@@ -38,6 +38,7 @@ export default class Result {
    * @property {Object} docs_ - Indexed documents
    * @property {HTMLElement} meta_ - Search meta information
    * @property {HTMLElement} list_ - Search result list
+   * @property {Object} message_ - Search result messages
    * @property {Object} index_ - Search index
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
@@ -51,20 +52,20 @@ export default class Result {
       throw new ReferenceError
     this.el_ = ref
 
-    /* Set data and create metadata and list elements */
-    this.data_ = data
-    this.meta_ = (
-      <div class="md-search-result__meta">
-        Type to start searching
-      </div>
-    )
-    this.list_ = (
-      <ol class="md-search-result__list"></ol>
-    )
+    /* Retrieve metadata and list element */
+    const [meta, list] = this.el_.children
 
-    /* Inject created elements */
-    this.el_.appendChild(this.meta_)
-    this.el_.appendChild(this.list_)
+    /* Set data, metadata and list elements */
+    this.data_ = data
+    this.meta_ = meta
+    this.list_ = list
+
+    /* Load messages for metadata display */
+    this.message_ = {
+      none: this.meta_.dataset.mdMessageNone,
+      one: this.meta_.dataset.mdMessageOne,
+      other: this.meta_.dataset.mdMessageOther
+    }
   }
 
   /**
@@ -72,7 +73,7 @@ export default class Result {
    *
    * This is not a reasonable approach, since the summaries kind of suck. It
    * would be better to create something more intelligent, highlighting the
-   * search occurrences and making a better summary out of it
+   * search occurrences and making a better summary out of it.
    *
    * @param {string} string - String to be truncated
    * @param {number} n - Number of characters
@@ -107,12 +108,36 @@ export default class Result {
           /* eslint-enable no-invalid-this, lines-around-comment */
         })
 
-        /* Index documents */
+        /* Preprocess and index sections and documents */
         this.docs_ = data.reduce((docs, doc) => {
-          this.index_.add(doc)
-          docs[doc.location] = doc
+          const [path, hash] = doc.location.split("#")
+
+          /* Associate section with parent document */
+          if (hash) {
+            doc.parent = docs.get(path)
+
+            /* Override page title with document title if first section */
+            if (doc.parent && !doc.parent.done) {
+              doc.parent.title = doc.title
+              doc.parent.text  = doc.text
+              doc.parent.done  = true
+            }
+          }
+
+          /* Some cleanup on the text */
+          doc.text = doc.text
+            .replace(/\n/g, " ")               /* Remove newlines */
+            .replace(/\s+/g, " ")              /* Compact whitespace */
+            .replace(/\s+([,.:;!?])/g,         /* Correct punctuation */
+              (_, char) => char)
+
+          /* Index sections and documents, but skip top-level headline */
+          if (!doc.parent || doc.parent.title !== doc.title) {
+            this.index_.add(doc)
+            docs.set(doc.location, doc)
+          }
           return docs
-        }, {})
+        }, new Map)
       }
 
       /* Initialize index after short timeout to account for transition */
@@ -132,33 +157,62 @@ export default class Result {
       while (this.list_.firstChild)
         this.list_.removeChild(this.list_.firstChild)
 
-      /* Perform search on index and render documents */
-      const result = this.index_.search(target.value)
-      result.forEach(item => {
-        const doc = this.docs_[item.ref]
+      /* Perform search on index and group sections by document */
+      const result = this.index_
+        .search(target.value)
+        .reduce((items, item) => {
+          const doc = this.docs_.get(item.ref)
+          if (doc.parent) {
+            const ref = doc.parent.location
+            items.set(ref, (items.get(ref) || []).concat(item))
+          }
+          return items
+        }, new Map)
 
-        /* Check if it's a anchor link on the current page */
-        let [pathname] = doc.location.split("#")
-        pathname = pathname.replace(/^(\/?\.{2})+/g, "")
+      /* Assemble highlight regex from query string */
+      const match = new RegExp(
+        `\\b(${target.value.trim().replace(" ", "|")})`, "img")
+      const highlight = string => `<em>${string}</em>`
+
+      /* Render results */
+      result.forEach((items, ref) => {
+        const doc = this.docs_.get(ref)
 
         /* Append search result */
         this.list_.appendChild(
           <li class="md-search-result__item">
             <a href={doc.location} title={doc.title}
-              class="md-search-result__link" data-md-rel={
-                pathname === document.location.pathname
-              ? "anchor" : ""}>
-              <article class="md-search-result__article">
+                class="md-search-result__link">
+              <article class="md-search-result__article
+                    md-search-result__article--document">
                 <h1 class="md-search-result__title">
-                  {doc.title}
+                  {{ __html: doc.title.replace(match, highlight) }}
                 </h1>
-                <p class="md-search-result__teaser">
-                  {this.truncate_(doc.text, 140)}
-                </p>
+                {doc.text.length ?
+                  <p class="md-search-result__teaser">
+                    {{ __html: doc.text.replace(match, highlight) }}
+                  </p> : {}}
               </article>
             </a>
+            {items.map(item => {
+              const section = this.docs_.get(item.ref)
+              return (
+                <a href={section.location} title={section.title}
+                    class="md-search-result__link" data-md-rel="anchor">
+                  <article class="md-search-result__article">
+                    <h1 class="md-search-result__title">
+                      {{ __html: section.title.replace(match, highlight) }}
+                    </h1>
+                    {section.text.length ?
+                      <p class="md-search-result__teaser">
+                        {{ __html: section.text.replace(match, highlight) }}
+                      </p> : {}}
+                  </article>
+                </a>
+              )
+            })}
           </li>
-        )
+        ) /* {this.truncate_(doc.text, 140)} */
       })
 
       /* Bind click handlers for anchors */
@@ -183,8 +237,17 @@ export default class Result {
       })
 
       /* Update search metadata */
-      this.meta_.textContent =
-        `${result.length} search result${result.length !== 1 ? "s" : ""}`
+      switch (result.size) {
+        case 0:
+          this.meta_.textContent = this.message_.none
+          break
+        case 1:
+          this.meta_.textContent = this.message_.one
+          break
+        default:
+          this.meta_.textContent =
+            this.message_.other.replace("#", result.size)
+      }
     }
   }
 }
