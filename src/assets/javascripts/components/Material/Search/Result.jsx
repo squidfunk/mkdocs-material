@@ -205,14 +205,16 @@ export default class Result {
                     </h1>
                     {section.text.length ?
                       <p class="md-search-result__teaser">
-                        {{ __html: section.text.replace(match, highlight) }}
+                        {{ __html: this.truncate_(
+                            section.text.replace(match, highlight), 400)
+                        }}
                       </p> : {}}
                   </article>
                 </a>
               )
             })}
           </li>
-        ) /* {this.truncate_(doc.text, 140)} */
+        )
       })
 
       /* Bind click handlers for anchors */
