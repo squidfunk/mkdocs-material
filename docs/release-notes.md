@@ -12,10 +12,14 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.4.0
+# Version 1.4.1
 ```
 
 ## Changelog
+
+### 1.4.1 <small> _ March 16, 2017</small>
+
+* Fixed invalid destructuring attempt on NodeList (in Safari, Edge, IE)
 
 ### 1.4.0 <small> _ March 16, 2017</small>
 
