@@ -53,7 +53,7 @@
     "ecstatic": "^2.1.0",
     "eslint": "^3.16.0",
     "fastclick": "^1.0.6",
-    "flow-bin": "^0.41.0",
+    "flow-bin": "^0.42.0",
     "flow-jsdoc": "^0.3.0",
     "git-hooks": "^1.1.7",
     "gulp": "^3.9.1",
