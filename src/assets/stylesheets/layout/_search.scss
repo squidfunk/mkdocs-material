@@ -159,12 +159,12 @@
   // Search input
   &__input {
     position: relative;
-    padding: 0 1.6rem 0 7.2rem;
+    padding: 0 4.8rem 0 7.2rem;
     text-overflow: ellipsis;
     z-index: 1;
 
     // Placeholder and icon color in active state
-    + .md-search__icon,
+    ~ .md-search__icon,
     &::placeholder {
       color: $md-color-black--light;
     }
@@ -225,27 +225,58 @@
   // Icons
   &__icon {
     position: absolute;
-    top: $md-icon-padding;
-    left: $md-icon-padding + $md-icon-margin;
     transition: color 0.25s;
     font-size: $md-icon-size;
     cursor: pointer;
     z-index: 1;
 
-    // Set search icon on pseudo class, so it can be overridden for mobile
-    // and tablet when the search is rendered in an overlay
-    &::before {
-      content: "search";
+    // Search icon
+    &[for="search"] {
+      top: $md-icon-padding;
+      left: $md-icon-padding + $md-icon-margin;
+
+      // Set search icon on pseudo class, so it can be overridden for mobile
+      // and tablet when the search is rendered in an overlay
+      &::before {
+        content: "search";
+      }
+
+      // [tablet portrait -]: Full-screen search bar
+      @include break-to-device(tablet portrait) {
+        top: 1.6rem;
+        left: 1.6rem;
+
+        // Show back arrow instead of search icon
+        &[for="search"]::before {
+          content: "arrow_back";
+        }
+      }
     }
 
-    // [tablet portrait -]: Full-screen search bar
-    @include break-to-device(tablet portrait) {
-      top: 1.6rem;
-      left: 1.6rem;
+    // Reset button
+    &[type="reset"] {
+      top: $md-icon-padding;
+      right: $md-icon-padding + $md-icon-margin;
+      transform: scale(0.25);
+      transition:
+        transform 0.25s,
+        opacity 0.25s;
+      opacity: 0;
 
-      // Show back arrow instead of search icon
-      &::before {
-        content: "arrow_back";
+      // [tablet portrait -]: Full-screen search bar
+      @include break-to-device(tablet portrait) {
+        top: 1.6rem;
+        right: 1.6rem;
+      }
+
+      // Non-empty input field ...
+      .md-search__input:valid ~ & {
+
+        // ...and expanded overlay
+        [data-md-toggle="search"]:checked ~ .md-header & {
+          transform: scale(1);
+          opacity: 1;
+        }
       }
     }
   }

@@ -141,7 +141,7 @@ function initialize(config) { // eslint-disable-line func-style
 
   /* Component: search results */
   new Material.Event.Listener("[data-md-component=query]", [
-    "focus", "keyup"
+    "focus", "keyup", "change"
   ], new Material.Search.Result("[data-md-component=result]", () => {
     return fetch(`${config.url.base}/mkdocs/search_index.json`, {
       credentials: "same-origin"
