@@ -21,6 +21,14 @@
 ////
 
 // ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+// Active (toggled) drawer
+$md-toggle__drawer--checked:
+  "[data-md-toggle=\"drawer\"]:checked ~";
+
+// ----------------------------------------------------------------------------
 // Rules: base grid and containers
 // ----------------------------------------------------------------------------
 
@@ -137,7 +145,7 @@ hr {
   @include break-to-device(tablet) {
 
     // Expanded drawer
-    [data-md-toggle="drawer"]:checked ~ & {
+    #{$md-toggle__drawer--checked} & {
       width: 100%;
       height: 100%;
       transition:

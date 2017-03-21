@@ -148,7 +148,7 @@ export default class Result {
       }, 250)
 
     /* Execute search on new input event */
-    } else if (ev.type === "keyup") {
+    } else if (ev.type === "focus" || ev.type === "keyup") {
       const target = ev.target
       if (!(target instanceof HTMLInputElement))
         throw new ReferenceError

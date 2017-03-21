@@ -172,6 +172,16 @@ function initialize(config) { // eslint-disable-line func-style
         }
       }))
 
+  /* Listener: focus input after form reset */
+  new Material.Event.Listener("[data-md-component=reset]", "click", () => {
+    setTimeout(() => {
+      const query = document.querySelector("[data-md-component=query]")
+      if (!(query instanceof HTMLInputElement))
+        throw new ReferenceError
+      query.focus()
+    }, 10)
+  }).listen()
+
   /* Listener: focus input after opening search */
   new Material.Event.Listener("[data-md-toggle=search]", "change", ev => {
     setTimeout(toggle => {
