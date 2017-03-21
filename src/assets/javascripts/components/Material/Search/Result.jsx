@@ -40,6 +40,7 @@ export default class Result {
    * @property {HTMLElement} list_ - Search result list
    * @property {Object} message_ - Search result messages
    * @property {Object} index_ - Search index
+   * @property {string} value_ - Last input value
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    * @param {(Array<Object>|Function)} data - Function providing data or array
@@ -153,13 +154,22 @@ export default class Result {
       if (!(target instanceof HTMLInputElement))
         throw new ReferenceError
 
+      /* Abort early, if input hasn't changed */
+      if (target.value === this.value_)
+        return
+
       /* Clear current list */
       while (this.list_.firstChild)
         this.list_.removeChild(this.list_.firstChild)
 
+      /* Abort early, if search input is empty */
+      this.value_ = target.value
+      if (this.value_.length === 0)
+        return
+
       /* Perform search on index and group sections by document */
       const result = this.index_
-        .search(target.value)
+        .search(this.value_)
         .reduce((items, item) => {
           const doc = this.docs_.get(item.ref)
           if (doc.parent) {
@@ -171,7 +181,7 @@ export default class Result {
 
       /* Assemble highlight regex from query string */
       const match = new RegExp(
-        `\\b(${target.value.trim().replace(" ", "|")})`, "img")
+        `\\b(${this.value_.trim().replace(" ", "|")})`, "img")
       const highlight = string => `<em>${string}</em>`
 
       /* Render results */
