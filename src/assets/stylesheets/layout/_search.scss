@@ -21,6 +21,14 @@
 ////
 
 // ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+// Active (toggled) search
+$md-toggle__search--checked:
+  "[data-md-toggle=\"search\"]:checked ~ .md-header";
+
+// ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
@@ -62,7 +70,7 @@
       z-index: 1;
 
       // Expanded overlay
-      [data-md-toggle="search"]:checked ~ .md-header & {
+      #{$md-toggle__search--checked} & {
         transition:
           transform 0.4s,
           opacity   0.1s;
@@ -71,7 +79,7 @@
     }
 
     // Set scale factors
-    [data-md-toggle="search"]:checked ~ .md-header & {
+    #{$md-toggle__search--checked} & {
 
       // [mobile portrait -]: Scale up 45 times
       @include break-to-device(mobile portrait) {
@@ -109,7 +117,7 @@
       z-index: 2;
 
       // Active search modal
-      [data-md-toggle="search"]:checked ~ .md-header & {
+      #{$md-toggle__search--checked} & {
         left: 0;
         transform: translateX(0);
         transition:
@@ -122,9 +130,7 @@
 
     // [tablet landscape +]: Make relative for inner layout
     @include break-from-device(tablet landscape) {
-      display: table;
       position: relative;
-      clear: both;
     }
   }
 
@@ -142,7 +148,7 @@
     }
 
     // Set maximum width
-    [data-md-toggle="search"]:checked ~ .md-header & {
+    #{$md-toggle__search--checked} & {
 
       // [tablet landscape]: Do not overlay title
       @include break-at-device(tablet landscape) {
@@ -197,7 +203,6 @@
       // Placeholder color
       + .md-search__icon,
       &::placeholder {
-        transition: color 0.25s;
         color: $md-color-white;
       }
 
@@ -207,7 +212,7 @@
       }
 
       // Set light background on active search field
-      [data-md-toggle="search"]:checked ~ .md-header & {
+      #{$md-toggle__search--checked} & {
         border-radius: 0.2rem 0.2rem 0 0;
         background-color: $md-color-white;
         color: $md-color-black;
@@ -225,10 +230,15 @@
   // Icons
   &__icon {
     position: absolute;
-    transition: color 0.25s;
+    transition: opacity 0.25s;
     font-size: $md-icon-size;
     cursor: pointer;
     z-index: 1;
+
+    // Hovered icon
+    &:hover {
+      opacity: 0.7;
+    }
 
     // Search icon
     &[for="search"] {
@@ -257,10 +267,10 @@
     &[type="reset"] {
       top: $md-icon-padding;
       right: $md-icon-padding + $md-icon-margin;
-      transform: scale(0.25);
+      transform: scale(0.125);
       transition:
-        transform 0.25s,
-        opacity 0.25s;
+        transform 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
+        opacity   0.15s;
       opacity: 0;
 
       // [tablet portrait -]: Full-screen search bar
@@ -269,13 +279,14 @@
         right: 1.6rem;
       }
 
-      // Non-empty input field ...
-      .md-search__input:valid ~ & {
+      // Show reset button if search is active and input non-empty
+      #{$md-toggle__search--checked} .md-search__input:valid ~ & {
+        transform: scale(1);
+        opacity: 1;
 
-        // ...and expanded overlay
-        [data-md-toggle="search"]:checked ~ .md-header & {
-          transform: scale(1);
-          opacity: 1;
+        // Hovered icon
+        &:hover {
+          opacity: 0.7;
         }
       }
     }
@@ -301,7 +312,7 @@
       opacity: 0;
 
       // Show search output in active state
-      [data-md-toggle="search"]:checked ~ .md-header & {
+      #{$md-toggle__search--checked} & {
         @include z-depth(6);
 
         opacity: 1;
@@ -352,7 +363,7 @@
       max-height: 0;
 
       // Expand in active state
-      [data-md-toggle="search"]:checked ~ .md-header & {
+      #{$md-toggle__search--checked} & {
         max-height: 75vh;
       }
 
@@ -416,6 +427,11 @@
     // Hovered link
     &:hover {
       background-color: transparentize($md-color-accent, 0.9);
+
+      // Slightly transparent icon
+      .md-search-result__article::before {
+        opacity: 0.7;
+      }
     }
 
     // Add a little spacing on the last link
@@ -444,7 +460,8 @@
 
         position: absolute;
         left: 0;
-        color: $md-color-black--lighter;
+        transition: opacity 0.25s;
+        color: $md-color-black--light;
         content: "find_in_page";
 
         // [tablet portrait -]: Hide page icon
@@ -501,7 +518,7 @@
 
   // stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix
 
-  // Highlighting
+  // Search term highlighting
   em {
     font-style: normal;
     font-weight: 700;
