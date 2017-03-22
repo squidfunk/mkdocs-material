@@ -422,9 +422,11 @@ $md-toggle__search--checked:
   &__link {
     display: block;
     transition: background 0.25s;
+    outline: 0;
     overflow: hidden;
 
-    // Hovered link
+    // Active or hovered link
+    &[data-md-state="active"],
     &:hover {
       background-color: transparentize($md-color-accent, 0.9);
 
