@@ -220,20 +220,58 @@ function initialize(config) { // eslint-disable-line func-style
       }
     }))
 
-  /* Listener: disable search when ESC key is pressed */
+  /* Listener: keyboard handlers */
   new Material.Event.Listener(window, "keyup", ev => {
-    const code = ev.keyCode || ev.which
-    if (code === 27) {
-      const toggle = document.querySelector("[data-md-toggle=search]")
-      if (!(toggle instanceof HTMLInputElement))
-        throw new ReferenceError
-      if (toggle.checked) {
-        toggle.checked = false
-        toggle.dispatchEvent(new CustomEvent("change"))
-        const query = document.querySelector("[data-md-component=query]")
-        if (!(query instanceof HTMLInputElement))
+    switch (ev.key) {
+
+      /* Escape: disable search */
+      case "Escape": {
+        const toggle = document.querySelector("[data-md-toggle=search]")
+        if (!(toggle instanceof HTMLInputElement))
           throw new ReferenceError
-        query.focus()
+        if (toggle.checked) {
+          toggle.checked = false
+          toggle.dispatchEvent(new CustomEvent("change"))
+          const query = document.querySelector("[data-md-component=query]")
+          if (!(query instanceof HTMLInputElement))
+            throw new ReferenceError
+          query.blur()
+        }
+        break
+      }
+
+      /* Up arrow: select previous search result */
+      case "ArrowUp": {
+        const active = document.querySelector(
+          "[data-md-component=search] [href][data-md-state=active]")
+        const links = Array.prototype.slice.call(
+          document.querySelectorAll("[data-md-component=search] [href]"))
+        let index = active
+          ? (links.indexOf(active) - 1) % links.length
+          : 0
+        if (index === -1)
+          index += links.length
+        if (active)
+          active.dataset.mdState = ""
+        links[index].dataset.mdState = "active"
+        links[index].focus()
+        break
+      }
+
+      /* Down arrow: select next search result */
+      case "ArrowDown": {
+        const active = document.querySelector(
+          "[data-md-component=search] [href][data-md-state=active]")            // TODO: remove active on mouseover (debounce!)
+        const links = Array.prototype.slice.call(
+          document.querySelectorAll("[data-md-component=search] [href]"))
+        const index = active
+          ? (links.indexOf(active) + 1) % links.length
+          : 0
+        if (active)
+          active.dataset.mdState = ""
+        links[index].dataset.mdState = "active"
+        links[index].focus()
+        break
       }
     }
   }).listen()
