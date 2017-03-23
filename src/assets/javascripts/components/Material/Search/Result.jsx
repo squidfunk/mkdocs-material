@@ -63,6 +63,7 @@ export default class Result {
 
     /* Load messages for metadata display */
     this.message_ = {
+      placeholder: this.meta_.textContent,
       none: this.meta_.dataset.mdLangResultNone,
       one: this.meta_.dataset.mdLangResultOne,
       other: this.meta_.dataset.mdLangResultOther
@@ -154,8 +155,8 @@ export default class Result {
       if (!(target instanceof HTMLInputElement))
         throw new ReferenceError
 
-      /* Abort early, if input hasn't changed */
-      if (target.value === this.value_)
+      /* Abort early, if index is not build or input hasn't changed */
+      if (!this.index_ || target.value === this.value_)
         return
 
       /* Clear current list */
@@ -164,8 +165,10 @@ export default class Result {
 
       /* Abort early, if search input is empty */
       this.value_ = target.value
-      if (this.value_.length === 0)
+      if (this.value_.length === 0) {
+        this.meta_.textContent = this.message_.placeholder
         return
+      }
 
       /* Perform search on index and group sections by document */
       const result = this.index_

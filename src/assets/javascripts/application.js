@@ -232,8 +232,13 @@ function initialize(config) { // eslint-disable-line func-style
     /* Search is open */
     if (toggle.checked) {
 
+      /* Enter: prevent form submission */
+      if (ev.key === "Enter") {
+        if (query === document.activeElement)
+          ev.preventDefault()
+
       /* Escape: close search */
-      if (ev.key === "Escape") {
+      } else if (ev.key === "Escape") {
         toggle.checked = false
         toggle.dispatchEvent(new CustomEvent("change"))
         query.blur()
