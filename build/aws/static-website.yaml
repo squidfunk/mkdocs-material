@@ -1,0 +1,183 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Static Website: combining S3, CloudFront and Route53, a cloudonaut.io template'
+Metadata:
+  'AWS::CloudFormation::Interface':
+    ParameterGroups:
+    - Label:
+        default: 'DNS Parameters'
+      Parameters:
+      - DomainName
+      - RedirectDomainName
+      - HostedZoneId
+    - Label:
+        default: 'SSL/TLS Parameters'
+      Parameters:
+      - CertificateType
+      - ExistingCertificate
+Parameters:
+  DomainName:
+    Description: 'The primary domain name of the static website (e.g. widdix.de).'
+    Type: String
+  RedirectDomainName:
+    Description: 'Optional domain name redirecting to DomainName (e.g. www.widdix.de).'
+    Type: String
+  CertificateType:
+    Description: 'Indicates whether to use the certificate from the AWS Certificate Manager or AWS Identity and Access Management. CreateAcmCertificate only works in the US East (N. Virginia) region.'
+    Type: String
+    Default: IamCertificateId
+    AllowedValues:
+    - AcmCertificateArn
+    - IamCertificateId
+    - CreateAcmCertificate
+  ExistingCertificate:
+    Description: 'Optional ACM Certificate ARN or IAM Certificate ID.'
+    Type: String
+  HostedZoneId:
+    Description: 'The Id of the hosted zone managed by AWS Route53.'
+    Type: String
+Conditions:
+  HasRedirectDomainName: !Not [!Equals [!Ref RedirectDomainName, '']]
+  HasAcmCertificateArn: !Equals [!Ref CertificateType, 'AcmCertificateArn']
+  HasIamCertificateId: !Equals [!Ref CertificateType, 'IamCertificateId']
+  HasCreateAcmCertificate: !Equals [!Ref CertificateType, 'CreateAcmCertificate']
+Resources:
+  Certificate:
+    Condition: HasCreateAcmCertificate
+    Type: 'AWS::CertificateManager::Certificate'
+    Properties: 
+      DomainName: !Ref DomainName
+      DomainValidationOptions: !If
+      - HasRedirectDomainName
+      - - DomainName: !Ref DomainName
+          ValidationDomain: !Ref DomainName
+        - DomainName: !Ref RedirectDomainName
+          ValidationDomain: !Ref DomainName
+      - - DomainName: !Ref DomainName
+          ValidationDomain: !Ref DomainName
+      SubjectAlternativeNames: !If [HasRedirectDomainName, [!Ref RedirectDomainName], []]
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Ref DomainName
+      WebsiteConfiguration:
+        IndexDocument: 'index.html'
+  S3BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Statement:
+        - Action:
+          - 's3:GetObject'
+          Effect: Allow
+          Resource:
+          - !Sub 'arn:aws:s3:::${S3Bucket}/*'
+          Principal: '*'
+  CloudFrontDistribution:
+    Type: 'AWS::CloudFront::Distribution'
+    Properties:
+      DistributionConfig:
+        Aliases:
+        - !Ref DomainName
+        Comment: !Ref DomainName
+        Origins:
+        - DomainName: !Sub '${S3Bucket}.s3-website-${AWS::Region}.amazonaws.com'
+          Id: s3origin
+          CustomOriginConfig:
+            OriginProtocolPolicy: 'http-only'
+        DefaultCacheBehavior:
+          AllowedMethods:
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          TargetOriginId: s3origin
+          ViewerProtocolPolicy: 'redirect-to-https'
+        Enabled: true
+        PriceClass: 'PriceClass_All'
+        ViewerCertificate:
+          AcmCertificateArn: !If [HasCreateAcmCertificate, !Ref Certificate, !If [HasAcmCertificateArn, !Ref ExistingCertificate, !Ref 'AWS::NoValue']] 
+          IamCertificateId: !If [HasIamCertificateId, !Ref ExistingCertificate, !Ref 'AWS::NoValue'] 
+          SslSupportMethod: 'sni-only'
+          MinimumProtocolVersion: TLSv1
+  Route53Record:
+    Type: 'AWS::Route53::RecordSetGroup'
+    Properties:
+      HostedZoneId: !Ref HostedZoneId
+      RecordSets:
+      - Name: !Ref DomainName
+        Type: A
+        AliasTarget:
+          # Magic AWS number:  For CloudFront, use Z2FDTNDATAQYW2.
+          HostedZoneId: Z2FDTNDATAQYW2
+          DNSName: !GetAtt 'CloudFrontDistribution.DomainName'
+  S3BucketRedirect:
+    Condition: HasRedirectDomainName
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Ref RedirectDomainName
+      WebsiteConfiguration:
+        RedirectAllRequestsTo:
+          HostName: !Ref DomainName
+          Protocol: https
+  CloudFrontDistributionRedirect:
+    Condition: HasRedirectDomainName
+    Type: 'AWS::CloudFront::Distribution'
+    Properties:
+      DistributionConfig:
+        Aliases:
+        - !Ref RedirectDomainName
+        Comment: !Ref RedirectDomainName
+        Origins:
+        - DomainName: !Sub '${S3BucketRedirect}.s3-website-${AWS::Region}.amazonaws.com'
+          Id: s3origin
+          CustomOriginConfig:
+            OriginProtocolPolicy: 'http-only'
+        DefaultCacheBehavior:
+          AllowedMethods:
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          TargetOriginId: s3origin
+          ViewerProtocolPolicy: 'redirect-to-https'
+        Enabled: true
+        PriceClass: 'PriceClass_All'
+        ViewerCertificate:
+          AcmCertificateArn: !If [HasCreateAcmCertificate, !Ref Certificate, !If [HasAcmCertificateArn, !Ref ExistingCertificate, !Ref 'AWS::NoValue']] 
+          IamCertificateId: !If [HasIamCertificateId, !Ref ExistingCertificate, !Ref 'AWS::NoValue'] 
+          SslSupportMethod: 'sni-only'
+          MinimumProtocolVersion: TLSv1
+  Route53RecordRedirect:
+    Condition: HasRedirectDomainName
+    Type: 'AWS::Route53::RecordSetGroup'
+    Properties:
+      HostedZoneId: !Ref HostedZoneId
+      RecordSets:
+      - Name: !Ref RedirectDomainName
+        Type: A
+        AliasTarget:
+          # Magic AWS number:  For CloudFront, use Z2FDTNDATAQYW2.
+          HostedZoneId: Z2FDTNDATAQYW2
+          DNSName: !GetAtt 'CloudFrontDistributionRedirect.DomainName'
+Outputs:
+  URL:
+    Description: 'URL to static website.'
+    Value: !Sub 'https://${DomainName}'
+    Export:
+      Name: !Sub '${AWS::StackName}-URL'
