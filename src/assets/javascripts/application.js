@@ -233,30 +233,25 @@ function initialize(config) { // eslint-disable-line func-style
     if (toggle.checked) {
 
       /* Enter: prevent form submission */
-      if (ev.key === "Enter") {
+      if (ev.keyCode === 13) {
         if (query === document.activeElement)
           ev.preventDefault()
 
       /* Escape: close search */
-      } else if (ev.key === "Escape") {
+      } else if (ev.keyCode === 27) {
         toggle.checked = false
         toggle.dispatchEvent(new CustomEvent("change"))
         query.blur()
 
       /* Horizontal arrows and backspace: focus input */
-      } else if ([
-        "ArrowLeft", "ArrowRight", "Backspace"
-      ].indexOf(ev.key) !== -1) {
+      } else if ([8, 37, 39].indexOf(ev.keyCode) !== -1) {
         if (query !== document.activeElement)
           query.focus()
 
       /* Vertical arrows and tab: select previous or next search result */
-      } else if ([
-        "ArrowUp", "ArrowDown", "Tab"
-      ].indexOf(ev.key) !== -1) {
-        const key = ev.key === "Tab"
-          ? `Arrow${ev.shiftKey ? "Up" : "Down"}`
-          : ev.key
+      } else if ([9, 38, 40].indexOf(ev.keyCode) !== -1) {
+        const map = ev.shiftKey ? 38 : 40
+        const key = ev.keyCode === 9 ? map : ev.keyCode
 
         /* Retrieve all results */
         const links = Array.prototype.slice.call(
@@ -275,7 +270,7 @@ function initialize(config) { // eslint-disable-line func-style
 
         /* Calculate index depending on direction, add length to form ring */
         const index = Math.max(0, (
-          links.indexOf(focus) + links.length + (key === "ArrowUp" ? -1 : +1)
+          links.indexOf(focus) + links.length + (key === 38 ? -1 : +1)
         ) % links.length)
 
         /* Set active state and focus */
@@ -295,8 +290,8 @@ function initialize(config) { // eslint-disable-line func-style
     /* Search is closed */
     } else {
 
-      /* S: Open search if not in input field */
-      if (ev.key === "s") {
+      /* F/S: Open search if not in input field */
+      if (ev.keyCode === 70 || ev.keyCode === 83) {
         query.focus()
         ev.preventDefault()
       }
