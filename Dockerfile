@@ -21,17 +21,30 @@
 FROM jfloff/alpine-python:2.7-slim
 MAINTAINER Martin Donath <martin.donath@squidfunk.com>
 
-# Set working directory
-WORKDIR /docs
+# Set build directory
+WORKDIR /tmp
 
-# Install packages
+# Install dependencies
 COPY requirements.txt .
 RUN \
   pip install -r requirements.txt && \
-  pip install mkdocs-material && \
   rm requirements.txt
 
-# Expose MkDocs default port
+# Copy files necessary for build
+COPY material material
+COPY MANIFEST.in MANIFEST.in
+COPY package.json package.json
+COPY setup.py setup.py
+
+# Perform build and cleanup artifacts
+RUN \
+  python setup.py install && \
+  rm -rf /tmp/*
+
+# Set working directory
+WORKDIR /docs
+
+# Expose MkDocs development server port
 EXPOSE 8000
 
 # Start development server by default

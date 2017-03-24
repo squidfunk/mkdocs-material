@@ -49,7 +49,7 @@ button[data-md-color-accent] {
   padding: 2.4rem 0.8rem 0.4rem;
   transition:
     background-color 0.25s,
-    opacity 0.25s;
+    opacity          0.25s;
   border-radius: 0.2rem;
   color: $md-color-white;
   font-size: ms(-1);
@@ -105,8 +105,13 @@ button[data-md-color-accent] {
 
     // Current or hovered link
     .md-nav__link:active,
-    .md-nav__link--active {
+    .md-nav__item--active > .md-nav__link {
       color: $color;
+    }
+
+    // Reset active color for nested list titles
+    .md-nav__item--nested > .md-nav__link {
+      color: inherit;
     }
 
     // [tablet portrait -]: Layered navigation
@@ -133,6 +138,20 @@ button[data-md-color-accent] {
       // Table of contents
       .md-nav--secondary {
         border-left: 0.4rem solid $color;
+      }
+    }
+
+    // [screen +]: Set background color for tabs
+    @include break-from-device(screen) {
+
+      // Tabs with outline
+      .md-tabs {
+        background: mix($color, $md-color-black, 75%);
+
+        // Fade-out tabs background upon scrolling
+        &[data-md-state="hidden"] {
+          background: $color;
+        }
       }
     }
   }
@@ -212,6 +231,11 @@ button[data-md-color-accent] {
 
     // Wrapper for scrolling on overflow
     .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
+      background-color: $color;
+    }
+
+    // Source file icon
+    .md-source-file:hover::before {
       background-color: $color;
     }
   }

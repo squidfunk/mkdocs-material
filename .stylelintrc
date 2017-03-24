@@ -25,11 +25,11 @@
     "font-weight-notation": "numeric",
     "function-url-quotes": "always",
     "no-unknown-animations": true,
-    "order/declaration-block-order": [
+    "order/order": [
       "custom-properties",
       "declarations"
     ],
-    "order/declaration-block-properties-specified-order": [
+    "order/properties-order": [
       "display",
       "position",
       "top",

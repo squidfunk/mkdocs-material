@@ -1,0 +1,165 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Tabs with outline
+.md-tabs {
+  width: 100%;
+  transition: background 0.25s;
+  background: mix($md-color-primary, $md-color-black, 75%);
+  overflow: auto;
+
+  // [tablet -]: Hide tabs for tablet and below, as they don't make any sense
+  @include break-to-device(tablet) {
+    display: none;
+  }
+
+  // Hide for print
+  @media print {
+    display: none;
+  }
+
+  // List of items
+  &__list {
+    margin: 0;
+    margin-left: 0.4rem;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
+
+  // List item
+  &__item {
+    display: inline-block;
+    height: 4.8rem;
+    padding-right: 1.2rem;
+    padding-left: 1.2rem;
+  }
+
+  // Link inside item - could be defined as block elements and aligned via
+  // line height, but this would imply more repaints when scrolling
+  &__link {
+    display: block;
+    margin-top: 1.6rem;
+    transition:
+      color     0.25s,
+      transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity   0.1s;
+    color: $md-color-white--light;
+    font-size: 1.4rem;
+
+    // Active or hovered link
+    &--active,
+    &:hover {
+      color: $md-color-white;
+    }
+
+    // Delay transitions by a small amount
+    @for $i from 2 through 16 {
+      .md-tabs__item:nth-child(#{$i}) & {
+        transition-delay: 0.02s * ($i - 1);
+      }
+    }
+  }
+
+  // Fade-out tabs background upon scrolling
+  &[data-md-state="hidden"] {
+    background: $md-color-primary;
+    pointer-events: none;
+
+    // Hide tabs upon scrolling - disable transition to minimizes repaints whilte
+    // scrolling down, while scrolling up seems to be okay
+    .md-tabs__link {
+      transform: translateY(50%);
+      transition:
+        color     0.25s,
+        transform 0s 0.4s,
+        opacity   0.1s;
+      opacity: 0;
+    }
+  }
+
+  // [screen +]: Adjust main navigation styles
+  @include break-from-device(screen) {
+
+    // Hide 1st level nested items, as they are listed in the tabs by setting
+    // font-size to zero, as we need to preserve bottom padding
+    ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
+      font-size: 0;
+    }
+
+    // We're on the 2nd+ level
+    &--active ~ .md-main {
+
+      // Adjust 1st level styles
+      .md-nav--primary {
+
+        // Hide site title
+        .md-nav__title--site {
+          display: none;
+        }
+
+        // Hide 1st level normal items
+        & > .md-nav__list > .md-nav__item {
+          font-size: 0;
+
+          // Reset font-size for nested items and induce margin collapse
+          &--nested {
+            display: none;
+            font-size: 1.4rem;
+            overflow: auto;
+
+            // Render link same as main navigation title
+            > .md-nav__link {
+              margin-top: 1.2rem;
+              font-weight: 700;
+              pointer-events: none;
+
+              // Hide icon for expansion
+              &::after {
+                display: none;
+              }
+            }
+          }
+
+          // Show 1st level active nested items
+          &--active {
+            display: block;
+          }
+        }
+      }
+
+      // Always expand nested navigation on 2nd level
+      .md-nav[data-md-level="1"] {
+        max-height: initial;
+
+        // Remove left spacing on 2nd level items
+        > .md-nav__list > .md-nav__item {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}

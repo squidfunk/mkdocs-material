@@ -20,11 +20,25 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Check, if all changes are added to the index
-CHANGED="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
-
-# Perform install and prune of NPM dependencies if package.json changed
-if $(echo "$CHANGED" | grep --quiet package.json); then
-  echo "Hook[post-merge]: Updating dependencies"
-  npm install && npm prune
+# Check if "yarn install" was executed
+if [[ ! -d "$(yarn bin)" ]]; then
+  echo "\"node_modules\" not found:"
+  echo "yarn install"
+  exit 1
 fi
+
+# Annotate source files
+"$(yarn bin)"/gulp assets:javascripts:annotate "$@"
+FLOW_JSDOC=$?
+
+# Run flow typecheck
+"$(yarn bin)"/flow check tmp
+FLOW=$?
+
+# If one command failed, exit with error
+if [ $FLOW_JSDOC -gt 0 ] || [ $FLOW -gt 0 ]; then
+  exit 1
+fi;
+
+# Otherwise return with success
+exit 0

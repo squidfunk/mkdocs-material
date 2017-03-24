@@ -36,6 +36,8 @@ theme_dir: material
 
 # Options
 extra:
+  feature:
+    tabs: false
   palette:
     primary: cyan
     accent: purple
@@ -43,6 +45,8 @@ extra:
     text: 'Open Sans'
     code: 'Ubuntu Mono'
   social:
+    - type: globe
+      link: http://struct.cc
     - type: github-alt
       link: https://github.com/sbuckpesch
     - type: twitter
@@ -58,6 +62,7 @@ google_analytics:
 markdown_extensions:
   - markdown.extensions.admonition
   - markdown.extensions.codehilite(guess_lang=false)
+  - markdown.extensions.def_list
   - markdown.extensions.footnotes
   - markdown.extensions.meta
   - markdown.extensions.toc(permalink=true)
@@ -83,6 +88,7 @@ pages:
     - Admonition: extensions/admonition.md
     - CodeHilite: extensions/codehilite.md
     - Footnotes: extensions/footnotes.md
+    - Metadata: extensions/metadata.md
     - Permalinks: extensions/permalinks.md
     - PyMdown: extensions/pymdown.md
   - Specimen: specimen.md

@@ -21,16 +21,23 @@
 ////
 
 // ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+// Active (toggled) drawer
+$md-toggle__drawer--checked:
+  "[data-md-toggle=\"drawer\"]:checked ~ .md-container";
+
+// ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
 // Sidebar container
 .md-sidebar {
-  position: relative;
+  position: absolute;
   width: 24.2rem;
   padding: 2.4rem 0;
-  float: left;
-  overflow: visible;
+  overflow: hidden;
 
   // Hide for print
   @media print {
@@ -41,7 +48,6 @@
   &[data-md-state="lock"] {
     position: fixed;
     top: 5.6rem;
-    backface-visibility: hidden;
   }
 
   // [tablet -]: Convert navigation to drawer
@@ -67,7 +73,7 @@
       }
 
       // Expanded drawer
-      [data-md-toggle="drawer"]:checked ~ .md-container & {
+      #{$md-toggle__drawer--checked} & {
         @include z-depth(8);
 
         transform: translateX(24.2rem);
@@ -92,18 +98,13 @@
     // [tablet landscape +]: Show table of contents next to body copy
     @include break-from-device(tablet landscape) {
       display: block;
-      float: right;
+      margin-left: 100%;
+      transform: translate(-100%, 0);
+    }
 
-      // Hack: align right in case of locked sidebar
-      &[data-md-state="lock"] {
-        margin-left: 100%;
-        transform: translate(-100%, 0);
-
-        // [screen +]: Limit to grid
-        @include break-from-device(screen) {
-          margin-left: 122rem;
-        }
-      }
+    // [screen +]: Limit to grid
+    @include break-from-device(screen) {
+      margin-left: 122rem;
     }
   }
 
@@ -112,6 +113,9 @@
     max-height: 100%;
     margin: 0 0.4rem;
     overflow-y: auto;
+    // Hack: putting the scroll wrapper on the GPU massively reduces jitter
+    // when locking the sidebars into place
+    backface-visibility: hidden;
 
     // [tablet -]: Adjust margins
     @include break-to-device(tablet) {

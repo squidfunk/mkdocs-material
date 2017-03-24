@@ -21,7 +21,7 @@
 -->
 
 <!-- Application header -->
-<header class="md-header">
+<header class="md-header" data-md-component="header">
 
   <!-- Top-level navigation -->
   <nav class="md-header-nav md-grid">
@@ -29,18 +29,17 @@
 
       <!-- Link to home -->
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="{{ nav.homepage.url }}" title="{{ config.site_name }}"
-            class="
-              {% if config.extra.logo %}
-                md-logo
-              {% else %}
-                md-icon md-icon--home
-              {% endif %} md-header-nav__button">
-          {% if config.extra.logo %}
+        {% if config.extra.logo %}
+          <a href="{{ nav.homepage.url }}" title="{{ config.site_name }}"
+              class="md-logo md-header-nav__button">
             <img src="{{ base_url }}/{{ config.extra.logo }}"
                 width="24" height="24" />
-          {% endif %}
-        </a>
+          </a>
+        {% else %}
+          <a href="{{ nav.homepage.url }}" title="{{ config.site_name }}"
+              class="md-icon md-icon--home md-header-nav__button">
+          </a>
+        {% endif %}
       </div>
 
       <!-- Button to toggle drawer -->
@@ -78,11 +77,11 @@
 
       <!-- Repository containing source -->
       <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            {% if config.repo_url %}
-              {% include "partials/source.html" %}
-            {% endif %}
-          </div>
+        <div class="md-header-nav__source">
+          {% if config.repo_url %}
+            {% include "partials/source.html" %}
+          {% endif %}
+        </div>
       </div>
     </div>
   </nav>

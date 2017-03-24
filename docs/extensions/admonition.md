@@ -331,3 +331,27 @@ Result:
 Qualifiers:
 
 * `bug`
+
+### Quote
+
+Example:
+
+``` markdown
+!!! quote
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+```
+
+Result:
+
+!!! quote
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+
+Qualifiers:
+
+* `quote`
+* `cite`
