@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+import escape from "escape-string-regexp"
 import lunr from "lunr"
 
 /* ----------------------------------------------------------------------------
@@ -184,7 +185,7 @@ export default class Result {
 
       /* Assemble highlight regex from query string */
       const match = new RegExp(
-        `\\b(${this.value_.trim().replace(" ", "|")})`, "img")
+        `\\b(${escape(this.value_.trim().replace(" ", "|"))})`, "img")
       const highlight = string => `<em>${string}</em>`
 
       /* Render results */
