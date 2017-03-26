@@ -26,9 +26,12 @@ pip show mkdocs-material | grep -E ^Version
 * Added git hook to skip CI build on non-src changes
 * Fixed non-resetting search placeholder when input is cleared
 * Fixed error for unescaped parentheses in search term
-* Fixed #229: Button to clear search missing
-* Fixed #231: Escape key doesn't exit search
+* Fixed [#229][229]: Button to clear search missing
+* Fixed [#231][231]: Escape key doesn't exit search
 * Removed old-style figures from font feature settings
+
+  [229]: https://github.com/squidfunk/mkdocs-material/issues/229
+  [231]: https://github.com/squidfunk/mkdocs-material/issues/231
 
 ### 1.4.1 <small> _ March 16, 2017</small>
 
