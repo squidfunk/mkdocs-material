@@ -1,12 +1,21 @@
-mkdocs-material 1.x.x (2017-xx-xx)
+mkdocs-material-1.5.0 (2017-03-24)
 
-  TBD
+  * Added support for localization of search placeholder
+  * Added keyboard events for quick access of search
+  * Added keyboard events for search control
+  * Added opacity on hover for search buttons
+  * Added git hook to skip CI build on non-src changes
+  * Fixed non-resetting search placeholder when input is cleared
+  * Fixed error for unescaped parentheses in search term
+  * Fixed #229: Button to clear search missing
+  * Fixed #231: Escape key doesn't exit search
+  * Removed old-style figures from font feature settings
 
-mkdocs-material-1.4.1 (2017-16-03)
+mkdocs-material-1.4.1 (2017-03-16)
 
   * Fixed invalid destructuring attempt on NodeList (in Safari, Edge, IE)
 
-mkdocs-material-1.4.0 (2017-16-03)
+mkdocs-material-1.4.0 (2017-03-16)
 
   * Added support for grouping searched sections by documents
   * Added support for highlighting of search terms
@@ -14,7 +23,7 @@ mkdocs-material-1.4.0 (2017-16-03)
   * Fixed #216: table of contents icon doesn't show if h1 is not present
   * Reworked style and layout of search results for better usability
 
-mkdocs-material-1.3.0 (2017-11-03)
+mkdocs-material-1.3.0 (2017-03-11)
 
   * Added support for page-specific title and description using metadata
   * Added support for linking source files to documentation

@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+import escape from "escape-string-regexp"
 import lunr from "lunr"
 
 /* ----------------------------------------------------------------------------
@@ -40,6 +41,7 @@ export default class Result {
    * @property {HTMLElement} list_ - Search result list
    * @property {Object} message_ - Search result messages
    * @property {Object} index_ - Search index
+   * @property {string} value_ - Last input value
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
    * @param {(Array<Object>|Function)} data - Function providing data or array
@@ -62,6 +64,7 @@ export default class Result {
 
     /* Load messages for metadata display */
     this.message_ = {
+      placeholder: this.meta_.textContent,
       none: this.meta_.dataset.mdLangResultNone,
       one: this.meta_.dataset.mdLangResultOne,
       other: this.meta_.dataset.mdLangResultOther
@@ -148,18 +151,29 @@ export default class Result {
       }, 250)
 
     /* Execute search on new input event */
-    } else if (ev.type === "keyup") {
+    } else if (ev.type === "focus" || ev.type === "keyup") {
       const target = ev.target
       if (!(target instanceof HTMLInputElement))
         throw new ReferenceError
+
+      /* Abort early, if index is not build or input hasn't changed */
+      if (!this.index_ || target.value === this.value_)
+        return
 
       /* Clear current list */
       while (this.list_.firstChild)
         this.list_.removeChild(this.list_.firstChild)
 
+      /* Abort early, if search input is empty */
+      this.value_ = target.value
+      if (this.value_.length === 0) {
+        this.meta_.textContent = this.message_.placeholder
+        return
+      }
+
       /* Perform search on index and group sections by document */
       const result = this.index_
-        .search(target.value)
+        .search(this.value_)
         .reduce((items, item) => {
           const doc = this.docs_.get(item.ref)
           if (doc.parent) {
@@ -171,7 +185,7 @@ export default class Result {
 
       /* Assemble highlight regex from query string */
       const match = new RegExp(
-        `\\b(${target.value.trim().replace(" ", "|")})`, "img")
+        `\\b(${escape(this.value_.trim().replace(" ", "|"))})`, "img")
       const highlight = string => `<em>${string}</em>`
 
       /* Render results */

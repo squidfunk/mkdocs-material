@@ -12,10 +12,26 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.4.1
+# Version 1.5.0
 ```
 
 ## Changelog
+
+### 1.5.0 <small> _ March 24, 2017</small>
+
+* Added support for localization of search placeholder
+* Added keyboard events for quick access of search
+* Added keyboard events for search control
+* Added opacity on hover for search buttons
+* Added git hook to skip CI build on non-src changes
+* Fixed non-resetting search placeholder when input is cleared
+* Fixed error for unescaped parentheses in search term
+* Fixed [#229][229]: Button to clear search missing
+* Fixed [#231][231]: Escape key doesn't exit search
+* Removed old-style figures from font feature settings
+
+  [229]: https://github.com/squidfunk/mkdocs-material/issues/229
+  [231]: https://github.com/squidfunk/mkdocs-material/issues/231
 
 ### 1.4.1 <small> _ March 16, 2017</small>
 

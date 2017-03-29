@@ -64,9 +64,9 @@
     display: block;
     margin-top: 1.6rem;
     transition:
-      color 0.25s,
+      color     0.25s,
       transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
-      opacity 0.1s;
+      opacity   0.1s;
     color: $md-color-white--light;
     font-size: 1.4rem;
 
@@ -94,9 +94,9 @@
     .md-tabs__link {
       transform: translateY(50%);
       transition:
-        color 0.25s,
+        color     0.25s,
         transform 0s 0.4s,
-        opacity 0.1s;
+        opacity   0.1s;
       opacity: 0;
     }
   }

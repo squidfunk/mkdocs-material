@@ -21,6 +21,14 @@
 ////
 
 // ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+// Active (toggled) drawer
+$md-toggle__drawer--checked:
+  "[data-md-toggle=\"drawer\"]:checked ~ .md-container";
+
+// ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
@@ -65,7 +73,7 @@
       }
 
       // Expanded drawer
-      [data-md-toggle="drawer"]:checked ~ .md-container & {
+      #{$md-toggle__drawer--checked} & {
         @include z-depth(8);
 
         transform: translateX(24.2rem);

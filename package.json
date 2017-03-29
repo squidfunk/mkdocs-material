@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "A Material Design theme for MkDocs",
   "keywords": [
     "mkdocs",
@@ -33,7 +33,9 @@
     "test:visual:update": "scripts/test/visual/update",
     "test:visual:session": "scripts/test/visual/session"
   },
-  "dependencies": {},
+  "dependencies": {
+    "escape-string-regexp": "^1.0.5"
+  },
   "devDependencies": {
     "autoprefixer": "^6.7.3",
     "babel-core": "^6.23.0",

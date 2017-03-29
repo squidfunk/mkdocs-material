@@ -141,7 +141,7 @@ function initialize(config) { // eslint-disable-line func-style
 
   /* Component: search results */
   new Material.Event.Listener("[data-md-component=query]", [
-    "focus", "keyup"
+    "focus", "keyup", "change"
   ], new Material.Search.Result("[data-md-component=result]", () => {
     return fetch(`${config.url.base}/mkdocs/search_index.json`, {
       credentials: "same-origin"
@@ -171,6 +171,16 @@ function initialize(config) { // eslint-disable-line func-style
           toggle.dispatchEvent(new CustomEvent("change"))
         }
       }))
+
+  /* Listener: focus input after form reset */
+  new Material.Event.Listener("[data-md-component=reset]", "click", () => {
+    setTimeout(() => {
+      const query = document.querySelector("[data-md-component=query]")
+      if (!(query instanceof HTMLInputElement))
+        throw new ReferenceError
+      query.focus()
+    }, 10)
+  }).listen()
 
   /* Listener: focus input after opening search */
   new Material.Event.Listener("[data-md-toggle=search]", "change", ev => {
@@ -210,21 +220,95 @@ function initialize(config) { // eslint-disable-line func-style
       }
     }))
 
-  /* Listener: disable search when ESC key is pressed */
-  new Material.Event.Listener(window, "keyup", ev => {
-    const code = ev.keyCode || ev.which
-    if (code === 27) {
-      const toggle = document.querySelector("[data-md-toggle=search]")
-      if (!(toggle instanceof HTMLInputElement))
-        throw new ReferenceError
-      if (toggle.checked) {
+  /* Listener: keyboard handlers */
+  new Material.Event.Listener(window, "keydown", ev => {
+    const toggle = document.querySelector("[data-md-toggle=search]")
+    if (!(toggle instanceof HTMLInputElement))
+      throw new ReferenceError
+    const query = document.querySelector("[data-md-component=query]")
+    if (!(query instanceof HTMLInputElement))
+      throw new ReferenceError
+
+    /* Search is open */
+    if (toggle.checked) {
+
+      /* Enter: prevent form submission */
+      if (ev.keyCode === 13) {
+        if (query === document.activeElement)
+          ev.preventDefault()
+
+      /* Escape: close search */
+      } else if (ev.keyCode === 27) {
         toggle.checked = false
         toggle.dispatchEvent(new CustomEvent("change"))
-        const query = document.querySelector("[data-md-component=query]")
-        if (!(query instanceof HTMLInputElement))
+        query.blur()
+
+      /* Horizontal arrows and backspace: focus input */
+      } else if ([8, 37, 39].indexOf(ev.keyCode) !== -1) {
+        if (query !== document.activeElement)
+          query.focus()
+
+      /* Vertical arrows and tab: select previous or next search result */
+      } else if ([9, 38, 40].indexOf(ev.keyCode) !== -1) {
+        const map = ev.shiftKey ? 38 : 40
+        const key = ev.keyCode === 9 ? map : ev.keyCode
+
+        /* Retrieve all results */
+        const links = Array.prototype.slice.call(
+          document.querySelectorAll("[data-md-component=search] [href]"))
+        if (!links.length)
+          return
+
+        /* Retrieve current active/focused result */
+        const focus = links.find(link => {
+          if (!(link instanceof HTMLElement))
+            throw new ReferenceError
+          return link.dataset.mdState === "active"
+        })
+        if (focus)
+          focus.dataset.mdState = ""
+
+        /* Calculate index depending on direction, add length to form ring */
+        const index = Math.max(0, (
+          links.indexOf(focus) + links.length + (key === 38 ? -1 : +1)
+        ) % links.length)
+
+        /* Set active state and focus */
+        if (!(links[index] instanceof HTMLElement))
           throw new ReferenceError
-        query.focus()
+        links[index].dataset.mdState = "active"
+        links[index].focus()
+
+        /* Prevent scrolling of page */
+        ev.preventDefault()
+        ev.stopPropagation()
+
+        /* Return false prevents the cursor position from changing */
+        return false
       }
+
+    /* Search is closed */
+    } else {
+
+      /* F/S: Open search if not in input field */
+      if (ev.keyCode === 70 || ev.keyCode === 83) {
+        query.focus()
+        ev.preventDefault()
+      }
+    }
+  }).listen()
+
+  /* Listener: focus query if in search is open and character is typed */
+  new Material.Event.Listener(window, "keypress", () => {
+    const toggle = document.querySelector("[data-md-toggle=search]")
+    if (!(toggle instanceof HTMLInputElement))
+      throw new ReferenceError
+    if (toggle.checked) {
+      const query = document.querySelector("[data-md-component=query]")
+      if (!(query instanceof HTMLInputElement))
+        throw new ReferenceError
+      if (query !== document.activeElement)
+        query.focus()
     }
   }).listen()
 

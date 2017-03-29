@@ -27,16 +27,6 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Render a thin line before footnote - higher specificity is necessary due
-  // to the lower specificity of the prefix attribute value selector
-  html & [id^="fnref"]::before {
-    display: inline;
-    margin: 0 0.25rem;
-    border-left: 0.1rem solid $md-color-black--lighter;
-    font-size: ms(0);
-    vertical-align: -0.5rem;
-  }
-
   // Footnotes extension
   .footnote {
     color: $md-color-black--light;
@@ -87,6 +77,16 @@
         color: $md-color-accent;
       }
     }
+  }
+
+  // Render a thin line before footnote
+  .footnote-ref::before {
+    display: inline;
+    margin: 0 0.25rem;
+    border-left: 0.1rem solid $md-color-black--lighter;
+    font-size: ms(0);
+    content: "";
+    vertical-align: -0.5rem;
   }
 
   // Footnote back-reference
