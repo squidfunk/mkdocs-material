@@ -12,10 +12,17 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.5.0
+# Version 1.5.1
 ```
 
 ## Changelog
+
+### 1.5.1 <small> _ March 30, 2017</small>
+
+* Fixed rendering and offset of targetted footnotes
+* Fixed [#238][238]: Link on logo is not set to `site_url`
+
+  [238]: https://github.com/squidfunk/mkdocs-material/issues/238
 
 ### 1.5.0 <small> _ March 24, 2017</small>
 

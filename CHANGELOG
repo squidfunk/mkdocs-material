@@ -1,3 +1,8 @@
+mkdocs-material-1.5.1 (2017-03-30)
+
+  * Fixed rendering and offset of targetted footnotes
+  * Fixed #238: Link on logo is not set to site_url
+
 mkdocs-material-1.5.0 (2017-03-24)
 
   * Added support for localization of search placeholder
