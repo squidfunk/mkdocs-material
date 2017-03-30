@@ -24,21 +24,16 @@ MAINTAINER Martin Donath <martin.donath@squidfunk.com>
 # Set build directory
 WORKDIR /tmp
 
-# Install dependencies
-COPY requirements.txt .
-RUN \
-  pip install -r requirements.txt && \
-  rm requirements.txt
-
 # Copy files necessary for build
-COPY material material
-COPY MANIFEST.in MANIFEST.in
-COPY package.json package.json
-COPY setup.py setup.py
+COPY material .
+COPY MANIFEST.in .
+COPY package.json .
+COPY requirements.txt .
+COPY setup.py .
 
 # Perform build and cleanup artifacts
 RUN \
-  python setup.py install && \
+  python setup.py install 2>/dev/null && \
   rm -rf /tmp/*
 
 # Set working directory
