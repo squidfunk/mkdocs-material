@@ -169,6 +169,11 @@ $md-toggle__search--checked:
     text-overflow: ellipsis;
     z-index: 1;
 
+    // Transition on placeholder
+    &::placeholder {
+      transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+    }
+
     // Placeholder and icon color in active state
     ~ .md-search__icon,
     &::placeholder {
@@ -193,8 +198,8 @@ $md-toggle__search--checked:
       height: 4rem;
       padding-left: 4.8rem;
       transition:
-        background-color 0.25s,
-        color            0.25s;
+        background-color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1),
+        color            0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
       border-radius: 0.2rem;
       background-color: $md-color-black--lighter;
       color: $md-color-white;
@@ -230,7 +235,9 @@ $md-toggle__search--checked:
   // Icons
   &__icon {
     position: absolute;
-    transition: opacity 0.25s;
+    transition:
+      color   0.25s cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity 0.25s;
     font-size: $md-icon-size;
     cursor: pointer;
     z-index: 1;
