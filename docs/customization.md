@@ -165,6 +165,43 @@ For more on this topic refer to the [MkDocs documentation][4]
 
   [4]: http://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
 
+## Extending search
+
+!!! info "Search with multilanguage support"
+
+    Due to the fact that `Lunr` Javascript library currently only supports English, we have not support other languages out-of-box. But you can extend default search with `lunr-languages` package and add support for other languages.
+
+    The following languages are available: `German`, `French`, `Spanish`, `Italian`, `Japanese`, `Dutch`,
+    `Danish`, `Portuguese`, `Finnish`, `Romanian`, `Hungarian`, `Russian`, `Norwegian`.
+
+- Add as submodule into your project `lunr-languages` repository.
+```bash
+> git submodule add git@github.com:MihaiValentin/lunr-languages.git
+```
+
+- Add languages and multilanguage support as `extra_javascript`
+For convinience just create symlink into `docs` directory to `lunr-languages` directory
+```yaml
+extra_javascript:
+  - 'lunr-languages/min/lunr.stemmer.support.min.js'
+  - 'lunr-languages/min/lunr.de.min.js'
+  ...
+  - 'lunr-languages/min/lunr.ru.min.js'
+  - 'lunr-languages/min/lunr.multi.min.js'
+  - 'js/lunr.handler.js'
+```
+
+- Now you can handle and extend search with default index (`lunr.handler.js`)
+```js
+lunr.events.addListener(
+  'index.created',
+  (index) => {
+    index.use(lunr.multiLanguage('en', 'de', 'ru'));
+  }
+);
+```
+
+
 ## Theme development
 
 The Material theme is built on modern technologies like ES6, [Webpack][5],
