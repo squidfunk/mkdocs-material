@@ -89,3 +89,8 @@ pages:
   - Release notes: release-notes.md
   - Contributing: contributing.md
   - License: license.md
+
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto

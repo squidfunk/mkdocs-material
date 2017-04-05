@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,38 +20,28 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-language: node_js
-sudo: false
+# Run build and terminate on error
+yarn run build
+[ $? -gt 0 ] && exit 1
 
-# -----------------------------------------------------------------------------
-# Regular builds
-# -----------------------------------------------------------------------------
+# Deploy documentation to GitHub pages
+mkdocs gh-deploy
 
-# Node.js version and necessary services
-node_js: 5
-services:
-  - docker
+# Terminate if we're not on a release branch
+echo "$TRAVIS_BRANCH" | grep -qvE "^[0-9.]+$" && exit 0; :;
 
-# Limit clone depth to 5, to speed up build
-git:
-  depth: 5
+# Install dependencies for release build
+pip install wheel twine
 
-# Cache dependencies
-cache:
-  pip: true
-  yarn: true
-  directories:
-    - node_modules
+# Build release and docker image
+python setup.py build sdist bdist_wheel --universal
+docker build -t $TRAVIS_REPO_SLUG .
 
-# Install yarn as Travis doesn't support it out of the box
-before_install:
-  - npm install -g yarn@v0.22.0
+# Push release to PyPI
+twine upload -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
 
-# Install dependencies
-install:
-  - yarn install --ignore-optional
-  - pip install --user -r requirements.txt
-
-# Perform build, tests and release
-script:
-  - yarn run travis
+# Push image to Docker Hub
+docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+docker tag $TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG:$TRAVIS_BRANCH
+docker tag $TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG:latest
+docker push $TRAVIS_REPO_SLUG
