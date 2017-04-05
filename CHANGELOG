@@ -1,3 +1,7 @@
+mkdocs-material-1.x.x (2017-xx-xx)
+
+  * Fixed deprecated calls for template variables
+
 mkdocs-material-1.5.2 (2017-04-05)
 
   * Added requirements as explicit dependencies in setup.py
