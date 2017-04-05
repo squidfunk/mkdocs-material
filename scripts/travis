@@ -25,7 +25,7 @@ yarn run build
 [ $? -gt 0 ] && exit 1
 
 # Deploy documentation to GitHub pages
-mkdocs gh-deploy
+# mkdocs gh-deploy
 
 # Terminate if we're not on a release branch
 echo "$TRAVIS_BRANCH" | grep -qvE "^[0-9.]+$" && exit 0; :;

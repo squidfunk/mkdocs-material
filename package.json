@@ -31,7 +31,8 @@
     "start": "scripts/start",
     "test:visual:run": "scripts/test/visual/run",
     "test:visual:update": "scripts/test/visual/update",
-    "test:visual:session": "scripts/test/visual/session"
+    "test:visual:session": "scripts/test/visual/session",
+    "travis": "scripts/travis"
   },
   "dependencies": {
     "escape-string-regexp": "^1.0.5"
