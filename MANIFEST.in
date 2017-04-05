@@ -4,3 +4,4 @@ recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 include LICENSE
 include package.json
+include requirements.txt
