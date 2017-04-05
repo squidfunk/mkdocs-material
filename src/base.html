@@ -253,9 +253,9 @@
                         double slashes afterwards. Not beautiful, but it will
                         catch a lot of use cases.
                       -->
-                      <a href="{{
-                        [repo_url, path, file] | join('/') | replace('//', '/')
-                      }}" title="{{ file }}" class="md-source-file">
+                      <a href="{{ [config.repo_url, path, file] |
+                            join('/') | replace('//', '/') }}"
+                          title="{{ file }}" class="md-source-file">
                         {{ file }}
                       </a>
                     {% endfor %}

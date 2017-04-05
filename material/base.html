@@ -127,9 +127,8 @@
                     <h2 id="__source">{{ lang.t('meta.source') }}</h2>
                     {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
-                      <a href="{{
-                        [repo_url, path, file] | join('/') | replace('//', '/')
-                      }}" title="{{ file }}" class="md-source-file">
+                      <a href="{{ [config.repo_url, path, file] |
+                            join('/') | replace('//', '/') }}" title="{{ file }}" class="md-source-file">
                         {{ file }}
                       </a>
                     {% endfor %}
