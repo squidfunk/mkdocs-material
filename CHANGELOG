@@ -1,3 +1,8 @@
+mkdocs-material-1.5.2 (2017-04-05)
+
+  * Added requirements as explicit dependencies in setup.py
+  * Fixed non-synchronized transitions in search form
+
 mkdocs-material-1.5.1 (2017-03-30)
 
   * Fixed rendering and offset of targetted footnotes

@@ -12,10 +12,15 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.5.1
+# Version 1.5.2
 ```
 
 ## Changelog
+
+### 1.5.2 <small> _ April 5, 2017</small>
+
+* Added requirements as explicit dependencies in `setup.py`
+* Fixed non-synchronized transitions in search form
 
 ### 1.5.1 <small> _ March 30, 2017</small>
 
