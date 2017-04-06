@@ -25,7 +25,15 @@ yarn run build
 [ $? -gt 0 ] && exit 1
 
 # Deploy documentation to GitHub pages
-# mkdocs gh-deploy
+if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+  REMOTE="https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material"
+
+  # Set configuration for repository and deploy documentation
+  git config --global user.name "${GH_NAME}"
+  git config --global user.email "${GH_EMAIL}"
+  git remote set-url origin $REMOTE
+  mkdocs gh-deploy --force
+fi
 
 # Terminate if we're not on a release branch
 echo "$TRAVIS_BRANCH" | grep -qvE "^[0-9.]+$" && exit 0; :;
