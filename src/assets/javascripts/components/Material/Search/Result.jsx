@@ -23,6 +23,9 @@
 import escape from "escape-string-regexp"
 import lunr from "lunr"
 
+window.lunr = lunr
+window.lunr.events = new lunr.EventEmitter()
+
 /* ----------------------------------------------------------------------------
  * Class
  * ------------------------------------------------------------------------- */
@@ -108,6 +111,7 @@ export default class Result {
           this.field("title", { boost: 10 })
           this.field("text")
           this.ref("location")
+          lunr.events.emit("index.created", this)
           /* eslint-enable no-invalid-this, lines-around-comment */
         })
 
