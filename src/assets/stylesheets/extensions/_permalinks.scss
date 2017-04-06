@@ -81,7 +81,7 @@
   }
 
   // Correct headline offset with padding due to margin layering
-  h1[id] {
+  h1 {
     padding-top: 0.8rem;
 
     // Hide anchor for top-level heading, as it makes no sense
