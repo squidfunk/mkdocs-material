@@ -105,14 +105,14 @@ function initialize(config) { // eslint-disable-line func-style
       "[data-md-component=navigation]",
       "[data-md-component=header]")))
 
-  /* Component: sidebar with table of contents - register two separate
-     listeners, as the offset at the top might change */
-  new Material.Event.MatchMedia("(min-width: 960px)",
-    new Material.Event.Listener(window, [
-      "scroll", "resize", "orientationchange"
-    ], new Material.Sidebar.Position(
-      "[data-md-component=toc]",
-      "[data-md-component=header]")))
+  /* Component: sidebar with table of contents (missing on 404 page) */
+  if (document.querySelector("[data-md-component=toc]"))
+    new Material.Event.MatchMedia("(min-width: 960px)",
+      new Material.Event.Listener(window, [
+        "scroll", "resize", "orientationchange"
+      ], new Material.Sidebar.Position(
+        "[data-md-component=toc]",
+        "[data-md-component=header]")))
 
   /* Component: link blurring for table of contents */
   new Material.Event.MatchMedia("(min-width: 960px)",
