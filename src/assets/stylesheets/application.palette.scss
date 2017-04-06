@@ -224,9 +224,14 @@ button[data-md-color-accent] {
       background-color: $color;
     }
 
-    // Hovered search result link
-    .md-search-result__link:hover {
-      background-color: transparentize($color, 0.9);
+    // Search result link
+    .md-search-result__link {
+
+      // Active or hovered link
+      &[data-md-state="active"],
+      &:hover {
+        background-color: transparentize($color, 0.9);
+      }
     }
 
     // Wrapper for scrolling on overflow
