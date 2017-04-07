@@ -12,10 +12,18 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.5.2
+# Version 1.5.3
 ```
 
 ## Changelog
+
+### 1.5.3 <small> _ April 7, 2017</small>
+
+* Fixed deprecated calls for template variables
+* Fixed wrong palette color for focused search result
+* Fixed JavaScript errors on 404 page
+* Fixed missing top spacing on 404 page
+* Fixed missing right spacing on overflow of source container
 
 ### 1.5.2 <small> _ April 5, 2017</small>
 
