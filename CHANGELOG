@@ -1,6 +1,10 @@
-mkdocs-material-1.x.x (2017-xx-xx)
+mkdocs-material-1.5.3 (2017-04-07)
 
   * Fixed deprecated calls for template variables
+  * Fixed wrong palette color for focused search result
+  * Fixed JavaScript errors on 404 page
+  * Fixed missing top spacing on 404 page
+  * Fixed missing right spacing on overflow of source container
 
 mkdocs-material-1.5.2 (2017-04-05)
 
