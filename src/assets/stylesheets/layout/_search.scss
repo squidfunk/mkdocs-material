@@ -443,9 +443,9 @@ $md-toggle__search--checked:
       }
     }
 
-    // Add a little spacing on the last link
-    &:last-child {
-      padding-bottom: 0.8rem;
+    // Add a little spacing on the teaser of the last link
+    &:last-child .md-search-result__teaser {
+      margin-bottom: 1.2rem;
     }
   }
 
