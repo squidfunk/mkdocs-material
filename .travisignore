@@ -1,9 +1,8 @@
 .github/*
-docs/*
 material/*
 .editorconfig
 .gitignore
-.travisignore
 CHANGELOG
 LICENSE
 *.md
+git
