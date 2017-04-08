@@ -194,9 +194,6 @@ export default class Result {
       /* Render results */
       result.forEach((items, ref) => {
         const doc = this.docs_.get(ref)
-        // console.log(ref, items)
-        // if (!items.length)// && !doc.text.length && !doc.title.match(match))
-        //   return
 
         /* Append search result */
         this.list_.appendChild(
