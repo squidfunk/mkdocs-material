@@ -179,18 +179,24 @@ export default class Result {
           if (doc.parent) {
             const ref = doc.parent.location
             items.set(ref, (items.get(ref) || []).concat(item))
+          } else {
+            const ref = doc.location
+            items.set(ref, (items.get(ref) || []))
           }
           return items
         }, new Map)
 
       /* Assemble highlight regex from query string */
       const match = new RegExp(
-        `\\b(${escape(this.value_.trim().replace(" ", "|"))})`, "img")
+        `\\b(${escape(this.value_.trim()).replace(" ", "|")})`, "img")
       const highlight = string => `<em>${string}</em>`
 
       /* Render results */
       result.forEach((items, ref) => {
         const doc = this.docs_.get(ref)
+        // console.log(ref, items)
+        // if (!items.length)// && !doc.text.length && !doc.title.match(match))
+        //   return
 
         /* Append search result */
         this.list_.appendChild(
