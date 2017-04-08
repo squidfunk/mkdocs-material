@@ -12,10 +12,16 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.5.3
+# Version 1.5.4
 ```
 
 ## Changelog
+
+### 1.5.4 <small> _ April 8, 2017</small>
+
+* Fixed broken highlighting for two or more search terms
+* Fixed missing search results when only a h1 is present
+* Fixed unresponsive overlay on Android
 
 ### 1.5.3 <small> _ April 7, 2017</small>
 
