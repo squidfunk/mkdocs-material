@@ -78,4 +78,4 @@ go ahead.
 After your PR is merged, you can safely delete your branch and pull the changes
 from the main (upstream) repository.
 
-  [4]: http://localhost:8000/customization/#theme-development
+  [4]: http://squidfunk.github.io/mkdocs-material/customization/#theme-development
