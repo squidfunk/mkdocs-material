@@ -154,11 +154,6 @@ function initialize(config) { // eslint-disable-line func-style
       })
   })).listen()
 
-  /* Listener: prevent touches on overlay if navigation is active */
-  new Material.Event.MatchMedia("(max-width: 1219px)",
-    new Material.Event.Listener("[data-md-component=overlay]", "touchstart",
-      ev => ev.preventDefault()))
-
   /* Listener: close drawer when anchor links are clicked */
   new Material.Event.MatchMedia("(max-width: 959px)",
     new Material.Event.Listener("[data-md-component=navigation] [href^='#']",
