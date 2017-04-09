@@ -80,7 +80,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.8",
     "js-cookie": "^2.1.3",
-    "lunr": "^1.0.0",
+    "lunr": "^2.0.0",
     "material-design-color": "2.3.2",
     "material-shadows": "3.0.1",
     "modularscale-sass": "3.0.2",
