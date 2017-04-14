@@ -75,7 +75,7 @@ markdown_extensions:
 
 # Page tree
 pages:
-  - Material: index.md
+  - index.md
   - Getting started: getting-started.md
   - Extensions:
     - Admonition: extensions/admonition.md
