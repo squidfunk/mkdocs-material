@@ -10,7 +10,7 @@ you do, please read the following guidelines.
 For quick questions there's no need to open an issue as you can reach us on
 [gitter.im][1].
 
-  [1]: https://gitter.im/mkdocs-material/general
+  [1]: https://gitter.im/squidfunk/mkdocs-material
 
 ### Found a bug?
 
