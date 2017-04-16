@@ -25,11 +25,11 @@ MAINTAINER Martin Donath <martin.donath@squidfunk.com>
 WORKDIR /tmp
 
 # Copy files necessary for build
-COPY material .
-COPY MANIFEST.in .
-COPY package.json .
-COPY requirements.txt .
-COPY setup.py .
+COPY material material
+COPY MANIFEST.in MANIFEST.in
+COPY package.json package.json
+COPY requirements.txt requirements.txt
+COPY setup.py setup.py
 
 # Perform build and cleanup artifacts
 RUN \
