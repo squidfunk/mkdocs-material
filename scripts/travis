@@ -20,9 +20,11 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# Exit, if one command fails
+set -e
+
 # Run build and terminate on error
-yarn run build
-[ $? -gt 0 ] && exit 1
+"$(yarn bin)"/gulp build --clean --optimize --revision
 
 # Deploy documentation to GitHub pages
 if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -41,9 +43,22 @@ echo "$TRAVIS_BRANCH" | grep -qvE "^[0-9.]+$" && exit 0; :;
 # Install dependencies for release build
 pip install wheel twine
 
-# Build release and docker image
+# Build and install theme and Docker image
 python setup.py build sdist bdist_wheel --universal
+python setup.py install 2>/dev/null
 docker build -t $TRAVIS_REPO_SLUG .
+
+# Prepare build regression test
+pushd /tmp
+mkdocs new test && cd test
+echo "theme: material" >> mkdocs.yml
+
+# Test Docker image build
+docker run --rm -it -v `pwd`:/docs $TRAVIS_REPO_SLUG build
+
+# Clean build test
+rm -rf /tmp/test
+popd
 
 # Push release to PyPI
 twine upload -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
