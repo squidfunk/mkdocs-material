@@ -29,6 +29,7 @@ pip install mkdocs-material
 Add the following line to your `mkdocs.yml`:
 
 ``` yaml
+site_name: Test site
 theme: 'material'
 ```
 
