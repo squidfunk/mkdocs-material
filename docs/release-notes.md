@@ -12,10 +12,16 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.5.4
+# Version 1.5.5
 ```
 
 ## Changelog
+
+### 1.5.5 <small> _ April 20, 2017</small>
+
+* Fixed [#282][282]: Browser search (<kbd>META</kbd>+<kbd>F</kbd>) is hijacked
+
+  [282]: https://github.com/squidfunk/mkdocs-material/issues/282
 
 ### 1.5.4 <small> _ April 8, 2017</small>
 
