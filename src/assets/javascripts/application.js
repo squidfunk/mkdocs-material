@@ -224,6 +224,10 @@ function initialize(config) { // eslint-disable-line func-style
     if (!(query instanceof HTMLInputElement))
       throw new ReferenceError
 
+    /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
+    if (ev.metaKey || ev.ctrlKey)
+      return
+
     /* Search is open */
     if (toggle.checked) {
 
