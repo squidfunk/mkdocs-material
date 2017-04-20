@@ -56,8 +56,7 @@ echo "theme: material" >> mkdocs.yml
 # Test Docker image build
 docker run --rm -it -v `pwd`:/docs $TRAVIS_REPO_SLUG build
 
-# Clean build test
-rm -rf /tmp/test
+# Return to original directory
 popd
 
 # Push release to PyPI
