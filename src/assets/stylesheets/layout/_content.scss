@@ -39,11 +39,13 @@
 
   // Define spacing
   &__inner {
-    margin: 2.4rem 1.6rem;
+    margin: 0 1.6rem 2.4rem;
+    padding-top: 2.4rem;
 
-    // [screen +]: Increase spacing
+    // [screen +]: Increase horizontal spacing
     @include break-from-device(screen) {
-      margin: 2.4rem;
+      margin-right: 2.4rem;
+      margin-left: 2.4rem;
     }
 
     // Hack: add pseudo element for spacing, as the overflow of the content
