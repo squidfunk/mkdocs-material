@@ -80,14 +80,9 @@
     }
   }
 
-  // Correct headline offset with padding due to margin layering
-  h1 {
-    padding-top: 0.8rem;
-
-    // Hide anchor for top-level heading, as it makes no sense
-    .headerlink {
-      display: none;
-    }
+  // Hide anchor for top-level heading, as it makes no sense
+  h1 .headerlink {
+    display: none;
   }
 
   // Correct anchor offset for link blurring
