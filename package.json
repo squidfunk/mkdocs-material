@@ -60,7 +60,7 @@
     "flow-jsdoc": "^0.3.0",
     "git-hooks": "^1.1.7",
     "gulp": "^3.9.1",
-    "gulp-changed": "^2.0.0",
+    "gulp-changed": "^3.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-htmlmin": "^3.0.0",
