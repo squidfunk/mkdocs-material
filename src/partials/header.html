@@ -20,8 +20,14 @@
   IN THE SOFTWARE.
 -->
 
+<!-- Determine initial state -->
+{% if config.extra.get("feature", {}).banner %}
+  {% set state = "hidden" %}
+{% endif %}
+
 <!-- Application header -->
-<header class="md-header" data-md-component="header">
+<header class="md-header" data-md-component="header"
+    data-md-state="{{ state }}">
 
   <!-- Top-level navigation -->
   <nav class="md-header-nav md-grid">

@@ -51,6 +51,19 @@ export default class Toggle {
   }
 
   /**
+   * Calculate total height of previous nodes
+   */
+  setup() {
+    let current = this.el_
+    while ((current = current.previousElementSibling)) {
+      if (!(current instanceof HTMLElement))
+        throw new ReferenceError
+      this.offset_ += current.offsetHeight
+    }
+    this.update()
+  }
+
+  /**
    * Update visibility
    */
   update() {

@@ -20,14 +20,50 @@
  * IN THE SOFTWARE.
  */
 
-import Shadow from "./Header/Shadow"
-import Toggle from "./Header/Toggle"
-
 /* ----------------------------------------------------------------------------
- * Module
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default {
-  Shadow,
-  Toggle
+export default class Toggle {
+
+  /**
+   * Toggle header visibility depending on page-y offset
+   *
+   * @constructor
+   *
+   * @property {HTMLElement} el_ - Header
+   * @property {number} offset_ - Toggle page-y offset
+   * @property {boolean} active_ - Header visibility
+   *
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   */
+  constructor(el) {
+    const ref = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+    if (!(ref instanceof Node))
+      throw new ReferenceError
+    this.el_ = ref
+
+    /* Initialize offset and state */
+    this.offset_ = 72
+    this.active_ = true
+  }
+
+  /**
+   * Update visibility
+   */
+  update() {
+    const active = window.pageYOffset <= this.offset_
+    if (active !== this.active_)
+      this.el_.dataset.mdState = (this.active_ = active) ? "hidden" : ""
+  }
+
+  /**
+   * Reset visibility
+   */
+  reset() {
+    this.el_.dataset.mdState = ""
+    this.active_ = false
+  }
 }
