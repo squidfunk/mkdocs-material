@@ -12,14 +12,25 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.5.5
+# Version 1.6.0
 ```
 
 ## Changelog
 
+### 1.6.0 <small> _ April 22, 2017</small>
+
+* Added build test for Docker image on Travis
+* Added search overlay for better user experience (focus)
+* Added language from localizations to `html` tag
+* Fixed [#270][270]: source links broken for absolute URLs
+* Fixed missing top spacing for first targeted element in content
+* Fixed too small footnote divider when using larger font sizes
+
+  [270]: https://github.com/squidfunk/mkdocs-material/issues/270
+
 ### 1.5.5 <small> _ April 20, 2017</small>
 
-* Fixed [#282][282]: Browser search (<kbd>META</kbd>+<kbd>F</kbd>) is hijacked
+* Fixed [#282][282]: Browser search (<kbd>Meta</kbd>+<kbd>F</kbd>) is hijacked
 
   [282]: https://github.com/squidfunk/mkdocs-material/issues/282
 
