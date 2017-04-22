@@ -362,6 +362,7 @@ macro `t`:
 
 ``` jinja
 {% macro t(key) %}{{ {
+  "language": "en",
   "edit.link.title": "Edit this page",
   "footer.previous": "Previous",
   "footer.next": "Next",
