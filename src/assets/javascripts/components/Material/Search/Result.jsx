@@ -103,13 +103,6 @@ export default class Result {
 
       /* Initialize index */
       const init = data => {
-        this.index_ = lunr(function() {
-          /* eslint-disable no-invalid-this, lines-around-comment */
-          this.field("title", { boost: 10 })
-          this.field("text")
-          this.ref("location")
-          /* eslint-enable no-invalid-this, lines-around-comment */
-        })
 
         /* Preprocess and index sections and documents */
         this.docs_ = data.reduce((docs, doc) => {
@@ -135,12 +128,22 @@ export default class Result {
               (_, char) => char)
 
           /* Index sections and documents, but skip top-level headline */
-          if (!doc.parent || doc.parent.title !== doc.title) {
-            this.index_.add(doc)
+          if (!doc.parent || doc.parent.title !== doc.title)
             docs.set(doc.location, doc)
-          }
           return docs
         }, new Map)
+
+        /* eslint-disable no-invalid-this, lines-around-comment */
+        const docs = this.docs_
+        this.index_ = lunr(function() {
+          this.field("title", { boost: 10 })
+          this.field("text")
+          this.ref("location")
+
+          /* Index documents */
+          docs.forEach(doc => this.add(doc))
+        })
+        /* eslint-enable no-invalid-this, lines-around-comment */
       }
 
       /* Initialize index after short timeout to account for transition */
