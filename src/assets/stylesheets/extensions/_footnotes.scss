@@ -82,9 +82,9 @@
   // Render a thin line before footnote
   .footnote-ref::before {
     display: inline;
-    margin: 0 0.25rem;
+    margin: 0 0.2em;
     border-left: 0.1rem solid $md-color-black--lighter;
-    font-size: ms(0);
+    font-size: 1.25em;
     content: "";
     vertical-align: -0.5rem;
   }
