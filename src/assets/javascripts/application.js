@@ -203,8 +203,8 @@ function initialize(config) { // eslint-disable-line func-style
       }
     }))
 
-  /* Listener: keyboard handlers */
-  new Material.Event.Listener(window, "keydown", ev => {
+  /* Listener: keyboard handlers */ // eslint-disable-next-line complexity
+  new Material.Event.Listener(window, "keydown", ev => {                        // TODO: split up into component to reduce complexity
     const toggle = document.querySelector("[data-md-toggle=search]")
     if (!(toggle instanceof HTMLInputElement))
       throw new ReferenceError
@@ -221,8 +221,20 @@ function initialize(config) { // eslint-disable-line func-style
 
       /* Enter: prevent form submission */
       if (ev.keyCode === 13) {
-        if (query === document.activeElement)
+        if (query === document.activeElement) {
           ev.preventDefault()
+
+          /* Go to current active/focused link */
+          const focus = document.querySelector(
+            "[data-md-component=search] [href][data-md-state=active]")
+          if (focus instanceof HTMLLinkElement)
+            window.location = focus.getAttribute("href")
+
+          /* Close search */
+          toggle.checked = false
+          toggle.dispatchEvent(new CustomEvent("change"))
+          query.blur()
+        }
 
       /* Escape: close search */
       } else if (ev.keyCode === 27) {
@@ -298,16 +310,6 @@ function initialize(config) { // eslint-disable-line func-style
         query.focus()
     }
   }).listen()
-
-  /* Listener: fix unclickable toggle due to blur handler */
-  new Material.Event.MatchMedia("(min-width: 960px)",
-    new Material.Event.Listener("[data-md-toggle=search]", "click",
-      ev => ev.stopPropagation()))
-
-  /* Listener: prevent search from closing when clicking */
-  new Material.Event.MatchMedia("(min-width: 960px)",
-    new Material.Event.Listener("[data-md-component=search]", "click",
-      ev => ev.stopPropagation()))
 
   /* Retrieve facts for the given repository type */
   ;(() => {
