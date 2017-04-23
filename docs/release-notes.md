@@ -12,10 +12,15 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.6.0
+# Version 1.6.1
 ```
 
 ## Changelog
+
+### 1.6.1 <small> _ April 23, 2017</small>
+
+* Fixed following of active/focused element if search input is focused
+* Fixed layer order of search component elements
 
 ### 1.6.0 <small> _ April 22, 2017</small>
 

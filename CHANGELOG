@@ -1,3 +1,8 @@
+mkdocs-material-1.6.1 (2017-04-23)
+
+  * Fixed following of active/focused element if search input is focused
+  * Fixed layer order of search component elements
+
 mkdocs-material-1.6.0 (2017-04-22)
 
   * Added build test for Docker image on Travis
