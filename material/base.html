@@ -23,7 +23,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.6.0">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.6.1">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -38,7 +38,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-644a8870d2.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-b498ae3f8c.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-f78e5cb881.palette.css">
       {% endif %}
@@ -160,7 +160,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-023fb9b295.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-e55679f0c5.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
