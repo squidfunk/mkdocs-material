@@ -191,7 +191,7 @@ $md-toggle__search--checked:
     position: relative;
     padding: 0 4.8rem 0 7.2rem;
     text-overflow: ellipsis;
-    z-index: 1;
+    z-index: 2;
 
     // Transition on placeholder
     &::placeholder {
@@ -264,7 +264,7 @@ $md-toggle__search--checked:
       opacity 0.25s;
     font-size: $md-icon-size;
     cursor: pointer;
-    z-index: 1;
+    z-index: 2;
 
     // Hovered icon
     &:hover {
