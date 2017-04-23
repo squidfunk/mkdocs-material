@@ -23,7 +23,7 @@
 {% import "partials/language.html" as lang %}
 
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="{{ lang.t('language') }}" class="no-js">
   <head>
 
     <!-- Block: metatags -->
@@ -265,15 +265,7 @@
                     <h2 id="__source">{{ lang.t('meta.source') }}</h2>
                     {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
-
-                      <!--
-                        Hack: here, we just glue all parts of the source file
-                        path together, ensure that there are slashes and remove
-                        double slashes afterwards. Not beautiful, but it will
-                        catch a lot of use cases.
-                      -->
-                      <a href="{{ [config.repo_url, path, file] |
-                            join('/') | replace('//', '/') }}"
+                      <a href="{{ [config.repo_url, path, file] | join('/') }}"
                           title="{{ file }}" class="md-source-file">
                         {{ file }}
                       </a>

@@ -211,18 +211,6 @@ function initialize(config) { // eslint-disable-line func-style
       }
     }))
 
-  /* Listener: close search when clicking outside */
-  new Material.Event.MatchMedia("(min-width: 960px)",
-    new Material.Event.Listener(document.body, "click", () => {
-      const toggle = document.querySelector("[data-md-toggle=search]")
-      if (!(toggle instanceof HTMLInputElement))
-        throw new ReferenceError
-      if (toggle.checked) {
-        toggle.checked = false
-        toggle.dispatchEvent(new CustomEvent("change"))
-      }
-    }))
-
   /* Listener: keyboard handlers */
   new Material.Event.Listener(window, "keydown", ev => {
     const toggle = document.querySelector("[data-md-toggle=search]")

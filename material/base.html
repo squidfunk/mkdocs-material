@@ -1,6 +1,6 @@
 {% import "partials/language.html" as lang %}
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="{{ lang.t('language') }}" class="no-js">
   <head>
     {% block site_meta %}
       <meta charset="utf-8">
@@ -23,7 +23,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.5.5">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.6.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -38,7 +38,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-70144b1b80.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-644a8870d2.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-f78e5cb881.palette.css">
       {% endif %}
@@ -138,8 +138,7 @@
                     <h2 id="__source">{{ lang.t('meta.source') }}</h2>
                     {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
-                      <a href="{{ [config.repo_url, path, file] |
-                            join('/') | replace('//', '/') }}" title="{{ file }}" class="md-source-file">
+                      <a href="{{ [config.repo_url, path, file] | join('/') }}" title="{{ file }}" class="md-source-file">
                         {{ file }}
                       </a>
                     {% endfor %}
@@ -161,7 +160,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-f23b1fa2f7.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-023fb9b295.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>

@@ -48,12 +48,11 @@ $md-toggle__search--checked:
 
   // Search modal overlay
   &__overlay {
-    display: none;
-    pointer-events: none;
+    opacity: 0;
+    z-index: 1;
 
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
-      display: block;
       position: absolute;
       top: 0.4rem;
       left: 0.4rem;
@@ -65,9 +64,8 @@ $md-toggle__search--checked:
         opacity   0.2s 0.2s;
       border-radius: 2rem;
       background-color: $md-color-white;
-      opacity: 0;
       overflow: hidden;
-      z-index: 1;
+      pointer-events: none;
 
       // Expanded overlay
       #{$md-toggle__search--checked} & {
@@ -94,6 +92,32 @@ $md-toggle__search--checked:
       // [tablet portrait]: Scale up 75 times
       @include break-at-device(tablet portrait) {
         transform: scale(75);
+      }
+    }
+
+    // [tablet landscape +]: Overlay for better focus on search
+    @include break-from-device(tablet landscape) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      transition:
+        width   0s 0.25s,
+        height  0s 0.25s,
+        opacity 0.25s;
+      background-color: $md-color-black--light;
+      cursor: pointer;
+
+      // Expanded overlay
+      #{$md-toggle__search--checked} & {
+        width: 100%;
+        height: 100%;
+        transition:
+          width   0s,
+          height  0s,
+          opacity 0.25s;
+        opacity: 1;
       }
     }
   }
@@ -305,6 +329,7 @@ $md-toggle__search--checked:
     width: 100%;
     border-radius: 0 0 0.2rem 0.2rem;
     overflow: hidden;
+    z-index: 1;
 
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
