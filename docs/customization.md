@@ -164,6 +164,18 @@ The Material theme provides the following template blocks:
 For more on this topic refer to the [MkDocs documentation][4]
 
   [4]: http://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
+  
+### Adding custom CSS
+
+If you want to add additional CSS to your theme extension, you'll need to make sure MkDocs builds your HTML pages with a `<link>` tag to load your new CSS. To do this, you can override the `extrahead` block as follows:
+
+1. Add `extra.css` in `<theme-dir>/assets/stylesheets/` with custom style of your choosing.
+1. Add `main.html` in `<theme-dir>` with the following content. 
+    ```html
+    {% block extrahead %}
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/extra.css">
+    {% endblock %}
+    ```
 
 ## Theme development
 
