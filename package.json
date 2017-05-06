@@ -68,7 +68,7 @@
     "gulp-ignore": "^2.0.2",
     "gulp-modernizr": "1.0.0-alpha",
     "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.2.0",
+    "gulp-postcss": "^7.0.0",
     "gulp-remove-empty-lines": "0.0.8",
     "gulp-replace": "^0.5.4",
     "gulp-rev": "^7.1.2",
