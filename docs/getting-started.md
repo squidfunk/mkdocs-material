@@ -286,6 +286,15 @@ Additionally, for GitHub, the number of stars and forks is shown.
 
   [15]: http://www.mkdocs.org/user-guide/configuration/#edit_uri
 
+### Adding a favicon
+
+Adding a favicon to your site is very easy. Simply set the following variable
+via your project's `mkdocs.yml`:
+
+``` yaml
+site_favicon: 'images/favicon.ico'
+```
+
 ### Adding a logo
 
 Material makes it easy to add your logo. Your logo should have rectangular
