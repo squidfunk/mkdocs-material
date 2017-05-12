@@ -186,7 +186,7 @@ tags on separate lines and adding new lines between the tags and the content.
 
 ### Arithmatex <small>MathJax</small>
 
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 [Arithmatex][20] integrates Material with [MathJax][21] which parses
 block-style and inline equations written in TeX markup and outputs them in
@@ -199,7 +199,7 @@ runtime needs to be included. This must be done with
 
 ``` yaml
 extra_javascript:
-  - 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
 ```
 
 If you want to override the default MathJax configuration, you can do this by
@@ -234,7 +234,7 @@ In your `mkdocs.yml`, include it with:
 ``` yaml
 extra_javascript:
   - 'javascripts/extra.js'
-  - 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
 ```
 
   [20]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/

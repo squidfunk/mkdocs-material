@@ -282,9 +282,18 @@ Additionally, for GitHub, the number of stars and forks is shown.
     edit button will appear at the top of every article. This is the automatic
     behavior that MkDocs implements. See the [MkDocs documentation][15] on more
     guidance regarding the `edit_uri` attribute, which defines whether the edit
-    button is show or not.
+    button is shown or not.
 
   [15]: http://www.mkdocs.org/user-guide/configuration/#edit_uri
+
+### Adding a favicon
+
+Adding a favicon to your site is very easy. Simply set the following variable
+via your project's `mkdocs.yml`:
+
+``` yaml
+site_favicon: 'images/favicon.ico'
+```
 
 ### Adding a logo
 
