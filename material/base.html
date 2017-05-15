@@ -35,12 +35,12 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr-56ade86843.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-50360da7ff.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-b498ae3f8c.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-cb177adbc6.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-f78e5cb881.palette.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-b824172603.palette.css">
       {% endif %}
     {% endblock %}
     {% block fonts %}
@@ -160,7 +160,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-e55679f0c5.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-ff5ba9a7e1.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
