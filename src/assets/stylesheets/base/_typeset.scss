@@ -285,6 +285,7 @@ kbd {
   // Abbreviations
   abbr {
     border-bottom: 0.1rem dotted $md-color-black--light;
+    text-decoration: none;
     cursor: help;
   }
 
