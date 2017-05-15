@@ -53,7 +53,6 @@
     "css-mqpacker": "^6.0.0",
     "custom-event-polyfill": "^0.3.0",
     "del": "^2.2.2",
-    "ecstatic": "^2.1.0",
     "eslint": "^3.16.0",
     "fastclick": "^1.0.6",
     "flow-bin": "^0.46.0",
@@ -96,14 +95,6 @@
     "webpack-stream": "^3.2.0",
     "whatwg-fetch": "^2.0.1",
     "yargs": "^8.0.1"
-  },
-  "optionalDependencies": {
-    "eslint-plugin-mocha": "^4.8.0",
-    "gemini": "^4.14.3",
-    "moniker": "^0.1.2",
-    "sauce-connect-launcher": "^1.2.0",
-    "saucelabs": "^1.4.0",
-    "selenium-standalone": "^6.0.0"
   },
   "engines": {
     "node": ">= 5.0.0"
