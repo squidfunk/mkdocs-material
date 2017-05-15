@@ -44,7 +44,7 @@ pre,
 code,
 kbd {
   color: $md-color-black;
-  font-feature-settings: "kern", "liga";
+  font-feature-settings: "kern";
   font-family: "Courier New", Courier, monospace;
   font-weight: 400;
 }
@@ -285,6 +285,7 @@ kbd {
   // Abbreviations
   abbr {
     border-bottom: 0.1rem dotted $md-color-black--light;
+    text-decoration: none;
     cursor: help;
   }
 

@@ -50,6 +50,6 @@ install:
   - yarn install --ignore-optional
   - pip install --user -r requirements.txt
 
-# Perform build, tests and release
+# Perform build and release
 script:
   - yarn run travis

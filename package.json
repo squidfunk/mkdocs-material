@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "A Material Design theme for MkDocs",
   "keywords": [
     "mkdocs",
@@ -38,7 +38,7 @@
     "escape-string-regexp": "^1.0.5"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.3",
+    "autoprefixer": "^7.0.1",
     "babel-core": "^6.23.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^7.0.0",
@@ -50,13 +50,12 @@
     "babel-root-import": "^4.1.5",
     "chalk": "^1.1.3",
     "core-js": "^2.4.1",
-    "css-mqpacker": "^5.0.1",
+    "css-mqpacker": "^6.0.0",
     "custom-event-polyfill": "^0.3.0",
     "del": "^2.2.2",
-    "ecstatic": "^2.1.0",
     "eslint": "^3.16.0",
     "fastclick": "^1.0.6",
-    "flow-bin": "^0.44.0",
+    "flow-bin": "^0.46.0",
     "flow-jsdoc": "^0.3.0",
     "git-hooks": "^1.1.7",
     "gulp": "^3.9.1",
@@ -68,7 +67,7 @@
     "gulp-ignore": "^2.0.2",
     "gulp-modernizr": "1.0.0-alpha",
     "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.2.0",
+    "gulp-postcss": "^7.0.0",
     "gulp-remove-empty-lines": "0.0.8",
     "gulp-replace": "^0.5.4",
     "gulp-rev": "^7.1.2",
@@ -95,15 +94,7 @@
     "webpack": "^2.2.1",
     "webpack-stream": "^3.2.0",
     "whatwg-fetch": "^2.0.1",
-    "yargs": "^7.0.2"
-  },
-  "optionalDependencies": {
-    "eslint-plugin-mocha": "^4.8.0",
-    "gemini": "^4.14.3",
-    "moniker": "^0.1.2",
-    "sauce-connect-launcher": "^1.2.0",
-    "saucelabs": "^1.4.0",
-    "selenium-standalone": "^6.0.0"
+    "yargs": "^8.0.1"
   },
   "engines": {
     "node": ">= 5.0.0"
