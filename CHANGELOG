@@ -1,3 +1,7 @@
+mkdocs-material-1.6.3 (2017-05-16)
+
+  * Fixed #329: Broken source stats for private or unknown GitHub repos
+
 mkdocs-material-1.6.2 (2017-05-15)
 
   * Fixed #316: Fatal error for git clone on Windows
