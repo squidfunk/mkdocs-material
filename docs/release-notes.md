@@ -12,10 +12,20 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.6.1
+# Version 1.6.2
 ```
 
 ## Changelog
+
+* Fixed [#316][316]: Fatal error for git clone on Windows
+* Fixed [#320][320]: Chrome 58 creates double underline for `abbr` tags
+* Fixed [#323][323]: Ligatures rendered inside code blocks
+* Fixed miscalculated sidebar height due to missing margin collapse
+* Changed deprecated MathJax CDN to Cloudflare
+
+  [316]: https://github.com/squidfunk/mkdocs-material/issues/316
+  [320]: https://github.com/squidfunk/mkdocs-material/issues/320
+  [323]: https://github.com/squidfunk/mkdocs-material/issues/323
 
 ### 1.6.1 <small> _ April 23, 2017</small>
 
@@ -42,7 +52,7 @@ pip show mkdocs-material | grep -E ^Version
 ### 1.5.4 <small> _ April 8, 2017</small>
 
 * Fixed broken highlighting for two or more search terms
-* Fixed missing search results when only a h1 is present
+* Fixed missing search results when only a `h1` is present
 * Fixed unresponsive overlay on Android
 
 ### 1.5.3 <small> _ April 7, 2017</small>
