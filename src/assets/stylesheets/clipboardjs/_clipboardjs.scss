@@ -1,0 +1,104 @@
+////
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+$clip-btn-background: #C4C4C4;
+$clip-tip-background: #404040;
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+.md-typeset {
+
+  // Render muted when hovering over code and
+  // render fully when hovering over the button.
+  .codehilite {
+    &:hover {
+      .clip-btn {
+        transition: opacity 0.3s;
+        opacity: 0.4;
+
+        &:hover {
+          transition: opacity 0.1s;
+          background-color: $md-color-primary;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // Clipboard button object.
+  .clip-btn {
+    @include z-depth(2);
+
+    display: inline-block;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    transition: opacity 0.3s;
+    border-radius: 50%;
+    background-color: $clip-btn-background;
+    color: $md-color-white;
+    cursor: pointer;
+    opacity: 0;
+    overflow: visible;
+
+    .md-icon--clipboard {
+      position: relative;
+      top: 0.1rem;
+      font-size: 1.8rem;
+    }
+  }
+
+  // Tooltips for messages when a copy is successful or fails.
+  // Render it to the left as somtimes it is in a code table which
+  // cuts off the right, or on the edge of the screen with mobile.
+  .clip-tip {
+    &::after {
+      position: absolute;
+      top: 0.3rem;
+      left: 0;
+      padding: 0.6rem 1rem;
+      transform: translateX(-112%) translateY(0);
+      transition: opacity 0.2s;
+      border-radius: 0.2rem;
+      background: $clip-tip-background;
+      color: $md-color-white;
+      font-size: ms(-1);
+      font-weight: 700;
+      white-space: nowrap;
+      content: attr(aria-label);
+      opacity: 1;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::after {
+        display: block;
+        transform: translateX(-110%) translateY(0);
+        opacity: 0.9;
+        visibility: visible;
+      }
+    }
+  }
+}

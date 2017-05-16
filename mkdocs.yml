@@ -94,3 +94,6 @@ pages:
 google_analytics:
   - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
   - auto
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js
