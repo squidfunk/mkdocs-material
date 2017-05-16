@@ -12,10 +12,18 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.6.2
+# Version 1.6.3
 ```
 
 ## Changelog
+
+### 1.6.3 <small> _ May 16, 2017</small>
+
+* Fixed [#329][329]: Broken source stats for private or unknown GitHub repos
+
+  [329]: https://github.com/squidfunk/mkdocs-material/issues/329
+
+### 1.6.2 <small> _ May 15, 2017</small>
 
 * Fixed [#316][316]: Fatal error for git clone on Windows
 * Fixed [#320][320]: Chrome 58 creates double underline for `abbr` tags
