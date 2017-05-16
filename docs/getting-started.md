@@ -407,16 +407,31 @@ extra:
     tabs: true
 ```
 
+### Clipboard.js Integration
+
+Material supports [Clipboard.js][20] and will provide overlays on code blocks
+for easy copying. When mousing over a code block you will see a button in
+the upper right hand corner of the code. You can click the icon and have the
+entire content of the that code block copied to the clipboard without needing
+Flash.  Clipboard.js support can be enabled by with the following settings:
+
+```yaml
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js
+```
+
+  [20]: https://clipboardjs.com/
+
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][20] for more information on advanced customization.
+[this article][21] for more information on advanced customization.
 
-  [20]: customization.md
+  [21]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][21]. The following extensions
+MkDocs supports several [Markdown extensions][22]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -430,20 +445,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][22]
-* [Codehilite][23]
-* [Footnotes][24]
-* [Metadata][25]
-* [Permalinks][26]
-* [PyMdown Extensions][27]
+* [Admonition][23]
+* [Codehilite][24]
+* [Footnotes][25]
+* [Metadata][26]
+* [Permalinks][27]
+* [PyMdown Extensions][28]
 
-  [21]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [22]: extensions/admonition.md
-  [23]: extensions/codehilite.md
-  [24]: extensions/footnotes.md
-  [25]: extensions/metadata.md
-  [26]: extensions/permalinks.md
-  [27]: extensions/pymdown.md
+  [22]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [23]: extensions/admonition.md
+  [24]: extensions/codehilite.md
+  [25]: extensions/footnotes.md
+  [26]: extensions/metadata.md
+  [27]: extensions/permalinks.md
+  [28]: extensions/pymdown.md
 
 ## Full example
 
@@ -493,4 +508,8 @@ markdown_extensions:
   - admonition
   - codehilite(guess_lang=false)
   - toc(permalink=true)
+
+# CSS
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js
 ```

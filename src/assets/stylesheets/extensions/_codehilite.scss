@@ -216,14 +216,22 @@ $codehilite-whitespace: transparent;
   // If code blocks are wrapped with codehilite, the styles must be adjusted
   // so the marker stretches to the whole width and the padding is respected
   .codehilite {
+    position: relative;
     margin: 1em 0;
-    padding: 1rem 1.2rem 0.8rem;
+    padding: 0;
     border-radius: 0.2rem;
     background-color: $md-code-background;
     color: $md-code-color;
     line-height: 1.4;
-    overflow: auto;
+    overflow: visible;
     -webkit-overflow-scrolling: touch;
+
+    // Avoid current behaviour where all '[id]:before' are 
+    // 'display: inline-block'. This becomes a problem when clipboard overlay
+    // is applied.
+    &[id]::before {
+      display: inline;
+    }
 
     // Override native scrollbar styles
     &::-webkit-scrollbar {
@@ -241,16 +249,24 @@ $codehilite-whitespace: transparent;
       }
     }
 
-    // Hack: set pre-tag to inline-block, in order to stetch the content on
-    // overflow correctly to the whole width
     pre {
-      display: inline-block;
       min-width: 100%;
       margin: 0;
-      padding: 0;
+      padding: 1rem 1.2rem 0.8rem;
       background-color: transparent;
-      overflow: visible;
+      overflow: auto;
       vertical-align: top;
+    }
+  }
+
+  // If not using Pygments, code will be under pre>code
+  pre.codehilite {
+    overflow: visible;
+
+    code {
+      display: block;
+      padding: 1rem 1.2rem 0.8rem;
+      overflow: auto;
     }
   }
 
