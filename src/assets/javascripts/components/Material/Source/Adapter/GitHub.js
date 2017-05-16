@@ -32,15 +32,22 @@ export default class GitHub extends Abstract {
    * Retrieve repository information from GitHub
    *
    * @constructor
+   *
+   * @property {string} name_ - Name of the repository
+   *
    * @param {(string|HTMLAnchorElement)} el - Selector or HTML element
    */
   constructor(el) {
     super(el)
 
-    /* Adjust base URL to reach API endpoints and remove trailing slash */
-    this.base_ = this.base_
-      .replace("github.com/", "api.github.com/repos/")
-      .replace(/\/$/, "")
+    /* Extract user and repository name from URL, as we have to query for all
+       repositories, to omit 404 errors for private repositories */
+    const [, user, name] = /^.+github\.com\/([^\/]+)\/([^\/]+).*$/
+      .exec(this.base_)
+
+    /* Initialize base URL and repository name */
+    this.base_ = `https://api.github.com/users/${user}/repos`
+    this.name_ = name
   }
 
   /**
@@ -52,10 +59,13 @@ export default class GitHub extends Abstract {
     return fetch(this.base_)
       .then(response => response.json())
       .then(data => {
-        return [
-          `${this.format_(data.stargazers_count)} Stars`,
-          `${this.format_(data.forks_count)} Forks`
-        ]
+        const repo = data.find(item => item.name === this.name_)
+        return repo
+          ? [
+            `${this.format_(repo.stargazers_count)} Stars`,
+            `${this.format_(repo.forks_count)} Forks`
+          ]
+          : []
       })
   }
 }
