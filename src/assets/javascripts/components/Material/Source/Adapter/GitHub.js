@@ -60,7 +60,7 @@ export default class GitHub extends Abstract {
    */
   fetch_() {
     return fetch(this.base_)
-      .then(response => response.json(), () => {})
+      .then(response => response.json())
       .then(data => {
         if (!(data instanceof Array))
           throw new TypeError
