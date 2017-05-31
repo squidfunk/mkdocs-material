@@ -223,39 +223,33 @@ $codehilite-whitespace: transparent;
     background-color: $md-code-background;
     color: $md-code-color;
     line-height: 1.4;
-    overflow: visible;
     -webkit-overflow-scrolling: touch;
 
-    // Avoid current behaviour where all '[id]:before' are 
-    // 'display: inline-block'. This becomes a problem when clipboard overlay
-    // is applied.
-    &[id]::before {
-      display: inline;
-    }
-
-    // Override native scrollbar styles
-    &::-webkit-scrollbar {
-      width: 0.4rem;
-      height: 0.4rem;
-    }
-
-    // Style scrollbar thumb
-    &::-webkit-scrollbar-thumb {
-      background-color: $md-color-black--lighter;
-
-      // Hovered scrollbar thumb
-      &:hover {
-        background-color: $md-color-accent;
-      }
-    }
-
-    pre {
-      min-width: 100%;
+    // Actual container with code, overflowing
+    pre,
+    code {
+      display: block;
       margin: 0;
       padding: 1rem 1.2rem 0.8rem;
       background-color: transparent;
       overflow: auto;
       vertical-align: top;
+
+      // Override native scrollbar styles
+      &::-webkit-scrollbar {
+        width: 0.4rem;
+        height: 0.4rem;
+      }
+
+      // Style scrollbar thumb
+      &::-webkit-scrollbar-thumb {
+        background-color: $md-color-black--lighter;
+
+        // Hovered scrollbar thumb
+        &:hover {
+          background-color: $md-color-accent;
+        }
+      }
     }
   }
 
@@ -343,8 +337,13 @@ $codehilite-whitespace: transparent;
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
       margin: 1em -1.6rem;
-      padding: 1rem 1.6rem 0.8rem;
       border-radius: 0;
+
+      // Actual container with code, overflowing
+      pre,
+      code {
+        padding: 1rem 1.6rem 0.8rem;
+      }
     }
   }
 
@@ -358,7 +357,8 @@ $codehilite-whitespace: transparent;
       border-radius: 0;
 
       // Increase spacing
-      .codehilite,
+      .codehilite > pre,
+      .codehilite > code,
       .linenodiv {
         padding: 1rem 1.6rem;
       }
