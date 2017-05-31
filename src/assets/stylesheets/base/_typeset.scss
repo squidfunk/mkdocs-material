@@ -230,7 +230,7 @@ kbd {
     > code {
       display: block;
       margin: 0;
-      padding: 1rem 1.2rem;
+      padding: 1.05rem 1.2rem;
       background-color: transparent;
       font-size: inherit;
       box-shadow: none;
@@ -239,7 +239,7 @@ kbd {
 
       // [mobile -]: Increase padding to match text
       @include break-to-device(mobile) {
-        padding: 1rem 1.6rem;
+        padding: 1.05rem 1.6rem;
       }
 
       // Override native scrollbar styles

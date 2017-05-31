@@ -230,7 +230,7 @@ $codehilite-whitespace: transparent;
     code {
       display: block;
       margin: 0;
-      padding: 1rem 1.2rem 0.8rem;
+      padding: 1.05rem 1.2rem;
       background-color: transparent;
       overflow: auto;
       vertical-align: top;
@@ -257,9 +257,10 @@ $codehilite-whitespace: transparent;
   pre.codehilite {
     overflow: visible;
 
+    // Actual container with code, overflowing
     code {
       display: block;
-      padding: 1rem 1.2rem 0.8rem;
+      padding: 1.05rem 1.2rem;
       overflow: auto;
     }
   }
@@ -296,7 +297,7 @@ $codehilite-whitespace: transparent;
 
     // Add spacing to line number container
     .linenodiv {
-      padding: 1rem 1.2rem 0.8rem;
+      padding: 1.05rem 1.2rem;
 
       // Stretch the line number container vertically, so it always aligns with
       // the code container, even when there's a scrollbar.
@@ -342,7 +343,7 @@ $codehilite-whitespace: transparent;
       // Actual container with code, overflowing
       pre,
       code {
-        padding: 1rem 1.6rem 0.8rem;
+        padding: 1.05rem 1.6rem;
       }
     }
   }

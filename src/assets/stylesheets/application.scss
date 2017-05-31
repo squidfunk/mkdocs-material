@@ -42,6 +42,7 @@
 @import "base/typeset";
 
 @import "layout/base";
+@import "layout/clipboard";
 @import "layout/content";
 @import "layout/header";
 @import "layout/footer";
@@ -55,8 +56,6 @@
 @import "extensions/codehilite";
 @import "extensions/footnotes";
 @import "extensions/permalinks";
-
-@import "clipboardjs/clipboardjs";
 
 @import "extensions/pymdown/arithmatex";
 @import "extensions/pymdown/critic";

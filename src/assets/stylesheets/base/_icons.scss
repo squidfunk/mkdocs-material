@@ -57,8 +57,7 @@
     "arrow_forward": "arrow-forward",
     "menu": "menu",
     "search": "search",
-    "school": "home",
-    "assignment": "clipboard"
+    "school": "home"
   ) {
     &--#{$name}::before {
       content: $ligature;

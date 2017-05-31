@@ -20,7 +20,9 @@
  * IN THE SOFTWARE.
  */
 
+import Clipboard from "clipboard"
 import FastClick from "fastclick"
+
 import Material from "./components/Material"
 
 /* ----------------------------------------------------------------------------
@@ -48,7 +50,7 @@ function initialize(config) { // eslint-disable-line func-style
     })
 
     /* Wrap all data tables for better overflow scrolling */
-    const tables = document.querySelectorAll("table:not([class])")
+    const tables = document.querySelectorAll("table:not([class])")              // TODO: this is JSX
     Array.prototype.forEach.call(tables, table => {
       const wrap = (
         <div class="md-typeset__scrollwrap">
@@ -85,7 +87,6 @@ function initialize(config) { // eslint-disable-line func-style
     /* If Clipboard.js is available, inject "copy to clipboard" overlays
        and attach Clipboard to copy the code.
        Handle both div.codehilite>pre and pre>code. */
-    // $FlowFixMe
     if (typeof Clipboard !== "undefined" &&
         Clipboard.isSupported()) { // eslint-disable-line no-undef
       const blocks = document.querySelectorAll(
@@ -95,31 +96,35 @@ function initialize(config) { // eslint-disable-line func-style
         const parent = code.parentNode
         const codeId = `hl_code${i}`
         const btn = document.createElement("button")
-        const icon = document.createElement("i")
+        // const icon = document.createElement("i")
         parent.id = codeId
-        icon.setAttribute("class", "md-icon md-icon--clipboard")
-        btn.appendChild(icon)
-        btn.setAttribute("class", "clip-btn")
+        // icon.setAttribute("class", "md-icon md-icon--clipboard")
+        // btn.appendChild(icon)
+        btn.setAttribute("class", "md-clipboard")
         btn.setAttribute("data-clipboard-target",
           `#${codeId} pre, #${codeId} code`)
         btn.setAttribute("aria-label", "Copy to Clipboard.")
-        new Material.Event.Listener(btn, "mouseleave", e => {
-          e.currentTarget.setAttribute("class","clip-btn")
-          e.currentTarget.setAttribute("aria-label", "Copy to Clipboard.")
-        }).listen()
+        // new Material.Event.Listener(btn, "mouseleave", e => {
+        //   e.currentTarget.classList.remove("md-clipboard__snackbar")
+        //   e.currentTarget.setAttribute("aria-label", "Copy to Clipboard.")
+        // }).listen()
         parent.insertBefore(btn, parent.childNodes[0])
         i += 1
       })
-      const cBoard = new Clipboard(".clip-btn") // eslint-disable-line no-undef
+      const cBoard = new Clipboard(".md-clipboard")
       cBoard.on("success", e => {
         e.clearSelection()
-        e.trigger.setAttribute("aria-label", "Copied!")
-        e.trigger.setAttribute("class", "clip-btn clip-tip")
+        const foo = document.createElement("span")
+        foo.classList.add("md-clipboard__message")
+        // foo.textContent = "Copied to clipboard"
+        foo.setAttribute("aria-label", "Copied to clipboard")
+        e.trigger.appendChild(foo)
+        // e.trigger.classList.add("md-clipboard--tip")
       })
       cBoard.on("error", e => {
         e.clearSelection()
         e.trigger.setAttribute("aria-label", "Copy Failed!")
-        e.trigger.setAttribute("class", "clip-btn clip-tip")
+        // e.trigger.classList.add("md-clipboard--tip")
       })
     }
   }).listen()

@@ -20,85 +20,99 @@
 /// DEALINGS
 ////
 
-$clip-btn-background: #C4C4C4;
-$clip-tip-background: #404040;
+// ----------------------------------------------------------------------------
+// Keyframes
+// ----------------------------------------------------------------------------
+
+// Show snackbar
+@keyframes md-clipboard__snackbar--appear {
+  0% {
+    transform: translateX(0.8rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
 // ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
-.md-typeset {
 
-  // Render muted when hovering over code and
-  // render fully when hovering over the button.
-  .codehilite {
-    &:hover {
-      .clip-btn {
-        transition: opacity 0.3s;
-        opacity: 0.4;
+// Copy to clipboard
+.md-clipboard {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 0.2rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 1;
+  // Hack: put everything on the GPU to omit flickering
+  backface-visibility: hidden;
 
-        &:hover {
-          transition: opacity 0.1s;
-          background-color: $md-color-primary;
-          opacity: 1;
-        }
-      }
-    }
-  }
+  // Icon
+  &::before {
+    @extend %md-icon;
 
-  // Clipboard button object.
-  .clip-btn {
-    @include z-depth(2);
+    transition:
+      color   0.25s,
+      opacity 0.25s;
+    color: $md-color-black--light;
+    content: "content_copy";
+    opacity: 0.25;
 
-    display: inline-block;
-    position: absolute;
-    top: 0.2rem;
-    right: 0.2rem;
-    width: 3.2rem;
-    height: 3.2rem;
-    transition: opacity 0.3s;
-    border-radius: 50%;
-    background-color: $clip-btn-background;
-    color: $md-color-white;
-    cursor: pointer;
-    opacity: 0;
-    overflow: visible;
-
-    .md-icon--clipboard {
-      position: relative;
-      top: 0.1rem;
-      font-size: 1.8rem;
-    }
-  }
-
-  // Tooltips for messages when a copy is successful or fails.
-  // Render it to the left as somtimes it is in a code table which
-  // cuts off the right, or on the edge of the screen with mobile.
-  .clip-tip {
-    &::after {
-      position: absolute;
-      top: 0.3rem;
-      left: 0;
-      padding: 0.6rem 1rem;
-      transform: translateX(-112%) translateY(0);
-      transition: opacity 0.2s;
-      border-radius: 0.2rem;
-      background: $clip-tip-background;
-      color: $md-color-white;
-      font-size: ms(-1);
-      font-weight: 700;
-      white-space: nowrap;
-      content: attr(aria-label);
+    // Show on container hover
+    .codehilite:hover &,
+    .highlight:hover & {
       opacity: 1;
-      visibility: hidden;
+    }
+  }
+
+  // Hovered and active icon
+  &:hover::before,
+  &:active::before {
+    color: $md-color-accent;
+  }
+
+  // Message
+  &__message {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 3.4rem;
+    padding: 0.6rem 1rem;
+    animation:
+      md-clipboard__snackbar--appear
+      0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.2rem;
+    background: $md-color-black--light;
+    color: $md-color-white;
+    font-size: ms(-1);
+    white-space: nowrap;
+    opacity: 1;
+
+    // Inject content from ARIA label
+    &::before {
+      content: attr(aria-label);
     }
 
-    &:hover {
-      &::after {
-        display: block;
-        transform: translateX(-110%) translateY(0);
-        opacity: 0.9;
-        visibility: visible;
-      }
+    // Paint a nice speech bubble
+    &::after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -0.4rem;
+      width: 0;
+      margin-top: -0.4rem;
+      border-width: 0.4rem 0 0.4rem 0.4rem;
+      border-style: solid;
+      border-color: transparent $md-color-black--light;
+      content: "";
     }
   }
 }
