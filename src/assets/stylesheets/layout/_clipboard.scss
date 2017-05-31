@@ -24,8 +24,8 @@
 // Keyframes
 // ----------------------------------------------------------------------------
 
-// Show snackbar
-@keyframes md-clipboard__snackbar--appear {
+// Show message
+@keyframes md-clipboard__message--appear {
   0% {
     transform: translateX(0.8rem);
     opacity: 0;
@@ -86,15 +86,27 @@
     top: 0;
     right: 3.4rem;
     padding: 0.6rem 1rem;
-    animation:
-      md-clipboard__snackbar--appear
-      0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0.8rem);
+    transition:
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity   0.175s;
     border-radius: 0.2rem;
     background: $md-color-black--light;
     color: $md-color-white;
     font-size: ms(-1);
     white-space: nowrap;
-    opacity: 1;
+    opacity: 0;
+    pointer-events: none;
+
+    // Active message
+    &--active {
+      transform: translateX(0);
+      transition:
+        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity   0.175s 0.075s;
+      opacity: 1;
+      pointer-events: initial;
+    }
 
     // Inject content from ARIA label
     &::before {

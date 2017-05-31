@@ -50,7 +50,7 @@ function initialize(config) { // eslint-disable-line func-style
     })
 
     /* Wrap all data tables for better overflow scrolling */
-    const tables = document.querySelectorAll("table:not([class])")              // TODO: this is JSX
+    const tables = document.querySelectorAll("table:not([class])")              // TODO: this is JSX, we should rename the file
     Array.prototype.forEach.call(tables, table => {
       const wrap = (
         <div class="md-typeset__scrollwrap">
@@ -64,6 +64,52 @@ function initialize(config) { // eslint-disable-line func-style
       }
       wrap.children[0].appendChild(table)
     })
+
+    /* Clipboard integration */
+    if (Clipboard.isSupported()) {
+      const blocks = document.querySelectorAll("div > pre, pre > code")
+      Array.prototype.forEach.call(blocks, (block, index) => {
+        const id = `__code_${index}`
+
+        /* Create button with message container */
+        const button = (
+          <button class="md-clipboard" title="Copy to clipboard"
+              data-clipboard-target={`#${id} pre, #${id} code`}>
+            <span class="md-clipboard__message"></span>
+          </button>
+        )
+
+        /* Link to block and insert button */
+        const parent = block.parentNode
+        parent.id = id
+        parent.insertBefore(button, block)
+      })
+
+      /* Initialize Clipboard listener */
+      const copy = new Clipboard(".md-clipboard")
+
+      /* Success handler */
+      let timer = null
+      copy.on("success", action => {
+        const message = action.trigger.querySelector(".md-clipboard__message")
+        if (!(message instanceof HTMLElement))
+          throw new ReferenceError
+
+        /* Clear selection and reset debounce logic */
+        action.clearSelection()
+        if (timer)
+          clearTimeout(timer)
+
+        /* Set message indicating success and show it */
+        message.classList.add("md-clipboard__message--active")
+        message.innerHTML = "Copied to clipboard"
+
+        /* Hide message after two seconds */
+        timer = setTimeout(() => {
+          message.classList.remove("md-clipboard__message--active")
+        }, 2000)
+      })
+    }
 
     /* Force 1px scroll offset to trigger overflow scrolling */
     if (Modernizr.ios) {
@@ -81,50 +127,6 @@ function initialize(config) { // eslint-disable-line func-style
             item.scrollTop = top - 1
           }
         })
-      })
-    }
-
-    /* If Clipboard.js is available, inject "copy to clipboard" overlays
-       and attach Clipboard to copy the code.
-       Handle both div.codehilite>pre and pre>code. */
-    if (typeof Clipboard !== "undefined" &&
-        Clipboard.isSupported()) { // eslint-disable-line no-undef
-      const blocks = document.querySelectorAll(
-        "div.codehilite>pre,pre.codehilite>code")
-      let i = 0
-      Array.prototype.forEach.call(blocks, code => {
-        const parent = code.parentNode
-        const codeId = `hl_code${i}`
-        const btn = document.createElement("button")
-        // const icon = document.createElement("i")
-        parent.id = codeId
-        // icon.setAttribute("class", "md-icon md-icon--clipboard")
-        // btn.appendChild(icon)
-        btn.setAttribute("class", "md-clipboard")
-        btn.setAttribute("data-clipboard-target",
-          `#${codeId} pre, #${codeId} code`)
-        btn.setAttribute("aria-label", "Copy to Clipboard.")
-        // new Material.Event.Listener(btn, "mouseleave", e => {
-        //   e.currentTarget.classList.remove("md-clipboard__snackbar")
-        //   e.currentTarget.setAttribute("aria-label", "Copy to Clipboard.")
-        // }).listen()
-        parent.insertBefore(btn, parent.childNodes[0])
-        i += 1
-      })
-      const cBoard = new Clipboard(".md-clipboard")
-      cBoard.on("success", e => {
-        e.clearSelection()
-        const foo = document.createElement("span")
-        foo.classList.add("md-clipboard__message")
-        // foo.textContent = "Copied to clipboard"
-        foo.setAttribute("aria-label", "Copied to clipboard")
-        e.trigger.appendChild(foo)
-        // e.trigger.classList.add("md-clipboard--tip")
-      })
-      cBoard.on("error", e => {
-        e.clearSelection()
-        e.trigger.setAttribute("aria-label", "Copy Failed!")
-        // e.trigger.classList.add("md-clipboard--tip")
       })
     }
   }).listen()
