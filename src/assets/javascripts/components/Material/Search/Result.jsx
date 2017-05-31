@@ -209,7 +209,7 @@ export default class Result {
 
       /* Assemble highlight regex from query string */
       const match = new RegExp(
-        `\\b(${escape(this.value_.trim()).replace(" ", "|")})`, "img")
+        `(?:^|\\s)(${escape(this.value_.trim()).replace(" ", "|")})`, "img")
       const highlight = string => `<em>${string}</em>`
 
       /* Render results */
