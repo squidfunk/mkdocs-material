@@ -181,7 +181,7 @@ const load = task => {
  */
 gulp.task("assets:images:build:ico", [
   args.clean ? "assets:images:clean" : false
-].filter(t => t),
+].filter(Boolean),
   load("assets/images/build/ico"))
 
 /*
@@ -189,7 +189,7 @@ gulp.task("assets:images:build:ico", [
  */
 gulp.task("assets:images:build:svg", [
   args.clean ? "assets:images:clean" : false
-].filter(t => t),
+].filter(Boolean),
   load("assets/images/build/svg"))
 
 /*
@@ -221,7 +221,7 @@ gulp.task("assets:javascripts:build:application", [
   args.clean ? "assets:javascripts:clean" : false,
   args.lint ? "assets:javascripts:lint" : false,
   args.revision ? "assets:stylesheets:build" : false
-].filter(t => t),
+].filter(Boolean),
   load("assets/javascripts/build/application"))
 
 /*
@@ -235,15 +235,24 @@ gulp.task("assets:javascripts:build:modernizr", [
   args.clean ? "assets:javascripts:clean" : false,
   args.lint ? "assets:javascripts:lint" : false,
   args.revision ? "assets:javascripts:build:application" : false
-].filter(t => t),
+].filter(Boolean),
   load("assets/javascripts/build/modernizr"))
 
 /*
- * Build application logic and Modernizr
+ * Build search language support files
+ */
+gulp.task("assets:javascripts:build:languages", [
+  args.clean ? "assets:javascripts:clean" : false
+].filter(Boolean),
+  load("assets/javascripts/build/languages"))
+
+/*
+ * Build JavaScript
  */
 gulp.task("assets:javascripts:build", [
   "assets:javascripts:build:application",
-  "assets:javascripts:build:modernizr"
+  "assets:javascripts:build:modernizr",
+  "assets:javascripts:build:languages"
 ])
 
 /*
@@ -274,7 +283,7 @@ gulp.task("assets:javascripts:lint",
 gulp.task("assets:stylesheets:build", [
   args.clean ? "assets:stylesheets:clean" : false,
   args.lint ? "assets:stylesheets:lint" : false
-].filter(t => t),
+].filter(Boolean),
   load("assets/stylesheets/build"))
 
 /*
@@ -324,7 +333,7 @@ gulp.task("views:build", [
   args.revision ? "assets:images:build" : false,
   args.revision ? "assets:stylesheets:build" : false,
   args.revision ? "assets:javascripts:build" : false
-].filter(t => t),
+].filter(Boolean),
   load("views/build"))
 
 /*

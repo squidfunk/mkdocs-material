@@ -21,7 +21,7 @@
  */
 
 import escape from "escape-string-regexp"
-import lunr from "lunr"
+import lunr from "expose-loader?lunr!lunr"
 
 /* ----------------------------------------------------------------------------
  * Class
@@ -39,6 +39,7 @@ export default class Result {
    * @property {Object} docs_ - Indexed documents
    * @property {HTMLElement} meta_ - Search meta information
    * @property {HTMLElement} list_ - Search result list
+   * @property {Array<string>} lang_ - Search languages
    * @property {Object} message_ - Search result messages
    * @property {Object} index_ - Search index
    * @property {string} value_ - Last input value
@@ -69,6 +70,11 @@ export default class Result {
       one: this.meta_.dataset.mdLangResultOne,
       other: this.meta_.dataset.mdLangResultOther
     }
+
+    /* Load search languages */
+    this.lang_ = this.el_.dataset.mdLangSearch.split(",")
+      .filter(Boolean)
+      .map(lang => lang.trim())
   }
 
   /**
@@ -134,8 +140,20 @@ export default class Result {
         }, new Map)
 
         /* eslint-disable no-invalid-this, lines-around-comment */
-        const docs = this.docs_
+        const docs = this.docs_,
+              lang = this.lang_
+
+        /* Create index */
         this.index_ = lunr(function() {
+
+          /* Set up stemmers for search languages */
+          if (lang.length === 1) {
+            this.use(lunr[lang[0]])
+          } else if (lang.length > 1) {
+            this.use(lunr.multiLanguage(...lang))
+          }
+
+          /* Index fields */
           this.field("title", { boost: 10 })
           this.field("text")
           this.ref("location")
