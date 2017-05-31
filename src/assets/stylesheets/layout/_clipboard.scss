@@ -67,8 +67,8 @@
     opacity: 0.25;
 
     // Show on container hover
-    .codehilite:hover &,
-    .highlight:hover & {
+    pre:hover &,
+    .codehilite:hover & {
       opacity: 1;
     }
   }

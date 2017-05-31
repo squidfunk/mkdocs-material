@@ -103,11 +103,6 @@ button[data-md-color-accent] {
       background-color: $color;
     }
 
-    // Copy to clipboard button overlay.
-    .codehilite:hover .clip-btn:hover {
-      background-color: $color;
-    }
-
     // Current or hovered link
     .md-nav__link:active,
     .md-nav__item--active > .md-nav__link {
@@ -200,9 +195,15 @@ button[data-md-color-accent] {
       }
 
       // Hovered scrollbar thumb
-      pre::-webkit-scrollbar-thumb:hover,
-      .codehilite::-webkit-scrollbar-thumb:hover {
+      pre code::-webkit-scrollbar-thumb:hover,
+      .codehilite pre::-webkit-scrollbar-thumb:hover {
         background-color: $color;
+      }
+
+      // Copy to clipboard active icon
+      .md-clipboard:hover::before,
+      .md-clipboard:active::before {
+        color: $color;
       }
 
       // Active or targeted back reference
