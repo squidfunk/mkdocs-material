@@ -43,7 +43,6 @@ export default class Abstract {
     const ref = (typeof el === "string")
       ? document.querySelector(el)
       : el
-
     if (!(ref instanceof HTMLAnchorElement))
       throw new ReferenceError
     this.el_ = ref

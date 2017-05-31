@@ -360,6 +360,11 @@ extra:
 A new entry at the bottom of the table of contents is generated that is linking
 to the comments section. The necessary JavaScript is automatically included.
 
+!!! warning "Requirements"
+
+    `site_url` value must be set in `mkdocs.yml` for the Discus integration to
+    load properly.
+
   [17]: https://disqus.com
 
 ### Localization

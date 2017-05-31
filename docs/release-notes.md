@@ -12,10 +12,16 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.6.3
+# Version 1.6.4
 ```
 
 ## Changelog
+
+### 1.6.4 <small> _ May 24, 2017</small>
+
+* Fixed [#337][337]: JavaScript error for GitHub organization URLs
+
+  [337]: https://github.com/squidfunk/mkdocs-material/issues/337
 
 ### 1.6.3 <small> _ May 16, 2017</small>
 
