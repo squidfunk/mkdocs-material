@@ -214,43 +214,49 @@ kbd {
 
   // Unformatted code blocks
   pre {
+    position: relative;
     margin: 1em 0;
-    padding: 1rem 1.2rem;
     border-radius: 0.2rem;
     line-height: 1.4;
-    overflow: auto;
     -webkit-overflow-scrolling: touch;
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
       margin: 1em -1.6rem;
-      padding: 1rem 1.6rem;
       border-radius: 0;
     }
 
-    // Override native scrollbar styles
-    &::-webkit-scrollbar {
-      width: 0.4rem;
-      height: 0.4rem;
-    }
-
-    // Style scrollbar thumb
-    &::-webkit-scrollbar-thumb {
-      background-color: $md-color-black--lighter;
-
-      // Hovered scrollbar thumb
-      &:hover {
-        background-color: $md-color-accent;
-      }
-    }
-
-    // Reset, if code is wrapped inside pre tag
+    // Actual container with code, overflowing
     > code {
+      display: block;
       margin: 0;
+      padding: 1.05rem 1.2rem;
       background-color: transparent;
       font-size: inherit;
       box-shadow: none;
       box-decoration-break: none;
+      overflow: auto;
+
+      // [mobile -]: Increase padding to match text
+      @include break-to-device(mobile) {
+        padding: 1.05rem 1.6rem;
+      }
+
+      // Override native scrollbar styles
+      &::-webkit-scrollbar {
+        width: 0.4rem;
+        height: 0.4rem;
+      }
+
+      // Style scrollbar thumb
+      &::-webkit-scrollbar-thumb {
+        background-color: $md-color-black--lighter;
+
+        // Hovered scrollbar thumb
+        &:hover {
+          background-color: $md-color-accent;
+        }
+      }
     }
   }
 
