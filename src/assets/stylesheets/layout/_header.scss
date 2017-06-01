@@ -36,7 +36,7 @@
   transition: background-color 0.25s;
   background-color: $md-color-primary;
   color: $md-color-white;
-  z-index: 1;
+  z-index: 2;
   // Hack: putting the header on the GPU avoids unnecessary repaints
   backface-visibility: hidden;
 

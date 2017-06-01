@@ -20,7 +20,9 @@
  * IN THE SOFTWARE.
  */
 
+import Clipboard from "clipboard"
 import FastClick from "fastclick"
+
 import Material from "./components/Material"
 
 /* ----------------------------------------------------------------------------
@@ -48,7 +50,7 @@ function initialize(config) { // eslint-disable-line func-style
     })
 
     /* Wrap all data tables for better overflow scrolling */
-    const tables = document.querySelectorAll("table:not([class])")
+    const tables = document.querySelectorAll("table:not([class])")              // TODO: this is JSX, we should rename the file
     Array.prototype.forEach.call(tables, table => {
       const wrap = (
         <div class="md-typeset__scrollwrap">
@@ -62,6 +64,52 @@ function initialize(config) { // eslint-disable-line func-style
       }
       wrap.children[0].appendChild(table)
     })
+
+    /* Clipboard integration */
+    if (Clipboard.isSupported()) {
+      const blocks = document.querySelectorAll("div > pre, pre > code")
+      Array.prototype.forEach.call(blocks, (block, index) => {
+        const id = `__code_${index}`
+
+        /* Create button with message container */
+        const button = (
+          <button class="md-clipboard" title="Copy to clipboard"
+              data-clipboard-target={`#${id} pre, #${id} code`}>
+            <span class="md-clipboard__message"></span>
+          </button>
+        )
+
+        /* Link to block and insert button */
+        const parent = block.parentNode
+        parent.id = id
+        parent.insertBefore(button, block)
+      })
+
+      /* Initialize Clipboard listener */
+      const copy = new Clipboard(".md-clipboard")
+
+      /* Success handler */
+      let timer = null
+      copy.on("success", action => {
+        const message = action.trigger.querySelector(".md-clipboard__message")
+        if (!(message instanceof HTMLElement))
+          throw new ReferenceError
+
+        /* Clear selection and reset debounce logic */
+        action.clearSelection()
+        if (timer)
+          clearTimeout(timer)
+
+        /* Set message indicating success and show it */
+        message.classList.add("md-clipboard__message--active")
+        message.innerHTML = "Copied to clipboard"
+
+        /* Hide message after two seconds */
+        timer = setTimeout(() => {
+          message.classList.remove("md-clipboard__message--active")
+        }, 2000)
+      })
+    }
 
     /* Force 1px scroll offset to trigger overflow scrolling */
     if (Modernizr.ios) {
