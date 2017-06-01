@@ -12,10 +12,16 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.6.4
+# Version 1.7.0
 ```
 
 ## Changelog
+
+### 1.7.0 <small> _ June 1, 2017</small>
+
+* Added "copy to clipboard" buttons to code blocks
+* Added support for multilingual site search
+* Fixed search term highlighting for non-latin languages
 
 ### 1.6.4 <small> _ May 24, 2017</small>
 
