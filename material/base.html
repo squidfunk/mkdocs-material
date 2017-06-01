@@ -48,7 +48,7 @@
         {% set text = config.extra.get("font", {}).text | default("Roboto") %}
         {% set code = config.extra.get("font", {}).code
                     | default("Roboto Mono") %}
-        {% set font = text + ':300,400,400i,700|' + code | replace(' ', '+') %}
+        {% set font = text + ":300,400,400i,700|" + code | replace(" ", "+") %}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">
         <style>body,input{font-family:"{{ text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ code }}","Courier New",Courier,monospace}</style>
       {% endif %}
@@ -124,7 +124,7 @@
                 {{ page.content }}
                 {% block source %}
                   {% if page.meta.source %}
-                    <h2 id="__source">{{ lang.t('meta.source') }}</h2>
+                    <h2 id="__source">{{ lang.t("meta.source") }}</h2>
                     {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
                       <a href="{{ [config.repo_url, path, file] | join('/') }}" title="{{ file }}" class="md-source-file">
@@ -136,7 +136,7 @@
               {% endblock %}
               {% block disqus %}
                 {% if config.extra.disqus and not page.is_homepage %}
-                  <h2 id="__comments">{{ lang.t('meta.comments') }}</h2>
+                  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
                   {% include "partials/disqus.html" %}
                 {% endif %}
               {% endblock %}
@@ -150,7 +150,7 @@
     </div>
     {% block scripts %}
       <script src="{{ base_url }}/assets/javascripts/application-e3caa82af6.js"></script>
-      {% set languages = lang.t('search.languages').split(",") %}
+      {% set languages = lang.t("search.languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}
         <script src="{{ path }}/lunr.stemmer.support.js"></script>
