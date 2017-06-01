@@ -308,8 +308,8 @@ extra:
   logo: 'images/logo.svg'
 ```
 
-MkDocs uses the [Material Icons][16] font, so it is possible to change the
-default "hat" logo by simply specifying the name of one of the Material icons:
+Material uses the [Material Icons][16] icon font so it is possible to change
+the default "hat" logo by specifying the name of one of the Material icons:
 
 ``` yaml
 extra:
