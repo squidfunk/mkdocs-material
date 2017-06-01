@@ -276,6 +276,23 @@
     <!-- Block: theme-related JavaScript -->
     {% block scripts %}
       <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+
+      <!-- Load additional languages for search -->
+      {% set languages = lang.t('search.languages').split(",") %}
+      {% if languages | length and languages[0] != "" %}
+        {% set path = base_url + "/assets/javascripts/lunr" %}
+        <script src="{{ path }}/lunr.stemmer.support.js"></script>
+        {% for language in languages | map("trim") %}
+          {% if language != "en" %}
+            <script src="{{ path }}/lunr.{{ language }}.js"></script>
+          {% endif %}
+        {% endfor %}
+        {% if languages | length > 1 %}
+          <script src="{{ path }}/lunr.multi.js"></script>
+        {% endif %}
+      {% endif %}
+
+      <!-- Initialize application -->
       <script>
         app.initialize({ url: { base: "{{ base_url }}" } });
       </script>
