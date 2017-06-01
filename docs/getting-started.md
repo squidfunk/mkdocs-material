@@ -369,6 +369,8 @@ to the comments section. The necessary JavaScript is automatically included.
 
 ### Localization
 
+#### Translations
+
 Material for MkDocs supports internationalization (i18n). In order to translate
 the labels (e.g. *Previous* and *Next* in the footer), you can override the
 file `partials/language.html` and provide your own translations inside the
@@ -382,6 +384,7 @@ macro `t`:
   "footer.next": "Next",
   "meta.comments": "Comments",
   "meta.source": "Source",
+  "search.languages": "",
   "search.placeholder": "Search",
   "search.result.placeholder": "Type to start searching",
   "search.result.none": "No matching documents",
@@ -396,8 +399,41 @@ Just copy the file from the original theme and make your adjustments. See the
 section on [overriding partials][18] and the general guide on
 [theme extension][19] in the customization guide.
 
+#### Site search
+
+Site search is implemented using [lunr.js][20], which includes stemmers for the
+English language by default. The community package [lunr-languages][21] adds
+stemmers for other languages, which is also integrated with this theme. Support
+for other languages and even multilingual search can be activated by setting
+the key `search.languages` to a comma-separated list of supported 2-letter
+language codes, e.g.:
+
+``` jinja
+{% macro t(key) %}{{ {
+  ...
+  "search.placeholder": "en, de, ru",
+  ...
+}[key] }}{% endmacro %}
+```
+
+This will automatically load the stemmers for the specified languages and
+set them up with site search, nothing else to be done.
+
+At the time of writing, the following languages are supported: English `en`,
+French `fr`, Spanish `es`, Italian `it`, Japanese `jp`, Dutch `du`, Danish `da`,
+Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`, Russian `ru`,
+Norwegian `no`, Swedish `sv` and Turkish `tr`.
+
+!!! warning "Only specify the languages you really need"
+
+    Be aware that including suppport for other languages increases the general
+    JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
+    language.
+
   [18]: customization.md#overriding-partials
   [19]: customization.md#extending-the-theme
+  [20]: https://lunrjs.com
+  [21]: https://github.com/MihaiValentin/lunr-languages
 
 ### Tabs
 
@@ -415,13 +451,13 @@ extra:
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][20] for more information on advanced customization.
+[this article][22] for more information on advanced customization.
 
-  [20]: customization.md
+  [22]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][21]. The following extensions
+MkDocs supports several [Markdown extensions][23]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -435,20 +471,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][22]
-* [Codehilite][23]
-* [Footnotes][24]
-* [Metadata][25]
-* [Permalinks][26]
-* [PyMdown Extensions][27]
+* [Admonition][24]
+* [Codehilite][25]
+* [Footnotes][26]
+* [Metadata][27]
+* [Permalinks][28]
+* [PyMdown Extensions][28]
 
-  [21]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [22]: extensions/admonition.md
-  [23]: extensions/codehilite.md
-  [24]: extensions/footnotes.md
-  [25]: extensions/metadata.md
-  [26]: extensions/permalinks.md
-  [27]: extensions/pymdown.md
+  [23]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [24]: extensions/admonition.md
+  [25]: extensions/codehilite.md
+  [26]: extensions/footnotes.md
+  [27]: extensions/metadata.md
+  [28]: extensions/permalinks.md
+  [29]: extensions/pymdown.md
 
 ## Full example
 
