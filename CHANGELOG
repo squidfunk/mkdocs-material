@@ -1,3 +1,8 @@
+mkdocs-material-1.7.1 (2017-06-01)
+
+  * Fixed wrong z-index order of header, overlay and drawer
+  * Fixed wrong offset of targeted footnote back references
+
 mkdocs-material-1.7.0 (2017-06-01)
 
   * Added "copy to clipboard" buttons to code blocks
