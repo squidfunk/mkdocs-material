@@ -142,7 +142,7 @@ hr {
     opacity 0.25s;
   background-color: $md-color-black--light;
   opacity: 0;
-  z-index: 2;
+  z-index: 3;
 
   // [tablet -]: Trigger overlay
   @include break-to-device(tablet) {

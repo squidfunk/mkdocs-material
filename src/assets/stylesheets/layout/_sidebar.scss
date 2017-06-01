@@ -65,7 +65,7 @@ $md-toggle__drawer--checked:
         transform  0.25s cubic-bezier(0.4, 0, 0.2, 1),
         box-shadow 0.25s;
       background-color: $md-color-white;
-      z-index: 2;
+      z-index: 3;
 
       // Just hide drawer, if browser doesn't support 3D transforms
       .no-csstransforms3d & {
