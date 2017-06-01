@@ -411,7 +411,7 @@ language codes, e.g.:
 ``` jinja
 {% macro t(key) %}{{ {
   ...
-  "search.placeholder": "en, de, ru",
+  "search.languages": "en, de, ru",
   ...
 }[key] }}{% endmacro %}
 ```
