@@ -308,11 +308,21 @@ extra:
   logo: 'images/logo.svg'
 ```
 
+MkDocs uses the [Material Icons][16] font, so it is possible to change the
+default "hat" logo by simply specifying the name of one of the Material icons:
+
+``` yaml
+extra:
+  logo_icon: 'paws'
+```
+
+  [16]: https://material.io/icons/
+
 ### Adding social links
 
 If you want to link your social accounts, the Material theme provides an easy
 way for doing this in the footer of the documentation using the automatically
-included [FontAwesome][16] webfont. The syntax is simple – the `type` must
+included [FontAwesome][17] webfont. The syntax is simple – the `type` must
 denote the name of the social service, e.g. `github`, `twitter` or `linkedin`
 and the `link` must contain the URL you want to link to:
 
@@ -331,7 +341,7 @@ The links are generated in order and the `type` of the links must match the
 name of the FontAwesome glyph. The `fa` is automatically added, so `github`
 will result in `fa fa-github`.
 
-  [16]: http://fontawesome.io/icons/
+  [17]: http://fontawesome.io/icons/
 
 ### Google Analytics integration
 
@@ -348,7 +358,7 @@ google_analytics:
 
 ### Disqus integation
 
-Material for MkDocs is integrated with [Disqus][17], so if you want to add a
+Material for MkDocs is integrated with [Disqus][18], so if you want to add a
 comments section to your documentation set the shortname of your Disqus project
 in your `mkdocs.yml`:
 
@@ -363,7 +373,7 @@ to the comments section. The necessary JavaScript is automatically included.
 !!! warning
     `site_url` value must be set in `mkdocs.yml` for the Discus integration to load properly.
 
-  [17]: https://disqus.com
+  [18]: https://disqus.com
 
 ### Localization
 
@@ -391,11 +401,11 @@ macro `t`:
 ```
 
 Just copy the file from the original theme and make your adjustments. See the
-section on [overriding partials][18] and the general guide on
-[theme extension][19] in the customization guide.
+section on [overriding partials][19] and the general guide on
+[theme extension][20] in the customization guide.
 
-  [18]: customization.md#overriding-partials
-  [19]: customization.md#extending-the-theme
+  [19]: customization.md#overriding-partials
+  [20]: customization.md#extending-the-theme
 
 ### Tabs
 
@@ -413,13 +423,13 @@ extra:
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][20] for more information on advanced customization.
+[this article][21] for more information on advanced customization.
 
-  [20]: customization.md
+  [21]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][21]. The following extensions
+MkDocs supports several [Markdown extensions][22]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -433,20 +443,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][22]
-* [Codehilite][23]
-* [Footnotes][24]
-* [Metadata][25]
-* [Permalinks][26]
-* [PyMdown Extensions][27]
+* [Admonition][23]
+* [Codehilite][24]
+* [Footnotes][25]
+* [Metadata][26]
+* [Permalinks][27]
+* [PyMdown Extensions][28]
 
-  [21]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [22]: extensions/admonition.md
-  [23]: extensions/codehilite.md
-  [24]: extensions/footnotes.md
-  [25]: extensions/metadata.md
-  [26]: extensions/permalinks.md
-  [27]: extensions/pymdown.md
+  [22]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [23]: extensions/admonition.md
+  [24]: extensions/codehilite.md
+  [25]: extensions/footnotes.md
+  [26]: extensions/metadata.md
+  [27]: extensions/permalinks.md
+  [28]: extensions/pymdown.md
 
 ## Full example
 
@@ -471,7 +481,8 @@ theme: 'material'
 
 # Options
 extra:
-  logo: 'images/logo.svg'
+  logo: 'images/logo.svg' # takes precedence over `logo_icon`
+  logo_icon: 'paws'
   palette:
     primary: 'indigo'
     accent: 'indigo'
