@@ -12,10 +12,15 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.7.1
+# Version 1.7.2
 ```
 
 ## Changelog
+
+### 1.7.2 <small> _ June 6, 2017</small>
+
+* Fixed offset of search box when `repo_url` is not set
+* Fixed non-disappearing tooltip
 
 ### 1.7.1 <small> _ June 1, 2017</small>
 
