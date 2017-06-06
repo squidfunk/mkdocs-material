@@ -42,7 +42,6 @@ $md-toggle__search--checked:
 
   // [tablet landscape +]: Header-embedded search
   @include break-from-device(tablet landscape) {
-    margin-right: 2.8rem;
     padding: 0.4rem;
   }
 
