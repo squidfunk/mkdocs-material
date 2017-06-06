@@ -89,7 +89,6 @@ function initialize(config) { // eslint-disable-line func-style
       const copy = new Clipboard(".md-clipboard")
 
       /* Success handler */
-      let timer = null
       copy.on("success", action => {
         const message = action.trigger.querySelector(".md-clipboard__message")
         if (!(message instanceof HTMLElement))
@@ -97,17 +96,18 @@ function initialize(config) { // eslint-disable-line func-style
 
         /* Clear selection and reset debounce logic */
         action.clearSelection()
-        if (timer)
-          clearTimeout(timer)
+        if (message.dataset.mdTimer)
+          clearTimeout(parseInt(message.dataset.mdTimer, 10))
 
         /* Set message indicating success and show it */
         message.classList.add("md-clipboard__message--active")
         message.innerHTML = "Copied to clipboard"
 
         /* Hide message after two seconds */
-        timer = setTimeout(() => {
+        message.dataset.mdTimer = setTimeout(() => {
           message.classList.remove("md-clipboard__message--active")
-        }, 2000)
+          message.dataset.mdTimer = ""
+        }, 2000).toString()
       })
     }
 
