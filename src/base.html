@@ -284,6 +284,9 @@
         <script src="{{ path }}/lunr.stemmer.support.js"></script>
         {% for language in languages | map("trim") %}
           {% if language != "en" %}
+            {% if language == "jp" %}
+              <script src="{{ path }}/tinyseg.js"></script>
+            {% endif %}
             <script src="{{ path }}/lunr.{{ language }}.js"></script>
           {% endif %}
         {% endfor %}
