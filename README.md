@@ -19,6 +19,8 @@
 
 A Material Design theme for [MkDocs](http://www.mkdocs.org).
 
+Testing Atom Github integration
+
 [![Material for MkDocs](docs/images/material.png)](http://squidfunk.github.io/mkdocs-material/)
 
 ## Quick start
