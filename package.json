@@ -84,7 +84,7 @@
     "lunr-languages": "^1.0.0",
     "material-design-color": "2.3.2",
     "material-shadows": "3.0.1",
-    "modularscale-sass": "3.0.2",
+    "modularscale-sass": "3.0.3",
     "node-notifier": "^5.0.0",
     "postcss-pseudo-classes": "^0.2.0",
     "stylelint": "^7.8.0",
