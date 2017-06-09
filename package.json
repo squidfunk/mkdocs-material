@@ -51,7 +51,7 @@
     "core-js": "^2.4.1",
     "css-mqpacker": "^6.0.0",
     "custom-event-polyfill": "^0.3.0",
-    "del": "^2.2.2",
+    "del": "^3.0.0",
     "escape-string-regexp": "^1.0.5",
     "eslint": "^3.16.0",
     "expose-loader": "^0.7.3",
