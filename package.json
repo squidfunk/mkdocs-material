@@ -38,7 +38,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.25.0",
-    "babel-eslint": "^7.1.1",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",
@@ -53,7 +53,7 @@
     "custom-event-polyfill": "^0.3.0",
     "del": "^3.0.0",
     "escape-string-regexp": "^1.0.5",
-    "eslint": "^3.16.0",
+    "eslint": "^4.0.0",
     "expose-loader": "^0.7.3",
     "fastclick": "^1.0.6",
     "flow-bin": "^0.48.0",

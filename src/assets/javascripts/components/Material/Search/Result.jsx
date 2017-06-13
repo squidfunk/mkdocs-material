@@ -220,7 +220,7 @@ export default class Result {
         this.list_.appendChild(
           <li class="md-search-result__item">
             <a href={doc.location} title={doc.title}
-                class="md-search-result__link">
+              class="md-search-result__link">
               <article class="md-search-result__article
                     md-search-result__article--document">
                 <h1 class="md-search-result__title">
@@ -236,7 +236,7 @@ export default class Result {
               const section = this.docs_.get(item.ref)
               return (
                 <a href={section.location} title={section.title}
-                    class="md-search-result__link" data-md-rel="anchor">
+                  class="md-search-result__link" data-md-rel="anchor">
                   <article class="md-search-result__article">
                     <h1 class="md-search-result__title">
                       {{ __html: section.title.replace(match, highlight) }}
@@ -244,7 +244,7 @@ export default class Result {
                     {section.text.length ?
                       <p class="md-search-result__teaser">
                         {{ __html: this.truncate_(
-                            section.text.replace(match, highlight), 400)
+                          section.text.replace(match, highlight), 400)
                         }}
                       </p> : {}}
                   </article>
