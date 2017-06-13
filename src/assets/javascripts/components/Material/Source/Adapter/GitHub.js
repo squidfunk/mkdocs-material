@@ -42,7 +42,7 @@ export default class GitHub extends Abstract {
 
     /* Extract user (and repository name) from URL, as we have to query for all
        repositories, to omit 404 errors for private repositories */
-    const matches = /^.+github\.com\/([^\/]+)\/?([^\/]+)?.*$/
+    const matches = /^.+github\.com\/([^/]+)\/?([^/]+)?.*$/
       .exec(this.base_)
     if (matches && matches.length === 3) {
       const [, user, name] = matches
