@@ -12,10 +12,14 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.7.2
+# Version 1.7.3
 ```
 
 ## Changelog
+
+### 1.7.3 <small> _ June 7, 2017</small>
+
+* Fixed error when setting language to Japanese for site search
 
 ### 1.7.2 <small> _ June 6, 2017</small>
 
