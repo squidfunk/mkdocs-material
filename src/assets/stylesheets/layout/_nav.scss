@@ -141,8 +141,7 @@
     }
 
     // Active link
-    &:active,
-    .md-nav__item--active > & {
+    &:active {
       color: $md-color-primary;
     }
 
