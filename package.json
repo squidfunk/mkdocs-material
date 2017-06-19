@@ -93,7 +93,7 @@
     "stylelint-scss": "^1.4.4",
     "through2": "^2.0.3",
     "vinyl-paths": "^2.1.0",
-    "webpack": "^2.6.1",
+    "webpack": "^3.0.0",
     "webpack-stream": "^3.2.0",
     "whatwg-fetch": "^2.0.3",
     "yargs": "^8.0.2"
