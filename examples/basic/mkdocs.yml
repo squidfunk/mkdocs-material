@@ -21,10 +21,5 @@
 # Project information
 site_name: Example
 
-# Repository
-repo_name: squidfunk/mkdocs-material
-repo_url: https://github.com/squidfunk/mkdocs-material
-
-# Theme and overrides, i.e. language partial
+# Theme
 theme: material
-theme_dir: theme
