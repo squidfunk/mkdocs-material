@@ -20,7 +20,7 @@ pip show mkdocs-material | grep -E ^Version
 ### 1.7.4 <small> _ June 21, 2017</small>
 
 * Fixed functional link colors in table of contents for active palette
-* Fixed [#368][368] compatibility issues with IE11
+* Fixed [#368][368]: Compatibility issues with IE11
 
   [368]: https://github.com/squidfunk/mkdocs-material/issues/368
 
