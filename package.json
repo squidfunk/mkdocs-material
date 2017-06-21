@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "A Material Design theme for MkDocs",
   "keywords": [
     "mkdocs",
@@ -29,9 +29,6 @@
     "help": "scripts/help",
     "lint": "scripts/lint",
     "start": "scripts/start",
-    "test:visual:run": "scripts/test/visual/run",
-    "test:visual:update": "scripts/test/visual/update",
-    "test:visual:session": "scripts/test/visual/session",
     "travis": "scripts/travis"
   },
   "dependencies": {},
