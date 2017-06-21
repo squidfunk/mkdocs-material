@@ -6,7 +6,7 @@
 
     The official [Docker image][1] for Material comes with all dependencies
     pre-installed and ready-to-use with the latest version published on PyPI,
-    packaged in a very small image (28MB compressed).
+    packaged in a very small image (23MB compressed).
 
   [1]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
@@ -34,17 +34,7 @@ pip install mkdocs && mkdocs --version
 
     Material requires MkDocs >= 0.16.
 
-Furthermore, it is highly recommended to install [Pygments][3] and the
-[PyMdown Extensions][4] to get the most out of the Material theme:
-
-```sh
-pip install pygments
-pip install pymdown-extensions
-```
-
   [2]: http://www.mkdocs.org
-  [3]: http://pygments.org
-  [4]: http://facelessuser.github.io/pymdown-extensions/
 
 ### Installing Material
 
@@ -58,19 +48,18 @@ pip install mkdocs-material
 
 #### using choco
 
-If you're on Windows you can use [Chocolatey][5] to install [Material][6]:
+If you're on Windows you can use [Chocolatey][3] to install [Material][4]:
 
 ``` dos
 choco install mkdocs-material
 ```
 
-This will also install all required dependencies like [Python][7] and
-[MkDocs][8].
+This will install all required dependencies like [Python][5] and [MkDocs][6].
 
-  [5]: https://chocolatey.org
-  [6]: https://chocolatey.org/packages/mkdocs-material
-  [7]: https://chocolatey.org/packages/python
-  [8]: https://chocolatey.org/packages/mkdocs
+  [3]: https://chocolatey.org
+  [4]: https://chocolatey.org/packages/mkdocs-material
+  [5]: https://chocolatey.org/packages/python
+  [6]: https://chocolatey.org/packages/mkdocs
 
 #### cloning from GitHub
 
@@ -81,9 +70,12 @@ repository into a subfolder of your project's root directory:
 git clone https://github.com/squidfunk/mkdocs-material.git
 ```
 
-This is especially useful if you want to extend the theme and override some
-parts of the theme. The theme will reside in the folder
+This is especially useful if you want to [extend the theme][7] and
+[override some parts][8] of the theme. The theme will reside in the folder
 `mkdocs-material/material`.
+
+  [7]: customization.md#extending-the-theme
+  [8]: customization.md#overriding-partials
 
 ### Troubleshooting
 
@@ -110,8 +102,8 @@ parts of the theme. The theme will reside in the folder
 
 ## Usage
 
-In order to enable the Material theme just add one of the following lines to
-your `mkdocs.yml`. If you installed Material using pip:
+In order to enable the theme just add one of the following lines to your
+project's `mkdocs.yml`. If you installed Material using pip:
 
 ``` yaml
 theme: 'material'
@@ -130,9 +122,9 @@ The development server can be started with the following command:
 mkdocs serve
 ```
 
-Now you can point your browser to [localhost:8000][9] and the Material theme
-should be visible. From here on, you can start writing your documentation, or
-read on and customize the theme through some options.
+Now you can point your browser to [http://localhost:8000][9] and the Material
+theme should be visible. From here on, you can start writing your documentation,
+or read on and customize the theme through some options.
 
   [9]: http://localhost:8000
 
@@ -143,10 +135,10 @@ project's `mkdocs.yml`. See the following sections for all available options.
 
 ### Changing the color palette
 
-Material defines a default hue for every primary and accent color on Google's
-Material Design [color palette][10]. This makes it very easy to change the
+A default is hue is defined for every primary and accent color on Google's
+Material Design [color palette][10], which makes it very easy to change the
 overall look of the theme. Just set the primary and accent colors using the
-following variables in your `mkdocs.yml`:
+following variables:
 
 ``` yaml
 extra:
@@ -162,9 +154,9 @@ Design color palette. Valid values are: `red`, `pink`, `purple`, `deep purple`,
 The last three colors can only be used as a primary color.
 
 If the color is set via this configuration, an additional CSS file that
-defines the color palette is included. If you want to keep things lean, clone
-the repository and recompile the theme with your custom colors set. See the
-guide on [customization][11] for more information.
+defines the color palette is automatically included. If you want to keep things
+lean, clone the repository and recompile the theme with your custom colors set.
+See the guide on [customization][11] for more information.
 
   [10]: http://www.materialui.co/colors
   [11]: customization.md
@@ -234,10 +226,10 @@ Click on a tile to change the accent color of the theme:
 
 ### Changing the font family
 
-Material uses the [Roboto font family][12] by default, specifically the regular
-sans-serif type for text and the `monospaced` type for code. Both fonts are
-loaded from [Google Fonts][13] and can easily be changed to other fonts, like
-for example the [Ubuntu font family][14]:
+By default the [Roboto font family][12] is included with the theme, specifically
+the regular sans-serif type for text and the `monospaced` type for code. Both
+fonts are loaded from [Google Fonts][13] and can be changed to other fonts,
+like for example the [Ubuntu font family][14]:
 
 ``` yaml
 extra:
@@ -246,9 +238,9 @@ extra:
     code: 'Ubuntu Mono'
 ```
 
-The text font will be loaded in font-weights 400 and **700**, the `monospaced`
-font in regular weight. If you want to load fonts from other destinations or
-don't want to use the Google Fonts loading magic, just set `font` to `false`:
+The text font will be loaded in weights 400 and **700**, the `monospaced` font
+in regular weight. If you want to load fonts from other destinations or don't
+want to use the Google Fonts loading magic, just set `font` to `false`:
 
 ``` yaml
 extra:
@@ -269,8 +261,8 @@ repo_name: 'my-github-handle/my-project'
 repo_url: 'https://github.com/my-github-handle/my-project'
 ```
 
-Material will render the name of the repository next to the search bar on
-big screens and as part of the main navigation drawer on smaller screen sizes.
+The name of the repository will be rendered next to the search bar on big
+screens and as part of the main navigation drawer on smaller screen sizes.
 Furthermore, if `repo_url` points to a GitHub, BitBucket or GitLab repository,
 the respective service logo will be shown next to the name of the repository.
 Additionally, for GitHub, the number of stars and forks is shown.
@@ -288,8 +280,8 @@ Additionally, for GitHub, the number of stars and forks is shown.
 
 ### Adding a favicon
 
-Adding a favicon to your site is very easy. Simply set the following variable
-via your project's `mkdocs.yml`:
+A favicon can be added by setting the `site_favicon` variable to an `.ico` or
+image file:
 
 ``` yaml
 site_favicon: 'images/favicon.ico'
@@ -297,11 +289,10 @@ site_favicon: 'images/favicon.ico'
 
 ### Adding a logo
 
-Material makes it easy to add your logo. Your logo should have rectangular
-shape with a minimum resolution of 128x128, leave some room towards the edges
-and be composed of high contrast areas on a transparent ground, as it will be
-placed on the colored header bar and drawer. Simply create the folder
-`docs/images`, add your logo and embed it with:
+Your logo should have rectangular shape with a minimum resolution of 128x128,
+leave some room towards the edges and be composed of high contrast areas on a
+transparent ground, as it will be placed on the colored header bar and drawer.
+Simply create the folder `docs/images`, add your logo and embed it with:
 
 ``` yaml
 extra:
@@ -310,11 +301,10 @@ extra:
 
 ### Adding social links
 
-If you want to link your social accounts, the Material theme provides an easy
-way for doing this in the footer of the documentation using the automatically
-included [FontAwesome][16] webfont. The syntax is simple – the `type` must
-denote the name of the social service, e.g. `github`, `twitter` or `linkedin`
-and the `link` must contain the URL you want to link to:
+Social accounts can be linked in the footer of the documentation using the
+automatically included [FontAwesome][16] webfont. The `type` must denote the
+name of the social service, e.g. `github`, `twitter` or `linkedin` and the
+`link` must contain the URL you want to link to:
 
 ``` yaml
 extra:
@@ -397,13 +387,18 @@ macro `t`:
 
 Just copy the file from the original theme and make your adjustments. See the
 section on [overriding partials][18] and the general guide on
-[theme extension][19] in the customization guide.
+[theme extension][19] in the customization guide. Furthermore, see the
+[example configuration][20] for a head start.
+
+  [18]: customization.md#overriding-partials
+  [19]: customization.md#extending-the-theme
+  [20]: https://github.com/squidfunk/mkdocs-material/tree/master/examples/language
 
 #### Site search
 
-Site search is implemented using [lunr.js][20], which includes stemmers for the
-English language by default. The community package [lunr-languages][21] adds
-stemmers for other languages, which is also integrated with this theme. Support
+Site search is implemented using [lunr.js][21], which includes stemmers for the
+English language by default, while stemmers for other languages are included
+with [lunr-languages][22], both of which are integrated with this theme. Support
 for other languages and even multilingual search can be activated by setting
 the key `search.languages` to a comma-separated list of supported 2-letter
 language codes, e.g.:
@@ -430,16 +425,14 @@ Norwegian `no`, Swedish `sv` and Turkish `tr`.
     JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
     language.
 
-  [18]: customization.md#overriding-partials
-  [19]: customization.md#extending-the-theme
-  [20]: https://lunrjs.com
-  [21]: https://github.com/MihaiValentin/lunr-languages
+  [21]: https://lunrjs.com
+  [22]: https://github.com/MihaiValentin/lunr-languages
 
 ### Tabs
 
 From version 1.1.0 on, Material supports another layer on top of the main
 navigation for larger screens in the form of tabs. This is especially useful
-for larger documentation projects with a few top-level sections. Tabs can be
+for larger documentation projects with only few top-level sections. Tabs can be
 enabled by setting the respective feature flag to true:
 
 ``` yaml
@@ -451,13 +444,13 @@ extra:
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][22] for more information on advanced customization.
+[this article][23] for more information on advanced customization.
 
-  [22]: customization.md
+  [23]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][23]. The following extensions
+MkDocs supports several [Markdown extensions][24]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -471,20 +464,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][24]
-* [Codehilite][25]
-* [Footnotes][26]
-* [Metadata][27]
-* [Permalinks][28]
-* [PyMdown Extensions][28]
+* [Admonition][25]
+* [Codehilite][26]
+* [Footnotes][27]
+* [Metadata][28]
+* [Permalinks][29]
+* [PyMdown Extensions][30]
 
-  [23]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [24]: extensions/admonition.md
-  [25]: extensions/codehilite.md
-  [26]: extensions/footnotes.md
-  [27]: extensions/metadata.md
-  [28]: extensions/permalinks.md
-  [29]: extensions/pymdown.md
+  [24]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [25]: extensions/admonition.md
+  [26]: extensions/codehilite.md
+  [27]: extensions/footnotes.md
+  [28]: extensions/metadata.md
+  [29]: extensions/permalinks.md
+  [30]: extensions/pymdown.md
 
 ## Full example
 
@@ -495,11 +488,11 @@ Below is a full example configuration for a `mkdocs.yml`:
 site_name: 'My Project'
 site_description: 'A short description of my project'
 site_author: 'John Doe'
-site_url: 'https://my-github-handle.github.io/my-project'
+site_url: 'https://john-doe.github.io/my-project'
 
 # Repository
 repo_name: 'my-github-handle/my-project'
-repo_url: 'https://github.com/my-github-handle/my-project'
+repo_url: 'https://github.com/john-doe/my-project'
 
 # Copyright
 copyright: 'Copyright &copy; 2016 - 2017 John Doe'
@@ -520,7 +513,7 @@ extra:
     - type: 'github'
       link: 'https://github.com/john-doe'
     - type: 'twitter'
-      link: 'https://twitter.com/jonh-doe'
+      link: 'https://twitter.com/john-doe'
     - type: 'linkedin'
       link: 'https://de.linkedin.com/in/john-doe'
 
