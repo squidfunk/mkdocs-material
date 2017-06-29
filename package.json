@@ -43,7 +43,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.24.1",
     "babel-root-import": "^4.1.5",
-    "chalk": "^1.1.3",
+    "chalk": "^2.0.0",
     "clipboard": "^1.7.1",
     "core-js": "^2.4.1",
     "css-mqpacker": "^6.0.1",
