@@ -74,7 +74,7 @@ kbd {
 
   // 1st level headline
   h1 {
-    margin: 0 0 4rem;
+    margin: 0 0 2.5rem;
     color: $md-color-black--light;
     font-size: ms(3);
     font-weight: 300;
@@ -84,7 +84,7 @@ kbd {
 
   // 2nd level headline
   h2 {
-    margin: 4rem 0 1.6rem;
+    margin: 2.5rem 0 1rem;
     font-size: ms(2);
     font-weight: 300;
     letter-spacing: -0.01em;
@@ -93,7 +93,7 @@ kbd {
 
   // 3rd level headline
   h3 {
-    margin: 3.2rem 0 1.6rem;
+    margin: 2rem 0 1rem;
     font-size: ms(1);
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -102,12 +102,12 @@ kbd {
 
   // 3rd level headline following an 2nd level headline
   h2 + h3 {
-    margin-top: 1.6rem;
+    margin-top: 1rem;
   }
 
   // 4th level headline
   h4 {
-    margin: 1.6rem 0;
+    margin: 1rem 0;
     font-size: ms(0);
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -116,7 +116,7 @@ kbd {
   // 5th and 6th level headline
   h5,
   h6 {
-    margin: 1.6rem 0;
+    margin: 1rem 0;
     color: $md-color-black--light;
     font-size: ms(-1);
     font-weight: 700;
@@ -215,14 +215,14 @@ kbd {
   // Unformatted code blocks
   pre {
     position: relative;
-    margin: 1em 0;
-    border-radius: 0.2rem;
+    margin: 8px 0;
+    border-radius: 2px;
     line-height: 1.4;
     -webkit-overflow-scrolling: touch;
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 1em -1.6rem;
+      margin: 8px -16px;
       border-radius: 0;
     }
 
@@ -230,7 +230,7 @@ kbd {
     > code {
       display: block;
       margin: 0;
-      padding: 1.05rem 1.2rem;
+      padding: 8px 16px;
       background-color: transparent;
       font-size: inherit;
       box-shadow: none;
@@ -239,13 +239,13 @@ kbd {
 
       // [mobile -]: Increase padding to match text
       @include break-to-device(mobile) {
-        padding: 1.05rem 1.6rem;
+        padding: 8px 16px;
       }
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {
-        width: 0.4rem;
-        height: 0.4rem;
+        width: 4px;
+        height: 4px;
       }
 
       // Style scrollbar thumb
@@ -265,13 +265,13 @@ kbd {
     $correct: 1 / 0.85;
 
     padding: 0 0.25em * $correct;
-    border: 0.1rem solid darken($md-keyboard-background, 20%);
-    border-radius: 0.2rem;
+    border: 1px solid darken($md-keyboard-background, 20%);
+    border-radius: 2px;
     border-bottom-color: darken($md-keyboard-background, 25%);
     background-color: $md-keyboard-background;
     color: $md-keyboard-color;
     font-size: 85%;
-    box-shadow: 0 0.1rem 0 darken($md-keyboard-background, 30%);
+    box-shadow: 0 1px 0 darken($md-keyboard-background, 30%);
     word-break: break-word;
   }
 
@@ -279,7 +279,7 @@ kbd {
   mark {
     margin: 0 0.25em;
     padding: 0.0625em 0;
-    border-radius: 0.2rem;
+    border-radius: 2px;
     background-color: transparentize($clr-yellow-500, 0.5);
     box-shadow:
       +0.25em 0 0 transparentize($clr-yellow-500, 0.5),
@@ -290,7 +290,7 @@ kbd {
 
   // Abbreviations
   abbr {
-    border-bottom: 0.1rem dotted $md-color-black--light;
+    border-bottom: 1px dotted $md-color-black--light;
     text-decoration: none;
     cursor: help;
   }
@@ -308,8 +308,8 @@ kbd {
 
   // Blockquotes, possibly nested
   blockquote {
-    padding-left: 1.2rem;
-    border-left: 0.4rem solid $md-color-black--lighter;
+    padding-left: 12px;
+    border-left: 4px solid $md-color-black--lighter;
     color: $md-color-black--light;
   }
 
@@ -376,7 +376,7 @@ kbd {
 
     display: inline-block;
     max-width: 100%;
-    border-radius: 0.2rem;
+    border-radius: 2px;
     font-size: ms(-1);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -396,8 +396,8 @@ kbd {
 
     // Table headings
     th {
-      min-width: 10rem;
-      padding: 1.2rem 1.6rem;
+      min-width: 6rem;
+      padding: 12px 16px;
       background-color: $md-color-black--light;
       color: $md-color-white;
       vertical-align: top;
@@ -405,8 +405,8 @@ kbd {
 
     // Table cells
     td {
-      padding: 1.2rem 1.6rem;
-      border-top: 0.1rem solid $md-color-black--lightest;
+      padding: 12px 16px;
+      border-top: 1px solid $md-color-black--lightest;
       vertical-align: top;
     }
 
@@ -423,7 +423,7 @@ kbd {
 
   // Wrapper for scrolling on overflow
   &__scrollwrap {
-    margin: 1em -1.6rem;
+    margin: 1em -16px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -432,7 +432,7 @@ kbd {
   .md-typeset__table {
     display: inline-block;
     margin-bottom: 0.5em;
-    padding: 0 1.6rem;
+    padding: 0 16px;
 
     // Data tables
     table {

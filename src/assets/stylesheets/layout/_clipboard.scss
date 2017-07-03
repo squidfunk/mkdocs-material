@@ -27,12 +27,12 @@
 // Copy to clipboard
 .md-clipboard {
   position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 0.2rem;
-  font-size: 1.6rem;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  font-size: 1rem;
   cursor: pointer;
   z-index: 1;
   // Hack: put everything on the GPU to omit flickering
@@ -67,13 +67,13 @@
     display: block;
     position: absolute;
     top: 0;
-    right: 3.4rem;
-    padding: 0.6rem 1rem;
-    transform: translateX(0.8rem);
+    right: 34px;
+    padding: 8px 16px;
+    transform: translateX(8px);
     transition:
       transform 0.25s cubic-bezier(0.9, 0.1, 0.9, 0),
       opacity   0.175s;
-    border-radius: 0.2rem;
+    border-radius: 2px;
     background: $md-color-black--light;
     color: $md-color-white;
     font-size: ms(-1);
@@ -101,10 +101,10 @@
       display: block;
       position: absolute;
       top: 50%;
-      right: -0.4rem;
+      right: -4px;
       width: 0;
-      margin-top: -0.4rem;
-      border-width: 0.4rem 0 0.4rem 0.4rem;
+      margin-top: -4px;
+      border-width: 4px 0 4px 4px;
       border-style: solid;
       border-color: transparent $md-color-black--light;
       content: "";

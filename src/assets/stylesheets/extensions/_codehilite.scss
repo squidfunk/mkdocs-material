@@ -194,14 +194,14 @@ $codehilite-whitespace: transparent;
   // Highlighted lines
   .hll {
     display: block;
-    margin: 0 -1.2rem;
-    padding: 0 1.2rem;
+    margin: 0 -12px;
+    padding: 0 12px;
     background-color: transparentize($clr-yellow-500, 0.5);
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 0 -1.6rem;
-      padding: 0 1.6rem;
+      //margin: 0 -16px;
+      //padding: 0 16px;
     }
   }
 }
@@ -217,9 +217,9 @@ $codehilite-whitespace: transparent;
   // so the marker stretches to the whole width and the padding is respected
   .codehilite {
     position: relative;
-    margin: 1em 0;
+    margin: 8px 0;
     padding: 0;
-    border-radius: 0.2rem;
+    border-radius: 2px;
     background-color: $md-code-background;
     color: $md-code-color;
     line-height: 1.4;
@@ -230,15 +230,15 @@ $codehilite-whitespace: transparent;
     code {
       display: block;
       margin: 0;
-      padding: 1.05rem 1.2rem;
+      padding: 8px 12px;
       background-color: transparent;
       overflow: auto;
       vertical-align: top;
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {
-        width: 0.4rem;
-        height: 0.4rem;
+        width: 4px;
+        height: 4px;
       }
 
       // Style scrollbar thumb
@@ -260,7 +260,7 @@ $codehilite-whitespace: transparent;
     // Actual container with code, overflowing
     code {
       display: block;
-      padding: 1.05rem 1.2rem;
+      padding: 8px 12px;
       overflow: auto;
     }
   }
@@ -268,8 +268,8 @@ $codehilite-whitespace: transparent;
   // Block with line numbers
   .codehilitetable {
     display: block;
-    margin: 1em 0;
-    border-radius: 0.2em;
+    margin: 8px 0;
+    border-radius: 2px;
     font-size: ms(0);
     overflow: hidden;
 
@@ -297,7 +297,7 @@ $codehilite-whitespace: transparent;
 
     // Add spacing to line number container
     .linenodiv {
-      padding: 1.05rem 1.2rem;
+      padding: 8px 12px;
 
       // Stretch the line number container vertically, so it always aligns with
       // the code container, even when there's a scrollbar.
@@ -337,13 +337,13 @@ $codehilite-whitespace: transparent;
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 1em -1.6rem;
+      margin: 8px -16px;
       border-radius: 0;
 
       // Actual container with code, overflowing
       pre,
       code {
-        padding: 1.05rem 1.6rem;
+        padding: 8px 16px;
       }
     }
   }
@@ -354,14 +354,14 @@ $codehilite-whitespace: transparent;
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 1em -1.6rem;
+      margin: 8px -16px;
       border-radius: 0;
 
       // Increase spacing
       .codehilite > pre,
       .codehilite > code,
       .linenodiv {
-        padding: 1rem 1.6rem;
+        padding: 8px 16px;
       }
     }
   }

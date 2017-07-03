@@ -29,30 +29,30 @@
 
   // [tablet landscape +]: Add space for table of contents
   @include break-from-device(tablet landscape) {
-    margin-right: 24.2rem;
+    margin-right: 15.125rem;
   }
 
   // [screen +]: Add space for table of contents
   @include break-from-device(screen) {
-    margin-left: 24.2rem;
+    margin-left: 15.125rem;
   }
 
   // Define spacing
   &__inner {
-    margin: 0 1.6rem 2.4rem;
-    padding-top: 2.4rem;
+    margin: 0 1rem 1.5rem;
+    padding-top: 1.5rem;
 
     // [screen +]: Increase horizontal spacing
     @include break-from-device(screen) {
-      margin-right: 2.4rem;
-      margin-left: 2.4rem;
+      margin-right: 1.5rem;
+      margin-left: 1.5rem;
     }
 
     // Hack: add pseudo element for spacing, as the overflow of the content
     // container may not be hidden due to an imminent offset error on targets
     &::before {
       display: block;
-      height: 0.8rem;
+      height: 0.5rem;
       content: "";
     }
 
@@ -67,7 +67,7 @@
     @extend %md-icon__button;
 
     position: relative;
-    margin: 0.8rem 0;
+    margin: 0.5rem 0;
     padding-right: 0;
     padding-left: 0;
     float: right;

@@ -74,8 +74,8 @@
 
       // Targeted anchor (56px from header, 24px from sidebar offset)
       &:target::before {
-        margin-top: -(5.6rem + 2.4rem + $delta);
-        padding-top: (5.6rem + 2.4rem + $delta);
+        margin-top: -(3.5rem + 1.5rem + $delta);
+        padding-top: (3.5rem + 1.5rem + $delta);
       }
 
       // Make permalink visible on hover

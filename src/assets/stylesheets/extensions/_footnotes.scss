@@ -38,8 +38,8 @@
 
     // Targeted anchor
     &:target::before {
-      margin-top: -(5.6rem + 2.4rem + 1.8rem);
-      padding-top: (5.6rem + 2.4rem + 1.8rem);
+      margin-top: -(3.5rem + 1.5rem + 1.125rem);
+      padding-top: (3.5rem + 1.5rem + 1.125rem);
     }
   }
 
@@ -70,8 +70,8 @@
 
       // Targeted footnote
       &:target::before {
-        margin-top: -(5.6rem + 2.4rem + 1rem);
-        padding-top: (5.6rem + 2.4rem + 1rem);
+        margin-top: -(3.5rem + 1.5rem + 0.625rem);
+        padding-top: (3.5rem + 1.5rem + 0.625rem);
         pointer-events: none;
       }
 
@@ -99,7 +99,7 @@
   .footnote-ref::before {
     display: inline;
     margin: 0 0.2em;
-    border-left: 0.1rem solid $md-color-black--lighter;
+    border-left: 1px solid $md-color-black--lighter;
     font-size: 1.25em;
     content: "";
     vertical-align: -0.5rem;
@@ -123,7 +123,7 @@
 
     // Back reference icon
     &::before {
-      font-size: 1.6rem;
+      font-size: 1rem;
       content: "keyboard_return";
     }
   }

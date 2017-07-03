@@ -35,8 +35,8 @@ $md-toggle__drawer--checked:
 // Sidebar container
 .md-sidebar {
   position: absolute;
-  width: 24.2rem;
-  padding: 2.4rem 0;
+  width: 15.2rem;
+  padding: 1.5rem 0;
   overflow: hidden;
 
   // Hide for print
@@ -47,7 +47,7 @@ $md-toggle__drawer--checked:
   // Lock sidebar to container height (account for fixed header)
   &[data-md-state="lock"] {
     position: fixed;
-    top: 5.6rem;
+    top: 3.5rem;
   }
 
   // [tablet -]: Convert navigation to drawer
@@ -57,8 +57,8 @@ $md-toggle__drawer--checked:
     &--primary {
       position: fixed;
       top: 0;
-      left: -24.2rem;
-      width: 24.2rem;
+      left: -15.2rem;
+      width: 15.2rem;
       height: 100%;
       transform: translateX(0);
       transition:
@@ -76,7 +76,7 @@ $md-toggle__drawer--checked:
       #{$md-toggle__drawer--checked} & {
         @include z-depth(8);
 
-        transform: translateX(24.2rem);
+        transform: translateX(15.2rem);
 
         // Just show drawer, if browser doesn't support 3D transforms
         .no-csstransforms3d & {
@@ -104,14 +104,14 @@ $md-toggle__drawer--checked:
 
     // [screen +]: Limit to grid
     @include break-from-device(screen) {
-      margin-left: 122rem;
+      margin-left: 76rem;
     }
   }
 
   // Wrapper for scrolling on overflow
   &__scrollwrap {
     max-height: 100%;
-    margin: 0 0.4rem;
+    margin: 0 0.25rem;
     overflow-y: auto;
     // Hack: putting the scroll wrapper on the GPU massively reduces jitter
     // when locking the sidebars into place
@@ -133,8 +133,8 @@ $md-toggle__drawer--checked:
 
     // Override native scrollbar styles
     &::-webkit-scrollbar {
-      width: 0.4rem;
-      height: 0.4rem;
+      width: 0.25rem;
+      height: 0.25rem;
     }
 
     // Style scrollbar thumb
@@ -153,7 +153,7 @@ $md-toggle__drawer--checked:
 
     // [screen +]: Add line for reference
     @include break-from-device(screen) {
-      border-right: 0.1rem solid $md-color-black--lightest;
+      border-right: 1px solid $md-color-black--lightest;
     }
   }
 }
