@@ -31,7 +31,7 @@
   padding: 8px 16px;
   border-left: 32px solid transparentize($clr-blue-a200, 0.6);
   border-radius: 2px;
-  background-color: transparentize($clr-blue-a200, 0.85);
+  background-color: transparentize($clr-blue-a200, 0.92);
   font-size: ms(-1);
 
   // Icon
@@ -39,10 +39,10 @@
     @extend %md-icon;
 
     position: absolute;
-    left: -1.625rem;
+    left: -26px;
     color: $md-color-white;
     font-size: 20px;
-    content: "edit";
+    content: "comment";
     vertical-align: -0.25em;
   }
 
@@ -58,27 +58,30 @@
 
   // Build representational classes
   @each $names, $appearance in (
-    summary tldr: $clr-light-blue-a400 "subject",
-    tip hint important : $clr-teal-a700 "whatshot",
-    success check done: $clr-green-a400 "done",
+    summary tldr: $clr-light-blue-a400 "assignment",
+    tip hint important : $clr-teal-a700 "lightbulb_outline" bold,
+    success check done: $clr-green-a400 "done" bold,
     warning caution attention: $clr-orange-a400 "warning",
-    failure fail missing: $clr-red-a200 "clear",
+    failure fail missing: $clr-red-a200 "clear" bold,
     danger error: $clr-red-a400 "flash_on",
     bug: $clr-pink-a400 "bug_report",
     quote cite: $clr-grey "format_quote"
   ) {
     $tint: nth($appearance, 1);
     $icon: nth($appearance, 2);
+    $bold: false;
+    @if length($appearance) > 2 { $bold: nth($appearance, 3); }
 
     // Define base class
     &%#{nth($names, 1)},
     &.#{nth($names, 1)} {
       border-color: transparentize($tint, 0.6);
-      background-color: transparentize($tint, 0.85);
+      background-color: transparentize($tint, 0.95);
 
       // Icon
       &::before {
         content: $icon;
+        @if $bold { font-weight: 600; }
       }
     }
 

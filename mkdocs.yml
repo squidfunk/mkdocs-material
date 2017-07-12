@@ -19,17 +19,18 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Material for MkDocs
-site_description: A Material Design theme for MkDocs
-site_author: Martin Donath
-site_url: http://squidfunk.github.io/mkdocs-material/
+site_name: Material Design Components for MkDocs
+site_description: A Material Design Components theme for MkDocs
+site_author: Joshua Burnett
+site_url: http://9ci.github.io/mkdocs-mdc-web/
 
 # Repository
-repo_name: squidfunk/mkdocs-material
-repo_url: https://github.com/squidfunk/mkdocs-material
+repo_name: 9ci/mkdocs-material
+repo_url: https://github.com/9ci/mkdocs-mdc-web
+edit_uri: edit/master/docs/
 
 # Copyright
-copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
+# copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
 
 # Theme directory
 theme_dir: material
@@ -39,32 +40,36 @@ extra:
   feature:
     tabs: false
   palette:
-    primary: indigo
+    primary: 'blue grey'
     accent: indigo
   social:
     - type: globe
       link: http://struct.cc
     - type: github-alt
-      link: https://github.com/squidfunk
+      link: https://github.com/9ci
     - type: twitter
-      link: https://twitter.com/squidfunk
+      link: https://twitter.com/9ci
     - type: linkedin
-      link: https://de.linkedin.com/in/martin-donath-20a95039
+      link: https://de.linkedin.com/in/basejump
 
 # Extensions
 markdown_extensions:
+  - pymdownx.extra # replacement for markdown.extensions.extra see https://facelessuser.github.io/pymdown-extensions/extensions/extra/
   - markdown.extensions.admonition
   - markdown.extensions.codehilite(guess_lang=false)
   - markdown.extensions.def_list
   - markdown.extensions.footnotes
   - markdown.extensions.meta
   - markdown.extensions.toc(permalink=true)
+  - markdown_include.include:
+      base_path: 'docs'
   - pymdownx.arithmatex
   - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      #emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_index: !!python/name:pymdownx.emoji.gemoji
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
@@ -77,6 +82,7 @@ markdown_extensions:
 pages:
   - Material: index.md
   - Getting started: getting-started.md
+  - Sandbox: sandbox.md
   - Extensions:
     - Admonition: extensions/admonition.md
     - CodeHilite: extensions/codehilite.md

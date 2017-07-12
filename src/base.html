@@ -34,6 +34,11 @@
       <!-- Keep for compatibility, see http://bit.ly/2tMB6ag -->
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
+      <!-- keep pages semi private by not indexing by google -->
+      {% if config.extra.noindex %}
+        <meta name="robots" content="noindex,nofollow">
+      {% endif %}
+
       <!-- Page description -->
       {% if page and page.meta.description %}
         <meta name="description"
@@ -96,6 +101,9 @@
         <link rel="stylesheet" type="text/css"
             href="{{ base_url }}/assets/stylesheets/application.palette.css" />
       {% endif %}
+      <link rel="stylesheet" type="text/css" href="{{ base_url }}/assets/stylesheets/material-components-web.min.css" />
+      <link rel="stylesheet" type="text/css" href="{{ base_url }}/assets/stylesheets/mdc-web.css" />
+      
     {% endblock %}
 
     <!-- Block: webfonts -->
@@ -278,6 +286,7 @@
 
     <!-- Block: theme-related JavaScript -->
     {% block scripts %}
+
       <script src="{{ base_url }}/assets/javascripts/application.js"></script>
 
       <!-- Load additional languages for search -->
@@ -297,6 +306,9 @@
           <script src="{{ path }}/lunr.multi.js"></script>
         {% endif %}
       {% endif %}
+
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/jq-mdc-web.js"></script>
 
       <!-- Initialize application -->
       <script>

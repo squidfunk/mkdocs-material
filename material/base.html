@@ -6,6 +6,9 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
+      {% if config.extra.noindex %}
+        <meta name="robots" content="noindex,nofollow">
+      {% endif %}
       {% if page and page.meta.description %}
         <meta name="description" content="{{ page.meta.description | first }}">
       {% elif config.site_description %}
@@ -39,10 +42,12 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-1df76c4e58.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-769c285a91.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-4fd40ae432.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02c2a4388f.palette.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-b778559f56.palette.css">
       {% endif %}
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/material-components-web.min.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/mdc-web.css">
     {% endblock %}
     {% block fonts %}
       {% if config.extra.font != false and config.extra.font != "none" %}
@@ -167,6 +172,8 @@
           <script src="{{ path }}/lunr.multi.js"></script>
         {% endif %}
       {% endif %}
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/jq-mdc-web.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>

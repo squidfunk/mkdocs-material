@@ -370,6 +370,7 @@ gulp.task("mkdocs:serve",
 gulp.task("build", [
   "assets:build",
   "views:build",
+  'assets:copy-mdc-web',
   args.mkdocs ? "mkdocs:build" : false
 ].filter(f => f))
 
@@ -387,7 +388,8 @@ gulp.task("clean", [
  */
 gulp.task("watch", [
   "assets:build",
-  "views:build"
+  "views:build",
+  'assets:copy-mdc-web'
 ], () => {
   process.env.WATCH = true
 
@@ -414,12 +416,28 @@ gulp.task("watch", [
   gulp.watch([
     `${config.views.src}/**/*.html`
   ], ["views:build"])
+
+  /* Minify views */
+  gulp.watch([
+    `${config.views.src}/assets/jq-mdc-web.js`,
+    `${config.views.src}/assets/stylesheets/mdc-web.css`
+  ], ["assets:copy-mdc-web"])
 })
 
 /*
  * Print help message
  */
 gulp.task("help")
+
+gulp.task('assets:copy-mdc-web',
+  function () {
+    gulp.src(`${config.assets.src}/jq-mdc-web.js`)
+        .pipe(gulp.dest(`${config.assets.build}/javascripts/`));
+    gulp.src(`${config.assets.src}/stylesheets/mdc-web.css`)
+            .pipe(gulp.dest(`${config.assets.build}/stylesheets/`));
+    gulp.src(`${config.assets.src}/stylesheets/material-components-web.min.css`)
+            .pipe(gulp.dest(`${config.assets.build}/stylesheets/`));
+});
 
 /*
  * Build assets by default

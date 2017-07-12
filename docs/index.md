@@ -1,28 +1,25 @@
-# Material <small>for MkDocs</small>
+# Material Design Components <small>for MkDocs</small>
 
-## Beautiful project documentation
+c-web is a Material theme for [MkDocs][1].
+Its a fork from the exelent [MkDocs-Material][2] theme and uses [Material Components Web][3]as the base.
 
-Material is a theme for [MkDocs][1], an excellent static site generator geared
-towards project documentation. It is built using Google's [Material Design][2]
-guidelines.
-
-[![Material for MkDocs](images/material.png)](images/material.png)
+[![Material for MkDocs](images/material.png)](images/material.png "🔎 zoom")
 
   [1]: http://www.mkdocs.org
-  [2]: https://www.google.com/design/spec/material-design
+  [2]: http://squidfunk.github.io/mkdocs-material/
+  [3]: https://material.io/components/web/
 
-## Quick start
 
-Install the latest version of Material with `pip`:
+Install with `pip`:
 
 ``` sh
-pip install mkdocs-material
+pip install mkdocs-mdc-web
 ```
 
 Add the following line to your `mkdocs.yml`:
 
 ``` yaml
-theme: 'material'
+theme: 'mdc-web'
 ```
 
 For detailed instructions see the [getting started guide][3].

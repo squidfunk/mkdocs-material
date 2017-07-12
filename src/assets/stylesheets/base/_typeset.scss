@@ -167,7 +167,7 @@ kbd {
   pre {
     background-color: $md-code-background;
     color: $md-code-color;
-    font-size: 85%;
+    font-size: 88%;
   }
 
   // Inline code blocks, correct relative ems for smaller font size
@@ -377,7 +377,7 @@ kbd {
     display: inline-block;
     max-width: 100%;
     border-radius: 2px;
-    font-size: ms(-1);
+    font-size: 0.875rem;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 
