@@ -86,7 +86,7 @@
     "postcss-pseudo-classes": "^0.2.0",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^16.0.0",
-    "stylelint-order": "^0.5.0",
+    "stylelint-order": "^0.6.0",
     "stylelint-scss": "^1.4.4",
     "through2": "^2.0.3",
     "vinyl-paths": "^2.1.0",
