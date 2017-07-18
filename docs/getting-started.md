@@ -352,7 +352,7 @@ to the comments section. The necessary JavaScript is automatically included.
 
 !!! warning "Requirements"
 
-    `site_url` value must be set in `mkdocs.yml` for the Discus integration to
+    `site_url` value must be set in `mkdocs.yml` for the Disqus integration to
     load properly.
 
   [17]: https://disqus.com
