@@ -1,13 +1,13 @@
 {
-  "name": "mkdocs-material",
-  "version": "1.7.4",
-  "description": "A Material Design theme for MkDocs",
+  "name": "mkdocs-material-components",
+  "version": "1.7.5",
+  "description": "A Material Components Web theme for MkDocs",
   "keywords": [
     "mkdocs",
     "documentation",
     "theme"
   ],
-  "homepage": "http://squidfunk.github.io/mkdocs-material/",
+  "homepage": "http://squidfunk.github.io/mkdocs-material-components/",
   "bugs": {
     "url": "https://github.com/squidfunk/mkdocs-material/issues",
     "email": "martin.donath@squidfunk.com"
@@ -31,7 +31,9 @@
     "start": "scripts/start",
     "travis": "scripts/travis"
   },
-  "dependencies": {},
+  "dependencies": {
+    "zepto": "^1.2.0"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.25.0",

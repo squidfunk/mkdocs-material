@@ -350,7 +350,9 @@ next to the emoji. the example below will give you what you see on the left here
 ## Material Icons
 
 You can use the material icons by adding an `.icon` class to an italic using atiributes  
-`_cloud_{.icon}` will produce _cloud_{.icon} for example
+`_cloud_{.icon}` will produce _cloud_{.icon} for example.
+any of these are valid https://material.io/icons/  
+💡 remember to use `_` when there is a space in the icon name
 
 ## Rows
 
@@ -532,8 +534,27 @@ new Vue({
 
 </div>
 
-## Lucid Charts
+## Embedding
 
-<div style="width: 480px; height: 360px; margin: 10px; position: relative;">
-<iframe allowfullscreen frameborder="0" style="width:480px; height:360px" src="https://www.lucidchart.com/documents/embeddedchart/3ceba856-605a-4ec6-b8a9-4ac87d49c9c1" id="sZOblqyjWsWu"></iframe>
-</div>
+### Lucid Charts
+
+open the Lucid chart and select the share -> embed menu item. copy and past the code
+
+<div style="width: 100%; height: 480px; margin: 10px; position: relative;">
+<iframe allowfullscreen frameborder="0" style="width:100%; height:480px" src="https://www.lucidchart.com/documents/embeddedchart/ee9393c4-427d-4390-97da-1d0a42b5823e" id="n8kd1lbHuhin"></iframe></div>
+
+### Evernote
+
+On your note go to share->copy public link. paste the link into a new browser.
+When it redirects you it will give a new link url. copy that and paste it into src for the iframe.
+Add `.html` to the end of the new url in src.
+**Example**
+```html
+<iframe width="100%" height="600px"  
+  frameborder="0"
+  src="https://www.evernote.com/shard/s5/sh/36116d20-c2cd-4b37-a5f3-a31df9152aab/84e7853122efc0d7.html">
+</iframe>
+```
+
+<iframe width="100%" height="600px" frameborder="0"  src="https://www.evernote.com/shard/s5/sh/36116d20-c2cd-4b37-a5f3-a31df9152aab/84e7853122efc0d7.html">
+</iframe>

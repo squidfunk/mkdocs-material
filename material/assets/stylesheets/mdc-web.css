@@ -288,6 +288,49 @@ img[align="right"]{ padding-left:10px }
     vertical-align: text-top;
 }
 
+/************ EXCEL *************************/
+div.excel-embed{
+  height: 600px;
+}
+
+/*https://collaboration133.com/how-to-scale-iframe-content-in-ie-chrome-firefox-and-safari/2717/*/
+div.excel-zoom { width: 133%; height: 600px; padding: 0; overflow: hidden; }
+div.excel-zoom iframe { width: 1200px; height: 800px; border: 0px; }
+div.excel-zoom iframe {
+    zoom: 0.75;
+    -moz-transform: scale(0.75);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.75);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.75);
+    -webkit-transform-origin: 0 0;
+    transform: scale(0.75);
+    transform-origin: 0 0;
+}
+
+/************** MDC Stuff ************/
+.mdc-toolbar.transparent{
+  background: none;
+  color: var(--mdc-theme-text-primary-on-background,#333);
+}
+.mdc-toolbar .mdc-toolbar__title{
+  color: var(--mdc-theme-text-primary-on-background,#333);
+}
+.mdc-toolbar.transparent .mdc-toolbar__icon, .mdc-toolbar__icon--menu{
+  /*color: inherit;*/
+}
+.mdc-toolbar.small .mdc-toolbar__row{
+  min-height: 36px;
+}
+.mdc-toolbar.small .mdc-toolbar__icon, .mdc-toolbar.small .mdc-toolbar__title{
+  padding-top: 4px;
+  padding-bottom: 4px;
+  /*font-size: 22px;*/
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  iframe.excel-frame { zoom: 1;  }
+}
 
 @media only screen and (max-width: 38em){
 

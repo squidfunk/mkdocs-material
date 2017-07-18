@@ -103,7 +103,7 @@
       {% endif %}
       <link rel="stylesheet" type="text/css" href="{{ base_url }}/assets/stylesheets/material-components-web.min.css" />
       <link rel="stylesheet" type="text/css" href="{{ base_url }}/assets/stylesheets/mdc-web.css" />
-      
+
     {% endblock %}
 
     <!-- Block: webfonts -->
@@ -137,6 +137,8 @@
     {% for path in extra_css %}
       <link rel="stylesheet" type="text/css" href="{{ path }}" />
     {% endfor %}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <!-- Block: custom front matter -->
     {% block extrahead %}{% endblock %}
@@ -226,7 +228,7 @@
           {% endblock %}
 
           <!-- Article -->
-          <div class="md-content">
+          <div id="article-content" class="md-content" > <!-- style="display:none" prevent the flash of unstyle content until we can get the extra processing into the server gen-->
             <article class="md-content__inner md-typeset">
 
               <!-- Block: content -->
@@ -307,7 +309,8 @@
         {% endif %}
       {% endif %}
 
-      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
+      <script type="text/javascript" src="https://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>
       <script src="{{ base_url }}/assets/javascripts/jq-mdc-web.js"></script>
 
       <!-- Initialize application -->

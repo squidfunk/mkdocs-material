@@ -22,11 +22,11 @@
 site_name: Material Design Components for MkDocs
 site_description: A Material Design Components theme for MkDocs
 site_author: Joshua Burnett
-site_url: http://9ci.github.io/mkdocs-mdc-web/
+site_url: http://9ci.github.io/mkdocs-material-components/
 
 # Repository
-repo_name: 9ci/mkdocs-material
-repo_url: https://github.com/9ci/mkdocs-mdc-web
+repo_name: 9ci/mkdocs-material-components
+repo_url: https://github.com/9ci/mkdocs-material-components
 edit_uri: edit/master/docs/
 
 # Copyright
@@ -37,6 +37,12 @@ theme_dir: material
 
 # Options
 extra:
+  # use console.log(btoa('some-password')) in chrome console to generate.
+  # If this is set js will force a div overlay over all the page content.
+  # this is NOT security. A user can always just use the debubg console and remove the overlay div or just look at the html source for the page
+
+  # adds <meta name="robots" content="noindex,nofollow"> to keep search engines from indexing this
+  # noindex: true
   feature:
     tabs: false
   palette:
@@ -50,7 +56,7 @@ extra:
     - type: twitter
       link: https://twitter.com/9ci
     - type: linkedin
-      link: https://de.linkedin.com/in/basejump
+      link: https://de.linkedin.com/in/greenbill
 
 # Extensions
 markdown_extensions:
@@ -80,9 +86,14 @@ markdown_extensions:
 
 # Page tree
 pages:
-  - Material: index.md
-  - Getting started: getting-started.md
-  - Sandbox: sandbox.md
+  - Index: index.md
+  - Syntax Quick Start: sandbox.md
+  - Embedding web apps:
+    - Excel: embedding/excel.md
+    - Lucid Charts: embedding/lucid.md
+    - Evernote: embedding/evernote.md
+    - Snagit & Jing: embedding/jing.md
+  - Install & Config: getting-started.md
   - Extensions:
     - Admonition: extensions/admonition.md
     - CodeHilite: extensions/codehilite.md
@@ -92,11 +103,11 @@ pages:
     - PyMdown: extensions/pymdown.md
   - Specimen: specimen.md
   - Customization: customization.md
-  - Release notes: release-notes.md
-  - Contributing: contributing.md
-  - License: license.md
+  #- Release notes: release-notes.md
+  #- Contributing: contributing.md
+  #- License: license.md
 
 # Google Analytics
-google_analytics:
-  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
-  - auto
+# google_analytics:
+#   - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+#   - auto

@@ -34,15 +34,9 @@ var admonMapping = {
     ':point_right:':'float-right'
 }
 
-function buildAdmonition(el){
-
-}
-
-function callouts(){
-
-}
-
+//
 $(function() {
+
   // var rex = new RegExp('^📝');
   // var mem = $("blockquote > p:first-child").filter(function () {
   //     return rex.test($.trim($(this).text()));
@@ -137,4 +131,209 @@ $(function() {
     //$this.addClass( "admonition tip" );
   })
 
+  // $('div.excel iframe').onload( function() {
+  //   $('div.excel iframe').contents().find("head").append($("<style type='text/css'>  #m_excelEmbedRenderer_m_ewaEmbedViewerBar{display:none;}  </style>"));
+  // });
+
+  //show the content after its parsed
+  //$("#article-content").show();
 });
+
+/**
+Excel Embed for Onedrive files
+TODO move this out to its own js
+*/
+$(function() {
+  //does the button stuff on the default select on the page
+	$.excelEmbed = function(opts) { selectAll(opts); };
+	$.excelEmbed.defaults = {
+    showMicrosoftsToolBar:false,
+    uiOptions: {
+      showDownloadButton: true,
+      showGridlines: false,
+      showParametersTaskPane: false,
+      showRowColumnHeaders: false
+    },
+    interactivityOptions: {
+      allowTypingAndFormulaEntry: true,
+      allowParameterModification: true,
+      allowSorting: false,
+      allowFiltering: false,
+      allowPivotTableInteractivity: false,
+      allowHyperlinkNavigation: true
+    }
+	};
+
+  console.log("embedding excel")
+  $('div[data-excel-token]').each(function() {
+    var divFrame = this;
+    var $divFrame = $(this)
+    var holder = '<div class="onedrive-card"></div>'
+    var $card = $divFrame.wrap(holder).parent()
+    var $toolbar = createToolbar(divFrame)
+
+    $divFrame.LoadingOverlay("show");
+    //$it.hide();
+    //console.log("data-excel-token", this.data-excel-token)
+    var randId = "xls" + Math.floor(Math.random() * 100)
+    $divFrame.attr('id', randId)
+
+    //add class if its not there
+    if(!$divFrame.hasClass('excel-embed')){
+      $divFrame.addClass('excel-embed');
+    }
+
+    var opts = {}
+    if($divFrame.data('range')) opts.item = $divFrame.data('range')
+    if($divFrame.data('interactivity')) opts.interactivityOptions = $divFrame.data('interactivity')
+    if($divFrame.data('ui')) opts.uiOptions = $divFrame.data('ui')
+
+    var opts = $.extend({}, $.excelEmbed.defaults, opts);
+
+    var loadedCallback = function(result){
+      var ewa = result.getEwaControl();
+      var iframe = $divFrame.find("iframe").get(0);
+      //console.log("why wont it hide")
+      if (result.getSucceeded()){
+        console.log("getSucceeded")
+        //remove the old toolbar
+        var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        $(innerDoc).find("[id$='_m_ewaEmbedViewerBar']").hide()
+        //configExcelToolbar(innerDoc)
+        var docProps = getWorkbookContextJson($(innerDoc))
+
+        applyZoom(divFrame,iframe)
+        console.log("applyZoom")
+        toolbarEvents(divFrame, $toolbar, docProps)
+      }else{
+        $divFrame.append('<strong>EXCEL EMBED FAILED</strong>')
+      }
+      //console.log("why wont it hide", $it)
+      $divFrame.LoadingOverlay("hide");
+    }
+
+    Ewa.EwaControl.loadEwaAsync($(this).data('excel-token'), randId, opts, loadedCallback);
+  });
+
+  function getWorkbookContextJson($innerDoc){
+    //ewaSynd2_ctl17_ewaCtl_m_workbookContextJson
+    var inputData = $innerDoc.find("input[id$='ctl17_ewaCtl_m_workbookContextJson']").get(0)
+    var json = JSON.parse(inputData.value)
+    console.log(json)
+    return json;
+  }
+
+  function applyZoom(divFrame,iframe,zoomTo){
+    console.log("applyZoom", zoomTo);
+    var zoom = zoomTo ? parseInt(zoomTo) : parseInt(divFrame.getAttribute('data-zoom'))
+
+    if(!zoom) return;
+    var shinkby = 100.0 - zoom
+    console.log("shinkby", shinkby);
+    var zoomPct = zoom + '%'
+    var divPct = (100.0 + Math.trunc(100 * shinkby/zoom)) + '%'
+
+    divFrame.style.width = divPct
+    iframe.style.zoom = zoom/100
+    iframe.style.height = divPct
+    iframe.style['-webkit-transform'] = 'scale(' + zoom/100 + ')'
+    iframe.style['-moz-transform'] = 'scale(' + zoom/100 + ')'
+    iframe.style['transform'] = 'scale(' + zoom/100 + ')'
+
+    iframe.style['-webkit-transform-origin'] = '0 0'
+    iframe.style['-moz-transform-origin'] = '0 0'
+    iframe.style['transform-origin'] = '0 0'
+
+    console.log("setAttribute zoom", zoom);
+    divFrame.setAttribute('data-zoom', zoom)
+  }
+
+  function zoomInc(divFrame, zoomIncrement){
+    console.log("zoomInc start", divFrame, zoomIncrement);
+    var iframe = $(divFrame).find('iframe').get(0)
+    var zoom = parseInt(divFrame.getAttribute('data-zoom'))
+    console.log("zoomInc getAttribute", zoom);
+    if(!zoom) zoom = 100
+    zoom = zoomIncrement + zoom
+    console.log("zoom after inc calling applyZoom", divFrame, zoom);
+    applyZoom(divFrame,iframe,zoom)
+  }
+
+  function createToolbar(divFrame){
+    var $tbar = $('<header class="mdc-toolbar small transparent"> \
+      <div class="mdc-toolbar__row"> \
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start"> \
+          <span class="mdc-toolbar__title mdc-theme-text-primary-on-background"></span> \
+        </section> \
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar"> \
+          <a href="#" class="material-icons mdc-toolbar__icon zoom_out" title="Zoom in">zoom_out</a> \
+          <a href="#" class="material-icons mdc-toolbar__icon zoom_in" title="Zoom out">zoom_in</a> \
+          <a href="#" class="material-icons mdc-toolbar__icon view" title="View full size">launch</a> \
+          <a href="#" class="material-icons mdc-toolbar__icon edit" title="Edit Online">edit</a> \
+        </section> \
+      </div> \
+    </header>')
+    $(divFrame).before($tbar)
+    return $tbar
+  }
+
+  function toolbarEvents(divFrame, toolbar, docProps){
+
+    $(toolbar).find('.view').click(function(e) {
+      e.preventDefault();
+      window.open(docProps.ReloadUrl, '_blank')
+    });
+    $(toolbar).find('.edit').click(function(e) {
+      e.preventDefault();
+      window.open(docProps.ReloadUrl.replace('view.aspx?', 'edit.aspx?'), '_blank')
+    });
+    $(toolbar).find('.zoom_out').click(function(e) {
+      e.preventDefault();
+      zoomInc(divFrame, (-10.0))
+    });
+    $(toolbar).find('.zoom_in').click(function(e) {
+      e.preventDefault();
+      zoomInc(divFrame, 10.0)
+    });
+
+  }
+
+});
+
+
+
+
+
+function configExcelToolbar(innerDoc,viewUrl){
+  var toolbar = $(innerDoc).find("[id$='_m_ewaEmbedViewerBar']")
+  //console.log("bar", bar)
+
+  toolbar.css("background-image","none");
+  toolbar.css("background-color","#999");
+  toolbar.find('.ewa-embed-branding-anchor').remove()
+  toolbar.find('.ewa-embed-buttons .ewa-embed-anchor-button').remove()
+
+  var theHtml = '<a id="m_excelEmbedRenderer_m_edit" tabindex="0" role="button" class="ewa-embed-anchor-button" \
+   onclick="return false;">\
+   foo \
+   </a>';
+
+  toolbar.find('.ewa-embed-buttons').append( theHtml);
+
+  // addViewEditButton
+  // var theHtml = '<a id="m_excelEmbedRenderer_m_edit" tabindex="0" role="button" class="ewa-embed-anchor-button" onclick="return false;"><div class="clip22x22" style="height:20px">'
+  // theHtml = theHtml + '<img src="https://s2-powerpoint-15.cdn.office.net/p/s/1684127225_PptResources/1033/prt.png" '
+  // theHtml = theHtml + 'style="top:-293px;left:-205px;" alt="Edit Workbook Online" title="View full-size workbook">'
+  // theHtml = theHtml + '</div></a>'
+  // theHtml = theHtml + '<a id="m_excelEmbedRenderer_m_hostViewAnchor" tabindex="0" role="button" class="ewa-embed-anchor-button" onclick="return false;"><div class="clip22x22" style="height:20px">'
+  // theHtml = theHtml + '<img src="https://s2-powerpoint-15.cdn.office.net/p/s/1684127225_PptResources/1033/prt.png" '
+  // theHtml = theHtml + 'style="top:-222px;left:-303px;" alt="View full-size workbook" title="View full-size workbook">'
+  // theHtml = theHtml + '</div></a>'
+  // toolbar.find('.ewa-embed-buttons').append( theHtml);
+  // toolbar.find('#m_excelEmbedRenderer_m_hostViewAnchor').click(function() {
+  //   window.open(viewUrl, '_blank');
+  // });
+  // toolbar.find('#m_excelEmbedRenderer_m_edit').click(function() {
+  //   window.open(viewUrl.replace('view.aspx?', 'edit.aspx?'), '_blank');
+  // });
+}

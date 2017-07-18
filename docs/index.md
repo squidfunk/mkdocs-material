@@ -1,27 +1,14 @@
-# Material Design Components <small>for MkDocs</small>
+# Material Components <small>for MkDocs</small>
 
-c-web is a Material theme for [MkDocs][1].
-Its a fork from the exelent [MkDocs-Material][2] theme and uses [Material Components Web][3]as the base.
-
-[![Material for MkDocs](images/material.png)](images/material.png "🔎 zoom")
-
+Material Components is a Material theme for the markdown flavored documentation engine  [MkDocs][1].
+It forks from the excellent [MkDocs-Material][2] theme and uses Google's [Material Components Web][3]as the base.
   [1]: http://www.mkdocs.org
   [2]: http://squidfunk.github.io/mkdocs-material/
   [3]: https://material.io/components/web/
 
+The goals with this project are 3 fold
+1. build on top of Material Components Web
+2. Extend the markdown so its easy for the author to use cards, callouts and admonitions with simple emojis as instructions
+3. Make it easy to embed from other webapps like Office 365, Evernote, lucid charts, etc..
 
-Install with `pip`:
-
-``` sh
-pip install mkdocs-mdc-web
-```
-
-Add the following line to your `mkdocs.yml`:
-
-``` yaml
-theme: 'mdc-web'
-```
-
-For detailed instructions see the [getting started guide][3].
-
-  [3]: getting-started.md
+For install instructions see the [Install & Config](getting-started.md) section.
