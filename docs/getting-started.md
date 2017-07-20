@@ -314,7 +314,7 @@ extra:
     - type: 'twitter'
       link: 'https://twitter.com/squidfunk'
     - type: 'linkedin'
-      link: 'https://de.linkedin.com/in/martin-donath-20a95039'
+      link: 'https://linkedin.com/in/squidfunk'
 ```
 
 The links are generated in order and the `type` of the links must match the
@@ -515,7 +515,7 @@ extra:
     - type: 'twitter'
       link: 'https://twitter.com/john-doe'
     - type: 'linkedin'
-      link: 'https://de.linkedin.com/in/john-doe'
+      link: 'https://linkedin.com/in/john-doe'
 
 # Google Analytics
 google_analytics:

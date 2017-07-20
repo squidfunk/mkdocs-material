@@ -49,7 +49,7 @@ extra:
     - type: twitter
       link: https://twitter.com/squidfunk
     - type: linkedin
-      link: https://de.linkedin.com/in/martin-donath-20a95039
+      link: https://linkedin.com/in/squidfunk
 
 # Extensions
 markdown_extensions:
