@@ -69,7 +69,7 @@ emojis. Happy scrolling :tada:
     [EmojiOne license][8] to ensure proper usage and attribution.
 
   [4]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
-  [5]: http://emojione.com/demo/
+  [5]: https://emoji.codes/
   [6]: http://emojione.com
   [7]: https://creativecommons.org/licenses/by/4.0/legalcode
   [8]: http://emojione.com/licensing/
