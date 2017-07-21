@@ -333,15 +333,6 @@ function initialize(config) { // eslint-disable-line func-style
         /* Return false prevents the cursor position from changing */
         return false
       }
-
-    /* Search is closed */
-    } else {
-
-      /* F/S: Open search if not in input field */
-      if (ev.keyCode === 70 || ev.keyCode === 83) {
-        query.focus()
-        ev.preventDefault()
-      }
     }
   }).listen()
 
