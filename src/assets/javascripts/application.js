@@ -302,7 +302,10 @@ function initialize(config) { // eslint-disable-line func-style
 
         /* Retrieve all results */
         const links = Array.prototype.slice.call(
-          document.querySelectorAll("[data-md-component=search] [href]"))
+          document.querySelectorAll(
+            ".md-search__input, [data-md-component=search] [href]"
+          )
+        )
 
         /* Retrieve current active/focused result */
         const focus = links.find(link => {
