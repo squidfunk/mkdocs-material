@@ -53,7 +53,7 @@
     "eslint": "^4.0.0",
     "expose-loader": "^0.7.3",
     "fastclick": "^1.0.6",
-    "flow-bin": "^0.49.1",
+    "flow-bin": "^0.51.0",
     "flow-jsdoc": "^0.3.0",
     "git-hooks": "^1.1.7",
     "gulp": "^3.9.1",
