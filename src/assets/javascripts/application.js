@@ -334,8 +334,8 @@ function initialize(config) { // eslint-disable-line func-style
         return false
       }
 
-    /* Search is closed */
-    } else {
+    /* Search is closed and we're not inside a form */
+    } else if (document.activeElement && !document.activeElement.form) {
 
       /* F/S: Open search if not in input field */
       if (ev.keyCode === 70 || ev.keyCode === 83) {
