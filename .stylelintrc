@@ -6,6 +6,7 @@
   ],
   "rules": {
     "at-rule-empty-line-before": null,
+    "at-rule-no-unknown": null,
     "at-rule-no-vendor-prefix": true,
     "block-opening-brace-space-before": null,
     "block-closing-brace-newline-after": ["always", {
