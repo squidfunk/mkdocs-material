@@ -12,10 +12,19 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.7.4
+# Version 1.7.5
 ```
 
 ## Changelog
+
+### 1.7.5 <small> _ July 25, 2017</small>
+
+* Fixed [#398][398]: Forms broken due to search shortcuts
+* Improved search overall user experience
+* Improved search matching and highlighting
+* Improved search accessibility
+
+  [398]: https://github.com/squidfunk/mkdocs-material/issues/398
 
 ### 1.7.4 <small> _ June 21, 2017</small>
 
