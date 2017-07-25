@@ -194,7 +194,17 @@ export default class Result {
 
       /* Perform search on index and group sections by document */
       const result = this.index_
-        .search(this.value_)
+
+        /* Append trailing wildcard to all terms for prefix querying */
+        .query(query => {
+          this.value_.split(" ")
+            .filter(Boolean)
+            .forEach(term => {
+              query.term(term, { wildcard: lunr.Query.wildcard.TRAILING })
+            })
+        })
+
+        /* Process query results */
         .reduce((items, item) => {
           const doc = this.docs_.get(item.ref)
           if (doc.parent) {
@@ -209,7 +219,7 @@ export default class Result {
 
       /* Assemble highlight regex from query string */
       const match = new RegExp(
-        `(?:^|\\s)(${escape(this.value_.trim()).replace(" ", "|")})`, "img")
+        `(?:^|\\b)(${escape(this.value_.trim()).replace(" ", "|")})`, "img")
       const highlight = string => `<em>${string}</em>`
 
       /* Render results */
