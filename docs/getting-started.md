@@ -347,8 +347,10 @@ extra:
   disqus: 'your-disqus-shortname'
 ```
 
-A new entry at the bottom of the table of contents is generated that is linking
-to the comments section. The necessary JavaScript is automatically included.
+The comments section is inserted in *every page, except the index page*.
+Additionally, a new entry at the bottom of the table of contents is generated
+that is linking to the comments section. The necessary JavaScript is
+automatically included.
 
 !!! warning "Requirements"
 
