@@ -24,7 +24,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.7.4">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.7.5">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -150,7 +150,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-8ec1c9e2d8.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-07b0fbb49b.js"></script>
       {% set languages = lang.t("search.languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}
