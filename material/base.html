@@ -27,7 +27,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.7.4">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-components-1.7.5">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -42,7 +42,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-1df76c4e58.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-4fd40ae432.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-916117db6f.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-b778559f56.palette.css">
       {% endif %}
@@ -86,6 +86,9 @@
         {% endif %}
       </defs>
     </svg>
+    {% if config.extra.password %}
+      {% include "partials/password.html" %}
+    {% endif %}
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
@@ -173,6 +176,8 @@
           <script src="{{ path }}/lunr.multi.js"></script>
         {% endif %}
       {% endif %}
+      <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+      <script>window.mdc.autoInit()</script>
       <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
       <script src="https://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>
       <script src="{{ base_url }}/assets/javascripts/jq-mdc-web.js"></script>

@@ -7,20 +7,20 @@
     "documentation",
     "theme"
   ],
-  "homepage": "http://squidfunk.github.io/mkdocs-material-components/",
+  "homepage": "http://9ci.github.io/mkdocs-material-components/",
   "bugs": {
-    "url": "https://github.com/squidfunk/mkdocs-material/issues",
-    "email": "martin.donath@squidfunk.com"
+    "url": "https://github.com/9ci/mkdocs-material-components/issues",
+    "email": "dev@9ci.com"
   },
   "license": "MIT",
   "author": {
-    "name": "Martin Donath",
+    "name": "Martin Donath, Joshua Burnett",
     "email": "martin.donath@squidfunk.com"
   },
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/squidfunk/mkdocs-material.git"
+    "url": "https://github.com/9ci/mkdocs-material-components.git"
   },
   "scripts": {
     "build": "scripts/build",
@@ -30,9 +30,6 @@
     "lint": "scripts/lint",
     "start": "scripts/start",
     "travis": "scripts/travis"
-  },
-  "dependencies": {
-    "zepto": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -95,7 +92,8 @@
     "webpack": "^3.0.0",
     "webpack-stream": "^3.2.0",
     "whatwg-fetch": "^2.0.3",
-    "yargs": "^8.0.2"
+    "yargs": "^8.0.2",
+    "zepto": "^1.2.0"
   },
   "engines": {
     "node": ">= 5.0.0"

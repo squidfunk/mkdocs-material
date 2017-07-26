@@ -74,28 +74,28 @@ kbd {
 
   // 1st level headline
   h1 {
-    margin: 0 0 2.5rem;
+    margin: 0 0 1.5rem;
     color: $md-color-black--light;
     font-size: ms(3);
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 1.3;
   }
 
   // 2nd level headline
   h2 {
-    margin: 2.5rem 0 1rem;
+    margin: 2rem 0 1rem;
     font-size: ms(2);
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 1.4;
   }
 
   // 3rd level headline
   h3 {
-    margin: 2rem 0 1rem;
+    margin: 1.5rem 0 1rem;
     font-size: ms(1);
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: -0.01em;
     line-height: 1.5;
   }
@@ -131,7 +131,7 @@ kbd {
   // Horizontal separators
   hr {
     margin: 1.5em 0;
-    border-bottom: 0.1rem dotted $md-color-black--lighter;
+    border-bottom: 1px dotted $md-color-black--lighter;
   }
 
   // Links

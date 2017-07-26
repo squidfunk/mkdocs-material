@@ -147,12 +147,13 @@ $(function() {
   //does the button stuff on the default select on the page
 	$.excelEmbed = function(opts) { selectAll(opts); };
 	$.excelEmbed.defaults = {
-    showMicrosoftsToolBar:false,
+    showToolbar:true,
     uiOptions: {
       showDownloadButton: true,
       showGridlines: false,
       showParametersTaskPane: false,
       showRowColumnHeaders: false
+      //selectedCell
     },
     interactivityOptions: {
       allowTypingAndFormulaEntry: true,
@@ -168,31 +169,57 @@ $(function() {
   $('div[data-excel-token]').each(function() {
     var divFrame = this;
     var $divFrame = $(this)
-    var holder = '<div class="onedrive-card"></div>'
-    var $card = $divFrame.wrap(holder).parent()
-    var $toolbar = createToolbar(divFrame)
+    var $iFrameDiv = $('<div></div>')
+    var iFrameDiv = $iFrameDiv.get(0)
+    $divFrame.append($iFrameDiv)
+    //var $card = $divFrame.wrap(holder).parent()
 
     $divFrame.LoadingOverlay("show");
     //$it.hide();
     //console.log("data-excel-token", this.data-excel-token)
     var randId = "xls" + Math.floor(Math.random() * 100)
-    $divFrame.attr('id', randId)
+    $iFrameDiv.attr('id', randId)
 
-    //add class if its not there
-    if(!$divFrame.hasClass('excel-embed')){
-      $divFrame.addClass('excel-embed');
+    //setup the height and width stuff
+    var dheight = divFrame.getAttribute('height')
+    var dwidth = divFrame.getAttribute('width')
+    if(dheight) {
+      $divFrame.height(dheight + "px")
+      $iFrameDiv.height(dheight + "px")
+    }
+    if(dwidth) {
+      if(!dwidth.endsWith("%") && !dwidth.endsWith("px")){
+        dwidth = dwidth + "px"
+      }
+      $divFrame.width(dwidth)
+      $iFrameDiv.width(dwidth)
+    }
+    if($iFrameDiv.height() === 0){
+      $iFrameDiv.addClass('excel-embed')
+      //$iFrameDiv.height(600)
     }
 
-    var opts = {}
-    if($divFrame.data('range')) opts.item = $divFrame.data('range')
-    if($divFrame.data('interactivity')) opts.interactivityOptions = $divFrame.data('interactivity')
-    if($divFrame.data('ui')) opts.uiOptions = $divFrame.data('ui')
+    //add class for default height and width if not set
+    // if(!$divFrame.hasClass('excel-embed')){
+    //   $divFrame.addClass('excel-embed');
+    // }
 
-    var opts = $.extend({}, $.excelEmbed.defaults, opts);
+    var dataOpts = {}
+    if($divFrame.data('range')) dataOpts.item = $divFrame.data('range')
+    if($divFrame.data('interactivity')) dataOpts.interactivityOptions = $divFrame.data('interactivity')
+    if($divFrame.data('ui')) dataOpts.uiOptions = $divFrame.data('ui')
+    console.log("dataOpts", dataOpts);
+    var opts = $.extend({}, $.excelEmbed.defaults, dataOpts);
+
+    if($divFrame.data('selected-cell')) opts.uiOptions.selectedCell = $divFrame.data('selected-cell')
+    if(divFrame.hasAttribute('data-show-toolbar')) opts.showToolbar = $divFrame.data('show-toolbar')
+    console.log("opts", opts);
+
+    var $toolbar = opts.showToolbar ? createToolbar(divFrame) : null
 
     var loadedCallback = function(result){
       var ewa = result.getEwaControl();
-      var iframe = $divFrame.find("iframe").get(0);
+      var iframe = $iFrameDiv.find("iframe").get(0);
       //console.log("why wont it hide")
       if (result.getSucceeded()){
         console.log("getSucceeded")
@@ -201,10 +228,12 @@ $(function() {
         $(innerDoc).find("[id$='_m_ewaEmbedViewerBar']").hide()
         //configExcelToolbar(innerDoc)
         var docProps = getWorkbookContextJson($(innerDoc))
-
-        applyZoom(divFrame,iframe)
+        if(divFrame.hasAttribute('data-zoom')){
+          var zoom = parseInt(divFrame.getAttribute('data-zoom'))
+          applyZoom(iFrameDiv,iframe,zoom)
+        }
         console.log("applyZoom")
-        toolbarEvents(divFrame, $toolbar, docProps)
+        toolbarEvents(iFrameDiv, $toolbar, docProps)
       }else{
         $divFrame.append('<strong>EXCEL EMBED FAILED</strong>')
       }
@@ -223,9 +252,9 @@ $(function() {
     return json;
   }
 
-  function applyZoom(divFrame,iframe,zoomTo){
+  function applyZoom(iFrameDiv,iframe,zoomTo){
     console.log("applyZoom", zoomTo);
-    var zoom = zoomTo ? parseInt(zoomTo) : parseInt(divFrame.getAttribute('data-zoom'))
+    var zoom = zoomTo ? parseInt(zoomTo) : parseInt(iFrameDiv.getAttribute('data-zoom'))
 
     if(!zoom) return;
     var shinkby = 100.0 - zoom
@@ -233,7 +262,7 @@ $(function() {
     var zoomPct = zoom + '%'
     var divPct = (100.0 + Math.trunc(100 * shinkby/zoom)) + '%'
 
-    divFrame.style.width = divPct
+    iFrameDiv.style.width = divPct
     iframe.style.zoom = zoom/100
     iframe.style.height = divPct
     iframe.style['-webkit-transform'] = 'scale(' + zoom/100 + ')'
@@ -245,18 +274,18 @@ $(function() {
     iframe.style['transform-origin'] = '0 0'
 
     console.log("setAttribute zoom", zoom);
-    divFrame.setAttribute('data-zoom', zoom)
+    iFrameDiv.setAttribute('data-zoom', zoom)
   }
 
-  function zoomInc(divFrame, zoomIncrement){
-    console.log("zoomInc start", divFrame, zoomIncrement);
-    var iframe = $(divFrame).find('iframe').get(0)
-    var zoom = parseInt(divFrame.getAttribute('data-zoom'))
+  function zoomInc(iFrameDiv, zoomIncrement){
+    console.log("zoomInc start", iFrameDiv, zoomIncrement);
+    var iframe = $(iFrameDiv).find('iframe').get(0)
+    var zoom = parseInt(iFrameDiv.getAttribute('data-zoom'))
     console.log("zoomInc getAttribute", zoom);
     if(!zoom) zoom = 100
     zoom = zoomIncrement + zoom
-    console.log("zoom after inc calling applyZoom", divFrame, zoom);
-    applyZoom(divFrame,iframe,zoom)
+    console.log("zoom after inc calling applyZoom", iFrameDiv, zoom);
+    applyZoom(iFrameDiv,iframe,zoom)
   }
 
   function createToolbar(divFrame){
@@ -273,11 +302,12 @@ $(function() {
         </section> \
       </div> \
     </header>')
-    $(divFrame).before($tbar)
+    $(divFrame).prepend($tbar)
     return $tbar
   }
 
-  function toolbarEvents(divFrame, toolbar, docProps){
+  function toolbarEvents(iFrameDiv, toolbar, docProps){
+    if(!toolbar) return
 
     $(toolbar).find('.view').click(function(e) {
       e.preventDefault();
@@ -289,11 +319,11 @@ $(function() {
     });
     $(toolbar).find('.zoom_out').click(function(e) {
       e.preventDefault();
-      zoomInc(divFrame, (-10.0))
+      zoomInc(iFrameDiv, (-10.0))
     });
     $(toolbar).find('.zoom_in').click(function(e) {
       e.preventDefault();
-      zoomInc(divFrame, 10.0)
+      zoomInc(iFrameDiv, 10.0)
     });
 
   }

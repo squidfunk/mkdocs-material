@@ -27,7 +27,7 @@ site_url: http://9ci.github.io/mkdocs-material-components/
 # Repository
 repo_name: 9ci/mkdocs-material-components
 repo_url: https://github.com/9ci/mkdocs-material-components
-edit_uri: edit/master/docs/
+edit_uri: edit/material-components-web/docs/
 
 # Copyright
 # copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
@@ -40,7 +40,7 @@ extra:
   # use console.log(btoa('some-password')) in chrome console to generate.
   # If this is set js will force a div overlay over all the page content.
   # this is NOT security. A user can always just use the debubg console and remove the overlay div or just look at the html source for the page
-
+  # password: 'c2VjcmV0' # <- resolves to 'secret'
   # adds <meta name="robots" content="noindex,nofollow"> to keep search engines from indexing this
   # noindex: true
   feature:
@@ -90,9 +90,10 @@ pages:
   - Syntax Quick Start: sandbox.md
   - Embedding web apps:
     - Excel: embedding/excel.md
-    - Lucid Charts: embedding/lucid.md
+    - Lucid Charts : embedding/lucid.md
     - Evernote: embedding/evernote.md
     - Snagit & Jing: embedding/jing.md
+    - Github: embedding/github.md
   - Install & Config: getting-started.md
   - Extensions:
     - Admonition: extensions/admonition.md

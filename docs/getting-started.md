@@ -43,39 +43,8 @@ pip install mkdocs && mkdocs --version
 Material can be installed with `pip`:
 
 ``` sh
-pip install mkdocs-material
+pip install mkdocs-material-components
 ```
-
-#### using choco
-
-If you're on Windows you can use [Chocolatey][3] to install [Material][4]:
-
-``` dos
-choco install mkdocs-material
-```
-
-This will install all required dependencies like [Python][5] and [MkDocs][6].
-
-  [3]: https://chocolatey.org
-  [4]: https://chocolatey.org/packages/mkdocs-material
-  [5]: https://chocolatey.org/packages/python
-  [6]: https://chocolatey.org/packages/mkdocs
-
-#### cloning from GitHub
-
-Material can also be used without a system-wide installation by cloning the
-repository into a subfolder of your project's root directory:
-
-``` sh
-git clone https://github.com/squidfunk/mkdocs-material.git
-```
-
-This is especially useful if you want to [extend the theme][7] and
-[override some parts][8] of the theme. The theme will reside in the folder
-`mkdocs-material/material`.
-
-  [7]: customization.md#extending-the-theme
-  [8]: customization.md#overriding-partials
 
 ### Troubleshooting
 
@@ -106,13 +75,13 @@ In order to enable the theme just add one of the following lines to your
 project's `mkdocs.yml`. If you installed Material using pip:
 
 ``` yaml
-theme: 'material'
+theme: 'material-components'
 ```
 
 If you cloned Material from GitHub:
 
 ``` yaml
-theme_dir: 'mkdocs-material/material'
+theme_dir: 'mkdocs-material-components/material'
 ```
 
 MkDocs includes a development server, so you can review your changes as you go.

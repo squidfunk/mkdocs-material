@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# add a ~/.pypirc like so
+# [distutils]
+# index-servers =
+#  pypi
+#  pypitest
+#
+# [pypi]
+# username=xxx
+# password=yyy
+#
+# [pypitest]
+# username=xxx
+# password=yyy
+
+# for test run
+# python setup.py sdist upload -r pypitest
+
+python setup.py sdist upload -r pypi

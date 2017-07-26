@@ -173,6 +173,10 @@
         {% endif %}
       </defs>
     </svg>
+    
+    {% if config.extra.password %}
+      {% include "partials/password.html" %}
+    {% endif %}
 
     <!-- State toggles -->
     <input class="md-toggle" data-md-toggle="drawer"
@@ -308,6 +312,9 @@
           <script src="{{ path }}/lunr.multi.js"></script>
         {% endif %}
       {% endif %}
+
+      <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+      <script>window.mdc.autoInit();</script>
 
       <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
       <script type="text/javascript" src="https://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>

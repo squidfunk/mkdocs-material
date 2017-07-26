@@ -85,6 +85,20 @@
           </div>
         </div>
       {% endif %}
+      {% if config.extra.password %}
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <a href="#" class="material-icons mdc-toolbar__icon" onclick='return logoutProtection()'
+          aria-label="logout" alt="logout">exit_to_app</a>
+        </div>
+        <script type="text/javascript">
+        function logoutProtection(e){
+          //e.preventDefault(); // Otherwise the form will be submitted
+          localStorage.setItem("pwd_atob", null);
+          document.getElementById('protect-overlay').style.display = "";
+          return false;
+        }
+        </script>
+      {% endif %}
     </div>
   </nav>
 </header>

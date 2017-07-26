@@ -38,3 +38,4 @@
 # Distribution files
 /dist
 /mkdocs_material.egg-info
+mkdocs_material_components.egg-info
