@@ -71,6 +71,10 @@ export default class Result {
       other: this.meta_.dataset.mdLangResultOther
     }
 
+    /* Override tokenizer separator, if given */
+    if (this.el_.dataset.mdLangTokenizer.length)
+      lunr.tokenizer.separator = this.el_.dataset.mdLangTokenizer
+
     /* Load search languages */
     this.lang_ = this.el_.dataset.mdLangSearch.split(",")
       .filter(Boolean)
@@ -139,12 +143,19 @@ export default class Result {
           return docs
         }, new Map)
 
-        /* eslint-disable no-invalid-this, lines-around-comment */
+        /* eslint-disable no-invalid-this */
         const docs = this.docs_,
               lang = this.lang_
 
         /* Create index */
         this.index_ = lunr(function() {
+
+          /* Remove stemmer, as it cripples search experience */
+          this.pipeline.reset()
+          this.pipeline.add(
+            lunr.trimmer,
+            lunr.stopWordFilter
+          )
 
           /* Set up stemmers for search languages */
           if (lang.length === 1) {
@@ -161,8 +172,8 @@ export default class Result {
           /* Index documents */
           docs.forEach(doc => this.add(doc))
         })
-        /* eslint-enable no-invalid-this, lines-around-comment */
       }
+      /* eslint-enable no-invalid-this */
 
       /* Initialize index after short timeout to account for transition */
       setTimeout(() => {
@@ -217,10 +228,13 @@ export default class Result {
           return items
         }, new Map)
 
-      /* Assemble highlight regex from query string */
-      const match = new RegExp(
-        `(?:^|\\b)(${escape(this.value_.trim()).replace(" ", "|")})`, "img")
-      const highlight = string => `<em>${string}</em>`
+      /* Assemble regular expressions for matching */
+      const query = escape(this.value_.trim()).replace(
+        new RegExp(lunr.tokenizer.separator, "img"), "|")
+      const match =
+        new RegExp(`(^|${lunr.tokenizer.separator})(${query})`, "img")
+      const highlight = (_, separator, token) =>
+        `${separator}<em>${token}</em>`
 
       /* Render results */
       result.forEach((items, ref) => {
