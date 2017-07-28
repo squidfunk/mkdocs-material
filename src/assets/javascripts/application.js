@@ -136,8 +136,8 @@ function initialize(config) { // eslint-disable-line func-style
     new Material.Event.Listener(window, [
       "scroll", "resize", "orientationchange"
     ], new Material.Header.Shadow(
-        "[data-md-component=container]",
-        "[data-md-component=header]")))
+      "[data-md-component=container]",
+      "[data-md-component=header]")))
 
   /* Component: tabs visibility toggle */
   if (document.querySelector("[data-md-component=tabs]"))
@@ -150,8 +150,8 @@ function initialize(config) { // eslint-disable-line func-style
     new Material.Event.Listener(window, [
       "scroll", "resize", "orientationchange"
     ], new Material.Sidebar.Position(
-        "[data-md-component=navigation]",
-        "[data-md-component=header]")))
+      "[data-md-component=navigation]",
+      "[data-md-component=header]")))
 
   /* Component: sidebar with table of contents (missing on 404 page) */
   if (document.querySelector("[data-md-component=toc]"))
@@ -159,8 +159,8 @@ function initialize(config) { // eslint-disable-line func-style
       new Material.Event.Listener(window, [
         "scroll", "resize", "orientationchange"
       ], new Material.Sidebar.Position(
-          "[data-md-component=toc]",
-          "[data-md-component=header]")))
+        "[data-md-component=toc]",
+        "[data-md-component=header]")))
 
   /* Component: link blurring for table of contents */
   new Material.Event.MatchMedia("(min-width: 960px)",
@@ -191,16 +191,16 @@ function initialize(config) { // eslint-disable-line func-style
   new Material.Event.Listener("[data-md-component=query]", [
     "focus", "keyup", "change"
   ], new Material.Search.Result("[data-md-component=result]", () => {
-      return fetch(`${config.url.base}/mkdocs/search_index.json`, {
-        credentials: "same-origin"
-      }).then(response => response.json())
-        .then(data => {
-          return data.docs.map(doc => {
-            doc.location = config.url.base + doc.location
-            return doc
-          })
+    return fetch(`${config.url.base}/mkdocs/search_index.json`, {
+      credentials: "same-origin"
+    }).then(response => response.json())
+      .then(data => {
+        return data.docs.map(doc => {
+          doc.location = config.url.base + doc.location
+          return doc
         })
-    })).listen()
+      })
+  })).listen()
 
   /* Listener: close drawer when anchor links are clicked */
   new Material.Event.MatchMedia("(max-width: 959px)",

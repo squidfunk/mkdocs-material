@@ -1,1 +1,1087 @@
-!function(r,i){"function"==typeof define&&define.amd?define(i):"object"==typeof exports?module.exports=i():i()(r.lunr)}(this,function(){return function(r){if(void 0===r)throw new Error("Lunr is not present. Please include / require Lunr before this script.");if(void 0===r.stemmerSupport)throw new Error("Lunr stemmer support is not present. Please include / require Lunr stemmer support before this script.");r.tr=function(){this.pipeline.reset(),this.pipeline.add(r.tr.trimmer,r.tr.stopWordFilter,r.tr.stemmer),this.searchPipeline&&(this.searchPipeline.reset(),this.searchPipeline.add(r.tr.stemmer))},r.tr.wordCharacters="A-Za-zªºÀ-ÖØ-öø-ʸˠ-ˤᴀ-ᴥᴬ-ᵜᵢ-ᵥᵫ-ᵷᵹ-ᶾḀ-ỿⁱⁿₐ-ₜKÅℲⅎⅠ-ↈⱠ-ⱿꜢ-ꞇꞋ-ꞭꞰ-ꞷꟷ-ꟿꬰ-ꭚꭜ-ꭤﬀ-ﬆＡ-Ｚａ-ｚ",r.tr.trimmer=r.trimmerSupport.generateTrimmer(r.tr.wordCharacters),r.Pipeline.registerFunction(r.tr.trimmer,"trimmer-tr"),r.tr.stemmer=function(){var i=r.stemmerSupport.Among,e=r.stemmerSupport.SnowballProgram,n=new function(){function r(r,i,e){for(;;){var n=jr.limit-jr.cursor;if(jr.in_grouping_b(r,i,e)){jr.cursor=jr.limit-n;break}if(jr.cursor=jr.limit-n,jr.cursor<=jr.limit_backward)return!1;jr.cursor--}return!0}function n(){var i,e;i=jr.limit-jr.cursor,r(Wr,97,305);for(var n=0;n<Er.length;n++){e=jr.limit-jr.cursor;var t=Er[n];if(jr.eq_s_b(1,t[0])&&r(t[1],t[2],t[3]))return jr.cursor=jr.limit-i,!0;jr.cursor=jr.limit-e}return jr.cursor=jr.limit-e,!(!jr.eq_s_b(1,"ü")||!r(Ar,246,252))&&(jr.cursor=jr.limit-i,!0)}function t(r,i){var e,n=jr.limit-jr.cursor;return r()&&(jr.cursor=jr.limit-n,jr.cursor>jr.limit_backward&&(jr.cursor--,e=jr.limit-jr.cursor,i()))?(jr.cursor=jr.limit-e,!0):(jr.cursor=jr.limit-n,r()?(jr.cursor=jr.limit-n,!1):(jr.cursor=jr.limit-n,!(jr.cursor<=jr.limit_backward)&&(jr.cursor--,!!i()&&(jr.cursor=jr.limit-n,!0))))}function u(r){return t(r,function(){return jr.in_grouping_b(Wr,97,305)})}function o(){return u(function(){return jr.eq_s_b(1,"n")})}function s(){return u(function(){return jr.eq_s_b(1,"s")})}function c(){return u(function(){return jr.eq_s_b(1,"y")})}function l(){return t(function(){return jr.in_grouping_b(Lr,105,305)},function(){return jr.out_grouping_b(Wr,97,305)})}function a(){return jr.find_among_b(ur,10)&&l()}function m(){return n()&&jr.in_grouping_b(Lr,105,305)&&s()}function d(){return jr.find_among_b(or,2)}function f(){return n()&&jr.in_grouping_b(Lr,105,305)&&c()}function b(){return n()&&jr.find_among_b(sr,4)}function w(){return n()&&jr.find_among_b(cr,4)&&o()}function _(){return n()&&jr.find_among_b(lr,2)&&c()}function k(){return n()&&jr.find_among_b(ar,2)}function p(){return n()&&jr.find_among_b(mr,4)}function g(){return n()&&jr.find_among_b(dr,2)}function y(){return n()&&jr.find_among_b(fr,4)}function z(){return n()&&jr.find_among_b(br,2)}function v(){return n()&&jr.find_among_b(wr,2)&&c()}function h(){return jr.eq_s_b(2,"ki")}function q(){return n()&&jr.find_among_b(_r,2)&&o()}function C(){return n()&&jr.find_among_b(kr,4)&&c()}function P(){return n()&&jr.find_among_b(pr,4)}function F(){return n()&&jr.find_among_b(gr,4)&&c()}function S(){return jr.find_among_b(yr,4)}function W(){return n()&&jr.find_among_b(zr,2)}function L(){return n()&&jr.find_among_b(vr,4)}function x(){return n()&&jr.find_among_b(hr,8)}function A(){return jr.find_among_b(qr,2)}function E(){return n()&&jr.find_among_b(Cr,32)&&c()}function j(){return jr.find_among_b(Pr,8)&&c()}function T(){return n()&&jr.find_among_b(Fr,4)&&c()}function Z(){return jr.eq_s_b(3,"ken")&&c()}function B(){var r=jr.limit-jr.cursor;return!(T()||(jr.cursor=jr.limit-r,E()||(jr.cursor=jr.limit-r,j()||(jr.cursor=jr.limit-r,Z()))))}function D(){if(A()){var r=jr.limit-jr.cursor;if(S()||(jr.cursor=jr.limit-r,W()||(jr.cursor=jr.limit-r,C()||(jr.cursor=jr.limit-r,P()||(jr.cursor=jr.limit-r,F()||(jr.cursor=jr.limit-r))))),T())return!1}return!0}function G(){if(W()){jr.bra=jr.cursor,jr.slice_del();var r=jr.limit-jr.cursor;return jr.ket=jr.cursor,x()||(jr.cursor=jr.limit-r,E()||(jr.cursor=jr.limit-r,j()||(jr.cursor=jr.limit-r,T()||(jr.cursor=jr.limit-r)))),nr=!1,!1}return!0}function H(){if(!L())return!0;var r=jr.limit-jr.cursor;return!E()&&(jr.cursor=jr.limit-r,!j())}function I(){var r,i=jr.limit-jr.cursor;return!(S()||(jr.cursor=jr.limit-i,F()||(jr.cursor=jr.limit-i,P()||(jr.cursor=jr.limit-i,C()))))||(jr.bra=jr.cursor,jr.slice_del(),r=jr.limit-jr.cursor,jr.ket=jr.cursor,T()||(jr.cursor=jr.limit-r),!1)}function J(){var r,i=jr.limit-jr.cursor;if(jr.ket=jr.cursor,nr=!0,B()&&(jr.cursor=jr.limit-i,D()&&(jr.cursor=jr.limit-i,G()&&(jr.cursor=jr.limit-i,H()&&(jr.cursor=jr.limit-i,I()))))){if(jr.cursor=jr.limit-i,!x())return;jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,r=jr.limit-jr.cursor,S()||(jr.cursor=jr.limit-r,W()||(jr.cursor=jr.limit-r,C()||(jr.cursor=jr.limit-r,P()||(jr.cursor=jr.limit-r,F()||(jr.cursor=jr.limit-r))))),T()||(jr.cursor=jr.limit-r)}jr.bra=jr.cursor,jr.slice_del()}function K(){var r,i,e,n;if(jr.ket=jr.cursor,h()){if(r=jr.limit-jr.cursor,p())return jr.bra=jr.cursor,jr.slice_del(),i=jr.limit-jr.cursor,jr.ket=jr.cursor,W()?(jr.bra=jr.cursor,jr.slice_del(),K()):(jr.cursor=jr.limit-i,a()&&(jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,W()&&(jr.bra=jr.cursor,jr.slice_del(),K()))),!0;if(jr.cursor=jr.limit-r,w()){if(jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,e=jr.limit-jr.cursor,d())jr.bra=jr.cursor,jr.slice_del();else{if(jr.cursor=jr.limit-e,jr.ket=jr.cursor,!a()&&(jr.cursor=jr.limit-e,!m()&&(jr.cursor=jr.limit-e,!K())))return!0;jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,W()&&(jr.bra=jr.cursor,jr.slice_del(),K())}return!0}if(jr.cursor=jr.limit-r,g()){if(n=jr.limit-jr.cursor,d())jr.bra=jr.cursor,jr.slice_del();else if(jr.cursor=jr.limit-n,m())jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,W()&&(jr.bra=jr.cursor,jr.slice_del(),K());else if(jr.cursor=jr.limit-n,!K())return!1;return!0}}return!1}function M(r){if(jr.ket=jr.cursor,!g()&&(jr.cursor=jr.limit-r,!k()))return!1;var i=jr.limit-jr.cursor;if(d())jr.bra=jr.cursor,jr.slice_del();else if(jr.cursor=jr.limit-i,m())jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,W()&&(jr.bra=jr.cursor,jr.slice_del(),K());else if(jr.cursor=jr.limit-i,!K())return!1;return!0}function N(r){if(jr.ket=jr.cursor,!z()&&(jr.cursor=jr.limit-r,!b()))return!1;var i=jr.limit-jr.cursor;return!(!m()&&(jr.cursor=jr.limit-i,!d()))&&(jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,W()&&(jr.bra=jr.cursor,jr.slice_del(),K()),!0)}function O(){var r,i=jr.limit-jr.cursor;return jr.ket=jr.cursor,!(!w()&&(jr.cursor=jr.limit-i,!v()))&&(jr.bra=jr.cursor,jr.slice_del(),r=jr.limit-jr.cursor,jr.ket=jr.cursor,!(!W()||(jr.bra=jr.cursor,jr.slice_del(),!K()))||(jr.cursor=jr.limit-r,jr.ket=jr.cursor,!(a()||(jr.cursor=jr.limit-r,m()||(jr.cursor=jr.limit-r,K())))||(jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,W()&&(jr.bra=jr.cursor,jr.slice_del(),K()),!0)))}function Q(){var r,i,e=jr.limit-jr.cursor;if(jr.ket=jr.cursor,!p()&&(jr.cursor=jr.limit-e,!f()&&(jr.cursor=jr.limit-e,!_())))return!1;if(jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,r=jr.limit-jr.cursor,a())jr.bra=jr.cursor,jr.slice_del(),i=jr.limit-jr.cursor,jr.ket=jr.cursor,W()||(jr.cursor=jr.limit-i);else if(jr.cursor=jr.limit-r,!W())return!0;return jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,K(),!0}function R(){var r,i,e=jr.limit-jr.cursor;if(jr.ket=jr.cursor,W())return jr.bra=jr.cursor,jr.slice_del(),void K();if(jr.cursor=jr.limit-e,jr.ket=jr.cursor,q())if(jr.bra=jr.cursor,jr.slice_del(),r=jr.limit-jr.cursor,jr.ket=jr.cursor,d())jr.bra=jr.cursor,jr.slice_del();else{if(jr.cursor=jr.limit-r,jr.ket=jr.cursor,!a()&&(jr.cursor=jr.limit-r,!m())){if(jr.cursor=jr.limit-r,jr.ket=jr.cursor,!W())return;if(jr.bra=jr.cursor,jr.slice_del(),!K())return}jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,W()&&(jr.bra=jr.cursor,jr.slice_del(),K())}else if(jr.cursor=jr.limit-e,!M(e)&&(jr.cursor=jr.limit-e,!N(e))){if(jr.cursor=jr.limit-e,jr.ket=jr.cursor,y())return jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,i=jr.limit-jr.cursor,void(a()?(jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,W()&&(jr.bra=jr.cursor,jr.slice_del(),K())):(jr.cursor=jr.limit-i,W()?(jr.bra=jr.cursor,jr.slice_del(),K()):(jr.cursor=jr.limit-i,K())));if(jr.cursor=jr.limit-e,!O()){if(jr.cursor=jr.limit-e,d())return jr.bra=jr.cursor,void jr.slice_del();jr.cursor=jr.limit-e,K()||(jr.cursor=jr.limit-e,Q()||(jr.cursor=jr.limit-e,jr.ket=jr.cursor,(a()||(jr.cursor=jr.limit-e,m()))&&(jr.bra=jr.cursor,jr.slice_del(),jr.ket=jr.cursor,W()&&(jr.bra=jr.cursor,jr.slice_del(),K()))))}}}function U(){var r;if(jr.ket=jr.cursor,r=jr.find_among_b(Sr,4))switch(jr.bra=jr.cursor,r){case 1:jr.slice_from("p");break;case 2:jr.slice_from("ç");break;case 3:jr.slice_from("t");break;case 4:jr.slice_from("k")}}function V(){for(;;){var r=jr.limit-jr.cursor;if(jr.in_grouping_b(Wr,97,305)){jr.cursor=jr.limit-r;break}if(jr.cursor=jr.limit-r,jr.cursor<=jr.limit_backward)return!1;jr.cursor--}return!0}function X(r,i,e){if(jr.cursor=jr.limit-r,V()){var n=jr.limit-jr.cursor;if(!jr.eq_s_b(1,i)&&(jr.cursor=jr.limit-n,!jr.eq_s_b(1,e)))return!0;jr.cursor=jr.limit-r;var t=jr.cursor;return jr.insert(jr.cursor,jr.cursor,e),jr.cursor=t,!1}return!0}function Y(){var r=jr.limit-jr.cursor;(jr.eq_s_b(1,"d")||(jr.cursor=jr.limit-r,jr.eq_s_b(1,"g")))&&X(r,"a","ı")&&X(r,"e","i")&&X(r,"o","u")&&X(r,"ö","ü")}function $(){for(var r,i=jr.cursor,e=2;;){for(r=jr.cursor;!jr.in_grouping(Wr,97,305);){if(jr.cursor>=jr.limit)return jr.cursor=r,!(e>0)&&(jr.cursor=i,!0);jr.cursor++}e--}}function rr(r,i,e){for(;!jr.eq_s(i,e);){if(jr.cursor>=jr.limit)return!0;jr.cursor++}return(tr=i)!=jr.limit||(jr.cursor=r,!1)}function ir(){var r=jr.cursor;return!rr(r,2,"ad")||(jr.cursor=r,!rr(r,5,"soyad"))}function er(){var r=jr.cursor;return!ir()&&(jr.limit_backward=r,jr.cursor=jr.limit,Y(),jr.cursor=jr.limit,U(),!0)}var nr,tr,ur=[new i("m",-1,-1),new i("n",-1,-1),new i("miz",-1,-1),new i("niz",-1,-1),new i("muz",-1,-1),new i("nuz",-1,-1),new i("müz",-1,-1),new i("nüz",-1,-1),new i("mız",-1,-1),new i("nız",-1,-1)],or=[new i("leri",-1,-1),new i("ları",-1,-1)],sr=[new i("ni",-1,-1),new i("nu",-1,-1),new i("nü",-1,-1),new i("nı",-1,-1)],cr=[new i("in",-1,-1),new i("un",-1,-1),new i("ün",-1,-1),new i("ın",-1,-1)],lr=[new i("a",-1,-1),new i("e",-1,-1)],ar=[new i("na",-1,-1),new i("ne",-1,-1)],mr=[new i("da",-1,-1),new i("ta",-1,-1),new i("de",-1,-1),new i("te",-1,-1)],dr=[new i("nda",-1,-1),new i("nde",-1,-1)],fr=[new i("dan",-1,-1),new i("tan",-1,-1),new i("den",-1,-1),new i("ten",-1,-1)],br=[new i("ndan",-1,-1),new i("nden",-1,-1)],wr=[new i("la",-1,-1),new i("le",-1,-1)],_r=[new i("ca",-1,-1),new i("ce",-1,-1)],kr=[new i("im",-1,-1),new i("um",-1,-1),new i("üm",-1,-1),new i("ım",-1,-1)],pr=[new i("sin",-1,-1),new i("sun",-1,-1),new i("sün",-1,-1),new i("sın",-1,-1)],gr=[new i("iz",-1,-1),new i("uz",-1,-1),new i("üz",-1,-1),new i("ız",-1,-1)],yr=[new i("siniz",-1,-1),new i("sunuz",-1,-1),new i("sünüz",-1,-1),new i("sınız",-1,-1)],zr=[new i("lar",-1,-1),new i("ler",-1,-1)],vr=[new i("niz",-1,-1),new i("nuz",-1,-1),new i("nüz",-1,-1),new i("nız",-1,-1)],hr=[new i("dir",-1,-1),new i("tir",-1,-1),new i("dur",-1,-1),new i("tur",-1,-1),new i("dür",-1,-1),new i("tür",-1,-1),new i("dır",-1,-1),new i("tır",-1,-1)],qr=[new i("casına",-1,-1),new i("cesine",-1,-1)],Cr=[new i("di",-1,-1),new i("ti",-1,-1),new i("dik",-1,-1),new i("tik",-1,-1),new i("duk",-1,-1),new i("tuk",-1,-1),new i("dük",-1,-1),new i("tük",-1,-1),new i("dık",-1,-1),new i("tık",-1,-1),new i("dim",-1,-1),new i("tim",-1,-1),new i("dum",-1,-1),new i("tum",-1,-1),new i("düm",-1,-1),new i("tüm",-1,-1),new i("dım",-1,-1),new i("tım",-1,-1),new i("din",-1,-1),new i("tin",-1,-1),new i("dun",-1,-1),new i("tun",-1,-1),new i("dün",-1,-1),new i("tün",-1,-1),new i("dın",-1,-1),new i("tın",-1,-1),new i("du",-1,-1),new i("tu",-1,-1),new i("dü",-1,-1),new i("tü",-1,-1),new i("dı",-1,-1),new i("tı",-1,-1)],Pr=[new i("sa",-1,-1),new i("se",-1,-1),new i("sak",-1,-1),new i("sek",-1,-1),new i("sam",-1,-1),new i("sem",-1,-1),new i("san",-1,-1),new i("sen",-1,-1)],Fr=[new i("miş",-1,-1),new i("muş",-1,-1),new i("müş",-1,-1),new i("mış",-1,-1)],Sr=[new i("b",-1,1),new i("c",-1,2),new i("d",-1,3),new i("ğ",-1,4)],Wr=[17,65,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,8,0,0,0,0,0,0,1],Lr=[1,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,1],xr=[65],Ar=[65],Er=[["a",[1,64,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],97,305],["e",[17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,130],101,252],["ı",[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],97,305],["i",[17],101,105],["o",xr,111,117],["ö",Ar,246,252],["u",xr,111,117]],jr=new e;this.setCurrent=function(r){jr.setCurrent(r)},this.getCurrent=function(){return jr.getCurrent()},this.stem=function(){return!!($()&&(jr.limit_backward=jr.cursor,jr.cursor=jr.limit,J(),jr.cursor=jr.limit,nr&&(R(),jr.cursor=jr.limit_backward,er())))}};return function(r){return"function"==typeof r.update?r.update(function(r){return n.setCurrent(r),n.stem(),n.getCurrent()}):(n.setCurrent(r),n.stem(),n.getCurrent())}}(),r.Pipeline.registerFunction(r.tr.stemmer,"stemmer-tr"),r.tr.stopWordFilter=r.generateStopWordFilter("acaba altmış altı ama ancak arada aslında ayrıca bana bazı belki ben benden beni benim beri beş bile bin bir biri birkaç birkez birçok birşey birşeyi biz bizden bize bizi bizim bu buna bunda bundan bunlar bunları bunların bunu bunun burada böyle böylece da daha dahi de defa değil diye diğer doksan dokuz dolayı dolayısıyla dört edecek eden ederek edilecek ediliyor edilmesi ediyor elli en etmesi etti ettiği ettiğini eğer gibi göre halen hangi hatta hem henüz hep hepsi her herhangi herkesin hiç hiçbir iki ile ilgili ise itibaren itibariyle için işte kadar karşın katrilyon kendi kendilerine kendini kendisi kendisine kendisini kez ki kim kimden kime kimi kimse kırk milyar milyon mu mü mı nasıl ne neden nedenle nerde nerede nereye niye niçin o olan olarak oldu olduklarını olduğu olduğunu olmadı olmadığı olmak olması olmayan olmaz olsa olsun olup olur olursa oluyor on ona ondan onlar onlardan onları onların onu onun otuz oysa pek rağmen sadece sanki sekiz seksen sen senden seni senin siz sizden sizi sizin tarafından trilyon tüm var vardı ve veya ya yani yapacak yapmak yaptı yaptıkları yaptığı yaptığını yapılan yapılması yapıyor yedi yerine yetmiş yine yirmi yoksa yüz zaten çok çünkü öyle üzere üç şey şeyden şeyi şeyler şu şuna şunda şundan şunları şunu şöyle".split(" ")),r.Pipeline.registerFunction(r.tr.stopWordFilter,"stopWordFilter-tr")}});
+/*!
+ * Lunr languages, `Turkish` language
+ * https://github.com/MihaiValentin/lunr-languages
+ *
+ * Copyright 2014, Mihai Valentin
+ * http://www.mozilla.org/MPL/
+ */
+/*!
+ * based on
+ * Snowball JavaScript Library v0.3
+ * http://code.google.com/p/urim/
+ * http://snowball.tartarus.org/
+ *
+ * Copyright 2010, Oleg Mazko
+ * http://www.mozilla.org/MPL/
+ */
+
+/**
+ * export the module via AMD, CommonJS or as a browser global
+ * Export code from https://github.com/umdjs/umd/blob/master/returnExports.js
+ */
+;
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(factory)
+  } else if (typeof exports === 'object') {
+    /**
+     * Node. Does not work with strict CommonJS, but
+     * only CommonJS-like environments that support module.exports,
+     * like Node.
+     */
+    module.exports = factory()
+  } else {
+    // Browser globals (root is window)
+    factory()(root.lunr);
+  }
+}(this, function() {
+  /**
+   * Just return a value to define the module export.
+   * This example returns an object, but the module
+   * can return a function as the exported value.
+   */
+  return function(lunr) {
+    /* throw error if lunr is not yet included */
+    if ('undefined' === typeof lunr) {
+      throw new Error('Lunr is not present. Please include / require Lunr before this script.');
+    }
+
+    /* throw error if lunr stemmer support is not yet included */
+    if ('undefined' === typeof lunr.stemmerSupport) {
+      throw new Error('Lunr stemmer support is not present. Please include / require Lunr stemmer support before this script.');
+    }
+
+    /* register specific locale function */
+    lunr.tr = function() {
+      this.pipeline.reset();
+      this.pipeline.add(
+        lunr.tr.trimmer,
+        lunr.tr.stopWordFilter,
+        lunr.tr.stemmer
+      );
+
+      // for lunr version 2
+      // this is necessary so that every searched word is also stemmed before
+      // in lunr <= 1 this is not needed, as it is done using the normal pipeline
+      if (this.searchPipeline) {
+        this.searchPipeline.reset();
+        this.searchPipeline.add(lunr.tr.stemmer)
+      }
+    };
+
+    /* lunr trimmer function */
+    lunr.tr.wordCharacters = "A-Za-z\xAA\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02B8\u02E0-\u02E4\u1D00-\u1D25\u1D2C-\u1D5C\u1D62-\u1D65\u1D6B-\u1D77\u1D79-\u1DBE\u1E00-\u1EFF\u2071\u207F\u2090-\u209C\u212A\u212B\u2132\u214E\u2160-\u2188\u2C60-\u2C7F\uA722-\uA787\uA78B-\uA7AD\uA7B0-\uA7B7\uA7F7-\uA7FF\uAB30-\uAB5A\uAB5C-\uAB64\uFB00-\uFB06\uFF21-\uFF3A\uFF41-\uFF5A";
+    lunr.tr.trimmer = lunr.trimmerSupport.generateTrimmer(lunr.tr.wordCharacters);
+
+    lunr.Pipeline.registerFunction(lunr.tr.trimmer, 'trimmer-tr');
+
+    /* lunr stemmer function */
+    lunr.tr.stemmer = (function() {
+      /* create the wrapped stemmer object */
+      var Among = lunr.stemmerSupport.Among,
+        SnowballProgram = lunr.stemmerSupport.SnowballProgram,
+        st = new function TurkishStemmer() {
+          var a_0 = [new Among("m", -1, -1), new Among("n", -1, -1),
+              new Among("miz", -1, -1), new Among("niz", -1, -1),
+              new Among("muz", -1, -1), new Among("nuz", -1, -1),
+              new Among("m\u00FCz", -1, -1), new Among("n\u00FCz", -1, -1),
+              new Among("m\u0131z", -1, -1), new Among("n\u0131z", -1, -1)
+            ],
+            a_1 = [
+              new Among("leri", -1, -1), new Among("lar\u0131", -1, -1)
+            ],
+            a_2 = [
+              new Among("ni", -1, -1), new Among("nu", -1, -1),
+              new Among("n\u00FC", -1, -1), new Among("n\u0131", -1, -1)
+            ],
+            a_3 = [
+              new Among("in", -1, -1), new Among("un", -1, -1),
+              new Among("\u00FCn", -1, -1), new Among("\u0131n", -1, -1)
+            ],
+            a_4 = [
+              new Among("a", -1, -1), new Among("e", -1, -1)
+            ],
+            a_5 = [
+              new Among("na", -1, -1), new Among("ne", -1, -1)
+            ],
+            a_6 = [
+              new Among("da", -1, -1), new Among("ta", -1, -1),
+              new Among("de", -1, -1), new Among("te", -1, -1)
+            ],
+            a_7 = [
+              new Among("nda", -1, -1), new Among("nde", -1, -1)
+            ],
+            a_8 = [
+              new Among("dan", -1, -1), new Among("tan", -1, -1),
+              new Among("den", -1, -1), new Among("ten", -1, -1)
+            ],
+            a_9 = [
+              new Among("ndan", -1, -1), new Among("nden", -1, -1)
+            ],
+            a_10 = [
+              new Among("la", -1, -1), new Among("le", -1, -1)
+            ],
+            a_11 = [
+              new Among("ca", -1, -1), new Among("ce", -1, -1)
+            ],
+            a_12 = [
+              new Among("im", -1, -1), new Among("um", -1, -1),
+              new Among("\u00FCm", -1, -1), new Among("\u0131m", -1, -1)
+            ],
+            a_13 = [
+              new Among("sin", -1, -1), new Among("sun", -1, -1),
+              new Among("s\u00FCn", -1, -1), new Among("s\u0131n", -1, -1)
+            ],
+            a_14 = [
+              new Among("iz", -1, -1), new Among("uz", -1, -1),
+              new Among("\u00FCz", -1, -1), new Among("\u0131z", -1, -1)
+            ],
+            a_15 = [
+              new Among("siniz", -1, -1), new Among("sunuz", -1, -1),
+              new Among("s\u00FCn\u00FCz", -1, -1),
+              new Among("s\u0131n\u0131z", -1, -1)
+            ],
+            a_16 = [
+              new Among("lar", -1, -1), new Among("ler", -1, -1)
+            ],
+            a_17 = [
+              new Among("niz", -1, -1), new Among("nuz", -1, -1),
+              new Among("n\u00FCz", -1, -1), new Among("n\u0131z", -1, -1)
+            ],
+            a_18 = [
+              new Among("dir", -1, -1), new Among("tir", -1, -1),
+              new Among("dur", -1, -1), new Among("tur", -1, -1),
+              new Among("d\u00FCr", -1, -1), new Among("t\u00FCr", -1, -1),
+              new Among("d\u0131r", -1, -1), new Among("t\u0131r", -1, -1)
+            ],
+            a_19 = [
+              new Among("cas\u0131na", -1, -1), new Among("cesine", -1, -1)
+            ],
+            a_20 = [
+              new Among("di", -1, -1), new Among("ti", -1, -1),
+              new Among("dik", -1, -1), new Among("tik", -1, -1),
+              new Among("duk", -1, -1), new Among("tuk", -1, -1),
+              new Among("d\u00FCk", -1, -1), new Among("t\u00FCk", -1, -1),
+              new Among("d\u0131k", -1, -1), new Among("t\u0131k", -1, -1),
+              new Among("dim", -1, -1), new Among("tim", -1, -1),
+              new Among("dum", -1, -1), new Among("tum", -1, -1),
+              new Among("d\u00FCm", -1, -1), new Among("t\u00FCm", -1, -1),
+              new Among("d\u0131m", -1, -1), new Among("t\u0131m", -1, -1),
+              new Among("din", -1, -1), new Among("tin", -1, -1),
+              new Among("dun", -1, -1), new Among("tun", -1, -1),
+              new Among("d\u00FCn", -1, -1), new Among("t\u00FCn", -1, -1),
+              new Among("d\u0131n", -1, -1), new Among("t\u0131n", -1, -1),
+              new Among("du", -1, -1), new Among("tu", -1, -1),
+              new Among("d\u00FC", -1, -1), new Among("t\u00FC", -1, -1),
+              new Among("d\u0131", -1, -1), new Among("t\u0131", -1, -1)
+            ],
+            a_21 = [
+              new Among("sa", -1, -1), new Among("se", -1, -1),
+              new Among("sak", -1, -1), new Among("sek", -1, -1),
+              new Among("sam", -1, -1), new Among("sem", -1, -1),
+              new Among("san", -1, -1), new Among("sen", -1, -1)
+            ],
+            a_22 = [
+              new Among("mi\u015F", -1, -1), new Among("mu\u015F", -1, -1),
+              new Among("m\u00FC\u015F", -1, -1),
+              new Among("m\u0131\u015F", -1, -1)
+            ],
+            a_23 = [new Among("b", -1, 1),
+              new Among("c", -1, 2), new Among("d", -1, 3),
+              new Among("\u011F", -1, 4)
+            ],
+            g_vowel = [17, 65, 16, 0, 0, 0, 0, 0,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 8, 0, 0, 0, 0, 0, 0, 1
+            ],
+            g_U = [
+              1, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0,
+              0, 0, 0, 1
+            ],
+            g_vowel1 = [1, 64, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+            ],
+            g_vowel2 = [17, 0, 0, 0,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 130
+            ],
+            g_vowel3 = [1, 0,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+              0, 0, 1
+            ],
+            g_vowel4 = [17],
+            g_vowel5 = [65],
+            g_vowel6 = [65],
+            B_c_s_n_s, I_strlen, g_habr = [
+              ["a", g_vowel1, 97, 305],
+              ["e", g_vowel2, 101, 252],
+              ["\u0131", g_vowel3, 97, 305],
+              ["i", g_vowel4, 101, 105],
+              ["o", g_vowel5, 111, 117],
+              ["\u00F6", g_vowel6, 246, 252],
+              ["u", g_vowel5, 111, 117]
+            ],
+            sbp = new SnowballProgram();
+          this.setCurrent = function(word) {
+            sbp.setCurrent(word);
+          };
+          this.getCurrent = function() {
+            return sbp.getCurrent();
+          };
+
+          function habr1(g_v, n1, n2) {
+            while (true) {
+              var v_1 = sbp.limit - sbp.cursor;
+              if (sbp.in_grouping_b(g_v, n1, n2)) {
+                sbp.cursor = sbp.limit - v_1;
+                break;
+              }
+              sbp.cursor = sbp.limit - v_1;
+              if (sbp.cursor <= sbp.limit_backward)
+                return false;
+              sbp.cursor--;
+            }
+            return true;
+          }
+
+          function r_check_vowel_harmony() {
+            var v_1, v_2;
+            v_1 = sbp.limit - sbp.cursor;
+            habr1(g_vowel, 97, 305);
+            for (var i = 0; i < g_habr.length; i++) {
+              v_2 = sbp.limit - sbp.cursor;
+              var habr = g_habr[i];
+              if (sbp.eq_s_b(1, habr[0]) && habr1(habr[1], habr[2], habr[3])) {
+                sbp.cursor = sbp.limit - v_1;
+                return true;
+              }
+              sbp.cursor = sbp.limit - v_2;
+            }
+            sbp.cursor = sbp.limit - v_2;
+            if (!sbp.eq_s_b(1, "\u00FC") || !habr1(g_vowel6, 246, 252))
+              return false;
+            sbp.cursor = sbp.limit - v_1;
+            return true;
+          }
+
+          function habr2(f1, f2) {
+            var v_1 = sbp.limit - sbp.cursor,
+              v_2;
+            if (f1()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (sbp.cursor > sbp.limit_backward) {
+                sbp.cursor--;
+                v_2 = sbp.limit - sbp.cursor;
+                if (f2()) {
+                  sbp.cursor = sbp.limit - v_2;
+                  return true;
+                }
+              }
+            }
+            sbp.cursor = sbp.limit - v_1;
+            if (f1()) {
+              sbp.cursor = sbp.limit - v_1;
+              return false;
+            }
+            sbp.cursor = sbp.limit - v_1;
+            if (sbp.cursor <= sbp.limit_backward)
+              return false;
+            sbp.cursor--;
+            if (!f2())
+              return false;
+            sbp.cursor = sbp.limit - v_1;
+            return true;
+          }
+
+          function habr3(f1) {
+            return habr2(f1, function() {
+              return sbp.in_grouping_b(g_vowel, 97, 305);
+            });
+          }
+
+          function r_mark_suffix_with_optional_n_consonant() {
+            return habr3(function() {
+              return sbp.eq_s_b(1, "n");
+            });
+          }
+
+          function r_mark_suffix_with_optional_s_consonant() {
+            return habr3(function() {
+              return sbp.eq_s_b(1, "s");
+            });
+          }
+
+          function r_mark_suffix_with_optional_y_consonant() {
+            return habr3(function() {
+              return sbp.eq_s_b(1, "y");
+            });
+          }
+
+          function r_mark_suffix_with_optional_U_vowel() {
+            return habr2(function() {
+              return sbp.in_grouping_b(g_U, 105, 305);
+            }, function() {
+              return sbp.out_grouping_b(g_vowel, 97, 305);
+            });
+          }
+
+          function r_mark_possessives() {
+            return sbp.find_among_b(a_0, 10) &&
+              r_mark_suffix_with_optional_U_vowel();
+          }
+
+          function r_mark_sU() {
+            return r_check_vowel_harmony() && sbp.in_grouping_b(g_U, 105, 305) &&
+              r_mark_suffix_with_optional_s_consonant();
+          }
+
+          function r_mark_lArI() {
+            return sbp.find_among_b(a_1, 2);
+          }
+
+          function r_mark_yU() {
+            return r_check_vowel_harmony() && sbp.in_grouping_b(g_U, 105, 305) &&
+              r_mark_suffix_with_optional_y_consonant();
+          }
+
+          function r_mark_nU() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_2, 4);
+          }
+
+          function r_mark_nUn() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_3, 4) &&
+              r_mark_suffix_with_optional_n_consonant();
+          }
+
+          function r_mark_yA() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_4, 2) &&
+              r_mark_suffix_with_optional_y_consonant();
+          }
+
+          function r_mark_nA() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_5, 2);
+          }
+
+          function r_mark_DA() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_6, 4);
+          }
+
+          function r_mark_ndA() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_7, 2);
+          }
+
+          function r_mark_DAn() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_8, 4);
+          }
+
+          function r_mark_ndAn() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_9, 2);
+          }
+
+          function r_mark_ylA() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_10, 2) &&
+              r_mark_suffix_with_optional_y_consonant();
+          }
+
+          function r_mark_ki() {
+            return sbp.eq_s_b(2, "ki");
+          }
+
+          function r_mark_ncA() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_11, 2) &&
+              r_mark_suffix_with_optional_n_consonant();
+          }
+
+          function r_mark_yUm() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_12, 4) &&
+              r_mark_suffix_with_optional_y_consonant();
+          }
+
+          function r_mark_sUn() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_13, 4);
+          }
+
+          function r_mark_yUz() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_14, 4) &&
+              r_mark_suffix_with_optional_y_consonant();
+          }
+
+          function r_mark_sUnUz() {
+            return sbp.find_among_b(a_15, 4);
+          }
+
+          function r_mark_lAr() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_16, 2);
+          }
+
+          function r_mark_nUz() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_17, 4);
+          }
+
+          function r_mark_DUr() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_18, 8);
+          }
+
+          function r_mark_cAsInA() {
+            return sbp.find_among_b(a_19, 2);
+          }
+
+          function r_mark_yDU() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_20, 32) &&
+              r_mark_suffix_with_optional_y_consonant();
+          }
+
+          function r_mark_ysA() {
+            return sbp.find_among_b(a_21, 8) &&
+              r_mark_suffix_with_optional_y_consonant();
+          }
+
+          function r_mark_ymUs_() {
+            return r_check_vowel_harmony() && sbp.find_among_b(a_22, 4) &&
+              r_mark_suffix_with_optional_y_consonant();
+          }
+
+          function r_mark_yken() {
+            return sbp.eq_s_b(3, "ken") &&
+              r_mark_suffix_with_optional_y_consonant();
+          }
+
+          function habr4() {
+            var v_1 = sbp.limit - sbp.cursor;
+            if (!r_mark_ymUs_()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (!r_mark_yDU()) {
+                sbp.cursor = sbp.limit - v_1;
+                if (!r_mark_ysA()) {
+                  sbp.cursor = sbp.limit - v_1;
+                  if (!r_mark_yken())
+                    return true;
+                }
+              }
+            }
+            return false;
+          }
+
+          function habr5() {
+            if (r_mark_cAsInA()) {
+              var v_1 = sbp.limit - sbp.cursor;
+              if (!r_mark_sUnUz()) {
+                sbp.cursor = sbp.limit - v_1;
+                if (!r_mark_lAr()) {
+                  sbp.cursor = sbp.limit - v_1;
+                  if (!r_mark_yUm()) {
+                    sbp.cursor = sbp.limit - v_1;
+                    if (!r_mark_sUn()) {
+                      sbp.cursor = sbp.limit - v_1;
+                      if (!r_mark_yUz())
+                        sbp.cursor = sbp.limit - v_1;
+                    }
+                  }
+                }
+              }
+              if (r_mark_ymUs_())
+                return false;
+            }
+            return true;
+          }
+
+          function habr6() {
+            if (r_mark_lAr()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              var v_1 = sbp.limit - sbp.cursor;
+              sbp.ket = sbp.cursor;
+              if (!r_mark_DUr()) {
+                sbp.cursor = sbp.limit - v_1;
+                if (!r_mark_yDU()) {
+                  sbp.cursor = sbp.limit - v_1;
+                  if (!r_mark_ysA()) {
+                    sbp.cursor = sbp.limit - v_1;
+                    if (!r_mark_ymUs_())
+                      sbp.cursor = sbp.limit - v_1;
+                  }
+                }
+              }
+              B_c_s_n_s = false;
+              return false;
+            }
+            return true;
+          }
+
+          function habr7() {
+            if (!r_mark_nUz())
+              return true;
+            var v_1 = sbp.limit - sbp.cursor;
+            if (!r_mark_yDU()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (!r_mark_ysA())
+                return true;
+            }
+            return false;
+          }
+
+          function habr8() {
+            var v_1 = sbp.limit - sbp.cursor,
+              v_2;
+            if (!r_mark_sUnUz()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (!r_mark_yUz()) {
+                sbp.cursor = sbp.limit - v_1;
+                if (!r_mark_sUn()) {
+                  sbp.cursor = sbp.limit - v_1;
+                  if (!r_mark_yUm())
+                    return true;
+                }
+              }
+            }
+            sbp.bra = sbp.cursor;
+            sbp.slice_del();
+            v_2 = sbp.limit - sbp.cursor;
+            sbp.ket = sbp.cursor;
+            if (!r_mark_ymUs_())
+              sbp.cursor = sbp.limit - v_2;
+            return false;
+          }
+
+          function r_stem_nominal_verb_suffixes() {
+            var v_1 = sbp.limit - sbp.cursor,
+              v_2;
+            sbp.ket = sbp.cursor;
+            B_c_s_n_s = true;
+            if (habr4()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (habr5()) {
+                sbp.cursor = sbp.limit - v_1;
+                if (habr6()) {
+                  sbp.cursor = sbp.limit - v_1;
+                  if (habr7()) {
+                    sbp.cursor = sbp.limit - v_1;
+                    if (habr8()) {
+                      sbp.cursor = sbp.limit - v_1;
+                      if (!r_mark_DUr())
+                        return;
+                      sbp.bra = sbp.cursor;
+                      sbp.slice_del();
+                      sbp.ket = sbp.cursor;
+                      v_2 = sbp.limit - sbp.cursor;
+                      if (!r_mark_sUnUz()) {
+                        sbp.cursor = sbp.limit - v_2;
+                        if (!r_mark_lAr()) {
+                          sbp.cursor = sbp.limit - v_2;
+                          if (!r_mark_yUm()) {
+                            sbp.cursor = sbp.limit - v_2;
+                            if (!r_mark_sUn()) {
+                              sbp.cursor = sbp.limit - v_2;
+                              if (!r_mark_yUz())
+                                sbp.cursor = sbp.limit - v_2;
+                            }
+                          }
+                        }
+                      }
+                      if (!r_mark_ymUs_())
+                        sbp.cursor = sbp.limit - v_2;
+                    }
+                  }
+                }
+              }
+            }
+            sbp.bra = sbp.cursor;
+            sbp.slice_del();
+          }
+
+          function r_stem_suffix_chain_before_ki() {
+            var v_1, v_2, v_3, v_4;
+            sbp.ket = sbp.cursor;
+            if (r_mark_ki()) {
+              v_1 = sbp.limit - sbp.cursor;
+              if (r_mark_DA()) {
+                sbp.bra = sbp.cursor;
+                sbp.slice_del();
+                v_2 = sbp.limit - sbp.cursor;
+                sbp.ket = sbp.cursor;
+                if (r_mark_lAr()) {
+                  sbp.bra = sbp.cursor;
+                  sbp.slice_del();
+                  r_stem_suffix_chain_before_ki();
+                } else {
+                  sbp.cursor = sbp.limit - v_2;
+                  if (r_mark_possessives()) {
+                    sbp.bra = sbp.cursor;
+                    sbp.slice_del();
+                    sbp.ket = sbp.cursor;
+                    if (r_mark_lAr()) {
+                      sbp.bra = sbp.cursor;
+                      sbp.slice_del();
+                      r_stem_suffix_chain_before_ki();
+                    }
+                  }
+                }
+                return true;
+              }
+              sbp.cursor = sbp.limit - v_1;
+              if (r_mark_nUn()) {
+                sbp.bra = sbp.cursor;
+                sbp.slice_del();
+                sbp.ket = sbp.cursor;
+                v_3 = sbp.limit - sbp.cursor;
+                if (r_mark_lArI()) {
+                  sbp.bra = sbp.cursor;
+                  sbp.slice_del();
+                } else {
+                  sbp.cursor = sbp.limit - v_3;
+                  sbp.ket = sbp.cursor;
+                  if (!r_mark_possessives()) {
+                    sbp.cursor = sbp.limit - v_3;
+                    if (!r_mark_sU()) {
+                      sbp.cursor = sbp.limit - v_3;
+                      if (!r_stem_suffix_chain_before_ki())
+                        return true;
+                    }
+                  }
+                  sbp.bra = sbp.cursor;
+                  sbp.slice_del();
+                  sbp.ket = sbp.cursor;
+                  if (r_mark_lAr()) {
+                    sbp.bra = sbp.cursor;
+                    sbp.slice_del();
+                    r_stem_suffix_chain_before_ki()
+                  }
+                }
+                return true;
+              }
+              sbp.cursor = sbp.limit - v_1;
+              if (r_mark_ndA()) {
+                v_4 = sbp.limit - sbp.cursor;
+                if (r_mark_lArI()) {
+                  sbp.bra = sbp.cursor;
+                  sbp.slice_del();
+                } else {
+                  sbp.cursor = sbp.limit - v_4;
+                  if (r_mark_sU()) {
+                    sbp.bra = sbp.cursor;
+                    sbp.slice_del();
+                    sbp.ket = sbp.cursor;
+                    if (r_mark_lAr()) {
+                      sbp.bra = sbp.cursor;
+                      sbp.slice_del();
+                      r_stem_suffix_chain_before_ki();
+                    }
+                  } else {
+                    sbp.cursor = sbp.limit - v_4;
+                    if (!r_stem_suffix_chain_before_ki())
+                      return false;
+                  }
+                }
+                return true;
+              }
+            }
+            return false;
+          }
+
+          function habr9(v_1) {
+            sbp.ket = sbp.cursor;
+            if (!r_mark_ndA()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (!r_mark_nA())
+                return false;
+            }
+            var v_2 = sbp.limit - sbp.cursor;
+            if (r_mark_lArI()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+            } else {
+              sbp.cursor = sbp.limit - v_2;
+              if (r_mark_sU()) {
+                sbp.bra = sbp.cursor;
+                sbp.slice_del();
+                sbp.ket = sbp.cursor;
+                if (r_mark_lAr()) {
+                  sbp.bra = sbp.cursor;
+                  sbp.slice_del();
+                  r_stem_suffix_chain_before_ki();
+                }
+              } else {
+                sbp.cursor = sbp.limit - v_2;
+                if (!r_stem_suffix_chain_before_ki())
+                  return false;
+              }
+            }
+            return true;
+          }
+
+          function habr10(v_1) {
+            sbp.ket = sbp.cursor;
+            if (!r_mark_ndAn()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (!r_mark_nU())
+                return false;
+            }
+            var v_2 = sbp.limit - sbp.cursor;
+            if (!r_mark_sU()) {
+              sbp.cursor = sbp.limit - v_2;
+              if (!r_mark_lArI())
+                return false;
+            }
+            sbp.bra = sbp.cursor;
+            sbp.slice_del();
+            sbp.ket = sbp.cursor;
+            if (r_mark_lAr()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              r_stem_suffix_chain_before_ki();
+            }
+            return true;
+          }
+
+          function habr11() {
+            var v_1 = sbp.limit - sbp.cursor,
+              v_2;
+            sbp.ket = sbp.cursor;
+            if (!r_mark_nUn()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (!r_mark_ylA())
+                return false;
+            }
+            sbp.bra = sbp.cursor;
+            sbp.slice_del();
+            v_2 = sbp.limit - sbp.cursor;
+            sbp.ket = sbp.cursor;
+            if (r_mark_lAr()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              if (r_stem_suffix_chain_before_ki())
+                return true;
+            }
+            sbp.cursor = sbp.limit - v_2;
+            sbp.ket = sbp.cursor;
+            if (!r_mark_possessives()) {
+              sbp.cursor = sbp.limit - v_2;
+              if (!r_mark_sU()) {
+                sbp.cursor = sbp.limit - v_2;
+                if (!r_stem_suffix_chain_before_ki())
+                  return true;
+              }
+            }
+            sbp.bra = sbp.cursor;
+            sbp.slice_del();
+            sbp.ket = sbp.cursor;
+            if (r_mark_lAr()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              r_stem_suffix_chain_before_ki();
+            }
+            return true;
+          }
+
+          function habr12() {
+            var v_1 = sbp.limit - sbp.cursor,
+              v_2, v_3;
+            sbp.ket = sbp.cursor;
+            if (!r_mark_DA()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (!r_mark_yU()) {
+                sbp.cursor = sbp.limit - v_1;
+                if (!r_mark_yA())
+                  return false;
+              }
+            }
+            sbp.bra = sbp.cursor;
+            sbp.slice_del();
+            sbp.ket = sbp.cursor;
+            v_2 = sbp.limit - sbp.cursor;
+            if (r_mark_possessives()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              v_3 = sbp.limit - sbp.cursor;
+              sbp.ket = sbp.cursor;
+              if (!r_mark_lAr())
+                sbp.cursor = sbp.limit - v_3;
+            } else {
+              sbp.cursor = sbp.limit - v_2;
+              if (!r_mark_lAr())
+                return true;
+            }
+            sbp.bra = sbp.cursor;
+            sbp.slice_del();
+            sbp.ket = sbp.cursor;
+            r_stem_suffix_chain_before_ki();
+            return true;
+          }
+
+          function r_stem_noun_suffixes() {
+            var v_1 = sbp.limit - sbp.cursor,
+              v_2, v_3;
+            sbp.ket = sbp.cursor;
+            if (r_mark_lAr()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              r_stem_suffix_chain_before_ki();
+              return;
+            }
+            sbp.cursor = sbp.limit - v_1;
+            sbp.ket = sbp.cursor;
+            if (r_mark_ncA()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              v_2 = sbp.limit - sbp.cursor;
+              sbp.ket = sbp.cursor;
+              if (r_mark_lArI()) {
+                sbp.bra = sbp.cursor;
+                sbp.slice_del();
+              } else {
+                sbp.cursor = sbp.limit - v_2;
+                sbp.ket = sbp.cursor;
+                if (!r_mark_possessives()) {
+                  sbp.cursor = sbp.limit - v_2;
+                  if (!r_mark_sU()) {
+                    sbp.cursor = sbp.limit - v_2;
+                    sbp.ket = sbp.cursor;
+                    if (!r_mark_lAr())
+                      return;
+                    sbp.bra = sbp.cursor;
+                    sbp.slice_del();
+                    if (!r_stem_suffix_chain_before_ki())
+                      return;
+                  }
+                }
+                sbp.bra = sbp.cursor;
+                sbp.slice_del();
+                sbp.ket = sbp.cursor;
+                if (r_mark_lAr()) {
+                  sbp.bra = sbp.cursor;
+                  sbp.slice_del();
+                  r_stem_suffix_chain_before_ki();
+                }
+              }
+              return;
+            }
+            sbp.cursor = sbp.limit - v_1;
+            if (habr9(v_1))
+              return;
+            sbp.cursor = sbp.limit - v_1;
+            if (habr10(v_1))
+              return;
+            sbp.cursor = sbp.limit - v_1;
+            sbp.ket = sbp.cursor;
+            if (r_mark_DAn()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              sbp.ket = sbp.cursor;
+              v_3 = sbp.limit - sbp.cursor;
+              if (r_mark_possessives()) {
+                sbp.bra = sbp.cursor;
+                sbp.slice_del();
+                sbp.ket = sbp.cursor;
+                if (r_mark_lAr()) {
+                  sbp.bra = sbp.cursor;
+                  sbp.slice_del();
+                  r_stem_suffix_chain_before_ki();
+                }
+              } else {
+                sbp.cursor = sbp.limit - v_3;
+                if (r_mark_lAr()) {
+                  sbp.bra = sbp.cursor;
+                  sbp.slice_del();
+                  r_stem_suffix_chain_before_ki();
+                } else {
+                  sbp.cursor = sbp.limit - v_3;
+                  r_stem_suffix_chain_before_ki();
+                }
+              }
+              return;
+            }
+            sbp.cursor = sbp.limit - v_1;
+            if (habr11())
+              return;
+            sbp.cursor = sbp.limit - v_1;
+            if (r_mark_lArI()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              return;
+            }
+            sbp.cursor = sbp.limit - v_1;
+            if (r_stem_suffix_chain_before_ki())
+              return;
+            sbp.cursor = sbp.limit - v_1;
+            if (habr12())
+              return;
+            sbp.cursor = sbp.limit - v_1;
+            sbp.ket = sbp.cursor;
+            if (!r_mark_possessives()) {
+              sbp.cursor = sbp.limit - v_1;
+              if (!r_mark_sU())
+                return;
+            }
+            sbp.bra = sbp.cursor;
+            sbp.slice_del();
+            sbp.ket = sbp.cursor;
+            if (r_mark_lAr()) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+              r_stem_suffix_chain_before_ki();
+            }
+          }
+
+          function r_post_process_last_consonants() {
+            var among_var;
+            sbp.ket = sbp.cursor;
+            among_var = sbp.find_among_b(a_23, 4);
+            if (among_var) {
+              sbp.bra = sbp.cursor;
+              switch (among_var) {
+                case 1:
+                  sbp.slice_from("p");
+                  break;
+                case 2:
+                  sbp.slice_from("\u00E7");
+                  break;
+                case 3:
+                  sbp.slice_from("t");
+                  break;
+                case 4:
+                  sbp.slice_from("k");
+                  break;
+              }
+            }
+          }
+
+          function habr13() {
+            while (true) {
+              var v_1 = sbp.limit - sbp.cursor;
+              if (sbp.in_grouping_b(g_vowel, 97, 305)) {
+                sbp.cursor = sbp.limit - v_1;
+                break;
+              }
+              sbp.cursor = sbp.limit - v_1;
+              if (sbp.cursor <= sbp.limit_backward)
+                return false;
+              sbp.cursor--;
+            }
+            return true;
+          }
+
+          function habr14(v_1, c1, c2) {
+            sbp.cursor = sbp.limit - v_1;
+            if (habr13()) {
+              var v_2 = sbp.limit - sbp.cursor;
+              if (!sbp.eq_s_b(1, c1)) {
+                sbp.cursor = sbp.limit - v_2;
+                if (!sbp.eq_s_b(1, c2))
+                  return true;
+              }
+              sbp.cursor = sbp.limit - v_1;
+              var c = sbp.cursor;
+              sbp.insert(sbp.cursor, sbp.cursor, c2);
+              sbp.cursor = c;
+              return false;
+            }
+            return true;
+          }
+
+          function r_append_U_to_stems_ending_with_d_or_g() {
+            var v_1 = sbp.limit - sbp.cursor;
+            if (!sbp.eq_s_b(1, "d")) {
+              sbp.cursor = sbp.limit - v_1;
+              if (!sbp.eq_s_b(1, "g"))
+                return;
+            }
+            if (habr14(v_1, "a", "\u0131"))
+              if (habr14(v_1, "e", "i"))
+                if (habr14(v_1, "o", "u"))
+                  habr14(v_1, "\u00F6", "\u00FC")
+          }
+
+          function r_more_than_one_syllable_word() {
+            var v_1 = sbp.cursor,
+              v_2 = 2,
+              v_3;
+            while (true) {
+              v_3 = sbp.cursor;
+              while (!sbp.in_grouping(g_vowel, 97, 305)) {
+                if (sbp.cursor >= sbp.limit) {
+                  sbp.cursor = v_3;
+                  if (v_2 > 0)
+                    return false;
+                  sbp.cursor = v_1;
+                  return true;
+                }
+                sbp.cursor++;
+              }
+              v_2--;
+            }
+          }
+
+          function habr15(v_1, n1, c1) {
+            while (!sbp.eq_s(n1, c1)) {
+              if (sbp.cursor >= sbp.limit)
+                return true;
+              sbp.cursor++;
+            }
+            I_strlen = n1;
+            if (I_strlen != sbp.limit)
+              return true;
+            sbp.cursor = v_1;
+            return false;
+          }
+
+          function r_is_reserved_word() {
+            var v_1 = sbp.cursor;
+            if (habr15(v_1, 2, "ad")) {
+              sbp.cursor = v_1;
+              if (habr15(v_1, 5, "soyad"))
+                return false;
+            }
+            return true;
+          }
+
+          function r_postlude() {
+            var v_1 = sbp.cursor;
+            if (r_is_reserved_word())
+              return false;
+            sbp.limit_backward = v_1;
+            sbp.cursor = sbp.limit;
+            r_append_U_to_stems_ending_with_d_or_g();
+            sbp.cursor = sbp.limit;
+            r_post_process_last_consonants();
+            return true;
+          }
+          this.stem = function() {
+            if (r_more_than_one_syllable_word()) {
+              sbp.limit_backward = sbp.cursor;
+              sbp.cursor = sbp.limit;
+              r_stem_nominal_verb_suffixes();
+              sbp.cursor = sbp.limit;
+              if (B_c_s_n_s) {
+                r_stem_noun_suffixes();
+                sbp.cursor = sbp.limit_backward;
+                if (r_postlude())
+                  return true;
+              }
+            }
+            return false;
+          }
+        };
+
+      /* and return a function that stems a word for the current locale */
+      return function(token) {
+        // for lunr version 2
+        if (typeof token.update === "function") {
+          return token.update(function(word) {
+            st.setCurrent(word);
+            st.stem();
+            return st.getCurrent();
+          })
+        } else { // for lunr version <= 1
+          st.setCurrent(token);
+          st.stem();
+          return st.getCurrent();
+        }
+      }
+    })();
+
+    lunr.Pipeline.registerFunction(lunr.tr.stemmer, 'stemmer-tr');
+
+    lunr.tr.stopWordFilter = lunr.generateStopWordFilter('acaba altmış altı ama ancak arada aslında ayrıca bana bazı belki ben benden beni benim beri beş bile bin bir biri birkaç birkez birçok birşey birşeyi biz bizden bize bizi bizim bu buna bunda bundan bunlar bunları bunların bunu bunun burada böyle böylece da daha dahi de defa değil diye diğer doksan dokuz dolayı dolayısıyla dört edecek eden ederek edilecek ediliyor edilmesi ediyor elli en etmesi etti ettiği ettiğini eğer gibi göre halen hangi hatta hem henüz hep hepsi her herhangi herkesin hiç hiçbir iki ile ilgili ise itibaren itibariyle için işte kadar karşın katrilyon kendi kendilerine kendini kendisi kendisine kendisini kez ki kim kimden kime kimi kimse kırk milyar milyon mu mü mı nasıl ne neden nedenle nerde nerede nereye niye niçin o olan olarak oldu olduklarını olduğu olduğunu olmadı olmadığı olmak olması olmayan olmaz olsa olsun olup olur olursa oluyor on ona ondan onlar onlardan onları onların onu onun otuz oysa pek rağmen sadece sanki sekiz seksen sen senden seni senin siz sizden sizi sizin tarafından trilyon tüm var vardı ve veya ya yani yapacak yapmak yaptı yaptıkları yaptığı yaptığını yapılan yapılması yapıyor yedi yerine yetmiş yine yirmi yoksa yüz zaten çok çünkü öyle üzere üç şey şeyden şeyi şeyler şu şuna şunda şundan şunları şunu şöyle'.split(' '));
+
+    lunr.Pipeline.registerFunction(lunr.tr.stopWordFilter, 'stopWordFilter-tr');
+  };
+}))
