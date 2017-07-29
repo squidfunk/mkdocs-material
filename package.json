@@ -87,7 +87,7 @@
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
     "stylelint-order": "^0.6.0",
-    "stylelint-scss": "^1.4.4",
+    "stylelint-scss": "^2.0.0",
     "through2": "^2.0.3",
     "vinyl-paths": "^2.1.0",
     "webpack": "^3.0.0",
