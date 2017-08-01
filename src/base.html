@@ -138,7 +138,9 @@
       <link rel="stylesheet" type="text/css" href="{{ path }}" />
     {% endfor %}
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
 
     <!-- Block: custom front matter -->
     {% block extrahead %}{% endblock %}
@@ -173,7 +175,7 @@
         {% endif %}
       </defs>
     </svg>
-    
+
     {% if config.extra.password %}
       {% include "partials/password.html" %}
     {% endif %}
@@ -316,9 +318,10 @@
       <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
       <script>window.mdc.autoInit();</script>
 
-      <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
-      <script type="text/javascript" src="https://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>
+      <!--script type="text/javascript" src="https://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script-->
+
       <script src="{{ base_url }}/assets/javascripts/jq-mdc-web.js"></script>
+      <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
 
       <!-- Initialize application -->
       <script>

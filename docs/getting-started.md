@@ -16,6 +16,12 @@ Before installing [MkDocs][2], you need to make sure you have Python and `pip`
 – the Python package manager – up and running. You can verify if you're already
 good to go with the following commands:
 
+> :bulb: **Installation on macOS**
+> Make sure [Brew](https://brew.sh/) is installed  
+> `brew install pip`  
+> this is the recommended approach as opposed to trying
+> to use the built in python
+
 ``` sh
 python --version
 # Python 2.7.13
@@ -30,13 +36,7 @@ pip install mkdocs && mkdocs --version
 # mkdocs, version 0.16.0
 ```
 
-!!! warning "MkDocs version requirements"
-
-    Material requires MkDocs >= 0.16.
-
-  [2]: http://www.mkdocs.org
-
-### Installing Material
+### Installing Material Components
 
 #### using pip
 

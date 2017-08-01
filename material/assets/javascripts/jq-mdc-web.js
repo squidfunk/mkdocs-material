@@ -139,6 +139,22 @@ $(function() {
   //$("#article-content").show();
 });
 
+//add target blank to newTab links
+$(function() {
+  $('a.new-tab').attr('target', '_blank');
+});
+
+//setup fancybox zoomable
+$(function() {
+  $('img[alt="zoomify"]').each(function(index) {
+    var imgSrc = this.src
+    var $a = $('<a href="' + imgSrc + '" data-fancybox></a>')
+    $a.fancybox()
+    $(this).before($a)
+    $a.append(this)
+  })
+});
+
 /**
 Excel Embed for Onedrive files
 TODO move this out to its own js
@@ -165,84 +181,90 @@ $(function() {
     }
 	};
 
-  console.log("embedding excel")
-  $('div[data-excel-token]').each(function() {
-    var divFrame = this;
-    var $divFrame = $(this)
-    var $iFrameDiv = $('<div></div>')
-    var iFrameDiv = $iFrameDiv.get(0)
-    $divFrame.append($iFrameDiv)
-    //var $card = $divFrame.wrap(holder).parent()
+  $.getScript( "https://excel.officeapps.live.com/x/_layouts/ExcelJs.ashx?v=1",function() {
+    selectAll();
+  })
+  
+  function selectAll(o){
+    console.log("embedding excel")
+    $('div[data-excel-token]').each(function() {
+      var divFrame = this;
+      var $divFrame = $(this)
+      var $iFrameDiv = $('<div></div>')
+      var iFrameDiv = $iFrameDiv.get(0)
+      $divFrame.append($iFrameDiv)
+      //var $card = $divFrame.wrap(holder).parent()
 
-    $divFrame.LoadingOverlay("show");
-    //$it.hide();
-    //console.log("data-excel-token", this.data-excel-token)
-    var randId = "xls" + Math.floor(Math.random() * 100)
-    $iFrameDiv.attr('id', randId)
+      $divFrame.LoadingOverlay("show");
+      //$it.hide();
+      //console.log("data-excel-token", this.data-excel-token)
+      var randId = "xls" + Math.floor(Math.random() * 100)
+      $iFrameDiv.attr('id', randId)
 
-    //setup the height and width stuff
-    var dheight = divFrame.getAttribute('height')
-    var dwidth = divFrame.getAttribute('width')
-    if(dheight) {
-      $divFrame.height(dheight + "px")
-      $iFrameDiv.height(dheight + "px")
-    }
-    if(dwidth) {
-      if(!dwidth.endsWith("%") && !dwidth.endsWith("px")){
-        dwidth = dwidth + "px"
+      //setup the height and width stuff
+      var dheight = divFrame.getAttribute('height')
+      var dwidth = divFrame.getAttribute('width')
+      if(dheight) {
+        $divFrame.height(dheight + "px")
+        $iFrameDiv.height(dheight + "px")
       }
-      $divFrame.width(dwidth)
-      $iFrameDiv.width(dwidth)
-    }
-    if($iFrameDiv.height() === 0){
-      $iFrameDiv.addClass('excel-embed')
-      //$iFrameDiv.height(600)
-    }
-
-    //add class for default height and width if not set
-    // if(!$divFrame.hasClass('excel-embed')){
-    //   $divFrame.addClass('excel-embed');
-    // }
-
-    var dataOpts = {}
-    if($divFrame.data('range')) dataOpts.item = $divFrame.data('range')
-    if($divFrame.data('interactivity')) dataOpts.interactivityOptions = $divFrame.data('interactivity')
-    if($divFrame.data('ui')) dataOpts.uiOptions = $divFrame.data('ui')
-    console.log("dataOpts", dataOpts);
-    var opts = $.extend({}, $.excelEmbed.defaults, dataOpts);
-
-    if($divFrame.data('selected-cell')) opts.uiOptions.selectedCell = $divFrame.data('selected-cell')
-    if(divFrame.hasAttribute('data-show-toolbar')) opts.showToolbar = $divFrame.data('show-toolbar')
-    console.log("opts", opts);
-
-    var $toolbar = opts.showToolbar ? createToolbar(divFrame) : null
-
-    var loadedCallback = function(result){
-      var ewa = result.getEwaControl();
-      var iframe = $iFrameDiv.find("iframe").get(0);
-      //console.log("why wont it hide")
-      if (result.getSucceeded()){
-        console.log("getSucceeded")
-        //remove the old toolbar
-        var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-        $(innerDoc).find("[id$='_m_ewaEmbedViewerBar']").hide()
-        //configExcelToolbar(innerDoc)
-        var docProps = getWorkbookContextJson($(innerDoc))
-        if(divFrame.hasAttribute('data-zoom')){
-          var zoom = parseInt(divFrame.getAttribute('data-zoom'))
-          applyZoom(iFrameDiv,iframe,zoom)
+      if(dwidth) {
+        if(!dwidth.endsWith("%") && !dwidth.endsWith("px")){
+          dwidth = dwidth + "px"
         }
-        console.log("applyZoom")
-        toolbarEvents(iFrameDiv, $toolbar, docProps)
-      }else{
-        $divFrame.append('<strong>EXCEL EMBED FAILED</strong>')
+        $divFrame.width(dwidth)
+        $iFrameDiv.width(dwidth)
       }
-      //console.log("why wont it hide", $it)
-      $divFrame.LoadingOverlay("hide");
-    }
+      if($iFrameDiv.height() === 0){
+        $iFrameDiv.addClass('excel-embed')
+        //$iFrameDiv.height(600)
+      }
 
-    Ewa.EwaControl.loadEwaAsync($(this).data('excel-token'), randId, opts, loadedCallback);
-  });
+      //add class for default height and width if not set
+      // if(!$divFrame.hasClass('excel-embed')){
+      //   $divFrame.addClass('excel-embed');
+      // }
+
+      var dataOpts = {}
+      if($divFrame.data('range')) dataOpts.item = $divFrame.data('range')
+      if($divFrame.data('interactivity')) dataOpts.interactivityOptions = $divFrame.data('interactivity')
+      if($divFrame.data('ui')) dataOpts.uiOptions = $divFrame.data('ui')
+      console.log("dataOpts", dataOpts);
+      var opts = $.extend({}, $.excelEmbed.defaults, dataOpts);
+
+      if($divFrame.data('selected-cell')) opts.uiOptions.selectedCell = $divFrame.data('selected-cell')
+      if(divFrame.hasAttribute('data-show-toolbar')) opts.showToolbar = $divFrame.data('show-toolbar')
+      console.log("opts", opts);
+
+      var $toolbar = opts.showToolbar ? createToolbar(divFrame) : null
+
+      var loadedCallback = function(result){
+        var ewa = result.getEwaControl();
+        var iframe = $iFrameDiv.find("iframe").get(0);
+        //console.log("why wont it hide")
+        if (result.getSucceeded()){
+          console.log("getSucceeded")
+          //remove the old toolbar
+          var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+          $(innerDoc).find("[id$='_m_ewaEmbedViewerBar']").hide()
+          //configExcelToolbar(innerDoc)
+          var docProps = getWorkbookContextJson($(innerDoc))
+          if(divFrame.hasAttribute('data-zoom')){
+            var zoom = parseInt(divFrame.getAttribute('data-zoom'))
+            applyZoom(iFrameDiv,iframe,zoom)
+          }
+          console.log("applyZoom")
+          toolbarEvents(iFrameDiv, $toolbar, docProps)
+        }else{
+          $divFrame.append('<strong>EXCEL EMBED FAILED</strong>')
+        }
+        //console.log("why wont it hide", $it)
+        $divFrame.LoadingOverlay("hide");
+      }
+
+      Ewa.EwaControl.loadEwaAsync($(this).data('excel-token'), randId, opts, loadedCallback);
+    });
+  }
 
   function getWorkbookContextJson($innerDoc){
     //ewaSynd2_ctl17_ewaCtl_m_workbookContextJson

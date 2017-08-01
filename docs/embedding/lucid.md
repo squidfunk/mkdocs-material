@@ -1,6 +1,8 @@
 ## Through the hoops
 
-open the Lucid chart and select the share -> embed menu item. copy and past the code.
+open the Lucid chart and select the share -> embed menu item. click the `activate embed code` and copy and past the HTML.
+
+![](../images/lucid-137df.png)
 
 > :bulb: its recomended to change the width to 100% and remove the margin and relative setting under style
 

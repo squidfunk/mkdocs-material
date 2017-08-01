@@ -27,7 +27,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-components-1.7.5">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-components-1.7.7">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -42,7 +42,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-1df76c4e58.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-916117db6f.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-31d9ee8b19.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-b778559f56.palette.css">
       {% endif %}
@@ -63,7 +63,9 @@
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
     {% block extrahead %}{% endblock %}
   </head>
   {% set palette = config.extra.get("palette", {}) %}
@@ -159,7 +161,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-c35428f87f.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-4b954faba0.js"></script>
       {% set languages = lang.t("search.languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}
@@ -178,9 +180,8 @@
       {% endif %}
       <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
       <script>window.mdc.autoInit()</script>
-      <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
-      <script src="https://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>
       <script src="{{ base_url }}/assets/javascripts/jq-mdc-web.js"></script>
+      <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>

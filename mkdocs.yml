@@ -61,10 +61,12 @@ extra:
 # Extensions
 markdown_extensions:
   - pymdownx.extra # replacement for markdown.extensions.extra see https://facelessuser.github.io/pymdown-extensions/extensions/extra/
+  - markdown.extensions.sane_lists
   - markdown.extensions.admonition
   - markdown.extensions.codehilite(guess_lang=false)
   - markdown.extensions.def_list
   - markdown.extensions.footnotes
+  - markdown.extensions.abbr
   - markdown.extensions.meta
   - markdown.extensions.toc(permalink=true)
   - markdown_include.include:
@@ -72,7 +74,6 @@ markdown_extensions:
   - pymdownx.arithmatex
   - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
-  - pymdownx.critic
   - pymdownx.emoji:
       #emoji_generator: !!python/name:pymdownx.emoji.to_svg
       emoji_index: !!python/name:pymdownx.emoji.gemoji
@@ -83,11 +84,13 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist(custom_checkbox=true)
   - pymdownx.tilde
+  - pymdownx.critic
 
 # Page tree
 pages:
   - Index: index.md
-  - Syntax Quick Start: sandbox.md
+  - Cheat Sheet: cheat-sheet.md
+  - Admonitions, callouts, sidebars: blocks.md
   - Embedding web apps:
     - Excel: embedding/excel.md
     - Lucid Charts : embedding/lucid.md

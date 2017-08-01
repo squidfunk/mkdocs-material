@@ -1,12 +1,3 @@
-# Cards
-
-## Intro
-
-For a 60 second quick start on Markdown
-[commonmark has a great tutorial](http://commonmark.org/help/){.foo 26rem target="\_blank"}
-
-For more documentation about this doc engine visit [mkdocs material theme](http://squidfunk.github.io/mkdocs-material/).
-
 ## Overview
 
 We use the the blockquote syntax below to make "cards" in the flavors of "admonitions", "sidebar bookmarks", "callouts" and "figures".
@@ -274,7 +265,7 @@ Admonitions
 
 |  class  | size  |
 | ------- | ----- |
-| .mini   | 35px  |
+| .tiny   | 35px  |
 | .xsmall | 80px  |
 | .small  | 150px |
 | .medium | 210px |
@@ -533,28 +524,3 @@ new Vue({
 ```
 
 </div>
-
-## Embedding
-
-### Lucid Charts
-
-open the Lucid chart and select the share -> embed menu item. copy and past the code
-
-<div style="width: 100%; height: 480px; margin: 10px; position: relative;">
-<iframe allowfullscreen frameborder="0" style="width:100%; height:480px" src="https://www.lucidchart.com/documents/embeddedchart/ee9393c4-427d-4390-97da-1d0a42b5823e" id="n8kd1lbHuhin"></iframe></div>
-
-### Evernote
-
-On your note go to share->copy public link. paste the link into a new browser.
-When it redirects you it will give a new link url. copy that and paste it into src for the iframe.
-Add `.html` to the end of the new url in src.
-**Example**
-```html
-<iframe width="100%" height="600px"  
-  frameborder="0"
-  src="https://www.evernote.com/shard/s5/sh/36116d20-c2cd-4b37-a5f3-a31df9152aab/84e7853122efc0d7.html">
-</iframe>
-```
-
-<iframe width="100%" height="600px" frameborder="0"  src="https://www.evernote.com/shard/s5/sh/36116d20-c2cd-4b37-a5f3-a31df9152aab/84e7853122efc0d7.html">
-</iframe>

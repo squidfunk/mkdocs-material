@@ -280,10 +280,10 @@ kbd {
     margin: 0 0.25em;
     padding: 0.0625em 0;
     border-radius: 2px;
-    background-color: transparentize($clr-yellow-500, 0.5);
+    background-color: transparentize($clr-yellow-500, 0.75);
     box-shadow:
-      +0.25em 0 0 transparentize($clr-yellow-500, 0.5),
-      -0.25em 0 0 transparentize($clr-yellow-500, 0.5);
+      +0.25em 0 0 transparentize($clr-yellow-500, 0.75),
+      -0.25em 0 0 transparentize($clr-yellow-500, 0.75);
     word-break: break-word;
     box-decoration-break: clone;
   }
@@ -433,6 +433,7 @@ kbd {
     display: inline-block;
     margin-bottom: 0.5em;
     padding: 0 16px;
+    vertical-align: middle;
 
     // Data tables
     table {

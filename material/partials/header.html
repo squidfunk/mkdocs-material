@@ -45,7 +45,7 @@
         <div class="md-flex__cell md-flex__cell--shrink">
           <a href="#" class="material-icons mdc-toolbar__icon" onclick="return logoutProtection()" aria-label="logout" alt="logout">exit_to_app</a>
         </div>
-        <script>function logoutProtection(t){return localStorage.setItem("pwd_atob",null),document.getElementById("protect-overlay").style.display="",!1}</script>
+        <script>function logoutProtection(t){return localStorage.removeItem("pwd_atob"),document.getElementById("protect-overlay").style.display="",!1}</script>
       {% endif %}
     </div>
   </nav>

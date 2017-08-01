@@ -93,7 +93,7 @@
         <script type="text/javascript">
         function logoutProtection(e){
           //e.preventDefault(); // Otherwise the form will be submitted
-          localStorage.setItem("pwd_atob", null);
+          localStorage.removeItem("pwd_atob");
           document.getElementById('protect-overlay').style.display = "";
           return false;
         }

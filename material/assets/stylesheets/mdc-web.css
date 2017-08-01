@@ -135,11 +135,14 @@ blockquote.float-right :last-child, blockquote.float-left :last-child {
   position:relative;
   font-size: inherit;
 }
+.figure img{
+  vertical-align: middle;
+}
 
 .figure .admonition-title {
   /*position:absolute;
   bottom:-12px;*/
-  margin-top: -3px;
+  margin-top: 0;
   font-weight: 400;
   text-align: center;
   width: 100%;
