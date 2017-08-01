@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material-components",
-  "version": "1.7.8",
+  "version": "1.7.9",
   "description": "A Material Components Web theme for MkDocs",
   "keywords": [
     "mkdocs",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "author": {
     "name": "Martin Donath, Joshua Burnett",
-    "email": "martin.donath@squidfunk.com"
+    "email": "martin.donath@squidfunk.com, joshdev@9ci.com"
   },
   "contributors": [],
   "repository": {

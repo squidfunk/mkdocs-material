@@ -49,6 +49,25 @@ em.icon{
   vertical-align: middle;
 }
 
+/**** columns ****/
+div.two-column {
+  float:left;
+  width:47%;
+  margin: 4px 3% 0px 0px;
+}
+div.two-column :first-child {
+    margin-top: 0;
+}
+
+div.three-column {
+  float:left;
+  width:30%;
+  margin: 4px 3% 0px 0px;
+}
+div.three-column :first-child {
+    margin-top: 0;
+}
+
 /**** cards ****/
 .card {
   border-radius: 2px;
@@ -96,7 +115,7 @@ em.icon{
 /************* Common *************/
 
 .card.float-left,
-blockquote.float-left  {
+blockquote.float-left {
   float:left;
   width:33%;
   margin: 4px 16px 2px 0px;
@@ -108,7 +127,8 @@ blockquote.float-right {
   width:33%;
   margin: 4px 0pc 2px 16px;
 }
-.card.admonition.float-left  {
+
+.card.admonition.float-left {
   float:left;
   width:50%;
   margin: 4px 16px 8px 0px;
@@ -213,12 +233,13 @@ blockquote.float-right :last-child, blockquote.float-left :last-child {
 .card.large,img.large { width:300px !important}
 .card.xlarge,img.xlarge { width:450px !important}
 .card.big,img.big { width:600px !important}
-.card.pct100,img.pct100 { width:100% !important}
-.card.pct20,img.pct20 { width:20% !important}
-.card.pct33,img.pct33 { width:33% !important}
-.card.pct50,img.pct50 { width:50% !important}
-.card.pct66,img.pct66 { width:66% !important}
-.card.pct80,img.pct80 { width:80% !important}
+div.pct100, .card.pct100,img.pct100 { width:100% !important}
+div.pct20,.card.pct20,img.pct20 { width:20% !important}
+div.pct33,.card.pct33,img.pct33 { width:33% !important}
+div.pct45,.card.pct45,img.pct45 { width:45% !important}
+div.pct50,.card.pct50,img.pct50 { width:50% !important}
+div.pct66,.card.pct66,img.pct66 { width:66% !important}
+div.pct80,.card.pct80,img.pct80 { width:80% !important}
 /************* END size overrides ************/
 
 .center{
