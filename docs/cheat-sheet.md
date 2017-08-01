@@ -7,7 +7,7 @@ For a 60 second quick start on Markdown
 
 <div markdown="1" class="two-column">
 
-``` md
+``` markdown
 this is _italic_ and so is *this*  
 this is __bold__ and so is **this**
 ^^underline^^,  ~~strike through~~  
@@ -34,7 +34,7 @@ this is __bold__ and so is **this**
 
 <div markdown="1" class="two-column">
 
-``` md
+``` markdown
 Put 2 spaces at the end of a line  
 to force a line break.  
 If you simply
@@ -69,7 +69,7 @@ using the `<br>` tag like we just did
 
 <div markdown="1" class="two-column">
 
-``` md
+``` markdown
 * need a blank line above to start new list
 + valid bullet symbols
 + `*`, `-` or '+'
@@ -134,7 +134,7 @@ using the `<br>` tag like we just did
 
 <div markdown="1" class="two-column">
 
-``` md
+``` markdown
 - [ ] Task Lists `- [ ]`
     - [x] x instead of space
     - [x] will mark it complete
@@ -177,7 +177,7 @@ using the `<br>` tag like we just did
 
 <div markdown="1" class="two-column">
 
-``` md
+``` markdown
 [simple link](https://www.google.com )  
 [with optional title](https://www.google.com "Google's Homepage")  
 point to a [relative file or md](./embedding/lucid.md) or
@@ -245,7 +245,7 @@ required but a recommended convention
 
 <div markdown="1" class="two-column">
 
-``` md
+``` markdown
 inline ![](images/dingus/image-small.png)
 with alt text ![foo](images/dingus/image-small.png)  
 with ref links ![img-small][]  
@@ -289,7 +289,7 @@ click to zoom ![zoomify][img-dingus]{.tiny}
 
 <div markdown="1" class="two-column">
 
-``` md
+```markdown
 here are some abbr's
 HTML and FUBAR
 
@@ -335,7 +335,7 @@ just add it to end of abbr def.
 
 <div markdown="1" class="two-column">
 
-``` md
+```markdown
 Footnotes[^1] work like reference links
 They auto-number like ordered lists[^3]
 You can use any
@@ -372,7 +372,7 @@ of paragraph or page.
 
 <div markdown="1" class="two-column">
 
-``` md
+```markdown
 Colons can be used to align columns.
 3 dashes min to separate headers.
 Outer pipes (|) are optional,
@@ -424,7 +424,7 @@ icons _cloud_{.icon} | footnotes[^1] | use `<br>` <br> for multi-line <br> line 
 
 <div markdown="1" class="two-column">
 
-``` md
+```markdown
 > Blockquotes are handy to callout text.
 they are greedy and will keep
 grabbing text. The '>' is optional unless trying join
@@ -469,7 +469,6 @@ to follow
 > > blockquotes inside of block quotes
 block quotes can also contain any valid markdown
 
-
 </div>
 
 ---
@@ -478,7 +477,7 @@ block quotes can also contain any valid markdown
 
 <div markdown="1" class="two-column">
 
-``` md
+```markdown
 > :memo: **Memo Admonition**
 use blockquotes
 with emoji indicators for
@@ -525,7 +524,7 @@ through out this doc we have been using a `<div markdown="1" class="two-column">
     <div markdown="1" class="two-column">{++markdown="1" tells it to process what inside++}
         {== <-needs to be a blank line for github to parse==}
 
-    ``` md
+    ```markdown
     |foo | bar |
     |----|-----|
     |baz | buzz|
@@ -544,7 +543,7 @@ through out this doc we have been using a `<div markdown="1" class="two-column">
 
 <div markdown="1" class="two-column">
 
-``` md
+```markdown
 |foo | bar |
 |----|-----|
 |baz | buzz|
@@ -581,7 +580,7 @@ through out this doc we have been using a `<div markdown="1" class="two-column">
 
 <div markdown="1" class="row">
 
-> :bug: **here is another example**
+> :bug: **here is another example**  
 well just use admonitions and a table
 
 ---
@@ -602,7 +601,7 @@ and as you can see the heights get adjusted to be equal as well
 
 > :camera:{.pct50}
 >
-> ``` md
+> ```markdown
 > # h1 Heading
 > ## h2 Heading
 > ### h3 Heading
