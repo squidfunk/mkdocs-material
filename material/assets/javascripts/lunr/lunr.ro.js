@@ -1,1 +1,558 @@
-!function(e,i){"function"==typeof define&&define.amd?define(i):"object"==typeof exports?module.exports=i():i()(e.lunr)}(this,function(){return function(e){if(void 0===e)throw new Error("Lunr is not present. Please include / require Lunr before this script.");if(void 0===e.stemmerSupport)throw new Error("Lunr stemmer support is not present. Please include / require Lunr stemmer support before this script.");e.ro=function(){this.pipeline.reset(),this.pipeline.add(e.ro.trimmer,e.ro.stopWordFilter,e.ro.stemmer),this.searchPipeline&&(this.searchPipeline.reset(),this.searchPipeline.add(e.ro.stemmer))},e.ro.wordCharacters="A-Za-zªºÀ-ÖØ-öø-ʸˠ-ˤᴀ-ᴥᴬ-ᵜᵢ-ᵥᵫ-ᵷᵹ-ᶾḀ-ỿⁱⁿₐ-ₜKÅℲⅎⅠ-ↈⱠ-ⱿꜢ-ꞇꞋ-ꞭꞰ-ꞷꟷ-ꟿꬰ-ꭚꭜ-ꭤﬀ-ﬆＡ-Ｚａ-ｚ",e.ro.trimmer=e.trimmerSupport.generateTrimmer(e.ro.wordCharacters),e.Pipeline.registerFunction(e.ro.trimmer,"trimmer-ro"),e.ro.stemmer=function(){var i=e.stemmerSupport.Among,r=e.stemmerSupport.SnowballProgram,n=new function(){function e(e,i){L.eq_s(1,e)&&(L.ket=L.cursor,L.in_grouping(W,97,259)&&L.slice_from(i))}function n(){for(var i,r;;){if(i=L.cursor,L.in_grouping(W,97,259)&&(r=L.cursor,L.bra=r,e("u","U"),L.cursor=r,e("i","I")),L.cursor=i,L.cursor>=L.limit)break;L.cursor++}}function t(){if(L.out_grouping(W,97,259)){for(;!L.in_grouping(W,97,259);){if(L.cursor>=L.limit)return!0;L.cursor++}return!1}return!0}function a(){if(L.in_grouping(W,97,259))for(;!L.out_grouping(W,97,259);){if(L.cursor>=L.limit)return!0;L.cursor++}return!1}function o(){var e,i,r=L.cursor;if(L.in_grouping(W,97,259)){if(e=L.cursor,!t())return void(h=L.cursor);if(L.cursor=e,!a())return void(h=L.cursor)}L.cursor=r,L.out_grouping(W,97,259)&&(i=L.cursor,t()&&(L.cursor=i,L.in_grouping(W,97,259)&&L.cursor<L.limit&&L.cursor++),h=L.cursor)}function u(){for(;!L.in_grouping(W,97,259);){if(L.cursor>=L.limit)return!1;L.cursor++}for(;!L.out_grouping(W,97,259);){if(L.cursor>=L.limit)return!1;L.cursor++}return!0}function c(){var e=L.cursor;h=L.limit,k=h,g=h,o(),L.cursor=e,u()&&(k=L.cursor,u()&&(g=L.cursor))}function s(){for(var e;;){if(L.bra=L.cursor,e=L.find_among(z,3))switch(L.ket=L.cursor,e){case 1:L.slice_from("i");continue;case 2:L.slice_from("u");continue;case 3:if(L.cursor>=L.limit)break;L.cursor++;continue}break}}function w(){return h<=L.cursor}function m(){return k<=L.cursor}function l(){return g<=L.cursor}function f(){var e,i;if(L.ket=L.cursor,(e=L.find_among_b(C,16))&&(L.bra=L.cursor,m()))switch(e){case 1:L.slice_del();break;case 2:L.slice_from("a");break;case 3:L.slice_from("e");break;case 4:L.slice_from("i");break;case 5:i=L.limit-L.cursor,L.eq_s_b(2,"ab")||(L.cursor=L.limit-i,L.slice_from("i"));break;case 6:L.slice_from("at");break;case 7:L.slice_from("aţi")}}function p(){var e,i=L.limit-L.cursor;if(L.ket=L.cursor,(e=L.find_among_b(P,46))&&(L.bra=L.cursor,m())){switch(e){case 1:L.slice_from("abil");break;case 2:L.slice_from("ibil");break;case 3:L.slice_from("iv");break;case 4:L.slice_from("ic");break;case 5:L.slice_from("at");break;case 6:L.slice_from("it")}return _=!0,L.cursor=L.limit-i,!0}return!1}function d(){var e,i;for(_=!1;;)if(i=L.limit-L.cursor,!p()){L.cursor=L.limit-i;break}if(L.ket=L.cursor,(e=L.find_among_b(F,62))&&(L.bra=L.cursor,l())){switch(e){case 1:L.slice_del();break;case 2:L.eq_s_b(1,"ţ")&&(L.bra=L.cursor,L.slice_from("t"));break;case 3:L.slice_from("ist")}_=!0}}function b(){var e,i,r;if(L.cursor>=h){if(i=L.limit_backward,L.limit_backward=h,L.ket=L.cursor,e=L.find_among_b(q,94))switch(L.bra=L.cursor,e){case 1:if(r=L.limit-L.cursor,!L.out_grouping_b(W,97,259)&&(L.cursor=L.limit-r,!L.eq_s_b(1,"u")))break;case 2:L.slice_del()}L.limit_backward=i}}function v(){var e;L.ket=L.cursor,(e=L.find_among_b(S,5))&&(L.bra=L.cursor,w()&&1==e&&L.slice_del())}var _,g,k,h,z=[new i("",-1,3),new i("I",0,1),new i("U",0,2)],C=[new i("ea",-1,3),new i("aţia",-1,7),new i("aua",-1,2),new i("iua",-1,4),new i("aţie",-1,7),new i("ele",-1,3),new i("ile",-1,5),new i("iile",6,4),new i("iei",-1,4),new i("atei",-1,6),new i("ii",-1,4),new i("ului",-1,1),new i("ul",-1,1),new i("elor",-1,3),new i("ilor",-1,4),new i("iilor",14,4)],P=[new i("icala",-1,4),new i("iciva",-1,4),new i("ativa",-1,5),new i("itiva",-1,6),new i("icale",-1,4),new i("aţiune",-1,5),new i("iţiune",-1,6),new i("atoare",-1,5),new i("itoare",-1,6),new i("ătoare",-1,5),new i("icitate",-1,4),new i("abilitate",-1,1),new i("ibilitate",-1,2),new i("ivitate",-1,3),new i("icive",-1,4),new i("ative",-1,5),new i("itive",-1,6),new i("icali",-1,4),new i("atori",-1,5),new i("icatori",18,4),new i("itori",-1,6),new i("ători",-1,5),new i("icitati",-1,4),new i("abilitati",-1,1),new i("ivitati",-1,3),new i("icivi",-1,4),new i("ativi",-1,5),new i("itivi",-1,6),new i("icităi",-1,4),new i("abilităi",-1,1),new i("ivităi",-1,3),new i("icităţi",-1,4),new i("abilităţi",-1,1),new i("ivităţi",-1,3),new i("ical",-1,4),new i("ator",-1,5),new i("icator",35,4),new i("itor",-1,6),new i("ător",-1,5),new i("iciv",-1,4),new i("ativ",-1,5),new i("itiv",-1,6),new i("icală",-1,4),new i("icivă",-1,4),new i("ativă",-1,5),new i("itivă",-1,6)],F=[new i("ica",-1,1),new i("abila",-1,1),new i("ibila",-1,1),new i("oasa",-1,1),new i("ata",-1,1),new i("ita",-1,1),new i("anta",-1,1),new i("ista",-1,3),new i("uta",-1,1),new i("iva",-1,1),new i("ic",-1,1),new i("ice",-1,1),new i("abile",-1,1),new i("ibile",-1,1),new i("isme",-1,3),new i("iune",-1,2),new i("oase",-1,1),new i("ate",-1,1),new i("itate",17,1),new i("ite",-1,1),new i("ante",-1,1),new i("iste",-1,3),new i("ute",-1,1),new i("ive",-1,1),new i("ici",-1,1),new i("abili",-1,1),new i("ibili",-1,1),new i("iuni",-1,2),new i("atori",-1,1),new i("osi",-1,1),new i("ati",-1,1),new i("itati",30,1),new i("iti",-1,1),new i("anti",-1,1),new i("isti",-1,3),new i("uti",-1,1),new i("işti",-1,3),new i("ivi",-1,1),new i("ităi",-1,1),new i("oşi",-1,1),new i("ităţi",-1,1),new i("abil",-1,1),new i("ibil",-1,1),new i("ism",-1,3),new i("ator",-1,1),new i("os",-1,1),new i("at",-1,1),new i("it",-1,1),new i("ant",-1,1),new i("ist",-1,3),new i("ut",-1,1),new i("iv",-1,1),new i("ică",-1,1),new i("abilă",-1,1),new i("ibilă",-1,1),new i("oasă",-1,1),new i("ată",-1,1),new i("ită",-1,1),new i("antă",-1,1),new i("istă",-1,3),new i("ută",-1,1),new i("ivă",-1,1)],q=[new i("ea",-1,1),new i("ia",-1,1),new i("esc",-1,1),new i("ăsc",-1,1),new i("ind",-1,1),new i("ând",-1,1),new i("are",-1,1),new i("ere",-1,1),new i("ire",-1,1),new i("âre",-1,1),new i("se",-1,2),new i("ase",10,1),new i("sese",10,2),new i("ise",10,1),new i("use",10,1),new i("âse",10,1),new i("eşte",-1,1),new i("ăşte",-1,1),new i("eze",-1,1),new i("ai",-1,1),new i("eai",19,1),new i("iai",19,1),new i("sei",-1,2),new i("eşti",-1,1),new i("ăşti",-1,1),new i("ui",-1,1),new i("ezi",-1,1),new i("âi",-1,1),new i("aşi",-1,1),new i("seşi",-1,2),new i("aseşi",29,1),new i("seseşi",29,2),new i("iseşi",29,1),new i("useşi",29,1),new i("âseşi",29,1),new i("işi",-1,1),new i("uşi",-1,1),new i("âşi",-1,1),new i("aţi",-1,2),new i("eaţi",38,1),new i("iaţi",38,1),new i("eţi",-1,2),new i("iţi",-1,2),new i("âţi",-1,2),new i("arăţi",-1,1),new i("serăţi",-1,2),new i("aserăţi",45,1),new i("seserăţi",45,2),new i("iserăţi",45,1),new i("userăţi",45,1),new i("âserăţi",45,1),new i("irăţi",-1,1),new i("urăţi",-1,1),new i("ârăţi",-1,1),new i("am",-1,1),new i("eam",54,1),new i("iam",54,1),new i("em",-1,2),new i("asem",57,1),new i("sesem",57,2),new i("isem",57,1),new i("usem",57,1),new i("âsem",57,1),new i("im",-1,2),new i("âm",-1,2),new i("ăm",-1,2),new i("arăm",65,1),new i("serăm",65,2),new i("aserăm",67,1),new i("seserăm",67,2),new i("iserăm",67,1),new i("userăm",67,1),new i("âserăm",67,1),new i("irăm",65,1),new i("urăm",65,1),new i("ârăm",65,1),new i("au",-1,1),new i("eau",76,1),new i("iau",76,1),new i("indu",-1,1),new i("ându",-1,1),new i("ez",-1,1),new i("ească",-1,1),new i("ară",-1,1),new i("seră",-1,2),new i("aseră",84,1),new i("seseră",84,2),new i("iseră",84,1),new i("useră",84,1),new i("âseră",84,1),new i("iră",-1,1),new i("ură",-1,1),new i("âră",-1,1),new i("ează",-1,1)],S=[new i("a",-1,1),new i("e",-1,1),new i("ie",1,1),new i("i",-1,1),new i("ă",-1,1)],W=[17,65,16,0,0,0,0,0,0,0,0,0,0,0,0,0,2,32,0,0,4],L=new r;this.setCurrent=function(e){L.setCurrent(e)},this.getCurrent=function(){return L.getCurrent()},this.stem=function(){var e=L.cursor;return n(),L.cursor=e,c(),L.limit_backward=e,L.cursor=L.limit,f(),L.cursor=L.limit,d(),L.cursor=L.limit,_||(L.cursor=L.limit,b(),L.cursor=L.limit),v(),L.cursor=L.limit_backward,s(),!0}};return function(e){return"function"==typeof e.update?e.update(function(e){return n.setCurrent(e),n.stem(),n.getCurrent()}):(n.setCurrent(e),n.stem(),n.getCurrent())}}(),e.Pipeline.registerFunction(e.ro.stemmer,"stemmer-ro"),e.ro.stopWordFilter=e.generateStopWordFilter("acea aceasta această aceea acei aceia acel acela acele acelea acest acesta aceste acestea aceşti aceştia acolo acord acum ai aia aibă aici al ale alea altceva altcineva am ar are asemenea asta astea astăzi asupra au avea avem aveţi azi aş aşadar aţi bine bucur bună ca care caut ce cel ceva chiar cinci cine cineva contra cu cum cumva curând curînd când cât câte câtva câţi cînd cît cîte cîtva cîţi că căci cărei căror cărui către da dacă dar datorită dată dau de deci deja deoarece departe deşi din dinaintea dintr- dintre doi doilea două drept după dă ea ei el ele eram este eu eşti face fata fi fie fiecare fii fim fiu fiţi frumos fără graţie halbă iar ieri la le li lor lui lângă lîngă mai mea mei mele mereu meu mi mie mine mult multă mulţi mulţumesc mâine mîine mă ne nevoie nici nicăieri nimeni nimeri nimic nişte noastre noastră noi noroc nostru nouă noştri nu opt ori oricare orice oricine oricum oricând oricât oricînd oricît oriunde patra patru patrulea pe pentru peste pic poate pot prea prima primul prin puţin puţina puţină până pînă rog sa sale sau se spate spre sub sunt suntem sunteţi sută sînt sîntem sînteţi să săi său ta tale te timp tine toate toată tot totuşi toţi trei treia treilea tu tăi tău un una unde undeva unei uneia unele uneori unii unor unora unu unui unuia unul vi voastre voastră voi vostru vouă voştri vreme vreo vreun vă zece zero zi zice îi îl îmi împotriva în  înainte înaintea încotro încât încît între întrucât întrucît îţi ăla ălea ăsta ăstea ăştia şapte şase şi ştiu ţi ţie".split(" ")),e.Pipeline.registerFunction(e.ro.stopWordFilter,"stopWordFilter-ro")}});
+/*!
+ * Lunr languages, `Romanian` language
+ * https://github.com/MihaiValentin/lunr-languages
+ *
+ * Copyright 2014, Mihai Valentin
+ * http://www.mozilla.org/MPL/
+ */
+/*!
+ * based on
+ * Snowball JavaScript Library v0.3
+ * http://code.google.com/p/urim/
+ * http://snowball.tartarus.org/
+ *
+ * Copyright 2010, Oleg Mazko
+ * http://www.mozilla.org/MPL/
+ */
+
+/**
+ * export the module via AMD, CommonJS or as a browser global
+ * Export code from https://github.com/umdjs/umd/blob/master/returnExports.js
+ */
+;
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(factory)
+  } else if (typeof exports === 'object') {
+    /**
+     * Node. Does not work with strict CommonJS, but
+     * only CommonJS-like environments that support module.exports,
+     * like Node.
+     */
+    module.exports = factory()
+  } else {
+    // Browser globals (root is window)
+    factory()(root.lunr);
+  }
+}(this, function() {
+  /**
+   * Just return a value to define the module export.
+   * This example returns an object, but the module
+   * can return a function as the exported value.
+   */
+  return function(lunr) {
+    /* throw error if lunr is not yet included */
+    if ('undefined' === typeof lunr) {
+      throw new Error('Lunr is not present. Please include / require Lunr before this script.');
+    }
+
+    /* throw error if lunr stemmer support is not yet included */
+    if ('undefined' === typeof lunr.stemmerSupport) {
+      throw new Error('Lunr stemmer support is not present. Please include / require Lunr stemmer support before this script.');
+    }
+
+    /* register specific locale function */
+    lunr.ro = function() {
+      this.pipeline.reset();
+      this.pipeline.add(
+        lunr.ro.trimmer,
+        lunr.ro.stopWordFilter,
+        lunr.ro.stemmer
+      );
+
+      // for lunr version 2
+      // this is necessary so that every searched word is also stemmed before
+      // in lunr <= 1 this is not needed, as it is done using the normal pipeline
+      if (this.searchPipeline) {
+        this.searchPipeline.reset();
+        this.searchPipeline.add(lunr.ro.stemmer)
+      }
+    };
+
+    /* lunr trimmer function */
+    lunr.ro.wordCharacters = "A-Za-z\xAA\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02B8\u02E0-\u02E4\u1D00-\u1D25\u1D2C-\u1D5C\u1D62-\u1D65\u1D6B-\u1D77\u1D79-\u1DBE\u1E00-\u1EFF\u2071\u207F\u2090-\u209C\u212A\u212B\u2132\u214E\u2160-\u2188\u2C60-\u2C7F\uA722-\uA787\uA78B-\uA7AD\uA7B0-\uA7B7\uA7F7-\uA7FF\uAB30-\uAB5A\uAB5C-\uAB64\uFB00-\uFB06\uFF21-\uFF3A\uFF41-\uFF5A";
+    lunr.ro.trimmer = lunr.trimmerSupport.generateTrimmer(lunr.ro.wordCharacters);
+
+    lunr.Pipeline.registerFunction(lunr.ro.trimmer, 'trimmer-ro');
+
+    /* lunr stemmer function */
+    lunr.ro.stemmer = (function() {
+      /* create the wrapped stemmer object */
+      var Among = lunr.stemmerSupport.Among,
+        SnowballProgram = lunr.stemmerSupport.SnowballProgram,
+        st = new function RomanianStemmer() {
+          var a_0 = [new Among("", -1, 3), new Among("I", 0, 1), new Among("U", 0, 2)],
+            a_1 = [
+              new Among("ea", -1, 3), new Among("a\u0163ia", -1, 7),
+              new Among("aua", -1, 2), new Among("iua", -1, 4),
+              new Among("a\u0163ie", -1, 7), new Among("ele", -1, 3),
+              new Among("ile", -1, 5), new Among("iile", 6, 4),
+              new Among("iei", -1, 4), new Among("atei", -1, 6),
+              new Among("ii", -1, 4), new Among("ului", -1, 1),
+              new Among("ul", -1, 1), new Among("elor", -1, 3),
+              new Among("ilor", -1, 4), new Among("iilor", 14, 4)
+            ],
+            a_2 = [
+              new Among("icala", -1, 4), new Among("iciva", -1, 4),
+              new Among("ativa", -1, 5), new Among("itiva", -1, 6),
+              new Among("icale", -1, 4), new Among("a\u0163iune", -1, 5),
+              new Among("i\u0163iune", -1, 6), new Among("atoare", -1, 5),
+              new Among("itoare", -1, 6), new Among("\u0103toare", -1, 5),
+              new Among("icitate", -1, 4), new Among("abilitate", -1, 1),
+              new Among("ibilitate", -1, 2), new Among("ivitate", -1, 3),
+              new Among("icive", -1, 4), new Among("ative", -1, 5),
+              new Among("itive", -1, 6), new Among("icali", -1, 4),
+              new Among("atori", -1, 5), new Among("icatori", 18, 4),
+              new Among("itori", -1, 6), new Among("\u0103tori", -1, 5),
+              new Among("icitati", -1, 4), new Among("abilitati", -1, 1),
+              new Among("ivitati", -1, 3), new Among("icivi", -1, 4),
+              new Among("ativi", -1, 5), new Among("itivi", -1, 6),
+              new Among("icit\u0103i", -1, 4), new Among("abilit\u0103i", -1, 1),
+              new Among("ivit\u0103i", -1, 3),
+              new Among("icit\u0103\u0163i", -1, 4),
+              new Among("abilit\u0103\u0163i", -1, 1),
+              new Among("ivit\u0103\u0163i", -1, 3), new Among("ical", -1, 4),
+              new Among("ator", -1, 5), new Among("icator", 35, 4),
+              new Among("itor", -1, 6), new Among("\u0103tor", -1, 5),
+              new Among("iciv", -1, 4), new Among("ativ", -1, 5),
+              new Among("itiv", -1, 6), new Among("ical\u0103", -1, 4),
+              new Among("iciv\u0103", -1, 4), new Among("ativ\u0103", -1, 5),
+              new Among("itiv\u0103", -1, 6)
+            ],
+            a_3 = [new Among("ica", -1, 1),
+              new Among("abila", -1, 1), new Among("ibila", -1, 1),
+              new Among("oasa", -1, 1), new Among("ata", -1, 1),
+              new Among("ita", -1, 1), new Among("anta", -1, 1),
+              new Among("ista", -1, 3), new Among("uta", -1, 1),
+              new Among("iva", -1, 1), new Among("ic", -1, 1),
+              new Among("ice", -1, 1), new Among("abile", -1, 1),
+              new Among("ibile", -1, 1), new Among("isme", -1, 3),
+              new Among("iune", -1, 2), new Among("oase", -1, 1),
+              new Among("ate", -1, 1), new Among("itate", 17, 1),
+              new Among("ite", -1, 1), new Among("ante", -1, 1),
+              new Among("iste", -1, 3), new Among("ute", -1, 1),
+              new Among("ive", -1, 1), new Among("ici", -1, 1),
+              new Among("abili", -1, 1), new Among("ibili", -1, 1),
+              new Among("iuni", -1, 2), new Among("atori", -1, 1),
+              new Among("osi", -1, 1), new Among("ati", -1, 1),
+              new Among("itati", 30, 1), new Among("iti", -1, 1),
+              new Among("anti", -1, 1), new Among("isti", -1, 3),
+              new Among("uti", -1, 1), new Among("i\u015Fti", -1, 3),
+              new Among("ivi", -1, 1), new Among("it\u0103i", -1, 1),
+              new Among("o\u015Fi", -1, 1), new Among("it\u0103\u0163i", -1, 1),
+              new Among("abil", -1, 1), new Among("ibil", -1, 1),
+              new Among("ism", -1, 3), new Among("ator", -1, 1),
+              new Among("os", -1, 1), new Among("at", -1, 1),
+              new Among("it", -1, 1), new Among("ant", -1, 1),
+              new Among("ist", -1, 3), new Among("ut", -1, 1),
+              new Among("iv", -1, 1), new Among("ic\u0103", -1, 1),
+              new Among("abil\u0103", -1, 1), new Among("ibil\u0103", -1, 1),
+              new Among("oas\u0103", -1, 1), new Among("at\u0103", -1, 1),
+              new Among("it\u0103", -1, 1), new Among("ant\u0103", -1, 1),
+              new Among("ist\u0103", -1, 3), new Among("ut\u0103", -1, 1),
+              new Among("iv\u0103", -1, 1)
+            ],
+            a_4 = [new Among("ea", -1, 1),
+              new Among("ia", -1, 1), new Among("esc", -1, 1),
+              new Among("\u0103sc", -1, 1), new Among("ind", -1, 1),
+              new Among("\u00E2nd", -1, 1), new Among("are", -1, 1),
+              new Among("ere", -1, 1), new Among("ire", -1, 1),
+              new Among("\u00E2re", -1, 1), new Among("se", -1, 2),
+              new Among("ase", 10, 1), new Among("sese", 10, 2),
+              new Among("ise", 10, 1), new Among("use", 10, 1),
+              new Among("\u00E2se", 10, 1), new Among("e\u015Fte", -1, 1),
+              new Among("\u0103\u015Fte", -1, 1), new Among("eze", -1, 1),
+              new Among("ai", -1, 1), new Among("eai", 19, 1),
+              new Among("iai", 19, 1), new Among("sei", -1, 2),
+              new Among("e\u015Fti", -1, 1), new Among("\u0103\u015Fti", -1, 1),
+              new Among("ui", -1, 1), new Among("ezi", -1, 1),
+              new Among("\u00E2i", -1, 1), new Among("a\u015Fi", -1, 1),
+              new Among("se\u015Fi", -1, 2), new Among("ase\u015Fi", 29, 1),
+              new Among("sese\u015Fi", 29, 2), new Among("ise\u015Fi", 29, 1),
+              new Among("use\u015Fi", 29, 1),
+              new Among("\u00E2se\u015Fi", 29, 1), new Among("i\u015Fi", -1, 1),
+              new Among("u\u015Fi", -1, 1), new Among("\u00E2\u015Fi", -1, 1),
+              new Among("a\u0163i", -1, 2), new Among("ea\u0163i", 38, 1),
+              new Among("ia\u0163i", 38, 1), new Among("e\u0163i", -1, 2),
+              new Among("i\u0163i", -1, 2), new Among("\u00E2\u0163i", -1, 2),
+              new Among("ar\u0103\u0163i", -1, 1),
+              new Among("ser\u0103\u0163i", -1, 2),
+              new Among("aser\u0103\u0163i", 45, 1),
+              new Among("seser\u0103\u0163i", 45, 2),
+              new Among("iser\u0103\u0163i", 45, 1),
+              new Among("user\u0103\u0163i", 45, 1),
+              new Among("\u00E2ser\u0103\u0163i", 45, 1),
+              new Among("ir\u0103\u0163i", -1, 1),
+              new Among("ur\u0103\u0163i", -1, 1),
+              new Among("\u00E2r\u0103\u0163i", -1, 1), new Among("am", -1, 1),
+              new Among("eam", 54, 1), new Among("iam", 54, 1),
+              new Among("em", -1, 2), new Among("asem", 57, 1),
+              new Among("sesem", 57, 2), new Among("isem", 57, 1),
+              new Among("usem", 57, 1), new Among("\u00E2sem", 57, 1),
+              new Among("im", -1, 2), new Among("\u00E2m", -1, 2),
+              new Among("\u0103m", -1, 2), new Among("ar\u0103m", 65, 1),
+              new Among("ser\u0103m", 65, 2), new Among("aser\u0103m", 67, 1),
+              new Among("seser\u0103m", 67, 2), new Among("iser\u0103m", 67, 1),
+              new Among("user\u0103m", 67, 1),
+              new Among("\u00E2ser\u0103m", 67, 1),
+              new Among("ir\u0103m", 65, 1), new Among("ur\u0103m", 65, 1),
+              new Among("\u00E2r\u0103m", 65, 1), new Among("au", -1, 1),
+              new Among("eau", 76, 1), new Among("iau", 76, 1),
+              new Among("indu", -1, 1), new Among("\u00E2ndu", -1, 1),
+              new Among("ez", -1, 1), new Among("easc\u0103", -1, 1),
+              new Among("ar\u0103", -1, 1), new Among("ser\u0103", -1, 2),
+              new Among("aser\u0103", 84, 1), new Among("seser\u0103", 84, 2),
+              new Among("iser\u0103", 84, 1), new Among("user\u0103", 84, 1),
+              new Among("\u00E2ser\u0103", 84, 1), new Among("ir\u0103", -1, 1),
+              new Among("ur\u0103", -1, 1), new Among("\u00E2r\u0103", -1, 1),
+              new Among("eaz\u0103", -1, 1)
+            ],
+            a_5 = [new Among("a", -1, 1),
+              new Among("e", -1, 1), new Among("ie", 1, 1),
+              new Among("i", -1, 1), new Among("\u0103", -1, 1)
+            ],
+            g_v = [17, 65,
+              16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 32, 0, 0, 4
+            ],
+            B_standard_suffix_removed, I_p2, I_p1, I_pV, sbp = new SnowballProgram();
+          this.setCurrent = function(word) {
+            sbp.setCurrent(word);
+          };
+          this.getCurrent = function() {
+            return sbp.getCurrent();
+          };
+
+          function habr1(c1, c2) {
+            if (sbp.eq_s(1, c1)) {
+              sbp.ket = sbp.cursor;
+              if (sbp.in_grouping(g_v, 97, 259))
+                sbp.slice_from(c2);
+            }
+          }
+
+          function r_prelude() {
+            var v_1, v_2;
+            while (true) {
+              v_1 = sbp.cursor;
+              if (sbp.in_grouping(g_v, 97, 259)) {
+                v_2 = sbp.cursor;
+                sbp.bra = v_2;
+                habr1("u", "U");
+                sbp.cursor = v_2;
+                habr1("i", "I");
+              }
+              sbp.cursor = v_1;
+              if (sbp.cursor >= sbp.limit) {
+                break;
+              }
+              sbp.cursor++;
+            }
+          }
+
+          function habr2() {
+            if (sbp.out_grouping(g_v, 97, 259)) {
+              while (!sbp.in_grouping(g_v, 97, 259)) {
+                if (sbp.cursor >= sbp.limit)
+                  return true;
+                sbp.cursor++;
+              }
+              return false;
+            }
+            return true;
+          }
+
+          function habr3() {
+            if (sbp.in_grouping(g_v, 97, 259)) {
+              while (!sbp.out_grouping(g_v, 97, 259)) {
+                if (sbp.cursor >= sbp.limit)
+                  return true;
+                sbp.cursor++;
+              }
+            }
+            return false;
+          }
+
+          function habr4() {
+            var v_1 = sbp.cursor,
+              v_2, v_3;
+            if (sbp.in_grouping(g_v, 97, 259)) {
+              v_2 = sbp.cursor;
+              if (habr2()) {
+                sbp.cursor = v_2;
+                if (!habr3()) {
+                  I_pV = sbp.cursor;
+                  return;
+                }
+              } else {
+                I_pV = sbp.cursor;
+                return;
+              }
+            }
+            sbp.cursor = v_1;
+            if (sbp.out_grouping(g_v, 97, 259)) {
+              v_3 = sbp.cursor;
+              if (habr2()) {
+                sbp.cursor = v_3;
+                if (sbp.in_grouping(g_v, 97, 259) && sbp.cursor < sbp.limit)
+                  sbp.cursor++;
+              }
+              I_pV = sbp.cursor;
+            }
+          }
+
+          function habr5() {
+            while (!sbp.in_grouping(g_v, 97, 259)) {
+              if (sbp.cursor >= sbp.limit)
+                return false;
+              sbp.cursor++;
+            }
+            while (!sbp.out_grouping(g_v, 97, 259)) {
+              if (sbp.cursor >= sbp.limit)
+                return false;
+              sbp.cursor++;
+            }
+            return true;
+          }
+
+          function r_mark_regions() {
+            var v_1 = sbp.cursor;
+            I_pV = sbp.limit;
+            I_p1 = I_pV;
+            I_p2 = I_pV;
+            habr4();
+            sbp.cursor = v_1;
+            if (habr5()) {
+              I_p1 = sbp.cursor;
+              if (habr5())
+                I_p2 = sbp.cursor;
+            }
+          }
+
+          function r_postlude() {
+            var among_var;
+            while (true) {
+              sbp.bra = sbp.cursor;
+              among_var = sbp.find_among(a_0, 3);
+              if (among_var) {
+                sbp.ket = sbp.cursor;
+                switch (among_var) {
+                  case 1:
+                    sbp.slice_from("i");
+                    continue;
+                  case 2:
+                    sbp.slice_from("u");
+                    continue;
+                  case 3:
+                    if (sbp.cursor >= sbp.limit)
+                      break;
+                    sbp.cursor++;
+                    continue;
+                }
+              }
+              break;
+            }
+          }
+
+          function r_RV() {
+            return I_pV <= sbp.cursor;
+          }
+
+          function r_R1() {
+            return I_p1 <= sbp.cursor;
+          }
+
+          function r_R2() {
+            return I_p2 <= sbp.cursor;
+          }
+
+          function r_step_0() {
+            var among_var, v_1;
+            sbp.ket = sbp.cursor;
+            among_var = sbp.find_among_b(a_1, 16);
+            if (among_var) {
+              sbp.bra = sbp.cursor;
+              if (r_R1()) {
+                switch (among_var) {
+                  case 1:
+                    sbp.slice_del();
+                    break;
+                  case 2:
+                    sbp.slice_from("a");
+                    break;
+                  case 3:
+                    sbp.slice_from("e");
+                    break;
+                  case 4:
+                    sbp.slice_from("i");
+                    break;
+                  case 5:
+                    v_1 = sbp.limit - sbp.cursor;
+                    if (!sbp.eq_s_b(2, "ab")) {
+                      sbp.cursor = sbp.limit - v_1;
+                      sbp.slice_from("i");
+                    }
+                    break;
+                  case 6:
+                    sbp.slice_from("at");
+                    break;
+                  case 7:
+                    sbp.slice_from("a\u0163i");
+                    break;
+                }
+              }
+            }
+          }
+
+          function r_combo_suffix() {
+            var among_var, v_1 = sbp.limit - sbp.cursor;
+            sbp.ket = sbp.cursor;
+            among_var = sbp.find_among_b(a_2, 46);
+            if (among_var) {
+              sbp.bra = sbp.cursor;
+              if (r_R1()) {
+                switch (among_var) {
+                  case 1:
+                    sbp.slice_from("abil");
+                    break;
+                  case 2:
+                    sbp.slice_from("ibil");
+                    break;
+                  case 3:
+                    sbp.slice_from("iv");
+                    break;
+                  case 4:
+                    sbp.slice_from("ic");
+                    break;
+                  case 5:
+                    sbp.slice_from("at");
+                    break;
+                  case 6:
+                    sbp.slice_from("it");
+                    break;
+                }
+                B_standard_suffix_removed = true;
+                sbp.cursor = sbp.limit - v_1;
+                return true;
+              }
+            }
+            return false;
+          }
+
+          function r_standard_suffix() {
+            var among_var, v_1;
+            B_standard_suffix_removed = false;
+            while (true) {
+              v_1 = sbp.limit - sbp.cursor;
+              if (!r_combo_suffix()) {
+                sbp.cursor = sbp.limit - v_1;
+                break;
+              }
+            }
+            sbp.ket = sbp.cursor;
+            among_var = sbp.find_among_b(a_3, 62);
+            if (among_var) {
+              sbp.bra = sbp.cursor;
+              if (r_R2()) {
+                switch (among_var) {
+                  case 1:
+                    sbp.slice_del();
+                    break;
+                  case 2:
+                    if (sbp.eq_s_b(1, "\u0163")) {
+                      sbp.bra = sbp.cursor;
+                      sbp.slice_from("t");
+                    }
+                    break;
+                  case 3:
+                    sbp.slice_from("ist");
+                    break;
+                }
+                B_standard_suffix_removed = true;
+              }
+            }
+          }
+
+          function r_verb_suffix() {
+            var among_var, v_1, v_2;
+            if (sbp.cursor >= I_pV) {
+              v_1 = sbp.limit_backward;
+              sbp.limit_backward = I_pV;
+              sbp.ket = sbp.cursor;
+              among_var = sbp.find_among_b(a_4, 94);
+              if (among_var) {
+                sbp.bra = sbp.cursor;
+                switch (among_var) {
+                  case 1:
+                    v_2 = sbp.limit - sbp.cursor;
+                    if (!sbp.out_grouping_b(g_v, 97, 259)) {
+                      sbp.cursor = sbp.limit - v_2;
+                      if (!sbp.eq_s_b(1, "u"))
+                        break;
+                    }
+                  case 2:
+                    sbp.slice_del();
+                    break;
+                }
+              }
+              sbp.limit_backward = v_1;
+            }
+          }
+
+          function r_vowel_suffix() {
+            var among_var;
+            sbp.ket = sbp.cursor;
+            among_var = sbp.find_among_b(a_5, 5);
+            if (among_var) {
+              sbp.bra = sbp.cursor;
+              if (r_RV() && among_var == 1)
+                sbp.slice_del();
+            }
+          }
+          this.stem = function() {
+            var v_1 = sbp.cursor;
+            r_prelude();
+            sbp.cursor = v_1;
+            r_mark_regions();
+            sbp.limit_backward = v_1;
+            sbp.cursor = sbp.limit;
+            r_step_0();
+            sbp.cursor = sbp.limit;
+            r_standard_suffix();
+            sbp.cursor = sbp.limit;
+            if (!B_standard_suffix_removed) {
+              sbp.cursor = sbp.limit;
+              r_verb_suffix();
+              sbp.cursor = sbp.limit;
+            }
+            r_vowel_suffix();
+            sbp.cursor = sbp.limit_backward;
+            r_postlude();
+            return true;
+          }
+        };
+
+      /* and return a function that stems a word for the current locale */
+      return function(token) {
+        // for lunr version 2
+        if (typeof token.update === "function") {
+          return token.update(function(word) {
+            st.setCurrent(word);
+            st.stem();
+            return st.getCurrent();
+          })
+        } else { // for lunr version <= 1
+          st.setCurrent(token);
+          st.stem();
+          return st.getCurrent();
+        }
+      }
+    })();
+
+    lunr.Pipeline.registerFunction(lunr.ro.stemmer, 'stemmer-ro');
+
+    lunr.ro.stopWordFilter = lunr.generateStopWordFilter('acea aceasta această aceea acei aceia acel acela acele acelea acest acesta aceste acestea aceşti aceştia acolo acord acum ai aia aibă aici al ale alea altceva altcineva am ar are asemenea asta astea astăzi asupra au avea avem aveţi azi aş aşadar aţi bine bucur bună ca care caut ce cel ceva chiar cinci cine cineva contra cu cum cumva curând curînd când cât câte câtva câţi cînd cît cîte cîtva cîţi că căci cărei căror cărui către da dacă dar datorită dată dau de deci deja deoarece departe deşi din dinaintea dintr- dintre doi doilea două drept după dă ea ei el ele eram este eu eşti face fata fi fie fiecare fii fim fiu fiţi frumos fără graţie halbă iar ieri la le li lor lui lângă lîngă mai mea mei mele mereu meu mi mie mine mult multă mulţi mulţumesc mâine mîine mă ne nevoie nici nicăieri nimeni nimeri nimic nişte noastre noastră noi noroc nostru nouă noştri nu opt ori oricare orice oricine oricum oricând oricât oricînd oricît oriunde patra patru patrulea pe pentru peste pic poate pot prea prima primul prin puţin puţina puţină până pînă rog sa sale sau se spate spre sub sunt suntem sunteţi sută sînt sîntem sînteţi să săi său ta tale te timp tine toate toată tot totuşi toţi trei treia treilea tu tăi tău un una unde undeva unei uneia unele uneori unii unor unora unu unui unuia unul vi voastre voastră voi vostru vouă voştri vreme vreo vreun vă zece zero zi zice îi îl îmi împotriva în  înainte înaintea încotro încât încît între întrucât întrucît îţi ăla ălea ăsta ăstea ăştia şapte şase şi ştiu ţi ţie'.split(' '));
+
+    lunr.Pipeline.registerFunction(lunr.ro.stopWordFilter, 'stopWordFilter-ro');
+  };
+}))

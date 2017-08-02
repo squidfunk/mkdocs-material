@@ -1,1 +1,391 @@
-!function(e,n){"function"==typeof define&&define.amd?define(n):"object"==typeof exports?module.exports=n():n()(e.lunr)}(this,function(){return function(e){if(void 0===e)throw new Error("Lunr is not present. Please include / require Lunr before this script.");if(void 0===e.stemmerSupport)throw new Error("Lunr stemmer support is not present. Please include / require Lunr stemmer support before this script.");e.ru=function(){this.pipeline.reset(),this.pipeline.add(e.ru.trimmer,e.ru.stopWordFilter,e.ru.stemmer),this.searchPipeline&&(this.searchPipeline.reset(),this.searchPipeline.add(e.ru.stemmer))},e.ru.wordCharacters="Ѐ-҄҇-ԯᴫᵸⷠ-ⷿꙀ-ꚟ︮︯",e.ru.trimmer=e.trimmerSupport.generateTrimmer(e.ru.wordCharacters),e.Pipeline.registerFunction(e.ru.trimmer,"trimmer-ru"),e.ru.stemmer=function(){var n=e.stemmerSupport.Among,r=e.stemmerSupport.SnowballProgram,t=new function(){function e(){for(;!W.in_grouping(S,1072,1103);){if(W.cursor>=W.limit)return!1;W.cursor++}return!0}function t(){for(;!W.out_grouping(S,1072,1103);){if(W.cursor>=W.limit)return!1;W.cursor++}return!0}function w(){b=W.limit,_=b,e()&&(b=W.cursor,t()&&e()&&t()&&(_=W.cursor))}function i(){return _<=W.cursor}function u(e,n){var r,t;if(W.ket=W.cursor,r=W.find_among_b(e,n)){switch(W.bra=W.cursor,r){case 1:if(t=W.limit-W.cursor,!W.eq_s_b(1,"а")&&(W.cursor=W.limit-t,!W.eq_s_b(1,"я")))return!1;case 2:W.slice_del()}return!0}return!1}function o(){return u(h,9)}function s(e,n){var r;return W.ket=W.cursor,!!(r=W.find_among_b(e,n))&&(W.bra=W.cursor,1==r&&W.slice_del(),!0)}function c(){return s(g,26)}function m(){return!!c()&&(u(C,8),!0)}function f(){return s(k,2)}function l(){return u(P,46)}function a(){s(v,36)}function p(){var e;W.ket=W.cursor,(e=W.find_among_b(F,2))&&(W.bra=W.cursor,i()&&1==e&&W.slice_del())}function d(){var e;if(W.ket=W.cursor,e=W.find_among_b(q,4))switch(W.bra=W.cursor,e){case 1:if(W.slice_del(),W.ket=W.cursor,!W.eq_s_b(1,"н"))break;W.bra=W.cursor;case 2:if(!W.eq_s_b(1,"н"))break;case 3:W.slice_del()}}var _,b,h=[new n("в",-1,1),new n("ив",0,2),new n("ыв",0,2),new n("вши",-1,1),new n("ивши",3,2),new n("ывши",3,2),new n("вшись",-1,1),new n("ившись",6,2),new n("ывшись",6,2)],g=[new n("ее",-1,1),new n("ие",-1,1),new n("ое",-1,1),new n("ые",-1,1),new n("ими",-1,1),new n("ыми",-1,1),new n("ей",-1,1),new n("ий",-1,1),new n("ой",-1,1),new n("ый",-1,1),new n("ем",-1,1),new n("им",-1,1),new n("ом",-1,1),new n("ым",-1,1),new n("его",-1,1),new n("ого",-1,1),new n("ему",-1,1),new n("ому",-1,1),new n("их",-1,1),new n("ых",-1,1),new n("ею",-1,1),new n("ою",-1,1),new n("ую",-1,1),new n("юю",-1,1),new n("ая",-1,1),new n("яя",-1,1)],C=[new n("ем",-1,1),new n("нн",-1,1),new n("вш",-1,1),new n("ивш",2,2),new n("ывш",2,2),new n("щ",-1,1),new n("ющ",5,1),new n("ующ",6,2)],k=[new n("сь",-1,1),new n("ся",-1,1)],P=[new n("ла",-1,1),new n("ила",0,2),new n("ыла",0,2),new n("на",-1,1),new n("ена",3,2),new n("ете",-1,1),new n("ите",-1,2),new n("йте",-1,1),new n("ейте",7,2),new n("уйте",7,2),new n("ли",-1,1),new n("или",10,2),new n("ыли",10,2),new n("й",-1,1),new n("ей",13,2),new n("уй",13,2),new n("л",-1,1),new n("ил",16,2),new n("ыл",16,2),new n("ем",-1,1),new n("им",-1,2),new n("ым",-1,2),new n("н",-1,1),new n("ен",22,2),new n("ло",-1,1),new n("ило",24,2),new n("ыло",24,2),new n("но",-1,1),new n("ено",27,2),new n("нно",27,1),new n("ет",-1,1),new n("ует",30,2),new n("ит",-1,2),new n("ыт",-1,2),new n("ют",-1,1),new n("уют",34,2),new n("ят",-1,2),new n("ны",-1,1),new n("ены",37,2),new n("ть",-1,1),new n("ить",39,2),new n("ыть",39,2),new n("ешь",-1,1),new n("ишь",-1,2),new n("ю",-1,2),new n("ую",44,2)],v=[new n("а",-1,1),new n("ев",-1,1),new n("ов",-1,1),new n("е",-1,1),new n("ие",3,1),new n("ье",3,1),new n("и",-1,1),new n("еи",6,1),new n("ии",6,1),new n("ами",6,1),new n("ями",6,1),new n("иями",10,1),new n("й",-1,1),new n("ей",12,1),new n("ией",13,1),new n("ий",12,1),new n("ой",12,1),new n("ам",-1,1),new n("ем",-1,1),new n("ием",18,1),new n("ом",-1,1),new n("ям",-1,1),new n("иям",21,1),new n("о",-1,1),new n("у",-1,1),new n("ах",-1,1),new n("ях",-1,1),new n("иях",26,1),new n("ы",-1,1),new n("ь",-1,1),new n("ю",-1,1),new n("ию",30,1),new n("ью",30,1),new n("я",-1,1),new n("ия",33,1),new n("ья",33,1)],F=[new n("ост",-1,1),new n("ость",-1,1)],q=[new n("ейше",-1,1),new n("н",-1,2),new n("ейш",-1,1),new n("ь",-1,3)],S=[33,65,8,232],W=new r;this.setCurrent=function(e){W.setCurrent(e)},this.getCurrent=function(){return W.getCurrent()},this.stem=function(){return w(),W.cursor=W.limit,!(W.cursor<b)&&(W.limit_backward=b,o()||(W.cursor=W.limit,f()||(W.cursor=W.limit),m()||(W.cursor=W.limit,l()||(W.cursor=W.limit,a()))),W.cursor=W.limit,W.ket=W.cursor,W.eq_s_b(1,"и")?(W.bra=W.cursor,W.slice_del()):W.cursor=W.limit,p(),W.cursor=W.limit,d(),!0)}};return function(e){return"function"==typeof e.update?e.update(function(e){return t.setCurrent(e),t.stem(),t.getCurrent()}):(t.setCurrent(e),t.stem(),t.getCurrent())}}(),e.Pipeline.registerFunction(e.ru.stemmer,"stemmer-ru"),e.ru.stopWordFilter=e.generateStopWordFilter("алло без близко более больше будем будет будете будешь будто буду будут будь бы бывает бывь был была были было быть в важная важное важные важный вам вами вас ваш ваша ваше ваши вверх вдали вдруг ведь везде весь вниз внизу во вокруг вон восемнадцатый восемнадцать восемь восьмой вот впрочем времени время все всегда всего всем всеми всему всех всею всю всюду вся всё второй вы г где говорил говорит год года году да давно даже далеко дальше даром два двадцатый двадцать две двенадцатый двенадцать двух девятнадцатый девятнадцать девятый девять действительно дел день десятый десять для до довольно долго должно другая другие других друго другое другой е его ее ей ему если есть еще ещё ею её ж же жизнь за занят занята занято заняты затем зато зачем здесь значит и из или им именно иметь ими имя иногда их к каждая каждое каждые каждый кажется как какая какой кем когда кого ком кому конечно которая которого которой которые который которых кроме кругом кто куда лет ли лишь лучше люди м мало между меля менее меньше меня миллионов мимо мира мне много многочисленная многочисленное многочисленные многочисленный мной мною мог могут мож может можно можхо мои мой мор мочь моя моё мы на наверху над надо назад наиболее наконец нам нами нас начала наш наша наше наши не него недавно недалеко нее ней нельзя нем немного нему непрерывно нередко несколько нет нею неё ни нибудь ниже низко никогда никуда ними них ничего но ну нужно нх о об оба обычно один одиннадцатый одиннадцать однажды однако одного одной около он она они оно опять особенно от отовсюду отсюда очень первый перед по под пожалуйста позже пока пор пора после посреди потом потому почему почти прекрасно при про просто против процентов пятнадцатый пятнадцать пятый пять раз разве рано раньше рядом с сам сама сами самим самими самих само самого самой самом самому саму свое своего своей свои своих свою сеаой себе себя сегодня седьмой сейчас семнадцатый семнадцать семь сих сказал сказала сказать сколько слишком сначала снова со собой собою совсем спасибо стал суть т та так такая также такие такое такой там твой твоя твоё те тебе тебя тем теми теперь тех то тобой тобою тогда того тоже только том тому тот тою третий три тринадцатый тринадцать ту туда тут ты тысяч у уж уже уметь хорошо хотеть хоть хотя хочешь часто чаще чего человек чем чему через четвертый четыре четырнадцатый четырнадцать что чтоб чтобы чуть шестнадцатый шестнадцать шестой шесть эта эти этим этими этих это этого этой этом этому этот эту я \ufeffа".split(" ")),e.Pipeline.registerFunction(e.ru.stopWordFilter,"stopWordFilter-ru")}});
+/*!
+ * Lunr languages, `Russian` language
+ * https://github.com/MihaiValentin/lunr-languages
+ *
+ * Copyright 2014, Mihai Valentin
+ * http://www.mozilla.org/MPL/
+ */
+/*!
+ * based on
+ * Snowball JavaScript Library v0.3
+ * http://code.google.com/p/urim/
+ * http://snowball.tartarus.org/
+ *
+ * Copyright 2010, Oleg Mazko
+ * http://www.mozilla.org/MPL/
+ */
+
+/**
+ * export the module via AMD, CommonJS or as a browser global
+ * Export code from https://github.com/umdjs/umd/blob/master/returnExports.js
+ */
+;
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(factory)
+  } else if (typeof exports === 'object') {
+    /**
+     * Node. Does not work with strict CommonJS, but
+     * only CommonJS-like environments that support module.exports,
+     * like Node.
+     */
+    module.exports = factory()
+  } else {
+    // Browser globals (root is window)
+    factory()(root.lunr);
+  }
+}(this, function() {
+  /**
+   * Just return a value to define the module export.
+   * This example returns an object, but the module
+   * can return a function as the exported value.
+   */
+  return function(lunr) {
+    /* throw error if lunr is not yet included */
+    if ('undefined' === typeof lunr) {
+      throw new Error('Lunr is not present. Please include / require Lunr before this script.');
+    }
+
+    /* throw error if lunr stemmer support is not yet included */
+    if ('undefined' === typeof lunr.stemmerSupport) {
+      throw new Error('Lunr stemmer support is not present. Please include / require Lunr stemmer support before this script.');
+    }
+
+    /* register specific locale function */
+    lunr.ru = function() {
+      this.pipeline.reset();
+      this.pipeline.add(
+        lunr.ru.trimmer,
+        lunr.ru.stopWordFilter,
+        lunr.ru.stemmer
+      );
+
+      // for lunr version 2
+      // this is necessary so that every searched word is also stemmed before
+      // in lunr <= 1 this is not needed, as it is done using the normal pipeline
+      if (this.searchPipeline) {
+        this.searchPipeline.reset();
+        this.searchPipeline.add(lunr.ru.stemmer)
+      }
+    };
+
+    /* lunr trimmer function */
+    lunr.ru.wordCharacters = "\u0400-\u0484\u0487-\u052F\u1D2B\u1D78\u2DE0-\u2DFF\uA640-\uA69F\uFE2E\uFE2F";
+    lunr.ru.trimmer = lunr.trimmerSupport.generateTrimmer(lunr.ru.wordCharacters);
+
+    lunr.Pipeline.registerFunction(lunr.ru.trimmer, 'trimmer-ru');
+
+    /* lunr stemmer function */
+    lunr.ru.stemmer = (function() {
+      /* create the wrapped stemmer object */
+      var Among = lunr.stemmerSupport.Among,
+        SnowballProgram = lunr.stemmerSupport.SnowballProgram,
+        st = new function RussianStemmer() {
+          var a_0 = [new Among("\u0432", -1, 1), new Among("\u0438\u0432", 0, 2),
+              new Among("\u044B\u0432", 0, 2),
+              new Among("\u0432\u0448\u0438", -1, 1),
+              new Among("\u0438\u0432\u0448\u0438", 3, 2),
+              new Among("\u044B\u0432\u0448\u0438", 3, 2),
+              new Among("\u0432\u0448\u0438\u0441\u044C", -1, 1),
+              new Among("\u0438\u0432\u0448\u0438\u0441\u044C", 6, 2),
+              new Among("\u044B\u0432\u0448\u0438\u0441\u044C", 6, 2)
+            ],
+            a_1 = [
+              new Among("\u0435\u0435", -1, 1), new Among("\u0438\u0435", -1, 1),
+              new Among("\u043E\u0435", -1, 1), new Among("\u044B\u0435", -1, 1),
+              new Among("\u0438\u043C\u0438", -1, 1),
+              new Among("\u044B\u043C\u0438", -1, 1),
+              new Among("\u0435\u0439", -1, 1), new Among("\u0438\u0439", -1, 1),
+              new Among("\u043E\u0439", -1, 1), new Among("\u044B\u0439", -1, 1),
+              new Among("\u0435\u043C", -1, 1), new Among("\u0438\u043C", -1, 1),
+              new Among("\u043E\u043C", -1, 1), new Among("\u044B\u043C", -1, 1),
+              new Among("\u0435\u0433\u043E", -1, 1),
+              new Among("\u043E\u0433\u043E", -1, 1),
+              new Among("\u0435\u043C\u0443", -1, 1),
+              new Among("\u043E\u043C\u0443", -1, 1),
+              new Among("\u0438\u0445", -1, 1), new Among("\u044B\u0445", -1, 1),
+              new Among("\u0435\u044E", -1, 1), new Among("\u043E\u044E", -1, 1),
+              new Among("\u0443\u044E", -1, 1), new Among("\u044E\u044E", -1, 1),
+              new Among("\u0430\u044F", -1, 1), new Among("\u044F\u044F", -1, 1)
+            ],
+            a_2 = [
+              new Among("\u0435\u043C", -1, 1), new Among("\u043D\u043D", -1, 1),
+              new Among("\u0432\u0448", -1, 1),
+              new Among("\u0438\u0432\u0448", 2, 2),
+              new Among("\u044B\u0432\u0448", 2, 2), new Among("\u0449", -1, 1),
+              new Among("\u044E\u0449", 5, 1),
+              new Among("\u0443\u044E\u0449", 6, 2)
+            ],
+            a_3 = [
+              new Among("\u0441\u044C", -1, 1), new Among("\u0441\u044F", -1, 1)
+            ],
+            a_4 = [
+              new Among("\u043B\u0430", -1, 1),
+              new Among("\u0438\u043B\u0430", 0, 2),
+              new Among("\u044B\u043B\u0430", 0, 2),
+              new Among("\u043D\u0430", -1, 1),
+              new Among("\u0435\u043D\u0430", 3, 2),
+              new Among("\u0435\u0442\u0435", -1, 1),
+              new Among("\u0438\u0442\u0435", -1, 2),
+              new Among("\u0439\u0442\u0435", -1, 1),
+              new Among("\u0435\u0439\u0442\u0435", 7, 2),
+              new Among("\u0443\u0439\u0442\u0435", 7, 2),
+              new Among("\u043B\u0438", -1, 1),
+              new Among("\u0438\u043B\u0438", 10, 2),
+              new Among("\u044B\u043B\u0438", 10, 2), new Among("\u0439", -1, 1),
+              new Among("\u0435\u0439", 13, 2), new Among("\u0443\u0439", 13, 2),
+              new Among("\u043B", -1, 1), new Among("\u0438\u043B", 16, 2),
+              new Among("\u044B\u043B", 16, 2), new Among("\u0435\u043C", -1, 1),
+              new Among("\u0438\u043C", -1, 2), new Among("\u044B\u043C", -1, 2),
+              new Among("\u043D", -1, 1), new Among("\u0435\u043D", 22, 2),
+              new Among("\u043B\u043E", -1, 1),
+              new Among("\u0438\u043B\u043E", 24, 2),
+              new Among("\u044B\u043B\u043E", 24, 2),
+              new Among("\u043D\u043E", -1, 1),
+              new Among("\u0435\u043D\u043E", 27, 2),
+              new Among("\u043D\u043D\u043E", 27, 1),
+              new Among("\u0435\u0442", -1, 1),
+              new Among("\u0443\u0435\u0442", 30, 2),
+              new Among("\u0438\u0442", -1, 2), new Among("\u044B\u0442", -1, 2),
+              new Among("\u044E\u0442", -1, 1),
+              new Among("\u0443\u044E\u0442", 34, 2),
+              new Among("\u044F\u0442", -1, 2), new Among("\u043D\u044B", -1, 1),
+              new Among("\u0435\u043D\u044B", 37, 2),
+              new Among("\u0442\u044C", -1, 1),
+              new Among("\u0438\u0442\u044C", 39, 2),
+              new Among("\u044B\u0442\u044C", 39, 2),
+              new Among("\u0435\u0448\u044C", -1, 1),
+              new Among("\u0438\u0448\u044C", -1, 2), new Among("\u044E", -1, 2),
+              new Among("\u0443\u044E", 44, 2)
+            ],
+            a_5 = [
+              new Among("\u0430", -1, 1), new Among("\u0435\u0432", -1, 1),
+              new Among("\u043E\u0432", -1, 1), new Among("\u0435", -1, 1),
+              new Among("\u0438\u0435", 3, 1), new Among("\u044C\u0435", 3, 1),
+              new Among("\u0438", -1, 1), new Among("\u0435\u0438", 6, 1),
+              new Among("\u0438\u0438", 6, 1),
+              new Among("\u0430\u043C\u0438", 6, 1),
+              new Among("\u044F\u043C\u0438", 6, 1),
+              new Among("\u0438\u044F\u043C\u0438", 10, 1),
+              new Among("\u0439", -1, 1), new Among("\u0435\u0439", 12, 1),
+              new Among("\u0438\u0435\u0439", 13, 1),
+              new Among("\u0438\u0439", 12, 1), new Among("\u043E\u0439", 12, 1),
+              new Among("\u0430\u043C", -1, 1), new Among("\u0435\u043C", -1, 1),
+              new Among("\u0438\u0435\u043C", 18, 1),
+              new Among("\u043E\u043C", -1, 1), new Among("\u044F\u043C", -1, 1),
+              new Among("\u0438\u044F\u043C", 21, 1), new Among("\u043E", -1, 1),
+              new Among("\u0443", -1, 1), new Among("\u0430\u0445", -1, 1),
+              new Among("\u044F\u0445", -1, 1),
+              new Among("\u0438\u044F\u0445", 26, 1), new Among("\u044B", -1, 1),
+              new Among("\u044C", -1, 1), new Among("\u044E", -1, 1),
+              new Among("\u0438\u044E", 30, 1), new Among("\u044C\u044E", 30, 1),
+              new Among("\u044F", -1, 1), new Among("\u0438\u044F", 33, 1),
+              new Among("\u044C\u044F", 33, 1)
+            ],
+            a_6 = [
+              new Among("\u043E\u0441\u0442", -1, 1),
+              new Among("\u043E\u0441\u0442\u044C", -1, 1)
+            ],
+            a_7 = [
+              new Among("\u0435\u0439\u0448\u0435", -1, 1),
+              new Among("\u043D", -1, 2), new Among("\u0435\u0439\u0448", -1, 1),
+              new Among("\u044C", -1, 3)
+            ],
+            g_v = [33, 65, 8, 232],
+            I_p2, I_pV, sbp = new SnowballProgram();
+          this.setCurrent = function(word) {
+            sbp.setCurrent(word);
+          };
+          this.getCurrent = function() {
+            return sbp.getCurrent();
+          };
+
+          function habr3() {
+            while (!sbp.in_grouping(g_v, 1072, 1103)) {
+              if (sbp.cursor >= sbp.limit)
+                return false;
+              sbp.cursor++;
+            }
+            return true;
+          }
+
+          function habr4() {
+            while (!sbp.out_grouping(g_v, 1072, 1103)) {
+              if (sbp.cursor >= sbp.limit)
+                return false;
+              sbp.cursor++;
+            }
+            return true;
+          }
+
+          function r_mark_regions() {
+            I_pV = sbp.limit;
+            I_p2 = I_pV;
+            if (habr3()) {
+              I_pV = sbp.cursor;
+              if (habr4())
+                if (habr3())
+                  if (habr4())
+                    I_p2 = sbp.cursor;
+            }
+          }
+
+          function r_R2() {
+            return I_p2 <= sbp.cursor;
+          }
+
+          function habr2(a, n) {
+            var among_var, v_1;
+            sbp.ket = sbp.cursor;
+            among_var = sbp.find_among_b(a, n);
+            if (among_var) {
+              sbp.bra = sbp.cursor;
+              switch (among_var) {
+                case 1:
+                  v_1 = sbp.limit - sbp.cursor;
+                  if (!sbp.eq_s_b(1, "\u0430")) {
+                    sbp.cursor = sbp.limit - v_1;
+                    if (!sbp.eq_s_b(1, "\u044F"))
+                      return false;
+                  }
+                case 2:
+                  sbp.slice_del();
+                  break;
+              }
+              return true;
+            }
+            return false;
+          }
+
+          function r_perfective_gerund() {
+            return habr2(a_0, 9);
+          }
+
+          function habr1(a, n) {
+            var among_var;
+            sbp.ket = sbp.cursor;
+            among_var = sbp.find_among_b(a, n);
+            if (among_var) {
+              sbp.bra = sbp.cursor;
+              if (among_var == 1)
+                sbp.slice_del();
+              return true;
+            }
+            return false;
+          }
+
+          function r_adjective() {
+            return habr1(a_1, 26);
+          }
+
+          function r_adjectival() {
+            var among_var;
+            if (r_adjective()) {
+              habr2(a_2, 8);
+              return true;
+            }
+            return false;
+          }
+
+          function r_reflexive() {
+            return habr1(a_3, 2);
+          }
+
+          function r_verb() {
+            return habr2(a_4, 46);
+          }
+
+          function r_noun() {
+            habr1(a_5, 36);
+          }
+
+          function r_derivational() {
+            var among_var;
+            sbp.ket = sbp.cursor;
+            among_var = sbp.find_among_b(a_6, 2);
+            if (among_var) {
+              sbp.bra = sbp.cursor;
+              if (r_R2() && among_var == 1)
+                sbp.slice_del();
+            }
+          }
+
+          function r_tidy_up() {
+            var among_var;
+            sbp.ket = sbp.cursor;
+            among_var = sbp.find_among_b(a_7, 4);
+            if (among_var) {
+              sbp.bra = sbp.cursor;
+              switch (among_var) {
+                case 1:
+                  sbp.slice_del();
+                  sbp.ket = sbp.cursor;
+                  if (!sbp.eq_s_b(1, "\u043D"))
+                    break;
+                  sbp.bra = sbp.cursor;
+                case 2:
+                  if (!sbp.eq_s_b(1, "\u043D"))
+                    break;
+                case 3:
+                  sbp.slice_del();
+                  break;
+              }
+            }
+          }
+          this.stem = function() {
+            r_mark_regions();
+            sbp.cursor = sbp.limit;
+            if (sbp.cursor < I_pV)
+              return false;
+            sbp.limit_backward = I_pV;
+            if (!r_perfective_gerund()) {
+              sbp.cursor = sbp.limit;
+              if (!r_reflexive())
+                sbp.cursor = sbp.limit;
+              if (!r_adjectival()) {
+                sbp.cursor = sbp.limit;
+                if (!r_verb()) {
+                  sbp.cursor = sbp.limit;
+                  r_noun();
+                }
+              }
+            }
+            sbp.cursor = sbp.limit;
+            sbp.ket = sbp.cursor;
+            if (sbp.eq_s_b(1, "\u0438")) {
+              sbp.bra = sbp.cursor;
+              sbp.slice_del();
+            } else
+              sbp.cursor = sbp.limit;
+            r_derivational();
+            sbp.cursor = sbp.limit;
+            r_tidy_up();
+            return true;
+          }
+        };
+
+      /* and return a function that stems a word for the current locale */
+      return function(token) {
+        // for lunr version 2
+        if (typeof token.update === "function") {
+          return token.update(function(word) {
+            st.setCurrent(word);
+            st.stem();
+            return st.getCurrent();
+          })
+        } else { // for lunr version <= 1
+          st.setCurrent(token);
+          st.stem();
+          return st.getCurrent();
+        }
+      }
+    })();
+
+    lunr.Pipeline.registerFunction(lunr.ru.stemmer, 'stemmer-ru');
+
+    lunr.ru.stopWordFilter = lunr.generateStopWordFilter('алло без близко более больше будем будет будете будешь будто буду будут будь бы бывает бывь был была были было быть в важная важное важные важный вам вами вас ваш ваша ваше ваши вверх вдали вдруг ведь везде весь вниз внизу во вокруг вон восемнадцатый восемнадцать восемь восьмой вот впрочем времени время все всегда всего всем всеми всему всех всею всю всюду вся всё второй вы г где говорил говорит год года году да давно даже далеко дальше даром два двадцатый двадцать две двенадцатый двенадцать двух девятнадцатый девятнадцать девятый девять действительно дел день десятый десять для до довольно долго должно другая другие других друго другое другой е его ее ей ему если есть еще ещё ею её ж же жизнь за занят занята занято заняты затем зато зачем здесь значит и из или им именно иметь ими имя иногда их к каждая каждое каждые каждый кажется как какая какой кем когда кого ком кому конечно которая которого которой которые который которых кроме кругом кто куда лет ли лишь лучше люди м мало между меля менее меньше меня миллионов мимо мира мне много многочисленная многочисленное многочисленные многочисленный мной мною мог могут мож может можно можхо мои мой мор мочь моя моё мы на наверху над надо назад наиболее наконец нам нами нас начала наш наша наше наши не него недавно недалеко нее ней нельзя нем немного нему непрерывно нередко несколько нет нею неё ни нибудь ниже низко никогда никуда ними них ничего но ну нужно нх о об оба обычно один одиннадцатый одиннадцать однажды однако одного одной около он она они оно опять особенно от отовсюду отсюда очень первый перед по под пожалуйста позже пока пор пора после посреди потом потому почему почти прекрасно при про просто против процентов пятнадцатый пятнадцать пятый пять раз разве рано раньше рядом с сам сама сами самим самими самих само самого самой самом самому саму свое своего своей свои своих свою сеаой себе себя сегодня седьмой сейчас семнадцатый семнадцать семь сих сказал сказала сказать сколько слишком сначала снова со собой собою совсем спасибо стал суть т та так такая также такие такое такой там твой твоя твоё те тебе тебя тем теми теперь тех то тобой тобою тогда того тоже только том тому тот тою третий три тринадцатый тринадцать ту туда тут ты тысяч у уж уже уметь хорошо хотеть хоть хотя хочешь часто чаще чего человек чем чему через четвертый четыре четырнадцатый четырнадцать что чтоб чтобы чуть шестнадцатый шестнадцать шестой шесть эта эти этим этими этих это этого этой этом этому этот эту я ﻿а'.split(' '));
+
+    lunr.Pipeline.registerFunction(lunr.ru.stopWordFilter, 'stopWordFilter-ru');
+  };
+}))
