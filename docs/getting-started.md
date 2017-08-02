@@ -403,8 +403,6 @@ section on [overriding partials][18] and the general guide on
 
 #### Site search
 
-##### Language
-
 Site search is implemented using [lunr.js][21], which includes stemmers for the
 English language by default, while stemmers for other languages are included
 with [lunr-languages][22], both of which are integrated with this theme. Support
@@ -433,6 +431,17 @@ Norwegian `no`, Swedish `sv` and Turkish `tr`.
     Be aware that including suppport for other languages increases the general
     JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
     language.
+
+The separator for tokenization can also be customized, which makes it possible
+to index parts of words that are separated by `-` or `.` for example:
+
+``` jinja
+{% macro t(key) %}{{ {
+  ...
+  "search.tokenizer": "[\s\-\.]+",
+  ...
+}[key] }}{% endmacro %}
+```
 
   [21]: https://lunrjs.com
   [22]: https://github.com/MihaiValentin/lunr-languages
