@@ -267,6 +267,10 @@ Furthermore, if `repo_url` points to a GitHub, BitBucket or GitLab repository,
 the respective service logo will be shown next to the name of the repository.
 Additionally, for GitHub, the number of stars and forks is shown.
 
+If the repository is hosted in a private environment, the service logo can be
+set explicitly by setting `extra.repo_icon` to `github`, `gitlab` or
+`bitbucket`.
+
 !!! warning "Why is there an edit button at the top of every article?"
 
     If the `repo_url` is set to a GitHub or BitBucket repository, and the
@@ -382,6 +386,7 @@ macro `t`:
   "search.result.none": "No matching documents",
   "search.result.one": "1 matching document",
   "search.result.other": "# matching documents",
+  "search.tokenizer": "[\s\-]+",
   "source.link.title": "Go to repository",
   "toc.title": "Table of contents"
 }[key] }}{% endmacro %}
@@ -397,6 +402,8 @@ section on [overriding partials][18] and the general guide on
   [20]: https://github.com/squidfunk/mkdocs-material/tree/master/examples/language
 
 #### Site search
+
+##### Language
 
 Site search is implemented using [lunr.js][21], which includes stemmers for the
 English language by default, while stemmers for other languages are included
