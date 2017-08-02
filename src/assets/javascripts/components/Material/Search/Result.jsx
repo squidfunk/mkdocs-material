@@ -163,11 +163,11 @@ export default class Result {
             lunr.stopWordFilter
           )
 
-          /* Set up stemmers for search languages */
+          /* Set up alternate search languages */
           if (lang.length === 1) {
             this.use(lunr[lang[0]])
           } else if (lang.length > 1) {
-            this.use(lunr.multiLanguage(...lang))                               // TODO: remove
+            this.use(lunr.multiLanguage(...lang))
           }
 
           /* Index fields */
