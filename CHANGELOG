@@ -1,3 +1,7 @@
+mkdocs-material-1.8.1 (2017-08-07)
+
+  * Fixed #429: Missing pagination for GitHub API
+
 mkdocs-material-1.8.0 (2017-08-02)
 
   * Added support for lazy-loading of search results for better performance
