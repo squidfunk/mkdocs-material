@@ -59,28 +59,37 @@ export default class GitHub extends Abstract {
    * @return {Promise<Array<string>>} Promise returning an array of facts
    */
   fetch_() {
-    return fetch(this.base_)
-      .then(response => response.json())
-      .then(data => {
-        if (!(data instanceof Array))
-          throw new TypeError
+    const paginate = (page = 0) => {
+      return fetch(`${this.base_}?per_page=30&page=${page}`)
+        .then(response => response.json())
+        .then(data => {
+          if (!(data instanceof Array))
+            throw new TypeError
 
-        /* Display number of stars and forks, if repository is given */
-        if (this.name_) {
-          const repo = data.find(item => item.name === this.name_)
-          return repo
-            ? [
-              `${this.format_(repo.stargazers_count)} Stars`,
-              `${this.format_(repo.forks_count)} Forks`
+          /* Display number of stars and forks, if repository is given */
+          if (this.name_) {
+            const repo = data.find(item => item.name === this.name_)
+            if (!repo && data.length === 30)
+              return paginate(page + 1)
+
+            /* If we found a repo, extract the facts */
+            return repo
+              ? [
+                `${this.format_(repo.stargazers_count)} Stars`,
+                `${this.format_(repo.forks_count)} Forks`
+              ]
+              : []
+
+          /* Display number of repositories, otherwise */
+          } else {
+            return [
+              `${data.length} Repositories`
             ]
-            : []
+          }
+        })
+    }
 
-        /* Display number of repositories, otherwise */
-        } else {
-          return [
-            `${data.length} Repositories`
-          ]
-        }
-      })
+    /* Paginate through repos */
+    return paginate()
   }
 }
