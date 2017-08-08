@@ -1,7 +1,6 @@
 {
   "presets": ["es2015"],
   "plugins": [
-    "add-module-exports",
-    "root-import"
+    "add-module-exports"
   ]
 }

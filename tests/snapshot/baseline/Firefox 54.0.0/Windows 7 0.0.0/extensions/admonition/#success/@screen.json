@@ -1,0 +1,81 @@
+{
+  "element": {
+    "tag": "DIV",
+    "attrs": {
+      "class": "admonition success"
+    },
+    "props": {
+      "size": {
+        "width": 688,
+        "height": 90.25
+      },
+      "offset": {
+        "top": 1401.7833251953125,
+        "right": 0,
+        "bottom": 797.2501220703125,
+        "left": 0
+      }
+    }
+  },
+  "children": [
+    {
+      "element": {
+        "tag": "::before",
+        "attrs": {},
+        "props": {
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "offset": {
+            "top": 8,
+            "right": 662,
+            "bottom": 62.25,
+            "left": 6
+          }
+        }
+      },
+      "children": []
+    },
+    {
+      "element": {
+        "tag": "P",
+        "attrs": {
+          "class": "admonition-title"
+        },
+        "props": {
+          "size": {
+            "width": 632,
+            "height": 20.48333740234375
+          },
+          "offset": {
+            "top": 20.800048828125,
+            "right": 12,
+            "bottom": 48.96661376953125,
+            "left": 44
+          }
+        }
+      },
+      "children": []
+    },
+    {
+      "element": {
+        "tag": "P",
+        "attrs": {},
+        "props": {
+          "size": {
+            "width": 632,
+            "height": 40.9666748046875
+          },
+          "offset": {
+            "top": 41.2833251953125,
+            "right": 12,
+            "bottom": 8,
+            "left": 44
+          }
+        }
+      },
+      "children": []
+    }
+  ]
+}
