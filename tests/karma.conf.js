@@ -81,7 +81,8 @@ module.exports = karma => {
 
     /* Proxy top-level folders */
     proxies: {
-      "/extensions/": "/base/fixtures/extensions/"
+      "/extensions/": "/base/fixtures/extensions/",
+      "/layout/": "/base/fixtures/layout/"
     },
 
     /* Preprocessors */
@@ -102,8 +103,7 @@ module.exports = karma => {
     /* Ginseng configuration */
     ginseng: {
       client: {
-        context: "#viewport",
-        url: "/_ginseng"
+        context: "#viewport"
       }
     },
 

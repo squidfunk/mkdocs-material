@@ -21,7 +21,7 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Declarations
+ * Tests
  * ------------------------------------------------------------------------- */
 
 /* Extensions */
@@ -32,8 +32,7 @@ describe("extensions", () => {
 
     /* Load fixtures */
     beforeAll(done => {
-      viewport.element.src = "/extensions/admonition/_/index.html"
-      viewport.element.addEventListener("load", done)
+      viewport.load("/extensions/admonition/_/index.html", done)
     })
 
     /* Reset viewport */

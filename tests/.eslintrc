@@ -3,9 +3,9 @@
     "jasmine": true
   },
   "globals": {
-    "fixture": true,
-    "Ginseng": true,
-    "spyOnProperty": true
+    "ginseng": true,
+    "spyOnProperty": true,
+    "viewport": true
   },
   "plugins": [
     "jasmine"
