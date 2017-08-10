@@ -20,13 +20,9 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Check if "yarn install" was executed
-if [[ ! -d "$(yarn bin)" ]]; then
-  echo "\"node_modules\" not found:"
-  echo "yarn install"
-  exit 1
-fi
+# Exit, if one command fails
+set -e
 
-# Run command
-"$(yarn bin)"/gulp tests:snapshot:generate
-"$(yarn bin)"/karma start tests/karma.conf.js --single-run
+# Generate fixtures and run snapshot tests
+"$(npm bin)"/gulp tests:snapshot:generate
+"$(npm bin)"/karma start tests/karma.conf.js --single-run "$@"

@@ -20,25 +20,11 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Check if "yarn install" was executed
-if [[ ! -d "$(yarn bin)" ]]; then
-  echo "\"node_modules\" not found:"
-  echo "yarn install"
-  exit 1
-fi
+# Exit, if one command fails
+set -e
 
 # Run ESLint
-"$(yarn bin)"/eslint --max-warnings 0 .
-ESLINT=$?
+"$(npm bin)"/eslint --max-warnings 0 .
 
 # Run Stylelint
-"$(yarn bin)"/stylelint `find src/assets -name *.scss`
-STYLELINT=$?
-
-# If one command failed, exit with error
-if [ $ESLINT -gt 0 ] || [ $STYLELINT -gt 0 ]; then
-  exit 1
-fi;
-
-# Otherwise return with success
-exit 0
+"$(npm bin)"/stylelint `find src/assets -name *.scss`

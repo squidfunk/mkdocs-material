@@ -42,6 +42,7 @@ describe("extensions", () => {
 
     /* Test: should capture layout */
     it("should capture layout", () => {
+      debugger // eslint-disable-line
       viewport.each(name => {
         expect(ginseng.capture(`@${name}`, "#default + .admonition"))
           .toEqual(true)

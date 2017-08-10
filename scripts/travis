@@ -24,15 +24,15 @@
 set -e
 
 # Run build and terminate on error
-"$(yarn bin)"/gulp build --clean --optimize --revision
+"$(npm bin)"/gulp build --clean --optimize --revision
 
 # Run snapshot tests
-"$(yarn bin)"/gulp tests:snapshot:generate
-"$(yarn bin)"/karma start tests/karma.conf.js --single-run
+"$(npm bin)"/gulp tests:snapshot:generate
+"$(npm bin)"/karma start tests/karma.conf.js --single-run
 
 # Deploy documentation to GitHub pages
 if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  REMOTE="https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material"
+  REMOTE="https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}"
 
   # Set configuration for repository and deploy documentation
   git config --global user.name "${GH_NAME}"

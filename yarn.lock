@@ -3591,9 +3591,11 @@ karma-clear-screen-reporter@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/karma-clear-screen-reporter/-/karma-clear-screen-reporter-1.0.0.tgz#97e270ab1715e2d8a194b86b9d11845f8a6186e1"
 
-karma-ginseng@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/karma-ginseng/-/karma-ginseng-0.2.1.tgz#6c294b734cfac7291e5dc5f90eec8ddbdf8586a0"
+karma-ginseng@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/karma-ginseng/-/karma-ginseng-0.2.2.tgz#34fbb5541f54a87ac7171f4bb128c1ba1b1621ed"
+  dependencies:
+    jsonschema "^1.1.1"
 
 karma-jasmine@^1.1.0:
   version "1.1.0"

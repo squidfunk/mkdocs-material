@@ -20,12 +20,8 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Check if "yarn install" was executed
-if [[ ! -d "$(yarn bin)" ]]; then
-  echo "\"node_modules\" not found:"
-  echo "yarn install"
-  exit 1
-fi
+# Exit, if one command fails
+set -e
 
-# Run command
-"$(yarn bin)"/gulp help "@"
+# Show usage and help message
+"$(npm bin)"/gulp help "$@"

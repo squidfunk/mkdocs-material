@@ -85,7 +85,7 @@
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-clear-screen-reporter": "^1.0.0",
-    "karma-ginseng": "^0.2.1",
+    "karma-ginseng": "^0.2.2",
     "karma-jasmine": "^1.1.0",
     "karma-sauce-launcher": "^1.1.0",
     "karma-sourcemap-loader": "^0.3.7",
