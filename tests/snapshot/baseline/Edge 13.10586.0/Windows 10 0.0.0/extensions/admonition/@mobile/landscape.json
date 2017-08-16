@@ -1,0 +1,81 @@
+{
+  "element": {
+    "tag": "DIV",
+    "attrs": {
+      "class": "admonition note"
+    },
+    "props": {
+      "size": {
+        "width": 516,
+        "height": 110.72000122070312
+      },
+      "offset": {
+        "top": 167.51998901367188,
+        "right": 0,
+        "bottom": 2297.0400390625,
+        "left": 0
+      }
+    }
+  },
+  "children": [
+    {
+      "element": {
+        "tag": "::before",
+        "attrs": {},
+        "props": {
+          "size": {
+            "width": 23,
+            "height": 20
+          },
+          "offset": {
+            "top": 8,
+            "right": 487,
+            "bottom": 82.72000122070312,
+            "left": 6
+          }
+        }
+      },
+      "children": []
+    },
+    {
+      "element": {
+        "tag": "P",
+        "attrs": {
+          "class": "admonition-title"
+        },
+        "props": {
+          "size": {
+            "width": 460,
+            "height": 20.47998046875
+          },
+          "offset": {
+            "top": 20.800018310546875,
+            "right": 12,
+            "bottom": 69.44000244140625,
+            "left": 44
+          }
+        }
+      },
+      "children": []
+    },
+    {
+      "element": {
+        "tag": "P",
+        "attrs": {},
+        "props": {
+          "size": {
+            "width": 460,
+            "height": 61.44000244140625
+          },
+          "offset": {
+            "top": 41.279998779296875,
+            "right": 12,
+            "bottom": 8,
+            "left": 44
+          }
+        }
+      },
+      "children": []
+    }
+  ]
+}

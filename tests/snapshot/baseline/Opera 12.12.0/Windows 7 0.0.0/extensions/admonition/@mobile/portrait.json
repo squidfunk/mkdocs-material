@@ -1,0 +1,81 @@
+{
+  "element": {
+    "tag": "DIV",
+    "attrs": {
+      "class": "admonition note"
+    },
+    "props": {
+      "size": {
+        "width": 272,
+        "height": 168
+      },
+      "offset": {
+        "top": 167,
+        "right": 0,
+        "bottom": 3062,
+        "left": 0
+      }
+    }
+  },
+  "children": [
+    {
+      "element": {
+        "tag": "::before",
+        "attrs": {},
+        "props": {
+          "size": {
+            "width": 32,
+            "height": 20
+          },
+          "offset": {
+            "top": 8,
+            "right": 234,
+            "bottom": 140,
+            "left": 6
+          }
+        }
+      },
+      "children": []
+    },
+    {
+      "element": {
+        "tag": "P",
+        "attrs": {
+          "class": "admonition-title"
+        },
+        "props": {
+          "size": {
+            "width": 216,
+            "height": 20
+          },
+          "offset": {
+            "top": 20,
+            "right": 12,
+            "bottom": 128,
+            "left": 44
+          }
+        }
+      },
+      "children": []
+    },
+    {
+      "element": {
+        "tag": "P",
+        "attrs": {},
+        "props": {
+          "size": {
+            "width": 216,
+            "height": 120
+          },
+          "offset": {
+            "top": 40,
+            "right": 12,
+            "bottom": 8,
+            "left": 44
+          }
+        }
+      },
+      "children": []
+    }
+  ]
+}

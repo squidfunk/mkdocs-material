@@ -1,0 +1,81 @@
+{
+  "element": {
+    "tag": "DIV",
+    "attrs": {
+      "class": "admonition quote"
+    },
+    "props": {
+      "size": {
+        "width": 683.419921875,
+        "height": 89.719970703125
+      },
+      "offset": {
+        "top": 2184.9398651123047,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    }
+  },
+  "children": [
+    {
+      "element": {
+        "tag": "::before",
+        "attrs": {},
+        "props": {
+          "size": {
+            "width": 22.8599853515625,
+            "height": 19.85986328125
+          },
+          "offset": {
+            "top": 7.940185546875,
+            "right": 654.5999755859375,
+            "bottom": 61.919921875,
+            "left": 5.959991455078125
+          }
+        }
+      },
+      "children": []
+    },
+    {
+      "element": {
+        "tag": "P",
+        "attrs": {
+          "class": "admonition-title"
+        },
+        "props": {
+          "size": {
+            "width": 627.7999877929688,
+            "height": 20.369873046875
+          },
+          "offset": {
+            "top": 20.670166015625,
+            "right": 11.91998291015625,
+            "bottom": 48.679931640625,
+            "left": 43.699981689453125
+          }
+        }
+      },
+      "children": []
+    },
+    {
+      "element": {
+        "tag": "P",
+        "attrs": {},
+        "props": {
+          "size": {
+            "width": 627.7999877929688,
+            "height": 40.739990234375
+          },
+          "offset": {
+            "top": 41.0400390625,
+            "right": 11.91998291015625,
+            "bottom": 7.93994140625,
+            "left": 43.699981689453125
+          }
+        }
+      },
+      "children": []
+    }
+  ]
+}
