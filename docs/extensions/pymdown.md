@@ -78,7 +78,7 @@ emojis. Happy scrolling :tada:
 
 [MagicLink][9] detects links in Markdown and auto-generates the necessary
 markup, so no special syntax is required. It auto-links `http[s]://` and
-`ftp://` links, as well as references to email addresses:
+`ftp://` links, as well as references to email addresses.
 
   [9]: https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
 
@@ -150,7 +150,7 @@ must be enclosed in two carets `^^...^^`.
 #### Mark
 
 [Mark][16] adds the ability to ==highlight text== like it was marked with a
-==yellow text marker==. The portion of text that should be highlighted must be
+==text marker==. The portion of text that should be highlighted must be
 enclosed in two equal signs `==...==`.
 
   [16]: https://facelessuser.github.io/pymdown-extensions/extensions/mark/
@@ -163,7 +163,7 @@ symbols ((c), (tm), (r)) and fractions (1/2, 1/4, ...).
 
   [17]: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
 
-#### Critic
+### Critic
 
 [Critic][18] implements [Critic Markup][19], a Markdown extension that enables
 the tracking of changes (additions, deletions and comments) on documents.
