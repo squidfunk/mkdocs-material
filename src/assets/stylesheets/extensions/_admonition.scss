@@ -33,7 +33,7 @@
 
     position: relative;
     margin: 1.5625em 0;
-    padding: 0.8rem 1.2rem;
+    padding: 1.2rem;
     border-left: 0.4rem solid $clr-blue-a200;
     border-radius: 0.2rem;
     font-size: ms(-1);
@@ -44,13 +44,18 @@
     }
 
     // Remove spacing on last element
-    :last-child {
+    html & :last-child {
       margin-bottom: 0;
+    }
+
+    // Adjust margin for nested admonition blocks
+    .admonition {
+      margin: 1em 0;
     }
 
     // Title
     .admonition-title {
-      margin: -0.8rem -1.2rem -0.4rem;
+      margin: -1.2rem -1.2rem 0;
       padding: 0.8rem 1.2rem;
       border-bottom: 0.1rem solid transparentize($clr-blue-a200, 0.9);
       background-color: transparentize($clr-blue-a200, 0.9);
