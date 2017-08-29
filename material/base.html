@@ -24,7 +24,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.8.0">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.8.1">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -36,10 +36,10 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr-1df76c4e58.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-e826f8942a.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-bfecc7305d.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-4cc45aa1cf.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02c2a4388f.palette.css">
       {% endif %}
@@ -150,7 +150,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-1d6ee6ee6c.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-3700c4cc12.js"></script>
       {% set languages = lang.t("search.languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}
