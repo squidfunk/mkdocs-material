@@ -169,7 +169,7 @@ tags on separate lines and adding new lines between the tags and the content.
 
 [Details][11] adds collapsible [Admonition-style blocks][12] which can contain
 arbitrary content using the HTML5 `details` and `summary` tags. Additionally,
-all Admonition qualifiers can be used, e.g. `note`, `question`, `warning` etc.
+all Admonition qualifiers can be used, e.g. `note`, `question`, `warning` etc.:
 
 ??? question "How many Prolog programmers does it take to change a lightbulb?"
 

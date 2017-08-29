@@ -32,25 +32,39 @@
     @extend .admonition;
 
     padding-top: 0;
-    padding-bottom: 0;
 
-    // Re-add bottom spacing if block is open
-    &[open] {
-      padding-bottom: 1.2rem;
+    // Rotate title icon
+    &[open] > summary::after {
+      transform: rotate(180deg);
+    }
 
-      > summary::after {
-        transform: rotate(180deg);
+    // Remove bottom spacing
+    &:not([open]) {
+      padding-bottom: 0;
+
+      // Remove bottom border if block is closed
+      > summary {
+        border-bottom: none;
       }
     }
 
-    // Remove bottom border if block is closed
-    &:not([open]) summary {
-      border-bottom: none;
-    }
-
-    // TODO specificity problem
+    // Increase spacing to the right - scoped here for higher specificity
     summary {
       padding-right: 4rem;
+    }
+
+    // Manually hide and show, if browser doesn't support details
+    .no-details &:not([open]) {
+
+      // Hide all nested tags ...
+      > * {
+        display: none;
+      }
+
+      // ... but show title
+      summary {
+        display: block;
+      }
     }
   }
 
@@ -58,6 +72,8 @@
   summary {
     @extend .admonition-title;
 
+    // Hack: set to block, so Firefox doesn't render marker
+    display: block;
     outline: none;
     cursor: pointer;
 
