@@ -12,10 +12,20 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.8.1
+# Version 1.9.0
 ```
 
 ## Changelog
+
+### 1.9.0 <small> _ August 29, 2017</small>
+
+* Added `info` (synonym: `todo`) style for Admonition
+* Added `question` (synonym: `help`, `faq`) style for Admonition
+* Added support for `pymdownx.details` Markdown extension
+* Improved Admonition styles to match `pymdownx.details`
+* Improved styles for social links in footer
+* Replaced ligatures with Unicode code points to avoid broken layout
+* Upgraded PyMdown Extension package dependency to >= 3.4
 
 ### 1.8.1 <small> _ August 7, 2017</small>
 
