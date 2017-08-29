@@ -124,7 +124,7 @@
     // Back reference icon
     &::before {
       font-size: 1.6rem;
-      content: "keyboard_return";
+      content: "\E31B"; // keyboard_return
     }
   }
 }

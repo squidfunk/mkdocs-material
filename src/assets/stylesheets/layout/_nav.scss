@@ -53,7 +53,7 @@
       @extend %md-icon, %md-icon__button;
 
       display: none;
-      content: "arrow_back";
+      content: "\E5C4"; // arrow_back
     }
 
     // Hide button by default
@@ -115,7 +115,7 @@
 
       // Item contains a nested list
       .md-nav__item--nested > & {
-        content: "keyboard_arrow_down";
+        content: "\E313"; // keyboard_arrow_down
       }
     }
 
@@ -285,7 +285,7 @@
 
           // Replace icon with right arrow
           &::after {
-            content: "keyboard_arrow_right";
+            content: "\E315"; // keyboard_arrow_right
           }
         }
       }
@@ -396,7 +396,7 @@
       // Unrotate icon for table of contents
       &::after {
         color: inherit;
-        content: "toc";
+        content: "\E8DE"; // toc
       }
 
       // Hide link to current item
