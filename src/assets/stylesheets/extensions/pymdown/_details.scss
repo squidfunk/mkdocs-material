@@ -37,11 +37,20 @@
     // Re-add bottom spacing if block is open
     &[open] {
       padding-bottom: 1.2rem;
+
+      > summary::after {
+        transform: rotate(180deg);
+      }
     }
 
     // Remove bottom border if block is closed
     &:not([open]) summary {
       border-bottom: none;
+    }
+
+    // TODO specificity problem
+    summary {
+      padding-right: 4rem;
     }
   }
 
@@ -55,6 +64,18 @@
     // Remove default details marker
     &::-webkit-details-marker {
       display: none;
+    }
+
+    // Icon
+    &::after {
+      @extend %md-icon;
+
+      position: absolute;
+      top: 0.8rem;
+      right: 1.2rem;
+      color: $md-color-black--lighter;
+      font-size: 2rem;
+      content: "keyboard_arrow_down";
     }
   }
 }
