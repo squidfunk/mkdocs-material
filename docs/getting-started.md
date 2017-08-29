@@ -98,7 +98,7 @@ This is especially useful if you want to [extend the theme][7] and
     If you run into this error, the most common reason is that you installed
     MkDocs through some package manager (e.g. Homebrew or `apt-get`) and the
     Material theme through `pip`, so both packages end up in different
-    locations. MkDocs only checks it's install location for themes.
+    locations. MkDocs only checks its install location for themes.
 
 ## Usage
 

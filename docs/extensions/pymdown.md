@@ -24,6 +24,7 @@ markdown_extensions:
   - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
   - pymdownx.critic
+  - pymdownx.details
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.inlinehilite
@@ -183,6 +184,23 @@ tags on separate lines and adding new lines between the tags and the content.
 
   [18]: https://facelessuser.github.io/pymdown-extensions/extensions/critic/
   [19]: http://criticmarkup.com/
+
+### Details
+
+[Details][20] adds collapsible elements that can contain arbitrary content.
+It's implemented using the HTML5 `details` and `summary` tags and adds the
+
+???+ note "Open styled details"
+
+    ??? danger "Nested details!"
+        And more content again.
+
+    !!! quote "Admonition!"
+        And more content again.
+
+  [20]: https://facelessuser.github.io/pymdown-extensions/extensions/details/
+
+TODO: adjust links!
 
 ### Arithmatex <small>MathJax</small>
 

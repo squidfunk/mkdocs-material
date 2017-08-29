@@ -21,47 +21,40 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
-@import "material-shadows";
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
 
-// ----------------------------------------------------------------------------
-// Local imports
-// ----------------------------------------------------------------------------
+  // Details extension
+  details {
+    @extend .admonition;
 
-@import "helpers/break";
-@import "helpers/px2em";
+    padding-top: 0;
+    padding-bottom: 0;
 
-@import "config";
+    // Re-add bottom spacing if block is open
+    &[open] {
+      padding-bottom: 1.2rem;
+    }
 
-@import "base/reset";
-@import "base/icons";
-@import "base/typeset";
+    // Remove bottom border if block is closed
+    &:not([open]) summary {
+      border-bottom: none;
+    }
+  }
 
-@import "layout/base";
-@import "layout/clipboard";
-@import "layout/content";
-@import "layout/header";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/search";
-@import "layout/sidebar";
-@import "layout/source";
-@import "layout/tabs";
+  // Title
+  summary {
+    @extend .admonition-title;
 
-@import "extensions/admonition";
-@import "extensions/codehilite";
-@import "extensions/footnotes";
-@import "extensions/permalinks";
+    outline: none;
+    cursor: pointer;
 
-@import "extensions/pymdown/arithmatex";
-@import "extensions/pymdown/critic";
-@import "extensions/pymdown/details";
-@import "extensions/pymdown/emoji";
-@import "extensions/pymdown/inlinehilite";
-@import "extensions/pymdown/tasklist";
-
-@import "shame";
+    // Remove default details marker
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+}
