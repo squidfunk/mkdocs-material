@@ -69,22 +69,22 @@
         left: 1.2rem;
         color: $clr-blue-a200;
         font-size: 2rem;
-        content: "edit";
+        content: "\E3C9"; // edit
       }
     }
 
     // Build representational classes
     @each $names, $appearance in (
-      summary tldr: $clr-light-blue-a400 "subject",
-      info todo: $clr-cyan-a700 "info",
-      tip hint important : $clr-teal-a700 "whatshot",
-      success check done: $clr-green-a700 "done",
-      question help faq: $clr-light-green-a700 "help",
-      warning caution attention: $clr-orange-a400 "warning",
-      failure fail missing: $clr-red-a200 "clear",
-      danger error: $clr-red-a400 "flash_on",
-      bug: $clr-pink-a400 "bug_report",
-      quote cite: $clr-grey "format_quote"
+      summary tldr: $clr-light-blue-a400 "\E8D2", // subject
+      info todo: $clr-cyan-a700 "\E88E", // info
+      tip hint important : $clr-teal-a700 "\E80E", // whatshot
+      success check done: $clr-green-a700 "\E876", // done
+      question help faq: $clr-light-green-a700 "\E887", // help
+      warning caution attention: $clr-orange-a400 "\E002", // warning
+      failure fail missing: $clr-red-a200 "\E14C", // clear
+      danger error: $clr-red-a400 "\E3E7", // flash_on
+      bug: $clr-pink-a400 "\E868", // bug_report
+      quote cite: $clr-grey "\E244" // format_quote
     ) {
       $tint: nth($appearance, 1);
       $icon: nth($appearance, 2);

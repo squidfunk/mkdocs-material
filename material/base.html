@@ -39,7 +39,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-e826f8942a.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-4cc45aa1cf.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-0a3554af36.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02c2a4388f.palette.css">
       {% endif %}
@@ -117,7 +117,7 @@
             <article class="md-content__inner md-typeset">
               {% block content %}
                 {% if config.edit_uri %}
-                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">edit</a>
+                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">&#xE3C9;</a>
                 {% endif %}
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
