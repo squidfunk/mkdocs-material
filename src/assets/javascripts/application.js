@@ -111,6 +111,21 @@ function initialize(config) { // eslint-disable-line func-style
       })
     }
 
+    /* Polyfill details/summary functionality */
+    if (!Modernizr.details) {
+      const blocks = document.querySelectorAll("details > summary")
+      Array.prototype.forEach.call(blocks, summary => {
+        summary.addEventListener("click", ev => {
+          const details = ev.target.parentNode
+          if (details.hasAttribute("open")) {
+            details.removeAttribute("open")
+          } else {
+            details.setAttribute("open", "")
+          }
+        })
+      })
+    }
+
     /* Force 1px scroll offset to trigger overflow scrolling */
     if (Modernizr.ios) {
       const scrollable = document.querySelectorAll("[data-md-scrollfix]")

@@ -56,7 +56,7 @@
     // Title
     .admonition-title {
       margin: -1.2rem -1.2rem 0;
-      padding: 0.8rem 1.2rem;
+      padding: 0.8rem 1.2rem 0.8rem 4rem;
       border-bottom: 0.1rem solid transparentize($clr-blue-a200, 0.9);
       background-color: transparentize($clr-blue-a200, 0.9);
       font-weight: 700;
@@ -65,19 +65,21 @@
       &::before {
         @extend %md-icon;
 
-        margin-right: 0.8rem;
+        position: absolute;
+        left: 1.2rem;
         color: $clr-blue-a200;
         font-size: 2rem;
         content: "edit";
-        vertical-align: -0.25em;
       }
     }
 
     // Build representational classes
     @each $names, $appearance in (
       summary tldr: $clr-light-blue-a400 "subject",
+      info todo: $clr-cyan-a700 "info",
       tip hint important : $clr-teal-a700 "whatshot",
       success check done: $clr-green-a700 "done",
+      question help faq: $clr-light-green-a700 "help",
       warning caution attention: $clr-orange-a400 "warning",
       failure fail missing: $clr-red-a200 "clear",
       danger error: $clr-red-a400 "flash_on",
