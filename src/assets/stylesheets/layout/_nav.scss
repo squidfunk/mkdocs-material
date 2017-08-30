@@ -302,14 +302,8 @@
           top: 50%;
           right: 1.2rem;
           margin-top: -1.2rem;
-          color: $md-color-black--light;
-          font-size: 2.4rem;
-        }
-
-        // Color of icon should inherit link color on focus or hover
-        &:focus::after,
-        &:hover::after {
           color: inherit;
+          font-size: 2.4rem;
         }
       }
 
