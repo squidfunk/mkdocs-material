@@ -1,3 +1,7 @@
+mkdocs-material-1.9.1 (2017-XX-XX)
+
+  * Fixed uninitialized overflow scrolling on main pane for iOS
+
 mkdocs-material-1.9.0 (2017-08-29)
 
   * Added info (synonym: todo) style for Admonition
