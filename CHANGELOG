@@ -1,6 +1,8 @@
 mkdocs-material-1.9.1 (2017-XX-XX)
 
   * Fixed uninitialized overflow scrolling on main pane for iOS
+  * Fixed error in mobile navigation in case JavaScript is not available
+  * Fixed incorrect color transition for nested pane in mobile navigation
 
 mkdocs-material-1.9.0 (2017-08-29)
 
