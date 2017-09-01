@@ -303,10 +303,21 @@ extra:
   logo: 'images/logo.svg'
 ```
 
+Additionally, the default icon can be changed by setting an arbitrary ligature
+(or Unicode code point) from the [Material Design icon font][16], e.g.
+
+``` yaml
+extra:
+  logo:
+    icon: 'cloud'
+```
+
+  [16]: https://material.io/icons/
+
 ### Adding social links
 
 Social accounts can be linked in the footer of the documentation using the
-automatically included [FontAwesome][16] webfont. The `type` must denote the
+automatically included [FontAwesome][17] webfont. The `type` must denote the
 name of the social service, e.g. `github`, `twitter` or `linkedin` and the
 `link` must contain the URL you want to link to:
 
@@ -325,7 +336,7 @@ The links are generated in order and the `type` of the links must match the
 name of the FontAwesome glyph. The `fa` is automatically added, so `github`
 will result in `fa fa-github`.
 
-  [16]: http://fontawesome.io/icons/
+  [17]: http://fontawesome.io/icons/
 
 ### Google Analytics integration
 
@@ -342,7 +353,7 @@ google_analytics:
 
 ### Disqus integation
 
-Material for MkDocs is integrated with [Disqus][17], so if you want to add a
+Material for MkDocs is integrated with [Disqus][18], so if you want to add a
 comments section to your documentation set the shortname of your Disqus project
 in your `mkdocs.yml`:
 
@@ -361,7 +372,7 @@ automatically included.
     `site_url` value must be set in `mkdocs.yml` for the Disqus integration to
     load properly.
 
-  [17]: https://disqus.com
+  [18]: https://disqus.com
 
 ### Localization
 
@@ -393,19 +404,19 @@ macro `t`:
 ```
 
 Just copy the file from the original theme and make your adjustments. See the
-section on [overriding partials][18] and the general guide on
-[theme extension][19] in the customization guide. Furthermore, see the
-[example configuration][20] for a head start.
+section on [overriding partials][19] and the general guide on
+[theme extension][20] in the customization guide. Furthermore, see the
+[example configuration][21] for a head start.
 
-  [18]: customization.md#overriding-partials
-  [19]: customization.md#extending-the-theme
-  [20]: https://github.com/squidfunk/mkdocs-material/tree/master/examples/language
+  [19]: customization.md#overriding-partials
+  [20]: customization.md#extending-the-theme
+  [21]: https://github.com/squidfunk/mkdocs-material/tree/master/examples/language
 
 #### Site search
 
-Site search is implemented using [lunr.js][21], which includes stemmers for the
+Site search is implemented using [lunr.js][22], which includes stemmers for the
 English language by default, while stemmers for other languages are included
-with [lunr-languages][22], both of which are integrated with this theme. Support
+with [lunr-languages][23], both of which are integrated with this theme. Support
 for other languages and even multilingual search can be activated by setting
 the key `search.languages` to a comma-separated list of supported 2-letter
 language codes, e.g.:
@@ -443,8 +454,8 @@ to index parts of words that are separated by `-` or `.` for example:
 }[key] }}{% endmacro %}
 ```
 
-  [21]: https://lunrjs.com
-  [22]: https://github.com/MihaiValentin/lunr-languages
+  [22]: https://lunrjs.com
+  [23]: https://github.com/MihaiValentin/lunr-languages
 
 ### Tabs
 
@@ -462,13 +473,13 @@ extra:
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][23] for more information on advanced customization.
+[this article][24] for more information on advanced customization.
 
-  [23]: customization.md
+  [24]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][24]. The following extensions
+MkDocs supports several [Markdown extensions][25]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -482,20 +493,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][25]
-* [Codehilite][26]
-* [Footnotes][27]
-* [Metadata][28]
-* [Permalinks][29]
-* [PyMdown Extensions][30]
+* [Admonition][26]
+* [Codehilite][27]
+* [Footnotes][28]
+* [Metadata][29]
+* [Permalinks][30]
+* [PyMdown Extensions][31]
 
-  [24]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [25]: extensions/admonition.md
-  [26]: extensions/codehilite.md
-  [27]: extensions/footnotes.md
-  [28]: extensions/metadata.md
-  [29]: extensions/permalinks.md
-  [30]: extensions/pymdown.md
+  [25]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [26]: extensions/admonition.md
+  [27]: extensions/codehilite.md
+  [28]: extensions/footnotes.md
+  [29]: extensions/metadata.md
+  [30]: extensions/permalinks.md
+  [31]: extensions/pymdown.md
 
 ## Full example
 
