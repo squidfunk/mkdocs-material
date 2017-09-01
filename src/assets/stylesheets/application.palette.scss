@@ -212,7 +212,7 @@ button[data-md-color-accent] {
         color: $color;
       }
 
-      // Active or targeted permalink
+      // Active, targeted or focused permalink
       [id]:hover  .headerlink:hover,
       [id]:target .headerlink,
       [id] .headerlink:focus {
@@ -220,7 +220,8 @@ button[data-md-color-accent] {
       }
     }
 
-    // Current or hovered link
+    // Focused or hovered link
+    .md-nav__link:focus,
     .md-nav__link:hover {
       color: $color;
     }

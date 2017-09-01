@@ -302,14 +302,8 @@
           top: 50%;
           right: 1.2rem;
           margin-top: -1.2rem;
-          color: $md-color-black--light;
-          font-size: 2.4rem;
-        }
-
-        // Color of icon should inherit link color on focus or hover
-        &:focus::after,
-        &:hover::after {
           color: inherit;
+          font-size: 2.4rem;
         }
       }
 
@@ -351,30 +345,30 @@
 
     // Hide nested navigation by default
     .md-nav__toggle ~ & {
-      display: none;
+      display: flex;
+      transform: translateX(100%);
+      transition:
+        transform 0.25s cubic-bezier(0.8, 0, 0.6, 1),
+        opacity   0.125s 0.05s;
+      opacity: 0;
 
-      // Animate appearance, if browser supports 3D transforms
-      .csstransforms3d & {
-        display: flex;
-        transform: translateX(100%);
-        transition:
-          transform 0.25s cubic-bezier(0.8, 0, 0.6, 1),
-          opacity   0.125s 0.05s;
-        opacity: 0;
+      // Just hide navigation, if browser doesn't supports 3D transforms
+      .no-csstransforms3d & {
+        display: none;
       }
     }
 
     // Expand nested navigation, if toggle is checked
     .md-nav__toggle:checked ~ & {
-      display: flex;
+      transform: translateX(0);
+      transition:
+        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity   0.125s 0.125s;
+      opacity: 1;
 
-      // Animate appearance, if browser supports 3D transforms
-      .csstransforms3d & {
-        transform: translateX(0);
-        transition:
-          transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-          opacity   0.125s 0.125s;
-        opacity: 1;
+      // Just show navigation, if browser doesn't supports 3D transforms
+      .no-csstransforms3d & {
+        display: flex;
       }
     }
   }
