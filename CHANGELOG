@@ -1,4 +1,4 @@
-mkdocs-material-1.x.x (2017-XX-XX)
+mkdocs-material-1.10.0 (2017-09-01)
 
   * Added support to make logo default icon configurable
   * Fixed uninitialized overflow scrolling on main pane for iOS
