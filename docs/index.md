@@ -19,11 +19,25 @@ Install the latest version of Material with `pip`:
 pip install mkdocs-material
 ```
 
-Add the following line to your `mkdocs.yml`:
+Append the following line to your project's `mkdocs.yml`:
 
 ``` yaml
 theme: 'material'
 ```
+
+## What to expect
+
+* Responsive design and fluid layout for all kinds of screens and devices,
+  designed to serve your project documentation in a user-friendly way with
+  optimal readability.
+
+* Easily customizable primary and accent color, fonts, favicon and logo;
+  straight forward localization through theme extension; integrated with Google
+  Analytics, Disqus and GitHub.
+
+* Well-designed search interface accessible through hotkeys (<kbd>F</kbd> or
+  <kbd>S</kbd>), intelligent grouping of search results, search term
+  highlighting and lazy loading.
 
 For detailed instructions see the [getting started guide][3].
 
