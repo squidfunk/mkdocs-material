@@ -20,12 +20,10 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+set -e
+
 # Check if "yarn install" was executed
-if [[ ! -d "$(yarn bin)" ]]; then
-  echo "\"node_modules\" not found:"
-  echo "yarn install"
-  exit 1
-fi
+[ -d "$(yarn bin)" ] || yarn install
 
 # Annotate source files
 "$(yarn bin)"/gulp assets:javascripts:annotate "$@"
