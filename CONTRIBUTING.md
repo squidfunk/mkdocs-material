@@ -66,8 +66,9 @@ go ahead.
   make your changes in a separate git branch and add descriptive messages to
   your commits.
 
-2. **Build**: Before submitting a pull requests, build the theme. This is a
-  mandatory requirement for your PR to get accepted, as the theme should at
+2. **Build**: Before submitting a pull requests, build the theme with the
+  `scripts/build` script which depends on [nodejs>=5][5] and [yarn][6]. This is
+  a mandatory requirement for your PR to get accepted, as the theme should at
   all times be installable through GitHub.
 
 3. **Pull Request**: After building the theme, commit the compiled output, push
@@ -78,4 +79,6 @@ go ahead.
 After your PR is merged, you can safely delete your branch and pull the changes
 from the main (upstream) repository.
 
-  [4]: http://squidfunk.github.io/mkdocs-material/customization/#theme-development
+  [4]: https://squidfunk.github.io/mkdocs-material/customization/#theme-development
+  [5]: https://nodejs.org
+  [6]: https://yarnpkg.com
