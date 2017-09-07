@@ -17,7 +17,7 @@ pip show mkdocs-material | grep -E ^Version
 
 ## Changelog
 
-### 1.10.0 <small> _ September 1, 2017</small>
+### 1.10.0 <small>_ September 1, 2017</small>
 
 * Added support to make logo default icon configurable
 * Fixed uninitialized overflow scrolling on main pane for iOS
@@ -25,7 +25,7 @@ pip show mkdocs-material | grep -E ^Version
 * Fixed incorrect color transition for nested panes in mobile navigation
 * Improved checkbox styles for Tasklist from PyMdown Extension package
 
-### 1.9.0 <small> _ August 29, 2017</small>
+### 1.9.0 <small>_ August 29, 2017</small>
 
 * Added `info` (synonym: `todo`) style for Admonition
 * Added `question` (synonym: `help`, `faq`) style for Admonition
@@ -35,13 +35,13 @@ pip show mkdocs-material | grep -E ^Version
 * Replaced ligatures with Unicode code points to avoid broken layout
 * Upgraded PyMdown Extensions package dependency to >= 3.4
 
-### 1.8.1 <small> _ August 7, 2017</small>
+### 1.8.1 <small>_ August 7, 2017</small>
 
-* Fixed [#429][429]: Missing pagination for GitHub API
+* Fixed [#421][421]: Missing pagination for GitHub API
 
-  [429]: https://github.com/squidfunk/mkdocs-material/issues/429
+  [421]: https://github.com/squidfunk/mkdocs-material/issues/421
 
-### 1.8.0 <small> _ August 2, 2017</small>
+### 1.8.0 <small>_ August 2, 2017</small>
 
 * Added support for lazy-loading of search results for better performance
 * Added support for customization of search tokenizer/separator
@@ -51,7 +51,7 @@ pip show mkdocs-material | grep -E ^Version
   [419]: https://github.com/squidfunk/mkdocs-material/issues/419
   [424]: https://github.com/squidfunk/mkdocs-material/issues/424
 
-### 1.7.5 <small> _ July 25, 2017</small>
+### 1.7.5 <small>_ July 25, 2017</small>
 
 * Fixed [#398][398]: Forms broken due to search shortcuts
 * Improved search overall user experience
@@ -60,46 +60,46 @@ pip show mkdocs-material | grep -E ^Version
 
   [398]: https://github.com/squidfunk/mkdocs-material/issues/398
 
-### 1.7.4 <small> _ June 21, 2017</small>
+### 1.7.4 <small>_ June 21, 2017</small>
 
 * Fixed functional link colors in table of contents for active palette
 * Fixed [#368][368]: Compatibility issues with IE11
 
   [368]: https://github.com/squidfunk/mkdocs-material/issues/368
 
-### 1.7.3 <small> _ June 7, 2017</small>
+### 1.7.3 <small>_ June 7, 2017</small>
 
 * Fixed error when setting language to Japanese for site search
 
-### 1.7.2 <small> _ June 6, 2017</small>
+### 1.7.2 <small>_ June 6, 2017</small>
 
 * Fixed offset of search box when `repo_url` is not set
 * Fixed non-disappearing tooltip
 
-### 1.7.1 <small> _ June 1, 2017</small>
+### 1.7.1 <small>_ June 1, 2017</small>
 
 * Fixed wrong `z-index` order of header, overlay and drawer
 * Fixed wrong offset of targeted footnote back references
 
-### 1.7.0 <small> _ June 1, 2017</small>
+### 1.7.0 <small>_ June 1, 2017</small>
 
 * Added "copy to clipboard" buttons to code blocks
 * Added support for multilingual site search
 * Fixed search term highlighting for non-latin languages
 
-### 1.6.4 <small> _ May 24, 2017</small>
+### 1.6.4 <small>_ May 24, 2017</small>
 
 * Fixed [#337][337]: JavaScript error for GitHub organization URLs
 
   [337]: https://github.com/squidfunk/mkdocs-material/issues/337
 
-### 1.6.3 <small> _ May 16, 2017</small>
+### 1.6.3 <small>_ May 16, 2017</small>
 
 * Fixed [#329][329]: Broken source stats for private or unknown GitHub repos
 
   [329]: https://github.com/squidfunk/mkdocs-material/issues/329
 
-### 1.6.2 <small> _ May 15, 2017</small>
+### 1.6.2 <small>_ May 15, 2017</small>
 
 * Fixed [#316][316]: Fatal error for git clone on Windows
 * Fixed [#320][320]: Chrome 58 creates double underline for `abbr` tags
@@ -111,12 +111,12 @@ pip show mkdocs-material | grep -E ^Version
   [320]: https://github.com/squidfunk/mkdocs-material/issues/320
   [323]: https://github.com/squidfunk/mkdocs-material/issues/323
 
-### 1.6.1 <small> _ April 23, 2017</small>
+### 1.6.1 <small>_ April 23, 2017</small>
 
 * Fixed following of active/focused element if search input is focused
 * Fixed layer order of search component elements
 
-### 1.6.0 <small> _ April 22, 2017</small>
+### 1.6.0 <small>_ April 22, 2017</small>
 
 * Added build test for Docker image on Travis
 * Added search overlay for better user experience (focus)
@@ -127,19 +127,19 @@ pip show mkdocs-material | grep -E ^Version
 
   [270]: https://github.com/squidfunk/mkdocs-material/issues/270
 
-### 1.5.5 <small> _ April 20, 2017</small>
+### 1.5.5 <small>_ April 20, 2017</small>
 
 * Fixed [#282][282]: Browser search (<kbd>Meta</kbd>+<kbd>F</kbd>) is hijacked
 
   [282]: https://github.com/squidfunk/mkdocs-material/issues/282
 
-### 1.5.4 <small> _ April 8, 2017</small>
+### 1.5.4 <small>_ April 8, 2017</small>
 
 * Fixed broken highlighting for two or more search terms
 * Fixed missing search results when only a `h1` is present
 * Fixed unresponsive overlay on Android
 
-### 1.5.3 <small> _ April 7, 2017</small>
+### 1.5.3 <small>_ April 7, 2017</small>
 
 * Fixed deprecated calls for template variables
 * Fixed wrong palette color for focused search result
@@ -147,19 +147,19 @@ pip show mkdocs-material | grep -E ^Version
 * Fixed missing top spacing on 404 page
 * Fixed missing right spacing on overflow of source container
 
-### 1.5.2 <small> _ April 5, 2017</small>
+### 1.5.2 <small>_ April 5, 2017</small>
 
 * Added requirements as explicit dependencies in `setup.py`
 * Fixed non-synchronized transitions in search form
 
-### 1.5.1 <small> _ March 30, 2017</small>
+### 1.5.1 <small>_ March 30, 2017</small>
 
 * Fixed rendering and offset of targetted footnotes
 * Fixed [#238][238]: Link on logo is not set to `site_url`
 
   [238]: https://github.com/squidfunk/mkdocs-material/issues/238
 
-### 1.5.0 <small> _ March 24, 2017</small>
+### 1.5.0 <small>_ March 24, 2017</small>
 
 * Added support for localization of search placeholder
 * Added keyboard events for quick access of search
@@ -175,11 +175,11 @@ pip show mkdocs-material | grep -E ^Version
   [229]: https://github.com/squidfunk/mkdocs-material/issues/229
   [231]: https://github.com/squidfunk/mkdocs-material/issues/231
 
-### 1.4.1 <small> _ March 16, 2017</small>
+### 1.4.1 <small>_ March 16, 2017</small>
 
 * Fixed invalid destructuring attempt on NodeList (in Safari, Edge, IE)
 
-### 1.4.0 <small> _ March 16, 2017</small>
+### 1.4.0 <small>_ March 16, 2017</small>
 
 * Added support for grouping searched sections by documents
 * Added support for highlighting of search terms
@@ -189,7 +189,7 @@ pip show mkdocs-material | grep -E ^Version
 
   [216]: https://github.com/squidfunk/mkdocs-material/issues/216
 
-### 1.3.0 <small> _ March 11, 2017</small>
+### 1.3.0 <small>_ March 11, 2017</small>
 
 * Added support for page-specific title and description using metadata
 * Added support for linking source files to documentation
@@ -205,7 +205,7 @@ pip show mkdocs-material | grep -E ^Version
 
   [205]: https://github.com/squidfunk/mkdocs-material/issues/205
 
-### 1.2.0 <small> _ March 3, 2017</small>
+### 1.2.0 <small>_ March 3, 2017</small>
 
 * Added `quote` (synonym: `cite`) style for Admonition
 * Added help message to build pipeline
@@ -215,11 +215,11 @@ pip show mkdocs-material | grep -E ^Version
 
   [197]: https://github.com/squidfunk/mkdocs-material/issues/197
 
-### 1.1.1 <small> _ February 26, 2017</small>
+### 1.1.1 <small>_ February 26, 2017</small>
 
 * Fixed incorrectly displayed nested lists when using tabs
 
-### 1.1.0 <small> _ February 26, 2017</small>
+### 1.1.0 <small>_ February 26, 2017</small>
 
 * Added tabs navigation feature (optional)
 * Added Disqus integration (optional)
@@ -237,7 +237,7 @@ pip show mkdocs-material | grep -E ^Version
   [173]: https://github.com/squidfunk/mkdocs-material/issues/173
   [175]: https://github.com/squidfunk/mkdocs-material/issues/175
 
-### 1.0.5 <small> _ February 18, 2017</small>
+### 1.0.5 <small>_ February 18, 2017</small>
 
 * Fixed [#153][153]: Sidebar flows out of constrained area in Chrome 56
 * Fixed [#159][159]: Footer jitter due to JavaScript if content is short
@@ -245,7 +245,7 @@ pip show mkdocs-material | grep -E ^Version
   [153]: https://github.com/squidfunk/mkdocs-material/issues/153
   [159]: https://github.com/squidfunk/mkdocs-material/issues/159
 
-### 1.0.4 <small> _ February 16, 2017</small>
+### 1.0.4 <small>_ February 16, 2017</small>
 
 * Fixed [#142][142]: Documentation build errors if `h1` is defined as raw HTML
 * Fixed [#164][164]: PyPI release does not build and install
@@ -255,7 +255,7 @@ pip show mkdocs-material | grep -E ^Version
   [142]: https://github.com/squidfunk/mkdocs-material/issues/142
   [164]: https://github.com/squidfunk/mkdocs-material/issues/164
 
-### 1.0.3 <small> _ January 22, 2017</small>
+### 1.0.3 <small>_ January 22, 2017</small>
 
 * Fixed [#117][117]: Table of contents items don't blur on fast scrolling
 * Refactored sidebar positioning logic
@@ -263,20 +263,20 @@ pip show mkdocs-material | grep -E ^Version
 
   [117]: https://github.com/squidfunk/mkdocs-material/issues/117
 
-### 1.0.2 <small> _ January 15, 2017</small>
+### 1.0.2 <small>_ January 15, 2017</small>
 
 * Fixed [#108][108]: Horizontal scrollbar in content area
 
   [108]: https://github.com/squidfunk/mkdocs-material/issues/108
 
-### 1.0.1 <small> _ January 14, 2017</small>
+### 1.0.1 <small>_ January 14, 2017</small>
 
 * Fixed massive repaints happening when scrolling
 * Fixed footer back reference positions in case of overflow
 * Fixed header logo from showing when the menu icon is rendered
 * Changed scrollbar behavior to only show when content overflows
 
-### 1.0.0 <small> _ January 13, 2017</small>
+### 1.0.0 <small>_ January 13, 2017</small>
 
 * Introduced Webpack for more sophisticated JavaScript bundling
 * Introduced ESLint and Stylelint for code style checks
@@ -305,7 +305,7 @@ pip show mkdocs-material | grep -E ^Version
 * Fixed live reload chain in watch mode when saving a template
 * Fixed variable references to work with MkDocs 0.16
 
-### 0.2.4 <small> _ June 26, 2016</small>
+### 0.2.4 <small>_ June 26, 2016</small>
 
 * Fixed improperly set default favicon
 * Fixed [#33][33]: Protocol relative URL for webfonts doesn't work with
@@ -317,7 +317,7 @@ pip show mkdocs-material | grep -E ^Version
   [34]: https://github.com/squidfunk/mkdocs-material/issues/26
   [35]: https://github.com/squidfunk/mkdocs-material/issues/30
 
-### 0.2.3 <small> _ May 16, 2016</small>
+### 0.2.3 <small>_ May 16, 2016</small>
 
 * Fixed [#25][25]: Highlight inline fenced blocks
 * Fixed [#26][26]: Better highlighting for keystrokes
@@ -327,7 +327,7 @@ pip show mkdocs-material | grep -E ^Version
   [26]: https://github.com/squidfunk/mkdocs-material/issues/26
   [30]: https://github.com/squidfunk/mkdocs-material/issues/30
 
-### 0.2.2 <small> _ March 20, 2016</small>
+### 0.2.2 <small>_ March 20, 2016</small>
 
 * Fixed [#15][15]: Document Pygments dependency for CodeHilite
 * Fixed [#16][16]: Favicon could not be set through `mkdocs.yml`
@@ -339,7 +339,7 @@ pip show mkdocs-material | grep -E ^Version
   [17]: https://github.com/squidfunk/mkdocs-material/issues/17
   [20]: https://github.com/squidfunk/mkdocs-material/issues/20
 
-### 0.2.1 <small> _ March 12, 2016</small>
+### 0.2.1 <small>_ March 12, 2016</small>
 
 * Fixed [#10][10]: Invisible header after closing search bar with
   <kbd>ESC</kbd> key
@@ -351,7 +351,7 @@ pip show mkdocs-material | grep -E ^Version
   [10]: https://github.com/squidfunk/mkdocs-material/issues/10
   [13]: https://github.com/squidfunk/mkdocs-material/issues/13
 
-### 0.2.0 <small> _ February 24, 2016</small>
+### 0.2.0 <small>_ February 24, 2016</small>
 
 * Fixed [#6][6]: Include multiple color palettes via `mkdocs.yml`
 * Fixed [#7][7]: Better colors for links inside admonition notes and warnings
@@ -362,7 +362,7 @@ pip show mkdocs-material | grep -E ^Version
   [7]: https://github.com/squidfunk/mkdocs-material/issues/7
   [9]: https://github.com/squidfunk/mkdocs-material/issues/9
 
-### 0.1.3 <small> _ February 21, 2016</small>
+### 0.1.3 <small>_ February 21, 2016</small>
 
 * Fixed [#3][3]: Ordered lists within an unordered list have `::before` content
 * Fixed [#4][4]: Click on Logo/Title without Github-Repository: `"None"`
@@ -373,7 +373,7 @@ pip show mkdocs-material | grep -E ^Version
   [4]: https://github.com/squidfunk/mkdocs-material/issues/4
   [5]: https://github.com/squidfunk/mkdocs-material/issues/5
 
-### 0.1.2 <small> _ February 16, 2016</small>
+### 0.1.2 <small>_ February 16, 2016</small>
 
 * Fixed styles for deep navigational hierarchies
 * Fixed webfont delivery problem when hosted in subdirectories
@@ -383,7 +383,7 @@ pip show mkdocs-material | grep -E ^Version
 * Set download link to latest version if available
 * Set up tracking of outgoing links and actions for Google Analytics
 
-### 0.1.1 <small> _ February 11, 2016</small>
+### 0.1.1 <small>_ February 11, 2016</small>
 
 * Fixed [#1][1]: GitHub stars don't work if the repo_url ends with a `/`
 * Updated NPM and Bower dependencies to most recent versions
@@ -394,6 +394,6 @@ pip show mkdocs-material | grep -E ^Version
   [1]: https://github.com/squidfunk/mkdocs-material/issues/1
   [2]: https://travis-ci.org
 
-### 0.1.0 <small> _ February 9, 2016</small>
+### 0.1.0 <small>_ February 9, 2016</small>
 
 * Initial release

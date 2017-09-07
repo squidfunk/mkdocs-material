@@ -18,7 +18,7 @@ mkdocs-material-1.9.0 (2017-08-29)
 
 mkdocs-material-1.8.1 (2017-08-07)
 
-  * Fixed #429: Missing pagination for GitHub API
+  * Fixed #421: Missing pagination for GitHub API
 
 mkdocs-material-1.8.0 (2017-08-02)
 
