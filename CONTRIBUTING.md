@@ -10,7 +10,7 @@ you do, please read the following guidelines.
 For quick questions there's no need to open an issue as you can reach us on
 [gitter.im][1].
 
-  [1]: https://gitter.im/mkdocs-material/general
+  [1]: https://gitter.im/squidfunk/mkdocs-material
 
 ### Found a bug?
 
@@ -30,12 +30,12 @@ proposal for your work first, to be sure that it is of use for everyone, as
 the Material theme is highly opinionated. Please consider what kind of change
 it is:
 
-* For a **Major Feature**, first open an issue and outline your proposal so
+* For a **major feature**, first open an issue and outline your proposal so
   that it can be discussed. This will also allow us to better coordinate our
   efforts, prevent duplication of work, and help you to craft the change so
   that it is successfully accepted into the project.
 
-* **Small Features** and bugs can be crafted and directly submitted as a Pull
+* **Small features and bugs** can be crafted and directly submitted as a Pull
   Request. However, there is no guarantee that your feature will make it into
   the master, as it's always a matter of opinion whether if benefits the
   overall functionality of the theme.
