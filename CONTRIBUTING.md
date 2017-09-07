@@ -10,7 +10,7 @@ you do, please read the following guidelines.
 For quick questions there's no need to open an issue as you can reach us on
 [gitter.im][1].
 
-  [1]: https://gitter.im/mkdocs-material/general
+  [1]: https://gitter.im/squidfunk/mkdocs-material
 
 ### Found a bug?
 
@@ -30,12 +30,12 @@ proposal for your work first, to be sure that it is of use for everyone, as
 the Material theme is highly opinionated. Please consider what kind of change
 it is:
 
-* For a **Major Feature**, first open an issue and outline your proposal so
+* For a **major feature**, first open an issue and outline your proposal so
   that it can be discussed. This will also allow us to better coordinate our
   efforts, prevent duplication of work, and help you to craft the change so
   that it is successfully accepted into the project.
 
-* **Small Features** and bugs can be crafted and directly submitted as a Pull
+* **Small features and bugs** can be crafted and directly submitted as a Pull
   Request. However, there is no guarantee that your feature will make it into
   the master, as it's always a matter of opinion whether if benefits the
   overall functionality of the theme.
@@ -66,8 +66,9 @@ go ahead.
   make your changes in a separate git branch and add descriptive messages to
   your commits.
 
-2. **Build**: Before submitting a pull requests, build the theme. This is a
-  mandatory requirement for your PR to get accepted, as the theme should at
+2. **Build**: Before submitting a pull requests, build the theme with the
+  `scripts/build` script which depends on [nodejs>=5][5] and [yarn][6]. This is
+  a mandatory requirement for your PR to get accepted, as the theme should at
   all times be installable through GitHub.
 
 3. **Pull Request**: After building the theme, commit the compiled output, push
@@ -78,4 +79,6 @@ go ahead.
 After your PR is merged, you can safely delete your branch and pull the changes
 from the main (upstream) repository.
 
-  [4]: http://squidfunk.github.io/mkdocs-material/customization/#theme-development
+  [4]: https://squidfunk.github.io/mkdocs-material/customization/#theme-development
+  [5]: https://nodejs.org
+  [6]: https://yarnpkg.com

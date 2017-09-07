@@ -314,6 +314,16 @@ extra:
 
   [16]: https://material.io/icons/
 
+### Limiting the TOC depth
+
+You can restrict the included items in the table of contents by their level, 
+e.g. to hide all items with a heading level of three and higher:
+
+``` yaml
+extra:
+  max_toc_depth: 2
+```
+
 ### Adding social links
 
 Social accounts can be linked in the footer of the documentation using the
