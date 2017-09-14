@@ -1,3 +1,7 @@
+mkdocs-material-1.10.1 (2017-09-14)
+
+  * Fixed #455: bold code blocks rendered with normal font weight
+
 mkdocs-material-1.10.0 (2017-09-01)
 
   * Added support to make logo default icon configurable

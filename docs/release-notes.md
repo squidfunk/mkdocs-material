@@ -12,10 +12,16 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.10.0
+# Version 1.10.1
 ```
 
 ## Changelog
+
+### 1.10.1 <small>_ September 14, 2017</small>
+
+* Fixed [#455][455]: bold code blocks rendered with normal font weight
+
+  [455]: https://github.com/squidfunk/mkdocs-material/issues/455
 
 ### 1.10.0 <small>_ September 1, 2017</small>
 
