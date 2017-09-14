@@ -45,7 +45,6 @@ pip install wheel twine
 
 # Build and install theme and Docker image
 python setup.py build sdist bdist_wheel --universal
-python setup.py install 2>/dev/null
 docker build -t $TRAVIS_REPO_SLUG .
 
 # Prepare build regression test
