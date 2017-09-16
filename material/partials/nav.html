@@ -1,12 +1,16 @@
 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
-    {% if config.extra.logo %}
-      <i class="md-logo md-nav__button">
-        <img src="{{ base_url }}/{{ config.extra.logo }}">
-      </i>
-    {% else %}
-      <i class="md-icon md-icon--home md-nav__button"></i>
-    {% endif %}
+    <div class="md-nav__button md-logo">
+      {% if config.extra.logo %}
+        {% if config.extra.logo.icon %}
+          <i class="md-icon">{{ config.extra.logo.icon }}</i>
+        {% else %}
+          <img src="{{ base_url }}/{{ config.extra.logo }}">
+        {% endif %}
+      {% else %}
+        <i class="md-icon md-icon--home"></i>
+      {% endif %}
+    </div>
     {{ config.site_name }}
   </label>
   {% if config.repo_url %}

@@ -5,6 +5,7 @@
     {% block site_meta %}
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       {% if page and page.meta.description %}
         <meta name="description" content="{{ page.meta.description | first }}">
       {% elif config.site_description %}
@@ -23,7 +24,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.6.1">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.10.1">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -35,12 +36,12 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr-50360da7ff.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-e826f8942a.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-cb177adbc6.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-39c1740f74.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-b824172603.palette.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-23f75ab9c7.palette.css">
       {% endif %}
     {% endblock %}
     {% block fonts %}
@@ -48,7 +49,7 @@
         {% set text = config.extra.get("font", {}).text | default("Roboto") %}
         {% set code = config.extra.get("font", {}).code
                     | default("Roboto Mono") %}
-        {% set font = text + ':300,400,400i,700|' + code | replace(' ', '+') %}
+        {% set font = text + ":300,400,400i,700|" + code | replace(" ", "+") %}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">
         <style>body,input{font-family:"{{ text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ code }}","Courier New",Courier,monospace}</style>
       {% endif %}
@@ -127,7 +128,7 @@
             <article class="md-content__inner md-typeset">
               {% block content %}
                 {% if config.edit_uri %}
-                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">edit</a>
+                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">&#xE3C9;</a>
                 {% endif %}
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
@@ -135,7 +136,7 @@
                 {{ page.content }}
                 {% block source %}
                   {% if page.meta.source %}
-                    <h2 id="__source">{{ lang.t('meta.source') }}</h2>
+                    <h2 id="__source">{{ lang.t("meta.source") }}</h2>
                     {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
                       <a href="{{ [config.repo_url, path, file] | join('/') }}" title="{{ file }}" class="md-source-file">
@@ -147,7 +148,7 @@
               {% endblock %}
               {% block disqus %}
                 {% if config.extra.disqus and not page.is_homepage %}
-                  <h2 id="__comments">{{ lang.t('meta.comments') }}</h2>
+                  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
                   {% include "partials/disqus.html" %}
                 {% endif %}
               {% endblock %}
@@ -160,7 +161,23 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-ff5ba9a7e1.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-b9362f37e5.js"></script>
+      {% set languages = lang.t("search.languages").split(",") %}
+      {% if languages | length and languages[0] != "" %}
+        {% set path = base_url + "/assets/javascripts/lunr" %}
+        <script src="{{ path }}/lunr.stemmer.support.js"></script>
+        {% for language in languages | map("trim") %}
+          {% if language != "en" %}
+            {% if language == "jp" %}
+              <script src="{{ path }}/tinyseg.js"></script>
+            {% endif %}
+            <script src="{{ path }}/lunr.{{ language }}.js"></script>
+          {% endif %}
+        {% endfor %}
+        {% if languages | length > 1 %}
+          <script src="{{ path }}/lunr.multi.js"></script>
+        {% endif %}
+      {% endif %}
       <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>

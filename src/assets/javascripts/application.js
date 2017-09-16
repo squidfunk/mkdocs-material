@@ -20,7 +20,9 @@
  * IN THE SOFTWARE.
  */
 
+import Clipboard from "clipboard"
 import FastClick from "fastclick"
+
 import Material from "./components/Material"
 
 /* ----------------------------------------------------------------------------
@@ -48,7 +50,7 @@ function initialize(config) { // eslint-disable-line func-style
     })
 
     /* Wrap all data tables for better overflow scrolling */
-    const tables = document.querySelectorAll("table:not([class])")
+    const tables = document.querySelectorAll("table:not([class])")              // TODO: this is JSX, we should rename the file
     Array.prototype.forEach.call(tables, table => {
       const wrap = (
         <div class="md-typeset__scrollwrap">
@@ -62,6 +64,67 @@ function initialize(config) { // eslint-disable-line func-style
       }
       wrap.children[0].appendChild(table)
     })
+
+    /* Clipboard integration */
+    if (Clipboard.isSupported()) {
+      const blocks = document.querySelectorAll("div > pre, pre > code")
+      Array.prototype.forEach.call(blocks, (block, index) => {
+        const id = `__code_${index}`
+
+        /* Create button with message container */
+        const button = (
+          <button class="md-clipboard" title="Copy to clipboard"
+            data-clipboard-target={`#${id} pre, #${id} code`}>
+            <span class="md-clipboard__message"></span>
+          </button>
+        )
+
+        /* Link to block and insert button */
+        const parent = block.parentNode
+        parent.id = id
+        parent.insertBefore(button, block)
+      })
+
+      /* Initialize Clipboard listener */
+      const copy = new Clipboard(".md-clipboard")
+
+      /* Success handler */
+      copy.on("success", action => {
+        const message = action.trigger.querySelector(".md-clipboard__message")
+        if (!(message instanceof HTMLElement))
+          throw new ReferenceError
+
+        /* Clear selection and reset debounce logic */
+        action.clearSelection()
+        if (message.dataset.mdTimer)
+          clearTimeout(parseInt(message.dataset.mdTimer, 10))
+
+        /* Set message indicating success and show it */
+        message.classList.add("md-clipboard__message--active")
+        message.innerHTML = "Copied to clipboard"
+
+        /* Hide message after two seconds */
+        message.dataset.mdTimer = setTimeout(() => {
+          message.classList.remove("md-clipboard__message--active")
+          message.dataset.mdTimer = ""
+        }, 2000).toString()
+      })
+    }
+
+    /* Polyfill details/summary functionality */
+    if (!Modernizr.details) {
+      const blocks = document.querySelectorAll("details > summary")
+      Array.prototype.forEach.call(blocks, summary => {
+        summary.addEventListener("click", ev => {
+          const details = ev.target.parentNode
+          if (details.hasAttribute("open")) {
+            details.removeAttribute("open")
+          } else {
+            details.setAttribute("open", "")
+          }
+        })
+      })
+    }
 
     /* Force 1px scroll offset to trigger overflow scrolling */
     if (Modernizr.ios) {
@@ -93,11 +156,11 @@ function initialize(config) { // eslint-disable-line func-style
 
   /* Component: header visibility toggle */
   if (document.querySelector(
-      "[data-md-component=header][data-md-state=hidden]"))
+    "[data-md-component=header][data-md-state=hidden]"))
     new Material.Event.Listener(window, [
       "scroll", "resize", "orientationchange"
     ], new Material.Header.Toggle(
-    "[data-md-component=header][data-md-state=hidden]")).listen()
+      "[data-md-component=header][data-md-state=hidden]")).listen()
 
   /* Component: tabs visibility toggle */
   if (document.querySelector("[data-md-component=tabs]"))
@@ -140,7 +203,7 @@ function initialize(config) { // eslint-disable-line func-style
   new Material.Event.MatchMedia("(max-width: 1219px)",
     new Material.Event.Listener(
       "[data-md-component=navigation] [data-md-toggle]", "change",
-        new Material.Nav.Scrolling("[data-md-component=navigation] nav")))
+      new Material.Nav.Scrolling("[data-md-component=navigation] nav")))
 
   /* Component: search body lock for mobile */
   new Material.Event.MatchMedia("(max-width: 959px)",
@@ -262,9 +325,8 @@ function initialize(config) { // eslint-disable-line func-style
 
         /* Retrieve all results */
         const links = Array.prototype.slice.call(
-          document.querySelectorAll("[data-md-component=search] [href]"))
-        if (!links.length)
-          return
+          document.querySelectorAll(
+            "[data-md-component=query], [data-md-component=search] [href]"))
 
         /* Retrieve current active/focused result */
         const focus = links.find(link => {
@@ -281,10 +343,10 @@ function initialize(config) { // eslint-disable-line func-style
         ) % links.length)
 
         /* Set active state and focus */
-        if (!(links[index] instanceof HTMLElement))
-          throw new ReferenceError
-        links[index].dataset.mdState = "active"
-        links[index].focus()
+        if (links[index]) {
+          links[index].dataset.mdState = "active"
+          links[index].focus()
+        }
 
         /* Prevent scrolling of page */
         ev.preventDefault()
@@ -294,8 +356,8 @@ function initialize(config) { // eslint-disable-line func-style
         return false
       }
 
-    /* Search is closed */
-    } else {
+    /* Search is closed and we're not inside a form */
+    } else if (document.activeElement && !document.activeElement.form) {
 
       /* F/S: Open search if not in input field */
       if (ev.keyCode === 70 || ev.keyCode === 83) {

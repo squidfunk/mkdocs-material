@@ -42,7 +42,6 @@ $md-toggle__search--checked:
 
   // [tablet landscape +]: Header-embedded search
   @include break-from-device(tablet landscape) {
-    margin-right: 2.8rem;
     padding: 0.4rem;
   }
 
@@ -279,7 +278,7 @@ $md-toggle__search--checked:
       // Set search icon on pseudo class, so it can be overridden for mobile
       // and tablet when the search is rendered in an overlay
       &::before {
-        content: "search";
+        content: "\E8B6"; // search
       }
 
       // [tablet portrait -]: Full-screen search bar
@@ -289,7 +288,7 @@ $md-toggle__search--checked:
 
         // Show back arrow instead of search icon
         &[for="search"]::before {
-          content: "arrow_back";
+          content: "\E5C4"; // arrow_back
         }
       }
     }
@@ -496,7 +495,7 @@ $md-toggle__search--checked:
         left: 0;
         transition: opacity 0.25s;
         color: $md-color-black--light;
-        content: "find_in_page";
+        content: "\E880"; // find_in_page
 
         // [tablet portrait -]: Hide page icon
         @include break-to-device(tablet portrait) {

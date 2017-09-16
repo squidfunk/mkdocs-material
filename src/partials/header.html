@@ -35,19 +35,20 @@
 
       <!-- Link to home -->
       <div class="md-flex__cell md-flex__cell--shrink">
-        {% if config.extra.logo %}
-          <a href="{{ config.site_url | default(nav.homepage.url, true) }}"
-              title="{{ config.site_name }}"
-              class="md-logo md-header-nav__button">
-            <img src="{{ base_url }}/{{ config.extra.logo }}"
-                width="24" height="24" />
-          </a>
-        {% else %}
-          <a href="{{ config.site_url | default(nav.homepage.url, true) }}"
-              title="{{ config.site_name }}"
-              class="md-icon md-icon--home md-header-nav__button">
-          </a>
-        {% endif %}
+        <a href="{{ config.site_url | default(nav.homepage.url, true) }}"
+            title="{{ config.site_name }}"
+            class="md-header-nav__button md-logo">
+          {% if config.extra.logo %}
+            {% if config.extra.logo.icon %}
+              <i class="md-icon">{{ config.extra.logo.icon }}</i>
+            {% else %}
+              <img src="{{ base_url }}/{{ config.extra.logo }}"
+                  width="24" height="24" />
+            {% endif %}
+          {% else %}
+            <i class="md-icon md-icon--home"></i>
+          {% endif %}
+        </a>
       </div>
 
       <!-- Button to toggle drawer -->
@@ -84,13 +85,13 @@
       </div>
 
       <!-- Repository containing source -->
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <div class="md-header-nav__source">
-          {% if config.repo_url %}
+      {% if config.repo_url %}
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
             {% include "partials/source.html" %}
-          {% endif %}
+          </div>
         </div>
-      </div>
+      {% endif %}
     </div>
   </nav>
 </header>

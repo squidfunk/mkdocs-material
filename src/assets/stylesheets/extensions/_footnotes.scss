@@ -27,6 +27,22 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
+  // All superscripts with a footnote reference or back reference
+  sup[id^="fnref:"] {
+
+    // Add spacing to anchor for offset
+    &::before {
+      display: inline-block;
+      content: "";
+    }
+
+    // Targeted anchor
+    &:target::before {
+      margin-top: -(5.6rem + 2.4rem + 1.8rem);
+      padding-top: (5.6rem + 2.4rem + 1.8rem);
+    }
+  }
+
   // Footnotes extension
   .footnote {
     color: $md-color-black--light;
@@ -108,7 +124,7 @@
     // Back reference icon
     &::before {
       font-size: 1.6rem;
-      content: "keyboard_return";
+      content: "\E31B"; // keyboard_return
     }
   }
 }

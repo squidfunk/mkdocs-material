@@ -36,7 +36,7 @@
   transition: background-color 0.25s;
   background-color: $md-color-primary;
   color: $md-color-white;
-  z-index: 1;
+  z-index: 2;
   // Hack: putting the header on the GPU avoids unnecessary repaints
   backface-visibility: hidden;
 
@@ -78,8 +78,8 @@
       opacity: 0.7;
     }
 
-    // Set correct display on image
-    &.md-logo img {
+    // Set correct display on image or icon
+    &.md-logo * {
       display: block;
     }
 
@@ -150,6 +150,7 @@
       display: block;
       width: 23rem;
       max-width: 23rem;
+      margin-left: 2.8rem;
       padding-right: 1.2rem;
     }
   }

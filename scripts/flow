@@ -32,7 +32,7 @@ fi
 FLOW_JSDOC=$?
 
 # Run flow typecheck
-"$(yarn bin)"/flow check tmp
+"$(yarn bin)"/flow check tmp --strip-root
 FLOW=$?
 
 # If one command failed, exit with error

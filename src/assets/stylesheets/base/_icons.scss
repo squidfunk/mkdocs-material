@@ -53,11 +53,11 @@
 
   // Build representational classes
   @each $ligature, $name in (
-    "arrow_back": "arrow-back",
-    "arrow_forward": "arrow-forward",
-    "menu": "menu",
-    "search": "search",
-    "school": "home"
+    "\E5C4": "arrow-back", // arrow_back
+    "\E5C8": "arrow-forward", // arrow_forward
+    "\E5D2": "menu", // menu
+    "\E8B6": "search", // search
+    "\E80C": "home" // school
   ) {
     &--#{$name}::before {
       content: $ligature;

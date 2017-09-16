@@ -10,30 +10,47 @@
   [gitter-link]: https://gitter.im/squidfunk/mkdocs-material
   [codacy-image]: https://api.codacy.com/project/badge/Grade/fe07aa1fa91d453cb69711d3885c5d7e
   [codacy-link]: https://www.codacy.com/app/squidfunk/mkdocs-material?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=squidfunk/mkdocs-material&amp;utm_campaign=Badge_Grade
-  [docker-image]: https://img.shields.io/docker/automated/squidfunk/mkdocs-material.svg
+  [docker-image]: https://img.shields.io/docker/pulls/squidfunk/mkdocs-material.svg
   [docker-link]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
   [pypi-link]: https://pypi.python.org/pypi/mkdocs-material
 
 # Material for MkDocs
 
-A Material Design theme for [MkDocs](http://www.mkdocs.org).
+A Material Design theme for [MkDocs][1].
 
-[![Material for MkDocs](docs/images/material.png)](http://squidfunk.github.io/mkdocs-material/)
+[![Material for MkDocs](docs/images/material.png)][2]
+
+  [1]: http://www.mkdocs.org
+  [2]: http://squidfunk.github.io/mkdocs-material/
 
 ## Quick start
 
-Install with `pip`:
+Install the latest version of Material with `pip`:
 
 ``` sh
 pip install mkdocs-material
 ```
 
-Append the following line to your existing `mkdocs.yml`:
+Append the following line to your project's `mkdocs.yml`:
 
 ``` yaml
 theme: 'material'
 ```
+
+## What to expect
+
+* Responsive design and fluid layout for all kinds of screens and devices,
+  designed to serve your project documentation in a user-friendly way with
+  optimal readability.
+
+* Easily customizable primary and accent color, fonts, favicon and logo;
+  straight forward localization through theme extension; integrated with Google
+  Analytics, Disqus and GitHub.
+
+* Well-designed search interface accessible through hotkeys (<kbd>F</kbd> or
+  <kbd>S</kbd>), intelligent grouping of search results, search term
+  highlighting and lazy loading.
 
 For detailed installation instructions and a demo, visit
 http://squidfunk.github.io/mkdocs-material/

@@ -49,17 +49,17 @@
       @extend %md-icon;
 
       position: absolute;
-      top: 0.05em;
+      top: 0.15em;
       left: -1.25em;
       color: $md-color-black--lighter;
-      font-size: 1.5em;
-      content: "check_box_outline_blank";
+      font-size: 1.25em;
+      content: "\E835"; // check_box_outline_blank
       vertical-align: -0.25em;
     }
 
     // Checkbox icon in checked state
     [type="checkbox"]:checked + .task-list-indicator::before {
-      content: "check_box";
+      content: "\E834"; // check_box
     }
 
     // Hide original checkbox behind icon

@@ -49,39 +49,8 @@
     }
   }
 
-  // All headers with permalinks have ids
-  [id] {
-
-    // Add spacing to anchor for offset
-    &::before {
-      display: inline-block;
-      content: "";
-    }
-
-    // Targeted anchor
-    &:target::before {
-      margin-top: -(5.6rem + 2.4rem + 1.8rem);
-      padding-top: (5.6rem + 2.4rem + 1.8rem);
-    }
-
-    // Make permalink visible on hover
-    &:hover  .headerlink,
-    &:target .headerlink,
-    & .headerlink:focus {
-      transform: translate(0, 0);
-      opacity: 1;
-    }
-
-    // Active or targeted permalink
-    &:hover  .headerlink:hover,
-    &:target .headerlink,
-    & .headerlink:focus {
-      color: $md-color-accent;
-    }
-  }
-
   // Hide anchor for top-level heading, as it makes no sense
-  h1 .headerlink {
+  h1[id] .headerlink {
     display: none;
   }
 
@@ -93,18 +62,36 @@
     h5: 1.1rem,
     h6: 1.1rem
   ) {
+    #{$level}[id] {
 
-    // Un-targeted anchor
-    #{$level}[id]::before {
-      display: block;
-      margin-top: -$delta;
-      padding-top: $delta;
-    }
+      // Un-targeted anchor
+      &::before {
+        display: block;
+        margin-top: -$delta;
+        padding-top: $delta;
+        content: "";
+      }
 
-    // Targeted anchor (56px from header, 24px from sidebar offset)
-    #{$level}[id]:target::before {
-      margin-top: -(5.6rem + 2.4rem + $delta);
-      padding-top: (5.6rem + 2.4rem + $delta);
+      // Targeted anchor (56px from header, 24px from sidebar offset)
+      &:target::before {
+        margin-top: -(5.6rem + 2.4rem + $delta);
+        padding-top: (5.6rem + 2.4rem + $delta);
+      }
+
+      // Make permalink visible on hover
+      &:hover  .headerlink,
+      &:target .headerlink,
+      & .headerlink:focus {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+
+      // Active or targeted permalink
+      &:hover  .headerlink:hover,
+      &:target .headerlink,
+      & .headerlink:focus {
+        color: $md-color-accent;
+      }
     }
   }
 }

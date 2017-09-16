@@ -26,10 +26,13 @@
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
 
-    <!-- Block: metatags -->
+    <!-- Metatags -->
     {% block site_meta %}
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <!-- Keep for compatibility, see http://bit.ly/2tMB6ag -->
+      <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
       <!-- Page description -->
       {% if page and page.meta.description %}
@@ -65,7 +68,7 @@
           content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$" />
     {% endblock %}
 
-    <!-- Block: site title -->
+    <!-- Site title -->
     {% block htmltitle %}
       {% if page and page.meta.title %}
         <title>{{ page.meta.title | first }}</title>
@@ -76,12 +79,12 @@
       {% endif %}
     {% endblock %}
 
-    <!-- Block: JavaScript libraries -->
+    <!-- JavaScript libraries -->
     {% block libs %}
       <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
     {% endblock %}
 
-    <!-- Block: stylesheets -->
+    <!-- Stylesheets -->
     {% block styles %}
 
       <!-- Theme-related stylesheets -->
@@ -95,14 +98,14 @@
       {% endif %}
     {% endblock %}
 
-    <!-- Block: webfonts -->
+    <!-- Webfonts -->
     {% block fonts %}
       <!-- TODO: remove the second check in the next major version -->
       {% if config.extra.font != false and config.extra.font != "none" %}
         {% set text = config.extra.get("font", {}).text | default("Roboto") %}
         {% set code = config.extra.get("font", {}).code
                     | default("Roboto Mono") %}
-        {% set font = text + ':300,400,400i,700|' + code | replace(' ', '+') %}
+        {% set font = text + ":300,400,400i,700|" + code | replace(" ", "+") %}
         <link rel="stylesheet" type="text/css"
             href="https://fonts.googleapis.com/css?family={{ font }}" />
         <style>
@@ -127,7 +130,7 @@
       <link rel="stylesheet" type="text/css" href="{{ path }}" />
     {% endfor %}
 
-    <!-- Block: custom front matter -->
+    <!-- Custom front matter -->
     {% block extrahead %}{% endblock %}
   </head>
 
@@ -205,7 +208,7 @@
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
 
-          <!-- Block: navigation -->
+          <!-- Navigation -->
           {% block site_nav %}
 
             <!-- Main navigation -->
@@ -237,14 +240,14 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
 
-              <!-- Block: content -->
+              <!-- Content -->
               {% block content %}
 
                 <!-- Edit button, if URL was defined -->
                 {% if config.edit_uri %}
                   <a href="{{ page.edit_url }}"
                       title="{{ lang.t('edit.link.title') }}"
-                      class="md-icon md-content__icon">edit</a>
+                      class="md-icon md-content__icon">&#xE3C9;<!-- edit --></a>
                 {% endif %}
 
                 <!--
@@ -262,7 +265,7 @@
                 <!-- Source files -->
                 {% block source %}
                   {% if page.meta.source %}
-                    <h2 id="__source">{{ lang.t('meta.source') }}</h2>
+                    <h2 id="__source">{{ lang.t("meta.source") }}</h2>
                     {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
                       <a href="{{ [config.repo_url, path, file] | join('/') }}"
@@ -277,7 +280,7 @@
               <!-- Disqus integration -->
               {% block disqus %}
                 {% if config.extra.disqus and not page.is_homepage %}
-                  <h2 id="__comments">{{ lang.t('meta.comments') }}</h2>
+                  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
                   {% include "partials/disqus.html" %}
                 {% endif %}
               {% endblock %}
@@ -292,18 +295,38 @@
       {% endblock %}
     </div>
 
-    <!-- Block: theme-related JavaScript -->
+    <!-- Theme-related JavaScript -->
     {% block scripts %}
       <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+
+      <!-- Load additional languages for search -->
+      {% set languages = lang.t("search.languages").split(",") %}
+      {% if languages | length and languages[0] != "" %}
+        {% set path = base_url + "/assets/javascripts/lunr" %}
+        <script src="{{ path }}/lunr.stemmer.support.js"></script>
+        {% for language in languages | map("trim") %}
+          {% if language != "en" %}
+            {% if language == "jp" %}
+              <script src="{{ path }}/tinyseg.js"></script>
+            {% endif %}
+            <script src="{{ path }}/lunr.{{ language }}.js"></script>
+          {% endif %}
+        {% endfor %}
+        {% if languages | length > 1 %}
+          <script src="{{ path }}/lunr.multi.js"></script>
+        {% endif %}
+      {% endif %}
+
+      <!-- Initialize application -->
       <script>
-        app.initialize({ url: { base: "{{ base_url }}", } });
+        app.initialize({ url: { base: "{{ base_url }}" } });
       </script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
       {% endfor %}
     {% endblock %}
 
-    <!-- Block: analytic scripts -->
+    <!-- Analytic scripts -->
     {% block analytics %}
       {% if config.google_analytics %}
       <script>

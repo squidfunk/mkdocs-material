@@ -216,41 +216,52 @@ $codehilite-whitespace: transparent;
   // If code blocks are wrapped with codehilite, the styles must be adjusted
   // so the marker stretches to the whole width and the padding is respected
   .codehilite {
+    position: relative;
     margin: 1em 0;
-    padding: 1rem 1.2rem 0.8rem;
+    padding: 0;
     border-radius: 0.2rem;
     background-color: $md-code-background;
     color: $md-code-color;
     line-height: 1.4;
-    overflow: auto;
     -webkit-overflow-scrolling: touch;
 
-    // Override native scrollbar styles
-    &::-webkit-scrollbar {
-      width: 0.4rem;
-      height: 0.4rem;
-    }
+    // Actual container with code, overflowing
+    pre,
+    code {
+      display: block;
+      margin: 0;
+      padding: 1.05rem 1.2rem;
+      background-color: transparent;
+      overflow: auto;
+      vertical-align: top;
 
-    // Style scrollbar thumb
-    &::-webkit-scrollbar-thumb {
-      background-color: $md-color-black--lighter;
+      // Override native scrollbar styles
+      &::-webkit-scrollbar {
+        width: 0.4rem;
+        height: 0.4rem;
+      }
 
-      // Hovered scrollbar thumb
-      &:hover {
-        background-color: $md-color-accent;
+      // Style scrollbar thumb
+      &::-webkit-scrollbar-thumb {
+        background-color: $md-color-black--lighter;
+
+        // Hovered scrollbar thumb
+        &:hover {
+          background-color: $md-color-accent;
+        }
       }
     }
+  }
 
-    // Hack: set pre-tag to inline-block, in order to stetch the content on
-    // overflow correctly to the whole width
-    pre {
-      display: inline-block;
-      min-width: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: transparent;
-      overflow: visible;
-      vertical-align: top;
+  // If not using Pygments, code will be under pre>code
+  pre.codehilite {
+    overflow: visible;
+
+    // Actual container with code, overflowing
+    code {
+      display: block;
+      padding: 1.05rem 1.2rem;
+      overflow: auto;
     }
   }
 
@@ -286,7 +297,7 @@ $codehilite-whitespace: transparent;
 
     // Add spacing to line number container
     .linenodiv {
-      padding: 1rem 1.2rem 0.8rem;
+      padding: 1.05rem 1.2rem;
 
       // Stretch the line number container vertically, so it always aligns with
       // the code container, even when there's a scrollbar.
@@ -327,8 +338,13 @@ $codehilite-whitespace: transparent;
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
       margin: 1em -1.6rem;
-      padding: 1rem 1.6rem 0.8rem;
       border-radius: 0;
+
+      // Actual container with code, overflowing
+      pre,
+      code {
+        padding: 1.05rem 1.6rem;
+      }
     }
   }
 
@@ -342,10 +358,17 @@ $codehilite-whitespace: transparent;
       border-radius: 0;
 
       // Increase spacing
-      .codehilite,
+      .codehilite > pre,
+      .codehilite > code,
       .linenodiv {
         padding: 1rem 1.6rem;
       }
     }
+  }
+
+  // When pymdownx.superfences is enabled but codehilite is disabled, the
+  // outer container gets this class name by default.
+  .highlight {
+    @extend .codehilite;
   }
 }

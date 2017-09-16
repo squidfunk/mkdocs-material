@@ -32,15 +32,25 @@ export default class GitHub extends Abstract {
    * Retrieve repository information from GitHub
    *
    * @constructor
+   *
+   * @property {string} name_ - Name of the repository
+   *
    * @param {(string|HTMLAnchorElement)} el - Selector or HTML element
    */
   constructor(el) {
     super(el)
 
-    /* Adjust base URL to reach API endpoints and remove trailing slash */
-    this.base_ = this.base_
-      .replace("github.com/", "api.github.com/repos/")
-      .replace(/\/$/, "")
+    /* Extract user (and repository name) from URL, as we have to query for all
+       repositories, to omit 404 errors for private repositories */
+    const matches = /^.+github\.com\/([^/]+)\/?([^/]+)?.*$/
+      .exec(this.base_)
+    if (matches && matches.length === 3) {
+      const [, user, name] = matches
+
+      /* Initialize base URL and repository name */
+      this.base_ = `https://api.github.com/users/${user}/repos`
+      this.name_ = name
+    }
   }
 
   /**
@@ -49,13 +59,37 @@ export default class GitHub extends Abstract {
    * @return {Promise<Array<string>>} Promise returning an array of facts
    */
   fetch_() {
-    return fetch(this.base_)
-      .then(response => response.json())
-      .then(data => {
-        return [
-          `${this.format_(data.stargazers_count)} Stars`,
-          `${this.format_(data.forks_count)} Forks`
-        ]
-      })
+    const paginate = (page = 0) => {
+      return fetch(`${this.base_}?per_page=30&page=${page}`)
+        .then(response => response.json())
+        .then(data => {
+          if (!(data instanceof Array))
+            throw new TypeError
+
+          /* Display number of stars and forks, if repository is given */
+          if (this.name_) {
+            const repo = data.find(item => item.name === this.name_)
+            if (!repo && data.length === 30)
+              return paginate(page + 1)
+
+            /* If we found a repo, extract the facts */
+            return repo
+              ? [
+                `${this.format_(repo.stargazers_count)} Stars`,
+                `${this.format_(repo.forks_count)} Forks`
+              ]
+              : []
+
+          /* Display number of repositories, otherwise */
+          } else {
+            return [
+              `${data.length} Repositories`
+            ]
+          }
+        })
+    }
+
+    /* Paginate through repos */
+    return paginate()
   }
 }

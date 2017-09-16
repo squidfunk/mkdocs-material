@@ -1,8 +1,0 @@
-{
-  "globals": {
-    "gemini": true
-  },
-  "rules": {
-    "no-loop-func": 0
-  }
-}

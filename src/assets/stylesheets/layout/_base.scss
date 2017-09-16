@@ -33,7 +33,7 @@ $md-toggle__drawer--checked:
 // ----------------------------------------------------------------------------
 
 // Stretch container to viewport and set base font-size to 10px for simple
-// calculations base on relative ems (rems).
+// calculations base on relative ems (rems)
 html {
   height: 100%;
   font-size: 62.5%;
@@ -49,7 +49,7 @@ html {
   }
 }
 
-// Stretch body to container and leave room for footer.
+// Stretch body to container and leave room for footer
 body {
   position: relative;
   height: 100%;
@@ -96,7 +96,7 @@ hr {
 }
 
 // Content wrapper - use display: table to make variable-height sticky footers
-// work and fixed table-layout for IE, taken from http://bit.ly/2hZohXL
+// work and fixed table-layout for IE, see http://bit.ly/2hZohXL
 .md-container {
   display: table;
   width: 100%;
@@ -114,6 +114,10 @@ hr {
   &__inner {
     min-height: 100%;
     padding-top: 2.4rem + 0.6rem;
+    // Hack: induce margin-collapse, because otherwise the sidebar height is
+    // not calculated correctly and the overflow property on this element must
+    // be left in initial state for targetted link offsets to work properly
+    padding-bottom: 0.1rem;
   }
 }
 
@@ -138,7 +142,7 @@ hr {
     opacity 0.25s;
   background-color: $md-color-black--light;
   opacity: 0;
-  z-index: 2;
+  z-index: 3;
 
   // [tablet -]: Trigger overlay
   @include break-to-device(tablet) {

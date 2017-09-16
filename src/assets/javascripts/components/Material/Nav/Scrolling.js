@@ -50,7 +50,8 @@ export default class Scrolling {
   setup() {
 
     /* Initially set overflow scrolling on main pane */
-    this.el_.children[1].style.webkitOverflowScrolling = "touch"
+    const main = this.el_.children[this.el_.children.length - 1]
+    main.style.webkitOverflowScrolling = "touch"
 
     /* Find all toggles and check which one is active */
     const toggles = this.el_.querySelectorAll("[data-md-toggle]")
