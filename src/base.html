@@ -180,8 +180,27 @@
 
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
-      {% set feature = config.extra.get("feature", {}) %}
-      {% if feature.tabs %}
+
+      <div class="md-banner"> <!-- TODO: "hero" -->
+        <div class="md-banner__inner md-grid">
+          {% if config.extra.logo %}
+            <a href="{{ config.site_url | default(nav.homepage.url, true) }}"
+                title="{{ config.site_name }}"
+                class="md-logo md-banner__button">
+              <img src="{{ base_url }}/{{ config.extra.logo }}"
+                  width="24" height="24" />
+            </a>
+          {% else %}
+            <a href="{{ config.site_url | default(nav.homepage.url, true) }}"
+                title="{{ config.site_name }}"
+                class="md-icon md-icon--home md-banner__button">
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      {% if config.extra.get("feature", {}).tabs %}
         {% include "partials/tabs.html" %}
       {% endif %}
 

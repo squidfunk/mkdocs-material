@@ -23,3 +23,106 @@
 // ----------------------------------------------------------------------------
 // Nothing to see here, move along
 // ----------------------------------------------------------------------------
+
+.md-container .md-banner {
+  display: block;
+  width: 100%;
+  background: $md-color-primary;
+
+  &__inner {
+    position: relative;
+    height: 18rem;
+  }
+
+  // Site logo
+  &__button {
+    display: block;
+    position: absolute;
+    top: 6.4rem;
+    left: 0.4rem;
+    width: 6.4rem;
+    height: 6.4rem;
+    margin: 0.4rem;
+    padding: 0.8rem;
+    color: $md-color-white;
+    font-size: 4.8rem;
+  }
+
+  ~ .md-main :nth-child(2) {
+    margin-top: 0;
+  }
+}
+
+.md-container {
+  position: relative;
+  overflow: initial;
+}
+
+.md-container h1 {
+  position: absolute;
+  top: 13.4rem;
+  color: $md-color-white;
+
+  @include break-from-device(screen) {
+    margin-left: -15.2rem !important;
+  }
+}
+
+// TODO: this must be put under banner/hidden header
+
+.md-content h1 {
+  transform: translateY(-20%);
+  transition:
+    transform 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
+    opacity   0.15s;
+  opacity: 0;
+}
+
+.md-icon.md-icon--home,
+.md-header-nav__title,
+.md-logo {
+  transition:
+    transform 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
+    opacity   0.15s;
+}
+
+.md-header-nav__title {
+  transition-delay: 0.1s;
+}
+
+.md-header[data-md-state="hidden"] {
+  .md-icon.md-icon--home,
+  .md-logo {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+
+  .md-header-nav__title {
+    transform: translateY(20%);
+    transition-delay: 0s;
+    opacity: 0;
+  }
+
+  ~ .md-container .md-content h1 {
+    transform: translateY(0);
+    transition-delay: 0.1s;
+    opacity: 1;
+  }
+
+  ~ .md-container .md-banner {
+    &__button {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+.md-banner {
+  &__button {
+    transform: translateY(-10%);
+    transition:
+      opacity 0.25s,
+      transform 0.1s;
+    opacity: 0;
+  }
+}

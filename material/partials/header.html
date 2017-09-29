@@ -1,4 +1,7 @@
-<header class="md-header" data-md-component="header">
+{% if config.extra.get("feature", {}).banner %}
+  {% set state = "hidden" %}
+{% endif %}
+<header class="md-header" data-md-component="header" data-md-state="{{ state }}">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
