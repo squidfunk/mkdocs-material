@@ -15,7 +15,7 @@ The quick and easy method but less flexible is to do the following
 **simple example**
 ```html
 <div
-data-excel-token="SDF4E541E7F8747E1B!395/-800160894226760165/t=0&s=0&v=!ANZtfYbhiHy1ASg">
+data-excel-token="SDF4E541E7F8747E1B!395/-800160894226760165/t=0&s=0&v=!AJQt2ZISLqWobPM">
 </div>
 ```
 
@@ -23,9 +23,9 @@ Will produce ...
 
 
 <div
-data-excel-token="SDF4E541E7F8747E1B!395/-800160894226760165/t=0&s=0&v=!ACxW3W7JLW28c3M" >
+data-excel-token="SDF4E541E7F8747E1B!395/-800160894226760165/t=0&s=0&v=!AJQt2ZISLqWobPM" >
 </div>
-[source](https://excel.officeapps.live.com/x/_layouts/xlembedconfigurator.aspx?Fi=SDF4E541E7F8747E1B!395&C=5_810_DM2-SKY-WAC-WSHI&ui=en-US&rs=en-US&su=-800160894226760165&ak=t%3d0%26s%3d0%26v%3d!ACxW3W7JLW28c3M&E=1)
+[source](https://excel.officeapps.live.com/x/_layouts/xlembedconfigurator.aspx?Fi=SDF4E541E7F8747E1B!395&C=5_810_DM2-SKY-WAC-WSHI&ui=en-US&rs=en-US&su=-800160894226760165&ak=t%3d0%26s%3d0%26v%3d!AJQt2ZISLqWobPM&E=1)
 
 a more complicated example setting default zoom , using a range, default cell selection and centered. the height and width are what the excel embed page uses and calced for us.
 class='center' will make sure it centers on the page.
@@ -45,7 +45,7 @@ source
 ```html
 **Income Snapshot**{.center}
 
-<div data-excel-token="SDF4E541E7F8747E1B!395/-800160894226760165/t=0&s=0&v=!ACxW3W7JLW28c3M"
+<div data-excel-token="SDF4E541E7F8747E1B!395/-800160894226760165/t=0&s=0&v=!AJQt2ZISLqWobPM"
 data-range="'Financial Report'!B5:F18"
 data-selected-cell="'Financial Report'!B5"
 data-show-toolbar="false"
