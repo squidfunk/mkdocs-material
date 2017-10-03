@@ -26,6 +26,19 @@
   {% set class = "md-nav__item md-nav__item--active" %}
 {% endif %}
 
+<!-- Determine if navigation item should be visible -->
+{% set showitem = True %}
+{% if config.extra.hidemenuitems %}
+  {% set showitem = [] %}
+  {% for folderitem in config.extra.hidemenuitems %}
+    {% if nav_item.title.lower() == folderitem.lower() and not showitem %}
+      {% if showitem.append(True) %} {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% set showitem = False if showitem else True %}
+{% endif %}
+
+{% if showitem %}
 <!-- Main navigation item with nested items -->
 {% if nav_item.children %}
   <li class="{{ class }} md-nav__item--nested">
@@ -100,4 +113,5 @@
       {{ nav_item.title }}
     </a>
   </li>
+{% endif %}
 {% endif %}
