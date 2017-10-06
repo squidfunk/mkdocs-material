@@ -17,9 +17,15 @@ pip show mkdocs-material | grep -E ^Version
 
 ## Changelog
 
+### 1.10.2 <small>_ October 6, 2017</small>
+
+* Fixed [#468][468]: Sidebar shows scrollbar if content is shorter (in Safari)
+
+  [468]: https://github.com/squidfunk/mkdocs-material/issues/468
+
 ### 1.10.1 <small>_ September 14, 2017</small>
 
-* Fixed [#455][455]: bold code blocks rendered with normal font weight
+* Fixed [#455][455]: Bold code blocks rendered with normal font weight
 
   [455]: https://github.com/squidfunk/mkdocs-material/issues/455
 
