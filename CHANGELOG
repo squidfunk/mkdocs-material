@@ -1,6 +1,10 @@
+mkdocs-material-1.10.2 (2017-10-06)
+
+  * Fixed #468: Sidebar shows scrollbar if content is shorter (in Safari)
+
 mkdocs-material-1.10.1 (2017-09-14)
 
-  * Fixed #455: bold code blocks rendered with normal font weight
+  * Fixed #455: Bold code blocks rendered with normal font weight
 
 mkdocs-material-1.10.0 (2017-09-01)
 
