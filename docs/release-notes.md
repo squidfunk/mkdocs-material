@@ -12,10 +12,18 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.10.1
+# Version 1.10.3
 ```
 
 ## Changelog
+
+### 1.10.3 <small>_ October 11, 2017</small>
+
+* Fixed [#484][484]: Fixed vertical scrollbar on some MathJax formulas
+* Fixed [#483][483]: Fixed footnote backref target offset regression
+
+  [483]: https://github.com/squidfunk/mkdocs-material/issues/483
+  [484]: https://github.com/squidfunk/mkdocs-material/issues/484
 
 ### 1.10.2 <small>_ October 6, 2017</small>
 
