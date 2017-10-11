@@ -181,6 +181,13 @@
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
       {% set feature = config.extra.get("feature", {}) %}
+
+      <!-- Hero banner -->
+      {% if feature.hero %}
+        {% include "partials/hero.html" %}
+      {% endif %}
+
+      <!-- Tabs with outline -->
       {% if feature.tabs %}
         {% include "partials/tabs.html" %}
       {% endif %}
