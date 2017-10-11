@@ -27,8 +27,9 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // All superscripts with a footnote reference or back reference
-  sup[id^="fnref:"] {
+  // All footnote references or back references
+  [id^="fn:"],
+  [id^="fnref:"] {
 
     // Add spacing to anchor for offset
     &::before {
@@ -105,7 +106,7 @@
     vertical-align: -0.5rem;
   }
 
-  // Footnote back-reference
+  // Footnote back reference
   .footnote-backref {
     @extend %md-icon;
 
