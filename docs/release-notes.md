@@ -19,8 +19,8 @@ pip show mkdocs-material | grep -E ^Version
 
 ### 1.10.3 <small>_ October 11, 2017</small>
 
-* Fixed [#484][484]: Fixed vertical scrollbar on some MathJax formulas
-* Fixed [#483][483]: Fixed footnote backref target offset regression
+* Fixed [#484][484]: Vertical scrollbar on some MathJax formulas
+* Fixed [#483][483]: Footnote backref target offset regression
 
   [483]: https://github.com/squidfunk/mkdocs-material/issues/483
   [484]: https://github.com/squidfunk/mkdocs-material/issues/484
