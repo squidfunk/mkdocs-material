@@ -1,7 +1,7 @@
 mkdocs-material-1.10.3 (2017-10-11)
 
-  * Fixed #484: Fixed vertical scrollbar on some MathJax formulas
-  * Fixed #483: Fixed footnote backref target offset regression
+  * Fixed #484: Vertical scrollbar on some MathJax formulas
+  * Fixed #483: Footnote backref target offset regression
 
 mkdocs-material-1.10.2 (2017-10-06)
 
