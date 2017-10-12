@@ -290,13 +290,14 @@ function initialize(config) { // eslint-disable-line func-style
           /* Go to current active/focused link */
           const focus = document.querySelector(
             "[data-md-component=search] [href][data-md-state=active]")
-          if (focus instanceof HTMLLinkElement)
+          if (focus instanceof HTMLLinkElement) {
             window.location = focus.getAttribute("href")
 
-          /* Close search */
-          toggle.checked = false
-          toggle.dispatchEvent(new CustomEvent("change"))
-          query.blur()
+            /* Close search */
+            toggle.checked = false
+            toggle.dispatchEvent(new CustomEvent("change"))
+            query.blur()
+          }
         }
 
       /* Escape: close search */
