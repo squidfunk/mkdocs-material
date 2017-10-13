@@ -64,25 +64,14 @@ button[data-md-color-accent] {
 
 // Build primary colors
 @each $name, $color in (
-  "red":         $clr-red-400,
-  "pink":        $clr-pink-500,
-  "purple":      $clr-purple-400,
-  "deep-purple": $clr-deep-purple-400,
-  "indigo":      $clr-indigo-500,
-  "blue":        $clr-blue-500,
-  "light-blue":  $clr-light-blue-500,
-  "cyan":        $clr-cyan-500,
-  "teal":        $clr-teal-500,
-  "green":       $clr-green-500,
-  "light-green": $clr-light-green-600,
-  "lime":        $clr-lime-600,
-  "yellow":      $clr-yellow-800,
-  "amber":       $clr-amber-600,
-  "orange":      $clr-orange-600,
-  "deep-orange": $clr-deep-orange-400,
-  "brown":       $clr-brown-500,
-  "grey":        $clr-grey-600,
-  "blue-grey":   $clr-blue-grey-600
+  "slate":           #0B2139,
+  "mute-turquoise":  #008FB8,
+  "turquoise":       #23ABE3,
+  "light-grey-blue": #D2E3EB,
+  "dark-teal":       #194963,
+  "teal":            #236C90,
+  "orange":          #F8961D,
+  "green":           #229246
 ) {
 
   // Color tile for presentation in theme documentation
@@ -159,22 +148,14 @@ button[data-md-color-accent] {
 
 // Build accent colors
 @each $name, $color in (
-  "red":         $clr-red-a400,
-  "pink":        $clr-pink-a400,
-  "purple":      $clr-purple-a200,
-  "deep-purple": $clr-deep-purple-a200,
-  "indigo":      $clr-indigo-a200,
-  "blue":        $clr-blue-a200,
-  "light-blue":  $clr-light-blue-a700,
-  "cyan":        $clr-cyan-a700,
-  "teal":        $clr-teal-a700,
-  "green":       $clr-green-a700,
-  "light-green": $clr-light-green-a700,
-  "lime":        $clr-lime-a700,
-  "yellow":      $clr-yellow-a700,
-  "amber":       $clr-amber-a700,
-  "orange":      $clr-orange-a400,
-  "deep-orange": $clr-deep-orange-a200
+  "slate":           #0B2139,
+  "mute-turquoise":  #008FB8,
+  "turquoise":       #23ABE3,
+  "light-grey-blue": #D2E3EB,
+  "dark-teal":       #194963,
+  "teal":            #236C90,
+  "orange":          #F8961D,
+  "green":           #229246
 ) {
 
   // Color tile for presentation in theme documentation
