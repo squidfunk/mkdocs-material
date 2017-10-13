@@ -135,7 +135,7 @@ project's `mkdocs.yml`. See the following sections for all available options.
 
 ### Changing the color palette
 
-A default is hue is defined for every primary and accent color on Google's
+A default hue is defined for every primary and accent color on Google's
 Material Design [color palette][10], which makes it very easy to change the
 overall look of the theme. Just set the primary and accent colors using the
 following variables:
@@ -271,7 +271,7 @@ If the repository is hosted in a private environment, the service logo can be
 set explicitly by setting `extra.repo_icon` to `github`, `gitlab` or
 `bitbucket`.
 
-!!! warning "Why is there an edit button at the top of every article?"
+!!! question "Why is there an edit button at the top of every article?"
 
     If the `repo_url` is set to a GitHub or BitBucket repository, and the
     `repo_name` is set to *GitHub* or *BitBucket* (implied by default), an
