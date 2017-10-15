@@ -68,6 +68,14 @@ pip install mkdocs-material-components
     MkDocs through some package manager (e.g. Homebrew or `apt-get`) and the
     Material theme through `pip`, so both packages end up in different
     locations. MkDocs only checks it's install location for themes.
+    
+!!! failure "ImportError: Failed loading extension 'markdown_include.include' from 'markdown_include.include'..."
+
+    If you run into this error, you just need to install "markdown-include" extension
+    
+    ``` sh
+    pip install markdown-include
+    ```
 
 ## Usage
 
