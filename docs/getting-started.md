@@ -486,8 +486,10 @@ but highly recommended, so they should be switched on at all times:
 ``` yaml
 markdown_extensions:
   - admonition
-  - codehilite(guess_lang=false)
-  - toc(permalink=true)
+  - codehilite: 
+      guess_lang: false
+  - toc:
+      permalink: true
 ```
 
 For more information, see the following list of extensions supported by the
@@ -554,6 +556,8 @@ google_analytics:
 # Extensions
 markdown_extensions:
   - admonition
-  - codehilite(guess_lang=false)
-  - toc(permalink=true)
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
 ```
