@@ -38,6 +38,12 @@
     .md-nav__link--active {
       color: $md-color-primary;
     }
+
+    .md-nav__title.md-nav__toc{
+      color: $md-color-black--light;
+      font-size: 1.25rem;
+      font-weight: 400;
+    }
   }
 
   // List title

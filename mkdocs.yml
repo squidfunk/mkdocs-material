@@ -19,14 +19,14 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Material Design Components for MkDocs
+site_name: MkDocs Material Components Theme
 site_description: A Material Design Components theme for MkDocs
 site_author: Joshua Burnett
-site_url: http://9ci.github.io/mkdocs-material-components/
+site_url: http://yakworks.github.io/mkdocs-material-components/
 
 # Repository
-repo_name: 9ci/mkdocs-material-components
-repo_url: https://github.com/9ci/mkdocs-material-components
+repo_name: yakworks/mkdocs-material-components
+repo_url: https://github.com/yakworks/mkdocs-material-components
 edit_uri: edit/material-components-web/docs/
 
 # Copyright
@@ -37,12 +37,16 @@ theme_dir: material
 
 # Options
 extra:
+  version: 1.10.3
   # use console.log(btoa('some-password')) in chrome console to generate.
   # If this is set js will force a div overlay over all the page content.
   # this is NOT security. A user can always just use the debubg console and remove the overlay div or just look at the html source for the page
   # password: 'c2VjcmV0' # <- resolves to 'secret'
   # adds <meta name="robots" content="noindex,nofollow"> to keep search engines from indexing this
   # noindex: true
+  font:
+    text: 'Open Sans'
+    code: 'Ubuntu Mono'
   feature:
     tabs: false
   palette:
@@ -74,6 +78,7 @@ markdown_extensions:
   - pymdownx.arithmatex
   - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
+  - pymdownx.details
   - pymdownx.emoji:
       #emoji_generator: !!python/name:pymdownx.emoji.to_svg
       emoji_index: !!python/name:pymdownx.emoji.gemoji
@@ -88,7 +93,7 @@ markdown_extensions:
 
 # Page tree
 pages:
-  - Index: index.md
+  - Intro: index.md
   - Cheat Sheet: cheat-sheet.md
   - Admonitions, callouts, sidebars: blocks.md
   - Embedding web apps:

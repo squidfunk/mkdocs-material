@@ -38,14 +38,21 @@ html {
   height: 100%;
   // font-size: 62.5%;
 
+  @include break-from-device(tablet portrait) {
+    font-size: 110%;
+  }
+  // [screen medium +]: Set base font-size to 11px
+  @include break-from-device(screen small) {
+    font-size: 110%;
+  }
   // [screen medium +]: Set base font-size to 11px
   @include break-from-device(screen medium) {
-    font-size: 110%;
+    font-size: 119%;
   }
 
   // [screen large +]: Set base font-size to 12px
   @include break-from-device(screen large) {
-    font-size: 120%;
+    font-size: 130%;
   }
 }
 
@@ -84,7 +91,7 @@ hr {
 
 // Template-wide grid
 .md-grid {
-  max-width: 76.25rem;
+  //max-width: 84.25rem;
   margin-right: auto;
   margin-left: auto;
 }

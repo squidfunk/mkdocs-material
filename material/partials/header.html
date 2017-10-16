@@ -20,6 +20,7 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <span class="md-flex__ellipsis md-header-nav__title">
           {% block site_name %}
+            {{ config.site_name }} -
             {% if page %}
               {% for parent in page.ancestors %}
                 <span class="md-header-nav__parent">
@@ -27,7 +28,7 @@
                 </span>
               {% endfor %}
             {% endif %}
-            {{ page.title | default(config.site_name, true) }}
+            {{ page.title }}
           {% endblock %}
         </span>
       </div>

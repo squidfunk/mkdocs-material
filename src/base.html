@@ -113,7 +113,7 @@
         {% set text = config.extra.get("font", {}).text | default("Roboto") %}
         {% set code = config.extra.get("font", {}).code
                     | default("Roboto Mono") %}
-        {% set font = text + ":300,400,400i,700|" + code | replace(" ", "+") %}
+        {% set font = text + ":300,300i,400,400i,600,600i,700,700i,800,800i|" + code | replace(" ", "+") %}
         <link rel="stylesheet" type="text/css"
             href="https://fonts.googleapis.com/css?family={{ font }}" />
         <style>
@@ -261,6 +261,10 @@
                 -->
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
+                {% endif %}
+
+                {% if config.extra.version and page.is_homepage%}
+                  <code>Version: {{ config.extra.version }}</code>
                 {% endif %}
 
                 <!-- Content -->

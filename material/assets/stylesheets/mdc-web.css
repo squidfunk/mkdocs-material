@@ -71,7 +71,7 @@ div.three-column :first-child {
 /**** cards ****/
 .card {
   border-radius: 2px;
-  box-shadow: 0 1px 5px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+  box-shadow: 0 1px 5px rgba(0,0,0,.16), 0 1px 2px rgba(0,0,0,.14);
   vertical-align: top;
   margin: 1.5625em 0;
   padding: 8px 12px;
@@ -85,10 +85,10 @@ div.three-column :first-child {
 .card.flat {
   box-shadow: none;
 }
-.card :first-child {
+.card > :first-child {
     margin-top: 0;
 }
-.card :last-child {
+.card > :last-child {
     margin-bottom: 0;
 }
 /** clear fix hack so floated images inside don't overflow **/
@@ -187,9 +187,9 @@ blockquote.float-right :last-child, blockquote.float-left :last-child {
 }
 
 .card.sidebar{
-  border: solid rgba(204,204,180,.5);
-  border-width:1px 1px 1px 1px;
-  background-color: rgba(255,255,238,.2);
+/*  border: solid rgba(204,204,180,.5);
+  border-width:1px 1px 1px 1px;*/
+  background-color: rgba(255,255,238,.15);
   padding-top: 4px;
 }
 
@@ -220,10 +220,10 @@ blockquote.float-right :last-child, blockquote.float-left :last-child {
 
 /********** overrides *********/
 
-.admonition.tip {
+/*.admonition.tip {
     border-color: rgba(124, 179, 66,.4);
-    background-color: rgba(124, 179, 66,.08);
-}
+    background-color: rgba(245, 249, 241, 0.5);
+}*/
 
 /************* size overrides ************/
 .card.tiny,img.tiny { width:35px !important}

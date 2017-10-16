@@ -42,9 +42,9 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-e826f8942a.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-7fc62dabab.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-a9f1482a76.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-effa27cf14.palette.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-035c261bc5.palette.css">
       {% endif %}
       <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/material-components-web.min.css">
       <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/mdc-web.css">
@@ -54,7 +54,7 @@
         {% set text = config.extra.get("font", {}).text | default("Roboto") %}
         {% set code = config.extra.get("font", {}).code
                     | default("Roboto Mono") %}
-        {% set font = text + ":300,400,400i,700|" + code | replace(" ", "+") %}
+        {% set font = text + ":300,300i,400,400i,600,600i,700,700i,800,800i|" + code | replace(" ", "+") %}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">
         <style>body,input{font-family:"{{ text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ code }}","Courier New",Courier,monospace}</style>
       {% endif %}
@@ -135,6 +135,9 @@
                 {% endif %}
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
+                {% endif %}
+                {% if config.extra.version and page.is_homepage%}
+                  <code>Version: {{ config.extra.version }}</code>
                 {% endif %}
                 {{ page.content }}
                 {% block source %}

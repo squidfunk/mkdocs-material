@@ -163,7 +163,7 @@ $md-toggle__search--checked:
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
-      width: 230px;
+      width: 180px;
       // Hack: omit jitter when form is resized
       float: right;
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);

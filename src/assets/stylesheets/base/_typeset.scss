@@ -75,7 +75,7 @@ kbd {
     margin: 0 0 1.5rem;
     color: $md-color-black--light;
     font-size: ms(3);
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.3;
   }
@@ -84,7 +84,7 @@ kbd {
   h2 {
     margin: 2rem 0 1rem;
     font-size: ms(2);
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.4;
   }
@@ -93,7 +93,7 @@ kbd {
   h3 {
     margin: 1.5rem 0 1rem;
     font-size: ms(1);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.5;
   }
@@ -107,7 +107,7 @@ kbd {
   h4 {
     margin: 1rem 0;
     font-size: ms(0);
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.01em;
   }
 
@@ -165,7 +165,7 @@ kbd {
   pre {
     background-color: $md-code-background;
     color: $md-code-color;
-    font-size: 88%;
+    //font-size: 88%;
   }
 
   // Inline code blocks, correct relative ems for smaller font size
@@ -370,12 +370,12 @@ kbd {
 
   // Data tables
   table:not([class]) {
-    @include z-depth(2);
-
+    //@include z-depth(1);
     display: inline-block;
     max-width: 100%;
     border-radius: 2px;
     font-size: 0.875rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.14);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 

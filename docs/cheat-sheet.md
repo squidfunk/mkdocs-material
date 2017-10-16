@@ -1,4 +1,4 @@
-## TL;DR Cheat Sheet
+# TL;DR Cheat Sheet
 
 For a 60 second quick start on Markdown
 [commonmark has a great tutorial](http://commonmark.org/help/){.new-tab}
@@ -7,7 +7,7 @@ For a 60 second quick start on Markdown
 
 <div markdown="1" class="two-column">
 
-``` markdown
+``` md
 this is _italic_ and so is *this*  
 this is __bold__ and so is **this**
 ^^underline^^,  ~~strike through~~  
@@ -34,7 +34,7 @@ this is __bold__ and so is **this**
 
 <div markdown="1" class="two-column">
 
-``` markdown
+``` md
 Put 2 spaces at the end of a line  
 to force a line break.  
 If you simply
@@ -69,7 +69,7 @@ using the `<br>` tag like we just did
 
 <div markdown="1" class="two-column">
 
-``` markdown
+``` md
 * need a blank line above to start new list
 + valid bullet symbols
 + `*`, `-` or '+'
@@ -134,7 +134,7 @@ using the `<br>` tag like we just did
 
 <div markdown="1" class="two-column">
 
-``` markdown
+``` md
 - [ ] Task Lists `- [ ]`
     - [x] x instead of space
     - [x] will mark it complete
@@ -177,7 +177,7 @@ using the `<br>` tag like we just did
 
 <div markdown="1" class="two-column">
 
-``` markdown
+``` md
 [simple link](https://www.google.com )  
 [with optional title](https://www.google.com "Google's Homepage")  
 point to a [relative file or md](./embedding/lucid.md) or
@@ -185,7 +185,7 @@ mail link with emoji [📧](mailto:joshdev@9ci.com) or
 links with icons [like this _cloud_{.icon}](https://material.io/icons/)
 or [use an image ![](images/dingus/image-small.png)](images/dingus/image.png)
 
-[Reference-Style Links][daringfireball reference id]
+[Reference-Style Links][some reference id]
 put link at bottom of paragraph or page.
 you can use numbers or text for
 [reference-style link definitions][1]  
@@ -200,7 +200,7 @@ Indenting _reference links_
 2 spaces is not required
 but a recommended convention
 
-  [daringfireball reference id]: https://daringfireball.net/projects/markdown/syntax#link
+  [some reference id]: https://daringfireball.net/projects/markdown/syntax#link
   [1]: http://reason.com/blog
   [link text itself]: ./images/material.png
   [new tab]: sandbox.md
@@ -217,7 +217,7 @@ mail link with emoji [📧](mailto:joshdev@9ci.com) or
 links with icons [like this _cloud_{.icon}](https://material.io/icons/)
 or [use an image ![](images/dingus/image-small.png)](images/dingus/image.png)
 
-[Reference-Style Links][daringfireball reference id]
+[Reference-Style Links][some reference id]
 put link at bottom of paragraph or page.
 you can use numbers or text for
 [reference-style link definitions][1]  
@@ -232,7 +232,7 @@ _reference links_ can be at bottom
 of paragraph. Indenting 2 spaces is not
 required but a recommended convention
 
-  [daringfireball reference id]: https://daringfireball.net/projects/markdown/syntax#link
+  [some reference id]: https://daringfireball.net/projects/markdown/syntax#link
   [1]: http://reason.com/blog
   [link text itself]: ./images/material.png
   [new tab]: sandbox.md
@@ -245,14 +245,17 @@ required but a recommended convention
 
 <div markdown="1" class="two-column">
 
-``` markdown
+``` md
 inline ![](images/dingus/image-small.png)
 with alt text ![foo](images/dingus/image-small.png)  
 with ref links ![img-small][]  
-can use [sizing attributes](blocks/#sizing-alignment)  
-Use **zoomify**  ![zoomify][img-dingus]{.tiny}
+can use [sizing attributes](blocks/#sizing-alignment)
 
-![zoomify](images/dingus/image.png){.center .small}
+Put `zoomify` in the alt text bracket to enable
+clicking to zoom. Try clicking on any of 
+these images ![zoomify][img-dingus]{.tiny}
+
+![zoomify](images/dingus/image.png){.center .xsmall}
 
 > :camera: **Figure Title**
 > ![zoomify](images/dingus/image.png){.center .small}
@@ -270,8 +273,8 @@ with alt text ![foo](images/dingus/image-small.png)
 with ref links ![img-small][]  
 can use [sizing attributes](blocks/#sizing-alignment)
 
-Use zoomify in alt text to get
-click to zoom ![zoomify][img-dingus]{.tiny}
+Put `zoomify` in the alt text bracket to enable
+clicking to zoom. Try it on any of these images ![zoomify][img-dingus]{.tiny}
 
 ![zoomify](images/dingus/image.png){.center .xsmall}
 
