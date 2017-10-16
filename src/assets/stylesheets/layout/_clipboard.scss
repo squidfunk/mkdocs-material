@@ -38,6 +38,11 @@
   // Hack: put everything on the GPU to omit flickering
   backface-visibility: hidden;
 
+  // Hide for print
+  @media print {
+    display: none;
+  }
+
   // Icon
   &::before {
     @extend %md-icon;

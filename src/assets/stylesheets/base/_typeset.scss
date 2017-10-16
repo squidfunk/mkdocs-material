@@ -166,6 +166,11 @@ kbd {
     background-color: $md-code-background;
     color: $md-code-color;
     font-size: 85%;
+
+    // Wrap text and hide scollbars
+    @media print {
+      white-space: pre-wrap;
+    }
   }
 
   // Inline code blocks, correct relative ems for smaller font size
