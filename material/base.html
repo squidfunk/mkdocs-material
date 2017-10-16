@@ -27,7 +27,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.8.0">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-components-1.8.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -42,9 +42,9 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-1df76c4e58.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-bfecc7305d.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-6c580b9601.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02c2a4388f.palette.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-b778559f56.palette.css">
       {% endif %}
       <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/material-components-web.min.css">
       <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/mdc-web.css">
@@ -124,7 +124,7 @@
               </div>
             {% endif %}
           {% endblock %}
-          <div class="md-content">
+          <div id="article-content" class="md-content"> 
             <article class="md-content__inner md-typeset">
               {% block content %}
                 {% if config.edit_uri %}
@@ -161,7 +161,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-1d6ee6ee6c.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-dfb4e37cdb.js"></script>
       {% set languages = lang.t("search.languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}
