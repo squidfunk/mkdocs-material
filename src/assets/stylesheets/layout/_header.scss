@@ -78,8 +78,8 @@
       opacity: 0.7;
     }
 
-    // Set correct display on image
-    &.md-logo img {
+    // Set correct display on image or icon
+    &.md-logo * {
       display: block;
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material-components",
-  "version": "1.8.0",
+  "version": "1.10.3",
   "description": "A Material Components Web theme for MkDocs",
   "keywords": [
     "mkdocs",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.0.0",
     "babel-loader": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-root-import": "^5.1.0",
@@ -52,7 +52,7 @@
     "eslint": "^4.3.0",
     "expose-loader": "^0.7.3",
     "fastclick": "^1.0.6",
-    "flow-bin": "^0.53.0",
+    "flow-bin": "^0.56.0",
     "flow-jsdoc": "^0.3.0",
     "git-hooks": "^1.1.8",
     "gulp": "^3.9.1",
@@ -71,7 +71,7 @@
     "gulp-rev-replace": "^0.4.3",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
-    "gulp-stylelint": "^4.0.0",
+    "gulp-stylelint": "^5.0.0",
     "gulp-svgmin": "^1.2.4",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
@@ -85,15 +85,14 @@
     "postcss-pseudo-classes": "^0.2.0",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "stylelint-order": "^0.6.0",
+    "stylelint-order": "^0.7.0",
     "stylelint-scss": "^2.0.0",
     "through2": "^2.0.3",
     "vinyl-paths": "^2.1.0",
     "webpack": "^3.4.1",
     "webpack-stream": "^4.0.0",
     "whatwg-fetch": "^2.0.3",
-    "yargs": "^8.0.2",
-    "zepto": "^1.2.0"
+    "yargs": "^9.0.1"
   },
   "engines": {
     "node": ">= 5.0.0"

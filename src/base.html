@@ -26,7 +26,7 @@
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
 
-    <!-- Block: metatags -->
+    <!-- Metatags -->
     {% block site_meta %}
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -73,7 +73,7 @@
           content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$" />
     {% endblock %}
 
-    <!-- Block: site title -->
+    <!-- Site title -->
     {% block htmltitle %}
       {% if page and page.meta.title %}
         <title>{{ page.meta.title | first }}</title>
@@ -84,12 +84,12 @@
       {% endif %}
     {% endblock %}
 
-    <!-- Block: JavaScript libraries -->
+    <!-- JavaScript libraries -->
     {% block libs %}
       <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
     {% endblock %}
 
-    <!-- Block: stylesheets -->
+    <!-- Stylesheets -->
     {% block styles %}
 
       <!-- Theme-related stylesheets -->
@@ -106,7 +106,7 @@
 
     {% endblock %}
 
-    <!-- Block: webfonts -->
+    <!-- Webfonts -->
     {% block fonts %}
       <!-- TODO: remove the second check in the next major version -->
       {% if config.extra.font != false and config.extra.font != "none" %}
@@ -142,7 +142,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
 
-    <!-- Block: custom front matter -->
+    <!-- Custom front matter -->
     {% block extrahead %}{% endblock %}
   </head>
 
@@ -197,6 +197,13 @@
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
       {% set feature = config.extra.get("feature", {}) %}
+
+      <!-- Hero banner -->
+      {% if feature.hero %}
+        {% include "partials/hero.html" %}
+      {% endif %}
+
+      <!-- Tabs with outline -->
       {% if feature.tabs %}
         {% include "partials/tabs.html" %}
       {% endif %}
@@ -205,7 +212,7 @@
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
 
-          <!-- Block: navigation -->
+          <!-- Navigation -->
           {% block site_nav %}
 
             <!-- Main navigation -->
@@ -237,7 +244,7 @@
           <div id="article-content" class="md-content" > <!-- style="display:none" prevent the flash of unstyle content until we can get the extra processing into the server gen-->
             <article class="md-content__inner md-typeset">
 
-              <!-- Block: content -->
+              <!-- Content -->
               {% block content %}
 
                 <!-- Edit button, if URL was defined -->
@@ -292,7 +299,7 @@
       {% endblock %}
     </div>
 
-    <!-- Block: theme-related JavaScript -->
+    <!-- Theme-related JavaScript -->
     {% block scripts %}
 
       <script src="{{ base_url }}/assets/javascripts/application.js"></script>
@@ -332,7 +339,7 @@
       {% endfor %}
     {% endblock %}
 
-    <!-- Block: analytic scripts -->
+    <!-- Analytic scripts -->
     {% block analytics %}
       {% if config.google_analytics %}
       <script>
