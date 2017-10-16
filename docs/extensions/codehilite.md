@@ -115,7 +115,8 @@ Line numbers can be added by enabling the `linenums` flag in your `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
-  - codehilite(linenums=true)
+  - codehilite: 
+      linenums:true
 ```
 
 Example:
