@@ -163,15 +163,17 @@
     display: inline-block;
     width: 2rem;
     height: 2rem;
-    border: 1px solid $md-color-white--lightest;
-    border-radius: 100%;
-    color: $md-color-white--light;
     font-size: 1rem;
     text-align: center;
 
     // Adjust line-height to match height for correct alignment
     &::before {
       line-height: 1.9;
+    }
+
+    // Active link
+    &:hover::before {
+      color: $md-color-white;
     }
   }
 }

@@ -12,10 +12,26 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.8.0
+# Version 1.9.0
 ```
 
 ## Changelog
+
+### 1.9.0 <small> _ August 29, 2017</small>
+
+* Added `info` (synonym: `todo`) style for Admonition
+* Added `question` (synonym: `help`, `faq`) style for Admonition
+* Added support for `pymdownx.details` Markdown extension
+* Improved Admonition styles to match `pymdownx.details`
+* Improved styles for social links in footer
+* Replaced ligatures with Unicode code points to avoid broken layout
+* Upgraded PyMdown Extension package dependency to >= 3.4
+
+### 1.8.1 <small> _ August 7, 2017</small>
+
+* Fixed [#429][429]: Missing pagination for GitHub API
+
+  [429]: https://github.com/squidfunk/mkdocs-material/issues/429
 
 ### 1.8.0 <small> _ August 2, 2017</small>
 
@@ -23,6 +39,9 @@ pip show mkdocs-material | grep -E ^Version
 * Added support for customization of search tokenizer/separator
 * Fixed [#424][424]: Search doesn't handle capital letters anymore
 * Fixed [#419][419]: Search doesn't work on whole words
+
+  [419]: https://github.com/squidfunk/mkdocs-material/issues/419
+  [424]: https://github.com/squidfunk/mkdocs-material/issues/424
 
 ### 1.7.5 <small> _ July 25, 2017</small>
 

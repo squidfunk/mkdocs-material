@@ -27,7 +27,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-components-1.8.0">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-components-1.9.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -39,7 +39,7 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr-1df76c4e58.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-e826f8942a.js"></script>
     {% endblock %}
     {% block styles %}
       <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-6c580b9601.css">
@@ -124,11 +124,11 @@
               </div>
             {% endif %}
           {% endblock %}
-          <div id="article-content" class="md-content"> 
+          <div id="article-content" class="md-content">
             <article class="md-content__inner md-typeset">
               {% block content %}
                 {% if config.edit_uri %}
-                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">edit</a>
+                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">&#xE3C9;</a>
                 {% endif %}
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
@@ -161,7 +161,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-dfb4e37cdb.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-3700c4cc12.js"></script>
       {% set languages = lang.t("search.languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}

@@ -24,44 +24,74 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon placeholders
-%md-icon {
-  font-family: "Material Icons";
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1;
-  //font-size: 24px;
-  text-transform: none;
-  white-space: nowrap;
-  speak: none;
-  word-wrap: normal;
-  direction: ltr;
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
 
-  // Icon rendered as button
-  &__button {
-    display: inline-block;
-    margin: $md-icon-margin;
-    padding: $md-icon-padding;
-    font-size: $md-icon-size;
-    cursor: pointer;
+  // Details extension
+  details {
+    @extend .admonition;
+
+    padding-top: 0;
+
+    // Rotate title icon
+    &[open] > summary::after {
+      transform: rotate(180deg);
+    }
+
+    // Remove bottom spacing
+    &:not([open]) {
+      padding-bottom: 0;
+
+      // Remove bottom border if block is closed
+      > summary {
+        border-bottom: none;
+      }
+    }
+
+    // Increase spacing to the right - scoped here for higher specificity
+    summary {
+      padding-right: 4rem;
+    }
+
+    // Manually hide and show, if browser doesn't support details
+    .no-details &:not([open]) {
+
+      // Hide all nested tags ...
+      > * {
+        display: none;
+      }
+
+      // ... but show title
+      summary {
+        display: block;
+      }
+    }
   }
-}
 
-// Representational classes
-.md-icon {
-  @extend %md-icon;
+  // Title
+  summary {
+    @extend .admonition-title;
 
-  // Build representational classes
-  @each $ligature, $name in (
-    "\E5C4": "arrow-back", // arrow_back
-    "\E5C8": "arrow-forward", // arrow_forward
-    "\E5D2": "menu", // menu
-    "\E8B6": "search", // search
-    "\E80C": "home" // school
-  ) {
-    &--#{$name}::before {
-      content: $ligature;
+    // Hack: set to block, so Firefox doesn't render marker
+    display: block;
+    outline: none;
+    cursor: pointer;
+
+    // Remove default details marker
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    // Icon
+    &::after {
+      @extend %md-icon;
+
+      position: absolute;
+      top: 0.8rem;
+      right: 1.2rem;
+      color: $md-color-black--lighter;
+      font-size: 2rem;
+      content: "\E313"; // keyboard_arrow_down
     }
   }
 }

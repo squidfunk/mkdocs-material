@@ -1,3 +1,17 @@
+mkdocs-material-1.9.0 (2017-08-29)
+
+  * Added info (synonym: todo) style for Admonition
+  * Added question (synonym: help, faq) style for Admonition
+  * Added support for pymdownx.details Markdown extension
+  * Improved Admonition styles to match pymdownx.details
+  * Improved styles for social links in footer
+  * Replaced ligatures with Unicode code points to avoid broken layout
+  * Upgraded pymdownx package dependency to >= 3.4
+
+mkdocs-material-1.8.1 (2017-08-07)
+
+  * Fixed #429: Missing pagination for GitHub API
+
 mkdocs-material-1.8.0 (2017-08-02)
 
   * Added support for lazy-loading of search results for better performance
@@ -209,7 +223,7 @@ mkdocs-material-1.0.0 (2017-01-13)
   * Restructured templates into base templates and partials
   * Added build and watch scripts in package.json
   * Added support for Metadata and Footnotes Markdown extensions
-  * Added support for pymdownx.* Markdown extensions
+  * Added support for PyMdown Extensions package
   * Added support for collapsible sections in navigation
   * Added support for separate table of contents
   * Added support for better accessibility through REM-based layout

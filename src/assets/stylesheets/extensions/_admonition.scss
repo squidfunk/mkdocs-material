@@ -24,89 +24,97 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Admonition extension
-.admonition {
-  position: relative;
-  margin: 1.5625em 0;
-  padding: 8px 16px;
-  border-left: 32px solid transparentize($clr-blue-a200, 0.6);
-  border-radius: 2px;
-  background-color: transparentize($clr-blue-a200, 0.92);
-  font-size: ms(-1);
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
 
-  // Icon
-  &::before {
-    @extend %md-icon;
+  // Admonition extension
+  .admonition {
+    @include z-depth(2);
 
-    position: absolute;
-    left: -26px;
-    color: $md-color-white;
-    font-size: 20px;
-    content: "comment";
-    vertical-align: -0.25em;
-  }
+    position: relative;
+    margin: 1.5625em 0;
+    padding: 1.2rem;
+    border-left: 0.4rem solid $clr-blue-a200;
+    border-radius: 0.2rem;
+    font-size: ms(-1);
 
-  // Remove spacing on first element
-  :first-child {
-    margin-top: 0;
-  }
+    // Remove spacing on first element
+    :first-child {
+      margin-top: 0;
+    }
 
-  // Remove spacing on last element
-  :last-child {
-    margin-bottom: 0;
-  }
+    // Remove spacing on last element
+    html & :last-child {
+      margin-bottom: 0;
+    }
 
-  // Build representational classes
-  @each $names, $appearance in (
-    summary tldr: $clr-light-blue-a400 "assignment",
-    tip hint important : $clr-teal-a700 "lightbulb_outline" bold,
-    success check done: $clr-green-a400 "done" bold,
-    warning caution attention: $clr-orange-a400 "warning",
-    failure fail missing: $clr-red-a200 "clear" bold,
-    danger error: $clr-red-a400 "flash_on",
-    bug: $clr-pink-a400 "bug_report",
-    quote cite: $clr-grey "format_quote"
-  ) {
-    $tint: nth($appearance, 1);
-    $icon: nth($appearance, 2);
-    $bold: false;
-    @if length($appearance) > 2 { $bold: nth($appearance, 3); }
+    // Adjust margin for nested admonition blocks
+    .admonition {
+      margin: 1em 0;
+    }
 
-    // Define base class
-    &%#{nth($names, 1)},
-    &.#{nth($names, 1)} {
-      border-color: transparentize($tint, 0.6);
-      background-color: transparentize($tint, 0.95);
+    // Title
+    .admonition-title {
+      margin: -1.2rem -1.2rem 0;
+      padding: 0.8rem 1.2rem 0.8rem 4rem;
+      border-bottom: 0.1rem solid transparentize($clr-blue-a200, 0.9);
+      background-color: transparentize($clr-blue-a200, 0.9);
+      font-weight: 700;
 
       // Icon
       &::before {
-        content: $icon;
-        @if $bold { font-weight: 600; }
+        @extend %md-icon;
+
+        position: absolute;
+        left: 1.2rem;
+        color: $clr-blue-a200;
+        font-size: 2rem;
+        content: "\E3C9"; // edit
       }
     }
 
-    // Define synonyms for base class
-    @if length($names) > 1 {
-      @for $n from 2 through length($names) {
-        &.#{nth($names, $n)} {
-          @extend .admonition%#{nth($names, 1)};
+    // Build representational classes
+    @each $names, $appearance in (
+      summary tldr: $clr-light-blue-a400 "\E8D2", // subject
+      info todo: $clr-cyan-a700 "\E88E", // info
+      tip hint important : $clr-teal-a700 "\E80E", // whatshot
+      success check done: $clr-green-a700 "\E876", // done
+      question help faq: $clr-light-green-a700 "\E887", // help
+      warning caution attention: $clr-orange-a400 "\E002", // warning
+      failure fail missing: $clr-red-a200 "\E14C", // clear
+      danger error: $clr-red-a400 "\E3E7", // flash_on
+      bug: $clr-pink-a400 "\E868", // bug_report
+      quote cite: $clr-grey "\E244" // format_quote
+    ) {
+      $tint: nth($appearance, 1);
+      $icon: nth($appearance, 2);
+
+      // Define base class
+      &%#{nth($names, 1)},
+      &.#{nth($names, 1)} {
+        border-left: 0.4rem solid $tint;
+
+        // Title
+        .admonition-title {
+          border-bottom: 0.1rem solid transparentize($tint, 0.9);
+          background-color: transparentize($tint, 0.9);
+
+          // Icon
+          &::before {
+            color: $tint;
+            content: $icon;
+          }
+        }
+      }
+
+      // Define synonyms for base class
+      @if length($names) > 1 {
+        @for $n from 2 through length($names) {
+          &.#{nth($names, $n)} {
+            @extend .admonition%#{nth($names, 1)};
+          }
         }
       }
     }
-  }
-}
-
-// Title
-.admonition-title {
-  font-weight: 700;
-
-  // Remove bottom spacing for title
-  html & {
-    margin-bottom: 0;
-  }
-
-  // Remove top spacing for first element following title
-  html & + * {
-    margin-top: 0;
   }
 }
