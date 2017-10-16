@@ -1,3 +1,17 @@
+mkdocs-material-1.8.0 (2017-08-02)
+
+  * Added support for lazy-loading of search results for better performance
+  * Added support for customization of search tokenizer/separator
+  * Fixed #424: Search doesn't handle capital letters anymore
+  * Fixed #419: Search doesn't work on whole words
+
+mkdocs-material-1.7.5 (2017-07-25)
+
+  * Fixed #398: Forms broken due to search shortcuts
+  * Improved search overall user experience
+  * Improved search matching and highlighting
+  * Improved search accessibility
+
 mkdocs-material-1.7.4 (2017-06-21)
 
   * Fixed functional link colors in table of contents for active palette

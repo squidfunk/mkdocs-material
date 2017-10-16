@@ -24,6 +24,30 @@ import escape from "escape-string-regexp"
 import lunr from "expose-loader?lunr!lunr"
 
 /* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Truncate a string after the given number of character
+ *
+ * This is not a reasonable approach, since the summaries kind of suck. It
+ * would be better to create something more intelligent, highlighting the
+ * search occurrences and making a better summary out of it.
+ *
+ * @param {string} string - String to be truncated
+ * @param {number} n - Number of characters
+ * @return {string} Truncated string
+ */
+const truncate = (string, n) => {
+  let i = n
+  if (string.length > i) {
+    while (string[i] !== " " && --i > 0);
+    return `${string.substring(0, i)}...`
+  }
+  return string
+}
+
+/* ----------------------------------------------------------------------------
  * Class
  * ------------------------------------------------------------------------- */
 
@@ -42,6 +66,7 @@ export default class Result {
    * @property {Array<string>} lang_ - Search languages
    * @property {Object} message_ - Search result messages
    * @property {Object} index_ - Search index
+   * @property {Array<Function>} stack_ - Search result stack
    * @property {string} value_ - Last input value
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
@@ -71,30 +96,14 @@ export default class Result {
       other: this.meta_.dataset.mdLangResultOther
     }
 
+    /* Override tokenizer separator, if given */
+    if (this.el_.dataset.mdLangTokenizer.length)
+      lunr.tokenizer.separator = this.el_.dataset.mdLangTokenizer
+
     /* Load search languages */
     this.lang_ = this.el_.dataset.mdLangSearch.split(",")
       .filter(Boolean)
       .map(lang => lang.trim())
-  }
-
-  /**
-   * Truncate a string after the given number of character
-   *
-   * This is not a reasonable approach, since the summaries kind of suck. It
-   * would be better to create something more intelligent, highlighting the
-   * search occurrences and making a better summary out of it.
-   *
-   * @param {string} string - String to be truncated
-   * @param {number} n - Number of characters
-   * @return {string} Truncated string
-   */
-  truncate_(string, n) {
-    let i = n
-    if (string.length > i) {
-      while (string[i] !== " " && --i > 0);
-      return `${string.substring(0, i)}...`
-    }
-    return string
   }
 
   /**
@@ -139,14 +148,22 @@ export default class Result {
           return docs
         }, new Map)
 
-        /* eslint-disable no-invalid-this, lines-around-comment */
+        /* eslint-disable no-invalid-this */
         const docs = this.docs_,
               lang = this.lang_
 
-        /* Create index */
+        /* Create stack and index */
+        this.stack_ = []
         this.index_ = lunr(function() {
 
-          /* Set up stemmers for search languages */
+          /* Remove stemmer, as it cripples search experience */
+          this.pipeline.reset()
+          this.pipeline.add(
+            lunr.trimmer,
+            lunr.stopWordFilter
+          )
+
+          /* Set up alternate search languages */
           if (lang.length === 1) {
             this.use(lunr[lang[0]])
           } else if (lang.length > 1) {
@@ -161,8 +178,18 @@ export default class Result {
           /* Index documents */
           docs.forEach(doc => this.add(doc))
         })
-        /* eslint-enable no-invalid-this, lines-around-comment */
+
+        /* Register event handler for lazy rendering */
+        const container = this.el_.parentNode
+        if (!(container instanceof HTMLElement))
+          throw new ReferenceError
+        container.addEventListener("scroll", () => {
+          while (this.stack_.length && container.scrollTop +
+              container.offsetHeight >= container.scrollHeight - 16)
+            this.stack_.splice(0, 10).forEach(render => render())
+        })
       }
+      /* eslint-enable no-invalid-this */
 
       /* Initialize index after short timeout to account for transition */
       setTimeout(() => {
@@ -194,7 +221,17 @@ export default class Result {
 
       /* Perform search on index and group sections by document */
       const result = this.index_
-        .search(this.value_)
+
+        /* Append trailing wildcard to all terms for prefix querying */
+        .query(query => {
+          this.value_.toLowerCase().split(" ")
+            .filter(Boolean)
+            .forEach(term => {
+              query.term(term, { wildcard: lunr.Query.wildcard.TRAILING })
+            })
+        })
+
+        /* Process query results */
         .reduce((items, item) => {
           const doc = this.docs_.get(item.ref)
           if (doc.parent) {
@@ -207,17 +244,21 @@ export default class Result {
           return items
         }, new Map)
 
-      /* Assemble highlight regex from query string */
-      const match = new RegExp(
-        `(?:^|\\s)(${escape(this.value_.trim()).replace(" ", "|")})`, "img")
-      const highlight = string => `<em>${string}</em>`
+      /* Assemble regular expressions for matching */
+      const query = escape(this.value_.trim()).replace(
+        new RegExp(lunr.tokenizer.separator, "img"), "|")
+      const match =
+        new RegExp(`(^|${lunr.tokenizer.separator})(${query})`, "img")
+      const highlight = (_, separator, token) =>
+        `${separator}<em>${token}</em>`
 
-      /* Render results */
+      /* Reset stack and render results */
+      this.stack_ = []
       result.forEach((items, ref) => {
         const doc = this.docs_.get(ref)
 
-        /* Append search result */
-        this.list_.appendChild(
+        /* Render article */
+        const article = (
           <li class="md-search-result__item">
             <a href={doc.location} title={doc.title}
               class="md-search-result__link">
@@ -232,28 +273,43 @@ export default class Result {
                   </p> : {}}
               </article>
             </a>
-            {items.map(item => {
-              const section = this.docs_.get(item.ref)
-              return (
-                <a href={section.location} title={section.title}
-                  class="md-search-result__link" data-md-rel="anchor">
-                  <article class="md-search-result__article">
-                    <h1 class="md-search-result__title">
-                      {{ __html: section.title.replace(match, highlight) }}
-                    </h1>
-                    {section.text.length ?
-                      <p class="md-search-result__teaser">
-                        {{ __html: this.truncate_(
-                          section.text.replace(match, highlight), 400)
-                        }}
-                      </p> : {}}
-                  </article>
-                </a>
-              )
-            })}
           </li>
         )
+
+        /* Render sections for article */
+        const sections = items.map(item => {
+          return () => {
+            const section = this.docs_.get(item.ref)
+            article.appendChild(
+              <a href={section.location} title={section.title}
+                class="md-search-result__link" data-md-rel="anchor">
+                <article class="md-search-result__article">
+                  <h1 class="md-search-result__title">
+                    {{ __html: section.title.replace(match, highlight) }}
+                  </h1>
+                  {section.text.length ?
+                    <p class="md-search-result__teaser">
+                      {{ __html: truncate(
+                        section.text.replace(match, highlight), 400)
+                      }}
+                    </p> : {}}
+                </article>
+              </a>
+            )
+          }
+        })
+
+        /* Push articles and section renderers onto stack */
+        this.stack_.push(() => this.list_.appendChild(article), ...sections)
       })
+
+      /* Gradually add results as long as the height of the container grows */
+      const container = this.el_.parentNode
+      if (!(container instanceof HTMLElement))
+        throw new ReferenceError
+      while (this.stack_.length &&
+          container.offsetHeight >= container.scrollHeight - 16)
+        (this.stack_.shift())()
 
       /* Bind click handlers for anchors */
       const anchors = this.list_.querySelectorAll("[data-md-rel=anchor]")

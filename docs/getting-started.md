@@ -244,6 +244,10 @@ Furthermore, if `repo_url` points to a GitHub, BitBucket or GitLab repository,
 the respective service logo will be shown next to the name of the repository.
 Additionally, for GitHub, the number of stars and forks is shown.
 
+If the repository is hosted in a private environment, the service logo can be
+set explicitly by setting `extra.repo_icon` to `github`, `gitlab` or
+`bitbucket`.
+
 !!! warning "Why is there an edit button at the top of every article?"
 
     If the `repo_url` is set to a GitHub or BitBucket repository, and the
@@ -291,7 +295,7 @@ extra:
     - type: 'twitter'
       link: 'https://twitter.com/squidfunk'
     - type: 'linkedin'
-      link: 'https://de.linkedin.com/in/martin-donath-20a95039'
+      link: 'https://linkedin.com/in/squidfunk'
 ```
 
 The links are generated in order and the `type` of the links must match the
@@ -324,12 +328,14 @@ extra:
   disqus: 'your-disqus-shortname'
 ```
 
-A new entry at the bottom of the table of contents is generated that is linking
-to the comments section. The necessary JavaScript is automatically included.
+The comments section is inserted in *every page, except the index page*.
+Additionally, a new entry at the bottom of the table of contents is generated
+that is linking to the comments section. The necessary JavaScript is
+automatically included.
 
 !!! warning "Requirements"
 
-    `site_url` value must be set in `mkdocs.yml` for the Discus integration to
+    `site_url` value must be set in `mkdocs.yml` for the Disqus integration to
     load properly.
 
   [17]: https://disqus.com
@@ -357,6 +363,7 @@ macro `t`:
   "search.result.none": "No matching documents",
   "search.result.one": "1 matching document",
   "search.result.other": "# matching documents",
+  "search.tokenizer": "[\s\-]+",
   "source.link.title": "Go to repository",
   "toc.title": "Table of contents"
 }[key] }}{% endmacro %}
@@ -401,6 +408,17 @@ Norwegian `no`, Swedish `sv` and Turkish `tr`.
     Be aware that including suppport for other languages increases the general
     JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
     language.
+
+The separator for tokenization can also be customized, which makes it possible
+to index parts of words that are separated by `-` or `.` for example:
+
+``` jinja
+{% macro t(key) %}{{ {
+  ...
+  "search.tokenizer": "[\s\-\.]+",
+  ...
+}[key] }}{% endmacro %}
+```
 
   [21]: https://lunrjs.com
   [22]: https://github.com/MihaiValentin/lunr-languages
@@ -492,7 +510,7 @@ extra:
     - type: 'twitter'
       link: 'https://twitter.com/john-doe'
     - type: 'linkedin'
-      link: 'https://de.linkedin.com/in/john-doe'
+      link: 'https://linkedin.com/in/john-doe'
 
 # Google Analytics
 google_analytics:

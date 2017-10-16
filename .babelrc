@@ -2,6 +2,6 @@
   "presets": ["es2015"],
   "plugins": [
     "add-module-exports",
-    "babel-root-import"
+    "root-import"
   ]
 }
