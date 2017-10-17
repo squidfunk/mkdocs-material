@@ -33,7 +33,7 @@ Installing and verifying MkDocs is as simple as:
 
 ``` sh
 pip install mkdocs && mkdocs --version
-# mkdocs, version 0.16.0
+# mkdocs, version 0.16.3
 ```
 
 ### Installing Material Components
@@ -81,6 +81,8 @@ pip install mkdocs-material-components
 
 In order to enable the theme just add one of the following lines to your
 project's `mkdocs.yml`. If you installed Material using pip:
+
+> :bulb: **Here is the full yml config used for these docs [mkdocs.yml](https://github.com/yakworks/mkdocs-material-components/blob/material-components-web/mkdocs.yml) :eyes:** provides a good starting point to get all the good extensions used here
 
 ``` yaml
 theme: 'material-components'

@@ -1,25 +1,5 @@
-# Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
-
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to
-# deal in the Software without restriction, including without limitation the
-# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-# sell copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-# IN THE SOFTWARE.
-
 # Project information
-site_name: MkDocs Material Components Theme
+site_name: MkDocs Material Components
 site_description: A Material Design Components theme for MkDocs
 site_author: Joshua Burnett
 site_url: http://yakworks.github.io/mkdocs-material-components/
@@ -30,25 +10,30 @@ repo_url: https://github.com/yakworks/mkdocs-material-components
 edit_uri: edit/material-components-web/docs/
 
 # Copyright
-# copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
+copyright: 'Copyright &copy; 2016 - 2017 Martin Donath, changes by Joshua Burnett'
 
 # Theme directory
 theme_dir: material
+# theme: 'material-components' # Use this one if not developing here
 
 # Options
 extra:
-  version: 1.10.3
+  version: 1.10.5
+  # logo: images/logo_white.png
+  #
   # use console.log(btoa('some-password')) in chrome console to generate.
   # If this is set js will force a div overlay over all the page content.
   # this is NOT security. A user can always just use the debubg console and remove the overlay div or just look at the html source for the page
   # password: 'c2VjcmV0' # <- resolves to 'secret'
+  #
   # adds <meta name="robots" content="noindex,nofollow"> to keep search engines from indexing this
   # noindex: true
-  font:
-    text: 'Open Sans'
-    code: 'Ubuntu Mono'
-  feature:
-    tabs: false
+  #
+  # font:
+  #   text: 'Open Sans'
+  #   code: 'Ubuntu Mono'
+  # feature:
+  #  tabs: false
   palette:
     primary: 'blue grey'
     accent: indigo
@@ -65,31 +50,34 @@ extra:
 # Extensions
 markdown_extensions:
   - pymdownx.extra # replacement for markdown.extensions.extra see https://facelessuser.github.io/pymdown-extensions/extensions/extra/
+  - pymdownx.github # untility to add a bunch of others
   - markdown.extensions.sane_lists
   - markdown.extensions.admonition
-  - markdown.extensions.codehilite(guess_lang=false)
-  - markdown.extensions.def_list
-  - markdown.extensions.footnotes
-  - markdown.extensions.abbr
+  - markdown.extensions.codehilite #(guess_lang=false)
   - markdown.extensions.meta
   - markdown.extensions.toc(permalink=true)
   - markdown_include.include:
       base_path: 'docs'
   - pymdownx.arithmatex
-  - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
   - pymdownx.details
-  - pymdownx.emoji:
-      #emoji_generator: !!python/name:pymdownx.emoji.to_svg
-      emoji_index: !!python/name:pymdownx.emoji.gemoji
   - pymdownx.inlinehilite
-  - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences
-  - pymdownx.tasklist(custom_checkbox=true)
-  - pymdownx.tilde
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.critic
+
+  # the following are included in the ppymdown.extra and pymdown.github
+  # - markdown.extensions.def_list
+  # - markdown.extensions.footnotes
+  # - markdown.extensions.abbr
+  # - pymdownx.betterem(smart_enable=all)
+  # - pymdownx.emoji:
+  #    emoji_index: !!python/name:pymdownx.emoji.gemoji
+  # - pymdownx.magiclink
+  # - pymdownx.superfences
+  # - pymdownx.tilde
 
 # Page tree
 pages:
@@ -115,6 +103,8 @@ pages:
   #- Release notes: release-notes.md
   #- Contributing: contributing.md
   #- License: license.md
+
+dev_addr: 0.0.0.0:8000
 
 # Google Analytics
 # google_analytics:

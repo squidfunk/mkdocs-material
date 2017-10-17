@@ -57,7 +57,8 @@
 
   // Hide for print
   @media print {
-    display: none;
+    position: relative;
+    //display: none;
   }
 }
 
@@ -72,6 +73,7 @@
     position: relative;
     transition: opacity 0.25s;
     z-index: 1;
+    //padding: 8px;
 
     // Hovered icon
     &:hover {
@@ -81,6 +83,12 @@
     // Set correct display on image or icon
     &.md-logo * {
       display: block;
+    }
+
+    // Set correct display on image or icon
+    &.md-logo{
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
     // Hide search icon, if JavaScript is not available.
@@ -115,13 +123,21 @@
         display: none;
       }
     }
+
+    @media print {
+      // Menu icon
+      &.md-icon--menu {
+        display: none;
+      }
+    }
   }
 
   // Header title - set line height to match icon for correct alignment
   &__title {
     padding: 0 20px;
-    font-size: 1.125rem;
-    line-height: 3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 46px;
   }
 
   // Parent page title

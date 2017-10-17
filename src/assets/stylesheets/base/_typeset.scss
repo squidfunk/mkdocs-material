@@ -47,6 +47,13 @@ kbd {
   font-family: "Courier New", Courier, monospace;
 }
 
+// @media print
+// {
+//     div{
+//         page-break-inside: avoid;
+//     }
+// }
+
 // ----------------------------------------------------------------------------
 // Rules: typesetted content
 // ----------------------------------------------------------------------------
@@ -150,14 +157,14 @@ kbd {
     }
 
     // Add URLs for print
-    @media print {
+    // @media print {
 
-      // Show link URL
-      &::after {
-        color: $md-color-black--light;
-        content: " [" attr(href) "]";
-      }
-    }
+    //   // Show link URL
+    //   &::after {
+    //     color: $md-color-black--light;
+    //     content: " [" attr(href) "]";
+    //   }
+    // }
   }
 
   // Code blocks
@@ -165,7 +172,7 @@ kbd {
   pre {
     background-color: $md-code-background;
     color: $md-code-color;
-    //font-size: 88%;
+    font-size: 92%;
   }
 
   // Inline code blocks, correct relative ems for smaller font size
@@ -308,7 +315,7 @@ kbd {
   blockquote {
     padding-left: 12px;
     border-left: 4px solid $md-color-black--lighter;
-    color: $md-color-black--light;
+    color: $md-color-black--medium;
   }
 
   // Unordered lists

@@ -108,7 +108,7 @@ $(function() {
         //if the last child is a paragraph with just an image them move it out
         var pimg = panel.find('p:last-child > img')
         if(pimg.length = 1 && pimg.siblings().length == 0) panel.find('p:last-child').before(pimg)
-        panel.find('> :last-child').css('margin-bottom','.5rem')
+        panel.find('> :last-child') //.css('margin-bottom','.5rem')
         //add the title
         panel.append(admonTitle)
       } else{
@@ -184,7 +184,7 @@ $(function() {
   $.getScript( "https://excel.officeapps.live.com/x/_layouts/ExcelJs.ashx?v=1",function() {
     selectAll();
   })
-  
+
   function selectAll(o){
     console.log("embedding excel")
     $('div[data-excel-token]').each(function() {

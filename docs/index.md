@@ -1,6 +1,8 @@
 Material Components is a Material theme for the markdown flavored documentation engine  [MkDocs][1].
 It forks from the excellent [MkDocs-Material][2] theme and uses Google's [Material Components Web][3]as the base.
 
+{{ config.extra.logo }}
+
   [1]: http://www.mkdocs.org
   [2]: http://squidfunk.github.io/mkdocs-material/
   [3]: https://material.io/components/web/

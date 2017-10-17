@@ -182,7 +182,9 @@ using the `<br>` tag like we just did
 [with optional title](https://www.google.com "Google's Homepage")  
 point to a [relative file or md](./embedding/lucid.md) or
 mail link with emoji [📧](mailto:joshdev@9ci.com) or
-links with icons [like this _cloud_{.icon}](https://material.io/icons/)
+click this cloud icon to see the list of icon options
+[_cloud_{.icon}](https://material.io/icons/)
+
 or [use an image ![](images/dingus/image-small.png)](images/dingus/image.png)
 
 [Reference-Style Links][some reference id]
@@ -214,7 +216,9 @@ but a recommended convention
 [with optional title](https://www.google.com "Google's Homepage")  
 point to a [relative file or md](./embedding/lucid.md) or
 mail link with emoji [📧](mailto:joshdev@9ci.com) or
-links with icons [like this _cloud_{.icon}](https://material.io/icons/)
+click this cloud icon to see the list of icon options
+[_cloud_{.icon}](https://material.io/icons/)
+
 or [use an image ![](images/dingus/image-small.png)](images/dingus/image.png)
 
 [Reference-Style Links][some reference id]

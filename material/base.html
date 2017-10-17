@@ -27,7 +27,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-components-1.10.3">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-components-1.10.5">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -42,7 +42,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-e826f8942a.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-a9f1482a76.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-2cd7d9ab0f.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-035c261bc5.palette.css">
       {% endif %}
@@ -51,9 +51,9 @@
     {% endblock %}
     {% block fonts %}
       {% if config.extra.font != false and config.extra.font != "none" %}
-        {% set text = config.extra.get("font", {}).text | default("Roboto") %}
+        {% set text = config.extra.get("font", {}).text | default("Open Sans") %}
         {% set code = config.extra.get("font", {}).code
-                    | default("Roboto Mono") %}
+                    | default("Ubuntu Mono") %}
         {% set font = text + ":300,300i,400,400i,600,600i,700,700i,800,800i|" + code | replace(" ", "+") %}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ font }}">
         <style>body,input{font-family:"{{ text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ code }}","Courier New",Courier,monospace}</style>

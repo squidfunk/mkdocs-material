@@ -121,6 +121,8 @@
 
       // Item contains a nested list
       .md-nav__item--nested > & {
+        font-size: 1rem;
+        font-weight: 700;
         content: "\E313"; // keyboard_arrow_down
       }
     }
@@ -454,7 +456,7 @@
         display: inline-block;
         transform-origin: 0.45em 0.45em;
         transform-style: preserve-3d;
-        vertical-align: -0.125em;
+        vertical-align: -0.25em;
 
         // Only animate icon when JavaScript is available, as the height can
         // not be animated anyway, and better no fun than half the fun

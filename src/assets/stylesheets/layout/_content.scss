@@ -60,6 +60,10 @@
     > :last-child {
       margin-bottom: 0;
     }
+
+    @media print {
+      padding-top: 0;
+    }
   }
 
   // Icons

@@ -47,12 +47,12 @@ html {
   }
   // [screen medium +]: Set base font-size to 11px
   @include break-from-device(screen medium) {
-    font-size: 119%;
+    font-size: 110%;
   }
 
   // [screen large +]: Set base font-size to 12px
   @include break-from-device(screen large) {
-    font-size: 130%;
+    font-size: 119%;
   }
 }
 
@@ -91,7 +91,7 @@ hr {
 
 // Template-wide grid
 .md-grid {
-  //max-width: 84.25rem;
+  max-width: 84.25rem;
   margin-right: auto;
   margin-left: auto;
 }
@@ -110,6 +110,11 @@ hr {
   height: 100%;
   padding-top: 3.5rem;
   table-layout: fixed;
+
+  // removing padding for print
+  @media print {
+    padding-top: 0;
+  }
 }
 
 // The main content should stretch to maximum height in the table
@@ -184,6 +189,11 @@ hr {
     // Shrink to minimum width
     &--shrink {
       width: 0%;
+    }
+
+    // Shrink to minimum width
+    &--vmiddle {
+      vertical-align: middle;
     }
 
     // Stretch to maximum width

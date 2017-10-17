@@ -39,6 +39,9 @@ $md-toggle__search--checked:
   .no-js & {
     display: none;
   }
+  @media print {
+    display: none;
+  }
 
   // [tablet landscape +]: Header-embedded search
   @include break-from-device(tablet landscape) {

@@ -110,9 +110,9 @@
     {% block fonts %}
       <!-- TODO: remove the second check in the next major version -->
       {% if config.extra.font != false and config.extra.font != "none" %}
-        {% set text = config.extra.get("font", {}).text | default("Roboto") %}
+        {% set text = config.extra.get("font", {}).text | default("Open Sans") %}
         {% set code = config.extra.get("font", {}).code
-                    | default("Roboto Mono") %}
+                    | default("Ubuntu Mono") %}
         {% set font = text + ":300,300i,400,400i,600,600i,700,700i,800,800i|" + code | replace(" ", "+") %}
         <link rel="stylesheet" type="text/css"
             href="https://fonts.googleapis.com/css?family={{ font }}" />

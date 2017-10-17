@@ -1,15 +1,15 @@
 {
   "name": "mkdocs-material-components",
-  "version": "1.10.3",
+  "version": "1.10.6",
   "description": "A Material Components Web theme for MkDocs",
   "keywords": [
     "mkdocs",
     "documentation",
     "theme"
   ],
-  "homepage": "http://9ci.github.io/mkdocs-material-components/",
+  "homepage": "http://yakworks.github.io/mkdocs-material-components/",
   "bugs": {
-    "url": "https://github.com/9ci/mkdocs-material-components/issues",
+    "url": "https://github.com/yakworks/mkdocs-material-components/issues",
     "email": "dev@9ci.com"
   },
   "license": "MIT",
@@ -20,10 +20,10 @@
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/9ci/mkdocs-material-components.git"
+    "url": "https://github.com/yakworks/mkdocs-material-components.git"
   },
   "scripts": {
-    "build": "scripts/build",
+    "build": "scripts/clean; scripts/build",
     "clean": "scripts/clean",
     "flow": "scripts/flow",
     "help": "scripts/help",

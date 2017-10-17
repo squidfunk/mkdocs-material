@@ -95,16 +95,23 @@ $md-toggle__drawer--checked:
   &--secondary {
     display: none;
 
-    // [tablet landscape +]: Show table of contents next to body copy
-    @include break-from-device(tablet landscape) {
+    // [screen +]: Limit to grid
+    @include break-from-device(custom size960to1600) {
       display: block;
-      margin-left: 100%;
+      margin-left: 84.25rem;
       transform: translate(-100%, 0);
     }
 
-    // [screen +]: Limit to grid
-    @include break-from-device(screen) {
-      margin-left: 76rem;
+    // [tablet landscape +]: Show table of contents next to body copy
+    @include break-to-device(tablet landscape) {
+      display: none;
+    }
+
+    // [tablet landscape +]: Show table of contents next to body copy
+    @include break-at-device(custom size960to1600) {
+      display: block;
+      margin-left: 100%;
+      transform: translate(-100%, 0);
     }
   }
 

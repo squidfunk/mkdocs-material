@@ -1,16 +1,16 @@
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
+      <div class="md-flex__cell md-flex__cell--shrink md-flex__cell--vmiddle">
         <a href="{{ config.site_url | default(nav.homepage.url, true) }}" title="{{ config.site_name }}" class="md-header-nav__button md-logo">
           {% if config.extra.logo %}
             {% if config.extra.logo.icon %}
               <i class="md-icon">{{ config.extra.logo.icon }}</i>
             {% else %}
-              <img src="{{ base_url }}/{{ config.extra.logo }}" width="24" height="24">
+              <img src="{{ base_url }}/{{ config.extra.logo }}" width="36" height="36">
             {% endif %}
           {% else %}
-            <i class="md-icon md-icon--home"></i>
+            <img src="{{ base_url }}/assets/images/logo_white.png" width="36" height="36">
           {% endif %}
         </a>
       </div>
