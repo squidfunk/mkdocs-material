@@ -26,6 +26,25 @@ import FastClick from "fastclick"
 import Material from "./components/Material"
 
 /* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Return the meta tag value for the given key
+ *
+ * @param {string} key - Meta name
+ * @param {string} [_] - Stop Flow complaining (TODO)
+ *
+ * @return {string} Meta content value
+ */
+const i18n = (key, _) => { // eslint-disable-line no-unused-vars
+  const meta = document.querySelector(`[name=i18n-${key}]`)
+  if (!(meta instanceof HTMLMetaElement))
+    throw new ReferenceError
+  return meta.content
+}
+
+/* ----------------------------------------------------------------------------
  * Application
  * ------------------------------------------------------------------------- */
 
@@ -73,7 +92,7 @@ function initialize(config) { // eslint-disable-line func-style
 
         /* Create button with message container */
         const button = (
-          <button class="md-clipboard" title="Copy to clipboard"
+          <button class="md-clipboard" title={i18n("clipboard-copy")}
             data-clipboard-target={`#${id} pre, #${id} code`}>
             <span class="md-clipboard__message"></span>
           </button>
@@ -101,7 +120,7 @@ function initialize(config) { // eslint-disable-line func-style
 
         /* Set message indicating success and show it */
         message.classList.add("md-clipboard__message--active")
-        message.innerHTML = "Copied to clipboard"
+        message.innerHTML = i18n("clipboard-copied")
 
         /* Hide message after two seconds */
         message.dataset.mdTimer = setTimeout(() => {
