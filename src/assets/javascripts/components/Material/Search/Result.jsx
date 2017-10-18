@@ -47,6 +47,16 @@ const truncate = (string, n) => {
   return string
 }
 
+/**
+ * Return the meta tag value for the given key
+ *
+ * @param {String} key - Meta name
+ * @return {String} Meta content value
+ */
+const i18n = key => {
+  return document.querySelector(`[name=i18n-${key}]`).content
+}
+
 /* ----------------------------------------------------------------------------
  * Class
  * ------------------------------------------------------------------------- */
@@ -91,17 +101,18 @@ export default class Result {
     /* Load messages for metadata display */
     this.message_ = {
       placeholder: this.meta_.textContent,
-      none: this.meta_.dataset.mdLangResultNone,
-      one: this.meta_.dataset.mdLangResultOne,
-      other: this.meta_.dataset.mdLangResultOther
+      none: i18n("search-result-none"),
+      one: i18n("search-result-one"),
+      other: i18n("search-result-other")
     }
 
     /* Override tokenizer separator, if given */
-    if (this.el_.dataset.mdLangTokenizer.length)
-      lunr.tokenizer.separator = this.el_.dataset.mdLangTokenizer
+    const tokenizer = i18n("search-tokenizer")
+    if (tokenizer.length)
+      lunr.tokenizer.separator = tokenizer
 
     /* Load search languages */
-    this.lang_ = this.el_.dataset.mdLangSearch.split(",")
+    this.lang_ = i18n("search-languages").split(",")
       .filter(Boolean)
       .map(lang => lang.trim())
   }
