@@ -20,6 +20,8 @@
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       {% for key in [
+        "clipboard-copy",
+        "clipboard-copied",
         "search-languages",
         "search-result-none",
         "search-result-one",
@@ -162,7 +164,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-8591b4244d.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-ff1c1336b6.js"></script>
       {% set languages = lang.t("search-languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}
