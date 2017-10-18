@@ -37,8 +37,8 @@ import Material from "./components/Material"
  *
  * @return {string} Meta content value
  */
-const i18n = (key, _) => { // eslint-disable-line no-unused-vars
-  const meta = document.querySelector(`[name=i18n-${key}]`)
+const translate = (key, _) => { // eslint-disable-line no-unused-vars
+  const meta = document.getElementsByName(`lang:${key}`)[0]
   if (!(meta instanceof HTMLMetaElement))
     throw new ReferenceError
   return meta.content
@@ -92,7 +92,7 @@ function initialize(config) { // eslint-disable-line func-style
 
         /* Create button with message container */
         const button = (
-          <button class="md-clipboard" title={i18n("clipboard-copy")}
+          <button class="md-clipboard" title={translate("clipboard.copy")}
             data-clipboard-target={`#${id} pre, #${id} code`}>
             <span class="md-clipboard__message"></span>
           </button>
@@ -120,7 +120,7 @@ function initialize(config) { // eslint-disable-line func-style
 
         /* Set message indicating success and show it */
         message.classList.add("md-clipboard__message--active")
-        message.innerHTML = i18n("clipboard-copied")
+        message.innerHTML = translate("clipboard.copied")
 
         /* Hide message after two seconds */
         message.dataset.mdTimer = setTimeout(() => {

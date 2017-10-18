@@ -20,22 +20,22 @@
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       {% for key in [
-        "clipboard-copy",
-        "clipboard-copied",
-        "search-languages",
-        "search-result-none",
-        "search-result-one",
-        "search-result-other",
-        "search-tokenizer"
+        "clipboard.copy",
+        "clipboard.copied",
+        "search.languages",
+        "search.result.none",
+        "search.result.one",
+        "search.result.other",
+        "search.tokenizer"
       ] %}
-        <meta name="i18n-{{ key }}" content="{{ lang.t(key) }}">
+        <meta name="lang:{{ key }}" content="{{ lang.t(key) }}">
       {% endfor %}
       {% if config.site_favicon %}
         <link rel="shortcut icon" href="{{ base_url }}/{{ config.site_favicon }}">
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.10.4">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.11.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -131,7 +131,7 @@
             <article class="md-content__inner md-typeset">
               {% block content %}
                 {% if config.edit_uri %}
-                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit-link-title') }}" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">&#xE3C9;</a>
                 {% endif %}
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
@@ -139,7 +139,7 @@
                 {{ page.content }}
                 {% block source %}
                   {% if page.meta.source %}
-                    <h2 id="__source">{{ lang.t("meta-source") }}</h2>
+                    <h2 id="__source">{{ lang.t("meta.source") }}</h2>
                     {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
                       <a href="{{ [config.repo_url, path, file] | join('/') }}" title="{{ file }}" class="md-source-file">
@@ -151,7 +151,7 @@
               {% endblock %}
               {% block disqus %}
                 {% if config.extra.disqus and not page.is_homepage %}
-                  <h2 id="__comments">{{ lang.t("meta-comments") }}</h2>
+                  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
                   {% include "partials/disqus.html" %}
                 {% endif %}
               {% endblock %}
@@ -164,8 +164,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-ff1c1336b6.js"></script>
-      {% set languages = lang.t("search-languages").split(",") %}
+      <script src="{{ base_url }}/assets/javascripts/application-268d62d82d.js"></script>
+      {% set languages = lang.t("search.languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}
         <script src="{{ path }}/lunr.stemmer.support.js"></script>

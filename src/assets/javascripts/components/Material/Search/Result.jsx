@@ -55,8 +55,8 @@ const truncate = (string, n) => {
  *
  * @return {string} Meta content value
  */
-const i18n = (key, _) => { // eslint-disable-line no-unused-vars
-  const meta = document.querySelector(`[name=i18n-${key}]`)
+const translate = (key, _) => { // eslint-disable-line no-unused-vars
+  const meta = document.getElementsByName(`lang:${key}`)[0]
   if (!(meta instanceof HTMLMetaElement))
     throw new ReferenceError
   return meta.content
@@ -106,18 +106,18 @@ export default class Result {
     /* Load messages for metadata display */
     this.message_ = {
       placeholder: this.meta_.textContent,
-      none: i18n("search-result-none"),
-      one: i18n("search-result-one"),
-      other: i18n("search-result-other")
+      none: translate("search.result.none"),
+      one: translate("search.result.one"),
+      other: translate("search.result.other")
     }
 
     /* Override tokenizer separator, if given */
-    const tokenizer = i18n("search-tokenizer")
+    const tokenizer = translate("search.tokenizer")
     if (tokenizer.length)
       lunr.tokenizer.separator = tokenizer
 
     /* Load search languages */
-    this.lang_ = i18n("search-languages").split(",")
+    this.lang_ = translate("search.languages").split(",")
       .filter(Boolean)
       .map(lang => lang.trim())
   }

@@ -386,6 +386,8 @@ macro `t`:
 ``` jinja
 {% macro t(key) %}{{ {
   "language": "en",
+  "clipboard.copy": "Copy to clipboard",
+  "clipboard.copied": "Copied to clipboard",
   "edit.link.title": "Edit this page",
   "footer.previous": "Previous",
   "footer.next": "Next",
@@ -486,7 +488,7 @@ but highly recommended, so they should be switched on at all times:
 ``` yaml
 markdown_extensions:
   - admonition
-  - codehilite: 
+  - codehilite:
       guess_lang: false
   - toc:
       permalink: true

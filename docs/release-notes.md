@@ -12,10 +12,15 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.10.4
+# Version 1.11.0
 ```
 
 ## Changelog
+
+### 1.11.0 <small>_ October 19, 2017</small>
+
+* Added localization to clipboard
+* Refactored i18n localization logic
 
 ### 1.10.4 <small>_ October 18, 2017</small>
 
