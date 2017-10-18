@@ -54,6 +54,17 @@
         <meta name="author" content="{{ config.site_author }}" />
       {% endif %}
 
+      <!-- Localization -->
+      {% for key in [
+        "search-languages",
+        "search-result-none",
+        "search-result-one",
+        "search-result-other",
+        "search-tokenizer"
+      ] %}
+        <meta name="i18n-{{ key }}" content="{{ lang.t(key) }}" />
+      {% endfor %}
+
       <!-- Favicon -->
       {% if config.site_favicon %}
         <link rel="shortcut icon"
@@ -234,7 +245,7 @@
                 <!-- Edit button, if URL was defined -->
                 {% if config.edit_uri %}
                   <a href="{{ page.edit_url }}"
-                      title="{{ lang.t('edit.link.title') }}"
+                      title="{{ lang.t('edit-link-title') }}"
                       class="md-icon md-content__icon">&#xE3C9;<!-- edit --></a>
                 {% endif %}
 
@@ -253,7 +264,7 @@
                 <!-- Source files -->
                 {% block source %}
                   {% if page.meta.source %}
-                    <h2 id="__source">{{ lang.t("meta.source") }}</h2>
+                    <h2 id="__source">{{ lang.t("meta-source") }}</h2>
                     {% set path = (page.meta.path | default([""]) | first) %}
                     {% for file in page.meta.source %}
                       <a href="{{ [config.repo_url, path, file] | join('/') }}"
@@ -268,7 +279,7 @@
               <!-- Disqus integration -->
               {% block disqus %}
                 {% if config.extra.disqus and not page.is_homepage %}
-                  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+                  <h2 id="__comments">{{ lang.t("meta-comments") }}</h2>
                   {% include "partials/disqus.html" %}
                 {% endif %}
               {% endblock %}
@@ -288,7 +299,7 @@
       <script src="{{ base_url }}/assets/javascripts/application.js"></script>
 
       <!-- Load additional languages for search -->
-      {% set languages = lang.t("search.languages").split(",") %}
+      {% set languages = lang.t("search-languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}
         <script src="{{ path }}/lunr.stemmer.support.js"></script>
