@@ -1,3 +1,9 @@
+mkdocs-material-1.10.4 (2017-10-18)
+
+  * Improved print styles of code blocks
+  * Improved search UX (don't close on enter if no selection)
+  * Fixed #495: Vertical scrollbar on short pages
+
 mkdocs-material-1.10.3 (2017-10-11)
 
   * Fixed #484: Vertical scrollbar on some MathJax formulas
