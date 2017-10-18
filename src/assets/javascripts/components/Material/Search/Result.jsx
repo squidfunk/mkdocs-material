@@ -50,11 +50,16 @@ const truncate = (string, n) => {
 /**
  * Return the meta tag value for the given key
  *
- * @param {String} key - Meta name
- * @return {String} Meta content value
+ * @param {string} key - Meta name
+ * @param {string} [_] - Stop Flow complaining (TODO)
+ *
+ * @return {string} Meta content value
  */
-const i18n = key => {
-  return document.querySelector(`[name=i18n-${key}]`).content
+const i18n = (key, _) => { // eslint-disable-line no-unused-vars
+  const meta = document.querySelector(`[name=i18n-${key}]`)
+  if (!(meta instanceof HTMLMetaElement))
+    throw new ReferenceError
+  return meta.content
 }
 
 /* ----------------------------------------------------------------------------
