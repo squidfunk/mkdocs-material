@@ -439,7 +439,7 @@ Norwegian `no`, Swedish `sv` and Turkish `tr`.
 
 !!! warning "Only specify the languages you really need"
 
-    Be aware that including suppport for other languages increases the general
+    Be aware that including support for other languages increases the general
     JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
     language.
 
