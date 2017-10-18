@@ -10,6 +10,8 @@ The translations can be changed in `theme/partials/language.html`:
 ``` jinja
 {% macro t(key) %}{{ {
   "language": "de",
+  "clipboard.copy": "In Zwischenablage kopieren",
+  "clipboard.copied": "In Zwischenablage kopiert",
   "edit.link.title": "Seite editieren",
   "footer.previous": "Vorherige Seite",
   "footer.next": "Nächste Seite",
