@@ -36,6 +36,7 @@ theme_dir: material
 
 # Options
 extra:
+  language: en
   feature:
     tabs: false
   palette:

@@ -1,7 +1,11 @@
+master
+
+  * Fixed #374: Search bar misalignment on big screens
+
 mkdocs-material-1.11.0 (2017-10-19)
 
   * Added localization to clipboard
-  * Refactored i18n localization logic
+  * Refactored localization logic
 
 mkdocs-material-1.10.4 (2017-10-18)
 

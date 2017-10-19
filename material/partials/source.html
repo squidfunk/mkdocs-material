@@ -1,4 +1,4 @@
-{% import "partials/language.html" as lang %}
+{% import "partials/language.html" as lang with context %}
 {% set platform = config.extra.repo_icon or config.repo_url %}
 {% if "github" in platform %}
   {% set repo_type = "github" %}

@@ -1,4 +1,4 @@
-{% import "partials/language.html" as lang %}
+{% import "partials/language.html" as lang with context %}
 <!DOCTYPE html>
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
@@ -50,7 +50,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-e826f8942a.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-6062816a07.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-04ea671600.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-23f75ab9c7.palette.css">
       {% endif %}

@@ -20,7 +20,7 @@ pip show mkdocs-material | grep -E ^Version
 ### 1.11.0 <small>_ October 19, 2017</small>
 
 * Added localization to clipboard
-* Refactored i18n localization logic
+* Refactored localization logic
 
 ### 1.10.4 <small>_ October 18, 2017</small>
 
@@ -28,7 +28,7 @@ pip show mkdocs-material | grep -E ^Version
 * Improved search UX (don't close on enter if no selection)
 * Fixed [#495][495]: Vertical scrollbar on short pages
 
-  [495]: https://github.com/squidfunk/mkdocs-material/issues/484
+  [495]: https://github.com/squidfunk/mkdocs-material/issues/495
 
 ### 1.10.3 <small>_ October 11, 2017</small>
 

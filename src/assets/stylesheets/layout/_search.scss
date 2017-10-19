@@ -155,6 +155,7 @@ $md-toggle__search--checked:
     @include break-from-device(tablet landscape) {
       position: relative;
       width: 23rem;
+      float: right;
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
     }
 
