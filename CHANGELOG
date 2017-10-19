@@ -1,5 +1,7 @@
 master
 
+  * Added support for setting language(s) via mkdocs.yml
+  * Added support for default localization and German translations
   * Fixed #374: Search bar misalignment on big screens
 
 mkdocs-material-1.11.0 (2017-10-19)

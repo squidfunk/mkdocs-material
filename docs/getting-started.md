@@ -378,66 +378,54 @@ automatically included.
 
 #### Translations
 
-Material for MkDocs supports internationalization (i18n). In order to translate
-the labels (e.g. *Previous* and *Next* in the footer), you can override the
-file `partials/language.html` and provide your own translations inside the
-macro `t`:
+Material for MkDocs supports internationalization (i18n) and provides
+translations for all template variables and labels in English `en` and German
+`de`. Specify the language with:
 
-``` jinja
-{% macro t(key) %}{{ {
-  "language": "en",
-  "clipboard.copy": "Copy to clipboard",
-  "clipboard.copied": "Copied to clipboard",
-  "edit.link.title": "Edit this page",
-  "footer.previous": "Previous",
-  "footer.next": "Next",
-  "meta.comments": "Comments",
-  "meta.source": "Source",
-  "search.languages": "",
-  "search.placeholder": "Search",
-  "search.result.placeholder": "Type to start searching",
-  "search.result.none": "No matching documents",
-  "search.result.one": "1 matching document",
-  "search.result.other": "# matching documents",
-  "search.tokenizer": "[\s\-]+",
-  "source.link.title": "Go to repository",
-  "toc.title": "Table of contents"
-}[key] }}{% endmacro %}
+``` yaml
+extra:
+  language: 'en'
 ```
 
-Just copy the file from the original theme and make your adjustments. See the
-section on [overriding partials][19] and the general guide on
-[theme extension][20] in the customization guide. Furthermore, see the
-[example configuration][21] for a head start.
+If the language is not specified, Material falls back to English. To create a
+translation for another language, copy the localization file of an existing
+language, name the new file using the [2-letter language code][19] and adjust
+all translations:
 
-  [19]: customization.md#overriding-partials
-  [20]: customization.md#extending-the-theme
-  [21]: https://github.com/squidfunk/mkdocs-material/tree/master/examples/language
+``` sh
+cp partials/language/en.html partials/language/jp.html
+```
+
+Feel free to contribute your localization to Material for MkDocs by opening a
+Pull Request.
+
+  [19]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
 #### Site search
 
-Site search is implemented using [lunr.js][22], which includes stemmers for the
+Site search is implemented using [lunr.js][20], which includes stemmers for the
 English language by default, while stemmers for other languages are included
-with [lunr-languages][23], both of which are integrated with this theme. Support
-for other languages and even multilingual search can be activated by setting
-the key `search.languages` to a comma-separated list of supported 2-letter
-language codes, e.g.:
+with [lunr-languages][21], both of which are integrated with this theme. Support
+for other languages and even multilingual search can be activated in your
+project's `mkdocs.yml`:
 
-``` jinja
-{% macro t(key) %}{{ {
-  ...
-  "search.languages": "en, de, ru",
-  ...
-}[key] }}{% endmacro %}
+``` yaml
+extra:
+  language:
+    - 'en'
+    - 'de'
+    - 'ru'
 ```
 
-This will automatically load the stemmers for the specified languages and
-set them up with site search, nothing else to be done.
+The first language specified is used as the document language as described in
+the section above. All other languages are used only for stemming. This will
+automatically load the stemmers for the specified languages and set them up
+with site search.
 
 At the time of writing, the following languages are supported: English `en`,
-French `fr`, Spanish `es`, Italian `it`, Japanese `jp`, Dutch `du`, Danish `da`,
-Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`, Russian `ru`,
-Norwegian `no`, Swedish `sv` and Turkish `tr`.
+French `fr`, German `de`, Spanish `es`, Italian `it`, Japanese `jp`, Dutch `du`,
+Danish `da`, Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`,
+Russian `ru`, Norwegian `no`, Swedish `sv` and Turkish `tr`.
 
 !!! warning "Only specify the languages you really need"
 
@@ -445,19 +433,20 @@ Norwegian `no`, Swedish `sv` and Turkish `tr`.
     JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
     language.
 
-The separator for tokenization can also be customized, which makes it possible
-to index parts of words that are separated by `-` or `.` for example:
+The separator for tokenization can be customized which makes it possible
+to index parts of words that are separated by `-` or `.`. This can be done by
+overriding `partials/language.html`:
 
 ``` jinja
 {% macro t(key) %}{{ {
   ...
   "search.tokenizer": "[\s\-\.]+",
   ...
-}[key] }}{% endmacro %}
+}[key] or lang.t(key) }}{% endmacro %}
 ```
 
-  [22]: https://lunrjs.com
-  [23]: https://github.com/MihaiValentin/lunr-languages
+  [20]: https://lunrjs.com
+  [21]: https://github.com/MihaiValentin/lunr-languages
 
 ### Tabs
 
@@ -475,13 +464,13 @@ extra:
 ### More advanced customization
 
 If you want to change the general appearance of the Material theme, see
-[this article][24] for more information on advanced customization.
+[this article][22] for more information on advanced customization.
 
-  [24]: customization.md
+  [22]: customization.md
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][25]. The following extensions
+MkDocs supports several [Markdown extensions][23]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -497,20 +486,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][26]
-* [Codehilite][27]
-* [Footnotes][28]
-* [Metadata][29]
-* [Permalinks][30]
-* [PyMdown Extensions][31]
+* [Admonition][24]
+* [Codehilite][25]
+* [Footnotes][26]
+* [Metadata][27]
+* [Permalinks][28]
+* [PyMdown Extensions][29]
 
-  [25]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [26]: extensions/admonition.md
-  [27]: extensions/codehilite.md
-  [28]: extensions/footnotes.md
-  [29]: extensions/metadata.md
-  [30]: extensions/permalinks.md
-  [31]: extensions/pymdown.md
+  [23]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [24]: extensions/admonition.md
+  [25]: extensions/codehilite.md
+  [26]: extensions/footnotes.md
+  [27]: extensions/metadata.md
+  [28]: extensions/permalinks.md
+  [29]: extensions/pymdown.md
 
 ## Full example
 
@@ -535,6 +524,7 @@ theme: 'material'
 
 # Options
 extra:
+  language: 'en'
   logo: 'images/logo.svg'
   palette:
     primary: 'indigo'
