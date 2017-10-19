@@ -33,6 +33,7 @@ COPY setup.py setup.py
 
 # Perform build and cleanup artifacts
 RUN \
+  apk -U openssh git && \
   python setup.py install 2>/dev/null && \
   rm -rf /tmp/*
 
