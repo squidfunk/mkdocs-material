@@ -123,13 +123,13 @@ $md-toggle__search--checked:
 
   // Search modal wrapper
   &__inner {
-    width: 100%;
 
     // [tablet portrait -]: Put search modal off-canvas by default
     @include break-to-device(tablet portrait) {
       position: fixed;
       top: 0;
       left: 100%;
+      width: 100%;
       height: 100%;
       transform: translateX(5%);
       transition:
@@ -151,23 +151,11 @@ $md-toggle__search--checked:
       }
     }
 
-    // [tablet landscape +]: Make relative for inner layout
-    @include break-from-device(tablet landscape) {
-      position: relative;
-    }
-  }
-
-  // Search form
-  &__form {
-    position: relative;
-
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
+      position: relative;
       width: 23rem;
-      // Hack: omit jitter when form is resized
-      float: right;
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
-      border-radius: 0.2rem;
     }
 
     // Set maximum width
@@ -182,6 +170,16 @@ $md-toggle__search--checked:
       @include break-from-device(screen) {
         width: 68.8rem;
       }
+    }
+  }
+
+  // Search form
+  &__form {
+    position: relative;
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      border-radius: 0.2rem;
     }
   }
 
