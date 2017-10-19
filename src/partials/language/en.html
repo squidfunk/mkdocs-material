@@ -20,36 +20,23 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/language.html" as lang with context %}
-
-<!--
-  Check whether the repository is hosted on one of the supported code hosting
-  platforms (Github, Gitlab or Bitbucket) to show icon.
--->
-{% set platform = config.extra.repo_icon or config.repo_url %}
-{% if "github" in platform %}
-  {% set repo_type = "github" %}
-{% elif "gitlab" in platform %}
-  {% set repo_type = "gitlab" %}
-{% elif "bitbucket" in platform %}
-  {% set repo_type = "bitbucket" %}
-{% else %}
-  {% set repo_type = "" %}
-{% endif %}
-
-<!-- Repository containing source -->
-{% block repo %}
-  <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}"
-      class="md-source" data-md-source="{{ repo_type }}">
-    {% if repo_type %}
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#{{ repo_type }}" width="24" height="24"></use>
-        </svg>
-      </div>
-    {% endif %}
-    <div class="md-source__repository">
-      {{ config.repo_name }}
-    </div>
-  </a>
-{% endblock %}
+<!-- Translations: English -->
+{% macro t(key) %}{{ {
+  "language": "en",
+  "clipboard.copy": "Copy to clipboard",
+  "clipboard.copied": "Copied to clipboard",
+  "edit.link.title": "Edit this page",
+  "footer.previous": "Previous",
+  "footer.next": "Next",
+  "meta.comments": "Comments",
+  "meta.source": "Source",
+  "search.languages": "",
+  "search.placeholder": "Search",
+  "search.result.placeholder": "Type to start searching",
+  "search.result.none": "No matching documents",
+  "search.result.one": "1 matching document",
+  "search.result.other": "# matching documents",
+  "search.tokenizer": "[\s\-]+",
+  "source.link.title": "Go to repository",
+  "toc.title": "Table of contents"
+}[key] }}{% endmacro %}
