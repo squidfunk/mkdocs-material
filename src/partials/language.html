@@ -20,9 +20,16 @@
   IN THE SOFTWARE.
 -->
 
+<!-- Normalize language configuration -->
+{% set languages = config.extra.language | default("en") %}
+{% if languages is string %}
+  {% set languages = languages.split(",") | map("trim") %}
+{% endif %}
+
 <!-- Import translations for given language -->
-{% set code = config.extra.language | default("en") %}
-{% import "partials/language/" + code + ".html" as lang %}
+{% import "partials/language/" + (languages | first) + ".html" as lang %}
 
 <!-- Re-export translations -->
-{% macro t(key) %}{{ lang.t(key) }}{% endmacro %}
+{% macro t(key) %}{{ {
+  "search.languages": languages | join(", ")
+}[key] or lang.t(key) }}{% endmacro %}
