@@ -25,7 +25,7 @@
 
   <!-- Site title -->
   <label class="md-nav__title md-nav__title--site" for="drawer">
-    <div class="md-nav__button md-logo">
+    <span class="md-nav__button md-logo">
       {% if config.extra.logo %}
         {% if config.extra.logo.icon %}
           <i class="md-icon">{{ config.extra.logo.icon }}</i>
@@ -35,7 +35,7 @@
       {% else %}
         <i class="md-icon md-icon--home"></i>
       {% endif %}
-    </div>
+    </span>
     {{ config.site_name }}
   </label>
 
