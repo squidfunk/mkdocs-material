@@ -1,7 +1,8 @@
-master
+mkdocs-material-1.12.0 (2017-10-20)
 
   * Added support for setting language(s) via mkdocs.yml
-  * Added support for default localization and German translations
+  * Added support for default localization
+  * Added German and Danish translations
   * Fixed #374: Search bar misalignment on big screens
 
 mkdocs-material-1.11.0 (2017-10-19)
