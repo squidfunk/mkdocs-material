@@ -12,10 +12,19 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.11.0
+# Version 1.12.0
 ```
 
 ## Changelog
+
+### 1.12.0 <small>_ October 20, 2017</small>
+
+* Added support for setting language(s) via `mkdocs.yml`
+* Added support for default localization
+* Added German and Danish translations
+* Fixed [#374][374]: Search bar misalignment on big screens
+
+  [374]: https://github.com/squidfunk/mkdocs-material/issues/374
 
 ### 1.11.0 <small>_ October 19, 2017</small>
 
