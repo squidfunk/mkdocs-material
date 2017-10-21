@@ -1,3 +1,8 @@
+mkdocs-material-1.12.1 (2017-10-xx)
+
+  * Improved downward compatibility with custom partials
+  * Fixed #519: Missing theme configuration file
+
 mkdocs-material-1.12.0 (2017-10-20)
 
   * Added support for setting language(s) via mkdocs.yml
