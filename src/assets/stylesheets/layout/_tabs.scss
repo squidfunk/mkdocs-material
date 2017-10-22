@@ -32,7 +32,7 @@
   overflow: auto;
 
   // [tablet -]: Hide tabs for tablet and below, as they don't make any sense
-  @include break-to-device(tablet) {
+  @include break-to-device(mobile portrait) {
     display: none;
   }
 
@@ -102,7 +102,7 @@
   }
 
   // [screen +]: Adjust main navigation styles
-  @include break-from-device(screen) {
+  @include break-from-device(tablet) {
 
     // Hide 1st level nested items, as they are listed in the tabs by setting
     // font-size to zero, as we need to preserve bottom padding
