@@ -1,6 +1,8 @@
-mkdocs-material-1.12.1 (2017-10-xx)
+mkdocs-material-1.12.1 (2017-10-22)
 
+  * Added Polish, Swedish and Spanish translations
   * Improved downward compatibility with custom partials
+  * Temporarily pinned MkDocs version within Docker image to 0.16.3
   * Fixed #519: Missing theme configuration file
 
 mkdocs-material-1.12.0 (2017-10-20)

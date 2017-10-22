@@ -12,10 +12,19 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.12.0
+# Version 1.12.1
 ```
 
 ## Changelog
+
+### 1.12.1 <small>_ October 22, 2017</small>
+
+* Added Polish, Swedish and Spanish translations
+* Improved downward compatibility with custom partials
+* Temporarily pinned MkDocs version within Docker image to 0.16.3
+* Fixed [#519][519]: Missing theme configuration file
+
+  [519]: https://github.com/squidfunk/mkdocs-material/issues/519
 
 ### 1.12.0 <small>_ October 20, 2017</small>
 
