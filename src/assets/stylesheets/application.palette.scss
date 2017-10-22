@@ -69,7 +69,7 @@ button[data-md-color-accent] {
   "purple":      $clr-purple-400,
   "deep-purple": $clr-deep-purple-400,
   "indigo":      $clr-indigo-500,
-  "blue":        $clr-blue-500,
+  "blue":        $clr-blue-700,
   "light-blue":  $clr-light-blue-500,
   "cyan":        $clr-cyan-500,
   "teal":        $clr-teal-500,
@@ -142,7 +142,7 @@ button[data-md-color-accent] {
     }
 
     // [screen +]: Set background color for tabs
-    @include break-from-device(screen) {
+    @include break-from-device(mobile portrait) {
 
       // Tabs with outline
       .md-tabs {
