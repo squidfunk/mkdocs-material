@@ -1,6 +1,5 @@
 {% import "partials/language.html" as lang with context %}
 <!DOCTYPE html>
-<!-- CJS Custom -->
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
     {% block site_meta %}
@@ -36,7 +35,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.12.0">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-cjs-1.12.2">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -51,9 +50,9 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-e826f8942a.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-04ea671600.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-15a673e206.css">
       {% if config.extra.palette %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-23f75ab9c7.palette.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-81247a88c7.palette.css">
       {% endif %}
     {% endblock %}
     {% block fonts %}
