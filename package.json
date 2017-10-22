@@ -1,15 +1,15 @@
 {
-  "name": "mkdocs-material",
-  "version": "1.12.0",
+  "name": "mkdocs-material-cjs",
+  "version": "1.12.1",
   "description": "A Material Design theme for MkDocs",
   "keywords": [
     "mkdocs",
     "documentation",
     "theme"
   ],
-  "homepage": "http://squidfunk.github.io/mkdocs-material/",
+  "homepage": "http://cjsheets.github.io/mkdocs-material/",
   "bugs": {
-    "url": "https://github.com/squidfunk/mkdocs-material/issues",
+    "url": "https://github.com/cjsheets/mkdocs-material/issues",
     "email": "martin.donath@squidfunk.com"
   },
   "license": "MIT",
@@ -20,7 +20,7 @@
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/squidfunk/mkdocs-material.git"
+    "url": "https://github.com/cjsheets/mkdocs-material.git"
   },
   "scripts": {
     "build": "scripts/build",
