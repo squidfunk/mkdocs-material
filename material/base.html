@@ -35,7 +35,7 @@
       {% else %}
         <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
       {% endif %}
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.12.0">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-1.12.1">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
@@ -164,7 +164,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-268d62d82d.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-946997f430.js"></script>
       {% set languages = lang.t("search.languages").split(",") %}
       {% if languages | length and languages[0] != "" %}
         {% set path = base_url + "/assets/javascripts/lunr" %}
@@ -181,7 +181,7 @@
           <script src="{{ path }}/lunr.multi.js"></script>
         {% endif %}
       {% endif %}
-      <script>app.initialize({url:{base:"{{ base_url }}"}})</script>
+      <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
       {% endfor %}
