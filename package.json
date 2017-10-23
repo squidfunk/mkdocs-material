@@ -93,7 +93,7 @@
     "webpack": "^3.4.1",
     "webpack-stream": "^4.0.0",
     "whatwg-fetch": "^2.0.3",
-    "yargs": "^9.0.1"
+    "yargs": "^10.0.3"
   },
   "engines": {
     "node": ">= 5.0.0"
