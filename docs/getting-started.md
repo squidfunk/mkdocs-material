@@ -379,9 +379,10 @@ automatically included.
 #### Translations
 
 Material for MkDocs supports internationalization (i18n) and provides
-translations for all template variables and labels in English `en`, Danish `da`,
-German `de`, Polish `pl`, Swedish `sv` and Spanish `es`. Specify the language
-with:
+translations for all template variables and labels in English `en`, French `fr`,
+German `de`, Spanish `es`, Italian `it`, Danish `da`, Polish `pl`, Norwegian
+`no`, Swedish `sv`, Chinese (Simplified) `zh` and Chinese (Traditional)
+`zh-Hant`. Specify the language with:
 
 ``` yaml
 extra:
