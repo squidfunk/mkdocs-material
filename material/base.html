@@ -99,9 +99,6 @@
     {% endblock %}
     <div class="md-container">
       {% set feature = config.extra.get("feature", {}) %}
-      {% if feature.hero %}
-        {% include "partials/hero.html" %}
-      {% endif %}
       {% if feature.tabs %}
         {% include "partials/tabs.html" %}
       {% endif %}
