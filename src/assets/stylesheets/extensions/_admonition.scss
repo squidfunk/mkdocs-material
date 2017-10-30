@@ -54,7 +54,7 @@
     }
 
     // Title
-    .admonition-title {
+    > .admonition-title {
       margin: -1.2rem -1.2rem 0;
       padding: 0.8rem 1.2rem 0.8rem 4rem;
       border-bottom: 0.1rem solid transparentize($clr-blue-a200, 0.9);
