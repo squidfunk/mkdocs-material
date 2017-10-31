@@ -36,7 +36,7 @@ theme:
   name: null
   custom_dir: material
 
-  # Same values as in mkdocs_theme.yml
+  # Default values, taken from mkdocs_theme.yml
   language: en
   feature:
     tabs: false
@@ -46,14 +46,11 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-
-#plugins: []
+  logo:
+    icon: school
 
 # Options
 extra:
-  language: en
-  search:
-    languages: en, de, fr
   social:
     - type: globe
       link: http://struct.cc

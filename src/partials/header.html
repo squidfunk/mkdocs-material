@@ -32,15 +32,11 @@
         <a href="{{ config.site_url | default(nav.homepage.url, true) }}"
             title="{{ config.site_name }}"
             class="md-header-nav__button md-logo">
-          {% if config.extra.logo %}
-            {% if config.extra.logo.icon %}
-              <i class="md-icon">{{ config.extra.logo.icon }}</i>
-            {% else %}
-              <img src="{{ base_url }}/{{ config.extra.logo }}"
-                  width="24" height="24" />
-            {% endif %}
+          {% if config.theme.logo.icon %}
+            <i class="md-icon">{{ config.theme.logo.icon }}</i>
           {% else %}
-            <i class="md-icon md-icon--home"></i>
+            <img src="{{ base_url }}/{{ config.theme.logo }}"
+                width="24" height="24" />
           {% endif %}
         </a>
       </div>
@@ -70,11 +66,13 @@
       <!-- Button to open search dialogue -->
       <div class="md-flex__cell md-flex__cell--shrink">
         {% block search_box %}
-          <label class="md-icon md-icon--search md-header-nav__button"
-              for="search"></label>
+          {% if "search" in config["plugins"] %}
+            <label class="md-icon md-icon--search md-header-nav__button"
+                for="search"></label>
 
-          <!-- Search interface -->
-          {% include "partials/search.html" %}
+            <!-- Search interface -->
+            {% include "partials/search.html" %}
+          {% endif %}
         {% endblock %}
       </div>
 
