@@ -1,4 +1,5 @@
 {% import "partials/language.html" as lang with context %}
+{% set palette = config.theme.palette %}
 <!DOCTYPE html>
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
@@ -51,7 +52,7 @@
     {% endblock %}
     {% block styles %}
       <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-04ea671600.css">
-      {% if config.extra.palette %}
+      {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-23f75ab9c7.palette.css">
       {% endif %}
     {% endblock %}
@@ -71,11 +72,16 @@
     {% endfor %}
     {% block extrahead %}{% endblock %}
   </head>
-  {% set palette = config.extra.get("palette", {}) %}
-  {% set primary = palette.primary | replace(" ", "-") | lower %}
-  {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-  {% if primary or accent %}
-    <body data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
+  {% if palette.primary or palette.accent %}
+    {% set primary = palette.primary | replace(" ", "-") | lower %}
+    {% set accent  = palette.accent  | replace(" ", "-") | lower %}
+    {% if palette.primary and palette.accent %}
+      <body data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
+    {% elif palette.primary %}
+      <body data-md-color-primary="{{ primary }}">
+    {% elif palette.accent %}
+      <body data-md-color-accent="{{ accent }}">
+    {% endif %}
   {% else %}
     <body>
   {% endif %}

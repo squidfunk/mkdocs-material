@@ -32,7 +32,17 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
 
 # Theme directory
-theme_dir: material
+theme:
+  name: null
+  custom_dir: material
+
+  # Same values as in mkdocs_theme.yml
+  palette:
+    primary:
+    accent: blue
+
+plugins:
+  - search: null
 
 # Options
 extra:
