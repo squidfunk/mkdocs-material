@@ -473,18 +473,20 @@ automatically included.
 
 ### From 1.x to 2.0
 
-Material for MkDocs 2.0 requires MkDocs 0.17.1, as this version introduced
-changes to the way themes can define options. The following variables inside
-your project's `mkdocs.yml` need to be renamed:
+* Material for MkDocs 2.0 requires MkDocs 0.17.1, as this version introduced
+  changes to the way themes can define options. The following variables inside
+  your project's `mkdocs.yml` need to be renamed:
 
-* `extra.feature` becomes `theme.feature`
-* `extra.palette` becomes `theme.palette`
-* `extra.font` becomes `theme.font`
-* `extra.logo` becomes `theme.logo`
+  * `extra.feature` becomes `theme.feature`
+  * `extra.palette` becomes `theme.palette`
+  * `extra.font` becomes `theme.font`
+  * `extra.logo` becomes `theme.logo`
 
-Localization is now separate in theme language and search language. While
-there can only be a single language on theme-level, the search supports
-multiple languages which can be separated by commas.
+* Localization is now separate in theme language and search language. While
+  there can only be a single language on theme-level, the search supports
+  multiple languages which can be separated by commas.
+
+* The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Extensions
 

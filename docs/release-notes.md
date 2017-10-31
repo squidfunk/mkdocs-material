@@ -12,10 +12,18 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 1.12.2
+# Version 2.0.0
 ```
 
 ## Changelog
+
+### 2.0.0 <small>_ October 31, 2017</small>
+
+* Added support for MkDocs 0.17.1 theme configuration options
+* Added support for easier configuration of search tokenizer
+* Added support to disable search
+* Added Korean translations
+* Removed support for MkDocs 0.16.x
 
 ### 1.12.2 <small>_ October 26, 2017</small>
 
