@@ -71,18 +71,19 @@ main theme.
 ### Setup and theme structure
 
 Reference the Material theme as usual in your `mkdocs.yml`, and create a
-new folder for overrides, e.g. `theme`, which you reference using `theme_dir`:
+new folder for overrides, e.g. `theme`, which you reference using `custom_dir`:
 
 ``` yaml
-theme: 'material'
-theme_dir: 'theme'
+theme:
+  name: 'material'
+  custom_dir: 'theme'
 ```
 
 !!! warning "Theme extension prerequisites"
 
-    As the `theme_dir` variable is used for the theme extension process, the
+    As the `custom_dir` variable is used for the theme extension process, the
     Material theme needs to be installed via `pip` and referenced with the
-    `theme` parameter in your `mkdocs.yml`.
+    `name` parameter in your `mkdocs.yml`.
 
 The structure in the theme directory must mirror the directory structure of the
 original theme, as any file in the theme directory will replace the file with
@@ -98,6 +99,7 @@ The directory layout of the Material theme is as follows:
 │  ├─ javascripts/                     # JavaScript
 │  └─ stylesheets/                     # Stylesheets
 ├─ partials/
+│  ├─ language/                        # Localized languages
 │  ├─ disqus.html                      # Disqus integration
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar

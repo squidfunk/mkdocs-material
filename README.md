@@ -35,7 +35,8 @@ pip install mkdocs-material
 Append the following line to your project's `mkdocs.yml`:
 
 ``` yaml
-theme: 'material'
+theme:
+  name: 'material'
 ```
 
 ## What to expect
