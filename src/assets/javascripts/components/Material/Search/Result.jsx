@@ -117,7 +117,7 @@ export default class Result {
       lunr.tokenizer.separator = tokenizer
 
     /* Load search languages */
-    this.lang_ = translate("search.languages").split(",")
+    this.lang_ = translate("search.language").split(",")
       .filter(Boolean)
       .map(lang => lang.trim())
   }
@@ -180,7 +180,7 @@ export default class Result {
           )
 
           /* Set up alternate search languages */
-          if (lang.length === 1) {
+          if (lang.length === 1 && lang[0] !== "en") {
             this.use(lunr[lang[0]])
           } else if (lang.length > 1) {
             this.use(lunr.multiLanguage(...lang))
