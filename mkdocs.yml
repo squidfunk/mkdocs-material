@@ -37,22 +37,23 @@ theme:
   custom_dir: material
 
   # Same values as in mkdocs_theme.yml
-  language: kr
+  language: en
+  feature:
+    tabs: false
+  palette:
+    primary:
+    accent:
   font:
     text: Roboto
     code: Roboto Mono
-  palette:
-    primary:
-    accent: blue
 
-plugins:
-  - search: null
+#plugins: []
 
 # Options
 extra:
   language: en
-  feature:
-    tabs: false
+  search:
+    languages: en, de, fr
   social:
     - type: globe
       link: http://struct.cc
