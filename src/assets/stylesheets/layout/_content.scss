@@ -68,12 +68,11 @@
 
     position: relative;
     margin: 0.8rem 0;
-    padding-right: 0;
-    padding-left: 0;
+    padding: 0;
     float: right;
 
     // Override default link color for icons
-    html body .md-typeset & {
+    .md-typeset & {
       color: $md-color-black--lighter;
     }
 
