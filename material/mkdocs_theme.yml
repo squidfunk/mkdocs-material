@@ -14,6 +14,19 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
+# Sets the primary and accent color palettes as defined in the Material Design
+# documentation - possible values can be looked up in the getting started guide
+palette:
+  # Primary color used for header, sidebar and links, default: indigo
+  primary:
+  # Accent color for highlighting user interaction, default: indigo
+  accent:
+# Material includes the search in the header as a partial, not as a separate
+# template, so it's correct that search.html is missing
+include_search_page: false
+# Material doesn't use MkDocs search functionality but provides its own. For
+# this reason, only the search index needs to be built
+search_index_only: true
 # Static pages to build
 static_templates:
   - 404.html
