@@ -36,6 +36,10 @@ theme:
   name: null
   custom_dir: material
 
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
   # Default values, taken from mkdocs_theme.yml
   language: en
   feature:
