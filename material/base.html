@@ -1,4 +1,5 @@
 {% import "partials/language.html" as lang with context %}
+{% set feature = config.theme.feature %}
 {% set palette = config.theme.palette %}
 {% set font = config.theme.font %}
 <!DOCTYPE html>
@@ -104,7 +105,6 @@
       {% include "partials/header.html" %}
     {% endblock %}
     <div class="md-container">
-      {% set feature = config.extra.get("feature", {}) %}
       {% if feature.tabs %}
         {% include "partials/tabs.html" %}
       {% endif %}

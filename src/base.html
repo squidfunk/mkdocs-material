@@ -23,6 +23,7 @@
 {% import "partials/language.html" as lang with context %}
 
 <!-- Theme options -->
+{% set feature = config.theme.feature %}
 {% set palette = config.theme.palette %}
 {% set font = config.theme.font %}
 
@@ -200,7 +201,6 @@
 
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
-      {% set feature = config.extra.get("feature", {}) %}
 
       <!-- Tabs with outline -->
       {% if feature.tabs %}
