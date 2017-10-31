@@ -49,6 +49,11 @@ font:
   # Fixed-width font for code listings
   code: Roboto Mono
 
+# The logo of the documentation shown in the header and navigation can either
+# be a Material Icon ligature or an image URL
+logo:
+  icon: school
+
 # Material includes the search in the header as a partial, not as a separate
 # template, so it's correct that search.html is missing
 include_search_page: false

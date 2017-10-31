@@ -56,8 +56,7 @@
     "\E5C4": "arrow-back", // arrow_back
     "\E5C8": "arrow-forward", // arrow_forward
     "\E5D2": "menu", // menu
-    "\E8B6": "search", // search
-    "\E80C": "home" // school
+    "\E8B6": "search" // search
   ) {
     &--#{$name}::before {
       content: $ligature;
