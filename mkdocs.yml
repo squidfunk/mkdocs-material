@@ -37,6 +37,10 @@ theme:
   custom_dir: material
 
   # Same values as in mkdocs_theme.yml
+  language: kr
+  font:
+    text: Roboto
+    code: Roboto Mono
   palette:
     primary:
     accent: blue
@@ -49,9 +53,6 @@ extra:
   language: en
   feature:
     tabs: false
-  palette:
-    primary: indigo
-    accent: indigo
   social:
     - type: globe
       link: http://struct.cc

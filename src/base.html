@@ -24,6 +24,7 @@
 
 <!-- Theme options -->
 {% set palette = config.theme.palette %}
+{% set font = config.theme.font %}
 
 <!DOCTYPE html>
 <html lang="{{ lang.t('language') }}" class="no-js">
@@ -116,21 +117,19 @@
 
     <!-- Webfonts -->
     {% block fonts %}
-      <!-- TODO: remove the second check in the next major version -->
-      {% if config.extra.font != false and config.extra.font != "none" %}
-        {% set text = config.extra.get("font", {}).text | default("Roboto") %}
-        {% set code = config.extra.get("font", {}).code
-                    | default("Roboto Mono") %}
-        {% set font = text + ":300,400,400i,700|" + code | replace(" ", "+") %}
+      {% if font != false %}
         <link rel="stylesheet" type="text/css"
-            href="https://fonts.googleapis.com/css?family={{ font }}" />
+            href="https://fonts.googleapis.com/css?family={{
+              font.text | replace(' ', '+')  + ':300,400,400i,700|' +
+              font.code | replace(' ', '+')
+            }}" />
         <style>
           body, input {
-            font-family: "{{ text }}", "Helvetica Neue",
+            font-family: "{{ font.text }}", "Helvetica Neue",
               Helvetica, Arial, sans-serif;
           }
           pre, code, kbd {
-            font-family: "{{ code }}", "Courier New",
+            font-family: "{{ font.code }}", "Courier New",
               Courier, monospace;
           }
         </style>
