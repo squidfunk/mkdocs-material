@@ -1,6 +1,6 @@
 {% set languages = "en" %}
-{% if config and config.extra %}
-  {% set languages = config.extra.language | default("en") %}
+{% if config and config.theme %}
+  {% set languages = config.theme.language | default("en") %}
 {% endif %}
 {% if languages is string %}
   {% set languages = languages.split(",") | map("trim") %}
