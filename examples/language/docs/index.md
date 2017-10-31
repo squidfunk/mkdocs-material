@@ -17,7 +17,7 @@ The translations can be changed in `theme/partials/language.html`:
   "footer.next": "Nächste Seite",
   "meta.comments": "Kommentare",
   "meta.source": "Quellcode",
-  "search.languages": "de",
+  "search.language": "de",
   "search.placeholder": "Suche",
   "search.result.placeholder": "Suchbegriff eingeben",
   "search.result.none": "Keine Suchergebnisse",

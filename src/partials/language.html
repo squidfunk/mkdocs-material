@@ -25,7 +25,7 @@
 
 <!-- Re-export translations -->
 {% macro t(key) %}{{ {
-  "search.languages": (
+  "search.language": (
     config.extra.search | default({})
   ).language | default(config.theme.language, true),
   "search.tokenizer": (

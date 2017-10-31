@@ -25,7 +25,7 @@
       {% for key in [
         "clipboard.copy",
         "clipboard.copied",
-        "search.languages",
+        "search.language",
         "search.result.none",
         "search.result.one",
         "search.result.other",
@@ -167,21 +167,23 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application-946997f430.js"></script>
-      {% set languages = lang.t("search.languages").split(",") %}
-      {% if languages | length and languages[0] != "" %}
-        {% set path = base_url + "/assets/javascripts/lunr" %}
-        <script src="{{ path }}/lunr.stemmer.support.js"></script>
-        {% for language in languages | map("trim") %}
-          {% if language != "en" %}
-            {% if language == "jp" %}
-              <script src="{{ path }}/tinyseg.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application-84693e5e49.js"></script>
+      {% if lang.t("search.language") != "en" %}
+        {% set languages = lang.t("search.language").split(",") %}
+        {% if languages | length and languages[0] != "" %}
+          {% set path = base_url + "/assets/javascripts/lunr" %}
+          <script src="{{ path }}/lunr.stemmer.support.js"></script>
+          {% for language in languages | map("trim") %}
+            {% if language != "en" %}
+              {% if language == "jp" %}
+                <script src="{{ path }}/tinyseg.js"></script>
+              {% endif %}
+              <script src="{{ path }}/lunr.{{ language }}.js"></script>
             {% endif %}
-            <script src="{{ path }}/lunr.{{ language }}.js"></script>
+          {% endfor %}
+          {% if languages | length > 1 %}
+            <script src="{{ path }}/lunr.multi.js"></script>
           {% endif %}
-        {% endfor %}
-        {% if languages | length > 1 %}
-          <script src="{{ path }}/lunr.multi.js"></script>
         {% endif %}
       {% endif %}
       <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}})</script>
