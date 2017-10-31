@@ -12,10 +12,16 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.0.0
+# Version 2.0.1
 ```
 
 ## Changelog
+
+### 2.0.1 <small>_ October 31, 2017</small>
+
+* Fixed error when initializing search
+* Fixed styles for link to edit the current page
+* Fixed styles on nested admonition in details
 
 ### 2.0.0 <small>_ October 31, 2017</small>
 
