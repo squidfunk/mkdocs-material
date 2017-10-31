@@ -2,6 +2,7 @@ mkdocs-material-2.0.1 (2017-10-31)
 
   * Fixed error when initializing search
   * Fixed styles for link to edit the current page
+  * Fixed styles on nested admonition in details
 
 mkdocs-material-2.0.0 (2017-10-31)
 
