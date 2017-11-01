@@ -1,6 +1,7 @@
 mkdocs-material-2.x.x (2017-xx-xx)
 
   * Fixed #553: meta title and description only renders first character
+  * Fixed favicon regression caused by deprecation upstream
 
 mkdocs-material-2.0.1 (2017-10-31)
 

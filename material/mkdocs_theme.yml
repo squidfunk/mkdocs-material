@@ -36,6 +36,8 @@ font:
   text: Roboto
   # Fixed-width font for code listings
   code: Roboto Mono
+# Favicon to be rendered
+favicon: assets/images/favicon.png
 # The logo of the documentation shown in the header and navigation can either
 # be a Material Icon ligature or an image URL
 logo:

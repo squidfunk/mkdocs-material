@@ -343,6 +343,16 @@ extra:
   [17]: https://lunrjs.com
   [18]: https://github.com/MihaiValentin/lunr-languages
 
+### Favicon
+
+The default favicon can be changed by setting the `favicon` variable to an
+`.ico` or image file:
+
+``` yaml
+theme:
+  favicon: 'images/favicon.ico'
+```
+
 ### Features
 
 #### Tabs
@@ -359,15 +369,6 @@ theme:
 ```
 
 ## Customization
-
-### Adding a favicon
-
-A favicon can be added by setting the `site_favicon` variable to an `.ico` or
-image file:
-
-``` yaml
-site_favicon: 'images/favicon.ico'
-```
 
 ### Adding a source repository
 
