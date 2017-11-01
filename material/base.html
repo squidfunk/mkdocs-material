@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       {% if page and page.meta.description %}
-        <meta name="description" content="{{ page.meta.description | first }}">
+        <meta name="description" content="{{ page.meta.description }}">
       {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
@@ -42,7 +42,7 @@
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta.title %}
-        <title>{{ page.meta.title | first }}</title>
+        <title>{{ page.meta.title }}</title>
       {% elif page and page.title and not page.is_homepage %}
         <title>{{ page.title }} - {{ config.site_name }}</title>
       {% else %}

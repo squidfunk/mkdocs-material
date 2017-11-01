@@ -1,3 +1,7 @@
+mkdocs-material-2.x.x (2017-xx-xx)
+
+  * Fixed #553: meta title and description only renders first character
+
 mkdocs-material-2.0.1 (2017-10-31)
 
   * Fixed error when initializing search
