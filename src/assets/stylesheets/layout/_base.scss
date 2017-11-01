@@ -42,7 +42,6 @@ html {
   // currently impacts the table of contents component between 1220 and 1234px
   // and is to current knowledge not fixable.
   overflow-x: hidden;
-  overflow-y: scroll;
 
   // [screen medium +]: Set base font-size to 11px
   @include break-from-device(screen medium) {
