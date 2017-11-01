@@ -3,6 +3,7 @@ mkdocs-material-2.x.x (2017-xx-xx)
   * Added Russian translations
   * Fixed #542: Horizontal scrollbar between 1220px and 1234px
   * Fixed #553: Metadata values only rendering first character
+  * Fixed #558: Flash of unstyled content
   * Fixed favicon regression caused by deprecation upstream
 
 mkdocs-material-2.0.1 (2017-10-31)
