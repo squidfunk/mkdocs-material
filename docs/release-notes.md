@@ -12,10 +12,22 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.0.1
+# Version 2.0.2
 ```
 
 ## Changelog
+
+### 2.0.2 <small>_ November 1, 2017</small>
+
+* Added Russian translations
+* Fixed [#542][542]: Horizontal scrollbar between `1220px` and `1234px`
+* Fixed [#553][553]: Metadata values only rendering first character
+* Fixed [#558][558]: Flash of unstyled content
+* Fixed favicon regression caused by deprecation upstream
+
+  [542]: https://github.com/squidfunk/mkdocs-material/issues/542
+  [553]: https://github.com/squidfunk/mkdocs-material/issues/553
+  [558]: https://github.com/squidfunk/mkdocs-material/issues/558
 
 ### 2.0.1 <small>_ October 31, 2017</small>
 
