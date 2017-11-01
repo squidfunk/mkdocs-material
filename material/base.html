@@ -49,7 +49,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr-e826f8942a.js"></script>
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-462a8722ef.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-cc1e7c17e0.css">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-23f75ab9c7.palette.css">
       {% endif %}
@@ -139,7 +139,7 @@
                 {% block source %}
                   {% if page.meta.source %}
                     <h2 id="__source">{{ lang.t("meta.source") }}</h2>
-                    {% set path = (page.meta.path | default([""])) %}
+                    {% set path = page.meta.path | default([""]) %}
                     {% set file = page.meta.source %}
                     <a href="{{ [config.repo_url, path, file] | join('/') }}" title="{{ file }}" class="md-source-file">
                       {{ file }}
