@@ -73,16 +73,7 @@ is defined inside the project's `mkdocs.yml`, the files can be linked using the
 source: file.js
 ```
 
-A new entry at the bottom of the table of contents is generated that is linking
-to the section listing the linked source files. Multiple files can be linked by
-adding filenames on separate lines:
-
-``` markdown
-source: file.js
-        file.css
-```
-
-The filenames are appended to the `repo_url` set in your `mkdocs.yml`, but can
+The filename is appended to the `repo_url` set in your `mkdocs.yml`, but can
 be prefixed with a `path` to ensure correct path resolving:
 
 Example:
