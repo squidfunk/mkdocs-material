@@ -33,11 +33,7 @@
       ] %}
         <meta name="lang:{{ key }}" content="{{ lang.t(key) }}">
       {% endfor %}
-      {% if config.site_favicon %}
-        <link rel="shortcut icon" href="{{ base_url }}/{{ config.site_favicon }}">
-      {% else %}
-        <link rel="shortcut icon" href="{{ base_url }}/assets/images/favicon.png">
-      {% endif %}
+      <link rel="shortcut icon" href="{{ base_url }}/{{ config.theme.favicon }}">
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-2.0.1">
     {% endblock %}
     {% block htmltitle %}
