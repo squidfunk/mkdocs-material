@@ -163,6 +163,8 @@ See the guide on [customization][11] for more information.
 
 #### Primary colors
 
+> Default: `indigo`
+
 Click on a tile to change the primary color of the theme:
 
 <button data-md-color-primary="red">Red</button>
@@ -196,6 +198,8 @@ Click on a tile to change the primary color of the theme:
 
 #### Accent colors
 
+> Default: `indigo`
+
 Click on a tile to change the accent color of the theme:
 
 <button data-md-color-accent="red">Red</button>
@@ -226,6 +230,8 @@ Click on a tile to change the accent color of the theme:
 
 ### Font family
 
+> Default: `Roboto` and `Roboto Mono`
+
 By default the [Roboto font family][12] is included with the theme, specifically
 the regular sans-serif type for text and the `monospaced` type for code. Both
 fonts are loaded from [Google Fonts][13] and can be changed to other fonts,
@@ -253,6 +259,8 @@ theme:
 
 ### Logo
 
+> Default icon: `school`
+
 Your logo should have rectangular shape with a minimum resolution of 128x128,
 leave some room towards the edges and be composed of high contrast areas on a
 transparent ground, as it will be placed on the colored header bar and drawer.
@@ -278,11 +286,13 @@ theme:
 
 #### Localization
 
+> Default: `en`
+
 Material for MkDocs supports internationalization (i18n) and provides
 translations for all template variables and labels in English `en`, French `fr`,
 German `de`, Spanish `es`, Italian `it`, Danish `da`, Polish `pl`, Norwegian
-`no`, Swedish `sv`, Korean `kr`, Chinese (Simplified) `zh` and Chinese
-(Traditional) `zh-Hant`. Specify the language with:
+`no`, Swedish `sv`, Korean `kr`, Russian `ru`, Chinese (Simplified) `zh` and
+Chinese (Traditional) `zh-Hant`. Specify the language with:
 
 ``` yaml
 theme:
@@ -304,6 +314,8 @@ Pull Request.
   [16]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
 #### Site search
+
+> Default: `en`
 
 Site search is implemented using [lunr.js][17], which includes stemmers for the
 English language by default, while stemmers for other languages are included
@@ -345,6 +357,8 @@ extra:
 
 ### Favicon
 
+> Default: `assets/images/favicon.png`
+
 The default favicon can be changed by setting the `favicon` variable to an
 `.ico` or image file:
 
@@ -356,6 +370,8 @@ theme:
 ### Features
 
 #### Tabs
+
+> Default: `false`
 
 Material supports another layer on top of the main navigation for larger
 screens in the form of tabs. This is especially useful for larger documentation
@@ -472,9 +488,9 @@ automatically included.
 
 ## Migration
 
-### From 1.x to 2.0
+### From 1.x to 2.x
 
-* Material for MkDocs 2.0 requires MkDocs 0.17.1, as this version introduced
+* Material for MkDocs 2.x requires MkDocs 0.17.1, as this version introduced
   changes to the way themes can define options. The following variables inside
   your project's `mkdocs.yml` need to be renamed:
 
@@ -482,6 +498,9 @@ automatically included.
   * `extra.palette` becomes `theme.palette`
   * `extra.font` becomes `theme.font`
   * `extra.logo` becomes `theme.logo`
+
+* Favicon support has been dropped by MkDocs, it must now be defines in
+  `theme.favicon` (previously `site_favicon`).
 
 * Localization is now separate in theme language and search language. While
   there can only be a single language on theme-level, the search supports
