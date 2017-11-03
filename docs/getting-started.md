@@ -474,7 +474,7 @@ extra:
   disqus: 'your-disqus-shortname'
 ```
 
-The comments section is inserted in *every page, except the index page*.
+The comments section is inserted on *every page, except the index page*.
 Additionally, a new entry at the bottom of the table of contents is generated
 that is linking to the comments section. The necessary JavaScript is
 automatically included.
@@ -494,15 +494,15 @@ automatically included.
   changes to the way themes can define options. The following variables inside
   your project's `mkdocs.yml` need to be renamed:
 
-  * `extra.feature` becomes `theme.feature`
-  * `extra.palette` becomes `theme.palette`
-  * `extra.font` becomes `theme.font`
-  * `extra.logo` becomes `theme.logo`
+    * `extra.feature` becomes `theme.feature`
+    * `extra.palette` becomes `theme.palette`
+    * `extra.font` becomes `theme.font`
+    * `extra.logo` becomes `theme.logo`
 
-* Favicon support has been dropped by MkDocs, it must now be defines in
+* Favicon support has been dropped by MkDocs, it must now be defined in
   `theme.favicon` (previously `site_favicon`).
 
-* Localization is now separate in theme language and search language. While
+* Localization is now separated into theme language and search language. While
   there can only be a single language on theme-level, the search supports
   multiple languages which can be separated by commas.
 

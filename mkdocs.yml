@@ -32,7 +32,7 @@ edit_uri: ""
 # Copyright
 copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
 
-# Theme directory
+# Configuration
 theme:
   name: null
   custom_dir: material
@@ -46,8 +46,8 @@ theme:
   feature:
     tabs: false
   palette:
-    primary:
-    accent:
+    primary: indigo
+    accent: indigo
   font:
     text: Roboto
     code: Roboto Mono
@@ -55,7 +55,7 @@ theme:
   logo:
     icon: "\uE80C"
 
-# Options
+# Customization
 extra:
   social:
     - type: globe
@@ -118,4 +118,4 @@ google_analytics:
 
 # Just for testing
 extra_javascript:
-  - http://ginseng-analytics.com/analytics.js
+  - https://ginseng-analytics.com/analytics.js
