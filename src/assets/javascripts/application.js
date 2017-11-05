@@ -145,6 +145,32 @@ function initialize(config) { // eslint-disable-line func-style
       })
     }
 
+    /* Open details after anchor jump */
+    const details = () => {
+      if (document.location.hash) {
+        const el = document.querySelector(document.location.hash)
+        if (!el)
+          return
+
+        /* Walk up as long as we're not in a details tag */
+        let parent = el.parentNode
+        while (parent && !(parent instanceof HTMLDetailsElement))
+          parent = parent.parentNode
+
+        /* If there's a details tag, open it */
+        if (parent && !parent.open) {
+          parent.open = true
+
+          /* Force reload, so the viewport repositions */
+          const loc = location.hash
+          location.hash = " "
+          location.hash = loc
+        }
+      }
+    }
+    window.addEventListener("hashchange", details)
+    details()
+
     /* Force 1px scroll offset to trigger overflow scrolling */
     if (Modernizr.ios) {
       const scrollable = document.querySelectorAll("[data-md-scrollfix]")
