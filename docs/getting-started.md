@@ -144,7 +144,7 @@ following variables:
 theme:
   palette:
     primary: 'indigo'
-    accent: 'light blue'
+    accent: 'indigo'
 ```
 
 Color names are case-insensitive, but must match the names of the Material
@@ -364,7 +364,7 @@ The default favicon can be changed by setting the `favicon` variable to an
 
 ``` yaml
 theme:
-  favicon: 'images/favicon.ico'
+  favicon: 'assets/mages/favicon.ico'
 ```
 
 ### Features
@@ -392,8 +392,8 @@ To include a link to the repository of your project within your documentation,
 set the following variables via your project's `mkdocs.yml`:
 
 ``` yaml
-repo_name: 'my-github-handle/my-project'
-repo_url: 'https://github.com/my-github-handle/my-project'
+repo_name: 'squidfunk/mkdocs-material'
+repo_url: 'https://github.com/squidfunk/mkdocs-material'
 ```
 
 The name of the repository will be rendered next to the search bar on big
@@ -450,7 +450,7 @@ will result in `fa fa-github`.
 
 ## Integrations
 
-### Google Analytics integration
+### Google Analytics
 
 MkDocs makes it easy to integrate site tracking with Google Analytics.
 Besides basic tracking, clicks on all outgoing links can be tracked as well as
@@ -463,7 +463,7 @@ google_analytics:
   - 'auto'
 ```
 
-### Disqus integation
+### Disqus
 
 Material for MkDocs is integrated with [Disqus][22], so if you want to add a
 comments section to your documentation set the shortname of your Disqus project
@@ -471,7 +471,7 @@ in your `mkdocs.yml`:
 
 ``` yaml
 extra:
-  disqus: 'your-disqus-shortname'
+  disqus: 'mkdocs-material'
 ```
 
 The comments section is inserted on *every page, except the index page*.
@@ -485,28 +485,6 @@ automatically included.
     load properly.
 
   [22]: https://disqus.com
-
-## Migration
-
-### From 1.x to 2.x
-
-* Material for MkDocs 2.x requires MkDocs 0.17.1, as this version introduced
-  changes to the way themes can define options. The following variables inside
-  your project's `mkdocs.yml` need to be renamed:
-
-    * `extra.feature` becomes `theme.feature`
-    * `extra.palette` becomes `theme.palette`
-    * `extra.font` becomes `theme.font`
-    * `extra.logo` becomes `theme.logo`
-
-* Favicon support has been dropped by MkDocs, it must now be defined in
-  `theme.favicon` (previously `site_favicon`).
-
-* Localization is now separated into theme language and search language. While
-  there can only be a single language on theme-level, the search supports
-  multiple languages which can be separated by commas.
-
-* The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Extensions
 
@@ -547,17 +525,17 @@ Below is a full example configuration for a `mkdocs.yml`:
 
 ``` yaml
 # Project information
-site_name: 'My Project'
-site_description: 'A short description of my project'
-site_author: 'John Doe'
-site_url: 'https://john-doe.github.io/my-project'
+site_name: 'Material for MkDocs'
+site_description: 'A Material Design theme for MkDocs'
+site_author: 'Martin Donath'
+site_url: 'https://squidfunk.github.io/mkdocs-material/'
 
 # Repository
-repo_name: 'my-github-handle/my-project'
-repo_url: 'https://github.com/john-doe/my-project'
+repo_name: 'squidfunk/mkdocs-material'
+repo_url: 'https://github.com/squidfunk/mkdocs-material'
 
 # Copyright
-copyright: 'Copyright &copy; 2016 - 2017 John Doe'
+copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
 
 # Configuration
 theme:
@@ -569,17 +547,16 @@ theme:
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
-  logo: 'images/logo.svg'
 
 # Customization
 extra:
   social:
     - type: 'github'
-      link: 'https://github.com/john-doe'
+      link: 'https://github.com/squidfunk'
     - type: 'twitter'
-      link: 'https://twitter.com/john-doe'
+      link: 'https://twitter.com/squidfunk'
     - type: 'linkedin'
-      link: 'https://linkedin.com/in/john-doe'
+      link: 'https://linkedin.com/in/squidfunk'
 
 # Google Analytics
 google_analytics:

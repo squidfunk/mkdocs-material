@@ -15,6 +15,27 @@ pip show mkdocs-material | grep -E ^Version
 # Version 2.0.2
 ```
 
+### Material 1.x to 2.x
+
+* Material for MkDocs 2.x requires MkDocs 0.17.1, as this version introduced
+  changes to the way themes can define options. The following variables inside
+  your project's `mkdocs.yml` need to be renamed:
+
+    * `extra.feature` becomes `theme.feature`
+    * `extra.palette` becomes `theme.palette`
+    * `extra.font` becomes `theme.font`
+    * `extra.logo` becomes `theme.logo`
+
+* Favicon support has been dropped by MkDocs, it must now be defined in
+  `theme.favicon` (previously `site_favicon`).
+
+* Localization is now separated into theme language and search language. While
+  there can only be a single language on theme-level, the search supports
+  multiple languages which can be separated by commas. See the getting started
+  guide for more guidance.
+
+* The search tokenizer can now be set through `extra.search.tokenizer`.
+
 ## Changelog
 
 ### 2.0.2 <small>_ November 1, 2017</small>
