@@ -336,7 +336,7 @@ project's `mkdocs.yml`:
 ``` yaml
 extra:
   search:
-    languages: 'en, de, ru'
+    language: 'en, de, ru'
 ```
 
 All defined languages are used only for stemming. This will automatically load
