@@ -300,8 +300,9 @@ theme:
 Material for MkDocs supports internationalization (i18n) and provides
 translations for all template variables and labels in English `en`, French `fr`,
 German `de`, Spanish `es`, Italian `it`, Danish `da`, Polish `pl`, Norwegian
-`no`, Swedish `sv`, Korean `kr`, Russian `ru`, Chinese (Simplified) `zh` and
-Chinese (Traditional) `zh-Hant`. Specify the language with:
+`no`, Swedish `sv`, Korean `kr`, Russian `ru`, Japanese `ja`, Chinese
+(Simplified) `zh` and Chinese (Traditional) `zh-Hant`. Specify the language
+with:
 
 ``` yaml
 theme:
@@ -320,7 +321,7 @@ cp partials/language/en.html partials/language/jp.html
 Feel free to contribute your localization to Material for MkDocs by opening a
 Pull Request.
 
-  [16]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+  [16]: https://www.w3schools.com/tags/ref_language_codes.asp
 
 #### Site search
 
