@@ -148,7 +148,7 @@ function initialize(config) { // eslint-disable-line func-style
     /* Open details after anchor jump */
     const details = () => {
       if (document.location.hash) {
-        const el = document.querySelector(document.location.hash)
+        const el = document.getElementById(document.location.hash.substring(1))
         if (!el)
           return
 
