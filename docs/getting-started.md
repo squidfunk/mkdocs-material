@@ -2,17 +2,9 @@
 
 ## Installation
 
-!!! tip "Set up Material using Docker"
-
-    The official [Docker image][1] for Material comes with all dependencies
-    pre-installed and ready-to-use with the latest version published on PyPI,
-    packaged in a very small image (36MB compressed).
-
-  [1]: https://hub.docker.com/r/squidfunk/mkdocs-material/
-
 ### Installing MkDocs
 
-Before installing [MkDocs][2], you need to make sure you have Python and `pip`
+Before installing [MkDocs][1], you need to make sure you have Python and `pip`
 – the Python package manager – up and running. You can verify if you're already
 good to go with the following commands:
 
@@ -30,11 +22,9 @@ pip install mkdocs && mkdocs --version
 # mkdocs, version 0.17.1
 ```
 
-!!! warning "MkDocs version requirements"
+Material requires MkDocs >= 0.17.1.
 
-    Material requires MkDocs >= 0.17.1
-
-  [2]: http://www.mkdocs.org
+  [1]: http://www.mkdocs.org
 
 ### Installing Material
 
@@ -48,18 +38,18 @@ pip install mkdocs-material
 
 #### using choco
 
-If you're on Windows you can use [Chocolatey][3] to install [Material][4]:
+If you're on Windows you can use [Chocolatey][2] to install [Material][3]:
 
 ``` dos
 choco install mkdocs-material
 ```
 
-This will install all required dependencies like [Python][5] and [MkDocs][6].
+This will install all required dependencies like [Python][4] and [MkDocs][5].
 
-  [3]: https://chocolatey.org
-  [4]: https://chocolatey.org/packages/mkdocs-material
-  [5]: https://chocolatey.org/packages/python
-  [6]: https://chocolatey.org/packages/mkdocs
+  [2]: https://chocolatey.org
+  [3]: https://chocolatey.org/packages/mkdocs-material
+  [4]: https://chocolatey.org/packages/python
+  [5]: https://chocolatey.org/packages/mkdocs
 
 #### cloning from GitHub
 
@@ -70,12 +60,12 @@ repository into a subfolder of your project's root directory:
 git clone https://github.com/squidfunk/mkdocs-material.git
 ```
 
-This is especially useful if you want to [extend the theme][7] and
-[override some parts][8] of the theme. The theme will reside in the folder
+This is especially useful if you want to [extend the theme][6] and
+[override some parts][7] of the theme. The theme will reside in the folder
 `mkdocs-material/material`.
 
-  [7]: customization.md#extending-the-theme
-  [8]: customization.md#overriding-partials
+  [6]: customization.md#extending-the-theme
+  [7]: customization.md#overriding-partials
 
 ### Troubleshooting
 
@@ -99,6 +89,25 @@ This is especially useful if you want to [extend the theme][7] and
     MkDocs through some package manager (e.g. Homebrew or `apt-get`) and the
     Material theme through `pip`, so both packages end up in different
     locations. MkDocs only checks its install location for themes.
+
+### Alternative: Using Docker
+
+If you're familiar with Docker, the official [Docker image][8] for Material
+comes with all dependencies pre-installed and ready-to-use with the latest
+version published on PyPI, packaged in a very small image. Pull it with:
+
+```
+docker pull squidfunk/mkdocs-material
+```
+
+The `mkdocs` executable is provided as an entrypoint, `serve` is the default
+command. Start the development server in your project root with:
+
+```
+docker run --rm -it -p 8000:8000 -v `pwd`:/docs squidfunk/mkdocs-material
+```
+
+  [8]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
 ## Usage
 
