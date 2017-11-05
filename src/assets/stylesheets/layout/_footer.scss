@@ -123,6 +123,12 @@
   // Use a decent color for non-hovered links and ensure specificity
   html &.md-typeset a {
     color: $md-color-white--light;
+
+    // Focused or hovered link
+    &:focus,
+    &:hover {
+      color: $md-color-white;
+    }
   }
 }
 
@@ -167,11 +173,6 @@
     // Adjust line-height to match height for correct alignment
     &::before {
       line-height: 1.9;
-    }
-
-    // Active link
-    &:hover::before {
-      color: $md-color-white;
     }
   }
 }
