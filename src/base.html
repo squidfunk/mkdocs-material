@@ -242,7 +242,7 @@
               {% block content %}
 
                 <!-- Edit button, if URL was defined -->
-                {% if config.edit_uri %}
+                {% if page.edit_url %}
                   <a href="{{ page.edit_url }}"
                       title="{{ lang.t('edit.link.title') }}"
                       class="md-icon md-content__icon">&#xE3C9;<!-- edit --></a>
