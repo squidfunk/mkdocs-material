@@ -37,6 +37,10 @@ theme:
   name: null
   custom_dir: material
 
+  # 404 page
+  static_templates:
+    - 404.html
+
   # Don't include MkDocs' JavaScript
   include_search_page: false
   search_index_only: true
