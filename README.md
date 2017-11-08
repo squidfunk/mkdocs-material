@@ -22,7 +22,7 @@ A Material Design theme for [MkDocs][1].
 [![Material for MkDocs](docs/images/material.png)][2]
 
   [1]: http://www.mkdocs.org
-  [2]: http://squidfunk.github.io/mkdocs-material/
+  [2]: https://squidfunk.github.io/mkdocs-material/
 
 ## Quick start
 
@@ -54,7 +54,7 @@ theme:
   highlighting and lazy loading.
 
 For detailed installation instructions and a demo, visit
-http://squidfunk.github.io/mkdocs-material/
+https://squidfunk.github.io/mkdocs-material/
 
 ## License
 
