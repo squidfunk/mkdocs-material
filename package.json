@@ -7,7 +7,7 @@
     "documentation",
     "theme"
   ],
-  "homepage": "http://squidfunk.github.io/mkdocs-material/",
+  "homepage": "https://squidfunk.github.io/mkdocs-material/",
   "bugs": {
     "url": "https://github.com/squidfunk/mkdocs-material/issues",
     "email": "martin.donath@squidfunk.com"
