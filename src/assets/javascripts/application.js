@@ -86,7 +86,7 @@ function initialize(config) { // eslint-disable-line func-style
 
     /* Clipboard integration */
     if (Clipboard.isSupported()) {
-      const blocks = document.querySelectorAll("div > pre, pre > code")
+      const blocks = document.querySelectorAll(".codehilite > pre, pre > code")
       Array.prototype.forEach.call(blocks, (block, index) => {
         const id = `__code_${index}`
 

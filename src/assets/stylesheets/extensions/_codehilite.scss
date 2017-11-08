@@ -298,13 +298,6 @@ $codehilite-whitespace: transparent;
     // Add spacing to line number container
     .linenodiv {
       padding: 1.05rem 1.2rem;
-
-      // Stretch the line number container vertically, so it always aligns with
-      // the code container, even when there's a scrollbar.
-      &,
-      & > pre {
-        height: 100%;
-      }
     }
 
     // Disable user selection, so code can be easily copied without
