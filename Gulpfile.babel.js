@@ -417,7 +417,6 @@ gulp.task("watch", [
     `${config.views.src}/**/*.html`
   ], ["views:build"])
 
-  /* Minify views */
   gulp.watch([
     `${config.views.src}/assets/jq-mdc-web.js`,
     `${config.views.src}/assets/stylesheets/mdc-web.css`
@@ -431,7 +430,9 @@ gulp.task("help")
 
 gulp.task('assets:copy-mdc-web',
   function () {
-    gulp.src(`${config.assets.src}/jq-mdc-web.js`)
+    gulp.src([`${config.assets.src}/headroom.min.js`,
+        `${config.assets.src}/jQuery.headroom.min.js`,
+        `${config.assets.src}/jq-mdc-web.js`])
         .pipe(gulp.dest(`${config.assets.build}/javascripts/`));
     gulp.src(`${config.assets.src}/stylesheets/mdc-web.css`)
             .pipe(gulp.dest(`${config.assets.build}/stylesheets/`));

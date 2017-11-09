@@ -389,3 +389,28 @@ function configExcelToolbar(innerDoc,viewUrl){
   //   window.open(viewUrl.replace('view.aspx?', 'edit.aspx?'), '_blank');
   // });
 }
+
+
+/****** DO THE HEADROOM TOP BAR  ******/
+$(function() {
+
+  $("#header-docs").headroom({
+    // vertical offset in px before element is first unpinned
+    offset : 100,
+    // or you can specify tolerance individually for up/down scroll
+    tolerance : {
+        up : 15,
+        down : 0
+    }
+  });
+  $("#header-website").headroom({
+    // vertical offset in px before element is first unpinned
+    offset : 100,
+    // or you can specify tolerance individually for up/down scroll
+    tolerance : {
+        up : 15,
+        down : 0
+    }
+  });
+
+});

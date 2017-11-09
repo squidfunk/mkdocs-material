@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material-components",
-  "version": "1.10.6",
+  "version": "1.10.11",
   "description": "A Material Components Web theme for MkDocs",
   "keywords": [
     "mkdocs",
@@ -97,5 +97,8 @@
   "engines": {
     "node": ">= 5.0.0"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "headroom.js": "^0.9.4"
+  }
 }

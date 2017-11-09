@@ -84,6 +84,21 @@
       {% endif %}
     {% endblock %}
 
+        <!-- Analytic scripts -->
+    {% block analytics %}
+      {% if config.google_analytics %}
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.google_analytics[0] }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ config.google_analytics[0] }}');
+      </script>
+      {% endif %}
+    {% endblock %}
+
     <!-- JavaScript libraries -->
     {% block libs %}
       <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
@@ -191,7 +206,11 @@
 
     <!-- Application header -->
     {% block header %}
-      {% include "partials/header.html" %}
+      {% if "yakworks" in config.site_url or "9ci" in config.site_url %}
+        {% include "partials/header9.html" %}
+      {% else %}
+        {% include "partials/header.html" %}
+      {% endif %}
     {% endblock %}
 
     <!-- Container, necessary for web-application context -->
@@ -330,59 +349,57 @@
       <script>window.mdc.autoInit();</script>
 
       <!--script type="text/javascript" src="https://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script-->
-
+      <script src="{{ base_url }}/assets/javascripts/headroom.min.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/jQuery.headroom.min.js"></script>
       <script src="{{ base_url }}/assets/javascripts/jq-mdc-web.js"></script>
       <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
 
       <!-- Initialize application -->
       <script>
-        app.initialize({ url: { base: "{{ base_url }}" } });
+        app.initialize({
+          version: "{{ mkdocs_version }}",
+          url: {
+            base: "{{ base_url }}"
+          }
+        });
+
       </script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
       {% endfor %}
     {% endblock %}
 
-    <!-- Analytic scripts -->
-    {% block analytics %}
-      {% if config.google_analytics %}
-      <script>
-        (function(i,s,o,g,r,a,m){
-          i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
-          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
-          m.parentNode.insertBefore(a,m)
-        })(window, document,
-          "script", "https://www.google-analytics.com/analytics.js", "ga");
 
-        /* General initialization */
-        ga("create",
-          "{{ config.google_analytics[0] }}",
-          "{{ config.google_analytics[1] }}");
-        ga("set", "anonymizeIp", true);
-        ga("send", "pageview");
-
-        /* Track outbound links */
-        var links = document.getElementsByTagName("a");
-        Array.prototype.map.call(links, function(item) {
-          if (item.host != document.location.host) {
-            item.addEventListener("click", function() {
-              var action = item.getAttribute("data-md-action") || "follow";
-              ga("send", "event", "outbound", action, item.href);
+    {% if config.google_analytics %}
+    <script>
+      /* Track outbound links */
+      var links = document.getElementsByTagName("a");
+      Array.prototype.map.call(links, function(item) {
+        if (item.host != document.location.host) {
+          item.addEventListener("click", function() {
+            var action = item.getAttribute("data-md-action") || "follow";
+            gtag('event', action, {
+              'event_category': 'docs-outbound',
+              'event_label': item.href
             });
-          }
-        });
+          });
+        }
+      });
 
-        /* Register handler to log search on blur */
-        var query = document.forms.search.query;
-        query.addEventListener("blur", function() {
-          if (this.value) {
-            var path = document.location.pathname;
-            ga("send", "pageview", path + "?q=" + this.value);
-          }
-        });
-      </script>
-      {% endif %}
-    {% endblock %}
+      /* Register handler to log search on blur */
+      var query = document.forms.search.query;
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          gtag('event', 'page_view', {
+            'event_category': 'docs-search',
+            'event_label': path + "?q=" + this.value,
+            'value': path + "?q=" + this.value
+          });
+        }
+      });
+    </script>
+    {% endif %}
+
   </body>
 </html>

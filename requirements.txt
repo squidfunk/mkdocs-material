@@ -18,7 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-mkdocs>=0.16.3
+mkdocs==0.16.3
 pygments>=2.2
 pymdown-extensions>=3.4
 markdown-include>=0.5.1

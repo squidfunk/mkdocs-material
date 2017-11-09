@@ -18,7 +18,9 @@ theme_dir: material
 
 # Options
 extra:
-  version: 1.10.5
+  # can possibly use this for doing this from environmental variables
+  # https://github.com/cmacmackin/md-environ
+  version: 1.10.11
   # logo: images/logo_white.png
   #
   # use console.log(btoa('some-password')) in chrome console to generate.
@@ -68,6 +70,9 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.critic
 
+  # list of extensions https://github.com/Python-Markdown/markdown/wiki/Third-Party-Extensions
+  # see https://pyembed.github.io/usage/markdown/ for embedding youtube
+
   # the following are included in the ppymdown.extra and pymdown.github
   # - markdown.extensions.def_list
   # - markdown.extensions.footnotes
@@ -108,5 +113,5 @@ dev_addr: 0.0.0.0:8000
 
 # Google Analytics
 # google_analytics:
-#   - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
-#   - auto
+#  - UA-4372852-1 #!!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+#  - auto # this is not used here as we switched to googles new gtag.js
