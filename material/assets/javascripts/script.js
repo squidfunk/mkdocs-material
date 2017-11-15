@@ -366,7 +366,7 @@
    */
 
   window.addEventListener('keydown', function(ev) {
-    if (ev.keyCode === 77) {
+    if (ev.keyCode === 77 && document.activeElement.name !== 'query') {
       if (window.matchMedia("(max-width: 1219px)").matches) {
         drawerToggle.checked = true;
         focusDrawer();
