@@ -1,0 +1,62 @@
+/* Keyboard accessibility */
+
+/* Remove outline from all elements when user is NOT tabbing */
+body:not(.user-is-tabbing) :focus,
+.md-sidebar--primary {
+  outline: 0;
+}
+
+/* Give focus to clipboard button and summary */
+/* You can remove the whole rule if you remove outline: 0/none from buttons and summary in your code, it's just an example */
+.user-is-tabbing summary:focus,
+.user-is-tabbing .md-clipboard:focus:before {
+  outline: red solid 3px;
+}
+
+/* Change visibility of primary nav to make it focusable/not focusable on different screen sizes */
+.md-nav--primary {
+  visibility: hidden;
+  transition: visibility .25s cubic-bezier(.4,0,.2,1); /* Prevents immiediately dissapearing nav when hiding drawer */
+}
+#drawer:checked ~ .md-container .md-nav--primary {
+  visibility: visible;
+}
+@media only screen and (min-width: 76.25em) {
+  .md-nav--primary {
+    visibility: visible;
+    transition: none;
+  }
+}
+
+/* Change visibility of secondary nav to make it focusable/not focusable on different screen sizes */
+.md-nav--secondary {
+  visibility: hidden;
+  transition: visibility .25s cubic-bezier(.4,0,.2,1); /* Prevents immiediately dissapearing nav when hiding drawer */
+}
+#drawer:checked ~ .md-container .md-nav--secondary {
+  visibility: visible;
+}
+@media only screen and (min-width: 60em) {
+  .md-nav--secondary {
+    visibility: visible;
+    transition: border-left .25s;
+  }
+}
+
+/* Change collapsible navs visibility to enable/disable focus when tabbing */
+@media only screen and (min-width: 76.25em) {
+  .md-nav__toggle ~ .md-nav .md-nav__link {
+    visibility: hidden;
+    transition: visibility 0.25s cubic-bezier(0.86, 0, 0.07, 1); /* Prevents immiediately dissapearing collapsible nav when hiding */
+  }
+  .md-nav[data-md-state='expand'] .md-nav__link,
+  .md-nav__toggle:checked ~ .md-nav .md-nav__link {
+    visibility: visible;
+  }
+}
+
+/* No transition when tabbing for header link and backref */
+.user-is-tabbing .headerlink,
+.user-is-tabbing .md-typeset .footnote-backref {
+  transition: none;
+}
