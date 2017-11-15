@@ -55,7 +55,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * // Make TOC label (Table of contents) not focusable
+   * Make TOC label (Table of contents) not focusable
    * --------------------------------------------------------------------------
    */
 
@@ -118,8 +118,6 @@
 
   function mediaLarge(mql) {
     if (mql.matches) {
-      // Make site title not focusable on bigger screens
-      siteTitle.tabIndex = -1;
       // When screen is big and you click on the site title (Material for MkDocs in primary nav - it opens the drawer because of for attribute)
       siteTitle.setAttribute('for', '');
       Array.prototype.forEach.call(linksDrawer, function(el) {
@@ -128,6 +126,10 @@
       Array.prototype.forEach.call(focusableElements, function(el) {
         el.tabIndex = 0;
       });
+      // Make site title not focusable on bigger screens
+      siteTitle.tabIndex = -1;
+      // Make TOC label (Table of contents) not focusable
+      navTitles[navTitles.length - 1].tabIndex = -1;
       document.removeEventListener('focus', focusPrimary, true);
     } else {
       siteTitle.setAttribute('for', 'drawer');
@@ -209,22 +211,28 @@
       searchToggle.checked = false;
       // if TAB + SHIFT - focus on logo or menu icon (it will focus on one element because the other is always hidden)
       if (ev.shiftKey) {
-        document.getElementsByClassName('md-logo')[0].focus();
-        document.getElementsByClassName('md-icon--menu')[0].focus();
+        if (window.matchMedia("(min-width: 960px)").matches) {
+          document.getElementsByClassName('md-logo')[0].focus();
+          document.getElementsByClassName('md-icon--menu')[0].focus();
+        }
       } else {
-        // if only TAB key
-        // if repo
-        if(document.getElementsByClassName('md-source').length) {
-          // focus on repo source
-          document.getElementsByClassName('md-source')[0].focus();
-        // else if tabs
-        } else if(tabs.length) {
-          // focus on tabs
-          tabs[0].focus();
-        // if no repo and tabs
+        if (window.matchMedia("(min-width: 960px)").matches) {
+          // if only TAB key
+          // if repo
+          if(document.getElementsByClassName('md-source').length) {
+            // focus on repo source
+            document.getElementsByClassName('md-source')[0].focus();
+          // else if tabs
+          } else if(tabs.length) {
+            // focus on tabs
+            tabs[0].focus();
+          // if no repo and tabs
+          } else {
+            // focus on primary nav
+            sidebarPrimary.focus();
+          }
         } else {
-          // focus on primary nav
-          sidebarPrimary.focus();
+          document.getElementsByClassName('md-content')[0].focus();
         }
       }
     }
