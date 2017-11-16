@@ -38,11 +38,11 @@
   // Get secondary sidebar
   var sidebarSecondary = document.querySelector('.md-sidebar--secondary');
 
+  // Get secondary nav
+  var navSecondary = document.querySelector('.md-nav--secondary');
+
   // Get tabs
   var tabs = document.querySelector('.md-tabs');
-
-  // Get nav titles
-  var navTitles = document.getElementsByClassName('md-nav__title');
 
   // Get site title
   var siteTitle = document.querySelector('.md-nav__title--site');
@@ -62,18 +62,18 @@
   var firstFocusableContent = focusableContent[1]; // focusable[0] would be h1 headerlink which is hidden;
 
   // Get first focusable element in tabs
-  var firstFocusableTabs
-  if(tabs) {
+  var firstFocusableTabs;
+  if (tabs) {
     firstFocusableTabs = tabs.querySelector('a');
   }
 
   // Get first focusable element in primary sidebar
   var firstFocusableSidebarPrimary;
   var firstNavItem = sidebarPrimary.querySelector('.md-nav__item');
-  if(firstNavItem.classList.contains('md-nav__item--nested')) {
-    firstFocusableSidebarPrimary = sidebarPrimary.querySelector('label.md-nav__link')
+  if (firstNavItem.classList.contains('md-nav__item--nested')) {
+    firstFocusableSidebarPrimary = sidebarPrimary.querySelector('label.md-nav__link');
   } else {
-    firstFocusableSidebarPrimary = sidebarPrimary.querySelector('a.md-nav__link')
+    firstFocusableSidebarPrimary = sidebarPrimary.querySelector('a.md-nav__link');
   }
 
   // Get first focusable element in secondary sidebar
@@ -99,7 +99,7 @@
    * --------------------------------------------------------------------------
    */
 
-  if(searchInput) {
+  if (searchInput) {
     searchReset.tabIndex = -1;
   }
 
@@ -110,7 +110,7 @@
    * --------------------------------------------------------------------------
    */
 
-  if(sourceHeader) {
+  if (sourceHeader) {
     sourceHeader.tabIndex = -1;
   }
 
@@ -121,7 +121,7 @@
    * --------------------------------------------------------------------------
    */
 
-  if(tabs) {
+  if (tabs) {
     tabs.tabIndex = -1;
   }
 
@@ -189,7 +189,7 @@
     if (mql.matches) {
       // When screen is big and you click on the site title (Material for MkDocs in primary nav - it opens the drawer because of for attribute)
       siteTitle.setAttribute('for', '');
-      if(drawerToggle.checked) {
+      if (drawerToggle.checked) {
         resetTabindexes();
       }
       // Make site title not focusable on bigger screens
@@ -244,24 +244,29 @@
    */
 
   document.getElementsByClassName('md-search__overlay')[0].addEventListener('click', function() {
-    if(sourceHeader) {
+    if (sourceHeader) {
       // focus on repo source header, so next tab press will focus on source link
       sourceHeader.focus();
       return;
     // if tabs
     }
-    if(tabs && window.getComputedStyle(tabs).display === 'block') {
+    if (tabs && window.getComputedStyle(tabs).display === 'block') {
       // focus on tabs
       tabs.focus();
       return;
     }
     // if no repo and tabs and primary sidebar is visible
-    if(window.getComputedStyle(sidebarPrimary).visibility === 'visible') {
+    if (window.getComputedStyle(sidebarPrimary).visibility === 'visible') {
       sidebarPrimary.focus();
       return;
     }
+    // focus on first focusable element in secondary sidebar
+    if (navSecondary.innerHTML.trim() !== '') {
+      sidebarSecondary.focus();
+      return;
+    }
     // focus on secondary sidebar
-    sidebarSecondary.focus();
+    mdContent.focus();
   }, false);
 
   /**
@@ -292,24 +297,29 @@
         if (window.matchMedia("(min-width: 960px)").matches) {
           // if only TAB key
           // if repo
-          if(sourceHeader) {
+          if (sourceHeader) {
             // focus on repo source
             sourceLink.focus();
             return;
           }
           // if tabs
-          if(tabs && window.getComputedStyle(tabs).display === 'block') {
+          if (tabs && window.getComputedStyle(tabs).display === 'block') {
             // focus on tabs
             firstFocusableTabs.focus();
             return;
           }
           // if no repo and tabs and primary sidebar is visible (or you can check for 1220px media query)
-          if(window.getComputedStyle(navPrimary).visibility === 'visible') {
+          if (window.getComputedStyle(navPrimary).visibility === 'visible') {
             firstFocusableSidebarPrimary.focus();
             return;
           }
           // focus on first focusable element in secondary sidebar
-          firstFocusableSecondary.focus();
+          if (navSecondary.innerHTML.trim() !== '') {
+            firstFocusableSecondary.focus();
+            return;
+          }
+          // focus on first focusable element in content
+          firstFocusableContent.focus();
         } else {
           // focus on first focusable element in content
           firstFocusableContent.focus();
@@ -327,9 +337,9 @@
    */
 
   searchToggle.addEventListener('change', function() {
-    if(document.getElementsByClassName('md-search-result__list')[0].innerHTML.trim() !== '') {
+    if (document.getElementsByClassName('md-search-result__list')[0].innerHTML.trim() !== '') {
       var results = document.querySelectorAll('.md-search-result__link');
-      if(this.checked) {
+      if (this.checked) {
         Array.prototype.forEach.call(results, function(el) {
           el.tabIndex = 0;
         });
@@ -349,9 +359,9 @@
 
   window.addEventListener('keydown', function(ev) {
     // can't use !document.activeElement.form and !searchToggle.checked here because in your code you open search on these keys
-    if (/*!document.activeElement.form && !searchToggle.checked &&*/ (ev.keyCode === 70 || ev.keyCode === 83)) {
+    if (/* !document.activeElement.form && !searchToggle.checked && */ (ev.keyCode === 70 || ev.keyCode === 83)) {
       if (window.matchMedia("(max-width: 1219px)").matches) {
-        if(drawerToggle.checked) {
+        if (drawerToggle.checked) {
           drawerToggle.checked = false;
           drawerToggle.dispatchEvent(new Event('change'));
         }
@@ -444,13 +454,13 @@
   window.addEventListener('keydown', function(ev) {
     if (ev.keyCode === 77 && !document.activeElement.form) {
       if (window.matchMedia("(max-width: 1219px)").matches) {
-        if(drawerToggle.checked) {
+        if (drawerToggle.checked) {
           drawerToggle.checked = false;
           drawerToggle.dispatchEvent(new Event('change'));
         } else {
-          if(searchToggle.checked) {
+          if (searchToggle.checked) {
             searchToggle.checked = false;
-            searchToggle.dispatchEvent(new Event('change'))
+            searchToggle.dispatchEvent(new Event('change'));
           }
           drawerToggle.checked = true;
           drawerToggle.dispatchEvent(new Event('change'));
@@ -524,7 +534,7 @@
         });
       } else if (inputsChecked >= 1) {
         // if second sibling is nav it means it is submenu
-        if(element.nextElementSibling.nextElementSibling.classList.contains('md-nav')) {
+        if (element.nextElementSibling.nextElementSibling.classList.contains('md-nav')) {
           nav = element.nextElementSibling.nextElementSibling;
           // make "back" focusable
           nav.children[0].tabIndex = 0;
@@ -532,10 +542,10 @@
           focusableLinks = nav.children[1].children;
           Array.prototype.forEach.call(focusableLinks, function(el) {
             // if active link is inside that submenu, check what can be focusable - "a" element or "label", it depends on screen width because sometimes secondary nav is visible and sometimes not
-            if(el.querySelectorAll('.md-nav__link--active')[0] && window.getComputedStyle(el.querySelectorAll('.md-nav__link--active')[0]).display !== 'none') {
+            if (el.querySelectorAll('.md-nav__link--active')[0] && window.getComputedStyle(el.querySelectorAll('.md-nav__link--active')[0]).display !== 'none') {
               el.querySelectorAll('.md-nav__link--active')[0].tabIndex = 0;
             }
-            if(el.querySelectorAll('.md-nav__link--active')[1] && window.getComputedStyle(el.querySelectorAll('.md-nav__link--active')[1]).display !== 'none') {
+            if (el.querySelectorAll('.md-nav__link--active')[1] && window.getComputedStyle(el.querySelectorAll('.md-nav__link--active')[1]).display !== 'none') {
               el.querySelectorAll('.md-nav__link--active')[1].tabIndex = 0;
             }
             el.querySelectorAll('li > .md-nav__link')[0].tabIndex = 0;
@@ -571,7 +581,7 @@
 
   // Change tabindexes when changing drawer state
   drawerToggle.addEventListener('change', function() {
-    if(this.checked) {
+    if (this.checked) {
       focusDrawer();
     } else {
       resetTabindexes();
