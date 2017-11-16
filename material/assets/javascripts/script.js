@@ -417,14 +417,6 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Reset tabindexes when closing drawer clicking on the overlay
-   * --------------------------------------------------------------------------
-   */
-
-  document.getElementsByClassName('md-overlay')[0].addEventListener('click', resetTabindexes, false);
-
-  /**
-   * --------------------------------------------------------------------------
    * Open drawer with space/enter/return keys on smaller screens when
    * focusing on hamburger icon (match media is not required because on bigger
    * screens menu icon is not focusable)
