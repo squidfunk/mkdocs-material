@@ -488,24 +488,11 @@
    * --------------------------------------------------------------------------
    */
 
-  // get and set scroll top position on key down
-  var scrollTop = 0;
-  window.addEventListener('keydown', function(ev) {
-    if(ev.keyCode === 9) {
-      if(window.scroll) {
-        scrollTop = window.scrollY;
-      }
-    }
-  }, false);
-
   function focusPrimary(ev) {
     // it prevents focusing on other elements that are NOT in drawer
     if (document !== ev.target && sidebarPrimary !== ev.target && !sidebarPrimary.contains(ev.target)) {
       sidebarPrimary.querySelector('[tabindex="0"]').focus();
       // when drawer is opened, you are in the middle of the page and you are tabbing through links in drawer - when sidebar primary gets focus it will jump to the top of the page so we can read top scroll position on each TAB key press and scroll to that position to prevent jumping
-      if(window.scroll) {
-        window.scroll(0, scrollTop);
-      }
     }
   }
 
