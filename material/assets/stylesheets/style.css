@@ -2,7 +2,10 @@
 
 /* Remove outline from all elements when user is NOT tabbing */
 body:not(.user-is-tabbing) :focus,
-.md-sidebar--primary {
+/* Prevent focus style on this elements when we focus on them using JS */
+.md-sidebar--primary,
+.md-tabs,
+.md-header-nav__source {
   outline: 0;
 }
 
@@ -16,7 +19,7 @@ body:not(.user-is-tabbing) :focus,
 /* Change visibility of primary nav to make it focusable/not focusable on different screen sizes */
 .md-nav--primary {
   visibility: hidden;
-  transition: visibility .25s cubic-bezier(.4,0,.2,1); /* Prevents immiediately dissapearing nav when hiding drawer */
+  transition: visibility 0.25s cubic-bezier(0.4, 0, 0.2,1); /* Prevents immiediately dissapearing nav when hiding drawer */
 }
 #drawer:checked ~ .md-container .md-nav--primary {
   visibility: visible;
@@ -31,7 +34,7 @@ body:not(.user-is-tabbing) :focus,
 /* Change visibility of secondary nav to make it focusable/not focusable on different screen sizes */
 .md-nav--secondary {
   visibility: hidden;
-  transition: visibility .25s cubic-bezier(.4,0,.2,1); /* Prevents immiediately dissapearing nav when hiding drawer */
+  transition: visibility 0.25s cubic-bezier(0.4,0,0.2,1); /* Prevents immiediately dissapearing nav when hiding drawer */
 }
 #drawer:checked ~ .md-container .md-nav--secondary {
   visibility: visible;
@@ -39,7 +42,7 @@ body:not(.user-is-tabbing) :focus,
 @media only screen and (min-width: 60em) {
   .md-nav--secondary {
     visibility: visible;
-    transition: border-left .25s;
+    transition: border-left 0.25s;
   }
 }
 
