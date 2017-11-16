@@ -15,7 +15,7 @@
    */
 
   // Get all elements that should be focusable (labels) and they are not 'a', 'button', 'input' or something like that because they are focusable by default
-  var focusableElements = document.querySelectorAll('.md-icon--menu, .md-nav__title--site, .md-nav__item .md-nav__title, label.md-nav__link, .md-icon--search');
+  var focusableElements = document.querySelectorAll('.md-icon--menu, .md-nav__item .md-nav__title, label.md-nav__link, .md-icon--search');
 
   // Get search input
   var searchInput = document.querySelector('.md-search__input');
