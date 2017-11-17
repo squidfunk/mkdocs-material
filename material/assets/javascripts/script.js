@@ -48,7 +48,7 @@
   var siteTitle = document.querySelector('.md-nav__title--site');
 
   // Get all links and labels from primary and secondary nav in drawer
-  var linksDrawer = document.querySelectorAll('.md-sidebar--primary .md-nav__link, .md-sidebar--primary .md-nav__title, .md-nav__item > .md-nav--secondary .md-nav__link, .md-source, .md-ticksy');
+  var linksDrawer = document.querySelectorAll('.md-sidebar--primary .md-nav__link, .md-sidebar--primary .md-nav__title, .md-nav__item > .md-nav--secondary .md-nav__link, .md-source');
 
   // Get source header
   var sourceHeader = document.querySelector('.md-header-nav__source');
@@ -535,7 +535,7 @@
       if (inputsChecked === 0) {
         siteTitle.tabIndex = 0;
         // get all links in main menu
-        focusableLinks = document.querySelectorAll('.md-sidebar--primary .md-nav--primary > ul > li > .md-nav__link, .md-source, .md-ticksy');
+        focusableLinks = document.querySelectorAll('.md-sidebar--primary .md-nav--primary > ul > li > .md-nav__link, .md-source');
         Array.prototype.forEach.call(focusableLinks, function(el) {
           el.tabIndex = 0;
         });
