@@ -48,7 +48,7 @@
   var siteTitle = document.querySelector('.md-nav__title--site');
 
   // Get all links and labels from primary and secondary nav in drawer
-  var linksDrawer = document.querySelectorAll('.md-sidebar--primary .md-nav__link, .md-sidebar--primary .md-nav__title, .md-nav__item > .md-nav--secondary .md-nav__link, .md-source');
+  var linksDrawer = document.querySelectorAll('.md-sidebar--primary .md-nav__link, .md-sidebar--primary .md-nav__title, .md-nav__item > .md-nav--secondary .md-nav__link, .md-source, .md-ticksy');
 
   // Get source header
   var sourceHeader = document.querySelector('.md-header-nav__source');
@@ -78,6 +78,12 @@
 
   // Get first focusable element in secondary sidebar
   var firstFocusableSecondary = document.querySelector('.md-sidebar__inner > .md-nav--secondary .md-nav__link');
+
+  // I don't know why but in drawer pressing TAB in firefox causes focus on elements below (they are just simple divs...)
+  var firefoxFix = document.querySelectorAll('.md-nav__list');
+  Array.prototype.forEach.call(firefoxFix, function(el) {
+    el.tabIndex = -1;
+  });
 
 
 
@@ -493,7 +499,7 @@
   function focusPrimary(ev) {
     // it prevents focusing on other elements that are NOT in drawer
     if (document !== ev.target && sidebarPrimary !== ev.target && !sidebarPrimary.contains(ev.target)) {
-      sidebarPrimary.querySelector('[tabindex="0"]').focus();
+      sidebarPrimary.focus();
     }
   }
 
@@ -528,7 +534,7 @@
       if (inputsChecked === 0) {
         siteTitle.tabIndex = 0;
         // get all links in main menu
-        focusableLinks = document.querySelectorAll('.md-sidebar--primary .md-nav--primary > ul > li > .md-nav__link, .md-source');
+        focusableLinks = document.querySelectorAll('.md-sidebar--primary .md-nav--primary > ul > li > .md-nav__link, .md-source, .md-ticksy');
         Array.prototype.forEach.call(focusableLinks, function(el) {
           el.tabIndex = 0;
         });
@@ -602,6 +608,5 @@
       }
     }, false);
   });
-
 
 })(window, document);
