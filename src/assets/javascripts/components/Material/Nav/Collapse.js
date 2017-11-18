@@ -49,7 +49,7 @@ export default class Collapse {
    */
   setup() {
     const current = this.el_.getBoundingClientRect().height
-    const links = this.el_.querySelectorAll("a")
+    const links = this.el_.querySelectorAll("ul > li > a, ul > li > label")
     Array.prototype.forEach.call(links, link => {
       link.tabIndex = current ? 0 : -1
     })
@@ -93,7 +93,7 @@ export default class Collapse {
       })
 
       /* Make links unfocusable */
-      const links = this.el_.querySelectorAll("a")
+      const links = this.el_.querySelectorAll("a, label")                       // TODO: this currently also enables deeper links
       Array.prototype.forEach.call(links, link => {
         link.tabIndex = -1
       })
@@ -115,7 +115,7 @@ export default class Collapse {
       })
 
       /* Make links focusable */
-      const links = this.el_.querySelectorAll("a")
+      const links = this.el_.querySelectorAll("ul > li > a, ul > li > label")
       Array.prototype.forEach.call(links, link => {
         link.tabIndex = 0
       })
