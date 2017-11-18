@@ -61,9 +61,28 @@ export default class Collapse {
    * Internet Explorer 11 is very slow at recognizing changes on the dataset
    * which results in the menu not expanding or collapsing properly. THerefore,
    * for reasons of compatibility, the attribute accessors are used.
+   *
+   * @param {Event} ev - Event
    */
-  update() {
+  update(ev) {
     const current = this.el_.getBoundingClientRect().height
+
+    /* Capture Enter and Space keys */
+    if (ev instanceof KeyboardEvent) {
+      if ([13, 32].indexOf(ev.keyCode) === -1)
+        return
+      if (!(ev.target instanceof HTMLLabelElement))
+        throw new ReferenceError
+
+      /* Capture Enter and Space keys */
+      const toggle = ev.target.previousElementSibling
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
+
+      /* Collapse or expand */
+      toggle.checked = !toggle.checked
+      toggle.dispatchEvent(new CustomEvent("change"))
+    }
 
     /* Expanded, so collapse */
     if (current) {
@@ -103,8 +122,8 @@ export default class Collapse {
     }
 
     /* Remove state on end of transition */
-    const end = ev => {
-      const target = ev.target
+    const end = ev2 => {
+      const target = ev2.target
       if (!(target instanceof HTMLElement))
         throw new ReferenceError
 
