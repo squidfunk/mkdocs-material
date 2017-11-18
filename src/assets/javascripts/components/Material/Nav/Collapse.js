@@ -45,14 +45,44 @@ export default class Collapse {
   }
 
   /**
+   * Set initial focus state
+   */
+  setup() {
+    const current = this.el_.getBoundingClientRect().height
+    const links = this.el_.querySelectorAll("ul > li > a, ul > li > label")
+    Array.prototype.forEach.call(links, link => {
+      link.tabIndex = current ? 0 : -1
+    })
+  }
+
+  /**
    * Animate expand and collapse smoothly
    *
    * Internet Explorer 11 is very slow at recognizing changes on the dataset
    * which results in the menu not expanding or collapsing properly. THerefore,
    * for reasons of compatibility, the attribute accessors are used.
+   *
+   * @param {Event} ev - Event
    */
-  update() {
+  update(ev) {
     const current = this.el_.getBoundingClientRect().height
+
+    /* Capture Enter and Space keys */
+    if (ev instanceof KeyboardEvent) {
+      if ([13, 32].indexOf(ev.keyCode) === -1)
+        return
+      if (!(ev.target instanceof HTMLLabelElement))
+        throw new ReferenceError
+
+      /* Capture Enter and Space keys */
+      const toggle = ev.target.previousElementSibling
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
+
+      /* Collapse or expand */
+      toggle.checked = !toggle.checked
+      toggle.dispatchEvent(new CustomEvent("change"))
+    }
 
     /* Expanded, so collapse */
     if (current) {
@@ -60,6 +90,12 @@ export default class Collapse {
       requestAnimationFrame(() => {
         this.el_.setAttribute("data-md-state", "animate")
         this.el_.style.maxHeight = "0px"
+      })
+
+      /* Make links unfocusable */
+      const links = this.el_.querySelectorAll("a, label")                       // TODO: this currently also enables deeper links
+      Array.prototype.forEach.call(links, link => {
+        link.tabIndex = -1
       })
 
     /* Collapsed, so expand */
@@ -77,11 +113,17 @@ export default class Collapse {
         this.el_.setAttribute("data-md-state", "animate")
         this.el_.style.maxHeight = `${height}px`
       })
+
+      /* Make links focusable */
+      const links = this.el_.querySelectorAll("ul > li > a, ul > li > label")
+      Array.prototype.forEach.call(links, link => {
+        link.tabIndex = 0
+      })
     }
 
     /* Remove state on end of transition */
-    const end = ev => {
-      const target = ev.target
+    const end = ev2 => {
+      const target = ev2.target
       if (!(target instanceof HTMLElement))
         throw new ReferenceError
 

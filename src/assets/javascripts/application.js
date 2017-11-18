@@ -232,8 +232,8 @@ function initialize(config) { // eslint-disable-line func-style
     document.querySelectorAll("[data-md-component=collapsible]")
   Array.prototype.forEach.call(collapsibles, collapse => {
     new Material.Event.MatchMedia("(min-width: 1220px)",
-      new Material.Event.Listener(collapse.previousElementSibling, "click",
-        new Material.Nav.Collapse(collapse)))
+      new Material.Event.Listener(collapse.previousElementSibling,
+        ["click", "keydown"], new Material.Nav.Collapse(collapse)))
   })
 
   /* Component: active pane monitor for iOS scrolling fixes */
