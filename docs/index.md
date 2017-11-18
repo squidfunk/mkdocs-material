@@ -6,7 +6,7 @@ Material is a theme for [MkDocs][1], an excellent static site generator geared
 towards project documentation. It is built using Google's [Material Design][2]
 guidelines.
 
-[![Material for MkDocs](images/material.png)](images/material.png)
+[![Material for MkDocs](assets/images/material.png)](assets/images/material.png)
 
   [1]: http://www.mkdocs.org
   [2]: https://material.io/guidelines/material-design/
