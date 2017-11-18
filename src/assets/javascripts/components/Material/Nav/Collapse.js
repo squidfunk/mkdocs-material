@@ -45,6 +45,17 @@ export default class Collapse {
   }
 
   /**
+   * Set initial focus state
+   */
+  setup() {
+    const current = this.el_.getBoundingClientRect().height
+    const links = this.el_.querySelectorAll("a")
+    Array.prototype.forEach.call(links, link => {
+      link.tabIndex = current ? 0 : -1
+    })
+  }
+
+  /**
    * Animate expand and collapse smoothly
    *
    * Internet Explorer 11 is very slow at recognizing changes on the dataset
@@ -62,6 +73,12 @@ export default class Collapse {
         this.el_.style.maxHeight = "0px"
       })
 
+      /* Make links unfocusable */
+      const links = this.el_.querySelectorAll("a")
+      Array.prototype.forEach.call(links, link => {
+        link.tabIndex = -1
+      })
+
     /* Collapsed, so expand */
     } else {
       this.el_.setAttribute("data-md-state", "expand")
@@ -76,6 +93,12 @@ export default class Collapse {
       requestAnimationFrame(() => {
         this.el_.setAttribute("data-md-state", "animate")
         this.el_.style.maxHeight = `${height}px`
+      })
+
+      /* Make links focusable */
+      const links = this.el_.querySelectorAll("a")
+      Array.prototype.forEach.call(links, link => {
+        link.tabIndex = 0
       })
     }
 
