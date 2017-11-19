@@ -24,10 +24,10 @@ html:not(.md-tabbing) :focus,
 
 /* Hide invisible primary nav items (you use font-size: 0 ane they are focusable) */
 @media only screen and (min-width: 76.25em) {
-  .md-tabs ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item {
+  .md-tabs--active ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item {
     visibility: hidden;
   }
-  .md-tabs ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
+  .md-tabs--active ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
     visibility: visible;
   }
 }
