@@ -152,6 +152,13 @@ button[data-md-color-accent] {
   }
 }
 
+// Color tile for presentation in theme documentation
+button[data-md-color-primary="white"] {
+  background-color: $md-color-white;
+  color: $md-color-black;
+  box-shadow: 0 0 0.1rem $md-color-black--light inset;
+}
+
 // Overrides for white color
 [data-md-color-primary="white"] {
 
