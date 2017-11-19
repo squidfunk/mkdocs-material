@@ -47,8 +47,9 @@ Array.prototype.forEach.call(focusableElements, function(el) {
 })
 
 /* If tabs exist - remove tabindex from label with pointer events none (I'm changing tabindex of that when opening drawer) */
-if(tabs) {
-  document.querySelector('.md-tabs--active ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link').removeAttribute('tabindex')
+const navTitle = document.querySelector('.md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link');
+if(tabs && navTitle) {
+  navTitle.removeAttribute('tabindex')
 }
 
 /* Blur collapsible nav toggles on click (to remove focus color because now labels have tabindex=0 and when you click to open collapsible nav it will have a focus color) */
@@ -407,6 +408,10 @@ function focusDrawer() {
       }
     })
 
+    if(tabs && navTitle) {
+      navTitle.tabIndex = 0
+    }
+
     /* this part is a little bit tricky, when inputsChecked = 0 it means that you are in the main menu, if 1 or 2 - you are in the submenu or TOC */
     /* main menu */
     if (inputsChecked === 0) {
@@ -442,6 +447,11 @@ function focusDrawer() {
 function resetDrawer() {
   /* Make site title not focusable */
   siteTitle.tabIndex = -1
+
+  /* Make nav title not focusable if tabs */
+  if(tabs && navTitle) {
+    navTitle.removeAttribute('tabindex')
+  }
   sidebarPrimary.removeAttribute('data-md-menu')
   document.removeEventListener('focus', focusNavPrimaryInDrawer, true)
 
