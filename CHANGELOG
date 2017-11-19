@@ -1,3 +1,13 @@
+mkdocs-material-2.1.0 (2017-11-19)
+
+  * Added support for white as a primary color
+  * Added support for sliding site name and title
+  * Fixed redundant clipboard button when using line numbers on code blocks
+  * Improved header appearance by making it taller
+  * Improved tabs appearance
+  * Improved CSS customizability by leveraging inheritance
+  * Removed scroll shadows via background-attachment
+
 mkdocs-material-2.0.4 (2017-11-05)
 
   * Fixed details not opening with footnote reference

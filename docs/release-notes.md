@@ -12,7 +12,7 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.0.4
+# Version 2.1.0
 ```
 
 ### Material 1.x to 2.x
@@ -37,6 +37,16 @@ pip show mkdocs-material | grep -E ^Version
 * The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Changelog
+
+### 2.1.0 <small>_ November 19, 2017</small>
+
+* Added support for `white` as a primary color
+* Added support for sliding site name and title
+* Fixed redundant clipboard button when using line numbers on code blocks
+* Improved header appearance by making it taller
+* Improved tabs appearance
+* Improved CSS customizability by leveraging inheritance
+* Removed scroll shadows via `background-attachment`
 
 ### 2.0.4 <small>_ November 5, 2017</small>
 
