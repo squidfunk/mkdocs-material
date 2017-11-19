@@ -20,14 +20,58 @@
  * IN THE SOFTWARE.
  */
 
-import Shadow from "./Header/Shadow"
-import Title from "./Header/Title"
-
 /* ----------------------------------------------------------------------------
- * Module
+ * Class
  * ------------------------------------------------------------------------- */
 
-export default {
-  Shadow,
-  Title
+export default class Title {
+
+  /**
+   * Swap header title topics when header is scrolled past
+   *
+   * @constructor
+   *
+   * @property {HTMLElement} el_ - Element
+   * @property {HTMLElement} header_ - Header
+   * @property {boolean} active_ - Title state
+   *
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   * @param {(string|HTMLHeadingElement)} header - Selector or HTML element
+   */
+  constructor(el, header) {
+    let ref = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.el_ = ref
+
+    /* Retrieve header */
+    ref = (typeof header === "string")
+      ? document.querySelector(header)
+      : header
+    if (!(ref instanceof HTMLHeadingElement))
+      throw new ReferenceError
+    this.header_ = ref
+
+    /* Initialize state */
+    this.active_ = false
+  }
+
+  /**
+   * Update title state
+   */
+  update() {
+    const active = window.pageYOffset >= this.header_.offsetTop
+    if (active !== this.active_)
+      this.el_.dataset.mdState = (this.active_ = active) ? "active" : ""
+  }
+
+  /**
+   * Reset title state
+   */
+  reset() {
+    this.el_.dataset.mdState = ""
+    this.active_ = false
+  }
 }

@@ -76,8 +76,8 @@ button[data-md-color-accent] {
   "green":       $clr-green-500,
   "light-green": $clr-light-green-600,
   "lime":        $clr-lime-600,
-  "yellow":      $clr-yellow-600,
-  "amber":       $clr-amber-600,
+  "yellow":      $clr-yellow-800,
+  "amber":       $clr-amber-700,
   "orange":      $clr-orange-600,
   "deep-orange": $clr-deep-orange-400,
   "brown":       $clr-brown-500,
@@ -171,6 +171,11 @@ button[data-md-color-accent] {
     }
   }
 
+  // Table of contents
+  .md-nav--secondary {
+    border-left: 0.4rem solid $md-color-black--light;
+  }
+
   // [tablet portrait -]: Layered navigation
   @include break-to-device(tablet portrait) {
 
@@ -191,9 +196,15 @@ button[data-md-color-accent] {
     }
   }
 
-  // Table of contents
-  .md-nav--secondary {
-    border-left: 0.4rem solid $md-color-black--light;
+  // [screen +]: Set background color for tabs
+  @include break-from-device(screen) {
+
+    // Tabs with outline
+    .md-tabs {
+      border-bottom: 0.1rem solid $md-color-black--lightest;
+      background: $md-color-white;
+      color: $md-color-black;
+    }
   }
 }
 
