@@ -199,6 +199,14 @@ function initialize(config) { // eslint-disable-line func-style
       "[data-md-component=container]",
       "[data-md-component=header]")))
 
+  /* Component: header title toggle */
+  new Material.Event.Listener(window, [
+    "scroll", "resize", "orientationchange"
+  ], new Material.Header.Title(
+    "[data-md-component=title]",
+    ".md-typeset h1")
+  ).listen()
+
   /* Component: tabs visibility toggle */
   if (document.querySelector("[data-md-component=tabs]"))
     new Material.Event.Listener(window, [

@@ -48,7 +48,7 @@ theme:
   # Default values, taken from mkdocs_theme.yml
   language: en
   feature:
-    tabs: false
+    tabs: true
   palette:
     primary: indigo
     accent: indigo
