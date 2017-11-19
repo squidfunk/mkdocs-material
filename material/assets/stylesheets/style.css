@@ -1,25 +1,41 @@
 /* Keyboard accessibility */
 
 /* Remove outline from all elements when user is NOT tabbing */
-body:not(.user-is-tabbing) :focus,
+html:not(.md-tabbing) :focus,
 /* Prevent focus style on this elements when we focus on them using JS */
-.md-sidebar--primary,
-.md-tabs,
-.md-header-nav__source {
+.md-sidebar--primary {
   outline: 0;
 }
 
-/* Give focus to clipboard button and summary */
-/* You can remove the whole rule if you remove outline: 0/none from buttons and summary in your code, it's just an example */
-.user-is-tabbing summary:focus,
-.user-is-tabbing .md-clipboard:focus:before {
-  outline: red solid 3px;
+/* Focus for backref */
+.md-tabbing .footnote-backref:focus {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+}
+
+/* This is just an example, if you remove outline: 0/none from your stylesheet on buttons, summary and mathjax that rule is not needed */
+.md-tabbing summary:focus,
+.md-tabbing .md-clipboard:focus,
+.md-tabbing [data-md-component='reset']:focus,
+.md-tabbing .md-typeset .MathJax_CHTML:focus {
+  outline: 2px solid red;
+}
+
+/* Hide invisible primary nav items (you use font-size: 0 ane they are focusable) */
+@media only screen and (min-width: 76.25em) {
+  .md-tabs--active ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item {
+    visibility: hidden;
+  }
+  .md-tabs--active~.md-main .md-nav--primary>.md-nav__list>.md-nav__item--nested {
+    visibility: visible;
+  }
 }
 
 /* Change visibility of primary nav to make it focusable/not focusable on different screen sizes */
 .md-nav--primary {
   visibility: hidden;
-  transition: visibility 0.25s cubic-bezier(0.4, 0, 0.2,1); /* Prevents immiediately dissapearing nav when hiding drawer */
+  transition: visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Prevents immiediately dissapearing nav when hiding drawer */
 }
 #drawer:checked ~ .md-container .md-nav--primary {
   visibility: visible;
@@ -31,10 +47,29 @@ body:not(.user-is-tabbing) :focus,
   }
 }
 
+/* Add visibility to drawer nav transition */
+@media only screen and (max-width: 76.1875em) {
+  .md-nav__toggle ~ .md-nav {
+    transition: transform 0.25s cubic-bezier(0.8, 0, 0.6, 1), opacity 0.125s 0.05s, visibility 0.125s 0.05s;
+  }
+}
+
+/* Change visibility of navs in drawer to make it focusable/not focusable depending on where you are in the menu in drawer */
+#drawer:checked ~ .md-container .md-sidebar--primary[data-md-menu="main"] .md-nav--primary .md-nav,
+#drawer:checked ~ .md-container .md-sidebar--primary[data-md-menu="toc"] .md-nav,
+#drawer:checked ~ .md-container .md-sidebar--primary[data-md-menu="sub"] .md-nav,
+#drawer:checked ~ .md-container .md-sidebar--primary [data-md-menu-state="active"] .md-nav--secondary {
+  visibility: hidden;
+}
+#drawer:checked ~ .md-container .md-sidebar--primary .md-nav[data-md-menu-state="active"],
+#drawer:checked ~ .md-container .md-sidebar--primary .md-nav[data-md-menu-state="active"] .md-nav {
+  visibility: visible;
+}
+
 /* Change visibility of secondary nav to make it focusable/not focusable on different screen sizes */
 .md-nav--secondary {
   visibility: hidden;
-  transition: visibility 0.25s cubic-bezier(0.4,0,0.2,1); /* Prevents immiediately dissapearing nav when hiding drawer */
+  transition: visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Prevents immiediately dissapearing nav when hiding drawer */
 }
 #drawer:checked ~ .md-container .md-nav--secondary {
   visibility: visible;
@@ -59,7 +94,58 @@ body:not(.user-is-tabbing) :focus,
 }
 
 /* No transition when tabbing for header link and backref */
-.user-is-tabbing .headerlink,
-.user-is-tabbing .md-typeset .footnote-backref {
+.md-tabbing .headerlink,
+.md-tabbing .md-typeset .footnote-backref {
   transition: none;
+}
+
+/* Skip to main content */
+.md-skip:not(:focus):not(:active) {
+  position: fixed;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+.md-skip:focus {
+  font-size: 1.6rem;
+  position: fixed;
+  top: 6.1rem; /* 5.6rem header + 0.5rem */
+  left: 0;
+  z-index: -1;
+}
+@media only screen and (min-width: 76.25em) {
+  .md-tabs ~ .md-skip {
+    top: 10.9rem;
+  }
+  .md-tabs[data-md-state="hidden"] ~ .md-skip {
+    top: 6.1rem;
+  }
+}
+.md-skip:before {
+  display: block;
+  margin-top: -0.4rem;
+  padding-top: 0.4rem;
+  content: '';
+}
+.md-skip:before {
+  margin-top: -8.4rem;
+  padding-top: 8.4rem;
+}
+
+/* Skip link focus on h1 headerlink, so we need to add offsets to h1 too */
+.md-typeset h1[id]::before {
+  display: block;
+  margin-top: -0.4rem;
+  padding-top: 0.4rem;
+  content: '';
+}
+.md-typeset h1[id]:target:before {
+  margin-top: -8.4rem;
+  padding-top: 8.4rem;
 }
