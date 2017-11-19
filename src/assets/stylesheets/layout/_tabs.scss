@@ -28,7 +28,7 @@
 .md-tabs {
   width: 100%;
   transition: background 0.25s;
-  background: mix($md-color-primary, $md-color-black, 75%);
+  background: $md-color-primary;
   overflow: auto;
 
   // [tablet -]: Hide tabs for tablet and below, as they don't make any sense
@@ -86,7 +86,6 @@
 
   // Fade-out tabs background upon scrolling
   &[data-md-state="hidden"] {
-    background: $md-color-primary;
     pointer-events: none;
 
     // Hide tabs upon scrolling - disable transition to minimizes repaints whilte

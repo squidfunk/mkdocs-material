@@ -9,7 +9,7 @@
     {% else %}
       <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}">
     {% endif %}
-    <label class="md-nav__link" for="{{ path }}" tabindex="0">
+    <label class="md-nav__link" for="{{ path }}">
       {{ nav_item.title }}
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="{{ level }}">
@@ -38,7 +38,7 @@
         {{ nav_item.title }}
       </label>
     {% endif %}
-    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link md-nav__link--active" tabindex="0">
+    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link md-nav__link--active">
       {{ nav_item.title }}
     </a>
     {% if toc_ | first is defined %}
@@ -47,7 +47,7 @@
   </li>
 {% else %}
   <li class="{{ class }}">
-    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link" tabindex="0">
+    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}" class="md-nav__link">
       {{ nav_item.title }}
     </a>
   </li>

@@ -47,7 +47,7 @@ $md-toggle__drawer--checked:
   // Lock sidebar to container height (account for fixed header)
   &[data-md-state="lock"] {
     position: fixed;
-    top: 5.6rem;
+    top: 4.8rem;
   }
 
   // [tablet -]: Convert navigation to drawer

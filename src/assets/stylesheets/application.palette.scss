@@ -76,7 +76,7 @@ button[data-md-color-accent] {
   "green":       $clr-green-500,
   "light-green": $clr-light-green-600,
   "lime":        $clr-lime-600,
-  "yellow":      $clr-yellow-800,
+  "yellow":      $clr-yellow-600,
   "amber":       $clr-amber-600,
   "orange":      $clr-orange-600,
   "deep-orange": $clr-deep-orange-400,
@@ -146,14 +146,54 @@ button[data-md-color-accent] {
 
       // Tabs with outline
       .md-tabs {
-        background: mix($color, $md-color-black, 75%);
-
-        // Fade-out tabs background upon scrolling
-        &[data-md-state="hidden"] {
-          background: $color;
-        }
+        background: $color;
       }
     }
+  }
+}
+
+// Overrides for white color
+[data-md-color-primary="white"] {
+
+  // Application header (stays always on top)
+  .md-header {
+    background-color: $md-color-white;
+    color: $md-color-black;
+  }
+
+  // Search input
+  .md-search__input {
+    background-color: $md-color-black--lightest;
+
+    // Search input placeholder
+    &::placeholder {
+      color: $md-color-black--light;
+    }
+  }
+
+  // [tablet portrait -]: Layered navigation
+  @include break-to-device(tablet portrait) {
+
+    // Repository containing source
+    .md-nav__source {
+      background-color: $md-color-black--lightest;
+      color: $md-color-black;
+    }
+  }
+
+  // [tablet -]: Layered navigation
+  @include break-to-device(tablet) {
+
+    // Site title in main navigation
+    html & .md-nav--primary .md-nav__title--site {
+      background-color: $md-color-white;
+      color: $md-color-black;
+    }
+  }
+
+  // Table of contents
+  .md-nav--secondary {
+    border-left: 0.4rem solid $md-color-black--light;
   }
 }
 

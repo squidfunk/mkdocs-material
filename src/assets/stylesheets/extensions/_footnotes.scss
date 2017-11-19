@@ -39,8 +39,8 @@
 
     // Targeted anchor
     &:target::before {
-      margin-top: -(5.6rem + 2.4rem + 1.8rem);
-      padding-top: (5.6rem + 2.4rem + 1.8rem);
+      margin-top: -(4.8rem + 2.4rem + 1.8rem);
+      padding-top: (4.8rem + 2.4rem + 1.8rem);
     }
   }
 
@@ -71,8 +71,8 @@
 
       // Targeted footnote
       &:target::before {
-        margin-top: -(5.6rem + 2.4rem + 1rem);
-        padding-top: (5.6rem + 2.4rem + 1rem);
+        margin-top: -(4.8rem + 2.4rem + 1rem);
+        padding-top: (4.8rem + 2.4rem + 1rem);
         pointer-events: none;
       }
 
