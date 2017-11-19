@@ -27,7 +27,7 @@ html:not(.md-tabbing) :focus,
   .md-tabs ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item {
     visibility: hidden;
   }
-  .md-tabs ~ .md-main .md-nav--primary>.md-nav__list > .md-nav__item--nested {
+  .md-tabs ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
     visibility: visible;
   }
 }
@@ -89,7 +89,7 @@ html:not(.md-tabbing) :focus,
   }
   .md-nav[data-md-state='expand'] .md-nav__link,
   .md-nav__toggle:checked ~ .md-nav .md-nav__link,
-  .md-tabs ~ .md-main .md-nav__link {
+  .md-tabs ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested .md-nav__link {
     visibility: visible;
   }
 }
