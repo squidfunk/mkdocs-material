@@ -159,8 +159,8 @@ theme:
 Color names are case-insensitive, but must match the names of the Material
 Design color palette. Valid values are: `red`, `pink`, `purple`, `deep purple`,
 `indigo`, `blue`, `light blue`, `cyan`, `teal`, `green`, `light green`, `lime`,
-`yellow`, `amber`, `orange`, `deep orange`, `brown`, `grey` and `blue grey`.
-The last three colors can only be used as a primary color.
+`yellow`, `amber`, `orange`, `deep orange`, `brown`, `grey`, `blue grey` and
+`white`. The four three colors can only be used as a primary color.
 
 If the color is set via this configuration, an additional CSS file that
 defines the color palette is automatically included. If you want to keep things
@@ -195,6 +195,7 @@ Click on a tile to change the primary color of the theme:
 <button data-md-color-primary="brown">Brown</button>
 <button data-md-color-primary="grey">Grey</button>
 <button data-md-color-primary="blue-grey">Blue Grey</button>
+<button data-md-color-primary="white">White</button>
 
 <script>
   var buttons = document.querySelectorAll("button[data-md-color-primary]");
