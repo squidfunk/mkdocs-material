@@ -215,27 +215,7 @@
 
         // Main lists
         ~ .md-nav__list {
-
-          // Pure CSS scrolling shadows, taken from
-          // http://lea.verou.me/2012/04/background-attachment-local/
-          background:
-            linear-gradient(
-              to bottom,
-              $md-color-white 10%,
-              $md-color-white--transparent
-            ),
-            linear-gradient(
-              to bottom,
-              $md-color-black--lighter,
-              $md-color-black--lightest 35%,
-              $md-color-black--transparent 60%
-            );
-          background-attachment: local, scroll;
           background-color: $md-color-white;
-          background-repeat: no-repeat;
-          background-size: 100% 2rem, 100% 1rem;
-
-          // End of scrolling shadow definition
           box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
 
           // Remove border for first list item

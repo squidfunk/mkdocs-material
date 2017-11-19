@@ -59,12 +59,31 @@ export default class Title {
   }
 
   /**
-   * Update title state
+   * Setup title state
    */
-  update() {
+  setup() {
+    Array.prototype.forEach.call(this.el_.children, node => {                   // TODO: use childNodes here for IE?
+      node.style.width = `${this.el_.offsetWidth - 20}px`
+    })
+  }
+
+  /**
+   * Update title state
+   *
+   * @param {Event} ev - Event
+   */
+  update(ev) {
     const active = window.pageYOffset >= this.header_.offsetTop
     if (active !== this.active_)
       this.el_.dataset.mdState = (this.active_ = active) ? "active" : ""
+
+    /* Hack: induce ellipsis on topics */
+    if (ev.type === "resize") {
+      Array.prototype.forEach.call(this.el_.children, node => {
+        node.style.width = `${this.el_.offsetWidth - 20}px`
+      })
+    }
+
   }
 
   /**
@@ -72,6 +91,7 @@ export default class Title {
    */
   reset() {
     this.el_.dataset.mdState = ""
+    this.el_.style.width = ""
     this.active_ = false
   }
 }
