@@ -300,10 +300,10 @@ theme:
 
 Material for MkDocs supports internationalization (i18n) and provides
 translations for all template variables and labels in English `en`, French `fr`,
-German `de`, Spanish `es`, Italian `it`, Danish `da`, Polish `pl`, Norwegian
-`no`, Swedish `sv`, Korean `kr`, Russian `ru`, Japanese `ja`, Chinese
-(Simplified) `zh` and Chinese (Traditional) `zh-Hant`. Specify the language
-with:
+German `de`, Spanish `es`, Italian `it`, Danish `da`, Portugese `pt`,
+Polish `pl`, Norwegian `no`, Swedish `sv`, Korean `kr`, Russian `ru`,
+Japanese `ja`, Chinese (Simplified) `zh` and Chinese (Traditional) `zh-Hant`.
+Specify the language with:
 
 ``` yaml
 theme:
@@ -344,9 +344,9 @@ All defined languages are used only for stemming. This will automatically load
 the stemmers for the specified languages and set them up with site search.
 
 At the time of writing, the following languages are supported: English `en`,
-French `fr`, German `de`, Spanish `es`, Italian `it`, Japanese `jp`, Dutch `du`,
-Danish `da`, Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`,
-Russian `ru`, Norwegian `no`, Swedish `sv` and Turkish `tr`.
+French `fr`, German `de`, Spanish `es`, Italian `it`, Dutch `du`, Danish `da`,
+Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`, Russian `ru`,
+Norwegian `no`, Swedish `sv`, Japanese `jp` and Turkish `tr`.
 
 !!! warning "Only specify the languages you really need"
 
