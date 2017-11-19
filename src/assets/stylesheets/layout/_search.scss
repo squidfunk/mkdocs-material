@@ -55,8 +55,8 @@ $md-toggle__search--checked:
       position: absolute;
       top: 0.4rem;
       left: 0.4rem;
-      width: 4rem;
-      height: 4rem;
+      width: 3.6rem;
+      height: 3.6rem;
       transform-origin: center;
       transition:
         transform 0.3s 0.1s,
@@ -155,6 +155,7 @@ $md-toggle__search--checked:
     @include break-from-device(tablet landscape) {
       position: relative;
       width: 23rem;
+      padding: 0.2rem 0;
       float: right;
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
     }
@@ -210,27 +211,31 @@ $md-toggle__search--checked:
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
       width: 100%;
-      height: 5.6rem;
+      height: 4.8rem;
       font-size: 1.8rem;
     }
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       width: 100%;
-      height: 4rem;
-      padding-left: 4.8rem;
+      height: 3.6rem;
+      padding-left: 4.4rem;
       transition:
         background-color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1),
         color            0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
       border-radius: 0.2rem;
       background-color: $md-color-black--lighter;
-      color: $md-color-white;
+      color: inherit;
       font-size: ms(0);
 
+      // Icon color
+      + .md-search__icon {
+        color: inherit;
+      }
+
       // Placeholder color
-      + .md-search__icon,
       &::placeholder {
-        color: $md-color-white;
+        color: $md-color-white--light;
       }
 
       // Hovered search field
@@ -271,8 +276,8 @@ $md-toggle__search--checked:
 
     // Search icon
     &[for="search"] {
-      top: $md-icon-padding;
-      left: $md-icon-padding + $md-icon-margin;
+      top: 0.6rem;
+      left: 1rem;
 
       // Set search icon on pseudo class, so it can be overridden for mobile
       // and tablet when the search is rendered in an overlay
@@ -282,7 +287,7 @@ $md-toggle__search--checked:
 
       // [tablet portrait -]: Full-screen search bar
       @include break-to-device(tablet portrait) {
-        top: 1.6rem;
+        top: 1.2rem;
         left: 1.6rem;
 
         // Show back arrow instead of search icon
@@ -294,8 +299,8 @@ $md-toggle__search--checked:
 
     // Reset button
     &[type="reset"] {
-      top: $md-icon-padding;
-      right: $md-icon-padding + $md-icon-margin;
+      top: 0.6rem;
+      right: 1rem;
       transform: scale(0.125);
       transition:
         transform 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
@@ -304,7 +309,7 @@ $md-toggle__search--checked:
 
       // [tablet portrait -]: Full-screen search bar
       @include break-to-device(tablet portrait) {
-        top: 1.6rem;
+        top: 1.2rem;
         right: 1.6rem;
       }
 
@@ -331,13 +336,13 @@ $md-toggle__search--checked:
 
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
-      top: 5.6rem;
+      top: 4.8rem;
       bottom: 0;
     }
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
-      top: 4rem;
+      top: 3.8rem;
       transition: opacity 0.4s;
       opacity: 0;
 
@@ -353,27 +358,7 @@ $md-toggle__search--checked:
   // Wrapper for scrolling on overflow
   &__scrollwrap {
     height: 100%;
-
-    // Pure CSS scrolling shadows, taken from
-    // http://lea.verou.me/2012/04/background-attachment-local/
-    background:
-      linear-gradient(
-        to bottom,
-        $md-color-white 10%,
-        $md-color-white--transparent
-      ),
-      linear-gradient(
-        to bottom,
-        $md-color-black--lighter,
-        $md-color-black--lightest 35%,
-        $md-color-black--transparent 60%
-      );
-    background-attachment: local, scroll;
     background-color: $md-color-white;
-    background-repeat: no-repeat;
-    background-size: 100% 2rem, 100% 1rem;
-
-    // End of scrolling shadow definition
     box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -427,11 +412,11 @@ $md-toggle__search--checked:
     background-color: $md-color-black--lightest;
     color: $md-color-black--light;
     font-size: ms(-1);
-    line-height: 4rem;
+    line-height: 3.6rem;
 
     // [tablet landscape +]: Increase left indent
     @include break-from-device(tablet landscape) {
-      padding-left: 4.8rem;
+      padding-left: 4.4rem;
     }
   }
 
@@ -480,7 +465,7 @@ $md-toggle__search--checked:
 
     // [tablet landscape +]: Increase left indent
     @include break-from-device(tablet landscape) {
-      padding-left: 4.8rem;
+      padding-left: 4.4rem;
     }
 
     // Document
@@ -492,6 +477,7 @@ $md-toggle__search--checked:
 
         position: absolute;
         left: 0;
+        margin: 0.2rem;
         transition: opacity 0.25s;
         color: $md-color-black--light;
         content: "\E880"; // find_in_page
@@ -504,7 +490,7 @@ $md-toggle__search--checked:
 
       // Title
       .md-search-result__title {
-        margin: 1.3rem 0;
+        margin: 1.1rem 0;
         font-size: ms(0);
         font-weight: 400;
         line-height: 1.4;

@@ -72,10 +72,10 @@
         content: "";
       }
 
-      // Targeted anchor (56px from header, 24px from sidebar offset)
+      // Targeted anchor (48px from header, 24px from sidebar offset)
       &:target::before {
-        margin-top: -(5.6rem + 2.4rem + $delta);
-        padding-top: (5.6rem + 2.4rem + $delta);
+        margin-top: -(4.8rem + 2.4rem + $delta);
+        padding-top: (4.8rem + 2.4rem + $delta);
       }
 
       // Make permalink visible on hover

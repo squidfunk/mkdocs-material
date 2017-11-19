@@ -294,7 +294,7 @@
       .md-nav__link {
         position: relative;
         margin-top: 0;
-        padding: 1.6rem;
+        padding: 1.2rem 1.6rem;
 
         // Rotate icon
         &::after {
@@ -407,7 +407,7 @@
     // Repository containing source
     &__source {
       display: block;
-      padding: 0.4rem;
+      padding: 0 0.4rem;
       background-color: mix($md-color-primary, $md-color-black, 75%);
       color: $md-color-white;
     }
