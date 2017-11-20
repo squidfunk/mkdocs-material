@@ -20,6 +20,13 @@
  * IN THE SOFTWARE.
  */
 
+import "../images/icons/bitbucket.svg"
+import "../images/icons/github.svg"
+import "../images/icons/gitlab.svg"
+
+import "../stylesheets/application.scss"
+import "../stylesheets/application.palette.scss"
+
 import Clipboard from "clipboard"
 import FastClick from "fastclick"
 

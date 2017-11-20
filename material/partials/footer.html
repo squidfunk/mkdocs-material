@@ -1,8 +1,16 @@
+
+
 {% import "partials/language.html" as lang with context %}
+
+
 <footer class="md-footer">
+
+  
   {% if page.previous_page or page.next_page %}
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
+
+        
         {% if page.previous_page %}
           <a href="{{ page.previous_page.url }}" title="{{ page.previous_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -18,6 +26,8 @@
             </div>
           </a>
         {% endif %}
+
+        
         {% if page.next_page %}
           <a href="{{ page.next_page.url }}" title="{{ page.next_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
@@ -36,8 +46,12 @@
       </nav>
     </div>
   {% endif %}
+
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
+
+      
       <div class="md-footer-copyright">
         {% if config.copyright %}
           <div class="md-footer-copyright__highlight">
@@ -50,6 +64,8 @@
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
+
+      
       {% block social %}
         {% include "partials/social.html" %}
       {% endblock %}

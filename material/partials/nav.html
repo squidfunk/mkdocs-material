@@ -1,4 +1,9 @@
+
+
+
 <nav class="md-nav md-nav--primary" data-md-level="0">
+
+  
   <label class="md-nav__title md-nav__title--site" for="drawer">
     <span class="md-nav__button md-logo">
       {% if config.theme.logo.icon %}
@@ -9,11 +14,15 @@
     </span>
     {{ config.site_name }}
   </label>
+
+  
   {% if config.repo_url %}
     <div class="md-nav__source">
       {% include "partials/source.html" %}
     </div>
   {% endif %}
+
+  
   <ul class="md-nav__list" data-md-scrollfix>
     {% for nav_item in nav %}
       {% set path = "nav-" + loop.index | string %}
