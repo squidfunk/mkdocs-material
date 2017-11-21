@@ -94,6 +94,9 @@ module.exports = env => {
     /* Plugins */
     plugins: [
 
+      /* Make hashes stable by using relative paths */
+      new webpack.HashedModuleIdsPlugin(),
+
       /* Combine all dependencies into a single file */
       new webpack.optimize.CommonsChunkPlugin({
         name: "src/assets/javascripts/modernizr.js",
