@@ -1,9 +1,4 @@
-
-
-
 {% import "partials/language/" + config.theme.language + ".html" as lang %}
-
-
 {% macro t(key) %}{{ {
   "search.language": (
     config.extra.search | default({})

@@ -1,13 +1,6 @@
-
-
-
 <header class="md-header" data-md-component="header">
-
-  
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
-
-      
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="{{ config.site_url | default(nav.homepage.url, true) }}" title="{{ config.site_name }}" class="md-header-nav__button md-logo">
           {% if config.theme.logo.icon %}
@@ -17,13 +10,9 @@
           {% endif %}
         </a>
       </div>
-
-      
       <div class="md-flex__cell md-flex__cell--shrink">
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
       </div>
-
-      
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           {% block site_name %}
@@ -40,20 +29,14 @@
           {% endblock %}
         </div>
       </div>
-
-      
       <div class="md-flex__cell md-flex__cell--shrink">
         {% block search_box %}
           {% if "search" in config["plugins"] %}
             <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
-
-            
             {% include "partials/search.html" %}
           {% endif %}
         {% endblock %}
       </div>
-
-      
       {% if config.repo_url %}
         <div class="md-flex__cell md-flex__cell--shrink">
           <div class="md-header-nav__source">

@@ -25,7 +25,7 @@ import "../images/icons/github.svg"
 import "../images/icons/gitlab.svg"
 
 import "../stylesheets/application.scss"
-import "../stylesheets/application.palette.scss"
+import "../stylesheets/application-palette.scss" // TODO: "-" necessary?
 
 import Clipboard from "clipboard"
 import FastClick from "fastclick"
