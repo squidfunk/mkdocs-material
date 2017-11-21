@@ -182,17 +182,14 @@ module.exports = env => {
   ]) {
     const plugin = new ExtractTextPlugin(
       `assets/stylesheets/${
-        stylesheet.replace(".scss", env && env.prod
-          ? ".[md5:contenthash:hex:8].css"
-          : ".css")}`)
+        stylesheet.replace(".scss",
+          env && env.prod ? ".[md5:contenthash:hex:8]" : ""
+        )}.css`)
 
     /* Register plugin */
     config.plugins.push(plugin)
     config.module.rules.push({
       test: new RegExp(`${stylesheet}$`),
-      include: [
-        path.resolve(__dirname, "src/assets/stylesheets")
-      ],
       use: plugin.extract({
         use: [
           {
