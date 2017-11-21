@@ -21,48 +21,44 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
-@import "material-shadows";
+// Hero teaser
+.md-hero {
+  transition: background 0.25s;
+  background: $md-color-primary;
+  color: $md-color-white;
+  font-size: ms(1);
+  overflow: auto;
 
-// ----------------------------------------------------------------------------
-// Local imports
-// ----------------------------------------------------------------------------
+  // Inner wrapper
+  &__inner {
+    margin-top: 2rem;
+    padding: 1.6rem 1.6rem 0.8rem;
+    transition:
+      transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity   0.25s;
 
-@import "helpers/break";
-@import "helpers/px2em";
+    // [tablet -]: Compensate for missing tabs
+    @include break-to-device(tablet) {
+      margin-top: 4.8rem;
+      margin-bottom: 2.4rem;
+    }
 
-@import "config";
+    // Fade-out tabs background upon scrolling
+    [data-md-state="hidden"] & {
+      pointer-events: none;
+      transform: translateY(1.25rem);
+      transition:
+        transform 0s 0.4s,
+        opacity   0.1s;
+      opacity: 0;
+    }
 
-@import "base/reset";
-@import "base/icons";
-@import "base/typeset";
-
-@import "layout/base";
-@import "layout/clipboard";
-@import "layout/content";
-@import "layout/header";
-@import "layout/hero";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/search";
-@import "layout/sidebar";
-@import "layout/source";
-@import "layout/tabs";
-
-@import "extensions/admonition";
-@import "extensions/codehilite";
-@import "extensions/footnotes";
-@import "extensions/permalinks";
-
-@import "extensions/pymdown/arithmatex";
-@import "extensions/pymdown/critic";
-@import "extensions/pymdown/details";
-@import "extensions/pymdown/emoji";
-@import "extensions/pymdown/inlinehilite";
-@import "extensions/pymdown/tasklist";
-
-@import "shame";
+    /* Adjust bottom spacing if there are no tabs */
+    .md-hero--expand & {
+      margin-bottom: 2.4rem;
+    }
+  }
+}

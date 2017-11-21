@@ -46,7 +46,6 @@ export default class Toggle {
     this.el_ = ref
 
     /* Initialize offset and state */
-    this.offset_ = 5
     this.active_ = false
   }
 
@@ -54,7 +53,8 @@ export default class Toggle {
    * Update visibility
    */
   update() {
-    const active = window.pageYOffset >= this.offset_
+    const active = window.pageYOffset >=
+      this.el_.children[0].offsetTop + (5 - 48)                                 // TODO: quick hack to enable same handling for hero
     if (active !== this.active_)
       this.el_.dataset.mdState = (this.active_ = active) ? "hidden" : ""
   }

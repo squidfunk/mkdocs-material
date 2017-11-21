@@ -76,11 +76,18 @@ export default class Shadow {
 
   /**
    * Update shadow state
+   *
+   * @param {Event} ev - Event
    */
-  update() {
-    const active = window.pageYOffset >= this.height_
-    if (active !== this.active_)
-      this.header_.dataset.mdState = (this.active_ = active) ? "shadow" : ""
+  update(ev) {
+    if (ev && (ev.type === "resize" || ev.type === "orientationchange")) {
+      this.height_ = 0
+      this.setup()
+    } else {
+      const active = window.pageYOffset >= this.height_
+      if (active !== this.active_)
+        this.header_.dataset.mdState = (this.active_ = active) ? "shadow" : ""
+    }
   }
 
   /**

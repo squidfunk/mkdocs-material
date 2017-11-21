@@ -78,7 +78,7 @@ export default class Title {
       this.el_.dataset.mdState = (this.active_ = active) ? "active" : ""
 
     /* Hack: induce ellipsis on topics */
-    if (ev.type === "resize") {
+    if (ev.type === "resize" || ev.type === "orientationchange") {
       Array.prototype.forEach.call(this.el_.children, node => {
         node.style.width = `${this.el_.offsetWidth - 20}px`
       })

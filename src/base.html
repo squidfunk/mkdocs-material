@@ -40,7 +40,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
       <!-- Page description -->
-      {% if page and page.meta.description %}
+      {% if page and page.meta and page.meta.description %}
         <meta name="description"
             content="{{ page.meta.description }}" />
       {% elif config.site_description %}
@@ -53,7 +53,7 @@
       {% endif %}
 
       <!-- Page author -->
-      {% if page and page.meta.author %}
+      {% if page and page.meta and page.meta.author %}
         <meta name="author" content="{{ page.meta.author | first }}" />
       {% elif config.site_author %}
         <meta name="author" content="{{ config.site_author }}" />
@@ -83,7 +83,7 @@
 
     <!-- Site title -->
     {% block htmltitle %}
-      {% if page and page.meta.title %}
+      {% if page and page.meta and page.meta.title %}
         <title>{{ page.meta.title }}</title>
       {% elif page and page.title and not page.is_homepage %}
         <title>{{ page.title }} - {{ config.site_name }}</title>
@@ -197,6 +197,13 @@
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
 
+      <!-- Hero teaser -->
+      {% block hero %}
+        {% if page and page.meta and page.meta.hero %}
+          {% include "partials/hero.html" with context %}
+        {% endif %}
+      {% endblock %}
+
       <!-- Tabs with outline -->
       {% if feature.tabs %}
         {% include "partials/tabs.html" %}
@@ -262,7 +269,7 @@
 
                 <!-- Source files -->
                 {% block source %}
-                  {% if page.meta.source %}
+                  {% if page and page.meta and page.meta.source %}
                     <h2 id="__source">{{ lang.t("meta.source") }}</h2>
                     {% set path = page.meta.path | default([""]) %}
                     {% set file = page.meta.source %}
@@ -278,7 +285,7 @@
               {% block disqus %}
                 {% if config.extra.disqus and not page.is_homepage %}
                   <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
-                  {% include "partials/disqus.html" %}
+                  {% include "partials/integrations/disqus.html" %}
                 {% endif %}
               {% endblock %}
             </article>
@@ -333,42 +340,7 @@
     <!-- Analytic scripts -->
     {% block analytics %}
       {% if config.google_analytics %}
-      <script>
-        (function(i,s,o,g,r,a,m){
-          i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
-          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
-          m.parentNode.insertBefore(a,m)
-        })(window, document,
-          "script", "https://www.google-analytics.com/analytics.js", "ga");
-
-        /* General initialization */
-        ga("create",
-          "{{ config.google_analytics[0] }}",
-          "{{ config.google_analytics[1] }}");
-        ga("set", "anonymizeIp", true);
-        ga("send", "pageview");
-
-        /* Track outbound links */
-        var links = document.getElementsByTagName("a");
-        Array.prototype.map.call(links, function(item) {
-          if (item.host != document.location.host) {
-            item.addEventListener("click", function() {
-              var action = item.getAttribute("data-md-action") || "follow";
-              ga("send", "event", "outbound", action, item.href);
-            });
-          }
-        });
-
-        /* Register handler to log search on blur */
-        var query = document.forms.search.query;
-        query.addEventListener("blur", function() {
-          if (this.value) {
-            var path = document.location.pathname;
-            ga("send", "pageview", path + "?q=" + this.value);
-          }
-        });
-      </script>
+        {% include "partials/integrations/analytics.html" %}
       {% endif %}
     {% endblock %}
   </body>
