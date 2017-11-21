@@ -34,7 +34,6 @@ const EventHooksPlugin = require("event-hooks-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const ImageminPlugin = require("imagemin-webpack-plugin").default
 const ManifestPlugin = require("webpack-manifest-plugin")
-const WebpackMD5HashPlugin = require("webpack-md5-hash")
 
 /* ----------------------------------------------------------------------------
  * Configuration
@@ -251,9 +250,6 @@ module.exports = env => {
       new ImageminPlugin({
         test: /\.(ico|png|svg)$/i
       }),
-
-      /* Make hashes stable by using relative paths */
-      new WebpackMD5HashPlugin(),
 
       /* Write manifest */
       new ManifestPlugin({
