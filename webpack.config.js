@@ -95,9 +95,6 @@ module.exports = env => {
     /* Plugins */
     plugins: [
 
-      /* Make hashes stable by using relative paths */
-      new WebpackMD5HashPlugin(),
-
       /* Combine all dependencies into a single file */
       new webpack.optimize.CommonsChunkPlugin({
         name: "src/assets/javascripts/modernizr.js",
@@ -254,6 +251,9 @@ module.exports = env => {
       new ImageminPlugin({
         test: /\.(ico|png|svg)$/i
       }),
+
+      /* Make hashes stable by using relative paths */
+      new WebpackMD5HashPlugin(),
 
       /* Write manifest */
       new ManifestPlugin({
