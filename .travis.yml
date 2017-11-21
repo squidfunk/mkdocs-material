@@ -53,4 +53,4 @@ script:
 
 # Deploy artifacts
 after_success:
-  - ./travis.sh
+  - ./.travis.sh
