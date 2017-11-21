@@ -48,4 +48,5 @@ install:
 
 # Perform build and release
 script:
-  - yarn run travis
+  - yarn run lint
+  - yarn run build
