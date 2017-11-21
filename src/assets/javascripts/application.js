@@ -27,6 +27,12 @@ import "../images/icons/gitlab.svg"
 import "../stylesheets/application.scss"
 import "../stylesheets/application-palette.scss" // TODO: "-" necessary?
 
+import "custom-event-polyfill"
+import "unfetch/polyfill"
+
+import Promise from "promise-polyfill"
+window.Promise = window.Promise || /* istanbul ignore next */ Promise
+
 import Clipboard from "clipboard"
 import FastClick from "fastclick"
 

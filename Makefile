@@ -18,19 +18,42 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Top-level config
-root = true
+all: clean lint | build
 
-# All files
-[*]
-charset = utf-8
-indent_style = space
-indent_size = 2
-end_of_line = lf
-insert_final_newline = true
-trim_trailing_whitespace = true
+# -----------------------------------------------------------------------------
+# Prerequisites
+# -----------------------------------------------------------------------------
 
-# Makefiles
-[Makefile]
-indent_style = tab
-indent_size = 8
+# Install dependencies
+node_modules:
+	npm install
+
+# -----------------------------------------------------------------------------
+# Targets
+# -----------------------------------------------------------------------------
+
+# Build theme for distribution
+material: $(shell find src)
+	$(shell npm bin)/webpack --env.prod
+
+# -----------------------------------------------------------------------------
+# Rules
+# -----------------------------------------------------------------------------
+
+# Build distribution files
+build: node_modules material
+
+# Clean distribution files
+clean:
+	rm -rf material
+
+# Lint source files
+lint: node_modules
+	$(shell npm bin)/eslint --max-warnings 0 .
+	$(shell npm bin)/stylelint `find src/assets -name *.scss`
+
+# -----------------------------------------------------------------------------
+
+# Special targets
+.PHONY: .FORCE build clean lint
+.FORCE:

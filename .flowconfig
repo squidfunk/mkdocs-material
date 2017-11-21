@@ -3,3 +3,7 @@
 
 [libs]
 lib/declarations/
+
+[options]
+module.file_ext=.scss
+module.file_ext=.svg

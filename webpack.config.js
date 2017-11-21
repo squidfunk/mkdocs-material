@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+const fs = require("fs")
 const path = require("path")
 const html = require("html-minifier")
 const webpack = require("webpack")
@@ -41,9 +42,6 @@ const ManifestPlugin = require("webpack-manifest-plugin")
 module.exports = env => {
   const config = {
 
-    /* Entrypoint */
-    // entry: path.resolve(__dirname, "src/assets/javascripts/application.js"),
-
     /* Entrypoints */
     entry: {
       "assets/javascripts/application": path.resolve(
@@ -53,16 +51,6 @@ module.exports = env => {
         __dirname, "src/assets/javascripts/modernizr.js"
       )
     },
-
-    /* Polyfills */
-    // "core-js/fn/promise", // TODO: use the other polyfill
-    // "custom-event-polyfill",
-    // "whatwg-fetch",
-
-    /* Main entry point */
-    //   path.resolve(__dirname, "src/assets/javascripts/application.js"),
-    //   path.resolve(__dirname, "src/assets/javascripts/modernizr.js")
-    // ],
 
     /* Loaders */
     module: {
@@ -165,6 +153,23 @@ module.exports = env => {
         },
         "done": stats => {
           stats.startTime -= 10000
+        }
+      }),
+
+      /* Apply manifest */
+      new EventHooksPlugin({
+        "after-emit": (compilation, cb) => {
+          const manifest = require(path.resolve("material/manifest.json"))
+          Object.keys(compilation.assets).forEach(name => {
+            if (name.match(/\.html/)) {
+              const asset = compilation.assets[name]
+              const replaced = Object.keys(manifest).reduce((source, key) => {
+                return source.replace(key, manifest[key])
+              }, asset.source())
+              fs.writeFileSync(asset.existsAt, replaced)
+            }
+          })
+          cb()
         }
       })
     ],
