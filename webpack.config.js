@@ -23,6 +23,7 @@
 const fs = require("fs")
 const path = require("path")
 const html = require("html-minifier")
+const uglify = require("uglify-js")
 const webpack = require("webpack")
 
 /* ----------------------------------------------------------------------------
@@ -107,6 +108,19 @@ module.exports = env => {
 
       /* Copy and transform static assets */
       new CopyPlugin([
+
+        /* Copy search language support files - we could define the languages
+           package as entrypoints, but this leads to a lot of problems because
+           the files have the structure lunr.[language].js, which some Webpack
+           plugins will complain about. For this reason we only minify */
+        {
+          context: path.resolve(__dirname, "node_modules/lunr-languages"),
+          to: "assets/javascripts/lunr",
+          from: "*.js",
+          transform: content => {
+            return uglify.minify(content.toString()).code
+          }
+        },
 
         /* Copy images without cache busting */
         {
