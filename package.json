@@ -35,11 +35,8 @@
     "babel-eslint": "^8.0.0",
     "babel-loader": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-root-import": "^5.1.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "chalk": "^2.0.1",
     "clipboard": "^1.7.1",
     "copy-webpack-plugin": "^4.2.1",
@@ -47,8 +44,6 @@
     "css-mqpacker": "^6.0.1",
     "custom-event-polyfill": "^0.3.0",
     "customizr": "^1.0.0-alpha",
-    "del": "^3.0.0",
-    "empty": "^0.10.1",
     "escape-string-regexp": "^1.0.5",
     "eslint": "^4.3.0",
     "event-hooks-webpack-plugin": "^1.0.0",
@@ -68,7 +63,6 @@
     "material-shadows": "3.0.1",
     "modernizr-auto-loader": "^0.1.0",
     "modularscale-sass": "3.0.3",
-    "node-notifier": "^5.1.2",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.8",
     "promise-polyfill": "^6.0.2",
@@ -78,17 +72,13 @@
     "stylelint-config-standard": "^17.0.0",
     "stylelint-order": "^0.7.0",
     "stylelint-scss": "^2.0.0",
-    "through2": "^2.0.3",
     "unfetch": "^3.0.0",
-    "vinyl-paths": "^2.1.0",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.9.4",
-    "webpack-manifest-plugin": "^1.3.2",
-    "webpack-stream": "^4.0.0",
-    "yargs": "^10.0.3"
+    "webpack-manifest-plugin": "^1.3.2"
   },
   "engines": {
-    "node": ">= 8.0.0"
+    "node": ">= 8"
   },
   "private": true
 }

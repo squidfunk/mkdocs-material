@@ -44,11 +44,15 @@ module.exports = env => {
 
     /* Entrypoints */
     entry: {
-      "assets/javascripts/application": path.resolve(
-        __dirname, "src/assets/javascripts/application.js"
-      ),
+
+      /* Custom Modernizr build */
       "assets/javascripts/modernizr": path.resolve(
         __dirname, "src/assets/javascripts/modernizr.js"
+      ),
+
+      /* Application */
+      "assets/javascripts/application": path.resolve(
+        __dirname, "src/assets/javascripts/application.js"
       )
     },
 
@@ -56,20 +60,20 @@ module.exports = env => {
     module: {
       rules: [
 
-        /* Transform ES6 with Babel */
+        /* Babel ES6 transformations */
         {
           test: /\.jsx?$/,
           use: "babel-loader",
           exclude: /\/node_modules\//
         },
 
-        /* Build custom Modernizr */
+        /* Custom Modernizr build */
         {
           test: /\.modernizr-autorc$/,
           use: "modernizr-auto-loader"
         },
 
-        /* Add cache buster to SVGs */
+        /* Cache busting for SVGs */
         {
           test: /\.svg$/,
           use: `file-loader?name=[path][name]${
@@ -84,7 +88,6 @@ module.exports = env => {
       path: path.resolve(__dirname, "material"),
       filename: `[name]${env && env.prod ? ".[chunkhash]" : ""}.js`,
       hashDigestLength: 8,
-      library: "app",
       libraryTarget: "window"
     },
 
@@ -99,7 +102,7 @@ module.exports = env => {
 
       /* Provide JSX helper */
       new webpack.ProvidePlugin({
-        Jsx: path.resolve(__dirname, "src/assets/javascripts/providers/jsx.js")
+        JSX: path.resolve(__dirname, "src/assets/javascripts/providers/jsx.js")
       }),
 
       /* Copy and transform static assets */
@@ -121,7 +124,7 @@ module.exports = env => {
         {
           context: "src",
           from: "**/*.html",
-          transform: !env || !env.prod ? null : content => {
+          transform: content => {
             const metadata = require(path.resolve(__dirname, "package.json"))
             return html.minify(content.toString(), {
               collapseBooleanAttributes: true,
@@ -154,23 +157,6 @@ module.exports = env => {
         "done": stats => {
           stats.startTime -= 10000
         }
-      }),
-
-      /* Apply manifest */
-      new EventHooksPlugin({
-        "after-emit": (compilation, cb) => {
-          const manifest = require(path.resolve("material/manifest.json"))
-          Object.keys(compilation.assets).forEach(name => {
-            if (name.match(/\.html/)) {
-              const asset = compilation.assets[name]
-              const replaced = Object.keys(manifest).reduce((source, key) => {
-                return source.replace(key, manifest[key])
-              }, asset.source())
-              fs.writeFileSync(asset.existsAt, replaced)
-            }
-          })
-          cb()
-        }
       })
     ],
 
@@ -183,29 +169,26 @@ module.exports = env => {
       alias: {
         modernizr$: path.resolve(__dirname, ".modernizr-autorc")
       }
-    }
-  }
+    },
 
-  /* Extract styles */
-  const styles = {
-    "application.scss": new ExtractTextPlugin(
-      `assets/stylesheets/application${
-        env && env.prod ? ".[md5:contenthash:hex:8]" : ""
-      }.css`
-    ),
-    "application-palette.scss": new ExtractTextPlugin(
-      `assets/stylesheets/application-palette${
-        env && env.prod ? ".[md5:contenthash:hex:8]" : ""
-      }.css`
-    )
+    /* Sourcemaps */
+    devtool: env && env.prod ? "inline-source-map" : ""
   }
 
   /* Compile stylesheets */
-  Object.keys(styles).forEach(stylesheet => {
-    config.plugins.push(styles[stylesheet])
+  for (const stylesheet of [
+    "application.scss",
+    "application-palette.scss"
+  ]) {
+    const plugin = new ExtractTextPlugin(
+      `assets/stylesheets/${
+        stylesheet.replace(".scss", env && env.prod
+          ? ".[md5:contenthash:hex:8].css"
+          : ".css")}`)
+    config.plugins.push(plugin)
     config.module.rules.push({
       test: new RegExp(`${stylesheet}$`),
-      use: styles[stylesheet].extract({
+      use: plugin.extract({
         use: [
           {
             loader: "css-loader",
@@ -236,13 +219,13 @@ module.exports = env => {
         ]
       })
     })
-  })
+  }
 
-  /* Build for production environment */
+  /* Production compilation */
   if (env && env.prod) {
-
-    /* Beautify sources */
     config.plugins.push(
+
+      /* Uglify sources */
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false,
@@ -275,10 +258,27 @@ module.exports = env => {
           file.name = file.path.replace(/\.[a-z0-9].+\.(css|js|svg)/i, ".$1")
           return file
         }
+      }),
+
+      /* Apply manifest */
+      new EventHooksPlugin({
+        "after-emit": (compilation, cb) => {
+          const manifest = require(path.resolve("material/manifest.json"))
+          Object.keys(compilation.assets).forEach(name => {
+            if (name.match(/\.html/)) {
+              const asset = compilation.assets[name]
+              const replaced = Object.keys(manifest).reduce((source, key) => {
+                return source.replace(key, manifest[key])
+              }, asset.source())
+              fs.writeFileSync(asset.existsAt, replaced)
+            }
+          })
+          cb()
+        }
       })
     )
   }
 
-  /* We're good to go */
+  /* Oh my god, that was a hell of a setup */
   return config
 }

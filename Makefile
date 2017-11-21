@@ -25,7 +25,7 @@ all: clean lint | build
 # -----------------------------------------------------------------------------
 
 # Install dependencies
-node_modules:
+node_modules: package.json yarn.lock
 	npm install
 
 # -----------------------------------------------------------------------------
@@ -33,7 +33,7 @@ node_modules:
 # -----------------------------------------------------------------------------
 
 # Build theme for distribution
-material: $(shell find src)
+material: $(shell find src) webpack.config.js .babelrc
 	$(shell npm bin)/webpack --env.prod
 
 # -----------------------------------------------------------------------------

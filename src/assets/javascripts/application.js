@@ -25,7 +25,7 @@ import "../images/icons/github.svg"
 import "../images/icons/gitlab.svg"
 
 import "../stylesheets/application.scss"
-import "../stylesheets/application-palette.scss" // TODO: "-" necessary?
+import "../stylesheets/application-palette.scss"
 
 import "custom-event-polyfill"
 import "unfetch/polyfill"

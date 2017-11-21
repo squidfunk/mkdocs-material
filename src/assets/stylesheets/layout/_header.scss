@@ -139,7 +139,7 @@
 
     // Page title
     & + & {
-      transform: translateX(4rem);
+      transform: translateX(2.5rem);
       transition:
         transform 0.4s cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   0.15s;
@@ -162,7 +162,7 @@
 
     // Show page title
     &[data-md-state="active"] .md-header-nav__topic {
-      transform: translateX(-4rem);
+      transform: translateX(-2.5rem);
       transition:
         transform 0.4s cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   0.15s;
