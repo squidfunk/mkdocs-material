@@ -51,7 +51,7 @@ docker build -t $TRAVIS_REPO_SLUG .
 # Prepare build regression test
 pushd /tmp
 mkdocs new test && cd test
-echo "theme: material" >> mkdocs.yml
+echo "theme: \n  name: material" >> mkdocs.yml
 
 # Test Docker image build
 docker run --rm -it -v `pwd`:/docs $TRAVIS_REPO_SLUG build
