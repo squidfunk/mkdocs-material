@@ -109,8 +109,6 @@ pages:
     - Metadata: extensions/metadata.md
     - Permalinks: extensions/permalinks.md
     - PyMdown: extensions/pymdown.md
-    - Test:
-        - Foobar: license.md
   - Specimen: specimen.md
   - Customization: customization.md
   - Release notes: release-notes.md
@@ -122,11 +120,3 @@ pages:
 google_analytics:
   - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
   - auto
-
-# Just for testing
-extra_javascript:
-  - https://ginseng-analytics.com/analytics.js
-  # - assets/script.js
-
-# extra_css:
-#  # - assets/style.css
