@@ -262,7 +262,10 @@ module.exports = env => {
 
       /* Minify images */
       new ImageminPlugin({
-        test: /\.(ico|png|svg)$/i
+        test: /\.(ico|png|svg)$/i,
+        svgo: {
+          cleanupIDs: false
+        }
       }),
 
       /* Write manifest */

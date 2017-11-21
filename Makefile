@@ -52,7 +52,7 @@ lint: node_modules
 	$(shell yarn bin)/eslint --max-warnings 0 .
 	$(shell yarn bin)/stylelint `find src/assets -name *.scss`
 
-# Rebuild theme on changes
+# Rebuild theme on changes with Webpack
 watch-webpack: node_modules clean
 	$(shell yarn bin)/webpack --watch
 
@@ -61,7 +61,7 @@ watch-mkdocs: clean
 	while [ ! -d "./material" ]; do sleep 1; done
 	mkdocs serve
 
-# Run Webpack and MkDocs in development mode
+# Run Webpack and MkDocs in watch mode
 watch: node_modules watch-webpack watch-mkdocs
 
 # -----------------------------------------------------------------------------
