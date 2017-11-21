@@ -43,10 +43,14 @@ before_install:
 
 # Install dependencies
 install:
-  - yarn install --ignore-optional
+  - yarn install
   - pip install --user -r requirements.txt
 
 # Perform build and release
 script:
   - yarn run lint
   - yarn run build
+
+# Deploy artifacts
+after_success:
+  - ./travis.sh

@@ -37,6 +37,10 @@ import "unfetch/polyfill"
 import Promise from "promise-polyfill"
 window.Promise = window.Promise || Promise
 
+/* ----------------------------------------------------------------------------
+ * Dependencies
+ * ------------------------------------------------------------------------- */
+
 import Clipboard from "clipboard"
 import FastClick from "fastclick"
 
@@ -472,6 +476,11 @@ function initialize(config) { // eslint-disable-line func-style
  * Exports
  * ------------------------------------------------------------------------- */
 
-export {
+/* Provide this for downward compatibility for now */
+const app = {
   initialize
+}
+
+export {
+  app
 }

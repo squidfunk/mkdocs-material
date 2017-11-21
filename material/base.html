@@ -162,7 +162,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.cd2211be.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application.197ea25c.js"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
@@ -181,7 +181,7 @@
           {% endif %}
         {% endif %}
       {% endif %}
-      <script>initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}})</script>
+      <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}})</script>
       {% for path in extra_javascript %}
         <script src="{{ path }}"></script>
       {% endfor %}
