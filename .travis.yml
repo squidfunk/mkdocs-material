@@ -54,7 +54,6 @@ script:
   # Check that there are no changes in the working tree, so we're sure that the
   # theme was actually compiled. This will error on changes that are made in the
   # distribution folder only.
-  - git diff HEAD --
   - git diff-index --name-only HEAD -- &&
     git diff-index --quiet HEAD --
 

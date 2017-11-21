@@ -34,6 +34,7 @@ const EventHooksPlugin = require("event-hooks-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const ImageminPlugin = require("imagemin-webpack-plugin").default
 const ManifestPlugin = require("webpack-manifest-plugin")
+const WebpackMD5HashPlugin = require("webpack-md5-hash")
 
 /* ----------------------------------------------------------------------------
  * Configuration
@@ -95,7 +96,7 @@ module.exports = env => {
     plugins: [
 
       /* Make hashes stable by using relative paths */
-      new webpack.HashedModuleIdsPlugin(),
+      new WebpackMD5HashPlugin(),
 
       /* Combine all dependencies into a single file */
       new webpack.optimize.CommonsChunkPlugin({
