@@ -1,3 +1,4 @@
+hero: Yes, this is set via Metadata
 path: tree/master/docs/extensions
 source: metadata.md
 
@@ -38,6 +39,15 @@ source: file.js
 ```
 
 See the next section which covers the metadata that is supported by Material.
+
+### Setting a hero text
+
+Material exposes a simple text-only page-local hero via Metadata, as you can
+see on the current page when you scroll to the top. It's as simple as:
+
+``` markdown
+hero: Yes, this is set via Metadata
+```
 
 ### Overriding the title
 

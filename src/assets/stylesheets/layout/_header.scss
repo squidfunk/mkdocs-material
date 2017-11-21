@@ -36,9 +36,7 @@
     color 0.25s;
   background-color: $md-color-primary;
   color: $md-color-white;
-  box-shadow:
-    0 0      0.4rem rgba(0, 0, 0, 0.1),
-    0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+  box-shadow: none;
   z-index: 2;
   // Hack: putting the header on the GPU avoids unnecessary repaints
   backface-visibility: hidden;
@@ -48,20 +46,15 @@
     box-shadow: none;
   }
 
-  // [screen +]: Show shadow depending on scroll offset
-  @include break-from-device(screen) {
-    box-shadow: none;
-
-    // Show and animate shadow
-    &[data-md-state="shadow"] {
-      transition:
-        background-color 0.25s,
-        color 0.25s,
-        box-shadow 0.25s;
-      box-shadow:
-        0 0      0.4rem rgba(0, 0, 0, 0.1),
-        0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
-    }
+  // Show and animate shadow
+  &[data-md-state="shadow"] {
+    transition:
+      background-color 0.25s,
+      color 0.25s,
+      box-shadow 0.25s;
+    box-shadow:
+      0 0      0.4rem rgba(0, 0, 0, 0.1),
+      0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
   }
 
   // Hide for print

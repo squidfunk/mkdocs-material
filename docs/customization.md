@@ -151,6 +151,7 @@ The Material theme provides the following template blocks:
 | `fonts`      | Wraps the webfont definitions                   |
 | `footer`     | Wraps the footer with navigation and copyright  |
 | `header`     | Wraps the fixed header bar                      |
+| `hero`       | Wraps the hero teaser                           |
 | `htmltitle`  | Wraps the `<title>` tag                         |
 | `libs`       | Wraps the JavaScript libraries, e.g. Modernizr  |
 | `repo`       | Wraps the repository link in the header bar     |
