@@ -147,13 +147,4 @@ $md-toggle__drawer--checked:
       }
     }
   }
-
-  // Sidebar content
-  &__inner {
-
-    // [screen +]: Add line for reference
-    @include break-from-device(screen) {
-      border-right: 0.1rem solid $md-color-black--lightest;
-    }
-  }
 }

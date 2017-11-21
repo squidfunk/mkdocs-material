@@ -56,7 +56,7 @@
     &[data-md-state="shadow"] {
       transition:
         background-color 0.25s,
-        color 0.25,
+        color 0.25s,
         box-shadow 0.25s;
       box-shadow:
         0 0      0.4rem rgba(0, 0, 0, 0.1),
@@ -139,7 +139,7 @@
 
     // Page title
     & + & {
-      transform: translateX(4rem);
+      transform: translateX(2.5rem);
       transition:
         transform 0.4s cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   0.15s;
@@ -162,7 +162,7 @@
 
     // Show page title
     &[data-md-state="active"] .md-header-nav__topic {
-      transform: translateX(-4rem);
+      transform: translateX(-2.5rem);
       transition:
         transform 0.4s cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   0.15s;

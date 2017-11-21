@@ -11,8 +11,6 @@
     }]
   ],
   "plugins": [
-    ["transform-react-jsx", {
-      "pragma": "JSX.createElement"
-    }]
+    "add-module-exports"
   ]
 }

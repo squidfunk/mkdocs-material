@@ -21,7 +21,7 @@
  */
 
 import escape from "escape-string-regexp"
-import lunr from "expose-loader?lunr!lunr"
+import lunr from "lunr" // expose-loader?lunr!lunr"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -51,11 +51,10 @@ const truncate = (string, n) => {
  * Return the meta tag value for the given key
  *
  * @param {string} key - Meta name
- * @param {string} [_] - Stop Flow complaining (TODO)
  *
  * @return {string} Meta content value
  */
-const translate = (key, _) => { // eslint-disable-line no-unused-vars
+const translate = key => {
   const meta = document.getElementsByName(`lang:${key}`)[0]
   if (!(meta instanceof HTMLMetaElement))
     throw new ReferenceError

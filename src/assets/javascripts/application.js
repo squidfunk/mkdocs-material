@@ -20,6 +20,27 @@
  * IN THE SOFTWARE.
  */
 
+import "../images/icons/bitbucket.svg"
+import "../images/icons/github.svg"
+import "../images/icons/gitlab.svg"
+
+import "../stylesheets/application.scss"
+import "../stylesheets/application-palette.scss"
+
+/* ----------------------------------------------------------------------------
+ * Polyfills
+ * ------------------------------------------------------------------------- */
+
+import "custom-event-polyfill"
+import "unfetch/polyfill"
+
+import Promise from "promise-polyfill"
+window.Promise = window.Promise || Promise
+
+/* ----------------------------------------------------------------------------
+ * Dependencies
+ * ------------------------------------------------------------------------- */
+
 import Clipboard from "clipboard"
 import FastClick from "fastclick"
 
@@ -33,11 +54,10 @@ import Material from "./components/Material"
  * Return the meta tag value for the given key
  *
  * @param {string} key - Meta name
- * @param {string} [_] - Stop Flow complaining (TODO)
  *
  * @return {string} Meta content value
  */
-const translate = (key, _) => { // eslint-disable-line no-unused-vars
+const translate = key => {
   const meta = document.getElementsByName(`lang:${key}`)[0]
   if (!(meta instanceof HTMLMetaElement))
     throw new ReferenceError
@@ -455,6 +475,11 @@ function initialize(config) { // eslint-disable-line func-style
  * Exports
  * ------------------------------------------------------------------------- */
 
-export {
+/* Provide this for downward compatibility for now */
+const app = {
   initialize
+}
+
+export {
+  app
 }

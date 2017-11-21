@@ -1,5 +1,0 @@
-[ignore]
-.*/node_modules/.*
-
-[libs]
-lib/declarations/

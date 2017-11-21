@@ -1,0 +1,11 @@
+{
+  "options": [
+    "addTest",
+    "setClasses"
+  ],
+  "files": {
+    "src": ["src/assets/**/*.{js,scss}"]
+  },
+  "feature-detects": [],
+  "runOnce": true
+}

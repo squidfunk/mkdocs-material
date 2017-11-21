@@ -169,19 +169,19 @@ For more on this topic refer to the [MkDocs documentation][4]
 
 ## Theme development
 
-The Material theme is built on modern technologies like ES6, [Webpack][5],
-[Babel][6] and [SASS][7]. If you want to make more fundamental changes, it may
-be necessary to make the adjustments directly in the source of the Material
-theme and recompile it. This is fairly easy.
+The Material theme uses [Webpack][5] as a build tool to leverage modern web
+technologies like [Babel][6] and [SASS][7]. If you want to make more fundamental
+changes, it may be necessary to make the adjustments directly in the source of
+the Material theme and recompile it. This is fairly easy.
 
-  [5]: https://webpack.github.io/
+  [5]: https://webpack.js.org/
   [6]: https://babeljs.io
   [7]: http://sass-lang.com
 
 ### Environment setup
 
 In order to start development on the Material theme, a [Node.js][8] version of
-at least 5 is required, as well as the package manager [yarn][9] which is a
+at least 8 is required, as well as the package manager [yarn][9] which is a
 better version of `npm`. First, clone the repository:
 
 ``` sh
@@ -201,11 +201,10 @@ yarn install
 
 ### Development mode
 
-The Material theme uses a sophisticated asset pipeline using [Gulp][10] and
-Webpack which can be started with the following command:
+The development server can be started with:
 
 ``` sh
-yarn start
+yarn run watch
 ```
 
 This will also start the MkDocs development server which will monitor changes
@@ -227,8 +226,7 @@ $md-color-accent:  $clr-teal-a700;
     directory are automatically generated from the `src` directory and will be
     overriden when the theme is built.
 
-  [10]: http://gulpjs.com
-  [11]: http://localhost:8000
+  [10]: http://localhost:8000
 
 ### Build process
 

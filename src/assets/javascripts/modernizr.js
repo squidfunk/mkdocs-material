@@ -20,17 +20,4 @@
  * IN THE SOFTWARE.
  */
 
-/* ----------------------------------------------------------------------------
- * Declarations
- * ------------------------------------------------------------------------- */
-
-declare class Jsx {
-  static createElement(tag: string, properties?: Object,
-    ...children?: Array<
-      string | number | { __html?: string } | Array<HTMLElement>
-    >
-  ): HTMLElement
-}
-
-/* Exports */
-declare export default Jsx
+import "../../../.modernizr-autorc"
