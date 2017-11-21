@@ -99,7 +99,7 @@ module.exports = env => {
 
       /* Provide JSX helper */
       new webpack.ProvidePlugin({
-        Jsx: path.resolve(__dirname, "lib/providers/jsx.js")
+        Jsx: path.resolve(__dirname, "src/assets/javascripts/providers/jsx.js")
       }),
 
       /* Copy and transform static assets */

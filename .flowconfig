@@ -2,7 +2,7 @@
 .*/node_modules/.*
 
 [libs]
-lib/declarations/
+src/assets/javascripts/declarations/
 
 [options]
 module.file_ext=.scss
