@@ -172,9 +172,7 @@ module.exports = env => {
     },
 
     /* Sourcemaps */
-    devtool: env && env.prod
-      ? "nosources-source-map"
-      : "inline-source-map"
+    devtool: !env || env.prod ? "inline-source-map" : ""
   }
 
   /* Compile stylesheets */
