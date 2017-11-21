@@ -32,7 +32,7 @@ node_modules:
 # Targets
 # -----------------------------------------------------------------------------
 
-# Build theme for distribution
+# Build theme for distribution with Webpack
 material: $(shell find src) webpack.config.js .babelrc
 	$(shell yarn bin)/webpack --env.prod
 
@@ -40,7 +40,7 @@ material: $(shell find src) webpack.config.js .babelrc
 # Rules
 # -----------------------------------------------------------------------------
 
-# Build theme
+# Build distribution files
 build: node_modules material
 
 # Clean distribution files
@@ -56,12 +56,12 @@ lint: node_modules
 watch-webpack: node_modules clean
 	$(shell yarn bin)/webpack --watch
 
-# Serve documentation
+# Serve documentation with MkDocs
 watch-mkdocs: clean
 	while [ ! -d "./material" ]; do sleep 1; done
 	mkdocs serve
 
-# Development mode
+# Run Webpack and MkDocs in development mode
 watch: node_modules watch-webpack watch-mkdocs
 
 # -----------------------------------------------------------------------------
