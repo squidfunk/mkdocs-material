@@ -264,7 +264,9 @@ module.exports = env => {
       new ImageminPlugin({
         test: /\.(ico|png|svg)$/i,
         svgo: {
-          cleanupIDs: false
+          plugins: [
+            { cleanupIDs: false }
+          ]
         }
       }),
 
