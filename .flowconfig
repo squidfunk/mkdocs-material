@@ -1,9 +1,0 @@
-[ignore]
-.*/node_modules/.*
-
-[libs]
-src/assets/javascripts/declarations/
-
-[options]
-module.file_ext=.scss
-module.file_ext=.svg

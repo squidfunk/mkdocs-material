@@ -20,17 +20,16 @@
  * IN THE SOFTWARE.
  */
 
+import Blur from "./Nav/Blur"
+import Collapse from "./Nav/Collapse"
+import Scrolling from "./Nav/Scrolling"
+
 /* ----------------------------------------------------------------------------
- * Declarations
+ * Module
  * ------------------------------------------------------------------------- */
 
-declare class Jsx {
-  static createElement(tag: string, properties?: Object,
-    ...children?: Array<
-      string | number | { __html?: string } | Array<HTMLElement>
-    >
-  ): HTMLElement
+export default {
+  Blur,
+  Collapse,
+  Scrolling
 }
-
-/* Exports */
-declare export default Jsx

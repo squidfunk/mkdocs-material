@@ -20,17 +20,4 @@
  * IN THE SOFTWARE.
  */
 
-/* ----------------------------------------------------------------------------
- * Declarations
- * ------------------------------------------------------------------------- */
-
-declare module "fastclick" {
-
-  /* Type: FastClick */
-  declare type FastClick = {
-    attach(name: HTMLElement): void
-  }
-
-  /* Exports */
-  declare export default FastClick
-}
+import "../../../.modernizr-autorc"

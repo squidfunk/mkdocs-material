@@ -20,25 +20,14 @@
  * IN THE SOFTWARE.
  */
 
+import Lock from "./Search/Lock"
+import Result from "./Search/Result"
+
 /* ----------------------------------------------------------------------------
- * Declarations
+ * Module
  * ------------------------------------------------------------------------- */
 
-declare module "clipboard" {
-
-  /* Class: Clipboard action */
-  declare class ClipboardAction {
-    trigger: HTMLElement,
-    clearSelection(): void
-  }
-
-  /* Class: Clipboard */
-  declare class Clipboard {
-    static isSupported(): boolean,
-    constructor(selector: string): void,
-    on(name: string, cb: (action: ClipboardAction) => void): void
-  }
-
-  /* Exports */
-  declare export default typeof Clipboard
+export default {
+  Lock,
+  Result
 }

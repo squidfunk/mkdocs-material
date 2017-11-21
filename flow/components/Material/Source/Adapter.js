@@ -20,15 +20,12 @@
  * IN THE SOFTWARE.
  */
 
+import GitHub from "./Adapter/GitHub"
+
 /* ----------------------------------------------------------------------------
- * Declarations
+ * Module
  * ------------------------------------------------------------------------- */
 
-/*
- * Currently, it's not possible to export a function that returns a class type,
- * as the imports just don't correctly work with flow. As a workaround we
- * export an object until this error is fixed.
- */
-declare module "expose-loader?lunr!lunr" {
-  declare function exports(name: () => void): Object
+export default {
+  GitHub
 }

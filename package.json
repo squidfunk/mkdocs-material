@@ -32,6 +32,7 @@
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^7.1.2",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.25.0",
     "babel-eslint": "^8.0.0",
     "babel-loader": "^7.1.1",
@@ -52,8 +53,6 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "fastclick": "^1.0.6",
     "file-loader": "^1.1.5",
-    "flow-bin": "^0.59.0",
-    "flow-jsdoc": "^0.3.0",
     "git-hooks": "^1.1.8",
     "html-minifier": "^3.5.6",
     "imagemin-webpack-plugin": "^1.5.2",

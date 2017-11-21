@@ -54,10 +54,11 @@ import Material from "./components/Material"
  * Return the meta tag value for the given key
  *
  * @param {string} key - Meta name
+ * @param {string} [_] - Stop Flow complaining (TODO)
  *
  * @return {string} Meta content value
  */
-const translate = key => {
+const translate = (key: string, _: ?string) : string => { // eslint-disable-line no-unused-vars
   const meta = document.getElementsByName(`lang:${key}`)[0]
   if (!(meta instanceof HTMLMetaElement))
     throw new ReferenceError
@@ -73,7 +74,7 @@ const translate = key => {
  *
  * @param {Object} config - Configuration
  */
-function initialize(config) { // eslint-disable-line func-style
+function initialize(config: Object) { // eslint-disable-line func-style
 
   /* Initialize Modernizr and FastClick */
   new Material.Event.Listener(document, "DOMContentLoaded", () => {

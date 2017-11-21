@@ -1,0 +1,106 @@
+/*
+ * Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Class
+ * ------------------------------------------------------------------------- */
+
+export default class Collapse {
+  el_: HTMLElement;
+
+  /**
+   * Expand or collapse navigation on toggle
+   *
+   * @constructor
+   *
+   * @property {HTMLElement} el_ - Navigation list
+   *
+   * @param {(string|HTMLElement)} el - Selector or HTML element
+   */
+  constructor(el: string | HTMLElement) {
+    const ref = (typeof el === "string")
+      ? document.querySelector(el)
+      : el
+    if (!(ref instanceof HTMLElement))
+      throw new ReferenceError
+    this.el_ = ref
+  }
+
+  /**
+   * Animate expand and collapse smoothly
+   *
+   * Internet Explorer 11 is very slow at recognizing changes on the dataset
+   * which results in the menu not expanding or collapsing properly. THerefore,
+   * for reasons of compatibility, the attribute accessors are used.
+   */
+  update() {
+    const current = this.el_.getBoundingClientRect().height
+
+    /* Expanded, so collapse */
+    if (current) {
+      this.el_.style.maxHeight = `${current}px`
+      requestAnimationFrame(() => {
+        this.el_.setAttribute("data-md-state", "animate")
+        this.el_.style.maxHeight = "0px"
+      })
+
+    /* Collapsed, so expand */
+    } else {
+      this.el_.setAttribute("data-md-state", "expand")
+      this.el_.style.maxHeight = ""
+
+      /* Read height and unset pseudo-toggled state */
+      const height = this.el_.getBoundingClientRect().height
+      this.el_.removeAttribute("data-md-state")
+
+      /* Set initial state and animate */
+      this.el_.style.maxHeight = "0px"
+      requestAnimationFrame(() => {
+        this.el_.setAttribute("data-md-state", "animate")
+        this.el_.style.maxHeight = `${height}px`
+      })
+    }
+
+    /* Remove state on end of transition */
+    const end = ev => {
+      const target = ev.target
+      if (!(target instanceof HTMLElement))
+        throw new ReferenceError
+
+      /* Reset height and state */
+      target.removeAttribute("data-md-state")
+      target.style.maxHeight = ""
+
+      /* Only fire once, so directly remove event listener */
+      target.removeEventListener("transitionend", end)
+    }
+    this.el_.addEventListener("transitionend", end, false)
+  }
+
+  /**
+   * Reset height and pseudo-toggled state
+   */
+  reset() {
+    this.el_.dataset.mdState = ""
+    this.el_.style.maxHeight = ""
+  }
+}

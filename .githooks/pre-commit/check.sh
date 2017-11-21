@@ -55,15 +55,6 @@ if [ "$FILES" ]; then
   else
     echo -e "\x1B[32m✓\x1B[0m Linter"
   fi
-
-  # If flow terminated with errors, abort commit
-  yarn run flow --silent
-  if [ $? -gt 0 ]; then
-    echo -e "\x1B[31m✗\x1B[0m Flow - \x1B[31m$MESSAGE\x1B[0m"
-    exit 1
-  else
-    echo -e "\x1B[32m✓\x1B[0m Flow"
-  fi
 fi
 
 # We're good

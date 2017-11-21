@@ -20,24 +20,14 @@
  * IN THE SOFTWARE.
  */
 
+import Listener from "./Event/Listener"
+import MatchMedia from "./Event/MatchMedia"
+
 /* ----------------------------------------------------------------------------
- * Declarations
+ * Module
  * ------------------------------------------------------------------------- */
 
-declare module "js-cookie" {
-
-  /* Type: Options for setting cookie values */
-  declare type Options = {
-    path?: string,
-    expires?: number | string
-  }
-
-  /* Type: Cookie */
-  declare type Cookie = {
-    getJSON(json: string): Object,
-    set(key: string, value: Array<string>, options?: Options): string
-  }
-
-  /* Exports */
-  declare export default Cookie
+export default {
+  Listener,
+  MatchMedia
 }
