@@ -12,7 +12,7 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.1.0
+# Version 2.1.1
 ```
 
 ### Material 1.x to 2.x
@@ -37,6 +37,13 @@ pip show mkdocs-material | grep -E ^Version
 * The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Changelog
+
+### 2.1.1 <small>_ November 21, 2017</small>
+
+* Replaced deprecated `babel-preset-es2015` with `babel-preset-env`
+* Refactored Gulp build pipeline with Webpack
+* Removed right border on sidebars
+* Fixed broken color transition on header
 
 ### 2.1.0 <small>_ November 19, 2017</small>
 
