@@ -23,10 +23,10 @@
     "url": "https://github.com/squidfunk/mkdocs-material.git"
   },
   "scripts": {
-    "build": "make build",
+    "build": "make clean build",
     "clean": "make clean",
     "lint": "make lint",
-    "watch": "make watch"
+    "watch": "make -j watch"
   },
   "dependencies": {},
   "devDependencies": {
@@ -74,7 +74,6 @@
     "stylelint-scss": "^2.0.0",
     "unfetch": "^3.0.0",
     "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.9.4",
     "webpack-manifest-plugin": "^1.3.2"
   },
   "engines": {

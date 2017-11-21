@@ -25,8 +25,8 @@ all: clean lint | build
 # -----------------------------------------------------------------------------
 
 # Install dependencies
-node_modules: package.json yarn.lock
-	npm install
+node_modules: yarn.lock
+	yarn install
 
 # -----------------------------------------------------------------------------
 # Targets
@@ -34,13 +34,13 @@ node_modules: package.json yarn.lock
 
 # Build theme for distribution
 material: $(shell find src) webpack.config.js .babelrc
-	$(shell npm bin)/webpack --env.prod
+	$(shell yarn bin)/webpack --env.prod
 
 # -----------------------------------------------------------------------------
 # Rules
 # -----------------------------------------------------------------------------
 
-# Build distribution files
+# Build theme
 build: node_modules material
 
 # Clean distribution files
@@ -49,11 +49,23 @@ clean:
 
 # Lint source files
 lint: node_modules
-	$(shell npm bin)/eslint --max-warnings 0 .
-	$(shell npm bin)/stylelint `find src/assets -name *.scss`
+	$(shell yarn bin)/eslint --max-warnings 0 .
+	$(shell yarn bin)/stylelint `find src/assets -name *.scss`
+
+# Rebuild theme on changes
+watch-webpack: node_modules clean
+	$(shell yarn bin)/webpack --watch
+
+# Serve documentation
+watch-mkdocs: clean
+	while [ ! -d "./material" ]; do sleep 1; done
+	mkdocs serve
+
+# Development mode
+watch: node_modules watch-webpack watch-mkdocs
 
 # -----------------------------------------------------------------------------
 
 # Special targets
-.PHONY: .FORCE build clean lint
+.PHONY: .FORCE build clean lint watch watch-mkdocs watch-webpack
 .FORCE:

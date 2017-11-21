@@ -27,11 +27,15 @@ import "../images/icons/gitlab.svg"
 import "../stylesheets/application.scss"
 import "../stylesheets/application-palette.scss"
 
+/* ----------------------------------------------------------------------------
+ * Polyfills
+ * ------------------------------------------------------------------------- */
+
 import "custom-event-polyfill"
 import "unfetch/polyfill"
 
 import Promise from "promise-polyfill"
-window.Promise = window.Promise || /* istanbul ignore next */ Promise
+window.Promise = window.Promise || Promise
 
 import Clipboard from "clipboard"
 import FastClick from "fastclick"

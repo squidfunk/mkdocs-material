@@ -172,7 +172,9 @@ module.exports = env => {
     },
 
     /* Sourcemaps */
-    devtool: env && env.prod ? "inline-source-map" : ""
+    devtool: env && env.prod
+      ? "nosources-source-map"
+      : "inline-source-map"
   }
 
   /* Compile stylesheets */
@@ -185,6 +187,8 @@ module.exports = env => {
         stylesheet.replace(".scss", env && env.prod
           ? ".[md5:contenthash:hex:8].css"
           : ".css")}`)
+
+    /* Register plugin */
     config.plugins.push(plugin)
     config.module.rules.push({
       test: new RegExp(`${stylesheet}$`),
