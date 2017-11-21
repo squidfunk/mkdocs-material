@@ -4,7 +4,7 @@
     "setClasses"
   ],
   "files": {
-    "src": ["src/**/*.{js,css,scss}"]
+    "src": ["src/assets/**/*.{js,scss}"]
   },
   "feature-detects": [],
   "runOnce": true
