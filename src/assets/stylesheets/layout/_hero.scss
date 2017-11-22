@@ -27,10 +27,10 @@
 // Hero teaser
 .md-hero {
   transition: background 0.25s;
-  background: $md-color-primary;
+  background-color: $md-color-primary;
   color: $md-color-white;
   font-size: ms(1);
-  overflow: auto;
+  overflow: hidden;
 
   // Inner wrapper
   &__inner {
@@ -39,6 +39,7 @@
     transition:
       transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   0.25s;
+    transition-delay: 0.1s;
 
     // [tablet -]: Compensate for missing tabs
     @include break-to-device(tablet) {
@@ -56,7 +57,7 @@
       opacity: 0;
     }
 
-    /* Adjust bottom spacing if there are no tabs */
+    // Adjust bottom spacing if there are no tabs
     .md-hero--expand & {
       margin-bottom: 2.4rem;
     }

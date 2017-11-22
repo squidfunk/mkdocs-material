@@ -157,7 +157,7 @@
   margin: 1em 0.5em 1em 0;
   padding-right: 0.5rem;
   border-radius: 0.2rem;
-  background: $md-color-black--lightest;
+  background-color: $md-color-black--lightest;
   font-size: ms(-1);
   list-style-type: none;
   cursor: pointer;
@@ -170,7 +170,7 @@
     display: inline-block;
     margin-right: 0.5rem;
     padding: 0.5rem;
-    background: $md-color-black--lighter;
+    background-color: $md-color-black--lighter;
     color: $md-color-white;
     font-size: ms(0);
     content: "\E86F"; // code
@@ -203,7 +203,7 @@
 
     // Icon
     &::before {
-      background: $md-color-accent;
+      background-color: $md-color-accent;
     }
   }
 }

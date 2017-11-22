@@ -103,6 +103,11 @@ button[data-md-color-accent] {
       background-color: $color;
     }
 
+    // Hero teaser
+    .md-hero {
+      background-color: $color;
+    }
+
     // Current or active link
     .md-nav__link:active,
     .md-nav__link--active {
@@ -146,7 +151,7 @@ button[data-md-color-accent] {
 
       // Tabs with outline
       .md-tabs {
-        background: $color;
+        background-color: $color;
       }
     }
   }
@@ -168,13 +173,14 @@ button[data-md-color-primary="white"] {
     color: $md-color-black;
   }
 
-  // Search input
-  .md-search__input {
-    background-color: $md-color-black--lightest;
+  // Hero teaser
+  .md-hero {
+    background-color: $md-color-white;
+    color: $md-color-black;
 
-    // Search input placeholder
-    &::placeholder {
-      color: $md-color-black--light;
+    // Add a border if there are no tabs
+    &--expand {
+      border-bottom: 0.1rem solid $md-color-black--lightest;
     }
   }
 
@@ -193,6 +199,20 @@ button[data-md-color-primary="white"] {
     }
   }
 
+  // [tablet portrait +]: Change color of search input
+  @include break-from-device(tablet landscape) {
+
+    // Search input
+    .md-search__input {
+      background-color: $md-color-black--lightest;
+
+      // Search input placeholder
+      &::placeholder {
+        color: $md-color-black--light;
+      }
+    }
+  }
+
   // [tablet -]: Layered navigation
   @include break-to-device(tablet) {
 
@@ -200,6 +220,11 @@ button[data-md-color-primary="white"] {
     html & .md-nav--primary .md-nav__title--site {
       background-color: $md-color-white;
       color: $md-color-black;
+    }
+
+    // Hero teaser
+    .md-hero {
+      border-bottom: 0.1rem solid $md-color-black--lightest;
     }
   }
 
@@ -209,7 +234,7 @@ button[data-md-color-primary="white"] {
     // Tabs with outline
     .md-tabs {
       border-bottom: 0.1rem solid $md-color-black--lightest;
-      background: $md-color-white;
+      background-color: $md-color-white;
       color: $md-color-black;
     }
   }
