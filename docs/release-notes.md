@@ -12,7 +12,7 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.1.1
+# Version 2.2.0
 ```
 
 ### Material 1.x to 2.x
@@ -37,6 +37,16 @@ pip show mkdocs-material | grep -E ^Version
 * The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Changelog
+
+### 2.2.0 <small>_ November 22, 2017</small>
+
+* Added support for hero teaser
+* Added Portuguese translations
+* Fixed [#586][586]: Footnote backref target offset regression
+* Fixed [#605][605]: Search stemmers not correctly loaded
+
+  [586]: https://github.com/squidfunk/mkdocs-material/issues/586
+  [605]: https://github.com/squidfunk/mkdocs-material/issues/605
 
 ### 2.1.1 <small>_ November 21, 2017</small>
 
