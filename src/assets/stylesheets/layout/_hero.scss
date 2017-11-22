@@ -52,8 +52,8 @@
       pointer-events: none;
       transform: translateY(1.25rem);
       transition:
-        transform 0s 0.4s,
-        opacity   0.1s;
+        transform 0s   0.4s,
+        opacity   0.1s 0s;
       opacity: 0;
     }
 
