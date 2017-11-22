@@ -27,20 +27,34 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // All footnote references or back references
-  [id^="fn:"],
+  // All footnote references
   [id^="fnref:"] {
+    display: inline-block;
+
+    // Targeted anchor
+    &:target {
+      margin-top: -(4.8rem + 2.4rem + 1.6rem);
+      padding-top: (4.8rem + 2.4rem + 1.6rem);
+      pointer-events: none;
+    }
+  }
+
+  // All footnote back references
+  [id^="fn:"] {
 
     // Add spacing to anchor for offset
     &::before {
-      display: inline-block;
+      display: none;
+      height: 0;
       content: "";
     }
 
     // Targeted anchor
     &:target::before {
-      margin-top: -(4.8rem + 2.4rem + 1.8rem);
-      padding-top: (4.8rem + 2.4rem + 1.8rem);
+      display: block;
+      margin-top: -(4.8rem + 2.4rem + 1rem);
+      padding-top: (4.8rem + 2.4rem + 1rem);
+      pointer-events: none;
     }
   }
 
@@ -58,22 +72,9 @@
     li {
       transition: color 0.25s;
 
-      // Un-targeted footnote
-      &::before {
-        display: block;
-        height: 0;
-      }
-
       // Darken color for targeted footnote
       &:target {
         color: $md-color-black;
-      }
-
-      // Targeted footnote
-      &:target::before {
-        margin-top: -(4.8rem + 2.4rem + 1rem);
-        padding-top: (4.8rem + 2.4rem + 1rem);
-        pointer-events: none;
       }
 
       // Remove spacing on first element
@@ -96,14 +97,20 @@
     }
   }
 
-  // Render a thin line before footnote
-  .footnote-ref::before {
-    display: inline;
-    margin: 0 0.2em;
-    border-left: 0.1rem solid $md-color-black--lighter;
-    font-size: 1.25em;
-    content: "";
-    vertical-align: -0.5rem;
+  // Footnote reference
+  .footnote-ref {
+    display: inline-block;
+    pointer-events: initial;
+
+    // Render a thin line before footnote
+    &::before {
+      display: inline;
+      margin: 0 0.2em;
+      border-left: 0.1rem solid $md-color-black--lighter;
+      font-size: 1.25em;
+      content: "";
+      vertical-align: -0.5rem;
+    }
   }
 
   // Footnote back reference
