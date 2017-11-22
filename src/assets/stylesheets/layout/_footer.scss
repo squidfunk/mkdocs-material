@@ -112,7 +112,7 @@
 
 // Non-navigational information
 .md-footer-meta {
-  background: opacify($md-color-black, 0.025);
+  background-color: opacify($md-color-black, 0.025);
 
   // Set spacing
   &__inner {
