@@ -22,13 +22,14 @@ html:not(.md-tabbing) :focus,
   outline: 2px solid red;
 }
 
-/* Hide invisible primary nav items (you use font-size: 0 ane they are focusable) */
+/* Hide invisible nav items when using tabs */
 @media only screen and (min-width: 76.25em) {
-  .md-tabs--active ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item {
-    visibility: hidden;
+  .md-tabs--active ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item,
+  .md-tabs ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
+    display: none;
   }
-  .md-tabs--active ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
-    visibility: visible;
+  .md-tabs--active ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--active {
+    display: block;
   }
 }
 
@@ -88,8 +89,7 @@ html:not(.md-tabbing) :focus,
     transition: visibility 0.25s cubic-bezier(0.86, 0, 0.07, 1); /* Prevents immiediately dissapearing collapsible nav when hiding */
   }
   .md-nav[data-md-state='expand'] .md-nav__link,
-  .md-nav__toggle:checked ~ .md-nav .md-nav__link,
-  .md-tabs ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested .md-nav__link {
+  .md-nav__toggle:checked ~ .md-nav .md-nav__link {
     visibility: visible;
   }
 }
@@ -116,17 +116,29 @@ html:not(.md-tabbing) :focus,
 .md-skip:focus {
   font-size: 1.6rem;
   position: fixed;
-  top: 6.1rem; /* 5.6rem header + 0.5rem */
+  top: 5.3rem; /* 4.8rem header + 0.5rem */
   left: 0;
   z-index: -1;
 }
 @media only screen and (min-width: 76.25em) {
   .md-tabs ~ .md-skip {
-    top: 10.9rem;
+    top: 10.1rem;
   }
   .md-tabs[data-md-state="hidden"] ~ .md-skip {
-    top: 6.1rem;
+    top: 5.3rem;
   }
+}
+.md-hero ~ .md-skip {
+  top: 17.3rem;
+}
+@media only screen and (min-width: 76.25em) {
+  .md-hero ~ .md-tabs ~ .md-skip {
+    top: 17.1rem;
+  }
+}
+.md-hero[data-md-state="hidden"] ~ .md-skip,
+.md-hero[data-md-state="hidden"] ~ .md-tabs ~ .md-skip {
+  top: 5.3rem;
 }
 .md-skip:before {
   display: block;
