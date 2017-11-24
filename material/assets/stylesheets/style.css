@@ -136,8 +136,7 @@ html:not(.md-tabbing) :focus,
     top: 17.1rem;
   }
 }
-.md-hero[data-md-state="hidden"] ~ .md-skip,
-.md-hero[data-md-state="hidden"] ~ .md-tabs ~ .md-skip {
+.md-hero[data-md-state="hidden"] ~ .md-skip {
   top: 5.3rem;
 }
 .md-skip:before {
