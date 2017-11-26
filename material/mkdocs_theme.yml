@@ -54,6 +54,7 @@ favicon: assets/images/favicon.png
 
 # The logo of the documentation shown in the header and navigation can either
 # be a Material Icon ligature or an image URL
+# please add a URL to where users can see/choose the ligature codepoints. 
 logo:
   icon: "\uE80C"
 
