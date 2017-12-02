@@ -137,15 +137,6 @@ button[data-md-color-accent] {
       }
     }
 
-    // [tablet landscape +]: Add border to table of contents
-    @include break-from-device(tablet landscape) {
-
-      // Table of contents
-      .md-nav--secondary {
-        border-left: 0.4rem solid $color;
-      }
-    }
-
     // [screen +]: Set background color for tabs
     @include break-from-device(screen) {
 
@@ -182,11 +173,6 @@ button[data-md-color-primary="white"] {
     &--expand {
       border-bottom: 0.1rem solid $md-color-black--lightest;
     }
-  }
-
-  // Table of contents
-  .md-nav--secondary {
-    border-left: 0.4rem solid $md-color-black--light;
   }
 
   // [tablet portrait -]: Layered navigation
