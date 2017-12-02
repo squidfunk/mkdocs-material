@@ -53,7 +53,7 @@ font:
 favicon: assets/images/favicon.png
 
 # The logo of the documentation shown in the header and navigation can either
-# be a Material Icon ligature or an image URL
+# be a Material Icon ligature (see https://material.io/icons/) or an image URL
 logo:
   icon: "\uE80C"
 
