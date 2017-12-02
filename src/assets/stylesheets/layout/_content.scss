@@ -40,7 +40,7 @@
   // Define spacing
   &__inner {
     margin: 0 1.6rem 2.4rem;
-    padding-top: 2.4rem;
+    padding-top: 1.2rem;
 
     // [screen +]: Increase horizontal spacing
     @include break-from-device(screen) {
