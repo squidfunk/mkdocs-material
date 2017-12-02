@@ -348,6 +348,12 @@ French `fr`, German `de`, Spanish `es`, Italian `it`, Dutch `du`, Danish `da`,
 Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`, Russian `ru`,
 Norwegian `no`, Swedish `sv`, Japanese `jp` and Turkish `tr`.
 
+!!! info "Search language support for Chinese"
+
+    [lunr-languages][18] currently doesn't include a stemmer for Chinese or
+    other Asian languages, but some users reported the Japanese stemmer to
+    work quite well for those cases.
+
 !!! warning "Only specify the languages you really need"
 
     Be aware that including support for other languages increases the general
