@@ -6,6 +6,8 @@ example summaries, notes, hints or warnings.
 
   [1]: https://pythonhosted.org/Markdown/extensions/admonition.html
 
+!!! note "LOL"
+
 ## Installation
 
 Add the following lines to your `mkdocs.yml`:

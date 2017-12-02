@@ -33,7 +33,7 @@
 
     position: relative;
     margin: 1.5625em 0;
-    padding: 1.2rem;
+    padding: 1.2rem 1.2rem 0;
     border-left: 0.4rem solid $clr-blue-a200;
     border-radius: 0.2rem;
     font-size: ms(-1);
@@ -43,9 +43,10 @@
       margin-top: 0;
     }
 
-    // Remove spacing on last element
+    // Adjust spacing on last element
     html & :last-child {
       margin-bottom: 0;
+      padding-bottom: 1.2rem;
     }
 
     // Adjust margin for nested admonition blocks
@@ -60,6 +61,11 @@
       border-bottom: 0.1rem solid transparentize($clr-blue-a200, 0.9);
       background-color: transparentize($clr-blue-a200, 0.9);
       font-weight: 700;
+
+      // Reset spacing, if title is the only element
+      html & {
+        padding-bottom: 0.8rem;
+      }
 
       // Icon
       &::before {

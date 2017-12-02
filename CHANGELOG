@@ -1,3 +1,7 @@
+mkdocs-material-2.2.1 (2017-12-02)
+
+  * Removed border for table of contents and improved spacing
+
 mkdocs-material-2.2.0 (2017-11-22)
 
   * Added support for hero teaser
