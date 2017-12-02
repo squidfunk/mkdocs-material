@@ -210,7 +210,7 @@ yarn run watch
 
 This will also start the MkDocs development server which will monitor changes
 on assets, templates and documentation. Point your browser to
-[localhost:8000][11] and you should see this documentation in front of you.
+[localhost:8000][10] and you should see this documentation in front of you.
 
 For example, changing the color palette is as simple as changing the
 `$md-color-primary` and `$md-color-accent` variables in
