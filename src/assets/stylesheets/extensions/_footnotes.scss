@@ -33,8 +33,8 @@
 
     // Targeted anchor
     &:target {
-      margin-top: -(4.8rem + 2.4rem + 1.6rem);
-      padding-top: (4.8rem + 2.4rem + 1.6rem);
+      margin-top: -(4.8rem + 1.2rem + 1.6rem);
+      padding-top: (4.8rem + 1.2rem + 1.6rem);
       pointer-events: none;
     }
   }
@@ -52,8 +52,8 @@
     // Targeted anchor
     &:target::before {
       display: block;
-      margin-top: -(4.8rem + 2.4rem + 1rem);
-      padding-top: (4.8rem + 2.4rem + 1rem);
+      margin-top: -(4.8rem + 1.2rem + 1rem);
+      padding-top: (4.8rem + 1.2rem + 1rem);
       pointer-events: none;
     }
   }

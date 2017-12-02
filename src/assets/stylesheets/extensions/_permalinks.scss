@@ -56,9 +56,9 @@
 
   // Correct anchor offset for link blurring
   @each $level, $delta in (
-    h2: 0.4rem,
-    h3: 0.7rem,
-    h4: 0.8rem,
+    h2: 0.8rem,
+    h3: 0.9rem,
+    h4: 0.9rem,
     h5: 1.1rem,
     h6: 1.1rem
   ) {
@@ -72,10 +72,10 @@
         content: "";
       }
 
-      // Targeted anchor (48px from header, 24px from sidebar offset)
+      // Targeted anchor (48px from header, 12px from sidebar offset)
       &:target::before {
-        margin-top: -(4.8rem + 2.4rem + $delta);
-        padding-top: (4.8rem + 2.4rem + $delta);
+        margin-top: -(4.8rem + 1.2rem + $delta);
+        padding-top: (4.8rem + 1.2rem + $delta);
       }
 
       // Make permalink visible on hover
