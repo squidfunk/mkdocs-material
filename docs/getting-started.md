@@ -381,7 +381,7 @@ The default favicon can be changed by setting the `favicon` variable to an
 
 ``` yaml
 theme:
-  favicon: 'assets/mages/favicon.ico'
+  favicon: 'assets/images/favicon.ico'
 ```
 
 ### Features
