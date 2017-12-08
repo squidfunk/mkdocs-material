@@ -1,6 +1,8 @@
-mkdocs-material-2.x.x (2017-xx-xx)
+mkdocs-material-2.2.2 (2017-12-08)
 
+  * Added Dutch translations
   * Adjusted targeted link and footnote offsets
+  * Simplified Admonition styles and fixed padding bug
 
 mkdocs-material-2.2.1 (2017-12-02)
 
