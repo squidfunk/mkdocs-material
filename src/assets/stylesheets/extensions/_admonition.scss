@@ -39,13 +39,8 @@
     font-size: ms(-1);
     overflow: auto;
 
-    // Remove spacing on first element
-    :first-child {
-      margin-top: 0;
-    }
-
     // Adjust spacing on last element
-    html & :last-child {
+    html & > :last-child {
       margin-bottom: 1.2rem;
     }
 
