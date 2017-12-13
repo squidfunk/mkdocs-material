@@ -1,5 +1,5 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": "stylelint-config-recommended",
   "plugins": [
     "stylelint-order",
     "stylelint-scss"
@@ -25,6 +25,7 @@
     "font-family-name-quotes": "always-where-recommended",
     "font-weight-notation": "numeric",
     "function-url-quotes": "always",
+    "no-descending-specificity": null,
     "no-unknown-animations": true,
     "order/order": [
       "custom-properties",
