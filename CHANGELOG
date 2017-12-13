@@ -1,3 +1,8 @@
+mkdocs-material-2.2.3 (2017-12-13)
+
+  * Fixed #630: Admonition sets padding on any last child
+  * Adjusted Chinese (Traditional) translations
+
 mkdocs-material-2.2.2 (2017-12-08)
 
   * Added Dutch translations
