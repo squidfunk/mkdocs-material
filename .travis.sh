@@ -53,7 +53,7 @@ pushd /tmp
 mkdocs new test && cd test
 
 # Test Docker image build
-docker run --rm -it -v `pwd`:/docs $TRAVIS_REPO_SLUG build --theme material
+docker run --rm -it -v $(pwd):/docs $TRAVIS_REPO_SLUG build --theme material
 
 # Return to original directory
 popd

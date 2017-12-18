@@ -12,7 +12,7 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.2.4
+# Version 2.2.5
 ```
 
 ### Material 1.x to 2.x
@@ -37,6 +37,12 @@ pip show mkdocs-material | grep -E ^Version
 * The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Changelog
+
+### 2.2.5 <small>_ December 18, 2017</small>
+
+* Fixed [#639][639]: Broken default favicon
+
+  [639]: https://github.com/squidfunk/mkdocs-material/issues/639
 
 ### 2.2.4 <small>_ December 18, 2017</small>
 
