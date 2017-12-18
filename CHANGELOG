@@ -1,3 +1,7 @@
+mkdocs-material-2.2.4 (2017-12-18)
+
+  * Fixed #638: Build breaks with Jinja < 2.9
+
 mkdocs-material-2.2.3 (2017-12-13)
 
   * Fixed #630: Admonition sets padding on any last child

@@ -12,7 +12,7 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.2.3
+# Version 2.2.4
 ```
 
 ### Material 1.x to 2.x
@@ -38,10 +38,18 @@ pip show mkdocs-material | grep -E ^Version
 
 ## Changelog
 
+### 2.2.4 <small>_ December 18, 2017</small>
+
+* Fixed [#638][638]: Build breaks with Jinja < 2.9
+
+  [638]: https://github.com/squidfunk/mkdocs-material/issues/638
+
 ### 2.2.3 <small>_ December 13, 2017</small>
 
-* Fixed #630: Admonition sets padding on any last child
+* Fixed [#630][630]: Admonition sets padding on any last child
 * Adjusted Chinese (Traditional) translations
+
+  [630]: https://github.com/squidfunk/mkdocs-material/issues/630
 
 ### 2.2.2 <small>_ December 8, 2017</small>
 
