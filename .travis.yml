@@ -39,7 +39,7 @@ cache:
 
 # Install yarn as Travis doesn't support it out of the box
 before_install:
-  - npm install -g yarn@v0.22.0
+  - npm install -g yarn@v1.3.2
 
 # Install dependencies
 install:
