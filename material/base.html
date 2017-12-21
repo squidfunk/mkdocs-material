@@ -46,13 +46,13 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.bcabdff3.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.css">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-palette.792431c1.css">
+        <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-palette.css">
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
     {% endblock %}
     {% block fonts %}
       {% if font != false %}
@@ -86,11 +86,11 @@
       <defs>
         {% set platform = config.extra.repo_icon or config.repo_url %}
         {% if "github" in platform %}
-          {% include "assets/images/icons/github.a4034fb1.svg" %}
+          {% include "assets/images/icons/github.svg" %}
         {% elif "gitlab" in platform %}
-          {% include "assets/images/icons/gitlab.d80e5efc.svg" %}
+          {% include "assets/images/icons/gitlab.svg" %}
         {% elif "bitbucket" in platform %}
-          {% include "assets/images/icons/bitbucket.4ebea66e.svg" %}
+          {% include "assets/images/icons/bitbucket.svg" %}
         {% endif %}
       </defs>
     </svg>
@@ -167,7 +167,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.5165553b.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application.js"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
