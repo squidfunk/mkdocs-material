@@ -43,6 +43,7 @@
 
   // Always show shadow, in case JavaScript is not available
   .no-js & {
+    transition: none;
     box-shadow: none;
   }
 
@@ -144,6 +145,11 @@
     // Induce ellipsis, if no JavaScript is available
     .no-js & {
       position: initial;
+    }
+
+    // Hide page title as it is invisible anyway and will overflow the header
+    .no-js & + & {
+      display: none;
     }
   }
 
