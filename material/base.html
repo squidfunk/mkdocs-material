@@ -34,7 +34,7 @@
         <meta name="lang:{{ key }}" content="{{ lang.t(key) }}">
       {% endfor %}
       <link rel="shortcut icon" href="{{ base_url }}/{{ config.theme.favicon }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-2.2.5">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-2.2.6">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -46,7 +46,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.bcabdff3.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application.6525f7f6.css">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-palette.792431c1.css">
       {% endif %}
@@ -167,7 +167,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.5165553b.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application.206c856d.js"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
