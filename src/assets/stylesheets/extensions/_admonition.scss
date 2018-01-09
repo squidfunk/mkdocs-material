@@ -76,7 +76,7 @@
 
     // Build representational classes
     @each $names, $appearance in (
-      summary tldr: $clr-light-blue-a400 "\E8D2", // subject
+      abstract summary tldr: $clr-light-blue-a400 "\E8D2", // subject
       info todo: $clr-cyan-a700 "\E88E", // info
       tip hint important : $clr-teal-a700 "\E80E", // whatshot
       success check done: $clr-green-a700 "\E876", // done
@@ -85,6 +85,7 @@
       failure fail missing: $clr-red-a200 "\E14C", // clear
       danger error: $clr-red-a400 "\E3E7", // flash_on
       bug: $clr-pink-a400 "\E868", // bug_report
+      example: $clr-deep-purple-a400 "\E242", // format_list_numbered
       quote cite: $clr-grey "\E244" // format_quote
     ) {
       $tint: nth($appearance, 1);
