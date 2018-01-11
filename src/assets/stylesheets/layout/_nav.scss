@@ -395,12 +395,22 @@
     .md-nav__toggle ~ & {
       max-height: 0;
       overflow: hidden;
+
+      // Just hide links for accessibility if JavaScript is not available
+      .no-js & {
+        display: none;
+      }
     }
 
     // Expand nested navigation, if toggle is checked
     .md-nav__toggle:checked ~ &,
     &[data-md-state="expand"] {
       max-height: 100%;
+
+      // Just show for accessibility links if JavaScript is not available
+      .no-js & {
+        display: block;
+      }
     }
 
     // Hide titles for nested navigation
