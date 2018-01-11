@@ -310,7 +310,7 @@ function initialize(config) { // eslint-disable-line func-style
   }).listen()
 
   /* Listener: reset tabbing behavior */
-  new Material.Event.Listener(document.body, "click", () => {
+  new Material.Event.Listener(document.body, "mousedown", () => {
     const labels = document.querySelectorAll(
       "[data-md-component=navigation] .md-nav__link[tabindex]")
     Array.prototype.forEach.call(labels, label => {
