@@ -276,7 +276,7 @@ export default class Result {
         const article = (
           <li class="md-search-result__item">
             <a href={doc.location} title={doc.title}
-              class="md-search-result__link">
+              class="md-search-result__link" tabindex="-1">
               <article class="md-search-result__article
                     md-search-result__article--document">
                 <h1 class="md-search-result__title">
@@ -297,7 +297,8 @@ export default class Result {
             const section = this.docs_.get(item.ref)
             article.appendChild(
               <a href={section.location} title={section.title}
-                class="md-search-result__link" data-md-rel="anchor">
+                class="md-search-result__link" data-md-rel="anchor"
+                tabindex="-1">
                 <article class="md-search-result__article">
                   <h1 class="md-search-result__title">
                     {{ __html: section.title.replace(match, highlight) }}
@@ -329,21 +330,27 @@ export default class Result {
       /* Bind click handlers for anchors */
       const anchors = this.list_.querySelectorAll("[data-md-rel=anchor]")
       Array.prototype.forEach.call(anchors, anchor => {
-        anchor.addEventListener("click", ev2 => {
-          const toggle = document.querySelector("[data-md-toggle=search]")
-          if (!(toggle instanceof HTMLInputElement))
-            throw new ReferenceError
-          if (toggle.checked) {
-            toggle.checked = false
-            toggle.dispatchEvent(new CustomEvent("change"))
-          }
+        ["click", "keydown"].forEach(action => {
+          anchor.addEventListener(action, ev2 => {
+            if (action === "keydown" && ev2.keyCode !== 13)
+              return
 
-          /* Hack: prevent default, as the navigation needs to be delayed due
-             to the search body lock on mobile */
-          ev2.preventDefault()
-          setTimeout(() => {
-            document.location.href = anchor.href
-          }, 100)
+            /* Close search */
+            const toggle = document.querySelector("[data-md-toggle=search]")
+            if (!(toggle instanceof HTMLInputElement))
+              throw new ReferenceError
+            if (toggle.checked) {
+              toggle.checked = false
+              toggle.dispatchEvent(new CustomEvent("change"))
+            }
+
+            /* Hack: prevent default, as the navigation needs to be delayed due
+               to the search body lock on mobile */
+            ev2.preventDefault()
+            setTimeout(() => {
+              document.location.href = anchor.href
+            }, 100)
+          })
         })
       })
 

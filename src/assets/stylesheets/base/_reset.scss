@@ -71,12 +71,6 @@ input {
 a {
   color: inherit;
   text-decoration: none;
-
-  // Remove outline on focused or active links
-  &:active,
-  &:hover {
-    outline-width: 0;
-  }
 }
 
 // Normalize font-size in all browsers
@@ -125,7 +119,7 @@ th {
 button {
   padding: 0;
   border: 0;
-  outline: 0;
+  outline-style: none;
   background: transparent;
   font-size: inherit;
 }

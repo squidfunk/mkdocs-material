@@ -50,20 +50,19 @@
     transition:
       color   0.25s,
       opacity 0.25s;
-    color: $md-color-black--light;
+    color: $md-color-black--lightest;
     content: "\E14D"; // content_copy
-    opacity: 0.25;
 
     // Show on container hover
     pre:hover &,
     .codehilite:hover & {
-      opacity: 1;
+      color: $md-color-black--light;
     }
   }
 
-  // Hovered and active icon
-  &:hover::before,
-  &:active::before {
+  // Focused or hovered icon
+  &:focus::before,
+  &:hover::before {
     color: $md-color-accent;
   }
 
