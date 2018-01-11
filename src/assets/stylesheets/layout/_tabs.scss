@@ -117,11 +117,6 @@
       // Adjust 1st level styles
       .md-nav--primary {
 
-        // // Hide titles for nested navigation
-        // &__item--nested > .md-nav > &__title {
-        //   display: none;
-        // }
-
         // Show title and remove spacing
         .md-nav__title {
           display: block;
