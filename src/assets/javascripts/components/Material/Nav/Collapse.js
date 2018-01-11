@@ -45,6 +45,18 @@ export default class Collapse {
   }
 
   /**
+   * Initialize overflow and display for accessibility
+   */
+  setup() {
+    const current = this.el_.getBoundingClientRect().height
+
+    /* Hidden links should not be focusable, so hide them when the navigation
+       is collapsed and set overflow so the outline is not cut off */
+    this.el_.style.display  = current ? "block"   : "none"
+    this.el_.style.overflow = current ? "visible" : "hidden"
+  }
+
+  /**
    * Animate expand and collapse smoothly
    *
    * Internet Explorer 11 is very slow at recognizing changes on the dataset
@@ -53,6 +65,10 @@ export default class Collapse {
    */
   update() {
     const current = this.el_.getBoundingClientRect().height
+
+    /* Reset overflow to CSS defaults */
+    this.el_.style.display  = "block"
+    this.el_.style.overflow = ""
 
     /* Expanded, so collapse */
     if (current) {
@@ -89,6 +105,11 @@ export default class Collapse {
       target.removeAttribute("data-md-state")
       target.style.maxHeight = ""
 
+      /* Hidden links should not be focusable, so hide them when the navigation
+         is collapsed and set overflow so the outline is not cut off */
+      target.style.display  = current ? "none"   : "block"
+      target.style.overflow = current ? "hidden" : "visible"
+
       /* Only fire once, so directly remove event listener */
       target.removeEventListener("transitionend", end)
     }
@@ -101,5 +122,7 @@ export default class Collapse {
   reset() {
     this.el_.dataset.mdState = ""
     this.el_.style.maxHeight = ""
+    this.el_.style.display   = ""
+    this.el_.style.overflow  = ""
   }
 }

@@ -9,11 +9,11 @@
     {% else %}
       <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}">
     {% endif %}
-    <label class="md-nav__link" for="{{ path }}">
+    <label class="md-nav__link" for="{{ path }}" tabindex="0">
       {{ nav_item.title }}
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="{{ level }}">
-      <label class="md-nav__title" for="{{ path }}">
+      <label class="md-nav__title" for="{{ path }}" tabindex="0">
         {{ nav_item.title }}
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -34,7 +34,7 @@
       {% set toc_ = (toc_ | first).children %}
     {% endif %}
     {% if toc_ | first is defined %}
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="toc" tabindex="0">
         {{ nav_item.title }}
       </label>
     {% endif %}

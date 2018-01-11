@@ -154,6 +154,7 @@
       // Always expand nested navigation on 2nd level
       .md-nav[data-md-level="1"] {
         max-height: initial;
+        overflow: visible;
 
         // Remove left spacing on 2nd level items
         > .md-nav__list > .md-nav__item {
