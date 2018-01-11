@@ -304,7 +304,8 @@ function initialize(config) { // eslint-disable-line func-style
       const labels = document.querySelectorAll(
         "[data-md-component=navigation] .md-nav__link[for]:not([tabindex])")
       Array.prototype.forEach.call(labels, label => {
-        label.tabIndex = 0
+        if (label.offsetHeight)
+          label.tabIndex = 0
       })
     }
   }).listen()
