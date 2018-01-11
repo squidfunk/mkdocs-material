@@ -1,3 +1,16 @@
+mkdocs-material-2.4.0 (2017-01-11)
+
+  * Added focus state for clipboard buttons
+  * Fixed #400: Search bar steals tab focus
+  * Fixed search not closing on ENTER when result is selected
+  * Fixed search not closing when losing focus due to TAB
+  * Fixed collapsed navigation links getting focus
+  * Fixed outline being cut off on TAB focus of navigation links
+  * Fixed bug with first search result navigation being ignored
+  * Removed search result navigation via TAB (use UP and DOWN)
+  * Removed outline resets for links
+  * Improved general tabbing behavior on desktop
+
 mkdocs-material-2.3.0 (2017-01-09)
 
   * Added example (synonym: snippet) style for Admonition
