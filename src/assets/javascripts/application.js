@@ -381,8 +381,8 @@ function initialize(config) { // eslint-disable-line func-style
           }
         }
 
-      /* Escape: close search */
-      } else if (ev.keyCode === 27) {
+      /* Escape or Tab: close search */
+      } else if (ev.keyCode === 9 || ev.keyCode === 27) {
         toggle.checked = false
         toggle.dispatchEvent(new CustomEvent("change"))
         query.blur()
@@ -392,10 +392,9 @@ function initialize(config) { // eslint-disable-line func-style
         if (query !== document.activeElement)
           query.focus()
 
-      /* Vertical arrows and tab: select previous or next search result */
-      } else if ([9, 38, 40].indexOf(ev.keyCode) !== -1) {
-        const map = ev.shiftKey ? 38 : 40
-        const key = ev.keyCode === 9 ? map : ev.keyCode
+      /* Vertical arrows: select previous or next search result */
+      } else if ([38, 40].indexOf(ev.keyCode) !== -1) {
+        const key = ev.keyCode
 
         /* Retrieve all results */
         const links = Array.prototype.slice.call(
