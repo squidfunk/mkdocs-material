@@ -1,3 +1,7 @@
+mkdocs-material-2.5.0 (2017-01-13)
+
+  * Added support for right-to-left languages
+
 mkdocs-material-2.4.0 (2017-01-11)
 
   * Added focus state for clipboard buttons

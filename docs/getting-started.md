@@ -104,8 +104,11 @@ The `mkdocs` executable is provided as an entrypoint, `serve` is the default
 command. Start the development server in your project root with:
 
 ```
-docker run --rm -it -p 8000:8000 -v `pwd`:/docs squidfunk/mkdocs-material
+docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 ```
+
+If you're using Windows command prompt (`cmd.exe`), substitute `${PWD}` with
+`"%cd%"`.
 
   [8]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
@@ -323,6 +326,19 @@ Feel free to contribute your localization to Material for MkDocs by opening a
 Pull Request.
 
   [16]: https://www.w3schools.com/tags/ref_language_codes.asp
+
+#### Text direction
+
+> Default: `ltr`
+
+Material supports both, left-to-right (`ltr`) and right-to-left (`rtl`) text
+direction. This enables more languages like Arabic, Hebrew, Syriac and others
+to be used with the theme:
+
+```
+theme:
+  direction: rtl
+```
 
 #### Site search
 
