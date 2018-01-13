@@ -48,6 +48,11 @@
 
       display: none;
       content: "\E5C4"; // arrow_back
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        content: "\E5C8"; // arrow_forward
+      }
     }
 
     // Hide button by default
@@ -75,6 +80,12 @@
     // 2nd+ level items
     & & {
       padding-right: 0;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        padding-right: 1.2rem;
+        padding-left: 0;
+      }
 
       // Remove bottom spacing for nested items
       &:last-child {
@@ -242,6 +253,22 @@
         }
       }
 
+      // Adjust for RTL languages
+      html [dir="rtl"] & .md-nav__title {
+
+        // Icon
+        &::before {
+          right: 0.4rem;
+          left: initial;
+        }
+
+        // Site title in main navigation
+        &--site .md-nav__button {
+          right: 0.4rem;
+          left: initial;
+        }
+      }
+
       // List of items
       .md-nav__list {
         flex: 1;
@@ -253,13 +280,29 @@
         padding: 0;
         border-top: 0.1rem solid $md-color-black--lightest;
 
+        // Adjust for RTL languages
+        [dir="rtl"] & {
+          padding: 0;
+        }
+
         // Increase spacing to account for icon
         &--nested > .md-nav__link {
           padding-right: 4.8rem;
 
+          // Adjust for RTL languages
+          [dir="rtl"] & {
+            padding-right: 1.6rem;
+            padding-left: 4.8rem;
+          }
+
           // Replace icon with right arrow
           &::after {
             content: "\E315"; // keyboard_arrow_right
+
+            // Adjust for RTL languages
+            [dir="rtl"] & {
+              content: "\E314"; // keyboard_arrow_left
+            }
           }
         }
       }
@@ -278,6 +321,12 @@
           margin-top: -1.2rem;
           color: inherit;
           font-size: 2.4rem;
+
+          // Adjust for RTL languages
+          [dir="rtl"] & {
+            right: initial;
+            left: 1.2rem;
+          }
         }
       }
 
@@ -297,21 +346,45 @@
           // 3rd level link
           .md-nav__link {
             padding-left: 2.8rem;
+
+            // Adjust for RTL languages
+            [dir="rtl"] & {
+              padding-right: 2.8rem;
+              padding-left: initial;
+            }
           }
 
           // 4th level link
           .md-nav .md-nav__link {
             padding-left: 4rem;
+
+            // Adjust for RTL languages
+            [dir="rtl"] & {
+              padding-right: 4rem;
+              padding-left: initial;
+            }
           }
 
           // 5th level link
           .md-nav .md-nav .md-nav__link {
             padding-left: 5.2rem;
+
+            // Adjust for RTL languages
+            [dir="rtl"] & {
+              padding-right: 5.2rem;
+              padding-left: initial;
+            }
           }
 
           // 6th level link
           .md-nav .md-nav .md-nav .md-nav__link {
             padding-left: 6.4rem;
+
+            // Adjust for RTL languages
+            [dir="rtl"] & {
+              padding-right: 6.4rem;
+              padding-left: initial;
+            }
           }
         }
       }
@@ -325,6 +398,11 @@
         transform 0.25s cubic-bezier(0.8, 0, 0.6, 1),
         opacity   0.125s 0.05s;
       opacity: 0;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        transform: translateX(-100%);
+      }
 
       // Just hide navigation, if browser doesn't supports 3D transforms
       .no-csstransforms3d & {
@@ -371,6 +449,12 @@
       & ~ .md-nav {
         display: flex;
       }
+    }
+
+    // Adjust for RTL languages
+    html [dir="rtl"] &__link {
+      padding-right: 1.6rem;
+      padding-left: 4.8rem;
     }
 
     // Repository containing source

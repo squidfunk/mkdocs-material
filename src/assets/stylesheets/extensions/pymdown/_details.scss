@@ -51,6 +51,11 @@
     // Increase spacing to the right - scoped here for higher specificity
     summary {
       padding-right: 4rem;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        padding-left: 4rem;
+      }
     }
 
     // Manually hide and show, if browser doesn't support details
@@ -92,6 +97,12 @@
       color: $md-color-black--lighter;
       font-size: 2rem;
       content: "\E313"; // keyboard_arrow_down
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        right: initial;
+        left: 1.2rem;
+      }
     }
   }
 }

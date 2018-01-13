@@ -64,4 +64,18 @@
       content: $ligature;
     }
   }
+
+  // Adjust for RTL languages
+  [dir="rtl"] & {
+
+    // Flip ligatures for arrows
+    @each $ligature, $name in (
+      "\E5C8": "arrow-back", // arrow_forward
+      "\E5C4": "arrow-forward" // arrow_back
+    ) {
+      &--#{$name}::before {
+        content: $ligature;
+      }
+    }
+  }
 }

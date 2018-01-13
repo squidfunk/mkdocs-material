@@ -38,6 +38,12 @@
       position: absolute;
       top: 0.45em;
       left: -2em;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        right: -2em;
+        left: initial;
+      }
     }
   }
 
@@ -55,6 +61,12 @@
       font-size: 1.25em;
       content: "\E835"; // check_box_outline_blank
       vertical-align: -0.25em;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        right: -1.25em;
+        left: initial;
+      }
     }
 
     // Checkbox icon in checked state

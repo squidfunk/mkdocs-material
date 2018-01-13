@@ -129,10 +129,21 @@
     opacity: 0;
     vertical-align: text-bottom;
 
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      transform: translateX(-0.5rem);
+    }
+
     // Back reference icon
     &::before {
+      display: inline-block;
       font-size: 1.6rem;
       content: "\E31B"; // keyboard_return
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        transform: scaleX(-1)
+      }
     }
   }
 }

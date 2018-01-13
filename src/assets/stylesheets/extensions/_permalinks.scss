@@ -38,6 +38,12 @@
       opacity   0.125s 0.25s;
     opacity: 0;
 
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      margin-right: 1rem;
+      margin-left: initial;
+    }
+
     // Higher specificity for color due to palettes integration
     html body & {
       color: $md-color-black--lighter;
