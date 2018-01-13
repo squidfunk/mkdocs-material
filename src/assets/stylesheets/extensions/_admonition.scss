@@ -39,6 +39,12 @@
     font-size: ms(-1);
     overflow: auto;
 
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      border-right: 0.4rem solid $clr-blue-a200;
+      border-left: none;
+    }
+
     // Adjust spacing on last element
     html & > :last-child {
       margin-bottom: 1.2rem;
@@ -57,6 +63,11 @@
       background-color: transparentize($clr-blue-a200, 0.9);
       font-weight: 700;
 
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        padding: 0.8rem 4rem 0.8rem 1.2rem;
+      }
+
       // Reset spacing, if title is the only element
       &:last-child {
         margin-bottom: 0;
@@ -71,6 +82,12 @@
         color: $clr-blue-a200;
         font-size: 2rem;
         content: "\E3C9"; // edit
+
+        // Adjust for RTL languages
+        [dir="rtl"] & {
+          right: 1.2rem;
+          left: initial;
+        }
       }
     }
 
@@ -94,11 +111,16 @@
       // Define base class
       &%#{nth($names, 1)},
       &.#{nth($names, 1)} {
-        border-left: 0.4rem solid $tint;
+        border-left-color: $tint;
+
+        // Adjust for RTL languages
+        [dir="rtl"] & {
+          border-right-color: $tint;
+        }
 
         // Title
         > .admonition-title {
-          border-bottom: 0.1rem solid transparentize($tint, 0.9);
+          border-bottom-color: 0.1rem solid transparentize($tint, 0.9);
           background-color: transparentize($tint, 0.9);
 
           // Icon

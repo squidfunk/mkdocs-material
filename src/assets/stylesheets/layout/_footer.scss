@@ -65,6 +65,11 @@
       width: 25%;
       float: left;
 
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        float: right;
+      }
+
       // Title
       .md-footer-nav__title {
 
@@ -80,6 +85,12 @@
       width: 75%;
       float: right;
       text-align: right;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        float: left;
+        text-align: left;
+      }
     }
   }
 
@@ -143,6 +154,11 @@
   @include break-from-device(tablet portrait) {
     max-width: 75%;
     float: left;
+
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      float: right;
+    }
   }
 
   // Highlight copyright information
@@ -160,6 +176,11 @@
   @include break-from-device(tablet portrait) {
     padding: 1.2rem 0;
     float: right;
+
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      float: left;
+    }
   }
 
   // Link with icon

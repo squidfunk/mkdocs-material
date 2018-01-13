@@ -30,11 +30,22 @@
   // [tablet landscape +]: Add space for table of contents
   @include break-from-device(tablet landscape) {
     margin-right: 24.2rem;
+
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      margin-right: initial;
+      margin-left: 24.2rem;
+    }
   }
 
   // [screen +]: Add space for table of contents
   @include break-from-device(screen) {
     margin-left: 24.2rem;
+
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      margin-right: 24.2rem;
+    }
   }
 
   // Define spacing

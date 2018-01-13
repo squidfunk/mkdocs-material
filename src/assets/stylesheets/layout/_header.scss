@@ -140,6 +140,11 @@
       opacity: 0;
       z-index: -1;
       pointer-events: none;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        transform: translateX(-2.5rem);
+      }
     }
 
     // Induce ellipsis, if no JavaScript is available
@@ -169,6 +174,11 @@
       z-index: -1;
       pointer-events: none;
 
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        transform: translateX(2.5rem);
+      }
+
       // Page title
       & + .md-header-nav__topic {
         transform: translateX(0);
@@ -193,6 +203,14 @@
       max-width: 23rem;
       margin-left: 2.8rem;
       padding-right: 1.2rem;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-right: 2.8rem;
+        margin-left: initial;
+        padding-right: initial;
+        padding-left: 1.2rem;
+      }
     }
   }
 }

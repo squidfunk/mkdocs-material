@@ -67,6 +67,12 @@ $md-toggle__drawer--checked:
       background-color: $md-color-white;
       z-index: 3;
 
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        right: -24.2rem;
+        left: initial;
+      }
+
       // Just hide drawer, if browser doesn't support 3D transforms
       .no-csstransforms3d & {
         display: none;
@@ -77,6 +83,11 @@ $md-toggle__drawer--checked:
         @include z-depth(8);
 
         transform: translateX(24.2rem);
+
+        // Adjust for RTL languages
+        [dir="rtl"] & {
+          transform: translateX(-24.2rem);
+        }
 
         // Just show drawer, if browser doesn't support 3D transforms
         .no-csstransforms3d & {
@@ -100,11 +111,24 @@ $md-toggle__drawer--checked:
       display: block;
       margin-left: 100%;
       transform: translate(-100%, 0);
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-right: 100%;
+        margin-left: initial;
+        transform: translate(100%, 0);
+      }
     }
 
     // [screen +]: Limit to grid
     @include break-from-device(screen) {
       margin-left: 122rem;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-right: 122rem;
+        margin-left: initial;
+      }
     }
   }
 

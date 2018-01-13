@@ -65,6 +65,12 @@
   line-height: 1.2;
   white-space: nowrap;
 
+  // Adjust for RTL languages
+  [dir="rtl"] & {
+    padding-right: initial;
+    padding-left: 1.2rem;
+  }
+
   // Hovered source container
   &:hover {
     opacity: 0.7;
@@ -93,12 +99,26 @@
       height: 2.4rem;
       margin-top: 1.2rem;
       margin-left: 1.2rem;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-right: 1.2rem;
+        margin-left: initial;
+      }
     }
 
     // Correct alignment, if icon is present
     + .md-source__repository {
       margin-left: -4.4rem;
       padding-left: 4rem;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-right: -4.4rem;
+        margin-left: initial;
+        padding-right: 4rem;
+        padding-left: initial;
+      }
     }
   }
 
@@ -132,6 +152,11 @@
   // Fact
   &__fact {
     float: left;
+
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      float: right;
+    }
 
     // Show after the data was loaded
     [data-md-state="done"] & {

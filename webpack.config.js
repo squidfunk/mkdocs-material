@@ -209,7 +209,8 @@ module.exports = env => {
           {
             loader: "css-loader",
             options: {
-              minimize: env && env.prod
+              minimize: env && env.prod,
+              sourceMap: !(env && env.prod)
             }
           },
           {
@@ -219,7 +220,8 @@ module.exports = env => {
               plugins: () => [
                 require("autoprefixer")(),
                 require("css-mqpacker")
-              ]
+              ],
+              sourceMap: !(env && env.prod)
             }
           },
           {
@@ -229,7 +231,9 @@ module.exports = env => {
                 "node_modules/modularscale-sass/stylesheets",
                 "node_modules/material-design-color",
                 "node_modules/material-shadows"
-              ]
+              ],
+              sourceMap: !(env && env.prod),
+              sourceMapContents: true
             }
           }
         ]
