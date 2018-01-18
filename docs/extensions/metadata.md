@@ -1,4 +1,4 @@
-hero: Yes, this is set via Metadata
+hero: Metadata enables hero teaser texts
 path: tree/master/docs/extensions
 source: metadata.md
 
@@ -46,7 +46,7 @@ Material exposes a simple text-only page-local hero via Metadata, as you can
 see on the current page when you scroll to the top. It's as simple as:
 
 ``` markdown
-hero: Yes, this is set via Metadata
+hero: Metadata enables hero teaser texts
 ```
 
 ### Overriding the title

@@ -23,6 +23,9 @@
 <!-- Import translations for given language -->
 {% import "partials/language/" + config.theme.language + ".html" as lang %}
 
+<!-- Import fallback translations -->
+{% import "partials/language/en.html" as oops %}
+
 <!-- Re-export translations -->
 {% macro t(key) %}{{ {
   "search.language": (
@@ -31,4 +34,4 @@
   "search.tokenizer": (
     config.extra.search | default({})
   ).tokenizer | default("", true),
-}[key] or lang.t(key) }}{% endmacro %}
+}[key] or lang.t(key) or oops.t(key) }}{% endmacro %}
