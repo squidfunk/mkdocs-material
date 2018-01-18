@@ -1,4 +1,5 @@
 {% import "partials/language/" + config.theme.language + ".html" as lang %}
+{% import "partials/language/en.html" as oops %}
 {% macro t(key) %}{{ {
   "search.language": (
     config.extra.search | default({})
@@ -6,4 +7,4 @@
   "search.tokenizer": (
     config.extra.search | default({})
   ).tokenizer | default("", true),
-}[key] or lang.t(key) }}{% endmacro %}
+}[key] or lang.t(key) or oops.t(key) }}{% endmacro %}

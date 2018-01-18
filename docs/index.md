@@ -1,6 +1,6 @@
 # Material <small>for MkDocs</small>
 
-## Beautiful project documentation
+## Create beautiful project documentation
 
 Material is a theme for [MkDocs][1], an excellent static site generator geared
 towards project documentation. It is built using Google's [Material Design][2]
