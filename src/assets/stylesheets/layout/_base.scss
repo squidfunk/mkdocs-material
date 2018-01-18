@@ -202,6 +202,40 @@ hr {
 }
 
 // ----------------------------------------------------------------------------
+// Rules: skip link
+// ----------------------------------------------------------------------------
+
+// Skip link
+.md-skip {
+  position: fixed;
+  width: 0.1rem;
+  height: 0.1rem;
+  margin: 1rem;
+  padding: 0.6rem 1rem;
+  clip: rect(0.1rem);
+  transform: translateY(0.8rem);
+  border-radius: 0.2rem;
+  background-color: $md-color-black;
+  color: $md-color-white;
+  font-size: ms(-1);
+  opacity: 0;
+  overflow: hidden;
+
+  // Show skip link on focus
+  &:focus {
+    width: auto;
+    height: auto;
+    clip: auto;
+    transform: translateX(0);
+    transition:
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity   0.175s 0.075s;
+    opacity: 1;
+    z-index: 10;
+  }
+}
+
+// ----------------------------------------------------------------------------
 // Rules: print styles
 // ----------------------------------------------------------------------------
 
