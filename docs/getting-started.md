@@ -115,7 +115,7 @@ If you're using Windows command prompt (`cmd.exe`), substitute `${PWD}` with
 ## Usage
 
 In order to enable the theme just add one of the following lines to your
-project's `mkdocs.yml`. If you installed Material using pip:
+project's `mkdocs.yml`. If you installed Material using a package manager:
 
 ``` yaml
 theme:
@@ -335,9 +335,9 @@ Material supports both, left-to-right (`ltr`) and right-to-left (`rtl`) text
 direction. This enables more languages like Arabic, Hebrew, Syriac and others
 to be used with the theme:
 
-```
+``` yaml
 theme:
-  direction: rtl
+  direction: 'rtl'
 ```
 
 #### Site search

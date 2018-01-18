@@ -55,13 +55,9 @@
     }
   }
 
-  // Hide anchor for top-level heading, as it makes no sense
-  h1[id] .headerlink {
-    display: none;
-  }
-
   // Correct anchor offset for link blurring
   @each $level, $delta in (
+    h1: 10rem,
     h2: 0.8rem,
     h3: 0.9rem,
     h4: 0.9rem,
