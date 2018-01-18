@@ -55,9 +55,10 @@
     }
   }
 
-  // Correct anchor offset for link blurring
+  // Correct anchor offset for link blurring - pick a particularly large one
+  // for the h1, so the anchor offset is always at the top of the page
   @each $level, $delta in (
-    h1: 10rem,
+    h1: 100rem,
     h2: 0.8rem,
     h3: 0.9rem,
     h4: 0.9rem,
