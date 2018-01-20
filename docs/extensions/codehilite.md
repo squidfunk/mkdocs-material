@@ -32,14 +32,6 @@ markdown_extensions:
   - codehilite
 ```
 
-!!! warning "Migrating from Material 0.2.x"
-
-    In 0.2.x the CodeHilite extension was included with
-    `codehilite(css_class=code)` which switched the CSS class from
-    `.codehilite` to `.code`. The current version of the theme doesn't require
-    that and defines styles for the default `.codehilite` class, so the part
-    `css_class=code` needs to be removed.
-
   [4]: http://pygments.org/languages
 
 ## Usage
@@ -115,7 +107,7 @@ Line numbers can be added by enabling the `linenums` flag in your `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
-  - codehilite: 
+  - codehilite:
       linenums:true
 ```
 
