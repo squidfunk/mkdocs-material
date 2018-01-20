@@ -1,7 +1,7 @@
-mkdocs-material-2.6.0 (2017-xx-xx)
+mkdocs-material-2.5.1 (2017-01-20)
 
-  * Added permalink to main headline
-  * Added English as a fallback for missing translations
+  * Fixed permalink for main headline
+  * Improved missing translation handling with English as a fallback
   * Improved accessibility with skip-to-content link
 
 mkdocs-material-2.5.0 (2017-01-13)
