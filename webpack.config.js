@@ -156,6 +156,20 @@ module.exports = env => {
               /* Write theme version into template */
               .replace("$md-name$", metadata.name)
               .replace("$md-version$", metadata.version)
+
+              /* Write available search languages into template */
+              .replace("$md-lunr-languages$",
+                fs.readdirSync(
+                  path.resolve(__dirname, "node_modules/lunr-languages")
+                ).reduce((files, file) => {
+                  const matches = file.match(/lunr.(\w{2}).js$/)
+                  if (matches) {
+                    const [, language] = matches
+                    files.push(`"${language}"`)
+                  }
+                  return files
+                }, [])
+                  .join(", "))
           }
         }
       ]),

@@ -167,7 +167,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.fa71e325.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application.5f9a6f1b.js"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
@@ -178,7 +178,9 @@
               {% if language == "jp" %}
                 <script src="{{ path }}/tinyseg.js"></script>
               {% endif %}
-              <script src="{{ path }}/lunr.{{ language }}.js"></script>
+              {% if language in ("da", "de", "du", "es", "fi", "fr", "hu", "it", "jp", "no", "pt", "ro", "ru", "sv", "tr") %}
+                <script src="{{ path }}/lunr.{{ language }}.js"></script>
+              {% endif %}
             {% endif %}
           {% endfor %}
           {% if languages | length > 1 %}

@@ -99,10 +99,11 @@ The directory layout of the Material theme is as follows:
 │  ├─ javascripts/                     # JavaScript
 │  └─ stylesheets/                     # Stylesheets
 ├─ partials/
+│  ├─ integrations/                    # 3rd-party integrations
 │  ├─ language/                        # Localized languages
-│  ├─ disqus.html                      # Disqus integration
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
+│  ├─ hero.html                        # Hero teaser
 │  ├─ language.html                    # Localized labels
 │  ├─ nav-item.html                    # Main navigation item
 │  ├─ nav.html                         # Main navigation

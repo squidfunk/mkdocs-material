@@ -3,7 +3,7 @@
 {% macro t(key) %}{{ {
   "search.language": (
     config.extra.search | default({})
-  ).language | default(config.theme.language, true),
+  ).language,
   "search.tokenizer": (
     config.extra.search | default({})
   ).tokenizer | default("", true),

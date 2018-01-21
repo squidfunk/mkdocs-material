@@ -318,7 +318,9 @@
               {% if language == "jp" %}
                 <script src="{{ path }}/tinyseg.js"></script>
               {% endif %}
-              <script src="{{ path }}/lunr.{{ language }}.js"></script>
+              {% if language in ($md-lunr-languages$) %}
+                <script src="{{ path }}/lunr.{{ language }}.js"></script>
+              {% endif %}
             {% endif %}
           {% endfor %}
           {% if languages | length > 1 %}
