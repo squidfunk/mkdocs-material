@@ -342,22 +342,20 @@ theme:
 
 #### Site search
 
-> Default: `en`
+> Default: best match for given theme language, automatically set
 
 Site search is implemented using [lunr.js][17], which includes stemmers for the
 English language by default, while stemmers for other languages are included
-with [lunr-languages][18], both of which are integrated with this theme. Support
-for other languages and even multilingual search can be activated in your
-project's `mkdocs.yml`:
+with [lunr-languages][18], both of which are integrated with this theme.
+Material selects the matching (or best-matching) stemmer for the given theme
+language. Multilingual search can be activated in your project's `mkdocs.yml`
+by explicitly defining the search language(s):
 
 ``` yaml
 extra:
   search:
     language: 'en, de, ru'
 ```
-
-All defined languages are used only for stemming. This will automatically load
-the stemmers for the specified languages and set them up with site search.
 
 At the time of writing, the following languages are supported: English `en`,
 French `fr`, German `de`, Spanish `es`, Italian `it`, Dutch `du`, Danish `da`,
@@ -367,8 +365,8 @@ Norwegian `no`, Swedish `sv`, Japanese `jp` and Turkish `tr`.
 !!! info "Search language support for Chinese"
 
     [lunr-languages][18] currently doesn't include a stemmer for Chinese or
-    other Asian languages, but some users reported the Japanese stemmer to
-    work quite well for those cases.
+    other Asian languages, but uses the Japanese stemmer, as some users
+    reported pretty decent results.
 
 !!! warning "Only specify the languages you really need"
 

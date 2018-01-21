@@ -179,7 +179,7 @@ export default class Result {
           )
 
           /* Set up alternate search languages */
-          if (lang.length === 1 && lang[0] !== "en") {
+          if (lang.length === 1 && lang[0] !== "en" && lunr[lang[0]]) {
             this.use(lunr[lang[0]])
           } else if (lang.length > 1) {
             this.use(lunr.multiLanguage(...lang))
