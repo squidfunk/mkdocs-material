@@ -12,7 +12,7 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.5.1
+# Version 2.5.2
 ```
 
 ### Material 1.x to 2.x
@@ -38,7 +38,7 @@ pip show mkdocs-material | grep -E ^Version
 
 ## Changelog
 
-### 2.5.2 <small>_ January XX, 2018</small>
+### 2.5.2 <small>_ January 22, 2018</small>
 
 * Added default search language mappings for all localizations
 * Fixed [#673][673]: Error loading non-existent search language
