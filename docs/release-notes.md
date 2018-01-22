@@ -38,6 +38,15 @@ pip show mkdocs-material | grep -E ^Version
 
 ## Changelog
 
+### 2.5.2 <small>_ January XX, 2018</small>
+
+* Added default search language mappings for all localizations
+* Fixed [#673][673]: Error loading non-existent search language
+* Fixed [#675][675]: Uncaught reference error when search plugin disabled
+
+  [673]: https://github.com/squidfunk/mkdocs-material/issues/673
+  [675]: https://github.com/squidfunk/mkdocs-material/issues/675
+
 ### 2.5.1 <small>_ January 20, 2018</small>
 
 * Fixed permalink for main headline

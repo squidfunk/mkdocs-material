@@ -1,3 +1,9 @@
+mkdocs-material-2.5.2 (2017-01-XX)
+
+  * Added default search language mappings for all localizations
+  * Fixed #673: Error loading non-existent search language
+  * Fixed #675: Uncaught reference error when search plugin disabled
+
 mkdocs-material-2.5.1 (2017-01-20)
 
   * Fixed permalink for main headline
