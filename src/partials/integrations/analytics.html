@@ -49,11 +49,13 @@
   });
 
   /* Register handler to log search on blur */
-  var query = document.forms.search.query;
-  query.addEventListener("blur", function() {
-    if (this.value) {
-      var path = document.location.pathname;
-      ga("send", "pageview", path + "?q=" + this.value);
-    }
-  });
+  if (document.forms.search) {
+    var query = document.forms.search.query;
+    query.addEventListener("blur", function() {
+      if (this.value) {
+        var path = document.location.pathname;
+        ga("send", "pageview", path + "?q=" + this.value);
+      }
+    });
+  }
 </script>
