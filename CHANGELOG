@@ -1,4 +1,4 @@
-mkdocs-material-2.5.2 (2017-01-XX)
+mkdocs-material-2.5.2 (2017-01-22)
 
   * Added default search language mappings for all localizations
   * Fixed #673: Error loading non-existent search language
