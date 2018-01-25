@@ -305,7 +305,7 @@ Material for MkDocs supports internationalization (i18n) and provides
 translations for all template variables and labels in English `en`, French `fr`,
 German `de`, Spanish `es`, Italian `it`, Danish `da`, Portugese `pt`,
 Polish `pl`, Norwegian `no`, Dutch `nl`, Swedish `sv`, Korean `kr`,
-Russian `ru`, Ukranian `uk`, Japanese `ja`, Chinese (Simplified) `zh` and
+Russian `ru`, Ukrainian `uk`, Japanese `ja`, Chinese (Simplified) `zh` and
 Chinese (Traditional) `zh-Hant`. Specify the language with:
 
 ``` yaml
