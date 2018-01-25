@@ -12,7 +12,7 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.5.2
+# Version 2.5.3
 ```
 
 ### Material 1.x to 2.x
@@ -37,6 +37,10 @@ pip show mkdocs-material | grep -E ^Version
 * The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Changelog
+
+### 2.5.3 <small>_ January 25, 2018</small>
+
+* Added Ukrainian translations
 
 ### 2.5.2 <small>_ January 22, 2018</small>
 
