@@ -1,24 +1,24 @@
-mkdocs-material-2.5.3 (2017-01-25)
+mkdocs-material-2.5.3 (2018-01-25)
 
   * Added Ukrainian translations
 
-mkdocs-material-2.5.2 (2017-01-22)
+mkdocs-material-2.5.2 (2018-01-22)
 
   * Added default search language mappings for all localizations
   * Fixed #673: Error loading non-existent search language
   * Fixed #675: Uncaught reference error when search plugin disabled
 
-mkdocs-material-2.5.1 (2017-01-20)
+mkdocs-material-2.5.1 (2018-01-20)
 
   * Fixed permalink for main headline
   * Improved missing translation handling with English as a fallback
   * Improved accessibility with skip-to-content link
 
-mkdocs-material-2.5.0 (2017-01-13)
+mkdocs-material-2.5.0 (2018-01-13)
 
   * Added support for right-to-left languages
 
-mkdocs-material-2.4.0 (2017-01-11)
+mkdocs-material-2.4.0 (2018-01-11)
 
   * Added focus state for clipboard buttons
   * Fixed #400: Search bar steals tab focus
@@ -31,7 +31,7 @@ mkdocs-material-2.4.0 (2017-01-11)
   * Removed outline resets for links
   * Improved general tabbing behavior on desktop
 
-mkdocs-material-2.3.0 (2017-01-09)
+mkdocs-material-2.3.0 (2018-01-09)
 
   * Added example (synonym: snippet) style for Admonition
   * Added synonym abstract for summary style for Admonition
