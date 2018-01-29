@@ -38,6 +38,10 @@ pip show mkdocs-material | grep -E ^Version
 
 ## Changelog
 
+### 2.5.4 <small>_ January 29, 2018</small>
+
+* Fixed #683: `gh-deploy` fails inside Docker
+
 ### 2.5.3 <small>_ January 25, 2018</small>
 
 * Added Ukrainian translations

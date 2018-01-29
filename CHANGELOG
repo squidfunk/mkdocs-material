@@ -1,3 +1,7 @@
+mkdocs-material-2.5.4 (2018-01-29)
+
+  * Fixed #683: gh-deploy fails inside Docker
+
 mkdocs-material-2.5.3 (2018-01-25)
 
   * Added Ukrainian translations
