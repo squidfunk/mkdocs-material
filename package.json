@@ -55,7 +55,7 @@
     "file-loader": "^1.1.5",
     "git-hooks": "^1.1.8",
     "html-minifier": "^3.5.6",
-    "imagemin-webpack-plugin": "^1.5.2",
+    "imagemin-webpack-plugin": "^2.0.0",
     "js-cookie": "^2.1.4",
     "lunr": "^2.1.2",
     "lunr-languages": "^1.0.0",
