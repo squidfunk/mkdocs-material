@@ -1,3 +1,7 @@
+mkdocs-material-2.5.5 (2018-01-31)
+
+  * Added Hungarian translations
+
 mkdocs-material-2.5.4 (2018-01-29)
 
   * Fixed #683: gh-deploy fails inside Docker
