@@ -302,11 +302,57 @@ theme:
 > Default: `en`
 
 Material for MkDocs supports internationalization (i18n) and provides
-translations for all template variables and labels in English `en`, French `fr`,
-German `de`, Spanish `es`, Italian `it`, Danish `da`, Portugese `pt`,
-Polish `pl`, Norwegian `no`, Dutch `nl`, Swedish `sv`, Korean `kr`,
-Russian `ru`, Ukrainian `uk`, Japanese `ja`, Chinese (Simplified) `zh` and
-Chinese (Traditional) `zh-Hant`. Specify the language with:
+translations for all template variables and labels in the following languages:
+
+<table style="white-space: nowrap;">
+  <thead>
+    <tr>
+      <th colspan="4">Available languages</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">
+        <code>zh</code> / Chinese (Simplified)
+      </td>
+      <td colspan="2">
+        <code>zh-Hant</code> / Chinese (Traditional)
+      </td>
+    </tr>
+    <tr>
+      <td><code>da</code> / Danish</td>
+      <td><code>nl</code> / Dutch</td>
+      <td><code>en</code> / English</td>
+      <td><code>fr</code> / French</td>
+    </tr>
+    <tr>
+      <td><code>de</code> / German</td>
+      <td><code>hu</code> / Hungarian</td>
+      <td><code>it</code> / Italian</td>
+      <td><code>ja</code> / Japanese</td>
+    </tr>
+    <tr>
+      <td><code>kr</code> / Korean</td>
+      <td><code>no</code> / Norwegian</td>
+      <td><code>pl</code> / Polish</td>
+      <td><code>pt</code> / Portugese</td>
+    </tr>
+    <tr>
+      <td><code>ru</code> / Russian</td>
+      <td><code>es</code> / Spanish</td>
+      <td><code>sv</code> / Swedish</td>
+      <td><code>tr</code> / Turkish</td>
+    </tr>
+    <tr>
+      <td><code>uk</code> / Ukrainian</td>
+      <td colspan="3" align="right">
+        <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+Specify the language with:
 
 ``` yaml
 theme:
@@ -357,10 +403,41 @@ extra:
     language: 'en, de, ru'
 ```
 
-At the time of writing, the following languages are supported: English `en`,
-French `fr`, German `de`, Spanish `es`, Italian `it`, Dutch `du`, Danish `da`,
-Portguese `pt`, Finnish `fi`, Romanian `ro`, Hungarian `hu`, Russian `ru`,
-Norwegian `no`, Swedish `sv`, Japanese `jp` and Turkish `tr`.
+At the time of writing, the following languages are supported:
+
+<table style="white-space: nowrap;">
+  <thead>
+    <tr>
+      <th colspan="4">Available language stemmers</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>da</code> / Danish</td>
+      <td><code>du</code> / Dutch</td>
+      <td><code>en</code> / English</td>
+      <td><code>fi</code> / Finnish</td>
+    </tr>
+    <tr>
+      <td><code>fr</code> / French</td>
+      <td><code>de</code> / German</td>
+      <td><code>hu</code> / Hungarian</td>
+      <td><code>it</code> / Italian</td>
+    </tr>
+    <tr>
+      <td><code>jp</code> / Japanese</td>
+      <td><code>no</code> / Norwegian</td>
+      <td><code>pt</code> / Portugese</td>
+      <td><code>ro</code> / Romanian</td>
+    </tr>
+    <tr>
+      <td><code>ru</code> / Russian</td>
+      <td><code>es</code> / Spanish</td>
+      <td><code>sv</code> / Swedish</td>
+      <td><code>tr</code> / Turkish</td>
+    </tr>
+  </tbody>
+</table>
 
 !!! info "Search language support for Chinese"
 
