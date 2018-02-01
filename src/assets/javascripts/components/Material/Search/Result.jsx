@@ -170,13 +170,22 @@ export default class Result {
         /* Create stack and index */
         this.stack_ = []
         this.index_ = lunr(function() {
+          const filters = {
+            "search.pipeline.trimmer": lunr.trimmer,
+            "search.pipeline.stopwords": lunr.stopWordFilter
+          }
+
+          /* Disable stop words filter and trimmer, if desired */
+          const pipeline = Object.keys(filters).reduce((result, name) => {
+            if (!translate(name).match(/^false$/i))
+              result.push(filters[name])
+            return result
+          }, [])
 
           /* Remove stemmer, as it cripples search experience */
           this.pipeline.reset()
-          this.pipeline.add(
-            lunr.trimmer,
-            lunr.stopWordFilter
-          )
+          if (pipeline)
+            this.pipeline.add(...pipeline)
 
           /* Set up alternate search languages */
           if (lang.length === 1 && lang[0] !== "en" && lunr[lang[0]]) {

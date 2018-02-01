@@ -22,7 +22,7 @@
 language: en
 
 # Text direction (can be ltr or rtl)
-direction: ltr
+direction:
 
 # Feature flags for functionality that alters behavior significantly, and thus
 # may be a matter of taste
