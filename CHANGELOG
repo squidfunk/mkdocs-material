@@ -1,6 +1,12 @@
-mkdocs-material-2.5.6 (2018-02-xx)
+mkdocs-material-2.6.0 (2018-02-02)
 
+  * Moved default search configuration to default translation (English)
+  * Added support to automatically set text direction from translation
+  * Added support to disable search stop word filter in translation
+  * Added support to disable search trimmer in translation
   * Added Persian translations
+  * Fixed support for Polish search
+  * Fixed disappearing GitHub, GitLab and Bitbucket repository icons
 
 mkdocs-material-2.5.5 (2018-01-31)
 

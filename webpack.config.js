@@ -281,11 +281,17 @@ module.exports = env => {
       /* Minify images */
       new ImageminPlugin({
         test: /\.(ico|png|svg)$/i,
-        svgo: {
-          plugins: [
-            { cleanupIDs: false }
-          ]
-        }
+        svgo: null
+        // Hack: Temporarily disabled, as SVGO removes the viewbox property
+        // and setting the plugin to false doesn't have any effect.
+        // {
+        //   plugins: [
+        //     {
+        //       cleanupIDs: false,
+        //       removeViewBox: false
+        //     }
+        //   ]
+        // }
       }),
 
       /* Write manifest */

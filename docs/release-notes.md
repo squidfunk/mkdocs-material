@@ -12,7 +12,7 @@ To determine the currently installed version, use the following command:
 
 ``` sh
 pip show mkdocs-material | grep -E ^Version
-# Version 2.5.5
+# Version 2.6.0
 ```
 
 ### Material 1.x to 2.x
@@ -37,6 +37,16 @@ pip show mkdocs-material | grep -E ^Version
 * The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Changelog
+
+### 2.6.0 <small>_ February 2, 2018</small>
+
+* Moved default search configuration to default translation (English)
+* Added support to automatically set text direction from translation
+* Added support to disable search stop word filter in translation
+* Added support to disable search trimmer in translation
+* Added Persian translations
+* Fixed support for Polish search
+* Fixed disappearing GitHub, GitLab and Bitbucket repository icons
 
 ### 2.5.5 <small>_ January 31, 2018</small>
 
