@@ -146,15 +146,14 @@
   </head>
 
   <!-- Text direction and color palette, if defined -->
-  {% set direction = config.theme.direction %}
   {% if palette.primary or palette.accent %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
     {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-    <body dir="{{ direction }}"
+    <body dir="{{ lang.t('direction') }}"
         data-md-color-primary="{{ primary }}"
         data-md-color-accent="{{ accent }}">
   {% else %}
-    <body dir="{{ direction }}">
+    <body dir="{{ lang.t('direction') }}">
   {% endif %}
 
     <!-- Hidden container for inline SVGs -->
