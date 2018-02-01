@@ -47,7 +47,6 @@ theme:
 
   # Default values, taken from mkdocs_theme.yml
   language: en
-  direction: ltr
   feature:
     tabs: true
   palette:

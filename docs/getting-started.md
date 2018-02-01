@@ -375,7 +375,7 @@ Pull Request.
 
 #### Text direction
 
-> Default: `ltr`
+> Default: best match for given theme language, automatically set
 
 Material supports both, left-to-right (`ltr`) and right-to-left (`rtl`) text
 direction. This enables more languages like Arabic, Hebrew, Syriac and others

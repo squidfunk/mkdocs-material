@@ -26,6 +26,8 @@
         "clipboard.copy",
         "clipboard.copied",
         "search.language",
+        "search.pipeline.stopwords",
+        "search.pipeline.trimmer",
         "search.result.none",
         "search.result.one",
         "search.result.other",
@@ -166,7 +168,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.cb27f861.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application.ababfdab.js"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
