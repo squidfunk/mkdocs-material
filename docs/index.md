@@ -34,7 +34,7 @@ theme:
 ## What to expect
 
 * Responsive design and fluid layout for all kinds of screens and devices,
-  designed to serve your project documentation in a user-friendly way in 19
+  designed to serve your project documentation in a user-friendly way in 20
   languages with optimal readability.
 
 * Easily customizable primary and accent color, fonts, favicon and logo;

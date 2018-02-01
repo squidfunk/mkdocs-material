@@ -334,18 +334,19 @@ translations for all template variables and labels in the following languages:
     <tr>
       <td><code>kr</code> / Korean</td>
       <td><code>no</code> / Norwegian</td>
+      <td><code>fa</code> / Persian</td>
       <td><code>pl</code> / Polish</td>
-      <td><code>pt</code> / Portugese</td>
     </tr>
     <tr>
+      <td><code>pt</code> / Portugese</td>
       <td><code>ru</code> / Russian</td>
       <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
-      <td><code>tr</code> / Turkish</td>
     </tr>
     <tr>
+      <td><code>tr</code> / Turkish</td>
       <td><code>uk</code> / Ukrainian</td>
-      <td colspan="3" align="right">
+      <td colspan="2" align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
       </td>
     </tr>
