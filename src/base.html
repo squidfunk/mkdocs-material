@@ -278,7 +278,7 @@
                     <h2 id="__source">{{ lang.t("meta.source") }}</h2>
                     {% set path = page.meta.path | default([""]) %}
                     {% set file = page.meta.source %}
-                    <a href="{{ [config.repo_url, path, file] | join('/') }}"
+                    <a href="{{ config.repo_url + [path, file] | join('/') }}"
                         title="{{ file }}" class="md-source-file">
                       {{ file }}
                     </a>
