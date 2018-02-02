@@ -154,7 +154,7 @@
                 {% endblock %}
               {% endblock %}
               {% block disqus %}
-                {% if config.extra.disqus and not page.is_homepage %}
+                {% if config.extra.disqus and not page.is_homepage and not (page.meta and page.meta.no_disqus) %}
                   <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
                   {% include "partials/integrations/disqus.html" %}
                 {% endif %}
