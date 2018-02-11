@@ -580,7 +580,7 @@ in your `mkdocs.yml`:
 
 ``` yaml
 extra:
-  disqus: 'mkdocs-material'
+  disqus: 'your-shortname'
 ```
 
 The comments section is inserted on *every page, except the index page*.

@@ -55,7 +55,11 @@
       {% endif %}
 
       <!-- Disqus integration -->
-      {% if config.extra.disqus and not page.is_homepage %}
+      {% set disqus = config.extra.disqus %}
+      {% if page and page.meta and page.meta.disqus is string %}
+        {% set disqus = page.meta.disqus %}
+      {% endif %}
+      {% if disqus %}
         <li class="md-nav__item">
           <a href="#__comments" title="{{ lang.t('meta.comments') }}"
               class="md-nav__link md-nav__link--active">
