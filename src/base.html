@@ -276,9 +276,13 @@
                 {% block source %}
                   {% if page and page.meta and page.meta.source %}
                     <h2 id="__source">{{ lang.t("meta.source") }}</h2>
+                    {% set repo = config.repo_url %}
+                    {% if repo | last == "/" %}
+                      {% set repo = repo[:-1] %}
+                    {% endif %}
                     {% set path = page.meta.path | default([""]) %}
                     {% set file = page.meta.source %}
-                    <a href="{{ [config.repo_url, path, file] | join('/') }}"
+                    <a href="{{ [repo, path, file] | join('/') }}"
                         title="{{ file }}" class="md-source-file">
                       {{ file }}
                     </a>
