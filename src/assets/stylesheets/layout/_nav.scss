@@ -29,11 +29,6 @@
   font-size: 1.4rem;
   line-height: 1.3;
 
-  // Highlight active links (used for page-related meta navigation)
-  &--secondary .md-nav__link--active {
-    color: $md-color-primary;
-  }
-
   // List title
   &__title {
     display: block;
@@ -146,7 +141,8 @@
     }
 
     // Active link
-    &:active {
+    &:active,
+    &--active {
       color: $md-color-primary;
     }
 
