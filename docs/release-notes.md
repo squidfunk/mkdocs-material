@@ -8,11 +8,10 @@ To upgrade Material to the latest version, use pip:
 pip install --upgrade mkdocs-material
 ```
 
-To determine the currently installed version, use the following command:
+To inspect the currently installed version, use the following command:
 
 ``` sh
-pip show mkdocs-material | grep -E ^Version
-# Version 2.6.0
+pip show mkdocs-material
 ```
 
 ### Material 1.x to 2.x
