@@ -37,6 +37,16 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.6.1 <small>_ February 11, 2018</small>
+
+* Fixed [#690][690]: Duplicate slashes in source file URLs
+* Fixed [#696][696]: Active page highlight not working with default palette
+* Added ability to override Disqus integration using metadata
+* Adjusted German translations
+
+  [690]: https://github.com/squidfunk/mkdocs-material/issues/690
+  [696]: https://github.com/squidfunk/mkdocs-material/issues/696
+
 ### 2.6.0 <small>_ February 2, 2018</small>
 
 * Moved default search configuration to default translation (English)
@@ -53,7 +63,9 @@ pip show mkdocs-material
 
 ### 2.5.4 <small>_ January 29, 2018</small>
 
-* Fixed #683: `gh-deploy` fails inside Docker
+* Fixed [#683][683]: `gh-deploy` fails inside Docker
+
+  [683]: https://github.com/squidfunk/mkdocs-material/issues/683
 
 ### 2.5.3 <small>_ January 25, 2018</small>
 
