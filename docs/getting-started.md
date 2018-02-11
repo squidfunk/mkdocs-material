@@ -593,11 +593,14 @@ automatically included.
     `site_url` value must be set in `mkdocs.yml` for the Disqus integration to
     load properly.
 
+Disqus can also be enabled or disabled for specific pages using [Metadata][23].
+
   [22]: https://disqus.com
+  [23]: extensions/metadata.md#disqus
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][23]. The following extensions
+MkDocs supports several [Markdown extensions][24]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -613,20 +616,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][24]
-* [Codehilite][25]
-* [Footnotes][26]
-* [Metadata][27]
-* [Permalinks][28]
-* [PyMdown Extensions][29]
+* [Admonition][25]
+* [Codehilite][26]
+* [Footnotes][27]
+* [Metadata][28]
+* [Permalinks][29]
+* [PyMdown Extensions][30]
 
-  [23]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [24]: extensions/admonition.md
-  [25]: extensions/codehilite.md
-  [26]: extensions/footnotes.md
-  [27]: extensions/metadata.md
-  [28]: extensions/permalinks.md
-  [29]: extensions/pymdown.md
+  [24]: http://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [25]: extensions/admonition.md
+  [26]: extensions/codehilite.md
+  [27]: extensions/footnotes.md
+  [28]: extensions/metadata.md
+  [29]: extensions/permalinks.md
+  [30]: extensions/pymdown.md
 
 ## Full example
 
