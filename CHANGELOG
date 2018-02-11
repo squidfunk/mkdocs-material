@@ -1,3 +1,10 @@
+mkdocs-material-2.6.1 (2018-02-11)
+
+  * Fixed #690: Duplicate slashes in source file URLs
+  * Fixed #696: Active page highlight not working with default palette
+  * Added ability to override Disqus integration using metadata
+  * Adjusted German translations
+
 mkdocs-material-2.6.0 (2018-02-02)
 
   * Moved default search configuration to default translation (English)
