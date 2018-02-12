@@ -1,3 +1,9 @@
+mkdocs-material-2.6.2 (2018-02-12)
+
+  * Added Arabic translations
+  * Fixed incorrect rounding of amount of GitHub stars
+  * Fixed double-layered borders for tables
+
 mkdocs-material-2.6.1 (2018-02-11)
 
   * Fixed #690: Duplicate slashes in source file URLs

@@ -37,6 +37,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.6.2 <small>_ February 12, 2018</small>
+
+* Added Arabic translations
+* Fixed incorrect rounding of amount of GitHub stars
+* Fixed double-layered borders for tables
+
 ### 2.6.1 <small>_ February 11, 2018</small>
 
 * Fixed [#690][690]: Duplicate slashes in source file URLs
