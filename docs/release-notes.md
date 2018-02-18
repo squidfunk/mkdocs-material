@@ -37,6 +37,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.6.3 <small>_ February 18, 2018</small>
+
+* Added Vietnamese translations
+
 ### 2.6.2 <small>_ February 12, 2018</small>
 
 * Added Arabic translations

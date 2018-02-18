@@ -338,7 +338,8 @@ translations for all template variables and labels in the following languages:
     <tr>
       <td><code>sv</code> / Swedish</td>
       <td><code>tr</code> / Turkish</td>
-      <td colspan="2"><code>uk</code> / Ukrainian</td>
+      <td><code>uk</code> / Ukrainian</td>
+      <td><code>vi</code> / Vietnamese</td>
     </tr>
     <tr>
       <td colspan="2">
