@@ -68,7 +68,7 @@
     "promise-polyfill": "^7.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.0",
-    "stylelint": "^8.3.0",
+    "stylelint": "^9.0.0",
     "stylelint-config-standard": "^18.0.0",
     "stylelint-order": "^0.8.0",
     "stylelint-scss": "^2.0.0",
