@@ -313,33 +313,36 @@ translations for all template variables and labels in the following languages:
   <tbody>
     <tr>
       <td><code>ar</code> / Arabic</td>
+      <td><code>ca</code> / Catalan</td>
       <td><code>da</code> / Danish</td>
       <td><code>nl</code> / Dutch</td>
-      <td><code>en</code> / English</td>
     </tr>
     <tr>
+      <td><code>en</code> / English</td>
       <td><code>fr</code> / French</td>
       <td><code>de</code> / German</td>
       <td><code>hu</code> / Hungarian</td>
-      <td><code>it</code> / Italian</td>
     </tr>
     <tr>
+      <td><code>it</code> / Italian</td>
       <td><code>ja</code> / Japanese</td>
       <td><code>kr</code> / Korean</td>
       <td><code>no</code> / Norwegian</td>
-      <td><code>fa</code> / Persian</td>
     </tr>
     <tr>
+      <td><code>fa</code> / Persian</td>
       <td><code>pl</code> / Polish</td>
       <td><code>pt</code> / Portugese</td>
       <td><code>ru</code> / Russian</td>
-      <td><code>es</code> / Spanish</td>
     </tr>
     <tr>
+      <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
       <td><code>tr</code> / Turkish</td>
       <td><code>uk</code> / Ukrainian</td>
-      <td><code>vi</code> / Vietnamese</td>
+    </tr>
+    <tr>
+      <td colspan="4"><code>vi</code> / Vietnamese</td>
     </tr>
     <tr>
       <td colspan="2">

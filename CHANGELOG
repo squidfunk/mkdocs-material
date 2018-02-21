@@ -1,5 +1,6 @@
 mkdocs-material-2.6.4 (2018-02-21)
 
+  * Added Catalan translations
   * Fixed incorrect margins for buttons in Firefox and Safari
   * Replaced package manager yarn with npm 5.6
   * Reverted GitHub stars rounding method

@@ -37,6 +37,14 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.6.4 <small>_ February 21, 2018</small>
+
+* Added Catalan translations
+* Fixed incorrect margins for buttons in Firefox and Safari
+* Replaced package manager `yarn` with `npm 5.6`
+* Reverted GitHub stars rounding method
+* Removed `--dev-addr` flag from `Dockerfile` for Windows compatibility
+
 ### 2.6.3 <small>_ February 18, 2018</small>
 
 * Added Vietnamese translations
