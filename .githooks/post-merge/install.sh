@@ -26,5 +26,5 @@ CHANGED="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 # Perform install and prune of NPM dependencies if package.json changed
 if $(echo "$CHANGED" | grep --quiet package.json); then
   echo -e "\x1B[33m!\x1B[0m Updating dependencies"
-  yarn install
+  npm install
 fi

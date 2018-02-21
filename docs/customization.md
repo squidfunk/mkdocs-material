@@ -183,8 +183,7 @@ the Material theme and recompile it. This is fairly easy.
 ### Environment setup
 
 In order to start development on the Material theme, a [Node.js][8] version of
-at least 8 is required, as well as the package manager [yarn][9] which is a
-better version of `npm`. First, clone the repository:
+at least 8 is required. First, clone the repository:
 
 ``` sh
 git clone https://github.com/squidfunk/mkdocs-material
@@ -195,23 +194,22 @@ Next, all dependencies need to be installed, which is done with:
 ``` sh
 cd mkdocs-material
 pip install -r requirements.txt
-yarn install
+npm install
 ```
 
   [8]: https://nodejs.org
-  [9]: https://yarnpkg.com/
 
 ### Development mode
 
 The development server can be started with:
 
 ``` sh
-yarn run watch
+npm run watch
 ```
 
 This will also start the MkDocs development server which will monitor changes
 on assets, templates and documentation. Point your browser to
-[localhost:8000][10] and you should see this documentation in front of you.
+[localhost:8000][9] and you should see this documentation in front of you.
 
 For example, changing the color palette is as simple as changing the
 `$md-color-primary` and `$md-color-accent` variables in
@@ -228,14 +226,14 @@ $md-color-accent:  $clr-teal-a700;
     directory are automatically generated from the `src` directory and will be
     overriden when the theme is built.
 
-  [10]: http://localhost:8000
+  [9]: http://localhost:8000
 
 ### Build process
 
 When you've finished making your changes, you can build the theme by invoking:
 
 ``` sh
-yarn run build
+npm run build
 ```
 
 This triggers the production-level compilation and minification of all

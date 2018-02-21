@@ -33,19 +33,18 @@ git:
 # Cache dependencies
 cache:
   pip: true
-  yarn: true
   directories:
     - node_modules
 
 # Install dependencies
 install:
-  - yarn install
+  - npm install
   - pip install --user -r requirements.txt
 
 # Perform build and release
 script:
-  - yarn run lint
-  - yarn run build
+  - npm run lint
+  - npm run build
 
 # Deploy artifacts
 after_success:

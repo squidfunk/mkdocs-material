@@ -26,7 +26,7 @@ all: clean lint | build
 
 # Install dependencies
 node_modules:
-	yarn install
+	npm install
 
 # -----------------------------------------------------------------------------
 # Targets
@@ -34,7 +34,7 @@ node_modules:
 
 # Build theme for distribution with Webpack
 material: $(shell find src) .babelrc webpack.config.js
-	$(shell yarn bin)/webpack --env.prod
+	$(shell npm bin)/webpack --env.prod
 
 # -----------------------------------------------------------------------------
 # Rules
@@ -49,12 +49,12 @@ clean:
 
 # Lint source files
 lint: node_modules
-	$(shell yarn bin)/eslint --max-warnings 0 .
-	$(shell yarn bin)/stylelint `find src/assets -name *.scss`
+	$(shell npm bin)/eslint --max-warnings 0 .
+	$(shell npm bin)/stylelint `find src/assets -name *.scss`
 
 # Rebuild theme on changes with Webpack
 watch-webpack: node_modules clean
-	$(shell yarn bin)/webpack --watch
+	$(shell npm bin)/webpack --watch
 
 # Serve documentation with MkDocs
 watch-mkdocs: clean
