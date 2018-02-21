@@ -1,3 +1,8 @@
+mkdocs-material-2.x.x (2018-02-xx)
+
+  * Replaced package manager yarn with npm 5.6
+  * Reverted GitHub stars rounding method
+
 mkdocs-material-2.6.3 (2018-02-18)
 
   * Added Vietnamese translations

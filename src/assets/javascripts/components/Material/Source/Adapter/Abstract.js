@@ -90,8 +90,10 @@ export default class Abstract {
    * @return {string} Formatted number
    */
   format_(number) {
-    if (number >= 1000)
-      return `${(number / 1000).toFixed(number % 1000 > 99)}k`
+    if (number > 10000)
+      return `${(number / 1000).toFixed(0)}k`
+    else if (number > 1000)
+      return `${(number / 1000).toFixed(1)}k`
     return `${number}`
   }
 
