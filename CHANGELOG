@@ -1,6 +1,7 @@
-mkdocs-material-2.x.x (2018-xx-xx)
+mkdocs-material-2.6.6 (2018-02-22)
 
   * Added preconnect for Google Fonts for faster loading
+  * Fixed #710: With tabs sidebar disappears if JavaScript is not available
 
 mkdocs-material-2.6.5 (2018-02-22)
 
@@ -26,9 +27,9 @@ mkdocs-material-2.6.2 (2018-02-12)
 
 mkdocs-material-2.6.1 (2018-02-11)
 
+  * Added ability to override Disqus integration using metadata
   * Fixed #690: Duplicate slashes in source file URLs
   * Fixed #696: Active page highlight not working with default palette
-  * Added ability to override Disqus integration using metadata
   * Adjusted German translations
 
 mkdocs-material-2.6.0 (2018-02-02)
