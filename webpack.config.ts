@@ -20,28 +20,40 @@
  * IN THE SOFTWARE.
  */
 
-const fs = require("fs")
-const path = require("path")
-const html = require("html-minifier")
-const uglify = require("uglify-js")
-const webpack = require("webpack")
+import * as fs from "fs"
+import * as html from "html-minifier"
+import * as path from "path"
+import * as uglify from "uglify-js"
+
+import {
+  Configuration,
+  NewModule,
+  optimize,
+  ProvidePlugin
+} from "webpack"
 
 /* ----------------------------------------------------------------------------
  * Plugins
  * ------------------------------------------------------------------------- */
 
-const CopyPlugin = require("copy-webpack-plugin")
-const EventHooksPlugin = require("event-hooks-webpack-plugin")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-const ImageminPlugin = require("imagemin-webpack-plugin").default
-const ManifestPlugin = require("webpack-manifest-plugin")
+import CopyPlugin = require("copy-webpack-plugin")
+import EventHooksPlugin = require("event-hooks-webpack-plugin")
+import ExtractTextPlugin = require("extract-text-webpack-plugin")
+import ImageminPlugin from "imagemin-webpack-plugin"
+import ManifestPlugin = require("webpack-manifest-plugin")
+
+/* Webpack plugins */
+const {
+  CommonsChunkPlugin,
+  UglifyJsPlugin
+} = optimize
 
 /* ----------------------------------------------------------------------------
  * Configuration
  * ------------------------------------------------------------------------- */
 
-module.exports = env => {
-  const config = {
+export default (env?: { prod?: boolean }) => {
+  const config: Configuration = {
 
     /* Entrypoints */
     entry: {
@@ -51,15 +63,27 @@ module.exports = env => {
         __dirname, "src/assets/javascripts/modernizr.js"
       ),
 
-      /* Application */
+      /* Old application */
       "assets/javascripts/application": path.resolve(
         __dirname, "src/assets/javascripts/application.js"
+      ),
+
+      /* New application */
+      "assets/javascripts/index": path.resolve(
+        __dirname, "src/assets/javascripts/index.ts"
       )
     },
 
     /* Loaders */
     module: {
       rules: [
+
+        /* TypeScript */
+        {
+          test: /\.tsx?$/,
+          use: "ts-loader",
+          exclude: /\/node_modules\//
+        },
 
         /* Babel ES6 transformations */
         {
@@ -87,8 +111,7 @@ module.exports = env => {
     /* Output */
     output: {
       path: path.resolve(__dirname, "material"),
-      filename: `[name]${env && env.prod ? ".[chunkhash]" : ""}.js`,
-      hashDigestLength: 8,
+      filename: `[name]${env && env.prod ? ".[chunkhash:8]" : ""}.js`,
       libraryTarget: "window"
     },
 
@@ -96,13 +119,13 @@ module.exports = env => {
     plugins: [
 
       /* Combine all dependencies into a single file */
-      new webpack.optimize.CommonsChunkPlugin({
+      new CommonsChunkPlugin({
         name: "src/assets/javascripts/modernizr.js",
         chunks: [".modernizr-autorc"]
       }),
 
       /* Provide JSX helper */
-      new webpack.ProvidePlugin({
+      new ProvidePlugin({
         JSX: path.resolve(__dirname, "src/assets/javascripts/providers/jsx.js")
       }),
 
@@ -117,7 +140,7 @@ module.exports = env => {
           context: path.resolve(__dirname, "node_modules/lunr-languages"),
           to: "assets/javascripts/lunr",
           from: "*.js",
-          transform: content => {
+          transform: (content: any) => {
             return uglify.minify(content.toString()).code
           }
         },
@@ -138,7 +161,7 @@ module.exports = env => {
         {
           context: "src",
           from: "**/*.html",
-          transform: content => {
+          transform: (content: string) => {
             const metadata = require(path.resolve(__dirname, "package.json"))
             return html.minify(content.toString(), {
               collapseBooleanAttributes: true,
@@ -178,11 +201,11 @@ module.exports = env => {
          macOS when starting for the first time. This is a quick fix until
          this issue is resolved. See: http://bit.ly/2AsizEn */
       new EventHooksPlugin({
-        "watch-run": (compiler, cb) => {
+        "watch-run": (compiler: any, cb: () => {}) => {
           compiler.startTime += 10000
           cb()
         },
-        "done": stats => {
+        "done": (stats: any) => {
           stats.startTime -= 10000
         }
       })
@@ -200,7 +223,7 @@ module.exports = env => {
     },
 
     /* Sourcemaps */
-    devtool: !env || env.prod ? "inline-source-map" : ""
+    devtool: !env || env.prod ? "inline-source-map" : undefined
   }
 
   /* Compile stylesheets */
@@ -215,8 +238,8 @@ module.exports = env => {
         )}.css`)
 
     /* Register plugin */
-    config.plugins.push(plugin)
-    config.module.rules.push({
+    config.plugins.push(plugin);
+    (config.module as NewModule).rules.push({
       test: new RegExp(`${stylesheet}$`),
       use: plugin.extract({
         use: [
@@ -256,11 +279,12 @@ module.exports = env => {
   }
 
   /* Production compilation */
-  if (env && env.prod) {
+  if (env && env.prod)
     config.plugins.push(
 
       /* Uglify sources */
-      new webpack.optimize.UglifyJsPlugin({
+      new UglifyJsPlugin({
+        comments: false,
         compress: {
           warnings: false,
           screw_ie8: true,     // eslint-disable-line camelcase
@@ -272,16 +296,13 @@ module.exports = env => {
           evaluate: true,
           if_return: true,     // eslint-disable-line camelcase
           join_vars: true      // eslint-disable-line camelcase
-        },
-        output: {
-          comments: false
         }
       }),
 
       /* Minify images */
       new ImageminPlugin({
         test: /\.(ico|png|svg)$/i,
-        svgo: null
+        svgo: null // tslint:disable-line no-null-keyword
         // Hack: Temporarily disabled, as SVGO removes the viewbox property
         // and setting the plugin to false doesn't have any effect.
         // {
@@ -299,7 +320,7 @@ module.exports = env => {
 
         /* This is an ugly workaround for the fact that the manifest plugin
            doesn't handle multiple chunks. See http://bit.ly/2BbfER9 */
-        map(file) {
+        map(file: any) {
           file.name = file.path.replace(/\.[a-z0-9].+\.(css|js|svg)/i, ".$1")
           return file
         }
@@ -307,7 +328,7 @@ module.exports = env => {
 
       /* Apply manifest */
       new EventHooksPlugin({
-        "after-emit": (compilation, cb) => {
+        "after-emit": (compilation: any, cb: () => {}) => {
           const manifest = require(path.resolve("material/manifest.json"))
           Object.keys(compilation.assets).forEach(name => {
             if (name.match(/\.html/)) {
@@ -322,7 +343,6 @@ module.exports = env => {
         }
       })
     )
-  }
 
   /* Oh my god, that was a hell of a setup */
   return config

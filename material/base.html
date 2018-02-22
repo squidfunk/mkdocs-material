@@ -54,7 +54,7 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr.9178d902.js"></script>
     {% endblock %}
     {% block fonts %}
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -173,7 +173,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.e437c97b.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application.fa460457.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/index.aa3f3817.js"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
