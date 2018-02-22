@@ -10,7 +10,7 @@ executed during compilation of the Markdown file.
     further directions on how to set up Pygments or use the official
     [Docker image][3] with all dependencies pre-installed.
 
-  [1]: https://pythonhosted.org/Markdown/extensions/code_hilite.html
+  [1]: https://python-markdown.github.io/extensions/code_hilite/
   [2]: http://pygments.org
   [3]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 

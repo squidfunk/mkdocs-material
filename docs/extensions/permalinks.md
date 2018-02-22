@@ -5,7 +5,7 @@ of the standard Markdown library. The extension inserts an anchor at the end of
 each headline, which makes it possible to directly link to a subpart of the
 document.
 
-  [1]: https://pythonhosted.org/Markdown/extensions/toc.html
+  [1]: https://python-markdown.github.io/extensions/toc/
 
 ## Installation
 

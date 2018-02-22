@@ -4,7 +4,7 @@
 makes it possible to add block-styled side content to your documentation, for
 example summaries, notes, hints or warnings.
 
-  [1]: https://pythonhosted.org/Markdown/extensions/admonition.html
+  [1]: https://python-markdown.github.io/extensions/admonition/
 
 ## Installation
 

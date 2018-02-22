@@ -3,7 +3,7 @@
 [Footnotes][1] is another extension included in the standard Markdown library.
 As the name says, it adds the ability to add footnotes to your documentation.
 
-  [1]: https://pythonhosted.org/Markdown/extensions/footnotes.html
+  [1]: https://python-markdown.github.io/extensions/footnotes/
 
 ## Installation
 

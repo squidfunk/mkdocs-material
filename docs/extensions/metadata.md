@@ -7,7 +7,7 @@ source: metadata.md
 The [Metadata][1] extension makes it possible to add metadata to a document
 which gives more control over the theme in a page-specific context.
 
-  [1]: https://pythonhosted.org/Markdown/extensions/meta_data.html
+  [1]: https://python-markdown.github.io/extensions/meta_data/
 
 ## Installation
 

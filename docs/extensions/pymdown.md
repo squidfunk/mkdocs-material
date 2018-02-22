@@ -238,7 +238,7 @@ lists and other block elements, which the [Fenced Code Blocks][23] extension
 from the standard Markdown library doesn't parse correctly.
 
   [22]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
-  [23]: https://pythonhosted.org/Markdown/extensions/fenced_code_blocks.html
+  [23]: https://python-markdown.github.io/extensions/fenced_code_blocks/
 
 ### Tasklist
 
