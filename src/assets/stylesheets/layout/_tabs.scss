@@ -128,6 +128,11 @@
           display: none;
         }
 
+        // Show 1st level navigation always expanded
+        .no-js & .md-nav {
+          display: block;
+        }
+
         // Hide 1st level normal items
         & > .md-nav__list > .md-nav__item {
           font-size: 0;
