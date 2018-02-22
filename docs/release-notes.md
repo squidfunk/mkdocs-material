@@ -37,6 +37,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.6.5 <small>_ February 22, 2018</small>
+
+* Reverted `--dev-addr` flag removal from `Dockerfile`
+
 ### 2.6.4 <small>_ February 21, 2018</small>
 
 * Added Catalan translations

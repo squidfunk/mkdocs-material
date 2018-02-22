@@ -1,3 +1,7 @@
+mkdocs-material-2.6.5 (2018-02-22)
+
+  * Reverted --dev-addr flag removal from Dockerfile
+
 mkdocs-material-2.6.4 (2018-02-21)
 
   * Added Catalan translations
