@@ -115,6 +115,9 @@
 
     <!-- Webfonts -->
     {% block fonts %}
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+
+      <!-- Load fonts from Google -->
       {% if font != false %}
         <link rel="stylesheet" type="text/css"
             href="https://fonts.googleapis.com/css?family={{

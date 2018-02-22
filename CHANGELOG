@@ -1,3 +1,7 @@
+mkdocs-material-2.x.x (2018-xx-xx)
+
+  * Added preconnect for Google Fonts for faster loading
+
 mkdocs-material-2.6.5 (2018-02-22)
 
   * Reverted --dev-addr flag removal from Dockerfile

@@ -57,6 +57,7 @@
       <script src="{{ base_url }}/assets/javascripts/modernizr.1aa3b519.js"></script>
     {% endblock %}
     {% block fonts %}
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       {% if font != false %}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
               font.text | replace(' ', '+')  + ':300,400,400i,700|' +
