@@ -29,9 +29,14 @@
     "start": "make -j watch",
     "watch": "make -j watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "huject": "^1.4.1",
+    "lodash": "^4.17.5",
+    "rxjs": "^5.5.6"
+  },
   "devDependencies": {
     "@types/html-minifier": "^3.5.1",
+    "@types/lodash": "^4.14.104",
     "@types/node": "^9.4.6",
     "@types/uglify-js": "^2.6.30",
     "@types/webpack": "^3.8.8",

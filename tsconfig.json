@@ -22,7 +22,7 @@
     "removeComments": true,
     "strictFunctionTypes": true,
     "stripInternal": true,
-    "target": "es6"
+    "target": "es5"
   },
   "exclude": [
     "node_modules"

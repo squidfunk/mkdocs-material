@@ -216,7 +216,7 @@ export default (env?: { prod?: boolean }) => {
       modules: [
         path.resolve(__dirname, "node_modules")
       ],
-      extensions: [".js", ".jsx", ".scss"],
+      extensions: [".js", ".jsx", ".ts", ".scss"],
       alias: {
         modernizr$: path.resolve(__dirname, ".modernizr-autorc")
       }

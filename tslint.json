@@ -12,10 +12,7 @@
       true,
       "check-space"
     ],
-    "curly": [
-      true,
-      "as-needed"
-    ],
+    "curly": false,
     "indent": [
       true,
       "spaces"
@@ -25,6 +22,7 @@
     "no-implicit-dependencies": false,
     "no-internal-module": true,
     "no-null-keyword": true,
+    "no-reference": false,
     "no-submodule-imports": false,
     "no-trailing-whitespace": true,
     "no-var-keyword": true,
