@@ -40,6 +40,17 @@ material: $(shell find src) .babelrc webpack.config.ts
 # Rules
 # -----------------------------------------------------------------------------
 
+# Rebuild theme on changes with Webpack
+start-webpack: node_modules clean
+	$(shell npm bin)/webpack --watch
+
+# Serve documentation with MkDocs
+start-mkdocs: clean
+	while [ ! -d "./material" ]; do sleep 1; done
+	mkdocs serve
+
+# -----------------------------------------------------------------------------
+
 # Build distribution files
 build: node_modules material
 
@@ -52,20 +63,19 @@ lint: node_modules
 	$(shell npm bin)/eslint --max-warnings 0 .
 	$(shell npm bin)/stylelint `find src/assets -name *.scss`
 
-# Rebuild theme on changes with Webpack
-watch-webpack: node_modules clean
-	$(shell npm bin)/webpack --watch
+# Run Webpack and MkDocs in watch mode for local development server
+start: node_modules start-webpack start-mkdocs
 
-# Serve documentation with MkDocs
-watch-mkdocs: clean
-	while [ ! -d "./material" ]; do sleep 1; done
-	mkdocs serve
+# Run unit and integration tests
+test: node_modules
+	$(shell npm bin)/karma start tests/karma.conf.ts --single-run
 
-# Run Webpack and MkDocs in watch mode
-watch: node_modules watch-webpack watch-mkdocs
+# Run unit and integration tests in watch mode
+watch: node_modules
+	$(shell npm bin)/karma start tests/karma.conf.ts
 
 # -----------------------------------------------------------------------------
 
 # Special targets
-.PHONY: .FORCE build clean lint watch watch-mkdocs watch-webpack
+.PHONY: .FORCE build clean lint start start-mkdocs start-webpack test watch
 .FORCE:

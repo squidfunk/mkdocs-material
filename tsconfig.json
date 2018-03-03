@@ -20,6 +20,7 @@
     "noUnusedLocals": true,
     "preserveConstEnums": true,
     "removeComments": true,
+    "sourceMap": true,
     "strictFunctionTypes": true,
     "stripInternal": true,
     "target": "es5"
