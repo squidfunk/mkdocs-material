@@ -45,6 +45,7 @@ install:
 script:
   - npm run lint
   - npm run build
+  - npm run test
 
 # Deploy artifacts
 after_success:
