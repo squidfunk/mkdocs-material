@@ -34,7 +34,7 @@ import "rxjs/add/observable/fromEventPattern"
  *
  * @param media - Media query
  */
-export const query = (media: MediaQueryList) => {
+export function query(media: MediaQueryList) {
   const subject$ = new BehaviorSubject<boolean>(media.matches)
   Observable.fromEventPattern<boolean>(next =>
     media.addListener(
@@ -51,8 +51,9 @@ export const query = (media: MediaQueryList) => {
  *
  * @return Subject
  */
-export const from = (value: number) =>
-  query(window.matchMedia(`(min-width: ${value}px)`))
+export function from(value: number) {
+  return query(window.matchMedia(`(min-width: ${value}px)`))
+}
 
 /**
  * Create a subject for a maximum media query
@@ -61,5 +62,6 @@ export const from = (value: number) =>
  *
  * @return Subject
  */
-export const to = (value: number) =>
-  query(window.matchMedia(`(max-width: ${value}px)`))
+export function to(value: number) {
+  return query(window.matchMedia(`(max-width: ${value}px)`))
+}

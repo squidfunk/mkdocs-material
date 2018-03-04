@@ -28,7 +28,7 @@ import {
 } from "karma"
 import {
   Configuration as WebpackConfig,
-  NewModule
+  NewModule as WebpackNewModule
 } from "webpack"
 
 /* ----------------------------------------------------------------------------
@@ -83,7 +83,7 @@ export default (config: KarmaConfig & KarmaConfigOptions) => {
 
   /* Instrumentation for code coverage */
   if (config.singleRun)
-    (webpack.module as NewModule).rules.push({
+    (webpack.module as WebpackNewModule).rules.push({
       test: /\.tsx?$/,
       use: "istanbul-instrumenter-loader?+esModules",
       include: path.resolve(__dirname, "../src"),
@@ -138,9 +138,16 @@ export default (config: KarmaConfig & KarmaConfigOptions) => {
       ]
     },
 
-    /* Hack: TypeScript files are served with "video/mp2t" mime type */
+    /* Hack: Don't serve TypeScript files with "video/mp2t" mime type */
     mime: {
       "text/x-typescript": ["ts"]
+    },
+
+    /* Client configuration */
+    client: {
+      jasmine: {
+        random: false
+      }
     }
   })
 }

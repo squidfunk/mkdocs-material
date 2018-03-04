@@ -86,7 +86,7 @@ export const resize$ = Observable.fromEvent<UIEvent>(window, "resize")
  *
  * @return Subject
  */
-export const offset = () => {
+export function offset() {
   const subject$ = new BehaviorSubject<ViewportOffset>({
     x: window.pageXOffset,
     y: window.pageYOffset
@@ -108,7 +108,7 @@ export const offset = () => {
  *
  * @return Subject
  */
-export const size = () => {
+export function size() {
   const subject$ = new BehaviorSubject<ViewportSize>({
     width: window.innerWidth,
     height: window.innerHeight

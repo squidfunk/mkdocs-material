@@ -31,6 +31,9 @@
 /MANIFEST
 /site
 
+# Coverage reports
+/coverage
+
 # Distribution files
 /dist
 /mkdocs_material.egg-info

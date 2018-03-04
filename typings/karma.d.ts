@@ -22,22 +22,23 @@
 
 import * as karma from "karma"
 
-import { Configuration } from "webpack"
+import {
+  Configuration as WebpackConfig
+} from "webpack"
 
 declare module "karma" {
   interface ConfigOptions {
-
-    /* karma-coverage */
-    coverageIstanbulReporter?: {
-      reports: string[]
-    }
-
-    /* karma-spec-reporter */
-    specReporter?: {
+    webpack?: WebpackConfig            /* karma-webpack */
+    specReporter?: {                   /* karma-spec-reporter */
       suppressSkipped: boolean
     }
-
-    /* karma-webpack */
-    webpack?: Configuration
+    coverageIstanbulReporter?: {       /* karma-coverage */
+      reports: string[]
+    }
+  }
+  interface ClientOptions {            /* karma-jasmine */
+    jasmine?: {
+      random: boolean
+    }
   }
 }
