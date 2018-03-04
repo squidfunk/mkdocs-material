@@ -30,6 +30,7 @@ declare module "karma" {
   interface ConfigOptions {
     webpack?: WebpackConfig            /* karma-webpack */
     specReporter?: {                   /* karma-spec-reporter */
+      suppressErrorSummary: boolean
       suppressSkipped: boolean
     }
     coverageIstanbulReporter?: {       /* karma-coverage */

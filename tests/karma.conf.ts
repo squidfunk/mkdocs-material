@@ -127,7 +127,8 @@ export default (config: KarmaConfig & KarmaConfigOptions) => {
 
     /* Configuration for spec reporter */
     specReporter: {
-      suppressSkipped: true
+      suppressErrorSummary: true,
+      suppressSkipped: !config.singleRun
     },
 
     /* Configuration for coverage reporter */

@@ -24,8 +24,11 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject"
 import { Observable } from "rxjs/Observable"
 
 import "rxjs/add/observable/fromEvent"
+import "rxjs/add/operator/distinctUntilChanged"
 import "rxjs/add/operator/map"
 import "rxjs/add/operator/merge"
+
+import { isEqual, isUndefined } from "lodash"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -52,14 +55,18 @@ export interface ViewportSize {
  * ------------------------------------------------------------------------- */
 
 /**
- * Observable for window scroll events
+ * Create an observable for window scroll events
+ *
+ * @return Observable
  */
-export const scroll$ = Observable.fromEvent<UIEvent>(window, "scroll")
+const scroll = () => Observable.fromEvent<UIEvent>(window, "scroll")
 
 /**
- * Observable for window resize events
+ * Create an observable for window resize events
+ *
+ * @return Observable
  */
-export const resize$ = Observable.fromEvent<UIEvent>(window, "resize")
+const resize = () => Observable.fromEvent<UIEvent>(window, "resize")
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -79,10 +86,7 @@ export const resize$ = Observable.fromEvent<UIEvent>(window, "resize")
  * leading to a duplicate emission. At the time of writing, this can be
  * observed in Chrome and Firefox, while Safari seems to handle it correctly.
  *
- * Browser environments can be pretty unpredictable, so it's best to always
- * create a fresh observable when necessary, e.g. when a breakpoint is hit,
- * and to filter for duplicate values (or just accept that it could happen).
- * For decision, context is necessary, so it must be done by the caller.
+ * For this reason we only emit consecutive distinct values.
  *
  * @return Subject
  */
@@ -91,14 +95,15 @@ export function offset() {
     x: window.pageXOffset,
     y: window.pageYOffset
   })
-  scroll$
-    .merge(resize$)
+  scroll()
+    .merge(resize())
     .map<UIEvent, ViewportOffset>(() => ({
       x: window.pageXOffset,
       y: window.pageYOffset
     }))
     .subscribe(subject$)
   return subject$
+    .distinctUntilChanged((x, y) => !isUndefined(y) && isEqual(x, y))
 }
 
 /**
@@ -113,11 +118,12 @@ export function size() {
     width: window.innerWidth,
     height: window.innerHeight
   })
-  resize$
+  resize()
     .map<UIEvent, ViewportSize>(() => ({
       width: window.innerWidth,
       height: window.innerHeight
     }))
     .subscribe(subject$)
   return subject$
+    .distinctUntilChanged((x, y) => !isUndefined(y) && isEqual(x, y))
 }

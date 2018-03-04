@@ -22,7 +22,7 @@
 
 declare module "*.json" {
   const value: any
-  export default value
+  export = value
 }
 
 declare const viewport: any            /* karma-viewport */

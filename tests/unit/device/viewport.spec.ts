@@ -25,7 +25,7 @@ import { Subject } from "rxjs/Subject"
 import "rxjs/add/operator/take"
 import "rxjs/add/operator/toArray"
 
-import { from, query, to } from "~/device/breakpoint"
+import { offset, size } from "~/device/viewport"
 
 /* ----------------------------------------------------------------------------
  * Tests
@@ -34,12 +34,13 @@ import { from, query, to } from "~/device/breakpoint"
 /* Device utilities */
 describe("device", () => {
 
-  /* Breakpoint observable factories */
-  describe("breakpoint", () => {
+  /* Viewport observable factories */
+  describe("viewport", () => {
 
     /* Set viewport in next animation frame to force rendering */
     beforeEach(done => {
       requestAnimationFrame(() => {
+        document.body.style.minHeight = `${window.innerHeight * 2}px`
         viewport.set(480, 320)
         done()
       })
@@ -47,120 +48,95 @@ describe("device", () => {
 
     /* Reset viewport after each test */
     afterEach(() => {
+      document.body.style.minHeight = undefined
       viewport.reset()
     })
 
-    /* Create a subject for the given media query */
-    describe(".query", () => {
-
-      /* Media query for testing purposes */
-      const media = window.matchMedia("(min-width: 480px)")
+    /* Create a subject emitting changes in viewport offset */
+    describe(".offset", () => {
 
       /* Test: it should return a behavior subject */
       it("should return a behavior subject", () => {
-        const media$ = query(media)
-        expect(media$).toEqual(jasmine.any(Subject))
+        const offset$ = offset()
+        expect(offset$).toEqual(jasmine.any(Subject))
       })
 
       /* Test: it should emit on subscription immediately */
       it("should emit on subscription immediately", done => {
-        const media$ = query(media)
-        media$
+        const offset$ = offset()
+        offset$
           .take(1)
           .subscribe(initial => {
-            expect(initial).toEqual(true)
+            expect(initial).toEqual({
+              x: window.pageXOffset,
+              y: window.pageYOffset
+            })
             done()
           }, done.fail)
       })
 
-      /* Test: it should emit on media query status change */
-      it("should emit on media query status change", done => {
-        const media$ = query(media)
-        media$
+      /* Test: it should emit on viewport offset change */
+      it("should emit on viewport offset change", done => {
+        const offset$ = offset()
+        offset$
           .take(2)
           .toArray()
           .subscribe(([initial, changed]) => {
-            expect(initial).toEqual(true)
-            expect(changed).toEqual(false)
+            expect(initial).toEqual({
+              x: 0,
+              y: 0
+            })
+            expect(changed).toEqual({
+              x: 0,
+              y: 1
+            })
             done()
           }, done.fail)
-        requestAnimationFrame(() => {
-          viewport.set(479)
-        })
+        window.scrollTo(0, 1)
       })
     })
 
-    /* Create a subject for a minimum media query */
-    describe(".from", () => {
+    /* Create a subject emitting changes in viewport size */
+    describe(".size", () => {
 
       /* Test: it should return a behavior subject */
       it("should return a behavior subject", () => {
-        const media$ = from(480)
-        expect(media$).toEqual(jasmine.any(Subject))
+        const size$ = size()
+        expect(size$).toEqual(jasmine.any(Subject))
       })
 
       /* Test: it should emit on subscription immediately */
       it("should emit on subscription immediately", done => {
-        const media$ = from(480)
-        media$
+        const size$ = size()
+        size$
           .take(1)
           .subscribe(initial => {
-            expect(initial).toEqual(true)
+            expect(initial).toEqual({
+              width: window.innerWidth,
+              height: window.innerHeight
+            })
             done()
           }, done.fail)
       })
 
-      /* Test: it should emit on media query status change */
-      it("should emit on media query status change", done => {
-        const media$ = from(480)
-        media$
+      /* Test: it should emit on viewport size change */
+      it("should emit on viewport size change", done => {
+        const size$ = size()
+        size$
           .take(2)
           .toArray()
           .subscribe(([initial, changed]) => {
-            expect(initial).toEqual(true)
-            expect(changed).toEqual(false)
+            expect(initial).toEqual({
+              width: 480,
+              height: 320
+            })
+            expect(changed).toEqual({
+              width: 479,
+              height: 319
+            })
             done()
           }, done.fail)
-        requestAnimationFrame(() => {
-          viewport.set(479)
-        })
-      })
-    })
-
-    /* Create a subject for a maximum media query */
-    describe(".to", () => {
-
-      /* Test: it should return a behavior subject */
-      it("should return a behavior subject", () => {
-        const media$ = to(479)
-        expect(media$).toEqual(jasmine.any(Subject))
-      })
-
-      /* Test: it should emit on subscription immediately */
-      it("should emit on subscription immediately", done => {
-        const media$ = to(479)
-        media$
-          .take(1)
-          .subscribe(initial => {
-            expect(initial).toEqual(false)
-            done()
-          }, done.fail)
-      })
-
-      /* Test: it should emit on media query status change */
-      it("should emit on media query status change", done => {
-        const media$ = to(479)
-        media$
-          .take(2)
-          .toArray()
-          .subscribe(([initial, changed]) => {
-            expect(initial).toEqual(false)
-            expect(changed).toEqual(true)
-            done()
-          }, done.fail)
-        requestAnimationFrame(() => {
-          viewport.set(479)
-        })
+        viewport.set(479, 319)
       })
     })
   })
