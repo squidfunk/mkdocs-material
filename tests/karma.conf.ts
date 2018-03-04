@@ -22,7 +22,14 @@
 
 import * as path from "path"
 
-import { Config, ConfigOptions } from "karma"
+import {
+  Config as KarmaConfig,
+  ConfigOptions as KarmaConfigOptions
+} from "karma"
+import {
+  Configuration as WebpackConfig,
+  NewModule
+} from "webpack"
 
 /* ----------------------------------------------------------------------------
  * Plugins
@@ -34,7 +41,56 @@ import EventHooksPlugin = require("event-hooks-webpack-plugin")
  * Configuration
  * ------------------------------------------------------------------------- */
 
-export default (config: Config & ConfigOptions) => {
+export default (config: KarmaConfig & KarmaConfigOptions) => {
+
+  /* Webpack configuration */
+  const webpack: Partial<WebpackConfig> = {
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: "ts-loader",
+          exclude: /\/node_modules\//
+        }
+      ]
+    },
+    resolve: {
+      modules: [
+        path.resolve(__dirname, "../node_modules")
+      ],
+      extensions: [".js", ".ts"],
+      alias: {
+        "~": path.resolve(__dirname, "../src/assets/javascripts"),
+        "@mock": path.resolve(__dirname, "mocks")
+      }
+    },
+    plugins: [
+
+      /* Hack: The webpack development middleware sometimes goes into a loop
+         on macOS when starting for the first time. This is a quick fix until
+         this issue is resolved. See: http://bit.ly/2AsizEn */
+      new EventHooksPlugin({
+        "watch-run": (compiler: any, done: () => {}) => {
+          compiler.startTime += 10000
+          done()
+        },
+        "done": (stats: any) => {
+          stats.startTime -= 10000
+        }
+      })
+    ]
+  }
+
+  /* Instrumentation for code coverage */
+  if (config.singleRun)
+    (webpack.module as NewModule).rules.push({
+      test: /\.tsx?$/,
+      use: "istanbul-instrumenter-loader?+esModules",
+      include: path.resolve(__dirname, "../src"),
+      enforce: "post"
+    })
+
+  /* Karma configuration */
   config.set({
     basePath: __dirname,
 
@@ -59,48 +115,7 @@ export default (config: Config & ConfigOptions) => {
     },
 
     /* Webpack configuration */
-    webpack: {
-      module: {
-        rules: [
-
-          /* TypeScript */
-          {
-            test: /\.tsx?$/,
-            use: "ts-loader",
-            exclude: /\/node_modules\//
-          },
-
-          /* Instrumentation for code coverge */
-          {
-            test: /\.tsx?$/,
-            use: "istanbul-instrumenter-loader?+esModules",
-            include: path.resolve(__dirname, "../src"),
-            enforce: "post"
-          }
-        ]
-      },
-      resolve: {
-        modules: [
-          path.resolve(__dirname, "../node_modules")
-        ],
-        extensions: [".js", ".ts"]
-      },
-      plugins: [
-
-        /* Hack: The webpack development middleware sometimes goes into a loop
-           on macOS when starting for the first time. This is a quick fix until
-           this issue is resolved. See: http://bit.ly/2AsizEn */
-        new EventHooksPlugin({
-          "watch-run": (compiler: any, done: () => {}) => {
-            compiler.startTime += 10000
-            done()
-          },
-          "done": (stats: any) => {
-            stats.startTime -= 10000
-          }
-        })
-      ]
-    },
+    webpack,
 
     /* Reporters */
     reporters: config.singleRun
@@ -115,7 +130,7 @@ export default (config: Config & ConfigOptions) => {
       suppressSkipped: true
     },
 
-    /* Enable code coverage */
+    /* Configuration for coverage reporter */
     coverageIstanbulReporter: {
       reports: [
         "html",
@@ -123,7 +138,7 @@ export default (config: Config & ConfigOptions) => {
       ]
     },
 
-    /* Hack: TypeScript is served with "video/mp2t" mime type */
+    /* Hack: TypeScript files are served with "video/mp2t" mime type */
     mime: {
       "text/x-typescript": ["ts"]
     }

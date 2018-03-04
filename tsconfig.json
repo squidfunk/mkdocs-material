@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": ".",
     "emitDecoratorMetadata": true,
@@ -18,6 +17,10 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
+    "paths": {
+      "~/*": ["src/assets/javascripts/*"],
+      "@mock/*": ["tests/mocks/*"]
+    },
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
