@@ -27,7 +27,7 @@ import * as html from "html-minifier"
 import * as path from "path"
 import * as uglify from "uglify-js"
 
-import metadata from "./package.json"
+import * as metadata from "./package.json"
 
 import {
   Configuration,
