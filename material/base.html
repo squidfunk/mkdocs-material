@@ -85,7 +85,7 @@
         {% if "github" in platform %}
           {% include "assets/images/icons/github.a4034fb1.svg" %}
         {% elif "gitlab" in platform %}
-          {% include "assets/images/icons/gitlab.d80e5efc.svg" %}
+          {% include "assets/images/icons/gitlab.348cdb3a.svg" %}
         {% elif "bitbucket" in platform %}
           {% include "assets/images/icons/bitbucket.4ebea66e.svg" %}
         {% endif %}
@@ -173,7 +173,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.e437c97b.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/application.189d7058.js"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
