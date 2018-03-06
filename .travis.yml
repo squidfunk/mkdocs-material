@@ -39,9 +39,7 @@ cache:
 # Install dependencies
 install:
   - npm install
-  - >
-      PYTHONWARNINGS="ignore:Unverified HTTPS request" \
-      pip install --user -r requirements.txt
+  - pip install --user -r requirements.txt
 
 # Perform build and release
 script:
