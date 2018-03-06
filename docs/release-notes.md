@@ -37,6 +37,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.7.0 <small>_ March 6, 2018</small>
+
+* Added ability to set absolute URL for logo
+* Added Hebrew translations
+
 ### 2.6.6 <small>_ February 22, 2018</small>
 
 * Added preconnect for Google Fonts for faster loading
