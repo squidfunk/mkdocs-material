@@ -321,40 +321,38 @@ translations for all template variables and labels in the following languages:
       <td><code>en</code> / English</td>
       <td><code>fr</code> / French</td>
       <td><code>de</code> / German</td>
-      <td><code>hu</code> / Hungarian</td>
+      <td><code>he</code> / Hebrew</td>
     </tr>
     <tr>
+      <td><code>hu</code> / Hungarian</td>
       <td><code>it</code> / Italian</td>
       <td><code>ja</code> / Japanese</td>
       <td><code>kr</code> / Korean</td>
-      <td><code>no</code> / Norwegian</td>
     </tr>
     <tr>
+      <td><code>no</code> / Norwegian</td>
       <td><code>fa</code> / Persian</td>
       <td><code>pl</code> / Polish</td>
       <td><code>pt</code> / Portugese</td>
-      <td><code>ru</code> / Russian</td>
     </tr>
     <tr>
+      <td><code>ru</code> / Russian</td>
       <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
       <td><code>tr</code> / Turkish</td>
+    </tr>
+    <tr>
       <td><code>uk</code> / Ukrainian</td>
-    </tr>
-    <tr>
-      <td colspan="4"><code>vi</code> / Vietnamese</td>
-    </tr>
-    <tr>
+      <td><code>vi</code> / Vietnamese</td>
       <td colspan="2">
         <code>zh</code> / Chinese (Simplified)
       </td>
+    </tr>
+    <tr>
       <td colspan="2">
         <code>zh-Hant</code> / Chinese (Traditional)
       </td>
-    </tr>
-    <tr>
-    <tr>
-      <td colspan="4" align="right">
+      <td colspan="2" align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
       </td>
     </tr>

@@ -1,3 +1,8 @@
+mkdocs-material-2.7.0 (2018-03-06)
+
+  * Added ability to set absolute URL for logo
+  * Added Hebrew translations
+
 mkdocs-material-2.6.6 (2018-02-22)
 
   * Added preconnect for Google Fonts for faster loading

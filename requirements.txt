@@ -18,6 +18,10 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# Direct dependencies
 mkdocs>=0.17.1
 Pygments>=2.2
 pymdown-extensions>=3.4
+
+# Temporary fix for build errors on Travis
+tornado<5
