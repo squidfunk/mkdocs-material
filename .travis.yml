@@ -39,8 +39,9 @@ cache:
 # Install dependencies
 install:
   - npm install
-  #- pip install --user urllib3[secure] # Fix SSL warnings for Python > 2.7.9
-  - pip install --user -r requirements.txt
+  - >
+      PYTHONWARNINGS="ignore:Unverified HTTPS request" \
+      pip install --user -r requirements.txt
 
 # Perform build and release
 script:
