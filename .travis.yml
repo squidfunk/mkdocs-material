@@ -22,8 +22,7 @@ language: node_js
 sudo: false
 
 # Node.js version and necessary services
-node_js: "8"
-python: "3.5"
+node_js: 8
 services:
   - docker
 
@@ -40,6 +39,7 @@ cache:
 # Install dependencies
 install:
   - npm install
+  - pip install --user urllib3[secure] # Fix SSL warnings for Python > 2.7.9
   - pip install --user -r requirements.txt
 
 # Perform build and release
