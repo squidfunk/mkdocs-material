@@ -35,13 +35,13 @@ import "rxjs/add/observable/fromEventPattern"
  * @param media - Media query
  */
 export function query(media: MediaQueryList) {
-  const subject$ = new BehaviorSubject<boolean>(media.matches)
+  const media$ = new BehaviorSubject<boolean>(media.matches)
   Observable.fromEventPattern<boolean>(next =>
     media.addListener(
       (mq: MediaQueryList) => next(mq.matches)
     ))
-    .subscribe(subject$)
-  return subject$
+    .subscribe(media$)
+  return media$
 }
 
 /**

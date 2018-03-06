@@ -55,18 +55,14 @@ export interface ViewportSize {
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable for window scroll events
- *
- * @return Observable
+ * Observable for window scroll events
  */
-const scroll = () => Observable.fromEvent<UIEvent>(window, "scroll")
+const scroll$ = Observable.fromEvent<UIEvent>(window, "scroll")
 
 /**
- * Create an observable for window resize events
- *
- * @return Observable
+ * Observable for window resize events
  */
-const resize = () => Observable.fromEvent<UIEvent>(window, "resize")
+const resize$ = Observable.fromEvent<UIEvent>(window, "resize")
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -91,18 +87,18 @@ const resize = () => Observable.fromEvent<UIEvent>(window, "resize")
  * @return Subject
  */
 export function offset() {
-  const subject$ = new BehaviorSubject<ViewportOffset>({
+  const offset$ = new BehaviorSubject<ViewportOffset>({
     x: window.pageXOffset,
     y: window.pageYOffset
   })
-  scroll()
-    .merge(resize())
+  scroll$
+    .merge(resize$)
     .map<UIEvent, ViewportOffset>(() => ({
       x: window.pageXOffset,
       y: window.pageYOffset
     }))
-    .subscribe(subject$)
-  return subject$
+    .subscribe(offset$)
+  return offset$
     .distinctUntilChanged((x, y) => !isUndefined(y) && isEqual(x, y))
 }
 
@@ -114,16 +110,16 @@ export function offset() {
  * @return Subject
  */
 export function size() {
-  const subject$ = new BehaviorSubject<ViewportSize>({
+  const size$ = new BehaviorSubject<ViewportSize>({
     width: window.innerWidth,
     height: window.innerHeight
   })
-  resize()
+  resize$
     .map<UIEvent, ViewportSize>(() => ({
       width: window.innerWidth,
       height: window.innerHeight
     }))
-    .subscribe(subject$)
-  return subject$
+    .subscribe(size$)
+  return size$
     .distinctUntilChanged((x, y) => !isUndefined(y) && isEqual(x, y))
 }
