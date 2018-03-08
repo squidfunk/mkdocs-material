@@ -25,6 +25,7 @@
     "removeComments": true,
     "sourceMap": true,
     "strictFunctionTypes": true,
+    "strictNullChecks": true,
     "stripInternal": true,
     "target": "es5"
   },

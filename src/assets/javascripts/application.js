@@ -257,9 +257,9 @@ function initialize(config) { // eslint-disable-line func-style
         "[data-md-component=header]")))
 
   /* Component: link blurring for table of contents */
-  new Material.Event.MatchMedia("(min-width: 960px)",
-    new Material.Event.Listener(window, "scroll",
-      new Material.Nav.Blur("[data-md-component=toc] [href]")))
+  // new Material.Event.MatchMedia("(min-width: 960px)",
+  //   new Material.Event.Listener(window, "scroll",
+  //     new Material.Nav.Blur("[data-md-component=toc] [href]")))
 
   /* Component: collapsible elements for navigation */
   const collapsibles =

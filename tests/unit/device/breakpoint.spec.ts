@@ -56,8 +56,8 @@ describe("device", () => {
       /* Media query for testing purposes */
       const media = window.matchMedia("(min-width: 480px)")
 
-      /* Test: it should return a behavior subject */
-      it("should return a behavior subject", () => {
+      /* Test: it should return a subject */
+      it("should return a subject", () => {
         const media$ = query(media)
         expect(media$).toEqual(jasmine.any(Subject))
       })
@@ -67,8 +67,8 @@ describe("device", () => {
         const media$ = query(media)
         media$
           .take(1)
-          .subscribe(initial => {
-            expect(initial).toEqual(true)
+          .subscribe(({ active }) => {
+            expect(active).toEqual(true)
             done()
           }, done.fail)
       })
@@ -80,8 +80,8 @@ describe("device", () => {
           .take(2)
           .toArray()
           .subscribe(([initial, changed]) => {
-            expect(initial).toEqual(true)
-            expect(changed).toEqual(false)
+            expect(initial.active).toEqual(true)
+            expect(changed.active).toEqual(false)
             done()
           }, done.fail)
         requestAnimationFrame(() => {
@@ -93,8 +93,8 @@ describe("device", () => {
     /* Create a subject for a minimum media query */
     describe(".from", () => {
 
-      /* Test: it should return a behavior subject */
-      it("should return a behavior subject", () => {
+      /* Test: it should return a subject */
+      it("should return a subject", () => {
         const media$ = from(480)
         expect(media$).toEqual(jasmine.any(Subject))
       })
@@ -104,8 +104,8 @@ describe("device", () => {
         const media$ = from(480)
         media$
           .take(1)
-          .subscribe(initial => {
-            expect(initial).toEqual(true)
+          .subscribe(({ active }) => {
+            expect(active).toEqual(true)
             done()
           }, done.fail)
       })
@@ -117,8 +117,8 @@ describe("device", () => {
           .take(2)
           .toArray()
           .subscribe(([initial, changed]) => {
-            expect(initial).toEqual(true)
-            expect(changed).toEqual(false)
+            expect(initial.active).toEqual(true)
+            expect(changed.active).toEqual(false)
             done()
           }, done.fail)
         requestAnimationFrame(() => {
@@ -130,8 +130,8 @@ describe("device", () => {
     /* Create a subject for a maximum media query */
     describe(".to", () => {
 
-      /* Test: it should return a behavior subject */
-      it("should return a behavior subject", () => {
+      /* Test: it should return a subject */
+      it("should return a subject", () => {
         const media$ = to(479)
         expect(media$).toEqual(jasmine.any(Subject))
       })
@@ -141,8 +141,8 @@ describe("device", () => {
         const media$ = to(479)
         media$
           .take(1)
-          .subscribe(initial => {
-            expect(initial).toEqual(false)
+          .subscribe(({ active }) => {
+            expect(active).toEqual(false)
             done()
           }, done.fail)
       })
@@ -154,8 +154,8 @@ describe("device", () => {
           .take(2)
           .toArray()
           .subscribe(([initial, changed]) => {
-            expect(initial).toEqual(false)
-            expect(changed).toEqual(true)
+            expect(initial.active).toEqual(false)
+            expect(changed.active).toEqual(true)
             done()
           }, done.fail)
         requestAnimationFrame(() => {

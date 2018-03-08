@@ -20,50 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { BehaviorSubject } from "rxjs/BehaviorSubject"
-import { Observable } from "rxjs/Observable"
-
-import "rxjs/add/observable/fromEventPattern"
-
-import { Toggle } from "../base/toggle"
-
 /* ----------------------------------------------------------------------------
- * Functions
+ * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Create a subject for the given media query
- *
- * @param media - Media query
+ * Toggle
  */
-export function query(media: MediaQueryList) {
-  const media$ = new BehaviorSubject<Toggle>({ active: media.matches })
-  Observable.fromEventPattern<Toggle>(next =>
-    media.addListener(
-      (mq: MediaQueryList) => next({ active: mq.matches })
-    ))
-    .subscribe(media$)
-  return media$
-}
-
-/**
- * Create a subject for a minimum media query
- *
- * @param value - Breakpoint in pixels
- *
- * @return Subject
- */
-export function from(value: number) {
-  return query(window.matchMedia(`(min-width: ${value}px)`))
-}
-
-/**
- * Create a subject for a maximum media query
- *
- * @param value - Breakpoint in pixels
- *
- * @return Subject
- */
-export function to(value: number) {
-  return query(window.matchMedia(`(max-width: ${value}px)`))
+export interface Toggle {
+  active: boolean                      /* Whether the toggle is active */
 }

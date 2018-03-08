@@ -55,8 +55,8 @@ describe("device", () => {
     /* Create a subject emitting changes in viewport offset */
     describe(".offset", () => {
 
-      /* Test: it should return a behavior subject */
-      it("should return a behavior subject", () => {
+      /* Test: it should return a subject */
+      it("should return a subject", () => {
         const offset$ = offset()
         expect(offset$).toEqual(jasmine.any(Subject))
       })
@@ -99,8 +99,8 @@ describe("device", () => {
     /* Create a subject emitting changes in viewport size */
     describe(".size", () => {
 
-      /* Test: it should return a behavior subject */
-      it("should return a behavior subject", () => {
+      /* Test: it should return a subject */
+      it("should return a subject", () => {
         const size$ = size()
         expect(size$).toEqual(jasmine.any(Subject))
       })
