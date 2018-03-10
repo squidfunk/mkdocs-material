@@ -43,7 +43,7 @@ import * as viewport from "../device/viewport"
  */
 export interface NavBlurState extends ComponentState {
   anchors: HTMLAnchorElement[]         /* Anchor elements */
-  targets: HTMLElement[]               /* Target elements */
+  targets: Array<HTMLElement | null>   /* Target elements */
   index: number                        /* Current index */
   offset: number                       /* Current offset */
   direction: boolean                   /* Current scroll direction */
@@ -54,7 +54,7 @@ export interface NavBlurState extends ComponentState {
  */
 export interface NavBlur {
   anchor: HTMLAnchorElement            /* Active anchor */
-  target: HTMLElement                  /* Active target */
+  target: HTMLElement | null           /* Active target */
 }
 
 /* ----------------------------------------------------------------------------
@@ -105,7 +105,8 @@ export function update(state: NavBlurState) {
       /* Scroll direction is down */
       if (state.offset <= y) {
         for (let i = state.index + 1; i < anchors.length; i++) {
-          if (targets[i].offsetTop - (56 + 24) <= y) {                          // TODO: Refactor value determination
+          const target = targets[i]
+          if (target && target.offsetTop - (48 + 12) <= y) {
             if (i > 0)
               anchors[i - 1].dataset.mdState = "blur"
             state.index = i
@@ -117,7 +118,8 @@ export function update(state: NavBlurState) {
       /* Scroll direction is up */
       } else {
         for (let i = state.index; i >= 0; i--) {
-          if (targets[i].offsetTop - (56 + 24) > y) {
+          const target = targets[i]
+          if (target && target.offsetTop - (48 + 12) > y) {
             if (i > 0)
               anchors[i - 1].dataset.mdState = ""
           } else {
@@ -141,6 +143,10 @@ export function update(state: NavBlurState) {
     })
 }
 
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
 /**
  * Component factory method
  *
@@ -152,9 +158,9 @@ export function factory(
   els: ArrayLike<HTMLAnchorElement>
 ): Component<NavBlurState, NavBlur> {
   const anchors = Array.from(els)
-  const targets: HTMLElement[] = anchors.reduce((result, anchor) => [
-    ...result, document.getElementById(anchor.hash.substring(1)) || []
-  ], [])
+  const targets = anchors.map(anchor => {
+    return document.getElementById(anchor.hash.substring(1))
+  })
   return {
     initial: { ...initial, anchors, targets }, create, destroy, update
   }
