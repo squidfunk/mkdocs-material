@@ -206,7 +206,7 @@ function initialize(config) { // eslint-disable-line func-style
           } else if (top + item.offsetHeight === item.scrollHeight) {
             item.scrollTop = top - 1
           }
-        }, Modernizr.passiveeventlisteners ? {passive: true} : false)
+        }, {passive: true})
       })
     }
   }).listen()
