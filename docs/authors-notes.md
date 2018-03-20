@@ -17,7 +17,7 @@ a complementary service as a replacement for screenshot testing.
 ## Why another theme?
 
 Some time ago I wanted to release a project to the open, but it was in need of
-user documentation. I checked out the available tools and sticked with MkDocs,
+user documentation. I checked out the available tools and stuck with MkDocs,
 because it was so simple and easy to use. However, none of the available
 themes convinced me.
 
