@@ -1,3 +1,9 @@
+mkdocs-material-2.7.1 (2018-03-21)
+
+  * Added Galician translations
+  * Fixed #730: Scroll chasing error on home page if Disqus is enabled
+  * Fixed #736: Reset drawer and search upon back button invocation
+
 mkdocs-material-2.7.0 (2018-03-06)
 
   * Added ability to set absolute URL for logo

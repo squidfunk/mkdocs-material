@@ -37,6 +37,15 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.7.1 <small>_ March 21, 2018</small>
+
+* Added Galician translations
+* Fixed [#730][730]: Scroll chasing error on home page if Disqus is enabled
+* Fixed [#736][736]: Reset drawer and search upon back button invocation
+
+  [730]: https://github.com/squidfunk/mkdocs-material/issues/730
+  [736]: https://github.com/squidfunk/mkdocs-material/issues/736
+
 ### 2.7.0 <small>_ March 6, 2018</small>
 
 * Added ability to set absolute URL for logo

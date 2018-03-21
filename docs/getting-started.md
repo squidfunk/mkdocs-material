@@ -297,6 +297,11 @@ theme:
 
 ### Language
 
+!!! info "Call for Contributions: Add languages/translations to Material"
+
+    Help translate Material into more languages - it's just **one click** and
+    takes approximately **2 minutes**: [click here](http://bit.ly/2EbzFc8)
+
 #### Localization
 
 > Default: `en`
@@ -378,9 +383,6 @@ all translations:
 ``` sh
 cp partials/language/en.html partials/language/jp.html
 ```
-
-Feel free to contribute your localization to Material for MkDocs by opening a
-Pull Request.
 
   [16]: https://www.w3schools.com/tags/ref_language_codes.asp
 
