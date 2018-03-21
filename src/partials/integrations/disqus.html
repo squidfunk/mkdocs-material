@@ -27,7 +27,7 @@
 {% endif %}
 
 <!-- Disqus integration -->
-{% if disqus %}
+{% if not page.is_homepage and disqus %}
   <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
   <div id="disqus_thread"></div>
   <script>

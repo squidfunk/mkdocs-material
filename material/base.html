@@ -159,10 +159,7 @@
                 {% endblock %}
               {% endblock %}
               {% block disqus %}
-                {% if (config.extra.disqus and not page.is_homepage) or
-                      (page and page.meta and page.meta.disqus) %}
-                  {% include "partials/integrations/disqus.html" %}
-                {% endif %}
+                {% include "partials/integrations/disqus.html" %}
               {% endblock %}
             </article>
           </div>
