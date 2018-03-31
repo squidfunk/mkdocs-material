@@ -9,12 +9,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta property="og:type" content="website">
+      <meta name="twitter:card" value="summary">
       {% if page and page.meta and page.meta.description %}
+        <meta name="twitter:description" content="{{ page.meta.description }}">
         <meta name="description" content="{{ page.meta.description }}">
       {% elif config.site_description %}
+        <meta name="twitter:description" content="{{ config.site_description }}">
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
       {% if page.canonical_url %}
+        <meta property="og:url" content="{{ page.canonical_url }}">
+        <meta property="twitter:url" content="{{ page.canonical_url }}">
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       {% if page and page.meta and page.meta.author %}
@@ -36,14 +42,23 @@
         <meta name="lang:{{ key }}" content="{{ lang.t(key) }}">
       {% endfor %}
       <link rel="shortcut icon" href="{{ base_url }}/{{ config.theme.favicon }}">
+      <meta property="twitter:image" content="{{ config.site_url }}/{{ config.theme.detailedLogo }}">
+      <meta property="og:image" content="{{ config.site_url }}/{{ config.theme.detailedLogo }}">
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-2.7.1">
     {% endblock %}
     {% block htmltitle %}
+      <meta property="og:site_name" content="{{ config.site_name }}">
       {% if page and page.meta and page.meta.title %}
+        <meta property="og:title" content="{{ page.meta.title }}">
+        <meta name="twitter:title" content="{{ page.meta.title }}">
         <title>{{ page.meta.title }}</title>
       {% elif page and page.title and not page.is_homepage %}
+        <meta property="og:title" content="{{ page.title }} - {{ config.site_name }}">
+        <meta name="twitter:title" content="{{ page.title }} - {{ config.site_name }}">
         <title>{{ page.title }} - {{ config.site_name }}</title>
       {% else %}
+        <meta property="og:title" content="{{ config.site_name }}">
+        <meta name="twitter:title" content="{{ config.site_name }}">
         <title>{{ config.site_name }}</title>
       {% endif %}
     {% endblock %}
