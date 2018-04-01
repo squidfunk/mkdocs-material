@@ -71,7 +71,7 @@
     "stylelint": "^9.0.0",
     "stylelint-config-standard": "^18.0.0",
     "stylelint-order": "^0.8.0",
-    "stylelint-scss": "^2.0.0",
+    "stylelint-scss": "^3.0.0",
     "uglify-js": "^3.1.10",
     "unfetch": "^3.0.0",
     "webpack": "^3.4.1",
