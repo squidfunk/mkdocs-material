@@ -37,6 +37,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.7.2 <small>_ April 9, 2018</small>
+
+* Fixed rendering issue for `details` on Edge
+
 ### 2.7.1 <small>_ March 21, 2018</small>
 
 * Added Galician translations
