@@ -31,6 +31,7 @@
   details {
     @extend .admonition;
 
+    display: block;
     padding-top: 0;
 
     // Rotate title icon
