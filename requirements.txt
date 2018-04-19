@@ -21,7 +21,7 @@
 # Direct dependencies
 mkdocs>=0.17.1
 Pygments>=2.2
-pymdown-extensions>=3.4
+pymdown-extensions>=4.10
 
 # Temporary fix for build errors on Travis
 tornado<5
