@@ -121,3 +121,7 @@ pages:
 google_analytics:
   - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
   - auto
+
+# Temporary scripts for testing
+extra_javascript:
+  - assets/javascripts/ginseng.js

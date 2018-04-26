@@ -22,3 +22,6 @@
 /build
 /material
 /site
+
+# Extra JavaScript
+/docs/**/*.js
