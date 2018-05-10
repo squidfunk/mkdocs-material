@@ -124,4 +124,4 @@ google_analytics:
 
 # Temporary scripts for testing
 extra_javascript:
-  - assets/javascripts/ginseng.js
+  - https://staging.ginseng.ai/analytics.js
