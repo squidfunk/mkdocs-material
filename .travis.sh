@@ -51,14 +51,15 @@ if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git config --global user.email "${GH_EMAIL}"
   git remote set-url origin ${REMOTE}
 
-  # Install GitHub pages import helper and Material, so we can use it as a
-  # base template and add overrides
-  pip install --user ghp-import
+  # Install Material, so we can use it as a base template and add overrides
   python setup.py install --user
 
+  # Override theme configuration
+  sed -i 's/name: null/name: material/g' mkdocs.yml
+  sed -i 's/custom_dir: material/custom_dir: overrides/g' mkdocs.yml
+
   # Build documentation with overrides and publish to GitHub pages
-  mkdocs build --theme material --theme-dir overrides
-  ghp-import --no-jekyll --force --push site
+  mkdocs gh-deploy --force
 fi
 
 # Remove overrides directory so it won't get included in the image
