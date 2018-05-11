@@ -54,7 +54,7 @@ if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
   # Install GitHub pages import helper and Material, so we can use it as a
   # base template and add overrides
   pip install --user ghp-import
-  python setup.py --user install
+  python setup.py install --user
 
   # Build documentation with overrides and publish to GitHub pages
   mkdocs build --theme material --theme-dir overrides
