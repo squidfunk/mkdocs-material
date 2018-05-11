@@ -23,6 +23,25 @@
 # Exit, if one command fails
 set -e
 
+# Create directory for overrides, so we don't clutter up the base theme with
+# our custom adjustments for our own hosted documentation
+mkdir -p overrides
+cat > overrides/main.html <<-EOM
+  {% extends "base.html" %}
+  {% block scripts %}
+    {{ super() }}
+    <script>
+      (function(i,s,o,g,r,a,m){
+        i["GinsengAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+        []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+        m.parentNode.insertBefore(a,m)
+      })(window, document,
+        "script", "https://staging.ginseng.ai/analytics.js", "gx");
+    </script>
+  {% endblock %}
+EOM
+
 # Deploy documentation to GitHub pages
 if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
   REMOTE="https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material"
@@ -31,7 +50,15 @@ if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git config --global user.name "${GH_NAME}"
   git config --global user.email "${GH_EMAIL}"
   git remote set-url origin $REMOTE
-  mkdocs gh-deploy --force
+
+  # Install GitHub pages import helper and Material, so we can use it as a
+  # base template and add overrides
+  pip install ghp-import --user
+  python setup.py install
+
+  # Build documentation with overrides and publish to GitHub pages
+  mkdocs build --theme material --theme-dir overrides
+  ghp-import --no-jekyll --force --push site
 fi
 
 # Terminate if we're not on a release branch

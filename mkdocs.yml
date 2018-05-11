@@ -121,7 +121,3 @@ pages:
 google_analytics:
   - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
   - auto
-
-# Temporary scripts for testing
-extra_javascript:
-  - https://staging.ginseng.ai/analytics.js

@@ -1,5 +1,6 @@
 recursive-include material *.js *.css *.html *.svg *.png *.yml
 recursive-exclude site *
+recursive-exclude src *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 include LICENSE
