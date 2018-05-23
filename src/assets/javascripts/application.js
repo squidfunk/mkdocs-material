@@ -420,8 +420,7 @@ function initialize(config) { // eslint-disable-line func-style
         }
 
       /* Search is closed and we're not inside a form */
-      } else if (document.activeElement && !document.activeElement.form) {
-
+      } else if (document.activeElement && !document.activeElement.form && !document.activeElement.closest('[class|="isso"]')) {
         /* F/S: Open search if not in input field */
         if (ev.keyCode === 70 || ev.keyCode === 83) {
           query.focus()
