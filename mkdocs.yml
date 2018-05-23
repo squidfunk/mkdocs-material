@@ -71,6 +71,10 @@ extra:
     - type: linkedin
       link: https://linkedin.com/in/squidfunk
 
+  isso: http://localhost
+  isso_lng: en
+  isso_prefix: /comments/
+
 # Extensions
 markdown_extensions:
   - markdown.extensions.admonition
