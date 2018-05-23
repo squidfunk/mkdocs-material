@@ -1,0 +1,8 @@
+{% set isso = config.extra.isso %}
+{% set isso_lang = config.extra.isso_lng %}
+{% set isso_prefix = config.extra.isso_prefix %}
+{% if not page.is_homepage and isso %}
+<h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+<section id="isso-thread"></section>
+<script {% if isso_lang %}data-isso-lang="{{ isso_lang }}" {% endif %} {% if isso_prefix %}data-isso="{{ isso_prefix }}" {% endif %} src="{{ isso }}/js/embed.min.js"></script>
+{% endif %}
