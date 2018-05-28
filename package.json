@@ -65,7 +65,7 @@
     "modularscale-sass": "^3.0.3",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.8",
-    "promise-polyfill": "^7.0.0",
+    "promise-polyfill": "^8.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.0",
     "stylelint": "^9.0.0",
