@@ -121,7 +121,7 @@
 
     // Hide link to table of contents by default - this will only match the
     // table of contents inside the drawer below and including tablet portrait
-    html &[for="toc"] {
+    html &[for="__toc"] {
       display: none;
 
       // Hide table of contents by default
@@ -426,7 +426,7 @@
 
     // Show link to table of contents - higher specificity is necessary to
     // display the table of contents inside the drawer
-    html &__link[for="toc"] {
+    html &__link[for="__toc"] {
       display: block;
       padding-right: 4.8rem;
 

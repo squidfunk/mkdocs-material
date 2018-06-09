@@ -317,7 +317,7 @@ $md-toggle__search--checked:
     }
 
     // Search icon
-    &[for="search"] {
+    &[for="__search"] {
       top: 0.6rem;
       left: 1rem;
 
@@ -339,7 +339,7 @@ $md-toggle__search--checked:
         left: 1.6rem;
 
         // Show back arrow instead of search icon
-        &[for="search"]::before {
+        &[for="__search"]::before {
           content: "\E5C4"; // arrow_back
 
           // Adjust for RTL languages
