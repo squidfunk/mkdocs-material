@@ -237,7 +237,7 @@ symbols ((c), (tm), (r)) and fractions (1/2, 1/4, ...).
 lists and other block elements, which the [Fenced Code Blocks][23] extension
 from the standard Markdown library doesn't parse correctly.
 
-SuperFences does also allow [grouping code blocks with tabs][24]
+SuperFences does also allow [grouping code blocks with tabs][24].
 
   [22]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
   [23]: https://python-markdown.github.io/extensions/fenced_code_blocks/
