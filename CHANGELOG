@@ -1,7 +1,10 @@
 mkdocs-material-2.8.0 (2018-06-xx)
 
   * Added Slovak translations
+  * Added Material icons webfont to distribution files (GDPR)
+  * Added FontAwesome webfont to distribution files (GDPR)
   * Fixed #790: Prefixed internal identifiers with "__" to avoid name clashes
+  * Updated Promise polyfill
 
 mkdocs-material-2.7.3 (2018-04-26)
 
