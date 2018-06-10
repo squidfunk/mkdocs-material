@@ -46,7 +46,7 @@
       <!-- Button to toggle drawer -->
       <div class="md-flex__cell md-flex__cell--shrink">
         <label class="md-icon md-icon--menu md-header-nav__button"
-            for="drawer"></label>
+            for="__drawer"></label>
       </div>
 
       <!-- Header title -->
@@ -73,7 +73,7 @@
         {% block search_box %}
           {% if "search" in config["plugins"] %}
             <label class="md-icon md-icon--search md-header-nav__button"
-                for="search"></label>
+                for="__search"></label>
 
             <!-- Search interface -->
             {% include "partials/search.html" %}

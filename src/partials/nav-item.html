@@ -68,7 +68,7 @@
 
     <!-- Active checkbox expands items contained within nested section -->
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc"
-        type="checkbox" id="toc" />
+        type="checkbox" id="__toc" />
 
     <!-- Hack: see partials/toc.html for more information -->
     {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
@@ -77,7 +77,7 @@
 
     <!-- Render table of contents, if not empty -->
     {% if toc_ | first is defined %}
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         {{ nav_item.title }}
       </label>
     {% endif %}

@@ -29,12 +29,12 @@
 {% elif nav_item == page %}
   <li class="{{ class }}">
     {% set toc_ = page.toc %}
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
       {% set toc_ = (toc_ | first).children %}
     {% endif %}
     {% if toc_ | first is defined %}
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         {{ nav_item.title }}
       </label>
     {% endif %}
