@@ -4,7 +4,7 @@ mkdocs-material-2.8.0 (2018-06-10)
   * Added Material and FontAwesome icon fonts to distribution files (GDPR)
   * Added note on compliance with GDPR
   * Added Slovak translations
-  * Fixed #790: Prefixed internal identifiers with "__" to avoid name clashes
+  * Fixed #790: Prefixed id attributes with "__" to avoid name clashes
 
 mkdocs-material-2.7.3 (2018-04-26)
 

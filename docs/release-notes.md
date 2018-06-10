@@ -37,6 +37,20 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.8.0 <small>_ June 10, 2018</small>
+
+* Added support for grouping code blocks with tabs
+* Added Material and FontAwesome icon fonts to distribution files (GDPR)
+* Added note on compliance with GDPR
+* Added Slovak translations
+* Fixed [#790][790]: Prefixed `id` attributes with `__` to avoid name clashes
+
+  [790]: https://github.com/squidfunk/mkdocs-material/issues/790
+
+### 2.7.3 <small>_ April 26, 2018</small>
+
+* Added Finnish translations
+
 ### 2.7.2 <small>_ April 9, 2018</small>
 
 * Fixed rendering issue for `details` on Edge
