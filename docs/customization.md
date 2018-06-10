@@ -13,7 +13,7 @@ necessary to preserve the desired style.
 few tweaks to an existing theme, you can just add your stylesheets and
 JavaScript files to the `docs` directory.
 
-  [1]: http://www.mkdocs.org
+  [1]: https://www.mkdocs.org
 
 ### Additional stylesheets
 
@@ -57,7 +57,7 @@ extra_javascript:
 
 Further assistance can be found in the [MkDocs documentation][2].
 
-  [2]: http://www.mkdocs.org/user-guide/styling-your-docs/#customizing-a-theme
+  [2]: https://www.mkdocs.org/user-guide/styling-your-docs/#customizing-a-theme
 
 ## Extending the theme
 
@@ -66,7 +66,7 @@ extend the theme. From version 0.16 on MkDocs implements [theme extension][3],
 an easy way to override parts of a theme without forking and changing the
 main theme.
 
-  [3]: http://www.mkdocs.org/user-guide/styling-your-docs/#using-the-theme_dir
+  [3]: https://www.mkdocs.org/user-guide/styling-your-docs/#using-the-theme-custom_dir
 
 ### Setup and theme structure
 
@@ -167,7 +167,7 @@ The Material theme provides the following template blocks:
 
 For more on this topic refer to the [MkDocs documentation][4]
 
-  [4]: http://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
+  [4]: https://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
 
 ## Theme development
 
