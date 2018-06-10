@@ -112,6 +112,7 @@ pages:
     - PyMdown: extensions/pymdown.md
   - Specimen: specimen.md
   - Customization: customization.md
+  - Compliance with GDPR: compliance.md
   - Release notes: release-notes.md
   - Author's notes: authors-notes.md
   - Contributing: contributing.md
