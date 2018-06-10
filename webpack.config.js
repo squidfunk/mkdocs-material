@@ -122,6 +122,12 @@ module.exports = env => {
           }
         },
 
+        /* Copy web fonts */
+        {
+          context: "src",
+          from: "assets/fonts/**/*"
+        },
+
         /* Copy images without cache busting */
         {
           context: "src",

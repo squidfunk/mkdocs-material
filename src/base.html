@@ -135,11 +135,11 @@
           }
         </style>
       {% endif %}
-
-      <!-- Material icons as a default iconset -->
-      <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     {% endblock %}
+
+    <!-- Material icons as iconset -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ base_url }}/assets/fonts/material-icons.css" />
 
     <!-- Custom stylesheets -->
     {% for path in extra_css %}

@@ -65,8 +65,8 @@
             }}">
         <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
       {% endif %}
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     {% endblock %}
+    <link rel="stylesheet" href="{{ base_url }}/assets/fonts/material-icons.css">
     {% for path in extra_css %}
       <link rel="stylesheet" href="{{ path }}">
     {% endfor %}
