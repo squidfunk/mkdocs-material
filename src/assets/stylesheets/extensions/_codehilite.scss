@@ -253,7 +253,7 @@ $codehilite-whitespace: transparent;
     }
   }
 
-  // If not using Pygments, code will be under pre>code
+  // If not using Pygments, code will be under pre > code
   pre.codehilite {
     overflow: visible;
 
@@ -341,7 +341,7 @@ $codehilite-whitespace: transparent;
     }
   }
 
-  // Full-width container
+  // Full-width container on top-level
   > .codehilitetable {
     box-shadow: none;
 
