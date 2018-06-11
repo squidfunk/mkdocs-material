@@ -78,5 +78,5 @@ go ahead.
 After your PR is merged, you can safely delete your branch and pull the changes
 from the main (upstream) repository.
 
-  [4]: http://squidfunk.github.io/mkdocs-material/customization/#environment-setup
-  [5]: http://squidfunk.github.io/mkdocs-material/customization/#build-process
+  [4]: https://squidfunk.github.io/mkdocs-material/customization/#environment-setup
+  [5]: https://squidfunk.github.io/mkdocs-material/customization/#build-process
