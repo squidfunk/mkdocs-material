@@ -46,16 +46,12 @@
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    border-top: 0.1rem solid $md-color-black--lightest;
+    margin: 1em 0;
+    border: 0.1rem solid $md-color-black--lightest;
     border-radius: 0.2em;
 
-    // [mobile +]: Collapse tab labels
-    @include break-from-device(tablet) {
-      border: 0.1rem solid $md-color-black--lightest;
-    }
-
     // Hide radio buttons
-    & > input {
+    > input {
       display: none;
 
       // Active tab label
@@ -70,9 +66,9 @@
     }
 
     // Tab label
-    & > label {
+    > label {
       width: auto;
-      padding: 1.2rem 1.6rem;
+      padding: 1.2rem 1.2rem;
       transition: color 0.125s;
       font-size: ms(-1);
       cursor: pointer;
@@ -80,11 +76,6 @@
       // Hovered tab label
       html &:hover {
         color: $md-color-accent;
-      }
-
-      // [mobile +]: Collapse tab labels
-      @include break-from-device(tablet) {
-        padding: 1.2rem 1.2rem;
       }
     }
   }
@@ -95,6 +86,8 @@
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
       margin: 1em -1.6rem;
+      border: 0;
+      border-top: 0.1rem solid $md-color-black--lightest;
       border-radius: 0;
 
       // Actual container with code, overflowing
