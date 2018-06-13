@@ -37,6 +37,13 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.9.0 <small>_ June 13, 2018</small>
+
+* Added support for theme color on Android
+* Fixed [#796][796] Rendering of nested tabbed code blocks
+
+  [796]: https://github.com/squidfunk/mkdocs-material/issues/796
+
 ### 2.8.0 <small>_ June 10, 2018</small>
 
 * Added support for grouping code blocks with tabs

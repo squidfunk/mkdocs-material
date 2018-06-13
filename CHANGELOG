@@ -1,3 +1,8 @@
+mkdocs-material-2.9.0 (2018-06-13)
+
+  * Added support for theme color on Android
+  * Fixed #796: Rendering of nested tabbed code blocks
+
 mkdocs-material-2.8.0 (2018-06-10)
 
   * Added support for grouping code blocks with tabs

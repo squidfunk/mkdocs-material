@@ -106,6 +106,13 @@
         <link rel="stylesheet" type="text/css"
             href="{{ base_url }}/assets/stylesheets/application-palette.css" />
       {% endif %}
+
+      <!-- Theme-color meta tag for Android -->
+      {% if palette.primary %}
+        {% import "partials/palette.html" as map %}
+        {% set color = map.primary(palette.primary) %}
+        <meta name="theme-color" content="{{ color }}" />
+      {% endif %}
     {% endblock %}
 
     <!-- JavaScript libraries -->
