@@ -10,15 +10,4 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
  * SEE THE LICENSE FOR THE SPECIFIC LANGUAGE GOVERNING PERMISSIONS AND
  * LIMITATIONS UNDER THE LICENSE.
- */
-
-@font-face {
-  font-family: "Material Icons";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Material Icons"),
-       local("MaterialIcons-Regular"),
-       url("specimen/MaterialIcons-Regular.woff2") format("woff2"),
-       url("specimen/MaterialIcons-Regular.woff")  format("woff"),
-       url("specimen/MaterialIcons-Regular.ttf")   format("truetype");
-}
+ */@font-face{font-family:"Material Icons";font-style:normal;font-weight:400;src:local("Material Icons"),local("MaterialIcons-Regular"),url("specimen/MaterialIcons-Regular.woff2") format("woff2"),url("specimen/MaterialIcons-Regular.woff") format("woff"),url("specimen/MaterialIcons-Regular.ttf") format("truetype")}

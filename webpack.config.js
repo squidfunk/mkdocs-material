@@ -21,6 +21,7 @@
  */
 
 const fs = require("fs")
+const cssmin = require("cssmin")
 const path = require("path")
 const html = require("html-minifier")
 const uglify = require("uglify-js")
@@ -40,7 +41,7 @@ const ManifestPlugin = require("webpack-manifest-plugin")
  * Configuration
  * ------------------------------------------------------------------------- */
 
-module.exports = env => {
+module.exports = env => { // eslint-disable-line complexity
   const config = {
 
     /* Entrypoints */
@@ -122,10 +123,18 @@ module.exports = env => {
           }
         },
 
-        /* Copy web fonts */
+        /* Copy web font files */
         {
           context: "src",
-          from: "assets/fonts/**/*"
+          from: "assets/fonts/**/*",
+          ignore: "**/*.css"
+        },
+
+        /* Copy and minify web font stylesheets */
+        {
+          context: "src",
+          from: "assets/fonts/*.css",
+          transform: content => cssmin(content.toString())
         },
 
         /* Copy images without cache busting */
