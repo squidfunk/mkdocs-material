@@ -110,8 +110,10 @@
       <!-- Theme-color meta tag for Android -->
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
-        {% set color = map.primary(palette.primary) %}
-        <meta name="theme-color" content="{{ color }}" />
+        {% set primary = map.primary(
+          palette.primary | replace(" ", "-") | lower
+        ) %}
+        <meta name="theme-color" content="{{ primary }}" />
       {% endif %}
     {% endblock %}
 
