@@ -359,9 +359,14 @@ $codehilite-whitespace: transparent;
     }
   }
 
-  // When pymdownx.superfences is enabled but codehilite is disabled, the
-  // outer container gets this class name by default.
+  // When pymdownx.superfences is enabled but codehilite is disabled,
+  // pymdownx.highlight will be used. When this happens, the outer
+  // container and tables get these class names by default.
   .highlight {
     @extend .codehilite;
+  }
+
+  .highlighttable {
+    @extend .codehilitetable;
   }
 }
