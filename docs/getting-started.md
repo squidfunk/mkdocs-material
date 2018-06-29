@@ -319,38 +319,38 @@ translations for all template variables and labels in the following languages:
     <tr>
       <td><code>ar</code> / Arabic</td>
       <td><code>ca</code> / Catalan</td>
+      <td><code>cs</code> / Czech</td>
       <td><code>da</code> / Danish</td>
-      <td><code>nl</code> / Dutch</td>
     </tr>
     <tr>
+      <td><code>nl</code> / Dutch</td>
       <td><code>en</code> / English</td>
       <td><code>fi</code> / Finnish</td>
       <td><code>fr</code> / French</td>
-      <td><code>gl</code> / Galician</td>
     </tr>
     <tr>
+      <td><code>gl</code> / Galician</td>
       <td><code>de</code> / German</td>
       <td><code>he</code> / Hebrew</td>
+      <td><code>hi</code> / Hindi</td>
+    </tr>
+    <tr>
       <td><code>hu</code> / Hungarian</td>
       <td><code>it</code> / Italian</td>
-    </tr>
-    <tr>
       <td><code>ja</code> / Japanese</td>
       <td><code>kr</code> / Korean</td>
+    </tr>
+    <tr>
       <td><code>no</code> / Norwegian</td>
       <td><code>fa</code> / Persian</td>
-    </tr>
-    <tr>
       <td><code>pl</code> / Polish</td>
       <td><code>pt</code> / Portugese</td>
-      <td><code>ru</code> / Russian</td>
-      <td><code>sk</code> / Slovak</td>
     </tr>
     <tr>
+      <td><code>ru</code> / Russian</td>
+      <td><code>sk</code> / Slovak</td>
       <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
-      <td><code>tr</code> / Turkish</td>
-      <td><code>uk</code> / Ukrainian</td>
     </tr>
     <tr>
       <td colspan="2">
@@ -361,11 +361,12 @@ translations for all template variables and labels in the following languages:
       </td>
     </tr>
     <tr>
-      <td colspan="1"><code>vi</code> / Vietnamese</td>
-      <td colspan="3" align="right">
+      <td><code>tr</code> / Turkish</td>
+      <td><code>uk</code> / Ukrainian</td>
+      <td><code>vi</code> / Vietnamese</td>
+      <td align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
       </td>
-    </tr>
     </tr>
   </tbody>
 </table>
