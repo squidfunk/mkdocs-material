@@ -37,6 +37,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.9.2 <small>_ June 29, 2018</small>
+
+* Added Hindi and Czech translations
+
 ### 2.9.1 <small>_ June 18, 2018</small>
 
 * Added support for different spellings for theme color
