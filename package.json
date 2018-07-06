@@ -42,7 +42,7 @@
     "chalk": "^2.0.1",
     "clipboard": "^2.0.0",
     "copy-webpack-plugin": "^4.2.1",
-    "css-loader": "^0.28.7",
+    "css-loader": "^1.0.0",
     "css-mqpacker": "^6.0.1",
     "cssmin": "^0.4.3",
     "custom-event-polyfill": "^0.3.0",
