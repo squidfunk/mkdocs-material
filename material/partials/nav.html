@@ -4,9 +4,9 @@
       {% if config.theme.logo.icon %}
         <i class="md-icon">{{ config.theme.logo.icon }}</i>
       {% elif config.theme.logo.startswith("http") %}
-        <img src="{{ config.theme.logo }}" width="48" height="48">
+        <img src="{{ config.theme.logo }}" alt="logo" width="48" height="48">
       {% else %}
-        <img src="{{ base_url }}/{{ config.theme.logo }}" width="48" height="48">
+        <img src="{{ base_url }}/{{ config.theme.logo }}" alt="logo" width="48" height="48">
       {% endif %}
     </span>
     {{ config.site_name }}
