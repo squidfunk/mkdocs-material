@@ -45,7 +45,7 @@
     "css-loader": "^0.28.7",
     "css-mqpacker": "^6.0.1",
     "cssmin": "^0.4.3",
-    "custom-event-polyfill": "^0.3.0",
+    "custom-event-polyfill": "^1.0.0",
     "customizr": "^1.0.0-alpha",
     "escape-string-regexp": "^1.0.5",
     "eslint": "^4.3.0",
