@@ -100,7 +100,7 @@ markdown_extensions:
   - pymdownx.tilde
 
 # Page tree
-pages:
+nav:
   - Material: index.md
   - Getting started: getting-started.md
   - Extensions:
