@@ -1,6 +1,6 @@
 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <span class="md-nav__button md-logo">
+    <a href="{{ config.site_url | default(nav.homepage.url, true) }}" title="{{ config.site_name }}" class="md-nav__button md-logo">
       {% if config.theme.logo.icon %}
         <i class="md-icon">{{ config.theme.logo.icon }}</i>
       {% elif config.theme.logo.startswith("http") %}
@@ -8,7 +8,7 @@
       {% else %}
         <img src="{{ base_url }}/{{ config.theme.logo }}" width="48" height="48">
       {% endif %}
-    </span>
+    </a>
     {{ config.site_name }}
   </label>
   {% if config.repo_url %}
