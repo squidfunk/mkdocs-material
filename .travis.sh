@@ -79,15 +79,8 @@ pip install --user urllib3[secure]
 python setup.py build sdist bdist_wheel --universal
 docker build -t ${TRAVIS_REPO_SLUG} .
 
-# Prepare build regression test
-pushd /tmp
-mkdocs new test && cd test
-
 # Test Docker image build
 docker run --rm -it -v $(pwd):/docs ${TRAVIS_REPO_SLUG} build --theme material
-
-# Return to original directory
-popd
 
 # Push release to PyPI
 twine upload -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*

@@ -37,6 +37,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 2.9.4 <small>_ July 29, 2018</small>
+
+* Fixed build error after MkDocs upgrade
+
 ### 2.9.3 <small>_ July 29, 2018</small>
 
 * Added link to home for logo in drawer
