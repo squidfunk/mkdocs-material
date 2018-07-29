@@ -19,9 +19,6 @@
 # IN THE SOFTWARE.
 
 # Direct dependencies
-mkdocs>=0.17.1
+mkdocs>=0.17.3
 Pygments>=2.2
 pymdown-extensions>=4.11
-
-# Temporary fix for build errors on Travis
-tornado<5
