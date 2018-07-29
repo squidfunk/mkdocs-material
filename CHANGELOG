@@ -1,3 +1,8 @@
+mkdocs-material-2.9.3 (2018-07-29)
+
+  * Added link to home for logo in drawer
+  * Fixed dependency problems between MkDocs and Tornado
+
 mkdocs-material-2.9.2 (2018-06-29)
 
   * Added Hindi and Czech translations
