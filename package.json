@@ -67,7 +67,7 @@
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.8",
     "promise-polyfill": "^8.0.0",
-    "sass-loader": "^6.0.6",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.20.0",
     "stylelint": "^9.0.0",
     "stylelint-config-standard": "^18.0.0",
