@@ -60,6 +60,7 @@ if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   # Build documentation with overrides and publish to GitHub pages
   mkdocs gh-deploy --force
+  mkdocs --version
 fi
 
 # Remove overrides directory so it won't get included in the image

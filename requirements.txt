@@ -19,6 +19,6 @@
 # IN THE SOFTWARE.
 
 # Direct dependencies
-mkdocs>=0.17.3
+mkdocs>=0.17.3,<1
 Pygments>=2.2
 pymdown-extensions>=4.11
