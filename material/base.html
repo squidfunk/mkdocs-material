@@ -177,11 +177,11 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ '/assets/javascripts/application.5c3774b5.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/application.5c3774b5.js' | url }}"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
-          {% set path = "/assets/javascripts/lunr/" %}
+          {% set path = "assets/javascripts/lunr/" %}
           <script src="{{ path ~ 'lunr.stemmer.support.js' | url }}"></script>
           {% for language in languages | map("trim") %}
             {% if language != "en" %}

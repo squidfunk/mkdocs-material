@@ -348,9 +348,15 @@ translations for all template variables and labels in the following languages:
     </tr>
     <tr>
       <td><code>ru</code> / Russian</td>
+      <td><code>sr</code> / Serbian</td>
+      <td><code>sr</code> / Serbo-Croatian</td>
       <td><code>sk</code> / Slovak</td>
+    </tr>
+    <tr>
       <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
+      <td><code>tr</code> / Turkish</td>
+      <td><code>uk</code> / Ukrainian</td>
     </tr>
     <tr>
       <td colspan="2">
@@ -361,10 +367,8 @@ translations for all template variables and labels in the following languages:
       </td>
     </tr>
     <tr>
-      <td><code>tr</code> / Turkish</td>
-      <td><code>uk</code> / Ukrainian</td>
       <td><code>vi</code> / Vietnamese</td>
-      <td align="right">
+      <td colspan="3" align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
       </td>
     </tr>
