@@ -25,15 +25,12 @@
 
   <!-- Site title -->
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="{{ config.site_url | default(nav.homepage.url, true) }}"
+    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
         title="{{ config.site_name }}" class="md-nav__button md-logo">
       {% if config.theme.logo.icon %}
         <i class="md-icon">{{ config.theme.logo.icon }}</i>
-      {% elif config.theme.logo.startswith("http") %}
-        <img src="{{ config.theme.logo }}" width="48" height="48" />
       {% else %}
-        <img src="{{ base_url }}/{{ config.theme.logo }}"
-            width="48" height="48" />
+        <img src="{{ config.theme.logo | url }}" width="48" height="48" />
       {% endif %}
     </a>
     {{ config.site_name }}

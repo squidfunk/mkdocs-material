@@ -76,7 +76,7 @@
 
       <!-- Favicon -->
       <link rel="shortcut icon"
-          href="{{ base_url }}/{{ config.theme.favicon }}">
+          href="{{ config.theme.favicon | url }}">
 
       <!-- Generator banner -->
       <meta name="generator"
@@ -99,12 +99,12 @@
 
       <!-- Theme-related stylesheets -->
       <link rel="stylesheet" type="text/css"
-          href="{{ base_url }}/assets/stylesheets/application.css" />
+          href="{{ 'assets/stylesheets/application.css' | url }}" />
 
       <!-- Extra color palette -->
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" type="text/css"
-            href="{{ base_url }}/assets/stylesheets/application-palette.css" />
+            href="{{ 'assets/stylesheets/application-palette.css' | url }}" />
       {% endif %}
 
       <!-- Theme-color meta tag for Android -->
@@ -119,7 +119,7 @@
 
     <!-- JavaScript libraries -->
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
+      <script src="{{ 'assets/javascripts/modernizr.js' | url }}"></script>
     {% endblock %}
 
     <!-- Webfonts -->
@@ -148,11 +148,11 @@
 
     <!-- Material icons as iconset -->
     <link rel="stylesheet" type="text/css"
-        href="{{ base_url }}/assets/fonts/material-icons.css" />
+        href="{{ 'assets/fonts/material-icons.css' | url }}" />
 
     <!-- Custom stylesheets -->
     {% for path in extra_css %}
-      <link rel="stylesheet" type="text/css" href="{{ path }}" />
+      <link rel="stylesheet" type="text/css" href="{{ path | url }}" />
     {% endfor %}
 
     <!-- Custom front matter -->
@@ -203,7 +203,7 @@
 
     <!-- Render "skip to content" link -->
     {% if page.toc | first is defined %}
-      <a href="{{ (page.toc | first).url }}" tabindex="1"
+      <a href="{{ (page.toc | first).url | url }}" tabindex="1"
           class="md-skip">
         {{ lang.t('skip.link.title') }}
       </a>
@@ -322,26 +322,27 @@
 
     <!-- Theme-related JavaScript -->
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+      <script src="{{ '/assets/javascripts/application.js' | url }}"></script>
 
       <!-- Load additional languages for search -->
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
-          {% set path = base_url + "/assets/javascripts/lunr" %}
-          <script src="{{ path }}/lunr.stemmer.support.js"></script>
+          {% set path = "/assets/javascripts/lunr/" %}
+          <script src="{{ path + 'lunr.stemmer.support.js' | url }}"></script>
           {% for language in languages | map("trim") %}
             {% if language != "en" %}
               {% if language == "jp" %}
-                <script src="{{ path }}/tinyseg.js"></script>
+                <script src="{{ path + 'tinyseg.js' | url }}"></script>
               {% endif %}
               {% if language in ($md-lunr-languages$) %}
-                <script src="{{ path }}/lunr.{{ language }}.js"></script>
+                <script src="{{ path + 'lunr.' + language + '.js' | url }}">
+                </script>
               {% endif %}
             {% endif %}
           {% endfor %}
           {% if languages | length > 1 %}
-            <script src="{{ path }}/lunr.multi.js"></script>
+            <script src="{{ path + 'lunr.multi.js' | url }}"></script>
           {% endif %}
         {% endif %}
       {% endif %}
@@ -356,7 +357,7 @@
         });
       </script>
       {% for path in extra_javascript %}
-        <script src="{{ path }}"></script>
+        <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
 

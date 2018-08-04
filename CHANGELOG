@@ -1,3 +1,7 @@
+mkdocs-material-3.0.0 (2018-08-xx)
+
+  * Upgraded MkDocs to 1.0
+
 mkdocs-material-2.9.4 (2018-07-29)
 
   * Fixed build error after MkDocs upgrade

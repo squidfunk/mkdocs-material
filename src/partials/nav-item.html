@@ -81,7 +81,7 @@
         {{ nav_item.title }}
       </label>
     {% endif %}
-    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
+    <a href="{{ nav_item.url | url }}" title="{{ nav_item.title }}"
         class="md-nav__link md-nav__link--active">
       {{ nav_item.title }}
     </a>
@@ -95,7 +95,7 @@
 <!-- Main navigation item -->
 {% else %}
   <li class="{{ class }}">
-    <a href="{{ nav_item.url }}" title="{{ nav_item.title }}"
+    <a href="{{ nav_item.url | url }}" title="{{ nav_item.title }}"
         class="md-nav__link">
       {{ nav_item.title }}
     </a>

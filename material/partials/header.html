@@ -2,13 +2,11 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="{{ config.site_url | default(nav.homepage.url, true) }}" title="{{ config.site_name }}" class="md-header-nav__button md-logo">
+        <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-header-nav__button md-logo">
           {% if config.theme.logo.icon %}
             <i class="md-icon">{{ config.theme.logo.icon }}</i>
-          {% elif config.theme.logo.startswith("http") %}
-            <img src="{{ config.theme.logo }}" width="24" height="24">
           {% else %}
-            <img src="{{ base_url }}/{{ config.theme.logo }}" width="24" height="24">
+            <img src="{{ config.theme.logo | url }}" width="24" height="24">
           {% endif %}
         </a>
       </div>
