@@ -18,11 +18,12 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-language: node_js
+language: python
 sudo: false
 
-# Node.js version and necessary services
-node_js: 8
+# Python, Node.js version and necessary services
+python: "3.6"
+node_js: "8"
 services:
   - docker
 
@@ -39,7 +40,6 @@ cache:
 # Install dependencies
 install:
   - npm install
-  - pip install --upgrade pip
   - pip install --user -r requirements.txt
 
 # Perform build and release
