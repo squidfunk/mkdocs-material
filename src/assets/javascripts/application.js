@@ -295,7 +295,7 @@ function initialize(config) { // eslint-disable-line func-style
       }).then(response => response.json())
         .then(data => {
           return data.docs.map(doc => {
-            doc.location = config.url.base + doc.location
+            doc.location = `${config.url.base}/${doc.location}`
             return doc
           })
         })
