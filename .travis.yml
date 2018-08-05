@@ -39,7 +39,8 @@ cache:
 # Install dependencies
 install:
   - npm install
-  - pip3 install --user -r requirements.txt
+  - pip install --upgrade pip
+  - pip install --user -r requirements.txt
 
 # Perform build and release
 script:
