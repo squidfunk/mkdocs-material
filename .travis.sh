@@ -52,7 +52,7 @@ if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git remote set-url origin ${REMOTE}
 
   # Install Material, so we can use it as a base template and add overrides
-  python setup.py install --user
+  python setup.py install
 
   # Override theme configuration
   sed -i 's/name: null/name: material/g' mkdocs.yml
@@ -70,7 +70,7 @@ rm -rf overrides
 echo "${TRAVIS_BRANCH}" | grep -qvE "^[0-9.]+$" && exit 0; :;
 
 # Install dependencies for release build
-pip install --user wheel twine
+pip install wheel twine
 
 # Build and install theme and Docker image
 python setup.py build sdist bdist_wheel --universal

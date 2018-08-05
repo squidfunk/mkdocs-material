@@ -1,6 +1,7 @@
 mkdocs-material-3.0.0 (2018-08-xx)
 
   * Upgraded MkDocs to 1.0
+  * Upgraded Python in official Docker image to 3.6
   * Added Serbian and Serbo-Croatian translations
 
 mkdocs-material-2.9.4 (2018-07-29)
