@@ -49,6 +49,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 3.0.1 <small>_ August 5, 2018</small>
+
+* Fixed [#838][838]: Search result links incorrect
+
+  [838]: https://github.com/squidfunk/mkdocs-material/issues/838
+
 ### 3.0.0 <small>_ August 5, 2018</small>
 
 * Upgraded MkDocs to 1.0
