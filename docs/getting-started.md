@@ -459,11 +459,13 @@ At the time of writing, the following languages are supported:
   </tbody>
 </table>
 
-!!! info "Search language support for Chinese"
+!!! warning "MkDocs 1.0 compatibility"
 
-    [lunr-languages][18] currently doesn't include a stemmer for Chinese or
-    other Asian languages, but uses the Japanese stemmer, as some users
-    reported pretty decent results.
+    While MkDocs 1.0 supports prebuilding the search index, Material currently
+    doesn't support this setting as the default search behavior of the original
+    theme was heavily modified for the sake of a better UX. Integration is
+    possible, but a small subset of the features Material provides will not be
+    portable to the prebuilt index mainly due to missing localization.
 
 !!! warning "Only specify the languages you really need"
 

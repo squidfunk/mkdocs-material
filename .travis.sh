@@ -72,10 +72,6 @@ echo "${TRAVIS_BRANCH}" | grep -qvE "^[0-9.]+$" && exit 0; :;
 # Install dependencies for release build
 pip install --user wheel twine
 
-# Fix SSL warnings for Python < 2.7.9
-# https://urllib3.readthedocs.io/en/latest/user-guide.html#ssl-py2
-pip install --user urllib3[secure]
-
 # Build and install theme and Docker image
 python setup.py build sdist bdist_wheel --universal
 docker build -t ${TRAVIS_REPO_SLUG} .
