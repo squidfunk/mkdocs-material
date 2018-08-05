@@ -1,4 +1,4 @@
-mkdocs-material-3.0.0 (2018-08-xx)
+mkdocs-material-3.0.0 (2018-08-05)
 
   * Upgraded MkDocs to 1.0
   * Upgraded Python in official Docker image to 3.6

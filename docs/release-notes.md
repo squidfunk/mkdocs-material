@@ -14,6 +14,18 @@ To inspect the currently installed version, use the following command:
 pip show mkdocs-material
 ```
 
+### Material 2.x to 3.x
+
+* Material for MkDocs 3.x requires MkDocs 1.0 because the way paths are resolved
+  internally changed significantly. Furthermore, `pages` was renamed to `nav`,
+  so remember to adjust your `mkdocs.yml` file.
+
+* All extended templates *should* continue to work but in order to make them
+  future-proof the `url` filter should be introduced on all paths. Please see
+  the [official release notes][_1] for further guidance.
+
+  [_1]: https://www.mkdocs.org/about/release-notes/#version-10-2018-08-03
+
 ### Material 1.x to 2.x
 
 * Material for MkDocs 2.x requires MkDocs 0.17.1, as this version introduced
@@ -36,6 +48,12 @@ pip show mkdocs-material
 * The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Changelog
+
+### 3.0.0 <small>_ August 5, 2018</small>
+
+* Upgraded MkDocs to 1.0
+* Upgraded Python in official Docker image to 3.6
+* Added Serbian and Serbo-Croatian translations
 
 ### 2.9.4 <small>_ July 29, 2018</small>
 
