@@ -40,7 +40,7 @@ cache:
 # Install dependencies
 install:
   - npm install
-  - pip install --user -r requirements.txt
+  - pip install -r requirements.txt
 
 # Perform build and release
 script:
