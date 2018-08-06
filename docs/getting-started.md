@@ -349,7 +349,7 @@ translations for all template variables and labels in the following languages:
     <tr>
       <td><code>ru</code> / Russian</td>
       <td><code>sr</code> / Serbian</td>
-      <td><code>sr</code> / Serbo-Croatian</td>
+      <td><code>sh</code> / Serbo-Croatian</td>
       <td><code>sk</code> / Slovak</td>
     </tr>
     <tr>
