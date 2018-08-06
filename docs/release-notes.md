@@ -49,6 +49,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 3.0.2 <small>_ August 6, 2018</small>
+
+* Fixed [#839][839]: Lunr.js stemmer imports incorrect
+
+  [839]: https://github.com/squidfunk/mkdocs-material/issues/839
+
 ### 3.0.1 <small>_ August 5, 2018</small>
 
 * Fixed [#838][838]: Search result links incorrect

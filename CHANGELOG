@@ -1,3 +1,7 @@
+mkdocs-material-3.0.2 (2018-08-06)
+
+  * Fixed #839: Lunr.js stemmer imports incorrect
+
 mkdocs-material-3.0.1 (2018-08-05)
 
   * Fixed #838: Search result links incorrect
