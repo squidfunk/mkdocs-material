@@ -49,6 +49,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 3.0.3 <small>_ August 7, 2018</small>
+
+* Fixed [#841][841]: Additional path levels for extra CSS and JS
+
+  [841]: https://github.com/squidfunk/mkdocs-material/issues/841
+
 ### 3.0.2 <small>_ August 6, 2018</small>
 
 * Fixed [#839][839]: Lunr.js stemmer imports incorrect
