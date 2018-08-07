@@ -151,7 +151,7 @@
         href="{{ 'assets/fonts/material-icons.css' | url }}" />
 
     <!-- Custom stylesheets -->
-    {% for path in extra_css %}
+    {% for path in config["extra_css"] %}
       <link rel="stylesheet" type="text/css" href="{{ path | url }}" />
     {% endfor %}
 
@@ -356,7 +356,7 @@
           }
         });
       </script>
-      {% for path in extra_javascript %}
+      {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
