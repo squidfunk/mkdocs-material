@@ -10,7 +10,7 @@ tempor.
 
 **Sed suscipit**, orci non pretium pretium, quam mi gravida metus, vel
 venenatis justo est condimentum diam. Maecenas non ornare justo. Nam a ipsum
-eros. [Nulla aliquam](/) orci sit amet nisl posuere malesuada. Proin aliquet
+eros. [Nulla aliquam](#) orci sit amet nisl posuere malesuada. Proin aliquet
 nulla velit, quis ultricies orci feugiat et. `Ut tincidunt sollicitudin`
 tincidunt. Aenean ullamcorper sit amet nulla at interdum.
 
@@ -46,7 +46,7 @@ tincidunt. Aenean ullamcorper sit amet nulla at interdum.
 
 > **Sed aliquet**, neque at rutrum mollis, neque nisi tincidunt nibh, vitae
   faucibus lacus nunc at lacus. Nunc scelerisque, quam id cursus sodales, lorem
-  [libero fermentum](/) urna, ut efficitur elit ligula et nunc.
+  [libero fermentum](#) urna, ut efficitur elit ligula et nunc.
 
 > > Mauris dictum mi lacus, sit amet pellentesque urna vehicula fringilla.
     Ut sit amet placerat ante. Proin sed elementum nulla. Nunc vitae sem odio.
@@ -161,7 +161,7 @@ Cras arcu libero
 
 Morbi eget `dapibus felis`. Vivamus *`venenatis porttitor`* tortor sit amet
 rutrum. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-per inceptos himenaeos. [`Pellentesque aliquet quam enim`](/), eu volutpat urna
+per inceptos himenaeos. [`Pellentesque aliquet quam enim`](#), eu volutpat urna
 rutrum a.
 
 Nam vehicula nunc `:::js return target` mauris, a ultricies libero efficitur
@@ -216,7 +216,7 @@ at elementum urna sodales vitae. In in vehicula nulla, quis ornare libero.
 | Left       | Center   | Right   |
 | :--------- | :------: | ------: |
 | Lorem      | *dolor*  | `amet`  |
-| [ipsum](/) | **sit**  |         |
+| [ipsum](#) | **sit**  |         |
 
 Vestibulum vitae orci quis ante viverra ultricies ut eget turpis. Sed eu
 lectus dapibus, eleifend nulla varius, lobortis turpis. In ac hendrerit nisl,
