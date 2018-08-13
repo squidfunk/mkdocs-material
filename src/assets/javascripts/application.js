@@ -420,9 +420,9 @@ function initialize(config) { // eslint-disable-line func-style
         }
 
       /* Search is closed and we're not inside a form */
-      } else if (document.activeElement && !document.activeElement.form) {
+      } else if (document.activeElement && !document.activeElement.form && (document.activeElement.tagName !== "TEXTAREA")) {
 
-        /* F/S: Open search if not in input field */
+        /* F/S: Open search if not in input field or a textarea*/
         if (ev.keyCode === 70 || ev.keyCode === 83) {
           query.focus()
           ev.preventDefault()
