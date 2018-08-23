@@ -124,10 +124,9 @@
 
     <!-- Webfonts -->
     {% block fonts %}
-      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-
       <!-- Load fonts from Google -->
       {% if font != false %}
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
         <link rel="stylesheet" type="text/css"
             href="https://fonts.googleapis.com/css?family={{
               font.text | replace(' ', '+')  + ':300,400,400i,700|' +
