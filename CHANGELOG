@@ -1,7 +1,7 @@
 mkdocs-material-3.0.4 (2018-09-03)
 
   * Updated Dutch translations
-  * Fixed #856: Remove preconnect meta tag if Google Fonts are disabled
+  * Fixed #856: Removed preconnect meta tag if Google Fonts are disabled
 
 mkdocs-material-3.0.3 (2018-08-07)
 
