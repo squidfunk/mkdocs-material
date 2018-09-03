@@ -5,7 +5,7 @@
 
   [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
   [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
-  [gitter-image]: https://img.shields.io/gitter/room/squidfunk/mkdocs-material.svg
+  [gitter-image]: https://badges.gitter.im/squidfunk/mkdocs-material.svg
   [gitter-link]: https://gitter.im/squidfunk/mkdocs-material
   [docker-image]: https://img.shields.io/docker/pulls/squidfunk/mkdocs-material.svg
   [docker-link]: https://hub.docker.com/r/squidfunk/mkdocs-material/
