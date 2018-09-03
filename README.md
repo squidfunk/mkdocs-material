@@ -1,6 +1,5 @@
 [![Travis][travis-image]][travis-link]
 [![Gitter][gitter-image]][gitter-link]
-[![Codacy][codacy-image]][codacy-link]
 [![Docker][docker-image]][docker-link]
 [![PyPI][pypi-image]][pypi-link]
 
@@ -8,8 +7,6 @@
   [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
   [gitter-image]: https://img.shields.io/gitter/room/squidfunk/mkdocs-material.svg
   [gitter-link]: https://gitter.im/squidfunk/mkdocs-material
-  [codacy-image]: https://api.codacy.com/project/badge/Grade/fe07aa1fa91d453cb69711d3885c5d7e
-  [codacy-link]: https://www.codacy.com/app/squidfunk/mkdocs-material?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=squidfunk/mkdocs-material&amp;utm_campaign=Badge_Grade
   [docker-image]: https://img.shields.io/docker/pulls/squidfunk/mkdocs-material.svg
   [docker-link]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
