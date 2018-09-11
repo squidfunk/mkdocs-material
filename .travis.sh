@@ -64,7 +64,7 @@ if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
 fi
 
 # Remove overrides directory so it won't get included in the image
-rm -rf overrides
+# rm -rf overrides
 
 # Terminate if we're not on a release branch
 echo "${TRAVIS_BRANCH}" | grep -qvE "^[0-9.]+$" && exit 0; :;
