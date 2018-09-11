@@ -36,7 +36,7 @@
     "babel-core": "^6.25.0",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^7.1.1",
-    "babel-plugin-add-module-exports": "^0.3.1",
+    "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "chalk": "^2.0.1",
