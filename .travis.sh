@@ -23,24 +23,24 @@
 # Exit, if one command fails
 set -e
 
-# Create directory for overrides, so we don't clutter up the base theme with
-# our custom adjustments for our own hosted documentation
-mkdir -p overrides
-cat > overrides/main.html <<-EOM
-  {% extends "base.html" %}
-  {% block scripts %}
-    {{ super() }}
-    <script>
-      (function(i,s,o,g,r,a,m){
-        i["GinsengAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
-        []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
-        m.parentNode.insertBefore(a,m)
-      })(window, document,
-        "script", "https://ginseng.ai/analytics.js", "gx");
-    </script>
-  {% endblock %}
-EOM
+# # Create directory for overrides, so we don't clutter up the base theme with
+# # our custom adjustments for our own hosted documentation
+# mkdir -p overrides
+# cat > overrides/main.html <<-EOM
+#   {% extends "base.html" %}
+#   {% block scripts %}
+#     {{ super() }}
+#     <script>
+#       (function(i,s,o,g,r,a,m){
+#         i["GinsengAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+#         []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+#         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+#         m.parentNode.insertBefore(a,m)
+#       })(window, document,
+#         "script", "https://ginseng.ai/analytics.js", "gx");
+#     </script>
+#   {% endblock %}
+# EOM
 
 # Deploy documentation to GitHub pages
 if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -54,9 +54,9 @@ if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
   # Install Material, so we can use it as a base template and add overrides
   python setup.py install
 
-  # Override theme configuration
-  sed -i 's/name: null/name: material/g' mkdocs.yml
-  sed -i 's/custom_dir: material/custom_dir: overrides/g' mkdocs.yml
+  # # Override theme configuration
+  # sed -i 's/name: null/name: material/g' mkdocs.yml
+  # sed -i 's/custom_dir: material/custom_dir: overrides/g' mkdocs.yml
 
   # Build documentation with overrides and publish to GitHub pages
   mkdocs gh-deploy --force
