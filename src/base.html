@@ -38,6 +38,14 @@
 
       <!-- Keep for compatibility, see http://bit.ly/2tMB6ag -->
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
+      
+      <!-- Page keywords -->
+      {% if page and page.meta and page.meta.keywords %}
+        <meta name="description"
+            content="{{ page.meta.keywords }}" />
+      {% elif config.site_keywords %}
+        <meta name="keywords" content="{{ config.site_keywords }}" />
+      {% endif %}
 
       <!-- Page description -->
       {% if page and page.meta and page.meta.description %}
