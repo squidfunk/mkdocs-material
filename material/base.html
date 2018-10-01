@@ -165,6 +165,9 @@
                   {% endif %}
                 {% endblock %}
               {% endblock %}
+              {% block fb_comment %}
+                {% include "partials/integrations/fb_comment.html" %}
+              {% endblock %}
               {% block disqus %}
                 {% include "partials/integrations/disqus.html" %}
               {% endblock %}
