@@ -22,6 +22,11 @@
         {% set fb_comment = page.meta.fb_comment %}
       {% endif %}
       {% if not page.is_homepage and fb_comment %}
+      {% set disqus = config.extra.disqus %}
+      {% if page and page.meta and page.meta.disqus is string %}
+        {% set disqus = page.meta.disqus %}
+      {% endif %}
+      {% if not page.is_homepage and disqus %}
         <li class="md-nav__item">
           <a href="#__comments" title="{{ lang.t('meta.comments') }}" class="md-nav__link md-nav__link--active">
             {{ lang.t("meta.comments") }}
