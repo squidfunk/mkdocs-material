@@ -48,6 +48,21 @@ see on the current page when you scroll to the top. It's as simple as:
 ``` markdown
 hero: Metadata enables hero teaser texts
 ```
+### Redirects
+
+It's sometimes necessary to move documents around in the navigation tree and
+redirect user from the old URL to the new one. The `redirect:` meta-tag allows
+to create a redirection from the current document to the address specified in
+the tag.
+
+For instance, if your document contains:
+
+``` markdown
+redirect: /new/url
+
+```
+accessing that document's URL will automatically redirect to `/new/url`.
+
 
 ### Linking sources
 
