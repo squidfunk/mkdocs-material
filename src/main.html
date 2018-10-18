@@ -22,7 +22,7 @@
 
 {% if page.meta.redirect %}
 <script>
-    location.href = '{{ page.meta.redirect }}')
+    document.location.replace({{ page.meta.redirect }})
 </script>
 <meta http-equiv="refresh" content="0; url={{ page.meta.redirect }}"/>
 <link rel="canonical" href="{{ page.meta.redirect }} " />
