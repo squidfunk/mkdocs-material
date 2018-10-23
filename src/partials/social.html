@@ -24,7 +24,7 @@
 {% if config.extra.social %}
   <div class="md-footer-social">
     <link rel="stylesheet" type="text/css"
-        href="{{ base_url }}/assets/fonts/font-awesome.css" />
+        href="{{ 'assets/fonts/font-awesome.css' | url }}" />
     {% for social in config.extra.social %}
       <a href="{{ social.link }}" class="md-footer-social__link
             fa fa-{{ social.type }}"></a>
