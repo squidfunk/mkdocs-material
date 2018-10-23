@@ -49,6 +49,15 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 3.0.5 <small>_ October 23, 2018</small>
+
+* Added Croatian and Indonesian translations
+* Fixed [#899][899]: Skip-to-content link invalid from 2nd level on
+* Fixed [#902][902]: Missing URL filter in footer for FontAwesome link
+
+  [899]: https://github.com/squidfunk/mkdocs-material/issues/899
+  [902]: https://github.com/squidfunk/mkdocs-material/issues/902
+
 ### 3.0.4 <small>_ September 3, 2018</small>
 
 * Updated Dutch translations
