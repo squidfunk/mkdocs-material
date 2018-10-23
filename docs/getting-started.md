@@ -335,28 +335,28 @@ translations for all template variables and labels in the following languages:
       <td><code>hi</code> / Hindi</td>
     </tr>
     <tr>
+      <td><code>hr</code> / Croatian</td>
       <td><code>hu</code> / Hungarian</td>
+      <td><code>id</code> / Indonesian</td>
       <td><code>it</code> / Italian</td>
+    </tr>
+    <tr>
       <td><code>ja</code> / Japanese</td>
       <td><code>kr</code> / Korean</td>
-    </tr>
-    <tr>
       <td><code>no</code> / Norwegian</td>
       <td><code>fa</code> / Persian</td>
+    </tr>
+    <tr>
       <td><code>pl</code> / Polish</td>
       <td><code>pt</code> / Portugese</td>
-    </tr>
-    <tr>
       <td><code>ru</code> / Russian</td>
       <td><code>sr</code> / Serbian</td>
-      <td><code>sh</code> / Serbo-Croatian</td>
-      <td><code>sk</code> / Slovak</td>
     </tr>
     <tr>
+      <td><code>sh</code> / Serbo-Croatian</td>
+      <td><code>sk</code> / Slovak</td>
       <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
-      <td><code>tr</code> / Turkish</td>
-      <td><code>uk</code> / Ukrainian</td>
     </tr>
     <tr>
       <td colspan="2">
@@ -367,6 +367,8 @@ translations for all template variables and labels in the following languages:
       </td>
     </tr>
     <tr>
+      <td><code>tr</code> / Turkish</td>
+      <td><code>uk</code> / Ukrainian</td>
       <td><code>vi</code> / Vietnamese</td>
       <td colspan="3" align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
