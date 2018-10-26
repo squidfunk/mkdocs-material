@@ -28,6 +28,25 @@ import lunr from "expose-loader?lunr!lunr"
  * ------------------------------------------------------------------------- */
 
 /**
+ * Escape HTML strings
+ *
+ * Documentation may contain code JavaScript code snippets which would get
+ * executed when inserted into the DOM as plain HTML.
+ *
+ * See https://github.com/squidfunk/mkdocs-material/issues/906
+ *
+ * @param {string} html - HTML string
+ *
+ * @return {string} Escaped HTML string
+ */
+const escapeHTML = html => {
+  var text = document.createTextNode(html);
+  var p = document.createElement('p');
+  p.appendChild(text);
+  return p.innerHTML;
+}
+
+/**
  * Truncate a string after the given number of character
  *
  * This is not a reasonable approach, since the summaries kind of suck. It
@@ -137,6 +156,10 @@ export default class Result {
         /* Preprocess and index sections and documents */
         this.docs_ = data.reduce((docs, doc) => {
           const [path, hash] = doc.location.split("#")
+
+          /* Escape HTML */
+          doc.title = escapeHTML(doc.title)
+          doc.text  = escapeHTML(doc.text)
 
           /* Associate section with parent document */
           if (hash) {
