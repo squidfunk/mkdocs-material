@@ -49,6 +49,13 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 3.0.6 <small>_ October 26, 2018</small>
+
+* Added Taiwanese translations
+* Fixed [#906][906]: JavaScript code blocks evaluated in search results
+
+  [906]: https://github.com/squidfunk/mkdocs-material/issues/906
+
 ### 3.0.5 <small>_ October 23, 2018</small>
 
 * Added Croatian and Indonesian translations
