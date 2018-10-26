@@ -367,8 +367,13 @@ translations for all template variables and labels in the following languages:
       </td>
     </tr>
     <tr>
+      <td colspan="2">
+        <code>zh-TW</code> / Chinese (Taiwanese)
+      </td>
       <td><code>tr</code> / Turkish</td>
       <td><code>uk</code> / Ukrainian</td>
+    </tr>
+    <tr>
       <td><code>vi</code> / Vietnamese</td>
       <td colspan="3" align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
