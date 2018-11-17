@@ -58,7 +58,7 @@
     "html-minifier": "^3.5.6",
     "imagemin-webpack-plugin": "^2.0.0",
     "js-cookie": "^2.1.4",
-    "lunr": "^2.1.2",
+    "lunr": "^2.3.5",
     "lunr-languages": "^1.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",

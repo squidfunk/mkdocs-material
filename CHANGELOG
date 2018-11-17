@@ -1,3 +1,7 @@
+mkdocs-material-3.1.0 (2018-11-17)
+
+  * Fixed #915: Search bug in Safari (upgraded Lunr.js)
+
 mkdocs-material-3.0.6 (2018-10-26)
 
   * Added Taiwanese translations
