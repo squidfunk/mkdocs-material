@@ -585,6 +585,15 @@ will result in `fa fa-github`.
 
   [21]: customization.md
 
+## Web app manifest
+
+A web app manifest is a simple JSON file that tells the browser about your web application and how it should behave when installed on the user's mobile device or desktop. You can specify a manifest in your `mkdocs.yml`:
+
+```yaml
+extra:
+  manifest: site.webmanifest
+```
+
 ## Integrations
 
 ### Google Analytics
@@ -697,6 +706,7 @@ extra:
       link: 'https://twitter.com/squidfunk'
     - type: 'linkedin'
       link: 'https://linkedin.com/in/squidfunk'
+  manifest: site.webmanifest
 
 # Google Analytics
 google_analytics:
