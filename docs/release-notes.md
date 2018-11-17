@@ -49,6 +49,13 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 3.1.0 <small>_ November 17, 2018</small>
+
+* Added support for Progressive Web App Manifest
+* Fixed [#915][915]: Search bug in Safari (upgraded Lunr.js)
+
+  [915]: https://github.com/squidfunk/mkdocs-material/issues/915
+
 ### 3.0.6 <small>_ October 26, 2018</small>
 
 * Added Taiwanese translations

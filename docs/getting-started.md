@@ -578,21 +578,25 @@ will result in `fa fa-github`.
 
   [20]: http://fontawesome.io/icons/
 
-### More advanced customization
+### Adding a Web App Manifest
 
-  If you want to change the general appearance of the Material theme, see
-  [this article][21] for more information on advanced customization.
-
-  [21]: customization.md
-
-## Web app manifest
-
-A web app manifest is a simple JSON file that tells the browser about your web application and how it should behave when installed on the user's mobile device or desktop. You can specify a manifest in your `mkdocs.yml`:
+A [Web App Manifest][21] is a simple JSON file that tells the browser about your
+web application and how it should behave when installed on the user's mobile
+device or desktop. You can specify a manifest in your `mkdocs.yml`:
 
 ```yaml
 extra:
-  manifest: site.webmanifest
+  manifest: 'manifest.webmanifest'
 ```
+
+  [21]: https://developers.google.com/web/fundamentals/web-app-manifest/
+
+### More advanced customization
+
+  If you want to change the general appearance of the Material theme, see
+  [this article][22] for more information on advanced customization.
+
+  [22]: customization.md
 
 ## Integrations
 
@@ -611,7 +615,7 @@ google_analytics:
 
 ### Disqus
 
-Material for MkDocs is integrated with [Disqus][22], so if you want to add a
+Material for MkDocs is integrated with [Disqus][23], so if you want to add a
 comments section to your documentation set the shortname of your Disqus project
 in your `mkdocs.yml`:
 
@@ -630,14 +634,14 @@ automatically included.
     `site_url` value must be set in `mkdocs.yml` for the Disqus integration to
     load properly.
 
-Disqus can also be enabled or disabled for specific pages using [Metadata][23].
+Disqus can also be enabled or disabled for specific pages using [Metadata][24].
 
-  [22]: https://disqus.com
-  [23]: extensions/metadata.md#disqus
+  [23]: https://disqus.com
+  [24]: extensions/metadata.md#disqus
 
 ## Extensions
 
-MkDocs supports several [Markdown extensions][24]. The following extensions
+MkDocs supports several [Markdown extensions][25]. The following extensions
 are not enabled by default (see the link for which are enabled by default)
 but highly recommended, so they should be switched on at all times:
 
@@ -653,20 +657,20 @@ markdown_extensions:
 For more information, see the following list of extensions supported by the
 Material theme including more information regarding installation and usage:
 
-* [Admonition][25]
-* [Codehilite][26]
-* [Footnotes][27]
-* [Metadata][28]
-* [Permalinks][29]
-* [PyMdown Extensions][30]
+* [Admonition][26]
+* [Codehilite][27]
+* [Footnotes][28]
+* [Metadata][29]
+* [Permalinks][30]
+* [PyMdown Extensions][31]
 
-  [24]: https://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
-  [25]: extensions/admonition.md
-  [26]: extensions/codehilite.md
-  [27]: extensions/footnotes.md
-  [28]: extensions/metadata.md
-  [29]: extensions/permalinks.md
-  [30]: extensions/pymdown.md
+  [25]: https://www.mkdocs.org/user-guide/writing-your-docs/#markdown-extensions
+  [26]: extensions/admonition.md
+  [27]: extensions/codehilite.md
+  [28]: extensions/footnotes.md
+  [29]: extensions/metadata.md
+  [30]: extensions/permalinks.md
+  [31]: extensions/pymdown.md
 
 ## Full example
 
@@ -699,6 +703,7 @@ theme:
 
 # Customization
 extra:
+  manifest: 'manifest.webmanifest'
   social:
     - type: 'github'
       link: 'https://github.com/squidfunk'
@@ -706,7 +711,6 @@ extra:
       link: 'https://twitter.com/squidfunk'
     - type: 'linkedin'
       link: 'https://linkedin.com/in/squidfunk'
-  manifest: site.webmanifest
 
 # Google Analytics
 google_analytics:
