@@ -492,7 +492,8 @@ hr {
     color: rgba(0, 0, 0, 0.07);
     content: "\E14D"; }
     pre:hover .md-clipboard::before,
-    .codehilite:hover .md-clipboard::before, .md-typeset .highlight:hover .md-clipboard::before {
+    .codehilite:hover .md-clipboard::before,
+    .md-typeset .highlight:hover .md-clipboard::before {
       color: rgba(0, 0, 0, 0.54); }
   .md-clipboard:focus::before, .md-clipboard:hover::before {
     color: #536dfe; }
@@ -1521,7 +1522,8 @@ hr {
   line-height: 1.4;
   -webkit-overflow-scrolling: touch; }
   .md-typeset .codehilite pre, .md-typeset .highlight pre,
-  .md-typeset .codehilite code, .md-typeset .highlight code {
+  .md-typeset .codehilite code,
+  .md-typeset .highlight code {
     display: block;
     margin: 0;
     padding: 1.05rem 1.2rem;
@@ -1529,14 +1531,17 @@ hr {
     overflow: auto;
     vertical-align: top; }
     .md-typeset .codehilite pre::-webkit-scrollbar, .md-typeset .highlight pre::-webkit-scrollbar,
-    .md-typeset .codehilite code::-webkit-scrollbar, .md-typeset .highlight code::-webkit-scrollbar {
+    .md-typeset .codehilite code::-webkit-scrollbar,
+    .md-typeset .highlight code::-webkit-scrollbar {
       width: 0.4rem;
       height: 0.4rem; }
     .md-typeset .codehilite pre::-webkit-scrollbar-thumb, .md-typeset .highlight pre::-webkit-scrollbar-thumb,
-    .md-typeset .codehilite code::-webkit-scrollbar-thumb, .md-typeset .highlight code::-webkit-scrollbar-thumb {
+    .md-typeset .codehilite code::-webkit-scrollbar-thumb,
+    .md-typeset .highlight code::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.26); }
       .md-typeset .codehilite pre::-webkit-scrollbar-thumb:hover, .md-typeset .highlight pre::-webkit-scrollbar-thumb:hover,
-      .md-typeset .codehilite code::-webkit-scrollbar-thumb:hover, .md-typeset .highlight code::-webkit-scrollbar-thumb:hover {
+      .md-typeset .codehilite code::-webkit-scrollbar-thumb:hover,
+      .md-typeset .highlight code::-webkit-scrollbar-thumb:hover {
         background-color: #536dfe; }
 
 .md-typeset pre.codehilite, .md-typeset pre.highlight {
@@ -1553,16 +1558,20 @@ hr {
   font-size: 1.6rem;
   overflow: hidden; }
   .md-typeset .codehilitetable tbody, .md-typeset .highlighttable tbody,
-  .md-typeset .codehilitetable td, .md-typeset .highlighttable td {
+  .md-typeset .codehilitetable td,
+  .md-typeset .highlighttable td {
     display: block;
     padding: 0; }
   .md-typeset .codehilitetable tr, .md-typeset .highlighttable tr {
     display: flex; }
   .md-typeset .codehilitetable .codehilite, .md-typeset .highlighttable .codehilite, .md-typeset .codehilitetable .highlight, .md-typeset .highlighttable .highlight,
-  .md-typeset .codehilitetable .linenodiv, .md-typeset .highlighttable .linenodiv {
+  .md-typeset .codehilitetable .linenodiv,
+  .md-typeset .highlighttable .linenodiv {
     margin: 0;
     border-radius: 0; }
-  .md-typeset .codehilitetable .linenodiv, .md-typeset .highlighttable .linenodiv {
+  
+  .md-typeset .codehilitetable .linenodiv,
+  .md-typeset .highlighttable .linenodiv {
     padding: 1.05rem 1.2rem; }
   .md-typeset .codehilitetable .linenos, .md-typeset .highlighttable .linenos {
     background-color: rgba(0, 0, 0, 0.07);
@@ -2006,7 +2015,9 @@ hr {
       border-radius: 0; }
       .md-typeset > .codehilitetable .codehilite > pre, .md-typeset > .highlighttable .codehilite > pre, .md-typeset > .codehilitetable .highlight > pre, .md-typeset > .highlighttable .highlight > pre,
       .md-typeset > .codehilitetable .codehilite > code,
-      .md-typeset > .highlighttable .codehilite > code, .md-typeset > .codehilitetable .highlight > code, .md-typeset > .highlighttable .highlight > code,
+      .md-typeset > .highlighttable .codehilite > code,
+      .md-typeset > .codehilitetable .highlight > code,
+      .md-typeset > .highlighttable .highlight > code,
       .md-typeset > .codehilitetable .linenodiv,
       .md-typeset > .highlighttable .linenodiv {
         padding: 1rem 1.6rem; }
@@ -2549,4 +2560,4 @@ hr {
         max-height: 5rem;
         -webkit-line-clamp: 3; } }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uNDUxZjgwZTUuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uMTFlNDE4NTIuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
