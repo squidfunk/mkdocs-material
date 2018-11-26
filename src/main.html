@@ -22,12 +22,12 @@
 
 {% if page.meta.redirect %}
 <script>
-    document.location.replace({{ page.meta.redirect }})
+    // redirect anchors
+    var anchor = window.location.hash.substr(1);
+    location.href = '{{ page.meta.redirect }}' + (anchor?'#'+anchor:'');
 </script>
-<meta http-equiv="refresh" content="0; url={{ page.meta.redirect }}"/>
-<link rel="canonical" href="{{ page.meta.redirect }} " />
-{% else %}
-
-{% extends "base.html" %}
-
+<!-- no-js fallback -->
+<meta http-equiv="refresh" content="0; url={{ page.meta.redirect }}">
+<link rel="canonical" href="{{ page.meta.redirect }}">
 {% endif %}
+{% extends "base.html" %}
