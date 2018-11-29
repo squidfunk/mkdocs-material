@@ -7,12 +7,13 @@
   <head>
     {% block site_meta %}
       <meta charset="utf-8">
-<meta http-equiv="x-dns-prefetch-control" content="on">
-<link rel="dns-prefetch" href="//fonts.loli.net">
-<link rel="dns-prefetch" href="//cdnjs.loli.net">
-<link rel="dns-prefetch" href="//oi-wiki.org">
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-<link rel="dns-prefetch" href="//api.github.com">
+      <meta http-equiv="x-dns-prefetch-control" content="on">
+      <link rel="dns-prefetch" href="//fonts.loli.net">
+      <link rel="dns-prefetch" href="//cdnjs.loli.net">
+      <link rel="dns-prefetch" href="//oi-wiki.org">
+      <link rel="dns-prefetch" href="//assets.oi-wiki.org">
+      <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+      <link rel="dns-prefetch" href="//api.github.com">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       {% if page and page.meta and page.meta.description %}
@@ -54,9 +55,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.11e41852.css' | url }}">
+      <link rel="stylesheet" href="https://assets.oi-wiki.org/assets/stylesheets/application.11e41852.css">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.22915126.css' | url }}">
+      <link rel="stylesheet" href="https://assets.oi-wiki.org/assets/stylesheets/application-palette.22915126.css">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -67,7 +68,7 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ 'assets/javascripts/modernizr.20ef595d.js' | url }}"></script>
+      <script src="https://assets.oi-wiki.org/assets/javascripts/modernizr.20ef595d.js" data-no-instant></script>
     {% endblock %}
     {% block fonts %}
       {% if font != false %}
@@ -187,7 +188,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.905597d0.js' | url }}"></script>
+      <script src="https://assets.oi-wiki.org/assets/javascripts/application.905597d0.js"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
