@@ -104,9 +104,9 @@
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
-{% set hash = config.extra.hash %}
-      <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：{{
-          build_date_utc.strftime('%Y-%m-%d') }}</a></span>
+        {% set hash = config.extra.githash %}
+        <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：{{ hash }}, {{
+            build_date_utc.strftime('%Y-%m-%d') }}</a></span>
       <!-- Social links -->
       {% block social %}
       {% include "partials/social.html" %}
