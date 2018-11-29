@@ -1,21 +1,36 @@
-{% set disqus = config.extra.disqus %}
-{% if page and page.meta and page.meta.disqus is string %}
-  {% set disqus = page.meta.disqus %}
-{% endif %}
+<!-- Set from config but allow override -->
+{% set disqus = config.extra.disqus %} {% if page and page.meta and page.meta.disqus is string %} {% set disqus = page.meta.disqus
+  %} {% endif %}
+{% set copyright = config.extra.copyright %} {% if page and page.meta and page.meta.copyright is string %} {% set copyright = page.meta.copyright
+  %} {% endif %}
+
+<hr><blockquote class="page-copyright">
+  <span><i class="md-icon">build</i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
+  <span><i class="md-icon">edit</i>发现错误？想一起完善？ <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="page_edit_url">在 GitHub 上编辑此页！</a></span><br>
+  <span><i class="md-icon">people</i>本页面贡献者：</span><span class="page_contributors"></span><br>
+  <span><i class="md-icon">copyright</i>本页面的全部内容在 <strong>{{ copyright }}</strong> 协议之条款下提供，附加条款亦可能应用</span>
+</blockquote>
+<!-- Comments Integration -->
 {% if not page.is_homepage and disqus %}
-  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
-  <div id="disqus_thread"></div>
-  <script>
-    var disqus_config = function () {
-      this.page.url = "{{ page.canonical_url }}";
-      this.page.identifier =
-        "{{ page.canonical_url | replace(config.site_url, "") }}";
-    };
-    (function() {
-      var d = document, s = d.createElement("script");
-      s.src = "//{{ disqus }}.disqus.com/embed.js";
-      s.setAttribute("data-timestamp", +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
+{% set pageID = page.title | default("404", true) %}
+<h2 id="__comments" data-no-instant>{{ lang.t("meta.comments") }}</h2>
+<form id="gitalk-form" onsubmit="return false;" data-no-instant>
+<div id="gitalk-container" data-no-instant>
+</div>
+</form>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    id: '{{ page.title | default("404", true)  }}',
+    owner: 'Ir1d',
+    repo: 'gitment',
+    admin: ['Ir1d'],
+    clientID: 'd6a911c8fba0194626d4',
+    clientSecret: '867ec7e13cc99b420bd147cbb62d5cfec271ba81',
+    distractionFreeMode: false,
+    pagerDirection: 'first'
+  })
+  gitalk.render('gitalk-container')
+</script>
 {% endif %}

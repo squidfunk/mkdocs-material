@@ -1,48 +1,102 @@
 {% import "partials/language.html" as lang with context %}
+
+<!-- InstantClick -->
+<script type="text/javascript" src="https://cdnjs.loli.net/ajax/libs/instantclick/3.0.1/instantclick.min.js"
+  data-no-instant></script>
+<script data-no-instant>
+  InstantClick.init(true);
+</script>
+
+<script src="{{ 'assets/javascripts/modernizr.20ef595d.js' | url }}" data-no-instant></script>
+
+<!-- back to top -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/data-tip@0.0.52/dist/data-tip.css">
+<script>
+  // 当网页向下滑动 20px 出现"返回顶部" 按钮
+  window.onscroll = function () { scrollFunction() };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("myBtn").style.display = "block";
+    } else {
+      document.getElementById("myBtn").style.display = "none";
+    }
+  }
+
+  // 点击按钮，返回顶部
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<button onclick="topFunction()" id="myBtn" class="data-tip-left" data-tip="回到顶部">
+  <svg class="Zi Zi--BackToTop data-tip-left" data-tip="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+    <path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path>
+  </svg>
+</button>
+
+
+<!-- Application footer -->
 <footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
   {% if page.previous_page or page.next_page %}
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        {% if page.previous_page %}
-          <a href="{{ page.previous_page.url | url }}" title="{{ page.previous_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  {{ lang.t("footer.previous") }}
-                </span>
-                {{ page.previous_page.title }}
-              </span>
-            </div>
-          </a>
-        {% endif %}
-        {% if page.next_page %}
-          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  {{ lang.t("footer.next") }}
-                </span>
-                {{ page.next_page.title }}
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        {% endif %}
-      </nav>
-    </div>
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+
+      <!-- Link to previous page -->
+      {% if page.previous_page %}
+      <a href="{{ page.previous_page.url | url }}" title="{{ page.previous_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+        rel="prev">
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              {{ lang.t("footer.previous") }}
+            </span>
+            {{ page.previous_page.title }}
+          </span>
+        </div>
+      </a>
+      {% endif %}
+
+      <!-- Link to next page -->
+      {% if page.next_page %}
+      <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--next"
+        rel="next">
+        <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              {{ lang.t("footer.next") }}
+            </span>
+            {{ page.next_page.title }}
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+        </div>
+      </a>
+      {% endif %}
+    </nav>
+  </div>
   {% endif %}
+
+  <!-- Further information -->
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
       <div class="md-footer-copyright">
         {% if config.copyright %}
-          <div class="md-footer-copyright__highlight">
-            {{ config.copyright }}
-          </div>
+        <div class="md-footer-copyright__highlight">
+          {{ config.copyright }}
+        </div>
         {% endif %}
         powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
@@ -50,8 +104,12 @@
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
+{% set hash = config.extra.hash %}
+      <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：{{
+          build_date_utc.strftime('%Y-%m-%d') }}</a></span>
+      <!-- Social links -->
       {% block social %}
-        {% include "partials/social.html" %}
+      {% include "partials/social.html" %}
       {% endblock %}
     </div>
   </div>
