@@ -31,7 +31,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^9.0.1",
+    "autoprefixer": "^9.4.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.25.0",
     "babel-eslint": "^10.0.0",
