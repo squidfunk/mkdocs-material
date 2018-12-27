@@ -33,7 +33,10 @@ const webpack = require("webpack")
 
 const CopyPlugin = require("copy-webpack-plugin")
 const EventHooksPlugin = require("event-hooks-webpack-plugin")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const { CallbackTask } = require("event-hooks-webpack-plugin/lib/tasks")
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const UglifyJsPlugin = require('uglifyjs-3-webpack-plugin')
 const ImageminPlugin = require("imagemin-webpack-plugin").default
 const ManifestPlugin = require("webpack-manifest-plugin")
 
@@ -41,8 +44,17 @@ const ManifestPlugin = require("webpack-manifest-plugin")
  * Configuration
  * ------------------------------------------------------------------------- */
 
-module.exports = env => { // eslint-disable-line complexity
+/**
+ * Webpack configuration
+ *
+ * @param env - Webpack environment arguments
+ * @param args - Command-line arguments
+ *
+ * @return Webpack configuration
+ */
+module.exports = (_env, args) => { // eslint-disable-line complexity
   const config = {
+    mode: args.mode,
 
     /* Entrypoints */
     entry: {
@@ -79,7 +91,7 @@ module.exports = env => { // eslint-disable-line complexity
         {
           test: /\.svg$/,
           use: `file-loader?name=[path][name]${
-            env && env.prod ? ".[md5:hash:hex:8]" : ""
+            args.mode === "production" ? ".[md5:hash:hex:8]" : ""
           }.[ext]&context=./src`
         }
       ]
@@ -88,19 +100,13 @@ module.exports = env => { // eslint-disable-line complexity
     /* Output */
     output: {
       path: path.resolve(__dirname, "material"),
-      filename: `[name]${env && env.prod ? ".[chunkhash]" : ""}.js`,
+      filename: `[name]${args.mode === "production" ? ".[chunkhash]" : ""}.js`,
       hashDigestLength: 8,
       libraryTarget: "window"
     },
 
     /* Plugins */
     plugins: [
-
-      /* Combine all dependencies into a single file */
-      new webpack.optimize.CommonsChunkPlugin({
-        name: "src/assets/javascripts/modernizr.js",
-        chunks: [".modernizr-autorc"]
-      }),
 
       /* Provide JSX helper */
       new webpack.ProvidePlugin({
@@ -187,20 +193,7 @@ module.exports = env => { // eslint-disable-line complexity
                   .join(", "))
           }
         }
-      ]),
-
-      /* Hack: The webpack development middleware sometimes goes into a loop on
-         macOS when starting for the first time. This is a quick fix until
-         this issue is resolved. See: http://bit.ly/2AsizEn */
-      new EventHooksPlugin({
-        "watch-run": (compiler, cb) => {
-          compiler.startTime += 10000
-          cb()
-        },
-        "done": stats => {
-          stats.startTime -= 10000
-        }
-      })
+      ])
     ],
 
     /* Module resolver */
@@ -215,7 +208,39 @@ module.exports = env => { // eslint-disable-line complexity
     },
 
     /* Sourcemaps */
-    devtool: !env || env.prod ? "inline-source-map" : ""
+    devtool: args.mode !== "production" ? "inline-source-map" : "",
+
+    /* Optimizations */
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin(),
+        new OptimizeCSSAssetsPlugin({})
+      ],
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            chunks: "all",
+            minChunks: 2,
+            maxInitialRequests: 5,
+            minSize: 0
+          },
+          modernizr: {
+            test: "src/assets/javascripts/modernizr.js",
+            chunks: "all",
+            name: "modernizr",
+            priority: 10,
+            enforce: true
+          },
+          modernizr: {
+            test: "src/assets/stylesheets/application.css",
+            chunks: "all",
+            name: "styles",
+            priority: 10,
+            enforce: true
+          }
+        }
+      }
+    },
   }
 
   /* Compile stylesheets */
@@ -223,75 +248,56 @@ module.exports = env => { // eslint-disable-line complexity
     "application.scss",
     "application-palette.scss"
   ]) {
-    const plugin = new ExtractTextPlugin(
-      `assets/stylesheets/${
+    const plugin = new ExtractCssChunks({
+      filename: `assets/stylesheets/${
         stylesheet.replace(".scss",
-          env && env.prod ? ".[md5:contenthash:hex:8]" : ""
-        )}.css`)
+          args.mode === "production" ? ".[contenthash]" : ""
+        )}.css`
+    })
 
     /* Register plugin */
     config.plugins.push(plugin)
     config.module.rules.push({
       test: new RegExp(`${stylesheet}$`),
-      use: plugin.extract({
-        use: [
-          {
-            loader: "css-loader",
-            options: {
-              minimize: env && env.prod,
-              sourceMap: !(env && env.prod)
-            }
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              ident: "postcss",
-              plugins: () => [
-                require("autoprefixer")(),
-                require("css-mqpacker")
-              ],
-              sourceMap: !(env && env.prod)
-            }
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              includePaths: [
-                "node_modules/modularscale-sass/stylesheets",
-                "node_modules/material-design-color",
-                "node_modules/material-shadows"
-              ],
-              sourceMap: !(env && env.prod),
-              sourceMapContents: true
-            }
+      use: [
+        ExtractCssChunks.loader,
+        {
+          loader: "css-loader",
+          options: {
+            minimize: args.mode === "production",
+            sourceMap: args.mode !== "production"
           }
-        ]
-      })
+        },
+        {
+          loader: "postcss-loader",
+          options: {
+            ident: "postcss",
+            plugins: () => [
+              require("autoprefixer")(),
+              require("css-mqpacker")
+            ],
+            sourceMap: args.mode !== "production"
+          }
+        },
+        {
+          loader: "sass-loader",
+          options: {
+            includePaths: [
+              "node_modules/modularscale-sass/stylesheets",
+              "node_modules/material-design-color",
+              "node_modules/material-shadows"
+            ],
+            sourceMap: args.mode !== "production",
+            sourceMapContents: true
+          }
+        }
+      ]
     })
   }
 
   /* Production compilation */
-  if (env && env.prod) {
+  if (args.mode === "production") {
     config.plugins.push(
-
-      /* Uglify sources */
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-          screw_ie8: true,     // eslint-disable-line camelcase
-          conditionals: true,
-          unused: true,
-          comparisons: true,
-          sequences: true,
-          dead_code: true,     // eslint-disable-line camelcase
-          evaluate: true,
-          if_return: true,     // eslint-disable-line camelcase
-          join_vars: true      // eslint-disable-line camelcase
-        },
-        output: {
-          comments: false
-        }
-      }),
 
       /* Minify images */
       new ImageminPlugin({
@@ -322,7 +328,8 @@ module.exports = env => { // eslint-disable-line complexity
 
       /* Apply manifest */
       new EventHooksPlugin({
-        "after-emit": (compilation, cb) => {
+        afterEmit: new CallbackTask((compilation, cb) => {
+          console.log()
           const manifest = require(path.resolve("material/manifest.json"))
           Object.keys(compilation.assets).forEach(name => {
             if (name.match(/\.html/)) {
@@ -334,7 +341,7 @@ module.exports = env => { // eslint-disable-line complexity
             }
           })
           cb()
-        }
+        })
       })
     )
   }

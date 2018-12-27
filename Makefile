@@ -34,7 +34,7 @@ node_modules:
 
 # Build theme for distribution with Webpack
 material: $(shell find src) .babelrc webpack.config.js
-	$(shell npm bin)/webpack --env.prod
+	$(shell npm bin)/webpack --mode production
 
 # -----------------------------------------------------------------------------
 # Rules
