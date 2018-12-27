@@ -97,6 +97,7 @@
     "no-array-constructor": 2,
     "no-alert": 2,
     "no-caller": 2,
+    "no-cond-assign": 0,
     "no-confusing-arrow": [2, {
       "allowParens": false
     }],

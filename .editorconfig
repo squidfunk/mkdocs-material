@@ -31,6 +31,10 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 # Makefiles
+[*.py]
+indent_size = 4
+
+# Makefiles
 [Makefile]
 indent_style = tab
 indent_size = 8
