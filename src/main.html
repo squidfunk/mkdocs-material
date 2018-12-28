@@ -20,15 +20,4 @@
   IN THE SOFTWARE.
 -->
 
-{% if page.meta.redirect %}
-<script>
-    // redirect anchors
-    var anchor = window.location.hash.substr(1);
-    location.href = '{{ page.meta.redirect }}' + (anchor?'#'+anchor:'');
-</script>
-<!-- no-js fallback -->
-<meta http-equiv="refresh" content="0; url={{ page.meta.redirect }}">
-<link rel="canonical" href="{{ page.meta.redirect }}">
-<meta name="robots" content="noindex">
-{% endif %}
 {% extends "base.html" %}
