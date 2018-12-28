@@ -2,6 +2,7 @@
 [![Gitter][gitter-image]][gitter-link]
 [![Docker][docker-image]][docker-link]
 [![PyPI][pypi-image]][pypi-link]
+[![dependabot][dependabot-image]][dependabot-link]
 
   [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
   [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
@@ -11,6 +12,8 @@
   [docker-link]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
   [pypi-link]: https://pypi.python.org/pypi/mkdocs-material
+  [dependabot-image]: https://img.shields.io/badge/dependabot-enabled-06f.svg
+  [dependabot-link]: https://dependabot.com
 
 # Material for MkDocs
 
