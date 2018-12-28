@@ -54,7 +54,6 @@
     "extract-loader": "^3.1.0",
     "fastclick": "^1.0.6",
     "file-loader": "^3.0.1",
-    "git-hooks": "^1.1.8",
     "html-minifier": "^3.5.6",
     "imagemin-webpack-plugin": "^2.0.0",
     "js-cookie": "^2.1.4",
