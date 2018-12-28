@@ -34,7 +34,6 @@ const webpack = require("webpack")
 const CopyPlugin = require("copy-webpack-plugin")
 const EventHooksPlugin = require("event-hooks-webpack-plugin")
 const { CallbackTask } = require("event-hooks-webpack-plugin/lib/tasks")
-const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const UglifyJsPlugin = require('uglifyjs-3-webpack-plugin')
 const ImageminPlugin = require("imagemin-webpack-plugin").default
@@ -85,6 +84,53 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
         {
           test: /\.modernizr-autorc$/,
           use: "modernizr-auto-loader"
+        },
+
+        /* SASS stylesheets */
+        {
+          test: /\.scss$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: `[name]${
+                  args.mode === "production" ? ".[md5:hash:hex:8]" : ""
+                }.css`,
+                outputPath: "assets/stylesheets",
+                publicPath: path.resolve(__dirname, "material"),
+              }
+            },
+            "extract-loader",
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: args.mode !== "production"
+              }
+            },
+            {
+              loader: "postcss-loader",
+              options: {
+                ident: "postcss",
+                plugins: () => [
+                  require("autoprefixer")(),
+                  require("css-mqpacker")
+                ],
+                sourceMap: args.mode !== "production"
+              }
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                includePaths: [
+                  "node_modules/modularscale-sass/stylesheets",
+                  "node_modules/material-design-color",
+                  "node_modules/material-shadows"
+                ],
+                sourceMap: args.mode !== "production",
+                sourceMapContents: true
+              }
+            }
+          ]
         },
 
         /* Cache busting for SVGs */
@@ -230,69 +276,10 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
             name: "modernizr",
             priority: 10,
             enforce: true
-          },
-          modernizr: {
-            test: "src/assets/stylesheets/application.css",
-            chunks: "all",
-            name: "styles",
-            priority: 10,
-            enforce: true
           }
         }
       }
     },
-  }
-
-  /* Compile stylesheets */
-  for (const stylesheet of [
-    "application.scss",
-    "application-palette.scss"
-  ]) {
-    const plugin = new ExtractCssChunks({
-      filename: `assets/stylesheets/${
-        stylesheet.replace(".scss",
-          args.mode === "production" ? ".[contenthash]" : ""
-        )}.css`
-    })
-
-    /* Register plugin */
-    config.plugins.push(plugin)
-    config.module.rules.push({
-      test: new RegExp(`${stylesheet}$`),
-      use: [
-        ExtractCssChunks.loader,
-        {
-          loader: "css-loader",
-          options: {
-            minimize: args.mode === "production",
-            sourceMap: args.mode !== "production"
-          }
-        },
-        {
-          loader: "postcss-loader",
-          options: {
-            ident: "postcss",
-            plugins: () => [
-              require("autoprefixer")(),
-              require("css-mqpacker")
-            ],
-            sourceMap: args.mode !== "production"
-          }
-        },
-        {
-          loader: "sass-loader",
-          options: {
-            includePaths: [
-              "node_modules/modularscale-sass/stylesheets",
-              "node_modules/material-design-color",
-              "node_modules/material-shadows"
-            ],
-            sourceMap: args.mode !== "production",
-            sourceMapContents: true
-          }
-        }
-      ]
-    })
   }
 
   /* Production compilation */
