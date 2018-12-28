@@ -35,7 +35,7 @@ const CopyPlugin = require("copy-webpack-plugin")
 const EventHooksPlugin = require("event-hooks-webpack-plugin")
 const { CallbackTask } = require("event-hooks-webpack-plugin/lib/tasks")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
-const UglifyJsPlugin = require('uglifyjs-3-webpack-plugin')
+const UglifyJsPlugin = require("uglifyjs-3-webpack-plugin")
 const ImageminPlugin = require("imagemin-webpack-plugin").default
 const ManifestPlugin = require("webpack-manifest-plugin")
 
@@ -43,14 +43,6 @@ const ManifestPlugin = require("webpack-manifest-plugin")
  * Configuration
  * ------------------------------------------------------------------------- */
 
-/**
- * Webpack configuration
- *
- * @param env - Webpack environment arguments
- * @param args - Command-line arguments
- *
- * @return Webpack configuration
- */
 module.exports = (_env, args) => { // eslint-disable-line complexity
   const config = {
     mode: args.mode,
@@ -91,13 +83,13 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
           test: /\.scss$/,
           use: [
             {
-              loader: 'file-loader',
+              loader: "file-loader",
               options: {
                 name: `[name]${
                   args.mode === "production" ? ".[md5:hash:hex:8]" : ""
                 }.css`,
                 outputPath: "assets/stylesheets",
-                publicPath: path.resolve(__dirname, "material"),
+                publicPath: path.resolve(__dirname, "material")
               }
             },
             "extract-loader",
@@ -279,7 +271,7 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
           }
         }
       }
-    },
+    }
   }
 
   /* Production compilation */
@@ -316,7 +308,6 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
       /* Apply manifest */
       new EventHooksPlugin({
         afterEmit: new CallbackTask((compilation, cb) => {
-          console.log()
           const manifest = require(path.resolve("material/manifest.json"))
           Object.keys(compilation.assets).forEach(name => {
             if (name.match(/\.html/)) {

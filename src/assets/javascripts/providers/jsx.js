@@ -48,8 +48,8 @@ export function createElement(tag, properties, ...children) {
   const iterateChildNodes = nodes => {
     Array.prototype.forEach.call(nodes, node => {
 
-       /* Directly append text content */
-       if (typeof node === "string" ||
+      /* Directly append text content */
+      if (typeof node === "string" ||
           typeof node === "number") {
         el.textContent += node
 
