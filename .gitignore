@@ -25,7 +25,6 @@
 /node_modules
 /npm-debug.log*
 
-
 # Python-related
 __pycache__
 venv
@@ -39,3 +38,6 @@ venv
 # Distribution files
 /dist
 /mkdocs_material.egg-info
+
+# IDEs
+.vscode
