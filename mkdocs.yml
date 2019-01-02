@@ -30,7 +30,7 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 edit_uri: ""
 
 # Copyright
-copyright: 'Copyright &copy; 2016 - 2018 Martin Donath'
+copyright: 'Copyright &copy; 2016 - 2019 Martin Donath'
 
 # Configuration
 theme:
