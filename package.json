@@ -35,7 +35,7 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-react-jsx": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
-    "autoprefixer": "^9.4.3",
+    "autoprefixer": "^9.4.4",
     "babel-eslint": "^10.0.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-add-module-exports": "^1.0.0",
@@ -77,7 +77,7 @@
     "uglifyjs-3-webpack-plugin": "^1.2.4",
     "unfetch": "^3.0.0",
     "webpack": "^4.28.3",
-    "webpack-cli": "^3.1.2",
+    "webpack-cli": "^3.2.0",
     "webpack-manifest-plugin": "^2.0.4"
   },
   "engines": {
