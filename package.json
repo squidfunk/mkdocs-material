@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.2.3",
     "autoprefixer": "^9.4.4",
     "babel-eslint": "^10.0.0",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^8.0.5",
     "babel-plugin-add-module-exports": "^1.0.0",
     "chalk": "^2.0.1",
     "clipboard": "^2.0.0",
