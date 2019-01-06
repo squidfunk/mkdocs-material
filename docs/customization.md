@@ -159,6 +159,7 @@ The Material theme provides the following template blocks:
 | `scripts`    | Wraps the JavaScript application logic          |
 | `source`     | Wraps the linked source files                   |
 | `search_box` | Wraps the search form in the header bar         |
+| `site_logo`  | Wraps the logo element in the header bar        |
 | `site_meta`  | Wraps the meta tags in the document head        |
 | `site_name`  | Wraps the site name in the header bar           |
 | `site_nav`   | Wraps the site navigation and table of contents |
