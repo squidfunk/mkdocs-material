@@ -2,7 +2,7 @@
 
 **MIT License**
 
-Copyright &copy; 2016 - 2017 Martin Donath
+Copyright &copy; 2016 - 2019 Martin Donath
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to

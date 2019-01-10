@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -25,52 +25,50 @@
  * ------------------------------------------------------------------------- */
 
 /* eslint-disable no-underscore-dangle */
-export default /* JSX */ {
 
-  /**
-   * Create a native DOM node from JSX's intermediate representation
-   *
-   * @param {string} tag - Tag name
-   * @param {?Object} properties - Properties
-   * @param {Array<string | number | { __html: string } | Array<HTMLElement>>}
-   *   children - Child nodes
-   * @return {HTMLElement} Native DOM node
-   */
-  createElement(tag, properties, ...children) {
-    const el = document.createElement(tag)
+/**
+ * Create a native DOM node from JSX's intermediate representation
+ *
+ * @param {string} tag - Tag name
+ * @param {?Object} properties - Properties
+ * @param {Array<string | number | { __html: string } | Array<HTMLElement>>}
+ *   children - Child nodes
+ * @return {HTMLElement} Native DOM node
+ */
+export function createElement(tag, properties, ...children) {
+  const el = document.createElement(tag)
 
-    /* Set all properties */
-    if (properties)
-      Array.prototype.forEach.call(Object.keys(properties), attr => {
-        el.setAttribute(attr, properties[attr])
-      })
+  /* Set all properties */
+  if (properties)
+    Array.prototype.forEach.call(Object.keys(properties), attr => {
+      el.setAttribute(attr, properties[attr])
+    })
 
-    /* Iterate child nodes */
-    const iterateChildNodes = nodes => {
-      Array.prototype.forEach.call(nodes, node => {
+  /* Iterate child nodes */
+  const iterateChildNodes = nodes => {
+    Array.prototype.forEach.call(nodes, node => {
 
-        /* Directly append text content */
-        if (typeof node === "string" ||
-            typeof node === "number") {
-          el.textContent += node
+      /* Directly append text content */
+      if (typeof node === "string" ||
+          typeof node === "number") {
+        el.textContent += node
 
-        /* Recurse, if we got an array */
-        } else if (Array.isArray(node)) {
-          iterateChildNodes(node)
+      /* Recurse, if we got an array */
+      } else if (Array.isArray(node)) {
+        iterateChildNodes(node)
 
-        /* Append raw HTML */
-        } else if (typeof node.__html !== "undefined") {
-          el.innerHTML += node.__html
+      /* Append raw HTML */
+      } else if (typeof node.__html !== "undefined") {
+        el.innerHTML += node.__html
 
-        /* Append regular nodes */
-        } else if (node instanceof Node) {
-          el.appendChild(node)
-        }
-      })
-    }
-
-    /* Iterate child nodes and return element */
-    iterateChildNodes(children)
-    return el
+      /* Append regular nodes */
+      } else if (node instanceof Node) {
+        el.appendChild(node)
+      }
+    })
   }
+
+  /* Iterate child nodes and return element */
+  iterateChildNodes(children)
+  return el
 }

@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -47,8 +47,21 @@
         <meta name="description" content="{{ config.site_description }}" />
       {% endif %}
 
+      <!-- Redirect -->
+      {% if page and page.meta and page.meta.redirect %}
+        <script>
+          var anchor = window.location.hash.substr(1)
+          location.href = '{{ page.meta.redirect }}' +
+            (anchor ? '#' + anchor : '')
+        </script>
+
+        <!-- no-js fallback -->
+        <meta http-equiv="refresh" content="0; url={{ page.meta.redirect }}" />
+        <meta name="robots" content="noindex" />
+        <link rel="canonical" href="{{ page.meta.redirect }}" />
+
       <!-- Canonical -->
-      {% if page.canonical_url %}
+      {% elif page.canonical_url %}
         <link rel="canonical" href="{{ page.canonical_url }}" />
       {% endif %}
 

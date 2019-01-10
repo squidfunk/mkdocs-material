@@ -60,7 +60,7 @@
     "eqeqeq": 2,
     "func-call-spacing": 2,
     "func-names": [2, "never"],
-    "func-style": 2,
+    "func-style": 0,
     "generator-star-spacing": 2,
     "indent": [2, 2, {
       "FunctionDeclaration": {
@@ -97,6 +97,7 @@
     "no-array-constructor": 2,
     "no-alert": 2,
     "no-caller": 2,
+    "no-cond-assign": 0,
     "no-confusing-arrow": [2, {
       "allowParens": false
     }],

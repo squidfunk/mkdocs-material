@@ -75,6 +75,21 @@ See the [source][2] section for the resulting output.
 
   [2]: #__source
 
+### Redirecting to another page
+
+It's sometimes necessary to move documents around in the navigation tree and
+redirect user from the old URL to the new one. The `redirect` meta-tag allows
+to create a redirection from the current document to the address specified in
+the tag.
+
+For instance, if your document contains:
+
+``` markdown
+redirect: /new/url
+```
+
+accessing that document's URL will automatically redirect to `/new/url`.
+
 ### Overrides
 
 #### Page title

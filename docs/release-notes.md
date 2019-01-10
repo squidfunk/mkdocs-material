@@ -49,6 +49,13 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 3.2.0 <small>_ December 28, 2018</small>
+
+* Added support for redirects using metadata refresh
+* Fixed [#921][921]: Load Google Analytics snippet asynchronously
+
+  [921]: https://github.com/squidfunk/mkdocs-material/issues/921
+
 ### 3.1.0 <small>_ November 17, 2018</small>
 
 * Added support for Progressive Web App Manifest

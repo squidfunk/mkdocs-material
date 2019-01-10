@@ -21,7 +21,12 @@
       {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
-      {% if page.canonical_url %}
+      {% if page and page.meta and page.meta.redirect %}
+        <script>var anchor=window.location.hash.substr(1);location.href="{{ page.meta.redirect }}"+(anchor?"#"+anchor:"")</script>
+        <meta http-equiv="refresh" content="0; url={{ page.meta.redirect }}">
+        <meta name="robots" content="noindex">
+        <link rel="canonical" href="{{ page.meta.redirect }}">
+      {% elif page.canonical_url %}
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       {% if page and page.meta and page.meta.author %}
@@ -43,7 +48,7 @@
         <meta name="lang:{{ key }}" content="{{ lang.t(key) }}">
       {% endfor %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-3.1.0">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-3.2.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -55,7 +60,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="https://assets.oi-wiki.org/assets/stylesheets/application.11e41852.css">
+      <link rel="stylesheet" href="https://assets.oi-wiki.org/assets/stylesheets/application.572ca0f0.css">
       {% if palette.primary or palette.accent %}
       <link rel="stylesheet" href="https://assets.oi-wiki.org/assets/stylesheets/application-palette.22915126.css">
       {% endif %}
@@ -68,7 +73,7 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="https://assets.oi-wiki.org/assets/javascripts/modernizr.20ef595d.js" data-no-instant></script>
+      <script src="https://assets.oi-wiki.org/assets/javascripts/modernizr.8c900955.js" data-no-instant></script>
     {% endblock %}
     {% block fonts %}
       {% if font != false %}
@@ -188,7 +193,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="https://assets.oi-wiki.org/assets/javascripts/application.905597d0.js"></script>
+      <script src="https://assets.oi-wiki.org/assets/javascripts/application.b3a2063f.js"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}

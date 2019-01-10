@@ -1,16 +1,19 @@
 [![Travis][travis-image]][travis-link]
+[![Downloads][downloads-image]][downloads-link]
 [![Gitter][gitter-image]][gitter-link]
-[![Docker][docker-image]][docker-link]
 [![PyPI][pypi-image]][pypi-link]
+[![dependabot][dependabot-image]][dependabot-link]
 
   [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
   [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
+  [downloads-image]: https://img.shields.io/pypi/dm/mkdocs-material.svg
+  [downloads-link]: https://pypistats.org/packages/mkdocs-material
   [gitter-image]: https://badges.gitter.im/squidfunk/mkdocs-material.svg
   [gitter-link]: https://gitter.im/squidfunk/mkdocs-material
-  [docker-image]: https://img.shields.io/docker/pulls/squidfunk/mkdocs-material.svg
-  [docker-link]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
   [pypi-link]: https://pypi.python.org/pypi/mkdocs-material
+  [dependabot-image]: https://img.shields.io/badge/dependabot-enabled-06f.svg
+  [dependabot-link]: https://dependabot.com
 
 # Material for MkDocs
 
@@ -57,7 +60,7 @@ https://squidfunk.github.io/mkdocs-material/
 
 **MIT License**
 
-Copyright (c) 2016-2018 Martin Donath
+Copyright (c) 2016-2019 Martin Donath
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
