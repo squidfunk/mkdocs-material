@@ -251,8 +251,8 @@ export default class Result {
               });
             });
           });
-          console.log(result.length);
-          console.log(result);
+          // console.log(result.length);
+          // console.log(result);
           /* Update search metadata */
           switch (result.length) {
             case 0:
