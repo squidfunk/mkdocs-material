@@ -117,6 +117,7 @@ export default class Result {
    * @param {(string|HTMLElement)} el - Selector or HTML element
    * @param {(Array<Object>|Function)} data - Function providing data or array
    */
+
   constructor(el, data) {
     const ref = typeof el === "string" ? document.querySelector(el) : el;
     if (!(ref instanceof HTMLElement)) throw new ReferenceError();
@@ -129,7 +130,9 @@ export default class Result {
     this.data_ = null;
     this.meta_ = meta;
     lis = list;
-
+    this.state = {
+      ev: ""
+    };
     /* Load messages for metadata display */
     this.message_ = {
       placeholder: this.meta_.textContent,
@@ -137,6 +140,8 @@ export default class Result {
       one: translate("search.result.one"),
       other: translate("search.result.other")
     };
+    this.update = this.update.bind(this);
+    this.triggerChange = this.triggerChange.bind(this);
   }
 
   /**
@@ -147,130 +152,136 @@ export default class Result {
   update(ev) {
     /* Initialize index, if this has not be done yet */
     if (ev.type === "focus" || ev.type === "keyup") {
-      // delay(e => {
-      const target = ev.target;
-      if (!(target instanceof HTMLInputElement)) throw new ReferenceError();
+      clearTimeout(this.timer);
+      // console.log(this);
+      this.state = { ev: ev };
+      this.timer = setTimeout(this.triggerChange, 500);
+    }
+  }
+  triggerChange(w) {
+    // delay(e => {
+    const { ev } = this.state;
+    console.log(this.state, ev);
+    const target = ev.target;
+    if (!(target instanceof HTMLInputElement)) throw new ReferenceError();
 
-      /* Abort early, if index is not build or input hasn't changed */
-      if (target.value === this.value_) return;
+    /* Abort early, if index is not build or input hasn't changed */
+    if (target.value === this.value_) return;
 
-      /* Clear current list */
-      while (lis.firstChild) lis.removeChild(lis.firstChild);
+    /* Clear current list */
+    while (lis.firstChild) lis.removeChild(lis.firstChild);
 
-      /* Abort early, if search input is empty */
-      this.value_ = target.value;
-      let Q = this.value_;
-      if (this.value_.length === 0) {
-        this.meta_.textContent = this.message_.placeholder;
-        return;
-      }
+    /* Abort early, if search input is empty */
+    this.value_ = target.value;
+    let Q = this.value_;
+    if (this.value_.length === 0) {
+      this.meta_.textContent = this.message_.placeholder;
+      return;
+    }
 
-      /* Perform search on index and group sections by document */
-      let sta = [],
-        Rsize;
-      const result = fetch(`https://search.oi-wiki.org/?s=${Q}`, {
-        credentials: "same-origin"
-      })
-        .then(response => response.json())
-        .then(result => {
-          Rsize = result.length;
-          // console.log(Rsize);
-          result.forEach(item => {
-            /* Render article */
-            const article = (
-              <li class="md-search-result__item">
-                <a
-                  href={item.url}
-                  title={item.title}
-                  class="md-search-result__link"
-                  tabindex="-1"
-                >
-                  <article
-                    class="md-search-result__article
+    /* Perform search on index and group sections by document */
+    let sta = [],
+      Rsize;
+    const result = fetch(`https://search.oi-wiki.org/?s=${Q}`, {
+      credentials: "same-origin"
+    })
+      .then(response => response.json())
+      .then(result => {
+        Rsize = result.length;
+        // console.log(Rsize);
+        result.forEach(item => {
+          /* Render article */
+          const article = (
+            <li class="md-search-result__item">
+              <a
+                href={item.url}
+                title={item.title}
+                class="md-search-result__link"
+                tabindex="-1"
+              >
+                <article
+                  class="md-search-result__article
                         md-search-result__article--document"
-                  >
-                    <h1 class="md-search-result__title">
+                >
+                  <h1 class="md-search-result__title">
+                    {{
+                      __html: item.title.replace(Q, `<em>${Q}</em>`)
+                    }}
+                  </h1>
+                  {item.highlight ? (
+                    <p class="md-search-result__teaser">
                       {{
-                        __html: item.title.replace(Q, `<em>${Q}</em>`)
+                        __html: item.highlight
                       }}
-                    </h1>
-                    {item.highlight ? (
-                      <p class="md-search-result__teaser">
-                        {{
-                          __html: item.highlight
-                        }}
-                      </p>
-                    ) : (
-                      {}
-                    )}
-                  </article>
-                </a>
-              </li>
-            );
+                    </p>
+                  ) : (
+                    {}
+                  )}
+                </article>
+              </a>
+            </li>
+          );
 
-            /* Push articles and section renderers onto stack */
-            sta.push(() => lis.appendChild(article));
-            // console.log(lis);
-          });
-          // console.log(result);
-          /* Reset stack and render results */
+          /* Push articles and section renderers onto stack */
+          sta.push(() => lis.appendChild(article));
+          // console.log(lis);
+        });
+        // console.log(result);
+        /* Reset stack and render results */
 
-          /* Gradually add results as long as the height of the container grows */
-          const container = this.el_.parentNode;
-          if (!(container instanceof HTMLElement)) throw new ReferenceError();
-          while (
-            sta.length &&
-            container.offsetHeight >= container.scrollHeight - 16
-          )
-            sta.shift()();
+        /* Gradually add results as long as the height of the container grows */
+        const container = this.el_.parentNode;
+        if (!(container instanceof HTMLElement)) throw new ReferenceError();
+        while (
+          sta.length &&
+          container.offsetHeight >= container.scrollHeight - 16
+        )
+          sta.shift()();
 
-          /* Bind click handlers for anchors */
-          const anchors = lis.querySelectorAll("[data-md-rel=anchor]");
-          Array.prototype.forEach.call(anchors, anchor => {
-            ["click", "keydown"].forEach(action => {
-              anchor.addEventListener(action, ev2 => {
-                if (action === "keydown" && ev2.keyCode !== 13) return;
+        /* Bind click handlers for anchors */
+        const anchors = lis.querySelectorAll("[data-md-rel=anchor]");
+        Array.prototype.forEach.call(anchors, anchor => {
+          ["click", "keydown"].forEach(action => {
+            anchor.addEventListener(action, ev2 => {
+              if (action === "keydown" && ev2.keyCode !== 13) return;
 
-                /* Close search */
-                const toggle = document.querySelector(
-                  "[data-md-toggle=search]"
-                );
-                if (!(toggle instanceof HTMLInputElement))
-                  throw new ReferenceError();
-                if (toggle.checked) {
-                  toggle.checked = false;
-                  toggle.dispatchEvent(new CustomEvent("change"));
-                }
+              /* Close search */
+              const toggle = document.querySelector("[data-md-toggle=search]");
+              if (!(toggle instanceof HTMLInputElement))
+                throw new ReferenceError();
+              if (toggle.checked) {
+                toggle.checked = false;
+                toggle.dispatchEvent(new CustomEvent("change"));
+              }
 
-                /* Hack: prevent default, as the navigation needs to be delayed due
+              /* Hack: prevent default, as the navigation needs to be delayed due
                    to the search body lock on mobile */
-                ev2.preventDefault();
-                setTimeout(() => {
-                  document.location.href = anchor.href;
-                }, 100);
-              });
+              ev2.preventDefault();
+              setTimeout(() => {
+                document.location.href = anchor.href;
+              }, 100);
             });
           });
-          // console.log(result.length);
-          // console.log(result);
-          /* Update search metadata */
-          switch (result.length) {
-            case 0:
-              this.meta_.textContent = this.message_.none;
-              break;
-            case 1:
-              this.meta_.textContent = this.message_.one;
-              break;
-            default:
-              this.meta_.textContent = this.message_.other.replace(
-                "#",
-                result.length
-              );
-          }
-          return result;
         });
+        // console.log(result.length);
+        // console.log(result);
+        /* Update search metadata */
+        switch (result.length) {
+          case 0:
+            this.meta_.textContent = this.message_.none;
+            break;
+          case 1:
+            this.meta_.textContent = this.message_.one;
+            break;
+          default:
+            this.meta_.textContent = this.message_.other.replace(
+              "#",
+              result.length
+            );
+        }
+        return result;
+      });
 
-      // }, 500);
-    }
+    // }, 500);
   }
 }
