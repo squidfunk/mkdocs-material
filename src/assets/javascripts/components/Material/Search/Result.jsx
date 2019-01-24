@@ -161,7 +161,7 @@ export default class Result {
   triggerChange(w) {
     // delay(e => {
     const { ev } = this.state;
-    console.log(this.state, ev);
+    // console.log(this.state, ev);
     const target = ev.target;
     if (!(target instanceof HTMLInputElement)) throw new ReferenceError();
 
