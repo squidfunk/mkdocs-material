@@ -33,7 +33,7 @@ function delay(callback, ms) {
  */
 
 import escape from "escape-string-regexp";
-import lunr from "expose-loader?lunr!lunr";
+// import lunr from "expose-loader?lunr!lunr";
 
 /* ----------------------------------------------------------------------------
  * Functions
