@@ -233,8 +233,9 @@ export default class Result {
         const container = this.el_.parentNode;
         if (!(container instanceof HTMLElement)) throw new ReferenceError();
         while (
-          sta.length &&
-          container.offsetHeight >= container.scrollHeight - 16
+          sta.length
+          // &&
+          // container.offsetHeight >= container.scrollHeight - 16
         )
           sta.shift()();
 
