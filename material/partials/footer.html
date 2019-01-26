@@ -105,7 +105,9 @@
         {% set hash = config.extra.githash %}
         <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：{{ hash }}, {{
             build_date_utc.strftime('%Y-%m-%d') }}</a></span>
-        console.log(`%c OI Wiki %c {{ hash }} %c`,"background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent")
+        <script>
+          console.log(`%c OI Wiki %c {{ hash }} %c`,"background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent");
+        </script>
       <!-- Social links -->
       {% block social %}
       {% include "partials/social.html" %}
