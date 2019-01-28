@@ -1,5 +1,6 @@
 mkdocs-material-3.x.x (2019-xx-xx)
 
+  * Moved Google Analytics integration into `head` using Google Tag Manager
   * Fixed #972: Unicode slugifier breaks table of contents blur on scroll
 
 mkdocs-material-3.2.0 (2018-12-28)
