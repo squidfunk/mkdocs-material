@@ -53,8 +53,9 @@ export default class Blur {
 
     /* Index anchor node offsets for fast lookup */
     this.anchors_ = [].reduce.call(this.els_, (anchors, el) => {
+      const hash = decodeURIComponent(el.hash)
       return anchors.concat(
-        document.getElementById(el.hash.substring(1)) || [])
+        document.getElementById(hash.substring(1)) || [])
     }, [])
   }
 
