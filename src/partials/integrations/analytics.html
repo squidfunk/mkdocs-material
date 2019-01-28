@@ -21,39 +21,12 @@
 -->
 
 <!-- Google Analytics integration -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{
+  config.google_analytics[0]
+}}"></script>
 <script>
-  window.ga = window.ga || function () {
-    (ga.q = ga.q || []).push(arguments)
-  };
-  ga.l = +new Date;
-
-  /* General initialization */
-  ga("create",
-    "{{ config.google_analytics[0] }}",
-    "{{ config.google_analytics[1] }}");
-  ga("set", "anonymizeIp", true);
-  ga("send", "pageview");
-
-  /* Track outbound links */
-  var links = document.getElementsByTagName("a");
-  Array.prototype.map.call(links, function(item) {
-    if (item.host != document.location.host) {
-      item.addEventListener("click", function() {
-        var action = item.getAttribute("data-md-action") || "follow";
-        ga("send", "event", "outbound", action, item.href);
-      });
-    }
-  });
-
-  /* Register handler to log search on blur */
-  if (document.forms.search) {
-    var query = document.forms.search.query;
-    query.addEventListener("blur", function() {
-      if (this.value) {
-        var path = document.location.pathname;
-        ga("send", "pageview", path + "?q=" + this.value);
-      }
-    });
-  }
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag("js", new Date());
+  gtag("config", "{{ config.google_analytics[0] }}");
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
