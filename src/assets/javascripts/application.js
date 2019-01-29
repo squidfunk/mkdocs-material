@@ -259,7 +259,7 @@ function initialize(config) { // eslint-disable-line func-style
   /* Component: link blurring for table of contents */
   new Material.Event.MatchMedia("(min-width: 960px)",
     new Material.Event.Listener(window, "scroll",
-      new Material.Nav.Blur("[data-md-component=toc] [href]")))
+      new Material.Nav.Blur("[data-md-component=toc] .md-nav__link")))
 
   /* Component: collapsible elements for navigation */
   const collapsibles =
