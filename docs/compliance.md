@@ -39,7 +39,7 @@ self-hosted so there's no third-party involved.
 
 ### Google Analytics and Disqus
 
-Material comes with [Google Analytics][4] and [Disqus][5] integrations that need
+Material comes with [Google Analytics][5] and [Disqus][6] integrations that need
 to be *enabled explicitly*. Disable both integrations in order to be in
 compliance with the GDPR.
 
