@@ -35,7 +35,7 @@ self-hosted so there's no third-party involved.
 
   [2]: getting-started.md#font-family
   [3]: https://github.com/google/fonts/issues/1495
-  [4]: customization.md/#overriding-template-blocks
+  [4]: customization.md#overriding-template-blocks
 
 ### Google Analytics and Disqus
 
