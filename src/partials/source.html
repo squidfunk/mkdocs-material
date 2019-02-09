@@ -38,18 +38,16 @@
 {% endif %}
 
 <!-- Repository containing source -->
-{% block repo %}
-  <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}"
-      class="md-source" data-md-source="{{ repo_type }}">
-    {% if repo_type %}
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#__{{ repo_type }}" width="24" height="24"></use>
-        </svg>
-      </div>
-    {% endif %}
-    <div class="md-source__repository">
-      {{ config.repo_name }}
+<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}"
+    class="md-source" data-md-source="{{ repo_type }}">
+  {% if repo_type %}
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__{{ repo_type }}" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-{% endblock %}
+  {% endif %}
+  <div class="md-source__repository">
+    {{ config.repo_name }}
+  </div>
+</a>

@@ -50,32 +50,28 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title"
             data-md-component="title">
-          {% block site_name %}
-            {% if config.site_name == page.title %}
+          {% if config.site_name == page.title %}
+            {{ config.site_name }}
+          {% else %}
+            <span class="md-header-nav__topic">
               {{ config.site_name }}
-            {% else %}
-              <span class="md-header-nav__topic">
-                {{ config.site_name }}
-              </span>
-              <span class="md-header-nav__topic">
-                {{ page.title }}
-              </span>
-            {% endif %}
-          {% endblock %}
+            </span>
+            <span class="md-header-nav__topic">
+              {{ page.title }}
+            </span>
+          {% endif %}
         </div>
       </div>
 
       <!-- Button to open search dialogue -->
       <div class="md-flex__cell md-flex__cell--shrink">
-        {% block search_box %}
-          {% if "search" in config["plugins"] %}
-            <label class="md-icon md-icon--search md-header-nav__button"
-                for="__search"></label>
+        {% if "search" in config["plugins"] %}
+          <label class="md-icon md-icon--search md-header-nav__button"
+              for="__search"></label>
 
-            <!-- Search interface -->
-            {% include "partials/search.html" %}
-          {% endif %}
-        {% endblock %}
+          <!-- Search interface -->
+          {% include "partials/search.html" %}
+        {% endif %}
       </div>
 
       <!-- Repository containing source -->
