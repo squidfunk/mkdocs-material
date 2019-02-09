@@ -21,12 +21,27 @@
 -->
 
 <!-- Google Analytics integration -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{
-  config.google_analytics[0]
-}}"></script>
+{% set analytics = config.google_analytics %}
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag("js", new Date());
-  gtag("config", "{{ config.google_analytics[0] }}");
+  (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,"script","https://www.google-analytics.com/analytics.js", "ga");
+
+  /* Setup integration and send page view */
+  ga("create", "{{ analytics[0] }}", "{{ analytics[1] }}");
+  ga("send", "pageview");
+
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query;
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value);
+        }
+      });
+    }
+  })
 </script>
