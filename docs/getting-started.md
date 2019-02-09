@@ -510,16 +510,25 @@ theme:
 
 > Default: `false`
 
-Material supports another layer on top of the main navigation for larger
-screens in the form of tabs. This is especially useful for larger documentation
-projects with only few top-level sections. Tabs can be enabled by setting the
-respective feature flag to true:
+By default, the entire navigation is rendered on the left side using collapsible
+sections (different from the default MkDocs theme which renders the top-level
+sections in the header), because horizontal navigation is often problematic on
+smaller screens. However, for large documentation projects it's sometimes
+desirable to add another navigation layer to separate top-level sections.
+Material achieves this with the tabs feature, which can be enabled by setting
+the respective feature flag to `true`:
 
 ``` yaml
 theme:
   feature:
     tabs: true
 ```
+
+When tabs are enabled, *top-level sections* will be rendered in an additional
+layer directly below the header. The navigation on the left side will only
+include the pages contained within the selected section. Furthermore, *top-level
+pages* defined inside your project's `mkdocs.yml` will be grouped under the
+first tab which will receive the title of the first page.
 
 ## Customization
 
