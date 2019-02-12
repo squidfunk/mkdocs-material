@@ -55,7 +55,7 @@
     "fastclick": "^1.0.6",
     "file-loader": "^3.0.1",
     "html-minifier": "^3.5.6",
-    "imagemin-webpack-plugin": "^2.4.1",
+    "imagemin-webpack-plugin": "^2.4.2",
     "js-cookie": "^2.1.4",
     "lunr": "^2.3.5",
     "lunr-languages": "^1.0.0",
