@@ -34,8 +34,8 @@
 
   // Inner wrapper
   &__inner {
-    margin-top: 2rem;
-    padding: 1.6rem 1.6rem 0.8rem;
+    margin-top: px2rem(20px);
+    padding: px2rem(16px) px2rem(16px) px2rem(8px);
     transition:
       transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   0.25s;
@@ -43,14 +43,14 @@
 
     // [tablet -]: Compensate for missing tabs
     @include break-to-device(tablet) {
-      margin-top: 4.8rem;
-      margin-bottom: 2.4rem;
+      margin-top: px2rem(48px);
+      margin-bottom: px2rem(24px);
     }
 
     // Fade-out tabs background upon scrolling
     [data-md-state="hidden"] & {
       pointer-events: none;
-      transform: translateY(1.25rem);
+      transform: translateY(px2rem(12.5px));
       transition:
         transform 0s   0.4s,
         opacity   0.1s 0s;
@@ -59,7 +59,7 @@
 
     // Adjust bottom spacing if there are no tabs
     .md-hero--expand & {
-      margin-bottom: 2.4rem;
+      margin-bottom: px2rem(24px);
     }
   }
 }

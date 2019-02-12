@@ -30,7 +30,7 @@
   top: 0;
   right: 0;
   left: 0;
-  height: 4.8rem;
+  height: px2rem(48px);
   transition:
     background-color 0.25s,
     color 0.25s;
@@ -54,8 +54,8 @@
       color 0.25s,
       box-shadow 0.25s;
     box-shadow:
-      0 0      0.4rem rgba(0, 0, 0, 0.1),
-      0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+      0 0           px2rem(4px) rgba(0, 0, 0, 0.1),
+      0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0.2);
   }
 
   // Hide for print
@@ -66,7 +66,7 @@
 
 // Navigation within header
 .md-header-nav {
-  padding: 0 0.4rem;
+  padding: 0 px2rem(4px);
 
   // Icon buttons
   &__button {
@@ -133,7 +133,7 @@
 
     // Page title
     & + & {
-      transform: translateX(2.5rem);
+      transform: translateX(px2rem(25px));
       transition:
         transform 0.4s cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   0.15s;
@@ -143,7 +143,7 @@
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        transform: translateX(-2.5rem);
+        transform: translateX(px2rem(-25px));
       }
     }
 
@@ -160,13 +160,13 @@
 
   // Header title - set line height to match icon for correct alignment
   &__title {
-    padding: 0 2rem;
-    font-size: 1.8rem;
-    line-height: 4.8rem;
+    padding: 0 px2rem(20px);
+    font-size: px2rem(18px);
+    line-height: px2rem(48px);
 
     // Show page title
     &[data-md-state="active"] .md-header-nav__topic {
-      transform: translateX(-2.5rem);
+      transform: translateX(px2rem(-25px));
       transition:
         transform 0.4s cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   0.15s;
@@ -176,7 +176,7 @@
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        transform: translateX(2.5rem);
+        transform: translateX(px2rem(25px));
       }
 
       // Page title
@@ -199,17 +199,17 @@
     // [tablet landscape +]: Show the reposistory from tablet
     @include break-from-device(tablet landscape) {
       display: block;
-      width: 23rem;
-      max-width: 23rem;
-      margin-left: 2.8rem;
-      padding-right: 1.2rem;
+      width: px2rem(230px);
+      max-width: px2rem(230px);
+      margin-left: px2rem(28px);
+      padding-right: px2rem(12px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        margin-right: 2.8rem;
+        margin-right: px2rem(28px);
         margin-left: initial;
         padding-right: initial;
-        padding-left: 1.2rem;
+        padding-left: px2rem(12px);
       }
     }
   }

@@ -36,7 +36,13 @@ $md-toggle__drawer--checked:
 // calculations base on relative ems (rems)
 html {
   height: 100%;
-  font-size: 62.5%;
+  // Hack: normally, we would set the base font-size to 62.5%, so we can base
+  // all calculations on 10px, but Chromium and Chrome define a minimal font
+  // size of 12 if the system language is set to Chinese. For this reason we
+  // just double the font-size, set it to 20px which seems to do the trick.
+  //
+  // See https://github.com/squidfunk/mkdocs-material/issues/911
+  font-size: 125%;
   // Hack: some browsers on some operating systems don't account for scroll
   // bars when firing media queries, so we need to do this for safety. This
   // currently impacts the table of contents component between 1220 and 1234px
@@ -45,12 +51,12 @@ html {
 
   // [screen medium +]: Set base font-size to 11px
   @include break-from-device(screen medium) {
-    font-size: 68.75%;
+    font-size: 137.50%;
   }
 
   // [screen large +]: Set base font-size to 12px
   @include break-from-device(screen large) {
-    font-size: 75%;
+    font-size: 150%;
   }
 }
 
@@ -77,7 +83,7 @@ body {
 // Horizontal separators
 hr {
   display: block;
-  height: 0.1rem;
+  height: px2rem(1px);
   padding: 0;
   border: 0;
 }
@@ -89,7 +95,7 @@ hr {
 
 // Template-wide grid
 .md-grid {
-  max-width: 122rem;
+  max-width: px2rem(1220px);
   margin-right: auto;
   margin-left: auto;
 }
@@ -106,7 +112,7 @@ hr {
   display: table;
   width: 100%;
   height: 100%;
-  padding-top: 4.8rem;
+  padding-top: px2rem(48px);
   table-layout: fixed;
 }
 
@@ -118,11 +124,11 @@ hr {
   // Increase top spacing of content area to give typography more room
   &__inner {
     height: 100%;
-    padding-top: 2.4rem + 0.6rem;
+    padding-top: px2rem(24px + 6px);
     // Hack: induce margin-collapse, because otherwise the sidebar height is
     // not calculated correctly and the overflow property on this element must
     // be left in initial state for targetted link offsets to work properly
-    padding-bottom: 0.1rem;
+    padding-bottom: px2rem(1px);
   }
 }
 
@@ -208,13 +214,13 @@ hr {
 // Skip link
 .md-skip {
   position: fixed;
-  width: 0.1rem;
-  height: 0.1rem;
-  margin: 1rem;
-  padding: 0.6rem 1rem;
-  clip: rect(0.1rem);
-  transform: translateY(0.8rem);
-  border-radius: 0.2rem;
+  width: px2rem(1px);
+  height: px2rem(1px);
+  margin: px2rem(10px);
+  padding: px2rem(6px) px2rem(10px);
+  clip: rect(px2rem(1px));
+  transform: translateY(px2rem(8px));
+  border-radius: px2rem(2px);
   background-color: $md-color-black;
   color: $md-color-white;
   font-size: ms(-1);

@@ -29,41 +29,41 @@
 
   // [tablet landscape +]: Add space for table of contents
   @include break-from-device(tablet landscape) {
-    margin-right: 24.2rem;
+    margin-right: px2rem(242px);
 
     // Adjust for RTL languages
     [dir="rtl"] & {
       margin-right: initial;
-      margin-left: 24.2rem;
+      margin-left: px2rem(242px);
     }
   }
 
   // [screen +]: Add space for table of contents
   @include break-from-device(screen) {
-    margin-left: 24.2rem;
+    margin-left: px2rem(242px);
 
     // Adjust for RTL languages
     [dir="rtl"] & {
-      margin-right: 24.2rem;
+      margin-right: px2rem(242px);
     }
   }
 
   // Define spacing
   &__inner {
-    margin: 0 1.6rem 2.4rem;
-    padding-top: 1.2rem;
+    margin: 0 px2rem(16px) px2rem(24px);
+    padding-top: px2rem(12px);
 
     // [screen +]: Increase horizontal spacing
     @include break-from-device(screen) {
-      margin-right: 2.4rem;
-      margin-left: 2.4rem;
+      margin-right: px2rem(24px);
+      margin-left: px2rem(24px);
     }
 
     // Hack: add pseudo element for spacing, as the overflow of the content
     // container may not be hidden due to an imminent offset error on targets
     &::before {
       display: block;
-      height: 0.8rem;
+      height: px2rem(8px);
       content: "";
     }
 
@@ -78,7 +78,7 @@
     @extend %md-icon__button;
 
     position: relative;
-    margin: 0.8rem 0;
+    margin: px2rem(8px) 0;
     padding: 0;
     float: right;
 
