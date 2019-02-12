@@ -66,7 +66,7 @@ body {
   height: 100%;
   // Hack: reset font-size to 10px, so the spacing for all inline elements is
   // correct again. Otherwise the spacing would be based on 20px.
-  font-size: 0.5rem;
+  font-size: 0.5rem; // stylelint-disable-line unit-whitelist
 
   // [tablet portrait -]: Lock body to disable scroll bubbling
   @include break-to-device(tablet portrait) {
