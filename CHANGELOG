@@ -1,3 +1,8 @@
+mkdocs-material-4.x.x (2019-xx-xx)
+
+  * Fixed #762, #816: Glitch in sidebar when collapsing items
+  * Fixed #869: Automatically expand details before printing
+
 mkdocs-material-4.0.0 (2019-02-13)
 
   * Added background on hover for table rows
