@@ -498,6 +498,20 @@ function initialize(config) { // eslint-disable-line func-style
         .initialize(facts)
     })
   })
+
+  /* Before-print hook */
+  const print = () => {
+    const details = document.querySelectorAll("details")
+    Array.prototype.forEach.call(details, detail => {
+      detail.setAttribute("open", "")
+    })
+  }
+
+  /* Open details before printing */
+  new Material.Event.MatchMedia("print", {
+    listen: print, unlisten: () => {}
+  }) // Webkit
+  window.onbeforeprint = print // IE, FF
 }
 
 /* ----------------------------------------------------------------------------
