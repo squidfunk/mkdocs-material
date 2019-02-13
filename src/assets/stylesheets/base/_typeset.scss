@@ -457,10 +457,22 @@ kbd {
       vertical-align: top;
     }
 
-    // Remove top border on first row
-    tr:first-child td {
-      border-top: 0;
+    // Table rows
+    tr {
+      transition: background-color 0.125s;
+
+      // Add background on hover
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.035);
+        box-shadow: 0 px2rem(1px)  0 $md-color-white inset;
+      }
+
+      // Remove top border on first row
+      &:first-child td {
+        border-top: 0;
+      }
     }
+
 
     // Do not wrap links in tables
     a {
