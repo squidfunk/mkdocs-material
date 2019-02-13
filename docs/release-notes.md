@@ -14,6 +14,21 @@ To inspect the currently installed version, use the following command:
 pip show mkdocs-material
 ```
 
+### Material 3.x to 4.x
+
+* Material for MkDocs 4.x finally fixes incorrect layout on Chinese systems.
+  The fix includes a mandatory change of the base font-size from `10px` to
+  `20px` which means all `rem` values needed to be updated. Within the theme,
+  `px` to `rem` calculation is now encapsulated in a new function called
+  `px2rem` which is part of the SASS code base.
+
+* If you use Material with custom CSS that is based on `rem` values, note that
+  those values must now be divided by 2. Now, `1.0rem` doesn't map to `10px`,
+  but `20px`. To learn more about the problem and implications, please refer
+  to [the issue][2] in which the problem was discovered and fixed.
+
+  [2]: https://github.com/squidfunk/mkdocs-material/issues/911
+
 ### Material 2.x to 3.x
 
 * Material for MkDocs 3.x requires MkDocs 1.0 because the way paths are resolved
@@ -48,6 +63,14 @@ pip show mkdocs-material
 * The search tokenizer can now be set through `extra.search.tokenizer`.
 
 ## Changelog
+
+### 4.0.0 <small>_ February 13, 2019</small>
+
+* Added background on hover for table rows
+* Removed Google Tag Manager and reverted to Google Analytics
+* Removed blocks in partials - Jinja doesn't support them
+* Fixed #911: Chrome breaks layout if system language is Chinese [BREAKING]
+* Fixed #976: Removed FastClick
 
 ### 3.3.0 <small>_ January 29, 2019</small>
 
@@ -95,7 +118,7 @@ pip show mkdocs-material
 
 ### 3.0.0 <small>_ August 5, 2018</small>
 
-* Upgraded MkDocs to 1.0
+* Upgraded MkDocs to 1.0 [BREAKING]
 * Upgraded Python in official Docker image to 3.6
 * Added Serbian and Serbo-Croatian translations
 
@@ -323,7 +346,7 @@ pip show mkdocs-material
 * Added support for easier configuration of search tokenizer
 * Added support to disable search
 * Added Korean translations
-* Removed support for MkDocs 0.16.x
+* Removed support for MkDocs 0.16.x [BREAKING]
 
 ### 1.12.2 <small>_ October 26, 2017</small>
 

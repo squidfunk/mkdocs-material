@@ -1,8 +1,9 @@
-mkdocs-material-4.0.0 (2019-xx-xx)
+mkdocs-material-4.0.0 (2019-02-13)
 
+  * Added background on hover for table rows
   * Removed Google Tag Manager and reverted to Google Analytics
   * Removed blocks in partials - Jinja doesn't support them
-  * Fixed #911: Chrome breaks layout if system language is Chinese
+  * Fixed #911: Chrome breaks layout if system language is Chinese [BREAKING]
   * Fixed #976: Removed FastClick
 
 mkdocs-material-3.3.0 (2019-01-29)
@@ -51,7 +52,7 @@ mkdocs-material-3.0.1 (2018-08-05)
 
 mkdocs-material-3.0.0 (2018-08-05)
 
-  * Upgraded MkDocs to 1.0
+  * Upgraded MkDocs to 1.0 [BREAKING]
   * Upgraded Python in official Docker image to 3.6
   * Added Serbian and Serbo-Croatian translations
 
@@ -280,7 +281,7 @@ mkdocs-material-2.0.0 (2017-10-31)
   * Added support for easier configuration of search tokenizer
   * Added support to disable search
   * Added Korean translations
-  * Removed support for MkDocs 0.16.x
+  * Removed support for MkDocs 0.16.x [BREAKING]
 
 mkdocs-material-1.12.2 (2017-10-26)
 
