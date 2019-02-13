@@ -1,7 +1,9 @@
-mkdocs-material-3.x.x (2019-xx-xx)
+mkdocs-material-4.0.0 (2019-xx-xx)
 
   * Removed Google Tag Manager and reverted to Google Analytics
   * Removed blocks in partials - Jinja doesn't support them
+  * Fixed #911: Chrome breaks layout if system language is Chinese
+  * Fixed #976: Removed FastClick
 
 mkdocs-material-3.3.0 (2019-01-29)
 

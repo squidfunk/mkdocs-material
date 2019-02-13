@@ -52,7 +52,6 @@
     "event-hooks-webpack-plugin": "^2.1.1",
     "expose-loader": "^0.7.4",
     "extract-loader": "^3.1.0",
-    "fastclick": "^1.0.6",
     "file-loader": "^3.0.1",
     "html-minifier": "^3.5.6",
     "imagemin-webpack-plugin": "^2.4.2",

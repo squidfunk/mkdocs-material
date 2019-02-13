@@ -42,7 +42,6 @@ window.Promise = window.Promise || Promise
  * ------------------------------------------------------------------------- */
 
 import Clipboard from "clipboard"
-import FastClick from "fastclick"
 
 import Material from "./components/Material"
 
@@ -75,13 +74,10 @@ const translate = key => {
  */
 function initialize(config) { // eslint-disable-line func-style
 
-  /* Initialize Modernizr and FastClick */
+  /* Initialize Modernizr */
   new Material.Event.Listener(document, "DOMContentLoaded", () => {
     if (!(document.body instanceof HTMLElement))
       throw new ReferenceError
-
-    /* Attach FastClick to mitigate 300ms delay on touch devices */
-    FastClick.attach(document.body)
 
     /* Test for iOS */
     Modernizr.addTest("ios", () => {
