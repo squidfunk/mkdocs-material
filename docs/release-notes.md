@@ -79,7 +79,7 @@ pip show mkdocs-material
 ### 3.0.4 <small>_ September 3, 2018</small>
 
 * Updated Dutch translations
-* Fixed #856: Removef preconnect meta tag if Google Fonts are disabled
+* Fixed #856: Removed preconnect meta tag if Google Fonts are disabled
 
 ### 3.0.3 <small>_ August 7, 2018</small>
 

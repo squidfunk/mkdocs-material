@@ -331,32 +331,38 @@ translations for all template variables and labels in the following languages:
     <tr>
       <td><code>gl</code> / Galician</td>
       <td><code>de</code> / German</td>
+      <td><code>gr</code> / Greek</td>
       <td><code>he</code> / Hebrew</td>
-      <td><code>hi</code> / Hindi</td>
     </tr>
     <tr>
+      <td><code>hi</code> / Hindi</td>
       <td><code>hr</code> / Croatian</td>
       <td><code>hu</code> / Hungarian</td>
       <td><code>id</code> / Indonesian</td>
-      <td><code>it</code> / Italian</td>
     </tr>
     <tr>
+      <td><code>it</code> / Italian</td>
       <td><code>ja</code> / Japanese</td>
       <td><code>kr</code> / Korean</td>
       <td><code>no</code> / Norwegian</td>
-      <td><code>fa</code> / Persian</td>
     </tr>
     <tr>
+      <td><code>fa</code> / Persian</td>
       <td><code>pl</code> / Polish</td>
       <td><code>pt</code> / Portugese</td>
       <td><code>ru</code> / Russian</td>
-      <td><code>sr</code> / Serbian</td>
     </tr>
     <tr>
+      <td><code>sr</code> / Serbian</td>
       <td><code>sh</code> / Serbo-Croatian</td>
       <td><code>sk</code> / Slovak</td>
       <td><code>es</code> / Spanish</td>
+    </tr>
+    <tr>
       <td><code>sv</code> / Swedish</td>
+      <td><code>tr</code> / Turkish</td>
+      <td><code>uk</code> / Ukrainian</td>
+      <td><code>vi</code> / Vietnamese</td>
     </tr>
     <tr>
       <td colspan="2">
@@ -367,15 +373,8 @@ translations for all template variables and labels in the following languages:
       </td>
     </tr>
     <tr>
-      <td colspan="2">
-        <code>zh-TW</code> / Chinese (Taiwanese)
-      </td>
-      <td><code>tr</code> / Turkish</td>
-      <td><code>uk</code> / Ukrainian</td>
-    </tr>
-    <tr>
-      <td><code>vi</code> / Vietnamese</td>
-      <td colspan="3" align="right">
+      <td colspan="2"><code>zh-TW</code> / Chinese (Taiwanese)</td>
+      <td colspan="2" align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
       </td>
     </tr>
