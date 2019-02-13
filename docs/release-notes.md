@@ -64,6 +64,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.0.1 <small>_ February 13, 2019</small>
+
+* Fixed #762, #816: Glitch in sidebar when collapsing items
+* Fixed #869: Automatically expand details before printing
+
 ### 4.0.0 <small>_ February 13, 2019</small>
 
 * Added background on hover for table rows

@@ -1,4 +1,4 @@
-mkdocs-material-4.x.x (2019-xx-xx)
+mkdocs-material-4.0.1 (2019-02-13)
 
   * Fixed #762, #816: Glitch in sidebar when collapsing items
   * Fixed #869: Automatically expand details before printing
