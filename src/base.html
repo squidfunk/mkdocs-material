@@ -111,12 +111,12 @@
     {% block styles %}
 
       <!-- Theme-related stylesheets -->
-      <link rel="stylesheet" type="text/css"
+      <link rel="stylesheet"
           href="{{ 'assets/stylesheets/application.css' | url }}" />
 
       <!-- Extra color palette -->
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" type="text/css"
+        <link rel="stylesheet"
             href="{{ 'assets/stylesheets/application-palette.css' | url }}" />
       {% endif %}
 
@@ -141,7 +141,7 @@
       <!-- Load fonts from Google -->
       {% if font != false %}
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-        <link rel="stylesheet" type="text/css"
+        <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family={{
               font.text | replace(' ', '+')  + ':300,400,400i,700|' +
               font.code | replace(' ', '+')
@@ -160,7 +160,7 @@
     {% endblock %}
 
     <!-- Material icons as iconset -->
-    <link rel="stylesheet" type="text/css"
+    <link rel="stylesheet"
         href="{{ 'assets/fonts/material-icons.css' | url }}" />
 
     <!-- Progressive Web App Manifest -->
@@ -170,7 +170,7 @@
 
     <!-- Custom stylesheets -->
     {% for path in config["extra_css"] %}
-      <link rel="stylesheet" type="text/css" href="{{ path | url }}" />
+      <link rel="stylesheet" href="{{ path | url }}" />
     {% endfor %}
 
     <!-- Analytic scripts -->
