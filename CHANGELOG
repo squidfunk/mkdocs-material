@@ -1,3 +1,7 @@
+mkdocs-material-4.0.2 (2019-03-01)
+
+  * Fixed #1012: &amp; appears in search results
+
 mkdocs-material-4.0.1 (2019-02-13)
 
   * Fixed #762, #816: Glitch in sidebar when collapsing items

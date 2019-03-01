@@ -64,6 +64,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.0.2 <small>_ March 1, 2019</small>
+
+* Fixed #1012: HTML character entities appear in search result titles
+
 ### 4.0.1 <small>_ February 13, 2019</small>
 
 * Fixed #762, #816: Glitch in sidebar when collapsing items

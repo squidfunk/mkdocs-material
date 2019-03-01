@@ -158,7 +158,6 @@ export default class Result {
           const [path, hash] = doc.location.split("#")
 
           /* Escape HTML */
-          doc.title = escapeHTML(doc.title)
           doc.text  = escapeHTML(doc.text)
 
           /* Associate section with parent document */
