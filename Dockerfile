@@ -18,7 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-FROM jfloff/alpine-python:3.6-slim
+FROM python:3.6.8-alpine3.9
 MAINTAINER Martin Donath <martin.donath@squidfunk.com>
 
 # Set build directory
