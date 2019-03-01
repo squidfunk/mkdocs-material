@@ -19,7 +19,6 @@
 # IN THE SOFTWARE.
 
 FROM python:3.6.8-alpine3.9
-MAINTAINER Martin Donath <martin.donath@squidfunk.com>
 
 # Set build directory
 WORKDIR /tmp
