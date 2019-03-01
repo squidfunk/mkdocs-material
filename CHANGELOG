@@ -1,6 +1,6 @@
 mkdocs-material-4.0.2 (2019-03-01)
 
-  * Fixed #1012: &amp; appears in search results
+  * Fixed #1012: HTML character entities appear in search result titles
 
 mkdocs-material-4.0.1 (2019-02-13)
 
