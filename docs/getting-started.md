@@ -451,7 +451,7 @@ At the time of writing, the following languages are supported:
       <td><code>it</code> / Italian</td>
     </tr>
     <tr>
-      <td><code>jp</code> / Japanese</td>
+      <td><code>ja</code> / Japanese</td>
       <td><code>no</code> / Norwegian</td>
       <td><code>pt</code> / Portugese</td>
       <td><code>ro</code> / Romanian</td>

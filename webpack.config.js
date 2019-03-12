@@ -224,7 +224,8 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
                   const matches = file.match(/lunr.(\w{2}).js$/)
                   if (matches) {
                     const [, language] = matches
-                    files.push(`"${language}"`)
+                    if (!["du", "jp"].includes(language))
+                      files.push(`"${language}"`)
                   }
                   return files
                 }, [])
