@@ -340,6 +340,11 @@ function initialize(config) { // eslint-disable-line func-style
       if (!(query instanceof HTMLInputElement))
         throw new ReferenceError
 
+      /* Skip editable elements */
+      if (document.activeElement instanceof HTMLElement &&
+          document.activeElement.contentEditable === "true")
+        return
+
       /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
       if (ev.metaKey || ev.ctrlKey)
         return
