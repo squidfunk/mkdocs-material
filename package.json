@@ -46,7 +46,7 @@
     "css-mqpacker": "^7.0.0",
     "cssmin": "^0.4.3",
     "custom-event-polyfill": "^1.0.6",
-    "customizr": "^1.2.0",
+    "customizr": "^1.2.1",
     "escape-string-regexp": "^1.0.5",
     "eslint": "^5.15.1",
     "event-hooks-webpack-plugin": "^2.1.1",
