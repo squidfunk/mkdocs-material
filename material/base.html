@@ -8,7 +8,7 @@
     {% block site_meta %}
       <meta charset="utf-8">
       <meta http-equiv="x-dns-prefetch-control" content="on">
-      <link rel="dns-prefetch" href="//fonts.loli.net">
+      <link rel="dns-prefetch" href="//fonts.googleapis.com">
       <link rel="dns-prefetch" href="//s3.pstatp.com">
       <link rel="dns-prefetch" href="//oi-wiki.org">
       <link rel="dns-prefetch" href="//search.oi-wiki.org">
@@ -77,15 +77,15 @@
     {% endblock %}
     {% block fonts %}
       {% if font != false %}
-        <link href="https://gstatic.loli.net" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.loli.net/css?family={{
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
               font.text | replace(' ', '+')  + ':300,400,400i,700|' +
               font.code | replace(' ', '+')
             }}">
         <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
       {% endif %}
     {% endblock %}
-    <link rel="stylesheet" href="{{ 'https://fonts.loli.net/icon?family=Material+Icons' | url }}">
+    <link rel="stylesheet" href="{{ 'https://fonts.googleapis.com/icon?family=Material+Icons' | url }}">
     {% if config.extra.manifest %}
       <link rel="manifest" href="{{ config.extra.manifest | url }}">
     {% endif %}
