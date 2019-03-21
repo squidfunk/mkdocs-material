@@ -7,6 +7,14 @@
     "documentation",
     "theme"
   ],
+  "classifiers": [
+      "Development Status :: 5 - Production/Stable",
+      "License :: OSI Approved :: MIT License",
+      "Programming Language :: JavaScript",
+      "Programming Language :: Python",
+      "Topic :: Documentation",
+      "Topic :: Text Processing :: Markup :: HTML"
+  ],
   "homepage": "https://squidfunk.github.io/mkdocs-material/",
   "bugs": {
     "url": "https://github.com/squidfunk/mkdocs-material/issues",
