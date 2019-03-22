@@ -1,3 +1,8 @@
+mkdocs-material-4.1.0 (2019-03-22)
+
+  * Fixed #1023: Search for Asian languages broken after Lunr.js update
+  * Fixed #1026: contenteditable elements loose focus on hotkeys
+
 mkdocs-material-4.0.2 (2019-03-01)
 
   * Fixed #1012: HTML character entities appear in search result titles
