@@ -42,6 +42,7 @@ setup(
     author = package["author"]["name"],
     author_email = package["author"]["email"],
     keywords = package["keywords"],
+    classifiers = package["classifiers"],
     packages = find_packages(),
     include_package_data = True,
     install_requires = install_requires,
