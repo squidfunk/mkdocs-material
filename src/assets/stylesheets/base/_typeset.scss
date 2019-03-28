@@ -210,7 +210,7 @@ kbd {
   a > code {
     margin: inherit;
     padding: inherit;
-    border-radius: none;
+    border-radius: initial;
     background-color: inherit;
     color: inherit;
     box-shadow: none;
@@ -238,7 +238,7 @@ kbd {
       background-color: transparent;
       font-size: inherit;
       box-shadow: none;
-      box-decoration-break: none;
+      box-decoration-break: slice;
       overflow: auto;
 
       // [mobile -]: Increase padding to match text

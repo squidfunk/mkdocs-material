@@ -290,7 +290,7 @@ $md-toggle__search--checked:
         border-radius: px2rem(2px) px2rem(2px) 0 0;
         background-color: $md-color-white;
         color: $md-color-black;
-        text-overflow: none;
+        text-overflow: clip;
 
         // Placeholder and icon color in active state
         + .md-search__icon,

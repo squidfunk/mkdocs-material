@@ -120,7 +120,7 @@
 
         // Title
         > .admonition-title {
-          border-bottom-color: px2rem(1px) solid transparentize($tint, 0.9);
+          border-bottom-color: transparentize($tint, 0.9);
           background-color: transparentize($tint, 0.9);
 
           // Icon
