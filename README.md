@@ -19,7 +19,7 @@
 
 A Material Design theme for [MkDocs][1].
 
-[![Material for MkDocs](docs/assets/images/material.png)][2]
+[![Material for MkDocs](https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/docs/assets/images/material.png)][2]
 
   [1]: https://www.mkdocs.org
   [2]: https://squidfunk.github.io/mkdocs-material/
