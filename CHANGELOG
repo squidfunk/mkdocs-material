@@ -1,3 +1,7 @@
+mkdocs-material-4.1.1 (2019-03-28)
+
+  * Fixed minor CSS errors detected during validation
+
 mkdocs-material-4.1.0 (2019-03-22)
 
   * Fixed #1023: Search for Asian languages broken after Lunr.js update

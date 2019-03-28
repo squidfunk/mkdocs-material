@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "A Material Design theme for MkDocs",
   "keywords": [
     "mkdocs",
@@ -8,12 +8,12 @@
     "theme"
   ],
   "classifiers": [
-      "Development Status :: 5 - Production/Stable",
-      "License :: OSI Approved :: MIT License",
-      "Programming Language :: JavaScript",
-      "Programming Language :: Python",
-      "Topic :: Documentation",
-      "Topic :: Text Processing :: Markup :: HTML"
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: JavaScript",
+    "Programming Language :: Python",
+    "Topic :: Documentation",
+    "Topic :: Text Processing :: Markup :: HTML"
   ],
   "homepage": "https://squidfunk.github.io/mkdocs-material/",
   "bugs": {

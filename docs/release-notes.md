@@ -64,6 +64,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.1.1 <small>_ March 28, 2019</small>
+
+* Fixed minor CSS errors detected during validation
+
 ### 4.1.0 <small>_ March 22, 2019</small>
 
 * Fixed #1023: Search for Asian languages broken after Lunr.js update
