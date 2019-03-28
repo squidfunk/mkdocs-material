@@ -33,7 +33,7 @@ with open("requirements.txt") as data:
     ]
 
 # Load README contents
-with open("README.md") as data:
+with open("README.md", encoding = "utf-8") as data:
     long_description = data.read()
 
 # Package description
