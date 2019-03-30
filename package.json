@@ -56,7 +56,7 @@
     "custom-event-polyfill": "^1.0.6",
     "customizr": "^1.2.1",
     "escape-string-regexp": "^1.0.5",
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "event-hooks-webpack-plugin": "^2.1.1",
     "expose-loader": "^0.7.4",
     "extract-loader": "^3.1.0",
