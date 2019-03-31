@@ -27,9 +27,9 @@ WORKDIR /tmp
 COPY material material
 COPY MANIFEST.in MANIFEST.in
 COPY package.json package.json
+COPY README.md README.md
 COPY requirements.txt requirements.txt
 COPY setup.py setup.py
-COPY README.md README.md
 
 # Perform build and cleanup artifacts
 RUN \
@@ -37,7 +37,7 @@ RUN \
     git \
     git-fast-import \
     openssh \
-  && python setup.py install 2>/dev/null \
+  && python setup.py install \
   && rm -rf /tmp/*
 
 # Set working directory
