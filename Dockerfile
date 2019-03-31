@@ -29,6 +29,7 @@ COPY MANIFEST.in MANIFEST.in
 COPY package.json package.json
 COPY requirements.txt requirements.txt
 COPY setup.py setup.py
+COPY README.md README.md
 
 # Perform build and cleanup artifacts
 RUN \
