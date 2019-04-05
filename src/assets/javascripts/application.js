@@ -342,11 +342,13 @@ function initialize(config) { // eslint-disable-line func-style
 
       /* Skip editable elements */
       if (document.activeElement instanceof HTMLElement &&
-          (document.activeElement.contentEditable === "true" || document.activeElement.isContentEditable))
+          (document.activeElement.contentEditable === "true"
+          || document.activeElement.isContentEditable))
         return
 
       /* Skip natively text capable elements */
-      if (document.activeElement.tagName==="TEXTAREA" || document.activeElement.tagName==="INPUT" )
+      if (document.activeElement.tagName === "TEXTAREA"
+          || document.activeElement.tagName === "INPUT")
         return
 
       /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
