@@ -64,6 +64,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.1.2 <small>_ April 16, 2019</small>
+
+* Fixed #1072: HTML tags appearing in navigation link titles
+
 ### 4.1.1 <small>_ March 28, 2019</small>
 
 * Fixed minor CSS errors detected during validation

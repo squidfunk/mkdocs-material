@@ -1,3 +1,7 @@
+mkdocs-material-4.1.2 (2019-04-16)
+
+  * Fixed #1072: HTML tags appearing in navigation link titles
+
 mkdocs-material-4.1.1 (2019-03-28)
 
   * Fixed minor CSS errors detected during validation

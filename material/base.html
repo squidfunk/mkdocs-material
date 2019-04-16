@@ -41,7 +41,7 @@
         <meta name="lang:{{ key }}" content="{{ lang.t(key) }}">
       {% endfor %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-4.1.1">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-4.1.2">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -66,7 +66,7 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ 'assets/javascripts/modernizr.01ccdecf.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/modernizr.1f0bcf2b.js' | url }}"></script>
     {% endblock %}
     {% block fonts %}
       {% if font != false %}
@@ -190,7 +190,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.a8f24370.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/application.3ca04de7.js' | url }}"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
