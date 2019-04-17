@@ -55,7 +55,7 @@
     "cssmin": "^0.4.3",
     "custom-event-polyfill": "^1.0.7",
     "customizr": "^1.2.1",
-    "escape-string-regexp": "^1.0.5",
+    "escape-string-regexp": "^2.0.0",
     "eslint": "^5.16.0",
     "event-hooks-webpack-plugin": "^2.1.1",
     "expose-loader": "^0.7.4",
