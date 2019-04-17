@@ -20,12 +20,24 @@
  * IN THE SOFTWARE.
  */
 
-import escape from "escape-string-regexp"
 import lunr from "expose-loader?lunr!lunr"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
+
+/**
+ * Escape a regular expression string
+ *
+ * Taken from the package `escape-string-regexp`
+ *
+ * @param regex - Regular expresison string
+ *
+ * @return
+ */
+const escapeRegex = regex => {
+	return regex.replace(/[|\\{}()[\]^$+*?.-]/g, '\\$&');
+};
 
 /**
  * Escape HTML strings
@@ -291,7 +303,7 @@ export default class Result {
         }, new Map)
 
       /* Assemble regular expressions for matching */
-      const query = escape(this.value_.trim()).replace(
+      const query = escapeRegex(this.value_.trim()).replace(
         new RegExp(lunr.tokenizer.separator, "img"), "|")
       const match =
         new RegExp(`(^|${lunr.tokenizer.separator})(${query})`, "img")
