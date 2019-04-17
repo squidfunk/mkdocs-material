@@ -4,8 +4,5 @@
       "loose": true,
       "targets": " > 1%, last 2 versions"
     }]
-  ],
-  "plugins": [
-    "add-module-exports"
   ]
 }
