@@ -320,16 +320,15 @@ function initialize(config) { // eslint-disable-line func-style
     }).listen()
 
     /* Listener: open search on focus */
-    new Material.Event.MatchMedia("(min-width: 960px)",
-      new Material.Event.Listener("[data-md-component=query]", "focus", () => {
-        const toggle = document.querySelector("[data-md-toggle=search]")
-        if (!(toggle instanceof HTMLInputElement))
-          throw new ReferenceError
-        if (!toggle.checked) {
-          toggle.checked = true
-          toggle.dispatchEvent(new CustomEvent("change"))
-        }
-      }))
+    new Material.Event.Listener("[data-md-component=query]", "focus", () => {
+      const toggle = document.querySelector("[data-md-toggle=search]")
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
+      if (!toggle.checked) {
+        toggle.checked = true
+        toggle.dispatchEvent(new CustomEvent("change"))
+      }
+    }).listen()
 
     /* Listener: keyboard handlers */ // eslint-disable-next-line complexity
     new Material.Event.Listener(window, "keydown", ev => {                        // TODO: split up into component to reduce complexity
