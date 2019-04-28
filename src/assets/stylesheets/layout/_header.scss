@@ -201,13 +201,10 @@
       display: block;
       width: px2rem(230px);
       max-width: px2rem(230px);
-      margin-left: px2rem(28px);
       padding-right: px2rem(12px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        margin-right: px2rem(28px);
-        margin-left: initial;
         padding-right: initial;
         padding-left: px2rem(12px);
       }

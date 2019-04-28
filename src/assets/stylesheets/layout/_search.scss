@@ -182,6 +182,7 @@ $md-toggle__search--checked:
     @include break-from-device(tablet landscape) {
       position: relative;
       width: px2rem(230px);
+      margin-right: px2rem(20px);
       padding: px2rem(2px) 0;
       float: right;
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
@@ -189,6 +190,18 @@ $md-toggle__search--checked:
       // Adjust for RTL languages
       [dir="rtl"] & {
         float: left;
+        margin-left: px2rem(20px);
+        margin-right: initial;
+      }
+    }
+
+    // [screen +]: Increase spacing of search bar
+    @include break-from-device(screen) {
+      margin-right: px2rem(28px);
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-left: px2rem(28px);
       }
     }
 
