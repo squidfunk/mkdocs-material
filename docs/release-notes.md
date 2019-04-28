@@ -64,6 +64,13 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.2.0 <small>_ April 28, 2019</small>
+
+* Added Norwegian (Nynorsk) translations
+* Fixed loss of focus in non-form input elements due to search hotkeys
+* Fixed #1067: Search hotkeys not working for mobile/tablet screensize
+* Fixed #1068: Search not correctly aligned for tablet screensize
+
 ### 4.1.2 <small>_ April 16, 2019</small>
 
 * Fixed #1072: HTML tags appearing in navigation link titles
