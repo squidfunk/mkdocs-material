@@ -190,8 +190,8 @@ $md-toggle__search--checked:
       // Adjust for RTL languages
       [dir="rtl"] & {
         float: left;
-        margin-left: px2rem(20px);
         margin-right: initial;
+        margin-left: px2rem(20px);
       }
     }
 
