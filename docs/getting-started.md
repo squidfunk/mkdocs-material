@@ -347,34 +347,37 @@ translations for all template variables and labels in the following languages:
       <td><code>no</code> / Norwegian</td>
     </tr>
     <tr>
+      <td colspan="2"><code>nn</code> / Norwegian (Nynorsk)</td>
       <td><code>fa</code> / Persian</td>
       <td><code>pl</code> / Polish</td>
+    </tr>
+    <tr>
       <td><code>pt</code> / Portugese</td>
       <td><code>ru</code> / Russian</td>
-    </tr>
-    <tr>
       <td><code>sr</code> / Serbian</td>
       <td><code>sh</code> / Serbo-Croatian</td>
+    </tr>
+    <tr>
       <td><code>sk</code> / Slovak</td>
       <td><code>es</code> / Spanish</td>
-    </tr>
-    <tr>
       <td><code>sv</code> / Swedish</td>
       <td><code>tr</code> / Turkish</td>
-      <td><code>uk</code> / Ukrainian</td>
-      <td><code>vi</code> / Vietnamese</td>
     </tr>
     <tr>
+      <td><code>uk</code> / Ukrainian</td>
+      <td><code>vi</code> / Vietnamese</td>
       <td colspan="2">
         <code>zh</code> / Chinese (Simplified)
       </td>
+    </tr>
+    <tr>
       <td colspan="2">
         <code>zh-Hant</code> / Chinese (Traditional)
       </td>
+      <td colspan="2"><code>zh-TW</code> / Chinese (Taiwanese)</td>
     </tr>
     <tr>
-      <td colspan="2"><code>zh-TW</code> / Chinese (Taiwanese)</td>
-      <td colspan="2" align="right">
+      <td colspan="4" align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
       </td>
     </tr>
