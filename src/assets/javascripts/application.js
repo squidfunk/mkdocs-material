@@ -341,7 +341,7 @@ function initialize(config) { // eslint-disable-line func-style
 
       /* Skip editable elements */
       if (document.activeElement instanceof HTMLElement &&
-          document.activeElement.contentEditable === "true")
+          document.activeElement.isContentEditable)
         return
 
       /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
@@ -419,6 +419,11 @@ function initialize(config) { // eslint-disable-line func-style
 
       /* Search is closed and we're not inside a form */
       } else if (document.activeElement && !document.activeElement.form) {
+
+        /* Fixes #1026: search grabs focus for non-form input elements */
+        if (document.activeElement.tagName === "TEXTAREA" ||
+            document.activeElement.tagName === "INPUT")
+          return
 
         /* F/S: Open search if not in input field */
         if (ev.keyCode === 70 || ev.keyCode === 83) {
