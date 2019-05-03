@@ -17,7 +17,7 @@ carefully.
 Material makes fonts [easily configurable][2] by relying on Google Fonts CDN.
 However, embedding fonts from Google is currently within a gray area as there's
 no official statement or ruling regarding GDPR compliance and the topic is still
-[actively discussed][3]. For this reason, if you need to ensure GDPR compiance,
+[actively discussed][3]. For this reason, if you need to ensure GDPR compliance,
 you should disable the usage of the Google Font CDN with:
 
 ``` yaml
