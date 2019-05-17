@@ -200,9 +200,9 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
           transform: content => {
             const metadata = require(path.resolve(__dirname, "package.json"))
             const banner =
-              `{#-\n` +
-              `  This file was automatically generated - do not edit\n` +
-              `-#}\n`
+              "{#-\n" +
+              "  This file was automatically generated - do not edit\n" +
+              "-#}\n"
             return banner + html.minify(content.toString(), {
               collapseBooleanAttributes: true,
               collapseWhitespace: true,
