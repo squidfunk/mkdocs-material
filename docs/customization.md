@@ -220,7 +220,7 @@ $md-color-accent:  $clr-teal-a700;
 
     Never make any changes in the `material` directory, as the contents of this
     directory are automatically generated from the `src` directory and will be
-    overriden when the theme is built.
+    overridden when the theme is built.
 
   [9]: http://localhost:8000
 
