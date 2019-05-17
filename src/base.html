@@ -20,19 +20,19 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/language.html" as lang with context %}
+{%- import "partials/language.html" as lang with context -%}
 
 <!-- Theme options -->
-{% set feature = config.theme.feature %}
-{% set palette = config.theme.palette %}
-{% set font = config.theme.font %}
+{%- set feature = config.theme.feature -%}
+{%- set palette = config.theme.palette -%}
+{%- set font = config.theme.font -%}
 
 <!doctype html>
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
 
     <!-- Metatags -->
-    {% block site_meta %}
+    {%- block site_meta -%}
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -40,15 +40,15 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
       <!-- Page description -->
-      {% if page and page.meta and page.meta.description %}
+      {%- if page and page.meta and page.meta.description -%}
         <meta name="description"
             content="{{ page.meta.description }}" />
-      {% elif config.site_description %}
+      {%- elif config.site_description -%}
         <meta name="description" content="{{ config.site_description }}" />
-      {% endif %}
+      {%- endif -%}
 
       <!-- Redirect -->
-      {% if page and page.meta and page.meta.redirect %}
+      {%- if page and page.meta and page.meta.redirect -%}
         <script>
           var anchor = window.location.hash.substr(1)
           location.href = '{{ page.meta.redirect }}' +
@@ -61,19 +61,19 @@
         <link rel="canonical" href="{{ page.meta.redirect }}" />
 
       <!-- Canonical -->
-      {% elif page.canonical_url %}
+      {%- elif page.canonical_url -%}
         <link rel="canonical" href="{{ page.canonical_url }}" />
-      {% endif %}
+      {%- endif -%}
 
       <!-- Page author -->
-      {% if page and page.meta and page.meta.author %}
+      {%- if page and page.meta and page.meta.author -%}
         <meta name="author" content="{{ page.meta.author | first }}" />
-      {% elif config.site_author %}
+      {%- elif config.site_author -%}
         <meta name="author" content="{{ config.site_author }}" />
-      {% endif %}
+      {%- endif -%}
 
       <!-- Localization -->
-      {% for key in [
+      {%- for key in [
         "clipboard.copy",
         "clipboard.copied",
         "search.language",
@@ -83,9 +83,9 @@
         "search.result.one",
         "search.result.other",
         "search.tokenizer"
-      ] %}
+      ] -%}
         <meta name="lang:{{ key }}" content="{{ lang.t(key) }}" />
-      {% endfor %}
+      {%- endfor -%}
 
       <!-- Favicon -->
       <link rel="shortcut icon"
@@ -94,52 +94,52 @@
       <!-- Generator banner -->
       <meta name="generator"
           content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$" />
-    {% endblock %}
+    {%- endblock -%}
 
     <!-- Site title -->
-    {% block htmltitle %}
-      {% if page and page.meta and page.meta.title %}
+    {%- block htmltitle -%}
+      {%- if page and page.meta and page.meta.title -%}
         <title>{{ page.meta.title }}</title>
-      {% elif page and page.title and not page.is_homepage %}
+      {%- elif page and page.title and not page.is_homepage -%}
         <title>{{ page.title }} - {{ config.site_name }}</title>
-      {% else %}
+      {%- else -%}
         <title>{{ config.site_name }}</title>
-      {% endif %}
-    {% endblock %}
+      {%- endif -%}
+    {%- endblock -%}
 
     <!-- Stylesheets -->
-    {% block styles %}
+    {%- block styles -%}
 
       <!-- Theme-related stylesheets -->
       <link rel="stylesheet" type="text/css"
           href="{{ 'assets/stylesheets/application.css' | url }}" />
 
       <!-- Extra color palette -->
-      {% if palette.primary or palette.accent %}
+      {%- if palette.primary or palette.accent -%}
         <link rel="stylesheet" type="text/css"
             href="{{ 'assets/stylesheets/application-palette.css' | url }}" />
-      {% endif %}
+      {%- endif -%}
 
       <!-- Theme-color meta tag for Android -->
-      {% if palette.primary %}
-        {% import "partials/palette.html" as map %}
-        {% set primary = map.primary(
+      {%- if palette.primary -%}
+        {%- import "partials/palette.html" as map -%}
+        {%- set primary = map.primary(
           palette.primary | replace(" ", "-") | lower
-        ) %}
+        ) -%}
         <meta name="theme-color" content="{{ primary }}" />
-      {% endif %}
-    {% endblock %}
+      {%- endif -%}
+    {%- endblock -%}
 
     <!-- JavaScript libraries -->
-    {% block libs %}
+    {%- block libs -%}
       <script src="{{ 'assets/javascripts/modernizr.js' | url }}"></script>
-    {% endblock %}
+    {%- endblock -%}
 
     <!-- Webfonts -->
-    {% block fonts %}
+    {%- block fonts -%}
 
       <!-- Load fonts from Google -->
-      {% if font != false %}
+      {%- if font != false -%}
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
         <link rel="stylesheet" type="text/css"
             href="https://fonts.googleapis.com/css?family={{
@@ -156,44 +156,44 @@
               Courier, monospace;
           }
         </style>
-      {% endif %}
-    {% endblock %}
+      {%- endif -%}
+    {%- endblock -%}
 
     <!-- Material icons as iconset -->
     <link rel="stylesheet" type="text/css"
         href="{{ 'assets/fonts/material-icons.css' | url }}" />
 
     <!-- Progressive Web App Manifest -->
-    {% if config.extra.manifest %}
+    {%- if config.extra.manifest -%}
       <link rel="manifest" href="{{ config.extra.manifest | url }}">
-    {% endif %}
+    {%- endif -%}
 
     <!-- Custom stylesheets -->
-    {% for path in config["extra_css"] %}
+    {%- for path in config["extra_css"] -%}
       <link rel="stylesheet" type="text/css" href="{{ path | url }}" />
-    {% endfor %}
+    {%- endfor -%}
 
     <!-- Analytic scripts -->
-    {% block analytics %}
-      {% if config.google_analytics %}
-        {% include "partials/integrations/analytics.html" %}
-      {% endif %}
-    {% endblock %}
+    {%- block analytics -%}
+      {%- if config.google_analytics -%}
+        {%- include "partials/integrations/analytics.html" -%}
+      {%- endif -%}
+    {%- endblock -%}
 
     <!-- Custom front matter -->
-    {% block extrahead %}{% endblock %}
+    {%- block extrahead -%}{%- endblock -%}
   </head>
 
   <!-- Text direction and color palette, if defined -->
-  {% if palette.primary or palette.accent %}
-    {% set primary = palette.primary | replace(" ", "-") | lower %}
-    {% set accent  = palette.accent  | replace(" ", "-") | lower %}
+  {%- if palette.primary or palette.accent -%}
+    {%- set primary = palette.primary | replace(" ", "-") | lower -%}
+    {%- set accent  = palette.accent  | replace(" ", "-") | lower -%}
     <body dir="{{ lang.t('direction') }}"
         data-md-color-primary="{{ primary }}"
         data-md-color-accent="{{ accent }}">
-  {% else %}
+  {%- else -%}
     <body dir="{{ lang.t('direction') }}">
-  {% endif %}
+  {%- endif -%}
 
     <!-- Hidden container for inline SVGs -->
     <svg class="md-svg">
@@ -203,14 +203,14 @@
           Check whether the repository is hosted on one of the supported code
           hosting platforms (GitHub, GitLab or Bitbucket) to show icon.
         -->
-        {% set platform = config.extra.repo_icon or config.repo_url %}
-        {% if "github" in platform %}
-          {% include "assets/images/icons/github.svg" %}
-        {% elif "gitlab" in platform %}
-          {% include "assets/images/icons/gitlab.svg" %}
-        {% elif "bitbucket" in platform %}
-          {% include "assets/images/icons/bitbucket.svg" %}
-        {% endif %}
+        {%- set platform = config.extra.repo_icon or config.repo_url -%}
+        {%- if "github" in platform -%}
+          {%- include "assets/images/icons/github.svg" -%}
+        {%- elif "gitlab" in platform -%}
+          {%- include "assets/images/icons/gitlab.svg" -%}
+        {%- elif "bitbucket" in platform -%}
+          {%- include "assets/images/icons/bitbucket.svg" -%}
+        {%- endif -%}
       </defs>
     </svg>
 
@@ -227,150 +227,150 @@
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
 
     <!-- Render "skip to content" link -->
-    {% if page.toc | first is defined %}
+    {%- if page.toc | first is defined -%}
       <a href="{{ (page.toc | first).url }}" tabindex="1"
           class="md-skip">
         {{ lang.t('skip.link.title') }}
       </a>
-    {% endif %}
+    {%- endif -%}
 
     <!-- Application header -->
-    {% block header %}
-      {% include "partials/header.html" %}
-    {% endblock %}
+    {%- block header -%}
+      {%- include "partials/header.html" -%}
+    {%- endblock -%}
 
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
 
       <!-- Hero teaser -->
-      {% block hero %}
-        {% if page and page.meta and page.meta.hero %}
-          {% include "partials/hero.html" with context %}
-        {% endif %}
-      {% endblock %}
+      {%- block hero -%}
+        {%- if page and page.meta and page.meta.hero -%}
+          {%- include "partials/hero.html" with context -%}
+        {%- endif -%}
+      {%- endblock -%}
 
       <!-- Tabs with outline -->
-      {% if feature.tabs %}
-        {% include "partials/tabs.html" %}
-      {% endif %}
+      {%- if feature.tabs -%}
+        {%- include "partials/tabs.html" -%}
+      {%- endif -%}
 
       <!-- Main container -->
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
 
           <!-- Navigation -->
-          {% block site_nav %}
+          {%- block site_nav -%}
 
             <!-- Main navigation -->
-            {% if nav %}
+            {%- if nav -%}
               <div class="md-sidebar md-sidebar--primary"
                   data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    {% include "partials/nav.html" %}
+                    {%- include "partials/nav.html" -%}
                   </div>
                 </div>
               </div>
-            {% endif %}
+            {%- endif -%}
 
             <!-- Table of contents -->
-            {% if page.toc %}
+            {%- if page.toc -%}
               <div class="md-sidebar md-sidebar--secondary"
                   data-md-component="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    {% include "partials/toc.html" %}
+                    {%- include "partials/toc.html" -%}
                   </div>
                 </div>
               </div>
-            {% endif %}
-          {% endblock %}
+            {%- endif -%}
+          {%- endblock -%}
 
           <!-- Article -->
           <div class="md-content">
             <article class="md-content__inner md-typeset">
 
               <!-- Content -->
-              {% block content %}
+              {%- block content -%}
 
                 <!-- Edit button, if URL was defined -->
-                {% if page.edit_url %}
+                {%- if page.edit_url -%}
                   <a href="{{ page.edit_url }}"
                       title="{{ lang.t('edit.link.title') }}"
                       class="md-icon md-content__icon">&#xE3C9;<!-- edit --></a>
-                {% endif %}
+                {%- endif -%}
 
                 <!--
                   Hack: check whether the content contains a h1 headline. If it
                   doesn't, the page title (or respectively site name) is used
                   as the main headline.
                 -->
-                {% if not "\x3ch1" in page.content %}
+                {%- if not "\x3ch1" in page.content -%}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
-                {% endif %}
+                {%- endif -%}
 
                 <!-- Content -->
                 {{ page.content }}
 
                 <!-- Source files -->
-                {% block source %}
-                  {% if page and page.meta and page.meta.source %}
+                {%- block source -%}
+                  {%- if page and page.meta and page.meta.source -%}
                     <h2 id="__source">{{ lang.t("meta.source") }}</h2>
-                    {% set repo = config.repo_url %}
-                    {% if repo | last == "/" %}
-                      {% set repo = repo[:-1] %}
-                    {% endif %}
-                    {% set path = page.meta.path | default([""]) %}
-                    {% set file = page.meta.source %}
+                    {%- set repo = config.repo_url -%}
+                    {%- if repo | last == "/" -%}
+                      {%- set repo = repo[:-1] -%}
+                    {%- endif -%}
+                    {%- set path = page.meta.path | default([""]) -%}
+                    {%- set file = page.meta.source -%}
                     <a href="{{ [repo, path, file] | join('/') }}"
                         title="{{ file }}" class="md-source-file">
                       {{ file }}
                     </a>
-                  {% endif %}
-                {% endblock %}
-              {% endblock %}
+                  {%- endif -%}
+                {%- endblock -%}
+              {%- endblock -%}
 
               <!-- Disqus integration -->
-              {% block disqus %}
-                {% include "partials/integrations/disqus.html" %}
-              {% endblock %}
+              {%- block disqus -%}
+                {%- include "partials/integrations/disqus.html" -%}
+              {%- endblock -%}
             </article>
           </div>
         </div>
       </main>
 
       <!-- Application footer -->
-      {% block footer %}
-        {% include "partials/footer.html" %}
-      {% endblock %}
+      {%- block footer -%}
+        {%- include "partials/footer.html" -%}
+      {%- endblock -%}
     </div>
 
     <!-- Theme-related JavaScript -->
-    {% block scripts %}
+    {%- block scripts -%}
       <script src="{{ 'assets/javascripts/application.js' | url }}"></script>
 
       <!-- Load additional languages for search -->
-      {% if lang.t("search.language") != "en" %}
-        {% set languages = lang.t("search.language").split(",") %}
-        {% if languages | length and languages[0] != "" %}
-          {% set path = "assets/javascripts/lunr/" %}
+      {%- if lang.t("search.language") != "en" -%}
+        {%- set languages = lang.t("search.language").split(",") -%}
+        {%- if languages | length and languages[0] != "" -%}
+          {%- set path = "assets/javascripts/lunr/" -%}
           <script src="{{ (path ~ 'lunr.stemmer.support.js') | url }}"></script>
-          {% for language in languages | map("trim") %}
-            {% if language != "en" %}
-              {% if language == "ja" %}
+          {%- for language in languages | map("trim") -%}
+            {%- if language != "en" -%}
+              {%- if language == "ja" -%}
                 <script src="{{ (path ~ 'tinyseg.js') | url }}"></script>
-              {% endif %}
-              {% if language in ($md-lunr-languages$) %}
+              {%- endif -%}
+              {%- if language in ($md-lunr-languages$) -%}
                 <script src="{{ (path ~ 'lunr.' ~ language ~ '.js') | url }}">
                 </script>
-              {% endif %}
-            {% endif %}
-          {% endfor %}
-          {% if languages | length > 1 %}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if languages | length > 1 -%}
             <script src="{{ (path ~ 'lunr.multi.js') | url }}"></script>
-          {% endif %}
-        {% endif %}
-      {% endif %}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
 
       <!-- Initialize application -->
       <script>
@@ -381,9 +381,9 @@
           }
         });
       </script>
-      {% for path in config["extra_javascript"] %}
+      {%- for path in config["extra_javascript"] -%}
         <script src="{{ path | url }}"></script>
-      {% endfor %}
-    {% endblock %}
+      {%- endfor -%}
+    {%- endblock -%}
   </body>
 </html>

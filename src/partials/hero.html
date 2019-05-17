@@ -21,17 +21,17 @@
 -->
 
 <!-- Theme options -->
-{% set feature = config.theme.feature %}
+{%- set feature = config.theme.feature -%}
 
 <!-- Determine class according to level -->
-{% set class = "md-hero" %}
-{% if not feature.tabs %}
-  {% set class = "md-hero md-hero--expand" %}
-{% endif %}
+{%- set class = "md-hero" -%}
+{%- if not feature.tabs -%}
+  {%- set class = "md-hero md-hero--expand" -%}
+{%- endif -%}
 
 <!-- Hero teaser -->
 <div class="{{ class }}" data-md-component="hero">
   <div class="md-hero__inner md-grid">
-    {{ page.meta.hero }}
+    {{- page.meta.hero -}}
   </div>
 </div>
