@@ -64,6 +64,13 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.3.0 <small>_ May 17, 2019</small>
+
+* Added support for changing header through metadata title property
+* Added `font-display: swap` to Google Font loading logic
+* Removed whitespace from templates, saving `4kb` (`.7kb` gzipped) per request
+* Fixed alignment of repository icons on tablet and desktop
+
 ### 4.2.0 <small>_ April 28, 2019</small>
 
 * Added Norwegian (Nynorsk) translations
