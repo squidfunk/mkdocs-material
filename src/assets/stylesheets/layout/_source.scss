@@ -109,12 +109,12 @@
 
     // Correct alignment, if icon is present
     + .md-source__repository {
-      margin-left: px2rem(-44px);
+      margin-left: px2rem(-40px);
       padding-left: px2rem(40px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        margin-right: px2rem(-44px);
+        margin-right: px2rem(-40px);
         margin-left: initial;
         padding-right: px2rem(40px);
         padding-left: initial;
