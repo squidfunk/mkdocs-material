@@ -70,8 +70,7 @@ fi
 echo "${TRAVIS_BRANCH}" | grep -qvE "^[0-9.]+$" && exit 0; :;
 
 # Install dependencies for release build
-pip install --upgrade setuptools
-pip install wheel twine
+pip install --upgrade setuptools wheel twine
 
 # Build and install theme and Docker image
 python setup.py build sdist bdist_wheel --universal
