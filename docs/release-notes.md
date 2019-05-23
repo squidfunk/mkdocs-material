@@ -64,6 +64,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.3.1 <small>_ May 23, 2019</small>
+
+* Fixed spelling error in Danish translations
+
 ### 4.3.0 <small>_ May 17, 2019</small>
 
 * Added support for changing header through metadata title property

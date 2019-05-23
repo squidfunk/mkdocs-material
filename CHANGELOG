@@ -1,3 +1,7 @@
+mkdocs-material-4.3.1 (2019-05-23)
+
+  * Fixed spelling error in Danish translations
+
 mkdocs-material-4.3.0 (2019-05-17)
 
   * Added support for changing header through metadata title property
