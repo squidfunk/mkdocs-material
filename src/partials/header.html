@@ -30,7 +30,7 @@
       <!-- Link to home -->
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
-            title="{{ config.site_name }}"
+            title="{{ config.site_name | e }}"
             class="md-header-nav__button md-logo">
           {%- if config.theme.logo.icon -%}
             <i class="md-icon">{{- config.theme.logo.icon -}}</i>
@@ -51,10 +51,10 @@
         <div class="md-flex__ellipsis md-header-nav__title"
             data-md-component="title">
           {%- if config.site_name == page.title -%}
-            {{ config.site_name }}
+            {{ config.site_name | e }}
           {%- else -%}
             <span class="md-header-nav__topic">
-              {{- config.site_name -}}
+              {{- config.site_name | e -}}
             </span>
             <span class="md-header-nav__topic">
               {%- if page and page.meta and page.meta.title -%}

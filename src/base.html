@@ -306,7 +306,7 @@
                   as the main headline.
                 -->
                 {%- if not "\x3ch1" in page.content -%}
-                  <h1>{{ page.title | default(config.site_name, true)}}</h1>
+                  <h1>{{ page.title | default(e(config.site_name), true)}}</h1>
                 {%- endif -%}
 
                 <!-- Content -->
@@ -323,7 +323,7 @@
                     {%- set path = page.meta.path | default([""]) -%}
                     {%- set file = page.meta.source -%}
                     <a href="{{ [repo, path, file] | join('/') }}"
-                        title="{{ file }}" class="md-source-file">
+                        class="md-source-file">
                       {{ file }}
                     </a>
                   {%- endif -%}
