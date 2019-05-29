@@ -58,7 +58,7 @@
             </span>
             <span class="md-header-nav__topic">
               {%- if page and page.meta and page.meta.title -%}
-                {{- page.meta.title -}}
+                {{- page.meta.title | e -}}
               {%- else -%}
                 {{- page.title -}}
               {%- endif -%}

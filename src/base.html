@@ -42,16 +42,16 @@
       <!-- Page description -->
       {%- if page and page.meta and page.meta.description -%}
         <meta name="description"
-            content="{{ page.meta.description }}" />
+            content="{{ page.meta.description | e }}" />
       {%- elif config.site_description -%}
-        <meta name="description" content="{{ config.site_description }}" />
+        <meta name="description" content="{{ config.site_description | e }}" />
       {%- endif -%}
 
       <!-- Redirect -->
       {%- if page and page.meta and page.meta.redirect -%}
         <script>
           var anchor = window.location.hash.substr(1)
-          location.href = '{{ page.meta.redirect }}' +
+          location.href = {{ page.meta.redirect | tojson | safe }} +
             (anchor ? '#' + anchor : '')
         </script>
 
@@ -67,9 +67,9 @@
 
       <!-- Page author -->
       {%- if page and page.meta and page.meta.author -%}
-        <meta name="author" content="{{ page.meta.author | first }}" />
+        <meta name="author" content="{{ page.meta.author | e }}" />
       {%- elif config.site_author -%}
-        <meta name="author" content="{{ config.site_author }}" />
+        <meta name="author" content="{{ config.site_author | e }}" />
       {%- endif -%}
 
       <!-- Localization -->
