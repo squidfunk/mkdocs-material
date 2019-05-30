@@ -192,8 +192,10 @@ cd mkdocs-material
 pip install -r requirements.txt
 npm install
 ```
+If you're on Windows, you may also need to install [GNU Make][9]
 
   [8]: https://nodejs.org
+  [9]: http://gnuwin32.sourceforge.net/packages/make.htm
 
 ### Development mode
 
@@ -205,7 +207,7 @@ npm run watch
 
 This will also start the MkDocs development server which will monitor changes
 on assets, templates and documentation. Point your browser to
-[localhost:8000][9] and you should see this documentation in front of you.
+[localhost:8000][10] and you should see this documentation in front of you.
 
 For example, changing the color palette is as simple as changing the
 `$md-color-primary` and `$md-color-accent` variables in
@@ -222,7 +224,7 @@ $md-color-accent:  $clr-teal-a700;
     directory are automatically generated from the `src` directory and will be
     overridden when the theme is built.
 
-  [9]: http://localhost:8000
+  [10]: http://localhost:8000
 
 ### Build process
 
