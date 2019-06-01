@@ -306,7 +306,7 @@
                   as the main headline.
                 -->
                 {%- if not "\x3ch1" in page.content -%}
-                  <h1>{{ page.title | default(e(config.site_name), true)}}</h1>
+                  <h1>{{ page.title | default(config.site_name | e, true)}}</h1>
                 {%- endif -%}
 
                 <!-- Content -->
