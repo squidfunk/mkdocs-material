@@ -4,10 +4,10 @@
 
 I'm a freelance polyglot software engineer and entrepreneur from Cologne,
 Germany with more than 12 years of experience in full-stack web development and
-system programming. If you're interested in my projects, please see my [CV][2].
+system programming. If you're interested in my projects, please see my
+<a href="https://s3.eu-central-1.amazonaws.com/squidfunk/Martin+Donath+CV.pdf" rel="nofollow">CV</a>.
 
   [1]: https://github.com/squidfunk
-  [2]: https://s3.eu-central-1.amazonaws.com/squidfunk/Martin+Donath+CV.pdf
 
 ## Why another theme?
 
