@@ -72,7 +72,7 @@
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
-    "promise-polyfill": "^8.0.0",
+    "promise-polyfill": "^8.1.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "stylelint": "^10.1.0",
