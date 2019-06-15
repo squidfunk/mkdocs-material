@@ -44,9 +44,9 @@
                   md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  {{- lang.t("footer.previous") -}}
+                  {{ lang.t("footer.previous") }}
                 </span>
-                {{- page.previous_page.title -}}
+                {{ page.previous_page.title }}
               </span>
             </div>
           </a>
@@ -62,9 +62,9 @@
                   md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  {{- lang.t("footer.next") -}}
+                  {{ lang.t("footer.next") }}
                 </span>
-                {{- page.next_page.title -}}
+                {{ page.next_page.title }}
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -85,7 +85,7 @@
       <div class="md-footer-copyright">
         {% if config.copyright %}
           <div class="md-footer-copyright__highlight">
-            {{- config.copyright -}}
+            {{ config.copyright }}
           </div>
         {% endif %}
         powered by

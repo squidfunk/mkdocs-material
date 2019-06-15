@@ -38,7 +38,7 @@
 
   <!-- Render item list -->
   {% if toc_ | first is defined %}
-    <label class="md-nav__title" for="__toc">{{- lang.t("toc.title") -}}</label>
+    <label class="md-nav__title" for="__toc">{{ lang.t("toc.title") }}</label>
     <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc_ %}
         {% include "partials/toc-item.html" %}
@@ -49,7 +49,7 @@
         <li class="md-nav__item">
           <a href="#__source" title="{{ lang.t('meta.source') }}"
               class="md-nav__link md-nav__link--active">
-            {{- lang.t("meta.source") -}}
+            {{ lang.t("meta.source") }}
           </a>
         </li>
       {% endif %}
@@ -65,7 +65,7 @@
         <li class="md-nav__item">
           <a href="#__comments" title="{{ lang.t('meta.comments') }}"
               class="md-nav__link md-nav__link--active">
-            {{- lang.t("meta.comments") -}}
+            {{ lang.t("meta.comments") }}
           </a>
         </li>
       {% endif %}
