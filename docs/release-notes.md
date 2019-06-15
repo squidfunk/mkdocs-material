@@ -64,6 +64,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.4.0 <small>_ June 15, 2019</small>
+
+* Added Slovenian translations
+* Reverted template minification in favor of `mkdocs-minify-plugin`
+* Fixed #1114: Tabs don't reappear when default `font-size` is smaller than `16`
+
 ### 4.3.1 <small>_ May 23, 2019</small>
 
 * Fixed spelling error in Danish translations

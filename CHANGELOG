@@ -2,6 +2,7 @@ mkdocs-material-4.4.0 (2019-06-15)
 
   * Added Slovenian translations
   * Reverted template minification in favor of mkdocs-minify-plugin
+  * Fixed #1114: Tabs don't reappear when default font-size is smaller than 16
 
 mkdocs-material-4.3.1 (2019-05-23)
 
