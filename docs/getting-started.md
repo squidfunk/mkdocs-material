@@ -359,16 +359,15 @@ translations for all template variables and labels in the following languages:
     </tr>
     <tr>
       <td><code>sk</code> / Slovak</td>
+      <td><code>si</code> / Slovenian</td>
       <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
-      <td><code>tr</code> / Turkish</td>
     </tr>
     <tr>
+      <td><code>tr</code> / Turkish</td>
       <td><code>uk</code> / Ukrainian</td>
       <td><code>vi</code> / Vietnamese</td>
-      <td colspan="2">
-        <code>zh</code> / Chinese (Simplified)
-      </td>
+      <td><code>zh</code> / Chinese (Simplified)</td>
     </tr>
     <tr>
       <td colspan="2">
