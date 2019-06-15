@@ -682,6 +682,40 @@ Material theme including more information regarding installation and usage:
   [30]: extensions/permalinks.md
   [31]: extensions/pymdown.md
 
+## Plugins
+
+MkDocs's plugin architecture makes it possible to add pre- or post-processing
+steps that sit between the theme and your documentation. A great example of a
+third-party plugin is the [mkdocs-minify-plugin][32] which strips all whitespace
+from the generated documentation.
+
+Install it with `pip`:
+
+``` sh
+pip install mkdocs-minify-plugin
+```
+
+Enable it with the following lines in your `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - search
+  - minify:
+      minify_html: true
+      minify_js: true
+```
+
+The MkDocs wiki contains a [list of all available plugins][33].
+
+!!! warning "Remember to re-add the `search` plugin"
+
+    If you have no `plugins` entry in your config file yet, you'll likely also
+    want to add the `search` plugin. MkDocs enables it by default if there is
+    no `plugins` entry set.
+
+  [32]: https://github.com/byrnereese/mkdocs-minify-plugin
+  [33]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
+
 ## Full example
 
 Below is a full example configuration for a `mkdocs.yml`:

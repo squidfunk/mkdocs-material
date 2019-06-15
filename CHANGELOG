@@ -1,6 +1,7 @@
-mkdocs-material-4.x.x (2019-06-15)
+mkdocs-material-4.4.0 (2019-06-15)
 
   * Added Slovenian translations
+  * Reverted template minification in favor of mkdocs-minify-plugin
 
 mkdocs-material-4.3.1 (2019-05-23)
 
