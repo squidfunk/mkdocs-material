@@ -28,12 +28,12 @@
   </a>
 
   <!-- Render nested item list -->
-  {%- if toc_item.children -%}
+  {% if toc_item.children %}
     <nav class="md-nav">
       <ul class="md-nav__list">
-        {%- for toc_item in toc_item.children -%}
-          {%- include "partials/toc-item.html" -%}
-        {%- endfor -%}
+        {% for toc_item in toc_item.children %}
+          {% include "partials/toc-item.html" %}
+        {% endfor %}
       </ul>
     </nav>
   {% endif %}

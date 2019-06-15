@@ -32,11 +32,11 @@
         <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
             title="{{ config.site_name }}"
             class="md-header-nav__button md-logo">
-          {%- if config.theme.logo.icon -%}
+          {% if config.theme.logo.icon %}
             <i class="md-icon">{{- config.theme.logo.icon -}}</i>
-          {%- else -%}
+          {% else %}
             <img src="{{ config.theme.logo | url }}" width="24" height="24" />
-          {%- endif -%}
+          {% endif %}
         </a>
       </div>
 
@@ -50,42 +50,42 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title"
             data-md-component="title">
-          {%- if config.site_name == page.title -%}
+          {% if config.site_name == page.title %}
             {{ config.site_name }}
-          {%- else -%}
+          {% else %}
             <span class="md-header-nav__topic">
               {{- config.site_name -}}
             </span>
             <span class="md-header-nav__topic">
-              {%- if page and page.meta and page.meta.title -%}
+              {% if page and page.meta and page.meta.title %}
                 {{- page.meta.title -}}
-              {%- else -%}
+              {% else %}
                 {{- page.title -}}
-              {%- endif -%}
+              {% endif %}
             </span>
-          {%- endif -%}
+          {% endif %}
         </div>
       </div>
 
       <!-- Button to open search dialogue -->
       <div class="md-flex__cell md-flex__cell--shrink">
-        {%- if "search" in config["plugins"] -%}
+        {% if "search" in config["plugins"] %}
           <label class="md-icon md-icon--search md-header-nav__button"
               for="__search"></label>
 
           <!-- Search interface -->
-          {%- include "partials/search.html" -%}
-        {%- endif -%}
+          {% include "partials/search.html" %}
+        {% endif %}
       </div>
 
       <!-- Repository containing source -->
-      {%- if config.repo_url -%}
+      {% if config.repo_url %}
         <div class="md-flex__cell md-flex__cell--shrink">
           <div class="md-header-nav__source">
-            {%- include "partials/source.html" -%}
+            {% include "partials/source.html" %}
           </div>
         </div>
-      {%- endif -%}
+      {% endif %}
     </div>
   </nav>
 </header>

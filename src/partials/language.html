@@ -27,7 +27,7 @@
 {% import "partials/language/en.html" as fallback %}
 
 <!-- Re-export translations -->
-{% macro t(key) -%}{{ {
+{% macro t(key) %}{{ {
   "direction": config.theme.direction,
   "search.language": (
     config.extra.search | default({})

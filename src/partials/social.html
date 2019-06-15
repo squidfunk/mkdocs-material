@@ -21,13 +21,13 @@
 -->
 
 <!-- Social links in footer -->
-{%- if config.extra.social -%}
+{% if config.extra.social %}
   <div class="md-footer-social">
     <link rel="stylesheet" type="text/css"
         href="{{ 'assets/fonts/font-awesome.css' | url }}" />
-    {%- for social in config.extra.social %}
+    {% for social in config.extra.social %}
       <a href="{{ social.link }}" class="md-footer-social__link
             fa fa-{{ social.type }}"></a>
-    {% endfor -%}
+    {% endfor %}
   </div>
-{%- endif -%}
+{% endif %}

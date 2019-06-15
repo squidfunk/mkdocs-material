@@ -21,13 +21,13 @@
 -->
 
 <!-- Set from config but allow override -->
-{%- set disqus = config.extra.disqus -%}
-{%- if page and page.meta and page.meta.disqus is string -%}
-  {%- set disqus = page.meta.disqus -%}
-{%- endif -%}
+{% set disqus = config.extra.disqus %}
+{% if page and page.meta and page.meta.disqus is string %}
+  {% set disqus = page.meta.disqus %}
+{% endif %}
 
 <!-- Disqus integration -->
-{%- if not page.is_homepage and disqus -%}
+{% if not page.is_homepage and disqus %}
   <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
   <div id="disqus_thread"></div>
   <script type="text/javascript">
@@ -43,4 +43,4 @@
       (d.head || d.body).appendChild(s);
     })();
   </script>
-{%- endif -%}
+{% endif %}

@@ -21,7 +21,7 @@
 -->
 
 <!-- Primary colors -->
-{%- macro primary(key) -%}{{- {
+{% macro primary(key) %}{{- {
   "red":         "#ef5350",
   "pink":        "#e91e63",
   "purple":      "#ab47bc",
@@ -41,10 +41,10 @@
   "brown":       "#795548",
   "grey":        "#757575",
   "blue-grey":   "#546e7a"
-}[key] -}}{%- endmacro -%}
+}[key] -}}{% endmacro %}
 
 <!-- Accent colors -->
-{%- macro accent(key) %}{{- {
+{% macro accent(key) %}{{- {
   "red":         "#ff1744",
   "pink":        "#f50057",
   "purple":      "#e040fb",
@@ -61,4 +61,4 @@
   "amber":       "#ffab00",
   "orange":      "#ff9100",
   "deep-orange": "#ff6e40"
-}[key] -}}{%- endmacro -%}
+}[key] -}}{% endmacro %}
