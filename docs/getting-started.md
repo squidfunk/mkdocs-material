@@ -702,7 +702,6 @@ plugins:
   - search
   - minify:
       minify_html: true
-      minify_js: true
 ```
 
 The MkDocs wiki contains a [list of all available plugins][33].
