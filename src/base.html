@@ -99,11 +99,11 @@
     <!-- Site title -->
     {%- block htmltitle -%}
       {%- if page and page.meta and page.meta.title -%}
-        <title>{{ page.meta.title }}</title>
+        <title>{{ page.meta.title | e }}</title>
       {%- elif page and page.title and not page.is_homepage -%}
-        <title>{{ page.title }} - {{ config.site_name }}</title>
+        <title>{{ page.title }} - {{ config.site_name | e }}</title>
       {%- else -%}
-        <title>{{ config.site_name }}</title>
+        <title>{{ config.site_name | e }}</title>
       {%- endif -%}
     {%- endblock -%}
 
