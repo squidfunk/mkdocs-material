@@ -1,30 +1,20 @@
-<<<<<<< HEAD
-<!-- Set from config but allow override -->
+{#-
+  This file was automatically generated - do not edit
+-#}
 {% set disqus = config.extra.disqus %} {% if page and page.meta and page.meta.disqus is string %} {% set disqus = page.meta.disqus
   %} {% endif %}
 {% set copyright = config.extra.copyright %} {% if page and page.meta and page.meta.copyright is string %} {% set copyright = page.meta.copyright
   %} {% endif %}
-
 <hr><blockquote class="page-copyright">
-  <span><i class="md-icon" style="position: relative;top: 1.5rem">build</i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
-  <span><i class="md-icon" style="position: relative;top: 1.5rem">edit</i>发现错误？想一起完善？ <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="page_edit_url">在 GitHub 上编辑此页！</a></span><br>
-  <span><i class="md-icon" style="position: relative;top: 1.5rem">people</i>本页面贡献者：</span><span class="page_contributors"></span><br>
-  <span><i class="md-icon" style="position: relative;top: 1.5rem">copyright</i>本页面的全部内容在 <strong>{{ copyright }}</strong> 协议之条款下提供，附加条款亦可能应用</span>
+  <span><i class="md-icon">build</i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
+  <span><i class="md-icon">edit</i>发现错误？想一起完善？ <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="page_edit_url">在 GitHub 上编辑此页！</a></span><br>
+  <span><i class="md-icon">people</i>本页面贡献者：</span><span class="page_contributors"></span><br>
+  <span><i class="md-icon">copyright</i>本页面的全部内容在 <strong>{{ copyright }}</strong> 协议之条款下提供，附加条款亦可能应用</span>
 </blockquote>
-<!-- Comments Integration -->
-=======
-{#-
-  This file was automatically generated - do not edit
--#}
-{% set disqus = config.extra.disqus %}
-{% if page and page.meta and page.meta.disqus is string %}
-  {% set disqus = page.meta.disqus %}
-{% endif %}
->>>>>>> squid/master
 {% if not page.is_homepage and disqus %}
 {% set pageID = page.title | default("404", true) %}
 <h2 id="__comments" data-no-instant>{{ lang.t("meta.comments") }}</h2>
-<form id="gitalk-form" onsubmit="return false;" data-no-instant>
+<form id="gitalk-form" onsubmit="return!1" data-no-instant>
 <div id="gitalk-container" data-no-instant>
 </div>
 </form>

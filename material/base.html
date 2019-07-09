@@ -62,9 +62,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/application.572ca0f0.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.6.0/application.4031d38b.css">
       {% if palette.primary or palette.accent %}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.5.0/application-palette.22915126.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ah@1.6.0/application-palette.224b79ff.css">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -75,7 +75,7 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="https://cdn.jsdelivr.net/npm/ah@1.5.0/modernizr.1eb399a1.js" data-no-instant></script>
+      <script src="https://cdn.jsdelivr.net/npm/ah@1.6.0/modernizr.e1e56b79.js"></script>
     {% endblock %}
     {% block fonts %}
       {% if font != false %}
@@ -87,7 +87,7 @@
         <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
       {% endif %}
     {% endblock %}
-    <link rel="stylesheet" href="{{ 'https://fonts.googleapis.com/icon?family=Material+Icons' | url }}">
+    <link rel="stylesheet" href="{{ 'assets/fonts/material-icons.css' | url }}">
     {% if config.extra.manifest %}
       <link rel="manifest" href="{{ config.extra.manifest | url }}">
     {% endif %}
@@ -171,7 +171,6 @@
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
-                {% set pagetime = config.extra.pagetime %} {% if page and page.meta and page.meta.pagetime is string %} {% set pagetime = page.meta.pagetime %} {% endif %}{% if pagetime %}<blockquote class="page-time"></blockquote>{% endif %}
                 {{ page.content }}
                 {% block source %}
                   {% if page and page.meta and page.meta.source %}
@@ -200,7 +199,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="https://cdn.jsdelivr.net/npm/ah@1.5.0/application.bce3478d.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/ah@1.6.0/application.d2239acd.js"></script>
       <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
