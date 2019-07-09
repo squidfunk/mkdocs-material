@@ -40,6 +40,19 @@ import escape from "escape-string-regexp";
  * ------------------------------------------------------------------------- */
 
 /**
+ * Escape a regular expression string
+ *
+ * Taken from the package `escape-string-regexp`
+ *
+ * @param regex - Regular expresison string
+ *
+ * @return
+ */
+const escapeRegex = regex => {
+	return regex.replace(/[|\\{}()[\]^$+*?.-]/g, '\\$&');
+};
+
+/**
  * Escape HTML strings
  *
  * Documentation may contain code JavaScript code snippets which would get
@@ -166,7 +179,8 @@ export default class Result {
     if (!(target instanceof HTMLInputElement)) throw new ReferenceError();
 
     /* Abort early, if index is not build or input hasn't changed */
-    if (target.value === this.value_) return;
+    if (!this.index_ || target.value === this.value_)
+      return
 
     /* Clear current list */
     while (lis.firstChild) lis.removeChild(lis.firstChild);
@@ -178,7 +192,6 @@ export default class Result {
       this.meta_.textContent = this.message_.placeholder;
       return;
     }
-
     /* Perform search on index and group sections by document */
     let sta = [],
       Rsize;

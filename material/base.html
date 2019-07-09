@@ -1,3 +1,6 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
 {% import "partials/language.html" as lang with context %}
 {% set feature = config.theme.feature %}
 {% set palette = config.theme.palette %}
@@ -47,7 +50,7 @@
         <meta name="lang:{{ key }}" content="{{ lang.t(key) }}">
       {% endfor %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-3.2.0">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-4.4.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -78,9 +81,9 @@
       {% if font != false %}
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
-              font.text | replace(' ', '+')  + ':300,400,400i,700|' +
+              font.text | replace(' ', '+') + ':300,400,400i,700|' +
               font.code | replace(' ', '+')
-            }}">
+            }}&display=fallback">
         <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
       {% endif %}
     {% endblock %}
@@ -91,6 +94,11 @@
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
+    {% block analytics %}
+      {% if config.google_analytics %}
+        {% include "partials/integrations/analytics.html" %}
+      {% endif %}
+    {% endblock %}
     {% block extrahead %}{% endblock %}
   </head>
   {% if palette.primary or palette.accent %}
@@ -197,11 +205,6 @@
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
-    {% endblock %}
-    {% block analytics %}
-      {% if config.google_analytics %}
-        {% include "partials/integrations/analytics.html" %}
-      {% endif %}
     {% endblock %}
   </body>
 </html>

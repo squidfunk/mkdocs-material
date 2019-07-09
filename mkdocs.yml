@@ -59,6 +59,12 @@ theme:
   logo:
     icon: "\uE80C"
 
+# Plugins
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
 # Customization
 extra:
   social:
@@ -91,7 +97,10 @@ markdown_extensions:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.keys
-  - pymdownx.magiclink
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences

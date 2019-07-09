@@ -155,14 +155,10 @@ The Material theme provides the following template blocks:
 | `hero`       | Wraps the hero teaser                           |
 | `htmltitle`  | Wraps the `<title>` tag                         |
 | `libs`       | Wraps the JavaScript libraries, e.g. Modernizr  |
-| `repo`       | Wraps the repository link in the header bar     |
 | `scripts`    | Wraps the JavaScript application logic          |
 | `source`     | Wraps the linked source files                   |
-| `search_box` | Wraps the search form in the header bar         |
 | `site_meta`  | Wraps the meta tags in the document head        |
-| `site_name`  | Wraps the site name in the header bar           |
 | `site_nav`   | Wraps the site navigation and table of contents |
-| `social`     | Wraps the social links in the footer            |
 | `styles`     | Wraps the stylesheets (also extra sources)      |
 
 For more on this topic refer to the [MkDocs documentation][4]
@@ -196,8 +192,10 @@ cd mkdocs-material
 pip install -r requirements.txt
 npm install
 ```
+If you're on Windows, you may also need to install [GNU Make][9]
 
   [8]: https://nodejs.org
+  [9]: http://gnuwin32.sourceforge.net/packages/make.htm
 
 ### Development mode
 
@@ -209,7 +207,7 @@ npm run watch
 
 This will also start the MkDocs development server which will monitor changes
 on assets, templates and documentation. Point your browser to
-[localhost:8000][9] and you should see this documentation in front of you.
+[localhost:8000][10] and you should see this documentation in front of you.
 
 For example, changing the color palette is as simple as changing the
 `$md-color-primary` and `$md-color-accent` variables in
@@ -224,9 +222,9 @@ $md-color-accent:  $clr-teal-a700;
 
     Never make any changes in the `material` directory, as the contents of this
     directory are automatically generated from the `src` directory and will be
-    overriden when the theme is built.
+    overridden when the theme is built.
 
-  [9]: http://localhost:8000
+  [10]: http://localhost:8000
 
 ### Build process
 

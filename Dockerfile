@@ -18,8 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-FROM jfloff/alpine-python:3.6-slim
-MAINTAINER Martin Donath <martin.donath@squidfunk.com>
+FROM python:3.6.8-alpine3.9
 
 # Set build directory
 WORKDIR /tmp
@@ -28,6 +27,7 @@ WORKDIR /tmp
 COPY material material
 COPY MANIFEST.in MANIFEST.in
 COPY package.json package.json
+COPY README.md README.md
 COPY requirements.txt requirements.txt
 COPY setup.py setup.py
 
@@ -37,7 +37,7 @@ RUN \
     git \
     git-fast-import \
     openssh \
-  && python setup.py install 2>/dev/null \
+  && python setup.py install \
   && rm -rf /tmp/*
 
 # Set working directory

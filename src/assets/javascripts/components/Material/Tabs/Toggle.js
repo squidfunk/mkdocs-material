@@ -32,6 +32,7 @@ export default class Toggle {
    * @constructor
    *
    * @property {HTMLElement} el_ - Content container
+   * @property {number} height_ - Header height
    * @property {number} offset_ - Toggle page-y offset
    * @property {boolean} active_ - Tabs visibility
    *
@@ -45,7 +46,11 @@ export default class Toggle {
       throw new ReferenceError
     this.el_ = ref
 
-    /* Initialize offset and state */
+    /* Obtain header */
+    const header = document.querySelector("[data-md-component=header]")
+
+    /* Initialize height and state */
+    this.height_ = header.offsetHeight
     this.active_ = false
   }
 
@@ -54,7 +59,7 @@ export default class Toggle {
    */
   update() {
     const active = window.pageYOffset >=
-      this.el_.children[0].offsetTop + (5 - 48)                                 // TODO: quick hack to enable same handling for hero
+      this.el_.children[0].offsetTop + (5 - this.height_)
     if (active !== this.active_)
       this.el_.dataset.mdState = (this.active_ = active) ? "hidden" : ""
   }

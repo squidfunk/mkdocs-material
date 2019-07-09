@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- Set from config but allow override -->
 {% set disqus = config.extra.disqus %} {% if page and page.meta and page.meta.disqus is string %} {% set disqus = page.meta.disqus
   %} {% endif %}
@@ -11,6 +12,15 @@
   <span><i class="md-icon">copyright</i>本页面的全部内容在 <strong>{{ copyright }}</strong> 协议之条款下提供，附加条款亦可能应用</span>
 </blockquote>
 <!-- Comments Integration -->
+=======
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% set disqus = config.extra.disqus %}
+{% if page and page.meta and page.meta.disqus is string %}
+  {% set disqus = page.meta.disqus %}
+{% endif %}
+>>>>>>> squid/master
 {% if not page.is_homepage and disqus %}
 {% set pageID = page.title | default("404", true) %}
 <h2 id="__comments" data-no-instant>{{ lang.t("meta.comments") }}</h2>

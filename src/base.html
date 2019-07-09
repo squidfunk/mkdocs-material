@@ -143,9 +143,9 @@
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
         <link rel="stylesheet" type="text/css"
             href="https://fonts.googleapis.com/css?family={{
-              font.text | replace(' ', '+')  + ':300,400,400i,700|' +
+              font.text | replace(' ', '+') + ':300,400,400i,700|' +
               font.code | replace(' ', '+')
-            }}" />
+            }}&display=fallback" />
         <style>
           body, input {
             font-family: "{{ font.text }}", "Helvetica Neue",
@@ -172,6 +172,13 @@
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" type="text/css" href="{{ path | url }}" />
     {% endfor %}
+
+    <!-- Analytic scripts -->
+    {% block analytics %}
+      {% if config.google_analytics %}
+        {% include "partials/integrations/analytics.html" %}
+      {% endif %}
+    {% endblock %}
 
     <!-- Custom front matter -->
     {% block extrahead %}{% endblock %}
@@ -350,7 +357,7 @@
           <script src="{{ (path ~ 'lunr.stemmer.support.js') | url }}"></script>
           {% for language in languages | map("trim") %}
             {% if language != "en" %}
-              {% if language == "jp" %}
+              {% if language == "ja" %}
                 <script src="{{ (path ~ 'tinyseg.js') | url }}"></script>
               {% endif %}
               {% if language in ($md-lunr-languages$) %}
@@ -377,13 +384,6 @@
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
-    {% endblock %}
-
-    <!-- Analytic scripts -->
-    {% block analytics %}
-      {% if config.google_analytics %}
-        {% include "partials/integrations/analytics.html" %}
-      {% endif %}
     {% endblock %}
   </body>
 </html>

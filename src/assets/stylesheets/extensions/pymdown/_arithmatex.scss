@@ -42,8 +42,8 @@
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 0.75em -1.6rem;
-      padding: 0.25em 1.6rem;
+      margin: 0.75em px2rem(-16px);
+      padding: 0.25em px2rem(16px);
     }
   }
 

@@ -1,3 +1,6 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
 {% import "partials/language.html" as lang with context %}
 {% set platform = config.extra.repo_icon or config.repo_url %}
 {% if "github" in platform %}
@@ -9,17 +12,15 @@
 {% else %}
   {% set repo_type = "" %}
 {% endif %}
-{% block repo %}
-  <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source" data-md-source="{{ repo_type }}">
-    {% if repo_type %}
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#__{{ repo_type }}" width="24" height="24"></use>
-        </svg>
-      </div>
-    {% endif %}
-    <div class="md-source__repository">
-      {{ config.repo_name }}
+<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source" data-md-source="{{ repo_type }}">
+  {% if repo_type %}
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__{{ repo_type }}" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-{% endblock %}
+  {% endif %}
+  <div class="md-source__repository">
+    {{ config.repo_name }}
+  </div>
+</a>

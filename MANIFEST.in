@@ -6,4 +6,5 @@ recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 include LICENSE
 include package.json
+include README.md
 include requirements.txt

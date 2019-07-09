@@ -26,13 +26,13 @@
 
 // Navigation container
 .md-nav {
-  font-size: 1.4rem;
+  font-size: px2rem(14px);
   line-height: 1.3;
 
   // List title
   &__title {
     display: block;
-    padding: 0 1.2rem;
+    padding: 0 px2rem(12px);
     font-weight: 700;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -65,11 +65,11 @@
 
   // List item
   &__item {
-    padding: 0 1.2rem;
+    padding: 0 px2rem(12px);
 
     // Add bottom spacing to last item
     &:last-child {
-      padding-bottom: 1.2rem;
+      padding-bottom: px2rem(12px);
     }
 
     // 2nd+ level items
@@ -78,7 +78,7 @@
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        padding-right: 1.2rem;
+        padding-right: px2rem(12px);
         padding-left: 0;
       }
 
@@ -186,7 +186,7 @@
       // List title and item
       .md-nav__title,
       .md-nav__item {
-        font-size: 1.6rem;
+        font-size: px2rem(16px);
         line-height: 1.5;
       }
 
@@ -194,12 +194,12 @@
       // inside the drawer is always styled accordingly
       html & .md-nav__title {
         position: relative;
-        height: 11.2rem;
-        padding: 6rem 1.6rem 0.4rem;
+        height: px2rem(112px);
+        padding: px2rem(60px) px2rem(16px) px2rem(4px);
         background-color: $md-color-black--lightest;
         color: $md-color-black--light;
         font-weight: 400;
-        line-height: 4.8rem;
+        line-height: px2rem(48px);
         white-space: nowrap;
         cursor: pointer;
 
@@ -207,17 +207,17 @@
         &::before {
           display: block;
           position: absolute;
-          top: 0.4rem;
-          left: 0.4rem;
-          width: 4rem;
-          height: 4rem;
+          top: px2rem(4px);
+          left: px2rem(4px);
+          width: px2rem(40px);
+          height: px2rem(40px);
           color: $md-color-black--light;
         }
 
         // Main lists
         ~ .md-nav__list {
           background-color: $md-color-white;
-          box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
+          box-shadow: 0 px2rem(1px) 0 $md-color-black--lightest inset;
 
           // Remove border for first list item
           & > .md-nav__item:first-child {
@@ -235,11 +235,11 @@
           .md-nav__button {
             display: block;
             position: absolute;
-            top: 0.4rem;
-            left: 0.4rem;
-            width: 6.4rem;
-            height: 6.4rem;
-            font-size: 4.8rem;
+            top: px2rem(4px);
+            left: px2rem(4px);
+            width: px2rem(64px);
+            height: px2rem(64px);
+            font-size: px2rem(48px);
           }
 
           // Hide back arrow icon
@@ -254,13 +254,13 @@
 
         // Icon
         &::before {
-          right: 0.4rem;
+          right: px2rem(4px);
           left: initial;
         }
 
         // Site title in main navigation
         &--site .md-nav__button {
-          right: 0.4rem;
+          right: px2rem(4px);
           left: initial;
         }
       }
@@ -274,7 +274,7 @@
       // List item
       .md-nav__item {
         padding: 0;
-        border-top: 0.1rem solid $md-color-black--lightest;
+        border-top: px2rem(1px) solid $md-color-black--lightest;
 
         // Adjust for RTL languages
         [dir="rtl"] & {
@@ -283,12 +283,12 @@
 
         // Increase spacing to account for icon
         &--nested > .md-nav__link {
-          padding-right: 4.8rem;
+          padding-right: px2rem(48px);
 
           // Adjust for RTL languages
           [dir="rtl"] & {
-            padding-right: 1.6rem;
-            padding-left: 4.8rem;
+            padding-right: px2rem(16px);
+            padding-left: px2rem(48px);
           }
 
           // Replace icon with right arrow
@@ -307,21 +307,21 @@
       .md-nav__link {
         position: relative;
         margin-top: 0;
-        padding: 1.2rem 1.6rem;
+        padding: px2rem(12px) px2rem(16px);
 
         // Rotate icon
         &::after {
           position: absolute;
           top: 50%;
-          right: 1.2rem;
-          margin-top: -1.2rem;
+          right: px2rem(12px);
+          margin-top: px2rem(-12px);
           color: inherit;
-          font-size: 2.4rem;
+          font-size: px2rem(24px);
 
           // Adjust for RTL languages
           [dir="rtl"] & {
             right: initial;
-            left: 1.2rem;
+            left: px2rem(12px);
           }
         }
       }
@@ -341,44 +341,44 @@
 
           // 3rd level link
           .md-nav__link {
-            padding-left: 2.8rem;
+            padding-left: px2rem(28px);
 
             // Adjust for RTL languages
             [dir="rtl"] & {
-              padding-right: 2.8rem;
+              padding-right: px2rem(28px);
               padding-left: initial;
             }
           }
 
           // 4th level link
           .md-nav .md-nav__link {
-            padding-left: 4rem;
+            padding-left: px2rem(40px);
 
             // Adjust for RTL languages
             [dir="rtl"] & {
-              padding-right: 4rem;
+              padding-right: px2rem(40px);
               padding-left: initial;
             }
           }
 
           // 5th level link
           .md-nav .md-nav .md-nav__link {
-            padding-left: 5.2rem;
+            padding-left: px2rem(52px);
 
             // Adjust for RTL languages
             [dir="rtl"] & {
-              padding-right: 5.2rem;
+              padding-right: px2rem(52px);
               padding-left: initial;
             }
           }
 
           // 6th level link
           .md-nav .md-nav .md-nav .md-nav__link {
-            padding-left: 6.4rem;
+            padding-left: px2rem(64px);
 
             // Adjust for RTL languages
             [dir="rtl"] & {
-              padding-right: 6.4rem;
+              padding-right: px2rem(64px);
               padding-left: initial;
             }
           }
@@ -428,7 +428,7 @@
     // display the table of contents inside the drawer
     html &__link[for="__toc"] {
       display: block;
-      padding-right: 4.8rem;
+      padding-right: px2rem(48px);
 
       // Unrotate icon for table of contents
       &::after {
@@ -449,14 +449,14 @@
 
     // Adjust for RTL languages
     html [dir="rtl"] &__link {
-      padding-right: 1.6rem;
-      padding-left: 4.8rem;
+      padding-right: px2rem(16px);
+      padding-left: px2rem(48px);
     }
 
     // Repository containing source
     &__source {
       display: block;
-      padding: 0 0.4rem;
+      padding: 0 px2rem(4px);
       background-color: mix($md-color-primary, $md-color-black, 75%);
       color: $md-color-white;
     }

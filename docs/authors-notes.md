@@ -2,17 +2,11 @@
 
 ## Hi, I'm Martin ([@squidfunk][1])
 
-I'm a freelance polyglot software engineer and founder from Cologne, Germany
-with more than 10 years of experience in full-stack web development and system
-programming. If you're interested in my projects, please see my [CV][2].
-
-Besides my freelance work I'm currently working on Ginseng, my new company that
-specializes in layout error detection developing the [Ginseng framework][3] and
-a complementary service as a replacement for screenshot testing.
+I'm a freelance polyglot software engineer and entrepreneur from Cologne,
+Germany with more than 12 years of experience in full-stack web development and
+system programming.
 
   [1]: https://github.com/squidfunk
-  [2]: http://struct.cc/MartinDonathCV.pdf
-  [3]: https://github.com/ginseng
 
 ## Why another theme?
 
