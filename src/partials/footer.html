@@ -21,6 +21,39 @@
 -->
 
 {% import "partials/language.html" as lang with context %}
+<!-- InstantClick -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/instantclick@3/instantclick.min.js"
+  data-no-instant></script>
+<script data-no-instant>
+  InstantClick.init(true);
+</script>
+
+<!-- back to top -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/data-tip@0.0.52/dist/data-tip.min.css">
+<script>
+  // 当网页向下滑动 20px 出现"返回顶部" 按钮
+  window.onscroll = function () { scrollFunction() };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("myBtn").style.display = "block";
+    } else {
+      document.getElementById("myBtn").style.display = "none";
+    }
+  }
+
+  // 点击按钮，返回顶部
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<button onclick="topFunction()" id="myBtn" class="data-tip-left" data-tip="回到顶部">
+  <svg class="Zi Zi--BackToTop data-tip-left" data-tip="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+    <path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path>
+  </svg>
+</button>
+
 
 <!-- Application footer -->
 <footer class="md-footer">
@@ -94,7 +127,13 @@
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
-
+      {% set hash = config.extra.githash %}
+      <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：{{ hash }}, {{
+          build_date_utc.strftime('%Y-%m-%d') }}</a></span>
+      <script>
+        console.log(`%c OI Wiki %c {{ hash }} %c`,"background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent");
+        console.log('少年，恭喜你囍提彩蛋，linhua.org 将是下一代编程竞赛训练平台，如果您对此感兴趣，欢迎访问 https://join-us.linhua.org');
+      </script>
       <!-- Social links -->
       {% include "partials/social.html" %}
     </div>
