@@ -195,7 +195,7 @@ export default class Result {
     /* Perform search on index and group sections by document */
     let sta = [],
       Rsize;
-    const result = fetch(`https://search.oi-wiki.org/?s=${Q}`, {
+    const result = fetch(`https://search.oi-wiki.org:8443/?s=${Q}`, {
       credentials: "same-origin"
     })
       .then(response => response.json())
