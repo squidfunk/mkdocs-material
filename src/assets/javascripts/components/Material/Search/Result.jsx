@@ -179,8 +179,7 @@ export default class Result {
     if (!(target instanceof HTMLInputElement)) throw new ReferenceError();
 
     /* Abort early, if index is not build or input hasn't changed */
-    if (!this.index_ || target.value === this.value_)
-      return
+    if (target.value === this.value_) return;
 
     /* Clear current list */
     while (lis.firstChild) lis.removeChild(lis.firstChild);
