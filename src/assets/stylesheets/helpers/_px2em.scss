@@ -20,6 +20,8 @@
 /// DEALINGS
 ////
 
+// stylelint-disable unit-whitelist
+
 // ----------------------------------------------------------------------------
 // Helpers
 // ----------------------------------------------------------------------------
@@ -37,6 +39,27 @@
   @if unit($size) == px {
     @if unit($base) == px {
       @return ($size / $base) * 1em;
+    } @else {
+      @error "Invalid base: #{$base} - unit must be 'px'";
+    }
+  } @else {
+    @error "Invalid size: #{$size} - unit must be 'px'";
+  }
+}
+
+///
+/// Convert font size in px to rem.
+///
+/// @group  helpers
+/// @access public
+/// @param  {Number} $size Font size in px
+/// @param  {Number} $base Base font size
+/// @return {Number}       Font size in rem
+///
+@function px2rem($size, $base: 20px) {
+  @if unit($size) == px {
+    @if unit($base) == px {
+      @return ($size / $base) * 1.0rem;
     } @else {
       @error "Invalid base: #{$base} - unit must be 'px'";
     }

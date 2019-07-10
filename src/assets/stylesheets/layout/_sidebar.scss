@@ -35,8 +35,8 @@ $md-toggle__drawer--checked:
 // Sidebar container
 .md-sidebar {
   position: absolute;
-  width: 24.2rem;
-  padding: 2.4rem 0;
+  width: px2rem(242px);
+  padding: px2rem(24px) 0;
   overflow: hidden;
 
   // Hide for print
@@ -47,7 +47,7 @@ $md-toggle__drawer--checked:
   // Lock sidebar to container height (account for fixed header)
   &[data-md-state="lock"] {
     position: fixed;
-    top: 4.8rem;
+    top: px2rem(48px);
   }
 
   // [tablet -]: Convert navigation to drawer
@@ -57,8 +57,8 @@ $md-toggle__drawer--checked:
     &--primary {
       position: fixed;
       top: 0;
-      left: -24.2rem;
-      width: 24.2rem;
+      left: px2rem(-242px);
+      width: px2rem(242px);
       height: 100%;
       transform: translateX(0);
       transition:
@@ -69,7 +69,7 @@ $md-toggle__drawer--checked:
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        right: -24.2rem;
+        right: px2rem(-242px);
         left: initial;
       }
 
@@ -82,11 +82,11 @@ $md-toggle__drawer--checked:
       #{$md-toggle__drawer--checked} & {
         @include z-depth(8);
 
-        transform: translateX(24.2rem);
+        transform: translateX(px2rem(242px));
 
         // Adjust for RTL languages
         [dir="rtl"] & {
-          transform: translateX(-24.2rem);
+          transform: translateX(px2rem(-242px));
         }
 
         // Just show drawer, if browser doesn't support 3D transforms
@@ -122,11 +122,11 @@ $md-toggle__drawer--checked:
 
     // [screen +]: Limit to grid
     @include break-from-device(screen) {
-      margin-left: 122rem;
+      margin-left: px2rem(1220px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        margin-right: 122rem;
+        margin-right: px2rem(1220px);
         margin-left: initial;
       }
     }
@@ -135,7 +135,7 @@ $md-toggle__drawer--checked:
   // Wrapper for scrolling on overflow
   &__scrollwrap {
     max-height: 100%;
-    margin: 0 0.4rem;
+    margin: 0 px2rem(4px);
     overflow-y: auto;
     // Hack: putting the scroll wrapper on the GPU massively reduces jitter
     // when locking the sidebars into place
@@ -157,8 +157,8 @@ $md-toggle__drawer--checked:
 
     // Override native scrollbar styles
     &::-webkit-scrollbar {
-      width: 0.4rem;
-      height: 0.4rem;
+      width: px2rem(4px);
+      height: px2rem(4px);
     }
 
     // Style scrollbar thumb

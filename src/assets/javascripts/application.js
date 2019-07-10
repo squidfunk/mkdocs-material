@@ -42,7 +42,6 @@ window.Promise = window.Promise || Promise
  * ------------------------------------------------------------------------- */
 
 import Clipboard from "clipboard"
-import FastClick from "fastclick"
 
 import Material from "./components/Material"
 
@@ -75,13 +74,10 @@ const translate = key => {
  */
 function initialize(config) { // eslint-disable-line func-style
 
-  /* Initialize Modernizr and FastClick */
+  /* Initialize Modernizr */
   new Material.Event.Listener(document, "DOMContentLoaded", () => {
     if (!(document.body instanceof HTMLElement))
       throw new ReferenceError
-
-    /* Attach FastClick to mitigate 300ms delay on touch devices */
-    FastClick.attach(document.body)
 
     /* Test for iOS */
     Modernizr.addTest("ios", () => {
@@ -259,7 +255,7 @@ function initialize(config) { // eslint-disable-line func-style
   /* Component: link blurring for table of contents */
   new Material.Event.MatchMedia("(min-width: 960px)",
     new Material.Event.Listener(window, "scroll",
-      new Material.Nav.Blur("[data-md-component=toc] [href]")))
+      new Material.Nav.Blur("[data-md-component=toc] .md-nav__link")))
 
   /* Component: collapsible elements for navigation */
   const collapsibles =
@@ -316,16 +312,15 @@ function initialize(config) { // eslint-disable-line func-style
     }).listen()
 
     /* Listener: open search on focus */
-    new Material.Event.MatchMedia("(min-width: 960px)",
-      new Material.Event.Listener("[data-md-component=query]", "focus", () => {
-        const toggle = document.querySelector("[data-md-toggle=search]")
-        if (!(toggle instanceof HTMLInputElement))
-          throw new ReferenceError
-        if (!toggle.checked) {
-          toggle.checked = true
-          toggle.dispatchEvent(new CustomEvent("change"))
-        }
-      }))
+    new Material.Event.Listener("[data-md-component=query]", "focus", () => {
+      const toggle = document.querySelector("[data-md-toggle=search]")
+      if (!(toggle instanceof HTMLInputElement))
+        throw new ReferenceError
+      if (!toggle.checked) {
+        toggle.checked = true
+        toggle.dispatchEvent(new CustomEvent("change"))
+      }
+    }).listen()
 
     /* Listener: keyboard handlers */ // eslint-disable-next-line complexity
     new Material.Event.Listener(window, "keydown", ev => {                        // TODO: split up into component to reduce complexity
@@ -335,6 +330,11 @@ function initialize(config) { // eslint-disable-line func-style
       const query = document.querySelector("[data-md-component=query]")
       if (!(query instanceof HTMLInputElement))
         throw new ReferenceError
+
+      /* Skip editable elements */
+      if (document.activeElement instanceof HTMLElement &&
+          document.activeElement.isContentEditable)
+        return
 
       /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
       if (ev.metaKey || ev.ctrlKey)
@@ -411,6 +411,11 @@ function initialize(config) { // eslint-disable-line func-style
 
       /* Search is closed and we're not inside a form */
       } else if (document.activeElement && !document.activeElement.form) {
+
+        /* Fixes #1026: search grabs focus for non-form input elements */
+        if (document.activeElement.tagName === "TEXTAREA" ||
+            document.activeElement.tagName === "INPUT")
+          return
 
         /* F/S: Open search if not in input field */
         if (ev.keyCode === 70 || ev.keyCode === 83) {
@@ -494,6 +499,20 @@ function initialize(config) { // eslint-disable-line func-style
         .initialize(facts)
     })
   })
+
+  /* Before-print hook */
+  const print = () => {
+    const details = document.querySelectorAll("details")
+    Array.prototype.forEach.call(details, detail => {
+      detail.setAttribute("open", "")
+    })
+  }
+
+  /* Open details before printing */
+  new Material.Event.MatchMedia("print", {
+    listen: print, unlisten: () => {}
+  }) // Webkit
+  window.onbeforeprint = print // IE, FF
 }
 
 /* ----------------------------------------------------------------------------

@@ -1,3 +1,6 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
@@ -15,27 +18,27 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          {% block site_name %}
-            {% if config.site_name == page.title %}
+          {% if config.site_name == page.title %}
+            {{ config.site_name }}
+          {% else %}
+            <span class="md-header-nav__topic">
               {{ config.site_name }}
-            {% else %}
-              <span class="md-header-nav__topic">
-                {{ config.site_name }}
-              </span>
-              <span class="md-header-nav__topic">
+            </span>
+            <span class="md-header-nav__topic">
+              {% if page and page.meta and page.meta.title %}
+                {{ page.meta.title }}
+              {% else %}
                 {{ page.title }}
-              </span>
-            {% endif %}
-          {% endblock %}
+              {% endif %}
+            </span>
+          {% endif %}
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        {% block search_box %}
-          {% if "search" in config["plugins"] %}
-            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-            {% include "partials/search.html" %}
-          {% endif %}
-        {% endblock %}
+        {% if "search" in config["plugins"] %}
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          {% include "partials/search.html" %}
+        {% endif %}
       </div>
       {% if config.repo_url %}
         <div class="md-flex__cell md-flex__cell--shrink">

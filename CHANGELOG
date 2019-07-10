@@ -1,3 +1,63 @@
+mkdocs-material-4.4.0 (2019-06-15)
+
+  * Added Slovenian translations
+  * Reverted template minification in favor of mkdocs-minify-plugin
+  * Fixed #1114: Tabs don't reappear when default font-size is smaller than 16
+
+mkdocs-material-4.3.1 (2019-05-23)
+
+  * Fixed spelling error in Danish translations
+
+mkdocs-material-4.3.0 (2019-05-17)
+
+  * Added support for changing header through metadata title property
+  * Added font-display: swap to Google Font loading logic
+  * Removed whitespace from templates, saving 4kb (.7kb gzipped) per request
+  * Fixed alignment of repository icons on tablet and desktop
+
+mkdocs-material-4.2.0 (2019-04-28)
+
+  * Added Norwegian (Nynorsk) translations
+  * Fixed loss of focus in non-form input elements due to search hotkeys
+  * Fixed #1067: Search hotkeys not working for mobile/tablet screensize
+  * Fixed #1068: Search not correctly aligned for tablet screensize
+
+mkdocs-material-4.1.2 (2019-04-16)
+
+  * Fixed #1072: HTML tags appearing in navigation link titles
+
+mkdocs-material-4.1.1 (2019-03-28)
+
+  * Fixed minor CSS errors detected during validation
+
+mkdocs-material-4.1.0 (2019-03-22)
+
+  * Fixed #1023: Search for Asian languages broken after Lunr.js update
+  * Fixed #1026: contenteditable elements loose focus on hotkeys
+
+mkdocs-material-4.0.2 (2019-03-01)
+
+  * Fixed #1012: HTML character entities appear in search result titles
+
+mkdocs-material-4.0.1 (2019-02-13)
+
+  * Fixed #762, #816: Glitch in sidebar when collapsing items
+  * Fixed #869: Automatically expand details before printing
+
+mkdocs-material-4.0.0 (2019-02-13)
+
+  * Added background on hover for table rows
+  * Removed Google Tag Manager and reverted to Google Analytics
+  * Removed blocks in partials - Jinja doesn't support them
+  * Fixed #911: Chrome breaks layout if system language is Chinese [BREAKING]
+  * Fixed #976: Removed FastClick
+
+mkdocs-material-3.3.0 (2019-01-29)
+
+  * Moved Google Analytics integration into `head` using Google Tag Manager
+  * Fixed #972: Unicode slugifier breaks table of contents blur on scroll
+  * Fixed #974: Additional links in table of contents break blur on scroll
+
 mkdocs-material-3.2.0 (2018-12-28)
 
   * Added support for redirects using metadata refresh
@@ -38,7 +98,7 @@ mkdocs-material-3.0.1 (2018-08-05)
 
 mkdocs-material-3.0.0 (2018-08-05)
 
-  * Upgraded MkDocs to 1.0
+  * Upgraded MkDocs to 1.0 [BREAKING]
   * Upgraded Python in official Docker image to 3.6
   * Added Serbian and Serbo-Croatian translations
 
@@ -267,7 +327,7 @@ mkdocs-material-2.0.0 (2017-10-31)
   * Added support for easier configuration of search tokenizer
   * Added support to disable search
   * Added Korean translations
-  * Removed support for MkDocs 0.16.x
+  * Removed support for MkDocs 0.16.x [BREAKING]
 
 mkdocs-material-1.12.2 (2017-10-26)
 

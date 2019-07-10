@@ -51,11 +51,11 @@
 
     // Increase spacing to the right - scoped here for higher specificity
     summary {
-      padding-right: 4rem;
+      padding-right: px2rem(40px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        padding-left: 4rem;
+        padding-left: px2rem(40px);
       }
     }
 
@@ -93,16 +93,16 @@
       @extend %md-icon;
 
       position: absolute;
-      top: 0.8rem;
-      right: 1.2rem;
+      top: px2rem(8px);
+      right: px2rem(12px);
       color: $md-color-black--lighter;
-      font-size: 2rem;
+      font-size: px2rem(20px);
       content: "\E313"; // keyboard_arrow_down
 
       // Adjust for RTL languages
       [dir="rtl"] & {
         right: initial;
-        left: 1.2rem;
+        left: px2rem(12px);
       }
     }
   }

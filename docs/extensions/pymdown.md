@@ -202,7 +202,7 @@ emojis. Happy scrolling :tada:
 
 [InlineHilite][18] adds support for inline code highlighting. It's useful for
 short snippets included within body copy, e.g. `#!js var test = 0;` and can be
-achived by prefixing inline code with a shebang and language identifier,
+achieved by prefixing inline code with a shebang and language identifier,
 e.g. `#!js`.
 
   [18]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/

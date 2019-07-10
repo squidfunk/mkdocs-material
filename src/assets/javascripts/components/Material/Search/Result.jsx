@@ -40,6 +40,19 @@ import escape from "escape-string-regexp";
  * ------------------------------------------------------------------------- */
 
 /**
+ * Escape a regular expression string
+ *
+ * Taken from the package `escape-string-regexp`
+ *
+ * @param regex - Regular expresison string
+ *
+ * @return
+ */
+const escapeRegex = regex => {
+	return regex.replace(/[|\\{}()[\]^$+*?.-]/g, '\\$&');
+};
+
+/**
  * Escape HTML strings
  *
  * Documentation may contain code JavaScript code snippets which would get
@@ -178,11 +191,10 @@ export default class Result {
       this.meta_.textContent = this.message_.placeholder;
       return;
     }
-
     /* Perform search on index and group sections by document */
     let sta = [],
       Rsize;
-    const result = fetch(`https://search.oi-wiki.org/?s=${Q}`, {
+    const result = fetch(`https://search.oi-wiki.org:8443/?s=${Q}`, {
       credentials: "same-origin"
     })
       .then(response => response.json())

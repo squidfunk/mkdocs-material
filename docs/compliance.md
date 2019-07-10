@@ -17,7 +17,7 @@ carefully.
 Material makes fonts [easily configurable][2] by relying on Google Fonts CDN.
 However, embedding fonts from Google is currently within a gray area as there's
 no official statement or ruling regarding GDPR compliance and the topic is still
-[actively discussed][3]. For this reason, if you need to ensure GDPR compiance,
+[actively discussed][3]. For this reason, if you need to ensure GDPR compliance,
 you should disable the usage of the Google Font CDN with:
 
 ``` yaml
@@ -35,11 +35,11 @@ self-hosted so there's no third-party involved.
 
   [2]: getting-started.md#font-family
   [3]: https://github.com/google/fonts/issues/1495
-  [4]: customization.md/#overriding-template-blocks
+  [4]: customization.md#overriding-template-blocks
 
 ### Google Analytics and Disqus
 
-Material comes with [Google Analytics][4] and [Disqus][5] integrations that need
+Material comes with [Google Analytics][5] and [Disqus][6] integrations that need
 to be *enabled explicitly*. Disable both integrations in order to be in
 compliance with the GDPR.
 

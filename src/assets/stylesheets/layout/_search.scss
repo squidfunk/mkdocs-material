@@ -42,7 +42,7 @@ $md-toggle__search--checked:
 
   // [tablet landscape +]: Header-embedded search
   @include break-from-device(tablet landscape) {
-    padding: 0.4rem;
+    padding: px2rem(4px);
   }
 
   // Search modal overlay
@@ -53,22 +53,22 @@ $md-toggle__search--checked:
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
       position: absolute;
-      top: 0.4rem;
-      left: 0.4rem;
-      width: 3.6rem;
-      height: 3.6rem;
+      top: px2rem(4px);
+      left: px2rem(4px);
+      width: px2rem(36px);
+      height: px2rem(36px);
       transform-origin: center;
       transition:
         transform 0.3s 0.1s,
         opacity   0.2s 0.2s;
-      border-radius: 2rem;
+      border-radius: px2rem(20px);
       background-color: $md-color-white;
       overflow: hidden;
       pointer-events: none;
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        right: 0.4rem;
+        right: px2rem(4px);
         left: initial;
       }
 
@@ -181,14 +181,27 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       position: relative;
-      width: 23rem;
-      padding: 0.2rem 0;
+      width: px2rem(230px);
+      margin-right: px2rem(16px);
+      padding: px2rem(2px) 0;
       float: right;
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
+        margin-right: initial;
+        margin-left: px2rem(16px);
         float: left;
+      }
+    }
+
+    // [screen +]: Increase spacing of search bar
+    @include break-from-device(screen) {
+      margin-right: px2rem(24px);
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-left: px2rem(24px);
       }
     }
 
@@ -197,12 +210,12 @@ $md-toggle__search--checked:
 
       // [tablet landscape]: Do not overlay title
       @include break-at-device(tablet landscape) {
-        width: 46.8rem;
+        width: px2rem(468px);
       }
 
       // [screen +]: Match content width
       @include break-from-device(screen) {
-        width: 68.8rem;
+        width: px2rem(688px);
       }
     }
   }
@@ -213,20 +226,20 @@ $md-toggle__search--checked:
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
-      border-radius: 0.2rem;
+      border-radius: px2rem(2px);
     }
   }
 
   // Search input
   &__input {
     position: relative;
-    padding: 0 4.4rem 0 7.2rem;
+    padding: 0 px2rem(44px) 0 px2rem(72px);
     text-overflow: ellipsis;
     z-index: 2;
 
     // Adjust for RTL languages
     [dir="rtl"] & {
-      padding: 0 7.2rem 0 4.4rem;
+      padding: 0 px2rem(72px) 0 px2rem(44px);
     }
 
     // Transition on placeholder
@@ -248,26 +261,26 @@ $md-toggle__search--checked:
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
       width: 100%;
-      height: 4.8rem;
-      font-size: 1.8rem;
+      height: px2rem(48px);
+      font-size: px2rem(18px);
     }
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       width: 100%;
-      height: 3.6rem;
-      padding-left: 4.4rem;
+      height: px2rem(36px);
+      padding-left: px2rem(44px);
       transition:
         background-color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1),
         color            0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
-      border-radius: 0.2rem;
+      border-radius: px2rem(2px);
       background-color: $md-color-black--lighter;
       color: inherit;
       font-size: ms(0);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        padding-right: 4.4rem;
+        padding-right: px2rem(44px);
       }
 
       // Icon color
@@ -287,10 +300,10 @@ $md-toggle__search--checked:
 
       // Set light background on active search field
       #{$md-toggle__search--checked} & {
-        border-radius: 0.2rem 0.2rem 0 0;
+        border-radius: px2rem(2px) px2rem(2px) 0 0;
         background-color: $md-color-white;
         color: $md-color-black;
-        text-overflow: none;
+        text-overflow: clip;
 
         // Placeholder and icon color in active state
         + .md-search__icon,
@@ -318,12 +331,12 @@ $md-toggle__search--checked:
 
     // Search icon
     &[for="__search"] {
-      top: 0.6rem;
-      left: 1rem;
+      top: px2rem(6px);
+      left: px2rem(10px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        right: 1rem;
+        right: px2rem(10px);
         left: initial;
       }
 
@@ -335,8 +348,8 @@ $md-toggle__search--checked:
 
       // [tablet portrait -]: Full-screen search bar
       @include break-to-device(tablet portrait) {
-        top: 1.2rem;
-        left: 1.6rem;
+        top: px2rem(12px);
+        left: px2rem(16px);
 
         // Show back arrow instead of search icon
         &[for="__search"]::before {
@@ -352,8 +365,8 @@ $md-toggle__search--checked:
 
     // Reset button
     &[type="reset"] {
-      top: 0.6rem;
-      right: 1rem;
+      top: px2rem(6px);
+      right: px2rem(10px);
       transform: scale(0.125);
       transition:
         transform 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
@@ -363,13 +376,13 @@ $md-toggle__search--checked:
       // Adjust for RTL languages
       [dir="rtl"] & {
         right: initial;
-        left: 1rem;
+        left: px2rem(10px);
       }
 
       // [tablet portrait -]: Full-screen search bar
       @include break-to-device(tablet portrait) {
-        top: 1.2rem;
-        right: 1.6rem;
+        top: px2rem(12px);
+        right: px2rem(16px);
       }
 
       // Show reset button if search is active and input non-empty
@@ -389,19 +402,19 @@ $md-toggle__search--checked:
   &__output {
     position: absolute;
     width: 100%;
-    border-radius: 0 0 0.2rem 0.2rem;
+    border-radius: 0 0 px2rem(2px) px2rem(2px);
     overflow: hidden;
     z-index: 1;
 
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
-      top: 4.8rem;
+      top: px2rem(48px);
       bottom: 0;
     }
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
-      top: 3.8rem;
+      top: px2rem(38px);
       transition: opacity 0.4s;
       opacity: 0;
 
@@ -418,18 +431,18 @@ $md-toggle__search--checked:
   &__scrollwrap {
     height: 100%;
     background-color: $md-color-white;
-    box-shadow: 0 0.1rem 0 $md-color-black--lightest inset;
+    box-shadow: 0 px2rem(1px) 0 $md-color-black--lightest inset;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
     // [tablet landscape]: Set absolute width to omit unnecessary reflow
     @include break-at-device(tablet landscape) {
-      width: 46.8rem;
+      width: px2rem(468px);
     }
 
     // [screen +]: Set absolute width to omit unnecessary reflow
     @include break-from-device(screen) {
-      width: 68.8rem;
+      width: px2rem(688px);
     }
 
     // [tablet landscape +]: Limit height to viewport
@@ -443,8 +456,8 @@ $md-toggle__search--checked:
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {
-        width: 0.4rem;
-        height: 0.4rem;
+        width: px2rem(4px);
+        height: px2rem(4px);
       }
 
       // Style scrollbar thumb
@@ -467,19 +480,19 @@ $md-toggle__search--checked:
 
   // Search metadata
   &__meta {
-    padding: 0 1.6rem;
+    padding: 0 px2rem(16px);
     background-color: $md-color-black--lightest;
     color: $md-color-black--light;
     font-size: ms(-1);
-    line-height: 3.6rem;
+    line-height: px2rem(36px);
 
     // [tablet landscape +]: Increase left indent
     @include break-from-device(tablet landscape) {
-      padding-left: 4.4rem;
+      padding-left: px2rem(44px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        padding-right: 4.4rem;
+        padding-right: px2rem(44px);
         padding-left: initial;
       }
     }
@@ -489,13 +502,13 @@ $md-toggle__search--checked:
   &__list {
     margin: 0;
     padding: 0;
-    border-top: 0.1rem solid $md-color-black--lightest;
+    border-top: px2rem(1px) solid $md-color-black--lightest;
     list-style: none;
   }
 
   // List item
   &__item {
-    box-shadow: 0 -0.1rem 0 $md-color-black--lightest;
+    box-shadow: 0 px2rem(-1px) 0 $md-color-black--lightest;
   }
 
   // Link inside item
@@ -518,24 +531,24 @@ $md-toggle__search--checked:
 
     // Add a little spacing on the teaser of the last link
     &:last-child .md-search-result__teaser {
-      margin-bottom: 1.2rem;
+      margin-bottom: px2rem(12px);
     }
   }
 
   // Article - document or section
   &__article {
     position: relative;
-    padding: 0 1.6rem;
+    padding: 0 px2rem(16px);
     overflow: auto;
 
     // [tablet landscape +]: Increase left indent
     @include break-from-device(tablet landscape) {
-      padding-left: 4.4rem;
+      padding-left: px2rem(44px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        padding-right: 4.4rem;
-        padding-left: 1.6rem;
+        padding-right: px2rem(44px);
+        padding-left: px2rem(16px);
       }
     }
 
@@ -548,7 +561,7 @@ $md-toggle__search--checked:
 
         position: absolute;
         left: 0;
-        margin: 0.2rem;
+        margin: px2rem(2px);
         transition: opacity 0.25s;
         color: $md-color-black--light;
         content: "\E880"; // find_in_page
@@ -567,7 +580,7 @@ $md-toggle__search--checked:
 
       // Title
       .md-search-result__title {
-        margin: 1.1rem 0;
+        margin: px2rem(11px) 0;
         font-size: ms(0);
         font-weight: 400;
         line-height: 1.4;
@@ -588,7 +601,7 @@ $md-toggle__search--checked:
   // Teaser
   &__teaser {
     display: -webkit-box;
-    max-height: 3.3rem;
+    max-height: px2rem(33px);
     margin: 0.5em 0;
     color: $md-color-black--light;
     font-size: ms(-1);
@@ -600,13 +613,13 @@ $md-toggle__search--checked:
 
     // [mobile -]: Increase number of lines
     @include break-to-device(mobile) {
-      max-height: 5rem;
+      max-height: px2rem(50px);
       -webkit-line-clamp: 3;
     }
 
     // [tablet landscape]: Increase number of lines
     @include break-at-device(tablet landscape) {
-      max-height: 5rem;
+      max-height: px2rem(50px);
       -webkit-line-clamp: 3;
     }
   }

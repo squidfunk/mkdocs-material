@@ -70,8 +70,14 @@ export default class Collapse {
     this.el_.style.display  = "block"
     this.el_.style.overflow = ""
 
+    /* Hack: read value directly from input field */
+    const expanded = this.el_
+      .previousElementSibling
+      .previousElementSibling
+      .checked
+
     /* Expanded, so collapse */
-    if (current) {
+    if (expanded) {
       this.el_.style.maxHeight = `${current}px`
       requestAnimationFrame(() => {
         this.el_.setAttribute("data-md-state", "animate")
@@ -106,9 +112,9 @@ export default class Collapse {
       target.style.maxHeight = ""
 
       /* Hidden links should not be focusable, so hide them when the navigation
-         is collapsed and set overflow so the outline is not cut off */
-      target.style.display  = current ? "none"   : "block"
-      target.style.overflow = current ? "hidden" : "visible"
+        is collapsed and set overflow so the outline is not cut off */
+      target.style.display  = expanded ? "none"   : "block"
+      target.style.overflow = expanded ? "hidden" : "visible"
 
       /* Only fire once, so directly remove event listener */
       target.removeEventListener("transitionend", end)

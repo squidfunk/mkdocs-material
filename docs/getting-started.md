@@ -331,51 +331,52 @@ translations for all template variables and labels in the following languages:
     <tr>
       <td><code>gl</code> / Galician</td>
       <td><code>de</code> / German</td>
+      <td><code>gr</code> / Greek</td>
       <td><code>he</code> / Hebrew</td>
-      <td><code>hi</code> / Hindi</td>
     </tr>
     <tr>
+      <td><code>hi</code> / Hindi</td>
       <td><code>hr</code> / Croatian</td>
       <td><code>hu</code> / Hungarian</td>
       <td><code>id</code> / Indonesian</td>
-      <td><code>it</code> / Italian</td>
     </tr>
     <tr>
+      <td><code>it</code> / Italian</td>
       <td><code>ja</code> / Japanese</td>
       <td><code>kr</code> / Korean</td>
       <td><code>no</code> / Norwegian</td>
-      <td><code>fa</code> / Persian</td>
     </tr>
     <tr>
+      <td colspan="2"><code>nn</code> / Norwegian (Nynorsk)</td>
+      <td><code>fa</code> / Persian</td>
       <td><code>pl</code> / Polish</td>
+    </tr>
+    <tr>
       <td><code>pt</code> / Portugese</td>
       <td><code>ru</code> / Russian</td>
       <td><code>sr</code> / Serbian</td>
+      <td><code>sh</code> / Serbo-Croatian</td>
     </tr>
     <tr>
-      <td><code>sh</code> / Serbo-Croatian</td>
       <td><code>sk</code> / Slovak</td>
+      <td><code>si</code> / Slovenian</td>
       <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
     </tr>
     <tr>
-      <td colspan="2">
-        <code>zh</code> / Chinese (Simplified)
-      </td>
+      <td><code>tr</code> / Turkish</td>
+      <td><code>uk</code> / Ukrainian</td>
+      <td><code>vi</code> / Vietnamese</td>
+      <td><code>zh</code> / Chinese (Simplified)</td>
+    </tr>
+    <tr>
       <td colspan="2">
         <code>zh-Hant</code> / Chinese (Traditional)
       </td>
+      <td colspan="2"><code>zh-TW</code> / Chinese (Taiwanese)</td>
     </tr>
     <tr>
-      <td colspan="2">
-        <code>zh-TW</code> / Chinese (Taiwanese)
-      </td>
-      <td><code>tr</code> / Turkish</td>
-      <td><code>uk</code> / Ukrainian</td>
-    </tr>
-    <tr>
-      <td><code>vi</code> / Vietnamese</td>
-      <td colspan="3" align="right">
+      <td colspan="4" align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
       </td>
     </tr>
@@ -452,7 +453,7 @@ At the time of writing, the following languages are supported:
       <td><code>it</code> / Italian</td>
     </tr>
     <tr>
-      <td><code>jp</code> / Japanese</td>
+      <td><code>ja</code> / Japanese</td>
       <td><code>no</code> / Norwegian</td>
       <td><code>pt</code> / Portugese</td>
       <td><code>ro</code> / Romanian</td>
@@ -510,16 +511,25 @@ theme:
 
 > Default: `false`
 
-Material supports another layer on top of the main navigation for larger
-screens in the form of tabs. This is especially useful for larger documentation
-projects with only few top-level sections. Tabs can be enabled by setting the
-respective feature flag to true:
+By default, the entire navigation is rendered on the left side using collapsible
+sections (different from the default MkDocs theme which renders the top-level
+sections in the header), because horizontal navigation is often problematic on
+smaller screens. However, for large documentation projects it's sometimes
+desirable to add another navigation layer to separate top-level sections.
+Material achieves this with the tabs feature, which can be enabled by setting
+the respective feature flag to `true`:
 
 ``` yaml
 theme:
   feature:
     tabs: true
 ```
+
+When tabs are enabled, *top-level sections* will be rendered in an additional
+layer directly below the header. The navigation on the left side will only
+include the pages contained within the selected section. Furthermore, *top-level
+pages* defined inside your project's `mkdocs.yml` will be grouped under the
+first tab which will receive the title of the first page.
 
 ## Customization
 
@@ -671,6 +681,39 @@ Material theme including more information regarding installation and usage:
   [29]: extensions/metadata.md
   [30]: extensions/permalinks.md
   [31]: extensions/pymdown.md
+
+## Plugins
+
+MkDocs's plugin architecture makes it possible to add pre- or post-processing
+steps that sit between the theme and your documentation. A great example of a
+third-party plugin is the [mkdocs-minify-plugin][32] which strips all whitespace
+from the generated documentation.
+
+Install it with `pip`:
+
+``` sh
+pip install mkdocs-minify-plugin
+```
+
+Enable it with the following lines in your `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - search
+  - minify:
+      minify_html: true
+```
+
+The MkDocs wiki contains a [list of all available plugins][33].
+
+!!! warning "Remember to re-add the `search` plugin"
+
+    If you have no `plugins` entry in your config file yet, you'll likely also
+    want to add the `search` plugin. MkDocs enables it by default if there is
+    no `plugins` entry set.
+
+  [32]: https://github.com/byrnereese/mkdocs-minify-plugin
+  [33]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
 
 ## Full example
 
