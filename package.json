@@ -39,7 +39,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/cli": "^7.5.0",
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.4",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.5.5",
