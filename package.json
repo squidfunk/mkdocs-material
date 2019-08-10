@@ -37,7 +37,9 @@
     "start": "make -j watch",
     "watch": "make -j watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "gulp-imagemin": "^6.0.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.0",
