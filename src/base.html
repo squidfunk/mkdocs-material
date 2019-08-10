@@ -363,6 +363,15 @@
             base: "{{ base_url }}"
           }
         });
+        'use strict';
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('service-worker.js', { scope: '/' })
+            .then(function (reg) {
+              console.log('Registration succeeded. Scope is ' + reg.scope);
+            }).catch(function (error) {
+              console.log('Registration failed with ' + error);
+            });
+        }
       </script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
