@@ -365,7 +365,7 @@
         });
         'use strict';
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('service-worker.js', { scope: '/' })
+          navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
             .then(function (reg) {
               console.log('PWA Registration succeeded. Scope is ' + reg.scope);
             }).catch(function (error) {
