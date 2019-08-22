@@ -38,7 +38,7 @@
 @import "config";
 
 // ----------------------------------------------------------------------------
-// Rules
+// Rules: button styles
 // ----------------------------------------------------------------------------
 
 // Color tile for presentation in theme documentation
@@ -61,6 +61,10 @@ button[data-md-color-accent] {
     opacity: 0.75;
   }
 }
+
+// ----------------------------------------------------------------------------
+// Rules: primary colors
+// ----------------------------------------------------------------------------
 
 // Build primary colors
 @each $name, $color in (
@@ -148,6 +152,10 @@ button[data-md-color-accent] {
   }
 }
 
+// ----------------------------------------------------------------------------
+// Rules: white
+// ----------------------------------------------------------------------------
+
 // Color tile for presentation in theme documentation
 button[data-md-color-primary="white"] {
   background-color: $md-color-white;
@@ -155,7 +163,7 @@ button[data-md-color-primary="white"] {
   box-shadow: 0 0 px2rem(1px) $md-color-black--light inset;
 }
 
-// Overrides for white color
+// Overrides for black color
 [data-md-color-primary="white"] {
 
   // Application header (stays always on top)
@@ -225,6 +233,69 @@ button[data-md-color-primary="white"] {
     }
   }
 }
+
+// ----------------------------------------------------------------------------
+// Rules: black
+// ----------------------------------------------------------------------------
+
+// Color tile for presentation in theme documentation
+button[data-md-color-primary="black"] {
+  background-color: $clr-black;
+}
+
+// Color palette
+[data-md-color-primary="black"] {
+
+  // Application header (stays always on top)
+  .md-header {
+    background-color: $clr-black;
+  }
+
+  // Hero teaser
+  .md-hero {
+    background-color: $clr-black;
+  }
+
+  // [tablet portrait -]: Layered navigation
+  @include break-to-device(tablet portrait) {
+
+    // Repository containing source
+    .md-nav__source {
+      background-color: mix($clr-black, $md-color-white, 75%);
+    }
+  }
+
+  // [tablet landscape +]: Header-embedded search
+  @include break-from-device(tablet landscape) {
+
+    // Search input
+    .md-search__input {
+      background-color: $md-color-white--lighter;
+    }
+  }
+
+  // [tablet -]: Layered navigation
+  @include break-to-device(tablet) {
+
+    // Site title in main navigation
+    html & .md-nav--primary .md-nav__title--site {
+      background-color: $clr-black;
+    }
+  }
+
+  // [screen +]: Set background color for tabs
+  @include break-from-device(screen) {
+
+    // Tabs with outline
+    .md-tabs {
+      background-color: $clr-black;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: accent colors
+// ----------------------------------------------------------------------------
 
 // Build accent colors
 @each $name, $color in (

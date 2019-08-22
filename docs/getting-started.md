@@ -198,6 +198,7 @@ Click on a tile to change the primary color of the theme:
 <button data-md-color-primary="brown">Brown</button>
 <button data-md-color-primary="grey">Grey</button>
 <button data-md-color-primary="blue-grey">Blue Grey</button>
+<button data-md-color-primary="black">Black</button>
 <button data-md-color-primary="white">White</button>
 
 <script>
