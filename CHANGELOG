@@ -1,3 +1,8 @@
+mkdocs-material-4.4.1 (2019-08-22)
+
+  * Added support for black as a primary color
+  * Fixed broken footer bar when h1 contained HTML tags
+
 mkdocs-material-4.4.0 (2019-06-15)
 
   * Added Slovenian translations

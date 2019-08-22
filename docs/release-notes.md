@@ -64,6 +64,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.4.1 <small>_ August 8, 2019</small>
+
+* Added support for `black` as a primary color
+* Fixed broken footer bar when `h1` contained HTML tags
+
 ### 4.4.0 <small>_ June 15, 2019</small>
 
 * Added Slovenian translations
