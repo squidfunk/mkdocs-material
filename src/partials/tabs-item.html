@@ -24,13 +24,11 @@
 {% if nav_item.is_homepage %}
   <li class="md-tabs__item">
     {% if not page.ancestors | length and nav | selectattr("url", page.url) %}
-      <a href="{{ nav_item.url | url }}" title="{{ nav_item.title }}"
-          class="md-tabs__link md-tabs__link--active">
+      <a href="{{ nav_item.url | url }}" class="md-tabs__link md-tabs__link--active">
         {{ nav_item.title }}
       </a>
     {% else %}
-      <a href="{{ nav_item.url | url }}" title="{{ nav_item.title }}"
-          class="md-tabs__link">
+      <a href="{{ nav_item.url | url }}" class="md-tabs__link">
         {{ nav_item.title }}
       </a>
     {% endif %}
@@ -50,12 +48,12 @@
     <li class="md-tabs__item">
       {% if nav_item.active %}
         <a href="{{ (nav_item.children | first).url | url }}"
-            title="{{ title }}" class="md-tabs__link md-tabs__link--active">
+            class="md-tabs__link md-tabs__link--active">
           {{ title }}
         </a>
       {% else %}
         <a href="{{ (nav_item.children | first).url | url }}"
-            title="{{ title }}" class="md-tabs__link">
+            class="md-tabs__link">
           {{ title }}
         </a>
       {% endif %}
