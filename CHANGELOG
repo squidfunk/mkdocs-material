@@ -1,3 +1,10 @@
+mkdocs-material-4.4.2 (2019-08-27)
+
+  * Added Afrikaans translations
+  * Fixed broken page title when h1 contained HTML tags
+  * Improved accessibility for IE users
+  * Removed unnecessary title attributes from links in navigation
+
 mkdocs-material-4.4.1 (2019-08-22)
 
   * Added support for black as a primary color

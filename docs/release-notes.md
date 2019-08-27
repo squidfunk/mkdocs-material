@@ -64,7 +64,14 @@ pip show mkdocs-material
 
 ## Changelog
 
-### 4.4.1 <small>_ August 8, 2019</small>
+### 4.4.2 <small>_ August 27, 2019</small>
+
+* Added Afrikaans translations
+* Fixed broken page title when `h1` contained HTML tags
+* Improved accessibility for IE users
+* Removed unnecessary `title` attributes from links in navigation
+
+### 4.4.1 <small>_ August 22, 2019</small>
 
 * Added support for `black` as a primary color
 * Fixed broken footer bar when `h1` contained HTML tags
