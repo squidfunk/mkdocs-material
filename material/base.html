@@ -50,15 +50,15 @@
       {% if page and page.meta and page.meta.title %}
         <title>{{ page.meta.title }}</title>
       {% elif page and page.title and not page.is_homepage %}
-        <title>{{ page.title }} - {{ config.site_name }}</title>
+        <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
       {% else %}
         <title>{{ config.site_name }}</title>
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.4031d38b.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.30686662.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.3e3d1dff.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.a8b3c06d.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -193,7 +193,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.718059d6.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/application.6579397f.js' | url }}"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}

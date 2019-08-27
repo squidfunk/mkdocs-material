@@ -9,7 +9,7 @@ guidelines.
 [![Material for MkDocs](assets/images/material.png)](assets/images/material.png)
 
   [1]: https://www.mkdocs.org
-  [2]: https://material.io/guidelines/material-design/
+  [2]: https://material.io/design/
 
 ## Quick start
 

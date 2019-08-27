@@ -101,7 +101,7 @@
       {% if page and page.meta and page.meta.title %}
         <title>{{ page.meta.title }}</title>
       {% elif page and page.title and not page.is_homepage %}
-        <title>{{ page.title }} - {{ config.site_name }}</title>
+        <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
       {% else %}
         <title>{{ config.site_name }}</title>
       {% endif %}
@@ -255,7 +255,7 @@
       {% endif %}
 
       <!-- Main container -->
-      <main class="md-main">
+      <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
 
           <!-- Navigation -->
