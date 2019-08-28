@@ -198,6 +198,7 @@ Click on a tile to change the primary color of the theme:
 <button data-md-color-primary="brown">Brown</button>
 <button data-md-color-primary="grey">Grey</button>
 <button data-md-color-primary="blue-grey">Blue Grey</button>
+<button data-md-color-primary="black">Black</button>
 <button data-md-color-primary="white">White</button>
 
 <script>
@@ -317,66 +318,65 @@ translations for all template variables and labels in the following languages:
   </thead>
   <tbody>
     <tr>
+      <td><code>af</code> / Afrikaans</td>
       <td><code>ar</code> / Arabic</td>
       <td><code>ca</code> / Catalan</td>
       <td><code>cs</code> / Czech</td>
-      <td><code>da</code> / Danish</td>
     </tr>
     <tr>
+      <td><code>da</code> / Danish</td>
       <td><code>nl</code> / Dutch</td>
       <td><code>en</code> / English</td>
       <td><code>fi</code> / Finnish</td>
-      <td><code>fr</code> / French</td>
     </tr>
     <tr>
+      <td><code>fr</code> / French</td>
       <td><code>gl</code> / Galician</td>
       <td><code>de</code> / German</td>
       <td><code>gr</code> / Greek</td>
-      <td><code>he</code> / Hebrew</td>
     </tr>
     <tr>
+      <td><code>he</code> / Hebrew</td>
       <td><code>hi</code> / Hindi</td>
       <td><code>hr</code> / Croatian</td>
       <td><code>hu</code> / Hungarian</td>
-      <td><code>id</code> / Indonesian</td>
     </tr>
     <tr>
+      <td><code>id</code> / Indonesian</td>
       <td><code>it</code> / Italian</td>
       <td><code>ja</code> / Japanese</td>
       <td><code>kr</code> / Korean</td>
-      <td><code>no</code> / Norwegian</td>
     </tr>
     <tr>
+      <td><code>no</code> / Norwegian</td>
       <td colspan="2"><code>nn</code> / Norwegian (Nynorsk)</td>
       <td><code>fa</code> / Persian</td>
-      <td><code>pl</code> / Polish</td>
     </tr>
     <tr>
+      <td><code>pl</code> / Polish</td>
       <td><code>pt</code> / Portugese</td>
       <td><code>ru</code> / Russian</td>
       <td><code>sr</code> / Serbian</td>
-      <td><code>sh</code> / Serbo-Croatian</td>
     </tr>
     <tr>
+      <td><code>sh</code> / Serbo-Croatian</td>
       <td><code>sk</code> / Slovak</td>
       <td><code>si</code> / Slovenian</td>
       <td><code>es</code> / Spanish</td>
-      <td><code>sv</code> / Swedish</td>
     </tr>
     <tr>
+      <td><code>sv</code> / Swedish</td>
       <td><code>tr</code> / Turkish</td>
       <td><code>uk</code> / Ukrainian</td>
       <td><code>vi</code> / Vietnamese</td>
-      <td><code>zh</code> / Chinese (Simplified)</td>
     </tr>
     <tr>
-      <td colspan="2">
-        <code>zh-Hant</code> / Chinese (Traditional)
-      </td>
+      <td colspan="2"><code>zh</code> / Chinese (Simplified)</td>
+      <td colspan="2"><code>zh-Hant</code> / Chinese (Traditional)</td>
+    </tr>
+    <tr>
       <td colspan="2"><code>zh-TW</code> / Chinese (Taiwanese)</td>
-    </tr>
-    <tr>
-      <td colspan="4" align="right">
+      <td colspan="2" align="right">
         <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
       </td>
     </tr>

@@ -20,20 +20,23 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Table of contents item -->
-<li class="md-nav__item">
-  <a href="{{ toc_item.url }}" class="md-nav__link">
-    {{ toc_item.title }}
-  </a>
-
-  <!-- Render nested item list -->
-  {% if toc_item.children %}
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        {% for toc_item in toc_item.children %}
-          {% include "partials/toc-item.html" %}
-        {% endfor %}
-      </ul>
-    </nav>
-  {% endif %}
-</li>
+<!-- Translations: Afrikaans -->
+{% macro t(key) %}{{ {
+  "language": "af",
+  "clipboard.copy": "Kopieer na knipbord",
+  "clipboard.copied": "gekopieer na knipbord",
+  "edit.link.title": "Wysig hierdie bladsy",
+  "footer.previous": "Vorige",
+  "footer.next": "Volgende",
+  "meta.comments": "Kommentaar",
+  "meta.source": "Bron",
+  "search.language": "nl",
+  "search.placeholder": "Soek",
+  "search.result.placeholder": "Tik om te begin soek",
+  "search.result.none": "Geen ooreenstemmende dokumente",
+  "search.result.one": "1 ooreenstemmende dokument",
+  "search.result.other": "# ooreenstemmende dokumente",
+  "skip.link.title": "Slaan oor na inhoud",
+  "source.link.title": "Slaan oor na inhoud",
+  "toc.title": "Inhoudsopgawe"
+}[key] }}{% endmacro %}
