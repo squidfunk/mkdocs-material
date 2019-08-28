@@ -64,7 +64,7 @@
     {% block styles %}
       <link rel="stylesheet" href="{{ 'assets/stylesheets/application.9e88e2f9.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.8f11dc4d.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.8ec47f69.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -199,7 +199,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.5e9c0eaa.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/application.7bf9c38f.js' | url }}"></script>
       <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
