@@ -111,18 +111,6 @@
   {% else %}
     <body dir="{{ lang.t('direction') }}">
   {% endif %}
-    <script>
-      Toastify({
-        text: "Hi！新学期就要到啦，我们也正在筹备新一轮更新计划，对 OI Wiki 哪些页面不满意，或者有什么意见建议，欢迎反馈到这个问卷来。（滋兹匿名提交，欢迎转发～",
-        duration: 10000,
-        destination: "https://wj.qq.com/s2/4467592/b1e9/",
-        newWindow: true,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: 'center', // `left`, `center` or `right`
-        stopOnFocus: true // Prevents dismissing of toast on hover
-      }).showToast();
-    </script>
     <svg class="md-svg">
       <defs>
         {% set platform = config.extra.repo_icon or config.repo_url %}
@@ -214,12 +202,24 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.7bf9c38f.js' | url }}"></script>
-      <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
-      {% for path in config["extra_javascript"] %}
-        <script src="{{ path | url }}"></script>
-      {% endfor %}
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.js"></script>
+    <script src="{{ 'assets/javascripts/application.7bf9c38f.js' | url }}"></script>
+    <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
+    {% for path in config["extra_javascript"] %}
+    <script src="{{ path | url }}"></script>
+    {% endfor %}
     {% endblock %}
   </body>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.js"></script>
+  <script>
+    Toastify({
+      text: "Hi！新学期就要到啦，我们也正在筹备新一轮更新计划，对 OI Wiki 哪些页面不满意，或者有什么意见建议，欢迎反馈到这个问卷来。（滋兹匿名提交，欢迎转发～",
+      duration: 10000,
+      destination: "https://wj.qq.com/s2/4467592/b1e9/",
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: 'center', // `left`, `center` or `right`
+      stopOnFocus: true // Prevents dismissing of toast on hover
+    }).showToast();
+  </script>
 </html>
