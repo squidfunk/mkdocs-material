@@ -209,26 +209,5 @@
     {% endfor %}
     {% endblock %}
   </body>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.js"></script>
-  <script>
-    Toastify({
-      text: "Hi！欢迎点击这里对 OI Wiki 提一点意见建议～",
-      duration: 10000,
-      destination: "https://wj.qq.com/s2/4467592/b1e9/",
-      newWindow: true,
-      close: true,
-      gravity: "top", // `top` or `bottom`
-      position: 'center', // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      className: "SurveyToast"
-    }).showToast();
-  </script>
-  <script>
-    document.getElementsByClassName("SurveyToast")[0].setAttribute("style", "top: 15px;width:3000px;");
-  </script>
-  <script>
-    document.getElementsByClassName("SurveyToast")[0].addEventListener("click",function(){
-      document.getElementsByClassName("SurveyToast")[0].setAttribute("style", "top: 15px;width:3000px;");
-    });
-  </script>
+  
 </html>
