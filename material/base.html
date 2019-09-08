@@ -219,7 +219,16 @@
       close: true,
       gravity: "top", // `top` or `bottom`
       position: 'center', // `left`, `center` or `right`
-      stopOnFocus: true // Prevents dismissing of toast on hover
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      className: "SurveyToast"
     }).showToast();
+  </script>
+  <script>
+    document.getElementsByClassName("SurveyToast")[0].setAttribute("style", "top: 15px;width:2000px;");
+  </script>
+  <script>
+    document.getElementsByClassName("SurveyToast")[0].addEventListener("click",function(){
+      document.getElementsByClassName("SurveyToast")[0].setAttribute("style", "top: 15px;width:3000px;");
+    });
   </script>
 </html>
