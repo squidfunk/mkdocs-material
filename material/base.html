@@ -202,11 +202,14 @@
       {% endblock %}
     </div>
     {% block scripts %}
-    <script src="{{ 'assets/javascripts/application.7bf9c38f.js' | url }}"></script>
-    <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
-    {% for path in config["extra_javascript"] %}
-    <script src="{{ path | url }}"></script>
-    {% endfor %}
+      <script src="{{ 'assets/javascripts/application.7bf9c38f.js' | url }}"></script>
+      <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
+      {% for path in config["extra_javascript"] %}
+        <script src="{{ path | url }}"></script>
+      {% endfor %}
+      {% if config.extra.notice %}
+        {% include "partials/integrations/notice.html" %}
+      {% endif %}
     {% endblock %}
   </body>
   
