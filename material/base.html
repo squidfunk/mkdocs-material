@@ -206,6 +206,9 @@
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
+      {% if config.extra.notice %}
+        {% include "partials/integrations/notice.html" %}
+      {% endif %}
     {% endblock %}
   </body>
 </html>
