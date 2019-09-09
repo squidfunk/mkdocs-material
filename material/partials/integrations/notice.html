@@ -8,7 +8,7 @@ window.onload = function () {
     sessionStorage.setItem("toastdisplay", "true");
     iziToast.info({
       title: '{{ config.extra.notice.title }}',
-      message: '<a href="{{ config.extra.notice.url }}">{{ config.extra.notice.message }}</a>',
+      message: '<a href="{{ config.extra.notice.url }}" target="_blank">{{ config.extra.notice.message }}</a>',
       position: '{{ config.extra.notice.position }}',
       progressBar: {{ config.extra.notice.progressBar | lower }},
       timeout: {{ config.extra.notice.timeout | lower }}
