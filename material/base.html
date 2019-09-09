@@ -96,6 +96,7 @@
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     {% block analytics %}
       {% if config.google_analytics %}
         {% include "partials/integrations/analytics.html" %}
@@ -211,4 +212,5 @@
       {% endif %}
     {% endblock %}
   </body>
+  
 </html>
