@@ -138,7 +138,7 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
     /* Output */
     output: {
       path: path.resolve(__dirname, "material"),
-      filename: `[name]${args.mode === "production" ? ".[chunkhash]" : ""}.js`,
+      filename: `[name]${args.mode === "production" ? ".[chunkhash]" : ""}.min.js`,
       hashDigestLength: 8,
       libraryTarget: "window"
     },
@@ -160,7 +160,8 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
            plugins will complain about. For this reason we only minify */
         {
           context: path.resolve(__dirname, "node_modules/lunr-languages"),
-          to: "assets/javascripts/lunr",
+          to: "assets/javascripts/lunr/[name].min.js",
+          toType: "template",
           from: "*.js",
           transform: content => {
             return uglify.minify(content.toString()).code
