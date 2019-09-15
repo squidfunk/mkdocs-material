@@ -87,7 +87,7 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
               options: {
                 name: `[name]${
                   args.mode === "production" ? ".[md5:hash:hex:8]" : ""
-                }.css`,
+                }.min.css`,
                 outputPath: "assets/stylesheets",
                 publicPath: path.resolve(__dirname, "material")
               }
@@ -178,6 +178,8 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
         /* Copy and minify web font stylesheets */
         {
           context: "src",
+          to: "assets/fonts/[name].min.css",
+          toType: "template",
           from: "assets/fonts/*.css",
           transform: content => cssmin(content.toString())
         },
