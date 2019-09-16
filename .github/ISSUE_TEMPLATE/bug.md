@@ -13,11 +13,11 @@ about: Report a bug
 
   Why? Because the maintainers of this project are wasting a lot of time
   answering questions that are not directly related to this project.
+
+  Make sure that your request fulfills all of the following requirements.
 -->
 
 __I checked that...__
-
-<!-- Make sure that your request fulfills all of the following requirements -->
 
 - [ ] ... the documentation does not mention anything about my problem
 - [ ] ... the problem doesn't occur with the default MkDocs template
