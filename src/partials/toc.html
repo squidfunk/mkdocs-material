@@ -47,8 +47,7 @@
       <!-- Source files -->
       {% if page.meta.source and page.meta.source | length > 0 %}
         <li class="md-nav__item">
-          <a href="#__source" title="{{ lang.t('meta.source') }}"
-              class="md-nav__link md-nav__link--active">
+          <a href="#__source" class="md-nav__link md-nav__link--active">
             {{ lang.t("meta.source") }}
           </a>
         </li>
@@ -63,8 +62,7 @@
       <!-- Disqus integration -->
       {% if not page.is_homepage and disqus %}
         <li class="md-nav__item">
-          <a href="#__comments" title="{{ lang.t('meta.comments') }}"
-              class="md-nav__link md-nav__link--active">
+          <a href="#__comments" class="md-nav__link md-nav__link--active">
             {{ lang.t("meta.comments") }}
           </a>
         </li>
