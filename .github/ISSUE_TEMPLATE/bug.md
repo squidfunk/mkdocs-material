@@ -15,11 +15,9 @@ about: Report a bug
   answering questions that are not directly related to this project.
 -->
 
-__Checklist__:
+__I checked that...__
 
 <!-- Make sure that your request fulfills all of the following requirements -->
-
-I checked that...
 
 - [ ] ... the documentation does not mention anything about my problem
 - [ ] ... the problem doesn't occur with the default MkDocs template
@@ -66,5 +64,5 @@ The contents of your mkdocs.yml
 
 <!-- Please provide your operating system and browser version -->
 
-* OS: [The operating system you're running]
-* Browser: [The browser used, if relevant]
+* OS: ...
+* Browser: ...

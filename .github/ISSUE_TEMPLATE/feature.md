@@ -15,11 +15,9 @@ about: Suggest an idea
   answering questions that are not directly related to this project.
 -->
 
-__Checklist__:
+__I checked that...__
 
 <!-- Make sure that your request fulfills all of the following requirements -->
-
-I checked that...
 
 - [ ] ... the documentation does not mention anything about my idea
 - [ ] ... to my best knowledge, my idea wouldn't break something for other users
