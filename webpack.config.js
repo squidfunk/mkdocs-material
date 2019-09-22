@@ -163,7 +163,11 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
           to: "assets/javascripts/lunr",
           from: "*.js",
           transform: content => {
-            return uglify.minify(content.toString()).code
+            return uglify.minify(content.toString(), {
+              output: {
+                comments: /^!/
+              }
+            }).code
           }
         },
 
@@ -256,8 +260,14 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
     /* Optimizations */
     optimization: {
       minimizer: [
-        new UglifyJsPlugin(),
-        new OptimizeCSSAssetsPlugin({})
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            output: {
+              comments: /^!/
+            }
+          }
+        }),
+        new OptimizeCSSAssetsPlugin()
       ],
       splitChunks: {
         cacheGroups: {
