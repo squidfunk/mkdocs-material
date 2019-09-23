@@ -83,7 +83,7 @@
     "unfetch": "^3.0.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
-    "webpack-manifest-plugin": "^2.0.4"
+    "webpack-manifest-plugin": "^2.1.0"
   },
   "engines": {
     "node": ">= 8"
