@@ -127,7 +127,7 @@ SCRIPT_PARTIALS = $(shell find src -name "*.ts*")
 material/assets/javascripts: $$@/lunr material/assets/javascripts/app.js
 material/assets/javascripts/app.js: ${SCRIPT} ${SCRIPT_PARTIALS} | $$(@D)/.
 	@ echo "+ $@"
-	@ node -r ts-node/register fusebox
+	@ ${BIN}/webpack --mode production
 
 # -----------------------------------------------------------------------------
 

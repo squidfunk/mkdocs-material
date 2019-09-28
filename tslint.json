@@ -1,7 +1,6 @@
 {
   "extends": [
     "tslint:latest",
-    "tslint-no-circular-imports",
     "tslint-sonarts"
   ],
   "rules": {

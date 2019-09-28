@@ -20,16 +20,25 @@
  * IN THE SOFTWARE.
  */
 
-import { fusebox } from 'fuse-box'
+import { Observable, fromEventPattern } from "rxjs"
+import { startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
- * Configuration
+ * Functions
  * ------------------------------------------------------------------------- */
 
-fusebox({
-  target: 'browser',
-  entry: 'src/assets/javascripts/index.ts',
-  output: "material/assets/javascripts",
-  cache: true
-})
-  .runProd()
+/**
+ * Create an observable for a media query
+ *
+ * @param query - Media query
+ *
+ * @return Media query observable
+ */
+export function fromMediaQuery(query: string): Observable<boolean> {
+  const media  = window.matchMedia(query)
+  return fromEventPattern<boolean>(next =>
+    media.addListener(() => next(media.matches))
+  ).pipe(
+    startWith(media.matches)
+  )
+}

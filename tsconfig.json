@@ -2,9 +2,8 @@
   "compilerOptions": {
     "alwaysStrict": true,
     "baseUrl": ".",
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
+    "declaration": false,
+    "declarationMap": false,
     "lib": [
       "dom",
       "es2017",
