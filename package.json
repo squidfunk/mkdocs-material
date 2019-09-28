@@ -23,7 +23,7 @@
     "url": "https://github.com/squidfunk/mkdocs-material.git"
   },
   "scripts": {
-    "build": "make build",
+    "build": "make -j build",
     "clean": "make clean",
     "lint": "make lint",
     "start": "make start"
@@ -41,6 +41,7 @@
     "autoprefixer": "^9.6.1",
     "css-mqpacker": "^7.0.0",
     "csso-cli": "^2.0.2",
+    "fuse-box": "^4.0.0-next.139",
     "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",

@@ -117,6 +117,8 @@ material/assets/javascripts/lunr/%.js: ${LUNR_SOURCE}/%.js | $$(@D)/.
 	@ echo "+ $@"
 	@ cp $< $@
 
+# -----------------------------------------------------------------------------
+
 # Scripts
 material/assets/javascripts: $$@/lunr
 
