@@ -56,9 +56,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -68,9 +68,7 @@
         <meta name="theme-color" content="{{ primary }}">
       {% endif %}
     {% endblock %}
-    {% block libs %}
-      <script src="{{ 'assets/javascripts/modernizr.js' | url }}"></script>
-    {% endblock %}
+    {% block libs %}{% endblock %}
     {% block fonts %}
       {% if font != false %}
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -193,7 +191,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/app.js' | url }}"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}

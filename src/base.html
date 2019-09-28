@@ -112,12 +112,12 @@
 
       <!-- Theme-related stylesheets -->
       <link rel="stylesheet" type="text/css"
-          href="{{ 'assets/stylesheets/application.css' | url }}" />
+          href="{{ 'assets/stylesheets/app.css' | url }}" />
 
       <!-- Extra color palette -->
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" type="text/css"
-            href="{{ 'assets/stylesheets/application-palette.css' | url }}" />
+            href="{{ 'assets/stylesheets/app-palette.css' | url }}" />
       {% endif %}
 
       <!-- Theme-color meta tag for Android -->
@@ -131,9 +131,7 @@
     {% endblock %}
 
     <!-- JavaScript libraries -->
-    {% block libs %}
-      <script src="{{ 'assets/javascripts/modernizr.js' | url }}"></script>
-    {% endblock %}
+    {% block libs %}{% endblock %}
 
     <!-- Webfonts -->
     {% block fonts %}
@@ -347,7 +345,7 @@
 
     <!-- Theme-related JavaScript -->
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/app.js' | url }}"></script>
 
       <!-- Load additional languages for search -->
       {% if lang.t("search.language") != "en" %}

@@ -44,8 +44,10 @@ lint:
 	${BIN}/stylelint `find src/assets -name *.scss`
 
 # Start development server
-start: clean
-	${BIN}/webpack --watch
+start:
+	@ NODE_ENV=development ${BIN}/nodemon --quiet \
+		--watch src --ext html,scss,ts \
+		--exec make build
 
 # -----------------------------------------------------------------------------
 # Targets
@@ -120,7 +122,12 @@ material/assets/javascripts/lunr/%.js: ${LUNR_SOURCE}/%.js | $$(@D)/.
 # -----------------------------------------------------------------------------
 
 # Scripts
-material/assets/javascripts: $$@/lunr
+SCRIPT = src/assets/javascripts/index.ts
+SCRIPT_PARTIALS = $(shell find src -name "*.ts*")
+material/assets/javascripts: $$@/lunr material/assets/javascripts/app.js
+material/assets/javascripts/app.js: ${SCRIPT} ${SCRIPT_PARTIALS} | $$(@D)/.
+	@ echo "+ $@"
+	@ node -r ts-node/register fusebox
 
 # -----------------------------------------------------------------------------
 

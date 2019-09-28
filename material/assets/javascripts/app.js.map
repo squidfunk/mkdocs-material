@@ -1,0 +1,1 @@
+{"version":3,"sources":["/src/assets/javascripts/index.ts"],"names":["console","log"],"mappings":"spBAAAA,QAAQC,IAAI","file":"app","sourcesContent":["console.log(\"LOL\")\n"]}
