@@ -7,14 +7,6 @@
     "documentation",
     "theme"
   ],
-  "classifiers": [
-    "Development Status :: 5 - Production/Stable",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: JavaScript",
-    "Programming Language :: Python",
-    "Topic :: Documentation",
-    "Topic :: Text Processing :: Markup :: HTML"
-  ],
   "homepage": "https://squidfunk.github.io/mkdocs-material/",
   "bugs": {
     "url": "https://github.com/squidfunk/mkdocs-material/issues",
@@ -31,59 +23,39 @@
     "url": "https://github.com/squidfunk/mkdocs-material.git"
   },
   "scripts": {
-    "build": "make clean build",
+    "build": "make build",
     "clean": "make clean",
     "lint": "make lint",
-    "start": "make -j watch",
-    "watch": "make -j watch"
+    "start": "make -j start"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/preset-env": "^7.6.2",
-    "autoprefixer": "^9.6.1",
-    "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.0.6",
-    "chalk": "^2.4.2",
+  "dependencies": {
     "clipboard": "^2.0.0",
-    "copy-webpack-plugin": "^5.0.4",
-    "css-loader": "^3.2.0",
-    "css-mqpacker": "^7.0.0",
-    "cssmin": "^0.4.3",
-    "custom-event-polyfill": "^1.0.7",
-    "customizr": "^1.3.0",
-    "eslint": "^6.4.0",
-    "event-hooks-webpack-plugin": "^2.1.4",
-    "expose-loader": "^0.7.4",
-    "extract-loader": "^3.1.0",
-    "file-loader": "^4.2.0",
-    "html-minifier": "^4.0.0",
-    "imagemin-webpack-plugin": "^2.4.2",
     "js-cookie": "^2.2.1",
     "lunr": "^2.3.6",
     "lunr-languages": "^1.1.0",
+    "rambda": "^3.1.0",
+    "rxjs": "^6.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.8",
+    "autoprefixer": "^9.6.1",
+    "css-mqpacker": "^7.0.0",
+    "csso-cli": "^2.0.2",
+    "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
-    "mini-css-extract-plugin": "^0.8.0",
-    "modernizr-auto-loader": "^0.1.0",
     "modularscale-sass": "^3.0.10",
     "node-sass": "^4.12.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss-loader": "^3.0.0",
-    "promise-polyfill": "^8.1.3",
-    "sass-loader": "^7.3.1",
-    "style-loader": "^1.0.0",
+    "postcss-cli": "^6.1.3",
     "stylelint": "^11.0.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-order": "^3.1.1",
     "stylelint-scss": "^3.11.1",
-    "uglifyjs-3-webpack-plugin": "^1.2.4",
-    "unfetch": "^3.0.0",
-    "webpack": "^4.41.0",
-    "webpack-cli": "^3.3.9",
-    "webpack-manifest-plugin": "^2.1.2"
+    "svgo": "^1.3.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.18.0",
+    "tslint-sonarts": "^1.9.0",
+    "typescript": "^3.6.3"
   },
   "engines": {
     "node": ">= 8"
