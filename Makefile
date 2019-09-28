@@ -117,15 +117,16 @@ material/assets/javascripts/lunr/%.js: ${LUNR_SOURCE}/%.js | $$(@D)/.
 	@ echo "+ $@"
 	@ cp $< $@
 
-# All scripts
+# Scripts
 material/assets/javascripts: $$@/lunr
 
 # -----------------------------------------------------------------------------
 
 # Stylesheets
 STYLESHEETS = $(subst src,material,$(wildcard src/assets/stylesheets/a*.scss))
+STYLESHEETS_PARTIALS = $(shell find src -name "_*.scss")
 material/assets/stylesheets: $(patsubst %.scss,%.css,${STYLESHEETS})
-material/assets/stylesheets/%.css: src/assets/stylesheets/%.scss | $$(@D)/.
+material/%.css: src/%.scss ${STYLESHEETS_PARTIALS} | $$(@D)/.
 	@ echo "+ $@"
 	@ ${BIN}/node-sass -q \
 		--source-map $@.map \
@@ -141,13 +142,13 @@ material/assets/stylesheets/%.css: src/assets/stylesheets/%.scss | $$(@D)/.
 
 # -----------------------------------------------------------------------------
 
-# All assets
+# Assets
 material/assets: $$@/fonts $$@/images $$@/javascripts $$@/stylesheets
 
 # -----------------------------------------------------------------------------
 
 # Templates
-HTML = $(subst src,material,$(shell find src -type f -name "*.html" ))
+HTML = $(subst src,material,$(shell find src -name "*.html" ))
 material/%.html: src/%.html | $$(@D)/.
 	@ echo "+ $@"
 	@ ${BIN}/html-minifier \
