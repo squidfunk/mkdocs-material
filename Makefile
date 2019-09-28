@@ -158,7 +158,7 @@ material/%.html: src/%.html | $$(@D)/.
 		--remove-comments \
 		--remove-script-type-attributes \
 		--remove-style-link-type-attributes \
-		$< | awk 'NF' > $@
+		$< | awk 'NF' | cat .banner - > $@
 
 # Python files
 material/%.py: src/%.py
