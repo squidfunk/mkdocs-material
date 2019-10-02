@@ -12,7 +12,7 @@
     </a>
     {{ config.site_name }}
   </label>
-  {% if config.repo_url %}
+  {% if config.repo_url != "/" %}
     <div class="md-nav__source">
       {% include "partials/source.html" %}
     </div>
