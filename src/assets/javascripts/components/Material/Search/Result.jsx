@@ -21,6 +21,8 @@
  */
 
 import lunr from "expose-loader?lunr!lunr"
+import Worker from "./Worker.js"
+import { buildSearchIndex } from "./SearchIndex"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -36,8 +38,8 @@ import lunr from "expose-loader?lunr!lunr"
  * @return
  */
 const escapeRegex = regex => {
-	return regex.replace(/[|\\{}()[\]^$+*?.-]/g, '\\$&');
-};
+  return regex.replace(/[|\\{}()[\]^$+*?.-]/g, "\\$&")
+}
 
 /**
  * Escape HTML strings
@@ -52,10 +54,10 @@ const escapeRegex = regex => {
  * @return {string} Escaped HTML string
  */
 const escapeHTML = html => {
-  var text = document.createTextNode(html);
-  var p = document.createElement('p');
-  p.appendChild(text);
-  return p.innerHTML;
+  const text = document.createTextNode(html)
+  const p = document.createElement("p")
+  p.appendChild(text)
+  return p.innerHTML
 }
 
 /**
@@ -203,39 +205,41 @@ export default class Result {
 
         /* Create stack and index */
         this.stack_ = []
-        this.index_ = lunr(function() {
-          const filters = {
-            "search.pipeline.trimmer": lunr.trimmer,
-            "search.pipeline.stopwords": lunr.stopWordFilter
-          }
+
+        if (!this.worker) {
 
           /* Disable stop words filter and trimmer, if desired */
-          const pipeline = Object.keys(filters).reduce((result, name) => {
+          const enabledFilters = [
+            "search.pipeline.trimmer",
+            "search.pipeline.stopwords"
+          ].reduce((result, name) => {
             if (!translate(name).match(/^false$/i))
-              result.push(filters[name])
+              result.push(name)
             return result
           }, [])
 
-          /* Remove stemmer, as it cripples search experience */
-          this.pipeline.reset()
-          if (pipeline)
-            this.pipeline.add(...pipeline)
-
-          /* Set up alternate search languages */
-          if (lang.length === 1 && lang[0] !== "en" && lunr[lang[0]]) {
-            this.use(lunr[lang[0]])
-          } else if (lang.length > 1) {
-            this.use(lunr.multiLanguage(...lang))
+          try {
+            this.worker = new Worker()
+          } catch (e) {
+            // worker not supported
           }
 
-          /* Index fields */
-          this.field("title", { boost: 10 })
-          this.field("text")
-          this.ref("location")
+          if (this.worker) {
+            this.worker.addEventListener("message", event => {
+              this.index_ = lunr.Index.load(JSON.parse(event.data))
+              this.update(ev)
+              this.el_.classList.remove("mk-search-result--indexing")
+            })
 
-          /* Index documents */
-          docs.forEach(doc => this.add(doc))
-        })
+            const docsList = []
+            docs.forEach(doc => docsList.push(doc))
+            this.worker.postMessage({ docs: docsList, lang, filters: enabledFilters })
+            this.el_.classList.add("mk-search-result--indexing")
+          } else {
+            this.worker = true
+            this.index_ = buildSearchIndex(docs, lang, enabledFilters)
+          }
+        }
 
         /* Register event handler for lazy rendering */
         const container = this.el_.parentNode

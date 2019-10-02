@@ -65,6 +65,19 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
     module: {
       rules: [
 
+        /* Workers */
+        {
+          test: /Worker\.js$/,
+          use: {
+            loader: "worker-loader",
+            options: {
+              inline: true,
+              fallback: true,
+              name: "assets/javascripts/workers/[name].[hash].js"
+            }
+          }
+        },
+
         /* Babel ES6 transformations */
         {
           test: /\.jsx?$/,
