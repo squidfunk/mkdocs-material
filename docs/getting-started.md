@@ -165,6 +165,17 @@ Design color palette. Valid values are: `red`, `pink`, `purple`, `deep purple`,
 `yellow`, `amber`, `orange`, `deep orange`, `brown`, `grey`, `blue grey` and
 `white`. The last four colors can only be used as a primary color.
 
+You may also define custom hex values instead of the names to easily adapt the
+theme to your style. Since this is dynamic and cannot be statically embedded
+into CSS, these values are updated once the page is loaded.
+
+``` yaml
+theme:
+  palette:
+    primary: '#123456'
+    accent: '#789ABC'
+```
+
 If the color is set via this configuration, an additional CSS file that
 defines the color palette is automatically included. If you want to keep things
 lean, clone the repository and recompile the theme with your custom colors set.
