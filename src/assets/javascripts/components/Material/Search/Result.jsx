@@ -140,7 +140,8 @@ export default class Result {
       placeholder: this.meta_.textContent,
       none: translate("search.result.none"),
       one: translate("search.result.one"),
-      other: translate("search.result.other")
+      other: translate("search.result.other"),
+      indexing: translate("search.result.indexing")
     }
 
     /* Override tokenizer separator, if given */
@@ -206,7 +207,10 @@ export default class Result {
         /* Create stack and index */
         this.stack_ = []
 
-        if (!this.worker) {
+        if (!this.buildingIndex) {
+
+          /* Build the index only once */
+          this.buildingIndex = true
 
           /* Disable stop words filter and trimmer, if desired */
           const enabledFilters = [
@@ -218,25 +222,39 @@ export default class Result {
             return result
           }, [])
 
+          /* Create worker */
+          let worker = null
           try {
-            this.worker = new Worker()
+            worker = new Worker()
           } catch (e) {
-            // worker not supported
+
+            /* worker not supported */
           }
 
-          if (this.worker) {
-            this.worker.addEventListener("message", event => {
+          if (worker) {
+
+            /* Set index when worker is done */
+            worker.addEventListener("message", event => {
               this.index_ = lunr.Index.load(JSON.parse(event.data))
               this.update(ev)
-              this.el_.classList.remove("mk-search-result--indexing")
             })
 
+            /* Start worker process */
             const docsList = []
             docs.forEach(doc => docsList.push(doc))
-            this.worker.postMessage({ docs: docsList, lang, filters: enabledFilters })
-            this.el_.classList.add("mk-search-result--indexing")
+            worker.postMessage({ docs: docsList, lang, filters: enabledFilters })
+
+            /* Render loading message */
+            if (this.message_.indexing) {
+              this.meta_.appendChild(
+                <span class="md-search-result--indexing">
+                  {this.message_.indexing}
+                </span>
+              )
+            }
           } else {
-            this.worker = true
+
+            /* Generate index the old-fashioned way if workers are not supported */
             this.index_ = buildSearchIndex(docs, lang, enabledFilters)
           }
         }
