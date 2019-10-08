@@ -84,6 +84,20 @@ function initialize(config) { // eslint-disable-line func-style
       return !!navigator.userAgent.match(/(iPad|iPhone|iPod)/g)
     })
 
+    // TODO bind this to variable?
+    const colorPrimary = document.body.dataset.mdColorPrimary
+    if (colorPrimary.startsWith("#")) {
+      document.body.style.setProperty("--primary-color", colorPrimary)
+      // TODO how to calculate --primary-color-dark
+    }
+
+    // TODO bind this to variable?
+    const colorAccent = document.body.dataset.mdColorAccent
+    if (colorAccent.startsWith("#")) {
+      document.body.style.setProperty("--accent-color", colorAccent)
+      // TODO how to calculate --accent-color-hover
+    }
+
     /* Wrap all data tables for better overflow scrolling */
     const tables = document.querySelectorAll("table:not([class])")              // TODO: this is JSX, we should rename the file
     Array.prototype.forEach.call(tables, table => {
