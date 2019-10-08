@@ -36,6 +36,7 @@
         "search.language",
         "search.pipeline.stopwords",
         "search.pipeline.trimmer",
+        "search.result.indexing",
         "search.result.none",
         "search.result.one",
         "search.result.other",
@@ -56,7 +57,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.30686662.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.b7d6c3dc.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.a8b3c06d.css' | url }}">
       {% endif %}
@@ -193,7 +194,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.bd922475.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/application.5959148a.js' | url }}"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
