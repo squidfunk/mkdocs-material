@@ -64,7 +64,7 @@ export default class GitHub extends Abstract {
         .then(response => response.json())
         .then(data => {
           if (!(data instanceof Array))
-            throw new TypeError
+            return []
 
           /* Display number of stars and forks, if repository is given */
           if (this.name_) {
