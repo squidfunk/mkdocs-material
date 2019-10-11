@@ -64,6 +64,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.4.3 <small>_ October 3, 2019</small>
+
+* Added Estonian translations
+* Fixed removal of copyright banners in minified JavaScript
+* Removed unnecessary title attributes from links in table of contents
+
 ### 4.4.2 <small>_ August 27, 2019</small>
 
 * Added Afrikaans translations
