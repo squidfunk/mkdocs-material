@@ -1,3 +1,9 @@
+mkdocs-material-4.4.3 (2019-10-03)
+
+  * Added Estonian translations
+  * Fixed removal of copyright banners in minified JavaScript
+  * Removed unnecessary title attributes from links in table of contents
+
 mkdocs-material-4.4.2 (2019-08-27)
 
   * Added Afrikaans translations
