@@ -38,7 +38,7 @@ with open("README.md", encoding = "utf-8") as data:
 
 # Package description
 setup(
-    name = package["name"],
+    name = "mkdocs-material",
     version = package["version"],
     url = package["homepage"],
     license = package["license"],
