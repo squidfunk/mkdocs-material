@@ -43,7 +43,7 @@
     "@babel/core": "^7.6.4",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.6.3",
-    "autoprefixer": "^9.6.5",
+    "autoprefixer": "^9.7.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "chalk": "^2.4.2",
