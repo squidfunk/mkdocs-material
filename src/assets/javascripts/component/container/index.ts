@@ -34,10 +34,10 @@ import { toArray } from "../../utilities"
 /**
  * Container state
  */
-export interface ContainerState {
+export interface Container {
   offset: number                       /* Container top offset */
   height: number                       /* Container height */
-  active: boolean                      /* Scrolled past top */
+  active: boolean                      /* Scrolled past top offset */
 }
 
 /* ----------------------------------------------------------------------------
@@ -69,8 +69,8 @@ interface Options {
  * @return Container state observable
  */
 export function fromContainer(
-  container: HTMLElement, header: HTMLElement, options: Options
-): Observable<ContainerState> {
+  container: HTMLElement, header: HTMLElement, { size$, offset$ }: Options
+): Observable<Container> {
 
   /* Adjust top offset if header is fixed */
   const adjust = getComputedStyle(header)
@@ -79,7 +79,7 @@ export function fromContainer(
       : 0
 
   /* Compute the container's top offset */
-  const offset$ = options.size$.pipe(
+  const top$ = size$.pipe(
     map(() => reduce((offset, child) => {
       return Math.max(offset, child.offsetTop)
     }, 0, toArray(container.children)) - adjust),
@@ -88,7 +88,7 @@ export function fromContainer(
   )
 
   /* Compute the container's available height */
-  const height$ = combineLatest(options.offset$, options.size$, offset$).pipe(
+  const height$ = combineLatest(offset$, size$, top$).pipe(
     map(([{ y }, { height }, offset]) => {
       const bottom = container.offsetTop + container.offsetHeight
       return height - adjust
@@ -99,13 +99,13 @@ export function fromContainer(
   )
 
   /* Compute whether the viewport offset is past the container's top */
-  const active$ = combineLatest(options.offset$, offset$).pipe(
+  const active$ = combineLatest(offset$, top$).pipe(
     map(([{ y }, threshold]) => y >= threshold),
     distinctUntilChanged()
   )
 
   /* Combine into a single hot observable */
-  return combineLatest(offset$, height$, active$).pipe(
+  return combineLatest(top$, height$, active$).pipe(
     map(([offset, height, active]) => ({ offset, height, active })),
     shareReplay({ bufferSize: 1, refCount: true })
   )
