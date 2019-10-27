@@ -21,12 +21,7 @@
  */
 
 import { Observable, fromEvent } from "rxjs"
-import {
-  filter,
-  map,
-  shareReplay,
-  startWith
-} from "rxjs/operators"
+import { filter, map, shareReplay, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Data
