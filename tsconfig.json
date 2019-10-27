@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "declaration": false,
     "declarationMap": false,
+    "downlevelIteration": true,
     "lib": [
       "dom",
       "es2017",

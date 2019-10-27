@@ -39,7 +39,7 @@ import { Container } from "../container"
 /**
  * Sidebar state
  */
-interface Sidebar {
+export interface Sidebar {
   height: number                       /* Sidebar height */
   lock: boolean                        /* Sidebar lock */
 }
@@ -137,6 +137,6 @@ export function fromSidebar(
     setSidebarLock(sidebar, lock)
   })
 
-  /* Return sidebar observable */
+  /* Return observable */
   return sidebar$
 }
