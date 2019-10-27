@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { equals } from "rambda"
+import { equals } from "ramda"
 import { Observable, fromEvent, merge } from "rxjs"
 import { distinctUntilChanged, map, startWith } from "rxjs/operators"
 
@@ -93,7 +93,7 @@ export function getViewportSize(): ViewportSize {
  *
  * @return Viewport offset observable
  */
-export function watchViewportOffset(): Observable<ViewportOffset> {
+export function fromViewportOffset(): Observable<ViewportOffset> {
   return merge(scroll$, resize$).pipe(
     map(getViewportOffset),
     startWith(getViewportOffset()),
@@ -106,7 +106,7 @@ export function watchViewportOffset(): Observable<ViewportOffset> {
  *
  * @return Viewport size observable
  */
-export function watchViewportSize(): Observable<ViewportSize> {
+export function fromViewportSize(): Observable<ViewportSize> {
   return resize$.pipe(
     map(getViewportSize),
     startWith(getViewportSize()),

@@ -20,6 +20,42 @@
  * IN THE SOFTWARE.
  */
 
+import { OperatorFunction, pipe } from "rxjs"
+import { filter, map } from "rxjs/operators"
+
 /* ----------------------------------------------------------------------------
- * Types
+ * Functions
  * ------------------------------------------------------------------------- */
+
+/**
+ * Retrieve an element matching the query selector
+ *
+ * @template T - Element type
+ *
+ * @param selector - Query selector
+ *
+ * @return HTML element
+ */
+export function getElement<T extends HTMLElement>(
+  selector: string
+): T | undefined {
+  return document.querySelector<T>(selector) || undefined
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Retrieve an element matching the query selector
+ *
+ * @template T - Element type
+ *
+ * @return HTML element observable
+ */
+export function withElement<
+  T extends HTMLElement
+>(): OperatorFunction<string, T> {
+  return pipe(
+    map(selector => getElement<T>(selector)!),
+    filter<T>(Boolean)
+  )
+}

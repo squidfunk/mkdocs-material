@@ -35,7 +35,7 @@ import { startWith } from "rxjs/operators"
  * @return Media query observable
  */
 export function fromMediaQuery(query: string): Observable<boolean> {
-  const media  = window.matchMedia(query)
+  const media = window.matchMedia(query)
   return fromEventPattern<boolean>(next =>
     media.addListener(() => next(media.matches))
   ).pipe(
