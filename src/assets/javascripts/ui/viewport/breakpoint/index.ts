@@ -21,7 +21,7 @@
  */
 
 import { Observable, fromEventPattern } from "rxjs"
-import { startWith } from "rxjs/operators"
+import { shareReplay, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -39,6 +39,7 @@ export function fromMediaQuery(query: string): Observable<boolean> {
   return fromEventPattern<boolean>(next =>
     media.addListener(() => next(media.matches))
   ).pipe(
-    startWith(media.matches)
+    startWith(media.matches),
+    shareReplay({ bufferSize: 1, refCount: true })
   )
 }

@@ -21,7 +21,12 @@
  */
 
 import { Observable, fromEvent } from "rxjs"
-import { filter, map, startWith } from "rxjs/operators"
+import {
+  filter,
+  map,
+  shareReplay,
+  startWith
+} from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -39,12 +44,13 @@ const hash$ = fromEvent<HashChangeEvent>(window, "hashchange")
 /**
  * Create an observable emitting changes in location hashes
  *
- * @return Hash change observable
+ * @return Location hash observable
  */
 export function fromLocationHash(): Observable<string> {
   return hash$.pipe(
-    startWith(document.location.hash),
     map(() => document.location.hash),
-    filter(hash => hash.length > 0)
+    startWith(document.location.hash),
+    filter(hash => hash.length > 0),
+    shareReplay({ bufferSize: 1, refCount: true })
   )
 }

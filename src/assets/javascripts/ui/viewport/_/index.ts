@@ -20,9 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { equals } from "ramda"
 import { Observable, fromEvent, merge } from "rxjs"
-import { distinctUntilChanged, map, startWith } from "rxjs/operators"
+import { map, shareReplay, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -97,7 +96,7 @@ export function fromViewportOffset(): Observable<ViewportOffset> {
   return merge(scroll$, resize$).pipe(
     map(getViewportOffset),
     startWith(getViewportOffset()),
-    distinctUntilChanged<ViewportOffset>(equals)
+    shareReplay({ bufferSize: 1, refCount: true })
   )
 }
 
@@ -110,6 +109,6 @@ export function fromViewportSize(): Observable<ViewportSize> {
   return resize$.pipe(
     map(getViewportSize),
     startWith(getViewportSize()),
-    distinctUntilChanged<ViewportSize>(equals)
+    shareReplay({ bufferSize: 1, refCount: true })
   )
 }
