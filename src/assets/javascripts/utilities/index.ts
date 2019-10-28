@@ -35,6 +35,6 @@
  */
 export function toArray<
   T extends HTMLElement
->(collection: HTMLCollection): T[] {
+>(collection: HTMLCollection | NodeListOf<T>): T[] {
   return Array.from(collection) as T[]
 }

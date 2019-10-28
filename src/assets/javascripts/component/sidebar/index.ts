@@ -97,7 +97,7 @@ export function unsetSidebarLock(sidebar: HTMLElement): void {
 /* ------------------------------------------------------------------------- */
 
 /**
- * Create a observable for a sidebar component
+ * Create an observable for a sidebar component
  *
  * @param sidebar - Sidebar element
  * @param options - Options

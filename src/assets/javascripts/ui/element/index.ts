@@ -23,6 +23,8 @@
 import { OperatorFunction, pipe } from "rxjs"
 import { filter, map } from "rxjs/operators"
 
+import { toArray } from "../../utilities"
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -40,6 +42,21 @@ export function getElement<T extends HTMLElement>(
   selector: string
 ): T | undefined {
   return document.querySelector<T>(selector) || undefined
+}
+
+/**
+ * Retrieve all elements matching the query selector
+ *
+ * @template T - Element type
+ *
+ * @param selector - Query selector
+ *
+ * @return HTML elements
+ */
+export function getElements<T extends HTMLElement>(
+  selector: string
+): T[] {
+  return toArray(document.querySelectorAll<T>(selector))
 }
 
 /* ------------------------------------------------------------------------- */
