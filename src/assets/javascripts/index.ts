@@ -20,15 +20,23 @@
  * IN THE SOFTWARE.
  */
 
+import { animationFrameScheduler, interval, of } from "rxjs"
+import { concatMap, concatMapTo, filter, finalize, mapTo, mergeMap, skipUntil, startWith, switchMap, takeUntil, tap, throttleTime, windowToggle } from "rxjs/operators"
 import {
   fromContainer,
-  fromSidebar
+  fromSidebar,
+  setSidebarHeight,
+  setSidebarLock,
+  unsetSidebarHeight,
+  unsetSidebarLock,
+  withToggle
 } from "./component"
 import {
   fromMediaQuery,
   fromViewportOffset,
   fromViewportSize,
   getElement,
+  withMediaQuery,
 } from "./ui"
 
 // ----------------------------------------------------------------------------
@@ -57,12 +65,49 @@ const container$ = fromContainer(container, header, { size$, offset$ })
 // ---
 
 const nav = getElement("[data-md-component=navigation")!
-const nav$ = fromSidebar(nav, { container$, toggle$: screenAndAbove$ })
+
+fromSidebar(nav, { container$, offset$ })
+  .pipe(
+    withMediaQuery(screenAndAbove$),
+    concatMap(sidebar$ => sidebar$.pipe(
+      finalize(() => {
+        unsetSidebarHeight(nav)
+        unsetSidebarLock(nav)
+      })
+    ))
+  )
+    .subscribe(({ height, lock }) => {
+      setSidebarHeight(nav, height)
+      setSidebarLock(nav, lock)
+    })
 
 const toc = getElement("[data-md-component=toc")!
-const toc$ = fromSidebar(toc, { container$, toggle$: tabletAndAbove$ })
+
+fromSidebar(toc, { container$, offset$ })
+  .pipe(
+    withMediaQuery(tabletAndAbove$),
+    concatMap(sidebar$ => sidebar$.pipe(
+      finalize(() => {
+        unsetSidebarHeight(toc)
+        unsetSidebarLock(toc)
+      })
+    ))
+  )
+    .subscribe(({ height, lock }) => {
+      setSidebarHeight(toc, height)
+      setSidebarLock(toc, lock)
+    })
 
 // ----------------------------------------------------------------------------
 
 export function app(config: any) {
+  // TODO:
+  let parent = container.parentElement as HTMLElement
+  const height = 0
+
+  // TODO: write a fromHeader (?) component observable which
+  // this fromHeader should take the container and ...?
+  // container$.subscribe()
+
+  // container padding = "with parent" + 30px (padding of container...)
 }

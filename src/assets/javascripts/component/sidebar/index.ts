@@ -20,16 +20,10 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
-import {
-  filter,
-  finalize,
-  map,
-  shareReplay,
-  switchMap,
-  takeUntil
-} from "rxjs/operators"
+import { Observable, combineLatest } from "rxjs"
+import { map, shareReplay } from "rxjs/operators"
 
+import { ViewportOffset } from "../../ui"
 import { Container } from "../container"
 
 /* ----------------------------------------------------------------------------
@@ -53,7 +47,7 @@ export interface Sidebar {
  */
 interface Options {
   container$: Observable<Container>    /* Container state observable */
-  toggle$: Observable<boolean>         /* Toggle observable */
+  offset$: Observable<ViewportOffset>  /* Viewport offset observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -111,32 +105,34 @@ export function unsetSidebarLock(sidebar: HTMLElement): void {
  * @return Sidebar state observable
  */
 export function fromSidebar(
-  sidebar: HTMLElement, { container$, toggle$ }: Options
+  sidebar: HTMLElement, { container$, offset$ }: Options
 ): Observable<Sidebar> {
-  const sidebar$ = toggle$.pipe(
-    filter(toggle => toggle === true),
-    switchMap(() => container$.pipe(
-      finalize(() => {
-        unsetSidebarHeight(sidebar)
-        unsetSidebarLock(sidebar)
-      }),
-      takeUntil(toggle$.pipe(
-        filter(toggle => toggle === false)
-      ))
-    )),
-    map<Container, Sidebar>(({ height, active }) => ({
-      height,
-      lock: active
-    })),
-    shareReplay({ bufferSize: 1, refCount: true })
+
+  /* Adjust for internal container offset */
+  const adjust = parseFloat(
+    getComputedStyle(sidebar.parentElement!)
+      .getPropertyValue("padding-top")
   )
 
-  /* Subscribe sidebar element */
-  sidebar$.subscribe(({ height, lock }) => {
-    setSidebarHeight(sidebar, height)
-    setSidebarLock(sidebar, lock)
-  })
+  /* Compute the sidebars's available height */
+  const height$ = combineLatest(offset$, container$)
+    .pipe(
+      map(([{ y }, { offset, height }]) => {
+        return height - adjust
+          + Math.min(adjust, Math.max(0, y - offset))
+      })
+    )
 
-  /* Return observable */
-  return sidebar$
+  /* Compute whether the sidebar should be locked */
+  const lock$ = combineLatest(offset$, container$)
+    .pipe(
+      map(([{ y }, { offset }]) => y >= offset + adjust)
+    )
+
+  /* Combine into single hot observable */
+  return combineLatest(height$, lock$)
+    .pipe(
+      map(([height, lock]) => ({ height, lock })),
+      shareReplay(1)
+    )
 }

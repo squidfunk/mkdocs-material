@@ -20,12 +20,10 @@
  * IN THE SOFTWARE.
  */
 
-import { reduce } from "ramda"
 import { Observable, combineLatest } from "rxjs"
 import { distinctUntilChanged, map, shareReplay } from "rxjs/operators"
 
 import { ViewportOffset, ViewportSize } from "../../ui"
-import { toArray } from "../../utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -72,41 +70,40 @@ export function fromContainer(
   container: HTMLElement, header: HTMLElement, { size$, offset$ }: Options
 ): Observable<Container> {
 
-  /* Adjust top offset if header is fixed */
+  /* Adjust for header offset if fixed */
   const adjust = getComputedStyle(header)
     .getPropertyValue("position") === "fixed"
       ? header.offsetHeight
       : 0
 
-  /* Compute the container's top offset */
-  const top$ = size$.pipe(
-    map(() => reduce((offset, child) => {
-      return Math.max(offset, child.offsetTop)
-    }, 0, toArray(container.children)) - adjust),
-    distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: true })
-  )
-
   /* Compute the container's available height */
-  const height$ = combineLatest(offset$, size$, top$).pipe(
-    map(([{ y }, { height }, offset]) => {
-      const bottom = container.offsetTop + container.offsetHeight
-      return height - adjust
-        - Math.max(0, offset - y)
-        - Math.max(0, height + y - bottom)
-    }),
-    distinctUntilChanged()
-  )
+  const height$ = combineLatest(offset$, size$)
+    .pipe(
+      map(([{ y }, { height }]) => {
+        const top    = container.offsetTop
+        const bottom = container.offsetHeight + top
+        return height
+          - Math.max(0, top    - y,  adjust)
+          - Math.max(0, height + y - bottom)
+      }),
+      distinctUntilChanged()
+    )
 
   /* Compute whether the viewport offset is past the container's top */
-  const active$ = combineLatest(offset$, top$).pipe(
-    map(([{ y }, threshold]) => y >= threshold),
-    distinctUntilChanged()
-  )
+  const active$ = offset$
+    .pipe(
+      map(({ y }) => y >= container.offsetTop - adjust),
+      distinctUntilChanged()
+    )
 
   /* Combine into a single hot observable */
-  return combineLatest(top$, height$, active$).pipe(
-    map(([offset, height, active]) => ({ offset, height, active })),
-    shareReplay({ bufferSize: 1, refCount: true })
-  )
+  return combineLatest(height$, active$)
+    .pipe(
+      map(([height, active]) => ({
+        offset: container.offsetTop - adjust,
+        height,
+        active
+      })),
+      shareReplay(1)
+    )
 }

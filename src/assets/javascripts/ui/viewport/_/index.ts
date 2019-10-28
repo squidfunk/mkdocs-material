@@ -93,11 +93,12 @@ export function getViewportSize(): ViewportSize {
  * @return Viewport offset observable
  */
 export function fromViewportOffset(): Observable<ViewportOffset> {
-  return merge(scroll$, resize$).pipe(
-    map(getViewportOffset),
-    startWith(getViewportOffset()),
-    shareReplay({ bufferSize: 1, refCount: true })
-  )
+  return merge(scroll$, resize$)
+    .pipe(
+      map(getViewportOffset),
+      startWith(getViewportOffset()),
+      shareReplay(1)
+    )
 }
 
 /**
@@ -106,9 +107,10 @@ export function fromViewportOffset(): Observable<ViewportOffset> {
  * @return Viewport size observable
  */
 export function fromViewportSize(): Observable<ViewportSize> {
-  return resize$.pipe(
-    map(getViewportSize),
-    startWith(getViewportSize()),
-    shareReplay({ bufferSize: 1, refCount: true })
-  )
+  return resize$
+    .pipe(
+      map(getViewportSize),
+      startWith(getViewportSize()),
+      shareReplay(1)
+    )
 }
