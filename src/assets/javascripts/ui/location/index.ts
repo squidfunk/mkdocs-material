@@ -37,11 +37,11 @@ const hash$ = fromEvent<HashChangeEvent>(window, "hashchange")
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable emitting changes in location hashes
+ * Create an observable to monitor the location hash
  *
  * @return Location hash observable
  */
-export function fromLocationHash(): Observable<string> {
+export function watchLocationHash(): Observable<string> {
   return hash$
     .pipe(
       map(() => document.location.hash),

@@ -59,7 +59,9 @@ export function getElements<T extends HTMLElement>(
   return toArray(document.querySelectorAll<T>(selector))
 }
 
-/* ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Operators
+ * ------------------------------------------------------------------------- */
 
 /**
  * Retrieve an element matching the query selector
@@ -74,5 +76,20 @@ export function withElement<
   return pipe(
     map(selector => getElement<T>(selector)!),
     filter<T>(Boolean)
+  )
+}
+
+/**
+ * Retrieve all elements matching the query selector
+ *
+ * @template T - Element type
+ *
+ * @return HTML elements observable
+ */
+export function withElements<
+  T extends HTMLElement
+>(): OperatorFunction<string, T[]> {
+  return pipe(
+    map(selector => getElements<T>(selector))
   )
 }

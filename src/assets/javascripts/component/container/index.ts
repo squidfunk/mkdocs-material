@@ -30,11 +30,11 @@ import { ViewportOffset, ViewportSize } from "../../ui"
  * ------------------------------------------------------------------------- */
 
 /**
- * Container state
+ * Container
  */
 export interface Container {
   offset: number                       /* Container top offset */
-  height: number                       /* Container height */
+  height: number                       /* Container visible height */
   active: boolean                      /* Scrolled past top offset */
 }
 
@@ -55,7 +55,7 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable for the container component
+ * Create an observable to monitor the container
  *
  * The container represents the main content area including the sidebars (table
  * of contents and navigation), as well as the actual page content.
@@ -64,9 +64,9 @@ interface Options {
  * @param header - Header element
  * @param options - Options
  *
- * @return Container state observable
+ * @return Container observable
  */
-export function fromContainer(
+export function watchContainer(
   container: HTMLElement, header: HTMLElement, { size$, offset$ }: Options
 ): Observable<Container> {
 
@@ -76,7 +76,7 @@ export function fromContainer(
       ? header.offsetHeight
       : 0
 
-  /* Compute the container's available height */
+  /* Compute the container's visible height */
   const height$ = combineLatest(offset$, size$)
     .pipe(
       map(([{ y }, { height }]) => {

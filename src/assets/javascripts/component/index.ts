@@ -20,5 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+export * from "./anchor"
 export * from "./container"
+export * from "./header"
 export * from "./sidebar"

@@ -20,5 +20,97 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./breakpoint"
+import { Observable, fromEvent, merge } from "rxjs"
+import { map, shareReplay, startWith } from "rxjs/operators"
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Observable for window scroll events
+ */
+const scroll$ = fromEvent<UIEvent>(window, "scroll")
+
+/**
+ * Observable for window resize events
+ */
+const resize$ = fromEvent<UIEvent>(window, "resize")
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Viewport offset
+ */
+export interface ViewportOffset {
+  x: number                            /* Horizontal offset */
+  y: number                            /* Vertical offset */
+}
+
+/**
+ * Viewport size
+ */
+export interface ViewportSize {
+  width: number                        /* Viewport width */
+  height: number                       /* Viewport height */
+}
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Retrieve the viewport offset
+ *
+ * @return Viewport offset
+ */
+export function getViewportOffset(): ViewportOffset {
+  return {
+    x: window.pageXOffset,
+    y: window.pageYOffset
+  }
+}
+
+/**
+ * Retrieve the viewport size
+ *
+ * @return Viewport size
+ */
+export function getViewportSize(): ViewportSize {
+  return {
+    width:  window.innerWidth,
+    height: window.innerHeight
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Create an observable to monitor the viewport offset
+ *
+ * @return Viewport offset observable
+ */
+export function watchViewportOffset(): Observable<ViewportOffset> {
+  return merge(scroll$, resize$)
+    .pipe(
+      map(getViewportOffset),
+      startWith(getViewportOffset()),
+      shareReplay(1)
+    )
+}
+
+/**
+ * Create an observable to monitor the viewport size
+ *
+ * @return Viewport size observable
+ */
+export function watchViewportSize(): Observable<ViewportSize> {
+  return resize$
+    .pipe(
+      map(getViewportSize),
+      startWith(getViewportSize()),
+      shareReplay(1)
+    )
+}

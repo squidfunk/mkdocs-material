@@ -20,6 +20,9 @@
  * IN THE SOFTWARE.
  */
 
+import { Observable, OperatorFunction } from "rxjs"
+import { filter, windowToggle } from "rxjs/operators"
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -37,4 +40,25 @@ export function toArray<
   T extends HTMLElement
 >(collection: HTMLCollection | NodeListOf<T>): T[] {
   return Array.from(collection) as T[]
+}
+
+/* ----------------------------------------------------------------------------
+ * Operators
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Toggle emission from a source observable
+ *
+ * @template T - Observable value type
+ *
+ * @param toggle$ - Toggle observable
+ *
+ * @return Observable of source observables
+ */
+export function toggle<T>(
+  toggle$: Observable<boolean>
+): OperatorFunction<T, Observable<T>> {
+  const start$ = toggle$.pipe(filter(match => match === true))
+  const until$ = toggle$.pipe(filter(match => match === false))
+  return windowToggle<T, boolean>(start$, () => until$)
 }

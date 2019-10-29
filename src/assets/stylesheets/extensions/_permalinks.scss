@@ -57,9 +57,9 @@
 
   // Correct anchor offset for link blurring
   @each $level, $delta in (
-    h1: 9px,
+    h1: 8px,
     h2: 8px,
-    h3: 9px,
+    h3: 8px,
     h4: 9px,
     h5: 11px,
     h6: 11px

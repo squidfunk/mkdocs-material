@@ -20,30 +20,21 @@
  * IN THE SOFTWARE.
  */
 
-import {
-  Observable,
-  OperatorFunction,
-  fromEventPattern
-} from "rxjs"
-import {
-  filter,
-  shareReplay,
-  startWith,
-  windowToggle
-} from "rxjs/operators"
+import { Observable, fromEventPattern } from "rxjs"
+import { shareReplay, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable for a media query
+ * Create an observable from a media query
  *
  * @param query - Media query
  *
- * @return Media query observable
+ * @return Media observable
  */
-export function fromMediaQuery(query: string): Observable<boolean> {
+export function watchMedia(query: string): Observable<boolean> {
   const media = window.matchMedia(query)
   return fromEventPattern<boolean>(next =>
     media.addListener(() => next(media.matches))
@@ -52,21 +43,4 @@ export function fromMediaQuery(query: string): Observable<boolean> {
       startWith(media.matches),
       shareReplay(1)
     )
-}
-
-/**
- * Only emit values from the source observable when a media query matches
- *
- * @template T - Observable value type
- *
- * @param query - Media query observable
- *
- * @return Observable of source observable values
- */
-export function withMediaQuery<T>(
-  query$: Observable<boolean>
-): OperatorFunction<T, Observable<T>> {
-  const start$ = query$.pipe(filter(match => match === true))
-  const until$ = query$.pipe(filter(match => match === false))
-  return windowToggle<T, boolean>(start$, () => until$)
 }

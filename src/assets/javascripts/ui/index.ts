@@ -22,4 +22,5 @@
 
 export * from "./element"
 export * from "./location"
+export * from "./media"
 export * from "./viewport"

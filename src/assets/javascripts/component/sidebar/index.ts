@@ -31,7 +31,7 @@ import { Container } from "../container"
  * ------------------------------------------------------------------------- */
 
 /**
- * Sidebar state
+ * Sidebar
  */
 export interface Sidebar {
   height: number                       /* Sidebar height */
@@ -46,7 +46,7 @@ export interface Sidebar {
  * Options
  */
 interface Options {
-  container$: Observable<Container>    /* Container state observable */
+  container$: Observable<Container>    /* Container observable */
   offset$: Observable<ViewportOffset>  /* Viewport offset observable */
 }
 
@@ -60,51 +60,45 @@ interface Options {
  * @param sidebar - Sidebar HTML element
  * @param height - Sidebar height
  */
-export function setSidebarHeight(sidebar: HTMLElement, height: number): void {
+export function setSidebarHeight(
+  sidebar: HTMLElement, height: number
+): void {
   sidebar.style.height = `${height}px`
 }
 
 /**
- * Unset sidebar height
+ * Set sidebar lock
+ *
+ * @param sidebar - Sidebar HTML element
+ * @param lock - Whether the sidebar is locked
+ */
+export function setSidebarLock(
+  sidebar: HTMLElement, lock: boolean
+): void {
+  sidebar.setAttribute("data-md-state", lock ? "lock" : "")
+}
+
+/**
+ * Reset sidebar
  *
  * @param sidebar - Sidebar HTML element
  */
-export function unsetSidebarHeight(sidebar: HTMLElement): void {
+export function resetSidebar(sidebar: HTMLElement): void {
+  sidebar.removeAttribute("data-md-state")
   sidebar.style.height = ""
 }
 
 /* ------------------------------------------------------------------------- */
 
 /**
- * Set sidebar lock
- *
- * @param sidebar - Sidebar HTML element
- * @param lock - Sidebar lock
- */
-export function setSidebarLock(sidebar: HTMLElement, lock: boolean): void {
-  sidebar.setAttribute("data-md-state", lock ? "lock" : "")
-}
-
-/**
- * Unset sidebar lock
- *
- * @param sidebar - Sidebar HTML element
- */
-export function unsetSidebarLock(sidebar: HTMLElement): void {
-  sidebar.removeAttribute("data-md-state")
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Create an observable for a sidebar component
+ * Create an observable to monitor the sidebar
  *
  * @param sidebar - Sidebar element
  * @param options - Options
  *
- * @return Sidebar state observable
+ * @return Sidebar observable
  */
-export function fromSidebar(
+export function watchSidebar(
   sidebar: HTMLElement, { container$, offset$ }: Options
 ): Observable<Sidebar> {
 
