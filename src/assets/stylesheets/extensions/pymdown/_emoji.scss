@@ -28,7 +28,9 @@
 .md-typeset {
 
   // Correct alignment of emojis
-  .emojione {
+  .emojione,
+  .twemoji,
+  .gemoji {
     width: px2rem(20px);
     vertical-align: text-top;
   }
