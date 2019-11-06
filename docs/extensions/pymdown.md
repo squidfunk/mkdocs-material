@@ -194,7 +194,7 @@ emojis. Happy scrolling :tada:
 
   [13]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
   [14]: https://emoji.codes/
-  [15]: http://emojione.com
+  [15]: https://www.joypixels.com/
   [16]: https://creativecommons.org/licenses/by/4.0/legalcode
   [17]: http://emojione.com/licensing/
 
