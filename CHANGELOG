@@ -1,3 +1,10 @@
+mkdocs-material-4.5.0 (2019-11-16)
+
+  * Upgraded EmojiOne to Tweomji due to licensing issues
+  * Temporarily pinned PyMdown and Markdown due to upcoming changes
+  * Improved GitHub statistics retrieval
+  * Fixed errors in Greek translations
+
 mkdocs-material-4.4.3 (2019-10-03)
 
   * Added Estonian translations
