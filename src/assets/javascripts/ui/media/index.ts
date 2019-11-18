@@ -41,6 +41,6 @@ export function watchMedia(query: string): Observable<boolean> {
   )
     .pipe(
       startWith(media.matches),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 }

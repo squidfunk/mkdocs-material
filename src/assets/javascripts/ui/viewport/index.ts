@@ -97,7 +97,7 @@ export function watchViewportOffset(): Observable<ViewportOffset> {
     .pipe(
       map(getViewportOffset),
       startWith(getViewportOffset()),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 }
 
@@ -111,6 +111,6 @@ export function watchViewportSize(): Observable<ViewportSize> {
     .pipe(
       map(getViewportSize),
       startWith(getViewportSize()),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 }

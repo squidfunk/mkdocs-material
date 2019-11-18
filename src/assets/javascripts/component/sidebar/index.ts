@@ -108,7 +108,7 @@ export function watchSidebar(
       .getPropertyValue("padding-top")
   )
 
-  /* Compute the sidebars's available height */
+  /* Compute the sidebar's available height */
   const height$ = combineLatest(offset$, container$)
     .pipe(
       map(([{ y }, { offset, height }]) => {
@@ -127,6 +127,6 @@ export function watchSidebar(
   return combineLatest(height$, lock$)
     .pipe(
       map(([height, lock]) => ({ height, lock })),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 }

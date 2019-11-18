@@ -104,6 +104,6 @@ export function watchContainer(
         height,
         active
       })),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 }

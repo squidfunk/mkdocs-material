@@ -20,45 +20,27 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, OperatorFunction, pipe } from "rxjs"
-import { switchMap } from "rxjs/operators"
-
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Convert a HTML collection to an array
+ * Set header shadow
  *
- * @template T - HTML element type
- *
- * @param collection - HTML collection
- *
- * @return Array of HTML elements
+ * @param header - Header HTML element
+ * @param shadow - Shadow
  */
-export function toArray<
-  T extends HTMLElement
->(collection: HTMLCollection | NodeListOf<T>): T[] {
-  return Array.from(collection) as T[]
+export function setHeaderShadow(
+  header: HTMLElement, shadow: boolean
+): void {
+  header.setAttribute("data-md-state", shadow ? "shadow" : "")
 }
 
-/* ----------------------------------------------------------------------------
- * Operators
- * ------------------------------------------------------------------------- */
-
 /**
- * Switch to another observable, if toggle is active
+ * Reset header
  *
- * @template T - Observable value type
- *
- * @param project - Project function
- *
- * @return Observable, if toggle is active
+ * @param header - Header HTML element
  */
-export function toggle<T>(
-  project: () => Observable<T>
-): OperatorFunction<boolean, T> {
-  return pipe(
-    switchMap(active => active ? project() : NEVER)
-  )
+export function resetHeader(header: HTMLElement): void {
+  header.removeAttribute("data-md-state")
 }

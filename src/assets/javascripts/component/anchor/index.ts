@@ -22,12 +22,7 @@
 
 import { reduce, reverse } from "ramda"
 import { Observable } from "rxjs"
-import {
-  distinctUntilChanged,
-  map,
-  scan,
-  shareReplay
-} from "rxjs/operators"
+import { distinctUntilChanged, map, scan, shareReplay } from "rxjs/operators"
 
 import { ViewportOffset, getElement } from "../../ui"
 
@@ -39,7 +34,7 @@ import { ViewportOffset, getElement } from "../../ui"
  * Anchors
  */
 export interface Anchors {
-  past: HTMLAnchorElement[][]          /* Past anchors */
+  done: HTMLAnchorElement[][]          /* Read anchors */
   next: HTMLAnchorElement[][]          /* Next anchors */
 }
 
@@ -101,7 +96,7 @@ export function resetAnchor(anchor: HTMLAnchorElement) {
  * @param header - Header element
  * @param options - Options
  *
- * @return Sidebar observable
+ * @return Anchors observable
  */
 export function watchAnchors(
   anchors: HTMLAnchorElement[], header: HTMLElement, { offset$ }: Options
@@ -123,7 +118,7 @@ export function watchAnchors(
 
   /* Build table to map anchor paths to vertical offsets */
   const table = new Map<HTMLAnchorElement[], number>()
-  reduce((path, [anchor, target]) => {
+  reduce((path: HTMLAnchorElement[], [anchor, target]) => {
     while (path.length) {
       const last = index.get(path[path.length - 1])!
       if (last.tagName >= target.tagName)
@@ -133,49 +128,46 @@ export function watchAnchors(
     }
     table.set(reverse(path = [...path, anchor]), target.offsetTop)
     return path
-  }, [] as HTMLAnchorElement[], [...index])
+  }, [], [...index])
 
-  /* Compute partition of past and next anchors */
+  /* Compute partition of done and next anchors */
   const partition$ = offset$
     .pipe(
-      scan(([past, next], { y }) => {
-        y = y + adjust
+      scan(([done, next], { y }) => {
 
         /* Look forward */
         while (next.length) {
           const [, offset] = next[0]
-          if (offset < y) {
-            past = [...past, next.shift()!]
+          if (offset - adjust < y) {
+            done = [...done, next.shift()!]
           } else {
             break
           }
         }
 
         /* Look backward */
-        while (past.length) {
-          const [, offset] = past[past.length - 1]
-          if (offset >= y) {
-            next = [past.pop()!, ...next]
+        while (done.length) {
+          const [, offset] = done[done.length - 1]
+          if (offset - adjust >= y) {
+            next = [done.pop()!, ...next]
           } else {
             break
           }
         }
 
-        /* Return new partition */
-        return [past, next]
+        /* Return partition */
+        return [done, next]
       }, [[], [...table]]),
-      distinctUntilChanged(([a0, a1], [b0, b1]) => {
-        return a0 === b0 && a1 === b1
-      })
+      distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1])
     )
 
   /* Extract anchors and return hot observable */
   return partition$
     .pipe(
-      map(([past, next]) => ({
-        past: past.map(([els]) => els),
+      map(([done, next]) => ({
+        done: done.map(([els]) => els),
         next: next.map(([els]) => els)
       })),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 }

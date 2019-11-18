@@ -20,32 +20,43 @@
  * IN THE SOFTWARE.
  */
 
-import { animationFrameScheduler, interval, of } from "rxjs"
-import { concatMap, concatMapTo, filter, finalize, mapTo, mergeMap, skipUntil, startWith, switchMap, takeUntil, tap, throttleTime, windowToggle } from "rxjs/operators"
+import { difference } from "ramda"
 import {
-  fromContainer,
-  fromSidebar,
+  distinctUntilKeyChanged,
+  finalize,
+  map,
+  pairwise,
+  startWith
+} from "rxjs/operators"
+
+import {
+  resetAnchor,
+  resetSidebar,
+  setAnchorActive,
+  setAnchorBlur,
+  setHeaderShadow,
   setSidebarHeight,
   setSidebarLock,
-  unsetSidebarHeight,
-  unsetSidebarLock,
-  withToggle
+  watchAnchors,
+  watchContainer,
+  watchSidebar
 } from "./component"
 import {
-  fromMediaQuery,
-  fromViewportOffset,
-  fromViewportSize,
   getElement,
-  withMediaQuery,
+  getElements,
+  watchMedia,
+  watchViewportOffset,
+  watchViewportSize
 } from "./ui"
+import { toggle } from "./utilities"
 
 // ----------------------------------------------------------------------------
 
-const offset$ = fromViewportOffset()
-const size$   = fromViewportSize()
+const offset$ = watchViewportOffset()
+const size$   = watchViewportSize()
 
-const screenAndAbove$ = fromMediaQuery("(min-width: 1220px)")
-const tabletAndAbove$ = fromMediaQuery("(min-width: 960px)")
+const screen$ = watchMedia("(min-width: 1220px)")
+const tablet$ = watchMedia("(min-width: 960px)")
 
 // ----------------------------------------------------------------------------
 
@@ -59,55 +70,114 @@ document.documentElement.classList.add("js")
 
 const container = getElement("[data-md-component=container]")!
 const header    = getElement("[data-md-component=header]")!
+const container$ = watchContainer(container, header, { size$, offset$ })
 
-const container$ = fromContainer(container, header, { size$, offset$ })
+// Optimize anchor list candidates
+const anchors = getElements<HTMLAnchorElement>("[data-md-component=toc] .md-nav__link")
+if (anchors.length)
+  tablet$
+    .pipe(
+      toggle(() => watchAnchors(anchors, header, { offset$ })
+        .pipe(
+          startWith({ done: [], next: [] }),
+          pairwise(),
+          map(([a, b]) => {
+            const begin = Math.max(0, Math.min(b.done.length, a.done.length) - 1)
+            const end   = Math.max(b.done.length, a.done.length)
+            return {
+              done: b.done.slice(begin, end + 1),
+              next: difference(b.next, a.next)
+            }
+          }),
+          finalize(() => {
+            for (const anchor of anchors)
+              resetAnchor(anchor)
+          })
+        )
+      )
+    )
+      .subscribe(({ done, next }) => {
 
-// ---
+        /* Look backward */
+        for (const [i, [anchor]] of done.entries()) {
+          setAnchorBlur(anchor, true)
+          setAnchorActive(anchor, i === done.length - 1)
+        }
 
-const nav = getElement("[data-md-component=navigation")!
-
-fromSidebar(nav, { container$, offset$ })
-  .pipe(
-    withMediaQuery(screenAndAbove$),
-    concatMap(sidebar$ => sidebar$.pipe(
-      finalize(() => {
-        unsetSidebarHeight(nav)
-        unsetSidebarLock(nav)
+        /* Look forward */
+        for (const [anchor] of next) {
+          setAnchorBlur(anchor, false)
+          setAnchorActive(anchor, false)
+        }
       })
-    ))
-  )
-    .subscribe(({ height, lock }) => {
-      setSidebarHeight(nav, height)
-      setSidebarLock(nav, lock)
-    })
 
-const toc = getElement("[data-md-component=toc")!
+// TODO: this should be subscribed to a subject!
+// const toggle = getElement<HTMLInputElement>("[data-md-toggle=search]")!
+// fromEvent(toggle, "change")
+//   .subscribe(x2 => {
+//     console.log("toggle changed", x2)
+//   })
 
-fromSidebar(toc, { container$, offset$ })
-  .pipe(
-    withMediaQuery(tabletAndAbove$),
-    concatMap(sidebar$ => sidebar$.pipe(
-      finalize(() => {
-        unsetSidebarHeight(toc)
-        unsetSidebarLock(toc)
+// const query = getElement("[data-md-component=query]")
+// if (typeof query !== "undefined") {
+//   fromEvent(query, "focus")
+//     .pipe(
+
+//     )
+//       .subscribe(console.log)
+// }
+
+/* Component: header shadow toggle */ // - TODO: put this into a separate component
+if (typeof header !== "undefined") {
+  container$
+    .pipe(
+      distinctUntilKeyChanged("active")
+    )
+      .subscribe(({ active }) => {
+        setHeaderShadow(header, active)
       })
-    ))
-  )
-    .subscribe(({ height, lock }) => {
-      setSidebarHeight(toc, height)
-      setSidebarLock(toc, lock)
-    })
+}
+
+/* Component: sidebar with navigation */
+const nav = getElement("[data-md-component=navigation")
+if (typeof nav !== "undefined") {
+  screen$
+    .pipe(
+      toggle(() => watchSidebar(nav, { container$, offset$ })
+        .pipe(
+          finalize(() => {
+            resetSidebar(nav)
+          })
+        )
+      )
+    )
+      .subscribe(({ height, lock }) => {
+        setSidebarHeight(nav, height)
+        setSidebarLock(nav, lock)
+      })
+}
+
+/* Component: sidebar with table of contents (missing on 404 page) */
+const toc = getElement("[data-md-component=toc")
+if (typeof toc !== "undefined") {
+  tablet$
+    .pipe(
+      toggle(() => watchSidebar(toc, { container$, offset$ })
+        .pipe(
+          finalize(() => {
+            resetSidebar(toc)
+          })
+        )
+      )
+    )
+      .subscribe(({ height, lock }) => {
+        setSidebarHeight(toc, height)
+        setSidebarLock(toc, lock)
+      })
+}
 
 // ----------------------------------------------------------------------------
 
 export function app(config: any) {
-  // TODO:
-  let parent = container.parentElement as HTMLElement
-  const height = 0
-
-  // TODO: write a fromHeader (?) component observable which
-  // this fromHeader should take the container and ...?
-  // container$.subscribe()
-
-  // container padding = "with parent" + 30px (padding of container...)
+  console.log("called app")
 }
