@@ -31,7 +31,6 @@
   .admonition {
     @include z-depth(2);
 
-    position: relative;
     margin: 1.5625em 0;
     padding: 0 px2rem(12px);
     border-left: px2rem(4px) solid $clr-blue-a200;
@@ -78,15 +77,15 @@
         @extend %md-icon;
 
         position: absolute;
-        left: px2rem(12px);
+        margin-left: px2rem(-28px);
         color: $clr-blue-a200;
         font-size: px2rem(20px);
         content: "\E3C9"; // edit
 
         // Adjust for RTL languages
         [dir="rtl"] & {
-          right: px2rem(12px);
-          left: initial;
+          margin-right: px2rem(-28px);
+          margin-left: initial;
         }
       }
     }
