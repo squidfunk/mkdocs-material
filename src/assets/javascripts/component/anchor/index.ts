@@ -34,7 +34,7 @@ import { ViewportOffset, getElement } from "../../ui"
  * Anchors
  */
 export interface Anchors {
-  done: HTMLAnchorElement[][]          /* Read anchors */
+  done: HTMLAnchorElement[][]          /* Done anchors */
   next: HTMLAnchorElement[][]          /* Next anchors */
 }
 
@@ -158,7 +158,10 @@ export function watchAnchors(
         /* Return partition */
         return [done, next]
       }, [[], [...table]]),
-      distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1])
+      distinctUntilChanged((a, b) => {
+        return a[0] === b[0]
+            && a[1] === b[1]
+      })
     )
 
   /* Extract anchors and return hot observable */

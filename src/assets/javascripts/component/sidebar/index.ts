@@ -20,8 +20,9 @@
  * IN THE SOFTWARE.
  */
 
+import { equals } from "ramda"
 import { Observable, combineLatest } from "rxjs"
-import { map, shareReplay } from "rxjs/operators"
+import { distinctUntilChanged, map, shareReplay } from "rxjs/operators"
 
 import { ViewportOffset } from "../../ui"
 import { Container } from "../container"
@@ -112,8 +113,7 @@ export function watchSidebar(
   const height$ = combineLatest(offset$, container$)
     .pipe(
       map(([{ y }, { offset, height }]) => {
-        return height - adjust
-          + Math.min(adjust, Math.max(0, y - offset))
+        return height - adjust + Math.min(adjust, Math.max(0, y - offset))
       })
     )
 
@@ -127,6 +127,7 @@ export function watchSidebar(
   return combineLatest(height$, lock$)
     .pipe(
       map(([height, lock]) => ({ height, lock })),
+      distinctUntilChanged<Sidebar>(equals),
       shareReplay({ bufferSize: 1, refCount: true })
     )
 }
