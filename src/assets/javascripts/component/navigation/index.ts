@@ -41,13 +41,14 @@ export type NavigationIndex = Map<HTMLInputElement, HTMLElement>
 /**
  * Set navigation overflow scrolling
  *
- * @param nav - Navigation element
+ * @param el - Navigation element
  * @param active - Whether overflow scrolling is active
  */
 export function setNavigationOverflowScrolling(
-  nav: HTMLElement, active: boolean
+  el: HTMLElement, active: boolean
 ): void {
-  nav.style.webkitOverflowScrolling = active ? "touch" : ""
+  el.style.background = active ? "yellow" : "" // TODO: hack, temporary
+  el.style.webkitOverflowScrolling = active ? "touch" : ""
 }
 
 /* ------------------------------------------------------------------------- */
@@ -55,14 +56,14 @@ export function setNavigationOverflowScrolling(
 /**
  * Create an observable to index all navigation elements
  *
- * @param nav - Top-level navigation element
+ * @param el - Top-level navigation element
  *
  * @return Navigation index observable
  */
 export function watchNavigationIndex(
-  nav: HTMLElement
+  el: HTMLElement
 ): Observable<NavigationIndex> {
-  const list = getElements("nav", nav)
+  const list = getElements("nav", el)
 
   /* Build index to map inputs to navigation lists */
   const index = new Map<HTMLInputElement, HTMLElement>()

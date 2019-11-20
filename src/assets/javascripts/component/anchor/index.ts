@@ -58,35 +58,35 @@ interface WatchOptions {
 /**
  * Set anchor blur
  *
- * @param anchor - Anchor HTML element
+ * @param el - Anchor element
  * @param blur - Anchor blur
  */
 export function setAnchorBlur(
-  anchor: HTMLAnchorElement, blur: boolean
+  el: HTMLAnchorElement, blur: boolean
 ): void {
-  anchor.setAttribute("data-md-state", blur ? "blur" : "")
+  el.setAttribute("data-md-state", blur ? "blur" : "")
 }
 
 /**
- * Set sidebar state lock
+ * Set anchor active
  *
- * @param anchor - Anchor HTML element
+ * @param el - Anchor element
  * @param active - Whether the anchor is active
  */
 export function setAnchorActive(
-  anchor: HTMLAnchorElement, active: boolean
+  el: HTMLAnchorElement, active: boolean
 ): void {
-  anchor.classList.toggle("md-nav__link--active", active)
+  el.classList.toggle("md-nav__link--active", active)
 }
 
 /**
  * Reset anchor
  *
- * @param anchor - Anchor HTML element
+ * @param el - Anchor element
  */
-export function resetAnchor(anchor: HTMLAnchorElement) {
-  anchor.removeAttribute("data-md-state")
-  anchor.classList.remove("md-nav__link--active")
+export function resetAnchor(el: HTMLAnchorElement) {
+  el.removeAttribute("data-md-state")
+  el.classList.remove("md-nav__link--active")
 }
 
 /* ------------------------------------------------------------------------- */

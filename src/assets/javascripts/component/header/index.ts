@@ -42,22 +42,22 @@ export interface Header {
 /**
  * Set header shadow
  *
- * @param header - Header HTML element
+ * @param el - Header element
  * @param shadow - Shadow
  */
 export function setHeaderShadow(
-  header: HTMLElement, shadow: boolean
+  el: HTMLElement, shadow: boolean
 ): void {
-  header.setAttribute("data-md-state", shadow ? "shadow" : "")
+  el.setAttribute("data-md-state", shadow ? "shadow" : "")
 }
 
 /**
  * Reset header
  *
- * @param header - Header HTML element
+ * @param el - Header element
  */
-export function resetHeader(header: HTMLElement): void {
-  header.removeAttribute("data-md-state")
+export function resetHeader(el: HTMLElement): void {
+  el.removeAttribute("data-md-state")
 }
 
 /* ------------------------------------------------------------------------- */

@@ -58,7 +58,7 @@ interface WatchOptions {
 /**
  * Set sidebar height
  *
- * @param el - Sidebar HTML element
+ * @param el - Sidebar element
  * @param height - Sidebar height
  */
 export function setSidebarHeight(
@@ -70,7 +70,7 @@ export function setSidebarHeight(
 /**
  * Set sidebar lock
  *
- * @param el - Sidebar HTML element
+ * @param el - Sidebar element
  * @param lock - Whether the sidebar is locked
  */
 export function setSidebarLock(
@@ -82,7 +82,7 @@ export function setSidebarLock(
 /**
  * Reset sidebar
  *
- * @param el - Sidebar HTML element
+ * @param el - Sidebar element
  */
 export function resetSidebar(el: HTMLElement): void {
   el.removeAttribute("data-md-state")
