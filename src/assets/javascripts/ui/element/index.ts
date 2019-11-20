@@ -37,7 +37,7 @@ import { toArray } from "../../utilities"
  * @param selector - Query selector
  * @param node - Node of reference
  *
- * @return HTML element
+ * @return Element
  */
 export function getElement<T extends HTMLElement>(
   selector: string, node: ParentNode = document
@@ -53,7 +53,7 @@ export function getElement<T extends HTMLElement>(
  * @param selector - Query selector
  * @param node - Node of reference
  *
- * @return HTML elements
+ * @return Elements
  */
 export function getElements<T extends HTMLElement>(
   selector: string, node: ParentNode = document
@@ -72,7 +72,7 @@ export function getElements<T extends HTMLElement>(
  *
  * @param node - Node of reference
  *
- * @return HTML element observable
+ * @return Operator function
  */
 export function withElement<T extends HTMLElement>(
   node: ParentNode = document
@@ -90,7 +90,7 @@ export function withElement<T extends HTMLElement>(
  *
  * @param node - Node of reference
  *
- * @return HTML elements observable
+ * @return Operator function
  */
 export function withElements<T extends HTMLElement>(
   node: ParentNode = document

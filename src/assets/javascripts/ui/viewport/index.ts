@@ -88,7 +88,7 @@ export function getViewportSize(): ViewportSize {
 /* ------------------------------------------------------------------------- */
 
 /**
- * Create an observable to monitor the viewport offset
+ * Create an observable to watch the viewport offset
  *
  * @return Viewport offset observable
  */
@@ -102,7 +102,7 @@ export function watchViewportOffset(): Observable<ViewportOffset> {
 }
 
 /**
- * Create an observable to monitor the viewport size
+ * Create an observable to watch the viewport size
  *
  * @return Viewport size observable
  */

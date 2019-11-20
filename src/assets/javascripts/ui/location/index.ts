@@ -37,7 +37,7 @@ const hash$ = fromEvent<HashChangeEvent>(window, "hashchange")
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable to monitor the location hash
+ * Create an observable to watch the location hash
  *
  * @return Location hash observable
  */

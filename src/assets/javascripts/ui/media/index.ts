@@ -28,7 +28,7 @@ import { shareReplay, startWith } from "rxjs/operators"
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable from a media query
+ * Create an observable to watch a media query
  *
  * @param query - Media query
  *

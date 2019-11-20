@@ -20,45 +20,44 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, OperatorFunction, pipe } from "rxjs"
-import { switchMap } from "rxjs/operators"
-
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Convert a collection to an array
+ * Set anchor blur
  *
- * @template T - Element type
- *
- * @param collection - Collection or node list
- *
- * @return Array of elements
+ * @param el - Anchor element
+ * @param value - Whether the anchor is blurred
  */
-export function toArray<
-  T extends HTMLElement
->(collection: HTMLCollection | NodeListOf<T>): T[] {
-  return Array.from(collection) as T[]
+export function setAnchorBlur(
+  el: HTMLElement, value: boolean
+): void {
+  el.setAttribute("data-md-state", value ? "blur" : "")
 }
 
-/* ----------------------------------------------------------------------------
- * Operators
- * ------------------------------------------------------------------------- */
+/**
+ * Set anchor active
+ *
+ * @param el - Anchor element
+ * @param value - Whether the anchor is active
+ */
+export function setAnchorActive(
+  el: HTMLElement, value: boolean
+): void {
+  el.classList.toggle("md-nav__link--active", value)
+}
+
+/* ------------------------------------------------------------------------- */
 
 /**
- * Switch to another observable, if toggle is active
+ * Reset anchor
  *
- * @template T - Observable value type
- *
- * @param project - Project function
- *
- * @return Observable, if toggle is active
+ * @param el - Anchor element
  */
-export function toggle<T>(
-  project: () => Observable<T>
-): OperatorFunction<boolean, T> {
-  return pipe(
-    switchMap(active => active ? project() : NEVER)
-  )
+export function resetAnchor(
+  el: HTMLElement
+): void {
+  el.removeAttribute("data-md-state")
+  el.classList.remove("md-nav__link--active")
 }
