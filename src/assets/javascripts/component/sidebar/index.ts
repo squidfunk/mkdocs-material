@@ -44,9 +44,9 @@ export interface Sidebar {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Watch options
  */
-interface Options {
+interface WatchOptions {
   container$: Observable<Container>    /* Container observable */
   offset$: Observable<ViewportOffset>  /* Viewport offset observable */
 }
@@ -58,35 +58,35 @@ interface Options {
 /**
  * Set sidebar height
  *
- * @param sidebar - Sidebar HTML element
+ * @param el - Sidebar HTML element
  * @param height - Sidebar height
  */
 export function setSidebarHeight(
-  sidebar: HTMLElement, height: number
+  el: HTMLElement, height: number
 ): void {
-  sidebar.style.height = `${height}px`
+  el.style.height = `${height}px`
 }
 
 /**
  * Set sidebar lock
  *
- * @param sidebar - Sidebar HTML element
+ * @param el - Sidebar HTML element
  * @param lock - Whether the sidebar is locked
  */
 export function setSidebarLock(
-  sidebar: HTMLElement, lock: boolean
+  el: HTMLElement, lock: boolean
 ): void {
-  sidebar.setAttribute("data-md-state", lock ? "lock" : "")
+  el.setAttribute("data-md-state", lock ? "lock" : "")
 }
 
 /**
  * Reset sidebar
  *
- * @param sidebar - Sidebar HTML element
+ * @param el - Sidebar HTML element
  */
-export function resetSidebar(sidebar: HTMLElement): void {
-  sidebar.removeAttribute("data-md-state")
-  sidebar.style.height = ""
+export function resetSidebar(el: HTMLElement): void {
+  el.removeAttribute("data-md-state")
+  el.style.height = ""
 }
 
 /* ------------------------------------------------------------------------- */
@@ -94,18 +94,18 @@ export function resetSidebar(sidebar: HTMLElement): void {
 /**
  * Create an observable to monitor the sidebar
  *
- * @param sidebar - Sidebar element
+ * @param el - Sidebar element
  * @param options - Options
  *
  * @return Sidebar observable
  */
 export function watchSidebar(
-  sidebar: HTMLElement, { container$, offset$ }: Options
+  el: HTMLElement, { container$, offset$ }: WatchOptions
 ): Observable<Sidebar> {
 
   /* Adjust for internal container offset */
   const adjust = parseFloat(
-    getComputedStyle(sidebar.parentElement!)
+    getComputedStyle(el.parentElement!)
       .getPropertyValue("padding-top")
   )
 

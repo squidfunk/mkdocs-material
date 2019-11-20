@@ -74,7 +74,7 @@ export function watchNavigationIndex(
     }
   }
 
-  /* Return navigation index */
+  /* Return navigation index as hot observable */
   return of(index)
     .pipe(
       shareReplay({ bufferSize: 1, refCount: true })

@@ -21,10 +21,11 @@
  */
 
 import { reduce, reverse } from "ramda"
-import { Observable } from "rxjs"
+import { Observable, combineLatest } from "rxjs"
 import { distinctUntilChanged, map, scan, shareReplay } from "rxjs/operators"
 
 import { ViewportOffset, getElement } from "../../ui"
+import { Header } from "../header"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -43,10 +44,11 @@ export interface Anchors {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Watch options
  */
-interface Options {
+interface WatchOptions {
   offset$: Observable<ViewportOffset>  /* Viewport offset observable */
+  header$: Observable<Header>          /* Header observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -92,28 +94,21 @@ export function resetAnchor(anchor: HTMLAnchorElement) {
 /**
  * Create an observable to monitor all anchors in respect to viewport offset
  *
- * @param anchors - Anchor elements
- * @param header - Header element
+ * @param els - Anchor elements
  * @param options - Options
  *
  * @return Anchors observable
  */
 export function watchAnchors(
-  anchors: HTMLAnchorElement[], header: HTMLElement, { offset$ }: Options
+  els: HTMLAnchorElement[], { offset$, header$ }: WatchOptions
 ): Observable<Anchors> {
-
-  /* Adjust for header offset if fixed */
-  const adjust = getComputedStyle(header)
-    .getPropertyValue("position") === "fixed"
-      ? 18 + header.offsetHeight
-      : 18
 
   /* Build index to map anchors to their targets */
   const index = new Map<HTMLAnchorElement, HTMLElement>()
-  for (const anchor of anchors) {
-    const target = getElement(decodeURIComponent(anchor.hash))
+  for (const el of els) {
+    const target = getElement(decodeURIComponent(el.hash))
     if (typeof target !== "undefined")
-      index.set(anchor, target)
+      index.set(el, target)
   }
 
   /* Build table to map anchor paths to vertical offsets */
@@ -130,10 +125,16 @@ export function watchAnchors(
     return path
   }, [], [...index])
 
-  /* Compute partition of done and next anchors */
-  const partition$ = offset$
+  /* Compute necessary adjustment for header */
+  const adjust$ = header$
     .pipe(
-      scan(([done, next], { y }) => {
+      map(header => 18 + header.height)
+    )
+
+  /* Compute partition of done and next anchors */
+  const partition$ = combineLatest(offset$, adjust$)
+    .pipe(
+      scan(([done, next], [{ y }, adjust]) => {
 
         /* Look forward */
         while (next.length) {
@@ -168,8 +169,8 @@ export function watchAnchors(
   return partition$
     .pipe(
       map(([done, next]) => ({
-        done: done.map(([els]) => els),
-        next: next.map(([els]) => els)
+        done: done.map(([anchors]) => anchors),
+        next: next.map(([anchors]) => anchors)
       })),
       shareReplay({ bufferSize: 1, refCount: true })
     )

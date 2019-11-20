@@ -35,13 +35,14 @@ import { toArray } from "../../utilities"
  * @template T - Element type
  *
  * @param selector - Query selector
+ * @param node - Node of reference
  *
  * @return HTML element
  */
 export function getElement<T extends HTMLElement>(
-  selector: string
+  selector: string, node: ParentNode = document
 ): T | undefined {
-  return document.querySelector<T>(selector) || undefined
+  return node.querySelector<T>(selector) || undefined
 }
 
 /**
@@ -50,13 +51,14 @@ export function getElement<T extends HTMLElement>(
  * @template T - Element type
  *
  * @param selector - Query selector
+ * @param node - Node of reference
  *
  * @return HTML elements
  */
 export function getElements<T extends HTMLElement>(
-  selector: string
+  selector: string, node: ParentNode = document
 ): T[] {
-  return toArray(document.querySelectorAll<T>(selector))
+  return toArray(node.querySelectorAll<T>(selector))
 }
 
 /* ----------------------------------------------------------------------------
@@ -68,13 +70,15 @@ export function getElements<T extends HTMLElement>(
  *
  * @template T - Element type
  *
+ * @param node - Node of reference
+ *
  * @return HTML element observable
  */
-export function withElement<
-  T extends HTMLElement
->(): OperatorFunction<string, T> {
+export function withElement<T extends HTMLElement>(
+  node: ParentNode = document
+): OperatorFunction<string, T> {
   return pipe(
-    map(selector => getElement<T>(selector)!),
+    map(selector => getElement<T>(selector, node)!),
     filter<T>(Boolean)
   )
 }
@@ -84,12 +88,14 @@ export function withElement<
  *
  * @template T - Element type
  *
+ * @param node - Node of reference
+ *
  * @return HTML elements observable
  */
-export function withElements<
-  T extends HTMLElement
->(): OperatorFunction<string, T[]> {
+export function withElements<T extends HTMLElement>(
+  node: ParentNode = document
+): OperatorFunction<string, T[]> {
   return pipe(
-    map(selector => getElements<T>(selector))
+    map(selector => getElements<T>(selector, node))
   )
 }

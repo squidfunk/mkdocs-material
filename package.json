@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "clipboard": "^2.0.0",
+    "custom-event-polyfill": "^1.0.7",
     "escape-html": "^1.0.3",
     "js-cookie": "^2.2.1",
     "lunr": "^2.3.6",

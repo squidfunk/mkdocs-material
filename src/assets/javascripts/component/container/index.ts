@@ -21,9 +21,10 @@
  */
 
 import { Observable, combineLatest } from "rxjs"
-import { distinctUntilChanged, map, shareReplay } from "rxjs/operators"
+import { distinctUntilChanged, map, pluck, shareReplay } from "rxjs/operators"
 
 import { ViewportOffset, ViewportSize } from "../../ui"
+import { Header } from "../header"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -43,11 +44,12 @@ export interface Container {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Watch options
  */
-interface Options {
+interface WatchOptions {
   size$: Observable<ViewportSize>      /* Viewport size observable */
   offset$: Observable<ViewportOffset>  /* Viewport offset observable */
+  header$: Observable<Header>          /* Header observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -60,28 +62,27 @@ interface Options {
  * The container represents the main content area including the sidebars (table
  * of contents and navigation), as well as the actual page content.
  *
- * @param container - Container element
- * @param header - Header element
+ * @param el - Container element
  * @param options - Options
  *
  * @return Container observable
  */
 export function watchContainer(
-  container: HTMLElement, header: HTMLElement, { size$, offset$ }: Options
+  el: HTMLElement, { size$, offset$, header$ }: WatchOptions
 ): Observable<Container> {
 
-  /* Adjust for header offset if fixed */
-  const adjust = getComputedStyle(header)
-    .getPropertyValue("position") === "fixed"
-      ? header.offsetHeight
-      : 0
+  /* Compute necessary adjustment for header */
+  const adjust$ = header$
+    .pipe(
+      pluck("height")
+    )
 
   /* Compute the container's visible height */
-  const height$ = combineLatest(offset$, size$)
+  const height$ = combineLatest(offset$, size$, adjust$)
     .pipe(
-      map(([{ y }, { height }]) => {
-        const top    = container.offsetTop
-        const bottom = container.offsetHeight + top
+      map(([{ y }, { height }, adjust]) => {
+        const top    = el.offsetTop
+        const bottom = el.offsetHeight + top
         return height
           - Math.max(0, top    - y,  adjust)
           - Math.max(0, height + y - bottom)
@@ -90,17 +91,17 @@ export function watchContainer(
     )
 
   /* Compute whether the viewport offset is past the container's top */
-  const active$ = offset$
+  const active$ = combineLatest(offset$, adjust$)
     .pipe(
-      map(({ y }) => y >= container.offsetTop - adjust),
+      map(([{ y }, adjust]) => y >= el.offsetTop - adjust),
       distinctUntilChanged()
     )
 
   /* Combine into a single hot observable */
-  return combineLatest(height$, active$)
+  return combineLatest(height$, adjust$, active$)
     .pipe(
-      map(([height, active]) => ({
-        offset: container.offsetTop - adjust,
+      map(([height, adjust, active]) => ({
+        offset: el.offsetTop - adjust,
         height,
         active
       })),

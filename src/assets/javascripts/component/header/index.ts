@@ -20,6 +20,21 @@
  * IN THE SOFTWARE.
  */
 
+import { Observable, of } from "rxjs"
+import { shareReplay } from "rxjs/operators"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Header
+ */
+export interface Header {
+  sticky: boolean                      /* Header stickyness */
+  height: number                       /* Header visible height */
+}
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -43,4 +58,29 @@ export function setHeaderShadow(
  */
 export function resetHeader(header: HTMLElement): void {
   header.removeAttribute("data-md-state")
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Create an observable to monitor the header
+ *
+ * @param header - Header element
+ *
+ * @return Header observable
+ */
+export function watchHeader(
+  header: HTMLElement
+): Observable<Header> {
+  const sticky = getComputedStyle(header)
+    .getPropertyValue("position") === "fixed"
+
+  /* Return header as hot observable */
+  return of({
+    sticky,
+    height: sticky ? header.offsetHeight : 0
+  })
+    .pipe(
+      shareReplay({ bufferSize: 1, refCount: true })
+    )
 }
