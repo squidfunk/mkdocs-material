@@ -29,7 +29,10 @@ import {
 } from "rxjs/operators"
 
 import { Container } from "../../container"
-import { resetHeaderShadow, setHeaderShadow } from "../element"
+import {
+  resetHeaderShadow,
+  setHeaderShadow
+} from "../element"
 
 /* ----------------------------------------------------------------------------
  * Types
