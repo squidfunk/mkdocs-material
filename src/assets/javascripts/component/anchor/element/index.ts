@@ -37,6 +37,19 @@ export function setAnchorBlur(
 }
 
 /**
+ * Reset anchor blur
+ *
+ * @param el - Anchor element
+ */
+export function resetAnchorBlur(
+  el: HTMLElement
+): void {
+  el.removeAttribute("data-md-state")
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
  * Set anchor active
  *
  * @param el - Anchor element
@@ -48,16 +61,13 @@ export function setAnchorActive(
   el.classList.toggle("md-nav__link--active", value)
 }
 
-/* ------------------------------------------------------------------------- */
-
 /**
- * Reset anchor
+ * Reset anchor active
  *
  * @param el - Anchor element
  */
-export function resetAnchor(
+export function resetAnchorActive(
   el: HTMLElement
 ): void {
-  el.removeAttribute("data-md-state")
   el.classList.remove("md-nav__link--active")
 }

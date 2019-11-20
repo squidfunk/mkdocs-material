@@ -20,5 +20,54 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./element"
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Set sidebar height
+ *
+ * @param el - Sidebar element
+ * @param value - Sidebar height
+ */
+export function setSidebarHeight(
+  el: HTMLElement, value: number
+): void {
+  el.style.height = `${value}px`
+}
+
+/**
+ * Reset sidebar height
+ *
+ * @param el - Sidebar element
+ */
+export function resetSidebarHeight(
+  el: HTMLElement
+): void {
+  el.style.height = ""
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Set sidebar lock
+ *
+ * @param el - Sidebar element
+ * @param value - Whether the sidebar is locked
+ */
+export function setSidebarLock(
+  el: HTMLElement, value: boolean
+): void {
+  el.setAttribute("data-md-state", value ? "lock" : "")
+}
+
+/**
+ * Reset sidebar lock
+ *
+ * @param el - Sidebar element
+ */
+export function resetSidebarLock(
+  el: HTMLElement
+): void {
+  el.removeAttribute("data-md-state")
+}

@@ -30,6 +30,7 @@ import {
 } from "rxjs"
 import {
   distinctUntilChanged,
+  finalize,
   map,
   observeOn,
   scan,
@@ -41,7 +42,8 @@ import {
 import { ViewportOffset, ViewportSize, getElement } from "../../../ui"
 import { Header } from "../../header"
 import {
-  resetAnchor,
+  resetAnchorActive,
+  resetAnchorBlur,
   setAnchorActive,
   setAnchorBlur
 } from "../element"
@@ -81,7 +83,7 @@ interface WatchOptions {
  * This is effectively a scroll-spy implementation which will account for the
  * fixed header and automatically re-calculate anchor offsets when the viewport
  * is resized. The returned observable will only emit if the anchor list needs
- * to be re-painted.
+ * to be repainted.
  *
  * This implementation tracks an anchor element's entire path starting from its
  * level up to the top-most anchor element, e.g. `[h3, h2, h1]`. Although the
@@ -112,7 +114,7 @@ export function watchAnchorList(
   /* Compute partition of done and next anchors */
   const partition$ = size$.pipe(
 
-    /* Build table to map anchor paths to vertical offsets */
+    /* Build index to map anchor paths to vertical offsets */
     map(() => {
       let path: HTMLAnchorElement[] = []
       return [...table].reduce((index, [anchor, target]) => {
@@ -184,13 +186,17 @@ export function watchAnchorList(
  * Paint anchor list from source observable
  *
  * This operator function will keep track of the anchor list in-between emits
- * in order to optimize rendering by only re-painting anchor list migrations.
- * After determining which anchors need to be re-painted, the actual rendering
+ * in order to optimize rendering by only repainting anchor list migrations.
+ * After determining which anchors need to be repainted, the actual rendering
  * is deferred to the next animation frame.
+ *
+ * @param els - Anchor elements
  *
  * @return Operator function
  */
-export function paintAnchorList(): MonoTypeOperatorFunction<AnchorList> {
+export function paintAnchorList(
+  els: HTMLAnchorElement[]
+): MonoTypeOperatorFunction<AnchorList> {
   return pipe(
 
     /* Extract anchor list migrations only */
@@ -203,18 +209,28 @@ export function paintAnchorList(): MonoTypeOperatorFunction<AnchorList> {
       }
     }, { done: [], next: [] }),
 
-    /* Defer re-paint to next animation frame */
+    /* Defer repaint to next animation frame */
     observeOn(animationFrameScheduler),
     tap(({ done, next }) => {
 
       /* Look forward */
-      for (const [el] of next)
-        resetAnchor(el)
+      for (const [el] of next) {
+        resetAnchorActive(el)
+        resetAnchorBlur(el)
+      }
 
       /* Look backward */
       for (const [index, [el]] of done.entries()) {
-        setAnchorBlur(el, true)
         setAnchorActive(el, index === done.length - 1)
+        setAnchorBlur(el, true)
+      }
+    }),
+
+    /* Reset on complete or error */
+    finalize(() => {
+      for (const el of els) {
+        resetAnchorActive(el)
+        resetAnchorBlur(el)
       }
     })
   )

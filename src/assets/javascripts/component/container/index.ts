@@ -21,7 +21,13 @@
  */
 
 import { Observable, combineLatest } from "rxjs"
-import { distinctUntilChanged, map, pluck, shareReplay } from "rxjs/operators"
+import {
+  distinctUntilChanged,
+  map,
+  pluck,
+  shareReplay,
+  tap
+} from "rxjs/operators"
 
 import { ViewportOffset, ViewportSize } from "../../ui"
 import { Header } from "../header"
@@ -57,7 +63,7 @@ interface WatchOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable to monitor the container
+ * Create an observable to watch the container
  *
  * The container represents the main content area including the sidebars (table
  * of contents and navigation), as well as the actual page content.
