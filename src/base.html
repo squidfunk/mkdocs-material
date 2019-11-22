@@ -166,6 +166,12 @@
       <link rel="manifest" href="{{ config.extra.manifest | url }}">
     {% endif %}
 
+    <!-- FontAwesome for social links -->
+    {% if config.extra.social %}
+      <link rel="stylesheet" type="text/css"
+          href="{{ 'assets/fonts/font-awesome.css' | url }}" />
+    {% endif %}
+
     <!-- Custom stylesheets -->
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" type="text/css" href="{{ path | url }}" />
@@ -238,7 +244,7 @@
     {% endblock %}
 
     <!-- Container, necessary for web-application context -->
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
 
       <!-- Hero teaser -->
       {% block hero %}
@@ -254,7 +260,7 @@
 
       <!-- Main container -->
       <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        <div class="md-main__inner md-grid" data-md-component="main">
 
           <!-- Navigation -->
           {% block site_nav %}
