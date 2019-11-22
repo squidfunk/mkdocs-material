@@ -100,7 +100,8 @@ export function watchAnchorList(
 ): Observable<AnchorList> {
   const table = new Map<HTMLAnchorElement, HTMLElement>()
   for (const el of els) {
-    const target = getElement(decodeURIComponent(el.hash))
+    const id = decodeURIComponent(el.hash.substring(1))
+    const target = getElement(`[id="${id}"]`)
     if (typeof target !== "undefined")
       table.set(el, target)
   }

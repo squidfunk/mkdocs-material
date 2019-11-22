@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* Retrieve all summaries and polyfill open/close functionality */
   const summaries = document.querySelectorAll("details > summary")
   summaries.forEach(summary => {
-    summary.addEventListener("click", ev => {
+    summary.addEventListener("click", () => {
       const details = summary.parentNode as HTMLElement
       if (details.hasAttribute("open")) {
         details.removeAttribute("open")

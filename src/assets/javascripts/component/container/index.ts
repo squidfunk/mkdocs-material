@@ -25,8 +25,7 @@ import {
   distinctUntilChanged,
   map,
   pluck,
-  shareReplay,
-  tap
+  shareReplay
 } from "rxjs/operators"
 
 import { ViewportOffset, ViewportSize } from "../../ui"
