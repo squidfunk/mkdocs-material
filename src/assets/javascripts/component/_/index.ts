@@ -20,8 +20,9 @@
  * IN THE SOFTWARE.
  */
 
+import { keys } from "ramda"
 import { MonoTypeOperatorFunction, Observable, of, pipe } from "rxjs"
-import { scan, shareReplay, tap } from "rxjs/operators"
+import { scan, shareReplay } from "rxjs/operators"
 
 import { getElement } from "../../ui"
 
@@ -40,10 +41,11 @@ export type Component =
   | "reset"                            /* Search reset */
   | "result"                           /* Search results */
   | "container"                        /* Container */
+  | "main"                             /* Main area */
+  | "hero"                             /* Hero */
   | "tabs"                             /* Tabs */
   | "navigation"                       /* Navigation */
   | "toc"                              /* Table of contents */
-  | "footer"                           /* Footer */
 
 /**
  * Component map
@@ -79,10 +81,11 @@ export function watchComponentMap(
     "reset",                           /* Search reset */
     "result",                          /* Search results */
     "container",                       /* Container */
+    "main",                            /* Main area */
+    "hero",                            /* Hero */
     "tabs",                            /* Tabs */
     "navigation",                      /* Navigation */
-    "toc",                             /* Table of contents */
-    "footer"                           /* Footer */
+    "toc"                              /* Table of contents */
   ].reduce<ComponentMap>((map, name) => {
     const el = getElement(`[data-md-component=${name}]`, document)
     return {
@@ -104,21 +107,30 @@ export function watchComponentMap(
  * Paint component map from source observable
  *
  * This operator function will swap the components in the previous component
- * map with the new components identified by the given names.
+ * map with the new components identified by the given names and rebind all
+ * remaining components, as they may be children of swapped components.
  *
  * @param names - Components to paint
  *
  * @return Operator function
  */
 export function paintComponentMap(
-  names: Component[] = ["title", "tabs", "container", "footer"]
+  names: Component[] = ["title", "container"]
 ): MonoTypeOperatorFunction<ComponentMap> {
   return pipe(
     scan<ComponentMap>((prev, next) => {
-      for (const name of names) {
-        if (name in prev && typeof prev[name] !== "undefined") {
-          prev[name]!.replaceWith(next[name]!)
-          prev[name] = next[name]
+      for (const name of keys(prev)) {
+
+        /* Swap component */
+        if (names.includes(name)) {
+          if (name in prev && typeof prev[name] !== "undefined") {
+            prev[name]!.replaceWith(next[name]!)
+            prev[name] = next[name]
+          }
+
+        /* Bind component */
+        } else {
+          prev[name] = getElement(`[data-md-component=${name}]`)
         }
       }
       return prev

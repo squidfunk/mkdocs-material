@@ -28,7 +28,7 @@ import {
   tap
 } from "rxjs/operators"
 
-import { Container } from "../../container"
+import { Main } from "../../main"
 import {
   resetHeaderShadow,
   setHeaderShadow
@@ -87,7 +87,7 @@ export function watchHeader(
  */
 export function paintHeaderShadow(
   el: HTMLElement
-): MonoTypeOperatorFunction<Container> {
+): MonoTypeOperatorFunction<Main> {
   return pipe(
     distinctUntilKeyChanged("active"),
     tap(({ active }) => {

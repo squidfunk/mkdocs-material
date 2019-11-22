@@ -36,11 +36,11 @@ import { Header } from "../header"
  * ------------------------------------------------------------------------- */
 
 /**
- * Container
+ * Main area
  */
-export interface Container {
-  offset: number                       /* Container top offset */
-  height: number                       /* Container visible height */
+export interface Main {
+  offset: number                       /* Main area top offset */
+  height: number                       /* Main area visible height */
   active: boolean                      /* Scrolled past top offset */
 }
 
@@ -62,19 +62,16 @@ interface WatchOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable to watch the container
+ * Create an observable to watch the main area
  *
- * The container represents the main content area including the sidebars (table
- * of contents and navigation), as well as the actual page content.
- *
- * @param el - Container element
+ * @param el - Main area element
  * @param options - Options
  *
- * @return Container observable
+ * @return Main area observable
  */
-export function watchContainer(
+export function watchMain(
   el: HTMLElement, { size$, offset$, header$ }: WatchOptions
-): Observable<Container> {
+): Observable<Main> {
 
   /* Compute necessary adjustment for header */
   const adjust$ = header$
@@ -82,7 +79,7 @@ export function watchContainer(
       pluck("height")
     )
 
-  /* Compute the container's visible height */
+  /* Compute the main area's visible height */
   const height$ = combineLatest(offset$, size$, adjust$)
     .pipe(
       map(([{ y }, { height }, adjust]) => {
@@ -95,7 +92,7 @@ export function watchContainer(
       distinctUntilChanged()
     )
 
-  /* Compute whether the viewport offset is past the container's top */
+  /* Compute whether the viewport offset is past the main area's top */
   const active$ = combineLatest(offset$, adjust$)
     .pipe(
       map(([{ y }, adjust]) => y >= el.offsetTop - adjust),

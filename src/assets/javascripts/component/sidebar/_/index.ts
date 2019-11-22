@@ -38,7 +38,7 @@ import {
 } from "rxjs/operators"
 
 import { ViewportOffset } from "../../../ui"
-import { Container } from "../../container"
+import { Main } from "../../main"
 import {
   resetSidebarHeight,
   resetSidebarLock,
@@ -67,7 +67,7 @@ export interface Sidebar {
  */
 interface WatchOptions {
   offset$: Observable<ViewportOffset>  /* Viewport offset observable */
-  container$: Observable<Container>    /* Container observable */
+  main$: Observable<Main>              /* Main area observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -83,17 +83,17 @@ interface WatchOptions {
  * @return Sidebar observable
  */
 export function watchSidebar(
-  el: HTMLElement, { offset$, container$ }: WatchOptions
+  el: HTMLElement, { offset$, main$ }: WatchOptions
 ): Observable<Sidebar> {
 
-  /* Adjust for internal container offset */
+  /* Adjust for internal main area offset */
   const adjust = parseFloat(
     getComputedStyle(el.parentElement!)
       .getPropertyValue("padding-top")
   )
 
   /* Compute the sidebar's available height */
-  const height$ = combineLatest(offset$, container$)
+  const height$ = combineLatest(offset$, main$)
     .pipe(
       map(([{ y }, { offset, height }]) => {
         return height - adjust + Math.min(adjust, Math.max(0, y - offset))
@@ -101,7 +101,7 @@ export function watchSidebar(
     )
 
   /* Compute whether the sidebar should be locked */
-  const lock$ = combineLatest(offset$, container$)
+  const lock$ = combineLatest(offset$, main$)
     .pipe(
       map(([{ y }, { offset }]) => y >= offset + adjust)
     )
