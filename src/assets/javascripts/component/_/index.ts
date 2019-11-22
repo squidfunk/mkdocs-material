@@ -21,8 +21,15 @@
  */
 
 import { keys } from "ramda"
-import { MonoTypeOperatorFunction, Observable, of, pipe } from "rxjs"
-import { scan, shareReplay } from "rxjs/operators"
+import {
+  MonoTypeOperatorFunction,
+  NEVER,
+  Observable,
+  OperatorFunction,
+  of,
+  pipe
+} from "rxjs"
+import { scan, shareReplay, switchMap } from "rxjs/operators"
 
 import { getElement } from "../../ui"
 
@@ -134,6 +141,27 @@ export function paintComponentMap(
         }
       }
       return prev
+    })
+  )
+}
+
+/**
+ * Pluck a component from the component map
+ *
+ * @template T - Element type
+ *
+ * @param name - Component
+ *
+ * @return Operator function
+ */
+export function pluckComponent(
+  name: Component
+): OperatorFunction<ComponentMap, HTMLElement> {
+  return pipe(
+    switchMap(map => {
+      return typeof map[name] !== "undefined"
+        ? of(map[name]!)
+        : NEVER
     })
   )
 }

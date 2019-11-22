@@ -20,43 +20,67 @@
  * IN THE SOFTWARE.
  */
 
-import { difference } from "ramda"
+import { findLast } from "ramda"
 import {
-  distinctUntilKeyChanged,
-  finalize,
+  NEVER,
+  animationFrameScheduler,
+  fromEvent,
+  merge,
+  of
+} from "rxjs"
+import { AjaxRequest, ajax } from "rxjs/ajax"
+import {
+  delay,
+  filter,
   map,
-  pairwise,
-  startWith
+  mapTo,
+  observeOn,
+  scan,
+  shareReplay,
+  switchMap,
+  tap
 } from "rxjs/operators"
 
+import "./polyfill"
+
 import {
-  resetAnchor,
-  resetSidebar,
-  setAnchorActive,
-  setAnchorBlur,
-  setHeaderShadow,
-  setSidebarHeight,
-  setSidebarLock,
-  watchAnchors,
-  watchContainer,
+  paintAnchorList,
+  paintComponentMap,
+  paintHeaderShadow,
+  paintSidebar,
+  pluckComponent,
+  setNavigationOverflowScrolling,
+  watchAnchorList,
+  watchComponentMap,
+  watchHeader,
+  watchMain,
+  watchNavigationIndex,
   watchSidebar
 } from "./component"
 import {
   getElement,
   getElements,
+  watchLocation,
+  watchLocationHash,
   watchMedia,
   watchViewportOffset,
-  watchViewportSize
+  watchViewportSize,
+  withElement
 } from "./ui"
 import { toggle } from "./utilities"
 
+// ----------------------------------------------------------------------------
+// Disclaimer: this file is currently heavy WIP
 // ----------------------------------------------------------------------------
 
 const offset$ = watchViewportOffset()
 const size$   = watchViewportSize()
 
-const screen$ = watchMedia("(min-width: 1220px)")
-const tablet$ = watchMedia("(min-width: 960px)")
+const aboveScreen$ = watchMedia("(min-width: 1220px)")
+const belowScreen$ = watchMedia("(max-width: 1219px)")
+
+const aboveTablet$ = watchMedia("(min-width: 960px)")
+const belowTablet$ = watchMedia("(max-width: 959px)")
 
 // ----------------------------------------------------------------------------
 
@@ -65,119 +89,343 @@ document.documentElement.classList.remove("no-js")
 document.documentElement.classList.add("js")
 
 // ----------------------------------------------------------------------------
-// sidebar lock + height
+
+// Observable that resolves with document when loaded
+const init$ = fromEvent(document, "DOMContentLoaded")
+  .pipe(
+    mapTo(document),
+    shareReplay({ bufferSize: 1, refCount: true })
+  )
+
+// Location subject
+const location$ = watchLocation()
+
+// Observable that resolves with document on XHR load
+const reload$ = location$
+  .pipe(
+    switchMap(url => load(url))
+  )
+
+// Extract and (re-)paint components
+const components$ = merge(init$, reload$)
+  .pipe(
+    switchMap(watchComponentMap),
+    paintComponentMap(),
+    shareReplay({ bufferSize: 1, refCount: true })
+  )
+
 // ----------------------------------------------------------------------------
 
-const container = getElement("[data-md-component=container]")!
-const header    = getElement("[data-md-component=header]")!
-const container$ = watchContainer(container, header, { size$, offset$ })
+const header$ = components$
+  .pipe(
+    pluckComponent("header"),
+    switchMap(watchHeader)
+  )
 
-// Optimize anchor list candidates
-const anchors = getElements<HTMLAnchorElement>("[data-md-component=toc] .md-nav__link")
-if (anchors.length)
-  tablet$
-    .pipe(
-      toggle(() => watchAnchors(anchors, header, { offset$ })
-        .pipe(
-          startWith({ done: [], next: [] }),
-          pairwise(),
-          map(([a, b]) => {
-            const begin = Math.max(0, Math.min(b.done.length, a.done.length) - 1)
-            const end   = Math.max(b.done.length, a.done.length)
-            return {
-              done: b.done.slice(begin, end + 1),
-              next: difference(b.next, a.next)
-            }
-          }),
-          finalize(() => {
-            for (const anchor of anchors)
-              resetAnchor(anchor)
-          })
-        )
-      )
-    )
-      .subscribe(({ done, next }) => {
+const main$ = components$
+  .pipe(
+    pluckComponent("main"),
+    switchMap(el => watchMain(el, { size$, offset$, header$ })),
+    shareReplay({ bufferSize: 1, refCount: true})
+  )
 
-        /* Look backward */
-        for (const [i, [anchor]] of done.entries()) {
-          setAnchorBlur(anchor, true)
-          setAnchorActive(anchor, i === done.length - 1)
-        }
-
-        /* Look forward */
-        for (const [anchor] of next) {
-          setAnchorBlur(anchor, false)
-          setAnchorActive(anchor, false)
-        }
-      })
-
-// TODO: this should be subscribed to a subject!
-// const toggle = getElement<HTMLInputElement>("[data-md-toggle=search]")!
-// fromEvent(toggle, "change")
-//   .subscribe(x2 => {
-//     console.log("toggle changed", x2)
-//   })
-
-// const query = getElement("[data-md-component=query]")
-// if (typeof query !== "undefined") {
-//   fromEvent(query, "focus")
-//     .pipe(
-
-//     )
-//       .subscribe(console.log)
-// }
-
-/* Component: header shadow toggle */ // - TODO: put this into a separate component
-if (typeof header !== "undefined") {
-  container$
-    .pipe(
-      distinctUntilKeyChanged("active")
-    )
-      .subscribe(({ active }) => {
-        setHeaderShadow(header, active)
-      })
-}
+// ----------------------------------------------------------------------------
 
 /* Component: sidebar with navigation */
-const nav = getElement("[data-md-component=navigation")
-if (typeof nav !== "undefined") {
-  screen$
-    .pipe(
-      toggle(() => watchSidebar(nav, { container$, offset$ })
-        .pipe(
-          finalize(() => {
-            resetSidebar(nav)
-          })
+components$
+  .pipe(
+    pluckComponent("navigation"),
+    switchMap(el => aboveScreen$
+      .pipe(
+        toggle(() => watchSidebar(el, { offset$, main$ })
+          .pipe(
+            paintSidebar(el)
+          )
         )
-      )
-    )
-      .subscribe(({ height, lock }) => {
-        setSidebarHeight(nav, height)
-        setSidebarLock(nav, lock)
-      })
-}
+      ))
+  )
+    .subscribe()
 
 /* Component: sidebar with table of contents (missing on 404 page) */
-const toc = getElement("[data-md-component=toc")
-if (typeof toc !== "undefined") {
-  tablet$
-    .pipe(
-      toggle(() => watchSidebar(toc, { container$, offset$ })
-        .pipe(
-          finalize(() => {
-            resetSidebar(toc)
-          })
+components$
+  .pipe(
+    pluckComponent("toc"),
+    switchMap(el => aboveTablet$
+      .pipe(
+        toggle(() => watchSidebar(el, { offset$, main$ })
+          .pipe(
+            paintSidebar(el)
+          )
+        )
+      ))
+  )
+    .subscribe()
+
+/* Component: link blurring for table of contents */
+components$
+  .pipe(
+    pluckComponent("toc"),
+    map(el => getElements<HTMLAnchorElement>(".md-nav__link", el)),
+    switchMap(els => aboveTablet$
+      .pipe(
+        toggle(() => watchAnchorList(els, { size$, offset$, header$ })
+          .pipe(
+            paintAnchorList(els)
+          )
         )
       )
     )
-      .subscribe(({ height, lock }) => {
-        setSidebarHeight(toc, height)
-        setSidebarLock(toc, lock)
-      })
+  )
+    .subscribe()
+
+/* Component: header shadow toggle */
+components$
+  .pipe(
+    pluckComponent("header"),
+    switchMap(el => main$.pipe(
+      paintHeaderShadow(el)
+    ))
+  )
+    .subscribe()
+
+// ----------------------------------------------------------------------------
+// Refactor:
+// ----------------------------------------------------------------------------
+
+// Observable that catches all internal links without the necessity of rebinding
+// as events are bubbled up through the DOM.
+init$
+  .pipe(
+    switchMap(({ body }) => fromEvent(body, "click")),
+    switchMap(ev => {
+
+      /* Walk up as long as we're not in a details tag */
+      let parent = ev.target as Node | undefined
+      while (parent && !(parent instanceof HTMLAnchorElement))
+        parent = parent.parentNode // TODO: fix errors...
+
+      if (parent) { // this one OR (!) one of
+        // its parents...
+        if (!/(:\/\/|^#[^\/]+$)/.test(parent.getAttribute("href")!)) {
+          ev.preventDefault()
+          console.log("> ", parent.href)
+
+          // Extract URL; push to state, then emit new URL
+          const href = parent.href
+          history.pushState({}, "", href) // move this somewhere else!???
+          return of(href)
+        }
+      }
+      return NEVER
+    }),
+    shareReplay({ bufferSize: 1, refCount: true })
+  )
+    .subscribe(location$)
+
+// ----------------------------------------------------------------------------
+
+const nav2 = getElement("[data-md-component=navigation]")!
+const index$ = watchNavigationIndex(nav2) // TODO: maybe rename into setup!? merge with sidebar?
+belowScreen$
+  .pipe(
+    toggle(() => index$
+      .pipe(
+        switchMap(index => merge(...[...index.keys()]
+          .map(input => fromEvent(input, "change"))
+        )
+          .pipe(
+            mapTo(index)
+          )
+        ),
+        map(index => getElement("ul", index.get(
+          findLast(input => input.checked, [...index.keys()])!)
+        )!), // find the TOP MOST! <-- this is the actively displayed on mobile
+
+        // this is the paint job...
+
+        // dispatch action - TODO: document why this crap is even necessary
+        scan((prev, next) => {
+          if (prev)
+            setNavigationOverflowScrolling(prev, false) // TODO: resetOverflowScrolling ....
+          return next
+        }),
+        delay(250),
+        tap(next => {
+          setNavigationOverflowScrolling(next, true) // setNavigationScrollfix
+        })
+      )
+    )
+  )
+    .subscribe()
+
+// ----------------------------------------------------------------------------
+
+function isNavigationCollapsible(el: HTMLElement): boolean {
+  return el.getAttribute("data-md-component") === "collapsible" // TODO: maybe better remove again
+}
+
+aboveScreen$
+  .pipe(
+    toggle(() => index$
+      .pipe(
+        // map(index => )
+        // filter shit from index...
+        switchMap(index => [...index.keys()]
+          .filter(input => isNavigationCollapsible(index.get(input)!))
+          .map(input => {
+            const el = index.get(input)!
+            // this doesnt work...
+            el.setAttribute("data-md-height", `${el.offsetHeight}`) // TODO: this is a hack
+            return input
+          })
+          .map(input => fromEvent(input, "change")
+            .pipe(
+              map(() => {
+                const el = index.get(input)!
+                let height = parseInt(el.getAttribute("data-md-height")!, 10)
+                // always goes from data-md-height... wrong...
+                if (!input.checked) {
+                  el.style.maxHeight = `${height}px`
+
+                  /* Set target height */
+                  height = 0
+
+                } else {
+                  el.style.maxHeight = "initial" // 100%!?
+                  el.style.transitionDuration = "initial"
+
+                  /* Retrieve target height */
+                  height = el.offsetHeight
+                  console.log("expand to height")
+
+                  /* Reset state and set start height */
+                  // el.removeAttribute("data-md-state")
+                  el.style.maxHeight = "0px"
+                }
+
+                /* Force style recalculation */
+                el.offsetHeight // tslint:disable-line
+                el.style.transitionDuration = ""
+                return height
+              }), // max height is set... just read it.
+              observeOn(animationFrameScheduler),
+              tap(height => {
+                const el = index.get(input)!
+                // el.setAttribute("data-md-state", "animate")
+                el.style.maxHeight = `${height}px`
+                console.log("setting shit...")
+
+                el.setAttribute("data-md-height", `${height}`)
+              }),
+              delay(250),
+              tap(() => {
+                const el = index.get(input)!
+                console.log("DONE")
+                // el.removeAttribute("data-md-state")
+                el.style.maxHeight = ""
+              })
+            )
+              .subscribe() // merge shit and return it...
+          )
+        )
+      )
+    )
+  )
+    .subscribe()
+
+// ----------------------------------------------------------------------------
+
+/* Open details after anchor jump */
+const hash$ = watchLocationHash()
+hash$
+  .pipe(
+    withElement(), // TODO: somehow ugly... not so nice and cool
+    tap(el => {
+      let parent = el.parentNode
+      while (parent && !(parent instanceof HTMLDetailsElement)) // TODO: put this into a FUNCTION!
+        parent = parent.parentNode
+
+      /* If there's a details tag, open it */
+      if (parent && !parent.open) {
+        parent.open = true
+
+        /* Hack: force reload for repositioning */ // TODO. what happens here!?
+        const hash = location.hash
+        location.hash = " "
+        location.hash = hash // tslint:disable-line
+        // TODO: setLocationHash() + forceLocationHashChange
+      }
+    })
+  )
+    .subscribe()
+
+// ----------------------------------------------------------------------------
+
+// setupAnchorToggle?
+const drawerToggle = getElement<HTMLInputElement>("[data-md-toggle=drawer]")!
+const searchToggle = getElement<HTMLInputElement>("[data-md-toggle=search]")!
+
+/* Listener: close drawer when anchor links are clicked */
+hash$
+  .pipe(
+    tap(() => setToggle(drawerToggle, false))
+  )
+    .subscribe()
+
+/* Listener: open search on focus */
+const query = getElement("[data-md-component=query]")!
+if (query) {
+  fromEvent(query, "focus")
+    .pipe(
+      tap(() => setToggle(searchToggle, true))
+    )
+      .subscribe()
+}
+
+/* Listener: focus input after opening search */
+fromEvent(searchToggle, "change")
+  .pipe(
+    filter(() => searchToggle.checked),
+    delay(400),
+    tap(() => query.focus())
+  )
+    .subscribe()
+
+// data-md-toggle!
+function setToggle(toggle: HTMLInputElement, active: boolean): void {
+  if (toggle.checked !== active) {
+    toggle.checked = active
+    toggle.dispatchEvent(new CustomEvent("change"))
+  }
 }
 
 // ----------------------------------------------------------------------------
 
+// Asynchronously load a document
+function load(url: string) {
+
+  const options: AjaxRequest = {
+    responseType: "document",
+    withCredentials: true
+  } // TODO: remove favicon from source!? patch...
+
+  return ajax({ url, ...options })
+    .pipe(
+      map(({ response }) => {
+        if (!(response instanceof Document)) // TODO: what to do in case of error?
+          throw Error("Unknown error...")
+
+        return response
+      })
+    )
+}
+
+// ----------------------------------------------------------------------------
+
+// function isLocal(el: HTMLAnchorElement): boolean {
+//   return /(:\/\/|^#[^\/]+$)/.test(el.getAttribute("href")!)
+// }
+
 export function app(config: any) {
-  console.log("called app")
+  console.log("called app with", config)
 }

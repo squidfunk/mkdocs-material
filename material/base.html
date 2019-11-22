@@ -83,6 +83,9 @@
     {% if config.extra.manifest %}
       <link rel="manifest" href="{{ config.extra.manifest | url }}">
     {% endif %}
+    {% if config.extra.social %}
+      <link rel="stylesheet" href="{{ 'assets/fonts/font-awesome.css' | url }}">
+    {% endif %}
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
@@ -123,7 +126,7 @@
     {% block header %}
       {% include "partials/header.html" %}
     {% endblock %}
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       {% block hero %}
         {% if page and page.meta and page.meta.hero %}
           {% include "partials/hero.html" with context %}
@@ -133,7 +136,7 @@
         {% include "partials/tabs.html" %}
       {% endif %}
       <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+        <div class="md-main__inner md-grid" data-md-component="main">
           {% block site_nav %}
             {% if nav %}
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">

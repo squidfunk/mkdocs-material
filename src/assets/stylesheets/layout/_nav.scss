@@ -467,9 +467,7 @@
 
     // Animation is only possible if JavaScript is available, as the max-height
     // property must be calculated before transitioning
-    &[data-md-state="animate"] {
-      transition: max-height 0.25s cubic-bezier(0.86, 0, 0.07, 1);
-    }
+    transition: max-height 0.25s cubic-bezier(0.86, 0, 0.07, 1);
 
     // Hide nested navigation by default
     .md-nav__toggle ~ & {
@@ -483,14 +481,8 @@
     }
 
     // Expand nested navigation, if toggle is checked
-    .md-nav__toggle:checked ~ &,
-    &[data-md-state="expand"] {
+    .md-nav__toggle:checked ~ & {
       max-height: 100%;
-
-      // Just show for accessibility links if JavaScript is not available
-      .no-js & {
-        display: block;
-      }
     }
 
     // Hide titles for nested navigation
