@@ -38,8 +38,12 @@
 {% endif %}
 
 <!-- Repository containing source -->
-<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}"
-    class="md-source" data-md-source="{{ repo_type }}">
+<a
+  href="{{ config.repo_url }}"
+  title="{{ lang.t('source.link.title') }}"
+  class="md-source"
+  data-md-source="{{ repo_type }}"
+>
   {% if repo_type %}
     <div class="md-source__icon">
       <svg viewBox="0 0 24 24" width="24" height="24">

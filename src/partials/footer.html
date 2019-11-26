@@ -32,16 +32,20 @@
 
         <!-- Link to previous page -->
         {% if page.previous_page %}
-          <a href="{{ page.previous_page.url | url }}"
-              title="{{ page.previous_page.title | striptags }}"
-              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
-              rel="prev">
+          <a
+            href="{{ page.previous_page.url | url }}"
+            title="{{ page.previous_page.title | striptags }}"
+            class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+            rel="prev"
+          >
             <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back
-                    md-footer-nav__button"></i>
+              <i
+                class="md-icon md-icon--arrow-back md-footer-nav__button"
+              ></i>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch
-                  md-footer-nav__title">
+            <div
+              class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"
+            >
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   {{ lang.t("footer.previous") }}
@@ -54,12 +58,15 @@
 
         <!-- Link to next page -->
         {% if page.next_page %}
-          <a href="{{ page.next_page.url | url }}"
-              title="{{ page.next_page.title | striptags }}"
-              class="md-flex md-footer-nav__link md-footer-nav__link--next"
-              rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch
-                  md-footer-nav__title">
+          <a
+            href="{{ page.next_page.url | url }}"
+            title="{{ page.next_page.title | striptags }}"
+            class="md-flex md-footer-nav__link md-footer-nav__link--next"
+            rel="next"
+          >
+            <div
+              class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"
+            >
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   {{ lang.t("footer.next") }}
@@ -68,8 +75,9 @@
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward
-                    md-footer-nav__button"></i>
+              <i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"
+              ></i>
             </div>
           </a>
         {% endif %}
@@ -92,7 +100,8 @@
         <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+          Material for MkDocs
+        </a>
       </div>
 
       <!-- Social links -->

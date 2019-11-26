@@ -41,8 +41,7 @@
 
       <!-- Page description -->
       {% if page and page.meta and page.meta.description %}
-        <meta name="description"
-            content="{{ page.meta.description }}" />
+        <meta name="description" content="{{ page.meta.description }}" />
       {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}" />
       {% endif %}
@@ -72,28 +71,14 @@
         <meta name="author" content="{{ config.site_author }}" />
       {% endif %}
 
-      <!-- Localization -->
-      {% for key in [
-        "clipboard.copy",
-        "clipboard.copied",
-        "search.language",
-        "search.pipeline.stopwords",
-        "search.pipeline.trimmer",
-        "search.result.none",
-        "search.result.one",
-        "search.result.other",
-        "search.tokenizer"
-      ] %}
-        <meta name="lang:{{ key }}" content="{{ lang.t(key) }}" />
-      {% endfor %}
-
       <!-- Favicon -->
-      <link rel="shortcut icon"
-          href="{{ config.theme.favicon | url }}">
+      <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
 
       <!-- Generator banner -->
-      <meta name="generator"
-          content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$" />
+      <meta
+        name="generator"
+        content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$"
+      />
     {% endblock %}
 
     <!-- Site title -->
@@ -111,13 +96,19 @@
     {% block styles %}
 
       <!-- Theme-related stylesheets -->
-      <link rel="stylesheet" type="text/css"
-          href="{{ 'assets/stylesheets/app.css' | url }}" />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ 'assets/stylesheets/app.css' | url }}"
+      />
 
       <!-- Extra color palette -->
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" type="text/css"
-            href="{{ 'assets/stylesheets/app-palette.css' | url }}" />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="{{ 'assets/stylesheets/app-palette.css' | url }}"
+        />
       {% endif %}
 
       <!-- Theme-color meta tag for Android -->
@@ -139,11 +130,14 @@
       <!-- Load fonts from Google -->
       {% if font != false %}
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-        <link rel="stylesheet" type="text/css"
-            href="https://fonts.googleapis.com/css?family={{
-              font.text | replace(' ', '+') + ':300,400,400i,700|' +
-              font.code | replace(' ', '+')
-            }}&display=fallback" />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://fonts.googleapis.com/css?family={{
+            font.text | replace(' ', '+') + ':300,400,400i,700|' +
+            font.code | replace(' ', '+')
+          }}&display=fallback"
+        />
         <style>
           body, input {
             font-family: "{{ font.text }}", "Helvetica Neue",
@@ -158,8 +152,11 @@
     {% endblock %}
 
     <!-- Material icons as iconset -->
-    <link rel="stylesheet" type="text/css"
-        href="{{ 'assets/fonts/material-icons.css' | url }}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ 'assets/fonts/material-icons.css' | url }}"
+    />
 
     <!-- Progressive Web App Manifest -->
     {% if config.extra.manifest %}
@@ -168,8 +165,11 @@
 
     <!-- FontAwesome for social links -->
     {% if config.extra.social %}
-      <link rel="stylesheet" type="text/css"
-          href="{{ 'assets/fonts/font-awesome.css' | url }}" />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ 'assets/fonts/font-awesome.css' | url }}"
+      />
     {% endif %}
 
     <!-- Custom stylesheets -->
@@ -192,9 +192,11 @@
   {% if palette.primary or palette.accent %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
     {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-    <body dir="{{ lang.t('direction') }}"
-        data-md-color-primary="{{ primary }}"
-        data-md-color-accent="{{ accent }}">
+    <body
+      dir="{{ lang.t('direction') }}"
+      data-md-color-primary="{{ primary }}"
+      data-md-color-accent="{{ accent }}"
+    >
   {% else %}
     <body dir="{{ lang.t('direction') }}">
   {% endif %}
@@ -222,18 +224,31 @@
       State toggles - we need to set autocomplete="off" in order to reset the
       drawer on back button invocation in some browsers
     -->
-    <input class="md-toggle" data-md-toggle="drawer"
-        type="checkbox" id="__drawer" autocomplete="off" />
-    <input class="md-toggle" data-md-toggle="search"
-        type="checkbox" id="__search" autocomplete="off" />
+    <input
+      class="md-toggle"
+      data-md-toggle="drawer"
+      type="checkbox"
+      id="__drawer"
+      autocomplete="off"
+    />
+    <input
+      class="md-toggle"
+      data-md-toggle="search"
+      type="checkbox"
+      id="__search"
+      autocomplete="off"
+    />
 
     <!-- Overlay for expanded drawer -->
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    <label
+      class="md-overlay"
+      data-md-component="overlay"
+      for="__drawer"
+    ></label>
 
     <!-- Render "skip to content" link -->
     {% if page.toc | first is defined %}
-      <a href="{{ (page.toc | first).url }}" tabindex="1"
-          class="md-skip">
+      <a href="{{ (page.toc | first).url }}" tabindex="1" class="md-skip">
         {{ lang.t('skip.link.title') }}
       </a>
     {% endif %}
@@ -267,8 +282,10 @@
 
             <!-- Main navigation -->
             {% if nav %}
-              <div class="md-sidebar md-sidebar--primary"
-                  data-md-component="navigation">
+              <div
+                class="md-sidebar md-sidebar--primary"
+                data-md-component="navigation"
+              >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     {% include "partials/nav.html" %}
@@ -279,8 +296,10 @@
 
             <!-- Table of contents -->
             {% if page.toc %}
-              <div class="md-sidebar md-sidebar--secondary"
-                  data-md-component="toc">
+              <div
+                class="md-sidebar md-sidebar--secondary"
+                data-md-component="toc"
+              >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     {% include "partials/toc.html" %}
@@ -299,9 +318,11 @@
 
                 <!-- Edit button, if URL was defined -->
                 {% if page.edit_url %}
-                  <a href="{{ page.edit_url }}"
-                      title="{{ lang.t('edit.link.title') }}"
-                      class="md-icon md-content__icon">&#xE3C9;<!-- edit --></a>
+                  <a
+                    href="{{ page.edit_url }}"
+                    title="{{ lang.t('edit.link.title') }}"
+                    class="md-icon md-content__icon"
+                  >&#xE3C9;<!-- edit --></a>
                 {% endif %}
 
                 <!--
@@ -326,8 +347,11 @@
                     {% endif %}
                     {% set path = page.meta.path | default([""]) %}
                     {% set file = page.meta.source %}
-                    <a href="{{ [repo, path, file] | join('/') }}"
-                        title="{{ file }}" class="md-source-file">
+                    <a
+                      href="{{ [repo, path, file] | join('/') }}"
+                      title="{{ file }}"
+                      class="md-source-file"
+                    >
                       {{ file }}
                     </a>
                   {% endif %}
@@ -376,7 +400,24 @@
         {% endif %}
       {% endif %}
 
-      <!-- Initialize application -->
+      <!-- Translations -->
+      <script id="__lang" type="application/json">
+        {
+          {% for key in [
+            "clipboard.copy",
+            "clipboard.copied",
+            "search.language",
+            "search.pipeline.stopwords",
+            "search.pipeline.trimmer",
+            "search.result.none",
+            "search.result.one",
+            "search.result.other",
+            "search.tokenizer"
+          ] -%}
+            "{{ key }}": "{{ lang.t(key) }}"{{ "," if not loop.last }}
+          {% endfor %}
+        }
+      </script>
       <script>
         app({
           version: "{{ mkdocs_version }}",

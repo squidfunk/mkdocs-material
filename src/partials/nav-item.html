@@ -32,19 +32,31 @@
 
     <!-- Active checkbox expands items contained within nested section -->
     {% if nav_item.active %}
-      <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}"
-          type="checkbox" id="{{ path }}" checked />
+      <input
+        class="md-toggle md-nav__toggle"
+        data-md-toggle="{{ path }}"
+        type="checkbox"
+        id="{{ path }}"
+        checked
+      />
     {% else %}
-      <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}"
-          type="checkbox" id="{{ path }}" />
+      <input
+        class="md-toggle md-nav__toggle"
+        data-md-toggle="{{ path }}"
+        type="checkbox"
+        id="{{ path }}"
+      />
     {% endif %}
 
     <!-- Expand active pages -->
     <label class="md-nav__link" for="{{ path }}">
       {{ nav_item.title }}
     </label>
-    <nav class="md-nav" data-md-component="collapsible"
-        data-md-level="{{ level }}">
+    <nav
+      class="md-nav"
+      data-md-component="collapsible"
+      data-md-level="{{ level }}"
+    >
       <label class="md-nav__title" for="{{ path }}">
         {{ nav_item.title }}
       </label>
@@ -67,8 +79,12 @@
     {% set toc_ = page.toc %}
 
     <!-- Active checkbox expands items contained within nested section -->
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc"
-        type="checkbox" id="__toc" />
+    <input
+      class="md-toggle md-nav__toggle"
+      data-md-toggle="toc"
+      type="checkbox"
+      id="__toc"
+    />
 
     <!-- Hack: see partials/toc.html for more information -->
     {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
@@ -81,8 +97,11 @@
         {{ nav_item.title }}
       </label>
     {% endif %}
-    <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}"
-        class="md-nav__link md-nav__link--active">
+    <a
+      href="{{ nav_item.url | url }}"
+      title="{{ nav_item.title | striptags }}"
+      class="md-nav__link md-nav__link--active"
+    >
       {{ nav_item.title }}
     </a>
 
@@ -95,8 +114,11 @@
 <!-- Main navigation item -->
 {% else %}
   <li class="{{ class }}">
-    <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}"
-        class="md-nav__link">
+    <a
+      href="{{ nav_item.url | url }}"
+      title="{{ nav_item.title | striptags }}"
+      class="md-nav__link"
+    >
       {{ nav_item.title }}
     </a>
   </li>

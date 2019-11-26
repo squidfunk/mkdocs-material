@@ -25,8 +25,11 @@
 
   <!-- Site title -->
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
-        title="{{ config.site_name }}" class="md-nav__button md-logo">
+    <a
+      href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
+      title="{{ config.site_name }}"
+      class="md-nav__button md-logo"
+    >
       {% if config.theme.logo.icon %}
         <i class="md-icon">{{ config.theme.logo.icon }}</i>
       {% else %}
