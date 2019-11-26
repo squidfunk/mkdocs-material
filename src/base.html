@@ -54,7 +54,7 @@
             (anchor ? '#' + anchor : '')
         </script>
 
-        <!-- no-js fallback -->
+        <!-- Fallback in case JavaScript is not available -->
         <meta http-equiv="refresh" content="0; url={{ page.meta.redirect }}" />
         <meta name="robots" content="noindex" />
         <link rel="canonical" href="{{ page.meta.redirect }}" />
@@ -92,10 +92,8 @@
       {% endif %}
     {% endblock %}
 
-    <!-- Stylesheets -->
+    <!-- Theme-related stylesheets -->
     {% block styles %}
-
-      <!-- Theme-related stylesheets -->
       <link
         rel="stylesheet"
         type="text/css"
@@ -177,7 +175,7 @@
       <link rel="stylesheet" type="text/css" href="{{ path | url }}" />
     {% endfor %}
 
-    <!-- Analytic scripts -->
+    <!-- Analytics -->
     {% block analytics %}
       {% if config.google_analytics %}
         {% include "partials/integrations/analytics.html" %}
@@ -246,7 +244,7 @@
       for="__drawer"
     ></label>
 
-    <!-- Render "skip to content" link -->
+    <!-- Link to skip to content -->
     {% if page.toc | first is defined %}
       <a href="{{ (page.toc | first).url }}" tabindex="1" class="md-skip">
         {{ lang.t('skip.link.title') }}
@@ -273,7 +271,7 @@
         {% include "partials/tabs.html" %}
       {% endif %}
 
-      <!-- Main container -->
+      <!-- Main area -->
       <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="main">
 
@@ -418,6 +416,8 @@
         {%- endfor -%}
         {{ translations | tojson }}
       </script>
+
+      <!-- Application initialization -->
       <script>
         app({
           version: "{{ mkdocs_version }}",
@@ -426,6 +426,8 @@
           }
         });
       </script>
+
+      <!-- Custom JavaScript -->
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
