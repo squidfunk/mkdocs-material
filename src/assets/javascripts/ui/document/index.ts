@@ -20,81 +20,86 @@
  * IN THE SOFTWARE.
  */
 
-import { MonoTypeOperatorFunction, Observable, of, pipe } from "rxjs"
+import { Observable, fromEvent } from "rxjs"
+import { ajax } from "rxjs/ajax"
 import {
-  distinctUntilKeyChanged,
-  finalize,
+  distinctUntilChanged,
+  map,
+  mapTo,
+  pluck,
   shareReplay,
-  tap
+  skip,
+  startWith,
+  switchMap
 } from "rxjs/operators"
 
-import { Main } from "../../main"
-import {
-  resetHeaderShadow,
-  setHeaderShadow
-} from "../element"
-
 /* ----------------------------------------------------------------------------
- * Types
+ * Function types
  * ------------------------------------------------------------------------- */
 
 /**
- * Header
+ * Switch options
  */
-export interface Header {
-  sticky: boolean                      /* Header stickyness */
-  height: number                       /* Header visible height */
+interface SwitchOptions {
+  url$: Observable<string>             /* Location observable */
 }
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Observable for document load events
+ */
+const load$ = fromEvent(document, "DOMContentLoaded")
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable to watch the header
+ * Watch document
  *
- * The header is wrapped in an observable to pave the way for auto-hiding or
- * other dynamic behaviors that may be implemented later on.
- *
- * @param el - Header element
- *
- * @return Header observable
+ * @return Document observable
  */
-export function watchHeader(
-  el: HTMLElement
-): Observable<Header> {
-  const sticky = getComputedStyle(el)
-    .getPropertyValue("position") === "fixed"
-
-  /* Return header as hot observable */
-  return of({
-    sticky,
-    height: sticky ? el.offsetHeight : 0
-  })
+export function watchDocument(): Observable<Document> {
+  return load$
     .pipe(
-      shareReplay({ bufferSize: 1, refCount: true })
+      mapTo(document),
+      shareReplay(1)
     )
 }
 
-/* ------------------------------------------------------------------------- */
-
 /**
- * Paint header shadow from source observable
+ * Watch document switch
  *
- * @param el - Header element
+ * This function returns an observables that fetches a document if the provided
+ * location observable emits a new value (i.e. URL). If the emitted URL points
+ * to the same page, the request is effectively ignored (e.g. when only the
+ * fragment identifier changes)
  *
- * @return Operator function
+ * @param options - Options
+ *
+ * @return Document switch observable
  */
-export function paintHeaderShadow(
-  el: HTMLElement
-): MonoTypeOperatorFunction<Main> {
-  return pipe(
-    distinctUntilKeyChanged("active"),
-    tap(({ active }) => {
-      setHeaderShadow(el, active)
-    }),
-    finalize(() => {
-      resetHeaderShadow(el)
-    })
-  )
+export function watchDocumentSwitch(
+  { url$ }: SwitchOptions
+): Observable<Document> {
+  return url$
+    .pipe(
+      startWith(location.href),
+      map(url => url.replace(/#[^#]+$/, "")),
+      distinctUntilChanged(),
+      skip(1),
+      switchMap(url => ajax({
+        url,
+        responseType: "document",
+        withCredentials: true
+      })
+        .pipe<Document>(
+          pluck("response")
+        )
+      ),
+      shareReplay(1)
+    )
 }

@@ -20,64 +20,29 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, of } from "rxjs"
-import { shareReplay } from "rxjs/operators"
-
-import { getElement, getElements } from "../../ui"
-
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Navigation index
+ * Configuration
  */
-export type NavigationIndex = Map<HTMLInputElement, HTMLElement>
+export interface Config {
+  base: string                         /* Base URL */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Set navigation overflow scrolling
+ * Ensure that the given value is a valid configuration
  *
- * @param el - Navigation element
- * @param active - Whether overflow scrolling is active
+ * @param config - Configuration
+ *
+ * @return Test result
  */
-export function setNavigationOverflowScrolling(
-  el: HTMLElement, active: boolean
-): void {
-  el.style.background = active ? "yellow" : "" // TODO: hack, temporary
-  el.style.webkitOverflowScrolling = active ? "touch" : ""
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Create an observable to index all navigation elements
- *
- * @param el - Top-level navigation element
- *
- * @return Navigation index observable
- */
-export function watchNavigationIndex(
-  el: HTMLElement
-): Observable<NavigationIndex> {
-  const list = getElements("nav", el)
-
-  /* Build index to map inputs to navigation lists */
-  const index = new Map<HTMLInputElement, HTMLElement>()
-  for (const item of list) {
-    const label = getElement<HTMLLabelElement>("label", item)!
-    if (typeof label !== "undefined") {
-      const input = getElement<HTMLInputElement>(`#${label.htmlFor}`)!
-      index.set(input, item)
-    }
-  }
-
-  /* Return navigation index as hot observable */
-  return of(index)
-    .pipe(
-      shareReplay({ bufferSize: 1, refCount: true })
-    )
+export function isConfig(config: any): config is Config {
+  return typeof config === "object"
+      && typeof config.base === "string"
 }

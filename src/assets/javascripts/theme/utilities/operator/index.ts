@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, OperatorFunction, pipe } from "rxjs"
+import { EMPTY, Observable, OperatorFunction, pipe } from "rxjs"
 import { switchMap } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
@@ -28,37 +28,35 @@ import { switchMap } from "rxjs/operators"
  * ------------------------------------------------------------------------- */
 
 /**
- * Convert a collection to an array
- *
- * @template T - Element type
- *
- * @param collection - Collection or node list
- *
- * @return Array of elements
- */
-export function toArray<
-  T extends HTMLElement
->(collection: HTMLCollection | NodeListOf<T>): T[] {
-  return Array.from(collection) as T[]
-}
-
-/* ----------------------------------------------------------------------------
- * Operators
- * ------------------------------------------------------------------------- */
-
-/**
- * Switch to another observable, if toggle is active
+ * Switch to another observable if source observable emits `true`
  *
  * @template T - Observable value type
  *
  * @param project - Project function
  *
- * @return Observable, if toggle is active
+ * @return Operator function
  */
-export function toggle<T>(
-  project: () => Observable<T>
+export function switchMapIfActive<T>(
+  project: (value: boolean) => Observable<T>
 ): OperatorFunction<boolean, T> {
   return pipe(
-    switchMap(active => active ? project() : NEVER)
+    switchMap(value => value ? project(value) : EMPTY)
+  )
+}
+
+/**
+ * Switch to another observable if source observable emits `false`
+ *
+ * @template T - Observable value type
+ *
+ * @param project - Project function
+ *
+ * @return Operator function
+ */
+export function switchMapIfNotActive<T>(
+  project: (value: boolean) => Observable<T>
+): OperatorFunction<boolean, T> {
+  return pipe(
+    switchMap(value => value ? EMPTY : project(value))
   )
 }

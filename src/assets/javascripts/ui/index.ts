@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./element"
+export * from "./document"
 export * from "./location"
 export * from "./media"
 export * from "./viewport"

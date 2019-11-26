@@ -28,7 +28,7 @@ import {
   shareReplay
 } from "rxjs/operators"
 
-import { ViewportOffset, ViewportSize } from "../../ui"
+import { ViewportOffset, ViewportSize } from "../../../ui"
 import { Header } from "../header"
 
 /* ----------------------------------------------------------------------------
@@ -49,9 +49,9 @@ export interface Main {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch options
+ * Options
  */
-interface WatchOptions {
+interface Options {
   size$: Observable<ViewportSize>      /* Viewport size observable */
   offset$: Observable<ViewportOffset>  /* Viewport offset observable */
   header$: Observable<Header>          /* Header observable */
@@ -62,7 +62,12 @@ interface WatchOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable to watch the main area
+ * Watch main area
+ *
+ * This function returns an observable that computes the visual parameters of
+ * the main area from the viewport height and vertical offset, as well as the
+ * height of the header element. The height of the main area is corrected by
+ * the height of the header (if fixed) and footer element.
  *
  * @param el - Main area element
  * @param options - Options
@@ -70,7 +75,7 @@ interface WatchOptions {
  * @return Main area observable
  */
 export function watchMain(
-  el: HTMLElement, { size$, offset$, header$ }: WatchOptions
+  el: HTMLElement, { size$, offset$, header$ }: Options
 ): Observable<Main> {
 
   /* Compute necessary adjustment for header */
@@ -80,7 +85,7 @@ export function watchMain(
     )
 
   /* Compute the main area's visible height */
-  const height$ = combineLatest(offset$, size$, adjust$)
+  const height$ = combineLatest([offset$, size$, adjust$])
     .pipe(
       map(([{ y }, { height }, adjust]) => {
         const top    = el.offsetTop
@@ -93,20 +98,20 @@ export function watchMain(
     )
 
   /* Compute whether the viewport offset is past the main area's top */
-  const active$ = combineLatest(offset$, adjust$)
+  const active$ = combineLatest([offset$, adjust$])
     .pipe(
       map(([{ y }, adjust]) => y >= el.offsetTop - adjust),
       distinctUntilChanged()
     )
 
   /* Combine into a single hot observable */
-  return combineLatest(height$, adjust$, active$)
+  return combineLatest([height$, adjust$, active$])
     .pipe(
       map(([height, adjust, active]) => ({
         offset: el.offsetTop - adjust,
         height,
         active
       })),
-      shareReplay({ bufferSize: 1, refCount: true })
+      shareReplay(1)
     )
 }

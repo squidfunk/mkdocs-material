@@ -20,5 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
 export * from "./element"
+export * from "./operator"

@@ -28,19 +28,19 @@ import { shareReplay, startWith } from "rxjs/operators"
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable to watch a media query
+ * Watch media query
  *
  * @param query - Media query
  *
  * @return Media observable
  */
 export function watchMedia(query: string): Observable<boolean> {
-  const media = window.matchMedia(query)
+  const media = matchMedia(query)
   return fromEventPattern<boolean>(next =>
     media.addListener(() => next(media.matches))
   )
     .pipe(
       startWith(media.matches),
-      shareReplay({ bufferSize: 1, refCount: true })
+      shareReplay(1)
     )
 }

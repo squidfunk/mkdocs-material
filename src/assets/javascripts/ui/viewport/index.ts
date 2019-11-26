@@ -62,33 +62,33 @@ export interface ViewportSize {
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve the viewport offset
+ * Retrieve viewport offset
  *
  * @return Viewport offset
  */
 export function getViewportOffset(): ViewportOffset {
   return {
-    x: window.pageXOffset,
-    y: window.pageYOffset
+    x: pageXOffset,
+    y: pageYOffset
   }
 }
 
 /**
- * Retrieve the viewport size
+ * Retrieve viewport size
  *
  * @return Viewport size
  */
 export function getViewportSize(): ViewportSize {
   return {
-    width:  window.innerWidth,
-    height: window.innerHeight
+    width:  innerWidth,
+    height: innerHeight
   }
 }
 
 /* ------------------------------------------------------------------------- */
 
 /**
- * Create an observable to watch the viewport offset
+ * Watch viewport offset
  *
  * @return Viewport offset observable
  */
@@ -97,12 +97,12 @@ export function watchViewportOffset(): Observable<ViewportOffset> {
     .pipe(
       map(getViewportOffset),
       startWith(getViewportOffset()),
-      shareReplay({ bufferSize: 1, refCount: true })
+      shareReplay(1)
     )
 }
 
 /**
- * Create an observable to watch the viewport size
+ * Watch viewport size
  *
  * @return Viewport size observable
  */
@@ -111,6 +111,6 @@ export function watchViewportSize(): Observable<ViewportSize> {
     .pipe(
       map(getViewportSize),
       startWith(getViewportSize()),
-      shareReplay({ bufferSize: 1, refCount: true })
+      shareReplay(1)
     )
 }

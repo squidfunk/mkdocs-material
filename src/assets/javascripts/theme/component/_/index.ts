@@ -21,17 +21,10 @@
  */
 
 import { keys } from "ramda"
-import {
-  MonoTypeOperatorFunction,
-  NEVER,
-  Observable,
-  OperatorFunction,
-  of,
-  pipe
-} from "rxjs"
-import { scan, shareReplay, switchMap } from "rxjs/operators"
+import { NEVER, Observable, OperatorFunction, merge, of, pipe } from "rxjs"
+import { map, scan, shareReplay, switchMap } from "rxjs/operators"
 
-import { getElement } from "../../ui"
+import { getElement } from "../../utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -62,91 +55,81 @@ export type ComponentMap = {
 }
 
 /* ----------------------------------------------------------------------------
+ * Function types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Options
+ */
+interface Options {
+  load$: Observable<Document>          /* Document observable */
+  switch$: Observable<Document>        /* Document switch observable */
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve the component to element mapping
+ * Watch component map
  *
- * The document must be passed as a parameter to support retrieving elements
- * from the document object returned through asynchronous loading.
+ * This function returns an observable that will maintain bindings to the given
+ * components in-between document switches and update the document in-place.
  *
- * @param document - Document of reference
+ * @param names - Components
+ * @param options - Options
  *
  * @return Component map observable
  */
 export function watchComponentMap(
-  document: Document
+  names: Component[], { load$, switch$ }: Options
 ): Observable<ComponentMap> {
+  const components$ = merge(load$, switch$)
+    .pipe(
 
-  /* Build component map */
-  const map$ = of([
-    "header",                          /* Header */
-    "title",                           /* Header title */
-    "search",                          /* Search */
-    "query",                           /* Search input */
-    "reset",                           /* Search reset */
-    "result",                          /* Search results */
-    "container",                       /* Container */
-    "main",                            /* Main area */
-    "hero",                            /* Hero */
-    "tabs",                            /* Tabs */
-    "navigation",                      /* Navigation */
-    "toc"                              /* Table of contents */
-  ].reduce<ComponentMap>((map, name) => {
-    const el = getElement(`[data-md-component=${name}]`, document)
-    return {
-      ...map,
-      ...typeof el !== "undefined" ? { [name]: el } : {}
-    }
-  }, {}))
+      /* Build component map */
+      map(document => names.reduce<ComponentMap>((components, name) => {
+        const el = getElement(`[data-md-component=${name}]`, document)
+        return {
+          ...components,
+          ...typeof el !== "undefined" ? { [name]: el } : {}
+        }
+      }, {})),
+
+      /* Re-compute component map on document switch */
+      scan((prev, next) => {
+        for (const name of keys(prev)) {
+          switch (name) {
+
+            /* Top-level components: update */
+            case "title":
+            case "container":
+              if (name in prev && typeof prev[name] !== "undefined") {
+                prev[name]!.replaceWith(next[name]!)
+                prev[name] = next[name]
+              }
+              break
+
+            /* All other components: rebind */
+            default:
+              prev[name] = getElement(`[data-md-component=${name}]`)
+          }
+        }
+        return prev
+      })
+    )
 
   /* Return component map as hot observable */
-  return map$
+  return components$
     .pipe(
-      shareReplay({ bufferSize: 1, refCount: true })
+      shareReplay(1)
     )
 }
 
 /* ------------------------------------------------------------------------- */
 
 /**
- * Paint component map from source observable
- *
- * This operator function will swap the components in the previous component
- * map with the new components identified by the given names and rebind all
- * remaining components, as they may be children of swapped components.
- *
- * @param names - Components to paint
- *
- * @return Operator function
- */
-export function paintComponentMap(
-  names: Component[] = ["title", "container"]
-): MonoTypeOperatorFunction<ComponentMap> {
-  return pipe(
-    scan<ComponentMap>((prev, next) => {
-      for (const name of keys(prev)) {
-
-        /* Swap component */
-        if (names.includes(name)) {
-          if (name in prev && typeof prev[name] !== "undefined") {
-            prev[name]!.replaceWith(next[name]!)
-            prev[name] = next[name]
-          }
-
-        /* Bind component */
-        } else {
-          prev[name] = getElement(`[data-md-component=${name}]`)
-        }
-      }
-      return prev
-    })
-  )
-}
-
-/**
- * Pluck a component from the component map
+ * Switch to component
  *
  * @template T - Element type
  *
@@ -154,13 +137,13 @@ export function paintComponentMap(
  *
  * @return Operator function
  */
-export function pluckComponent(
+export function switchComponent<T extends HTMLElement>(
   name: Component
-): OperatorFunction<ComponentMap, HTMLElement> {
+): OperatorFunction<ComponentMap, T> {
   return pipe(
-    switchMap(map => {
-      return typeof map[name] !== "undefined"
-        ? of(map[name]!)
+    switchMap(components => {
+      return typeof components[name] !== "undefined"
+        ? of(components[name] as T)
         : NEVER
     })
   )

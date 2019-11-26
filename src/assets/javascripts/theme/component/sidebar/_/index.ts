@@ -21,13 +21,7 @@
  */
 
 import { equals } from "ramda"
-import {
-  MonoTypeOperatorFunction,
-  Observable,
-  animationFrameScheduler,
-  combineLatest,
-  pipe
-} from "rxjs"
+import { Observable, animationFrameScheduler, combineLatest } from "rxjs"
 import {
   distinctUntilChanged,
   finalize,
@@ -37,7 +31,7 @@ import {
   tap
 } from "rxjs/operators"
 
-import { ViewportOffset } from "../../../ui"
+import { ViewportOffset } from "../../../../ui"
 import { Main } from "../../main"
 import {
   resetSidebarHeight,
@@ -63,9 +57,9 @@ export interface Sidebar {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch options
+ * Options
  */
-interface WatchOptions {
+interface Options {
   offset$: Observable<ViewportOffset>  /* Viewport offset observable */
   main$: Observable<Main>              /* Main area observable */
 }
@@ -75,7 +69,12 @@ interface WatchOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Create an observable to watch a sidebar
+ * Watch sidebar
+ *
+ * This function returns an observable that computes the visual parameters of
+ * the given element (a sidebar) from the vertical viewport offset, as well as
+ * the height of the main area. When the page is scrolled beyond the header,
+ * the sidebar is locked and fills the remaining space.
  *
  * @param el - Sidebar element
  * @param options - Options
@@ -83,7 +82,7 @@ interface WatchOptions {
  * @return Sidebar observable
  */
 export function watchSidebar(
-  el: HTMLElement, { offset$, main$ }: WatchOptions
+  el: HTMLElement, { offset$, main$ }: Options
 ): Observable<Sidebar> {
 
   /* Adjust for internal main area offset */
@@ -93,7 +92,7 @@ export function watchSidebar(
   )
 
   /* Compute the sidebar's available height */
-  const height$ = combineLatest(offset$, main$)
+  const height$ = combineLatest([offset$, main$])
     .pipe(
       map(([{ y }, { offset, height }]) => {
         return height - adjust + Math.min(adjust, Math.max(0, y - offset))
@@ -101,45 +100,45 @@ export function watchSidebar(
     )
 
   /* Compute whether the sidebar should be locked */
-  const lock$ = combineLatest(offset$, main$)
+  const lock$ = combineLatest([offset$, main$])
     .pipe(
       map(([{ y }, { offset }]) => y >= offset + adjust)
     )
 
   /* Combine into single hot observable */
-  return combineLatest(height$, lock$)
+  return combineLatest([height$, lock$])
     .pipe(
       map(([height, lock]) => ({ height, lock })),
       distinctUntilChanged<Sidebar>(equals),
-      shareReplay({ bufferSize: 1, refCount: true })
+      shareReplay(1)
     )
 }
 
-/* ------------------------------------------------------------------------- */
-
 /**
- * Paint sidebar from source observable
+ * Setup sidebar
  *
  * @param el - Sidebar element
+ * @param options - Options
  *
- * @return Operator function
+ * @return Sidebar observable
  */
-export function paintSidebar(
-  el: HTMLElement
-): MonoTypeOperatorFunction<Sidebar> {
-  return pipe(
+export function setupSidebar(
+  el: HTMLElement, options: Options
+): Observable<Sidebar> {
+  return watchSidebar(el, options)
+    .pipe(
+      observeOn(animationFrameScheduler),
 
-    /* Defer repaint to next animation frame */
-    observeOn(animationFrameScheduler),
-    tap(({ height, lock }) => {
-      setSidebarHeight(el, height)
-      setSidebarLock(el, lock)
-    }),
+      /* Apply mutations (side effects) */
+      tap(({ height, lock }) => {
+        setSidebarHeight(el, height)
+        setSidebarLock(el, lock)
+      }),
 
-    /* Reset on complete or error */
-    finalize(() => {
-      resetSidebarHeight(el)
-      resetSidebarLock(el)
-    })
-  )
+      /* Reset on complete or error */
+      finalize(() => {
+        resetSidebarHeight(el)
+        resetSidebarLock(el)
+      })
+    )
 }
