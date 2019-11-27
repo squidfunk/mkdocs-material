@@ -24,14 +24,14 @@ import { keys } from "ramda"
 import { NEVER, Observable, OperatorFunction, merge, of, pipe } from "rxjs"
 import { map, scan, shareReplay, switchMap } from "rxjs/operators"
 
-import { getElement } from "../../utilities"
+import { getElement } from "../../../utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Components
+ * Component names
  */
 export type Component =
   | "header"                           /* Header */
@@ -76,7 +76,7 @@ interface Options {
  * This function returns an observable that will maintain bindings to the given
  * components in-between document switches and update the document in-place.
  *
- * @param names - Components
+ * @param names - Component names
  * @param options - Options
  *
  * @return Component map observable
@@ -133,7 +133,7 @@ export function watchComponentMap(
  *
  * @template T - Element type
  *
- * @param name - Component
+ * @param name - Component name
  *
  * @return Operator function
  */

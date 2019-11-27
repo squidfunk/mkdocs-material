@@ -20,5 +20,46 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./offset"
+import { OperatorFunction, animationFrameScheduler, pipe } from "rxjs"
+import {
+  distinctUntilChanged,
+  finalize,
+  map,
+  observeOn,
+  tap
+} from "rxjs/operators"
+
+import { ViewportOffset } from "../../../ui"
+import { resetHidden, setHidden } from "../../action"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Paint hideable from source observable
+ *
+ * @param el - Hideable element
+ * @param offset - Additional offset
+ *
+ * @return Operator function
+ */
+export function paintHidden(
+  el: HTMLElement, offset: number = 0
+): OperatorFunction<ViewportOffset, boolean> {
+  return pipe(
+    map(({ y }) => y >= offset),
+    distinctUntilChanged(),
+
+    /* Defer repaint to next animation frame */
+    observeOn(animationFrameScheduler),
+    tap(value => {
+      setHidden(el, value)
+    }),
+
+    /* Reset on complete or error */
+    finalize(() => {
+      resetHidden(el)
+    })
+  )
+}

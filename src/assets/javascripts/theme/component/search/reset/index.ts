@@ -20,5 +20,25 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./offset"
+import { Observable, fromEvent } from "rxjs"
+import { mapTo } from "rxjs/operators"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch search reset
+ *
+ * @param el - Search reset element
+ *
+ * @return Search reset observable
+ */
+export function watchSearchReset(
+  el: HTMLElement
+): Observable<boolean> {
+  return fromEvent(el, "click")
+    .pipe(
+      mapTo(true)
+    )
+}

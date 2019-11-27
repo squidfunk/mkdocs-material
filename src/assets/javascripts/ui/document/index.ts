@@ -41,7 +41,7 @@ import {
  * Switch options
  */
 interface SwitchOptions {
-  url$: Observable<string>             /* Location observable */
+  location$: Observable<string>        /* Location observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -83,14 +83,16 @@ export function watchDocument(): Observable<Document> {
  * @return Document switch observable
  */
 export function watchDocumentSwitch(
-  { url$ }: SwitchOptions
+  { location$ }: SwitchOptions
 ): Observable<Document> {
-  return url$
+  return location$
     .pipe(
       startWith(location.href),
       map(url => url.replace(/#[^#]+$/, "")),
       distinctUntilChanged(),
       skip(1),
+
+      /* Fetch document */
       switchMap(url => ajax({
         url,
         responseType: "document",

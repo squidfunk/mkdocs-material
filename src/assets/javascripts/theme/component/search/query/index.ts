@@ -20,5 +20,3 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./offset"

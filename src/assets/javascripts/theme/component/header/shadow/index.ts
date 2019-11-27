@@ -20,5 +20,50 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./offset"
+import {
+  MonoTypeOperatorFunction,
+  animationFrameScheduler,
+  pipe
+} from "rxjs"
+import {
+  distinctUntilKeyChanged,
+  finalize,
+  observeOn,
+  tap
+} from "rxjs/operators"
+
+import {
+  resetHeaderShadow,
+  setHeaderShadow
+} from "../../../action"
+import { Main } from "../../main"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Paint header shadow from source observable
+ *
+ * @param el - Header element
+ *
+ * @return Operator function
+ */
+export function paintHeaderShadow(
+  el: HTMLElement
+): MonoTypeOperatorFunction<Main> {
+  return pipe(
+    distinctUntilKeyChanged("active"),
+
+    /* Defer repaint to next animation frame */
+    observeOn(animationFrameScheduler),
+    tap(({ active }) => {
+      setHeaderShadow(el, active)
+    }),
+
+    /* Reset on complete or error */
+    finalize(() => {
+      resetHeaderShadow(el)
+    })
+  )
+}

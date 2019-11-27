@@ -31,7 +31,7 @@
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-4.4.2">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -192,7 +192,7 @@
               {% if language == "ja" %}
                 <script src="{{ (path ~ 'tinyseg.js') | url }}"></script>
               {% endif %}
-              {% if language in ("da","de","du","es","fi","fr","hu","it","ja","jp","nl","no","pt","ro","ru","sv","tr") %}
+              {% if language in ($md-lunr-languages$) %}
                 <script src="{{ (path ~ 'lunr.' ~ language ~ '.js') | url }}"></script>
               {% endif %}
             {% endif %}
@@ -219,7 +219,7 @@
         {%- endfor -%}
         {{ translations | tojson }}
       </script>
-      <script>app({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}})</script>
+      <script>app=initialize({base:"{{ base_url }}"})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

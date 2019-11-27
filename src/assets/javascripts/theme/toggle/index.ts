@@ -20,5 +20,25 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./offset"
+import { Observable, fromEvent } from "rxjs"
+import { pluck } from "rxjs/operators"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch toggle
+ *
+ * @param el - Toggle element
+ *
+ * @return Toggle observable
+ */
+export function watchToggle(
+  el: HTMLInputElement
+): Observable<boolean> {
+  return fromEvent(el, "change")
+    .pipe(
+      pluck("checked")
+    )
+}

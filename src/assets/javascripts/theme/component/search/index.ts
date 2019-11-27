@@ -20,5 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./offset"
+// export * from "./query"
+export * from "./reset"

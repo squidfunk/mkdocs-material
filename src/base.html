@@ -419,11 +419,8 @@
 
       <!-- Application initialization -->
       <script>
-        app({
-          version: "{{ mkdocs_version }}",
-          url: {
-            base: "{{ base_url }}"
-          }
+        app = initialize({
+          base: "{{ base_url }}"
         });
       </script>
 

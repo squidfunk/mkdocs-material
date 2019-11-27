@@ -20,17 +20,44 @@
  * IN THE SOFTWARE.
  */
 
-import { shareReplay, switchMap } from "rxjs/operators"
+import { identity } from "ramda"
+import { 
+  EMPTY, 
+  MonoTypeOperatorFunction, 
+  NEVER, 
+  Observable, 
+  fromEvent, 
+  merge, 
+  of, 
+  pipe
+} from "rxjs"
+import { 
+  delay, 
+  filter, 
+  map, 
+  shareReplay, 
+  switchMap, 
+  switchMapTo, 
+  tap, 
+  withLatestFrom
+} from "rxjs/operators"
 
 import { isConfig } from "./config"
 import {
-  setupSidebar,
+  Component,
+  paintHidden,
+  paintSidebar,
   switchComponent,
-  switchMapIfActive,
+  watchBottomOffset,
   watchComponentMap,
   watchHeader,
-  watchMain
+  watchMain,
+  watchSearchReset,
+  watchSidebar,
+  watchToggle,
+  watchTopOffset
 } from "./theme"
+import { paintHeaderShadow } from "./theme/component/header/shadow"
 import {
   watchDocument,
   watchDocumentSwitch,
@@ -40,9 +67,15 @@ import {
   watchViewportOffset,
   watchViewportSize
 } from "./ui"
+import {
+  getElement,
+  not,
+  switchMapIf
+} from "./utilities"
 
 // TBD
 
+// TODO: put this somewhere else... (merge with config!) JSON schema!?
 const names = [
   "header",                          /* Header */
   "title",                           /* Header title */
@@ -56,7 +89,11 @@ const names = [
   "tabs",                            /* Tabs */
   "navigation",                      /* Navigation */
   "toc"                              /* Table of contents */
-] as const // TODO: put this somewhere else... (merge with config!) JSON schema!?
+] as const
+
+// modernizr for the poor
+document.documentElement.classList.remove("no-js")
+document.documentElement.classList.add("js")
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -82,66 +119,212 @@ export function initialize(config: unknown) {
   const tablet$   = watchMedia("(min-width: 960px)")
 
   /* Create location observables */
-  const url$      = watchLocation()
+  const location$ = watchLocation()
   const fragment$ = watchLocationFragment()
 
   /* Create document observables */
   const load$     = watchDocument()
-  const switch$   = watchDocumentSwitch({ url$ })
+  const switch$   = watchDocumentSwitch({ location$ })
 
   /* ----------------------------------------------------------------------- */
 
   /* Create component map observable */
   const components$ = watchComponentMap(names, { load$, switch$ })
 
+  const component = (name: Component): Observable<HTMLElement> => {
+    return components$
+      .pipe(
+        switchComponent(name)
+      )
+  }
+
   /* Create header observable */
-  const header$ = components$
+  const header$ = component("header")
     .pipe(
-      switchComponent("header"),
       switchMap(watchHeader)
     )
 
   /* Create main area observable */
-  const main$ = components$
+  const main$ = component("main")
     .pipe(
-      switchComponent("main"),
       switchMap(el => watchMain(el, { size$, offset$, header$ })),
       shareReplay(1)
     )
 
+  // ----------------------------------------------------------------------------
+
+  // WIP
+  load$
+    .pipe(
+      switchMap(({ body }) => fromEvent(body, "click")),
+      switchMap(ev => {
+        if (ev.target instanceof HTMLElement) {
+          const el = ev.target.closest("a") || undefined
+          if (el) {
+            if (!/^(https?:|#)/.test(el.getAttribute("href")!)) {
+              ev.preventDefault()
+            }
+            const href = el.href
+            history.pushState({}, "", href) // TODO: reference necessary!?
+            return of(href)
+          }
+        }
+        return EMPTY
+      }),
+
+      // try to reduce the jiggle upon instant page load. ideally, the location
+      // should directly be resolved and the respective document loaded, but
+      // we must scroll to the top at first and wait at least 250ms.
+      // 
+      // Furthermore, this doesn't include the back/next buttons of the browser
+      // which must be delayed 
+      tap(url => {
+        if (!/#/.test(url))
+          scrollTo({ top: 0 })
+      }), // only when loading something we havent loaded!
+      delay(250)
+    )
+      .subscribe(location$)
+
+  location$.subscribe(x => {
+    console.log("L", x)
+  })
+  switch$.subscribe(x => {
+    console.log("S", x)
+  })
+
   /* ----------------------------------------------------------------------- */
 
-  /* Create sidebar with navigation */
-  screen$
+  /* Create header shadow toggle */
+  component("header")
     .pipe(
-      switchMapIfActive(() => components$ // TODO: write an observable creation function...
+      switchMap(el => main$
         .pipe(
-          switchComponent("navigation"),
-          switchMap(el => setupSidebar(el, { offset$, main$ }))
+          paintHeaderShadow(el)
         )
       )
     )
       .subscribe()
 
-  /* Create sidebar with table of contents (missing on 404 page) */
-  tablet$
+  /* Create sidebar with navigation */
+  component("navigation")
     .pipe(
-      switchMapIfActive(() => components$
+      switchMapIf(screen$, el => watchSidebar(el, { offset$, main$ })
         .pipe(
-          switchComponent("toc"),
-          switchMap(el => setupSidebar(el, { offset$, main$ }))
+          paintSidebar(el)
         )
+      ),
+      shareReplay(1)
+    )
+      .subscribe()
+
+  /* Create sidebar with table of contents */
+  component("toc")
+    .pipe(
+      switchMapIf(tablet$, el => watchSidebar(el, { offset$, main$ })
+        .pipe(
+          paintSidebar(el)
+        )
+      ),
+      shareReplay(1)
+    )
+      .subscribe()
+
+  /* Create tabs visibility toggle */
+  component("tabs")
+    .pipe(
+      switchMapIf(screen$, el => watchTopOffset(el, { size$, offset$, header$ })
+        .pipe(
+          paintHidden(el, 8)
+        )
+      ),
+      shareReplay(1)
+    )
+      .subscribe()
+
+  /* Create hero visibility toggle */
+  component("hero")
+    .pipe(
+      switchMap(el => watchTopOffset(el, { size$, offset$, header$ })
+        .pipe(
+          paintHidden(el, 20)
+        )
+      ),
+      shareReplay(1)
+    )
+      .subscribe()
+
+  /* Create header title toggle */
+  component("main")
+    .pipe(
+      delay(1000), // initial delay
+      switchMap(el => typeof getElement("h1", el) !== "undefined"
+        ? watchBottomOffset(getElement("h1", el)!, { size$, offset$, header$ })
+            .pipe(
+              map(({ y }) => y >= 0),
+              withLatestFrom(component("title")),
+              tap(([active, title]) => {
+                title.dataset.mdState = active ? "active" : ""
+              })
+            )
+        : NEVER
       )
     )
-      .subscribe(console.log)
+      .subscribe()
 
-  /* Return all observables */
+  // TODO: replace title as inner text
+
+  /* ----------------------------------------------------------------------- */
+
+  const drawer = getElement<HTMLInputElement>("[data-md-toggle=drawer]")!
+  const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
+
+  // watchToggle
+
+  // --> watchSearchQuery?
+
+  // watchSearch
+  // watchSearchReset
+
+  // toggles stay the same...
+
+  const a$ = watchToggle(search)
+    .pipe(
+      filter(identity),
+      delay(400)
+    )
+
+  // watchSearchReset()
+
+  const b$ = component("reset")
+    .pipe(
+      switchMap(watchSearchReset)
+    )
+
+  function focusQuery(): MonoTypeOperatorFunction<HTMLElement> {
+    return pipe(
+      tap(el => el.focus())
+    )
+  }
+
+  merge(a$, b$)
+    .pipe(
+      switchMapTo(component("query")),
+      focusQuery()
+    )
+      .subscribe()
+
+  /* Return observable factories */
   return {
-    ui: {
-      document: { load$, switch$ },
-      location: { url$, fragment$ },
-      media: { screen$, tablet$ },
-      viewport: { offset$, size$ }
-    }
+
+    /* User interface */
+    watchDocument:         () => load$,
+    watchDocumentSwitch:   () => switch$,
+    watchLocation:         () => location$,
+    watchLocationFragment: () => fragment$,
+    watchMediaScreen:      () => screen$,
+    watchMediaTablet:      () => tablet$,
+    watchViewportOffset:   () => offset$,
+    watchViewportSize:     () => size$
   }
 }

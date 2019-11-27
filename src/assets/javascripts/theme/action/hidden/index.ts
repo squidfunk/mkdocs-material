@@ -20,43 +20,29 @@
  * IN THE SOFTWARE.
  */
 
-import { EMPTY, Observable, OperatorFunction, pipe } from "rxjs"
-import { switchMap } from "rxjs/operators"
-
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Switch to another observable if source observable emits `true`
+ * Set hidden
  *
- * @template T - Observable value type
- *
- * @param project - Project function
- *
- * @return Operator function
+ * @param el - Hideable element
+ * @param value - Whether the element is hidden
  */
-export function switchMapIfActive<T>(
-  project: (value: boolean) => Observable<T>
-): OperatorFunction<boolean, T> {
-  return pipe(
-    switchMap(value => value ? project(value) : EMPTY)
-  )
+export function setHidden(
+  el: HTMLElement, value: boolean
+): void {
+  el.setAttribute("data-md-state", value ? "hidden" : "")
 }
 
 /**
- * Switch to another observable if source observable emits `false`
+ * Reset hidden
  *
- * @template T - Observable value type
- *
- * @param project - Project function
- *
- * @return Operator function
+ * @param el - Hideable element
  */
-export function switchMapIfNotActive<T>(
-  project: (value: boolean) => Observable<T>
-): OperatorFunction<boolean, T> {
-  return pipe(
-    switchMap(value => value ? EMPTY : project(value))
-  )
+export function resetHidden(
+  el: HTMLElement
+): void {
+  el.removeAttribute("data-md-state")
 }
