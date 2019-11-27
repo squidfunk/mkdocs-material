@@ -44,6 +44,7 @@ install:
 
 # Perform build and release
 script:
+  - make -v
   - npm run lint
   - npm run build
 
