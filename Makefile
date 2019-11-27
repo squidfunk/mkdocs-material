@@ -184,13 +184,9 @@ material/%.yml: src/%.yml
 NAME = $(shell jq -r '.name' package.json)
 VERSION = $(shell jq -r '.version' package.json)
 material: $$@/assets $$@/__init__.py $$@/mkdocs_theme.yml ${HTML}
-	echo ${NAME}
-	echo ${VERSION}
-	ls package.json
-	cat package.json
-	@ sed -i "" 's/\$$md-name\$$/${NAME}/' $@/base.html
-	@ sed -i "" 's/\$$md-version\$$/${VERSION}/' $@/base.html
-	@ sed -i "" 's/\$$md-lunr-languages\$$/${LUNR_LANGUAGES}/' $@/base.html
+	@ sed -i"" "s/\$$md-name\$$/${NAME}/" $@/base.html
+	@ sed -i"" "s/\$$md-version\$$/${VERSION}/" $@/base.html
+	@ sed -i"" "s/\$$md-lunr-languages\$$/${LUNR_LANGUAGES}/" $@/base.html
 	@ echo "\n  ${NAME}-${VERSION}\n"
 
 # -----------------------------------------------------------------------------
