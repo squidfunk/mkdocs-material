@@ -10,19 +10,19 @@ good to go with the following commands:
 
 ``` sh
 python --version
-# Python 2.7.13
+# Python 3.8.0
 pip --version
-# pip 9.0.1
+# pip 19.3.1
 ```
 
 Installing and verifying MkDocs is as simple as:
 
 ``` sh
 pip install mkdocs && mkdocs --version
-# mkdocs, version 0.17.1
+# mkdocs, version 1.0.4
 ```
 
-Material requires MkDocs >= 0.17.1.
+Material requires MkDocs >= 1.0.0.
 
   [1]: https://www.mkdocs.org
 
