@@ -11,7 +11,7 @@ executed during compilation of the Markdown file.
     [Docker image][3] with all dependencies pre-installed.
 
   [1]: https://python-markdown.github.io/extensions/code_hilite/
-  [2]: http://pygments.org
+  [2]: https://pygments.org
   [3]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
 ## Installation
