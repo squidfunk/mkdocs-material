@@ -5,7 +5,7 @@ great features to the standard Markdown library. For this reason, the
 **installation of this package is highly recommended** as it's well-integrated
 with the Material theme.
 
-  [1]: http://facelessuser.github.io/pymdown-extensions/
+  [1]: https://facelessuser.github.io/pymdown-extensions/
 
 ## Installation
 
@@ -95,7 +95,7 @@ extra_javascript:
 
   [2]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
   [3]: https://www.mathjax.org/
-  [4]: http://meta.math.stackexchange.com/questions/5020/
+  [4]: https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
   [5]: ../customization.md#additional-javascript
 
 #### Blocks
