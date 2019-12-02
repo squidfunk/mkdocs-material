@@ -54,7 +54,7 @@
     "cssmin": "^0.4.3",
     "custom-event-polyfill": "^1.0.7",
     "customizr": "^1.4.0",
-    "eslint": "^6.7.1",
+    "eslint": "^6.7.2",
     "event-hooks-webpack-plugin": "^2.1.4",
     "expose-loader": "^0.7.4",
     "extract-loader": "^3.1.0",
