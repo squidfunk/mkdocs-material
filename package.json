@@ -58,7 +58,7 @@
     "event-hooks-webpack-plugin": "^2.1.4",
     "expose-loader": "^0.7.4",
     "extract-loader": "^3.1.0",
-    "file-loader": "^4.3.0",
+    "file-loader": "^5.0.2",
     "html-minifier": "^4.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "js-cookie": "^2.2.1",
