@@ -75,7 +75,7 @@ extra:
     - type: twitter
       link: https://twitter.com/squidfunk
     - type: linkedin
-      link: https://linkedin.com/in/squidfunk
+      link: https://www.linkedin.com/in/squidfunk/
 
 # Extensions
 markdown_extensions:
