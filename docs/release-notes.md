@@ -64,6 +64,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.5.1 <small>_ December 2, 2019</small>
+
+* Added Thai translations
+* Fixed missing assets in GitHub release `.zip` and `.tar.gz`
+
 ### 4.5.0 <small>_ November 16, 2019</small>
 
 * Upgraded EmojiOne to Tweomji due to [licensing issues][1330]
