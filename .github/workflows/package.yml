@@ -20,12 +20,6 @@
 
 name: package
 
-# Ignore changes to documentation (handled in a separate action)
-on:
-  push:
-    paths-ignore:
-      - docs
-
 # Jobs to run
 jobs:
 
@@ -73,9 +67,55 @@ jobs:
       - if: steps.cache-node.outputs.cache-hit != 'true'
         run: npm install
 
-      # Run linter and build
+      # Run linter and build distribution
       - run: npm run lint
       - run: npm run build
+
+  # Build and deploy documentation site
+  deploy:
+    #if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+
+      # Limit clone depth to speed up build
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 5
+
+      # Install Python runtime and dependencies
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+
+      - uses: actions/cache@v1
+        id: cache-python
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - if: steps.cache-python.outputs.cache-hit != 'true'
+        run: pip install -r requirements.txt
+
+      # Set configuration for repository and deploy documentation
+      - env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_NAME: ${{ secrets.GH_NAME }}
+          GH_EMAIL: ${{ secrets.GH_EMAIL }}
+        run: |
+          REMOTE="https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material"
+          git config --global user.name "${GH_NAME}"
+          git config --global user.email "${GH_EMAIL}"
+          git remote set-url origin ${REMOTE}
+
+      # Install theme
+      - run: python setup.py install
+
+      # Build documentation
+      - run: |
+          mkdocs --version
+          mkdocs gh-deploy --force
 
   # #
   # publish:
