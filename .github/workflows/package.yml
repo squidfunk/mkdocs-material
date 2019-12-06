@@ -76,7 +76,7 @@ jobs:
       - run: npm run lint
       - run: npm run build
 
-  #
-  publish:
+  # #
+  # publish:
 
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+  #   if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
