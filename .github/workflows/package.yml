@@ -70,9 +70,13 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - if: steps.cache-node.outputs.cache-hit != 'true'
-        run: npm install
+      - run: npm install
 
       # Run linter and build
       - run: npm run lint
       - run: npm run build
+
+  #
+  publish:
+
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
