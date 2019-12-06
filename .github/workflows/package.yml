@@ -18,7 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-name: Build / Deploy
+name: package
 
 # Ignore changes to documentation (handled in a separate action)
 on:
@@ -29,12 +29,12 @@ on:
 # Jobs to run
 jobs:
 
-  # Setup environment
+  # Build
   build:
     runs-on: ubuntu-latest
     steps:
 
-      # Limit clone depth to 5, to speed up build
+      # Limit clone depth to speed up build
       - uses: actions/checkout@v1
         with:
           fetch-depth: 5
@@ -43,6 +43,7 @@ jobs:
       - uses: actions/setup-python@v1
         with:
           python-version: 3.x
+
       - uses: actions/cache@v1
         id: cache-python
         with:
@@ -50,6 +51,7 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
+
       - if: steps.cache-python.outputs.cache-hit != 'true'
         run: pip install -r requirements.txt
 
@@ -57,18 +59,20 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10.x
+
       - uses: actions/cache@v1
         id: cache-node
         with:
-          path: ~/.npm
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
       - if: steps.cache-node.outputs.cache-hit != 'true'
         run: npm install
 
-
+      # Run linter and build
       - run: npm run lint
       - run: npm run build
