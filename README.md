@@ -1,11 +1,11 @@
-[![Travis][travis-image]][travis-link]
+[![Github Action][action-image]][action-link]
 [![Downloads][downloads-image]][downloads-link]
 [![Gitter][gitter-image]][gitter-link]
 [![PyPI][pypi-image]][pypi-link]
 [![dependabot][dependabot-image]][dependabot-link]
 
-  [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
-  [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
+  [action-image]: https://github.com/squidfunk/mkdocs-material/workflows/package/badge.svg
+  [action-link]: https://github.com/squidfunk/mkdocs-material/actions
   [downloads-image]: https://img.shields.io/pypi/dm/mkdocs-material.svg
   [downloads-link]: https://pypistats.org/packages/mkdocs-material
   [gitter-image]: https://badges.gitter.im/squidfunk/mkdocs-material.svg

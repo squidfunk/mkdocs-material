@@ -122,6 +122,9 @@ jobs:
         with:
           fetch-depth: 5
 
+      # Ensure latest build if repository is not up-to-date
+      - run: rm -rf material
+
       # Download distribution files
       - uses: actions/download-artifact@v1
         with:
