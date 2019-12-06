@@ -18,7 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-name: Python package
+name: Build / Deploy
 
 # Ignore changes to documentation (handled in a separate action)
 on:
@@ -34,10 +34,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      # Limit clone depth to 5, to speed up build
       - uses: actions/checkout@v1
         with:
           fetch-depth: 5
 
+      # Install Python runtime and dependencies
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - run: pip install -r requirements.txt
+
+      # Install Node runtime and dependencies
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
       - uses: actions/cache@v1
         with:
           path: ~/.npm
@@ -46,19 +63,7 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
-      - uses: actions/setup-python@v1
-        with:
-          python-version: 3.x
-
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 10.x
-
-      - run: |
-          pip install -r requirements.txt
-          npm install
+      - run: npm install
 
       - run: npm run lint
-
       - run: npm run build
