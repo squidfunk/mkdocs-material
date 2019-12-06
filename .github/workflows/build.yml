@@ -44,18 +44,21 @@ jobs:
         with:
           python-version: 3.x
       - uses: actions/cache@v1
+        id: cache-python
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-      - run: pip install -r requirements.txt
+      - if: steps.cache-python.outputs.cache-hit != 'true'
+        run: pip install -r requirements.txt
 
       # Install Node runtime and dependencies
       - uses: actions/setup-node@v1
         with:
           node-version: 10.x
       - uses: actions/cache@v1
+        id: cache-node
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -63,7 +66,9 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - run: npm install
+      - if: steps.cache-node.outputs.cache-hit != 'true'
+        run: npm install
+
 
       - run: npm run lint
       - run: npm run build
