@@ -48,9 +48,9 @@ jobs:
           node-version: 10.x
 
       - name: Install dependencies
-        run:
-          - pip install -r requirements.txt
-          - npm install
+        run: |
+          pip install -r requirements.txt
+          npm install
 
       - name: Lint
         run:
