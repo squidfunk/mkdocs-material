@@ -19,6 +19,8 @@
 # IN THE SOFTWARE.
 
 name: package
+on:
+  - push
 
 # Jobs to run
 jobs:
