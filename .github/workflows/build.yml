@@ -34,13 +34,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v1
         with:
           fetch-depth: 5
 
-      - name: Cache node modules
-        uses: actions/cache@v1
+      - uses: actions/cache@v1
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -49,23 +47,18 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Setup Python
-        uses: actions/setup-python@v1
+      - uses: actions/setup-python@v1
         with:
           python-version: 3.x
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: 10.x
 
-      - name: Install dependencies
-        run: |
+      - run: |
           pip install -r requirements.txt
           npm install
 
-      - name: Lint
-        run: npm run lint
+      - run: npm run lint
 
-      - name: Build
-        run: npm run build
+      - run: npm run build
