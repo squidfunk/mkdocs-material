@@ -25,7 +25,7 @@ on:
 # Jobs to run
 jobs:
 
-  # Build
+  # Build theme
   build:
     runs-on: ubuntu-latest
     steps:
@@ -34,22 +34,6 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 5
-
-      # Install Python runtime and dependencies
-      - uses: actions/setup-python@v1
-        with:
-          python-version: 3.x
-
-      - uses: actions/cache@v1
-        id: cache-python
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - if: steps.cache-python.outputs.cache-hit != 'true'
-        run: pip install -r requirements.txt
 
       # Install Node runtime and dependencies
       - uses: actions/setup-node@v1
@@ -69,13 +53,19 @@ jobs:
       - if: steps.cache-node.outputs.cache-hit != 'true'
         run: npm install
 
-      # Run linter and build distribution
+      # Run linter and build distribution files
       - run: npm run lint
       - run: npm run build
 
+      # Upload distribution files
+      - uses: actions/upload-artifact@v1
+        with:
+          name: material
+          path: material
+
   # Build and deploy documentation site
   deploy:
-    #if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
 
@@ -116,10 +106,33 @@ jobs:
 
       # Build documentation
       - run: |
-          mkdocs --version
           mkdocs gh-deploy --force
+          mkdocs --version
 
-  # #
-  # publish:
+  # Publish Python package and Docker image
+  publish:
+    # if: startsWith(github.ref, 'refs/tags')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
 
-  #   if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+      # Download distribution files
+      - uses: actions/download-artifact@v1
+        with:
+          name: material
+
+      # Install Python runtime and dependencies
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+
+      - run: pip install --upgrade setuptools wheel twine
+
+      # Build and test Docker image
+      - run: |
+        docker build -t ${GITHUB_REPOSITORY} .
+        docker run --rm -it -v $(pwd):/docs ${GITHUB_REPOSITORY} build --theme material
+
+      # Build Python package
+      - run: python setup.py build sdist bdist_wheel --universal
+
