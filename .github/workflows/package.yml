@@ -103,7 +103,7 @@ jobs:
           git remote set-url origin ${REMOTE}
 
       # Install theme
-      - run: python setup.py install
+      # - run: python setup.py install
 
       # Build documentation
       - run: |
