@@ -28,6 +28,8 @@ on:
 
 # Jobs to run
 jobs:
+
+  # Setup environment
   build:
     runs-on: ubuntu-latest
     steps:
@@ -36,6 +38,16 @@ jobs:
         uses: actions/checkout@v1
         with:
           fetch-depth: 5
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Setup Python
         uses: actions/setup-python@v1
