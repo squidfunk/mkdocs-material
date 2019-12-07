@@ -107,7 +107,9 @@ jobs:
       - run: python setup.py install
 
       # Build documentation
-      - run: |
+      - env:
+          GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
+        run: |
           mkdocs gh-deploy --force
           mkdocs --version
 
