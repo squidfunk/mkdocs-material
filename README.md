@@ -4,7 +4,7 @@
 [![PyPI][pypi-image]][pypi-link]
 [![dependabot][dependabot-image]][dependabot-link]
 
-  [action-image]: https://github.com/squidfunk/mkdocs-material/workflows/package/badge.svg?branch=master
+  [action-image]: https://github.com/squidfunk/mkdocs-material/workflows/ci/badge.svg?branch=master
   [action-link]: https://github.com/squidfunk/mkdocs-material/actions
   [downloads-image]: https://img.shields.io/pypi/dm/mkdocs-material.svg
   [downloads-link]: https://pypistats.org/packages/mkdocs-material
