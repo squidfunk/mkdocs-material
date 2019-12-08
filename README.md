@@ -61,7 +61,7 @@ https://squidfunk.github.io/mkdocs-material/
 If you're happy with Material for MkDocs and feel like giving something back,
 you may check out squidfunk's [Amazon wish list][3].
 
-  [3]: https://amzn.to/36cDAlF
+  [3]: https://amzn.to/38bTQVM
 
 ## License
 
