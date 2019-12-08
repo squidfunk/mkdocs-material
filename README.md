@@ -56,6 +56,13 @@ theme:
 For detailed installation instructions and a demo, visit
 https://squidfunk.github.io/mkdocs-material/
 
+## Support
+
+If you're happy with Material for MkDocs and feel like giving something back,
+you may check out squidfunk's [Amazon wish list][3].
+
+  [3]: https://amzn.to/36cDAlF
+
 ## License
 
 **MIT License**
