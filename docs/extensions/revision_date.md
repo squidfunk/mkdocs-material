@@ -23,3 +23,23 @@ Last updated: 9 December 2019
 To change the language, set the theme language, see [Getting started - Language][1].
 
   [1]: https://squidfunk.github.io/mkdocs-material/getting-started/#language
+
+
+To change the date format, set the `type` parameter to one of `date`, `datetime`, `iso_date`, `iso_datetime` or `timeago`. Default is `date`. Example outputs:
+
+```bash
+28 November, 2019 # type: date
+28 November, 2019 13:57:28 # type: datetime
+2019-11-28 # type: iso_date
+2019-11-28 13:57:26 # type: iso_datetime
+20 hours ago # type: timeago
+```
+
+Example setting:
+
+```yaml
+# mkdocs.yml
+plugins:
+  - git-revision-date-localized:
+    type: timeago
+```

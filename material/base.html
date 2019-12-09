@@ -180,9 +180,9 @@
                     </a>
                   {% endif %}
                 {% endblock %}
-                {% if page.meta.git_revision_date_localized_timeago %}
+                {% if page.meta.git_revision_date_localized %}
                   <small>
-                    {{ lang.t('last.update') }}: {{ page.meta.git_revision_date_localized_timeago }} 
+                    {{ lang.t('last.update') }}: {{ page.meta.git_revision_date_localized }} 
                   </small>
                 {% elif page.meta.revision_date %}
                   <small>
