@@ -312,13 +312,14 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
         map(file) {
           file.name = file.path.replace(/\.[a-z0-9].+\.(css|js|svg)/i, ".$1")
           return file
-        }
+        },
+        fileName: "file_manifest.json"
       }),
 
       /* Apply manifest */
       new EventHooksPlugin({
         afterEmit: new CallbackTask((compilation, cb) => {
-          const manifest = require(path.resolve("material/manifest.json"))
+          const manifest = require(path.resolve("file_manifest.json"))
           Object.keys(compilation.assets).forEach(name => {
             if (name.match(/\.html/)) {
               const asset = compilation.assets[name]
