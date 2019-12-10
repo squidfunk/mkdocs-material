@@ -306,6 +306,7 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
 
       /* Write manifest */
       new ManifestPlugin({
+        fileName: "../manifest.json",
 
         /* This is an ugly workaround for the fact that the manifest plugin
            doesn't handle multiple chunks. See http://bit.ly/2BbfER9 */
@@ -318,7 +319,7 @@ module.exports = (_env, args) => { // eslint-disable-line complexity
       /* Apply manifest */
       new EventHooksPlugin({
         afterEmit: new CallbackTask((compilation, cb) => {
-          const manifest = require(path.resolve("material/manifest.json"))
+          const manifest = require(path.resolve("manifest.json"))
           Object.keys(compilation.assets).forEach(name => {
             if (name.match(/\.html/)) {
               const asset = compilation.assets[name]
