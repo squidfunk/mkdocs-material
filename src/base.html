@@ -328,6 +328,19 @@
                     </a>
                   {% endif %}
                 {% endblock %}
+
+                <!-- Support for mkdocs-git-revision-date-localized-plugin -->
+                {% if page.meta.git_revision_date_localized %}
+                  <small>
+                    {{ lang.t('source.revision.date') }}: {{ page.meta.git_revision_date_localized }} 
+                  </small>
+                <!-- Support for mkdocs-git-revision-date-plugin -->
+                {% elif page.meta.revision_date %}
+                  <small>
+                    {{ lang.t('source.revision.date') }}: {{ page.meta.revision_date }}
+                  </small>
+                {% endif %}
+                
               {% endblock %}
 
               <!-- Disqus integration -->
