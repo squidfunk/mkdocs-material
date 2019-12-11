@@ -159,7 +159,7 @@ jobs:
       - env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      - run: |
+        run: |
           docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
           docker tag ${GITHUB_REPOSITORY} ${GITHUB_REPOSITORY}:${GITHUB_REF##*/}
           docker tag ${GITHUB_REPOSITORY} ${GITHUB_REPOSITORY}:latest
