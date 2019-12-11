@@ -9,7 +9,13 @@ be triggered from within a Git repository.
 
 ## Installation
 
-Add the following lines to your `mkdocs.yml`:
+Install the plugin with the following command:
+
+``` sh
+pip install mkdocs-git-revision-date-localized-plugin
+```
+
+Next, add the following lines to your `mkdocs.yml`:
 
 ``` yaml
 plugins:

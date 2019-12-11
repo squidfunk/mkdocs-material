@@ -301,7 +301,7 @@ theme:
 !!! info "Call for Contributions: Add languages/translations to Material"
 
     Help translate Material into more languages - it's just **one click** and
-    takes approximately **2 minutes**: [click here](http://bit.ly/2EbzFc8)
+    takes approximately **2 minutes**: [click here](https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.md)
 
 #### Localization
 
@@ -381,7 +381,7 @@ translations for all template variables and labels in the following languages:
     </tr>
     <tr>
       <td colspan="4" align="right">
-        <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
+        <a href="https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.md">Submit a new language</a>
       </td>
     </tr>
   </tbody>
