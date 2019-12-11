@@ -120,7 +120,7 @@ nav:
     - Metadata: extensions/metadata.md
     - Permalinks: extensions/permalinks.md
     - PyMdown: extensions/pymdown.md
-    - Revision date: extensions/revision_date.md
+    - Revision date: extensions/revision-date.md
   - Specimen: specimen.md
   - Customization: customization.md
   - Compliance with GDPR: compliance.md

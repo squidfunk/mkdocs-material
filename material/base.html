@@ -180,14 +180,21 @@
                     </a>
                   {% endif %}
                 {% endblock %}
-                {% if page.meta.git_revision_date_localized %}
-                  <small>
-                    {{ lang.t('last.update') }}: {{ page.meta.git_revision_date_localized }} 
-                  </small>
-                {% elif page.meta.revision_date %}
-                  <small>
-                    {{ lang.t('last.update') }}: {{ page.meta.revision_date }} 
-                  </small>
+                {% if page and page.meta and (
+                      page.meta.git_revision_date_localized or
+                      page.meta.revision_date
+                ) %}
+                  {% set label = lang.t("source.revision.date") %}
+                  <hr>
+                  <div class="md-source-date">
+                    <small>
+                      {% if page.meta.git_revision_date_localized %}
+                        {{ label }}: {{ page.meta.git_revision_date_localized }}
+                      {% elif page.meta.revision_date %}
+                        {{ label }}: {{ page.meta.revision_date }}
+                      {% endif %}
+                    </small>
+                  </div>
                 {% endif %}
               {% endblock %}
               {% block disqus %}
