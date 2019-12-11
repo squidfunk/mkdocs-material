@@ -152,8 +152,8 @@ jobs:
       # Push release to PyPI
       - env:
           PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        run: twine upload -u ${PYPI_USERNAME} -p ${PYPI_USERNAME} dist/*
+          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: twine upload -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
 
       # Push image to Docker Hub
       - env:
