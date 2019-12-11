@@ -1,3 +1,8 @@
+mkdocs-material 4.6.0 (2019-12-11)
+
+  * Added support for mkdocs-git-revision-date-localized-plugin
+  * Fixed invalid character in Google Fonts URL
+
 mkdocs-material-4.5.1 (2019-12-02)
 
   * Added Thai translations
