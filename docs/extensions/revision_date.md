@@ -5,7 +5,13 @@ As the name says, it takes this revision date from GIT.
 
 ## Installation
 
-Add the following lines to your `mkdocs.yml`:
+Install the plugin using pip:
+
+```bash
+pip install mkdocs-git-revision-date-localized-plugin
+```
+
+And add the following lines to your `mkdocs.yml`:
 
 ``` yaml
 plugins:
