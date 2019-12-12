@@ -33,9 +33,9 @@ Last updated: 9 December, 2019
 ### Changing the language
 
 The date is printed according to the locale which is determined through the
-[theme language][1] that was set in `mkdocs.yml`.
+[theme language][2] that was set in `mkdocs.yml`.
 
-  [1]: https://squidfunk.github.io/mkdocs-material/getting-started/#language
+  [2]: https://squidfunk.github.io/mkdocs-material/getting-started/#language
 
 ### Changing the format
 
