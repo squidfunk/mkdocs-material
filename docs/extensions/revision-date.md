@@ -24,7 +24,7 @@ plugins:
 
 ## Usage
 
-The date is automatiaclly added at the bottom of each page, e.g.:
+The date is automatically added at the bottom of each page, e.g.:
 
 ```
 Last updated: 9 December, 2019
