@@ -13,6 +13,7 @@
     "email": "martin.donath@squidfunk.com"
   },
   "license": "MIT",
+  "private": true,
   "author": {
     "name": "Martin Donath",
     "email": "martin.donath@squidfunk.com"
@@ -72,6 +73,5 @@
   },
   "engines": {
     "node": ">= 10"
-  },
-  "private": true
+  }
 }

@@ -63,7 +63,6 @@ export type ComponentMap = {
  */
 interface Options {
   load$: Observable<Document>          /* Document observable */
-  switch$: Observable<Document>        /* Document switch observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -82,9 +81,9 @@ interface Options {
  * @return Component map observable
  */
 export function watchComponentMap(
-  names: Component[], { load$, switch$ }: Options
+  names: Component[], { load$ }: Options
 ): Observable<ComponentMap> {
-  const components$ = merge(load$, switch$)
+  const components$ = load$
     .pipe(
 
       /* Build component map */

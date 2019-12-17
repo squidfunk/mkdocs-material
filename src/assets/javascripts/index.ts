@@ -21,30 +21,35 @@
  */
 
 import { identity } from "ramda"
-import { 
-  EMPTY, 
-  MonoTypeOperatorFunction, 
-  NEVER, 
-  Observable, 
-  fromEvent, 
-  merge, 
-  of, 
-  pipe
+import {
+  EMPTY,
+  MonoTypeOperatorFunction,
+  NEVER,
+  Observable,
+  fromEvent,
+  merge,
+  of,
+  pipe,
+  zip
 } from "rxjs"
-import { 
-  delay, 
-  filter, 
-  map, 
-  shareReplay, 
-  switchMap, 
-  switchMapTo, 
-  tap, 
+import {
+  delay,
+  filter,
+  map,
+  pluck,
+  shareReplay,
+  switchMap,
+  switchMapTo,
+  tap,
   withLatestFrom
 } from "rxjs/operators"
 
-import { isConfig } from "./config"
+import { ajax } from "rxjs/ajax"
+import { Config, isConfig } from "./config"
+import { setupSearch } from "./search"
 import {
   Component,
+  paintHeaderShadow,
   paintHidden,
   paintSidebar,
   switchComponent,
@@ -57,7 +62,6 @@ import {
   watchToggle,
   watchTopOffset
 } from "./theme"
-import { paintHeaderShadow } from "./theme/component/header/shadow"
 import {
   watchDocument,
   watchDocumentSwitch,
@@ -124,12 +128,12 @@ export function initialize(config: unknown) {
 
   /* Create document observables */
   const load$     = watchDocument()
-  const switch$   = watchDocumentSwitch({ location$ })
+  // const switch$   = watchDocumentSwitch({ location$ })
 
   /* ----------------------------------------------------------------------- */
 
   /* Create component map observable */
-  const components$ = watchComponentMap(names, { load$, switch$ })
+  const components$ = watchComponentMap(names, { load$ })
 
   const component = (name: Component): Observable<HTMLElement> => {
     return components$
@@ -153,45 +157,45 @@ export function initialize(config: unknown) {
 
   // ----------------------------------------------------------------------------
 
-  // WIP
-  load$
-    .pipe(
-      switchMap(({ body }) => fromEvent(body, "click")),
-      switchMap(ev => {
-        if (ev.target instanceof HTMLElement) {
-          const el = ev.target.closest("a") || undefined
-          if (el) {
-            if (!/^(https?:|#)/.test(el.getAttribute("href")!)) {
-              ev.preventDefault()
-            }
-            const href = el.href
-            history.pushState({}, "", href) // TODO: reference necessary!?
-            return of(href)
-          }
-        }
-        return EMPTY
-      }),
+  // // WIP: instant loading
+  // load$
+  //   .pipe(
+  //     switchMap(({ body }) => fromEvent(body, "click")),
+  //     switchMap(ev => {
+  //       if (ev.target instanceof HTMLElement) {
+  //         const el = ev.target.closest("a") || undefined
+  //         if (el) {
+  //           if (!/^(https?:|#)/.test(el.getAttribute("href")!)) {
+  //             ev.preventDefault()
+  //           }
+  //           const href = el.href
+  //           history.pushState({}, "", href) // TODO: reference necessary!?
+  //           return of(href)
+  //         }
+  //       }
+  //       return EMPTY
+  //     })
 
-      // try to reduce the jiggle upon instant page load. ideally, the location
-      // should directly be resolved and the respective document loaded, but
-      // we must scroll to the top at first and wait at least 250ms.
-      // 
-      // Furthermore, this doesn't include the back/next buttons of the browser
-      // which must be delayed 
-      tap(url => {
-        if (!/#/.test(url))
-          scrollTo({ top: 0 })
-      }), // only when loading something we havent loaded!
-      delay(250)
-    )
-      .subscribe(location$)
+  //     // try to reduce the jiggle upon instant page load. ideally, the location
+  //     // should directly be resolved and the respective document loaded, but
+  //     // we must scroll to the top at first and wait at least 250ms.
+  //     //
+  //     // Furthermore, this doesn't include the back/next buttons of the browser
+  //     // which must be delayed
+  //     // tap(url => {
+  //     //   if (!/#/.test(url))
+  //     //     scrollTo({ top: 0 })
+  //     // }) // only when loading something we havent loaded!
+  //     // delay(250)
+  //   )
+  //     .subscribe(location$)
 
-  location$.subscribe(x => {
-    console.log("L", x)
-  })
-  switch$.subscribe(x => {
-    console.log("S", x)
-  })
+  // location$.subscribe(x => {
+  //   console.log("L", x)
+  // })
+  // switch$.subscribe(x => {
+  //   console.log("S", x)
+  // })
 
   /* ----------------------------------------------------------------------- */
 
@@ -254,23 +258,23 @@ export function initialize(config: unknown) {
     )
       .subscribe()
 
-  /* Create header title toggle */
-  component("main")
-    .pipe(
-      delay(1000), // initial delay
-      switchMap(el => typeof getElement("h1", el) !== "undefined"
-        ? watchBottomOffset(getElement("h1", el)!, { size$, offset$, header$ })
-            .pipe(
-              map(({ y }) => y >= 0),
-              withLatestFrom(component("title")),
-              tap(([active, title]) => {
-                title.dataset.mdState = active ? "active" : ""
-              })
-            )
-        : NEVER
-      )
-    )
-      .subscribe()
+  // /* Create header title toggle */
+  // component("main")
+  //   .pipe(
+  //     delay(1000), // initial delay
+  //     switchMap(el => typeof getElement("h1", el) !== "undefined"
+  //       ? watchBottomOffset(getElement("h1", el)!, { size$, offset$, header$ })
+  //           .pipe(
+  //             map(({ y }) => y >= 0),
+  //             withLatestFrom(component("title")),
+  //             tap(([active, title]) => {
+  //               title.dataset.mdState = active ? "active" : ""
+  //             })
+  //           )
+  //       : NEVER
+  //     )
+  //   )
+  //     .subscribe()
 
   // TODO: replace title as inner text
 
@@ -319,7 +323,7 @@ export function initialize(config: unknown) {
 
     /* User interface */
     watchDocument:         () => load$,
-    watchDocumentSwitch:   () => switch$,
+    // watchDocumentSwitch:   () => switch$,
     watchLocation:         () => location$,
     watchLocationFragment: () => fragment$,
     watchMediaScreen:      () => screen$,
