@@ -8,7 +8,8 @@
     "lib": [
       "dom",
       "es2017",
-      "esnext"
+      "esnext",
+      "webworker"
     ],
     "module": "commonjs",
     "moduleResolution": "node",

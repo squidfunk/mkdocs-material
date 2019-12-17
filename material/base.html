@@ -197,7 +197,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/app.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
@@ -235,7 +235,7 @@
         {%- endfor -%}
         {{ translations | tojson }}
       </script>
-      <script>app=initialize({base:"{{ base_url }}"})</script>
+      <script>app=initialize({base:"{{ base_url }}",search:"{{ 'assets/javascripts/search.js' | url }}"})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

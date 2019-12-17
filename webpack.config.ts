@@ -21,27 +21,22 @@
  */
 
 import * as path from "path"
-// import { Options } from "ts-loader"
 import { Configuration } from "webpack"
 
 /* ----------------------------------------------------------------------------
- * Configuration
+ * Helper functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Webpack configuration
+ * Webpack base configuration
  *
- * @param env - Webpack environment arguments
  * @param args - Command-line arguments
  *
  * @return Webpack configuration
  */
-export default (_env: never, args: Configuration) => {
+function config(args: Configuration): Configuration {
   return {
     mode: args.mode,
-
-    /* Entrypoint */
-    entry: ["src/assets/javascripts/index.ts"],
 
     /* Loaders */
     module: {
@@ -57,43 +52,14 @@ export default (_env: never, args: Configuration) => {
                 transpileOnly: true,
                 compilerOptions: {
                   module: "esnext",
-                  noUnusedLocals: args.mode === "production",
-                  noUnusedParameters: args.mode === "production",
                   removeComments: false
                 }
               }
             }
           ],
           exclude: /\/node_modules\//
-        },
-
-        {
-          test: /\worker\/(.*?)\.ts$/,
-          use: [
-            { loader: "worker-loader", options: {
-              inline: true, fallback: false            } },
-            {
-              loader: "ts-loader",
-              options: {
-                transpileOnly: true,
-                compilerOptions: {
-                  module: "esnext",
-                  noUnusedLocals: args.mode === "production",
-                  noUnusedParameters: args.mode === "production",     // TODO: do not duplicate
-                  removeComments: false
-                }
-              }
-            }
-          ]
         }
       ]
-    },
-
-    /* Export class constructor as entrypoint */
-    output: {
-      path: path.resolve(__dirname, "material/assets/javascripts"),
-      filename: "app.js",
-      libraryTarget: "window"
     },
 
     /* Module resolver */
@@ -109,3 +75,40 @@ export default (_env: never, args: Configuration) => {
     devtool: "source-map"
   }
 }
+
+/* ----------------------------------------------------------------------------
+ * Configuration
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Webpack configuration
+ *
+ * @param env - Webpack environment arguments
+ * @param args - Command-line arguments
+ *
+ * @return Webpack configuration
+ */
+export default (_env: never, args: Configuration): Configuration[] => ([
+
+  /* Application */
+  {
+    ...config(args),
+    entry: "src/assets/javascripts",
+    output: {
+      path: path.resolve(__dirname, "material/assets/javascripts"),
+      filename: "bundle.js",
+      libraryTarget: "window"
+    }
+  },
+
+  /* Search worker */
+  {
+    ...config(args),
+    entry: "src/assets/javascripts/workers/search",
+    output: {
+      path: path.resolve(__dirname, "material/assets/javascripts"),
+      filename: "search.js",
+      libraryTarget: "var"
+    }
+  }
+])

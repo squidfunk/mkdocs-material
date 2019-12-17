@@ -29,6 +29,7 @@
  */
 export interface Config {
   base: string                         /* Base URL */
+  search: string                       /* Web worker URL */
 }
 
 /* ----------------------------------------------------------------------------

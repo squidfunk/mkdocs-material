@@ -395,7 +395,7 @@
 
     <!-- Theme-related JavaScript -->
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/app.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
 
       <!-- Load additional languages for search -->
       {% if lang.t("search.language") != "en" %}
@@ -442,7 +442,8 @@
       <!-- Application initialization -->
       <script>
         app = initialize({
-          base: "{{ base_url }}"
+          base: "{{ base_url }}",
+          search: "{{ 'assets/javascripts/search.js' | url }}"
         });
       </script>
 
