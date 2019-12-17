@@ -21,14 +21,7 @@
  */
 
 import { Observable, fromEvent } from "rxjs"
-import {
-  pluck,
-  shareReplay,
-  switchMap,
-  take,
-  tap,
-  throttle
-} from "rxjs/operators"
+import { pluck, share, switchMapTo, tap, throttle } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -75,22 +68,19 @@ export function watchWorker<T extends WorkerMessage>(
   worker: Worker, { message$ }: Options<T>
 ): Observable<T> {
 
-  /* Receive messages from web worker */
+  /* Observable for messages from web worker */
   const worker$ = fromEvent(worker, "message")
     .pipe(
-      pluck<Event, T>("data")
+      pluck<Event, T>("data"),
+      share()
     )
 
-  /* Send request and wait for response */
+  /* Send and receive messages, return hot observable */
   return message$
     .pipe(
       throttle(() => worker$, { leading: true, trailing: true }),
       tap(message => worker.postMessage(message)),
-      switchMap(() => worker$
-        .pipe(
-          take(1)
-        )
-      ),
-      shareReplay(1)
+      switchMapTo(worker$),
+      share()
     )
 }
