@@ -1961,7 +1961,9 @@ hr {
       right: initial;
       left: 0.6rem; }
 
-.md-typeset .emojione {
+.md-typeset .emojione,
+.md-typeset .twemoji,
+.md-typeset .gemoji {
   width: 1rem;
   vertical-align: text-top; }
 

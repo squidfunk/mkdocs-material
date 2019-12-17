@@ -10,19 +10,19 @@ good to go with the following commands:
 
 ``` sh
 python --version
-# Python 2.7.13
+# Python 3.8.0
 pip --version
-# pip 9.0.1
+# pip 19.3.1
 ```
 
 Installing and verifying MkDocs is as simple as:
 
 ``` sh
 pip install mkdocs && mkdocs --version
-# mkdocs, version 0.17.1
+# mkdocs, version 1.0.4
 ```
 
-Material requires MkDocs >= 0.17.1.
+Material requires MkDocs >= 1.0.0.
 
   [1]: https://www.mkdocs.org
 
@@ -301,7 +301,7 @@ theme:
 !!! info "Call for Contributions: Add languages/translations to Material"
 
     Help translate Material into more languages - it's just **one click** and
-    takes approximately **2 minutes**: [click here](http://bit.ly/2EbzFc8)
+    takes approximately **2 minutes**: [click here](https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.md)
 
 #### Localization
 
@@ -327,57 +327,61 @@ translations for all template variables and labels in the following languages:
       <td><code>da</code> / Danish</td>
       <td><code>nl</code> / Dutch</td>
       <td><code>en</code> / English</td>
-      <td><code>fi</code> / Finnish</td>
+      <td><code>et</code> / Estonian</td>
     </tr>
     <tr>
+      <td><code>fi</code> / Finnish</td>
       <td><code>fr</code> / French</td>
       <td><code>gl</code> / Galician</td>
       <td><code>de</code> / German</td>
-      <td><code>gr</code> / Greek</td>
     </tr>
     <tr>
+      <td><code>gr</code> / Greek</td>
       <td><code>he</code> / Hebrew</td>
       <td><code>hi</code> / Hindi</td>
       <td><code>hr</code> / Croatian</td>
-      <td><code>hu</code> / Hungarian</td>
     </tr>
     <tr>
+      <td><code>hu</code> / Hungarian</td>
       <td><code>id</code> / Indonesian</td>
       <td><code>it</code> / Italian</td>
       <td><code>ja</code> / Japanese</td>
-      <td><code>kr</code> / Korean</td>
     </tr>
     <tr>
+      <td><code>kr</code> / Korean</td>
       <td><code>no</code> / Norwegian</td>
       <td colspan="2"><code>nn</code> / Norwegian (Nynorsk)</td>
-      <td><code>fa</code> / Persian</td>
     </tr>
     <tr>
+      <td><code>fa</code> / Persian</td>
       <td><code>pl</code> / Polish</td>
       <td><code>pt</code> / Portugese</td>
       <td><code>ru</code> / Russian</td>
-      <td><code>sr</code> / Serbian</td>
     </tr>
     <tr>
+      <td><code>sr</code> / Serbian</td>
       <td><code>sh</code> / Serbo-Croatian</td>
       <td><code>sk</code> / Slovak</td>
       <td><code>si</code> / Slovenian</td>
-      <td><code>es</code> / Spanish</td>
     </tr>
     <tr>
+      <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
+      <td><code>th</code> / Thai</td>
       <td><code>tr</code> / Turkish</td>
+    </tr>
       <td><code>uk</code> / Ukrainian</td>
       <td><code>vi</code> / Vietnamese</td>
-    </tr>
-    <tr>
       <td colspan="2"><code>zh</code> / Chinese (Simplified)</td>
-      <td colspan="2"><code>zh-Hant</code> / Chinese (Traditional)</td>
+    <tr>
     </tr>
     <tr>
+      <td colspan="2"><code>zh-Hant</code> / Chinese (Traditional)</td>
       <td colspan="2"><code>zh-TW</code> / Chinese (Taiwanese)</td>
-      <td colspan="2" align="right">
-        <a href="http://bit.ly/2EbzFc8">Submit a new language</a>
+    </tr>
+    <tr>
+      <td colspan="4" align="right">
+        <a href="https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.md">Submit a new language</a>
       </td>
     </tr>
   </tbody>

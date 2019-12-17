@@ -1,0 +1,166 @@
+# Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+name: ci
+on:
+  - push
+  - pull_request
+
+# Jobs to run
+jobs:
+
+  # Build theme
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Limit clone depth to speed up build
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 5
+
+      # Install Node runtime and dependencies
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+
+      - uses: actions/cache@v1
+        id: cache-node
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - if: steps.cache-node.outputs.cache-hit != 'true'
+        run: npm install
+
+      # Run linter and build distribution files
+      - run: npm run lint
+      - run: npm run build
+
+      # Upload distribution files
+      - uses: actions/upload-artifact@v1
+        if: startsWith(github.ref, 'refs/tags')
+        with:
+          name: material
+          path: material
+
+  # Build and deploy documentation site
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+
+      # Limit clone depth to speed up build
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 5
+
+      # Install Python runtime and dependencies
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+
+      - uses: actions/cache@v1
+        id: cache-python
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - if: steps.cache-python.outputs.cache-hit != 'true'
+        run: pip install -r requirements.txt
+
+      # Set configuration for repository and deploy documentation
+      - env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_NAME: ${{ secrets.GH_NAME }}
+          GH_EMAIL: ${{ secrets.GH_EMAIL }}
+        run: |
+          REMOTE="https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material"
+          git config --global user.name "${GH_NAME}"
+          git config --global user.email "${GH_EMAIL}"
+          git remote set-url origin ${REMOTE}
+
+      # Install theme
+      - run: python setup.py install
+
+      # Build documentation
+      - env:
+          GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
+        run: |
+          mkdocs gh-deploy --force
+          mkdocs --version
+
+  # Publish Python package and Docker image
+  publish:
+    if: startsWith(github.ref, 'refs/tags')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+
+      # Limit clone depth to speed up build
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 5
+
+      # Ensure latest build if repository is not up-to-date
+      - run: rm -rf material
+
+      # Download distribution files
+      - uses: actions/download-artifact@v1
+        with:
+          name: material
+
+      # Install Python runtime and dependencies
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+
+      - run: pip install --upgrade setuptools wheel twine
+
+      # Build and test Docker image
+      - run: |
+          docker build -t ${GITHUB_REPOSITORY} .
+          docker run --rm -i -v $(pwd):/docs ${GITHUB_REPOSITORY} \
+            build --theme material
+
+      # Build Python package
+      - run: python setup.py build sdist bdist_wheel --universal
+
+      # Push release to PyPI
+      - env:
+          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: twine upload -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
+
+      # Push image to Docker Hub
+      - env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+          docker tag ${GITHUB_REPOSITORY} ${GITHUB_REPOSITORY}:${GITHUB_REF##*/}
+          docker tag ${GITHUB_REPOSITORY} ${GITHUB_REPOSITORY}:latest
+          docker push ${GITHUB_REPOSITORY}

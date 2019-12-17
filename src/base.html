@@ -132,7 +132,7 @@
           rel="stylesheet"
           type="text/css"
           href="https://fonts.googleapis.com/css?family={{
-            font.text | replace(' ', '+') + ':300,400,400i,700|' +
+            font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
             font.code | replace(' ', '+')
           }}&display=fallback"
         />
@@ -354,6 +354,28 @@
                     </a>
                   {% endif %}
                 {% endblock %}
+
+                <!-- Support for mkdocs-git-revision-date-localized-plugin -->
+                {% if page and page.meta and (
+                      page.meta.git_revision_date_localized or
+                      page.meta.revision_date
+                ) %}
+                  {% set label = lang.t("source.revision.date") %}
+                  <hr />
+                  <div class="md-source-date">
+                    <small>
+
+                      <!-- mkdocs-git-revision-date-localized-plugin -->
+                      {% if page.meta.git_revision_date_localized %}
+                        {{ label }}: {{ page.meta.git_revision_date_localized }}
+
+                      <!-- mkdocs-git-revision-date-plugin -->
+                      {% elif page.meta.revision_date %}
+                        {{ label }}: {{ page.meta.revision_date }}
+                      {% endif %}
+                    </small>
+                  </div>
+                {% endif %}
               {% endblock %}
 
               <!-- Disqus integration -->

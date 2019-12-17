@@ -75,7 +75,7 @@ extra:
     - type: twitter
       link: https://twitter.com/squidfunk
     - type: linkedin
-      link: https://linkedin.com/in/squidfunk
+      link: https://www.linkedin.com/in/squidfunk/
 
 # Extensions
 markdown_extensions:
@@ -94,6 +94,7 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.keys
@@ -119,6 +120,7 @@ nav:
     - Metadata: extensions/metadata.md
     - Permalinks: extensions/permalinks.md
     - PyMdown: extensions/pymdown.md
+    - Revision date: extensions/revision-date.md
   - Specimen: specimen.md
   - Customization: customization.md
   - Compliance with GDPR: compliance.md
