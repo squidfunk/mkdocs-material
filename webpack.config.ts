@@ -21,6 +21,7 @@
  */
 
 import * as path from "path"
+// import { Options } from "ts-loader"
 import { Configuration } from "webpack"
 
 /* ----------------------------------------------------------------------------
@@ -64,6 +65,26 @@ export default (_env: never, args: Configuration) => {
             }
           ],
           exclude: /\/node_modules\//
+        },
+
+        {
+          test: /\worker\/(.*?)\.ts$/,
+          use: [
+            { loader: "worker-loader", options: {
+              inline: true, fallback: false            } },
+            {
+              loader: "ts-loader",
+              options: {
+                transpileOnly: true,
+                compilerOptions: {
+                  module: "esnext",
+                  noUnusedLocals: args.mode === "production",
+                  noUnusedParameters: args.mode === "production",     // TODO: do not duplicate
+                  removeComments: false
+                }
+              }
+            }
+          ]
         }
       ]
     },
@@ -84,7 +105,7 @@ export default (_env: never, args: Configuration) => {
       extensions: [".ts", ".tsx", ".js", ".json"]
     },
 
-    /* Sourcemaps */
+    /* Source maps */
     devtool: "source-map"
   }
 }
