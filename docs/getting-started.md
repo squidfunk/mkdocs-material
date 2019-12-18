@@ -313,7 +313,7 @@ translations for all template variables and labels in the following languages:
 <table style="white-space: nowrap;">
   <thead>
     <tr>
-      <th colspan="4">Available languages</td>
+      <th colspan="4">Available languages</th>
     </tr>
   </thead>
   <tbody>
@@ -440,7 +440,7 @@ At the time of writing, the following languages are supported:
 <table style="white-space: nowrap;">
   <thead>
     <tr>
-      <th colspan="4">Available language stemmers</td>
+      <th colspan="4">Available language stemmers</th>
     </tr>
   </thead>
   <tbody>
