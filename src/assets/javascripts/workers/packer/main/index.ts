@@ -77,12 +77,12 @@ export function handler(message: PackerMessage): PackerMessage {
     /* Pack an unpacked string */
     case PackerMessageType.STRING:
       return {
-        type: PackerMessageType.PACKED,
+        type: PackerMessageType.BINARY,
         data: pack(message.data)
       }
 
     /* Unpack a packed string */
-    case PackerMessageType.PACKED:
+    case PackerMessageType.BINARY:
       return {
         type: PackerMessageType.STRING,
         data: unpack(message.data)

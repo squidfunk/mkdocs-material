@@ -20,10 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Subject } from "rxjs"
-
 import { SearchIndex, SearchResult } from "modules"
-import { watchWorker } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -44,7 +41,7 @@ export const enum SearchMessageType {
 /**
  * A message containing the data necessary to setup the search index
  */
-interface SetupMessage {
+export interface SearchSetupMessage {
   type: SearchMessageType.SETUP        /* Message type */
   data: SearchIndex                    /* Message data */
 }
@@ -52,7 +49,7 @@ interface SetupMessage {
 /**
  * A message containing the a dump of the search index
  */
-interface DumpMessage {
+export interface SearchDumpMessage {
   type: SearchMessageType.DUMP        /* Message type */
   data: string                        /* Message data */
 }
@@ -60,7 +57,7 @@ interface DumpMessage {
 /**
  * A message containing a search query
  */
-interface QueryMessage {
+export interface SearchQueryMessage {
   type: SearchMessageType.QUERY        /* Message type */
   data: string                         /* Message data */
 }
@@ -68,7 +65,7 @@ interface QueryMessage {
 /**
  * A message containing results for a search query
  */
-interface ResultMessage {
+export interface SearchResultMessage {
   type: SearchMessageType.RESULT       /* Message type */
   data: SearchResult[]                 /* Message data */
 }
@@ -79,7 +76,63 @@ interface ResultMessage {
  * A message exchanged with the search worker
  */
 export type SearchMessage =
-  | SetupMessage
-  | DumpMessage
-  | QueryMessage
-  | ResultMessage
+  | SearchSetupMessage
+  | SearchDumpMessage
+  | SearchQueryMessage
+  | SearchResultMessage
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Type guard for search setup messages
+ *
+ * @param message - Search worker message
+ *
+ * @return Test result
+ */
+export function isSearchSetupMessage(
+  message: SearchMessage
+): message is SearchSetupMessage {
+  return message.type === SearchMessageType.SETUP
+}
+
+/**
+ * Type guard for search dump messages
+ *
+ * @param message - Search worker message
+ *
+ * @return Test result
+ */
+export function isSearchDumpMessage(
+  message: SearchMessage
+): message is SearchDumpMessage {
+  return message.type === SearchMessageType.DUMP
+}
+
+/**
+ * Type guard for search query messages
+ *
+ * @param message - Search worker message
+ *
+ * @return Test result
+ */
+export function isSearchQueryMessage(
+  message: SearchMessage
+): message is SearchQueryMessage {
+  return message.type === SearchMessageType.QUERY
+}
+
+/**
+ * Type guard for search result messages
+ *
+ * @param message - Search worker message
+ *
+ * @return Test result
+ */
+export function isSearchResultMessage(
+  message: SearchMessage
+): message is SearchResultMessage {
+  return message.type === SearchMessageType.RESULT
+}

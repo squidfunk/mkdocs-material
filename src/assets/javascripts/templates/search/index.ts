@@ -21,5 +21,3 @@
  */
 
 export * from "./_"
-export * from "./article"
-export * from "./section"

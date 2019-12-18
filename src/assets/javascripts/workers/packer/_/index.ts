@@ -30,7 +30,7 @@
  */
 export const enum PackerMessageType {
   STRING,                              /* String data */
-  PACKED                               /* Packed data */
+  BINARY                               /* Packed data */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -38,7 +38,7 @@ export const enum PackerMessageType {
 /**
  * A message containing an unpacked string
  */
-interface StringMessage {
+export interface PackerStringMessage {
   type: PackerMessageType.STRING       /* Message type */
   data: string                         /* Message data */
 }
@@ -46,8 +46,8 @@ interface StringMessage {
 /**
  * A message containing a packed string
  */
-interface PackedMessage {
-  type: PackerMessageType.PACKED       /* Message type */
+export interface PackerBinaryMessage {
+  type: PackerMessageType.BINARY       /* Message type */
   data: string                         /* Message data */
 }
 
@@ -57,5 +57,35 @@ interface PackedMessage {
  * A message exchanged with the packer worker
  */
 export type PackerMessage =
-  | StringMessage
-  | PackedMessage
+  | PackerStringMessage
+  | PackerBinaryMessage
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Type guard for packer binary messages
+ *
+ * @param message - Packer worker message
+ *
+ * @return Test result
+ */
+export function isPackerBinaryMessage(
+  message: PackerMessage
+): message is PackerBinaryMessage {
+  return message.type === PackerMessageType.BINARY
+}
+
+/**
+ * Type guard for packer string messages
+ *
+ * @param message - Packer worker message
+ *
+ * @return Test result
+ */
+export function isPackerStringMessage(
+  message: PackerMessage
+): message is PackerStringMessage {
+  return message.type === PackerMessageType.STRING
+}
