@@ -29,8 +29,8 @@ import {
   tap
 } from "rxjs/operators"
 
-import { resetHidden, setHidden } from "../../actions"
-import { ViewportOffset } from "../../utilities"
+import { resetHidden, setHidden } from "actions"
+import { ViewportOffset } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Functions

@@ -21,6 +21,7 @@
  */
 
 import * as path from "path"
+import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin"
 import { Configuration } from "webpack"
 
 /* ----------------------------------------------------------------------------
@@ -74,7 +75,10 @@ function config(args: Configuration): Configuration {
         __dirname,
         path.resolve(__dirname, "node_modules")
       ],
-      extensions: [".ts", ".tsx", ".js", ".json"]
+      extensions: [".ts", ".tsx", ".js", ".json"],
+      plugins: [
+        new TsconfigPathsPlugin()
+      ]
     },
 
     /* Source maps */

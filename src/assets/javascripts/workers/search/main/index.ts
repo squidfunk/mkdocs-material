@@ -20,7 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { Search } from "../../../modules"
+import { Search } from "modules"
+
 import { SearchMessage, SearchMessageType } from "../_"
 
 /* ----------------------------------------------------------------------------

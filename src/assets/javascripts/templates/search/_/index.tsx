@@ -20,8 +20,9 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "../../../extensions"
-import { SearchResult } from "../../../modules"
+import { h } from "extensions"
+import { SearchResult } from "modules"
+
 import { renderArticleDocument } from "../article"
 import { renderSectionDocument } from "../section"
 

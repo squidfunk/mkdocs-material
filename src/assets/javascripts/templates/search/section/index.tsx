@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "../../../extensions"
-import { SectionDocument } from "../../../modules"
+import { h } from "extensions"
+import { SectionDocument } from "modules"
 
 /* ----------------------------------------------------------------------------
  * Data

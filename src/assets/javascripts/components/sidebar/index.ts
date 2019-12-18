@@ -42,8 +42,9 @@ import {
   resetSidebarLock,
   setSidebarHeight,
   setSidebarLock
-} from "../../actions"
-import { ViewportOffset } from "../../utilities"
+} from "actions"
+import { ViewportOffset } from "utilities"
+
 import { Main } from "../main"
 
 /* ----------------------------------------------------------------------------

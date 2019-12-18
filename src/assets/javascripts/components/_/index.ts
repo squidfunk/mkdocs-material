@@ -24,7 +24,7 @@ import { keys } from "ramda"
 import { NEVER, Observable, OperatorFunction, of, pipe } from "rxjs"
 import { map, scan, shareReplay, switchMap } from "rxjs/operators"
 
-import { getElement } from "../../utilities"
+import { getElement } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
