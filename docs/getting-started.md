@@ -583,14 +583,14 @@ extra:
     - type: 'twitter'
       link: 'https://twitter.com/squidfunk'
     - type: 'linkedin'
-      link: 'https://linkedin.com/in/squidfunk'
+      link: 'https://www.linkedin.com/in/squidfunk'
 ```
 
 The links are generated in order and the `type` of the links must match the
 name of the FontAwesome glyph. The `fa` is automatically added, so `github`
 will result in `fa fa-github`.
 
-  [20]: http://fontawesome.io/icons/
+  [20]: https://fontawesome.com/v4.7.0/icons/
 
 ### Adding a Web App Manifest
 
@@ -757,7 +757,7 @@ extra:
     - type: 'twitter'
       link: 'https://twitter.com/squidfunk'
     - type: 'linkedin'
-      link: 'https://linkedin.com/in/squidfunk'
+      link: 'https://www.linkedin.com/in/squidfunk'
 
 # Google Analytics
 google_analytics:
