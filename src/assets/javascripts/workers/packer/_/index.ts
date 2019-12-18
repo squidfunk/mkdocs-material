@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
  *
@@ -20,5 +21,41 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./packer"
-export * from "./search"
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Packer message type
+ */
+export const enum PackerMessageType {
+  STRING,                              /* String data */
+  PACKED                               /* Packed data */
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * A message containing an unpacked string
+ */
+interface StringMessage {
+  type: PackerMessageType.STRING       /* Message type */
+  data: string                         /* Message data */
+}
+
+/**
+ * A message containing a packed string
+ */
+interface PackedMessage {
+  type: PackerMessageType.PACKED       /* Message type */
+  data: string                         /* Message data */
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * A message exchanged with the packer worker
+ */
+export type PackerMessage =
+  | StringMessage
+  | PackedMessage

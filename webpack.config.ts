@@ -109,7 +109,7 @@ export default (_env: never, args: Configuration): Configuration[] => ([
   /* Search worker */
   {
     ...config(args),
-    entry: "src/assets/javascripts/workers/search",
+    entry: "src/assets/javascripts/workers/search/main",
     output: {
       path: path.resolve(__dirname, "material/assets/javascripts"),
       filename: "search.js",
@@ -120,7 +120,7 @@ export default (_env: never, args: Configuration): Configuration[] => ([
   /* Packer worker */
   {
     ...config(args),
-    entry: "src/assets/javascripts/workers/packer",
+    entry: "src/assets/javascripts/workers/packer/main",
     output: {
       path: path.resolve(__dirname, "material/assets/javascripts"),
       filename: "packer.js",

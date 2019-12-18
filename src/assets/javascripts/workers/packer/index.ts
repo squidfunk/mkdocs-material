@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
  *
@@ -21,81 +20,4 @@
  * IN THE SOFTWARE.
  */
 
-import { compress, decompress } from "lz-string"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Packer message type
- */
-export const enum PackerMessageType {
-  STRING,                              /* String data */
-  PACKED                               /* Packed data */
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * A message containing an unpacked string
- */
-interface StringMessage {
-  type: PackerMessageType.STRING       /* Message type */
-  data: string                         /* Message data */
-}
-
-/**
- * A message containing a packed string
- */
-interface PackedMessage {
-  type: PackerMessageType.PACKED       /* Message type */
-  data: string                         /* Message data */
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * A message exchanged with the packer worker
- */
-export type PackerMessage =
-  | StringMessage
-  | PackedMessage
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Message handler
- *
- * @param message - Source message
- *
- * @return Target message
- */
-export function handler(message: PackerMessage): PackerMessage {
-  switch (message.type) {
-
-    /* Pack an unpacked string */
-    case PackerMessageType.STRING:
-      return {
-        type: PackerMessageType.PACKED,
-        data: compress(message.data)
-      }
-
-    /* Unpack a packed string */
-    case PackerMessageType.PACKED:
-      return {
-        type: PackerMessageType.STRING,
-        data: decompress(message.data)
-      }
-  }
-}
-
-/* ----------------------------------------------------------------------------
- * Worker
- * ------------------------------------------------------------------------- */
-
-addEventListener("message", ev => {
-  postMessage(handler(ev.data))
-})
+export * from "./_"

@@ -70,7 +70,7 @@ export interface SearchIndex {
   config: SearchIndexConfig            /* Search index configuration */
   docs: SearchIndexDocument[]          /* Search index documents */
   options?: SearchIndexOptions         /* Search index options */
-  index?: object                       /* Prebuilt index */
+  index?: object | string              /* Prebuilt or serialized index */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -149,9 +149,13 @@ export class Search {
           this.add(doc)
       })
 
-    /* Prebuilt index */
+    /* Prebuilt or serialized index */
     } else {
-      this.index = lunr.Index.load(index)
+      this.index = lunr.Index.load(
+        typeof index === "string"
+          ? JSON.parse(index)
+          : index
+      )
     }
   }
 
@@ -174,7 +178,7 @@ export class Search {
   public search(query: string): SearchResult[] {
     const groups = this.index.search(query)
 
-      /* Group sections results by article */
+      /* Group sections by containing article */
       .reduce((results, result) => {
         const document = this.documents.get(result.ref)
         if (typeof document !== "undefined") {
@@ -201,9 +205,9 @@ export class Search {
   /**
    * Serialize index
    *
-   * @return JSON representation
+   * @return String representation
    */
-  public toJSON(): object {
-    return this.index.toJSON()
+  public toString(): string {
+    return JSON.stringify(this.index)
   }
 }

@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
  *
@@ -20,5 +21,44 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./packer"
-export * from "./search"
+import { compress, decompress } from "lz-string"
+
+import { PackerMessage, PackerMessageType } from "../_"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Message handler
+ *
+ * @param message - Source message
+ *
+ * @return Target message
+ */
+export function handler(message: PackerMessage): PackerMessage {
+  switch (message.type) {
+
+    /* Pack an unpacked string */
+    case PackerMessageType.STRING:
+      return {
+        type: PackerMessageType.PACKED,
+        data: compress(message.data)
+      }
+
+    /* Unpack a packed string */
+    case PackerMessageType.PACKED:
+      return {
+        type: PackerMessageType.STRING,
+        data: decompress(message.data)
+      }
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * Worker
+ * ------------------------------------------------------------------------- */
+
+addEventListener("message", ev => {
+  postMessage(handler(ev.data))
+})
