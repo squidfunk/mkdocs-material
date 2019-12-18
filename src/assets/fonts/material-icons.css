@@ -16,6 +16,7 @@
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local("Material Icons"),
        local("MaterialIcons-Regular"),
        url("specimen/MaterialIcons-Regular.woff2") format("woff2"),
