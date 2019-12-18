@@ -60,7 +60,7 @@ export type SearchHighlightFactoryFn =
  *
  * @param config - Search index configuration
  *
- * @return Search highlight function
+ * @return Search highlight factory function
  */
 export function setupSearchHighlighter(
   config: SearchIndexConfig
