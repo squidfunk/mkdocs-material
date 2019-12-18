@@ -9,7 +9,7 @@ be triggered from within a Git repository.
 
 ## Installation
 
-Install the plugin with the following command:
+Install the plugin using `pip` with the following command:
 
 ``` sh
 pip install mkdocs-git-revision-date-localized-plugin
@@ -19,8 +19,15 @@ Next, add the following lines to your `mkdocs.yml`:
 
 ``` yaml
 plugins:
+  - search
   - git-revision-date-localized
 ```
+
+!!! warning "Remember to re-add the `search` plugin"
+
+    If you have no `plugins` entry in your config file yet, you'll likely also
+    want to add the `search` plugin. MkDocs enables it by default if there is
+    no `plugins` entry set.
 
 ## Usage
 

@@ -688,36 +688,22 @@ Material theme including more information regarding installation and usage:
 
 ## Plugins
 
-MkDocs's plugin architecture makes it possible to add pre- or post-processing
-steps that sit between the theme and your documentation. A great example of a
-third-party plugin is the [mkdocs-minify-plugin][32] which strips all whitespace
-from the generated documentation.
+MkDocs's plugin architecture makes it possible to add pre- or post-processing steps that sit between the theme and your documentation. For more information, see the following list of plugins tested and supported by the Material theme including more information regarding installation and usage:
 
-Install it with `pip`:
+* [Minify HTML][32]
+* [Revision date][33]
+* [Search][34]
 
-``` sh
-pip install mkdocs-minify-plugin
-```
-
-Enable it with the following lines in your `mkdocs.yml`:
-
-``` yaml
-plugins:
-  - search
-  - minify:
-      minify_html: true
-```
-
-The MkDocs wiki contains a [list of all available plugins][33].
+The MkDocs wiki contains a [list of all available plugins][35].
 
 !!! warning "Remember to re-add the `search` plugin"
 
-    If you have no `plugins` entry in your config file yet, you'll likely also
-    want to add the `search` plugin. MkDocs enables it by default if there is
-    no `plugins` entry set.
+    If you have no `plugins` entry in your config file yet, you'll likely also want to add the `search` plugin when adding additional plugins. MkDocs enables it by default if there is no `plugins` entry set.
 
-  [32]: https://github.com/byrnereese/mkdocs-minify-plugin
-  [33]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
+  [32]: plugins/minify-html.md
+  [33]: plugins/revision-date.md
+  [34]: plugins/search.md
+  [35]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
 
 ## Full example
 
