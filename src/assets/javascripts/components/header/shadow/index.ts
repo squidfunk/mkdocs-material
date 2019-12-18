@@ -20,46 +20,47 @@
  * IN THE SOFTWARE.
  */
 
-import { OperatorFunction, animationFrameScheduler, pipe } from "rxjs"
 import {
-  distinctUntilChanged,
+  MonoTypeOperatorFunction,
+  animationFrameScheduler,
+  pipe
+} from "rxjs"
+import {
+  distinctUntilKeyChanged,
   finalize,
-  map,
   observeOn,
   tap
 } from "rxjs/operators"
 
-import { ViewportOffset } from "../../../ui"
-import { resetHidden, setHidden } from "../../action"
+import { resetHeaderShadow, setHeaderShadow } from "../../../actions"
+import { Main } from "../../main"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint hideable from source observable
+ * Paint header shadow from source observable
  *
- * @param el - Hideable element
- * @param offset - Additional offset
+ * @param el - Header element
  *
  * @return Operator function
  */
-export function paintHidden(
-  el: HTMLElement, offset: number = 0
-): OperatorFunction<ViewportOffset, boolean> {
+export function paintHeaderShadow(
+  el: HTMLElement
+): MonoTypeOperatorFunction<Main> {
   return pipe(
-    map(({ y }) => y >= offset),
-    distinctUntilChanged(),
+    distinctUntilKeyChanged("active"),
 
     /* Defer repaint to next animation frame */
     observeOn(animationFrameScheduler),
-    tap(value => {
-      setHidden(el, value)
+    tap(({ active }) => {
+      setHeaderShadow(el, active)
     }),
 
     /* Reset on complete or error */
     finalize(() => {
-      resetHidden(el)
+      resetHeaderShadow(el)
     })
   )
 }

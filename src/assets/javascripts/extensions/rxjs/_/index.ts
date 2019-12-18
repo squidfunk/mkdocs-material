@@ -20,7 +20,25 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./action"
-export * from "./component"
-export * from "./toggle"
-// export * from "./worker"
+import { Observable } from "rxjs"
+import { map } from "rxjs/operators"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Invert boolean value of source observable
+ *
+ * @param toggle$ - Toggle observable
+ *
+ * @return Inverted toggle observable
+ */
+export function not(
+  toggle$: Observable<boolean>
+): Observable<boolean> {
+  return toggle$
+    .pipe(
+      map(active => !active)
+    )
+}

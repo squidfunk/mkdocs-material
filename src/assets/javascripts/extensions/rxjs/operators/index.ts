@@ -20,45 +20,48 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, defer, of } from "rxjs"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Header
- */
-export interface Header {
-  sticky: boolean                      /* Header stickyness */
-  height: number                       /* Header visible height */
-}
+import {
+  EMPTY,
+  Observable,
+  OperatorFunction,
+  combineLatest,
+  of,
+  pipe
+} from "rxjs"
+import {
+  filter,
+  switchMap,
+  takeUntil
+} from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch header
+ * Toggle switch map with another observable
  *
- * The header is wrapped in an observable to pave the way for auto-hiding or
- * other dynamic behaviors that may be implemented later on.
+ * @template T - Source value type
+ * @template U - Target value type
  *
- * @param el - Header element
+ * @param toggle$ - Toggle observable
+ * @param project - Projection
  *
- * @return Header observable
+ * @return Operator function
  */
-export function watchHeader(
-  el: HTMLElement
-): Observable<Header> {
-  return defer(() => {
-    const sticky = getComputedStyle(el)
-      .getPropertyValue("position") === "fixed"
-
-      /* Return header as hot observable */
-    return of({
-      sticky,
-      height: sticky ? el.offsetHeight : 0
-    })
-  })
+export function switchMapIf<T, U>(
+  toggle$: Observable<boolean>, project: (value: T) => Observable<U>
+): OperatorFunction<T, U> {
+  const begin$ = toggle$.pipe(filter(value =>  value))
+  const end$   = toggle$.pipe(filter(value => !value))
+  return pipe(
+    switchMap(value => combineLatest([of(value), begin$])),
+    switchMap(([value, active]) => active
+      ? project(value)
+          .pipe(
+            takeUntil(end$)
+          )
+      : EMPTY
+    )
+  )
 }

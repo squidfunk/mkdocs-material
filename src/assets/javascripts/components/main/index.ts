@@ -28,7 +28,7 @@ import {
   shareReplay
 } from "rxjs/operators"
 
-import { ViewportOffset, ViewportSize } from "../../../ui"
+import { ViewportOffset, ViewportSize } from "../../utilities"
 import { Header } from "../header"
 
 /* ----------------------------------------------------------------------------

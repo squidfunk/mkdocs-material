@@ -20,30 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Configuration
- */
-export interface Config {
-  base: string                         /* Base URL */
-  search: string                       /* Web worker URL */
-}
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Ensure that the given value is a valid configuration
- *
- * @param config - Configuration
- *
- * @return Test result
- */
-export function isConfig(config: any): config is Config {
-  return typeof config === "object"
-      && typeof config.base === "string"
-}
+export * from "./_"
+export * from "./operators"

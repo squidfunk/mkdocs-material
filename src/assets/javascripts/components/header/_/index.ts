@@ -20,38 +20,45 @@
  * IN THE SOFTWARE.
  */
 
+import { Observable, defer, of } from "rxjs"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Header
+ */
+export interface Header {
+  sticky: boolean                      /* Header stickyness */
+  height: number                       /* Header visible height */
+}
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve an element matching the query selector
+ * Watch header
  *
- * @template T - Element type
+ * The header is wrapped in an observable to pave the way for auto-hiding or
+ * other dynamic behaviors that may be implemented later on.
  *
- * @param selector - Query selector
- * @param node - Node of reference
+ * @param el - Header element
  *
- * @return Element
+ * @return Header observable
  */
-export function getElement<T extends HTMLElement>(
-  selector: string, node: ParentNode = document
-): T | undefined {
-  return node.querySelector<T>(selector) || undefined
-}
+export function watchHeader(
+  el: HTMLElement
+): Observable<Header> {
+  return defer(() => {
+    const sticky = getComputedStyle(el)
+      .getPropertyValue("position") === "fixed"
 
-/**
- * Retrieve all elements matching the query selector
- *
- * @template T - Element type
- *
- * @param selector - Query selector
- * @param node - Node of reference
- *
- * @return Elements
- */
-export function getElements<T extends HTMLElement>(
-  selector: string, node: ParentNode = document
-): T[] {
-  return Array.from(node.querySelectorAll<T>(selector))
+    /* Return header as hot observable */
+    return of({
+      sticky,
+      height: sticky ? el.offsetHeight : 0
+    })
+  })
 }

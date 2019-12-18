@@ -1,0 +1,107 @@
+/*
+ * Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+import * as escapeHTML from "escape-html"
+
+import { SearchIndexDocument } from "../_"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * A top-level article
+ */
+export interface SearchArticle extends SearchIndexDocument {
+  section: boolean                     /* Whether the section was linked */
+}
+
+/**
+ * A section of an article
+ */
+export interface SearchSection extends SearchIndexDocument {
+  article: SearchArticle               /* Parent article */
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Search document
+ */
+export type SearchDocument =
+  | SearchArticle
+  | SearchSection
+
+/**
+ * Search document mapping
+ */
+export type SearchDocumentMap = Map<string, SearchDocument>
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Build a search document mapping
+ *
+ * @param docs - Search index documents
+ *
+ * @return Search document map
+ */
+export function setupSearchDocumentMap(
+  docs: SearchIndexDocument[]
+): SearchDocumentMap {
+  const documents = new Map<string, SearchDocument>()
+  for (const doc of docs) {
+    const [path, hash] = doc.location.split("#")
+
+    /* Extract location and title */
+    const location = doc.location
+    const title    = doc.title
+
+    /* Escape and cleanup text */
+    const text = escapeHTML(doc.text)
+      .replace(/\s+(?=[,.:;!?])/g, "")
+      .replace(/\s+/g, " ")
+
+    /* Handle section */
+    if (hash) {
+      const article = documents.get(path) as SearchArticle
+
+      /* Ignore first section, override article */
+      if (!article.section) {
+        article.title   = doc.title
+        article.text    = text
+        article.section = true
+
+      /* Add subsequent section */
+      } else {
+        documents.set(location, { location, title, text, article })
+      }
+
+    /* Add article */
+    } else {
+      documents.set(location, { location, title, text, section: false })
+    }
+  }
+  return documents
+}

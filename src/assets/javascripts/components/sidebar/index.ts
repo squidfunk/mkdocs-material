@@ -37,13 +37,13 @@ import {
   tap
 } from "rxjs/operators"
 
-import { ViewportOffset } from "../../../ui"
 import {
   resetSidebarHeight,
   resetSidebarLock,
   setSidebarHeight,
   setSidebarLock
-} from "../../action"
+} from "../../actions"
+import { ViewportOffset } from "../../utilities"
 import { Main } from "../main"
 
 /* ----------------------------------------------------------------------------

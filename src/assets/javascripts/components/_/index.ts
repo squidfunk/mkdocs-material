@@ -21,10 +21,10 @@
  */
 
 import { keys } from "ramda"
-import { NEVER, Observable, OperatorFunction, merge, of, pipe } from "rxjs"
+import { NEVER, Observable, OperatorFunction, of, pipe } from "rxjs"
 import { map, scan, shareReplay, switchMap } from "rxjs/operators"
 
-import { getElement } from "../../../utilities"
+import { getElement } from "../../utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -62,7 +62,7 @@ export type ComponentMap = {
  * Options
  */
 interface Options {
-  load$: Observable<Document>          /* Document observable */
+  document$: Observable<Document>      /* Document observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -81,9 +81,9 @@ interface Options {
  * @return Component map observable
  */
 export function watchComponentMap(
-  names: Component[], { load$ }: Options
+  names: Component[], { document$ }: Options
 ): Observable<ComponentMap> {
-  const components$ = load$
+  const components$ = document$
     .pipe(
 
       /* Build component map */

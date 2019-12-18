@@ -20,67 +20,46 @@
  * IN THE SOFTWARE.
  */
 
+import { OperatorFunction, animationFrameScheduler, pipe } from "rxjs"
 import {
-  EMPTY,
-  Observable,
-  OperatorFunction,
-  combineLatest,
-  of,
-  pipe
-} from "rxjs"
-import {
-  filter,
+  distinctUntilChanged,
+  finalize,
   map,
-  switchMap,
-  takeUntil
+  observeOn,
+  tap
 } from "rxjs/operators"
+
+import { resetHidden, setHidden } from "../../actions"
+import { ViewportOffset } from "../../utilities"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Invert boolean value of source observable
+ * Paint hideable from source observable
  *
- * @param toggle$ - Toggle observable
- *
- * @return Inverted toggle observable
- */
-export function not(
-  toggle$: Observable<boolean>
-): Observable<boolean> {
-  return toggle$
-    .pipe(
-      map(active => !active)
-    )
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Toggle switch map with another observable
- *
- * @template T - Source value type
- * @template U - Target value type
- *
- * @param toggle$ - Toggle observable
- * @param project - Projection
+ * @param el - Hideable element
+ * @param offset - Additional offset
  *
  * @return Operator function
  */
-export function switchMapIf<T, U>(
-  toggle$: Observable<boolean>, project: (value: T) => Observable<U>
-): OperatorFunction<T, U> {
-  const begin$ = toggle$.pipe(filter(value =>  value))
-  const end$   = toggle$.pipe(filter(value => !value))
+export function paintHidden(
+  el: HTMLElement, offset: number = 0
+): OperatorFunction<ViewportOffset, boolean> {
   return pipe(
-    switchMap(value => combineLatest([of(value), begin$])),
-    switchMap(([value, active]) => active
-      ? project(value)
-          .pipe(
-            takeUntil(end$)
-          )
-      : EMPTY
-    )
+    map(({ y }) => y >= offset),
+    distinctUntilChanged(),
+
+    /* Defer repaint to next animation frame */
+    observeOn(animationFrameScheduler),
+    tap(value => {
+      setHidden(el, value)
+    }),
+
+    /* Reset on complete or error */
+    finalize(() => {
+      resetHidden(el)
+    })
   )
 }
