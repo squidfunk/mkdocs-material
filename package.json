@@ -47,7 +47,7 @@
     "@types/webpack": "^4.39.2",
     "autoprefixer": "^9.6.1",
     "css-mqpacker": "^7.0.0",
-    "csso-cli": "^2.0.2",
+    "csso-cli": "^3.0.0",
     "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
@@ -66,7 +66,7 @@
     "ts-node": "^7.0.1",
     "tslint": "^5.18.0",
     "tslint-sonarts": "^1.9.0",
-    "typescript": "^3.6.3",
+    "typescript": "^3.7.3",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"
   },
