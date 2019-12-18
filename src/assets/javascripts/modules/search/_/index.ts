@@ -190,7 +190,7 @@ export class Search {
    */
   public search(query: string): SearchResult[] {
     query = query
-      .replace(/(?:^|\s+)[+-:~^]+(?=\s+|$)/g, "")
+      .replace(/(?:^|\s+)[*+-:^~]+(?=\s+|$)/g, "")
       .trim()
 
     /* Abort early, if query is empty */
