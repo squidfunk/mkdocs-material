@@ -122,8 +122,8 @@
       {% if feature.tabs %}
         {% include "partials/tabs.html" %}
       {% endif %}
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="main">
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           {% block site_nav %}
             {% if nav %}
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
@@ -235,7 +235,7 @@
         {%- endfor -%}
         {{ translations | tojson }}
       </script>
-      <script>app=initialize({base:"{{ base_url }}",search:"{{ 'assets/javascripts/search.js' | url }}"})</script>
+      <script>app=initialize({base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/search.js' | url }}",packer:"{{ 'assets/javascripts/packer.js' | url }}"}})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

@@ -31,7 +31,7 @@ import { renderSectionDocument } from "../section"
  * ------------------------------------------------------------------------- */
 
 /**
- * CSS class references
+ * CSS classes
  */
 const css = {
   item: "md-search-result__item"

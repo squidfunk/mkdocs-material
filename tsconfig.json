@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "alwaysStrict": true,
-    "baseUrl": ".",
+    "baseUrl": "src/assets/javascripts",
     "declaration": false,
     "declarationMap": false,
     "downlevelIteration": true,
@@ -21,7 +21,15 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": {},
+    "paths": {
+      "actions": ["actions"],
+      "components": ["components"],
+      "extensions": ["extensions"],
+      "modules": ["modules"],
+      "templates": ["templates"],
+      "utilities": ["utilities"],
+      "workers": ["workers"]
+    },
     "removeComments": false,
     "resolveJsonModule": true,
     "sourceMap": true,

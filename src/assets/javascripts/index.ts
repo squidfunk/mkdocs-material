@@ -22,18 +22,16 @@
 
 import { identity } from "ramda"
 import {
-  EMPTY,
   MonoTypeOperatorFunction,
-  NEVER,
   Observable,
+  Subject,
   fromEvent,
   merge,
-  of,
   pipe,
-  zip
 } from "rxjs"
 import {
   delay,
+  distinctUntilKeyChanged,
   filter,
   map,
   pluck,
@@ -41,12 +39,9 @@ import {
   switchMap,
   switchMapTo,
   tap,
-  withLatestFrom
 } from "rxjs/operators"
 
 import { ajax } from "rxjs/ajax"
-import { Config, isConfig } from "./config"
-import { setupSearch } from "./search"
 import {
   Component,
   paintHeaderShadow,
@@ -59,23 +54,57 @@ import {
   watchMain,
   watchSearchReset,
   watchSidebar,
-  watchToggle,
   watchTopOffset
-} from "./theme"
+} from "./components"
 import {
+  not,
+  switchMapIf
+} from "./extensions"
+import { SearchIndex } from "./modules/search"
+import {
+  getElement,
   watchDocument,
   watchDocumentSwitch,
   watchLocation,
   watchLocationFragment,
   watchMedia,
+  watchToggle,
   watchViewportOffset,
-  watchViewportSize
-} from "./ui"
-import {
-  getElement,
-  not,
-  switchMapIf
+  watchViewportSize,
+  watchWorker
 } from "./utilities"
+import { SearchMessage, SearchMessageType } from "./workers"
+
+/**
+ * Configuration
+ */
+export interface Config {
+  base: string                         /* Base URL */
+  worker: {
+    search: string                     /* Web worker URL */
+    packer: string                     /* Web worker URL */
+  }
+}
+
+import { PackerMessage, PackerMessageType } from "./workers/packer"
+
+import { renderSearchResult } from "./templates"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Ensure that the given value is a valid configuration
+ *
+ * @param config - Configuration
+ *
+ * @return Test result
+ */
+export function isConfig(config: any): config is Config {
+  return typeof config === "object"
+      && typeof config.base === "string"
+}
 
 // TBD
 
@@ -112,6 +141,72 @@ export function initialize(config: unknown) {
   if (!isConfig(config))
     throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
+  const worker = new Worker(config.worker.search)
+  const packer = new Worker(config.worker.packer)
+
+  // const query = message.data.trim().replace(/\s+|$/g, "* ") // TODO: do this outside of the worker
+
+  const packerMessage$ = new Subject<PackerMessage>()
+  const packer$ = watchWorker(packer, { message$: packerMessage$ })
+
+  // send a message, then switchMapTo worker!
+
+  packer$.subscribe(message => {
+    console.log("PACKER.MSG", message)
+    // is always packed!
+    console.log(message.data.length)
+    localStorage.setItem("index", message.data)
+  })
+
+  const searchMessage$ = new Subject<SearchMessage>()
+
+  const search$ = watchWorker(worker, { message$: searchMessage$ })
+  search$.subscribe(message => {
+    if (message.type === SearchMessageType.DUMP) {
+      console.log(message.data.length)
+      packerMessage$.next({
+        type: PackerMessageType.STRING,
+        data: message.data
+      })
+    } else if (message.type === SearchMessageType.RESULT) {
+      console.log("RESULT", message)
+
+      const list = document.querySelector(".md-search-result__list")!
+      list.innerHTML = ""
+      for (const el of message.data.map(renderSearchResult)) // TODO: perform entire lazy render!!!!
+        list.appendChild(el as any) // only render visibile stuff...!
+
+      // paint on next animation frame!?
+
+      // build a rendering pipeline for search results + scroll bottom!
+
+    }
+    // if (message.type === 0) {
+    //   console.log("Packing...")
+    //   packerMessage$.next(message.toString())
+    // } else {
+    //   console.log((message as any).term, ":", (message as any).res)
+    // }
+  })
+
+  // filter singular "+" or "-",as it will result in a lunr.js error
+
+  ajax({
+    url: `${config.base}/search/search_index.json`,
+    responseType: "json",
+    withCredentials: true
+  })
+    .pipe(
+      pluck("response"),
+      map<SearchIndex, SearchMessage>(data => ({
+        type: SearchMessageType.SETUP,
+        data
+      }))
+    )
+      .subscribe(message => {
+        searchMessage$.next(message) // TODO: this shall not complete
+      })
+
   /* ----------------------------------------------------------------------- */
 
   /* Create viewport observables */
@@ -133,7 +228,7 @@ export function initialize(config: unknown) {
   /* ----------------------------------------------------------------------- */
 
   /* Create component map observable */
-  const components$ = watchComponentMap(names, { load$ })
+  const components$ = watchComponentMap(names, { document$: load$ })
 
   const component = (name: Component): Observable<HTMLElement> => {
     return components$
@@ -156,6 +251,22 @@ export function initialize(config: unknown) {
     )
 
   // ----------------------------------------------------------------------------
+
+  component("query")
+    .pipe(
+      switchMap(el => fromEvent(el, "keyup") // not super nice...
+        .pipe(
+          map<Event, SearchMessage>(() => ({
+            type: SearchMessageType.QUERY,
+            data: (el as HTMLInputElement).value
+          })), // TODO. ugly...
+          distinctUntilKeyChanged("data")
+        )
+      )
+    )
+      .subscribe(x => {
+        searchMessage$.next(x)
+      })
 
   // // WIP: instant loading
   // load$

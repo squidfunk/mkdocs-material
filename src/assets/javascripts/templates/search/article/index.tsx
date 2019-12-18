@@ -22,13 +22,14 @@
 
 import { h } from "extensions"
 import { ArticleDocument } from "modules"
+import { truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Data
  * ------------------------------------------------------------------------- */
 
 /**
- * CSS class references
+ * CSS classes
  */
 const css = {
   link:    "md-search-result__link",
@@ -55,7 +56,10 @@ export function renderArticleDocument(
     <a href={location} title={title} class={css.link} tabIndex={-1}>
       <article class={css.article}>
         <h1 class={css.title}>{title}</h1>
-        {text.length ? <p class={css.teaser}>{text}</p> : undefined}
+        {text.length
+          ? <p class={css.teaser}>{truncate(text, 320)}</p>
+          : undefined
+        }
       </article>
     </a>
   )

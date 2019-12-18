@@ -20,47 +20,23 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "extensions"
-import { SectionDocument } from "modules"
-import { truncate } from "utilities"
-
-/* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * CSS classes
- */
-const css = {
-  link:    "md-search-result__link",
-  article: "md-search-result__article",
-  title:   "md-search-result__title",
-  teaser:  "md-search-result__teaser"
-}
-
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Render a section document
+ * Truncate a string after the given number of characters
  *
- * @param section - Section document
+ * @param string - String to be truncated
+ * @param n - Number of characters
  *
- * @return JSX element
+ * @return Truncated string
  */
-export function renderSectionDocument(
-  { location, title, text }: SectionDocument
-) {
-  return (
-    <a href={location} title={title} class={css.link} tabIndex={-1}>
-      <article class={css.article}>
-        <h1 class={css.title}>{title}</h1>
-        {text.length
-          ? <p class={css.teaser}>{truncate(text, 320)}</p>
-          : undefined
-        }
-      </article>
-    </a>
-  )
+export function truncate(string: string, n: number): string {
+  let i = n
+  if (string.length > i) {
+    while (string[i] !== " " && --i > 0);
+    return `${string.substring(0, i)}...`
+  }
+  return string
 }
