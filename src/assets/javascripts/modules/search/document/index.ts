@@ -31,15 +31,15 @@ import { SearchIndexDocument } from "../_"
 /**
  * A top-level article
  */
-export interface SearchArticle extends SearchIndexDocument {
+export interface ArticleDocument extends SearchIndexDocument {
   section: boolean                     /* Whether the section was linked */
 }
 
 /**
  * A section of an article
  */
-export interface SearchSection extends SearchIndexDocument {
-  article: SearchArticle               /* Parent article */
+export interface SectionDocument extends SearchIndexDocument {
+  article: ArticleDocument             /* Parent article */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -48,8 +48,8 @@ export interface SearchSection extends SearchIndexDocument {
  * Search document
  */
 export type SearchDocument =
-  | SearchArticle
-  | SearchSection
+  | ArticleDocument
+  | SectionDocument
 
 /**
  * Search document mapping
@@ -85,7 +85,7 @@ export function setupSearchDocumentMap(
 
     /* Handle section */
     if (hash) {
-      const article = documents.get(path) as SearchArticle
+      const article = documents.get(path) as ArticleDocument
 
       /* Ignore first section, override article */
       if (!article.section) {

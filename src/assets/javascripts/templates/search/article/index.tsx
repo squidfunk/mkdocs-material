@@ -1,0 +1,62 @@
+/*
+ * Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+import { h } from "../../../extensions"
+import { ArticleDocument } from "../../../modules"
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * CSS class references
+ */
+const css = {
+  link:    "md-search-result__link",
+  article: "md-search-result__article md-search-result__article--document",
+  title:   "md-search-result__title",
+  teaser:  "md-search-result__teaser"
+}
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Render an article document
+ *
+ * @param article - Article document
+ *
+ * @return JSX element
+ */
+export function renderArticleDocument(
+  { location, title, text }: ArticleDocument
+) {
+  return (
+    <a href={location} title={title} class={css.link} tabIndex={-1}>
+      <article class={css.article}>
+        <h1 class={css.title}>{title}</h1>
+        {text.length ? <p class={css.teaser}>{text}</p> : undefined}
+      </article>
+    </a>
+  )
+}

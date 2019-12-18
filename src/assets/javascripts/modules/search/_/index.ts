@@ -23,9 +23,9 @@
 import * as lunr from "lunr"
 
 import {
-  SearchArticle,
+  ArticleDocument,
   SearchDocumentMap,
-  SearchSection,
+  SectionDocument,
   setupSearchDocumentMap
 } from "../document"
 
@@ -79,8 +79,8 @@ export interface SearchIndex {
  * Search result
  */
 export interface SearchResult {
-  article: SearchArticle               /* Relevant article */
-  sections: SearchSection[]            /* Relevant sections */
+  article: ArticleDocument             /* Article document */
+  sections: SectionDocument[]          /* Section documents */
 }
 
 /* ----------------------------------------------------------------------------
@@ -176,7 +176,9 @@ export class Search {
    * @return Search results
    */
   public search(query: string): SearchResult[] {
-    const groups = this.index.search(query)
+    const groups = this.index.search(query
+      .replace(/\s+[+-](?:\s+|$)/, "") /* Filter rogue quantifiers */
+    )
 
       /* Group sections by containing article */
       .reduce((results, result) => {
@@ -195,9 +197,9 @@ export class Search {
 
     /* Map groups to search documents */
     return [...groups].map(([ref, sections]) => ({
-      article: this.documents.get(ref) as SearchArticle,
+      article: this.documents.get(ref) as ArticleDocument,
       sections: sections.map(section => {
-        return this.documents.get(section.ref) as SearchSection
+        return this.documents.get(section.ref) as SectionDocument
       })
     }))
   }
