@@ -4,6 +4,7 @@
  */
 
 @font-face {
+  font-display: swap;
   font-family: FontAwesome;
   font-style: normal;
   font-weight: 400;

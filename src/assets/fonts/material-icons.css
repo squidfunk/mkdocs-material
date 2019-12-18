@@ -13,6 +13,7 @@
  */
 
 @font-face {
+  font-display: swap;
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
