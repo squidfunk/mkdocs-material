@@ -21,7 +21,6 @@
  */
 
 import * as lunr from "lunr"
-import { compress, decompress } from "lz-string"
 
 import {
   SearchArticle,
@@ -52,6 +51,16 @@ export interface SearchIndexDocument {
 }
 
 /**
+ * Search index options
+ */
+export interface SearchIndexOptions {
+  pipeline: {
+    trimmer: boolean                   /* Add trimmer to pipeline */
+    stopwords: boolean                 /* Add stopword filter to pipeline */
+  }
+}
+
+/**
  * Search index
  *
  * This interfaces describes the format of the `search_index.json` file which
@@ -60,7 +69,8 @@ export interface SearchIndexDocument {
 export interface SearchIndex {
   config: SearchIndexConfig            /* Search index configuration */
   docs: SearchIndexDocument[]          /* Search index documents */
-  index?: object | string              /* Pre-built or serialized index */
+  options?: SearchIndexOptions         /* Search index options */
+  index?: object                       /* Prebuilt index */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -74,16 +84,16 @@ export interface SearchResult {
 }
 
 /* ----------------------------------------------------------------------------
- * Function types
+ * Data
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Default options
  */
-interface Options {
+const defaultOptions: SearchIndexOptions = {
   pipeline: {
-    trimmer: boolean                   /* Add trimmer to pipeline */
-    stopwords: boolean                 /* Add stopword filter to pipeline */
+    trimmer: true,
+    stopwords: true
   }
 }
 
@@ -114,18 +124,19 @@ export class Search {
    * @param index - Search index
    * @param options - Options
    */
-  public constructor({ docs, index }: SearchIndex, options: Options) {
+  public constructor({ docs, options, index }: SearchIndex) {
     this.documents = setupSearchDocumentMap(docs)
 
     /* If no index was given, create it */
     if (typeof index === "undefined") {
       this.index = lunr(function() {
+        const { pipeline } = options || defaultOptions
 
         /* Remove stemmer, as it cripples search experience */
         this.pipeline.reset()
-        if (options.pipeline.trimmer)
+        if (pipeline.trimmer)
           this.pipeline.add(lunr.trimmer)
-        if (options.pipeline.stopwords)
+        if (pipeline.stopwords)
           this.pipeline.add(lunr.stopWordFilter)
 
         /* Setup fields and reference */
@@ -137,10 +148,6 @@ export class Search {
         for (const doc of docs)
           this.add(doc)
       })
-
-    /* Serialized and compressed index */
-    } else if (typeof index === "string") {
-      this.index = lunr.Index.load(JSON.parse(decompress(index)))
 
     /* Prebuilt index */
     } else {
@@ -192,11 +199,11 @@ export class Search {
   }
 
   /**
-   * Serialize and compress the index
+   * Serialize index
    *
-   * @return Serialized and compressed index
+   * @return JSON representation
    */
-  public toString(): string {
-    return compress(JSON.stringify(this.index))
+  public toJSON(): object {
+    return this.index.toJSON()
   }
 }

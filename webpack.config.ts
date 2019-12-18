@@ -21,7 +21,7 @@
  */
 
 import * as path from "path"
-import { Configuration } from "webpack"
+import { Configuration, ProvidePlugin } from "webpack"
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -98,7 +98,12 @@ export default (_env: never, args: Configuration): Configuration[] => ([
       path: path.resolve(__dirname, "material/assets/javascripts"),
       filename: "bundle.js",
       libraryTarget: "window"
-    }
+    },
+    plugins: [
+      new ProvidePlugin({
+        jsx: "src/assets/javascripts/extensions/jsx"
+      })
+    ]
   },
 
   /* Search worker */
@@ -108,6 +113,17 @@ export default (_env: never, args: Configuration): Configuration[] => ([
     output: {
       path: path.resolve(__dirname, "material/assets/javascripts"),
       filename: "search.js",
+      libraryTarget: "var"
+    }
+  },
+
+  /* Packer worker */
+  {
+    ...config(args),
+    entry: "src/assets/javascripts/workers/packer",
+    output: {
+      path: path.resolve(__dirname, "material/assets/javascripts"),
+      filename: "packer.js",
       libraryTarget: "var"
     }
   }

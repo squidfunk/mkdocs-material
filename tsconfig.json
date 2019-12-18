@@ -5,6 +5,8 @@
     "declaration": false,
     "declarationMap": false,
     "downlevelIteration": true,
+    "jsx": "react",
+    "jsxFactory": "jsx.h",
     "lib": [
       "dom",
       "es2017",
