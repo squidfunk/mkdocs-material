@@ -272,8 +272,8 @@
       {% endif %}
 
       <!-- Main area -->
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="main">
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
 
           <!-- Navigation -->
           {% block site_nav %}
@@ -443,7 +443,10 @@
       <script>
         app = initialize({
           base: "{{ base_url }}",
-          search: "{{ 'assets/javascripts/search.js' | url }}"
+          worker: {
+            search: "{{ 'assets/javascripts/search.js' | url }}",
+            packer: "{{ 'assets/javascripts/packer.js' | url }}"
+          }
         });
       </script>
 

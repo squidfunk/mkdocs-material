@@ -32,7 +32,7 @@ import { ViewportOffset, ViewportSize } from "../../../utilities"
 import { Header } from "../_"
 
 /* ----------------------------------------------------------------------------
- * Function types
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**

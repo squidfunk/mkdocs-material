@@ -20,4 +20,5 @@
  * IN THE SOFTWARE.
  */
 
+export * from "./jsx"
 export * from "./rxjs"

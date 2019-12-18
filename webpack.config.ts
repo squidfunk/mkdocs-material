@@ -21,7 +21,7 @@
  */
 
 import * as path from "path"
-import { Configuration, ProvidePlugin } from "webpack"
+import { Configuration } from "webpack"
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -58,6 +58,12 @@ function config(args: Configuration): Configuration {
             }
           ],
           exclude: /\/node_modules\//
+        },
+
+        /* Preact is only used for its great JSX typings */
+        {
+          test: /\bpreact\b/,
+          use: "null-loader"
         }
       ]
     },
@@ -98,12 +104,7 @@ export default (_env: never, args: Configuration): Configuration[] => ([
       path: path.resolve(__dirname, "material/assets/javascripts"),
       filename: "bundle.js",
       libraryTarget: "window"
-    },
-    plugins: [
-      new ProvidePlugin({
-        jsx: "src/assets/javascripts/extensions/jsx"
-      })
-    ]
+    }
   },
 
   /* Search worker */

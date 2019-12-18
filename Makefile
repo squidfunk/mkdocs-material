@@ -46,7 +46,7 @@ lint:
 # Start development server
 start:
 	@ NODE_ENV=development ${BIN}/nodemon --quiet \
-		--watch src --ext html,scss,ts \
+		--watch src --ext html,scss,ts,tsx \
 		--exec make build
 
 # -----------------------------------------------------------------------------

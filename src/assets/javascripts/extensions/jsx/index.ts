@@ -20,11 +20,52 @@
  * IN THE SOFTWARE.
  */
 
+import { JSX as JSXInternal } from "preact"
+import { keys } from "ramda"
+
 /* ----------------------------------------------------------------------------
- * Types
+ * Helper types
  * ------------------------------------------------------------------------- */
 
+/**
+ * HTML attributes
+ */
+type Attributes =
+  & JSXInternal.HTMLAttributes
+  & JSXInternal.SVGAttributes
+  & Record<string, any>
 
+/**
+ * Child element
+ */
+type Child = Child[] | Element | Text | string | number
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Append a child node to an element
+ *
+ * @param el - Element
+ * @param child - Child node
+ */
+function appendChild(el: Element, child: Child): void {
+
+  /* Handle primitive types */
+  if (typeof child === "string" || typeof child === "number") {
+    el.appendChild(new Text(child.toString()))
+
+  /* Handle nodes */
+  } else if (child instanceof Node) {
+    el.appendChild(child)
+
+  /* Handle nested children */
+  } else if (Array.isArray(child)) {
+    for (const node of child)
+      appendChild(el, node)
+  }
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -33,52 +74,38 @@
 /**
  * JSX factory
  *
- * @param tag - Tag name
- * @param attributes - Properties
+ * @param tag - HTML tag
+ * @param attributes - HTML attributes
  * @param children - Child elements
  *
  * @return Element
  */
 export function h(
-  tag: string,
-  attributes: Record<string, string | boolean> | null,
-  ...children: Array<Element | Text | string>
+  tag: string, attributes: Attributes | null,
+  ...children: Array<Element | Text | string | number>
 ) {
-  console.log(tag, attributes, children)
-  // const el = document.createElement(tag)
+  const el = document.createElement(tag)
 
-  // /* Set all properties */
-  // if (attributes)
-  //   Array.prototype.forEach.call(Object.keys(attributes), attr => {
-  //     el.setAttribute(attr, attributes[attr])
-  //   })
+  /* Set attributes, if any */
+  if (attributes)
+    for (const attr of keys(attributes))
+      if (typeof attributes[attr] !== "boolean")
+        el.setAttribute(attr, attributes[attr])
+      else if (attributes[attr])
+        el.setAttribute(attr, "")
 
-  // /* Iterate child nodes */
-  // const iterateChildNodes = nodes => {
-  //   Array.prototype.forEach.call(nodes, node => {
+  /* Append child nodes */
+  for (const child of children)
+    appendChild(el, child)
 
-  //     /* Directly append text content */
-  //     if (typeof node === "string" ||
-  //         typeof node === "number") {
-  //       el.textContent += node
+  /* Return element */
+  return el
+}
 
-  //     /* Recurse, if we got an array */
-  //     } else if (Array.isArray(node)) {
-  //       iterateChildNodes(node)
+/* ----------------------------------------------------------------------------
+ * Namespace
+ * ------------------------------------------------------------------------- */
 
-  //     /* Append raw HTML */
-  //     } else if (typeof node.__html !== "undefined") {
-  //       el.innerHTML += node.__html
-
-  //     /* Append regular nodes */
-  //     } else if (node instanceof Node) {
-  //       el.appendChild(node)
-  //     }
-  //   })
-  // }
-
-  // /* Iterate child nodes and return element */
-  // iterateChildNodes(children)
-  // return el
-  return { tag }
+export declare namespace h {
+  export import JSX = JSXInternal
 }

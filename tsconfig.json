@@ -6,7 +6,7 @@
     "declarationMap": false,
     "downlevelIteration": true,
     "jsx": "react",
-    "jsxFactory": "jsx.h",
+    "jsxFactory": "h",
     "lib": [
       "dom",
       "es2017",
