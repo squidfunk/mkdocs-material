@@ -52,9 +52,9 @@ type Child = Child[] | Element | Text | string | number
  */
 function appendChild(el: Element, child: Child): void {
 
-  /* Handle primitive types */
+  /* Handle primitive types (including raw HTML) */
   if (typeof child === "string" || typeof child === "number") {
-    el.appendChild(new Text(child.toString()))
+    el.innerHTML += child.toString()
 
   /* Handle nodes */
   } else if (child instanceof Node) {

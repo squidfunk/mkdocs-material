@@ -61,15 +61,14 @@ theme:
 
 # Plugins
 plugins:
-  - search
+  - search:
+      prebuild_index: false
   # - minify:
   #     minify_html: true
 
 # Customization
 extra:
   social:
-    - type: globe
-      link: http://struct.cc
     - type: github-alt
       link: https://github.com/squidfunk
     - type: twitter

@@ -28,6 +28,10 @@ import {
   SectionDocument,
   setupSearchDocumentMap
 } from "../document"
+import {
+  SearchHighlightFactoryFn,
+  setupSearchHighlighter
+} from "../highlight"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -114,6 +118,11 @@ export class Search {
   protected documents: SearchDocumentMap
 
   /**
+   * Search highlight factory function
+   */
+  protected highlight: SearchHighlightFactoryFn
+
+  /**
    * The lunr search index
    */
   protected index: lunr.Index
@@ -124,8 +133,9 @@ export class Search {
    * @param index - Search index
    * @param options - Options
    */
-  public constructor({ docs, options, index }: SearchIndex) {
+  public constructor({ config, docs, options, index }: SearchIndex) {
     this.documents = setupSearchDocumentMap(docs)
+    this.highlight = setupSearchHighlighter(config)
 
     /* If no index was given, create it */
     if (typeof index === "undefined") {
@@ -171,16 +181,24 @@ export class Search {
    * page. For this reason, section results are grouped within their respective
    * articles which are the top-level results that are returned.
    *
+   * Rogue control characters must be filtered before handing the query to the
+   * search index, as lunr will throw otherwise.
+   *
    * @param query - Query string
    *
    * @return Search results
    */
   public search(query: string): SearchResult[] {
-    const groups = this.index.search(query
-      .replace(/\s+[+-](?:\s+|$)/, "") /* Filter rogue quantifiers */
-    )
+    query = query
+      .replace(/(?:^|\s+)[+-:~^]+(?=\s+|$)/g, "")
+      .trim()
 
-      /* Group sections by containing article */
+    /* Abort early, if query is empty */
+    if (!query)
+      return []
+
+    /* Group sections by containing article */
+    const groups = this.index.search(query)
       .reduce((results, result) => {
         const document = this.documents.get(result.ref)
         if (typeof document !== "undefined") {
@@ -195,11 +213,14 @@ export class Search {
         return results
       }, new Map<string, lunr.Index.Result[]>())
 
+    /* Create highlighter for query */
+    const fn = this.highlight(query)
+
     /* Map groups to search documents */
     return [...groups].map(([ref, sections]) => ({
-      article: this.documents.get(ref) as ArticleDocument,
+      article: fn(this.documents.get(ref) as ArticleDocument),
       sections: sections.map(section => {
-        return this.documents.get(section.ref) as SectionDocument
+        return fn(this.documents.get(section.ref) as SectionDocument)
       })
     }))
   }

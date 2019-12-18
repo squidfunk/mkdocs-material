@@ -32,6 +32,7 @@
   "dependencies": {
     "clipboard": "^2.0.0",
     "escape-html": "^1.0.3",
+    "escape-string-regexp": "^2.0.0",
     "lunr": "^2.3.6",
     "lunr-languages": "^1.1.0",
     "lz-string": "^1.4.4",

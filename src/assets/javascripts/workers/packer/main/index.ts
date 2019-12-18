@@ -21,9 +21,44 @@
  * IN THE SOFTWARE.
  */
 
-import { compress, decompress } from "lz-string"
+import {
+  compress,
+  compressToUTF16,
+  decompress,
+  decompressFromUTF16
+} from "lz-string"
 
 import { PackerMessage, PackerMessageType } from "../_"
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Determine methods for packing and unpacking
+ *
+ * While all Webkit-based browsers can store invalid UTF-16 strings in local
+ * storage, other browsers may only store valid UTF-16 strings.
+ *
+ * @see https://bit.ly/2Q1ArhU - LZ-String documentation
+ */
+const isWebkit = navigator.userAgent.includes("AppleWebKit")
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Method for packing
+ */
+const pack = isWebkit
+  ? compress
+  : compressToUTF16
+
+/**
+ * Method for unpacking
+ */
+const unpack = isWebkit
+  ? decompress
+  : decompressFromUTF16
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -43,14 +78,14 @@ export function handler(message: PackerMessage): PackerMessage {
     case PackerMessageType.STRING:
       return {
         type: PackerMessageType.PACKED,
-        data: compress(message.data)
+        data: pack(message.data)
       }
 
     /* Unpack a packed string */
     case PackerMessageType.PACKED:
       return {
         type: PackerMessageType.STRING,
-        data: decompress(message.data)
+        data: unpack(message.data)
       }
   }
 }

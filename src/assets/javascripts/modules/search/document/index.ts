@@ -61,7 +61,7 @@ export type SearchDocumentMap = Map<string, SearchDocument>
  * ------------------------------------------------------------------------- */
 
 /**
- * Build a search document mapping
+ * Create a search document mapping
  *
  * @param docs - Search index documents
  *

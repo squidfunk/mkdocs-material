@@ -20,7 +20,10 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndex, SearchResult } from "../../../modules"
+import { Subject } from "rxjs"
+
+import { SearchIndex, SearchResult } from "modules"
+import { watchWorker } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
