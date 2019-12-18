@@ -313,7 +313,7 @@ translations for all template variables and labels in the following languages:
 <table style="white-space: nowrap;">
   <thead>
     <tr>
-      <th colspan="4">Available languages</td>
+      <th colspan="4">Available languages</th>
     </tr>
   </thead>
   <tbody>
@@ -440,7 +440,7 @@ At the time of writing, the following languages are supported:
 <table style="white-space: nowrap;">
   <thead>
     <tr>
-      <th colspan="4">Available language stemmers</td>
+      <th colspan="4">Available language stemmers</th>
     </tr>
   </thead>
   <tbody>
@@ -583,14 +583,14 @@ extra:
     - type: 'twitter'
       link: 'https://twitter.com/squidfunk'
     - type: 'linkedin'
-      link: 'https://linkedin.com/in/squidfunk'
+      link: 'https://www.linkedin.com/in/squidfunk'
 ```
 
 The links are generated in order and the `type` of the links must match the
 name of the FontAwesome glyph. The `fa` is automatically added, so `github`
 will result in `fa fa-github`.
 
-  [20]: http://fontawesome.io/icons/
+  [20]: https://fontawesome.com/v4.7.0/icons/
 
 ### Adding a Web App Manifest
 
@@ -688,36 +688,22 @@ Material theme including more information regarding installation and usage:
 
 ## Plugins
 
-MkDocs's plugin architecture makes it possible to add pre- or post-processing
-steps that sit between the theme and your documentation. A great example of a
-third-party plugin is the [mkdocs-minify-plugin][32] which strips all whitespace
-from the generated documentation.
+MkDocs's plugin architecture makes it possible to add pre- or post-processing steps that sit between the theme and your documentation. For more information, see the following list of plugins tested and supported by the Material theme including more information regarding installation and usage:
 
-Install it with `pip`:
+* [Minify HTML][32]
+* [Revision date][33]
+* [Search][34]
 
-``` sh
-pip install mkdocs-minify-plugin
-```
-
-Enable it with the following lines in your `mkdocs.yml`:
-
-``` yaml
-plugins:
-  - search
-  - minify:
-      minify_html: true
-```
-
-The MkDocs wiki contains a [list of all available plugins][33].
+The MkDocs wiki contains a [list of all available plugins][35].
 
 !!! warning "Remember to re-add the `search` plugin"
 
-    If you have no `plugins` entry in your config file yet, you'll likely also
-    want to add the `search` plugin. MkDocs enables it by default if there is
-    no `plugins` entry set.
+    If you have no `plugins` entry in your config file yet, you'll likely also want to add the `search` plugin when adding additional plugins. MkDocs enables it by default if there is no `plugins` entry set.
 
-  [32]: https://github.com/byrnereese/mkdocs-minify-plugin
-  [33]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
+  [32]: plugins/minify-html.md
+  [33]: plugins/revision-date.md
+  [34]: plugins/search.md
+  [35]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
 
 ## Full example
 
@@ -757,7 +743,7 @@ extra:
     - type: 'twitter'
       link: 'https://twitter.com/squidfunk'
     - type: 'linkedin'
-      link: 'https://linkedin.com/in/squidfunk'
+      link: 'https://www.linkedin.com/in/squidfunk'
 
 # Google Analytics
 google_analytics:
