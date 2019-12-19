@@ -2659,4 +2659,9 @@ hr {
       .md-search-result__teaser {
         max-height: 2.5rem;
         -webkit-line-clamp: 3; } }
+
+@media (-webkit-max-device-pixel-ratio: 1), (max-resolution: 1dppx) {
+    .md-search__scrollwrap {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0); } }
 /*# sourceMappingURL=app.css.map */

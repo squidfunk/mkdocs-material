@@ -435,6 +435,11 @@ $md-toggle__search--checked:
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
+    // Mitigiate excessive repaints on non-retina devices
+    @media (max-resolution: 1dppx) {
+      transform: translateZ(0);
+    }
+
     // [tablet landscape]: Set absolute width to omit unnecessary reflow
     @include break-at-device(tablet landscape) {
       width: px2rem(468px);
