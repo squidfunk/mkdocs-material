@@ -20,21 +20,32 @@
  * IN THE SOFTWARE.
  */
 
-import { h, toHTMLElement } from "extensions"
-import { SearchResult } from "modules"
+import { Observable, fromEvent, merge } from "rxjs"
+import { map, shareReplay, startWith } from "rxjs/operators"
 
-import { renderArticleDocument } from "../article"
-import { renderSectionDocument } from "../section"
+import { ViewportSize } from "../../viewport"
 
 /* ----------------------------------------------------------------------------
- * Data
+ * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * CSS classes
+ * Element offset
  */
-const css = {
-  item: "md-search-result__item"
+export interface ElementOffset {
+  x: number                            /* Horizontal offset */
+  y: number                            /* Vertical offset */
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Options
+ */
+interface Options {
+  size$: Observable<ViewportSize>      /* Viewport size observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -42,19 +53,37 @@ const css = {
  * ------------------------------------------------------------------------- */
 
 /**
- * Render a search result
+ * Retrieve element offset
  *
- * @param article - Search result
+ * @param el - HTML element
  *
- * @return HTML element
+ * @return Element offset
  */
-export function renderSearchResult(
-  { article, sections }: SearchResult
-): HTMLElement {
-  return toHTMLElement(
-    <li class={css.item}>
-      {renderArticleDocument(article)}
-      {...sections.map(renderSectionDocument)}
-    </li>
-  )
+export function getElementOffset(el: HTMLElement): ElementOffset {
+  return {
+    x: el.scrollLeft,
+    y: el.scrollTop
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Watch element offset
+ *
+ * @paramel - Element
+ * @param options - Options
+ *
+ * @return Element offset observable
+ */
+export function watchElementOffset(
+  el: HTMLElement, { size$ }: Options
+): Observable<ElementOffset> {
+  const scroll$ = fromEvent(el, "scroll")
+  return merge(scroll$, size$)
+    .pipe(
+      map(() => getElementOffset(el)),
+      startWith(getElementOffset(el)),
+      shareReplay(1)
+    )
 }

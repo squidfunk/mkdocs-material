@@ -22,3 +22,4 @@
 
 // export * from "./query"
 export * from "./reset"
+export * from "./result"

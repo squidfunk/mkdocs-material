@@ -20,38 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Retrieve an element matching the query selector
- *
- * @template T - Element type
- *
- * @param selector - Query selector
- * @param node - Node of reference
- *
- * @return Element
- */
-export function getElement<T extends HTMLElement>(
-  selector: string, node: ParentNode = document
-): T | undefined {
-  return node.querySelector<T>(selector) || undefined
-}
-
-/**
- * Retrieve all elements matching the query selector
- *
- * @template T - Element type
- *
- * @param selector - Query selector
- * @param node - Node of reference
- *
- * @return Elements
- */
-export function getElements<T extends HTMLElement>(
-  selector: string, node: ParentNode = document
-): T[] {
-  return Array.from(node.querySelectorAll<T>(selector))
-}
+export * from "./_"
+export * from "./offset"

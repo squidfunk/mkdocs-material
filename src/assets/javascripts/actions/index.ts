@@ -22,4 +22,5 @@
 
 export * from "./header"
 export * from "./hidden"
+export * from "./search"
 export * from "./sidebar"

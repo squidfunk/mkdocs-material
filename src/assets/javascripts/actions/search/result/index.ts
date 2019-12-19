@@ -19,3 +19,30 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Add an element to the search result list
+ *
+ * @param el - Search result list element
+ * @param child - Search result element
+ */
+export function addToSearchResultList(
+  el: HTMLElement, child: HTMLElement
+): void {
+  el.appendChild(child)
+}
+
+/**
+ * Reset search result list
+ *
+ * @param el - Search result list element
+ */
+export function resetSearchResultList(
+  el: HTMLElement
+): void {
+  el.innerHTML = ""
+}

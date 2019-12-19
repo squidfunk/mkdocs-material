@@ -45,7 +45,7 @@ export interface WorkerMessage {
  * @template T - Worker message type
  */
 interface Options<T extends WorkerMessage> {
-  message$: Observable<T>              /* Message observable */
+  send$: Observable<T>                 /* Message observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -65,22 +65,22 @@ interface Options<T extends WorkerMessage> {
  * @return Worker message observable
  */
 export function watchWorker<T extends WorkerMessage>(
-  worker: Worker, { message$ }: Options<T>
+  worker: Worker, { send$ }: Options<T>
 ): Observable<T> {
 
   /* Observable for messages from web worker */
-  const worker$ = fromEvent(worker, "message")
+  const recv$ = fromEvent(worker, "message")
     .pipe(
       pluck<Event, T>("data"),
       share()
     )
 
   /* Send and receive messages, return hot observable */
-  return message$
+  return send$
     .pipe(
-      throttle(() => worker$, { leading: true, trailing: true }),
+      throttle(() => recv$, { leading: true, trailing: true }),
       tap(message => worker.postMessage(message)),
-      switchMapTo(worker$),
+      switchMapTo(recv$),
       share()
     )
 }

@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { h, toElement } from "extensions"
+import { h, toHTMLElement } from "extensions"
 import { ArticleDocument } from "modules"
 import { truncate } from "utilities"
 
@@ -47,12 +47,12 @@ const css = {
  *
  * @param article - Article document
  *
- * @return Element
+ * @return HTML element
  */
 export function renderArticleDocument(
   { location, title, text }: ArticleDocument
-): Element {
-  return toElement(
+): HTMLElement {
+  return toHTMLElement(
     <a href={location} title={title} class={css.link} tabIndex={-1}>
       <article class={css.article}>
         <h1 class={css.title}>{title}</h1>

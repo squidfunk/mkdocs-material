@@ -54,12 +54,12 @@ interface Options {
  * This function returns an observable that computes the relative offset to the
  * top of the given element based on the current viewport offset.
  *
- * @param el - Element
+ * @param el - HTML element
  * @param options - Options
  *
  * @return Viewport offset observable
  */
-export function watchTopOffset(
+export function watchHeaderOffsetToTopOf(
   el: HTMLElement, { size$, offset$, header$ }: Options
 ): Observable<ViewportOffset> {
 
@@ -85,12 +85,12 @@ export function watchTopOffset(
  * This function returns an observable that computes the relative offset to the
  * bottom of the given element based on the current viewport offset.
  *
- * @param el - Element
+ * @param el - HTML element
  * @param options - Options
  *
  * @return Viewport offset observable
  */
-export function watchBottomOffset(
+export function watchHeaderOffsetToBottomOf(
   el: HTMLElement, { size$, offset$, header$ }: Options
 ): Observable<ViewportOffset> {
 

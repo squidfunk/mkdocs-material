@@ -35,7 +35,7 @@
 export function truncate(string: string, n: number): string {
   let i = n
   if (string.length > i) {
-    while (string[i] !== " " && --i > 0);
+    while (string[i] !== " " && --i > 0); // tslint:disable-line
     return `${string.substring(0, i)}...`
   }
   return string
