@@ -83,7 +83,7 @@ function appendChild(el: Element, child: Child): void {
 export function h(
   tag: string, attributes: Attributes | null,
   ...children: Array<Element | Text | string | number>
-) {
+): Element {
   const el = document.createElement(tag)
 
   /* Set attributes, if any */
@@ -100,6 +100,17 @@ export function h(
 
   /* Return element */
   return el
+}
+
+/**
+ * JSX factory wrapper
+ *
+ * @param el - JSX element
+ *
+ * @return Element
+ */
+export function toElement(el: JSXInternal.Element): Element {
+  return el as any // Hack: if you have a better idea, PR!
 }
 
 /* ----------------------------------------------------------------------------

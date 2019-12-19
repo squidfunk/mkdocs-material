@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "extensions"
+import { h, toElement } from "extensions"
 import { SearchResult } from "modules"
 
 import { renderArticleDocument } from "../article"
@@ -46,12 +46,12 @@ const css = {
  *
  * @param article - Search result
  *
- * @return JSX element
+ * @return Element
  */
 export function renderSearchResult(
   { article, sections }: SearchResult
-) {
-  return (
+): Element {
+  return toElement(
     <li class={css.item}>
       {renderArticleDocument(article)}
       {...sections.map(renderSectionDocument)}
