@@ -20,9 +20,40 @@
  * IN THE SOFTWARE.
  */
 
+import { translate } from "utilities"
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
+
+/**
+ * Set number of search results
+ *
+ * @param el - Search result metadata element
+ * @param value - Number of results
+ */
+export function setSearchResultMeta(
+  el: HTMLElement, value: number
+): void {
+  el.textContent = value > 1
+    ? translate("search.result.other", value.toString())
+    : value === 1
+      ? translate("search.result.one")
+      : translate("search.result.none")
+}
+
+/**
+ * Reset number of search results
+ *
+ * @param el - Search result metadata element
+ */
+export function resetSearchResultMeta(
+  el: HTMLElement
+): void {
+  el.textContent = translate("search.placeholder")
+}
+
+/* ------------------------------------------------------------------------- */
 
 /**
  * Add an element to the search result list

@@ -35,10 +35,15 @@ import {
   mapTo,
   observeOn,
   scan,
-  switchMap
+  switchMap,
+  tap
 } from "rxjs/operators"
 
-import { addToSearchResultList, resetSearchResultList } from "actions"
+import {
+  addToSearchResultList,
+  resetSearchResultList,
+  setSearchResultMeta
+} from "actions"
 import { SearchResult } from "modules"
 import { renderSearchResult } from "templates"
 import { ViewportSize, watchElementOffset } from "utilities"
@@ -81,6 +86,13 @@ export function paintSearchResult(
   /* Paint search results lazily */
   const [meta, list] = Array.from(el.children) as HTMLElement[]
   return pipe(
+
+    /* Paint search result metadata */
+    tap(result => {
+      setSearchResultMeta(meta, result.length)
+    }),
+
+    /* Paint search result list */
     switchMap(result => render$
       .pipe(
 

@@ -20,6 +20,17 @@
  * IN THE SOFTWARE.
  */
 
+import { getElement } from "../agent"
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Translations
+ */
+let lang: Record<string, string>
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -27,16 +38,37 @@
 /**
  * Truncate a string after the given number of characters
  *
- * @param string - String to be truncated
+ * @param value - Value to be truncated
  * @param n - Number of characters
  *
- * @return Truncated string
+ * @return Truncated value
  */
-export function truncate(string: string, n: number): string {
+export function truncate(value: string, n: number): string {
   let i = n
-  if (string.length > i) {
-    while (string[i] !== " " && --i > 0); // tslint:disable-line
-    return `${string.substring(0, i)}...`
+  if (value.length > i) {
+    while (value[i] !== " " && --i > 0); // tslint:disable-line
+    return `${value.substring(0, i)}...`
   }
-  return string
+  return value
+}
+
+/**
+ * Translate the given key
+ *
+ * @param key - Key to be translated
+ * @param value - Value to be replaced
+ *
+ * @return Translation
+ */
+export function translate(key: string, value?: string): string {
+  if (typeof lang === "undefined") {
+    const el = getElement("#__lang")!
+    lang = JSON.parse(el.innerText)
+  }
+  if (typeof lang[key] === "undefined") {
+    throw new ReferenceError(`Invalid translation: ${key}`)
+  }
+  return typeof value !== "undefined"
+    ? lang[key].replace("#", value)
+    : lang[key]
 }

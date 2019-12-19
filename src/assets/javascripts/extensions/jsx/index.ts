@@ -38,7 +38,7 @@ type Attributes =
 /**
  * Child element
  */
-type Child = Child[] | Element | Text | string | number
+type Child = Child[] | HTMLElement | Text | string | number
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -47,10 +47,10 @@ type Child = Child[] | Element | Text | string | number
 /**
  * Append a child node to an element
  *
- * @param el - Element
+ * @param el - HTML element
  * @param child - Child node
  */
-function appendChild(el: Element, child: Child): void {
+function appendChild(el: HTMLElement, child: Child): void {
 
   /* Handle primitive types (including raw HTML) */
   if (typeof child === "string" || typeof child === "number") {
@@ -78,12 +78,12 @@ function appendChild(el: Element, child: Child): void {
  * @param attributes - HTML attributes
  * @param children - Child elements
  *
- * @return Element
+ * @return HTML element
  */
 export function h(
   tag: string, attributes: Attributes | null,
-  ...children: Array<Element | Text | string | number>
-): Element {
+  ...children: Array<HTMLElement | Text | string | number>
+): HTMLElement {
   const el = document.createElement(tag)
 
   /* Set attributes, if any */
@@ -107,9 +107,9 @@ export function h(
  *
  * @param el - JSX element
  *
- * @return Element
+ * @return HTML element
  */
-export function toElement(el: JSXInternal.Element): Element {
+export function toHTMLElement(el: JSXInternal.Element): HTMLElement {
   return el as any // Hack: if you have a better idea, PR!
 }
 
