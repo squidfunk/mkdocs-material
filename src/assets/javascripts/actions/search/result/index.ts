@@ -50,7 +50,7 @@ export function setSearchResultMeta(
 export function resetSearchResultMeta(
   el: HTMLElement
 ): void {
-  el.textContent = translate("search.placeholder")
+  el.textContent = translate("search.result.placeholder")
 }
 
 /* ------------------------------------------------------------------------- */

@@ -20,48 +20,72 @@
  * IN THE SOFTWARE.
  */
 
-import {
-  MonoTypeOperatorFunction,
-  animationFrameScheduler,
-  pipe
-} from "rxjs"
-import {
-  distinctUntilKeyChanged,
-  finalize,
-  observeOn,
-  tap
-} from "rxjs/operators"
+import { Observable, OperatorFunction, pipe } from "rxjs"
+import { map, shareReplay } from "rxjs/operators"
 
-import { resetHeaderShadow, setHeaderShadow } from "actions"
+import { switchMapIf } from "extensions"
+import { Agent } from "utilities"
 
-import { Main } from "../../main"
+import {
+  Main,
+  Sidebar,
+  paintSidebar,
+  watchSidebar
+} from "../../main"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Navigation
+ */
+export interface Navigation {
+  sidebar: Sidebar                     /* Sidebar */
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Options
+ */
+interface Options {
+  main$: Observable<Main>              /* Main observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint header shadow from source observable
+ * Setup navigation from source observable
  *
- * @param el - Header element
+ * @param agent - Agent
+ * @param options - Options
  *
  * @return Operator function
  */
-export function paintHeaderShadow(
-  el: HTMLElement
-): MonoTypeOperatorFunction<Main> {
+export function setupNavigation(
+  agent: Agent, { main$ }: Options
+): OperatorFunction<HTMLElement, Navigation> {
+  const { media } = agent
   return pipe(
-    distinctUntilKeyChanged("active"),
+    switchMapIf(media.screen$, el => {
 
-    /* Defer repaint to next animation frame */
-    observeOn(animationFrameScheduler),
-    tap(({ active }) => {
-      setHeaderShadow(el, active)
+      /* Watch and paint sidebar */
+      const sidebar$ = watchSidebar(el, agent, { main$ })
+        .pipe(
+          paintSidebar(el)
+        )
+
+      /* Combine into a single hot observable */
+      return sidebar$
+        .pipe(
+          map(sidebar => ({ sidebar }))
+        )
     }),
-
-    /* Reset on complete or error */
-    finalize(() => {
-      resetHeaderShadow(el)
-    })
+    shareReplay(1)
   )
 }

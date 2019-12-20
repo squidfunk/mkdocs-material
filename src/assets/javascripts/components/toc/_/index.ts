@@ -20,22 +20,35 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import { map, shareReplay, startWith } from "rxjs/operators"
+import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
+import { map, shareReplay } from "rxjs/operators"
 
-import { Agent } from "../../_"
-import { ViewportSize } from "../../viewport"
+import { switchMapIf } from "extensions"
+import { Agent, getElements } from "utilities"
+
+import { Header } from "../../header"
+import {
+  Main,
+  Sidebar,
+  paintSidebar,
+  watchSidebar
+} from "../../main"
+import {
+  AnchorList,
+  paintAnchorList,
+  watchAnchorList
+} from "../anchor"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Element offset
+ * Table of contents
  */
-export interface ElementOffset {
-  x: number                            /* Horizontal offset */
-  y: number                            /* Vertical offset */
+export interface TableOfContents {
+  sidebar: Sidebar                     /* Sidebar */
+  anchors: AnchorList                  /* Anchor list */
 }
 
 /* ----------------------------------------------------------------------------
@@ -46,7 +59,8 @@ export interface ElementOffset {
  * Options
  */
 interface Options {
-  size$: Observable<ViewportSize>      /* Viewport size observable */
+  header$: Observable<Header>          /* Header observable */
+  main$: Observable<Main>              /* Main observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -54,37 +68,39 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve element offset
+ * Setup table of contents from source observable
  *
- * @param el - HTML element
- *
- * @return Element offset
- */
-export function getElementOffset(el: HTMLElement): ElementOffset {
-  return {
-    x: el.scrollLeft,
-    y: el.scrollTop
-  }
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Watch element offset
- *
- * @param el - Element
  * @param agent - Agent
+ * @param options - Options
  *
- * @return Element offset observable
+ * @return Operator function
  */
-export function watchElementOffset(
-  el: HTMLElement, { viewport }: Agent
-): Observable<ElementOffset> {
-  const scroll$ = fromEvent(el, "scroll")
-  return merge(scroll$, viewport.size$)
-    .pipe(
-      map(() => getElementOffset(el)),
-      startWith(getElementOffset(el)),
-      shareReplay(1)
-    )
+export function setupTableOfContents(
+  agent: Agent, { header$, main$ }: Options
+): OperatorFunction<HTMLElement, TableOfContents> {
+  const { media } = agent
+  return pipe(
+    switchMapIf(media.tablet$, el => {
+
+      /* Watch and paint sidebar */
+      const sidebar$ = watchSidebar(el, agent, { main$ })
+        .pipe(
+          paintSidebar(el)
+        )
+
+      /* Watch and paint anchor list (scroll spy) */
+      const els = getElements<HTMLAnchorElement>(".md-nav__link", el)
+      const anchors$ = watchAnchorList(els, agent, { header$ })
+        .pipe(
+          paintAnchorList(els)
+        )
+
+      /* Combine into a single hot observable */
+      return combineLatest([sidebar$, anchors$])
+        .pipe(
+          map(([sidebar, anchors]) => ({ sidebar, anchors }))
+        )
+    }),
+    shareReplay(1)
+  )
 }

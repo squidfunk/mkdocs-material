@@ -28,7 +28,8 @@ import {
   switchMapTo
 } from "rxjs/operators"
 
-import { ViewportOffset, ViewportSize } from "../../../utilities"
+import { Agent, ViewportOffset } from "utilities"
+
 import { Header } from "../_"
 
 /* ----------------------------------------------------------------------------
@@ -39,8 +40,6 @@ import { Header } from "../_"
  * Options
  */
 interface Options {
-  size$: Observable<ViewportSize>      /* Viewport size observable */
-  offset$: Observable<ViewportOffset>  /* Viewport offset observable */
   header$: Observable<Header>          /* Header observable */
 }
 
@@ -55,16 +54,17 @@ interface Options {
  * top of the given element based on the current viewport offset.
  *
  * @param el - HTML element
+ * @param agent - Agent
  * @param options - Options
  *
  * @return Viewport offset observable
  */
 export function watchHeaderOffsetToTopOf(
-  el: HTMLElement, { size$, offset$, header$ }: Options
+  el: HTMLElement, { viewport }: Agent, { header$ }: Options
 ): Observable<ViewportOffset> {
 
   /* Compute necessary adjustment for offset */
-  const adjust$ = size$
+  const adjust$ = viewport.size$
     .pipe(
       switchMapTo(header$),
       map(({ height }) => el.offsetTop - height),
@@ -72,7 +72,7 @@ export function watchHeaderOffsetToTopOf(
     )
 
   /* Compute relative offset and return as hot observable */
-  return combineLatest([offset$, adjust$])
+  return combineLatest([viewport.offset$, adjust$])
     .pipe(
       map(([{ x, y }, adjust]) => ({ x, y: y - adjust })),
       shareReplay(1)
@@ -86,16 +86,17 @@ export function watchHeaderOffsetToTopOf(
  * bottom of the given element based on the current viewport offset.
  *
  * @param el - HTML element
+ * @param agent - Agent
  * @param options - Options
  *
  * @return Viewport offset observable
  */
 export function watchHeaderOffsetToBottomOf(
-  el: HTMLElement, { size$, offset$, header$ }: Options
+  el: HTMLElement, { viewport }: Agent, { header$ }: Options
 ): Observable<ViewportOffset> {
 
   /* Compute necessary adjustment for offset */
-  const adjust$ = size$
+  const adjust$ = viewport.size$
     .pipe(
       switchMapTo(header$),
       map(({ height }) => el.offsetTop + el.offsetHeight - height),
@@ -103,7 +104,7 @@ export function watchHeaderOffsetToBottomOf(
     )
 
   /* Compute relative offset and return as hot observable */
-  return combineLatest([offset$, adjust$])
+  return combineLatest([viewport.offset$, adjust$])
     .pipe(
       map(([{ x, y }, adjust]) => ({ x, y: y - adjust })),
       shareReplay(1)

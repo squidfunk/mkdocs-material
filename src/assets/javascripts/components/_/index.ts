@@ -70,7 +70,7 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch component map
+ * Watch component mapping
  *
  * This function returns an observable that will maintain bindings to the given
  * components in-between document switches and update the document in-place.
@@ -78,7 +78,7 @@ interface Options {
  * @param names - Component names
  * @param options - Options
  *
- * @return Component map observable
+ * @return Component mapping observable
  */
 export function watchComponentMap(
   names: Component[], { document$ }: Options

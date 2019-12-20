@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+export * from "./_"
 export * from "./document"
 export * from "./element"
 export * from "./location"

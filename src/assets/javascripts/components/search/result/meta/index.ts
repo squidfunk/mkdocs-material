@@ -20,48 +20,52 @@
  * IN THE SOFTWARE.
  */
 
-import {
-  MonoTypeOperatorFunction,
-  animationFrameScheduler,
-  pipe
-} from "rxjs"
-import {
-  distinctUntilKeyChanged,
-  finalize,
-  observeOn,
-  tap
-} from "rxjs/operators"
+import { MonoTypeOperatorFunction, Observable, pipe } from "rxjs"
+import { map, withLatestFrom } from "rxjs/operators"
 
-import { resetHeaderShadow, setHeaderShadow } from "actions"
+import {
+  resetSearchResultMeta,
+  setSearchResultMeta
+} from "actions"
+import { SearchResult } from "modules"
+import { getElement } from "utilities"
 
-import { Main } from "../../main"
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Options
+ */
+interface Options {
+  query$: Observable<string>           /* Search query observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint header shadow from source observable
+ * Paint search result metadata from source observable
  *
- * @param el - Header element
+ * @param el - Search result metadata element
+ * @param options - Options
  *
  * @return Operator function
  */
-export function paintHeaderShadow(
-  el: HTMLElement
-): MonoTypeOperatorFunction<Main> {
+export function paintSearchResultMeta(
+  el: HTMLElement, { query$ }: Options
+): MonoTypeOperatorFunction<SearchResult[]> {
+  const meta = getElement(".md-search-result__meta", el)!
   return pipe(
-    distinctUntilKeyChanged("active"),
-
-    /* Defer repaint to next animation frame */
-    observeOn(animationFrameScheduler),
-    tap(({ active }) => {
-      setHeaderShadow(el, active)
-    }),
-
-    /* Reset on complete or error */
-    finalize(() => {
-      resetHeaderShadow(el)
+    withLatestFrom(query$),
+    map(([result, query]) => {
+      if (query) {
+        setSearchResultMeta(meta, result.length)
+      } else {
+        resetSearchResultMeta(meta)
+      }
+      return result
     })
   )
 }

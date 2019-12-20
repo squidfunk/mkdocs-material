@@ -20,55 +20,66 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, fromEvent } from "rxjs"
-import { filter, map, share } from "rxjs/operators"
+import { identity } from "ramda"
+import { Observable, OperatorFunction, pipe } from "rxjs"
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  switchMap,
+} from "rxjs/operators"
+
+import { SearchResult } from "modules"
+import { Agent, watchElementOffset } from "utilities"
+
+import { paintSearchResultList } from "../list"
+import { paintSearchResultMeta } from "../meta"
 
 /* ----------------------------------------------------------------------------
- * Data
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Observable for window hash change events
+ * Options
  */
-const hashchange$ = fromEvent<HashChangeEvent>(window, "hashchange")
-
-/**
- * Observable for window pop state events
- */
-const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
+interface Options {
+  result$: Observable<SearchResult[]>  /* Search result observable */
+  query$: Observable<string>           /* Search query observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch location
+ * Setup search result from source observable
  *
- * @return Location subject
- */
-export function watchLocation(): Subject<string> {
-  const location$ = new Subject<string>()
-  popstate$
-    .pipe(
-      map(() => location.href),
-      share()
-    )
-      .subscribe(location$)
-
-  /* Return subject */
-  return location$
-}
-
-/**
- * Watch location hash
+ * @param el - Search result element
+ * @param agent - Agent
  *
- * @return Location hash observable
+ * @return Operator function
  */
-export function watchLocationHash(): Observable<string> {
-  return hashchange$
-    .pipe(
-      map(() => location.hash),
-      filter(hash => hash.length > 0),
-      share()
-    )
+export function setupSearchResult(
+  agent: Agent, { result$, query$ }: Options
+): OperatorFunction<HTMLElement, SearchResult[]> {
+  return pipe(
+    switchMap(el => {
+      const parent = el.parentElement!
+
+      /* Compute whether more elements need to be rendered */
+      const render$ = watchElementOffset(parent, agent)
+        .pipe(
+          map(({ y }) => y >= parent.scrollHeight - parent.offsetHeight - 16),
+          distinctUntilChanged(),
+          filter(identity)
+        )
+
+      /* Paint search results */
+      return result$
+        .pipe(
+          paintSearchResultMeta(el, { query$ }),
+          paintSearchResultList(el, { render$ })
+        )
+    })
+  )
 }

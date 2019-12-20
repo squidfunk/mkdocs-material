@@ -43,7 +43,7 @@ import {
   setSidebarHeight,
   setSidebarLock
 } from "actions"
-import { ViewportOffset } from "utilities"
+import { Agent } from "utilities"
 
 import { Main } from "../main"
 
@@ -67,7 +67,6 @@ export interface Sidebar {
  * Options
  */
 interface Options {
-  offset$: Observable<ViewportOffset>  /* Viewport offset observable */
   main$: Observable<Main>              /* Main area observable */
 }
 
@@ -84,12 +83,13 @@ interface Options {
  * the sidebar is locked and fills the remaining space.
  *
  * @param el - Sidebar element
+ * @param agent - Agent
  * @param options - Options
  *
  * @return Sidebar observable
  */
 export function watchSidebar(
-  el: HTMLElement, { offset$, main$ }: Options
+  el: HTMLElement, { viewport }: Agent, { main$ }: Options
 ): Observable<Sidebar> {
 
   /* Adjust for internal main area offset */
@@ -99,7 +99,7 @@ export function watchSidebar(
   )
 
   /* Compute the sidebar's available height */
-  const height$ = combineLatest([offset$, main$])
+  const height$ = combineLatest([viewport.offset$, main$])
     .pipe(
       map(([{ y }, { offset, height }]) => {
         return height - adjust + Math.min(adjust, Math.max(0, y - offset))
@@ -107,7 +107,7 @@ export function watchSidebar(
     )
 
   /* Compute whether the sidebar should be locked */
-  const lock$ = combineLatest([offset$, main$])
+  const lock$ = combineLatest([viewport.offset$, main$])
     .pipe(
       map(([{ y }, { offset }]) => y >= offset + adjust)
     )

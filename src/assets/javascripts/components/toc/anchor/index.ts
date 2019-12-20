@@ -45,13 +45,9 @@ import {
   setAnchorActive,
   setAnchorBlur
 } from "actions"
-import {
-  ViewportOffset,
-  ViewportSize,
-  getElement
-} from "utilities"
+import { Agent,  getElement } from "utilities"
 
-import { Header } from "../header"
+import { Header } from "../../header"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -73,8 +69,6 @@ export interface AnchorList {
  * Options
  */
 interface Options {
-  size$: Observable<ViewportSize>      /* Viewport size observable */
-  offset$: Observable<ViewportOffset>  /* Viewport offset observable */
   header$: Observable<Header>          /* Header observable */
 }
 
@@ -98,12 +92,13 @@ interface Options {
  * Note that the current anchor is the last item of the `prev` anchor list.
  *
  * @param els - Anchor elements
+ * @param agent - Agent
  * @param options - Options
  *
  * @return Anchor list observable
  */
 export function watchAnchorList(
-  els: HTMLAnchorElement[], { size$, offset$, header$ }: Options
+  els: HTMLAnchorElement[], { viewport }: Agent, { header$ }: Options
 ): Observable<AnchorList> {
   const table = new Map<HTMLAnchorElement, HTMLElement>()
   for (const el of els) {
@@ -120,7 +115,7 @@ export function watchAnchorList(
     )
 
   /* Compute partition of previous and next anchors */
-  const partition$ = size$
+  const partition$ = viewport.size$
     .pipe(
 
       /* Build index to map anchor paths to vertical offsets */
@@ -143,7 +138,7 @@ export function watchAnchorList(
       }),
 
       /* Re-compute partition when viewport offset changes */
-      switchMap(index => combineLatest(offset$, adjust$)
+      switchMap(index => combineLatest(viewport.offset$, adjust$)
         .pipe(
           scan(([prev, next], [{ y }, adjust]) => {
 

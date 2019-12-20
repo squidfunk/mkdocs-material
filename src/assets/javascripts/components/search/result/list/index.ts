@@ -22,46 +22,77 @@
 
 import {
   MonoTypeOperatorFunction,
+  Observable,
   animationFrameScheduler,
   pipe
 } from "rxjs"
 import {
-  distinctUntilKeyChanged,
   finalize,
+  mapTo,
   observeOn,
-  tap
+  scan,
+  switchMap
 } from "rxjs/operators"
 
-import { resetHeaderShadow, setHeaderShadow } from "actions"
+import {
+  addToSearchResultList,
+  resetSearchResultList
+} from "actions"
+import { SearchResult } from "modules"
+import { renderSearchResult } from "templates"
+import { getElement } from "utilities"
 
-import { Main } from "../../main"
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Options
+ */
+interface Options {
+  render$: Observable<boolean>         /* Render trigger observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint header shadow from source observable
+ * Paint search result list from source observable
  *
- * @param el - Header element
+ * @param el - Search result element
+ * @param options - Options
  *
  * @return Operator function
  */
-export function paintHeaderShadow(
-  el: HTMLElement
-): MonoTypeOperatorFunction<Main> {
+export function paintSearchResultList(
+  el: HTMLElement, { render$ }: Options
+): MonoTypeOperatorFunction<SearchResult[]> {
+  const parent = el.parentElement!
+  const list = getElement(".md-search-result__list", el)!
   return pipe(
-    distinctUntilKeyChanged("active"),
+    switchMap(result => render$
+      .pipe(
 
-    /* Defer repaint to next animation frame */
-    observeOn(animationFrameScheduler),
-    tap(({ active }) => {
-      setHeaderShadow(el, active)
-    }),
+        /* Defer repaint to next animation frame */
+        observeOn(animationFrameScheduler),
+        scan(index => {
+          while (index < result.length) {
+            addToSearchResultList(list, renderSearchResult(result[index++]))
+            if (parent.scrollHeight - parent.offsetHeight > 16)
+              break
+          }
+          return index
+        }, 0),
 
-    /* Reset on complete or error */
-    finalize(() => {
-      resetHeaderShadow(el)
-    })
+        /* Re-map to search result */
+        mapTo(result),
+
+        /* Reset on complete or error */
+        finalize(() => {
+          resetSearchResultList(list)
+        })
+      )
+    )
   )
 }

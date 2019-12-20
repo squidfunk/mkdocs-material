@@ -20,55 +20,67 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, fromEvent } from "rxjs"
-import { filter, map, share } from "rxjs/operators"
+import { Observable, OperatorFunction, pipe } from "rxjs"
+import { map, shareReplay } from "rxjs/operators"
+
+import { switchMapIf } from "extensions"
+import { Agent, paintHidden } from "utilities"
+
+import { Header, watchHeaderOffsetToTopOf } from "../header"
 
 /* ----------------------------------------------------------------------------
- * Data
+ * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Observable for window hash change events
+ * Tabs
  */
-const hashchange$ = fromEvent<HashChangeEvent>(window, "hashchange")
+export interface Tabs {
+  hidden: boolean                      /* Whether the tabs are hidden */
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
 
 /**
- * Observable for window pop state events
+ * Options
  */
-const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
+interface Options {
+  header$: Observable<Header>          /* Header observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch location
+ * Setup tabs from source observable
  *
- * @return Location subject
- */
-export function watchLocation(): Subject<string> {
-  const location$ = new Subject<string>()
-  popstate$
-    .pipe(
-      map(() => location.href),
-      share()
-    )
-      .subscribe(location$)
-
-  /* Return subject */
-  return location$
-}
-
-/**
- * Watch location hash
+ * @param agent - Agent
+ * @param options - Options
  *
- * @return Location hash observable
+ * @return Operator function
  */
-export function watchLocationHash(): Observable<string> {
-  return hashchange$
-    .pipe(
-      map(() => location.hash),
-      filter(hash => hash.length > 0),
-      share()
-    )
+export function setupTabs(
+  agent: Agent, { header$ }: Options
+): OperatorFunction<HTMLElement, Tabs> {
+  const { media } = agent
+  return pipe(
+    switchMapIf(media.screen$, el => {
+
+      /* Watch and paint visibility */
+      const hidden$ = watchHeaderOffsetToTopOf(el, agent, { header$ })
+        .pipe(
+          paintHidden(el, 8)
+        )
+
+      /* Combine into a single hot observable */
+      return hidden$
+        .pipe(
+          map(hidden => ({ hidden }))
+        )
+    }),
+    shareReplay(1)
+  )
 }

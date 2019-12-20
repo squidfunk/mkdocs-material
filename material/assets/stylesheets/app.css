@@ -1936,6 +1936,7 @@ hr {
     .md-typeset details:not([open]) > summary {
       border-bottom: none; }
   .md-typeset details summary {
+    position: relative;
     padding-right: 2rem; }
     [dir="rtl"] .md-typeset details summary {
       padding-left: 2rem; }
