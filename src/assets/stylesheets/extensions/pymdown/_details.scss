@@ -51,6 +51,7 @@
 
     // Increase spacing to the right - scoped here for higher specificity
     summary {
+      position: relative;
       padding-right: px2rem(40px);
 
       // Adjust for RTL languages
