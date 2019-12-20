@@ -181,48 +181,50 @@ export class Search {
    * page. For this reason, section results are grouped within their respective
    * articles which are the top-level results that are returned.
    *
-   * Rogue control characters must be filtered before handing the query to the
-   * search index, as lunr will throw otherwise.
-   *
    * @param query - Query string
    *
    * @return Search results
    */
   public search(query: string): SearchResult[] {
-    query = query
-      .replace(/(?:^|\s+)[*+-:^~]+(?=\s+|$)/g, "")
-      .trim()
+    if (query) {
+      try {
 
-    /* Abort early, if query is empty */
-    if (!query)
-      return []
+        /* Group sections by containing article */
+        const groups = this.index.search(query)
+          .reduce((results, result) => {
+            const document = this.documents.get(result.ref)
+            if (typeof document !== "undefined") {
+              if ("article" in document) {
+                const ref = document.article.location
+                results.set(ref, [...results.get(ref) || [], result])
+              } else {
+                const ref = document.location
+                results.set(ref, results.get(ref) || [])
+              }
+            }
+            return results
+          }, new Map<string, lunr.Index.Result[]>())
 
-    /* Group sections by containing article */
-    const groups = this.index.search(query)
-      .reduce((results, result) => {
-        const document = this.documents.get(result.ref)
-        if (typeof document !== "undefined") {
-          if ("article" in document) {
-            const ref = document.article.location
-            results.set(ref, [...results.get(ref) || [], result])
-          } else {
-            const ref = document.location
-            results.set(ref, results.get(ref) || [])
-          }
-        }
-        return results
-      }, new Map<string, lunr.Index.Result[]>())
+        /* Create highlighter for query */
+        const fn = this.highlight(query)
 
-    /* Create highlighter for query */
-    const fn = this.highlight(query)
+        /* Map groups to search documents */
+        return [...groups].map(([ref, sections]) => ({
+          article: fn(this.documents.get(ref) as ArticleDocument),
+          sections: sections.map(section => {
+            return fn(this.documents.get(section.ref) as SectionDocument)
+          })
+        }))
 
-    /* Map groups to search documents */
-    return [...groups].map(([ref, sections]) => ({
-      article: fn(this.documents.get(ref) as ArticleDocument),
-      sections: sections.map(section => {
-        return fn(this.documents.get(section.ref) as SectionDocument)
-      })
-    }))
+      /* Log errors to console (for now) */
+      } catch (err) {
+        // tslint:disable-next-line no-console
+        console.warn(`Invalid query: ${query} – see https://bit.ly/2s3ChXG`)
+      }
+    }
+
+    /* Return nothing in case of error or empty query */
+    return []
   }
 
   /**
