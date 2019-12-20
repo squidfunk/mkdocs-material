@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+// tslint:disable-next-line
 // export * from "./query"
 export * from "./reset"
 export * from "./result"
