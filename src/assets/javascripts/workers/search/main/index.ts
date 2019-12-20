@@ -59,7 +59,7 @@ export function handler(message: SearchMessage): SearchMessage {
     case SearchMessageType.QUERY:
       return {
         type: SearchMessageType.RESULT,
-        data: index.search(message.data)
+        data: index ? index.search(message.data) : []
       }
 
     /* All other messages */
