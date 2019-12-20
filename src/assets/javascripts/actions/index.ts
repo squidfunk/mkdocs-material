@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+export * from "./anchor"
 export * from "./header"
 export * from "./hidden"
 export * from "./search"

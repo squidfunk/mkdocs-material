@@ -20,10 +20,54 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./anchor"
-export * from "./header"
-export * from "./hidden"
-export * from "./main"
-export * from "./search"
-export * from "./sidebar"
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Set anchor blur
+ *
+ * @param el - Anchor element
+ * @param value - Whether the anchor is blurred
+ */
+export function setAnchorBlur(
+  el: HTMLElement, value: boolean
+): void {
+  el.setAttribute("data-md-state", value ? "blur" : "")
+}
+
+/**
+ * Reset anchor blur
+ *
+ * @param el - Anchor element
+ */
+export function resetAnchorBlur(
+  el: HTMLElement
+): void {
+  el.removeAttribute("data-md-state")
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Set anchor active
+ *
+ * @param el - Anchor element
+ * @param value - Whether the anchor is active
+ */
+export function setAnchorActive(
+  el: HTMLElement, value: boolean
+): void {
+  el.classList.toggle("md-nav__link--active", value)
+}
+
+/**
+ * Reset anchor active
+ *
+ * @param el - Anchor element
+ */
+export function resetAnchorActive(
+  el: HTMLElement
+): void {
+  el.classList.remove("md-nav__link--active")
+}
