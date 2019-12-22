@@ -56,7 +56,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.82a18eb7.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.e194128b.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.3e3d1dff.css' | url }}">
       {% endif %}
@@ -83,7 +83,7 @@
     {% endblock %}
     <link rel="stylesheet" href="{{ 'assets/fonts/material-icons.css' | url }}">
     {% if config.extra.manifest %}
-      <link rel="manifest" href="{{ config.extra.manifest | url }}">
+      <link rel="manifest" type="application/manifest+json" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
     {% endif %}
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
@@ -118,7 +118,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     {% if page.toc | first is defined %}
-      <a href="{{ (page.toc | first).url }}" tabindex="1" class="md-skip">
+      <a href="{{ (page.toc | first).url }}" tabindex="0" class="md-skip">
         {{ lang.t('skip.link.title') }}
       </a>
     {% endif %}
@@ -209,7 +209,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.d151b584.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/application.970603a6.js' | url }}"></script>
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
