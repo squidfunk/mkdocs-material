@@ -68,7 +68,7 @@ interface Options {
 export function paintSearchResultList(
   el: HTMLElement, { render$ }: Options
 ): MonoTypeOperatorFunction<SearchResult[]> {
-  const parent = el.parentElement!
+  const container = el.parentElement!
   const list = getElement(".md-search-result__list", el)!
   return pipe(
     switchMap(result => render$
@@ -79,7 +79,7 @@ export function paintSearchResultList(
         scan(index => {
           while (index < result.length) {
             addToSearchResultList(list, renderSearchResult(result[index++]))
-            if (parent.scrollHeight - parent.offsetHeight > 16)
+            if (container.scrollHeight - container.offsetHeight > 16)
               break
           }
           return index

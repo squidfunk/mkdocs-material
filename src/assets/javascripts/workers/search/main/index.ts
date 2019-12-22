@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Search } from "modules"
+import { SearchIndex } from "modules"
 
 import { SearchMessage, SearchMessageType } from "../_"
 
@@ -31,7 +31,7 @@ import { SearchMessage, SearchMessageType } from "../_"
 /**
  * Search index
  */
-let index: Search
+let index: SearchIndex
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -49,7 +49,7 @@ export function handler(message: SearchMessage): SearchMessage {
 
     /* Setup search index */
     case SearchMessageType.SETUP:
-      index = new Search(message.data)
+      index = new SearchIndex(message.data)
       return {
         type: SearchMessageType.DUMP,
         data: index.toString()

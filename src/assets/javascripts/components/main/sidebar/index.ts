@@ -45,16 +45,16 @@ import {
 } from "actions"
 import { Agent } from "utilities"
 
-import { Main } from "../main"
+import { MainState } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Sidebar
+ * Sidebar state
  */
-export interface Sidebar {
+export interface SidebarState {
   height: number                       /* Sidebar height */
   lock: boolean                        /* Sidebar lock */
 }
@@ -67,7 +67,7 @@ export interface Sidebar {
  * Options
  */
 interface Options {
-  main$: Observable<Main>              /* Main area observable */
+  main$: Observable<MainState>         /* Main area state observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -78,19 +78,19 @@ interface Options {
  * Watch sidebar
  *
  * This function returns an observable that computes the visual parameters of
- * the given element (a sidebar) from the vertical viewport offset, as well as
- * the height of the main area. When the page is scrolled beyond the header,
- * the sidebar is locked and fills the remaining space.
+ * the sidebar which depends on the vertical viewport offset, as well as the
+ * height of the main area. When the page is scrolled beyond the header, the
+ * sidebar is locked and fills the remaining space.
  *
  * @param el - Sidebar element
  * @param agent - Agent
  * @param options - Options
  *
- * @return Sidebar observable
+ * @return Sidebar state observable
  */
 export function watchSidebar(
   el: HTMLElement, { viewport }: Agent, { main$ }: Options
-): Observable<Sidebar> {
+): Observable<SidebarState> {
 
   /* Adjust for internal main area offset */
   const adjust = parseFloat(
@@ -116,7 +116,7 @@ export function watchSidebar(
   return combineLatest([height$, lock$])
     .pipe(
       map(([height, lock]) => ({ height, lock })),
-      distinctUntilChanged<Sidebar>(equals),
+      distinctUntilChanged<SidebarState>(equals),
       shareReplay(1)
     )
 }
@@ -132,7 +132,7 @@ export function watchSidebar(
  */
 export function paintSidebar(
   el: HTMLElement
-): MonoTypeOperatorFunction<Sidebar> {
+): MonoTypeOperatorFunction<SidebarState> {
   return pipe(
 
     /* Defer repaint to next animation frame */

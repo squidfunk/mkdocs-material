@@ -31,16 +31,16 @@ import {
 
 import { Agent } from "utilities"
 
-import { Header } from "../../header"
+import { HeaderState } from "../../header"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Main area
+ * Main area state
  */
-export interface Main {
+export interface MainState {
   offset: number                       /* Main area top offset */
   height: number                       /* Main area visible height */
   active: boolean                      /* Scrolled past top offset */
@@ -54,7 +54,7 @@ export interface Main {
  * Options
  */
 interface Options {
-  header$: Observable<Header>          /* Header observable */
+  header$: Observable<HeaderState>     /* Header state observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -62,64 +62,78 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup main area from source observable
+ * Watch main area
  *
  * This function returns an observable that computes the visual parameters of
- * the main area from the viewport height and vertical offset, as well as the
- * height of the header element. The height of the main area is corrected by
- * the height of the header (if fixed) and footer element.
+ * the main area which depends on the viewport height and vertical offset, as
+ * well as the height of the header element, if the header is fixed.
+ *
+ * @param el - Main area element
+ * @param agent - Agent
+ * @param options - Options
+ *
+ * @return Main area state observable
+ */
+export function watchMain(
+  el: HTMLElement,  { viewport }: Agent, { header$ }: Options
+): Observable<MainState> {
+
+  /* Compute necessary adjustment for header */
+  const adjust$ = header$
+    .pipe(
+      pluck("height")
+    )
+
+  /* Compute the main area's visible height */
+  const height$ = combineLatest([
+    viewport.offset$,
+    viewport.size$,
+    adjust$
+  ])
+    .pipe(
+      map(([{ y }, { height }, adjust]) => {
+        const top    = el.offsetTop
+        const bottom = el.offsetHeight + top
+        return height
+          - Math.max(0, top    - y,  adjust)
+          - Math.max(0, height + y - bottom)
+      }),
+      distinctUntilChanged()
+    )
+
+  /* Compute whether the viewport offset is past the main area's top */
+  const active$ = combineLatest([viewport.offset$, adjust$])
+    .pipe(
+      map(([{ y }, adjust]) => y >= el.offsetTop - adjust),
+      distinctUntilChanged()
+    )
+
+  /* Combine into a single hot observable */
+  return combineLatest([height$, adjust$, active$])
+    .pipe(
+      map(([height, adjust, active]) => ({
+        offset: el.offsetTop - adjust,
+        height,
+        active
+      }))
+    )
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Mount main area from source observable
  *
  * @param agent - Agent
  * @param options - Options
  *
  * @return Operator function
  */
-export function setupMain(
-  { viewport }: Agent, { header$ }: Options
-): OperatorFunction<HTMLElement, Main> {
+export function mountMain(
+  agent: Agent, options: Options
+): OperatorFunction<HTMLElement, MainState> {
   return pipe(
-    switchMap(el => {
-
-      /* Compute necessary adjustment for header */
-      const adjust$ = header$
-        .pipe(
-          pluck("height")
-        )
-
-      /* Compute the main area's visible height */
-      const height$ = combineLatest([
-        viewport.offset$,
-        viewport.size$,
-        adjust$
-      ])
-        .pipe(
-          map(([{ y }, { height }, adjust]) => {
-            const top    = el.offsetTop
-            const bottom = el.offsetHeight + top
-            return height
-              - Math.max(0, top    - y,  adjust)
-              - Math.max(0, height + y - bottom)
-          }),
-          distinctUntilChanged()
-        )
-
-      /* Compute whether the viewport offset is past the main area's top */
-      const active$ = combineLatest([viewport.offset$, adjust$])
-        .pipe(
-          map(([{ y }, adjust]) => y >= el.offsetTop - adjust),
-          distinctUntilChanged()
-        )
-
-      /* Combine into a single hot observable */
-      return combineLatest([height$, adjust$, active$])
-        .pipe(
-          map(([height, adjust, active]) => ({
-            offset: el.offsetTop - adjust,
-            height,
-            active
-          }))
-        )
-    }),
+    switchMap(el => watchMain(el, agent, options)),
     shareReplay(1)
   )
 }

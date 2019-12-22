@@ -36,9 +36,9 @@ import { mapTo } from "rxjs/operators"
  */
 export function watchSearchReset(
   el: HTMLElement
-): Observable<boolean> {
+): Observable<void> {
   return fromEvent(el, "click")
     .pipe(
-      mapTo(true)
+      mapTo(undefined)
     )
 }

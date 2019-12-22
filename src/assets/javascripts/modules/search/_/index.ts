@@ -55,25 +55,25 @@ export interface SearchIndexDocument {
 }
 
 /**
- * Search index options
+ * Search index pipeline
  */
-export interface SearchIndexOptions {
-  pipeline: {
-    trimmer: boolean                   /* Add trimmer to pipeline */
-    stopwords: boolean                 /* Add stopword filter to pipeline */
-  }
+export interface SearchIndexPipeline {
+  trimmer: boolean                     /* Add trimmer to pipeline */
+  stopwords: boolean                   /* Add stopword filter to pipeline */
 }
 
+/* ------------------------------------------------------------------------- */
+
 /**
- * Search index
+ * Search index options
  *
  * This interfaces describes the format of the `search_index.json` file which
  * is automatically built by the MkDocs search plugin.
  */
-export interface SearchIndex {
+export interface SearchIndexOptions {
   config: SearchIndexConfig            /* Search index configuration */
   docs: SearchIndexDocument[]          /* Search index documents */
-  options?: SearchIndexOptions         /* Search index options */
+  pipeline?: SearchIndexPipeline       /* Search index pipeline */
   index?: object | string              /* Prebuilt or serialized index */
 }
 
@@ -88,24 +88,10 @@ export interface SearchResult {
 }
 
 /* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * Default options
- */
-const defaultOptions: SearchIndexOptions = {
-  pipeline: {
-    trimmer: true,
-    stopwords: true
-  }
-}
-
-/* ----------------------------------------------------------------------------
  * Class
  * ------------------------------------------------------------------------- */
 
-export class Search {
+export class SearchIndex {
 
   /**
    * Search document mapping
@@ -130,17 +116,19 @@ export class Search {
   /**
    * Create a search index
    *
-   * @param index - Search index
    * @param options - Options
    */
-  public constructor({ config, docs, options, index }: SearchIndex) {
+  public constructor({ config, docs, pipeline, index }: SearchIndexOptions) {
     this.documents = setupSearchDocumentMap(docs)
     this.highlight = setupSearchHighlighter(config)
 
     /* If no index was given, create it */
     if (typeof index === "undefined") {
       this.index = lunr(function() {
-        const { pipeline } = options || defaultOptions
+        pipeline = pipeline || {
+          trimmer: true,
+          stopwords: true
+        }
 
         /* Remove stemmer, as it cripples search experience */
         this.pipeline.reset()
@@ -194,8 +182,8 @@ export class Search {
           .reduce((results, result) => {
             const document = this.documents.get(result.ref)
             if (typeof document !== "undefined") {
-              if ("article" in document) {
-                const ref = document.article.location
+              if ("parent" in document) {
+                const ref = document.parent.location
                 results.set(ref, [...results.get(ref) || [], result])
               } else {
                 const ref = document.location
@@ -228,7 +216,7 @@ export class Search {
   }
 
   /**
-   * Serialize index
+   * Serialize search index
    *
    * @return String representation
    */

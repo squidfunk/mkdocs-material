@@ -1002,8 +1002,7 @@ hr {
     margin: 0 0.2rem;
     overflow-y: auto;
     -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-    -webkit-overflow-scrolling: touch; }
+            backface-visibility: hidden; }
     .md-sidebar__scrollwrap::-webkit-scrollbar {
       width: 0.2rem;
       height: 0.2rem; }
@@ -2542,7 +2541,9 @@ hr {
           margin-right: 100%;
           margin-left: initial;
           -webkit-transform: translate(100%, 0);
-                  transform: translate(100%, 0); } }
+                  transform: translate(100%, 0); }
+        .md-sidebar--secondary .md-sidebar__scrollwrap {
+          -webkit-overflow-scrolling: touch; } }
 
 @media only screen and (min-width: 76.25em) {
   .md-content {

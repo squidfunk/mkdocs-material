@@ -27,9 +27,9 @@ import { Observable, defer, of } from "rxjs"
  * ------------------------------------------------------------------------- */
 
 /**
- * Header
+ * Header state
  */
-export interface Header {
+export interface HeaderState {
   sticky: boolean                      /* Header stickyness */
   height: number                       /* Header visible height */
 }
@@ -46,11 +46,11 @@ export interface Header {
  *
  * @param el - Header element
  *
- * @return Header observable
+ * @return Header state observable
  */
 export function watchHeader(
   el: HTMLElement
-): Observable<Header> {
+): Observable<HeaderState> {
   return defer(() => {
     const sticky = getComputedStyle(el)
       .getPropertyValue("position") === "fixed"

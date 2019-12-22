@@ -118,6 +118,11 @@ $md-toggle__drawer--checked:
         margin-left: initial;
         transform: translate(100%, 0);
       }
+
+      // Ensure smooth scrolling on iOS
+      .md-sidebar__scrollwrap {
+        -webkit-overflow-scrolling: touch;
+      }
     }
 
     // [screen +]: Limit to grid

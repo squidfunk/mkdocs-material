@@ -52,34 +52,53 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup search result from source observable
+ * Watch search result
  *
  * @param el - Search result element
  * @param agent - Agent
+ * @param options - Options
+ *
+ * @return Search result state observable
+ */
+export function watchSearchResult(
+  el: HTMLElement, agent: Agent, { result$, query$ }: Options
+): Observable<SearchResult[]> {
+  const container = el.parentElement!
+
+  /* Compute whether there are more search results elements */
+  const render$ = watchElementOffset(container, agent)
+    .pipe(
+      map(({ y }) => y >= container.scrollHeight - container.offsetHeight - 16),
+      distinctUntilChanged(),
+      filter(identity)
+    )
+
+  // combine into search result observable...
+
+  /* Paint search results */
+  return result$
+    .pipe(
+      tap(x => { console.log("watchSearchResult", x) }),
+      paintSearchResultMeta(el, { query$ }),
+      paintSearchResultList(el, { render$ })
+    )
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Mount search result from source observable
+ *
+ * @param agent - Agent
+ * @param options - Options
  *
  * @return Operator function
  */
-export function setupSearchResult(
-  agent: Agent, { result$, query$ }: Options
+export function mountSearchResult(
+  agent: Agent, options: Options
 ): OperatorFunction<HTMLElement, SearchResult[]> {
   return pipe(
-    switchMap(el => {
-      const parent = el.parentElement!
-
-      /* Compute whether more elements need to be rendered */
-      const render$ = watchElementOffset(parent, agent)
-        .pipe(
-          map(({ y }) => y >= parent.scrollHeight - parent.offsetHeight - 16),
-          distinctUntilChanged(),
-          filter(identity)
-        )
-
-      /* Paint search results */
-      return result$
-        .pipe(
-          paintSearchResultMeta(el, { query$ }),
-          paintSearchResultList(el, { render$ })
-        )
-    })
+    switchMap(el => watchSearchResult(el, agent, options)),
+    shareReplay(1)
   )
 }

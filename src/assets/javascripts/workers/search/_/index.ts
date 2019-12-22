@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndex, SearchResult } from "modules"
+import { SearchIndexOptions, SearchResult } from "modules"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -43,7 +43,7 @@ export const enum SearchMessageType {
  */
 export interface SearchSetupMessage {
   type: SearchMessageType.SETUP        /* Message type */
-  data: SearchIndex                    /* Message data */
+  data: SearchIndexOptions             /* Message data */
 }
 
 /**

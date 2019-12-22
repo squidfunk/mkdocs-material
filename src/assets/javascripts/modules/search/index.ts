@@ -21,4 +21,8 @@
  */
 
 export * from "./_"
-export * from "./document"
+export {
+  ArticleDocument,
+  SearchDocument,
+  SectionDocument
+} from "./document"

@@ -47,7 +47,7 @@ import {
 } from "actions"
 import { Agent,  getElement } from "utilities"
 
-import { Header } from "../../header"
+import { HeaderState } from "../../header"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -69,7 +69,7 @@ export interface AnchorList {
  * Options
  */
 interface Options {
-  header$: Observable<Header>          /* Header observable */
+  header$: Observable<HeaderState>     /* Header state observable */
 }
 
 /* ----------------------------------------------------------------------------

@@ -28,6 +28,26 @@ import { pluck } from "rxjs/operators"
  * ------------------------------------------------------------------------- */
 
 /**
+ * Set toggle
+ *
+ * Simulating a click event seems to be the most cross-browser compatible way
+ * of changing the value while also emitting a `change` event. Before, Material
+ * used `CustomEvent` to programatically change the value of a toggle, but this
+ * is a much simpler and cleaner solution.
+ *
+ * @param el - Toggle element
+ * @param value - Toggle value
+ */
+export function setToggle(
+  el: HTMLInputElement, value: boolean
+): void {
+  if (el.checked !== value)
+    el.click()
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
  * Watch toggle
  *
  * @param el - Toggle element

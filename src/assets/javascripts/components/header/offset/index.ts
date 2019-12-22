@@ -30,7 +30,7 @@ import {
 
 import { Agent, ViewportOffset } from "utilities"
 
-import { Header } from "../_"
+import { HeaderState } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -40,7 +40,7 @@ import { Header } from "../_"
  * Options
  */
 interface Options {
-  header$: Observable<Header>          /* Header observable */
+  header$: Observable<HeaderState>     /* Header state observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -59,7 +59,7 @@ interface Options {
  *
  * @return Viewport offset observable
  */
-export function watchHeaderOffsetToTopOf(
+export function watchViewportOffsetFromTopOf(
   el: HTMLElement, { viewport }: Agent, { header$ }: Options
 ): Observable<ViewportOffset> {
 
@@ -91,7 +91,7 @@ export function watchHeaderOffsetToTopOf(
  *
  * @return Viewport offset observable
  */
-export function watchHeaderOffsetToBottomOf(
+export function watchViewportOffsetFromBottomOf(
   el: HTMLElement, { viewport }: Agent, { header$ }: Options
 ): Observable<ViewportOffset> {
 

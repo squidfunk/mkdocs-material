@@ -82,7 +82,14 @@ function config(args: Configuration): Configuration {
     },
 
     /* Source maps */
-    devtool: "source-map"
+    devtool: "source-map",
+
+    /* Filter false positives */
+    stats: {
+      warningsFilter: [
+        /export '.*' was not found in/
+      ]
+    }
   }
 }
 
@@ -96,7 +103,7 @@ function config(args: Configuration): Configuration {
  * @param env - Webpack environment arguments
  * @param args - Command-line arguments
  *
- * @return Webpack configuration
+ * @return Webpack configurations
  */
 export default (_env: never, args: Configuration): Configuration[] => ([
 
@@ -117,7 +124,7 @@ export default (_env: never, args: Configuration): Configuration[] => ([
     entry: "src/assets/javascripts/workers/search/main",
     output: {
       path: path.resolve(__dirname, "material/assets/javascripts"),
-      filename: "search.js",
+      filename: "worker/search.js",
       libraryTarget: "var"
     }
   },
@@ -128,7 +135,7 @@ export default (_env: never, args: Configuration): Configuration[] => ([
     entry: "src/assets/javascripts/workers/packer/main",
     output: {
       path: path.resolve(__dirname, "material/assets/javascripts"),
-      filename: "packer.js",
+      filename: "worker/packer.js",
       libraryTarget: "var"
     }
   }

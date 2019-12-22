@@ -26,16 +26,16 @@ import { map, shareReplay } from "rxjs/operators"
 import { switchMapIf } from "extensions"
 import { Agent, paintHidden } from "utilities"
 
-import { Header, watchHeaderOffsetToTopOf } from "../header"
+import { HeaderState, watchViewportOffsetFromTopOf } from "../header"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Hero
+ * Hero state
  */
-export interface Hero {
+export interface HeroState {
   hidden: boolean                      /* Whether the hero is hidden */
 }
 
@@ -47,7 +47,7 @@ export interface Hero {
  * Options
  */
 interface Options {
-  header$: Observable<Header>          /* Header observable */
+  header$: Observable<HeaderState>     /* Header state observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -55,32 +55,47 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup hero from source observable
+ * Watch hero
+ *
+ * @param el - Hero element
+ * @param agent - Agent
+ * @param options - Options
+ *
+ * @return Hero state
+ */
+export function watchHero(
+  el: HTMLElement, agent: Agent, { header$ }: Options
+): Observable<HeroState> {
+
+  /* Watch and paint visibility */
+  const hidden$ = watchViewportOffsetFromTopOf(el, agent, { header$ })
+    .pipe(
+      paintHidden(el, 20)
+    )
+
+  /* Combine into a single hot observable */
+  return hidden$
+    .pipe(
+      map(hidden => ({ hidden }))
+    )
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Mount hero from source observable
  *
  * @param agent - Agent
  * @param options - Options
  *
  * @return Operator function
  */
-export function setupHero(
-  agent: Agent, { header$ }: Options
-): OperatorFunction<HTMLElement, Hero> {
+export function mountHero(
+  agent: Agent, options: Options
+): OperatorFunction<HTMLElement, HeroState> {
   const { media } = agent
   return pipe(
-    switchMapIf(media.screen$, el => {
-
-      /* Watch and paint visibility */
-      const hidden$ = watchHeaderOffsetToTopOf(el, agent, { header$ })
-        .pipe(
-          paintHidden(el, 20)
-        )
-
-      /* Combine into a single hot observable */
-      return hidden$
-        .pipe(
-          map(hidden => ({ hidden }))
-        )
-    }),
+    switchMapIf(media.screen$, el => watchHero(el, agent, options)),
     shareReplay(1)
   )
 }

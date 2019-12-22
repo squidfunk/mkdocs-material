@@ -68,7 +68,7 @@ export function watchWorker<T extends WorkerMessage>(
   worker: Worker, { send$ }: Options<T>
 ): Observable<T> {
 
-  /* Observable for messages from web worker */
+  /* Intercept messages from web worker */
   const recv$ = fromEvent(worker, "message")
     .pipe(
       pluck<Event, T>("data"),

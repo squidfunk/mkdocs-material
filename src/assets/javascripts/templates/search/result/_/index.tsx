@@ -44,7 +44,7 @@ const css = {
 /**
  * Render a search result
  *
- * @param article - Search result
+ * @param result - Search result
  *
  * @return HTML element
  */

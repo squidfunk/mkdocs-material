@@ -27,8 +27,8 @@ import { switchMapIf } from "extensions"
 import { Agent } from "utilities"
 
 import {
-  Main,
-  Sidebar,
+  MainState,
+  SidebarState,
   paintSidebar,
   watchSidebar
 } from "../../main"
@@ -38,10 +38,10 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Navigation
+ * Navigation state
  */
-export interface Navigation {
-  sidebar: Sidebar                     /* Sidebar */
+export interface NavigationState {
+  sidebar: SidebarState                /* Sidebar state */
 }
 
 /* ----------------------------------------------------------------------------
@@ -52,7 +52,7 @@ export interface Navigation {
  * Options
  */
 interface Options {
-  main$: Observable<Main>              /* Main observable */
+  main$: Observable<MainState>         /* Main area state observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -60,32 +60,47 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup navigation from source observable
+ * Watch navigation
+ *
+ * @param el - Navigation element
+ * @param agent - Agent
+ * @param options - Options
+ *
+ * @return Navigation state observable
+ */
+export function watchNavigation(
+  el: HTMLElement, agent: Agent, { main$ }: Options
+): Observable<NavigationState> {
+
+  /* Watch and paint sidebar */
+  const sidebar$ = watchSidebar(el, agent, { main$ })
+    .pipe(
+      paintSidebar(el)
+    )
+
+  /* Combine into a single hot observable */
+  return sidebar$
+    .pipe(
+      map(sidebar => ({ sidebar }))
+    )
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Mount navigation from source observable
  *
  * @param agent - Agent
  * @param options - Options
  *
  * @return Operator function
  */
-export function setupNavigation(
-  agent: Agent, { main$ }: Options
-): OperatorFunction<HTMLElement, Navigation> {
+export function mountNavigation(
+  agent: Agent, options: Options
+): OperatorFunction<HTMLElement, NavigationState> {
   const { media } = agent
   return pipe(
-    switchMapIf(media.screen$, el => {
-
-      /* Watch and paint sidebar */
-      const sidebar$ = watchSidebar(el, agent, { main$ })
-        .pipe(
-          paintSidebar(el)
-        )
-
-      /* Combine into a single hot observable */
-      return sidebar$
-        .pipe(
-          map(sidebar => ({ sidebar }))
-        )
-    }),
+    switchMapIf(media.screen$, el => watchNavigation(el, agent, options)),
     shareReplay(1)
   )
 }

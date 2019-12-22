@@ -32,14 +32,14 @@ import { SearchIndexDocument } from "../_"
  * A top-level article
  */
 export interface ArticleDocument extends SearchIndexDocument {
-  section: boolean                     /* Whether the section was linked */
+  linked: boolean                      /* Whether the section was linked */
 }
 
 /**
  * A section of an article
  */
 export interface SectionDocument extends SearchIndexDocument {
-  article: ArticleDocument             /* Parent article */
+  parent: ArticleDocument              /* Parent article */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -85,22 +85,22 @@ export function setupSearchDocumentMap(
 
     /* Handle section */
     if (hash) {
-      const article = documents.get(path) as ArticleDocument
+      const parent = documents.get(path) as ArticleDocument
 
       /* Ignore first section, override article */
-      if (!article.section) {
-        article.title   = doc.title
-        article.text    = text
-        article.section = true
+      if (!parent.linked) {
+        parent.title  = doc.title
+        parent.text   = text
+        parent.linked = true
 
       /* Add subsequent section */
       } else {
-        documents.set(location, { location, title, text, article })
+        documents.set(location, { location, title, text, parent })
       }
 
     /* Add article */
     } else {
-      documents.set(location, { location, title, text, section: false })
+      documents.set(location, { location, title, text, linked: false })
     }
   }
   return documents

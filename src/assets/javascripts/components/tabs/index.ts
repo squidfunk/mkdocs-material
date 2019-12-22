@@ -26,16 +26,16 @@ import { map, shareReplay } from "rxjs/operators"
 import { switchMapIf } from "extensions"
 import { Agent, paintHidden } from "utilities"
 
-import { Header, watchHeaderOffsetToTopOf } from "../header"
+import { HeaderState, watchViewportOffsetFromTopOf } from "../header"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Tabs
+ * Tabs state
  */
-export interface Tabs {
+export interface TabsState {
   hidden: boolean                      /* Whether the tabs are hidden */
 }
 
@@ -47,7 +47,7 @@ export interface Tabs {
  * Options
  */
 interface Options {
-  header$: Observable<Header>          /* Header observable */
+  header$: Observable<HeaderState>     /* Header state observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -55,32 +55,50 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup tabs from source observable
+ * Watch tabs
+ *
+ * This function returns an observable that computes the visual parameters of
+ * the tabs, currently only denoting whether the tabs are hidden or not.
+ *
+ * @param el - Tabs element
+ * @param agent - Agent
+ * @param options - Options
+ *
+ * @return Tabs state
+ */
+export function watchTabs(
+  el: HTMLElement, agent: Agent, { header$ }: Options
+): Observable<TabsState> {
+
+  /* Watch and paint visibility */
+  const hidden$ = watchViewportOffsetFromTopOf(el, agent, { header$ })
+    .pipe(
+      paintHidden(el, 8)
+    )
+
+  /* Combine into a single hot observable */
+  return hidden$
+    .pipe(
+      map(hidden => ({ hidden }))
+    )
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Mount tabs from source observable
  *
  * @param agent - Agent
  * @param options - Options
  *
  * @return Operator function
  */
-export function setupTabs(
-  agent: Agent, { header$ }: Options
-): OperatorFunction<HTMLElement, Tabs> {
+export function mountTabs(
+  agent: Agent, options: Options
+): OperatorFunction<HTMLElement, TabsState> {
   const { media } = agent
   return pipe(
-    switchMapIf(media.screen$, el => {
-
-      /* Watch and paint visibility */
-      const hidden$ = watchHeaderOffsetToTopOf(el, agent, { header$ })
-        .pipe(
-          paintHidden(el, 8)
-        )
-
-      /* Combine into a single hot observable */
-      return hidden$
-        .pipe(
-          map(hidden => ({ hidden }))
-        )
-    }),
+    switchMapIf(media.screen$, el => watchTabs(el, agent, options)),
     shareReplay(1)
   )
 }

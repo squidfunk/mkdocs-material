@@ -20,48 +20,33 @@
  * IN THE SOFTWARE.
  */
 
-import {
-  MonoTypeOperatorFunction,
-  animationFrameScheduler,
-  pipe
-} from "rxjs"
-import {
-  distinctUntilKeyChanged,
-  finalize,
-  observeOn,
-  tap
-} from "rxjs/operators"
-
-import { resetHeaderShadow, setHeaderShadow } from "actions"
-
-import { MainState } from "../../main"
+import { Observable, fromEvent, merge } from "rxjs"
+import { mapTo, shareReplay, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint header shadow from source observable
+ * Watch element focus
  *
- * @param el - Header element
+ * @param el - Element
  *
- * @return Operator function
+ * @return Element focus observable
  */
-export function paintHeaderShadow(
+export function watchElementFocus(
   el: HTMLElement
-): MonoTypeOperatorFunction<MainState> {
-  return pipe(
-    distinctUntilKeyChanged("active"),
+): Observable<boolean> {
+  const focus$ = fromEvent(el, "focus")
+  const blur$  = fromEvent(el, "blur")
 
-    /* Defer repaint to next animation frame */
-    observeOn(animationFrameScheduler),
-    tap(({ active }) => {
-      setHeaderShadow(el, active)
-    }),
-
-    /* Reset on complete or error */
-    finalize(() => {
-      resetHeaderShadow(el)
-    })
+  /* Map events to boolean state */
+  return merge(
+    focus$.pipe(mapTo(true)),
+    blur$.pipe(mapTo(false))
   )
+    .pipe(
+      startWith(el === document.activeElement),
+      shareReplay(1)
+    )
 }
