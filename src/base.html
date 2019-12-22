@@ -161,15 +161,6 @@
       <link rel="manifest" href="{{ config.extra.manifest | url }}">
     {% endif %}
 
-    <!-- FontAwesome for social links -->
-    {% if config.extra.social %}
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href="{{ 'assets/fonts/font-awesome.css' | url }}"
-      />
-    {% endif %}
-
     <!-- Custom stylesheets -->
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" type="text/css" href="{{ path | url }}" />

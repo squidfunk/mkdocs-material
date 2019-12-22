@@ -70,9 +70,6 @@
     {% if config.extra.manifest %}
       <link rel="manifest" href="{{ config.extra.manifest | url }}">
     {% endif %}
-    {% if config.extra.social %}
-      <link rel="stylesheet" href="{{ 'assets/fonts/font-awesome.css' | url }}">
-    {% endif %}
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}

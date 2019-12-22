@@ -62,9 +62,8 @@ theme:
 # Plugins
 plugins:
   - search:
-      prebuild_index: false
-  # - minify:
-  #     minify_html: true
+  - minify:
+      minify_html: true
 
 # Customization
 extra:
@@ -135,8 +134,3 @@ nav:
 google_analytics:
   - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
   - auto
-
-extra_css:
-  - test.css
-extra_javascript:
-  - test.js

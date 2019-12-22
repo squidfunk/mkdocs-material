@@ -23,6 +23,11 @@
 <!-- Social links in footer -->
 {% if config.extra.social %}
   <div class="md-footer-social">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ 'assets/fonts/font-awesome.css' | url }}"
+    />
     {% for social in config.extra.social %}
       <a
         href="{{ social.link }}"
