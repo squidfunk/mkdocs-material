@@ -445,8 +445,8 @@
         app = initialize({
           base: "{{ base_url }}",
           worker: {
-            search: "{{ 'assets/javascripts/search.js' | url }}",
-            packer: "{{ 'assets/javascripts/packer.js' | url }}"
+            search: "{{ 'assets/javascripts/worker/search.js' | url }}",
+            packer: "{{ 'assets/javascripts/worker/packer.js' | url }}"
           }
         });
       </script>

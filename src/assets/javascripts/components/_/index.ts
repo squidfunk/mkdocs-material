@@ -34,17 +34,17 @@ import { getElement } from "utilities"
  * Component names
  */
 export type Component =
-  | "header"                           /* Header */
-  | "title"                            /* Header title */
-  | "search"                           /* Search */
-  | "query"                            /* Search input */
-  | "reset"                            /* Search reset */
-  | "result"                           /* Search results */
   | "container"                        /* Container */
-  | "main"                             /* Main area */
+  | "header"                           /* Header */
+  | "header-title"                     /* Header title */
   | "hero"                             /* Hero */
-  | "tabs"                             /* Tabs */
+  | "main"                             /* Main area */
   | "navigation"                       /* Navigation */
+  | "search"                           /* Search */
+  | "search-query"                     /* Search input */
+  | "search-reset"                     /* Search reset */
+  | "search-result"                    /* Search results */
+  | "tabs"                             /* Tabs */
   | "toc"                              /* Table of contents */
 
 /**
