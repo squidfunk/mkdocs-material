@@ -26,7 +26,8 @@ import {
   distinctUntilChanged,
   filter,
   map,
-  switchMap,
+  shareReplay,
+  switchMap
 } from "rxjs/operators"
 
 import { SearchResult } from "modules"
@@ -34,6 +35,17 @@ import { Agent, watchElementOffset } from "utilities"
 
 import { paintSearchResultList } from "../list"
 import { paintSearchResultMeta } from "../meta"
+
+// /* ----------------------------------------------------------------------------
+//  * Types
+//  * ------------------------------------------------------------------------- */
+
+// /**
+//  * Search result state
+//  */
+// export interface SearchResultState {
+//   result: SearchResult[]               /* Search results */
+// }
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -73,12 +85,9 @@ export function watchSearchResult(
       filter(identity)
     )
 
-  // combine into search result observable...
-
   /* Paint search results */
   return result$
     .pipe(
-      tap(x => { console.log("watchSearchResult", x) }),
       paintSearchResultMeta(el, { query$ }),
       paintSearchResultList(el, { render$ })
     )
