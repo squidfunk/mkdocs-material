@@ -760,6 +760,15 @@ hr {
     text-align: center; }
     .md-footer-social__link::before {
       line-height: 1.9; }
+    .md-footer-social__link svg {
+      width: 0.8rem;
+      -webkit-transition: fill 0.25s;
+      transition: fill 0.25s;
+      vertical-align: -25%;
+      fill: rgba(255, 255, 255, 0.7); }
+    .md-footer-social__link:focus svg,
+    .md-footer-social__link:hover svg {
+      fill: white; }
 
 .md-nav {
   font-size: 0.7rem;

@@ -68,11 +68,11 @@ plugins:
 # Customization
 extra:
   social:
-    - type: github-alt
+    - type: brands/github-alt
       link: https://github.com/squidfunk
-    - type: twitter
+    - type: brands/twitter
       link: https://twitter.com/squidfunk
-    - type: linkedin
+    - type: brands/linkedin
       link: https://www.linkedin.com/in/squidfunk/
 
 # Extensions

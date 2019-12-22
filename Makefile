@@ -86,6 +86,12 @@ material/assets/fonts/%.css: src/assets/fonts/%.css | $$(@D)/.
 
 # -----------------------------------------------------------------------------
 
+# Icons (FontAwesome)
+IMAGES_ICONS_FONTAWESOME = node_modules/@fortawesome/fontawesome-free/svgs
+material/assets/images/icons/fontawesome: ${IMAGES_ICONS_FONTAWESOME} | $$(@D)/.
+	@ echo "+ $@"
+	@ cp -r $< $@
+
 # Icons
 IMAGES_ICONS = $(subst src,material,$(wildcard src/assets/images/icons/*.svg))
 material/assets/images/icons: ${IMAGES_ICONS}
@@ -95,7 +101,7 @@ material/assets/images/icons/%.svg: src/assets/images/icons/%.svg | $$(@D)/.
 
 # Images
 IMAGES = $(subst src,material,$(wildcard src/assets/images/*.png))
-material/assets/images: $$@/icons ${IMAGES}
+material/assets/images: $$@/icons $$@/icons/fontawesome ${IMAGES}
 material/assets/images/%.png: src/assets/images/%.png | $$(@D)/.
 	@ echo "+ $@"
 	@ cp $< $@
