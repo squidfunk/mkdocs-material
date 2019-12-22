@@ -30,11 +30,11 @@
 {% if not page.is_homepage and disqus %}
   <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
   <div id="disqus_thread"></div>
-  <script type="text/javascript">
+  <script type="application/javascript">
     var disqus_config = function () {
       this.page.url = "{{ page.canonical_url }}";
       this.page.identifier =
-        "{{ page.canonical_url | replace(config.site_url, "") }}";
+        "{{ page.canonical_url | replace(config.site_url, '') }}";
     };
     (function() {
       var d = document, s = d.createElement("script");

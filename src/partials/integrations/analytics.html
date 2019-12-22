@@ -22,7 +22,7 @@
 
 <!-- Google Analytics integration -->
 {% set analytics = config.google_analytics %}
-<script type="text/javascript">
+<script type="application/javascript">
   window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
@@ -34,7 +34,7 @@
   ga("send", "pageview")
 
   /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function() {
     if (document.forms.search) {
       var query = document.forms.search.query
       query.addEventListener("blur", function() {

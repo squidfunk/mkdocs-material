@@ -1002,7 +1002,8 @@ hr {
     margin: 0 0.2rem;
     overflow-y: auto;
     -webkit-backface-visibility: hidden;
-            backface-visibility: hidden; }
+            backface-visibility: hidden;
+    -webkit-overflow-scrolling: touch; }
     .md-sidebar__scrollwrap::-webkit-scrollbar {
       width: 0.2rem;
       height: 0.2rem; }
