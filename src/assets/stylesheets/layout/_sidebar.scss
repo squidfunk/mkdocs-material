@@ -109,14 +109,12 @@ $md-toggle__drawer--checked:
     // [tablet landscape +]: Show table of contents next to body copy
     @include break-from-device(tablet landscape) {
       display: block;
-      margin-left: 100%;
-      transform: translate(-100%, 0);
+      margin-left: calc(100% - #{px2rem(242px)});
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        margin-right: 100%;
+        margin-right: calc(100% - #{px2rem(242px)});
         margin-left: initial;
-        transform: translate(100%, 0);
       }
 
       // Ensure smooth scrolling on iOS
@@ -127,11 +125,11 @@ $md-toggle__drawer--checked:
 
     // [screen +]: Limit to grid
     @include break-from-device(screen) {
-      margin-left: px2rem(1220px);
+      margin-left: px2rem((1220 - 242) * 1px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        margin-right: px2rem(1220px);
+        margin-right: px2rem((1220 - 242) * 1px);
         margin-left: initial;
       }
     }

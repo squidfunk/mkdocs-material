@@ -2543,14 +2543,10 @@ hr {
           padding-left: 0.8rem; }
       .md-sidebar--secondary {
         display: block;
-        margin-left: 100%;
-        -webkit-transform: translate(-100%, 0);
-                transform: translate(-100%, 0); }
+        margin-left: calc(100% - 12.1rem); }
         [dir="rtl"] .md-sidebar--secondary {
-          margin-right: 100%;
-          margin-left: initial;
-          -webkit-transform: translate(100%, 0);
-                  transform: translate(100%, 0); }
+          margin-right: calc(100% - 12.1rem);
+          margin-left: initial; }
         .md-sidebar--secondary .md-sidebar__scrollwrap {
           -webkit-overflow-scrolling: touch; } }
 
@@ -2600,9 +2596,9 @@ hr {
     .md-search__scrollwrap {
       width: 34.4rem; }
       .md-sidebar--secondary {
-        margin-left: 61rem; }
+        margin-left: 48.9rem; }
         [dir="rtl"] .md-sidebar--secondary {
-          margin-right: 61rem;
+          margin-right: 48.9rem;
           margin-left: initial; }
     .md-tabs ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
       font-size: 0;
