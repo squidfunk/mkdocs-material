@@ -20,66 +20,56 @@
  * IN THE SOFTWARE.
  */
 
-// TODO: remove this later on
-
+// TODO: remove this after we finished refactoring
 // tslint:disable
 
-import { identity } from "ramda"
+import { identity, values } from "ramda"
 import {
   EMPTY,
-  MonoTypeOperatorFunction,
-  NEVER,
   Observable,
   Subject,
-  defer,
   forkJoin,
-  fromEvent,
   merge,
-  of,
-  pipe,
+  of
 } from "rxjs"
+import { ajax } from "rxjs/ajax"
 import {
-  combineAll,
   delay,
-  distinctUntilKeyChanged,
   filter,
   map,
   pluck,
-  shareReplay,
   switchMap,
   switchMapTo,
   take,
   tap,
 } from "rxjs/operators"
 
-import {} from "components"
-import { AjaxResponse, ajax } from "rxjs/ajax"
 import {
   Component,
   paintHeaderShadow,
-  setupHero,
-  setupMain,
-  setupNavigation,
-  setupSearchResult,
+  mountHero,
+  mountMain,
+  mountNavigation,
+  mountSearchResult,
+  mountTableOfContents,
+  mountTabs,
   switchComponent,
   watchComponentMap,
   watchHeader,
-  watchSearchReset,
+  watchSearchQuery,
+  watchSearchReset
 } from "./components"
-import { SearchIndex, SearchResult } from "./modules/search"
+import { SearchIndexOptions } from "./modules"
 import {
   getElement,
   setupAgent,
-  watchDocument,
-  watchLocation,
-  watchLocationHash,
-  watchMedia,
   watchToggle,
-  watchViewportOffset,
-  watchViewportSize,
-  watchWorker
+  watchWorker,
+  setToggle
 } from "./utilities"
 import {
+  PackerMessage,
+  PackerMessageType,
   SearchMessage,
   SearchMessageType,
   SearchSetupMessage,
@@ -87,73 +77,71 @@ import {
   isSearchResultMessage
 } from "./workers"
 
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
 /**
  * Configuration
  */
 export interface Config {
   base: string                         /* Base URL */
   worker: {
-    search: string                     /* Web worker URL */
-    packer: string                     /* Web worker URL */
+    search: string                     /* Search worker URL */
+    packer: string                     /* Packer worker URL */
   }
 }
 
-import {
-  PackerMessage,
-  PackerMessageType
-} from "./workers/packer"
+/* ----------------------------------------------------------------------------
+ * TODO: where do we put this stuff?
+ * ------------------------------------------------------------------------- */
 
-import { setupTabs } from "components/tabs"
-import { setupTableOfContents } from "components/toc/_"
+document.documentElement.classList.remove("no-js")
+document.documentElement.classList.add("js")
+
+const names: Component[] = [
+  "container",                       /* Container */
+  "header",                          /* Header */
+  "header-title",                    /* Header title */
+  "hero",                            /* Hero */
+  "main",                            /* Main area */
+  "navigation",                      /* Navigation */
+  "search",                          /* Search */
+  "search-query",                    /* Search input */
+  "search-reset",                    /* Search reset */
+  "search-result",                   /* Search results */
+  "tabs",                            /* Tabs */
+  "toc"                              /* Table of contents */
+]
 
 /* ----------------------------------------------------------------------------
- * Functions
+ * Helper functions
  * ------------------------------------------------------------------------- */
 
 /**
  * Ensure that the given value is a valid configuration
  *
+ * We could use `jsonschema` or any other schema validation framework, but that
+ * would just add more bloat to the bundle, so we'll keep it plain and simple.
+ *
  * @param config - Configuration
  *
  * @return Test result
  */
-export function isConfig(config: any): config is Config {
+function isConfig(config: any): config is Config {
   return typeof config === "object"
       && typeof config.base === "string"
+      && typeof config.worker === "object"
+      && typeof config.worker.search === "string"
+      && typeof config.worker.packer === "string"
 }
-
-// TBD
-
-// TODO: put this somewhere else... (merge with config!) JSON schema!?
-const names: Component[] = [
-  "header",                          /* Header */
-  "title",                           /* Header title */
-  "search",                          /* Search */
-  "query",                           /* Search input */
-  "reset",                           /* Search reset */
-  "result",                          /* Search results */
-  "container",                       /* Container */
-  "main",                            /* Main area */
-  "hero",                            /* Hero */
-  "tabs",                            /* Tabs */
-  "navigation",                      /* Navigation */
-  "toc"                              /* Table of contents */
-]
-
-// modernizr for the poor
-document.documentElement.classList.remove("no-js")
-document.documentElement.classList.add("js")
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
 
 /**
   *
   * Rogue control characters must be filtered before handing the query to the
   * search index, as lunr will throw otherwise.
  */
-function prepareQuery(value: string): string {
+function prepare(value: string): string {
   const newvalue = value
     .replace(/(?:^|\s+)[*+-:^~]+(?=\s+|$)/g, "")
     .trim()
@@ -161,21 +149,9 @@ function prepareQuery(value: string): string {
   return newvalue ? newvalue.replace(/\s+|$/g, "* ") : ""
 }
 
-/**
- * Initialize Material for MkDocs
- *
- * @param config - Configuration
- */
-export function initialize(config: unknown) {
-  if (!isConfig(config))
-    throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
-
-  const agent = setupAgent()
-
+function setupWorkers(config: Config) {
   const worker = new Worker(config.worker.search)
   const packer = new Worker(config.worker.packer)
-
-  // const query = message.data.trim().replace(/\s+|$/g, "* ") // TODO: do this outside of the worker
 
   const packerMessage$ = new Subject<PackerMessage>()
   const packer$ = watchWorker(packer, { send$: packerMessage$ })
@@ -183,7 +159,7 @@ export function initialize(config: unknown) {
   // send a message, then switchMapTo worker!
 
   packer$.subscribe(message => {
-    console.log("PACKER.MSG", message.data.length)
+    // console.log("PACKER.MSG", message.data.length)
     // is always packed!
     if (message.type === PackerMessageType.BINARY && message.data[0] !== "{")
       localStorage.setItem("index", message.data)
@@ -194,25 +170,6 @@ export function initialize(config: unknown) {
   const searchMessage$ = new Subject<SearchMessage>()
 
   const search$ = watchWorker(worker, { send$: searchMessage$ })
-
-  // paintSearchResult <-- must paint META AND LIST!
-  // list must be painted based on scroll offset...
-
-  /* Render search results */
-  // search$
-  //   .pipe(
-  //     filter(isSearchResultMessage),
-  //     pluck("data")
-  //   )
-  //     .subscribe(result => {
-  //       const list = getElement(".md-search-result__list")!
-  //       list.innerHTML = ""
-  //       for (const el of result.map(renderSearchResult)) // TODO: perform entire lazy render!!!!
-  //         list.appendChild(el)
-  //     })
-
-      // scroll!
-      // watchSearchResult
 
   /* Link search to packer */
   search$
@@ -232,7 +189,7 @@ export function initialize(config: unknown) {
     responseType: "json",
     withCredentials: true
   })
-    .pipe<SearchIndex>(
+    .pipe<SearchIndexOptions>(
       pluck("response")
       // take(1)
     )
@@ -264,48 +221,34 @@ export function initialize(config: unknown) {
         searchMessage$.next(message) // TODO: this shall not complete
       })
 
-  // filter singular "+" or "-",as it will result in a lunr.js error
+  return [search$, searchMessage$] as const
+}
 
-  // data$
-  //   .pipe(
-  //     map<SearchIndex, SearchMessage>(data => ({
-  //       type: SearchMessageType.SETUP,
-  //       data
-  //     }))
-  //   )
-  //     .subscribe(message => {
-  //       searchMessage$.next(message) // TODO: this shall not complete
-  //     })
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
 
-  /* ----------------------------------------------------------------------- */
+/**
+ * Initialize Material for MkDocs
+ *
+ * @param config - Configuration
+ */
+export function initialize(config: unknown) {
+  if (!isConfig(config))
+    throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
-  /* Create viewport observables */
-  const offset$   = watchViewportOffset()
-  const size$     = watchViewportSize()
+  // pass config here!?
+  const agent = setupAgent() // TODO: add a config parameter here to configure media queries
 
-  /* Create media observables */
-  const screen$   = watchMedia("(min-width: 1220px)")
-  const tablet$   = watchMedia("(min-width: 960px)")
-
-  /* Create location observables */
-  const location$ = watchLocation()
-  const fragment$ = watchLocationHash()
-
-  /* Create document observables */
-  const load$     = watchDocument()
-
-  // Complete set of AgentObservables...
-
-  // component map!
-  //
-
-  // const switch$   = watchDocumentSwitch({ location$ })
+  const [
+    searchWorkerRecv$,
+    searchMessage$
+  ] = setupWorkers(config)
 
   /* ----------------------------------------------------------------------- */
 
   /* Create component map observable */
-  const components$ = watchComponentMap(names, { document$: load$ })
-
+  const components$ = watchComponentMap(names, { document$: agent.document.load$ })
   const component = <T extends HTMLElement>(name: Component): Observable<T> => {
     return components$
       .pipe(
@@ -319,181 +262,96 @@ export function initialize(config: unknown) {
       switchMap(watchHeader)
     )
 
-  // DONE
-  const main$ = component("main")
-    .pipe(
-      setupMain(agent, { header$ })
-    )
-
-  // setupHeader(agent) ??
-
-  // setupSearch
-
-  // ----------------------------------------------------------------------------
-
-
   /* Create header shadow toggle */
   component("header")
     .pipe(
       switchMap(el => main$
         .pipe(
-          paintHeaderShadow(el)
+          paintHeaderShadow(el) // technically, this could be done in paintMain
         )
       )
     )
       .subscribe()
+
+  // ----------------------------------------------------------------------------
 
   // watchSearchResult // emit, if at bottom...
   // receive results as a second observable!? filter stuff, paint
 
-  const result$ = search$
+  const result$ = searchWorkerRecv$ // move worker initialization into mountSearch ?
     .pipe(
+      tap(m => console.log("message from worker", m)),
       filter(isSearchResultMessage),
       pluck("data")
     )
 
-  const query$ = component<HTMLInputElement>("query")
+  // handleSearchResult <-- operator
+
+  const query$ = component<HTMLInputElement>("search-query")
     .pipe(
-      switchMap(el => fromEvent(el, "keyup")
-        .pipe(
-          map(() => prepareQuery(el.value))
-        )
-      )
+      switchMap(el => watchSearchQuery(el, { prepare }))
     )
 
-  // DONE
-  component("result")
-    .pipe(
-      setupSearchResult(agent, { result$, query$ })
+  query$
+    .pipe<SearchMessage>(
+      map(query => ({ // put this into some function...
+        type: SearchMessageType.QUERY,
+        data: query.value
+      })), // TODO. ugly...
+      // distinctUntilKeyChanged("data")
     )
-      .subscribe()
+      .subscribe(searchMessage$)
+
+  // create the message subject internally... and link it to the worker...?
+  // watchSearchWorker(worker, agent, { query$ }) // message internally...
 
   query$
     .pipe(
-      map(data => ({ // put this into some function...
-        type: SearchMessageType.QUERY,
-        data
-      })), // TODO. ugly...
-      distinctUntilKeyChanged("data")
-    )
-
-      .subscribe(x => {
-        searchMessage$.next(x as any) // TODO
+      tap(query => {
+        if (query.focus)
+          setToggle(search, true)
       })
-
-  // Focus on search input
-  component("query")
-    .pipe(
-      switchMap(el => fromEvent(el, "focus")
-        .pipe(
-          tap(() => {
-            if (!search.checked)
-              search.click() // move this inside the search query stuff? not important...
-          })
-        )
-      ) // not super nice...
     )
       .subscribe()
-
-  // // WIP: instant loading
-  // load$
-  //   .pipe(
-  //     switchMap(({ body }) => fromEvent(body, "click")),
-  //     switchMap(ev => {
-  //       if (ev.target instanceof HTMLElement) {
-  //         const el = ev.target.closest("a") || undefined
-  //         if (el) {
-  //           if (!/^(https?:|#)/.test(el.getAttribute("href")!)) {
-  //             ev.preventDefault()
-  //           }
-  //           const href = el.href
-  //           history.pushState({}, "", href) // TODO: reference necessary!?
-  //           return of(href)
-  //         }
-  //       }
-  //       return EMPTY
-  //     })
-
-  //     // try to reduce the jiggle upon instant page load. ideally, the location
-  //     // should directly be resolved and the respective document loaded, but
-  //     // we must scroll to the top at first and wait at least 250ms.
-  //     //
-  //     // Furthermore, this doesn't include the back/next buttons of the browser
-  //     // which must be delayed
-  //     // tap(url => {
-  //     //   if (!/#/.test(url))
-  //     //     scrollTo({ top: 0 })
-  //     // }) // only when loading something we havent loaded!
-  //     // delay(250)
-  //   )
-  //     .subscribe(location$)
-
-  // location$.subscribe(x => {
-  //   console.log("L", x)
-  // })
-  // switch$.subscribe(x => {
-  //   console.log("S", x)
-  // })
 
   /* ----------------------------------------------------------------------- */
 
-  component("navigation")
+  const main$ = component("main")
     .pipe(
-      setupNavigation(agent, { main$ })
+      mountMain(agent, { header$ })
     )
-      .subscribe()
 
-  component("toc")
+  const navigation$ = component("navigation")
     .pipe(
-      setupTableOfContents(agent, { header$, main$ })
+      mountNavigation(agent, { main$ })
     )
-      .subscribe()
 
-  component("tabs")
+  const toc$ = component("toc")
     .pipe(
-      setupTabs(agent, { header$ })
+      mountTableOfContents(agent, { header$, main$ })
     )
-      .subscribe()
 
-  component("hero")
+  // TODO: naming?
+  const resultComponent$ = component("search-result")
     .pipe(
-      setupHero(agent, { header$ })
+      mountSearchResult(agent, { result$, query$: query$.pipe(pluck("value")) })
+    ) // temporary fix
+
+  const tabs$ = component("tabs")
+    .pipe(
+      mountTabs(agent, { header$ })
     )
-      .subscribe()
 
-  // /* Create header title toggle */
-  // component("main")
-  //   .pipe(
-  //     delay(1000), // initial delay
-  //     switchMap(el => typeof getElement("h1", el) !== "undefined"
-  //       ? watchBottomOffset(getElement("h1", el)!, { size$, offset$, header$ })
-  //           .pipe(
-  //             map(({ y }) => y >= 0),
-  //             withLatestFrom(component("title")),
-  //             tap(([active, title]) => {
-  //               title.dataset.mdState = active ? "active" : ""
-  //             })
-  //           )
-  //       : NEVER
-  //     )
-  //   )
-  //     .subscribe()
+  const hero$ = component("hero")
+    .pipe(
+      mountHero(agent, { header$ })
+    )
 
-  // TODO: replace title as inner text
 
   /* ----------------------------------------------------------------------- */
 
   const drawer = getElement<HTMLInputElement>("[data-md-toggle=drawer]")!
   const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
-
-  // watchToggle
-
-  // --> watchSearchQuery?
-
-  // watchSearch
-  // watchSearchReset
-
-  // toggles stay the same...
 
   const a$ = watchToggle(search)
     .pipe(
@@ -501,51 +359,39 @@ export function initialize(config: unknown) {
       delay(400)
     )
 
-  // watchSearchReset()
-
-  const b$ = component("reset")
+  const reset$ = component("search-reset")
     .pipe(
       switchMap(watchSearchReset)
     )
 
-  function focusQuery(): MonoTypeOperatorFunction<HTMLElement> {
-    return pipe(
-      tap(el => el.focus())
-    )
-  }
-
-  merge(a$, b$)
+  merge(a$, reset$)
     .pipe(
-      switchMapTo(component("query")),
-      focusQuery()
+      switchMapTo(component<HTMLInputElement>("search-query")),
+      tap(el => el.focus())
     )
       .subscribe()
 
-  /* Wrap all data tables for better overflow scrolling */
-  // const tables = getElements<HTMLTableElement>("table:not([class])")
-  // tables.forEach(table => {
-  //   console.log("x", table)
-  //   table.parentNode!.insertBefore(renderTable(table), table)
-  //   table.replaceWith(renderTable(table) as any)
-  //   // table.parentElement!.replaceChild(, table)
-  // })
+  /* ----------------------------------------------------------------------- */
 
-  return {
-    // agent, // agent.viewport.offset$
-    // component, // component.toc$
+  const state = {
+    search: {
+      query$,
+      result$: resultComponent$,
+      reset$,
+    },
+    main$,
+    navigation$,
+    toc$,
+    tabs$,
+    hero$
   }
 
-  /* Return observable factories */
-  return {
+  const { search: temp, ...rest } = state
+  merge(...values(rest), ...values(temp))
+    .subscribe() // potential memleak <-- use takeUntil
 
-    /* User interface */
-    watchDocument:         () => load$,
-    // watchDocumentSwitch:   () => switch$,
-    watchLocation:         () => location$,
-    watchLocationFragment: () => fragment$,
-    watchMediaScreen:      () => screen$,
-    watchMediaTablet:      () => tablet$,
-    watchViewportOffset:   () => offset$,
-    watchViewportSize:     () => size$
+  return {
+    agent,
+    state
   }
 }

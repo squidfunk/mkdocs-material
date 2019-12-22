@@ -101,7 +101,7 @@ export function watchComponentMap(
           switch (name) {
 
             /* Top-level components: update */
-            case "title":
+            case "header-title":
             case "container":
               if (name in prev && typeof prev[name] !== "undefined") {
                 prev[name]!.replaceWith(next[name]!)
