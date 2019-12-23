@@ -87,18 +87,6 @@
   {% else %}
     <body dir="{{ lang.t('direction') }}">
   {% endif %}
-    <svg class="md-svg">
-      <defs>
-        {% set platform = config.extra.repo_icon or config.repo_url %}
-        {% if "github" in platform %}
-          {% include "assets/images/icons/github.svg" %}
-        {% elif "gitlab" in platform %}
-          {% include "assets/images/icons/gitlab.svg" %}
-        {% elif "bitbucket" in platform %}
-          {% include "assets/images/icons/bitbucket.svg" %}
-        {% endif %}
-      </defs>
-    </svg>
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>

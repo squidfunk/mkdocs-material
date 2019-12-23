@@ -396,9 +396,6 @@ hr {
   padding: 0;
   border: 0; }
 
-.md-svg {
-  display: none; }
-
 .md-grid {
   max-width: 61rem;
   margin-right: auto;
@@ -1079,13 +1076,13 @@ hr {
     display: inline-block;
     width: 2.4rem;
     height: 2.4rem;
-    content: "";
     vertical-align: middle; }
     .md-source__icon svg {
       width: 1.2rem;
       height: 1.2rem;
       margin-top: 0.6rem;
-      margin-left: 0.6rem; }
+      margin-left: 0.6rem;
+      fill: white; }
       [dir="rtl"] .md-source__icon svg {
         margin-right: 0.6rem;
         margin-left: initial; }

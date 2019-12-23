@@ -89,7 +89,6 @@
     display: inline-block;
     width: px2rem(48px);
     height: px2rem(48px);
-    content: "";
     vertical-align: middle;
 
     // Align SVG, do not scale, as this will incur strange formatting bugs
@@ -99,6 +98,7 @@
       height: px2rem(24px);
       margin-top: px2rem(12px);
       margin-left: px2rem(12px);
+      fill: $md-color-white;
 
       // Adjust for RTL languages
       [dir="rtl"] & {

@@ -190,25 +190,6 @@
     <body dir="{{ lang.t('direction') }}">
   {% endif %}
 
-    <!-- Hidden container for inline SVGs -->
-    <svg class="md-svg">
-      <defs>
-
-        <!--
-          Check whether the repository is hosted on one of the supported code
-          hosting platforms (GitHub, GitLab or Bitbucket) to show icon.
-        -->
-        {% set platform = config.extra.repo_icon or config.repo_url %}
-        {% if "github" in platform %}
-          {% include "assets/images/icons/github.svg" %}
-        {% elif "gitlab" in platform %}
-          {% include "assets/images/icons/gitlab.svg" %}
-        {% elif "bitbucket" in platform %}
-          {% include "assets/images/icons/bitbucket.svg" %}
-        {% endif %}
-      </defs>
-    </svg>
-
     <!--
       State toggles - we need to set autocomplete="off" in order to reset the
       drawer on back button invocation in some browsers
