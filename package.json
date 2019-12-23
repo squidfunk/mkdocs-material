@@ -66,7 +66,7 @@
     "lunr-languages": "^1.4.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
-    "mini-css-extract-plugin": "^0.8.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "modernizr-auto-loader": "^0.1.0",
     "modularscale-sass": "^3.0.10",
     "node-sass": "^4.13.0",
