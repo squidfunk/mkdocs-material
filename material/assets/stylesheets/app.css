@@ -86,6 +86,7 @@ input {
   direction: ltr; }
   .md-content__icon, .md-header-nav__button, .md-footer-nav__button, .md-nav__title::before, .md-nav__button, .md-search-result__article--document::before {
     display: inline-block;
+    width: 2rem;
     margin: 0.2rem;
     padding: 0.4rem;
     font-size: 1.2rem;

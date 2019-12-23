@@ -43,9 +43,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
