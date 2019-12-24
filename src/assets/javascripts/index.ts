@@ -65,7 +65,8 @@ import {
   setupAgent,
   watchToggle,
   watchWorker,
-  setToggle
+  setToggle,
+  getElements
 } from "./utilities"
 import {
   PackerMessage,
@@ -320,11 +321,13 @@ export function initialize(config: unknown) {
   // TODO: WIP repo rendering
   repository().subscribe(facts => {
     if (facts.length) {
-      const repo = getElement(".md-source__repository")!
-      repo.dataset.mdState = "done"
-      repo.appendChild(
-        renderSource(facts)
-      )
+      const sources = getElements("[data-md-source] .md-source__repository")
+      sources.forEach(repo => {
+        repo.dataset.mdState = "done"
+        repo.appendChild(
+          renderSource(facts)
+        )
+      })
     }
   })
 
