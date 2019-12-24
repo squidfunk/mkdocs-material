@@ -20,5 +20,37 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./search"
-export * from "./source"
+import { h, toHTMLElement } from "extensions"
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * CSS classes
+ */
+const css = {
+  facts: "md-source__facts",
+  fact:  "md-source__fact"
+}
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Render source facts
+ *
+ * @param facts - Source facts
+ *
+ * @return HTML element
+ */
+export function renderSource(
+  facts: any // TODO: add typings
+): HTMLElement {
+  return toHTMLElement(
+    <ul class={css.facts}>
+      {facts.map((fact: any) => <li class={css.fact}>{fact}</li>)}
+    </ul>
+  )
+}

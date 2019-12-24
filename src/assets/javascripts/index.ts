@@ -76,6 +76,7 @@ import {
   isSearchDumpMessage,
   isSearchResultMessage
 } from "./workers"
+import { renderSource } from "templates"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -227,6 +228,74 @@ function setupWorkers(config: Config) {
   return [search$, searchMessage$] as const
 }
 
+/**
+ * Yes, this is a super hacky implementation. Needs clean up.
+ */
+function repository() {
+  const el = getElement<HTMLAnchorElement>("[data-md-source][href]")
+  console.log(el)
+  if (!el)
+    return EMPTY
+
+  const data = localStorage.getItem("repository")
+  if (data) {
+    const x = JSON.parse(data)
+    return of(x)
+  }
+
+  // TODO: do correct rounding, see GitHub
+  function format(value: number) {
+    if (value > 10000)
+      return `${(value / 1000).toFixed(0)}k`
+    else if (value > 1000)
+      return `${(value / 1000).toFixed(1)}k`
+    return `${value}`
+  }
+
+  const [, user, repo] = el.href.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)?.*$/)
+
+  // Show repo stats
+  if (user && repo) {
+    return ajax({
+      url: `https://api.github.com/repos/${user}/${repo}`,
+      responseType: "json"
+    })
+      .pipe(
+        map(({ status, response }) => {
+          if (status === 200) {
+            const { stargazers_count, forks_count } = response
+            return [
+              `${format(stargazers_count)} Stars`,
+              `${format(forks_count)} Forks`
+            ]
+          }
+          return []
+        }),
+        tap(data => localStorage.setItem("repository", JSON.stringify(data)))
+      )
+
+  // Show user or organization stats
+  } else if (user) {
+    return ajax({
+      url: `https://api.github.com/users/${user}`,
+      responseType: "json"
+    })
+      .pipe(
+        map(({ status, response }) => {
+          if (status === 200) {
+            const { public_repos } = response
+            return [
+              `${format(public_repos)} Repositories`
+            ]
+          }
+          return []
+        }),
+        tap(data => localStorage.setItem("repository", JSON.stringify(data)))
+      )
+  }
+  return of([])
+}
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -247,6 +316,17 @@ export function initialize(config: unknown) {
     searchWorkerRecv$,
     searchMessage$
   ] = setupWorkers(config)
+
+  // TODO: WIP repo rendering
+  repository().subscribe(facts => {
+    if (facts.length) {
+      const repo = getElement(".md-source__repository")!
+      repo.dataset.mdState = "done"
+      repo.appendChild(
+        renderSource(facts)
+      )
+    }
+  })
 
   /* ----------------------------------------------------------------------- */
 
