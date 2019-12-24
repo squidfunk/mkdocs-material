@@ -150,6 +150,9 @@ function prepare(value: string): string {
 }
 
 function setupWorkers(config: Config) {
+  // Remove trailing URL, or search might not work on the 404 page.
+  config.base = config.base.replace(/\/$/, "")
+
   const worker = new Worker(config.worker.search)
   const packer = new Worker(config.worker.packer)
 
@@ -280,9 +283,16 @@ export function initialize(config: unknown) {
 
   const result$ = searchWorkerRecv$ // move worker initialization into mountSearch ?
     .pipe(
-      tap(m => console.log("message from worker", m)),
+      // tap(m => console.log("message from worker", m)),
       filter(isSearchResultMessage),
-      pluck("data")
+      pluck("data"),
+      // Prefix URLs with base URL
+      tap(result => result.forEach(item => {
+        item.article.location = `${config.base}/${item.article.location}`
+        item.sections.forEach(section => {
+          section.location = `${config.base}/${section.location}`
+        })
+      }))
     )
 
   // handleSearchResult <-- operator
