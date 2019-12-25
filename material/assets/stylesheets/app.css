@@ -81,7 +81,6 @@ input {
   line-height: 1;
   text-transform: none;
   white-space: nowrap;
-  speak: none;
   word-wrap: normal;
   direction: ltr; }
   .md-content__icon, .md-header-nav__button, .md-footer-nav__button, .md-nav__title::before, .md-nav__button, .md-search-result__article--document::before {
@@ -117,16 +116,14 @@ body {
 body,
 input {
   color: rgba(0, 0, 0, 0.87);
-  -webkit-font-feature-settings: "kern", "liga";
-          font-feature-settings: "kern", "liga";
+  font-feature-settings: "kern", "liga";
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 pre,
 code,
 kbd {
   color: rgba(0, 0, 0, 0.87);
-  -webkit-font-feature-settings: "kern";
-          font-feature-settings: "kern";
+  font-feature-settings: "kern";
   font-family: "Courier New", Courier, monospace; }
 
 .md-typeset {
@@ -850,24 +847,24 @@ hr {
     -webkit-transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
     transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1); }
   .md-search__input::-moz-placeholder {
-    -webkit-transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+    -moz-transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
     transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1); }
   .md-search__input:-ms-input-placeholder {
-    -webkit-transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+    -ms-transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
     transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1); }
   .md-search__input::-ms-input-placeholder {
-    -webkit-transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+    -ms-transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
     transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1); }
   .md-search__input::placeholder {
     -webkit-transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
     transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1); }
-  .md-search__input ~ .md-search__icon, .md-search__input::-webkit-input-placeholder {
+  .md-search__input::-webkit-input-placeholder {
     color: rgba(0, 0, 0, 0.54); }
-  .md-search__input ~ .md-search__icon, .md-search__input::-moz-placeholder {
+  .md-search__input::-moz-placeholder {
     color: rgba(0, 0, 0, 0.54); }
-  .md-search__input ~ .md-search__icon, .md-search__input:-ms-input-placeholder {
+  .md-search__input:-ms-input-placeholder {
     color: rgba(0, 0, 0, 0.54); }
-  .md-search__input ~ .md-search__icon, .md-search__input::-ms-input-placeholder {
+  .md-search__input::-ms-input-placeholder {
     color: rgba(0, 0, 0, 0.54); }
   .md-search__input ~ .md-search__icon, .md-search__input::placeholder {
     color: rgba(0, 0, 0, 0.54); }
@@ -2500,13 +2497,13 @@ hr {
         background-color: white;
         color: rgba(0, 0, 0, 0.87);
         text-overflow: clip; }
-        [data-md-toggle="search"]:checked ~ .md-header .md-search__input + .md-search__icon, [data-md-toggle="search"]:checked ~ .md-header .md-search__input::-webkit-input-placeholder {
+        [data-md-toggle="search"]:checked ~ .md-header .md-search__input::-webkit-input-placeholder {
           color: rgba(0, 0, 0, 0.54); }
-        [data-md-toggle="search"]:checked ~ .md-header .md-search__input + .md-search__icon, [data-md-toggle="search"]:checked ~ .md-header .md-search__input::-moz-placeholder {
+        [data-md-toggle="search"]:checked ~ .md-header .md-search__input::-moz-placeholder {
           color: rgba(0, 0, 0, 0.54); }
-        [data-md-toggle="search"]:checked ~ .md-header .md-search__input + .md-search__icon, [data-md-toggle="search"]:checked ~ .md-header .md-search__input:-ms-input-placeholder {
+        [data-md-toggle="search"]:checked ~ .md-header .md-search__input:-ms-input-placeholder {
           color: rgba(0, 0, 0, 0.54); }
-        [data-md-toggle="search"]:checked ~ .md-header .md-search__input + .md-search__icon, [data-md-toggle="search"]:checked ~ .md-header .md-search__input::-ms-input-placeholder {
+        [data-md-toggle="search"]:checked ~ .md-header .md-search__input::-ms-input-placeholder {
           color: rgba(0, 0, 0, 0.54); }
         [data-md-toggle="search"]:checked ~ .md-header .md-search__input + .md-search__icon, [data-md-toggle="search"]:checked ~ .md-header .md-search__input::placeholder {
           color: rgba(0, 0, 0, 0.54); }

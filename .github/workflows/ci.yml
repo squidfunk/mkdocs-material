@@ -58,6 +58,9 @@ jobs:
       - run: npm run lint
       - run: npm run build
 
+      # Check diff after build
+      - run: git diff --name-only
+
       # Upload distribution files
       - uses: actions/upload-artifact@v1
         if: startsWith(github.ref, 'refs/tags')
