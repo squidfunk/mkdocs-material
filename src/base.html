@@ -158,7 +158,7 @@
 
     <!-- Progressive Web App Manifest -->
     {% if config.extra.manifest %}
-      <link rel="manifest" href="{{ config.extra.manifest | url }}">
+      <link rel="manifest" type="application/manifest+json" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
     {% endif %}
 
     <!-- Custom stylesheets -->
@@ -214,7 +214,7 @@
 
     <!-- Link to skip to content -->
     {% if page.toc | first is defined %}
-      <a href="{{ (page.toc | first).url }}" tabindex="1" class="md-skip">
+      <a href="{{ (page.toc | first).url }}" tabindex="0" class="md-skip">
         {{ lang.t('skip.link.title') }}
       </a>
     {% endif %}
