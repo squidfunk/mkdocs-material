@@ -1,0 +1,7 @@
+<script type="text/javascript">
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("{{ 'serviceworker.js' | url }}")
+  })
+}
+</script>
