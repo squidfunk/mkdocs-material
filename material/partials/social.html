@@ -4,7 +4,7 @@
 {% if config.extra.social %}
   <div class="md-footer-social">
     {% for social in config.extra.social %}
-      <a href="{{ social.link }}" class="md-footer-social__link">
+      <a href="{{ social.link }}" target="_blank" rel="noopener" class="md-footer-social__link">
         {% include "assets/images/icons/fontawesome/" ~ social.type ~ ".svg" %}
       </a>
     {% endfor %}
