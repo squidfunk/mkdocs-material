@@ -35,7 +35,7 @@
 
 // Navigation within footer
 .md-footer-nav {
-  background-color: $md-color-black;
+  background-color: var(--md-color-text);
   color: $md-color-white;
 
   // Set spacing
@@ -130,7 +130,7 @@
 
 // Non-navigational information
 .md-footer-meta {
-  background-color: opacify($md-color-black, 0.025);
+  background-color: rgba(var(--md-color-text), 0.025);
 
   // Set spacing
   &__inner {

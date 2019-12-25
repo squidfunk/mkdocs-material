@@ -112,7 +112,7 @@ $md-toggle__search--checked:
         width     0ms 250ms,
         height    0ms 250ms,
         opacity 250ms;
-      background-color: $md-color-black--light;
+      background-color: var(--md-color-black--light);
       cursor: pointer;
 
       // Adjust for right-to-left languages
@@ -238,7 +238,7 @@ $md-toggle__search--checked:
     // Placeholder and icon color in active state
     ~ .md-search__icon,
     &::placeholder {
-      color: $md-color-black--light;
+      color: var(--md-color-text--light);
     }
 
     // Remove the "x" rendered by Internet Explorer
@@ -262,7 +262,7 @@ $md-toggle__search--checked:
         background-color 250ms cubic-bezier(0.1, 0.7, 0.1, 1),
         color            250ms cubic-bezier(0.1, 0.7, 0.1, 1);
       border-radius: px2rem(2px);
-      background-color: $md-color-black--lighter;
+      background-color: var(--md-color-text--lighter);
       color: inherit;
       font-size: ms(0);
 
@@ -290,13 +290,13 @@ $md-toggle__search--checked:
       #{$md-toggle__search--checked} & {
         border-radius: px2rem(2px) px2rem(2px) 0 0;
         background-color: $md-color-white;
-        color: $md-color-black;
+        color: var(--md-color-text);
         text-overflow: clip;
 
         // Placeholder and icon color in active state
         + .md-search__icon,
         &::placeholder {
-          color: $md-color-black--light;
+          color: var(--md-color-text--light);
         }
       }
     }
@@ -436,7 +436,7 @@ $md-toggle__search--checked:
   &__scrollwrap {
     height: 100%;
     background-color: $md-color-white;
-    box-shadow: inset 0 px2rem(1px) 0 $md-color-black--lightest;
+    box-shadow: inset 0 px2rem(1px) 0 var(md-color-black--lightest);
     overflow-y: auto;
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
@@ -473,7 +473,7 @@ $md-toggle__search--checked:
 
       // Scrollbar thumb
       &::-webkit-scrollbar-thumb {
-        background-color: $md-color-black--lighter;
+        background-color: var(--md-color-text--lighter);
 
         // Hovered scrollbar thumb
         &:hover {
@@ -486,14 +486,14 @@ $md-toggle__search--checked:
 
 // Search result
 .md-search-result {
-  color: $md-color-black;
+  color: var(--md-color-text);
   word-break: break-word;
 
   // Search metadata
   &__meta {
     padding: 0 px2rem(16px);
-    background-color: $md-color-black--lightest;
-    color: $md-color-black--light;
+    background-color: var(--md-color-text--lightest);
+    color: var(--md-color-text--light);
     font-size: ms(-1);
     line-height: px2rem(36px);
     scroll-snap-align: start;
@@ -514,13 +514,13 @@ $md-toggle__search--checked:
   &__list {
     margin: 0;
     padding: 0;
-    border-top: px2rem(1px) solid $md-color-black--lightest;
+    border-top: px2rem(1px) solid var(--md-color-text--lightest);
     list-style: none;
   }
 
   // List item
   &__item {
-    box-shadow: 0 px2rem(-1px) 0 $md-color-black--lightest;
+    box-shadow: 0 px2rem(-1px) 0 var(--md-color-text--lightest);
   }
 
   // Link inside item
@@ -613,7 +613,7 @@ $md-toggle__search--checked:
     display: -webkit-box;
     max-height: px2rem(33px);
     margin: 0.5em 0;
-    color: $md-color-black--light;
+    color: var(--md-color-text--light);
     font-size: ms(-1);
     line-height: 1.4;
     text-overflow: ellipsis;

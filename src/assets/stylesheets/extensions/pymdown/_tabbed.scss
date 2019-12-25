@@ -47,7 +47,7 @@
     position: relative;
     flex-wrap: wrap;
     margin: 1em 0;
-    border: px2rem(1px) solid $md-color-black--lightest;
+    border: px2rem(1px) solid var(--md-color-text--lightest);
     border-radius: 0.2em;
 
     // Hide radio buttons
@@ -107,7 +107,7 @@
     @include break-to-device(mobile) {
       margin: 1em px2rem(-16px);
       border: 0;
-      border-top: px2rem(1px) solid $md-color-black--lightest;
+      border-top: px2rem(1px) solid var(--md-color-text--lightest);
       border-radius: 0;
 
       // Actual container with code, overflowing

@@ -110,7 +110,7 @@
 
     // Blurred link
     &[data-md-state="blur"] {
-      color: $md-color-black--light;
+      color: var(--md-color-text--light);
     }
 
     // Active link
@@ -167,8 +167,8 @@
         position: relative;
         height: px2rem(112px);
         padding: px2rem(60px) px2rem(16px) px2rem(4px);
-        background-color: $md-color-black--lightest;
-        color: $md-color-black--light;
+        background-color: var(--md-color-text--lightest);
+        color: var(--md-color-text--light);
         font-weight: 400;
         line-height: px2rem(48px);
         white-space: nowrap;
@@ -194,7 +194,7 @@
         // Main lists
         ~ .md-nav__list {
           background-color: $md-color-white;
-          box-shadow: inset 0 px2rem(1px) 0 $md-color-black--lightest;
+          box-shadow: inset 0 px2rem(1px) 0 var(--md-color-black--lightest);
           overflow-y: auto;
           scroll-snap-type: y mandatory;
 
@@ -243,7 +243,7 @@
       // List item
       .md-nav__item {
         padding: 0;
-        border-top: px2rem(1px) solid $md-color-black--lightest;
+        border-top: px2rem(1px) solid var(--md-color-text--lightest);
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {

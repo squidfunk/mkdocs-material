@@ -50,7 +50,7 @@
 
     // Higher specificity for color due to palettes integration
     html body & {
-      color: $md-color-black--lighter;
+      color: var(--md-color-text--lighter);
     }
 
     // Hide for print

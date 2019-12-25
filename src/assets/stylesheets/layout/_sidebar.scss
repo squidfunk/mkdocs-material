@@ -158,7 +158,7 @@ $md-toggle__drawer--checked:
 
     // Scrollbar thumb
     &::-webkit-scrollbar-thumb {
-      background-color: $md-color-black--lighter;
+      background-color: var(--md-color-text--lighter);
 
       // Hovered scrollbar thumb
       &:hover {

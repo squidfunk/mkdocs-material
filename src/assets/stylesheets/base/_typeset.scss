@@ -33,7 +33,7 @@ body {
 // Default fonts
 body,
 input {
-  color: $md-color-black;
+  color: var(--md-color-text);
   font-feature-settings: "kern", "liga";
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -42,7 +42,7 @@ input {
 pre,
 code,
 kbd {
-  color: $md-color-black;
+  color: var(--md-color-text);
   font-feature-settings: "kern";
   font-family: "Courier New", Courier, monospace;
 }
@@ -73,7 +73,7 @@ kbd {
   // 1st level headline
   h1 {
     margin: 0 0 px2rem(40px);
-    color: $md-color-black--light;
+    color: var(--md-color-text--light);
     font-size: ms(3);
     font-weight: 300;
     letter-spacing: -0.01em;
@@ -115,7 +115,7 @@ kbd {
   h5,
   h6 {
     margin: px2rem(16px) 0;
-    color: $md-color-black--light;
+    color: var(--md-color-text--light);
     font-size: ms(-1);
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -129,7 +129,7 @@ kbd {
   // Horizontal separators
   hr {
     margin: 1.5em 0;
-    border-bottom: px2rem(1px) dotted $md-color-black--lighter;
+    border-bottom: px2rem(1px) dotted var(--md-color-text--lighter);
   }
 
   // Links
@@ -154,7 +154,7 @@ kbd {
 
       // Show link URL
       &::after {
-        color: $md-color-black--light;
+        color: var(--md-color-text--light);
         content: " [" attr(href) "]";
       }
     }
@@ -244,7 +244,7 @@ kbd {
 
       // Scrollbar thumb
       &::-webkit-scrollbar-thumb {
-        background-color: $md-color-black--lighter;
+        background-color: var(--md-color-text--lighter);
 
         // Hovered scrollbar thumb
         &:hover {
@@ -299,7 +299,7 @@ kbd {
 
   // Abbreviations
   abbr {
-    border-bottom: px2rem(1px) dotted $md-color-black--light;
+    border-bottom: px2rem(1px) dotted var(--md-color-text--light);
     text-decoration: none;
     cursor: help;
   }
@@ -324,14 +324,14 @@ kbd {
   // Blockquotes, possibly nested
   blockquote {
     padding-left: px2rem(12px);
-    border-left: px2rem(4px) solid $md-color-black--lighter;
-    color: $md-color-black--light;
+    border-left: px2rem(4px) solid var(--md-color-text--lighter);
+    color: var(--md-color-text--light);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       padding-right: px2rem(12px);
       padding-left: initial;
-      border-right: px2rem(4px) solid $md-color-black--lighter;
+      border-right: px2rem(4px) solid var(--md-color-text--lighter);
       border-left: initial;
     }
   }
@@ -449,7 +449,7 @@ kbd {
     th {
       min-width: px2rem(100px);
       padding: px2rem(12px) px2rem(16px);
-      background-color: $md-color-black--light;
+      background-color: var(--md-color-text--light);
       color: $md-color-white;
       vertical-align: top;
     }
@@ -457,7 +457,7 @@ kbd {
     // Table cells
     td {
       padding: px2rem(12px) px2rem(16px);
-      border-top: px2rem(1px) solid $md-color-black--lightest;
+      border-top: px2rem(1px) solid var(--md-color-text--lightest);
       vertical-align: top;
     }
 

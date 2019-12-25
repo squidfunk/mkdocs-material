@@ -52,7 +52,7 @@
 
   // Show on container hover
   pre:hover & {
-    color: $md-color-black--light;
+    color: var(md-color-black--light);
   }
 
   // Focused or hovered icon
