@@ -49,6 +49,12 @@ $break-devices: (
   )
 );
 
+// stylelint-enable unit-whitelist
+
+@function hex2rgb($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
 // ----------------------------------------------------------------------------
 // Variables: base colors
 // ----------------------------------------------------------------------------
@@ -78,10 +84,13 @@ $md-color-white--transparent:         hsla(0, 0%, 100%, 0) !default;
 :root {
   // Primary and accent colors
   --md-color-primary:                         #{$md-color-primary};
+  --md-color-primary-values:                  #{hex2rgb($md-color-primary)};
   --md-color-accent:                          #{$md-color-accent};
+  --md-color-accent-values:                   #{hex2rgb($md-color-accent)};
 
   // Shades of black
   --md-color-text:                            #{$md-color-black};
+  --md-color-text-values:                     0, 0, 0;
   --md-color-text--light:                     #{$md-color-black--light};
   --md-color-text--lighter:                   #{$md-color-black--lighter};
   --md-color-text--lightest:                  #{$md-color-black--lightest};
@@ -109,6 +118,7 @@ $md-color-white--transparent:         hsla(0, 0%, 100%, 0) !default;
 
   // Shades of black
   --md-color-text:                            #{$md-color-black};
+  --md-color-text-values:                     255, 255, 255;
   --md-color-text--light:                     #{$md-color-black--light};
   --md-color-text--lighter:                   #{$md-color-black--lighter};
   --md-color-text--lightest:                  #{$md-color-black--lightest};
