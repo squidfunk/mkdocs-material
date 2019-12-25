@@ -477,7 +477,7 @@ $md-toggle__search--checked:
 
         // Hovered scrollbar thumb
         &:hover {
-          background-color: $md-color-accent;
+          background-color: var(--md-color-accent);
         }
       }
     }
@@ -534,7 +534,7 @@ $md-toggle__search--checked:
     // Focused or hovered link
     &:focus,
     &:hover {
-      background-color: transparentize($md-color-accent, 0.9);
+      background-color: rgba(var(--md-color-accent), 0.9);
 
       // Slightly transparent icon
       .md-search-result__article::before {

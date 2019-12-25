@@ -162,7 +162,7 @@ $md-toggle__drawer--checked:
 
       // Hovered scrollbar thumb
       &:hover {
-        background-color: $md-color-accent;
+        background-color: var(--md-color-accent);
       }
     }
   }

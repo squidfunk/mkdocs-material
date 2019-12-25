@@ -115,7 +115,7 @@
 
     // Active link
     .md-nav__item &--active {
-      color: $md-color-primary;
+      color: var(--md-color-primary);
     }
 
     // Reset active color for nested list titles
@@ -126,7 +126,7 @@
     // Focused or hovered link
     &:focus,
     &:hover {
-      color: $md-color-accent;
+      color: var(--md-color-accent);
     }
   }
 
@@ -207,7 +207,7 @@
         // Site title in main navigation
         &[for="__drawer"] {
           position: relative;
-          background-color: $md-color-primary;
+          background-color: var(--md-color-primary);
           color: $md-color-white;
 
           // Site logo
@@ -413,7 +413,7 @@
     &__source {
       display: block;
       padding: 0 px2rem(4px);
-      background-color: mix($md-color-primary, $md-color-black, 75%);
+      background-color: var(--md-color-primary); // mix(var(--md-color-primary), $md-color-black, 75%); // TODO: fix calculation https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables
       color: $md-color-white;
     }
   }

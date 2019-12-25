@@ -72,6 +72,50 @@ $md-color-white--lightest:            hsla(0, 0%, 100%, 0.12) !default;
 $md-color-white--transparent:         hsla(0, 0%, 100%, 0) !default;
 
 // ----------------------------------------------------------------------------
+// CSS Variables: base colors
+// ----------------------------------------------------------------------------
+
+:root {
+  // Primary and accent colors
+  --md-color-primary:                         var(--md-color-primary);
+  --md-color-accent:                          var(--md-color-accent);
+
+  // Shades of black
+  --md-color-text:                            $md-color-black;
+  --md-color-text--light:                     $md-color-black--light;
+  --md-color-text--lighter:                   $md-color-black--lighter;
+  --md-color-text--lightest:                  $md-color-black--lightest;
+  --md-color-text--transparent:               $md-color-black--transparent;
+
+  // Shades of white
+  --md-color-background:                      $md-color-white;
+  --md-color-background--light:               $md-color-white--light;
+  --md-color-background--lighter:             $md-color-white--lighter;
+  --md-color-background--lightest:            $md-color-white--lightest;
+  --md-color-background--transparent:         $md-color-white--transparent;
+}
+
+:root.dark-mode {
+    // Primary and accent colors
+  --md-color-primary:                         var(--md-color-primary);
+  --md-color-accent:                          var(--md-color-accent);
+
+  // Shades of white
+  --md-color-background:                      $md-color-white;
+  --md-color-background--light:               $md-color-white--light;
+  --md-color-background--lighter:             $md-color-white--lighter;
+  --md-color-background--lightest:            $md-color-white--lightest;
+  --md-color-background--transparent:         $md-color-white--transparent;
+
+  // Shades of black
+  --md-color-text:                            $md-color-black;
+  --md-color-text--light:                     $md-color-black--light;
+  --md-color-text--lighter:                   $md-color-black--lighter;
+  --md-color-text--lightest:                  $md-color-black--lightest;
+  --md-color-text--transparent:               $md-color-black--transparent;
+}
+
+// ----------------------------------------------------------------------------
 // Variables: sizing and spacing
 // ----------------------------------------------------------------------------
 

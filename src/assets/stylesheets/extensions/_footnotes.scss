@@ -92,7 +92,7 @@
       // Active or targeted back reference
       &:hover  .footnote-backref:hover,
       &:target .footnote-backref {
-        color: $md-color-accent;
+        color: var(--md-color-accent);
       }
     }
   }

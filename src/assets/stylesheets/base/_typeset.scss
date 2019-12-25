@@ -134,7 +134,7 @@ kbd {
 
   // Links
   a {
-    color: $md-color-primary;
+    color: var(--md-color-primary);
     word-break: break-word;
 
     // Also enable color transition on pseudo elements
@@ -146,7 +146,7 @@ kbd {
     // Focused or hover links
     &:focus,
     &:hover {
-      color: $md-color-accent;
+      color: var(--md-color-accent);
     }
 
     // Add URLs for print
@@ -248,7 +248,7 @@ kbd {
 
         // Hovered scrollbar thumb
         &:hover {
-          background-color: $md-color-accent;
+          background-color: var(--md-color-accent);
         }
       }
     }

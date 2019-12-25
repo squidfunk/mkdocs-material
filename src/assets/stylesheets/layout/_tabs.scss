@@ -28,7 +28,7 @@
 .md-tabs {
   width: 100%;
   transition: background 250ms;
-  background-color: $md-color-primary;
+  background-color: var(--md-color-primary);
   color: $md-color-white;
   overflow: auto;
 

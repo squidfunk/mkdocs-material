@@ -95,7 +95,7 @@
 
       // Hovered tab label
       html &:hover {
-        color: $md-color-accent;
+        color: var(--md-color-accent);
       }
     }
   }

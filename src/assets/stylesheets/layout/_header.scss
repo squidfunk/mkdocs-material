@@ -33,8 +33,8 @@
   height: px2rem(48px);
   transition:
     background-color 250ms,
-    color            250ms;
-  background-color: $md-color-primary;
+    color 250ms;
+  background-color: var(--md-color-primary);
   color: $md-color-white;
   box-shadow: none;
   z-index: 2;
