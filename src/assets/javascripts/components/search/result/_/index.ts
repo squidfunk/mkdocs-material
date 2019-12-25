@@ -40,6 +40,7 @@ import { paintSearchResultMeta } from "../meta"
 //  * Types
 //  * ------------------------------------------------------------------------- */
 
+// tslint:disable-next-line: no-commented-code
 // /**
 //  * Search result state
 //  */
