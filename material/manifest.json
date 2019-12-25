@@ -1,0 +1,18 @@
+{
+  "short_name": "mkdocs-material",
+  "name": "mkdocs-material",
+  "start_url": "/?utm_source=web_app_manifest",
+  "icons": [
+    {
+      "src": "assets/images/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone"
+}

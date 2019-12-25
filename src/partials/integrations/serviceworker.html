@@ -1,7 +1,7 @@
 <script type="text/javascript">
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function() {
-    navigator.serviceWorker.register("{{ 'serviceworker.js' | url }}")
-  })
-}
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("{{ 'serviceworker.js' | url }}")
+    })
+  }
 </script>
