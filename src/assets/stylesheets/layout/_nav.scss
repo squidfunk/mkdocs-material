@@ -137,7 +137,7 @@
 
   // [tablet -]: Layered navigation
   @include break-to-device(tablet) {
-    background-color: $md-color-white;
+    background-color: var(--md-color-background);
 
     // Stretch primary navigation to drawer
     &--primary,
@@ -193,7 +193,7 @@
 
         // Main lists
         ~ .md-nav__list {
-          background-color: $md-color-white;
+          background-color: var(--md-color-white);
           box-shadow: inset 0 px2rem(1px) 0 var(--md-color-black--lightest);
           overflow-y: auto;
           scroll-snap-type: y mandatory;
@@ -208,7 +208,7 @@
         &[for="__drawer"] {
           position: relative;
           background-color: var(--md-color-primary);
-          color: $md-color-white;
+          color: var(--md-color-background);
 
           // Site logo
           .md-nav__button {
@@ -414,7 +414,7 @@
       display: block;
       padding: 0 px2rem(4px);
       background-color: var(--md-color-primary); // mix(var(--md-color-primary), $md-color-black, 75%); // TODO: fix calculation https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables
-      color: $md-color-white;
+      color: var(--md-color-background);
     }
   }
 

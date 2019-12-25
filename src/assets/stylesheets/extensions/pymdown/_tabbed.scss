@@ -32,7 +32,7 @@
     display: none;
     order: 99;
     width: 100%;
-    background-color: $md-color-white;
+    background-color: var(--md-color-background);
 
     // Actual content
     pre {

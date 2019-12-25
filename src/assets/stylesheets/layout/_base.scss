@@ -35,8 +35,8 @@ $md-toggle__drawer--checked:
 // Stretch container to viewport and set base font-size to 10px for simple
 // calculations base on relative ems (rems)
 html {
-  height: 100%;
-  background-color: $md-color-white;
+  min-height: 100%;
+  background-color: var(--md-color-background);
   // Hack: normally, we would set the base font-size to 62.5%, so we can base
   // all calculations on 10px, but Chromium and Chrome define a minimal font
   // size of 12 if the system language is set to Chinese. For this reason we
@@ -178,7 +178,7 @@ hr {
   transform: translateY(px2rem(8px));
   border-radius: px2rem(2px);
   background-color: var(--md-color-text);
-  color: $md-color-white;
+  color: var(--md-color-background);
   font-size: ms(-1);
   opacity: 0;
 

@@ -29,7 +29,7 @@
   width: 100%;
   transition: background 250ms;
   background-color: var(--md-color-primary);
-  color: $md-color-white;
+  color: var(--md-color-background);
   overflow: auto;
 
   // Omit transitions, in case JavaScript is not available

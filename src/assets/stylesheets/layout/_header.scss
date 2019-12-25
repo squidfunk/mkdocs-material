@@ -35,7 +35,7 @@
     background-color 250ms,
     color 250ms;
   background-color: var(--md-color-primary);
-  color: $md-color-white;
+  color: var(--md-color-background);
   box-shadow: none;
   z-index: 2;
   // Hack: putting the header on the GPU avoids unnecessary repaints

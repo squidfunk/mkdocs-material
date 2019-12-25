@@ -450,7 +450,7 @@ kbd {
       min-width: px2rem(100px);
       padding: px2rem(12px) px2rem(16px);
       background-color: var(--md-color-text--light);
-      color: $md-color-white;
+      color: var(--md-color-background);
       vertical-align: top;
     }
 
@@ -468,7 +468,7 @@ kbd {
       // Add background on hover
       &:hover {
         background-color: rgba(0, 0, 0, 0.035);
-        box-shadow: 0 px2rem(1px)  0 $md-color-white inset;
+        box-shadow: 0 px2rem(1px)  0 var(--md-color-background) inset;
       }
 
       // Remove top border on first row

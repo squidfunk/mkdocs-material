@@ -28,7 +28,7 @@
 .md-hero {
   transition: background 250ms;
   background-color: var(--md-color-primary);
-  color: $md-color-white;
+  color: var(--md-color-background);
   font-size: ms(1);
   overflow: hidden;
 

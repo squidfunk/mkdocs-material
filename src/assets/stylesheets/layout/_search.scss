@@ -63,7 +63,7 @@ $md-toggle__search--checked:
         transform 300ms 100ms,
         opacity   200ms 200ms;
       border-radius: px2rem(20px);
-      background-color: $md-color-white;
+      background-color: var(--md-color-background);
       overflow: hidden;
       pointer-events: none;
 
@@ -278,18 +278,18 @@ $md-toggle__search--checked:
 
       // Placeholder color
       &::placeholder {
-        color: $md-color-white--light;
+        color: var(--md-color-background--light);
       }
 
       // Hovered search field
       &:hover {
-        background-color: $md-color-white--lightest;
+        background-color: var(--md-color-background--lightest);
       }
 
       // Set light background on active search field
       #{$md-toggle__search--checked} & {
         border-radius: px2rem(2px) px2rem(2px) 0 0;
-        background-color: $md-color-white;
+        background-color: var(--md-color-background);
         color: var(--md-color-text);
         text-overflow: clip;
 
@@ -435,7 +435,7 @@ $md-toggle__search--checked:
   // Wrapper for scrolling on overflow
   &__scrollwrap {
     height: 100%;
-    background-color: $md-color-white;
+    background-color: var(--md-color-background);
     box-shadow: inset 0 px2rem(1px) 0 var(md-color-black--lightest);
     overflow-y: auto;
     scroll-snap-type: y mandatory;
