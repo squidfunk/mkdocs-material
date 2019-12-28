@@ -69,12 +69,15 @@
     <link rel="stylesheet" href="{{ 'assets/fonts/material-icons.css' | url }}">
     {% if config.extra.manifest %}
       <link rel="manifest" type="application/manifest+json" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
-    {% else }
-      <link rel="manifest" type="application/manifest+json" href="{{ 'manifest.json' | url }}" crossorigin="use-credentials">
+    {% else %}
+      <link rel="manifest" type="application/manifest+json" href="{{ manifest.json | url }}" crossorigin="use-credentials">
     {% endif %}
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
+    {% block serviceworker %}
+      {% include "partials/integrations/serviceworker.html" %}
+    {% endblock %}
     {% block analytics %}
       {% if config.google_analytics %}
         {% include "partials/integrations/analytics.html" %}
