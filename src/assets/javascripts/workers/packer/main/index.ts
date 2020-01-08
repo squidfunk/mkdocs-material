@@ -94,6 +94,6 @@ export function handler(message: PackerMessage): PackerMessage {
  * Worker
  * ------------------------------------------------------------------------- */
 
-addEventListener("message", ev => {
-  postMessage(handler(ev.data))
+self.addEventListener("message", ev => {
+  self.postMessage(handler(ev.data))
 })

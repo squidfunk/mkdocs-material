@@ -61,18 +61,18 @@ theme:
 
 # Plugins
 plugins:
-  - search:
+  - search
   - minify:
       minify_html: true
 
 # Customization
 extra:
   social:
-    - type: brands/github-alt
+    - icon: brands/github-alt
       link: https://github.com/squidfunk
-    - type: brands/twitter
+    - icon: brands/twitter
       link: https://twitter.com/squidfunk
-    - type: brands/linkedin
+    - icon: brands/linkedin
       link: https://www.linkedin.com/in/squidfunk/
 
 # Extensions

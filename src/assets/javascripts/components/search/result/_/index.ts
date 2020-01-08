@@ -36,18 +36,6 @@ import { Agent, watchElementOffset } from "utilities"
 import { paintSearchResultList } from "../list"
 import { paintSearchResultMeta } from "../meta"
 
-// /* ----------------------------------------------------------------------------
-//  * Types
-//  * ------------------------------------------------------------------------- */
-
-// tslint:disable-next-line: no-commented-code
-// /**
-//  * Search result state
-//  */
-// export interface SearchResultState {
-//   result: SearchResult[]               /* Search results */
-// }
-
 /* ----------------------------------------------------------------------------
  * Helper types
  * ------------------------------------------------------------------------- */

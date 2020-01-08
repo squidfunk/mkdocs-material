@@ -30,7 +30,10 @@ import {
   Subject,
   forkJoin,
   merge,
-  of
+  of,
+  fromEvent,
+  interval,
+  NEVER
 } from "rxjs"
 import { ajax } from "rxjs/ajax"
 import {
@@ -66,7 +69,8 @@ import {
   watchToggle,
   watchWorker,
   setToggle,
-  getElements
+  getElements,
+  watchMedia
 } from "./utilities"
 import {
   PackerMessage,
@@ -78,6 +82,7 @@ import {
   isSearchResultMessage
 } from "./workers"
 import { renderSource } from "templates"
+import { switchMapIf, not } from "extensions"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -238,7 +243,7 @@ function repository() {
   if (!el)
     return EMPTY
 
-  const data = localStorage.getItem("repository")
+  const data = sessionStorage.getItem("repository")
   if (data) {
     const x = JSON.parse(data)
     return of(x)
@@ -246,14 +251,13 @@ function repository() {
 
   // TODO: do correct rounding, see GitHub
   function format(value: number) {
-    if (value > 10000)
-      return `${(value / 1000).toFixed(0)}k`
-    else if (value > 1000)
-      return `${(value / 1000).toFixed(1)}k`
-    return `${value}`
+    return value > 999
+      ? `${(value / 1000).toFixed(1)}k`
+      : `${(value)}`
   }
 
-  const [, user, repo] = el.href.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)?.*$/)
+  // github repository...
+  const [, user, repo] = el.href.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)?.*$/i)
 
   // Show repo stats
   if (user && repo) {
@@ -272,7 +276,7 @@ function repository() {
           }
           return []
         }),
-        tap(data => localStorage.setItem("repository", JSON.stringify(data)))
+        tap(data => sessionStorage.setItem("repository", JSON.stringify(data)))
       )
 
   // Show user or organization stats
@@ -291,7 +295,7 @@ function repository() {
           }
           return []
         }),
-        tap(data => localStorage.setItem("repository", JSON.stringify(data)))
+        tap(data => sessionStorage.setItem("repository", JSON.stringify(data)))
       )
   }
   return of([])
@@ -448,7 +452,6 @@ export function initialize(config: unknown) {
 
   const a$ = watchToggle(search)
     .pipe(
-      filter(identity),
       delay(400)
     )
 
@@ -457,12 +460,34 @@ export function initialize(config: unknown) {
       switchMap(watchSearchReset)
     )
 
-  merge(a$, reset$)
+  /* Listener: focus query if search is open and character is typed */
+  // TODO: combine with watchElementFocus
+  const keysIfSearchActive$ = a$
+    .pipe(
+      switchMap(x => x === true ? fromEvent(window, "keydown") : NEVER),
+    )
+
+  // focus search on reset, on toggle and on keypress if open
+  merge(a$.pipe(filter(identity)), reset$, keysIfSearchActive$)
     .pipe(
       switchMapTo(component<HTMLInputElement>("search-query")),
-      tap(el => el.focus())
+      tap(el => el.focus()) // TODO: only if element isnt focused! setFocus? setToggle?
     )
       .subscribe()
+
+  /* ----------------------------------------------------------------------- */
+
+  /* Open details before printing */
+  merge(
+    watchMedia("print").pipe(filter(identity)), // Webkit
+    fromEvent(window, "beforeprint") // IE, FF
+  )
+    .subscribe(() => {
+      const details = document.querySelectorAll("details")
+      Array.prototype.forEach.call(details, detail => {
+        detail.setAttribute("open", "")
+      })
+    })
 
   /* ----------------------------------------------------------------------- */
 

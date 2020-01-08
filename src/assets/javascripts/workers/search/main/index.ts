@@ -72,6 +72,6 @@ export function handler(message: SearchMessage): SearchMessage {
  * Worker
  * ------------------------------------------------------------------------- */
 
-addEventListener("message", ev => {
-  postMessage(handler(ev.data))
+self.addEventListener("message", ev => {
+  self.postMessage(handler(ev.data))
 })
