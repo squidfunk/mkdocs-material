@@ -106,7 +106,6 @@ export default class Position {
 
     /* Calculate new offset and height */
     const height = visible - bounds.top
-                 - Math.max(0, this.offset_ - offset)
                  - Math.max(0, offset + visible - bounds.bottom)
 
     /* If height changed, update element */
