@@ -26,7 +26,7 @@
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       {% if page and page.meta and page.meta.author %}
-        <meta name="author" content="{{ page.meta.author | first }}">
+        <meta name="author" content="{{ page.meta.author }}">
       {% elif config.site_author %}
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
