@@ -3,10 +3,12 @@
 ## Hi, I'm Martin ([@squidfunk][1])
 
 I'm a freelance polyglot software engineer and entrepreneur from Cologne,
-Germany with more than 12 years of experience in full-stack web development and
-system programming.
+Germany with more than 13 years of experience in full-stack web development and
+system programming. I'm currently working full time on an exciting new venture,
+an __analytical browser engine__ called [Ginseng][2].
 
   [1]: https://github.com/squidfunk
+  [2]: https://ginseng.ai
 
 ## Why another theme?
 
