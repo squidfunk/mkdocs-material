@@ -233,7 +233,6 @@ $codehilite-whitespace: transparent;
       padding: px2rem(10.5px) px2rem(12px);
       background-color: transparent;
       overflow: auto;
-      vertical-align: top;
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {
