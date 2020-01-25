@@ -21,50 +21,19 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
-@import "material-shadows";
+// Announcement bar
+.md-announcement {
+  background-color: $md-color-black;
 
-// ----------------------------------------------------------------------------
-// Local imports
-// ----------------------------------------------------------------------------
-
-@import "utilities/break";
-@import "utilities/px2em";
-
-@import "config";
-
-@import "base/reset";
-@import "base/icons";
-@import "base/typeset";
-
-@import "layout/base";
-@import "layout/announce";
-@import "layout/clipboard";
-@import "layout/content";
-@import "layout/header";
-@import "layout/hero";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/search";
-@import "layout/sidebar";
-@import "layout/source";
-@import "layout/tabs";
-
-@import "extensions/admonition";
-@import "extensions/codehilite";
-@import "extensions/footnotes";
-@import "extensions/permalinks";
-
-@import "extensions/pymdown/arithmatex";
-@import "extensions/pymdown/critic";
-@import "extensions/pymdown/details";
-@import "extensions/pymdown/emoji";
-@import "extensions/pymdown/inlinehilite";
-@import "extensions/pymdown/superfences";
-@import "extensions/pymdown/tasklist";
-
-@import "shame";
+  // Actual content
+  &__inner {
+    min-height: px2rem(48px);
+    padding: 0 px2rem(16px);
+    color: $md-color-white;
+    font-size: px2rem(14px);
+    line-height: px2rem(48px);
+  }
+}

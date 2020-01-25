@@ -478,6 +478,15 @@ hr {
 @page {
   margin: 25mm; }
 
+.md-announcement {
+  background-color: rgba(0, 0, 0, 0.87); }
+  .md-announcement__inner {
+    min-height: 2.4rem;
+    padding: 0 0.8rem;
+    color: white;
+    font-size: 0.7rem;
+    line-height: 2.4rem; }
+
 .md-clipboard {
   position: absolute;
   top: 0.3rem;
@@ -1594,8 +1603,7 @@ hr {
     margin: 0;
     padding: 0.525rem 0.6rem;
     background-color: transparent;
-    overflow: auto;
-    vertical-align: top; }
+    overflow: auto; }
     .md-typeset .codehilite pre::-webkit-scrollbar, .md-typeset .highlight pre::-webkit-scrollbar,
     .md-typeset .codehilite code::-webkit-scrollbar,
     .md-typeset .highlight code::-webkit-scrollbar {

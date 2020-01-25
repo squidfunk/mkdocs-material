@@ -226,9 +226,11 @@
 
     <!-- Announcement bar -->
     {% if self.announcement() %}
-      <div class="md-announcement" data-md-component="announcement">
-        {% block announcement %}{% endblock %}
-      </div>
+      <aside class="md-announcement" data-md-component="announcement">
+        <div class="md-announcement__inner md-grid md-typeset">
+          {% block announcement %}{% endblock %}
+        </div>
+      </aside>
     {% endif %}
 
     <!-- Application header -->
