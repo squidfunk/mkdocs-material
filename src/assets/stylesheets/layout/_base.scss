@@ -35,7 +35,7 @@ $md-toggle__drawer--checked:
 // Stretch container to viewport and set base font-size to 10px for simple
 // calculations base on relative ems (rems)
 html {
-  height: 100%;
+  min-height: 100%;
   // Hack: normally, we would set the base font-size to 62.5%, so we can base
   // all calculations on 10px, but Chromium and Chrome define a minimal font
   // size of 12 if the system language is set to Chinese. For this reason we
@@ -63,7 +63,7 @@ html {
 // Stretch body to container and leave room for footer
 body {
   position: relative;
-  height: 100%;
+  min-height: 100%;
   // Hack: reset font-size to 10px, so the spacing for all inline elements is
   // correct again. Otherwise the spacing would be based on 20px.
   font-size: 0.5rem; // stylelint-disable-line unit-whitelist
@@ -110,7 +110,6 @@ hr {
   display: table;
   width: 100%;
   height: 100%;
-  padding-top: px2rem(48px);
   table-layout: fixed;
 }
 

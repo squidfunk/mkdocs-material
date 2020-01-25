@@ -53,7 +53,7 @@ export function watchHeader(
 ): Observable<HeaderState> {
   return defer(() => {
     const sticky = getComputedStyle(el)
-      .getPropertyValue("position") === "fixed"
+      .getPropertyValue("position") === "sticky"
 
     /* Return header as hot observable */
     return of({

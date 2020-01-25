@@ -95,6 +95,11 @@
         {{ lang.t('skip.link.title') }}
       </a>
     {% endif %}
+    {% if self.announcement() %}
+      <div class="md-announcement" data-md-component="announcement">
+        {% block announcement %}{% endblock %}
+      </div>
+    {% endif %}
     {% block header %}
       {% include "partials/header.html" %}
     {% endblock %}
