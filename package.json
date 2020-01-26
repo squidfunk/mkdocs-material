@@ -50,6 +50,8 @@
     "autoprefixer": "^9.7.3",
     "css-mqpacker": "^7.0.0",
     "csso-cli": "^3.0.0",
+    "expose-loader": "^0.7.5",
+    "github-types": "^1.0.0",
     "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",

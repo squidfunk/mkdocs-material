@@ -75,7 +75,7 @@ interface Options {
  * @return Main area state observable
  */
 export function watchMain(
-  el: HTMLElement,  { viewport }: Agent, { header$ }: Options
+  el: HTMLElement, { viewport }: Agent, { header$ }: Options
 ): Observable<MainState> {
 
   /* Compute necessary adjustment for header */

@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import * as lunr from "lunr"
+import * as lunr from "expose-loader?lunr!lunr"
 
 import {
   ArticleDocument,

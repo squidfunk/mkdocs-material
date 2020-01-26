@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndex } from "modules"
+import { SearchIndex, SearchIndexConfig } from "modules"
 
 import { SearchMessage, SearchMessageType } from "../_"
 
@@ -32,6 +32,33 @@ import { SearchMessage, SearchMessageType } from "../_"
  * Search index
  */
 let index: SearchIndex
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Setup multi-language support through `lunr-languages`
+ *
+ * @param config - Search index configuration
+ */
+function setupLunrLanguages(config: SearchIndexConfig): void {
+  const base = "../lunr"
+
+  /* Add scripts for languages */
+  const scripts = [`${base}/lunr.stemmer.support.min.js`]
+  for (const lang of config.lang) {
+    if (lang === "ja") scripts.push(`${base}/tinyseg.js`)
+    if (lang !== "en") scripts.push(`${base}/lunr.${lang}.min.js`)
+  }
+
+  /* Add multi-language support */
+  if (scripts.length > 1)
+    scripts.push(`${base}/lunr.multi.min.js`)
+
+  /* Load scripts synchronously */
+  importScripts(...scripts)
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -49,6 +76,7 @@ export function handler(message: SearchMessage): SearchMessage {
 
     /* Setup search index */
     case SearchMessageType.SETUP:
+      setupLunrLanguages(message.data.config)
       index = new SearchIndex(message.data)
       return {
         type: SearchMessageType.DUMP,

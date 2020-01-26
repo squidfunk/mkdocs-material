@@ -100,30 +100,20 @@ material/assets/images/%.png: src/assets/images/%.png | $$(@D)/.
 
 # -----------------------------------------------------------------------------
 
-# Search stemmer locations
-LUNR_SOURCE = node_modules/lunr-languages/min
-LUNR_TARGET = material/assets/javascripts/lunr
-
-# Search stemmer languages
-LUNR_LANGUAGES = $(shell echo ${LUNR} \
-		| grep -oE '\.[a-z]{2}\.' \
-		| sed 's/\./"/g' \
-		| paste -sd "," -)
-
 # Search stemmers
-LUNR = $(subst ${LUNR_SOURCE},${LUNR_TARGET},$(wildcard ${LUNR_SOURCE}/*.js))
-material/assets/javascripts/lunr: ${LUNR}
-material/assets/javascripts/lunr/%.js: ${LUNR_SOURCE}/%.js | $$(@D)/.
+SCRIPT_LUNR = node_modules/lunr-languages/min
+material/assets/javascripts/lunr: ${SCRIPT_LUNR} | $$(@D)/.
 	@ echo "+ $@"
-	@ cp $< $@
+	@ cp -r $< $@
+	@ cp node_modules/lunr-languages/tinyseg.js $@
 
 # -----------------------------------------------------------------------------
 
 # Scripts
 SCRIPT = src/assets/javascripts/index.ts
 SCRIPT_PARTIALS = $(shell find src -name "*.ts*")
-material/assets/javascripts: $$@/lunr material/assets/javascripts/app.js
-material/assets/javascripts/app.js: ${SCRIPT} ${SCRIPT_PARTIALS} | $$(@D)/.
+material/assets/javascripts: $$@/lunr material/assets/javascripts/bundle.js
+material/assets/javascripts/bundle.js: ${SCRIPT} ${SCRIPT_PARTIALS} | $$(@D)/.
 	@ echo "+ $@"
 	@ ${BIN}/webpack --mode production
 
@@ -185,7 +175,6 @@ material: $$@/assets $$@/__init__.py $$@/mkdocs_theme.yml ${HTML}
 	@ sed -i.tmp \
 		-e 's/\$$md-name\$$/${NAME}/' \
 		-e 's/\$$md-version\$$/${VERSION}/' \
-		-e 's/\$$md-lunr-languages\$$/${LUNR_LANGUAGES}/' \
 		$@/base.html; rm -f $@/base.html.tmp
 	@ echo "\n  ${NAME}-${VERSION}\n"
 
