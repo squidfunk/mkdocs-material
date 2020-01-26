@@ -137,6 +137,13 @@ export class SearchIndex {
         if (pipeline.stopwords)
           this.pipeline.add(lunr.stopWordFilter)
 
+        /* Set up alternate search languages */
+        if (config.lang.length === 1 && config.lang[0] !== "en") {
+          this.use((lunr as any)[config.lang[0]])
+        } else if (config.lang.length > 1) {
+          this.use((lunr as any).multiLanguage(...config.lang))
+        }
+
         /* Setup fields and reference */
         this.field("title", { boost: 10 })
         this.field("text")

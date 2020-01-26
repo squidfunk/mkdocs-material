@@ -70,7 +70,8 @@ import {
   watchWorker,
   setToggle,
   getElements,
-  watchMedia
+  watchMedia,
+  translate
 } from "./utilities"
 import {
   PackerMessage,
