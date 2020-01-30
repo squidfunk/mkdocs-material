@@ -379,6 +379,7 @@ kbd {
 
 html {
   min-height: 100%;
+  background-color: white;
   font-size: 125%;
   overflow-x: hidden; }
 

@@ -36,6 +36,7 @@ $md-toggle__drawer--checked:
 // calculations base on relative ems (rems)
 html {
   min-height: 100%;
+  background-color: $md-color-white;
   // Hack: normally, we would set the base font-size to 62.5%, so we can base
   // all calculations on 10px, but Chromium and Chrome define a minimal font
   // size of 12 if the system language is set to Chinese. For this reason we
