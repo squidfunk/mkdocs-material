@@ -2,17 +2,7 @@
   This file was automatically generated - do not edit
 -#}
 {% import "partials/language.html" as lang with context %}
-{% set platform = config.repo_url %}
-{% if "github" in platform %}
-  {% set repo_type = "github" %}
-{% elif "gitlab" in platform %}
-  {% set repo_type = "gitlab" %}
-{% elif "bitbucket" in platform %}
-  {% set repo_type = "bitbucket" %}
-{% else %}
-  {% set repo_type = "" %}
-{% endif %}
-<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source" data-md-source="{{ repo_type }}">
+<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source">
   <div class="md-source__icon">
     {% set repo_icon = config.extra.repo_icon | default("brands/git-alt") %}
     {% include "assets/images/icons/fontawesome/" ~ repo_icon ~ ".svg" %}

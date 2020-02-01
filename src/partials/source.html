@@ -22,27 +22,11 @@
 
 {% import "partials/language.html" as lang with context %}
 
-<!--
-  Check whether the repository is hosted on one of the supported code hosting
-  platforms (GitHub, GitLab or Bitbucket) to show icon.
--->
-{% set platform = config.repo_url %}
-{% if "github" in platform %}
-  {% set repo_type = "github" %}
-{% elif "gitlab" in platform %}
-  {% set repo_type = "gitlab" %}
-{% elif "bitbucket" in platform %}
-  {% set repo_type = "bitbucket" %}
-{% else %}
-  {% set repo_type = "" %}
-{% endif %}
-
 <!-- Repository containing source -->
 <a
   href="{{ config.repo_url }}"
   title="{{ lang.t('source.link.title') }}"
   class="md-source"
-  data-md-source="{{ repo_type }}"
 >
   <div class="md-source__icon">
     {% set repo_icon = config.extra.repo_icon | default("brands/git-alt") %}
