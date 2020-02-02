@@ -22,6 +22,7 @@
 
 import {
   EMPTY,
+  MonoTypeOperatorFunction,
   Observable,
   OperatorFunction,
   combineLatest,
@@ -30,8 +31,10 @@ import {
 } from "rxjs"
 import {
   filter,
+  map,
   switchMap,
-  takeUntil
+  takeUntil,
+  withLatestFrom
 } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
@@ -63,5 +66,24 @@ export function switchMapIf<T, U>(
           )
       : EMPTY
     )
+  )
+}
+
+/**
+ * Toggle emission with another observable
+ *
+ * @template T - Value type
+ *
+ * @param toggle$ - Toggle observable
+ *
+ * @return Operator function
+ */
+export function takeIf<T>(
+  toggle$: Observable<boolean>
+): MonoTypeOperatorFunction<T> {
+  return pipe(
+    withLatestFrom(toggle$),
+    filter(([, active]) => active),
+    map(([value]) => value)
   )
 }

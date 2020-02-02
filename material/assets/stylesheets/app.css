@@ -954,9 +954,9 @@ hr {
     transition: background 0.25s;
     outline: 0;
     overflow: hidden; }
-    .md-search-result__link[data-md-state="active"], .md-search-result__link:hover {
+    .md-search-result__link:focus, .md-search-result__link:hover {
       background-color: rgba(83, 109, 254, 0.1); }
-      .md-search-result__link[data-md-state="active"] .md-search-result__article::before, .md-search-result__link:hover .md-search-result__article::before {
+      .md-search-result__link:focus .md-search-result__article::before, .md-search-result__link:hover .md-search-result__article::before {
         opacity: 0.7; }
     .md-search-result__link:last-child .md-search-result__teaser {
       margin-bottom: 0.6rem; }

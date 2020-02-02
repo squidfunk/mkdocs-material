@@ -35,11 +35,22 @@ import { translate } from "utilities"
 export function setSearchResultMeta(
   el: HTMLElement, value: number
 ): void {
-  el.textContent = value > 1
-    ? translate("search.result.other", value.toString())
-    : value === 1
-      ? translate("search.result.one")
-      : translate("search.result.none")
+  switch (value) {
+
+    /* No results */
+    case 0:
+      el.textContent = translate("search.result.none")
+      break
+
+    /* One result */
+    case 1:
+      el.textContent = translate("search.result.one")
+      break
+
+    /* Multiple result */
+    default:
+      el.textContent = translate("search.result.other", value.toString())
+  }
 }
 
 /**

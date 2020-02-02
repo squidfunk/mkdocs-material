@@ -76,7 +76,7 @@ export function watchDocument(): Observable<Document> {
  * This function returns an observables that fetches a document if the provided
  * location observable emits a new value (i.e. URL). If the emitted URL points
  * to the same page, the request is effectively ignored (e.g. when only the
- * fragment identifier changes)
+ * fragment identifier changes).
  *
  * @param options - Options
  *

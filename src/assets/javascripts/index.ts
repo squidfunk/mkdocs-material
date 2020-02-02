@@ -45,6 +45,9 @@ import {
   switchMapTo,
   take,
   tap,
+  withLatestFrom,
+  distinctUntilChanged,
+  distinctUntilKeyChanged,
 } from "rxjs/operators"
 
 import {
@@ -71,7 +74,8 @@ import {
   setToggle,
   getElements,
   watchMedia,
-  translate
+  translate,
+  watchElementFocus
 } from "./utilities"
 import {
   PackerMessage,
@@ -83,7 +87,7 @@ import {
   isSearchResultMessage
 } from "./workers"
 import { renderSource } from "templates"
-import { switchMapIf, not } from "extensions"
+import { switchMapIf, not, takeIf } from "extensions"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -239,7 +243,7 @@ function setupWorkers(config: Config) {
  * Yes, this is a super hacky implementation. Needs clean up.
  */
 function repository() {
-  const el = getElement<HTMLAnchorElement>("[data-md-source][href]")
+  const el = getElement<HTMLAnchorElement>(".md-source[href]") // TODO: dont use classes
   console.log(el)
   if (!el)
     return EMPTY
@@ -326,7 +330,7 @@ export function initialize(config: unknown) {
   // TODO: WIP repo rendering
   repository().subscribe(facts => {
     if (facts.length) {
-      const sources = getElements("[data-md-source] .md-source__repository")
+      const sources = getElements(".md-source__repository")
       sources.forEach(repo => {
         repo.dataset.mdState = "done"
         repo.appendChild(
@@ -396,6 +400,7 @@ export function initialize(config: unknown) {
         type: SearchMessageType.QUERY,
         data: query.value
       })), // TODO. ugly...
+      distinctUntilKeyChanged("data")
       // distinctUntilKeyChanged("data")
     )
       .subscribe(searchMessage$)
@@ -432,7 +437,10 @@ export function initialize(config: unknown) {
   // TODO: naming?
   const resultComponent$ = component("search-result")
     .pipe(
-      mountSearchResult(agent, { result$, query$: query$.pipe(pluck("value")) })
+      mountSearchResult(agent, { result$, query$: query$.pipe(
+        distinctUntilKeyChanged("value"),
+        pluck("value")
+      ) })
     ) // temporary fix
 
   const tabs$ = component("tabs")
@@ -451,7 +459,7 @@ export function initialize(config: unknown) {
   const drawer = getElement<HTMLInputElement>("[data-md-toggle=drawer]")!
   const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
 
-  const a$ = watchToggle(search)
+  const searchActive$ = watchToggle(search)
     .pipe(
       delay(400)
     )
@@ -461,15 +469,90 @@ export function initialize(config: unknown) {
       switchMap(watchSearchReset)
     )
 
-  /* Listener: focus query if search is open and character is typed */
-  // TODO: combine with watchElementFocus
-  const keysIfSearchActive$ = a$
+  const key$ = fromEvent<KeyboardEvent>(window, "keydown").pipe(
+    filter(ev => !(ev.metaKey || ev.ctrlKey))
+  )
+
+  // search mode is active!
+  key$.pipe(
+    takeIf(searchActive$)
+    // switchMapIf(searchActive$, x => {
+    //   console.log("search mode!", x)
+    //   return EMPTY
+    // })
+  )
+    .subscribe(x => console.log("search mode", x))
+
+  // filter arrow keys if search is active!
+  searchActive$.subscribe(console.log)
+
+  // shortcodes
+  key$
     .pipe(
-      switchMap(x => x === true ? fromEvent(window, "keydown") : NEVER),
+      takeIf(not(searchActive$))
     )
+      .subscribe(ev => {
+        if (
+          document.activeElement && (
+            ["TEXTAREA", "SELECT", "INPUT"].includes(
+              document.activeElement.tagName
+            ) ||
+            document.activeElement instanceof HTMLElement &&
+            document.activeElement.isContentEditable
+          )
+        ) {
+          // do nothing...
+        } else {
+          if (ev.keyCode === 70 || ev.keyCode === 83) {
+            setToggle(search, true)
+          }
+        }
+      })
+  // check which element is focused...
+  // note that all links have tabindex=-1
+  key$
+    .pipe(
+      takeIf(searchActive$),
+
+      /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
+      tap(ev => {
+        if (ev.key === "Enter") {
+          if (document.activeElement === getElement("[data-md-component=search-query]")) {
+            ev.preventDefault()
+            // intercept hash change after search closed
+          } else {
+            setToggle(search, false)
+          }
+        }
+
+        if (ev.key === "ArrowUp" || ev.key === "ArrowDown") {
+          const active = getElements("[data-md-component=search-query], [data-md-component=search-result] [href]")
+          const i = Math.max(0, active.findIndex(el => el === document.activeElement))
+          const x = Math.max(0, (i + active.length + (ev.keyCode === 38 ? -1 : +1)) % active.length)
+          active[x].focus()
+
+          /* Prevent scrolling of page */
+          ev.preventDefault()
+          ev.stopPropagation()
+
+        } else if (ev.key === "Escape" || ev.key === "Tab") {
+          setToggle(search, false)
+          getElement("[data-md-component=search-query]")!.blur()
+
+        } else {
+          if (search.checked && document.activeElement !== getElement("[data-md-component=search-query]")) {
+            getElement("[data-md-component=search-query]")!.focus()
+          }
+        }
+      })
+    )
+      .subscribe()
+
+  // TODO: close search on hashchange
+  // anchor jump -> always close drawer + search
 
   // focus search on reset, on toggle and on keypress if open
-  merge(a$.pipe(filter(identity)), reset$, keysIfSearchActive$)
+  merge(searchActive$.pipe(filter(identity)), reset$)
     .pipe(
       switchMapTo(component<HTMLInputElement>("search-query")),
       tap(el => el.focus()) // TODO: only if element isnt focused! setFocus? setToggle?

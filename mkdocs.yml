@@ -74,6 +74,8 @@ extra:
       link: https://twitter.com/squidfunk
     - icon: brands/linkedin
       link: https://www.linkedin.com/in/squidfunk/
+    - icon: brands/instagram
+      link: https://instagram.com/squidfunk
 
 # Extensions
 markdown_extensions:

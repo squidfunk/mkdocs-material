@@ -21,7 +21,7 @@
  */
 
 import { Observable, fromEvent } from "rxjs"
-import { map } from "rxjs/operators"
+import { map, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -59,6 +59,7 @@ export function watchToggle(
 ): Observable<boolean> {
   return fromEvent(el, "change")
     .pipe(
-      map(() => el.checked)
+      map(() => el.checked),
+      startWith(el.checked)
     )
 }

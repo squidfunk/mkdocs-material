@@ -523,8 +523,8 @@ $md-toggle__search--checked:
     outline: 0;
     overflow: hidden;
 
-    // Active or hovered link
-    &[data-md-state="active"],
+    // Focused or hovered link
+    &:focus,
     &:hover {
       background-color: transparentize($md-color-accent, 0.9);
 

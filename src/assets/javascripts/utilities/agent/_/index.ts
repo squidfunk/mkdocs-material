@@ -56,8 +56,8 @@ export interface AgentLocation {
  * Agent media
  */
 export interface AgentMedia {
-  screen$: Observable<boolean>         /* Media observable for screen */
   tablet$: Observable<boolean>         /* Media observable for tablet */
+  screen$: Observable<boolean>         /* Media observable for screen */
 }
 
 /**
@@ -102,8 +102,8 @@ export function setupAgent(): Agent {
       hash$:   watchLocationHash()
     },
     media: {
-      screen$: watchMedia("(min-width: 1220px)"),
-      tablet$: watchMedia("(min-width: 960px)")
+      tablet$: watchMedia("(min-width: 960px)"),
+      screen$: watchMedia("(min-width: 1220px)")
     },
     viewport: {
       offset$: watchViewportOffset(),
