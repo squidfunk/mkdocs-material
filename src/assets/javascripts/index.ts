@@ -90,6 +90,7 @@ import {
 import { renderSource } from "templates"
 import { switchMapIf, not, takeIf } from "extensions"
 import { renderClipboard } from "templates/clipboard"
+import { watchActiveLayer, paintActiveLayer } from "components/navigation/layer"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -598,6 +599,18 @@ export function initialize(config: unknown) {
 
     })
   }
+
+  /* ----------------------------------------------------------------------- */
+
+  const navigationlayer$ = component("navigation")
+    .pipe(
+      switchMapIf(not(agent.media.tablet$), el => watchActiveLayer(el)
+        .pipe(
+          paintActiveLayer()
+        )
+      )
+    )
+      .subscribe(console.log)
 
   /* ----------------------------------------------------------------------- */
 

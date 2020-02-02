@@ -45,7 +45,7 @@ import {
   setAnchorActive,
   setAnchorBlur
 } from "actions"
-import { Agent,  getElement } from "utilities"
+import { Agent, getElement } from "utilities"
 
 import { HeaderState } from "../../header"
 
