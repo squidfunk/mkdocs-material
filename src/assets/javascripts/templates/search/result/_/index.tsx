@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { h, toHTMLElement } from "extensions"
+import { h } from "extensions"
 import { SearchResult } from "modules"
 
 import { renderArticleDocument } from "../article"
@@ -51,7 +51,7 @@ const css = {
 export function renderSearchResult(
   { article, sections }: SearchResult
 ): HTMLElement {
-  return toHTMLElement(
+  return (
     <li class={css.item}>
       {renderArticleDocument(article)}
       {...sections.map(renderSectionDocument)}

@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { h, toHTMLElement } from "extensions"
+import { h } from "extensions"
 import { SectionDocument } from "modules"
 import { truncate } from "utilities"
 
@@ -52,7 +52,7 @@ const css = {
 export function renderSectionDocument(
   { location, title, text }: SectionDocument
 ): HTMLElement {
-  return toHTMLElement(
+  return (
     <a href={location} title={title} class={css.link} tabIndex={-1}>
       <article class={css.article}>
         <h1 class={css.title}>{title}</h1>

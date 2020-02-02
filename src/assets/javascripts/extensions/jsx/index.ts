@@ -102,21 +102,13 @@ export function h(
   return el
 }
 
-/**
- * JSX factory wrapper
- *
- * @param el - JSX element
- *
- * @return HTML element
- */
-export function toHTMLElement(el: JSXInternal.Element): HTMLElement {
-  return el as any // Hack: if you have a better idea, PR!
-}
-
 /* ----------------------------------------------------------------------------
  * Namespace
  * ------------------------------------------------------------------------- */
 
 export declare namespace h {
-  export import JSX = JSXInternal
+  namespace JSX {
+    type Element = HTMLElement
+    type IntrinsicElements = JSXInternal.IntrinsicElements
+  }
 }

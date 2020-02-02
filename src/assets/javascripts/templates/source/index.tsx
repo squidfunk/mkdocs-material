@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { h, toHTMLElement } from "extensions"
+import { h } from "extensions"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -48,7 +48,7 @@ const css = {
 export function renderSource(
   facts: any // TODO: add typings
 ): HTMLElement {
-  return toHTMLElement(
+  return (
     <ul class={css.facts}>
       {facts.map((fact: any) => <li class={css.fact}>{fact}</li>)}
     </ul>

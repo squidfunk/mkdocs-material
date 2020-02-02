@@ -473,16 +473,6 @@ export function initialize(config: unknown) {
     filter(ev => !(ev.metaKey || ev.ctrlKey))
   )
 
-  // search mode is active!
-  key$.pipe(
-    takeIf(searchActive$)
-    // switchMapIf(searchActive$, x => {
-    //   console.log("search mode!", x)
-    //   return EMPTY
-    // })
-  )
-    .subscribe(x => console.log("search mode", x))
-
   // filter arrow keys if search is active!
   searchActive$.subscribe(console.log)
 
