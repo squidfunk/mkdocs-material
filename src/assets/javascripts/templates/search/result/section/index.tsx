@@ -53,7 +53,7 @@ export function renderSectionDocument(
   { location, title, text }: SectionDocument
 ): HTMLElement {
   return (
-    <a href={location} title={title} class={css.link} tabIndex={-1}>
+    <a href={location} class={css.link} tabIndex={-1}>
       <article class={css.article}>
         <h1 class={css.title}>{title}</h1>
         {text.length
