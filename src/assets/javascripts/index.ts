@@ -563,6 +563,12 @@ export function initialize(config: unknown) {
       })
     })
 
+  // Close drawer and search on hash change
+  agent.location.hash$.subscribe(() => {
+    setToggle(drawer, false)
+    setToggle(search, false)
+  })
+
   /* ----------------------------------------------------------------------- */
 
   const state = {
