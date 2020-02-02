@@ -46,7 +46,7 @@ lint:
 # Start development server
 start:
 	@ NODE_ENV=development ${BIN}/nodemon --quiet \
-		--watch src --ext html,scss,ts,tsx \
+		--watch . --watch src --ext html,scss,ts,tsx \
 		--exec make build
 
 # -----------------------------------------------------------------------------
@@ -111,9 +111,9 @@ material/assets/javascripts/lunr: ${SCRIPT_LUNR} | $$(@D)/.
 
 # Scripts
 SCRIPT = src/assets/javascripts/index.ts
-SCRIPT_PARTIALS = $(shell find src -name "*.ts*")
+SCRIPT_SOURCES = $(shell find src -name "*.ts*") webpack.config.ts
 material/assets/javascripts: $$@/lunr material/assets/javascripts/bundle.js
-material/assets/javascripts/bundle.js: ${SCRIPT} ${SCRIPT_PARTIALS} | $$(@D)/.
+material/assets/javascripts/bundle.js: ${SCRIPT} ${SCRIPT_SOURCES} | $$(@D)/.
 	@ echo "+ $@"
 	@ ${BIN}/webpack --mode production
 
@@ -121,9 +121,9 @@ material/assets/javascripts/bundle.js: ${SCRIPT} ${SCRIPT_PARTIALS} | $$(@D)/.
 
 # Stylesheets
 STYLESHEETS = $(subst src,material,$(wildcard src/assets/stylesheets/a*.scss))
-STYLESHEETS_PARTIALS = $(shell find src -name "_*.scss")
+STYLESHEETS_SOURCES = $(shell find src -name "_*.scss")
 material/assets/stylesheets: $(patsubst %.scss,%.css,${STYLESHEETS})
-material/%.css: src/%.scss ${STYLESHEETS_PARTIALS} | $$(@D)/.
+material/%.css: src/%.scss ${STYLESHEETS_SOURCES} | $$(@D)/.
 	@ echo "+ $@"
 	@ ${BIN}/node-sass -q \
 		--source-map $@.map \
