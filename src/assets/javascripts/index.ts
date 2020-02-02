@@ -23,6 +23,7 @@
 // TODO: remove this after we finished refactoring
 // tslint:disable
 
+import * as Clipboard from "clipboard"
 import { identity, values } from "ramda"
 import {
   EMPTY,
@@ -88,6 +89,7 @@ import {
 } from "./workers"
 import { renderSource } from "templates"
 import { switchMapIf, not, takeIf } from "extensions"
+import { renderClipboard } from "templates/clipboard"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -557,7 +559,7 @@ export function initialize(config: unknown) {
     fromEvent(window, "beforeprint") // IE, FF
   )
     .subscribe(() => {
-      const details = document.querySelectorAll("details")
+      const details = getElements("details")
       Array.prototype.forEach.call(details, detail => {
         detail.setAttribute("open", "")
       })
@@ -566,8 +568,36 @@ export function initialize(config: unknown) {
   // Close drawer and search on hash change
   agent.location.hash$.subscribe(() => {
     setToggle(drawer, false)
-    setToggle(search, false)
+    setToggle(search, false) // we probably need to delay the anchor jump for search
   })
+
+  /* ----------------------------------------------------------------------- */
+
+  /* Clipboard integration */
+  if (Clipboard.isSupported()) {
+    const blocks = getElements(".codehilite > pre, .highlight> pre, pre > code")
+    Array.prototype.forEach.call(blocks, (block, index) => {
+      const id = `__code_${index}`
+
+      /* Create button with message container */
+      const button = renderClipboard(id)
+
+      /* Link to block and insert button */
+      const parent = block.parentNode
+      parent.id = id
+      parent.insertBefore(button, block)
+    })
+
+    /* Initialize Clipboard listener */
+    const copy = new Clipboard(".md-clipboard")
+
+    /* Success handler */
+    copy.on("success", action => {
+      alert("Copied to clipboard") // TODO: integrate snackbar
+      // TODO: add a snackbar/notification
+
+    })
+  }
 
   /* ----------------------------------------------------------------------- */
 

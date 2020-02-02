@@ -65,7 +65,6 @@ button {
   margin: 0;
   padding: 0;
   border: 0;
-  outline-style: none;
   background: transparent;
   font-size: inherit; }
 
@@ -73,7 +72,7 @@ input {
   border: 0;
   outline: 0; }
 
-.md-icon, .md-clipboard::before, .md-nav__title::before, .md-nav__button, .md-nav__link::after, .md-search-result__article--document::before, .md-source-file::before, .md-typeset .admonition > .admonition-title::before, .md-typeset details > .admonition-title::before, .md-typeset .admonition > summary::before, .md-typeset details > summary::before, .md-typeset .footnote-backref, .md-typeset .critic.comment::before, .md-typeset summary::after, .md-typeset .task-list-control .task-list-indicator::before {
+.md-icon, .md-nav__title::before, .md-nav__button, .md-nav__link::after, .md-search-result__article--document::before, .md-source-file::before, .md-typeset .admonition > .admonition-title::before, .md-typeset details > .admonition-title::before, .md-typeset .admonition > summary::before, .md-typeset details > summary::before, .md-typeset .footnote-backref, .md-typeset .critic.comment::before, .md-typeset summary::after, .md-typeset .task-list-control .task-list-indicator::before {
   font-family: "Material Icons";
   font-style: normal;
   font-variant: normal;
@@ -494,64 +493,26 @@ hr {
   right: 0.3rem;
   width: 1.4rem;
   height: 1.4rem;
+  -webkit-transition: color 0.25s;
+  transition: color 0.25s;
   border-radius: 0.1rem;
+  color: rgba(0, 0, 0, 0.07);
   font-size: 0.8rem;
   cursor: pointer;
   z-index: 1;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden; }
-  .md-clipboard::before {
-    -webkit-transition: color   0.25s, opacity 0.25s;
-    transition: color   0.25s, opacity 0.25s;
-    color: rgba(0, 0, 0, 0.07);
-    content: "\E14D"; }
-    pre:hover .md-clipboard::before,
-    .codehilite:hover .md-clipboard::before,
-    .md-typeset .highlight:hover .md-clipboard::before {
-      color: rgba(0, 0, 0, 0.54); }
-  .md-clipboard:focus::before, .md-clipboard:hover::before {
+  pre:hover .md-clipboard,
+  .codehilite:hover .md-clipboard,
+  .md-typeset .highlight:hover .md-clipboard {
+    color: rgba(0, 0, 0, 0.54); }
+  pre .md-clipboard:focus,
+  pre .md-clipboard:hover,
+  .codehilite .md-clipboard:focus,
+  .md-typeset .highlight .md-clipboard:focus,
+  .codehilite .md-clipboard:hover,
+  .md-typeset .highlight .md-clipboard:hover {
     color: #536dfe; }
-  .md-clipboard__message {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 1.7rem;
-    padding: 0.3rem 0.5rem;
-    -webkit-transform: translateX(0.4rem);
-            transform: translateX(0.4rem);
-    -webkit-transition: opacity 0.175s, -webkit-transform 0.25s cubic-bezier(0.9, 0.1, 0.9, 0);
-    transition: opacity 0.175s, -webkit-transform 0.25s cubic-bezier(0.9, 0.1, 0.9, 0);
-    transition: transform 0.25s cubic-bezier(0.9, 0.1, 0.9, 0), opacity 0.175s;
-    transition: transform 0.25s cubic-bezier(0.9, 0.1, 0.9, 0), opacity 0.175s, -webkit-transform 0.25s cubic-bezier(0.9, 0.1, 0.9, 0);
-    border-radius: 0.1rem;
-    background-color: rgba(0, 0, 0, 0.54);
-    color: white;
-    font-size: 0.64rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none; }
-    .md-clipboard__message--active {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      -webkit-transition: opacity 0.175s 0.075s, -webkit-transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      transition: opacity 0.175s 0.075s, -webkit-transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.175s 0.075s;
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.175s 0.075s, -webkit-transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 1;
-      pointer-events: initial; }
-    .md-clipboard__message::before {
-      content: attr(aria-label); }
-    .md-clipboard__message::after {
-      display: block;
-      position: absolute;
-      top: 50%;
-      right: -0.2rem;
-      width: 0;
-      margin-top: -0.2rem;
-      border-width: 0.2rem 0 0.2rem 0.2rem;
-      border-style: solid;
-      border-color: transparent rgba(0, 0, 0, 0.54);
-      content: ""; }
 
 .md-content__inner {
   margin: 0 0.8rem 1.2rem;
