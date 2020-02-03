@@ -57,7 +57,7 @@
     "eslint": "^6.8.0",
     "event-hooks-webpack-plugin": "^2.1.5",
     "expose-loader": "^0.7.4",
-    "extract-loader": "^3.1.0",
+    "extract-loader": "^4.0.3",
     "file-loader": "^5.0.2",
     "html-minifier": "^4.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
