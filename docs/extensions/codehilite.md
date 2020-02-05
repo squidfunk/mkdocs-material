@@ -11,7 +11,7 @@ executed during compilation of the Markdown file.
     [Docker image][3] with all dependencies pre-installed.
 
   [1]: https://python-markdown.github.io/extensions/code_hilite/
-  [2]: http://pygments.org
+  [2]: https://pygments.org
   [3]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
 ## Installation
@@ -913,6 +913,27 @@ module Finity
     base.extend ClassMethods
   end
 end
+```
+
+### Scala
+
+```scala
+// Every record of this DataFrame contains the label and
+// features represented by a vector.
+val df = sqlContext.createDataFrame(data).toDF("label", "features")
+
+// Set parameters for the algorithm.
+// Here, we limit the number of iterations to 10.
+val lr = new LogisticRegression().setMaxIter(10)
+
+// Fit the model to the data.
+val model = lr.fit(df)
+
+// Inspect the model: get the feature weights.
+val weights = model.weights
+
+// Given a dataset, predict each point's label, and show the results.
+model.transform(df).show()g
 ```
 
 ### XML

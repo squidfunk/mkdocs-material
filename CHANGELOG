@@ -1,3 +1,26 @@
+mkdocs-material 4.6.0 (2019-12-11)
+
+  * Added support for mkdocs-git-revision-date-localized-plugin
+  * Fixed invalid character in Google Fonts URL
+
+mkdocs-material-4.5.1 (2019-12-02)
+
+  * Added Thai translations
+  * Fixed missing assets in GitHub release .zip and .tar.gz
+
+mkdocs-material-4.5.0 (2019-11-16)
+
+  * Upgraded EmojiOne to Tweomji due to licensing issues
+  * Temporarily pinned PyMdown and Markdown due to upcoming changes
+  * Improved GitHub statistics retrieval
+  * Fixed errors in Greek translations
+
+mkdocs-material-4.4.3 (2019-10-03)
+
+  * Added Estonian translations
+  * Fixed removal of copyright banners in minified JavaScript
+  * Removed unnecessary title attributes from links in table of contents
+
 mkdocs-material-4.4.2 (2019-08-27)
 
   * Added Afrikaans translations

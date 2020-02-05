@@ -22,4 +22,5 @@
 mkdocs>=1
 mkdocs-minify-plugin>=0.2
 Pygments>=2.2
-pymdown-extensions>=4.11
+markdown<3.2
+pymdown-extensions>=6.2,<6.3

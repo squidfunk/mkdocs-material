@@ -174,7 +174,7 @@ the Material theme and recompile it. This is fairly easy.
 
   [5]: https://webpack.js.org/
   [6]: https://babeljs.io
-  [7]: http://sass-lang.com
+  [7]: https://sass-lang.com
 
 ### Environment setup
 

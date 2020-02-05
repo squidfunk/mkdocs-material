@@ -59,12 +59,12 @@ export default class GitHub extends Abstract {
    * @return {Promise<Array<string>>} Promise returning an array of facts
    */
   fetch_() {
-    const paginate = (page = 0) => {
-      return fetch(`${this.base_}?per_page=30&page=${page}`)
+    const paginate = (page = 0) => (
+      fetch(`${this.base_}?per_page=100&sort=updated&page=${page}`)
         .then(response => response.json())
         .then(data => {
           if (!(data instanceof Array))
-            throw new TypeError
+            return []
 
           /* Display number of stars and forks, if repository is given */
           if (this.name_) {
@@ -87,7 +87,7 @@ export default class GitHub extends Abstract {
             ]
           }
         })
-    }
+    )
 
     /* Paginate through repos */
     return paginate()

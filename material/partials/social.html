@@ -5,7 +5,7 @@
   <div class="md-footer-social">
     <link rel="stylesheet" href="{{ 'assets/fonts/font-awesome.css' | url }}">
     {% for social in config.extra.social %}
-      <a href="{{ social.link }}" class="md-footer-social__link fa fa-{{ social.type }}"></a>
+      <a href="{{ social.link }}" target="_blank" rel="noopener" title="{{ social.type }}" class="md-footer-social__link fa fa-{{ social.type }}"></a>
     {% endfor %}
   </div>
 {% endif %}

@@ -1,11 +1,11 @@
-[![Travis][travis-image]][travis-link]
+[![Github Action][action-image]][action-link]
 [![Downloads][downloads-image]][downloads-link]
 [![Gitter][gitter-image]][gitter-link]
 [![PyPI][pypi-image]][pypi-link]
 [![dependabot][dependabot-image]][dependabot-link]
 
-  [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
-  [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
+  [action-image]: https://github.com/squidfunk/mkdocs-material/workflows/ci/badge.svg?branch=master
+  [action-link]: https://github.com/squidfunk/mkdocs-material/actions
   [downloads-image]: https://img.shields.io/pypi/dm/mkdocs-material.svg
   [downloads-link]: https://pypistats.org/packages/mkdocs-material
   [gitter-image]: https://badges.gitter.im/squidfunk/mkdocs-material.svg
@@ -42,7 +42,7 @@ theme:
 ## What to expect
 
 * Responsive design and fluid layout for all kinds of screens and devices,
-  designed to serve your project documentation in a user-friendly way in 38
+  designed to serve your project documentation in a user-friendly way in 40
   languages with optimal readability.
 
 * Easily customizable primary and accent color, fonts, favicon and logo;
@@ -55,6 +55,13 @@ theme:
 
 For detailed installation instructions and a demo, visit
 https://squidfunk.github.io/mkdocs-material/
+
+## Support
+
+If you're happy with Material for MkDocs and feel like giving something back,
+you may check out squidfunk's [Amazon wish list][3].
+
+  [3]: https://amzn.to/353WRpj
 
 ## License
 
