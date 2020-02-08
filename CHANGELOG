@@ -1,3 +1,8 @@
+mkdocs-material 4.6.2 (2020-02-08)
+
+  * Added Romanian translations
+  * Fixed #1451: Inconsistent spacing for fenced code blocks
+
 mkdocs-material 4.6.1 (2020-02-08)
 
   * Fixed #1324: Metadata author only rendering first character

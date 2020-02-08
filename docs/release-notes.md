@@ -64,6 +64,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.6.2 <small>_ February 8, 2020</small>
+
+* Added Romanian translations
+* Fixed #1451: Inconsistent spacing for fenced code blocks
+
 ### 4.6.1 <small>_ February 8, 2020</small>
 
 * Fixed #1324: Metadata author only rendering first character
