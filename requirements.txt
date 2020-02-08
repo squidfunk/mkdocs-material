@@ -19,8 +19,8 @@
 # IN THE SOFTWARE.
 
 # Direct dependencies
-mkdocs>=1
+mkdocs>=1.0
 mkdocs-minify-plugin>=0.2
 Pygments>=2.2
-markdown<3.2
-pymdown-extensions>=6.2,<6.3
+markdown>=3.2
+pymdown-extensions>=6.3
