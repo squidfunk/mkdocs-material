@@ -35,7 +35,7 @@
     background-color: $md-color-white;
 
     // Actual content
-    > * {
+    pre {
       margin: 0;
       border-radius: 0
     }
@@ -89,11 +89,14 @@
       border: 0;
       border-top: px2rem(1px) solid $md-color-black--lightest;
       border-radius: 0;
+    }
 
-      // Actual container with code, overflowing
-      pre,
-      code {
-        padding: px2rem(10.5px) px2rem(16px);
+    // [mobile -]: Stretch to whole width
+    @include break-to-device(mobile) {
+
+      // First tab label
+      input:first-child + label {
+        margin-left: px2rem(4px);
       }
     }
   }

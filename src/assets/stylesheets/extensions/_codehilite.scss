@@ -206,13 +206,6 @@ $codehilite-whitespace: transparent;
   }
 }
 
-// When pymdownx.superfences is enabled but codehilite is disabled,
-// pymdownx.highlight will be used. When this happens, the outer
-// container and tables get this class names by default.
-.highlight {
-  @extend .codehilite;
-}
-
 // ----------------------------------------------------------------------------
 // Rules: layout
 // ----------------------------------------------------------------------------
@@ -223,9 +216,6 @@ $codehilite-whitespace: transparent;
   // Block with line numbers
   .codehilitetable {
     display: block;
-    margin: 1em 0;
-    border-radius: 0.2em;
-    font-size: ms(0);
     overflow: hidden;
 
     // Set table elements to block layout, because otherwise the whole flexbox
@@ -278,11 +268,27 @@ $codehilite-whitespace: transparent;
     }
   }
 
-  // Full-width container on top-level
+  // Block with line numbers
   > .codehilitetable {
+    margin: 1em 0;
+    border-radius: 0.2em;
+  }
 
-    // [mobile -]: Stretch to whole width
-    @include break-to-device(mobile) {
+  // [mobile -]: Stretch to whole width
+  @include break-to-device(mobile) {
+
+    // Full-width container
+    > .codehilite {
+      margin: 1em px2rem(-16px);
+
+      // Actual container with code, overflowing
+      code {
+        padding: px2rem(10.5px) px2rem(16px);
+      }
+    }
+
+    // Full-width container on top-level
+    > .codehilitetable {
       margin: 1em px2rem(-16px);
       border-radius: 0;
 
@@ -291,5 +297,17 @@ $codehilite-whitespace: transparent;
         padding: px2rem(10px) px2rem(16px);
       }
     }
+  }
+
+  // When pymdownx.superfences is enabled but codehilite is disabled,
+  // pymdownx.highlight will be used. When this happens, the outer
+  // container and tables get this class names by default.
+  .highlight {
+    @extend .codehilite;
+  }
+
+  // Same as above, but for code blocks with line numbers enabled
+  .highlighttable {
+    @extend .codehilitetable;
   }
 }
