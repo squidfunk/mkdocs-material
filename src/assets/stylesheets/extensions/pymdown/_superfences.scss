@@ -89,10 +89,11 @@
       border: 0;
       border-top: px2rem(1px) solid $md-color-black--lightest;
       border-radius: 0;
-    }
 
-    // [mobile -]: Stretch to whole width
-    @include break-to-device(mobile) {
+      // Actual container with code, overflowing
+      code {
+        padding: px2rem(10.5px) px2rem(16px);
+      }
 
       // First tab label
       input:first-child + label {
