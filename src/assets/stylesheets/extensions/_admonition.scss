@@ -134,7 +134,7 @@
       @if length($names) > 1 {
         @for $n from 2 through length($names) {
           &.#{nth($names, $n)} {
-            @extend .admonition%#{nth($names, 1)};
+            @extend %#{nth($names, 1)};
           }
         }
       }

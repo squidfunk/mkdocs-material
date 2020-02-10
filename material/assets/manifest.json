@@ -1,0 +1,10 @@
+{
+  "assets/javascripts/bundle.js": "assets/javascripts/bundle.61d55af4.min.js",
+  "assets/javascripts/bundle.js.map": "assets/javascripts/bundle.61d55af4.min.js.map",
+  "assets/javascripts/worker/packer.js": "assets/javascripts/worker/packer.f5b5c95d.min.js",
+  "assets/javascripts/worker/packer.js.map": "assets/javascripts/worker/packer.f5b5c95d.min.js.map",
+  "assets/javascripts/worker/search.js": "assets/javascripts/worker/search.1be69dba.min.js",
+  "assets/javascripts/worker/search.js.map": "assets/javascripts/worker/search.1be69dba.min.js.map",
+  "assets/stylesheets/app-palette.scss": "assets/stylesheets/app-palette.8c25017f.min.css",
+  "assets/stylesheets/app.scss": "assets/stylesheets/app.6f237a30.min.css"
+}

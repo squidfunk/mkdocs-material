@@ -80,7 +80,7 @@ $break-devices: () !default;
           @error "Invalid number: #{$number}";
         }
       }
-    } @elseif type-of($value) == number {
+    } @else if type-of($value) == number {
       $min: min($value, $min);
       $max: null;
     } @else {
@@ -129,7 +129,7 @@ $break-devices: () !default;
     @media only screen and (min-width: $breakpoint) {
       @content;
     }
-  } @elseif type-of($breakpoint) == list {
+  } @else if type-of($breakpoint) == list {
     $min: nth($breakpoint, 1);
     $max: nth($breakpoint, 2);
     @if type-of($min) == number and type-of($max) == number {

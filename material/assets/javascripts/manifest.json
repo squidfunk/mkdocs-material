@@ -1,8 +1,0 @@
-{
-  "bundle.js": "bundle.54b03d7d.min.js",
-  "bundle.js.map": "bundle.54b03d7d.min.js.map",
-  "worker/packer.js": "worker/packer.772b47f4.min.js",
-  "worker/packer.js.map": "worker/packer.772b47f4.min.js.map",
-  "worker/search.js": "worker/search.a9bad5fb.min.js",
-  "worker/search.js.map": "worker/search.a9bad5fb.min.js.map"
-}

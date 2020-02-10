@@ -46,15 +46,15 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
   const base = "../lunr"
 
   /* Add scripts for languages */
-  const scripts = [`${base}/lunr.stemmer.support.min.js`]
+  const scripts = [`${base}/min/lunr.stemmer.support.min.js`]
   for (const lang of config.lang) {
     if (lang === "ja") scripts.push(`${base}/tinyseg.js`)
-    if (lang !== "en") scripts.push(`${base}/lunr.${lang}.min.js`)
+    if (lang !== "en") scripts.push(`${base}/min/lunr.${lang}.min.js`)
   }
 
   /* Add multi-language support */
   if (scripts.length > 1)
-    scripts.push(`${base}/lunr.multi.min.js`)
+    scripts.push(`${base}/min/lunr.multi.min.js`)
 
   /* Load scripts synchronously */
   importScripts(...scripts)

@@ -23,6 +23,9 @@
 // TODO: remove this after we finished refactoring
 // tslint:disable
 
+import "../stylesheets/app.scss"
+import "../stylesheets/app-palette.scss"
+
 import * as Clipboard from "clipboard"
 import { identity, values } from "ramda"
 import {
