@@ -1,11 +1,12 @@
 {#-
   This file was automatically generated - do not edit
 -#}
+{% set path = "assets/images/icons/fontawesome/" %}
 {% if config.extra.social %}
   <div class="md-footer-social">
     {% for social in config.extra.social %}
       <a href="{{ social.link }}" target="_blank" rel="noopener" class="md-footer-social__link">
-        {% include "assets/images/icons/fontawesome/" ~ social.icon ~ ".svg" %}
+        {% include path ~ social.icon ~ ".svg.html" %}
       </a>
     {% endfor %}
   </div>

@@ -27,6 +27,9 @@ all: clean lint build
 # Directory for NPM executables
 BIN = $(shell npm bin)
 
+# Node environment
+NODE_ENV ?= production
+
 # -----------------------------------------------------------------------------
 # Rules
 # -----------------------------------------------------------------------------
@@ -85,11 +88,16 @@ material/assets/fonts/%.css: src/assets/fonts/%.css | $$(@D)/.
 
 # -----------------------------------------------------------------------------
 
-# Icons (FontAwesome)
+# Icons (FontAwesome) - add *.html suffix or MkDocs will bundle everything
 IMAGES_ICONS_FONTAWESOME = node_modules/@fortawesome/fontawesome-free/svgs
 material/assets/images/icons/fontawesome: ${IMAGES_ICONS_FONTAWESOME} | $$(@D)/.
 	@ echo "+ $@"
-	@ cp -r $< $@
+	@ mkdir -p $@/brands $@/regular $@/solid
+	@ \
+		for file in $(shell find $< -name "*.svg"); do \
+			echo "+ $@$${file#$<}.html"; \
+			cp $${file} $@$${file#$<}.html; \
+		done
 
 # Images
 IMAGES = $(subst src,material,$(wildcard src/assets/images/*.png))
@@ -115,7 +123,7 @@ SCRIPT_SOURCES = $(shell find src -name "*.ts*") webpack.config.ts
 material/assets/javascripts: $$@/lunr material/assets/javascripts/bundle.js
 material/assets/javascripts/bundle.js: ${SCRIPT} ${SCRIPT_SOURCES} | $$(@D)/.
 	@ echo "+ $@"
-	@ ${BIN}/webpack --mode production
+	@ ${BIN}/webpack --mode ${NODE_ENV}
 
 # -----------------------------------------------------------------------------
 

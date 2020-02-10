@@ -20,6 +20,9 @@
   IN THE SOFTWARE.
 -->
 
+<!-- Icon base path -->
+{% set path = "assets/images/icons/fontawesome/" %}
+
 <!-- Social links in footer -->
 {% if config.extra.social %}
   <div class="md-footer-social">
@@ -29,7 +32,7 @@
         target="_blank" rel="noopener"
         class="md-footer-social__link"
       >
-        {% include "assets/images/icons/fontawesome/" ~ social.icon ~ ".svg" %}
+        {% include path ~ social.icon ~ ".svg.html" %}
       </a>
     {% endfor %}
   </div>
