@@ -42,7 +42,7 @@ theme:
 ## What to expect
 
 * Responsive design and fluid layout for all kinds of screens and devices,
-  designed to serve your project documentation in a user-friendly way in 40
+  designed to serve your project documentation in a user-friendly way in 41
   languages with optimal readability.
 
 * Easily customizable primary and accent color, fonts, favicon and logo;
@@ -67,7 +67,7 @@ you may check out squidfunk's [Amazon wish list][3].
 
 **MIT License**
 
-Copyright (c) 2016-2019 Martin Donath
+Copyright (c) 2016-2020 Martin Donath
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to

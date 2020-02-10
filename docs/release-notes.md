@@ -64,6 +64,19 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.6.2 <small>_ February 8, 2020</small>
+
+* Added Romanian translations
+* Fixed #1451: Inconsistent spacing for fenced code blocks
+
+### 4.6.1 <small>_ February 8, 2020</small>
+
+* Fixed #1324: Metadata author only rendering first character
+* Fixed #1393: Set `tabindex` to `0` for skip to content link
+* Fixed code blocks after Markdown 3.2 release
+* Fixed errors in Japanese translations
+* Improved Google Lighthouse score
+
 ### 4.6.0 <small>_ December 11, 2019</small>
 
 * Added support for [mkdocs-git-revision-date-localized-plugin][3]

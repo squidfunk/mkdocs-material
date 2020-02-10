@@ -1,3 +1,16 @@
+mkdocs-material 4.6.2 (2020-02-08)
+
+  * Added Romanian translations
+  * Fixed #1451: Inconsistent spacing for fenced code blocks
+
+mkdocs-material 4.6.1 (2020-02-08)
+
+  * Fixed #1324: Metadata author only rendering first character
+  * Fixed #1393: Set tabindex to 0 for skip to content link
+  * Fixed code blocks after Markdown 3.2 release
+  * Fixed errors in Japanese translations
+  * Improved Google Lighthouse score
+
 mkdocs-material 4.6.0 (2019-12-11)
 
   * Added support for mkdocs-git-revision-date-localized-plugin

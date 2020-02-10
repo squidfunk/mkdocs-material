@@ -208,7 +208,16 @@ function setupWorkers(config: Config) {
     withCredentials: true
   })
     .pipe<SearchIndexOptions>(
-      pluck("response")
+      pluck("response"),
+      // map(res => {
+      //   // search language... default for theme language...
+      //   const override = translate("search.tokenizer")
+      //   // TODO: ???
+      //   if (override.length)
+      //     res.config.separator = override
+
+      //   return res
+      // })
       // take(1)
     )
 

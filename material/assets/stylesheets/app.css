@@ -1549,49 +1549,8 @@ hr {
   padding: 0 0.6rem;
   background-color: rgba(255, 235, 59, 0.5); }
 
-.md-typeset .codehilite, .md-typeset .highlight {
-  position: relative;
-  margin: 1em 0;
-  padding: 0;
-  border-radius: 0.1rem;
-  background-color: rgba(236, 236, 236, 0.5);
-  color: #37474F;
-  line-height: 1.4;
-  -webkit-overflow-scrolling: touch; }
-  .md-typeset .codehilite pre, .md-typeset .highlight pre,
-  .md-typeset .codehilite code,
-  .md-typeset .highlight code {
-    display: block;
-    margin: 0;
-    padding: 0.525rem 0.6rem;
-    background-color: transparent;
-    overflow: auto; }
-    .md-typeset .codehilite pre::-webkit-scrollbar, .md-typeset .highlight pre::-webkit-scrollbar,
-    .md-typeset .codehilite code::-webkit-scrollbar,
-    .md-typeset .highlight code::-webkit-scrollbar {
-      width: 0.2rem;
-      height: 0.2rem; }
-    .md-typeset .codehilite pre::-webkit-scrollbar-thumb, .md-typeset .highlight pre::-webkit-scrollbar-thumb,
-    .md-typeset .codehilite code::-webkit-scrollbar-thumb,
-    .md-typeset .highlight code::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.26); }
-      .md-typeset .codehilite pre::-webkit-scrollbar-thumb:hover, .md-typeset .highlight pre::-webkit-scrollbar-thumb:hover,
-      .md-typeset .codehilite code::-webkit-scrollbar-thumb:hover,
-      .md-typeset .highlight code::-webkit-scrollbar-thumb:hover {
-        background-color: #536dfe; }
-
-.md-typeset pre.codehilite, .md-typeset pre.highlight {
-  overflow: visible; }
-  .md-typeset pre.codehilite code, .md-typeset pre.highlight code {
-    display: block;
-    padding: 0.525rem 0.6rem;
-    overflow: auto; }
-
 .md-typeset .codehilitetable, .md-typeset .highlighttable {
   display: block;
-  margin: 1em 0;
-  border-radius: 0.2em;
-  font-size: 0.8rem;
   overflow: hidden; }
   .md-typeset .codehilitetable tbody, .md-typeset .highlighttable tbody,
   .md-typeset .codehilitetable td,
@@ -1601,7 +1560,7 @@ hr {
   .md-typeset .codehilitetable tr, .md-typeset .highlighttable tr {
     display: -webkit-box;
     display: flex; }
-  .md-typeset .codehilitetable .codehilite, .md-typeset .highlighttable .codehilite, .md-typeset .codehilitetable .highlight, .md-typeset .highlighttable .highlight,
+  .md-typeset .codehilitetable pre, .md-typeset .highlighttable pre,
   .md-typeset .codehilitetable .linenodiv,
   .md-typeset .highlighttable .linenodiv {
     margin: 0;
@@ -1618,8 +1577,6 @@ hr {
         -ms-user-select: none;
             user-select: none; }
     .md-typeset .codehilitetable .linenos pre, .md-typeset .highlighttable .linenos pre {
-      margin: 0;
-      padding: 0;
       background-color: transparent;
       color: inherit;
       text-align: right; }
@@ -1629,7 +1586,8 @@ hr {
     overflow: hidden; }
 
 .md-typeset > .codehilitetable, .md-typeset > .highlighttable {
-  box-shadow: none; }
+  margin: 1em 0;
+  border-radius: 0.2em; }
 
 .md-typeset [id^="fnref:"] {
   display: inline-block; }
@@ -1952,7 +1910,7 @@ hr {
           order: 99;
   width: 100%;
   background-color: white; }
-  .md-typeset .superfences-content > * {
+  .md-typeset .superfences-content pre {
     margin: 0;
     border-radius: 0; }
 
@@ -2037,11 +1995,11 @@ hr {
       display: none; } }
 
 @media only screen and (max-width: 44.9375em) {
-      .md-typeset pre {
-        margin: 1em -0.8rem;
-        border-radius: 0; }
-        .md-typeset pre > code {
-          padding: 0.525rem 0.8rem; }
+    .md-typeset > pre {
+      margin: 1em -0.8rem;
+      border-radius: 0; }
+      .md-typeset > pre > code {
+        padding: 0.525rem 0.8rem; }
         .md-footer-nav__link--prev .md-footer-nav__title {
           display: none; }
       .md-search-result__teaser {
@@ -2051,23 +2009,14 @@ hr {
       margin: 0 -0.8rem;
       padding: 0 0.8rem; }
   .md-typeset > .codehilite, .md-typeset > .highlight {
+    margin: 1em -0.8rem; }
+    .md-typeset > .codehilite code, .md-typeset > .highlight code {
+      padding: 0.525rem 0.8rem; }
+  .md-typeset > .codehilitetable, .md-typeset > .highlighttable {
     margin: 1em -0.8rem;
     border-radius: 0; }
-    .md-typeset > .codehilite pre, .md-typeset > .highlight pre,
-    .md-typeset > .codehilite code,
-    .md-typeset > .highlight code {
-      padding: 0.525rem 0.8rem; }
-    .md-typeset > .codehilitetable, .md-typeset > .highlighttable {
-      margin: 1em -0.8rem;
-      border-radius: 0; }
-      .md-typeset > .codehilitetable .codehilite > pre, .md-typeset > .highlighttable .codehilite > pre, .md-typeset > .codehilitetable .highlight > pre, .md-typeset > .highlighttable .highlight > pre,
-      .md-typeset > .codehilitetable .codehilite > code,
-      .md-typeset > .highlighttable .codehilite > code,
-      .md-typeset > .codehilitetable .highlight > code,
-      .md-typeset > .highlighttable .highlight > code,
-      .md-typeset > .codehilitetable .linenodiv,
-      .md-typeset > .highlighttable .linenodiv {
-        padding: 0.5rem 0.8rem; }
+    .md-typeset > .codehilitetable .linenodiv, .md-typeset > .highlighttable .linenodiv {
+      padding: 0.5rem 0.8rem; }
   .md-typeset > p > .MJXc-display {
     margin: 0.75em -0.8rem;
     padding: 0.25em 0.8rem; }
@@ -2076,9 +2025,10 @@ hr {
     border: 0;
     border-top: 0.05rem solid rgba(0, 0, 0, 0.07);
     border-radius: 0; }
-    .md-typeset > .superfences-tabs pre,
     .md-typeset > .superfences-tabs code {
-      padding: 0.525rem 0.8rem; } }
+      padding: 0.525rem 0.8rem; }
+    .md-typeset > .superfences-tabs input:first-child + label {
+      margin-left: 0.2rem; } }
 
 @media only screen and (min-width: 100em) {
     html {

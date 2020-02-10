@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -213,63 +213,9 @@ $codehilite-whitespace: transparent;
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // If code blocks are wrapped with codehilite, the styles must be adjusted
-  // so the marker stretches to the whole width and the padding is respected
-  .codehilite {
-    position: relative;
-    margin: 1em 0;
-    padding: 0;
-    border-radius: px2rem(2px);
-    background-color: $md-code-background;
-    color: $md-code-color;
-    line-height: 1.4;
-    -webkit-overflow-scrolling: touch;
-
-    // Actual container with code, overflowing
-    pre,
-    code {
-      display: block;
-      margin: 0;
-      padding: px2rem(10.5px) px2rem(12px);
-      background-color: transparent;
-      overflow: auto;
-
-      // Override native scrollbar styles
-      &::-webkit-scrollbar {
-        width: px2rem(4px);
-        height: px2rem(4px);
-      }
-
-      // Style scrollbar thumb
-      &::-webkit-scrollbar-thumb {
-        background-color: $md-color-black--lighter;
-
-        // Hovered scrollbar thumb
-        &:hover {
-          background-color: $md-color-accent;
-        }
-      }
-    }
-  }
-
-  // If not using Pygments, code will be under pre > code
-  pre.codehilite {
-    overflow: visible;
-
-    // Actual container with code, overflowing
-    code {
-      display: block;
-      padding: px2rem(10.5px) px2rem(12px);
-      overflow: auto;
-    }
-  }
-
   // Block with line numbers
   .codehilitetable {
     display: block;
-    margin: 1em 0;
-    border-radius: 0.2em;
-    font-size: ms(0);
     overflow: hidden;
 
     // Set table elements to block layout, because otherwise the whole flexbox
@@ -288,7 +234,7 @@ $codehilite-whitespace: transparent;
 
     // The pre tags are nested inside a table, so we need to remove the
     // margin because it collapses below all the overflows
-    .codehilite,
+    pre,
     .linenodiv {
       margin: 0;
       border-radius: 0;
@@ -308,8 +254,6 @@ $codehilite-whitespace: transparent;
 
       // Reset spacings
       pre {
-        margin: 0;
-        padding: 0;
         background-color: transparent;
         color: inherit;
         text-align: right;
@@ -324,34 +268,31 @@ $codehilite-whitespace: transparent;
     }
   }
 
-  // Full-width container
-  > .codehilite {
+  // Block with line numbers
+  > .codehilitetable {
+    margin: 1em 0;
+    border-radius: 0.2em;
+  }
 
-    // [mobile -]: Stretch to whole width
-    @include break-to-device(mobile) {
+  // [mobile -]: Stretch to whole width
+  @include break-to-device(mobile) {
+
+    // Full-width container
+    > .codehilite {
       margin: 1em px2rem(-16px);
-      border-radius: 0;
 
       // Actual container with code, overflowing
-      pre,
       code {
         padding: px2rem(10.5px) px2rem(16px);
       }
     }
-  }
 
-  // Full-width container on top-level
-  > .codehilitetable {
-    box-shadow: none;
-
-    // [mobile -]: Stretch to whole width
-    @include break-to-device(mobile) {
+    // Full-width container on top-level
+    > .codehilitetable {
       margin: 1em px2rem(-16px);
       border-radius: 0;
 
       // Increase spacing
-      .codehilite > pre,
-      .codehilite > code,
       .linenodiv {
         padding: px2rem(10px) px2rem(16px);
       }
