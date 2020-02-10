@@ -42,7 +42,8 @@ $md-toggle__search--checked:
 
   // [tablet landscape +]: Header-embedded search
   @include break-from-device(tablet landscape) {
-    padding: px2rem(4px);
+    margin-left: px2rem(4px);
+    padding: px2rem(4px) 0;
   }
 
   // Search modal overlay
@@ -181,27 +182,14 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       position: relative;
-      width: px2rem(230px);
-      margin-right: px2rem(16px);
+      width: px2rem(234px);
       padding: px2rem(2px) 0;
       float: right;
       transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        margin-right: initial;
-        margin-left: px2rem(16px);
         float: left;
-      }
-    }
-
-    // [screen +]: Increase spacing of search bar
-    @include break-from-device(screen) {
-      margin-right: px2rem(24px);
-
-      // Adjust for RTL languages
-      [dir="rtl"] & {
-        margin-left: px2rem(24px);
       }
     }
 

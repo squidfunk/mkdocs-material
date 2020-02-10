@@ -202,12 +202,22 @@
       display: block;
       width: px2rem(234px);
       max-width: px2rem(234px);
-      padding-right: px2rem(12px);
+      margin-left: px2rem(20px);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
-        padding-right: initial;
-        padding-left: px2rem(12px);
+        margin-right: px2rem(20px);
+        margin-left: initial;
+      }
+    }
+
+    // [screen +]: Increase spacing of search bar
+    @include break-from-device(screen) {
+      margin-left: px2rem(28px);
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-right: px2rem(28px);
       }
     }
   }
