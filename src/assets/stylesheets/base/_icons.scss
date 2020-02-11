@@ -23,6 +23,22 @@
 // stylelint-disable font-family-no-missing-generic-family-keyword
 
 // ----------------------------------------------------------------------------
+// Font faces
+// ----------------------------------------------------------------------------
+
+// Icon font
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"),
+       local("MaterialIcons-Regular"),
+       url("../fonts/MaterialIcons-Regular.woff2") format("woff2"),
+       url("../fonts/MaterialIcons-Regular.woff") format("woff"),
+       url("../fonts/MaterialIcons-Regular.ttf") format("truetype")
+}
+
+// ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
