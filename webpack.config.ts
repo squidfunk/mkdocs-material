@@ -152,7 +152,11 @@ function config(args: Configuration): Configuration {
 
     /* Filter false positives and copied files */
     stats: {
-      excludeAssets: [/assets/, /\.(html|py|yml)$/],
+      excludeAssets: [
+        /.fontawesome/,
+        /assets/,
+        /\.(html|py|yml)$/
+      ],
       warningsFilter: [
         /export '.*' was not found in/
       ]
@@ -192,13 +196,10 @@ export default (_env: never, args: Configuration): Configuration[] => {
       plugins: [
         ...base.plugins,
 
-        /* Copy FontAwesome icons to dot directory, so MkDocs doesn't bundle */
+        /* Copy FontAwesome SVGs to dot directory, so MkDocs ignores them */
         new CopyPlugin([
-          {
-            toType: "template",
-            to: "assets/images/icons/fontawesome/[path]/[name].[ext].html",
-            from: "**/*.svg"
-          }
+          { to: ".fontawesome", from: "**/*.svg" },
+          { to: ".fontawesome", from: "../LICENSE.txt" }
         ], {
           context: "node_modules/@fortawesome/fontawesome-free/svgs"
         }),

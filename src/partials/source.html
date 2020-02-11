@@ -22,9 +22,6 @@
 
 {% import "partials/language.html" as lang with context %}
 
-<!-- Icon base path -->
-{% set path = "assets/images/icons/fontawesome/" %}
-
 <!-- Repository containing source -->
 <a
   href="{{ config.repo_url }}"
@@ -33,7 +30,7 @@
 >
   <div class="md-source__icon">
     {% set repo_icon = config.extra.repo_icon | default("brands/git-alt") %}
-    {% include path ~ repo_icon ~ ".svg.html" %}
+    {% include ".fontawesome/" ~ repo_icon ~ ".svg" %}
   </div>
   <div class="md-source__repository">
     {{ config.repo_name }}

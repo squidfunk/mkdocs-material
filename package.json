@@ -27,8 +27,8 @@
     "build": "npx webpack --mode production",
     "clean": "rm -rf material",
     "lint": "npm run lint:ts && npm run lint:scss",
-    "lint:ts": "npx tslint -p tsconfig.json 'src/**/*.ts'",
     "lint:scss": "npx stylelint `find src/assets -name *.scss`",
+    "lint:ts": "npx tslint -p tsconfig.json 'src/**/*.ts'",
     "start": "npx webpack --mode development --watch"
   },
   "dependencies": {
