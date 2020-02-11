@@ -107,6 +107,7 @@
     // Hide 1st level nested items, as they are listed in the tabs by setting
     // font-size to zero, as we need to preserve bottom padding
     ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
+      max-height: 0;
       font-size: 0;
       visibility: hidden;
     }

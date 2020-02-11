@@ -193,6 +193,8 @@ export default (_env: never, args: Configuration): Configuration[] => {
         hashDigestLength: 8,
         libraryTarget: "window"
       },
+
+      /* Plugins */
       plugins: [
         ...base.plugins,
 
