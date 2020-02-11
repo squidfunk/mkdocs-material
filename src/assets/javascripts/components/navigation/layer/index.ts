@@ -31,6 +31,7 @@ import {
 } from "rxjs"
 import {
   delay,
+  finalize,
   map,
   observeOn,
   scan,
@@ -42,7 +43,7 @@ import {
   resetOverflowScrolling,
   setOverflowScrolling
 } from "actions"
-import { getElement, getElements } from "utilities"
+import { getElement } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -65,22 +66,22 @@ export interface ActiveLayer {
  *
  * On iOS we want to add `-webkit-overflow-scrolling: touch` for the menus
  * contained in the drawer, but as the navigational layers are nested, we can
- * only add it to the active layer because otherwise weird stuff will happen.
+ * only add it to the active layer because otherwise weird cropping will occur.
  * This implementation keeps track of the previous and currently active layer.
  *
- * @param el - Navigation element (top-level)
+ * @param els - Navigation elements
  *
  * @return Active layer observable
  */
 export function watchActiveLayer(
-  el: HTMLElement
+  els: HTMLElement[]
 ): Observable<ActiveLayer> {
   const table = new Map<HTMLInputElement, HTMLElement>()
-  for (const nav of getElements("nav", el)) {
-    const label = getElement<HTMLLabelElement>("label", nav)
+  for (const el of els) {
+    const label = getElement<HTMLLabelElement>("label", el)
     if (typeof label !== "undefined") {
       const input = getElement<HTMLInputElement>(`#${label.htmlFor}`)!
-      table.set(input, nav)
+      table.set(input, el)
     }
   }
 
@@ -108,23 +109,34 @@ export function watchActiveLayer(
 /**
  * Paint active layer from source observable
  *
- * @param els - Anchor elements
+ * @param els - Navigation elements
  *
  * @return Operator function
  */
-export function paintActiveLayer(): MonoTypeOperatorFunction<ActiveLayer> {
+export function paintActiveLayer(
+  els: HTMLElement[]
+): MonoTypeOperatorFunction<ActiveLayer> {
   return pipe(
 
-    /* Unset overflow scrolling on previous layer */
+    /* Defer repaint to next animation frame */
     observeOn(animationFrameScheduler),
     tap(({ prev }) => {
-      if (prev) resetOverflowScrolling(prev)
+      if (prev)
+        resetOverflowScrolling(prev)
+    }),
+
+    /* Reset on complete or error */
+    finalize(() => {
+      for (const el of els)
+        resetOverflowScrolling(
+          getElement(".md-nav__list", el)!
+        )
     }),
 
     /* Wait until transition has finished */
     delay(250),
 
-    /* Set overflow scrolling on next layer */
+    /* Defer repaint to next animation frame */
     observeOn(animationFrameScheduler),
     tap(({ next }) => {
       setOverflowScrolling(next)

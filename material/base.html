@@ -188,7 +188,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.de72e519.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.abf20a04.min.js' | url }}"></script>
       <script id="__lang" type="application/json">
         {%- set translations = {} -%}
         {%- for key in [
@@ -207,7 +207,7 @@
         {%- endfor -%}
         {{ translations | tojson }}
       </script>
-      <script>app=initialize({base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.e2455911.min.js' | url }}",packer:"{{ 'assets/javascripts/worker/packer.819c2a16.min.js' | url }}"}})</script>
+      <script>app=initialize({base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.03c9bfda.min.js' | url }}",packer:"{{ 'assets/javascripts/worker/packer.819c2a16.min.js' | url }}"}})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

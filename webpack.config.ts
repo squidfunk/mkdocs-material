@@ -150,11 +150,12 @@ function config(args: Configuration): Configuration {
     /* Source maps */
     devtool: "source-map",
 
-    /* Filter false positives and copied files */
+    /* Filter false positives and omit verbosity */
     stats: {
+      entrypoints: false,
       excludeAssets: [
         /.fontawesome/,
-        /assets/,
+        /\/(fonts|images|lunr)\//,
         /\.(html|py|yml)$/
       ],
       warningsFilter: [

@@ -9,7 +9,7 @@
   {% endif %}
   {% if toc_ | first is defined %}
     <label class="md-nav__title" for="__toc">{{ lang.t("toc.title") }}</label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list">
       {% for toc_item in toc_ %}
         {% include "partials/toc-item.html" %}
       {% endfor %}

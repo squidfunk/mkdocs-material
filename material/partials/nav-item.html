@@ -19,7 +19,7 @@
       <label class="md-nav__title" for="{{ path }}">
         {{ nav_item.title }}
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
+      <ul class="md-nav__list">
         {% set base = path %}
         {% for nav_item in nav_item.children %}
           {% set path = base + "-" + loop.index | string %}
