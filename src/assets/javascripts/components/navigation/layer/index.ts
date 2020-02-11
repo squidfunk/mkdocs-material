@@ -30,10 +30,10 @@ import {
   pipe
 } from "rxjs"
 import {
-  bufferCount,
   delay,
   map,
   observeOn,
+  scan,
   shareReplay,
   tap
 } from "rxjs/operators"
@@ -52,8 +52,8 @@ import { getElement, getElements } from "utilities"
  * Active layer
  */
 export interface ActiveLayer {
-  prev?: HTMLElement                   /* Anchors (previous) */
-  next: HTMLElement                    /* Anchors (next) */
+  prev?: HTMLElement                   /* Layer (previous) */
+  next: HTMLElement                    /* Layer (next) */
 }
 
 /* ----------------------------------------------------------------------------
@@ -97,9 +97,8 @@ export function watchActiveLayer(
   /* Return previous and next layer */
   return active$
     .pipe(
-      // TODO: this doesnt emit correctly
-      bufferCount(2, 1),
-      map(([prev, next]) => ({ prev, next })),
+      map(next => ({ next })),
+      scan(({ next: prev }, { next }) => ({ prev, next })),
       shareReplay(1)
     )
 }
