@@ -43,9 +43,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.6f237a30.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.8c25017f.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -66,7 +66,6 @@
         <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
       {% endif %}
     {% endblock %}
-    <link rel="stylesheet" href="{{ 'assets/fonts/material-icons.css' | url }}">
     {% if config.extra.manifest %}
       <link rel="manifest" type="application/manifest+json" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
     {% endif %}
@@ -189,7 +188,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.61d55af4.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
       <script id="__lang" type="application/json">
         {%- set translations = {} -%}
         {%- for key in [
@@ -208,7 +207,7 @@
         {%- endfor -%}
         {{ translations | tojson }}
       </script>
-      <script>app=initialize({base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.1be69dba.min.js' | url }}",packer:"{{ 'assets/javascripts/worker/packer.f5b5c95d.min.js' | url }}"}})</script>
+      <script>app=initialize({base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.js' | url }}",packer:"{{ 'assets/javascripts/worker/packer.js' | url }}"}})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

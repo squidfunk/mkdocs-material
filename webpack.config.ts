@@ -21,7 +21,6 @@
  */
 
 import * as CopyPlugin from "copy-webpack-plugin"
-import { minify as mincss } from "csso"
 import * as EventHooksPlugin from "event-hooks-webpack-plugin"
 import * as fs from "fs"
 import { minify as minhtml } from "html-minifier"
@@ -88,6 +87,7 @@ function config(args: Configuration): Configuration {
             {
               loader: "css-loader",
               options: {
+                url: false,
                 sourceMap: args.mode !== "production"
               }
             },
@@ -217,15 +217,6 @@ export default (_env: never, args: Configuration): Configuration[] => {
           { from: "assets/fonts/**/*.!(css)" },
           { from: "assets/images/*.{ico,png,svg}" },
           { from: "**/*.{py,yml}" },
-
-          /* Copy and minify font stylesheets */
-          {
-            from: "assets/fonts/*.css",
-            transform: content => {
-              const { css } = mincss(content.toString())
-              return css
-            }
-          },
 
           /* Copy and minify HTML */
           {
