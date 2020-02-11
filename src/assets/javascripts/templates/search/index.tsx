@@ -21,7 +21,7 @@
  */
 
 import { h } from "extensions"
-import { ArticleDocument } from "modules"
+import { SearchResult } from "modules"
 import { truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------
@@ -32,8 +32,10 @@ import { truncate } from "utilities"
  * CSS classes
  */
 const css = {
+  item:    "md-search-result__item",
   link:    "md-search-result__link",
   article: "md-search-result__article md-search-result__article--document",
+  section: "md-search-result__article",
   title:   "md-search-result__title",
   teaser:  "md-search-result__teaser"
 }
@@ -43,24 +45,32 @@ const css = {
  * ------------------------------------------------------------------------- */
 
 /**
- * Render an article document
+ * Render a search result
  *
- * @param article - Article document
+ * @param result - Search result
  *
  * @return HTML element
  */
-export function renderArticleDocument(
-  { location, title, text }: ArticleDocument
+export function renderSearchResult(
+  { article, sections }: SearchResult
 ): HTMLElement {
+  const children = [article, ...sections].map(document => {
+    const { location, title, text } = document
+    return (
+      <a href={location} class={css.link} tabIndex={-1}>
+        <article class={"parent" in document ? css.section : css.article}>
+          <h1 class={css.title}>{title}</h1>
+          {text.length
+            ? <p class={css.teaser}>{truncate(text, 320)}</p>
+            : undefined
+          }
+        </article>
+      </a>
+    )
+  })
   return (
-    <a href={location} class={css.link} tabIndex={-1}>
-      <article class={css.article}>
-        <h1 class={css.title}>{title}</h1>
-        {text.length
-          ? <p class={css.teaser}>{truncate(text, 320)}</p>
-          : undefined
-        }
-      </article>
-    </a>
+    <li class={css.item}>
+      {...children}
+    </li>
   )
 }

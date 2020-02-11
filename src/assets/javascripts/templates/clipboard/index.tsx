@@ -52,7 +52,7 @@ export function renderClipboard(
     <button
       class={css.container}
       title={translate("clipboard.copy")}
-      data-clipboard-target={`#${id} pre, #${id} code`}
+      data-clipboard-target={`#${id} code`}
     >&#xE14D;</button>
   )
 }

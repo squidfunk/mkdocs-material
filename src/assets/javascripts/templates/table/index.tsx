@@ -21,8 +21,6 @@
  */
 
 import { h } from "extensions"
-import { SectionDocument } from "modules"
-import { truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -32,10 +30,8 @@ import { truncate } from "utilities"
  * CSS classes
  */
 const css = {
-  link:    "md-search-result__link",
-  article: "md-search-result__article",
-  title:   "md-search-result__title",
-  teaser:  "md-search-result__teaser"
+  wrapper: "md-typeset__scrollwrap",
+  table:   "md-typeset__table"
 }
 
 /* ----------------------------------------------------------------------------
@@ -43,24 +39,20 @@ const css = {
  * ------------------------------------------------------------------------- */
 
 /**
- * Render a section document
+ * Render a table wrapper
  *
- * @param section - Section document
+ * @param table - Table element
  *
  * @return HTML element
  */
-export function renderSectionDocument(
-  { location, title, text }: SectionDocument
+export function renderTable(
+  table: HTMLTableElement
 ): HTMLElement {
   return (
-    <a href={location} class={css.link} tabIndex={-1}>
-      <article class={css.article}>
-        <h1 class={css.title}>{title}</h1>
-        {text.length
-          ? <p class={css.teaser}>{truncate(text, 320)}</p>
-          : undefined
-        }
-      </article>
-    </a>
+    <div class={css.wrapper}>
+      <div class={css.table}>
+        {table}
+      </div>
+    </div>
   )
 }
