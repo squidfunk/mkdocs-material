@@ -20,30 +20,4 @@
  * IN THE SOFTWARE.
  */
 
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Set overflow scrolling
- *
- * @param el - Scrollable element
- */
-export function setOverflowScrolling(
-  el: HTMLElement
-): void {
-  // el.style.backgroundColor = "yellow" // TODO: debugging
-  el.style.webkitOverflowScrolling = "touch"
-}
-
-/**
- * Reset overflow scrolling
- *
- * @param el - Scrollable element
- */
-export function resetOverflowScrolling(
-  el: HTMLElement
-): void {
-  // el.style.backgroundColor = "" // TODO: debugging
-  el.style.webkitOverflowScrolling = ""
-}
+export * from "./anchor"

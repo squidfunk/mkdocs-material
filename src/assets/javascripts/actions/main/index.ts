@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./header"
-export * from "./main"
-export * from "./search"
-export * from "./toc"
+export * from "./hideable"
+export * from "./sidebar"
+export * from "./scrollable"
