@@ -29,13 +29,12 @@
 
   // Admonition extension
   .admonition {
-    @include z-depth(2);
-
     margin: 1.5625em 0;
     padding: 0 px2rem(12px);
     border-left: px2rem(4px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
     font-size: ms(-1);
+    box-shadow: inset 0 0 0 px2rem(1px) transparentize($clr-blue-a200, 0.75);
     overflow: auto;
 
     // Adjust for RTL languages
@@ -58,7 +57,6 @@
     > .admonition-title {
       margin: 0 px2rem(-12px);
       padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
-      border-bottom: px2rem(1px) solid transparentize($clr-blue-a200, 0.9);
       background-color: transparentize($clr-blue-a200, 0.9);
       font-weight: 700;
 
@@ -111,6 +109,7 @@
       &%#{nth($names, 1)},
       &.#{nth($names, 1)} {
         border-left-color: $tint;
+        box-shadow: inset 0 0 0 px2rem(1px) transparentize($tint, 0.75);
 
         // Adjust for RTL languages
         [dir="rtl"] & {
@@ -119,7 +118,6 @@
 
         // Title
         > .admonition-title {
-          border-bottom-color: transparentize($tint, 0.9);
           background-color: transparentize($tint, 0.9);
 
           // Icon
