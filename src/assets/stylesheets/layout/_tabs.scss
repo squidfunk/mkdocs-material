@@ -142,6 +142,7 @@
           // Reset font-size for nested items and induce margin collapse
           &--nested {
             display: none;
+            max-height: none;
             font-size: px2rem(14px);
             overflow: auto;
             visibility: visible;

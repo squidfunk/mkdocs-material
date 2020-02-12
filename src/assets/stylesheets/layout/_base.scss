@@ -35,7 +35,7 @@ $md-toggle__drawer--checked:
 // Stretch container to viewport and set base font-size to 10px for simple
 // calculations base on relative ems (rems)
 html {
-  min-height: 100%;
+  height: 100%;
   background-color: $md-color-white;
   // Hack: normally, we would set the base font-size to 62.5%, so we can base
   // all calculations on 10px, but Chromium and Chrome define a minimal font
@@ -63,7 +63,9 @@ html {
 
 // Stretch body to container and leave room for footer
 body {
+  display: flex;
   position: relative;
+  flex-direction: column;
   min-height: 100%;
   // Hack: reset font-size to 10px, so the spacing for all inline elements is
   // correct again. Otherwise the spacing would be based on 20px.
@@ -105,19 +107,16 @@ hr {
   overflow: auto;
 }
 
-// Content wrapper - use display: table to make variable-height sticky footers
-// work and fixed table-layout for IE, see http://bit.ly/2hZohXL
+// Content wrapper
 .md-container {
-  display: table;
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 // The main content should stretch to maximum height in the table
 .md-main {
-  display: table-row;
-  height: 100%;
+  flex-grow: 1;
 
   // Increase top spacing of content area to give typography more room
   &__inner {
@@ -170,35 +169,30 @@ hr {
 }
 
 // ----------------------------------------------------------------------------
-// Rules: flexible elements, implemented with table layout
+// Rules: flexible elements
 // ----------------------------------------------------------------------------
 
 // Flexible layout container
 .md-flex {
-  display: table;
+  display: flex;
 
   // Flexible layout container cell/element
   &__cell {
-    display: table-cell;
     position: relative;
-    vertical-align: top;
 
     // Shrink to minimum width
     &--shrink {
-      width: 0%;
+      flex-grow: 0;
     }
 
     // Stretch to maximum width
     &--stretch {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
+      flex-grow: 1;
     }
   }
 
   // Apply ellipsis in case of overflowing text
   &__ellipsis {
-    display: table-cell;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
