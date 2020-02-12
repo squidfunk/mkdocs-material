@@ -34,7 +34,7 @@
     border-left: px2rem(4px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
     font-size: ms(-1);
-    box-shadow: inset 0 0 0 px2rem(1px) transparentize($clr-blue-a200, 0.75);
+    box-shadow: inset 0 0 0 px2rem(1px) transparentize($clr-blue-a200, 0.85);
     overflow: auto;
 
     // Adjust for RTL languages
@@ -109,7 +109,7 @@
       &%#{nth($names, 1)},
       &.#{nth($names, 1)} {
         border-left-color: $tint;
-        box-shadow: inset 0 0 0 px2rem(1px) transparentize($tint, 0.75);
+        box-shadow: inset 0 0 0 px2rem(1px) transparentize($tint, 0.85);
 
         // Adjust for RTL languages
         [dir="rtl"] & {

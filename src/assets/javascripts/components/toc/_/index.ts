@@ -23,21 +23,19 @@
 import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
 import { map, shareReplay } from "rxjs/operators"
 
-import { switchMapIf } from "extensions"
-import { Agent, getElements } from "utilities"
-
-import { HeaderState } from "../../header"
-import {
-  MainState,
-  SidebarState,
-  paintSidebar,
-  watchSidebar
-} from "../../main"
 import {
   AnchorList,
+  Header,
+  Main,
+  Sidebar,
+  Viewport,
+  getElements,
   paintAnchorList,
-  watchAnchorList
-} from "../anchor"
+  paintSidebar,
+  watchAnchorList,
+  watchSidebar
+} from "observables"
+import { switchMapIf } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -47,7 +45,7 @@ import {
  * Table of contents state
  */
 export interface TableOfContentsState {
-  sidebar: SidebarState                /* Sidebar state */
+  sidebar: Sidebar                     /* Sidebar state */
   anchors: AnchorList                  /* Anchor list */
 }
 
@@ -59,8 +57,10 @@ export interface TableOfContentsState {
  * Options
  */
 interface Options {
-  header$: Observable<HeaderState>     /* Header state observable */
-  main$: Observable<MainState>         /* Main area state observable */
+  header$: Observable<Header>          /* Header observable */
+  main$: Observable<Main>              /* Main area observable */
+  viewport$: Observable<Viewport>      /* Viewport observable */
+  tablet$: Observable<boolean>         /* Media tablet observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -77,18 +77,18 @@ interface Options {
  * @return Table of contents state observable
  */
 export function watchTableOfContents(
-  el: HTMLElement, agent: Agent, { header$, main$ }: Options
+  el: HTMLElement, { header$, main$, viewport$ }: Options
 ): Observable<TableOfContentsState> {
 
   /* Watch and paint sidebar */
-  const sidebar$ = watchSidebar(el, agent, { main$ })
+  const sidebar$ = watchSidebar(el, { main$, viewport$ })
     .pipe(
       paintSidebar(el)
     )
 
   /* Watch and paint anchor list (scroll spy) */
   const els = getElements<HTMLAnchorElement>(".md-nav__link", el)
-  const anchors$ = watchAnchorList(els, agent, { header$ })
+  const anchors$ = watchAnchorList(els, { header$, viewport$ })
     .pipe(
       paintAnchorList(els)
     )
@@ -111,11 +111,10 @@ export function watchTableOfContents(
  * @return Operator function
  */
 export function mountTableOfContents(
-  agent: Agent, options: Options
+  options: Options
 ): OperatorFunction<HTMLElement, TableOfContentsState> {
-  const { media } = agent
   return pipe(
-    switchMapIf(media.tablet$, el => watchTableOfContents(el, agent, options)),
+    switchMapIf(options.tablet$, el => watchTableOfContents(el, options)),
     shareReplay(1)
   )
 }

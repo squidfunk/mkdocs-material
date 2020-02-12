@@ -95,12 +95,22 @@ export function setupSearchDocumentMap(
 
       /* Add subsequent section */
       } else {
-        documents.set(location, { location, title, text, parent })
+        documents.set(location, {
+          location,
+          title,
+          text,
+          parent
+        })
       }
 
     /* Add article */
     } else {
-      documents.set(location, { location, title, text, linked: false })
+      documents.set(location, {
+        location,
+        title,
+        text,
+        linked: false
+      })
     }
   }
   return documents

@@ -24,8 +24,8 @@
     "paths": {
       "actions": ["actions"],
       "components": ["components"],
-      "extensions": ["extensions"],
       "modules": ["modules"],
+      "observables": ["observables"],
       "templates": ["templates"],
       "utilities": ["utilities"],
       "workers": ["workers"]

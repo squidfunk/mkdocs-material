@@ -20,8 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "extensions"
-import { translate } from "utilities"
+import { h, translate } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -43,7 +42,7 @@ const css = {
  *
  * @param id - Unique identifier
  *
- * @return HTML element
+ * @return Element
  */
 export function renderClipboard(
   id: string

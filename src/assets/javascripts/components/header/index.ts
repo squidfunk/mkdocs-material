@@ -20,6 +20,4 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./offset"
 export * from "./shadow"

@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "extensions"
+import { h } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -43,7 +43,7 @@ const css = {
  *
  * @param facts - Source facts
  *
- * @return HTML element
+ * @return Element
  */
 export function renderSource(
   facts: any // TODO: add typings

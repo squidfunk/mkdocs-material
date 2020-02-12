@@ -22,7 +22,7 @@
 
 import { SearchIndex, SearchIndexConfig } from "modules"
 
-import { SearchMessage, SearchMessageType } from "../_"
+import { SearchMessage, SearchMessageType } from "../message"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -46,7 +46,7 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
   const base = "../lunr"
 
   /* Add scripts for languages */
-  const scripts = [`${base}/min/lunr.stemmer.support.min.js`]
+  const scripts = []
   for (const lang of config.lang) {
     if (lang === "ja") scripts.push(`${base}/tinyseg.js`)
     if (lang !== "en") scripts.push(`${base}/min/lunr.${lang}.min.js`)
@@ -57,7 +57,11 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
     scripts.push(`${base}/min/lunr.multi.min.js`)
 
   /* Load scripts synchronously */
-  importScripts(...scripts)
+  if (scripts.length)
+    importScripts(
+      `${base}/min/lunr.stemmer.support.min.js`,
+      ...scripts
+    )
 }
 
 /* ----------------------------------------------------------------------------

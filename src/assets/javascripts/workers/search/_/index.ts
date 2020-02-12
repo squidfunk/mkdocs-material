@@ -20,119 +20,97 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndexOptions, SearchResult } from "modules"
+import { Observable, Subject } from "rxjs"
+import { ajax } from "rxjs/ajax"
+import { distinctUntilKeyChanged, map, pluck } from "rxjs/operators"
+
+import { SearchIndexOptions } from "modules"
+import {
+  SearchQuery,
+  WorkerHandler,
+  watchWorker
+} from "observables"
+
+import {
+  SearchMessage,
+  SearchMessageType,
+  SearchQueryMessage,
+  SearchSetupMessage,
+  isSearchResultMessage
+} from "../message"
 
 /* ----------------------------------------------------------------------------
- * Types
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Search message type
+ * Options
  */
-export const enum SearchMessageType {
-  SETUP,                               /* Search index setup */
-  DUMP,                                /* Search index dump */
-  QUERY,                               /* Search query */
-  RESULT                               /* Search results */
+interface Options {
+  base: string                         /* Base url */
+  query$: Observable<SearchQuery>      /* Search query observable */
 }
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * A message containing the data necessary to setup the search index
- */
-export interface SearchSetupMessage {
-  type: SearchMessageType.SETUP        /* Message type */
-  data: SearchIndexOptions             /* Message data */
-}
-
-/**
- * A message containing the a dump of the search index
- */
-export interface SearchDumpMessage {
-  type: SearchMessageType.DUMP        /* Message type */
-  data: string                        /* Message data */
-}
-
-/**
- * A message containing a search query
- */
-export interface SearchQueryMessage {
-  type: SearchMessageType.QUERY        /* Message type */
-  data: string                         /* Message data */
-}
-
-/**
- * A message containing results for a search query
- */
-export interface SearchResultMessage {
-  type: SearchMessageType.RESULT       /* Message type */
-  data: SearchResult[]                 /* Message data */
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * A message exchanged with the search worker
- */
-export type SearchMessage =
-  | SearchSetupMessage
-  | SearchDumpMessage
-  | SearchQueryMessage
-  | SearchResultMessage
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Type guard for search setup messages
+ * Setup search web worker
  *
- * @param message - Search worker message
+ * @param url - Worker url
+ * @param options - Options
  *
- * @return Test result
+ * @return Worker handler
  */
-export function isSearchSetupMessage(
-  message: SearchMessage
-): message is SearchSetupMessage {
-  return message.type === SearchMessageType.SETUP
-}
+export function setupSearchWorker(
+  url: string, { base, query$ }: Options
+): WorkerHandler<SearchMessage> {
+  const worker = new Worker(url)
+  const prefix = new URL(base, location.href)
 
-/**
- * Type guard for search dump messages
- *
- * @param message - Search worker message
- *
- * @return Test result
- */
-export function isSearchDumpMessage(
-  message: SearchMessage
-): message is SearchDumpMessage {
-  return message.type === SearchMessageType.DUMP
-}
+  /* Create communication channels and correct relative links */
+  const tx$ = new Subject<SearchMessage>()
+  const rx$ = watchWorker(worker, { tx$ })
+    .pipe(
+      map(message => {
+        if (isSearchResultMessage(message)) {
+          for (const { article, sections } of message.data) {
+            article.location = `${prefix}/${article.location}`
+            for (const section of sections)
+              section.location = `${prefix}/${section.location}`
+          }
+        }
+        return message
+      })
+    )
 
-/**
- * Type guard for search query messages
- *
- * @param message - Search worker message
- *
- * @return Test result
- */
-export function isSearchQueryMessage(
-  message: SearchMessage
-): message is SearchQueryMessage {
-  return message.type === SearchMessageType.QUERY
-}
+  /* Fetch index and setup search worker */
+  ajax({
+    url: `${base}/search/search_index.json`,
+    responseType: "json",
+    withCredentials: true
+  })
+    .pipe(
+      pluck("response"),
+      map<SearchIndexOptions, SearchSetupMessage>(data => ({
+        type: SearchMessageType.SETUP,
+        data
+      }))
+    )
+      .subscribe(tx$.next.bind(tx$))
 
-/**
- * Type guard for search result messages
- *
- * @param message - Search worker message
- *
- * @return Test result
- */
-export function isSearchResultMessage(
-  message: SearchMessage
-): message is SearchResultMessage {
-  return message.type === SearchMessageType.RESULT
+  /* Subscribe to search query */
+  query$
+    .pipe(
+      distinctUntilKeyChanged("value"),
+      map<SearchQuery, SearchQueryMessage>(query => ({
+        type: SearchMessageType.QUERY,
+        data: query.value
+      }))
+    )
+      .subscribe(tx$.next.bind(tx$))
+
+  /* Return worker handler */
+  return { tx$, rx$ }
 }

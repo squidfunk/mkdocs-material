@@ -21,12 +21,14 @@
  */
 
 import { Observable, OperatorFunction, pipe } from "rxjs"
-import { map, shareReplay } from "rxjs/operators"
+import { map, shareReplay, switchMap } from "rxjs/operators"
 
-import { switchMapIf } from "extensions"
-import { Agent, paintHidden } from "utilities"
-
-import { HeaderState, watchViewportOffsetFromTopOf } from "../header"
+import {
+  Header,
+  Viewport,
+  paintHideable,
+  watchViewportFrom
+} from "observables"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -47,7 +49,9 @@ export interface HeroState {
  * Options
  */
 interface Options {
-  header$: Observable<HeaderState>     /* Header state observable */
+  header$: Observable<Header>     /* Header observable */
+  viewport$: Observable<Viewport>
+  screen$: Observable<boolean>         /* Media screen observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -64,13 +68,13 @@ interface Options {
  * @return Hero state
  */
 export function watchHero(
-  el: HTMLElement, agent: Agent, { header$ }: Options
+  el: HTMLElement, options: Options
 ): Observable<HeroState> {
 
   /* Watch and paint visibility */
-  const hidden$ = watchViewportOffsetFromTopOf(el, agent, { header$ })
+  const hidden$ = watchViewportFrom(el, options)
     .pipe(
-      paintHidden(el, 20)
+      paintHideable(el, 20)
     )
 
   /* Combine into a single hot observable */
@@ -91,11 +95,10 @@ export function watchHero(
  * @return Operator function
  */
 export function mountHero(
-  agent: Agent, options: Options
+  options: Options
 ): OperatorFunction<HTMLElement, HeroState> {
-  const { media } = agent
   return pipe(
-    switchMapIf(media.screen$, el => watchHero(el, agent, options)),
+    switchMap(el => watchHero(el, options)),
     shareReplay(1)
   )
 }

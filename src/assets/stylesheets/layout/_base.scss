@@ -76,6 +76,8 @@ body {
 
     // Lock body to viewport height (e.g. in search mode)
     &[data-md-state="lock"] {
+      height: 100%;
+      min-height: auto;
       overflow: hidden;
 
       // Hide container on iOS, or the body will not be locked correctly
@@ -99,12 +101,6 @@ hr {
   max-width: px2rem(1220px);
   margin-right: auto;
   margin-left: auto;
-}
-
-// Prevent collapse of margin when setting margin on child element
-.md-container,
-.md-main {
-  overflow: auto;
 }
 
 // Content wrapper

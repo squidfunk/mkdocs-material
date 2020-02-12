@@ -24,12 +24,12 @@
     "url": "https://github.com/squidfunk/mkdocs-material.git"
   },
   "scripts": {
-    "build": "npx webpack --mode production",
+    "build": "npm run clean && npx webpack --mode production",
     "clean": "rm -rf material",
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:scss": "npx stylelint `find src/assets -name *.scss`",
     "lint:ts": "npx tslint -p tsconfig.json 'src/**/*.ts'",
-    "start": "npx webpack --mode development --watch"
+    "start": "npm run clean && npx webpack --mode development --watch"
   },
   "dependencies": {
     "clipboard": "^2.0.0",

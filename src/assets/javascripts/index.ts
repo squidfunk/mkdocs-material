@@ -31,15 +31,12 @@ import { identity, values } from "ramda"
 import {
   EMPTY,
   Observable,
-  Subject,
-  forkJoin,
   merge,
   of,
   fromEvent,
-  interval,
-  NEVER
+  OperatorFunction,
+  pipe
 } from "rxjs"
-import { ajax } from "rxjs/ajax"
 import {
   delay,
   filter,
@@ -47,53 +44,46 @@ import {
   pluck,
   switchMap,
   switchMapTo,
-  take,
   tap,
-  withLatestFrom,
-  distinctUntilChanged,
   distinctUntilKeyChanged,
+  shareReplay
 } from "rxjs/operators"
 
 import {
   Component,
   paintHeaderShadow,
   mountHero,
-  mountMain,
-  mountNavigation,
-  mountSearchResult,
   mountTableOfContents,
   mountTabs,
   switchComponent,
   watchComponentMap,
+} from "./components"
+import {
   watchHeader,
   watchSearchQuery,
-  watchSearchReset
-} from "./components"
-import { SearchIndexOptions } from "./modules"
-import {
+  watchSearchReset,
   getElement,
-  setupAgent,
   watchToggle,
-  watchWorker,
   setToggle,
   getElements,
   watchMedia,
-  translate,
-  watchElementFocus
-} from "./utilities"
+  watchDocument,
+  watchLocationHash,
+  watchMain,
+  watchViewport,
+  watchKeyboard
+} from "./observables"
 import {
-  PackerMessage,
-  PackerMessageType,
-  SearchMessage,
-  SearchMessageType,
-  SearchSetupMessage,
-  isSearchDumpMessage,
-  isSearchResultMessage
+  isSearchResultMessage,
+  setupSearchWorker
 } from "./workers"
 import { renderSource } from "templates"
-import { switchMapIf, not, takeIf } from "extensions"
+import { not, takeIf } from "utilities"
 import { renderClipboard } from "templates/clipboard"
-import { watchActiveLayer, paintActiveLayer } from "components/navigation/layer"
+import { fetchGitHubStats } from "modules/source/github"
+import { mountNavigation } from "components2/navigation"
+import { mountSearchResult } from "components2/search"
+import { renderTable } from "templates/table"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -116,6 +106,10 @@ export interface Config {
 
 document.documentElement.classList.remove("no-js")
 document.documentElement.classList.add("js")
+
+/* Test for iOS */
+if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
+  document.documentElement.classList.add("ios")
 
 const names: Component[] = [
   "container",                       /* Container */
@@ -155,106 +149,6 @@ function isConfig(config: any): config is Config {
 }
 
 /**
-  *
-  * Rogue control characters must be filtered before handing the query to the
-  * search index, as lunr will throw otherwise.
- */
-function prepare(value: string): string {
-  const newvalue = value
-    .replace(/(?:^|\s+)[*+-:^~]+(?=\s+|$)/g, "")
-    .trim()
-
-  return newvalue ? newvalue.replace(/\s+|$/g, "* ") : ""
-}
-
-function setupWorkers(config: Config) {
-  // Remove trailing URL, or search might not work on the 404 page.
-  config.base = config.base.replace(/\/$/, "")
-
-  const worker = new Worker(config.worker.search)
-  const packer = new Worker(config.worker.packer)
-
-  const packerMessage$ = new Subject<PackerMessage>()
-  const packer$ = watchWorker(packer, { send$: packerMessage$ })
-
-  // send a message, then switchMapTo worker!
-
-  packer$.subscribe(message => {
-    // console.log("PACKER.MSG", message.data.length)
-    // is always packed!
-    if (message.type === PackerMessageType.BINARY && message.data[0] !== "{")
-      localStorage.setItem("index", message.data)
-  })
-
-  // storing = experimental feature
-
-  const searchMessage$ = new Subject<SearchMessage>()
-
-  const search$ = watchWorker(worker, { send$: searchMessage$ })
-
-  /* Link search to packer */
-  search$
-    .pipe(
-      filter(isSearchDumpMessage),
-      map(message => ({
-        type: PackerMessageType.STRING,
-        data: message.data
-      })),
-      tap(message => packerMessage$.next(message))  // send message and wait!
-      // switchMapTo(packer$)
-    )
-      .subscribe()
-
-  const data$ = ajax({
-    url: `${config.base}/search/search_index.json`,
-    responseType: "json",
-    withCredentials: true
-  })
-    .pipe<SearchIndexOptions>(
-      pluck("response"),
-      // map(res => {
-      //   // search language... default for theme language...
-      //   const override = translate("search.tokenizer")
-      //   // TODO: ???
-      //   if (override.length)
-      //     res.config.separator = override
-
-      //   return res
-      // })
-      // take(1)
-    )
-
-  const fromLocal = localStorage.getItem("index")
-
-  ;
-  (fromLocal ? of({
-    type: PackerMessageType.BINARY,
-    data: localStorage.getItem("index")!
-  }) : EMPTY)
-    .subscribe(x => {
-      // console.log("send message to packer")
-      packerMessage$.next(x)
-    })
-
-  const index$ = fromLocal ? packer$.pipe(pluck("data"), take(1)) : of(undefined) // of(localStorage.getItem("index"))
-
-  // index$.subscribe(xx => console.log("INDEX", xx))
-
-  forkJoin([data$, index$])
-    .pipe<SearchSetupMessage>(
-      map(([data, index]) => ({
-        type: SearchMessageType.SETUP,
-        data: { ...data, index }
-      }))
-    )
-      .subscribe(message => {
-        searchMessage$.next(message) // TODO: this shall not complete
-      })
-
-  return [search$, searchMessage$] as const
-}
-
-/**
  * Yes, this is a super hacky implementation. Needs clean up.
  */
 function repository() {
@@ -279,42 +173,29 @@ function repository() {
   // github repository...
   const [, user, repo] = el.href.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)?.*$/i)
 
+  // storage memoization!?
+  // get, if not available, exec and persist
+
+  // getOrRetrieve... storage$.
+
   // Show repo stats
   if (user && repo) {
-    return ajax({
-      url: `https://api.github.com/repos/${user}/${repo}`,
-      responseType: "json"
-    })
+    return fetchGitHubStats(user, repo)
       .pipe(
-        map(({ status, response }) => {
-          if (status === 200) {
-            const { stargazers_count, forks_count } = response
-            return [
-              `${format(stargazers_count)} Stars`,
-              `${format(forks_count)} Forks`
-            ]
-          }
-          return []
-        }),
+        map(({ stargazers_count, forks_count }) => ([
+          `${format(stargazers_count || 0)} Stars`,
+          `${format(forks_count || 0)} Forks`
+        ])),
         tap(data => sessionStorage.setItem("repository", JSON.stringify(data)))
       )
 
   // Show user or organization stats
   } else if (user) {
-    return ajax({
-      url: `https://api.github.com/users/${user}`,
-      responseType: "json"
-    })
+    return fetchGitHubStats(user)
       .pipe(
-        map(({ status, response }) => {
-          if (status === 200) {
-            const { public_repos } = response
-            return [
-              `${format(public_repos)} Repositories`
-            ]
-          }
-          return []
-        }),
+        map(({ public_repos }) => ([
+          `${format(public_repos || 0)} Repositories`
+        ])),
         tap(data => sessionStorage.setItem("repository", JSON.stringify(data)))
       )
   }
@@ -334,14 +215,6 @@ export function initialize(config: unknown) {
   if (!isConfig(config))
     throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
-  // pass config here!?
-  const agent = setupAgent() // TODO: add a config parameter here to configure media queries
-
-  const [
-    searchWorkerRecv$,
-    searchMessage$
-  ] = setupWorkers(config)
-
   // TODO: WIP repo rendering
   repository().subscribe(facts => {
     if (facts.length) {
@@ -355,10 +228,17 @@ export function initialize(config: unknown) {
     }
   })
 
+  // pass config here!?
+  const document$ = watchDocument()
+  const hash$ = watchLocationHash()
+  const viewport$ = watchViewport()
+  const screen$ = watchMedia("(min-width: 960px)")
+  const tablet$ = watchMedia("(min-width: 1220px)")
+
   /* ----------------------------------------------------------------------- */
 
   /* Create component map observable */
-  const components$ = watchComponentMap(names, { document$: agent.document.load$ })
+  const components$ = watchComponentMap(names, { document$ })
   const component = <T extends HTMLElement>(name: Component): Observable<T> => {
     return components$
       .pipe(
@@ -383,120 +263,104 @@ export function initialize(config: unknown) {
     )
       .subscribe()
 
-  // ----------------------------------------------------------------------------
-
-  // watchSearchResult // emit, if at bottom...
-  // receive results as a second observable!? filter stuff, paint
-
-  const result$ = searchWorkerRecv$ // move worker initialization into mountSearch ?
-    .pipe(
-      // tap(m => console.log("message from worker", m)),
-      filter(isSearchResultMessage),
-      pluck("data"),
-      // Prefix URLs with base URL
-      tap(result => result.forEach(item => {
-        item.article.location = `${config.base}/${item.article.location}`
-        item.sections.forEach(section => {
-          section.location = `${config.base}/${section.location}`
-        })
-      }))
-    )
-
-  // handleSearchResult <-- operator
-
-  const query$ = component<HTMLInputElement>("search-query")
-    .pipe(
-      switchMap(el => watchSearchQuery(el, { prepare }))
-    )
-
-  query$
-    .pipe<SearchMessage>(
-      map(query => ({ // put this into some function...
-        type: SearchMessageType.QUERY,
-        data: query.value
-      })), // TODO. ugly...
-      distinctUntilKeyChanged("data")
-      // distinctUntilKeyChanged("data")
-    )
-      .subscribe(searchMessage$)
-
-  // create the message subject internally... and link it to the worker...?
-  // watchSearchWorker(worker, agent, { query$ }) // message internally...
-
-  query$
-    .pipe(
-      tap(query => {
-        if (query.focus)
-          setToggle(search, true)
-      })
-    )
-      .subscribe()
-
-  /* ----------------------------------------------------------------------- */
-
+  // DONE
   const main$ = component("main")
     .pipe(
-      mountMain(agent, { header$ })
+      switchMap(el => watchMain(el, { header$, viewport$ })),
+      shareReplay(1) // TODO: mount!?
     )
 
-  const navigation$ = component("navigation")
-    .pipe(
-      mountNavigation(agent, { main$ })
-    )
-
-  const toc$ = component("toc")
-    .pipe(
-      mountTableOfContents(agent, { header$, main$ })
-    )
-
-  // TODO: naming?
-  const resultComponent$ = component("search-result")
-    .pipe(
-      mountSearchResult(agent, { result$, query$: query$.pipe(
-        distinctUntilKeyChanged("value"),
-        pluck("value")
-      ) })
-    ) // temporary fix
-
-  const tabs$ = component("tabs")
-    .pipe(
-      mountTabs(agent, { header$ })
-    )
-
-  const hero$ = component("hero")
-    .pipe(
-      mountHero(agent, { header$ })
-    )
-
+  // ---------------------------------------------------------------------------
 
   /* ----------------------------------------------------------------------- */
 
   const drawer = getElement<HTMLInputElement>("[data-md-toggle=drawer]")!
-  const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
 
+  /* ----------------------------------------------------------------------- */
+
+  // build a single search observable???
+
+  const query$ = component<HTMLInputElement>("search-query")
+    .pipe(
+      switchMap(el => watchSearchQuery(el))
+    )
+
+  const sw = setupSearchWorker(config.worker.search, {
+    base: config.base,
+    query$
+  })
+
+  const result$ = sw.rx$ // move worker initialization into mountSearch ?
+    .pipe(
+      filter(isSearchResultMessage),
+      pluck("data")
+    )
+
+  const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
   const searchActive$ = watchToggle(search)
     .pipe(
       delay(400)
     )
 
+  query$
+    .pipe(
+      distinctUntilKeyChanged("focus"),
+      tap(query => {
+        if (query.focus)
+          setToggle(search, query.focus) // paintSearchQuery?
+        // console.log(query)
+      })
+    )
+      .subscribe()
+
+  // implement toggle function that returns the toggles as observable...
   const reset$ = component("search-reset")
     .pipe(
       switchMap(watchSearchReset)
     )
 
-  const key$ = fromEvent<KeyboardEvent>(window, "keydown").pipe(
-    filter(ev => !(ev.metaKey || ev.ctrlKey))
-  )
+  /* ----------------------------------------------------------------------- */
 
-  // filter arrow keys if search is active!
-  searchActive$.subscribe(console.log)
+  // DONE (partly)
+  const navigation$ = component("navigation")
+    .pipe(
+      mountNavigation({ main$, viewport$, screen$ })
+    )
+
+  const toc$ = component("toc")
+    .pipe(
+      mountTableOfContents({ header$, main$, viewport$, tablet$ })
+    )
+
+  // TODO: naming?
+  const resultComponent$ = component("search-result")
+    .pipe(
+      mountSearchResult({ viewport$, result$, query$: query$.pipe(
+        distinctUntilKeyChanged("value"),
+      ) })
+    ) // temporary fix
+
+  // mount hideable...
+
+  const tabs$ = component("tabs")
+    .pipe(
+      mountTabs({ header$, viewport$, screen$ })
+    )
+
+  const hero$ = component("hero")
+    .pipe(
+      mountHero({ header$, viewport$, screen$ })
+    )
+
+  // function watchKeyboard
+  const key$ = watchKeyboard()
 
   // shortcodes
   key$
     .pipe(
       takeIf(not(searchActive$))
     )
-      .subscribe(ev => {
+      .subscribe(key => {
         if (
           document.activeElement && (
             ["TEXTAREA", "SELECT", "INPUT"].includes(
@@ -508,7 +372,7 @@ export function initialize(config: unknown) {
         ) {
           // do nothing...
         } else {
-          if (ev.keyCode === 70 || ev.keyCode === 83) {
+          if (key.type === "KeyS" || key.type === "KeyF") {
             setToggle(search, true)
           }
         }
@@ -520,27 +384,27 @@ export function initialize(config: unknown) {
       takeIf(searchActive$),
 
       /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
-      tap(ev => {
-        if (ev.key === "Enter") {
+      tap(key => {
+        console.log("jo", key)
+        if (key.type === "Enter") {
           if (document.activeElement === getElement("[data-md-component=search-query]")) {
-            ev.preventDefault()
+            key.claim()
             // intercept hash change after search closed
           } else {
             setToggle(search, false)
           }
         }
 
-        if (ev.key === "ArrowUp" || ev.key === "ArrowDown") {
+        if (key.type === "ArrowUp" || key.type === "ArrowDown") {
           const active = getElements("[data-md-component=search-query], [data-md-component=search-result] [href]")
           const i = Math.max(0, active.findIndex(el => el === document.activeElement))
-          const x = Math.max(0, (i + active.length + (ev.keyCode === 38 ? -1 : +1)) % active.length)
+          const x = Math.max(0, (i + active.length + (key.type === "ArrowUp" ? -1 : +1)) % active.length)
           active[x].focus()
 
           /* Prevent scrolling of page */
-          ev.preventDefault()
-          ev.stopPropagation()
+          key.claim()
 
-        } else if (ev.key === "Escape" || ev.key === "Tab") {
+        } else if (key.type === "Escape" || key.type === "Tab") {
           setToggle(search, false)
           getElement("[data-md-component=search-query]")!.blur()
 
@@ -564,6 +428,8 @@ export function initialize(config: unknown) {
     )
       .subscribe()
 
+      // focusable -> setFocus(true, false)
+
   /* ----------------------------------------------------------------------- */
 
   /* Open details before printing */
@@ -579,50 +445,109 @@ export function initialize(config: unknown) {
     })
 
   // Close drawer and search on hash change
-  agent.location.hash$.subscribe(() => {
+  hash$.subscribe(() => {
     setToggle(drawer, false)
     setToggle(search, false) // we probably need to delay the anchor jump for search
   })
 
   /* ----------------------------------------------------------------------- */
 
-  /* Clipboard integration */
+  /* Clipboard.js integration */
   if (Clipboard.isSupported()) {
-    const blocks = getElements(".codehilite > pre, .highlight> pre, pre > code")
-    Array.prototype.forEach.call(blocks, (block, index) => {
-      const id = `__code_${index}`
-
-      /* Create button with message container */
-      const button = renderClipboard(id)
-
-      /* Link to block and insert button */
-      const parent = block.parentNode
-      parent.id = id
-      parent.insertBefore(button, block)
-    })
+    const blocks = getElements("pre > code")
+    for (const [index, block] of blocks.entries()) {
+      const parent = block.parentElement!
+      parent.id = `__code_${index}`
+      parent.insertBefore(renderClipboard(parent.id), block)
+    }
 
     /* Initialize Clipboard listener */
-    const copy = new Clipboard(".md-clipboard")
+    const copy = new Clipboard(".md-clipboard") // create observable...
 
     /* Success handler */
-    copy.on("success", action => {
-      alert("Copied to clipboard") // TODO: integrate snackbar
-      // TODO: add a snackbar/notification
+    // copy.on("success", action => {
+    //   alert("Copied to clipboard") // TODO: integrate snackbar
+    //   // TODO: add a snackbar/notification
 
-    })
+    // })
   }
+
+  /* Wrap all data tables for better overflow scrolling */
+  const tables = getElements<HTMLTableElement>("table:not([class])")
+  const placeholder = document.createElement("table")
+  tables.forEach(table => {
+    table.replaceWith(placeholder)
+    placeholder.replaceWith(renderTable(table))
+  })
+
+  // search lock
+  let lastOffset = 0
+  tablet$.pipe(
+    switchMap(active => {
+      return !active ? watchToggle(search) : EMPTY
+    }),
+    switchMap(toggle => {
+      if (toggle) {
+        console.log("ACTIVE")
+        return of(document.body)
+          .pipe(
+            tap(() => lastOffset = window.pageYOffset),
+            delay(400),
+            tap(() => {
+              window.scrollTo(0, 0),
+              console.log("scrolled... to top, locked body")
+              document.body.dataset.mdState = "lock"
+            })
+          )
+      } else {
+        console.log("INACTIVE")
+        return of(document.body)
+          .pipe(
+            tap(() => document.body.dataset.mdState = ""),
+            delay(100),
+            tap(() => {
+              window.scrollTo(0, lastOffset)
+            })
+          )
+      }
+      return EMPTY
+    })
+  )
+    .subscribe(x => console.log("SEARCHLOCK", x))
 
   /* ----------------------------------------------------------------------- */
 
-  const navigationlayer$ = component("navigation")
-    .pipe(
-      switchMapIf(not(agent.media.tablet$), el => watchActiveLayer(el)
-        .pipe(
-          paintActiveLayer()
-        )
-      )
-    )
-      .subscribe(console.log)
+  // get headerHEIGHT! only if header is sticky!
+
+  // // lockHeader at...
+  // const direction$ = agent.viewport.offset$.pipe(
+  //   bufferCount(2, 1), // determine scroll direction
+  //   map(([{ y: y0 }, { y: y1 }]) => y1 > y0),
+  //   distinctUntilChanged(),
+  // )
+
+  // document.body.style.minHeight = "100vh"
+
+  // // if true => then + HEADER. otherwise not
+  // let last = 0
+  // combineLatest([direction$, header$]).pipe(
+  //   tap(([direction, { height }]) => { // TODO: only if sticky!
+  //     const offset = 48
+  //     console.log(window.pageYOffset, height, last)
+  //     if (Math.abs(window.pageYOffset - last) < height + offset) { // TODO: add sensitivity offset!
+  //       return
+  //     }
+  //     if (direction) {
+  //       document.body.style.height = `${window.pageYOffset + offset + height}px`
+  //     } else {
+  //       document.body.style.height = `${window.pageYOffset - offset}px` // offset
+  //     }
+  //     last = window.pageYOffset
+  //   })
+  // )
+  //   .subscribe()
+
+  // // toiggle
 
   /* ----------------------------------------------------------------------- */
 
@@ -644,7 +569,15 @@ export function initialize(config: unknown) {
     .subscribe() // potential memleak <-- use takeUntil
 
   return {
-    agent,
+    // agent,
     state
   }
 }
+
+// function mountSearchQuery(
+
+// ): OperatorFunction<HTMLInputElement, SearchQuery> {
+//   return pipe(
+//     switchMap(el => watchSearchQuery(el))
+//   )
+// }

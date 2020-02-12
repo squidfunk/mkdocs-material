@@ -20,9 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "extensions"
 import { SearchResult } from "modules"
-import { truncate } from "utilities"
+import { h, truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -49,7 +48,7 @@ const css = {
  *
  * @param result - Search result
  *
- * @return HTML element
+ * @return Element
  */
 export function renderSearchResult(
   { article, sections }: SearchResult

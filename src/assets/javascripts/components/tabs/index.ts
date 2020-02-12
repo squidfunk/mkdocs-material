@@ -23,10 +23,13 @@
 import { Observable, OperatorFunction, pipe } from "rxjs"
 import { map, shareReplay } from "rxjs/operators"
 
-import { switchMapIf } from "extensions"
-import { Agent, paintHidden } from "utilities"
-
-import { HeaderState, watchViewportOffsetFromTopOf } from "../header"
+import {
+  Header,
+  Viewport,
+  paintHideable,
+  watchViewportFrom
+} from "observables"
+import { switchMapIf } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -47,7 +50,9 @@ export interface TabsState {
  * Options
  */
 interface Options {
-  header$: Observable<HeaderState>     /* Header state observable */
+  header$: Observable<Header>     /* Header state observable */
+  viewport$: Observable<Viewport>
+  screen$: Observable<boolean>         /* Media screen observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -61,19 +66,18 @@ interface Options {
  * the tabs, currently only denoting whether the tabs are hidden or not.
  *
  * @param el - Tabs element
- * @param agent - Agent
  * @param options - Options
  *
  * @return Tabs state
  */
 export function watchTabs(
-  el: HTMLElement, agent: Agent, { header$ }: Options
+  el: HTMLElement, options: Options
 ): Observable<TabsState> {
 
   /* Watch and paint visibility */
-  const hidden$ = watchViewportOffsetFromTopOf(el, agent, { header$ })
+  const hidden$ = watchViewportFrom(el, options)
     .pipe(
-      paintHidden(el, 8)
+      paintHideable(el, 8)
     )
 
   /* Combine into a single hot observable */
@@ -82,6 +86,7 @@ export function watchTabs(
       map(hidden => ({ hidden }))
     )
 }
+// TODO: generalize into watchHideable !!! or mountHideable...
 
 /* ------------------------------------------------------------------------- */
 
@@ -94,11 +99,10 @@ export function watchTabs(
  * @return Operator function
  */
 export function mountTabs(
-  agent: Agent, options: Options
+  options: Options
 ): OperatorFunction<HTMLElement, TabsState> {
-  const { media } = agent
   return pipe(
-    switchMapIf(media.screen$, el => watchTabs(el, agent, options)),
+    switchMapIf(options.screen$, el => watchTabs(el, options)),
     shareReplay(1)
   )
 }

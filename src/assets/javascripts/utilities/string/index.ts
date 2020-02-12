@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { getElement } from "../agent"
+import { getElement } from "observables"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -34,23 +34,6 @@ let lang: Record<string, string>
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
-
-/**
- * Truncate a string after the given number of characters
- *
- * @param value - Value to be truncated
- * @param n - Number of characters
- *
- * @return Truncated value
- */
-export function truncate(value: string, n: number): string {
-  let i = n
-  if (value.length > i) {
-    while (value[i] !== " " && --i > 0); // tslint:disable-line
-    return `${value.substring(0, i)}...`
-  }
-  return value
-}
 
 /**
  * Translate the given key
@@ -71,4 +54,21 @@ export function translate(key: string, value?: string): string {
   return typeof value !== "undefined"
     ? lang[key].replace("#", value)
     : lang[key]
+}
+
+/**
+ * Truncate a string after the given number of characters
+ *
+ * @param value - Value to be truncated
+ * @param n - Number of characters
+ *
+ * @return Truncated value
+ */
+export function truncate(value: string, n: number): string {
+  let i = n
+  if (value.length > i) {
+    while (value[i] !== " " && --i > 0); // tslint:disable-line
+    return `${value.substring(0, i)}...`
+  }
+  return value
 }

@@ -28,7 +28,7 @@ import {
   decompressFromUTF16
 } from "lz-string"
 
-import { PackerMessage, PackerMessageType } from "../_"
+import { PackerMessage, PackerMessageType } from "../message"
 
 /* ----------------------------------------------------------------------------
  * Data
