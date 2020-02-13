@@ -20,8 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./anchor"
-export * from "./header"
-export * from "./main"
+export * from "./_"
 export * from "./search"
-export * from "./toggle"

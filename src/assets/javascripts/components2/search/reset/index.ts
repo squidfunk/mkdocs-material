@@ -20,8 +20,33 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./anchor"
-export * from "./header"
-export * from "./main"
-export * from "./search"
-export * from "./toggle"
+import { NEVER, OperatorFunction, pipe } from "rxjs"
+import {
+  switchMap,
+  switchMapTo,
+  tap,
+  withLatestFrom
+} from "rxjs/operators"
+
+import { watchSearchReset } from "observables"
+
+import { useComponent } from "../../_"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Mount search reset from source observable
+ *
+ * @return Operator function
+ */
+export function mountSearchReset(): OperatorFunction<HTMLElement, never> {
+  const query$ = useComponent<HTMLElement>("search-query")
+  return pipe(
+    switchMap(watchSearchReset),
+    withLatestFrom(query$),
+    tap(([, el]) => el.focus()),
+    switchMapTo(NEVER)
+  )
+}

@@ -67,9 +67,9 @@ export type Navigation =
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Mount options
  */
-interface Options {
+interface MountOptions {
   main$: Observable<Main>              /* Main area observable */
   viewport$: Observable<Viewport>      /* Viewport offset observable */
   screen$: Observable<boolean>         /* Screen media observable */
@@ -87,7 +87,7 @@ interface Options {
  * @return Operator function
  */
 function mountNavigationBelowScreen(
-  _options: Options
+  _options: MountOptions
 ): OperatorFunction<HTMLElement, NavigationBelowScreen> {
   return pipe(
     map(el => getElements("nav", el)),
@@ -108,7 +108,7 @@ function mountNavigationBelowScreen(
  * @return Operator function
  */
 function mountNavigationAboveScreen(
-  options: Options
+  options: MountOptions
 ): OperatorFunction<HTMLElement, NavigationAboveScreen> {
   return pipe(
     switchMap(el => watchSidebar(el, options)
@@ -132,7 +132,7 @@ function mountNavigationAboveScreen(
  * @return Operator function
  */
 export function mountNavigation(
-  options: Options
+  options: MountOptions
 ): OperatorFunction<HTMLElement, Navigation> {
   return pipe(
     switchMap(el => options.screen$

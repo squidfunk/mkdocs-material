@@ -33,16 +33,18 @@ import { PackerMessage } from "../message"
 /**
  * Setup packer web worker
  *
- * @param worker - Worker instance
- * @param options - Options
+ * @param url - Worker url
  *
  * @return Worker handler
  */
 export function setupPackerWorker(
-  worker: Worker
+  url: string
 ): WorkerHandler<PackerMessage> {
+  const worker = new Worker(url)
+
+  /* Create communication channels */
   const tx$ = new Subject<PackerMessage>()
-  const rx$ = watchWorker(worker, { message$: tx$ })
+  const rx$ = watchWorker(worker, { tx$ })
 
   /* Return worker handler */
   return { tx$, rx$ }

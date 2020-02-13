@@ -20,14 +20,20 @@
  * IN THE SOFTWARE.
  */
 
+import { keys } from "ramda"
+import { NEVER, Observable, of } from "rxjs"
+import { map, scan, shareReplay, switchMap } from "rxjs/operators"
+
+import { getElement } from "observables"
+
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Component types
+ * Component
  */
-export type ComponentType =
+export type Component =
   | "container"                        /* Container */
   | "header"                           /* Header */
   | "header-title"                     /* Header title */
@@ -41,14 +47,111 @@ export type ComponentType =
   | "tabs"                             /* Tabs */
   | "toc"                              /* Table of contents */
 
-/* ------------------------------------------------------------------------- */
+/**
+ * Component map
+ */
+export type ComponentMap = {
+  [P in Component]?: HTMLElement
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
 
 /**
- * Component
- *
- * @template T - Data type
+ * Watch options
  */
-export interface Component<T extends {}> {
-  type: ComponentType                  /* Component type */
-  data?: T                             /* Component data */
+interface WatchOptions {
+  document$: Observable<Document>      /* Document observable */
+}
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Component map observable
+ */
+let components$: Observable<ComponentMap>
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch components with given names
+ *
+ * This function returns an observable that will maintain bindings to the given
+ * components in-between document switches and update the document in-place.
+ *
+ * @param names - Component names
+ * @param options - Options
+ *
+ * @return Component map observable
+ */
+export function watchComponentMap(
+  names: Component[], { document$ }: WatchOptions
+): Observable<ComponentMap> {
+  components$ = document$
+    .pipe(
+
+      /* Build component map */
+      map(document => names.reduce<ComponentMap>((components, name) => {
+        const el = getElement(`[data-md-component=${name}]`, document)
+        return {
+          ...components,
+          ...typeof el !== "undefined" ? { [name]: el } : {}
+        }
+      }, {})),
+
+      /* Re-compute component map on document switch */
+      scan((prev, next) => {
+        for (const name of keys(prev)) {
+          switch (name) {
+
+            /* Top-level components: update */
+            case "header-title":
+            case "container":
+              if (name in prev && typeof prev[name] !== "undefined") {
+                prev[name]!.replaceWith(next[name]!)
+                prev[name] = next[name]
+              }
+              break
+
+            /* All other components: rebind */
+            default:
+              prev[name] = getElement(`[data-md-component=${name}]`)
+          }
+        }
+        return prev
+      })
+    )
+
+  /* Return component map as hot observable */
+  return components$
+    .pipe(
+      shareReplay(1)
+    )
+}
+
+/**
+ * Retrieve a component
+ *
+ * @template T - Element type
+ *
+ * @param name - Component name
+ *
+ * @return Element observable
+ */
+export function useComponent<T extends HTMLElement>(
+  name: Component
+): Observable<T> {
+  return components$
+    .pipe(
+      switchMap(components => {
+        return typeof components[name] !== "undefined"
+          ? of(components[name] as T)
+          : NEVER
+      })
+    )
 }

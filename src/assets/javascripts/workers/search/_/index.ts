@@ -20,21 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject } from "rxjs"
+import { Subject } from "rxjs"
 import { ajax } from "rxjs/ajax"
-import { distinctUntilKeyChanged, map, pluck } from "rxjs/operators"
+import { map, pluck } from "rxjs/operators"
 
 import { SearchIndexOptions } from "modules"
-import {
-  SearchQuery,
-  WorkerHandler,
-  watchWorker
-} from "observables"
+import { WorkerHandler, watchWorker } from "observables"
 
 import {
   SearchMessage,
   SearchMessageType,
-  SearchQueryMessage,
   SearchSetupMessage,
   isSearchResultMessage
 } from "../message"
@@ -44,11 +39,10 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Setup options
  */
-interface Options {
+interface SetupOptions {
   base: string                         /* Base url */
-  query$: Observable<SearchQuery>      /* Search query observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -64,7 +58,7 @@ interface Options {
  * @return Worker handler
  */
 export function setupSearchWorker(
-  url: string, { base, query$ }: Options
+  url: string, { base }: SetupOptions
 ): WorkerHandler<SearchMessage> {
   const worker = new Worker(url)
   const prefix = new URL(base, location.href)
@@ -96,17 +90,6 @@ export function setupSearchWorker(
       map<SearchIndexOptions, SearchSetupMessage>(data => ({
         type: SearchMessageType.SETUP,
         data
-      }))
-    )
-      .subscribe(tx$.next.bind(tx$))
-
-  /* Subscribe to search query */
-  query$
-    .pipe(
-      distinctUntilKeyChanged("value"),
-      map<SearchQuery, SearchQueryMessage>(query => ({
-        type: SearchMessageType.QUERY,
-        data: query.value
       }))
     )
       .subscribe(tx$.next.bind(tx$))

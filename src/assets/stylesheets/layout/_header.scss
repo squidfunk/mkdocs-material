@@ -41,7 +41,7 @@
   // Hack: putting the header on the GPU avoids unnecessary repaints
   backface-visibility: hidden;
 
-  // Always show shadow, in case JavaScript is not available
+  // Always hide shadow, in case JavaScript is not available
   .no-js & {
     transition: none;
     box-shadow: none;
