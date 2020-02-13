@@ -46,6 +46,22 @@ interface SetupOptions {
 }
 
 /* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Resolve URL
+ *
+ * @param base - Base URL
+ * @param paths - Further URL paths
+ *
+ * @return Absolute URL
+ */
+function resolve(base: URL | string, ...paths: string[]) {
+  return [base, ...paths].join("")
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -70,9 +86,9 @@ export function setupSearchWorker(
       map(message => {
         if (isSearchResultMessage(message)) {
           for (const { article, sections } of message.data) {
-            article.location = `${prefix}/${article.location}`
+            article.location = resolve(prefix, article.location)
             for (const section of sections)
-              section.location = `${prefix}/${section.location}`
+              section.location = resolve(prefix, section.location)
           }
         }
         return message
@@ -81,7 +97,7 @@ export function setupSearchWorker(
 
   /* Fetch index and setup search worker */
   ajax({
-    url: `${base}/search/search_index.json`,
+    url: resolve(prefix, "search/search_index.json"),
     responseType: "json",
     withCredentials: true
   })
