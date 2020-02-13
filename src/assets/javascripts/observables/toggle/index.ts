@@ -86,6 +86,8 @@ export function watchToggleMap(
 ): Observable<ToggleMap> {
   toggles$ = document$
     .pipe(
+
+      /* Ignore document switches */
       take(1),
 
       /* Build toggle map */

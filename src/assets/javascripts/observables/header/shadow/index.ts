@@ -25,12 +25,7 @@ import {
   animationFrameScheduler,
   pipe
 } from "rxjs"
-import {
-  distinctUntilKeyChanged,
-  finalize,
-  observeOn,
-  tap
-} from "rxjs/operators"
+import { finalize, observeOn, tap } from "rxjs/operators"
 
 import { resetHeaderShadow, setHeaderShadow } from "actions"
 
@@ -51,7 +46,6 @@ export function paintHeaderShadow(
   el: HTMLElement
 ): MonoTypeOperatorFunction<Main> {
   return pipe(
-    distinctUntilKeyChanged("active"),
 
     /* Defer repaint to next animation frame */
     observeOn(animationFrameScheduler),

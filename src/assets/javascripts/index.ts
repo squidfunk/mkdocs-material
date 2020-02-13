@@ -27,7 +27,7 @@ import "../stylesheets/app.scss"
 import "../stylesheets/app-palette.scss"
 
 import * as Clipboard from "clipboard"
-import { identity, values } from "ramda"
+import { identity, not, values } from "ramda"
 import {
   EMPTY,
   merge,
@@ -39,7 +39,9 @@ import {
   filter,
   map,
   switchMap,
-  tap
+  tap,
+  withLatestFrom,
+  switchMapTo
 } from "rxjs/operators"
 
 import {
@@ -48,7 +50,6 @@ import {
   mountTabs,
 } from "./components"
 import {
-  watchHeader,
   getElement,
   watchToggle,
   getElements,
@@ -58,17 +59,21 @@ import {
   watchViewport,
   watchKeyboard,
   watchToggleMap,
-  useToggle
+  useToggle,
+  getActiveElement,
+  mayReceiveKeyboardEvents,
+  watchMain
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 import { renderSource } from "templates"
-import { not, takeIf } from "utilities"
+import { takeIf } from "utilities"
 import { renderClipboard } from "templates/clipboard"
 import { fetchGitHubStats } from "modules/source/github"
 import { renderTable } from "templates/table"
 import { setToggle } from "actions"
 import {
   Component,
+  mountHeader,
   mountMain,
   mountNavigation,
   mountSearch,
@@ -210,26 +215,13 @@ export function initialize(config: unknown) {
   if (!isConfig(config))
     throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
-  // TODO: WIP repo rendering
-  repository().subscribe(facts => {
-    if (facts.length) {
-      const sources = getElements(".md-source__repository")
-      sources.forEach(repo => {
-        repo.dataset.mdState = "done"
-        repo.appendChild(
-          renderSource(facts)
-        )
-      })
-    }
-  })
-
   // pass config here!?
   const document$ = watchDocument()
   const hash$ = watchLocationHash()
   const viewport$ = watchViewport()
   const tablet$ = watchMedia("(min-width: 960px)")
   const screen$ = watchMedia("(min-width: 1220px)")
-  const key$ = watchKeyboard()
+  const keyboard$ = watchKeyboard()
 
   /* ----------------------------------------------------------------------- */
 
@@ -239,7 +231,7 @@ export function initialize(config: unknown) {
   /* Create header observable */
   const header$ = useComponent("header")
     .pipe(
-      switchMap(watchHeader) // TODO: should also be the mount...
+      mountHeader()
     )
 
   const main$ = useComponent("main")
@@ -260,7 +252,6 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  // DONE (partly)
   const navigation$ = useComponent("navigation")
     .pipe(
       mountNavigation({ main$, viewport$, screen$ })
@@ -281,44 +272,63 @@ export function initialize(config: unknown) {
       mountHero({ header$, viewport$, screen$ })
     )
 
+  /* ----------------------------------------------------------------------- */
+
+  function openSearchOnHotKey() {
+    const toggle$ = useToggle("search")
+    const search$ = toggle$
+      .pipe(
+        switchMap(watchToggle)
+      )
+
+    const query$ = useComponent<HTMLInputElement>("search-query")
+
+    search$
+      .pipe(
+        filter(not),
+        switchMapTo(keyboard$),
+        filter(key => ["KeyS", "KeyF"].includes(key.code)),
+        switchMapTo(toggle$)
+      )
+        .subscribe(toggle => {
+          const el = getActiveElement()
+          if (!(el && mayReceiveKeyboardEvents(el)))
+            setToggle(toggle, true)
+        })
+
+    search$
+      .pipe(
+        filter(identity),
+        switchMapTo(keyboard$),
+        filter(key => ["Escape", "Tab"].includes(key.code)),
+        switchMapTo(toggle$),
+        withLatestFrom(query$)
+      )
+        .subscribe(([toggle, el]) => {
+          setToggle(toggle, false)
+          el.blur()
+        })
+  } // TODO: handle ALL cases in one switch case statement!
+
   const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
   const searchActive$ = useToggle("search").pipe(
     switchMap(el => watchToggle(el)),
     delay(400)
   )
 
-  // shortcodes
-  key$
-    .pipe(
-      takeIf(not(searchActive$))
-    )
-      .subscribe(key => {
-        if (
-          document.activeElement && (
-            ["TEXTAREA", "SELECT", "INPUT"].includes(
-              document.activeElement.tagName
-            ) ||
-            document.activeElement instanceof HTMLElement &&
-            document.activeElement.isContentEditable
-          )
-        ) {
-          // do nothing...
-        } else {
-          if (key.type === "KeyS" || key.type === "KeyF") {
-            setToggle(search, true)
-          }
-        }
-      })
-  // check which element is focused...
+
+  openSearchOnHotKey()
+
+
   // note that all links have tabindex=-1
-  key$
+  keyboard$
     .pipe(
       takeIf(searchActive$),
 
       /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
       tap(key => {
         console.log("jo", key)
-        if (key.type === "Enter") {
+        if (key.code === "Enter") {
           if (document.activeElement === getElement("[data-md-component=search-query]")) {
             key.claim()
             // intercept hash change after search closed
@@ -327,18 +337,20 @@ export function initialize(config: unknown) {
           }
         }
 
-        if (key.type === "ArrowUp" || key.type === "ArrowDown") {
+        if (key.code === "ArrowUp" || key.code === "ArrowDown") {
           const active = getElements("[data-md-component=search-query], [data-md-component=search-result] [href]")
           const i = Math.max(0, active.findIndex(el => el === document.activeElement))
-          const x = Math.max(0, (i + active.length + (key.type === "ArrowUp" ? -1 : +1)) % active.length)
+          const x = Math.max(0, (i + active.length + (key.code === "ArrowUp" ? -1 : +1)) % active.length)
           active[x].focus()
+
+          // pass keyboard to search result!?
 
           /* Prevent scrolling of page */
           key.claim()
 
-        } else if (key.type === "Escape" || key.type === "Tab") {
-          setToggle(search, false)
-          getElement("[data-md-component=search-query]")!.blur()
+        // } else if (key.code === "Escape" || key.code === "Tab") {
+        //   setToggle(search, false)
+        //   getElement("[data-md-component=search-query]")!.blur()
 
         } else {
           if (search.checked && document.activeElement !== getElement("[data-md-component=search-query]")) {
@@ -400,6 +412,19 @@ export function initialize(config: unknown) {
     // })
   }
 
+  // TODO: WIP repo rendering
+  repository().subscribe(facts => {
+    if (facts.length) {
+      const sources = getElements(".md-source__repository")
+      sources.forEach(repo => {
+        repo.dataset.mdState = "done"
+        repo.appendChild(
+          renderSource(facts)
+        )
+      })
+    }
+  })
+
   /* Wrap all data tables for better overflow scrolling */
   const tables = getElements<HTMLTableElement>("table:not([class])")
   const placeholder = document.createElement("table")
@@ -444,38 +469,6 @@ export function initialize(config: unknown) {
     .subscribe(x => console.log("SEARCHLOCK", x))
 
   /* ----------------------------------------------------------------------- */
-
-  // get headerHEIGHT! only if header is sticky!
-
-  // // lockHeader at...
-  // const direction$ = agent.viewport.offset$.pipe(
-  //   bufferCount(2, 1), // determine scroll direction
-  //   map(([{ y: y0 }, { y: y1 }]) => y1 > y0),
-  //   distinctUntilChanged(),
-  // )
-
-  // document.body.style.minHeight = "100vh"
-
-  // // if true => then + HEADER. otherwise not
-  // let last = 0
-  // combineLatest([direction$, header$]).pipe(
-  //   tap(([direction, { height }]) => { // TODO: only if sticky!
-  //     const offset = 48
-  //     console.log(window.pageYOffset, height, last)
-  //     if (Math.abs(window.pageYOffset - last) < height + offset) { // TODO: add sensitivity offset!
-  //       return
-  //     }
-  //     if (direction) {
-  //       document.body.style.height = `${window.pageYOffset + offset + height}px`
-  //     } else {
-  //       document.body.style.height = `${window.pageYOffset - offset}px` // offset
-  //     }
-  //     last = window.pageYOffset
-  //   })
-  // )
-  //   .subscribe()
-
-  // // toggle
 
   /* ----------------------------------------------------------------------- */
 

@@ -23,6 +23,8 @@
 import { Observable, fromEvent, merge } from "rxjs"
 import { mapTo, shareReplay, startWith } from "rxjs/operators"
 
+import { getActiveElement } from "../_"
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -46,7 +48,7 @@ export function watchElementFocus(
     blur$.pipe(mapTo(false))
   )
     .pipe(
-      startWith(el === document.activeElement),
+      startWith(el === getActiveElement()),
       shareReplay(1)
     )
 }

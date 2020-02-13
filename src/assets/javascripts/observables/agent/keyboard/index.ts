@@ -31,7 +31,7 @@ import { filter, map, share } from "rxjs/operators"
  * Key
  */
 export interface Key {
-  type: string                         /* Key type */
+  code: string                         /* Key code */
   claim(): void                        /* Key claim */
 }
 
@@ -49,6 +49,30 @@ const keydown$ = fromEvent<KeyboardEvent>(window, "keydown")
  * ------------------------------------------------------------------------- */
 
 /**
+ * Check whether an element may receive keyboard input
+ *
+ * @param el - Element
+ *
+ * @return Test result
+ */
+export function mayReceiveKeyboardEvents(el: HTMLElement) {
+  switch (el.tagName) {
+
+    /* Form elements */
+    case "INPUT":
+    case "SELECT":
+    case "TEXTAREA":
+      return true
+
+    /* Everything else */
+    default:
+      return el.isContentEditable
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
  * Watch keyboard
  *
  * @return Keyboard observable
@@ -58,7 +82,7 @@ export function watchKeyboard(): Observable<Key> {
     .pipe(
       filter(ev => !(ev.shiftKey || ev.metaKey || ev.ctrlKey)),
       map(ev => ({
-        type: ev.code,
+        code: ev.code,
         claim() {
           ev.preventDefault()
           ev.stopPropagation()

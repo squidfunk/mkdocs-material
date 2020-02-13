@@ -21,7 +21,12 @@
  */
 
 import { Observable, OperatorFunction, pipe } from "rxjs"
-import { shareReplay, switchMap } from "rxjs/operators"
+import {
+  distinctUntilKeyChanged,
+  shareReplay,
+  switchMap,
+  tap
+} from "rxjs/operators"
 
 import {
   Header,
@@ -62,11 +67,20 @@ export function mountMain(
   return pipe(
     switchMap(el => useComponent("header")
       .pipe(
-        switchMap(header => watchMain(el, { header$, viewport$ })
-          .pipe(
-            paintHeaderShadow(header)
-          )
-        )
+        switchMap(header => {
+          const main$ = watchMain(el, { header$, viewport$ })
+
+          /* Paint header shadow */
+          main$
+            .pipe(
+              distinctUntilKeyChanged("active"),
+              paintHeaderShadow(header)
+            )
+              .subscribe()
+
+          /* Return main area */
+          return main$
+        })
       )
     ),
     shareReplay(1)

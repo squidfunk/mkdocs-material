@@ -55,3 +55,16 @@ export function getElements<T extends HTMLElement>(
 ): T[] {
   return Array.from(node.querySelectorAll<T>(selector))
 }
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Retrieve the currently active element
+ *
+ * @return Element
+ */
+export function getActiveElement(): HTMLElement | undefined {
+  return document.activeElement instanceof HTMLElement
+    ? document.activeElement
+    : undefined
+}
