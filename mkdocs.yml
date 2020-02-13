@@ -55,9 +55,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: assets/images/favicon.png
-  logo:
-    icon: "\uE80C"
+  favicon: assets/favicon.png
+  logo: assets/images/icon.svg
 
 # Plugins
 plugins:
