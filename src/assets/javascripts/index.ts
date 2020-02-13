@@ -30,24 +30,16 @@ import * as Clipboard from "clipboard"
 import { identity, values } from "ramda"
 import {
   EMPTY,
-  Observable,
   merge,
   of,
-  fromEvent,
-  OperatorFunction,
-  pipe
+  fromEvent
 } from "rxjs"
 import {
   delay,
   filter,
   map,
-  pluck,
   switchMap,
-  switchMapTo,
-  tap,
-  distinctUntilKeyChanged,
-  shareReplay,
-  withLatestFrom
+  tap
 } from "rxjs/operators"
 
 import {
@@ -73,14 +65,15 @@ import { renderSource } from "templates"
 import { not, takeIf } from "utilities"
 import { renderClipboard } from "templates/clipboard"
 import { fetchGitHubStats } from "modules/source/github"
-import { mountNavigation } from "components2/navigation"
-import { watchComponentMap, useComponent } from "components2/_"
 import { renderTable } from "templates/table"
 import { setToggle } from "actions"
 import {
   Component,
   mountMain,
-  mountSearch
+  mountNavigation,
+  mountSearch,
+  useComponent,
+  watchComponentMap
 } from "components2"
 
 /* ----------------------------------------------------------------------------
@@ -234,8 +227,8 @@ export function initialize(config: unknown) {
   const document$ = watchDocument()
   const hash$ = watchLocationHash()
   const viewport$ = watchViewport()
-  const screen$ = watchMedia("(min-width: 960px)")
-  const tablet$ = watchMedia("(min-width: 1220px)")
+  const tablet$ = watchMedia("(min-width: 960px)")
+  const screen$ = watchMedia("(min-width: 1220px)")
   const key$ = watchKeyboard()
 
   /* ----------------------------------------------------------------------- */
@@ -251,7 +244,7 @@ export function initialize(config: unknown) {
 
   const main$ = useComponent("main")
     .pipe(
-      mountMain({ header$, viewport$ }),
+      mountMain({ header$, viewport$ })
     )
 
   /* ----------------------------------------------------------------------- */

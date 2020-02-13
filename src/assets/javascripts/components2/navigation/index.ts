@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, of, pipe } from "rxjs"
+import { Observable, OperatorFunction, pipe } from "rxjs"
 import { map, shareReplay, switchMap } from "rxjs/operators"
 
 import {
@@ -76,51 +76,6 @@ interface MountOptions {
 }
 
 /* ----------------------------------------------------------------------------
- * Helper functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Mount navigation below screen from source observable
- *
- * @param options - Options
- *
- * @return Operator function
- */
-function mountNavigationBelowScreen(
-  _options: MountOptions
-): OperatorFunction<HTMLElement, NavigationBelowScreen> {
-  return pipe(
-    map(el => getElements("nav", el)),
-    switchMap(els => watchNavigationLayer(els)
-      .pipe(
-        paintNavigationLayer(els),
-        map(layer => ({ layer }))
-      )
-    )
-  )
-}
-
-/**
- * Mount navigation above screen from source observable
- *
- * @param options - Options
- *
- * @return Operator function
- */
-function mountNavigationAboveScreen(
-  options: MountOptions
-): OperatorFunction<HTMLElement, NavigationAboveScreen> {
-  return pipe(
-    switchMap(el => watchSidebar(el, options)
-      .pipe(
-        paintSidebar(el),
-        map(sidebar => ({ sidebar }))
-      )
-    )
-  )
-}
-
-/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -137,10 +92,26 @@ export function mountNavigation(
   return pipe(
     switchMap(el => options.screen$
       .pipe(
-        switchMap(screen => screen
-          ? of(el).pipe(mountNavigationAboveScreen(options))
-          : of(el).pipe(mountNavigationBelowScreen(options))
-        )
+        switchMap(screen => {
+
+          /* Mount sidebar for screen and above */
+          if (screen) {
+            return watchSidebar(el, options)
+              .pipe(
+                paintSidebar(el),
+                map(sidebar => ({ sidebar }))
+              )
+
+          /* Mount navigation layer otherwise */
+          } else {
+            const els = getElements("nav", el)
+            return watchNavigationLayer(els)
+              .pipe(
+                paintNavigationLayer(els),
+                map(layer => ({ layer }))
+              )
+          }
+        })
       )
     ),
     shareReplay(1)
