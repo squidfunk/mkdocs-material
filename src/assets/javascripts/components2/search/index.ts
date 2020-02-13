@@ -80,7 +80,8 @@ export function mountSearch(
       /* Mount search query */
       const query$ = useComponent<HTMLInputElement>("search-query")
         .pipe(
-          mountSearchQuery(handler)
+          mountSearchQuery(handler),
+          shareReplay(1)
         )
 
       /* Mount search reset */

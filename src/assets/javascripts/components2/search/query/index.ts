@@ -69,7 +69,7 @@ export function mountSearchQuery(
             data: value
           }))
         )
-          .subscribe(tx$)
+          .subscribe(tx$.next.bind(tx$))
 
       /* Toggle search on focus */
       query$

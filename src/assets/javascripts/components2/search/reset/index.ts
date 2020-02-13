@@ -20,12 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, OperatorFunction, pipe } from "rxjs"
+import { OperatorFunction, pipe } from "rxjs"
 import {
+  mapTo,
+  startWith,
   switchMap,
   switchMapTo,
-  tap,
-  withLatestFrom
+  tap
 } from "rxjs/operators"
 
 import { watchSearchReset } from "observables"
@@ -41,12 +42,13 @@ import { useComponent } from "../../_"
  *
  * @return Operator function
  */
-export function mountSearchReset(): OperatorFunction<HTMLElement, never> {
+export function mountSearchReset(): OperatorFunction<HTMLElement, void> {
   const query$ = useComponent<HTMLElement>("search-query")
   return pipe(
     switchMap(watchSearchReset),
-    withLatestFrom(query$),
-    tap(([, el]) => el.focus()),
-    switchMapTo(NEVER)
+    switchMapTo(query$),
+    tap(el => el.focus()),
+    mapTo(undefined),
+    startWith(undefined)
   )
 }
