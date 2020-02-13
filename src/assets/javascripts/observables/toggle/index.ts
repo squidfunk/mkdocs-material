@@ -20,29 +20,111 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent } from "rxjs"
-import { map, startWith } from "rxjs/operators"
+import { NEVER, Observable, fromEvent, of } from "rxjs"
+import {
+  map,
+  shareReplay,
+  startWith,
+  switchMap,
+  take
+} from "rxjs/operators"
+
+import { getElement } from "../agent"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Toggle
+ */
+export type Toggle =
+  | "drawer"                           /* Toggle for drawer */
+  | "search"                           /* Toggle for search */
+
+/**
+ * Toggle map
+ */
+export type ToggleMap = {
+  [P in Toggle]?: HTMLInputElement
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch options
+ */
+interface WatchOptions {
+  document$: Observable<Document>      /* Document observable */
+}
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Toggle map observable
+ */
+let toggles$: Observable<ToggleMap>
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Set toggle
+ * Watch toggles with given names
  *
- * Simulating a click event seems to be the most cross-browser compatible way
- * of changing the value while also emitting a `change` event. Before, Material
- * used `CustomEvent` to programmatically change the value of a toggle, but this
- * is a much simpler and cleaner solution.
+ * @param names - Toggle names
+ * @param options - Options
  *
- * @param el - Toggle element
- * @param value - Toggle value
+ * @return Toggle map observable
  */
-export function setToggle(
-  el: HTMLInputElement, value: boolean
-): void {
-  if (el.checked !== value)
-    el.click()
+export function watchToggleMap(
+  names: Toggle[], { document$ }: WatchOptions
+): Observable<ToggleMap> {
+  toggles$ = document$
+    .pipe(
+      take(1),
+
+      /* Build toggle map */
+      map(document => names.reduce<ToggleMap>((toggles, name) => {
+        const el = getElement(`[data-md-toggle=${name}]`, document)
+        return {
+          ...toggles,
+          ...typeof el !== "undefined" ? { [name]: el } : {}
+        }
+      }, {}))
+    )
+
+  /* Return toggle map as hot observable */
+  return toggles$
+    .pipe(
+      shareReplay(1)
+    )
+}
+
+/**
+ * Retrieve a toggle
+ *
+ * @template T - Element type
+ *
+ * @param name - Toggle name
+ *
+ * @return Element observable
+ */
+export function useToggle(
+  name: Toggle
+): Observable<HTMLInputElement> {
+  return toggles$
+    .pipe(
+      switchMap(toggles => {
+        return typeof toggles[name] !== "undefined"
+          ? of(toggles[name]!)
+          : NEVER
+      })
+    )
 }
 
 /* ------------------------------------------------------------------------- */

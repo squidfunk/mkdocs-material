@@ -47,9 +47,9 @@ export interface SearchQuery {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Watch options
  */
-interface Options {
+interface WatchOptions {
   transform?(value: string): string    /* Transformation function */
 }
 
@@ -87,7 +87,7 @@ function defaultTransform(value: string): string {
  * @return Search query observable
  */
 export function watchSearchQuery(
-  el: HTMLInputElement, { transform = defaultTransform }: Options = {}
+  el: HTMLInputElement, { transform = defaultTransform }: WatchOptions = {}
 ): Observable<SearchQuery> {
 
   /* Intercept keyboard events */

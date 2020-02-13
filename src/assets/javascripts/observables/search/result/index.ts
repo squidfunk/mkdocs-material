@@ -53,9 +53,9 @@ import { SearchQuery } from "../query"
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Paint options
  */
-interface Options {
+interface PaintOptions {
   query$: Observable<SearchQuery>     /* Search query observable */
   fetch$: Observable<boolean>         /* Search trigger observable */
 }
@@ -73,7 +73,7 @@ interface Options {
  * @return Operator function
  */
 export function paintSearchResult(
-  el: HTMLElement, { query$, fetch$ }: Options
+  el: HTMLElement, { query$, fetch$ }: PaintOptions
 ): MonoTypeOperatorFunction<SearchResult[]> {
   const list = getElement(".md-search-result__list", el)!
   const meta = getElement(".md-search-result__meta", el)!

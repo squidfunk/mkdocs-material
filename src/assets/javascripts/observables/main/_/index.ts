@@ -49,9 +49,9 @@ export interface Main {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Watch options
  */
-interface Options {
+interface WatchOptions {
   header$: Observable<Header>          /* Header observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
 }
@@ -73,7 +73,7 @@ interface Options {
  * @return Main area observable
  */
 export function watchMain(
-  el: HTMLElement, { header$, viewport$ }: Options
+  el: HTMLElement, { header$, viewport$ }: WatchOptions
 ): Observable<Main> {
 
   /* Compute necessary adjustment for header */

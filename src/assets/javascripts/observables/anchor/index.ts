@@ -67,9 +67,9 @@ export interface AnchorList {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Watch options
  */
-interface Options {
+interface WatchOptions {
   header$: Observable<Header>          /* Header observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
 }
@@ -99,7 +99,7 @@ interface Options {
  * @return Anchor list observable
  */
 export function watchAnchorList(
-  els: HTMLAnchorElement[], { header$, viewport$ }: Options
+  els: HTMLAnchorElement[], { header$, viewport$ }: WatchOptions
 ): Observable<AnchorList> {
   const table = new Map<HTMLAnchorElement, HTMLElement>()
   for (const el of els) {

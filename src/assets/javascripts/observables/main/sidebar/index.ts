@@ -64,9 +64,9 @@ export interface Sidebar {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Watch options
  */
-interface Options {
+interface WatchOptions {
   main$: Observable<Main>              /* Main area observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
 }
@@ -89,7 +89,7 @@ interface Options {
  * @return Sidebar observable
  */
 export function watchSidebar(
-  el: HTMLElement, { main$, viewport$ }: Options
+  el: HTMLElement, { main$, viewport$ }: WatchOptions
 ): Observable<Sidebar> {
 
   /* Adjust for internal main area offset */

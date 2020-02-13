@@ -21,7 +21,13 @@
  */
 
 import { Observable, Subject, fromEvent } from "rxjs"
-import { pluck, share, switchMapTo, tap, throttle } from "rxjs/operators"
+import {
+  pluck,
+  share,
+  switchMapTo,
+  tap,
+  throttle
+} from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -52,11 +58,11 @@ export interface WorkerHandler<
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Watch options
  *
  * @template T - Worker message type
  */
-interface Options<T extends WorkerMessage> {
+interface WatchOptions<T extends WorkerMessage> {
   tx$: Observable<T>                   /* Message transmission observable */
 }
 
@@ -78,7 +84,7 @@ interface Options<T extends WorkerMessage> {
  * @return Worker message observable
  */
 export function watchWorker<T extends WorkerMessage>(
-  worker: Worker, { tx$ }: Options<T>
+  worker: Worker, { tx$ }: WatchOptions<T>
 ): Observable<T> {
 
   /* Intercept messages from web worker */

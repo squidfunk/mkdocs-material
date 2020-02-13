@@ -20,81 +20,31 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import {
-  distinctUntilKeyChanged,
-  map,
-  shareReplay,
-  startWith
-} from "rxjs/operators"
-
-import { Viewport } from "../../viewport"
+import { Observable, fromEvent } from "rxjs"
+import { mapTo, shareReplay } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
- * Types
+ * Data
  * ------------------------------------------------------------------------- */
 
 /**
- * Element offset
+ * Observable for document load events
  */
-export interface ElementOffset {
-  x: number                            /* Horizontal offset */
-  y: number                            /* Vertical offset */
-}
-
-/* ----------------------------------------------------------------------------
- * Helper types
- * ------------------------------------------------------------------------- */
-
-/**
- * Watch options
- */
-interface WatchOptions {
-  viewport$: Observable<Viewport>      /* Viewport observable */
-}
+const load$ = fromEvent(document, "DOMContentLoaded")
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve element offset
+ * Watch document
  *
- * @param el - Element
- *
- * @return Element offset
+ * @return Document observable
  */
-export function getElementOffset(el: HTMLElement): ElementOffset {
-  return {
-    x: el.scrollLeft,
-    y: el.scrollTop
-  }
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Watch element offset
- *
- * @param el - Element
- * @param options - Options
- *
- * @return Element offset observable
- */
-export function watchElementOffset(
-  el: HTMLElement, { viewport$ }: WatchOptions
-): Observable<ElementOffset> {
-  const scroll$ = fromEvent(el, "scroll")
-  const size$ = viewport$
+export function watchDocument(): Observable<Document> {
+  return load$
     .pipe(
-      distinctUntilKeyChanged("size")
-    )
-
-  /* Merge into a single hot observable */
-  return merge(scroll$, size$)
-    .pipe(
-      map(() => getElementOffset(el)),
-      startWith(getElementOffset(el)),
+      mapTo(document),
       shareReplay(1)
     )
 }

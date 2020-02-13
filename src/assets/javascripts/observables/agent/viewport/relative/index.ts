@@ -31,9 +31,9 @@ import { Viewport } from "../_"
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Watch options
  */
-interface Options {
+interface WatchOptions {
   header$: Observable<Header>          /* Header observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
 }
@@ -51,7 +51,7 @@ interface Options {
  * @return Viewport observable
  */
 export function watchViewportFrom(
-  el: HTMLElement, { header$, viewport$ }: Options
+  el: HTMLElement, { header$, viewport$ }: WatchOptions
 ): Observable<Viewport> {
   return combineLatest([viewport$, header$])
     .pipe(

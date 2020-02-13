@@ -20,27 +20,17 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
+import { Observable } from "rxjs"
+import { ajax } from "rxjs/ajax"
 import {
-  distinctUntilKeyChanged,
+  distinctUntilChanged,
   map,
+  pluck,
   shareReplay,
-  startWith
+  skip,
+  startWith,
+  switchMap
 } from "rxjs/operators"
-
-import { Viewport } from "../../viewport"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Element offset
- */
-export interface ElementOffset {
-  x: number                            /* Horizontal offset */
-  y: number                            /* Vertical offset */
-}
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -50,7 +40,7 @@ export interface ElementOffset {
  * Watch options
  */
 interface WatchOptions {
-  viewport$: Observable<Viewport>      /* Viewport observable */
+  location$: Observable<string>        /* Location observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -58,43 +48,37 @@ interface WatchOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve element offset
+ * Watch document switch
  *
- * @param el - Element
+ * This function returns an observables that fetches a document if the provided
+ * location observable emits a new value (i.e. URL). If the emitted URL points
+ * to the same page, the request is effectively ignored (e.g. when only the
+ * fragment identifier changes).
  *
- * @return Element offset
- */
-export function getElementOffset(el: HTMLElement): ElementOffset {
-  return {
-    x: el.scrollLeft,
-    y: el.scrollTop
-  }
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Watch element offset
- *
- * @param el - Element
  * @param options - Options
  *
- * @return Element offset observable
+ * @return Document switch observable
  */
-export function watchElementOffset(
-  el: HTMLElement, { viewport$ }: WatchOptions
-): Observable<ElementOffset> {
-  const scroll$ = fromEvent(el, "scroll")
-  const size$ = viewport$
+export function watchDocumentSwitch(
+  { location$ }: WatchOptions
+): Observable<Document> {
+  return location$
     .pipe(
-      distinctUntilKeyChanged("size")
-    )
+      startWith(location.href),
+      map(url => url.replace(/#[^#]+$/, "")),
+      distinctUntilChanged(),
+      skip(1),
 
-  /* Merge into a single hot observable */
-  return merge(scroll$, size$)
-    .pipe(
-      map(() => getElementOffset(el)),
-      startWith(getElementOffset(el)),
+      /* Fetch document */
+      switchMap(url => ajax({
+        url,
+        responseType: "document",
+        withCredentials: true
+      })
+        .pipe<Document>(
+          pluck("response")
+        )
+      ),
       shareReplay(1)
     )
 }
