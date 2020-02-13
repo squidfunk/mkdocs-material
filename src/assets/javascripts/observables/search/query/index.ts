@@ -94,7 +94,7 @@ export function watchSearchQuery(
   const value$ = fromEvent(el, "keyup")
     .pipe(
       map(() => transform(el.value)),
-      startWith(el.value),
+      startWith(transform(el.value)),
       distinctUntilChanged()
     )
 

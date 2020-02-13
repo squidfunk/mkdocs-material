@@ -46,44 +46,42 @@ import {
   switchMapTo,
   tap,
   distinctUntilKeyChanged,
-  shareReplay
+  shareReplay,
+  withLatestFrom
 } from "rxjs/operators"
 
 import {
-  Component,
-  paintHeaderShadow,
   mountHero,
   mountTableOfContents,
   mountTabs,
-  switchComponent,
-  watchComponentMap,
 } from "./components"
 import {
   watchHeader,
-  watchSearchQuery,
-  watchSearchReset,
   getElement,
   watchToggle,
-  setToggle,
   getElements,
   watchMedia,
   watchDocument,
   watchLocationHash,
-  watchMain,
   watchViewport,
-  watchKeyboard
+  watchKeyboard,
+  watchToggleMap,
+  useToggle
 } from "./observables"
-import {
-  isSearchResultMessage,
-  setupSearchWorker
-} from "./workers"
+import { setupSearchWorker } from "./workers"
 import { renderSource } from "templates"
 import { not, takeIf } from "utilities"
 import { renderClipboard } from "templates/clipboard"
 import { fetchGitHubStats } from "modules/source/github"
 import { mountNavigation } from "components2/navigation"
-import { mountSearchResult } from "components2/search"
+import { watchComponentMap, useComponent } from "components2/_"
 import { renderTable } from "templates/table"
+import { setToggle } from "actions"
+import {
+  Component,
+  mountMain,
+  mountSearch
+} from "components2"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -111,6 +109,7 @@ document.documentElement.classList.add("js")
 if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
   document.documentElement.classList.add("ios")
 
+// add to config? default components to mount...?
 const names: Component[] = [
   "container",                       /* Container */
   "header",                          /* Header */
@@ -163,11 +162,14 @@ function repository() {
     return of(x)
   }
 
-  // TODO: do correct rounding, see GitHub
+  // TODO: do correct rounding, see GitHub - done
   function format(value: number) {
-    return value > 999
-      ? `${(value / 1000).toFixed(1)}k`
-      : `${(value)}`
+    if (value > 999) {
+      const digits = +((value - 950) % 1000 > 99)
+      return `${(++value / 1000).toFixed(digits)}k`
+    } else {
+      return value.toString()
+    }
   }
 
   // github repository...
@@ -234,126 +236,63 @@ export function initialize(config: unknown) {
   const viewport$ = watchViewport()
   const screen$ = watchMedia("(min-width: 960px)")
   const tablet$ = watchMedia("(min-width: 1220px)")
+  const key$ = watchKeyboard()
 
   /* ----------------------------------------------------------------------- */
 
-  /* Create component map observable */
-  const components$ = watchComponentMap(names, { document$ })
-  const component = <T extends HTMLElement>(name: Component): Observable<T> => {
-    return components$
-      .pipe(
-        switchComponent<T>(name)
-      )
-  }
+  watchComponentMap(names, { document$ })
+  watchToggleMap(["drawer", "search"], { document$ })
 
   /* Create header observable */
-  const header$ = component("header")  // TODO:!
+  const header$ = useComponent("header")
     .pipe(
-      switchMap(watchHeader)
+      switchMap(watchHeader) // TODO: should also be the mount...
     )
 
-  /* Create header shadow toggle */
-  component("header")
+  const main$ = useComponent("main")
     .pipe(
-      switchMap(el => main$
-        .pipe(
-          paintHeaderShadow(el) // technically, this could be done in paintMain
-        )
-      )
+      mountMain({ header$, viewport$ }),
     )
-      .subscribe()
-
-  // DONE
-  const main$ = component("main")
-    .pipe(
-      switchMap(el => watchMain(el, { header$, viewport$ })),
-      shareReplay(1) // TODO: mount!?
-    )
-
-  // ---------------------------------------------------------------------------
 
   /* ----------------------------------------------------------------------- */
-
-  const drawer = getElement<HTMLInputElement>("[data-md-toggle=drawer]")!
-
-  /* ----------------------------------------------------------------------- */
-
-  // build a single search observable???
-
-  const query$ = component<HTMLInputElement>("search-query")
-    .pipe(
-      switchMap(el => watchSearchQuery(el))
-    )
 
   const sw = setupSearchWorker(config.worker.search, {
-    base: config.base,
-    query$
+    base: config.base
   })
 
-  const result$ = sw.rx$ // move worker initialization into mountSearch ?
+  const search$ = useComponent("search")
     .pipe(
-      filter(isSearchResultMessage),
-      pluck("data")
-    )
-
-  const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
-  const searchActive$ = watchToggle(search)
-    .pipe(
-      delay(400)
-    )
-
-  query$
-    .pipe(
-      distinctUntilKeyChanged("focus"),
-      tap(query => {
-        if (query.focus)
-          setToggle(search, query.focus) // paintSearchQuery?
-        // console.log(query)
-      })
-    )
-      .subscribe()
-
-  // implement toggle function that returns the toggles as observable...
-  const reset$ = component("search-reset")
-    .pipe(
-      switchMap(watchSearchReset)
+      mountSearch(sw, { viewport$ }),
     )
 
   /* ----------------------------------------------------------------------- */
 
   // DONE (partly)
-  const navigation$ = component("navigation")
+  const navigation$ = useComponent("navigation")
     .pipe(
       mountNavigation({ main$, viewport$, screen$ })
     )
 
-  const toc$ = component("toc")
+  const toc$ = useComponent("toc")
     .pipe(
       mountTableOfContents({ header$, main$, viewport$, tablet$ })
     )
 
-  // TODO: naming?
-  const resultComponent$ = component("search-result")
-    .pipe(
-      mountSearchResult({ viewport$, result$, query$: query$.pipe(
-        distinctUntilKeyChanged("value"),
-      ) })
-    ) // temporary fix
-
-  // mount hideable...
-
-  const tabs$ = component("tabs")
+  const tabs$ = useComponent("tabs")
     .pipe(
       mountTabs({ header$, viewport$, screen$ })
     )
 
-  const hero$ = component("hero")
+  const hero$ = useComponent("hero")
     .pipe(
       mountHero({ header$, viewport$, screen$ })
     )
 
-  // function watchKeyboard
-  const key$ = watchKeyboard()
+  const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
+  const searchActive$ = useToggle("search").pipe(
+    switchMap(el => watchToggle(el)),
+    delay(400)
+  )
 
   // shortcodes
   key$
@@ -420,16 +359,6 @@ export function initialize(config: unknown) {
   // TODO: close search on hashchange
   // anchor jump -> always close drawer + search
 
-  // focus search on reset, on toggle and on keypress if open
-  merge(searchActive$.pipe(filter(identity)), reset$)
-    .pipe(
-      switchMapTo(component<HTMLInputElement>("search-query")),
-      tap(el => el.focus()) // TODO: only if element isnt focused! setFocus? setToggle?
-    )
-      .subscribe()
-
-      // focusable -> setFocus(true, false)
-
   /* ----------------------------------------------------------------------- */
 
   /* Open details before printing */
@@ -446,8 +375,14 @@ export function initialize(config: unknown) {
 
   // Close drawer and search on hash change
   hash$.subscribe(() => {
-    setToggle(drawer, false)
-    setToggle(search, false) // we probably need to delay the anchor jump for search
+
+    useToggle("drawer").subscribe(el => {
+      setToggle(el, false)
+    })
+
+    useToggle("search").subscribe(el => { // omit nested subscribes...
+      setToggle(el, false)
+    })
   })
 
   /* ----------------------------------------------------------------------- */
@@ -547,16 +482,12 @@ export function initialize(config: unknown) {
   // )
   //   .subscribe()
 
-  // // toiggle
+  // // toggle
 
   /* ----------------------------------------------------------------------- */
 
   const state = {
-    search: {
-      query$,
-      result$: resultComponent$,
-      reset$,
-    },
+    search$,
     main$,
     navigation$,
     toc$,
@@ -564,8 +495,8 @@ export function initialize(config: unknown) {
     hero$
   }
 
-  const { search: temp, ...rest } = state
-  merge(...values(rest), ...values(temp))
+  const { ...rest } = state
+  merge(...values(rest))
     .subscribe() // potential memleak <-- use takeUntil
 
   return {
@@ -573,11 +504,3 @@ export function initialize(config: unknown) {
     state
   }
 }
-
-// function mountSearchQuery(
-
-// ): OperatorFunction<HTMLInputElement, SearchQuery> {
-//   return pipe(
-//     switchMap(el => watchSearchQuery(el))
-//   )
-// }

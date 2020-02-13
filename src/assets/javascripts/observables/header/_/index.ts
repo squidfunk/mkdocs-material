@@ -20,48 +20,41 @@
  * IN THE SOFTWARE.
  */
 
-import {
-  MonoTypeOperatorFunction,
-  animationFrameScheduler,
-  pipe
-} from "rxjs"
-import {
-  distinctUntilKeyChanged,
-  finalize,
-  observeOn,
-  tap
-} from "rxjs/operators"
+import { Observable, of } from "rxjs"
 
-import { resetHeaderShadow, setHeaderShadow } from "actions"
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
 
-import { MainState } from "../../main"
+/**
+ * Header
+ */
+export interface Header {
+  sticky: boolean                      /* Header stickyness */
+  height: number                       /* Header visible height */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint header shadow from source observable
+ * Watch header
+ *
+ * The header is wrapped in an observable to pave the way for auto-hiding or
+ * other dynamic behaviors that may be implemented later on.
  *
  * @param el - Header element
  *
- * @return Operator function
+ * @return Header observable
  */
-export function paintHeaderShadow(
+export function watchHeader(
   el: HTMLElement
-): MonoTypeOperatorFunction<MainState> {
-  return pipe(
-    distinctUntilKeyChanged("active"),
-
-    /* Defer repaint to next animation frame */
-    observeOn(animationFrameScheduler),
-    tap(({ active }) => {
-      setHeaderShadow(el, active)
-    }),
-
-    /* Reset on complete or error */
-    finalize(() => {
-      resetHeaderShadow(el)
-    })
-  )
+): Observable<Header> {
+  const styles = getComputedStyle(el)
+  const sticky = styles.position === "sticky"
+  return of({
+    sticky,
+    height: sticky ? el.offsetHeight : 0
+  })
 }

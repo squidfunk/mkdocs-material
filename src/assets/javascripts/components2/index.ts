@@ -21,4 +21,5 @@
  */
 
 export * from "./_"
+export * from "./main"
 export * from "./search"

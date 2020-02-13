@@ -20,41 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, of } from "rxjs"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Header
- */
-export interface Header {
-  sticky: boolean                      /* Header stickyness */
-  height: number                       /* Header visible height */
-}
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Watch header
- *
- * The header is wrapped in an observable to pave the way for auto-hiding or
- * other dynamic behaviors that may be implemented later on.
- *
- * @param el - Header element
- *
- * @return Header observable
- */
-export function watchHeader(
-  el: HTMLElement
-): Observable<Header> {
-  const styles = getComputedStyle(el)
-  const sticky = styles.position === "sticky"
-  return of({
-    sticky,
-    height: sticky ? el.offsetHeight : 0
-  })
-}
+export * from "./_"
+export * from "./shadow"
