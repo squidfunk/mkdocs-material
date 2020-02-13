@@ -152,14 +152,15 @@ The Material theme provides the following template blocks:
 | `fonts`      | Wraps the webfont definitions                   |
 | `footer`     | Wraps the footer with navigation and copyright  |
 | `header`     | Wraps the fixed header bar                      |
-| `hero`       | Wraps the hero teaser                           |
+| `hero`       | Wraps the hero teaser (if available)            |
 | `htmltitle`  | Wraps the `<title>` tag                         |
-| `libs`       | Wraps the JavaScript libraries, e.g. Modernizr  |
-| `scripts`    | Wraps the JavaScript application logic          |
+| `libs`       | Wraps the JavaScript libraries (header)         |
+| `scripts`    | Wraps the JavaScript application (footer)       |
 | `source`     | Wraps the linked source files                   |
 | `site_meta`  | Wraps the meta tags in the document head        |
 | `site_nav`   | Wraps the site navigation and table of contents |
 | `styles`     | Wraps the stylesheets (also extra sources)      |
+| `tabs`       | Wraps the tabs navigation (if available)        |
 
 For more on this topic refer to the [MkDocs documentation][4]
 

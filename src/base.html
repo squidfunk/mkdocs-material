@@ -242,9 +242,11 @@
       {% endblock %}
 
       <!-- Tabs with outline -->
-      {% if feature.tabs %}
-        {% include "partials/tabs.html" %}
-      {% endif %}
+      {% block tabs %}
+        {% if feature.tabs %}
+          {% include "partials/tabs.html" %}
+        {% endif %}
+      {% endblock %}
 
       <!-- Main area -->
       <main class="md-main" data-md-component="main">
