@@ -32,7 +32,6 @@
 export function setOverflowScrolling(
   el: HTMLElement
 ): void {
-  el.style.backgroundColor = "yellow" // TODO: debugging
   el.style.webkitOverflowScrolling = "touch"
 }
 
@@ -44,6 +43,5 @@ export function setOverflowScrolling(
 export function resetOverflowScrolling(
   el: HTMLElement
 ): void {
-  el.style.backgroundColor = "" // TODO: debugging
   el.style.webkitOverflowScrolling = ""
 }
