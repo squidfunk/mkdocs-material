@@ -28,7 +28,7 @@ import {
   Key,
   SearchQuery,
   Viewport,
-  WorkerHandler,
+  WorkerHandler
 } from "observables"
 import { SearchMessage } from "workers"
 

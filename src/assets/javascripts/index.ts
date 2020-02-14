@@ -26,19 +26,23 @@
 import "../stylesheets/app.scss"
 import "../stylesheets/app-palette.scss"
 
-import { identity, values } from "ramda"
+import { values } from "ramda"
 import {
   EMPTY,
   merge,
   of,
-  fromEvent
+  NEVER
 } from "rxjs"
 import {
   delay,
-  filter,
   map,
   switchMap,
-  tap
+  tap,
+  skip,
+  take,
+  bufferCount,
+  startWith,
+  pluck
 } from "rxjs/operators"
 
 import {
@@ -55,12 +59,12 @@ import {
   watchViewport,
   watchKeyboard,
   watchToggleMap,
-  useToggle
+  useToggle,
+  setViewportOffset
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 import { renderSource } from "templates"
 import { fetchGitHubStats } from "integrations/source/github"
-import { renderTable } from "templates/table"
 import { setToggle } from "actions"
 import {
   Component,
@@ -74,21 +78,7 @@ import {
 } from "components2"
 import { mountClipboard } from "./integrations/clipboard"
 import { patchTables, patchDetails } from "patches"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Configuration
- */
-export interface Config {
-  base: string                         /* Base URL */
-  worker: {
-    search: string                     /* Search worker URL */
-    packer: string                     /* Packer worker URL */
-  }
-}
+import { takeIf, not, isConfig } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * TODO: where do we put this stuff?
@@ -120,24 +110,6 @@ const names: Component[] = [
 /* ----------------------------------------------------------------------------
  * Helper functions
  * ------------------------------------------------------------------------- */
-
-/**
- * Ensure that the given value is a valid configuration
- *
- * We could use `jsonschema` or any other schema validation framework, but that
- * would just add more bloat to the bundle, so we'll keep it plain and simple.
- *
- * @param config - Configuration
- *
- * @return Test result
- */
-function isConfig(config: any): config is Config {
-  return typeof config === "object"
-      && typeof config.base === "string"
-      && typeof config.worker === "object"
-      && typeof config.worker.search === "string"
-      && typeof config.worker.packer === "string"
-}
 
 /**
  * Yes, this is a super hacky implementation. Needs clean up.
@@ -284,21 +256,7 @@ export function initialize(config: unknown) {
   //           setToggle(toggle, true)
   //       })
 
-  const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
-
   /* ----------------------------------------------------------------------- */
-
-  // patches... table, details, pre, ...
-
-  /* Open details before printing */
-  merge(
-    watchMedia("print").pipe(filter(identity)), // Webkit
-    fromEvent(window, "beforeprint")            // IE, FF
-  )
-    .subscribe(() => {
-      for (const detail of getElements("details"))
-        detail.setAttribute("open", "")
-    })
 
   // Close drawer and search on hash change
   hash$.subscribe(() => {
@@ -332,54 +290,69 @@ export function initialize(config: unknown) {
     }
   })
 
-  // TODO: this is just a re-rendering patch...
   patchTables({ document$ })
     .subscribe(console.log)
 
   patchDetails({ document$ })
     .subscribe(console.log)
 
-  // /* Wrap all data tables for better overflow scrolling */
-  // const placeholder = document.createElement("table")
-  // for (const table of getElements<HTMLTableElement>("table:not([class])")) {
-  //   table.replaceWith(placeholder)
-  //   placeholder.replaceWith(renderTable(table))
-  // }
+  // // TODO: must be reset when tablet/toggle is left
+  // const toggle$ = useToggle("search")
+  // toggle$
+  //   .pipe(
+  //     switchMap(watchToggle),
+  //     skip(1),
+  //     switchMap(toggle => viewport$
+  //       .pipe(
+  //         take(1),
+  //         pluck("offset"),
+  //         delay(toggle ? 400 : 100)
+  //       )
+  //     ),
+  //     startWith({ x: 0, y: 0 }),
+  //     bufferCount(2, 1),
+  //     takeIf(not(tablet$)), // TODO: wrong position
+  //     map(([offset]) => offset)
+  //   )
+  //     .subscribe(offset => {
+  //       // TODO: this will also trigger if we started at the top.
+  //       document.body.dataset.mdState = offset.y ? "" :  "lock"             // TODO: refactor
+  //       setViewportOffset(offset)
+  //     })
 
   // accidentally triggers on resize
-  let lastOffset = 0
-  tablet$.pipe(
-    switchMap(active => {
-      return !active ? watchToggle(search) : EMPTY
-    }),
-    switchMap(toggle => {
-      if (toggle) {
-        console.log("ACTIVE")
-        return of(document.body)
-          .pipe(
-            tap(() => lastOffset = window.pageYOffset),
-            delay(400),
-            tap(() => {
-              window.scrollTo(0, 0),
-              console.log("scrolled... to top, locked body")
-              document.body.dataset.mdState = "lock"
-            })
-          )
-      } else {
-        console.log("INACTIVE")
-        return of(document.body)
-          .pipe(
-            tap(() => document.body.dataset.mdState = ""),
-            delay(100),
-            tap(() => {
-              window.scrollTo(0, lastOffset)
-            })
-          )
-      }
-      return EMPTY
-    })
-  )
-    .subscribe(x => console.log("SEARCHLOCK", x))
+  // let lastOffset = 0
+  // tablet$.pipe(
+  //   switchMap(active => {
+  //     return !active ? watchToggle(search) : NEVER
+  //   }),
+  //   switchMap(toggle => {
+  //     if (toggle) {
+  //       console.log("ACTIVE")
+  //       return of(document.body)
+  //         .pipe(
+  //           tap(() => lastOffset = window.pageYOffset),
+  //           delay(400),
+  //           tap(() => {
+  //             window.scrollTo(0, 0),
+  //             console.log("scrolled... to top, locked body")
+  //             document.body.dataset.mdState = "lock"
+  //           })
+  //         )
+  //     } else {
+  //       console.log("INACTIVE")
+  //       return of(document.body)
+  //         .pipe(
+  //           tap(() => document.body.dataset.mdState = ""),
+  //           delay(100),
+  //           tap(() => {
+  //             window.scrollTo(0, lastOffset) // setViewportOffset !
+  //           })
+  //         )
+  //     }
+  //   })
+  // )
+  //   .subscribe(x => console.log("SEARCHLOCK", x))
 
   /* ----------------------------------------------------------------------- */
 

@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+export * from "./config"
 export * from "./jsx"
 export * from "./rxjs"
 export * from "./string"
