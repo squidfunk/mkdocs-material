@@ -18,7 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-FROM python:3.6.8-alpine3.9
+FROM python:3.8.1-alpine3.11
 
 # Set build directory
 WORKDIR /tmp
@@ -38,7 +38,10 @@ RUN \
     git-fast-import \
     openssh \
   && python setup.py install \
-  && rm -rf /tmp/*
+  && rm -rf /tmp/* \
+  && pip install --no-cache-dir \
+    'mkdocs-minify-plugin>=0.2' \
+    'mkdocs-git-revision-date-localized-plugin'
 
 # Set working directory
 WORKDIR /docs
