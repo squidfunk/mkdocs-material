@@ -21,4 +21,5 @@
  */
 
 export * from "./_"
-export * from "./relative"
+export * from "./offset"
+export * from "./size"

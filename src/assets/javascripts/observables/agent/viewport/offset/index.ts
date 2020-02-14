@@ -20,22 +20,19 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, combineLatest } from "rxjs"
-import { map, shareReplay } from "rxjs/operators"
-
-import { Header } from "../../../header"
-import { Viewport } from "../_"
+import { Observable, fromEvent, merge } from "rxjs"
+import { map, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
- * Helper types
+ * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch options
+ * Viewport offset
  */
-interface WatchOptions {
-  header$: Observable<Header>          /* Header observable */
-  viewport$: Observable<Viewport>      /* Viewport observable */
+export interface ViewportOffset {
+  x: number                            /* Horizontal offset */
+  y: number                            /* Vertical offset */
 }
 
 /* ----------------------------------------------------------------------------
@@ -43,25 +40,42 @@ interface WatchOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch viewport relative to element
+ * Retrieve viewport offset
  *
- * @param el - Element
- * @param options - Options
- *
- * @return Viewport observable
+ * @return Viewport offset
  */
-export function watchViewportFrom(
-  el: HTMLElement, { header$, viewport$ }: WatchOptions
-): Observable<Viewport> {
-  return combineLatest([viewport$, header$])
+export function getViewportOffset(): ViewportOffset {
+  return {
+    x: pageXOffset,
+    y: pageYOffset
+  }
+}
+
+/**
+ * Retrieve viewport offset
+ *
+ * @param offset - Viewport offset
+ */
+export function setViewportOffset(
+  { x, y }: Partial<ViewportOffset>
+): void {
+  window.scrollTo(x || 0, y || 0)
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Watch viewport offset
+ *
+ * @return Viewport offset observable
+ */
+export function watchViewportOffset(): Observable<ViewportOffset> {
+  return merge(
+    fromEvent<UIEvent>(window, "scroll"),
+    fromEvent<UIEvent>(window, "resize")
+  )
     .pipe(
-      map(([{ offset, size }, { height }]) => ({
-        offset: {
-          x: offset.x - el.offsetLeft,
-          y: offset.y - el.offsetTop + height
-        },
-        size
-      })),
-      shareReplay(1)
+      map(getViewportOffset),
+      startWith(getViewportOffset())
     )
 }

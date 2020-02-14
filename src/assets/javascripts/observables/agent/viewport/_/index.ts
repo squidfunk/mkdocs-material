@@ -20,28 +20,22 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, combineLatest, fromEvent, merge } from "rxjs"
-import { map, shareReplay, startWith } from "rxjs/operators"
+import { Observable, combineLatest } from "rxjs"
+import { map, shareReplay } from "rxjs/operators"
+
+import { Header } from "../../../header"
+import {
+  ViewportOffset,
+  watchViewportOffset
+} from "../offset"
+import {
+  ViewportSize,
+  watchViewportSize
+} from "../size"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
-
-/**
- * Viewport offset
- */
-export interface ViewportOffset {
-  x: number                            /* Horizontal offset */
-  y: number                            /* Vertical offset */
-}
-
-/**
- * Viewport size
- */
-export interface ViewportSize {
-  width: number                        /* Viewport width */
-  height: number                       /* Viewport height */
-}
 
 /**
  * Viewport
@@ -52,63 +46,20 @@ export interface Viewport {
 }
 
 /* ----------------------------------------------------------------------------
- * Functions
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve viewport offset
- *
- * @return Viewport offset
+ * Watch relative options
  */
-export function getViewportOffset(): ViewportOffset {
-  return {
-    x: pageXOffset,
-    y: pageYOffset
-  }
+interface WatchRelativeOptions {
+  header$: Observable<Header>          /* Header observable */
+  viewport$: Observable<Viewport>      /* Viewport observable */
 }
 
-/**
- * Retrieve viewport size
- *
- * @return Viewport size
- */
-export function getViewportSize(): ViewportSize {
-  return {
-    width:  innerWidth,
-    height: innerHeight
-  }
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Watch viewport offset
- *
- * @return Viewport offset observable
- */
-export function watchViewportOffset(): Observable<ViewportOffset> {
-  return merge(
-    fromEvent<UIEvent>(window, "scroll"),
-    fromEvent<UIEvent>(window, "resize")
-  )
-    .pipe(
-      map(getViewportOffset),
-      startWith(getViewportOffset())
-    )
-}
-
-/**
- * Watch viewport size
- *
- * @return Viewport size observable
- */
-export function watchViewportSize(): Observable<ViewportSize> {
-  return fromEvent<UIEvent>(window, "resize")
-    .pipe(
-      map(getViewportSize),
-      startWith(getViewportSize())
-    )
-}
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
 
 /**
  * Watch viewport
@@ -122,6 +73,30 @@ export function watchViewport(): Observable<Viewport> {
   ])
     .pipe(
       map(([offset, size]) => ({ offset, size })),
+      shareReplay(1)
+    )
+}
+
+/**
+ * Watch viewport relative to element
+ *
+ * @param el - Element
+ * @param options - Options
+ *
+ * @return Viewport observable
+ */
+export function watchViewportFrom(
+  el: HTMLElement, { header$, viewport$ }: WatchRelativeOptions
+): Observable<Viewport> {
+  return combineLatest([viewport$, header$])
+    .pipe(
+      map(([{ offset, size }, { height }]) => ({
+        offset: {
+          x: offset.x - el.offsetLeft,
+          y: offset.y - el.offsetTop + height
+        },
+        size
+      })),
       shareReplay(1)
     )
 }
