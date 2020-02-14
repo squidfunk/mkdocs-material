@@ -163,8 +163,8 @@ kbd {
   // Code blocks
   code,
   pre {
-    background-color: $md-code-background;
-    color: $md-code-color;
+    background-color: var(--md-code-background);
+    color: var(--md-code-color);
     font-size: 85%;
     direction: ltr;
 
@@ -182,8 +182,8 @@ kbd {
     padding: 0.0625em * $correct 0;
     border-radius: px2rem(2px);
     box-shadow:
-      +0.25em * $correct 0 0 $md-code-background,
-      -0.25em * $correct 0 0 $md-code-background;
+      +0.25em * $correct 0 0 var(--md-code-background),
+      -0.25em * $correct 0 0 var(--md-code-background);
     word-break: break-word;
     box-decoration-break: clone;
 

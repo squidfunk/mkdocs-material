@@ -102,6 +102,10 @@ $md-color-white--transparent:         hsla(0, 0%, 100%, 0) !default;
   --md-color-background--lighter:             #{$md-color-white--lighter};
   --md-color-background--lightest:            #{$md-color-white--lightest};
   --md-color-background--transparent:         #{$md-color-white--transparent};
+
+  // Code blocks
+  --md-code-background:                       hsla(0, 0%, 92.5%, 0.5);
+  --md-code-color:                            #37474F;
 }
 
 :root.dark-mode {
