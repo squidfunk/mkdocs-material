@@ -24,8 +24,7 @@ import { Observable, OperatorFunction, pipe } from "rxjs"
 import {
   distinctUntilKeyChanged,
   shareReplay,
-  switchMap,
-  tap
+  switchMap
 } from "rxjs/operators"
 
 import {

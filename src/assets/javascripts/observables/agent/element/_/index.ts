@@ -32,12 +32,44 @@
  * @param selector - Query selector
  * @param node - Node of reference
  *
- * @return Element
+ * @return Element or nothing
  */
 export function getElement<T extends HTMLElement>(
   selector: string, node: ParentNode = document
 ): T | undefined {
   return node.querySelector<T>(selector) || undefined
+}
+
+/**
+ * Retrieve an element matching a query selector or throw a reference error
+ *
+ * @template T - Element type
+ *
+ * @param selector - Query selector
+ * @param node - Node of reference
+ *
+ * @return Element
+ */
+export function getElementOrThrow<T extends HTMLElement>(
+  selector: string, node: ParentNode = document
+): T {
+  const el = getElement<T>(selector, node)
+  if (typeof el === "undefined")
+    throw new ReferenceError(
+      `Missing element: expected "${selector}" to match an element`
+    )
+  return el
+}
+
+/**
+ * Retrieve the currently active element
+ *
+ * @return Element
+ */
+export function getActiveElement(): HTMLElement | undefined {
+  return document.activeElement instanceof HTMLElement
+    ? document.activeElement
+    : undefined
 }
 
 /**
@@ -54,17 +86,4 @@ export function getElements<T extends HTMLElement>(
   selector: string, node: ParentNode = document
 ): T[] {
   return Array.from(node.querySelectorAll<T>(selector))
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Retrieve the currently active element
- *
- * @return Element
- */
-export function getActiveElement(): HTMLElement | undefined {
-  return document.activeElement instanceof HTMLElement
-    ? document.activeElement
-    : undefined
 }

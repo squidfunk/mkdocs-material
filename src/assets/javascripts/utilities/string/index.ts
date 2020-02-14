@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { getElement } from "observables"
+import { getElementOrThrow } from "observables"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -45,7 +45,7 @@ let lang: Record<string, string>
  */
 export function translate(key: string, value?: string): string {
   if (typeof lang === "undefined") {
-    const el = getElement("#__lang")!
+    const el = getElementOrThrow("#__lang")
     lang = JSON.parse(el.innerText)
   }
   if (typeof lang[key] === "undefined") {

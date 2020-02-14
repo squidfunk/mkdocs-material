@@ -44,7 +44,10 @@ import {
   setOverflowScrolling
 } from "actions"
 
-import { getElement } from "../../agent"
+import {
+  getElement,
+  getElementOrThrow
+} from "../../agent"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -67,7 +70,7 @@ export interface NavigationLayer {
  *
  * On iOS we want to add `-webkit-overflow-scrolling: touch` for the menus
  * contained in the drawer, but as the navigational layers are nested, we can
- * only add it to the navigation layer or extremely weird cropping will occur.
+ * only add it to the topmost layer or extremely weird cropping will occur.
  * This implementation keeps track of the previous and current layer.
  *
  * @param els - Navigation elements
@@ -81,19 +84,19 @@ export function watchNavigationLayer(
   for (const el of els) {
     const label = getElement<HTMLLabelElement>("label", el)
     if (typeof label !== "undefined") {
-      const input = getElement<HTMLInputElement>(`#${label.htmlFor}`)!
+      const input = getElementOrThrow<HTMLInputElement>(`#${label.htmlFor}`)
       table.set(input, el)
     }
   }
 
-  /* Determine active layer */
+  /* Determine topmost layer */
   const layer$ = merge(
     ...[...table.keys()].map(input => fromEvent(input, "change"))
   )
     .pipe(
-      map(() => getElement(".md-nav__list", table.get(
+      map(() => getElementOrThrow(".md-nav__list", table.get(
         findLast(({ checked }) => checked, [...table.keys()])!
-      ))!)
+      )))
     )
 
   /* Return previous and next layer */
@@ -139,7 +142,7 @@ export function paintNavigationLayer(
     finalize(() => {
       for (const el of els)
         resetOverflowScrolling(
-          getElement(".md-nav__list", el)!
+          getElementOrThrow(".md-nav__list", el)
         )
     })
   )

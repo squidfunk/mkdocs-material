@@ -45,7 +45,7 @@ import {
 import { SearchResult } from "modules"
 import { renderSearchResult } from "templates"
 
-import { getElement } from "../../agent"
+import { getElementOrThrow } from "../../agent"
 import { SearchQuery } from "../query"
 
 /* ----------------------------------------------------------------------------
@@ -75,8 +75,8 @@ interface PaintOptions {
 export function paintSearchResult(
   el: HTMLElement, { query$, fetch$ }: PaintOptions
 ): MonoTypeOperatorFunction<SearchResult[]> {
-  const list = getElement(".md-search-result__list", el)!
-  const meta = getElement(".md-search-result__meta", el)!
+  const list = getElementOrThrow(".md-search-result__list", el)
+  const meta = getElementOrThrow(".md-search-result__meta", el)
   return pipe(
 
     /* Paint search result metadata */
