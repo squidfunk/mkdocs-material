@@ -41,7 +41,7 @@ RUN \
   && rm -rf /tmp/* \
   && pip install --no-cache-dir \
     'mkdocs-minify-plugin>=0.2' \
-    'mkdocs-git-revision-date-localized-plugin'
+    'mkdocs-git-revision-date-localized-plugin>=0.4'
 
 # Set working directory
 WORKDIR /docs
