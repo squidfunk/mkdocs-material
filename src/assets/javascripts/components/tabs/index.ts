@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, pipe } from "rxjs"
-import { map, shareReplay } from "rxjs/operators"
+import { Observable, OperatorFunction, of, pipe } from "rxjs"
+import { map, shareReplay, switchMap } from "rxjs/operators"
 
 import {
   Header,
@@ -29,16 +29,15 @@ import {
   paintHideable,
   watchViewportFrom
 } from "observables"
-import { switchMapIf } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Tabs state
+ * Tabs
  */
-export interface TabsState {
+export interface Tabs {
   hidden: boolean                      /* Whether the tabs are hidden */
 }
 
@@ -47,11 +46,11 @@ export interface TabsState {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Mount options
  */
-interface Options {
-  header$: Observable<Header>     /* Header state observable */
-  viewport$: Observable<Viewport>
+interface MountOptions {
+  header$: Observable<Header>          /* Header observable */
+  viewport$: Observable<Viewport>      /* Viewport observable */
   screen$: Observable<boolean>         /* Media screen observable */
 }
 
@@ -60,49 +59,35 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch tabs
- *
- * This function returns an observable that computes the visual parameters of
- * the tabs, currently only denoting whether the tabs are hidden or not.
- *
- * @param el - Tabs element
- * @param options - Options
- *
- * @return Tabs state
- */
-export function watchTabs(
-  el: HTMLElement, options: Options
-): Observable<TabsState> {
-
-  /* Watch and paint visibility */
-  const hidden$ = watchViewportFrom(el, options)
-    .pipe(
-      paintHideable(el, 8)
-    )
-
-  /* Combine into a single hot observable */
-  return hidden$
-    .pipe(
-      map(hidden => ({ hidden }))
-    )
-}
-// TODO: generalize into watchHideable !!! or mountHideable...
-
-/* ------------------------------------------------------------------------- */
-
-/**
  * Mount tabs from source observable
  *
- * @param agent - Agent
  * @param options - Options
  *
- * @return Operator function
+ * @return Tabs observable
  */
 export function mountTabs(
-  options: Options
-): OperatorFunction<HTMLElement, TabsState> {
+  { header$, viewport$, screen$ }: MountOptions
+): OperatorFunction<HTMLElement, Tabs> {
   return pipe(
-    switchMapIf(options.screen$, el => watchTabs(el, options)),
+    switchMap(el => screen$
+      .pipe(
+        switchMap(screen => {
+
+          /* Mount tabs above screen breakpoint */
+          if (screen) {
+            return watchViewportFrom(el, { header$, viewport$ })
+              .pipe(
+                paintHideable(el, 20),
+                map(hidden => ({ hidden }))
+              )
+
+          /* Mount tabs below screen breakpoint */
+          } else {
+            return of({ hidden: screen })
+          }
+        })
+      )
+    ),
     shareReplay(1)
   )
 }

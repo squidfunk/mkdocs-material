@@ -35,9 +35,9 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Hero state
+ * Hero
  */
-export interface HeroState {
+export interface Hero {
   hidden: boolean                      /* Whether the hero is hidden */
 }
 
@@ -46,12 +46,11 @@ export interface HeroState {
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Mount options
  */
-interface Options {
-  header$: Observable<Header>     /* Header observable */
-  viewport$: Observable<Viewport>
-  screen$: Observable<boolean>         /* Media screen observable */
+interface MountOptions {
+  header$: Observable<Header>          /* Header observable */
+  viewport$: Observable<Viewport>      /* Viewport observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -59,46 +58,22 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch hero
- *
- * @param el - Hero element
- * @param agent - Agent
- * @param options - Options
- *
- * @return Hero state
- */
-export function watchHero(
-  el: HTMLElement, options: Options
-): Observable<HeroState> {
-
-  /* Watch and paint visibility */
-  const hidden$ = watchViewportFrom(el, options)
-    .pipe(
-      paintHideable(el, 20)
-    )
-
-  /* Combine into a single hot observable */
-  return hidden$
-    .pipe(
-      map(hidden => ({ hidden }))
-    )
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
  * Mount hero from source observable
  *
- * @param agent - Agent
  * @param options - Options
  *
- * @return Operator function
+ * @return Hero observable
  */
 export function mountHero(
-  options: Options
-): OperatorFunction<HTMLElement, HeroState> {
+  { header$, viewport$ }: MountOptions
+): OperatorFunction<HTMLElement, Hero> {
   return pipe(
-    switchMap(el => watchHero(el, options)),
+    switchMap(el => watchViewportFrom(el, { header$, viewport$ })
+      .pipe(
+        paintHideable(el, 20),
+        map(hidden => ({ hidden }))
+      )
+    ),
     shareReplay(1)
   )
 }

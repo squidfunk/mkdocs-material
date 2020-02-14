@@ -46,10 +46,6 @@ import {
 } from "rxjs/operators"
 
 import {
-  mountHero,
-  mountTabs,
-} from "./components"
-import {
   getElement,
   watchToggle,
   getElements,
@@ -69,13 +65,15 @@ import { setToggle } from "actions"
 import {
   Component,
   mountHeader,
+  mountHero,
   mountMain,
   mountNavigation,
   mountSearch,
   mountTableOfContents,
+  mountTabs,
   useComponent,
   watchComponentMap
-} from "components2"
+} from "components"
 import { mountClipboard } from "./integrations/clipboard"
 import { patchTables, patchDetails } from "patches"
 import { takeIf, not, isConfig } from "utilities"
