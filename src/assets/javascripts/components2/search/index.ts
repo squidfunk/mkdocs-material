@@ -25,6 +25,7 @@ import { map, shareReplay, switchMap } from "rxjs/operators"
 
 import { SearchResult } from "modules"
 import {
+  Key,
   SearchQuery,
   Viewport,
   WorkerHandler,
@@ -57,6 +58,7 @@ export interface Search {
  */
 interface MountOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
+  keyboard$: Observable<Key>           /* Keyboard observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -72,7 +74,7 @@ interface MountOptions {
  * @return Search observable
  */
 export function mountSearch(
-  handler: WorkerHandler<SearchMessage>, { viewport$ }: MountOptions
+  handler: WorkerHandler<SearchMessage>, { viewport$, keyboard$ }: MountOptions
 ): OperatorFunction<HTMLElement, Search> {
   return pipe(
     switchMap(() => {
@@ -93,7 +95,7 @@ export function mountSearch(
       /* Mount search result */
       const result$ = useComponent("search-result")
         .pipe(
-          mountSearchResult(handler, { viewport$, query$ })
+          mountSearchResult(handler, { query$, viewport$, keyboard$ })
         )
 
       /* Combine into a single hot observable */

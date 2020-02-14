@@ -31,7 +31,7 @@ import { filter, map, share } from "rxjs/operators"
  * Key
  */
 export interface Key {
-  code: string                         /* Key code */
+  type: string                         /* Key type */
   claim(): void                        /* Key claim */
 }
 
@@ -82,7 +82,7 @@ export function watchKeyboard(): Observable<Key> {
     .pipe(
       filter(ev => !(ev.shiftKey || ev.metaKey || ev.ctrlKey)),
       map(ev => ({
-        code: ev.code,
+        type: ev.key,
         claim() {
           ev.preventDefault()
           ev.stopPropagation()

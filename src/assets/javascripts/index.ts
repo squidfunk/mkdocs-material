@@ -27,7 +27,7 @@ import "../stylesheets/app.scss"
 import "../stylesheets/app-palette.scss"
 
 import * as Clipboard from "clipboard"
-import { identity, not, values } from "ramda"
+import { identity, values } from "ramda"
 import {
   EMPTY,
   merge,
@@ -39,9 +39,7 @@ import {
   filter,
   map,
   switchMap,
-  tap,
-  withLatestFrom,
-  switchMapTo
+  tap
 } from "rxjs/operators"
 
 import {
@@ -59,14 +57,10 @@ import {
   watchViewport,
   watchKeyboard,
   watchToggleMap,
-  useToggle,
-  getActiveElement,
-  mayReceiveKeyboardEvents,
-  watchMain
+  useToggle
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 import { renderSource } from "templates"
-import { takeIf } from "utilities"
 import { renderClipboard } from "templates/clipboard"
 import { fetchGitHubStats } from "modules/source/github"
 import { renderTable } from "templates/table"
@@ -247,7 +241,7 @@ export function initialize(config: unknown) {
 
   const search$ = useComponent("search")
     .pipe(
-      mountSearch(sw, { viewport$ }),
+      mountSearch(sw, { viewport$, keyboard$ }),
     )
 
   /* ----------------------------------------------------------------------- */
@@ -274,95 +268,20 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  function openSearchOnHotKey() {
-    const toggle$ = useToggle("search")
-    const search$ = toggle$
-      .pipe(
-        switchMap(watchToggle)
-      )
-
-    const query$ = useComponent<HTMLInputElement>("search-query")
-
-    search$
-      .pipe(
-        filter(not),
-        switchMapTo(keyboard$),
-        filter(key => ["KeyS", "KeyF"].includes(key.code)),
-        switchMapTo(toggle$)
-      )
-        .subscribe(toggle => {
-          const el = getActiveElement()
-          if (!(el && mayReceiveKeyboardEvents(el)))
-            setToggle(toggle, true)
-        })
-
-    search$
-      .pipe(
-        filter(identity),
-        switchMapTo(keyboard$),
-        filter(key => ["Escape", "Tab"].includes(key.code)),
-        switchMapTo(toggle$),
-        withLatestFrom(query$)
-      )
-        .subscribe(([toggle, el]) => {
-          setToggle(toggle, false)
-          el.blur()
-        })
-  } // TODO: handle ALL cases in one switch case statement!
+  //   search$
+  //     .pipe(
+  //       filter(not),
+  //       switchMapTo(keyboard$),
+  //       filter(key => ["s", "f"].includes(key.type)),
+  //       switchMapTo(toggle$)
+  //     )
+  //       .subscribe(toggle => {
+  //         const el = getActiveElement()
+  //         if (!(el && mayReceiveKeyboardEvents(el)))
+  //           setToggle(toggle, true)
+  //       })
 
   const search = getElement<HTMLInputElement>("[data-md-toggle=search]")!
-  const searchActive$ = useToggle("search").pipe(
-    switchMap(el => watchToggle(el)),
-    delay(400)
-  )
-
-
-  openSearchOnHotKey()
-
-
-  // note that all links have tabindex=-1
-  keyboard$
-    .pipe(
-      takeIf(searchActive$),
-
-      /* Abort if meta key (macOS) or ctrl key (Windows) is pressed */
-      tap(key => {
-        console.log("jo", key)
-        if (key.code === "Enter") {
-          if (document.activeElement === getElement("[data-md-component=search-query]")) {
-            key.claim()
-            // intercept hash change after search closed
-          } else {
-            setToggle(search, false)
-          }
-        }
-
-        if (key.code === "ArrowUp" || key.code === "ArrowDown") {
-          const active = getElements("[data-md-component=search-query], [data-md-component=search-result] [href]")
-          const i = Math.max(0, active.findIndex(el => el === document.activeElement))
-          const x = Math.max(0, (i + active.length + (key.code === "ArrowUp" ? -1 : +1)) % active.length)
-          active[x].focus()
-
-          // pass keyboard to search result!?
-
-          /* Prevent scrolling of page */
-          key.claim()
-
-        // } else if (key.code === "Escape" || key.code === "Tab") {
-        //   setToggle(search, false)
-        //   getElement("[data-md-component=search-query]")!.blur()
-
-        } else {
-          if (search.checked && document.activeElement !== getElement("[data-md-component=search-query]")) {
-            getElement("[data-md-component=search-query]")!.focus()
-          }
-        }
-      })
-    )
-      .subscribe()
-
-  // TODO: close search on hashchange
-  // anchor jump -> always close drawer + search
 
   /* ----------------------------------------------------------------------- */
 
@@ -467,8 +386,6 @@ export function initialize(config: unknown) {
     })
   )
     .subscribe(x => console.log("SEARCHLOCK", x))
-
-  /* ----------------------------------------------------------------------- */
 
   /* ----------------------------------------------------------------------- */
 

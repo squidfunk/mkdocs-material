@@ -29,7 +29,7 @@ import {
   tap
 } from "rxjs/operators"
 
-import { watchSearchReset } from "observables"
+import { setElementFocus, watchSearchReset } from "observables"
 
 import { useComponent } from "../../_"
 
@@ -47,7 +47,7 @@ export function mountSearchReset(): OperatorFunction<HTMLElement, void> {
   return pipe(
     switchMap(watchSearchReset),
     switchMapTo(query$),
-    tap(el => el.focus()),
+    tap(setElementFocus),
     mapTo(undefined),
     startWith(undefined)
   )
