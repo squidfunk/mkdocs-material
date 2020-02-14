@@ -35,6 +35,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.tabbed
   - pymdownx.tilde
 ```
 
@@ -263,9 +264,41 @@ SuperFences does also allow [grouping code blocks with tabs][25].
   [24]: https://python-markdown.github.io/extensions/fenced_code_blocks/
   [25]: codehilite.md#grouping-code-blocks
 
+### Tabbed
+
+[Tabbed][26] adds support for creating tabbed groups of Markdown content.
+
+``` markdown
+=== "Fruit List"
+    - Apple
+    - Banana
+    - Orange
+
+=== "Fruit Table"
+    Fruit  | Color
+    ------ | -----
+    Apple  | Red
+    Banana | Yellow
+    Oragne | Orange
+```
+
+=== "Fruit List"
+    - Apple
+    - Banana
+    - Orange
+
+=== "Fruit Table"
+    Fruit  | Color
+    ------ | -----
+    Apple  | Red
+    Banana | Yellow
+    Oragne | Orange
+
+[26]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+
 ### Tasklist
 
-[Tasklist][26] adds support for styled checkbox lists. This is useful for
+[Tasklist][27] adds support for styled checkbox lists. This is useful for
 keeping track of tasks and showing what has been done and has yet to be done.
 Checkbox lists are like regular lists, but prefixed with `[ ]` for empty or
 `[x]` for filled checkboxes.
@@ -298,12 +331,12 @@ Result:
 * [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
 * [ ] Nulla vel eros venenatis, imperdiet enim id, faucibus nisi
 
-[26]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
+[27]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
 
 ### Tilde
 
-[Tilde][27] provides an easy way to ~~strike through~~ cross out text.
+[Tilde][28] provides an easy way to ~~strike through~~ cross out text.
 The portion of text that should be erased must be enclosed in two tildes
 `~~...~~` and the extension will take care of the rest.
 
-  [27]: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
+[28]: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/

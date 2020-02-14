@@ -28,7 +28,7 @@
 .md-typeset {
 
   // Tabbed code block content
-  .superfences-content {
+  .tabbed-content {
     display: none;
     order: 99;
     width: 100%;
@@ -42,7 +42,7 @@
   }
 
   // Tabbed code block container
-  .superfences-tabs {
+  .tabbed-set {
     display: flex;
     position: relative;
     flex-wrap: wrap;
@@ -59,8 +59,26 @@
         font-weight: 700;
 
         // Show code tab content
-        & + .superfences-content {
+        & + .tabbed-content {
           display: block;
+          padding: 0 px2rem(12px);
+
+          // Adjust spacing on last element
+          > :last-child {
+            margin-bottom: px2rem(12px);
+          }
+
+          > {
+            div.highlight,
+            div.codehilite,
+            pre,
+            table.highlighttable,
+            table.codehilitetable {
+              &:last-child:first-child {
+                margin: 0 px2rem(-12px);
+              }
+            }
+          }
         }
       }
     }
@@ -81,7 +99,7 @@
   }
 
   // Full-width container on top-level
-  > .superfences-tabs {
+  > .tabbed-set {
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
