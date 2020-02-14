@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "5.0.0-preview",
+  "version": "5.0.0dev0",
   "description": "A Material Design theme for MkDocs",
   "keywords": [
     "mkdocs",
