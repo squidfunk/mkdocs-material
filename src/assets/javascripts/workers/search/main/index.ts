@@ -48,7 +48,7 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
   /* Add scripts for languages */
   const scripts = []
   for (const lang of config.lang) {
-    if (lang === "ja") scripts.push(`${base}/tinyseg.js`)
+    if (lang === "ja") scripts.push(`${base}/tinyseg.min.js`)
     if (lang !== "en") scripts.push(`${base}/min/lunr.${lang}.min.js`)
   }
 

@@ -26,6 +26,7 @@ import * as fs from "fs"
 import { minify as minhtml } from "html-minifier"
 import * as path from "path"
 import { toPairs } from "ramda"
+import { minify as minjs } from "terser"
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin"
 import { Configuration, ProvidePlugin } from "webpack"
 import * as AssetsManifestPlugin from "webpack-assets-manifest"
@@ -210,7 +211,11 @@ export default (_env: never, args: Configuration): Configuration[] => {
         /* Copy search stemmers and segmenters */
         new CopyPlugin([
           { to: "assets/javascripts/lunr", from: "min/*.js" },
-          { to: "assets/javascripts/lunr", from: "tinyseg.js" }
+          {
+            to: "assets/javascripts/lunr/tinyseg.min.js",
+            from: "tinyseg.js",
+            transform: content => minjs(`${content}`).code!
+          }
         ], {
           context: "node_modules/lunr-languages"
         }),
