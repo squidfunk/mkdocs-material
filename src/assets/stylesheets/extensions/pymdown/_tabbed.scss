@@ -68,12 +68,14 @@
             margin-bottom: px2rem(12px);
           }
 
+          // Emulate original pymdownx.superfences behavior and stretch to full
+          // width and height when  when a code block is the only child of a tab
           > {
-            div.highlight,
-            div.codehilite,
             pre,
-            table.highlighttable,
-            table.codehilitetable {
+            .highlight,
+            .highlighttable,
+            .codehilite,
+            .codehilitetable {
               &:only-child {
                 margin: 0 px2rem(-12px);
               }
