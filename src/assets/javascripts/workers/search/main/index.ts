@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndex, SearchIndexConfig } from "modules"
+import { SearchIndex, SearchIndexConfig } from "integrations"
 
 import { SearchMessage, SearchMessageType } from "../message"
 

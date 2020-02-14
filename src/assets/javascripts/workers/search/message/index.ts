@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndexOptions, SearchResult } from "modules"
+import { SearchIndexOptions, SearchResult } from "integrations"
 
 /* ----------------------------------------------------------------------------
  * Types

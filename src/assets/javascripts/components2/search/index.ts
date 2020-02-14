@@ -23,7 +23,7 @@
 import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
 import { map, shareReplay, switchMap } from "rxjs/operators"
 
-import { SearchResult } from "modules"
+import { SearchResult } from "integrations"
 import {
   Key,
   SearchQuery,

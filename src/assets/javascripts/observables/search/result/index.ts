@@ -42,7 +42,7 @@ import {
   resetSearchResultMeta,
   setSearchResultMeta
 } from "actions"
-import { SearchResult } from "modules"
+import { SearchResult } from "integrations"
 import { renderSearchResult } from "templates"
 
 import { getElementOrThrow } from "../../agent"

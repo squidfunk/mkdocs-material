@@ -24,7 +24,7 @@ import { Subject } from "rxjs"
 import { ajax } from "rxjs/ajax"
 import { map, pluck } from "rxjs/operators"
 
-import { SearchIndexOptions } from "modules"
+import { SearchIndexOptions } from "integrations"
 import { WorkerHandler, watchWorker } from "observables"
 
 import {
