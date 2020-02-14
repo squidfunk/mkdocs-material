@@ -136,83 +136,91 @@ Result:
 
 ### Grouping code blocks
 
-The [SuperFences][5] extension which is part of the [PyMdown Extensions][6]
-package adds support for grouping code blocks with tabs. This is especially
+The [Tabbed][5] extension which is part of the [PyMdown Extensions][6]
+package adds support for grouping Markdown blocks with tabs. This is especially
 useful for documenting projects with multiple language bindings.
 
 Example:
 
 ````
-``` bash tab="Bash"
-#!/bin/bash
+=== "Bash"
+    ``` bash
+    #!/bin/bash
 
-echo "Hello world!"
-```
+    echo "Hello world!"
+    ```
 
-``` c tab="C"
-#include <stdio.h>
+=== "C"
+    ``` c
+    #include <stdio.h>
 
-int main(void) {
-  printf("Hello world!\n");
-}
-```
+    int main(void) {
+      printf("Hello world!\n");
+    }
+    ```
 
-``` c++ tab="C++"
-#include <iostream>
+=== "C++"
+    ``` c++
+    #include <iostream>
 
-int main() {
-  std::cout << "Hello world!" << std::endl;
-  return 0;
-}
-```
+    int main() {
+      std::cout << "Hello world!" << std::endl;
+      return 0;
+    }
+    ```
 
-``` c# tab="C#"
-using System;
+=== "C#"
+    ``` c#
+    using System;
 
-class Program {
-  static void Main(string[] args) {
-    Console.WriteLine("Hello world!");
-  }
-}
-```
+    class Program {
+      static void Main(string[] args) {
+        Console.WriteLine("Hello world!");
+      }
+    }
+    ```
 ````
 
 Result:
 
-``` bash tab="Bash"
-#!/bin/bash
+=== "Bash"
+    ``` bash
+    #!/bin/bash
 
-echo "Hello world!"
-```
+    echo "Hello world!"
+    ```
 
-``` c tab="C"
-#include <stdio.h>
+=== "C"
+    ``` c
+    #include <stdio.h>
 
-int main(void) {
-  printf("Hello world!\n");
-}
-```
+    int main(void) {
+      printf("Hello world!\n");
+    }
+    ```
 
-``` c++ tab="C++"
-#include <iostream>
+=== "C++"
+    ``` c++
+    #include <iostream>
 
-int main() {
-  std::cout << "Hello world!" << std::endl;
-  return 0;
-}
-```
+    int main() {
+      std::cout << "Hello world!" << std::endl;
+      return 0;
+    }
+    ```
 
-``` c# tab="C#"
-using System;
+=== "C#"
+    ``` c#
+    using System;
 
-class Program {
-  static void Main(string[] args) {
-    Console.WriteLine("Hello world!");
-  }
-}
-```
+    class Program {
+      static void Main(string[] args) {
+        Console.WriteLine("Hello world!");
+      }
+    }
+    ```
 
-  [5]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+  [5]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
   [6]: https://facelessuser.github.io/pymdown-extensions
 
 ### Highlighting specific lines
