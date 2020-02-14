@@ -88,9 +88,9 @@ jobs:
         id: cache-python
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-x${{ hashFiles('**/requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-pip-x
+            ${{ runner.os }}-pip-
 
       - if: steps.cache-python.outputs.cache-hit != 'true'
         run: |
