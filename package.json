@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "4.6.0",
+  "version": "4.6.2",
   "description": "A Material Design theme for MkDocs",
   "keywords": [
     "mkdocs",
@@ -75,8 +75,8 @@
     "promise-polyfill": "^8.1.3",
     "sass-loader": "^7.3.1",
     "style-loader": "^1.1.3",
-    "stylelint": "^12.0.1",
-    "stylelint-config-standard": "^19.0.0",
+    "stylelint": "^13.1.0",
+    "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
     "stylelint-scss": "^3.14.2",
     "uglifyjs-3-webpack-plugin": "^1.2.4",

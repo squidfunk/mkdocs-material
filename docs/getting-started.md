@@ -356,31 +356,32 @@ translations for all template variables and labels in the following languages:
       <td><code>fa</code> / Persian</td>
       <td><code>pl</code> / Polish</td>
       <td><code>pt</code> / Portugese</td>
-      <td><code>ru</code> / Russian</td>
+      <td><code>ro</code> / Romanian</td>
     </tr>
     <tr>
+      <td><code>ru</code> / Russian</td>
       <td><code>sr</code> / Serbian</td>
       <td><code>sh</code> / Serbo-Croatian</td>
       <td><code>sk</code> / Slovak</td>
-      <td><code>si</code> / Slovenian</td>
     </tr>
     <tr>
+      <td><code>si</code> / Slovenian</td>
       <td><code>es</code> / Spanish</td>
       <td><code>sv</code> / Swedish</td>
       <td><code>th</code> / Thai</td>
+    </tr>
       <td><code>tr</code> / Turkish</td>
-    </tr>
       <td><code>uk</code> / Ukrainian</td>
-      <td><code>vi</code> / Vietnamese</td>
+      <td colspan="2"><code>vi</code> / Vietnamese</td>
+    <tr>
+    </tr>
+    <tr>
       <td colspan="2"><code>zh</code> / Chinese (Simplified)</td>
-    <tr>
-    </tr>
-    <tr>
       <td colspan="2"><code>zh-Hant</code> / Chinese (Traditional)</td>
-      <td colspan="2"><code>zh-TW</code> / Chinese (Taiwanese)</td>
     </tr>
     <tr>
-      <td colspan="4" align="right">
+      <td colspan="2"><code>zh-TW</code> / Chinese (Taiwanese)</td>
+      <td colspan="2" align="right">
         <a href="https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.md">Submit a new language</a>
       </td>
     </tr>
