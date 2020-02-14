@@ -52,20 +52,6 @@ export interface Viewport {
 }
 
 /* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * Observable for window scroll events
- */
-const scroll$ = fromEvent<UIEvent>(window, "scroll")
-
-/**
- * Observable for window resize events
- */
-const resize$ = fromEvent<UIEvent>(window, "resize")
-
-/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -101,7 +87,10 @@ export function getViewportSize(): ViewportSize {
  * @return Viewport offset observable
  */
 export function watchViewportOffset(): Observable<ViewportOffset> {
-  return merge(scroll$, resize$)
+  return merge(
+    fromEvent<UIEvent>(window, "scroll"),
+    fromEvent<UIEvent>(window, "resize")
+  )
     .pipe(
       map(getViewportOffset),
       startWith(getViewportOffset())
@@ -114,7 +103,7 @@ export function watchViewportOffset(): Observable<ViewportOffset> {
  * @return Viewport size observable
  */
 export function watchViewportSize(): Observable<ViewportSize> {
-  return resize$
+  return fromEvent<UIEvent>(window, "resize")
     .pipe(
       map(getViewportSize),
       startWith(getViewportSize())

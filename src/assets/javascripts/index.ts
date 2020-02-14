@@ -26,7 +26,6 @@
 import "../stylesheets/app.scss"
 import "../stylesheets/app-palette.scss"
 
-import * as Clipboard from "clipboard"
 import { identity, values } from "ramda"
 import {
   EMPTY,
@@ -44,7 +43,6 @@ import {
 
 import {
   mountHero,
-  mountTableOfContents,
   mountTabs,
 } from "./components"
 import {
@@ -61,8 +59,7 @@ import {
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 import { renderSource } from "templates"
-import { renderClipboard } from "templates/clipboard"
-import { fetchGitHubStats } from "modules/source/github"
+import { fetchGitHubStats } from "integrations/source/github"
 import { renderTable } from "templates/table"
 import { setToggle } from "actions"
 import {
@@ -71,9 +68,12 @@ import {
   mountMain,
   mountNavigation,
   mountSearch,
+  mountTableOfContents,
   useComponent,
   watchComponentMap
 } from "components2"
+import { mountClipboard } from "./integrations/clipboard"
+import { patchTables } from "patches/table"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -212,10 +212,10 @@ export function initialize(config: unknown) {
   // pass config here!?
   const document$ = watchDocument()
   const hash$ = watchLocationHash()
+  const keyboard$ = watchKeyboard()
   const viewport$ = watchViewport()
   const tablet$ = watchMedia("(min-width: 960px)")
   const screen$ = watchMedia("(min-width: 1220px)")
-  const keyboard$ = watchKeyboard()
 
   /* ----------------------------------------------------------------------- */
 
@@ -285,16 +285,16 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
+  // patches... table, details, pre, ...
+
   /* Open details before printing */
   merge(
     watchMedia("print").pipe(filter(identity)), // Webkit
-    fromEvent(window, "beforeprint") // IE, FF
+    fromEvent(window, "beforeprint")            // IE, FF
   )
     .subscribe(() => {
-      const details = getElements("details")
-      Array.prototype.forEach.call(details, detail => {
+      for (const detail of getElements("details"))
         detail.setAttribute("open", "")
-      })
     })
 
   // Close drawer and search on hash change
@@ -311,25 +311,10 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  /* Clipboard.js integration */
-  if (Clipboard.isSupported()) {
-    const blocks = getElements("pre > code")
-    for (const [index, block] of blocks.entries()) {
-      const parent = block.parentElement!
-      parent.id = `__code_${index}`
-      parent.insertBefore(renderClipboard(parent.id), block)
-    }
+  // watchClipboard
 
-    /* Initialize Clipboard listener */
-    const copy = new Clipboard(".md-clipboard") // create observable...
-
-    /* Success handler */
-    // copy.on("success", action => {
-    //   alert("Copied to clipboard") // TODO: integrate snackbar
-    //   // TODO: add a snackbar/notification
-
-    // })
-  }
+  mountClipboard({ document$ })
+    .subscribe(console.log)
 
   // TODO: WIP repo rendering
   repository().subscribe(facts => {
@@ -344,15 +329,18 @@ export function initialize(config: unknown) {
     }
   })
 
-  /* Wrap all data tables for better overflow scrolling */
-  const tables = getElements<HTMLTableElement>("table:not([class])")
-  const placeholder = document.createElement("table")
-  tables.forEach(table => {
-    table.replaceWith(placeholder)
-    placeholder.replaceWith(renderTable(table))
-  })
+  // TODO: this is just a re-rendering patch...
+  // patchTables({ document$ })
+  //   .subscribe(console.log)
 
-  // search lock
+  // /* Wrap all data tables for better overflow scrolling */
+  // const placeholder = document.createElement("table")
+  // for (const table of getElements<HTMLTableElement>("table:not([class])")) {
+  //   table.replaceWith(placeholder)
+  //   placeholder.replaceWith(renderTable(table))
+  // }
+
+  // accidentally triggers on resize
   let lastOffset = 0
   tablet$.pipe(
     switchMap(active => {

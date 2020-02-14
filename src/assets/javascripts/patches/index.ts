@@ -20,4 +20,4 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./search"
+export * from "./table"

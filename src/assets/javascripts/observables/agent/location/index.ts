@@ -24,20 +24,6 @@ import { Observable, Subject, fromEvent } from "rxjs"
 import { filter, map, share } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * Observable for window hash change events
- */
-const hashchange$ = fromEvent<HashChangeEvent>(window, "hashchange")
-
-/**
- * Observable for window pop state events
- */
-const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
-
-/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -48,7 +34,7 @@ const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
  */
 export function watchLocation(): Subject<string> {
   const location$ = new Subject<string>()
-  popstate$
+  fromEvent<PopStateEvent>(window, "popstate")
     .pipe(
       map(() => location.href),
       share()
@@ -65,7 +51,7 @@ export function watchLocation(): Subject<string> {
  * @return Location hash observable
  */
 export function watchLocationHash(): Observable<string> {
-  return hashchange$
+  return fromEvent<HashChangeEvent>(window, "hashchange")
     .pipe(
       map(() => location.hash),
       filter(hash => hash.length > 0),

@@ -20,22 +20,47 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent } from "rxjs"
-import { mapTo, shareReplay } from "rxjs/operators"
+import { Observable } from "rxjs"
+import { map, shareReplay, tap } from "rxjs/operators"
+
+import { getElements } from "observables"
+import { renderTable } from "templates"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Mount options
+ */
+interface MountOptions {
+  document$: Observable<Document>      /* Document observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch document
+ * Patch all `table` elements
  *
- * @return Document observable
+ * @param options - Options
+ *
+ * @return Table elements observable
  */
-export function watchDocument(): Observable<Document> {
-  return fromEvent(document, "DOMContentLoaded")
+export function patchTables(
+  { document$ }: MountOptions
+): Observable<HTMLTableElement[]> {
+  return document$
     .pipe(
-      mapTo(document),
+      map(() => getElements<HTMLTableElement>("table:not([class])")),
+      tap(els => {
+        const placeholder = document.createElement("table")
+        for (const el of els) {
+          el.replaceWith(placeholder)
+          placeholder.replaceWith(renderTable(el))
+        }
+      }),
       shareReplay(1)
     )
 }

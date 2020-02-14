@@ -20,7 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-declare module "expose-loader?lunr!lunr" {
-  import * as lunr from "lunr"
-  export = lunr
+import * as lunr from "lunr"
+
+declare global {
+  const lunr: typeof lunr
 }

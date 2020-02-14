@@ -20,8 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import * as lunr from "expose-loader?lunr!lunr"
-
 import {
   ArticleDocument,
   SearchDocumentMap,

@@ -20,19 +20,22 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent } from "rxjs"
-import { filter, map, share } from "rxjs/operators"
+import * as ClipboardJS from "clipboard"
+import { NEVER, Observable, fromEventPattern } from "rxjs"
+import { shareReplay, switchMap, tap } from "rxjs/operators"
+
+import { getElements } from "observables"
+import { renderClipboard } from "templates"
 
 /* ----------------------------------------------------------------------------
- * Types
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Key
+ * Mount options
  */
-export interface Key {
-  type: string                         /* Key type */
-  claim(): void                        /* Key claim */
+interface MountOptions {
+  document$: Observable<Document>      /* Document observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -40,45 +43,42 @@ export interface Key {
  * ------------------------------------------------------------------------- */
 
 /**
- * Check whether an element may receive keyboard input
+ * Mount clipboard
  *
- * @param el - Element
+ * This function implements the Clipboard.js integration and injects a button
+ * into all code blocks when the document changes.
  *
- * @return Test result
+ * @param options - Options
+ *
+ * @return Clipboard observable
  */
-export function mayReceiveKeyboardEvents(el: HTMLElement) {
-  switch (el.tagName) {
+export function mountClipboard(
+  { document$ }: MountOptions
+): Observable<ClipboardJS.Event> {
+  if (ClipboardJS.isSupported()) {
+    return document$
+      .pipe(
 
-    /* Form elements */
-    case "INPUT":
-    case "SELECT":
-    case "TEXTAREA":
-      return true
+        /* Inject 'copy-to-clipboard' buttons */
+        tap(() => {
+          const blocks = getElements("pre > code")
+          for (const [index, block] of blocks.entries()) {
+            const parent = block.parentElement!
+            parent.id = `__code_${index}`
+            parent.insertBefore(renderClipboard(parent.id), block)
+          }
+        }),
 
-    /* Everything else */
-    default:
-      return el.isContentEditable
+        /* Initialize and mount clipboard */
+        switchMap(() => {
+          return fromEventPattern<ClipboardJS.Event>(next => {
+            const clipboard = new ClipboardJS(".md-clipboard")
+            clipboard.on("success", next)
+          })
+        }),
+        shareReplay(1)
+      )
+  } else {
+    return NEVER
   }
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Watch keyboard
- *
- * @return Keyboard observable
- */
-export function watchKeyboard(): Observable<Key> {
-  return fromEvent<KeyboardEvent>(window, "keydown")
-    .pipe(
-      filter(ev => !(ev.shiftKey || ev.metaKey || ev.ctrlKey)),
-      map(ev => ({
-        type: ev.key,
-        claim() {
-          ev.preventDefault()
-          ev.stopPropagation()
-        }
-      })),
-      share()
-    )
 }
