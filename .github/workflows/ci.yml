@@ -93,9 +93,7 @@ jobs:
             ${{ runner.os }}-pip-
 
       - if: steps.cache-python.outputs.cache-hit != 'true'
-        run: |
-          pip install -r requirements.txt
-          pip install mkdocs-minify-plugin>=0.2
+        run: pip install -r requirements.txt
 
       # Set configuration for repository and deploy documentation
       - env:
@@ -108,8 +106,10 @@ jobs:
           git config --global user.email "${GH_EMAIL}"
           git remote set-url origin ${REMOTE}
 
-      # Install theme
-      - run: python setup.py install
+      # Install theme and dependencies
+      - run: |
+          python setup.py install
+          pip install mkdocs-minify-plugin>=0.2
 
       # Build documentation
       - env:
