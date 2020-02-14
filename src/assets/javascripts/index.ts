@@ -80,9 +80,7 @@ import { mountClipboard } from "./integrations/clipboard"
 import { patchTables, patchDetails } from "patches"
 import { takeIf, not, isConfig } from "utilities"
 
-/* ----------------------------------------------------------------------------
- * TODO: where do we put this stuff?
- * ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
 
 document.documentElement.classList.remove("no-js")
 document.documentElement.classList.add("js")
@@ -91,25 +89,7 @@ document.documentElement.classList.add("js")
 if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
   document.documentElement.classList.add("ios")
 
-// add to config? default components to mount...?
-const names: Component[] = [
-  "container",                       /* Container */
-  "header",                          /* Header */
-  "header-title",                    /* Header title */
-  "hero",                            /* Hero */
-  "main",                            /* Main area */
-  "navigation",                      /* Navigation */
-  "search",                          /* Search */
-  "search-query",                    /* Search input */
-  "search-reset",                    /* Search reset */
-  "search-result",                   /* Search results */
-  "tabs",                            /* Tabs */
-  "toc"                              /* Table of contents */
-]
-
-/* ----------------------------------------------------------------------------
- * Helper functions
- * ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
 
 /**
  * Yes, this is a super hacky implementation. Needs clean up.
@@ -191,8 +171,30 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  watchComponentMap(names, { document$ })
-  watchToggleMap(["drawer", "search"], { document$ })
+  const worker = setupSearchWorker(config.worker.search, {
+    base: config.base
+  })
+
+  /* ----------------------------------------------------------------------- */
+
+  watchToggleMap([
+    "drawer",                          /* Toggle for drawer */
+    "search"                           /* Toggle for search */
+  ], { document$ })
+  watchComponentMap([
+    "container",                       /* Container */
+    "header",                          /* Header */
+    "header-title",                    /* Header title */
+    "hero",                            /* Hero */
+    "main",                            /* Main area */
+    "navigation",                      /* Navigation */
+    "search",                          /* Search */
+    "search-query",                    /* Search input */
+    "search-reset",                    /* Search reset */
+    "search-result",                   /* Search results */
+    "tabs",                            /* Tabs */
+    "toc"                              /* Table of contents */
+  ], { document$ })
 
   /* Create header observable */
   const header$ = useComponent("header")
@@ -207,16 +209,10 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  const sw = setupSearchWorker(config.worker.search, {
-    base: config.base
-  })
-
   const search$ = useComponent("search")
     .pipe(
-      mountSearch(sw, { viewport$, keyboard$ }),
+      mountSearch(worker, { viewport$, keyboard$ }),
     )
-
-  /* ----------------------------------------------------------------------- */
 
   const navigation$ = useComponent("navigation")
     .pipe(

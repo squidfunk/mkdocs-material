@@ -71,7 +71,7 @@ export function mayReceiveKeyboardEvents(el: HTMLElement) {
 export function watchKeyboard(): Observable<Key> {
   return fromEvent<KeyboardEvent>(window, "keydown")
     .pipe(
-      filter(ev => !(ev.shiftKey || ev.metaKey || ev.ctrlKey)),
+      filter(ev => !(ev.metaKey || ev.ctrlKey)),
       map(ev => ({
         type: ev.key,
         claim() {
