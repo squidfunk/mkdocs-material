@@ -31,7 +31,7 @@
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0-preview">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0dev0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -43,7 +43,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.4cba2899.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.82c13014.min.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.8c25017f.min.css' | url }}">
       {% endif %}
@@ -190,7 +190,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.299219a4.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.419ace03.min.js' | url }}"></script>
       <script id="__lang" type="application/json">
         {%- set translations = {} -%}
         {%- for key in [
@@ -209,7 +209,7 @@
         {%- endfor -%}
         {{ translations | tojson }}
       </script>
-      <script>app=initialize({base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.ce66ce8d.min.js' | url }}",packer:"{{ 'assets/javascripts/worker/packer.c14659e8.min.js' | url }}"}})</script>
+      <script>app=initialize({base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.07456dbc.min.js' | url }}",packer:"{{ 'assets/javascripts/worker/packer.c14659e8.min.js' | url }}"}})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
