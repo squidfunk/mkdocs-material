@@ -20,8 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
-import { map, shareReplay } from "rxjs/operators"
+import {
+  Observable,
+  OperatorFunction,
+  combineLatest,
+  of,
+  pipe
+} from "rxjs"
+import { map, shareReplay, switchMap } from "rxjs/operators"
 
 import {
   AnchorList,
@@ -35,32 +41,45 @@ import {
   watchAnchorList,
   watchSidebar
 } from "observables"
-import { switchMapIf } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Table of contents state
+ * Table of contents below tablet breakpoint
  */
-export interface TableOfContentsState {
-  sidebar: Sidebar                     /* Sidebar state */
+export interface TableOfContentsBelowTablet {} // tslint:disable-line
+
+/**
+ * Table of contents above tablet breakpoint
+ */
+export interface TableOfContentsAboveTablet {
+  sidebar: Sidebar                     /* Sidebar */
   anchors: AnchorList                  /* Anchor list */
 }
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Table of contents
+ */
+export type TableOfContents =
+  | TableOfContentsBelowTablet
+  | TableOfContentsAboveTablet
 
 /* ----------------------------------------------------------------------------
  * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Options
+ * Mount options
  */
-interface Options {
+interface MountOptions {
   header$: Observable<Header>          /* Header observable */
   main$: Observable<Main>              /* Main area observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
-  tablet$: Observable<boolean>         /* Media tablet observable */
+  tablet$: Observable<boolean>         /* Tablet media observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -68,53 +87,49 @@ interface Options {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch table of contents
- *
- * @param el - Table of contents element
- * @param agent - Agent
- * @param options - Options
- *
- * @return Table of contents state observable
- */
-export function watchTableOfContents(
-  el: HTMLElement, { header$, main$, viewport$ }: Options
-): Observable<TableOfContentsState> {
-
-  /* Watch and paint sidebar */
-  const sidebar$ = watchSidebar(el, { main$, viewport$ })
-    .pipe(
-      paintSidebar(el)
-    )
-
-  /* Watch and paint anchor list (scroll spy) */
-  const els = getElements<HTMLAnchorElement>(".md-nav__link", el)
-  const anchors$ = watchAnchorList(els, { header$, viewport$ })
-    .pipe(
-      paintAnchorList(els)
-    )
-
-  /* Combine into a single hot observable */
-  return combineLatest([sidebar$, anchors$])
-    .pipe(
-      map(([sidebar, anchors]) => ({ sidebar, anchors }))
-    )
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
  * Mount table of contents from source observable
  *
- * @param agent - Agent
  * @param options - Options
  *
  * @return Operator function
  */
 export function mountTableOfContents(
-  options: Options
-): OperatorFunction<HTMLElement, TableOfContentsState> {
+  { header$, main$, viewport$, tablet$}: MountOptions
+): OperatorFunction<HTMLElement, TableOfContents> {
   return pipe(
-    switchMapIf(options.tablet$, el => watchTableOfContents(el, options)),
+    switchMap(el => tablet$
+      .pipe(
+        switchMap(tablet => {
+
+          /* Mount table of contents above tablet breakpoint */
+          if (tablet) {
+            const els = getElements<HTMLAnchorElement>(".md-nav__link", el)
+
+            /* Watch and paint sidebar */
+            const sidebar$ = watchSidebar(el, { main$, viewport$ })
+              .pipe(
+                paintSidebar(el)
+              )
+
+            /* Watch and paint anchor list (scroll spy) */
+            const anchors$ = watchAnchorList(els, { header$, viewport$ })
+              .pipe(
+                paintAnchorList(els)
+              )
+
+            /* Combine into a single hot observable */
+            return combineLatest([sidebar$, anchors$])
+              .pipe(
+                map(([sidebar, anchors]) => ({ sidebar, anchors }))
+              )
+
+          /* Mount table of contents below tablet breakpoint */
+          } else {
+            return of({})
+          }
+        })
+      )
+    ),
     shareReplay(1)
   )
 }

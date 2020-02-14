@@ -40,17 +40,17 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Navigation for breakpoint below screen
+ * Navigation below screen breakpoint
  */
 export interface NavigationBelowScreen {
-  layer: NavigationLayer               /* Navigation layer */
+  layer: NavigationLayer               /* Active layer */
 }
 
 /**
- * Navigation for breakpoint above screen
+ * Navigation above screen breakpoint
  */
 export interface NavigationAboveScreen {
-  sidebar: Sidebar                     /* Navigation sidebar */
+  sidebar: Sidebar                     /* Sidebar */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -71,7 +71,7 @@ export type Navigation =
  */
 interface MountOptions {
   main$: Observable<Main>              /* Main area observable */
-  viewport$: Observable<Viewport>      /* Viewport offset observable */
+  viewport$: Observable<Viewport>      /* Viewport observable */
   screen$: Observable<boolean>         /* Screen media observable */
 }
 
@@ -87,22 +87,22 @@ interface MountOptions {
  * @return Operator function
  */
 export function mountNavigation(
-  options: MountOptions
+  { main$, viewport$, screen$ }: MountOptions
 ): OperatorFunction<HTMLElement, Navigation> {
   return pipe(
-    switchMap(el => options.screen$
+    switchMap(el => screen$
       .pipe(
         switchMap(screen => {
 
-          /* Mount sidebar for screen and above */
+          /* Mount navigation above screen breakpoint */
           if (screen) {
-            return watchSidebar(el, options)
+            return watchSidebar(el, { main$, viewport$ })
               .pipe(
                 paintSidebar(el),
                 map(sidebar => ({ sidebar }))
               )
 
-          /* Mount navigation layer otherwise */
+          /* Mount navigation below screen breakpoint */
           } else {
             const els = getElements("nav", el)
             return watchNavigationLayer(els)
