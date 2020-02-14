@@ -24,7 +24,7 @@
     "paths": {
       "actions": ["actions"],
       "components": ["components"],
-      "integrations": ["integrations"],
+      "integrations/*": ["integrations/*"],
       "observables": ["observables"],
       "patches": ["patches"],
       "templates": ["templates"],

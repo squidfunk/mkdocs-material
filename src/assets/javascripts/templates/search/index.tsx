@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchResult } from "integrations"
+import { SearchResult } from "integrations/search"
 import { h, truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------

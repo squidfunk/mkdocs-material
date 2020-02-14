@@ -33,7 +33,7 @@ import {
 } from "rxjs/operators"
 
 import { setToggle } from "actions"
-import { SearchResult } from "integrations"
+import { SearchResult } from "integrations/search"
 import {
   Key,
   SearchQuery,
