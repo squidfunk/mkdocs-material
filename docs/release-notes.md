@@ -64,6 +64,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 4.6.3 <small>_ February 14, 2020</small>
+
+* Removed optional third-party plugins from `requirements.txt`
+* Updated Docker image to contain all supported third-party plugins
+
 ### 4.6.2 <small>_ February 8, 2020</small>
 
 * Added Romanian translations
