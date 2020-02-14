@@ -93,7 +93,9 @@ jobs:
             ${{ runner.os }}-pip-
 
       - if: steps.cache-python.outputs.cache-hit != 'true'
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          pip install mkdocs-minify-plugin>=0.2
 
       # Set configuration for repository and deploy documentation
       - env:
