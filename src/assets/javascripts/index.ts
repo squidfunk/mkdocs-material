@@ -39,10 +39,12 @@ import {
   switchMap,
   tap,
   skip,
+  filter,
   take,
   bufferCount,
   startWith,
-  pluck
+  pluck,
+  withLatestFrom
 } from "rxjs/operators"
 
 import {
@@ -56,7 +58,9 @@ import {
   watchKeyboard,
   watchToggleMap,
   useToggle,
-  setViewportOffset
+  setViewportOffset,
+  watchViewportFrom,
+  getElementOrThrow
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 import { renderSource } from "templates"
@@ -229,8 +233,25 @@ export function initialize(config: unknown) {
 
   const hero$ = useComponent("hero")
     .pipe(
-      mountHero({ header$, viewport$, screen$ })
+      mountHero({ header$, viewport$ })
     )
+
+  /* Create header title toggle */
+  useComponent("main")
+    .pipe(
+      map(el => getElementOrThrow("h1", el)), // catch error? just ignore?
+      switchMap(el => {
+        return watchViewportFrom(el, { header$, viewport$ })
+          .pipe(
+            map(({ offset: { y } }) => y >= el.offsetHeight),
+            withLatestFrom(useComponent("header-title")),
+            tap(([active, title]) => {
+              title.dataset.mdState = active ? "active" : ""
+            })
+          )
+      })
+    )
+      .subscribe(console.log)
 
   /* ----------------------------------------------------------------------- */
 
