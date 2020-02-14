@@ -89,6 +89,12 @@ export interface SearchResult {
  * Class
  * ------------------------------------------------------------------------- */
 
+/**
+ * Search index
+ *
+ * Note that `lunr` is injected via Webpack, as it will otherwise also be
+ * bundled in the application bundle.
+ */
 export class SearchIndex {
 
   /**

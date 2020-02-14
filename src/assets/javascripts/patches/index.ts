@@ -20,4 +20,5 @@
  * IN THE SOFTWARE.
  */
 
+export * from "./details"
 export * from "./table"

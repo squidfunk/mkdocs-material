@@ -73,7 +73,7 @@ import {
   watchComponentMap
 } from "components2"
 import { mountClipboard } from "./integrations/clipboard"
-import { patchTables } from "patches/table"
+import { patchTables, patchDetails } from "patches"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -268,6 +268,9 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
+  // TODO: general keyboard handler...
+  // put into main!?
+
   //   search$
   //     .pipe(
   //       filter(not),
@@ -330,8 +333,11 @@ export function initialize(config: unknown) {
   })
 
   // TODO: this is just a re-rendering patch...
-  // patchTables({ document$ })
-  //   .subscribe(console.log)
+  patchTables({ document$ })
+    .subscribe(console.log)
+
+  patchDetails({ document$ })
+    .subscribe(console.log)
 
   // /* Wrap all data tables for better overflow scrolling */
   // const placeholder = document.createElement("table")

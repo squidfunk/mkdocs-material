@@ -20,11 +20,17 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
-import { map, shareReplay, tap } from "rxjs/operators"
+import { identity } from "ramda"
+import { Observable, fromEvent, merge } from "rxjs"
+import {
+  filter,
+  map,
+  shareReplay,
+  switchMapTo,
+  tap
+} from "rxjs/operators"
 
-import { getElements } from "observables"
-import { renderTable } from "templates"
+import { getElements, watchMedia } from "observables"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -42,24 +48,25 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Patch all `table` elements
+ * Patch all `details` elements
  *
  * @param options - Options
  *
- * @return Table elements observable
+ * @return Details elements observable
  */
-export function patchTables(
+export function patchDetails(
   { document$ }: MountOptions
-): Observable<HTMLTableElement[]> {
-  const placeholder = document.createElement("table")
-  return document$
+): Observable<HTMLDetailsElement[]> {
+  return merge(
+    watchMedia("print").pipe(filter(identity)), // Webkit
+    fromEvent(window, "beforeprint")            // IE, FF
+  )
     .pipe(
-      map(() => getElements<HTMLTableElement>("table:not([class])")),
+      switchMapTo(document$),
+      map(() => getElements<HTMLDetailsElement>("details")),
       tap(els => {
-        for (const el of els) {
-          el.replaceWith(placeholder)
-          placeholder.replaceWith(renderTable(el))
-        }
+        for (const detail of els)
+          detail.setAttribute("open", "")
       }),
       shareReplay(1)
     )
