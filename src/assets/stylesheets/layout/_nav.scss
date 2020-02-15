@@ -471,8 +471,9 @@
     // property must be calculated before transitioning
     transition: max-height 0.25s cubic-bezier(0.86, 0, 0.07, 1);
 
-    // Snap to title
-    .md-nav__title--site {
+    // Snap to site and table of contents title
+    .md-nav__title[for="__drawer"],
+    .md-nav__title[for="__toc"] {
       scroll-snap-align: start;
     }
 
