@@ -77,7 +77,7 @@ export function mountTabs(
           if (screen) {
             return watchViewportFrom(el, { header$, viewport$ })
               .pipe(
-                paintHideable(el, 20),
+                paintHideable(el, 10),
                 map(hidden => ({ hidden }))
               )
 

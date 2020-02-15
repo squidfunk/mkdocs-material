@@ -46,8 +46,8 @@ export interface ViewportOffset {
  */
 export function getViewportOffset(): ViewportOffset {
   return {
-    x: pageXOffset,
-    y: pageYOffset
+    x: Math.max(0, pageXOffset),
+    y: Math.max(0, pageYOffset)
   }
 }
 
