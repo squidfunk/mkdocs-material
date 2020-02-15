@@ -52,7 +52,10 @@ export function watchHeader(
   el: HTMLElement
 ): Observable<Header> {
   const styles = getComputedStyle(el)
-  const sticky = styles.position === "sticky"
+  const sticky = [
+    "sticky",                          /* Modern browsers */
+    "-webkit-sticky"                   /* Old Safari */
+  ].includes(styles.position)
   return of({
     sticky,
     height: sticky ? el.offsetHeight : 0
