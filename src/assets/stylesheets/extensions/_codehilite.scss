@@ -248,8 +248,8 @@ $codehilite-whitespace: transparent;
     // Disable user selection, so code can be easily copied without
     // accidentally also copying the line numbers
     .linenos {
-      background-color: $md-color-black--lightest;
       color: $md-color-black--lighter;
+      box-shadow: inset 0 0 0 px2rem(1px) $md-code-background;
       user-select: none;
 
       // Reset spacings

@@ -234,6 +234,7 @@ kbd {
       box-shadow: none;
       box-decoration-break: slice;
       overflow: auto;
+      word-break: normal;
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {
