@@ -421,6 +421,7 @@ $md-toggle__search--checked:
     background-color: $md-color-white;
     box-shadow: 0 px2rem(1px) 0 $md-color-black--lightest inset;
     overflow-y: auto;
+    scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
 
     // Mitigiate excessive repaints on non-retina devices
@@ -478,6 +479,7 @@ $md-toggle__search--checked:
     color: $md-color-black--light;
     font-size: ms(-1);
     line-height: px2rem(36px);
+    scroll-snap-align: start;
 
     // [tablet landscape +]: Increase left indent
     @include break-from-device(tablet landscape) {
@@ -510,6 +512,7 @@ $md-toggle__search--checked:
     transition: background 0.25s;
     outline: 0;
     overflow: hidden;
+    scroll-snap-align: start;
 
     // Focused or hovered link
     &:focus,
