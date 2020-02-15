@@ -39,7 +39,7 @@
   <!-- Render item list -->
   {% if toc_ | first is defined %}
     <label class="md-nav__title" for="__toc">{{ lang.t("toc.title") }}</label>
-    <ul class="md-nav__list">
+    <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc_ %}
         {% include "partials/toc-item.html" %}
       {% endfor %}

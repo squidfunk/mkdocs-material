@@ -26,12 +26,13 @@
 import "../stylesheets/app.scss"
 import "../stylesheets/app-palette.scss"
 
-import { values } from "ramda"
+import { values, identity } from "ramda"
 import {
   EMPTY,
   merge,
   of,
-  NEVER
+  NEVER,
+  combineLatest
 } from "rxjs"
 import {
   delay,
@@ -53,6 +54,7 @@ import {
   getElements,
   watchMedia,
   watchDocument,
+  watchLocation,
   watchLocationHash,
   watchViewport,
   watchKeyboard,
@@ -98,7 +100,7 @@ if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
  */
 function repository() {
   const el = getElement<HTMLAnchorElement>(".md-source[href]") // TODO: dont use classes
-  console.log(el)
+  // console.log(el)
   if (!el)
     return EMPTY
 
@@ -165,6 +167,7 @@ export function initialize(config: unknown) {
 
   // pass config here!?
   const document$ = watchDocument()
+  const location$ = watchLocation()
   const hash$ = watchLocationHash()
   const keyboard$ = watchKeyboard()
   const viewport$ = watchViewport()
@@ -251,7 +254,9 @@ export function initialize(config: unknown) {
           )
       })
     )
-      .subscribe(console.log)
+      .subscribe()
+
+  // paintHeaderTitle <- same with shadow...
 
   /* ----------------------------------------------------------------------- */
 
@@ -274,23 +279,39 @@ export function initialize(config: unknown) {
   /* ----------------------------------------------------------------------- */
 
   // Close drawer and search on hash change
-  hash$.subscribe(() => {
+  hash$.subscribe(x => {
 
     useToggle("drawer").subscribe(el => {
       setToggle(el, false)
     })
-
-    useToggle("search").subscribe(el => { // omit nested subscribes...
-      setToggle(el, false)
-    })
   })
+
+  // TODO:
+  hash$
+    .pipe(
+      switchMap(hash => {
+
+        return useToggle("search")
+          .pipe(
+            filter(x => x.checked), // only active
+            tap(toggle => setToggle(toggle, false)),
+            delay(125), // ensure that it runs after the body scroll reset...
+            tap(() => {
+              location.hash = " "
+              location.hash = hash
+            }) // encapsulate this...
+          )
+
+      })
+    )
+      .subscribe()
 
   /* ----------------------------------------------------------------------- */
 
   // watchClipboard
 
   mountClipboard({ document$ })
-    .subscribe(console.log)
+    .subscribe()
 
   // TODO: WIP repo rendering
   repository().subscribe(facts => {
@@ -306,68 +327,65 @@ export function initialize(config: unknown) {
   })
 
   patchTables({ document$ })
-    .subscribe(console.log)
+    .subscribe()
 
   patchDetails({ document$ })
-    .subscribe(console.log)
+    .subscribe()
 
-  // // TODO: must be reset when tablet/toggle is left
-  // const toggle$ = useToggle("search")
-  // toggle$
-  //   .pipe(
-  //     switchMap(watchToggle),
-  //     skip(1),
-  //     switchMap(toggle => viewport$
-  //       .pipe(
-  //         take(1),
-  //         pluck("offset"),
-  //         delay(toggle ? 400 : 100)
-  //       )
-  //     ),
-  //     startWith({ x: 0, y: 0 }),
-  //     bufferCount(2, 1),
-  //     takeIf(not(tablet$)), // TODO: wrong position
-  //     map(([offset]) => offset)
-  //   )
-  //     .subscribe(offset => {
-  //       // TODO: this will also trigger if we started at the top.
-  //       document.body.dataset.mdState = offset.y ? "" :  "lock"             // TODO: refactor
-  //       setViewportOffset(offset)
-  //     })
+  // scroll lock
+  let scroll = 0
+  combineLatest([
+    useToggle("search")
+      .pipe(
+        switchMap(watchToggle)
+      ),
+    tablet$,
+  ]).pipe(
+      tap(([toggle, tablet]) => {
+        if (toggle && !tablet) {
+          scroll = scrollY
+          setTimeout(() => {
+            requestAnimationFrame(() => {
+              document.body.style.position = 'fixed';
+              document.body.style.top = `-${scroll}px`;
+              // data.mdState = lock
+            })
+          }, 400)
+        } else {
 
-  // accidentally triggers on resize
-  // let lastOffset = 0
-  // tablet$.pipe(
-  //   switchMap(active => {
-  //     return !active ? watchToggle(search) : NEVER
-  //   }),
-  //   switchMap(toggle => {
-  //     if (toggle) {
-  //       console.log("ACTIVE")
-  //       return of(document.body)
-  //         .pipe(
-  //           tap(() => lastOffset = window.pageYOffset),
-  //           delay(400),
-  //           tap(() => {
-  //             window.scrollTo(0, 0),
-  //             console.log("scrolled... to top, locked body")
-  //             document.body.dataset.mdState = "lock"
-  //           })
-  //         )
-  //     } else {
-  //       console.log("INACTIVE")
-  //       return of(document.body)
-  //         .pipe(
-  //           tap(() => document.body.dataset.mdState = ""),
-  //           delay(100),
-  //           tap(() => {
-  //             window.scrollTo(0, lastOffset) // setViewportOffset !
-  //           })
-  //         )
-  //     }
-  //   })
-  // )
-  //   .subscribe(x => console.log("SEARCHLOCK", x))
+          /* Scroll to former position, but wait for 100ms to prevent flashes on
+             iOS. A short timeout seems to do the trick */
+          setTimeout(() => {
+            requestAnimationFrame(() => {
+              document.body.style.position = '';
+              document.body.style.top = '';
+              if (scroll)
+                window.scrollTo(0, scroll)
+            })
+          }, 100)
+        }
+      })
+    )
+      .subscribe()
+
+  /* Force 1px scroll offset to trigger overflow scrolling */
+  if (true || navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+    const scrollable = document.querySelectorAll("[data-md-scrollfix]")
+    Array.prototype.forEach.call(scrollable, item => {
+      item.addEventListener("touchstart", () => {
+        const top = item.scrollTop
+
+        /* We're at the top of the container */
+        if (top === 0) {
+          item.scrollTop = 1
+
+        /* We're at the bottom of the container */
+        } else if (top + item.offsetHeight === item.scrollHeight) {
+          item.scrollTop = top - 1
+        }
+      })
+    })
+  }
 
   /* ----------------------------------------------------------------------- */
 
