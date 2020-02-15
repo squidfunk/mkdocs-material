@@ -108,6 +108,7 @@
     text-overflow: ellipsis;
     cursor: pointer;
     overflow: hidden;
+    scroll-snap-align: start;
 
     // Icon
     &::after {
@@ -218,6 +219,8 @@
         ~ .md-nav__list {
           background-color: $md-color-white;
           box-shadow: 0 px2rem(1px) 0 $md-color-black--lightest inset;
+          overflow-y: auto;
+          scroll-snap-type: y mandatory;
 
           // Remove border for first list item
           & > .md-nav__item:first-child {
@@ -268,7 +271,6 @@
       // List of items
       .md-nav__list {
         flex: 1;
-        overflow-y: auto;
       }
 
       // List item
@@ -469,20 +471,19 @@
     // property must be calculated before transitioning
     transition: max-height 0.25s cubic-bezier(0.86, 0, 0.07, 1);
 
-    // Hide nested navigation by default
-    .md-nav__toggle ~ & {
-      max-height: 0;
-      overflow: hidden;
-
-      // Just hide links for accessibility if JavaScript is not available
-      .no-js & {
-        display: none;
-      }
+    // Snap to title
+    .md-nav__title--site {
+      scroll-snap-align: start;
     }
 
-    // Expand nested navigation, if toggle is checked
+    // Hide nested navigation by default
+    .md-nav__toggle ~ & {
+      display: none;
+    }
+
+    // Show nested navigation, if toggle is checked
     .md-nav__toggle:checked ~ & {
-      max-height: 100%;
+      display: block;
     }
 
     // Hide titles for nested navigation

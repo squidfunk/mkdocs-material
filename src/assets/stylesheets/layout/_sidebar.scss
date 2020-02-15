@@ -140,6 +140,7 @@ $md-toggle__drawer--checked:
     max-height: 100%;
     margin: 0 px2rem(4px);
     overflow-y: auto;
+    scroll-snap-type: y mandatory;
     // Hack: putting the scroll wrapper on the GPU massively reduces jitter
     // when locking the sidebars into place
     backface-visibility: hidden;
@@ -155,6 +156,7 @@ $md-toggle__drawer--checked:
         bottom: 0;
         left: 0;
         margin: 0;
+        scroll-snap-type: none;
       }
     }
 
