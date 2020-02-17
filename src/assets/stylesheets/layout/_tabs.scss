@@ -130,7 +130,7 @@
         }
 
         // Show 1st level navigation always expanded
-        .no-js & .md-nav {
+        .no-js & > .md-nav {
           display: block;
         }
 
