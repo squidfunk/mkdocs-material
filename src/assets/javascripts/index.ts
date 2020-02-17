@@ -32,7 +32,8 @@ import {
   merge,
   of,
   NEVER,
-  combineLatest
+  combineLatest,
+  animationFrameScheduler
 } from "rxjs"
 import {
   delay,
@@ -45,7 +46,8 @@ import {
   bufferCount,
   startWith,
   pluck,
-  withLatestFrom
+  withLatestFrom,
+  observeOn
 } from "rxjs/operators"
 
 import {
@@ -67,7 +69,7 @@ import {
 import { setupSearchWorker } from "./workers"
 import { renderSource } from "templates"
 import { fetchGitHubStats } from "integrations/source/github"
-import { setToggle } from "actions"
+import { setToggle, setScrollLock, resetScrollLock } from "actions"
 import {
   Component,
   mountHeader,
@@ -83,6 +85,7 @@ import {
 import { mountClipboard } from "./integrations/clipboard"
 import { patchTables, patchDetails } from "patches"
 import { takeIf, not, isConfig } from "utilities"
+import { setSearchLock } from "actions/search/_"
 
 /* ------------------------------------------------------------------------- */
 
@@ -306,6 +309,29 @@ export function initialize(config: unknown) {
     )
       .subscribe()
 
+  // scroll lock
+  const toggle$ = useToggle("search")
+  combineLatest([
+    toggle$.pipe(switchMap(watchToggle)),
+    tablet$,
+  ])
+    .pipe(
+      withLatestFrom(viewport$),
+      switchMap(([[toggle, tablet], { offset: { y }}]) => {
+        const active = toggle && !tablet
+        return of(document.body)
+          .pipe(
+            delay(active ? 400 : 100),
+            observeOn(animationFrameScheduler),
+            tap(el => active
+              ? setScrollLock(el, y)
+              : resetScrollLock(el)
+            )
+          )
+      })
+    )
+      .subscribe()
+
   /* ----------------------------------------------------------------------- */
 
   // watchClipboard
@@ -331,42 +357,6 @@ export function initialize(config: unknown) {
 
   patchDetails({ document$ })
     .subscribe()
-
-  // scroll lock
-  let scroll = 0
-  combineLatest([
-    useToggle("search")
-      .pipe(
-        switchMap(watchToggle)
-      ),
-    tablet$,
-  ]).pipe(
-      tap(([toggle, tablet]) => {
-        if (toggle && !tablet) {
-          scroll = scrollY
-          setTimeout(() => {
-            requestAnimationFrame(() => {
-              document.body.style.position = 'fixed';
-              document.body.style.top = `-${scroll}px`;
-              // data.mdState = lock
-            })
-          }, 400)
-        } else {
-
-          /* Scroll to former position, but wait for 100ms to prevent flashes on
-             iOS. A short timeout seems to do the trick */
-          setTimeout(() => {
-            requestAnimationFrame(() => {
-              document.body.style.position = '';
-              document.body.style.top = '';
-              if (scroll)
-                window.scrollTo(0, scroll)
-            })
-          }, 100)
-        }
-      })
-    )
-      .subscribe()
 
   /* Force 1px scroll offset to trigger overflow scrolling */
   if (true || navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
