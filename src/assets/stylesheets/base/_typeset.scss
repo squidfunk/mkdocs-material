@@ -464,7 +464,7 @@ kbd {
 
     // Table rows
     tr {
-      transition: background-color 0.125s;
+      transition: background-color 125ms;
 
       // Add background on hover
       &:hover {

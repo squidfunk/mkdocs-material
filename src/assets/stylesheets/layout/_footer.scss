@@ -98,7 +98,7 @@
   &__button {
     @extend %md-icon__button;
 
-    transition: background 0.25s;
+    transition: background 250ms;
   }
 
   // Link title - set line height to match icon for correct alignment
@@ -199,7 +199,7 @@
     // Social icon
     svg {
       width: px2rem(16px);
-      transition: fill 0.25s;
+      transition: fill 250ms;
       vertical-align: -25%;
       fill: $md-color-white--light;
     }

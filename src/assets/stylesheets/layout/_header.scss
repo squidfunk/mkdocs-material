@@ -50,9 +50,9 @@
   // Show and animate shadow
   &[data-md-state="shadow"] {
     transition:
-      background-color 0.25s,
-      color 0.25s,
-      box-shadow 0.25s;
+      background-color 250ms,
+      color            250ms,
+      box-shadow       250ms;
     box-shadow:
       0 0           px2rem(4px) rgba(0, 0, 0, 0.1),
       0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0.2);
@@ -73,7 +73,7 @@
     @extend %md-icon__button;
 
     position: relative;
-    transition: opacity 0.25s;
+    transition: opacity 250ms;
     z-index: 1;
 
     // Hovered icon

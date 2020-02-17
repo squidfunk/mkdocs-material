@@ -509,7 +509,7 @@ $md-toggle__search--checked:
   // Link inside item
   &__link {
     display: block;
-    transition: background 0.25s;
+    transition: background 250ms;
     outline: 0;
     overflow: hidden;
     scroll-snap-align: start;
@@ -558,7 +558,7 @@ $md-toggle__search--checked:
         position: absolute;
         left: 0;
         margin: px2rem(2px);
-        transition: opacity 0.25s;
+        transition: opacity 250ms;
         color: $md-color-black--light;
         content: "\E880"; // find_in_page
 
