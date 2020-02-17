@@ -111,7 +111,7 @@ export function watchNavigationLayer(
 /* ------------------------------------------------------------------------- */
 
 /**
- * Paint navigation layer from source observable
+ * Paint navigation layer
  *
  * @param els - Navigation elements
  *

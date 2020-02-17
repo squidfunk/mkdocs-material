@@ -38,7 +38,7 @@ import { Viewport } from "../../agent"
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint hideable from source observable
+ * Paint hideable
  *
  * @param el - Hideable element
  * @param offset - Additional offset

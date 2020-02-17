@@ -124,7 +124,7 @@ export function watchSidebar(
 /* ------------------------------------------------------------------------- */
 
 /**
- * Paint sidebar from source observable
+ * Paint sidebar
  *
  * @param el - Sidebar element
  *

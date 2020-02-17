@@ -65,7 +65,7 @@ interface PaintOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint search results from source observable
+ * Paint search results
  *
  * This function will perform a lazy rendering of the search results, depending
  * on the vertical offset of the search result container. When the scroll offset

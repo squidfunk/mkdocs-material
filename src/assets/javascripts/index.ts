@@ -26,12 +26,11 @@
 import "../stylesheets/app.scss"
 import "../stylesheets/app-palette.scss"
 
-import { values, identity } from "ramda"
+import { values } from "ramda"
 import {
   EMPTY,
   merge,
   of,
-  NEVER,
   combineLatest,
   animationFrameScheduler
 } from "rxjs"
@@ -40,12 +39,7 @@ import {
   map,
   switchMap,
   tap,
-  skip,
   filter,
-  take,
-  bufferCount,
-  startWith,
-  pluck,
   withLatestFrom,
   observeOn
 } from "rxjs/operators"
@@ -62,15 +56,14 @@ import {
   watchKeyboard,
   watchToggleMap,
   useToggle,
-  watchViewportAt,
-  getElementOrThrow
+  getActiveElement,
+  mayReceiveKeyboardEvents
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 import { renderSource } from "templates"
 import { fetchGitHubStats } from "integrations/source/github"
 import { setToggle, setScrollLock, resetScrollLock } from "actions"
 import {
-  Component,
   mountHeader,
   mountHero,
   mountMain,
@@ -83,9 +76,8 @@ import {
   mountHeaderTitle
 } from "components"
 import { mountClipboard } from "./integrations/clipboard"
-import { patchTables, patchDetails } from "patches"
+import { patchTables, patchDetails, patchScrollfix } from "patches"
 import { takeIf, not, isConfig } from "utilities"
-import { setSearchLock } from "actions/search/_"
 
 /* ------------------------------------------------------------------------- */
 
@@ -189,6 +181,7 @@ export function initialize(config: unknown) {
     "drawer",                          /* Toggle for drawer */
     "search"                           /* Toggle for search */
   ], { document$ })
+
   watchComponentMap([
     "container",                       /* Container */
     "header",                          /* Header */
@@ -250,21 +243,23 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
+  mountClipboard({ document$ })
+    .subscribe()
+
+  patchTables({ document$ })
+    .subscribe()
+
+  patchDetails({ document$ })
+    .subscribe()
+
+  /* Force 1px scroll offset to trigger overflow scrolling */
+  if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
+    patchScrollfix({ document$ })
+      .subscribe()
+
+
   // TODO: general keyboard handler...
   // put into main!?
-
-  //   search$
-  //     .pipe(
-  //       filter(not),
-  //       switchMapTo(keyboard$),
-  //       filter(key => ["s", "f"].includes(key.type)),
-  //       switchMapTo(toggle$)
-  //     )
-  //       .subscribe(toggle => {
-  //         const el = getActiveElement()
-  //         if (!(el && mayReceiveKeyboardEvents(el)))
-  //           setToggle(toggle, true)
-  //       })
 
   /* ----------------------------------------------------------------------- */
 
@@ -296,7 +291,7 @@ export function initialize(config: unknown) {
     )
       .subscribe()
 
-  // scroll lock
+  // Scroll lock
   const toggle$ = useToggle("search")
   combineLatest([
     toggle$.pipe(switchMap(watchToggle)),
@@ -319,12 +314,22 @@ export function initialize(config: unknown) {
     )
       .subscribe()
 
+  // General keyboard handlers
+  keyboard$
+    .pipe(
+      takeIf(not(toggle$.pipe(switchMap(watchToggle)))),
+      filter(key => ["s", "f"].includes(key.type)),
+      withLatestFrom(toggle$)
+    )
+      .subscribe(([key, toggle]) => {
+        const el = getActiveElement()
+        if (!(el && mayReceiveKeyboardEvents(el))) {
+          setToggle(toggle, true)
+          key.claim()
+        }
+      })
+
   /* ----------------------------------------------------------------------- */
-
-  // watchClipboard
-
-  mountClipboard({ document$ })
-    .subscribe()
 
   // TODO: WIP repo rendering
   repository().subscribe(facts => {
@@ -338,31 +343,6 @@ export function initialize(config: unknown) {
       })
     }
   })
-
-  patchTables({ document$ })
-    .subscribe()
-
-  patchDetails({ document$ })
-    .subscribe()
-
-  /* Force 1px scroll offset to trigger overflow scrolling */
-  if (true || navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
-    const scrollable = document.querySelectorAll("[data-md-scrollfix]")
-    Array.prototype.forEach.call(scrollable, item => {
-      item.addEventListener("touchstart", () => {
-        const top = item.scrollTop
-
-        /* We're at the top of the container */
-        if (top === 0) {
-          item.scrollTop = 1
-
-        /* We're at the bottom of the container */
-        } else if (top + item.offsetHeight === item.scrollHeight) {
-          item.scrollTop = top - 1
-        }
-      })
-    })
-  }
 
   /* ----------------------------------------------------------------------- */
 

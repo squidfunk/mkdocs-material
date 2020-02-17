@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { animationFrameScheduler, pipe, MonoTypeOperatorFunction } from "rxjs"
+import { MonoTypeOperatorFunction, animationFrameScheduler, pipe } from "rxjs"
 import { finalize, observeOn, tap } from "rxjs/operators"
 
 import { resetHeaderTitleActive, setHeaderTitleActive } from "actions"
@@ -30,7 +30,7 @@ import { resetHeaderTitleActive, setHeaderTitleActive } from "actions"
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint header title from source observable
+ * Paint header title
  *
  * @param el - Header element
  *

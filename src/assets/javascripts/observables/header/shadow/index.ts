@@ -36,7 +36,7 @@ import { Main } from "../../main"
  * ------------------------------------------------------------------------- */
 
 /**
- * Paint header shadow from source observable
+ * Paint header shadow
  *
  * @param el - Header element
  *

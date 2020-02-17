@@ -204,7 +204,7 @@ export function watchAnchorList(
 /* ------------------------------------------------------------------------- */
 
 /**
- * Paint anchor list from source observable
+ * Paint anchor list
  *
  * @param els - Anchor elements
  *

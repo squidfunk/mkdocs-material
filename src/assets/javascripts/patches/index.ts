@@ -21,4 +21,5 @@
  */
 
 export * from "./details"
+export * from "./scrollfix"
 export * from "./table"
