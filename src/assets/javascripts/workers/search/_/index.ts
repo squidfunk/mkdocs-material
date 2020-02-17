@@ -85,7 +85,7 @@ export function setupSearchWorker(
   const worker = new Worker(url)
   const prefix = new URL(base, location.href)
 
-  /* Create communication channels and correct relative links */
+  /* Create communication channels and resolve relative links */
   const tx$ = new Subject<SearchMessage>()
   const rx$ = watchWorker(worker, { tx$ })
     .pipe(

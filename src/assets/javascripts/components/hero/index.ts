@@ -27,7 +27,7 @@ import {
   Header,
   Viewport,
   paintHideable,
-  watchViewportFrom
+  watchViewportAt
 } from "observables"
 
 /* ----------------------------------------------------------------------------
@@ -68,7 +68,7 @@ export function mountHero(
   { header$, viewport$ }: MountOptions
 ): OperatorFunction<HTMLElement, Hero> {
   return pipe(
-    switchMap(el => watchViewportFrom(el, { header$, viewport$ })
+    switchMap(el => watchViewportAt(el, { header$, viewport$ })
       .pipe(
         paintHideable(el, 20),
         map(hidden => ({ hidden }))

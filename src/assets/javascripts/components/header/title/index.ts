@@ -20,19 +20,29 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import { map, shareReplay, startWith } from "rxjs/operators"
+import { Observable, OperatorFunction, pipe } from "rxjs"
+import { map, switchMap } from "rxjs/operators"
+
+import {
+  Header,
+  Viewport,
+  getElementOrThrow,
+  paintHeaderTitle,
+  watchViewportAt
+} from "observables"
+
+import { useComponent } from "../../_"
 
 /* ----------------------------------------------------------------------------
- * Types
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Element offset
+ * Mount options
  */
-export interface ElementOffset {
-  x: number                            /* Horizontal offset */
-  y: number                            /* Vertical offset */
+interface MountOptions {
+  header$: Observable<Header>          /* Header observable */
+  viewport$: Observable<Viewport>      /* Viewport observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -40,38 +50,26 @@ export interface ElementOffset {
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve element offset
+ * Mount header title from source observable
  *
- * @param el - Element
+ * @param options - Options
  *
- * @return Element offset
+ * @return Header title observable
  */
-export function getElementOffset(el: HTMLElement): ElementOffset {
-  return {
-    x: el.scrollLeft,
-    y: el.scrollTop
-  }
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Watch element offset
- *
- * @param el - Element
- *
- * @return Element offset observable
- */
-export function watchElementOffset(
-  el: HTMLElement
-): Observable<ElementOffset> {
-  return merge(
-    fromEvent<UIEvent>(el, "scroll"),
-    fromEvent<UIEvent>(window, "resize")
-  )
-    .pipe(
-      map(() => getElementOffset(el)),
-      startWith(getElementOffset(el)),
-      shareReplay(1)
+export function mountHeaderTitle(
+  { header$, viewport$ }: MountOptions
+): OperatorFunction<HTMLElement, any> {
+  return pipe(
+    switchMap(el => useComponent("main")
+      .pipe(
+        map(main => getElementOrThrow("h1, h2, h3, h4, h5, h6", main)),
+        switchMap(headline => watchViewportAt(headline, { header$, viewport$ })
+          .pipe(
+            map(({ offset: { y } }) => y >= headline.offsetHeight),
+            paintHeaderTitle(el)
+          )
+        )
+      )
     )
+  )
 }

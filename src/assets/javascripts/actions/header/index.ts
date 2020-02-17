@@ -20,29 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Set header shadow
- *
- * @param el - Header element
- * @param value - Whether the shadow is shown
- */
-export function setHeaderShadow(
-  el: HTMLElement, value: boolean
-): void {
-  el.setAttribute("data-md-state", value ? "shadow" : "")
-}
-
-/**
- * Reset header shadow
- *
- * @param el - Header element
- */
-export function resetHeaderShadow(
-  el: HTMLElement
-): void {
-  el.removeAttribute("data-md-state")
-}
+export * from "./_"
+export * from "./title"

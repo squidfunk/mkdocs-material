@@ -20,6 +20,36 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./shadow"
-export * from "./title"
+import { animationFrameScheduler, pipe, MonoTypeOperatorFunction } from "rxjs"
+import { finalize, observeOn, tap } from "rxjs/operators"
+
+import { resetHeaderTitleActive, setHeaderTitleActive } from "actions"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Paint header title from source observable
+ *
+ * @param el - Header element
+ *
+ * @return Operator function
+ */
+export function paintHeaderTitle(
+  el: HTMLElement
+): MonoTypeOperatorFunction<boolean> {
+  return pipe(
+
+    /* Defer repaint to next animation frame */
+    observeOn(animationFrameScheduler),
+    tap(active => {
+      setHeaderTitleActive(el, active)
+    }),
+
+    /* Reset on complete or error */
+    finalize(() => {
+      resetHeaderTitleActive(el)
+    })
+  )
+}

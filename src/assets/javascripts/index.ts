@@ -62,8 +62,7 @@ import {
   watchKeyboard,
   watchToggleMap,
   useToggle,
-  setViewportOffset,
-  watchViewportFrom,
+  watchViewportAt,
   getElementOrThrow
 } from "./observables"
 import { setupSearchWorker } from "./workers"
@@ -80,7 +79,8 @@ import {
   mountTableOfContents,
   mountTabs,
   useComponent,
-  watchComponentMap
+  watchComponentMap,
+  mountHeaderTitle
 } from "components"
 import { mountClipboard } from "./integrations/clipboard"
 import { patchTables, patchDetails } from "patches"
@@ -219,7 +219,7 @@ export function initialize(config: unknown) {
 
   const search$ = useComponent("search")
     .pipe(
-      mountSearch(worker, { viewport$, keyboard$ }),
+      mountSearch(worker, { keyboard$ }),
     )
 
   const navigation$ = useComponent("navigation")
@@ -242,24 +242,11 @@ export function initialize(config: unknown) {
       mountHero({ header$, viewport$ })
     )
 
-  /* Create header title toggle */
-  useComponent("main")
+  // TODO: make this part of mountHeader!?
+  const title$ = useComponent("header-title")
     .pipe(
-      map(el => getElementOrThrow("h1", el)), // catch error? just ignore?
-      switchMap(el => {
-        return watchViewportFrom(el, { header$, viewport$ })
-          .pipe(
-            map(({ offset: { y } }) => y >= el.offsetHeight),
-            withLatestFrom(useComponent("header-title")),
-            tap(([active, title]) => {
-              title.dataset.mdState = active ? "active" : ""
-            })
-          )
-      })
+      mountHeaderTitle({ header$, viewport$ })
     )
-      .subscribe()
-
-  // paintHeaderTitle <- same with shadow...
 
   /* ----------------------------------------------------------------------- */
 
@@ -385,7 +372,8 @@ export function initialize(config: unknown) {
     navigation$,
     toc$,
     tabs$,
-    hero$
+    hero$,
+    title$
   }
 
   const { ...rest } = state

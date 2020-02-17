@@ -24,12 +24,7 @@ import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
 import { map, shareReplay, switchMap } from "rxjs/operators"
 
 import { SearchResult } from "integrations/search"
-import {
-  Key,
-  SearchQuery,
-  Viewport,
-  WorkerHandler
-} from "observables"
+import { Key, SearchQuery, WorkerHandler } from "observables"
 import { SearchMessage } from "workers"
 
 import { useComponent } from "../_"
@@ -57,7 +52,6 @@ export interface Search {
  * Mount options
  */
 interface MountOptions {
-  viewport$: Observable<Viewport>      /* Viewport observable */
   keyboard$: Observable<Key>           /* Keyboard observable */
 }
 
@@ -74,7 +68,7 @@ interface MountOptions {
  * @return Search observable
  */
 export function mountSearch(
-  handler: WorkerHandler<SearchMessage>, { viewport$, keyboard$ }: MountOptions
+  handler: WorkerHandler<SearchMessage>, { keyboard$ }: MountOptions
 ): OperatorFunction<HTMLElement, Search> {
   return pipe(
     switchMap(() => {
@@ -88,14 +82,14 @@ export function mountSearch(
       /* Mount search query */
       const query$ = useComponent<HTMLInputElement>("search-query")
         .pipe(
-          mountSearchQuery(handler, { reset$ }),
+          mountSearchQuery(handler),
           shareReplay(1)
         )
 
       /* Mount search result */
       const result$ = useComponent("search-result")
         .pipe(
-          mountSearchResult(handler, { query$, viewport$, keyboard$ })
+          mountSearchResult(handler, { query$, keyboard$ })
         )
 
       /* Combine into a single hot observable */

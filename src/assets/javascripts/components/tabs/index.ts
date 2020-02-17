@@ -27,7 +27,7 @@ import {
   Header,
   Viewport,
   paintHideable,
-  watchViewportFrom
+  watchViewportAt
 } from "observables"
 
 /* ----------------------------------------------------------------------------
@@ -75,7 +75,7 @@ export function mountTabs(
 
           /* Mount tabs above screen breakpoint */
           if (screen) {
-            return watchViewportFrom(el, { header$, viewport$ })
+            return watchViewportAt(el, { header$, viewport$ })
               .pipe(
                 paintHideable(el, 10),
                 map(hidden => ({ hidden }))

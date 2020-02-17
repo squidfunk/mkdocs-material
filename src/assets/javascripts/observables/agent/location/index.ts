@@ -36,8 +36,7 @@ export function watchLocation(): Subject<string> {
   const location$ = new Subject<string>()
   fromEvent<PopStateEvent>(window, "popstate")
     .pipe(
-      map(() => location.href),
-      share()
+      map(() => location.href)
     )
       .subscribe(location$)
 

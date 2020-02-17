@@ -20,6 +20,29 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./shadow"
-export * from "./title"
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Set header title
+ *
+ * @param el - Header title element
+ * @param value - Whether the title is shown
+ */
+export function setHeaderTitleActive(
+  el: HTMLElement, value: boolean
+): void {
+  el.setAttribute("data-md-state", value ? "active" : "")
+}
+
+/**
+ * Reset header title
+ *
+ * @param el - Header element
+ */
+export function resetHeaderTitleActive(
+  el: HTMLElement
+): void {
+  el.removeAttribute("data-md-state")
+}

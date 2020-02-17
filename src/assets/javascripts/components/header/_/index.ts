@@ -20,6 +20,23 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./shadow"
-export * from "./title"
+import { OperatorFunction, pipe } from "rxjs"
+import { shareReplay, switchMap } from "rxjs/operators"
+
+import { Header, watchHeader } from "observables"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Mount header from source observable
+ *
+ * @return Header observable
+ */
+export function mountHeader(): OperatorFunction<HTMLElement, Header> {
+  return pipe(
+    switchMap(watchHeader),
+    shareReplay(1)
+  )
+}

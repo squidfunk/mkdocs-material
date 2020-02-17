@@ -85,7 +85,7 @@ export function watchViewport(): Observable<Viewport> {
  *
  * @return Viewport observable
  */
-export function watchViewportFrom(
+export function watchViewportAt(
   el: HTMLElement, { header$, viewport$ }: WatchRelativeOptions
 ): Observable<Viewport> {
   return combineLatest([viewport$, header$])

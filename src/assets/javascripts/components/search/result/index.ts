@@ -37,7 +37,6 @@ import { SearchResult } from "integrations/search"
 import {
   Key,
   SearchQuery,
-  Viewport,
   WorkerHandler,
   getActiveElement,
   getElements,
@@ -64,7 +63,6 @@ import { useComponent } from "../../_"
  */
 interface MountOptions {
   query$: Observable<SearchQuery>      /* Search query observable */
-  viewport$: Observable<Viewport>      /* Viewport observable */
   keyboard$: Observable<Key>           /* Keyboard observable */
 }
 
@@ -81,8 +79,7 @@ interface MountOptions {
  * @return Operator function
  */
 export function mountSearchResult(
-  { rx$ }: WorkerHandler<SearchMessage>,
-  { query$, viewport$, keyboard$ }: MountOptions
+  { rx$ }: WorkerHandler<SearchMessage>, { query$, keyboard$ }: MountOptions
 ): OperatorFunction<HTMLElement, SearchResult[]> {
   const toggle$ = useToggle("search")
   return pipe(
@@ -90,7 +87,7 @@ export function mountSearchResult(
       const container = el.parentElement!
 
       /* Compute whether there are more search results to fetch */
-      const fetch$ = watchElementOffset(container, { viewport$ })
+      const fetch$ = watchElementOffset(container)
         .pipe(
           map(({ y }) => {
             return y >= container.scrollHeight - container.offsetHeight - 16
