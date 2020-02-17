@@ -1,3 +1,8 @@
+mkdocs-material 4.6.3 (2020-02-14)
+
+  * Removed optional third-party plugins from requirements.txt
+  * Updated Docker image to contain all supported third-party plugins
+
 mkdocs-material 4.6.2 (2020-02-08)
 
   * Added Romanian translations

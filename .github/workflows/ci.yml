@@ -80,14 +80,14 @@ jobs:
         with:
           python-version: 3.x
 
-      - uses: actions/cache@v1
-        id: cache-python
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+      # - uses: actions/cache@v1
+      #   id: cache-python
+      #   with:
+      #     path: ~/.cache/pip
+      #     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
 
-      - if: steps.cache-python.outputs.cache-hit != 'true'
-        run: pip install -r requirements.txt
+      # - if: steps.cache-python.outputs.cache-hit != 'true'
+      - run: pip install -r requirements.txt
 
       # Set configuration for repository and deploy documentation
       - env:
@@ -100,8 +100,10 @@ jobs:
           git config --global user.email "${GH_EMAIL}"
           git remote set-url origin ${REMOTE}
 
-      # Install theme
-      - run: python setup.py install
+      # Install theme and dependencies
+      - run: |
+          python setup.py install
+          pip install mkdocs-minify-plugin>=0.2
 
       # Build documentation
       - env:

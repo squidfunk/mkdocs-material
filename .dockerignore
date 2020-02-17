@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+﻿# Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -18,37 +18,8 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-FROM python:3.8.1-alpine3.11
-
-# Set build directory
-WORKDIR /tmp
-
-# Copy files necessary for build
-COPY material material
-COPY MANIFEST.in MANIFEST.in
-COPY package.json package.json
-COPY README.md README.md
-COPY requirements.txt requirements.txt
-COPY setup.py setup.py
-
-# Perform build and cleanup artifacts
-RUN \
-  apk add --no-cache \
-    git \
-    git-fast-import \
-    openssh \
-  && python setup.py install \
-  && rm -rf /tmp/* \
-  && pip install --no-cache-dir \
-    'mkdocs-minify-plugin>=0.2' \
-    'mkdocs-git-revision-date-localized-plugin>=0.4'
-
-# Set working directory
-WORKDIR /docs
-
-# Expose MkDocs development server port
-EXPOSE 8000
-
-# Start development server by default
-ENTRYPOINT ["mkdocs"]
-CMD ["serve", "--dev-addr=0.0.0.0:8000"]
+.git
+.github
+docs
+node_modules
+src

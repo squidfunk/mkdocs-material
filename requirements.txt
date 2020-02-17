@@ -20,7 +20,6 @@
 
 # Direct dependencies
 mkdocs>=1.0
-mkdocs-minify-plugin>=0.2
-Pygments>=2.2
+Pygments>=2.4
 markdown>=3.2
 pymdown-extensions>=7.0b1
