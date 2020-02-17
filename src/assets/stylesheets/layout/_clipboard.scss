@@ -31,7 +31,7 @@
   right: px2rem(6px);
   width: px2rem(28px);
   height: px2rem(28px);
-  transition: color 0.25s;
+  transition: color 250ms;
   border-radius: px2rem(2px);
   color: $md-color-black--lightest;
   font-size: px2rem(16px);
@@ -58,53 +58,4 @@
   .codehilite &:hover {
     color: $md-color-accent;
   }
-
-  // // Message
-  // &__message {
-  //   display: block;
-  //   position: absolute;
-  //   top: 0;
-  //   right: px2rem(34px);
-  //   padding: px2rem(6px) px2rem(10px);
-  //   transform: translateX(px2rem(8px));
-  //   transition:
-  //     transform 0.25s cubic-bezier(0.9, 0.1, 0.9, 0),
-  //     opacity   0.175s;
-  //   border-radius: px2rem(2px);
-  //   background-color: $md-color-black--light;
-  //   color: $md-color-white;
-  //   font-size: ms(-1);
-  //   white-space: nowrap;
-  //   opacity: 0;
-  //   pointer-events: none;
-
-  //   // Active message
-  //   &--active {
-  //     transform: translateX(0);
-  //     transition:
-  //       transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-  //       opacity   0.175s 0.075s;
-  //     opacity: 1;
-  //     pointer-events: initial;
-  //   }
-
-  //   // Inject content from ARIA label
-  //   &::before {
-  //     content: attr(aria-label);
-  //   }
-
-  //   // Paint a nice speech bubble
-  //   &::after {
-  //     display: block;
-  //     position: absolute;
-  //     top: 50%;
-  //     right: px2rem(-4px);
-  //     width: 0;
-  //     margin-top: px2rem(-4px);
-  //     border-width: px2rem(4px) 0 px2rem(4px) px2rem(4px);
-  //     border-style: solid;
-  //     border-color: transparent $md-color-black--light;
-  //     content: "";
-  //   }
-  // }
 }

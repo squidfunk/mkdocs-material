@@ -27,7 +27,7 @@
 // Tabs with outline
 .md-tabs {
   width: 100%;
-  transition: background 0.25s;
+  transition: background 250ms;
   background-color: $md-color-primary;
   color: $md-color-white;
   overflow: auto;
@@ -65,8 +65,8 @@
     display: block;
     margin-top: px2rem(16px);
     transition:
-      transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
-      opacity   0.25s;
+      transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity   250ms;
     font-size: px2rem(14px);
     opacity: 0.7;
 
@@ -80,7 +80,7 @@
     // Delay transitions by a small amount
     @for $i from 2 through 16 {
       .md-tabs__item:nth-child(#{$i}) & {
-        transition-delay: 0.02s * ($i - 1);
+        transition-delay: 20ms * ($i - 1);
       }
     }
   }
@@ -94,9 +94,9 @@
     .md-tabs__link {
       transform: translateY(50%);
       transition:
-        color     0.25s,
-        transform 0s 0.4s,
-        opacity   0.1s;
+        color     250ms,
+        transform   0ms 400ms,
+        opacity   100ms;
       opacity: 0;
     }
   }

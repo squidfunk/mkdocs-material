@@ -140,7 +140,7 @@ kbd {
     // Also enable color transition on pseudo elements
     &,
     &::before {
-      transition: color 0.125s;
+      transition: color 125ms;
     }
 
     // Hovered and active links

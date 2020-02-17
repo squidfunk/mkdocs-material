@@ -48,7 +48,7 @@
   &__link {
     padding-top: px2rem(28px);
     padding-bottom: px2rem(8px);
-    transition: opacity 0.25s;
+    transition: opacity 250ms;
 
     // [tablet +]: Set proportional width
     @include break-from-device(tablet) {

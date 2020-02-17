@@ -70,7 +70,7 @@
 
     // Footnote
     li {
-      transition: color 0.25s;
+      transition: color 250ms;
 
       // Darken color for targeted footnote
       &:target {
@@ -120,9 +120,9 @@
     display: inline-block;
     transform: translateX(px2rem(5px));
     transition:
-      transform 0.25s  0.125s,
-      color     0.25s,
-      opacity   0.125s 0.125s;
+      transform 250ms 125ms,
+      color     250ms,
+      opacity   125ms 125ms;
     color: $md-color-black--lighter;
     // Hack: remove Unicode arrow for icon
     font-size: 0;

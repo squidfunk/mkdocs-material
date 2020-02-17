@@ -48,8 +48,8 @@ button[data-md-color-accent] {
   margin-bottom: px2rem(4px);
   padding: px2rem(24px) px2rem(8px) px2rem(4px);
   transition:
-    background-color 0.25s,
-    opacity          0.25s;
+    background-color 250ms,
+    opacity          250ms;
   border-radius: px2rem(2px);
   color: $md-color-white;
   font-size: ms(-1);

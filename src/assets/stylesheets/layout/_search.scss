@@ -60,8 +60,8 @@ $md-toggle__search--checked:
       height: px2rem(36px);
       transform-origin: center;
       transition:
-        transform 0.3s 0.1s,
-        opacity   0.2s 0.2s;
+        transform 300ms 100ms,
+        opacity   200ms 200ms;
       border-radius: px2rem(20px);
       background-color: $md-color-white;
       overflow: hidden;
@@ -76,8 +76,8 @@ $md-toggle__search--checked:
       // Expanded overlay
       #{$md-toggle__search--checked} & {
         transition:
-          transform 0.4s,
-          opacity   0.1s;
+          transform 400ms,
+          opacity   100ms;
         opacity: 1;
       }
     }
@@ -109,9 +109,9 @@ $md-toggle__search--checked:
       width: 0;
       height: 0;
       transition:
-        width   0s 0.25s,
-        height  0s 0.25s,
-        opacity 0.25s;
+        width     0ms 250ms,
+        height    0ms 250ms,
+        opacity 250ms;
       background-color: $md-color-black--light;
       cursor: pointer;
 
@@ -126,9 +126,9 @@ $md-toggle__search--checked:
         width: 100%;
         height: 100%;
         transition:
-          width   0s,
-          height  0s,
-          opacity 0.25s;
+          width     0ms,
+          height    0ms,
+          opacity 250ms;
         opacity: 1;
       }
     }
@@ -146,10 +146,10 @@ $md-toggle__search--checked:
       height: 100%;
       transform: translateX(5%);
       transition:
-        right     0s    0.3s,
-        left      0s    0.3s,
-        transform 0.15s 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity   0.15s 0.15s;
+        right       0ms 300ms,
+        left        0ms 300ms,
+        transform 150ms 150ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity   150ms 150ms;
       opacity: 0;
       z-index: 2;
 
@@ -158,10 +158,10 @@ $md-toggle__search--checked:
         left: 0;
         transform: translateX(0);
         transition:
-          right     0s    0s,
-          left      0s    0s,
-          transform 0.15s 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
-          opacity   0.15s 0.15s;
+          right       0ms   0ms,
+          left        0ms   0ms,
+          transform 150ms 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
+          opacity   150ms 150ms;
         opacity: 1;
 
         // Adjust for RTL languages
@@ -185,7 +185,7 @@ $md-toggle__search--checked:
       width: px2rem(234px);
       padding: px2rem(2px) 0;
       float: right;
-      transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+      transition: width 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
 
       // Adjust for RTL languages
       [dir="rtl"] & {
@@ -232,7 +232,7 @@ $md-toggle__search--checked:
 
     // Transition on placeholder
     &::placeholder {
-      transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+      transition: color 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
     }
 
     // Placeholder and icon color in active state
@@ -259,8 +259,8 @@ $md-toggle__search--checked:
       height: px2rem(36px);
       padding-left: px2rem(44px);
       transition:
-        background-color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1),
-        color            0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+        background-color 250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+        color            250ms cubic-bezier(0.1, 0.7, 0.1, 1);
       border-radius: px2rem(2px);
       background-color: $md-color-black--lighter;
       color: inherit;
@@ -306,8 +306,8 @@ $md-toggle__search--checked:
   &__icon {
     position: absolute;
     transition:
-      color   0.25s cubic-bezier(0.1, 0.7, 0.1, 1),
-      opacity 0.25s;
+      color   250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity 250ms;
     font-size: $md-icon-size;
     cursor: pointer;
     z-index: 2;
@@ -357,8 +357,8 @@ $md-toggle__search--checked:
       right: px2rem(10px);
       transform: scale(0.125);
       transition:
-        transform 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
-        opacity   0.15s;
+        transform 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
+        opacity   150ms;
       opacity: 0;
 
       // Adjust for RTL languages
@@ -403,7 +403,7 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       top: px2rem(38px);
-      transition: opacity 0.4s;
+      transition: opacity 400ms;
       opacity: 0;
 
       // Show search output in active state

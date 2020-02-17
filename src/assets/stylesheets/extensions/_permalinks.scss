@@ -33,10 +33,10 @@
     margin-left: px2rem(10px);
     transform: translate(0, px2rem(5px));
     transition:
-      transform  0.25s  0.25s,
-      color      0.25s,
-      opacity    0.125s 0.25s,
-      visibility 0s     0.5s;
+      transform  250ms 250ms,
+      color      250ms,
+      opacity    125ms 250ms,
+      visibility   0ms 500ms;
     opacity: 0;
     // Hack: If we don't set visibility hidden, the text content of the node
     // will include the headerlink character, which is why Google indexes them.
@@ -90,10 +90,10 @@
       & .headerlink:focus {
         transform: translate(0, 0);
         transition:
-          transform  0.25s  0.25s,
-          color      0.25s,
-          opacity    0.125s 0.25s,
-          visibility 0s;
+          transform  250ms 250ms,
+          color      250ms,
+          opacity    125ms 250ms,
+          visibility   0ms;
         opacity: 1;
         visibility: visible;
       }

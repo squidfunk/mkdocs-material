@@ -32,8 +32,8 @@
   left: 0;
   height: px2rem(48px);
   transition:
-    background-color 0.25s,
-    color 0.25s;
+    background-color 250ms,
+    color            250ms;
   background-color: $md-color-primary;
   color: $md-color-white;
   box-shadow: none;
@@ -126,8 +126,8 @@
     position: absolute;
     width: calc(100% - #{px2rem(20px)});
     transition:
-      transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
-      opacity   0.15s;
+      transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity   150ms;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -136,8 +136,8 @@
     & + & {
       transform: translateX(px2rem(25px));
       transition:
-        transform 0.4s cubic-bezier(1, 0.7, 0.1, 0.1),
-        opacity   0.15s;
+        transform 400ms cubic-bezier(1, 0.7, 0.1, 0.1),
+        opacity   150ms;
       opacity: 0;
       z-index: -1;
       pointer-events: none;
@@ -169,8 +169,8 @@
     &[data-md-state="active"] .md-header-nav__topic {
       transform: translateX(px2rem(-25px));
       transition:
-        transform 0.4s cubic-bezier(1, 0.7, 0.1, 0.1),
-        opacity   0.15s;
+        transform 400ms cubic-bezier(1, 0.7, 0.1, 0.1),
+        opacity   150ms;
       opacity: 0;
       z-index: -1;
       pointer-events: none;
@@ -184,8 +184,8 @@
       & + .md-header-nav__topic {
         transform: translateX(0);
         transition:
-          transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
-          opacity   0.15s;
+          transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
+          opacity   150ms;
         opacity: 1;
         z-index: 0;
         pointer-events: initial;

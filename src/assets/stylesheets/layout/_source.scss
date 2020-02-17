@@ -60,7 +60,7 @@
 .md-source {
   display: block;
   padding-right: px2rem(12px);
-  transition: opacity 0.25s;
+  transition: opacity 250ms;
   font-size: px2rem(13px);
   line-height: 1.2;
   white-space: nowrap;
@@ -145,7 +145,7 @@
 
     // Show after the data was loaded
     [data-md-state="done"] & {
-      animation: md-source__facts--done 0.25s ease-in;
+      animation: md-source__facts--done 250ms ease-in;
     }
   }
 
@@ -160,7 +160,7 @@
 
     // Show after the data was loaded
     [data-md-state="done"] & {
-      animation: md-source__fact--done 0.4s ease-out;
+      animation: md-source__fact--done 400ms ease-out;
     }
 
     // Middle dot before fact
@@ -206,9 +206,9 @@
   // styling of text links inside typesetted content
   html & {
     transition:
-      background 0.4s,
-      color      0.4s,
-      box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background 400ms,
+      color      400ms,
+      box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
     // Icon
     &::before {
