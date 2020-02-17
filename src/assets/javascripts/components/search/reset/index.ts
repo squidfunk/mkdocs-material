@@ -21,13 +21,7 @@
  */
 
 import { OperatorFunction, pipe } from "rxjs"
-import {
-  mapTo,
-  startWith,
-  switchMap,
-  switchMapTo,
-  tap
-} from "rxjs/operators"
+import { mapTo, switchMap, switchMapTo, tap } from "rxjs/operators"
 
 import { setElementFocus, watchSearchReset } from "observables"
 
@@ -43,12 +37,13 @@ import { useComponent } from "../../_"
  * @return Operator function
  */
 export function mountSearchReset(): OperatorFunction<HTMLElement, void> {
-  const query$ = useComponent<HTMLElement>("search-query")
   return pipe(
-    switchMap(watchSearchReset),
-    switchMapTo(query$),
-    tap(setElementFocus),
-    mapTo(undefined),
-    startWith(undefined)
+    switchMap(el => watchSearchReset(el)
+      .pipe(
+        switchMapTo(useComponent("search-query")),
+        tap(setElementFocus),
+        mapTo(undefined)
+      )
+    )
   )
 }
