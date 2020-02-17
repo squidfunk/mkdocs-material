@@ -50,6 +50,9 @@ interface MountOptions {
 /**
  * Patch all `details` elements
  *
+ * This function will ensure that all `details` tags are opened prior to
+ * printing, so the whole content of the page is included.
+ *
  * @param options - Options
  *
  * @return Details elements observable

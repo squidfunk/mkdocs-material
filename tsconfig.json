@@ -5,7 +5,6 @@
     "declaration": false,
     "declarationMap": false,
     "downlevelIteration": true,
-    "importHelpers": true,
     "jsx": "react",
     "jsxFactory": "h",
     "lib": [

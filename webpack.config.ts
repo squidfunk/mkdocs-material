@@ -61,6 +61,7 @@ function config(args: Configuration): Configuration {
                 experimentalWatchApi: true,
                 transpileOnly: true,
                 compilerOptions: {
+                  importHelpers: true,
                   module: "esnext",
                   removeComments: false
                 }

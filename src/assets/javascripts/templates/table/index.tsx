@@ -39,7 +39,7 @@ const css = {
  * ------------------------------------------------------------------------- */
 
 /**
- * Render a table wrapper
+ * Render a table inside a wrapper to improve scrolling on mobile
  *
  * @param table - Table element
  *

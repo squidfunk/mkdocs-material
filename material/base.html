@@ -43,7 +43,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.0ee2cfd0.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.83fc891a.min.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.3f90c815.min.css' | url }}">
       {% endif %}
@@ -190,7 +190,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.af5dd3a5.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.525b1d98.min.js' | url }}"></script>
       <script id="__lang" type="application/json">
         {%- set translations = {} -%}
         {%- for key in [
@@ -209,7 +209,7 @@
         {%- endfor -%}
         {{ translations | tojson }}
       </script>
-      <script>app=initialize({base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.3144ce89.min.js' | url }}",packer:"{{ 'assets/javascripts/worker/packer.c14659e8.min.js' | url }}"}})</script>
+      <script>app=initialize({base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.0a5433f7.min.js' | url }}",packer:"{{ 'assets/javascripts/worker/packer.c14659e8.min.js' | url }}"}})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

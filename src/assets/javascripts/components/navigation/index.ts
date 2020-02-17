@@ -40,14 +40,14 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Navigation below screen breakpoint
+ * Navigation for [screen -]
  */
 export interface NavigationBelowScreen {
   layer: NavigationLayer               /* Active layer */
 }
 
 /**
- * Navigation above screen breakpoint
+ * Navigation for [screen +]
  */
 export interface NavigationAboveScreen {
   sidebar: Sidebar                     /* Sidebar */
@@ -94,7 +94,7 @@ export function mountNavigation(
       .pipe(
         switchMap(screen => {
 
-          /* Mount navigation above screen breakpoint */
+          /* [screen +]: Mount navigation in sidebar */
           if (screen) {
             return watchSidebar(el, { main$, viewport$ })
               .pipe(
@@ -102,7 +102,7 @@ export function mountNavigation(
                 map(sidebar => ({ sidebar }))
               )
 
-          /* Mount navigation below screen breakpoint */
+          /* [screen -]: Mount navigation in drawer */
           } else {
             const els = getElements("nav", el)
             return watchNavigationLayer(els)

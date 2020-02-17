@@ -57,7 +57,7 @@ import { SearchQuery } from "../query"
  */
 interface PaintOptions {
   query$: Observable<SearchQuery>     /* Search query observable */
-  fetch$: Observable<boolean>         /* Search trigger observable */
+  fetch$: Observable<boolean>         /* Result fetch observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -66,6 +66,10 @@ interface PaintOptions {
 
 /**
  * Paint search results from source observable
+ *
+ * This function will perform a lazy rendering of the search results, depending
+ * on the vertical offset of the search result container. When the scroll offset
+ * reaches the bottom of the element, more results are fetched and rendered.
  *
  * @param el - Search result element
  * @param options - Options

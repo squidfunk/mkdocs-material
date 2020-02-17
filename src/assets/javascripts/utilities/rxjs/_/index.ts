@@ -28,7 +28,7 @@ import { map } from "rxjs/operators"
  * ------------------------------------------------------------------------- */
 
 /**
- * Invert boolean value of source observable
+ * Invert the value of a toggle observable
  *
  * @param toggle$ - Toggle observable
  *

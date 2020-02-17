@@ -20,12 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, combineLatest, fromEvent } from "rxjs"
+import { Observable, combineLatest, fromEvent, merge } from "rxjs"
 import {
+  delay,
   distinctUntilChanged,
   map,
   shareReplay,
-  startWith
+  startWith,
+  tap
 } from "rxjs/operators"
 
 import { watchElementFocus } from "../../agent"
@@ -61,7 +63,7 @@ interface WatchOptions {
  * Default transformation function
  *
  * Rogue control characters are filtered before handing the query to the
- * search index, as lunr will throw otherwise.
+ * search index, as `lunr` will throw otherwise.
  *
  * @param value - Query value
  *
@@ -81,6 +83,9 @@ function defaultTransform(value: string): string {
 /**
  * Watch search query
  *
+ * Note that the focus event which triggers re-reading the current query value
+ * is delayed by `1ms` so the input's empty state is allowed to propagate.
+ *
  * @param el - Search query element
  * @param options - Options
  *
@@ -91,7 +96,10 @@ export function watchSearchQuery(
 ): Observable<SearchQuery> {
 
   /* Intercept keyboard events */
-  const value$ = fromEvent(el, "keyup")
+  const value$ = merge(
+    fromEvent(el, "keyup"),
+    fromEvent(el, "focus").pipe(delay(1))
+  )
     .pipe(
       map(() => transform(el.value)),
       startWith(transform(el.value)),

@@ -102,7 +102,7 @@ export class SearchIndex {
    *
    * A mapping of URLs (including hash fragments) to the actual articles and
    * sections of the documentation. The search document mapping must be created
-   * regardless of whether the index was prebuilt or not, as lunr itself will
+   * regardless of whether the index was prebuilt or not, as `lunr` itself will
    * only store the actual index.
    */
   protected documents: SearchDocumentMap
@@ -113,7 +113,7 @@ export class SearchIndex {
   protected highlight: SearchHighlightFactoryFn
 
   /**
-   * The lunr search index
+   * The `lunr` search index
    */
   protected index: lunr.Index
 

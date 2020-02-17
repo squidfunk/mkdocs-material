@@ -113,7 +113,7 @@ export function setupSearchWorker(
           pluck("response")
         )
 
-  /* Send index to search worker */
+  /* Send index to worker */
   index$
     .pipe<SearchSetupMessage>(
       map(data => ({

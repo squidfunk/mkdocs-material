@@ -47,12 +47,12 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Table of contents below tablet breakpoint
+ * Table of contents for [tablet -]
  */
 export interface TableOfContentsBelowTablet {} // tslint:disable-line
 
 /**
- * Table of contents above tablet breakpoint
+ * Table of contents for [tablet +]
  */
 export interface TableOfContentsAboveTablet {
   sidebar: Sidebar                     /* Sidebar */
@@ -101,7 +101,7 @@ export function mountTableOfContents(
       .pipe(
         switchMap(tablet => {
 
-          /* Mount table of contents above tablet breakpoint */
+          /* [tablet +]: Mount table of contents in sidebar */
           if (tablet) {
             const els = getElements<HTMLAnchorElement>(".md-nav__link", el)
 
@@ -123,7 +123,7 @@ export function mountTableOfContents(
                 map(([sidebar, anchors]) => ({ sidebar, anchors }))
               )
 
-          /* Mount table of contents below tablet breakpoint */
+          /* [tablet -]: Unmount table of contents */
           } else {
             return of({})
           }

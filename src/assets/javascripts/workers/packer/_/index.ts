@@ -33,6 +33,13 @@ import { PackerMessage } from "../message"
 /**
  * Setup packer web worker
  *
+ * This function will create a web worker that helps in packing and unpacking
+ * strings using an LZ-based algorithm, namely `lz-string`. Its main purpose is
+ * to compress the search index before storing it in local storage, so it can
+ * be retrieved and imported to minimize the time necessary to setup search.
+ *
+ * @see https://bit.ly/2Q1ArhU - LZ-String documentation
+ *
  * @param url - Worker url
  *
  * @return Worker handler

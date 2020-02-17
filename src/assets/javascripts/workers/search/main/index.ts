@@ -40,6 +40,9 @@ let index: SearchIndex
 /**
  * Setup multi-language support through `lunr-languages`
  *
+ * This function will automatically import the stemmers necessary to process
+ * the languages which were given through the search index configuration.
+ *
  * @param config - Search index configuration
  */
 function setupLunrLanguages(config: SearchIndexConfig): void {
@@ -58,7 +61,7 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
 
   /* Load scripts synchronously */
   if (scripts.length)
-    importScripts(
+    self.importScripts(
       `${base}/min/lunr.stemmer.support.min.js`,
       ...scripts
     )

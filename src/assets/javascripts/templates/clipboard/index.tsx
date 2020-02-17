@@ -38,7 +38,7 @@ const css = {
  * ------------------------------------------------------------------------- */
 
 /**
- * Render clipboard
+ * Render a 'copy-to-clipboard' button
  *
  * @param id - Unique identifier
  *

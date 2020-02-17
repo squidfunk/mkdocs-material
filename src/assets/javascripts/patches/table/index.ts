@@ -44,6 +44,9 @@ interface MountOptions {
 /**
  * Patch all `table` elements
  *
+ * This function will re-render all tables by wrapping them to improve overflow
+ * scrolling on smaller screen sizes.
+ *
  * @param options - Options
  *
  * @return Table elements observable

@@ -82,7 +82,7 @@ let components$: Observable<ComponentMap>
  * Watch components with given names
  *
  * This function returns an observable that will maintain bindings to the given
- * components in-between document switches and update the document in-place.
+ * components in-between document switches and update the components in-place.
  *
  * @param names - Component names
  * @param options - Options
