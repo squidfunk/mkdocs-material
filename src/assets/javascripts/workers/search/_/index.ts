@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Subject } from "rxjs"
+import { Subject, from } from "rxjs"
 import { ajax } from "rxjs/ajax"
 import { map, pluck } from "rxjs/operators"
 
@@ -43,6 +43,7 @@ import {
  */
 interface SetupOptions {
   base: string                         /* Base url */
+  index?: Promise<SearchIndexOptions>  /* Promise resolving with index */
 }
 
 /* ----------------------------------------------------------------------------
@@ -68,13 +69,18 @@ function resolve(base: URL | string, ...paths: string[]) {
 /**
  * Setup search web worker
  *
+ * This function will create a web worker to setup and query the search index
+ * which is done using `lunr`. The index can be passed explicitly in order to
+ * enable hacks like _localsearch_ via search index embedding as JSON. If no
+ * index is given, this function will load it from the default location.
+ *
  * @param url - Worker url
  * @param options - Options
  *
  * @return Worker handler
  */
 export function setupSearchWorker(
-  url: string, { base }: SetupOptions
+  url: string, { base, index }: SetupOptions
 ): WorkerHandler<SearchMessage> {
   const worker = new Worker(url)
   const prefix = new URL(base, location.href)
@@ -95,15 +101,22 @@ export function setupSearchWorker(
       })
     )
 
-  /* Fetch index and setup search worker */
-  ajax({
-    url: resolve(prefix, "search/search_index.json"),
-    responseType: "json",
-    withCredentials: true
-  })
-    .pipe(
-      pluck("response"),
-      map<SearchIndexOptions, SearchSetupMessage>(data => ({
+  /* Fetch index if it wasn't passed explicitly */
+  const index$ = typeof index !== "undefined"
+    ? from(index)
+    : ajax({
+        url: resolve(prefix, "search/search_index.json"),
+        responseType: "json",
+        withCredentials: true
+      })
+        .pipe<SearchIndexOptions>(
+          pluck("response")
+        )
+
+  /* Send index to search worker */
+  index$
+    .pipe<SearchSetupMessage>(
+      map(data => ({
         type: SearchMessageType.SETUP,
         data
       }))
