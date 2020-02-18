@@ -277,6 +277,28 @@ export function initialize(config: unknown) {
     )
       .subscribe()
 
+  // TODO: patch details!
+
+  /* Open details after anchor jump */
+  merge(hash$, of(location.hash)) // getLocationHash
+    .subscribe(hash => {
+      const el = getElement(hash)
+      console.log("jump to", hash)
+      if (typeof el !== "undefined") {
+        const parent = el.closest("details")
+        if (parent && !parent.open) { // only if it is not open!
+          parent.open = true
+
+          /* Hack: force reload for repositioning */ // TODO. what happens here!?
+          location.hash = "" // reset
+          requestAnimationFrame(() => {
+            location.hash = hash // tslint:disable-line
+          })
+          // TODO: setLocationHash() + forceLocationHashChange
+        }
+      }
+    })
+
   // Scroll lock
   const toggle$ = useToggle("search")
   combineLatest([
@@ -299,6 +321,8 @@ export function initialize(config: unknown) {
       })
     )
       .subscribe()
+
+  /* ----------------------------------------------------------------------- */
 
   // General keyboard handlers
   keyboard$

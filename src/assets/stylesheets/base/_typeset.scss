@@ -419,12 +419,11 @@ kbd {
 
   // Data tables
   table:not([class]) {
-    @include z-depth(2);
-
     display: inline-block;
     max-width: 100%;
     border-radius: px2rem(2px);
     font-size: ms(-1);
+    box-shadow: inset 0 0 0 px2rem(1px) $md-color-black--lightest;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 
