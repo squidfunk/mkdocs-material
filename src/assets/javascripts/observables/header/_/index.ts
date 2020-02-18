@@ -21,6 +21,9 @@
  */
 
 import { Observable, of } from "rxjs"
+import { distinctUntilKeyChanged, switchMap } from "rxjs/operators"
+
+import { Viewport } from "../../agent"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -35,6 +38,17 @@ export interface Header {
 }
 
 /* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch options
+ */
+interface WatchOptions {
+  viewport$: Observable<Viewport>      /* Viewport observable */
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -45,19 +59,26 @@ export interface Header {
  * other dynamic behaviors that may be implemented later on.
  *
  * @param el - Header element
+ * @param options - Options
  *
  * @return Header observable
  */
 export function watchHeader(
-  el: HTMLElement
+  el: HTMLElement, { viewport$ }: WatchOptions
 ): Observable<Header> {
-  const styles = getComputedStyle(el)
-  const sticky = [
-    "sticky",                          /* Modern browsers */
-    "-webkit-sticky"                   /* Old Safari */
-  ].includes(styles.position)
-  return of({
-    sticky,
-    height: sticky ? el.offsetHeight : 0
-  })
+  return viewport$
+    .pipe(
+      distinctUntilKeyChanged("size"),
+      switchMap(() => {
+        const styles = getComputedStyle(el)
+        const sticky = [
+          "sticky",                    /* Modern browsers */
+          "-webkit-sticky"             /* Old Safari */
+        ].includes(styles.position)
+        return of({
+          sticky,
+          height: sticky ? el.offsetHeight : 0
+        })
+      })
+    )
 }

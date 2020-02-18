@@ -20,10 +20,21 @@
  * IN THE SOFTWARE.
  */
 
-import { OperatorFunction, pipe } from "rxjs"
+import { Observable, OperatorFunction, pipe } from "rxjs"
 import { shareReplay, switchMap } from "rxjs/operators"
 
-import { Header, watchHeader } from "observables"
+import { Header, Viewport, watchHeader } from "observables"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Mount options
+ */
+interface MountOptions {
+  viewport$: Observable<Viewport>      /* Viewport observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -32,11 +43,15 @@ import { Header, watchHeader } from "observables"
 /**
  * Mount header from source observable
  *
+ * @param options - Options
+ *
  * @return Header observable
  */
-export function mountHeader(): OperatorFunction<HTMLElement, Header> {
+export function mountHeader(
+  { viewport$ }: MountOptions
+): OperatorFunction<HTMLElement, Header> {
   return pipe(
-    switchMap(watchHeader),
+    switchMap(el => watchHeader(el, { viewport$ })),
     shareReplay(1)
   )
 }

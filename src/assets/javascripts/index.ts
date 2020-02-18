@@ -165,7 +165,7 @@ export function initialize(config: unknown) {
   /* Create header observable */
   const header$ = useComponent("header")
     .pipe(
-      mountHeader()
+      mountHeader({ viewport$ })
     )
 
   const main$ = useComponent("main")
