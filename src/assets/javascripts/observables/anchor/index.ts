@@ -132,9 +132,18 @@ export function watchAnchorList(
               break
             }
           }
+
+          /* If the current anchor is hidden, continue with its parent */
+          let offset = target.offsetTop
+          while (!offset && target.parentElement) {
+            target = target.parentElement
+            offset = target.offsetTop
+          }
+
+          /* Map reversed anchor path to vertical offset */
           return index.set(
             reverse(path = [...path, anchor]),
-            target.offsetTop
+            offset
           )
         }, new Map<HTMLAnchorElement[], number>())
       }),
