@@ -63,6 +63,7 @@ export function mountSearchQuery(
       /* Subscribe worker to search query */
       query$
         .pipe(
+          distinctUntilKeyChanged("value"),
           map<SearchQuery, SearchQueryMessage>(({ value }) => ({
             type: SearchMessageType.QUERY,
             data: value
