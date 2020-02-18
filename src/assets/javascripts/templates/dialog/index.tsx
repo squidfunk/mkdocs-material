@@ -20,8 +20,36 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./clipboard"
-export * from "./dialog"
-export * from "./search"
-export * from "./source"
-export * from "./table"
+import { h } from "utilities"
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * CSS classes
+ */
+const css = {
+  container: "md-dialog md-typeset"
+}
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Render a dismissable dialog
+ *
+ * @param text - Dialog text
+ *
+ * @return Element
+ */
+export function renderDialog(
+  text: string
+): HTMLElement {
+  return (
+    <div class={css.container}>
+      {text}
+    </div>
+  )
+}

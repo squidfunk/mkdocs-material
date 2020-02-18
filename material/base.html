@@ -43,7 +43,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.eacd7e91.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.37150387.min.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.3f90c815.min.css' | url }}">
       {% endif %}
@@ -90,7 +90,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     {% if page.toc | first is defined %}
-      <a href="{{ (page.toc | first).url }}" tabindex="0" class="md-skip">
+      <a href="{{ (page.toc | first).url }}" class="md-skip">
         {{ lang.t('skip.link.title') }}
       </a>
     {% endif %}
@@ -190,7 +190,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.eb1b83da.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.c16ffcea.min.js' | url }}"></script>
       <script id="__lang" type="application/json">
         {%- set translations = {} -%}
         {%- for key in [

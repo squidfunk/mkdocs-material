@@ -419,7 +419,7 @@ $md-toggle__search--checked:
   &__scrollwrap {
     height: 100%;
     background-color: $md-color-white;
-    box-shadow: 0 px2rem(1px) 0 $md-color-black--lightest inset;
+    box-shadow: inset 0 px2rem(1px) 0 $md-color-black--lightest;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;

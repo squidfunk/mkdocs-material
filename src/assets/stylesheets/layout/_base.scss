@@ -196,8 +196,6 @@ hr {
 // Skip link
 .md-skip {
   position: fixed;
-  width: px2rem(1px);
-  height: px2rem(1px);
   margin: px2rem(10px);
   padding: px2rem(6px) px2rem(10px);
   transform: translateY(px2rem(8px));
@@ -206,14 +204,10 @@ hr {
   color: $md-color-white;
   font-size: ms(-1);
   opacity: 0;
-  overflow: hidden;
 
   // Show skip link on focus
   &:focus {
-    width: auto;
-    height: auto;
-    clip: auto;
-    transform: translateX(0);
+    transform: translateY(0);
     transition:
       transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
       opacity   175ms 75ms;

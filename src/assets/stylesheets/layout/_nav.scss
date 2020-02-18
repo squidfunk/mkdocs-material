@@ -218,7 +218,7 @@
         // Main lists
         ~ .md-nav__list {
           background-color: $md-color-white;
-          box-shadow: 0 px2rem(1px) 0 $md-color-black--lightest inset;
+          box-shadow: inset 0 px2rem(1px) 0 $md-color-black--lightest;
           overflow-y: auto;
           scroll-snap-type: y mandatory;
 

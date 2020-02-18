@@ -212,7 +212,7 @@
 
     <!-- Link to skip to content -->
     {% if page.toc | first is defined %}
-      <a href="{{ (page.toc | first).url }}" tabindex="0" class="md-skip">
+      <a href="{{ (page.toc | first).url }}" class="md-skip">
         {{ lang.t('skip.link.title') }}
       </a>
     {% endif %}

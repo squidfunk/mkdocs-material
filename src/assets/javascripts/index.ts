@@ -40,7 +40,8 @@ import {
   tap,
   filter,
   withLatestFrom,
-  observeOn
+  observeOn,
+  take
 } from "rxjs/operators"
 
 import {
@@ -77,6 +78,7 @@ import { mountClipboard } from "./integrations/clipboard"
 import { patchTables, patchDetails, patchScrollfix } from "patches"
 import { takeIf, not, isConfig } from "utilities"
 import { fetchSourceFacts } from "integrations/source"
+import { renderDialog } from "templates/dialog"
 
 /* ------------------------------------------------------------------------- */
 
@@ -208,7 +210,26 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
+  // must be in another scope!
+  const dialog = renderDialog("Copied to Clipboard")
+
+  // snackbar for copy to clipboard
   mountClipboard({ document$ })
+    .pipe(
+      switchMap(ev => {
+        ev.clearSelection()
+        return useComponent("container")
+          .pipe(
+            tap(el => el.appendChild(dialog)), // only set text on dialog... render once...
+            observeOn(animationFrameScheduler),
+            tap(() => dialog.dataset.mdState = "open"),
+            delay(2000),
+            tap(() => dialog.dataset.mdState = ""),
+            delay(400),
+            tap(() => dialog.remove())
+          )
+      })
+    )
     .subscribe()
 
   patchTables({ document$ })
@@ -293,6 +314,20 @@ export function initialize(config: unknown) {
           key.claim()
         }
       })
+
+  // if we use a single tab outside of search, unhide all permalinks.
+  keyboard$
+    .pipe(
+      takeIf(not(toggle$.pipe(switchMap(watchToggle)))),
+      filter(key => ["Tab"].includes(key.type)),
+      take(1)
+    )
+    .subscribe(() => {
+      for (const link of getElements(".headerlink"))
+        link.style.visibility = "visible"
+    })
+
+  // build a notification component! feed txt into it...
 
   /* ----------------------------------------------------------------------- */
 

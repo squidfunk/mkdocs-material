@@ -21,51 +21,43 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
-@import "material-shadows";
+// Dialog rendered as snackbar
+.md-dialog {
+  @include z-depth(2);
 
-// ----------------------------------------------------------------------------
-// Local imports
-// ----------------------------------------------------------------------------
+  display: block;
+  position: fixed;
+  right: px2rem(16px);
+  bottom: px2rem(16px);
+  left: initial;
+  min-width: px2rem(222px);
+  padding: px2rem(8px) px2rem(12px);
+  transform: translateY(100%);
+  transition:
+    transform 0ms   400ms,
+    opacity   400ms;
+  border: none;
+  border-radius: px2rem(2px);
+  background: $md-color-black;
+  color: $md-color-white;
+  font-size: px2rem(14px);
+  opacity: 0;
+  z-index: 2;
 
-@import "utilities/break";
-@import "utilities/px2em";
+  // Show open dialog
+  &[data-md-state="open"] {
+    transform: translateY(0);
+    transition:
+      transform 400ms cubic-bezier(0.075, 0.85, 0.175, 1),
+      opacity   400ms;
+    opacity: 1;
+  }
 
-@import "config";
-
-@import "base/reset";
-@import "base/icons";
-@import "base/typeset";
-
-@import "layout/base";
-@import "layout/announce";
-@import "layout/clipboard";
-@import "layout/content";
-@import "layout/dialog";
-@import "layout/header";
-@import "layout/hero";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/search";
-@import "layout/sidebar";
-@import "layout/source";
-@import "layout/tabs";
-
-@import "extensions/admonition";
-@import "extensions/codehilite";
-@import "extensions/footnotes";
-@import "extensions/permalinks";
-
-@import "extensions/pymdown/arithmatex";
-@import "extensions/pymdown/critic";
-@import "extensions/pymdown/details";
-@import "extensions/pymdown/emoji";
-@import "extensions/pymdown/inlinehilite";
-@import "extensions/pymdown/tabbed";
-@import "extensions/pymdown/tasklist";
-
-@import "shame";
+  // Hide for print
+  @media print {
+    display: none;
+  }
+}
