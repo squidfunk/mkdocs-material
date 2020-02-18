@@ -20,56 +20,39 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchResult } from "integrations/search"
-import { h, truncate } from "utilities"
+import { ProjectSchema } from "gitlab"
+import { Observable } from "rxjs"
+import { ajax } from "rxjs/ajax"
+import { filter, map, pluck, shareReplay } from "rxjs/operators"
 
-/* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * CSS classes
- */
-const css = {
-  item:    "md-search-result__item",
-  link:    "md-search-result__link",
-  article: "md-search-result__article md-search-result__article--document",
-  section: "md-search-result__article",
-  title:   "md-search-result__title",
-  teaser:  "md-search-result__teaser"
-}
+import { SourceFacts, roundSourceFactValue } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Render a search result
+ * Fetch GitLab source facts
  *
- * @param result - Search result
+ * @param base - GitLab base
+ * @param project - GitLab project
  *
- * @return Element
+ * @return Source facts observable
  */
-export function renderSearchResult(
-  { article, sections }: SearchResult
-): HTMLElement {
-  const children = [article, ...sections].map(document => {
-    const { location, title, text } = document
-    return (
-      <a href={location} class={css.link} tabIndex={-1}>
-        <article class={"parent" in document ? css.section : css.article}>
-          <h1 class={css.title}>{title}</h1>
-          {text.length
-            ? <p class={css.teaser}>{truncate(text, 320)}</p>
-            : undefined
-          }
-        </article>
-      </a>
-    )
+export function fetchSourceFactsFromGitLab(
+  base: string, project: string
+): Observable<SourceFacts> {
+  return ajax({
+    url: `https://${base}/api/v4/projects/${encodeURIComponent(project)}`,
+    responseType: "json"
   })
-  return (
-    <li class={css.item}>
-      {children}
-    </li>
-  )
+    .pipe(
+      filter(({ status }) => status === 200),
+      pluck("response"),
+      map(({ star_count, forks_count }: ProjectSchema) => ([
+        `${roundSourceFactValue(star_count || 0)} Stars`,
+        `${roundSourceFactValue(forks_count || 0)} Forks`
+      ])),
+      shareReplay(1)
+    )
 }

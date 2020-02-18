@@ -20,39 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-import { SourceFacts } from "integrations/source"
-import { h } from "utilities"
-
-/* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * CSS classes
- */
-const css = {
-  facts: "md-source__facts",
-  fact:  "md-source__fact"
-}
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Render source facts
- *
- * @param facts - Source facts
- *
- * @return Element
- */
-export function renderSource(
-  facts: SourceFacts
-): HTMLElement {
-  const children = facts.map(fact => <li class={css.fact}>{fact}</li>)
-  return (
-    <ul class={css.facts}>
-      {children}
-    </ul>
-  )
-}
+export * from "./_"
+export * from "./github"

@@ -36,7 +36,6 @@ import {
 } from "rxjs"
 import {
   delay,
-  map,
   switchMap,
   tap,
   filter,
@@ -61,7 +60,6 @@ import {
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 import { renderSource } from "templates"
-import { fetchGitHubStats } from "integrations/source/github"
 import { setToggle, setScrollLock, resetScrollLock } from "actions"
 import {
   mountHeader,
@@ -78,6 +76,7 @@ import {
 import { mountClipboard } from "./integrations/clipboard"
 import { patchTables, patchDetails, patchScrollfix } from "patches"
 import { takeIf, not, isConfig } from "utilities"
+import { fetchSourceFacts } from "integrations/source"
 
 /* ------------------------------------------------------------------------- */
 
@@ -105,47 +104,13 @@ function repository() {
     return of(x)
   }
 
-  // TODO: do correct rounding, see GitHub - done
-  function format(value: number) {
-    if (value > 999) {
-      const digits = +((value - 950) % 1000 > 99)
-      return `${(++value / 1000).toFixed(digits)}k`
-    } else {
-      return value.toString()
-    }
-  }
-
-  // github repository...
-  const [, user, repo] = el.href.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)?.*$/i)
-
-  // storage memoization!?
-  // get, if not available, exec and persist
-
-  // getOrRetrieve... storage$.
-
-  // Show repo stats
-  if (user && repo) {
-    return fetchGitHubStats(user, repo)
-      .pipe(
-        map(({ stargazers_count, forks_count }) => ([
-          `${format(stargazers_count || 0)} Stars`,
-          `${format(forks_count || 0)} Forks`
-        ])),
-        tap(data => sessionStorage.setItem("repository", JSON.stringify(data)))
-      )
-
-  // Show user or organization stats
-  } else if (user) {
-    return fetchGitHubStats(user)
-      .pipe(
-        map(({ public_repos }) => ([
-          `${format(public_repos || 0)} Repositories`
-        ])),
-        tap(data => sessionStorage.setItem("repository", JSON.stringify(data)))
-      )
-  }
-  return of([])
+  return fetchSourceFacts(el.href)
+    .pipe(
+      tap(data => sessionStorage.setItem("repository", JSON.stringify(data)))
+    )
 }
+
+// memoize
 
 /* ----------------------------------------------------------------------------
  * Functions

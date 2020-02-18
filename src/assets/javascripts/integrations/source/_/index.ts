@@ -20,56 +20,70 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchResult } from "integrations/search"
-import { h, truncate } from "utilities"
+import { Observable, of } from "rxjs"
+
+import { fetchSourceFactsFromGitHub } from "../github"
+import { fetchSourceFactsFromGitLab } from "../gitlab"
 
 /* ----------------------------------------------------------------------------
- * Data
+ * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * CSS classes
+ * Source facts
  */
-const css = {
-  item:    "md-search-result__item",
-  link:    "md-search-result__link",
-  article: "md-search-result__article md-search-result__article--document",
-  section: "md-search-result__article",
-  title:   "md-search-result__title",
-  teaser:  "md-search-result__teaser"
-}
+export type SourceFacts = string[]
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Render a search result
+ * Fetch source facts
  *
- * @param result - Search result
+ * @param url - Source repository URL
  *
- * @return Element
+ * @return Source facts observable
  */
-export function renderSearchResult(
-  { article, sections }: SearchResult
-): HTMLElement {
-  const children = [article, ...sections].map(document => {
-    const { location, title, text } = document
-    return (
-      <a href={location} class={css.link} tabIndex={-1}>
-        <article class={"parent" in document ? css.section : css.article}>
-          <h1 class={css.title}>{title}</h1>
-          {text.length
-            ? <p class={css.teaser}>{truncate(text, 320)}</p>
-            : undefined
-          }
-        </article>
-      </a>
-    )
-  })
-  return (
-    <li class={css.item}>
-      {children}
-    </li>
-  )
+export function fetchSourceFacts(
+  url: string
+): Observable<SourceFacts> {
+  const [type] = url.match(/(git(?:hub|lab))/i) || []
+  switch (type.toLowerCase()) {
+
+    /* GitHub repository */
+    case "github":
+      const [, user, repo] = url.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)/i)
+      return fetchSourceFactsFromGitHub(user, repo)
+
+    /* GitLab repository */
+    case "gitlab":
+      const [, base, project] = url.match(/^.+?([^\/]*gitlab[^\/]+)\/(.+)/i)
+      return fetchSourceFactsFromGitLab(base, project)
+
+    /* Everything else */
+    default:
+      return of([])
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Round a number for display with source facts
+ *
+ * This is a reverse engineered implementation of GitHub's weird rounding
+ * algorithm for stars, forks and all other numbers. Probably incorrect.
+ *
+ * @param value - Original value
+ *
+ * @return Rounded value
+ */
+export function roundSourceFactValue(value: number) {
+  if (value > 999) {
+    const digits = +((value - 950) % 1000 > 99)
+    return `${((value + 1) / 1000).toFixed(digits)}k`
+  } else {
+    return value.toString()
+  }
 }
