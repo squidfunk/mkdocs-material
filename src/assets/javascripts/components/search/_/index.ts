@@ -74,7 +74,7 @@ export function mountSearch(
     switchMap(() => {
 
       /* Mount search reset */
-      const reset$ = useComponent<HTMLInputElement>("search-reset")
+      const reset$ = useComponent("search-reset")
         .pipe(
           mountSearchReset()
         )

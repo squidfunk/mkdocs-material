@@ -25,7 +25,11 @@ import { ajax } from "rxjs/ajax"
 import { map, pluck } from "rxjs/operators"
 
 import { SearchIndexOptions } from "integrations/search"
-import { WorkerHandler, watchWorker } from "observables"
+import {
+  WorkerHandler,
+  getLocation,
+  watchWorker
+} from "observables"
 
 import {
   SearchMessage,
@@ -83,7 +87,7 @@ export function setupSearchWorker(
   url: string, { base, index }: SetupOptions
 ): WorkerHandler<SearchMessage> {
   const worker = new Worker(url)
-  const prefix = new URL(base, location.href)
+  const prefix = new URL(base, getLocation())
 
   /* Create communication channels and resolve relative links */
   const tx$ = new Subject<SearchMessage>()

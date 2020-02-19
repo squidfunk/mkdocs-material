@@ -121,11 +121,11 @@ export function useToggle(
 ): Observable<HTMLInputElement> {
   return toggles$
     .pipe(
-      switchMap(toggles => {
-        return typeof toggles[name] !== "undefined"
+      switchMap(toggles => (
+        typeof toggles[name] !== "undefined"
           ? of(toggles[name]!)
           : NEVER
-      })
+      ))
     )
 }
 

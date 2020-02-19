@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, fromEvent, fromEventPattern } from "rxjs"
+import { Observable, Subject, fromEventPattern } from "rxjs"
 import {
   pluck,
   share,

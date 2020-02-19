@@ -148,10 +148,10 @@ export function useComponent<T extends HTMLElement>(
 ): Observable<T> {
   return components$
     .pipe(
-      switchMap(components => {
-        return typeof components[name] !== "undefined"
+      switchMap(components => (
+        typeof components[name] !== "undefined"
           ? of(components[name] as T)
           : NEVER
-      })
+      ))
     )
 }

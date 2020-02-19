@@ -20,62 +20,37 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import { map, startWith } from "rxjs/operators"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Viewport offset
- */
-export interface ViewportOffset {
-  x: number                            /* Horizontal offset */
-  y: number                            /* Vertical offset */
-}
+import { Subject, fromEvent } from "rxjs"
+import { map } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve viewport offset
+ * Retrieve location
  *
- * @return Viewport offset
+ * @return Location
  */
-export function getViewportOffset(): ViewportOffset {
-  return {
-    x: Math.max(0, pageXOffset),
-    y: Math.max(0, pageYOffset)
-  }
-}
-
-/**
- * Set viewport offset
- *
- * @param offset - Viewport offset
- */
-export function setViewportOffset(
-  { x, y }: Partial<ViewportOffset>
-): void {
-  window.scrollTo(x || 0, y || 0)
+export function getLocation(): string {
+  return location.href
 }
 
 /* ------------------------------------------------------------------------- */
 
 /**
- * Watch viewport offset
+ * Watch location
  *
- * @return Viewport offset observable
+ * @return Location subject
  */
-export function watchViewportOffset(): Observable<ViewportOffset> {
-  return merge(
-    fromEvent<UIEvent>(window, "scroll"),
-    fromEvent<UIEvent>(window, "resize")
-  )
+export function watchLocation(): Subject<string> {
+  const location$ = new Subject<string>()
+  fromEvent<PopStateEvent>(window, "popstate")
     .pipe(
-      map(getViewportOffset),
-      startWith(getViewportOffset())
+      map(getLocation)
     )
+      .subscribe(location$)
+
+  /* Return subject */
+  return location$
 }

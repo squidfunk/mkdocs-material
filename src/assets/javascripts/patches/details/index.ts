@@ -21,24 +21,22 @@
  */
 
 import { identity } from "ramda"
+import { NEVER, Observable, fromEvent, merge, of } from "rxjs"
 import {
-  Observable,
-  animationFrameScheduler,
-  fromEvent,
-  merge,
-  of
-} from "rxjs"
-import {
+  catchError,
   filter,
   map,
-  mapTo,
-  observeOn,
   switchMap,
   switchMapTo,
-  tap
 } from "rxjs/operators"
 
-import { getElement, getElements, watchMedia } from "observables"
+import {
+  getElementOrThrow,
+  getElements,
+  getLocationHash,
+  setLocationHash,
+  watchMedia
+} from "observables"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -86,27 +84,20 @@ export function patchDetails(
       })
 
   /* Open parent details before anchor jump */
-  merge(hash$, of(location.hash))
+  merge(hash$, of(getLocationHash()))
     .pipe(
       filter(hash => !!hash.length),
-      switchMap(hash => of(getElement<HTMLElement>(hash) || document.body)
+      switchMap(hash => of(getElementOrThrow<HTMLElement>(hash))
         .pipe(
           map(el => el.closest("details")!),
           filter(el => el && !el.open),
-
-          /* Open details and temporarily reset anchor */
-          tap(el => {
-            el.setAttribute("open", "")
-            location.hash = ""
-          }),
-
-          /* Defer anchor jump to next animation frame */
-          observeOn(animationFrameScheduler),
-          mapTo(hash)
+          map(el => [el, hash] as const)
         )
-      )
+      ),
+      catchError(() => NEVER)
     )
-      .subscribe(hash => {
-        location.hash = hash
+      .subscribe(([el, hash]) => {
+        el.setAttribute("open", "")
+        setLocationHash(hash)
       })
 }

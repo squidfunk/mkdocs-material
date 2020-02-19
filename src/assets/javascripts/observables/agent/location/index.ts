@@ -20,40 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, fromEvent } from "rxjs"
-import { filter, map, share } from "rxjs/operators"
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Watch location
- *
- * @return Location subject
- */
-export function watchLocation(): Subject<string> {
-  const location$ = new Subject<string>()
-  fromEvent<PopStateEvent>(window, "popstate")
-    .pipe(
-      map(() => location.href)
-    )
-      .subscribe(location$)
-
-  /* Return subject */
-  return location$
-}
-
-/**
- * Watch location hash
- *
- * @return Location hash observable
- */
-export function watchLocationHash(): Observable<string> {
-  return fromEvent<HashChangeEvent>(window, "hashchange")
-    .pipe(
-      map(() => location.hash),
-      filter(hash => hash.length > 0),
-      share()
-    )
-}
+export * from "./_"
+export * from "./hash"

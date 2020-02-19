@@ -20,62 +20,50 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import { map, startWith } from "rxjs/operators"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Viewport offset
- */
-export interface ViewportOffset {
-  x: number                            /* Horizontal offset */
-  y: number                            /* Vertical offset */
-}
+import { Observable, fromEvent } from "rxjs"
+import { filter, map, share } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve viewport offset
+ * Retrieve location hash
  *
- * @return Viewport offset
+ * @return Location hash
  */
-export function getViewportOffset(): ViewportOffset {
-  return {
-    x: Math.max(0, pageXOffset),
-    y: Math.max(0, pageYOffset)
-  }
+export function getLocationHash(): string {
+  return location.hash
 }
 
 /**
- * Set viewport offset
+ * Set location hash
  *
- * @param offset - Viewport offset
+ * This will force a reset of the location hash, inducing an anchor jump if
+ * the hash matches the `id` of an element. It is implemented outside of the
+ * whole RxJS architecture using `setTimeout` to keep it plain and simple.
+ *
+ * @param value - Location hash
  */
-export function setViewportOffset(
-  { x, y }: Partial<ViewportOffset>
-): void {
-  window.scrollTo(x || 0, y || 0)
+export function setLocationHash(value: string): void {
+  location.hash = ""
+  setTimeout(() => {
+    location.hash = value
+  }, 1)
 }
 
 /* ------------------------------------------------------------------------- */
 
 /**
- * Watch viewport offset
+ * Watch location hash
  *
- * @return Viewport offset observable
+ * @return Location hash observable
  */
-export function watchViewportOffset(): Observable<ViewportOffset> {
-  return merge(
-    fromEvent<UIEvent>(window, "scroll"),
-    fromEvent<UIEvent>(window, "resize")
-  )
+export function watchLocationHash(): Observable<string> {
+  return fromEvent<HashChangeEvent>(window, "hashchange")
     .pipe(
-      map(getViewportOffset),
-      startWith(getViewportOffset())
+      map(getLocationHash),
+      filter(hash => hash.length > 0),
+      share()
     )
 }

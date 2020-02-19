@@ -26,8 +26,7 @@ import {
   distinctUntilChanged,
   map,
   shareReplay,
-  startWith,
-  tap
+  startWith
 } from "rxjs/operators"
 
 import { watchElementFocus } from "../../agent"
@@ -92,8 +91,9 @@ function defaultTransform(value: string): string {
  * @return Search query observable
  */
 export function watchSearchQuery(
-  el: HTMLInputElement, { transform = defaultTransform }: WatchOptions = {}
+  el: HTMLInputElement, { transform }: WatchOptions = {}
 ): Observable<SearchQuery> {
+  const fn = transform || defaultTransform
 
   /* Intercept keyboard events */
   const value$ = merge(
@@ -101,8 +101,8 @@ export function watchSearchQuery(
     fromEvent(el, "focus").pipe(delay(1))
   )
     .pipe(
-      map(() => transform(el.value)),
-      startWith(transform(el.value)),
+      map(() => fn(el.value)),
+      startWith(fn(el.value)),
       distinctUntilChanged()
     )
 
