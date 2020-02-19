@@ -20,13 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, of } from "rxjs"
-import { switchMap, tap } from "rxjs/operators"
+import { NEVER, Observable } from "rxjs"
+import { catchError, filter, switchMap } from "rxjs/operators"
 
-import { getElement, getElements } from "observables"
+import { getElementOrThrow, getElements } from "observables"
 import { renderSource } from "templates"
+import { cache, hash } from "utilities"
 
-import { cache } from "utilities"
 import { fetchSourceFactsFromGitHub } from "./github"
 import { fetchSourceFactsFromGitLab } from "./gitlab"
 
@@ -79,69 +79,38 @@ function fetchSourceFacts(
 
     /* Everything else */
     default:
-      return of([])
+      return NEVER
   }
 }
-
-// provide a function to set a unique key?
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
-// TODO: this doesnt belong here...
-
-// cache type.. session or local storage...
-// subscribe to observable and cache automatically
-
-// withCache or useCache
-
 /**
- * Setup source facts
+ * Patch elements containing repository information
+ *
+ * This function will retrieve the URL from the repository link and try to
+ * query data from integrated source code platforms like GitHub or GitLab.
  *
  * @param options - Options
- *
- * @return Source facts observable
  */
-export function setupSourceFacts(
+export function patchSource(
   { document$ }: SetupOptions
-): Observable<any> {
-  return document$
+): void {
+  document$
     .pipe(
-      switchMap(() => cache("repository", () => {
-        tap(console.log)
-        const el = getElement<HTMLAnchorElement>(".md-source[href]") // TODO: useElement( document$ ) ? doesnt emit if no result
-        if (!el) {
-          return NEVER
-        } else {
-          // TODO: hash should be calculated from el.href
-          return fetchSourceFacts(el.href)
-        }
-      })),
-
-      tap(facts => {
-        console.log(facts)
-        if (facts.length) {
-          const sources = getElements(".md-source__repository")
-          sources.forEach(repo => {
-            repo.dataset.mdState = "done"
-            repo.appendChild(renderSource(facts))
-          })
+      switchMap(() => {
+        const el = getElementOrThrow<HTMLAnchorElement>(".md-source[href]")
+        return cache(`${hash(el.href)}`, () => fetchSourceFacts(el.href))
+      }),
+      filter(facts => !!facts.length),
+      catchError(() => NEVER)
+    )
+      .subscribe(facts => {
+        for (const el of getElements(".md-source__repository")) {
+          el.setAttribute("data-md-state", "done")
+          el.appendChild(renderSource(facts))
         }
       })
-      // TODO: use URL? to dinstinguish
-    )
 }
-
-// /**
-//  * Only emit a value if it is non-empty
-//  *
-//  * @template T - Value type
-//  *
-//  * @return Operator function
-//  */
-// export function exists<T>(): OperatorFunction<T, NonNullable<T>> {
-//   return pipe(
-//     switchMap(value => !!value ? NEVER : of(value as NonNullable<T>))
-//   )
-// }

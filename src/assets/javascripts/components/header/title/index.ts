@@ -20,8 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, pipe } from "rxjs"
-import { map, switchMap } from "rxjs/operators"
+import { NEVER, Observable, OperatorFunction, pipe } from "rxjs"
+import {
+  catchError,
+  map,
+  shareReplay,
+  switchMap
+} from "rxjs/operators"
 
 import {
   Header,
@@ -68,7 +73,9 @@ export function mountHeaderTitle(
             map(({ offset: { y } }) => y >= headline.offsetHeight),
             paintHeaderTitle(el)
           )
-        )
+        ),
+        shareReplay(1),
+        catchError(() => NEVER)
       )
     )
   )

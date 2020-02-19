@@ -73,9 +73,13 @@ import {
   mountHeaderTitle
 } from "components"
 import { setupClipboard } from "./integrations/clipboard"
-import { patchTables, patchDetails, patchScrollfix } from "patches"
+import {
+  patchTables,
+  patchDetails,
+  patchScrollfix,
+  patchSource
+} from "patches"
 import { takeIf, not, isConfig } from "utilities"
-import { setupSourceFacts } from "integrations/source"
 import { renderDialog } from "templates/dialog"
 
 /* ------------------------------------------------------------------------- */
@@ -207,12 +211,11 @@ export function initialize(config: unknown) {
 
   patchTables({ document$ })
   patchDetails({ document$, hash$ })
+  patchSource({ document$ })
 
   /* Force 1px scroll offset to trigger overflow scrolling */
   if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
     patchScrollfix({ document$ })
-
-
 
   // TODO: general keyboard handler...
   // put into main!?
@@ -300,10 +303,6 @@ export function initialize(config: unknown) {
     })
 
   // build a notification component! feed txt into it...
-
-  // TODO: WIP repo rendering
-  setupSourceFacts({ document$ })
-    .subscribe()
 
   /* ----------------------------------------------------------------------- */
 

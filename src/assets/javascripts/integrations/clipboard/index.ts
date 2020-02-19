@@ -22,7 +22,7 @@
 
 import * as ClipboardJS from "clipboard"
 import { NEVER, Observable, fromEventPattern } from "rxjs"
-import { shareReplay, switchMap, tap } from "rxjs/operators"
+import { shareReplay } from "rxjs/operators"
 
 import { getElements } from "observables"
 import { renderClipboard } from "templates"
@@ -55,30 +55,26 @@ interface SetupOptions {
 export function setupClipboard(
   { document$ }: SetupOptions
 ): Observable<ClipboardJS.Event> {
-  if (ClipboardJS.isSupported()) {
-    return document$
-      .pipe(
-
-        /* Inject 'copy-to-clipboard' buttons */
-        tap(() => {
-          const blocks = getElements("pre > code")
-          for (const [index, block] of blocks.entries()) {
-            const parent = block.parentElement!
-            parent.id = `__code_${index}`
-            parent.insertBefore(renderClipboard(parent.id), block)
-          }
-        }),
-
-        /* Initialize and setup clipboard */
-        switchMap(() => {
-          return fromEventPattern<ClipboardJS.Event>(next => {
-            const clipboard = new ClipboardJS(".md-clipboard")
-            clipboard.on("success", next)
-          })
-        }),
-        shareReplay(1)
-      )
-  } else {
+  if (!ClipboardJS.isSupported())
     return NEVER
-  }
+
+  /* Inject 'copy-to-clipboard' buttons */
+  document$
+    .subscribe(() => {
+      const blocks = getElements("pre > code")
+      for (const [index, block] of blocks.entries()) {
+        const parent = block.parentElement!
+        parent.id = `__code_${index}`
+        parent.insertBefore(renderClipboard(parent.id), block)
+      }
+    })
+
+  /* Initialize and setup clipboard */
+  return fromEventPattern<ClipboardJS.Event>(next => {
+    const clipboard = new ClipboardJS(".md-clipboard")
+    clipboard.on("success", next)
+  })
+    .pipe(
+      shareReplay(1)
+    )
 }
