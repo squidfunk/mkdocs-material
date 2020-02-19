@@ -82,7 +82,14 @@ export function truncate(value: string, n: number): string {
  * Round a number for display with source facts
  *
  * This is a reverse engineered implementation of GitHub's weird rounding
- * algorithm for stars, forks and all other numbers. Probably incorrect.
+ * algorithm for stars, forks and all other numbers. While all numbers below
+ * `1,000` are returned as-is, bigger numbers are converted to fixed numbers
+ * in the following way:
+ *
+ * - `1,049` => `1k`
+ * - `1,050` => `1,1k`
+ * - `1,949` => `1,9k`
+ * - `1,950` => `2k`
  *
  * @param value - Original value
  *
@@ -104,13 +111,13 @@ export function round(value: number): string {
  *
  * @param value - Value to be hashed
  *
- * @return Hash
+ * @return Hash as 32bit integer
  */
 export function hash(value: string): number {
-    let k = 0
+    let h = 0
     for (let i = 0, len = value.length; i < len; i++) {
-      k  = ((k << 5) - k) + value.charCodeAt(i)
-      k |= 0 // Convert to 32bit integer
+      h  = ((h << 5) - h) + value.charCodeAt(i)
+      h |= 0 // Convert to 32bit integer
     }
-    return k
+    return h
   }

@@ -30,6 +30,9 @@ import { filter, map, withLatestFrom } from "rxjs/operators"
 /**
  * Toggle emission with another observable
  *
+ * While this could also be implemented using window operators, it may lead to
+ * an unnecessary increase in bundle size, so we use operators we use anyway.
+ *
  * @template T - Value type
  *
  * @param toggle$ - Toggle observable

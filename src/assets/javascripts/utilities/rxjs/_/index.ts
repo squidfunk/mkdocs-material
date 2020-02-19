@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, of } from "rxjs"
+import { Observable, defer, of } from "rxjs"
 import { map } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
@@ -46,7 +46,10 @@ export function not(
 /**
  * Cache the last value emitted by an observable in session storage
  *
- * Note that the value must be serializable as `JSON`.
+ * If the key is not found in session storage, the factory is executed and the
+ * latest value emitted will automatically be persisted to sessions storage.
+ * Note that the values emitted by the returned observable must be serializable
+ * as `JSON`, or data will be lost.
  *
  * @template T - Value type
  *
@@ -58,23 +61,25 @@ export function not(
 export function cache<T>(
   key: string, factory: () => Observable<T>
 ): Observable<T> {
-  const data = sessionStorage.getItem(key)
-  if (data) {
-    return of(JSON.parse(data) as T)
+  return defer(() => {
+    const data = sessionStorage.getItem(key)
+    if (data) {
+      return of(JSON.parse(data) as T)
 
-  /* Retrieve value from observable factory and write to storage */
-  } else {
-    const value$ = factory()
-    value$
-      .subscribe(value => {
-        try {
-          sessionStorage.setItem(key, JSON.stringify(value))
-        } catch (err) {
-          /* Just swallow */
-        }
-      })
+    /* Retrieve value from observable factory and write to storage */
+    } else {
+      const value$ = factory()
+      value$
+        .subscribe(value => {
+          try {
+            sessionStorage.setItem(key, JSON.stringify(value))
+          } catch (err) {
+            /* Uncritical, just swallow */
+          }
+        })
 
-    /* Return value observable */
-    return value$
-  }
+      /* Return value observable */
+      return value$
+    }
+  })
 }

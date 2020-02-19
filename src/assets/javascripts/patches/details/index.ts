@@ -85,7 +85,7 @@ export function patchDetails(
           el.setAttribute("open", "")
       })
 
-  /* Open details before anchor jump */
+  /* Open parent details before anchor jump */
   merge(hash$, of(location.hash))
     .pipe(
       filter(hash => !!hash.length),

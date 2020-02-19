@@ -56,7 +56,7 @@ export function getElementOrThrow<T extends HTMLElement>(
   const el = getElement<T>(selector, node)
   if (typeof el === "undefined")
     throw new ReferenceError(
-      `Missing element: expected "${selector}" to match an element`
+      `Missing element: expected "${selector}" to be present`
     )
   return el
 }
