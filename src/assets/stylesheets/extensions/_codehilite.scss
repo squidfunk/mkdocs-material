@@ -268,6 +268,28 @@ $codehilite-whitespace: transparent;
     }
   }
 
+  [data-linenos] {
+    &::before {
+      display: inline-block;
+      position: sticky;
+      left: px2rem(-12px);
+      margin-right: px2rem(12px);
+      margin-left: px2rem(-12px);
+      padding-left: px2rem(12px);
+      border-right: px2rem(1px) solid $md-color-black--lightest;
+      background-color: $md-code-gutter;
+      color: $md-color-black--lighter;
+      content: attr(data-linenos);
+      user-select: none;
+
+      @include break-to-device(mobile) {
+        left: px2rem(-32px);
+        margin-left: px2rem(-32px);
+        padding-left: px2rem(32px);
+      }
+    }
+  }
+
   // Block with line numbers
   > .codehilitetable {
     margin: 1em 0;
