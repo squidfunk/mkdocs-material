@@ -287,21 +287,6 @@ export default (_env: never, args: Configuration): Configuration[] => {
         hashDigestLength: 8,
         libraryTarget: "var"
       }
-    },
-
-    /* Packer worker */
-    {
-      ...base,
-      entry: {
-        "assets/javascripts/worker/packer":
-          "src/assets/javascripts/workers/packer/main"
-      },
-      output: {
-        path: path.resolve(__dirname, "material"),
-        filename: `[name]${hash}.js`,
-        hashDigestLength: 8,
-        libraryTarget: "var"
-      }
     }
   ]
 }

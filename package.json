@@ -37,7 +37,6 @@
     "escape-string-regexp": "^2.0.0",
     "lunr": "^2.3.8",
     "lunr-languages": "^1.4.0",
-    "lz-string": "^1.4.4",
     "ramda": "^0.26.1",
     "rxjs": "^6.5.3"
   },

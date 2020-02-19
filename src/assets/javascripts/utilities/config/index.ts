@@ -31,7 +31,6 @@ export interface Config {
   base: string                         /* Base URL */
   worker: {
     search: string                     /* Search worker URL */
-    packer: string                     /* Packer worker URL */
   }
 }
 
@@ -54,5 +53,4 @@ export function isConfig(config: any): config is Config {
       && typeof config.base === "string"
       && typeof config.worker === "object"
       && typeof config.worker.search === "string"
-      && typeof config.worker.packer === "string"
 }
