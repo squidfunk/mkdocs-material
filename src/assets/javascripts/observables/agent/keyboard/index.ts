@@ -46,7 +46,7 @@ export interface Key {
  *
  * @return Test result
  */
-export function mayReceiveKeyboardEvents(el: HTMLElement) {
+export function isSusceptibleToKeyboard(el: HTMLElement) {
   switch (el.tagName) {
 
     /* Form elements */

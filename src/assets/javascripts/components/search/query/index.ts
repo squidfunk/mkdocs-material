@@ -28,10 +28,10 @@ import {
   withLatestFrom
 } from "rxjs/operators"
 
-import { setToggle } from "actions"
 import {
   SearchQuery,
   WorkerHandler,
+  setToggle,
   useToggle,
   watchSearchQuery
 } from "observables"

@@ -89,9 +89,8 @@ export function patchDetails(
       filter(hash => !!hash.length),
       switchMap(hash => of(getElementOrThrow<HTMLElement>(hash))
         .pipe(
-          map(el => el.closest("details")!),
-          filter(el => el && !el.open),
-          map(el => [el, hash] as const)
+          map(el => [el.closest("details")!, hash] as const),
+          filter(([el]) => el && !el.open)
         )
       ),
       catchError(() => NEVER)

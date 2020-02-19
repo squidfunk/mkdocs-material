@@ -45,6 +45,7 @@ import {
 
 import {
   watchToggle,
+  setToggle,
   getElements,
   watchMedia,
   watchDocument,
@@ -59,7 +60,7 @@ import {
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 
-import { setToggle, setScrollLock, resetScrollLock } from "actions"
+import { setScrollLock, resetScrollLock } from "actions"
 import {
   mountHeader,
   mountHero,
@@ -73,6 +74,7 @@ import {
   mountHeaderTitle
 } from "components"
 import { setupClipboard } from "./integrations/clipboard"
+import { setupKeyboard } from "./integrations/keyboard"
 import {
   patchTables,
   patchDetails,
@@ -156,7 +158,7 @@ export function initialize(config: unknown) {
 
   const search$ = useComponent("search")
     .pipe(
-      mountSearch(worker, { keyboard$ }),
+      mountSearch(worker)
     )
 
   const navigation$ = useComponent("navigation")
@@ -186,6 +188,8 @@ export function initialize(config: unknown) {
     )
 
   /* ----------------------------------------------------------------------- */
+
+  setupKeyboard()
 
   // must be in another scope!
   const dialog = renderDialog("Copied to Clipboard")
@@ -275,22 +279,8 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  // General keyboard handlers
-  keyboard$
-    .pipe(
-      takeIf(not(toggle$.pipe(switchMap(watchToggle)))),
-      filter(key => ["s", "f"].includes(key.type)),
-      withLatestFrom(toggle$)
-    )
-      .subscribe(([key, toggle]) => {
-        const el = getActiveElement()
-        if (!(el && mayReceiveKeyboardEvents(el))) {
-          setToggle(toggle, true)
-          key.claim()
-        }
-      })
-
   // if we use a single tab outside of search, unhide all permalinks.
+  // TODO: experimental. necessary!?
   keyboard$
     .pipe(
       takeIf(not(toggle$.pipe(switchMap(watchToggle)))),

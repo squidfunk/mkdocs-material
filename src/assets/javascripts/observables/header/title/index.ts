@@ -20,10 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { MonoTypeOperatorFunction, animationFrameScheduler, pipe } from "rxjs"
+import {
+  MonoTypeOperatorFunction,
+  animationFrameScheduler,
+  pipe
+} from "rxjs"
 import { finalize, observeOn, tap } from "rxjs/operators"
 
-import { resetHeaderTitleActive, setHeaderTitleActive } from "actions"
+import { resetHeaderTitle, setHeaderTitle } from "actions"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -44,12 +48,12 @@ export function paintHeaderTitle(
     /* Defer repaint to next animation frame */
     observeOn(animationFrameScheduler),
     tap(active => {
-      setHeaderTitleActive(el, active)
+      setHeaderTitle(el, active)
     }),
 
     /* Reset on complete or error */
     finalize(() => {
-      resetHeaderTitleActive(el)
+      resetHeaderTitle(el)
     })
   )
 }

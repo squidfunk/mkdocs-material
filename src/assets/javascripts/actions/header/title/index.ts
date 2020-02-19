@@ -30,7 +30,7 @@
  * @param el - Header title element
  * @param value - Whether the title is shown
  */
-export function setHeaderTitleActive(
+export function setHeaderTitle(
   el: HTMLElement, value: boolean
 ): void {
   el.setAttribute("data-md-state", value ? "active" : "")
@@ -41,7 +41,7 @@ export function setHeaderTitleActive(
  *
  * @param el - Header element
  */
-export function resetHeaderTitleActive(
+export function resetHeaderTitle(
   el: HTMLElement
 ): void {
   el.removeAttribute("data-md-state")
