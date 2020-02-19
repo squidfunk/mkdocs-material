@@ -21,7 +21,7 @@
  */
 
 import { NEVER, Observable } from "rxjs"
-import { catchError, filter, switchMap } from "rxjs/operators"
+import { catchError, map, switchMap, take } from "rxjs/operators"
 
 import { getElementOrThrow, getElements } from "observables"
 import { renderSource } from "templates"
@@ -100,11 +100,11 @@ export function patchSource(
 ): void {
   document$
     .pipe(
-      switchMap(() => {
-        const el = getElementOrThrow<HTMLAnchorElement>(".md-source[href]")
-        return cache(`${hash(el.href)}`, () => fetchSourceFacts(el.href))
-      }),
-      filter(facts => !!facts.length),
+      map(() => getElementOrThrow<HTMLAnchorElement>(".md-source[href]")),
+      take(1),
+      switchMap(({ href }) => (
+        cache(`${hash(href)}`, () => fetchSourceFacts(href))
+      )),
       catchError(() => NEVER)
     )
       .subscribe(facts => {

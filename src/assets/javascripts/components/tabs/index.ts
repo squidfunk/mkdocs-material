@@ -83,7 +83,7 @@ export function mountTabs(
 
           /* Mount tabs below screen breakpoint */
           } else {
-            return of({ hidden: screen })
+            return of({ hidden: true })
           }
         })
       )

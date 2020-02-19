@@ -32,10 +32,20 @@ import {
   setElementFocus,
   setToggle,
   useToggle,
-  watchKeyboard,
   watchToggle
 } from "observables"
 import { not, takeIf } from "utilities"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Setup options
+ */
+interface SetupOptions {
+  keyboard$: Observable<Key>           /* Keyboard observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -46,8 +56,9 @@ import { not, takeIf } from "utilities"
  *
  * @return Keyboard observable
  */
-export function setupKeyboard(): Observable<Key> {
-  const keyboard$ = watchKeyboard()
+export function setupKeyboard(
+  { keyboard$ }: SetupOptions
+): Observable<Key> {
 
   /* Setup keyboard handlers in search mode */
   const toggle$ = useToggle("search")

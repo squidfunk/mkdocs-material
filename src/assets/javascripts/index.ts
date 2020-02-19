@@ -187,12 +187,18 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  setupKeyboard()
+  setupKeyboard({ keyboard$ })
 
-  // must be in another scope!
-  const dialog = renderDialog("Copied to Clipboard")
+  patchTables({ document$ })
+  patchDetails({ document$, hash$ })
+  patchSource({ document$ })
+
+  /* Force 1px scroll offset to trigger overflow scrolling */
+  if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
+    patchScrollfix({ document$ })
 
   // snackbar for copy to clipboard
+  const dialog = renderDialog("Copied to Clipboard")
   setupClipboard({ document$ })
     .pipe(
       switchMap(ev => {
@@ -210,14 +216,6 @@ export function initialize(config: unknown) {
       })
     )
     .subscribe()
-
-  patchTables({ document$ })
-  patchDetails({ document$, hash$ })
-  patchSource({ document$ })
-
-  /* Force 1px scroll offset to trigger overflow scrolling */
-  if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
-    patchScrollfix({ document$ })
 
   // TODO: general keyboard handler...
   // put into main!?

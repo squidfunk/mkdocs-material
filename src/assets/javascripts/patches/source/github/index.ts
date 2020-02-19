@@ -23,7 +23,12 @@
 import { Repo, User } from "github-types"
 import { Observable, of } from "rxjs"
 import { ajax } from "rxjs/ajax"
-import { filter, pluck, shareReplay, switchMap } from "rxjs/operators"
+import {
+  filter,
+  pluck,
+  shareReplay,
+  switchMap
+} from "rxjs/operators"
 
 import { round } from "utilities"
 

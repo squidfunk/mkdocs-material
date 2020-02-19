@@ -23,7 +23,12 @@
 import { ProjectSchema } from "gitlab"
 import { Observable } from "rxjs"
 import { ajax } from "rxjs/ajax"
-import { filter, map, pluck, shareReplay } from "rxjs/operators"
+import {
+  filter,
+  map,
+  pluck,
+  shareReplay
+} from "rxjs/operators"
 
 import { round } from "utilities"
 

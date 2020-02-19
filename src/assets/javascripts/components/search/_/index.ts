@@ -62,17 +62,17 @@ export function mountSearch(
   return pipe(
     switchMap(() => {
 
-      /* Mount search reset */
-      const reset$ = useComponent("search-reset")
-        .pipe(
-          mountSearchReset()
-        )
-
       /* Mount search query */
       const query$ = useComponent<HTMLInputElement>("search-query")
         .pipe(
           mountSearchQuery(handler),
           shareReplay(1)
+        )
+
+      /* Mount search reset */
+      const reset$ = useComponent("search-reset")
+        .pipe(
+          mountSearchReset()
         )
 
       /* Mount search result */
