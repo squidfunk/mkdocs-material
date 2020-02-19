@@ -21,7 +21,7 @@
  */
 
 import { Observable } from "rxjs"
-import { map, shareReplay, tap } from "rxjs/operators"
+import { map } from "rxjs/operators"
 
 import { getElements } from "observables"
 import { renderTable } from "templates"
@@ -48,22 +48,19 @@ interface MountOptions {
  * scrolling on smaller screen sizes.
  *
  * @param options - Options
- *
- * @return Table elements observable
  */
 export function patchTables(
   { document$ }: MountOptions
-): Observable<HTMLTableElement[]> {
+): void {
   const placeholder = document.createElement("table")
-  return document$
+  document$
     .pipe(
-      map(() => getElements<HTMLTableElement>("table:not([class])")),
-      tap(els => {
+      map(() => getElements<HTMLTableElement>("table:not([class])"))
+    )
+      .subscribe(els => {
         for (const el of els) {
           el.replaceWith(placeholder)
           placeholder.replaceWith(renderTable(el))
         }
-      }),
-      shareReplay(1)
-    )
+      })
 }

@@ -21,12 +21,18 @@
  */
 
 import { identity } from "ramda"
-import { Observable, animationFrameScheduler, fromEvent, merge, of } from "rxjs"
+import {
+  Observable,
+  animationFrameScheduler,
+  fromEvent,
+  merge,
+  of
+} from "rxjs"
 import {
   filter,
   map,
+  mapTo,
   observeOn,
-  shareReplay,
   switchMap,
   switchMapTo,
   tap
@@ -57,16 +63,13 @@ interface MountOptions {
  * printing, so the whole content of the page is included.
  *
  * @param options - Options
- *
- * @return Details elements observable
  */
 export function patchDetails(
   { document$, hash$ }: MountOptions
-): Observable<HTMLDetailsElement[]> {
+): void {
   const els$ = document$
     .pipe(
-      map(() => getElements<HTMLDetailsElement>("details")),
-      shareReplay(1)
+      map(() => getElements<HTMLDetailsElement>("details"))
     )
 
   /* Open all details before printing */
@@ -99,14 +102,11 @@ export function patchDetails(
 
           /* Defer anchor jump to next animation frame */
           observeOn(animationFrameScheduler),
-          tap(() => {
-            location.hash = hash
-          })
+          mapTo(hash)
         )
       )
     )
-      .subscribe()
-
-  /* Return details elements */
-  return els$
+      .subscribe(hash => {
+        location.hash = hash
+      })
 }

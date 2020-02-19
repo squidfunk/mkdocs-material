@@ -206,15 +206,11 @@ export function initialize(config: unknown) {
     .subscribe()
 
   patchTables({ document$ })
-    .subscribe()
-
   patchDetails({ document$, hash$ })
-    .subscribe()
 
   /* Force 1px scroll offset to trigger overflow scrolling */
   if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
     patchScrollfix({ document$ })
-      .subscribe()
 
 
 

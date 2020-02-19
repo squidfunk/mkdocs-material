@@ -21,13 +21,7 @@
  */
 
 import { Observable, fromEvent, merge } from "rxjs"
-import {
-  map,
-  mapTo,
-  shareReplay,
-  switchMap,
-  tap
-} from "rxjs/operators"
+import { map, mapTo, switchMap } from "rxjs/operators"
 
 import { getElements } from "observables"
 
@@ -56,19 +50,18 @@ interface MountOptions {
  * @see https://bit.ly/2SCtAOO - Original source
  *
  * @param options - Options
- *
- * @return Elements observable
  */
 export function patchScrollfix(
   { document$ }: MountOptions
-): Observable<HTMLElement> {
-  return document$
+): void {
+  document$
     .pipe(
       map(() => getElements("[data-md-scrollfix]")),
-      switchMap(els => merge(
-        ...els.map(el => fromEvent(el, "touchstart").pipe(mapTo(el))))
-      ),
-      tap(el => {
+      switchMap(els => merge(...els.map(el => (
+        fromEvent(el, "touchstart").pipe(mapTo(el))
+      ))))
+    )
+      .subscribe(el => {
         const top = el.scrollTop
 
         /* We're at the top of the container */
@@ -79,7 +72,5 @@ export function patchScrollfix(
         } else if (top + el.offsetHeight === el.scrollHeight) {
           el.scrollTop = top - 1
         }
-      }),
-      shareReplay(1)
-    )
+      })
 }
