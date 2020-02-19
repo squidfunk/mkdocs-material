@@ -83,29 +83,30 @@ export function watchMain(
     )
 
   /* Compute the main area's visible height */
-  const height$ = combineLatest([viewport$, adjust$])
+  const height$ = combineLatest([adjust$, viewport$])
     .pipe(
-      map(([{ offset: { y }, size: { height } }, adjust]) => {
+      map(([adjust, { offset: { y }, size: { height } }]) => {
         const top    = el.offsetTop
         const bottom = el.offsetHeight + top
         return height
           - Math.max(0, top    - y,  adjust)
           - Math.max(0, height + y - bottom)
       }),
+      map(height => Math.max(0, height)),
       distinctUntilChanged()
     )
 
   /* Compute whether the viewport offset is past the main area's top */
-  const active$ = combineLatest([viewport$, adjust$])
+  const active$ = combineLatest([adjust$, viewport$])
     .pipe(
-      map(([{ offset: { y } }, adjust]) => y >= el.offsetTop - adjust),
+      map(([adjust, { offset: { y } }]) => y >= el.offsetTop - adjust),
       distinctUntilChanged()
     )
 
   /* Combine into a single hot observable */
-  return combineLatest([height$, adjust$, active$])
+  return combineLatest([adjust$, height$, active$])
     .pipe(
-      map(([height, adjust, active]) => ({
+      map(([adjust, height, active]) => ({
         offset: el.offsetTop - adjust,
         height,
         active

@@ -24,6 +24,7 @@ import { Observable, OperatorFunction, pipe } from "rxjs"
 import { map, shareReplay, switchMap } from "rxjs/operators"
 
 import {
+  Header,
   Main,
   NavigationLayer,
   Sidebar,
@@ -70,6 +71,7 @@ export type Navigation =
  * Mount options
  */
 interface MountOptions {
+  header$: Observable<Header>          /* Header observable */
   main$: Observable<Main>              /* Main area observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
   screen$: Observable<boolean>         /* Screen media observable */
@@ -87,7 +89,7 @@ interface MountOptions {
  * @return Operator function
  */
 export function mountNavigation(
-  { main$, viewport$, screen$ }: MountOptions
+  { header$, main$, viewport$, screen$ }: MountOptions
 ): OperatorFunction<HTMLElement, Navigation> {
   return pipe(
     switchMap(el => screen$
@@ -98,7 +100,7 @@ export function mountNavigation(
           if (screen) {
             return watchSidebar(el, { main$, viewport$ })
               .pipe(
-                paintSidebar(el),
+                paintSidebar(el, { header$ }),
                 map(sidebar => ({ sidebar }))
               )
 

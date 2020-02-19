@@ -25,6 +25,31 @@
  * ------------------------------------------------------------------------- */
 
 /**
+ * Set sidebar offset
+ *
+ * @param el - Sidebar element
+ * @param value - Sidebar offset
+ */
+export function setSidebarOffset(
+  el: HTMLElement, value: number
+): void {
+  el.style.top = `${value}px`
+}
+
+/**
+ * Reset sidebar offset
+ *
+ * @param el - Sidebar element
+ */
+export function resetSidebarOffset(
+  el: HTMLElement
+): void {
+  el.style.top = ""
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
  * Set sidebar height
  *
  * @param el - Sidebar element

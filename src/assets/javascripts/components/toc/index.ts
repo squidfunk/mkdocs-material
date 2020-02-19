@@ -108,7 +108,7 @@ export function mountTableOfContents(
             /* Watch and paint sidebar */
             const sidebar$ = watchSidebar(el, { main$, viewport$ })
               .pipe(
-                paintSidebar(el)
+                paintSidebar(el, { header$ })
               )
 
             /* Watch and paint anchor list (scroll spy) */

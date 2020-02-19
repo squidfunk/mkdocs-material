@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import { equals } from "ramda"
 import {
   MonoTypeOperatorFunction,
   Observable,
@@ -30,21 +29,26 @@ import {
 } from "rxjs"
 import {
   distinctUntilChanged,
+  distinctUntilKeyChanged,
   finalize,
   map,
   observeOn,
   shareReplay,
-  tap
+  tap,
+  withLatestFrom
 } from "rxjs/operators"
 
 import {
   resetSidebarHeight,
   resetSidebarLock,
+  resetSidebarOffset,
   setSidebarHeight,
-  setSidebarLock
+  setSidebarLock,
+  setSidebarOffset
 } from "actions"
 
 import { Viewport } from "../../agent"
+import { Header } from "../../header"
 import { Main } from "../_"
 
 /* ----------------------------------------------------------------------------
@@ -71,6 +75,13 @@ interface WatchOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
 }
 
+/**
+ * Paint options
+ */
+interface PaintOptions {
+  header$: Observable<Header>          /* Header observable */
+}
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -93,30 +104,42 @@ export function watchSidebar(
 ): Observable<Sidebar> {
 
   /* Adjust for internal main area offset */
-  const adjust = parseFloat(
-    getComputedStyle(el.parentElement!)
-      .getPropertyValue("padding-top")
-  )
+  const adjust$ = viewport$
+    .pipe(
+      distinctUntilKeyChanged("size"),
+      map(() => parseFloat(
+        getComputedStyle(el.parentElement!)
+          .getPropertyValue("padding-top")
+      )),
+      distinctUntilChanged()
+    )
 
   /* Compute the sidebar's available height */
-  const height$ = combineLatest([viewport$, main$])
+  const height$ = viewport$
     .pipe(
-      map(([{ offset: { y } }, { offset, height }]) => {
-        return height - adjust + Math.min(adjust, Math.max(0, y - offset))
-      })
+      withLatestFrom(adjust$, main$),
+      map(([{ offset: { y } }, adjust, { offset, height }]) => (
+        height
+          + Math.min(adjust, Math.max(0, y - offset))
+          - adjust
+      )),
+      distinctUntilChanged()
     )
 
   /* Compute whether the sidebar should be locked */
-  const lock$ = combineLatest([viewport$, main$])
+  const lock$ = viewport$
     .pipe(
-      map(([{ offset: { y } }, { offset }]) => y >= offset + adjust)
+      withLatestFrom(adjust$, main$),
+      map(([{ offset: { y } }, adjust, { offset }]) => (
+        y >= offset + adjust
+      )),
+      distinctUntilChanged()
     )
 
   /* Combine into single hot observable */
   return combineLatest([height$, lock$])
     .pipe(
       map(([height, lock]) => ({ height, lock })),
-      distinctUntilChanged<Sidebar>(equals),
       shareReplay(1)
     )
 }
@@ -127,23 +150,35 @@ export function watchSidebar(
  * Paint sidebar
  *
  * @param el - Sidebar element
+ * @param options - Options
  *
  * @return Operator function
  */
 export function paintSidebar(
-  el: HTMLElement
+  el: HTMLElement, { header$ }: PaintOptions
 ): MonoTypeOperatorFunction<Sidebar> {
   return pipe(
 
     /* Defer repaint to next animation frame */
     observeOn(animationFrameScheduler),
-    tap(({ height, lock }) => {
+    withLatestFrom(header$),
+    tap(([{ height, lock }, { height: offset }]) => {
       setSidebarHeight(el, height)
       setSidebarLock(el, lock)
+
+      /* Set offset in locked state depending on header height */
+      if (lock)
+        setSidebarOffset(el, offset)
+      else
+        resetSidebarOffset(el)
     }),
+
+    /* Re-map to sidebar */
+    map(([sidebar]) => sidebar),
 
     /* Reset on complete or error */
     finalize(() => {
+      resetSidebarOffset(el)
       resetSidebarHeight(el)
       resetSidebarLock(el)
     })

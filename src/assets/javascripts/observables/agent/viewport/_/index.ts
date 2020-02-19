@@ -88,9 +88,9 @@ export function watchViewport(): Observable<Viewport> {
 export function watchViewportAt(
   el: HTMLElement, { header$, viewport$ }: WatchRelativeOptions
 ): Observable<Viewport> {
-  return combineLatest([viewport$, header$])
+  return combineLatest([header$, viewport$])
     .pipe(
-      map(([{ offset, size }, { height }]) => ({
+      map(([{ height }, { offset, size }]) => ({
         offset: {
           x: offset.x - el.offsetLeft,
           y: offset.y - el.offsetTop + height

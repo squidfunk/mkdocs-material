@@ -161,7 +161,7 @@ export function initialize(config: unknown) {
 
   const navigation$ = useComponent("navigation")
     .pipe(
-      mountNavigation({ main$, viewport$, screen$ })
+      mountNavigation({ header$, main$, viewport$, screen$ })
     )
 
   const toc$ = useComponent("toc")

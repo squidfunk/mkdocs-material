@@ -149,9 +149,9 @@ export function watchAnchorList(
       }),
 
       /* Re-compute partition when viewport offset changes */
-      switchMap(index => combineLatest(viewport$, adjust$)
+      switchMap(index => combineLatest(adjust$, viewport$)
         .pipe(
-          scan(([prev, next], [{ offset: { y } }, adjust]) => {
+          scan(([prev, next], [adjust, { offset: { y } }]) => {
 
             /* Look forward */
             while (next.length) {

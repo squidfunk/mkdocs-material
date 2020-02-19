@@ -90,9 +90,9 @@ export function watchNavigationLayer(
   }
 
   /* Determine topmost layer */
-  const layer$ = merge(
-    ...[...table.keys()].map(input => fromEvent(input, "change"))
-  )
+  const layer$ = merge(...[...table.keys()].map(input => (
+    fromEvent(input, "change")
+  )))
     .pipe(
       map(() => getElementOrThrow(".md-nav__list", table.get(
         findLast(({ checked }) => checked, [...table.keys()])!
