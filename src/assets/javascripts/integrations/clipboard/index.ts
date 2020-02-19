@@ -70,10 +70,14 @@ export function setupClipboard(
     })
 
   /* Initialize and setup clipboard */
-  return fromEventPattern<ClipboardJS.Event>(next => {
-    const clipboard = new ClipboardJS(".md-clipboard")
-    clipboard.on("success", next)
+  const clipboard$ = fromEventPattern<ClipboardJS.Event>(next => {
+    new ClipboardJS(".md-clipboard").on("success", next)
   })
+
+  // TODO: integrate rendering of dialog
+
+  /*  */
+  return clipboard$
     .pipe(
       shareReplay(1)
     )

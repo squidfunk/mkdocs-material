@@ -28,7 +28,7 @@ import * as path from "path"
 import { toPairs } from "ramda"
 import { minify as minjs } from "terser"
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin"
-import { Configuration, ProvidePlugin } from "webpack"
+import { Configuration } from "webpack"
 import * as AssetsManifestPlugin from "webpack-assets-manifest"
 
 /* ----------------------------------------------------------------------------
@@ -286,17 +286,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
         filename: `[name]${hash}.js`,
         hashDigestLength: 8,
         libraryTarget: "var"
-      },
-
-      /* Plugins */
-      plugins: [
-        ...base.plugins,
-
-        /* Inject globals */
-        new ProvidePlugin({
-          lunr: "lunr"
-        })
-      ]
+      }
     },
 
     /* Packer worker */

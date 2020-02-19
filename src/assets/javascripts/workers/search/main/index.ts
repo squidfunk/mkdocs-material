@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+import "expose-loader?lunr!lunr"
+
 import { SearchIndex, SearchIndexConfig } from "integrations/search"
 
 import { SearchMessage, SearchMessageType } from "../message"
@@ -56,7 +58,7 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
   }
 
   /* Add multi-language support */
-  if (scripts.length > 1)
+  if (config.lang.length > 1)
     scripts.push(`${base}/min/lunr.multi.min.js`)
 
   /* Load scripts synchronously */

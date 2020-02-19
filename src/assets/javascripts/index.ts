@@ -54,9 +54,7 @@ import {
   watchViewport,
   watchKeyboard,
   watchToggleMap,
-  useToggle,
-  getActiveElement,
-  mayReceiveKeyboardEvents
+  useToggle
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 
