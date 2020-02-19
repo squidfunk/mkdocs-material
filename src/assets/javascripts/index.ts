@@ -28,7 +28,6 @@ import "../stylesheets/app-palette.scss"
 
 import { values } from "ramda"
 import {
-  EMPTY,
   merge,
   of,
   combineLatest,
@@ -45,7 +44,6 @@ import {
 } from "rxjs/operators"
 
 import {
-  getElement,
   watchToggle,
   getElements,
   watchMedia,
@@ -60,7 +58,7 @@ import {
   mayReceiveKeyboardEvents
 } from "./observables"
 import { setupSearchWorker } from "./workers"
-import { renderSource } from "templates"
+
 import { setToggle, setScrollLock, resetScrollLock } from "actions"
 import {
   mountHeader,
@@ -74,10 +72,10 @@ import {
   watchComponentMap,
   mountHeaderTitle
 } from "components"
-import { mountClipboard } from "./integrations/clipboard"
+import { setupClipboard } from "./integrations/clipboard"
 import { patchTables, patchDetails, patchScrollfix } from "patches"
 import { takeIf, not, isConfig } from "utilities"
-import { fetchSourceFacts } from "integrations/source"
+import { setupSourceFacts } from "integrations/source"
 import { renderDialog } from "templates/dialog"
 
 /* ------------------------------------------------------------------------- */
@@ -88,31 +86,6 @@ document.documentElement.classList.add("js")
 /* Test for iOS */
 if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
   document.documentElement.classList.add("ios")
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Yes, this is a super hacky implementation. Needs clean up.
- */
-function repository() {
-  const el = getElement<HTMLAnchorElement>(".md-source[href]") // TODO: dont use classes
-  // console.log(el)
-  if (!el)
-    return EMPTY
-
-  const data = sessionStorage.getItem("repository")
-  if (data) {
-    const x = JSON.parse(data)
-    return of(x)
-  }
-
-  return fetchSourceFacts(el.href)
-    .pipe(
-      tap(data => sessionStorage.setItem("repository", JSON.stringify(data)))
-    )
-}
-
-// memoize
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -214,7 +187,7 @@ export function initialize(config: unknown) {
   const dialog = renderDialog("Copied to Clipboard")
 
   // snackbar for copy to clipboard
-  mountClipboard({ document$ })
+  setupClipboard({ document$ })
     .pipe(
       switchMap(ev => {
         ev.clearSelection()
@@ -235,13 +208,14 @@ export function initialize(config: unknown) {
   patchTables({ document$ })
     .subscribe()
 
-  patchDetails({ document$ })
+  patchDetails({ document$, hash$ })
     .subscribe()
 
   /* Force 1px scroll offset to trigger overflow scrolling */
   if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
     patchScrollfix({ document$ })
       .subscribe()
+
 
 
   // TODO: general keyboard handler...
@@ -276,28 +250,6 @@ export function initialize(config: unknown) {
       })
     )
       .subscribe()
-
-  // TODO: patch details!
-
-  /* Open details after anchor jump */
-  merge(hash$, of(location.hash)) // getLocationHash
-    .subscribe(hash => {
-      const el = getElement(hash)
-      console.log("jump to", hash)
-      if (typeof el !== "undefined") {
-        const parent = el.closest("details")
-        if (parent && !parent.open) { // only if it is not open!
-          parent.open = true
-
-          /* Hack: force reload for repositioning */ // TODO. what happens here!?
-          location.hash = "" // reset
-          requestAnimationFrame(() => {
-            location.hash = hash // tslint:disable-line
-          })
-          // TODO: setLocationHash() + forceLocationHashChange
-        }
-      }
-    })
 
   // Scroll lock
   const toggle$ = useToggle("search")
@@ -353,20 +305,9 @@ export function initialize(config: unknown) {
 
   // build a notification component! feed txt into it...
 
-  /* ----------------------------------------------------------------------- */
-
   // TODO: WIP repo rendering
-  repository().subscribe(facts => {
-    if (facts.length) {
-      const sources = getElements(".md-source__repository")
-      sources.forEach(repo => {
-        repo.dataset.mdState = "done"
-        repo.appendChild(
-          renderSource(facts)
-        )
-      })
-    }
-  })
+  setupSourceFacts({ document$ })
+    .subscribe()
 
   /* ----------------------------------------------------------------------- */
 

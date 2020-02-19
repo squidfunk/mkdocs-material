@@ -21,16 +21,18 @@
  */
 
 import { identity } from "ramda"
-import { Observable, fromEvent, merge } from "rxjs"
+import { Observable, animationFrameScheduler, fromEvent, merge, of } from "rxjs"
 import {
   filter,
   map,
+  observeOn,
   shareReplay,
+  switchMap,
   switchMapTo,
   tap
 } from "rxjs/operators"
 
-import { getElements, watchMedia } from "observables"
+import { getElement, getElements, watchMedia } from "observables"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -41,6 +43,7 @@ import { getElements, watchMedia } from "observables"
  */
 interface MountOptions {
   document$: Observable<Document>      /* Document observable */
+  hash$: Observable<string>            /* Location hash observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -58,19 +61,52 @@ interface MountOptions {
  * @return Details elements observable
  */
 export function patchDetails(
-  { document$ }: MountOptions
+  { document$, hash$ }: MountOptions
 ): Observable<HTMLDetailsElement[]> {
-  return merge(
+  const els$ = document$
+    .pipe(
+      map(() => getElements<HTMLDetailsElement>("details")),
+      shareReplay(1)
+    )
+
+  /* Open all details before printing */
+  merge(
     watchMedia("print").pipe(filter(identity)), // Webkit
     fromEvent(window, "beforeprint")            // IE, FF
   )
     .pipe(
-      switchMapTo(document$),
-      map(() => getElements<HTMLDetailsElement>("details")),
-      tap(els => {
-        for (const detail of els)
-          detail.setAttribute("open", "")
-      }),
-      shareReplay(1)
+      switchMapTo(els$)
     )
+      .subscribe(els => {
+        for (const el of els)
+          el.setAttribute("open", "")
+      })
+
+  /* Open details before anchor jump */
+  merge(hash$, of(location.hash))
+    .pipe(
+      filter(hash => !!hash.length),
+      switchMap(hash => of(getElement<HTMLElement>(hash) || document.body)
+        .pipe(
+          map(el => el.closest("details")!),
+          filter(el => el && !el.open),
+
+          /* Open details and temporarily reset anchor */
+          tap(el => {
+            el.setAttribute("open", "")
+            location.hash = ""
+          }),
+
+          /* Defer anchor jump to next animation frame */
+          observeOn(animationFrameScheduler),
+          tap(() => {
+            location.hash = hash
+          })
+        )
+      )
+    )
+      .subscribe()
+
+  /* Return details elements */
+  return els$
 }

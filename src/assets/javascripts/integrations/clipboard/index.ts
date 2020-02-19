@@ -32,9 +32,9 @@ import { renderClipboard } from "templates"
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount options
+ * Setup options
  */
-interface MountOptions {
+interface SetupOptions {
   document$: Observable<Document>      /* Document observable */
 }
 
@@ -43,7 +43,7 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount clipboard
+ * Setup clipboard
  *
  * This function implements the Clipboard.js integration and injects a button
  * into all code blocks when the document changes.
@@ -52,8 +52,8 @@ interface MountOptions {
  *
  * @return Clipboard observable
  */
-export function mountClipboard(
-  { document$ }: MountOptions
+export function setupClipboard(
+  { document$ }: SetupOptions
 ): Observable<ClipboardJS.Event> {
   if (ClipboardJS.isSupported()) {
     return document$
@@ -69,7 +69,7 @@ export function mountClipboard(
           }
         }),
 
-        /* Initialize and mount clipboard */
+        /* Initialize and setup clipboard */
         switchMap(() => {
           return fromEventPattern<ClipboardJS.Event>(next => {
             const clipboard = new ClipboardJS(".md-clipboard")

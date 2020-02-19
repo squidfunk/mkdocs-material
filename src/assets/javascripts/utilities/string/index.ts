@@ -77,3 +77,40 @@ export function truncate(value: string, n: number): string {
   }
   return value
 }
+
+/**
+ * Round a number for display with source facts
+ *
+ * This is a reverse engineered implementation of GitHub's weird rounding
+ * algorithm for stars, forks and all other numbers. Probably incorrect.
+ *
+ * @param value - Original value
+ *
+ * @return Rounded value
+ */
+export function round(value: number): string {
+  if (value > 999) {
+    const digits = +((value - 950) % 1000 > 99)
+    return `${((value + 1) / 1000).toFixed(digits)}k`
+  } else {
+    return value.toString()
+  }
+}
+
+/**
+ * Simple hash function
+ *
+ * @see https://bit.ly/2wsVjJ4 - Original source
+ *
+ * @param value - Value to be hashed
+ *
+ * @return Hash
+ */
+export function hash(value: string): number {
+    let k = 0
+    for (let i = 0, len = value.length; i < len; i++) {
+      k  = ((k << 5) - k) + value.charCodeAt(i)
+      k |= 0 // Convert to 32bit integer
+    }
+    return k
+  }

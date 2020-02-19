@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
+import { Observable, of } from "rxjs"
 import { map } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
@@ -41,4 +41,40 @@ export function not(
     .pipe(
       map(active => !active)
     )
+}
+
+/**
+ * Cache the last value emitted by an observable in session storage
+ *
+ * Note that the value must be serializable as `JSON`.
+ *
+ * @template T - Value type
+ *
+ * @param key - Cache key
+ * @param factory - Observable factory
+ *
+ * @return Value observable
+ */
+export function cache<T>(
+  key: string, factory: () => Observable<T>
+): Observable<T> {
+  const data = sessionStorage.getItem(key)
+  if (data) {
+    return of(JSON.parse(data) as T)
+
+  /* Retrieve value from observable factory and write to storage */
+  } else {
+    const value$ = factory()
+    value$
+      .subscribe(value => {
+        try {
+          sessionStorage.setItem(key, JSON.stringify(value))
+        } catch (err) {
+          /* Just swallow */
+        }
+      })
+
+    /* Return value observable */
+    return value$
+  }
 }

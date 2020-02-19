@@ -25,7 +25,9 @@ import { Observable, of } from "rxjs"
 import { ajax } from "rxjs/ajax"
 import { filter, pluck, shareReplay, switchMap } from "rxjs/operators"
 
-import { SourceFacts, roundSourceFactValue } from "../_"
+import { round } from "utilities"
+
+import { SourceFacts } from ".."
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -57,15 +59,15 @@ export function fetchSourceFactsFromGitHub(
         if (typeof repo !== "undefined") {
           const { stargazers_count, forks_count }: Repo = data
           return of([
-            `${roundSourceFactValue(stargazers_count || 0)} Stars`,
-            `${roundSourceFactValue(forks_count || 0)} Forks`
+            `${round(stargazers_count || 0)} Stars`,
+            `${round(forks_count || 0)} Forks`
           ])
 
         /* GitHub user/organization */
         } else {
           const { public_repos }: User = data
           return of([
-            `${roundSourceFactValue(public_repos || 0)} Repositories`
+            `${round(public_repos || 0)} Repositories`
           ])
         }
       }),
