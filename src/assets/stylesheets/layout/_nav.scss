@@ -193,8 +193,8 @@
 
         // Main lists
         ~ .md-nav__list {
-          background-color: var(--md-color-white);
-          box-shadow: inset 0 px2rem(1px) 0 var(--md-color-black--lightest);
+          background-color: var(--md-color-background);
+          box-shadow: inset 0 px2rem(1px) 0 var(--md-color-text--lightest);
           overflow-y: auto;
           scroll-snap-type: y mandatory;
 

@@ -33,7 +33,7 @@
   height: px2rem(24px);
   transition: color 250ms;
   border-radius: px2rem(2px);
-  color: $md-color-black--lightest;
+  color: var(--md-color-text--lightest);
   cursor: pointer;
   z-index: 1;
   // Hack: put everything on the GPU to omit flickering
