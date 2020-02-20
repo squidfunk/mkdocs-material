@@ -49,6 +49,7 @@ theme:
   language: en
   feature:
     tabs: true
+    instant: false
   palette:
     primary: indigo
     accent: indigo
