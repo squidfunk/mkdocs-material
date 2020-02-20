@@ -81,14 +81,13 @@ export function truncate(value: string, n: number): string {
 /**
  * Round a number for display with source facts
  *
- * This is a reverse engineered implementation of GitHub's weird rounding
- * algorithm for stars, forks and all other numbers. While all numbers below
- * `1,000` are returned as-is, bigger numbers are converted to fixed numbers
- * in the following way:
+ * This is a reverse engineered version of GitHub's weird rounding algorithm
+ * for stars, forks and all other numbers. While all numbers below `1,000` are
+ * returned as-is, bigger numbers are converted to fixed numbers:
  *
  * - `1,049` => `1k`
- * - `1,050` => `1,1k`
- * - `1,949` => `1,9k`
+ * - `1,050` => `1.1k`
+ * - `1,949` => `1.9k`
  * - `1,950` => `2k`
  *
  * @param value - Original value

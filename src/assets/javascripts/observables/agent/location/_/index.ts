@@ -51,6 +51,6 @@ export function watchLocation(): Subject<string> {
     )
       .subscribe(location$)
 
-  /* Return subject */
+  /* Return location subject */
   return location$
 }

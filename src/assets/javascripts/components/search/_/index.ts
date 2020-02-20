@@ -20,17 +20,11 @@
  * IN THE SOFTWARE.
  */
 
-import { OperatorFunction, combineLatest, pipe } from "rxjs"
+import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
 import { map, shareReplay, switchMap } from "rxjs/operators"
 
 import { SearchResult } from "integrations/search"
-import { SearchQuery, WorkerHandler } from "observables"
-import { SearchMessage } from "workers"
-
-import { useComponent } from "../../_"
-import { mountSearchQuery } from "../query"
-import { mountSearchReset } from "../reset"
-import { mountSearchResult } from "../result"
+import { SearchQuery } from "observables"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -45,48 +39,37 @@ export interface Search {
 }
 
 /* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Mount options
+ */
+interface MountOptions {
+  query$: Observable<SearchQuery>      /* Search query observable */
+  reset$: Observable<void>             /* Search reset observable */
+  result$: Observable<SearchResult[]>  /* Search result observable */
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
  * Mount search from source observable
  *
- * @param handler - Worker handler
  * @param options - Options
  *
  * @return Search observable
  */
 export function mountSearch(
-  handler: WorkerHandler<SearchMessage>
+  { query$, reset$, result$ }: MountOptions
 ): OperatorFunction<HTMLElement, Search> {
   return pipe(
-    switchMap(() => {
-
-      /* Mount search query */
-      const query$ = useComponent<HTMLInputElement>("search-query")
-        .pipe(
-          mountSearchQuery(handler),
-          shareReplay(1)
-        )
-
-      /* Mount search reset */
-      const reset$ = useComponent("search-reset")
-        .pipe(
-          mountSearchReset()
-        )
-
-      /* Mount search result */
-      const result$ = useComponent("search-result")
-        .pipe(
-          mountSearchResult(handler, { query$ })
-        )
-
-      /* Combine into a single hot observable */
-      return combineLatest([query$, result$, reset$])
-        .pipe(
-          map(([query, result]) => ({ query, result })),
-          shareReplay(1)
-        )
-    })
+    switchMap(() => combineLatest([query$, result$, reset$])
+      .pipe(
+        map(([query, result]) => ({ query, result })),
+        shareReplay(1)
+      ))
   )
 }

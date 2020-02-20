@@ -52,15 +52,15 @@ interface MountOptions {
 export function patchTables(
   { document$ }: MountOptions
 ): void {
-  const placeholder = document.createElement("table")
+  const sentinel = document.createElement("table")
   document$
     .pipe(
       map(() => getElements<HTMLTableElement>("table:not([class])"))
     )
       .subscribe(els => {
         for (const el of els) {
-          el.replaceWith(placeholder)
-          placeholder.replaceWith(renderTable(el))
+          el.replaceWith(sentinel)
+          sentinel.replaceWith(renderTable(el))
         }
       })
 }

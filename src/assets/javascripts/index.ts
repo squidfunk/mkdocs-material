@@ -29,7 +29,6 @@ import "../stylesheets/app-palette.scss"
 import { values } from "ramda"
 import {
   merge,
-  of,
   combineLatest,
   animationFrameScheduler
 } from "rxjs"
@@ -40,7 +39,9 @@ import {
   filter,
   withLatestFrom,
   observeOn,
-  take
+  take,
+  mapTo,
+  shareReplay
 } from "rxjs/operators"
 
 import {
@@ -52,9 +53,9 @@ import {
   watchLocation,
   watchLocationHash,
   watchViewport,
-  watchKeyboard,
   watchToggleMap,
-  useToggle
+  useToggle,
+  getElement
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 
@@ -69,7 +70,10 @@ import {
   mountTabs,
   useComponent,
   watchComponentMap,
-  mountHeaderTitle
+  mountHeaderTitle,
+  mountSearchQuery,
+  mountSearchReset,
+  mountSearchResult
 } from "components"
 import { setupClipboard } from "./integrations/clipboard"
 import { setupKeyboard } from "./integrations/keyboard"
@@ -80,7 +84,7 @@ import {
   patchSource
 } from "patches"
 import { isConfig } from "utilities"
-import { renderDialog } from "templates/dialog"
+import { setupDialog } from "integrations/dialog"
 
 /* ------------------------------------------------------------------------- */
 
@@ -153,10 +157,33 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
+  /* Mount search query */
+  const query$ = useComponent<HTMLInputElement>("search-query")
+    .pipe(
+      mountSearchQuery(worker),
+      shareReplay(1) // TODO: this must be put onto EVERY component!
+    )
+
+  /* Mount search reset */
+  const reset$ = useComponent("search-reset")
+    .pipe(
+      mountSearchReset()
+    )
+
+  /* Mount search result */
+  const result$ = useComponent("search-result")
+    .pipe(
+      mountSearchResult(worker, { query$ })
+    )
+
+  /* ----------------------------------------------------------------------- */
+
   const search$ = useComponent("search")
     .pipe(
-      mountSearch(worker)
+      mountSearch({ query$, reset$, result$ })
     )
+
+  /* ----------------------------------------------------------------------- */
 
   const navigation$ = useComponent("navigation")
     .pipe(
@@ -178,7 +205,6 @@ export function initialize(config: unknown) {
       mountHero({ header$, viewport$ })
     )
 
-  // TODO: make this part of mountHeader!?
   const title$ = useComponent("header-title")
     .pipe(
       mountHeaderTitle({ header$, viewport$ })
@@ -196,57 +222,38 @@ export function initialize(config: unknown) {
   if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
     patchScrollfix({ document$ })
 
-  // snackbar for copy to clipboard
-  const dialog = renderDialog("Copied to Clipboard")
-  setupClipboard({ document$ })
-    .pipe(
-      switchMap(ev => {
-        ev.clearSelection()
-        return useComponent("container")
-          .pipe(
-            tap(el => el.appendChild(dialog)), // only set text on dialog... render once...
-            observeOn(animationFrameScheduler),
-            tap(() => dialog.dataset.mdState = "open"),
-            delay(2000),
-            tap(() => dialog.dataset.mdState = ""),
-            delay(400),
-            tap(() => dialog.remove())
-          )
-      })
-    )
-      .subscribe()
+  /* Setup clipboard and dialog */
+  const dialog$ = setupDialog()
+  const clipboard$ = setupClipboard({ document$, dialog$ })
 
   /* ----------------------------------------------------------------------- */
 
   // Close drawer and search on hash change
+  // put into navigation...
   hash$.subscribe(x => {
-
     useToggle("drawer").subscribe(el => {
       setToggle(el, false)
     })
   })
 
-  // TODO:
+  // put into search...
   hash$
     .pipe(
-      switchMap(hash => {
-
-        return useToggle("search")
-          .pipe(
-            filter(x => x.checked), // only active
-            tap(toggle => setToggle(toggle, false)),
-            delay(125), // ensure that it runs after the body scroll reset...
-            tap(() => {
-              location.hash = " "
-              location.hash = hash
-            }) // encapsulate this...
-          )
-
-      })
+      switchMap(hash => useToggle("search")
+        .pipe(
+          filter(x => x.checked), // only active
+          tap(toggle => setToggle(toggle, false)),
+          delay(125), // ensure that it runs after the body scroll reset...
+          mapTo(hash)
+        )
+      )
     )
-      .subscribe()
+      .subscribe(hash => {
+        getElement(hash)!.scrollIntoView()
+      })
 
-  // Scroll lock
+  // Scroll lock // document -> document$ => { body } !?
+  // put into search...
   const toggle$ = useToggle("search")
   combineLatest([
     toggle$.pipe(switchMap(watchToggle)),
@@ -256,13 +263,13 @@ export function initialize(config: unknown) {
       withLatestFrom(viewport$),
       switchMap(([[toggle, tablet], { offset: { y }}]) => {
         const active = toggle && !tablet
-        return of(document.body)
+        return document$
           .pipe(
-            delay(active ? 400 : 100),
+            delay(active ? 400 : 100), // TOOD: directly combine this with the hash!
             observeOn(animationFrameScheduler),
-            tap(el => active
-              ? setScrollLock(el, y)
-              : resetScrollLock(el)
+            tap(({ body }) => active
+              ? setScrollLock(body, y)
+              : resetScrollLock(body)
             )
           )
       })
@@ -283,18 +290,21 @@ export function initialize(config: unknown) {
         link.style.visibility = "visible"
     })
 
-  // build a notification component! feed txt into it...
-
   /* ----------------------------------------------------------------------- */
 
   const state = {
     search$,
+    clipboard$,
+    location$,
+    hash$,
+    keyboard$,
+    dialog$,
     main$,
     navigation$,
     toc$,
     tabs$,
     hero$,
-    title$
+    title$ // TODO: header title
   }
 
   const { ...rest } = state

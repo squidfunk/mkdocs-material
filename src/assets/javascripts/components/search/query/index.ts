@@ -42,6 +42,17 @@ import {
 } from "workers"
 
 /* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Mount options
+ */
+interface MountOptions {
+  transform?(value: string): string    /* Transformation function */
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -49,16 +60,17 @@ import {
  * Mount search query from source observable
  *
  * @param handler - Worker handler
+ * @param options - Options
  *
  * @return Operator function
  */
 export function mountSearchQuery(
-  { tx$ }: WorkerHandler<SearchMessage>
+  { tx$ }: WorkerHandler<SearchMessage>, options: MountOptions = {}
 ): OperatorFunction<HTMLInputElement, SearchQuery> {
   const toggle$ = useToggle("search")
   return pipe(
     switchMap(el => {
-      const query$ = watchSearchQuery(el)
+      const query$ = watchSearchQuery(el, options)
 
       /* Subscribe worker to search query */
       query$

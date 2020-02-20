@@ -58,7 +58,10 @@ export function patchScrollfix(
     .pipe(
       map(() => getElements("[data-md-scrollfix]")),
       switchMap(els => merge(...els.map(el => (
-        fromEvent(el, "touchstart").pipe(mapTo(el))
+        fromEvent(el, "touchstart")
+          .pipe(
+            mapTo(el)
+          )
       ))))
     )
       .subscribe(el => {

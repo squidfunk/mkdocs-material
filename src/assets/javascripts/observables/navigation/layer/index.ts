@@ -99,7 +99,7 @@ export function watchNavigationLayer(
       )))
     )
 
-  /* Return previous and next layer */
+  /* Return previous and next layer as hot observable */
   return layer$
     .pipe(
       map(next => ({ next })),

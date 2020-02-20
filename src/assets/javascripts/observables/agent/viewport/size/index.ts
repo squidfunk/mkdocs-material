@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, combineLatest, fromEvent, merge } from "rxjs"
-import { map, shareReplay, startWith } from "rxjs/operators"
+import { Observable, fromEvent } from "rxjs"
+import { map, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Types

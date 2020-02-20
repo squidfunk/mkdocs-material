@@ -20,9 +20,9 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, OperatorFunction, pipe } from "rxjs"
+import { Observable, OperatorFunction, pipe } from "rxjs"
 import {
-  catchError,
+  filter,
   map,
   shareReplay,
   switchMap
@@ -31,7 +31,7 @@ import {
 import {
   Header,
   Viewport,
-  getElementOrThrow,
+  getElement,
   paintHeaderTitle,
   watchViewportAt
 } from "observables"
@@ -67,15 +67,15 @@ export function mountHeaderTitle(
   return pipe(
     switchMap(el => useComponent("main")
       .pipe(
-        map(main => getElementOrThrow("h1, h2, h3, h4, h5, h6", main)),
-        switchMap(headline => watchViewportAt(headline, { header$, viewport$ })
+        map(main => getElement("h1, h2, h3, h4, h5, h6", main)!),
+        filter(hx => typeof hx !== "undefined"),
+        switchMap(hx => watchViewportAt(hx, { header$, viewport$ })
           .pipe(
-            map(({ offset: { y } }) => y >= headline.offsetHeight),
+            map(({ offset: { y } }) => y >= hx.offsetHeight),
             paintHeaderTitle(el)
           )
         ),
-        shareReplay(1),
-        catchError(() => NEVER)
+        shareReplay(1)
       )
     )
   )

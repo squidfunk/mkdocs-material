@@ -21,11 +21,12 @@
  */
 
 import * as ClipboardJS from "clipboard"
-import { NEVER, Observable, fromEventPattern } from "rxjs"
-import { shareReplay } from "rxjs/operators"
+import { NEVER, Observable, Subject, fromEventPattern } from "rxjs"
+import { mapTo, shareReplay, tap } from "rxjs/operators"
 
 import { getElements } from "observables"
 import { renderClipboard } from "templates"
+import { translate } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -36,6 +37,7 @@ import { renderClipboard } from "templates"
  */
 interface SetupOptions {
   document$: Observable<Document>      /* Document observable */
+  dialog$: Subject<string>             /* Dialog subject */
 }
 
 /* ----------------------------------------------------------------------------
@@ -53,7 +55,7 @@ interface SetupOptions {
  * @return Clipboard observable
  */
 export function setupClipboard(
-  { document$ }: SetupOptions
+  { document$, dialog$ }: SetupOptions
 ): Observable<ClipboardJS.Event> {
   if (!ClipboardJS.isSupported())
     return NEVER
@@ -74,9 +76,15 @@ export function setupClipboard(
     new ClipboardJS(".md-clipboard").on("success", next)
   })
 
-  // TODO: integrate rendering of dialog
+  /* Display notification upon clipboard copy */
+  clipboard$
+    .pipe(
+      tap(ev => ev.clearSelection()),
+      mapTo(translate("clipboard.copied"))
+    )
+      .subscribe(dialog$)
 
-  /*  */
+  /* Return clipboard as hot observable */
   return clipboard$
     .pipe(
       shareReplay(1)

@@ -23,12 +23,7 @@
 import { ProjectSchema } from "gitlab"
 import { Observable } from "rxjs"
 import { ajax } from "rxjs/ajax"
-import {
-  filter,
-  map,
-  pluck,
-  shareReplay
-} from "rxjs/operators"
+import { filter, map, pluck } from "rxjs/operators"
 
 import { round } from "utilities"
 
@@ -59,7 +54,6 @@ export function fetchSourceFactsFromGitLab(
       map(({ star_count, forks_count }: ProjectSchema) => ([
         `${round(star_count)} Stars`,
         `${round(forks_count)} Forks`
-      ])),
-      shareReplay(1)
+      ]))
     )
 }

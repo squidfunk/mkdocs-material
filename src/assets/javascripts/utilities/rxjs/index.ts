@@ -61,7 +61,7 @@ export function cache<T>(
           }
         })
 
-      /* Return value observable */
+      /* Return value */
       return value$
     }
   })

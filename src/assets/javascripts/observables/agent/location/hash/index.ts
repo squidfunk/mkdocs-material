@@ -21,7 +21,7 @@
  */
 
 import { Observable, fromEvent } from "rxjs"
-import { filter, map, share } from "rxjs/operators"
+import { filter, map, share, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -36,22 +36,6 @@ export function getLocationHash(): string {
   return location.hash
 }
 
-/**
- * Set location hash
- *
- * This will force a reset of the location hash, inducing an anchor jump if
- * the hash matches the `id` of an element. It is implemented outside of the
- * whole RxJS architecture using `setTimeout` to keep it plain and simple.
- *
- * @param value - Location hash
- */
-export function setLocationHash(value: string): void {
-  location.hash = ""
-  setTimeout(() => {
-    location.hash = value
-  }, 1)
-}
-
 /* ------------------------------------------------------------------------- */
 
 /**
@@ -63,6 +47,7 @@ export function watchLocationHash(): Observable<string> {
   return fromEvent<HashChangeEvent>(window, "hashchange")
     .pipe(
       map(getLocationHash),
+      startWith(getLocationHash()),
       filter(hash => hash.length > 0),
       share()
     )

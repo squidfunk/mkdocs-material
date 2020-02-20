@@ -21,20 +21,17 @@
  */
 
 import { identity } from "ramda"
-import { NEVER, Observable, fromEvent, merge, of } from "rxjs"
+import { Observable, fromEvent, merge } from "rxjs"
 import {
-  catchError,
   filter,
   map,
-  switchMap,
   switchMapTo,
+  tap
 } from "rxjs/operators"
 
 import {
-  getElementOrThrow,
+  getElement,
   getElements,
-  getLocationHash,
-  setLocationHash,
   watchMedia
 } from "observables"
 
@@ -72,8 +69,8 @@ export function patchDetails(
 
   /* Open all details before printing */
   merge(
-    watchMedia("print").pipe(filter(identity)), // Webkit
-    fromEvent(window, "beforeprint")            // IE, FF
+    watchMedia("print").pipe(filter(identity)), /* Webkit */
+    fromEvent(window, "beforeprint")            /* IE, FF */
   )
     .pipe(
       switchMapTo(els$)
@@ -83,20 +80,16 @@ export function patchDetails(
           el.setAttribute("open", "")
       })
 
-  /* Open parent details before anchor jump */
-  merge(hash$, of(getLocationHash()))
+  /* Open parent details and fix anchor jump */
+  hash$
     .pipe(
-      filter(hash => !!hash.length),
-      switchMap(hash => of(getElementOrThrow<HTMLElement>(hash))
-        .pipe(
-          map(el => [el.closest("details")!, hash] as const),
-          filter(([el]) => el && !el.open)
-        )
-      ),
-      catchError(() => NEVER)
-    )
-      .subscribe(([el, hash]) => {
-        el.setAttribute("open", "")
-        setLocationHash(hash)
+      map(hash => getElement(hash)!),
+      filter(el => typeof el !== "undefined"),
+      tap(el => {
+        const details = el.closest("details")
+        if (details && !details.open)
+          details.setAttribute("open", "")
       })
+    )
+      .subscribe(el => el.scrollIntoView())
 }

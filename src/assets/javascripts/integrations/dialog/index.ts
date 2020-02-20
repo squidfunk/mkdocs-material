@@ -20,17 +20,26 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "utilities"
+import { Subject, animationFrameScheduler } from "rxjs"
+import {
+  delay,
+  map,
+  observeOn,
+  switchMap,
+  tap
+} from "rxjs/operators"
+
+import { useComponent } from "components"
 
 /* ----------------------------------------------------------------------------
- * Data
+ * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * CSS classes
+ * Setup options
  */
-const css = {
-  container: "md-dialog md-typeset"
+interface SetupOptions {
+  duration?: number                    /* Display duration (default: 2s) */
 }
 
 /* ----------------------------------------------------------------------------
@@ -38,18 +47,44 @@ const css = {
  * ------------------------------------------------------------------------- */
 
 /**
- * Render a dismissable dialog
+ * Setup dialog
  *
- * @param text - Dialog text
+ * @param options - Options
  *
- * @return Element
+ * @return Dialog observable
  */
-export function renderDialog(
-  text: string
-): HTMLElement {
-  return (
-    <div class={css.container}>
-      {text}
-    </div>
-  )
+export function setupDialog(
+  { duration }: SetupOptions = {}
+): Subject<string> {
+  const dialog$ = new Subject<string>()
+
+  /* Create dialog */
+  const dialog = document.createElement("div")                                  // TODO: improve scoping
+  dialog.classList.add("md-dialog", "md-typeset")
+
+  /* Display dialog */
+  dialog$
+    .pipe(
+      switchMap(text => useComponent("container")
+        .pipe(
+          map(container => container.appendChild(dialog)),
+          delay(1), // Strangley it doesnt work when we push things to the new animation frame...
+          tap(el => {
+            el.innerHTML = text
+            el.setAttribute("data-md-state", "open")
+          }),
+          delay(duration || 2000),
+          tap(el => el.removeAttribute("data-md-state")),
+          delay(400),
+          tap(el => {
+            el.innerHTML = ""
+            el.remove()
+          })
+        )
+      )
+    )
+      .subscribe()
+
+  /* Return dialog subject */
+  return dialog$
 }

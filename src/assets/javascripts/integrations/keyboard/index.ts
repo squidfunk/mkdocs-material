@@ -198,6 +198,6 @@ export function setupKeyboard(): Observable<Keyboard> {
         }
       })
 
-  /* Return keyboard observable */
+  /* Return keyboard */
   return keyboard$
 }
