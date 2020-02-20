@@ -375,22 +375,22 @@
       <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
 
       <!-- Translations -->
+      {%- set translations = {} -%}
+      {%- for key in [
+        "clipboard.copy",
+        "clipboard.copied",
+        "search.language",
+        "search.pipeline.stopwords",
+        "search.pipeline.trimmer",
+        "search.result.placeholder",
+        "search.result.none",
+        "search.result.one",
+        "search.result.other",
+        "search.tokenizer"
+      ] -%}
+        {%- set _ = translations.update({ key: lang.t(key) }) -%}
+      {%- endfor -%}
       <script id="__lang" type="application/json">
-        {%- set translations = {} -%}
-        {%- for key in [
-          "clipboard.copy",
-          "clipboard.copied",
-          "search.language",
-          "search.pipeline.stopwords",
-          "search.pipeline.trimmer",
-          "search.result.placeholder",
-          "search.result.none",
-          "search.result.one",
-          "search.result.other",
-          "search.tokenizer"
-        ] -%}
-          {%- set _ = translations.update({ key: lang.t(key) }) -%}
-        {%- endfor -%}
         {{ translations | tojson }}
       </script>
 
@@ -402,7 +402,7 @@
             search: "{{ 'assets/javascripts/worker/search.js' | url }}"
           },
           feature: {
-            instant: {{ feature.instant | tojson }}
+            instant: {{ "true" if feature and feature.instant else "false" }}
           }
         });
       </script>

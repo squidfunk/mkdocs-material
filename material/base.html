@@ -31,7 +31,7 @@
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0b2">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0b2-1">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -191,22 +191,22 @@
     </div>
     {% block scripts %}
       <script src="{{ 'assets/javascripts/bundle.1defb77e.min.js' | url }}"></script>
+      {%- set translations = {} -%}
+      {%- for key in [
+        "clipboard.copy",
+        "clipboard.copied",
+        "search.language",
+        "search.pipeline.stopwords",
+        "search.pipeline.trimmer",
+        "search.result.placeholder",
+        "search.result.none",
+        "search.result.one",
+        "search.result.other",
+        "search.tokenizer"
+      ] -%}
+        {%- set _ = translations.update({ key: lang.t(key) }) -%}
+      {%- endfor -%}
       <script id="__lang" type="application/json">
-        {%- set translations = {} -%}
-        {%- for key in [
-          "clipboard.copy",
-          "clipboard.copied",
-          "search.language",
-          "search.pipeline.stopwords",
-          "search.pipeline.trimmer",
-          "search.result.placeholder",
-          "search.result.none",
-          "search.result.one",
-          "search.result.other",
-          "search.tokenizer"
-        ] -%}
-          {%- set _ = translations.update({ key: lang.t(key) }) -%}
-        {%- endfor -%}
         {{ translations | tojson }}
       </script>
       <script>
@@ -216,7 +216,7 @@
             search: "{{ 'assets/javascripts/worker/search.926ffd9e.min.js' | url }}"
           },
           feature: {
-            instant: {{ feature.instant | tojson }}
+            instant: {{ "true" if feature and feature.instant else "false" }}
           }
         });
       </script>
