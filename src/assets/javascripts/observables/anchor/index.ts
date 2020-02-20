@@ -35,7 +35,6 @@ import {
   map,
   observeOn,
   scan,
-  shareReplay,
   switchMap,
   tap
 } from "rxjs/operators"
@@ -184,8 +183,8 @@ export function watchAnchorList(
       )
     )
 
-  /* Compute anchor list migrations */
-  const migration$ = partition$
+  /* Compute and return  anchor list migrations */
+  return partition$
     .pipe(
       map(([prev, next]) => ({
         prev: prev.map(([path]) => path),
@@ -201,12 +200,6 @@ export function watchAnchorList(
           next: difference(b.next, a.next)
         }
       }, { prev: [], next: [] })
-    )
-
-  /* Return anchor list migrations as hot observable */
-  return migration$
-    .pipe(
-      shareReplay(1)
     )
 }
 

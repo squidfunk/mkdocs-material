@@ -56,14 +56,18 @@ interface SetupOptions {
 
 /**
  * Resolve URL
+ * * TODO: document what's going on here + cache results
  *
- * @param base - Base URL
+ * @param origin - Base URL
  * @param paths - Further URL paths
  *
- * @return Absolute URL
+ * @return Relative URL
  */
-function resolve(base: URL | string, ...paths: string[]) {
-  return [base, ...paths].join("")
+function resolve(origin: URL, ...paths: string[]) {
+  const path = location.pathname
+    .replace(origin.pathname, "")
+    .replace(/[^\/]+/g, "..")
+  return [path, ...paths].join("")
 }
 
 /* ----------------------------------------------------------------------------
@@ -87,7 +91,7 @@ export function setupSearchWorker(
   url: string, { base, index }: SetupOptions
 ): WorkerHandler<SearchMessage> {
   const worker = new Worker(url)
-  const prefix = new URL(base, getLocation())
+  const origin = new URL(base, getLocation())
 
   /* Create communication channels and resolve relative links */
   const tx$ = new Subject<SearchMessage>()
@@ -96,9 +100,9 @@ export function setupSearchWorker(
       map(message => {
         if (isSearchResultMessage(message)) {
           for (const { article, sections } of message.data) {
-            article.location = resolve(prefix, article.location)
+            article.location = resolve(origin, article.location)
             for (const section of sections)
-              section.location = resolve(prefix, section.location)
+              section.location = resolve(origin, section.location)
           }
         }
         return message
@@ -109,7 +113,7 @@ export function setupSearchWorker(
   const index$ = typeof index !== "undefined"
     ? from(index)
     : ajax({
-        url: resolve(prefix, "search/search_index.json"),
+        url: resolve(origin, "search/search_index.json"),
         responseType: "json",
         withCredentials: true
       })

@@ -400,6 +400,9 @@
           base: "{{ base_url }}",
           worker: {
             search: "{{ 'assets/javascripts/worker/search.js' | url }}"
+          },
+          feature: {
+            instant: {{ feature.instant | tojson }}
           }
         });
       </script>

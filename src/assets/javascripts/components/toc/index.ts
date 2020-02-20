@@ -27,7 +27,7 @@ import {
   of,
   pipe
 } from "rxjs"
-import { map, shareReplay, switchMap } from "rxjs/operators"
+import { map, switchMap } from "rxjs/operators"
 
 import {
   AnchorList,
@@ -129,7 +129,6 @@ export function mountTableOfContents(
           }
         })
       )
-    ),
-    shareReplay(1)
+    )
   )
 }

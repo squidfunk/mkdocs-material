@@ -21,7 +21,7 @@
  */
 
 import { Observable, OperatorFunction, of, pipe } from "rxjs"
-import { map, shareReplay, switchMap } from "rxjs/operators"
+import { map, switchMap } from "rxjs/operators"
 
 import {
   Header,
@@ -87,7 +87,6 @@ export function mountTabs(
           }
         })
       )
-    ),
-    shareReplay(1)
+    )
   )
 }

@@ -21,7 +21,7 @@
  */
 
 import { Observable, OperatorFunction, pipe } from "rxjs"
-import { map, shareReplay, switchMap } from "rxjs/operators"
+import { map, switchMap } from "rxjs/operators"
 
 import {
   Header,
@@ -73,7 +73,6 @@ export function mountHero(
         paintHideable(el, 20),
         map(hidden => ({ hidden }))
       )
-    ),
-    shareReplay(1)
+    )
   )
 }

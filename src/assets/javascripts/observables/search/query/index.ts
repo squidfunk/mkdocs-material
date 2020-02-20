@@ -25,7 +25,6 @@ import {
   delay,
   distinctUntilChanged,
   map,
-  shareReplay,
   startWith
 } from "rxjs/operators"
 
@@ -109,10 +108,9 @@ export function watchSearchQuery(
   /* Intercept focus events */
   const focus$ = watchElementFocus(el)
 
-  /* Combine into a single hot observable */
+  /* Combine into a single observable */
   return combineLatest([value$, focus$])
     .pipe(
-      map(([value, focus]) => ({ value, focus })),
-      shareReplay(1)
+      map(([value, focus]) => ({ value, focus }))
     )
 }

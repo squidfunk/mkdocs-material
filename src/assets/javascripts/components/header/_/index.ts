@@ -21,7 +21,7 @@
  */
 
 import { Observable, OperatorFunction, pipe } from "rxjs"
-import { shareReplay, switchMap } from "rxjs/operators"
+import { switchMap } from "rxjs/operators"
 
 import { Header, Viewport, watchHeader } from "observables"
 
@@ -51,7 +51,6 @@ export function mountHeader(
   { viewport$ }: MountOptions
 ): OperatorFunction<HTMLElement, Header> {
   return pipe(
-    switchMap(el => watchHeader(el, { viewport$ })),
-    shareReplay(1)
+    switchMap(el => watchHeader(el, { viewport$ }))
   )
 }

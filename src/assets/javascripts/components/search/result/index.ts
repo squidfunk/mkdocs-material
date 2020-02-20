@@ -27,7 +27,6 @@ import {
   filter,
   map,
   pluck,
-  shareReplay,
   switchMap
 } from "rxjs/operators"
 
@@ -90,7 +89,6 @@ export function mountSearchResult(
           pluck("data"),
           paintSearchResult(el, { query$, fetch$ })
         )
-    }),
-    shareReplay(1)
+    })
   )
 }

@@ -32,6 +32,9 @@ export interface Config {
   worker: {
     search: string                     /* Search worker URL */
   }
+  feature: {
+    instant: true                      /* Instant loading */
+  }
 }
 
 /* ----------------------------------------------------------------------------

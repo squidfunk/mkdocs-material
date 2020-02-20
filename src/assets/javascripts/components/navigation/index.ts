@@ -21,7 +21,7 @@
  */
 
 import { Observable, OperatorFunction, pipe } from "rxjs"
-import { map, shareReplay, switchMap } from "rxjs/operators"
+import { map, switchMap } from "rxjs/operators"
 
 import {
   Header,
@@ -115,7 +115,6 @@ export function mountNavigation(
           }
         })
       )
-    ),
-    shareReplay(1)
+    )
   )
 }

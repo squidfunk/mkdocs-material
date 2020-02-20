@@ -26,7 +26,7 @@ import {
   distinctUntilChanged,
   map,
   pluck,
-  shareReplay,
+  share,
   skip,
   startWith,
   switchMap
@@ -67,7 +67,7 @@ export function watchDocumentSwitch(
   return location$
     .pipe(
       startWith(getLocation()),
-      map(url => url.replace(/#[^#]+$/, "")),
+      map(url => url.replace(/#[^#]*$/, "")),
       distinctUntilChanged(),
       skip(1),
 
@@ -81,6 +81,6 @@ export function watchDocumentSwitch(
           pluck("response")
         )
       ),
-      shareReplay(1)
+      share()
     )
 }

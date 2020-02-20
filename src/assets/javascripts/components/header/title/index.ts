@@ -21,12 +21,7 @@
  */
 
 import { Observable, OperatorFunction, pipe } from "rxjs"
-import {
-  filter,
-  map,
-  shareReplay,
-  switchMap
-} from "rxjs/operators"
+import { filter, map, switchMap } from "rxjs/operators"
 
 import {
   Header,
@@ -74,8 +69,7 @@ export function mountHeaderTitle(
             map(({ offset: { y } }) => y >= hx.offsetHeight),
             paintHeaderTitle(el)
           )
-        ),
-        shareReplay(1)
+        )
       )
     )
   )

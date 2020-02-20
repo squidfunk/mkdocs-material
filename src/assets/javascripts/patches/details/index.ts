@@ -83,7 +83,7 @@ export function patchDetails(
   /* Open parent details and fix anchor jump */
   hash$
     .pipe(
-      map(hash => getElement(hash)!),
+      map(id => getElement(`[id="${id}"]`)!),
       filter(el => typeof el !== "undefined"),
       tap(el => {
         const details = el.closest("details")

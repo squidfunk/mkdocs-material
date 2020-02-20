@@ -30,7 +30,10 @@ import { values } from "ramda"
 import {
   merge,
   combineLatest,
-  animationFrameScheduler
+  animationFrameScheduler,
+  fromEvent,
+  of,
+  NEVER
 } from "rxjs"
 import {
   delay,
@@ -41,7 +44,8 @@ import {
   observeOn,
   take,
   mapTo,
-  shareReplay
+  shareReplay,
+  switchMapTo
 } from "rxjs/operators"
 
 import {
@@ -55,7 +59,8 @@ import {
   watchViewport,
   watchToggleMap,
   useToggle,
-  getElement
+  getElement,
+  watchDocumentSwitch
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 
@@ -108,9 +113,15 @@ export function initialize(config: unknown) {
   if (!isConfig(config))
     throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
-  // pass config here!?
-  const document$ = watchDocument()
   const location$ = watchLocation()
+
+  // instant loading
+  const switch$ = config.feature.instant
+    ? watchDocumentSwitch({ location$ })
+    : NEVER
+
+  const load$ = watchDocument()
+  const document$ = merge(load$, switch$)
   const hash$ = watchLocationHash()
   const viewport$ = watchViewport()
   const tablet$ = watchMedia("(min-width: 960px)")
@@ -147,12 +158,14 @@ export function initialize(config: unknown) {
   /* Create header observable */
   const header$ = useComponent("header")
     .pipe(
-      mountHeader({ viewport$ })
+      mountHeader({ viewport$ }),
+      shareReplay(1)
     )
 
   const main$ = useComponent("main")
     .pipe(
-      mountMain({ header$, viewport$ })
+      mountMain({ header$, viewport$ }),
+      shareReplay(1)
     )
 
   /* ----------------------------------------------------------------------- */
@@ -167,47 +180,55 @@ export function initialize(config: unknown) {
   /* Mount search reset */
   const reset$ = useComponent("search-reset")
     .pipe(
-      mountSearchReset()
+      mountSearchReset(),
+      shareReplay(1)
     )
 
   /* Mount search result */
   const result$ = useComponent("search-result")
     .pipe(
-      mountSearchResult(worker, { query$ })
+      mountSearchResult(worker, { query$ }),
+      shareReplay(1)
     )
 
   /* ----------------------------------------------------------------------- */
 
   const search$ = useComponent("search")
     .pipe(
-      mountSearch({ query$, reset$, result$ })
+      mountSearch({ query$, reset$, result$ }),
+      shareReplay(1)
     )
 
   /* ----------------------------------------------------------------------- */
 
   const navigation$ = useComponent("navigation")
     .pipe(
-      mountNavigation({ header$, main$, viewport$, screen$ })
+      mountNavigation({ header$, main$, viewport$, screen$ }),
+      shareReplay(1)
     )
 
   const toc$ = useComponent("toc")
     .pipe(
-      mountTableOfContents({ header$, main$, viewport$, tablet$ })
+      mountTableOfContents({ header$, main$, viewport$, tablet$ }),
+      shareReplay(1)
     )
 
   const tabs$ = useComponent("tabs")
     .pipe(
-      mountTabs({ header$, viewport$, screen$ })
+      mountTabs({ header$, viewport$, screen$ }),
+      shareReplay(1)
     )
 
   const hero$ = useComponent("hero")
     .pipe(
-      mountHero({ header$, viewport$ })
+      mountHero({ header$, viewport$ }),
+      shareReplay(1)
     )
 
   const title$ = useComponent("header-title")
     .pipe(
-      mountHeaderTitle({ header$, viewport$ })
+      mountHeaderTitle({ header$, viewport$ }),
+      shareReplay(1)
     )
 
   /* ----------------------------------------------------------------------- */
@@ -275,6 +296,50 @@ export function initialize(config: unknown) {
       })
     )
       .subscribe()
+
+  /* ----------------------------------------------------------------------- */
+
+  // instant loading
+  const instant$ = config.feature.instant ? load$ // TODO: just use document$ and take(1)
+    .pipe(
+      switchMap(({ body }) => fromEvent(body, "click")),
+      switchMap(ev => {
+
+        // two cases: search results which should always load from same domain
+        // and/or
+        if (ev.target && ev.target instanceof HTMLElement) {
+          const anchor = ev.target.closest("a")
+          if (anchor) {
+            if (/(:\/\/|^#)/.test(anchor.getAttribute("href")!) === false) {
+              ev.preventDefault()
+
+              // we must copy the value, or weird stuff will happen
+              const href = anchor.href
+              history.pushState(true, "", href)
+              return of(href)
+            }
+          }
+        }
+        return NEVER
+      }),
+      shareReplay(1)
+    )
+    : NEVER
+
+  // deploy new location
+  instant$.subscribe(url => {
+    console.log(`Load ${url}`)
+    location$.next(url)
+  })
+
+  // scroll to top when document is loaded
+  instant$
+    .pipe(
+      switchMapTo(switch$), // TODO: just use document$ and skip(1)
+    )
+    .subscribe(() => {
+      window.scrollTo(0, 0) // TODO: or scroll element into view
+    })
 
   /* ----------------------------------------------------------------------- */
 

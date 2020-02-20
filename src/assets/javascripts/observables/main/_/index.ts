@@ -21,12 +21,7 @@
  */
 
 import { Observable, combineLatest } from "rxjs"
-import {
-  distinctUntilChanged,
-  map,
-  pluck,
-  shareReplay
-} from "rxjs/operators"
+import { distinctUntilChanged, map, pluck } from "rxjs/operators"
 
 import { Viewport } from "../../agent"
 import { Header } from "../../header"
@@ -103,14 +98,13 @@ export function watchMain(
       distinctUntilChanged()
     )
 
-  /* Combine into a single hot observable */
+  /* Combine into a single observable */
   return combineLatest([adjust$, height$, active$])
     .pipe(
       map(([adjust, height, active]) => ({
         offset: el.offsetTop - adjust,
         height,
         active
-      })),
-      shareReplay(1)
+      }))
     )
 }

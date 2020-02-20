@@ -33,7 +33,6 @@ import {
   finalize,
   map,
   observeOn,
-  shareReplay,
   tap,
   withLatestFrom
 } from "rxjs/operators"
@@ -136,11 +135,10 @@ export function watchSidebar(
       distinctUntilChanged()
     )
 
-  /* Combine into single hot observable */
+  /* Combine into single observable */
   return combineLatest([height$, lock$])
     .pipe(
-      map(([height, lock]) => ({ height, lock })),
-      shareReplay(1)
+      map(([height, lock]) => ({ height, lock }))
     )
 }
 

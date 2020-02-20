@@ -21,7 +21,7 @@
  */
 
 import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
-import { map, shareReplay, switchMap } from "rxjs/operators"
+import { map, switchMap } from "rxjs/operators"
 
 import { SearchResult } from "integrations/search"
 import { SearchQuery } from "observables"
@@ -68,8 +68,7 @@ export function mountSearch(
   return pipe(
     switchMap(() => combineLatest([query$, result$, reset$])
       .pipe(
-        map(([query, result]) => ({ query, result })),
-        shareReplay(1)
+        map(([query, result]) => ({ query, result }))
       ))
   )
 }

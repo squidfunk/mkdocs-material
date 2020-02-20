@@ -35,7 +35,6 @@ import {
   map,
   observeOn,
   scan,
-  shareReplay,
   tap
 } from "rxjs/operators"
 
@@ -99,12 +98,11 @@ export function watchNavigationLayer(
       )))
     )
 
-  /* Return previous and next layer as hot observable */
+  /* Return previous and next layer */
   return layer$
     .pipe(
       map(next => ({ next })),
-      scan(({ next: prev }, { next }) => ({ prev, next })),
-      shareReplay(1)
+      scan(({ next: prev }, { next }) => ({ prev, next }))
     )
 }
 

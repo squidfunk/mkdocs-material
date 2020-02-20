@@ -22,4 +22,4 @@
 mkdocs>=1.0
 Pygments>=2.4
 markdown>=3.2
-pymdown-extensions>=7.0b1
+pymdown-extensions>=7.0b2

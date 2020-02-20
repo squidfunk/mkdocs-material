@@ -21,11 +21,7 @@
  */
 
 import { Observable, OperatorFunction, pipe } from "rxjs"
-import {
-  distinctUntilKeyChanged,
-  shareReplay,
-  switchMap
-} from "rxjs/operators"
+import { distinctUntilKeyChanged, switchMap } from "rxjs/operators"
 
 import {
   Header,
@@ -81,7 +77,6 @@ export function mountMain(
           return main$
         })
       )
-    ),
-    shareReplay(1)
+    )
   )
 }

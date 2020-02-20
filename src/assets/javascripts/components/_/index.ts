@@ -22,7 +22,14 @@
 
 import { keys } from "ramda"
 import { NEVER, Observable, of } from "rxjs"
-import { map, scan, shareReplay, switchMap } from "rxjs/operators"
+import {
+  distinctUntilChanged,
+  map,
+  scan,
+  shareReplay,
+  switchMap,
+  tap
+} from "rxjs/operators"
 
 import { getElement } from "observables"
 
@@ -92,7 +99,7 @@ let components$: Observable<ComponentMap>
 export function watchComponentMap(
   names: Component[], { document$ }: WatchOptions
 ): Observable<ComponentMap> {
-  components$ = document$
+  return components$ = document$
     .pipe(
 
       /* Build component map */
@@ -124,12 +131,9 @@ export function watchComponentMap(
           }
         }
         return prev
-      })
-    )
+      }),
 
-  /* Return component map as hot observable */
-  return components$
-    .pipe(
+      /* Convert to hot observable */
       shareReplay(1)
     )
 }
@@ -152,6 +156,7 @@ export function useComponent<T extends HTMLElement>(
         typeof components[name] !== "undefined"
           ? of(components[name] as T)
           : NEVER
-      ))
+      )),
+      distinctUntilChanged()
     )
 }

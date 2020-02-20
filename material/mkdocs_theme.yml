@@ -32,6 +32,10 @@ feature:
   # of tabs, especially useful for larger documentation projects
   tabs: false
 
+  # Instant loading will instruct the application to intercept all internal
+  # links, load and inject the HTML into the page and rebind all handlers
+  instant: false
+
 # Sets the primary and accent color palettes as defined in the Material Design
 # documentation - possible values can be looked up in the getting started guide
 palette:

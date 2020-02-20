@@ -22,6 +22,7 @@
 
 import { NEVER, Observable, fromEvent, of } from "rxjs"
 import {
+  distinctUntilChanged,
   map,
   shareReplay,
   startWith,
@@ -84,7 +85,7 @@ let toggles$: Observable<ToggleMap>
 export function watchToggleMap(
   names: Toggle[], { document$ }: WatchOptions
 ): Observable<ToggleMap> {
-  toggles$ = document$
+  return toggles$ = document$
     .pipe(
 
       /* Ignore document switches */
@@ -97,12 +98,9 @@ export function watchToggleMap(
           ...toggles,
           ...typeof el !== "undefined" ? { [name]: el } : {}
         }
-      }, {}))
-    )
+      }, {})),
 
-  /* Return toggle map as hot observable */
-  return toggles$
-    .pipe(
+      /* Convert to hot observable */
       shareReplay(1)
     )
 }
@@ -125,7 +123,8 @@ export function useToggle(
         typeof toggles[name] !== "undefined"
           ? of(toggles[name]!)
           : NEVER
-      ))
+      )),
+      distinctUntilChanged()
     )
 }
 
