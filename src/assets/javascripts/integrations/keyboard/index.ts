@@ -21,30 +21,46 @@
  */
 
 import { Observable } from "rxjs"
-import { switchMap, withLatestFrom } from "rxjs/operators"
+import {
+  filter,
+  map,
+  share,
+  switchMap,
+  withLatestFrom
+} from "rxjs/operators"
 
 import { useComponent } from "components"
 import {
   Key,
   getActiveElement,
+  getElement,
   getElements,
   isSusceptibleToKeyboard,
   setElementFocus,
   setToggle,
   useToggle,
+  watchKeyboard,
   watchToggle
 } from "observables"
-import { not, takeIf } from "utilities"
 
 /* ----------------------------------------------------------------------------
- * Helper types
+ * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup options
+ * Keyboard mode
  */
-interface SetupOptions {
-  keyboard$: Observable<Key>           /* Keyboard observable */
+export type KeyboardMode =
+  | "global"                           /* Global */
+  | "search"                           /* Search is open */
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Keyboard
+ */
+export interface Keyboard extends Key {
+  mode: KeyboardMode                   /* Keyboard mode */
 }
 
 /* ----------------------------------------------------------------------------
@@ -54,17 +70,44 @@ interface SetupOptions {
 /**
  * Setup keyboard
  *
+ * This function will setup the keyboard handlers and ensure that keys are
+ * correctly propagated. Currently there are two modes:
+ *
+ * - `global`: This mode is active when the search is closed. It is intended
+ *   to assign hotkeys to specific functions of the site. Currently the search,
+ *   previous and next page can be triggered.
+ *
+ * - `search`: This mode is active when the search is open. It maps certain
+ *   navigational keys to offer search results that can be entirely navigated
+ *   through keyboard input.
+ *
+ * The keyboard observable is returned and can be used to monitor the keyboard
+ * in order toassign further hotkeys to custom functions.
+ *
  * @return Keyboard observable
  */
-export function setupKeyboard(
-  { keyboard$ }: SetupOptions
-): Observable<Key> {
-
-  /* Setup keyboard handlers in search mode */
+export function setupKeyboard(): Observable<Keyboard> {
   const toggle$ = useToggle("search")
+  const search$ = toggle$
+    .pipe(
+      switchMap(watchToggle)
+    )
+
+  /* Setup keyboard and determine mode */
+  const keyboard$ = watchKeyboard()
+    .pipe(
+      withLatestFrom(search$),
+      map(([key, toggle]): Keyboard => ({
+        mode: toggle ? "search" : "global",
+        ...key
+      })),
+      share()
+    )
+
+  /* Setup search keyboard handlers */
   keyboard$
     .pipe(
-      takeIf(toggle$.pipe(switchMap(watchToggle))),
+      filter(({ mode }) => mode === "search"),
       withLatestFrom(
         toggle$,
         useComponent("search-query"),
@@ -114,23 +157,43 @@ export function setupKeyboard(
         }
       })
 
-  /* Setup general keyboard handlers */
+  /* Setup global keyboard handlers */
   keyboard$
     .pipe(
-      takeIf(not(toggle$.pipe(switchMap(watchToggle)))),
+      filter(({ mode }) => {
+        if (mode === "global") {
+          const active = getActiveElement()
+          if (typeof active !== "undefined")
+            return !isSusceptibleToKeyboard(active)
+        }
+        return false
+      }),
       withLatestFrom(useComponent("search-query"))
     )
       .subscribe(([key, query]) => {
-        const active = getActiveElement()
         switch (key.type) {
 
-          /* [s]earch / [f]ind: open search  */
-          case "s":
+          /* Open search */
           case "f":
-            if (!(active && isSusceptibleToKeyboard(active))) {
-              setElementFocus(query)
-              key.claim()
-            }
+          case "s":
+            setElementFocus(query)
+            key.claim()
+            break
+
+          /* Go to previous page */
+          case "p":
+          case ",":
+            const prev = getElement("[href][rel=prev]")
+            if (typeof prev !== "undefined")
+              prev.click()
+            break
+
+          /* Go to next page */
+          case "n":
+          case ".":
+            const next = getElement("[href][rel=next]")
+            if (typeof next !== "undefined")
+              next.click()
             break
         }
       })

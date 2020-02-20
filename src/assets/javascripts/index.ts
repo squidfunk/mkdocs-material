@@ -79,7 +79,7 @@ import {
   patchScrollfix,
   patchSource
 } from "patches"
-import { takeIf, not, isConfig } from "utilities"
+import { isConfig } from "utilities"
 import { renderDialog } from "templates/dialog"
 
 /* ------------------------------------------------------------------------- */
@@ -108,7 +108,6 @@ export function initialize(config: unknown) {
   const document$ = watchDocument()
   const location$ = watchLocation()
   const hash$ = watchLocationHash()
-  const keyboard$ = watchKeyboard()
   const viewport$ = watchViewport()
   const tablet$ = watchMedia("(min-width: 960px)")
   const screen$ = watchMedia("(min-width: 1220px)")
@@ -187,7 +186,7 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  setupKeyboard({ keyboard$ })
+  const keyboard$ = setupKeyboard()
 
   patchTables({ document$ })
   patchDetails({ document$, hash$ })
@@ -215,10 +214,7 @@ export function initialize(config: unknown) {
           )
       })
     )
-    .subscribe()
-
-  // TODO: general keyboard handler...
-  // put into main!?
+      .subscribe()
 
   /* ----------------------------------------------------------------------- */
 
@@ -279,8 +275,7 @@ export function initialize(config: unknown) {
   // TODO: experimental. necessary!?
   keyboard$
     .pipe(
-      takeIf(not(toggle$.pipe(switchMap(watchToggle)))),
-      filter(key => ["Tab"].includes(key.type)),
+      filter(key => key.mode === "global" && ["Tab"].includes(key.type)),
       take(1)
     )
     .subscribe(() => {

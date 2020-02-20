@@ -32,6 +32,8 @@ import {
   switchMap
 } from "rxjs/operators"
 
+import { getLocation } from "../../location"
+
 /* ----------------------------------------------------------------------------
  * Helper types
  * ------------------------------------------------------------------------- */
@@ -64,7 +66,7 @@ export function watchDocumentSwitch(
 ): Observable<Document> {
   return location$
     .pipe(
-      startWith(location.href),
+      startWith(getLocation()),
       map(url => url.replace(/#[^#]+$/, "")),
       distinctUntilChanged(),
       skip(1),

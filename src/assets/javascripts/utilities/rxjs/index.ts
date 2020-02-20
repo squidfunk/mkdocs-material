@@ -20,5 +20,49 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./operators"
+import { Observable, defer, of } from "rxjs"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Cache the last value emitted by an observable in session storage
+ *
+ * If the key is not found in session storage, the factory is executed and the
+ * latest value emitted will automatically be persisted to sessions storage.
+ * Note that the values emitted by the returned observable must be serializable
+ * as `JSON`, or data will be lost.
+ *
+ * @template T - Value type
+ *
+ * @param key - Cache key
+ * @param factory - Observable factory
+ *
+ * @return Value observable
+ */
+export function cache<T>(
+  key: string, factory: () => Observable<T>
+): Observable<T> {
+  return defer(() => {
+    const data = sessionStorage.getItem(key)
+    if (data) {
+      return of(JSON.parse(data) as T)
+
+    /* Retrieve value from observable factory and write to storage */
+    } else {
+      const value$ = factory()
+      value$
+        .subscribe(value => {
+          try {
+            sessionStorage.setItem(key, JSON.stringify(value))
+          } catch (err) {
+            /* Uncritical, just swallow */
+          }
+        })
+
+      /* Return value observable */
+      return value$
+    }
+  })
+}

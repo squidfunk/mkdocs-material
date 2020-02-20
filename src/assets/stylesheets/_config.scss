@@ -32,8 +32,6 @@ $ms-ratio: $major-third;
 // Variables: breakpoints
 // ----------------------------------------------------------------------------
 
-// stylelint-disable unit-whitelist
-
 // Device-specific breakpoints
 $break-devices: (
   mobile: (
@@ -50,8 +48,6 @@ $break-devices: (
     large:     px2em(2000px)
   )
 );
-
-// stylelint-enable unit-whitelist
 
 // ----------------------------------------------------------------------------
 // Variables: base colors
