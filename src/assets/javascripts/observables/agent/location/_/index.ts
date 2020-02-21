@@ -36,6 +36,15 @@ export function getLocation(): string {
   return location.href
 }
 
+/**
+ * Set location
+ *
+ * @param value - New location
+ */
+export function setLocation(value: string): void {
+  location.href = value
+}
+
 /* ------------------------------------------------------------------------- */
 
 /**

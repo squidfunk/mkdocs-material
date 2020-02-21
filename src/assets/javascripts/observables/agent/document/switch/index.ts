@@ -20,9 +20,10 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
+import { NEVER, Observable } from "rxjs"
 import { ajax } from "rxjs/ajax"
 import {
+  catchError,
   distinctUntilChanged,
   map,
   pluck,
@@ -32,7 +33,7 @@ import {
   switchMap
 } from "rxjs/operators"
 
-import { getLocation } from "../../location"
+import { getLocation, setLocation } from "../../location"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -57,6 +58,8 @@ interface WatchOptions {
  * to the same page, the request is effectively ignored (i.e. when only the
  * fragment identifier changes).
  *
+ * In case the request fails, the location change is dispatched regularly.
+ *
  * @param options - Options
  *
  * @return Document switch observable
@@ -77,8 +80,12 @@ export function watchDocumentSwitch(
         responseType: "document",
         withCredentials: true
       })
-        .pipe<Document>(
-          pluck("response")
+        .pipe<Document, Document>(
+          pluck("response"),
+          catchError(() => {
+            setLocation(url)
+            return NEVER
+          })
         )
       ),
       share()
