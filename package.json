@@ -24,12 +24,13 @@
     "url": "https://github.com/squidfunk/mkdocs-material.git"
   },
   "scripts": {
-    "build": "npm run clean && npx webpack --mode production",
-    "clean": "rm -rf material",
+    "build": "npm run dirty && npx webpack --mode production",
+    "clean": "npx rimraf 'material'",
+    "dirty": "npx rimraf 'material/!(.fontawesome)'",
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:scss": "npx stylelint `find src/assets -name *.scss`",
     "lint:ts": "npx tslint -p tsconfig.json 'src/**/*.ts'",
-    "start": "npm run clean && npx webpack --mode development --watch"
+    "start": "npm run dirty && npx webpack --mode development --watch"
   },
   "dependencies": {
     "clipboard": "^2.0.0",
@@ -71,6 +72,7 @@
     "null-loader": "^3.0.0",
     "postcss-loader": "^3.0.0",
     "preact": "^10.1.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
     "stylelint": "^11.1.1",
