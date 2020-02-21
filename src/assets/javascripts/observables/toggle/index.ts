@@ -75,17 +75,15 @@ let toggles$: Observable<ToggleMap>
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch toggles with given names
+ * Setup bindings to toggles with given names
  *
  * @param names - Toggle names
  * @param options - Options
- *
- * @return Toggle map observable
  */
-export function watchToggleMap(
+export function setupToggles(
   names: Toggle[], { document$ }: WatchOptions
-): Observable<ToggleMap> {
-  return toggles$ = document$
+): void {
+  toggles$ = document$
     .pipe(
 
       /* Ignore document switches */
@@ -108,7 +106,8 @@ export function watchToggleMap(
 /**
  * Retrieve a toggle
  *
- * @template T - Element type
+ * The returned observable will only re-emit if the element changed, i.e. if
+ * it was replaced from a document which was switched to.
  *
  * @param name - Toggle name
  *
@@ -136,7 +135,7 @@ export function useToggle(
  * Simulating a click event seems to be the most cross-browser compatible way
  * of changing the value while also emitting a `change` event. Before, Material
  * used `CustomEvent` to programmatically change the value of a toggle, but this
- * is a much simpler and cleaner solution.
+ * is a much simpler and cleaner solution which doesn't require a polyfill.
  *
  * @param el - Toggle element
  * @param value - Toggle value

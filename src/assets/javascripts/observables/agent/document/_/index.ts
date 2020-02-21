@@ -20,8 +20,21 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent } from "rxjs"
+import { NEVER, Observable, fromEvent, merge } from "rxjs"
 import { mapTo, shareReplay } from "rxjs/operators"
+
+import { watchDocumentSwitch } from "../switch"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch options
+ */
+interface WatchOptions {
+  location$?: Observable<string>        /* Location observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -30,12 +43,24 @@ import { mapTo, shareReplay } from "rxjs/operators"
 /**
  * Watch document
  *
+ * If the location observable is passed, instant loading will be enabled which
+ * means that new values will be emitted every time the location changes.
+ *
  * @return Document observable
  */
-export function watchDocument(): Observable<Document> {
-  return fromEvent(document, "DOMContentLoaded")
+export function watchDocument(
+  { location$ }: WatchOptions = {}
+): Observable<Document> {
+  return merge(
+    fromEvent(document, "DOMContentLoaded")
+      .pipe(
+        mapTo(document)
+      ),
+    typeof location$ !== "undefined"
+      ? watchDocumentSwitch({ location$ })
+      : NEVER
+  )
     .pipe(
-      mapTo(document),
       shareReplay(1)
     )
 }

@@ -22,7 +22,7 @@
 
 import { Subject, from } from "rxjs"
 import { ajax } from "rxjs/ajax"
-import { map, pluck } from "rxjs/operators"
+import { map, pluck, shareReplay } from "rxjs/operators"
 
 import { SearchIndexOptions } from "integrations/search"
 import {
@@ -106,7 +106,8 @@ export function setupSearchWorker(
           }
         }
         return message
-      })
+      }),
+      shareReplay(1)
     )
 
   /* Fetch index if it wasn't passed explicitly */

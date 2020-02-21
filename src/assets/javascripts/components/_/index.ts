@@ -27,8 +27,7 @@ import {
   map,
   scan,
   shareReplay,
-  switchMap,
-  tap
+  switchMap
 } from "rxjs/operators"
 
 import { getElement } from "observables"
@@ -86,20 +85,18 @@ let components$: Observable<ComponentMap>
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch components with given names
+ * Setup bindings to elements with given names
  *
- * This function returns an observable that will maintain bindings to the given
- * components in-between document switches and update the components in-place.
+ * This function will maintain bindings to the elements identified by the given
+ * names in-between document switches and update the elements in-place.
  *
  * @param names - Component names
  * @param options - Options
- *
- * @return Component map observable
  */
-export function watchComponentMap(
+export function setupComponents(
   names: Component[], { document$ }: WatchOptions
-): Observable<ComponentMap> {
-  return components$ = document$
+): void {
+  components$ = document$
     .pipe(
 
       /* Build component map */
@@ -140,6 +137,9 @@ export function watchComponentMap(
 
 /**
  * Retrieve a component
+ *
+ * The returned observable will only re-emit if the element changed, i.e. if
+ * it was replaced from a document which was switched to.
  *
  * @template T - Element type
  *

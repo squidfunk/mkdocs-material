@@ -75,8 +75,11 @@ export function setupClipboard(
   const clipboard$ = fromEventPattern<ClipboardJS.Event>(next => {
     new ClipboardJS(".md-clipboard").on("success", next)
   })
+    .pipe(
+      shareReplay(1)
+    )
 
-  /* Display notification upon clipboard copy */
+  /* Display notification for clipboard event */
   clipboard$
     .pipe(
       tap(ev => ev.clearSelection()),
@@ -84,9 +87,6 @@ export function setupClipboard(
     )
       .subscribe(dialog$)
 
-  /* Return clipboard as hot observable */
+  /* Return clipboard */
   return clipboard$
-    .pipe(
-      shareReplay(1)
-    )
 }

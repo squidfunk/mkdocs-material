@@ -45,7 +45,8 @@ import {
   take,
   mapTo,
   shareReplay,
-  switchMapTo
+  switchMapTo,
+  skip
 } from "rxjs/operators"
 
 import {
@@ -57,10 +58,10 @@ import {
   watchLocation,
   watchLocationHash,
   watchViewport,
-  watchToggleMap,
+  setupToggles,
   useToggle,
   getElement,
-  watchDocumentSwitch
+  setViewportOffset
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 
@@ -74,7 +75,7 @@ import {
   mountTableOfContents,
   mountTabs,
   useComponent,
-  watchComponentMap,
+  setupComponents,
   mountHeaderTitle,
   mountSearchQuery,
   mountSearchReset,
@@ -114,14 +115,9 @@ export function initialize(config: unknown) {
     throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
   const location$ = watchLocation()
-
-  // instant loading
-  const switch$ = config.feature.instant
-    ? watchDocumentSwitch({ location$ })
-    : NEVER
-
-  const load$ = watchDocument()
-  const document$ = merge(load$, switch$)
+  const document$ = watchDocument(
+    config.feature.instant ? { location$ } : {}
+  )
   const hash$ = watchLocationHash()
   const viewport$ = watchViewport()
   const tablet$ = watchMedia("(min-width: 960px)")
@@ -135,12 +131,14 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  watchToggleMap([
+  /* Setup toggle bindings */
+  setupToggles([
     "drawer",                          /* Toggle for drawer */
     "search"                           /* Toggle for search */
   ], { document$ })
 
-  watchComponentMap([
+  /* Setup components bindings */
+  setupComponents([
     "container",                       /* Container */
     "header",                          /* Header */
     "header-title",                    /* Header title */
@@ -154,6 +152,8 @@ export function initialize(config: unknown) {
     "tabs",                            /* Tabs */
     "toc"                              /* Table of contents */
   ], { document$ })
+
+  /* ----------------------------------------------------------------------- */
 
   /* Create header observable */
   const header$ = useComponent("header")
@@ -300,13 +300,11 @@ export function initialize(config: unknown) {
   /* ----------------------------------------------------------------------- */
 
   // instant loading
-  const instant$ = config.feature.instant ? load$ // TODO: just use document$ and take(1)
+  const instant$ = config.feature.instant ? document$ // TODO: just use document$ and take(1)
     .pipe(
+      take(1), // only initial load
       switchMap(({ body }) => fromEvent(body, "click")),
       switchMap(ev => {
-
-        // two cases: search results which should always load from same domain
-        // and/or
         if (ev.target && ev.target instanceof HTMLElement) {
           const anchor = ev.target.closest("a")
           if (anchor) {
@@ -326,19 +324,20 @@ export function initialize(config: unknown) {
     )
     : NEVER
 
-  // deploy new location
+  // deploy new location - can be written as instant$.subscribe(location$)
   instant$.subscribe(url => {
     console.log(`Load ${url}`)
     location$.next(url)
   })
 
-  // scroll to top when document is loaded
+  // if a new url is deployed via instant loading, switch to document observable
+  // to exactly know when the content was loaded. then go to top.
   instant$
     .pipe(
-      switchMapTo(switch$), // TODO: just use document$ and skip(1)
+      switchMapTo(document$.pipe(skip(1))), // TODO: just use document$ and skip(1)
     )
     .subscribe(() => {
-      window.scrollTo(0, 0) // TODO: or scroll element into view
+      setViewportOffset({ y: 0 })
     })
 
   /* ----------------------------------------------------------------------- */

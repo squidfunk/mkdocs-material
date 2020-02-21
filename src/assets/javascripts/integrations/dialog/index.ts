@@ -68,6 +68,7 @@ export function setupDialog(
       switchMap(text => useComponent("container")
         .pipe(
           map(container => container.appendChild(dialog)),
+          observeOn(animationFrameScheduler),
           delay(1), // Strangley it doesnt work when we push things to the new animation frame...
           tap(el => {
             el.innerHTML = text
