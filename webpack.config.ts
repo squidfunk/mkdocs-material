@@ -119,12 +119,6 @@ function config(args: Configuration): Configuration {
               }
             }
           ]
-        },
-
-        /* Preact is only used for its great JSX typings */
-        {
-          test: /\bpreact\b/,
-          use: "null-loader"
         }
       ]
     },

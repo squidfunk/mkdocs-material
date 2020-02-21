@@ -69,7 +69,6 @@
     "material-shadows": "^3.0.1",
     "modularscale-sass": "^3.0.10",
     "nodemon": "^1.19.4",
-    "null-loader": "^3.0.0",
     "postcss-loader": "^3.0.0",
     "preact": "^10.1.1",
     "rimraf": "^3.0.2",
@@ -85,7 +84,7 @@
     "tslib": "^1.10.0",
     "tslint": "^5.20.1",
     "tslint-sonarts": "^1.9.0",
-    "typescript": "^3.7.4",
+    "typescript": "^3.8.2",
     "webpack": "^4.41.4",
     "webpack-assets-manifest": "^3.1.1",
     "webpack-cli": "^3.3.10"
