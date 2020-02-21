@@ -114,22 +114,17 @@ export function initialize(config: unknown) {
   if (!isConfig(config))
     throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
+  /* Setup user interface observables */
   const location$ = watchLocation()
-  const document$ = watchDocument(
-    config.feature.instant ? { location$ } : {}
-  )
-  const hash$ = watchLocationHash()
+  const hash$     = watchLocationHash()
   const viewport$ = watchViewport()
-  const tablet$ = watchMedia("(min-width: 960px)")
-  const screen$ = watchMedia("(min-width: 1220px)")
+  const tablet$   = watchMedia("(min-width: 960px)")
+  const screen$   = watchMedia("(min-width: 1220px)")
 
-  /* ----------------------------------------------------------------------- */
-
-  const worker = setupSearchWorker(config.worker.search, {
-    base: config.base
-  })
-
-  /* ----------------------------------------------------------------------- */
+  /* Setup document observable */
+  const document$ = config.feature.instant
+    ? watchDocument({ location$ })
+    : watchDocument()
 
   /* Setup toggle bindings */
   setupToggles([
@@ -137,7 +132,7 @@ export function initialize(config: unknown) {
     "search"                           /* Toggle for search */
   ], { document$ })
 
-  /* Setup components bindings */
+  /* Setup component bindings */
   setupComponents([
     "container",                       /* Container */
     "header",                          /* Header */
@@ -152,6 +147,12 @@ export function initialize(config: unknown) {
     "tabs",                            /* Tabs */
     "toc"                              /* Table of contents */
   ], { document$ })
+
+  /* ----------------------------------------------------------------------- */
+
+  const worker = setupSearchWorker(config.worker.search, {
+    base: config.base
+  })
 
   /* ----------------------------------------------------------------------- */
 

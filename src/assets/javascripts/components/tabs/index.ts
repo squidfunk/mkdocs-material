@@ -63,7 +63,7 @@ interface MountOptions {
  *
  * @param options - Options
  *
- * @return Tabs observable
+ * @return Operator function
  */
 export function mountTabs(
   { header$, viewport$, screen$ }: MountOptions

@@ -54,7 +54,7 @@ interface MountOptions {
  *
  * @param options - Options
  *
- * @return Header title observable
+ * @return Operator function
  */
 export function mountHeaderTitle(
   { header$, viewport$ }: MountOptions

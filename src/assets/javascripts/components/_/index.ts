@@ -85,7 +85,7 @@ let components$: Observable<ComponentMap>
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup bindings to elements with given names
+ * Setup bindings to components with given names
  *
  * This function will maintain bindings to the elements identified by the given
  * names in-between document switches and update the elements in-place.

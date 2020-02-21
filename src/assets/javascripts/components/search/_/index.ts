@@ -60,7 +60,7 @@ interface MountOptions {
  *
  * @param options - Options
  *
- * @return Search observable
+ * @return Operator function
  */
 export function mountSearch(
   { query$, reset$, result$ }: MountOptions
@@ -69,6 +69,7 @@ export function mountSearch(
     switchMap(() => combineLatest([query$, result$, reset$])
       .pipe(
         map(([query, result]) => ({ query, result }))
-      ))
+      )
+    )
   )
 }

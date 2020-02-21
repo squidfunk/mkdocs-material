@@ -62,7 +62,7 @@ interface MountOptions {
  *
  * @param options - Options
  *
- * @return Hero observable
+ * @return Operator function
  */
 export function mountHero(
   { header$, viewport$ }: MountOptions
