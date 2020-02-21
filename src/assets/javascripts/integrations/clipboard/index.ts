@@ -22,7 +22,7 @@
 
 import * as ClipboardJS from "clipboard"
 import { NEVER, Observable, Subject, fromEventPattern } from "rxjs"
-import { mapTo, shareReplay, tap } from "rxjs/operators"
+import { mapTo, share, tap } from "rxjs/operators"
 
 import { getElements } from "observables"
 import { renderClipboard } from "templates"
@@ -76,7 +76,7 @@ export function setupClipboard(
     new ClipboardJS(".md-clipboard").on("success", next)
   })
     .pipe(
-      shareReplay(1)
+      share()
     )
 
   /* Display notification for clipboard event */

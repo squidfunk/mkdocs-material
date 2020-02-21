@@ -33,7 +33,7 @@ import { filter, map, share, startWith } from "rxjs/operators"
  * @return Location hash
  */
 export function getLocationHash(): string {
-  return location.hash
+  return location.hash.substring(1)
 }
 
 /* ------------------------------------------------------------------------- */

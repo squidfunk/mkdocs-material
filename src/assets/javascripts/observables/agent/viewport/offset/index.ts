@@ -42,6 +42,9 @@ export interface ViewportOffset {
 /**
  * Retrieve viewport offset
  *
+ * On iOS Safari, viewport offset can be negative due to overflow scrolling.
+ * As this may induce strange behaviors downstream, we'll just limit it to 0.
+ *
  * @return Viewport offset
  */
 export function getViewportOffset(): ViewportOffset {

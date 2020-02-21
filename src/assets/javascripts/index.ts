@@ -45,14 +45,14 @@ import {
   take,
   mapTo,
   shareReplay,
-  switchMapTo,
-  skip
+  sample
 } from "rxjs/operators"
 
 import {
   watchToggle,
   setToggle,
   getElements,
+  getLocation,
   watchMedia,
   watchDocument,
   watchLocation,
@@ -271,7 +271,7 @@ export function initialize(config: unknown) {
       )
     )
       .subscribe(hash => {
-        getElement(hash)!.scrollIntoView()
+        getElement(`[id="${hash}"]`)!.scrollIntoView()
       })
 
   // Scroll lock // document -> document$ => { body } !?
@@ -305,17 +305,20 @@ export function initialize(config: unknown) {
     .pipe(
       take(1), // only initial load
       switchMap(({ body }) => fromEvent(body, "click")),
-      switchMap(ev => {
+      withLatestFrom(viewport$),
+      switchMap(([ev, { offset }]) => {
         if (ev.target && ev.target instanceof HTMLElement) {
-          const anchor = ev.target.closest("a")
-          if (anchor) {
-            if (/(:\/\/|^#)/.test(anchor.getAttribute("href")!) === false) {
+          const link = ev.target.closest("a")
+          if (link) {
+            if (/(:\/\/|^#)/.test(link.getAttribute("href")!) === false) {
               ev.preventDefault()
 
               // we must copy the value, or weird stuff will happen
-              const href = anchor.href
-              history.pushState(true, "", href)
-              return of(href)
+              // remember scroll position!
+              const href = link.href
+              history.replaceState(offset, document.title)
+              history.pushState({}, "", href)
+              return of(href) // anchor.href
             }
           }
         }
@@ -325,20 +328,110 @@ export function initialize(config: unknown) {
     )
     : NEVER
 
+  // the location might change, but popstate might not be triggered which is
+  // the case when we hit the back button on the same page. scroll to top.
+  // location$
+  //   .pipe(
+  //     bufferCount(2, 1)
+  //   )
+  //     .subscribe(x => {
+  //       console.log(x)
+  //     })
+
   // deploy new location - can be written as instant$.subscribe(location$)
   instant$.subscribe(url => {
     console.log(`Load ${url}`)
     location$.next(url)
   })
 
+  if ("scrollRestoration" in history)
+    history.scrollRestoration = "manual"
+
+  const pop$ = fromEvent<PopStateEvent>(window, "popstate")
+    .pipe(
+      shareReplay(1) // TODO: share() should be enough
+    )
+
+  pop$
+    .subscribe(() => location$.next(getLocation()))
+
+  pop$
+    .pipe(
+      sample(document$),
+      withLatestFrom(document$),
+    )
+    .subscribe(([ev, { title, head }]) => {
+
+      document.title = title
+
+      // replace meta tags
+      for (const selector of [
+        "link[rel=canonical]",
+        "meta[name=author]",
+        "meta[name=description]"
+      ]) {
+        const next = getElement(selector, head)
+        const prev = getElement(selector, document.head)
+        if (
+          typeof next !== "undefined" &&
+          typeof prev !== "undefined"
+        ) {
+          prev.replaceWith(next)
+        }
+      }
+
+      console.log(ev)
+      if (ev.state)
+        setViewportOffset(ev.state)
+    })
+
+  // make links absolute, so they remain stable
+  for (const selector of [
+    "link[rel='shortcut icon']",
+    "link[rel='stylesheet']"
+  ]) {
+    for (const el of getElements<HTMLLinkElement>(selector))
+      el.href = el.href
+  }
+
   // if a new url is deployed via instant loading, switch to document observable
   // to exactly know when the content was loaded. then go to top.
   instant$
     .pipe(
-      switchMapTo(document$.pipe(skip(1))), // TODO: just use document$ and skip(1)
+      sample(document$),
+      withLatestFrom(document$),
     )
-    .subscribe(() => {
-      setViewportOffset({ y: 0 })
+    .subscribe(([url, { title, head }]) => {
+      document.title = title
+
+      // replace meta tags
+      for (const selector of [
+        "link[rel=canonical]",
+        "meta[name=author]",
+        "meta[name=description]"
+      ]) {
+        const next = getElement(selector, head)
+        const prev = getElement(selector, document.head)
+        if (
+          typeof next !== "undefined" &&
+          typeof prev !== "undefined"
+        ) {
+          prev.replaceWith(next)
+        }
+      }
+
+      // TODO: this doesnt work as expected
+      const { hash } = new URL(url)
+      if (hash) {
+        const el = getElement(hash)
+        if (typeof el !== "undefined") {
+          el.scrollIntoView()
+          return
+        }
+      } else {
+        // console.log("scroll to top")
+        setViewportOffset({ y: 0 })
+      }
     })
 
   /* ----------------------------------------------------------------------- */

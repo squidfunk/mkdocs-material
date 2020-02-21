@@ -54,11 +54,11 @@ export function setLocation(value: string): void {
  */
 export function watchLocation(): Subject<string> {
   const location$ = new Subject<string>()
-  fromEvent<PopStateEvent>(window, "popstate")
-    .pipe(
-      map(getLocation)
-    )
-      .subscribe(location$)
+  // fromEvent<PopStateEvent>(window, "popstate")
+  //   .pipe(
+  //     map(getLocation)
+  //   )
+  //     .subscribe(location$)
 
   /* Return location subject */
   return location$
