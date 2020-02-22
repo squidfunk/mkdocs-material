@@ -58,7 +58,7 @@ interface MountOptions {
  */
 export function mountHeaderTitle(
   { header$, viewport$ }: MountOptions
-): OperatorFunction<HTMLElement, any> {
+): OperatorFunction<HTMLElement, boolean> {
   return pipe(
     switchMap(el => useComponent("main")
       .pipe(

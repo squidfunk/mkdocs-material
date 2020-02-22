@@ -20,8 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Subject, fromEvent } from "rxjs"
-import { map } from "rxjs/operators"
+import { Subject } from "rxjs"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -30,19 +29,24 @@ import { map } from "rxjs/operators"
 /**
  * Retrieve location
  *
- * @return Location
+ * This function will return a `URL` object (and not `Location`) in order to
+ * normalize typings across the application. Furthermore, locations need to be
+ * tracked without setting them and `Location` is a singleton which represents
+ * the current location.
+ *
+ * @return URL
  */
-export function getLocation(): string {
-  return location.href
+export function getLocation(): URL {
+  return new URL(location.href)
 }
 
 /**
  * Set location
  *
- * @param value - New location
+ * @param url - URL to change to
  */
-export function setLocation(value: string): void {
-  location.href = value
+export function setLocation(url: URL): void {
+  location.href = url.href
 }
 
 /* ------------------------------------------------------------------------- */
@@ -53,13 +57,5 @@ export function setLocation(value: string): void {
  * @return Location subject
  */
 export function watchLocation(): Subject<URL> {
-  const location$ = new Subject<URL>()
-  // fromEvent<PopStateEvent>(window, "popstate")
-  //   .pipe(
-  //     map(getLocation)
-  //   )
-  //     .subscribe(location$)
-
-  /* Return location subject */
-  return location$
+  return new Subject<URL>()
 }

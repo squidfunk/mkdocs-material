@@ -59,7 +59,6 @@ import {
   watchToggle,
   setToggle,
   getElements,
-  getLocation,
   watchMedia,
   watchDocument,
   watchLocation,
@@ -213,7 +212,7 @@ export function initialize(config: unknown) {
   const navigation$ = useComponent("navigation")
     .pipe(
       mountNavigation({ header$, main$, viewport$, screen$ }),
-      shareReplay(1)
+      shareReplay(1) // shareReplay because there might be late subscribers
     )
 
   const toc$ = useComponent("toc")
@@ -260,7 +259,8 @@ export function initialize(config: unknown) {
 
   // Close drawer and search on hash change
   // put into navigation...
-  hash$.subscribe(x => {
+  // TODO: replace with popstate?
+  hash$.subscribe(() => {
     useToggle("drawer").subscribe(el => {
       setToggle(el, false)
     })

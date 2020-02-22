@@ -68,7 +68,7 @@ export function watchDocumentSwitch(
 ): Observable<Document> {
   return location$
     .pipe(
-      startWith(location),        // TODO: getLocation should return URL or Location
+      startWith(getLocation()),
       distinctUntilKeyChanged("pathname"),
       skip(1),
 
@@ -81,7 +81,7 @@ export function watchDocumentSwitch(
         .pipe<Document, Document>(
           pluck("response"),
           catchError(() => {
-            setLocation(url.href) // TODO: setLocation should accept URL or location
+            setLocation(url)
             return NEVER
           })
         )
