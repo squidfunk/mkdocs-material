@@ -45,7 +45,13 @@ import {
   take,
   mapTo,
   shareReplay,
-  sample
+  sample,
+  share,
+  map,
+  pluck,
+  debounceTime,
+  distinctUntilKeyChanged,
+  distinctUntilChanged
 } from "rxjs/operators"
 
 import {
@@ -61,7 +67,8 @@ import {
   setupToggles,
   useToggle,
   getElement,
-  setViewportOffset
+  setViewportOffset,
+  ViewportOffset
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 
@@ -300,139 +307,177 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  // instant loading
-  const instant$ = config.feature.instant ? document$ // TODO: just use document$ and take(1)
-    .pipe(
-      take(1), // only initial load
-      switchMap(({ body }) => fromEvent(body, "click")),
-      withLatestFrom(viewport$),
-      switchMap(([ev, { offset }]) => {
-        if (ev.target && ev.target instanceof HTMLElement) {
-          const link = ev.target.closest("a")
-          if (link) {
-            if (/(:\/\/|^#)/.test(link.getAttribute("href")!) === false) {
-              ev.preventDefault()
-
-              // we must copy the value, or weird stuff will happen
-              // remember scroll position!
-              const href = link.href
-              history.replaceState(offset, document.title)
-              history.pushState({}, "", href)
-              return of(href) // anchor.href
-            }
-          }
-        }
-        return NEVER
-      }),
-      shareReplay(1)
-    )
-    : NEVER
-
-  // the location might change, but popstate might not be triggered which is
-  // the case when we hit the back button on the same page. scroll to top.
-  // location$
-  //   .pipe(
-  //     bufferCount(2, 1)
-  //   )
-  //     .subscribe(x => {
-  //       console.log(x)
-  //     })
-
-  // deploy new location - can be written as instant$.subscribe(location$)
-  instant$.subscribe(url => {
-    console.log(`Load ${url}`)
-    location$.next(url)
-  })
-
-  if ("scrollRestoration" in history)
-    history.scrollRestoration = "manual"
-
-  const pop$ = fromEvent<PopStateEvent>(window, "popstate")
-    .pipe(
-      shareReplay(1) // TODO: share() should be enough
-    )
-
-  pop$
-    .subscribe(() => location$.next(getLocation()))
-
-  pop$
-    .pipe(
-      sample(document$),
-      withLatestFrom(document$),
-    )
-    .subscribe(([ev, { title, head }]) => {
-
-      document.title = title
-
-      // replace meta tags
-      for (const selector of [
-        "link[rel=canonical]",
-        "meta[name=author]",
-        "meta[name=description]"
-      ]) {
-        const next = getElement(selector, head)
-        const prev = getElement(selector, document.head)
-        if (
-          typeof next !== "undefined" &&
-          typeof prev !== "undefined"
-        ) {
-          prev.replaceWith(next)
-        }
-      }
-
-      console.log(ev)
-      if (ev.state)
-        setViewportOffset(ev.state)
-    })
-
-  // make links absolute, so they remain stable
-  for (const selector of [
-    "link[rel='shortcut icon']",
-    "link[rel='stylesheet']"
-  ]) {
-    for (const el of getElements<HTMLLinkElement>(selector))
-      el.href = el.href
+  /**
+   * Location change
+   */
+  interface LocationChange {
+    url: URL          // TODO: use URL!?
+    data?: ViewportOffset
   }
 
-  // if a new url is deployed via instant loading, switch to document observable
-  // to exactly know when the content was loaded. then go to top.
-  instant$
-    .pipe(
-      sample(document$),
-      withLatestFrom(document$),
-    )
-    .subscribe(([url, { title, head }]) => {
-      document.title = title
+  function isInternalLink(el: HTMLAnchorElement | URL) {
+    return el.hostname === location.hostname
+  }
 
-      // replace meta tags
-      for (const selector of [
-        "link[rel=canonical]",
-        "meta[name=author]",
-        "meta[name=description]"
-      ]) {
-        const next = getElement(selector, head)
-        const prev = getElement(selector, document.head)
-        if (
-          typeof next !== "undefined" &&
-          typeof prev !== "undefined"
-        ) {
-          prev.replaceWith(next)
-        }
-      }
+  function isAnchorLink(el: HTMLAnchorElement | URL) {
+    return el.hash.length > 0
+  }
 
-      // TODO: this doesnt work as expected
-      const { hash } = new URL(url)
-      if (hash) {
-        const el = getElement(hash)
-        if (typeof el !== "undefined") {
-          el.scrollIntoView()
-          return
-        }
-      } else {
-        // console.log("scroll to top")
-        setViewportOffset({ y: 0 })
-      }
+  function compareLocationChange(
+    { url: a }: LocationChange, { url: b }: LocationChange
+  ) {
+    return a.href === b.href
+  }
+
+  // instant loading
+  if (config.feature.instant) {
+
+    /* Disable automatic scroll restoration, as it doesn't work nicely */
+    if ("scrollRestoration" in history)
+      history.scrollRestoration = "manual"
+
+    /* Resolve relative links for stability */
+    for (const selector of [
+      `link[rel="shortcut icon"]`,
+      `link[rel="stylesheet"]`
+    ])
+      for (const el of getElements<HTMLLinkElement>(selector))
+        el.href = el.href
+
+    /* Intercept internal link clicks */
+    const internal$ = fromEvent<MouseEvent>(document.body, "click")
+      .pipe(
+        filter(ev => !(ev.metaKey || ev.ctrlKey)),
+        switchMap(ev => {
+          if (ev.target instanceof HTMLElement) {
+            const el = ev.target.closest("a")
+            if (el && isInternalLink(el)) {
+              if (!isAnchorLink(el))
+                ev.preventDefault()
+              return of(el.href)
+            }
+          }
+          return NEVER
+        }),
+        distinctUntilChanged(),
+        map<string, LocationChange>(href => ({ url: new URL(href) })),
+        share()
+      )
+
+    /* Intercept internal links to dispatch */
+    const dispatch$ = internal$
+      .pipe(
+        filter(({ url }) => !isAnchorLink(url)),
+        share()
+      )
+
+    /* Intercept popstate events (history back and forward) */
+    const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
+      .pipe(
+        map<PopStateEvent, LocationChange>(ev => ({
+          url: new URL(getLocation()),
+          data: ev.state
+        })),
+        share()
+      )
+
+    /* Emit location change */
+    merge(dispatch$, popstate$)
+      .pipe(
+        pluck("url")
+      )
+        .subscribe(location$)
+
+    /* Add dispatched link to history */
+    internal$
+      .pipe(
+        distinctUntilChanged(compareLocationChange),
+        filter(({ url }) => !isAnchorLink(url))
+      )
+        .subscribe(({ url }) => {
+          // console.log(`History.Push ${url}`)
+          history.pushState({}, "", url.toString())
+        })
+
+    /* Persist viewport offset in history before hash change */
+    viewport$
+      .pipe(
+        debounceTime(250),
+        distinctUntilKeyChanged("offset"),
+      )
+        .subscribe(({ offset }) => {
+          console.log("Update", offset)
+          history.replaceState(offset, "")
+        })
+
+    // /* Edge case: go back from anchor to same
+    // // // TODO: better to just replace the state when this is encountered.
+    // // pop$
+    // //   .pipe(
+    // //     filter(({ href }) => !/#/.test(href)) // TODO: kind of sucks
+    // //   )
+    // //     .subscribe(({ data }) => {
+    // //       // console.log("Detected", data) // detects too much...
+    // //       setViewportOffset(data || { y: 0 }) // TOOD: must wait for document sample!
+    // //     })
+
+    /*  */
+    merge(dispatch$, popstate$)
+      .pipe(
+        sample(document$),
+        withLatestFrom(document$),
+      )
+        .subscribe(([{ url: href, data }, { title, head }]) => {
+          console.log("Done", href.href, data)
+
+          // setDocumentTitle
+          document.title = title
+
+          // replace meta tags
+          for (const selector of [
+            `link[rel="canonical"]`,
+            `meta[name="author"]`,
+            `meta[name="description"]`
+          ]) {
+            const next = getElement(selector, head)
+            const prev = getElement(selector, document.head)
+            if (
+              typeof next !== "undefined" &&
+              typeof prev !== "undefined"
+            ) {
+              prev.replaceWith(next)
+            }
+          }
+
+          // // TODO: this doesnt work as expected
+          // if (!data) {
+          //   const { hash } = new URL(href)
+          //   if (hash) {
+          //     const el = getElement(hash)
+          //     if (typeof el !== "undefined") {
+          //       el.scrollIntoView()
+          //       return
+          //     }
+          //   }
+          // }
+
+          // console.log(ev)
+          // if (!data)
+          setViewportOffset(data || { y: 0 }) // push state!
+        })
+
+    // internal$.subscribe(({ url }) => {
+    //   console.log(`Internal ${url}`)
+    // })
+
+    // dispatch$.subscribe(({ url }) => {
+    //   console.log(`Push ${url}`)
+    // })
+
+    popstate$.subscribe(({ url }) => {
+      console.log(`Pop ${url}`)
     })
+  }
 
   /* ----------------------------------------------------------------------- */
 

@@ -33,7 +33,7 @@ import { watchDocumentSwitch } from "../switch"
  * Watch options
  */
 interface WatchOptions {
-  location$?: Observable<string>        /* Location observable */
+  location$?: Observable<URL>          /* Location observable */
 }
 
 /* ----------------------------------------------------------------------------

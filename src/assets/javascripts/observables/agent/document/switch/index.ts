@@ -25,6 +25,7 @@ import { ajax } from "rxjs/ajax"
 import {
   catchError,
   distinctUntilChanged,
+  filter,
   map,
   pluck,
   share,
@@ -43,7 +44,7 @@ import { getLocation, setLocation } from "../../location"
  * Watch options
  */
 interface WatchOptions {
-  location$: Observable<string>        /* Location observable */
+  location$: Observable<URL>           /* Location observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -69,8 +70,9 @@ export function watchDocumentSwitch(
 ): Observable<Document> {
   return location$
     .pipe(
-      startWith(getLocation()),
-      map(url => url.replace(/#[^#]*$/, "")),
+      startWith(location), // TODO: getLocation should return URL or Location
+      filter(url => url.hash.length === 0), // use isAnchorLink
+      map(url => url.href),
       distinctUntilChanged(),
       skip(1),
 

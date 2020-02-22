@@ -52,8 +52,8 @@ export function setLocation(value: string): void {
  *
  * @return Location subject
  */
-export function watchLocation(): Subject<string> {
-  const location$ = new Subject<string>()
+export function watchLocation(): Subject<URL> {
+  const location$ = new Subject<URL>()
   // fromEvent<PopStateEvent>(window, "popstate")
   //   .pipe(
   //     map(getLocation)
