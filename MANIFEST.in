@@ -1,4 +1,4 @@
-recursive-include material *.js *.css *.html *.svg *.png *.yml
+recursive-include material *.js *.css *.map *.html *.svg *.png *.yml
 recursive-include material *.ttf *.woff *.woff2
 recursive-exclude site *
 recursive-exclude src *
