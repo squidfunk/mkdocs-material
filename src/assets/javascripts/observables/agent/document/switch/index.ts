@@ -24,9 +24,7 @@ import { NEVER, Observable } from "rxjs"
 import { ajax } from "rxjs/ajax"
 import {
   catchError,
-  distinctUntilChanged,
-  filter,
-  map,
+  distinctUntilKeyChanged,
   pluck,
   share,
   skip,
@@ -54,7 +52,7 @@ interface WatchOptions {
 /**
  * Watch document switch
  *
- * This function returns an observables that fetches a document if the provided
+ * This function returns an observables that fetches a document if the provided // TODO: update docs
  * location observable emits a new value (i.e. URL). If the emitted URL points
  * to the same page, the request is effectively ignored (i.e. when only the
  * fragment identifier changes).
@@ -70,22 +68,20 @@ export function watchDocumentSwitch(
 ): Observable<Document> {
   return location$
     .pipe(
-      startWith(location), // TODO: getLocation should return URL or Location
-      filter(url => url.hash.length === 0), // use isAnchorLink
-      map(url => url.href),
-      distinctUntilChanged(),
+      startWith(location),        // TODO: getLocation should return URL or Location
+      distinctUntilKeyChanged("pathname"),
       skip(1),
 
       /* Fetch document */
       switchMap(url => ajax({
-        url,
+        url: url.href,
         responseType: "document",
         withCredentials: true
       })
         .pipe<Document, Document>(
           pluck("response"),
           catchError(() => {
-            setLocation(url)
+            setLocation(url.href) // TODO: setLocation should accept URL or location
             return NEVER
           })
         )

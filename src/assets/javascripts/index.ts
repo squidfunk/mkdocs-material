@@ -51,7 +51,8 @@ import {
   pluck,
   debounceTime,
   distinctUntilKeyChanged,
-  distinctUntilChanged
+  distinctUntilChanged,
+  bufferCount
 } from "rxjs/operators"
 
 import {
@@ -310,7 +311,7 @@ export function initialize(config: unknown) {
   /**
    * Location change
    */
-  interface LocationChange {
+  interface State {
     url: URL          // TODO: use URL!?
     data?: ViewportOffset
   }
@@ -323,8 +324,8 @@ export function initialize(config: unknown) {
     return el.hash.length > 0
   }
 
-  function compareLocationChange(
-    { url: a }: LocationChange, { url: b }: LocationChange
+  function compareState(
+    { url: a }: State, { url: b }: State
   ) {
     return a.href === b.href
   }
@@ -360,7 +361,7 @@ export function initialize(config: unknown) {
           return NEVER
         }),
         distinctUntilChanged(),
-        map<string, LocationChange>(href => ({ url: new URL(href) })),
+        map<string, State>(href => ({ url: new URL(href) })),
         share()
       )
 
@@ -374,8 +375,9 @@ export function initialize(config: unknown) {
     /* Intercept popstate events (history back and forward) */
     const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
       .pipe(
-        map<PopStateEvent, LocationChange>(ev => ({
-          url: new URL(getLocation()),
+        filter(ev => ev.state !== null),
+        map<PopStateEvent, State>(ev => ({
+          url: new URL(location.href),
           data: ev.state
         })),
         share()
@@ -391,13 +393,49 @@ export function initialize(config: unknown) {
     /* Add dispatched link to history */
     internal$
       .pipe(
-        distinctUntilChanged(compareLocationChange),
+        // TODO: must start with the current location and ignore the first emission
+        distinctUntilChanged(compareState),
         filter(({ url }) => !isAnchorLink(url))
       )
         .subscribe(({ url }) => {
           // console.log(`History.Push ${url}`)
           history.pushState({}, "", url.toString())
         })
+
+    // special case
+    merge(internal$, popstate$)
+      .pipe(
+        bufferCount(2, 1),
+        // filter(([prev, next]) => {
+        //   return prev.url.href.match(next.url.href) !== null
+        //       && isAnchorLink(prev.url)
+        // })
+      )
+        .subscribe(([prev, next]) => {
+          console.log(`<- ${prev.url}`)
+          console.log(`-> ${next.url}`)
+
+          if (
+            prev.url.href.match(next.url.href) !== null &&
+            isAnchorLink(prev.url)
+          ) {
+            dialog$.next(`Potential Candidate: ${JSON.stringify(next.data)}`, ) // awesome debugging.
+            setViewportOffset(next.data || { y: 0 })
+          }
+            // console.log("Potential Candidate")
+        })
+        // .subscribe((x) => console.log(x[0].url.toString(), x[1].url.toString()))
+    //     filter(([prev, next]) => {
+    //       return prev.url.href.match(next.url.href) !== null
+    //           && isAnchorLink(prev.url)
+    //     }),
+    //     map(([, next]) => next)
+    //     // distinctUntilChanged(compareLocationChange),
+    //     // filter(({ url }) => !isAnchorLink(url))
+    //   )
+    //     .subscribe(({ url }) => {
+    //       console.log(`Restore ${url}`)
+    //     })
 
     /* Persist viewport offset in history before hash change */
     viewport$
@@ -406,20 +444,9 @@ export function initialize(config: unknown) {
         distinctUntilKeyChanged("offset"),
       )
         .subscribe(({ offset }) => {
-          console.log("Update", offset)
+          // console.log("Update", offset)
           history.replaceState(offset, "")
         })
-
-    // /* Edge case: go back from anchor to same
-    // // // TODO: better to just replace the state when this is encountered.
-    // // pop$
-    // //   .pipe(
-    // //     filter(({ href }) => !/#/.test(href)) // TODO: kind of sucks
-    // //   )
-    // //     .subscribe(({ data }) => {
-    // //       // console.log("Detected", data) // detects too much...
-    // //       setViewportOffset(data || { y: 0 }) // TOOD: must wait for document sample!
-    // //     })
 
     /*  */
     merge(dispatch$, popstate$)
@@ -427,8 +454,8 @@ export function initialize(config: unknown) {
         sample(document$),
         withLatestFrom(document$),
       )
-        .subscribe(([{ url: href, data }, { title, head }]) => {
-          console.log("Done", href.href, data)
+        .subscribe(([{ url, data }, { title, head }]) => {
+          console.log("Done", url.href, data)
 
           // setDocumentTitle
           document.title = title
@@ -471,11 +498,11 @@ export function initialize(config: unknown) {
     // })
 
     // dispatch$.subscribe(({ url }) => {
-    //   console.log(`Push ${url}`)
+    //   console.log(`Dispatch ${url}`)
     // })
 
     popstate$.subscribe(({ url }) => {
-      console.log(`Pop ${url}`)
+      console.log(`Popstate ${url.href}`, url)
     })
   }
 
