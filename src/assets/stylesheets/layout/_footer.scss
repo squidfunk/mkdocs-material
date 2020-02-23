@@ -38,6 +38,12 @@
   background-color: $md-color-black;
   color: $md-color-white;
 
+  // Icons
+  svg {
+    display: block;
+    fill: currentColor;
+  }
+
   // Set spacing
   &__inner {
     padding: px2rem(4px);

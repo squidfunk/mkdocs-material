@@ -41,6 +41,12 @@
   // Hack: putting the header on the GPU avoids unnecessary repaints
   backface-visibility: hidden;
 
+  // Icons
+  svg {
+    display: block;
+    fill: currentColor;
+  }
+
   // Always hide shadow, in case JavaScript is not available
   .no-js & {
     transition: none;
@@ -91,30 +97,29 @@
       display: none;
     }
 
-    // [tablet landscape +]: Hide the search icon
+    // [tablet landscape +]: Hide the search button
     @include break-from-device(tablet landscape) {
 
-      // Search icon
-      &.md-icon--search {
+      // Search button
+      &[for="__search"] {
         display: none;
       }
     }
 
-    // [tablet -]: Hide the home icon or logo
+    // [tablet -]: Hide the logo
     @include break-to-device(tablet) {
 
-      // Home icon or logo
-      &.md-icon--home,
+      // Logo
       &.md-logo {
         display: none;
       }
     }
 
-    // [screen +]: Hide the menu icon
+    // [screen +]: Hide the menu button
     @include break-from-device(screen) {
 
-      // Menu icon
-      &.md-icon--menu {
+      // Menu button
+      &[for="__drawer"] {
         display: none;
       }
     }

@@ -7,14 +7,14 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" aria-label="{{ config.site_name }}" class="md-header-nav__button md-logo">
           {% if config.theme.logo.icon %}
-            <i class="md-icon">{{ config.theme.logo.icon }}</i>
+            {% include ".icons/" ~ config.theme.logo.icon ~ ".svg" %}
           {% else %}
             <img src="{{ config.theme.logo | url }}" width="24" height="24" alt="logo">
           {% endif %}
         </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+        <label class="md-header-nav__button" for="__drawer">
+          {% include ".icons/material/menu.svg" %}
+        </label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="header-title">
@@ -36,7 +36,9 @@
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         {% if "search" in config["plugins"] %}
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          <label class="md-header-nav__button" for="__search">
+            {% include ".icons/material/magnify.svg" %}
+          </label>
           {% include "partials/search.html" %}
         {% endif %}
       </div>

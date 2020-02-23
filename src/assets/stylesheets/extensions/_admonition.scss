@@ -75,10 +75,12 @@
         @extend %md-icon;
 
         position: absolute;
+        width: px2rem(20px);
+        height: px2rem(20px);
         margin-left: px2rem(-28px);
-        color: $clr-blue-a200;
-        font-size: px2rem(20px);
-        content: "\E3C9"; // edit
+        background-color: $clr-blue-a200;
+        mask-image: url("{{ pencil }}");
+        content: "";
 
         // Adjust for RTL languages
         [dir="rtl"] & {
@@ -90,17 +92,17 @@
 
     // Build representational classes
     @each $names, $appearance in (
-      abstract summary tldr: $clr-light-blue-a400 "\E8D2", // subject
-      info todo: $clr-cyan-a700 "\E88E", // info
-      tip hint important : $clr-teal-a700 "\E80E", // whatshot
-      success check done: $clr-green-a700 "\E876", // done
-      question help faq: $clr-light-green-a700 "\E887", // help
-      warning caution attention: $clr-orange-a400 "\E002", // warning
-      failure fail missing: $clr-red-a200 "\E14C", // clear
-      danger error: $clr-red-a400 "\E3E7", // flash_on
-      bug: $clr-pink-a400 "\E868", // bug_report
-      example: $clr-deep-purple-a400 "\E242", // format_list_numbered
-      quote cite: $clr-grey "\E244" // format_quote
+      abstract summary tldr: $clr-light-blue-a400 "text-subject",
+      info todo: $clr-cyan-a700 "information",
+      tip hint important: $clr-teal-a700 "fire",
+      success check done: $clr-green-a700 "check-circle",
+      question help faq: $clr-light-green-a700 "help-circle",
+      warning caution attention: $clr-orange-a400 "alert",
+      failure fail missing: $clr-red-a200 "close-circle",
+      danger error: $clr-red-a400 "flash-circle",
+      bug: $clr-pink-a400 "bug",
+      example: $clr-deep-purple-a400 "format-list-numbered",
+      quote cite: $clr-grey "format-quote-close"
     ) {
       $tint: nth($appearance, 1);
       $icon: nth($appearance, 2);
@@ -122,8 +124,8 @@
 
           // Icon
           &::before {
-            color: $tint;
-            content: $icon;
+            background-color: $tint;
+            mask-image: url("{{ #{$icon} }}");
           }
         }
       }

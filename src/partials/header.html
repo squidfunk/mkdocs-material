@@ -36,7 +36,7 @@
           class="md-header-nav__button md-logo"
         >
           {% if config.theme.logo.icon %}
-            <i class="md-icon">{{ config.theme.logo.icon }}</i>
+            {% include ".icons/" ~ config.theme.logo.icon ~ ".svg" %}
           {% else %}
             <img
               src="{{ config.theme.logo | url }}"
@@ -46,14 +46,9 @@
             />
           {% endif %}
         </a>
-      </div>
-
-      <!-- Button to toggle drawer -->
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label
-          class="md-icon md-icon--menu md-header-nav__button"
-          for="__drawer"
-        ></label>
+        <label class="md-header-nav__button" for="__drawer">
+          {% include ".icons/material/menu.svg" %}
+        </label>
       </div>
 
       <!-- Header title -->
@@ -82,10 +77,9 @@
       <!-- Button to open search dialogue -->
       <div class="md-flex__cell md-flex__cell--shrink">
         {% if "search" in config["plugins"] %}
-          <label
-            class="md-icon md-icon--search md-header-nav__button"
-            for="__search"
-          ></label>
+          <label class="md-header-nav__button" for="__search">
+            {% include ".icons/material/magnify.svg" %}
+          </label>
 
           <!-- Search interface -->
           {% include "partials/search.html" %}

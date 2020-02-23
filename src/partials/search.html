@@ -41,14 +41,16 @@
         data-md-state="active"
         required
       />
-      <label class="md-icon md-search__icon" for="__search"></label>
+      <label class="md-search__icon" for="__search">
+        {% include ".icons/material/magnify.svg" %}
+      </label>
       <button
         type="reset"
-        class="md-icon md-search__icon"
+        class="md-search__icon"
         data-md-component="search-reset"
         tabindex="-1"
       >
-        &#xE5CD;<!-- close -->
+        {% include ".icons/material/close.svg" %}
       </button>
     </form>
     <div class="md-search__output">

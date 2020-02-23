@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+// tslint:disable no-var-requires
+
 import * as CopyPlugin from "copy-webpack-plugin"
 import * as EventHooksPlugin from "event-hooks-webpack-plugin"
 import * as fs from "fs"
@@ -30,6 +32,16 @@ import { minify as minjs } from "terser"
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin"
 import { Configuration } from "webpack"
 import * as AssetsManifestPlugin from "webpack-assets-manifest"
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Material icons
+ */
+const data = require("material-design-icons-svg/paths")
+const icon = require("material-design-icons-svg")(data)
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -99,7 +111,17 @@ function config(args: Configuration): Configuration {
                 ident: "postcss",
                 plugins: () => [
                   require("autoprefixer")(),
-                  require("css-mqpacker")
+                  require("css-mqpacker"),
+                  require("postcss-replace")({
+                    data: new Proxy(data, {
+                      get(_, name: string) {
+                        return `data:image/svg+xml;utf8,${
+                          icon.getSVG(path.basename(name, ".json"))
+                            .replace(/"/g, "\\\"")
+                        }`
+                      }
+                    })
+                  })
                 ],
                 sourceMap: args.mode !== "production"
               }
@@ -150,7 +172,7 @@ function config(args: Configuration): Configuration {
     stats: {
       entrypoints: false,
       excludeAssets: [
-        /.fontawesome/,
+        /\.(icons)/,
         /\/(fonts|images|lunr)\//,
         /\.(html|py|yml)$/
       ],
@@ -197,10 +219,22 @@ export default (_env: never, args: Configuration): Configuration[] => {
 
         /* Copy FontAwesome SVGs to dot directory, so MkDocs ignores them */
         new CopyPlugin([
-          { to: ".fontawesome", from: "**/*.svg" },
-          { to: ".fontawesome", from: "../LICENSE.txt" }
+          { to: ".icons/fontawesome", from: "**/*.svg" },
+          { to: ".icons/fontawesome", from: "../LICENSE.txt" }
         ], {
           context: "node_modules/@fortawesome/fontawesome-free/svgs"
+        }),
+
+        /* Copy Material icons SVGs to dot directory, so MkDocs ignores them */
+        new CopyPlugin([
+          {
+            to: ".icons/material/[name].svg",
+            from: "**/*.json",
+            toType: "template",
+            transform: (_, file) => icon.getSVG(path.basename(file, ".json"))
+          }
+        ], {
+          context: "node_modules/material-design-icons-svg/paths"
         }),
 
         /* Copy search stemmers and segmenters */

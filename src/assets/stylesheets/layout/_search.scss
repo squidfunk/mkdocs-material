@@ -239,6 +239,10 @@ $md-toggle__search--checked:
     ~ .md-search__icon,
     &::placeholder {
       color: $md-color-black--light;
+
+      svg {
+        fill: $md-color-black--light; // TODO: currentColor?
+      }
     }
 
     // Remove the "x" rendered by Internet Explorer
@@ -273,7 +277,7 @@ $md-toggle__search--checked:
 
       // Icon color
       + .md-search__icon {
-        color: inherit;
+        fill: inherit;
       }
 
       // Placeholder color
@@ -305,6 +309,8 @@ $md-toggle__search--checked:
   // Icons
   &__icon {
     position: absolute;
+    width: px2rem(24px);
+    height: px2rem(24px);
     transition:
       color   250ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity 250ms;
@@ -328,26 +334,27 @@ $md-toggle__search--checked:
         left: initial;
       }
 
-      // Set search icon on pseudo class, so it can be overridden for mobile
-      // and tablet when the search is rendered in an overlay
-      &::before {
-        content: "\E8B6"; // search
-      }
+      // // Set search icon on pseudo class, so it can be overridden for mobile
+      // // and tablet when the search is rendered in an overlay
+      // &::before {
+      //   content: "\E8B6"; // search
+      // }
 
       // [tablet portrait -]: Full-screen search bar
       @include break-to-device(tablet portrait) {
         top: px2rem(12px);
         left: px2rem(16px);
 
-        // Show back arrow instead of search icon
-        &[for="__search"]::before {
-          content: "\E5C4"; // arrow_back
+        // // Show back arrow instead of search icon
+        // &[for="__search"]::before {
+        //   content: "\E5C4"; // arrow_back
 
-          // Adjust for RTL languages
-          [dir="rtl"] & {
-            content: "\E5C8"; // arrow_forward
-          }
-        }
+        //   // Adjust for RTL languages
+        //   [dir="rtl"] & {
+        //     content: "\E5C8"; // arrow_forward
+        //   }
+        // }
+        // TODO: directly include it template, then switch
       }
     }
 

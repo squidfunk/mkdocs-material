@@ -4,8 +4,10 @@
 {% import "partials/language.html" as lang with context %}
 <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source">
   <div class="md-source__icon">
-    {% set repo_icon = config.extra.repo_icon | default("brands/git-alt") %}
-    {% include ".fontawesome/" ~ repo_icon ~ ".svg" %}
+    {% set repo_icon = config.extra.repo_icon | default(
+      "fontawesome/brands/git-alt"
+    ) %}
+    {% include ".icons/" ~ repo_icon ~ ".svg" %}
   </div>
   <div class="md-source__repository">
     {{ config.repo_name }}

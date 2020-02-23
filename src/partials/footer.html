@@ -39,9 +39,9 @@
             rel="prev"
           >
             <div class="md-flex__cell md-flex__cell--shrink">
-              <i
-                class="md-icon md-icon--arrow-back md-footer-nav__button"
-              ></i>
+              <div class="md-footer-nav__button">
+                {% include ".icons/material/arrow-left.svg" %}
+              </div>
             </div>
             <div
               class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"
@@ -75,9 +75,9 @@
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
-              <i
-                class="md-icon md-icon--arrow-forward md-footer-nav__button"
-              ></i>
+              <div class="md-footer-nav__button">
+                {% include ".icons/material/arrow-right.svg" %}
+              </div>
             </div>
           </a>
         {% endif %}
