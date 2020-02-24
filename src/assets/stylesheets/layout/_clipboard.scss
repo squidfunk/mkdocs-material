@@ -51,16 +51,13 @@
   }
 
   // Show on container hover
-  pre:hover &,
-  .codehilite:hover & {
+  pre:hover & {
     color: $md-color-black--light;
   }
 
   // Focused or hovered icon
   pre &:focus,
-  pre &:hover,
-  .codehilite &:focus,
-  .codehilite &:hover {
+  pre &:hover {
     color: $md-color-accent;
   }
 }

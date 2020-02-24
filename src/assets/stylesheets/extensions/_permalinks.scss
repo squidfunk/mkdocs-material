@@ -59,16 +59,34 @@
     }
   }
 
+  // Make permalink visible on hover
+  :hover  .headerlink,
+  :target .headerlink,
+  .headerlink:focus {
+    transform: translate(0, 0);
+    transition:
+      transform  250ms 250ms,
+      color      250ms,
+      opacity    125ms 250ms;
+      // visibility   0ms;
+    opacity: 1;
+    // visibility: visible;
+  }
+
+  // Active or targeted permalink
+  .headerlink:focus,
+  .headerlink:hover,
+  :target .headerlink {
+    color: $md-color-accent;
+  }
+
   // Correct anchor offset for link blurring
   @each $level, $delta in (
-    h1: 8px,
-    h2: 8px,
-    h3: 8px,
+    h1 h2 h3: 8px,
     h4: 9px,
-    h5: 11px,
-    h6: 11px
+    h5 h6: 12px,
   ) {
-    #{$level}[id] {
+    %#{nth($level, 1)} {
 
       // Un-targeted anchor
       &::before {
@@ -83,26 +101,12 @@
         margin-top: -1 * px2rem(48px + 12px + $delta);
         padding-top: px2rem(48px + 12px + $delta);
       }
+    }
 
-      // Make permalink visible on hover
-      &:hover  .headerlink,
-      &:target .headerlink,
-      & .headerlink:focus {
-        transform: translate(0, 0);
-        transition:
-          transform  250ms 250ms,
-          color      250ms,
-          opacity    125ms 250ms;
-          // visibility   0ms;
-        opacity: 1;
-        // visibility: visible;
-      }
-
-      // Active or targeted permalink
-      &:hover  .headerlink:hover,
-      &:target .headerlink,
-      & .headerlink:focus {
-        color: $md-color-accent;
+    // Define levels
+    @for $n from 1 through length($level) {
+      #{nth($level, $n)}[id] {
+        @extend %#{nth($level, 1)};
       }
     }
   }

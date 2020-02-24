@@ -21,52 +21,17 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
-@import "material-shadows";
+// When pymdownx.superfences is enabled but codehilite is disabled,
+// pymdownx.highlight will be used. When this happens, the outer container
+// and tables get this class names by default
+.highlight {
+  @extend .codehilite;
+}
 
-// ----------------------------------------------------------------------------
-// Local imports
-// ----------------------------------------------------------------------------
-
-@import "utilities/break";
-@import "utilities/px2em";
-
-@import "config";
-
-@import "base/reset";
-@import "base/icons";
-@import "base/typeset";
-
-@import "layout/base";
-@import "layout/announce";
-@import "layout/clipboard";
-@import "layout/content";
-@import "layout/dialog";
-@import "layout/header";
-@import "layout/hero";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/search";
-@import "layout/sidebar";
-@import "layout/source";
-@import "layout/tabs";
-
-@import "extensions/admonition";
-@import "extensions/codehilite";
-@import "extensions/footnotes";
-@import "extensions/permalinks";
-
-@import "extensions/pymdown/arithmatex";
-@import "extensions/pymdown/critic";
-@import "extensions/pymdown/details";
-@import "extensions/pymdown/emoji";
-@import "extensions/pymdown/highlight";
-@import "extensions/pymdown/inlinehilite";
-@import "extensions/pymdown/tabbed";
-@import "extensions/pymdown/tasklist";
-
-@import "shame";
+// Same as above, but for code blocks with line numbers enabled
+.highlighttable {
+  @extend .codehilitetable;
+}
