@@ -53,7 +53,7 @@
     "css-mqpacker": "^7.0.0",
     "cssmin": "^0.4.3",
     "custom-event-polyfill": "^1.0.7",
-    "customizr": "^1.4.0",
+    "customizr": "^1.4.1",
     "eslint": "^6.8.0",
     "event-hooks-webpack-plugin": "^2.1.5",
     "expose-loader": "^0.7.4",
