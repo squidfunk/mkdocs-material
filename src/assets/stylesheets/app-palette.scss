@@ -136,7 +136,7 @@ button[data-md-color-accent] {
     @include break-to-device(tablet) {
 
       // Site title in main navigation
-      html & .md-nav--primary .md-nav__title[for="drawer"] {
+      html & .md-nav--primary .md-nav__title[for="__drawer"] {
         background-color: $color;
       }
     }
@@ -211,7 +211,7 @@ button[data-md-color-primary="white"] {
   @include break-to-device(tablet) {
 
     // Site title in main navigation
-    html & .md-nav--primary .md-nav__title[for="drawer"] {
+    html & .md-nav--primary .md-nav__title[for="__drawer"] {
       background-color: $md-color-white;
       color: $md-color-black;
     }
@@ -278,7 +278,7 @@ button[data-md-color-primary="black"] {
   @include break-to-device(tablet) {
 
     // Site title in main navigation
-    html & .md-nav--primary .md-nav__title[for="drawer"] {
+    html & .md-nav--primary .md-nav__title[for="__drawer"] {
       background-color: $clr-black;
     }
   }
