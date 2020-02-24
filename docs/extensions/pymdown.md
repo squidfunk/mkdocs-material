@@ -27,7 +27,8 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_index: !!python/name:material.emoji.material
+      emoji_generator: !!python/name:material.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
@@ -203,6 +204,31 @@ markdown_extensions:
 To view all the available short names and emoji available, see [Emoji's documentation][18]
 on your chosen index which includes links to the files containing the short names
 and emoji associated with each supported index. Happy scrolling :tada:.
+
+In addition, you can access all the Material icons and Fontawesome icons by using
+MkDocs Material's custom emoji index. It extends the Twemoji index with new short
+names that access any of the included icons. To use the custom index, you need to
+use the following options when including the Emoji extension:
+
+```
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.emoji.material
+      emoji_generator: !!python/name:material.emoji.to_svg
+```
+
+Then we can access any of the icons:
+
+=== "Markdown"
+    ```
+    We can use Material Icons :material-airplane:.
+
+    We can also use Fontawesome Icons :fontawesome-solid-ambulance:.
+    ```
+
+=== "Results"
+    We can use Material Icons :material-airplane:.
+
+    We can also use Fontawesome Icons :fontawesome-solid-ambulance:.
 
 !!! warning "Legal disclaimer"
 

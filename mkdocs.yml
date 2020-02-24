@@ -68,13 +68,13 @@ plugins:
 # Customization
 extra:
   social:
-    - icon: brands/github-alt
+    - icon: fontawesome/brands/github-alt
       link: https://github.com/squidfunk
-    - icon: brands/twitter
+    - icon: fontawesome/brands/twitter
       link: https://twitter.com/squidfunk
-    - icon: brands/linkedin
+    - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/squidfunk/
-    - icon: brands/instagram
+    - icon: fontawesome/brands/instagram
       link: https://instagram.com/squidfunk
 
 # Extensions
@@ -94,8 +94,8 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:pymdownx.emoji.twemoji
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_index: !!python/name:material.emoji.material
+      emoji_generator: !!python/name:material.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
