@@ -423,7 +423,7 @@ kbd {
     max-width: 100%;
     border-radius: px2rem(2px);
     font-size: ms(-1);
-    box-shadow: inset 0 0 0 px2rem(1px) $md-color-black--lightest;
+    box-shadow: inset 0 0 0 px2rem(1px) var(--md-color-text--lightest);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 
