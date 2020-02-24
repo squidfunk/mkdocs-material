@@ -33,7 +33,7 @@
     <!-- Active checkbox expands items contained within nested section -->
     {% if nav_item.active %}
       <input
-        class="md-toggle md-nav__toggle"
+        class="md-nav__toggle md-toggle"
         data-md-toggle="{{ path }}"
         type="checkbox"
         id="{{ path }}"
@@ -41,7 +41,7 @@
       />
     {% else %}
       <input
-        class="md-toggle md-nav__toggle"
+        class="md-nav__toggle md-toggle"
         data-md-toggle="{{ path }}"
         type="checkbox"
         id="{{ path }}"
@@ -51,9 +51,15 @@
     <!-- Expand active pages -->
     <label class="md-nav__link" for="{{ path }}">
       {{ nav_item.title }}
+      <span class="md-nav__icon md-icon">
+        {% include ".icons/material/chevron-right.svg" %}
+      </span>
     </label>
     <nav class="md-nav" data-md-level="{{ level }}">
       <label class="md-nav__title" for="{{ path }}">
+        <span class="md-nav__icon md-icon">
+          {% include ".icons/material/arrow-left.svg" %}
+        </span>
         {{ nav_item.title }}
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -76,7 +82,7 @@
 
     <!-- Active checkbox expands items contained within nested section -->
     <input
-      class="md-toggle md-nav__toggle"
+      class="md-nav__toggle md-toggle"
       data-md-toggle="toc"
       type="checkbox"
       id="__toc"
@@ -91,6 +97,9 @@
     {% if toc_ | first is defined %}
       <label class="md-nav__link md-nav__link--active" for="__toc">
         {{ nav_item.title }}
+        <span class="md-nav__icon md-icon">
+          {% include ".icons/material/table-of-contents.svg" %}
+        </span>
       </label>
     {% endif %}
     <a

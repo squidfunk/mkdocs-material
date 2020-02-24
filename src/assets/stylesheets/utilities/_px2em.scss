@@ -27,13 +27,7 @@
 // ----------------------------------------------------------------------------
 
 ///
-/// Convert font size in px to em.
-///
-/// @group  helpers
-/// @access public
-/// @param  {Number} $size Font size in px
-/// @param  {Number} $base Base font size
-/// @return {Number}       Font size in em
+/// Convert font size in px to em
 ///
 @function px2em($size, $base: 16px) {
   @if unit($size) == px {
@@ -48,13 +42,7 @@
 }
 
 ///
-/// Convert font size in px to rem.
-///
-/// @group  helpers
-/// @access public
-/// @param  {Number} $size Font size in px
-/// @param  {Number} $base Base font size
-/// @return {Number}       Font size in rem
+/// Convert font size in px to rem
 ///
 @function px2rem($size, $base: 20px) {
   @if unit($size) == px {

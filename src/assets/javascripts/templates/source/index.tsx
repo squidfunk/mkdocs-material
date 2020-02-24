@@ -48,7 +48,7 @@ const css = {
  */
 export function renderSource(
   facts: SourceFacts
-): HTMLElement {
+) {
   const children = facts.map(fact => (
     <li class={css.fact}>{fact}</li>
   ))

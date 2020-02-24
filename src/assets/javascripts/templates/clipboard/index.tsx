@@ -46,12 +46,17 @@ const css = {
  */
 export function renderClipboard(
   id: string
-): HTMLElement {
+) {
+  const path = require("material-design-icons-svg/paths/content-copy.json")
   return (
     <button
       class={css.container}
       title={translate("clipboard.copy")}
       data-clipboard-target={`#${id} code`}
-    >&#xE14D;</button>
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={path}></path>
+      </svg>
+    </button>
   )
 }

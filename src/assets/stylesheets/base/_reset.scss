@@ -56,7 +56,7 @@ hr {
 
 // Remove gaps in underlined links in iOS >= 8 and Safari >= 8
 a {
-  -webkit-text-decoration-skip: objects;
+  -webkit-text-decoration-skip: objects; // stylelint-disable-line
 }
 
 // Reset tap outlines on iOS and Android
@@ -111,7 +111,7 @@ table {
 // Reset table cell styles
 td,
 th {
-  font-weight: normal;
+  font-weight: normal; // stylelint-disable-line
   vertical-align: top;
 }
 

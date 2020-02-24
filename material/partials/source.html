@@ -3,7 +3,7 @@
 -#}
 {% import "partials/language.html" as lang with context %}
 <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source">
-  <div class="md-source__icon">
+  <div class="md-source__icon md-icon">
     {% set repo_icon = config.extra.repo_icon | default(
       "fontawesome/brands/git-alt"
     ) %}

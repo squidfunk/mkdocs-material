@@ -31,16 +31,21 @@
   .admonition {
     margin: 1.5625em 0;
     padding: 0 px2rem(12px);
-    border-left: px2rem(4px) solid $clr-blue-a200;
+    border-left: px2rem(3px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
     font-size: ms(-1);
-    box-shadow: inset 0 0 0 px2rem(1px) transparentize($clr-blue-a200, 0.85);
+    box-shadow:
+      inset 0 0 0 px2rem(1px) transparentize($clr-blue-a200, 0.85),
+      inset 1px 0 $clr-blue-a200;
     overflow: auto;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
-      border-right: px2rem(4px) solid $clr-blue-a200;
+      border-right: px2rem(3px) solid $clr-blue-a200;
       border-left: none;
+      box-shadow:
+        inset 0 0 0 px2rem(1px) transparentize($clr-blue-a200, 0.85),
+        inset -1px 0 $clr-blue-a200;
     }
 
     // Adjust spacing on last element
@@ -60,7 +65,7 @@
       background-color: transparentize($clr-blue-a200, 0.9);
       font-weight: 700;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(12px);
       }
@@ -72,8 +77,6 @@
 
       // Icon
       &::before {
-        @extend %md-icon;
-
         position: absolute;
         width: px2rem(20px);
         height: px2rem(20px);
@@ -82,7 +85,7 @@
         mask-image: url("{{ pencil }}");
         content: "";
 
-        // Adjust for RTL languages
+        // Adjust for right-to-left languages
         [dir="rtl"] & {
           margin-right: px2rem(-28px);
           margin-left: initial;
@@ -111,11 +114,16 @@
       &%#{nth($names, 1)},
       &.#{nth($names, 1)} {
         border-left-color: $tint;
-        box-shadow: inset 0 0 0 px2rem(1px) transparentize($tint, 0.85);
+        box-shadow:
+          inset 0 0 0 px2rem(1px) transparentize($tint, 0.85),
+          inset 1px 0 $tint;
 
-        // Adjust for RTL languages
+        // Adjust for right-to-left languages
         [dir="rtl"] & {
           border-right-color: $tint;
+          box-shadow:
+            inset 0 0 0 px2rem(1px) transparentize($tint, 0.85),
+            inset -1px 0 $tint;
         }
 
         // Title

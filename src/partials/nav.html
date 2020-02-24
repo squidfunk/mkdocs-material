@@ -24,14 +24,15 @@
 <nav class="md-nav md-nav--primary" data-md-level="0">
 
   <!-- Site title -->
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
+  <label class="md-nav__title" for="__drawer">
     <a
       href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
       title="{{ config.site_name }}"
+      aria-label="{{ config.site_name }}"
       class="md-nav__button md-logo"
     >
       {% if config.theme.logo.icon %}
-        <i class="md-icon">{{ config.theme.logo.icon }}</i>
+        {% include ".icons/" ~ config.theme.logo.icon ~ ".svg" %}
       {% else %}
         <img
           src="{{ config.theme.logo | url }}"

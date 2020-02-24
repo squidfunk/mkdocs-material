@@ -173,7 +173,7 @@ function config(args: Configuration): Configuration {
       entrypoints: false,
       excludeAssets: [
         /\.(icons)/,
-        /\/(fonts|images|lunr)\//,
+        /\/(images|lunr)\//,
         /\.(html|py|yml)$/
       ],
       warningsFilter: [
@@ -217,7 +217,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
       plugins: [
         ...base.plugins,
 
-        /* Copy FontAwesome SVGs to dot directory, so MkDocs ignores them */
+        /* FontAwesome icons */
         new CopyPlugin([
           { to: ".icons/fontawesome", from: "**/*.svg" },
           { to: ".icons/fontawesome", from: "../LICENSE.txt" }
@@ -225,7 +225,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
           context: "node_modules/@fortawesome/fontawesome-free/svgs"
         }),
 
-        /* Copy Material icons SVGs to dot directory, so MkDocs ignores them */
+        /* Material icons */
         new CopyPlugin([
           {
             to: ".icons/material/[name].svg",
@@ -237,7 +237,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
           context: "node_modules/material-design-icons-svg/paths"
         }),
 
-        /* Copy search stemmers and segmenters */
+        /* Search stemmers and segmenters */
         new CopyPlugin([
           { to: "assets/javascripts/lunr", from: "min/*.js" },
           {
@@ -249,13 +249,10 @@ export default (_env: never, args: Configuration): Configuration[] => {
           context: "node_modules/lunr-languages"
         }),
 
-        /* Copy assets like fonts and images */
+        /* Template files */
         new CopyPlugin([
-          { from: "assets/fonts/**/*.!(css)" },
-          { from: "assets/images/*.{ico,png,svg}" },
+          { from: "assets/images/*" },
           { from: "**/*.{py,yml}" },
-
-          /* Copy and minify HTML */
           {
             from: "**/*.html",
             transform: content => {

@@ -25,75 +25,70 @@
 
   <!-- Top-level navigation -->
   <nav class="md-header-nav md-grid">
-    <div class="md-flex">
 
-      <!-- Link to home -->
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a
-          href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
-          title="{{ config.site_name }}"
-          aria-label="{{ config.site_name }}"
-          class="md-header-nav__button md-logo"
-        >
-          {% if config.theme.logo.icon %}
-            {% include ".icons/" ~ config.theme.logo.icon ~ ".svg" %}
-          {% else %}
-            <img
-              src="{{ config.theme.logo | url }}"
-              width="24"
-              height="24"
-              alt="logo"
-            />
-          {% endif %}
-        </a>
-        <label class="md-header-nav__button" for="__drawer">
-          {% include ".icons/material/menu.svg" %}
-        </label>
-      </div>
+    <!-- Link to home -->
+    <a
+      href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
+      title="{{ config.site_name }}"
+      aria-label="{{ config.site_name }}"
+      class="md-header-nav__button md-logo"
+    >
+      {% if config.theme.logo.icon %}
+        {% include ".icons/" ~ config.theme.logo.icon ~ ".svg" %}
+      {% else %}
+        <img
+          src="{{ config.theme.logo | url }}"
+          width="24"
+          height="24"
+          alt="logo"
+        />
+      {% endif %}
+    </a>
+    <label
+      class="md-header-nav__button md-icon md-icon__button"
+      for="__drawer"
+    >
+      {% include ".icons/material/menu.svg" %}
+    </label>
 
-      <!-- Header title -->
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div
-          class="md-flex__ellipsis md-header-nav__title"
-          data-md-component="header-title"
-        >
-          {% if config.site_name == page.title %}
+    <!-- Header title -->
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis md-ellipsis">
+        {% if config.site_name == page.title %}
+          {{ config.site_name }}
+        {% else %}
+          <span class="md-header-nav__topic">
             {{ config.site_name }}
-          {% else %}
-            <span class="md-header-nav__topic">
-              {{ config.site_name }}
-            </span>
-            <span class="md-header-nav__topic">
-              {% if page and page.meta and page.meta.title %}
-                {{ page.meta.title }}
-              {% else %}
-                {{ page.title }}
-              {% endif %}
-            </span>
-          {% endif %}
-        </div>
-      </div>
-
-      <!-- Button to open search dialogue -->
-      <div class="md-flex__cell md-flex__cell--shrink">
-        {% if "search" in config["plugins"] %}
-          <label class="md-header-nav__button" for="__search">
-            {% include ".icons/material/magnify.svg" %}
-          </label>
-
-          <!-- Search interface -->
-          {% include "partials/search.html" %}
+          </span>
+          <span class="md-header-nav__topic">
+            {% if page and page.meta and page.meta.title %}
+              {{ page.meta.title }}
+            {% else %}
+              {{ page.title }}
+            {% endif %}
+          </span>
         {% endif %}
       </div>
-
-      <!-- Repository containing source -->
-      {% if config.repo_url %}
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            {% include "partials/source.html" %}
-          </div>
-        </div>
-      {% endif %}
     </div>
+
+    <!-- Button to open search dialogue -->
+    {% if "search" in config["plugins"] %}
+      <label
+        class="md-header-nav__button md-icon md-icon__button"
+        for="__search"
+      >
+        {% include ".icons/material/magnify.svg" %}
+      </label>
+
+      <!-- Search interface -->
+      {% include "partials/search.html" %}
+    {% endif %}
+
+    <!-- Repository containing source -->
+    {% if config.repo_url %}
+      <div class="md-header-nav__source">
+        {% include "partials/source.html" %}
+      </div>
+    {% endif %}
   </nav>
 </header>

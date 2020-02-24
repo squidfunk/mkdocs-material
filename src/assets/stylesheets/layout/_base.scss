@@ -119,6 +119,14 @@ hr {
   }
 }
 
+// Apply ellipsis in case of overflowing text
+.md-ellipsis {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 // ----------------------------------------------------------------------------
 // Rules: navigational elements
 // ----------------------------------------------------------------------------
@@ -155,37 +163,6 @@ hr {
         opacity 250ms;
       opacity: 1;
     }
-  }
-}
-
-// ----------------------------------------------------------------------------
-// Rules: flexible elements
-// ----------------------------------------------------------------------------
-
-// Flexible layout container
-.md-flex {
-  display: flex;
-
-  // Flexible layout container cell/element
-  &__cell {
-    position: relative;
-
-    // Shrink to minimum width
-    &--shrink {
-      flex-grow: 0;
-    }
-
-    // Stretch to maximum width
-    &--stretch {
-      flex-grow: 1;
-    }
-  }
-
-  // Apply ellipsis in case of overflowing text
-  &__ellipsis {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
   }
 }
 

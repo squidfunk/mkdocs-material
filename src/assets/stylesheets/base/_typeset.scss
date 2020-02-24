@@ -60,7 +60,7 @@ kbd {
   line-height: 1.6;
 
   // Colors should be kept when printing
-  -webkit-print-color-adjust: exact;
+  -webkit-print-color-adjust: exact; // stylelint-disable-line
 
   // Default spacing
   p,
@@ -143,9 +143,9 @@ kbd {
       transition: color 125ms;
     }
 
-    // Hovered and active links
-    &:hover,
-    &:active {
+    // Focused or hover links
+    &:focus,
+    &:hover {
       color: $md-color-accent;
     }
 
@@ -242,7 +242,7 @@ kbd {
         height: px2rem(4px);
       }
 
-      // Style scrollbar thumb
+      // Scrollbar thumb
       &::-webkit-scrollbar-thumb {
         background-color: $md-color-black--lighter;
 
@@ -314,7 +314,7 @@ kbd {
   sub {
     margin-left: 0.0625em * 1 / 0.8;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       margin-right: 0.0625em * 1 / 0.8;
       margin-left: initial;
@@ -327,7 +327,7 @@ kbd {
     border-left: px2rem(4px) solid $md-color-black--lighter;
     color: $md-color-black--light;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       padding-right: px2rem(12px);
       padding-left: initial;
@@ -347,7 +347,7 @@ kbd {
     margin-left: 0.625em;
     padding: 0;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       margin-right: 0.625em;
       margin-left: initial;
@@ -368,7 +368,7 @@ kbd {
       margin-bottom: 0.5em;
       margin-left: 1.25em;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         margin-right: 1.25em;
         margin-left: initial;
@@ -390,7 +390,7 @@ kbd {
       ol {
         margin: 0.5em 0 0.5em 0.625em;
 
-        // Adjust for RTL languages
+        // Adjust for right-to-left languages
         [dir="rtl"] & {
           margin-right: 0.625em;
           margin-left: initial;
@@ -403,7 +403,7 @@ kbd {
   dd {
     margin: 1em 0 1em 1.875em;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       margin-right: 1.875em;
       margin-left: initial;
@@ -439,7 +439,7 @@ kbd {
     td:not([align]) {
       text-align: left;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         text-align: right;
       }

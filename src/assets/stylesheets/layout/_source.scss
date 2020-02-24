@@ -65,7 +65,7 @@
   line-height: 1.2;
   white-space: nowrap;
 
-  // Adjust for RTL languages
+  // Adjust for right-to-left languages
   [dir="rtl"] & {
     padding-right: initial;
     padding-left: px2rem(12px);
@@ -91,16 +91,12 @@
     height: px2rem(48px);
     vertical-align: middle;
 
-    // Align SVG, do not scale, as this will incur strange formatting bugs
-    // in Internet Explorer and Edge
+    // Align with margin only (as opposed to normal button alignment)
     svg {
-      width: px2rem(24px);
-      height: px2rem(24px);
       margin-top: px2rem(12px);
       margin-left: px2rem(12px);
-      fill: $md-color-white;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         margin-right: px2rem(12px);
         margin-left: initial;
@@ -112,7 +108,7 @@
       margin-left: px2rem(-40px);
       padding-left: px2rem(40px);
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         margin-right: px2rem(-40px);
         margin-left: initial;
@@ -153,7 +149,7 @@
   &__fact {
     float: left;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       float: right;
     }
@@ -172,63 +168,6 @@
     // Remove middle dot on first fact
     &:first-child::before {
       display: none;
-    }
-  }
-}
-
-// Source file
-.md-source-file {
-  display: inline-block;
-  margin: 1em 0.5em 1em 0;
-  padding-right: px2rem(5px);
-  border-radius: px2rem(2px);
-  background-color: $md-color-black--lightest;
-  font-size: ms(-1);
-  list-style-type: none;
-  cursor: pointer;
-  overflow: hidden;
-
-  // Icon
-  &::before {
-    @extend %md-icon;
-
-    display: inline-block;
-    margin-right: px2rem(5px);
-    padding: px2rem(5px);
-    background-color: $md-color-black--lighter;
-    color: $md-color-white;
-    font-size: ms(0);
-    content: "\E86F"; // code
-    vertical-align: middle;
-  }
-
-  // Some properties need to be set with higher specificity due to the default
-  // styling of text links inside typesetted content
-  html & {
-    transition:
-      background 400ms,
-      color      400ms,
-      box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    // Icon
-    &::before {
-      transition: inherit;
-    }
-  }
-
-  // Color needs even higher specifity because custom color palettes are set
-  // using the body and override text links inside typesetted content
-  html body .md-typeset & {
-    color: $md-color-black--light;
-  }
-
-  // Hovered source file
-  &:hover {
-    @include z-depth-focus;
-
-    // Icon
-    &::before {
-      background-color: $md-color-accent;
     }
   }
 }

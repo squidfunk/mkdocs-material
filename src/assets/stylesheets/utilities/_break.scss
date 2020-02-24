@@ -44,10 +44,6 @@
 ///     )
 ///   );
 ///
-/// @group  helpers
-/// @access private
-/// @type   Map
-///
 $break-devices: () !default;
 
 // ----------------------------------------------------------------------------
@@ -56,11 +52,6 @@ $break-devices: () !default;
 
 ///
 /// Choose minimum and maximum device widths
-///
-/// @group  helpers
-/// @access private
-/// @param  {Map}  $devices Map of devices
-/// @return {List}          Minimum and maximum width
 ///
 @function break-select-min-max($devices) {
   $min: 1000000;
@@ -93,11 +84,6 @@ $break-devices: () !default;
 ///
 /// Select minimum and maximum widths for a device breakpoint
 ///
-/// @group  helpers
-/// @access private
-/// @param  {String} $device Device
-/// @return {List}           Minimum and maximum width
-///
 @function break-select-device($device) {
   $current: $break-devices;
   @for $n from 1 through length($device) {
@@ -119,10 +105,6 @@ $break-devices: () !default;
 
 ///
 /// A minimum-maximum media query breakpoint
-///
-/// @group  helpers
-/// @access public
-/// @param  {Number|List} $breakpoint Number or number pair
 ///
 @mixin break-at($breakpoint) {
   @if type-of($breakpoint) == number {
@@ -147,10 +129,6 @@ $break-devices: () !default;
 ///
 /// An orientation media query breakpoint
 ///
-/// @group  helpers
-/// @access public
-/// @param  {String} $breakpoint Orientation
-///
 @mixin break-at-orientation($breakpoint) {
   @if type-of($breakpoint) == string {
     @media only screen and (orientation: $breakpoint) {
@@ -164,10 +142,6 @@ $break-devices: () !default;
 ///
 /// A maximum-aspect-ratio media query breakpoint
 ///
-/// @group  helpers
-/// @access public
-/// @param  {Number} $breakpoint Ratio
-///
 @mixin break-at-ratio($breakpoint) {
   @if type-of($breakpoint) == number {
     @media only screen and (max-aspect-ratio: $breakpoint) {
@@ -180,10 +154,6 @@ $break-devices: () !default;
 
 ///
 /// A minimum-maximum media query device breakpoint
-///
-/// @group  helpers
-/// @access public
-/// @param  {String|List} $breakpoint Device
 ///
 @mixin break-at-device($device) {
   @if type-of($device) == string {
@@ -208,10 +178,6 @@ $break-devices: () !default;
 ///
 /// A minimum media query device breakpoint
 ///
-/// @group  helpers
-/// @access public
-/// @param  {String|List} $breakpoint Device
-///
 @mixin break-from-device($device) {
   @if type-of($device) == string {
     $device: $device,;
@@ -229,10 +195,6 @@ $break-devices: () !default;
 
 ///
 /// A maximum media query device breakpoint
-///
-/// @group  helpers
-/// @access public
-/// @param  {String|List} $breakpoint Device
 ///
 @mixin break-to-device($device) {
   @if type-of($device) == string {

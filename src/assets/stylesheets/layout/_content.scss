@@ -31,7 +31,7 @@
   @include break-from-device(tablet landscape) {
     margin-right: px2rem(242px);
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       margin-right: initial;
       margin-left: px2rem(242px);
@@ -42,7 +42,7 @@
   @include break-from-device(screen) {
     margin-left: px2rem(242px);
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       margin-right: px2rem(242px);
     }
@@ -73,18 +73,34 @@
     }
   }
 
-  // Icons
-  &__icon {
-    @extend %md-icon__button;
-
-    position: relative;
+  // Button next to the title
+  &__button {
     margin: px2rem(8px) 0;
+    margin-left: px2rem(8px);
     padding: 0;
     float: right;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      margin-right: px2rem(8px);
+      margin-left: initial;
+      float: left;
+
+      // Flip icon vertically
+      svg {
+        transform: scaleX(-1);
+      }
+    }
 
     // Override default link color for icons
     .md-typeset & {
       color: $md-color-black--lighter;
+    }
+
+    // Align text with icon
+    svg {
+      display: inline;
+      vertical-align: top;
     }
 
     // Hide for print

@@ -126,7 +126,7 @@
         }
 
         // Hide site title
-        .md-nav__title--site {
+        .md-nav__title[for="__drawer"] {
           display: none;
         }
 

@@ -38,12 +38,6 @@
   background-color: $md-color-black;
   color: $md-color-white;
 
-  // Icons
-  svg {
-    display: block;
-    fill: currentColor;
-  }
-
   // Set spacing
   &__inner {
     padding: px2rem(4px);
@@ -52,6 +46,7 @@
 
   // Links to previous and next page
   &__link {
+    display: flex;
     padding-top: px2rem(28px);
     padding-bottom: px2rem(8px);
     transition: opacity 250ms;
@@ -61,7 +56,8 @@
       width: 50%;
     }
 
-    // Hovered link
+    // Focused or hovered links
+    &:focus,
     &:hover {
       opacity: 0.7;
     }
@@ -71,9 +67,14 @@
       width: 25%;
       float: left;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         float: right;
+
+        // Flip icon vertically
+        svg {
+          transform: scaleX(-1);
+        }
       }
 
       // Title
@@ -92,24 +93,24 @@
       float: right;
       text-align: right;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         float: left;
         text-align: left;
+
+        // Flip icon vertically
+        svg {
+          transform: scaleX(-1);
+        }
       }
     }
-  }
-
-  // Icon buttons
-  &__button {
-    @extend %md-icon__button;
-
-    transition: background 250ms;
   }
 
   // Link title - set line height to match icon for correct alignment
   &__title {
     position: relative;
+    flex-grow: 1;
+    max-width: calc(100% - #{px2rem(48px)});
     padding: 0 px2rem(20px);
     font-size: px2rem(18px);
     line-height: px2rem(48px);
@@ -161,7 +162,7 @@
     max-width: 75%;
     float: left;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       float: right;
     }
@@ -183,7 +184,7 @@
     padding: px2rem(12px) 0;
     float: right;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       float: left;
     }
@@ -194,7 +195,7 @@
     display: inline-block;
     width: px2rem(32px);
     height: px2rem(32px);
-    font-size: px2rem(16px);
+    transition: color 250ms;
     text-align: center;
 
     // Adjust line-height to match height for correct alignment
@@ -205,15 +206,8 @@
     // Social icon
     svg {
       width: px2rem(16px);
-      transition: fill 250ms;
       vertical-align: -25%;
-      fill: $md-color-white--light;
-    }
-
-    // Focused or hovered link
-    &:focus svg,
-    &:hover svg {
-      fill: $md-color-white;
+      fill: currentColor;
     }
   }
 }

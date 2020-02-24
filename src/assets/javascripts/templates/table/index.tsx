@@ -47,7 +47,7 @@ const css = {
  */
 export function renderTable(
   table: HTMLTableElement
-): HTMLElement {
+) {
   return (
     <div class={css.wrapper}>
       <div class={css.table}>

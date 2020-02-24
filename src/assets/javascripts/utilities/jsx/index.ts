@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+// tslint:disable no-null-keyword
+
 import { JSX as JSXInternal } from "preact"
 import { keys } from "ramda"
 
@@ -28,7 +30,7 @@ import { keys } from "ramda"
  * ------------------------------------------------------------------------- */
 
 /**
- * HTML attributes
+ * HTML and SVG attributes
  */
 type Attributes =
   & JSXInternal.HTMLAttributes
@@ -40,6 +42,7 @@ type Attributes =
  */
 type Child =
   | HTMLElement
+  | SVGElement
   | Text
   | string
   | number
@@ -49,12 +52,68 @@ type Child =
  * ------------------------------------------------------------------------- */
 
 /**
+ * Create an element
+ *
+ * @param tag - HTML or SVG tag
+ *
+ * @return Element
+ */
+function createElement(tag: string): HTMLElement | SVGElement {
+  switch (tag) {
+
+    /* SVG elements */
+    case "svg":
+    case "path":
+      return document.createElementNS("http://www.w3.org/2000/svg", tag)
+
+    /* HTML elements */
+    default:
+      return document.createElement(tag)
+  }
+}
+
+/**
+ * Set an attribute
+ *
+ * @param el - Element
+ * @param name - Attribute name
+ * @param value - Attribute value
+ */
+function setAttribute(
+  el: HTMLElement | SVGElement, name: string, value: string) {
+  switch (name) {
+
+    /* Attributes to be ignored */
+    case "xmlns":
+      break
+
+    /* Attributes of SVG elements */
+    case "viewBox":
+    case "d":
+      if (typeof value !== "boolean")
+        el.setAttributeNS(null, name, value)
+      else if (value)
+        el.setAttributeNS(null, name, "")
+      break
+
+    /* Attributes of HTML elements */
+    default:
+      if (typeof value !== "boolean")
+        el.setAttribute(name, value)
+      else if (value)
+        el.setAttribute(name, "")
+  }
+}
+
+/**
  * Append a child node to an element
  *
  * @param el - Element
  * @param child - Child node(s)
  */
-function appendChild(el: HTMLElement, child: Child | Child[]): void {
+function appendChild(
+  el: HTMLElement | SVGElement, child: Child | Child[]
+): void {
 
   /* Handle primitive types (including raw HTML) */
   if (typeof child === "string" || typeof child === "number") {
@@ -78,7 +137,7 @@ function appendChild(el: HTMLElement, child: Child | Child[]): void {
 /**
  * JSX factory
  *
- * @param tag - HTML tag
+ * @param tag - HTML or SVG tag
  * @param attributes - HTML attributes
  * @param children - Child elements
  *
@@ -86,16 +145,13 @@ function appendChild(el: HTMLElement, child: Child | Child[]): void {
  */
 export function h(
   tag: string, attributes: Attributes | null, ...children: Child[]
-): HTMLElement {
-  const el = document.createElement(tag)
+): HTMLElement | SVGElement {
+  const el = createElement(tag)
 
   /* Set attributes, if any */
   if (attributes)
     for (const attr of keys(attributes))
-      if (typeof attributes[attr] !== "boolean")
-        el.setAttribute(attr, attributes[attr])
-      else if (attributes[attr])
-        el.setAttribute(attr, "")
+      setAttribute(el, attr, attributes[attr])
 
   /* Append child nodes */
   for (const child of children)
@@ -111,7 +167,7 @@ export function h(
 
 export declare namespace h {
   namespace JSX {
-    type Element = HTMLElement
+    type Element = HTMLElement | SVGElement
     type IntrinsicElements = JSXInternal.IntrinsicElements
   }
 }

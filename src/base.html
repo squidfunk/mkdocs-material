@@ -291,14 +291,39 @@
               <!-- Content -->
               {% block content %}
 
-                <!-- Edit button, if URL was defined -->
+                <!-- Edit button -->
                 {% if page.edit_url %}
                   <a
                     href="{{ page.edit_url }}"
                     title="{{ lang.t('edit.link.title') }}"
-                    class="md-icon md-content__icon"
-                  >&#xE3C9;<!-- edit --></a>
+                    class="md-content__button md-icon"
+                  >
+                    {% include ".icons/material/pencil.svg" %}
+                  </a>
                 {% endif %}
+
+                <!-- Link to source file -->
+                {% block source %}
+                  {% if page and page.meta and page.meta.source %}
+                    {% set repo = config.repo_url %}
+                    {% if repo | last == "/" %}
+                      {% set repo = repo[:-1] %}
+                    {% endif %}
+                    {% set path = page.meta.path | default([""]) %}
+                    {% set file = page.meta.source %}
+                    {% set repo_icon = config.extra.repo_icon | default(
+                      "fontawesome/brands/git-alt"
+                    ) %}
+                    <a
+                      href="{{ [repo, path, page.meta.source] | join('/') }}"
+                      title="{{ file }}"
+                      class="md-content__button md-icon"
+                    >
+                      {{ lang.t("meta.source") }}
+                      {% include ".icons/" ~ repo_icon ~ ".svg" %}
+                    </a>
+                  {% endif %}
+                {% endblock %}
 
                 <!--
                   Hack: check whether the content contains a h1 headline. If it
@@ -311,26 +336,6 @@
 
                 <!-- Content -->
                 {{ page.content }}
-
-                <!-- Source files -->
-                {% block source %}
-                  {% if page and page.meta and page.meta.source %}
-                    <h2 id="__source">{{ lang.t("meta.source") }}</h2>
-                    {% set repo = config.repo_url %}
-                    {% if repo | last == "/" %}
-                      {% set repo = repo[:-1] %}
-                    {% endif %}
-                    {% set path = page.meta.path | default([""]) %}
-                    {% set file = page.meta.source %}
-                    <a
-                      href="{{ [repo, path, file] | join('/') }}"
-                      title="{{ file }}"
-                      class="md-source-file"
-                    >
-                      {{ file }}
-                    </a>
-                  {% endif %}
-                {% endblock %}
 
                 <!-- Support for mkdocs-git-revision-date-localized-plugin -->
                 {% if page and page.meta and (

@@ -39,7 +39,7 @@
       top: 0.45em;
       left: -2em;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         right: -2em;
         left: initial;
@@ -52,26 +52,26 @@
 
     // Checkbox icon in unchecked state
     .task-list-indicator::before {
-      @extend %md-icon;
-
       position: absolute;
       top: 0.15em;
-      left: -1.25em;
-      color: $md-color-black--lighter;
-      font-size: 1.25em;
-      content: "\E835"; // check_box_outline_blank
-      vertical-align: -0.25em;
+      left: px2em(-24px);
+      width: px2em(20px);
+      height: px2em(20px);
+      background-color: $md-color-black--lightest;
+      mask-image: url("{{ checkbox-blank-circle }}");
+      content: "";
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
-        right: -1.25em;
+        right: px2em(-24px);
         left: initial;
       }
     }
 
     // Checkbox icon in checked state
     [type="checkbox"]:checked + .task-list-indicator::before {
-      content: "\E834"; // check_box
+      background-color: $clr-green-a400;
+      mask-image: url("{{ check-circle }}");
     }
 
     // Hide original checkbox behind icon

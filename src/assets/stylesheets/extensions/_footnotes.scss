@@ -115,8 +115,6 @@
 
   // Footnote back reference
   .footnote-backref {
-    @extend %md-icon;
-
     display: inline-block;
     transform: translateX(px2rem(5px));
     transition:
@@ -129,7 +127,7 @@
     opacity: 0;
     vertical-align: text-bottom;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       transform: translateX(px2rem(-5px));
     }
@@ -137,10 +135,13 @@
     // Back reference icon
     &::before {
       display: inline-block;
-      font-size: px2rem(16px);
-      content: "\E31B"; // keyboard_return
+      width: px2rem(16px);
+      height: px2rem(16px);
+      background-color: currentColor;
+      mask-image: url("{{ anchor }}");
+      content: "";
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         transform: scaleX(-1)
       }

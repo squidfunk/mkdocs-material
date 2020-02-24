@@ -52,12 +52,24 @@ const css = {
  */
 export function renderSearchResult(
   { article, sections }: SearchResult
-): HTMLElement {
+) {
+
+  // create page with icon
+  const path = require("material-design-icons-svg/paths/file-search-outline.json")
+
   const children = [article, ...sections].map(document => {
     const { location, title, text } = document
     return (
       <a href={location} class={css.link} tabIndex={-1}>
         <article class={"parent" in document ? css.section : css.article}>
+          {!("parent" in document)
+            ? <div class="md-search-result__icon md-icon__button md-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d={path}></path>
+                </svg>
+              </div>
+            : null
+          }
           <h1 class={css.title}>{title}</h1>
           {text.length
             ? <p class={css.teaser}>{truncate(text, 320)}</p>

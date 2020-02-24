@@ -51,8 +51,8 @@ hero: Metadata enables hero teaser texts
 
 ### Linking sources
 
-When a document is related to a specific set of source files and the `repo_url`
-is defined inside the project's `mkdocs.yml`, the files can be linked using the
+When a document is related to a specific source file and the `repo_url` is
+defined inside the project's `mkdocs.yml`, the file can be linked using the
 `source` key:
 
 ``` markdown
@@ -68,12 +68,6 @@ Example:
 path: tree/master/docs/extensions
 source: metadata.md
 ```
-
-Result:
-
-See the [source][2] section for the resulting output.
-
-  [2]: #__source
 
 ### Redirecting to another page
 

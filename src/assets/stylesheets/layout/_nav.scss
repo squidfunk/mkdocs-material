@@ -37,22 +37,20 @@
     text-overflow: ellipsis;
     overflow: hidden;
 
-    // Icon, hidden by default
-    &::before {
-      @extend %md-icon, %md-icon__button;
-
-      display: none;
-      content: "\E5C4"; // arrow_back
-
-      // Adjust for RTL languages
-      [dir="rtl"] & {
-        content: "\E5C8"; // arrow_forward
-      }
-    }
-
-    // Hide button by default
+    // Hide buttons by default
     .md-nav__button {
       display: none;
+
+      // Stretch images
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      // Logo
+      &.md-logo svg {
+        fill: currentColor;
+      }
     }
   }
 
@@ -76,7 +74,7 @@
     & & {
       padding-right: 0;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         padding-right: px2rem(12px);
         padding-left: 0;
@@ -86,17 +84,6 @@
       &:last-child {
         padding-bottom: 0;
       }
-    }
-  }
-
-  // Button with logo
-  &__button {
-    @extend %md-icon, %md-icon__button;
-
-    // Stretch image
-    img {
-      width: 100%;
-      height: auto;
     }
   }
 
@@ -110,16 +97,6 @@
     overflow: hidden;
     scroll-snap-align: start;
 
-    // Icon
-    &::after {
-      @extend %md-icon;
-
-      // Item contains a nested list
-      .md-nav__item--nested > & {
-        content: "\E313"; // keyboard_arrow_down
-      }
-    }
-
     // Hide link to table of contents by default - this will only match the
     // table of contents inside the drawer below and including tablet portrait
     html &[for="__toc"] {
@@ -127,11 +104,6 @@
 
       // Hide table of contents by default
       & ~ .md-nav {
-        display: none;
-      }
-
-      // Hide icon for current item
-      + .md-nav__link::after {
         display: none;
       }
     }
@@ -142,8 +114,7 @@
     }
 
     // Active link
-    &:active,
-    &--active {
+    .md-nav__item &--active {
       color: $md-color-primary;
     }
 
@@ -191,9 +162,8 @@
         line-height: 1.5;
       }
 
-      // List title - higher specificity is necessary to ensure that the title
-      // inside the drawer is always styled accordingly
-      html & .md-nav__title {
+      // List title
+      .md-nav__title {
         position: relative;
         height: px2rem(112px);
         padding: px2rem(60px) px2rem(16px) px2rem(4px);
@@ -205,14 +175,20 @@
         cursor: pointer;
 
         // Icon
-        &::before {
+        .md-nav__icon {
           display: block;
           position: absolute;
-          top: px2rem(4px);
-          left: px2rem(4px);
-          width: px2rem(40px);
-          height: px2rem(40px);
-          color: $md-color-black--light;
+          top: px2rem(8px);
+          left: px2rem(8px);
+          width: px2rem(24px);
+          height: px2rem(24px);
+          margin: px2rem(4px);
+
+          // Adjust for right-to-left languages
+          [dir="rtl"] & {
+            right: px2rem(8px);
+            left: initial;
+          }
         }
 
         // Main lists
@@ -229,7 +205,7 @@
         }
 
         // Site title in main navigation
-        &--site {
+        &[for="__drawer"] {
           position: relative;
           background-color: $md-color-primary;
           color: $md-color-white;
@@ -242,27 +218,18 @@
             left: px2rem(4px);
             width: px2rem(64px);
             height: px2rem(64px);
+            margin: px2rem(4px);
+            padding: px2rem(8px);
             font-size: px2rem(48px);
-          }
-
-          // Hide back arrow icon
-          &::before {
-            display: none;
           }
         }
       }
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       html [dir="rtl"] & .md-nav__title {
 
-        // Icon
-        &::before {
-          right: px2rem(4px);
-          left: initial;
-        }
-
         // Site title in main navigation
-        &--site .md-nav__button {
+        &[for="__drawer"] .md-nav__button {
           right: px2rem(4px);
           left: initial;
         }
@@ -278,7 +245,7 @@
         padding: 0;
         border-top: px2rem(1px) solid $md-color-black--lightest;
 
-        // Adjust for RTL languages
+        // Adjust for right-to-left languages
         [dir="rtl"] & {
           padding: 0;
         }
@@ -287,20 +254,10 @@
         &--nested > .md-nav__link {
           padding-right: px2rem(48px);
 
-          // Adjust for RTL languages
+          // Adjust for right-to-left languages
           [dir="rtl"] & {
             padding-right: px2rem(16px);
             padding-left: px2rem(48px);
-          }
-
-          // Replace icon with right arrow
-          &::after {
-            content: "\E315"; // keyboard_arrow_right
-
-            // Adjust for RTL languages
-            [dir="rtl"] & {
-              content: "\E314"; // keyboard_arrow_left
-            }
           }
         }
       }
@@ -311,8 +268,8 @@
         margin-top: 0;
         padding: px2rem(12px) px2rem(16px);
 
-        // Rotate icon
-        &::after {
+        // Icon
+        .md-nav__icon {
           position: absolute;
           top: 50%;
           right: px2rem(12px);
@@ -320,10 +277,23 @@
           color: inherit;
           font-size: px2rem(24px);
 
-          // Adjust for RTL languages
+          // Adjust for right-to-left languages
           [dir="rtl"] & {
             right: initial;
             left: px2rem(12px);
+          }
+        }
+      }
+
+      // Icon
+      .md-nav__icon {
+
+        // Adjust for right-to-left languages
+        [dir="rtl"] & {
+
+          // Flip icon vertically
+          svg {
+            transform: scale(-1);
           }
         }
       }
@@ -345,7 +315,7 @@
           .md-nav__link {
             padding-left: px2rem(28px);
 
-            // Adjust for RTL languages
+            // Adjust for right-to-left languages
             [dir="rtl"] & {
               padding-right: px2rem(28px);
               padding-left: initial;
@@ -356,7 +326,7 @@
           .md-nav .md-nav__link {
             padding-left: px2rem(40px);
 
-            // Adjust for RTL languages
+            // Adjust for right-to-left languages
             [dir="rtl"] & {
               padding-right: px2rem(40px);
               padding-left: initial;
@@ -367,7 +337,7 @@
           .md-nav .md-nav .md-nav__link {
             padding-left: px2rem(52px);
 
-            // Adjust for RTL languages
+            // Adjust for right-to-left languages
             [dir="rtl"] & {
               padding-right: px2rem(52px);
               padding-left: initial;
@@ -378,7 +348,7 @@
           .md-nav .md-nav .md-nav .md-nav__link {
             padding-left: px2rem(64px);
 
-            // Adjust for RTL languages
+            // Adjust for right-to-left languages
             [dir="rtl"] & {
               padding-right: px2rem(64px);
               padding-left: initial;
@@ -397,14 +367,9 @@
         opacity   125ms 50ms;
       opacity: 0;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         transform: translateX(-100%);
-      }
-
-      // Just hide navigation, if browser doesn't supports 3D transforms
-      .no-csstransforms3d & {
-        display: none;
       }
     }
 
@@ -415,11 +380,6 @@
         transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
         opacity   125ms 125ms;
       opacity: 1;
-
-      // Just show navigation, if browser doesn't supports 3D transforms
-      .no-csstransforms3d & {
-        display: flex;
-      }
     }
   }
 
@@ -432,12 +392,6 @@
       display: block;
       padding-right: px2rem(48px);
 
-      // Unrotate icon for table of contents
-      &::after {
-        color: inherit;
-        content: "\E8DE"; // toc
-      }
-
       // Hide link to current item
       + .md-nav__link {
         display: none;
@@ -449,7 +403,7 @@
       }
     }
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     html [dir="rtl"] &__link {
       padding-right: px2rem(16px);
       padding-left: px2rem(48px);
@@ -471,10 +425,19 @@
     // property must be calculated before transitioning
     transition: max-height 250ms cubic-bezier(0.86, 0, 0.07, 1);
 
-    // Snap to site and table of contents title
-    .md-nav__title[for="__drawer"],
-    .md-nav__title[for="__toc"] {
-      scroll-snap-align: start;
+    // List title
+    .md-nav__title {
+
+      // Snap to site and table of contents title
+      &[for="__drawer"],
+      &[for="__toc"] {
+        scroll-snap-align: start;
+      }
+
+      // Hide icons
+      .md-nav__icon {
+        display: none;
+      }
     }
 
     // Hide nested navigation by default
@@ -492,27 +455,23 @@
       display: none;
     }
 
-    // Link inside item - ideally the link display method would be set to
-    // inline on screen, but this doesn't work with text ellipsis
-    &__link {
+    // Icon
+    &__icon {
+      height: px2rem(18px);
+      float: right;
+      transition: transform 250ms;
 
-      // Item contains a nested list
-      .md-nav__item--nested > &::after {
+      // Inline icon and adjust to match font size
+      svg {
         display: inline-block;
-        transform-origin: 0.45em 0.45em;
-        transform-style: preserve-3d;
-        vertical-align: -0.125em;
-
-        // Only animate icon when JavaScript is available, as the height can
-        // not be animated anyway, and better no fun than half the fun
-        .js & {
-          transition: transform 400ms;
-        }
+        width: px2rem(18px);
+        height: px2rem(18px);
+        vertical-align: px2rem(-2px);
       }
 
       // Rotate icon for expanded lists
-      .md-nav__item--nested .md-nav__toggle:checked ~ &::after {
-        transform: rotateX(180deg);
+      .md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link & {
+        transform: rotateZ(90deg);
       }
     }
   }
