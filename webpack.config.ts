@@ -231,7 +231,10 @@ export default (_env: never, args: Configuration): Configuration[] => {
             to: ".icons/material/[name].svg",
             from: "**/*.json",
             toType: "template",
-            transform: (_, file) => icon.getSVG(path.basename(file, ".json"))
+            transform: (_, file) => {
+              const name = path.basename(file, ".json")
+              return icon.getSVG(name, ` id="${name}"`)
+            }
           }
         ], {
           context: "node_modules/material-design-icons-svg/paths"
