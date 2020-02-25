@@ -54,6 +54,12 @@
     padding: 0;
     list-style: none;
     white-space: nowrap;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      margin-right: px2rem(4px);
+      margin-left: initial;
+    }
   }
 
   // List item
