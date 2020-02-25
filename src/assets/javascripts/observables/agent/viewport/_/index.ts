@@ -21,7 +21,11 @@
  */
 
 import { Observable, combineLatest } from "rxjs"
-import { map, shareReplay } from "rxjs/operators"
+import {
+  distinctUntilKeyChanged,
+  map,
+  shareReplay
+} from "rxjs/operators"
 
 import { Header } from "../../../header"
 import {
@@ -88,12 +92,22 @@ export function watchViewport(): Observable<Viewport> {
 export function watchViewportAt(
   el: HTMLElement, { header$, viewport$ }: WatchRelativeOptions
 ): Observable<Viewport> {
-  return combineLatest([header$, viewport$])
+  const offset$ = viewport$
     .pipe(
-      map(([{ height }, { offset, size }]) => ({
+      distinctUntilKeyChanged("size"),
+      map<Viewport, ViewportOffset>(() => ({
+        x: el.offsetLeft,
+        y: el.offsetTop
+      }))
+    )
+
+  /* Compute relative viewport, return hot observable */
+  return combineLatest([header$, viewport$, offset$])
+    .pipe(
+      map(([{ height }, { offset, size }, { x, y }]) => ({
         offset: {
-          x: offset.x - el.offsetLeft,
-          y: offset.y - el.offsetTop + height
+          x: offset.x - x,
+          y: offset.y - y + height
         },
         size
       })),

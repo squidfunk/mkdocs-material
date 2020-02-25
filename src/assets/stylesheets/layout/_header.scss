@@ -95,13 +95,10 @@
       margin: px2rem(4px);
       padding: px2rem(8px);
 
-      // Set correct display on image or icon
-      * {
-        display: block;
-      }
-
-      // Inherit current color
+      // Image or icon
+      img,
       svg {
+        display: block;
         width: px2rem(24px);
         height: px2rem(24px);
         fill: currentColor;
