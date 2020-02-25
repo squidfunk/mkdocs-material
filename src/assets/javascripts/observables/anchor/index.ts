@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { difference, reverse } from "ramda"
+import { reverse } from "ramda"
 import {
   MonoTypeOperatorFunction,
   Observable,
@@ -29,12 +29,14 @@ import {
   pipe
 } from "rxjs"
 import {
+  bufferCount,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   finalize,
   map,
   observeOn,
   scan,
+  startWith,
   switchMap,
   tap
 } from "rxjs/operators"
@@ -148,7 +150,7 @@ export function watchAnchorList(
       }),
 
       /* Re-compute partition when viewport offset changes */
-      switchMap(index => combineLatest(adjust$, viewport$)
+      switchMap(index => combineLatest([adjust$, viewport$])
         .pipe(
           scan(([prev, next], [adjust, { offset: { y } }]) => {
 
@@ -183,7 +185,7 @@ export function watchAnchorList(
       )
     )
 
-  /* Compute and return  anchor list migrations */
+  /* Compute and return anchor list migrations */
   return partition$
     .pipe(
       map(([prev, next]) => ({
@@ -192,14 +194,25 @@ export function watchAnchorList(
       })),
 
       /* Extract anchor list migrations */
-      scan<AnchorList>((a, b) => {
-        const begin = Math.max(0, Math.min(b.prev.length, a.prev.length) - 1)
-        const end   = Math.max(b.prev.length, a.prev.length)
-        return {
-          prev: b.prev.slice(begin, end + 1),
-          next: difference(b.next, a.next)
+      startWith({ prev: [], next: [] }),
+      bufferCount(2, 1),
+      map(([a, b]) => {
+
+        /* Moving down */
+        if (a.prev.length < b.prev.length) {
+          return {
+            prev: b.prev.slice(Math.max(0, a.prev.length - 1), b.prev.length),
+            next: []
+          }
+
+        /* Moving up */
+        } else {
+          return {
+            prev: b.prev.slice(-1),
+            next: b.next.slice(0, b.next.length - a.next.length)
+          }
         }
-      }, { prev: [], next: [] })
+      })
     )
 }
 
