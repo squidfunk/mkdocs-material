@@ -26,13 +26,13 @@
 
 // Announcement bar
 .md-announcement {
-  background-color: $md-color-black;
+  background-color: var(--md-color-text);
 
   // Actual content
   &__inner {
     min-height: px2rem(48px);
     padding: 0 px2rem(16px);
-    color: $md-color-white;
+    color: var(--md-color-background);
     font-size: px2rem(14px);
     line-height: px2rem(48px);
   }

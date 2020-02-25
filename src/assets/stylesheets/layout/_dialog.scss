@@ -41,8 +41,8 @@
     opacity   400ms;
   border: none;
   border-radius: px2rem(2px);
-  background: $md-color-black;
-  color: $md-color-white;
+  background: var(--md-color-text);
+  color: var(--md-color-background);
   font-size: px2rem(14px);
   opacity: 0;
   z-index: 2;

@@ -51,7 +51,7 @@ button[data-md-color-accent] {
     background-color 250ms,
     opacity          250ms;
   border-radius: px2rem(2px);
-  color: $md-color-white;
+  color: var(--md-color-background);
   font-size: ms(-1);
   text-align: left;
   cursor: pointer;
@@ -128,7 +128,7 @@ button[data-md-color-accent] {
 
       // Repository containing source
       .md-nav__source {
-        background-color: mix($color, $md-color-black, 75%);
+        background-color: $color; // TODO: https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables mix($color, var(--md-color-text), 75%);
       }
     }
 
@@ -158,9 +158,9 @@ button[data-md-color-accent] {
 
 // Color tile for presentation in theme documentation
 button[data-md-color-primary="white"] {
-  background-color: $md-color-white;
-  color: $md-color-black;
-  box-shadow: 0 0 px2rem(1px) $md-color-black--light inset;
+  background-color: var(--md-color-background);
+  color: var(--md-color-text);
+  box-shadow: 0 0 px2rem(1px) var(--md-color-text--light) inset;
 }
 
 // Overrides for black color
@@ -168,18 +168,18 @@ button[data-md-color-primary="white"] {
 
   // Application header (stays always on top)
   .md-header {
-    background-color: $md-color-white;
-    color: $md-color-black;
+    background-color: var(--md-color-background);
+    color: var(--md-color-text);
   }
 
   // Hero teaser
   .md-hero {
-    background-color: $md-color-white;
-    color: $md-color-black;
+    background-color: var(--md-color-background);
+    color: var(--md-color-text);
 
     // Add a border if there are no tabs
     &--expand {
-      border-bottom: px2rem(1px) solid $md-color-black--lightest;
+      border-bottom: px2rem(1px) solid var(--md-color-text--lightest);
     }
   }
 
@@ -188,8 +188,8 @@ button[data-md-color-primary="white"] {
 
     // Repository containing source
     .md-nav__source {
-      background-color: $md-color-black--lightest;
-      color: $md-color-black;
+      background-color: var(--md-color-text--lightest);
+      color: var(--md-color-text);
     }
   }
 
@@ -198,11 +198,11 @@ button[data-md-color-primary="white"] {
 
     // Search input
     .md-search__input {
-      background-color: $md-color-black--lightest;
+      background-color: var(--md-color-text--lightest);
 
       // Search input placeholder
       &::placeholder {
-        color: $md-color-black--light;
+        color: var(--md-color-text--light);
       }
     }
   }
@@ -212,13 +212,13 @@ button[data-md-color-primary="white"] {
 
     // Site title in main navigation
     html & .md-nav--primary .md-nav__title[for="__drawer"] {
-      background-color: $md-color-white;
-      color: $md-color-black;
+      background-color: var(--md-color-background);
+      color: var(--md-color-text);
     }
 
     // Hero teaser
     .md-hero {
-      border-bottom: px2rem(1px) solid $md-color-black--lightest;
+      border-bottom: px2rem(1px) solid var(--md-color-text--lightest);
     }
   }
 
@@ -227,9 +227,9 @@ button[data-md-color-primary="white"] {
 
     // Tabs with outline
     .md-tabs {
-      border-bottom: px2rem(1px) solid $md-color-black--lightest;
-      background-color: $md-color-white;
-      color: $md-color-black;
+      border-bottom: px2rem(1px) solid var(--md-color-text--lightest);
+      background-color: var(--md-color-background);
+      color: var(--md-color-text);
     }
   }
 }
@@ -261,7 +261,7 @@ button[data-md-color-primary="black"] {
 
     // Repository containing source
     .md-nav__source {
-      background-color: mix($clr-black, $md-color-white, 75%);
+      background-color: var(--md-color-background); // TODO: mix($clr-black, var(--md-color-background, 75%);
     }
   }
 
@@ -270,7 +270,7 @@ button[data-md-color-primary="black"] {
 
     // Search input
     .md-search__input {
-      background-color: $md-color-white--lighter;
+      background-color: var(--md-color-background--lighter);
     }
   }
 

@@ -60,7 +60,7 @@
 
   // Footnotes extension
   .footnote {
-    color: $md-color-black--light;
+    color: var(--md-color-text--light);
     font-size: ms(-1);
 
     // Remove additional spacing on footnotes
@@ -74,7 +74,7 @@
 
       // Darken color for targeted footnote
       &:target {
-        color: $md-color-black;
+        color: var(--md-color-text);
       }
 
       // Remove spacing on first element
@@ -92,7 +92,7 @@
       // Active or targeted back reference
       &:hover  .footnote-backref:hover,
       &:target .footnote-backref {
-        color: $md-color-accent;
+        color: var(--md-color-accent);
       }
     }
   }
@@ -106,7 +106,7 @@
     &::before {
       display: inline;
       margin: 0 0.2em;
-      border-left: px2rem(1px) solid $md-color-black--lighter;
+      border-left: px2rem(1px) solid var(--md-color-text--lighter);
       font-size: 1.25em;
       content: "";
       vertical-align: px2rem(-5px);
@@ -121,7 +121,7 @@
       transform 250ms 125ms,
       color     250ms,
       opacity   125ms 125ms;
-    color: $md-color-black--lighter;
+    color: var(--md-color-black--lighter);
     // Hack: remove Unicode arrow for icon
     font-size: 0;
     opacity: 0;

@@ -50,7 +50,7 @@
 
     // Higher specificity for color due to palettes integration
     html body & {
-      color: $md-color-black--lighter;
+      color: var(--md-color-text--lighter);
     }
 
     // Hide for print
@@ -77,7 +77,7 @@
   .headerlink:focus,
   .headerlink:hover,
   :target .headerlink {
-    color: $md-color-accent;
+    color: var(--md-color-accent);
   }
 
   // Correct anchor offset for link blurring

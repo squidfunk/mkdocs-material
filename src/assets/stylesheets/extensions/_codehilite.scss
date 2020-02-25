@@ -245,7 +245,7 @@ $codehilite-whitespace: transparent;
   // Disable user selection, so code can be easily copied without
   // accidentally also copying the line numbers
   .linenos {
-    color: $md-color-black--lighter;
+    color: var(--md-color-text--lighter);
     box-shadow: inset 0 0 0 px2rem(1px) $md-code-background;
     user-select: none;
 
@@ -273,9 +273,9 @@ $codehilite-whitespace: transparent;
       margin-right: px2rem(12px);
       margin-left: px2rem(-12px);
       padding-left: px2rem(12px);
-      border-right: px2rem(1px) solid $md-color-black--lightest;
+      border-right: px2rem(1px) solid var(--md-color-text--lightest);
       background-color: $md-code-gutter;
-      color: $md-color-black--lighter;
+      color: var(--md-color-text--lighter);
       content: attr(data-linenos);
       user-select: none;
 

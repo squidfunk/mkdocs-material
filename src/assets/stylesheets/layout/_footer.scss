@@ -35,8 +35,8 @@
 
 // Navigation within footer
 .md-footer-nav {
-  background-color: $md-color-black;
-  color: $md-color-white;
+  background-color: var(--md-color-text);
+  color: var(--md-color-background);
 
   // Set spacing
   &__inner {
@@ -123,14 +123,14 @@
     left: 0;
     margin-top: px2rem(-20px);
     padding: 0 px2rem(20px);
-    color: $md-color-white--light;
+    color: var(--md-color-background--light);
     font-size: px2rem(15px);
   }
 }
 
 // Non-navigational information
 .md-footer-meta {
-  background-color: opacify($md-color-black, 0.025);
+  background-color: rgba(var(--md-color-text-values), 1.025);
 
   // Set spacing
   &__inner {
@@ -140,12 +140,12 @@
 
   // Use a decent color for non-hovered links and ensure specificity
   html &.md-typeset a {
-    color: $md-color-white--light;
+    color: var(--md-color-background--light);
 
     // Focused or hovered link
     &:focus,
     &:hover {
-      color: $md-color-white;
+      color: var(--md-color-background);
     }
   }
 }
@@ -154,7 +154,7 @@
 .md-footer-copyright {
   margin: 0 px2rem(12px);
   padding: px2rem(8px) 0;
-  color: $md-color-white--lighter;
+  color: var(--md-color-background--lighter);
   font-size: ms(-1);
 
   // [tablet portrait +]: Show next to social media links
@@ -170,7 +170,7 @@
 
   // Highlight copyright information
   &__highlight {
-    color: $md-color-white--light;
+    color: var(--md-color-background--light);
   }
 }
 
