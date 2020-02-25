@@ -94,17 +94,12 @@
 
     <!-- Theme-related stylesheets -->
     {% block styles %}
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href="{{ 'assets/stylesheets/app.scss' | url }}"
-      />
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.scss' | url }}" />
 
       <!-- Extra color palette -->
       {% if palette.primary or palette.accent %}
         <link
           rel="stylesheet"
-          type="text/css"
           href="{{ 'assets/stylesheets/app-palette.scss' | url }}"
         />
       {% endif %}
@@ -130,7 +125,6 @@
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
         <link
           rel="stylesheet"
-          type="text/css"
           href="https://fonts.googleapis.com/css?family={{
             font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
             font.code | replace(' ', '+')
@@ -153,15 +147,19 @@
     {% if config.extra.manifest %}
       <link
         rel="manifest"
-        type="application/manifest+json"
         href="{{ config.extra.manifest | url }}"
         crossorigin="use-credentials"
       />
     {% endif %}
 
-    <!-- Custom stylesheets -->
-    {% for path in config["extra_css"] %}
-      <link rel="stylesheet" type="text/css" href="{{ path | url }}" />
+    <!-- Custom stylesheets, might contain media query after URL -->
+    {% for file in config["extra_css"] %}
+      {% set path,media = file.split(" ", 1) %}
+      {% if media %}
+        <link rel="stylesheet" href="{{ path | url }}" media="{{ media }}" />
+      {% else %}
+        <link rel="stylesheet" href="{{ path | url }}" />
+      {% endif %}
     {% endfor %}
 
     <!-- Analytics -->
