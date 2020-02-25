@@ -263,29 +263,6 @@ $codehilite-whitespace: transparent;
     flex: 1;
     overflow: hidden;
   }
-
-  // TODO: refactor
-  [data-linenos] {
-    &::before {
-      display: inline-block;
-      position: sticky;
-      left: px2rem(-12px);
-      margin-right: px2rem(12px);
-      margin-left: px2rem(-12px);
-      padding-left: px2rem(12px);
-      border-right: px2rem(1px) solid var(--md-default-fg-color--lightest);
-      background-color: #F6F6F6;
-      color: var(--md-default-fg-color--lighter);
-      content: attr(data-linenos);
-      user-select: none;
-
-      @include break-to-device(mobile) {
-        left: px2rem(-32px);
-        margin-left: px2rem(-32px);
-        padding-left: px2rem(32px);
-      }
-    }
-  }
 }
 
 // Scoped in typesetted content to match specificity of regular content

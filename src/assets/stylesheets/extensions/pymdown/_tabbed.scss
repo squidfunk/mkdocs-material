@@ -32,7 +32,7 @@
     display: none;
     order: 99;
     width: 100%;
-    background-color: var(--md-default-bg-color);
+    background-color: var(--md-code-bg-color);
 
     // Actual content
     pre {
@@ -48,7 +48,7 @@
     flex-wrap: wrap;
     margin: 1em 0;
     border: px2rem(1px) solid var(--md-default-fg-color--lightest);
-    border-radius: 0.2em;
+    border-radius: px2rem(2px);
 
     // Hide radio buttons
     > input {
@@ -56,7 +56,8 @@
 
       // Active tab label
       &:checked + label {
-        font-weight: 700;
+        border-color: var(--md-accent-fg-color);
+        color: var(--md-accent-fg-color);
 
         // Show code tab content
         & + .tabbed-content {
@@ -69,7 +70,7 @@
           }
 
           // Emulate original pymdownx.superfences behavior and stretch to full
-          // width and height when  when a code block is the only child of a tab
+          // width and height when a code block is the only child of a tab
           > {
             pre,
             .highlight,
@@ -78,6 +79,11 @@
             .codehilitetable {
               &:only-child {
                 margin: 0 px2rem(-12px);
+
+                // Remove double background
+                pre {
+                  background: transparent;
+                }
               }
             }
           }
@@ -89,8 +95,14 @@
     > label {
       width: auto;
       padding: px2rem(12px);
-      transition: color 125ms;
+      padding-bottom: px2rem(10px);
+      transition:
+        color 125ms,
+        border 250ms;
+      border-bottom: px2rem(2px) solid transparent;
+      color: var(--md-default-fg-color--light);
       font-size: ms(-1);
+      font-weight: 700;
       cursor: pointer;
 
       // Hovered tab label

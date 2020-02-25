@@ -419,6 +419,7 @@ kbd {
     display: inline-block;
     max-width: 100%;
     border-radius: px2rem(2px);
+    background: var(--md-default-bg-color);
     font-size: ms(-1);
     box-shadow: inset 0 0 0 px2rem(1px) var(--md-default-fg-color--lightest);
     overflow: auto;
