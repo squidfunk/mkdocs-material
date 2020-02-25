@@ -216,10 +216,10 @@
     {% endif %}
 
     <!-- Announcement bar -->
-    {% if self.announcement() %}
-      <aside class="md-announcement" data-md-component="announcement">
-        <div class="md-announcement__inner md-grid md-typeset">
-          {% block announcement %}{% endblock %}
+    {% if self.announce() %}
+      <aside class="md-announce" data-md-component="announce">
+        <div class="md-announce__inner md-grid md-typeset">
+          {% block announce %}{% endblock %}
         </div>
       </aside>
     {% endif %}

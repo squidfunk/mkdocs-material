@@ -118,12 +118,12 @@
 
     // Blurred link
     &[data-md-state="blur"] {
-      color: var(--md-color-text--light);
+      color: var(--md-default-fg-color--light);
     }
 
     // Active link
     .md-nav__item &--active {
-      color: var(--md-color-primary);
+      color: var(--md-primary-fg-color);
     }
 
     // Reset active color for nested list titles
@@ -134,7 +134,7 @@
     // Focused or hovered link
     &:focus,
     &:hover {
-      color: var(--md-color-accent);
+      color: var(--md-accent-fg-color);
     }
   }
 
@@ -145,7 +145,7 @@
 
   // [tablet -]: Layered navigation
   @include break-to-device(tablet) {
-    background-color: var(--md-color-background);
+    background-color: var(--md-default-bg-color);
 
     // Stretch primary navigation to drawer
     &--primary,
@@ -175,8 +175,8 @@
         position: relative;
         height: px2rem(112px);
         padding: px2rem(60px) px2rem(16px) px2rem(4px);
-        background-color: var(--md-color-text--lightest);
-        color: var(--md-color-text--light);
+        background-color: var(--md-default-fg-color--lightest);
+        color: var(--md-default-fg-color--light);
         font-weight: 400;
         line-height: px2rem(48px);
         white-space: nowrap;
@@ -201,8 +201,9 @@
 
         // Main lists
         ~ .md-nav__list {
-          background-color: var(--md-color-background);
-          box-shadow: inset 0 px2rem(1px) 0 var(--md-color-text--lightest);
+          background-color: var(--md-default-bg-color);
+          box-shadow:
+            inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
           overflow-y: auto;
           scroll-snap-type: y mandatory;
 
@@ -215,8 +216,8 @@
         // Site title in main navigation
         &[for="__drawer"] {
           position: relative;
-          background-color: var(--md-color-primary);
-          color: var(--md-color-background);
+          background-color: var(--md-primary-fg-color);
+          color: var(--md-primary-bg-color);
 
           // Site logo
           .md-nav__button {
@@ -251,7 +252,7 @@
       // List item
       .md-nav__item {
         padding: 0;
-        border-top: px2rem(1px) solid var(--md-color-text--lightest);
+        border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
@@ -421,8 +422,8 @@
     &__source {
       display: block;
       padding: 0 px2rem(4px);
-      background-color: var(--md-color-primary); // mix(var(--md-color-primary), $md-color-black, 75%); // TODO: fix calculation https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables
-      color: var(--md-color-background);
+      background-color: var(--md-primary-fg-color--dark);
+      color: var(--md-primary-bg-color);
     }
   }
 

@@ -64,7 +64,7 @@ $md-toggle__drawer--checked:
       transition:
         transform  250ms cubic-bezier(0.4, 0, 0.2, 1),
         box-shadow 250ms;
-      background-color: var(--md-color-background);
+      background-color: var(--md-default-bg-color);
       z-index: 3;
 
       // Adjust for right-to-left languages
@@ -158,11 +158,11 @@ $md-toggle__drawer--checked:
 
     // Scrollbar thumb
     &::-webkit-scrollbar-thumb {
-      background-color: var(--md-color-text--lighter);
+      background-color: var(--md-default-fg-color--lighter);
 
       // Hovered scrollbar thumb
       &:hover {
-        background-color: var(--md-color-accent);
+        background-color: var(--md-accent-fg-color);
       }
     }
   }

@@ -33,7 +33,7 @@
   height: px2rem(24px);
   transition: color 250ms;
   border-radius: px2rem(2px);
-  color: var(--md-color-text--lightest);
+  color: var(--md-default-fg-color--lightest);
   cursor: pointer;
   z-index: 1;
   // Hack: put everything on the GPU to omit flickering
@@ -52,12 +52,12 @@
 
   // Show on container hover
   pre:hover & {
-    color: var(md-color-text--light);
+    color: var(--md-default-fg-color--light);
   }
 
   // Focused or hovered icon
   pre &:focus,
   pre &:hover {
-    color: var(--md-color-accent);
+    color: var(--md-accent-fg-color);
   }
 }

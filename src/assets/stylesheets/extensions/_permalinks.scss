@@ -35,12 +35,12 @@
     transition:
       transform  250ms 250ms,
       color      250ms,
-      opacity    125ms 250ms;
-      // visibility   0ms 500ms;
+      opacity    125ms 250ms,
+      visibility   0ms 500ms;
     opacity: 0;
     // Hack: If we don't set visibility hidden, the text content of the node
     // will include the headerlink character, which is why Google indexes them.
-    // visibility: hidden;
+    visibility: hidden;
 
     // Adjust for RTL languages
     [dir="rtl"] & {
@@ -50,7 +50,7 @@
 
     // Higher specificity for color due to palettes integration
     html body & {
-      color: var(--md-color-text--lighter);
+      color: var(--md-default-fg-color--lighter);
     }
 
     // Hide for print
@@ -67,17 +67,17 @@
     transition:
       transform  250ms 250ms,
       color      250ms,
-      opacity    125ms 250ms;
-      // visibility   0ms;
+      opacity    125ms 250ms,
+      visibility   0ms;
     opacity: 1;
-    // visibility: visible;
+    visibility: visible;
   }
 
   // Active or targeted permalink
   .headerlink:focus,
   .headerlink:hover,
   :target .headerlink {
-    color: var(--md-color-accent);
+    color: var(--md-accent-fg-color);
   }
 
   // Correct anchor offset for link blurring

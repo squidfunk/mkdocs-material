@@ -27,8 +27,8 @@
 // Hero teaser
 .md-hero {
   transition: background 250ms;
-  background-color: var(--md-color-primary);
-  color: var(--md-color-background);
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
   font-size: ms(1);
   overflow: hidden;
 

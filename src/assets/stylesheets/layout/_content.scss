@@ -94,7 +94,7 @@
 
     // Override default link color for icons
     .md-typeset & {
-      color: var(--md-color-text--lighter);
+      color: var(--md-default-fg-color--lighter);
     }
 
     // Align text with icon

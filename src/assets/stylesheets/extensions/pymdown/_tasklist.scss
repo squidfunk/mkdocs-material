@@ -57,7 +57,7 @@
       left: px2em(-24px);
       width: px2em(20px);
       height: px2em(20px);
-      background-color: var(--md-color-black--lightest);
+      background-color: var(--md-default-fg-color--lightest);
       mask-image: url("{{ checkbox-blank-circle }}");
       content: "";
 

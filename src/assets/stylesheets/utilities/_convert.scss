@@ -20,10 +20,20 @@
 /// DEALINGS
 ////
 
-// stylelint-disable unit-whitelist
-
 // ----------------------------------------------------------------------------
 // Helpers
+// ----------------------------------------------------------------------------
+
+///
+/// Convert color in HEX to HSL
+///
+@function hex2hsl($color) {
+  @return
+    round(hue($color)),
+    round(saturation($color)),
+    round(lightness($color));
+}
+
 // ----------------------------------------------------------------------------
 
 ///

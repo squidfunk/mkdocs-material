@@ -34,8 +34,8 @@
   transition:
     background-color 250ms,
     color 250ms;
-  background-color: var(--md-color-primary);
-  color: var(--md-color-background);
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
   box-shadow: none;
   z-index: 2;
   // Hack: putting the header on the GPU avoids unnecessary repaints

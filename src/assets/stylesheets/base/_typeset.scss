@@ -33,16 +33,16 @@ body {
 // Default fonts
 body,
 input {
-  color: var(--md-color-text);
+  color: var(--md-default-fg-color);
   font-feature-settings: "kern", "liga";
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 // Proportionally spaced fonts
-pre,
 code,
+pre,
 kbd {
-  color: var(--md-color-text);
+  color: var(--md-default-fg-color);
   font-feature-settings: "kern";
   font-family: "Courier New", Courier, monospace;
 }
@@ -73,7 +73,7 @@ kbd {
   // 1st level headline
   h1 {
     margin: 0 0 px2rem(40px);
-    color: var(--md-color-text--light);
+    color: var(--md-default-fg-color--light);
     font-size: ms(3);
     font-weight: 300;
     letter-spacing: -0.01em;
@@ -115,7 +115,7 @@ kbd {
   h5,
   h6 {
     margin: px2rem(16px) 0;
-    color: var(--md-color-text--light);
+    color: var(--md-default-fg-color--light);
     font-size: ms(-1);
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -129,12 +129,12 @@ kbd {
   // Horizontal separators
   hr {
     margin: 1.5em 0;
-    border-bottom: px2rem(1px) dotted var(--md-color-text--lighter);
+    border-bottom: px2rem(1px) dotted var(--md-default-fg-color--lighter);
   }
 
   // Links
   a {
-    color: var(--md-color-primary);
+    color: var(--md-primary-fg-color);
     word-break: break-word;
 
     // Also enable color transition on pseudo elements
@@ -146,7 +146,7 @@ kbd {
     // Focused or hover links
     &:focus,
     &:hover {
-      color: var(--md-color-accent);
+      color: var(--md-accent-fg-color);
     }
 
     // Add URLs for print
@@ -154,7 +154,7 @@ kbd {
 
       // Show link URL
       &::after {
-        color: var(--md-color-text--light);
+        color: var(--md-default-fg-color--light);
         content: " [" attr(href) "]";
       }
     }
@@ -162,9 +162,10 @@ kbd {
 
   // Code blocks
   code,
-  pre {
-    background-color: var(--md-code-background);
-    color: var(--md-code-color);
+  pre,
+  kbd {
+    background-color: var(--md-code-bg-color);
+    color: var(--md-code-fg-color);
     font-size: 85%;
     direction: ltr;
 
@@ -176,22 +177,16 @@ kbd {
 
   // Inline code blocks, correct relative ems for smaller font size
   code {
-    $correct: 1 / 0.85;
+    $f: 1 / 0.85;
 
-    margin: 0 0.25em * $correct;
-    padding: 0.0625em * $correct 0;
+    margin: 0 0.25em * $f;
+    padding: 0.0625em * $f 0;
     border-radius: px2rem(2px);
     box-shadow:
-      +0.25em * $correct 0 0 var(--md-code-background),
-      -0.25em * $correct 0 0 var(--md-code-background);
+      +0.25em * $f 0 0 var(--md-code-bg-color),
+      -0.25em * $f 0 0 var(--md-code-bg-color);
     word-break: break-word;
     box-decoration-break: clone;
-
-    // Remove box-shadows for print
-    @media print {
-      box-shadow: none;
-      box-decoration-break: initial;
-    }
   }
 
   // Disable containing block inside headlines
@@ -244,11 +239,11 @@ kbd {
 
       // Scrollbar thumb
       &::-webkit-scrollbar-thumb {
-        background-color: var(--md-color-text--lighter);
+        background-color: var(--md-default-fg-color--lighter);
 
         // Hovered scrollbar thumb
         &:hover {
-          background-color: var(--md-color-accent);
+          background-color: var(--md-accent-fg-color);
         }
       }
     }
@@ -271,17 +266,19 @@ kbd {
 
   // Keystrokes
   kbd {
-    $correct: 1 / 0.85;
+    $f: 1 / 0.85;
 
-    padding: 0 0.25em * $correct;
-    border: px2rem(1px) solid darken($md-keyboard-background, 20%);
-    border-radius: px2rem(3px);
-    border-bottom-color: darken($md-keyboard-background, 25%);
-    background-color: $md-keyboard-background;
-    color: $md-keyboard-color;
-    font-size: 85%;
-    box-shadow: 0 px2rem(1px) 0 darken($md-keyboard-background, 30%);
+    display: inline-block;
+    padding: 0 0.5em * $f;
+    border-radius: px2rem(2px);
+    font-size: 0.75em;
+    line-height: 1.5;
+    box-shadow:
+      0 px2rem(2px) 0 px2rem(1px) var(--md-default-fg-color--lighter),
+      0 px2rem(2px) 0 var(--md-default-fg-color--lighter),
+      inset 0 px2rem(-2px) px2rem(4px) var(--md-default-bg-color);
     word-break: break-word;
+    vertical-align: text-top;
   }
 
   // Text highlighting marker
@@ -299,7 +296,7 @@ kbd {
 
   // Abbreviations
   abbr {
-    border-bottom: px2rem(1px) dotted var(--md-color-text--light);
+    border-bottom: px2rem(1px) dotted var(--md-default-fg-color--light);
     text-decoration: none;
     cursor: help;
   }
@@ -324,14 +321,14 @@ kbd {
   // Blockquotes, possibly nested
   blockquote {
     padding-left: px2rem(12px);
-    border-left: px2rem(4px) solid var(--md-color-text--lighter);
-    color: var(--md-color-text--light);
+    border-left: px2rem(4px) solid var(--md-default-fg-color--lighter);
+    color: var(--md-default-fg-color--light);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       padding-right: px2rem(12px);
       padding-left: initial;
-      border-right: px2rem(4px) solid var(--md-color-text--lighter);
+      border-right: px2rem(4px) solid var(--md-default-fg-color--lighter);
       border-left: initial;
     }
   }
@@ -423,7 +420,7 @@ kbd {
     max-width: 100%;
     border-radius: px2rem(2px);
     font-size: ms(-1);
-    box-shadow: inset 0 0 0 px2rem(1px) var(--md-color-text--lightest);
+    box-shadow: inset 0 0 0 px2rem(1px) var(--md-default-fg-color--lightest);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 
@@ -449,15 +446,15 @@ kbd {
     th {
       min-width: px2rem(100px);
       padding: px2rem(12px) px2rem(16px);
-      background-color: var(--md-color-text--light);
-      color: var(--md-color-background);
+      background-color: var(--md-default-fg-color--light);
+      color: var(--md-default-bg-color);
       vertical-align: top;
     }
 
     // Table cells
     td {
       padding: px2rem(12px) px2rem(16px);
-      border-top: px2rem(1px) solid var(--md-color-text--lightest);
+      border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
       vertical-align: top;
     }
 
@@ -468,7 +465,7 @@ kbd {
       // Add background on hover
       &:hover {
         background-color: rgba(0, 0, 0, 0.035);
-        box-shadow: 0 px2rem(1px)  0 var(--md-color-background) inset;
+        box-shadow: 0 px2rem(1px)  0 var(--md-default-bg-color) inset;
       }
 
       // Remove top border on first row
