@@ -49,7 +49,15 @@
 
       // Logo
       &.md-logo svg {
-        fill: currentColor;
+
+        // Image or icon
+        img,
+        svg {
+          display: block;
+          width: px2rem(24px);
+          height: px2rem(24px);
+          fill: currentColor;
+        }
       }
     }
   }

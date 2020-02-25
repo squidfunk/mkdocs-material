@@ -21,7 +21,11 @@
  */
 
 import { Observable, combineLatest } from "rxjs"
-import { distinctUntilKeyChanged, map, shareReplay } from "rxjs/operators"
+import {
+  distinctUntilKeyChanged,
+  map,
+  shareReplay
+} from "rxjs/operators"
 
 import { Header } from "../../../header"
 import {

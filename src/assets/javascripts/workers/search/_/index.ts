@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Subject, from } from "rxjs"
+import { Subject, Subscriber, from, fromEvent } from "rxjs"
 import { ajax } from "rxjs/ajax"
 import { map, pluck, shareReplay } from "rxjs/operators"
 
