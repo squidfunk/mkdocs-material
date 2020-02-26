@@ -49,9 +49,8 @@
       <!-- Redirect -->
       {% if page and page.meta and page.meta.redirect %}
         <script>
-          var anchor = window.location.hash.substr(1)
-          location.href = '{{ page.meta.redirect }}' +
-            (anchor ? '#' + anchor : '')
+          const anchor = window.location.hash.substr(1)
+          location.href = `{{ page.meta.redirect }}${anchor ? `#${anchor}` : ""}`
         </script>
 
         <!-- Fallback in case JavaScript is not available -->
