@@ -269,6 +269,11 @@
             padding-left: px2rem(48px);
           }
         }
+
+        // Active parent item
+        &--active > .md-nav__link {
+          color: var(--md-primary-fg-color);
+        }
       }
 
       // Link inside item
@@ -427,23 +432,37 @@
     }
   }
 
-  // [screen +]: Tree-like navigation
-  @include break-from-device(screen) {
-
-    // Animation is only possible if JavaScript is available, as the max-height
-    // property must be calculated before transitioning
-    transition: max-height 250ms cubic-bezier(0.86, 0, 0.07, 1);
+  // [tablet landscape +]: Tree-like navigation
+  @include break-from-device(tablet landscape) {
 
     // List title
-    .md-nav__title {
+    &--secondary .md-nav__title {
 
-      // Snap to site and table of contents title
-      &[for="__drawer"],
+      // Snap to table of contents title
       &[for="__toc"] {
         scroll-snap-align: start;
       }
 
-      // Hide icons
+      // Hide icon
+      .md-nav__icon {
+        display: none;
+      }
+    }
+  }
+
+  // [screen +]: Tree-like navigation
+  @include break-from-device(screen) {
+    transition: max-height 250ms cubic-bezier(0.86, 0, 0.07, 1);
+
+    // List title
+    &--primary .md-nav__title {
+
+      // Snap to site title
+      &[for="__drawer"] {
+        scroll-snap-align: start;
+      }
+
+      // Hide icon
       .md-nav__icon {
         display: none;
       }
