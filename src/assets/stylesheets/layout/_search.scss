@@ -370,6 +370,7 @@ $md-toggle__search--checked:
         transform 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
         opacity   150ms;
       opacity: 0;
+      pointer-events: none;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -393,6 +394,7 @@ $md-toggle__search--checked:
       #{$md-toggle__search--checked} .md-search__input:valid ~ & {
         transform: scale(1);
         opacity: 1;
+        pointer-events: initial;
 
         // Hovered icon
         &:hover {
