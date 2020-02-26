@@ -43,9 +43,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.ed132eeb.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.1e2c5b46.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.1782b0c8.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.29415394.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -200,7 +200,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.94ed7ba7.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.cc13a381.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",

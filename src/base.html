@@ -94,13 +94,13 @@
 
     <!-- Theme-related stylesheets -->
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.scss' | url }}" />
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.scss' | url }}" />
 
       <!-- Extra color palette -->
       {% if palette.primary or palette.accent %}
         <link
           rel="stylesheet"
-          href="{{ 'assets/stylesheets/app-palette.scss' | url }}"
+          href="{{ 'assets/stylesheets/palette.scss' | url }}"
         />
       {% endif %}
 

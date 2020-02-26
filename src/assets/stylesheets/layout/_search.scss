@@ -293,7 +293,7 @@ $md-toggle__search--checked:
         color: var(--md-default-fg-color);
         text-overflow: clip;
 
-        // Placeholder and icon color in active state
+        // Icon and placeholder color in active state
         + .md-search__icon,
         &::placeholder {
           color: var(--md-default-fg-color--light);
@@ -533,7 +533,7 @@ $md-toggle__search--checked:
     // Focused or hovered link
     &:focus,
     &:hover {
-      background-color: var(--md-accent-fg-color--light);
+      background-color: var(--md-accent-fg-color--transparent);
 
       // Slightly transparent icon
       .md-search-result__article::before {

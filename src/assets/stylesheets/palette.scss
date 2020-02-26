@@ -26,7 +26,6 @@
 
 @import "modularscale";
 @import "material-color";
-@import "material-shadows";
 
 // ----------------------------------------------------------------------------
 // Local imports
@@ -38,116 +37,42 @@
 @import "config";
 
 // ----------------------------------------------------------------------------
-// Rules: button styles
-// ----------------------------------------------------------------------------
-
-// Color tile for presentation in theme documentation
-button[data-md-color-primary],
-button[data-md-color-accent] {
-  width: px2rem(130px);
-  margin-bottom: px2rem(4px);
-  padding: px2rem(24px) px2rem(8px) px2rem(4px);
-  transition:
-    background-color 250ms,
-    opacity          250ms;
-  border-radius: px2rem(2px);
-  color: var(--md-default-bg-color);
-  font-size: ms(-1);
-  text-align: left;
-  cursor: pointer;
-
-  // Hovered color tile
-  &:hover {
-    opacity: 0.75;
-  }
-}
-
-// ----------------------------------------------------------------------------
 // Rules: primary colors
 // ----------------------------------------------------------------------------
 
 // Build primary colors
-@each $name, $color in (
-  "red":         $clr-red-400,
-  "pink":        $clr-pink-500,
-  "purple":      $clr-purple-400,
-  "deep-purple": $clr-deep-purple-400,
-  "indigo":      $clr-indigo-500,
-  "blue":        $clr-blue-500,
-  "light-blue":  $clr-light-blue-500,
-  "cyan":        $clr-cyan-500,
-  "teal":        $clr-teal-500,
-  "green":       $clr-green-500,
-  "light-green": $clr-light-green-600,
-  "lime":        $clr-lime-600,
-  "yellow":      $clr-yellow-800,
-  "amber":       $clr-amber-700,
-  "orange":      $clr-orange-600,
-  "deep-orange": $clr-deep-orange-400,
-  "brown":       $clr-brown-500,
-  "grey":        $clr-grey-600,
-  "blue-grey":   $clr-blue-grey-600
+@each $name, $colors in (
+  "red":         $clr-red-400         $clr-red-200         $clr-red-600,
+  "pink":        $clr-pink-500        $clr-pink-200        $clr-pink-700,
+  "purple":      $clr-purple-400      $clr-purple-200      $clr-purple-600,
+  "deep-purple": $clr-deep-purple-400 $clr-deep-purple-200 $clr-deep-purple-500,
+  "indigo":      $clr-indigo-500      $clr-indigo-200      $clr-indigo-700,
+  "blue":        $clr-blue-500        $clr-blue-200        $clr-blue-700,
+  "light-blue":  $clr-light-blue-500  $clr-light-blue-200  $clr-light-blue-700,
+  "cyan":        $clr-cyan-500        $clr-cyan-200        $clr-cyan-700,
+  "teal":        $clr-teal-500        $clr-teal-200        $clr-teal-700,
+  "green":       $clr-green-500       $clr-green-200       $clr-green-700,
+  "light-green": $clr-light-green-500 $clr-light-green-200 $clr-light-green-700,
+  "lime":        $clr-lime-500        $clr-lime-200        $clr-lime-700,
+  "yellow":      $clr-yellow-400      $clr-yellow-200      $clr-yellow-600,
+  "amber":       $clr-amber-500       $clr-amber-200       $clr-amber-700,
+  "orange":      $clr-orange-400      $clr-orange-200      $clr-orange-600,
+  "deep-orange": $clr-deep-orange-400 $clr-deep-orange-200 $clr-deep-orange-600,
+  "brown":       $clr-brown-500       $clr-brown-200       $clr-brown-700,
+  "grey":        $clr-grey-600        $clr-grey-200        $clr-grey-700,
+  "blue-grey":   $clr-blue-grey-600   $clr-blue-grey-200   $clr-blue-grey-700
 ) {
-
-  // Color tile for presentation in theme documentation
-  button[data-md-color-primary="#{$name}"] {
-    background-color: $color;
-  }
 
   // Color palette
   [data-md-color-primary="#{$name}"] {
+    --md-primary-fg-color:             hsla(#{hex2hsl(nth($colors, 1))}, 1);
+    --md-primary-fg-color--light:      hsla(#{hex2hsl(nth($colors, 2))}, 1);
+    --md-primary-fg-color--dark:       hsla(#{hex2hsl(nth($colors, 3))}, 1);
 
-    // Links in typesetted content
-    .md-typeset a {
-      color: $color;
-    }
-
-    // Application header (stays always on top)
-    .md-header {
-      background-color: $color;
-    }
-
-    // Hero teaser
-    .md-hero {
-      background-color: $color;
-    }
-
-    // Current or active link
-    .md-nav__link:active,
-    .md-nav__link--active {
-      color: $color;
-    }
-
-    // Reset active color for nested list titles
-    .md-nav__item--nested > .md-nav__link {
-      color: inherit;
-    }
-
-    // [tablet portrait -]: Layered navigation
-    @include break-to-device(tablet portrait) {
-
-      // Repository containing source
-      .md-nav__source {
-        background-color: $color; // TODO: https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables mix($color, var(--md-default-fg-color), 75%);
-      }
-    }
-
-    // [tablet -]: Layered navigation
-    @include break-to-device(tablet) {
-
-      // Site title in main navigation
-      html & .md-nav--primary .md-nav__title[for="__drawer"] {
-        background-color: $color;
-      }
-    }
-
-    // [screen +]: Set background color for tabs
-    @include break-from-device(screen) {
-
-      // Tabs with outline
-      .md-tabs {
-        background-color: $color;
-      }
+    // Inverted text for lighter shades
+    @if index("lime" "yellow" "amber" "orange", $name) {
+      --md-primary-bg-color:           var(--md-default-fg-color);
+      --md-primary-bg-color--light:    var(--md-default-fg-color--light);
     }
   }
 }
@@ -156,14 +81,7 @@ button[data-md-color-accent] {
 // Rules: white
 // ----------------------------------------------------------------------------
 
-// Color tile for presentation in theme documentation
-button[data-md-color-primary="white"] {
-  background-color: var(--md-default-bg-color);
-  color: var(--md-default-fg-color);
-  box-shadow: 0 0 px2rem(1px) var(--md-default-fg-color--light) inset;
-}
-
-// Overrides for black color
+// Color palette
 [data-md-color-primary="white"] {
 
   // Application header (stays always on top)
@@ -200,7 +118,12 @@ button[data-md-color-primary="white"] {
     .md-search__input {
       background-color: var(--md-default-fg-color--lightest);
 
-      // Search input placeholder
+      // Icon color
+      + .md-search__icon {
+        color: var(--md-default-fg-color);
+      }
+
+      // Placeholder color
       &::placeholder {
         color: var(--md-default-fg-color--light);
       }
@@ -240,7 +163,7 @@ button[data-md-color-primary="white"] {
 
 // Color tile for presentation in theme documentation
 button[data-md-color-primary="black"] {
-  background-color: $clr-black;
+  background-color: hsla(0, 0%, 0%, 1);
 }
 
 // Color palette
@@ -248,12 +171,12 @@ button[data-md-color-primary="black"] {
 
   // Application header (stays always on top)
   .md-header {
-    background-color: $clr-black;
+    background-color: hsla(0, 0%, 0%, 1);
   }
 
   // Hero teaser
   .md-hero {
-    background-color: $clr-black;
+    background-color: hsla(0, 0%, 0%, 1);
   }
 
   // [tablet portrait -]: Layered navigation
@@ -261,7 +184,7 @@ button[data-md-color-primary="black"] {
 
     // Repository containing source
     .md-nav__source {
-      background-color: var(--md-default-bg-color); // TODO: mix($clr-black, var(--md-default-bg-color, 75%);
+      background-color: var(--md-default-fg-color);
     }
   }
 
@@ -270,7 +193,7 @@ button[data-md-color-primary="black"] {
 
     // Search input
     .md-search__input {
-      background-color: var(--md-default-bg-color--lighter);
+      background-color: var(--md-default-bg-color--lightest);
     }
   }
 
@@ -279,7 +202,7 @@ button[data-md-color-primary="black"] {
 
     // Site title in main navigation
     html & .md-nav--primary .md-nav__title[for="__drawer"] {
-      background-color: $clr-black;
+      background-color: hsla(0, 0%, 0%, 1);
     }
   }
 
@@ -288,7 +211,7 @@ button[data-md-color-primary="black"] {
 
     // Tabs with outline
     .md-tabs {
-      background-color: $clr-black;
+      background-color: hsla(0, 0%, 0%, 1);
     }
   }
 }
@@ -317,78 +240,8 @@ button[data-md-color-primary="black"] {
   "deep-orange": $clr-deep-orange-a200
 ) {
 
-  // Color tile for presentation in theme documentation
-  button[data-md-color-accent="#{$name}"] {
-    background-color: $color;
-  }
-
   // Color palette
   [data-md-color-accent="#{$name}"] {
 
-    // Typesetted content
-    .md-typeset {
-
-      // Hovered and active links
-      a:hover,
-      a:active {
-        color: $color;
-      }
-
-      // Hovered scrollbar thumb
-      pre code::-webkit-scrollbar-thumb:hover,
-      .codehilite pre::-webkit-scrollbar-thumb:hover {
-        background-color: $color;
-      }
-
-      // Copy to clipboard active icon
-      .md-clipboard:hover::before,
-      .md-clipboard:active::before {
-        color: $color;
-      }
-
-      // Active or targeted back reference
-      .footnote li:hover  .footnote-backref:hover,
-      .footnote li:target .footnote-backref {
-        color: $color;
-      }
-
-      // Active, targeted or focused permalink
-      [id]:hover  .headerlink:hover,
-      [id]:target .headerlink,
-      [id] .headerlink:focus {
-        color: $color;
-      }
-    }
-
-    // Focused or hovered link
-    .md-nav__link:focus,
-    .md-nav__link:hover {
-      color: $color;
-    }
-
-    // Search container scrollbar thumb
-    .md-search__scrollwrap::-webkit-scrollbar-thumb:hover {
-      background-color: $color;
-    }
-
-    // Search result link
-    .md-search-result__link {
-
-      // Active or hovered link
-      &[data-md-state="active"],
-      &:hover {
-        background-color: transparentize($color, 0.9);
-      }
-    }
-
-    // Wrapper for scrolling on overflow
-    .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
-      background-color: $color;
-    }
-
-    // Source file icon
-    .md-source-file:hover::before {
-      background-color: $color;
-    }
   }
 }

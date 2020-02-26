@@ -45,8 +45,7 @@
 
   // Accent color shades
   --md-accent-fg-color:                hsla(#{hex2hsl($clr-indigo-a200)}, 1);
-  --md-accent-fg-color--light:         hsla(#{hex2hsl($clr-indigo-a200)}, 0.1);
-  --md-accent-fg-color--dark:          hsla(#{hex2hsl($clr-indigo-a700)}, 1);
+  --md-accent-fg-color--transparent:   hsla(#{hex2hsl($clr-indigo-a200)}, 0.1);
   --md-accent-bg-color:                var(--md-default-bg-color);
   --md-accent-bg-color--light:         var(--md-default-bg-color--light);
 
