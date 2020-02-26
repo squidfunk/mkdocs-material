@@ -40,7 +40,6 @@
 // Rules: primary colors
 // ----------------------------------------------------------------------------
 
-// Build primary colors
 @each $name, $colors in (
   "red":         $clr-red-400         $clr-red-200         $clr-red-600,
   "pink":        $clr-pink-500        $clr-pink-200        $clr-pink-700,
@@ -161,11 +160,6 @@
 // Rules: black
 // ----------------------------------------------------------------------------
 
-// Color tile for presentation in theme documentation
-button[data-md-color-primary="black"] {
-  background-color: hsla(0, 0%, 0%, 1);
-}
-
 // Color palette
 [data-md-color-primary="black"] {
 
@@ -220,7 +214,6 @@ button[data-md-color-primary="black"] {
 // Rules: accent colors
 // ----------------------------------------------------------------------------
 
-// Build accent colors
 @each $name, $color in (
   "red":         $clr-red-a400,
   "pink":        $clr-pink-a400,
@@ -242,6 +235,13 @@ button[data-md-color-primary="black"] {
 
   // Color palette
   [data-md-color-accent="#{$name}"] {
+    --md-accent-fg-color:              hsla(#{hex2hsl($color)}, 1);
+    --md-accent-fg-color--transparent: hsla(#{hex2hsl($color)}, 0.1);
 
+    // Inverted text for lighter shades
+    @if index("lime" "yellow" "amber" "orange", $name) {
+      --md-accent-bg-color:            var(--md-default-fg-color);
+      --md-accent-bg-color--light:     var(--md-default-fg-color--light);
+    }
   }
 }
