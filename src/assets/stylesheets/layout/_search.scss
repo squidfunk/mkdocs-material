@@ -365,7 +365,7 @@ $md-toggle__search--checked:
     &[type="reset"] {
       top: px2rem(6px);
       right: px2rem(10px);
-      transform: scale(0.125);
+      transform: scale(0.75);
       transition:
         transform 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
         opacity   150ms;
