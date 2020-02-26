@@ -47,6 +47,12 @@
   opacity: 0;
   z-index: 2;
 
+  // Adjust for right-to-left languages
+  [dir="rtl"] & {
+    right: initial;
+    left: px2rem(16px);;
+  }
+
   // Show open dialog
   &[data-md-state="open"] {
     transform: translateY(0);
