@@ -182,9 +182,9 @@
         max-height: initial;
         overflow: visible;
 
-        // Remove left spacing on 2nd level items
+        // Remove spacing on 2nd level items
         > .md-nav__list > .md-nav__item {
-          padding-left: 0;
+          padding: 0;
         }
 
         // Hide titles from 2nd level on
