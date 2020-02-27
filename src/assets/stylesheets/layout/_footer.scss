@@ -116,6 +116,12 @@
     line-height: px2rem(48px);
   }
 
+  // Link button
+  &__button {
+    margin: px2rem(4px);
+    padding: px2rem(8px);
+  }
+
   // Link direction
   &__direction {
     position: absolute;

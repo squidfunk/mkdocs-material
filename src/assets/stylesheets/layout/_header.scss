@@ -72,7 +72,10 @@
   // Icon buttons
   &__button {
     position: relative;
+    margin: px2rem(4px);
+    padding: px2rem(8px);
     transition: opacity 250ms;
+    cursor: pointer;
     z-index: 1;
 
     // Adjust for right-to-left languages

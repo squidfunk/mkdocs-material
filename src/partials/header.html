@@ -33,17 +33,17 @@
       aria-label="{{ config.site_name }}"
       class="md-header-nav__button md-logo"
     >
-      {% if config.theme.logo.icon %}
-        {% include ".icons/" ~ config.theme.logo.icon ~ ".svg" %}
-      {% else %}
+      {% if config.theme.logo %}
         <img src="{{ config.theme.logo | url }}" alt="logo" />
+      {% else %}
+        {% include ".icons/" ~ config.theme.icon.logo ~ ".svg" %}
       {% endif %}
     </a>
     <label
-      class="md-header-nav__button md-icon md-icon__button"
+      class="md-header-nav__button md-icon"
       for="__drawer"
     >
-      {% include ".icons/material/menu.svg" %}
+      {% include ".icons/material/menu" ~ ".svg" %}
     </label>
 
     <!-- Header title -->
@@ -69,7 +69,7 @@
     <!-- Button to open search dialogue -->
     {% if "search" in config["plugins"] %}
       <label
-        class="md-header-nav__button md-icon md-icon__button"
+        class="md-header-nav__button md-icon"
         for="__search"
       >
         {% include ".icons/material/magnify.svg" %}

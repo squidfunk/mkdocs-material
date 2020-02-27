@@ -4,14 +4,14 @@
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" aria-label="{{ config.site_name }}" class="md-header-nav__button md-logo">
-      {% if config.theme.logo.icon %}
-        {% include ".icons/" ~ config.theme.logo.icon ~ ".svg" %}
-      {% else %}
+      {% if config.theme.logo %}
         <img src="{{ config.theme.logo | url }}" alt="logo">
+      {% else %}
+        {% include ".icons/" ~ config.theme.icon.logo ~ ".svg" %}
       {% endif %}
     </a>
-    <label class="md-header-nav__button md-icon md-icon__button" for="__drawer">
-      {% include ".icons/material/menu.svg" %}
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      {% include ".icons/material/menu" ~ ".svg" %}
     </label>
     <div class="md-header-nav__title" data-md-component="header-title">
       <div class="md-header-nav__ellipsis md-ellipsis">
@@ -32,7 +32,7 @@
       </div>
     </div>
     {% if "search" in config["plugins"] %}
-      <label class="md-header-nav__button md-icon md-icon__button" for="__search">
+      <label class="md-header-nav__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}
       </label>
       {% include "partials/search.html" %}

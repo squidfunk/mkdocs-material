@@ -27,14 +27,6 @@
 // Icon
 .md-icon {
 
-  // Icon with button spacing
-  &__button {
-    display: inline-block;
-    margin: px2rem(4px);
-    padding: px2rem(8px);
-    cursor: pointer;
-  }
-
   // SVG defaults
   svg {
     display: block;
