@@ -31,21 +31,18 @@
   .admonition {
     margin: 1.5625em 0;
     padding: 0 px2rem(12px);
-    border-left: px2rem(3px) solid $clr-blue-a200;
+    border-left: px2rem(4px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
     font-size: ms(-1);
     box-shadow:
-      inset 0 0 0 px2rem(1px) transparentize($clr-blue-a200, 0.85),
-      inset px2rem(1px) 0 $clr-blue-a200;
+      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
+      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
     overflow: auto;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
-      border-right: px2rem(3px) solid $clr-blue-a200;
+      border-right: px2rem(4px) solid $clr-blue-a200;
       border-left: none;
-      box-shadow:
-        inset 0 0 0 px2rem(1px) transparentize($clr-blue-a200, 0.85),
-        inset px2rem(-1px) 0 $clr-blue-a200;
     }
 
     // Adjust spacing on last element
@@ -79,17 +76,6 @@
       &%#{nth($names, 1)},
       &.#{nth($names, 1)} {
         border-left-color: $tint;
-        box-shadow:
-          inset 0 0 0 px2rem(1px) transparentize($tint, 0.85),
-          inset px2rem(1px) 0 $tint;
-
-        // Adjust for right-to-left languages
-        [dir="rtl"] & {
-          border-right-color: $tint;
-          box-shadow:
-            inset 0 0 0 px2rem(1px) transparentize($tint, 0.85),
-            inset px2rem(-1px) 0 $tint;
-        }
 
         // Title
         > :first-child {

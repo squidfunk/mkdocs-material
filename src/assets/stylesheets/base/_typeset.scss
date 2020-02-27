@@ -275,7 +275,7 @@ kbd {
     line-height: 1.5;
     box-shadow:
       0 px2rem(2px) 0 px2rem(1px) var(--md-default-fg-color--lighter),
-      0 px2rem(2px) 0 var(--md-default-fg-color--lighter),
+      0 px2rem(2px) 0             var(--md-default-fg-color--lighter),
       inset 0 px2rem(-2px) px2rem(4px) var(--md-default-bg-color);
     word-break: break-word;
     vertical-align: text-top;
