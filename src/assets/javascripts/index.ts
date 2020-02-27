@@ -23,8 +23,8 @@
 // TODO: remove this after we finished refactoring
 // tslint:disable
 
-import "../stylesheets/app.scss"
-import "../stylesheets/app-palette.scss"
+import "../stylesheets/main.scss"
+import "../stylesheets/palette.scss"
 
 import { values } from "ramda"
 import {

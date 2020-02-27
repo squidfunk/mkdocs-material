@@ -63,7 +63,7 @@ export function renderSearchResult(
       <a href={location} class={css.link} tabIndex={-1}>
         <article class={"parent" in document ? css.section : css.article}>
           {!("parent" in document)
-            ? <div class="md-search-result__icon md-icon__button md-icon">
+            ? <div class="md-search-result__icon md-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d={path}></path>
                 </svg>

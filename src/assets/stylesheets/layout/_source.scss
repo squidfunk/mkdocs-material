@@ -76,14 +76,6 @@
     opacity: 0.7;
   }
 
-  // Necessary for vertical alignment
-  &::after {
-    display: inline-block;
-    height: px2rem(48px);
-    content: "";
-    vertical-align: middle;
-  }
-
   // Repository platform icon
   &__icon {
     display: inline-block;

@@ -154,12 +154,7 @@
 
     <!-- Custom stylesheets, might contain media query after URL -->
     {% for file in config["extra_css"] %}
-      {% set path,media = file.split(" ", 1) %}
-      {% if media %}
-        <link rel="stylesheet" href="{{ path | url }}" media="{{ media }}" />
-      {% else %}
-        <link rel="stylesheet" href="{{ path | url }}" />
-      {% endif %}
+      <link rel="stylesheet" href="{{ file | url }}" />
     {% endfor %}
 
     <!-- Analytics -->

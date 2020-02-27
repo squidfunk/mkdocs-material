@@ -584,7 +584,7 @@ $md-toggle__search--checked:
     position: absolute;
     left: 0;
     margin: px2rem(2px);
-    transition: opacity 250ms;
+    padding: px2rem(8px);
     color: var(--md-default-fg-color--light);
 
     // Adjust for right-to-left languages
