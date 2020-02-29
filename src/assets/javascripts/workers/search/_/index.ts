@@ -26,6 +26,7 @@ import {
   map,
   pluck,
   shareReplay,
+  switchMap,
   take,
   withLatestFrom
 } from "rxjs/operators"
@@ -117,13 +118,16 @@ export function setupSearchWorker(
   /* Fetch index if it wasn't passed explicitly */
   const index$ = typeof index !== "undefined"
     ? from(index)
-    : ajax({
-        url: `${base}/search/search_index.json`,
-        responseType: "json",
-        withCredentials: true
-      })
-        .pipe<SearchIndexOptions>(
-          pluck("response")
+    : origin$
+        .pipe(
+          switchMap(origin => ajax({
+            url: `${origin}/search/search_index.json`,
+            responseType: "json",
+            withCredentials: true
+          })
+            .pipe<SearchIndexOptions>(
+              pluck("response")
+            ))
         )
 
   /* Send index to worker */
