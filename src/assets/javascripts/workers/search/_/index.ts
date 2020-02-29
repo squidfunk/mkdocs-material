@@ -79,21 +79,13 @@ export function setupSearchWorker(
 ): WorkerHandler<SearchMessage> {
   const worker = new Worker(url)
 
-  /* Compute new base URL when location changes */
+  /* Ensure stable base URL */
   const origin$ = location$
     .pipe(
-      withLatestFrom(location$
-        .pipe(
-          take(1),
-          map(({ href }) => new URL(base, href))
-        )
-      ),
-      map(([location, origin]) => location.href
-        .replace(origin.href, "")
-        .split("/")
-        .slice(1)
-        .map(() => "..")
-        .join("/")
+      take(1),
+      map(({ href }) => new URL(base, href)
+        .toString()
+        .replace(/\/$/, "")
       )
     )
 
