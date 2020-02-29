@@ -20,13 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { Subject, animationFrameScheduler } from "rxjs"
+import { Subject, animationFrameScheduler, of } from "rxjs"
 import {
   delay,
   map,
   observeOn,
   switchMap,
-  tap
+  tap,
+  withLatestFrom
 } from "rxjs/operators"
 
 import { useComponent } from "components"
@@ -65,7 +66,7 @@ export function setupDialog(
   /* Display dialog */
   dialog$
     .pipe(
-      switchMap(text => useComponent("container")
+      switchMap(text => of(document.body) // useComponent("container")
         .pipe(
           map(container => container.appendChild(dialog)),
           observeOn(animationFrameScheduler),

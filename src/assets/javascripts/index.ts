@@ -314,16 +314,19 @@ export function initialize(config: unknown) {
    * Location change
    */
   interface State {
-    url: URL          // TODO: use URL!?
+    url: URL
     data?: ViewportOffset
   }
 
   function isInternalLink(el: HTMLAnchorElement | URL) {
-    return el.hostname === location.hostname
+    return el.host === location.host && (
+      !el.pathname || /\/[\w-]+(?:\/?|\.html)$/i.test(el.pathname)
+    )
   }
 
+  // on same page!
   function isAnchorLink(el: HTMLAnchorElement | URL) {
-    return el.hash.length > 0
+    return el.pathname === location.pathname && el.hash.length > 0
   }
 
   function compareState(
@@ -421,7 +424,7 @@ export function initialize(config: unknown) {
             prev.url.href.match(next.url.href) !== null &&
             isAnchorLink(prev.url)
           ) {
-            dialog$.next(`Potential Candidate: ${JSON.stringify(next.data)}`, ) // awesome debugging.
+            // dialog$.next(`Potential Candidate: ${JSON.stringify(next.data)}`, ) // awesome debugging.
             setViewportOffset(next.data || { y: 0 })
           }
             // console.log("Potential Candidate")
