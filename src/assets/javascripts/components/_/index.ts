@@ -20,8 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { keys } from "ramda"
-import { NEVER, Observable, of } from "rxjs"
+import { EMPTY, Observable, of } from "rxjs"
 import {
   distinctUntilChanged,
   map,
@@ -110,7 +109,7 @@ export function setupComponents(
 
       /* Re-compute component map on document switch */
       scan((prev, next) => {
-        for (const name of keys(prev)) {
+        for (const name of names) {
           switch (name) {
 
             /* Top-level components: update */
@@ -124,7 +123,10 @@ export function setupComponents(
 
             /* All other components: rebind */
             default:
-              prev[name] = getElement(`[data-md-component=${name}]`)
+              if (typeof next[name] !== "undefined")
+                prev[name] = getElement(`[data-md-component=${name}]`)
+              else
+                delete prev[name]
           }
         }
         return prev
@@ -155,7 +157,7 @@ export function useComponent<T extends HTMLElement>(
       switchMap(components => (
         typeof components[name] !== "undefined"
           ? of(components[name] as T)
-          : NEVER
+          : EMPTY
       )),
       distinctUntilChanged()
     )
