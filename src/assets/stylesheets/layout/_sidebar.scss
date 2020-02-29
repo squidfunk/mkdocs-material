@@ -131,8 +131,7 @@ $md-toggle__drawer--checked:
     margin: 0 px2rem(4px);
     overflow-y: auto;
     scroll-snap-type: y mandatory;
-    // Hack: putting the scroll wrapper on the GPU massively reduces jitter
-    // when locking the sidebars into place
+    // Hack: reduce jitter
     backface-visibility: hidden;
 
     // [tablet -]: Adjust margins

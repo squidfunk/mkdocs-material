@@ -36,10 +36,13 @@
     color 250ms;
   background-color: var(--md-primary-fg-color);
   color: var(--md-primary-bg-color);
-  box-shadow: none;
-  z-index: 2;
-  // Hack: putting the header on the GPU avoids unnecessary repaints
+  // Hack: reduce jitter by adding a transparent box shadow of the same size
+  // so the size of the layer doesn't change during animation
+  box-shadow:
+    0 0           px2rem(4px) rgba(0, 0, 0, 0),
+    0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0);
   backface-visibility: hidden;
+  z-index: 2;
 
   // Always hide shadow, in case JavaScript is not available
   .no-js & {

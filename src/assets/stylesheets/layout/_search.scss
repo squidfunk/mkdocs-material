@@ -136,6 +136,8 @@ $md-toggle__search--checked:
 
   // Search modal wrapper
   &__inner {
+    // Hack: reduce jitter
+    backface-visibility: hidden;
 
     // [tablet portrait -]: Put search modal off-canvas by default
     @include break-to-device(tablet portrait) {
@@ -439,6 +441,8 @@ $md-toggle__search--checked:
     background-color: var(--md-default-bg-color);
     box-shadow: inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
     overflow-y: auto;
+    // Hack: reduce jitter
+    backface-visibility: hidden;
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
 

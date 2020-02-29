@@ -36,7 +36,7 @@
   color: var(--md-default-fg-color--lightest);
   cursor: pointer;
   z-index: 1;
-  // Hack: put everything on the GPU to omit flickering
+  // Hack: reduce jitter
   backface-visibility: hidden;
 
   // Hide for print
