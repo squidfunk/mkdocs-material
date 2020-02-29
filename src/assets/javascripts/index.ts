@@ -52,7 +52,8 @@ import {
   debounceTime,
   distinctUntilKeyChanged,
   distinctUntilChanged,
-  bufferCount
+  bufferCount,
+  startWith
 } from "rxjs/operators"
 
 import {
@@ -68,7 +69,8 @@ import {
   useToggle,
   getElement,
   setViewportOffset,
-  ViewportOffset
+  ViewportOffset,
+  getLocation
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 
@@ -158,7 +160,7 @@ export function initialize(config: unknown) {
   /* ----------------------------------------------------------------------- */
 
   const worker = setupSearchWorker(config.worker.search, {
-    base: config.base
+    base: config.base, location$
   })
 
   /* ----------------------------------------------------------------------- */
