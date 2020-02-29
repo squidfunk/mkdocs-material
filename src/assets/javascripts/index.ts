@@ -462,6 +462,9 @@ export function initialize(config: unknown) {
         .subscribe(([{ url, data }, { title, head }]) => {
           console.log("Done", url.href, data)
 
+          // trigger custom event
+          document.dispatchEvent(new CustomEvent("DOMContentSwitch"))
+
           // setDocumentTitle
           document.title = title
 
@@ -481,21 +484,20 @@ export function initialize(config: unknown) {
             }
           }
 
-          // // TODO: this doesnt work as expected
-          // if (!data) {
-          //   const { hash } = new URL(href)
-          //   if (hash) {
-          //     const el = getElement(hash)
-          //     if (typeof el !== "undefined") {
-          //       el.scrollIntoView()
-          //       return
-          //     }
-          //   }
-          // }
+          // search drawer close
+          useToggle("search").subscribe(el => {
+            setToggle(el, false)
+          })
 
-          // console.log(ev)
-          // if (!data)
-          setViewportOffset(data || { y: 0 }) // push state!
+          // // TODO: this doesnt work as expected
+          if (url.hash) {
+            console.log("hash data?", data)
+            const a = document.createElement("a")
+            a.href = url.hash
+            a.click()
+          } else {
+            setViewportOffset(data || { y: 0 }) // push state!
+          }
         })
 
     // internal$.subscribe(({ url }) => {
