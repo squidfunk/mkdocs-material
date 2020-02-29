@@ -29,6 +29,29 @@
 // and tables get this class names by default
 .highlight {
   @extend .codehilite;
+
+  // Inline line numbers
+  [data-linenos] {
+    &::before {
+      display: inline-block;
+      position: sticky;
+      left: px2rem(-12px);
+      margin-right: px2rem(12px);
+      margin-left: px2rem(-12px);
+      padding-left: px2rem(12px);
+      border-right: px2rem(1px) solid var(--md-default-fg-color--lightest);
+      color: var(--md-default-fg-color--lighter);
+      content: attr(data-linenos);
+      user-select: none;
+
+      // [mobile -]: Stretch to whole width
+      @include break-to-device(mobile) {
+        left: px2rem(-32px);
+        margin-left: px2rem(-32px);
+        padding-left: px2rem(32px);
+      }
+    }
+  }
 }
 
 // Same as above, but for code blocks with line numbers enabled

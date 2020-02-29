@@ -20,14 +20,20 @@
  * IN THE SOFTWARE.
  */
 
-import { Subject, from } from "rxjs"
+import { Observable, Subject, from } from "rxjs"
 import { ajax } from "rxjs/ajax"
-import { map, pluck, shareReplay } from "rxjs/operators"
+import {
+  map,
+  pluck,
+  shareReplay,
+  switchMap,
+  take,
+  withLatestFrom
+} from "rxjs/operators"
 
 import { SearchIndexOptions } from "integrations/search"
 import {
   WorkerHandler,
-  getLocation,
   watchWorker
 } from "observables"
 
@@ -48,26 +54,7 @@ import {
 interface SetupOptions {
   base: string                         /* Base url */
   index?: Promise<SearchIndexOptions>  /* Promise resolving with index */
-}
-
-/* ----------------------------------------------------------------------------
- * Helper functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Resolve URL
- * * TODO: document what's going on here + cache results
- *
- * @param origin - Base URL
- * @param paths - Further URL paths
- *
- * @return Relative URL
- */
-function resolve(origin: URL, ...paths: string[]) {
-  const path = location.pathname
-    .replace(origin.pathname, "")
-    .replace(/[^\/]+/g, "..")
-  return [path, ...paths].join("")
+  location$: Observable<URL>           /* Location observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -88,21 +75,31 @@ function resolve(origin: URL, ...paths: string[]) {
  * @return Worker handler
  */
 export function setupSearchWorker(
-  url: string, { base, index }: SetupOptions
+  url: string, { base, index, location$ }: SetupOptions
 ): WorkerHandler<SearchMessage> {
   const worker = new Worker(url)
-  const origin = new URL(base, getLocation())
+
+  /* Ensure stable base URL */
+  const origin$ = location$
+    .pipe(
+      take(1),
+      map(({ href }) => new URL(base, href)
+        .toString()
+        .replace(/\/$/, "")
+      )
+    )
 
   /* Create communication channels and resolve relative links */
   const tx$ = new Subject<SearchMessage>()
   const rx$ = watchWorker(worker, { tx$ })
     .pipe(
-      map(message => {
+      withLatestFrom(origin$),
+      map(([message, origin]) => {
         if (isSearchResultMessage(message)) {
           for (const { article, sections } of message.data) {
-            article.location = resolve(origin, article.location)
+            article.location = `${origin}/${article.location}`
             for (const section of sections)
-              section.location = resolve(origin, section.location)
+              section.location = `${origin}/${section.location}`
           }
         }
         return message
@@ -113,13 +110,16 @@ export function setupSearchWorker(
   /* Fetch index if it wasn't passed explicitly */
   const index$ = typeof index !== "undefined"
     ? from(index)
-    : ajax({
-        url: resolve(origin, "search/search_index.json"),
-        responseType: "json",
-        withCredentials: true
-      })
-        .pipe<SearchIndexOptions>(
-          pluck("response")
+    : origin$
+        .pipe(
+          switchMap(origin => ajax({
+            url: `${origin}/search/search_index.json`,
+            responseType: "json",
+            withCredentials: true
+          })
+            .pipe<SearchIndexOptions>(
+              pluck("response")
+            ))
         )
 
   /* Send index to worker */

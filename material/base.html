@@ -43,9 +43,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/app.d99d5cd5.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0d8ec950.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/app-palette.8adb38b9.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.f5f04e6f.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -67,10 +67,10 @@
       {% endif %}
     {% endblock %}
     {% if config.extra.manifest %}
-      <link rel="manifest" type="application/manifest+json" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
+      <link rel="manifest" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
     {% endif %}
-    {% for path in config["extra_css"] %}
-      <link rel="stylesheet" href="{{ path | url }}">
+    {% for file in config["extra_css"] %}
+      <link rel="stylesheet" href="{{ file | url }}">
     {% endfor %}
     {% block analytics %}
       {% if config.google_analytics %}
@@ -94,10 +94,10 @@
         {{ lang.t('skip.link.title') }}
       </a>
     {% endif %}
-    {% if self.announcement() %}
-      <aside class="md-announcement" data-md-component="announcement">
-        <div class="md-announcement__inner md-grid md-typeset">
-          {% block announcement %}{% endblock %}
+    {% if self.announce() %}
+      <aside class="md-announce" data-md-component="announce">
+        <div class="md-announce__inner md-grid md-typeset">
+          {% block announce %}{% endblock %}
         </div>
       </aside>
     {% endif %}
@@ -195,7 +195,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.e2cc5a44.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.63709496.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",

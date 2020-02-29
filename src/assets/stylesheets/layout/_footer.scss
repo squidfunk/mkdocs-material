@@ -26,6 +26,8 @@
 
 // Application footer
 .md-footer {
+  background-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
 
   // Hide for print
   @media print {
@@ -35,8 +37,6 @@
 
 // Navigation within footer
 .md-footer-nav {
-  background-color: $md-color-black;
-  color: $md-color-white;
 
   // Set spacing
   &__inner {
@@ -116,6 +116,12 @@
     line-height: px2rem(48px);
   }
 
+  // Link button
+  &__button {
+    margin: px2rem(4px);
+    padding: px2rem(8px);
+  }
+
   // Link direction
   &__direction {
     position: absolute;
@@ -123,14 +129,14 @@
     left: 0;
     margin-top: px2rem(-20px);
     padding: 0 px2rem(20px);
-    color: $md-color-white--light;
+    color: var(--md-default-bg-color--light);
     font-size: px2rem(15px);
   }
 }
 
 // Non-navigational information
 .md-footer-meta {
-  background-color: opacify($md-color-black, 0.025);
+  background-color: var(--md-default-fg-color--lighter);
 
   // Set spacing
   &__inner {
@@ -140,12 +146,12 @@
 
   // Use a decent color for non-hovered links and ensure specificity
   html &.md-typeset a {
-    color: $md-color-white--light;
+    color: var(--md-default-bg-color--light);
 
     // Focused or hovered link
     &:focus,
     &:hover {
-      color: $md-color-white;
+      color: var(--md-default-bg-color);
     }
   }
 }
@@ -154,7 +160,7 @@
 .md-footer-copyright {
   margin: 0 px2rem(12px);
   padding: px2rem(8px) 0;
-  color: $md-color-white--lighter;
+  color: var(--md-default-bg-color--lighter);
   font-size: ms(-1);
 
   // [tablet portrait +]: Show next to social media links
@@ -170,7 +176,7 @@
 
   // Highlight copyright information
   &__highlight {
-    color: $md-color-white--light;
+    color: var(--md-default-bg-color--light);
   }
 }
 

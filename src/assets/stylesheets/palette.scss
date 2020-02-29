@@ -1,0 +1,247 @@
+////
+/// Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Dependencies
+// ----------------------------------------------------------------------------
+
+@import "modularscale";
+@import "material-color";
+
+// ----------------------------------------------------------------------------
+// Local imports
+// ----------------------------------------------------------------------------
+
+@import "utilities/break";
+@import "utilities/convert";
+
+@import "config";
+
+// ----------------------------------------------------------------------------
+// Rules: primary colors
+// ----------------------------------------------------------------------------
+
+@each $name, $colors in (
+  "red":         $clr-red-400         $clr-red-200         $clr-red-600,
+  "pink":        $clr-pink-500        $clr-pink-200        $clr-pink-700,
+  "purple":      $clr-purple-400      $clr-purple-200      $clr-purple-600,
+  "deep-purple": $clr-deep-purple-400 $clr-deep-purple-200 $clr-deep-purple-500,
+  "indigo":      $clr-indigo-500      $clr-indigo-200      $clr-indigo-700,
+  "blue":        $clr-blue-500        $clr-blue-200        $clr-blue-700,
+  "light-blue":  $clr-light-blue-500  $clr-light-blue-200  $clr-light-blue-700,
+  "cyan":        $clr-cyan-500        $clr-cyan-200        $clr-cyan-700,
+  "teal":        $clr-teal-500        $clr-teal-200        $clr-teal-700,
+  "green":       $clr-green-500       $clr-green-200       $clr-green-700,
+  "light-green": $clr-light-green-500 $clr-light-green-200 $clr-light-green-700,
+  "lime":        $clr-lime-500        $clr-lime-200        $clr-lime-700,
+  "yellow":      $clr-yellow-400      $clr-yellow-200      $clr-yellow-600,
+  "amber":       $clr-amber-500       $clr-amber-200       $clr-amber-700,
+  "orange":      $clr-orange-400      $clr-orange-200      $clr-orange-600,
+  "deep-orange": $clr-deep-orange-400 $clr-deep-orange-200 $clr-deep-orange-600,
+  "brown":       $clr-brown-500       $clr-brown-200       $clr-brown-700,
+  "grey":        $clr-grey-600        $clr-grey-200        $clr-grey-700,
+  "blue-grey":   $clr-blue-grey-600   $clr-blue-grey-200   $clr-blue-grey-700
+) {
+
+  // Color palette
+  [data-md-color-primary="#{$name}"] {
+    --md-primary-fg-color:             hsla(#{hex2hsl(nth($colors, 1))}, 1);
+    --md-primary-fg-color--light:      hsla(#{hex2hsl(nth($colors, 2))}, 1);
+    --md-primary-fg-color--dark:       hsla(#{hex2hsl(nth($colors, 3))}, 1);
+
+    // Inverted text for lighter shades
+    @if index("lime" "yellow" "amber" "orange", $name) {
+      --md-primary-bg-color:           var(--md-default-fg-color);
+      --md-primary-bg-color--light:    var(--md-default-fg-color--light);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: white
+// ----------------------------------------------------------------------------
+
+// Color palette
+[data-md-color-primary="white"] {
+
+  // Application header (stays always on top)
+  .md-header {
+    background-color: var(--md-default-bg-color);
+    color: var(--md-default-fg-color);
+  }
+
+  // Hero teaser
+  .md-hero {
+    background-color: var(--md-default-bg-color);
+    color: var(--md-default-fg-color);
+
+    // Add a border if there are no tabs
+    &--expand {
+      border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
+    }
+  }
+
+  // [tablet portrait -]: Layered navigation
+  @include break-to-device(tablet portrait) {
+
+    // Repository containing source
+    .md-nav__source {
+      background-color: var(--md-default-fg-color--lightest);
+      color: var(--md-default-fg-color);
+    }
+  }
+
+  // [tablet portrait +]: Change color of search input
+  @include break-from-device(tablet landscape) {
+
+    // Search input
+    .md-search__input {
+      background-color: var(--md-default-fg-color--lightest);
+
+      // Icon color
+      + .md-search__icon {
+        color: var(--md-default-fg-color);
+      }
+
+      // Placeholder color
+      &::placeholder {
+        color: var(--md-default-fg-color--light);
+      }
+    }
+  }
+
+  // [tablet -]: Layered navigation
+  @include break-to-device(tablet) {
+
+    // Site title in main navigation
+    html & .md-nav--primary .md-nav__title[for="__drawer"] {
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    // Hero teaser
+    .md-hero {
+      border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
+    }
+  }
+
+  // [screen +]: Set background color for tabs
+  @include break-from-device(screen) {
+
+    // Tabs with outline
+    .md-tabs {
+      border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: black
+// ----------------------------------------------------------------------------
+
+// Color palette
+[data-md-color-primary="black"] {
+
+  // Application header (stays always on top)
+  .md-header {
+    background-color: hsla(0, 0%, 0%, 1);
+  }
+
+  // Hero teaser
+  .md-hero {
+    background-color: hsla(0, 0%, 0%, 1);
+  }
+
+  // [tablet portrait -]: Layered navigation
+  @include break-to-device(tablet portrait) {
+
+    // Repository containing source
+    .md-nav__source {
+      background-color: var(--md-default-fg-color);
+    }
+  }
+
+  // [tablet landscape +]: Header-embedded search
+  @include break-from-device(tablet landscape) {
+
+    // Search input
+    .md-search__input {
+      background-color: var(--md-default-bg-color--lightest);
+    }
+  }
+
+  // [tablet -]: Layered navigation
+  @include break-to-device(tablet) {
+
+    // Site title in main navigation
+    html & .md-nav--primary .md-nav__title[for="__drawer"] {
+      background-color: hsla(0, 0%, 0%, 1);
+    }
+  }
+
+  // [screen +]: Set background color for tabs
+  @include break-from-device(screen) {
+
+    // Tabs with outline
+    .md-tabs {
+      background-color: hsla(0, 0%, 0%, 1);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: accent colors
+// ----------------------------------------------------------------------------
+
+@each $name, $color in (
+  "red":         $clr-red-a400,
+  "pink":        $clr-pink-a400,
+  "purple":      $clr-purple-a200,
+  "deep-purple": $clr-deep-purple-a200,
+  "indigo":      $clr-indigo-a200,
+  "blue":        $clr-blue-a200,
+  "light-blue":  $clr-light-blue-a700,
+  "cyan":        $clr-cyan-a700,
+  "teal":        $clr-teal-a700,
+  "green":       $clr-green-a700,
+  "light-green": $clr-light-green-a700,
+  "lime":        $clr-lime-a700,
+  "yellow":      $clr-yellow-a700,
+  "amber":       $clr-amber-a700,
+  "orange":      $clr-orange-a400,
+  "deep-orange": $clr-deep-orange-a200
+) {
+
+  // Color palette
+  [data-md-color-accent="#{$name}"] {
+    --md-accent-fg-color:              hsla(#{hex2hsl($color)}, 1);
+    --md-accent-fg-color--transparent: hsla(#{hex2hsl($color)}, 0.1);
+
+    // Inverted text for lighter shades
+    @if index("lime" "yellow" "amber" "orange", $name) {
+      --md-accent-bg-color:            var(--md-default-fg-color);
+      --md-accent-bg-color--light:     var(--md-default-fg-color--light);
+    }
+  }
+}

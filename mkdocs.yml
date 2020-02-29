@@ -56,6 +56,9 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
+  icon:
+    logo: material/book-open-variant
+    repo: fontawesome/brands/git-alt
   favicon: assets/favicon.png
   logo: assets/images/icon.svg
 
@@ -96,6 +99,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.emoji.material
       emoji_generator: !!python/name:material.emoji.to_svg
+  # - pymdownx.highlight:
+  #     linenums_style: pymdownx-inline
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:

@@ -28,8 +28,8 @@
 .md-tabs {
   width: 100%;
   transition: background 250ms;
-  background-color: $md-color-primary;
-  color: $md-color-white;
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
   overflow: auto;
 
   // Omit transitions, in case JavaScript is not available
@@ -54,6 +54,12 @@
     padding: 0;
     list-style: none;
     white-space: nowrap;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      margin-right: px2rem(4px);
+      margin-left: initial;
+    }
   }
 
   // List item
@@ -176,9 +182,9 @@
         max-height: initial;
         overflow: visible;
 
-        // Remove left spacing on 2nd level items
+        // Remove spacing on 2nd level items
         > .md-nav__list > .md-nav__item {
-          padding-left: 0;
+          padding: 0;
         }
 
         // Hide titles from 2nd level on

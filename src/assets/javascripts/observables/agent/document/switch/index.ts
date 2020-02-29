@@ -28,11 +28,10 @@ import {
   pluck,
   share,
   skip,
-  startWith,
   switchMap
 } from "rxjs/operators"
 
-import { getLocation, setLocation } from "../../location"
+import { setLocation } from "../../location"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -52,7 +51,7 @@ interface WatchOptions {
 /**
  * Watch document switch
  *
- * This function returns an observables that fetches a document if the provided // TODO: update docs
+ * This function returns an observables that fetches a document if the provided
  * location observable emits a new value (i.e. URL). If the emitted URL points
  * to the same page, the request is effectively ignored (i.e. when only the
  * fragment identifier changes).
@@ -68,7 +67,6 @@ export function watchDocumentSwitch(
 ): Observable<Document> {
   return location$
     .pipe(
-      startWith(getLocation()),
       distinctUntilKeyChanged("pathname"),
       skip(1),
 

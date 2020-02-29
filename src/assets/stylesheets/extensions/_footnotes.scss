@@ -60,7 +60,7 @@
 
   // Footnotes extension
   .footnote {
-    color: $md-color-black--light;
+    color: var(--md-default-fg-color--light);
     font-size: ms(-1);
 
     // Remove additional spacing on footnotes
@@ -74,7 +74,7 @@
 
       // Darken color for targeted footnote
       &:target {
-        color: $md-color-black;
+        color: var(--md-default-fg-color);
       }
 
       // Remove spacing on first element
@@ -92,7 +92,7 @@
       // Active or targeted back reference
       &:hover  .footnote-backref:hover,
       &:target .footnote-backref {
-        color: $md-color-accent;
+        color: var(--md-accent-fg-color);
       }
     }
   }
@@ -106,7 +106,7 @@
     &::before {
       display: inline;
       margin: 0 0.2em;
-      border-left: px2rem(1px) solid $md-color-black--lighter;
+      border-left: px2rem(1px) solid var(--md-default-fg-color--lighter);
       font-size: 1.25em;
       content: "";
       vertical-align: px2rem(-5px);
@@ -118,10 +118,10 @@
     display: inline-block;
     transform: translateX(px2rem(5px));
     transition:
-      transform 250ms 125ms,
+      transform 250ms 250ms,
       color     250ms,
-      opacity   125ms 125ms;
-    color: $md-color-black--lighter;
+      opacity   125ms 250ms;
+    color: var(--md-default-fg-color--lighter);
     // Hack: remove Unicode arrow for icon
     font-size: 0;
     opacity: 0;
@@ -138,12 +138,16 @@
       width: px2rem(16px);
       height: px2rem(16px);
       background-color: currentColor;
-      mask-image: url("{{ anchor }}");
+      mask-image: url("{{ keyboard-return }}");
       content: "";
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        transform: scaleX(-1)
+
+        // Flip icon vertically
+        svg {
+          transform: scaleX(-1)
+        }
       }
     }
   }

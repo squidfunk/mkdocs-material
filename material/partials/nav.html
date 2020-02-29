@@ -7,7 +7,7 @@
       {% if config.theme.logo.icon %}
         {% include ".icons/" ~ config.theme.logo.icon ~ ".svg" %}
       {% else %}
-        <img src="{{ config.theme.logo | url }}" width="48" height="48" alt="logo">
+        <img src="{{ config.theme.logo | url }}" alt="logo">
       {% endif %}
     </a>
     {{ config.site_name }}

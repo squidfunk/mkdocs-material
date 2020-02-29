@@ -29,10 +29,7 @@
   class="md-source"
 >
   <div class="md-source__icon md-icon">
-    {% set repo_icon = config.extra.repo_icon | default(
-      "fontawesome/brands/git-alt"
-    ) %}
-    {% include ".icons/" ~ repo_icon ~ ".svg" %}
+    {% include ".icons/" ~ config.theme.icon.repo ~ ".svg" %}
   </div>
   <div class="md-source__repository">
     {{ config.repo_name }}

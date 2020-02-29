@@ -108,14 +108,14 @@ $break-devices: () !default;
 ///
 @mixin break-at($breakpoint) {
   @if type-of($breakpoint) == number {
-    @media only screen and (min-width: $breakpoint) {
+    @media screen and (min-width: $breakpoint) {
       @content;
     }
   } @else if type-of($breakpoint) == list {
     $min: nth($breakpoint, 1);
     $max: nth($breakpoint, 2);
     @if type-of($min) == number and type-of($max) == number {
-      @media only screen and (min-width: $min) and (max-width: $max) {
+      @media screen and (min-width: $min) and (max-width: $max) {
         @content;
       }
     } @else {
@@ -131,7 +131,7 @@ $break-devices: () !default;
 ///
 @mixin break-at-orientation($breakpoint) {
   @if type-of($breakpoint) == string {
-    @media only screen and (orientation: $breakpoint) {
+    @media screen and (orientation: $breakpoint) {
       @content;
     }
   } @else {
@@ -144,7 +144,7 @@ $break-devices: () !default;
 ///
 @mixin break-at-ratio($breakpoint) {
   @if type-of($breakpoint) == number {
-    @media only screen and (max-aspect-ratio: $breakpoint) {
+    @media screen and (max-aspect-ratio: $breakpoint) {
       @content;
     }
   } @else {
@@ -164,7 +164,7 @@ $break-devices: () !default;
     @if nth($breakpoint, 2) != null {
       $min: nth($breakpoint, 1);
       $max: nth($breakpoint, 2);
-      @media only screen and (min-width: $min) and (max-width: $max) {
+      @media screen and (min-width: $min) and (max-width: $max) {
         @content;
       }
     } @else {
@@ -185,7 +185,7 @@ $break-devices: () !default;
   @if type-of($device) == list {
     $breakpoint: break-select-device($device);
     $min: nth($breakpoint, 1);
-    @media only screen and (min-width: $min) {
+    @media screen and (min-width: $min) {
       @content;
     }
   } @else {
@@ -203,7 +203,7 @@ $break-devices: () !default;
   @if type-of($device) == list {
     $breakpoint: break-select-device($device);
     $max: nth($breakpoint, 2);
-    @media only screen and (max-width: $max) {
+    @media screen and (max-width: $max) {
       @content;
     }
   } @else {

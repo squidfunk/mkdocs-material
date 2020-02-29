@@ -33,9 +33,9 @@
   height: px2rem(48px);
   transition:
     background-color 250ms,
-    color            250ms;
-  background-color: $md-color-primary;
-  color: $md-color-white;
+    color 250ms;
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
   box-shadow: none;
   z-index: 2;
   // Hack: putting the header on the GPU avoids unnecessary repaints
@@ -72,7 +72,10 @@
   // Icon buttons
   &__button {
     position: relative;
+    margin: px2rem(4px);
+    padding: px2rem(8px);
     transition: opacity 250ms;
+    cursor: pointer;
     z-index: 1;
 
     // Adjust for right-to-left languages
@@ -95,13 +98,10 @@
       margin: px2rem(4px);
       padding: px2rem(8px);
 
-      // Set correct display on image or icon
-      * {
-        display: block;
-      }
-
-      // Inherit current color
+      // Image or icon
+      img,
       svg {
+        display: block;
         width: px2rem(24px);
         height: px2rem(24px);
         fill: currentColor;

@@ -63,7 +63,7 @@ $md-toggle__search--checked:
         transform 300ms 100ms,
         opacity   200ms 200ms;
       border-radius: px2rem(20px);
-      background-color: $md-color-white;
+      background-color: var(--md-default-bg-color);
       overflow: hidden;
       pointer-events: none;
 
@@ -112,7 +112,7 @@ $md-toggle__search--checked:
         width     0ms 250ms,
         height    0ms 250ms,
         opacity 250ms;
-      background-color: $md-color-black--light;
+      background-color: var(--md-default-fg-color--light);
       cursor: pointer;
 
       // Adjust for right-to-left languages
@@ -238,7 +238,7 @@ $md-toggle__search--checked:
     // Placeholder and icon color in active state
     ~ .md-search__icon,
     &::placeholder {
-      color: $md-color-black--light;
+      color: var(--md-default-fg-color--light);
     }
 
     // Remove the "x" rendered by Internet Explorer
@@ -262,7 +262,7 @@ $md-toggle__search--checked:
         background-color 250ms cubic-bezier(0.1, 0.7, 0.1, 1),
         color            250ms cubic-bezier(0.1, 0.7, 0.1, 1);
       border-radius: px2rem(2px);
-      background-color: $md-color-black--lighter;
+      background-color: var(--md-default-fg-color--lighter);
       color: inherit;
       font-size: ms(0);
 
@@ -273,30 +273,30 @@ $md-toggle__search--checked:
 
       // Icon color
       + .md-search__icon {
-        color: $md-color-white;
+        color: var(--md-primary-bg-color);
       }
 
       // Placeholder color
       &::placeholder {
-        color: $md-color-white--light;
+        color: var(--md-primary-bg-color--light);
       }
 
       // Hovered search field
       &:hover {
-        background-color: $md-color-white--lightest;
+        background-color: var(--md-default-bg-color--lightest);
       }
 
       // Set light background on active search field
       #{$md-toggle__search--checked} & {
         border-radius: px2rem(2px) px2rem(2px) 0 0;
-        background-color: $md-color-white;
-        color: $md-color-black;
+        background-color: var(--md-default-bg-color);
+        color: var(--md-default-fg-color);
         text-overflow: clip;
 
-        // Placeholder and icon color in active state
+        // Icon and placeholder color in active state
         + .md-search__icon,
         &::placeholder {
-          color: $md-color-black--light;
+          color: var(--md-default-fg-color--light);
         }
       }
     }
@@ -310,7 +310,6 @@ $md-toggle__search--checked:
     transition:
       color   250ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity 250ms;
-    font-size: $md-icon-size;
     cursor: pointer;
     z-index: 2;
 
@@ -366,11 +365,12 @@ $md-toggle__search--checked:
     &[type="reset"] {
       top: px2rem(6px);
       right: px2rem(10px);
-      transform: scale(0.125);
+      transform: scale(0.75);
       transition:
         transform 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
         opacity   150ms;
       opacity: 0;
+      pointer-events: none;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -394,6 +394,7 @@ $md-toggle__search--checked:
       #{$md-toggle__search--checked} .md-search__input:valid ~ & {
         transform: scale(1);
         opacity: 1;
+        pointer-events: initial;
 
         // Hovered icon
         &:hover {
@@ -435,8 +436,8 @@ $md-toggle__search--checked:
   // Wrapper for scrolling on overflow
   &__scrollwrap {
     height: 100%;
-    background-color: $md-color-white;
-    box-shadow: inset 0 px2rem(1px) 0 $md-color-black--lightest;
+    background-color: var(--md-default-bg-color);
+    box-shadow: inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
     overflow-y: auto;
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
@@ -473,11 +474,11 @@ $md-toggle__search--checked:
 
       // Scrollbar thumb
       &::-webkit-scrollbar-thumb {
-        background-color: $md-color-black--lighter;
+        background-color: var(--md-default-fg-color--lighter);
 
         // Hovered scrollbar thumb
         &:hover {
-          background-color: $md-color-accent;
+          background-color: var(--md-accent-fg-color);
         }
       }
     }
@@ -486,14 +487,14 @@ $md-toggle__search--checked:
 
 // Search result
 .md-search-result {
-  color: $md-color-black;
+  color: var(--md-default-fg-color);
   word-break: break-word;
 
   // Search metadata
   &__meta {
     padding: 0 px2rem(16px);
-    background-color: $md-color-black--lightest;
-    color: $md-color-black--light;
+    background-color: var(--md-default-fg-color--lightest);
+    color: var(--md-default-fg-color--light);
     font-size: ms(-1);
     line-height: px2rem(36px);
     scroll-snap-align: start;
@@ -514,13 +515,13 @@ $md-toggle__search--checked:
   &__list {
     margin: 0;
     padding: 0;
-    border-top: px2rem(1px) solid $md-color-black--lightest;
+    border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
     list-style: none;
   }
 
   // List item
   &__item {
-    box-shadow: 0 px2rem(-1px) 0 $md-color-black--lightest;
+    box-shadow: 0 px2rem(-1px) 0 var(--md-default-fg-color--lightest);
   }
 
   // Link inside item
@@ -534,7 +535,7 @@ $md-toggle__search--checked:
     // Focused or hovered link
     &:focus,
     &:hover {
-      background-color: transparentize($md-color-accent, 0.9);
+      background-color: var(--md-accent-fg-color--transparent);
 
       // Slightly transparent icon
       .md-search-result__article::before {
@@ -583,13 +584,18 @@ $md-toggle__search--checked:
     position: absolute;
     left: 0;
     margin: px2rem(2px);
-    transition: opacity 250ms;
-    color: $md-color-black--light;
+    padding: px2rem(8px);
+    color: var(--md-default-fg-color--light);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       right: 0;
       left: initial;
+
+      // Flip icon vertically
+      svg {
+        transform: scaleX(-1);
+      }
     }
 
     // [tablet portrait -]: Hide page icon
@@ -613,7 +619,7 @@ $md-toggle__search--checked:
     display: -webkit-box;
     max-height: px2rem(33px);
     margin: 0.5em 0;
-    color: $md-color-black--light;
+    color: var(--md-default-fg-color--light);
     font-size: ms(-1);
     line-height: 1.4;
     text-overflow: ellipsis;
