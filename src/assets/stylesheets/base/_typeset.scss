@@ -421,7 +421,9 @@ kbd {
     border-radius: px2rem(2px);
     background: var(--md-default-bg-color);
     font-size: ms(-1);
-    box-shadow: inset 0 0 0 px2rem(1px) var(--md-default-fg-color--lightest);
+    box-shadow:
+      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
+      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 
