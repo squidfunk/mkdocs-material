@@ -21,7 +21,7 @@
  */
 
 import { Observable, fromEvent, merge } from "rxjs"
-import { map, mapTo, switchMap } from "rxjs/operators"
+import { map, mapTo, shareReplay, switchMap } from "rxjs/operators"
 
 import { getElements } from "observables"
 
@@ -54,9 +54,21 @@ interface MountOptions {
 export function patchScrollfix(
   { document$ }: MountOptions
 ): void {
-  document$
+  const els$ = document$
     .pipe(
       map(() => getElements("[data-md-scrollfix]")),
+      shareReplay(1)
+    )
+
+  /* Remove marker attribute, so we'll only add the fix once */
+  els$.subscribe(els => {
+    for (const el of els)
+      el.removeAttribute("data-md-scrollfix")
+  })
+
+  /* Patch overflow scrolling on touch start */
+  els$
+    .pipe(
       switchMap(els => merge(...els.map(el => (
         fromEvent(el, "touchstart")
           .pipe(
