@@ -32,10 +32,10 @@ $md-toggle__drawer--checked:
 // Rules: base grid and containers
 // ----------------------------------------------------------------------------
 
-// Stretch container to viewport and set base font-size to 10px for simple
-// calculations base on relative ems (rems)
+// Stretch container to viewport and set base font-sizefor simple calculations
+// based on relative ems (rems)
 html {
-  min-height: 100%;
+  height: 100%;
   background-color: var(--md-default-bg-color);
   // Hack: normally, we would set the base font-size to 62.5%, so we can base
   // all calculations on 10px, but Chromium and Chrome define a minimal font
