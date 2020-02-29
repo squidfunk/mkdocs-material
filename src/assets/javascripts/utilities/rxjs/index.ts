@@ -52,14 +52,13 @@ export function cache<T>(
     /* Retrieve value from observable factory and write to storage */
     } else {
       const value$ = factory()
-      value$
-        .subscribe(value => {
-          try {
-            sessionStorage.setItem(key, JSON.stringify(value))
-          } catch (err) {
-            /* Uncritical, just swallow */
-          }
-        })
+      value$.subscribe(value => {
+        try {
+          sessionStorage.setItem(key, JSON.stringify(value))
+        } catch (err) {
+          /* Uncritical, just swallow */
+        }
+      })
 
       /* Return value */
       return value$

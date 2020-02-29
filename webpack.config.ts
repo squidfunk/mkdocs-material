@@ -161,7 +161,13 @@ function config(args: Configuration): Configuration {
     plugins: [
       new AssetsManifestPlugin({
         output: "assets/manifest.json",
-        assets
+        assets,
+        customize({ key, value }) {
+          return {
+            key: key.replace(/\.scss$/, ".css"),
+            value
+          }
+        }
       })
     ],
 
@@ -286,17 +292,21 @@ export default (_env: never, args: Configuration): Configuration[] => {
           context: "src"
         }),
 
-        /* Replace assets in base template */
+        /* Hooks */
         new EventHooksPlugin({
           afterEmit: () => {
-            const manifest = require("./material/assets/manifest.json")
-            const template = toPairs<string>(manifest)
-              .reduce((content, [from, to]) => {
-                return content.replace(from, to)
-              }, fs.readFileSync("material/base.html", "utf8"))
 
-            /* Save template with replaced assets */
-            fs.writeFileSync("material/base.html", template, "utf8")
+            /* Replace asset URLs in base template */
+            if (args.mode === "production") {
+              const manifest = require("./material/assets/manifest.json")
+              const template = toPairs<string>(manifest)
+                .reduce((content, [from, to]) => {
+                  return content.replace(from, to)
+                }, fs.readFileSync("material/base.html", "utf8"))
+
+              /* Save template with replaced assets */
+              fs.writeFileSync("material/base.html", template, "utf8")
+            }
           }
         })
       ]

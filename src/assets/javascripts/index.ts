@@ -52,8 +52,7 @@ import {
   debounceTime,
   distinctUntilKeyChanged,
   distinctUntilChanged,
-  bufferCount,
-  startWith
+  bufferCount
 } from "rxjs/operators"
 
 import {
@@ -96,7 +95,8 @@ import {
   patchTables,
   patchDetails,
   patchScrollfix,
-  patchSource
+  patchSource,
+  patchScripts
 } from "patches"
 import { isConfig } from "utilities"
 import { setupDialog } from "integrations/dialog"
@@ -245,13 +245,13 @@ export function initialize(config: unknown) {
 
   const keyboard$ = setupKeyboard()
 
-  patchTables({ document$ })
   patchDetails({ document$, hash$ })
+  patchScripts({ document$ })
   patchSource({ document$ })
+  patchTables({ document$ })
 
   /* Force 1px scroll offset to trigger overflow scrolling */
-  if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
-    patchScrollfix({ document$ })
+  patchScrollfix({ document$ })
 
   /* Setup clipboard and dialog */
   const dialog$ = setupDialog()

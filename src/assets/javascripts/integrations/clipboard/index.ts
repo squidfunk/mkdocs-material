@@ -61,15 +61,14 @@ export function setupClipboard(
     return NEVER
 
   /* Inject 'copy-to-clipboard' buttons */
-  document$
-    .subscribe(() => {
-      const blocks = getElements("pre > code")
-      for (const [index, block] of blocks.entries()) {
-        const parent = block.parentElement!
-        parent.id = `__code_${index}`
-        parent.insertBefore(renderClipboard(parent.id), block)
-      }
-    })
+  document$.subscribe(() => {
+    const blocks = getElements("pre > code")
+    for (const [index, block] of blocks.entries()) {
+      const parent = block.parentElement!
+      parent.id = `__code_${index}`
+      parent.insertBefore(renderClipboard(parent.id), block)
+    }
+  })
 
   /* Initialize and setup clipboard */
   const clipboard$ = fromEventPattern<ClipboardJS.Event>(next => {

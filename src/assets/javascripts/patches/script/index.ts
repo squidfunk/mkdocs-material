@@ -20,10 +20,23 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, fromEvent, iif, merge } from "rxjs"
-import { map, mapTo, shareReplay, switchMap } from "rxjs/operators"
+import { identity } from "ramda"
+import { Observable, fromEvent, merge } from "rxjs"
+import {
+  filter,
+  map,
+  skip,
+  switchMapTo,
+  tap,
+  withLatestFrom
+} from "rxjs/operators"
 
-import { getElements } from "observables"
+import { useComponent } from "components"
+import {
+  getElement,
+  getElements,
+  watchMedia
+} from "observables"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -37,68 +50,42 @@ interface MountOptions {
 }
 
 /* ----------------------------------------------------------------------------
- * Helper functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Check whetehr the given device is an Apple device
- *
- * @return Test result
- */
-function isAppleDevice(): boolean {
-  return /(iPad|iPhone|iPod)/.test(navigator.userAgent)
-}
-
-/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Patch all elements with `data-md-scrollfix` attributes
+ * Patch all `script` elements
  *
- * This is a year-old patch which ensures that overflow scrolling works at the
- * top and bottom of containers on iOS by ensuring a `1px` scroll offset upon
- * the start of a touch event.
- *
- * @see https://bit.ly/2SCtAOO - Original source
+ * This function must be run after a document switch, which means the first
+ * emission must be ignored.
  *
  * @param options - Options
  */
-export function patchScrollfix(
+export function patchScripts(
   { document$ }: MountOptions
 ): void {
   const els$ = document$
     .pipe(
-      map(() => getElements("[data-md-scrollfix]")),
-      shareReplay(1)
+      skip(1),
+      withLatestFrom(useComponent("container")),
+      map(([, el]) => getElements<HTMLScriptElement>("script", el))
     )
 
-  /* Remove marker attribute, so we'll only add the fix once */
+  /* Evaluate all scripts via replacement */
   els$.subscribe(els => {
-    for (const el of els)
-      el.removeAttribute("data-md-scrollfix")
-  })
-
-  /* Patch overflow scrolling on touch start */
-  iif(isAppleDevice, els$, NEVER)
-    .pipe(
-      switchMap(els => merge(...els.map(el => (
-        fromEvent(el, "touchstart")
-          .pipe(
-            mapTo(el)
-          )
-      ))))
-    )
-      .subscribe(el => {
-        const top = el.scrollTop
-
-        /* We're at the top of the container */
-        if (top === 0) {
-          el.scrollTop = 1
-
-        /* We're at the bottom of the container */
-        } else if (top + el.offsetHeight === el.scrollHeight) {
-          el.scrollTop = top - 1
+    for (const el of els) {
+      if (
+        el.src || !el.type ||
+        /^(application|text)\/javascript$/i.test(el.type)
+      ) {
+        const script = document.createElement("script")
+        if (el.src) {
+          script.src = el.src
+        } else {
+          script.innerText = el.innerText
         }
-      })
+        el.replaceWith(script)
+      }
+    }
+  })
 }

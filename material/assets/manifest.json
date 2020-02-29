@@ -1,8 +1,8 @@
 {
-  "assets/javascripts/bundle.js": "assets/javascripts/bundle.2f004b84.min.js",
-  "assets/javascripts/bundle.js.map": "assets/javascripts/bundle.2f004b84.min.js.map",
+  "assets/javascripts/bundle.js": "assets/javascripts/bundle.4de2b008.min.js",
+  "assets/javascripts/bundle.js.map": "assets/javascripts/bundle.4de2b008.min.js.map",
   "assets/javascripts/worker/search.js": "assets/javascripts/worker/search.926ffd9e.min.js",
   "assets/javascripts/worker/search.js.map": "assets/javascripts/worker/search.926ffd9e.min.js.map",
-  "assets/stylesheets/main.scss": "assets/stylesheets/main.1e07d700.min.css",
-  "assets/stylesheets/palette.scss": "assets/stylesheets/palette.f5f04e6f.min.css"
+  "assets/stylesheets/main.css": "assets/stylesheets/main.1e07d700.min.css",
+  "assets/stylesheets/palette.css": "assets/stylesheets/palette.f5f04e6f.min.css"
 }

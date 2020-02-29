@@ -21,6 +21,7 @@
  */
 
 export * from "./details"
+export * from "./script"
 export * from "./scrollfix"
 export * from "./source"
 export * from "./table"
