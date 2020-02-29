@@ -21,7 +21,7 @@
 -->
 
 <!-- Home page -->
-{% if nav_item.is_homepage %}
+{% if nav_item.is_homepage or nav_item.url == "index.html" %}
   <li class="md-tabs__item">
     {% if not page.ancestors | length and nav | selectattr("url", page.url) %}
       <a
