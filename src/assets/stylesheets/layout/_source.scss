@@ -64,6 +64,8 @@
   font-size: px2rem(13px);
   line-height: 1.2;
   white-space: nowrap;
+  // Hack: reduce jitter
+  backface-visibility: hidden;
 
   // Adjust for right-to-left languages
   [dir="rtl"] & {

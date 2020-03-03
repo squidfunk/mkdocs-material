@@ -173,10 +173,11 @@ export function setupKeyboard(): Observable<Keyboard> {
       .subscribe(([key, query]) => {
         switch (key.type) {
 
-          /* Open search */
+          /* Open search and select query */
           case "f":
           case "s":
             setElementFocus(query)
+            query.select()
             key.claim()
             break
 

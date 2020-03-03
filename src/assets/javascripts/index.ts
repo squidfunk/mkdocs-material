@@ -181,7 +181,7 @@ export function initialize(config: unknown) {
   /* ----------------------------------------------------------------------- */
 
   /* Mount search query */
-  const query$ = useComponent<HTMLInputElement>("search-query")
+  const query$ = useComponent("search-query")
     .pipe(
       mountSearchQuery(worker),
       shareReplay(1) // TODO: this must be put onto EVERY component!

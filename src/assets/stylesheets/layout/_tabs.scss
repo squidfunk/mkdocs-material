@@ -120,12 +120,9 @@
   // [screen +]: Adjust main navigation styles
   @include break-from-device(screen) {
 
-    // Hide 1st level nested items, as they are listed in the tabs by setting
-    // font-size to zero, as we need to preserve bottom padding
+    // Hide 1st level nested items, as they are listed in the tabs
     ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
-      max-height: 0;
-      font-size: 0;
-      visibility: hidden;
+      display: none;
     }
 
     // We're on the 2nd+ level
@@ -137,54 +134,44 @@
         // Show title and remove spacing
         .md-nav__title {
           display: block;
-          padding: 0;
+          padding: 0 px2rem(12px);
           pointer-events: none;
-        }
+          scroll-snap-align: start;
 
-        // Hide site title
-        .md-nav__title[for="__drawer"] {
-          display: none;
-        }
-
-        // Show 1st level navigation always expanded
-        .no-js & > .md-nav {
-          display: block;
+          // Hide site title
+          &[for="__drawer"] {
+            display: none;
+          }
         }
 
         // Hide 1st level normal items
-        & > .md-nav__list > .md-nav__item {
-          font-size: 0;
-          visibility: hidden;
+        > .md-nav__list > .md-nav__item {
+          display: none;
 
-          // Reset font-size for nested items and induce margin collapse
+          // Hide nested items
           &--nested {
             display: none;
-            max-height: none;
-            font-size: px2rem(14px);
-            overflow: auto;
-            visibility: visible;
+          }
+
+          // Show 1st level active nested items
+          &--active {
+            display: block;
+            padding: 0;
 
             // Hide nested links
             > .md-nav__link {
               display: none;
             }
           }
-
-          // Show 1st level active nested items
-          &--active {
-            display: block;
-          }
         }
       }
 
       // Always expand nested navigation on 2nd level
       .md-nav[data-md-level="1"] {
-        max-height: initial;
-        overflow: visible;
 
         // Remove spacing on 2nd level items
         > .md-nav__list > .md-nav__item {
-          padding: 0;
+          padding: 0 px2rem(12px);
         }
 
         // Hide titles from 2nd level on

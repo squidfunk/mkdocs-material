@@ -208,7 +208,7 @@
           scroll-snap-type: y mandatory;
 
           // Remove border for first list item
-          & > .md-nav__item:first-child {
+          > .md-nav__item:first-child {
             border-top: 0;
           }
         }
