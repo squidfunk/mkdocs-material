@@ -30,9 +30,9 @@ import { getElements } from "observables"
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount options
+ * Patch options
  */
-interface MountOptions {
+interface PatchOptions {
   document$: Observable<Document>      /* Document observable */
 }
 
@@ -41,7 +41,7 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Check whetehr the given device is an Apple device
+ * Check whether the given device is an Apple device
  *
  * @return Test result
  */
@@ -65,7 +65,7 @@ function isAppleDevice(): boolean {
  * @param options - Options
  */
 export function patchScrollfix(
-  { document$ }: MountOptions
+  { document$ }: PatchOptions
 ): void {
   const els$ = document$
     .pipe(

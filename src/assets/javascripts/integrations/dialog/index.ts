@@ -26,11 +26,8 @@ import {
   map,
   observeOn,
   switchMap,
-  tap,
-  withLatestFrom
+  tap
 } from "rxjs/operators"
-
-import { useComponent } from "components"
 
 /* ----------------------------------------------------------------------------
  * Types

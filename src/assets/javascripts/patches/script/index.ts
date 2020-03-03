@@ -20,32 +20,20 @@
  * IN THE SOFTWARE.
  */
 
-import { identity } from "ramda"
-import { Observable, fromEvent, merge } from "rxjs"
-import {
-  filter,
-  map,
-  skip,
-  switchMapTo,
-  tap,
-  withLatestFrom
-} from "rxjs/operators"
+import { Observable } from "rxjs"
+import { map, skip, withLatestFrom } from "rxjs/operators"
 
 import { useComponent } from "components"
-import {
-  getElement,
-  getElements,
-  watchMedia
-} from "observables"
+import { getElements } from "observables"
 
 /* ----------------------------------------------------------------------------
  * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount options
+ * Patch options
  */
-interface MountOptions {
+interface PatchOptions {
   document$: Observable<Document>      /* Document observable */
 }
 
@@ -62,7 +50,7 @@ interface MountOptions {
  * @param options - Options
  */
 export function patchScripts(
-  { document$ }: MountOptions
+  { document$ }: PatchOptions
 ): void {
   const els$ = document$
     .pipe(

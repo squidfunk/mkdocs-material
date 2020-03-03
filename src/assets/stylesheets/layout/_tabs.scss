@@ -105,8 +105,8 @@
   &[data-md-state="hidden"] {
     pointer-events: none;
 
-    // Hide tabs upon scrolling - disable transition to minimizes repaints whilte
-    // scrolling down, while scrolling up seems to be okay
+    // Hide tabs upon scrolling - disable transition to minimizes repaints
+    // while scrolling down, while scrolling up seems to be okay
     .md-tabs__link {
       transform: translateY(50%);
       transition:
@@ -125,7 +125,7 @@
       display: none;
     }
 
-    // We're on the 2nd+ level
+    // Active tab
     &--active ~ .md-main {
 
       // Adjust 1st level styles
@@ -144,14 +144,9 @@
           }
         }
 
-        // Hide 1st level normal items
+        // Hide 1st level items
         > .md-nav__list > .md-nav__item {
           display: none;
-
-          // Hide nested items
-          &--nested {
-            display: none;
-          }
 
           // Show 1st level active nested items
           &--active {

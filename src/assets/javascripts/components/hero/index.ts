@@ -20,59 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, pipe } from "rxjs"
-import { map, switchMap } from "rxjs/operators"
-
-import {
-  Header,
-  Viewport,
-  paintHideable,
-  watchViewportAt
-} from "observables"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Hero
- */
-export interface Hero {
-  hidden: boolean                      /* Whether the hero is hidden */
-}
-
-/* ----------------------------------------------------------------------------
- * Helper types
- * ------------------------------------------------------------------------- */
-
-/**
- * Mount options
- */
-interface MountOptions {
-  header$: Observable<Header>          /* Header observable */
-  viewport$: Observable<Viewport>      /* Viewport observable */
-}
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Mount hero from source observable
- *
- * @param options - Options
- *
- * @return Operator function
- */
-export function mountHero(
-  { header$, viewport$ }: MountOptions
-): OperatorFunction<HTMLElement, Hero> {
-  return pipe(
-    switchMap(el => watchViewportAt(el, { header$, viewport$ })
-      .pipe(
-        paintHideable(el, 20),
-        map(hidden => ({ hidden }))
-      )
-    )
-  )
-}
+export * from "./_"
+export * from "./apply"
+export * from "./paint"

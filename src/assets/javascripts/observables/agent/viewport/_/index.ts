@@ -95,7 +95,7 @@ export function watchViewportAt(
   const offset$ = viewport$
     .pipe(
       distinctUntilKeyChanged("size"),
-      map<Viewport, ViewportOffset>(() => ({
+      map((): ViewportOffset => ({
         x: el.offsetLeft,
         y: el.offsetTop
       }))

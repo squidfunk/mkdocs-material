@@ -24,7 +24,8 @@ import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
 import { map, switchMap } from "rxjs/operators"
 
 import { SearchResult } from "integrations/search"
-import { SearchQuery } from "observables"
+
+import { SearchQuery } from "../query"
 
 /* ----------------------------------------------------------------------------
  * Types

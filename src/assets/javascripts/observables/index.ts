@@ -21,9 +21,4 @@
  */
 
 export * from "./agent"
-export * from "./anchor"
-export * from "./header"
-export * from "./main"
-export * from "./navigation"
-export * from "./search"
 export * from "./toggle"

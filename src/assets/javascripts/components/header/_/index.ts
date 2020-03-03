@@ -20,10 +20,48 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, pipe } from "rxjs"
-import { switchMap } from "rxjs/operators"
+import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  shareReplay,
+  startWith,
+  switchMap,
+  withLatestFrom
+} from "rxjs/operators"
 
-import { Header, Viewport, watchHeader } from "observables"
+import {
+  Viewport,
+  getElement,
+  watchViewportAt
+} from "observables"
+
+import { useComponent } from "../../_"
+import { paintHeaderType } from "../paint"
+import { watchHeader } from "../watch"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Header type
+ */
+export type HeaderType =
+  | "site"                             /* Header shows site title */
+  | "page"                             /* Header shows page title */
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Header
+ */
+export interface Header {
+  type: HeaderType                     /* Header type */
+  sticky: boolean                      /* Header stickyness */
+  height: number                       /* Header visible height */
+}
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -51,6 +89,33 @@ export function mountHeader(
   { viewport$ }: MountOptions
 ): OperatorFunction<HTMLElement, Header> {
   return pipe(
-    switchMap(el => watchHeader(el, { viewport$ }))
+    switchMap(el => {
+      const header$ = watchHeader(el, { viewport$ })
+
+      /* Compute whether the header should switch to page header */
+      const type$ = useComponent("main")
+        .pipe(
+          map(main => getElement("h1, h2, h3, h4, h5, h6", main)!),
+          filter(hx => typeof hx !== "undefined"),
+          withLatestFrom(useComponent("header-title")),
+          switchMap(([hx, title]) => watchViewportAt(hx, { header$, viewport$ })
+            .pipe(
+              map(({ offset: { y } }) => {
+                return y >= hx.offsetHeight ? "page" : "site"
+              }),
+              distinctUntilChanged(),
+              paintHeaderType(title)
+            )
+          ),
+          startWith<HeaderType>("site")
+        )
+
+      /* Combine into single observable */
+      return combineLatest([header$, type$])
+        .pipe(
+          map(([header, type]): Header => ({ type, ...header })),
+          shareReplay(1)
+        )
+    })
   )
 }

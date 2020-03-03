@@ -21,7 +21,7 @@
  */
 
 import { NEVER, Observable } from "rxjs"
-import { catchError, map, switchMap, take } from "rxjs/operators"
+import { catchError, map, switchMap } from "rxjs/operators"
 
 import { getElementOrThrow, getElements } from "observables"
 import { renderSource } from "templates"
@@ -44,9 +44,9 @@ export type SourceFacts = string[]
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup options
+ * Patch options
  */
-interface SetupOptions {
+interface PatchOptions {
   document$: Observable<Document>      /* Document observable */
 }
 
@@ -96,12 +96,11 @@ function fetchSourceFacts(
  * @param options - Options
  */
 export function patchSource(
-  { document$ }: SetupOptions
+  { document$ }: PatchOptions
 ): void {
   document$
     .pipe(
       map(() => getElementOrThrow<HTMLAnchorElement>(".md-source[href]")),
-      take(1),
       switchMap(({ href }) => (
         cache(`${hash(href)}`, () => fetchSourceFacts(href))
       )),
@@ -109,8 +108,10 @@ export function patchSource(
     )
       .subscribe(facts => {
         for (const el of getElements(".md-source__repository")) {
-          el.setAttribute("data-md-state", "done")
-          el.appendChild(renderSource(facts))
+          if (!el.hasAttribute("data-md-state")) {
+            el.setAttribute("data-md-state", "done")
+            el.appendChild(renderSource(facts))
+          }
         }
       })
 }

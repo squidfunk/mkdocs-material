@@ -20,67 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, Subject, pipe } from "rxjs"
-import { distinctUntilKeyChanged, switchMap, tap } from "rxjs/operators"
-
-import {
-  Header,
-  Main,
-  Viewport,
-  paintHeaderShadow,
-  watchMain
-} from "observables"
-
-import { useComponent } from "../_"
-
-/* ----------------------------------------------------------------------------
- * Helper types
- * ------------------------------------------------------------------------- */
-
-/**
- * Mount options
- */
-interface MountOptions {
-  header$: Observable<Header>          /* Header observable */
-  viewport$: Observable<Viewport>      /* Viewport observable */
-}
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Mount main area from source observable
- *
- * The header must be connected to the main area observable outside of the
- * operator function, as the header will persist in-between document switches
- * while the main area is replaced. However, the header observable must be
- * passed to this function, so we connect both via a long-living subject.
- *
- * @param options - Options
- *
- * @return Operator function
- */
-export function mountMain(
-  { header$, viewport$ }: MountOptions
-): OperatorFunction<HTMLElement, Main> {
-  const main$ = new Subject<Main>()
-
-  /* Connect to main area observable via long-living subject */
-  useComponent("header")
-    .pipe(
-      switchMap(header => main$
-        .pipe(
-          distinctUntilKeyChanged("active"),
-          paintHeaderShadow(header)
-        )
-      )
-    )
-      .subscribe()
-
-  /* Return operator */
-  return pipe(
-    switchMap(el => watchMain(el, { header$, viewport$ })),
-    tap(main => main$.next(main))
-  )
-}
+export * from "./_"
+export * from "./apply"
+export * from "./paint"
+export * from "./watch"

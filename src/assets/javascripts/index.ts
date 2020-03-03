@@ -68,12 +68,10 @@ import {
   useToggle,
   getElement,
   setViewportOffset,
-  ViewportOffset,
-  getLocation
+  ViewportOffset
 } from "./observables"
 import { setupSearchWorker } from "./workers"
 
-import { setScrollLock, resetScrollLock } from "actions"
 import {
   mountHeader,
   mountHero,
@@ -84,7 +82,6 @@ import {
   mountTabs,
   useComponent,
   setupComponents,
-  mountHeaderTitle,
   mountSearchQuery,
   mountSearchReset,
   mountSearchResult
@@ -109,6 +106,34 @@ document.documentElement.classList.add("js")
 /* Test for iOS */
 if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
   document.documentElement.classList.add("ios")
+
+/**
+ * Set scroll lock
+ *
+ * @param el - Scrollable element
+ * @param value - Vertical offset
+ */
+export function setScrollLock(
+  el: HTMLElement, value: number
+): void {
+  el.setAttribute("data-md-state", "lock")
+  el.style.top = `-${value}px`
+}
+
+/**
+ * Reset scroll lock
+ *
+ * @param el - Scrollable element
+ */
+export function resetScrollLock(
+  el: HTMLElement
+): void {
+  const value = -1 * parseInt(el.style.top, 10)
+  el.removeAttribute("data-md-state")
+  el.style.top = ""
+  if (value)
+    window.scrollTo(0, value)
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -235,12 +260,6 @@ export function initialize(config: unknown) {
       shareReplay(1)
     )
 
-  const title$ = useComponent("header-title")
-    .pipe(
-      mountHeaderTitle({ header$, viewport$ }),
-      shareReplay(1)
-    )
-
   /* ----------------------------------------------------------------------- */
 
   const keyboard$ = setupKeyboard()
@@ -320,7 +339,8 @@ export function initialize(config: unknown) {
 
   function isInternalLink(el: HTMLAnchorElement | URL) {
     return el.host === location.host && (
-      !el.pathname || /\/[\w-]+(?:\/?|\.html)$/i.test(el.pathname)
+      // TODO: Improve regex
+      !el.pathname || el.pathname === "/" || /\/[\w-]+(?:\/?|\.html)$/i.test(el.pathname) // TODO: provide some test cases
     )
   }
 
@@ -541,7 +561,7 @@ export function initialize(config: unknown) {
     toc$,
     tabs$,
     hero$,
-    title$ // TODO: header title
+    // title$ // TODO: header title
   }
 
   const { ...rest } = state

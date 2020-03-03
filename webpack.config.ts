@@ -309,7 +309,20 @@ export default (_env: never, args: Configuration): Configuration[] => {
             }
           }
         })
-      ]
+      ],
+
+      /* Optimizations */
+      optimization: {
+        splitChunks: {
+          cacheGroups: {
+            commons: {
+              test: /\/node_modules\//,
+              name: "assets/javascripts/vendor",
+              chunks: "all"
+            }
+          }
+        }
+      }
     },
 
     /* Search worker */

@@ -20,37 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-import { OperatorFunction, pipe } from "rxjs"
-import {
-  mapTo,
-  startWith,
-  switchMap,
-  switchMapTo,
-  tap
-} from "rxjs/operators"
-
-import { setElementFocus, watchSearchReset } from "observables"
-
-import { useComponent } from "../../_"
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Mount search reset from source observable
- *
- * @return Operator function
- */
-export function mountSearchReset(): OperatorFunction<HTMLElement, void> {
-  return pipe(
-    switchMap(el => watchSearchReset(el)
-      .pipe(
-        switchMapTo(useComponent("search-query")),
-        tap(setElementFocus),
-        mapTo(undefined)
-      )
-    ),
-    startWith(undefined)
-  )
-}
+export * from "./_"
+export * from "./watch"

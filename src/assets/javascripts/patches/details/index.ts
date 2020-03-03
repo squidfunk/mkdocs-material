@@ -40,9 +40,9 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount options
+ * Patch options
  */
-interface MountOptions {
+interface PatchOptions {
   document$: Observable<Document>      /* Document observable */
   hash$: Observable<string>            /* Location hash observable */
 }
@@ -55,12 +55,12 @@ interface MountOptions {
  * Patch all `details` elements
  *
  * This function will ensure that all `details` tags are opened prior to
- * printing, so the whole content of the page is included.
+ * printing, so the whole content of the page is included, and on anchor jumps.
  *
  * @param options - Options
  */
 export function patchDetails(
-  { document$, hash$ }: MountOptions
+  { document$, hash$ }: PatchOptions
 ): void {
   const els$ = document$
     .pipe(

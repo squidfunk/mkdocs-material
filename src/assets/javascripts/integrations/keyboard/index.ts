@@ -37,6 +37,7 @@ import {
   getElements,
   isSusceptibleToKeyboard,
   setElementFocus,
+  setElementSelection,
   setToggle,
   useToggle,
   watchKeyboard,
@@ -177,7 +178,7 @@ export function setupKeyboard(): Observable<Keyboard> {
           case "f":
           case "s":
             setElementFocus(query)
-            query.select()
+            setElementSelection(query)
             key.claim()
             break
 

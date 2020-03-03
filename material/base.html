@@ -43,9 +43,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.c05f2dae.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.f5f04e6f.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -195,7 +195,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.000c9aa0.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.8ceb0d66.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -218,7 +219,7 @@
         app = initialize({
           base: "{{ base_url }}",
           worker: {
-            search: "{{ 'assets/javascripts/worker/search.js' | url }}"
+            search: "{{ 'assets/javascripts/worker/search.926ffd9e.min.js' | url }}"
           },
           feature: {
             instant: {{ "true" if feature and feature.instant else "false" }}
