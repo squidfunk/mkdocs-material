@@ -205,7 +205,8 @@
 
     <!-- Link to skip to content -->
     {% if page.toc | first is defined %}
-      <a href="{{ (page.toc | first).url }}" class="md-skip">
+      {% set skip = page.toc | first %}
+      <a href="{{ skip.url | url }}" class="md-skip" data-md-component="skip">
         {{ lang.t('skip.link.title') }}
       </a>
     {% endif %}

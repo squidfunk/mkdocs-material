@@ -49,6 +49,7 @@ export type Component =
   | "search-query"                     /* Search input */
   | "search-reset"                     /* Search reset */
   | "search-result"                    /* Search results */
+  | "skip"                             /* Skip link */
   | "tabs"                             /* Tabs */
   | "toc"                              /* Table of contents */
 
@@ -115,6 +116,7 @@ export function setupComponents(
             /* Top-level components: update */
             case "header-title":
             case "container":
+            case "skip":
               if (name in prev && typeof prev[name] !== "undefined") {
                 prev[name]!.replaceWith(next[name]!)
                 prev[name] = next[name]
