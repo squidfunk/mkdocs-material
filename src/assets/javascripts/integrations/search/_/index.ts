@@ -52,13 +52,20 @@ export interface SearchIndexDocument {
   text: string                         /* Document text */
 }
 
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Search index pipeline function
+ */
+export type SearchIndexPipelineFn =
+  | "stemmer"                          /* Stemmer */
+  | "stopWordFilter"                   /* Stop word filter */
+  | "trimmer"                          /* Trimmer */
+
 /**
  * Search index pipeline
  */
-export interface SearchIndexPipeline {
-  trimmer: boolean                     /* Add trimmer to pipeline */
-  stopwords: boolean                   /* Add stopword filter to pipeline */
-}
+export type SearchIndexPipeline = SearchIndexPipelineFn[]
 
 /* ------------------------------------------------------------------------- */
 
@@ -129,17 +136,12 @@ export class SearchIndex {
     /* If no index was given, create it */
     if (typeof index === "undefined") {
       this.index = lunr(function() {
-        pipeline = pipeline || {
-          trimmer: true,
-          stopwords: true
-        }
+        pipeline = pipeline || ["trimmer", "stopWordFilter"]
 
-        /* Remove stemmer, as it cripples search experience */
+        /* Set up pipeline according to configuration */
         this.pipeline.reset()
-        if (pipeline.trimmer)
-          this.pipeline.add(lunr.trimmer)
-        if (pipeline.stopwords)
-          this.pipeline.add(lunr.stopWordFilter)
+        for (const fn of pipeline)
+          this.pipeline.add(lunr[fn])
 
         /* Set up alternate search languages */
         if (config.lang.length === 1 && config.lang[0] !== "en") {
