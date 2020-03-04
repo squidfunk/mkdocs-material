@@ -24,7 +24,7 @@
 
 <!-- Table of contents -->
 <nav class="md-nav md-nav--secondary">
-  {% set toc_ = page.toc %}
+  {% set toc = page.toc %}
 
   <!--
     Hack: check whether the content contains a h1 headline. If it does, the
@@ -32,12 +32,12 @@
     to the current page that is located just above the anchor. Therefore we
     directly continue with the children of the anchor.
   -->
-  {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
-    {% set toc_ = (toc_ | first).children %}
+  {% if toc | first is defined and "\x3ch1 id=" in page.content %}
+    {% set toc = (toc | first).children %}
   {% endif %}
 
   <!-- Render item list -->
-  {% if toc_ | first is defined %}
+  {% if toc | first is defined %}
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon">
         {% include ".icons/material/arrow-left.svg" %}
@@ -45,7 +45,7 @@
       {{ lang.t("toc.title") }}
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
-      {% for toc_item in toc_ %}
+      {% for toc_item in toc %}
         {% include "partials/toc-item.html" %}
       {% endfor %}
     </ul>

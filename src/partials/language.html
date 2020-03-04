@@ -27,6 +27,4 @@
 {% import "partials/language/en.html" as fallback %}
 
 <!-- Re-export translations -->
-{% macro t(key) %}{{ {
-  "direction": config.theme.direction
-}[key] or lang.t(key) or fallback.t(key) }}{% endmacro %}
+{% macro t(key) %}{{ lang.t(key) | default(fallback.t(key)) }}{% endmacro %}
