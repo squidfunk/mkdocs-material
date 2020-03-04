@@ -234,7 +234,7 @@ $md-toggle__search--checked:
 
     // Transition on placeholder
     &::placeholder {
-      transition: color 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
+      transition: color 250ms;
     }
 
     // Placeholder and icon color in active state
@@ -261,8 +261,8 @@ $md-toggle__search--checked:
       height: px2rem(36px);
       padding-left: px2rem(44px);
       transition:
-        background-color 250ms cubic-bezier(0.1, 0.7, 0.1, 1),
-        color            250ms cubic-bezier(0.1, 0.7, 0.1, 1);
+        background-color 250ms,
+        color            250ms;
       border-radius: px2rem(2px);
       background-color: var(--md-default-fg-color--lighter);
       color: inherit;
@@ -310,7 +310,7 @@ $md-toggle__search--checked:
     width: px2rem(24px);
     height: px2rem(24px);
     transition:
-      color   250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      color   250ms,
       opacity 250ms;
     cursor: pointer;
     z-index: 2;
