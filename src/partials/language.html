@@ -20,10 +20,8 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Import translations for given language -->
+<!-- Import translations for given language and fallback -->
 {% import "partials/language/" + config.theme.language + ".html" as lang %}
-
-<!-- Import fallback translations -->
 {% import "partials/language/en.html" as fallback %}
 
 <!-- Re-export translations -->

@@ -23,7 +23,6 @@
 {% import "partials/language.html" as lang with context %}
 
 <!-- Theme options -->
-{% set feature = config.theme.feature %}
 {% set palette = config.theme.palette %}
 {% set font = config.theme.font %}
 
@@ -238,7 +237,7 @@
 
       <!-- Tabs with outline -->
       {% block tabs %}
-        {% if feature.tabs %}
+        {% if "tabs" in config.theme.features %}
           {% include "partials/tabs.html" %}
         {% endif %}
       {% endblock %}
@@ -341,6 +340,13 @@
       {% endblock %}
     </div>
 
+    <!-- Application configuration -->
+    {% block config %}
+      <script>
+        var __config = {}
+      </script>
+    {% endblock %}
+
     <!-- Theme-related JavaScript -->
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.js' | url }}"></script>
@@ -367,15 +373,15 @@
 
       <!-- Application initialization -->
       <script>
-        app = initialize({
-          base: "{{ base_url }}",
-          worker: {
-            search: "{{ 'assets/javascripts/worker/search.js' | url }}"
+        __material = initialize(Object.assign({
+          url: {
+            base: "{{ base_url }}",
+            worker: {
+              search: "{{ 'assets/javascripts/worker/search.js' | url }}"
+            }
           },
-          feature: {
-            instant: {{ "true" if feature and feature.instant else "false" }}
-          }
-        });
+          features: {{ config.theme.features | tojson }}
+        }, __config))
       </script>
 
       <!-- Custom JavaScript -->
