@@ -29,18 +29,18 @@ import {
 } from "rxjs"
 import { map, switchMap } from "rxjs/operators"
 
-import { Viewport, getElements } from "observables"
+import { Viewport, getElements } from "browser"
 
 import { Header } from "../../header"
 import { Main } from "../../main"
 import {
   Sidebar,
-  paintSidebar,
+  applySidebar,
   watchSidebar
 } from "../../shared"
 import {
   AnchorList,
-  paintAnchorList,
+  applyAnchorList,
   watchAnchorList
 } from "../anchor"
 
@@ -107,16 +107,16 @@ export function mountTableOfContents(
           if (tablet) {
             const els = getElements<HTMLAnchorElement>(".md-nav__link", el)
 
-            /* Watch and paint sidebar */
+            /* Watch and apply sidebar */
             const sidebar$ = watchSidebar(el, { main$, viewport$ })
               .pipe(
-                paintSidebar(el, { header$ })
+                applySidebar(el, { header$ })
               )
 
-            /* Watch and paint anchor list (scroll spy) */
+            /* Watch and apply anchor list (scroll spy) */
             const anchors$ = watchAnchorList(els, { header$, viewport$ })
               .pipe(
-                paintAnchorList(els)
+                applyAnchorList(els)
               )
 
             /* Combine into a single hot observable */

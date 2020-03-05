@@ -20,7 +20,25 @@
  * IN THE SOFTWARE.
  */
 
-import { getElementOrThrow } from "observables"
+import { getElementOrThrow } from "browser"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Translation keys
+ */
+type TranslateKey =
+  | "clipboard.copy"                   /* Copy to clipboard */
+  | "clipboard.copied"                 /* Copied to clipboard */
+  | "search.config.lang"               /* Search language */
+  | "search.config.pipeline"           /* Search pipeline */
+  | "search.config.separator"          /* Search separator */
+  | "search.result.placeholder"        /* Type to start searching */
+  | "search.result.none"               /* No matching documents */
+  | "search.result.one"                /* 1 matching document */
+  | "search.result.other"              /* # matching documents */
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -43,7 +61,7 @@ let lang: Record<string, string>
  *
  * @return Translation
  */
-export function translate(key: string, value?: string): string {
+export function translate(key: TranslateKey, value?: string): string {
   if (typeof lang === "undefined") {
     const el = getElementOrThrow("#__lang")
     lang = JSON.parse(el.innerText)

@@ -28,15 +28,14 @@ import {
   shareReplay,
   switchMap,
   take,
+  tap,
   withLatestFrom
 } from "rxjs/operators"
 
-import { SearchIndexOptions } from "integrations/search"
-import {
-  WorkerHandler,
-  watchWorker
-} from "observables"
+import { WorkerHandler, watchWorker } from "browser"
+import { SearchIndexConfig, SearchIndexOptions } from "integrations/search"
 
+import { translate } from "utilities"
 import {
   SearchMessage,
   SearchMessageType,
@@ -119,11 +118,39 @@ export function setupSearchWorker(
           })
             .pipe<SearchIndexOptions>(
               pluck("response")
-            ))
+            )
+          )
         )
 
-  /* Send index to worker */
+  function isConfigDefaultLang(config: SearchIndexConfig) {
+    return config.lang.length === 1 && config.lang[0] === "en"
+  }
+
+  function isConfigDefaultSeparator(config: SearchIndexConfig) {
+    return config.separator === "[\s\-]+"
+  }
+
   index$
+    .pipe(
+      map(({ config, ...rest }) => ({
+        config: {
+          lang: isConfigDefaultLang(config)
+            ? [translate("search.config.lang")]
+            : config.lang,
+          separator: isConfigDefaultSeparator(config)
+            ? translate("search.config.separator")
+            : config.separator
+        },
+        pipeline: translate("search.config.pipeline")
+          .split(/\s*,\s*/)
+          .filter(Boolean) as any, // Hack
+        ...rest
+      }))
+    )
+  //     .subscribe(console.log)
+
+  // /* Send index to worker */
+  // index$
     .pipe<SearchSetupMessage>(
       map(data => ({
         type: SearchMessageType.SETUP,

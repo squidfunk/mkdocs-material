@@ -29,10 +29,10 @@ import {
   tap
 } from "rxjs/operators"
 
-import { setElementFocus } from "observables"
+import { setElementFocus } from "browser"
 
 import { useComponent } from "../../../_"
-import { watchSearchReset } from "../watch"
+import { watchSearchReset } from "../react"
 
 /* ----------------------------------------------------------------------------
  * Functions

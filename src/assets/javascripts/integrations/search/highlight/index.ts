@@ -20,8 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import * as escapeRegExp from "escape-string-regexp"
-
 import { SearchIndexConfig } from "../_"
 import { SearchDocument } from "../document"
 
@@ -78,7 +76,9 @@ export function setupSearchHighlighter(
 
     /* Create search term match expression */
     const match = new RegExp(`(^|${config.separator})(${
-      escapeRegExp(query).replace(separator, "|")
+      query
+        .replace(/[|\\{}()[\]^$+*?.-]/g, "\\$&") // TODO: taken from escape-string-regexp
+        .replace(separator, "|")
     })`, "img")
 
     /* Highlight document */

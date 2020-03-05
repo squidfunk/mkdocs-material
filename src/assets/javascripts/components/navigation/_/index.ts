@@ -23,18 +23,18 @@
 import { Observable, OperatorFunction, pipe } from "rxjs"
 import { map, switchMap } from "rxjs/operators"
 
-import { Viewport, getElements } from "observables"
+import { Viewport, getElements } from "browser"
 
 import { Header } from "../../header"
 import { Main } from "../../main"
 import {
   Sidebar,
-  paintSidebar,
+  applySidebar,
   watchSidebar
 } from "../../shared"
 import {
   NavigationLayer,
-  paintNavigationLayer,
+  applyNavigationLayer,
   watchNavigationLayer
 } from "../layer"
 
@@ -102,7 +102,7 @@ export function mountNavigation(
           if (screen) {
             return watchSidebar(el, { main$, viewport$ })
               .pipe(
-                paintSidebar(el, { header$ }),
+                applySidebar(el, { header$ }),
                 map(sidebar => ({ sidebar }))
               )
 
@@ -111,7 +111,7 @@ export function mountNavigation(
             const els = getElements("nav", el)
             return watchNavigationLayer(els)
               .pipe(
-                paintNavigationLayer(els),
+                applyNavigationLayer(els),
                 map(layer => ({ layer }))
               )
           }

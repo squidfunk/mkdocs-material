@@ -20,21 +20,46 @@
  * IN THE SOFTWARE.
  */
 
+import { SearchIndexConfig, SearchIndexOptions } from "integrations/search"
+
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
+ * Feature flags
+ */
+export type Feature =
+  | "tabs"                             /* Tabs navigation */
+  | "instant"                          /* Instant loading
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * URL configuration
+ */
+export interface UrlConfig {
+  base: string                       /* Base URL */
+  worker: {
+    search: string                   /* Search worker URL */
+  }
+}
+
+/**
+ * Search configuration
+ */
+export interface SearchConfig {
+  index?: Promise<SearchIndexOptions>
+  query?: (value: string) => string
+}
+
+/**
  * Configuration
  */
 export interface Config {
-  base: string                         /* Base URL */
-  worker: {
-    search: string                     /* Search worker URL */
-  }
-  feature: {
-    instant: true                      /* Instant loading */
-  }
+  url: UrlConfig
+  features: Feature[]                  /* Feature flags */
+  search?: SearchConfig
 }
 
 /* ----------------------------------------------------------------------------
@@ -53,7 +78,8 @@ export interface Config {
  */
 export function isConfig(config: any): config is Config {
   return typeof config === "object"
-      && typeof config.base === "string"
-      && typeof config.worker === "object"
-      && typeof config.worker.search === "string"
+      && typeof config.url === "object"
+      && typeof config.url.base === "string"
+      && typeof config.url.worker === "object"
+      && typeof config.url.worker.search === "string"
 }

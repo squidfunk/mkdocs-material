@@ -237,13 +237,18 @@ export default (_env: never, args: Configuration): Configuration[] => {
             to: ".icons/material/[name].svg",
             from: "**/*.json",
             toType: "template",
-            transform: (_, file) => {
-              const name = path.basename(file, ".json")
-              return icon.getSVG(name, ` id="${name}"`)
-            }
+            transform: (_, file) => icon.getSVG(path.basename(file, ".json"))
           }
         ], {
           context: "node_modules/material-design-icons-svg/paths"
+        }),
+
+        /* GitHub octicons */
+        new CopyPlugin([
+          { to: ".icons/octicons", from: "*.svg" },
+          { to: ".icons/octicons", from: "../../LICENSE" }
+        ], {
+          context: "node_modules/@primer/octicons/build/svg"
         }),
 
         /* Search stemmers and segmenters */

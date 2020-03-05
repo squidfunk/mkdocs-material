@@ -2,7 +2,6 @@
   This file was automatically generated - do not edit
 -#}
 {% import "partials/language.html" as lang with context %}
-{% set feature = config.theme.feature %}
 {% set palette = config.theme.palette %}
 {% set font = config.theme.font %}
 <!doctype html>
@@ -43,7 +42,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.c05f2dae.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.14bb5ffa.min.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.f5f04e6f.min.css' | url }}">
       {% endif %}
@@ -79,18 +78,20 @@
     {% endblock %}
     {% block extrahead %}{% endblock %}
   </head>
+  {% set direction = config.theme.direction | default(lang.t('direction')) %}
   {% if palette.primary or palette.accent %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
     {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-    <body dir="{{ lang.t('direction') }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
+    <body dir="{{ direction }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
   {% else %}
-    <body dir="{{ lang.t('direction') }}">
+    <body dir="{{ direction }}">
   {% endif %}
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     {% if page.toc | first is defined %}
-      <a href="{{ (page.toc | first).url }}" class="md-skip">
+      {% set skip = page.toc | first %}
+      <a href="{{ skip.url | url }}" class="md-skip" data-md-component="skip">
         {{ lang.t('skip.link.title') }}
       </a>
     {% endif %}
@@ -111,7 +112,7 @@
         {% endif %}
       {% endblock %}
       {% block tabs %}
-        {% if feature.tabs %}
+        {% if "tabs" in config.theme.features %}
           {% include "partials/tabs.html" %}
         {% endif %}
       {% endblock %}
@@ -147,40 +148,19 @@
                 {% endif %}
                 {% block source %}
                   {% if page and page.meta and page.meta.source %}
-                    {% set repo = config.repo_url %}
-                    {% if repo | last == "/" %}
-                      {% set repo = repo[:-1] %}
-                    {% endif %}
-                    {% set path = page.meta.path | default([""]) %}
-                    {% set file = page.meta.source %}
-                    {% set repo_icon = config.extra.repo_icon | default(
-                      "fontawesome/brands/git-alt"
-                    ) %}
-                    <a href="{{ [repo, path, page.meta.source] | join('/') }}" title="{{ file }}" class="md-content__button md-icon">
-                      {{ lang.t("meta.source") }}
-                      {% include ".icons/" ~ repo_icon ~ ".svg" %}
-                    </a>
+                    {% include "partials/source-link.html" %}
                   {% endif %}
                 {% endblock %}
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
                 {{ page.content }}
-                {% if page and page.meta and (
-                      page.meta.git_revision_date_localized or
-                      page.meta.revision_date
-                ) %}
-                  {% set label = lang.t("source.revision.date") %}
-                  <hr>
-                  <div class="md-source-date">
-                    <small>
-                      {% if page.meta.git_revision_date_localized %}
-                        {{ label }}: {{ page.meta.git_revision_date_localized }}
-                      {% elif page.meta.revision_date %}
-                        {{ label }}: {{ page.meta.revision_date }}
-                      {% endif %}
-                    </small>
-                  </div>
+                {% if page and page.meta %}
+                  {% if page.meta.git_revision_date_localized or
+                        page.meta.revision_date
+                  %}
+                    {% include "partials/source-date.html" %}
+                  {% endif %}
                 {% endif %}
               {% endblock %}
               {% block disqus %}
@@ -194,21 +174,23 @@
         {% include "partials/footer.html" %}
       {% endblock %}
     </div>
+    {% block config %}
+      <script>var __config={}</script>
+    {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.000c9aa0.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.8ceb0d66.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.31a2e7b9.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.9330522f.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
         "clipboard.copied",
-        "search.language",
-        "search.pipeline.stopwords",
-        "search.pipeline.trimmer",
+        "search.config.lang",
+        "search.config.pipeline",
+        "search.config.separator",
         "search.result.placeholder",
         "search.result.none",
         "search.result.one",
-        "search.result.other",
-        "search.tokenizer"
+        "search.result.other"
       ] -%}
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
@@ -216,15 +198,15 @@
         {{ translations | tojson }}
       </script>
       <script>
-        app = initialize({
-          base: "{{ base_url }}",
-          worker: {
-            search: "{{ 'assets/javascripts/worker/search.926ffd9e.min.js' | url }}"
+        __material = initialize(Object.assign({
+          url: {
+            base: "{{ base_url }}",
+            worker: {
+              search: "{{ 'assets/javascripts/worker/search.edc88caf.min.js' | url }}"
+            }
           },
-          feature: {
-            instant: {{ "true" if feature and feature.instant else "false" }}
-          }
-        });
+          features: {{ config.theme.features | tojson }}
+        }, __config))
       </script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>

@@ -22,10 +22,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "actions": ["actions"],
+      "browser": ["browser"],
       "components": ["components"],
       "integrations/*": ["integrations/*"],
-      "observables": ["observables"],
       "patches": ["patches"],
       "templates": ["templates"],
       "utilities": ["utilities"],

@@ -25,24 +25,22 @@ import {
   filter,
   map,
   share,
-  switchMap,
   withLatestFrom
 } from "rxjs/operators"
 
-import { useComponent } from "components"
 import {
   Key,
   getActiveElement,
   getElement,
   getElements,
+  getToggle,
   isSusceptibleToKeyboard,
   setElementFocus,
   setElementSelection,
   setToggle,
-  useToggle,
-  watchKeyboard,
-  watchToggle
-} from "observables"
+  watchKeyboard
+} from "browser"
+import { useComponent } from "components"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -88,18 +86,10 @@ export interface Keyboard extends Key {
  * @return Keyboard observable
  */
 export function setupKeyboard(): Observable<Keyboard> {
-  const toggle$ = useToggle("search")
-  const search$ = toggle$
-    .pipe(
-      switchMap(watchToggle)
-    )
-
-  /* Setup keyboard and determine mode */
   const keyboard$ = watchKeyboard()
     .pipe(
-      withLatestFrom(search$),
-      map(([key, toggle]): Keyboard => ({
-        mode: toggle ? "search" : "global",
+      map<Key, Keyboard>(key => ({
+        mode: getToggle("search") ? "search" : "global",
         ...key
       })),
       share()
@@ -110,12 +100,11 @@ export function setupKeyboard(): Observable<Keyboard> {
     .pipe(
       filter(({ mode }) => mode === "search"),
       withLatestFrom(
-        toggle$,
         useComponent("search-query"),
         useComponent("search-result")
       )
     )
-      .subscribe(([key, toggle, query, result]) => {
+      .subscribe(([key, query, result]) => {
         const active = getActiveElement()
         switch (key.type) {
 
@@ -128,7 +117,7 @@ export function setupKeyboard(): Observable<Keyboard> {
           /* Escape or Tab: close search */
           case "Escape":
           case "Tab":
-            setToggle(toggle, false)
+            setToggle("search", false)
             setElementFocus(query, false)
             break
 

@@ -23,12 +23,14 @@
 import { Observable, OperatorFunction, Subject, pipe } from "rxjs"
 import { distinctUntilKeyChanged, switchMap, tap } from "rxjs/operators"
 
-import { Viewport } from "observables"
+import { Viewport } from "browser"
 
 import { useComponent } from "../../_"
 import { Header } from "../../header"
-import { paintHeaderShadow } from "../paint"
-import { watchMain } from "../watch"
+import {
+  applyHeaderShadow,
+  watchMain
+} from "../react"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -82,7 +84,7 @@ export function mountMain(
       switchMap(header => main$
         .pipe(
           distinctUntilKeyChanged("active"),
-          paintHeaderShadow(header)
+          applyHeaderShadow(header)
         )
       )
     )

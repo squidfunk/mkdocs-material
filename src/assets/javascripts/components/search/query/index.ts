@@ -21,4 +21,4 @@
  */
 
 export * from "./_"
-export * from "./watch"
+export * from "./react"

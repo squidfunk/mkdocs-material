@@ -33,7 +33,8 @@ import {
   animationFrameScheduler,
   fromEvent,
   of,
-  NEVER
+  NEVER,
+  from
 } from "rxjs"
 import {
   delay,
@@ -43,16 +44,8 @@ import {
   withLatestFrom,
   observeOn,
   take,
-  mapTo,
   shareReplay,
-  sample,
-  share,
-  map,
-  pluck,
-  debounceTime,
-  distinctUntilKeyChanged,
-  distinctUntilChanged,
-  bufferCount
+  share
 } from "rxjs/operators"
 
 import {
@@ -64,12 +57,9 @@ import {
   watchLocation,
   watchLocationHash,
   watchViewport,
-  setupToggles,
-  useToggle,
-  getElement,
-  setViewportOffset,
-  ViewportOffset
-} from "./observables"
+  isLocationInternal,
+  isLocationAnchor
+} from "./browser"
 import { setupSearchWorker } from "./workers"
 
 import {
@@ -87,7 +77,9 @@ import {
   mountSearchResult
 } from "components"
 import { setupClipboard } from "./integrations/clipboard"
+import { setupDialog } from "integrations/dialog"
 import { setupKeyboard } from "./integrations/keyboard"
+import { setupInstantLoading } from "integrations/instant"
 import {
   patchTables,
   patchDetails,
@@ -96,7 +88,6 @@ import {
   patchScripts
 } from "patches"
 import { isConfig } from "utilities"
-import { setupDialog } from "integrations/dialog"
 
 /* ------------------------------------------------------------------------- */
 
@@ -156,15 +147,9 @@ export function initialize(config: unknown) {
   const screen$   = watchMedia("(min-width: 1220px)")
 
   /* Setup document observable */
-  const document$ = config.feature.instant
+  const document$ = config.features.includes("instant")
     ? watchDocument({ location$ })
     : watchDocument()
-
-  /* Setup toggle bindings */
-  setupToggles([
-    "drawer",                          /* Toggle for drawer */
-    "search"                           /* Toggle for search */
-  ], { document$ })
 
   /* Setup component bindings */
   setupComponents([
@@ -178,14 +163,21 @@ export function initialize(config: unknown) {
     "search-query",                    /* Search input */
     "search-reset",                    /* Search reset */
     "search-result",                   /* Search results */
+    "skip",                            /* Skip link */
     "tabs",                            /* Tabs */
     "toc"                              /* Table of contents */
   ], { document$ })
 
   /* ----------------------------------------------------------------------- */
 
-  const worker = setupSearchWorker(config.worker.search, {
-    base: config.base, location$
+  // External index
+  const index = config.search && config.search.index
+    ? config.search.index
+    : undefined
+
+  // TODO: pass URL config as first parameter, options as second
+  const worker = setupSearchWorker(config.url.worker.search, {
+    base: config.url.base, index, location$
   })
 
   /* ----------------------------------------------------------------------- */
@@ -209,7 +201,7 @@ export function initialize(config: unknown) {
   const query$ = useComponent("search-query")
     .pipe(
       mountSearchQuery(worker),
-      shareReplay(1) // TODO: this must be put onto EVERY component!
+      shareReplay(1)
     )
 
   /* Mount search reset */
@@ -278,36 +270,26 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  // Close drawer and search on hash change
-  // put into navigation...
-  // TODO: replace with popstate?
-  hash$.subscribe(() => {
-    useToggle("drawer").subscribe(el => {
-      setToggle(el, false)
-    })
-  })
-
-  // put into search...
-  hash$
-    .pipe(
-      switchMap(hash => useToggle("search")
-        .pipe(
-          filter(x => x.checked), // only active
-          tap(toggle => setToggle(toggle, false)),
-          delay(125), // ensure that it runs after the body scroll reset...
-          mapTo(hash)
-        )
-      )
-    )
-      .subscribe(hash => {
-        getElement(`[id="${hash}"]`)!.scrollIntoView()
-      })
+  // // put into search...
+  // hash$
+  //   .pipe(
+  //     switchMap(hash => useToggle("search")
+  //       .pipe(
+  //         filter(x => x.checked), // only active
+  //         tap(toggle => setToggle(toggle, false)),
+  //         delay(125), // ensure that it runs after the body scroll reset...
+  //         mapTo(hash)
+  //       )
+  //     )
+  //   )
+  //     .subscribe(hash => {
+  //       getElement(`[id="${hash}"]`)!.scrollIntoView()
+  //     })
 
   // Scroll lock // document -> document$ => { body } !?
   // put into search...
-  const toggle$ = useToggle("search")
   combineLatest([
-    toggle$.pipe(switchMap(watchToggle)),
+    watchToggle("search"),
     tablet$,
   ])
     .pipe(
@@ -329,34 +311,33 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  /**
-   * Location change
-   */
-  interface State {
-    url: URL
-    data?: ViewportOffset
-  }
-
-  function isInternalLink(el: HTMLAnchorElement | URL) {
-    return el.host === location.host && (
-      // TODO: Improve regex
-      !el.pathname || el.pathname === "/" || /\/[\w-]+(?:\/?|\.html)$/i.test(el.pathname) // TODO: provide some test cases
+  /* Intercept internal link clicks */
+  const link$ = fromEvent<MouseEvent>(document.body, "click")
+    .pipe(
+      filter(ev => !(ev.metaKey || ev.ctrlKey)),
+      switchMap(ev => {
+        if (ev.target instanceof HTMLElement) {
+          const el = ev.target.closest("a") // TODO: abstract as link click?
+          if (el && isLocationInternal(el)) {
+            if (!isLocationAnchor(el))
+              ev.preventDefault()
+            return of(el)
+          }
+        }
+        return NEVER
+      }),
+      share()
     )
-  }
 
-  // on same page!
-  function isAnchorLink(el: HTMLAnchorElement | URL) {
-    return el.pathname === location.pathname && el.hash.length > 0
-  }
+  /* Always close drawer on click */
+  link$.subscribe(() => {
+    setToggle("drawer", false)
+  })
 
-  function compareState(
-    { url: a }: State, { url: b }: State
-  ) {
-    return a.href === b.href
-  }
+  // somehow call this setupNavigation ?
 
   // instant loading
-  if (config.feature.instant) {
+  if (config.features.includes("instant")) {
 
     /* Disable automatic scroll restoration, as it doesn't work nicely */
     if ("scrollRestoration" in history)
@@ -370,167 +351,10 @@ export function initialize(config: unknown) {
       for (const el of getElements<HTMLLinkElement>(selector))
         el.href = el.href
 
-    /* Intercept internal link clicks */
-    const internal$ = fromEvent<MouseEvent>(document.body, "click")
-      .pipe(
-        filter(ev => !(ev.metaKey || ev.ctrlKey)),
-        switchMap(ev => {
-          if (ev.target instanceof HTMLElement) {
-            const el = ev.target.closest("a")
-            if (el && isInternalLink(el)) {
-              if (!isAnchorLink(el))
-                ev.preventDefault()
-              return of(el.href)
-            }
-          }
-          return NEVER
-        }),
-        distinctUntilChanged(),
-        map<string, State>(href => ({ url: new URL(href) })),
-        share()
-      )
-
-    /* Intercept internal links to dispatch */
-    const dispatch$ = internal$
-      .pipe(
-        filter(({ url }) => !isAnchorLink(url)),
-        share()
-      )
-
-    /* Intercept popstate events (history back and forward) */
-    const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
-      .pipe(
-        filter(ev => ev.state !== null),
-        map<PopStateEvent, State>(ev => ({
-          url: new URL(location.href),
-          data: ev.state
-        })),
-        share()
-      )
-
-    /* Emit location change */
-    merge(dispatch$, popstate$)
-      .pipe(
-        pluck("url")
-      )
-        .subscribe(location$)
-
-    /* Add dispatched link to history */
-    internal$
-      .pipe(
-        // TODO: must start with the current location and ignore the first emission
-        distinctUntilChanged(compareState),
-        filter(({ url }) => !isAnchorLink(url))
-      )
-        .subscribe(({ url }) => {
-          // console.log(`History.Push ${url}`)
-          history.pushState({}, "", url.toString())
-        })
-
-    // special case
-    merge(internal$, popstate$)
-      .pipe(
-        bufferCount(2, 1),
-        // filter(([prev, next]) => {
-        //   return prev.url.href.match(next.url.href) !== null
-        //       && isAnchorLink(prev.url)
-        // })
-      )
-        .subscribe(([prev, next]) => {
-          console.log(`<- ${prev.url}`)
-          console.log(`-> ${next.url}`)
-
-          if (
-            prev.url.href.match(next.url.href) !== null &&
-            isAnchorLink(prev.url)
-          ) {
-            // dialog$.next(`Potential Candidate: ${JSON.stringify(next.data)}`, ) // awesome debugging.
-            setViewportOffset(next.data || { y: 0 })
-          }
-            // console.log("Potential Candidate")
-        })
-        // .subscribe((x) => console.log(x[0].url.toString(), x[1].url.toString()))
-    //     filter(([prev, next]) => {
-    //       return prev.url.href.match(next.url.href) !== null
-    //           && isAnchorLink(prev.url)
-    //     }),
-    //     map(([, next]) => next)
-    //     // distinctUntilChanged(compareLocationChange),
-    //     // filter(({ url }) => !isAnchorLink(url))
-    //   )
-    //     .subscribe(({ url }) => {
-    //       console.log(`Restore ${url}`)
-    //     })
-
-    /* Persist viewport offset in history before hash change */
-    viewport$
-      .pipe(
-        debounceTime(250),
-        distinctUntilKeyChanged("offset"),
-      )
-        .subscribe(({ offset }) => {
-          // console.log("Update", offset)
-          history.replaceState(offset, "")
-        })
-
-    /*  */
-    merge(dispatch$, popstate$)
-      .pipe(
-        sample(document$),
-        withLatestFrom(document$),
-      )
-        .subscribe(([{ url, data }, { title, head }]) => {
-          console.log("Done", url.href, data)
-
-          // trigger custom event
-          document.dispatchEvent(new CustomEvent("DOMContentSwitch"))
-
-          // setDocumentTitle
-          document.title = title
-
-          // replace meta tags
-          for (const selector of [
-            `link[rel="canonical"]`,
-            `meta[name="author"]`,
-            `meta[name="description"]`
-          ]) {
-            const next = getElement(selector, head)
-            const prev = getElement(selector, document.head)
-            if (
-              typeof next !== "undefined" &&
-              typeof prev !== "undefined"
-            ) {
-              prev.replaceWith(next)
-            }
-          }
-
-          // search drawer close
-          useToggle("search").subscribe(el => {
-            setToggle(el, false)
-          })
-
-          // // TODO: this doesnt work as expected
-          if (url.hash) {
-            console.log("hash data?", data)
-            const a = document.createElement("a")
-            a.href = url.hash
-            a.click()
-          } else {
-            setViewportOffset(data || { y: 0 }) // push state!
-          }
-        })
-
-    // internal$.subscribe(({ url }) => {
-    //   console.log(`Internal ${url}`)
-    // })
-
-    // dispatch$.subscribe(({ url }) => {
-    //   console.log(`Dispatch ${url}`)
-    // })
-
-    popstate$.subscribe(({ url }) => {
-      console.log(`Popstate ${url.href}`, url)
+    setupInstantLoading({
+      document$, link$, location$, viewport$
     })
+
   }
 
   /* ----------------------------------------------------------------------- */
@@ -550,26 +374,28 @@ export function initialize(config: unknown) {
   /* ----------------------------------------------------------------------- */
 
   const state = {
-    search$,
-    clipboard$,
-    location$,
-    hash$,
-    keyboard$,
-    dialog$,
+
+    /* Browser observables */
+    document$,
+    viewport$,
+
+    /* Component observables */
+    header$,
+    hero$,
     main$,
     navigation$,
-    toc$,
+    search$,
     tabs$,
-    hero$,
-    // title$ // TODO: header title
+    toc$,
+
+    /* Integation observables */
+    clipboard$,
+    keyboard$,
+    dialog$
   }
 
-  const { ...rest } = state
-  merge(...values(rest))
-    .subscribe() // potential memleak <-- use takeUntil
-
-  return {
-    // agent,
-    state
-  }
+  /* Subscribe to all observables */
+  merge(...values(state))
+    .subscribe()
+  return state
 }

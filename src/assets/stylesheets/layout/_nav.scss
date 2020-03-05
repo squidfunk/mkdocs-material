@@ -48,14 +48,18 @@
       }
 
       // Logo
-      &.md-logo svg {
+      &.md-logo {
 
         // Image or icon
         img,
         svg {
           display: block;
-          width: px2rem(24px);
-          height: px2rem(24px);
+          width: px2rem(48px);
+          height: px2rem(48px);
+        }
+
+        // Icon
+        svg {
           fill: currentColor;
         }
       }
@@ -227,8 +231,6 @@
             position: absolute;
             top: px2rem(4px);
             left: px2rem(4px);
-            width: px2rem(64px);
-            height: px2rem(64px);
             margin: px2rem(4px);
             padding: px2rem(8px);
             font-size: px2rem(48px);

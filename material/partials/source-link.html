@@ -1,0 +1,17 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% import "partials/language.html" as lang with context %}
+{% set repo = config.repo_url %}
+{% if repo | last == "/" %}
+  {% set repo = repo[:-1] %}
+{% endif %}
+{% set path = page.meta.path | default([""]) %}
+{% set file = page.meta.source %}
+{% set repo_icon = config.extra.repo_icon | default(
+  "fontawesome/brands/git-alt"
+) %}
+<a href="{{ [repo, path, page.meta.source] | join('/') }}" title="{{ file }}" class="md-content__button md-icon">
+  {{ lang.t("meta.source") }}
+  {% include ".icons/" ~ repo_icon ~ ".svg" %}
+</a>

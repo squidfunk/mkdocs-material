@@ -35,11 +35,13 @@ import {
   Viewport,
   getElement,
   watchViewportAt
-} from "observables"
+} from "browser"
 
 import { useComponent } from "../../_"
-import { paintHeaderType } from "../paint"
-import { watchHeader } from "../watch"
+import {
+  applyHeaderType,
+  watchHeader
+} from "../react"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -104,7 +106,7 @@ export function mountHeader(
                 return y >= hx.offsetHeight ? "page" : "site"
               }),
               distinctUntilChanged(),
-              paintHeaderType(title)
+              applyHeaderType(title)
             )
           ),
           startWith<HeaderType>("site")

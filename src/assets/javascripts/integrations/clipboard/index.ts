@@ -24,7 +24,7 @@ import * as ClipboardJS from "clipboard"
 import { NEVER, Observable, Subject, fromEventPattern } from "rxjs"
 import { mapTo, share, tap } from "rxjs/operators"
 
-import { getElements } from "observables"
+import { getElements } from "browser"
 import { renderClipboard } from "templates"
 import { translate } from "utilities"
 
@@ -63,11 +63,11 @@ export function setupClipboard(
   /* Inject 'copy-to-clipboard' buttons */
   document$.subscribe(() => {
     const blocks = getElements("pre > code")
-    for (const [index, block] of blocks.entries()) {
+    blocks.forEach((block, index) => {
       const parent = block.parentElement!
       parent.id = `__code_${index}`
       parent.insertBefore(renderClipboard(parent.id), block)
-    }
+    })
   })
 
   /* Initialize and setup clipboard */

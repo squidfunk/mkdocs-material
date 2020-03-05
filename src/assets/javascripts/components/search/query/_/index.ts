@@ -24,22 +24,17 @@ import { OperatorFunction, pipe } from "rxjs"
 import {
   distinctUntilKeyChanged,
   map,
-  switchMap,
-  withLatestFrom
+  switchMap
 } from "rxjs/operators"
 
-import {
-  WorkerHandler,
-  setToggle,
-  useToggle
-} from "observables"
+import { WorkerHandler, setToggle } from "browser"
 import {
   SearchMessage,
   SearchMessageType,
   SearchQueryMessage
 } from "workers"
 
-import { watchSearchQuery } from "../watch"
+import { watchSearchQuery } from "../react"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -79,7 +74,6 @@ interface MountOptions {
 export function mountSearchQuery(
   { tx$ }: WorkerHandler<SearchMessage>, options: MountOptions = {}
 ): OperatorFunction<HTMLInputElement, SearchQuery> {
-  const toggle$ = useToggle("search")
   return pipe(
     switchMap(el => {
       const query$ = watchSearchQuery(el, options)
@@ -98,12 +92,11 @@ export function mountSearchQuery(
       /* Toggle search on focus */
       query$
         .pipe(
-          distinctUntilKeyChanged("focus"),
-          withLatestFrom(toggle$)
+          distinctUntilKeyChanged("focus")
         )
-          .subscribe(([{ focus }, toggle]) => {
+          .subscribe(({ focus }) => {
             if (focus)
-              setToggle(toggle, focus)
+              setToggle("search", focus)
           })
 
       /* Return search query */

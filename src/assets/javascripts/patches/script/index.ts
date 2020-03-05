@@ -23,8 +23,8 @@
 import { Observable } from "rxjs"
 import { map, skip, withLatestFrom } from "rxjs/operators"
 
+import { getElements } from "browser"
 import { useComponent } from "components"
-import { getElements } from "observables"
 
 /* ----------------------------------------------------------------------------
  * Helper types

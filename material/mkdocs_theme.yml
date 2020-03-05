@@ -26,15 +26,7 @@ direction:
 
 # Feature flags for functionality that alters behavior significantly, and thus
 # may be a matter of taste
-feature:
-
-  # Another layer on top of the main navigation for larger screens in the form
-  # of tabs, especially useful for larger documentation projects
-  tabs: false
-
-  # Instant loading will instruct the application to intercept all internal
-  # links, load and inject the HTML into the page and rebind all handlers
-  instant: false
+features: []
 
 # Sets the primary and accent color palettes as defined in the Material Design
 # documentation - possible values can be looked up in the getting started guide
@@ -61,10 +53,10 @@ font:
 icon:
 
   # Shown if no logo is set
-  logo: .icons/material/book-open-variant
+  logo: material/library
 
   # Repository icon
-  repo: .icons/fontawesome/git-alt
+  repo: fontawesome/brands/git-alt
 
 # Favicon to be rendered
 favicon: assets/images/favicon.png

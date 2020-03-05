@@ -23,7 +23,7 @@
 import { Observable } from "rxjs"
 import { map } from "rxjs/operators"
 
-import { getElements } from "observables"
+import { getElements } from "browser"
 import { renderTable } from "templates"
 
 /* ----------------------------------------------------------------------------

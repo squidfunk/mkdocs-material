@@ -1,10 +1,10 @@
 {
-  "assets/javascripts/bundle.js": "assets/javascripts/bundle.8ceb0d66.min.js",
-  "assets/javascripts/bundle.js.map": "assets/javascripts/bundle.8ceb0d66.min.js.map",
-  "assets/javascripts/vendor.js": "assets/javascripts/vendor.000c9aa0.min.js",
-  "assets/javascripts/vendor.js.map": "assets/javascripts/vendor.000c9aa0.min.js.map",
-  "assets/javascripts/worker/search.js": "assets/javascripts/worker/search.926ffd9e.min.js",
-  "assets/javascripts/worker/search.js.map": "assets/javascripts/worker/search.926ffd9e.min.js.map",
-  "assets/stylesheets/main.css": "assets/stylesheets/main.c05f2dae.min.css",
-  "assets/stylesheets/palette.css": "assets/stylesheets/palette.f5f04e6f.min.css"
+  "assets/javascripts/bundle.js": "assets/javascripts/bundle.js",
+  "assets/javascripts/bundle.js.map": "assets/javascripts/bundle.js.map",
+  "assets/javascripts/vendor.js": "assets/javascripts/vendor.js",
+  "assets/javascripts/vendor.js.map": "assets/javascripts/vendor.js.map",
+  "assets/javascripts/worker/search.js": "assets/javascripts/worker/search.js",
+  "assets/javascripts/worker/search.js.map": "assets/javascripts/worker/search.js.map",
+  "assets/stylesheets/main.css": "assets/stylesheets/main.css",
+  "assets/stylesheets/palette.css": "assets/stylesheets/palette.css"
 }

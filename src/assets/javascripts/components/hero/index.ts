@@ -21,5 +21,5 @@
  */
 
 export * from "./_"
-export * from "./apply"
-export * from "./paint"
+export * from "./react"
+export * from "./set"

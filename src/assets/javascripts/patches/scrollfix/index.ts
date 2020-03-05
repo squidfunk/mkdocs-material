@@ -23,7 +23,7 @@
 import { NEVER, Observable, fromEvent, iif, merge } from "rxjs"
 import { map, mapTo, shareReplay, switchMap } from "rxjs/operators"
 
-import { getElements } from "observables"
+import { getElements } from "browser"
 
 /* ----------------------------------------------------------------------------
  * Helper types

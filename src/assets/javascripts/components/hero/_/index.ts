@@ -23,10 +23,10 @@
 import { Observable, OperatorFunction, pipe } from "rxjs"
 import { distinctUntilChanged, map, switchMap } from "rxjs/operators"
 
-import { Viewport, watchViewportAt } from "observables"
+import { Viewport, watchViewportAt } from "browser"
 
 import { Header } from "../../header"
-import { paintHero } from "../paint"
+import { applyHero } from "../react"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -70,7 +70,7 @@ export function mountHero(
       .pipe(
         map(({ offset: { y } }) => ({ hidden: y >= 20 })),
         distinctUntilChanged(),
-        paintHero(el)
+        applyHero(el)
       )
     )
   )

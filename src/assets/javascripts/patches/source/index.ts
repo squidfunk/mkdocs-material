@@ -23,7 +23,7 @@
 import { NEVER, Observable } from "rxjs"
 import { catchError, map, switchMap } from "rxjs/operators"
 
-import { getElementOrThrow, getElements } from "observables"
+import { getElementOrThrow, getElements } from "browser"
 import { renderSource } from "templates"
 import { cache, hash } from "utilities"
 

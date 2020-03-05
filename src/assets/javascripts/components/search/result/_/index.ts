@@ -30,18 +30,15 @@ import {
   switchMap
 } from "rxjs/operators"
 
+import { WorkerHandler, watchElementOffset } from "browser"
 import { SearchResult } from "integrations/search"
-import {
-  WorkerHandler,
-  watchElementOffset
-} from "observables"
 import {
   SearchMessage,
   isSearchResultMessage
 } from "workers"
 
 import { SearchQuery } from "../../query"
-import { paintSearchResult } from "../paint"
+import { applySearchResult } from "../react"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -83,12 +80,12 @@ export function mountSearchResult(
           filter(identity)
         )
 
-      /* Paint search results */
+      /* Apply search results */
       return rx$
         .pipe(
           filter(isSearchResultMessage),
           pluck("data"),
-          paintSearchResult(el, { query$, fetch$ })
+          applySearchResult(el, { query$, fetch$ })
         )
     })
   )

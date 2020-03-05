@@ -29,7 +29,7 @@ import {
   switchMap
 } from "rxjs/operators"
 
-import { getElement } from "observables"
+import { getElement } from "browser"
 
 /* ----------------------------------------------------------------------------
  * Types

@@ -23,10 +23,10 @@
 import { Observable, OperatorFunction, of, pipe } from "rxjs"
 import { distinctUntilChanged, map, switchMap } from "rxjs/operators"
 
-import { Viewport, watchViewportAt } from "observables"
+import { Viewport, watchViewportAt } from "browser"
 
 import { Header } from "../../header"
-import { paintTabs } from "../paint"
+import { applyTabs } from "../react"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -77,7 +77,7 @@ export function mountTabs(
               .pipe(
                 map(({ offset: { y } }) => ({ hidden: y >= 10 })),
                 distinctUntilChanged(),
-                paintTabs(el)
+                applyTabs(el)
               )
 
           /* [screen -]: Unmount tabs below screen breakpoint */

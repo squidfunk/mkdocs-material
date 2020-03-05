@@ -33,7 +33,7 @@ import {
   getElement,
   getElements,
   watchMedia
-} from "observables"
+} from "browser"
 
 /* ----------------------------------------------------------------------------
  * Helper types
