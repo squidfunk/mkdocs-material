@@ -61,10 +61,10 @@ font:
 icon:
 
   # Shown if no logo is set
-  logo: .icons/material/book-open-variant
+  logo: material/library
 
   # Repository icon
-  repo: .icons/fontawesome/git-alt
+  repo: fontawesome/brands/git-alt
 
 # Favicon to be rendered
 favicon: assets/images/favicon.png
