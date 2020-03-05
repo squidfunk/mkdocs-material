@@ -31,10 +31,10 @@
       aria-label="{{ config.site_name }}"
       class="md-nav__button md-logo"
     >
-      {% if config.theme.logo.icon %}
-        {% include ".icons/" ~ config.theme.logo.icon ~ ".svg" %}
-      {% else %}
+      {% if config.theme.logo %}
         <img src="{{ config.theme.logo | url }}" alt="logo" />
+      {% else %}
+        {% include ".icons/" ~ config.theme.icon.logo ~ ".svg" %}
       {% endif %}
     </a>
     {{ config.site_name }}
