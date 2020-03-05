@@ -152,8 +152,8 @@
     {% endif %}
 
     <!-- Custom stylesheets, might contain media query after URL -->
-    {% for file in config["extra_css"] %}
-      <link rel="stylesheet" href="{{ file | url }}" />
+    {% for path in config["extra_css"] %}
+      <link rel="stylesheet" href="{{ path | url }}" />
     {% endfor %}
 
     <!-- Analytics -->
