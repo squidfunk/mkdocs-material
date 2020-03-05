@@ -351,13 +351,13 @@
       {%- for key in [
         "clipboard.copy",
         "clipboard.copied",
-        "search.language",
-        "search.pipeline",
+        "search.config.lang",
+        "search.config.pipeline",
+        "search.config.separator",
         "search.result.placeholder",
         "search.result.none",
         "search.result.one",
-        "search.result.other",
-        "search.tokenizer"
+        "search.result.other"
       ] -%}
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
