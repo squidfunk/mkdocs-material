@@ -34,7 +34,6 @@
   "dependencies": {
     "clipboard": "^2.0.0",
     "escape-html": "^1.0.3",
-    "escape-string-regexp": "^2.0.0",
     "lunr": "^2.3.8",
     "lunr-languages": "^1.4.0",
     "ramda": "^0.26.1",
@@ -42,6 +41,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.12.0",
+    "@primer/octicons": "^9.5.0",
     "@types/clipboard": "^2.0.1",
     "@types/copy-webpack-plugin": "^5.0.0",
     "@types/escape-html": "0.0.20",
