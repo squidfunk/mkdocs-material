@@ -41,7 +41,6 @@
   box-shadow:
     0 0           px2rem(4px) rgba(0, 0, 0, 0),
     0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0);
-  backface-visibility: hidden;
   z-index: 2;
 
   // Always hide shadow, in case JavaScript is not available
@@ -156,6 +155,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    // Hack: reduce jitter
+    backface-visibility: hidden;
 
     // Page title
     & + & {

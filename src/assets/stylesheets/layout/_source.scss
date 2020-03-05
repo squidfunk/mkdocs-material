@@ -59,10 +59,9 @@
 // Source container
 .md-source {
   display: block;
-  padding-right: px2rem(12px);
   transition: opacity 250ms;
   font-size: px2rem(13px);
-  line-height: 1.2;
+  line-height: 1.25;
   white-space: nowrap;
   // Hack: reduce jitter
   backface-visibility: hidden;
@@ -115,7 +114,7 @@
   // Repository name
   &__repository {
     display: inline-block;
-    max-width: 100%;
+    max-width: calc(100% - #{px2rem(24px)});
     margin-left: px2rem(12px);
     font-weight: 700;
     text-overflow: ellipsis;

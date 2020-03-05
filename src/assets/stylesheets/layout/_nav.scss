@@ -205,6 +205,8 @@
           box-shadow:
             inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
           overflow-y: auto;
+          // Hack: reduce jitter
+          backface-visibility: hidden;
           scroll-snap-type: y mandatory;
 
           // Remove border for first list item
