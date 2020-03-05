@@ -319,7 +319,7 @@ export function initialize(config: unknown) {
         if (ev.target instanceof HTMLElement) {
           const el = ev.target.closest("a") // TODO: abstract as link click?
           if (el && isLocationInternal(el)) {
-            if (!isLocationAnchor(el))
+            if (!isLocationAnchor(el) && config.features.includes("instant"))
               ev.preventDefault()
             return of(el)
           }
