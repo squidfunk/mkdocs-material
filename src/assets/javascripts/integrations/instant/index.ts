@@ -152,7 +152,7 @@ export function setupInstantLoading(
 
   instant$.subscribe(({ url, offset }) => {
     if (url.hash && !offset) {
-      console.log("set hash!")
+      // console.log("set hash!")
       setLocationHash(url.hash) // must delay, if search is open!
     } else {
       setViewportOffset(offset || { y: 0 })
