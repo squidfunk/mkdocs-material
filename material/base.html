@@ -10,7 +10,6 @@
     {% block site_meta %}
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       {% if page and page.meta and page.meta.description %}
         <meta name="description" content="{{ page.meta.description }}">
       {% elif config.site_description %}
@@ -42,9 +41,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.5ac791a0.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.7668ff3e.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.f5f04e6f.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.823cd8cc.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -179,7 +178,7 @@
     {% endblock %}
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.dd2d8181.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.42e17809.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.79897253.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
