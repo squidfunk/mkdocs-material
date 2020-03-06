@@ -179,7 +179,7 @@
     {% endblock %}
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.dd2d8181.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.d76ca884.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.14729066.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -202,7 +202,7 @@
           url: {
             base: "{{ base_url }}",
             worker: {
-              search: "{{ 'assets/javascripts/worker/search.edc88caf.min.js' | url }}"
+              search: "{{ 'assets/javascripts/worker/search.542c1c70.min.js' | url }}"
             }
           },
           features: {{ config.theme.features | tojson }}

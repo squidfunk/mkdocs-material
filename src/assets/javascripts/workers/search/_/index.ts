@@ -20,15 +20,15 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, from } from "rxjs"
+import { Observable, Subject, asyncScheduler, from } from "rxjs"
 import { ajax } from "rxjs/ajax"
 import {
   map,
+  observeOn,
   pluck,
   shareReplay,
   switchMap,
   take,
-  tap,
   withLatestFrom
 } from "rxjs/operators"
 
@@ -151,11 +151,12 @@ export function setupSearchWorker(
 
   // /* Send index to worker */
   // index$
-    .pipe<SearchSetupMessage>(
-      map(data => ({
+    .pipe(
+      map((data): SearchSetupMessage => ({
         type: SearchMessageType.SETUP,
         data
-      }))
+      })),
+      observeOn(asyncScheduler) // make sure it runs on the next tick
     )
       .subscribe(tx$.next.bind(tx$))
 

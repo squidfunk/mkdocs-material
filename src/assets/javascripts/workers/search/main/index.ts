@@ -63,7 +63,7 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
 
   /* Load scripts synchronously */
   if (scripts.length)
-    self.importScripts(
+    importScripts(
       `${base}/min/lunr.stemmer.support.min.js`,
       ...scripts
     )
@@ -109,6 +109,6 @@ export function handler(message: SearchMessage): SearchMessage {
  * Worker
  * ------------------------------------------------------------------------- */
 
-self.addEventListener("message", ev => {
-  self.postMessage(handler(ev.data))
+addEventListener("message", ev => {
+  postMessage(handler(ev.data))
 })
