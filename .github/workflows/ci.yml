@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # Limit clone depth to speed up build
+      # Checkout source form GitHub
       - uses: actions/checkout@v2
 
       # Install Node runtime and dependencies
@@ -48,8 +48,10 @@ jobs:
       - if: steps.cache-node.outputs.cache-hit != 'true'
         run: npm install
 
-      # Run linter and build distribution files
+      # Run linter
       - run: npm run lint
+
+      # Build distribution files
       - run: npm run build
 
       # Check diff after build
@@ -61,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # Limit clone depth to speed up build
+      # Checkout source form GitHub
       - uses: actions/checkout@v2
 
       # Install Python runtime and dependencies
@@ -110,7 +112,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # Limit clone depth to speed up build
+      # Checkout source form GitHub
       - uses: actions/checkout@v2
 
       # Install Node runtime and dependencies
@@ -146,7 +148,7 @@ jobs:
       # Build Python package
       - run: python setup.py build sdist bdist_wheel --universal
 
-      # Push release to PyPI
+      # Push package to PyPI
       - env:
           PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
