@@ -30,11 +30,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
-      # Limit clone depth to speed up build
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 5
+      - uses: actions/checkout@v2
 
       # Install Node runtime and dependencies
       - uses: actions/setup-node@v1
@@ -69,11 +65,7 @@ jobs:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-
-      # Limit clone depth to speed up build
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 5
+      - uses: actions/checkout@v2
 
       # Install Python runtime and dependencies
       - uses: actions/setup-python@v1
@@ -118,11 +110,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-
-      # Limit clone depth to speed up build
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 5
+      - uses: actions/checkout@v2
 
       # Ensure latest build if repository is not up-to-date
       - run: rm -rf material
