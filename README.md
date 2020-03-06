@@ -17,6 +17,9 @@
 
 # Material for MkDocs
 
+> ⚠️ __Help test Material 5 Beta – the next big iteration.__ It greatly improves
+> the hackability of the theme and brings a lot of new features – see #1483.
+
 A Material Design theme for [MkDocs][1].
 
 [![Material for MkDocs](https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/docs/assets/images/material.png)][2]
