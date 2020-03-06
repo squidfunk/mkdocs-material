@@ -106,26 +106,26 @@
     &::before {
       display: inline;
       margin: 0 0.2em;
-      border-left: px2rem(1px) solid var(--md-default-fg-color--lighter);
       font-size: 1.25em;
-      content: "";
       vertical-align: px2rem(-5px);
+      border-left: px2rem(1px) solid var(--md-default-fg-color--lighter);
+      content: "";
     }
   }
 
   // Footnote back reference
   .footnote-backref {
     display: inline-block;
+    color: var(--md-default-fg-color--lighter);
+    // Hack: remove Unicode arrow for icon
+    font-size: 0;
+    vertical-align: text-bottom;
     transform: translateX(px2rem(5px));
+    opacity: 0;
     transition:
       transform 250ms 250ms,
       color     250ms,
       opacity   125ms 250ms;
-    color: var(--md-default-fg-color--lighter);
-    // Hack: remove Unicode arrow for icon
-    font-size: 0;
-    opacity: 0;
-    vertical-align: text-bottom;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {

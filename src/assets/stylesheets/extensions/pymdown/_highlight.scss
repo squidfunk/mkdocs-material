@@ -33,14 +33,14 @@
   // Inline line numbers
   [data-linenos] {
     &::before {
-      display: inline-block;
       position: sticky;
       left: px2rem(-12px);
+      display: inline-block;
       margin-right: px2rem(12px);
       margin-left: px2rem(-12px);
       padding-left: px2rem(12px);
-      border-right: px2rem(1px) solid var(--md-default-fg-color--lightest);
       color: var(--md-default-fg-color--lighter);
+      border-right: px2rem(1px) solid var(--md-default-fg-color--lightest);
       content: attr(data-linenos);
       user-select: none;
 

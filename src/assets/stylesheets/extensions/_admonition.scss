@@ -31,13 +31,13 @@
   .admonition {
     margin: 1.5625em 0;
     padding: 0 px2rem(12px);
+    overflow: auto;
+    font-size: ms(-1);
     border-left: px2rem(4px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
-    font-size: ms(-1);
     box-shadow:
       0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
       0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
-    overflow: auto;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -104,8 +104,8 @@
   .admonition-title {
     margin: 0 px2rem(-12px);
     padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
-    background-color: transparentize($clr-blue-a200, 0.9);
     font-weight: 700;
+    background-color: transparentize($clr-blue-a200, 0.9);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {

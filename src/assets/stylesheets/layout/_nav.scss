@@ -33,9 +33,9 @@
   &__title {
     display: block;
     padding: 0 px2rem(12px);
+    overflow: hidden;
     font-weight: 700;
     text-overflow: ellipsis;
-    overflow: hidden;
 
     // Hide buttons by default
     .md-nav__button {
@@ -103,10 +103,10 @@
   &__link {
     display: block;
     margin-top: 0.625em;
-    transition: color 125ms;
+    overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
-    overflow: hidden;
+    transition: color 125ms;
     scroll-snap-align: start;
 
     // Hide link to table of contents by default - this will only match the
@@ -154,14 +154,14 @@
     // Stretch primary navigation to drawer
     &--primary,
     &--primary .md-nav {
-      display: flex;
       position: absolute;
       top: 0;
       right: 0;
       left: 0;
+      z-index: 1;
+      display: flex;
       flex-direction: column;
       height: 100%;
-      z-index: 1;
     }
 
     // Adjust styles for primary navigation
@@ -179,19 +179,19 @@
         position: relative;
         height: px2rem(112px);
         padding: px2rem(60px) px2rem(16px) px2rem(4px);
-        background-color: var(--md-default-fg-color--lightest);
         color: var(--md-default-fg-color--light);
         font-weight: 400;
         line-height: px2rem(48px);
         white-space: nowrap;
+        background-color: var(--md-default-fg-color--lightest);
         cursor: pointer;
 
         // Icon
         .md-nav__icon {
-          display: block;
           position: absolute;
           top: px2rem(8px);
           left: px2rem(8px);
+          display: block;
           width: px2rem(24px);
           height: px2rem(24px);
           margin: px2rem(4px);
@@ -205,10 +205,10 @@
 
         // Main lists
         ~ .md-nav__list {
+          overflow-y: auto;
           background-color: var(--md-default-bg-color);
           box-shadow:
             inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
-          overflow-y: auto;
           // Hack: reduce jitter
           backface-visibility: hidden;
           scroll-snap-type: y mandatory;
@@ -222,15 +222,15 @@
         // Site title in main navigation
         &[for="__drawer"] {
           position: relative;
-          background-color: var(--md-primary-fg-color);
           color: var(--md-primary-bg-color);
+          background-color: var(--md-primary-fg-color);
 
           // Site logo
           .md-nav__button {
-            display: block;
             position: absolute;
             top: px2rem(4px);
             left: px2rem(4px);
+            display: block;
             margin: px2rem(4px);
             padding: px2rem(8px);
             font-size: px2rem(48px);
@@ -380,10 +380,10 @@
     .md-nav__toggle ~ & {
       display: flex;
       transform: translateX(100%);
+      opacity: 0;
       transition:
         transform 250ms cubic-bezier(0.8, 0, 0.6, 1),
         opacity   125ms 50ms;
-      opacity: 0;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -394,10 +394,10 @@
     // Expand nested navigation, if toggle is checked
     .md-nav__toggle:checked ~ & {
       transform: translateX(0);
+      opacity: 1;
       transition:
         transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
         opacity   125ms 125ms;
-      opacity: 1;
     }
   }
 
@@ -431,8 +431,8 @@
     &__source {
       display: block;
       padding: 0 px2rem(4px);
-      background-color: var(--md-primary-fg-color--dark);
       color: var(--md-primary-bg-color);
+      background-color: var(--md-primary-fg-color--dark);
     }
   }
 
@@ -489,8 +489,8 @@
 
     // Icon
     &__icon {
-      height: px2rem(18px);
       float: right;
+      height: px2rem(18px);
       transition: transform 250ms;
 
       // Inline icon and adjust to match font size

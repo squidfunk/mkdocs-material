@@ -29,15 +29,15 @@
   position: absolute;
   top: px2rem(8px);
   right: px2rem(8px);
+  z-index: 1;
   width: px2rem(24px);
   height: px2rem(24px);
-  transition: color 250ms;
-  border-radius: px2rem(2px);
   color: var(--md-default-fg-color--lightest);
-  cursor: pointer;
-  z-index: 1;
+  border-radius: px2rem(2px);
   // Hack: reduce jitter
   backface-visibility: hidden;
+  cursor: pointer;
+  transition: color 250ms;
 
   // Hide for print
   @media print {

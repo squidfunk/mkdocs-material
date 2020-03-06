@@ -59,12 +59,12 @@
 // Source container
 .md-source {
   display: block;
-  transition: opacity 250ms;
   font-size: px2rem(13px);
   line-height: 1.2;
   white-space: nowrap;
   // Hack: reduce jitter
   backface-visibility: hidden;
+  transition: opacity 250ms;
 
   // Adjust for right-to-left languages
   [dir="rtl"] & {
@@ -116,9 +116,9 @@
     display: inline-block;
     max-width: calc(100% - #{px2rem(24px)});
     margin-left: px2rem(12px);
+    overflow: hidden;
     font-weight: 700;
     text-overflow: ellipsis;
-    overflow: hidden;
     vertical-align: middle;
   }
 
@@ -126,11 +126,11 @@
   &__facts {
     margin: 0;
     padding: 0;
-    font-size: px2rem(11px);
+    overflow: hidden;
     font-weight: 700;
+    font-size: px2rem(11px);
     list-style-type: none;
     opacity: 0.75;
-    overflow: hidden;
 
     // Show after the data was loaded
     [data-md-state="done"] & {

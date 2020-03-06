@@ -26,8 +26,8 @@
 
 // Application footer
 .md-footer {
-  background-color: var(--md-default-fg-color);
   color: var(--md-default-bg-color);
+  background-color: var(--md-default-fg-color);
 
   // Hide for print
   @media print {
@@ -64,8 +64,8 @@
 
     // Link to previous page
     &--prev {
-      width: 25%;
       float: left;
+      width: 25%;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -89,8 +89,8 @@
 
     // Link to next page
     &--next {
-      width: 75%;
       float: right;
+      width: 75%;
       text-align: right;
 
       // Adjust for right-to-left languages
@@ -165,8 +165,8 @@
 
   // [tablet portrait +]: Show next to social media links
   @include break-from-device(tablet portrait) {
-    max-width: 75%;
     float: left;
+    max-width: 75%;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -187,8 +187,8 @@
 
   // [tablet portrait +]: Show next to copyright information
   @include break-from-device(tablet portrait) {
-    padding: px2rem(12px) 0;
     float: right;
+    padding: px2rem(12px) 0;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -201,8 +201,8 @@
     display: inline-block;
     width: px2rem(32px);
     height: px2rem(32px);
-    transition: color 250ms;
     text-align: center;
+    transition: color 250ms;
 
     // Adjust line-height to match height for correct alignment
     &::before {

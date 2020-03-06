@@ -30,34 +30,34 @@
   top: 0;
   right: 0;
   left: 0;
+  z-index: 2;
   height: px2rem(48px);
-  transition:
-    background-color 250ms,
-    color 250ms;
-  background-color: var(--md-primary-fg-color);
   color: var(--md-primary-bg-color);
+  background-color: var(--md-primary-fg-color);
   // Hack: reduce jitter by adding a transparent box shadow of the same size
   // so the size of the layer doesn't change during animation
   box-shadow:
     0 0           px2rem(4px) rgba(0, 0, 0, 0),
     0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0);
-  z-index: 2;
+  transition:
+    background-color 250ms,
+    color 250ms;
 
   // Always hide shadow, in case JavaScript is not available
   .no-js & {
-    transition: none;
     box-shadow: none;
+    transition: none;
   }
 
   // Show and animate shadow
   &[data-md-state="shadow"] {
+    box-shadow:
+      0 0           px2rem(4px) rgba(0, 0, 0, 0.1),
+      0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0.2);
     transition:
       background-color 250ms,
       color            250ms,
       box-shadow       250ms;
-    box-shadow:
-      0 0           px2rem(4px) rgba(0, 0, 0, 0.1),
-      0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0.2);
   }
 
   // Hide for print
@@ -74,11 +74,11 @@
   // Icon buttons
   &__button {
     position: relative;
+    z-index: 1;
     margin: px2rem(4px);
     padding: px2rem(8px);
-    transition: opacity 250ms;
     cursor: pointer;
-    z-index: 1;
+    transition: opacity 250ms;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -145,27 +145,27 @@
 
   // Header topics
   &__topic {
-    display: block;
     position: absolute;
+    display: block;
     width: 100%;
     padding: 0 px2rem(20px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    // Hack: reduce jitter
+    backface-visibility: hidden;
     transition:
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   150ms;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    // Hack: reduce jitter
-    backface-visibility: hidden;
 
     // Page title
     & + & {
+      z-index: -1;
       transform: translateX(px2rem(25px));
+      opacity: 0;
       transition:
         transform 400ms cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   150ms;
-      opacity: 0;
-      z-index: -1;
       pointer-events: none;
 
       // Adjust for right-to-left languages
@@ -193,12 +193,12 @@
 
     // Show page title
     &[data-md-state="active"] .md-header-nav__topic {
+      z-index: -1;
       transform: translateX(px2rem(-25px));
+      opacity: 0;
       transition:
         transform 400ms cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   150ms;
-      opacity: 0;
-      z-index: -1;
       pointer-events: none;
 
       // Adjust for right-to-left languages
@@ -208,12 +208,12 @@
 
       // Page title
       & + .md-header-nav__topic {
+        z-index: 0;
         transform: translateX(0);
+        opacity: 1;
         transition:
           transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
           opacity   150ms;
-        opacity: 1;
-        z-index: 0;
         pointer-events: initial;
       }
     }

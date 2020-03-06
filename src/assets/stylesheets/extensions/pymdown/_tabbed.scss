@@ -43,8 +43,8 @@
 
   // Tabbed code block container
   .tabbed-set {
-    display: flex;
     position: relative;
+    display: flex;
     flex-wrap: wrap;
     margin: 1em 0;
     border: px2rem(1px) solid var(--md-default-fg-color--lightest);
@@ -56,8 +56,8 @@
 
       // Active tab label
       &:checked + label {
-        border-color: var(--md-accent-fg-color);
         color: var(--md-accent-fg-color);
+        border-color: var(--md-accent-fg-color);
 
         // Show code tab content
         & + .tabbed-content {
@@ -96,14 +96,14 @@
       width: auto;
       padding: px2rem(12px);
       padding-bottom: px2rem(10px);
+      color: var(--md-default-fg-color--light);
+      font-weight: 700;
+      font-size: ms(-1);
+      border-bottom: px2rem(2px) solid transparent;
+      cursor: pointer;
       transition:
         color 125ms,
         border 250ms;
-      border-bottom: px2rem(2px) solid transparent;
-      color: var(--md-default-fg-color--light);
-      font-size: ms(-1);
-      font-weight: 700;
-      cursor: pointer;
 
       // Hovered tab label
       html &:hover {

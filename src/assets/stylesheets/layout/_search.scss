@@ -48,8 +48,8 @@ $md-toggle__search--checked:
 
   // Search modal overlay
   &__overlay {
-    opacity: 0;
     z-index: 1;
+    opacity: 0;
 
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
@@ -58,13 +58,13 @@ $md-toggle__search--checked:
       left: px2rem(-44px);
       width: px2rem(40px);
       height: px2rem(40px);
+      overflow: hidden;
+      background-color: var(--md-default-bg-color);
+      border-radius: px2rem(20px);
       transform-origin: center;
       transition:
         transform 300ms 100ms,
         opacity   200ms 200ms;
-      border-radius: px2rem(20px);
-      background-color: var(--md-default-bg-color);
-      overflow: hidden;
       pointer-events: none;
 
       // Adjust for right-to-left languages
@@ -75,10 +75,10 @@ $md-toggle__search--checked:
 
       // Expanded overlay
       #{$md-toggle__search--checked} & {
+        opacity: 1;
         transition:
           transform 400ms,
           opacity   100ms;
-        opacity: 1;
       }
     }
 
@@ -108,12 +108,12 @@ $md-toggle__search--checked:
       left: 0;
       width: 0;
       height: 0;
+      background-color: var(--md-default-fg-color--light);
+      cursor: pointer;
       transition:
         width     0ms 250ms,
         height    0ms 250ms,
         opacity 250ms;
-      background-color: var(--md-default-fg-color--light);
-      cursor: pointer;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -125,11 +125,11 @@ $md-toggle__search--checked:
       #{$md-toggle__search--checked} & {
         width: 100%;
         height: 100%;
+        opacity: 1;
         transition:
           width     0ms,
           height    0ms,
           opacity 250ms;
-        opacity: 1;
       }
     }
   }
@@ -144,27 +144,27 @@ $md-toggle__search--checked:
       position: fixed;
       top: 0;
       left: 100%;
+      z-index: 2;
       width: 100%;
       height: 100%;
       transform: translateX(5%);
+      opacity: 0;
       transition:
         right       0ms 300ms,
         left        0ms 300ms,
         transform 150ms 150ms cubic-bezier(0.4, 0, 0.2, 1),
         opacity   150ms 150ms;
-      opacity: 0;
-      z-index: 2;
 
       // Active search modal
       #{$md-toggle__search--checked} & {
         left: 0;
         transform: translateX(0);
+        opacity: 1;
         transition:
           right       0ms   0ms,
           left        0ms   0ms,
           transform 150ms 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
           opacity   150ms 150ms;
-        opacity: 1;
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
@@ -184,9 +184,9 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       position: relative;
+      float: right;
       width: px2rem(234px);
       padding: px2rem(2px) 0;
-      float: right;
       transition: width 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
 
       // Adjust for right-to-left languages
@@ -223,9 +223,9 @@ $md-toggle__search--checked:
   // Search input
   &__input {
     position: relative;
+    z-index: 2;
     padding: 0 px2rem(44px) 0 px2rem(72px);
     text-overflow: ellipsis;
-    z-index: 2;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -260,13 +260,13 @@ $md-toggle__search--checked:
       width: 100%;
       height: px2rem(36px);
       padding-left: px2rem(44px);
+      color: inherit;
+      font-size: ms(0);
+      background-color: var(--md-default-fg-color--lighter);
+      border-radius: px2rem(2px);
       transition:
         background-color 250ms,
         color            250ms;
-      border-radius: px2rem(2px);
-      background-color: var(--md-default-fg-color--lighter);
-      color: inherit;
-      font-size: ms(0);
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -290,10 +290,10 @@ $md-toggle__search--checked:
 
       // Set light background on active search field
       #{$md-toggle__search--checked} & {
-        border-radius: px2rem(2px) px2rem(2px) 0 0;
-        background-color: var(--md-default-bg-color);
         color: var(--md-default-fg-color);
         text-overflow: clip;
+        background-color: var(--md-default-bg-color);
+        border-radius: px2rem(2px) px2rem(2px) 0 0;
 
         // Icon and placeholder color in active state
         + .md-search__icon,
@@ -307,13 +307,13 @@ $md-toggle__search--checked:
   // Icon
   &__icon {
     position: absolute;
+    z-index: 2;
     width: px2rem(24px);
     height: px2rem(24px);
+    cursor: pointer;
     transition:
       color   250ms,
       opacity 250ms;
-    cursor: pointer;
-    z-index: 2;
 
     // Hovered icon
     &:hover {
@@ -368,10 +368,10 @@ $md-toggle__search--checked:
       top: px2rem(6px);
       right: px2rem(10px);
       transform: scale(0.75);
+      opacity: 0;
       transition:
         transform 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
         opacity   150ms;
-      opacity: 0;
       pointer-events: none;
 
       // Adjust for right-to-left languages
@@ -409,10 +409,10 @@ $md-toggle__search--checked:
   // Search output container
   &__output {
     position: absolute;
-    width: 100%;
-    border-radius: 0 0 px2rem(2px) px2rem(2px);
-    overflow: hidden;
     z-index: 1;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0 0 px2rem(2px) px2rem(2px);
 
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
@@ -423,8 +423,8 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       top: px2rem(38px);
-      transition: opacity 400ms;
       opacity: 0;
+      transition: opacity 400ms;
 
       // Show search output in active state
       #{$md-toggle__search--checked} & {
@@ -438,9 +438,9 @@ $md-toggle__search--checked:
   // Wrapper for scrolling on overflow
   &__scrollwrap {
     height: 100%;
+    overflow-y: auto;
     background-color: var(--md-default-bg-color);
     box-shadow: inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
-    overflow-y: auto;
     // Hack: reduce jitter
     backface-visibility: hidden;
     scroll-snap-type: y mandatory;
@@ -497,10 +497,10 @@ $md-toggle__search--checked:
   // Search metadata
   &__meta {
     padding: 0 px2rem(16px);
-    background-color: var(--md-default-fg-color--lightest);
     color: var(--md-default-fg-color--light);
     font-size: ms(-1);
     line-height: px2rem(36px);
+    background-color: var(--md-default-fg-color--lightest);
     scroll-snap-align: start;
 
     // [tablet landscape +]: Increase left indent
@@ -519,8 +519,8 @@ $md-toggle__search--checked:
   &__list {
     margin: 0;
     padding: 0;
-    border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
     list-style: none;
+    border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
   }
 
   // List item
@@ -531,9 +531,9 @@ $md-toggle__search--checked:
   // Link inside item
   &__link {
     display: block;
-    transition: background 250ms;
-    outline: 0;
     overflow: hidden;
+    outline: 0;
+    transition: background 250ms;
     scroll-snap-align: start;
 
     // Focused or hovered link
@@ -576,8 +576,8 @@ $md-toggle__search--checked:
       // Title
       .md-search-result__title {
         margin: px2rem(11px) 0;
-        font-size: ms(0);
         font-weight: 400;
+        font-size: ms(0);
         line-height: 1.4;
       }
     }
@@ -611,8 +611,8 @@ $md-toggle__search--checked:
   // Title
   &__title {
     margin: 0.5em 0;
-    font-size: ms(-1);
     font-weight: 700;
+    font-size: ms(-1);
     line-height: 1.4;
   }
 
@@ -623,11 +623,11 @@ $md-toggle__search--checked:
     display: -webkit-box;
     max-height: px2rem(33px);
     margin: 0.5em 0;
+    overflow: hidden;
     color: var(--md-default-fg-color--light);
     font-size: ms(-1);
     line-height: 1.4;
     text-overflow: ellipsis;
-    overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 
@@ -648,8 +648,8 @@ $md-toggle__search--checked:
 
   // Search term highlighting
   em {
-    font-style: normal;
     font-weight: 700;
+    font-style: normal;
     text-decoration: underline;
   }
 }

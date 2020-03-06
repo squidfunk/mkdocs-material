@@ -85,14 +85,14 @@
 
   // Application header (stays always on top)
   .md-header {
-    background-color: var(--md-default-bg-color);
     color: var(--md-default-fg-color);
+    background-color: var(--md-default-bg-color);
   }
 
   // Hero teaser
   .md-hero {
-    background-color: var(--md-default-bg-color);
     color: var(--md-default-fg-color);
+    background-color: var(--md-default-bg-color);
 
     // Add a border if there are no tabs
     &--expand {
@@ -105,8 +105,8 @@
 
     // Repository containing source
     .md-nav__source {
-      background-color: var(--md-default-fg-color--lightest);
       color: var(--md-default-fg-color);
+      background-color: var(--md-default-fg-color--lightest);
     }
   }
 
@@ -134,8 +134,8 @@
 
     // Site title in main navigation
     html & .md-nav--primary .md-nav__title[for="__drawer"] {
-      background-color: var(--md-default-bg-color);
       color: var(--md-default-fg-color);
+      background-color: var(--md-default-bg-color);
     }
 
     // Hero teaser
@@ -149,9 +149,9 @@
 
     // Tabs with outline
     .md-tabs {
-      border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
-      background-color: var(--md-default-bg-color);
       color: var(--md-default-fg-color);
+      background-color: var(--md-default-bg-color);
+      border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
     }
   }
 }

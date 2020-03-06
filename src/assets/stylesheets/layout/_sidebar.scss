@@ -58,14 +58,14 @@ $md-toggle__drawer--checked:
       position: fixed;
       top: 0;
       left: px2rem(-242px);
+      z-index: 3;
       width: px2rem(242px);
       height: 100%;
+      background-color: var(--md-default-bg-color);
       transform: translateX(0);
       transition:
         transform  250ms cubic-bezier(0.4, 0, 0.2, 1),
         box-shadow 250ms;
-      background-color: var(--md-default-bg-color);
-      z-index: 3;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {

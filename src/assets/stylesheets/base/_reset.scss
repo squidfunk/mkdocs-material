@@ -50,8 +50,8 @@ body {
 
 // Reset horizontal rules in FF
 hr {
-  overflow: visible;
   box-sizing: content-box;
+  overflow: visible;
 }
 
 // Remove gaps in underlined links in iOS >= 8 and Safari >= 8
@@ -119,9 +119,9 @@ th {
 button {
   margin: 0;
   padding: 0;
-  border: 0;
-  background: transparent;
   font-size: inherit;
+  background: transparent;
+  border: 0;
 }
 
 // Reset (native) input styles

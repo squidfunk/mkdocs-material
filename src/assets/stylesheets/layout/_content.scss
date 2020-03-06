@@ -75,16 +75,16 @@
 
   // Button next to the title
   &__button {
+    float: right;
     margin: px2rem(8px) 0;
     margin-left: px2rem(8px);
     padding: 0;
-    float: right;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
+      float: left;
       margin-right: px2rem(8px);
       margin-left: initial;
-      float: left;
 
       // Flip icon vertically
       svg {

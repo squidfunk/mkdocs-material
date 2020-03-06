@@ -26,11 +26,11 @@
 
 // Hero teaser
 .md-hero {
-  transition: background 250ms;
-  background-color: var(--md-primary-fg-color);
+  overflow: hidden;
   color: var(--md-primary-bg-color);
   font-size: ms(1);
-  overflow: hidden;
+  background-color: var(--md-primary-fg-color);
+  transition: background 250ms;
 
   // Inner wrapper
   &__inner {
@@ -49,12 +49,12 @@
 
     // Fade-out tabs background upon scrolling
     [data-md-state="hidden"] & {
-      pointer-events: none;
       transform: translateY(px2rem(12.5px));
+      opacity: 0;
       transition:
         transform   0ms 400ms,
         opacity   100ms   0ms;
-      opacity: 0;
+      pointer-events: none;
     }
 
     // Adjust bottom spacing if there are no tabs

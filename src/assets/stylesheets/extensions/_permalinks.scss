@@ -32,15 +32,15 @@
     display: inline-block;
     margin-left: px2rem(10px);
     transform: translate(0, px2rem(5px));
+    // Hack: If we don't set visibility hidden, the text content of the node
+    // will include the headerlink character, which is why Google indexes them.
+    visibility: hidden;
+    opacity: 0;
     transition:
       transform  250ms 250ms,
       color      250ms,
       opacity    125ms 250ms,
       visibility   0ms 500ms;
-    opacity: 0;
-    // Hack: If we don't set visibility hidden, the text content of the node
-    // will include the headerlink character, which is why Google indexes them.
-    visibility: hidden;
 
     // Adjust for RTL languages
     [dir="rtl"] & {
@@ -64,13 +64,13 @@
   :target .headerlink,
   .headerlink:focus {
     transform: translate(0, 0);
+    visibility: visible;
+    opacity: 1;
     transition:
       transform  250ms 250ms,
       color      250ms,
       opacity    125ms 250ms,
       visibility   0ms;
-    opacity: 1;
-    visibility: visible;
   }
 
   // Active or targeted permalink

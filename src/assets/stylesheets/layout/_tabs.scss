@@ -27,10 +27,10 @@
 // Tabs with outline
 .md-tabs {
   width: 100%;
-  transition: background 250ms;
-  background-color: var(--md-primary-fg-color);
-  color: var(--md-primary-bg-color);
   overflow: auto;
+  color: var(--md-primary-bg-color);
+  background-color: var(--md-primary-fg-color);
+  transition: background 250ms;
 
   // Omit transitions, in case JavaScript is not available
   .no-js & {
@@ -52,8 +52,8 @@
     margin: 0;
     margin-left: px2rem(4px);
     padding: 0;
-    list-style: none;
     white-space: nowrap;
+    list-style: none;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -75,11 +75,11 @@
   &__link {
     display: block;
     margin-top: px2rem(16px);
+    font-size: px2rem(14px);
+    opacity: 0.7;
     transition:
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   250ms;
-    font-size: px2rem(14px);
-    opacity: 0.7;
 
     // Omit transitions, in case JavaScript is not available
     .no-js & {
@@ -109,11 +109,11 @@
     // while scrolling down, while scrolling up seems to be okay
     .md-tabs__link {
       transform: translateY(50%);
+      opacity: 0;
       transition:
         color     250ms,
         transform   0ms 400ms,
         opacity   100ms;
-      opacity: 0;
     }
   }
 
