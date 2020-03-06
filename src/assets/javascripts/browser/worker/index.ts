@@ -88,11 +88,11 @@ export function watchWorker<T extends WorkerMessage>(
 ): Observable<T> {
 
   /* Intercept messages from worker-like objects */
-  const rx$ = fromEventPattern<Event>(next =>
+  const rx$ = fromEventPattern<MessageEvent>(next =>
     worker.addEventListener("message", next)
   )
     .pipe(
-      pluck<Event, T>("data")
+      pluck<MessageEvent, T>("data")
     )
 
   /* Send and receive messages, return hot observable */

@@ -33,10 +33,11 @@ import {
   map,
   observeOn,
   pluck,
+  shareReplay,
   tap
 } from "rxjs/operators"
 
-import { Viewport } from "browser"
+import { Viewport, watchElementSize } from "browser"
 
 import { Header } from "../../header"
 import { Main } from "../_"
@@ -83,14 +84,23 @@ export function watchMain(
       pluck("height")
     )
 
-  /* Compute the main area's visible height */
-  const height$ = combineLatest([adjust$, viewport$])
+  /* Compute the main area's top and bottom markers */
+  const marker$ = watchElementSize(el)
     .pipe(
-      map(([adjust, { offset: { y }, size: { height } }]) => {
-        const top    = el.offsetTop
-        const bottom = el.offsetHeight + top
+      map(({ height }) => [
+        el.offsetTop,
+        el.offsetTop + height
+      ]),
+      distinctUntilChanged(),
+      shareReplay(1)
+    )
+
+  /* Compute the main area's visible height */
+  const height$ = combineLatest([adjust$, marker$, viewport$])
+    .pipe(
+      map(([header, [top, bottom], { offset: { y }, size: { height } }]) => {
         return height
-          - Math.max(0, top    - y,  adjust)
+          - Math.max(0, top    - y,  header)
           - Math.max(0, height + y - bottom)
       }),
       map(height => Math.max(0, height)),
@@ -98,17 +108,17 @@ export function watchMain(
     )
 
   /* Compute whether the viewport offset is past the main area's top */
-  const active$ = combineLatest([adjust$, viewport$])
+  const active$ = combineLatest([adjust$, marker$, viewport$])
     .pipe(
-      map(([adjust, { offset: { y } }]) => y >= el.offsetTop - adjust),
+      map(([header, [top], { offset: { y } }]) => y >= top - header),
       distinctUntilChanged()
     )
 
   /* Combine into a single observable */
-  return combineLatest([adjust$, height$, active$])
+  return combineLatest([adjust$, marker$, height$, active$])
     .pipe(
-      map(([adjust, height, active]) => ({
-        offset: el.offsetTop - adjust,
+      map(([header, [top], height, active]) => ({
+        offset: top - header,
         height,
         active
       }))
