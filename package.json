@@ -48,7 +48,6 @@
     "@types/event-hooks-webpack-plugin": "^2.0.0",
     "@types/html-minifier": "^3.5.3",
     "@types/lunr": "^2.3.2",
-    "@types/lz-string": "^1.3.33",
     "@types/node": "^12.12.22",
     "@types/ramda": "^0.26.38",
     "@types/webpack": "^4.41.0",
