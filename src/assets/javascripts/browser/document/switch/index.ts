@@ -25,7 +25,7 @@ import { ajax } from "rxjs/ajax"
 import {
   catchError,
   distinctUntilKeyChanged,
-  pluck,
+  map,
   share,
   skip,
   switchMap
@@ -56,7 +56,10 @@ interface WatchOptions {
  * to the same page, the request is effectively ignored (i.e. when only the
  * fragment identifier changes).
  *
- * In case the request fails, the location change is dispatched regularly.
+ * Theoretically, we could use `responseType: "document"`, but since all MkDocs
+ * links are relative, we need to make sure that the current location matches
+ * the document we just loaded. Otherwise any relative links in the document
+ * may use the old location.
  *
  * @param options - Options
  *
@@ -65,6 +68,7 @@ interface WatchOptions {
 export function watchDocumentSwitch(
   { location$ }: WatchOptions
 ): Observable<Document> {
+  const dom = new DOMParser()
   return location$
     .pipe(
       distinctUntilKeyChanged("pathname"),
@@ -73,11 +77,14 @@ export function watchDocumentSwitch(
       /* Fetch document */
       switchMap(url => ajax({
         url: url.href,
-        responseType: "document",
+        responseType: "text",
         withCredentials: true
       })
-        .pipe<Document, Document>(
-          pluck("response"),
+        .pipe(
+          map(({ response }): Document => {
+            history.pushState({}, "", url.toString())                           // TODO: abstract into function
+            return dom.parseFromString(response, "text/html")
+          }),
           catchError(() => {
             setLocation(url)
             return NEVER

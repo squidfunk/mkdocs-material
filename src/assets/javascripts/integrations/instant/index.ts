@@ -113,11 +113,6 @@ export function setupInstantLoading(
     )
       .subscribe(location$)
 
-  /* History: dispatch internal link */
-  push$.subscribe(({ url }) => {
-    history.pushState({}, "", url.toString())
-  })
-
   /* History: debounce update of viewport offset */
   viewport$
     .pipe(
