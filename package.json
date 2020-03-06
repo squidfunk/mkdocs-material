@@ -76,6 +76,7 @@
     "stylelint": "^11.1.1",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^19.0.0",
+    "stylelint-order": "^4.0.0",
     "stylelint-scss": "^3.13.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^7.0.1",
