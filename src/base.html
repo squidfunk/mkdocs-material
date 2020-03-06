@@ -381,7 +381,7 @@
             }
           },
           features: {{ config.theme.features | tojson }}
-        }, __config))
+        }, typeof __config !== "undefined" ? __config : {}))
       </script>
 
       <!-- Custom JavaScript -->

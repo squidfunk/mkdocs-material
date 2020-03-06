@@ -30,7 +30,7 @@
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0b3">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0b3-2">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -42,7 +42,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.14bb5ffa.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.5ac791a0.min.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.f5f04e6f.min.css' | url }}">
       {% endif %}
@@ -78,7 +78,7 @@
     {% endblock %}
     {% block extrahead %}{% endblock %}
   </head>
-  {% set direction = config.theme.direction | default(lang.t('direction')) %}
+  {% set direction = config.theme.direction or lang.t('direction') %}
   {% if palette.primary or palette.accent %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
     {% set accent  = palette.accent  | replace(" ", "-") | lower %}
@@ -178,8 +178,8 @@
       <script>var __config={}</script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.31a2e7b9.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.7fa1da95.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.dd2d8181.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.d76ca884.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -206,7 +206,7 @@
             }
           },
           features: {{ config.theme.features | tojson }}
-        }, __config))
+        }, typeof __config !== "undefined" ? __config : {}))
       </script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
