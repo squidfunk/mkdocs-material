@@ -24,6 +24,13 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-footnotes-icon: url("{{ keyboard-return }}");
+}
+
+// ----------------------------------------------------------------------------
+
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
@@ -138,7 +145,7 @@
       width: px2rem(16px);
       height: px2rem(16px);
       background-color: currentColor;
-      mask-image: url("{{ keyboard-return }}");
+      mask-image: var(--md-footnotes-icon);
       content: "";
 
       // Adjust for right-to-left languages

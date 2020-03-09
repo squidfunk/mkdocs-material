@@ -24,6 +24,13 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-details-icon: url("{{ chevron-down }}");
+}
+
+// ----------------------------------------------------------------------------
+
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
@@ -82,7 +89,7 @@
       width: px2rem(20px);
       height: px2rem(20px);
       background-color: var(--md-default-fg-color--lighter);
-      mask-image: url("{{ chevron-down }}");
+      mask-image: var(--md-details-icon);
       content: "";
 
       // Adjust for right-to-left languages

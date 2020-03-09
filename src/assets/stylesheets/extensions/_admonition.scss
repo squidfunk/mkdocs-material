@@ -24,6 +24,24 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-admonition-icon--note: url("{{ pencil }}");
+  --md-admonition-icon--abstract: url("{{ text-subject }}");
+  --md-admonition-icon--info: url("{{ information }}");
+  --md-admonition-icon--tip: url("{{ fire }}");
+  --md-admonition-icon--success: url("{{ check-circle }}");
+  --md-admonition-icon--question: url("{{ help-circle }}");
+  --md-admonition-icon--warning: url("{{ alert }}");
+  --md-admonition-icon--failure: url("{{ close-circle }}");
+  --md-admonition-icon--danger: url("{{ flash-circle }}");
+  --md-admonition-icon--bug: url("{{ bug }}");
+  --md-admonition-icon--example: url("{{ format-list-numbered }}");
+  --md-admonition-icon--quote: url("{{ format-quote-close }}");
+}
+
+// ----------------------------------------------------------------------------
+
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
@@ -56,25 +74,23 @@
     }
 
     // Build representational classes
-    @each $names, $appearance in (
-      abstract summary tldr: $clr-light-blue-a400 "text-subject",
-      info todo: $clr-cyan-a700 "information",
-      tip hint important: $clr-teal-a700 "fire",
-      success check done: $clr-green-a700 "check-circle",
-      question help faq: $clr-light-green-a700 "help-circle",
-      warning caution attention: $clr-orange-a400 "alert",
-      failure fail missing: $clr-red-a200 "close-circle",
-      danger error: $clr-red-a400 "flash-circle",
-      bug: $clr-pink-a400 "bug",
-      example: $clr-deep-purple-a400 "format-list-numbered",
-      quote cite: $clr-grey "format-quote-close"
+    @each $names, $tint in (
+      abstract summary tldr: $clr-light-blue-a400,
+      info todo: $clr-cyan-a700,
+      tip hint important: $clr-teal-a700,
+      success check done: $clr-green-a700,
+      question help faq: $clr-light-green-a700,
+      warning caution attention: $clr-orange-a400,
+      failure fail missing: $clr-red-a200,
+      danger error: $clr-red-a400,
+      bug: $clr-pink-a400,
+      example: $clr-deep-purple-a400,
+      quote cite: $clr-grey
     ) {
-      $tint: nth($appearance, 1);
-      $icon: nth($appearance, 2);
+      $type: #{nth($names, 1)};
 
       // Define base class
-      &%#{nth($names, 1)},
-      &.#{nth($names, 1)} {
+      &.#{$type} {
         border-left-color: $tint;
 
         // Title
@@ -84,7 +100,7 @@
           // Icon
           &::before {
             background-color: $tint;
-            mask-image: url("{{ #{$icon} }}");
+            mask-image: var(--md-admonition-icon--#{$type});
           }
         }
       }
@@ -93,7 +109,7 @@
       @if length($names) > 1 {
         @for $n from 2 through length($names) {
           &.#{nth($names, $n)} {
-            @extend %#{nth($names, 1)};
+            @extend .#{nth($names, 1)};
           }
         }
       }
@@ -124,7 +140,7 @@
       height: px2rem(20px);
       margin-left: px2rem(-28px);
       background-color: $clr-blue-a200;
-      mask-image: url("{{ pencil }}");
+      mask-image: var(--md-admonition-icon--note);
       content: "";
 
       // Adjust for right-to-left languages
