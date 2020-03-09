@@ -62,7 +62,7 @@ jobs:
 
   # Build and deploy documentation site
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master' && github.repository == 'squidfunk/mkdocs-material'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
