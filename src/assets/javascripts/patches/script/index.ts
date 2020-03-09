@@ -64,8 +64,8 @@ export function patchScripts(
     for (const el of els) {
       if (el.src || /(^|\/javascript)$/i.test(el.type)) {
         const script = document.createElement("script")
-        const key = el.src ? "src" : "innerText"
-        script[key] = el[key]
+        const key = el.src ? "src" : "textContent"
+        script[key] = el[key]!
         el.replaceWith(script)
       }
     }

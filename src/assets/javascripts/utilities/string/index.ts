@@ -64,7 +64,7 @@ let lang: Record<string, string>
 export function translate(key: TranslateKey, value?: string): string {
   if (typeof lang === "undefined") {
     const el = getElementOrThrow("#__lang")
-    lang = JSON.parse(el.innerText)
+    lang = JSON.parse(el.textContent!)
   }
   if (typeof lang[key] === "undefined") {
     throw new ReferenceError(`Invalid translation: ${key}`)

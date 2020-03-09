@@ -46,7 +46,8 @@ import {
   observeOn,
   take,
   shareReplay,
-  share
+  share,
+  skip
 } from "rxjs/operators"
 
 import {
@@ -347,7 +348,7 @@ export function initialize(config: unknown) {
     /* Resolve relative links for stability */
     for (const selector of [
       `link[rel="shortcut icon"]`,
-      `link[rel="stylesheet"]`
+      // `link[rel="stylesheet"]` // reduce style computations
     ])
       for (const el of getElements<HTMLLinkElement>(selector))
         el.href = el.href
