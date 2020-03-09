@@ -27,7 +27,7 @@ plugins:
 > Default: best match for `theme.language`, automatically set
 
 Material for MkDocs selects the (best-)matching stemmer for the given theme
-language. Multilingual search can be activated in `mkdocs.yml` by explicitly
+language. Multilingual search can be enabled in `mkdocs.yml` by explicitly
 defining the search language(s):
 
 ``` yaml
@@ -66,8 +66,8 @@ The following language codes are supported:
 !!! warning "Only specify the languages you really need"
 
     Be aware that including support for other languages increases the general
-    JavaScript payload by around 20kb (without gzip) and by another 15-30kb per
-    language.
+    JavaScript payload by around 20kb (before `gzip`) and by another 15-30kb
+    per language.
 
 ### Tokenization
 
