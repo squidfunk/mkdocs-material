@@ -113,6 +113,8 @@ markdown_extensions:
       repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
   - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.tasklist:
@@ -136,7 +138,7 @@ nav:
     - Revision date: plugins/revision-date.md
   - Releases:
     - Changelog: releases/changelog.md
-    - Migration guide: releases/migration.md
+    - Migration: releases/migration.md
   - Customization: customization.md
   - Data privacy: data-privacy.md
   - Contributing: contributing.md
