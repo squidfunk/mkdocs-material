@@ -4,7 +4,9 @@
 {% if config.extra.social %}
   <div class="md-footer-social">
     {% for social in config.extra.social %}
-      <a href="{{ social.link }}" target="_blank" rel="noopener" class="md-footer-social__link">
+      {% set _,rest = social.link.split("//") %}
+      {% set domain = rest.split("/")[0] %}
+      <a href="{{ social.link }}" target="_blank" rel="noopener" title="{{ domain }}" class="md-footer-social__link">
         {% include ".icons/" ~ social.icon ~ ".svg" %}
       </a>
     {% endfor %}

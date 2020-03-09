@@ -211,7 +211,7 @@
 
     // Social icon
     svg {
-      width: px2rem(16px);
+      max-height: px2rem(16px);
       vertical-align: -25%;
       fill: currentColor;
     }
