@@ -1,38 +1,22 @@
 # CodeHilite
 
 [CodeHilite][1] is an extension that adds syntax highlighting to code blocks
-and is included in the standard Markdown library. The highlighting process is
-executed during compilation of the Markdown file.
-
-!!! failure "Syntax highlighting not working?"
-
-    Please ensure that [Pygments][2] is installed. See the next section for
-    further directions on how to set up Pygments or use the official
-    [Docker image][3] with all dependencies pre-installed.
+and is included in the standard Markdown library. It uses [Pygments][2] during
+the compilation of the Markdown file to provide syntax highlighting for over 
+[300 languages][3] and has no JavaScript runtime dependency.
 
   [1]: https://python-markdown.github.io/extensions/code_hilite/
   [2]: https://pygments.org
-  [3]: https://hub.docker.com/r/squidfunk/mkdocs-material/
+  [3]: http://pygments.org/languages
 
-## Installation
+## Configuration
 
-CodeHilite parses code blocks and wraps them in `pre` tags. If [Pygments][2]
-is installed, which is a generic syntax highlighter with support for over
-[300 languages][4], CodeHilite will also highlight the code block. Pygments can
-be installed with the following command:
-
-``` sh
-pip install pygments
-```
-
-To enable CodeHilite, add the following lines to your `mkdocs.yml`:
+Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
   - codehilite
 ```
-
-  [4]: http://pygments.org/languages
 
 ## Usage
 
@@ -46,7 +30,7 @@ different ways.
 
 In Markdown, code blocks can be opened and closed by writing three backticks on
 separate lines. To add code highlighting to those blocks, the easiest way is
-to specify the language directly after the opening block.
+to specify the language identifier directly after the opening block.
 
 Example:
 
@@ -103,7 +87,8 @@ Result:
 
 ### Adding line numbers
 
-Line numbers can be added by enabling the `linenums` flag in your `mkdocs.yml`:
+Line numbers can be added to a code block by enabling the `linenums` flag in
+`mkdocs.yml` or adding `linenums=1` right after the language identifier:
 
 ``` yaml
 markdown_extensions:
@@ -114,7 +99,7 @@ markdown_extensions:
 Example:
 
 ```` markdown
-``` python
+``` python linenums="1"
 """ Bubble sort """
 def bubble_sort(items):
     for i in range(len(items)):
@@ -126,17 +111,18 @@ def bubble_sort(items):
 
 Result:
 
-    #!python
-    """ Bubble sort """
-    def bubble_sort(items):
-        for i in range(len(items)):
-            for j in range(len(items) - 1 - i):
-                if items[j] > items[j + 1]:
-                    items[j], items[j + 1] = items[j + 1], items[j]
+``` python linenums="1"
+""" Bubble sort """
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
 
 ### Grouping code blocks
 
-The [Tabbed][5] extension which is part of the [PyMdown Extensions][6]
+The [Tabbed][4] extension which is part of the [PyMdown Extensions][5]
 package adds support for grouping Markdown blocks with tabs. This is especially
 useful for documenting projects with multiple language bindings.
 
@@ -156,6 +142,7 @@ Example:
 
     int main(void) {
       printf("Hello world!\n");
+      return 0;
     }
     ```
 
@@ -163,7 +150,7 @@ Example:
     ``` c++
     #include <iostream>
 
-    int main() {
+    int main(void) {
       std::cout << "Hello world!" << std::endl;
       return 0;
     }
@@ -196,6 +183,7 @@ Result:
 
     int main(void) {
       printf("Hello world!\n");
+      return 0;
     }
     ```
 
@@ -203,7 +191,7 @@ Result:
     ``` c++
     #include <iostream>
 
-    int main() {
+    int main(void) {
       std::cout << "Hello world!" << std::endl;
       return 0;
     }
@@ -220,8 +208,8 @@ Result:
     }
     ```
 
-  [5]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
-  [6]: https://facelessuser.github.io/pymdown-extensions
+  [4]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
+  [5]: https://facelessuser.github.io/pymdown-extensions
 
 ### Highlighting specific lines
 

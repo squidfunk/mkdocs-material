@@ -1,14 +1,14 @@
 # Admonition
 
 [Admonition][1] is an extension included in the standard Markdown library that
-makes it possible to add block-styled side content to your documentation, for
-example summaries, notes, hints or warnings.
+makes it possible to add block-styled side content to your documentation, e.g.
+summaries, notes, hints or warnings.
 
   [1]: https://python-markdown.github.io/extensions/admonition/
 
-## Installation
+## Configuration
 
-Add the following lines to your `mkdocs.yml`:
+Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -17,10 +17,9 @@ markdown_extensions:
 
 ## Usage
 
-Admonition blocks follow a simple syntax: every block is started with `!!!`,
-followed by a single keyword which is used as the [type qualifier][2] of the
-block. The content of the block then follows on the next line, indented by
-four spaces.
+Admonitions follow a simple syntax: every block is started with `!!!`, followed
+by a single keyword which is used as the [type qualifier][2] of the block. The
+content of the block then follows on the next line, indented by four spaces.
 
 Example:
 
@@ -43,8 +42,8 @@ Result:
 
 ### Changing the title
 
-By default, the block title will equal the type qualifier in titlecase. However,
-it can easily be changed by adding a quoted string after the type qualifier.
+By default, the Admonition title will equal the type qualifier in titlecase.
+However, it can be changed by adding a quoted string after the type qualifier.
 
 Example:
 
@@ -65,7 +64,7 @@ Result:
 
 ### Removing the title
 
-Similar to setting a [custom title][3], the icon and title can be omitted by
+Similar to [changing the title][3], the icon and title can be omitted by
 providing an empty string after the type qualifier:
 
 Example:
@@ -87,15 +86,15 @@ Result:
 
   [3]: #changing-the-title
 
-### Embedded code blocks
+### Embedded content
 
-Blocks can contain all kinds of text content, including headlines, lists,
+Admonitions can contain all kinds of text content, including headlines, lists,
 paragraphs and other blocks – except code blocks, because the parser from the
 standard Markdown library does not account for those.
 
-However, the [PyMdown Extensions][4] package adds an extension called
-[SuperFences][5], which makes it possible to nest code blocks within other
-blocks, respectively Admonition blocks.
+The [PyMdown Extensions][4] package adds an extension called [SuperFences][5],
+which makes it possible to nest code blocks within other blocks, respectively
+Admonition blocks.
 
   [4]: https://facelessuser.github.io/pymdown-extensions
   [5]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
@@ -159,9 +158,9 @@ open by default.
 ## Types
 
 Admonition supports user-defined type qualifiers which may influence the style
-of the inserted block. Following is a list of type qualifiers provided by the
-Material theme, whereas the default type, and thus fallback for unknown type
-qualifiers, is `note`.
+of the inserted block. Following is a list of type qualifiers provided by
+Material for MkDocs, whereas the default type, and thus fallback for unknown
+type qualifiers, is `note`.
 
 ### Note
 

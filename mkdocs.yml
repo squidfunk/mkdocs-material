@@ -117,7 +117,7 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Material: index.md
+  - Home: index.md
   - Getting started: getting-started.md
   - Extensions:
     - Admonition: extensions/admonition.md
@@ -127,14 +127,14 @@ nav:
     - Permalinks: extensions/permalinks.md
     - PyMdown: extensions/pymdown.md
   - Plugins:
-    - Minify HTML: plugins/minify-html.md
-    - Revision date: plugins/revision-date.md
     - Search: plugins/search.md
-  - Specimen: specimen.md
+    - Minification: plugins/minification.md
+    - Revision date: plugins/revision-date.md
+  - Releases:
+    - Changelog: releases/changelog.md
+    - Migration guide: releases/migration.md
   - Customization: customization.md
-  - Compliance with GDPR: compliance.md
-  - Release notes: release-notes.md
-  - Author's notes: authors-notes.md
+  - Data privacy: data-privacy.md
   - Contributing: contributing.md
   - License: license.md
 

@@ -580,7 +580,7 @@ extra:
 
 A [Web App Manifest][23] is a simple JSON file that tells the browser about your
 web application and how it should behave when installed on the user's mobile
-device or desktop. You can specify such a manifest in your `mkdocs.yml`:
+device or desktop. You can specify such a manifest in `mkdocs.yml`:
 
 ``` yaml
 extra:
@@ -607,7 +607,7 @@ google_analytics:
 
 Material for MkDocs is integrated with [Disqus][24], so if you want to add a
 comments section to your documentation set the shortname of your Disqus project
-in your `mkdocs.yml`:
+in `mkdocs.yml`:
 
 ``` yaml
 extra:
@@ -630,8 +630,8 @@ Disqus can also be enabled or disabled for specific pages using [Metadata][25].
 ## Extensions
 
 [Markdown][3] comes with several very useful extensions, the following of which
-are not enabled by default but highly recommended, so they should be switched
-on:
+are not enabled by default but highly recommended, so enabling them should
+definitely be a good idea:
 
 ``` yaml
 markdown_extensions:
@@ -642,8 +642,8 @@ markdown_extensions:
       permalink: true
 ```
 
-For more information, see the following list of extensions supported by Material
-for MkDocs including more information regarding installation and usage:
+See the following list of extensions supported by Material for MkDocs including
+some more information on configuration and usage:
 
 * [Admonition][26]
 * [Codehilite][27]
@@ -666,14 +666,14 @@ steps that sit between the theme and your documentation. For more information,
 see the following list of plugins tested and supported by Material for MkDocs 
 including more information regarding installation and usage:
 
-* [Minify HTML][32]
-* [Revision date][33]
-* [Search][34]
+* [Search][32] (enabled by default)
+* [Minification][33]
+* [Revision date][34]
 
 For further reference, the MkDocs wiki contains a list of all
 [available plugins][35].
 
-  [32]: plugins/minify-html.md
-  [33]: plugins/revision-date.md
-  [34]: plugins/search.md
+  [32]: plugins/search.md
+  [33]: plugins/minification.md
+  [34]: plugins/revision-date.md
   [35]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins

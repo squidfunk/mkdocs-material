@@ -242,7 +242,7 @@ pip show mkdocs-material
 ### 2.9.1 <small>_ June 18, 2018</small>
 
 * Added support for different spellings for theme color
-* Fixed #799: Added support for web font minification in production
+* Fixed #799: Added support for webfont minification in production
 * Fixed #800: Added `.highlighttable` as an alias for `.codehilitetable`
 
 ### 2.9.0 <small>_ June 13, 2018</small>
