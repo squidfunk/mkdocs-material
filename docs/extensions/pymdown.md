@@ -49,7 +49,7 @@ runtime needs to be included. This can be done with [additional JavaScript][5]:
 
 ``` yaml
 extra_javascript:
-  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 ```
 
 If you want to override the default MathJax configuration, you can do this by
@@ -83,8 +83,8 @@ Then, add the following lines to `mkdocs.yml`:
 
 ``` yaml
 extra_javascript:
-  - 'javascripts/extra.js'
-  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  - javascripts/extra.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 ```
 
   [2]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/

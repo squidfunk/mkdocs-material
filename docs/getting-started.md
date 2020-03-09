@@ -120,11 +120,11 @@ method.
   [9]: https://chocolatey.org
   [10]: https://chocolatey.org/packages/mkdocs-material
 
-## Usage
+## Configuration
 
 Depending on your installation method, you can now add the following lines to
-the `mkdocs.yml` in your project root. If you installed Material for MkDocs
-using a package manager add:
+`mkdocs.yml` in your project root. If you installed Material for MkDocs using
+a package manager add:
 
 ``` yaml
 theme:
@@ -148,8 +148,8 @@ mkdocs serve
 ```
 
 Point your browser to [http://localhost:8000][11] and your documentation should
-great you in a new look. If you're starting from scratch, the following example
-can be used as a starting point:
+great you in a new look. If you're starting from scratch, the following
+configuration can be used as a starting point:
 
 ??? summary "Example configuration"
 
@@ -186,7 +186,7 @@ can be used as a starting point:
         - icon: fontawesome/brands/twitter
           link: https://twitter.com/squidfunk
         - icon: fontawesome/brands/linkedin
-          link: https://www.linkedin.com/in/squidfunk
+          link: https://linkedin.com/in/squidfunk
 
     # Google Analytics
     google_analytics:
@@ -202,12 +202,7 @@ can be used as a starting point:
           permalink: true
     ```
 
-Not happy yet? Read on to learn about the many
-configuration options.
-
 [11]: http://localhost:8000
-
-## Configuration
 
 ### Feature flags
 
@@ -306,12 +301,15 @@ The following language codes are supported:
   <li><code>uk</code> / Ukrainian</li>
   <li><code>vi</code> / Vietnamese</li>
   <li>
-    <a href="https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.md">Add language</a>
+    <a href="https://bit.ly/38F5RCa">
+      Add language
+    </a>
   </li>
 </ul>
 
-While many languages are read left-to-right (`ltr`), Material for MkDocs also
-supports right-to-left (`rtl`) directionality which is deduced from the selected language, but can also be set with:
+While many languages are read `ltr` (left-to-right), Material for MkDocs also
+supports `rtl` (right-to-left) directionality which is deduced from the selected
+language, but can also be set with:
 
 ``` yaml
 theme:
@@ -571,7 +569,7 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/squidfunk
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/squidfunk
+      link: https://linkedin.com/in/squidfunk
 ```
 
   [22]: #icons
@@ -599,8 +597,8 @@ your documentation. Google Analytics can be activated with:
 
 ``` yaml
 google_analytics:
-  - 'UA-XXXXXXXX-X'
-  - 'auto'
+  - UA-XXXXXXXX-X
+  - auto
 ```
 
 ### Disqus

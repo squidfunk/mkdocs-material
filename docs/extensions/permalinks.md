@@ -22,7 +22,7 @@ headline (exactly like on the page you're currently viewing), which Material
 for MkDocs will make appear on hover. In order to change the text of the
 permalink, a string can be passed, e.g.:
 
-``` markdown
+``` yaml
 markdown_extensions:
   - toc:
       permalink: Link

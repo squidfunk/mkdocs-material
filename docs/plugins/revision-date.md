@@ -29,7 +29,7 @@ plugins:
     want to add the `search` plugin. MkDocs enables it by default if there is
     no `plugins` entry set.
 
-## Usage
+## Configuration
 
 The date is automatically added at the bottom of each page, e.g.:
 
