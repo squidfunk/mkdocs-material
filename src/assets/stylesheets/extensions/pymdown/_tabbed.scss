@@ -112,26 +112,4 @@
       }
     }
   }
-
-  // Full-width container on top-level
-  > .tabbed-set {
-
-    // [mobile -]: Stretch to whole width
-    @include break-to-device(mobile) {
-      margin: 1em px2rem(-16px);
-      border: 0;
-      border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
-      border-radius: 0;
-
-      // Actual container with code, overflowing
-      code {
-        padding: px2rem(10.5px) px2rem(16px);
-      }
-
-      // First tab label
-      input:first-child + label {
-        margin-left: px2rem(4px);
-      }
-    }
-  }
 }
