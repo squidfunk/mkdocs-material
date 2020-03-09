@@ -87,7 +87,7 @@ jobs:
           GH_NAME: ${{ secrets.GH_NAME }}
           GH_EMAIL: ${{ secrets.GH_EMAIL }}
         run: |
-          REMOTE="https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material"
+          REMOTE="https://${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}"
           git config --global user.name "${GH_NAME}"
           git config --global user.email "${GH_EMAIL}"
           git remote set-url origin ${REMOTE}
