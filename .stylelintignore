@@ -19,6 +19,7 @@
 # IN THE SOFTWARE.
 
 # Distribution files
+docs
 material
 
 # Don't lint shame
