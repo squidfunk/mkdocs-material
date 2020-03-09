@@ -32,6 +32,7 @@
     display: none;
     order: 99;
     width: 100%;
+    overflow: auto;
     background-color: var(--md-code-bg-color);
 
     // Actual content
