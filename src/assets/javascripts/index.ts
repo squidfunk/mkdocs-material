@@ -26,8 +26,6 @@
 import "../stylesheets/main.scss"
 import "../stylesheets/palette.scss"
 
-import "resize-observer-polyfill"
-
 import { values } from "ramda"
 import {
   merge,
@@ -46,8 +44,7 @@ import {
   observeOn,
   take,
   shareReplay,
-  share,
-  skip
+  share
 } from "rxjs/operators"
 
 import {

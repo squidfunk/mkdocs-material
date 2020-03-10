@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+import ResizeObserver from "resize-observer-polyfill"
 import { Observable, fromEventPattern } from "rxjs"
 import { shareReplay, startWith } from "rxjs/operators"
 
@@ -70,7 +71,7 @@ export function watchElementSize(
       width:  Math.round(contentRect.width),
       height: Math.round(contentRect.height)
     }))
-      .observe(el, { box: "border-box" }) // TODO: centralize, .observe and .unobserve
+      .observe(el)
   })
     .pipe(
       startWith(getElementSize(el)),

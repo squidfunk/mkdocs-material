@@ -108,16 +108,6 @@
   .footnote-ref {
     display: inline-block;
     pointer-events: initial;
-
-    // Render a thin line before footnote
-    &::before {
-      display: inline;
-      margin: 0 0.2em;
-      font-size: 1.25em;
-      vertical-align: px2rem(-5px);
-      border-left: px2rem(1px) solid var(--md-default-fg-color--lighter);
-      content: "";
-    }
   }
 
   // Footnote back reference
