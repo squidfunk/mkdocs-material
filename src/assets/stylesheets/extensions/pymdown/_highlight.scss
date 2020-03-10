@@ -31,26 +31,15 @@
   @extend .codehilite;
 
   // Inline line numbers
-  [data-linenos] {
-    &::before {
-      position: sticky;
-      left: px2rem(-12px);
-      display: inline-block;
-      margin-right: px2rem(12px);
-      margin-left: px2rem(-12px);
-      padding-left: px2rem(12px);
-      color: var(--md-default-fg-color--lighter);
-      border-right: px2rem(1px) solid var(--md-default-fg-color--lightest);
-      content: attr(data-linenos);
-      user-select: none;
-
-      // [mobile -]: Stretch to whole width
-      @include break-to-device(mobile) {
-        left: px2rem(-32px);
-        margin-left: px2rem(-32px);
-        padding-left: px2rem(32px);
-      }
-    }
+  [data-linenos]::before {
+    position: sticky;
+    left: 0;
+    display: inline-block;
+    margin-right: px2em(16px, 13.6px);
+    color: var(--md-default-fg-color--lighter);
+    box-shadow: inset px2rem(-1px) 0 var(--md-default-fg-color--lightest);
+    content: attr(data-linenos);
+    user-select: none;
   }
 }
 

@@ -166,10 +166,8 @@ kbd {
   pre,
   kbd {
     color: var(--md-code-fg-color);
-    font-size: 85%;
     direction: ltr;
     hyphens: none;
-    background-color: var(--md-code-bg-color);
 
     // Wrap text and hide scollbars
     @media print {
@@ -179,15 +177,15 @@ kbd {
 
   // Inline code blocks, correct relative ems for smaller font size
   code {
-    $f: 1 / 0.85;
-
-    margin: 0 0.25em * $f;
-    padding: 0.0625em * $f 0;
+    margin: 0 px2em(4px, 13.6px);
+    padding: px2em(1px, 13.6px) 0;
+    font-size: px2em(13.6px);
     word-break: break-word;
+    background-color: var(--md-code-bg-color);
     border-radius: px2rem(2px);
     box-shadow:
-      +0.25em * $f 0 0 var(--md-code-bg-color),
-      -0.25em * $f 0 0 var(--md-code-bg-color);
+      px2em( 4px, 13.6px) 0 0 var(--md-code-bg-color),
+      px2em(-4px, 13.6px) 0 0 var(--md-code-bg-color);
     box-decoration-break: clone;
   }
 
@@ -218,7 +216,6 @@ kbd {
     position: relative;
     margin: 1em 0;
     line-height: 1.4;
-    border-radius: px2rem(2px);
     // Hack: reduce jitter
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
@@ -227,11 +224,9 @@ kbd {
     > code {
       display: block;
       margin: 0;
-      padding: px2rem(10.5px) px2rem(12px);
+      padding: px2rem(10.5px) px2em(16px, 13.6px);
       overflow: auto;
-      font-size: inherit;
       word-break: normal;
-      background-color: transparent;
       box-shadow: none;
       box-decoration-break: slice;
 
@@ -259,22 +254,19 @@ kbd {
     // Stretch top-level containers
     > pre {
       margin: 1em px2rem(-16px);
-      border-radius: 0;
 
-      // Actual container with code, overflowing
-      > code {
-        padding: px2rem(10.5px) px2rem(16px);
+      // Remove rounded borders
+      code {
+        border-radius: 0;
       }
     }
   }
 
   // Keystrokes
   kbd {
-    $f: 1 / 0.85;
-
     display: inline-block;
-    padding: 0 0.5em * $f;
-    font-size: 0.75em;
+    padding: 0 px2em(8px, 12px);
+    font-size: px2em(12px);
     line-height: 1.5;
     vertical-align: text-top;
     word-break: break-word;
@@ -287,14 +279,14 @@ kbd {
 
   // Text highlighting marker
   mark {
-    margin: 0 0.25em;
-    padding: 0.0625em 0;
+    margin: 0 px2em(4px, 16px);
+    padding: px2em(1px, 16px) 0;
     word-break: break-word;
     background-color: transparentize($clr-yellow-500, 0.5);
     border-radius: px2rem(2px);
     box-shadow:
-      +0.25em 0 0 transparentize($clr-yellow-500, 0.5),
-      -0.25em 0 0 transparentize($clr-yellow-500, 0.5);
+      px2em( 4px, 16px) 0 0 transparentize($clr-yellow-500, 0.5),
+      px2em(-4px, 16px) 0 0 transparentize($clr-yellow-500, 0.5);
     box-decoration-break: clone;
   }
 

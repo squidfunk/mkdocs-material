@@ -27,28 +27,31 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Tabbed code block content
+  // Tabbed block content
   .tabbed-content {
     display: none;
     order: 99;
     width: 100%;
     overflow: auto;
-    background-color: var(--md-code-bg-color);
 
     // Actual content
     pre {
       margin: 0;
-      border-radius: 0
+    }
+
+    // Remove rounded borders at the top
+    code {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
   }
 
-  // Tabbed code block container
+  // Tabbed block container
   .tabbed-set {
     position: relative;
     display: flex;
     flex-wrap: wrap;
     margin: 1em 0;
-    border: px2rem(1px) solid var(--md-default-fg-color--lightest);
     border-radius: px2rem(2px);
 
     // Hide radio buttons
@@ -60,34 +63,9 @@
         color: var(--md-accent-fg-color);
         border-color: var(--md-accent-fg-color);
 
-        // Show code tab content
+        // Show tabbed block content
         & + .tabbed-content {
           display: block;
-          padding: 0 px2rem(12px);
-
-          // Adjust spacing on last element
-          > :last-child {
-            margin-bottom: px2rem(12px);
-          }
-
-          // Emulate original pymdownx.superfences behavior and stretch to full
-          // width and height when a code block is the only child of a tab
-          > {
-            pre,
-            .highlight,
-            .highlighttable,
-            .codehilite,
-            .codehilitetable {
-              &:only-child {
-                margin: 0 px2rem(-12px);
-
-                // Remove double background
-                pre {
-                  background: transparent;
-                }
-              }
-            }
-          }
         }
       }
     }
@@ -95,8 +73,7 @@
     // Tab label
     > label {
       width: auto;
-      padding: px2rem(12px);
-      padding-bottom: px2rem(10px);
+      padding: px2rem(12px) 1.25em px2rem(10px);
       color: var(--md-default-fg-color--light);
       font-weight: 700;
       font-size: ms(-1);
@@ -109,28 +86,6 @@
       // Hovered tab label
       html &:hover {
         color: var(--md-accent-fg-color);
-      }
-    }
-  }
-
-  // Full-width container on top-level
-  > .tabbed-set {
-
-    // [mobile -]: Stretch to whole width
-    @include break-to-device(mobile) {
-      margin: 1em px2rem(-16px);
-      border: 0;
-      border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
-      border-radius: 0;
-
-      // Actual container with code, overflowing
-      code {
-        padding: px2rem(10.5px) px2rem(16px);
-      }
-
-      // First tab label
-      input:first-child + label {
-        margin-left: px2rem(4px);
       }
     }
   }
