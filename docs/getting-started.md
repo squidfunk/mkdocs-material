@@ -331,11 +331,48 @@ theme:
 
 If the colors are set with these configuration options, an additional CSS file
 that includes the hues of the color palette is automatically included and linked
-from the template. If you want to define a custom color (e.g. your brand color),
-see the [customization guide][13].
+from the template.
+
+??? tip "Custom colors with CSS variables"
+
+    Material for MkDocs defines all colors as CSS variables. If you want to
+    customize the colors beyond the palette (e.g. to use your brand's colors),
+    you can add an [additional stylesheet][13] and override the defaults:
+
+    ``` css
+    :root {
+
+      /* Default color shades */
+      --md-default-fg-color:               ...;
+      --md-default-fg-color--light:        ...;
+      --md-default-fg-color--lighter:      ...;
+      --md-default-fg-color--lightest:     ...;
+      --md-default-bg-color:               ...;
+      --md-default-bg-color--light:        ...;
+      --md-default-bg-color--lighter:      ...;
+      --md-default-bg-color--lightest:     ...;
+
+      /* Primary color shades */
+      --md-primary-fg-color:               ...;
+      --md-primary-fg-color--light:        ...;
+      --md-primary-fg-color--dark:         ...;
+      --md-primary-bg-color:               ...;
+      --md-primary-bg-color--light:        ...;
+
+      /* Accent color shades */
+      --md-accent-fg-color:                ...;
+      --md-accent-fg-color--transparent:   ...;
+      --md-accent-bg-color:                ...;
+      --md-accent-bg-color--light:         ...;
+
+      /* Code block color shades */
+      --md-code-bg-color:                  ...;
+      --md-code-fg-color:                  ...;
+    }
+    ```
 
   [12]: http://www.materialui.co/colors
-  [13]: customization.md
+  [13]: customization.md/#additional-stylesheets
 
 #### Primary color
 

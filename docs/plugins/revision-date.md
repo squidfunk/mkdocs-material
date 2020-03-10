@@ -1,9 +1,9 @@
 # Revision date
 
-The [mkdocs-git-revision-date-localized-plugin][1] is an extension that shows
-the date on which a Markdown file was last updated in at the bottom of each
-page. The date is extracted at the time of the build, so `mkdocs build` must be
-triggered from within a git repository.
+The [mkdocs-git-revision-date-localized-plugin][1] will add the date on which a
+Markdown file was last updated at the bottom of each page. The date is extracted
+at the time of the build, so `mkdocs build` must be triggered from within a git
+repository.
 
 !!! success "Bundled with the official Docker image"
 
@@ -74,5 +74,5 @@ page, e.g.:
 ---
 
 <small>
-  Last updated: 9 December, 2019
+  Last updated: 28 November, 2019
 </small>

@@ -670,7 +670,7 @@ pip show mkdocs-material
 * Rewrite of the complete typographical system
 * Rewrite of Gulp asset pipeline in ES6 and separation of tasks
 * Removed Bower as a dependency in favor of NPM
-* Removed custom icon build in favor of the Material Design iconset
+* Removed custom icon build in favor of the Material Design icon set
 * Removed `_blank` targets on links due to vulnerability: http://bit.ly/1Mk2Rtw
 * Removed unversioned assets from build directory
 * Restructured templates into base templates and partials
