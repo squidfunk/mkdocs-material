@@ -38,7 +38,7 @@ Append the following line to your project's `mkdocs.yml`:
 
 ``` yaml
 theme:
-  name: 'material'
+  name: material
 ```
 
 ## What to expect

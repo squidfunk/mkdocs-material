@@ -84,6 +84,8 @@ plugins:
 
 ### Prebuilding :hatching_chick:
 
+> Default: `false`
+
 MkDocs can generate a [prebuilt index][4] of all pages during build time, which
 provides performance improvements at the cost of more bandwidth. This may be
 beneficial for large documentation projects that are served with appropriate

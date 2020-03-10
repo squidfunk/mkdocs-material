@@ -30,7 +30,7 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 edit_uri: ""
 
 # Copyright
-copyright: 'Copyright &copy; 2016 - 2020 Martin Donath'
+copyright: Copyright &copy; 2016 - 2020 Martin Donath
 
 # Configuration
 theme:
@@ -137,8 +137,9 @@ nav:
     - Minification: plugins/minification.md
     - Revision date: plugins/revision-date.md
   - Releases:
+    - Material for MkDocs 5: releases/5.md
+    - Material for MkDocs 4: releases/4.md
     - Changelog: releases/changelog.md
-    - Migration: releases/migration.md
   - Customization: customization.md
   - Data privacy: data-privacy.md
   - Contributing: contributing.md

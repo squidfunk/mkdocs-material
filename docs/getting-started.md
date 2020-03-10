@@ -128,7 +128,7 @@ a package manager add:
 
 ``` yaml
 theme:
-  name: 'material'
+  name: material
 ```
 
 If you cloned Material for MkDocs from GitHub add:
@@ -136,7 +136,7 @@ If you cloned Material for MkDocs from GitHub add:
 ``` yaml
 theme:
   name: null
-  custom_dir: 'mkdocs-material/material'
+  custom_dir: mkdocs-material/material
 ```
 
 MkDocs includes a development server, so you can preview your changes as you

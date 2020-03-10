@@ -30,7 +30,7 @@ Then, add the following line to your `mkdocs.yml`:
 
 ``` yaml
 extra_css:
-  - 'stylesheets/extra.css'
+  - stylesheets/extra.css
 ```
 
 Spin up the development server with `mkdocs serve` and start typing your
@@ -52,7 +52,7 @@ Then, add the following line to your `mkdocs.yml`:
 
 ``` yaml
 extra_javascript:
-  - 'javascripts/extra.js'
+  - javascripts/extra.js
 ```
 
 Further assistance can be found in the [MkDocs documentation][2].
@@ -75,8 +75,8 @@ new folder for overrides, e.g. `theme`, which you reference using `custom_dir`:
 
 ``` yaml
 theme:
-  name: 'material'
-  custom_dir: 'theme'
+  name: material
+  custom_dir: theme
 ```
 
 !!! warning "Theme extension prerequisites"
