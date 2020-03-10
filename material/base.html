@@ -177,8 +177,8 @@
       <script>var __config={}</script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.f6bd1725.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.dbd3a7bd.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.b0b43276.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.edfe6213.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -201,7 +201,7 @@
           url: {
             base: "{{ base_url }}",
             worker: {
-              search: "{{ 'assets/javascripts/worker/search.542c1c70.min.js' | url }}"
+              search: "{{ 'assets/javascripts/worker/search.784c5235.min.js' | url }}"
             }
           },
           features: {{ config.theme.features | tojson }}
