@@ -33,6 +33,7 @@
     order: 99;
     width: 100%;
     overflow: auto;
+    box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest);
 
     // Actual content
     pre {
@@ -72,6 +73,7 @@
 
     // Tab label
     > label {
+      z-index: 1;
       width: auto;
       padding: px2rem(12px) 1.25em px2rem(10px);
       color: var(--md-default-fg-color--light);
@@ -79,9 +81,7 @@
       font-size: ms(-1);
       border-bottom: px2rem(2px) solid transparent;
       cursor: pointer;
-      transition:
-        color 125ms,
-        border 250ms;
+      transition: color 125ms;
 
       // Hovered tab label
       html &:hover {
