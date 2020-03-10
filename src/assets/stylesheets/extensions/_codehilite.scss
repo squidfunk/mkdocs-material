@@ -194,8 +194,8 @@ $codehilite-whitespace: transparent;
   // Highlighted lines
   .hll {
     display: block;
-    margin: 0 px2rem(-16px);
-    padding: 0 px2rem(16px);
+    margin: 0 px2em(-16px, 13.6px);
+    padding: 0 px2em(16px, 13.6px);
     background-color: transparentize($clr-yellow-500, 0.5);
   }
 }
