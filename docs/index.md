@@ -1,3 +1,7 @@
+---
+template: overrides/home.html
+---
+
 # Material <small>for MkDocs</small>
 
 ## Create beautiful project documentation

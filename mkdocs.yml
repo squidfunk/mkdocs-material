@@ -49,7 +49,7 @@ theme:
   language: en
   features:
     - tabs
-    - instant
+    # - instant
   palette:
     primary: indigo
     accent: indigo
