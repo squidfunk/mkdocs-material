@@ -194,8 +194,8 @@ $codehilite-whitespace: transparent;
   // Highlighted lines
   .hll {
     display: block;
-    margin: 0 px2em(-16px, 13.6px);
-    padding: 0 px2em(16px, 13.6px);
+    margin: 0 px2rem(-16px);
+    padding: 0 px2rem(16px);
     background-color: transparentize($clr-yellow-500, 0.5);
   }
 }
@@ -280,11 +280,6 @@ $codehilite-whitespace: transparent;
     > .codehilite {
       margin: 1em px2rem(-16px);
 
-      .hll {
-        margin: 0 px2rem(-16px);
-        padding: 0 px2rem(16px);
-      }
-
       // Remove rounded borders
       code {
         border-radius: 0;
@@ -295,11 +290,6 @@ $codehilite-whitespace: transparent;
     > .codehilitetable {
       margin: 1em px2rem(-16px);
       border-radius: 0;
-
-      .hll {
-        margin: 0 px2rem(-16px);
-        padding: 0 px2rem(16px);
-      }
     }
   }
 }
