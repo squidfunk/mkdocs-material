@@ -44,6 +44,11 @@
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
+
+    // Nested tabs
+    > .tabbed-set {
+      margin: 0;
+    }
   }
 
   // Tabbed block container
