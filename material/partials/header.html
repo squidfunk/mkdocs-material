@@ -7,7 +7,8 @@
       {% if config.theme.logo %}
         <img src="{{ config.theme.logo | url }}" alt="logo">
       {% else %}
-        {% include ".icons/" ~ config.theme.icon.logo ~ ".svg" %}
+        {% set icon = config.theme.icon.logo or "material/library" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
       {% endif %}
     </a>
     <label class="md-header-nav__button md-icon" for="__drawer">

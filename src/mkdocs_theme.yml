@@ -52,12 +52,6 @@ font:
 # icons that are part of the HTML can be configured and replaced
 icon:
 
-  # Shown if no logo is set
-  logo: material/library
-
-  # Repository icon
-  repo: fontawesome/brands/git-alt
-
 # Favicon to be rendered
 favicon: assets/images/favicon.png
 

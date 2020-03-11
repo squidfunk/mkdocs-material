@@ -57,8 +57,6 @@ theme:
     text: Roboto
     code: Roboto Mono
   icon:
-    logo: material/library
-    repo: fontawesome/brands/git-alt
   favicon: assets/favicon.png
   logo: assets/images/icon.svg
 

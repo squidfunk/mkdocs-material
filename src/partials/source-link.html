@@ -34,5 +34,6 @@
   class="md-content__button md-icon"
 >
   {{ lang.t("meta.source") }}
-  {% include ".icons/" ~ config.theme.icon.repo ~ ".svg" %}
+  {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+  {% include ".icons/" ~ icon ~ ".svg" %}
 </a>
