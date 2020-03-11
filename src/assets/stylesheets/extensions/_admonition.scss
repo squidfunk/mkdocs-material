@@ -49,7 +49,7 @@
   .admonition {
     margin: 1.5625em 0;
     padding: 0 px2rem(12px);
-    overflow: auto;
+    overflow: hidden;
     font-size: ms(-1);
     border-left: px2rem(4px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
@@ -71,6 +71,16 @@
     // Adjust margin for nested admonition blocks
     .admonition {
       margin: 1em 0;
+    }
+
+    // Wrapper for scrolling on overflow
+    .md-typeset__scrollwrap {
+      margin: 1em px2rem(-12px);
+    }
+
+    // Data table wrapper, in case JavaScript is available
+    .md-typeset__table {
+      padding: 0 px2rem(12px);
     }
 
     // Build representational classes

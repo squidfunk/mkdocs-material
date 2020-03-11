@@ -488,7 +488,7 @@ kbd {
   }
 
   // Data table wrapper, in case JavaScript is available
-  .md-typeset__table {
+  &__table {
     display: inline-block;
     margin-bottom: 0.5em;
     padding: 0 px2rem(16px);
