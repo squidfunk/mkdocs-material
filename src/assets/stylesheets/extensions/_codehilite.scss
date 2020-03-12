@@ -280,6 +280,7 @@ $codehilite-whitespace: transparent;
     > .codehilite {
       margin: 1em px2rem(-16px);
 
+      // Stretch highlighted lines
       .hll {
         margin: 0 px2rem(-16px);
         padding: 0 px2rem(16px);
@@ -296,6 +297,7 @@ $codehilite-whitespace: transparent;
       margin: 1em px2rem(-16px);
       border-radius: 0;
 
+      // Stretch highlighted lines
       .hll {
         margin: 0 px2rem(-16px);
         padding: 0 px2rem(16px);
