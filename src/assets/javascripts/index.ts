@@ -57,7 +57,8 @@ import {
   watchLocationHash,
   watchViewport,
   isLocationInternal,
-  isLocationAnchor
+  isLocationAnchor,
+  setLocationHash
 } from "./browser"
 import { setupSearchWorker } from "./workers"
 
@@ -270,20 +271,12 @@ export function initialize(config: unknown) {
   /* ----------------------------------------------------------------------- */
 
   // // put into search...
-  // hash$
-  //   .pipe(
-  //     switchMap(hash => useToggle("search")
-  //       .pipe(
-  //         filter(x => x.checked), // only active
-  //         tap(toggle => setToggle(toggle, false)),
-  //         delay(125), // ensure that it runs after the body scroll reset...
-  //         mapTo(hash)
-  //       )
-  //     )
-  //   )
-  //     .subscribe(hash => {
-  //       getElement(`[id="${hash}"]`)!.scrollIntoView()
-  //     })
+  hash$
+    .pipe(
+      tap(() => setToggle("search", false)),
+      delay(125), // ensure that it runs after the body scroll reset...
+    )
+      .subscribe(hash => setLocationHash(`#${hash}`)) // TODO: must be unified
 
   // Scroll lock // document -> document$ => { body } !?
   // put into search...
