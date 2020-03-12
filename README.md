@@ -17,7 +17,7 @@
 
 # Material for MkDocs
 
-> ⚠️ __Help test [Material 5 RC 1](https://github.com/squidfunk/mkdocs-material/issues/1498)!__
+> ⚠️ __Help test [Material 5](https://github.com/squidfunk/mkdocs-material/issues/1498)!__
 
 A Material Design theme for [MkDocs][1].
 
