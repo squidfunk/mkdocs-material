@@ -58,7 +58,6 @@ kbd {
 .md-typeset {
   font-size: ms(0);
   line-height: 1.6;
-  hyphens: auto;
 
   // Colors should be kept when printing
   -webkit-print-color-adjust: exact; // stylelint-disable-line
@@ -167,7 +166,6 @@ kbd {
   kbd {
     color: var(--md-code-fg-color);
     direction: ltr;
-    hyphens: none;
 
     // Wrap text and hide scollbars
     @media print {
