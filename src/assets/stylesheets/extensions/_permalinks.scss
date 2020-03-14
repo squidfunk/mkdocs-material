@@ -31,15 +31,13 @@
   .headerlink {
     display: inline-block;
     margin-left: px2rem(10px);
-    transform: translate(0, px2rem(5px));
     // Hack: If we don't set visibility hidden, the text content of the node
     // will include the headerlink character, which is why Google indexes them.
     visibility: hidden;
     opacity: 0;
     transition:
-      transform  250ms 250ms,
       color      250ms,
-      opacity    125ms 250ms,
+      opacity    125ms,
       visibility   0ms 500ms;
 
     // Adjust for RTL languages
@@ -60,23 +58,21 @@
   }
 
   // Make permalink visible on hover
-  :hover  .headerlink,
-  :target .headerlink,
+  :hover  > .headerlink,
+  :target > .headerlink,
   .headerlink:focus {
-    transform: translate(0, 0);
     visibility: visible;
     opacity: 1;
     transition:
-      transform  250ms 250ms,
       color      250ms,
-      opacity    125ms 250ms,
+      opacity    125ms,
       visibility   0ms;
   }
 
   // Active or targeted permalink
+  :target > .headerlink,
   .headerlink:focus,
-  .headerlink:hover,
-  :target .headerlink {
+  .headerlink:hover {
     color: var(--md-accent-fg-color);
   }
 

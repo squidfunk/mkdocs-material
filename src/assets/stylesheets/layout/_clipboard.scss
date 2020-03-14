@@ -34,8 +34,6 @@
   height: px2rem(24px);
   color: var(--md-default-fg-color--lightest);
   border-radius: px2rem(2px);
-  // Hack: reduce jitter
-  backface-visibility: hidden;
   cursor: pointer;
   transition: color 250ms;
 

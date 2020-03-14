@@ -152,8 +152,6 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    // Hack: reduce jitter
-    backface-visibility: hidden;
     transition:
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   150ms;

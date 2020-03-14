@@ -173,6 +173,9 @@ hr {
 // Skip link
 .md-skip {
   position: fixed;
+  // Hack: If we don't set the negative z-index, the skip link will induce the
+  // creation of new layers when code blocks are near the header on scrolling
+  z-index: -1;
   margin: px2rem(10px);
   padding: px2rem(6px) px2rem(10px);
   color: var(--md-default-bg-color);

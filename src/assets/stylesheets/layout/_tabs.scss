@@ -54,6 +54,7 @@
     padding: 0;
     white-space: nowrap;
     list-style: none;
+    contain: content;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {

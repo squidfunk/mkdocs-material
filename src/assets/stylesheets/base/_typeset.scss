@@ -216,8 +216,6 @@ kbd {
     position: relative;
     margin: 1em 0;
     line-height: 1.4;
-    // Hack: reduce jitter
-    backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
 
     // Actual container with code, overflowing

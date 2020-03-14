@@ -531,7 +531,6 @@ $md-toggle__search--checked:
   // Link inside item
   &__link {
     display: block;
-    overflow: hidden;
     outline: 0;
     transition: background 250ms;
     scroll-snap-align: start;
