@@ -275,6 +275,12 @@
         // Active parent item
         &--active > .md-nav__link {
           color: var(--md-primary-fg-color);
+
+          // Focused or hovered linl
+          &:focus,
+          &:hover {
+            color: var(--md-accent-fg-color);
+          }
         }
       }
 
