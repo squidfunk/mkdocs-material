@@ -93,7 +93,7 @@ jobs:
 
       # Install theme and dependencies
       - run: |
-          python setup.py install
+          pip install .
           pip install mkdocs-minify-plugin>=0.2
 
       # Build documentation
