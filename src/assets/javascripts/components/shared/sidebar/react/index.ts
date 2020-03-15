@@ -25,11 +25,11 @@ import {
   Observable,
   animationFrameScheduler,
   combineLatest,
+  of,
   pipe
 } from "rxjs"
 import {
   distinctUntilChanged,
-  distinctUntilKeyChanged,
   finalize,
   map,
   observeOn,
@@ -90,19 +90,11 @@ interface ApplyOptions {
 export function watchSidebar(
   el: HTMLElement, { main$, viewport$ }: WatchOptions
 ): Observable<Sidebar> {
-
-  /* Adjust for internal main area offset */
-  const adjust$ = viewport$
-    .pipe(
-      distinctUntilKeyChanged("size"),
-      map(() => parseFloat(
-        getComputedStyle(el.parentElement!)
-          .getPropertyValue("padding-top")
-      )),
-      distinctUntilChanged()
-    )
+  const inner = el.parentElement!
+  const outer = inner.parentElement!
 
   /* Compute the sidebar's available height */
+  const adjust$ = of(inner.offsetTop - outer.offsetTop)
   const height$ = viewport$
     .pipe(
       withLatestFrom(adjust$, main$),

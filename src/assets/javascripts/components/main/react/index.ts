@@ -87,10 +87,10 @@ export function watchMain(
   /* Compute the main area's top and bottom markers */
   const marker$ = watchElementSize(el)
     .pipe(
-      map(({ height }) => [
-        el.offsetTop,
-        el.offsetTop + height
-      ]),
+      map(({ height }) => ({
+        top:    el.offsetTop,
+        bottom: el.offsetTop + height
+      })),
       distinctUntilChanged(),
       shareReplay(1)
     )
@@ -98,7 +98,7 @@ export function watchMain(
   /* Compute the main area's visible height */
   const height$ = combineLatest([adjust$, marker$, viewport$])
     .pipe(
-      map(([header, [top, bottom], { offset: { y }, size: { height } }]) => {
+      map(([header, { top, bottom }, { offset: { y }, size: { height } }]) => {
         return height
           - Math.max(0, top    - y,  header)
           - Math.max(0, height + y - bottom)
@@ -110,14 +110,14 @@ export function watchMain(
   /* Compute whether the viewport offset is past the main area's top */
   const active$ = combineLatest([adjust$, marker$, viewport$])
     .pipe(
-      map(([header, [top], { offset: { y } }]) => y >= top - header),
+      map(([header, { top }, { offset: { y } }]) => y >= top - header),
       distinctUntilChanged()
     )
 
   /* Combine into a single observable */
   return combineLatest([adjust$, marker$, height$, active$])
     .pipe(
-      map(([header, [top], height, active]) => ({
+      map(([header, { top }, height, active]) => ({
         offset: top - header,
         height,
         active
