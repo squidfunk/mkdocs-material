@@ -39,6 +39,20 @@ const css = {
   teaser:  "md-search-result__teaser"
 }
 
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Path of `content-copy` icon
+ */
+const path =
+  "M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H13C12.59,21.75 12.2,21.44 " +
+  "11.86,21.1C11.53,20.77 11.25,20.4 11,20H6V4H13V9H18V10.18C18.71,10.34 " +
+  "19.39,10.61 20,11V8L14,2M20.31,18.9C21.64,16.79 21,14 " +
+  "18.91,12.68C16.8,11.35 14,12 12.69,14.08C11.35,16.19 12,18.97 " +
+  "14.09,20.3C15.55,21.23 17.41,21.23 " +
+  "18.88,20.32L22,23.39L23.39,22L20.31,18.9M16.5,19A2.5,2.5 0 0,1 " +
+  "14,16.5A2.5,2.5 0 0,1 16.5,14A2.5,2.5 0 0,1 19,16.5A2.5,2.5 0 0,1 16.5,19Z"
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -54,31 +68,30 @@ export function renderSearchResult(
   { article, sections }: SearchResult
 ) {
 
-  // create page with icon
-  const path = require("material-design-icons-svg/paths/file-search-outline.json")
+  /* Render icon */
+  const icon = (
+    <div class="md-search-result__icon md-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={path}></path>
+      </svg>
+    </div>
+  )
 
+  /* Render article and sections */
   const children = [article, ...sections].map(document => {
     const { location, title, text } = document
     return (
       <a href={location} class={css.link} tabIndex={-1}>
         <article class={"parent" in document ? css.section : css.article}>
-          {!("parent" in document)
-            ? <div class="md-search-result__icon md-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d={path}></path>
-                </svg>
-              </div>
-            : null
-          }
+          {!("parent" in document) && icon}
           <h1 class={css.title}>{title}</h1>
-          {text.length
-            ? <p class={css.teaser}>{truncate(text, 320)}</p>
-            : undefined
-          }
+          {text.length > 0 && <p class={css.teaser}>{truncate(text, 320)}</p>}
         </article>
       </a>
     )
   })
+
+  /* Render search result */
   return (
     <li class={css.item}>
       {children}

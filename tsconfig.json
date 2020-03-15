@@ -31,7 +31,6 @@
       "workers": ["workers"]
     },
     "removeComments": false,
-    "resolveJsonModule": true,
     "sourceMap": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,

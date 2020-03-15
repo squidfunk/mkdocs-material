@@ -74,8 +74,7 @@ function config(args: Configuration): Configuration {
                 transpileOnly: true,
                 compilerOptions: {
                   importHelpers: true,
-                  module: "esnext",
-                  removeComments: false
+                  module: "esnext"
                 }
               }
             }
@@ -183,7 +182,7 @@ function config(args: Configuration): Configuration {
         /\.(html|py|yml)$/
       ],
       warningsFilter: [
-        /export '.*' was not found in/
+        /export '.[^']+' was not found in/
       ]
     }
   }
