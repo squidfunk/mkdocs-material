@@ -260,6 +260,8 @@ SuperFences does also allow [grouping code blocks with tabs][25].
 
 [Tabbed][26] adds support for creating tabbed groups of Markdown content.
 
+Example:
+
 ``` markdown
 === "Fruit List"
     - :apple: Apple
@@ -273,6 +275,8 @@ SuperFences does also allow [grouping code blocks with tabs][25].
     :banana: Banana | Yellow
     :kiwi:   Kiwi   | Green
 ```
+
+Result:
 
 === "Fruit List"
     - :apple: Apple
