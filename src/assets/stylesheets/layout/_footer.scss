@@ -140,8 +140,10 @@
 
   // Set spacing
   &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding: px2rem(4px);
-    overflow: auto;
   }
 
   // Use a decent color for non-hovered links and ensure specificity
@@ -158,20 +160,15 @@
 
 // Copyright and theme information
 .md-footer-copyright {
-  margin: 0 px2rem(12px);
+  width: 100%;
+  margin: auto px2rem(12px);
   padding: px2rem(8px) 0;
   color: var(--md-default-bg-color--lighter);
   font-size: ms(-1);
 
   // [tablet portrait +]: Show next to social media links
   @include break-from-device(tablet portrait) {
-    float: left;
-    max-width: 75%;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      float: right;
-    }
+    width: auto;
   }
 
   // Highlight copyright information
@@ -180,20 +177,14 @@
   }
 }
 
-// Social media links
+// Social links
 .md-footer-social {
   margin: 0 px2rem(8px);
   padding: px2rem(4px) 0 px2rem(12px);
 
   // [tablet portrait +]: Show next to copyright information
   @include break-from-device(tablet portrait) {
-    float: right;
     padding: px2rem(12px) 0;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      float: left;
-    }
   }
 
   // Link with icon
