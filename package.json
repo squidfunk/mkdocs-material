@@ -59,7 +59,7 @@
     "css-mqpacker": "^7.0.0",
     "event-hooks-webpack-plugin": "^2.1.6",
     "expose-loader": "^0.7.5",
-    "extract-loader": "^4.0.3",
+    "extract-loader": "^5.0.1",
     "file-loader": "^5.1.0",
     "github-types": "^1.0.0",
     "gitlab": "^14.2.2",

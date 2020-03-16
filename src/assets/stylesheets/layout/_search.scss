@@ -355,6 +355,7 @@ $md-toggle__search--checked:
 
       // [tablet landscape +]: Header-embedded search
       @include break-from-device(tablet landscape) {
+        pointer-events: none;
 
         // Hide the arrow (2nd icon)
         svg:last-child {
