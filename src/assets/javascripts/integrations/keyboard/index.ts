@@ -166,6 +166,7 @@ export function setupKeyboard(): Observable<Keyboard> {
           /* Open search and select query */
           case "f":
           case "s":
+          case "/":
             setElementFocus(query)
             setElementSelection(query)
             key.claim()
