@@ -265,6 +265,7 @@ $codehilite-whitespace: transparent;
   // Block with line numbers
   .codehilitetable {
     margin: 1em 0;
+    direction: ltr;
     border-radius: px2rem(2px);
 
     // Remove rounded borders
