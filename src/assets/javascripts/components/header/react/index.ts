@@ -79,7 +79,7 @@ export function watchHeader(
         const styles = getComputedStyle(el)
         const sticky = [
           "sticky",                    /* Modern browsers */
-          "-webkit-sticky"             /* Old Safari */
+          "-webkit-sticky"             /* Safari */
         ].includes(styles.position)
         return of({
           sticky,

@@ -61,7 +61,6 @@
   summary {
     @extend .admonition-title;
 
-    // Hack: set to block, so Firefox doesn't render marker
     outline: none;
     cursor: pointer;
 
