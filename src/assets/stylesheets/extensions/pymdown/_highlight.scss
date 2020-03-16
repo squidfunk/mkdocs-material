@@ -34,11 +34,10 @@
   [data-linenos]::before {
     position: sticky;
     left: px2em(-16px, 13.6px);
-    display: inline-block;
+    float: left;
     margin-right: px2em(16px, 13.6px);
     margin-left: px2em(-16px, 13.6px);
     padding-left: px2em(16px, 13.6px);
-    float: left;
     color: var(--md-default-fg-color--lighter);
     background-color: var(--md-code-bg-color);
     box-shadow: inset px2rem(-1px) 0 var(--md-default-fg-color--lightest);
