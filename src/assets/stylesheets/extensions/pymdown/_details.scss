@@ -43,28 +43,17 @@
 
     // Rotate title icon
     &[open] > summary::after {
-      transform: rotate(180deg);
+      transform: rotate(0deg);
     }
 
     // Remove bottom spacing
     &:not([open]) {
       padding-bottom: 0;
-
-      // Remove bottom border if block is closed
-      > summary {
-        border-bottom: none;
-      }
     }
 
-    // Increase spacing to the right - scoped here for higher specificity
+    // Ensure clickable area, even if no title is set
     summary {
-      position: relative;
-      padding-right: px2rem(40px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        padding-left: px2rem(40px);
-      }
+      min-height: px2rem(20px);
     }
   }
 
@@ -73,7 +62,6 @@
     @extend .admonition-title;
 
     // Hack: set to block, so Firefox doesn't render marker
-    display: block;
     outline: none;
     cursor: pointer;
 
@@ -84,18 +72,19 @@
 
     // Icon
     &::after {
-      position: absolute;
-      right: px2rem(12px);
+      flex-shrink: 0;
       width: px2rem(20px);
       height: px2rem(20px);
-      background-color: var(--md-default-fg-color--lighter);
-      mask-image: var(--md-details-icon);
+      margin-left: auto;
+      background-image: var(--md-details-icon);
+      transform: rotate(-90deg);
+      transition: transform 250ms;
       content: "";
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        right: initial;
-        left: px2rem(12px);
+        margin-right: auto;
+        margin-left: initial;
       }
     }
   }
