@@ -151,7 +151,7 @@ export class SearchIndex {
         }
 
         /* Setup fields and reference */
-        this.field("title", { boost: 10 })
+        this.field("title", { boost: 1000 })
         this.field("text")
         this.ref("location")
 
