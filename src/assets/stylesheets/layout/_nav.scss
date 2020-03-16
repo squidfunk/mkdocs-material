@@ -502,6 +502,12 @@
       height: px2rem(18px);
       transition: transform 250ms;
 
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        float: left;
+        transform: rotate(180deg);
+      }
+
       // Inline icon and adjust to match font size
       svg {
         display: inline-block;

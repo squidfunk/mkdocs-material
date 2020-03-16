@@ -43,7 +43,7 @@
 
     // Rotate title icon
     &[open] > summary::after {
-      transform: rotate(0deg);
+      transform: rotateZ(0deg);
     }
 
     // Remove bottom spacing
@@ -77,7 +77,7 @@
       height: px2rem(20px);
       margin-left: auto;
       background-image: var(--md-details-icon);
-      transform: rotate(-90deg);
+      transform: rotateZ(-90deg);
       transition: transform 250ms;
       content: "";
 
@@ -85,6 +85,7 @@
       [dir="rtl"] & {
         margin-right: auto;
         margin-left: initial;
+        transform: rotateZ(90deg);
       }
     }
   }

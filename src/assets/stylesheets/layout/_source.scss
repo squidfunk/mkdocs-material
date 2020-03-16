@@ -66,12 +66,6 @@
   backface-visibility: hidden;
   transition: opacity 250ms;
 
-  // Adjust for right-to-left languages
-  [dir="rtl"] & {
-    padding-right: initial;
-    padding-left: px2rem(12px);
-  }
-
   // Hovered source container
   &:hover {
     opacity: 0.7;
