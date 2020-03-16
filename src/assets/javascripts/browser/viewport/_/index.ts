@@ -93,9 +93,11 @@ export function watchViewport(): Observable<Viewport> {
 export function watchViewportAt(
   el: HTMLElement, { header$, viewport$ }: WatchAtOptions
 ): Observable<Viewport> {
-  const offset$ = viewport$
+  const offset$ = combineLatest([
+    viewport$.pipe(distinctUntilKeyChanged("size")),
+    header$
+  ])
     .pipe(
-      distinctUntilKeyChanged("size"),
       map((): ViewportOffset => ({
         x: el.offsetLeft,
         y: el.offsetTop

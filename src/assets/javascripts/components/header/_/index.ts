@@ -92,7 +92,7 @@ export function mountHeader(
 ): OperatorFunction<HTMLElement, Header> {
   return pipe(
     switchMap(el => {
-      const header$ = watchHeader(el, { viewport$ })
+      const header$ = watchHeader(el)
 
       /* Compute whether the header should switch to page header */
       const type$ = useComponent("main")

@@ -29,11 +29,13 @@ import {
 } from "rxjs"
 import {
   distinctUntilChanged,
+  distinctUntilKeyChanged,
   finalize,
   map,
   observeOn,
   pluck,
   shareReplay,
+  switchMap,
   tap
 } from "rxjs/operators"
 
@@ -81,17 +83,23 @@ export function watchMain(
   /* Compute necessary adjustment for header */
   const adjust$ = header$
     .pipe(
-      pluck("height")
+      pluck("height"),
+      distinctUntilChanged(),
+      shareReplay(1)
     )
 
   /* Compute the main area's top and bottom markers */
-  const marker$ = watchElementSize(el)
+  const marker$ = adjust$
     .pipe(
-      map(({ height }) => ({
-        top:    el.offsetTop,
-        bottom: el.offsetTop + height
-      })),
-      distinctUntilChanged(),
+      switchMap(() => watchElementSize(el)
+        .pipe(
+          map(({ height }) => ({
+            top:    el.offsetTop,
+            bottom: el.offsetTop + height
+          }))
+        )
+      ),
+      distinctUntilKeyChanged("top"),
       shareReplay(1)
     )
 

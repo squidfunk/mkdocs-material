@@ -28,14 +28,14 @@ import {
   pipe
 } from "rxjs"
 import {
-  distinctUntilKeyChanged,
   finalize,
+  map,
   observeOn,
-  switchMap,
+  shareReplay,
   tap
 } from "rxjs/operators"
 
-import { Viewport } from "browser"
+import { watchElementSize } from "browser"
 
 import { Header, HeaderType } from "../_"
 import {
@@ -44,49 +44,38 @@ import {
 } from "../set"
 
 /* ----------------------------------------------------------------------------
- * Helper types
- * ------------------------------------------------------------------------- */
-
-/**
- * Watch options
- */
-interface WatchOptions {
-  viewport$: Observable<Viewport>      /* Viewport observable */
-}
-
-/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
  * Watch header
  *
- * The header is wrapped in an observable to pave the way for auto-hiding or
- * other dynamic behaviors that may be implemented later on.
- *
  * @param el - Header element
- * @param options - Options
  *
  * @return Header observable
  */
 export function watchHeader(
-  el: HTMLElement, { viewport$ }: WatchOptions
+  el: HTMLElement
 ): Observable<Omit<Header, "type">> {
-  return viewport$
-    .pipe(
-      distinctUntilKeyChanged("size"),
-      switchMap(() => {
-        const styles = getComputedStyle(el)
-        const sticky = [
-          "sticky",                    /* Modern browsers */
-          "-webkit-sticky"             /* Safari */
-        ].includes(styles.position)
-        return of({
-          sticky,
-          height: sticky ? el.offsetHeight : 0
-        })
-      })
-    )
+  const styles = getComputedStyle(el)
+  if ([
+    "sticky",                          /* Modern browsers */
+    "-webkit-sticky"                   /* Safari */
+  ].includes(styles.position)) {
+    return watchElementSize(el)
+      .pipe(
+        map(({ height }) => ({
+          sticky: true,
+          height
+        })),
+        shareReplay(1)
+      )
+  } else {
+    return of({
+      sticky: false,
+      height: 0
+    })
+  }
 }
 
 /* ------------------------------------------------------------------------- */

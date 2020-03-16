@@ -25,7 +25,6 @@ import {
   Observable,
   animationFrameScheduler,
   combineLatest,
-  of,
   pipe
 } from "rxjs"
 import {
@@ -90,15 +89,13 @@ interface ApplyOptions {
 export function watchSidebar(
   el: HTMLElement, { main$, viewport$ }: WatchOptions
 ): Observable<Sidebar> {
-  const inner = el.parentElement!
-  const outer = inner.parentElement!
+  const adjust = el.parentElement!.offsetTop
+               - el.parentElement!.parentElement!.offsetTop
 
   /* Compute the sidebar's available height */
-  const adjust$ = of(inner.offsetTop - outer.offsetTop)
-  const height$ = viewport$
+  const height$ = combineLatest([main$, viewport$])
     .pipe(
-      withLatestFrom(adjust$, main$),
-      map(([{ offset: { y } }, adjust, { offset, height }]) => (
+      map(([{ offset, height }, { offset: { y } }]) => (
         height
           + Math.min(adjust, Math.max(0, y - offset))
           - adjust
@@ -107,12 +104,9 @@ export function watchSidebar(
     )
 
   /* Compute whether the sidebar should be locked */
-  const lock$ = viewport$
+  const lock$ = combineLatest([main$, viewport$])
     .pipe(
-      withLatestFrom(adjust$, main$),
-      map(([{ offset: { y } }, adjust, { offset }]) => (
-        y >= offset + adjust
-      )),
+      map(([{ offset }, { offset: { y } }]) => y >= offset + adjust),
       distinctUntilChanged()
     )
 
