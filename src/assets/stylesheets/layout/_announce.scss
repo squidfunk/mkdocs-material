@@ -30,10 +30,9 @@
 
   // Actual content
   &__inner {
-    min-height: px2rem(48px);
+    margin: px2rem(12px) auto;
     padding: 0 px2rem(16px);
     color: var(--md-default-bg-color);
     font-size: px2rem(14px);
-    line-height: px2rem(48px);
   }
 }

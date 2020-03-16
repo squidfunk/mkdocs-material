@@ -258,7 +258,19 @@ theme:
 
 The following language codes are supported:
 
-<ul style="-webkit-columns: 2; -moz-columns: 2; columns: 2">
+<style>
+  .md-language-list {
+    -webkit-columns: 2;
+       -moz-columns: 2;
+            columns: 2;
+  }
+  .md-language-list li {
+    -webkit-column-break-inside: avoid;
+              page-break-inside: avoid;
+                   break-inside: avoid;
+  }
+</style>
+<ul class="md-language-list">
   <li><code>af</code> / Afrikaans</li>
   <li><code>ar</code> / Arabic</li>
   <li><code>ca</code> / Catalan</li>

@@ -1,6 +1,6 @@
 # Search
 
-The built-in [search][1] plugin provides client-side search inside the browser
+The [built-in search plugin][1] provides client-side search inside the browser
 and is implemented using [lunr.js][2] which includes stemmers for the English
 language by default, while stemmers for other languages are included with 
 [lunr-languages][3], both of which are integrated with this theme.
@@ -41,7 +41,19 @@ plugins:
 
 The following language codes are supported:
 
-<ul style="-webkit-columns: 2; -moz-columns: 2; columns: 2">
+<style>
+  .md-language-list {
+    -webkit-columns: 2;
+       -moz-columns: 2;
+            columns: 2;
+  }
+  .md-language-list li {
+    -webkit-column-break-inside: avoid;
+              page-break-inside: avoid;
+                   break-inside: avoid;
+  }
+</style>
+<ul class="md-language-list">
   <li><code>ar</code> / Arabic</li>
   <li><code>da</code> / Danish</li>
   <li><code>du</code> / Dutch</li>
