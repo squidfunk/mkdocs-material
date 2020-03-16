@@ -34,15 +34,18 @@
     width: 100%;
     box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest);
 
-    // Actual content
-    pre {
+    // Mirror old superfences behavior, if there's only a single code block.
+    > .codehilite:only-child pre,
+    > .codehilitetable:only-child,
+    > .highlight:only-child pre,
+    > .highlighttable:only-child {
       margin: 0;
-    }
 
-    // Remove rounded borders at the top
-    code {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      // Remove rounded borders at the top
+      > code {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
     }
 
     // Nested tabs

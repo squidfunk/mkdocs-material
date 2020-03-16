@@ -263,7 +263,7 @@ $codehilite-whitespace: transparent;
 .md-typeset {
 
   // Block with line numbers
-  > .codehilitetable {
+  .codehilitetable {
     margin: 1em 0;
     border-radius: px2rem(2px);
 
