@@ -41,7 +41,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.60408940.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.822f5098.min.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.31180ff2.min.css' | url }}">
       {% endif %}
@@ -61,7 +61,7 @@
             font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
             font.code | replace(' ', '+')
           }}&display=fallback">
-        <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
+        <style>body,input{font-family:"{{ font.text }}",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}",SFMono-Regular,Consolas,Menlo,monospace}</style>
       {% endif %}
     {% endblock %}
     {% if config.extra.manifest %}
@@ -178,7 +178,7 @@
     {% endblock %}
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.aad0415a.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.546b0e0d.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.7b9051f7.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",

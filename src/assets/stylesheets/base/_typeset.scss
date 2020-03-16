@@ -35,7 +35,7 @@ body,
 input {
   color: var(--md-default-fg-color);
   font-feature-settings: "kern", "liga";
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
 }
 
 // Proportionally spaced fonts
@@ -44,7 +44,7 @@ pre,
 kbd {
   color: var(--md-default-fg-color);
   font-feature-settings: "kern";
-  font-family: "Courier New", Courier, monospace;
+  font-family: SFMono-Regular, Consolas, Menlo, monospace;
 }
 
 // ----------------------------------------------------------------------------
