@@ -103,33 +103,25 @@ export function watchMain(
       shareReplay(1)
     )
 
-  /* Compute the main area's visible height */
-  const height$ = combineLatest([adjust$, marker$, viewport$])
+  /* Compute the main area's offset, visible height and if we scrolled past */
+  return combineLatest([adjust$, marker$, viewport$])
     .pipe(
       map(([header, { top, bottom }, { offset: { y }, size: { height } }]) => {
-        return height
+        height = Math.max(0, height
           - Math.max(0, top    - y,  header)
           - Math.max(0, height + y - bottom)
+        )
+        return {
+          offset: top - header,
+          height,
+          active: y >= top - header
+        }
       }),
-      map(height => Math.max(0, height)),
-      distinctUntilChanged()
-    )
-
-  /* Compute whether the viewport offset is past the main area's top */
-  const active$ = combineLatest([adjust$, marker$, viewport$])
-    .pipe(
-      map(([header, { top }, { offset: { y } }]) => y >= top - header),
-      distinctUntilChanged()
-    )
-
-  /* Combine into a single observable */
-  return combineLatest([adjust$, marker$, height$, active$])
-    .pipe(
-      map(([header, { top }, height, active]) => ({
-        offset: top - header,
-        height,
-        active
-      }))
+      distinctUntilChanged<Main>((a, b) => {
+        return a.offset === b.offset
+            && a.height === b.height
+            && a.active === b.active
+      })
     )
 }
 

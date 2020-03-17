@@ -54,11 +54,6 @@ hr {
   overflow: visible;
 }
 
-// Remove gaps in underlined links in iOS >= 8 and Safari >= 8
-a {
-  -webkit-text-decoration-skip: objects; // stylelint-disable-line
-}
-
 // Reset tap outlines on iOS and Android
 a,
 button,
@@ -115,7 +110,7 @@ th {
   vertical-align: top;
 }
 
-// Reset (native) button styles
+// Reset button styles
 button {
   margin: 0;
   padding: 0;
@@ -124,7 +119,7 @@ button {
   border: 0;
 }
 
-// Reset (native) input styles
+// Reset input styles
 input {
   border: 0;
   outline: 0;

@@ -116,10 +116,10 @@
 
     // Reset code inside Admonition titles
     > code {
-      margin: inherit;
-      padding: inherit;
-      color: inherit;
-      background-color: inherit;
+      margin: initial;
+      padding: initial;
+      color: initial;
+      background-color: transparent;
       border-radius: initial;
       box-shadow: none;
     }

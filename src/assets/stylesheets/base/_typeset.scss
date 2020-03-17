@@ -58,7 +58,6 @@ kbd {
 .md-typeset {
   font-size: ms(0);
   line-height: 1.6;
-
   // Colors should be kept when printing
   -webkit-print-color-adjust: exact; // stylelint-disable-line
 
@@ -173,7 +172,7 @@ kbd {
     }
   }
 
-  // Inline code blocks, correct relative ems for smaller font size
+  // Inline code blocks
   code {
     margin: 0 px2em(4px, 13.6px);
     padding: px2em(1px, 13.6px) 0;
@@ -194,17 +193,18 @@ kbd {
   h4 code,
   h5 code,
   h6 code {
-    margin: 0;
+    margin: initial;
+    padding: initial;
     background-color: transparent;
     box-shadow: none;
   }
 
   // Reset code if it's inside a link
   a > code {
-    margin: inherit;
-    padding: inherit;
-    color: inherit;
-    background-color: inherit;
+    margin: initial;
+    padding: initial;
+    color: initial;
+    background-color: transparent;
     border-radius: initial;
     box-shadow: none;
   }

@@ -92,28 +92,22 @@ export function watchSidebar(
   const adjust = el.parentElement!.offsetTop
                - el.parentElement!.parentElement!.offsetTop
 
-  /* Compute the sidebar's available height */
-  const height$ = combineLatest([main$, viewport$])
+  /* Compute the sidebar's available height and if it should be locked */
+  return combineLatest([main$, viewport$])
     .pipe(
-      map(([{ offset, height }, { offset: { y } }]) => (
-        height
+      map(([{ offset, height }, { offset: { y } }]) => {
+        height = height
           + Math.min(adjust, Math.max(0, y - offset))
           - adjust
-      )),
-      distinctUntilChanged()
-    )
-
-  /* Compute whether the sidebar should be locked */
-  const lock$ = combineLatest([main$, viewport$])
-    .pipe(
-      map(([{ offset }, { offset: { y } }]) => y >= offset + adjust),
-      distinctUntilChanged()
-    )
-
-  /* Combine into single observable */
-  return combineLatest([height$, lock$])
-    .pipe(
-      map(([height, lock]) => ({ height, lock }))
+        return {
+          height,
+          lock: y >= offset + adjust
+        }
+      }),
+      distinctUntilChanged<Sidebar>((a, b) => {
+        return a.height === b.height
+            && a.lock   === b.lock
+      })
     )
 }
 
