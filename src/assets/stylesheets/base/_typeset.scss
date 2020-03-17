@@ -301,11 +301,11 @@ kbd {
   // Superscript and subscript
   sup,
   sub {
-    margin-left: 0.0625em * 1 / 0.8;
+    margin-left: px2em(1px, 12.8px);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
-      margin-right: 0.0625em * 1 / 0.8;
+      margin-right: px2em(1px, 12.8px);
       margin-left: initial;
     }
   }
@@ -333,12 +333,12 @@ kbd {
   // Unordered and ordered lists
   ul,
   ol {
-    margin-left: 0.625em;
+    margin-left: px2em(10px, 16px);
     padding: 0;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
-      margin-right: 0.625em;
+      margin-right: px2em(10px, 16px);
       margin-left: initial;
     }
 
@@ -355,11 +355,11 @@ kbd {
     // List elements
     li {
       margin-bottom: 0.5em;
-      margin-left: 1.25em;
+      margin-left: px2em(20px, 16px);
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        margin-right: 1.25em;
+        margin-right: px2em(20px, 16px);
         margin-left: initial;
       }
 
@@ -377,11 +377,11 @@ kbd {
       // Nested lists
       ul,
       ol {
-        margin: 0.5em 0 0.5em 0.625em;
+        margin: 0.5em 0 0.5em px2em(10px, 16px);
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
-          margin-right: 0.625em;
+          margin-right: px2em(10px, 16px);
           margin-left: initial;
         }
       }
@@ -390,11 +390,11 @@ kbd {
 
   // Definition lists
   dd {
-    margin: 1em 0 1em 1.875em;
+    margin: 1em 0 1em px2em(30px, 16px);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
-      margin-right: 1.875em;
+      margin-right: px2em(30px, 16px);
       margin-left: initial;
     }
   }

@@ -31,8 +31,8 @@
   del.critic,
   ins.critic,
   .critic.comment {
-    margin: 0 0.25em;
-    padding: 0.0625em 0;
+    margin: 0 px2em(4px, 16px);
+    padding: px2em(1px, 16px) 0;
     border-radius: px2rem(2px);
     box-decoration-break: clone;
   }
@@ -41,16 +41,16 @@
   del.critic {
     background-color: $codehilite-diff-deleted;
     box-shadow:
-      +0.25em 0 0 $codehilite-diff-deleted,
-      -0.25em 0 0 $codehilite-diff-deleted;
+      px2em( 4px, 16px) 0 0 $codehilite-diff-deleted,
+      px2em(-4px, 16px) 0 0 $codehilite-diff-deleted;
   }
 
   // Addition
   ins.critic {
     background-color: $codehilite-diff-inserted;
     box-shadow:
-      +0.25em 0 0 $codehilite-diff-inserted,
-      -0.25em 0 0 $codehilite-diff-inserted;
+      px2em( 4px, 16px) 0 0 $codehilite-diff-inserted,
+      px2em(-4px, 16px) 0 0 $codehilite-diff-inserted;
   }
 
   // Comment

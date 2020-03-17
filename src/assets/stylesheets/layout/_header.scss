@@ -41,7 +41,7 @@
     0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0);
   transition:
     background-color 250ms,
-    color 250ms;
+    color            250ms;
 
   // Always hide shadow, in case JavaScript is not available
   .no-js & {
