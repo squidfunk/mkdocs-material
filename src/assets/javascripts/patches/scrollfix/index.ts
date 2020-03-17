@@ -83,7 +83,7 @@ export function patchScrollfix(
   iif(isAppleDevice, els$, NEVER)
     .pipe(
       switchMap(els => merge(...els.map(el => (
-        fromEvent(el, "touchstart")
+        fromEvent(el, "touchstart", { passive: true })
           .pipe(
             mapTo(el)
           )

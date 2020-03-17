@@ -74,8 +74,8 @@ export function setViewportOffset(
  */
 export function watchViewportOffset(): Observable<ViewportOffset> {
   return merge(
-    fromEvent<UIEvent>(window, "scroll"),
-    fromEvent<UIEvent>(window, "resize")
+    fromEvent<UIEvent>(window, "scroll", { passive: true }),
+    fromEvent<UIEvent>(window, "resize", { passive: true })
   )
     .pipe(
       map(getViewportOffset),
