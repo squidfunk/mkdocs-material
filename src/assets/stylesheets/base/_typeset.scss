@@ -147,16 +147,6 @@ kbd {
     &:hover {
       color: var(--md-accent-fg-color);
     }
-
-    // Add URLs for print
-    @media print {
-
-      // Show link URL
-      &::after {
-        color: var(--md-default-fg-color--light);
-        content: " [" attr(href) "]";
-      }
-    }
   }
 
   // Code blocks

@@ -77,7 +77,7 @@
 
     // Footnote
     li {
-      transition: color 250ms;
+      transition: color 125ms;
 
       // Darken color for targeted footnote
       &:target {
@@ -89,16 +89,15 @@
         margin-top: 0;
       }
 
-      // Make back references visible on hover
+      // Make back references visible on container hover
       &:hover  .footnote-backref,
       &:target .footnote-backref {
         transform: translateX(0);
         opacity: 1;
       }
 
-      // Active or targeted back reference
-      &:hover  .footnote-backref:hover,
-      &:target .footnote-backref {
+      // Hovered back reference
+      &:hover  .footnote-backref:hover {
         color: var(--md-accent-fg-color);
       }
     }
@@ -113,7 +112,7 @@
   // Footnote back reference
   .footnote-backref {
     display: inline-block;
-    color: var(--md-default-fg-color--lighter);
+    color: var(--md-primary-fg-color);
     // Hack: remove Unicode arrow for icon
     font-size: 0;
     vertical-align: text-bottom;
@@ -145,6 +144,18 @@
         svg {
           transform: scaleX(-1)
         }
+      }
+    }
+
+    // Always show for print
+    @media print {
+      color: var(--md-primary-fg-color);
+      transform: translateX(0);
+      opacity: 1;
+
+      // Hack: mask-image is not supported in PDFs
+      &::before {
+        background: var(--md-footnotes-icon);
       }
     }
   }

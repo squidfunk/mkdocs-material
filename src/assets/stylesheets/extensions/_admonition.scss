@@ -51,6 +51,7 @@
     padding: 0 px2rem(12px);
     overflow: hidden;
     font-size: ms(-1);
+    page-break-inside: avoid;
     border-left: px2rem(4px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
     box-shadow:
@@ -61,6 +62,11 @@
     [dir="rtl"] & {
       border-right: px2rem(4px) solid $clr-blue-a200;
       border-left: none;
+    }
+
+    // Omit rendering errors for print
+    @media print {
+      box-shadow: none;
     }
 
     // Adjust spacing on last element
@@ -112,6 +118,11 @@
         margin-right: initial;
         margin-left: px2rem(8px);
       }
+
+      // Hack: mask-image is not supported in PDFs
+      @media print {
+        background: var(--md-admonition-icon--note);
+      }
     }
 
     // Reset code inside Admonition titles
@@ -158,6 +169,11 @@
     &::before {
       background-color: $tint;
       mask-image: var(--md-admonition-icon--#{$type});
+
+      // Hack: mask-image is not supported in PDFs
+      @media print {
+        background: var(--md-admonition-icon--#{$type});
+      }
     }
   }
 
