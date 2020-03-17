@@ -214,7 +214,6 @@ kbd {
     position: relative;
     margin: 1em 0;
     line-height: 1.4;
-    -webkit-overflow-scrolling: touch;
 
     // Actual container with code, overflowing
     > code {
@@ -225,6 +224,7 @@ kbd {
       word-break: normal;
       box-shadow: none;
       box-decoration-break: slice;
+      -webkit-overflow-scrolling: touch;
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {

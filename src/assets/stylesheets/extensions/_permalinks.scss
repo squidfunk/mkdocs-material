@@ -31,7 +31,7 @@
   .headerlink {
     display: inline-block;
     margin-left: px2rem(10px);
-    // Hack: If we don't set visibility hidden, the text content of the node
+    // Hack: if we don't set visibility hidden, the text content of the node
     // will include the headerlink character, which is why Google indexes them.
     visibility: hidden;
     opacity: 0;
