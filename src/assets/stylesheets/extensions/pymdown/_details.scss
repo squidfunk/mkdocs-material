@@ -40,6 +40,7 @@
 
     display: block;
     padding-top: 0;
+    overflow: visible;
 
     // Rotate title icon
     &[open] > summary::after {
@@ -50,16 +51,27 @@
     &:not([open]) {
       padding-bottom: 0;
     }
+
+    // Hack: omit margin collapse
+    &::after {
+      display: table;
+      content: "";
+    }
   }
 
-  // Title
+  // Details title
   summary {
     @extend .admonition-title;
 
     box-sizing: border-box;
     min-height: px2rem(20px);
-    outline: none;
+    padding: px2rem(8px) px2rem(36px) px2rem(8px) px2rem(40px);
     cursor: pointer;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(36px);
+    }
 
     // Remove default details marker
     &::-webkit-details-marker {
@@ -68,10 +80,11 @@
 
     // Details marker
     &::after {
-      flex-shrink: 0;
+      position: absolute;
+      top: px2rem(8px);
+      right: px2rem(8px);
       width: px2rem(20px);
       height: px2rem(20px);
-      margin-left: auto;
       background-image: var(--md-details-icon);
       transform: rotate(0deg);
       transition: transform 250ms;
@@ -79,47 +92,9 @@
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        margin-right: auto;
-        margin-left: initial;
+        right: initial;
+        left: px2rem(8px);
         transform: rotate(180deg);
-      }
-    }
-
-    // Hack: absolute positioning for summary elements in Safari 9+ because,
-    // of course, they cannot be flex containers: https://bit.ly/2IW5g4O
-    _:default:not(:root:root), & { // stylelint-disable-line
-      position: relative;
-      padding: px2rem(8px) px2rem(40px);
-
-      // Icon and details marker
-      &::before,
-      &::after {
-        position: absolute;
-        flex-shrink: initial;
-        margin: initial;
-      }
-
-      // Icon
-      &::before {
-        margin-left: px2rem(-28px);
-
-        // Adjust for right-to-left languages
-        [dir="rtl"] & {
-          margin-right: px2rem(-28px);
-          margin-left: initial;
-        }
-      }
-
-      // Details marker
-      &::after {
-        top: px2rem(8px);
-        right: px2rem(12px);
-
-        // Adjust for right-to-left languages
-        [dir="rtl"] & {
-          right: initial;
-          left: px2rem(12px);
-        }
       }
     }
   }

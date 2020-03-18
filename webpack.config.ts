@@ -105,22 +105,29 @@ function config(args: Configuration): Configuration {
               }
             },
             {
+              loader: "string-replace-loader",
+              options: {
+                multiple: [
+                  {
+                    search: "\\{{2}([^}]+)\\}{2}",
+                    replace(_: string, name: string) {
+                      return `data:image/svg+xml;utf8,${
+                          icon.getSVG(path.basename(name.trim(), ".json"))
+                            .replace(/"/g, "\\\"")
+                        }`
+                    },
+                    flags: "g"
+                  }
+                ]
+              }
+            },
+            {
               loader: "postcss-loader",
               options: {
                 ident: "postcss",
                 plugins: () => [
                   require("autoprefixer")(),
-                  require("css-mqpacker"),
-                  require("postcss-replace")({
-                    data: new Proxy(data, {
-                      get(_, name: string) {
-                        return `data:image/svg+xml;utf8,${
-                          icon.getSVG(path.basename(name, ".json"))
-                            .replace(/"/g, "\\\"")
-                        }`
-                      }
-                    })
-                  })
+                  require("css-mqpacker")
                 ],
                 sourceMap: args.mode !== "production"
               }

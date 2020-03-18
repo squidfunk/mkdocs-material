@@ -45,7 +45,7 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Admonition
+  // Admonition extension
   .admonition {
     margin: 1.5625em 0;
     padding: 0 px2rem(12px);
@@ -64,7 +64,7 @@
       border-left: none;
     }
 
-    // Omit rendering errors for print
+    // Hack: omit rendering errors for print
     @media print {
       box-shadow: none;
     }
@@ -92,11 +92,16 @@
 
   // Admonition title
   .admonition-title {
-    display: flex;
+    position: relative;
     margin: 0 px2rem(-12px);
-    padding: px2rem(8px) px2rem(12px);
+    padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
     font-weight: 700;
     background-color: transparentize($clr-blue-a200, 0.9);
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(12px);
+    }
 
     // Reset spacing, if title is the only element
     html &:last-child {
@@ -105,18 +110,18 @@
 
     // Icon
     &::before {
-      flex-shrink: 0;
+      position: absolute;
+      left: px2rem(12px);
       width: px2rem(20px);
       height: px2rem(20px);
-      margin-right: px2rem(8px);
       background-color: $clr-blue-a200;
       mask-image: var(--md-admonition-icon--note);
       content: "";
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        margin-right: initial;
-        margin-left: px2rem(8px);
+        right: px2rem(12px);
+        left: initial;
       }
 
       // Hack: mask-image is not supported in PDFs
