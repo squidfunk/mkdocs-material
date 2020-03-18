@@ -21,23 +21,36 @@
 ////
 
 // ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+///
+/// Admonition flavours
+///
+$admonitions: (
+  note:                       pencil $clr-blue-a200,
+  abstract summary tldr:      text-subject $clr-light-blue-a400,
+  info todo:                  information $clr-cyan-a700,
+  tip hint important:         fire $clr-teal-a700,
+  success check done:         check-circle $clr-green-a700,
+  question help faq:          help-circle $clr-light-green-a700,
+  warning caution attention:  alert $clr-orange-a400,
+  failure fail missing:       close-circle $clr-red-a200,
+  danger error:               flash-circle $clr-red-a400,
+  bug:                        bug $clr-pink-a400,
+  example:                    format-list-numbered $clr-deep-purple-a400,
+  quote cite:                 format-quote-close $clr-grey
+) !default;
+
+// ----------------------------------------------------------------------------
 // Rules: layout
 // ----------------------------------------------------------------------------
 
 // Icon definitions
 :root {
-  --md-admonition-icon--note: url("{{ pencil }}");
-  --md-admonition-icon--abstract: url("{{ text-subject }}");
-  --md-admonition-icon--info: url("{{ information }}");
-  --md-admonition-icon--tip: url("{{ fire }}");
-  --md-admonition-icon--success: url("{{ check-circle }}");
-  --md-admonition-icon--question: url("{{ help-circle }}");
-  --md-admonition-icon--warning: url("{{ alert }}");
-  --md-admonition-icon--failure: url("{{ close-circle }}");
-  --md-admonition-icon--danger: url("{{ flash-circle }}");
-  --md-admonition-icon--bug: url("{{ bug }}");
-  --md-admonition-icon--example: url("{{ format-list-numbered }}");
-  --md-admonition-icon--quote: url("{{ format-quote-close }}");
+  @each $names, $props in $admonitions {
+    --md-admonition-icon--#{nth($names, 1)}: url("{{ #{$props} }}");
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -114,19 +127,13 @@
       left: px2rem(12px);
       width: px2rem(20px);
       height: px2rem(20px);
-      background-color: $clr-blue-a200;
-      mask-image: var(--md-admonition-icon--note);
+      background-image: var(--md-admonition-icon--note);
       content: "";
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
         right: px2rem(12px);
         left: initial;
-      }
-
-      // Hack: mask-image is not supported in PDFs
-      @media print {
-        background: var(--md-admonition-icon--note);
       }
     }
 
@@ -143,42 +150,25 @@
 }
 
 // ----------------------------------------------------------------------------
-// Rules: different flavours
+// Rules: flavours
 // ----------------------------------------------------------------------------
 
-@each $names, $tint in (
-  abstract summary tldr: $clr-light-blue-a400,
-  info todo: $clr-cyan-a700,
-  tip hint important: $clr-teal-a700,
-  success check done: $clr-green-a700,
-  question help faq: $clr-light-green-a700,
-  warning caution attention: $clr-orange-a400,
-  failure fail missing: $clr-red-a200,
-  danger error: $clr-red-a400,
-  bug: $clr-pink-a400,
-  example: $clr-deep-purple-a400,
-  quote cite: $clr-grey
-) {
-  $type: #{nth($names, 1)};
+@each $names, $props in $admonitions {
+  $name: nth($names, 1);
+  $tint: nth($props, 2);
 
   // Define base class
-  .md-typeset .admonition.#{$type} {
+  .md-typeset .admonition.#{$name} {
     border-color: $tint;
   }
 
   // Define base class
-  .md-typeset .#{$type} > .admonition-title {
+  .md-typeset .#{$name} > .admonition-title {
     background-color: transparentize($tint, 0.9);
 
     // Icon
     &::before {
-      background-color: $tint;
-      mask-image: var(--md-admonition-icon--#{$type});
-
-      // Hack: mask-image is not supported in PDFs
-      @media print {
-        background: var(--md-admonition-icon--#{$type});
-      }
+      background-image: var(--md-admonition-icon--#{$name});
     }
   }
 
@@ -186,7 +176,7 @@
   @if length($names) > 1 {
     @for $n from 2 through length($names) {
       .#{nth($names, $n)} {
-        @extend .#{nth($names, 1)};
+        @extend .#{$name};
       }
     }
   }

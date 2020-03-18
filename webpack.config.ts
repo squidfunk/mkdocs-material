@@ -109,12 +109,20 @@ function config(args: Configuration): Configuration {
               options: {
                 multiple: [
                   {
-                    search: "\\{{2}([^}]+)\\}{2}",
-                    replace(_: string, name: string) {
-                      return `data:image/svg+xml;utf8,${
-                          icon.getSVG(path.basename(name.trim(), ".json"))
-                            .replace(/"/g, "\\\"")
-                        }`
+                    search: "\\{{2}\\s+?([^}]+)\\s+?\\}{2}",
+                    replace(_: string, props: string) {
+                      const [name, color] = props.split(" ")
+
+                      /* Load icon and set color, if given */
+                      const svg = icon.getSVG(
+                        path.basename(name, ".json"),
+                        color ? ` style="fill: ${color}"` : undefined
+                      )
+                        .replace(/"/g, "'")
+                        .replace(/#/g, "%23")
+
+                      /* Return encoded icon */
+                      return `data:image/svg+xml;utf8,${svg}`
                     },
                     flags: "g"
                   }
@@ -271,6 +279,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
 
         /* Template files */
         new CopyPlugin([
+          { from: ".icons/*.svg" },
           { from: "assets/images/*" },
           { from: "**/*.{py,yml}" },
           {
