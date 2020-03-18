@@ -429,7 +429,6 @@ Result:
 Qualifiers:
 
 * `example`
-* `snippet`
 
 ### Quote
 
