@@ -55,7 +55,11 @@
         {% include ".icons/material/chevron-right.svg" %}
       </span>
     </label>
-    <nav class="md-nav" data-md-level="{{ level }}" aria-label="{{ nav_item.title }}">
+    <nav
+      class="md-nav"
+      aria-label="{{ nav_item.title }}"
+      data-md-level="{{ level }}"
+    >
       <label class="md-nav__title" for="{{ path }}">
         <span class="md-nav__icon md-icon">
           {% include ".icons/material/arrow-left.svg" %}

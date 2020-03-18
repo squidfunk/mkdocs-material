@@ -1,9 +1,9 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-<nav class="md-nav md-nav--primary" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="{{ lang.t('nav.title') }}" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" aria-label="{{ config.site_name }}" class="md-nav__button md-logo">
+    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-nav__button md-logo" aria-label="{{ config.site_name }}">
       {% if config.theme.logo %}
         <img src="{{ config.theme.logo | url }}" alt="logo">
       {% else %}

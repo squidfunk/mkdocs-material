@@ -30,8 +30,8 @@
     <a
       href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
       title="{{ config.site_name }}"
-      aria-label="{{ config.site_name }}"
       class="md-header-nav__button md-logo"
+      aria-label="{{ config.site_name }}"
     >
       {% if config.theme.logo %}
         <img src="{{ config.theme.logo | url }}" alt="logo" />

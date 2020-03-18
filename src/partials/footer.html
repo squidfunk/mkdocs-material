@@ -28,7 +28,10 @@
   <!-- Link to previous and/or next page -->
   {% if page.previous_page or page.next_page %}
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="{{ lang.t('footer.title') }}">
+      <nav
+        class="md-footer-nav__inner md-grid"
+        aria-label="{{ lang.t('footer.title') }}"
+      >
 
         <!-- Link to previous page -->
         {% if page.previous_page %}

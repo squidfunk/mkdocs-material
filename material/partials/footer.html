@@ -5,7 +5,7 @@
 <footer class="md-footer">
   {% if page.previous_page or page.next_page %}
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="{{ lang.t('footer.title') }}">
         {% if page.previous_page %}
           <a href="{{ page.previous_page.url | url }}" title="{{ page.previous_page.title | striptags }}" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">

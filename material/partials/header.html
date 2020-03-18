@@ -2,8 +2,8 @@
   This file was automatically generated - do not edit
 -#}
 <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" aria-label="{{ config.site_name }}" class="md-header-nav__button md-logo">
+  <nav class="md-header-nav md-grid" aria-label="{{ lang.t('header.title') }}">
+    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-header-nav__button md-logo" aria-label="{{ config.site_name }}">
       {% if config.theme.logo %}
         <img src="{{ config.theme.logo | url }}" alt="logo">
       {% else %}
