@@ -42,14 +42,21 @@
     padding-top: 0;
     overflow: visible;
 
+
     // Rotate title icon
     &[open] > summary::after {
       transform: rotate(90deg);
     }
 
-    // Remove bottom spacing
+    // Remove bottom spacing for closed details
     &:not([open]) {
       padding-bottom: 0;
+
+      // We cannot set overflow: hidden, as the outline would not be visible,
+      // so we need to correct the border radius
+      > summary {
+        border-bottom-right-radius: px2rem(2px);
+      }
     }
 
     // Hack: omit margin collapse
@@ -65,6 +72,7 @@
 
     min-height: px2rem(20px);
     padding: px2rem(8px) px2rem(36px) px2rem(8px) px2rem(40px);
+    border-top-right-radius: px2rem(2px);
     cursor: pointer;
 
     // Adjust for right-to-left languages
