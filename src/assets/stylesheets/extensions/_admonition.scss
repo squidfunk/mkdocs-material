@@ -49,7 +49,11 @@ $admonitions: (
 // Icon definitions
 :root {
   @each $names, $props in $admonitions {
-    --md-admonition-icon--#{nth($names, 1)}: url("{{ #{$props} }}");
+    $name: nth($names, 1);
+    $icon: nth($props, 1);
+
+    // Inline icon through string-replace-loader in webpack
+    --md-admonition-icon--#{$name}: url("{{ #{$icon} }}");
   }
 }
 
@@ -127,7 +131,8 @@ $admonitions: (
       left: px2rem(12px);
       width: px2rem(20px);
       height: px2rem(20px);
-      background-image: var(--md-admonition-icon--note);
+      background-color: $clr-blue-a200;
+      mask-image: var(--md-admonition-icon--note);
       content: "";
 
       // Adjust for right-to-left languages
@@ -168,7 +173,8 @@ $admonitions: (
 
     // Icon
     &::before {
-      background-image: var(--md-admonition-icon--#{$name});
+      background-color: $tint;
+      mask-image: var(--md-admonition-icon--#{$name});
     }
   }
 

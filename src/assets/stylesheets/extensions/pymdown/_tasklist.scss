@@ -27,7 +27,7 @@
 // Icon definitions
 :root {
   --md-tasklist-icon: url("{{ checkbox-blank-circle }}");
-  --md-tasklist-icon--checked: url("{{ check-circle #{$clr-green-a400} }}");
+  --md-tasklist-icon--checked: url("{{ check-circle }}");
 }
 
 // ----------------------------------------------------------------------------
@@ -65,8 +65,8 @@
       left: px2em(-24px);
       width: px2em(20px);
       height: px2em(20px);
-      background-image: var(--md-tasklist-icon);
-      opacity: 0.1;
+      background-color: var(--md-default-fg-color--lightest);
+      mask-image: var(--md-tasklist-icon);
       content: "";
 
       // Adjust for right-to-left languages
@@ -78,8 +78,8 @@
 
     // Checkbox icon in checked state
     [type="checkbox"]:checked + .task-list-indicator::before {
-      background-image: var(--md-tasklist-icon--checked);
-      opacity: 1;
+      background-color: $clr-green-a400;
+      mask-image: var(--md-tasklist-icon--checked);
     }
 
     // Hide original checkbox behind icon
