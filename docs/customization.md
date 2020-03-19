@@ -201,15 +201,19 @@ npm install
 
 ### Development mode
 
-The development server can be started with:
+Start the Webpack watchdog with:
 
 ``` sh
 npm start
 ```
 
-This will also start the MkDocs development server which will monitor changes
-on assets, templates and documentation. Point your browser to
-[localhost:8000][190] and you should see this documentation in front of you.
+Then, in a second session, start the MkDocs server with:
+
+```sh
+mkdocs serve
+```
+
+Point your browser to [localhost:8000][9] and you should see this documentation in front of you.
 
 !!! warning "Automatically generated files"
 
