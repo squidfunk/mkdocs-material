@@ -1,9 +1,7 @@
 # Revision date
 
 The [mkdocs-git-revision-date-localized-plugin][1] will add the date on which a
-Markdown file was last updated at the bottom of each page. The date is extracted
-at the time of the build, so `mkdocs build` must be triggered from within a git
-repository.
+Markdown file was last updated at the bottom of each page.
 
 !!! success "Bundled with the official Docker image"
 
@@ -14,6 +12,11 @@ repository.
   [1]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
   [2]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [3]: ../getting-started.md#with-docker-recommended
+
+!!! warning "Requirements"
+
+    The date is extracted at the time of the build, so `mkdocs build` must be
+    triggered from within a git repository.
 
 ## Installation
 

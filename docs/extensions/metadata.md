@@ -43,12 +43,12 @@ source: file.js
 ...
 ```
 
-See the next section which covers the metadata that is supported by Material.
+See the next section which covers the supported metadata.
 
 ### Setting a hero
 
-Material exposes a simple text-only page-local hero via Metadata, as you can
-see on the current page when you scroll to the top. It's as simple as:
+Material for MkDocs exposes a simple text-only page-local hero via Metadata, as
+you can see on the current page when you scroll to the top. It's as simple as:
 
 ``` markdown
 hero: Set heroes with metadata
@@ -78,7 +78,7 @@ source: metadata.md
 ### Redirecting to another page
 
 It's sometimes necessary to move documents around in the navigation tree and
-redirect user from the old URL to the new one. The `redirect` meta-tag allows
+redirect users from the old URL to the new one. The `redirect` meta-tag allows
 to create a redirection from the current document to the address specified in
 the tag.
 

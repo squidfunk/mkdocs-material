@@ -132,9 +132,9 @@ nav:
     - PyMdown: extensions/pymdown.md
   - Plugins:
     - Search: plugins/search.md
-    - Pages: plugins/awesome-pages-plugin.md
     - Minification: plugins/minification.md
     - Revision date: plugins/revision-date.md
+    - Awesome pages: plugins/awesome-pages.md
   - Releases:
     - Material for MkDocs 5: releases/5.md
     - Material for MkDocs 4: releases/4.md
