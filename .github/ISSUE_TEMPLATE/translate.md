@@ -1,9 +1,9 @@
 ---
 name: Translate
-about: 'Help translate Material into more languages '
-title: 'New translation: {Insert language}'
+about: Help translate Material into more languages
+title: New translation: {Insert language}
 labels: enhancement
-assignees: ''
+assignees:
 
 ---
 
@@ -15,7 +15,6 @@ assignees: ''
 ``` jinja
 {% macro t(key) %}{{ {
   "language": "en",
-  "direction": "ltr",
   "clipboard.copy": "Copy to clipboard",
   "clipboard.copied": "Copied to clipboard",
   "edit.link.title": "Edit this page",
@@ -24,8 +23,6 @@ assignees: ''
   "meta.comments": "Comments",
   "meta.source": "Source",
   "search.language": "en",
-  "search.pipeline.stopwords": true,
-  "search.pipeline.trimmer": true,
   "search.placeholder": "Search",
   "search.result.placeholder": "Type to start searching",
   "search.result.none": "No matching documents",

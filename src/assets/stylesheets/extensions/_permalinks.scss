@@ -31,12 +31,14 @@
   .headerlink {
     display: inline-block;
     margin-left: px2rem(10px);
-    transform: translate(0, px2rem(5px));
-    transition:
-      transform 0.25s  0.25s,
-      color     0.25s,
-      opacity   0.125s 0.25s;
+    // Hack: if we don't set visibility hidden, the text content of the node
+    // will include the headerlink character, which is why Google indexes them.
+    visibility: hidden;
     opacity: 0;
+    transition:
+      color      250ms,
+      opacity    125ms,
+      visibility   0ms 500ms;
 
     // Adjust for RTL languages
     [dir="rtl"] & {
@@ -46,7 +48,7 @@
 
     // Higher specificity for color due to palettes integration
     html body & {
-      color: $md-color-black--lighter;
+      color: var(--md-default-fg-color--lighter);
     }
 
     // Hide for print
@@ -55,22 +57,38 @@
     }
   }
 
+  // Make permalink visible on hover
+  :hover  > .headerlink,
+  :target > .headerlink,
+  .headerlink:focus {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      color      250ms,
+      opacity    125ms,
+      visibility   0ms;
+  }
+
+  // Active or targeted permalink
+  :target > .headerlink,
+  .headerlink:focus,
+  .headerlink:hover {
+    color: var(--md-accent-fg-color);
+  }
+
   // Correct anchor offset for link blurring
   @each $level, $delta in (
-    h1: 9px,
-    h2: 8px,
-    h3: 9px,
+    h1 h2 h3: 8px,
     h4: 9px,
-    h5: 11px,
-    h6: 11px
+    h5 h6: 12px,
   ) {
-    #{$level}[id] {
+    %#{nth($level, 1)} {
 
       // Un-targeted anchor
       &::before {
         display: block;
-        margin-top: -$delta;
-        padding-top: $delta;
+        margin-top: -1 * px2rem($delta);
+        padding-top: px2rem($delta);
         content: "";
       }
 
@@ -79,20 +97,12 @@
         margin-top: -1 * px2rem(48px + 12px + $delta);
         padding-top: px2rem(48px + 12px + $delta);
       }
+    }
 
-      // Make permalink visible on hover
-      &:hover  .headerlink,
-      &:target .headerlink,
-      & .headerlink:focus {
-        transform: translate(0, 0);
-        opacity: 1;
-      }
-
-      // Active or targeted permalink
-      &:hover  .headerlink:hover,
-      &:target .headerlink,
-      & .headerlink:focus {
-        color: $md-color-accent;
+    // Define levels
+    @for $n from 1 through length($level) {
+      #{nth($level, $n)}[id] {
+        @extend %#{nth($level, 1)};
       }
     }
   }

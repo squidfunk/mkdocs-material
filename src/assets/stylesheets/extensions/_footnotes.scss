@@ -24,6 +24,13 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-footnotes-icon: url("{{ keyboard-return }}");
+}
+
+// ----------------------------------------------------------------------------
+
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
@@ -60,7 +67,7 @@
 
   // Footnotes extension
   .footnote {
-    color: $md-color-black--light;
+    color: var(--md-default-fg-color--light);
     font-size: ms(-1);
 
     // Remove additional spacing on footnotes
@@ -70,11 +77,11 @@
 
     // Footnote
     li {
-      transition: color 0.25s;
+      transition: color 125ms;
 
       // Darken color for targeted footnote
       &:target {
-        color: $md-color-black;
+        color: var(--md-default-fg-color);
       }
 
       // Remove spacing on first element
@@ -82,17 +89,16 @@
         margin-top: 0;
       }
 
-      // Make back references visible on hover
+      // Make back references visible on container hover
       &:hover  .footnote-backref,
       &:target .footnote-backref {
         transform: translateX(0);
         opacity: 1;
       }
 
-      // Active or targeted back reference
-      &:hover  .footnote-backref:hover,
-      &:target .footnote-backref {
-        color: $md-color-accent;
+      // Hovered back reference
+      &:hover  .footnote-backref:hover {
+        color: var(--md-accent-fg-color);
       }
     }
   }
@@ -101,35 +107,23 @@
   .footnote-ref {
     display: inline-block;
     pointer-events: initial;
-
-    // Render a thin line before footnote
-    &::before {
-      display: inline;
-      margin: 0 0.2em;
-      border-left: px2rem(1px) solid $md-color-black--lighter;
-      font-size: 1.25em;
-      content: "";
-      vertical-align: px2rem(-5px);
-    }
   }
 
   // Footnote back reference
   .footnote-backref {
-    @extend %md-icon;
-
     display: inline-block;
-    transform: translateX(px2rem(5px));
-    transition:
-      transform 0.25s  0.125s,
-      color     0.25s,
-      opacity   0.125s 0.125s;
-    color: $md-color-black--lighter;
+    color: var(--md-primary-fg-color);
     // Hack: remove Unicode arrow for icon
     font-size: 0;
-    opacity: 0;
     vertical-align: text-bottom;
+    transform: translateX(px2rem(5px));
+    opacity: 0;
+    transition:
+      transform 250ms 250ms,
+      color     250ms,
+      opacity   125ms 250ms;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       transform: translateX(px2rem(-5px));
     }
@@ -137,12 +131,31 @@
     // Back reference icon
     &::before {
       display: inline-block;
-      font-size: px2rem(16px);
-      content: "\E31B"; // keyboard_return
+      width: px2rem(16px);
+      height: px2rem(16px);
+      background-color: currentColor;
+      mask-image: var(--md-footnotes-icon);
+      content: "";
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
-        transform: scaleX(-1)
+
+        // Flip icon vertically
+        svg {
+          transform: scaleX(-1)
+        }
+      }
+    }
+
+    // Always show for print
+    @media print {
+      color: var(--md-primary-fg-color);
+      transform: translateX(0);
+      opacity: 1;
+
+      // Hack: mask-image is not supported in PDFs
+      &::before {
+        background: var(--md-footnotes-icon);
       }
     }
   }

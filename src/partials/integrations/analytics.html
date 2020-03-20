@@ -22,7 +22,9 @@
 
 <!-- Google Analytics integration -->
 {% set analytics = config.google_analytics %}
-<script type="text/javascript">
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+
+<script type="application/javascript">
   window.ga = window.ga || function() {
     (ga.q = ga.q || []).push(arguments)
   }
@@ -34,7 +36,7 @@
   ga("send", "pageview")
 
   /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function() {
     if (document.forms.search) {
       var query = document.forms.search.query
       query.addEventListener("blur", function() {
@@ -44,6 +46,11 @@
         }
       })
     }
+  })
+
+  /* Send page view on document switch (instant loading, custom event) */
+  document.addEventListener("DOMContentSwitch", function() {
+    ga("send", "pageview")
   })
 </script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>

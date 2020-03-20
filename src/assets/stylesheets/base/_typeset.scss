@@ -33,18 +33,18 @@ body {
 // Default fonts
 body,
 input {
-  color: $md-color-black;
+  color: var(--md-default-fg-color);
   font-feature-settings: "kern", "liga";
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
 }
 
 // Proportionally spaced fonts
-pre,
 code,
+pre,
 kbd {
-  color: $md-color-black;
+  color: var(--md-default-fg-color);
   font-feature-settings: "kern";
-  font-family: "Courier New", Courier, monospace;
+  font-family: SFMono-Regular, Consolas, Menlo, monospace;
 }
 
 // ----------------------------------------------------------------------------
@@ -58,9 +58,8 @@ kbd {
 .md-typeset {
   font-size: ms(0);
   line-height: 1.6;
-
   // Colors should be kept when printing
-  -webkit-print-color-adjust: exact;
+  -webkit-print-color-adjust: exact; // stylelint-disable-line
 
   // Default spacing
   p,
@@ -73,29 +72,29 @@ kbd {
   // 1st level headline
   h1 {
     margin: 0 0 px2rem(40px);
-    color: $md-color-black--light;
-    font-size: ms(3);
+    color: var(--md-default-fg-color--light);
     font-weight: 300;
-    letter-spacing: -0.01em;
+    font-size: ms(3);
     line-height: 1.3;
+    letter-spacing: -0.01em;
   }
 
   // 2nd level headline
   h2 {
     margin: px2rem(40px) 0 px2rem(16px);
-    font-size: ms(2);
     font-weight: 300;
-    letter-spacing: -0.01em;
+    font-size: ms(2);
     line-height: 1.4;
+    letter-spacing: -0.01em;
   }
 
   // 3rd level headline
   h3 {
     margin: px2rem(32px) 0 px2rem(16px);
-    font-size: ms(1);
     font-weight: 400;
-    letter-spacing: -0.01em;
+    font-size: ms(1);
     line-height: 1.5;
+    letter-spacing: -0.01em;
   }
 
   // 3rd level headline following an 2nd level headline
@@ -106,8 +105,8 @@ kbd {
   // 4th level headline
   h4 {
     margin: px2rem(16px) 0;
-    font-size: ms(0);
     font-weight: 700;
+    font-size: ms(0);
     letter-spacing: -0.01em;
   }
 
@@ -115,9 +114,9 @@ kbd {
   h5,
   h6 {
     margin: px2rem(16px) 0;
-    color: $md-color-black--light;
-    font-size: ms(-1);
+    color: var(--md-default-fg-color--light);
     font-weight: 700;
+    font-size: ms(-1);
     letter-spacing: -0.01em;
   }
 
@@ -129,43 +128,32 @@ kbd {
   // Horizontal separators
   hr {
     margin: 1.5em 0;
-    border-bottom: px2rem(1px) dotted $md-color-black--lighter;
+    border-bottom: px2rem(1px) dotted var(--md-default-fg-color--lighter);
   }
 
   // Links
   a {
-    color: $md-color-primary;
+    color: var(--md-primary-fg-color);
     word-break: break-word;
 
     // Also enable color transition on pseudo elements
     &,
     &::before {
-      transition: color 0.125s;
+      transition: color 125ms;
     }
 
-    // Hovered and active links
-    &:hover,
-    &:active {
-      color: $md-color-accent;
-    }
-
-    // Add URLs for print
-    @media print {
-
-      // Show link URL
-      &::after {
-        color: $md-color-black--light;
-        content: " [" attr(href) "]";
-      }
+    // Focused or hover links
+    &:focus,
+    &:hover {
+      color: var(--md-accent-fg-color);
     }
   }
 
   // Code blocks
   code,
-  pre {
-    background-color: $md-code-background;
-    color: $md-code-color;
-    font-size: 85%;
+  pre,
+  kbd {
+    color: var(--md-code-fg-color);
     direction: ltr;
 
     // Wrap text and hide scollbars
@@ -174,24 +162,18 @@ kbd {
     }
   }
 
-  // Inline code blocks, correct relative ems for smaller font size
+  // Inline code blocks
   code {
-    $correct: 1 / 0.85;
-
-    margin: 0 0.25em * $correct;
-    padding: 0.0625em * $correct 0;
+    margin: 0 px2em(4px, 13.6px);
+    padding: px2em(1px, 13.6px) 0;
+    font-size: px2em(13.6px);
+    word-break: break-word;
+    background-color: var(--md-code-bg-color);
     border-radius: px2rem(2px);
     box-shadow:
-      +0.25em * $correct 0 0 $md-code-background,
-      -0.25em * $correct 0 0 $md-code-background;
-    word-break: break-word;
+      px2em( 4px, 13.6px) 0 0 var(--md-code-bg-color),
+      px2em(-4px, 13.6px) 0 0 var(--md-code-bg-color);
     box-decoration-break: clone;
-
-    // Remove box-shadows for print
-    @media print {
-      box-shadow: none;
-      box-decoration-break: initial;
-    }
   }
 
   // Disable containing block inside headlines
@@ -201,18 +183,19 @@ kbd {
   h4 code,
   h5 code,
   h6 code {
-    margin: 0;
+    margin: initial;
+    padding: initial;
     background-color: transparent;
     box-shadow: none;
   }
 
   // Reset code if it's inside a link
   a > code {
-    margin: inherit;
-    padding: inherit;
+    margin: initial;
+    padding: initial;
+    color: initial;
+    background-color: transparent;
     border-radius: initial;
-    background-color: inherit;
-    color: inherit;
     box-shadow: none;
   }
 
@@ -220,20 +203,18 @@ kbd {
   pre {
     position: relative;
     margin: 1em 0;
-    border-radius: px2rem(2px);
     line-height: 1.4;
-    -webkit-overflow-scrolling: touch;
 
     // Actual container with code, overflowing
     > code {
       display: block;
       margin: 0;
-      padding: px2rem(10.5px) px2rem(12px);
-      background-color: transparent;
-      font-size: inherit;
+      padding: px2rem(10.5px) px2em(16px, 13.6px);
+      overflow: auto;
+      word-break: normal;
       box-shadow: none;
       box-decoration-break: slice;
-      overflow: auto;
+      -webkit-overflow-scrolling: touch;
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {
@@ -241,13 +222,13 @@ kbd {
         height: px2rem(4px);
       }
 
-      // Style scrollbar thumb
+      // Scrollbar thumb
       &::-webkit-scrollbar-thumb {
-        background-color: $md-color-black--lighter;
+        background-color: var(--md-default-fg-color--lighter);
 
         // Hovered scrollbar thumb
         &:hover {
-          background-color: $md-color-accent;
+          background-color: var(--md-accent-fg-color);
         }
       }
     }
@@ -259,47 +240,46 @@ kbd {
     // Stretch top-level containers
     > pre {
       margin: 1em px2rem(-16px);
-      border-radius: 0;
 
-      // Actual container with code, overflowing
-      > code {
-        padding: px2rem(10.5px) px2rem(16px);
+      // Remove rounded borders
+      code {
+        border-radius: 0;
       }
     }
   }
 
   // Keystrokes
   kbd {
-    $correct: 1 / 0.85;
-
-    padding: 0 0.25em * $correct;
-    border: px2rem(1px) solid darken($md-keyboard-background, 20%);
-    border-radius: px2rem(3px);
-    border-bottom-color: darken($md-keyboard-background, 25%);
-    background-color: $md-keyboard-background;
-    color: $md-keyboard-color;
-    font-size: 85%;
-    box-shadow: 0 px2rem(1px) 0 darken($md-keyboard-background, 30%);
+    display: inline-block;
+    padding: 0 px2em(8px, 12px);
+    font-size: px2em(12px);
+    line-height: 1.5;
+    vertical-align: text-top;
     word-break: break-word;
+    border-radius: px2rem(2px);
+    box-shadow:
+      0 px2rem(2px) 0 px2rem(1px) var(--md-default-fg-color--lighter),
+      0 px2rem(2px) 0             var(--md-default-fg-color--lighter),
+      inset 0 px2rem(-2px) px2rem(4px) var(--md-default-bg-color);
   }
 
   // Text highlighting marker
   mark {
-    margin: 0 0.25em;
-    padding: 0.0625em 0;
-    border-radius: px2rem(2px);
-    background-color: transparentize($clr-yellow-500, 0.5);
-    box-shadow:
-      +0.25em 0 0 transparentize($clr-yellow-500, 0.5),
-      -0.25em 0 0 transparentize($clr-yellow-500, 0.5);
+    margin: 0 px2em(4px, 16px);
+    padding: px2em(1px, 16px) 0;
     word-break: break-word;
+    background-color: transparentize($clr-yellow-500, 0.5);
+    border-radius: px2rem(2px);
+    box-shadow:
+      px2em( 4px, 16px) 0 0 transparentize($clr-yellow-500, 0.5),
+      px2em(-4px, 16px) 0 0 transparentize($clr-yellow-500, 0.5);
     box-decoration-break: clone;
   }
 
   // Abbreviations
   abbr {
-    border-bottom: px2rem(1px) dotted $md-color-black--light;
     text-decoration: none;
+    border-bottom: px2rem(1px) dotted var(--md-default-fg-color--light);
     cursor: help;
   }
 
@@ -311,11 +291,11 @@ kbd {
   // Superscript and subscript
   sup,
   sub {
-    margin-left: 0.0625em * 1 / 0.8;
+    margin-left: px2em(1px, 12.8px);
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
-      margin-right: 0.0625em * 1 / 0.8;
+      margin-right: px2em(1px, 12.8px);
       margin-left: initial;
     }
   }
@@ -323,14 +303,14 @@ kbd {
   // Blockquotes, possibly nested
   blockquote {
     padding-left: px2rem(12px);
-    border-left: px2rem(4px) solid $md-color-black--lighter;
-    color: $md-color-black--light;
+    color: var(--md-default-fg-color--light);
+    border-left: px2rem(4px) solid var(--md-default-fg-color--lighter);
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       padding-right: px2rem(12px);
       padding-left: initial;
-      border-right: px2rem(4px) solid $md-color-black--lighter;
+      border-right: px2rem(4px) solid var(--md-default-fg-color--lighter);
       border-left: initial;
     }
   }
@@ -343,12 +323,12 @@ kbd {
   // Unordered and ordered lists
   ul,
   ol {
-    margin-left: 0.625em;
+    margin-left: px2em(10px, 16px);
     padding: 0;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
-      margin-right: 0.625em;
+      margin-right: px2em(10px, 16px);
       margin-left: initial;
     }
 
@@ -365,11 +345,11 @@ kbd {
     // List elements
     li {
       margin-bottom: 0.5em;
-      margin-left: 1.25em;
+      margin-left: px2em(20px, 16px);
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
-        margin-right: 1.25em;
+        margin-right: px2em(20px, 16px);
         margin-left: initial;
       }
 
@@ -387,11 +367,11 @@ kbd {
       // Nested lists
       ul,
       ol {
-        margin: 0.5em 0 0.5em 0.625em;
+        margin: 0.5em 0 0.5em px2em(10px, 16px);
 
-        // Adjust for RTL languages
+        // Adjust for right-to-left languages
         [dir="rtl"] & {
-          margin-right: 0.625em;
+          margin-right: px2em(10px, 16px);
           margin-left: initial;
         }
       }
@@ -400,11 +380,11 @@ kbd {
 
   // Definition lists
   dd {
-    margin: 1em 0 1em 1.875em;
+    margin: 1em 0 1em px2em(30px, 16px);
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
-      margin-right: 1.875em;
+      margin-right: px2em(30px, 16px);
       margin-left: initial;
     }
   }
@@ -418,13 +398,15 @@ kbd {
 
   // Data tables
   table:not([class]) {
-    @include z-depth(2);
-
     display: inline-block;
     max-width: 100%;
-    border-radius: px2rem(2px);
-    font-size: ms(-1);
     overflow: auto;
+    font-size: ms(-1);
+    background: var(--md-default-bg-color);
+    border-radius: px2rem(2px);
+    box-shadow:
+      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
+      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
     -webkit-overflow-scrolling: touch;
 
     // Due to margin collapse because of the necessary inline-block hack, we
@@ -439,7 +421,7 @@ kbd {
     td:not([align]) {
       text-align: left;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         text-align: right;
       }
@@ -449,26 +431,26 @@ kbd {
     th {
       min-width: px2rem(100px);
       padding: px2rem(12px) px2rem(16px);
-      background-color: $md-color-black--light;
-      color: $md-color-white;
+      color: var(--md-default-bg-color);
       vertical-align: top;
+      background-color: var(--md-default-fg-color--light);
     }
 
     // Table cells
     td {
       padding: px2rem(12px) px2rem(16px);
-      border-top: px2rem(1px) solid $md-color-black--lightest;
       vertical-align: top;
+      border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
     }
 
     // Table rows
     tr {
-      transition: background-color 0.125s;
+      transition: background-color 125ms;
 
       // Add background on hover
       &:hover {
         background-color: rgba(0, 0, 0, 0.035);
-        box-shadow: 0 px2rem(1px)  0 $md-color-white inset;
+        box-shadow: 0 px2rem(1px)  0 var(--md-default-bg-color) inset;
       }
 
       // Remove top border on first row
@@ -492,7 +474,7 @@ kbd {
   }
 
   // Data table wrapper, in case JavaScript is available
-  .md-typeset__table {
+  &__table {
     display: inline-block;
     margin-bottom: 0.5em;
     padding: 0 px2rem(16px);

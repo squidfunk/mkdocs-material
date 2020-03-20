@@ -27,91 +27,35 @@
 // Copy to clipboard
 .md-clipboard {
   position: absolute;
-  top: px2rem(6px);
-  right: px2rem(6px);
-  width: px2rem(28px);
-  height: px2rem(28px);
-  border-radius: px2rem(2px);
-  font-size: px2rem(16px);
-  cursor: pointer;
+  top: px2rem(8px);
+  right: px2rem(8px);
   z-index: 1;
-  // Hack: put everything on the GPU to omit flickering
-  backface-visibility: hidden;
+  width: px2rem(24px);
+  height: px2rem(24px);
+  color: var(--md-default-fg-color--lightest);
+  border-radius: px2rem(2px);
+  cursor: pointer;
+  transition: color 125ms;
 
   // Hide for print
   @media print {
     display: none;
   }
 
-  // Icon
-  &::before {
-    @extend %md-icon;
+  // Slightly smaller icon
+  svg {
+    width: px2rem(18px);
+    height: px2rem(18px);
+  }
 
-    transition:
-      color   0.25s,
-      opacity 0.25s;
-    color: $md-color-black--lightest;
-    content: "\E14D"; // content_copy
-
-    // Show on container hover
-    pre:hover &,
-    .codehilite:hover & {
-      color: $md-color-black--light;
-    }
+  // Show on container hover
+  pre:hover & {
+    color: var(--md-default-fg-color--light);
   }
 
   // Focused or hovered icon
-  &:focus::before,
-  &:hover::before {
-    color: $md-color-accent;
-  }
-
-  // Message
-  &__message {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: px2rem(34px);
-    padding: px2rem(6px) px2rem(10px);
-    transform: translateX(px2rem(8px));
-    transition:
-      transform 0.25s cubic-bezier(0.9, 0.1, 0.9, 0),
-      opacity   0.175s;
-    border-radius: px2rem(2px);
-    background-color: $md-color-black--light;
-    color: $md-color-white;
-    font-size: ms(-1);
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-
-    // Active message
-    &--active {
-      transform: translateX(0);
-      transition:
-        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity   0.175s 0.075s;
-      opacity: 1;
-      pointer-events: initial;
-    }
-
-    // Inject content from ARIA label
-    &::before {
-      content: attr(aria-label);
-    }
-
-    // Paint a nice speech bubble
-    &::after {
-      display: block;
-      position: absolute;
-      top: 50%;
-      right: px2rem(-4px);
-      width: 0;
-      margin-top: px2rem(-4px);
-      border-width: px2rem(4px) 0 px2rem(4px) px2rem(4px);
-      border-style: solid;
-      border-color: transparent $md-color-black--light;
-      content: "";
-    }
+  pre &:focus,
+  pre &:hover {
+    color: var(--md-accent-fg-color);
   }
 }

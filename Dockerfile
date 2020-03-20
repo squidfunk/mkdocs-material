@@ -37,12 +37,12 @@ RUN \
     git \
     git-fast-import \
     openssh \
-  && python setup.py install \
-  && rm -rf /tmp/* \
+  && pip install --no-cache-dir . \
   && pip install --no-cache-dir \
     'mkdocs-minify-plugin>=0.2' \
     'mkdocs-git-revision-date-localized-plugin>=0.4' \
-    'mkdocs-awesome-pages-plugin>=2.2.1'
+    'mkdocs-awesome-pages-plugin>=2.2.1' \
+  && rm -rf /tmp/*
 
 # Set working directory
 WORKDIR /docs

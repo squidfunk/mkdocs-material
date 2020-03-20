@@ -20,61 +20,19 @@
 /// DEALINGS
 ////
 
-// stylelint-disable font-family-no-missing-generic-family-keyword
-
 // ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon placeholders
-%md-icon {
-  font-family: "Material Icons";
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1;
-  text-transform: none;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-
-  // Icon rendered as button
-  &__button {
-    display: inline-block;
-    margin: $md-icon-margin;
-    padding: $md-icon-padding;
-    font-size: $md-icon-size;
-    cursor: pointer;
-  }
-}
-
-// Representational classes
+// Icon
 .md-icon {
-  @extend %md-icon;
 
-  // Build representational classes
-  @each $ligature, $name in (
-    "\E5C4": "arrow-back", // arrow_back
-    "\E5C8": "arrow-forward", // arrow_forward
-    "\E5D2": "menu", // menu
-    "\E8B6": "search" // search
-  ) {
-    &--#{$name}::before {
-      content: $ligature;
-    }
-  }
-
-  // Adjust for RTL languages
-  [dir="rtl"] & {
-
-    // Flip ligatures for arrows
-    @each $ligature, $name in (
-      "\E5C8": "arrow-back", // arrow_forward
-      "\E5C4": "arrow-forward" // arrow_back
-    ) {
-      &--#{$name}::before {
-        content: $ligature;
-      }
-    }
+  // SVG defaults
+  svg {
+    display: block;
+    width: px2rem(24px);
+    height: px2rem(24px);
+    margin: 0 auto;
+    fill: currentColor;
   }
 }

@@ -21,7 +21,42 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Rules
+// Variables
+// ----------------------------------------------------------------------------
+
+///
+/// Admonition flavours
+///
+$admonitions: (
+  note:                       pencil $clr-blue-a200,
+  abstract summary tldr:      text-subject $clr-light-blue-a400,
+  info todo:                  information $clr-cyan-a700,
+  tip hint important:         fire $clr-teal-a700,
+  success check done:         check-circle $clr-green-a700,
+  question help faq:          help-circle $clr-light-green-a700,
+  warning caution attention:  alert $clr-orange-a400,
+  failure fail missing:       close-circle $clr-red-a200,
+  danger error:               flash-circle $clr-red-a400,
+  bug:                        bug $clr-pink-a400,
+  example:                    format-list-numbered $clr-deep-purple-a400,
+  quote cite:                 format-quote-close $clr-grey
+) !default;
+
+// ----------------------------------------------------------------------------
+// Rules: layout
+// ----------------------------------------------------------------------------
+
+// Icon definitions
+:root {
+  @each $names, $props in $admonitions {
+    $name: nth($names, 1);
+    $icon: nth($props, 1);
+
+    // Inline icon through string-replace-loader in webpack
+    --md-admonition-icon--#{$name}: url("{{ #{$icon} }}");
+  }
+}
+
 // ----------------------------------------------------------------------------
 
 // Scoped in typesetted content to match specificity of regular content
@@ -29,20 +64,26 @@
 
   // Admonition extension
   .admonition {
-    @include z-depth(2);
-
-    position: relative;
     margin: 1.5625em 0;
     padding: 0 px2rem(12px);
+    overflow: hidden;
+    font-size: ms(-1);
+    page-break-inside: avoid;
     border-left: px2rem(4px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
-    font-size: ms(-1);
-    overflow: auto;
+    box-shadow:
+      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
+      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       border-right: px2rem(4px) solid $clr-blue-a200;
       border-left: none;
+    }
+
+    // Hack: omit rendering errors for print
+    @media print {
+      box-shadow: none;
     }
 
     // Adjust spacing on last element
@@ -55,89 +96,93 @@
       margin: 1em 0;
     }
 
-    // Title
-    > .admonition-title {
-      margin: 0 px2rem(-12px);
-      padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
-      border-bottom: px2rem(1px) solid transparentize($clr-blue-a200, 0.9);
-      background-color: transparentize($clr-blue-a200, 0.9);
-      font-weight: 700;
+    // Wrapper for scrolling on overflow
+    .md-typeset__scrollwrap {
+      margin: 1em px2rem(-12px);
+    }
 
-      // Adjust for RTL languages
+    // Data table wrapper, in case JavaScript is available
+    .md-typeset__table {
+      padding: 0 px2rem(12px);
+    }
+  }
+
+  // Admonition title
+  .admonition-title {
+    position: relative;
+    margin: 0 px2rem(-12px);
+    padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
+    font-weight: 700;
+    background-color: transparentize($clr-blue-a200, 0.9);
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(12px);
+    }
+
+    // Reset spacing, if title is the only element
+    html &:last-child {
+      margin-bottom: 0;
+    }
+
+    // Icon
+    &::before {
+      position: absolute;
+      left: px2rem(12px);
+      width: px2rem(20px);
+      height: px2rem(20px);
+      background-color: $clr-blue-a200;
+      mask-image: var(--md-admonition-icon--note);
+      content: "";
+
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
-        padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(12px);
-      }
-
-      // Reset spacing, if title is the only element
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      // Icon
-      &::before {
-        @extend %md-icon;
-
-        position: absolute;
-        left: px2rem(12px);
-        color: $clr-blue-a200;
-        font-size: px2rem(20px);
-        content: "\E3C9"; // edit
-
-        // Adjust for RTL languages
-        [dir="rtl"] & {
-          right: px2rem(12px);
-          left: initial;
-        }
+        right: px2rem(12px);
+        left: initial;
       }
     }
 
-    // Build representational classes
-    @each $names, $appearance in (
-      abstract summary tldr: $clr-light-blue-a400 "\E8D2", // subject
-      info todo: $clr-cyan-a700 "\E88E", // info
-      tip hint important : $clr-teal-a700 "\E80E", // whatshot
-      success check done: $clr-green-a700 "\E876", // done
-      question help faq: $clr-light-green-a700 "\E887", // help
-      warning caution attention: $clr-orange-a400 "\E002", // warning
-      failure fail missing: $clr-red-a200 "\E14C", // clear
-      danger error: $clr-red-a400 "\E3E7", // flash_on
-      bug: $clr-pink-a400 "\E868", // bug_report
-      example: $clr-deep-purple-a400 "\E242", // format_list_numbered
-      quote cite: $clr-grey "\E244" // format_quote
-    ) {
-      $tint: nth($appearance, 1);
-      $icon: nth($appearance, 2);
+    // Reset code inside Admonition titles
+    > code {
+      margin: initial;
+      padding: initial;
+      color: initial;
+      background-color: transparent;
+      border-radius: initial;
+      box-shadow: none;
+    }
+  }
+}
 
-      // Define base class
-      &%#{nth($names, 1)},
-      &.#{nth($names, 1)} {
-        border-left-color: $tint;
+// ----------------------------------------------------------------------------
+// Rules: flavours
+// ----------------------------------------------------------------------------
 
-        // Adjust for RTL languages
-        [dir="rtl"] & {
-          border-right-color: $tint;
-        }
+@each $names, $props in $admonitions {
+  $name: nth($names, 1);
+  $tint: nth($props, 2);
 
-        // Title
-        > .admonition-title {
-          border-bottom-color: transparentize($tint, 0.9);
-          background-color: transparentize($tint, 0.9);
+  // Define base class
+  .md-typeset .admonition.#{$name} {
+    border-color: $tint;
+  }
 
-          // Icon
-          &::before {
-            color: $tint;
-            content: $icon;
-          }
-        }
-      }
+  // Define base class
+  .md-typeset .#{$name} > .admonition-title {
+    background-color: transparentize($tint, 0.9);
 
-      // Define synonyms for base class
-      @if length($names) > 1 {
-        @for $n from 2 through length($names) {
-          &.#{nth($names, $n)} {
-            @extend .admonition%#{nth($names, 1)};
-          }
-        }
+    // Icon
+    &::before {
+      background-color: $tint;
+      mask-image: var(--md-admonition-icon--#{$name});
+    }
+  }
+
+  // Define synonyms for base class
+  @if length($names) > 1 {
+    @for $n from 2 through length($names) {
+      .#{nth($names, $n)} {
+        @extend .#{$name};
       }
     }
   }

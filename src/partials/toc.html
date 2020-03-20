@@ -23,8 +23,8 @@
 {% import "partials/language.html" as lang with context %}
 
 <!-- Table of contents -->
-<nav class="md-nav md-nav--secondary">
-  {% set toc_ = page.toc %}
+<nav class="md-nav md-nav--secondary" aria-label="{{ lang.t('toc.title') }}">
+  {% set toc = page.toc %}
 
   <!--
     Hack: check whether the content contains a h1 headline. If it does, the
@@ -32,41 +32,22 @@
     to the current page that is located just above the anchor. Therefore we
     directly continue with the children of the anchor.
   -->
-  {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
-    {% set toc_ = (toc_ | first).children %}
+  {% if toc | first is defined and "\x3ch1 id=" in page.content %}
+    {% set toc = (toc | first).children %}
   {% endif %}
 
   <!-- Render item list -->
-  {% if toc_ | first is defined %}
-    <label class="md-nav__title" for="__toc">{{ lang.t("toc.title") }}</label>
+  {% if toc | first is defined %}
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        {% include ".icons/material/arrow-left.svg" %}
+      </span>
+      {{ lang.t("toc.title") }}
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
-      {% for toc_item in toc_ %}
+      {% for toc_item in toc %}
         {% include "partials/toc-item.html" %}
       {% endfor %}
-
-      <!-- Source files -->
-      {% if page.meta.source and page.meta.source | length > 0 %}
-        <li class="md-nav__item">
-          <a href="#__source" class="md-nav__link md-nav__link--active">
-            {{ lang.t("meta.source") }}
-          </a>
-        </li>
-      {% endif %}
-
-      <!-- Set from config but allow override -->
-      {% set disqus = config.extra.disqus %}
-      {% if page and page.meta and page.meta.disqus is string %}
-        {% set disqus = page.meta.disqus %}
-      {% endif %}
-
-      <!-- Disqus integration -->
-      {% if not page.is_homepage and disqus %}
-        <li class="md-nav__item">
-          <a href="#__comments" class="md-nav__link md-nav__link--active">
-            {{ lang.t("meta.comments") }}
-          </a>
-        </li>
-      {% endif %}
     </ul>
   {% endif %}
 </nav>

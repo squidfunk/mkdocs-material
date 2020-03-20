@@ -1,0 +1,52 @@
+////
+/// Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// When pymdownx.superfences is enabled but codehilite is disabled,
+// pymdownx.highlight will be used. When this happens, the outer container
+// and tables get this class names by default
+.highlight {
+  @extend .codehilite;
+
+  // Inline line numbers
+  [data-linenos]::before {
+    position: sticky;
+    left: px2em(-16px, 13.6px);
+    float: left;
+    margin-right: px2em(16px, 13.6px);
+    margin-left: px2em(-16px, 13.6px);
+    padding-left: px2em(16px, 13.6px);
+    color: var(--md-default-fg-color--lighter);
+    background-color: var(--md-code-bg-color);
+    box-shadow: inset px2rem(-1px) 0 var(--md-default-fg-color--lightest);
+    content: attr(data-linenos);
+    user-select: none;
+  }
+}
+
+// Same as above, but for code blocks with line numbers enabled
+.highlighttable {
+  @extend .codehilitetable;
+}

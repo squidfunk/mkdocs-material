@@ -26,11 +26,7 @@ direction:
 
 # Feature flags for functionality that alters behavior significantly, and thus
 # may be a matter of taste
-feature:
-
-  # Another layer on top of the main navigation for larger screens in the form
-  # of tabs, especially useful for larger documentation projects
-  tabs: false
+features: []
 
 # Sets the primary and accent color palettes as defined in the Material Design
 # documentation - possible values can be looked up in the getting started guide
@@ -52,13 +48,12 @@ font:
   # Fixed-width font for code listings
   code: Roboto Mono
 
+# From Material 5.x on, icons are inlined into the HTML and CSS as SVGs. Some
+# icons that are part of the HTML can be configured and replaced
+icon:
+
 # Favicon to be rendered
 favicon: assets/images/favicon.png
-
-# The logo of the documentation shown in the header and navigation can either
-# be a Material Icon ligature (see https://material.io/icons/) or an image URL
-logo:
-  icon: "\uE80C"
 
 # Material includes the search in the header as a partial, not as a separate
 # template, so it's correct that search.html is missing

@@ -26,20 +26,20 @@
 
 // Hero teaser
 .md-hero {
-  transition: background 0.25s;
-  background-color: $md-color-primary;
-  color: $md-color-white;
-  font-size: ms(1);
   overflow: hidden;
+  color: var(--md-primary-bg-color);
+  font-size: ms(1);
+  background-color: var(--md-primary-fg-color);
+  transition: background 250ms;
 
   // Inner wrapper
   &__inner {
     margin-top: px2rem(20px);
     padding: px2rem(16px) px2rem(16px) px2rem(8px);
     transition:
-      transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1),
-      opacity   0.25s;
-    transition-delay: 0.1s;
+      transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity   250ms;
+    transition-delay: 100ms;
 
     // [tablet -]: Compensate for missing tabs
     @include break-to-device(tablet) {
@@ -49,12 +49,12 @@
 
     // Fade-out tabs background upon scrolling
     [data-md-state="hidden"] & {
-      pointer-events: none;
       transform: translateY(px2rem(12.5px));
-      transition:
-        transform 0s   0.4s,
-        opacity   0.1s 0s;
       opacity: 0;
+      transition:
+        transform   0ms 400ms,
+        opacity   100ms   0ms;
+      pointer-events: none;
     }
 
     // Adjust bottom spacing if there are no tabs

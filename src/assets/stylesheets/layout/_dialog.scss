@@ -1,0 +1,69 @@
+////
+/// Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Dialog rendered as snackbar
+.md-dialog {
+  @include z-depth(2);
+
+  position: fixed;
+  right: px2rem(16px);
+  bottom: px2rem(16px);
+  left: initial;
+  z-index: 2;
+  display: block;
+  min-width: px2rem(222px);
+  padding: px2rem(8px) px2rem(12px);
+  color: var(--md-default-bg-color);
+  font-size: px2rem(14px);
+  background: var(--md-default-fg-color);
+  border: none;
+  border-radius: px2rem(2px);
+  transform: translateY(100%);
+  opacity: 0;
+  transition:
+    transform 0ms   400ms,
+    opacity   400ms;
+
+  // Adjust for right-to-left languages
+  [dir="rtl"] & {
+    right: initial;
+    left: px2rem(16px);
+  }
+
+  // Show open dialog
+  &[data-md-state="open"] {
+    transform: translateY(0);
+    opacity: 1;
+    transition:
+      transform 400ms cubic-bezier(0.075, 0.85, 0.175, 1),
+      opacity   400ms;
+  }
+
+  // Hide for print
+  @media print {
+    display: none;
+  }
+}

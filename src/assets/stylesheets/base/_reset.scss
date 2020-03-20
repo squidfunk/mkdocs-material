@@ -50,13 +50,8 @@ body {
 
 // Reset horizontal rules in FF
 hr {
-  overflow: visible;
   box-sizing: content-box;
-}
-
-// Remove gaps in underlined links in iOS >= 8 and Safari >= 8
-a {
-  -webkit-text-decoration-skip: objects;
+  overflow: visible;
 }
 
 // Reset tap outlines on iOS and Android
@@ -111,21 +106,20 @@ table {
 // Reset table cell styles
 td,
 th {
-  font-weight: normal;
+  font-weight: normal; // stylelint-disable-line
   vertical-align: top;
 }
 
-// Reset (native) button styles
+// Reset button styles
 button {
   margin: 0;
   padding: 0;
-  border: 0;
-  outline-style: none;
-  background: transparent;
   font-size: inherit;
+  background: transparent;
+  border: 0;
 }
 
-// Reset (native) input styles
+// Reset input styles
 input {
   border: 0;
   outline: 0;

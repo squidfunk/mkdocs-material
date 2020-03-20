@@ -2,14 +2,14 @@
 
 Permalinks are a feature of the [Table of Contents][1] extension, which is part
 of the standard Markdown library. The extension inserts an anchor at the end of
-each headline, which makes it possible to directly link to a subpart of the
-document.
+each headline, which makes it possible to directly link to a specific section
+of the document.
 
   [1]: https://python-markdown.github.io/extensions/toc/
 
-## Installation
+## Configuration
 
-To enable permalinks, add the following to your `mkdocs.yml`:
+Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -18,11 +18,11 @@ markdown_extensions:
 ```
 
 This will add a link containing the paragraph symbol `¶` at the end of each
-headline (exactly like on the page you're currently viewing), which the
-Material theme will make appear on hover. In order to change the text of the
+headline (exactly like on the page you're currently viewing), which Material
+for MkDocs will make appear on hover. In order to change the text of the
 permalink, a string can be passed, e.g.:
 
-``` markdown
+``` yaml
 markdown_extensions:
   - toc:
       permalink: Link

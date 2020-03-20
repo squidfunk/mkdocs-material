@@ -34,11 +34,11 @@ Install the latest version of Material with `pip`:
 pip install mkdocs-material
 ```
 
-Append the following line to your project's `mkdocs.yml`:
+Add the following line to `mkdocs.yml`:
 
 ``` yaml
 theme:
-  name: 'material'
+  name: material
 ```
 
 ## What to expect

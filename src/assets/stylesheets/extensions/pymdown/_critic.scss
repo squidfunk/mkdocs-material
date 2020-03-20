@@ -31,44 +31,40 @@
   del.critic,
   ins.critic,
   .critic.comment {
-    margin: 0 0.25em;
-    padding: 0.0625em 0;
+    margin: 0 px2em(4px, 16px);
+    padding: px2em(1px, 16px) 0;
     border-radius: px2rem(2px);
     box-decoration-break: clone;
   }
 
   // Deletion
   del.critic {
-    background-color: $codehilite-diff-deleted;                                 // TODO: dependent on order of inclusion
+    background-color: $codehilite-diff-deleted;
     box-shadow:
-      +0.25em 0 0 $codehilite-diff-deleted,
-      -0.25em 0 0 $codehilite-diff-deleted;
+      px2em( 4px, 16px) 0 0 $codehilite-diff-deleted,
+      px2em(-4px, 16px) 0 0 $codehilite-diff-deleted;
   }
 
   // Addition
   ins.critic {
-    background-color: $codehilite-diff-inserted;                                // TODO: dependent on order of inclusion
+    background-color: $codehilite-diff-inserted;
     box-shadow:
-      +0.25em 0 0 $codehilite-diff-inserted,
-      -0.25em 0 0 $codehilite-diff-inserted;
+      px2em( 4px, 16px) 0 0 $codehilite-diff-inserted,
+      px2em(-4px, 16px) 0 0 $codehilite-diff-inserted;
   }
 
   // Comment
   .critic.comment {
-    background-color: $md-code-background;                                      // TODO: rename, centralize somehow
-    color: $md-code-color;
-    box-shadow:
-      +0.25em 0 0 $md-code-background,
-      -0.25em 0 0 $md-code-background;
+    color: $codehilite-comment;
 
-    // Icon
+    // Comment opening mark
     &::before {
-      @extend %md-icon;
+      content: "/* ";
+    }
 
-      padding-right: 0.125em;
-      color: $md-color-black--lighter;
-      content: "\E0B7"; // chat
-      vertical-align: -0.125em;
+    // Comment closing mark
+    &::after {
+      content: " */";
     }
   }
 

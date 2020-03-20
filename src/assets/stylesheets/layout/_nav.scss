@@ -33,26 +33,36 @@
   &__title {
     display: block;
     padding: 0 px2rem(12px);
+    overflow: hidden;
     font-weight: 700;
     text-overflow: ellipsis;
-    overflow: hidden;
 
-    // Icon, hidden by default
-    &::before {
-      @extend %md-icon, %md-icon__button;
-
-      display: none;
-      content: "\E5C4"; // arrow_back
-
-      // Adjust for RTL languages
-      [dir="rtl"] & {
-        content: "\E5C8"; // arrow_forward
-      }
-    }
-
-    // Hide button by default
+    // Hide buttons by default
     .md-nav__button {
       display: none;
+
+      // Stretch images
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      // Logo
+      &.md-logo {
+
+        // Image or icon
+        img,
+        svg {
+          display: block;
+          width: px2rem(48px);
+          height: px2rem(48px);
+        }
+
+        // Icon
+        svg {
+          fill: currentColor;
+        }
+      }
     }
   }
 
@@ -76,7 +86,7 @@
     & & {
       padding-right: 0;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         padding-right: px2rem(12px);
         padding-left: 0;
@@ -89,35 +99,15 @@
     }
   }
 
-  // Button with logo
-  &__button {
-    @extend %md-icon, %md-icon__button;
-
-    // Stretch image
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
-
   // Link inside item
   &__link {
     display: block;
     margin-top: 0.625em;
-    transition: color 0.125s;
+    overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
-    overflow: hidden;
-
-    // Icon
-    &::after {
-      @extend %md-icon;
-
-      // Item contains a nested list
-      .md-nav__item--nested > & {
-        content: "\E313"; // keyboard_arrow_down
-      }
-    }
+    transition: color 125ms;
+    scroll-snap-align: start;
 
     // Hide link to table of contents by default - this will only match the
     // table of contents inside the drawer below and including tablet portrait
@@ -128,22 +118,16 @@
       & ~ .md-nav {
         display: none;
       }
-
-      // Hide icon for current item
-      + .md-nav__link::after {
-        display: none;
-      }
     }
 
     // Blurred link
     &[data-md-state="blur"] {
-      color: $md-color-black--light;
+      color: var(--md-default-fg-color--light);
     }
 
     // Active link
-    &:active,
-    &--active {
-      color: $md-color-primary;
+    .md-nav__item &--active {
+      color: var(--md-primary-fg-color);
     }
 
     // Reset active color for nested list titles
@@ -154,7 +138,7 @@
     // Focused or hovered link
     &:focus,
     &:hover {
-      color: $md-color-accent;
+      color: var(--md-accent-fg-color);
     }
   }
 
@@ -165,19 +149,19 @@
 
   // [tablet -]: Layered navigation
   @include break-to-device(tablet) {
-    background-color: $md-color-white;
+    background-color: var(--md-default-bg-color);
 
     // Stretch primary navigation to drawer
     &--primary,
     &--primary .md-nav {
-      display: flex;
       position: absolute;
       top: 0;
       right: 0;
       left: 0;
+      z-index: 1;
+      display: flex;
       flex-direction: column;
       height: 100%;
-      z-index: 1;
     }
 
     // Adjust styles for primary navigation
@@ -190,76 +174,73 @@
         line-height: 1.5;
       }
 
-      // List title - higher specificity is necessary to ensure that the title
-      // inside the drawer is always styled accordingly
-      html & .md-nav__title {
+      // List title
+      .md-nav__title {
         position: relative;
         height: px2rem(112px);
         padding: px2rem(60px) px2rem(16px) px2rem(4px);
-        background-color: $md-color-black--lightest;
-        color: $md-color-black--light;
+        color: var(--md-default-fg-color--light);
         font-weight: 400;
         line-height: px2rem(48px);
         white-space: nowrap;
+        background-color: var(--md-default-fg-color--lightest);
         cursor: pointer;
 
         // Icon
-        &::before {
-          display: block;
+        .md-nav__icon {
           position: absolute;
-          top: px2rem(4px);
-          left: px2rem(4px);
-          width: px2rem(40px);
-          height: px2rem(40px);
-          color: $md-color-black--light;
+          top: px2rem(8px);
+          left: px2rem(8px);
+          display: block;
+          width: px2rem(24px);
+          height: px2rem(24px);
+          margin: px2rem(4px);
+
+          // Adjust for right-to-left languages
+          [dir="rtl"] & {
+            right: px2rem(8px);
+            left: initial;
+          }
         }
 
         // Main lists
         ~ .md-nav__list {
-          background-color: $md-color-white;
-          box-shadow: 0 px2rem(1px) 0 $md-color-black--lightest inset;
+          overflow-y: auto;
+          background-color: var(--md-default-bg-color);
+          box-shadow:
+            inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
+          scroll-snap-type: y mandatory;
 
           // Remove border for first list item
-          & > .md-nav__item:first-child {
+          > .md-nav__item:first-child {
             border-top: 0;
           }
         }
 
         // Site title in main navigation
-        &--site {
+        &[for="__drawer"] {
           position: relative;
-          background-color: $md-color-primary;
-          color: $md-color-white;
+          color: var(--md-primary-bg-color);
+          background-color: var(--md-primary-fg-color);
 
           // Site logo
           .md-nav__button {
-            display: block;
             position: absolute;
             top: px2rem(4px);
             left: px2rem(4px);
-            width: px2rem(64px);
-            height: px2rem(64px);
+            display: block;
+            margin: px2rem(4px);
+            padding: px2rem(8px);
             font-size: px2rem(48px);
-          }
-
-          // Hide back arrow icon
-          &::before {
-            display: none;
           }
         }
       }
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       html [dir="rtl"] & .md-nav__title {
 
-        // Icon
-        &::before {
-          right: px2rem(4px);
-          left: initial;
-        }
-
         // Site title in main navigation
-        &--site .md-nav__button {
+        &[for="__drawer"] .md-nav__button {
           right: px2rem(4px);
           left: initial;
         }
@@ -268,15 +249,14 @@
       // List of items
       .md-nav__list {
         flex: 1;
-        overflow-y: auto;
       }
 
       // List item
       .md-nav__item {
         padding: 0;
-        border-top: px2rem(1px) solid $md-color-black--lightest;
+        border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
 
-        // Adjust for RTL languages
+        // Adjust for right-to-left languages
         [dir="rtl"] & {
           padding: 0;
         }
@@ -285,20 +265,21 @@
         &--nested > .md-nav__link {
           padding-right: px2rem(48px);
 
-          // Adjust for RTL languages
+          // Adjust for right-to-left languages
           [dir="rtl"] & {
             padding-right: px2rem(16px);
             padding-left: px2rem(48px);
           }
+        }
 
-          // Replace icon with right arrow
-          &::after {
-            content: "\E315"; // keyboard_arrow_right
+        // Active parent item
+        &--active > .md-nav__link {
+          color: var(--md-primary-fg-color);
 
-            // Adjust for RTL languages
-            [dir="rtl"] & {
-              content: "\E314"; // keyboard_arrow_left
-            }
+          // Focused or hovered linl
+          &:focus,
+          &:hover {
+            color: var(--md-accent-fg-color);
           }
         }
       }
@@ -309,8 +290,8 @@
         margin-top: 0;
         padding: px2rem(12px) px2rem(16px);
 
-        // Rotate icon
-        &::after {
+        // Icon
+        .md-nav__icon {
           position: absolute;
           top: 50%;
           right: px2rem(12px);
@@ -318,10 +299,23 @@
           color: inherit;
           font-size: px2rem(24px);
 
-          // Adjust for RTL languages
+          // Adjust for right-to-left languages
           [dir="rtl"] & {
             right: initial;
             left: px2rem(12px);
+          }
+        }
+      }
+
+      // Icon
+      .md-nav__icon {
+
+        // Adjust for right-to-left languages
+        [dir="rtl"] & {
+
+          // Flip icon vertically
+          svg {
+            transform: scale(-1);
           }
         }
       }
@@ -343,7 +337,7 @@
           .md-nav__link {
             padding-left: px2rem(28px);
 
-            // Adjust for RTL languages
+            // Adjust for right-to-left languages
             [dir="rtl"] & {
               padding-right: px2rem(28px);
               padding-left: initial;
@@ -354,7 +348,7 @@
           .md-nav .md-nav__link {
             padding-left: px2rem(40px);
 
-            // Adjust for RTL languages
+            // Adjust for right-to-left languages
             [dir="rtl"] & {
               padding-right: px2rem(40px);
               padding-left: initial;
@@ -365,7 +359,7 @@
           .md-nav .md-nav .md-nav__link {
             padding-left: px2rem(52px);
 
-            // Adjust for RTL languages
+            // Adjust for right-to-left languages
             [dir="rtl"] & {
               padding-right: px2rem(52px);
               padding-left: initial;
@@ -376,7 +370,7 @@
           .md-nav .md-nav .md-nav .md-nav__link {
             padding-left: px2rem(64px);
 
-            // Adjust for RTL languages
+            // Adjust for right-to-left languages
             [dir="rtl"] & {
               padding-right: px2rem(64px);
               padding-left: initial;
@@ -390,33 +384,28 @@
     .md-nav__toggle ~ & {
       display: flex;
       transform: translateX(100%);
-      transition:
-        transform 0.25s cubic-bezier(0.8, 0, 0.6, 1),
-        opacity   0.125s 0.05s;
       opacity: 0;
+      transition:
+        transform 250ms cubic-bezier(0.8, 0, 0.6, 1),
+        opacity   125ms 50ms;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         transform: translateX(-100%);
-      }
-
-      // Just hide navigation, if browser doesn't supports 3D transforms
-      .no-csstransforms3d & {
-        display: none;
       }
     }
 
     // Expand nested navigation, if toggle is checked
     .md-nav__toggle:checked ~ & {
       transform: translateX(0);
-      transition:
-        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity   0.125s 0.125s;
       opacity: 1;
+      transition:
+        transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity   125ms 125ms;
 
-      // Just show navigation, if browser doesn't supports 3D transforms
-      .no-csstransforms3d & {
-        display: flex;
+      // Hack: reduce jitter
+      > .md-nav__list {
+        backface-visibility: hidden;
       }
     }
   }
@@ -430,12 +419,6 @@
       display: block;
       padding-right: px2rem(48px);
 
-      // Unrotate icon for table of contents
-      &::after {
-        color: inherit;
-        content: "\E8DE"; // toc
-      }
-
       // Hide link to current item
       + .md-nav__link {
         display: none;
@@ -447,7 +430,7 @@
       }
     }
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     html [dir="rtl"] &__link {
       padding-right: px2rem(16px);
       padding-left: px2rem(48px);
@@ -457,40 +440,55 @@
     &__source {
       display: block;
       padding: 0 px2rem(4px);
-      background-color: mix($md-color-primary, $md-color-black, 75%);
-      color: $md-color-white;
+      color: var(--md-primary-bg-color);
+      background-color: var(--md-primary-fg-color--dark);
+    }
+  }
+
+  // [tablet landscape +]: Tree-like navigation
+  @include break-from-device(tablet landscape) {
+
+    // List title
+    &--secondary .md-nav__title {
+
+      // Snap to table of contents title
+      &[for="__toc"] {
+        scroll-snap-align: start;
+      }
+
+      // Hide icon
+      .md-nav__icon {
+        display: none;
+      }
     }
   }
 
   // [screen +]: Tree-like navigation
   @include break-from-device(screen) {
+    transition: max-height 250ms cubic-bezier(0.86, 0, 0.07, 1);
 
-    // Animation is only possible if JavaScript is available, as the max-height
-    // property must be calculated before transitioning
-    &[data-md-state="animate"] {
-      transition: max-height 0.25s cubic-bezier(0.86, 0, 0.07, 1);
-    }
+    // List title
+    &--primary .md-nav__title {
 
-    // Hide nested navigation by default
-    .md-nav__toggle ~ & {
-      max-height: 0;
-      overflow: hidden;
+      // Snap to site title
+      &[for="__drawer"] {
+        scroll-snap-align: start;
+      }
 
-      // Just hide links for accessibility if JavaScript is not available
-      .no-js & {
+      // Hide icon
+      .md-nav__icon {
         display: none;
       }
     }
 
-    // Expand nested navigation, if toggle is checked
-    .md-nav__toggle:checked ~ &,
-    &[data-md-state="expand"] {
-      max-height: 100%;
+    // Hide nested navigation by default
+    .md-nav__toggle ~ & {
+      display: none;
+    }
 
-      // Just show for accessibility links if JavaScript is not available
-      .no-js & {
-        display: block;
-      }
+    // Show nested navigation, if toggle is checked
+    .md-nav__toggle:checked ~ & {
+      display: block;
     }
 
     // Hide titles for nested navigation
@@ -498,27 +496,29 @@
       display: none;
     }
 
-    // Link inside item - ideally the link display method would be set to
-    // inline on screen, but this doesn't work with text ellipsis
-    &__link {
+    // Icon
+    &__icon {
+      float: right;
+      height: px2rem(18px);
+      transition: transform 250ms;
 
-      // Item contains a nested list
-      .md-nav__item--nested > &::after {
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        float: left;
+        transform: rotate(180deg);
+      }
+
+      // Inline icon and adjust to match font size
+      svg {
         display: inline-block;
-        transform-origin: 0.45em 0.45em;
-        transform-style: preserve-3d;
-        vertical-align: -0.125em;
-
-        // Only animate icon when JavaScript is available, as the height can
-        // not be animated anyway, and better no fun than half the fun
-        .js & {
-          transition: transform 0.4s;
-        }
+        width: px2rem(18px);
+        height: px2rem(18px);
+        vertical-align: px2rem(-2px);
       }
 
       // Rotate icon for expanded lists
-      .md-nav__item--nested .md-nav__toggle:checked ~ &::after {
-        transform: rotateX(180deg);
+      .md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link & {
+        transform: rotate(90deg);
       }
     }
   }

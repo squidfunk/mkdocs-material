@@ -32,20 +32,38 @@
 
     <!-- Active checkbox expands items contained within nested section -->
     {% if nav_item.active %}
-      <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}"
-          type="checkbox" id="{{ path }}" checked />
+      <input
+        class="md-nav__toggle md-toggle"
+        data-md-toggle="{{ path }}"
+        type="checkbox"
+        id="{{ path }}"
+        checked
+      />
     {% else %}
-      <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}"
-          type="checkbox" id="{{ path }}" />
+      <input
+        class="md-nav__toggle md-toggle"
+        data-md-toggle="{{ path }}"
+        type="checkbox"
+        id="{{ path }}"
+      />
     {% endif %}
 
     <!-- Expand active pages -->
     <label class="md-nav__link" for="{{ path }}">
       {{ nav_item.title }}
+      <span class="md-nav__icon md-icon">
+        {% include ".icons/material/chevron-right.svg" %}
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible"
-        data-md-level="{{ level }}">
+    <nav
+      class="md-nav"
+      aria-label="{{ nav_item.title }}"
+      data-md-level="{{ level }}"
+    >
       <label class="md-nav__title" for="{{ path }}">
+        <span class="md-nav__icon md-icon">
+          {% include ".icons/material/arrow-left.svg" %}
+        </span>
         {{ nav_item.title }}
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -64,30 +82,40 @@
 <!-- Currently active page -->
 {% elif nav_item == page %}
   <li class="{{ class }}">
-    {% set toc_ = page.toc %}
+    {% set toc = page.toc %}
 
     <!-- Active checkbox expands items contained within nested section -->
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc"
-        type="checkbox" id="__toc" />
+    <input
+      class="md-nav__toggle md-toggle"
+      data-md-toggle="toc"
+      type="checkbox"
+      id="__toc"
+    />
 
     <!-- Hack: see partials/toc.html for more information -->
-    {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
-      {% set toc_ = (toc_ | first).children %}
+    {% if toc | first is defined and "\x3ch1 id=" in page.content %}
+      {% set toc = (toc | first).children %}
     {% endif %}
 
     <!-- Render table of contents, if not empty -->
-    {% if toc_ | first is defined %}
+    {% if toc | first is defined %}
       <label class="md-nav__link md-nav__link--active" for="__toc">
         {{ nav_item.title }}
+        <span class="md-nav__icon md-icon">
+          {% include ".icons/material/table-of-contents.svg" %}
+        </span>
       </label>
     {% endif %}
-    <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}"
-        class="md-nav__link md-nav__link--active">
+    <a
+      href="{{ nav_item.url | url }}"
+      title="{{ nav_item.title | striptags }}"
+      class="md-nav__link md-nav__link--active"
+    >
       {{ nav_item.title }}
     </a>
 
     <!-- Show table of contents -->
-    {% if toc_ | first is defined %}
+    {% if toc | first is defined %}
       {% include "partials/toc.html" %}
     {% endif %}
   </li>
@@ -95,8 +123,11 @@
 <!-- Main navigation item -->
 {% else %}
   <li class="{{ class }}">
-    <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}"
-        class="md-nav__link">
+    <a
+      href="{{ nav_item.url | url }}"
+      title="{{ nav_item.title | striptags }}"
+      class="md-nav__link"
+    >
       {{ nav_item.title }}
     </a>
   </li>

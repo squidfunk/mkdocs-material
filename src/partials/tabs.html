@@ -27,7 +27,11 @@
 {% endif %}
 
 <!-- Tabs with outline -->
-<nav class="{{ class }}" data-md-component="tabs">
+<nav
+  class="{{ class }}"
+  aria-label="{{ lang.t('tabs.title') }}"
+  data-md-component="tabs"
+>
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       {% for nav_item in nav %}

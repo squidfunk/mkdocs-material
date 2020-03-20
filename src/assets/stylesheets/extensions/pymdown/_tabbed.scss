@@ -1,0 +1,99 @@
+////
+/// Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Tabbed block content
+  .tabbed-content {
+    display: none;
+    order: 99;
+    width: 100%;
+    box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest);
+
+    // Mirror old superfences behavior, if there's only a single code block.
+    > .codehilite:only-child pre,
+    > .codehilitetable:only-child,
+    > .highlight:only-child pre,
+    > .highlighttable:only-child {
+      margin: 0;
+
+      // Remove rounded borders at the top
+      > code {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+
+    // Nested tabs
+    > .tabbed-set {
+      margin: 0;
+    }
+  }
+
+  // Tabbed block container
+  .tabbed-set {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0;
+    border-radius: px2rem(2px);
+
+    // Hide radio buttons
+    > input {
+      display: none;
+
+      // Active tab label
+      &:checked + label {
+        color: var(--md-accent-fg-color);
+        border-color: var(--md-accent-fg-color);
+
+        // Show tabbed block content
+        & + .tabbed-content {
+          display: block;
+        }
+      }
+    }
+
+    // Tab label
+    > label {
+      z-index: 1;
+      width: auto;
+      padding: px2rem(12px) 1.25em px2rem(10px);
+      color: var(--md-default-fg-color--light);
+      font-weight: 700;
+      font-size: ms(-1);
+      border-bottom: px2rem(2px) solid transparent;
+      cursor: pointer;
+      transition: color 125ms;
+
+      // Hovered tab label
+      html &:hover {
+        color: var(--md-accent-fg-color);
+      }
+    }
+  }
+}

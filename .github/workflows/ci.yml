@@ -30,6 +30,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
+      # Checkout source form GitHub
       - uses: actions/checkout@v2
 
       # Install Node runtime and dependencies
@@ -46,25 +48,22 @@ jobs:
       - if: steps.cache-node.outputs.cache-hit != 'true'
         run: npm install
 
-      # Run linter and build distribution files
+      # Run linter
       - run: npm run lint
+
+      # Build distribution files
       - run: npm run build
 
       # Check diff after build
       - run: git diff --name-only
-
-      # Upload distribution files
-      - uses: actions/upload-artifact@v1
-        if: startsWith(github.ref, 'refs/tags')
-        with:
-          name: material
-          path: material
 
   # Build and deploy documentation site
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
+
+      # Checkout source form GitHub
       - uses: actions/checkout@v2
 
       # Install Python runtime and dependencies
@@ -94,7 +93,7 @@ jobs:
 
       # Install theme and dependencies
       - run: |
-          python setup.py install
+          pip install .
           pip install mkdocs-minify-plugin>=0.2
 
       # Build documentation
@@ -106,19 +105,32 @@ jobs:
 
   # Publish Python package and Docker image
   publish:
-    if: startsWith(github.ref, 'refs/tags')
+    if: |
+      github.repository == 'squidfunk/mkdocs-material' &&
+      startsWith(github.ref, 'refs/tags')
     needs: build
     runs-on: ubuntu-latest
     steps:
+
+      # Checkout source form GitHub
       - uses: actions/checkout@v2
 
-      # Ensure latest build if repository is not up-to-date
-      - run: rm -rf material
-
-      # Download distribution files
-      - uses: actions/download-artifact@v1
+      # Install Node runtime and dependencies
+      - uses: actions/setup-node@v1
         with:
-          name: material
+          node-version: 10.x
+
+      - uses: actions/cache@v1
+        id: cache-node
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - if: steps.cache-node.outputs.cache-hit != 'true'
+        run: npm install
+
+      # Build distribution files
+      - run: npm run build
 
       # Install Python runtime and dependencies
       - uses: actions/setup-python@v1
@@ -127,27 +139,27 @@ jobs:
 
       - run: pip install --upgrade setuptools wheel twine
 
-      # Build and test Docker image
-      - run: |
-          docker build -t ${GITHUB_REPOSITORY} .
-          docker run --rm -i -v $(pwd):/docs ${GITHUB_REPOSITORY} \
-            build --theme material
+      # # Build and test Docker image
+      # - run: |
+      #     docker build -t ${GITHUB_REPOSITORY} .
+      #     docker run --rm -i -v $(pwd):/docs ${GITHUB_REPOSITORY} \
+      #       build --theme material
 
       # Build Python package
       - run: python setup.py build sdist bdist_wheel --universal
 
-      # Push release to PyPI
+      # Push package to PyPI
       - env:
           PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: twine upload -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
 
-      # Push image to Docker Hub
-      - env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-          docker tag ${GITHUB_REPOSITORY} ${GITHUB_REPOSITORY}:${GITHUB_REF##*/}
-          docker tag ${GITHUB_REPOSITORY} ${GITHUB_REPOSITORY}:latest
-          docker push ${GITHUB_REPOSITORY}
+      # # Push image to Docker Hub
+      # - env:
+      #     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      #     DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      #   run: |
+      #     docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+      #     docker tag ${GITHUB_REPOSITORY} ${GITHUB_REPOSITORY}:${GITHUB_REF##*/}
+      #     docker tag ${GITHUB_REPOSITORY} ${GITHUB_REPOSITORY}:latest
+      #     docker push ${GITHUB_REPOSITORY}

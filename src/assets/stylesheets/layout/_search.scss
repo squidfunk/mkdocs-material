@@ -34,6 +34,7 @@ $md-toggle__search--checked:
 
 // Search container
 .md-search {
+  position: relative;
 
   // Hide search, if JavaScript is not available.
   .no-js & {
@@ -42,42 +43,42 @@ $md-toggle__search--checked:
 
   // [tablet landscape +]: Header-embedded search
   @include break-from-device(tablet landscape) {
-    padding: px2rem(4px);
+    padding: px2rem(4px) 0;
   }
 
   // Search modal overlay
   &__overlay {
-    opacity: 0;
     z-index: 1;
+    opacity: 0;
 
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
       position: absolute;
       top: px2rem(4px);
-      left: px2rem(4px);
-      width: px2rem(36px);
-      height: px2rem(36px);
+      left: px2rem(-44px);
+      width: px2rem(40px);
+      height: px2rem(40px);
+      overflow: hidden;
+      background-color: var(--md-default-bg-color);
+      border-radius: px2rem(20px);
       transform-origin: center;
       transition:
-        transform 0.3s 0.1s,
-        opacity   0.2s 0.2s;
-      border-radius: px2rem(20px);
-      background-color: $md-color-white;
-      overflow: hidden;
+        transform 300ms 100ms,
+        opacity   200ms 200ms;
       pointer-events: none;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
-        right: px2rem(4px);
+        right: px2rem(-44px);
         left: initial;
       }
 
       // Expanded overlay
       #{$md-toggle__search--checked} & {
-        transition:
-          transform 0.4s,
-          opacity   0.1s;
         opacity: 1;
+        transition:
+          transform 400ms,
+          opacity   100ms;
       }
     }
 
@@ -107,14 +108,14 @@ $md-toggle__search--checked:
       left: 0;
       width: 0;
       height: 0;
-      transition:
-        width   0s 0.25s,
-        height  0s 0.25s,
-        opacity 0.25s;
-      background-color: $md-color-black--light;
+      background-color: var(--md-default-fg-color--light);
       cursor: pointer;
+      transition:
+        width     0ms 250ms,
+        height    0ms 250ms,
+        opacity 250ms;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         right: 0;
         left: initial;
@@ -124,53 +125,55 @@ $md-toggle__search--checked:
       #{$md-toggle__search--checked} & {
         width: 100%;
         height: 100%;
-        transition:
-          width   0s,
-          height  0s,
-          opacity 0.25s;
         opacity: 1;
+        transition:
+          width     0ms,
+          height    0ms,
+          opacity 250ms;
       }
     }
   }
 
   // Search modal wrapper
   &__inner {
+    // Hack: reduce jitter
+    backface-visibility: hidden;
 
     // [tablet portrait -]: Put search modal off-canvas by default
     @include break-to-device(tablet portrait) {
       position: fixed;
       top: 0;
       left: 100%;
+      z-index: 2;
       width: 100%;
       height: 100%;
       transform: translateX(5%);
-      transition:
-        right     0s    0.3s,
-        left      0s    0.3s,
-        transform 0.15s 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity   0.15s 0.15s;
       opacity: 0;
-      z-index: 2;
+      transition:
+        right       0ms 300ms,
+        left        0ms 300ms,
+        transform 150ms 150ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity   150ms 150ms;
 
       // Active search modal
       #{$md-toggle__search--checked} & {
         left: 0;
         transform: translateX(0);
-        transition:
-          right     0s    0s,
-          left      0s    0s,
-          transform 0.15s 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
-          opacity   0.15s 0.15s;
         opacity: 1;
+        transition:
+          right       0ms   0ms,
+          left        0ms   0ms,
+          transform 150ms 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
+          opacity   150ms 150ms;
 
-        // Adjust for RTL languages
+        // Adjust for right-to-left languages
         [dir="rtl"] & {
           right: 0;
           left: initial;
         }
       }
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       html [dir="rtl"] & {
         right: 100%;
         left: initial;
@@ -181,27 +184,14 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       position: relative;
-      width: px2rem(230px);
-      margin-right: px2rem(16px);
-      padding: px2rem(2px) 0;
       float: right;
-      transition: width 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+      width: px2rem(234px);
+      padding: px2rem(2px) 0;
+      transition: width 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
-        margin-right: initial;
-        margin-left: px2rem(16px);
         float: left;
-      }
-    }
-
-    // [screen +]: Increase spacing of search bar
-    @include break-from-device(screen) {
-      margin-right: px2rem(24px);
-
-      // Adjust for RTL languages
-      [dir="rtl"] & {
-        margin-left: px2rem(24px);
       }
     }
 
@@ -233,24 +223,24 @@ $md-toggle__search--checked:
   // Search input
   &__input {
     position: relative;
+    z-index: 2;
     padding: 0 px2rem(44px) 0 px2rem(72px);
     text-overflow: ellipsis;
-    z-index: 2;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       padding: 0 px2rem(72px) 0 px2rem(44px);
     }
 
     // Transition on placeholder
     &::placeholder {
-      transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+      transition: color 250ms;
     }
 
     // Placeholder and icon color in active state
     ~ .md-search__icon,
     &::placeholder {
-      color: $md-color-black--light;
+      color: var(--md-default-fg-color--light);
     }
 
     // Remove the "x" rendered by Internet Explorer
@@ -270,59 +260,60 @@ $md-toggle__search--checked:
       width: 100%;
       height: px2rem(36px);
       padding-left: px2rem(44px);
-      transition:
-        background-color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1),
-        color            0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
-      border-radius: px2rem(2px);
-      background-color: $md-color-black--lighter;
       color: inherit;
       font-size: ms(0);
+      background-color: var(--md-default-fg-color--lighter);
+      border-radius: px2rem(2px);
+      transition:
+        background-color 250ms,
+        color            250ms;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         padding-right: px2rem(44px);
       }
 
       // Icon color
       + .md-search__icon {
-        color: inherit;
+        color: var(--md-primary-bg-color);
       }
 
       // Placeholder color
       &::placeholder {
-        color: $md-color-white--light;
+        color: var(--md-primary-bg-color--light);
       }
 
       // Hovered search field
       &:hover {
-        background-color: $md-color-white--lightest;
+        background-color: var(--md-default-bg-color--lightest);
       }
 
       // Set light background on active search field
       #{$md-toggle__search--checked} & {
-        border-radius: px2rem(2px) px2rem(2px) 0 0;
-        background-color: $md-color-white;
-        color: $md-color-black;
+        color: var(--md-default-fg-color);
         text-overflow: clip;
+        background-color: var(--md-default-bg-color);
+        border-radius: px2rem(2px) px2rem(2px) 0 0;
 
-        // Placeholder and icon color in active state
+        // Icon and placeholder color in active state
         + .md-search__icon,
         &::placeholder {
-          color: $md-color-black--light;
+          color: var(--md-default-fg-color--light);
         }
       }
     }
   }
 
-  // Icons
+  // Icon
   &__icon {
     position: absolute;
-    transition:
-      color   0.25s cubic-bezier(0.1, 0.7, 0.1, 1),
-      opacity 0.25s;
-    font-size: $md-icon-size;
-    cursor: pointer;
     z-index: 2;
+    width: px2rem(24px);
+    height: px2rem(24px);
+    cursor: pointer;
+    transition:
+      color   250ms,
+      opacity 250ms;
 
     // Hovered icon
     &:hover {
@@ -334,16 +325,15 @@ $md-toggle__search--checked:
       top: px2rem(6px);
       left: px2rem(10px);
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         right: px2rem(10px);
         left: initial;
-      }
 
-      // Set search icon on pseudo class, so it can be overridden for mobile
-      // and tablet when the search is rendered in an overlay
-      &::before {
-        content: "\E8B6"; // search
+        // Flip icon vertically
+        svg {
+          transform: scaleX(-1);
+        }
       }
 
       // [tablet portrait -]: Full-screen search bar
@@ -351,14 +341,25 @@ $md-toggle__search--checked:
         top: px2rem(12px);
         left: px2rem(16px);
 
-        // Show back arrow instead of search icon
-        &[for="__search"]::before {
-          content: "\E5C4"; // arrow_back
+        // Adjust for right-to-left languages
+        [dir="rtl"] & {
+          right: px2rem(16px);
+          left: initial;
+        }
 
-          // Adjust for RTL languages
-          [dir="rtl"] & {
-            content: "\E5C8"; // arrow_forward
-          }
+        // Hide the magnifying glass (1st icon)
+        svg:first-child {
+          display: none;
+        }
+      }
+
+      // [tablet landscape +]: Header-embedded search
+      @include break-from-device(tablet landscape) {
+        pointer-events: none;
+
+        // Hide the arrow (2nd icon)
+        svg:last-child {
+          display: none;
         }
       }
     }
@@ -367,13 +368,14 @@ $md-toggle__search--checked:
     &[type="reset"] {
       top: px2rem(6px);
       right: px2rem(10px);
-      transform: scale(0.125);
-      transition:
-        transform 0.15s cubic-bezier(0.1, 0.7, 0.1, 1),
-        opacity   0.15s;
+      transform: scale(0.75);
       opacity: 0;
+      transition:
+        transform 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
+        opacity   150ms;
+      pointer-events: none;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         right: initial;
         left: px2rem(10px);
@@ -383,12 +385,19 @@ $md-toggle__search--checked:
       @include break-to-device(tablet portrait) {
         top: px2rem(12px);
         right: px2rem(16px);
+
+        // Adjust for right-to-left languages
+        [dir="rtl"] & {
+          right: initial;
+          left: px2rem(16px);
+        }
       }
 
       // Show reset button if search is active and input non-empty
       #{$md-toggle__search--checked} .md-search__input:valid ~ & {
         transform: scale(1);
         opacity: 1;
+        pointer-events: initial;
 
         // Hovered icon
         &:hover {
@@ -401,10 +410,10 @@ $md-toggle__search--checked:
   // Search output container
   &__output {
     position: absolute;
-    width: 100%;
-    border-radius: 0 0 px2rem(2px) px2rem(2px);
-    overflow: hidden;
     z-index: 1;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0 0 px2rem(2px) px2rem(2px);
 
     // [tablet portrait -]: Full-screen search bar
     @include break-to-device(tablet portrait) {
@@ -415,8 +424,8 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       top: px2rem(38px);
-      transition: opacity 0.4s;
       opacity: 0;
+      transition: opacity 400ms;
 
       // Show search output in active state
       #{$md-toggle__search--checked} & {
@@ -430,10 +439,18 @@ $md-toggle__search--checked:
   // Wrapper for scrolling on overflow
   &__scrollwrap {
     height: 100%;
-    background-color: $md-color-white;
-    box-shadow: 0 px2rem(1px) 0 $md-color-black--lightest inset;
     overflow-y: auto;
+    background-color: var(--md-default-bg-color);
+    box-shadow: inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
+    // Hack: reduce jitter
+    backface-visibility: hidden;
+    scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
+
+    // Mitigiate excessive repaints on non-retina devices
+    @media (max-resolution: 1dppx) {
+      transform: translateZ(0);
+    }
 
     // [tablet landscape]: Set absolute width to omit unnecessary reflow
     @include break-at-device(tablet landscape) {
@@ -460,13 +477,13 @@ $md-toggle__search--checked:
         height: px2rem(4px);
       }
 
-      // Style scrollbar thumb
+      // Scrollbar thumb
       &::-webkit-scrollbar-thumb {
-        background-color: $md-color-black--lighter;
+        background-color: var(--md-default-fg-color--lighter);
 
         // Hovered scrollbar thumb
         &:hover {
-          background-color: $md-color-accent;
+          background-color: var(--md-accent-fg-color);
         }
       }
     }
@@ -475,22 +492,23 @@ $md-toggle__search--checked:
 
 // Search result
 .md-search-result {
-  color: $md-color-black;
+  color: var(--md-default-fg-color);
   word-break: break-word;
 
   // Search metadata
   &__meta {
     padding: 0 px2rem(16px);
-    background-color: $md-color-black--lightest;
-    color: $md-color-black--light;
+    color: var(--md-default-fg-color--light);
     font-size: ms(-1);
     line-height: px2rem(36px);
+    background-color: var(--md-default-fg-color--lightest);
+    scroll-snap-align: start;
 
     // [tablet landscape +]: Increase left indent
     @include break-from-device(tablet landscape) {
       padding-left: px2rem(44px);
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         padding-right: px2rem(44px);
         padding-left: initial;
@@ -502,26 +520,26 @@ $md-toggle__search--checked:
   &__list {
     margin: 0;
     padding: 0;
-    border-top: px2rem(1px) solid $md-color-black--lightest;
     list-style: none;
+    border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
   }
 
   // List item
   &__item {
-    box-shadow: 0 px2rem(-1px) 0 $md-color-black--lightest;
+    box-shadow: 0 px2rem(-1px) 0 var(--md-default-fg-color--lightest);
   }
 
   // Link inside item
   &__link {
     display: block;
-    transition: background 0.25s;
     outline: 0;
-    overflow: hidden;
+    transition: background 250ms;
+    scroll-snap-align: start;
 
-    // Active or hovered link
-    &[data-md-state="active"],
+    // Focused or hovered link
+    &:focus,
     &:hover {
-      background-color: transparentize($md-color-accent, 0.9);
+      background-color: var(--md-accent-fg-color--transparent);
 
       // Slightly transparent icon
       .md-search-result__article::before {
@@ -545,7 +563,7 @@ $md-toggle__search--checked:
     @include break-from-device(tablet landscape) {
       padding-left: px2rem(44px);
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         padding-right: px2rem(44px);
         padding-left: px2rem(16px);
@@ -555,44 +573,46 @@ $md-toggle__search--checked:
     // Document
     &--document {
 
-      // Icon
-      &::before {
-        @extend %md-icon, %md-icon__button;
-
-        position: absolute;
-        left: 0;
-        margin: px2rem(2px);
-        transition: opacity 0.25s;
-        color: $md-color-black--light;
-        content: "\E880"; // find_in_page
-
-        // Adjust for RTL languages
-        [dir="rtl"] & {
-          right: 0;
-          left: initial;
-        }
-
-        // [tablet portrait -]: Hide page icon
-        @include break-to-device(tablet portrait) {
-          display: none;
-        }
-      }
-
       // Title
       .md-search-result__title {
         margin: px2rem(11px) 0;
-        font-size: ms(0);
         font-weight: 400;
+        font-size: ms(0);
         line-height: 1.4;
       }
+    }
+  }
+
+  // Icon
+  &__icon {
+    position: absolute;
+    left: 0;
+    margin: px2rem(2px);
+    padding: px2rem(8px);
+    color: var(--md-default-fg-color--light);
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      right: 0;
+      left: initial;
+
+      // Flip icon vertically
+      svg {
+        transform: scaleX(-1);
+      }
+    }
+
+    // [tablet portrait -]: Hide page icon
+    @include break-to-device(tablet portrait) {
+      display: none;
     }
   }
 
   // Title
   &__title {
     margin: 0.5em 0;
-    font-size: ms(-1);
     font-weight: 700;
+    font-size: ms(-1);
     line-height: 1.4;
   }
 
@@ -603,11 +623,11 @@ $md-toggle__search--checked:
     display: -webkit-box;
     max-height: px2rem(33px);
     margin: 0.5em 0;
-    color: $md-color-black--light;
+    overflow: hidden;
+    color: var(--md-default-fg-color--light);
     font-size: ms(-1);
     line-height: 1.4;
     text-overflow: ellipsis;
-    overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 
@@ -628,8 +648,8 @@ $md-toggle__search--checked:
 
   // Search term highlighting
   em {
-    font-style: normal;
     font-weight: 700;
+    font-style: normal;
     text-decoration: underline;
   }
 }

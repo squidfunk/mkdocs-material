@@ -24,6 +24,13 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-details-icon: url("{{ chevron-right }}");
+}
+
+// ----------------------------------------------------------------------------
+
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
@@ -33,76 +40,68 @@
 
     display: block;
     padding-top: 0;
+    overflow: visible;
+
 
     // Rotate title icon
     &[open] > summary::after {
-      transform: rotate(180deg);
+      transform: rotate(90deg);
     }
 
-    // Remove bottom spacing
+    // Remove bottom spacing for closed details
     &:not([open]) {
       padding-bottom: 0;
 
-      // Remove bottom border if block is closed
+      // We cannot set overflow: hidden, as the outline would not be visible,
+      // so we need to correct the border radius
       > summary {
-        border-bottom: none;
+        border-bottom-right-radius: px2rem(2px);
       }
     }
 
-    // Increase spacing to the right - scoped here for higher specificity
-    summary {
-      padding-right: px2rem(40px);
-
-      // Adjust for RTL languages
-      [dir="rtl"] & {
-        padding-left: px2rem(40px);
-      }
-    }
-
-    // Manually hide and show, if browser doesn't support details
-    .no-details &:not([open]) {
-
-      // Hide all nested tags ...
-      > * {
-        display: none;
-      }
-
-      // ... but show title
-      summary {
-        display: block;
-      }
+    // Hack: omit margin collapse
+    &::after {
+      display: table;
+      content: "";
     }
   }
 
-  // Title
+  // Details title
   summary {
     @extend .admonition-title;
 
-    // Hack: set to block, so Firefox doesn't render marker
-    display: block;
-    outline: none;
+    min-height: px2rem(20px);
+    padding: px2rem(8px) px2rem(36px) px2rem(8px) px2rem(40px);
+    border-top-right-radius: px2rem(2px);
     cursor: pointer;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(36px);
+    }
 
     // Remove default details marker
     &::-webkit-details-marker {
       display: none;
     }
 
-    // Icon
+    // Details marker
     &::after {
-      @extend %md-icon;
-
       position: absolute;
       top: px2rem(8px);
-      right: px2rem(12px);
-      color: $md-color-black--lighter;
-      font-size: px2rem(20px);
-      content: "\E313"; // keyboard_arrow_down
+      right: px2rem(8px);
+      width: px2rem(20px);
+      height: px2rem(20px);
+      background-image: var(--md-details-icon);
+      transform: rotate(0deg);
+      transition: transform 250ms;
+      content: "";
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         right: initial;
-        left: px2rem(12px);
+        left: px2rem(8px);
+        transform: rotate(180deg);
       }
     }
   }

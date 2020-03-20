@@ -26,6 +26,8 @@
 
 // Application footer
 .md-footer {
+  color: var(--md-default-bg-color);
+  background-color: var(--md-default-fg-color);
 
   // Hide for print
   @media print {
@@ -35,8 +37,6 @@
 
 // Navigation within footer
 .md-footer-nav {
-  background-color: $md-color-black;
-  color: $md-color-white;
 
   // Set spacing
   &__inner {
@@ -46,28 +46,35 @@
 
   // Links to previous and next page
   &__link {
+    display: flex;
     padding-top: px2rem(28px);
     padding-bottom: px2rem(8px);
-    transition: opacity 0.25s;
+    transition: opacity 250ms;
 
     // [tablet +]: Set proportional width
     @include break-from-device(tablet) {
       width: 50%;
     }
 
-    // Hovered link
+    // Focused or hovered links
+    &:focus,
     &:hover {
       opacity: 0.7;
     }
 
     // Link to previous page
     &--prev {
-      width: 25%;
       float: left;
+      width: 25%;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         float: right;
+
+        // Flip icon vertically
+        svg {
+          transform: scaleX(-1);
+        }
       }
 
       // Title
@@ -82,31 +89,37 @@
 
     // Link to next page
     &--next {
-      width: 75%;
       float: right;
+      width: 75%;
       text-align: right;
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         float: left;
         text-align: left;
+
+        // Flip icon vertically
+        svg {
+          transform: scaleX(-1);
+        }
       }
     }
-  }
-
-  // Icon buttons
-  &__button {
-    @extend %md-icon__button;
-
-    transition: background 0.25s;
   }
 
   // Link title - set line height to match icon for correct alignment
   &__title {
     position: relative;
+    flex-grow: 1;
+    max-width: calc(100% - #{px2rem(48px)});
     padding: 0 px2rem(20px);
     font-size: px2rem(18px);
     line-height: px2rem(48px);
+  }
+
+  // Link button
+  &__button {
+    margin: px2rem(4px);
+    padding: px2rem(8px);
   }
 
   // Link direction
@@ -116,58 +129,55 @@
     left: 0;
     margin-top: px2rem(-20px);
     padding: 0 px2rem(20px);
-    color: $md-color-white--light;
-    font-size: px2rem(15px);
+    color: var(--md-default-bg-color--light);
+    font-size: ms(-1);
   }
 }
 
 // Non-navigational information
 .md-footer-meta {
-  background-color: opacify($md-color-black, 0.025);
+  background-color: var(--md-default-fg-color--lighter);
 
   // Set spacing
   &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding: px2rem(4px);
-    overflow: auto;
   }
 
   // Use a decent color for non-hovered links and ensure specificity
   html &.md-typeset a {
-    color: $md-color-white--light;
+    color: var(--md-default-bg-color--light);
 
     // Focused or hovered link
     &:focus,
     &:hover {
-      color: $md-color-white;
+      color: var(--md-default-bg-color);
     }
   }
 }
 
 // Copyright and theme information
 .md-footer-copyright {
-  margin: 0 px2rem(12px);
+  width: 100%;
+  margin: auto px2rem(12px);
   padding: px2rem(8px) 0;
-  color: $md-color-white--lighter;
+  color: var(--md-default-bg-color--lighter);
   font-size: ms(-1);
 
   // [tablet portrait +]: Show next to social media links
   @include break-from-device(tablet portrait) {
-    max-width: 75%;
-    float: left;
-
-    // Adjust for RTL languages
-    [dir="rtl"] & {
-      float: right;
-    }
+    width: auto;
   }
 
   // Highlight copyright information
   &__highlight {
-    color: $md-color-white--light;
+    color: var(--md-default-bg-color--light);
   }
 }
 
-// Social media links
+// Social links
 .md-footer-social {
   margin: 0 px2rem(8px);
   padding: px2rem(4px) 0 px2rem(12px);
@@ -175,12 +185,6 @@
   // [tablet portrait +]: Show next to copyright information
   @include break-from-device(tablet portrait) {
     padding: px2rem(12px) 0;
-    float: right;
-
-    // Adjust for RTL languages
-    [dir="rtl"] & {
-      float: left;
-    }
   }
 
   // Link with icon
@@ -188,12 +192,18 @@
     display: inline-block;
     width: px2rem(32px);
     height: px2rem(32px);
-    font-size: px2rem(16px);
     text-align: center;
 
     // Adjust line-height to match height for correct alignment
     &::before {
       line-height: 1.9;
+    }
+
+    // Social icon
+    svg {
+      max-height: px2rem(16px);
+      vertical-align: -25%;
+      fill: currentColor;
     }
   }
 }

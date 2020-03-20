@@ -1,9 +1,8 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% set feature = config.theme.feature %}
 {% set class = "md-hero" %}
-{% if not feature.tabs %}
+{% if "tabs" not in config.theme.features %}
   {% set class = "md-hero md-hero--expand" %}
 {% endif %}
 <div class="{{ class }}" data-md-component="hero">

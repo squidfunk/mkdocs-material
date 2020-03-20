@@ -59,29 +59,16 @@
 // Source container
 .md-source {
   display: block;
-  padding-right: px2rem(12px);
-  transition: opacity 0.25s;
   font-size: px2rem(13px);
   line-height: 1.2;
   white-space: nowrap;
-
-  // Adjust for RTL languages
-  [dir="rtl"] & {
-    padding-right: initial;
-    padding-left: px2rem(12px);
-  }
+  // Hack: reduce jitter
+  backface-visibility: hidden;
+  transition: opacity 250ms;
 
   // Hovered source container
   &:hover {
     opacity: 0.7;
-  }
-
-  // Necessary for vertical alignment
-  &::after {
-    display: inline-block;
-    height: px2rem(48px);
-    content: "";
-    vertical-align: middle;
   }
 
   // Repository platform icon
@@ -89,18 +76,14 @@
     display: inline-block;
     width: px2rem(48px);
     height: px2rem(48px);
-    content: "";
     vertical-align: middle;
 
-    // Align SVG, do not scale, as this will incur strange formatting bugs
-    // in Internet Explorer and Edge
+    // Align with margin only (as opposed to normal button alignment)
     svg {
-      width: px2rem(24px);
-      height: px2rem(24px);
       margin-top: px2rem(12px);
       margin-left: px2rem(12px);
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         margin-right: px2rem(12px);
         margin-left: initial;
@@ -112,7 +95,7 @@
       margin-left: px2rem(-40px);
       padding-left: px2rem(40px);
 
-      // Adjust for RTL languages
+      // Adjust for right-to-left languages
       [dir="rtl"] & {
         margin-right: px2rem(-40px);
         margin-left: initial;
@@ -125,11 +108,11 @@
   // Repository name
   &__repository {
     display: inline-block;
-    max-width: 100%;
+    max-width: calc(100% - #{px2rem(24px)});
     margin-left: px2rem(12px);
+    overflow: hidden;
     font-weight: 700;
     text-overflow: ellipsis;
-    overflow: hidden;
     vertical-align: middle;
   }
 
@@ -137,15 +120,15 @@
   &__facts {
     margin: 0;
     padding: 0;
-    font-size: px2rem(11px);
+    overflow: hidden;
     font-weight: 700;
+    font-size: px2rem(11px);
     list-style-type: none;
     opacity: 0.75;
-    overflow: hidden;
 
     // Show after the data was loaded
     [data-md-state="done"] & {
-      animation: md-source__facts--done 0.25s ease-in;
+      animation: md-source__facts--done 250ms ease-in;
     }
   }
 
@@ -153,14 +136,14 @@
   &__fact {
     float: left;
 
-    // Adjust for RTL languages
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       float: right;
     }
 
     // Show after the data was loaded
     [data-md-state="done"] & {
-      animation: md-source__fact--done 0.4s ease-out;
+      animation: md-source__fact--done 400ms ease-out;
     }
 
     // Middle dot before fact
@@ -172,63 +155,6 @@
     // Remove middle dot on first fact
     &:first-child::before {
       display: none;
-    }
-  }
-}
-
-// Source file
-.md-source-file {
-  display: inline-block;
-  margin: 1em 0.5em 1em 0;
-  padding-right: px2rem(5px);
-  border-radius: px2rem(2px);
-  background-color: $md-color-black--lightest;
-  font-size: ms(-1);
-  list-style-type: none;
-  cursor: pointer;
-  overflow: hidden;
-
-  // Icon
-  &::before {
-    @extend %md-icon;
-
-    display: inline-block;
-    margin-right: px2rem(5px);
-    padding: px2rem(5px);
-    background-color: $md-color-black--lighter;
-    color: $md-color-white;
-    font-size: ms(0);
-    content: "\E86F"; // code
-    vertical-align: middle;
-  }
-
-  // Some properties need to be set with higher specificity due to the default
-  // styling of text links inside typesetted content
-  html & {
-    transition:
-      background 0.4s,
-      color      0.4s,
-      box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-    // Icon
-    &::before {
-      transition: inherit;
-    }
-  }
-
-  // Color needs even higher specifity because custom color palettes are set
-  // using the body and override text links inside typesetted content
-  html body .md-typeset & {
-    color: $md-color-black--light;
-  }
-
-  // Hovered source file
-  &:hover {
-    @include z-depth-focus;
-
-    // Icon
-    &::before {
-      background-color: $md-color-accent;
     }
   }
 }
