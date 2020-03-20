@@ -124,6 +124,7 @@ nav:
     - Minify HTML: plugins/minify-html.md
     - Revision date: plugins/revision-date.md
     - Search: plugins/search.md
+    - Pages: plugins/awesome-pages-plugin.md
   - Specimen: specimen.md
   - Customization: customization.md
   - Compliance with GDPR: compliance.md
