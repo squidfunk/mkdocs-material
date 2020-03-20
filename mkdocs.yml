@@ -132,6 +132,7 @@ nav:
     - PyMdown: extensions/pymdown.md
   - Plugins:
     - Search: plugins/search.md
+    - Pages: plugins/awesome-pages-plugin.md
     - Minification: plugins/minification.md
     - Revision date: plugins/revision-date.md
   - Releases:

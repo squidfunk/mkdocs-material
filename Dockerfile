@@ -41,6 +41,7 @@ RUN \
   && pip install --no-cache-dir \
     'mkdocs-minify-plugin>=0.2' \
     'mkdocs-git-revision-date-localized-plugin>=0.4' \
+    'mkdocs-awesome-pages-plugin>=2.2.1' \
   && rm -rf /tmp/*
 
 # Set working directory
