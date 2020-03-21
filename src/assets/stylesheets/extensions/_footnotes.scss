@@ -152,11 +152,6 @@
       color: var(--md-primary-fg-color);
       transform: translateX(0);
       opacity: 1;
-
-      // Hack: mask-image is not supported in PDFs
-      &::before {
-        background: var(--md-footnotes-icon);
-      }
     }
   }
 }

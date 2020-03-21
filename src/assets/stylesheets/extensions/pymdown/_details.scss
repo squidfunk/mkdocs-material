@@ -92,7 +92,8 @@
       right: px2rem(8px);
       width: px2rem(20px);
       height: px2rem(20px);
-      background-image: var(--md-details-icon);
+      background-color: currentColor;
+      mask-image: var(--md-details-icon);
       transform: rotate(0deg);
       transition: transform 250ms;
       content: "";
