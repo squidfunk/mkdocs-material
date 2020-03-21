@@ -394,7 +394,8 @@ $md-toggle__search--checked:
       }
 
       // Show reset button if search is active and input non-empty
-      #{$md-toggle__search--checked} .md-search__input:valid ~ & {
+      #{$md-toggle__search--checked}
+      .md-search__input:not(:placeholder-shown) ~ & {
         transform: scale(1);
         opacity: 1;
         pointer-events: initial;

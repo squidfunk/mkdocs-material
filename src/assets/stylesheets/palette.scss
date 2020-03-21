@@ -134,6 +134,11 @@
       &::placeholder {
         color: var(--md-default-fg-color--light);
       }
+
+      // Hovered search field
+      &:hover {
+        background-color: var(--md-default-fg-color--lighter);
+      }
     }
   }
 
@@ -200,7 +205,12 @@
 
     // Search input
     .md-search__input {
-      background-color: var(--md-default-bg-color--lightest);
+      background-color: var(--md-default-bg-color--lighter);
+
+      // Hovered search field
+      &:hover {
+        background-color: var(--md-default-bg-color--lightest);
+      }
     }
   }
 
