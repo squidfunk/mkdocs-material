@@ -108,7 +108,7 @@ $md-toggle__search--checked:
       left: 0;
       width: 0;
       height: 0;
-      background-color: var(--md-default-fg-color--light);
+      background-color: hsla(0, 0%, 0%, 0.54);
       cursor: pointer;
       transition:
         width     0ms 250ms,
@@ -262,7 +262,7 @@ $md-toggle__search--checked:
       padding-left: px2rem(44px);
       color: inherit;
       font-size: ms(0);
-      background-color: var(--md-default-fg-color--lighter);
+      background-color: hsla(0, 0%, 0%, 0.26);
       border-radius: px2rem(2px);
       transition:
         background-color 250ms,
@@ -285,7 +285,7 @@ $md-toggle__search--checked:
 
       // Hovered search field
       &:hover {
-        background-color: var(--md-default-bg-color--lightest);
+        background-color: hsla(0, 0%, 100%, 0.12);
       }
 
       // Set light background on active search field

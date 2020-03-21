@@ -267,6 +267,7 @@ kbd {
   mark {
     margin: 0 px2em(4px, 16px);
     padding: px2em(1px, 16px) 0;
+    color: currentColor;
     word-break: break-word;
     background-color: transparentize($clr-yellow-500, 0.5);
     border-radius: px2rem(2px);

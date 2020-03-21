@@ -139,7 +139,7 @@ hr {
   z-index: 3;
   width: 0;
   height: 0;
-  background-color: var(--md-default-fg-color--light);
+  background-color: hsla(0, 0%, 0%, 0.54);
   opacity: 0;
   transition:
     width     0ms 250ms,
