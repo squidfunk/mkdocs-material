@@ -75,6 +75,7 @@
   &__button {
     position: relative;
     z-index: 1;
+    display: block;
     margin: px2rem(4px);
     padding: px2rem(8px);
     cursor: pointer;
@@ -148,13 +149,19 @@
     position: absolute;
     display: block;
     width: 100%;
-    padding: 0 px2rem(20px);
+    padding-left: px2rem(20px);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     transition:
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   150ms;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      padding-right: px2rem(20px);
+      padding-left: initial;
+    }
 
     // Page title
     & + & {

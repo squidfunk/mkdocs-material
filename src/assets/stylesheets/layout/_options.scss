@@ -21,53 +21,50 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Variables
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
-@import "material-shadows";
+// Active (toggled) search
+$md-toggle__search--checked:
+  "[data-md-toggle=\"search\"]:checked ~ .md-header";
+
+// Active (toggled) options dialog
+$md-toggle__more--checked:
+  "[data-md-toggle=\"more\"]:checked";
 
 // ----------------------------------------------------------------------------
-// Local imports
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "utilities/break";
-@import "utilities/convert";
+// Options dialog
+.md-more {
+  position: relative;
 
-@import "config";
+  &__list {
+    position: absolute;
+    display: none;
+    margin: 0;
+    background: red;
+  }
 
-@import "base/reset";
-@import "base/colors";
-@import "base/icons";
-@import "base/typeset";
+  #{$md-toggle__more--checked} + &__list {
+    display: block;
+    background: blue;
+  }
 
-@import "layout/base";
-@import "layout/announce";
-@import "layout/clipboard";
-@import "layout/content";
-@import "layout/dialog";
-@import "layout/header";
-@import "layout/hero";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/options";
-@import "layout/search";
-@import "layout/sidebar";
-@import "layout/source";
-@import "layout/tabs";
+}
 
-@import "extensions/admonition";
-@import "extensions/codehilite";
-@import "extensions/footnotes";
-@import "extensions/permalinks";
+[for="__more"] {
+  padding: px2rem(8px) px2rem(4px); // reduce padding
+  transition:
+    visibility 0ms 250ms,
+    opacity  125ms 250ms;
+}
 
-@import "extensions/pymdown/arithmatex";
-@import "extensions/pymdown/critic";
-@import "extensions/pymdown/details";
-@import "extensions/pymdown/emoji";
-@import "extensions/pymdown/highlight";
-@import "extensions/pymdown/tabbed";
-@import "extensions/pymdown/tasklist";
-
-@import "shame";
+// hide, if search is active... do not display none though...
+#{$md-toggle__search--checked} [for="__more"] {
+  width: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0ms;
+}
