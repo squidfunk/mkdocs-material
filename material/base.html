@@ -178,7 +178,7 @@
     {% endblock %}
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.0c35f0aa.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.7ea61618.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.752d7b6c.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -196,17 +196,7 @@
       <script id="__lang" type="application/json">
         {{ translations | tojson }}
       </script>
-      <script>
-        __material = initialize(Object.assign({
-          url: {
-            base: "{{ base_url }}",
-            worker: {
-              search: "{{ 'assets/javascripts/worker/search.2613054f.min.js' | url }}"
-            }
-          },
-          features: {{ config.theme.features | tojson }}
-        }, typeof __config !== "undefined" ? __config : {}))
-      </script>
+      <script>__material=initialize(Object.assign({url:{base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.2613054f.min.js' | url }}"}},features:{{ config.theme.features | tojson }}},typeof __config!=="undefined"?__config:{}))</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

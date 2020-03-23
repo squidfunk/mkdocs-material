@@ -368,7 +368,8 @@
         {{ translations | tojson }}
       </script>
 
-      <!-- Application initialization -->
+      <!-- Application initialization - minified because the HTML minifier doesn't understand inline JS -->
+      <!-- Unminified Source:
       <script>
         __material = initialize(Object.assign({
           url: {
@@ -380,6 +381,8 @@
           features: {{ config.theme.features | tojson }}
         }, typeof __config !== "undefined" ? __config : {}))
       </script>
+      -->
+      <script>__material=initialize(Object.assign({url:{base:"{{ base_url }}",worker:{search:"{{ 'assets/javascripts/worker/search.js' | url }}"}},features:{{ config.theme.features | tojson }}},typeof __config!=="undefined"?__config:{}))</script>
 
       <!-- Custom JavaScript -->
       {% for path in config["extra_javascript"] %}
