@@ -40,10 +40,9 @@
         {% include ".icons/" ~ icon ~ ".svg" %}
       {% endif %}
     </a>
-    <label
-      class="md-header-nav__button md-icon"
-      for="__drawer"
-    >
+
+    <!-- Button to open drawer -->
+    <label class="md-header-nav__button md-icon" for="__drawer">
       {% include ".icons/material/menu" ~ ".svg" %}
     </label>
 
@@ -67,12 +66,15 @@
       </div>
     </div>
 
+    <!-- Button for options dialog -->
+    <label class="md-header-nav__button md-icon" for="__more">
+      {% include ".icons/material/dots-vertical" ~ ".svg" %}
+    </label>
+    {% include "partials/more.html" %}
+
     <!-- Button to open search dialogue -->
     {% if "search" in config["plugins"] %}
-      <label
-        class="md-header-nav__button md-icon"
-        for="__search"
-      >
+      <label class="md-header-nav__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}
       </label>
 
