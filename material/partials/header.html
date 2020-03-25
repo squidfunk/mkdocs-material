@@ -15,22 +15,24 @@
       {% include ".icons/material/menu" ~ ".svg" %}
     </label>
     <div class="md-header-nav__title" data-md-component="header-title">
-      <div class="md-header-nav__ellipsis md-ellipsis">
-        {% if config.site_name == page.title %}
+      {% if config.site_name == page.title %}
+        <div class="md-header-nav__ellipsis md-ellipsis">
           {{ config.site_name }}
-        {% else %}
-          <span class="md-header-nav__topic">
+        </div>
+      {% else %}
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
             {{ config.site_name }}
           </span>
-          <span class="md-header-nav__topic">
+          <span class="md-header-nav__topic md-ellipsis">
             {% if page and page.meta and page.meta.title %}
               {{ page.meta.title }}
             {% else %}
               {{ page.title }}
             {% endif %}
           </span>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     </div>
     {% if "search" in config["plugins"] %}
       <label class="md-header-nav__button md-icon" for="__search">

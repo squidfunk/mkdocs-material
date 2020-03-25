@@ -146,12 +146,7 @@
   // Header topics
   &__topic {
     position: absolute;
-    display: block;
     width: 100%;
-    padding: 0 px2rem(20px);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     transition:
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   150ms;
@@ -186,6 +181,7 @@
   // Header title - set line height to match icon for correct alignment
   &__title {
     flex-grow: 1;
+    padding: 0 px2rem(20px);
     font-size: px2rem(18px);
     line-height: px2rem(48px);
 
