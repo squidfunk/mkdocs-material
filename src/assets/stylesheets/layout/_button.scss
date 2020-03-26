@@ -21,53 +21,38 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
-@import "material-shadows";
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
 
-// ----------------------------------------------------------------------------
-// Local imports
-// ----------------------------------------------------------------------------
+  // Button
+  .md-button {
+    display: inline-block;
+    padding: px2em(10px, 16px) px2em(32px, 16px);
+    color: var(--md-primary-fg-color);
+    font-weight: 700;
+    border: px2rem(2px) solid currentColor;
+    border-radius: px2rem(2px);
+    transition:
+      background-color 125ms,
+      color            125ms,
+      border-color     125ms;
 
-@import "utilities/break";
-@import "utilities/convert";
+    // Primary button
+    &--primary {
+      color: var(--md-primary-bg-color);
+      background-color: var(--md-primary-fg-color);
+      border-color: var(--md-primary-fg-color);
+    }
 
-@import "config";
-
-@import "base/reset";
-@import "base/colors";
-@import "base/icons";
-@import "base/typeset";
-
-@import "layout/base";
-@import "layout/announce";
-@import "layout/button";
-@import "layout/clipboard";
-@import "layout/content";
-@import "layout/dialog";
-@import "layout/header";
-@import "layout/hero";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/search";
-@import "layout/sidebar";
-@import "layout/source";
-@import "layout/tabs";
-
-@import "extensions/admonition";
-@import "extensions/codehilite";
-@import "extensions/footnotes";
-@import "extensions/permalinks";
-
-@import "extensions/pymdown/arithmatex";
-@import "extensions/pymdown/critic";
-@import "extensions/pymdown/details";
-@import "extensions/pymdown/emoji";
-@import "extensions/pymdown/highlight";
-@import "extensions/pymdown/tabbed";
-@import "extensions/pymdown/tasklist";
-
-@import "shame";
+    // Focused or hovered button
+    &:focus,
+    &:hover {
+      color: var(--md-accent-bg-color);
+      background-color: var(--md-accent-fg-color);
+      border-color: var(--md-accent-fg-color);
+    }
+  }
+}
