@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Getting started
 
 ## Installation
@@ -69,7 +73,7 @@ minutes, as it comes with all dependencies pre-installed. Pull the image for the
 docker pull squidfunk/mkdocs-material
 ```
 
-The `mkdocs` executable is provided as an entrypoint and `serve` is the default
+The `mkdocs` executable is provided as an entry point and `serve` is the default
 command. Start the development server in your project root – the folder where
 `mkdocs.yml` resides — with:
 
@@ -113,9 +117,8 @@ Material for MkDocs can be installed with [Chocolatey][9]:
 choco install mkdocs-material
 ```
 
-Note that this is an [unofficial package][10] of Material for MkDocs, so please
-understand that the maintainers cannot provide any support for when using this
-method.
+As this is an [unofficial package][10] of Material for MkDocs, please understand
+that the maintainers cannot provide any support for when using this method.
 
   [9]: https://chocolatey.org
   [10]: https://chocolatey.org/packages/mkdocs-material
@@ -124,7 +127,7 @@ method.
 
 Depending on your installation method, you can now add the following lines to
 `mkdocs.yml` in your project root. If you installed Material for MkDocs using
-a package manager add:
+a package manager, add:
 
 ``` yaml
 theme:
@@ -320,8 +323,8 @@ The following language codes are supported:
 </ul>
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
-supports `rtl` (right-to-left) directionality which is deduced from the selected
-language, but can also be set with:
+supports `rtl` (right-to-left) directionality which is inferred from the
+selected language, but can also be set with:
 
 ``` yaml
 theme:
@@ -653,8 +656,8 @@ google_analytics:
 ### Disqus
 
 Material for MkDocs is integrated with [Disqus][24], so if you want to add a
-comments section to your documentation set the shortname of your Disqus project
-in `mkdocs.yml`:
+comments section to your documentation set the _shortname_ of your Disqus
+project in `mkdocs.yml`:
 
 ``` yaml
 extra:

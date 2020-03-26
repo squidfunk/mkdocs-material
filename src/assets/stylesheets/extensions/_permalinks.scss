@@ -37,8 +37,8 @@
     opacity: 0;
     transition:
       color      250ms,
-      opacity    125ms,
-      visibility   0ms 500ms;
+      visibility   0ms 500ms
+      opacity    125ms;
 
     // Adjust for RTL languages
     [dir="rtl"] & {
@@ -65,8 +65,8 @@
     opacity: 1;
     transition:
       color      250ms,
-      opacity    125ms,
-      visibility   0ms;
+      visibility   0ms,
+      opacity    125ms;
   }
 
   // Active or targeted permalink

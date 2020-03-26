@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Footnotes
 
 [Footnotes][1] is another extension included in the standard Markdown library.

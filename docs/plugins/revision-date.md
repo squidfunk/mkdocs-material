@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Revision date
 
 The [mkdocs-git-revision-date-localized-plugin][1] will add the date on which a

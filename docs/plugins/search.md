@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Search
 
 The [built-in search plugin][1] provides client-side search inside the browser

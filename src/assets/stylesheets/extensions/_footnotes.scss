@@ -119,8 +119,8 @@
     transform: translateX(px2rem(5px));
     opacity: 0;
     transition:
-      transform 250ms 250ms,
       color     250ms,
+      transform 250ms 250ms,
       opacity   125ms 250ms;
 
     // Adjust for right-to-left languages

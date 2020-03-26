@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # PyMdown Extensions
 
 [PyMdown Extensions][1] is a collection of Markdown extensions that add some
