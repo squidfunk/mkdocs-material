@@ -2,6 +2,23 @@
   This file was automatically generated - do not edit
 -#}
 {% extends "base.html" %}
+{% block extrahead %}
+  {% set title = config.site_name %}
+  {% if page and page.title and not page.is_homepage %}
+    {% set title = config.site_name ~ " - " ~ page.title | striptags %}
+  {% endif %}
+  {% set image = 'assets/images/illustration.png' | url %}
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ config.site_description }}">
+  <meta property="og:url" content="{{ page.canonical_url }}">
+  <meta property="og:image" content="{{ image }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@squidfunk">
+  <meta name="twitter:creator" content="@squidfunk">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ config.site_description }}">
+  <meta name="twitter:image" content="{{ image }}">
+{% endblock %}
 {% block announce %}
   Material for MkDocs 5.0.0rc3
 {% endblock %}
