@@ -92,6 +92,14 @@ export function setupKeyboard(): Observable<Keyboard> {
         mode: getToggle("search") ? "search" : "global",
         ...key
       })),
+      filter(({ mode }) => {
+        if (mode === "global") {
+          const active = getActiveElement()
+          if (typeof active !== "undefined")
+            return !isSusceptibleToKeyboard(active)
+        }
+        return true
+      }),
       share()
     )
 
@@ -150,14 +158,7 @@ export function setupKeyboard(): Observable<Keyboard> {
   /* Setup global keyboard handlers */
   keyboard$
     .pipe(
-      filter(({ mode }) => {
-        if (mode === "global") {
-          const active = getActiveElement()
-          if (typeof active !== "undefined")
-            return !isSusceptibleToKeyboard(active)
-        }
-        return false
-      }),
+      filter(({ mode }) => mode === "global"),
       withLatestFrom(useComponent("search-query"))
     )
       .subscribe(([key, query]) => {
