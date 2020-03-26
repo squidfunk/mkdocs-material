@@ -99,7 +99,7 @@ export function watchMain(
           }))
         )
       ),
-      distinctUntilKeyChanged("top"),
+      distinctUntilKeyChanged("bottom"),
       shareReplay(1)
     )
 
