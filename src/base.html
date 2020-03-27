@@ -337,13 +337,6 @@
       {% endblock %}
     </div>
 
-    <!-- Application configuration -->
-    {% block config %}
-      <script>
-        var __config = {}
-      </script>
-    {% endblock %}
-
     <!-- Theme-related JavaScript -->
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.js' | url }}"></script>
@@ -368,14 +361,17 @@
         {{- translations | tojson -}}
       </script>
 
+      <!-- Application configuration -->
+      {% block config %}{% endblock %}
+
       <!-- Application initialization -->
       <script>
         app = initialize({
           base: "{{ base_url }}",
           features: {{ config.theme.features | tojson }},
-          search: {
+          search: Object.assign({
             worker: "{{ 'assets/javascripts/worker/search.js' | url }}"
-          }
+          }, typeof search !== "undefined" && search)
         })
       </script>
 

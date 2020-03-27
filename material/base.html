@@ -173,12 +173,9 @@
         {% include "partials/footer.html" %}
       {% endblock %}
     </div>
-    {% block config %}
-      <script>var __config={}</script>
-    {% endblock %}
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.3340e0de.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.659deb65.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.b5589e46.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -196,13 +193,14 @@
       <script id="__lang" type="application/json">
         {{- translations | tojson -}}
       </script>
+      {% block config %}{% endblock %}
       <script>
         app = initialize({
           base: "{{ base_url }}",
           features: {{ config.theme.features | tojson }},
-          search: {
-            worker: "{{ 'assets/javascripts/worker/search.0ec816aa.min.js' | url }}"
-          }
+          search: Object.assign({
+            worker: "{{ 'assets/javascripts/worker/search.3bc815f0.min.js' | url }}"
+          }, typeof search !== "undefined" && search)
         })
       </script>
       {% for path in config["extra_javascript"] %}
