@@ -31,8 +31,9 @@ import { WorkerHandler, setToggle } from "browser"
 import {
   SearchMessage,
   SearchMessageType,
-  SearchQueryMessage
-} from "workers"
+  SearchQueryMessage,
+  SearchTransformFn
+} from "integrations"
 
 import { watchSearchQuery } from "../react"
 
@@ -56,7 +57,7 @@ export interface SearchQuery {
  * Mount options
  */
 interface MountOptions {
-  transform?(value: string): string    /* Transformation function */
+  transform?: SearchTransformFn        /* Transformation function */
 }
 
 /* ----------------------------------------------------------------------------

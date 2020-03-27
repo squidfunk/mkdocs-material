@@ -20,22 +20,19 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, asyncScheduler, from } from "rxjs"
-import { ajax } from "rxjs/ajax"
+import { identity } from "ramda"
+import { Observable, Subject, asyncScheduler } from "rxjs"
 import {
   map,
   observeOn,
-  pluck,
   shareReplay,
-  switchMap,
-  take,
   withLatestFrom
 } from "rxjs/operators"
 
 import { WorkerHandler, watchWorker } from "browser"
-import { SearchIndexConfig, SearchIndexOptions } from "integrations/search"
-
 import { translate } from "utilities"
+
+import { SearchIndex, SearchIndexPipeline } from "../../_"
 import {
   SearchMessage,
   SearchMessageType,
@@ -51,9 +48,40 @@ import {
  * Setup options
  */
 interface SetupOptions {
-  base: string                         /* Base url */
-  index?: Promise<SearchIndexOptions>  /* Promise resolving with index */
-  location$: Observable<URL>           /* Location observable */
+  index$: Observable<SearchIndex>      /* Search index observable */
+  base$: Observable<string>            /* Location base observable */
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Set up search index
+ *
+ * @param data - Search index
+ *
+ * @return Search index
+ */
+function setupSearchIndex(
+  { config, docs, index }: SearchIndex
+): SearchIndex {
+
+  /* Override default language with value from translation */
+  if (config.lang.length === 1 && config.lang[0] === "en")
+    config.lang = [translate("search.config.lang")]
+
+  /* Override default separator with value from translation */
+  if (config.separator === "[\s\-]+")
+    config.separator = translate("search.config.separator")
+
+  /* Set pipeline from translation */
+  const pipeline = translate("search.config.pipeline")
+    .split(/\s*,\s*/)
+    .filter(identity) as SearchIndexPipeline
+
+  /* Return search index after defaulting */
+  return { config, docs, index, pipeline }
 }
 
 /* ----------------------------------------------------------------------------
@@ -61,44 +89,33 @@ interface SetupOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup search web worker
+ * Set up search web worker
  *
- * This function will create a web worker to setup and query the search index
- * which is done using `lunr`. The index can be passed explicitly in order to
- * enable hacks like _localsearch_ via search index embedding as JSON. If no
- * index is given, this function will load it from the default location.
+ * This function will create a web worker to set up and query the search index
+ * which is done using `lunr`. The index must be passed as an observable to
+ * enable hacks like _localsearch_ via search index embedding as JSON.
  *
- * @param url - Worker url
+ * @param url - Worker URL
  * @param options - Options
  *
  * @return Worker handler
  */
 export function setupSearchWorker(
-  url: string, { base, index, location$ }: SetupOptions
+  url: string, { index$, base$ }: SetupOptions
 ): WorkerHandler<SearchMessage> {
   const worker = new Worker(url)
-
-  /* Ensure stable base URL */
-  const origin$ = location$
-    .pipe(
-      take(1),
-      map(({ href }) => new URL(base, href)
-        .toString()
-        .replace(/\/$/, "")
-      )
-    )
 
   /* Create communication channels and resolve relative links */
   const tx$ = new Subject<SearchMessage>()
   const rx$ = watchWorker(worker, { tx$ })
     .pipe(
-      withLatestFrom(origin$),
-      map(([message, origin]) => {
+      withLatestFrom(base$),
+      map(([message, base]) => {
         if (isSearchResultMessage(message)) {
           for (const { article, sections } of message.data) {
-            article.location = `${origin}/${article.location}`
+            article.location = `${base}/${article.location}`
             for (const section of sections)
-              section.location = `${origin}/${section.location}`
+              section.location = `${base}/${section.location}`
           }
         }
         return message
@@ -106,57 +123,14 @@ export function setupSearchWorker(
       shareReplay(1)
     )
 
-  /* Fetch index if it wasn't passed explicitly */
-  const index$ = typeof index !== "undefined"
-    ? from(index)
-    : origin$
-        .pipe(
-          switchMap(origin => ajax({
-            url: `${origin}/search/search_index.json`,
-            responseType: "json",
-            withCredentials: true
-          })
-            .pipe<SearchIndexOptions>(
-              pluck("response")
-            )
-          )
-        )
-
-  function isConfigDefaultLang(config: SearchIndexConfig) {
-    return config.lang.length === 1 && config.lang[0] === "en"
-  }
-
-  function isConfigDefaultSeparator(config: SearchIndexConfig) {
-    return config.separator === "[\s\-]+"
-  }
-
+  /* Set up search index */
   index$
     .pipe(
-      map(({ config, ...rest }) => ({
-        config: {
-          lang: isConfigDefaultLang(config)
-            ? [translate("search.config.lang")]
-            : config.lang,
-          separator: isConfigDefaultSeparator(config)
-            ? translate("search.config.separator")
-            : config.separator
-        },
-        pipeline: translate("search.config.pipeline")
-          .split(/\s*,\s*/)
-          .filter(Boolean) as any, // Hack
-        ...rest
-      }))
-    )
-  //     .subscribe(console.log)
-
-  // /* Send index to worker */
-  // index$
-    .pipe(
-      map((data): SearchSetupMessage => ({
+      map<SearchIndex, SearchSetupMessage>(index => ({
         type: SearchMessageType.SETUP,
-        data
+        data: setupSearchIndex(index)
       })),
-      observeOn(asyncScheduler) // make sure it runs on the next tick
+      observeOn(asyncScheduler)
     )
       .subscribe(tx$.next.bind(tx$))
 

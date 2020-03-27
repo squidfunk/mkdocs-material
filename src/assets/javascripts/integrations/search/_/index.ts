@@ -29,7 +29,7 @@ import {
 import {
   SearchHighlightFactoryFn,
   setupSearchHighlighter
-} from "../highlight"
+} from "../highlighter"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -70,16 +70,16 @@ export type SearchIndexPipeline = SearchIndexPipelineFn[]
 /* ------------------------------------------------------------------------- */
 
 /**
- * Search index options
+ * Search index
  *
  * This interfaces describes the format of the `search_index.json` file which
  * is automatically built by the MkDocs search plugin.
  */
-export interface SearchIndexOptions {
+export interface SearchIndex {
   config: SearchIndexConfig            /* Search index configuration */
   docs: SearchIndexDocument[]          /* Search index documents */
-  pipeline?: SearchIndexPipeline       /* Search index pipeline */
   index?: object | string              /* Prebuilt or serialized index */
+  pipeline?: SearchIndexPipeline       /* Search index pipeline */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -97,12 +97,12 @@ export interface SearchResult {
  * ------------------------------------------------------------------------- */
 
 /**
- * Search index
+ * Search
  *
  * Note that `lunr` is injected via Webpack, as it will otherwise also be
  * bundled in the application bundle.
  */
-export class SearchIndex {
+export class Search {
 
   /**
    * Search document mapping
@@ -125,11 +125,11 @@ export class SearchIndex {
   protected index: lunr.Index
 
   /**
-   * Create a search index
+   * Create the search integration
    *
-   * @param options - Options
+   * @param data - Search index
    */
-  public constructor({ config, docs, pipeline, index }: SearchIndexOptions) {
+  public constructor({ config, docs, pipeline, index }: SearchIndex) {
     this.documents = setupSearchDocumentMap(docs)
     this.highlight = setupSearchHighlighter(config)
 
@@ -150,7 +150,7 @@ export class SearchIndex {
           this.use((lunr as any).multiLanguage(...config.lang))
         }
 
-        /* Setup fields and reference */
+        /* Set up fields and reference */
         this.field("title", { boost: 1000 })
         this.field("text")
         this.ref("location")
@@ -182,16 +182,16 @@ export class SearchIndex {
    * page. For this reason, section results are grouped within their respective
    * articles which are the top-level results that are returned.
    *
-   * @param query - Query string
+   * @param value - Query value
    *
    * @return Search results
    */
-  public search(query: string): SearchResult[] {
-    if (query) {
+  public query(value: string): SearchResult[] {
+    if (value) {
       try {
 
         /* Group sections by containing article */
-        const groups = this.index.search(query)
+        const groups = this.index.search(value)
           .reduce((results, result) => {
             const document = this.documents.get(result.ref)
             if (typeof document !== "undefined") {
@@ -207,7 +207,7 @@ export class SearchIndex {
           }, new Map<string, lunr.Index.Result[]>())
 
         /* Create highlighter for query */
-        const fn = this.highlight(query)
+        const fn = this.highlight(value)
 
         /* Map groups to search documents */
         return [...groups].map(([ref, sections]) => ({
@@ -220,20 +220,11 @@ export class SearchIndex {
       /* Log errors to console (for now) */
       } catch (err) {
         // tslint:disable-next-line no-console
-        console.warn(`Invalid query: ${query} – see https://bit.ly/2s3ChXG`)
+        console.warn(`Invalid query: ${value} – see https://bit.ly/2s3ChXG`)
       }
     }
 
     /* Return nothing in case of error or empty query */
     return []
-  }
-
-  /**
-   * Serialize search index
-   *
-   * @return String representation
-   */
-  public toString(): string {
-    return JSON.stringify(this.index)
   }
 }

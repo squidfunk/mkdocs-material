@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndexOptions, SearchResult } from "integrations/search"
+import { SearchIndex, SearchResult } from "../../_"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -31,7 +31,7 @@ import { SearchIndexOptions, SearchResult } from "integrations/search"
  */
 export const enum SearchMessageType {
   SETUP,                               /* Search index setup */
-  DUMP,                                /* Search index dump */
+  READY,                               /* Search index ready */
   QUERY,                               /* Search query */
   RESULT                               /* Search results */
 }
@@ -43,15 +43,14 @@ export const enum SearchMessageType {
  */
 export interface SearchSetupMessage {
   type: SearchMessageType.SETUP        /* Message type */
-  data: SearchIndexOptions             /* Message data */
+  data: SearchIndex                    /* Message data */
 }
 
 /**
- * A message containing the a dump of the search index
+ * A message indicating the search index is ready
  */
-export interface SearchDumpMessage {
-  type: SearchMessageType.DUMP        /* Message type */
-  data: string                        /* Message data */
+export interface SearchReadyMessage {
+  type: SearchMessageType.READY       /* Message type */
 }
 
 /**
@@ -77,7 +76,7 @@ export interface SearchResultMessage {
  */
 export type SearchMessage =
   | SearchSetupMessage
-  | SearchDumpMessage
+  | SearchReadyMessage
   | SearchQueryMessage
   | SearchResultMessage
 
@@ -99,16 +98,16 @@ export function isSearchSetupMessage(
 }
 
 /**
- * Type guard for search dump messages
+ * Type guard for search ready messages
  *
  * @param message - Search worker message
  *
  * @return Test result
  */
-export function isSearchDumpMessage(
+export function isSearchReadyMessage(
   message: SearchMessage
-): message is SearchDumpMessage {
-  return message.type === SearchMessageType.DUMP
+): message is SearchReadyMessage {
+  return message.type === SearchMessageType.READY
 }
 
 /**

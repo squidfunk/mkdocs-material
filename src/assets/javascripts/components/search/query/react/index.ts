@@ -29,6 +29,7 @@ import {
 } from "rxjs/operators"
 
 import { watchElementFocus } from "browser"
+import { SearchTransformFn, defaultTransform } from "integrations"
 
 import { SearchQuery } from "../_"
 
@@ -40,28 +41,7 @@ import { SearchQuery } from "../_"
  * Watch options
  */
 interface WatchOptions {
-  transform?(value: string): string    /* Transformation function */
-}
-
-/* ----------------------------------------------------------------------------
- * Helper functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Default transformation function
- *
- * Rogue control characters are filtered before handing the query to the
- * search index, as `lunr` will throw otherwise.
- *
- * @param value - Query value
- *
- * @return Transformed query value
- */
-function defaultTransform(value: string): string {
-  return value
-    .replace(/(?:^|\s+)[*+-:^~]+(?=\s+|$)/g, "")
-    .trim()
-    .replace(/\s+|\b$/g, "* ")
+  transform?: SearchTransformFn        /* Transformation function */
 }
 
 /* ----------------------------------------------------------------------------

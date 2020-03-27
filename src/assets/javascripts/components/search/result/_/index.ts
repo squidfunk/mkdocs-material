@@ -31,11 +31,11 @@ import {
 } from "rxjs/operators"
 
 import { WorkerHandler, watchElementOffset } from "browser"
-import { SearchResult } from "integrations/search"
 import {
   SearchMessage,
+  SearchResult,
   isSearchResultMessage
-} from "workers"
+} from "integrations"
 
 import { SearchQuery } from "../../query"
 import { applySearchResult } from "../react"

@@ -33,8 +33,10 @@ import {
   animationFrameScheduler,
   fromEvent,
   of,
-  NEVER
+  NEVER,
+  from
 } from "rxjs"
+import { ajax } from "rxjs/ajax"
 import {
   delay,
   switchMap,
@@ -44,7 +46,8 @@ import {
   observeOn,
   take,
   shareReplay,
-  share
+  share,
+  pluck
 } from "rxjs/operators"
 
 import {
@@ -56,12 +59,11 @@ import {
   watchLocation,
   watchLocationHash,
   watchViewport,
-  isLocationInternal,
-  isLocationAnchor,
-  setLocationHash
-} from "./browser"
-import { setupSearchWorker } from "./workers"
-
+  isLocalLocation,
+  isAnchorLocation,
+  setLocationHash,
+  watchLocationBase
+} from "browser"
 import {
   mountHeader,
   mountHero,
@@ -76,10 +78,14 @@ import {
   mountSearchReset,
   mountSearchResult
 } from "components"
-import { setupClipboard } from "./integrations/clipboard"
-import { setupDialog } from "integrations/dialog"
-import { setupKeyboard } from "./integrations/keyboard"
-import { setupInstantLoading } from "integrations/instant"
+import {
+  setupClipboard,
+  setupDialog,
+  setupKeyboard,
+  setupInstantLoading,
+  setupSearchWorker,
+  SearchIndex
+} from "integrations"
 import {
   patchTables,
   patchDetails,
@@ -91,6 +97,7 @@ import { isConfig } from "utilities"
 
 /* ------------------------------------------------------------------------- */
 
+/* Denote that JavaScript is available */
 document.documentElement.classList.remove("no-js")
 document.documentElement.classList.add("js")
 
@@ -139,19 +146,22 @@ export function initialize(config: unknown) {
   if (!isConfig(config))
     throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
-  /* Setup user interface observables */
+  /* Set up user interface observables */
   const location$ = watchLocation()
+  const base$     = watchLocationBase(config.base, { location$ })
   const hash$     = watchLocationHash()
   const viewport$ = watchViewport()
   const tablet$   = watchMedia("(min-width: 960px)")
   const screen$   = watchMedia("(min-width: 1220px)")
 
-  /* Setup document observable */
+  /* Set up document observable */
   const document$ = config.features.includes("instant")
     ? watchDocument({ location$ })
     : watchDocument()
 
-  /* Setup component bindings */
+  /* ----------------------------------------------------------------------- */
+
+  /* Set up component bindings */
   setupComponents([
     "container",                       /* Container */
     "header",                          /* Header */
@@ -168,17 +178,19 @@ export function initialize(config: unknown) {
     "toc"                              /* Table of contents */
   ], { document$ })
 
-  /* ----------------------------------------------------------------------- */
+  const keyboard$ = setupKeyboard()
 
-  // External index
-  const index = config.search && config.search.index
-    ? config.search.index
-    : undefined
+  patchDetails({ document$, hash$ })
+  patchScripts({ document$ })
+  patchSource({ document$ })
+  patchTables({ document$ })
 
-  // TODO: pass URL config as first parameter, options as second
-  const worker = setupSearchWorker(config.url.worker.search, {
-    base: config.url.base, index, location$
-  })
+  /* Force 1px scroll offset to trigger overflow scrolling */
+  patchScrollfix({ document$ })
+
+  /* Set up clipboard and dialog */
+  const dialog$ = setupDialog()
+  const clipboard$ = setupClipboard({ document$, dialog$ })
 
   /* ----------------------------------------------------------------------- */
 
@@ -192,37 +204,6 @@ export function initialize(config: unknown) {
   const main$ = useComponent("main")
     .pipe(
       mountMain({ header$, viewport$ }),
-      shareReplay(1)
-    )
-
-  /* ----------------------------------------------------------------------- */
-
-  /* Mount search query */
-  const query$ = useComponent("search-query")
-    .pipe(
-      mountSearchQuery(worker),
-      shareReplay(1)
-    )
-
-  /* Mount search reset */
-  const reset$ = useComponent("search-reset")
-    .pipe(
-      mountSearchReset(),
-      shareReplay(1)
-    )
-
-  /* Mount search result */
-  const result$ = useComponent("search-result")
-    .pipe(
-      mountSearchResult(worker, { query$ }),
-      shareReplay(1)
-    )
-
-  /* ----------------------------------------------------------------------- */
-
-  const search$ = useComponent("search")
-    .pipe(
-      mountSearch({ query$, reset$, result$ }),
       shareReplay(1)
     )
 
@@ -254,19 +235,62 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  const keyboard$ = setupKeyboard()
+  // External index
+  const index = config.search && config.search.index
+    ? config.search.index
+    : undefined
 
-  patchDetails({ document$, hash$ })
-  patchScripts({ document$ })
-  patchSource({ document$ })
-  patchTables({ document$ })
+  /* Fetch index if it wasn't passed explicitly */
+  const index$ = typeof index !== "undefined"
+    ? from(index)
+    : base$
+        .pipe(
+          switchMap(base => ajax({
+            url: `${base}/search/search_index.json`,
+            responseType: "json",
+            withCredentials: true
+          })
+            .pipe<SearchIndex>(
+              pluck("response")
+            )
+          )
+        )
 
-  /* Force 1px scroll offset to trigger overflow scrolling */
-  patchScrollfix({ document$ })
 
-  /* Setup clipboard and dialog */
-  const dialog$ = setupDialog()
-  const clipboard$ = setupClipboard({ document$, dialog$ })
+  const worker = setupSearchWorker(config.search.worker, {
+    base$, index$
+  })
+
+  /* ----------------------------------------------------------------------- */
+
+  /* Mount search query */
+  const query$ = useComponent("search-query")
+    .pipe(
+      mountSearchQuery(worker),
+      shareReplay(1)
+    )
+
+  /* Mount search reset */
+  const reset$ = useComponent("search-reset")
+    .pipe(
+      mountSearchReset(),
+      shareReplay(1)
+    )
+
+  /* Mount search result */
+  const result$ = useComponent("search-result")
+    .pipe(
+      mountSearchResult(worker, { query$ }),
+      shareReplay(1)
+    )
+
+  /* ----------------------------------------------------------------------- */
+
+  const search$ = useComponent("search")
+    .pipe(
+      mountSearch({ query$, reset$, result$ }),
+      shareReplay(1)
+    )
 
   /* ----------------------------------------------------------------------- */
 
@@ -310,8 +334,8 @@ export function initialize(config: unknown) {
       switchMap(ev => {
         if (ev.target instanceof HTMLElement) {
           const el = ev.target.closest("a") // TODO: abstract as link click?
-          if (el && isLocationInternal(el)) {
-            if (!isLocationAnchor(el) && config.features.includes("instant"))
+          if (el && isLocalLocation(el)) {
+            if (!isAnchorLocation(el) && config.features.includes("instant"))
               ev.preventDefault()
             return of(el)
           }
@@ -325,8 +349,6 @@ export function initialize(config: unknown) {
   link$.subscribe(() => {
     setToggle("drawer", false)
   })
-
-  // somehow call this setupNavigation ?
 
   // instant loading
   if (config.features.includes("instant")) {

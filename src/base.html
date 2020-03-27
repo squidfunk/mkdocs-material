@@ -365,20 +365,18 @@
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
       <script id="__lang" type="application/json">
-        {{ translations | tojson }}
+        {{- translations | tojson -}}
       </script>
 
       <!-- Application initialization -->
       <script>
-        __material = initialize(Object.assign({
-          url: {
-            base: "{{ base_url }}",
-            worker: {
-              search: "{{ 'assets/javascripts/worker/search.js' | url }}"
-            }
-          },
-          features: {{ config.theme.features | tojson }}
-        }, typeof __config !== "undefined" ? __config : {}))
+        app = initialize({
+          base: "{{ base_url }}",
+          features: {{ config.theme.features | tojson }},
+          search: {
+            worker: "{{ 'assets/javascripts/worker/search.js' | url }}"
+          }
+        })
       </script>
 
       <!-- Custom JavaScript -->

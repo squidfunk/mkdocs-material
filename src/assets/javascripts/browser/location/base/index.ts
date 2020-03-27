@@ -20,4 +20,37 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./search"
+import { Observable } from "rxjs"
+import { map, shareReplay, take } from "rxjs/operators"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch options
+ */
+interface WatchOptions {
+  location$: Observable<URL>           /* Location observable */
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Watch location base
+ *
+ * @return Location base observable
+ */
+export function watchLocationBase(
+  base: string, { location$ }: WatchOptions
+): Observable<string> {
+  return location$
+    .pipe(
+      take(1),
+      map(({ href }) => new URL(base, href)
+        .toString()
+        .replace(/\/$/, "")
+      ),
+      shareReplay(1)
+    )
+}

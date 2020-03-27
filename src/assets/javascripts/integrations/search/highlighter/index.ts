@@ -20,65 +20,72 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import { map, startWith } from "rxjs/operators"
+import { SearchIndexConfig } from "../_"
+import { SearchDocument } from "../document"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Viewport offset
+ * Search highlight function
+ *
+ * @template T - Search document type
+ *
+ * @param document - Search document
+ *
+ * @return Highlighted document
  */
-export interface ViewportOffset {
-  x: number                            /* Horizontal offset */
-  y: number                            /* Vertical offset */
-}
+export type SearchHighlightFn = <
+  T extends SearchDocument
+>(document: Readonly<T>) => T
+
+/**
+ * Search highlight factory function
+ *
+ * @param value - Query value
+ *
+ * @return Search highlight function
+ */
+export type SearchHighlightFactoryFn = (value: string) => SearchHighlightFn
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve viewport offset
+ * Create a search highlighter
  *
- * On iOS Safari, viewport offset can be negative due to overflow scrolling.
- * As this may induce strange behaviors downstream, we'll just limit it to 0.
+ * @param config - Search index configuration
  *
- * @return Viewport offset
+ * @return Search highlight factory function
  */
-export function getViewportOffset(): ViewportOffset {
-  return {
-    x: Math.max(0, pageXOffset),
-    y: Math.max(0, pageYOffset)
+export function setupSearchHighlighter(
+  config: SearchIndexConfig
+): SearchHighlightFactoryFn {
+  const separator = new RegExp(config.separator, "img")
+  const highlight = (_: unknown, data: string, term: string) => {
+    return `${data}<em>${term}</em>`
   }
-}
 
-/**
- * Set viewport offset
- *
- * @param offset - Viewport offset
- */
-export function setViewportOffset(
-  { x, y }: Partial<ViewportOffset>
-): void {
-  window.scrollTo(x || 0, y || 0)
-}
+  /* Return factory function */
+  return (value: string) => {
+    value = value
+      .replace(/[\s*+-:~^]+/g, " ")
+      .trim()
 
-/* ------------------------------------------------------------------------- */
+    /* Create search term match expression */
+    const match = new RegExp(`(^|${config.separator})(${
+      value
+        .replace(/[|\\{}()[\]^$+*?.-]/g, "\\$&")
+        .replace(separator, "|")
+    })`, "img")
 
-/**
- * Watch viewport offset
- *
- * @return Viewport offset observable
- */
-export function watchViewportOffset(): Observable<ViewportOffset> {
-  return merge(
-    fromEvent(window, "scroll", { passive: true }),
-    fromEvent(window, "resize", { passive: true })
-  )
-    .pipe(
-      map(getViewportOffset),
-      startWith(getViewportOffset())
-    )
+    /* Highlight document */
+    return document => ({
+      ...document,
+      title: document.title.replace(match, highlight),
+      text:  document.text.replace(match, highlight)
+    })
+  }
 }

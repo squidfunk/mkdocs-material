@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndexConfig, SearchIndexOptions } from "integrations/search"
+import { SearchIndex, SearchTransformFn } from "integrations"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -36,30 +36,16 @@ export type Feature =
 /* ------------------------------------------------------------------------- */
 
 /**
- * URL configuration
- */
-export interface UrlConfig {
-  base: string                       /* Base URL */
-  worker: {
-    search: string                   /* Search worker URL */
-  }
-}
-
-/**
- * Search configuration
- */
-export interface SearchConfig {
-  index?: Promise<SearchIndexOptions>
-  query?: (value: string) => string
-}
-
-/**
  * Configuration
  */
 export interface Config {
-  url: UrlConfig
+  base: string                         /* Base URL */
   features: Feature[]                  /* Feature flags */
-  search?: SearchConfig
+  search: {
+    worker: string                     /* Worker URL */
+    index?: Promise<SearchIndex>       /* Promise resolving with index */
+    transform?: SearchTransformFn      /* Transformation function */
+  }
 }
 
 /* ----------------------------------------------------------------------------
@@ -78,8 +64,7 @@ export interface Config {
  */
 export function isConfig(config: any): config is Config {
   return typeof config === "object"
-      && typeof config.url === "object"
-      && typeof config.url.base === "string"
-      && typeof config.url.worker === "object"
-      && typeof config.url.worker.search === "string"
+      && typeof config.base === "string"
+      && typeof config.features === "object"
+      && typeof config.search === "object"
 }

@@ -67,9 +67,9 @@ export interface Keyboard extends Key {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup keyboard
+ * Set up keyboard
  *
- * This function will setup the keyboard handlers and ensure that keys are
+ * This function will set up the keyboard handlers and ensure that keys are
  * correctly propagated. Currently there are two modes:
  *
  * - `global`: This mode is active when the search is closed. It is intended
@@ -103,7 +103,7 @@ export function setupKeyboard(): Observable<Keyboard> {
       share()
     )
 
-  /* Setup search keyboard handlers */
+  /* Set up search keyboard handlers */
   keyboard$
     .pipe(
       filter(({ mode }) => mode === "search"),
@@ -155,7 +155,7 @@ export function setupKeyboard(): Observable<Keyboard> {
         }
       })
 
-  /* Setup global keyboard handlers */
+  /* Set up global keyboard handlers */
   keyboard$
     .pipe(
       filter(({ mode }) => mode === "global"),

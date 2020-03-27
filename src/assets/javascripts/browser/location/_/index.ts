@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { BehaviorSubject } from "rxjs"
+import { BehaviorSubject, Subject } from "rxjs"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -52,14 +52,14 @@ export function setLocation(url: URL): void {
 /* ------------------------------------------------------------------------- */
 
 /**
- * Check whether a URL is an internal link or a file (except `.html`)
+ * Check whether a URL is a local link or a file (except `.html`)
  *
  * @param url - URL or HTML anchor element
  * @param ref - Reference URL
  *
  * @return Test result
  */
-export function isLocationInternal(
+export function isLocalLocation(
   url: URL | HTMLAnchorElement,
   ref: URL | Location = location
 ): boolean {
@@ -75,7 +75,7 @@ export function isLocationInternal(
  *
  * @return Test result
  */
-export function isLocationAnchor(
+export function isAnchorLocation(
   url: URL | HTMLAnchorElement,
   ref: URL | Location = location
 ): boolean {
@@ -90,6 +90,6 @@ export function isLocationAnchor(
  *
  * @return Location subject
  */
-export function watchLocation(): BehaviorSubject<URL> {
+export function watchLocation(): Subject<URL> {
   return new BehaviorSubject<URL>(getLocation())
 }

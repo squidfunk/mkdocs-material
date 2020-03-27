@@ -66,8 +66,8 @@ export function watchElementOffset(
   el: HTMLElement
 ): Observable<ElementOffset> {
   return merge(
-    fromEvent<UIEvent>(el, "scroll"),
-    fromEvent<UIEvent>(window, "resize")
+    fromEvent(el, "scroll"),
+    fromEvent(window, "resize")
   )
     .pipe(
       map(() => getElementOffset(el)),

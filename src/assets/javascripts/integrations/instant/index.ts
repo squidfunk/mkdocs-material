@@ -38,7 +38,7 @@ import {
   Viewport,
   ViewportOffset,
   getElement,
-  isLocationAnchor,
+  isAnchorLocation,
   setLocationHash,
   setViewportOffset
 } from "browser"
@@ -72,7 +72,7 @@ interface SetupOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup instant loading
+ * Set up instant loading
  *
  * @param options - Options
  *
@@ -91,7 +91,7 @@ export function setupInstantLoading(
   const push$ = state$
     .pipe(
       distinctUntilChanged((prev, next) => prev.url.href === next.url.href),
-      filter(({ url }) => !isLocationAnchor(url)),
+      filter(({ url }) => !isAnchorLocation(url)),
       share()
     )
 
@@ -129,7 +129,7 @@ export function setupInstantLoading(
       bufferCount(2, 1),
       filter(([prev, next]) => {
         return prev.url.pathname === next.url.pathname
-            && !isLocationAnchor(next.url)
+            && !isAnchorLocation(next.url)
       }),
       map(([, state]) => state)
     )
