@@ -149,7 +149,7 @@ export function setupComponents(
  *
  * @param name - Component name
  *
- * @return Element observable
+ * @return Component observable
  */
 export function useComponent<T extends HTMLInputElement>(
   name: "search-query"
