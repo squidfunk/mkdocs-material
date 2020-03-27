@@ -266,7 +266,7 @@ export function initialize(config: unknown) {
   /* Mount search query */
   const query$ = useComponent("search-query")
     .pipe(
-      mountSearchQuery(worker),
+      mountSearchQuery(worker, { transform: config.search.transform }),
       shareReplay(1)
     )
 
