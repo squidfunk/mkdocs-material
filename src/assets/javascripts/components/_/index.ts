@@ -29,7 +29,7 @@ import {
   switchMap
 } from "rxjs/operators"
 
-import { getElement } from "browser"
+import { getElement, replaceElement } from "browser"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -85,7 +85,7 @@ let components$: Observable<ComponentMap>
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup bindings to components with given names
+ * Set up bindings to components with given names
  *
  * This function will maintain bindings to the elements identified by the given
  * names in-between document switches and update the elements in-place.
@@ -118,7 +118,7 @@ export function setupComponents(
             case "container":
             case "skip":
               if (name in prev && typeof prev[name] !== "undefined") {
-                prev[name]!.replaceWith(next[name]!)
+                replaceElement(prev[name]!, next[name]!)
                 prev[name] = next[name]
               }
               break
@@ -149,7 +149,7 @@ export function setupComponents(
  *
  * @param name - Component name
  *
- * @return Element observable
+ * @return Component observable
  */
 export function useComponent<T extends HTMLInputElement>(
   name: "search-query"

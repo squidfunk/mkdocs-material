@@ -387,7 +387,7 @@ from the template.
     ```
 
   [12]: http://www.materialui.co/colors
-  [13]: customization.md/#additional-stylesheets
+  [13]: customization.md#additional-stylesheets
 
 #### Primary color
 

@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./document"
-export * from "./highlighter"
-export * from "./transform"
-export * from "./worker"
+export * from "./clipboard"
+export * from "./dialog"
+export * from "./instant"
+export * from "./keyboard"
+export * from "./search"

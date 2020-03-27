@@ -337,13 +337,6 @@
       {% endblock %}
     </div>
 
-    <!-- Application configuration -->
-    {% block config %}
-      <script>
-        var __config = {}
-      </script>
-    {% endblock %}
-
     <!-- Theme-related JavaScript -->
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.js' | url }}"></script>
@@ -365,20 +358,21 @@
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
       <script id="__lang" type="application/json">
-        {{ translations | tojson }}
+        {{- translations | tojson -}}
       </script>
+
+      <!-- Application configuration -->
+      {% block config %}{% endblock %}
 
       <!-- Application initialization -->
       <script>
-        __material = initialize(Object.assign({
-          url: {
-            base: "{{ base_url }}",
-            worker: {
-              search: "{{ 'assets/javascripts/worker/search.js' | url }}"
-            }
-          },
-          features: {{ config.theme.features | tojson }}
-        }, typeof __config !== "undefined" ? __config : {}))
+        app = initialize({
+          base: "{{ base_url }}",
+          features: {{ config.theme.features | tojson }},
+          search: Object.assign({
+            worker: "{{ 'assets/javascripts/worker/search.js' | url }}"
+          }, typeof search !== "undefined" && search)
+        })
       </script>
 
       <!-- Custom JavaScript -->

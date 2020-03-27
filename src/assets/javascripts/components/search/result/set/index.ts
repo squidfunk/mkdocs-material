@@ -73,7 +73,7 @@ export function resetSearchResultMeta(
  * @param child - Search result element
  */
 export function addToSearchResultList(
-  el: HTMLElement, child: HTMLElement
+  el: HTMLElement, child: Element
 ): void {
   el.appendChild(child)
 }

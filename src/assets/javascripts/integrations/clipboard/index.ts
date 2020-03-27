@@ -45,7 +45,7 @@ interface SetupOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup clipboard
+ * Set up clipboard
  *
  * This function implements the Clipboard.js integration and injects a button
  * into all code blocks when the document changes.
@@ -70,7 +70,7 @@ export function setupClipboard(
     })
   })
 
-  /* Initialize and setup clipboard */
+  /* Initialize clipboard */
   const clipboard$ = fromEventPattern<ClipboardJS.Event>(next => {
     new ClipboardJS(".md-clipboard").on("success", next)
   })

@@ -87,3 +87,17 @@ export function getElements<T extends HTMLElement>(
 ): T[] {
   return Array.from(node.querySelectorAll<T>(selector))
 }
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Replace an element with another element
+ *
+ * @param source - Source element
+ * @param target - Target element
+ */
+export function replaceElement(
+  source: HTMLElement, target: Node
+): void {
+  source.replaceWith(target)
+}

@@ -20,72 +20,36 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndexConfig } from "../_"
-import { SearchDocument } from "../document"
-
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Search highlight function
+ * Search transformation function
  *
- * @template T - Search document type
+ * @param value - Query value
  *
- * @param document - Search document
- *
- * @return Highlighted document
+ * @return Transformed query value
  */
-export type SearchHighlightFn =
-  <T extends SearchDocument>(document: Readonly<T>) => T
-
-/**
- * Search highlight factory function
- *
- * @param query - Query string
- *
- * @return Search highlight function
- */
-export type SearchHighlightFactoryFn =
-  (query: string) => SearchHighlightFn
+export type SearchTransformFn = (value: string) => string
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Create a search highlighter
+ * Default transformation function
  *
- * @param config - Search index configuration
+ * Rogue control characters are filtered before handing the query to the
+ * search index, as `lunr` will throw otherwise.
  *
- * @return Search highlight factory function
+ * @param value - Query value
+ *
+ * @return Transformed query value
  */
-export function setupSearchHighlighter(
-  config: SearchIndexConfig
-): SearchHighlightFactoryFn {
-  const separator = new RegExp(config.separator, "img")
-  const highlight = (_: unknown, data: string, term: string) => {
-    return `${data}<em>${term}</em>`
-  }
-
-  /* Return factory function */
-  return (query: string) => {
-    query = query
-      .replace(/[\s*+-:~^]+/g, " ")
-      .trim()
-
-    /* Create search term match expression */
-    const match = new RegExp(`(^|${config.separator})(${
-      query
-        .replace(/[|\\{}()[\]^$+*?.-]/g, "\\$&") // TODO: taken from escape-string-regexp
-        .replace(separator, "|")
-    })`, "img")
-
-    /* Highlight document */
-    return document => ({
-      ...document,
-      title: document.title.replace(match, highlight),
-      text:  document.text.replace(match, highlight)
-    })
-  }
+export function defaultTransform(value: string): string {
+  return value
+    .replace(/(?:^|\s+)[*+-:^~]+(?=\s+|$)/g, "")
+    .trim()
+    .replace(/\s+|\b$/g, "* ")
 }

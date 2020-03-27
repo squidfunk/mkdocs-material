@@ -21,7 +21,7 @@
  */
 
 import { Observable, fromEvent, merge } from "rxjs"
-import { mapTo, shareReplay, startWith } from "rxjs/operators"
+import { map, shareReplay, startWith } from "rxjs/operators"
 
 import { getActiveElement } from "../_"
 
@@ -56,15 +56,12 @@ el: HTMLElement, value: boolean = true
 export function watchElementFocus(
   el: HTMLElement
 ): Observable<boolean> {
-  const focus$ = fromEvent(el, "focus")
-  const blur$  = fromEvent(el, "blur")
-
-  /* Map events to boolean state */
   return merge(
-    focus$.pipe(mapTo(true)),
-    blur$.pipe(mapTo(false))
+    fromEvent<FocusEvent>(el, "focus"),
+    fromEvent<FocusEvent>(el, "blur")
   )
     .pipe(
+      map(({ type }) => type === "focus"),
       startWith(el === getActiveElement()),
       shareReplay(1)
     )

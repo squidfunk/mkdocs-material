@@ -173,12 +173,9 @@
         {% include "partials/footer.html" %}
       {% endblock %}
     </div>
-    {% block config %}
-      <script>var __config={}</script>
-    {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.0c35f0aa.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.cad4abbb.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.3340e0de.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.aa7a7592.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -194,18 +191,17 @@
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
       <script id="__lang" type="application/json">
-        {{ translations | tojson }}
+        {{- translations | tojson -}}
       </script>
+      {% block config %}{% endblock %}
       <script>
-        __material = initialize(Object.assign({
-          url: {
-            base: "{{ base_url }}",
-            worker: {
-              search: "{{ 'assets/javascripts/worker/search.2613054f.min.js' | url }}"
-            }
-          },
-          features: {{ config.theme.features | tojson }}
-        }, typeof __config !== "undefined" ? __config : {}))
+        app = initialize({
+          base: "{{ base_url }}",
+          features: {{ config.theme.features | tojson }},
+          search: Object.assign({
+            worker: "{{ 'assets/javascripts/worker/search.3bc815f0.min.js' | url }}"
+          }, typeof search !== "undefined" && search)
+        })
       </script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>

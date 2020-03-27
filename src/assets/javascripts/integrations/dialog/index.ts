@@ -45,7 +45,7 @@ interface SetupOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup dialog
+ * Set up dialog
  *
  * @param options - Options
  *

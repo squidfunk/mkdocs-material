@@ -22,8 +22,7 @@
 
 import "expose-loader?lunr!lunr"
 
-import { SearchIndex, SearchIndexConfig } from "integrations/search"
-
+import { Search, SearchIndexConfig } from "../../_"
 import { SearchMessage, SearchMessageType } from "../message"
 
 /* ----------------------------------------------------------------------------
@@ -31,16 +30,16 @@ import { SearchMessage, SearchMessageType } from "../message"
  * ------------------------------------------------------------------------- */
 
 /**
- * Search index
+ * Search
  */
-let index: SearchIndex
+let search: Search
 
 /* ----------------------------------------------------------------------------
  * Helper functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup multi-language support through `lunr-languages`
+ * Set up multi-language support through `lunr-languages`
  *
  * This function will automatically import the stemmers necessary to process
  * the languages which were given through the search index configuration.
@@ -83,20 +82,19 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
 export function handler(message: SearchMessage): SearchMessage {
   switch (message.type) {
 
-    /* Setup search index */
+    /* Search setup message */
     case SearchMessageType.SETUP:
       setupLunrLanguages(message.data.config)
-      index = new SearchIndex(message.data)
+      search = new Search(message.data)
       return {
-        type: SearchMessageType.DUMP,
-        data: index.toString()
+        type: SearchMessageType.READY
       }
 
-    /* Query search index */
+    /* Search query message */
     case SearchMessageType.QUERY:
       return {
         type: SearchMessageType.RESULT,
-        data: index ? index.search(message.data) : []
+        data: search ? search.query(message.data) : []
       }
 
     /* All other messages */
