@@ -80,9 +80,25 @@ interface SetupOptions {
 /**
  * Set up instant loading
  *
+ * When fetching, theoretically, we could use `responseType: "document"`, but
+ * since all MkDocs links are relative, we need to make sure that the current
+ * location matches the document we just loaded. Otherwise any relative links
+ * in the document could use the old location.
+ *
+ * This is the reason why we need to synchronize history events and the process
+ * of fetching the document for navigation changes (except `popstate` events):
+ *
+ * 1. Fetch document via `XMLHTTPRequest`
+ * 2. Set new location via `history.pushState`
+ * 3. Parse and emit fetched document
+ *
+ * For `popstate` events, we must not use `history.pushState`, or the forward
+ * history will be irreversibly overwritten. In case the request fails, the
+ * location change is dispatched regularly.
+ *
  * @param options - Options
  *
- * @return TODO ?
+ * @return TODO: return type?
  */
 export function setupInstantLoading(
   { document$, viewport$, link$, location$ }: SetupOptions
@@ -119,8 +135,9 @@ export function setupInstantLoading(
     )
       .subscribe(location$)
 
+
   const dom = new DOMParser()
-  location$
+  const ajax$ = location$
     .pipe(
       distinctUntilKeyChanged("pathname"),
       skip(1),
@@ -132,18 +149,28 @@ export function setupInstantLoading(
         withCredentials: true
       })
         .pipe(
-          map(({ response }): Document => {
-            // TODO: only do this, if
-            history.pushState({}, "", url.toString())                           // TODO: abstract into function
-            return dom.parseFromString(response, "text/html")
-          }),
           catchError(() => {
             setLocation(url)
             return NEVER
           })
         )
-      ),
-      share()
+      )
+      // share()
+    )
+
+  push$
+    .pipe(
+      sample(ajax$)
+    )
+      .subscribe(({ url }) => {
+        history.pushState({}, "", url.toString())
+      })
+
+  ajax$
+    .pipe(
+      map(({ response }) => {
+        return dom.parseFromString(response, "text/html")
+      })
     )
       .subscribe(document$)
 
