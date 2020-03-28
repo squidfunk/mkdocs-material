@@ -135,7 +135,6 @@ export function setupInstantLoading(
     )
       .subscribe(location$)
 
-
   const dom = new DOMParser()
   const ajax$ = location$
     .pipe(

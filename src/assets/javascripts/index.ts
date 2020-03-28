@@ -47,7 +47,8 @@ import {
   take,
   shareReplay,
   share,
-  pluck
+  pluck,
+  skip
 } from "rxjs/operators"
 
 import {
@@ -352,8 +353,16 @@ export function initialize(config: unknown) {
   if (config.features.includes("instant")) {
 
     /* Disable automatic scroll restoration, as it doesn't work nicely */
-    if ("scrollRestoration" in history)
-      history.scrollRestoration = "manual"
+    location$
+      .pipe(
+        skip(1),
+        take(1)
+      )
+        .subscribe(() => {
+          console.log("disabled automatic scroll restoration")
+          if ("scrollRestoration" in history)
+            history.scrollRestoration = "manual"
+        })
 
     /* Resolve relative links for stability */
     for (const selector of [
