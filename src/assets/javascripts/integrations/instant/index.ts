@@ -20,9 +20,11 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, fromEvent, merge } from "rxjs"
+import { NEVER, Observable, Subject, fromEvent, merge } from "rxjs"
+import { ajax } from "rxjs//ajax"
 import {
   bufferCount,
+  catchError,
   debounceTime,
   distinctUntilChanged,
   distinctUntilKeyChanged,
@@ -31,6 +33,8 @@ import {
   pluck,
   sample,
   share,
+  skip,
+  switchMap,
   withLatestFrom
 } from "rxjs/operators"
 
@@ -39,6 +43,8 @@ import {
   ViewportOffset,
   getElement,
   isAnchorLocation,
+  replaceElement,
+  setLocation,
   setLocationHash,
   setViewportOffset
 } from "browser"
@@ -61,7 +67,7 @@ interface State {
  * Setup options
  */
 interface SetupOptions {
-  document$: Observable<Document>      /* Document observable */
+  document$: Subject<Document>         /* Document subject */
   viewport$: Observable<Viewport>      /* Viewport observable */
   link$: Observable<HTMLAnchorElement> /* Internal link observable */
   location$: Subject<URL>              /* Location subject */
@@ -112,6 +118,34 @@ export function setupInstantLoading(
       pluck("url")
     )
       .subscribe(location$)
+
+  const dom = new DOMParser()
+  location$
+    .pipe(
+      distinctUntilKeyChanged("pathname"),
+      skip(1),
+
+      /* Fetch document */
+      switchMap(url => ajax({
+        url: url.href,
+        responseType: "text",
+        withCredentials: true
+      })
+        .pipe(
+          map(({ response }): Document => {
+            // TODO: only do this, if
+            history.pushState({}, "", url.toString())                           // TODO: abstract into function
+            return dom.parseFromString(response, "text/html")
+          }),
+          catchError(() => {
+            setLocation(url)
+            return NEVER
+          })
+        )
+      ),
+      share()
+    )
+      .subscribe(document$)
 
   /* History: debounce update of viewport offset */
   viewport$
@@ -174,7 +208,7 @@ export function setupInstantLoading(
             typeof next !== "undefined" &&
             typeof prev !== "undefined"
           ) {
-            prev.replaceWith(next)
+            replaceElement(prev, next)
           }
         }
       })

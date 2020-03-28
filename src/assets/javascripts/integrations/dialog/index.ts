@@ -84,6 +84,6 @@ export function setupDialog(
     )
       .subscribe()
 
-  /* Return dialog subject */
+  /* Return dialog */
   return dialog$
 }

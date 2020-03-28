@@ -146,18 +146,16 @@ export function initialize(config: unknown) {
   if (!isConfig(config))
     throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
-  /* Set up user interface observables */
+  /* Set up subjects */
+  const document$ = watchDocument()
   const location$ = watchLocation()
+
+  /* Set up user interface observables */
   const base$     = watchLocationBase(config.base, { location$ })
   const hash$     = watchLocationHash()
   const viewport$ = watchViewport()
   const tablet$   = watchMedia("(min-width: 960px)")
   const screen$   = watchMedia("(min-width: 1220px)")
-
-  /* Set up document observable */
-  const document$ = config.features.includes("instant")
-    ? watchDocument({ location$ })
-    : watchDocument()
 
   /* ----------------------------------------------------------------------- */
 

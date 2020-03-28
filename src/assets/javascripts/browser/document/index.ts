@@ -20,5 +20,30 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./switch"
+import { ReplaySubject, Subject, fromEvent } from "rxjs"
+import { mapTo } from "rxjs/operators"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch document
+ *
+ * Documents must be implemented as subjects, so all downstream observables are
+ * automatically updated when a new document is emitted. This enabled features
+ * like instant loading.
+ *
+ * @return Document subject
+ */
+export function watchDocument(): Subject<Document> {
+  const document$ = new ReplaySubject<Document>()
+  fromEvent(document, "DOMContentLoaded")
+    .pipe(
+      mapTo(document)
+    )
+      .subscribe(document$)
+
+  /* Return document */
+  return document$
+}
