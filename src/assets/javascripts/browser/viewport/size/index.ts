@@ -59,7 +59,7 @@ export function getViewportSize(): ViewportSize {
  * @return Viewport size observable
  */
 export function watchViewportSize(): Observable<ViewportSize> {
-  return fromEvent(window, "resize")
+  return fromEvent(window, "resize", { passive: true })
     .pipe(
       map(getViewportSize),
       startWith(getViewportSize())

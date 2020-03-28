@@ -49,13 +49,6 @@ export interface SearchQuery {
   focus: boolean                       /* Query focus */
 }
 
-/* ------------------------------------------------------------------------- */
-
-/**
- * Search query transform
- */
-export type SearchQueryTransform = (value: string) => string
-
 /* ----------------------------------------------------------------------------
  * Helper types
  * ------------------------------------------------------------------------- */

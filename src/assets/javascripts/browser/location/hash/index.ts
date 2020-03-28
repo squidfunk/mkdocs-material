@@ -49,6 +49,7 @@ export function getLocationHash(): string {
 export function setLocationHash(hash: string): void {
   const el = document.createElement("a")
   el.href = hash
+  el.addEventListener("click", ev => ev.stopPropagation())
   el.click()
 }
 
