@@ -349,20 +349,18 @@ export function initialize(config: unknown) {
     setToggle("drawer", false)
   })
 
+  /* Hack: ensure that page loads restore scroll offset */
+  fromEvent(window, "beforeunload")
+    .subscribe(() => {
+      history.scrollRestoration = "auto"
+    })
+
   // instant loading
   if (config.features.includes("instant")) {
 
     /* Disable automatic scroll restoration, as it doesn't work nicely */
-    location$
-      .pipe(
-        skip(1),
-        take(1)
-      )
-        .subscribe(() => {
-          console.log("disabled automatic scroll restoration")
-          if ("scrollRestoration" in history)
-            history.scrollRestoration = "manual"
-        })
+    if ("scrollRestoration" in history)
+      history.scrollRestoration = "manual"
 
     /* Resolve relative links for stability */
     for (const selector of [
@@ -375,7 +373,6 @@ export function initialize(config: unknown) {
     setupInstantLoading({
       document$, link$, location$, viewport$
     })
-
   }
 
   /* ----------------------------------------------------------------------- */
