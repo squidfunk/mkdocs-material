@@ -73,6 +73,7 @@ export interface Header {
  * Mount options
  */
 interface MountOptions {
+  document$: Observable<Document>      /* Document observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
 }
 
@@ -88,11 +89,11 @@ interface MountOptions {
  * @return Operator function
  */
 export function mountHeader(
-  { viewport$ }: MountOptions
+  { document$, viewport$ }: MountOptions
 ): OperatorFunction<HTMLElement, Header> {
   return pipe(
     switchMap(el => {
-      const header$ = watchHeader(el)
+      const header$ = watchHeader(el, { document$ })
 
       /* Compute whether the header should switch to page header */
       const type$ = useComponent("main")

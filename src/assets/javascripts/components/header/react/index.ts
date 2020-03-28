@@ -28,10 +28,12 @@ import {
   pipe
 } from "rxjs"
 import {
+  distinctUntilChanged,
   finalize,
   map,
   observeOn,
   shareReplay,
+  switchMap,
   tap
 } from "rxjs/operators"
 
@@ -42,6 +44,17 @@ import {
   resetHeaderTitleActive,
   setHeaderTitleActive
 } from "../set"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch options
+ */
+interface WatchOptions {
+  document$: Observable<Document>      /* Document observable */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -55,27 +68,36 @@ import {
  * @return Header observable
  */
 export function watchHeader(
-  el: HTMLElement
+  el: HTMLElement, { document$ }: WatchOptions
 ): Observable<Omit<Header, "type">> {
-  const styles = getComputedStyle(el)
-  if ([
-    "sticky",                          /* Modern browsers */
-    "-webkit-sticky"                   /* Safari */
-  ].includes(styles.position)) {
-    return watchElementSize(el)
-      .pipe(
-        map(({ height }) => ({
-          sticky: true,
-          height
-        })),
-        shareReplay(1)
-      )
-  } else {
-    return of({
-      sticky: false,
-      height: 0
-    })
-  }
+  return document$
+    .pipe(
+      map(() => {
+        const styles = getComputedStyle(el)
+        return [
+          "sticky",                    /* Modern browsers */
+          "-webkit-sticky"             /* Safari */
+        ].includes(styles.position)
+      }),
+      distinctUntilChanged(),
+      switchMap(sticky => {
+        if (sticky) {
+          return watchElementSize(el)
+            .pipe(
+              map(({ height }) => ({
+                sticky: true,
+                height
+              }))
+            )
+        } else {
+          return of({
+            sticky: false,
+            height: 0
+          })
+        }
+      }),
+      shareReplay(1)
+    )
 }
 
 /* ------------------------------------------------------------------------- */

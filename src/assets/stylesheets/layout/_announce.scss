@@ -26,6 +26,7 @@
 
 // Announcement bar
 .md-announce {
+  overflow: auto;
   background-color: var(--md-default-fg-color);
 
   // Actual content

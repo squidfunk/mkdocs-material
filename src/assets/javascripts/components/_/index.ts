@@ -39,6 +39,7 @@ import { getElement, replaceElement } from "browser"
  * Component
  */
 export type Component =
+  | "announce"                         /* Announcement bar */
   | "container"                        /* Container */
   | "header"                           /* Header */
   | "header-title"                     /* Header title */
@@ -114,6 +115,7 @@ export function setupComponents(
           switch (name) {
 
             /* Top-level components: update */
+            case "announce":
             case "header-title":
             case "container":
             case "skip":

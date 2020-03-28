@@ -201,21 +201,25 @@
     <label class="md-overlay" for="__drawer"></label>
 
     <!-- Link to skip to content -->
-    {% if page.toc | first is defined %}
-      {% set skip = page.toc | first %}
-      <a href="{{ skip.url | url }}" class="md-skip" data-md-component="skip">
-        {{ lang.t('skip.link.title') }}
-      </a>
-    {% endif %}
+    <div data-md-component="skip">
+      {% if page.toc | first is defined %}
+        {% set skip = page.toc | first %}
+        <a href="{{ skip.url | url }}" class="md-skip">
+          {{ lang.t('skip.link.title') }}
+        </a>
+      {% endif %}
+    </div>
 
     <!-- Announcement bar -->
-    {% if self.announce() %}
-      <aside class="md-announce" data-md-component="announce">
-        <div class="md-announce__inner md-grid md-typeset">
-          {% block announce %}{% endblock %}
-        </div>
-      </aside>
-    {% endif %}
+    <div data-md-component="announce">
+      {% if self.announce() %}
+        <aside class="md-announce">
+          <div class="md-announce__inner md-grid md-typeset">
+            {% block announce %}{% endblock %}
+          </div>
+        </aside>
+      {% endif %}
+    </div>
 
     <!-- Application header -->
     {% block header %}
