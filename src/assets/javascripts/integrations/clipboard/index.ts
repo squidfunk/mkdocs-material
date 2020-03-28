@@ -25,7 +25,7 @@ import { NEVER, Observable, Subject, fromEventPattern } from "rxjs"
 import { mapTo, share, tap } from "rxjs/operators"
 
 import { getElements } from "browser"
-import { renderClipboard } from "templates"
+import { renderClipboardButton } from "templates"
 import { translate } from "utilities"
 
 /* ----------------------------------------------------------------------------
@@ -66,7 +66,7 @@ export function setupClipboard(
     blocks.forEach((block, index) => {
       const parent = block.parentElement!
       parent.id = `__code_${index}`
-      parent.insertBefore(renderClipboard(parent.id), block)
+      parent.insertBefore(renderClipboardButton(parent.id), block)
     })
   })
 

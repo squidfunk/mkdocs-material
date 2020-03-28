@@ -20,7 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-// TODO: remove this after we finished refactoring
+// DISCLAIMER: this file is still WIP. There're some refactoring opportunities
+// which must be tackled after we gathered some feedback on v5.
 // tslint:disable
 
 import "../stylesheets/main.scss"
@@ -32,8 +33,6 @@ import {
   combineLatest,
   animationFrameScheduler,
   fromEvent,
-  of,
-  NEVER,
   from
 } from "rxjs"
 import { ajax } from "rxjs/ajax"
@@ -46,9 +45,7 @@ import {
   observeOn,
   take,
   shareReplay,
-  share,
-  pluck,
-  skip
+  pluck
 } from "rxjs/operators"
 
 import {
@@ -61,7 +58,6 @@ import {
   watchLocationHash,
   watchViewport,
   isLocalLocation,
-  isAnchorLocation,
   setLocationHash,
   watchLocationBase
 } from "browser"
@@ -255,7 +251,6 @@ export function initialize(config: unknown) {
           )
         )
 
-
   const worker = setupSearchWorker(config.search.worker, {
     base$, index$
   })
@@ -299,10 +294,9 @@ export function initialize(config: unknown) {
       tap(() => setToggle("search", false)),
       delay(125), // ensure that it runs after the body scroll reset...
     )
-      .subscribe(hash => setLocationHash(`#${hash}`)) // TODO: must be unified
+      .subscribe(hash => setLocationHash(`#${hash}`))
 
-  // Scroll lock // document -> document$ => { body } !?
-  // put into search...
+  // TODO: scroll restoration must be centralized
   combineLatest([
     watchToggle("search"),
     tablet$,
@@ -313,7 +307,7 @@ export function initialize(config: unknown) {
         const active = toggle && !tablet
         return document$
           .pipe(
-            delay(active ? 400 : 100), // TOOD: directly combine this with the hash!
+            delay(active ? 400 : 100),
             observeOn(animationFrameScheduler),
             tap(({ body }) => active
               ? setScrollLock(body, y)
@@ -326,68 +320,40 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  /* Intercept internal link clicks */
-  const link$ = fromEvent<MouseEvent>(document.body, "click")
+  /* Always close drawer on click */
+  fromEvent<MouseEvent>(document.body, "click")
     .pipe(
       filter(ev => !(ev.metaKey || ev.ctrlKey)),
-      switchMap(ev => {
+      filter(ev => {
         if (ev.target instanceof HTMLElement) {
           const el = ev.target.closest("a") // TODO: abstract as link click?
           if (el && isLocalLocation(el)) {
-            if (!isAnchorLocation(el) && config.features.includes("instant"))
-              ev.preventDefault()
-            return of(el)
+            return true
           }
         }
-        return NEVER
-      }),
-      share()
+        return false
+      })
     )
+      .subscribe(() => {
+        setToggle("drawer", false)
+      })
 
-  /* Always close drawer on click */
-  link$.subscribe(() => {
-    setToggle("drawer", false)
-  })
-
-  /* Hack: ensure that page loads restore scroll offset */
-  fromEvent(window, "beforeunload")
-    .subscribe(() => {
-      history.scrollRestoration = "auto"
-    })
-
-  // instant loading
-  if (config.features.includes("instant")) {
-
-    /* Disable automatic scroll restoration, as it doesn't work nicely */
-    if ("scrollRestoration" in history)
-      history.scrollRestoration = "manual"
-
-    /* Resolve relative links for stability */
-    for (const selector of [
-      `link[rel="shortcut icon"]`,
-      // `link[rel="stylesheet"]` // reduce style computations
-    ])
-      for (const el of getElements<HTMLLinkElement>(selector))
-        el.href = el.href
-
-    setupInstantLoading({
-      document$, link$, location$, viewport$
-    })
-  }
+  /* Enable instant loading, if not on file:// protocol */
+  if (config.features.includes("instant") && location.protocol !== "file:")
+    setupInstantLoading({ document$, location$, viewport$ })
 
   /* ----------------------------------------------------------------------- */
 
-  // if we use a single tab outside of search, unhide all permalinks.
-  // TODO: experimental. necessary!?
+  /* Unhide permalinks on first tab */
   keyboard$
     .pipe(
-      filter(key => key.mode === "global" && ["Tab"].includes(key.type)),
+      filter(key => key.mode === "global" && key.type === "Tab"),
       take(1)
     )
-    .subscribe(() => {
-      for (const link of getElements(".headerlink"))
-        link.style.visibility = "visible"
-    })
+      .subscribe(() => {
+        for (const link of getElements(".headerlink"))
+          link.style.visibility = "visible"
+      })
 
   /* ----------------------------------------------------------------------- */
 
@@ -395,6 +361,7 @@ export function initialize(config: unknown) {
 
     /* Browser observables */
     document$,
+    location$,
     viewport$,
 
     /* Component observables */
@@ -406,7 +373,7 @@ export function initialize(config: unknown) {
     tabs$,
     toc$,
 
-    /* Integation observables */
+    /* Integration observables */
     clipboard$,
     keyboard$,
     dialog$

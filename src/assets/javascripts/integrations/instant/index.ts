@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, Subject, fromEvent, merge } from "rxjs"
+import { NEVER, Observable, Subject, fromEvent, merge, of } from "rxjs"
 import { ajax } from "rxjs//ajax"
 import {
   bufferCount,
@@ -43,9 +43,11 @@ import {
   ViewportOffset,
   getElement,
   isAnchorLocation,
+  isLocalLocation,
   replaceElement,
   setLocation,
   setLocationHash,
+  setToggle,
   setViewportOffset
 } from "browser"
 
@@ -68,9 +70,8 @@ interface State {
  */
 interface SetupOptions {
   document$: Subject<Document>         /* Document subject */
-  viewport$: Observable<Viewport>      /* Viewport observable */
-  link$: Observable<HTMLAnchorElement> /* Internal link observable */
   location$: Subject<URL>              /* Location subject */
+  viewport$: Observable<Viewport>      /* Viewport observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -97,19 +98,51 @@ interface SetupOptions {
  * location change is dispatched regularly.
  *
  * @param options - Options
- *
- * @return TODO: return type?
  */
 export function setupInstantLoading(
-  { document$, viewport$, link$, location$ }: SetupOptions
-) { // TODO: add return type
-  const state$ = link$
+  { document$, viewport$, location$ }: SetupOptions
+): void {
+
+  /* Disable automatic scroll restoration */
+  if ("scrollRestoration" in history)
+    history.scrollRestoration = "manual"
+
+  /* Hack: ensure that reloads restore viewport offset */
+  fromEvent(window, "beforeunload")
+    .subscribe(() => {
+      history.scrollRestoration = "auto"
+    })
+
+  /* Hack: ensure absolute favicon link to omit 404s on document switch */
+  const favicon = getElement<HTMLLinkElement>(`link[rel="shortcut icon"]`)
+  if (typeof favicon !== "undefined")
+    favicon.href = favicon.href // tslint:disable-line no-self-assignment
+
+  /* Intercept link clicks and convert to state change */
+  const state$ = fromEvent<MouseEvent>(document.body, "click")
     .pipe(
+      filter(ev => !(ev.metaKey || ev.ctrlKey)),
+      switchMap(ev => {
+        if (ev.target instanceof HTMLElement) {
+          const el = ev.target.closest("a")
+          if (el && isLocalLocation(el)) {
+            if (!isAnchorLocation(el))
+              ev.preventDefault()
+            return of(el)
+          }
+        }
+        return NEVER
+      }),
       map(el => ({ url: new URL(el.href) })),
       share<State>()
     )
 
-  /* Intercept internal links to dispatch */
+  /* Always close search on link click */
+  state$.subscribe(() => {
+    setToggle("search", false)
+  })
+
+  /* Filter state changes to dispatch */
   const push$ = state$
     .pipe(
       distinctUntilChanged((prev, next) => prev.url.href === next.url.href),
@@ -121,11 +154,11 @@ export function setupInstantLoading(
   const pop$ = fromEvent<PopStateEvent>(window, "popstate")
     .pipe(
       filter(ev => ev.state !== null),
-      map<PopStateEvent, State>(ev => ({
+      map(ev => ({
         url: new URL(location.href),
         offset: ev.state
       })),
-      share()
+      share<State>()
     )
 
   /* Emit location change */
@@ -135,13 +168,11 @@ export function setupInstantLoading(
     )
       .subscribe(location$)
 
-  const dom = new DOMParser()
+  /* Fetch document on location change */
   const ajax$ = location$
     .pipe(
       distinctUntilKeyChanged("pathname"),
       skip(1),
-
-      /* Fetch document */
       switchMap(url => ajax({
         url: url.href,
         responseType: "text",
@@ -154,9 +185,9 @@ export function setupInstantLoading(
           })
         )
       )
-      // share()
     )
 
+  /* Set new location as soon as the document was fetched */
   push$
     .pipe(
       sample(ajax$)
@@ -165,55 +196,30 @@ export function setupInstantLoading(
         history.pushState({}, "", url.toString())
       })
 
+  /* Parse and emit document */
+  const dom = new DOMParser()
   ajax$
     .pipe(
-      map(({ response }) => {
-        return dom.parseFromString(response, "text/html")
-      })
+      map(({ response }) => dom.parseFromString(response, "text/html"))
     )
       .subscribe(document$)
 
-  /* History: debounce update of viewport offset */
-  viewport$
-    .pipe(
-      debounceTime(250),
-      distinctUntilKeyChanged("offset")
-    )
-      .subscribe(({ offset }) => {
-        history.replaceState(offset, "")
-      })
-
-  /* Apply viewport offset from history */
-  merge(state$, pop$)
-    .pipe(
-      bufferCount(2, 1),
-      filter(([prev, next]) => {
-        return prev.url.pathname === next.url.pathname
-            && !isAnchorLocation(next.url)
-      }),
-      map(([, state]) => state)
-    )
-      .subscribe(({ offset }) => {
-        setViewportOffset(offset || { y: 0 })
-      })
-
-  /* Intercept actual instant loading */
+  /* Intercept instant loading */
   const instant$ = merge(push$, pop$)
     .pipe(
       sample(document$)
     )
 
-  // TODO: from here on, everything is beta.... ###############################
-
+  // TODO: this must be combined with search scroll restoration on mobile
   instant$.subscribe(({ url, offset }) => {
     if (url.hash && !offset) {
-      // console.log("set hash!")
-      setLocationHash(url.hash) // must delay, if search is open!
+      setLocationHash(url.hash)
     } else {
       setViewportOffset(offset || { y: 0 })
     }
   })
 
+  /* Replace document metadata */
   instant$
     .pipe(
       withLatestFrom(document$)
@@ -237,5 +243,29 @@ export function setupInstantLoading(
             replaceElement(prev, next)
           }
         }
+      })
+
+  /* Debounce update of viewport offset */
+  viewport$
+    .pipe(
+      debounceTime(250),
+      distinctUntilKeyChanged("offset")
+    )
+      .subscribe(({ offset }) => {
+        history.replaceState(offset, "")
+      })
+
+  /* Set viewport offset from history */
+  merge(state$, pop$)
+    .pipe(
+      bufferCount(2, 1),
+      filter(([prev, next]) => {
+        return prev.url.pathname === next.url.pathname
+            && !isAnchorLocation(next.url)
+      }),
+      map(([, state]) => state)
+    )
+      .subscribe(({ offset }) => {
+        setViewportOffset(offset || { y: 0 })
       })
 }
