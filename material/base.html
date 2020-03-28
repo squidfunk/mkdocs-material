@@ -41,7 +41,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.b32d3181.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.c1451e9e.min.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.4444686e.min.css' | url }}">
       {% endif %}
@@ -88,19 +88,23 @@
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
-    {% if page.toc | first is defined %}
-      {% set skip = page.toc | first %}
-      <a href="{{ skip.url | url }}" class="md-skip" data-md-component="skip">
-        {{ lang.t('skip.link.title') }}
-      </a>
-    {% endif %}
-    {% if self.announce() %}
-      <aside class="md-announce" data-md-component="announce">
-        <div class="md-announce__inner md-grid md-typeset">
-          {% block announce %}{% endblock %}
-        </div>
-      </aside>
-    {% endif %}
+    <div data-md-component="skip">
+      {% if page.toc | first is defined %}
+        {% set skip = page.toc | first %}
+        <a href="{{ skip.url | url }}" class="md-skip">
+          {{ lang.t('skip.link.title') }}
+        </a>
+      {% endif %}
+    </div>
+    <div data-md-component="announce">
+      {% if self.announce() %}
+        <aside class="md-announce">
+          <div class="md-announce__inner md-grid md-typeset">
+            {% block announce %}{% endblock %}
+          </div>
+        </aside>
+      {% endif %}
+    </div>
     {% block header %}
       {% include "partials/header.html" %}
     {% endblock %}
@@ -175,7 +179,7 @@
     </div>
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.c1fcc1cc.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.edc2ff56.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.0ddca959.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",

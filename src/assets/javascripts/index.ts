@@ -158,6 +158,7 @@ export function initialize(config: unknown) {
 
   /* Set up component bindings */
   setupComponents([
+    "announce",                        /* Announcement bar */
     "container",                       /* Container */
     "header",                          /* Header */
     "header-title",                    /* Header title */
@@ -192,7 +193,7 @@ export function initialize(config: unknown) {
   /* Create header observable */
   const header$ = useComponent("header")
     .pipe(
-      mountHeader({ viewport$ }),
+      mountHeader({ document$, viewport$ }),
       shareReplay(1)
     )
 
