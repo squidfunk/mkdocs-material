@@ -23,7 +23,11 @@
 import { Observable } from "rxjs"
 import { map, skip, withLatestFrom } from "rxjs/operators"
 
-import { getElements } from "browser"
+import {
+  createElement,
+  getElements,
+  replaceElement
+} from "browser"
 import { useComponent } from "components"
 
 /* ----------------------------------------------------------------------------
@@ -63,10 +67,10 @@ export function patchScripts(
   els$.subscribe(els => {
     for (const el of els) {
       if (el.src || /(^|\/javascript)$/i.test(el.type)) {
-        const script = document.createElement("script")
+        const script = createElement("script")
         const key = el.src ? "src" : "textContent"
         script[key] = el[key]!
-        el.replaceWith(script)
+        replaceElement(el, script)
       }
     }
   })

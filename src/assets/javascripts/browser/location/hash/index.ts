@@ -23,6 +23,8 @@
 import { Observable, fromEvent } from "rxjs"
 import { filter, map, share, startWith } from "rxjs/operators"
 
+import { createElement } from "browser"
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -47,7 +49,7 @@ export function getLocationHash(): string {
  * @param hash - Location hash
  */
 export function setLocationHash(hash: string): void {
-  const el = document.createElement("a")
+  const el = createElement("a")
   el.href = hash
   el.addEventListener("click", ev => ev.stopPropagation())
   el.click()

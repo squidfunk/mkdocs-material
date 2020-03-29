@@ -54,21 +54,21 @@ type Child =
 /**
  * Create an element
  *
- * @param tag - HTML or SVG tag
+ * @param tagName - HTML or SVG tag
  *
  * @return Element
  */
-function createElement(tag: string): HTMLElement | SVGElement {
-  switch (tag) {
+function createElement(tagName: string): HTMLElement | SVGElement {
+  switch (tagName) {
 
     /* SVG elements */
     case "svg":
     case "path":
-      return document.createElementNS("http://www.w3.org/2000/svg", tag)
+      return document.createElementNS("http://www.w3.org/2000/svg", tagName)
 
     /* HTML elements */
     default:
-      return document.createElement(tag)
+      return document.createElement(tagName)
   }
 }
 
@@ -137,16 +137,16 @@ function appendChild(
 /**
  * JSX factory
  *
- * @param tag - HTML or SVG tag
+ * @param tagName - HTML or SVG tag
  * @param attributes - HTML attributes
  * @param children - Child elements
  *
  * @return Element
  */
 export function h(
-  tag: string, attributes: Attributes | null, ...children: Child[]
+  tagName: string, attributes: Attributes | null, ...children: Child[]
 ): HTMLElement | SVGElement {
-  const el = createElement(tag)
+  const el = createElement(tagName)
 
   /* Set attributes, if any */
   if (attributes)

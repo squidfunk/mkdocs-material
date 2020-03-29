@@ -91,6 +91,21 @@ export function getElements<T extends HTMLElement>(
 /* ------------------------------------------------------------------------- */
 
 /**
+ * Create an element
+ *
+ * @template T - Tag name type
+ *
+ * @param tagName - Tag name
+ *
+ * @return Element
+ */
+export function createElement<
+  T extends keyof HTMLElementTagNameMap
+>(tagName: T): HTMLElementTagNameMap[T] {
+  return document.createElement(tagName)
+}
+
+/**
  * Replace an element with another element
  *
  * @param source - Source element
