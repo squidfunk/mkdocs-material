@@ -22,7 +22,34 @@
 
 {% extends "base.html" %}
 
+<!-- Custom front matter -->
+{% block extrahead %}
+
+  <!-- Determine title -->
+  {% set title = config.site_name %}
+  {% if page and page.title and not page.is_homepage %}
+    {% set title = config.site_name ~ " - " ~ page.title | striptags %}
+  {% endif %}
+
+  <!-- Determine image -->
+  {% set image = 'assets/images/material.png' | url %}
+
+  <!-- Open graph meta tags -->
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ config.site_description }}" />
+  <meta property="og:url" content="{{ page.canonical_url }}" />
+  <meta property="og:image" content="{{ image }}" />
+
+  <!-- Twitter meta tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@squidfunk" />
+  <meta name="twitter:creator" content="@squidfunk" />
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ config.site_description }}" />
+  <meta name="twitter:image" content="{{ image }}" />
+{% endblock %}
+
 <!-- Announcement bar -->
 {% block announce %}
-  Material for MkDocs 5.0.0rc3
+  Material for MkDocs 5.0.0rc4
 {% endblock %}
