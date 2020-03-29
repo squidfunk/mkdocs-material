@@ -21,7 +21,11 @@
  */
 
 import { Observable, OperatorFunction, of, pipe } from "rxjs"
-import { distinctUntilChanged, map, switchMap } from "rxjs/operators"
+import {
+  distinctUntilKeyChanged,
+  map,
+  switchMap
+} from "rxjs/operators"
 
 import { Viewport, watchViewportAt } from "browser"
 
@@ -76,7 +80,7 @@ export function mountTabs(
             return watchViewportAt(el, { header$, viewport$ })
               .pipe(
                 map(({ offset: { y } }) => ({ hidden: y >= 10 })),
-                distinctUntilChanged(),
+                distinctUntilKeyChanged("hidden"),
                 applyTabs(el)
               )
 
