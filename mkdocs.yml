@@ -80,6 +80,7 @@ extra:
 # Extensions
 markdown_extensions:
   - markdown.extensions.admonition
+  - markdown.extensions.attr_list
   - markdown.extensions.codehilite:
       guess_lang: false
   - markdown.extensions.def_list
