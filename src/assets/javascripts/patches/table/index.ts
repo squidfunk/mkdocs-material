@@ -23,7 +23,11 @@
 import { Observable } from "rxjs"
 import { map } from "rxjs/operators"
 
-import { getElements } from "browser"
+import {
+  createElement,
+  getElements,
+  replaceElement
+} from "browser"
 import { renderTable } from "templates"
 
 /* ----------------------------------------------------------------------------
@@ -52,15 +56,15 @@ interface MountOptions {
 export function patchTables(
   { document$ }: MountOptions
 ): void {
-  const sentinel = document.createElement("table")
+  const sentinel = createElement("table")
   document$
     .pipe(
       map(() => getElements<HTMLTableElement>("table:not([class])"))
     )
       .subscribe(els => {
         for (const el of els) {
-          el.replaceWith(sentinel)
-          sentinel.replaceWith(renderTable(el))
+          replaceElement(el, sentinel)
+          replaceElement(sentinel, renderTable(el))
         }
       })
 }

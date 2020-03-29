@@ -96,7 +96,7 @@ interface MountOptions {
  * @return Operator function
  */
 export function mountTableOfContents(
-  { header$, main$, viewport$, tablet$}: MountOptions
+  { header$, main$, viewport$, tablet$ }: MountOptions
 ): OperatorFunction<HTMLElement, TableOfContents> {
   return pipe(
     switchMap(el => tablet$

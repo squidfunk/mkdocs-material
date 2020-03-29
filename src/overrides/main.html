@@ -22,7 +22,6 @@
 
 {% extends "base.html" %}
 
-
 <!-- Custom front matter -->
 {% block extrahead %}
 
@@ -32,8 +31,8 @@
     {% set title = config.site_name ~ " - " ~ page.title | striptags %}
   {% endif %}
 
-  <!-- Determine image -->
-  {% set image = 'assets/images/illustration.png' | url %}
+  <!-- The image needs to have an absolute URL -->
+  {% set image = config.site_url ~ 'assets/images/illustration.png' %}
 
   <!-- Open graph meta tags -->
   <meta property="og:title" content="{{ title }}" />
@@ -52,5 +51,5 @@
 
 <!-- Announcement bar -->
 {% block announce %}
-  Material for MkDocs 5.0.0rc3
+  Material for MkDocs 5.0.0rc4
 {% endblock %}

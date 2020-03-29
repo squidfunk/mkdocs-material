@@ -719,11 +719,13 @@ including more information regarding installation and usage:
 * [Search][32] (enabled by default)
 * [Minification][33]
 * [Revision date][34]
+* [Awesome pages][35]
 
 For further reference, the MkDocs wiki contains a list of all
-[available plugins][35].
+[available plugins][36].
 
   [32]: plugins/search.md
   [33]: plugins/minification.md
   [34]: plugins/revision-date.md
-  [35]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
+  [35]: plugins/awesome-pages.md
+  [36]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins

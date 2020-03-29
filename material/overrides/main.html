@@ -7,7 +7,7 @@
   {% if page and page.title and not page.is_homepage %}
     {% set title = config.site_name ~ " - " ~ page.title | striptags %}
   {% endif %}
-  {% set image = 'assets/images/illustration.png' | url %}
+  {% set image = config.site_url ~ 'assets/images/illustration.png' %}
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ config.site_description }}">
   <meta property="og:url" content="{{ page.canonical_url }}">
@@ -20,5 +20,5 @@
   <meta name="twitter:image" content="{{ image }}">
 {% endblock %}
 {% block announce %}
-  Material for MkDocs 5.0.0rc3
+  Material for MkDocs 5.0.0rc4
 {% endblock %}

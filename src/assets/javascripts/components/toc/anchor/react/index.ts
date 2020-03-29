@@ -41,7 +41,7 @@ import {
   tap
 } from "rxjs/operators"
 
-import { Viewport, getElement } from "browser"
+import { Viewport, getElement, watchElementSize } from "browser"
 
 import { Header } from "../../../header"
 import { AnchorList } from "../_"
@@ -106,9 +106,9 @@ export function watchAnchorList(
     )
 
   /* Compute partition of previous and next anchors */
-  const partition$ = viewport$
+  const partition$ = watchElementSize(document.body)
     .pipe(
-      distinctUntilKeyChanged("size"),
+      distinctUntilKeyChanged("height"),
 
       /* Build index to map anchor paths to vertical offsets */
       map(() => {
