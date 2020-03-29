@@ -9,9 +9,19 @@ and is implemented using [lunr.js][2] which includes stemmers for the English
 language by default, while stemmers for other languages are included with 
 [lunr-languages][3], both of which are integrated with this theme.
 
+!!! tip "Add the [localsearch][4] plugin to support search from `file://`"
+
+    While search will not work for the `file://` protocol, as web workers and
+    the use of `XMLHTTPRequest` are both blocked by modern browsers for security
+    reasons, the [localsearch][4] plugin and @squidfunk's [iframe-worker][5]
+    polyfill add support for cases where this is a mandatory requirement, e.g.,
+    for offline use.
+
   [1]: https://www.mkdocs.org/user-guide/configuration/#search
   [2]: https://lunrjs.com
   [3]: https://github.com/MihaiValentin/lunr-languages
+  [4]: https://github.com/wilhelmer/mkdocs-localsearch
+  [5]: https://github.com/squidfunk/iframe-worker
 
 ## Installation
 
@@ -102,7 +112,7 @@ plugins:
 
 > Default: `false`
 
-MkDocs can generate a [prebuilt index][4] of all pages during build time, which
+MkDocs can generate a [prebuilt index][6] of all pages during build time, which
 provides performance improvements at the cost of more bandwidth. This may be
 beneficial for large documentation projects that are served with appropriate
 HTTP headers (e.g. `Content-Encoding: gzip`).
@@ -116,7 +126,7 @@ plugins:
       prebuild_index: true
 ```
 
-  [4]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
+  [6]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
 
 ## Usage
 
