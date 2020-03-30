@@ -81,7 +81,7 @@
     "stylelint-scss": "^3.16.0",
     "uglifyjs-3-webpack-plugin": "^1.2.4",
     "unfetch": "^3.0.0",
-    "webpack": "^4.42.0",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-manifest-plugin": "^2.2.0"
   },
