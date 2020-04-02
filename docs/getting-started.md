@@ -643,9 +643,9 @@ extra:
 
 ### Google Analytics
 
-MkDocs makes it easy to integrate site tracking with Google Analytics. Besides
-basic page views, site search is tracked to better understand how people use
-your documentation. Google Analytics can be activated with:
+MkDocs makes it easy to integrate site tracking with Google Analytics. To enable
+tracking, which is disabled by default, you must add your tracking identifier
+to `mkdocs.yml`:
 
 ``` yaml
 google_analytics:
@@ -653,10 +653,20 @@ google_analytics:
   - auto
 ```
 
+Besides basic page views, *site search* can also be tracked to better understand
+how people use your documentation and what they expect to find. To enable
+search tracking:
+
+1. Go to your Google Analytics **admin settings**
+2. Select the property for the respective tracking code
+3. Go to the **view settings** tab.
+4. Scroll down and enable **site search settings**
+5. Set the **query parameter** to `q`.
+
 ### Disqus
 
 Material for MkDocs is integrated with [Disqus][24], so if you want to add a
-comments section to your documentation set the _shortname_ of your Disqus
+comments section to your documentation set the *shortname* of your Disqus
 project in `mkdocs.yml`:
 
 ``` yaml
