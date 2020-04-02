@@ -105,7 +105,7 @@ index parts of words that are separated by `-` or `.`:
 ``` yaml
 plugins:
   - search:
-      separator: [\s\-\.]+
+      separator: '[\s\-\.]+'
 ```
 
 ### Prebuilding :hatching_chick:
