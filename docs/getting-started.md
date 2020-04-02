@@ -30,8 +30,8 @@ those packages separately.
 !!! tip "Installation in a virtual environment"
 
     The best way to make sure that you end up with the correct versions and
-    without any incompatibility problems between packages it to use a __virtual
-    environment__. Don't know what this is or how to set it up? We recommend
+    without any incompatibility problems between packages it to use a **virtual
+    environment**. Don't know what this is or how to set it up? We recommend
     to start by reading a [tutorial on virtual environments][6] for Python.
 
 !!! warning "Installation on macOS"
