@@ -80,6 +80,12 @@ body {
       position: fixed;
     }
   }
+
+  // Hack: we must not use flex, or Firefox will only print the first page
+  // see https://mzl.la/39DgR3m
+  @media print {
+    display: block;
+  }
 }
 
 // Horizontal separators
@@ -102,6 +108,12 @@ hr {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+
+  // Hack: we must not use flex, or Firefox will only print the first page
+  // see https://mzl.la/39DgR3m
+  @media print {
+    display: block;
+  }
 }
 
 // The main content should stretch to maximum height in the table

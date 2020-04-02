@@ -127,7 +127,7 @@ pip show mkdocs-material
 * Added background on hover for table rows
 * Removed Google Tag Manager and reverted to Google Analytics
 * Removed blocks in partials - Jinja doesn't support them
-* Fixed #911: Chrome breaks layout if system language is Chinese (__BREAKING__)
+* Fixed #911: Chrome breaks layout if system language is Chinese (**BREAKING**)
 * Fixed #976: Removed FastClick
 
 ### 3.3.0 <small>_ January 29, 2019</small>
@@ -176,7 +176,7 @@ pip show mkdocs-material
 
 ### 3.0.0 <small>_ August 5, 2018</small>
 
-* Upgraded MkDocs to 1.0 (__BREAKING__)
+* Upgraded MkDocs to 1.0 (**BREAKING**)
 * Upgraded Python in official Docker image to 3.6
 * Added Serbian and Serbo-Croatian translations
 
