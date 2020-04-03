@@ -143,10 +143,10 @@ $admonitions: (
     }
 
     // Reset code inside Admonition titles
-    > code {
+    code {
       margin: initial;
       padding: initial;
-      color: initial;
+      color: currentColor;
       background-color: transparent;
       border-radius: initial;
       box-shadow: none;
