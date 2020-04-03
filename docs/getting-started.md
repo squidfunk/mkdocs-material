@@ -252,7 +252,7 @@ subentries now). This way you can have nested navigation items in conjunction
 with tabs, as nesting works as expected from the second level on when tabs are
 enabled. Keep in mind that mobile navigation isn't affected by tabs, however,
 which means that your top-level entries correspond to top-level mobile
-navigation items, which sometimes is less convenient.
+navigation items.
 
 ### Language
 
