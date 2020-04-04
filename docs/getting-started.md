@@ -246,6 +246,14 @@ Note that all *top-level pages* (i.e. all top-level entries that directly refer
 to an `*.md` file) defined inside the `nav` entry of `mkdocs.yml` will be
 grouped under the first tab which will receive the title of the first page.
 
+If you want to maintain absolute control over the navigation bar, you can opt
+in to group all top-level pages under one entry (so all top-level entries have
+subentries now). This way you can have nested navigation items in conjunction
+with tabs, as nesting works as expected from the second level on when tabs are
+enabled. Keep in mind that mobile navigation isn't affected by tabs, however,
+which means that your top-level entries correspond to top-level mobile
+navigation items.
+
 ### Language
 
 > Default: `en`

@@ -188,14 +188,9 @@ kbd {
     box-shadow: none;
   }
 
-  // Reset code if it's inside a link
+  // Ensure link color in code blocks
   a > code {
-    margin: initial;
-    padding: initial;
-    color: initial;
-    background-color: transparent;
-    border-radius: initial;
-    box-shadow: none;
+    color: currentColor;
   }
 
   // Unformatted code blocks
