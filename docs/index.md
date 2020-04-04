@@ -4,6 +4,22 @@ template: overrides/home.html
 
 # Material <small>for MkDocs</small>
 
+
+<style>
+  .md-typeset .admonition.seealso .admonition-title::before {
+    content: "question_answer";
+  }
+</style>
+
+!!! seealso "[User Survey 2020][0]{ target="_blank" rel="noopener" } – tell us about you, it takes only 2 minutes of your time!"
+
+    __Material for MkDocs 5__ is around the corner and we would like to learn
+    more __about you__ and __how you use__ this project. [Take the survey][0]{ target="_blank" rel="noopener" }
+    and help us learn about your experiences, so we can make this project even
+    better!
+
+  [0]: https://forms.gle/4mJgtJRbvZr1spk38
+
 ## Create beautiful project documentation
 
 Material is a theme for [MkDocs][1], an excellent static site generator geared
