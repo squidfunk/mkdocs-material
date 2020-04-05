@@ -6,11 +6,10 @@
 
 <p align="center">
   <strong>
-    A <a href="https://material.io/">
-      Material Design
-    </a> theme for <a href="https://www.mkdocs.org/">
-      MkDocs
-    </a>
+    A 
+    <a href="https://material.io/">Material Design</a> 
+    theme for 
+    <a href="https://www.mkdocs.org/">MkDocs</a>
   </strong>
 </p>
 
@@ -51,28 +50,45 @@
 </p>
 
 <p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material">
+  <a href="https://squidfunk.github.io/mkdocs-material/getting-started/">
     <img src=".github/assets/screenshot.png" width=700 />
   </a>
 </p>
 
 ## Features
 
-* **It's just Markdown** — write your technical documentation in plain Markdown – no need to know HTML, JavaScript or CSS. Material for MkDocs will do the heavy lifting and convert your writing to a beautiful and functional website.
+* **It's just Markdown** — write your technical documentation in plain Markdown
+  – no need to know HTML, JavaScript, or CSS. Material for MkDocs will do the
+  heavy lifting and convert your writing to a beautiful and functional website.
 
-* **Responsive by design** — built from the ground up to work on all sorts of devices – from mobile phones to wide screens. The underlying fluid layout will always adapt perfectly to the available screen space.
+* **Responsive by design** — built from the ground up to work on all sorts of 
+  devices – from mobile phones to widescreens. The underlying fluid layout will 
+  always adapt perfectly to the available screen space.
 
-* **Static, yet searchable** — almost magically, your technical documentation website will be searchable without any further ado. Material for MkDocs comes with built-in search – no server needed – that will instantly answer your users' queries.
+* **Static, yet searchable** — almost magically, your technical documentation 
+  website will be searchable without any further ado. Material for MkDocs comes
+  with built-in search – no server needed – that will instantly answer your
+  users' queries.
 
-* **Many configuration options** — change the color palette, font families, language, icons and favicon, logo. Add a source repository link, links to your social profiles, Google Analytics and Disqus - all with a few lines of code.
+* **Many configuration options** — change the color palette, font families, 
+  language, icons and favicon, logo. Add a source repository link, links to your 
+  social profiles, Google Analytics and Disqus - all with a few lines of code.
 
-* **Beyond GitHub Markdown** — integrates natively with Python Markdown Extensions, offering additional elements like callouts, tabbed content containers, mathematical formulas, critic markup, task lists and emojis.
+* **Truly international** — thanks to many contributors, Material for MkDocs 
+  includes translations for more than 40 languages and offers full native RTL (right-to-left) support for languages such as Arabic, Persian (Farsi) and
+  Hebrew.
 
-* **Modern architecture** — Material for MkDocs's underlying codebase is built with TypeScript, RxJS, and SCSS, and is compiled with Webpack. This brings great possibilities for theme extension and customization.
+* **Beyond GitHub Markdown** — integrates natively with Python Markdown
+  Extensions, offering additional elements like callouts, tabbed content
+  containers, mathematical formulas, critic markup, task lists, and emojis.
+
+* **Modern architecture** — Material for MkDocs's underlying codebase is built
+  with TypeScript, RxJS, and SCSS, and is compiled with Webpack, bringing
+  excellent possibilities for theme extension and customization.
 
 ## Quick start
 
-Install the latest version of Material for MkDocs with `pip`:
+Material for MkDocs can be installed with `pip`:
 
 ``` sh
 pip install mkdocs-material
@@ -85,8 +101,8 @@ theme:
   name: material
 ```
 
-For detailed installation instructions and a demo, visit
-[squidfunk.github.io/mkdocs-material][1]
+For other installation methods, detailed installation instructions and a demo,
+visit [squidfunk.github.io/mkdocs-material][1]
 
   [1]: https://squidfunk.github.io/mkdocs-material/
 
