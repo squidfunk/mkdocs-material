@@ -150,11 +150,13 @@ following command:
 mkdocs serve
 ```
 
-Point your browser to [http://localhost:8000][11] and your documentation should
-great you in a new look. If you're starting from scratch, the following
-configuration can be used as a starting point:
+Point your browser to http://localhost:8000 and your documentation should great
+you in a new look. If you're starting from scratch, the following configuration
+can be used as a starting point:
 
 ??? summary "Example configuration"
+
+    This is an excerpt from the [`mkdocs.yml`][11] used to render these pages:
 
     ``` yaml
     # Project information
@@ -205,7 +207,7 @@ configuration can be used as a starting point:
           permalink: true
     ```
 
-[11]: http://localhost:8000
+[11]: https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
 
 ### Feature flags
 
@@ -246,13 +248,14 @@ Note that all *top-level pages* (i.e. all top-level entries that directly refer
 to an `*.md` file) defined inside the `nav` entry of `mkdocs.yml` will be
 grouped under the first tab which will receive the title of the first page.
 
-If you want to maintain absolute control over the navigation bar, you can opt
-in to group all top-level pages under one entry (so all top-level entries have
-subentries now). This way you can have nested navigation items in conjunction
-with tabs, as nesting works as expected from the second level on when tabs are
-enabled. Keep in mind that mobile navigation isn't affected by tabs, however,
-which means that your top-level entries correspond to top-level mobile
-navigation items.
+This means that there will effectively be no collapsible subsections for the
+first tab, as each subsection is rendered as another tab. If you want more
+fine-grained control, i.e.,  collapsible subsections for the first tab, you can
+move all *top-level pages into a subsection*, so that the top-level is entirely
+made up of subsections. Note that tabs are only shown for larger screens, so
+make sure that navigation is plausible on mobile devices.
+
+As an example, see the [`mkdocs.yml`][11] used to render these pages.
 
 ### Language
 

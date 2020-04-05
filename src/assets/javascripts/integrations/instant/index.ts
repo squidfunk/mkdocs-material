@@ -145,7 +145,6 @@ export function setupInstantLoading(
   /* Filter state changes to dispatch */
   const push$ = state$
     .pipe(
-      distinctUntilChanged((prev, next) => prev.url.href === next.url.href),
       filter(({ url }) => !isAnchorLocation(url)),
       share()
     )
@@ -164,6 +163,7 @@ export function setupInstantLoading(
   /* Emit location change */
   merge(push$, pop$)
     .pipe(
+      distinctUntilChanged((prev, next) => prev.url.href === next.url.href),
       pluck("url")
     )
       .subscribe(location$)
