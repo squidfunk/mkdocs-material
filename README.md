@@ -108,8 +108,6 @@ For other installation methods, configuration options and a demo, visit
 
 ## Users
 
-Following is a small
-
 ### Companies
 
 * [Amazon Web Services](https://awssecworkshops.com/)
@@ -129,7 +127,6 @@ Following is a small
 * [OpenFaaS](https://docs.openfaas.com/)
 * [Pi-Hole](https://docs.pi-hole.net/)
 * [Pydantic](https://pydantic-docs.helpmanual.io/)
-* [Tasmota](https://tasmota.github.io/docs/)
 * [Traefik](https://docs.traefik.io/)
 * [Vapor](https://docs.vapor.codes/)
 * [ZeroNet](https://zeronet.io/docs/)
