@@ -41,8 +41,8 @@
   <meta property="og:url" content="{{ page.canonical_url }}" />
   <meta property="og:image" content="{{ image }}" />
   <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1080" />
-  <meta property="og:image:height" content="568" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -56,14 +56,19 @@
 <!-- Announcement bar -->
 {% block announce %}
   <style>
-    .md-announce a {
+    .md-announce {
+      transition: background-color 125ms;
+    }
+    .md-announce:focus-within {
+      background-color: var(--md-accent-fg-color);
+    }
+    .md-announce a,
+    .md-announce a:focus,
+    .md-announce a:hover {
       color: currentColor;
     }
-    .md-announce a:hover {
-      color: #40bf79;
-    }
     .md-announce strong {
-      display: inline-block;
+      white-space: nowrap;
     }
   </style>
   <a href="https://ginseng.ai/blog/the-cognitive-complexity-of-css/">
