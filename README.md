@@ -1,5 +1,17 @@
 <p align="center">
-  <img src=".github/assets/logo.png" width="320" alt="Material for MkDocs">
+  <a href="https://squidfunk.github.io/mkdocs-material">
+    <img src=".github/assets/logo.png" width="320" alt="Material for MkDocs">
+  </a>
+</p>
+
+<p align="center">
+  <strong>
+    A <a href="https://material.io/">
+      Material Design
+    </a> theme for <a href="https://www.mkdocs.org/">
+      MkDocs
+    </a>
+  </strong>
 </p>
 
 <p align="center">
@@ -46,12 +58,17 @@
 
 ## Features
 
-* **It's just Markdown** – you just write your technical documentation in
-  Markdown, so there's no need to know any HTML, JavaScript or CSS. Material for
-  MkDocs will do the heavy lifting and generate a beautiful and functional
-  website.
+* **It's just Markdown** — write your technical documentation in plain Markdown – no need to know HTML, JavaScript or CSS. Material for MkDocs will do the heavy lifting and convert your writing to a beautiful and functional website.
 
-* **Looks great on every device**: Material for MkDocs is built...
+* **Responsive by design** — built from the ground up to work on all sorts of devices – from mobile phones to wide screens. The underlying fluid layout will always adapt perfectly to the available screen space.
+
+* **Static, yet searchable** — almost magically, your technical documentation website will be searchable without any further ado. Material for MkDocs comes with built-in search – no server needed – that will instantly answer your users' queries.
+
+* **Many configuration options** — change the color palette, font families, language, icons and favicon, logo. Add a source repository link, links to your social profiles, Google Analytics and Disqus - all with a few lines of code.
+
+* **Beyond GitHub Markdown** — integrates natively with Python Markdown Extensions, offering additional elements like callouts, tabbed content containers, mathematical formulas, critic markup, task lists and emojis.
+
+* **Modern architecture** — Material for MkDocs's underlying codebase is built with TypeScript, RxJS, and SCSS, and is compiled with Webpack. This brings great possibilities for theme extension and customization.
 
 ## Quick start
 
