@@ -56,17 +56,25 @@
 <!-- Announcement bar -->
 {% block announce %}
   <style>
+
+    /* Add background color transition */
     .md-announce {
       transition: background-color 125ms;
     }
+
+    /* Change background color on link focus */
     .md-announce:focus-within {
       background-color: var(--md-accent-fg-color);
     }
+
+    /* Preserve link color */
     .md-announce a,
     .md-announce a:focus,
     .md-announce a:hover {
       color: currentColor;
     }
+
+    /* Don't wrap name of blog article */
     .md-announce strong {
       white-space: nowrap;
     }
