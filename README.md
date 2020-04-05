@@ -58,9 +58,9 @@
 <p align="center">
   <em>
     A demo is worth a thousand words — check it out at
-    <a href="https://squidfunk.github.io/mkdocs-material/">
-      squidfunk.github.io/mkdocs-material
-    </a>!
+    <a
+      href="https://squidfunk.github.io/mkdocs-material/"
+    >squidfunk.github.io/mkdocs-material</a>.
   </em>
 </p>
 
