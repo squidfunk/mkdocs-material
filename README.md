@@ -55,10 +55,12 @@
   </a>
 </p>
 
-<p>
+<p align="center">
   <em>
-    A demo is worth more than thousand words — checout it out on 
-    [squidfunk.github.io/mkdocs-material][1]
+    A demo is worth more than thousand words — check it out at
+    <a href="https://squidfunk.github.io/mkdocs-material/">
+      squidfunk.github.io/mkdocs-material
+    </a>!
   </em>
 </p>
 
@@ -114,7 +116,7 @@ theme:
   name: material
 ```
 
-For other installation methods, configuration options and a demo, visit
+For other installation methods, configuration options, and a demo, visit
 [squidfunk.github.io/mkdocs-material][1]
 
   [1]: https://squidfunk.github.io/mkdocs-material/
