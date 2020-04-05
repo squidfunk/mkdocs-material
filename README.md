@@ -108,28 +108,26 @@ For other installation methods, configuration options and a demo, visit
 
 ## Users
 
-### Companies
+* **Companies** — 
+  [Amazon Web Services](https://awssecworkshops.com/),
+  [ING Bank](https://ing-bank.github.io/baker/),
+  [Netflix](https://netflix.github.io/titus/),
+  [Uber](https://uber.github.io/ludwig/getting_started/),
+  [SAP](https://sap.github.io/ui5-tooling/),
+  [Sipgate](https://developer.sipgate.io/),
+  [Spotify](https://spotify.github.io/mkdocs-monorepo-plugin/),
+  [Square](https://square.github.io/okhttp/),
+  [Zalando](https://opensource.zalando.com/skipper/)
 
-* [Amazon Web Services](https://awssecworkshops.com/)
-* [ING Bank](https://ing-bank.github.io/baker/)
-* [Netflix](https://netflix.github.io/titus/)
-* [Uber](https://uber.github.io/ludwig/getting_started/)
-* [SAP](https://sap.github.io/ui5-tooling/)
-* [Sipgate](https://developer.sipgate.io/)
-* [Spotify](https://spotify.github.io/mkdocs-monorepo-plugin/)
-* [Square](https://square.github.io/okhttp/)
-* [Zalando](https://opensource.zalando.com/skipper/)
-
-### Open Source
-
-* [AutoKeras](https://autokeras.com/)
-* [FastAPI](https://fastapi.tiangolo.com/)
-* [OpenFaaS](https://docs.openfaas.com/)
-* [Pi-Hole](https://docs.pi-hole.net/)
-* [Pydantic](https://pydantic-docs.helpmanual.io/)
-* [Traefik](https://docs.traefik.io/)
-* [Vapor](https://docs.vapor.codes/)
-* [ZeroNet](https://zeronet.io/docs/)
+* **Open Source** —
+  [AutoKeras](https://autokeras.com/),
+  [FastAPI](https://fastapi.tiangolo.com/),
+  [OpenFaaS](https://docs.openfaas.com/),
+  [Pi-Hole](https://docs.pi-hole.net/),
+  [Pydantic](https://pydantic-docs.helpmanual.io/),
+  [Traefik](https://docs.traefik.io/),
+  [Vapor](https://docs.vapor.codes/),
+  [ZeroNet](https://zeronet.io/docs/)
 
 ## License
 
