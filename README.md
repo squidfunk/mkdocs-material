@@ -75,8 +75,14 @@
   social profiles, Google Analytics and Disqus - all with a few lines of code.
 
 * **Truly international** — thanks to many contributors, Material for MkDocs 
-  includes translations for more than 40 languages and offers full native RTL (right-to-left) support for languages such as Arabic, Persian (Farsi) and
+  includes translations for more than 40 languages and offers full native RTL 
+  (right-to-left) support for languages such as Arabic, Persian (Farsi) and
   Hebrew.
+
+* **Accessible** — Material for MkDocs provides extensible keyboard navigation
+  and semantic markup including role attributes and landmarks. Furthermore, the
+  layout is entirely based on `rem` values, respecting the user's default font
+  size.
 
 * **Beyond GitHub Markdown** — integrates natively with Python Markdown
   Extensions, offering additional elements like callouts, tabbed content
