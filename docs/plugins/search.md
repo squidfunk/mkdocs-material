@@ -9,7 +9,7 @@ and is implemented using [lunr.js][2] which includes stemmers for the English
 language by default, while stemmers for other languages are included with 
 [lunr-languages][3], both of which are integrated with this theme.
 
-!!! tip "Add the [localsearch][4] plugin to support search from `file://`"
+!!! tip "Make search work offline"
 
     While search will not work for the `file://` protocol, as web workers and
     the use of `XMLHTTPRequest` are both blocked by modern browsers for security

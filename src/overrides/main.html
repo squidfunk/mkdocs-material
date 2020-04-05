@@ -55,5 +55,21 @@
 
 <!-- Announcement bar -->
 {% block announce %}
-  Material for MkDocs 5.0.0rc4
+  <style>
+    .md-announce a {
+      color: currentColor;
+    }
+    .md-announce a:hover {
+      color: #40bf79;
+    }
+    .md-announce strong {
+      display: inline-block;
+    }
+  </style>
+  <a href="https://ginseng.ai/blog/the-cognitive-complexity-of-css/">
+    Check out <strong>squidfunk</strong>'s latest blog post –
+    <strong>
+      The Cognitive Complexity of CSS
+    </strong>
+  </a>
 {% endblock %}
