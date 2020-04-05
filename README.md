@@ -57,7 +57,7 @@
 
 <p align="center">
   <em>
-    A demo is worth more than thousand words — check it out at
+    A demo is worth a thousand words — check it out at
     <a href="https://squidfunk.github.io/mkdocs-material/">
       squidfunk.github.io/mkdocs-material
     </a>!
