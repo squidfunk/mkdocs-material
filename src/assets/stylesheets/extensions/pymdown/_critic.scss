@@ -32,9 +32,13 @@
   ins.critic,
   .critic.comment {
     margin: 0 px2em(4px, 16px);
-    padding: px2em(1px, 16px) 0;
     border-radius: px2rem(2px);
     box-decoration-break: clone;
+  }
+
+  // Induce margin collapse
+  .critic.block {
+    overflow: auto;
   }
 
   // Deletion
