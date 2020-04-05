@@ -55,6 +55,13 @@
   </a>
 </p>
 
+<p>
+  <em>
+    A demo is worth more than thousand words — checout it out on 
+    [squidfunk.github.io/mkdocs-material][1]
+  </em>
+</p>
+
 ## Features
 
 * **It's just Markdown** — write your technical documentation in plain Markdown
