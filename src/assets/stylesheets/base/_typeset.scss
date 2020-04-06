@@ -163,14 +163,11 @@ kbd {
 
   // Inline code blocks
   code {
-    margin: 0 px2em(4px, 13.6px);
+    padding: 0 px2em(4px, 13.6px);
     font-size: px2em(13.6px);
     word-break: break-word;
     background-color: var(--md-code-bg-color);
     border-radius: px2rem(2px);
-    box-shadow:
-      px2em( 4px, 13.6px) 0 0 var(--md-code-bg-color),
-      px2em(-4px, 13.6px) 0 0 var(--md-code-bg-color);
     box-decoration-break: clone;
   }
 
@@ -258,13 +255,10 @@ kbd {
 
   // Text highlighting marker
   mark {
-    margin: 0 px2em(4px, 16px);
+    padding: 0 px2em(4px, 16px);
     word-break: break-word;
     background-color: transparentize($clr-yellow-500, 0.5);
     border-radius: px2rem(2px);
-    box-shadow:
-      px2em( 4px, 16px) 0 0 transparentize($clr-yellow-500, 0.5),
-      px2em(-4px, 16px) 0 0 transparentize($clr-yellow-500, 0.5);
     box-decoration-break: clone;
   }
 

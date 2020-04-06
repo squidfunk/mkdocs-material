@@ -31,7 +31,7 @@
   del.critic,
   ins.critic,
   .critic.comment {
-    margin: 0 px2em(4px, 16px);
+    padding: 0 px2em(4px, 16px);
     border-radius: px2rem(2px);
     box-decoration-break: clone;
   }
@@ -39,17 +39,11 @@
   // Deletion
   del.critic {
     background-color: $codehilite-diff-deleted;
-    box-shadow:
-      px2em( 4px, 16px) 0 0 $codehilite-diff-deleted,
-      px2em(-4px, 16px) 0 0 $codehilite-diff-deleted;
   }
 
   // Addition
   ins.critic {
     background-color: $codehilite-diff-inserted;
-    box-shadow:
-      px2em( 4px, 16px) 0 0 $codehilite-diff-inserted,
-      px2em(-4px, 16px) 0 0 $codehilite-diff-inserted;
   }
 
   // Comment
