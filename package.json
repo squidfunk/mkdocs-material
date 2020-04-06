@@ -48,7 +48,7 @@
     "babel-loader": "^8.1.0",
     "chalk": "^4.0.0",
     "clipboard": "^2.0.6",
-    "copy-webpack-plugin": "^5.0.5",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "css-mqpacker": "^7.0.0",
     "cssmin": "^0.4.3",
