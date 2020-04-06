@@ -140,8 +140,8 @@ nav:
     - Revision date: plugins/revision-date.md
     - Awesome pages: plugins/awesome-pages.md
   - Releases:
-    - Material for MkDocs 5: releases/5.md
-    - Material for MkDocs 4: releases/4.md
+    - Upgrading to 5.x: releases/5.md
+    - Upgrading to 4.x: releases/4.md
     - Changelog: releases/changelog.md
   - Customization: customization.md
   - Data privacy: data-privacy.md
