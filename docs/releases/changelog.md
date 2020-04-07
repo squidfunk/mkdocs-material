@@ -18,6 +18,23 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.0.0 <small>_ April 7, 2020</small>
+
+* Reactive architecture – try `app.dialog$.next("Hi!")` in the console
+* Instant loading – make Material behave like a Single Page Application
+* Improved CSS customization with CSS variables – set your brand's colors
+* Improved CSS resilience, e.g. proper sidebar locking for customized headers
+* Improved icon integration and configuration – now including over 5k icons
+* Added possibility to use any icon for logo, repository and social links
+* Search UI does not freeze anymore (moved to web worker)
+* Search index built only once when using instant loading
+* Improved extensible keyboard handling
+* Support for prebuilt search indexes
+* Support for displaying stars and forks for GitLab repositories
+* Support for scroll snapping of sidebars and search results
+* Reduced HTML and CSS footprint due to deprecation of Internet Explorer support
+* Slight facelifting of some UI elements (Admonitions, tables, ...)
+
 ### 4.6.3 <small>_ February 14, 2020</small>
 
 * Removed optional third-party plugins from `requirements.txt`
