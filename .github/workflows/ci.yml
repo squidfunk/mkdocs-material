@@ -142,8 +142,7 @@ jobs:
       # Build and test Docker image
       - run: |
           docker build -t ${GITHUB_REPOSITORY} .
-          docker run --rm -i -v $(pwd):/docs ${GITHUB_REPOSITORY} \
-            build --theme material
+          docker run --rm -i -v $(pwd):/docs ${GITHUB_REPOSITORY} build
 
       # Build Python package
       - run: python setup.py build sdist bdist_wheel --universal
