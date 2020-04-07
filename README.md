@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://squidfunk.github.io/mkdocs-material">
-    <img src=".github/assets/logo.png" width="320" alt="Material for MkDocs">
+    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.png" width="320" alt="Material for MkDocs">
   </a>
 </p>
 
@@ -51,7 +51,7 @@
 
 <p align="center">
   <a href="https://squidfunk.github.io/mkdocs-material/getting-started/">
-    <img src=".github/assets/screenshot.png" width=700 />
+    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/screenshot.png" width=700 />
   </a>
 </p>
 
