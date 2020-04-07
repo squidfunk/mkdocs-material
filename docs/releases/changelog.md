@@ -18,6 +18,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.0.1 <small>_ April 7, 2020</small>
+
+* Fixed syntax error in Spanish translation
+
 ### 5.0.0 <small>_ April 7, 2020</small>
 
 * Reactive architecture – try `app.dialog$.next("Hi!")` in the console

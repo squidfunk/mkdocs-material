@@ -1,3 +1,7 @@
+mkdocs-material-5.0.1 (2020-04-07)
+
+  * Fixed syntax error in Spanish translation
+
 mkdocs-material-5.0.0 (2020-04-07)
 
   * Reactive architecture – try app.dialog$.next("Hi!") in the console
