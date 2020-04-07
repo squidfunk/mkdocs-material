@@ -1,10 +1,9 @@
 ---
 name: Question
 about: The issue tracker is not for questions. Please ask your question on StackOverflow.
-title:
-labels:
-assignees:
-
+title: ''
+labels: ''
+assignees: ''
 ---
 
 __THE ISSUE TRACKER IS NOT FOR QUESTIONS.__  
