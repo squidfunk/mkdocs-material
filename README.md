@@ -32,7 +32,7 @@
       alt="Chat on Gitter"
     />
   </a>
-  <a href="https://gitter.im/squidfunk/mkdocs-material">
+  <a href="https://pypi.org/project/mkdocs-material">
     <img 
       src="https://img.shields.io/pypi/v/mkdocs-material.svg" 
       alt="Python Package Index"
