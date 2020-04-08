@@ -107,22 +107,6 @@ The theme will reside in the folder `mkdocs-material/material`.
 
   [8]: https://github.com/squidfunk/mkdocs-material
 
-### with choco
-
-> Windows only
-
-Material for MkDocs can be installed with [Chocolatey][9]:
-
-``` dos
-choco install mkdocs-material
-```
-
-As this is an [unofficial package][10] of Material for MkDocs, please understand
-that the maintainers cannot provide any support for when using this method.
-
-  [9]: https://chocolatey.org
-  [10]: https://chocolatey.org/packages/mkdocs-material
-
 ## Configuration
 
 Depending on your installation method, you can now add the following lines to
@@ -156,7 +140,7 @@ can be used as a starting point:
 
 ??? summary "Example configuration"
 
-    This is an excerpt from the [`mkdocs.yml`][11] used to render these pages:
+    This is an excerpt from the [`mkdocs.yml`][9] used to render these pages:
 
     ``` yaml
     # Project information
@@ -207,7 +191,7 @@ can be used as a starting point:
           permalink: true
     ```
 
-[11]: https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
+[9]: https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
 
 ### Feature flags
 
@@ -255,7 +239,7 @@ move all *top-level pages into a subsection*, so that the top-level is entirely
 made up of subsections. Note that tabs are only shown for larger screens, so
 make sure that navigation is plausible on mobile devices.
 
-As an example, see the [`mkdocs.yml`][11] used to render these pages.
+As an example, see the [`mkdocs.yml`][9] used to render these pages.
 
 ### Language
 
@@ -344,7 +328,7 @@ theme:
 
 ### Color palette
 
-The Material Design [color palette][12] comes with 20 hues, all of which are
+The Material Design [color palette][10] comes with 20 hues, all of which are
 included with Material for MkDocs. Primary and accent colors can be set from
 the project root's `mkdocs.yml`:
 
@@ -363,7 +347,7 @@ from the template.
 
     Material for MkDocs defines all colors as CSS variables. If you want to
     customize the colors beyond the palette (e.g. to use your brand's colors),
-    you can add an [additional stylesheet][13] and override the defaults:
+    you can add an [additional stylesheet][11] and override the defaults:
 
     ``` css
     :root {
@@ -397,8 +381,8 @@ from the template.
     }
     ```
 
-  [12]: http://www.materialui.co/colors
-  [13]: customization.md#additional-stylesheets
+  [10]: http://www.materialui.co/colors
+  [11]: customization.md#additional-stylesheets
 
 #### Primary color
 
@@ -507,10 +491,10 @@ Click on a color name to change the accent color of the theme:
 
 > Default: `Roboto` and `Roboto Mono`
 
-The [Roboto font family][14] is the default font included with the theme,
+The [Roboto font family][12] is the default font included with the theme,
 specifically the regular sans-serif type for text and the `monospaced` type for
-code. Both fonts are loaded from [Google Fonts][15] and can be changed to any
-valid webfont, like for example the [Ubuntu font family][16]:
+code. Both fonts are loaded from [Google Fonts][13] and can be changed to any
+valid webfont, like for example the [Ubuntu font family][14]:
 
 ``` yaml
 theme:
@@ -528,9 +512,9 @@ theme:
   font: false
 ```
 
-  [14]: https://fonts.google.com/specimen/Roboto
-  [15]: https://fonts.google.com
-  [16]: https://fonts.google.com/specimen/Ubuntu
+  [12]: https://fonts.google.com/specimen/Roboto
+  [13]: https://fonts.google.com
+  [14]: https://fonts.google.com/specimen/Ubuntu
 
 ### Icons
 
@@ -538,7 +522,7 @@ theme:
 
 Material for MkDocs uses icons in several places. Currently, the following icons
 can be changed from `mkdocs.yml`: the logo icon, the repository icon and the
-[social link icons][17]. While the social link icons are tied to the respective 
+[social link icons][15]. While the social link icons are tied to the respective
 entries, the other icons can be changed by referencing a valid path (without the 
 trailing `.svg`) relative to the `.icons` folder which comes with the theme:
 
@@ -552,14 +536,14 @@ theme:
 All icons are directly inlined as `*.svg` files, so no further requests will be
 made. Icon sets which are bundled with Material for MkDocs:
 
-* [Material Design icons][18]: 3.8k icons
-* [FontAwesome icons][19]: 1.5k icons
-* [GitHub octicons][20]: 200 icons
+* [Material Design icons][16]: 3.8k icons
+* [FontAwesome icons][17]: 1.5k icons
+* [GitHub octicons][18]: 200 icons
 
-  [17]: #adding-social-links
-  [18]: https://material.io/resources/icons/
-  [19]: https://fontawesome.com/icons?d=gallery&m=free
-  [20]: https://octicons.github.com/
+  [15]: #adding-social-links
+  [16]: https://material.io/resources/icons/
+  [17]: https://fontawesome.com/icons?d=gallery&m=free
+  [18]: https://octicons.github.com/
 
 ### Logo
 
@@ -611,16 +595,16 @@ Note that the repository icon can be explicitly set through `theme.icon.repo`.
     If the `repo_url` is set to a GitHub or BitBucket repository, and the
     `repo_name` is set to *GitHub* or *BitBucket* (implied by default), an
     edit button will appear at the top of every article. This is the automatic
-    behavior that MkDocs implements. See the [MkDocs documentation][21] on more
+    behavior that MkDocs implements. See the [MkDocs documentation][19] on more
     guidance regarding the `edit_uri` attribute, which defines whether the edit
     button is shown or not.
 
-  [21]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
+  [19]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
 
 ### Adding social links
 
 Social accounts can be linked in the footer of the documentation using the
-[icons][22] which are bundled with the theme. Note that each `icon` must point
+[icons][20] which are bundled with the theme. Note that each `icon` must point
 to a valid path (without the trailing `.svg`) relative to the `.icons` folder
 which comes with the theme:
 
@@ -635,11 +619,11 @@ extra:
       link: https://linkedin.com/in/squidfunk
 ```
 
-  [22]: #icons
+  [20]: #icons
 
 ### Adding a Web App Manifest
 
-A [Web App Manifest][23] is a simple JSON file that tells the browser about your
+A [Web App Manifest][21] is a simple JSON file that tells the browser about your
 web application and how it should behave when installed on the user's mobile
 device or desktop. You can specify such a manifest in `mkdocs.yml`:
 
@@ -648,7 +632,7 @@ extra:
   manifest: manifest.webmanifest
 ```
 
-  [23]: https://developers.google.com/web/fundamentals/web-app-manifest/
+  [21]: https://developers.google.com/web/fundamentals/web-app-manifest/
 
 ## Integrations
 
@@ -676,7 +660,7 @@ search tracking:
 
 ### Disqus
 
-Material for MkDocs is integrated with [Disqus][24], so if you want to add a
+Material for MkDocs is integrated with [Disqus][22], so if you want to add a
 comments section to your documentation set the *shortname* of your Disqus
 project in `mkdocs.yml`:
 
@@ -693,10 +677,10 @@ necessary JavaScript is automatically included.
     Note that `site_url` must be set in `mkdocs.yml` for the Disqus integration
     to load properly.
 
-Disqus can also be enabled or disabled for specific pages using [Metadata][25].
+Disqus can also be enabled or disabled for specific pages using [Metadata][23].
 
-  [24]: https://disqus.com
-  [25]: extensions/metadata.md#disqus
+  [22]: https://disqus.com
+  [23]: extensions/metadata.md#disqus
 
 ## Extensions
 
@@ -716,19 +700,19 @@ markdown_extensions:
 See the following list of extensions supported by Material for MkDocs including
 some more information on configuration and usage:
 
-* [Admonition][26]
-* [Codehilite][27]
-* [Footnotes][28]
-* [Metadata][29]
-* [Permalinks][30]
-* [PyMdown Extensions][31]
+* [Admonition][24]
+* [Codehilite][25]
+* [Footnotes][26]
+* [Metadata][27]
+* [Permalinks][28]
+* [PyMdown Extensions][29]
 
-  [26]: extensions/admonition.md
-  [27]: extensions/codehilite.md
-  [28]: extensions/footnotes.md
-  [29]: extensions/metadata.md
-  [30]: extensions/permalinks.md
-  [31]: extensions/pymdown.md
+  [24]: extensions/admonition.md
+  [25]: extensions/codehilite.md
+  [26]: extensions/footnotes.md
+  [27]: extensions/metadata.md
+  [28]: extensions/permalinks.md
+  [29]: extensions/pymdown.md
 
 ## Plugins
 
@@ -737,16 +721,16 @@ steps that sit between the theme and your documentation. For more information,
 see the following list of plugins tested and supported by Material for MkDocs 
 including more information regarding installation and usage:
 
-* [Search][32] (enabled by default)
-* [Minification][33]
-* [Revision date][34]
-* [Awesome pages][35]
+* [Search][30] (enabled by default)
+* [Minification][31]
+* [Revision date][32]
+* [Awesome pages][33]
 
 For further reference, the MkDocs wiki contains a list of all
-[available plugins][36].
+[available plugins][34].
 
-  [32]: plugins/search.md
-  [33]: plugins/minification.md
-  [34]: plugins/revision-date.md
-  [35]: plugins/awesome-pages.md
-  [36]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
+  [30]: plugins/search.md
+  [31]: plugins/minification.md
+  [32]: plugins/revision-date.md
+  [33]: plugins/awesome-pages.md
+  [34]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
