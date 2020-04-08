@@ -202,9 +202,9 @@ files containing the short names and emoji associated with each supported
 index.
 
 In addition, you can access all the Material icons and Fontawesome icons by using
-MkDocs Material's custom emoji index. It extends the Twemoji index with new short
-names that access any of the included icons. To use the custom index, you need to
-use the following options when including the Emoji extension:
+Material for MkDocs's custom emoji index. It extends the Twemoji index with new
+short names that access any of the included icons. To use the custom index, you
+need to use the following options when including the Emoji extension:
 
 ```
   - pymdownx.emoji:
