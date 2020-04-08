@@ -14,8 +14,6 @@ the [official Docker image][1].
 
 ### with pip <small>recommended</small>
 
-> All operating systems
-
 Material for MkDocs can be installed with `pip`:
 
 ``` sh
@@ -63,8 +61,6 @@ those packages separately.
 
 ### with docker <small>recommended</small>
 
-> All operating systems
-
 The official [Docker image][7] is a great way to get up and running in a few
 minutes, as it comes with all dependencies pre-installed. Pull the image for the 
 `latest` version with:
@@ -92,8 +88,6 @@ command. Start the development server in your project root – the folder where
   [7]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
 ### with git
-
-> All operating systems
 
 Material for MkDocs can be directly used from [GitHub][8] by cloning the
 repository into a subfolder of your project root which might be useful if you
