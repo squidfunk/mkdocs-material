@@ -201,6 +201,35 @@ To view all the available short names and emoji available, see
 files containing the short names and emoji associated with each supported
 index.
 
+In addition, you can access all the Material icons and Fontawesome icons by using
+MkDocs Material's custom emoji index. It extends the Twemoji index with new short
+names that access any of the included icons. To use the custom index, you need to
+use the following options when including the Emoji extension:
+
+```
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.emoji.material
+      emoji_generator: !!python/name:material.emoji.to_svg
+```
+
+Then we can access any of the icons:
+
+=== "Markdown"
+    ```
+    We can use Material Icons :material-airplane:.
+
+    We can also use Fontawesome Icons :fontawesome-solid-ambulance:.
+
+    That's not all, we can also use Octicons :octicons-octoface:.
+    ```
+
+=== "Results"
+    We can use Material Icons :material-airplane:.
+
+    We can also use Fontawesome Icons :fontawesome-solid-ambulance:.
+
+    That's not all, we can also use Octicons :octicons-octoface:.
+
 !!! warning "Legal disclaimer"
 
     Material has no affiliation with [JoyPixles][15] or [Twemoji][14], both
