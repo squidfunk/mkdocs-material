@@ -210,6 +210,7 @@
           box-shadow:
             inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
           scroll-snap-type: y mandatory;
+          touch-action: pan-y;
 
           // Remove border for first list item
           > .md-nav__item:first-child {

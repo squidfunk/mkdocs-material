@@ -204,7 +204,7 @@ kbd {
       word-break: normal;
       box-shadow: none;
       box-decoration-break: slice;
-      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {
@@ -393,7 +393,7 @@ kbd {
     box-shadow:
       0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
       0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
-    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
 
     // Due to margin collapse because of the necessary inline-block hack, we
     // cannot increase the bottom margin on the table, so we just increase the
@@ -456,7 +456,7 @@ kbd {
   &__scrollwrap {
     margin: 1em px2rem(-16px);
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
   }
 
   // Data table wrapper, in case JavaScript is available

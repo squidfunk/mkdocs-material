@@ -20,10 +20,10 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, pipe } from "rxjs"
+import { Observable, OperatorFunction, of, pipe } from "rxjs"
 import { map, switchMap } from "rxjs/operators"
 
-import { Viewport, getElements } from "browser"
+import { Viewport } from "browser"
 
 import { Header } from "../../header"
 import { Main } from "../../main"
@@ -32,11 +32,6 @@ import {
   applySidebar,
   watchSidebar
 } from "../../shared"
-import {
-  NavigationLayer,
-  applyNavigationLayer,
-  watchNavigationLayer
-} from "../layer"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -45,9 +40,7 @@ import {
 /**
  * Navigation for [screen -]
  */
-interface NavigationBelowScreen {
-  layer: NavigationLayer               /* Active layer */
-}
+interface NavigationBelowScreen {} // tslint:disable-line
 
 /**
  * Navigation for [screen +]
@@ -108,12 +101,7 @@ export function mountNavigation(
 
           /* [screen -]: Mount navigation in drawer */
           } else {
-            const els = getElements("nav", el)
-            return watchNavigationLayer(els)
-              .pipe(
-                applyNavigationLayer(els),
-                map(layer => ({ layer }))
-              )
+            return of({})
           }
         })
       )

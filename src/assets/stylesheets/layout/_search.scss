@@ -446,7 +446,7 @@ $md-toggle__search--checked:
     // Hack: reduce jitter
     backface-visibility: hidden;
     scroll-snap-type: y mandatory;
-    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
 
     // Mitigiate excessive repaints on non-retina devices
     @media (max-resolution: 1dppx) {

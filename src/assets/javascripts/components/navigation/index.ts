@@ -21,4 +21,3 @@
  */
 
 export * from "./_"
-export * from "./layer"

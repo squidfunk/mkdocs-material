@@ -109,7 +109,7 @@ $md-toggle__drawer--checked:
 
       // Ensure smooth scrolling on iOS
       .md-sidebar__scrollwrap {
-        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
       }
     }
 
