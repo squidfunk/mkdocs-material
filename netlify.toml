@@ -22,5 +22,5 @@
 publish = "site"
 command = """
 pip install mkdocs-minify-plugin
-mkdocs build
+python -m mkdocs build
 """
