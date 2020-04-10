@@ -18,6 +18,13 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.0.2 <small>_ April 10, 2020</small>
+
+* Added CSS source maps to distribution files
+* Fixed errors in Chinese (Traditional) translations
+* Fixed creation of stale directory on installation from git
+* Improved overflow scrolling behavior on iOS (reduced bundle size by `4kb`)
+
 ### 5.0.1 <small>_ April 7, 2020</small>
 
 * Fixed syntax error in Spanish translation

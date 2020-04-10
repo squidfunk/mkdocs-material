@@ -1,6 +1,13 @@
+mkdocs-material-5.0.2 (2020-04-10)
+
+  * Added CSS source maps to distribution files
+  * Fixed errors in Chinese (Traditional) translations
+  * Fixed creation of stale directory on installation from git
+  * Improved overflow scrolling behavior on iOS (reduced bundle size by 4kb)
+
 mkdocs-material-5.0.1 (2020-04-07)
 
-  * Fixed syntax error in Spanish translation
+  * Fixed syntax error in Spanish translations
 
 mkdocs-material-5.0.0 (2020-04-07)
 
