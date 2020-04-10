@@ -24,9 +24,6 @@
 // which must be tackled after we gathered some feedback on v5.
 // tslint:disable
 
-import "../stylesheets/main.scss"
-import "../stylesheets/palette.scss"
-
 import { values } from "ramda"
 import {
   merge,
