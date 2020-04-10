@@ -58,7 +58,7 @@ setup(
         "Topic :: Software Development :: Documentation",
         "Topic :: Text Processing :: Markup :: HTML"
     ],
-    packages = find_packages(),
+    packages = find_packages(exclude = ["src"]),
     include_package_data = True,
     install_requires = install_requires,
     entry_points = {
