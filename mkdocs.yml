@@ -139,8 +139,6 @@ nav:
     - Minification: plugins/minification.md
     - Revision date: plugins/revision-date.md
     - Awesome pages: plugins/awesome-pages.md
-  - Tutorials:
-    - Notice: tutorials/index.md
   - Releases:
     - Upgrading to 5.x: releases/5.md
     - Upgrading to 4.x: releases/4.md
