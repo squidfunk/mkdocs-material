@@ -141,6 +141,7 @@ nav:
     - Awesome pages: plugins/awesome-pages.md
   - Tutorials:
     - Notice: tutorials/index.md
+    - GitHub Pages: tutorials/github-pages.md
   - Releases:
     - Upgrading to 5.x: releases/5.md
     - Upgrading to 4.x: releases/4.md
