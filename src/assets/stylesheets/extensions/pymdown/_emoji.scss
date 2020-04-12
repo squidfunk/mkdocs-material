@@ -27,15 +27,24 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Correct alignment of emojis
-  .emojione,
-  .twemoji,
-  .gemoji {
+  // Emojis
+  img.emojione,
+  img.twemoji,
+  img.gemoji {
     width: px2em(18px);
     vertical-align: -15%;
   }
 
+  // Inlined SVG icons via mkdocs-material-extensions
   span.twemoji {
     display: inline-block;
+    height: px2em(18px);
+    vertical-align: text-top;
+
+    // Icon
+    svg {
+      width: px2em(18px);
+      fill: currentColor;
+    }
   }
 }

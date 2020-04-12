@@ -532,12 +532,16 @@ made. Icon sets which are bundled with Material for MkDocs:
 
 * [Material Design icons][16]: 3.8k icons
 * [FontAwesome icons][17]: 1.5k icons
-* [GitHub octicons][18]: 200 icons
+* [GitHub's Octicons][18]: 200 icons
+
+__You can also use icons [directly from :fontawesome-brands-markdown: 
+Markdown][19]!__
 
   [15]: #adding-social-links
   [16]: https://material.io/resources/icons/
   [17]: https://fontawesome.com/icons?d=gallery&m=free
   [18]: https://octicons.github.com/
+  [19]: extensions/pymdown.md#icons
 
 ### Logo
 
@@ -589,16 +593,16 @@ Note that the repository icon can be explicitly set through `theme.icon.repo`.
     If the `repo_url` is set to a GitHub or BitBucket repository, and the
     `repo_name` is set to *GitHub* or *BitBucket* (implied by default), an
     edit button will appear at the top of every article. This is the automatic
-    behavior that MkDocs implements. See the [MkDocs documentation][19] on more
+    behavior that MkDocs implements. See the [MkDocs documentation][20] on more
     guidance regarding the `edit_uri` attribute, which defines whether the edit
     button is shown or not.
 
-  [19]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
+  [20]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
 
 ### Adding social links
 
 Social accounts can be linked in the footer of the documentation using the
-[icons][20] which are bundled with the theme. Note that each `icon` must point
+[icons][21] which are bundled with the theme. Note that each `icon` must point
 to a valid path (without the trailing `.svg`) relative to the `.icons` folder
 which comes with the theme:
 
@@ -613,11 +617,11 @@ extra:
       link: https://linkedin.com/in/squidfunk
 ```
 
-  [20]: #icons
+  [21]: #icons
 
 ### Adding a Web App Manifest
 
-A [Web App Manifest][21] is a simple JSON file that tells the browser about your
+A [Web App Manifest][22] is a simple JSON file that tells the browser about your
 web application and how it should behave when installed on the user's mobile
 device or desktop. You can specify such a manifest in `mkdocs.yml`:
 
@@ -626,7 +630,7 @@ extra:
   manifest: manifest.webmanifest
 ```
 
-  [21]: https://developers.google.com/web/fundamentals/web-app-manifest/
+  [22]: https://developers.google.com/web/fundamentals/web-app-manifest/
 
 ## Integrations
 
@@ -654,7 +658,7 @@ search tracking:
 
 ### Disqus
 
-Material for MkDocs is integrated with [Disqus][22], so if you want to add a
+Material for MkDocs is integrated with [Disqus][23], so if you want to add a
 comments section to your documentation set the *shortname* of your Disqus
 project in `mkdocs.yml`:
 
@@ -671,10 +675,10 @@ necessary JavaScript is automatically included.
     Note that `site_url` must be set in `mkdocs.yml` for the Disqus integration
     to load properly.
 
-Disqus can also be enabled or disabled for specific pages using [Metadata][23].
+Disqus can also be enabled or disabled for specific pages using [Metadata][24].
 
-  [22]: https://disqus.com
-  [23]: extensions/metadata.md#disqus
+  [23]: https://disqus.com
+  [24]: extensions/metadata.md#disqus
 
 ## Extensions
 
@@ -694,19 +698,19 @@ markdown_extensions:
 See the following list of extensions supported by Material for MkDocs including
 some more information on configuration and usage:
 
-* [Admonition][24]
-* [Codehilite][25]
-* [Footnotes][26]
-* [Metadata][27]
-* [Permalinks][28]
-* [PyMdown Extensions][29]
+* [Admonition][25]
+* [Codehilite][26]
+* [Footnotes][27]
+* [Metadata][28]
+* [Permalinks][29]
+* [PyMdown Extensions][30]
 
-  [24]: extensions/admonition.md
-  [25]: extensions/codehilite.md
-  [26]: extensions/footnotes.md
-  [27]: extensions/metadata.md
-  [28]: extensions/permalinks.md
-  [29]: extensions/pymdown.md
+  [25]: extensions/admonition.md
+  [26]: extensions/codehilite.md
+  [27]: extensions/footnotes.md
+  [28]: extensions/metadata.md
+  [29]: extensions/permalinks.md
+  [30]: extensions/pymdown.md
 
 ## Plugins
 
@@ -715,16 +719,16 @@ steps that sit between the theme and your documentation. For more information,
 see the following list of plugins tested and supported by Material for MkDocs 
 including more information regarding installation and usage:
 
-* [Search][30] (enabled by default)
-* [Minification][31]
-* [Revision date][32]
-* [Awesome pages][33]
+* [Search][31] (enabled by default)
+* [Minification][32]
+* [Revision date][33]
+* [Awesome pages][34]
 
 For further reference, the MkDocs wiki contains a list of all
-[available plugins][34].
+[available plugins][35].
 
-  [30]: plugins/search.md
-  [31]: plugins/minification.md
-  [32]: plugins/revision-date.md
-  [33]: plugins/awesome-pages.md
-  [34]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
+  [31]: plugins/search.md
+  [32]: plugins/minification.md
+  [33]: plugins/revision-date.md
+  [34]: plugins/awesome-pages.md
+  [35]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins

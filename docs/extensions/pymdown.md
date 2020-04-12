@@ -24,8 +24,8 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:pymdownx.emoji.twemoji
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
@@ -208,61 +208,94 @@ index.
     from either provider, please read their licenses to ensure proper
     attribution: [EmojiOne][17] or [Twemoji][14].
 
+### Icons :hatching_chick:
+
+In addition, you can embed the Material Design icons, Fontawesome icons and
+GitHub's Octicons directly from Markdown by using [Material for MkDocs's custom
+emoji index][19]. It extends the Twemoji index with new short names that access
+any of the included icons. To use the custom index, you need to use
+`materialx.emoji` instead of `pymdownx.emoji`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.material
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+```
+
+Example:
+
+``` markdown
+* :material-account-circle: – we can use Material Design icons
+* :fontawesome-regular-laugh-wink: – we can also use FontAwesome icons
+* :octicons-octoface: – that's not all, we can also use GitHub's Octicons
+```
+
+Result:
+
+* :material-account-circle: – we can use [Material Design icons][20]
+* :fontawesome-regular-laugh-wink: – we can also use [FontAwesome icons][21]
+* :octicons-octoface: – that's not all, we can also use [GitHub's Octicons][22]
+
   [13]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
   [14]: https://twemoji.twitter.com/
   [15]: https://www.joypixels.com/
   [16]: https://creativecommons.org/licenses/by/4.0/legalcode
   [17]: https://github.com/joypixels/emojione#emojione-version-2
   [18]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/#default-emoji-indexes
+  [19]: https://github.com/facelessuser/mkdocs-material-extensions
+  [20]: https://material.io/resources/icons/
+  [21]: https://fontawesome.com/icons?d=gallery&m=free
+  [22]: https://octicons.github.com/
 
 ### InlineHilite
 
-[InlineHilite][19] adds support for inline code highlighting. It's useful for
+[InlineHilite][23] adds support for inline code highlighting. It's useful for
 short snippets included within body copy, e.g. `#!js var test = 0;` and can be
 activated by prefixing inline code with a shebang and language identifier,
 e.g. `#!js`.
 
-  [19]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
+  [23]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
 
 ### MagicLink
 
-[MagicLink][20] detects links in Markdown and auto-generates the necessary
+[MagicLink][24] detects links in Markdown and auto-generates the necessary
 markup, so no special syntax is required. It auto-links `http[s]://` and
 `ftp://` links, as well as references to email addresses.
 
-  [20]: https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
+  [24]: https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
 
 ### Mark
 
-[Mark][21] adds the ability to ==highlight text== like it was marked with a
+[Mark][25] adds the ability to ==highlight text== like it was marked with a
 ==text marker==. The portion of text that should be highlighted must be
 enclosed in two equal signs `==...==`.
 
-  [21]: https://facelessuser.github.io/pymdown-extensions/extensions/mark/
+  [25]: https://facelessuser.github.io/pymdown-extensions/extensions/mark/
 
 ### SmartSymbols
 
-[SmartSymbols][22] converts markup for special characters into their
+[SmartSymbols][26] converts markup for special characters into their
 corresponding symbols, e.g. arrows (<--, -->, <-->), trademark and copyright
 symbols ((c), (tm), (r)) and fractions (1/2, 1/4, ...).
 
-  [22]: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
+  [26]: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
 
 ### SuperFences
 
-[SuperFences][23] provides the ability to nest code blocks under blockquotes,
-lists and other block elements, which the [Fenced Code Blocks][24] extension
+[SuperFences][27] provides the ability to nest code blocks under blockquotes,
+lists and other block elements, which the [Fenced Code Blocks][28] extension
 from the standard Markdown library doesn't parse correctly.
 
-SuperFences does also allow [grouping code blocks with tabs][25].
+SuperFences does also allow [grouping code blocks with tabs][29].
 
-  [23]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
-  [24]: https://python-markdown.github.io/extensions/fenced_code_blocks/
-  [25]: codehilite.md#grouping-code-blocks
+  [27]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+  [28]: https://python-markdown.github.io/extensions/fenced_code_blocks/
+  [29]: codehilite.md#grouping-code-blocks
 
 ### Tabbed
 
-[Tabbed][26] adds support for creating tabbed groups of Markdown content.
+[Tabbed][30] adds support for creating tabbed groups of Markdown content.
 
 Example:
 
@@ -294,11 +327,11 @@ Result:
     :banana: Banana | Yellow
     :kiwi:   Kiwi   | Green
 
-[26]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+[30]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 ### Tasklist
 
-[Tasklist][27] adds support for styled checkbox lists. This is useful for
+[Tasklist][31] adds support for styled checkbox lists. This is useful for
 keeping track of tasks and showing what has been done and has yet to be done.
 Checkbox lists are like regular lists, but prefixed with `[ ]` for empty or
 `[x]` for filled checkboxes.
@@ -331,12 +364,12 @@ Result:
 * [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
 * [ ] Nulla vel eros venenatis, imperdiet enim id, faucibus nisi
 
-[27]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
+[31]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
 
 ### Tilde
 
-[Tilde][28] provides an easy way to ~~strike through~~ cross out text.
+[Tilde][32] provides an easy way to ~~strike through~~ cross out text.
 The portion of text that should be erased must be enclosed in two tildes
 `~~...~~` and the extension will take care of the rest.
 
-[28]: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
+[32]: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
