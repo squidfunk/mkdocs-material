@@ -1,3 +1,7 @@
+mkdocs-material-5.1.0 (2020-04-12)
+
+  * Added support for icons from Markdown through mkdocs-material-extensions
+
 mkdocs-material-5.0.2 (2020-04-10)
 
   * Added CSS source maps to distribution files

@@ -534,7 +534,7 @@ made. Icon sets which are bundled with Material for MkDocs:
 * [FontAwesome icons][17]: 1.5k icons
 * [GitHub's Octicons][18]: 200 icons
 
-__You can also use icons [directly from :fontawesome-brands-markdown: 
+__You can use all those icons [directly from :fontawesome-brands-markdown:
 Markdown][19]!__
 
   [15]: #adding-social-links

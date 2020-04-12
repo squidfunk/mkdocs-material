@@ -18,6 +18,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.1.0 <small>_ April 12, 2020</small>
+
+* Added support for icons from Markdown through [mkdocs-material-extensions][1]
+
+  [1]: https://github.com/facelessuer/mkdocs-material-extensions
+
 ### 5.0.2 <small>_ April 10, 2020</small>
 
 * Added CSS source maps to distribution files
@@ -66,10 +72,10 @@ pip show mkdocs-material
 
 ### 4.6.0 <small>_ December 11, 2019</small>
 
-* Added support for [mkdocs-git-revision-date-localized-plugin][3]
+* Added support for [mkdocs-git-revision-date-localized-plugin][2]
 * Fixed invalid character in Google Fonts URL
 
-  [3]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+  [2]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
 
 ### 4.5.1 <small>_ December 2, 2019</small>
 
