@@ -47,7 +47,7 @@
     "@types/escape-html": "0.0.20",
     "@types/event-hooks-webpack-plugin": "^2.0.0",
     "@types/html-minifier": "^3.5.3",
-    "@types/lunr": "^2.3.2",
+    "@types/lunr": "^2.3.3",
     "@types/mini-css-extract-plugin": "^0.9.1",
     "@types/node": "^13.9.1",
     "@types/ramda": "^0.26.44",
