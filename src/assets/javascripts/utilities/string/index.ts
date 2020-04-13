@@ -115,7 +115,7 @@ export function truncate(value: string, n: number): string {
 export function round(value: number): string {
   if (value > 999) {
     const digits = +((value - 950) % 1000 > 99)
-    return `${((value + 1) / 1000).toFixed(digits)}k`
+    return `${((value + 0.000001) / 1000).toFixed(digits)}k`
   } else {
     return value.toString()
   }
