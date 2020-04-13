@@ -54,7 +54,7 @@
     "@types/resize-observer-browser": "^0.1.3",
     "@types/webpack": "^4.41.7",
     "@types/webpack-assets-manifest": "^3.0.0",
-    "autoprefixer": "^9.7.5",
+    "autoprefixer": "^9.7.6",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "css-mqpacker": "^7.0.0",
