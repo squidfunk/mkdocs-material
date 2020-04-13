@@ -14,33 +14,25 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/squidfunk/mkdocs-material/actions">
-    <img
-      src="https://github.com/squidfunk/mkdocs-material/workflows/ci/badge.svg?branch=master"
-      alt="GitHub Action"
-    />
-  </a>
-  <a href="https://pypistats.org/packages/mkdocs-material">
-    <img
-      src="https://img.shields.io/pypi/dm/mkdocs-material.svg" 
-      alt="Downloads"
-    />
-  </a>
-  <a href="https://gitter.im/squidfunk/mkdocs-material">
-    <img 
-      src="https://badges.gitter.im/squidfunk/mkdocs-material.svg" 
-      alt="Chat on Gitter"
-    />
-  </a>
-  <a href="https://pypi.org/project/mkdocs-material">
-    <img 
-      src="https://img.shields.io/pypi/v/mkdocs-material.svg" 
-      alt="Python Package Index"
-    />
-  </a>
-  <a href="https://amzn.to/353WRpj">
-    <img src="https://img.shields.io/static/v1?label=amazon&message=wish%20list&color=orange" />
-  </a>
+  <a href="https://github.com/squidfunk/mkdocs-material/actions"><img
+    src="https://github.com/squidfunk/mkdocs-material/workflows/ci/badge.svg?branch=master"
+    alt="GitHub Action"
+  /></a>
+  <a href="https://pypistats.org/packages/mkdocs-material"><img
+    src="https://img.shields.io/pypi/dm/mkdocs-material.svg" 
+    alt="Downloads"
+  /></a>
+  <a href="https://gitter.im/squidfunk/mkdocs-material"><img 
+    src="https://badges.gitter.im/squidfunk/mkdocs-material.svg" 
+    alt="Chat on Gitter"
+  /></a>
+  <a href="https://pypi.org/project/mkdocs-material"><img 
+    src="https://img.shields.io/pypi/v/mkdocs-material.svg" 
+    alt="Python Package Index"
+  /></a>
+  <a href="https://amzn.to/353WRpj"><img 
+    src="https://img.shields.io/static/v1?label=amazon&message=wish%20list&color=orange"
+  /></a>
 </p>
 
 <p align="center">
