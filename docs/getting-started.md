@@ -128,7 +128,7 @@ following command:
 mkdocs serve
 ```
 
-Point your browser to http://localhost:8000 and your documentation should great
+Point your browser to http://localhost:8000 and your documentation should greet
 you in a new look. If you're starting from scratch, the following configuration
 can be used as a starting point:
 
