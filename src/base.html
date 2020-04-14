@@ -119,19 +119,15 @@
       <!-- Load fonts from Google -->
       {% if font != false %}
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-        <script type="text/javascript">
-          WebFontConfig = {
-            google: { families: [ '{{ font.text }}:300,400,400i,700|{{ font.code }}' ] }
-          };
-          (function() {
-            var wf = document.createElement('script');
-            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-          })();
-        </script>
+        <link
+          rel="preload"
+          as="style"
+          onload="this.rel = 'stylesheet'"
+          href="https://fonts.googleapis.com/css?family={{
+            font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
+            font.code | replace(' ', '+')
+          }}&display=fallback"
+        />
         <style>
           body, input {
             font-family: "{{ font.text }}",
