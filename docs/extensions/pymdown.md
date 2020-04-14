@@ -219,7 +219,7 @@ any of the included icons. To use the custom index, you need to use
 ``` yaml
 markdown_extensions:
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.material
+      emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
 ```
 
