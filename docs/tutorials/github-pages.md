@@ -48,11 +48,12 @@ jobs:
 ```
 
 !!! info "Notes"
+    - **Your repository needs a `requirements.txt` file containing the dependencies for building the docs.**  
+    You can just provide `mkdocs-material>=5.0.0` and all other dependencies (MkDocs, PyMdown, ...) will be downloaded too.
     - Replace `username` and `repo` with the respective username and name of the repository the GitHub Pages is used in.
     - `push` can be switched out with any other valid action supported by GitHub Actions.
     - It's recommended to use the `paths` setting (only available for push) with `docs/**` and `**.yml` set.  
     This will make the Action only run when you push changes to files inside the `docs/` direcotory or towards any yaml file (i.e. mkdocs.yml)
-    - You need to have a file called `requirements.txt` in the root directory of your repository, which should contain the required version of mkdocs-material (i.e. `mkdocs-material>=5.0.0`)
     - `${{ secrets.GH_USER }}` and `${{ secrets.GH_EMAIL }}` can either be an actual secret containing your username and E-Mail (recommended) or you can just switch them with your Username and E-Mail.
     - `${{ secrets.GH_TOKEN }}` has to be a secret containing the aforementioned Access token.
 
@@ -60,7 +61,7 @@ The above action would now install Python, upgrade setuptools, download all list
 
 ## Using `mkdocs gh-deploy`
 If you want to directly push changes from your Desktop PC towards GitHub Pages can you use the `gh-deploy` command from MkDocs.  
-This command needs to executed in the same location where the mkdocs.yml is found and a GitHub repository has to be linked using the `repo_url` option in the mkdocs.yml file.
+This command needs to be executed in the same location where the mkdocs.yml is found and a GitHub repository has to be linked using the `repo_url` option in the mkdocs.yml file.
 
 !!! info "Switching branches"
     By default does MkDocs push the site to the gh-pages branch of your repository.  
