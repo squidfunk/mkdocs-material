@@ -22,7 +22,7 @@ pip show mkdocs-material
 
 * Added support for icons from Markdown through [mkdocs-material-extensions][1]
 
-  [1]: https://github.com/facelessuer/mkdocs-material-extensions
+  [1]: https://github.com/facelessuser/mkdocs-material-extensions
 
 ### 5.0.2 <small>_ April 10, 2020</small>
 
