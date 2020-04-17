@@ -21,7 +21,6 @@
  */
 
 import { SourceFacts } from "patches/source"
-import { h } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Data

@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { h, translate } from "utilities"
+import { translate } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Data

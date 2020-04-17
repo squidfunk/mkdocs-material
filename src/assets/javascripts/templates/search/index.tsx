@@ -21,7 +21,7 @@
  */
 
 import { SearchResult } from "integrations/search"
-import { h, truncate } from "utilities"
+import { truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Data
