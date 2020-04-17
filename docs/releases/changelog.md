@@ -18,6 +18,13 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.1.1 <small>_ April 17, 2020</small>
+
+* Added new FontAwesome icons
+* Fixed #1609: Instant loading doesn't honor `target=_blank`
+* Fixed GitHub stars count rounding errors
+* Fixed GitLab stars count retrieval
+
 ### 5.1.0 <small>_ April 12, 2020</small>
 
 * Added support for icons from Markdown through [mkdocs-material-extensions][1]
