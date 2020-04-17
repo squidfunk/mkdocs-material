@@ -333,7 +333,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
         splitChunks: {
           cacheGroups: {
             vendor: {
-              test: /\/node_modules\//,
+              test: /[\\/]node_modules[\\/]/,
               name: "assets/javascripts/vendor",
               chunks: "all"
             }
