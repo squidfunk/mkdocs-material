@@ -23,6 +23,7 @@ on:
   - push
   - pull_request
 
+# Environment
 env:
   CI: true
   NODE_VERSION: 10.x
