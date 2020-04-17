@@ -23,6 +23,11 @@ on:
   - push
   - pull_request
 
+env:
+  CI: true
+  NODE_VERSION: 10.x
+  PYTHON_VERSION: 3.x
+
 # Jobs to run
 jobs:
 
@@ -37,13 +42,13 @@ jobs:
       # Install Node runtime and dependencies
       - uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: ${{ env.NODE_VERSION }}
 
       - uses: actions/cache@v1
         id: cache-node
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
 
       - if: steps.cache-node.outputs.cache-hit != 'true'
         run: npm install
@@ -69,13 +74,13 @@ jobs:
       # Install Python runtime and dependencies
       - uses: actions/setup-python@v1
         with:
-          python-version: 3.x
+          python-version: ${{ env.PYTHON_VERSION }}
 
       # - uses: actions/cache@v1
       #   id: cache-python
       #   with:
       #     path: ~/.cache/pip
-      #     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+      #     key: ${{ runner.os }}-pip-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/requirements.txt') }}
 
       # - if: steps.cache-python.outputs.cache-hit != 'true'
       - run: pip install -r requirements.txt
@@ -118,13 +123,13 @@ jobs:
       # Install Node runtime and dependencies
       - uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: ${{ env.NODE_VERSION }}
 
       - uses: actions/cache@v1
         id: cache-node
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
 
       - if: steps.cache-node.outputs.cache-hit != 'true'
         run: npm install
@@ -135,7 +140,7 @@ jobs:
       # Install Python runtime and dependencies
       - uses: actions/setup-python@v1
         with:
-          python-version: 3.x
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - run: pip install --upgrade setuptools wheel twine
 
