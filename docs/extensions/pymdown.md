@@ -186,7 +186,7 @@ By default, [Emoji][13] uses JoyPixles' emoji under the former name EmojiOne.
 Recent versions of the extension lock support to an older version (2.2.7) due
 to JoyPixels' newer, less permissible licenses included in later releases. This
 restricts support to Unicode 9. To get the latest support for the current
-Unicode version, you can use Twemoji instead which has a much more permissable
+Unicode version, you can use Twemoji instead which has a much more permissible
 license. Simply override the default emoji index being used:
 
 ``` yaml
