@@ -125,7 +125,7 @@ export function setupInstantLoading(
       switchMap(ev => {
         if (ev.target instanceof HTMLElement) {
           const el = ev.target.closest("a")
-          if (el && isLocalLocation(el)) {
+          if (el && !el.target && isLocalLocation(el)) {
             if (!isAnchorLocation(el))
               ev.preventDefault()
             return of(el)
