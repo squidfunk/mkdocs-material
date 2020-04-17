@@ -27,8 +27,8 @@
     "build": "npm run clean && npx webpack --mode production",
     "clean": "npx rimraf material",
     "lint": "npm run lint:ts && npm run lint:scss",
-    "lint:scss": "npx stylelint `find src/assets -name *.scss`",
-    "lint:ts": "npx tslint -p tsconfig.json 'src/**/*.ts'",
+    "lint:scss": "npx stylelint \"src/assets/**/*.scss\"",
+    "lint:ts": "npx tslint -p tsconfig.json \"src/**/*.ts\"",
     "start": "npx webpack --mode development --watch"
   },
   "dependencies": {
