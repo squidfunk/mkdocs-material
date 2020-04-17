@@ -597,7 +597,7 @@ pip show mkdocs-material
 
 ### 1.5.1 <small>_ March 30, 2017</small>
 
-* Fixed rendering and offset of targetted footnotes
+* Fixed rendering and offset of targeted footnotes
 * Fixed #238: Link on logo is not set to `site_url`
 
 ### 1.5.0 <small>_ March 24, 2017</small>

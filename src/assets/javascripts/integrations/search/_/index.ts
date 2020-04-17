@@ -177,7 +177,7 @@ export class Search {
    * contain the whole content of the individual pages, and sections, which only
    * contain the contents of the subsections obtained by breaking the individual
    * pages up at `h1` ... `h6`. As there may be many sections on different pages
-   * with indentical titles (for example within this very project, e.g. "Usage"
+   * with identical titles (for example within this very project, e.g. "Usage"
    * or "Installation"), they need to be put into the context of the containing
    * page. For this reason, section results are grouped within their respective
    * articles which are the top-level results that are returned.

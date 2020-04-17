@@ -79,7 +79,7 @@ The following language codes are supported:
   <li><code>it</code> / Italian</li>
   <li><code>ja</code> / Japanese</li>
   <li><code>no</code> / Norwegian</li>
-  <li><code>pt</code> / Portugese</li>
+  <li><code>pt</code> / Portuguese</li>
   <li><code>ro</code> / Romanian</li>
   <li><code>ru</code> / Russian</li>
   <li><code>es</code> / Spanish</li>

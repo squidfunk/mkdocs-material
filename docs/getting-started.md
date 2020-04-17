@@ -291,7 +291,7 @@ The following language codes are supported:
   <li><code>nn</code> / Norwegian (Nynorsk)</li>
   <li><code>fa</code> / Persian</li>
   <li><code>pl</code> / Polish</li>
-  <li><code>pt</code> / Portugese</li>
+  <li><code>pt</code> / Portuguese</li>
   <li><code>ro</code> / Romanian</li>
   <li><code>ru</code> / Russian</li>
   <li><code>sr</code> / Serbian</li>
