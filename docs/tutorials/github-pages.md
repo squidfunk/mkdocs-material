@@ -2,17 +2,17 @@ You can publish your documentation to GitHub Pages in various ways.
 Some of those are listed below.
 
 ## Using GitHub Actions
-This is the recommendet way to do it.  
+This is the recommended way to do it.  
 You can setup and use GitHub Actions in your repository to auto-publish your docs once you commit to a specific branch, merge pull requests, or whatever action you want to perform.
 
 !!! warning "Important"
-    You need to create a Access Token with "repo" scope for the GitHub Action to work.  
+    You need to create an Access Token with "repo" scope for the GitHub Action to work.  
     The GitHub Token that is created with Actions may work, but has some minor issues in combination with the gh-pages branch.
 
-To beginn will you need to create a new yaml file in the `.github/workflows` directory. If no such directory exists, will you need to create one.  
-Alternatively can you also head over to the *Actions* tab of your repository (when enabled) and create a new workflow from there.
+To begin will you need to create a new yaml file in the `.github/workflows` directory. If no such directory exists, you will need to create one.  
+Alternatively you can also head over to the *Actions* tab of your repository (when enabled) and create a new workflow from there.
 
-Next will you need to fill the newly created file with the following content:  
+Next you will need to fill the newly created file with the following content:  
 ```yaml
 name: Deploy MkDocs files
 
@@ -68,10 +68,10 @@ This command needs to be executed in the same location where the mkdocs.yml is f
     To change this can you define a different branch that the built site should be pushed against, by adding a `remote_branch` option to your mkdocs.yml and give it any name you like.
 
 ## Pushing manually
-If you want to push the built site yourself for reasons like having the GitHub Pages setup differently (not on gh-pages branch) can you do this using the `mkdocs build` command.  
+If you want to push the built site yourself for reasons like having the GitHub Pages setup differently (not on gh-pages branch) you can do this using the `mkdocs build` command.
 This command needs to be executed in the same location where the mkdocs.yml can be found.
 
-Running this command will built the site in the `site` directory.  
+Running this command will build the site in the `site` directory.  
 If you want a different folder to be used, set the `site_dir` setting in the mkdocs.yml.
 
-After the site was built, can you push these pages to your GitHub repository.
+After the site is built, you can push these pages to your GitHub repository.
