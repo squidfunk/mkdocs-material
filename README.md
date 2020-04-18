@@ -116,12 +116,12 @@ For other installation methods, configuration options, and a demo, visit
 ## Users
 
 * **Companies** — 
-  [Amazon Web Services](https://awssecworkshops.com/),
-  [ING Bank](https://ing-bank.github.io/baker/),
+  [AWS](https://awssecworkshops.com/),
+  [ING](https://ing-bank.github.io/baker/),
+  [Lyft](https://lyft.github.io/amundsen/),
   [Netflix](https://netflix.github.io/titus/),
   [Uber](https://uber.github.io/ludwig/getting_started/),
   [SAP](https://sap.github.io/ui5-tooling/),
-  [Sipgate](https://developer.sipgate.io/),
   [Spotify](https://spotify.github.io/mkdocs-monorepo-plugin/),
   [Square](https://square.github.io/okhttp/),
   [Zalando](https://opensource.zalando.com/skipper/)
