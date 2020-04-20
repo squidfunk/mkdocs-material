@@ -52,7 +52,7 @@
     "@types/node": "^13.11.1",
     "@types/ramda": "^0.26.44",
     "@types/resize-observer-browser": "^0.1.3",
-    "@types/webpack": "^4.41.11",
+    "@types/webpack": "^4.41.12",
     "@types/webpack-assets-manifest": "^3.0.0",
     "autoprefixer": "^9.7.6",
     "copy-webpack-plugin": "^5.1.1",
