@@ -396,9 +396,6 @@ Click on a color name to change the primary color of the theme:
     display: block;
     color: var(--md-primary-bg-color);
     background-color: var(--md-primary-fg-color);
-    box-shadow:
-       0.2941176471em 0 0 var(--md-primary-fg-color), 
-      -0.2941176471em 0 0 var(--md-primary-fg-color);
   }
 </style>
 
