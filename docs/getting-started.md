@@ -320,6 +320,40 @@ theme:
   direction: rtl
 ```
 
+### Color scheme
+
+> Default: `light`
+
+Click on a color name to change the primary color of the theme:
+
+<style>
+  .md-typeset button[data-md-color-scheme] {
+    cursor: pointer;
+    transition: opacity 250ms;
+  }
+  .md-typeset button[data-md-color-scheme]:hover {
+    opacity: 0.75;
+  }
+  .md-typeset button[data-md-color-scheme] > code {
+    display: block;
+    color: var(--md-primary-bg-color);
+    background-color: var(--md-primary-fg-color);
+  }
+</style>
+
+<button data-md-color-scheme="light"><code>light</code></button>
+<button data-md-color-scheme="dark"><code>dark</code></button>
+
+<script>
+  var buttons = document.querySelectorAll("button[data-md-color-scheme]")
+  buttons.forEach(function(button) {
+    var attr = "data-md-color-scheme"
+    button.addEventListener("click", function() {
+      document.body.setAttribute(attr, this.getAttribute(attr))
+    })
+  })
+</script>
+
 ### Color palette
 
 The Material Design [color palette][10] comes with 20 hues, all of which are

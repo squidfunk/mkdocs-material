@@ -30,7 +30,7 @@
   // Default color shades
   --md-default-fg-color:               hsla(0, 0%, 0%, 0.87);
   --md-default-fg-color--light:        hsla(0, 0%, 0%, 0.54);
-  --md-default-fg-color--lighter:      hsla(0, 0%, 0%, 0.26);
+  --md-default-fg-color--lighter:      hsla(0, 0%, 0%, 0.32);
   --md-default-fg-color--lightest:     hsla(0, 0%, 0%, 0.07);
   --md-default-bg-color:               hsla(0, 0%, 100%, 1);
   --md-default-bg-color--light:        hsla(0, 0%, 100%, 0.7);
@@ -49,36 +49,40 @@
   --md-accent-fg-color--transparent:   hsla(#{hex2hsl($clr-indigo-a200)}, 0.1);
   --md-accent-bg-color:                hsla(0, 0%, 100%, 1);
   --md-accent-bg-color--light:         hsla(0, 0%, 100%, 0.7);
+}
+
+// ----------------------------------------------------------------------------
+
+// Light mode
+body {
 
   // Code block color shades
   --md-code-bg-color:                  hsla(0, 0%, 96%, 1);
   --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
 
-  // // Drop shadow
-  // --md-drop-shadow:
-  //   0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
-  //   0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+  // Text color shades
+  --md-text-color:                     var(--md-default-fg-color);
+  --md-text-link-color:                var(--md-primary-fg-color);
 }
 
-// // :root [data-md-color-scheme="dark"] {
-// :root {
+// Dark mode
+body[data-md-color-scheme="dark"] {
 
-//   // Default color shades
-//   --md-default-fg-color:               hsla(0, 0%, 100%, 1);
-//   --md-default-fg-color--light:        hsla(0, 0%, 100%, 0.7);
-//   --md-default-fg-color--lighter:      hsla(0, 0%, 100%, 0.3);
-//   --md-default-fg-color--lightest:     hsla(0, 0%, 100%, 0.12);
-//   --md-default-bg-color:               hsla(232, 15%, 21%, 1);
-//   // --md-default-bg-color--light:        hsla(0, 0%, 0%, 0.54);
-//   // --md-default-bg-color--lighter:      hsla(0, 0%, 0%, 0.26);
-//   // --md-default-bg-color--lightest:     hsla(0, 0%, 0%, 0.07);
+  // Default color shades
+  --md-default-fg-color:               hsla(0, 0%, 100%, 1);
+  --md-default-fg-color--light:        hsla(0, 0%, 100%, 0.87);
+  --md-default-fg-color--lighter:      hsla(0, 0%, 100%, 0.32);
+  --md-default-fg-color--lightest:     hsla(0, 0%, 100%, 0.12);
+  --md-default-bg-color:               hsla(232, 15%, 21%, 1);
+  --md-default-bg-color--light:        hsla(232, 15%, 21%, 0.54);
+  --md-default-bg-color--lighter:      hsla(232, 15%, 21%, 0.26);
+  --md-default-bg-color--lightest:     hsla(232, 15%, 21%, 0.07);
 
-//   // Code block color shades
-//   --md-code-bg-color:                  hsla(232, 15%, 18%, 1);
-//   --md-code-fg-color:                  hsla(60, 30%, 96%, 1);
+  // Code block color shades
+  --md-code-bg-color:                  hsla(232, 15%, 18%, 1);
+  --md-code-fg-color:                  hsla(60, 30%, 96%, 1);
 
-//   // Drop shadow
-//   --md-drop-shadow:
-//     0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.2),
-//     0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.4);
-// }
+  // Text color shades
+  --md-text-color:                     var(--md-default-fg-color--light);
+  --md-text-link-color:                var(--md-primary-fg-color--light);
+}

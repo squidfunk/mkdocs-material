@@ -41,9 +41,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.53de219a.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.4ccb1e2d.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.14da9d3a.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.7dafc863.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -78,10 +78,11 @@
     {% block extrahead %}{% endblock %}
   </head>
   {% set direction = config.theme.direction or lang.t('direction') %}
-  {% if palette.primary or palette.accent %}
+  {% if palette.scheme or palette.primary or palette.accent %}
+    {% set scheme  = palette.scheme | lower %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
     {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-    <body dir="{{ direction }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
+    <body dir="{{ direction }}" data-md-color-scheme="{{ scheme }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}

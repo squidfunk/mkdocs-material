@@ -166,11 +166,13 @@
 
   <!-- Text direction and color palette, if defined -->
   {% set direction = config.theme.direction or lang.t('direction') %}
-  {% if palette.primary or palette.accent %}
+  {% if palette.scheme or palette.primary or palette.accent %}
+    {% set scheme  = palette.scheme | lower %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
     {% set accent  = palette.accent  | replace(" ", "-") | lower %}
     <body
       dir="{{ direction }}"
+      data-md-color-scheme="{{ scheme }}"
       data-md-color-primary="{{ primary }}"
       data-md-color-accent="{{ accent }}"
     >

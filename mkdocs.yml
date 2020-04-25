@@ -54,6 +54,7 @@ theme:
     - tabs
     #- instant
   palette:
+    scheme: dark
     primary: indigo
     accent: indigo
   font:

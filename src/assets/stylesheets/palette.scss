@@ -41,25 +41,25 @@
 // ----------------------------------------------------------------------------
 
 @each $name, $colors in (
-  "red":         $clr-red-400         $clr-red-200         $clr-red-600,
-  "pink":        $clr-pink-500        $clr-pink-200        $clr-pink-700,
-  "purple":      $clr-purple-400      $clr-purple-200      $clr-purple-600,
-  "deep-purple": $clr-deep-purple-400 $clr-deep-purple-200 $clr-deep-purple-500,
-  "indigo":      $clr-indigo-500      $clr-indigo-200      $clr-indigo-700,
-  "blue":        $clr-blue-500        $clr-blue-200        $clr-blue-700,
-  "light-blue":  $clr-light-blue-500  $clr-light-blue-200  $clr-light-blue-700,
-  "cyan":        $clr-cyan-500        $clr-cyan-200        $clr-cyan-700,
-  "teal":        $clr-teal-500        $clr-teal-200        $clr-teal-700,
-  "green":       $clr-green-500       $clr-green-200       $clr-green-700,
-  "light-green": $clr-light-green-500 $clr-light-green-200 $clr-light-green-700,
-  "lime":        $clr-lime-500        $clr-lime-200        $clr-lime-700,
-  "yellow":      $clr-yellow-500      $clr-yellow-200      $clr-yellow-700,
-  "amber":       $clr-amber-500       $clr-amber-200       $clr-amber-700,
-  "orange":      $clr-orange-400      $clr-orange-200      $clr-orange-600,
-  "deep-orange": $clr-deep-orange-400 $clr-deep-orange-200 $clr-deep-orange-600,
-  "brown":       $clr-brown-500       $clr-brown-200       $clr-brown-700,
-  "grey":        $clr-grey-600        $clr-grey-200        $clr-grey-700,
-  "blue-grey":   $clr-blue-grey-600   $clr-blue-grey-200   $clr-blue-grey-700
+  "red":         $clr-red-400         $clr-red-300         $clr-red-600,
+  "pink":        $clr-pink-500        $clr-pink-400        $clr-pink-700,
+  "purple":      $clr-purple-400      $clr-purple-300      $clr-purple-600,
+  "deep-purple": $clr-deep-purple-400 $clr-deep-purple-300 $clr-deep-purple-500,
+  "indigo":      $clr-indigo-500      $clr-indigo-400      $clr-indigo-700,
+  "blue":        $clr-blue-500        $clr-blue-400        $clr-blue-700,
+  "light-blue":  $clr-light-blue-500  $clr-light-blue-400  $clr-light-blue-700,
+  "cyan":        $clr-cyan-500        $clr-cyan-400        $clr-cyan-700,
+  "teal":        $clr-teal-500        $clr-teal-400        $clr-teal-700,
+  "green":       $clr-green-500       $clr-green-400       $clr-green-700,
+  "light-green": $clr-light-green-500 $clr-light-green-400 $clr-light-green-700,
+  "lime":        $clr-lime-500        $clr-lime-400        $clr-lime-700,
+  "yellow":      $clr-yellow-500      $clr-yellow-400      $clr-yellow-700,
+  "amber":       $clr-amber-500       $clr-amber-400       $clr-amber-700,
+  "orange":      $clr-orange-400      $clr-orange-400      $clr-orange-600,
+  "deep-orange": $clr-deep-orange-400 $clr-deep-orange-300 $clr-deep-orange-600,
+  "brown":       $clr-brown-500       $clr-brown-400       $clr-brown-700,
+  "grey":        $clr-grey-600        $clr-grey-500        $clr-grey-700,
+  "blue-grey":   $clr-blue-grey-600   $clr-blue-grey-500   $clr-blue-grey-700
 ) {
 
   // Color palette

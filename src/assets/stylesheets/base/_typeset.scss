@@ -33,7 +33,7 @@ body {
 // Default fonts
 body,
 input {
-  color: var(--md-default-fg-color);
+  color: var(--md-text-color);
   font-feature-settings: "kern", "liga";
   font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
 }
@@ -42,7 +42,7 @@ input {
 code,
 pre,
 kbd {
-  color: var(--md-default-fg-color);
+  color: var(--md-text-color);
   font-feature-settings: "kern";
   font-family: SFMono-Regular, Consolas, Menlo, monospace;
 }
@@ -132,7 +132,7 @@ kbd {
 
   // Links
   a {
-    color: var(--md-primary-fg-color);
+    color: var(--md-text-link-color);
     word-break: break-word;
 
     // Also enable color transition on pseudo elements

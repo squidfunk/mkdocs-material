@@ -48,7 +48,6 @@ html {
   //
   // See https://github.com/squidfunk/mkdocs-material/issues/911
   font-size: 125%;
-  background-color: var(--md-default-bg-color);
 
   // [screen medium +]: Set base font-size to 11px
   @include break-from-device(screen medium) {
@@ -71,6 +70,7 @@ body {
   // Hack: reset font-size to 10px, so the spacing for all inline elements is
   // correct again. Otherwise the spacing would be based on 20px.
   font-size: 0.5rem; // stylelint-disable-line unit-whitelist
+  background-color: var(--md-default-bg-color);
 
   // [tablet portrait -]: Lock body to disable scroll bubbling
   @include break-to-device(tablet portrait) {
