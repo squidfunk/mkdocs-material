@@ -74,8 +74,8 @@ function fetchSourceFacts(
 
     /* GitLab repository */
     case "gitlab":
-      const [, base, project] = url.match(/^.+?([^\/]*gitlab[^\/]+)\/(.+)/i)
-      return fetchSourceFactsFromGitLab(base, project)
+      const [, base, slug] = url.match(/^.+?([^\/]*gitlab[^\/]+)\/(.+?)\/?$/i)
+      return fetchSourceFactsFromGitLab(base, slug)
 
     /* Everything else */
     default:

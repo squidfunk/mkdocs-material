@@ -87,3 +87,32 @@ export function getElements<T extends HTMLElement>(
 ): T[] {
   return Array.from(node.querySelectorAll<T>(selector))
 }
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Create an element
+ *
+ * @template T - Tag name type
+ *
+ * @param tagName - Tag name
+ *
+ * @return Element
+ */
+export function createElement<
+  T extends keyof HTMLElementTagNameMap
+>(tagName: T): HTMLElementTagNameMap[T] {
+  return document.createElement(tagName)
+}
+
+/**
+ * Replace an element with another element
+ *
+ * @param source - Source element
+ * @param target - Target element
+ */
+export function replaceElement(
+  source: HTMLElement, target: Node
+): void {
+  source.replaceWith(target)
+}

@@ -201,21 +201,25 @@
     <label class="md-overlay" for="__drawer"></label>
 
     <!-- Link to skip to content -->
-    {% if page.toc | first is defined %}
-      {% set skip = page.toc | first %}
-      <a href="{{ skip.url | url }}" class="md-skip" data-md-component="skip">
-        {{ lang.t('skip.link.title') }}
-      </a>
-    {% endif %}
+    <div data-md-component="skip">
+      {% if page.toc | first is defined %}
+        {% set skip = page.toc | first %}
+        <a href="{{ skip.url | url }}" class="md-skip">
+          {{ lang.t('skip.link.title') }}
+        </a>
+      {% endif %}
+    </div>
 
     <!-- Announcement bar -->
-    {% if self.announce() %}
-      <aside class="md-announce" data-md-component="announce">
-        <div class="md-announce__inner md-grid md-typeset">
-          {% block announce %}{% endblock %}
-        </div>
-      </aside>
-    {% endif %}
+    <div data-md-component="announce">
+      {% if self.announce() %}
+        <aside class="md-announce">
+          <div class="md-announce__inner md-grid md-typeset">
+            {% block announce %}{% endblock %}
+          </div>
+        </aside>
+      {% endif %}
+    </div>
 
     <!-- Application header -->
     {% block header %}
@@ -337,13 +341,6 @@
       {% endblock %}
     </div>
 
-    <!-- Application configuration -->
-    {% block config %}
-      <script>
-        var __config = {}
-      </script>
-    {% endblock %}
-
     <!-- Theme-related JavaScript -->
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.js' | url }}"></script>
@@ -365,20 +362,21 @@
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
       <script id="__lang" type="application/json">
-        {{ translations | tojson }}
+        {{- translations | tojson -}}
       </script>
+
+      <!-- Application configuration -->
+      {% block config %}{% endblock %}
 
       <!-- Application initialization -->
       <script>
-        __material = initialize(Object.assign({
-          url: {
-            base: "{{ base_url }}",
-            worker: {
-              search: "{{ 'assets/javascripts/worker/search.js' | url }}"
-            }
-          },
-          features: {{ config.theme.features | tojson }}
-        }, typeof __config !== "undefined" ? __config : {}))
+        app = initialize({
+          base: "{{ base_url }}",
+          features: {{ config.theme.features | tojson }},
+          search: Object.assign({
+            worker: "{{ 'assets/javascripts/worker/search.js' | url }}"
+          }, typeof search !== "undefined" && search)
+        })
       </script>
 
       <!-- Custom JavaScript -->

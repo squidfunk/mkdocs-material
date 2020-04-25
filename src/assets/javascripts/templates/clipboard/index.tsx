@@ -53,14 +53,14 @@ const path =
  *
  * @return Element
  */
-export function renderClipboard(
+export function renderClipboardButton(
   id: string
 ) {
   return (
     <button
       class={css.container}
       title={translate("clipboard.copy")}
-      data-clipboard-target={`#${id} code`}
+      data-clipboard-target={`#${id} > code`}
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d={path}></path>

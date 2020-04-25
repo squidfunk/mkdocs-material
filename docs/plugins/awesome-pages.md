@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Awesome pages
 
 The [mkdocs-awesome-pages-plugin][1] omits the need to specify all pages in the

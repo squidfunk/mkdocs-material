@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Data privacy
 
 In itself, Material for MkDocs does not perform any tracking and should adhere

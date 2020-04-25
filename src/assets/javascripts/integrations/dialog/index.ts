@@ -29,6 +29,8 @@ import {
   tap
 } from "rxjs/operators"
 
+import { createElement } from "browser"
+
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
@@ -45,7 +47,7 @@ interface SetupOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup dialog
+ * Set up dialog
  *
  * @param options - Options
  *
@@ -57,7 +59,7 @@ export function setupDialog(
   const dialog$ = new Subject<string>()
 
   /* Create dialog */
-  const dialog = document.createElement("div")                                  // TODO: improve scoping
+  const dialog = createElement("div")                                           // TODO: improve scoping
   dialog.classList.add("md-dialog", "md-typeset")
 
   /* Display dialog */
@@ -84,6 +86,6 @@ export function setupDialog(
     )
       .subscribe()
 
-  /* Return dialog subject */
+  /* Return dialog */
   return dialog$
 }

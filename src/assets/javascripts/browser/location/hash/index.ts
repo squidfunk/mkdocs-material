@@ -23,6 +23,8 @@
 import { Observable, fromEvent } from "rxjs"
 import { filter, map, share, startWith } from "rxjs/operators"
 
+import { createElement } from "browser"
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -40,15 +42,16 @@ export function getLocationHash(): string {
  * Set location hash
  *
  * Setting a new fragment identifier via `location.hash` will have no effect
- * if the value doesn't change. However, when a new fragment identifier is set,
- * we want the browser to target the respective element at all times, which is
- * why we use this dirty little trick.
+ * if the value doesn't change. When a new fragment identifier is set, we want
+ * the browser to target the respective element at all times, which is why we
+ * use this dirty little trick.
  *
  * @param hash - Location hash
  */
 export function setLocationHash(hash: string): void {
-  const el = document.createElement("a")
+  const el = createElement("a")
   el.href = hash
+  el.addEventListener("click", ev => ev.stopPropagation())
   el.click()
 }
 

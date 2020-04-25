@@ -265,8 +265,8 @@ $md-toggle__search--checked:
       background-color: hsla(0, 0%, 0%, 0.26);
       border-radius: px2rem(2px);
       transition:
-        background-color 250ms,
-        color            250ms;
+        color            250ms,
+        background-color 250ms;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -446,7 +446,7 @@ $md-toggle__search--checked:
     // Hack: reduce jitter
     backface-visibility: hidden;
     scroll-snap-type: y mandatory;
-    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
 
     // Mitigiate excessive repaints on non-retina devices
     @media (max-resolution: 1dppx) {

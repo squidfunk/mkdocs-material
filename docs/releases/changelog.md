@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Upgrading
 
 To upgrade to the latest version:
@@ -13,6 +17,47 @@ pip show mkdocs-material
 ```
 
 ## Changelog
+
+### 5.1.1 <small>_ April 17, 2020</small>
+
+* Added new FontAwesome icons
+* Fixed #1609: Instant loading doesn't honor `target=_blank`
+* Fixed GitHub stars count rounding errors
+* Fixed GitLab stars count retrieval
+
+### 5.1.0 <small>_ April 12, 2020</small>
+
+* Added support for icons from Markdown through [mkdocs-material-extensions][1]
+
+  [1]: https://github.com/facelessuser/mkdocs-material-extensions
+
+### 5.0.2 <small>_ April 10, 2020</small>
+
+* Added CSS source maps to distribution files
+* Fixed errors in Chinese (Traditional) translations
+* Fixed creation of stale directory on installation from git
+* Improved overflow scrolling behavior on iOS (reduced bundle size by `4kb`)
+
+### 5.0.1 <small>_ April 7, 2020</small>
+
+* Fixed syntax error in Spanish translation
+
+### 5.0.0 <small>_ April 7, 2020</small>
+
+* Reactive architecture – try `app.dialog$.next("Hi!")` in the console
+* Instant loading – make Material behave like a Single Page Application
+* Improved CSS customization with CSS variables – set your brand's colors
+* Improved CSS resilience, e.g. proper sidebar locking for customized headers
+* Improved icon integration and configuration – now including over 5k icons
+* Added possibility to use any icon for logo, repository and social links
+* Search UI does not freeze anymore (moved to web worker)
+* Search index built only once when using instant loading
+* Improved extensible keyboard handling
+* Support for prebuilt search indexes
+* Support for displaying stars and forks for GitLab repositories
+* Support for scroll snapping of sidebars and search results
+* Reduced HTML and CSS footprint due to deprecation of Internet Explorer support
+* Slight facelifting of some UI elements (Admonitions, tables, ...)
 
 ### 4.6.3 <small>_ February 14, 2020</small>
 
@@ -34,10 +79,10 @@ pip show mkdocs-material
 
 ### 4.6.0 <small>_ December 11, 2019</small>
 
-* Added support for [mkdocs-git-revision-date-localized-plugin][3]
+* Added support for [mkdocs-git-revision-date-localized-plugin][2]
 * Fixed invalid character in Google Fonts URL
 
-  [3]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+  [2]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
 
 ### 4.5.1 <small>_ December 2, 2019</small>
 
@@ -123,7 +168,7 @@ pip show mkdocs-material
 * Added background on hover for table rows
 * Removed Google Tag Manager and reverted to Google Analytics
 * Removed blocks in partials - Jinja doesn't support them
-* Fixed #911: Chrome breaks layout if system language is Chinese (__BREAKING__)
+* Fixed #911: Chrome breaks layout if system language is Chinese (**BREAKING**)
 * Fixed #976: Removed FastClick
 
 ### 3.3.0 <small>_ January 29, 2019</small>
@@ -172,7 +217,7 @@ pip show mkdocs-material
 
 ### 3.0.0 <small>_ August 5, 2018</small>
 
-* Upgraded MkDocs to 1.0 (__BREAKING__)
+* Upgraded MkDocs to 1.0 (**BREAKING**)
 * Upgraded Python in official Docker image to 3.6
 * Added Serbian and Serbo-Croatian translations
 
@@ -559,7 +604,7 @@ pip show mkdocs-material
 
 ### 1.5.1 <small>_ March 30, 2017</small>
 
-* Fixed rendering and offset of targetted footnotes
+* Fixed rendering and offset of targeted footnotes
 * Fixed #238: Link on logo is not set to `site_url`
 
 ### 1.5.0 <small>_ March 24, 2017</small>

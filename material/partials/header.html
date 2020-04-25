@@ -4,38 +4,31 @@
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="{{ lang.t('header.title') }}">
     <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-header-nav__button md-logo" aria-label="{{ config.site_name }}">
-      {% if config.theme.logo %}
-        <img src="{{ config.theme.logo | url }}" alt="logo">
-      {% else %}
-        {% set icon = config.theme.icon.logo or "material/library" %}
-        {% include ".icons/" ~ icon ~ ".svg" %}
-      {% endif %}
+      {% include "partials/logo.html" %}
     </a>
     <label class="md-header-nav__button md-icon" for="__drawer">
       {% include ".icons/material/menu" ~ ".svg" %}
     </label>
     <div class="md-header-nav__title" data-md-component="header-title">
-      <div class="md-header-nav__ellipsis md-ellipsis">
-        {% if config.site_name == page.title %}
+      {% if config.site_name == page.title %}
+        <div class="md-header-nav__ellipsis md-ellipsis">
           {{ config.site_name }}
-        {% else %}
-          <span class="md-header-nav__topic">
+        </div>
+      {% else %}
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
             {{ config.site_name }}
           </span>
-          <span class="md-header-nav__topic">
+          <span class="md-header-nav__topic md-ellipsis">
             {% if page and page.meta and page.meta.title %}
               {{ page.meta.title }}
             {% else %}
               {{ page.title }}
             {% endif %}
           </span>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     </div>
-    <label class="md-header-nav__button md-icon" for="__more">
-      {% include ".icons/material/dots-vertical" ~ ".svg" %}
-    </label>
-    {% include "partials/more.html" %}
     {% if "search" in config["plugins"] %}
       <label class="md-header-nav__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}

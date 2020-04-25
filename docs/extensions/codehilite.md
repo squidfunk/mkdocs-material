@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # CodeHilite
 
 [CodeHilite][1] is an extension that adds syntax highlighting to code blocks

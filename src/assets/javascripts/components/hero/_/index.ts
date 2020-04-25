@@ -21,7 +21,11 @@
  */
 
 import { Observable, OperatorFunction, pipe } from "rxjs"
-import { distinctUntilChanged, map, switchMap } from "rxjs/operators"
+import {
+  distinctUntilKeyChanged,
+  map,
+  switchMap
+} from "rxjs/operators"
 
 import { Viewport, watchViewportAt } from "browser"
 
@@ -69,7 +73,7 @@ export function mountHero(
     switchMap(el => watchViewportAt(el, { header$, viewport$ })
       .pipe(
         map(({ offset: { y } }) => ({ hidden: y >= 20 })),
-        distinctUntilChanged(),
+        distinctUntilKeyChanged("hidden"),
         applyHero(el)
       )
     )

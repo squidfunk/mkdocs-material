@@ -58,8 +58,7 @@ kbd {
 .md-typeset {
   font-size: ms(0);
   line-height: 1.6;
-  // Colors should be kept when printing
-  -webkit-print-color-adjust: exact; // stylelint-disable-line
+  color-adjust: exact;
 
   // Default spacing
   p,
@@ -164,15 +163,11 @@ kbd {
 
   // Inline code blocks
   code {
-    margin: 0 px2em(4px, 13.6px);
-    padding: px2em(1px, 13.6px) 0;
+    padding: 0 px2em(4px, 13.6px);
     font-size: px2em(13.6px);
     word-break: break-word;
     background-color: var(--md-code-bg-color);
     border-radius: px2rem(2px);
-    box-shadow:
-      px2em( 4px, 13.6px) 0 0 var(--md-code-bg-color),
-      px2em(-4px, 13.6px) 0 0 var(--md-code-bg-color);
     box-decoration-break: clone;
   }
 
@@ -189,14 +184,9 @@ kbd {
     box-shadow: none;
   }
 
-  // Reset code if it's inside a link
+  // Ensure link color in code blocks
   a > code {
-    margin: initial;
-    padding: initial;
-    color: initial;
-    background-color: transparent;
-    border-radius: initial;
-    box-shadow: none;
+    color: currentColor;
   }
 
   // Unformatted code blocks
@@ -214,7 +204,7 @@ kbd {
       word-break: normal;
       box-shadow: none;
       box-decoration-break: slice;
-      -webkit-overflow-scrolling: touch;
+      touch-action: auto;
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {
@@ -265,15 +255,10 @@ kbd {
 
   // Text highlighting marker
   mark {
-    margin: 0 px2em(4px, 16px);
-    padding: px2em(1px, 16px) 0;
-    color: currentColor;
+    padding: 0 px2em(4px, 16px);
     word-break: break-word;
     background-color: transparentize($clr-yellow-500, 0.5);
     border-radius: px2rem(2px);
-    box-shadow:
-      px2em( 4px, 16px) 0 0 transparentize($clr-yellow-500, 0.5),
-      px2em(-4px, 16px) 0 0 transparentize($clr-yellow-500, 0.5);
     box-decoration-break: clone;
   }
 
@@ -408,7 +393,7 @@ kbd {
     box-shadow:
       0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
       0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
-    -webkit-overflow-scrolling: touch;
+    touch-action: auto;
 
     // Due to margin collapse because of the necessary inline-block hack, we
     // cannot increase the bottom margin on the table, so we just increase the
@@ -471,7 +456,7 @@ kbd {
   &__scrollwrap {
     margin: 1em px2rem(-16px);
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    touch-action: auto;
   }
 
   // Data table wrapper, in case JavaScript is available

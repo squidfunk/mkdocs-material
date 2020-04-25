@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Admonition
 
 [Admonition][1] is an extension included in the standard Markdown library that

@@ -1,10 +1,9 @@
 ---
 name: Feature
 about: Suggest an idea
-title:
-labels:
-assignees:
-
+title: ''
+labels: ''
+assignees: ''
 ---
 
 <!--

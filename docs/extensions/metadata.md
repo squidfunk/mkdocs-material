@@ -1,4 +1,5 @@
 ---
+template: overrides/main.html
 hero: Set heroes with metadata
 path: tree/master/docs/extensions
 source: metadata.md

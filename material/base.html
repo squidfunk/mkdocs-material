@@ -29,7 +29,7 @@
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0rc3">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.1.1">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -41,9 +41,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.2331f4ab.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.53de219a.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.e9ae9b85.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.14da9d3a.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -88,19 +88,23 @@
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
-    {% if page.toc | first is defined %}
-      {% set skip = page.toc | first %}
-      <a href="{{ skip.url | url }}" class="md-skip" data-md-component="skip">
-        {{ lang.t('skip.link.title') }}
-      </a>
-    {% endif %}
-    {% if self.announce() %}
-      <aside class="md-announce" data-md-component="announce">
-        <div class="md-announce__inner md-grid md-typeset">
-          {% block announce %}{% endblock %}
-        </div>
-      </aside>
-    {% endif %}
+    <div data-md-component="skip">
+      {% if page.toc | first is defined %}
+        {% set skip = page.toc | first %}
+        <a href="{{ skip.url | url }}" class="md-skip">
+          {{ lang.t('skip.link.title') }}
+        </a>
+      {% endif %}
+    </div>
+    <div data-md-component="announce">
+      {% if self.announce() %}
+        <aside class="md-announce">
+          <div class="md-announce__inner md-grid md-typeset">
+            {% block announce %}{% endblock %}
+          </div>
+        </aside>
+      {% endif %}
+    </div>
     {% block header %}
       {% include "partials/header.html" %}
     {% endblock %}
@@ -173,12 +177,9 @@
         {% include "partials/footer.html" %}
       {% endblock %}
     </div>
-    {% block config %}
-      <script>var __config={}</script>
-    {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.0c35f0aa.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.e2842e12.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.d7126665.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.0f38e514.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -194,18 +195,17 @@
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
       <script id="__lang" type="application/json">
-        {{ translations | tojson }}
+        {{- translations | tojson -}}
       </script>
+      {% block config %}{% endblock %}
       <script>
-        __material = initialize(Object.assign({
-          url: {
-            base: "{{ base_url }}",
-            worker: {
-              search: "{{ 'assets/javascripts/worker/search.2613054f.min.js' | url }}"
-            }
-          },
-          features: {{ config.theme.features | tojson }}
-        }, typeof __config !== "undefined" ? __config : {}))
+        app = initialize({
+          base: "{{ base_url }}",
+          features: {{ config.theme.features | tojson }},
+          search: Object.assign({
+            worker: "{{ 'assets/javascripts/worker/search.58d22e8e.min.js' | url }}"
+          }, typeof search !== "undefined" && search)
+        })
       </script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>

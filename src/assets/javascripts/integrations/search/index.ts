@@ -21,8 +21,7 @@
  */
 
 export * from "./_"
-export {
-  ArticleDocument,
-  SearchDocument,
-  SectionDocument
-} from "./document"
+export * from "./document"
+export * from "./highlighter"
+export * from "./transform"
+export * from "./worker"

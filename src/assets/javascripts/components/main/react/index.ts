@@ -88,8 +88,8 @@ export function watchMain(
       shareReplay(1)
     )
 
-  /* Compute the main area's top and bottom markers */
-  const marker$ = adjust$
+  /* Compute the main area's top and bottom borders */
+  const border$ = adjust$
     .pipe(
       switchMap(() => watchElementSize(el)
         .pipe(
@@ -99,12 +99,12 @@ export function watchMain(
           }))
         )
       ),
-      distinctUntilKeyChanged("top"),
+      distinctUntilKeyChanged("bottom"),
       shareReplay(1)
     )
 
   /* Compute the main area's offset, visible height and if we scrolled past */
-  return combineLatest([adjust$, marker$, viewport$])
+  return combineLatest([adjust$, border$, viewport$])
     .pipe(
       map(([header, { top, bottom }, { offset: { y }, size: { height } }]) => {
         height = Math.max(0, height
@@ -114,7 +114,7 @@ export function watchMain(
         return {
           offset: top - header,
           height,
-          active: y >= top - header
+          active: top - header <= y
         }
       }),
       distinctUntilChanged<Main>((a, b) => {

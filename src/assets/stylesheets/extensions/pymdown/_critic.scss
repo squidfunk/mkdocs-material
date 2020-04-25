@@ -31,8 +31,7 @@
   del.critic,
   ins.critic,
   .critic.comment {
-    margin: 0 px2em(4px, 16px);
-    padding: px2em(1px, 16px) 0;
+    padding: 0 px2em(4px, 16px);
     border-radius: px2rem(2px);
     box-decoration-break: clone;
   }
@@ -40,17 +39,11 @@
   // Deletion
   del.critic {
     background-color: $codehilite-diff-deleted;
-    box-shadow:
-      px2em( 4px, 16px) 0 0 $codehilite-diff-deleted,
-      px2em(-4px, 16px) 0 0 $codehilite-diff-deleted;
   }
 
   // Addition
   ins.critic {
     background-color: $codehilite-diff-inserted;
-    box-shadow:
-      px2em( 4px, 16px) 0 0 $codehilite-diff-inserted,
-      px2em(-4px, 16px) 0 0 $codehilite-diff-inserted;
   }
 
   // Comment
@@ -74,6 +67,7 @@
     margin: 1em 0;
     padding-right: px2rem(16px);
     padding-left: px2rem(16px);
+    overflow: auto;
     box-shadow: none;
 
     // Decrease spacing on first element

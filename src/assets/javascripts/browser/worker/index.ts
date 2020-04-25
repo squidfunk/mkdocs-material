@@ -38,7 +38,7 @@ import {
  */
 export interface WorkerMessage {
   type: unknown                        /* Message type */
-  data: unknown                        /* Message data */
+  data?: unknown                       /* Message data */
 }
 
 /**

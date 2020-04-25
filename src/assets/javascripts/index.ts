@@ -20,11 +20,9 @@
  * IN THE SOFTWARE.
  */
 
-// TODO: remove this after we finished refactoring
+// DISCLAIMER: this file is still WIP. There're some refactoring opportunities
+// which must be tackled after we gathered some feedback on v5.
 // tslint:disable
-
-import "../stylesheets/main.scss"
-import "../stylesheets/palette.scss"
 
 import { values } from "ramda"
 import {
@@ -32,9 +30,9 @@ import {
   combineLatest,
   animationFrameScheduler,
   fromEvent,
-  of,
-  NEVER
+  from
 } from "rxjs"
+import { ajax } from "rxjs/ajax"
 import {
   delay,
   switchMap,
@@ -44,7 +42,7 @@ import {
   observeOn,
   take,
   shareReplay,
-  share
+  pluck
 } from "rxjs/operators"
 
 import {
@@ -56,12 +54,10 @@ import {
   watchLocation,
   watchLocationHash,
   watchViewport,
-  isLocationInternal,
-  isLocationAnchor,
-  setLocationHash
-} from "./browser"
-import { setupSearchWorker } from "./workers"
-
+  isLocalLocation,
+  setLocationHash,
+  watchLocationBase
+} from "browser"
 import {
   mountHeader,
   mountHero,
@@ -76,10 +72,14 @@ import {
   mountSearchReset,
   mountSearchResult
 } from "components"
-import { setupClipboard } from "./integrations/clipboard"
-import { setupDialog } from "integrations/dialog"
-import { setupKeyboard } from "./integrations/keyboard"
-import { setupInstantLoading } from "integrations/instant"
+import {
+  setupClipboard,
+  setupDialog,
+  setupKeyboard,
+  setupInstantLoading,
+  setupSearchWorker,
+  SearchIndex
+} from "integrations"
 import {
   patchTables,
   patchDetails,
@@ -91,6 +91,7 @@ import { isConfig } from "utilities"
 
 /* ------------------------------------------------------------------------- */
 
+/* Denote that JavaScript is available */
 document.documentElement.classList.remove("no-js")
 document.documentElement.classList.add("js")
 
@@ -139,20 +140,22 @@ export function initialize(config: unknown) {
   if (!isConfig(config))
     throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
 
-  /* Setup user interface observables */
+  /* Set up subjects */
+  const document$ = watchDocument()
   const location$ = watchLocation()
+
+  /* Set up user interface observables */
+  const base$     = watchLocationBase(config.base, { location$ })
   const hash$     = watchLocationHash()
   const viewport$ = watchViewport()
   const tablet$   = watchMedia("(min-width: 960px)")
   const screen$   = watchMedia("(min-width: 1220px)")
 
-  /* Setup document observable */
-  const document$ = config.features.includes("instant")
-    ? watchDocument({ location$ })
-    : watchDocument()
+  /* ----------------------------------------------------------------------- */
 
-  /* Setup component bindings */
+  /* Set up component bindings */
   setupComponents([
+    "announce",                        /* Announcement bar */
     "container",                       /* Container */
     "header",                          /* Header */
     "header-title",                    /* Header title */
@@ -168,61 +171,32 @@ export function initialize(config: unknown) {
     "toc"                              /* Table of contents */
   ], { document$ })
 
-  /* ----------------------------------------------------------------------- */
+  const keyboard$ = setupKeyboard()
 
-  // External index
-  const index = config.search && config.search.index
-    ? config.search.index
-    : undefined
+  patchDetails({ document$, hash$ })
+  patchScripts({ document$ })
+  patchSource({ document$ })
+  patchTables({ document$ })
 
-  // TODO: pass URL config as first parameter, options as second
-  const worker = setupSearchWorker(config.url.worker.search, {
-    base: config.url.base, index, location$
-  })
+  /* Force 1px scroll offset to trigger overflow scrolling */
+  patchScrollfix({ document$ })
+
+  /* Set up clipboard and dialog */
+  const dialog$ = setupDialog()
+  const clipboard$ = setupClipboard({ document$, dialog$ })
 
   /* ----------------------------------------------------------------------- */
 
   /* Create header observable */
   const header$ = useComponent("header")
     .pipe(
-      mountHeader({ viewport$ }),
+      mountHeader({ document$, viewport$ }),
       shareReplay(1)
     )
 
   const main$ = useComponent("main")
     .pipe(
       mountMain({ header$, viewport$ }),
-      shareReplay(1)
-    )
-
-  /* ----------------------------------------------------------------------- */
-
-  /* Mount search query */
-  const query$ = useComponent("search-query")
-    .pipe(
-      mountSearchQuery(worker),
-      shareReplay(1)
-    )
-
-  /* Mount search reset */
-  const reset$ = useComponent("search-reset")
-    .pipe(
-      mountSearchReset(),
-      shareReplay(1)
-    )
-
-  /* Mount search result */
-  const result$ = useComponent("search-result")
-    .pipe(
-      mountSearchResult(worker, { query$ }),
-      shareReplay(1)
-    )
-
-  /* ----------------------------------------------------------------------- */
-
-  const search$ = useComponent("search")
-    .pipe(
-      mountSearch({ query$, reset$, result$ }),
       shareReplay(1)
     )
 
@@ -254,19 +228,61 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  const keyboard$ = setupKeyboard()
+  // External index
+  const index = config.search && config.search.index
+    ? config.search.index
+    : undefined
 
-  patchDetails({ document$, hash$ })
-  patchScripts({ document$ })
-  patchSource({ document$ })
-  patchTables({ document$ })
+  /* Fetch index if it wasn't passed explicitly */
+  const index$ = typeof index !== "undefined"
+    ? from(index)
+    : base$
+        .pipe(
+          switchMap(base => ajax({
+            url: `${base}/search/search_index.json`,
+            responseType: "json",
+            withCredentials: true
+          })
+            .pipe<SearchIndex>(
+              pluck("response")
+            )
+          )
+        )
 
-  /* Force 1px scroll offset to trigger overflow scrolling */
-  patchScrollfix({ document$ })
+  const worker = setupSearchWorker(config.search.worker, {
+    base$, index$
+  })
 
-  /* Setup clipboard and dialog */
-  const dialog$ = setupDialog()
-  const clipboard$ = setupClipboard({ document$, dialog$ })
+  /* ----------------------------------------------------------------------- */
+
+  /* Mount search query */
+  const query$ = useComponent("search-query")
+    .pipe(
+      mountSearchQuery(worker, { transform: config.search.transform }),
+      shareReplay(1)
+    )
+
+  /* Mount search reset */
+  const reset$ = useComponent("search-reset")
+    .pipe(
+      mountSearchReset(),
+      shareReplay(1)
+    )
+
+  /* Mount search result */
+  const result$ = useComponent("search-result")
+    .pipe(
+      mountSearchResult(worker, { query$ }),
+      shareReplay(1)
+    )
+
+  /* ----------------------------------------------------------------------- */
+
+  const search$ = useComponent("search")
+    .pipe(
+      mountSearch({ query$, reset$, result$ }),
+      shareReplay(1)
+    )
 
   /* ----------------------------------------------------------------------- */
 
@@ -276,10 +292,9 @@ export function initialize(config: unknown) {
       tap(() => setToggle("search", false)),
       delay(125), // ensure that it runs after the body scroll reset...
     )
-      .subscribe(hash => setLocationHash(`#${hash}`)) // TODO: must be unified
+      .subscribe(hash => setLocationHash(`#${hash}`))
 
-  // Scroll lock // document -> document$ => { body } !?
-  // put into search...
+  // TODO: scroll restoration must be centralized
   combineLatest([
     watchToggle("search"),
     tablet$,
@@ -290,7 +305,7 @@ export function initialize(config: unknown) {
         const active = toggle && !tablet
         return document$
           .pipe(
-            delay(active ? 400 : 100), // TOOD: directly combine this with the hash!
+            delay(active ? 400 : 100),
             observeOn(animationFrameScheduler),
             tap(({ body }) => active
               ? setScrollLock(body, y)
@@ -303,65 +318,40 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  /* Intercept internal link clicks */
-  const link$ = fromEvent<MouseEvent>(document.body, "click")
+  /* Always close drawer on click */
+  fromEvent<MouseEvent>(document.body, "click")
     .pipe(
       filter(ev => !(ev.metaKey || ev.ctrlKey)),
-      switchMap(ev => {
+      filter(ev => {
         if (ev.target instanceof HTMLElement) {
           const el = ev.target.closest("a") // TODO: abstract as link click?
-          if (el && isLocationInternal(el)) {
-            if (!isLocationAnchor(el) && config.features.includes("instant"))
-              ev.preventDefault()
-            return of(el)
+          if (el && isLocalLocation(el)) {
+            return true
           }
         }
-        return NEVER
-      }),
-      share()
+        return false
+      })
     )
+      .subscribe(() => {
+        setToggle("drawer", false)
+      })
 
-  /* Always close drawer on click */
-  link$.subscribe(() => {
-    setToggle("drawer", false)
-  })
-
-  // somehow call this setupNavigation ?
-
-  // instant loading
-  if (config.features.includes("instant")) {
-
-    /* Disable automatic scroll restoration, as it doesn't work nicely */
-    if ("scrollRestoration" in history)
-      history.scrollRestoration = "manual"
-
-    /* Resolve relative links for stability */
-    for (const selector of [
-      `link[rel="shortcut icon"]`,
-      // `link[rel="stylesheet"]` // reduce style computations
-    ])
-      for (const el of getElements<HTMLLinkElement>(selector))
-        el.href = el.href
-
-    setupInstantLoading({
-      document$, link$, location$, viewport$
-    })
-
-  }
+  /* Enable instant loading, if not on file:// protocol */
+  if (config.features.includes("instant") && location.protocol !== "file:")
+    setupInstantLoading({ document$, location$, viewport$ })
 
   /* ----------------------------------------------------------------------- */
 
-  // if we use a single tab outside of search, unhide all permalinks.
-  // TODO: experimental. necessary!?
+  /* Unhide permalinks on first tab */
   keyboard$
     .pipe(
-      filter(key => key.mode === "global" && ["Tab"].includes(key.type)),
+      filter(key => key.mode === "global" && key.type === "Tab"),
       take(1)
     )
-    .subscribe(() => {
-      for (const link of getElements(".headerlink"))
-        link.style.visibility = "visible"
-    })
+      .subscribe(() => {
+        for (const link of getElements(".headerlink"))
+          link.style.visibility = "visible"
+      })
 
   /* ----------------------------------------------------------------------- */
 
@@ -369,6 +359,7 @@ export function initialize(config: unknown) {
 
     /* Browser observables */
     document$,
+    location$,
     viewport$,
 
     /* Component observables */
@@ -380,7 +371,7 @@ export function initialize(config: unknown) {
     tabs$,
     toc$,
 
-    /* Integation observables */
+    /* Integration observables */
     clipboard$,
     keyboard$,
     dialog$

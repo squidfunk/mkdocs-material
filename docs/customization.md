@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Customization
 
 ## A great starting point

@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Permalinks
 
 Permalinks are a feature of the [Table of Contents][1] extension, which is part

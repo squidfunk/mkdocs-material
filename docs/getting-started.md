@@ -1,3 +1,7 @@
+---
+template: overrides/main.html
+---
+
 # Getting started
 
 ## Installation
@@ -9,8 +13,6 @@ the [official Docker image][1].
   [1]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
 ### with pip <small>recommended</small>
-
-> All operating systems
 
 Material for MkDocs can be installed with `pip`:
 
@@ -26,8 +28,8 @@ those packages separately.
 !!! tip "Installation in a virtual environment"
 
     The best way to make sure that you end up with the correct versions and
-    without any incompatibility problems between packages it to use a __virtual
-    environment__. Don't know what this is or how to set it up? We recommend
+    without any incompatibility problems between packages it to use a **virtual
+    environment**. Don't know what this is or how to set it up? We recommend
     to start by reading a [tutorial on virtual environments][6] for Python.
 
 !!! warning "Installation on macOS"
@@ -59,8 +61,6 @@ those packages separately.
 
 ### with docker <small>recommended</small>
 
-> All operating systems
-
 The official [Docker image][7] is a great way to get up and running in a few
 minutes, as it comes with all dependencies pre-installed. Pull the image for the 
 `latest` version with:
@@ -69,7 +69,7 @@ minutes, as it comes with all dependencies pre-installed. Pull the image for the
 docker pull squidfunk/mkdocs-material
 ```
 
-The `mkdocs` executable is provided as an entrypoint and `serve` is the default
+The `mkdocs` executable is provided as an entry point and `serve` is the default
 command. Start the development server in your project root – the folder where
 `mkdocs.yml` resides — with:
 
@@ -89,8 +89,6 @@ command. Start the development server in your project root – the folder where
 
 ### with git
 
-> All operating systems
-
 Material for MkDocs can be directly used from [GitHub][8] by cloning the
 repository into a subfolder of your project root which might be useful if you
 want to use the very latest version:
@@ -103,28 +101,11 @@ The theme will reside in the folder `mkdocs-material/material`.
 
   [8]: https://github.com/squidfunk/mkdocs-material
 
-### with choco
-
-> Windows only
-
-Material for MkDocs can be installed with [Chocolatey][9]:
-
-``` dos
-choco install mkdocs-material
-```
-
-Note that this is an [unofficial package][10] of Material for MkDocs, so please
-understand that the maintainers cannot provide any support for when using this
-method.
-
-  [9]: https://chocolatey.org
-  [10]: https://chocolatey.org/packages/mkdocs-material
-
 ## Configuration
 
 Depending on your installation method, you can now add the following lines to
 `mkdocs.yml` in your project root. If you installed Material for MkDocs using
-a package manager add:
+a package manager, add:
 
 ``` yaml
 theme:
@@ -147,11 +128,13 @@ following command:
 mkdocs serve
 ```
 
-Point your browser to [http://localhost:8000][11] and your documentation should
-great you in a new look. If you're starting from scratch, the following
-configuration can be used as a starting point:
+Point your browser to http://localhost:8000 and your documentation should greet
+you in a new look. If you're starting from scratch, the following configuration
+can be used as a starting point:
 
 ??? summary "Example configuration"
+
+    This is an excerpt from the [`mkdocs.yml`][9] used to render these pages:
 
     ``` yaml
     # Project information
@@ -202,7 +185,7 @@ configuration can be used as a starting point:
           permalink: true
     ```
 
-[11]: http://localhost:8000
+[9]: https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
 
 ### Feature flags
 
@@ -242,6 +225,15 @@ theme:
 Note that all *top-level pages* (i.e. all top-level entries that directly refer
 to an `*.md` file) defined inside the `nav` entry of `mkdocs.yml` will be
 grouped under the first tab which will receive the title of the first page.
+
+This means that there will effectively be no collapsible subsections for the
+first tab, as each subsection is rendered as another tab. If you want more
+fine-grained control, i.e.,  collapsible subsections for the first tab, you can
+move all *top-level pages into a subsection*, so that the top-level is entirely
+made up of subsections. Note that tabs are only shown for larger screens, so
+make sure that navigation is plausible on mobile devices.
+
+As an example, see the [`mkdocs.yml`][9] used to render these pages.
 
 ### Language
 
@@ -299,7 +291,7 @@ The following language codes are supported:
   <li><code>nn</code> / Norwegian (Nynorsk)</li>
   <li><code>fa</code> / Persian</li>
   <li><code>pl</code> / Polish</li>
-  <li><code>pt</code> / Portugese</li>
+  <li><code>pt</code> / Portuguese</li>
   <li><code>ro</code> / Romanian</li>
   <li><code>ru</code> / Russian</li>
   <li><code>sr</code> / Serbian</li>
@@ -320,8 +312,8 @@ The following language codes are supported:
 </ul>
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
-supports `rtl` (right-to-left) directionality which is deduced from the selected
-language, but can also be set with:
+supports `rtl` (right-to-left) directionality which is inferred from the
+selected language, but can also be set with:
 
 ``` yaml
 theme:
@@ -330,7 +322,7 @@ theme:
 
 ### Color palette
 
-The Material Design [color palette][12] comes with 20 hues, all of which are
+The Material Design [color palette][10] comes with 20 hues, all of which are
 included with Material for MkDocs. Primary and accent colors can be set from
 the project root's `mkdocs.yml`:
 
@@ -349,7 +341,7 @@ from the template.
 
     Material for MkDocs defines all colors as CSS variables. If you want to
     customize the colors beyond the palette (e.g. to use your brand's colors),
-    you can add an [additional stylesheet][13] and override the defaults:
+    you can add an [additional stylesheet][11] and override the defaults:
 
     ``` css
     :root {
@@ -383,8 +375,8 @@ from the template.
     }
     ```
 
-  [12]: http://www.materialui.co/colors
-  [13]: customization.md/#additional-stylesheets
+  [10]: http://www.materialui.co/colors
+  [11]: customization.md#additional-stylesheets
 
 #### Primary color
 
@@ -404,9 +396,6 @@ Click on a color name to change the primary color of the theme:
     display: block;
     color: var(--md-primary-bg-color);
     background-color: var(--md-primary-fg-color);
-    box-shadow:
-       0.2941176471em 0 0 var(--md-primary-fg-color), 
-      -0.2941176471em 0 0 var(--md-primary-fg-color);
   }
 </style>
 
@@ -493,10 +482,10 @@ Click on a color name to change the accent color of the theme:
 
 > Default: `Roboto` and `Roboto Mono`
 
-The [Roboto font family][14] is the default font included with the theme,
+The [Roboto font family][12] is the default font included with the theme,
 specifically the regular sans-serif type for text and the `monospaced` type for
-code. Both fonts are loaded from [Google Fonts][15] and can be changed to any
-valid webfont, like for example the [Ubuntu font family][16]:
+code. Both fonts are loaded from [Google Fonts][13] and can be changed to any
+valid webfont, like for example the [Ubuntu font family][14]:
 
 ``` yaml
 theme:
@@ -514,9 +503,9 @@ theme:
   font: false
 ```
 
-  [14]: https://fonts.google.com/specimen/Roboto
-  [15]: https://fonts.google.com
-  [16]: https://fonts.google.com/specimen/Ubuntu
+  [12]: https://fonts.google.com/specimen/Roboto
+  [13]: https://fonts.google.com
+  [14]: https://fonts.google.com/specimen/Ubuntu
 
 ### Icons
 
@@ -524,7 +513,7 @@ theme:
 
 Material for MkDocs uses icons in several places. Currently, the following icons
 can be changed from `mkdocs.yml`: the logo icon, the repository icon and the
-[social link icons][17]. While the social link icons are tied to the respective 
+[social link icons][15]. While the social link icons are tied to the respective
 entries, the other icons can be changed by referencing a valid path (without the 
 trailing `.svg`) relative to the `.icons` folder which comes with the theme:
 
@@ -538,14 +527,18 @@ theme:
 All icons are directly inlined as `*.svg` files, so no further requests will be
 made. Icon sets which are bundled with Material for MkDocs:
 
-* [Material Design icons][18]: 3.8k icons
-* [FontAwesome icons][19]: 1.5k icons
-* [GitHub octicons][20]: 200 icons
+* [Material Design icons][16] (`material`): 3.8k icons
+* [FontAwesome icons][17] (`fontawesome`): 1.5k icons
+* [GitHub's Octicons][18] (`octicons`): 200 icons
 
-  [17]: #adding-social-links
-  [18]: https://material.io/resources/icons/
-  [19]: https://fontawesome.com/icons?d=gallery&m=free
-  [20]: https://octicons.github.com/
+__You can use all those icons [directly from :fontawesome-brands-markdown:
+Markdown][19]!__
+
+  [15]: #adding-social-links
+  [16]: https://material.io/resources/icons/
+  [17]: https://fontawesome.com/icons?d=gallery&m=free
+  [18]: https://octicons.github.com/
+  [19]: extensions/pymdown.md#icons
 
 ### Logo
 
@@ -597,16 +590,16 @@ Note that the repository icon can be explicitly set through `theme.icon.repo`.
     If the `repo_url` is set to a GitHub or BitBucket repository, and the
     `repo_name` is set to *GitHub* or *BitBucket* (implied by default), an
     edit button will appear at the top of every article. This is the automatic
-    behavior that MkDocs implements. See the [MkDocs documentation][21] on more
+    behavior that MkDocs implements. See the [MkDocs documentation][20] on more
     guidance regarding the `edit_uri` attribute, which defines whether the edit
     button is shown or not.
 
-  [21]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
+  [20]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
 
 ### Adding social links
 
 Social accounts can be linked in the footer of the documentation using the
-[icons][22] which are bundled with the theme. Note that each `icon` must point
+[icons][21] which are bundled with the theme. Note that each `icon` must point
 to a valid path (without the trailing `.svg`) relative to the `.icons` folder
 which comes with the theme:
 
@@ -621,11 +614,11 @@ extra:
       link: https://linkedin.com/in/squidfunk
 ```
 
-  [22]: #icons
+  [21]: #icons
 
 ### Adding a Web App Manifest
 
-A [Web App Manifest][23] is a simple JSON file that tells the browser about your
+A [Web App Manifest][22] is a simple JSON file that tells the browser about your
 web application and how it should behave when installed on the user's mobile
 device or desktop. You can specify such a manifest in `mkdocs.yml`:
 
@@ -634,15 +627,15 @@ extra:
   manifest: manifest.webmanifest
 ```
 
-  [23]: https://developers.google.com/web/fundamentals/web-app-manifest/
+  [22]: https://developers.google.com/web/fundamentals/web-app-manifest/
 
 ## Integrations
 
 ### Google Analytics
 
-MkDocs makes it easy to integrate site tracking with Google Analytics. Besides
-basic page views, site search is tracked to better understand how people use
-your documentation. Google Analytics can be activated with:
+MkDocs makes it easy to integrate site tracking with Google Analytics. To enable
+tracking, which is disabled by default, you must add your tracking identifier
+to `mkdocs.yml`:
 
 ``` yaml
 google_analytics:
@@ -650,11 +643,21 @@ google_analytics:
   - auto
 ```
 
+Besides basic page views, *site search* can also be tracked to better understand
+how people use your documentation and what they expect to find. To enable
+search tracking:
+
+1. Go to your Google Analytics **admin settings**
+2. Select the property for the respective tracking code
+3. Go to the **view settings** tab.
+4. Scroll down and enable **site search settings**
+5. Set the **query parameter** to `q`.
+
 ### Disqus
 
-Material for MkDocs is integrated with [Disqus][24], so if you want to add a
-comments section to your documentation set the shortname of your Disqus project
-in `mkdocs.yml`:
+Material for MkDocs is integrated with [Disqus][23], so if you want to add a
+comments section to your documentation set the *shortname* of your Disqus
+project in `mkdocs.yml`:
 
 ``` yaml
 extra:
@@ -669,10 +672,10 @@ necessary JavaScript is automatically included.
     Note that `site_url` must be set in `mkdocs.yml` for the Disqus integration
     to load properly.
 
-Disqus can also be enabled or disabled for specific pages using [Metadata][25].
+Disqus can also be enabled or disabled for specific pages using [Metadata][24].
 
-  [24]: https://disqus.com
-  [25]: extensions/metadata.md#disqus
+  [23]: https://disqus.com
+  [24]: extensions/metadata.md#disqus
 
 ## Extensions
 
@@ -692,19 +695,19 @@ markdown_extensions:
 See the following list of extensions supported by Material for MkDocs including
 some more information on configuration and usage:
 
-* [Admonition][26]
-* [Codehilite][27]
-* [Footnotes][28]
-* [Metadata][29]
-* [Permalinks][30]
-* [PyMdown Extensions][31]
+* [Admonition][25]
+* [Codehilite][26]
+* [Footnotes][27]
+* [Metadata][28]
+* [Permalinks][29]
+* [PyMdown Extensions][30]
 
-  [26]: extensions/admonition.md
-  [27]: extensions/codehilite.md
-  [28]: extensions/footnotes.md
-  [29]: extensions/metadata.md
-  [30]: extensions/permalinks.md
-  [31]: extensions/pymdown.md
+  [25]: extensions/admonition.md
+  [26]: extensions/codehilite.md
+  [27]: extensions/footnotes.md
+  [28]: extensions/metadata.md
+  [29]: extensions/permalinks.md
+  [30]: extensions/pymdown.md
 
 ## Plugins
 
@@ -713,14 +716,16 @@ steps that sit between the theme and your documentation. For more information,
 see the following list of plugins tested and supported by Material for MkDocs 
 including more information regarding installation and usage:
 
-* [Search][32] (enabled by default)
-* [Minification][33]
-* [Revision date][34]
+* [Search][31] (enabled by default)
+* [Minification][32]
+* [Revision date][33]
+* [Awesome pages][34]
 
 For further reference, the MkDocs wiki contains a list of all
 [available plugins][35].
 
-  [32]: plugins/search.md
-  [33]: plugins/minification.md
-  [34]: plugins/revision-date.md
+  [31]: plugins/search.md
+  [32]: plugins/minification.md
+  [33]: plugins/revision-date.md
+  [34]: plugins/awesome-pages.md
   [35]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins

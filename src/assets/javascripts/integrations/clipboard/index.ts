@@ -25,7 +25,7 @@ import { NEVER, Observable, Subject, fromEventPattern } from "rxjs"
 import { mapTo, share, tap } from "rxjs/operators"
 
 import { getElements } from "browser"
-import { renderClipboard } from "templates"
+import { renderClipboardButton } from "templates"
 import { translate } from "utilities"
 
 /* ----------------------------------------------------------------------------
@@ -45,7 +45,7 @@ interface SetupOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup clipboard
+ * Set up clipboard
  *
  * This function implements the Clipboard.js integration and injects a button
  * into all code blocks when the document changes.
@@ -66,11 +66,11 @@ export function setupClipboard(
     blocks.forEach((block, index) => {
       const parent = block.parentElement!
       parent.id = `__code_${index}`
-      parent.insertBefore(renderClipboard(parent.id), block)
+      parent.insertBefore(renderClipboardButton(parent.id), block)
     })
   })
 
-  /* Initialize and setup clipboard */
+  /* Initialize clipboard */
   const clipboard$ = fromEventPattern<ClipboardJS.Event>(next => {
     new ClipboardJS(".md-clipboard").on("success", next)
   })
