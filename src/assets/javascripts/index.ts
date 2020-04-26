@@ -292,7 +292,11 @@ export function initialize(config: unknown) {
             shareReplay(1)
           )
       }),
-      catchError(() => NEVER)
+      catchError(() => {
+        useComponent("search")
+          .subscribe(el => el.hidden = true) // TODO: Hack
+        return NEVER
+      })
     )
 
   /* ----------------------------------------------------------------------- */
