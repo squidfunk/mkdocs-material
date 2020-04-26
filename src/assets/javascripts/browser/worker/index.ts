@@ -91,8 +91,8 @@ export function watchWorker<T extends WorkerMessage>(
   const rx$ = fromEventPattern<MessageEvent>(next =>
     worker.addEventListener("message", next)
   )
-    .pipe(
-      pluck<MessageEvent, T>("data")
+    .pipe<T>(
+      pluck("data")
     )
 
   /* Send and receive messages, return hot observable */
