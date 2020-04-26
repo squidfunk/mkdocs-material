@@ -78,7 +78,7 @@ export function watchSearchQuery(
   /* Intercept focus events */
   const focus$ = watchElementFocus(el)
 
-  /* Combine into a single observable */
+  /* Combine into single observable */
   return combineLatest([value$, focus$])
     .pipe(
       map(([value, focus]) => ({ value, focus }))

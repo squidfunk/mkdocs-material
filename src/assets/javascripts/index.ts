@@ -280,7 +280,7 @@ export function initialize(config: unknown) {
 
   const search$ = useComponent("search")
     .pipe(
-      mountSearch({ query$, reset$, result$ }),
+      mountSearch(worker, { query$, reset$, result$ }),
       shareReplay(1)
     )
 

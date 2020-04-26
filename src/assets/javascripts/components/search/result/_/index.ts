@@ -27,6 +27,7 @@ import {
   filter,
   map,
   pluck,
+  startWith,
   switchMap
 } from "rxjs/operators"
 
@@ -85,7 +86,8 @@ export function mountSearchResult(
         .pipe(
           filter(isSearchResultMessage),
           pluck("data"),
-          applySearchResult(el, { query$, fetch$ })
+          applySearchResult(el, { query$, fetch$ }),
+          startWith([])
         )
     })
   )

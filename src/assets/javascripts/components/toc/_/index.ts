@@ -119,7 +119,7 @@ export function mountTableOfContents(
                 applyAnchorList(els)
               )
 
-            /* Combine into a single hot observable */
+            /* Combine into single hot observable */
             return combineLatest([sidebar$, anchors$])
               .pipe(
                 map(([sidebar, anchors]) => ({ sidebar, anchors }))
