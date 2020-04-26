@@ -71,28 +71,3 @@ export function resetSidebarHeight(
 ): void {
   el.style.height = ""
 }
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Set sidebar lock
- *
- * @param el - Sidebar element
- * @param value - Whether the sidebar is locked
- */
-export function setSidebarLock(
-  el: HTMLElement, value: boolean
-): void {
-  el.setAttribute("data-md-state", value ? "lock" : "")
-}
-
-/**
- * Reset sidebar lock
- *
- * @param el - Sidebar element
- */
-export function resetSidebarLock(
-  el: HTMLElement
-): void {
-  el.removeAttribute("data-md-state")
-}

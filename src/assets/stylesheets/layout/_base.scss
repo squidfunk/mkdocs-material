@@ -122,6 +122,7 @@ hr {
 
   // Increase top spacing of content area to give typography more room
   &__inner {
+    display: flex;
     height: 100%;
     margin-top: px2rem(24px + 6px);
   }

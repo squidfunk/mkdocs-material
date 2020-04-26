@@ -43,10 +43,8 @@ import { Main } from "../../../main"
 import { Sidebar } from "../_"
 import {
   resetSidebarHeight,
-  resetSidebarLock,
   resetSidebarOffset,
   setSidebarHeight,
-  setSidebarLock,
   setSidebarOffset
 } from "../set"
 
@@ -131,7 +129,6 @@ export function applySidebar(
     withLatestFrom(header$),
     tap(([{ height, lock }, { height: offset }]) => {
       setSidebarHeight(el, height)
-      setSidebarLock(el, lock)
 
       /* Set offset in locked state depending on header height */
       if (lock)
@@ -147,7 +144,6 @@ export function applySidebar(
     finalize(() => {
       resetSidebarOffset(el)
       resetSidebarHeight(el)
-      resetSidebarLock(el)
     })
   )
 }
