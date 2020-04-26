@@ -18,6 +18,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.1.3 <small>_ April 26, 2020</small>
+
+* Fixed overflowing content area after switch to flexbox
+
 ### 5.1.2 <small>_ April 26, 2020</small>
 
 * Added status information to search observable
