@@ -30,7 +30,10 @@ import {
   combineLatest,
   animationFrameScheduler,
   fromEvent,
-  from
+  from,
+  defer,
+  of,
+  NEVER
 } from "rxjs"
 import { ajax } from "rxjs/ajax"
 import {
@@ -42,7 +45,8 @@ import {
   observeOn,
   take,
   shareReplay,
-  pluck
+  pluck,
+  catchError
 } from "rxjs/operators"
 
 import {
@@ -228,60 +232,67 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  // External index
-  const index = config.search && config.search.index
-    ? config.search.index
-    : undefined
+  /* Search worker */
+  const worker$ = defer(() => {
+    const index = config.search && config.search.index
+      ? config.search.index
+      : undefined
 
-  /* Fetch index if it wasn't passed explicitly */
-  const index$ = typeof index !== "undefined"
-    ? from(index)
-    : base$
-        .pipe(
-          switchMap(base => ajax({
-            url: `${base}/search/search_index.json`,
-            responseType: "json",
-            withCredentials: true
-          })
-            .pipe<SearchIndex>(
-              pluck("response")
+    /* Fetch index if it wasn't passed explicitly */
+    const index$ = typeof index !== "undefined"
+      ? from(index)
+      : base$
+          .pipe(
+            switchMap(base => ajax({
+              url: `${base}/search/search_index.json`,
+              responseType: "json",
+              withCredentials: true
+            })
+              .pipe<SearchIndex>(
+                pluck("response")
+              )
             )
           )
-        )
 
-  const worker = setupSearchWorker(config.search.worker, {
-    base$, index$
+    return of(setupSearchWorker(config.search.worker, {
+      base$, index$
+    }))
   })
 
   /* ----------------------------------------------------------------------- */
 
   /* Mount search query */
-  const query$ = useComponent("search-query")
+  const search$ = worker$
     .pipe(
-      mountSearchQuery(worker, { transform: config.search.transform }),
-      shareReplay(1)
-    )
+      switchMap(worker => {
 
-  /* Mount search reset */
-  const reset$ = useComponent("search-reset")
-    .pipe(
-      mountSearchReset(),
-      shareReplay(1)
-    )
+        const query$ = useComponent("search-query")
+          .pipe(
+            mountSearchQuery(worker, { transform: config.search.transform }),
+            shareReplay(1)
+          )
 
-  /* Mount search result */
-  const result$ = useComponent("search-result")
-    .pipe(
-      mountSearchResult(worker, { query$ }),
-      shareReplay(1)
-    )
+        /* Mount search reset */
+        const reset$ = useComponent("search-reset")
+          .pipe(
+            mountSearchReset(),
+            shareReplay(1)
+          )
 
-  /* ----------------------------------------------------------------------- */
+        /* Mount search result */
+        const result$ = useComponent("search-result")
+          .pipe(
+            mountSearchResult(worker, { query$ }),
+            shareReplay(1)
+          )
 
-  const search$ = useComponent("search")
-    .pipe(
-      mountSearch(worker, { query$, reset$, result$ }),
-      shareReplay(1)
+        return useComponent("search")
+          .pipe(
+            mountSearch(worker, { query$, reset$, result$ }),
+            shareReplay(1)
+          )
+      }),
+      catchError(() => NEVER)
     )
 
   /* ----------------------------------------------------------------------- */
