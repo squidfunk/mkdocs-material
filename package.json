@@ -57,7 +57,6 @@
     "autoprefixer": "^9.7.6",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.5.2",
-    "css-mqpacker": "^7.0.0",
     "event-hooks-webpack-plugin": "^2.1.6",
     "expose-loader": "^0.7.5",
     "github-types": "^1.0.0",
