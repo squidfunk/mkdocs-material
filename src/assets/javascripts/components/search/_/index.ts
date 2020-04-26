@@ -25,7 +25,6 @@ import {
   filter,
   map,
   mapTo,
-  pluck,
   sample,
   startWith,
   switchMap,
@@ -109,8 +108,7 @@ export function mountSearch(
         .pipe(
           filter(isSearchQueryMessage),
           sample(status$),
-          take(1),
-          filter(({ data }) => data.length > 0)
+          take(1)
         )
           .subscribe(tx$.next.bind(tx$))
 
