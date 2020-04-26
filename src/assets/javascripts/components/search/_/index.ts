@@ -25,14 +25,18 @@ import {
   filter,
   map,
   mapTo,
+  pluck,
+  sample,
   startWith,
-  switchMap
+  switchMap,
+  take
 } from "rxjs/operators"
 
 import { WorkerHandler } from "browser"
 import {
   SearchMessage,
   SearchResult,
+  isSearchQueryMessage,
   isSearchReadyMessage
 } from "integrations/search"
 
@@ -86,7 +90,7 @@ interface MountOptions {
  * @return Operator function
  */
 export function mountSearch(
-  { rx$ }: WorkerHandler<SearchMessage>,
+  { rx$, tx$ }: WorkerHandler<SearchMessage>,
   { query$, reset$, result$ }: MountOptions
 ): OperatorFunction<HTMLElement, Search> {
   return pipe(
@@ -99,6 +103,16 @@ export function mountSearch(
           mapTo<SearchStatus>("ready"),
           startWith("waiting")
         ) as Observable<SearchStatus>
+
+      /* Re-emit the latest query when search is ready */
+      tx$
+        .pipe(
+          filter(isSearchQueryMessage),
+          sample(status$),
+          take(1),
+          filter(({ data }) => data.length > 0)
+        )
+          .subscribe(tx$.next.bind(tx$))
 
       /* Combine into single observable */
       return combineLatest([status$, query$, result$, reset$])
