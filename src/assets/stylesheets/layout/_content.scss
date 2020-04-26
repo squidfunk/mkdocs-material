@@ -27,6 +27,17 @@
 // Content container
 .md-content {
   flex: 1;
+  max-width: 100%;
+
+  // [tablet landscape]: Decrease horizontal width
+  @include break-at-device(tablet landscape) {
+    max-width: calc(100% - #{px2rem(242px)});
+  }
+
+  // [screen +]: Decrease horizontal width
+  @include break-from-device(screen) {
+    max-width: calc(100% - #{px2rem(242px)} * 2);
+  }
 
   // Define spacing
   &__inner {
