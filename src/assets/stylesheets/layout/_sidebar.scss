@@ -34,7 +34,8 @@ $md-toggle__drawer--checked:
 
 // Sidebar container
 .md-sidebar {
-  position: absolute;
+  position: sticky;
+  top: px2rem(48px);
   width: px2rem(242px);
   padding: px2rem(24px) 0;
   overflow: hidden;
@@ -42,12 +43,6 @@ $md-toggle__drawer--checked:
   // Hide for print
   @media print {
     display: none;
-  }
-
-  // Lock sidebar to container height (account for fixed header)
-  &[data-md-state="lock"] {
-    position: fixed;
-    top: px2rem(48px);
   }
 
   // [tablet -]: Convert navigation to drawer
@@ -95,32 +90,15 @@ $md-toggle__drawer--checked:
   // Secondary sidebar with table of contents
   &--secondary {
     display: none;
+    order: 2;
 
     // [tablet landscape +]: Show table of contents next to body copy
     @include break-from-device(tablet landscape) {
       display: block;
-      margin-left: calc(100% - #{px2rem(242px)});
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: calc(100% - #{px2rem(242px)});
-        margin-left: initial;
-      }
 
       // Ensure smooth scrolling on iOS
       .md-sidebar__scrollwrap {
         touch-action: pan-y;
-      }
-    }
-
-    // [screen +]: Limit to grid
-    @include break-from-device(screen) {
-      margin-left: px2rem((1220 - 242) * 1px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: px2rem((1220 - 242) * 1px);
-        margin-left: initial;
       }
     }
   }

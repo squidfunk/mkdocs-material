@@ -26,27 +26,7 @@
 
 // Content container
 .md-content {
-
-  // [tablet landscape +]: Add space for table of contents
-  @include break-from-device(tablet landscape) {
-    margin-right: px2rem(242px);
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: initial;
-      margin-left: px2rem(242px);
-    }
-  }
-
-  // [screen +]: Add space for table of contents
-  @include break-from-device(screen) {
-    margin-left: px2rem(242px);
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: px2rem(242px);
-    }
-  }
+  flex: 1;
 
   // Define spacing
   &__inner {
