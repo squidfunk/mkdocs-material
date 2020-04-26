@@ -18,6 +18,16 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.1.2 <small>_ April 26, 2020</small>
+
+* Added status information to search observable
+* Added status information to search modal
+* Removed announcement bar from print media
+* Removed media query packing logic due to race conditions
+* Fixed #1520: Gracefully disable search on `file://` if Worker fails
+* Fixed re-submission of query after search is initialized
+* Fixed jitter of sidebars on all browsers by switching to `sticky`
+
 ### 5.1.1 <small>_ April 17, 2020</small>
 
 * Added new FontAwesome icons

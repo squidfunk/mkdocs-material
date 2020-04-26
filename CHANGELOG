@@ -1,3 +1,13 @@
+mkdocs-material-5.1.2 (2020-04-26)
+
+  * Added status information to search observable
+  * Added status information to search modal
+  * Removed announcement bar from print media
+  * Removed media query packing logic due to race conditions
+  * Fixed #1520: Gracefully disable search on file:// if Worker fails
+  * Fixed re-submission of query after search is initialized
+  * Fixed jitter of sidebars on all browsers by switching to sticky
+
 mkdocs-material-5.1.1 (2020-04-17)
 
   * Added new FontAwesome icons
