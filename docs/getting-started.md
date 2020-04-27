@@ -535,7 +535,7 @@ __You can use all those icons [directly from :fontawesome-brands-markdown:
 Markdown][19]!__
 
   [15]: #adding-social-links
-  [16]: https://material.io/resources/icons/
+  [16]: https://materialdesignicons.com/
   [17]: https://fontawesome.com/icons?d=gallery&m=free
   [18]: https://octicons.github.com/
   [19]: extensions/pymdown.md#icons
