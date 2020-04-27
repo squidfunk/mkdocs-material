@@ -1,12 +1,12 @@
 {
-  "assets/javascripts/bundle.js": "assets/javascripts/bundle.21ebb02d.min.js",
-  "assets/javascripts/bundle.js.map": "assets/javascripts/bundle.21ebb02d.min.js.map",
-  "assets/javascripts/vendor.js": "assets/javascripts/vendor.ff4ef43d.min.js",
-  "assets/javascripts/vendor.js.map": "assets/javascripts/vendor.ff4ef43d.min.js.map",
-  "assets/javascripts/worker/search.js": "assets/javascripts/worker/search.58d22e8e.min.js",
-  "assets/javascripts/worker/search.js.map": "assets/javascripts/worker/search.58d22e8e.min.js.map",
-  "assets/stylesheets/main.css": "assets/stylesheets/main.6b2d750c.min.css",
-  "assets/stylesheets/main.css.map": "assets/stylesheets/main.6b2d750c.min.css.map",
-  "assets/stylesheets/palette.css": "assets/stylesheets/palette.b88dff20.min.css",
-  "assets/stylesheets/palette.css.map": "assets/stylesheets/palette.b88dff20.min.css.map"
+  "assets/javascripts/bundle.js": "assets/javascripts/bundle.193efd2f.min.js",
+  "assets/javascripts/bundle.js.map": "assets/javascripts/bundle.193efd2f.min.js.map",
+  "assets/javascripts/vendor.js": "assets/javascripts/vendor.8caa27b7.min.js",
+  "assets/javascripts/vendor.js.map": "assets/javascripts/vendor.8caa27b7.min.js.map",
+  "assets/javascripts/worker/search.js": "assets/javascripts/worker/search.37585f48.min.js",
+  "assets/javascripts/worker/search.js.map": "assets/javascripts/worker/search.37585f48.min.js.map",
+  "assets/stylesheets/main.css": "assets/stylesheets/main.a33ada2e.min.css",
+  "assets/stylesheets/main.css.map": "assets/stylesheets/main.a33ada2e.min.css.map",
+  "assets/stylesheets/palette.css": "assets/stylesheets/palette.85bb4ebe.min.css",
+  "assets/stylesheets/palette.css.map": "assets/stylesheets/palette.85bb4ebe.min.css.map"
 }
