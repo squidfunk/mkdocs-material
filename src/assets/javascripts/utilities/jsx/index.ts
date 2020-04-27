@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-// tslint:disable no-null-keyword
+/* eslint-disable no-null/no-null */
 
 import { JSX as JSXInternal } from "preact"
 import { keys } from "ramda"

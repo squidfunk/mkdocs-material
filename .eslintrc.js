@@ -19,7 +19,8 @@ module.exports = {
         "jsdoc",
         "import",
         "prettier",
-        "html"
+        "html",
+        "no-null"
     ],
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
@@ -166,6 +167,7 @@ module.exports = {
         "no-bitwise": "off",
         "no-caller": "error",
         "no-cond-assign": "error",
+        "no-console": "error",
         "no-debugger": "error",
         "no-duplicate-case": "error",
         "no-duplicate-imports": "error",
@@ -177,6 +179,7 @@ module.exports = {
         "no-multiple-empty-lines": "error",
         "no-new-func": "error",
         "no-new-wrappers": "error",
+        "no-null/no-null": "error",
         "no-redeclare": "error",
         "no-return-await": "error",
         "no-sequences": "error",

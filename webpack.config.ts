@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 import * as CopyPlugin from "copy-webpack-plugin"
 import * as EventHooksPlugin from "event-hooks-webpack-plugin"
 import * as fs from "fs"

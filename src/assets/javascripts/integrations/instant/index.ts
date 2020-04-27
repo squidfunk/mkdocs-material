@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+/* eslint-disable no-null/no-null */
+
 import { NEVER, Observable, Subject, fromEvent, merge, of } from "rxjs"
 import { ajax } from "rxjs//ajax"
 import {

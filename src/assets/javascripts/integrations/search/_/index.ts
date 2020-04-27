@@ -250,7 +250,7 @@ export class Search {
 
       /* Log errors to console (for now) */
       } catch (err) {
-        // tslint:disable-next-line no-console
+        // eslint-disable-next-line no-console
         console.warn(`Invalid query: ${value} – see https://bit.ly/2s3ChXG`)
       }
     }
