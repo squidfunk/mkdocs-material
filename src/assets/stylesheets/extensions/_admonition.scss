@@ -53,7 +53,7 @@ $admonitions: (
     $icon: nth($props, 1);
 
     // Inline icon through string-replace-loader in webpack
-    --md-admonition-icon--#{$name}: url("{{ #{$icon} }}");
+    --md-admonition-icon--#{$name}: svg-load("@mdi/svg/svg/#{$icon}.svg");
   }
 }
 
