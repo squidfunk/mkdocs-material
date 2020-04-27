@@ -70,6 +70,7 @@
     "modularscale-sass": "^3.0.10",
     "postcss-inline-svg": "^4.1.0",
     "postcss-loader": "^3.0.0",
+    "postcss-svgo": "^4.0.2",
     "preact": "^10.4.1",
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
