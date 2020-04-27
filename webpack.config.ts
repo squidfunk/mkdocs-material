@@ -25,6 +25,7 @@ import * as EventHooksPlugin from "event-hooks-webpack-plugin"
 import * as fs from "fs"
 import { minify as minhtml } from "html-minifier"
 import IgnoreEmitPlugin from "ignore-emit-webpack-plugin"
+import ImageminPlugin from "imagemin-webpack-plugin"
 import MiniCssExtractPlugin = require("mini-css-extract-plugin")
 import * as path from "path"
 import { toPairs } from "ramda"
@@ -294,6 +295,16 @@ export default (_env: never, args: Configuration): Configuration[] => {
               /* Save template with replaced assets */
               fs.writeFileSync("material/base.html", template, "utf8")
             }
+          }
+        }),
+
+        /* Minify SVGs */
+        new ImageminPlugin({
+          svgo: {
+            plugins: [
+              { removeDimensions: true },
+              { removeViewBox: false }
+            ]
           }
         })
       ],
