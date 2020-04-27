@@ -375,11 +375,12 @@ kbd {
     }
   }
 
-  // Limit width to container
+  // Limit width to container, scale height proportionally
   iframe,
   img,
   svg {
     max-width: 100%;
+    height: auto;
   }
 
   // Data tables
