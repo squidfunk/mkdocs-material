@@ -81,7 +81,7 @@ export interface Keyboard extends Key {
  *   through keyboard input.
  *
  * The keyboard observable is returned and can be used to monitor the keyboard
- * in order toassign further hotkeys to custom functions.
+ * in order to assign further hotkeys to custom functions.
  *
  * @return Keyboard observable
  */

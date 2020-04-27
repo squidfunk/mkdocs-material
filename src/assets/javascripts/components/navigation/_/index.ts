@@ -40,7 +40,8 @@ import {
 /**
  * Navigation for [screen -]
  */
-interface NavigationBelowScreen {} // tslint:disable-line
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface NavigationBelowScreen {}
 
 /**
  * Navigation for [screen +]

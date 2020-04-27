@@ -308,14 +308,14 @@ export function initialize(config: unknown) {
   hash$
     .pipe(
       tap(() => setToggle("search", false)),
-      delay(125), // ensure that it runs after the body scroll reset...
+      delay(125) // ensure that it runs after the body scroll reset...
     )
       .subscribe(hash => setLocationHash(`#${hash}`))
 
   // TODO: scroll restoration must be centralized
   combineLatest([
     watchToggle("search"),
-    tablet$,
+    tablet$
   ])
     .pipe(
       withLatestFrom(viewport$),

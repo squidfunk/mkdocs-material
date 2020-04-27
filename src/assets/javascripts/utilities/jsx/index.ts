@@ -165,6 +165,7 @@ export function h(
  * Namespace
  * ------------------------------------------------------------------------- */
 
+// eslint-disable-next-line no-redeclare
 export declare namespace h {
   namespace JSX {
     type Element = HTMLElement | SVGElement

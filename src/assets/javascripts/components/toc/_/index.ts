@@ -51,7 +51,8 @@ import {
 /**
  * Table of contents for [tablet -]
  */
-interface TableOfContentsBelowTablet {} // tslint:disable-line
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface TableOfContentsBelowTablet {}
 
 /**
  * Table of contents for [tablet +]
