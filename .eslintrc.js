@@ -6,7 +6,7 @@ It represents the closest reasonable ESLint configuration to this
 project's original TSLint configuration.
 
 We recommend eventually switching this configuration to extend from
-the recommended rulesets in typescript-eslint. 
+the recommended rulesets in typescript-eslint.
 https://github.com/typescript-eslint/tslint-to-eslint-config/blob/master/docs/FAQs.md
 
 Happy linting! 💖
@@ -28,7 +28,12 @@ module.exports = {
     },
     "plugins": [
         "@typescript-eslint",
-        "@typescript-eslint/tslint"
+        "@typescript-eslint/tslint",
+        "jsdoc",
+        "import",
+        "prefer-arrow",
+        "no-null",
+        "prettier"
     ],
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
@@ -73,10 +78,12 @@ module.exports = {
             }
         ],
         "@typescript-eslint/indent": [
-            "error",
-            4,
+            "off",
+            2,
             {
                 "ObjectExpression": "first",
+                "SwitchCase": 2, // needs tweaking
+                "ignoreComments": true,
                 "FunctionDeclaration": {
                     "parameters": "first"
                 },
@@ -219,6 +226,7 @@ module.exports = {
         "prefer-arrow/prefer-arrow-functions": "error",
         "prefer-const": "error",
         "prefer-object-spread": "error",
+        "prettier/prettier": "off",
         "quote-props": [
             "error",
             "consistent-as-needed"
