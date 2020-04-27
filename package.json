@@ -75,7 +75,7 @@
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "string-replace-loader": "^2.3.0",
-    "stylelint": "^13.3.2",
+    "stylelint": "^13.3.3",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
