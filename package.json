@@ -69,7 +69,7 @@
     "mini-css-extract-plugin": "^0.9.0",
     "modularscale-sass": "^3.0.10",
     "postcss-loader": "^3.0.0",
-    "preact": "^10.4.0",
+    "preact": "^10.4.1",
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
     "sass": "^1.26.3",
