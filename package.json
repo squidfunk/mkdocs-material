@@ -72,7 +72,7 @@
     "preact": "^10.4.0",
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
-    "sass": "^1.26.3",
+    "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "string-replace-loader": "^2.3.0",
     "stylelint": "^13.3.2",
