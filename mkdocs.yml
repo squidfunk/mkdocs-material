@@ -127,6 +127,10 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting started: getting-started.md
+  - Customization: customization.md
+  - Data privacy: data-privacy.md
+  - Contributing: contributing.md
+  - License: license.md
   - Extensions:
     - Admonition: extensions/admonition.md
     - CodeHilite: extensions/codehilite.md
@@ -143,10 +147,6 @@ nav:
     - Upgrading to 5.x: releases/5.md
     - Upgrading to 4.x: releases/4.md
     - Changelog: releases/changelog.md
-  - Customization: customization.md
-  - Data privacy: data-privacy.md
-  - Contributing: contributing.md
-  - License: license.md
 
 # Google Analytics
 google_analytics:
