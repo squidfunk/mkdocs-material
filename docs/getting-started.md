@@ -527,15 +527,15 @@ theme:
 All icons are directly inlined as `*.svg` files, so no further requests will be
 made. Icon sets which are bundled with Material for MkDocs:
 
-* [Material Design icons][16] (`material`): 3.8k icons
-* [FontAwesome icons][17] (`fontawesome`): 1.5k icons
+* [Material Design icons][16] (`material`): 5.1k icons
+* [FontAwesome icons][17] (`fontawesome`): 1.6k icons
 * [GitHub's Octicons][18] (`octicons`): 200 icons
 
 __You can use all those icons [directly from :fontawesome-brands-markdown:
 Markdown][19]!__
 
   [15]: #adding-social-links
-  [16]: https://material.io/resources/icons/
+  [16]: https://materialdesignicons.com/
   [17]: https://fontawesome.com/icons?d=gallery&m=free
   [18]: https://octicons.github.com/
   [19]: extensions/pymdown.md#icons

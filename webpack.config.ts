@@ -20,13 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-// tslint:disable no-var-requires
-
 import * as CopyPlugin from "copy-webpack-plugin"
 import * as EventHooksPlugin from "event-hooks-webpack-plugin"
 import * as fs from "fs"
 import { minify as minhtml } from "html-minifier"
 import IgnoreEmitPlugin from "ignore-emit-webpack-plugin"
+import ImageminPlugin from "imagemin-webpack-plugin"
 import MiniCssExtractPlugin = require("mini-css-extract-plugin")
 import * as path from "path"
 import { toPairs } from "ramda"
@@ -34,16 +33,6 @@ import { minify as minjs } from "terser"
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin"
 import { Configuration } from "webpack"
 import * as AssetsManifestPlugin from "webpack-assets-manifest"
-
-/* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * Material icons
- */
-const data = require("material-design-icons-svg/paths")
-const icon = require("material-design-icons-svg")(data)
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -97,36 +86,24 @@ function config(args: Configuration): Configuration {
               }
             },
             {
-              loader: "string-replace-loader",
-              options: {
-                multiple: [
-                  {
-                    search: "\\{{2}\\s+?([^}]+)\\s+?\\}{2}",
-                    replace(_: string, props: string) {
-                      const [name, color] = props.split(" ")
-
-                      /* Load icon and set color, if given */
-                      const svg = icon.getSVG(
-                        path.basename(name, ".json"),
-                        color ? ` style="fill: ${color}"` : undefined
-                      )
-                        .replace(/"/g, "'")
-                        .replace(/#/g, "%23")
-
-                      /* Return encoded icon */
-                      return `data:image/svg+xml;utf8,${svg}`
-                    },
-                    flags: "g"
-                  }
-                ]
-              }
-            },
-            {
               loader: "postcss-loader",
               options: {
                 ident: "postcss",
                 plugins: () => [
-                  require("autoprefixer")()
+                  require("autoprefixer")(),
+                  require("postcss-inline-svg")({
+                    paths: [
+                      path.resolve(__dirname, "node_modules")
+                    ],
+                    encode: false
+                  }),
+                  require("postcss-svgo")({
+                    plugins: [
+                      { removeDimensions: true },
+                      { removeViewBox: false }
+                    ],
+                    encode: false
+                  })
                 ],
                 sourceMap: true
               }
@@ -238,16 +215,11 @@ export default (_env: never, args: Configuration): Configuration[] => {
           context: "node_modules/@fortawesome/fontawesome-free/svgs"
         }),
 
-        /* Material icons */
+        /* Material Design icons */
         new CopyPlugin([
-          {
-            to: ".icons/material/[name].svg",
-            from: "**/*.json",
-            toType: "template",
-            transform: (_, file) => icon.getSVG(path.basename(file, ".json"))
-          }
+          { to: ".icons/material", from: "*.svg" }
         ], {
-          context: "node_modules/material-design-icons-svg/paths"
+          context: "node_modules/@mdi/svg/svg"
         }),
 
         /* GitHub octicons */
@@ -323,6 +295,16 @@ export default (_env: never, args: Configuration): Configuration[] => {
               /* Save template with replaced assets */
               fs.writeFileSync("material/base.html", template, "utf8")
             }
+          }
+        }),
+
+        /* Minify SVGs */
+        new ImageminPlugin({
+          svgo: {
+            plugins: [
+              { removeDimensions: true },
+              { removeViewBox: false }
+            ]
           }
         })
       ],
