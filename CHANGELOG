@@ -1,3 +1,11 @@
+mkdocs-material-5.1.4 (2020-04-30)
+
+  * Switched to @mdi/svg Material Design icon package
+  * Fixed #1655: Unnecessary scrollbar for search results on Windows
+  * Fixed #1659: Navigation may disappear after switching viewports
+  * Fixed occasional distortions for images with explicit dimensions
+  * Fixed errors in German translations
+
 mkdocs-material-5.1.3 (2020-04-26)
 
   * Fixed overflowing content area after switch to flexbox
@@ -81,10 +89,10 @@ mkdocs-material-4.5.1 (2019-12-02)
 
 mkdocs-material-4.5.0 (2019-11-16)
 
-  * Upgraded EmojiOne to Tweomji due to licensing issues
-  * Temporarily pinned PyMdown and Markdown due to upcoming changes
-  * Improved GitHub statistics retrieval
+  * Fixed #1330: Upgraded EmojiOne to Tweomji due to licensing issues
+  * Fixed #1339: Temporarily pinned PyMdown and Markdown due to
   * Fixed errors in Greek translations
+  * Improved GitHub statistics retrieval
 
 mkdocs-material-4.4.3 (2019-10-03)
 
