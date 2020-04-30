@@ -21,8 +21,8 @@ pip show mkdocs-material
 ### 5.1.4 <small>_ April 30, 2020</small>
 
 * Switched to [@mdi/svg][3] Material Design icon package
-* Fixed #1655: Unnecessary scrollbar for search results on Windows
-* Fixed #1659: Navigation may disappear after switching viewports
+* Fixed #1655: Navigation may disappear after switching viewports
+* Fixed #1659: Unnecessary scrollbar for search results on Windows
 * Fixed occasional distortions for images with explicit dimensions
 * Fixed errors in German translations
 
