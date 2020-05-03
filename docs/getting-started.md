@@ -614,6 +614,10 @@ extra:
       link: https://linkedin.com/in/squidfunk
 ```
 
+By default, the link `title` will be set to the domain name, e.g. _github.com_.
+If you want to set a discernable name, e.g., to improve your Lighthouse score,
+you can set the `name` attribute on each social link.
+
   [21]: #icons
 
 ### Adding a Web App Manifest
