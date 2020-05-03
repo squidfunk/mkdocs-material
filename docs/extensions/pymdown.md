@@ -327,7 +327,7 @@ Result:
     :banana: Banana | Yellow
     :kiwi:   Kiwi   | Green
 
-[30]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+[30]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
 
 ### Tasklist
 
