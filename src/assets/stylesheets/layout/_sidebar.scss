@@ -29,6 +29,21 @@ $md-toggle__drawer--checked:
   "[data-md-toggle=\"drawer\"]:checked ~ .md-container";
 
 // ----------------------------------------------------------------------------
+// Keyframes
+// ----------------------------------------------------------------------------
+
+// Activate scroll snapping with delay
+@keyframes md-sidebar__scrollwrap--hack {
+  0%, 99% {
+    scroll-snap-type: none;
+  }
+
+  100% {
+    scroll-snap-type: y mandatory;
+  }
+}
+
+// ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
@@ -111,7 +126,14 @@ $md-toggle__drawer--checked:
     overflow-y: auto;
     // Hack: reduce jitter
     backface-visibility: hidden;
-    scroll-snap-type: y mandatory;
+
+    // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
+    // to the bottom if `scroll-snap-type` is set on the initial render. For
+    // this reason, we use an animation to set scroll snaping with a slight
+    // delay, which seems to fix the issue (#1667).
+    .js & {
+      animation: md-sidebar__scrollwrap--hack 400ms forwards;
+    }
 
     // [tablet -]: Adjust margins
     @include break-to-device(tablet) {
