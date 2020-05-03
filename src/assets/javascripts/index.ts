@@ -46,7 +46,8 @@ import {
   take,
   shareReplay,
   pluck,
-  catchError
+  catchError,
+  map
 } from "rxjs/operators"
 
 import {
@@ -352,8 +353,28 @@ export function initialize(config: unknown) {
       })
 
   /* Enable instant loading, if not on file:// protocol */
-  if (config.features.includes("instant") && location.protocol !== "file:")
-    setupInstantLoading({ document$, location$, viewport$ })
+  if (config.features.includes("instant") && location.protocol !== "file:") {
+
+    /* Fetch sitemap and extract URL whitelist */
+    base$
+      .pipe(
+        switchMap(base => ajax({
+          url: `${base}/sitemap.xml`,
+          responseType: "document",
+          withCredentials: true
+        })
+          .pipe<Document>(
+            pluck("response")
+          )
+        ),
+        map(document => (
+          getElements("loc", document).map(node => node.textContent!)
+        ))
+      )
+        .subscribe(urls => {
+          setupInstantLoading(urls, { document$, location$, viewport$ })
+        })
+  }
 
   /* ----------------------------------------------------------------------- */
 
