@@ -36,6 +36,7 @@ $md-toggle__drawer--checked:
 .md-sidebar {
   position: sticky;
   top: px2rem(48px);
+  align-self: flex-start;
   width: px2rem(242px);
   padding: px2rem(24px) 0;
   overflow: hidden;
