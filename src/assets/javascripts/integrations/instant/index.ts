@@ -100,7 +100,7 @@ interface SetupOptions {
  * @param options - Options
  */
 export function setupInstantLoading(
-  { document$, viewport$, location$ }: SetupOptions
+  urls: string[], { document$, viewport$, location$ }: SetupOptions
 ): void {
 
   /* Disable automatic scroll restoration */
@@ -125,7 +125,11 @@ export function setupInstantLoading(
       switchMap(ev => {
         if (ev.target instanceof HTMLElement) {
           const el = ev.target.closest("a")
-          if (el && !el.target && isLocalLocation(el)) {
+          if (
+            el && !el.target &&
+            isLocalLocation(el) &&
+            urls.includes(el.href)
+          ) {
             if (!isAnchorLocation(el))
               ev.preventDefault()
             return of(el)
