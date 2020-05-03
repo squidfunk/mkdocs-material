@@ -376,11 +376,15 @@ kbd {
   }
 
   // Limit width to container, scale height proportionally
-  iframe,
   img,
   svg {
     max-width: 100%;
     height: auto;
+  }
+
+  // Limit width to container
+  iframe {
+    max-width: 100%;
   }
 
   // Data tables
