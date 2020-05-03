@@ -1,3 +1,10 @@
+mkdocs-material-5.1.5 (2020-05-03)
+
+  * Added name attribute for social links to set link title
+  * Fixed #1623: Allow arbitrary links in social links
+  * Fixed #1664: Height of iframe is not adjustable
+  * Fixed #1667: Sidebars are scrolled to bottom on load (bug in Chrome 81+)
+
 mkdocs-material-5.1.4 (2020-04-30)
 
   * Switched to @mdi/svg Material Design icon package
