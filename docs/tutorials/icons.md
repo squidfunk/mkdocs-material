@@ -51,6 +51,9 @@ mkdocs.yml
 
 ## Usage
 
+!!! tip
+    You can find all provided icons [here](https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons). For easy reference, please refer to the official links to the icon sets.
+
 You can now place any `.svg` icon within your folder `theme/.icons/bootstrap` to make them accessible (e.g. copy over all downloaded [Bootstrap Icons][bootstrap-icons]). They are referenced similar to the provided icon sets.
 
 ```yaml
