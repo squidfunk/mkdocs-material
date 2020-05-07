@@ -13,7 +13,7 @@ However, you can add your own custom icons or third party icon sets to your docu
 
 ## Goal
 
-With this tutorial, we will add [Bootstrap Icons][bootstrap-icons], a ready-to-use icon set. These icons will be used to customize the icons available in within `mkdocs.yml`, namely `theme.icon` and the social icons `extra.social.icon`.
+With this tutorial, we will add [Bootstrap Icons][bootstrap-icons], a ready-to-use icon set. These icons will be used to customize the icons available in within `mkdocs.yml`, namely `theme.icon` and the social icons `extra.social.icon`. Furthermore, we will configure Material to access these icons from within any markdown file.
 
 ## Setup
 
@@ -49,6 +49,37 @@ theme
 mkdocs.yml
 ```
 
+### Embed Icon Sets in Markdown (optional)
+
+To allow Material to access the icons for markdown files, we will use the [pymdownx.emoji extension][emoji-extension] with a custom icon index.
+
+The extension will pick up the provided icon sets on its own. However, since the extension does not have access to your MkDocs environment, it cannot read your customized icons directly. If you have custom icons set specified, please refer to the "Custom Icon Set" tab below.
+
+=== "Default"
+
+    ```yaml
+    markdown_extensions:
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    ```
+
+=== "Custom Icon Sets"
+
+    ```yaml
+    markdown_extensions:
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+        # Specify the relative path to your theme/.icons folder
+        options:
+            custom_icons: 
+            - theme/.icons
+    ```
+
+!!! warning
+    Some YAML linters display an error when specifying these python functions in the YAML file. Please do *not* escape them, because then MKDocs will throw an error when building.
+
 ## Usage
 
 !!! tip
@@ -71,4 +102,24 @@ extra:
           link: https://getbootstrap.com/
 ```
 
+If you configured Material to [embed icons in Markdown](#embed-icon-sets-in-markdown-optional), you can simply specify the icon by its path, separated by hyphens: `bootstrap/circle-square.svg` would become `:bootstrap-circle-square:`.
+
+!!! example
+
+    === "Output"
+
+        * :material-account-circle: – Material Design icons
+        * :fontawesome-regular-laugh-wink: – FontAwesome icons
+        * :octicons-octoface: – GitHub's Octicons
+        * :bootstrap-circle-square: - Custom Icons
+
+    === "Markdown"
+        ``` markdown
+        * :material-account-circle: – Material Design icons
+        * :fontawesome-regular-laugh-wink: – FontAwesome icons
+        * :octicons-octoface: – GitHub's Octicons
+        * :bootstrap-circle-square: - Custom Icons
+        ```
+
 [bootstrap-icons]: https://icons.getbootstrap.com/
+[emoji-extension]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
