@@ -17,9 +17,9 @@ With this tutorial, we will add [Bootstrap Icons][bootstrap-icons], a ready-to-u
 
 ## Setup
 
-All icons provided by Material are placed within the `.icons` folder. Each icon set provided is placed within its own sub-folder to avoid naming conflicts for the same icon name. They are accessible using the relative file name (without extension): `fontawesome/brands/github`.
+All icons provided by Material are placed within the [`.icons`][material-icons] folder. Each icon set provided is placed within its own sub-folder to avoid naming conflicts for the same icon name. They are accessible using the relative file name (without extension): `fontawesome/brands/github`.
 
-In order to add the Bootstrap Icons, we will need to extend the theme to gain access to the `.icons` folder. For that, we create an folder `theme` (or any other name) within the project root and specify it as `custom_dir`.
+In order to add the Bootstrap Icons, we will need to extend the theme to gain access to your `.icons` folder. For that, we create an folder `theme` (or any other name) within the project root and specify it as `custom_dir`.
 
 ```yaml
 theme:
@@ -83,7 +83,7 @@ The extension will pick up the provided icon sets on its own. However, since the
 ## Usage
 
 !!! tip
-    You can find all provided icons [here](https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons). For easy reference, please refer to the official links to the icon sets.
+    You can find all provided icons [here][material-icons]. For easy reference, please refer to the official links to the icon sets.
 
 You can now place any `.svg` icon within your folder `theme/.icons/bootstrap` to make them accessible (e.g. copy over all downloaded [Bootstrap Icons][bootstrap-icons]). They are referenced similar to the provided icon sets.
 
@@ -111,7 +111,7 @@ If you configured Material to [embed icons in Markdown](#embed-icon-sets-in-mark
         * :material-account-circle: – Material Design icons
         * :fontawesome-regular-laugh-wink: – FontAwesome icons
         * :octicons-octoface: – GitHub's Octicons
-        * :bootstrap-circle-square: - Custom Icons
+        * <svg class="bi bi-circle-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M0 6a6 6 0 1112 0A6 6 0 010 6z"/><path d="M12.93 5h1.57a.5.5 0 01.5.5v9a.5.5 0 01-.5.5h-9a.5.5 0 01-.5-5v-1.57a6.953 6.953 0 01-1-.22v1.79A1.5 1.5 0 005.5 16h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0014.5 4h-1.79c.097.324.17.658.22 1z"/></svg> - Custom Icons
 
     === "Markdown"
         ``` markdown
@@ -122,4 +122,5 @@ If you configured Material to [embed icons in Markdown](#embed-icon-sets-in-mark
         ```
 
 [bootstrap-icons]: https://icons.getbootstrap.com/
+[material-icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 [emoji-extension]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
