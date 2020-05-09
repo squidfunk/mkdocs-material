@@ -24,7 +24,7 @@
 // which must be tackled after we gathered some feedback on v5.
 // tslint:disable
 
-import { values } from "ramda"
+import { sortBy, prop, values } from "ramda"
 import {
   merge,
   combineLatest,
@@ -367,9 +367,31 @@ export function initialize(config: unknown) {
             pluck("response")
           )
         ),
-        map(document => (
-          getElements("loc", document).map(node => node.textContent!)
-        ))
+        withLatestFrom(base$),
+        map(([document, base]) => {
+          const urls = getElements("loc", document)
+            .map(node => node.textContent!)
+
+          // Hack: This is a temporary fix to normalize instant loading lookup
+          // on localhost and Netlify previews. If this approach proves to be
+          // suitable, we'll refactor URL whitelisting anyway. We take the two
+          // shortest URLs and determine the common prefix to isolate the
+          // domain. If there're no two domains, we just leave it as-is, as
+          // there isn't anything to be loaded anway.
+          if (urls.length > 1) {
+            const [a, b] = sortBy(prop("length"), urls)
+
+            /* Determine common prefix */
+            let index = 0
+            while (a.charAt(index) === b.charAt(index))
+              index++
+
+            /* Replace common prefix (i.e. base) with effective base */
+            for (let i = 0; i < urls.length; i++)
+              urls[i] = urls[i].replace(a.slice(0, index), `${base}/`)
+          }
+          return urls
+        })
       )
         .subscribe(urls => {
           setupInstantLoading(urls, { document$, location$, viewport$ })
