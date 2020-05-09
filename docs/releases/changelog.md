@@ -18,6 +18,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.1.6 <small>_ May 9, 2020</small>
+
+* Added Burmese translations
+* Added general anchor offset solution using `scroll-margin-top`
+* Fixed #1653: Instant loading shouldn't intercept links to `*.html` files
+
 ### 5.1.5 <small>_ May 3, 2020</small>
 
 * Added `name` attribute for social links to set link `title`

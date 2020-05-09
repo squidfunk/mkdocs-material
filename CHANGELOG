@@ -1,3 +1,9 @@
+mkdocs-material-5.1.6 (2020-05-09)
+
+  * Added Burmese translations
+  * Added general anchor offset solution using scroll-margin-top
+  * Fixed #1653: Instant loading shouldn't intercept links to *.html files
+
 mkdocs-material-5.1.5 (2020-05-03)
 
   * Added name attribute for social links to set link title
