@@ -29,12 +29,29 @@ $md-toggle__drawer--checked:
   "[data-md-toggle=\"drawer\"]:checked ~ .md-container";
 
 // ----------------------------------------------------------------------------
+// Keyframes
+// ----------------------------------------------------------------------------
+
+// Activate scroll snapping with delay
+@keyframes md-sidebar__scrollwrap--hack {
+  0%, 99% {
+    scroll-snap-type: none;
+  }
+
+  100% {
+    scroll-snap-type: y mandatory;
+  }
+}
+
+// ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
 // Sidebar container
 .md-sidebar {
-  position: absolute;
+  position: sticky;
+  top: px2rem(48px);
+  align-self: flex-start;
   width: px2rem(242px);
   padding: px2rem(24px) 0;
   overflow: hidden;
@@ -42,12 +59,6 @@ $md-toggle__drawer--checked:
   // Hide for print
   @media print {
     display: none;
-  }
-
-  // Lock sidebar to container height (account for fixed header)
-  &[data-md-state="lock"] {
-    position: fixed;
-    top: px2rem(48px);
   }
 
   // [tablet -]: Convert navigation to drawer
@@ -95,32 +106,15 @@ $md-toggle__drawer--checked:
   // Secondary sidebar with table of contents
   &--secondary {
     display: none;
+    order: 2;
 
     // [tablet landscape +]: Show table of contents next to body copy
     @include break-from-device(tablet landscape) {
       display: block;
-      margin-left: calc(100% - #{px2rem(242px)});
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: calc(100% - #{px2rem(242px)});
-        margin-left: initial;
-      }
 
       // Ensure smooth scrolling on iOS
       .md-sidebar__scrollwrap {
         touch-action: pan-y;
-      }
-    }
-
-    // [screen +]: Limit to grid
-    @include break-from-device(screen) {
-      margin-left: px2rem((1220 - 242) * 1px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: px2rem((1220 - 242) * 1px);
-        margin-left: initial;
       }
     }
   }
@@ -132,7 +126,14 @@ $md-toggle__drawer--checked:
     overflow-y: auto;
     // Hack: reduce jitter
     backface-visibility: hidden;
-    scroll-snap-type: y mandatory;
+
+    // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
+    // to the bottom if `scroll-snap-type` is set on the initial render. For
+    // this reason, we use an animation to set scroll snaping with a slight
+    // delay, which seems to fix the issue (#1667).
+    .js & {
+      animation: md-sidebar__scrollwrap--hack 400ms forwards;
+    }
 
     // [tablet -]: Adjust margins
     @include break-to-device(tablet) {

@@ -558,7 +558,7 @@ $md-toggle__search--checked:
   &__article {
     position: relative;
     padding: 0 px2rem(16px);
-    overflow: auto;
+    overflow: hidden;
 
     // [tablet landscape +]: Increase left indent
     @include break-from-device(tablet landscape) {

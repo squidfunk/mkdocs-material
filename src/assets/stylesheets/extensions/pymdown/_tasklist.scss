@@ -26,8 +26,8 @@
 
 // Icon definitions
 :root {
-  --md-tasklist-icon: url("{{ checkbox-blank-circle }}");
-  --md-tasklist-icon--checked: url("{{ check-circle }}");
+  --md-tasklist-icon: svg-load("@mdi/svg/svg/checkbox-blank-circle.svg");
+  --md-tasklist-icon--checked: svg-load("@mdi/svg/svg/check-circle.svg");
 }
 
 // ----------------------------------------------------------------------------

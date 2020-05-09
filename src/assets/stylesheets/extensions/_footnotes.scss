@@ -26,7 +26,7 @@
 
 // Icon definitions
 :root {
-  --md-footnotes-icon: url("{{ keyboard-return }}");
+  --md-footnotes-icon: svg-load("@mdi/svg/svg/keyboard-return.svg");
 }
 
 // ----------------------------------------------------------------------------

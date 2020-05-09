@@ -26,26 +26,17 @@
 
 // Content container
 .md-content {
+  flex: 1;
+  max-width: 100%;
 
-  // [tablet landscape +]: Add space for table of contents
-  @include break-from-device(tablet landscape) {
-    margin-right: px2rem(242px);
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: initial;
-      margin-left: px2rem(242px);
-    }
+  // [tablet landscape]: Decrease horizontal width
+  @include break-at-device(tablet landscape) {
+    max-width: calc(100% - #{px2rem(242px)});
   }
 
-  // [screen +]: Add space for table of contents
+  // [screen +]: Decrease horizontal width
   @include break-from-device(screen) {
-    margin-left: px2rem(242px);
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: px2rem(242px);
-    }
+    max-width: calc(100% - #{px2rem(242px)} * 2);
   }
 
   // Define spacing

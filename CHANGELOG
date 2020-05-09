@@ -1,3 +1,38 @@
+mkdocs-material-5.1.6 (2020-05-09)
+
+  * Added Burmese translations
+  * Added general anchor offset solution using scroll-margin-top
+  * Fixed #1653: Instant loading shouldn't intercept links to *.html files
+
+mkdocs-material-5.1.5 (2020-05-03)
+
+  * Added name attribute for social links to set link title
+  * Fixed #1623: Allow arbitrary links in social links
+  * Fixed #1664: Height of iframe is not adjustable
+  * Fixed #1667: Sidebars are scrolled to bottom on load (bug in Chrome 81+)
+
+mkdocs-material-5.1.4 (2020-04-30)
+
+  * Switched to @mdi/svg Material Design icon package
+  * Fixed #1655: Navigation may disappear after switching viewports
+  * Fixed #1659: Unnecessary scrollbar for search results on Windows
+  * Fixed occasional distortions for images with explicit dimensions
+  * Fixed errors in German translations
+
+mkdocs-material-5.1.3 (2020-04-26)
+
+  * Fixed overflowing content area after switch to flexbox
+
+mkdocs-material-5.1.2 (2020-04-26)
+
+  * Added status information to search observable
+  * Added status information to search modal
+  * Removed announcement bar from print media
+  * Removed media query packing logic due to race conditions
+  * Fixed #1520: Gracefully disable search on file:// if Worker fails
+  * Fixed re-submission of query after search is initialized
+  * Fixed jitter of sidebars on all browsers by switching to sticky
+
 mkdocs-material-5.1.1 (2020-04-17)
 
   * Added new FontAwesome icons
@@ -67,10 +102,10 @@ mkdocs-material-4.5.1 (2019-12-02)
 
 mkdocs-material-4.5.0 (2019-11-16)
 
-  * Upgraded EmojiOne to Tweomji due to licensing issues
-  * Temporarily pinned PyMdown and Markdown due to upcoming changes
-  * Improved GitHub statistics retrieval
+  * Fixed #1330: Upgraded EmojiOne to Tweomji due to licensing issues
+  * Fixed #1339: Temporarily pinned PyMdown and Markdown due to
   * Fixed errors in Greek translations
+  * Improved GitHub statistics retrieval
 
 mkdocs-material-4.4.3 (2019-10-03)
 

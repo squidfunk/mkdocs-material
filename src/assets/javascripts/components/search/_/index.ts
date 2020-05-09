@@ -21,9 +21,23 @@
  */
 
 import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
-import { map, switchMap } from "rxjs/operators"
+import {
+  filter,
+  map,
+  mapTo,
+  sample,
+  startWith,
+  switchMap,
+  take
+} from "rxjs/operators"
 
-import { SearchResult } from "integrations/search"
+import { WorkerHandler } from "browser"
+import {
+  SearchMessage,
+  SearchResult,
+  isSearchQueryMessage,
+  isSearchReadyMessage
+} from "integrations/search"
 
 import { SearchQuery } from "../query"
 
@@ -32,9 +46,19 @@ import { SearchQuery } from "../query"
  * ------------------------------------------------------------------------- */
 
 /**
+ * Search status
+ */
+export type SearchStatus =
+  | "waiting"                          /* Search waiting for initialization */
+  | "ready"                            /* Search ready */
+
+/* ------------------------------------------------------------------------- */
+
+/**
  * Search
  */
 export interface Search {
+  status: SearchStatus                 /* Search status */
   query: SearchQuery                   /* Search query */
   result: SearchResult[]               /* Search result list */
 }
@@ -59,18 +83,44 @@ interface MountOptions {
 /**
  * Mount search from source observable
  *
+ * @param handler - Worker handler
  * @param options - Options
  *
  * @return Operator function
  */
 export function mountSearch(
+  { rx$, tx$ }: WorkerHandler<SearchMessage>,
   { query$, reset$, result$ }: MountOptions
 ): OperatorFunction<HTMLElement, Search> {
   return pipe(
-    switchMap(() => combineLatest([query$, result$, reset$])
-      .pipe(
-        map(([query, result]) => ({ query, result }))
-      )
-    )
+    switchMap(() => {
+
+      /* Compute search status */
+      const status$ = rx$
+        .pipe(
+          filter(isSearchReadyMessage),
+          mapTo<SearchStatus>("ready"),
+          startWith("waiting")
+        ) as Observable<SearchStatus>
+
+      /* Re-emit the latest query when search is ready */
+      tx$
+        .pipe(
+          filter(isSearchQueryMessage),
+          sample(status$),
+          take(1)
+        )
+          .subscribe(tx$.next.bind(tx$))
+
+      /* Combine into single observable */
+      return combineLatest([status$, query$, result$, reset$])
+        .pipe(
+          map(([status, query, result]) => ({
+            status,
+            query,
+            result
+          }))
+        )
+    })
   )
 }

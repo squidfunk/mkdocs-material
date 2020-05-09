@@ -18,6 +18,43 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.1.6 <small>_ May 9, 2020</small>
+
+* Added Burmese translations
+* Added general anchor offset solution using `scroll-margin-top`
+* Fixed #1653: Instant loading shouldn't intercept links to `*.html` files
+
+### 5.1.5 <small>_ May 3, 2020</small>
+
+* Added `name` attribute for social links to set link `title`
+* Fixed #1623: Allow arbitrary links in social links
+* Fixed #1664: Height of `iframe` is not adjustable
+* Fixed #1667: Sidebars are scrolled to bottom on load (bug in Chrome 81+)
+
+### 5.1.4 <small>_ April 30, 2020</small>
+
+* Switched to [@mdi/svg][3] Material Design icon package
+* Fixed #1655: Navigation may disappear after switching viewports
+* Fixed #1659: Unnecessary scrollbar for search results on Windows
+* Fixed occasional distortions for images with explicit dimensions
+* Fixed errors in German translations
+
+  [3]: https://github.com/Templarian/MaterialDesign-SVG
+
+### 5.1.3 <small>_ April 26, 2020</small>
+
+* Fixed overflowing content area after switch to flexbox
+
+### 5.1.2 <small>_ April 26, 2020</small>
+
+* Added status information to search observable
+* Added status information to search modal
+* Removed announcement bar from print media
+* Removed media query packing logic due to race conditions
+* Fixed #1520: Gracefully disable search on `file://` if Worker fails
+* Fixed re-submission of query after search is initialized
+* Fixed jitter of sidebars on all browsers by switching to `sticky`
+
 ### 5.1.1 <small>_ April 17, 2020</small>
 
 * Added new FontAwesome icons
@@ -27,9 +64,9 @@ pip show mkdocs-material
 
 ### 5.1.0 <small>_ April 12, 2020</small>
 
-* Added support for icons from Markdown through [mkdocs-material-extensions][1]
+* Added support for icons from Markdown through [mkdocs-material-extensions][2]
 
-  [1]: https://github.com/facelessuser/mkdocs-material-extensions
+  [2]: https://github.com/facelessuser/mkdocs-material-extensions
 
 ### 5.0.2 <small>_ April 10, 2020</small>
 
@@ -79,10 +116,10 @@ pip show mkdocs-material
 
 ### 4.6.0 <small>_ December 11, 2019</small>
 
-* Added support for [mkdocs-git-revision-date-localized-plugin][2]
+* Added support for [mkdocs-git-revision-date-localized-plugin][1]
 * Fixed invalid character in Google Fonts URL
 
-  [2]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+  [1]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
 
 ### 4.5.1 <small>_ December 2, 2019</small>
 
@@ -91,13 +128,10 @@ pip show mkdocs-material
 
 ### 4.5.0 <small>_ November 16, 2019</small>
 
-* Upgraded EmojiOne to Tweomji due to [licensing issues][1330]
-* Temporarily pinned PyMdown and Markdown due to [upcoming changes][1339]
-* Improved GitHub statistics retrieval
+* Fixed #1330: Upgraded EmojiOne to Tweomji due to licensing issues
+* Fixed #1339: Temporarily pinned PyMdown and Markdown due to
 * Fixed errors in Greek translations
-
-  [1330]: https://github.com/squidfunk/mkdocs-material/pull/1330
-  [1339]: https://github.com/squidfunk/mkdocs-material/pull/1339
+* Improved GitHub statistics retrieval
 
 ### 4.4.3 <small>_ October 3, 2019</small>
 

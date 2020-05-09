@@ -57,6 +57,7 @@ import {
  */
 interface ApplyOptions {
   query$: Observable<SearchQuery>     /* Search query observable */
+  ready$: Observable<boolean>         /* Search ready observable */
   fetch$: Observable<boolean>         /* Result fetch observable */
 }
 
@@ -77,14 +78,14 @@ interface ApplyOptions {
  * @return Operator function
  */
 export function applySearchResult(
-  el: HTMLElement, { query$, fetch$ }: ApplyOptions
+  el: HTMLElement, { query$, ready$, fetch$ }: ApplyOptions
 ): MonoTypeOperatorFunction<SearchResult[]> {
   const list = getElementOrThrow(".md-search-result__list", el)
   const meta = getElementOrThrow(".md-search-result__meta", el)
   return pipe(
 
     /* Apply search result metadata */
-    withLatestFrom(query$),
+    withLatestFrom(query$, ready$),
     map(([result, query]) => {
       if (query.value) {
         setSearchResultMeta(meta, result.length)
