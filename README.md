@@ -128,6 +128,7 @@ For other installation methods, configuration options, and a demo, visit
 
 * **Open Source** —
   [AutoKeras](https://autokeras.com/),
+  [BFE](https://www.bfe-networks.net/),
   [FastAPI](https://fastapi.tiangolo.com/),
   [OpenFaaS](https://docs.openfaas.com/),
   [Pi-Hole](https://docs.pi-hole.net/),
