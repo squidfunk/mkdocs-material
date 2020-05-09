@@ -265,6 +265,7 @@ The following language codes are supported:
 <ul class="md-language-list">
   <li><code>af</code> / Afrikaans</li>
   <li><code>ar</code> / Arabic</li>
+  <li><code>my</code> / Burmese</li>
   <li><code>ca</code> / Catalan</li>
   <li><code>zh</code> / Chinese (Simplified)</li>
   <li><code>zh-Hant</code> / Chinese (Traditional)</li>
