@@ -71,3 +71,9 @@ Running this command will build the site in the `site` directory.
 If you want a different folder to be used, set the `site_dir` setting in the mkdocs.yml.
 
 After the site is built, you can push these pages to your GitHub repository.
+
+## Template
+A template to use with GitHub Actions can be found at https://github.com/Andre601/mkdocs-template  
+Just click the `Use this template`, choose a name and start with a pre-made repository.
+
+For more information read the `README.md` of the aforementioned repository.
