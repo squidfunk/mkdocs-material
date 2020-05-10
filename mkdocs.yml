@@ -142,6 +142,7 @@ nav:
   - Tutorials:
     - Notice: tutorials/index.md
     - GitHub Pages: tutorials/github-pages.md
+    - GitLab Pages: tutorials/gitlab-pages.md
     - Icons Sets: tutorials/icons.md
   - Releases:
     - Upgrading to 5.x: releases/5.md
