@@ -5,12 +5,8 @@ Some of those are listed below.
 This is the recommended way to do it.  
 You can setup and use GitHub Actions in your repository to auto-publish your docs once you commit to a specific branch, merge pull requests, or whatever action you want to perform.
 
-!!! warning "Important"
-    You need to create an Access Token with "repo" scope for the GitHub Action to work.  
-    The GitHub Token that is created with Actions may work, but has some minor issues in combination with the gh-pages branch.
-
 To begin will you need to create a new yaml file in the `.github/workflows` directory. If no such directory exists, you will need to create one.  
-Alternatively you can also head over to the *Actions* tab of your repository (when enabled) and create a new workflow from there.
+Alternatively can you also head over to the *Actions* tab of your repository (when enabled) and create a new workflow from there.
 
 Next you will need to fill the newly created file with the following content:  
 ```yaml
@@ -20,7 +16,7 @@ on:
   push:
     paths: 
     - 'docs/**'
-    - '**.yml'
+    - 'mkdocs.yml'
     branches:
     - master
 
@@ -39,12 +35,12 @@ jobs:
         python -m pip install -r requirements.txt
     - name: Deploy Files
       run: |
-        git config user.name ${{ secrets.GH_USER }}
-        git config user.email "${{ secrets.GH_MAIL }}"
-        git remote add gh-token "https://${{ secrets.GH_TOKEN}}@github.com/username/repo.git"
-        git fetch gh-token && git fetch gh-token gh-pages:gh-pages
-        python -m mkdocs gh-deploy --clean --remote-name gh-token
-        git push gh-token gh-pages
+        git config user.name "github-actions[bot]" # We can use the Username and E-Mail of GitHub Actions for Git.
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git remote add repo "https://github.com/username/repo.git"
+        git fetch repo && git fetch repo gh-pages:gh-pages
+        python -m mkdocs gh-deploy --clean --remote-name repo
+        git push repo gh-pages
 ```
 
 !!! info "Notes"
@@ -52,10 +48,8 @@ jobs:
     You can just provide `mkdocs-material>=5.0.0` and all other dependencies (MkDocs, PyMdown, ...) will be downloaded too.
     - Replace `username` and `repo` with the respective username and name of the repository the GitHub Pages is used in.
     - `push` can be switched out with any other valid action supported by GitHub Actions.
-    - It's recommended to use the `paths` setting (only available for push) with `docs/**` and `**.yml` set.  
-    This will make the Action only run when you push changes to files inside the `docs/` direcotory or towards any yaml file (i.e. mkdocs.yml)
-    - `${{ secrets.GH_USER }}` and `${{ secrets.GH_EMAIL }}` can either be an actual secret containing your username and E-Mail (recommended) or you can just switch them with your Username and E-Mail.
-    - `${{ secrets.GH_TOKEN }}` has to be a secret containing the aforementioned Access token.
+    - It's recommended to use the `paths` setting (only available for push) with `docs/**` and `mkdocs.yml` set.  
+    This will make the Action only run when you push changes to files inside the `docs/` direcotory or towards the mkdocs.yml file.
 
 The above action would now install Python, upgrade setuptools, download all listed dependencies in the requirements.txt and push the changes towards the gh-pages branch using git and the `mkdocs gh-deploy` command.
 
@@ -68,7 +62,7 @@ This command needs to be executed in the same location where the mkdocs.yml is f
     To change this can you define a different branch that the built site should be pushed against, by adding a `remote_branch` option to your mkdocs.yml and give it any name you like.
 
 ## Pushing manually
-If you want to push the built site yourself for reasons like having the GitHub Pages setup differently (not on gh-pages branch) you can do this using the `mkdocs build` command.
+If you want to push the built site yourself for reasons like having the GitHub Pages setup differently (not on gh-pages branch) you can do this using the `mkdocs build` command.  
 This command needs to be executed in the same location where the mkdocs.yml can be found.
 
 Running this command will build the site in the `site` directory.  
