@@ -46,6 +46,8 @@ jobs:
 !!! info "Notes"
     - **Your repository needs a `requirements.txt` file containing the dependencies for building the docs.**  
     You can just provide `mkdocs-material>=5.0.0` and all other dependencies (MkDocs, PyMdown, ...) will be downloaded too.
+    - You need to make a first push towards the gh-pages branch before using the action.  
+    You can just run a `gh-deploy` with MkDocs on your local repository.
     - Replace `username` and `repo` with the respective username and name of the repository the GitHub Pages is used in.
     - `push` can be switched out with any other valid action supported by GitHub Actions.
     - It's recommended to use the `paths` setting (only available for push) with `docs/**` and `mkdocs.yml` set.  
