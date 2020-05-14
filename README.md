@@ -31,7 +31,7 @@
     alt="Python Package Index"
   /></a>
   <a href="https://github.com/sponsors/squidfunk"><img
-    src="https://img.shields.io/static/v1?label=github&message=sponsors&color=ea4aaa"
+    src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub&color=ea4aaa"
   /></a>
 </p>
 
