@@ -30,8 +30,8 @@
     src="https://img.shields.io/pypi/v/mkdocs-material.svg" 
     alt="Python Package Index"
   /></a>
-  <a href="https://amzn.to/353WRpj"><img 
-    src="https://img.shields.io/static/v1?label=amazon&message=wish%20list&color=orange"
+  <a href="https://github.com/sponsors/squidfunk"><img
+    src="https://img.shields.io/static/v1?label=github&message=sponsors&color=ea4aaa"
   /></a>
 </p>
 
@@ -137,6 +137,13 @@ For other installation methods, configuration options, and a demo, visit
   [Traefik](https://docs.traefik.io/),
   [Vapor](https://docs.vapor.codes/),
   [ZeroNet](https://zeronet.io/docs/)
+
+## Sponsors
+
+If you're using this project a lot, consider [sponsoring] it! This will give me
+the opportunity to sustain my efforts maintaining it. Every contribution counts!
+
+  [2]: https://github.com/sponsors/squidfunk
 
 ## License
 
