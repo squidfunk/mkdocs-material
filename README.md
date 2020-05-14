@@ -140,8 +140,9 @@ For other installation methods, configuration options, and a demo, visit
 
 ## Sponsors
 
-If you're using this project a lot, consider [sponsoring] it! This will give me
-the opportunity to sustain my efforts maintaining it. Every contribution counts!
+If you're using this project a lot, consider [sponsoring][2] it! This will give
+me the opportunity to sustain my efforts maintaining it. Every contribution
+counts, no matter how small!
 
   [2]: https://github.com/sponsors/squidfunk
 
