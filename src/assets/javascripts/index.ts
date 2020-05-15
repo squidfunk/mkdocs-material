@@ -383,7 +383,7 @@ export function initialize(config: unknown) {
 
             /* Determine common prefix */
             let index = 0
-            while (a.charAt(index) === b.charAt(index))
+            while (a.charAt(index) === b.charAt(index) && index < a.length && index < b.length)
               index++
 
             /* Replace common prefix (i.e. base) with effective base */
