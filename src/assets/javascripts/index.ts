@@ -86,6 +86,7 @@ import {
   SearchIndex
 } from "integrations"
 import {
+  patchCodeBlocks,
   patchTables,
   patchDetails,
   patchScrollfix,
@@ -178,6 +179,7 @@ export function initialize(config: unknown) {
 
   const keyboard$ = setupKeyboard()
 
+  patchCodeBlocks({ document$, viewport$ })
   patchDetails({ document$, hash$ })
   patchScripts({ document$ })
   patchSource({ document$ })

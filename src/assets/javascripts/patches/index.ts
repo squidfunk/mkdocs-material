@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+export * from "./code"
 export * from "./details"
 export * from "./script"
 export * from "./scrollfix"
