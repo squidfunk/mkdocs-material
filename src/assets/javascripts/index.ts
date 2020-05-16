@@ -383,8 +383,11 @@ export function initialize(config: unknown) {
 
             /* Determine common prefix */
             let index = 0
-            while (a.charAt(index) === b.charAt(index))
-              index++
+            if (a === b)
+              index = a.length
+            else
+              while (a.charAt(index) === b.charAt(index))
+                index++
 
             /* Replace common prefix (i.e. base) with effective base */
             for (let i = 0; i < urls.length; i++)
