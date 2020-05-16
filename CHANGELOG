@@ -1,3 +1,8 @@
+mkdocs-material-5.1.7 (2020-05-16)
+
+  * Added keyboard focus support for overflowing code blocks
+  * Fixed #1696: Infinite loop in some cases when using instant loading
+
 mkdocs-material-5.1.6 (2020-05-09)
 
   * Added Burmese translations
