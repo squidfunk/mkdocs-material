@@ -30,8 +30,8 @@
     src="https://img.shields.io/pypi/v/mkdocs-material.svg" 
     alt="Python Package Index"
   /></a>
-  <a href="https://amzn.to/353WRpj"><img 
-    src="https://img.shields.io/static/v1?label=amazon&message=wish%20list&color=orange"
+  <a href="https://github.com/sponsors/squidfunk"><img
+    src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub&color=ea4aaa"
   /></a>
 </p>
 
@@ -121,13 +121,16 @@ For other installation methods, configuration options, and a demo, visit
   [Lyft](https://lyft.github.io/amundsen/),
   [Netflix](https://netflix.github.io/titus/),
   [Uber](https://uber.github.io/ludwig/getting_started/),
+  [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
   [SAP](https://sap.github.io/ui5-tooling/),
+  [SoundCloud](https://intervene.dev/),
   [Spotify](https://spotify.github.io/mkdocs-monorepo-plugin/),
   [Square](https://square.github.io/okhttp/),
   [Zalando](https://opensource.zalando.com/skipper/)
 
 * **Open Source** —
   [AutoKeras](https://autokeras.com/),
+  [BFE](https://www.bfe-networks.net/),
   [FastAPI](https://fastapi.tiangolo.com/),
   [OpenFaaS](https://docs.openfaas.com/),
   [Pi-Hole](https://docs.pi-hole.net/),
@@ -135,6 +138,14 @@ For other installation methods, configuration options, and a demo, visit
   [Traefik](https://docs.traefik.io/),
   [Vapor](https://docs.vapor.codes/),
   [ZeroNet](https://zeronet.io/docs/)
+
+## Sponsors
+
+If you're using this project a lot, consider [sponsoring][2] it! This will give
+me the opportunity to sustain my efforts maintaining it. Every contribution
+counts, no matter how small!
+
+  [2]: https://github.com/sponsors/squidfunk
 
 ## License
 

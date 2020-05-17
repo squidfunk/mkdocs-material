@@ -18,6 +18,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.1.7 <small>_ May 16, 2020</small>
+
+* Added keyboard focus support for overflowing code blocks
+* Fixed #1696: Infinite loop in some cases when using instant loading
+
 ### 5.1.6 <small>_ May 9, 2020</small>
 
 * Added Burmese translations
