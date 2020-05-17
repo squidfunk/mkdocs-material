@@ -1,0 +1,194 @@
+////
+/// Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+@each $name, $colors in (
+  "red":         $clr-red-400         $clr-red-300         $clr-red-600,
+  "pink":        $clr-pink-500        $clr-pink-400        $clr-pink-700,
+  "purple":      $clr-purple-400      $clr-purple-300      $clr-purple-600,
+  "deep-purple": $clr-deep-purple-400 $clr-deep-purple-300 $clr-deep-purple-500,
+  "indigo":      $clr-indigo-500      $clr-indigo-400      $clr-indigo-700,
+  "blue":        $clr-blue-500        $clr-blue-400        $clr-blue-700,
+  "light-blue":  $clr-light-blue-500  $clr-light-blue-400  $clr-light-blue-700,
+  "cyan":        $clr-cyan-500        $clr-cyan-400        $clr-cyan-700,
+  "teal":        $clr-teal-500        $clr-teal-400        $clr-teal-700,
+  "green":       $clr-green-500       $clr-green-400       $clr-green-700,
+  "light-green": $clr-light-green-500 $clr-light-green-400 $clr-light-green-700,
+  "lime":        $clr-lime-500        $clr-lime-400        $clr-lime-700,
+  "yellow":      $clr-yellow-500      $clr-yellow-400      $clr-yellow-700,
+  "amber":       $clr-amber-500       $clr-amber-400       $clr-amber-700,
+  "orange":      $clr-orange-400      $clr-orange-400      $clr-orange-600,
+  "deep-orange": $clr-deep-orange-400 $clr-deep-orange-300 $clr-deep-orange-600,
+  "brown":       $clr-brown-500       $clr-brown-400       $clr-brown-700,
+  "grey":        $clr-grey-600        $clr-grey-500        $clr-grey-700,
+  "blue-grey":   $clr-blue-grey-600   $clr-blue-grey-500   $clr-blue-grey-700
+) {
+
+  // Color palette
+  [data-md-color-primary="#{$name}"] {
+    --md-primary-fg-color:             hsla(#{hex2hsl(nth($colors, 1))}, 1);
+    --md-primary-fg-color--light:      hsla(#{hex2hsl(nth($colors, 2))}, 1);
+    --md-primary-fg-color--dark:       hsla(#{hex2hsl(nth($colors, 3))}, 1);
+
+    // Inverted text for lighter shades
+    @if index("lime" "yellow" "amber" "orange", $name) {
+      --md-primary-bg-color:           hsla(0, 0%, 0%, 0.87);
+      --md-primary-bg-color--light:    hsla(0, 0%, 0%, 0.54);
+    } @else {
+      --md-primary-bg-color:           hsla(0, 0%, 100%, 1);
+      --md-primary-bg-color--light:    hsla(0, 0%, 100%, 0.7);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: white
+// ----------------------------------------------------------------------------
+
+// Color palette
+[data-md-color-primary="white"] {
+  --md-primary-fg-color:               hsla(0, 0%, 100%, 1);
+  --md-primary-fg-color--light:        hsla(0, 0%, 100%, 0.7);
+  --md-primary-fg-color--dark:         hsla(0, 0%, 0%, 0.07);
+  --md-primary-bg-color:               hsla(0, 0%, 0%, 0.87);
+  --md-primary-bg-color--light:        hsla(0, 0%, 0%, 0.54);
+
+  // Text color shades
+  --md-text-link-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
+
+  // Add a border if there are no tabs
+  .md-hero--expand {
+    border-bottom: px2rem(1px) solid hsla(0, 0%, 0%, 0.07);
+  }
+
+  // [tablet -]: Set bottom border for hero
+  @include break-to-device(tablet) {
+
+    // Hero teaser
+    .md-hero {
+      border-bottom: px2rem(1px) solid hsla(0, 0%, 0%, 0.07);
+    }
+  }
+
+  // [tablet portrait +]: Change color of search input
+  @include break-from-device(tablet landscape) {
+
+    // Search input
+    .md-search__input {
+      background-color: hsla(0, 0%, 0%, 0.07);
+
+      // Icon color
+      + .md-search__icon {
+        color: hsla(0, 0%, 0%, 0.87);
+      }
+
+      // Placeholder color
+      &::placeholder {
+        color: hsla(0, 0%, 0%, 0.54);
+      }
+
+      // Hovered search field
+      &:hover {
+        background-color: hsla(0, 0%, 0%, 0.32);
+      }
+    }
+  }
+
+  // [screen +]: Set bottom border for tabs
+  @include break-from-device(screen) {
+
+    // Tabs with outline
+    .md-tabs {
+      border-bottom: px2rem(1px) solid hsla(0, 0%, 0%, 0.07);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: black
+// ----------------------------------------------------------------------------
+
+// Color palette
+[data-md-color-primary="black"] {
+  --md-primary-fg-color:               hsla(0, 0%, 0%, 1);
+  --md-primary-fg-color--light:        hsla(0, 0%, 0%, 0.54);
+  --md-primary-fg-color--dark:         hsla(0, 0%, 0%, 1);
+  --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
+  --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
+
+  // Text color shades
+  --md-text-link-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
+
+  // Application header (stays always on top)
+  .md-header {
+    background-color: hsla(0, 0%, 0%, 1);
+  }
+
+  // Hero teaser
+  .md-hero {
+    background-color: hsla(0, 0%, 0%, 1);
+  }
+
+  // [tablet portrait -]: Layered navigation
+  @include break-to-device(tablet portrait) {
+
+    // Repository containing source
+    .md-nav__source {
+      background-color: hsla(0, 0%, 0%, 0.87);
+    }
+  }
+
+  // [tablet landscape +]: Header-embedded search
+  @include break-from-device(tablet landscape) {
+
+    // Search input
+    .md-search__input {
+      background-color: hsla(0, 0%, 100%, 0.12);
+
+      // Hovered search field
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.3);
+      }
+    }
+  }
+
+  // [tablet -]: Layered navigation
+  @include break-to-device(tablet) {
+
+    // Site title in main navigation
+    html & .md-nav--primary .md-nav__title[for="__drawer"] {
+      background-color: hsla(0, 0%, 0%, 1);
+    }
+  }
+
+  // [screen +]: Set background color for tabs
+  @include break-from-device(screen) {
+
+    // Tabs with outline
+    .md-tabs {
+      background-color: hsla(0, 0%, 0%, 1);
+    }
+  }
+}

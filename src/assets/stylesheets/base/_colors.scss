@@ -53,36 +53,18 @@
 
 // ----------------------------------------------------------------------------
 
-// Light mode
+// Light theme (default)
 body {
 
-  // Code block color shades
+  // Code color shades
   --md-code-bg-color:                  hsla(0, 0%, 96%, 1);
   --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
 
   // Text color shades
   --md-text-color:                     var(--md-default-fg-color);
   --md-text-link-color:                var(--md-primary-fg-color);
-}
 
-// Dark mode
-body[data-md-color-scheme="dark"] {
-
-  // Default color shades
-  --md-default-fg-color:               hsla(0, 0%, 100%, 1);
-  --md-default-fg-color--light:        hsla(0, 0%, 100%, 0.87);
-  --md-default-fg-color--lighter:      hsla(0, 0%, 100%, 0.32);
-  --md-default-fg-color--lightest:     hsla(0, 0%, 100%, 0.12);
-  --md-default-bg-color:               hsla(232, 15%, 21%, 1);
-  --md-default-bg-color--light:        hsla(232, 15%, 21%, 0.54);
-  --md-default-bg-color--lighter:      hsla(232, 15%, 21%, 0.26);
-  --md-default-bg-color--lightest:     hsla(232, 15%, 21%, 0.07);
-
-  // Code block color shades
-  --md-code-bg-color:                  hsla(232, 15%, 18%, 1);
-  --md-code-fg-color:                  hsla(60, 30%, 96%, 1);
-
-  // Text color shades
-  --md-text-color:                     var(--md-default-fg-color--light);
-  --md-text-link-color:                var(--md-primary-fg-color--light);
+  // Admonition shades
+  --md-admonition-bg-color:            var(--md-default-bg-color);
+  --md-admonition-fg-color:            var(--md-default-fg-color);
 }

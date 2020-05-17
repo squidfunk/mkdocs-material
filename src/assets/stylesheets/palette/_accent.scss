@@ -21,21 +21,40 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
+@each $name, $color in (
+  "red":         $clr-red-a400,
+  "pink":        $clr-pink-a400,
+  "purple":      $clr-purple-a200,
+  "deep-purple": $clr-deep-purple-a200,
+  "indigo":      $clr-indigo-a200,
+  "blue":        $clr-blue-a200,
+  "light-blue":  $clr-light-blue-a700,
+  "cyan":        $clr-cyan-a700,
+  "teal":        $clr-teal-a700,
+  "green":       $clr-green-a700,
+  "light-green": $clr-light-green-a700,
+  "lime":        $clr-lime-a700,
+  "yellow":      $clr-yellow-a700,
+  "amber":       $clr-amber-a700,
+  "orange":      $clr-orange-a400,
+  "deep-orange": $clr-deep-orange-a200
+) {
 
-// ----------------------------------------------------------------------------
-// Local imports
-// ----------------------------------------------------------------------------
+  // Color palette
+  [data-md-color-accent="#{$name}"] {
+    --md-accent-fg-color:              hsla(#{hex2hsl($color)}, 1);
+    --md-accent-fg-color--transparent: hsla(#{hex2hsl($color)}, 0.1);
 
-@import "utilities/break";
-@import "utilities/convert";
-
-@import "config";
-
-@import "palette/accent";
-@import "palette/primary";
-@import "palette/scheme";
+    // Inverted text for lighter shades
+    @if index("lime" "yellow" "amber" "orange", $name) {
+      --md-accent-bg-color:           hsla(0, 0%, 0%, 0.87);
+      --md-accent-bg-color--light:    hsla(0, 0%, 0%, 0.54);
+    } @else {
+      --md-accent-bg-color:           hsla(0, 0%, 100%, 1);
+      --md-accent-bg-color--light:    hsla(0, 0%, 100%, 0.7);
+    }
+  }
+}

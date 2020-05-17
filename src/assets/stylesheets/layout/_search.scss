@@ -226,6 +226,7 @@ $md-toggle__search--checked:
     z-index: 2;
     padding: 0 px2rem(44px) 0 px2rem(72px);
     text-overflow: ellipsis;
+    background-color: var(--primary-bg-color);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -442,7 +443,6 @@ $md-toggle__search--checked:
     height: 100%;
     overflow-y: auto;
     background-color: var(--md-default-bg-color);
-    box-shadow: inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
     // Hack: reduce jitter
     backface-visibility: hidden;
     scroll-snap-type: y mandatory;
@@ -522,12 +522,16 @@ $md-toggle__search--checked:
     margin: 0;
     padding: 0;
     list-style: none;
-    border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
   }
 
   // List item
   &__item {
     box-shadow: 0 px2rem(-1px) 0 var(--md-default-fg-color--lightest);
+
+    // No border for first item
+    &:first-child {
+      box-shadow: none;
+    }
   }
 
   // Link inside item

@@ -343,7 +343,7 @@ Click on a color name to change the primary color of the theme:
 </style>
 
 <button data-md-color-scheme="light"><code>light</code></button>
-<button data-md-color-scheme="dark"><code>dark</code></button>
+<button data-md-color-scheme="slate"><code>slate</code></button>
 
 <script>
   var buttons = document.querySelectorAll("button[data-md-color-scheme]")
