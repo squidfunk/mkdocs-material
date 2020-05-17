@@ -35,7 +35,7 @@
   color: var(--md-default-fg-color--lightest);
   border-radius: px2rem(2px);
   cursor: pointer;
-  transition: color 125ms;
+  transition: color 250ms;
 
   // Hide for print
   @media print {

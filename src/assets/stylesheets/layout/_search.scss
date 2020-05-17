@@ -226,7 +226,10 @@ $md-toggle__search--checked:
     z-index: 2;
     padding: 0 px2rem(44px) 0 px2rem(72px);
     text-overflow: ellipsis;
-    background-color: var(--primary-bg-color);
+    background-color: var(--md-default-bg-color);
+    transition:
+      color            250ms,
+      background-color 250ms;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -265,9 +268,6 @@ $md-toggle__search--checked:
       font-size: ms(0);
       background-color: hsla(0, 0%, 0%, 0.26);
       border-radius: px2rem(2px);
-      transition:
-        color            250ms,
-        background-color 250ms;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -445,6 +445,9 @@ $md-toggle__search--checked:
     background-color: var(--md-default-bg-color);
     // Hack: reduce jitter
     backface-visibility: hidden;
+    transition:
+      color            250ms,
+      background-color 250ms;
     scroll-snap-type: y mandatory;
     touch-action: pan-y;
 
@@ -495,6 +498,7 @@ $md-toggle__search--checked:
 .md-search-result {
   color: var(--md-default-fg-color);
   word-break: break-word;
+  transition: color 250ms;
 
   // Search metadata
   &__meta {

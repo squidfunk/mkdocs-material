@@ -76,6 +76,10 @@ $admonitions: (
     box-shadow:
       0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
       0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+    transition:
+      color            250ms,
+      background-color 250ms,
+      border-color     250ms;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {

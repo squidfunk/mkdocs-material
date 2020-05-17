@@ -26,8 +26,11 @@
 
 // Application footer
 .md-footer {
-  color: var(--md-default-bg-color);
-  background-color: var(--md-default-fg-color);
+  color: var(--md-footer-fg-color);
+  background-color: var(--md-footer-bg-color);
+  transition:
+    color            250ms,
+    background-color 250ms;
 
   // Hide for print
   @media print {
@@ -129,14 +132,14 @@
     left: 0;
     margin-top: px2rem(-20px);
     padding: 0 px2rem(20px);
-    color: var(--md-default-bg-color--light);
     font-size: ms(-1);
+    opacity: 0.7;
   }
 }
 
 // Non-navigational information
 .md-footer-meta {
-  background-color: var(--md-default-fg-color--lighter);
+  background-color: var(--md-footer-bg-color--dark);
 
   // Set spacing
   &__inner {
@@ -148,12 +151,12 @@
 
   // Use a decent color for non-hovered links and ensure specificity
   html &.md-typeset a {
-    color: var(--md-default-bg-color--light);
+    color: var(--md-footer-fg-color--light);
 
     // Focused or hovered link
     &:focus,
     &:hover {
-      color: var(--md-default-bg-color);
+      color: var(--md-footer-fg-color);
     }
   }
 }
@@ -163,7 +166,7 @@
   width: 100%;
   margin: auto px2rem(12px);
   padding: px2rem(8px) 0;
-  color: var(--md-default-bg-color--lighter);
+  color: var(--md-footer-fg-color--lighter);
   font-size: ms(-1);
 
   // [tablet portrait +]: Show next to social media links
@@ -173,7 +176,7 @@
 
   // Highlight copyright information
   &__highlight {
-    color: var(--md-default-bg-color--light);
+    color: var(--md-footer-fg-color--light);
   }
 }
 

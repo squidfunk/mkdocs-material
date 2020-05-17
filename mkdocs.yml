@@ -54,7 +54,7 @@ theme:
     - tabs
     #- instant
   palette:
-    scheme: dark
+    scheme: slate
     primary: indigo
     accent: indigo
   font:

@@ -45,7 +45,11 @@
   --md-text-color:                     var(--md-default-fg-color--light);
   --md-text-link-color:                var(--md-primary-fg-color--light);
 
-  // Admonition shades
+  // Admonition color shades
   --md-admonition-bg-color:            hsla(0, 0%, 100%, 0.025);
   --md-admonition-fg-color:            var(--md-default-fg-color);
+
+  // Footer color shades
+  --md-footer-bg-color:                hsla(232, 15%, 12%, 0.87);
+  --md-footer-bg-color--dark:          hsla(232, 15%, 10%, 1);
 }
