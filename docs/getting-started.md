@@ -323,9 +323,19 @@ theme:
 
 ### Color scheme
 
-> Default: `light`
+> Default: `default`
 
-Click on a color name to change the primary color of the theme:
+Material for MkDocs supports two color schemes: a light mode, which is just
+called `default`, and a dark mode, which is called `slate`. The color scheme
+can be set from `mkdocs.yml`:
+
+``` yaml
+theme:
+  palette:
+    scheme: slate
+```
+
+Click on a color name to change the color scheme of the theme:
 
 <style>
   .md-typeset button[data-md-color-scheme] {
@@ -342,7 +352,7 @@ Click on a color name to change the primary color of the theme:
   }
 </style>
 
-<button data-md-color-scheme="light"><code>light</code></button>
+<button data-md-color-scheme="default"><code>default</code></button>
 <button data-md-color-scheme="slate"><code>slate</code></button>
 
 <script>
