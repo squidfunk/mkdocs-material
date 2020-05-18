@@ -1,3 +1,8 @@
+mkdocs-material-5.2.0 (2020-05-18)
+
+  * Added color schemes implementation + dark mode
+  * Fixed #1583: Missing option for separate link colors
+
 mkdocs-material-5.1.7 (2020-05-16)
 
   * Added keyboard focus support for overflowing code blocks

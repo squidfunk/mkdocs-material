@@ -18,6 +18,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.2.0 <small>_ May 18, 2020</small>
+
+* Added color schemes implementation + dark mode
+* Fixed #1583: Missing option for separate link colors
+
 ### 5.1.7 <small>_ May 16, 2020</small>
 
 * Added keyboard focus support for overflowing code blocks
