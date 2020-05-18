@@ -88,7 +88,7 @@
     "tslib": "^1.11.2",
     "tslint": "^5.20.1",
     "tslint-sonarts": "^1.9.0",
-    "typescript": "^3.8.3",
+    "typescript": "^3.9.2",
     "webpack": "^4.43.0",
     "webpack-assets-manifest": "^3.1.1",
     "webpack-cli": "^3.3.11"
