@@ -44,7 +44,7 @@
     "@mdi/svg": "^5.2.45",
     "@primer/octicons": "^9.6.0",
     "@types/clipboard": "^2.0.1",
-    "@types/copy-webpack-plugin": "^5.0.0",
+    "@types/copy-webpack-plugin": "^5.0.1",
     "@types/escape-html": "1.0.0",
     "@types/event-hooks-webpack-plugin": "^2.0.0",
     "@types/html-minifier": "^3.5.3",
