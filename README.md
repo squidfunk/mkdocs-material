@@ -142,6 +142,12 @@ For other installation methods, configuration options, and a demo, visit
 
 ## Sponsors
 
+<p>
+  <a href="https://cirrus-ci.org/" target=_blank>
+    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg" height=40 />
+  </a>
+</p>
+
 If you're using this project a lot, consider [sponsoring][2] it! This will give
 me the opportunity to sustain my efforts maintaining it. Every contribution
 counts, no matter how small!
