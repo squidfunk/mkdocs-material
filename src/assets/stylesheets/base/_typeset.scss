@@ -435,6 +435,11 @@ kbd {
       color: var(--md-default-bg-color);
       vertical-align: top;
       background-color: var(--md-default-fg-color--light);
+
+      // Links in table headings
+      a {
+        color: inherit;
+      }
     }
 
     // Table cells
