@@ -18,6 +18,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.2.1 <small>_ May 22, 2020</small>
+
+* Fixed color of links in table headers, e.g. footnotes
+* Fixed color scheme not being applied without primary or accent color
+* Fixed hover delay on link inside color block
+
 ### 5.2.0 <small>_ May 18, 2020</small>
 
 * Added color schemes implementation + dark mode
