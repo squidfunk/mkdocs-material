@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 814 210" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css">
+    .st0{stroke:#212121;stroke-width:13.5;stroke-linecap:round;}
+    .st1{fill:none;stroke:#212121;stroke-width:13.5;stroke-linecap:round;}
+    .st2{fill:#212121;}
+    .st3{font-family:Helvetica,sans-serif;}
+    .st4{font-size:126.7641px;}
+  </style>
+  <g transform="translate(7 7)">
+    <path class="st0" d="m61 156.5h111"/>
+    <path class="st1" d="m172 156.5c11.6 0 21-9.4 21-21.1s-9.4-21.1-21-21.1"/>
+    <path class="st0" d="m61 114.3h111"/>
+    <path class="st1" d="m172 114.3c11.6 0 21-9.4 21-21.1s-9.4-21.1-21-21.1"/>
+    <path class="st0" d="m61 72.2h111"/>
+    <path class="st1" d="M172,72.2c11.6,0,21-9.4,21-21.1S183.6,30,172,30"/>
+  </g>
+  <text class="st2 st3 st4" transform="translate(260 163.49)">Cirrus CI</text>
+</svg>
