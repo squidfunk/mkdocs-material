@@ -36,9 +36,9 @@
     border: px2rem(2px) solid currentColor;
     border-radius: px2rem(2px);
     transition:
-      color            250ms,
-      background-color 250ms,
-      border-color     250ms;
+      color            125ms,
+      background-color 125ms,
+      border-color     125ms;
 
     // Primary button
     &--primary {

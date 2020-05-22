@@ -445,9 +445,6 @@ $md-toggle__search--checked:
     background-color: var(--md-default-bg-color);
     // Hack: reduce jitter
     backface-visibility: hidden;
-    transition:
-      color            250ms,
-      background-color 250ms;
     scroll-snap-type: y mandatory;
     touch-action: pan-y;
 
@@ -498,7 +495,6 @@ $md-toggle__search--checked:
 .md-search-result {
   color: var(--md-default-fg-color);
   word-break: break-word;
-  transition: color 250ms;
 
   // Search metadata
   &__meta {

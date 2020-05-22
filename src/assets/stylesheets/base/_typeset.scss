@@ -36,9 +36,6 @@ input {
   color: var(--md-text-color);
   font-feature-settings: "kern", "liga";
   font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-  transition:
-    color            250ms,
-    background-color 250ms;
 }
 
 // Proportionally spaced fonts
@@ -48,9 +45,6 @@ kbd {
   color: var(--md-text-color);
   font-feature-settings: "kern";
   font-family: SFMono-Regular, Consolas, Menlo, monospace;
-  transition:
-    color            250ms,
-    background-color 250ms;
 }
 
 // ----------------------------------------------------------------------------
@@ -144,7 +138,7 @@ kbd {
     // Also enable color transition on pseudo elements
     &,
     &::before {
-      transition: color 250ms;
+      transition: color 125ms;
     }
 
     // Focused or hover links
@@ -298,9 +292,6 @@ kbd {
     padding-left: px2rem(12px);
     color: var(--md-default-fg-color--light);
     border-left: px2rem(4px) solid var(--md-default-fg-color--lighter);
-    transition:
-      color        250ms,
-      border-color 250ms;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -451,7 +442,7 @@ kbd {
 
     // Table rows
     tr {
-      transition: background-color 250ms;
+      transition: background-color 125ms;
 
       // Add background on hover
       &:hover {

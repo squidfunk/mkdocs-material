@@ -28,9 +28,6 @@
 .md-footer {
   color: var(--md-footer-fg-color);
   background-color: var(--md-footer-bg-color);
-  transition:
-    color            250ms,
-    background-color 250ms;
 
   // Hide for print
   @media print {
