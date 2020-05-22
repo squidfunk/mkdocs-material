@@ -2,7 +2,7 @@ mkdocs-material-5.2.1 (2020-05-22)
 
   * Fixed color of links in table headers, e.g. footnotes
   * Fixed color scheme not being applied without primary or accent color
-  * Fixed hover delay on link inside color block
+  * Fixed hover delay for links inside code blocks
 
 mkdocs-material-5.2.0 (2020-05-18)
 

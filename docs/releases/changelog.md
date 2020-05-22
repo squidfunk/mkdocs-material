@@ -22,7 +22,7 @@ pip show mkdocs-material
 
 * Fixed color of links in table headers, e.g. footnotes
 * Fixed color scheme not being applied without primary or accent color
-* Fixed hover delay on link inside color block
+* Fixed hover delay for links inside code blocks
 
 ### 5.2.0 <small>_ May 18, 2020</small>
 
