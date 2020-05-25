@@ -25,11 +25,21 @@
 // ----------------------------------------------------------------------------
 
 ///
+/// Strip units from a number
+///
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+///
 /// Convert color in HEX to HSL
+///
+/// Note, that we need to strip the `deg` units from the `hue` value, as they
+/// were added in Color Level 4, which not all browsers support.
 ///
 @function hex2hsl($color) {
   @return
-    round(hue($color)),
+    round(strip-units(hue($color))),
     round(saturation($color)),
     round(lightness($color));
 }
