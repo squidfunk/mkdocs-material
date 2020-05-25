@@ -131,7 +131,9 @@ For other installation methods, configuration options, and a demo, visit
 * **Open Source** —
   [AutoKeras](https://autokeras.com/),
   [BFE](https://www.bfe-networks.net/),
+  [eksctl](https://eksctl.io/),
   [FastAPI](https://fastapi.tiangolo.com/),
+  [Flux CD](https://docs.fluxcd.io/),
   [Kubernetes](https://kops.sigs.k8s.io/),
   [OpenFaaS](https://docs.openfaas.com/),
   [Pi-Hole](https://docs.pi-hole.net/),
