@@ -466,10 +466,18 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Limit height to viewport
     @include break-from-device(tablet landscape) {
       max-height: 0;
+      // Override Firefox scrollbar style
+      scrollbar-width: thin;
+      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
 
       // Expand in active state
       #{$md-toggle__search--checked} & {
         max-height: 75vh;
+      }
+
+      // Override Firefox scrollbar hover color
+      &:hover {
+        scrollbar-color: var(--md-accent-fg-color) transparent;
       }
 
       // Override native scrollbar styles

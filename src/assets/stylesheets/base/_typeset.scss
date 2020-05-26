@@ -205,7 +205,14 @@ kbd {
       box-shadow: none;
       box-decoration-break: slice;
       touch-action: auto;
+      // Override Firefox scrollbar style
       scrollbar-width: thin;
+      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+
+      // Override Firefox scrollbar hover color
+      &:hover {
+        scrollbar-color: var(--md-accent-fg-color) transparent;
+      }
 
       // Override native scrollbar styles
       &::-webkit-scrollbar {
