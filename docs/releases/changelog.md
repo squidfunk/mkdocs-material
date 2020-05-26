@@ -18,7 +18,7 @@ pip show mkdocs-material
 
 ## Changelog
 
-### 5.2.2 <small>_ May 2, 2020</small>
+### 5.2.2 <small>_ May 26, 2020</small>
 
 * Fixed #1728: Legacy Edge doesn't support `deg` values in `hsla` colors
 
