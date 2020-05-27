@@ -19,4 +19,5 @@
 # IN THE SOFTWARE.
 
 github: squidfunk
-custom: ["https://www.paypal.me/squidfunk", paypal.me/squidfunk]
+custom:
+  - paypal.me/squidfunk
