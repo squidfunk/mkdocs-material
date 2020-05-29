@@ -52,7 +52,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
 
       - if: steps.cache-node.outputs.cache-hit != 'true'
-        run: npm install && npm install -g @lhci/cli@0.4.x
+        run: npm install
 
       # Run linter
       - run: npm run lint
@@ -100,10 +100,7 @@ jobs:
       # Install theme and dependencies
       - run: |
           pip install .
-          pip install mkdocs-minify-plugin>=0.2
-          
-      # Run Lighthouse CI          
-      - run: lhci autorun --upload.target=temporary-public-storage --collect.start-server-command="mkdocs serve" --collect.url=http://localhost:8000/
+          pip install mkdocs-minify-plugin>=0.2    
 
       # Build documentation
       - env:
@@ -111,6 +108,25 @@ jobs:
         run: |
           mkdocs gh-deploy --force
           mkdocs --version
+          
+      - name: Waiting for 200 from the Netlify Preview
+        uses: jakepartusch/wait-for-netlify-action@v1
+        id: waitFor200
+        with:
+          site_name: "mkdocs-material"
+          
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.4.x
+          lhci autorun --upload.target=temporary-public-storage --collect.url=${{ steps.waitFor200.outputs.url }}
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          
+      - name: Running Page Speed Insights
+        uses: jakepartusch/psi-action@v1
+        with:
+          url: ${{ steps.waitFor200.outputs.url }}
+    
 
   # Publish Python package and Docker image
   publish:
