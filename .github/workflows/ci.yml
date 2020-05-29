@@ -52,7 +52,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
 
       - if: steps.cache-node.outputs.cache-hit != 'true'
-        run: npm install
+        run: npm install && npm install -g @lhci/cli@0.4.x
 
       # Run linter
       - run: npm run lint
@@ -101,6 +101,9 @@ jobs:
       - run: |
           pip install .
           pip install mkdocs-minify-plugin>=0.2
+          
+      # Run Lighthouse CI          
+      - run: lhci autorun --upload.target=temporary-public-storage --collect.start-server-command="mkdocs serve" --collect.url=http://localhost:8000/
 
       # Build documentation
       - env:
