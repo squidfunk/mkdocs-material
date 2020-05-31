@@ -23,8 +23,8 @@ This will create the following structure along your existing files:
 ## Configuration
 
 Depending on your [installation method][1], you can now add the following lines
-to `mkdocs.yml` in your project root. If you installed Material for MkDocs using
-a package manager, add:
+to `mkdocs.yml` in your project root. If you installed Material for MkDocs with
+`pip` or pulled the Docker image, add:
 
 ``` yaml
 theme:
@@ -38,6 +38,8 @@ theme:
   name: null
   custom_dir: mkdocs-material/material
 ```
+
+!!! todo "Add note about many customization options with links to guides"
 
 ## Previewing
 
