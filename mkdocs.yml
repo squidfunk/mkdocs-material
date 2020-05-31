@@ -127,7 +127,19 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
-  - Getting started: getting-started.md
+  - Getting started:
+    - Installation: getting-started.md
+    - Creating your site: creating-your-site.md
+    - Publishing your site: publishing-your-site.md
+  - Guides:
+    - Colors and fonts: guides/colors-and-fonts.md
+    - Navigation structure: guides/navigation-structure.md
+    - Language and translations: guides/language-and-translations.md
+    - Adding footer links: guides/adding-footer-links.md
+    - Adding an announcement bar: guides/adding-an-announcement-bar.md
+    - Adding and using icons: guides/adding-and-using-icons.md
+    - Syntax highlighting: guides/syntax-highlighting.md
+    - 3rd-party integrations: guides/3rd-party-integrations.md
   - Extensions:
     - Admonition: extensions/admonition.md
     - CodeHilite: extensions/codehilite.md
@@ -144,10 +156,9 @@ nav:
     - Upgrading to 5.x: releases/5.md
     - Upgrading to 4.x: releases/4.md
     - Changelog: releases/changelog.md
-  - Customization: customization.md
-  - Data privacy: data-privacy.md
-  - Contributing: contributing.md
-  - License: license.md
+  # - Data privacy: data-privacy.md
+  # - Contributing: contributing.md
+  # - License: license.md
 
 # Google Analytics
 google_analytics:
