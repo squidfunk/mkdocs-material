@@ -132,14 +132,16 @@ nav:
     - Creating your site: creating-your-site.md
     - Publishing your site: publishing-your-site.md
   - Guides:
-    - Colors and fonts: guides/colors-and-fonts.md
+    - Changing colors: guides/changing-colors.md
+    - Changing the fonts: guides/changing-the-fonts.md
+    - Changing the language: guides/changing-the-language.md
     - Navigation structure: guides/navigation-structure.md
-    - Language and translations: guides/language-and-translations.md
-    - Adding footer links: guides/adding-footer-links.md
-    - Adding an announcement bar: guides/adding-an-announcement-bar.md
-    - Adding and using icons: guides/adding-and-using-icons.md
     - Syntax highlighting: guides/syntax-highlighting.md
-    - 3rd-party integrations: guides/3rd-party-integrations.md
+    - Third-party integrations: guides/third-party-integrations.md
+    - Adding a landing page: guides/adding-a-landing-page.md
+    - Adding an announcement bar: guides/adding-an-announcement-bar.md
+    - Adding icons and emojis: guides/adding-icons-and-emojis.md
+    - Adding footer links: guides/adding-footer-links.md
   - Extensions:
     - Admonition: extensions/admonition.md
     - CodeHilite: extensions/codehilite.md
