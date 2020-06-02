@@ -304,7 +304,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
               const manifest = require("./material/assets/manifest.json")
               const template = toPairs<string>(manifest)
                 .reduce((content, [from, to]) => {
-                  return content.replace(from, to)
+                  return content.replace(new RegExp(from, "g"), to)
                 }, fs.readFileSync("material/base.html", "utf8"))
 
               /* Save template with replaced assets */
