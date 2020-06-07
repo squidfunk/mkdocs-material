@@ -180,6 +180,14 @@
     <body dir="{{ direction }}">
   {% endif %}
 
+    <!-- Experimental: set color scheme based on preference -->
+    {% if "prefers" == palette.scheme %}
+      <script>
+        if (matchMedia("(prefers-color-scheme: dark)").matches)
+          document.body.setAttribute("data-md-color-scheme", "slate")
+      </script>
+    {% endif %}
+
     <!--
       State toggles - we need to set autocomplete="off" in order to reset the
       drawer on back button invocation in some browsers
