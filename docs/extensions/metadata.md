@@ -129,7 +129,7 @@ disqus: your-shortname
 Disqus can also be disabled for a specific page by setting it to an empty value:
 
 ``` markdown
-disqus:
+disqus: ''
 ```
 
   [3]: ../getting-started.md#disqus
