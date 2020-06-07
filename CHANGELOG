@@ -1,3 +1,9 @@
+mkdocs-material-5.2.3 (2020-06-07)
+
+  * Improved search typeahead behavior for some languages (de, fr, ...)
+  * Improved styles for scrollbars on Firefox
+  * Fixed #1741: Removed preconnect hint for Google Analytics
+
 mkdocs-material-5.2.2 (2020-05-26)
 
   * Fixed #1728: Legacy Edge doesn't support deg values in hsla colors

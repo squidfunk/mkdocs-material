@@ -18,6 +18,12 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.2.3 <small>_ June 6, 2020</small>
+
+* Improved search typeahead behavior for some languages (`de`, `fr`, ...)
+* Improved styles for scrollbars on Firefox
+* Fixed #1741: Removed `preconnect` hint for Google Analytics
+
 ### 5.2.2 <small>_ May 26, 2020</small>
 
 * Fixed #1728: Legacy Edge doesn't support `deg` values in `hsla` colors
