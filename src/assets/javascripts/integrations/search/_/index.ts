@@ -138,17 +138,22 @@ export class Search {
       this.index = lunr(function() {
         pipeline = pipeline || ["trimmer", "stopWordFilter"]
 
-        /* Set up pipeline according to configuration */
-        this.pipeline.reset()
-        for (const fn of pipeline)
-          this.pipeline.add(lunr[fn])
-
         /* Set up alternate search languages */
         if (config.lang.length === 1 && config.lang[0] !== "en") {
           this.use((lunr as any)[config.lang[0]])
         } else if (config.lang.length > 1) {
           this.use((lunr as any).multiLanguage(...config.lang))
         }
+
+        /* Set up pipeline according to configuration */
+        this.pipeline.reset()
+        for (const fn of pipeline)
+          this.pipeline.add(lunr[fn])
+
+        /* Set up search pipeline according to configuration */
+        this.searchPipeline.reset()
+        for (const fn of pipeline)
+          this.searchPipeline.add(lunr[fn])
 
         /* Set up fields and reference */
         this.field("title", { boost: 1000 })
