@@ -133,10 +133,12 @@ export class Search {
     this.documents = setupSearchDocumentMap(docs)
     this.highlight = setupSearchHighlighter(config)
 
+    /* Set separator for tokenizer */
+    lunr.tokenizer.separator = new RegExp(config.separator)
+
     /* If no index was given, create it */
     if (typeof index === "undefined") {
       this.index = lunr(function() {
-        pipeline = pipeline || ["trimmer", "stopWordFilter"]
 
         /* Set up alternate search languages */
         if (config.lang.length === 1 && config.lang[0] !== "en") {
@@ -147,12 +149,12 @@ export class Search {
 
         /* Set up pipeline according to configuration */
         this.pipeline.reset()
-        for (const fn of pipeline)
+        for (const fn of pipeline!)
           this.pipeline.add(lunr[fn])
 
         /* Set up search pipeline according to configuration */
         this.searchPipeline.reset()
-        for (const fn of pipeline)
+        for (const fn of pipeline!)
           this.searchPipeline.add(lunr[fn])
 
         /* Set up fields and reference */
