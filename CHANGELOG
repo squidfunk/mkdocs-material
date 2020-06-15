@@ -1,3 +1,8 @@
+mkdocs-material-5.3.0 (2020-06-15)
+
+  * Added support for color schemes based on user preference
+  * Fixed #1755: Tokenizer separator setting ignored
+
 mkdocs-material-5.2.3 (2020-06-07)
 
   * Improved search typeahead behavior for some languages (de, fr, ...)

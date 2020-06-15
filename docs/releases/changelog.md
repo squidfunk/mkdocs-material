@@ -18,6 +18,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.3.0 <small>_ June 15, 2020</small>
+
+* Added support for color schemes based on user preference
+* Fixed #1755: Tokenizer separator setting ignored
+
 ### 5.2.3 <small>_ June 6, 2020</small>
 
 * Improved search typeahead behavior for some languages (`de`, `fr`, ...)
