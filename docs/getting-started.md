@@ -365,6 +365,16 @@ Click on a color name to change the color scheme of the theme:
   })
 </script>
 
+The color scheme can also be set based on _user preference_, which makes use of
+the `prefers-color-scheme` media query. This can be done by adding the following
+to `mkdocs.yml`:
+
+``` yaml
+theme:
+  palette:
+    scheme: preference
+```
+
 ### Color palette
 
 The Material Design [color palette][10] comes with 20 hues, all of which are

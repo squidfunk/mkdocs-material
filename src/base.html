@@ -181,7 +181,7 @@
   {% endif %}
 
     <!-- Experimental: set color scheme based on preference -->
-    {% if "prefers" == palette.scheme %}
+    {% if "preference" == palette.scheme %}
       <script>
         if (matchMedia("(prefers-color-scheme: dark)").matches)
           document.body.setAttribute("data-md-color-scheme", "slate")
