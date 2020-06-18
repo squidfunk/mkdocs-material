@@ -130,7 +130,16 @@ The [Tabbed][4] extension which is part of the [PyMdown Extensions][5]
 package adds support for grouping Markdown blocks with tabs. This is especially
 useful for documenting projects with multiple language bindings.
 
-Example:
+Add the Tabbed and SuperFences extentions to `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+    - codehilite
+    - pymdownx.tabbed
+    - pymdownx.superfences
+```
+
+Add your tabbed code to your markdown file. Example:
 
 ````
 === "Bash"
