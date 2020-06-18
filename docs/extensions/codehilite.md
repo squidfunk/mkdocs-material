@@ -130,7 +130,7 @@ The [Tabbed][4] extension which is part of the [PyMdown Extensions][5]
 package adds support for grouping Markdown blocks with tabs. This is especially
 useful for documenting projects with multiple language bindings.
 
-Add the Tabbed and SuperFences extentions to `mkdocs.yml`:
+Add the Tabbed and SuperFences extensions to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
