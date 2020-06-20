@@ -30,6 +30,10 @@
     src="https://img.shields.io/pypi/v/mkdocs-material.svg" 
     alt="Python Package Index"
   /></a>
+  <a href="https://hub.docker.com/r/squidfunk/mkdocs-material/"><img 
+    src="https://img.shields.io/docker/pulls/squidfunk/mkdocs-material" 
+    alt="Docker Pulls"
+  /></a>
   <a href="https://github.com/sponsors/squidfunk"><img
     src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub&color=ea4aaa"
   /></a>
