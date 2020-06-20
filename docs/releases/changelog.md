@@ -18,6 +18,10 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.3.1 <small>_ June 20, 2020</small>
+
+* Fixed #1761: Duplication of search worker when subscribing to observable
+
 ### 5.3.0 <small>_ June 15, 2020</small>
 
 * Added support for color schemes based on user preference
