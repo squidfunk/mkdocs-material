@@ -207,7 +207,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
           filename: `[name]${hash}.css`
         }),
 
-        /* Improve performance by skipping icons in watch mode */
+        /* Improve performance by skipping dependencies in watch mode */
         ...args.watch ? [] : [
 
           /* FontAwesome icons */
@@ -240,30 +240,39 @@ export default (_env: never, args: Configuration): Configuration[] => {
               context: "node_modules/@primer/octicons/build/svg",
               ...pattern
             }))
+          }),
+
+          /* Search stemmers and segmenters */
+          new CopyPlugin({
+            patterns: [
+              { to: "assets/javascripts/lunr", from: "min/*.js" },
+              {
+                to: "assets/javascripts/lunr/tinyseg.min.js",
+                from: "tinyseg.js",
+                transform: (content: Buffer) => minjs(`${content}`).code!
+              }
+            ].map(pattern => ({
+              context: "node_modules/lunr-languages",
+              ...pattern
+            }))
+          }),
+
+          /* Assets and configuration */
+          new CopyPlugin({
+            patterns: [
+              { from: ".icons/*.svg" },
+              { from: "assets/images/*" },
+              { from: "**/*.{py,yml}" }
+            ].map(pattern => ({
+              context: "src",
+              ...pattern
+            }))
           })
         ],
-
-        /* Search stemmers and segmenters */
-        new CopyPlugin({
-          patterns: [
-            { to: "assets/javascripts/lunr", from: "min/*.js" },
-            {
-              to: "assets/javascripts/lunr/tinyseg.min.js",
-              from: "tinyseg.js",
-              transform: (content: Buffer) => minjs(`${content}`).code!
-            }
-          ].map(pattern => ({
-            context: "node_modules/lunr-languages",
-            ...pattern
-          }))
-        }),
 
         /* Template files */
         new CopyPlugin({
           patterns: [
-            { from: ".icons/*.svg" },
-            { from: "assets/images/*" },
-            { from: "**/*.{py,yml}" },
             {
               from: "**/*.html",
               transform: (content: Buffer) => {
