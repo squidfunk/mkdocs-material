@@ -51,5 +51,5 @@ export function defaultTransform(value: string): string {
   return value
     .replace(/(?:^|\s+)[*+-:^~]+(?=\s+|$)/g, "")
     .trim()
-    .replace(/\s+|\b$/g, "* ")
+    .replace(/\s+|(?![^\x00-\x7F]|^)$|\b$/g, "* ")
 }
