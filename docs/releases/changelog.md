@@ -18,6 +18,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.3.2 <small>_ June 21, 2020</small>
+
+* Improved search type-ahead experience with non-latin characters
+* Fixed #1753: Japanese search doesn't work anymore
+
 ### 5.3.1 <small>_ June 20, 2020</small>
 
 * Fixed #1761: Duplication of search worker when subscribing to observable
