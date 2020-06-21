@@ -207,37 +207,41 @@ export default (_env: never, args: Configuration): Configuration[] => {
           filename: `[name]${hash}.css`
         }),
 
-        /* FontAwesome icons */
-        new CopyPlugin({
-          patterns: [
-            { to: ".icons/fontawesome", from: "**/*.svg" },
-            { to: ".icons/fontawesome", from: "../LICENSE.txt" }
-          ].map(pattern => ({
-            context: "node_modules/@fortawesome/fontawesome-free/svgs",
-            ...pattern
-          }))
-        }),
+        /* Improve performance by skipping icons in watch mode */
+        ...args.watch ? [] : [
 
-        /* Material Design icons */
-        new CopyPlugin({
-          patterns: [
-            { to: ".icons/material", from: "*.svg" }
-          ].map(pattern => ({
-            context: "node_modules/@mdi/svg/svg",
-            ...pattern
-          }))
-        }),
+          /* FontAwesome icons */
+          new CopyPlugin({
+            patterns: [
+              { to: ".icons/fontawesome", from: "**/*.svg" },
+              { to: ".icons/fontawesome", from: "../LICENSE.txt" }
+            ].map(pattern => ({
+              context: "node_modules/@fortawesome/fontawesome-free/svgs",
+              ...pattern
+            }))
+          }),
 
-        /* GitHub octicons */
-        new CopyPlugin({
-          patterns: [
-            { to: ".icons/octicons", from: "*.svg" },
-            { to: ".icons/octicons", from: "../../LICENSE" }
-          ].map(pattern => ({
-            context: "node_modules/@primer/octicons/build/svg",
-            ...pattern
-          }))
-        }),
+          /* Material Design icons */
+          new CopyPlugin({
+            patterns: [
+              { to: ".icons/material", from: "*.svg" }
+            ].map(pattern => ({
+              context: "node_modules/@mdi/svg/svg",
+              ...pattern
+            }))
+          }),
+
+          /* GitHub octicons */
+          new CopyPlugin({
+            patterns: [
+              { to: ".icons/octicons", from: "*.svg" },
+              { to: ".icons/octicons", from: "../../LICENSE" }
+            ].map(pattern => ({
+              context: "node_modules/@primer/octicons/build/svg",
+              ...pattern
+            }))
+          })
+        ],
 
         /* Search stemmers and segmenters */
         new CopyPlugin({
