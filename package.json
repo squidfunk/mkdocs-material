@@ -91,7 +91,7 @@
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
     "webpack-assets-manifest": "^3.1.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   },
   "engines": {
     "node": ">= 10"
