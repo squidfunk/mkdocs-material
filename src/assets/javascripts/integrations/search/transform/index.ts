@@ -49,7 +49,7 @@ export type SearchTransformFn = (value: string) => string
  */
 export function defaultTransform(value: string): string {
   return value
-    .replace(/(?:^|\s+)[*+-:^~]+(?=\s+|$)/g, "")
+    .replace(/(?:^|\s+)[*+\-:^~]+(?=\s+|$)/g, "")
     .trim()
     .replace(/\s+|(?![^\x00-\x7F]|^)$|\b$/g, "* ")
 }
