@@ -18,6 +18,11 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.3.3 <small>_ June 24, 2020</small>
+
+* Added Bengali translations
+* Fixed #1773: Search for numbers does not return any result (regression)
+
 ### 5.3.2 <small>_ June 21, 2020</small>
 
 * Improved search type-ahead experience with non-Latin characters

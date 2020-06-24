@@ -1,3 +1,8 @@
+mkdocs-material-5.3.3 (2020-06-24)
+
+  * Added Bengali translations
+  * Fixed #1773: Search for numbers does not return any result (regression)
+
 mkdocs-material-5.3.2 (2020-06-21)
 
   * Improved search type-ahead experience with non-Latin characters
