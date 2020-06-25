@@ -228,14 +228,14 @@ Example:
 ``` markdown
 * :material-account-circle: – we can use Material Design icons
 * :fontawesome-regular-laugh-wink: – we can also use FontAwesome icons
-* :octicons-octoface: – that's not all, we can also use GitHub's Octicons
+* :octicons-octoface-16: – that's not all, we can also use GitHub's Octicons
 ```
 
 Result:
 
 * :material-account-circle: – we can use [Material Design icons][20]
 * :fontawesome-regular-laugh-wink: – we can also use [FontAwesome icons][21]
-* :octicons-octoface: – that's not all, we can also use [GitHub's Octicons][22]
+* :octicons-octoface-16: – that's not all, we can also use [GitHub's Octicons][22]
 
   [13]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
   [14]: https://twemoji.twitter.com/
