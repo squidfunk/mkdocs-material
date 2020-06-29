@@ -1,3 +1,8 @@
+mkdocs-material-5.4.0 (2020-06-29)
+
+  * Added support to wrap searches in quotes to switch from OR to AND
+  * Fixed highlighting of numbers in search results
+
 mkdocs-material-5.3.3 (2020-06-24)
 
   * Added Bengali translations
