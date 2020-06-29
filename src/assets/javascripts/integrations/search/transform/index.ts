@@ -42,10 +42,10 @@ export type SearchTransformFn = (value: string) => string
  *
  * 1. Search for terms in quotation marks and prepend a `+` modifier to denote
  *    that the resulting document must contain all terms, converting the query
- *    to and `AND` query (as opposed to the default `OR` behavior). While users
- *    may expected terms enclosed in quotation marks to map to span queries,
- *    i.e. for which order is important, `lunr` doesn't support them, so the
- *    best we can do is to convert the terms to an `AND` query.
+ *    to an `AND` query (as opposed to the default `OR` behavior). While users
+ *    may expect terms enclosed in quotation marks to map to span queries, i.e.
+ *    for which order is important, `lunr` doesn't support them, so the best
+ *    we can do is to convert the terms to an `AND` query.
  *
  * 2. Replace control characters which are not located at the beginning of the
  *    query or preceded by white space, or are not followed by a non-whitespace
@@ -56,7 +56,7 @@ export type SearchTransformFn = (value: string) => string
  *
  * 4. Append a wildcard to the end of every word to make every word a prefix
  *    query in order to provide a good type-ahead experience, by adding an
- *    asterisik (wildcard) in between terms, which can be denoted by whitespace,
+ *    asterisk (wildcard) in between terms, which can be denoted by whitespace,
  *    any non-control character, or a word boundary.
  *
  * @param value - Query value
@@ -65,7 +65,7 @@ export type SearchTransformFn = (value: string) => string
  */
 export function defaultTransform(value: string): string {
   return value
-    .split(/"([^"]+)"/)                             /* => 1 */
+    .split(/"([^"]+)"/g)                            /* => 1 */
       .map((terms, i) => i & 1
         ? terms.replace(/^\b|^(?![^\x00-\x7F]|$)|\s+/g, " +")
         : terms
