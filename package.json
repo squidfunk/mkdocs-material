@@ -75,7 +75,7 @@
     "preact": "^10.4.4",
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
-    "sass": "^1.26.8",
+    "sass": "^1.26.9",
     "sass-loader": "^8.0.2",
     "stylelint": "^13.6.1",
     "stylelint-config-rational-order": "^0.1.2",
