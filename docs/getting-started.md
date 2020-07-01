@@ -424,6 +424,9 @@ from the template.
       --md-accent-fg-color--transparent:   ...;
       --md-accent-bg-color:                ...;
       --md-accent-bg-color--light:         ...;
+    }
+
+    :root > * {
 
       /* Code block color shades */
       --md-code-bg-color:                  ...;
