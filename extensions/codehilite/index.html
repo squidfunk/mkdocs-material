@@ -1,0 +1,712 @@
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><link href=https://squidfunk.github.io/mkdocs-material/extensions/codehilite/ rel=canonical><meta name=author content="Martin Donath"><link rel="shortcut icon" href=../../assets/favicon.png><meta name=generator content="mkdocs-1.1.2, mkdocs-material-5.4.0"><title>CodeHilite - Material for MkDocs</title><link rel=stylesheet href=../../assets/stylesheets/main.545621a7.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.36d1b78f.min.css><meta name=theme-color content=#3f51b5><link href=https://fonts.gstatic.com rel=preconnect crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-73586301-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script><script async src=https://www.google-analytics.com/analytics.js></script><meta property=og:type content=website><meta property=og:title content="Material for MkDocs - CodeHilite"><meta property=og:description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><meta content=https://squidfunk.github.io/mkdocs-material/extensions/codehilite/ property=og:url><meta property=og:image content=https://squidfunk.github.io/mkdocs-material/assets/images/banner.png><meta property=og:image:type content=image/png><meta property=og:image:width content=1200><meta property=og:image:height content=630><meta name=twitter:card content=summary_large_image><meta name=twitter:site content=@squidfunk><meta name=twitter:creator content=@squidfunk><meta name=twitter:title content="Material for MkDocs - CodeHilite"><meta name=twitter:description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><meta name=twitter:image content=https://squidfunk.github.io/mkdocs-material/assets/images/banner.png></head> <body dir=ltr data-md-color-scheme=default data-md-color-primary=indigo data-md-color-accent=indigo> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#codehilite class=md-skip> Skip to content </a> </div> <div data-md-component=announce> <aside class=md-announce> <div class="md-announce__inner md-grid md-typeset"> <style>.md-announce a,.md-announce a:focus,.md-announce a:hover{color:currentColor}.md-announce strong{white-space:nowrap}.md-announce .twitter{margin-left:.2em;color:#00acee}</style> <a href=https://twitter.com/squidfunk> For updates follow <strong>@squidfunk</strong> on <span class="twemoji twitter"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"> <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path> </svg> </span> <strong>Twitter</strong> </a> </div> </aside> </div> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid" aria-label=Header> <a href=https://squidfunk.github.io/mkdocs-material/ title="Material for MkDocs" class="md-header-nav__button md-logo" aria-label="Material for MkDocs"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path fill-opacity=.5 d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path fill-opacity=.25 d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"/></svg> </a> <label class="md-header-nav__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header-nav__title data-md-component=header-title> <div class=md-header-nav__ellipsis> <span class="md-header-nav__topic md-ellipsis"> Material for MkDocs </span> <span class="md-header-nav__topic md-ellipsis"> CodeHilite </span> </div> </div> <label class="md-header-nav__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query data-md-state=active> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <button type=reset class="md-search__icon md-icon" aria-label=Clear data-md-component=search-reset tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header-nav__source> <a href=https://github.com/squidfunk/mkdocs-material title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> squidfunk/mkdocs-material </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <nav class="md-tabs md-tabs--active" aria-label=Tabs data-md-component=tabs> <div class="md-tabs__inner md-grid"> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=../.. class=md-tabs__link> Home </a> </li> <li class=md-tabs__item> <a href=../admonition/ class="md-tabs__link md-tabs__link--active"> Extensions </a> </li> <li class=md-tabs__item> <a href=../../plugins/search/ class=md-tabs__link> Plugins </a> </li> <li class=md-tabs__item> <a href=../../releases/5/ class=md-tabs__link> Releases </a> </li> </ul> </div> </nav> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://squidfunk.github.io/mkdocs-material/ title="Material for MkDocs" class="md-nav__button md-logo" aria-label="Material for MkDocs"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path fill-opacity=.5 d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path fill-opacity=.25 d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"/></svg> </a> Material for MkDocs </label> <div class=md-nav__source> <a href=https://github.com/squidfunk/mkdocs-material title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> squidfunk/mkdocs-material </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. title=Home class=md-nav__link> Home </a> </li> <li class=md-nav__item> <a href=../../getting-started/ title="Getting started" class=md-nav__link> Getting started </a> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-3 type=checkbox id=nav-3 checked> <label class=md-nav__link for=nav-3> Extensions <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Extensions data-md-level=1> <label class=md-nav__title for=nav-3> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Extensions </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../admonition/ title=Admonition class=md-nav__link> Admonition </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> CodeHilite <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg> </span> </label> <a href=./ title=CodeHilite class="md-nav__link md-nav__link--active"> CodeHilite </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#configuration class=md-nav__link> Configuration </a> </li> <li class=md-nav__item> <a href=#usage class=md-nav__link> Usage </a> <nav class=md-nav aria-label=Usage> <ul class=md-nav__list> <li class=md-nav__item> <a href=#specifying-the-language class=md-nav__link> Specifying the language </a> <nav class=md-nav aria-label="Specifying the language"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#via-markdown-syntax-recommended class=md-nav__link> via Markdown syntax recommended </a> </li> <li class=md-nav__item> <a href=#via-shebang class=md-nav__link> via Shebang </a> </li> <li class=md-nav__item> <a href=#via-three-colons class=md-nav__link> via three colons </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#adding-line-numbers class=md-nav__link> Adding line numbers </a> </li> <li class=md-nav__item> <a href=#grouping-code-blocks class=md-nav__link> Grouping code blocks </a> </li> <li class=md-nav__item> <a href=#highlighting-specific-lines class=md-nav__link> Highlighting specific lines </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#supported-languages-excerpt class=md-nav__link> Supported languages excerpt </a> <nav class=md-nav aria-label="Supported languages excerpt"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#bash class=md-nav__link> Bash </a> </li> <li class=md-nav__item> <a href=#c class=md-nav__link> C </a> </li> <li class=md-nav__item> <a href=#c_1 class=md-nav__link> C++ </a> </li> <li class=md-nav__item> <a href=#c_2 class=md-nav__link> C&#35; </a> </li> <li class=md-nav__item> <a href=#clojure class=md-nav__link> Clojure </a> </li> <li class=md-nav__item> <a href=#diff class=md-nav__link> Diff </a> </li> <li class=md-nav__item> <a href=#docker class=md-nav__link> Docker </a> </li> <li class=md-nav__item> <a href=#elixir class=md-nav__link> Elixir </a> </li> <li class=md-nav__item> <a href=#erlang class=md-nav__link> Erlang </a> </li> <li class=md-nav__item> <a href=#f class=md-nav__link> F&#35; </a> </li> <li class=md-nav__item> <a href=#go class=md-nav__link> Go </a> </li> <li class=md-nav__item> <a href=#html class=md-nav__link> HTML </a> </li> <li class=md-nav__item> <a href=#java class=md-nav__link> Java </a> </li> <li class=md-nav__item> <a href=#javascript class=md-nav__link> JavaScript </a> </li> <li class=md-nav__item> <a href=#json class=md-nav__link> JSON </a> </li> <li class=md-nav__item> <a href=#julia class=md-nav__link> Julia </a> </li> <li class=md-nav__item> <a href=#lua class=md-nav__link> Lua </a> </li> <li class=md-nav__item> <a href=#mysql class=md-nav__link> MySQL </a> </li> <li class=md-nav__item> <a href=#php class=md-nav__link> PHP </a> </li> <li class=md-nav__item> <a href=#protocol-buffers class=md-nav__link> Protocol Buffers </a> </li> <li class=md-nav__item> <a href=#python class=md-nav__link> Python </a> </li> <li class=md-nav__item> <a href=#ruby class=md-nav__link> Ruby </a> </li> <li class=md-nav__item> <a href=#scala class=md-nav__link> Scala </a> </li> <li class=md-nav__item> <a href=#xml class=md-nav__link> XML </a> </li> </ul> </nav> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../footnotes/ title=Footnotes class=md-nav__link> Footnotes </a> </li> <li class=md-nav__item> <a href=../metadata/ title=Metadata class=md-nav__link> Metadata </a> </li> <li class=md-nav__item> <a href=../permalinks/ title=Permalinks class=md-nav__link> Permalinks </a> </li> <li class=md-nav__item> <a href=../pymdown/ title=PyMdown class=md-nav__link> PyMdown </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-4 type=checkbox id=nav-4> <label class=md-nav__link for=nav-4> Plugins <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Plugins data-md-level=1> <label class=md-nav__title for=nav-4> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Plugins </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../plugins/search/ title=Search class=md-nav__link> Search </a> </li> <li class=md-nav__item> <a href=../../plugins/minification/ title=Minification class=md-nav__link> Minification </a> </li> <li class=md-nav__item> <a href=../../plugins/revision-date/ title="Revision date" class=md-nav__link> Revision date </a> </li> <li class=md-nav__item> <a href=../../plugins/awesome-pages/ title="Awesome pages" class=md-nav__link> Awesome pages </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-5 type=checkbox id=nav-5> <label class=md-nav__link for=nav-5> Releases <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Releases data-md-level=1> <label class=md-nav__title for=nav-5> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Releases </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../releases/5/ title="Upgrading to 5.x" class=md-nav__link> Upgrading to 5.x </a> </li> <li class=md-nav__item> <a href=../../releases/4/ title="Upgrading to 4.x" class=md-nav__link> Upgrading to 4.x </a> </li> <li class=md-nav__item> <a href=../../releases/changelog/ title=Changelog class=md-nav__link> Changelog </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../../customization/ title=Customization class=md-nav__link> Customization </a> </li> <li class=md-nav__item> <a href=../../data-privacy/ title="Data privacy" class=md-nav__link> Data privacy </a> </li> <li class=md-nav__item> <a href=../../contributing/ title=Contributing class=md-nav__link> Contributing </a> </li> <li class=md-nav__item> <a href=../../license/ title=License class=md-nav__link> License </a> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#configuration class=md-nav__link> Configuration </a> </li> <li class=md-nav__item> <a href=#usage class=md-nav__link> Usage </a> <nav class=md-nav aria-label=Usage> <ul class=md-nav__list> <li class=md-nav__item> <a href=#specifying-the-language class=md-nav__link> Specifying the language </a> <nav class=md-nav aria-label="Specifying the language"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#via-markdown-syntax-recommended class=md-nav__link> via Markdown syntax recommended </a> </li> <li class=md-nav__item> <a href=#via-shebang class=md-nav__link> via Shebang </a> </li> <li class=md-nav__item> <a href=#via-three-colons class=md-nav__link> via three colons </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#adding-line-numbers class=md-nav__link> Adding line numbers </a> </li> <li class=md-nav__item> <a href=#grouping-code-blocks class=md-nav__link> Grouping code blocks </a> </li> <li class=md-nav__item> <a href=#highlighting-specific-lines class=md-nav__link> Highlighting specific lines </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#supported-languages-excerpt class=md-nav__link> Supported languages excerpt </a> <nav class=md-nav aria-label="Supported languages excerpt"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#bash class=md-nav__link> Bash </a> </li> <li class=md-nav__item> <a href=#c class=md-nav__link> C </a> </li> <li class=md-nav__item> <a href=#c_1 class=md-nav__link> C++ </a> </li> <li class=md-nav__item> <a href=#c_2 class=md-nav__link> C&#35; </a> </li> <li class=md-nav__item> <a href=#clojure class=md-nav__link> Clojure </a> </li> <li class=md-nav__item> <a href=#diff class=md-nav__link> Diff </a> </li> <li class=md-nav__item> <a href=#docker class=md-nav__link> Docker </a> </li> <li class=md-nav__item> <a href=#elixir class=md-nav__link> Elixir </a> </li> <li class=md-nav__item> <a href=#erlang class=md-nav__link> Erlang </a> </li> <li class=md-nav__item> <a href=#f class=md-nav__link> F&#35; </a> </li> <li class=md-nav__item> <a href=#go class=md-nav__link> Go </a> </li> <li class=md-nav__item> <a href=#html class=md-nav__link> HTML </a> </li> <li class=md-nav__item> <a href=#java class=md-nav__link> Java </a> </li> <li class=md-nav__item> <a href=#javascript class=md-nav__link> JavaScript </a> </li> <li class=md-nav__item> <a href=#json class=md-nav__link> JSON </a> </li> <li class=md-nav__item> <a href=#julia class=md-nav__link> Julia </a> </li> <li class=md-nav__item> <a href=#lua class=md-nav__link> Lua </a> </li> <li class=md-nav__item> <a href=#mysql class=md-nav__link> MySQL </a> </li> <li class=md-nav__item> <a href=#php class=md-nav__link> PHP </a> </li> <li class=md-nav__item> <a href=#protocol-buffers class=md-nav__link> Protocol Buffers </a> </li> <li class=md-nav__item> <a href=#python class=md-nav__link> Python </a> </li> <li class=md-nav__item> <a href=#ruby class=md-nav__link> Ruby </a> </li> <li class=md-nav__item> <a href=#scala class=md-nav__link> Scala </a> </li> <li class=md-nav__item> <a href=#xml class=md-nav__link> XML </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> <h1 id=codehilite>CodeHilite<a class=headerlink href=#codehilite title="Permanent link">&para;</a></h1> <p><a href=https://python-markdown.github.io/extensions/code_hilite/ >CodeHilite</a> is an extension that adds syntax highlighting to code blocks and is included in the standard Markdown library. It uses <a href=https://pygments.org>Pygments</a> during the compilation of the Markdown file to provide syntax highlighting for over <a href=http://pygments.org/languages>300 languages</a> and has no JavaScript runtime dependency.</p> <h2 id=configuration>Configuration<a class=headerlink href=#configuration title="Permanent link">&para;</a></h2> <p>Add the following lines to <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">codehilite</span>
+</code></pre></div> <h2 id=usage>Usage<a class=headerlink href=#usage title="Permanent link">&para;</a></h2> <h3 id=specifying-the-language>Specifying the language<a class=headerlink href=#specifying-the-language title="Permanent link">&para;</a></h3> <p>The CodeHilite extension uses the same syntax as regular Markdown code blocks, but needs to know the language of the code block. This can be done in three different ways.</p> <h4 id=via-markdown-syntax-recommended>via Markdown syntax <small>recommended</small><a class=headerlink href=#via-markdown-syntax-recommended title="Permanent link">&para;</a></h4> <p>In Markdown, code blocks can be opened and closed by writing three backticks on separate lines. To add code highlighting to those blocks, the easiest way is to specify the language identifier directly after the opening block.</p> <p>Example:</p> <div class=highlight><pre><span></span><code>``` python
+import tensorflow as tf
+```
+</code></pre></div> <p>Result:</p> <div class=highlight><pre><span></span><code><span class=kn>import</span> <span class=nn>tensorflow</span> <span class=k>as</span> <span class=nn>tf</span>
+</code></pre></div> <h4 id=via-shebang>via Shebang<a class=headerlink href=#via-shebang title="Permanent link">&para;</a></h4> <p>Alternatively, if the first line of a code block contains a shebang, the language is derived from the path referenced in the shebang. This will only work for code blocks that are indented using four spaces, not for those encapsulated in three backticks.</p> <p>Example:</p> <div class=highlight><pre><span></span><code>    #!/usr/bin/python
+    import tensorflow as tf
+</code></pre></div> <p>Result:</p> <div class=highlight><pre><span></span><code><span class=ch>#!/usr/bin/python</span>
+<span class=kn>import</span> <span class=nn>tensorflow</span> <span class=k>as</span> <span class=nn>tf</span>
+</code></pre></div> <h4 id=via-three-colons>via three colons<a class=headerlink href=#via-three-colons title="Permanent link">&para;</a></h4> <p>If the first line starts with three colons followed by a language identifier, the first line is stripped. This will only work for code blocks that are indented using four spaces, not for those encapsulated in three backticks.</p> <p>Example:</p> <div class=highlight><pre><span></span><code>    :::python
+    import tensorflow as tf
+</code></pre></div> <p>Result:</p> <div class=codehilite><pre><span></span><code><span class=kn>import</span> <span class=nn>tensorflow</span> <span class=k>as</span> <span class=nn>tf</span>
+</code></pre></div> <h3 id=adding-line-numbers>Adding line numbers<a class=headerlink href=#adding-line-numbers title="Permanent link">&para;</a></h3> <p>Line numbers can be added to a code block by enabling the <code>linenums</code> flag in <code>mkdocs.yml</code> or adding <code>linenums=1</code> right after the language identifier:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>codehilite</span><span class=p>:</span>
+      <span class=nt>linenums</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div> <p>Example:</p> <div class=highlight><pre><span></span><code>``` python linenums=&quot;1&quot;
+&quot;&quot;&quot; Bubble sort &quot;&quot;&quot;
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] &gt; items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+</code></pre></div> <p>Result:</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class=code><div class=highlight><pre><span></span><code><span class=sd>&quot;&quot;&quot; Bubble sort &quot;&quot;&quot;</span>
+<span class=k>def</span> <span class=nf>bubble_sort</span><span class=p>(</span><span class=n>items</span><span class=p>):</span>
+    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)):</span>
+        <span class=k>for</span> <span class=n>j</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)</span> <span class=o>-</span> <span class=mi>1</span> <span class=o>-</span> <span class=n>i</span><span class=p>):</span>
+            <span class=k>if</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>&gt;</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]:</span>
+                <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span>
+</code></pre></div> </td></tr></table> <h3 id=grouping-code-blocks>Grouping code blocks<a class=headerlink href=#grouping-code-blocks title="Permanent link">&para;</a></h3> <p>The <a href=https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/ >Tabbed</a> extension which is part of the <a href=https://facelessuser.github.io/pymdown-extensions>PyMdown Extensions</a> package adds support for grouping Markdown blocks with tabs. This is especially useful for documenting projects with multiple language bindings.</p> <p>Add the Tabbed and SuperFences extensions to <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>markdown_extensions</span><span class=p>:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">codehilite</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.tabbed</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pymdownx.superfences</span>
+</code></pre></div> <p>Add your tabbed code to your markdown file. Example:</p> <div class=highlight><pre><span></span><code>=== &quot;Bash&quot;
+    ``` bash
+    #!/bin/bash
+
+    echo &quot;Hello world!&quot;
+    ```
+
+=== &quot;C&quot;
+    ``` c
+    #include &lt;stdio.h&gt;
+
+    int main(void) {
+      printf(&quot;Hello world!\n&quot;);
+      return 0;
+    }
+    ```
+
+=== &quot;C++&quot;
+    ``` c++
+    #include &lt;iostream&gt;
+
+    int main(void) {
+      std::cout &lt;&lt; &quot;Hello world!&quot; &lt;&lt; std::endl;
+      return 0;
+    }
+    ```
+
+=== &quot;C#&quot;
+    ``` c#
+    using System;
+
+    class Program {
+      static void Main(string[] args) {
+        Console.WriteLine(&quot;Hello world!&quot;);
+      }
+    }
+    ```
+</code></pre></div> <p>Result:</p> <div class=tabbed-set data-tabs=1:4><input checked=checked id=__tabbed_1_1 name=__tabbed_1 type=radio><label for=__tabbed_1_1>Bash</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+
+<span class=nb>echo</span> <span class=s2>&quot;Hello world!&quot;</span>
+</code></pre></div> </div> <input id=__tabbed_1_2 name=__tabbed_1 type=radio><label for=__tabbed_1_2>C</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=cp>#include</span> <span class=cpf>&lt;stdio.h&gt;</span><span class=cp></span>
+
+<span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>void</span><span class=p>)</span> <span class=p>{</span>
+  <span class=n>printf</span><span class=p>(</span><span class=s>&quot;Hello world!</span><span class=se>\n</span><span class=s>&quot;</span><span class=p>);</span>
+  <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div> </div> <input id=__tabbed_1_3 name=__tabbed_1 type=radio><label for=__tabbed_1_3>C++</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp></span>
+
+<span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>void</span><span class=p>)</span> <span class=p>{</span>
+  <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&quot;Hello world!&quot;</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+  <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div> </div> <input id=__tabbed_1_4 name=__tabbed_1 type=radio><label for=__tabbed_1_4>C#</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=k>using</span> <span class=nn>System</span><span class=p>;</span>
+
+<span class=k>class</span> <span class=nc>Program</span> <span class=p>{</span>
+  <span class=k>static</span> <span class=k>void</span> <span class=nf>Main</span><span class=p>(</span><span class=kt>string</span><span class=p>[]</span> <span class=n>args</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=s>&quot;Hello world!&quot;</span><span class=p>);</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div> </div> </div> <h3 id=highlighting-specific-lines>Highlighting specific lines<a class=headerlink href=#highlighting-specific-lines title="Permanent link">&para;</a></h3> <p>Specific lines can be highlighted by passing the line numbers to the <code>hl_lines</code> argument placed right after the language identifier. Line counts start at 1.</p> <p>Example:</p> <div class=highlight><pre><span></span><code>``` python hl_lines=&quot;3 4&quot;
+&quot;&quot;&quot; Bubble sort &quot;&quot;&quot;
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] &gt; items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+</code></pre></div> <p>Result:</p> <table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class=code><div class=highlight><pre><span></span><code><span class=sd>&quot;&quot;&quot; Bubble sort &quot;&quot;&quot;</span>
+<span class=k>def</span> <span class=nf>bubble_sort</span><span class=p>(</span><span class=n>items</span><span class=p>):</span>
+<span class=hll>    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)):</span>
+</span><span class=hll>        <span class=k>for</span> <span class=n>j</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>items</span><span class=p>)</span> <span class=o>-</span> <span class=mi>1</span> <span class=o>-</span> <span class=n>i</span><span class=p>):</span>
+</span>            <span class=k>if</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>&gt;</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]:</span>
+                <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>],</span> <span class=n>items</span><span class=p>[</span><span class=n>j</span><span class=p>]</span>
+</code></pre></div> </td></tr></table> <h2 id=supported-languages-excerpt>Supported languages <small>excerpt</small><a class=headerlink href=#supported-languages-excerpt title="Permanent link">&para;</a></h2> <p>CodeHilite uses <a href=https://pygments.org>Pygments</a>, a generic syntax highlighter with support for over <a href=http://pygments.org/languages>300 languages</a>, so the following list of examples is just an excerpt.</p> <h3 id=bash>Bash<a class=headerlink href=#bash title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=ch>#!/bin/bash</span>
+
+<span class=k>for</span> OPT in <span class=s2>&quot;</span><span class=nv>$@</span><span class=s2>&quot;</span>
+<span class=k>do</span>
+  <span class=k>case</span> <span class=s2>&quot;</span><span class=nv>$OPT</span><span class=s2>&quot;</span> in
+    <span class=s1>&#39;-f&#39;</span> <span class=o>)</span>  <span class=nv>canonicalize</span><span class=o>=</span><span class=m>1</span> <span class=p>;;</span>
+    <span class=s1>&#39;-n&#39;</span> <span class=o>)</span>  <span class=nv>switchlf</span><span class=o>=</span><span class=s2>&quot;-n&quot;</span> <span class=p>;;</span>
+  <span class=k>esac</span>
+<span class=k>done</span>
+
+<span class=c1># readlink -f</span>
+<span class=k>function</span> __readlink_f <span class=o>{</span>
+  <span class=nv>target</span><span class=o>=</span><span class=s2>&quot;</span><span class=nv>$1</span><span class=s2>&quot;</span>
+  <span class=k>while</span> <span class=nb>test</span> -n <span class=s2>&quot;</span><span class=nv>$target</span><span class=s2>&quot;</span><span class=p>;</span> <span class=k>do</span>
+    <span class=nv>filepath</span><span class=o>=</span><span class=s2>&quot;</span><span class=nv>$target</span><span class=s2>&quot;</span>
+    <span class=nb>cd</span> <span class=sb>`</span>dirname <span class=s2>&quot;</span><span class=nv>$filepath</span><span class=s2>&quot;</span><span class=sb>`</span>
+    <span class=nv>target</span><span class=o>=</span><span class=sb>`</span>readlink <span class=s2>&quot;</span><span class=nv>$filepath</span><span class=s2>&quot;</span><span class=sb>`</span>
+  <span class=k>done</span>
+  /bin/echo <span class=nv>$switchlf</span> <span class=sb>`</span><span class=nb>pwd</span> -P<span class=sb>`</span>/<span class=sb>`</span>basename <span class=s2>&quot;</span><span class=nv>$filepath</span><span class=s2>&quot;</span><span class=sb>`</span>
+<span class=o>}</span>
+
+<span class=k>if</span> <span class=o>[</span> ! <span class=s2>&quot;</span><span class=nv>$canonicalize</span><span class=s2>&quot;</span> <span class=o>]</span><span class=p>;</span> <span class=k>then</span>
+  readlink <span class=nv>$switchlf</span> <span class=s2>&quot;</span><span class=nv>$@</span><span class=s2>&quot;</span>
+<span class=k>else</span>
+  <span class=k>for</span> file in <span class=s2>&quot;</span><span class=nv>$@</span><span class=s2>&quot;</span>
+  <span class=k>do</span>
+    <span class=k>case</span> <span class=s2>&quot;</span><span class=nv>$file</span><span class=s2>&quot;</span> in
+      -* <span class=o>)</span>  <span class=p>;;</span>
+      *  <span class=o>)</span>  __readlink_f <span class=s2>&quot;</span><span class=nv>$file</span><span class=s2>&quot;</span> <span class=p>;;</span>
+    <span class=k>esac</span>
+    <span class=k>done</span>
+<span class=k>fi</span>
+
+<span class=nb>exit</span> <span class=nv>$?</span>
+</code></pre></div> <h3 id=c>C<a class=headerlink href=#c title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=k>extern</span> <span class=kt>size_t</span>
+<span class=nf>pb_varint_scan</span><span class=p>(</span><span class=k>const</span> <span class=kt>uint8_t</span> <span class=n>data</span><span class=p>[],</span> <span class=kt>size_t</span> <span class=n>left</span><span class=p>)</span> <span class=p>{</span>
+  <span class=n>assert</span><span class=p>(</span><span class=n>data</span> <span class=o>&amp;&amp;</span> <span class=n>left</span><span class=p>);</span>
+  <span class=n>left</span> <span class=o>=</span> <span class=n>left</span> <span class=o>&gt;</span> <span class=mi>10</span> <span class=o>?</span> <span class=mi>10</span> <span class=o>:</span> <span class=n>left</span><span class=p>;</span>
+
+<span class=cp>#ifdef __SSE2__</span>
+
+  <span class=cm>/* Mapping: remaining bytes ==&gt; bitmask */</span>
+  <span class=k>static</span> <span class=k>const</span> <span class=kt>int</span> <span class=n>mask_map</span><span class=p>[]</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=mh>0x0000</span><span class=p>,</span> <span class=mh>0x0001</span><span class=p>,</span> <span class=mh>0x0003</span><span class=p>,</span> <span class=mh>0x0007</span><span class=p>,</span>
+    <span class=mh>0x000F</span><span class=p>,</span> <span class=mh>0x001F</span><span class=p>,</span> <span class=mh>0x003F</span><span class=p>,</span> <span class=mh>0x007F</span><span class=p>,</span>
+    <span class=mh>0x00FF</span><span class=p>,</span> <span class=mh>0x01FF</span><span class=p>,</span> <span class=mh>0x03FF</span>
+  <span class=p>};</span>
+
+  <span class=cm>/* Load buffer into 128-bit integer and create high-bit mask */</span>
+  <span class=kr>__m128i</span> <span class=n>temp</span> <span class=o>=</span> <span class=n>_mm_loadu_si128</span><span class=p>((</span><span class=k>const</span> <span class=kr>__m128i</span> <span class=o>*</span><span class=p>)</span><span class=n>data</span><span class=p>);</span>
+  <span class=kr>__m128i</span> <span class=n>high</span> <span class=o>=</span> <span class=n>_mm_set1_epi8</span><span class=p>(</span><span class=mh>0x80</span><span class=p>);</span>
+
+  <span class=cm>/* Intersect and extract mask with high-bits set */</span>
+  <span class=kt>int</span> <span class=n>mask</span> <span class=o>=</span> <span class=n>_mm_movemask_epi8</span><span class=p>(</span><span class=n>_mm_and_si128</span><span class=p>(</span><span class=n>temp</span><span class=p>,</span> <span class=n>high</span><span class=p>));</span>
+  <span class=n>mask</span> <span class=o>=</span> <span class=p>(</span><span class=n>mask</span> <span class=o>&amp;</span> <span class=n>mask_map</span><span class=p>[</span><span class=n>left</span><span class=p>])</span> <span class=o>^</span> <span class=n>mask_map</span><span class=p>[</span><span class=n>left</span><span class=p>];</span>
+
+  <span class=cm>/* Count trailing zeroes */</span>
+  <span class=k>return</span> <span class=n>mask</span> <span class=o>?</span> <span class=n>__builtin_ctz</span><span class=p>(</span><span class=n>mask</span><span class=p>)</span> <span class=o>+</span> <span class=mi>1</span> <span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+
+<span class=cp>#else</span>
+
+  <span class=cm>/* Linear scan */</span>
+  <span class=kt>size_t</span> <span class=n>size</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+  <span class=k>while</span> <span class=p>(</span><span class=n>data</span><span class=p>[</span><span class=n>size</span><span class=o>++</span><span class=p>]</span> <span class=o>&amp;</span> <span class=mh>0x80</span><span class=p>)</span>
+    <span class=k>if</span> <span class=p>(</span><span class=o>!--</span><span class=n>left</span><span class=p>)</span>
+      <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+  <span class=k>return</span> <span class=n>size</span><span class=p>;</span>
+
+<span class=cp>#endif </span><span class=cm>/* __SSE2__ */</span><span class=cp></span>
+
+<span class=p>}</span>
+</code></pre></div> <h3 id=c_1>C++<a class=headerlink href=#c_1 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=n>Extension</span><span class=o>::</span>
+<span class=n>Extension</span><span class=p>(</span><span class=k>const</span> <span class=n>Descriptor</span> <span class=o>*</span><span class=n>descriptor</span><span class=p>,</span> <span class=k>const</span> <span class=n>Descriptor</span> <span class=o>*</span><span class=n>scope</span><span class=p>)</span> <span class=o>:</span>
+    <span class=n>descriptor_</span><span class=p>(</span><span class=n>descriptor</span><span class=p>),</span>
+    <span class=n>scope_</span><span class=p>(</span><span class=n>scope</span><span class=p>)</span> <span class=p>{</span>
+
+  <span class=cm>/* Extract full name for signature */</span>
+  <span class=n>variables_</span><span class=p>[</span><span class=s>&quot;signature&quot;</span><span class=p>]</span> <span class=o>=</span> <span class=n>descriptor_</span><span class=o>-&gt;</span><span class=n>full_name</span><span class=p>();</span>
+
+  <span class=cm>/* Prepare message symbol */</span>
+  <span class=n>variables_</span><span class=p>[</span><span class=s>&quot;message&quot;</span><span class=p>]</span> <span class=o>=</span> <span class=n>StringReplace</span><span class=p>(</span>
+    <span class=n>variables_</span><span class=p>[</span><span class=s>&quot;signature&quot;</span><span class=p>],</span> <span class=s>&quot;.&quot;</span><span class=p>,</span> <span class=s>&quot;_&quot;</span><span class=p>,</span> <span class=nb>true</span><span class=p>);</span>
+  <span class=n>LowerString</span><span class=p>(</span><span class=o>&amp;</span><span class=p>(</span><span class=n>variables_</span><span class=p>[</span><span class=s>&quot;message&quot;</span><span class=p>]));</span>
+
+  <span class=cm>/* Suffix scope to identifiers, if given */</span>
+  <span class=n>string</span> <span class=nf>suffix</span> <span class=p>(</span><span class=s>&quot;&quot;</span><span class=p>);</span>
+  <span class=k>if</span> <span class=p>(</span><span class=n>scope_</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>suffix</span> <span class=o>=</span> <span class=n>scope_</span><span class=o>-&gt;</span><span class=n>full_name</span><span class=p>();</span>
+
+    <span class=cm>/* Check if the base and extension types are in the same package */</span>
+    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>scope_</span><span class=o>-&gt;</span><span class=n>file</span><span class=p>()</span><span class=o>-&gt;</span><span class=n>package</span><span class=p>().</span><span class=n>compare</span><span class=p>(</span><span class=n>descriptor_</span><span class=o>-&gt;</span><span class=n>file</span><span class=p>()</span><span class=o>-&gt;</span><span class=n>package</span><span class=p>()))</span>
+      <span class=n>suffix</span> <span class=o>=</span> <span class=n>StripPrefixString</span><span class=p>(</span><span class=n>suffix</span><span class=p>,</span>
+        <span class=n>scope_</span><span class=o>-&gt;</span><span class=n>file</span><span class=p>()</span><span class=o>-&gt;</span><span class=n>package</span><span class=p>()</span> <span class=o>+</span> <span class=s>&quot;.&quot;</span><span class=p>);</span>
+
+    <span class=cm>/* Append to signature */</span>
+    <span class=n>variables_</span><span class=p>[</span><span class=s>&quot;signature&quot;</span><span class=p>]</span> <span class=o>+=</span> <span class=s>&quot;.[&quot;</span> <span class=o>+</span> <span class=n>suffix</span> <span class=o>+</span><span class=s>&quot;]&quot;</span><span class=p>;</span>
+    <span class=n>suffix</span> <span class=o>=</span> <span class=s>&quot;_&quot;</span> <span class=o>+</span> <span class=n>suffix</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=cm>/* Prepare extension symbol */</span>
+  <span class=n>variables_</span><span class=p>[</span><span class=s>&quot;extension&quot;</span><span class=p>]</span> <span class=o>=</span> <span class=n>StringReplace</span><span class=p>(</span>
+    <span class=n>suffix</span><span class=p>,</span> <span class=s>&quot;.&quot;</span><span class=p>,</span> <span class=s>&quot;_&quot;</span><span class=p>,</span> <span class=nb>true</span><span class=p>);</span>
+  <span class=n>LowerString</span><span class=p>(</span><span class=o>&amp;</span><span class=p>(</span><span class=n>variables_</span><span class=p>[</span><span class=s>&quot;extension&quot;</span><span class=p>]));</span>
+<span class=p>}</span>
+</code></pre></div> <h3 id=c_2>C&#35;<a class=headerlink href=#c_2 title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=k>public</span> <span class=k>static</span> <span class=k>void</span> <span class=nf>Send</span><span class=p>(</span>
+    <span class=n>Socket</span> <span class=n>socket</span><span class=p>,</span> <span class=kt>byte</span><span class=p>[]</span> <span class=n>buffer</span><span class=p>,</span> <span class=kt>int</span> <span class=n>offset</span><span class=p>,</span> <span class=kt>int</span> <span class=n>size</span><span class=p>,</span> <span class=kt>int</span> <span class=n>timeout</span><span class=p>)</span> <span class=p>{</span>
+  <span class=kt>int</span> <span class=n>startTickCount</span> <span class=p>=</span> <span class=n>Environment</span><span class=p>.</span><span class=n>TickCount</span><span class=p>;</span>
+  <span class=kt>int</span> <span class=n>sent</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span>
+  <span class=k>do</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>Environment</span><span class=p>.</span><span class=n>TickCount</span> <span class=p>&gt;</span> <span class=n>startTickCount</span> <span class=p>+</span> <span class=n>timeout</span><span class=p>)</span>
+      <span class=k>throw</span> <span class=k>new</span> <span class=nf>Exception</span><span class=p>(</span><span class=s>&quot;Timeout.&quot;</span><span class=p>);</span>
+    <span class=k>try</span> <span class=p>{</span>
+      <span class=n>sent</span> <span class=p>+=</span> <span class=n>socket</span><span class=p>.</span><span class=n>Send</span><span class=p>(</span><span class=n>buffer</span><span class=p>,</span> <span class=n>offset</span> <span class=p>+</span> <span class=n>sent</span><span class=p>,</span>
+        <span class=n>size</span> <span class=p>-</span> <span class=n>sent</span><span class=p>,</span> <span class=n>SocketFlags</span><span class=p>.</span><span class=n>None</span><span class=p>);</span>
+    <span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=n>SocketException</span> <span class=n>ex</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>if</span> <span class=p>(</span><span class=n>ex</span><span class=p>.</span><span class=n>SocketErrorCode</span> <span class=p>==</span> <span class=n>SocketError</span><span class=p>.</span><span class=n>WouldBlock</span> <span class=p>||</span>
+          <span class=n>ex</span><span class=p>.</span><span class=n>SocketErrorCode</span> <span class=p>==</span> <span class=n>SocketError</span><span class=p>.</span><span class=n>IOPending</span> <span class=p>||</span>
+          <span class=n>ex</span><span class=p>.</span><span class=n>SocketErrorCode</span> <span class=p>==</span> <span class=n>SocketError</span><span class=p>.</span><span class=n>NoBufferSpaceAvailable</span><span class=p>)</span> <span class=p>{</span>
+        <span class=cm>/* Socket buffer is probably full, wait and try again */</span>
+        <span class=n>Thread</span><span class=p>.</span><span class=n>Sleep</span><span class=p>(</span><span class=m>30</span><span class=p>);</span>
+      <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+        <span class=k>throw</span> <span class=n>ex</span><span class=p>;</span>
+      <span class=p>}</span>
+    <span class=p>}</span>
+  <span class=p>}</span> <span class=k>while</span> <span class=p>(</span><span class=n>sent</span> <span class=p>&lt;</span> <span class=n>size</span><span class=p>);</span>
+<span class=p>}</span>
+</code></pre></div> <h3 id=clojure>Clojure<a class=headerlink href=#clojure title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=p>(</span><span class=nf>clojure-version</span><span class=p>)</span>
+
+<span class=p>(</span><span class=kd>defn </span><span class=nv>partition-when</span>
+  <span class=p>[</span><span class=nv>f</span><span class=p>]</span>
+  <span class=p>(</span><span class=k>fn </span><span class=p>[</span><span class=nv>rf</span><span class=p>]</span>
+    <span class=p>(</span><span class=k>let </span><span class=p>[</span><span class=nv>a</span> <span class=p>(</span><span class=nf>java.util.ArrayList.</span><span class=p>)</span>
+          <span class=nv>fval</span> <span class=p>(</span><span class=nf>volatile!</span> <span class=nv>false</span><span class=p>)]</span>
+      <span class=p>(</span><span class=nf>fn</span>
+        <span class=p>([]</span> <span class=p>(</span><span class=nf>rf</span><span class=p>))</span>
+        <span class=p>([</span><span class=nv>result</span><span class=p>]</span>
+           <span class=p>(</span><span class=k>let </span><span class=p>[</span><span class=nv>result</span> <span class=p>(</span><span class=k>if </span><span class=p>(</span><span class=nf>.isEmpty</span> <span class=nv>a</span><span class=p>)</span>
+                          <span class=nv>result</span>
+                          <span class=p>(</span><span class=k>let </span><span class=p>[</span><span class=nv>v</span> <span class=p>(</span><span class=nf>vec</span> <span class=p>(</span><span class=nf>.toArray</span> <span class=nv>a</span><span class=p>))]</span>
+                            <span class=c1>;; Clear first</span>
+                            <span class=p>(</span><span class=nf>.clear</span> <span class=nv>a</span><span class=p>)</span>
+                            <span class=p>(</span><span class=nf>unreduced</span> <span class=p>(</span><span class=nf>rf</span> <span class=nv>result</span> <span class=nv>v</span><span class=p>))))]</span>
+             <span class=p>(</span><span class=nf>rf</span> <span class=nv>result</span><span class=p>)))</span>
+        <span class=p>([</span><span class=nv>result</span> <span class=nv>input</span><span class=p>]</span>
+            <span class=p>(</span><span class=nb>if-not </span><span class=p>(</span><span class=nb>and </span><span class=p>(</span><span class=nf>f</span> <span class=nv>input</span><span class=p>)</span>  <span class=o>@</span><span class=nv>fval</span><span class=p>)</span>
+               <span class=p>(</span><span class=nf>do</span>
+                 <span class=p>(</span><span class=nf>vreset!</span> <span class=nv>fval</span> <span class=nv>true</span><span class=p>)</span>
+                 <span class=p>(</span><span class=nf>.add</span> <span class=nv>a</span> <span class=nv>input</span><span class=p>)</span>
+                 <span class=nv>result</span><span class=p>)</span>
+               <span class=p>(</span><span class=k>let </span><span class=p>[</span><span class=nv>v</span> <span class=p>(</span><span class=nf>vec</span> <span class=p>(</span><span class=nf>.toArray</span> <span class=nv>a</span><span class=p>))]</span>
+                 <span class=p>(</span><span class=nf>.clear</span> <span class=nv>a</span><span class=p>)</span>
+                 <span class=p>(</span><span class=k>let </span><span class=p>[</span><span class=nv>ret</span> <span class=p>(</span><span class=nf>rf</span> <span class=nv>result</span> <span class=nv>v</span><span class=p>)]</span>
+                   <span class=p>(</span><span class=nb>when-not </span><span class=p>(</span><span class=nf>reduced?</span> <span class=nv>ret</span><span class=p>)</span>
+                     <span class=p>(</span><span class=nf>.add</span> <span class=nv>a</span> <span class=nv>input</span><span class=p>))</span>
+                   <span class=nv>ret</span><span class=p>))))))))</span>
+
+
+<span class=p>(</span><span class=nb>into </span><span class=p>[]</span> <span class=p>(</span><span class=nf>partition-when</span>
+          <span class=o>#</span><span class=p>(</span><span class=nf>.startsWith</span> <span class=nv>%</span> <span class=s>&quot;&gt;&gt;&quot;</span><span class=p>))</span>
+          <span class=p>[</span><span class=s>&quot;1d&quot;</span> <span class=s>&quot;33&quot;</span> <span class=s>&quot;&gt;&gt; 1&quot;</span> <span class=s>&quot;&gt;&gt; 2&quot;</span> <span class=s>&quot;22&quot;</span> <span class=s>&quot;&gt;&gt; 3&quot;</span><span class=p>])</span>
+</code></pre></div> <h3 id=diff>Diff<a class=headerlink href=#diff title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=gh>Index: grunt.js</span>
+<span class=gh>===================================================================</span>
+<span class=gd>--- grunt.js    (revision 31200)</span>
+<span class=gi>+++ grunt.js    (working copy)</span>
+<span class=gu>@@ -12,6 +12,7 @@</span>
+
+ module.exports = function (grunt) {
+
+<span class=gi>+  console.log(&#39;hello world&#39;);</span>
+   // Project configuration.
+   grunt.initConfig({
+     lint: {
+<span class=gu>@@ -19,10 +20,6 @@</span>
+         &#39;packages/services.web/{!(test)/**/,}*.js&#39;,
+         &#39;packages/error/**/*.js&#39;
+       ],
+<span class=gd>-      scripts: [</span>
+<span class=gd>-        &#39;grunt.js&#39;,</span>
+<span class=gd>-        &#39;db/**/*.js&#39;</span>
+<span class=gd>-      ],</span>
+       browser: [
+         &#39;packages/web/server.js&#39;,
+         &#39;packages/web/server/**/*.js&#39;,
+</code></pre></div> <h3 id=docker>Docker<a class=headerlink href=#docker title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=k>FROM</span> <span class=s>ubuntu</span>
+
+<span class=c># Install vnc, xvfb in order to create a &#39;fake&#39; display and firefox</span>
+<span class=k>RUN</span> apt-get update <span class=o>&amp;&amp;</span> apt-get install -y x11vnc xvfb firefox
+<span class=k>RUN</span> mkdir ~/.vnc
+
+<span class=c># Setup a password</span>
+<span class=k>RUN</span> x11vnc -storepasswd <span class=m>1234</span> ~/.vnc/passwd
+
+<span class=c># Autostart firefox (might not be the best way, but it does the trick)</span>
+<span class=k>RUN</span> bash -c <span class=s1>&#39;echo &quot;firefox&quot; &gt;&gt; /.bashrc&#39;</span>
+
+<span class=k>EXPOSE</span><span class=s> 5900</span>
+<span class=k>CMD</span> <span class=p>[</span><span class=s2>&quot;x11vnc&quot;</span><span class=p>,</span> <span class=s2>&quot;-forever&quot;</span><span class=p>,</span> <span class=s2>&quot;-usepw&quot;</span><span class=p>,</span> <span class=s2>&quot;-create&quot;</span><span class=p>]</span>
+</code></pre></div> <h3 id=elixir>Elixir<a class=headerlink href=#elixir title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=kn>require</span> <span class=nc>Logger</span>
+
+<span class=kd>def</span> <span class=n>accept</span><span class=p>(</span><span class=n>port</span><span class=p>)</span> <span class=k>do</span>
+  <span class=p>{</span><span class=ss>:ok</span><span class=p>,</span> <span class=n>socket</span><span class=p>}</span> <span class=o>=</span> <span class=ss>:gen_tcp</span><span class=o>.</span><span class=n>listen</span><span class=p>(</span><span class=n>port</span><span class=p>,</span>
+                    <span class=p>[</span><span class=ss>:binary</span><span class=p>,</span> <span class=ss>packet</span><span class=p>:</span> <span class=ss>:line</span><span class=p>,</span> <span class=ss>active</span><span class=p>:</span> <span class=no>false</span><span class=p>,</span> <span class=ss>reuseaddr</span><span class=p>:</span> <span class=no>true</span><span class=p>])</span>
+  <span class=nc>Logger</span><span class=o>.</span><span class=n>info</span> <span class=s2>&quot;Accepting connections on port </span><span class=si>#{</span><span class=n>port</span><span class=si>}</span><span class=s2>&quot;</span>
+  <span class=n>loop_acceptor</span><span class=p>(</span><span class=n>socket</span><span class=p>)</span>
+<span class=k>end</span>
+
+<span class=kd>defp</span> <span class=n>loop_acceptor</span><span class=p>(</span><span class=n>socket</span><span class=p>)</span> <span class=k>do</span>
+  <span class=p>{</span><span class=ss>:ok</span><span class=p>,</span> <span class=n>client</span><span class=p>}</span> <span class=o>=</span> <span class=ss>:gen_tcp</span><span class=o>.</span><span class=n>accept</span><span class=p>(</span><span class=n>socket</span><span class=p>)</span>
+  <span class=n>serve</span><span class=p>(</span><span class=n>client</span><span class=p>)</span>
+  <span class=n>loop_acceptor</span><span class=p>(</span><span class=n>socket</span><span class=p>)</span>
+<span class=k>end</span>
+
+<span class=kd>defp</span> <span class=n>serve</span><span class=p>(</span><span class=n>socket</span><span class=p>)</span> <span class=k>do</span>
+  <span class=n>socket</span>
+  <span class=o>|&gt;</span> <span class=n>read_line</span><span class=p>()</span>
+  <span class=o>|&gt;</span> <span class=n>write_line</span><span class=p>(</span><span class=n>socket</span><span class=p>)</span>
+
+  <span class=n>serve</span><span class=p>(</span><span class=n>socket</span><span class=p>)</span>
+<span class=k>end</span>
+
+<span class=kd>defp</span> <span class=n>read_line</span><span class=p>(</span><span class=n>socket</span><span class=p>)</span> <span class=k>do</span>
+  <span class=p>{</span><span class=ss>:ok</span><span class=p>,</span> <span class=n>data</span><span class=p>}</span> <span class=o>=</span> <span class=ss>:gen_tcp</span><span class=o>.</span><span class=n>recv</span><span class=p>(</span><span class=n>socket</span><span class=p>,</span> <span class=mi>0</span><span class=p>)</span>
+  <span class=n>data</span>
+<span class=k>end</span>
+
+<span class=kd>defp</span> <span class=n>write_line</span><span class=p>(</span><span class=n>line</span><span class=p>,</span> <span class=n>socket</span><span class=p>)</span> <span class=k>do</span>
+  <span class=ss>:gen_tcp</span><span class=o>.</span><span class=n>send</span><span class=p>(</span><span class=n>socket</span><span class=p>,</span> <span class=n>line</span><span class=p>)</span>
+<span class=k>end</span>
+</code></pre></div> <h3 id=erlang>Erlang<a class=headerlink href=#erlang title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=nf>circular</span><span class=p>(</span><span class=nv>Defs</span><span class=p>)</span> <span class=o>-&gt;</span>
+  <span class=p>[</span> <span class=p>{</span> <span class=p>{</span> <span class=nv>Type</span><span class=p>,</span> <span class=nv>Base</span> <span class=p>},</span> <span class=nv>Fields</span> <span class=p>}</span> <span class=p>||</span>
+    <span class=p>{</span> <span class=p>{</span> <span class=nv>Type</span><span class=p>,</span> <span class=nv>Base</span> <span class=p>},</span> <span class=nv>Fields</span> <span class=p>}</span> <span class=o>&lt;-</span> <span class=nv>Defs</span><span class=p>,</span> <span class=nv>Type</span> <span class=o>==</span> <span class=n>msg</span><span class=p>,</span> <span class=n>circular</span><span class=p>(</span><span class=nv>Base</span><span class=p>,</span> <span class=nv>Defs</span><span class=p>)</span> <span class=p>].</span>
+
+<span class=nf>circular</span><span class=p>(</span><span class=nv>Base</span><span class=p>,</span> <span class=nv>Defs</span><span class=p>)</span> <span class=o>-&gt;</span>
+  <span class=nv>Fields</span> <span class=o>=</span> <span class=nn>proplists</span><span class=p>:</span><span class=nf>get_value</span><span class=p>({</span> <span class=n>msg</span><span class=p>,</span> <span class=nv>Base</span> <span class=p>},</span> <span class=nv>Defs</span><span class=p>),</span>
+  <span class=n>circular</span><span class=p>(</span><span class=nv>Defs</span><span class=p>,</span> <span class=nv>Fields</span><span class=p>,</span> <span class=p>[</span><span class=nv>Base</span><span class=p>]).</span>
+
+<span class=nf>circular</span><span class=p>(_</span><span class=nv>Defs</span><span class=p>,</span> <span class=p>[],</span> <span class=p>_</span><span class=nv>Path</span><span class=p>)</span> <span class=o>-&gt;</span>
+  <span class=n>false</span><span class=p>;</span>
+<span class=nf>circular</span><span class=p>(</span><span class=nv>Defs</span><span class=p>,</span> <span class=p>[</span><span class=nv>Field</span> <span class=p>|</span> <span class=nv>Fields</span><span class=p>],</span> <span class=nv>Path</span><span class=p>)</span> <span class=o>-&gt;</span>
+  <span class=k>case</span> <span class=nv>Field</span><span class=nl>#field.type</span> <span class=k>of</span>
+    <span class=p>{</span> <span class=n>msg</span><span class=p>,</span> <span class=nv>Type</span> <span class=p>}</span> <span class=o>-&gt;</span>
+      <span class=k>case</span> <span class=nn>lists</span><span class=p>:</span><span class=nf>member</span><span class=p>(</span><span class=nv>Type</span><span class=p>,</span> <span class=nv>Path</span><span class=p>)</span> <span class=k>of</span>
+        <span class=n>false</span> <span class=o>-&gt;</span>
+          <span class=nv>Children</span> <span class=o>=</span> <span class=nn>proplists</span><span class=p>:</span><span class=nf>get_value</span><span class=p>({</span> <span class=n>msg</span><span class=p>,</span> <span class=nv>Type</span> <span class=p>},</span> <span class=nv>Defs</span><span class=p>),</span>
+          <span class=k>case</span> <span class=n>circular</span><span class=p>(</span><span class=nv>Defs</span><span class=p>,</span> <span class=nv>Children</span><span class=p>,</span> <span class=p>[</span><span class=nv>Type</span> <span class=p>|</span> <span class=nv>Path</span><span class=p>])</span> <span class=k>of</span>
+            <span class=n>false</span> <span class=o>-&gt;</span> <span class=n>circular</span><span class=p>(</span><span class=nv>Defs</span><span class=p>,</span> <span class=nv>Fields</span><span class=p>,</span> <span class=nv>Path</span><span class=p>);</span>
+            <span class=n>true</span>  <span class=o>-&gt;</span> <span class=n>true</span>
+          <span class=k>end</span><span class=p>;</span>
+        <span class=n>true</span> <span class=o>-&gt;</span>
+          <span class=nv>Type</span> <span class=o>==</span> <span class=nn>lists</span><span class=p>:</span><span class=nf>last</span><span class=p>(</span><span class=nv>Path</span><span class=p>)</span> <span class=ow>andalso</span>
+            <span class=p>(</span><span class=nb>length</span><span class=p>(</span><span class=nv>Path</span><span class=p>)</span> <span class=o>==</span> <span class=mi>1</span> <span class=ow>orelse</span> <span class=ow>not</span> <span class=n>is_tree</span><span class=p>(</span><span class=nv>Path</span><span class=p>))</span>
+      <span class=k>end</span><span class=p>;</span>
+    <span class=p>_</span> <span class=o>-&gt;</span>
+      <span class=n>circular</span><span class=p>(</span><span class=nv>Defs</span><span class=p>,</span> <span class=nv>Fields</span><span class=p>,</span> <span class=nv>Path</span><span class=p>)</span>
+  <span class=k>end</span><span class=p>.</span>
+</code></pre></div> <h3 id=f>F&#35;<a class=headerlink href=#f title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=sd>/// Asynchronously download retangles from the server</span>
+<span class=sd>/// and decode the JSON format to F# Rectangle record</span>
+<span class=k>let</span> <span class=o>[&lt;</span><span class=n>Js</span><span class=o>&gt;]</span> <span class=n>getRectangles</span> <span class=bp>()</span> <span class=o>:</span> <span class=n>Async</span><span class=o>&lt;</span><span class=n>Rectangle</span><span class=bp>[]</span><span class=o>&gt;</span> <span class=o>=</span> <span class=n>async</span> <span class=o>{</span>
+  <span class=k>let</span> <span class=nv>req</span> <span class=o>=</span> <span class=n>XMLHttpRequest</span><span class=bp>()</span>
+  <span class=n>req</span><span class=o>.</span><span class=n>Open</span><span class=o>(</span><span class=s>&quot;POST&quot;</span><span class=o>,</span> <span class=s>&quot;/get&quot;</span><span class=o>,</span> <span class=k>true</span><span class=o>)</span>
+  <span class=k>let!</span> <span class=nv>resp</span> <span class=o>=</span> <span class=n>req</span><span class=o>.</span><span class=n>AsyncSend</span><span class=bp>()</span>
+  <span class=k>return</span> <span class=nn>JSON</span><span class=p>.</span><span class=n>parse</span><span class=o>(</span><span class=n>resp</span><span class=o>)</span> <span class=o>}</span>
+
+<span class=sd>/// Repeatedly update rectangles after 0.5 sec</span>
+<span class=k>let</span> <span class=o>[&lt;</span><span class=n>Js</span><span class=o>&gt;]</span> <span class=n>updateLoop</span> <span class=bp>()</span> <span class=o>=</span> <span class=n>async</span> <span class=o>{</span>
+  <span class=k>while</span> <span class=k>true</span> <span class=k>do</span>
+    <span class=k>do</span><span class=o>!</span> <span class=nn>Async</span><span class=p>.</span><span class=n>Sleep</span><span class=o>(</span><span class=mi>500</span><span class=o>)</span>
+    <span class=k>let!</span> <span class=nv>rects</span> <span class=o>=</span> <span class=n>getRectangles</span><span class=bp>()</span>
+    <span class=n>cleanRectangles</span><span class=bp>()</span>
+    <span class=n>rects</span> <span class=o>|&gt;</span> <span class=nn>Array</span><span class=p>.</span><span class=n>iter</span> <span class=n>createRectangle</span> <span class=o>}</span>
+</code></pre></div> <h3 id=go>Go<a class=headerlink href=#go title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=kn>package</span> <span class=nx>main</span>
+
+<span class=kn>import</span> <span class=s>&quot;fmt&quot;</span>
+
+<span class=kd>func</span> <span class=nx>counter</span><span class=p>(</span><span class=nx>id</span> <span class=kt>int</span><span class=p>,</span> <span class=nx>channel</span> <span class=kd>chan</span> <span class=kt>int</span><span class=p>,</span> <span class=nx>closer</span> <span class=kt>bool</span><span class=p>)</span> <span class=p>{</span>
+  <span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=p>&lt;</span> <span class=mi>10000000</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span> <span class=p>{</span>
+    <span class=nx>fmt</span><span class=p>.</span><span class=nx>Println</span><span class=p>(</span><span class=s>&quot;process&quot;</span><span class=p>,</span> <span class=nx>id</span><span class=p>,</span><span class=s>&quot; send&quot;</span><span class=p>,</span> <span class=nx>i</span><span class=p>)</span>
+    <span class=nx>channel</span> <span class=o>&lt;-</span> <span class=mi>1</span>
+  <span class=p>}</span>
+  <span class=k>if</span> <span class=nx>closer</span> <span class=p>{</span> <span class=nb>close</span><span class=p>(</span><span class=nx>channel</span> <span class=p>)</span> <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=kd>func</span> <span class=nx>main</span><span class=p>()</span> <span class=p>{</span>
+  <span class=nx>channel</span> <span class=o>:=</span> <span class=nb>make</span><span class=p>(</span><span class=kd>chan</span> <span class=kt>int</span><span class=p>)</span>
+  <span class=k>go</span> <span class=nx>counter</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=nx>channel</span><span class=p>,</span> <span class=kc>false</span><span class=p>)</span>
+  <span class=k>go</span> <span class=nx>counter</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=nx>channel</span><span class=p>,</span> <span class=kc>true</span><span class=p>)</span>
+
+  <span class=nx>x</span> <span class=o>:=</span> <span class=mi>0</span>
+
+  <span class=c1>// receiving data from channel</span>
+  <span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=k>range</span> <span class=nx>channel</span> <span class=p>{</span>
+    <span class=nx>fmt</span><span class=p>.</span><span class=nx>Println</span><span class=p>(</span><span class=s>&quot;receiving&quot;</span><span class=p>)</span>
+    <span class=nx>x</span> <span class=o>+=</span> <span class=nx>i</span>
+  <span class=p>}</span>
+
+  <span class=nx>fmt</span><span class=p>.</span><span class=nx>Println</span><span class=p>(</span><span class=nx>x</span><span class=p>)</span>
+<span class=p>}</span>
+</code></pre></div> <h3 id=html>HTML<a class=headerlink href=#html title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=cp>&lt;!doctype html&gt;</span>
+<span class=p>&lt;</span><span class=nt>html</span> <span class=na>class</span><span class=o>=</span><span class=s>&quot;no-js&quot;</span> <span class=na>lang</span><span class=o>=</span><span class=s>&quot;&quot;</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>head</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>meta</span> <span class=na>charset</span><span class=o>=</span><span class=s>&quot;utf-8&quot;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>meta</span> <span class=na>http-equiv</span><span class=o>=</span><span class=s>&quot;x-ua-compatible&quot;</span> <span class=na>content</span><span class=o>=</span><span class=s>&quot;ie=edge&quot;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>title</span><span class=p>&gt;</span>HTML5 Boilerplate<span class=p>&lt;/</span><span class=nt>title</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>meta</span> <span class=na>name</span><span class=o>=</span><span class=s>&quot;description&quot;</span> <span class=na>content</span><span class=o>=</span><span class=s>&quot;&quot;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>meta</span> <span class=na>name</span><span class=o>=</span><span class=s>&quot;viewport&quot;</span> <span class=na>content</span><span class=o>=</span><span class=s>&quot;width=device-width, initial-scale=1&quot;</span><span class=p>&gt;</span>
+
+    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&quot;apple-touch-icon&quot;</span> <span class=na>href</span><span class=o>=</span><span class=s>&quot;apple-touch-icon.png&quot;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&quot;stylesheet&quot;</span> <span class=na>href</span><span class=o>=</span><span class=s>&quot;css/normalize.css&quot;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&quot;stylesheet&quot;</span> <span class=na>href</span><span class=o>=</span><span class=s>&quot;css/main.css&quot;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>script</span> <span class=na>src</span><span class=o>=</span><span class=s>&quot;js/vendor/modernizr-2.8.3.min.js&quot;</span><span class=p>&gt;&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+  <span class=p>&lt;/</span><span class=nt>head</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>body</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>Hello world! This is HTML5 Boilerplate.<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
+  <span class=p>&lt;/</span><span class=nt>body</span><span class=p>&gt;</span>
+<span class=p>&lt;/</span><span class=nt>html</span><span class=p>&gt;</span>
+</code></pre></div> <h3 id=java>Java<a class=headerlink href=#java title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=kn>import</span> <span class=nn>java.util.LinkedList</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>java.lang.reflect.Array</span><span class=p>;</span>
+
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>UnsortedHashSet</span><span class=o>&lt;</span><span class=n>E</span><span class=o>&gt;</span> <span class=p>{</span>
+
+  <span class=kd>private</span> <span class=kd>static</span> <span class=kd>final</span> <span class=kt>double</span> <span class=n>LOAD_FACTOR_LIMIT</span> <span class=o>=</span> <span class=mf>0.7</span><span class=p>;</span>
+
+  <span class=kd>private</span> <span class=kt>int</span> <span class=n>size</span><span class=p>;</span>
+  <span class=kd>private</span> <span class=n>LinkedList</span><span class=o>&lt;</span><span class=n>E</span><span class=o>&gt;[]</span> <span class=n>con</span><span class=p>;</span>
+
+  <span class=kd>public</span> <span class=nf>UnsortedHashSet</span><span class=p>()</span> <span class=p>{</span>
+    <span class=n>con</span>  <span class=o>=</span> <span class=p>(</span><span class=n>LinkedList</span><span class=o>&lt;</span><span class=n>E</span><span class=o>&gt;[]</span><span class=p>)(</span><span class=k>new</span> <span class=n>LinkedList</span><span class=o>[</span><span class=mi>10</span><span class=o>]</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=kd>public</span> <span class=kt>boolean</span> <span class=nf>add</span><span class=p>(</span><span class=n>E</span> <span class=n>obj</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kt>int</span> <span class=n>oldSize</span> <span class=o>=</span> <span class=n>size</span><span class=p>;</span>
+    <span class=kt>int</span> <span class=n>index</span> <span class=o>=</span> <span class=n>Math</span><span class=p>.</span><span class=na>abs</span><span class=p>(</span><span class=n>obj</span><span class=p>.</span><span class=na>hashCode</span><span class=p>())</span> <span class=o>%</span> <span class=n>con</span><span class=p>.</span><span class=na>length</span><span class=p>;</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>con</span><span class=o>[</span><span class=n>index</span><span class=o>]</span> <span class=o>==</span> <span class=kc>null</span><span class=p>)</span>
+      <span class=n>con</span><span class=o>[</span><span class=n>index</span><span class=o>]</span> <span class=o>=</span> <span class=k>new</span> <span class=n>LinkedList</span><span class=o>&lt;</span><span class=n>E</span><span class=o>&gt;</span><span class=p>();</span>
+    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>con</span><span class=o>[</span><span class=n>index</span><span class=o>]</span><span class=p>.</span><span class=na>contains</span><span class=p>(</span><span class=n>obj</span><span class=p>))</span> <span class=p>{</span>
+      <span class=n>con</span><span class=o>[</span><span class=n>index</span><span class=o>]</span><span class=p>.</span><span class=na>add</span><span class=p>(</span><span class=n>obj</span><span class=p>);</span>
+      <span class=n>size</span><span class=o>++</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=k>if</span> <span class=p>(</span><span class=mf>1.0</span> <span class=o>*</span> <span class=n>size</span> <span class=o>/</span> <span class=n>con</span><span class=p>.</span><span class=na>length</span> <span class=o>&gt;</span> <span class=n>LOAD_FACTOR_LIMIT</span><span class=p>)</span>
+      <span class=n>resize</span><span class=p>();</span>
+    <span class=k>return</span> <span class=n>oldSize</span> <span class=o>!=</span> <span class=n>size</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=kd>private</span> <span class=kt>void</span> <span class=nf>resize</span><span class=p>()</span> <span class=p>{</span>
+    <span class=n>UnsortedHashSet</span><span class=o>&lt;</span><span class=n>E</span><span class=o>&gt;</span> <span class=n>temp</span> <span class=o>=</span> <span class=k>new</span> <span class=n>UnsortedHashSet</span><span class=o>&lt;</span><span class=n>E</span><span class=o>&gt;</span><span class=p>();</span>
+    <span class=n>temp</span><span class=p>.</span><span class=na>con</span> <span class=o>=</span> <span class=p>(</span><span class=n>LinkedList</span><span class=o>&lt;</span><span class=n>E</span><span class=o>&gt;[]</span><span class=p>)(</span><span class=k>new</span> <span class=n>LinkedList</span><span class=o>[</span><span class=n>con</span><span class=p>.</span><span class=na>length</span> <span class=o>*</span> <span class=mi>2</span> <span class=o>+</span> <span class=mi>1</span><span class=o>]</span><span class=p>);</span>
+    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>con</span><span class=p>.</span><span class=na>length</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>if</span> <span class=p>(</span><span class=n>con</span><span class=o>[</span><span class=n>i</span><span class=o>]</span> <span class=o>!=</span> <span class=kc>null</span><span class=p>)</span>
+        <span class=k>for</span> <span class=p>(</span><span class=n>E</span> <span class=n>e</span> <span class=p>:</span> <span class=n>con</span><span class=o>[</span><span class=n>i</span><span class=o>]</span><span class=p>)</span>
+          <span class=n>temp</span><span class=p>.</span><span class=na>add</span><span class=p>(</span><span class=n>e</span><span class=p>);</span>
+    <span class=p>}</span>
+    <span class=n>con</span> <span class=o>=</span> <span class=n>temp</span><span class=p>.</span><span class=na>con</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=kd>public</span> <span class=kt>int</span> <span class=nf>size</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>size</span><span class=p>;</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div> <h3 id=javascript>JavaScript<a class=headerlink href=#javascript title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=kd>var</span> <span class=nb>Math</span> <span class=o>=</span> <span class=nx>require</span><span class=p>(</span><span class=s1>&#39;lib/math&#39;</span><span class=p>);</span>
+
+<span class=kd>var</span> <span class=nx>_extends</span> <span class=o>=</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>target</span><span class=p>)</span> <span class=p>{</span>
+  <span class=k>for</span> <span class=p>(</span><span class=kd>var</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=nx>arguments</span><span class=p>.</span><span class=nx>length</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kd>var</span> <span class=nx>source</span> <span class=o>=</span> <span class=nx>arguments</span><span class=p>[</span><span class=nx>i</span><span class=p>];</span>
+    <span class=k>for</span> <span class=p>(</span><span class=kd>var</span> <span class=nx>key</span> <span class=k>in</span> <span class=nx>source</span><span class=p>)</span> <span class=p>{</span>
+      <span class=nx>target</span><span class=p>[</span><span class=nx>key</span><span class=p>]</span> <span class=o>=</span> <span class=nx>source</span><span class=p>[</span><span class=nx>key</span><span class=p>];</span>
+    <span class=p>}</span>
+  <span class=p>}</span>
+
+  <span class=k>return</span> <span class=nx>target</span><span class=p>;</span>
+<span class=p>};</span>
+
+<span class=kd>var</span> <span class=nx>e</span> <span class=o>=</span> <span class=nx>exports</span><span class=p>.</span><span class=nx>e</span> <span class=o>=</span> <span class=mf>2.71828182846</span><span class=p>;</span>
+<span class=nx>exports</span><span class=p>[</span><span class=s1>&#39;default&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>x</span><span class=p>)</span> <span class=p>{</span>
+  <span class=k>return</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>exp</span><span class=p>(</span><span class=nx>x</span><span class=p>);</span>
+<span class=p>};</span>
+
+<span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=nx>_extends</span><span class=p>(</span><span class=nx>exports</span><span class=p>[</span><span class=s1>&#39;default&#39;</span><span class=p>],</span> <span class=nx>exports</span><span class=p>);</span>
+</code></pre></div> <h3 id=json>JSON<a class=headerlink href=#json title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=p>{</span>
+  <span class=nt>&quot;name&quot;</span><span class=p>:</span> <span class=s2>&quot;mkdocs-material&quot;</span><span class=p>,</span>
+  <span class=nt>&quot;version&quot;</span><span class=p>:</span> <span class=s2>&quot;0.2.4&quot;</span><span class=p>,</span>
+  <span class=nt>&quot;description&quot;</span><span class=p>:</span> <span class=s2>&quot;A Material Design theme for MkDocs&quot;</span><span class=p>,</span>
+  <span class=nt>&quot;homepage&quot;</span><span class=p>:</span> <span class=s2>&quot;http://squidfunk.github.io/mkdocs-material/&quot;</span><span class=p>,</span>
+  <span class=nt>&quot;authors&quot;</span><span class=p>:</span> <span class=p>[</span>
+    <span class=s2>&quot;squidfunk &lt;martin.donath@squidfunk.com&gt;&quot;</span>
+  <span class=p>],</span>
+  <span class=nt>&quot;license&quot;</span><span class=p>:</span> <span class=s2>&quot;MIT&quot;</span><span class=p>,</span>
+  <span class=nt>&quot;main&quot;</span><span class=p>:</span> <span class=s2>&quot;Gulpfile.js&quot;</span><span class=p>,</span>
+  <span class=nt>&quot;scripts&quot;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&quot;start&quot;</span><span class=p>:</span> <span class=s2>&quot;./node_modules/.bin/gulp watch --mkdocs&quot;</span><span class=p>,</span>
+    <span class=nt>&quot;build&quot;</span><span class=p>:</span> <span class=s2>&quot;./node_modules/.bin/gulp build --production&quot;</span>
+  <span class=p>}</span>
+  <span class=err>...</span>
+<span class=p>}</span>
+</code></pre></div> <h3 id=julia>Julia<a class=headerlink href=#julia title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=k>using</span> <span class=n>MXNet</span>
+
+<span class=n>mlp</span> <span class=o>=</span> <span class=nd>@mx</span><span class=o>.</span><span class=n>chain</span> <span class=n>mx</span><span class=o>.</span><span class=n>Variable</span><span class=p>(</span><span class=o>:</span><span class=n>data</span><span class=p>)</span>             <span class=o>=&gt;</span>
+  <span class=n>mx</span><span class=o>.</span><span class=n>FullyConnected</span><span class=p>(</span><span class=n>name</span><span class=o>=:</span><span class=n>fc1</span><span class=p>,</span> <span class=n>num_hidden</span><span class=o>=</span><span class=mi>128</span><span class=p>)</span> <span class=o>=&gt;</span>
+  <span class=n>mx</span><span class=o>.</span><span class=n>Activation</span><span class=p>(</span><span class=n>name</span><span class=o>=:</span><span class=n>relu1</span><span class=p>,</span> <span class=n>act_type</span><span class=o>=:</span><span class=n>relu</span><span class=p>)</span>   <span class=o>=&gt;</span>
+  <span class=n>mx</span><span class=o>.</span><span class=n>FullyConnected</span><span class=p>(</span><span class=n>name</span><span class=o>=:</span><span class=n>fc2</span><span class=p>,</span> <span class=n>num_hidden</span><span class=o>=</span><span class=mi>64</span><span class=p>)</span>  <span class=o>=&gt;</span>
+  <span class=n>mx</span><span class=o>.</span><span class=n>Activation</span><span class=p>(</span><span class=n>name</span><span class=o>=:</span><span class=n>relu2</span><span class=p>,</span> <span class=n>act_type</span><span class=o>=:</span><span class=n>relu</span><span class=p>)</span>   <span class=o>=&gt;</span>
+  <span class=n>mx</span><span class=o>.</span><span class=n>FullyConnected</span><span class=p>(</span><span class=n>name</span><span class=o>=:</span><span class=n>fc3</span><span class=p>,</span> <span class=n>num_hidden</span><span class=o>=</span><span class=mi>10</span><span class=p>)</span>  <span class=o>=&gt;</span>
+  <span class=n>mx</span><span class=o>.</span><span class=n>SoftmaxOutput</span><span class=p>(</span><span class=n>name</span><span class=o>=:</span><span class=n>softmax</span><span class=p>)</span>
+
+<span class=c># data provider</span>
+<span class=n>batch_size</span> <span class=o>=</span> <span class=mi>100</span>
+<span class=n>include</span><span class=p>(</span><span class=n>Pkg</span><span class=o>.</span><span class=n>dir</span><span class=p>(</span><span class=s>&quot;MXNet&quot;</span><span class=p>,</span> <span class=s>&quot;examples&quot;</span><span class=p>,</span> <span class=s>&quot;mnist&quot;</span><span class=p>,</span> <span class=s>&quot;mnist-data.jl&quot;</span><span class=p>))</span>
+<span class=n>train_provider</span><span class=p>,</span> <span class=n>eval_provider</span> <span class=o>=</span> <span class=n>get_mnist_providers</span><span class=p>(</span><span class=n>batch_size</span><span class=p>)</span>
+
+<span class=c># setup model</span>
+<span class=n>model</span> <span class=o>=</span> <span class=n>mx</span><span class=o>.</span><span class=n>FeedForward</span><span class=p>(</span><span class=n>mlp</span><span class=p>,</span> <span class=n>context</span><span class=o>=</span><span class=n>mx</span><span class=o>.</span><span class=n>cpu</span><span class=p>())</span>
+
+<span class=c># optimization algorithm</span>
+<span class=n>optimizer</span> <span class=o>=</span> <span class=n>mx</span><span class=o>.</span><span class=n>SGD</span><span class=p>(</span><span class=n>lr</span><span class=o>=</span><span class=mf>0.1</span><span class=p>,</span> <span class=n>momentum</span><span class=o>=</span><span class=mf>0.9</span><span class=p>)</span>
+
+<span class=c># fit parameters</span>
+<span class=n>mx</span><span class=o>.</span><span class=n>fit</span><span class=p>(</span><span class=n>model</span><span class=p>,</span> <span class=n>optimizer</span><span class=p>,</span> <span class=n>train_provider</span><span class=p>,</span> <span class=n>n_epoch</span><span class=o>=</span><span class=mi>20</span><span class=p>,</span> <span class=n>eval_data</span><span class=o>=</span><span class=n>eval_provider</span><span class=p>)</span>
+</code></pre></div> <h3 id=lua>Lua<a class=headerlink href=#lua title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=kd>local</span> <span class=n>ffi</span> <span class=o>=</span> <span class=nb>require</span><span class=p>(</span><span class=s2>&quot;ffi&quot;</span><span class=p>)</span>
+
+<span class=n>ffi</span><span class=p>.</span><span class=n>cdef</span><span class=s>[[</span>
+<span class=s>  void Sleep(int ms);</span>
+<span class=s>  int poll(struct pollfd *fds, unsigned long nfds, int timeout);</span>
+<span class=s>]]</span>
+
+<span class=kd>local</span> <span class=n>sleep</span>
+<span class=kr>if</span> <span class=n>ffi</span><span class=p>.</span><span class=n>os</span> <span class=o>==</span> <span class=s2>&quot;Windows&quot;</span> <span class=kr>then</span>
+  <span class=kr>function</span> <span class=nf>sleep</span><span class=p>(</span><span class=n>s</span><span class=p>)</span>
+    <span class=n>ffi</span><span class=p>.</span><span class=n>C</span><span class=p>.</span><span class=n>Sleep</span><span class=p>(</span><span class=n>s</span><span class=o>*</span><span class=mi>1000</span><span class=p>)</span>
+  <span class=kr>end</span>
+<span class=kr>else</span>
+  <span class=kr>function</span> <span class=nf>sleep</span><span class=p>(</span><span class=n>s</span><span class=p>)</span>
+    <span class=n>ffi</span><span class=p>.</span><span class=n>C</span><span class=p>.</span><span class=n>poll</span><span class=p>(</span><span class=kc>nil</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>s</span> <span class=o>*</span> <span class=mi>1000</span><span class=p>)</span>
+  <span class=kr>end</span>
+<span class=kr>end</span>
+
+<span class=kr>for</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>,</span><span class=mi>160</span> <span class=kr>do</span>
+  <span class=nb>io.write</span><span class=p>(</span><span class=s2>&quot;.&quot;</span><span class=p>);</span> <span class=nb>io.flush</span><span class=p>()</span>
+  <span class=n>sleep</span><span class=p>(</span><span class=mf>0.01</span><span class=p>)</span>
+<span class=kr>end</span>
+<span class=nb>io.write</span><span class=p>(</span><span class=s2>&quot;</span><span class=se>\n</span><span class=s2>&quot;</span><span class=p>)</span>
+</code></pre></div> <h3 id=mysql>MySQL<a class=headerlink href=#mysql title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=k>SELECT</span>
+  <span class=n>Employees</span><span class=p>.</span><span class=n>EmployeeID</span><span class=p>,</span>
+  <span class=n>Employees</span><span class=p>.</span><span class=n>Name</span><span class=p>,</span>
+  <span class=n>Employees</span><span class=p>.</span><span class=n>Salary</span><span class=p>,</span>
+  <span class=n>Manager</span><span class=p>.</span><span class=n>Name</span> <span class=k>AS</span> <span class=n>Manager</span>
+<span class=k>FROM</span>
+  <span class=n>Employees</span>
+<span class=k>LEFT</span> <span class=k>JOIN</span>
+  <span class=n>Employees</span> <span class=k>AS</span> <span class=n>Manager</span>
+<span class=k>ON</span>
+  <span class=n>Employees</span><span class=p>.</span><span class=n>ManagerID</span> <span class=o>=</span> <span class=n>Manager</span><span class=p>.</span><span class=n>EmployeeID</span>
+<span class=k>WHERE</span>
+  <span class=n>Employees</span><span class=p>.</span><span class=n>EmployeeID</span> <span class=o>=</span> <span class=s1>&#39;087652&#39;</span><span class=p>;</span>
+</code></pre></div> <h3 id=php>PHP<a class=headerlink href=#php title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=cp>&lt;?php</span>
+
+<span class=c1>// src/AppBundle/Controller/LuckyController.php</span>
+<span class=k>namespace</span> <span class=nx>AppBundle\Controller</span><span class=p>;</span>
+
+<span class=k>use</span> <span class=nx>Sensio\Bundle\FrameworkExtraBundle\Configuration\Route</span><span class=p>;</span>
+<span class=k>use</span> <span class=nx>Symfony\Component\HttpFoundation\Response</span><span class=p>;</span>
+
+<span class=k>class</span> <span class=nc>LuckyController</span> <span class=p>{</span>
+
+  <span class=sd>/**</span>
+<span class=sd>   * @Route(&quot;/lucky/number&quot;)</span>
+<span class=sd>   */</span>
+  <span class=k>public</span> <span class=k>function</span> <span class=nf>numberAction</span><span class=p>()</span> <span class=p>{</span>
+    <span class=nv>$number</span> <span class=o>=</span> <span class=nb>mt_rand</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>100</span><span class=p>);</span>
+
+    <span class=k>return</span> <span class=k>new</span> <span class=nx>Response</span><span class=p>(</span>
+      <span class=s1>&#39;&lt;html&gt;&lt;body&gt;Lucky number: &#39;</span><span class=o>.</span><span class=nv>$number</span><span class=o>.</span><span class=s1>&#39;&lt;/body&gt;&lt;/html&gt;&#39;</span>
+    <span class=p>);</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div> <h3 id=protocol-buffers>Protocol Buffers<a class=headerlink href=#protocol-buffers title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=na>syntax</span> <span class=o>=</span> <span class=s>&quot;proto2&quot;</span><span class=p>;</span>
+
+<span class=kn>package</span> <span class=nn>caffe</span><span class=p>;</span>
+
+<span class=c1>// Specifies the shape (dimensions) of a Blob.</span>
+<span class=kd>message</span> <span class=nc>BlobShape</span> <span class=p>{</span>
+  <span class=k>repeated</span> <span class=kt>int64</span> <span class=na>dim</span> <span class=o>=</span> <span class=mi>1</span> <span class=p>[</span><span class=k>packed</span> <span class=o>=</span> <span class=kc>true</span><span class=p>];</span>
+<span class=p>}</span>
+
+<span class=kd>message</span> <span class=nc>BlobProto</span> <span class=p>{</span>
+  <span class=k>optional</span> <span class=n>BlobShape</span> <span class=na>shape</span> <span class=o>=</span> <span class=mi>7</span><span class=p>;</span>
+  <span class=k>repeated</span> <span class=kt>float</span> <span class=na>data</span> <span class=o>=</span> <span class=mi>5</span> <span class=p>[</span><span class=k>packed</span> <span class=o>=</span> <span class=kc>true</span><span class=p>];</span>
+  <span class=k>repeated</span> <span class=kt>float</span> <span class=na>diff</span> <span class=o>=</span> <span class=mi>6</span> <span class=p>[</span><span class=k>packed</span> <span class=o>=</span> <span class=kc>true</span><span class=p>];</span>
+
+  <span class=c1>// 4D dimensions -- deprecated.  Use &quot;shape&quot; instead.</span>
+  <span class=k>optional</span> <span class=kt>int32</span> <span class=na>num</span> <span class=o>=</span> <span class=mi>1</span> <span class=p>[</span><span class=k>default</span> <span class=o>=</span> <span class=mi>0</span><span class=p>];</span>
+  <span class=k>optional</span> <span class=kt>int32</span> <span class=na>channels</span> <span class=o>=</span> <span class=mi>2</span> <span class=p>[</span><span class=k>default</span> <span class=o>=</span> <span class=mi>0</span><span class=p>];</span>
+  <span class=k>optional</span> <span class=kt>int32</span> <span class=na>height</span> <span class=o>=</span> <span class=mi>3</span> <span class=p>[</span><span class=k>default</span> <span class=o>=</span> <span class=mi>0</span><span class=p>];</span>
+  <span class=k>optional</span> <span class=kt>int32</span> <span class=na>width</span> <span class=o>=</span> <span class=mi>4</span> <span class=p>[</span><span class=k>default</span> <span class=o>=</span> <span class=mi>0</span><span class=p>];</span>
+<span class=p>}</span>
+</code></pre></div> <h3 id=python>Python<a class=headerlink href=#python title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=sd>&quot;&quot;&quot;</span>
+<span class=sd>  A very simple MNIST classifier.</span>
+<span class=sd>  See extensive documentation at</span>
+<span class=sd>  http://tensorflow.org/tutorials/mnist/beginners/index.md</span>
+<span class=sd>&quot;&quot;&quot;</span>
+<span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>absolute_import</span>
+<span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>division</span>
+<span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>print_function</span>
+
+<span class=c1># Import data</span>
+<span class=kn>from</span> <span class=nn>tensorflow.examples.tutorials.mnist</span> <span class=kn>import</span> <span class=n>input_data</span>
+
+<span class=kn>import</span> <span class=nn>tensorflow</span> <span class=k>as</span> <span class=nn>tf</span>
+
+<span class=n>flags</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>app</span><span class=o>.</span><span class=n>flags</span>
+<span class=n>FLAGS</span> <span class=o>=</span> <span class=n>flags</span><span class=o>.</span><span class=n>FLAGS</span>
+<span class=n>flags</span><span class=o>.</span><span class=n>DEFINE_string</span><span class=p>(</span><span class=s1>&#39;data_dir&#39;</span><span class=p>,</span> <span class=s1>&#39;/tmp/data/&#39;</span><span class=p>,</span> <span class=s1>&#39;Directory for storing data&#39;</span><span class=p>)</span>
+
+<span class=n>mnist</span> <span class=o>=</span> <span class=n>input_data</span><span class=o>.</span><span class=n>read_data_sets</span><span class=p>(</span><span class=n>FLAGS</span><span class=o>.</span><span class=n>data_dir</span><span class=p>,</span> <span class=n>one_hot</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+
+<span class=n>sess</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>InteractiveSession</span><span class=p>()</span>
+
+<span class=c1># Create the model</span>
+<span class=n>x</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>placeholder</span><span class=p>(</span><span class=n>tf</span><span class=o>.</span><span class=n>float32</span><span class=p>,</span> <span class=p>[</span><span class=kc>None</span><span class=p>,</span> <span class=mi>784</span><span class=p>])</span>
+<span class=n>W</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>Variable</span><span class=p>(</span><span class=n>tf</span><span class=o>.</span><span class=n>zeros</span><span class=p>([</span><span class=mi>784</span><span class=p>,</span> <span class=mi>10</span><span class=p>]))</span>
+<span class=n>b</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>Variable</span><span class=p>(</span><span class=n>tf</span><span class=o>.</span><span class=n>zeros</span><span class=p>([</span><span class=mi>10</span><span class=p>]))</span>
+<span class=n>y</span> <span class=o>=</span> <span class=n>tf</span><span class=o>.</span><span class=n>nn</span><span class=o>.</span><span class=n>softmax</span><span class=p>(</span><span class=n>tf</span><span class=o>.</span><span class=n>matmul</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>W</span><span class=p>)</span> <span class=o>+</span> <span class=n>b</span><span class=p>)</span>
+</code></pre></div> <h3 id=ruby>Ruby<a class=headerlink href=#ruby title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=nb>require</span> <span class=s1>&#39;finity/event&#39;</span>
+<span class=nb>require</span> <span class=s1>&#39;finity/machine&#39;</span>
+<span class=nb>require</span> <span class=s1>&#39;finity/state&#39;</span>
+<span class=nb>require</span> <span class=s1>&#39;finity/transition&#39;</span>
+<span class=nb>require</span> <span class=s1>&#39;finity/version&#39;</span>
+
+<span class=k>module</span> <span class=nn>Finity</span>
+  <span class=k>class</span> <span class=nc>InvalidCallback</span> <span class=o>&lt;</span> <span class=no>StandardError</span><span class=p>;</span> <span class=k>end</span>
+  <span class=k>class</span> <span class=nc>MissingCallback</span> <span class=o>&lt;</span> <span class=no>StandardError</span><span class=p>;</span> <span class=k>end</span>
+  <span class=k>class</span> <span class=nc>InvalidState</span>    <span class=o>&lt;</span> <span class=no>StandardError</span><span class=p>;</span> <span class=k>end</span>
+
+  <span class=c1># Class methods to be injected into the including class upon inclusion.</span>
+  <span class=k>module</span> <span class=nn>ClassMethods</span>
+
+    <span class=c1># Instantiate a new state machine for the including class by accepting a</span>
+    <span class=c1># block with state and event (and subsequent transition) definitions.</span>
+    <span class=k>def</span> <span class=nf>finity</span> <span class=n>options</span> <span class=o>=</span> <span class=p>{},</span> <span class=o>&amp;</span><span class=n>block</span>
+      <span class=vi>@finity</span> <span class=o>||=</span> <span class=no>Machine</span><span class=o>.</span><span class=n>new</span> <span class=nb>self</span><span class=p>,</span> <span class=n>options</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>block</span>
+    <span class=k>end</span>
+
+    <span class=c1># Return the names of all registered states.</span>
+    <span class=k>def</span> <span class=nf>states</span>
+      <span class=vi>@finity</span><span class=o>.</span><span class=n>states</span><span class=o>.</span><span class=n>map</span> <span class=p>{</span> <span class=o>|</span><span class=nb>name</span><span class=p>,</span> <span class=n>_</span><span class=o>|</span> <span class=nb>name</span> <span class=p>}</span>
+    <span class=k>end</span>
+
+    <span class=c1># Return the names of all registered events.</span>
+    <span class=k>def</span> <span class=nf>events</span>
+      <span class=vi>@finity</span><span class=o>.</span><span class=n>events</span><span class=o>.</span><span class=n>map</span> <span class=p>{</span> <span class=o>|</span><span class=nb>name</span><span class=p>,</span> <span class=n>_</span><span class=o>|</span> <span class=nb>name</span> <span class=p>}</span>
+    <span class=k>end</span>
+  <span class=k>end</span>
+
+  <span class=c1># Inject methods into the including class upon inclusion.</span>
+  <span class=k>def</span> <span class=nc>self</span><span class=o>.</span><span class=nf>included</span> <span class=n>base</span>
+    <span class=n>base</span><span class=o>.</span><span class=n>extend</span> <span class=no>ClassMethods</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+</code></pre></div> <h3 id=scala>Scala<a class=headerlink href=#scala title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=c1>// Every record of this DataFrame contains the label and</span>
+<span class=c1>// features represented by a vector.</span>
+<span class=k>val</span> <span class=n>df</span> <span class=k>=</span> <span class=n>sqlContext</span><span class=o>.</span><span class=n>createDataFrame</span><span class=o>(</span><span class=n>data</span><span class=o>).</span><span class=n>toDF</span><span class=o>(</span><span class=s>&quot;label&quot;</span><span class=o>,</span> <span class=s>&quot;features&quot;</span><span class=o>)</span>
+
+<span class=c1>// Set parameters for the algorithm.</span>
+<span class=c1>// Here, we limit the number of iterations to 10.</span>
+<span class=k>val</span> <span class=n>lr</span> <span class=k>=</span> <span class=k>new</span> <span class=nc>LogisticRegression</span><span class=o>().</span><span class=n>setMaxIter</span><span class=o>(</span><span class=mi>10</span><span class=o>)</span>
+
+<span class=c1>// Fit the model to the data.</span>
+<span class=k>val</span> <span class=n>model</span> <span class=k>=</span> <span class=n>lr</span><span class=o>.</span><span class=n>fit</span><span class=o>(</span><span class=n>df</span><span class=o>)</span>
+
+<span class=c1>// Inspect the model: get the feature weights.</span>
+<span class=k>val</span> <span class=n>weights</span> <span class=k>=</span> <span class=n>model</span><span class=o>.</span><span class=n>weights</span>
+
+<span class=c1>// Given a dataset, predict each point&#39;s label, and show the results.</span>
+<span class=n>model</span><span class=o>.</span><span class=n>transform</span><span class=o>(</span><span class=n>df</span><span class=o>).</span><span class=n>show</span><span class=o>()</span><span class=n>g</span>
+</code></pre></div> <h3 id=xml>XML<a class=headerlink href=#xml title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code><span class=cp>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class=cp>&lt;!DOCTYPE mainTag SYSTEM &quot;some.dtd&quot; [ENTITY % entity]&gt;</span>
+<span class=cp>&lt;?oxygen RNGSchema=&quot;some.rng&quot; type=&quot;xml&quot;?&gt;</span>
+<span class=nt>&lt;xs:main-Tag</span> <span class=na>xmlns:xs=</span><span class=s>&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class=nt>&gt;</span>
+  <span class=c>&lt;!-- This is a sample comment --&gt;</span>
+  <span class=nt>&lt;childTag</span> <span class=na>attribute=</span><span class=s>&quot;Quoted Value&quot;</span> <span class=na>another-attribute=</span><span class=s>&#39;Single quoted value&#39;</span>
+      <span class=na>a-third-attribute=</span><span class=s>&#39;123&#39;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;withTextContent&gt;</span>Some text content<span class=nt>&lt;/withTextContent&gt;</span>
+    <span class=nt>&lt;withEntityContent&gt;</span>Some text content with <span class=ni>&amp;lt;</span>entities<span class=ni>&amp;gt;</span> and
+      mentioning uint8_t and int32_t<span class=nt>&lt;/withEntityContent&gt;</span>
+    <span class=nt>&lt;otherTag</span> <span class=na>attribute=</span><span class=s>&#39;Single quoted Value&#39;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;/childTag&gt;</span>
+  <span class=cp>&lt;![CDATA[ some CData ]]&gt;</span>
+<span class=nt>&lt;/main-Tag&gt;</span>
+</code></pre></div> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid" aria-label=Footer> <a href=../admonition/ title=Admonition class="md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Previous </span> Admonition </div> </div> </a> <a href=../footnotes/ title=Footnotes class="md-footer-nav__link md-footer-nav__link--next" rel=next> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Next </span> Footnotes </div> </div> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2016 - 2020 Martin Donath </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> <div class=md-footer-social> <a href=https://github.com/squidfunk target=_blank rel=noopener title=github.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> </a> <a href=https://gitter.im/squidfunk/mkdocs-material target=_blank rel=noopener title=gitter.im class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 384 512"><path d="M66.4 322.5H16V0h50.4v322.5zM166.9 76.1h-50.4V512h50.4V76.1zm100.6 0h-50.4V512h50.4V76.1zM368 76h-50.4v247H368V76z"/></svg> </a> <a href=https://hub.docker.com/r/squidfunk/mkdocs-material/ target=_blank rel=noopener title=hub.docker.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg> </a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener title=twitter.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> </a> <a href=https://linkedin.com/in/squidfunk/ target=_blank rel=noopener title=linkedin.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg> </a> <a href=https://instagram.com/squidfunk target=_blank rel=noopener title=instagram.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg> </a> </div> </div> </div> </footer> </div> <script src=../../assets/javascripts/vendor.de50e36d.min.js></script> <script src=../../assets/javascripts/bundle.fc9c3121.min.js></script><script id=__lang type=application/json>{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script> <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script> </body> </html>

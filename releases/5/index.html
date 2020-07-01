@@ -1,0 +1,669 @@
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><link href=https://squidfunk.github.io/mkdocs-material/releases/5/ rel=canonical><meta name=author content="Martin Donath"><link rel="shortcut icon" href=../../assets/favicon.png><meta name=generator content="mkdocs-1.1.2, mkdocs-material-5.4.0"><title>Upgrading to 5.x - Material for MkDocs</title><link rel=stylesheet href=../../assets/stylesheets/main.545621a7.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.36d1b78f.min.css><meta name=theme-color content=#3f51b5><link href=https://fonts.gstatic.com rel=preconnect crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-73586301-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script><script async src=https://www.google-analytics.com/analytics.js></script><meta property=og:type content=website><meta property=og:title content="Material for MkDocs - Upgrading to 5.x"><meta property=og:description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><meta content=https://squidfunk.github.io/mkdocs-material/releases/5/ property=og:url><meta property=og:image content=https://squidfunk.github.io/mkdocs-material/assets/images/banner.png><meta property=og:image:type content=image/png><meta property=og:image:width content=1200><meta property=og:image:height content=630><meta name=twitter:card content=summary_large_image><meta name=twitter:site content=@squidfunk><meta name=twitter:creator content=@squidfunk><meta name=twitter:title content="Material for MkDocs - Upgrading to 5.x"><meta name=twitter:description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><meta name=twitter:image content=https://squidfunk.github.io/mkdocs-material/assets/images/banner.png></head> <body dir=ltr data-md-color-scheme=default data-md-color-primary=indigo data-md-color-accent=indigo> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#upgrading-to-5x class=md-skip> Skip to content </a> </div> <div data-md-component=announce> <aside class=md-announce> <div class="md-announce__inner md-grid md-typeset"> <style>.md-announce a,.md-announce a:focus,.md-announce a:hover{color:currentColor}.md-announce strong{white-space:nowrap}.md-announce .twitter{margin-left:.2em;color:#00acee}</style> <a href=https://twitter.com/squidfunk> For updates follow <strong>@squidfunk</strong> on <span class="twemoji twitter"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"> <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path> </svg> </span> <strong>Twitter</strong> </a> </div> </aside> </div> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid" aria-label=Header> <a href=https://squidfunk.github.io/mkdocs-material/ title="Material for MkDocs" class="md-header-nav__button md-logo" aria-label="Material for MkDocs"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path fill-opacity=.5 d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path fill-opacity=.25 d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"/></svg> </a> <label class="md-header-nav__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header-nav__title data-md-component=header-title> <div class=md-header-nav__ellipsis> <span class="md-header-nav__topic md-ellipsis"> Material for MkDocs </span> <span class="md-header-nav__topic md-ellipsis"> Upgrading to 5.x </span> </div> </div> <label class="md-header-nav__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query data-md-state=active> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <button type=reset class="md-search__icon md-icon" aria-label=Clear data-md-component=search-reset tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header-nav__source> <a href=https://github.com/squidfunk/mkdocs-material title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> squidfunk/mkdocs-material </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <nav class="md-tabs md-tabs--active" aria-label=Tabs data-md-component=tabs> <div class="md-tabs__inner md-grid"> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=../.. class=md-tabs__link> Home </a> </li> <li class=md-tabs__item> <a href=../../extensions/admonition/ class=md-tabs__link> Extensions </a> </li> <li class=md-tabs__item> <a href=../../plugins/search/ class=md-tabs__link> Plugins </a> </li> <li class=md-tabs__item> <a href=./ class="md-tabs__link md-tabs__link--active"> Releases </a> </li> </ul> </div> </nav> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://squidfunk.github.io/mkdocs-material/ title="Material for MkDocs" class="md-nav__button md-logo" aria-label="Material for MkDocs"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path fill-opacity=.5 d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path fill-opacity=.25 d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"/></svg> </a> Material for MkDocs </label> <div class=md-nav__source> <a href=https://github.com/squidfunk/mkdocs-material title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> squidfunk/mkdocs-material </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. title=Home class=md-nav__link> Home </a> </li> <li class=md-nav__item> <a href=../../getting-started/ title="Getting started" class=md-nav__link> Getting started </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-3 type=checkbox id=nav-3> <label class=md-nav__link for=nav-3> Extensions <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Extensions data-md-level=1> <label class=md-nav__title for=nav-3> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Extensions </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../extensions/admonition/ title=Admonition class=md-nav__link> Admonition </a> </li> <li class=md-nav__item> <a href=../../extensions/codehilite/ title=CodeHilite class=md-nav__link> CodeHilite </a> </li> <li class=md-nav__item> <a href=../../extensions/footnotes/ title=Footnotes class=md-nav__link> Footnotes </a> </li> <li class=md-nav__item> <a href=../../extensions/metadata/ title=Metadata class=md-nav__link> Metadata </a> </li> <li class=md-nav__item> <a href=../../extensions/permalinks/ title=Permalinks class=md-nav__link> Permalinks </a> </li> <li class=md-nav__item> <a href=../../extensions/pymdown/ title=PyMdown class=md-nav__link> PyMdown </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-4 type=checkbox id=nav-4> <label class=md-nav__link for=nav-4> Plugins <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Plugins data-md-level=1> <label class=md-nav__title for=nav-4> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Plugins </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../plugins/search/ title=Search class=md-nav__link> Search </a> </li> <li class=md-nav__item> <a href=../../plugins/minification/ title=Minification class=md-nav__link> Minification </a> </li> <li class=md-nav__item> <a href=../../plugins/revision-date/ title="Revision date" class=md-nav__link> Revision date </a> </li> <li class=md-nav__item> <a href=../../plugins/awesome-pages/ title="Awesome pages" class=md-nav__link> Awesome pages </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-5 type=checkbox id=nav-5 checked> <label class=md-nav__link for=nav-5> Releases <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg> </span> </label> <nav class=md-nav aria-label=Releases data-md-level=1> <label class=md-nav__title for=nav-5> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Releases </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> Upgrading to 5.x <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg> </span> </label> <a href=./ title="Upgrading to 5.x" class="md-nav__link md-nav__link--active"> Upgrading to 5.x </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#highlights class=md-nav__link> Highlights </a> </li> <li class=md-nav__item> <a href=#how-to-upgrade class=md-nav__link> How to upgrade </a> <nav class=md-nav aria-label="How to upgrade"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#changes-to-mkdocsyml class=md-nav__link> Changes to mkdocs.yml </a> <nav class=md-nav aria-label="Changes to mkdocs.yml"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#themefeature class=md-nav__link> theme.feature </a> </li> <li class=md-nav__item> <a href=#themelogoicon class=md-nav__link> theme.logo.icon </a> </li> <li class=md-nav__item> <a href=#extrarepo_icon class=md-nav__link> extra.repo_icon </a> </li> <li class=md-nav__item> <a href=#extrasearch class=md-nav__link> extra.search.* </a> </li> <li class=md-nav__item> <a href=#extrasocial class=md-nav__link> extra.social.* </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#changes-to-html-files class=md-nav__link> Changes to *.html files </a> <nav class=md-nav aria-label="Changes to *.html files"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#basehtml class=md-nav__link> base.html </a> </li> <li class=md-nav__item> <a href=#partialsfooterhtml class=md-nav__link> partials/footer.html </a> </li> <li class=md-nav__item> <a href=#partialsheaderhtml class=md-nav__link> partials/header.html </a> </li> <li class=md-nav__item> <a href=#partialsherohtml class=md-nav__link> partials/hero.html </a> </li> <li class=md-nav__item> <a href=#partialslanguagehtml class=md-nav__link> partials/language.html </a> </li> <li class=md-nav__item> <a href=#partialslogohtml class=md-nav__link> partials/logo.html </a> </li> <li class=md-nav__item> <a href=#partialsnav-itemhtml class=md-nav__link> partials/nav-item.html </a> </li> <li class=md-nav__item> <a href=#partialsnavhtml class=md-nav__link> partials/nav.html </a> </li> <li class=md-nav__item> <a href=#partialssearchhtml class=md-nav__link> partials/search.html </a> </li> <li class=md-nav__item> <a href=#partialssocialhtml class=md-nav__link> partials/social.html </a> </li> <li class=md-nav__item> <a href=#partialssource-datehtml class=md-nav__link> partials/source-date.html </a> </li> <li class=md-nav__item> <a href=#partialssource-linkhtml class=md-nav__link> partials/source-link.html </a> </li> <li class=md-nav__item> <a href=#partialssourcehtml class=md-nav__link> partials/source.html </a> </li> <li class=md-nav__item> <a href=#partialstabs-itemhtml class=md-nav__link> partials/tabs-item.html </a> </li> <li class=md-nav__item> <a href=#partialstabshtml class=md-nav__link> partials/tabs.html </a> </li> <li class=md-nav__item> <a href=#partialstoc-itemhtml class=md-nav__link> partials/toc-item.html </a> </li> <li class=md-nav__item> <a href=#partialstochtml class=md-nav__link> partials/toc.html </a> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../4/ title="Upgrading to 4.x" class=md-nav__link> Upgrading to 4.x </a> </li> <li class=md-nav__item> <a href=../changelog/ title=Changelog class=md-nav__link> Changelog </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../../customization/ title=Customization class=md-nav__link> Customization </a> </li> <li class=md-nav__item> <a href=../../data-privacy/ title="Data privacy" class=md-nav__link> Data privacy </a> </li> <li class=md-nav__item> <a href=../../contributing/ title=Contributing class=md-nav__link> Contributing </a> </li> <li class=md-nav__item> <a href=../../license/ title=License class=md-nav__link> License </a> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#highlights class=md-nav__link> Highlights </a> </li> <li class=md-nav__item> <a href=#how-to-upgrade class=md-nav__link> How to upgrade </a> <nav class=md-nav aria-label="How to upgrade"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#changes-to-mkdocsyml class=md-nav__link> Changes to mkdocs.yml </a> <nav class=md-nav aria-label="Changes to mkdocs.yml"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#themefeature class=md-nav__link> theme.feature </a> </li> <li class=md-nav__item> <a href=#themelogoicon class=md-nav__link> theme.logo.icon </a> </li> <li class=md-nav__item> <a href=#extrarepo_icon class=md-nav__link> extra.repo_icon </a> </li> <li class=md-nav__item> <a href=#extrasearch class=md-nav__link> extra.search.* </a> </li> <li class=md-nav__item> <a href=#extrasocial class=md-nav__link> extra.social.* </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#changes-to-html-files class=md-nav__link> Changes to *.html files </a> <nav class=md-nav aria-label="Changes to *.html files"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#basehtml class=md-nav__link> base.html </a> </li> <li class=md-nav__item> <a href=#partialsfooterhtml class=md-nav__link> partials/footer.html </a> </li> <li class=md-nav__item> <a href=#partialsheaderhtml class=md-nav__link> partials/header.html </a> </li> <li class=md-nav__item> <a href=#partialsherohtml class=md-nav__link> partials/hero.html </a> </li> <li class=md-nav__item> <a href=#partialslanguagehtml class=md-nav__link> partials/language.html </a> </li> <li class=md-nav__item> <a href=#partialslogohtml class=md-nav__link> partials/logo.html </a> </li> <li class=md-nav__item> <a href=#partialsnav-itemhtml class=md-nav__link> partials/nav-item.html </a> </li> <li class=md-nav__item> <a href=#partialsnavhtml class=md-nav__link> partials/nav.html </a> </li> <li class=md-nav__item> <a href=#partialssearchhtml class=md-nav__link> partials/search.html </a> </li> <li class=md-nav__item> <a href=#partialssocialhtml class=md-nav__link> partials/social.html </a> </li> <li class=md-nav__item> <a href=#partialssource-datehtml class=md-nav__link> partials/source-date.html </a> </li> <li class=md-nav__item> <a href=#partialssource-linkhtml class=md-nav__link> partials/source-link.html </a> </li> <li class=md-nav__item> <a href=#partialssourcehtml class=md-nav__link> partials/source.html </a> </li> <li class=md-nav__item> <a href=#partialstabs-itemhtml class=md-nav__link> partials/tabs-item.html </a> </li> <li class=md-nav__item> <a href=#partialstabshtml class=md-nav__link> partials/tabs.html </a> </li> <li class=md-nav__item> <a href=#partialstoc-itemhtml class=md-nav__link> partials/toc-item.html </a> </li> <li class=md-nav__item> <a href=#partialstochtml class=md-nav__link> partials/toc.html </a> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> <h1 id=upgrading-to-5x>Upgrading to 5.x<a class=headerlink href=#upgrading-to-5x title="Permanent link">&para;</a></h1> <h2 id=highlights>Highlights<a class=headerlink href=#highlights title="Permanent link">&para;</a></h2> <ul> <li>Reactive architecture – try <code>app.dialog$.next("Hi!")</code> in the console</li> <li><a href=../../getting-started/#instant-loading>Instant loading</a> – make Material behave like a Single Page Application</li> <li>Improved CSS customization with <a href=https://github.com/squidfunk/mkdocs-material/blob/081d540127c41703da3d73aa69eb521615c1cb89/src/assets/stylesheets/base/_colors.scss#L27-L55>CSS variables</a> – set your brand's colors</li> <li>Improved CSS resilience, e.g. proper sidebar locking for customized headers</li> <li>Improved <a href=../../getting-started/#icons>icon integration</a> and configuration – now including over 5k icons</li> <li>Added possibility to use any icon for logo, repository and social links</li> <li>Search UI does not freeze anymore (moved to web worker)</li> <li>Search index built only once when using instant loading</li> <li>Improved extensible keyboard handling</li> <li>Support for <a href=https://www.mkdocs.org/user-guide/configuration/#prebuild_index>prebuilt search indexes</a></li> <li>Support for displaying stars and forks for GitLab repositories</li> <li>Support for scroll snapping of sidebars and search results</li> <li>Reduced HTML and CSS footprint due to deprecation of Internet Explorer support</li> <li>Slight facelifting of some UI elements (Admonitions, tables, ...)</li> </ul> <h2 id=how-to-upgrade>How to upgrade<a class=headerlink href=#how-to-upgrade title="Permanent link">&para;</a></h2> <h3 id=changes-to-mkdocsyml>Changes to <code>mkdocs.yml</code><a class=headerlink href=#changes-to-mkdocsyml title="Permanent link">&para;</a></h3> <p>Following is a list of changes that need to be made to <code>mkdocs.yml</code>. Note that you only have to adjust the value if you defined it, so if your configuration does not contain the key, you can skip it.</p> <h4 id=themefeature><code>theme.feature</code><a class=headerlink href=#themefeature title="Permanent link">&para;</a></h4> <p>Optional features like <a href=../../getting-started/#tabs>tabs</a> and <a href=../../getting-started/#instant-loading>instant loading</a> are now implemented as flags and can be enabled by listing them in <code>mkdocs.yml</code> under <code>theme.features</code>:</p> <div class=tabbed-set data-tabs=1:2><input checked=checked id=__tabbed_1_1 name=__tabbed_1 type=radio><label for=__tabbed_1_1>5.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>theme</span><span class=p>:</span>
+  <span class=nt>features</span><span class=p>:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tabs</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">instant</span>
+</code></pre></div> </div> <input id=__tabbed_1_2 name=__tabbed_1 type=radio><label for=__tabbed_1_2>4.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>theme</span><span class=p>:</span>
+  <span class=nt>feature</span><span class=p>:</span>
+    <span class=nt>tabs</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div> </div> </div> <h4 id=themelogoicon><code>theme.logo.icon</code><a class=headerlink href=#themelogoicon title="Permanent link">&para;</a></h4> <p>The logo icon configuration was centralized under <code>theme.icon.logo</code> and can now be set to any of the <a href=../../getting-started/#icons>icons bundled with the theme</a>:</p> <div class=tabbed-set data-tabs=2:2><input checked=checked id=__tabbed_2_1 name=__tabbed_2 type=radio><label for=__tabbed_2_1>5.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>theme</span><span class=p>:</span>
+  <span class=nt>icon</span><span class=p>:</span>
+    <span class=nt>logo</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">material/cloud</span>
+</code></pre></div> </div> <input id=__tabbed_2_2 name=__tabbed_2 type=radio><label for=__tabbed_2_2>4.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>theme</span><span class=p>:</span>
+  <span class=nt>logo</span><span class=p>:</span>
+    <span class=nt>icon</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">cloud</span>
+</code></pre></div> </div> </div> <h4 id=extrarepo_icon><code>extra.repo_icon</code><a class=headerlink href=#extrarepo_icon title="Permanent link">&para;</a></h4> <p>The repo icon configuration was centralized under <code>theme.icon.repo</code> and can now be set to any of the <a href=../../getting-started/#icons>icons bundled with the theme</a>:</p> <div class=tabbed-set data-tabs=3:2><input checked=checked id=__tabbed_3_1 name=__tabbed_3 type=radio><label for=__tabbed_3_1>5.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>theme</span><span class=p>:</span>
+  <span class=nt>icon</span><span class=p>:</span>
+    <span class=nt>repo</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/gitlab</span>
+</code></pre></div> </div> <input id=__tabbed_3_2 name=__tabbed_3 type=radio><label for=__tabbed_3_2>4.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>extra</span><span class=p>:</span>
+  <span class=nt>repo_icon</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">gitlab</span>
+</code></pre></div> </div> </div> <h4 id=extrasearch><code>extra.search.*</code><a class=headerlink href=#extrasearch title="Permanent link">&para;</a></h4> <p>Search is now configured as part of the <a href=../../plugins/search/#configuration>plugin options</a>. Note that the search languages must now be listed as an array of strings and the <code>tokenizer</code> was renamed to <code>separator</code>:</p> <div class=tabbed-set data-tabs=4:2><input checked=checked id=__tabbed_4_1 name=__tabbed_4 type=radio><label for=__tabbed_4_1>5.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>plugins</span><span class=p>:</span>
+  <span class="p p-Indicator">-</span> <span class=nt>search</span><span class=p>:</span>
+      <span class=nt>separator</span><span class=p>:</span> <span class=s>&#39;[\s\-\.]+&#39;</span>
+      <span class=nt>lang</span><span class=p>:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">en</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">de</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ru</span>
+</code></pre></div> </div> <input id=__tabbed_4_2 name=__tabbed_4 type=radio><label for=__tabbed_4_2>4.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>extra</span><span class=p>:</span>
+  <span class=nt>search</span><span class=p>:</span>
+    <span class=nt>language</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">en, de, ru</span>
+    <span class=nt>tokenizer</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=nv>\s\-\.</span><span class="p p-Indicator">]</span><span class="l l-Scalar l-Scalar-Plain">+</span>
+</code></pre></div> </div> </div> <h4 id=extrasocial><code>extra.social.*</code><a class=headerlink href=#extrasocial title="Permanent link">&para;</a></h4> <p>Social links stayed in the same place, but the <code>type</code> key was renamed to <code>icon</code> in order to match the new way of specifying which icon to be used:</p> <div class=tabbed-set data-tabs=5:2><input checked=checked id=__tabbed_5_1 name=__tabbed_5 type=radio><label for=__tabbed_5_1>5.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>extra</span><span class=p>:</span>
+  <span class=nt>social</span><span class=p>:</span>
+    <span class="p p-Indicator">-</span> <span class=nt>icon</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/github-alt</span>
+      <span class=nt>link</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/squidfunk</span>
+</code></pre></div> </div> <input id=__tabbed_5_2 name=__tabbed_5 type=radio><label for=__tabbed_5_2>4.x</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>extra</span><span class=p>:</span>
+  <span class=nt>social</span><span class=p>:</span>
+    <span class="p p-Indicator">-</span> <span class=nt>type</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">github</span>
+      <span class=nt>link</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/squidfunk</span>
+</code></pre></div> </div> </div> <h3 id=changes-to-html-files>Changes to <code>*.html</code> files<a class=headerlink href=#changes-to-html-files title="Permanent link">&para;</a></h3> <p>The templates have undergone a set of changes to make them future-proof. If you've used theme extension to override a block or template, make sure that it matches the new structure:</p> <ul> <li>If you've overridden a <strong>block</strong>, check <code>base.html</code> for potential changes</li> <li>If you've overridden a <strong>template</strong>, check the respective <code>*.html</code> file for potential changes</li> </ul> <h4 id=basehtml><code>base.html</code><a class=headerlink href=#basehtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -2,7 +2,6 @@</span>
+   This file was automatically generated - do not edit
+ -#}
+ {% import &quot;partials/language.html&quot; as lang with context %}
+<span class=gd>-{% set feature = config.theme.feature %}</span>
+ {% set palette = config.theme.palette %}
+ {% set font = config.theme.font %}
+ &lt;!doctype html&gt;
+<span class=gu>@@ -30,19 +29,6 @@</span>
+       {% elif config.site_author %}
+         &lt;meta name=&quot;author&quot; content=&quot;{{ config.site_author }}&quot;&gt;
+       {% endif %}
+<span class=gd>-      {% for key in [</span>
+<span class=gd>-        &quot;clipboard.copy&quot;,</span>
+<span class=gd>-        &quot;clipboard.copied&quot;,</span>
+<span class=gd>-        &quot;search.language&quot;,</span>
+<span class=gd>-        &quot;search.pipeline.stopwords&quot;,</span>
+<span class=gd>-        &quot;search.pipeline.trimmer&quot;,</span>
+<span class=gd>-        &quot;search.result.none&quot;,</span>
+<span class=gd>-        &quot;search.result.one&quot;,</span>
+<span class=gd>-        &quot;search.result.other&quot;,</span>
+<span class=gd>-        &quot;search.tokenizer&quot;</span>
+<span class=gd>-      ] %}</span>
+<span class=gd>-        &lt;meta name=&quot;lang:{{ key }}&quot; content=&quot;{{ lang.t(key) }}&quot;&gt;</span>
+<span class=gd>-      {% endfor %}</span>
+       &lt;link rel=&quot;shortcut icon&quot; href=&quot;{{ config.theme.favicon | url }}&quot;&gt;
+       &lt;meta name=&quot;generator&quot; content=&quot;mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0&quot;&gt;
+     {% endblock %}
+<span class=gu>@@ -56,9 +42,9 @@</span>
+       {% endif %}
+     {% endblock %}
+     {% block styles %}
+<span class=gd>-      &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ &#39;assets/stylesheets/application.********.css&#39; | url }}&quot;&gt;</span>
+<span class=gi>+      &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ &#39;assets/stylesheets/main.********.min.css&#39; | url }}&quot;&gt;</span>
+       {% if palette.primary or palette.accent %}
+<span class=gd>-        &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ &#39;assets/stylesheets/application-palette.********.css&#39; | url }}&quot;&gt;</span>
+<span class=gi>+        &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ &#39;assets/stylesheets/palette.********.min.css&#39; | url }}&quot;&gt;</span>
+       {% endif %}
+       {% if palette.primary %}
+         {% import &quot;partials/palette.html&quot; as map %}
+<span class=gu>@@ -69,20 +55,17 @@</span>
+       {% endif %}
+     {% endblock %}
+     {% block libs %}
+<span class=gd>-      &lt;script src=&quot;{{ &#39;assets/javascripts/modernizr.********.js&#39; | url }}&quot;&gt;&lt;/script&gt;</span>
+     {% endblock %}
+     {% block fonts %}
+       {% if font != false %}
+         &lt;link href=&quot;https://fonts.gstatic.com&quot; rel=&quot;preconnect&quot; crossorigin&gt;
+         &lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family={{
+             font.text | replace(&#39; &#39;, &#39;+&#39;) + &#39;:300,400,400i,700%7C&#39; +
+             font.code | replace(&#39; &#39;, &#39;+&#39;)
+           }}&amp;display=fallback&quot;&gt;
+         &lt;style&gt;body,input{font-family:&quot;{{ font.text }}&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:&quot;{{ font.code }}&quot;,&quot;Courier New&quot;,Courier,monospace}&lt;/style&gt;
+       {% endif %}
+     {% endblock %}
+<span class=gd>-    &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ &#39;assets/fonts/material-icons.css&#39; | url }}&quot;&gt;</span>
+     {% if config.extra.manifest %}
+       &lt;link rel=&quot;manifest&quot; href=&quot;{{ config.extra.manifest | url }}&quot; crossorigin=&quot;use-credentials&quot;&gt;
+     {% endif %}
+<span class=gu>@@ -95,47 +77,50 @@</span>
+     {% endblock %}
+     {% block extrahead %}{% endblock %}
+   &lt;/head&gt;
+<span class=gi>+  {% set direction = config.theme.direction | default(lang.t(&#39;direction&#39;)) %}</span>
+   {% if palette.primary or palette.accent %}
+     {% set primary = palette.primary | replace(&quot; &quot;, &quot;-&quot;) | lower %}
+     {% set accent  = palette.accent  | replace(&quot; &quot;, &quot;-&quot;) | lower %}
+<span class=gd>-    &lt;body dir=&quot;{{ lang.t(&#39;direction&#39;) }}&quot; data-md-color-primary=&quot;{{ primary }}&quot; data-md-color-accent=&quot;{{ accent }}&quot;&gt;</span>
+<span class=gi>+    &lt;body dir=&quot;{{ direction }}&quot; data-md-color-primary=&quot;{{ primary }}&quot; data-md-color-accent=&quot;{{ accent }}&quot;&gt;</span>
+   {% else %}
+<span class=gd>-    &lt;body dir=&quot;{{ lang.t(&#39;direction&#39;) }}&quot;&gt;</span>
+<span class=gi>+    &lt;body dir=&quot;{{ direction }}&quot;&gt;</span>
+   {% endif %}
+<span class=gd>-    &lt;svg class=&quot;md-svg&quot;&gt;</span>
+<span class=gd>-      &lt;defs&gt;</span>
+<span class=gd>-        {% set platform = config.extra.repo_icon or config.repo_url %}</span>
+<span class=gd>-        {% if &quot;github&quot; in platform %}</span>
+<span class=gd>-          {% include &quot;assets/images/icons/github.f0b8504a.svg&quot; %}</span>
+<span class=gd>-        {% elif &quot;gitlab&quot; in platform %}</span>
+<span class=gd>-          {% include &quot;assets/images/icons/gitlab.6dd19c00.svg&quot; %}</span>
+<span class=gd>-        {% elif &quot;bitbucket&quot; in platform %}</span>
+<span class=gd>-          {% include &quot;assets/images/icons/bitbucket.1b09e088.svg&quot; %}</span>
+<span class=gd>-        {% endif %}</span>
+<span class=gd>-      &lt;/defs&gt;</span>
+<span class=gd>-    &lt;/svg&gt;</span>
+     &lt;input class=&quot;md-toggle&quot; data-md-toggle=&quot;drawer&quot; type=&quot;checkbox&quot; id=&quot;__drawer&quot; autocomplete=&quot;off&quot;&gt;
+     &lt;input class=&quot;md-toggle&quot; data-md-toggle=&quot;search&quot; type=&quot;checkbox&quot; id=&quot;__search&quot; autocomplete=&quot;off&quot;&gt;
+<span class=gd>-    &lt;label class=&quot;md-overlay&quot; data-md-component=&quot;overlay&quot; for=&quot;__drawer&quot;&gt;&lt;/label&gt;</span>
+<span class=gi>+    &lt;label class=&quot;md-overlay&quot; for=&quot;__drawer&quot;&gt;&lt;/label&gt;</span>
+<span class=gi>+    &lt;div data-md-component=&quot;skip&quot;&gt;</span>
+<span class=gi>+      {% if page.toc | first is defined %}</span>
+<span class=gi>+        {% set skip = page.toc | first %}</span>
+<span class=gi>+        &lt;a href=&quot;{{ skip.url | url }}&quot; class=&quot;md-skip&quot;&gt;</span>
+<span class=gi>+          {{ lang.t(&#39;skip.link.title&#39;) }}</span>
+<span class=gi>+        &lt;/a&gt;</span>
+<span class=gi>+      {% endif %}</span>
+<span class=gi>+    &lt;/div&gt;</span>
+<span class=gi>+    &lt;div data-md-component=&quot;announce&quot;&gt;</span>
+<span class=gi>+      {% if self.announce() %}</span>
+<span class=gi>+        &lt;aside class=&quot;md-announce&quot;&gt;</span>
+<span class=gi>+          &lt;div class=&quot;md-announce__inner md-grid md-typeset&quot;&gt;</span>
+<span class=gi>+            {% block announce %}{% endblock %}</span>
+<span class=gi>+          &lt;/div&gt;</span>
+<span class=gi>+        &lt;/aside&gt;</span>
+<span class=gi>+      {% endif %}</span>
+<span class=gi>+    &lt;/div&gt;</span>
+     {% block header %}
+       {% include &quot;partials/header.html&quot; %}
+     {% endblock %}
+<span class=gd>-    &lt;div class=&quot;md-container&quot;&gt;</span>
+<span class=gi>+    &lt;div class=&quot;md-container&quot; data-md-component=&quot;container&quot;&gt;</span>
+       {% block hero %}
+         {% if page and page.meta and page.meta.hero %}
+           {% include &quot;partials/hero.html&quot; with context %}
+         {% endif %}
+       {% endblock %}
+<span class=gd>-      {% if feature.tabs %}</span>
+<span class=gd>-        {% include &quot;partials/tabs.html&quot; %}</span>
+<span class=gd>-      {% endif %}</span>
+<span class=gi>+      {% block tabs %}</span>
+<span class=gi>+        {% if &quot;tabs&quot; in config.theme.features %}</span>
+<span class=gi>+          {% include &quot;partials/tabs.html&quot; %}</span>
+<span class=gi>+        {% endif %}</span>
+<span class=gi>+      {% endblock %}</span>
+<span class=gd>-      &lt;main class=&quot;md-main&quot; role=&quot;main&quot;&gt;</span>
+<span class=gd>-        &lt;div class=&quot;md-main__inner md-grid&quot; data-md-component=&quot;container&quot;&gt;</span>
+<span class=gi>+      &lt;main class=&quot;md-main&quot; data-md-component=&quot;main&quot;&gt;</span>
+<span class=gi>+        &lt;div class=&quot;md-main__inner md-grid&quot;&gt;</span>
+           {% block site_nav %}
+             {% if nav %}
+               &lt;div class=&quot;md-sidebar md-sidebar--primary&quot; data-md-component=&quot;navigation&quot;&gt;
+<span class=gu>@@ -160,41 +141,25 @@</span>
+             &lt;article class=&quot;md-content__inner md-typeset&quot;&gt;
+               {% block content %}
+                 {% if page.edit_url %}
+<span class=gd>-                  &lt;a href=&quot;{{ page.edit_url }}&quot; title=&quot;{{ lang.t(&#39;edit.link.title&#39;) }}&quot; class=&quot;md-icon md-content__icon&quot;&gt;&amp;#xE3C9;&lt;/a&gt;</span>
+<span class=gi>+                  &lt;a href=&quot;{{ page.edit_url }}&quot; title=&quot;{{ lang.t(&#39;edit.link.title&#39;) }}&quot; class=&quot;md-content__button md-icon&quot;&gt;</span>
+<span class=gi>+                    {% include &quot;.icons/material/pencil.svg&quot; %}</span>
+<span class=gi>+                  &lt;/a&gt;</span>
+                 {% endif %}
+<span class=gi>+                {% block source %}</span>
+<span class=gi>+                  {% if page and page.meta and page.meta.source %}</span>
+<span class=gi>+                    {% include &quot;partials/source-link.html&quot; %}</span>
+<span class=gi>+                  {% endif %}</span>
+<span class=gi>+                {% endblock %}</span>
+                 {% if not &quot;\x3ch1&quot; in page.content %}
+                   &lt;h1&gt;{{ page.title | default(config.site_name, true)}}&lt;/h1&gt;
+                 {% endif %}
+                 {{ page.content }}
+<span class=gd>-                {% block source %}</span>
+<span class=gd>-                  {% if page and page.meta and page.meta.source %}</span>
+<span class=gd>-                    &lt;h2 id=&quot;__source&quot;&gt;{{ lang.t(&quot;meta.source&quot;) }}&lt;/h2&gt;</span>
+<span class=gd>-                    {% set repo = config.repo_url %}</span>
+<span class=gd>-                    {% if repo | last == &quot;/&quot; %}</span>
+<span class=gd>-                      {% set repo = repo[:-1] %}</span>
+<span class=gd>-                    {% endif %}</span>
+<span class=gd>-                    {% set path = page.meta.path | default([&quot;&quot;]) %}</span>
+<span class=gd>-                    {% set file = page.meta.source %}</span>
+<span class=gd>-                    &lt;a href=&quot;{{ [repo, path, file] | join(&#39;/&#39;) }}&quot; title=&quot;{{ file }}&quot; class=&quot;md-source-file&quot;&gt;</span>
+<span class=gd>-                      {{ file }}</span>
+<span class=gd>-                    &lt;/a&gt;</span>
+<span class=gd>-                  {% endif %}</span>
+<span class=gd>-                {% endblock %}</span>
+<span class=gi>+                {% if page and page.meta %}</span>
+<span class=gi>+                  {% if page.meta.git_revision_date_localized or</span>
+<span class=gi>+                        page.meta.revision_date</span>
+<span class=gi>+                  %}</span>
+<span class=gi>+                    {% include &quot;partials/source-date.html&quot; %}</span>
+<span class=gd>-                {% if page and page.meta and (</span>
+<span class=gd>-                      page.meta.git_revision_date_localized or</span>
+<span class=gd>-                      page.meta.revision_date</span>
+<span class=gd>-                ) %}</span>
+<span class=gd>-                  {% set label = lang.t(&quot;source.revision.date&quot;) %}</span>
+<span class=gd>-                  &lt;hr&gt;</span>
+<span class=gd>-                  &lt;div class=&quot;md-source-date&quot;&gt;</span>
+<span class=gd>-                    &lt;small&gt;</span>
+<span class=gd>-                      {% if page.meta.git_revision_date_localized %}</span>
+<span class=gd>-                        {{ label }}: {{ page.meta.git_revision_date_localized }}</span>
+<span class=gd>-                      {% elif page.meta.revision_date %}</span>
+<span class=gd>-                        {{ label }}: {{ page.meta.revision_date }}</span>
+<span class=gd>-                      {% endif %}</span>
+<span class=gd>-                    &lt;/small&gt;</span>
+<span class=gd>-                  &lt;/div&gt;</span>
+                 {% endif %}
+               {% endblock %}
+               {% block disqus %}
+<span class=gu>@@ -208,29 +174,35 @@</span>
+         {% include &quot;partials/footer.html&quot; %}
+       {% endblock %}
+     &lt;/div&gt;
+     {% block scripts %}
+<span class=gd>-      &lt;script src=&quot;{{ &#39;assets/javascripts/application.********.js&#39; | url }}&quot;&gt;&lt;/script&gt;</span>
+<span class=gd>-      {% if lang.t(&quot;search.language&quot;) != &quot;en&quot; %}</span>
+<span class=gd>-        {% set languages = lang.t(&quot;search.language&quot;).split(&quot;,&quot;) %}</span>
+<span class=gd>-        {% if languages | length and languages[0] != &quot;&quot; %}</span>
+<span class=gd>-          {% set path = &quot;assets/javascripts/lunr/&quot; %}</span>
+<span class=gd>-          &lt;script src=&quot;{{ (path ~ &#39;lunr.stemmer.support.js&#39;) | url }}&quot;&gt;&lt;/script&gt;</span>
+<span class=gd>-          {% for language in languages | map(&quot;trim&quot;) %}</span>
+<span class=gd>-            {% if language != &quot;en&quot; %}</span>
+<span class=gd>-              {% if language == &quot;ja&quot; %}</span>
+<span class=gd>-                &lt;script src=&quot;{{ (path ~ &#39;tinyseg.js&#39;) | url }}&quot;&gt;&lt;/script&gt;</span>
+<span class=gd>-              {% endif %}</span>
+<span class=gd>-              {% if language in (&quot;ar&quot;, &quot;da&quot;, &quot;de&quot;, &quot;es&quot;, &quot;fi&quot;, &quot;fr&quot;, &quot;hu&quot;, &quot;it&quot;, &quot;ja&quot;, &quot;nl&quot;, &quot;no&quot;, &quot;pt&quot;, &quot;ro&quot;, &quot;ru&quot;, &quot;sv&quot;, &quot;th&quot;, &quot;tr&quot;, &quot;vi&quot;) %}</span>
+<span class=gd>-                &lt;script src=&quot;{{ (path ~ &#39;lunr.&#39; ~ language ~ &#39;.js&#39;) | url }}&quot;&gt;&lt;/script&gt;</span>
+<span class=gd>-              {% endif %}</span>
+<span class=gd>-            {% endif %}</span>
+<span class=gd>-          {% endfor %}</span>
+<span class=gd>-          {% if languages | length &gt; 1 %}</span>
+<span class=gd>-            &lt;script src=&quot;{{ (path ~ &#39;lunr.multi.js&#39;) | url }}&quot;&gt;&lt;/script&gt;</span>
+<span class=gd>-          {% endif %}</span>
+<span class=gd>-        {% endif %}</span>
+<span class=gd>-      {% endif %}</span>
+<span class=gd>-      &lt;script&gt;app.initialize({version:&quot;{{ mkdocs_version }}&quot;,url:{base:&quot;{{ base_url }}&quot;}})&lt;/script&gt;</span>
+<span class=gi>+      &lt;script src=&quot;{{ &#39;assets/javascripts/vendor.********.min.js&#39; | url }}&quot;&gt;&lt;/script&gt;</span>
+<span class=gi>+      &lt;script src=&quot;{{ &#39;assets/javascripts/bundle.********.min.js&#39; | url }}&quot;&gt;&lt;/script&gt;</span>
+<span class=gi>+      {%- set translations = {} -%}</span>
+<span class=gi>+      {%- for key in [</span>
+<span class=gi>+        &quot;clipboard.copy&quot;,</span>
+<span class=gi>+        &quot;clipboard.copied&quot;,</span>
+<span class=gi>+        &quot;search.config.lang&quot;,</span>
+<span class=gi>+        &quot;search.config.pipeline&quot;,</span>
+<span class=gi>+        &quot;search.config.separator&quot;,</span>
+<span class=gi>+        &quot;search.result.placeholder&quot;,</span>
+<span class=gi>+        &quot;search.result.none&quot;,</span>
+<span class=gi>+        &quot;search.result.one&quot;,</span>
+<span class=gi>+        &quot;search.result.other&quot;</span>
+<span class=gi>+      ] -%}</span>
+<span class=gi>+        {%- set _ = translations.update({ key: lang.t(key) }) -%}</span>
+<span class=gi>+      {%- endfor -%}</span>
+<span class=gi>+      &lt;script id=&quot;__lang&quot; type=&quot;application/json&quot;&gt;</span>
+<span class=gi>+        {{- translations | tojson -}}</span>
+<span class=gi>+      &lt;/script&gt;</span>
+<span class=gi>+      {% block config %}{% endblock %}</span>
+<span class=gi>+      &lt;script&gt;</span>
+<span class=gi>+        app = initialize({</span>
+<span class=gi>+          base: &quot;{{ base_url }}&quot;,</span>
+<span class=gi>+          features: {{ config.theme.features | tojson }},</span>
+<span class=gi>+          search: Object.assign({</span>
+<span class=gi>+            worker: &quot;{{ &#39;assets/javascripts/worker/search.********.min.js&#39; | url }}&quot;</span>
+<span class=gi>+          }, typeof search !== &quot;undefined&quot; &amp;&amp; search)</span>
+<span class=gi>+        })</span>
+<span class=gi>+      &lt;/script&gt;</span>
+       {% for path in config[&quot;extra_javascript&quot;] %}
+         &lt;script src=&quot;{{ path | url }}&quot;&gt;&lt;/script&gt;
+       {% endfor %}
+</code></pre></div> <h4 id=partialsfooterhtml><code>partials/footer.html</code><a class=headerlink href=#partialsfooterhtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -5,34 +5,34 @@</span>
+     &lt;div class=&quot;md-footer-nav&quot;&gt;
+<span class=gd>-      &lt;nav class=&quot;md-footer-nav__inner md-grid&quot;&gt;</span>
+<span class=gi>+      &lt;nav class=&quot;md-footer-nav__inner md-grid&quot; aria-label=&quot;{{ lang.t(&#39;footer.title&#39;) }}&quot;&gt;</span>
+         {% if page.previous_page %}
+<span class=gd>-          &lt;a href=&quot;{{ page.previous_page.url | url }}&quot; title=&quot;{{ page.previous_page.title | striptags }}&quot; class=&quot;md-flex md-footer-nav__link md-footer-nav__link--prev&quot; rel=&quot;prev&quot;&gt;</span>
+<span class=gd>-            &lt;div class=&quot;md-flex__cell md-flex__cell--shrink&quot;&gt;</span>
+<span class=gd>-              &lt;i class=&quot;md-icon md-icon--arrow-back md-footer-nav__button&quot;&gt;&lt;/i&gt;</span>
+<span class=gi>+          &lt;a href=&quot;{{ page.previous_page.url | url }}&quot; title=&quot;{{ page.previous_page.title | striptags }}&quot; class=&quot;md-footer-nav__link md-footer-nav__link--prev&quot; rel=&quot;prev&quot;&gt;</span>
+<span class=gi>+            &lt;div class=&quot;md-footer-nav__button md-icon&quot;&gt;</span>
+<span class=gi>+              {% include &quot;.icons/material/arrow-left.svg&quot; %}</span>
+             &lt;/div&gt;
+<span class=gd>-            &lt;div class=&quot;md-flex__cell md-flex__cell--stretch md-footer-nav__title&quot;&gt;</span>
+<span class=gd>-              &lt;span class=&quot;md-flex__ellipsis&quot;&gt;</span>
+<span class=gi>+            &lt;div class=&quot;md-footer-nav__title&quot;&gt;</span>
+<span class=gi>+              &lt;div class=&quot;md-ellipsis&quot;&gt;</span>
+                 &lt;span class=&quot;md-footer-nav__direction&quot;&gt;
+                   {{ lang.t(&quot;footer.previous&quot;) }}
+                 &lt;/span&gt;
+                 {{ page.previous_page.title }}
+<span class=gd>-              &lt;/span&gt;</span>
+<span class=gi>+              &lt;/div&gt;</span>
+             &lt;/div&gt;
+           &lt;/a&gt;
+         {% endif %}
+         {% if page.next_page %}
+<span class=gd>-          &lt;a href=&quot;{{ page.next_page.url | url }}&quot; title=&quot;{{ page.next_page.title | striptags }}&quot; class=&quot;md-flex md-footer-nav__link md-footer-nav__link--next&quot; rel=&quot;next&quot;&gt;</span>
+<span class=gd>-            &lt;div class=&quot;md-flex__cell md-flex__cell--stretch md-footer-nav__title&quot;&gt;</span>
+<span class=gd>-              &lt;span class=&quot;md-flex__ellipsis&quot;&gt;</span>
+<span class=gi>+          &lt;a href=&quot;{{ page.next_page.url | url }}&quot; title=&quot;{{ page.next_page.title | striptags }}&quot; class=&quot;md-footer-nav__link md-footer-nav__link--next&quot; rel=&quot;next&quot;&gt;</span>
+<span class=gi>+            &lt;div class=&quot;md-footer-nav__title&quot;&gt;</span>
+<span class=gi>+              &lt;div class=&quot;md-ellipsis&quot;&gt;</span>
+                 &lt;span class=&quot;md-footer-nav__direction&quot;&gt;
+                   {{ lang.t(&quot;footer.next&quot;) }}
+                 &lt;/span&gt;
+                 {{ page.next_page.title }}
+<span class=gd>-              &lt;/span&gt;</span>
+<span class=gi>+              &lt;/div&gt;</span>
+             &lt;/div&gt;
+<span class=gd>-            &lt;div class=&quot;md-flex__cell md-flex__cell--shrink&quot;&gt;</span>
+<span class=gd>-              &lt;i class=&quot;md-icon md-icon--arrow-forward md-footer-nav__button&quot;&gt;&lt;/i&gt;</span>
+<span class=gi>+            &lt;div class=&quot;md-footer-nav__button md-icon&quot;&gt;</span>
+<span class=gi>+              {% include &quot;.icons/material/arrow-right.svg&quot; %}</span>
+             &lt;/div&gt;
+           &lt;/a&gt;
+         {% endif %}
+</code></pre></div> <h4 id=partialsheaderhtml><code>partials/header.html</code><a class=headerlink href=#partialsheaderhtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -2,51 +2,43 @@</span>
+   This file was automatically generated - do not edit
+ -#}
+ &lt;header class=&quot;md-header&quot; data-md-component=&quot;header&quot;&gt;
+<span class=gd>-  &lt;nav class=&quot;md-header-nav md-grid&quot;&gt;</span>
+<span class=gd>-    &lt;div class=&quot;md-flex&quot;&gt;</span>
+<span class=gd>-      &lt;div class=&quot;md-flex__cell md-flex__cell--shrink&quot;&gt;</span>
+<span class=gd>-        &lt;a href=&quot;{{ config.site_url | default(nav.homepage.url, true) | url }}&quot; title=&quot;{{ config.site_name }}&quot; aria-label=&quot;{{ config.site_name }}&quot; class=&quot;md-header-nav__button md-logo&quot;&gt;</span>
+<span class=gd>-          {% if config.theme.logo.icon %}</span>
+<span class=gd>-            &lt;i class=&quot;md-icon&quot;&gt;{{ config.theme.logo.icon }}&lt;/i&gt;</span>
+<span class=gd>-          {% else %}</span>
+<span class=gd>-            &lt;img alt=&quot;logo&quot; src=&quot;{{ config.theme.logo | url }}&quot; width=&quot;24&quot; height=&quot;24&quot;&gt;</span>
+<span class=gd>-          {% endif %}</span>
+<span class=gd>-        &lt;/a&gt;</span>
+<span class=gd>-      &lt;/div&gt;</span>
+<span class=gd>-      &lt;div class=&quot;md-flex__cell md-flex__cell--shrink&quot;&gt;</span>
+<span class=gd>-        &lt;label class=&quot;md-icon md-icon--menu md-header-nav__button&quot; for=&quot;__drawer&quot;&gt;&lt;/label&gt;</span>
+<span class=gd>-      &lt;/div&gt;</span>
+<span class=gd>-      &lt;div class=&quot;md-flex__cell md-flex__cell--stretch&quot;&gt;</span>
+<span class=gd>-        &lt;div class=&quot;md-flex__ellipsis md-header-nav__title&quot; data-md-component=&quot;title&quot;&gt;</span>
+<span class=gd>-          {% if config.site_name == page.title %}</span>
+<span class=gd>-            {{ config.site_name }}</span>
+<span class=gd>-          {% else %}</span>
+<span class=gd>-            &lt;span class=&quot;md-header-nav__topic&quot;&gt;</span>
+<span class=gd>-              {{ config.site_name }}</span>
+<span class=gd>-            &lt;/span&gt;</span>
+<span class=gd>-            &lt;span class=&quot;md-header-nav__topic&quot;&gt;</span>
+<span class=gd>-              {% if page and page.meta and page.meta.title %}</span>
+<span class=gd>-                {{ page.meta.title }}</span>
+<span class=gd>-              {% else %}</span>
+<span class=gd>-                {{ page.title }}</span>
+<span class=gd>-              {% endif %}</span>
+<span class=gd>-            &lt;/span&gt;</span>
+<span class=gd>-          {% endif %}</span>
+<span class=gi>+  &lt;nav class=&quot;md-header-nav md-grid&quot; aria-label=&quot;{{ lang.t(&#39;header.title&#39;) }}&quot;&gt;</span>
+<span class=gi>+    &lt;a href=&quot;{{ config.site_url | default(nav.homepage.url, true) | url }}&quot; title=&quot;{{ config.site_name }}&quot; class=&quot;md-header-nav__button md-logo&quot; aria-label=&quot;{{ config.site_name }}&quot;&gt;</span>
+<span class=gi>+      {% include &quot;partials/logo.html&quot; %}</span>
+<span class=gi>+    &lt;/a&gt;</span>
+<span class=gi>+    &lt;label class=&quot;md-header-nav__button md-icon&quot; for=&quot;__drawer&quot;&gt;</span>
+<span class=gi>+      {% include &quot;.icons/material/menu&quot; ~ &quot;.svg&quot; %}</span>
+<span class=gi>+    &lt;/label&gt;</span>
+<span class=gi>+    &lt;div class=&quot;md-header-nav__title&quot; data-md-component=&quot;header-title&quot;&gt;</span>
+<span class=gi>+      {% if config.site_name == page.title %}</span>
+<span class=gi>+        &lt;div class=&quot;md-header-nav__ellipsis md-ellipsis&quot;&gt;</span>
+<span class=gi>+          {{ config.site_name }}</span>
+         &lt;/div&gt;
+<span class=gd>-      &lt;/div&gt;</span>
+<span class=gd>-      &lt;div class=&quot;md-flex__cell md-flex__cell--shrink&quot;&gt;</span>
+<span class=gd>-        {% if &quot;search&quot; in config[&quot;plugins&quot;] %}</span>
+<span class=gd>-          &lt;label class=&quot;md-icon md-icon--search md-header-nav__button&quot; for=&quot;__search&quot;&gt;&lt;/label&gt;</span>
+<span class=gd>-          {% include &quot;partials/search.html&quot; %}</span>
+<span class=gd>-        {% endif %}</span>
+<span class=gd>-      &lt;/div&gt;</span>
+<span class=gd>-      {% if config.repo_url %}</span>
+<span class=gd>-        &lt;div class=&quot;md-flex__cell md-flex__cell--shrink&quot;&gt;</span>
+<span class=gd>-          &lt;div class=&quot;md-header-nav__source&quot;&gt;</span>
+<span class=gd>-            {% include &quot;partials/source.html&quot; %}</span>
+<span class=gd>-          &lt;/div&gt;</span>
+<span class=gi>+      {% else %}</span>
+<span class=gi>+        &lt;div class=&quot;md-header-nav__ellipsis&quot;&gt;</span>
+<span class=gi>+          &lt;span class=&quot;md-header-nav__topic md-ellipsis&quot;&gt;</span>
+<span class=gi>+            {{ config.site_name }}</span>
+<span class=gi>+          &lt;/span&gt;</span>
+<span class=gi>+          &lt;span class=&quot;md-header-nav__topic md-ellipsis&quot;&gt;</span>
+<span class=gi>+            {% if page and page.meta and page.meta.title %}</span>
+<span class=gi>+              {{ page.meta.title }}</span>
+<span class=gi>+            {% else %}</span>
+<span class=gi>+              {{ page.title }}</span>
+<span class=gi>+            {% endif %}</span>
+<span class=gi>+          &lt;/span&gt;</span>
+         &lt;/div&gt;
+       {% endif %}
+     &lt;/div&gt;
+<span class=gi>+    {% if &quot;search&quot; in config[&quot;plugins&quot;] %}</span>
+<span class=gi>+      &lt;label class=&quot;md-header-nav__button md-icon&quot; for=&quot;__search&quot;&gt;</span>
+<span class=gi>+        {% include &quot;.icons/material/magnify.svg&quot; %}</span>
+<span class=gi>+      &lt;/label&gt;</span>
+<span class=gi>+      {% include &quot;partials/search.html&quot; %}</span>
+<span class=gi>+    {% endif %}</span>
+<span class=gi>+    {% if config.repo_url %}</span>
+<span class=gi>+      &lt;div class=&quot;md-header-nav__source&quot;&gt;</span>
+<span class=gi>+        {% include &quot;partials/source.html&quot; %}</span>
+<span class=gi>+      &lt;/div&gt;</span>
+<span class=gi>+    {% endif %}</span>
+   &lt;/nav&gt;
+ &lt;/header&gt;
+</code></pre></div> <h4 id=partialsherohtml><code>partials/hero.html</code><a class=headerlink href=#partialsherohtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -1,9 +1,8 @@</span>
+ {#-
+   This file was automatically generated - do not edit
+ -#}
+<span class=gd>-{% set feature = config.theme.feature %}</span>
+ {% set class = &quot;md-hero&quot; %}
+<span class=gd>-{% if not feature.tabs %}</span>
+<span class=gi>+{% if &quot;tabs&quot; not in config.theme.features %}</span>
+   {% set class = &quot;md-hero md-hero--expand&quot; %}
+ {% endif %}
+ &lt;div class=&quot;{{ class }}&quot; data-md-component=&quot;hero&quot;&gt;
+</code></pre></div> <h4 id=partialslanguagehtml><code>partials/language.html</code><a class=headerlink href=#partialslanguagehtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -3,12 +3,4 @@</span>
+ -#}
+ {% import &quot;partials/language/&quot; + config.theme.language + &quot;.html&quot; as lang %}
+ {% import &quot;partials/language/en.html&quot; as fallback %}
+<span class=gd>-{% macro t(key) %}{{ {</span>
+<span class=gd>-  &quot;direction&quot;: config.theme.direction,</span>
+<span class=gd>-  &quot;search.language&quot;: (</span>
+<span class=gd>-    config.extra.search | default({})</span>
+<span class=gd>-  ).language,</span>
+<span class=gd>-  &quot;search.tokenizer&quot;: (</span>
+<span class=gd>-    config.extra.search | default({})</span>
+<span class=gd>-  ).tokenizer | default(&quot;&quot;, true),</span>
+<span class=gd>-}[key] or lang.t(key) or fallback.t(key) }}{% endmacro %}</span>
+<span class=gi>+{% macro t(key) %}{{ lang.t(key) | default(fallback.t(key)) }}{% endmacro %}</span>
+</code></pre></div> <h4 id=partialslogohtml><code>partials/logo.html</code><a class=headerlink href=#partialslogohtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -0,0 +1,9 @@</span>
+<span class=gi>+{#-</span>
+<span class=gi>+  This file was automatically generated - do not edit</span>
+<span class=gi>+-#}</span>
+<span class=gi>+{% if config.theme.logo %}</span>
+<span class=gi>+  &lt;img src=&quot;{{ config.theme.logo | url }}&quot; alt=&quot;logo&quot;&gt;</span>
+<span class=gi>+{% else %}</span>
+<span class=gi>+  {% set icon = config.theme.icon.logo or &quot;material/library&quot; %}</span>
+<span class=gi>+  {% include &quot;.icons/&quot; ~ icon ~ &quot;.svg&quot; %}</span>
+<span class=gi>+{% endif %}</span>
+</code></pre></div> <h4 id=partialsnav-itemhtml><code>partials/nav-item.html</code><a class=headerlink href=#partialsnav-itemhtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -14,9 +14,15 @@</span>
+     {% endif %}
+     &lt;label class=&quot;md-nav__link&quot; for=&quot;{{ path }}&quot;&gt;
+       {{ nav_item.title }}
+<span class=gi>+      &lt;span class=&quot;md-nav__icon md-icon&quot;&gt;</span>
+<span class=gi>+        {% include &quot;.icons/material/chevron-right.svg&quot; %}</span>
+<span class=gi>+      &lt;/span&gt;</span>
+     &lt;/label&gt;
+<span class=gd>-    &lt;nav class=&quot;md-nav&quot; data-md-component=&quot;collapsible&quot; data-md-level=&quot;{{ level }}&quot;&gt;</span>
+<span class=gi>+    &lt;nav class=&quot;md-nav&quot; aria-label=&quot;{{ nav_item.title }}&quot; data-md-level=&quot;{{ level }}&quot;&gt;</span>
+       &lt;label class=&quot;md-nav__title&quot; for=&quot;{{ path }}&quot;&gt;
+<span class=gi>+        &lt;span class=&quot;md-nav__icon md-icon&quot;&gt;</span>
+<span class=gi>+          {% include &quot;.icons/material/arrow-left.svg&quot; %}</span>
+<span class=gi>+        &lt;/span&gt;</span>
+         {{ nav_item.title }}
+       &lt;/label&gt;
+       &lt;ul class=&quot;md-nav__list&quot; data-md-scrollfix&gt;
+<span class=gu>@@ -39,6 +45,9 @@</span>
+     {% if toc | first is defined %}
+       &lt;label class=&quot;md-nav__link md-nav__link--active&quot; for=&quot;__toc&quot;&gt;
+         {{ nav_item.title }}
+<span class=gi>+        &lt;span class=&quot;md-nav__icon md-icon&quot;&gt;</span>
+<span class=gi>+          {% include &quot;.icons/material/table-of-contents.svg&quot; %}</span>
+<span class=gi>+        &lt;/span&gt;</span>
+       &lt;/label&gt;
+     {% endif %}
+     &lt;a href=&quot;{{ nav_item.url | url }}&quot; title=&quot;{{ nav_item.title | striptags }}&quot; class=&quot;md-nav__link md-nav__link--active&quot;&gt;
+</code></pre></div> <h4 id=partialsnavhtml><code>partials/nav.html</code><a class=headerlink href=#partialsnavhtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -1,14 +1,10 @@</span>
+ {#-
+   This file was automatically generated - do not edit
+ -#}
+<span class=gd>-&lt;nav class=&quot;md-nav md-nav--primary&quot; data-md-level=&quot;0&quot;&gt;</span>
+<span class=gd>-  &lt;label class=&quot;md-nav__title md-nav__title--site&quot; for=&quot;__drawer&quot;&gt;</span>
+<span class=gd>-    &lt;a href=&quot;{{ config.site_url | default(nav.homepage.url, true) | url }}&quot; title=&quot;{{ config.site_name }}&quot; class=&quot;md-nav__button md-logo&quot;&gt;</span>
+<span class=gd>-      {% if config.theme.logo.icon %}</span>
+<span class=gd>-        &lt;i class=&quot;md-icon&quot;&gt;{{ config.theme.logo.icon }}&lt;/i&gt;</span>
+<span class=gd>-      {% else %}</span>
+<span class=gd>-        &lt;img alt=&quot;logo&quot; src=&quot;{{ config.theme.logo | url }}&quot; width=&quot;48&quot; height=&quot;48&quot;&gt;</span>
+<span class=gd>-      {% endif %}</span>
+<span class=gi>+&lt;nav class=&quot;md-nav md-nav--primary&quot; aria-label=&quot;{{ lang.t(&#39;nav.title&#39;) }}&quot; data-md-level=&quot;0&quot;&gt;</span>
+<span class=gi>+  &lt;label class=&quot;md-nav__title&quot; for=&quot;__drawer&quot;&gt;</span>
+<span class=gi>+    &lt;a href=&quot;{{ config.site_url | default(nav.homepage.url, true) | url }}&quot; title=&quot;{{ config.site_name }}&quot; class=&quot;md-nav__button md-logo&quot; aria-label=&quot;{{ config.site_name }}&quot;&gt;</span>
+<span class=gi>+      {% include &quot;partials/logo.html&quot; %}</span>
+     &lt;/a&gt;
+     {{ config.site_name }}
+   &lt;/label&gt;
+</code></pre></div> <h4 id=partialssearchhtml><code>partials/search.html</code><a class=headerlink href=#partialssearchhtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -6,15 +6,18 @@</span>
+   &lt;label class=&quot;md-search__overlay&quot; for=&quot;__search&quot;&gt;&lt;/label&gt;
+   &lt;div class=&quot;md-search__inner&quot; role=&quot;search&quot;&gt;
+     &lt;form class=&quot;md-search__form&quot; name=&quot;search&quot;&gt;
+<span class=gd>-      &lt;input type=&quot;text&quot; class=&quot;md-search__input&quot; name=&quot;query&quot; aria-label=&quot;Search&quot; placeholder=&quot;{{ lang.t(&#39;search.placeholder&#39;) }}&quot; autocapitalize=&quot;off&quot; autocorrect=&quot;off&quot; autocomplete=&quot;off&quot; spellcheck=&quot;false&quot; data-md-component=&quot;query&quot; data-md-state=&quot;active&quot;&gt;</span>
+<span class=gi>+      &lt;input type=&quot;text&quot; class=&quot;md-search__input&quot; name=&quot;query&quot; aria-label=&quot;{{ lang.t(&#39;search.placeholder&#39;) }}&quot; placeholder=&quot;{{ lang.t(&#39;search.placeholder&#39;) }}&quot; autocapitalize=&quot;off&quot; autocorrect=&quot;off&quot; autocomplete=&quot;off&quot; spellcheck=&quot;false&quot; data-md-component=&quot;search-query&quot; data-md-state=&quot;active&quot;&gt;</span>
+       &lt;label class=&quot;md-search__icon md-icon&quot; for=&quot;__search&quot;&gt;
+<span class=gi>+        {% include &quot;.icons/material/magnify.svg&quot; %}</span>
+<span class=gi>+        {% include &quot;.icons/material/arrow-left.svg&quot; %}</span>
+       &lt;/label&gt;
+<span class=gd>-      &lt;button type=&quot;reset&quot; class=&quot;md-icon md-search__icon&quot; data-md-component=&quot;reset&quot; tabindex=&quot;-1&quot;&gt;</span>
+<span class=gd>-        &amp;#xE5CD;</span>
+<span class=gi>+      &lt;button type=&quot;reset&quot; class=&quot;md-search__icon md-icon&quot; aria-label=&quot;{{ lang.t(&#39;search.reset&#39;) }}&quot; data-md-component=&quot;search-reset&quot; tabindex=&quot;-1&quot;&gt;</span>
+<span class=gi>+        {% include &quot;.icons/material/close.svg&quot; %}</span>
+       &lt;/button&gt;
+     &lt;/form&gt;
+     &lt;div class=&quot;md-search__output&quot;&gt;
+       &lt;div class=&quot;md-search__scrollwrap&quot; data-md-scrollfix&gt;
+<span class=gd>-        &lt;div class=&quot;md-search-result&quot; data-md-component=&quot;result&quot;&gt;</span>
+<span class=gi>+        &lt;div class=&quot;md-search-result&quot; data-md-component=&quot;search-result&quot;&gt;</span>
+           &lt;div class=&quot;md-search-result__meta&quot;&gt;
+             {{ lang.t(&quot;search.result.placeholder&quot;) }}
+           &lt;/div&gt;
+</code></pre></div> <h4 id=partialssocialhtml><code>partials/social.html</code><a class=headerlink href=#partialssocialhtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -3,9 +3,12 @@</span>
+ -#}
+ {% if config.extra.social %}
+   &lt;div class=&quot;md-footer-social&quot;&gt;
+<span class=gd>-    &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ &#39;assets/fonts/font-awesome.css&#39; | url }}&quot;&gt;</span>
+     {% for social in config.extra.social %}
+<span class=gd>-      &lt;a href=&quot;{{ social.link }}&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; title=&quot;{{ social.type }}&quot; class=&quot;md-footer-social__link fa fa-{{ social.type }}&quot;&gt;&lt;/a&gt;</span>
+<span class=gi>+      {% set _,rest = social.link.split(&quot;//&quot;) %}</span>
+<span class=gi>+      {% set domain = rest.split(&quot;/&quot;)[0] %}</span>
+<span class=gi>+      &lt;a href=&quot;{{ social.link }}&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; title=&quot;{{ domain }}&quot; class=&quot;md-footer-social__link&quot;&gt;</span>
+<span class=gi>+        {% include &quot;.icons/&quot; ~ social.icon ~ &quot;.svg&quot; %}</span>
+<span class=gi>+      &lt;/a&gt;</span>
+     {% endfor %}
+   &lt;/div&gt;
+ {% endif %}
+</code></pre></div> <h4 id=partialssource-datehtml><code>partials/source-date.html</code><a class=headerlink href=#partialssource-datehtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -0,0 +1,15 @@</span>
+<span class=gi>+{#-</span>
+<span class=gi>+  This file was automatically generated - do not edit</span>
+<span class=gi>+-#}</span>
+<span class=gi>+{% import &quot;partials/language.html&quot; as lang with context %}</span>
+<span class=gi>+{% set label = lang.t(&quot;source.revision.date&quot;) %}</span>
+<span class=gi>+&lt;hr&gt;</span>
+<span class=gi>+&lt;div class=&quot;md-source-date&quot;&gt;</span>
+<span class=gi>+  &lt;small&gt;</span>
+<span class=gi>+    {% if page.meta.git_revision_date_localized %}</span>
+<span class=gi>+      {{ label }}: {{ page.meta.git_revision_date_localized }}</span>
+<span class=gi>+    {% elif page.meta.revision_date %}</span>
+<span class=gi>+      {{ label }}: {{ page.meta.revision_date }}</span>
+<span class=gi>+    {% endif %}</span>
+<span class=gi>+  &lt;/small&gt;</span>
+<span class=gi>+&lt;/div&gt;</span>
+</code></pre></div> <h4 id=partialssource-linkhtml><code>partials/source-link.html</code><a class=headerlink href=#partialssource-linkhtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -0,0 +1,13 @@</span>
+<span class=gi>+{#-</span>
+<span class=gi>+  This file was automatically generated - do not edit</span>
+<span class=gi>+-#}</span>
+<span class=gi>+{% import &quot;partials/language.html&quot; as lang with context %}</span>
+<span class=gi>+{% set repo = config.repo_url %}</span>
+<span class=gi>+{% if repo | last == &quot;/&quot; %}</span>
+<span class=gi>+  {% set repo = repo[:-1] %}</span>
+<span class=gi>+{% endif %}</span>
+<span class=gi>+{% set path = page.meta.path | default([&quot;&quot;]) %}</span>
+<span class=gi>+&lt;a href=&quot;{{ [repo, path, page.meta.source] | join(&#39;/&#39;) }}&quot; title=&quot;{{ file }}&quot; class=&quot;md-content__button md-icon&quot;&gt;</span>
+<span class=gi>+  {{ lang.t(&quot;meta.source&quot;) }}</span>
+<span class=gi>+  {% include &quot;.icons/&quot; ~ config.theme.icon.repo ~ &quot;.svg&quot; %}</span>
+<span class=gi>+&lt;/a&gt;</span>
+</code></pre></div> <h4 id=partialssourcehtml><code>partials/source.html</code><a class=headerlink href=#partialssourcehtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -2,24 +2,11 @@</span>
+   This file was automatically generated - do not edit
+ -#}
+ {% import &quot;partials/language.html&quot; as lang with context %}
+<span class=gd>-{% set platform = config.extra.repo_icon or config.repo_url %}</span>
+<span class=gd>-{% if &quot;github&quot; in platform %}</span>
+<span class=gd>-  {% set repo_type = &quot;github&quot; %}</span>
+<span class=gd>-{% elif &quot;gitlab&quot; in platform %}</span>
+<span class=gd>-  {% set repo_type = &quot;gitlab&quot; %}</span>
+<span class=gd>-{% elif &quot;bitbucket&quot; in platform %}</span>
+<span class=gd>-  {% set repo_type = &quot;bitbucket&quot; %}</span>
+<span class=gd>-{% else %}</span>
+<span class=gd>-  {% set repo_type = &quot;&quot; %}</span>
+<span class=gd>-{% endif %}</span>
+<span class=gd>-&lt;a href=&quot;{{ config.repo_url }}&quot; title=&quot;{{ lang.t(&#39;source.link.title&#39;) }}&quot; class=&quot;md-source&quot; data-md-source=&quot;{{ repo_type }}&quot;&gt;</span>
+<span class=gd>-  {% if repo_type %}</span>
+<span class=gd>-    &lt;div class=&quot;md-source__icon&quot;&gt;</span>
+<span class=gd>-      &lt;svg viewBox=&quot;0 0 24 24&quot; width=&quot;24&quot; height=&quot;24&quot;&gt;</span>
+<span class=gd>-        &lt;use xlink:href=&quot;#__{{ repo_type }}&quot; width=&quot;24&quot; height=&quot;24&quot;&gt;&lt;/use&gt;</span>
+<span class=gd>-      &lt;/svg&gt;</span>
+<span class=gd>-    &lt;/div&gt;</span>
+<span class=gd>-  {% endif %}</span>
+<span class=gi>+&lt;a href=&quot;{{ config.repo_url }}&quot; title=&quot;{{ lang.t(&#39;source.link.title&#39;) }}&quot; class=&quot;md-source&quot;&gt;</span>
+<span class=gi>+  &lt;div class=&quot;md-source__icon md-icon&quot;&gt;</span>
+<span class=gi>+    {% set icon = config.theme.icon.repo or &quot;fontawesome/brands/git-alt&quot; %}</span>
+<span class=gi>+    {% include &quot;.icons/&quot; ~ icon ~ &quot;.svg&quot; %}</span>
+<span class=gi>+  &lt;/div&gt;</span>
+   &lt;div class=&quot;md-source__repository&quot;&gt;
+     {{ config.repo_name }}
+   &lt;/div&gt;
+</code></pre></div> <h4 id=partialstabs-itemhtml><code>partials/tabs-item.html</code><a class=headerlink href=#partialstabs-itemhtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -1,7 +1,7 @@</span>
+ {#-
+   This file was automatically generated - do not edit
+ -#}
+<span class=gd>-{% if nav_item.is_homepage %}</span>
+<span class=gi>+{% if nav_item.is_homepage or nav_item.url == &quot;index.html&quot; %}</span>
+   &lt;li class=&quot;md-tabs__item&quot;&gt;
+     {% if not page.ancestors | length and nav | selectattr(&quot;url&quot;, page.url) %}
+       &lt;a href=&quot;{{ nav_item.url | url }}&quot; class=&quot;md-tabs__link md-tabs__link--active&quot;&gt;
+</code></pre></div> <h4 id=partialstabshtml><code>partials/tabs.html</code><a class=headerlink href=#partialstabshtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -5,7 +5,7 @@</span>
+ {% if page.ancestors | length &gt; 0 %}
+   {% set class = &quot;md-tabs md-tabs--active&quot; %}
+ {% endif %}
+<span class=gd>-&lt;nav class=&quot;{{ class }}&quot; data-md-component=&quot;tabs&quot;&gt;</span>
+<span class=gi>+&lt;nav class=&quot;{{ class }}&quot; aria-label=&quot;{{ lang.t(&#39;tabs.title&#39;) }}&quot; data-md-component=&quot;tabs&quot;&gt;</span>
+   &lt;div class=&quot;md-tabs__inner md-grid&quot;&gt;
+     &lt;ul class=&quot;md-tabs__list&quot;&gt;
+       {% for nav_item in nav %}
+</code></pre></div> <h4 id=partialstoc-itemhtml><code>partials/toc-item.html</code><a class=headerlink href=#partialstoc-itemhtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -6,7 +6,7 @@</span>
+     {{ toc_item.title }}
+   &lt;/a&gt;
+   {% if toc_item.children %}
+<span class=gd>-    &lt;nav class=&quot;md-nav&quot;&gt;</span>
+<span class=gi>+    &lt;nav class=&quot;md-nav&quot; aria-label=&quot;{{ toc_item.title }}&quot;&gt;</span>
+       &lt;ul class=&quot;md-nav__list&quot;&gt;
+         {% for toc_item in toc_item.children %}
+           {% include &quot;partials/toc-item.html&quot; %}
+</code></pre></div> <h4 id=partialstochtml><code>partials/toc.html</code><a class=headerlink href=#partialstochtml title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code><span class=gu>@@ -2,35 +2,22 @@</span>
+   This file was automatically generated - do not edit
+ -#}
+ {% import &quot;partials/language.html&quot; as lang with context %}
+<span class=gd>-&lt;nav class=&quot;md-nav md-nav--secondary&quot;&gt;</span>
+<span class=gi>+&lt;nav class=&quot;md-nav md-nav--secondary&quot; aria-label=&quot;{{ lang.t(&#39;toc.title&#39;) }}&quot;&gt;</span>
+   {% endif %}
+   {% if toc | first is defined %}
+     &lt;label class=&quot;md-nav__title&quot; for=&quot;__toc&quot;&gt;
+<span class=gi>+      &lt;span class=&quot;md-nav__icon md-icon&quot;&gt;</span>
+<span class=gi>+        {% include &quot;.icons/material/arrow-left.svg&quot; %}</span>
+<span class=gi>+      &lt;/span&gt;</span>
+       {{ lang.t(&quot;toc.title&quot;) }}
+     &lt;/label&gt;
+     &lt;ul class=&quot;md-nav__list&quot; data-md-scrollfix&gt;
+       {% for toc_item in toc %}
+         {% include &quot;partials/toc-item.html&quot; %}
+       {% endfor %}
+<span class=gd>-      {% if page.meta.source and page.meta.source | length &gt; 0 %}</span>
+<span class=gd>-        &lt;li class=&quot;md-nav__item&quot;&gt;</span>
+<span class=gd>-          &lt;a href=&quot;#__source&quot; class=&quot;md-nav__link md-nav__link--active&quot;&gt;</span>
+<span class=gd>-            {{ lang.t(&quot;meta.source&quot;) }}</span>
+<span class=gd>-          &lt;/a&gt;</span>
+<span class=gd>-        &lt;/li&gt;</span>
+<span class=gd>-      {% endif %}</span>
+<span class=gd>-      {% set disqus = config.extra.disqus %}</span>
+<span class=gd>-      {% if page and page.meta and page.meta.disqus is string %}</span>
+<span class=gd>-        {% set disqus = page.meta.disqus %}</span>
+<span class=gd>-      {% endif %}</span>
+<span class=gd>-      {% if not page.is_homepage and disqus %}</span>
+<span class=gd>-        &lt;li class=&quot;md-nav__item&quot;&gt;</span>
+<span class=gd>-          &lt;a href=&quot;#__comments&quot; class=&quot;md-nav__link md-nav__link--active&quot;&gt;</span>
+<span class=gd>-            {{ lang.t(&quot;meta.comments&quot;) }}</span>
+<span class=gd>-          &lt;/a&gt;</span>
+<span class=gd>-        &lt;/li&gt;</span>
+<span class=gd>-      {% endif %}</span>
+     &lt;/ul&gt;
+   {% endif %}
+ &lt;/nav&gt;
+</code></pre></div> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid" aria-label=Footer> <a href=../../plugins/awesome-pages/ title="Awesome pages" class="md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Previous </span> Awesome pages </div> </div> </a> <a href=../4/ title="Upgrading to 4.x" class="md-footer-nav__link md-footer-nav__link--next" rel=next> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Next </span> Upgrading to 4.x </div> </div> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2016 - 2020 Martin Donath </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> <div class=md-footer-social> <a href=https://github.com/squidfunk target=_blank rel=noopener title=github.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> </a> <a href=https://gitter.im/squidfunk/mkdocs-material target=_blank rel=noopener title=gitter.im class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 384 512"><path d="M66.4 322.5H16V0h50.4v322.5zM166.9 76.1h-50.4V512h50.4V76.1zm100.6 0h-50.4V512h50.4V76.1zM368 76h-50.4v247H368V76z"/></svg> </a> <a href=https://hub.docker.com/r/squidfunk/mkdocs-material/ target=_blank rel=noopener title=hub.docker.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg> </a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener title=twitter.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> </a> <a href=https://linkedin.com/in/squidfunk/ target=_blank rel=noopener title=linkedin.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg> </a> <a href=https://instagram.com/squidfunk target=_blank rel=noopener title=instagram.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg> </a> </div> </div> </div> </footer> </div> <script src=../../assets/javascripts/vendor.de50e36d.min.js></script> <script src=../../assets/javascripts/bundle.fc9c3121.min.js></script><script id=__lang type=application/json>{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script> <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script> </body> </html>
