@@ -112,11 +112,9 @@ export function setupSearchWorker(
       withLatestFrom(base$),
       map(([message, base]) => {
         if (isSearchResultMessage(message)) {
-          for (const { article, sections } of message.data) {
-            article.location = `${base}/${article.location}`
-            for (const section of sections)
-              section.location = `${base}/${section.location}`
-          }
+          for (const result of message.data)
+            for (const document of result)
+              document.location = `${base}/${document.location}`
         }
         return message
       }),

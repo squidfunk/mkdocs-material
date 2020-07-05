@@ -65,8 +65,13 @@ const path =
  * @return Element
  */
 export function renderSearchResult(
-  { article, sections }: SearchResult
+  result: SearchResult //, threshold: number = Infinity
 ) {
+
+  const copy = [...result]
+
+  const found = copy.findIndex(({ parent }) => !parent)
+  const [article] = copy.splice(found, 1)
 
   /* Render icon */
   const icon = (
@@ -78,14 +83,16 @@ export function renderSearchResult(
   )
 
   /* Render article and sections */
-  const children = [article, ...sections].map(document => {
+  const children = [article, ...copy].map((document, index) => {
     const { location, title, text } = document
     return (
       <a href={location} class={css.link} tabIndex={-1}>
         <article class={"parent" in document ? css.section : css.article}>
           {!("parent" in document) && icon}
           <h1 class={css.title}>{title}</h1>
-          {text.length > 0 && <p class={css.teaser}>{truncate(text, 320)}</p>}
+          {text.length > 0 && (index || index === found) &&
+            <p class={css.teaser}>{truncate(text, 320)}</p>
+          }
         </article>
       </a>
     )

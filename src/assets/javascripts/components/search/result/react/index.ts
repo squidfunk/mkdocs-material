@@ -96,29 +96,35 @@ export function applySearchResult(
     }),
 
     /* Apply search result list */
-    switchMap(result => fetch$
-      .pipe(
+    switchMap(result => {
 
-        /* Defer repaint to next animation frame */
-        observeOn(animationFrameScheduler),
-        scan(index => {
-          const container = el.parentElement!
-          while (index < result.length) {
-            addToSearchResultList(list, renderSearchResult(result[index++]))
-            if (container.scrollHeight - container.offsetHeight > 16)
-              break
-          }
-          return index
-        }, 0),
+      // /* Compute rendering boundaries for search results */
+      // for (const )
 
-        /* Re-map to search result */
-        mapTo(result),
+      return fetch$
+        .pipe(
 
-        /* Reset on complete or error */
-        finalize(() => {
-          resetSearchResultList(list)
-        })
-      )
+          /* Defer repaint to next animation frame */
+          observeOn(animationFrameScheduler),
+          scan(index => {
+            const container = el.parentElement!
+            while (index < result.length) {
+              addToSearchResultList(list, renderSearchResult(result[index++]))
+              if (container.scrollHeight - container.offsetHeight > 16)
+                break
+            }
+            return index
+          }, 0),
+
+          /* Re-map to search result */
+          mapTo(result),
+
+          /* Reset on complete or error */
+          finalize(() => {
+            resetSearchResultList(list)
+          })
+        )
+      }
     )
   )
 }

@@ -85,12 +85,16 @@ export interface SearchIndex {
 /* ------------------------------------------------------------------------- */
 
 /**
+ * Search result for a section
+ */
+export interface SectionDocumentResult extends SectionDocument {
+  score: number                        /* Score (relevance) */
+}
+
+/**
  * Search result
  */
-export interface SearchResult {
-  article: ArticleDocument             /* Article document */
-  sections: SectionDocument[]          /* Section documents */
-}
+export type SearchResult = SectionDocumentResult[]
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -226,13 +230,10 @@ export class Search {
           .reduce((results, result) => {
             const document = this.documents.get(result.ref)
             if (typeof document !== "undefined") {
-              if ("parent" in document) {
-                const ref = document.parent.location
-                results.set(ref, [...results.get(ref) || [], result])
-              } else {
-                const ref = document.location
-                results.set(ref, results.get(ref) || [])
-              }
+              const ref = "parent" in document
+                ? document.parent.location
+                : document.location
+              results.set(ref, [...results.get(ref) || [], result])
             }
             return results
           }, new Map<string, lunr.Index.Result[]>())
@@ -240,13 +241,13 @@ export class Search {
         /* Create highlighter for query */
         const fn = this.highlight(value)
 
-        /* Map groups to search documents */
-        return [...groups].map(([ref, sections]) => ({
-          article: fn(this.documents.get(ref) as ArticleDocument),
-          sections: sections.map(section => {
-            return fn(this.documents.get(section.ref) as SectionDocument)
-          })
-        }))
+        /* Map groups to search results */
+        return [...groups.values()].map(results => (
+          results.map(result => fn({
+            ...this.documents.get(result.ref) as SectionDocument,
+            score: result.score
+          }))
+        ))
 
       /* Log errors to console (for now) */
       } catch (err) {
