@@ -21,11 +21,10 @@
  */
 
 import {
-  ArticleDocument,
+  SearchDocument,
   SearchDocumentMap,
   SectionDocument,
-  setupSearchDocumentMap,
-  SearchDocument
+  setupSearchDocumentMap
 } from "../document"
 import {
   SearchHighlightFactoryFn,
