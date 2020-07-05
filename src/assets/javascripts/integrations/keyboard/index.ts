@@ -135,7 +135,10 @@ export function setupKeyboard(): Observable<Keyboard> {
             if (typeof active === "undefined") {
               setElementFocus(query)
             } else {
-              const els = [query, ...getElements("[href]", result)]
+              const els = [query, ...getElements(
+                ":not(details) > [href], summary, details[open] [href]",
+                result
+              )]
               const i = Math.max(0, (
                 Math.max(0, els.indexOf(active)) + els.length + (
                   key.type === "ArrowUp" ? -1 : +1

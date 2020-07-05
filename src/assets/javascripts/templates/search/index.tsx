@@ -37,6 +37,7 @@ import { h, truncate } from "utilities"
 const css = {
   item:    "md-search-result__item",
   link:    "md-search-result__link",
+  more:    "md-search-result__more",
   article: "md-search-result__article md-search-result__article--document",
   section: "md-search-result__article",
   title:   "md-search-result__title",
@@ -147,15 +148,13 @@ export function renderSearchResult(
   const muchRelevant = copy.slice(0, smaller)
   const lessRelevant = copy.slice(smaller)
 
-  const renderButton = (x: number) => <button style="margin-left: 2.2rem; font-size: 1.2em; color: var(--md-accent-fg-color); margin-top: 0.4rem; margin-bottom: 0.8rem;">
-    More results on this page ({x})
-  </button>
-
   const children = [
     renderArticleDocument(article as ArticleDocument, !found || smaller === 0),
     ...muchRelevant.map(renderSectionDocument as any),
-    renderButton(lessRelevant.length)
-    // ...lessRelevant.map(renderSectionDocument as any),
+    <details class={css.more}>
+      <summary>{lessRelevant.length} more on this page</summary>
+      {...lessRelevant.map(renderSectionDocument as any)}
+    </details>
   ]
 
   /* Render search result */

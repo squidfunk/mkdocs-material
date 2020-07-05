@@ -566,6 +566,42 @@ $md-toggle__search--checked:
     }
   }
 
+  // Search result container
+  &__more summary {
+    padding: px2em(12px) px2rem(16px);
+    color: var(--md-primary-fg-color);
+    font-size: ms(-1);
+    outline: 0;
+    cursor: pointer;
+
+    // Focused or hovered button
+    &:focus,
+    &:hover {
+      background-color: var(--md-accent-fg-color--transparent);
+    }
+
+    // [tablet landscape +]: Increase left indent
+    @include break-from-device(tablet landscape) {
+      padding-left: px2rem(44px);
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        padding-right: px2rem(44px);
+        padding-left: px2rem(16px);
+      }
+    }
+
+    // Remove default details marker
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    // All following elements
+    & ~ * {
+      background-color: var(--md-default-fg-color--lightest);
+    }
+  }
+
   // Article - document or section
   &__article {
     position: relative;
