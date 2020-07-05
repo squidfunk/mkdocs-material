@@ -573,6 +573,7 @@ $md-toggle__search--checked:
     font-size: ms(-1);
     outline: 0;
     cursor: pointer;
+    scroll-snap-align: start;
 
     // Focused or hovered button
     &:focus,
