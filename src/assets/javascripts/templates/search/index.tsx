@@ -20,7 +20,11 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchResult } from "integrations/search"
+import {
+  ArticleDocument,
+  SearchResult,
+  SectionDocument
+} from "integrations/search"
 import { h, truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------
@@ -54,6 +58,69 @@ const path =
   "14,16.5A2.5,2.5 0 0,1 16.5,14A2.5,2.5 0 0,1 19,16.5A2.5,2.5 0 0,1 16.5,19Z"
 
 /* ----------------------------------------------------------------------------
+ * Helper function
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Render an article document
+ *
+ * @param document - Article document
+ * @param teaser - Whether to render the teaser
+ *
+ * @return Element
+ */
+function renderArticleDocument(
+  document: ArticleDocument, teaser: boolean
+) {
+
+  /* Render icon */
+  const icon = (
+    <div class="md-search-result__icon md-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d={path}></path>
+      </svg>
+    </div>
+  )
+
+  /* Render article */
+  const { location, title, text } = document
+  return (
+    <a href={location} class={css.link} tabIndex={-1}>
+      <article class={css.article}>
+        {icon}
+        <h1 class={css.title}>{title}</h1>
+        {text.length > 0 && teaser &&
+          <p class={css.teaser}>{truncate(text, 320)}</p>
+        }
+      </article>
+    </a>
+  )
+}
+
+/**
+ * Render a section document
+ *
+ * @param document - Section document
+ *
+ * @return Element
+ */
+function renderSectionDocument(
+  document: SectionDocument
+) {
+  const { location, title, text } = document
+  return (
+    <a href={location} class={css.link} tabIndex={-1}>
+      <article class={css.section}>
+        <h1 class={css.title}>{title}</h1>
+        {text.length > 0 &&
+          <p class={css.teaser}>{truncate(text, 320)}
+        </p>}
+      </article>
+    </a>
+  )
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -65,38 +132,31 @@ const path =
  * @return Element
  */
 export function renderSearchResult(
-  result: SearchResult //, threshold: number = Infinity
+  result: SearchResult, threshold: number = Infinity
 ) {
 
   const copy = [...result]
 
-  const found = copy.findIndex(({ parent }) => !parent)
+
+  const found = copy.findIndex(x => !("parent" in x))
   const [article] = copy.splice(found, 1)
 
-  /* Render icon */
-  const icon = (
-    <div class="md-search-result__icon md-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={path}></path>
-      </svg>
-    </div>
-  )
+  const smaller = Math.max(copy.findIndex(x => x.score < threshold), 0)
+  // console.log(threshold, smaller, copy.map(x => x.score))
 
-  /* Render article and sections */
-  const children = [article, ...copy].map((document, index) => {
-    const { location, title, text } = document
-    return (
-      <a href={location} class={css.link} tabIndex={-1}>
-        <article class={"parent" in document ? css.section : css.article}>
-          {!("parent" in document) && icon}
-          <h1 class={css.title}>{title}</h1>
-          {text.length > 0 && (index || index === found) &&
-            <p class={css.teaser}>{truncate(text, 320)}</p>
-          }
-        </article>
-      </a>
-    )
-  })
+  const muchRelevant = copy.slice(0, smaller)
+  const lessRelevant = copy.slice(smaller)
+
+  const renderButton = (x: number) => <button style="margin-left: 2.2rem; font-size: 1.2em; color: var(--md-accent-fg-color); margin-top: 0.4rem; margin-bottom: 0.8rem;">
+    More results on this page ({x})
+  </button>
+
+  const children = [
+    renderArticleDocument(article as ArticleDocument, !found || smaller === 0),
+    ...muchRelevant.map(renderSectionDocument as any),
+    renderButton(lessRelevant.length)
+    // ...lessRelevant.map(renderSectionDocument as any),
+  ]
 
   /* Render search result */
   return (

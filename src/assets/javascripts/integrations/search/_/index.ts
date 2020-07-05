@@ -24,7 +24,8 @@ import {
   ArticleDocument,
   SearchDocumentMap,
   SectionDocument,
-  setupSearchDocumentMap
+  setupSearchDocumentMap,
+  SearchDocument
 } from "../document"
 import {
   SearchHighlightFactoryFn,
@@ -85,16 +86,16 @@ export interface SearchIndex {
 /* ------------------------------------------------------------------------- */
 
 /**
- * Search result for a section
+ * Search result document
  */
-export interface SectionDocumentResult extends SectionDocument {
+export type SearchResultDocument = SearchDocument & {
   score: number                        /* Score (relevance) */
 }
 
 /**
  * Search result
  */
-export type SearchResult = SectionDocumentResult[]
+export type SearchResult = SearchResultDocument[]
 
 /* ----------------------------------------------------------------------------
  * Functions

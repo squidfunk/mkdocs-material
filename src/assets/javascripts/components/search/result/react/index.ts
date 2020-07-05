@@ -97,10 +97,7 @@ export function applySearchResult(
 
     /* Apply search result list */
     switchMap(result => {
-
-      // /* Compute rendering boundaries for search results */
-      // for (const )
-
+      const thresholds = [...result.map(([first]) => first.score), 0]
       return fetch$
         .pipe(
 
@@ -109,7 +106,9 @@ export function applySearchResult(
           scan(index => {
             const container = el.parentElement!
             while (index < result.length) {
-              addToSearchResultList(list, renderSearchResult(result[index++]))
+              addToSearchResultList(list, renderSearchResult(
+                result[index++], thresholds[index]
+              ))
               if (container.scrollHeight - container.offsetHeight > 16)
                 break
             }
