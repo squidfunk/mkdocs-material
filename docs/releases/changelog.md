@@ -18,6 +18,36 @@ pip show mkdocs-material
 
 ## Changelog
 
+### 5.4.0 <small>_ June 29, 2020</small>
+
+* Added support to wrap searches in quotes to switch from `OR` to `AND`
+* Fixed highlighting of numbers in search results
+
+### 5.3.3 <small>_ June 24, 2020</small>
+
+* Added Bengali translations
+* Fixed #1773: Search for numbers does not return any result (regression)
+
+### 5.3.2 <small>_ June 21, 2020</small>
+
+* Improved search type-ahead experience with non-Latin characters
+* Fixed #1753: Japanese search doesn't work anymore
+
+### 5.3.1 <small>_ June 20, 2020</small>
+
+* Fixed #1761: Duplication of search worker when subscribing to observable
+
+### 5.3.0 <small>_ June 15, 2020</small>
+
+* Added support for color schemes based on user preference
+* Fixed #1755: Tokenizer separator setting ignored
+
+### 5.2.3 <small>_ June 6, 2020</small>
+
+* Improved search typeahead behavior for some languages (`de`, `fr`, ...)
+* Improved styles for scrollbars on Firefox
+* Fixed #1741: Removed `preconnect` hint for Google Analytics
+
 ### 5.2.2 <small>_ May 26, 2020</small>
 
 * Fixed #1728: Legacy Edge doesn't support `deg` values in `hsla` colors

@@ -72,7 +72,7 @@ function setupSearchIndex(
     config.lang = [translate("search.config.lang")]
 
   /* Override default separator with value from translation */
-  if (config.separator === "[\s\-]+")
+  if (config.separator === "[\\s\\-]+")
     config.separator = translate("search.config.separator")
 
   /* Set pipeline from translation */

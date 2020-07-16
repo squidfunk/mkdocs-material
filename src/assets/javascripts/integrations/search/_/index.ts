@@ -58,9 +58,9 @@ export interface SearchIndexDocument {
  * Search index pipeline function
  */
 export type SearchIndexPipelineFn =
-  | "stemmer"                          /* Stemmer */
-  | "stopWordFilter"                   /* Stop word filter */
   | "trimmer"                          /* Trimmer */
+  | "stopWordFilter"                   /* Stop word filter */
+  | "stemmer"                          /* Stemmer */
 
 /**
  * Search index pipeline
@@ -90,6 +90,25 @@ export interface SearchIndex {
 export interface SearchResult {
   article: ArticleDocument             /* Article document */
   sections: SectionDocument[]          /* Section documents */
+}
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Compute the difference of two lists of strings
+ *
+ * @param a - 1st list of strings
+ * @param b - 2nd list of strings
+ *
+ * @return Difference
+ */
+function difference(a: string[], b: string[]): string[] {
+  const [x, y] = [new Set(a), new Set(b)]
+  return [
+    ...new Set([...x].filter(value => !y.has(value)))
+  ]
 }
 
 /* ----------------------------------------------------------------------------
@@ -133,21 +152,33 @@ export class Search {
     this.documents = setupSearchDocumentMap(docs)
     this.highlight = setupSearchHighlighter(config)
 
+    /* Set separator for tokenizer */
+    lunr.tokenizer.separator = new RegExp(config.separator)
+
     /* If no index was given, create it */
     if (typeof index === "undefined") {
       this.index = lunr(function() {
-        pipeline = pipeline || ["trimmer", "stopWordFilter"]
-
-        /* Set up pipeline according to configuration */
-        this.pipeline.reset()
-        for (const fn of pipeline)
-          this.pipeline.add(lunr[fn])
 
         /* Set up alternate search languages */
         if (config.lang.length === 1 && config.lang[0] !== "en") {
           this.use((lunr as any)[config.lang[0]])
         } else if (config.lang.length > 1) {
           this.use((lunr as any).multiLanguage(...config.lang))
+        }
+
+        /* Compute functions to be removed from the pipeline */
+        const fns = difference([
+          "trimmer", "stopWordFilter", "stemmer"
+        ], pipeline!)
+
+        /* Remove functions from the pipeline for every language */
+        for (const lang of config.lang.map(language => (
+          language === "en" ? lunr : (lunr as any)[language]
+        ))) {
+          for (const fn of fns) {
+            this.pipeline.remove(lang[fn])
+            this.searchPipeline.remove(lang[fn])
+          }
         }
 
         /* Set up fields and reference */

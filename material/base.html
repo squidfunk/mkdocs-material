@@ -29,7 +29,7 @@
         <meta name="author" content="{{ config.site_author }}">
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.2.2">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.4.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -41,9 +41,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.b8fb47b5.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.61729dd2.min.css' | url }}">
       {% if palette.scheme or palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.36d1b78f.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.e185632b.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -86,6 +86,9 @@
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
+    {% if "preference" == palette.scheme %}
+      <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+    {% endif %}
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -179,8 +182,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.de50e36d.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.ff925e8b.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.568ba93b.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.2a81e305.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -204,7 +207,7 @@
           base: "{{ base_url }}",
           features: {{ config.theme.features | tojson }},
           search: Object.assign({
-            worker: "{{ 'assets/javascripts/worker/search.27c6a5e6.min.js' | url }}"
+            worker: "{{ 'assets/javascripts/worker/search.a68abb33.min.js' | url }}"
           }, typeof search !== "undefined" && search)
         })
       </script>

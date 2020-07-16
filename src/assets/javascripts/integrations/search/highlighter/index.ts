@@ -71,7 +71,7 @@ export function setupSearchHighlighter(
   /* Return factory function */
   return (value: string) => {
     value = value
-      .replace(/[\s*+-:~^]+/g, " ")
+      .replace(/[\s*+\-:~^]+/g, " ")
       .trim()
 
     /* Create search term match expression */

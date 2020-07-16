@@ -207,59 +207,72 @@ export default (_env: never, args: Configuration): Configuration[] => {
           filename: `[name]${hash}.css`
         }),
 
-        /* FontAwesome icons */
-        new CopyPlugin({
-          patterns: [
-            { to: ".icons/fontawesome", from: "**/*.svg" },
-            { to: ".icons/fontawesome", from: "../LICENSE.txt" }
-          ].map(pattern => ({
-            context: "node_modules/@fortawesome/fontawesome-free/svgs",
-            ...pattern
-          }))
-        }),
+        /* Improve performance by skipping dependencies in watch mode */
+        ...args.watch ? [] : [
 
-        /* Material Design icons */
-        new CopyPlugin({
-          patterns: [
-            { to: ".icons/material", from: "*.svg" }
-          ].map(pattern => ({
-            context: "node_modules/@mdi/svg/svg",
-            ...pattern
-          }))
-        }),
+          /* FontAwesome icons */
+          new CopyPlugin({
+            patterns: [
+              { to: ".icons/fontawesome", from: "**/*.svg" },
+              { to: ".icons/fontawesome", from: "../LICENSE.txt" }
+            ].map(pattern => ({
+              context: "node_modules/@fortawesome/fontawesome-free/svgs",
+              ...pattern
+            }))
+          }),
 
-        /* GitHub octicons */
-        new CopyPlugin({
-          patterns: [
-            { to: ".icons/octicons", from: "*.svg" },
-            { to: ".icons/octicons", from: "../../LICENSE" }
-          ].map(pattern => ({
-            context: "node_modules/@primer/octicons/build/svg",
-            ...pattern
-          }))
-        }),
+          /* Material Design icons */
+          new CopyPlugin({
+            patterns: [
+              { to: ".icons/material", from: "*.svg" }
+            ].map(pattern => ({
+              context: "node_modules/@mdi/svg/svg",
+              ...pattern
+            }))
+          }),
 
-        /* Search stemmers and segmenters */
-        new CopyPlugin({
-          patterns: [
-            { to: "assets/javascripts/lunr", from: "min/*.js" },
-            {
-              to: "assets/javascripts/lunr/tinyseg.min.js",
-              from: "tinyseg.js",
-              transform: (content: Buffer) => minjs(`${content}`).code!
-            }
-          ].map(pattern => ({
-            context: "node_modules/lunr-languages",
-            ...pattern
-          }))
-        }),
+          /* GitHub octicons */
+          new CopyPlugin({
+            patterns: [
+              { to: ".icons/octicons", from: "*.svg" },
+              { to: ".icons/octicons", from: "../../LICENSE" }
+            ].map(pattern => ({
+              context: "node_modules/@primer/octicons/build/svg",
+              ...pattern
+            }))
+          }),
+
+          /* Search stemmers and segmenters */
+          new CopyPlugin({
+            patterns: [
+              { to: "assets/javascripts/lunr", from: "min/*.js" },
+              {
+                to: "assets/javascripts/lunr/tinyseg.min.js",
+                from: "tinyseg.js",
+                transform: (content: Buffer) => minjs(`${content}`).code!
+              }
+            ].map(pattern => ({
+              context: "node_modules/lunr-languages",
+              ...pattern
+            }))
+          }),
+
+          /* Assets and configuration */
+          new CopyPlugin({
+            patterns: [
+              { from: ".icons/*.svg" },
+              { from: "assets/images/*" },
+              { from: "**/*.{py,yml}" }
+            ].map(pattern => ({
+              context: "src",
+              ...pattern
+            }))
+          })
+        ],
 
         /* Template files */
         new CopyPlugin({
           patterns: [
-            { from: ".icons/*.svg" },
-            { from: "assets/images/*" },
-            { from: "**/*.{py,yml}" },
             {
               from: "**/*.html",
               transform: (content: Buffer) => {
@@ -304,7 +317,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
               const manifest = require("./material/assets/manifest.json")
               const template = toPairs<string>(manifest)
                 .reduce((content, [from, to]) => {
-                  return content.replace(from, to)
+                  return content.replace(new RegExp(from, "g"), to)
                 }, fs.readFileSync("material/base.html", "utf8"))
 
               /* Save template with replaced assets */
