@@ -157,7 +157,7 @@ Material for MkDocs provides the following template blocks:
 | `content`    | Wraps the main content                          |
 | `disqus`     | Wraps the disqus integration                    |
 | `extrahead`  | Empty block to define additional meta tags      |
-| `fonts`      | Wraps the webfont definitions                   |
+| `fonts`      | Wraps the font definitions                      |
 | `footer`     | Wraps the footer with navigation and copyright  |
 | `header`     | Wraps the fixed header bar                      |
 | `hero`       | Wraps the hero teaser (if available)            |

@@ -4,35 +4,95 @@ template: overrides/main.html
 
 # Changing the fonts
 
+Material for MkDocs makes it easy to change the typeface of your project
+documentation, as it directly integrates with [Google Fonts][1]. Alternatively,
+fonts can be custom-loaded if self-hosting is preferred or another destination
+should be used.
+
+  [1]: https://fonts.google.com
+
 ## Configuration
 
-> Default: `Roboto` and `Roboto Mono`
+### Regular font
 
-The [Roboto font family][1] is the default font included with the theme,
-specifically the regular sans-serif type for text and the `monospaced` type for
-code. Both fonts are loaded from [Google Fonts][2] and can be changed to any
-supported typeface, like for example the [Ubuntu font family][3]:
+[:octicons-file-code-24: Source][2] · :octicons-tools-24: Default: [`Roboto`][3]
+
+The _regular font_ is used for all body copy, headlines, and essentially
+everything that does not need to be proportionally spaced. It can be set to any
+valid [Google Font][1] with:
 
 ``` yaml
 theme:
   font:
-    text: Ubuntu
-    code: Ubuntu Mono
+    text: Roboto
 ```
 
-The text font will be loaded in weights 400 and **700**, the `monospaced` font
-in regular weight. If you want to load fonts from other destinations or don't
-want to use Google Fonts for data privacy reasons, just set `font` to `false`:
+The typeface will be loaded in 300, 400, *400i* and **700**.
+
+  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L120-L139
+  [3]: https://fonts.google.com/specimen/Roboto
+
+### Proportional font
+
+[:octicons-file-code-24: Source][2] · :octicons-tools-24: Default:
+[`Roboto Mono`][4]
+
+The _proportional font_ is used for code blocks and can be configured separately.
+Just like the regular font, it can be set to any valid [Google Font][1] from
+`mkdocs.yml` with:
+
+``` yaml
+theme:
+  font:
+    code: Roboto Mono
+```
+
+The typeface will be loaded in 400.
+
+  [4]: https://fonts.google.com/specimen/Roboto+Mono
+
+## Customization
+
+If you want to load fonts from other destinations or don't want to use Google
+Fonts for [data privacy][5] reasons, e.g. _due to GDPR_, add the following lines
+to `mkdocs.yml`:
 
 ``` yaml
 theme:
   font: false
 ```
 
-  [1]: https://fonts.google.com/specimen/Roboto
-  [2]: https://fonts.google.com
-  [3]: https://fonts.google.com/specimen/Ubuntu
+This will prevent typefaces from being loaded from Google Fonts. As a fallback,
+common system fonts will be used automatically. Additionally, if you want to
+load a font from another destination, you can either [override the `fonts`
+block][6] with a `style` tag, or use an [additional stylesheet][7] to add the
+necessary `@font-face` definition:
 
-## Customization
+``` css
+@font-face {
+  font-family: "<font>";
+  src: "...";
+}
+```
 
-TBD
+The font can then be configured to be used as the regular or proportional font:
+
+=== "Regular"
+
+    ``` css
+    body, input {
+      font-family: "<font>", -apple-system, Helvetica, Arial, sans-serif;
+    }
+    ```
+
+=== "Proportional"
+
+    ``` css
+    pre, code, kbd {
+      font-family: "<font>", SFMono-Regular, Consolas, Menlo, monospace;
+    }
+    ```
+
+  [5]: ../getting-started/data-privacy.md
+  [6]: ../getting-started/customization.md#overriding-blocks
+  [7]: ../getting-started/customization.md#additional-stylesheets

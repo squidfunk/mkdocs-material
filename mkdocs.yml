@@ -133,6 +133,7 @@ nav:
     - Publishing your site: getting-started/publishing-your-site.md
     - Customization: getting-started/customization.md
     - Troubleshooting: getting-started/troubleshooting.md
+    - Data privacy: getting-started/data-privacy.md
   - Guides:
     - Changing colors: guides/changing-colors.md
     - Changing the fonts: guides/changing-the-fonts.md
@@ -161,7 +162,7 @@ nav:
     - Upgrading to 5.x: releases/5.md
     - Upgrading to 4.x: releases/4.md
     - Changelog: releases/changelog.md
-  # - Data privacy: data-privacy.md
+
   # - Contributing: contributing.md
   # - License: license.md
 
