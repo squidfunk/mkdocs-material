@@ -16,7 +16,7 @@ fit your brand identity by using [CSS variables][2].
 
 ### Color scheme
 
-> Default: `default`
+[:octicons-file-code-24: Source][3] · :octicons-tools-24: Default: `default`
 
 Material for MkDocs supports two _color schemes_: a light mode, which is just
 called `default`, and a dark mode, which is called `slate`. The color scheme
@@ -71,9 +71,11 @@ theme:
     scheme: preference
 ```
 
+  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/palette/_scheme.scss
+
 ### Primary color
 
-> Default: `indigo`
+[:octicons-file-code-24: Source][4] · :octicons-tools-24: Default: `indigo`
 
 The _primary color_ is used for the header, the sidebar, text links and several
 other components. In order to change the primary color, set the following value
@@ -137,9 +139,11 @@ color:
   })
 </script>
 
+  [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/palette/_primary.scss
+
 ### Accent color
 
-> Default: `indigo`
+[:octicons-file-code-24: Source][5] · :octicons-tools-24: Default: `indigo`
 
 The _accent color_ is used to denote elements that can be interacted with, e.g.
 hovered links, buttons and scrollbars. It can be changed in `mkdocs.yml` by
@@ -197,11 +201,13 @@ color:
   })
 </script>
 
+  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/palette/_accent.scss
+
 ## Customization
 
-Material for MkDocs implements colors using [CSS variables][3] (custom
+Material for MkDocs implements colors using [CSS variables][6] (custom
 properties). If you want to customize the colors beyond the palette (e.g. to
-use your brand-specific colors), you can add an [additional stylesheet][4] and
+use your brand-specific colors), you can add an [additional stylesheet][7] and
 tweak the following CSS variables:
 
 ``` css
@@ -232,7 +238,7 @@ tweak the following CSS variables:
 }
 ```
 
-The colors of [code blocks][5], [admonitions][6], text links and the footer can
+The colors of [code blocks][8], [admonitions][9], text links and the footer can
 be adjusted through dedicated CSS variables, which partly default to the base
 colors or neutral colors:
 
@@ -260,8 +266,10 @@ colors or neutral colors:
 }
 ```
 
-  [3]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
-  [4]: ../getting-started/customization.md#additional-stylesheets
+  [6]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+  [7]: ../getting-started/customization.md#additional-stylesheets
+  [8]: ../extensions/codehilite.md
+  [9]: ../extensions/admonition.md
 
 ## Caveats
 
