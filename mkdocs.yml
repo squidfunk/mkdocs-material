@@ -129,19 +129,22 @@ nav:
   - Home: index.md
   - Getting started:
     - Installation: getting-started.md
-    - Creating your site: creating-your-site.md
-    - Publishing your site: publishing-your-site.md
+    - Creating your site: getting-started/creating-your-site.md
+    - Publishing your site: getting-started/publishing-your-site.md
+    - Customization: getting-started/customization.md
+    - Troubleshooting: getting-started/troubleshooting.md
   - Guides:
     - Changing colors: guides/changing-colors.md
     - Changing the fonts: guides/changing-the-fonts.md
     - Changing the language: guides/changing-the-language.md
     - Navigation structure: guides/navigation-structure.md
     - Syntax highlighting: guides/syntax-highlighting.md
-    - Third-party integrations: guides/third-party-integrations.md
     - Adding a landing page: guides/adding-a-landing-page.md
     - Adding an announcement bar: guides/adding-an-announcement-bar.md
     - Adding icons and emojis: guides/adding-icons-and-emojis.md
     - Adding footer links: guides/adding-footer-links.md
+    - Adding site analytics: guides/adding-site-analytics.md
+    - Adding a comment systems: guides/adding-a-comment-system.md
   - Extensions:
     - Admonition: extensions/admonition.md
     - CodeHilite: extensions/codehilite.md

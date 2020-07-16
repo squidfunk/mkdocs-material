@@ -5,13 +5,16 @@ template: overrides/main.html
 # Getting started
 
 Material for MkDocs is a theme for [MkDocs][1], a static site generator geared
-towards technical documentation. If you're familar with Python, you can install
-Material for MkDocs with [`pip`][2], the Python package manager. If not, we
-recommended using [`docker`][3].
+towards (technical) project documentation. If you're familar with Python, you
+can install Material for MkDocs with [`pip`][2], the Python package manager.
+If not, we recommended using [`docker`][3].
+
+In case you're running into problems, consult the [troubleshooting][4] section.
 
   [1]: https://www.mkdocs.org
   [2]: #with-pip
   [3]: #with-docker
+  [4]: getting-started/troubleshooting.md
 
 ## Installation
 
@@ -24,16 +27,13 @@ pip install mkdocs-material
 ```
 
 This will automatically install compatible versions of all dependencies:
-[MkDocs][1], [Markdown][4], [Pygments][5] and [PyMdown Extensions][6]. Material
+[MkDocs][1], [Markdown][5], [Pygments][6] and [PyMdown Extensions][7]. Material
 for MkDocs always strives to support the latest versions, so there's no need to
 install those packages separately.
 
-If you're running into problems, read the section on [virtual environments][7].
-
-  [4]: https://python-markdown.github.io/
-  [5]: https://pygments.org/
-  [6]: https://facelessuser.github.io/pymdown-extensions/
-  [7]: #virtual-environments
+  [5]: https://python-markdown.github.io/
+  [6]: https://pygments.org/
+  [7]: https://facelessuser.github.io/pymdown-extensions/
 
 ### with docker
 
@@ -69,54 +69,3 @@ pip install -r mkdocs-material/requirements.txt
 ```
 
   [9]: https://github.com/squidfunk/mkdocs-material
-
-## Virtual environments
-
-If you're installing Material for MkDocs with `pip`, the easiest way to make
-sure that you end up with the correct versions and without any incompatibility
-problems between packages it to use a [virtual environment][9]. First, ensure
-that you have a Python version of 3 or higher installed:
-
-``` sh
-python --version
-```
-
-If you're good to go, create and activate a virtual environment with:
-
-```
-python -m venv venv
-source ./venv/bin/activate
-```
-
-Note that the second `venv` is the name of the folder where to create the
-virtual environment – you may choose it as you like. Your terminal should now
-print `(venv)` before the prompt and the `python` executable should be located
-inside the folder you just created:
-
-``` sh
-which python
-```
-
-Next, install Material for MkDocs with `pip`, which will download and install
-all packages in the `venv` folder you just created, including MkDocs and its 
-dependencies:
-
-``` sh
-pip install mkdocs-material
-```
-
-Verify that MkDocs and Material for MkDocs were both installed correctly:
-
-``` sh
-mkdocs --version
-mkdocs serve --help
-```
-
-MkDocs should list `material` as an option under the `--theme` flag. When you're 
-finished working with MkDocs, you can exit the virtual environment with:
-
-```
-deactivate
-```
-
-  [9]: https://docs.python.org/3/tutorial/venv.html

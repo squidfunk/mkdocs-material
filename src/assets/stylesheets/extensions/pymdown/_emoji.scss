@@ -32,6 +32,7 @@
   img.twemoji,
   img.gemoji {
     width: px2em(18px);
+    max-height: 100%;
     vertical-align: -15%;
   }
 
@@ -44,6 +45,7 @@
     // Icon
     svg {
       width: px2em(18px);
+      max-height: 100%;
       fill: currentColor;
     }
   }
