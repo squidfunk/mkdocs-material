@@ -280,4 +280,3 @@ colors or neutral colors:
   [7]: ../customization.md#additional-stylesheets
   [8]: ../extensions/codehilite.md
   [9]: ../extensions/admonition.md
-

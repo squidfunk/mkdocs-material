@@ -72,7 +72,7 @@ parts of a theme without forking and changing the main theme.
 
 ### Setup and theme structure
 
-Reference the Material theme as usual in `mkdocs.yml`, and create a new folder
+Reference the original theme as usual in `mkdocs.yml`, and create a new folder
 for `overrides` which you reference using `custom_dir`:
 
 ``` yaml

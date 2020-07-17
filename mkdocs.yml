@@ -90,8 +90,6 @@ extra:
 markdown_extensions:
   - markdown.extensions.admonition
   - markdown.extensions.attr_list
-  - markdown.extensions.codehilite:
-      guess_lang: false
   - markdown.extensions.def_list
   - markdown.extensions.footnotes
   - markdown.extensions.meta
@@ -106,7 +104,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  # - pymdownx.highlight:
+  - pymdownx.highlight:
+      use_pygments: true
   #     linenums_style: pymdownx-inline
   - pymdownx.inlinehilite
   - pymdownx.keys
@@ -140,12 +139,13 @@ nav:
     - Changing the language: guides/changing-the-language.md
     - Navigation: guides/navigation.md
     - Syntax highlighting: guides/syntax-highlighting.md
-    - Adding a landing page: guides/adding-a-landing-page.md
+    - Adding a git repository: guides/adding-a-git-repository.md
     - Adding an announcement bar: guides/adding-an-announcement-bar.md
     - Adding icons and emojis: guides/adding-icons-and-emojis.md
     - Adding footer links: guides/adding-footer-links.md
     - Adding site analytics: guides/adding-site-analytics.md
     - Adding a comment system: guides/adding-a-comment-system.md
+    - Adding a landing page: guides/adding-a-landing-page.md
   - Extensions:
     - Admonition: extensions/admonition.md
     - CodeHilite: extensions/codehilite.md

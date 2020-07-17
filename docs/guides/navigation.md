@@ -125,7 +125,7 @@ customize its appearance:
 :   This option allows for customization of the slug function. For some
     languages, the standard slug function may not produce good and readable
     identifiers. Consider using another slug function like for example those
-    from [PyMdown Extensions][8]:
+    from [Python Markdown Extensions][8]:
 
     === "Unicode"
 
@@ -173,3 +173,13 @@ this extension, so they may yield weird results. Use them at your own risk._
   [6]: https://python-markdown.github.io/extensions/toc/
   [7]: https://python-markdown.github.io/extensions/toc/#usage
   [8]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
+
+## Customization
+
+All navigational elements are defined as partials and can be overridden through
+[theme extension][9] by [overriding partials][10] or [blocks][11], i.e.
+`site_nav` which contains both sidebars, `tabs` and `footer`.
+
+  [9]: ../customization.md#extending-the-theme
+  [10]: ../customization.md#overriding-partials
+  [11]: ../customization.md#overriding-blocks

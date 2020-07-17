@@ -172,4 +172,4 @@ theme:
   language: en-custom
 ```
 
-  [6]: ../customization.md#setup-and-theme-structure
+  [6]: ../customization.md#extending-the-theme
