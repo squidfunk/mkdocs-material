@@ -61,6 +61,7 @@ import {
 interface State {
   url: URL                             /* State URL */
   offset?: ViewportOffset              /* State viewport offset */
+  op: string                           /* Current operation (push or pop) */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -137,7 +138,7 @@ export function setupInstantLoading(
         }
         return NEVER
       }),
-      map(el => ({ url: new URL(el.href) })),
+      map(el => ({ url: new URL(el.href), op: "push" })),
       share<State>()
     )
 
@@ -159,13 +160,15 @@ export function setupInstantLoading(
       filter(ev => ev.state !== null),
       map(ev => ({
         url: new URL(location.href),
-        offset: ev.state
+        offset: ev.state,
+        op: "pop"
       })),
       share<State>()
     )
 
   /* Emit location change */
-  merge(push$, pop$)
+  const locationChange$ = merge(push$, pop$)
+  locationChange$
     .pipe(
       distinctUntilChanged((prev, next) => prev.url.href === next.url.href),
       pluck("url")
@@ -191,20 +194,17 @@ export function setupInstantLoading(
       )
     )
 
-  /* Set new location as soon as the document was fetched */
-  push$
-    .pipe(
-      sample(ajax$)
-    )
-      .subscribe(({ url }) => {
-        history.pushState({}, "", url.toString())
-      })
-
   /* Parse and emit document */
   const dom = new DOMParser()
   ajax$
     .pipe(
-      map(({ response }) => dom.parseFromString(response, "text/html"))
+      withLatestFrom(locationChange$),
+      map(([req, state]) => {
+        if (state.op === "push") {
+          history.pushState({}, "", state.url.toString())
+        }
+        return dom.parseFromString(req.response, "text/html")
+      })
     )
       .subscribe(document$)
 
