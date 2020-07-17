@@ -28,11 +28,11 @@ contents:
     ``` yaml
     name: ci
     on:
-      - push
-      - pull_request
+      push:
+        branches:
+          - master
     jobs:
       deploy:
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v2
