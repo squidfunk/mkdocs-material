@@ -374,18 +374,13 @@ kbd {
 
   // Definition lists
   dd {
-    margin: 1em 0 1em px2em(30px, 16px);
+    margin: 1em 0 1.5em px2em(30px, 16px);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       margin-right: px2em(30px, 16px);
       margin-left: initial;
     }
-  }
-
-  // Definition terms
-  dd + dt {
-    margin-top: 1.5em;
   }
 
   // Limit width to container, scale height proportionally
