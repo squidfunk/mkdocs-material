@@ -150,3 +150,26 @@ directionality:
 </script>
 
   [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L168
+
+## Customization
+
+If you want to customize some (or all) of the translations for your language,
+you may follow the guide on [theme extension][6] and create a new partial in
+`partials/language`, e.g. `en-custom.html`. Next, look up the translation you
+want to change in the [base translation][1] and add it to the partial you just
+created. Say, you want to change "__Table of contents__" to "__On this page__":
+
+``` jinja
+{% macro t(key) %}{{ {
+  "toc.title": "On this page"
+}[key] }}{% endmacro %}
+```
+
+Then, add the following lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  language: en-custom
+```
+
+  [6]: ../customization.md#setup-and-theme-structure

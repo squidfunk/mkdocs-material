@@ -93,13 +93,13 @@ used to render these pages.
 
 [:octicons-file-code-24: Source][5] · [:octicons-workflow-24: Extension][6]
 
-The [Table of Contents][7] extension, which is part of the standard Markdown
+The [table of contents][7] extension, which is part of the standard Markdown
 library, provides some options that are supported by Material for MkDocs to
-customize its appearance.
+customize its appearance:
 
 `permalink`
 
-:   This options adds an anchor link containing the paragraph symbol `¶` or
+:   This option adds an anchor link containing the paragraph symbol `¶` or
     another custom symbol at the end of each headline, exactly like on the page
     you're currently viewing, which Material for MkDocs will make appear on
     hover:
@@ -120,14 +120,6 @@ customize its appearance.
               permalink: ⚓︎
         ```
 
-    === "Link"
-
-        ``` yaml
-        markdown_extensions:
-          - toc:
-              permalink: Link
-        ```
-
 `slugify`
 
 :   This option allows for customization of the slug function. For some
@@ -143,7 +135,7 @@ customize its appearance.
               slugify: pymdownx.slugs.uslugify
         ```
 
-    === "Casing"
+    === "Unicode, case-sensitive"
 
         ``` yaml
         markdown_extensions:

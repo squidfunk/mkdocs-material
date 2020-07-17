@@ -64,9 +64,9 @@ theme:
 
 This will prevent typefaces from being loaded from Google Fonts. As a fallback,
 common system fonts will be used automatically. Additionally, if you want to
-load a font from another destination, you can either [override the `fonts`
-block][6] with a `style` tag, or use an [additional stylesheet][7] to add the
-necessary `@font-face` definition:
+load a font from another destination, you may either follow the guide on [theme
+extension][6] and [override the `fonts` block][7] with a `style` tag, or use an
+[additional stylesheet][8] to add the necessary `@font-face` definition:
 
 ``` css
 @font-face {
@@ -94,5 +94,6 @@ The font can then be configured to be used as the regular or proportional font:
     ```
 
   [5]: ../data-privacy.md
-  [6]: ../customization.md#overriding-blocks
-  [7]: ../customization.md#additional-stylesheets
+  [6]: ../customization.md#setup-and-theme-structure
+  [7]: ../customization.md#overriding-blocks
+  [8]: ../customization.md#additional-stylesheets
