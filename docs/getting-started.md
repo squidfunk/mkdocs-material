@@ -14,7 +14,7 @@ In case you're running into problems, consult the [troubleshooting][4] section.
   [1]: https://www.mkdocs.org
   [2]: #with-pip
   [3]: #with-docker
-  [4]: getting-started/troubleshooting.md
+  [4]: troubleshooting.md
 
 ## Installation
 

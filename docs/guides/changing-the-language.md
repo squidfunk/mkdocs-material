@@ -5,9 +5,8 @@ template: overrides/main.html
 # Changing the language
 
 Material for MkDocs supports internationalization (i18n) and provides
-translation keys for all template variables and labels in 40+ languages.
-Additionally, search can be configured to use a language-specific stemmer
-(if available).
+translations for template variables and labels in 40+ languages. Additionally,
+search can be configured to use a language-specific stemmer (if available).
 
 ## Configuration
 
@@ -89,9 +88,23 @@ The following languages are supported:
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/language/en.html
 
-### Directionality
+### Site search
 
 [:octicons-file-code-24: Source][2] · :octicons-tools-24: Default: best match
+for `theme.language`, automatically set
+
+Some languages, like Arabic or Japanese, need dedicated stemmers for search to
+work properly. Material for MkDocs relies on [lunr-languages][3] to provide this 
+functionality. See the [search plugin documentation][4] for more information.
+
+  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/main/index.ts#L49-L69
+  [3]: https://github.com/MihaiValentin/lunr-languages
+  [4]: ../plugins/search.md#language
+
+
+### Directionality
+
+[:octicons-file-code-24: Source][5] · :octicons-tools-24: Default: best match
 for `theme.language`, automatically set
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
@@ -127,17 +140,13 @@ directionality:
 <script>
   var buttons = document.querySelectorAll("button[data-md-dir]")
   buttons.forEach(function(button) {
-    var attr = "data-md-dir"
     button.addEventListener("click", function() {
+      var attr = this.getAttribute("data-md-dir")
+      document.body.dir = attr
       var name = document.querySelector("#__code_1 code span:nth-child(5)")
-      document.body.dir = this.getAttribute(attr)
-      name.textContent = this.getAttribute(attr)
+      name.textContent = attr
     })
   })
 </script>
 
-  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L180
-
-### Search
-
-TBD
+  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L168

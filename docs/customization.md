@@ -135,7 +135,7 @@ theme. This can be done with any file.
 ### Overriding blocks
 
 Besides overriding partials, it's also possible to override (and extend) so
-called *blocks*, which are defined inside the templates and wrap specific
+called _blocks_, which are defined inside the templates and wrap specific
 features. To override a block, create a `main.html` inside the `overrides`
 directory and define the block, e.g.:
 
@@ -152,11 +152,11 @@ Material for MkDocs provides the following template blocks:
 | Block name   | Wrapped contents                                |
 | ------------ | ----------------------------------------------- |
 | `analytics`  | Wraps the Google Analytics integration          |
-| `announce`   | Wraps the Announcement bar                      |
+| `announce`   | Wraps the announcement bar                      |
 | `config`     | Wraps the JavaScript application config         |
 | `content`    | Wraps the main content                          |
-| `disqus`     | Wraps the disqus integration                    |
-| `extrahead`  | Empty block to define additional meta tags      |
+| `disqus`     | Wraps the Disqus integration                    |
+| `extrahead`  | Empty block to add custom meta tags             |
 | `fonts`      | Wraps the font definitions                      |
 | `footer`     | Wraps the footer with navigation and copyright  |
 | `header`     | Wraps the fixed header bar                      |
@@ -230,7 +230,7 @@ in front of you.
 
   [10]: http://localhost:8000
 
-### Build process
+### Building the theme
 
 When you're finished making your changes, you can build the theme by invoking:
 

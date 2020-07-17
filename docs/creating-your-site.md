@@ -34,7 +34,7 @@ This will create the following structure:
 └─ mkdocs.yml
 ```
 
-  [1]: ../getting-started.md
+  [1]: getting-started.md
 
 ## Configuration
 
@@ -66,7 +66,7 @@ icons and much more:
 * [Changing colors][3]
 * [Changing the fonts][4]
 * [Changing the language][5]
-* [Navigation structure][6]
+* [Navigation][6]
 * [Syntax highlighting][7]
 * [Adding a landing page][8]
 * [Adding an announcement bar][9]
@@ -75,18 +75,18 @@ icons and much more:
 * [Adding site analytics][12]
 * [Adding a comment system][13]
 
-  [2]: ../getting-started.md#installation
-  [3]: ../guides/changing-colors.md
-  [4]: ../guides/changing-the-fonts.md
-  [5]: ../guides/changing-the-language.md
-  [6]: ../guides/navigation-structure.md
-  [7]: ../guides/syntax-highlighting.md
-  [8]: ../guides/adding-a-landing-page.md
-  [9]: ../guides/adding-an-announcement-bar.md
-  [10]: ../guides/adding-icons-and-emojis.md
-  [11]: ../guides/adding-footer-links.md
-  [12]: ../guides/adding-site-analytics.md
-  [13]: ../guides/adding-a-comment-system.md
+  [2]: getting-started.md#installation
+  [3]: guides/changing-colors.md
+  [4]: guides/changing-the-fonts.md
+  [5]: guides/changing-the-language.md
+  [6]: guides/navigation.md
+  [7]: guides/syntax-highlighting.md
+  [8]: guides/adding-a-landing-page.md
+  [9]: guides/adding-an-announcement-bar.md
+  [10]: guides/adding-icons-and-emojis.md
+  [11]: guides/adding-footer-links.md
+  [12]: guides/adding-site-analytics.md
+  [13]: guides/adding-a-comment-system.md
 
 ## Previewing as you write
 
@@ -117,7 +117,7 @@ Point your browser to [localhost:8000][14] and you should see:
 [![Creating your site][15]][14]
 
   [14]: http://localhost:8000
-  [15]: ../assets/guides/creating-your-site.png
+  [15]: assets/guides/creating-your-site.png
 
 ## Building your site
 

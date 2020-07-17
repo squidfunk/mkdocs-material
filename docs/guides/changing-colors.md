@@ -6,7 +6,7 @@ template: overrides/main.html
 
 As any good Material Design implementation, Material for MkDocs supports
 Google's original [color palette][1], which can be easily configured through 
-`mkdocs.yml`. Furthermore, colors can be adjusted with a few lines of CSS to
+`mkdocs.yml`. Furthermore, colors can be customized with a few lines of CSS to
 fit your brand identity by using [CSS variables][2].
 
   [1]: http://www.materialui.co/colors
@@ -52,11 +52,11 @@ scheme:
 <script>
   var buttons = document.querySelectorAll("button[data-md-color-scheme]")
   buttons.forEach(function(button) {
-    var attr = "data-md-color-scheme"
     button.addEventListener("click", function() {
+      var attr = this.getAttribute("data-md-color-scheme")
+      document.body.setAttribute("data-md-color-scheme", attr)
       var name = document.querySelector("#__code_0 code span:nth-child(7)")
-      document.body.setAttribute(attr, this.getAttribute(attr))
-      name.textContent = this.getAttribute(attr)
+      name.textContent = attr
     })
   })
 </script>
@@ -130,11 +130,11 @@ color:
 <script>
   var buttons = document.querySelectorAll("button[data-md-color-primary]")
   buttons.forEach(function(button) {
-    var attr = "data-md-color-primary"
     button.addEventListener("click", function() {
+      var attr = this.getAttribute("data-md-color-primary")
+      document.body.setAttribute("data-md-color-primary", attr)
       var name = document.querySelector("#__code_2 code span:nth-child(7)")
-      document.body.setAttribute(attr, this.getAttribute(attr))
-      name.textContent = this.getAttribute(attr)
+      name.textContent = attr.replace("-", " ")
     })
   })
 </script>
@@ -192,16 +192,26 @@ color:
 <script>
   var buttons = document.querySelectorAll("button[data-md-color-accent]")
   buttons.forEach(function(button) {
-    var attr = "data-md-color-accent"
     button.addEventListener("click", function() {
+      var attr = this.getAttribute("data-md-color-accent")
+      document.body.setAttribute("data-md-color-accent", attr)
       var name = document.querySelector("#__code_3 code span:nth-child(7)")
-      document.body.setAttribute(attr, this.getAttribute(attr))
-      name.textContent = this.getAttribute(attr)
+      name.textContent = attr.replace("-", " ")
     })
   })
 </script>
 
   [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/palette/_accent.scss
+
+---
+
+!!! warning "Accessibility – not all color combinations work well"
+
+    With __2__ (color schemes) __x 21__ (primary colors) __x 17__ (accent color)
+    = __714__ combinations, it's impossible to ensure that all configurations
+    provide a good user experience (e.g. _yellow on light background_), so make
+    sure that the color combination of your choosing provides enough contrast
+    and tweak CSS variables where necessary.
 
 ## Customization
 
@@ -267,16 +277,7 @@ colors or neutral colors:
 ```
 
   [6]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
-  [7]: ../getting-started/customization.md#additional-stylesheets
+  [7]: ../customization.md#additional-stylesheets
   [8]: ../extensions/codehilite.md
   [9]: ../extensions/admonition.md
 
-## Caveats
-
-!!! warning "Accessibility – not all color combinations work well"
-
-    With __2__ (color schemes) __x 21__ (primary colors) __x 17__ (accent color)
-    = __714__ combinations, it's impossible to ensure that all configurations
-    provide a good user experience (e.g. _yellow on light background_), so make
-    sure that the color combination of your choosing provides enough contrast
-    and tweak CSS variables where necessary.

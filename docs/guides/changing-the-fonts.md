@@ -27,7 +27,7 @@ theme:
     text: Roboto
 ```
 
-The typeface will be loaded in 300, 400, *400i* and **700**.
+The typeface will be loaded in 300, 400, _400i_ and __700__.
 
   [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L120-L139
   [3]: https://fonts.google.com/specimen/Roboto
@@ -93,6 +93,6 @@ The font can then be configured to be used as the regular or proportional font:
     }
     ```
 
-  [5]: ../getting-started/data-privacy.md
-  [6]: ../getting-started/customization.md#overriding-blocks
-  [7]: ../getting-started/customization.md#additional-stylesheets
+  [5]: ../data-privacy.md
+  [6]: ../customization.md#overriding-blocks
+  [7]: ../customization.md#additional-stylesheets

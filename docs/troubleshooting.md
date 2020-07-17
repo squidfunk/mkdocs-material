@@ -21,14 +21,14 @@ When you're running the pre-installed version of Python on macOS, `pip` tries
 to install packages in a folder for which your user might not have the adequate
 permissions. There are three possible solutions for this:
 
-1. **Installing in a virtual environment**: Virtual environments provide an easy
+1. __Installing in a virtual environment__: Virtual environments provide an easy
    way of encapsulation. 
 
-1. **Installing in user space**: Provide the `--user` flag to the install
+2. __Installing in user space__: Provide the `--user` flag to the install
    command and `pip` will install the package in a user-site location. Note
    that while this is not a global installation, it's still not
 
-2. **Switching to a homebrewed Python**: Upgrade your Python installation to a
+3. __Switching to a homebrewed Python__: Upgrade your Python installation to a
    self-contained solution by installing Python with Homebrew. This should
    eliminate a lot of problems you could be having with `pip`.
 

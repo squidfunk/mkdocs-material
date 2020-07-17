@@ -383,6 +383,11 @@ kbd {
     }
   }
 
+  // Definition terms
+  dd + dt {
+    margin-top: 1.5em;
+  }
+
   // Limit width to container, scale height proportionally
   img,
   svg {

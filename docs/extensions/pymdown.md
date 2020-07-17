@@ -57,7 +57,7 @@ extra_javascript:
 ```
 
 If you want to override the default MathJax configuration, you can do this by
-adding another JavaScript file **before** the MathJax runtime which contains
+adding another JavaScript file __before__ the MathJax runtime which contains
 the MathJax configuration, e.g.:
 
 ``` js
@@ -130,7 +130,7 @@ Lorem ipsum dolor sit amet: $p(x|y) = \frac{p(y|x)p(x)}{p(y)}$
 
 ### BetterEm
 
-[BetterEm][6] improves the handling of emphasis markup (**bold** and *italic*)
+[BetterEm][6] improves the handling of emphasis markup (__bold__ and _italic_)
 within Markdown by providing a more sophisticated parser for better detecting
 start and end tokens. Read the documentation for [usage notes][7].
 
