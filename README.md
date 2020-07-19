@@ -124,7 +124,7 @@ For other installation methods, configuration options, and a demo, visit
   [ING](https://ing-bank.github.io/baker/),
   [Lyft](https://lyft.github.io/amundsen/),
   [Netflix](https://netflix.github.io/titus/),
-  [Uber](https://uber.github.io/ludwig/getting_started/),
+  [Uber](https://ludwig-ai.github.io/ludwig-docs/getting_started/),
   [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
   [SAP](https://sap.github.io/ui5-tooling/),
   [SoundCloud](https://intervene.dev/),
