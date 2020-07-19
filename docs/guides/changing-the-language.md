@@ -35,7 +35,7 @@ The following languages are supported:
                    break-inside: avoid;
   }
 </style>
-<ul class="md-language-list">
+<ul class="tx-columns">
   <li><code>af</code> / Afrikaans</li>
   <li><code>ar</code> / Arabic</li>
   <li><code>bn</code> / Bengali (Bangla)</li>
@@ -88,10 +88,10 @@ The following languages are supported:
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/language/en.html
 
-### Site search
+### Site search language
 
-[:octicons-file-code-24: Source][2] · :octicons-tools-24: Default: best match
-for `theme.language`, automatically set
+[:octicons-file-code-24: Source][2] · :octicons-tools-24: Default: automatically
+set
 
 Some languages, like Arabic or Japanese, need dedicated stemmers for search to
 work properly. Material for MkDocs relies on [lunr-languages][3] to provide this 
@@ -104,8 +104,8 @@ functionality. See the [search plugin documentation][4] for more information.
 
 ### Directionality
 
-[:octicons-file-code-24: Source][5] · :octicons-tools-24: Default: best match
-for `theme.language`, automatically set
+[:octicons-file-code-24: Source][5] · :octicons-tools-24: Default: automatically
+set
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
 supports `rtl` (right-to-left) directionality which is inferred from the
@@ -119,23 +119,10 @@ theme:
 :material-cursor-default-click-outline: click on a tile to change the
 directionality:
 
-<style>
-  .md-typeset button[data-md-dir] {
-    cursor: pointer;
-    transition: opacity 250ms;
-  }
-  .md-typeset button[data-md-dir]:hover {
-    opacity: 0.75;
-  }
-  .md-typeset button[data-md-dir] > code {
-    display: block;
-    color: var(--md-primary-bg-color);
-    background-color: var(--md-primary-fg-color);
-  }
-</style>
-
-<button data-md-dir="ltr"><code>ltr</code></button>
-<button data-md-dir="rtl"><code>rtl</code></button>
+<div class="tx-switch">
+  <button data-md-dir="ltr"><code>ltr</code></button>
+  <button data-md-dir="rtl"><code>rtl</code></button>
+</div>
 
 <script>
   var buttons = document.querySelectorAll("button[data-md-dir]")

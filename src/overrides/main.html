@@ -51,30 +51,16 @@
   <meta name="twitter:title" content="{{ title }}" />
   <meta name="twitter:description" content="{{ config.site_description }}" />
   <meta name="twitter:image" content="{{ image }}" />
+
+  <!-- Extra stylesheets -->
+  <link
+    rel="stylesheet"
+    href="{{ 'assets/stylesheets/overrides.css' | url }}"
+  />
 {% endblock %}
 
 <!-- Announcement bar -->
 {% block announce %}
-  <style>
-
-    /* Preserve link color */
-    .md-announce a,
-    .md-announce a:focus,
-    .md-announce a:hover {
-      color: currentColor;
-    }
-
-    /* Don't wrap name of blog article */
-    .md-announce strong {
-      white-space: nowrap;
-    }
-
-    /* Twitter icon */
-    .md-announce .twitter {
-      margin-left: .2em;
-      color: #00acee;
-    }
-  </style>
   <a href="https://twitter.com/squidfunk">
     For updates follow <strong>@squidfunk</strong> on
     <span class="twemoji twitter">

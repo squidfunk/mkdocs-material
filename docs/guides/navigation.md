@@ -12,8 +12,9 @@ behavior of navigational elements, some of those through _feature flags_.
 
 ### Instant loading
 
-[:octicons-file-code-24: Source][1] · :octicons-beaker-24: Experimental · 
-:octicons-unlock-24: Feature flag
+[:octicons-file-code-24: Source][1] · 
+:octicons-unlock-24: Feature flag · 
+:octicons-beaker-24: Experimental
 
 When _instant loading_ is activated, clicks on all internal links will be
 intercepted and dispatched via [XHR][2] without fully reloading the page. It
@@ -62,12 +63,13 @@ sections. This is illustrated in the following example:
 
     ``` yaml
     nav:
-      - Tab 1
-      - Page 1.1
+      - Tab 1 + Page 1.1
+      - Page 1.2
       - Tab 2:
         - Page 2.1
         - Page 2.2
-      - Page 1.2
+        - Page 2.3
+      - Page 1.3
     ```
 
 === "Top-level sections"
@@ -77,9 +79,11 @@ sections. This is illustrated in the following example:
       - Tab 1:
         - Page 1.1
         - Page 1.2
+        - Page 1.3
       - Tab 2:
         - Page 2.1
         - Page 2.2
+        - Page 2.3
     ```
 
 Note that tabs are only shown for larger screens, so make sure that navigation
@@ -93,7 +97,7 @@ used to render these pages.
 
 [:octicons-file-code-24: Source][5] · [:octicons-workflow-24: Extension][6]
 
-The [table of contents][7] extension, which is part of the standard Markdown
+The [Table of Contents][7] extension, which is part of the standard Markdown
 library, provides some options that are supported by Material for MkDocs to
 customize its appearance:
 
@@ -167,7 +171,8 @@ customize its appearance:
         ```
 
 _Material for MkDocs doesn't provide official support for the other options of
-this extension, so they may yield weird results. Use them at your own risk._
+this extension, so they may be supported but can also yield weird results. Use
+them at your own risk._
 
   [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/toc.html
   [6]: https://python-markdown.github.io/extensions/toc/

@@ -77,7 +77,7 @@ extension][6] and [override the `fonts` block][7] with a `style` tag, or use an
 
 The font can then be configured to be used as the regular or proportional font:
 
-=== "Regular"
+=== "Regular font"
 
     ``` css
     body, input {
@@ -85,7 +85,7 @@ The font can then be configured to be used as the regular or proportional font:
     }
     ```
 
-=== "Proportional"
+=== "Proportional font"
 
     ``` css
     pre, code, kbd {

@@ -52,7 +52,7 @@ $admonitions: (
     $name: nth($names, 1);
     $icon: nth($props, 1);
 
-    // Inline icon through postcss in webpack
+    // Inline icon through PostCSS in Webpack
     --md-admonition-icon--#{$name}: svg-load("@mdi/svg/svg/#{$icon}.svg");
   }
 }
