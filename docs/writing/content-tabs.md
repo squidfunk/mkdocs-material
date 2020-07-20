@@ -130,7 +130,7 @@ blockquotes:
 _Example_:
 
 ``` markdown
-!!! note
+!!! example
 
     === "Unordered List"
 
@@ -167,7 +167,7 @@ _Example_:
 
 _Result_:
 
-!!! note
+!!! example
 
     === "Unordered List"
 
