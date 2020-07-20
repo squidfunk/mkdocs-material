@@ -211,7 +211,7 @@ def bubble_sort(items):
 
 _Result_:
 
-``` python linenums="1" hl_lines="2 3"
+``` python hl_lines="2 3"
 def bubble_sort(items):
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
@@ -223,7 +223,7 @@ def bubble_sort(items):
 
 When [InlineHilite][13] is enabled, inline code blocks can be highlighted by
 prefixing them with a shebang-like sequence, i.e. `#!`, directly followed by
-the language short name.
+the [language short name][12].
 
 _Example_:
 

@@ -35,7 +35,7 @@ intact in-between document switches.
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/instant/index.ts
   [2]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
-### Tabs navigation
+### Navigation tabs
 
 [:octicons-file-code-24: Source][3] · :octicons-unlock-24: Feature flag
 
@@ -97,7 +97,7 @@ used to render these pages.
 
 [:octicons-file-code-24: Source][5] · [:octicons-workflow-24: Extension][6]
 
-The [Table of Contents][7] extension, which is part of the standard Markdown
+The [Table of contents][7] extension, which is part of the standard Markdown
 library, provides some options that are supported by Material for MkDocs to
 customize its appearance:
 

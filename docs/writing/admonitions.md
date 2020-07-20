@@ -5,9 +5,9 @@ template: overrides/main.html
 # Admonitions
 
 Admonitions, also know as _call-outs_, are an excellent choice for including
-side content into your project documentation minimally interrupting the document
-flow. Material for MkDocs provides several types of admonitions and allows for
-the inclusion and nesting of arbitrary content.
+side content without significantly interrupting the document flow. Material for
+MkDocs provides several different types of admonitions and allows for the
+inclusion and nesting of arbitrary content.
 
 ## Configuration
 

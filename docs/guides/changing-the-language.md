@@ -83,7 +83,8 @@ The following languages are supported:
 
 Some languages, like Arabic or Japanese, need dedicated stemmers for search to
 work properly. Material for MkDocs relies on [lunr-languages][3] to provide this 
-functionality. See the [setting up site search][4] guide for more information.
+functionality. See the guide detailing how to [set up site search][4] for
+more information.
 
   [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/main/index.ts#L49-L69
   [3]: https://github.com/MihaiValentin/lunr-languages

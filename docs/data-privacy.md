@@ -32,7 +32,7 @@ the `fonts` block.
 
   [2]: guides/changing-the-fonts.md
   [3]: https://github.com/google/fonts/issues/1495
-  [4]: customization.md#overriding-template-blocks
+  [4]: customization.md#overriding-blocks
 
 ### Google Analytics and Disqus
 

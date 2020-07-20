@@ -129,11 +129,12 @@ nav:
     - Creating your site: creating-your-site.md
     - Publishing your site: publishing-your-site.md
     - Customization: customization.md
-    - Troubleshooting: troubleshooting.md
+    #- Troubleshooting: troubleshooting.md
     - Data privacy: data-privacy.md
   - Writing:
     - Admonitions: writing/admonitions.md
     - Code blocks: writing/code-blocks.md
+    - Content tabs: writing/content-tabs.md
     - Footnotes: writing/footnotes.md
   - Guides:
     - Changing colors: guides/changing-colors.md
