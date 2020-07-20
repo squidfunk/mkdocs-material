@@ -43,6 +43,7 @@
       margin-top: -1 * px2rem(48px + 12px + 16px);
       padding-top: px2rem(48px + 12px + 16px);
       pointer-events: none;
+      scroll-margin-top: initial;
     }
   }
 
@@ -54,6 +55,11 @@
       display: none;
       height: 0;
       content: "";
+    }
+
+    // Reset, as we use the anchor-correction hack here.
+    &:target {
+      scroll-margin-top: initial;
     }
 
     // Targeted anchor
