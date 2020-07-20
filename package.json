@@ -40,7 +40,7 @@
     "rxjs": "^7.0.0-beta.2"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.1",
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "@mdi/svg": "^5.3.45",
     "@primer/octicons": "^10.0.0",
     "@types/clipboard": "^2.0.1",
