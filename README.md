@@ -121,12 +121,12 @@ For other installation methods, configuration options, and a demo, visit
 
 * **Companies** — 
   [AWS](https://awssecworkshops.com/),
-  [Datadog](https://datadoghq.dev/integrations-core/)
+  [Datadog](https://datadoghq.dev/integrations-core/),
   [ING](https://ing-bank.github.io/baker/),
   [Lyft](https://lyft.github.io/amundsen/),
   [Netflix](https://netflix.github.io/titus/),
-  [SAP](https://sap.github.io/ui5-tooling/),
   [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
+  [SAP](https://sap.github.io/ui5-tooling/),
   [SoundCloud](https://intervene.dev/),
   [Spotify](https://spotify.github.io/mkdocs-monorepo-plugin/),
   [Square](https://square.github.io/okhttp/),
