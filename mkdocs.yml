@@ -131,12 +131,14 @@ nav:
     - Customization: customization.md
     - Troubleshooting: troubleshooting.md
     - Data privacy: data-privacy.md
+  - Writing:
+    - Code blocks: writing/code-blocks.md
   - Guides:
     - Changing colors: guides/changing-colors.md
     - Changing the fonts: guides/changing-the-fonts.md
     - Changing the language: guides/changing-the-language.md
-    - Navigation: guides/navigation.md
-    - Syntax highlighting: guides/syntax-highlighting.md
+    - Setting up navigation: guides/setting-up-navigation.md
+    - Setting up site search: guides/setting-up-site-search.md
     - Adding a git repository: guides/adding-a-git-repository.md
     - Adding icons and emojis: guides/adding-icons-and-emojis.md
     - Adding footer links: guides/adding-footer-links.md
@@ -144,16 +146,6 @@ nav:
     - Adding a comment system: guides/adding-a-comment-system.md
     - Adding an announcement bar: guides/adding-an-announcement-bar.md
     - Adding a landing page: guides/adding-a-landing-page.md
-  - Extensions:
-    - Admonition: extensions/admonition.md
-    - Footnotes: extensions/footnotes.md
-    - Metadata: extensions/metadata.md
-    - PyMdown: extensions/pymdown.md
-  - Plugins:
-    - Search: plugins/search.md
-    - Minification: plugins/minification.md
-    - Revision date: plugins/revision-date.md
-    - Awesome pages: plugins/awesome-pages.md
   - Releases:
     - Upgrading to 5.x: releases/5.md
     - Upgrading to 4.x: releases/4.md

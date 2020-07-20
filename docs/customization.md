@@ -101,7 +101,7 @@ The directory layout of the theme is as follows:
 │  ├─ javascripts/                     # JavaScript
 │  └─ stylesheets/                     # Stylesheets
 ├─ partials/
-│  ├─ integrations/                    # 3rd-party integrations
+│  ├─ integrations/                    # Third-party integrations
 │  ├─ language/                        # Localized languages
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar

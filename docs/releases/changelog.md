@@ -30,7 +30,7 @@ pip show mkdocs-material
 
 ### 5.3.2 <small>_ June 21, 2020</small>
 
-* Improved search type-ahead experience with non-Latin characters
+* Improved search typeahead experience with non-Latin characters
 * Fixed #1753: Japanese search doesn't work anymore
 
 ### 5.3.1 <small>_ June 20, 2020</small>

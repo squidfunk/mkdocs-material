@@ -15,7 +15,8 @@ should be used.
 
 ### Regular font
 
-[:octicons-file-code-24: Source][2] · :octicons-tools-24: Default: [`Roboto`][3]
+[:octicons-file-code-24: Source][2] ·
+:octicons-milestone-24: Default: [`Roboto`][3]
 
 The _regular font_ is used for all body copy, headlines, and essentially
 everything that does not need to be proportionally spaced. It can be set to any
@@ -34,8 +35,8 @@ The typeface will be loaded in 300, 400, _400i_ and __700__.
 
 ### Proportional font
 
-[:octicons-file-code-24: Source][2] · :octicons-tools-24: Default:
-[`Roboto Mono`][4]
+[:octicons-file-code-24: Source][2] ·
+:octicons-milestone-24: Default: [`Roboto Mono`][4]
 
 The _proportional font_ is used for code blocks and can be configured separately.
 Just like the regular font, it can be set to any valid [Google Font][1] from
@@ -52,6 +53,9 @@ The typeface will be loaded in 400.
   [4]: https://fonts.google.com/specimen/Roboto+Mono
 
 ## Customization
+
+[:octicons-file-code-24: Source][2] ·
+:octicons-mortar-board-24: Difficulty: easy
 
 If you want to load fonts from other destinations or don't want to use Google
 Fonts for [data privacy][5] reasons, e.g. _due to GDPR_, add the following lines

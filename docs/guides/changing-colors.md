@@ -16,7 +16,7 @@ fit your brand identity by using [CSS variables][2].
 
 ### Color scheme
 
-[:octicons-file-code-24: Source][3] · :octicons-tools-24: Default: `default`
+[:octicons-file-code-24: Source][3] · :octicons-milestone-24: Default: `default`
 
 Material for MkDocs supports two _color schemes_: a light mode, which is just
 called `default`, and a dark mode, which is called `slate`. The color scheme
@@ -62,7 +62,7 @@ theme:
 
 ### Primary color
 
-[:octicons-file-code-24: Source][4] · :octicons-tools-24: Default: `indigo`
+[:octicons-file-code-24: Source][4] · :octicons-milestone-24: Default: `indigo`
 
 The _primary color_ is used for the header, the sidebar, text links and several
 other components. In order to change the primary color, set the following value
@@ -117,7 +117,7 @@ color:
 
 ### Accent color
 
-[:octicons-file-code-24: Source][5] · :octicons-tools-24: Default: `indigo`
+[:octicons-file-code-24: Source][5] · :octicons-milestone-24: Default: `indigo`
 
 The _accent color_ is used to denote elements that can be interacted with, e.g.
 hovered links, buttons and scrollbars. It can be changed in `mkdocs.yml` by
@@ -184,9 +184,12 @@ color:
 
 ## Customization
 
-Material for MkDocs implements colors using [CSS variables][6] (custom
+[:octicons-file-code-24: Source][6] ·
+:octicons-mortar-board-24: Difficulty: easy
+
+Material for MkDocs implements colors using [CSS variables][7] (custom
 properties). If you want to customize the colors beyond the palette (e.g. to
-use your brand-specific colors), you can add an [additional stylesheet][7] and
+use your brand-specific colors), you can add an [additional stylesheet][8] and
 tweak the following CSS variables:
 
 ``` css
@@ -217,7 +220,7 @@ tweak the following CSS variables:
 }
 ```
 
-The colors of [code blocks][8], [admonitions][9], text links and the footer can
+The colors of [code blocks][9], [admonitions][10], text links and the footer can
 be adjusted through dedicated CSS variables, which partly default to the base
 colors or neutral colors:
 
@@ -245,7 +248,8 @@ colors or neutral colors:
 }
 ```
 
-  [6]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
-  [7]: ../customization.md#additional-stylesheets
-  [8]: ../extensions/codehilite.md
-  [9]: ../extensions/admonition.md
+  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_colors.scss
+  [7]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+  [8]: ../customization.md#additional-stylesheets
+  [9]: ../writing/code-blocks.md
+  [10]: ../writing/admonitions.md

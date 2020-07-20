@@ -2,7 +2,7 @@
 template: overrides/main.html
 ---
 
-# Navigation
+# Setting up navigation
 
 A clear and concise navigation structure is an important aspect of good project 
 documentation. Material for MkDocs provides several options to configure the
@@ -103,10 +103,10 @@ customize its appearance:
 
 `permalink`
 
-:   This option adds an anchor link containing the paragraph symbol `¶` or
-    another custom symbol at the end of each headline, exactly like on the page
-    you're currently viewing, which Material for MkDocs will make appear on
-    hover:
+:   :octicons-milestone-24: Default: `false` – This option adds an anchor link
+    containing the paragraph symbol `¶` or another custom symbol at the end of
+    each headline, exactly like on the page you're currently viewing, which
+    Material for MkDocs will make appear on hover:
 
     === "¶"
 
@@ -126,10 +126,10 @@ customize its appearance:
 
 `slugify`
 
-:   This option allows for customization of the slug function. For some
-    languages, the standard slug function may not produce good and readable
-    identifiers. Consider using another slug function like for example those
-    from [Python Markdown Extensions][8]:
+:   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for 
+    customization of the slug function. For some languages, the default may not
+    produce good and readable identifiers. Consider using another slug function
+    like for example those from [Python Markdown Extensions][8]:
 
     === "Unicode"
 
@@ -149,10 +149,10 @@ customize its appearance:
 
 `toc_depth`
 
-:   Define the range of levels to be included in the table of contents. This is
-    especially useful for project documentation with deeply structured headings
-    to decrease the length of the table of contents, or to remove the table of
-    contents altogether:
+:   :octicons-milestone-24: Default: `6` – Define the range of levels to be
+    included in the table of contents. This may be useful for project
+    documentation with deeply structured headings to decrease the length of the
+    table of contents, or to remove the table of contents altogether:
 
     === "Hide levels 4-6"
 
@@ -181,10 +181,14 @@ them at your own risk._
 
 ## Customization
 
+[:octicons-file-code-24: Source][9] · 
+:octicons-mortar-board-24: Difficulty: moderate
+
 All navigational elements are defined as partials and can be overridden through
-[theme extension][9] by [overriding partials][10] or [blocks][11], i.e.
+[theme extension][10] by [overriding partials][11] or [blocks][12], i.e.
 `site_nav` which contains both sidebars, `tabs` and `footer`.
 
-  [9]: ../customization.md#extending-the-theme
-  [10]: ../customization.md#overriding-partials
-  [11]: ../customization.md#overriding-blocks
+  [9]: https://github.com/squidfunk/mkdocs-material/tree/master/src/partials
+  [10]: ../customization.md#extending-the-theme
+  [11]: ../customization.md#overriding-partials
+  [12]: ../customization.md#overriding-blocks

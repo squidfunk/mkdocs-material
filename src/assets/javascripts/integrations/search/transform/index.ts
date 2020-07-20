@@ -55,7 +55,7 @@ export type SearchTransformFn = (value: string) => string
  * 3. Trim excess whitespace from left and right.
  *
  * 4. Append a wildcard to the end of every word to make every word a prefix
- *    query in order to provide a good type-ahead experience, by adding an
+ *    query in order to provide a good typeahead experience, by adding an
  *    asterisk (wildcard) in between terms, which can be denoted by whitespace,
  *    any non-control character, or a word boundary.
  *

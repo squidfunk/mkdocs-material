@@ -12,7 +12,7 @@ search can be configured to use a language-specific stemmer (if available).
 
 ### Site language
 
-[:octicons-file-code-24: Source][1] · :octicons-tools-24: Default: `en`
+[:octicons-file-code-24: Source][1] · :octicons-milestone-24: Default: `en`
 
 You can set the language from `mkdocs.yml` with:
 
@@ -23,18 +23,6 @@ theme:
 
 The following languages are supported:
 
-<style>
-  .md-language-list {
-    -webkit-columns: 2;
-       -moz-columns: 2;
-            columns: 2;
-  }
-  .md-language-list li {
-    -webkit-column-break-inside: avoid;
-              page-break-inside: avoid;
-                   break-inside: avoid;
-  }
-</style>
 <ul class="tx-columns">
   <li><code>af</code> / Afrikaans</li>
   <li><code>ar</code> / Arabic</li>
@@ -90,22 +78,22 @@ The following languages are supported:
 
 ### Site search language
 
-[:octicons-file-code-24: Source][2] · :octicons-tools-24: Default: automatically
-set
+[:octicons-file-code-24: Source][2] ·
+:octicons-milestone-24: Default: _automatically set_
 
 Some languages, like Arabic or Japanese, need dedicated stemmers for search to
 work properly. Material for MkDocs relies on [lunr-languages][3] to provide this 
-functionality. See the [search plugin documentation][4] for more information.
+functionality. See the [setting up site search][4] guide for more information.
 
   [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/main/index.ts#L49-L69
   [3]: https://github.com/MihaiValentin/lunr-languages
-  [4]: ../plugins/search.md#language
+  [4]: setting-up-site-search.md
 
 
 ### Directionality
 
-[:octicons-file-code-24: Source][5] · :octicons-tools-24: Default: automatically
-set
+[:octicons-file-code-24: Source][5] ·
+:octicons-milestone-24: Default: _automatically set_
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
 supports `rtl` (right-to-left) directionality which is inferred from the
@@ -139,6 +127,9 @@ directionality:
   [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L168
 
 ## Customization
+
+[:octicons-file-code-24: Source][1] ·
+:octicons-mortar-board-24: Difficulty: easy
 
 If you want to customize some (or all) of the translations for your language,
 you may follow the guide on [theme extension][6] and create a new partial in

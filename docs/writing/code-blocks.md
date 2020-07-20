@@ -2,7 +2,7 @@
 template: overrides/main.html
 ---
 
-# Syntax highlighting
+# Code blocks
 
 Code blocks and examples are an essential part of technical project
 documentation. Material for MkDocs provides different ways to set up syntax
@@ -23,11 +23,11 @@ configuring syntax highlighting of code blocks:
 
 `use_pygments`
 
-:   This option allows to control whether highlighting should be carried out
-    during build time by [Pygments][1] (default, recommended) or runtime with
-    a JavaScript highlighter. Remember to add the necessary 
-    [additional stylesheets][5] and [JavaScript][6] if you want to use the
-    latter:
+:   :octicons-milestone-24: Default: `true` · This option allows to control
+    whether highlighting should be carried out during build time by
+    [Pygments][1] or runtime with a JavaScript highlighter. Remember to add the
+    necessary  [additional stylesheets][5] and [JavaScript][6] if you want to
+    use the latter:
 
     === "Pygments"
 
@@ -72,10 +72,10 @@ configuring syntax highlighting of code blocks:
 
 `linenums`
 
-:   This option will add line numbers to _all_ code blocks. If you wish to add
-    line numbers to _some_, but not all code blocks, consult the section on
-    [adding line numbers][9] later in this document, which also contains some
-    tips on working with line numbers:
+:   :octicons-milestone-24: Default: `false` · This option will add line numbers
+    to _all_ code blocks. If you wish to add line numbers to _some_, but not all
+    code blocks, consult the section on [adding line numbers][9] later in this
+    document, which also contains some tips on working with line numbers:
 
     ``` yaml
     markdown_extensions:
@@ -85,10 +85,10 @@ configuring syntax highlighting of code blocks:
 
 `linenums_style`
 
-:   The Highlight extension provides three ways to add line numbers, all of
-    which are supported by Material for MkDocs. While `table` (default,
-    recommended) wraps a code block in a table, `inline` and `pymdownx.inline`
-    render line numbers as part of the line itself:
+:   :octicons-milestone-24: Default: `table` · The Highlight extension provides
+    three ways to add line numbers, all of which are supported by Material for
+    MkDocs. While `table` wraps a code block in a table, `inline` and
+    `pymdownx.inline` render line numbers as part of the line itself:
 
     ``` yaml
     markdown_extensions:
@@ -133,14 +133,6 @@ See the section on [inline code blocks][11] for usage information.
   [10]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
   [11]: #inline-code-blocks
 
-## Customization
-
-While syntax highlighting is implemented with [Pygments][1] or JavaScript,
-Material for MkDocs defines the [appeareance][12] of code blocks, which can be
-adjusted with [additional stylesheets][5].
-
-  [12]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/_codehilite.scss
-
 ## Usage
 
 This section discusses how to use different syntax highlighting features with
@@ -151,7 +143,7 @@ a JavaScript syntaxhighlighter.
 
 Code blocks must be enclosed with two separate lines containing three backticks.
 To add code highlighting to those blocks, add the language short name directly
-after the opening block. See the [list of available lexers][13] to find the
+after the opening block. See the [list of available lexers][12] to find the
 short name for a given language.
 
 _Example_:
@@ -168,7 +160,7 @@ _Result_:
 import tensorflow as tf
 ```
 
-  [13]: https://pygments.org/docs/lexers/
+  [12]: https://pygments.org/docs/lexers/
 
 ### Adding line numbers
 
@@ -233,7 +225,7 @@ def bubble_sort(items):
 
 ### Inline code blocks
 
-When [InlineHilite][14] is enabled, inline code blocks can be highlighted by
+When [InlineHilite][13] is enabled, inline code blocks can be highlighted by
 prefixing them with a shebang-like sequence, i.e. `#!`, directly followed by
 the language short name.
 
@@ -247,4 +239,4 @@ _Result_:
 
 The `#!python range()` function is used to generate a sequence of numbers.
 
-  [14]: #inlinehilite
+  [13]: #inlinehilite

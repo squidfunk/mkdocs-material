@@ -66,27 +66,29 @@ icons and much more:
 * [Changing colors][3]
 * [Changing the fonts][4]
 * [Changing the language][5]
-* [Navigation][6]
-* [Syntax highlighting][7]
-* [Adding a landing page][8]
-* [Adding an announcement bar][9]
-* [Adding icons and emojis][10]
-* [Adding footer links][11]
-* [Adding site analytics][12]
-* [Adding a comment system][13]
+* [Setting up navigation][6]
+* [Setting up site search][7]
+* [Adding a git repository][8]
+* [Adding icons and emojis][9]
+* [Adding footer links][10]
+* [Adding site analytics][11]
+* [Adding a comment system][12]
+* [Adding an announcement bar][13]
+* [Adding a landing page][14]
 
   [2]: getting-started.md#installation
   [3]: guides/changing-colors.md
   [4]: guides/changing-the-fonts.md
   [5]: guides/changing-the-language.md
-  [6]: guides/navigation.md
-  [7]: guides/syntax-highlighting.md
-  [8]: guides/adding-a-landing-page.md
-  [9]: guides/adding-an-announcement-bar.md
-  [10]: guides/adding-icons-and-emojis.md
-  [11]: guides/adding-footer-links.md
-  [12]: guides/adding-site-analytics.md
-  [13]: guides/adding-a-comment-system.md
+  [6]: guides/setting-up-navigation.md
+  [7]: guides/setting-up-site-search.md
+  [8]: guides/adding-a-git-repository.md
+  [9]: guides/adding-icons-and-emojis.md
+  [10]: guides/adding-footer-links.md
+  [11]: guides/adding-site-analytics.md
+  [12]: guides/adding-a-comment-system.md
+  [13]: guides/adding-an-announcement-bar.md
+  [14]: guides/adding-a-landing-page.md
 
 ## Previewing as you write
 
@@ -112,12 +114,12 @@ If you're running Material for MkDocs from within Docker, use:
     docker run --rm -it -p 8000:8000 -v "%cd%":/docs squidfunk/mkdocs-material
     ```
 
-Point your browser to [localhost:8000][14] and you should see:
+Point your browser to [localhost:8000][15] and you should see:
 
-[![Creating your site][15]][14]
+[![Creating your site][16]][15]
 
-  [14]: http://localhost:8000
-  [15]: assets/guides/creating-your-site.png
+  [15]: http://localhost:8000
+  [16]: assets/guides/creating-your-site.png
 
 ## Building your site
 
@@ -130,8 +132,8 @@ mkdocs build
 
 The contents of this directory make up your project documentation. There's no
 need for operating a database or server, as it is completely self-contained.
-The site can be hosted on [GitHub Pages][16], [GitLab Pages][17], a CDN of your
+The site can be hosted on [GitHub Pages][17], [GitLab Pages][18], a CDN of your
 choice or your private web space.
 
-  [16]: publishing-your-site.md#github-pages
-  [17]: publishing-your-site.md#gitlab-pages
+  [17]: publishing-your-site.md#github-pages
+  [18]: publishing-your-site.md#gitlab-pages
