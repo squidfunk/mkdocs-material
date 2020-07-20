@@ -131,6 +131,7 @@ For other installation methods, configuration options, and a demo, visit
   [Spotify](https://spotify.github.io/mkdocs-monorepo-plugin/),
   [Square](https://square.github.io/okhttp/),
   [Zalando](https://opensource.zalando.com/skipper/)
+  [Datadog](https://datadoghq.dev/integrations-core/)
 
 * **Open Source** —
   [AutoKeras](https://autokeras.com/),
