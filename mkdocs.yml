@@ -132,7 +132,9 @@ nav:
     - Troubleshooting: troubleshooting.md
     - Data privacy: data-privacy.md
   - Writing:
+    - Admonitions: writing/admonitions.md
     - Code blocks: writing/code-blocks.md
+    - Footnotes: writing/footnotes.md
   - Guides:
     - Changing colors: guides/changing-colors.md
     - Changing the fonts: guides/changing-the-fonts.md

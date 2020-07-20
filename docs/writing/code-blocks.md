@@ -137,7 +137,7 @@ See the section on [inline code blocks][11] for usage information.
 
 This section discusses how to use different syntax highlighting features with
 [Pygments][1] – the default highlighter – so they don't apply when using
-a JavaScript syntaxhighlighter.
+a JavaScript syntax highlighter.
 
 ### Specifying the language
 
@@ -173,7 +173,6 @@ _Example_:
 
 ```` markdown
 ``` python linenums="1"
-""" Bubble sort """
 def bubble_sort(items):
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
@@ -185,7 +184,6 @@ def bubble_sort(items):
 _Result_:
 
 ``` python linenums="1"
-""" Bubble sort """
 def bubble_sort(items):
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
@@ -202,8 +200,7 @@ at `1`, regardless of the starting line number specified as part of `linenums`.
 _Example_:
 
 ```` markdown
-``` python hl_lines="3 4"
-""" Bubble sort """
+``` python hl_lines="2 3"
 def bubble_sort(items):
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
@@ -214,8 +211,7 @@ def bubble_sort(items):
 
 _Result_:
 
-``` python linenums="1" hl_lines="3 4"
-""" Bubble sort """
+``` python linenums="1" hl_lines="2 3"
 def bubble_sort(items):
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
