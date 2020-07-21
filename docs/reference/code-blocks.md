@@ -24,7 +24,7 @@ configuring syntax highlighting of code blocks:
 
 `use_pygments`
 
-:   :octicons-milestone-24: Default: `true` · This option allows to control
+:   :octicons-milestone-24: Default: `true` – This option allows to control
     whether highlighting should be carried out during build time by
     [Pygments][1] or runtime with a JavaScript highlighter. Remember to add the
     necessary  [additional stylesheets][6] and [JavaScript][7] if you want to
@@ -73,7 +73,7 @@ configuring syntax highlighting of code blocks:
 
 `linenums`
 
-:   :octicons-milestone-24: Default: `false` · This option will add line numbers
+:   :octicons-milestone-24: Default: `false` – This option will add line numbers
     to _all_ code blocks. If you wish to add line numbers to _some_, but not all
     code blocks, consult the section on [adding line numbers][10] later in this
     document, which also contains some tips on working with line numbers:
@@ -86,7 +86,7 @@ configuring syntax highlighting of code blocks:
 
 `linenums_style`
 
-:   :octicons-milestone-24: Default: `table` · The Highlight extension provides
+:   :octicons-milestone-24: Default: `table` – The Highlight extension provides
     three ways to add line numbers, all of which are supported by Material for
     MkDocs. While `table` wraps a code block in a table, `inline` and
     `pymdownx.inline` render line numbers as part of the line itself:

@@ -54,23 +54,31 @@ The typeface will be loaded in 400.
 
 ## Customization
 
-[:octicons-file-code-24: Source][2] ·
-:octicons-mortar-board-24: Difficulty: easy
-
 If you want to load fonts from other destinations or don't want to use Google
-Fonts for [data privacy][5] reasons, e.g. _due to GDPR_, add the following lines
-to `mkdocs.yml`:
+Fonts for [data privacy][5] reasons, e.g. _due to GDPR_, you may customize
+font loading as described below.
+
+### Disable font loading
+
+[:octicons-file-code-24: Source][2] ·
+:octicons-mortar-board-24: Difficulty: _none_
+
+If you want to prevent typefaces from being loaded from Google Fonts and fall
+back to system fonts, add the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
   font: false
 ```
 
-This will prevent typefaces from being loaded from Google Fonts. As a fallback,
-common system fonts will be used automatically. Additionally, if you want to
-load a font from another destination, you may either follow the guide on [theme
-extension][6] and [override the `fonts` block][7] with a `style` tag, or use an
-[additional stylesheet][8] to add the necessary `@font-face` definition:
+### Additional fonts
+
+[:octicons-file-code-24: Source][2] ·
+:octicons-mortar-board-24: Difficulty: _easy_
+
+If you want to load an (additional) font from another destination, or override
+the fallback font, you can use an [additional stylesheet][8] to add the
+corresponding `@font-face` definition:
 
 ``` css
 @font-face {
@@ -79,9 +87,11 @@ extension][6] and [override the `fonts` block][7] with a `style` tag, or use an
 }
 ```
 
-The font can then be configured to be used as the regular or proportional font:
+The font can then be configured to be used globally as the regular or
+proportional font, or limited to be used for specific elements only, e.g.
+headlines:
 
-=== "Regular font"
+=== "Body copy"
 
     ``` css
     body, input {
@@ -89,7 +99,15 @@ The font can then be configured to be used as the regular or proportional font:
     }
     ```
 
-=== "Proportional font"
+=== "Headlines"
+
+    ``` css
+    .md-typeset h1 {
+      font-family: "<font>", -apple-system, Helvetica, Arial, sans-serif;
+    }
+    ```
+
+=== "Code blocks"
 
     ``` css
     pre, code, kbd {

@@ -2,7 +2,7 @@
 template: overrides/main.html
 ---
 
-# Changing colors
+# Changing the colors
 
 As any good Material Design implementation, Material for MkDocs supports
 Google's original [color palette][1], which can be easily configured through 
@@ -49,8 +49,8 @@ scheme:
 </script>
 
 The _color scheme_ can also be set based on _user preference_, which makes use
-of the `prefers-color-scheme` media query. This can be done by adding the
-following to `mkdocs.yml`:
+of the `prefers-color-scheme` media query, by setting the value in `mkdocs.yml`
+to `preference`:
 
 ``` yaml
 theme:
@@ -184,8 +184,10 @@ color:
 
 ## Customization
 
+### Brand colors
+
 [:octicons-file-code-24: Source][6] ·
-:octicons-mortar-board-24: Difficulty: easy
+:octicons-mortar-board-24: Difficulty: _easy_
 
 Material for MkDocs implements colors using [CSS variables][7] (custom
 properties). If you want to customize the colors beyond the palette (e.g. to

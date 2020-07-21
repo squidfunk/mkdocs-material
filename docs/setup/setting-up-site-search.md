@@ -32,7 +32,7 @@ The following options are supported:
 
 `lang`
 
-:   :octicons-milestone-24: Default: _automatically set_ · This option allows
+:   :octicons-milestone-24: Default: _automatically set_ – This option allows
     to include the language-specific stemmers provided by [lunr-languages][5].
     Note that Material for MkDocs will set this automatically based on the
     [site language][6], but it may be overriden, e.g. to support multiple
@@ -159,7 +159,7 @@ This section explains how search can be customized to tailor it to your needs.
 ### Query transformation
 
 [:octicons-file-code-24: Source][12] · 
-:octicons-mortar-board-24: Difficulty: easy
+:octicons-mortar-board-24: Difficulty: _easy_
 
 When a user enters a query into the search box, the query is pre-processed
 before it is submitted to the search index. Material for MkDocs will apply the
@@ -233,7 +233,7 @@ and must return the processed query string to be submitted to the search index.
 ### Worker implementation
 
 [:octicons-file-code-24: Source][15] · 
-:octicons-mortar-board-24: Difficulty: challenging
+:octicons-mortar-board-24: Difficulty: _challenging_
 
 Material for MkDocs implements search as part of a [web worker][16]. If you
 want to switch the web worker with your own implementation, e.g. to submit

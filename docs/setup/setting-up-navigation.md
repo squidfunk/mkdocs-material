@@ -180,17 +180,3 @@ them at your own risk._
   [7]: https://python-markdown.github.io/extensions/toc/
   [8]: https://python-markdown.github.io/extensions/toc/#usage
   [9]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
-
-## Customization
-
-[:octicons-file-code-24: Source][10] ·
-:octicons-mortar-board-24: Difficulty: moderate
-
-All navigational elements are defined as partials and can be overridden through
-[theme extension][11] by [overriding partials][12] or [blocks][13], i.e.
-`site_nav` which contains both sidebars, `tabs` and `footer`.
-
-  [10]: https://github.com/squidfunk/mkdocs-material/tree/master/src/partials
-  [11]: ../customization.md#extending-the-theme
-  [12]: ../customization.md#overriding-partials
-  [13]: ../customization.md#overriding-blocks

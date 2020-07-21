@@ -26,6 +26,22 @@ markdown_extensions:
   [2]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
   [3]: https://facelessuser.github.io/pymdown-extensions/
 
+### SuperFences
+
+[:octicons-file-code-24: Source][4] · [:octicons-workflow-24: Extension][5]
+
+The [SuperFences][5] extension, which is also part of [Python Markdown
+Extensions][3], allows for the __nesting of code blocks inside tabs__, and is
+therefore strongly recommended:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.superfences
+```
+
+  [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_typeset.scss
+  [5]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+
 ## Usage
 
 ### Grouping code blocks
@@ -123,7 +139,7 @@ _Result_:
 ### Embedded content
 
 Content tabs can contain arbitrary nested content, including further content
-tabs, and can be nested in other blocks like [admonitions][4], [details][5] or 
+tabs, and can be nested in other blocks like [admonitions][6], [details][7] or
 blockquotes:
 
 _Example_:
@@ -200,5 +216,5 @@ _Result_:
         2. Donec vitae suscipit est
         3. Nulla tempor lobortis orci
 
-  [4]: admonitions.md
-  [5]: admonitions.md#details
+  [6]: admonitions.md
+  [7]: admonitions.md#details

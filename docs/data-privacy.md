@@ -30,7 +30,7 @@ Neue__ and __Monaco__ with their corresponding fall backs, relying on system
 fonts. You can easily include your own, self-hosted webfont by [overriding][4]
 the `fonts` block.
 
-  [2]: guides/changing-the-fonts.md
+  [2]: setup/changing-the-fonts.md
   [3]: https://github.com/google/fonts/issues/1495
   [4]: customization.md#overriding-blocks
 

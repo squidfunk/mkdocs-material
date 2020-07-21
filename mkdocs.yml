@@ -131,29 +131,32 @@ nav:
     - Customization: customization.md
     #- Troubleshooting: troubleshooting.md
     - Data privacy: data-privacy.md
+  - Setup:
+    - Changing the colors: setup/changing-the-colors.md
+    - Changing the fonts: setup/changing-the-fonts.md
+    - Changing the language: setup/changing-the-language.md
+    - Changing the logo and icons: setup/changing-the-logo-and-icons.md
+    - Setting up navigation: setup/setting-up-navigation.md
+    - Setting up site search: setup/setting-up-site-search.md
+    - Adding a git repository: setup/adding-a-git-repository.md
+    - Adding social links: setup/adding-social-links.md
+    - Adding site analytics: setup/adding-site-analytics.md
+    - Adding a comment system: setup/adding-a-comment-system.md
+    - Adding an announcement bar: setup/adding-an-announcement-bar.md
+    #- Adding a landing page: setup/adding-a-landing-page.md
   - Reference:
     - Admonitions: reference/admonitions.md
     - Code blocks: reference/code-blocks.md
     - Content tabs: reference/content-tabs.md
     - Footnotes: reference/footnotes.md
     - Lists: reference/lists.md
-  - Guides:
-    - Changing colors: guides/changing-colors.md
-    - Changing the fonts: guides/changing-the-fonts.md
-    - Changing the language: guides/changing-the-language.md
-    - Setting up navigation: guides/setting-up-navigation.md
-    - Setting up site search: guides/setting-up-site-search.md
-    - Adding a git repository: guides/adding-a-git-repository.md
-    - Adding icons and emojis: guides/adding-icons-and-emojis.md
-    - Adding footer links: guides/adding-footer-links.md
-    - Adding site analytics: guides/adding-site-analytics.md
-    - Adding a comment system: guides/adding-a-comment-system.md
-    - Adding an announcement bar: guides/adding-an-announcement-bar.md
-    - Adding a landing page: guides/adding-a-landing-page.md
-  - Releases:
-    - Upgrading to 5.x: releases/5.md
-    - Upgrading to 4.x: releases/4.md
-    - Changelog: releases/changelog.md
+  # - Releases:
+  #   - Upgrading to 5.x: releases/5.md
+  #   - Upgrading to 4.x: releases/4.md
+  #   - Changelog: releases/changelog.md
+  # Changelog:
+  #  - Releases
+  #  - Migration
 
   # - Contributing: contributing.md
   # - License: license.md

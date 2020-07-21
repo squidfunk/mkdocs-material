@@ -1,0 +1,1 @@
+Icons are all inlined!

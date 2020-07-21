@@ -129,8 +129,10 @@ directionality:
 
 ## Customization
 
+### Translations
+
 [:octicons-file-code-24: Source][1] ·
-:octicons-mortar-board-24: Difficulty: easy
+:octicons-mortar-board-24: Difficulty: _easy_
 
 If you want to customize some (or all) of the translations for your language,
 you may follow the guide on [theme extension][6] and create a new partial in

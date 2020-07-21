@@ -57,17 +57,18 @@ theme:
     repo: fontawesome/brands/git-alt
 ```
 
-Some popular repository icons:
+Some popular choices:
 
-- :fontawesome-brands-git: – `:fontawesome-brands-git:`
-- :fontawesome-brands-git-square: – `:fontawesome-brands-git-square:`
-- :fontawesome-brands-github: – `:fontawesome-brands-github:`
-- :fontawesome-brands-github-alt: – `:fontawesome-brands-github-alt:`
-- :fontawesome-brands-github-square: – `:fontawesome-brands-github-square:`
-- :fontawesome-brands-gitlab: – `:fontawesome-brands-gitlab:`
-- :fontawesome-brands-gitkraken: – `:fontawesome-brands-gitkraken:`
-- :fontawesome-brands-bitbucket: – `:fontawesome-brands-bitbucket:`
-- :fontawesome-solid-trash: – `:fontawesome-solid-trash:`
+- :fontawesome-brands-git: – `fontawesome/brands/git`
+- :fontawesome-brands-git-alt: – `fontawesome/brands/git-alt`
+- :fontawesome-brands-git-square: – `fontawesome/brands/git-square`
+- :fontawesome-brands-github: – `fontawesome/brands/github`
+- :fontawesome-brands-github-alt: – `fontawesome/brands/github-alt`
+- :fontawesome-brands-github-square: – `fontawesome/brands/github-square`
+- :fontawesome-brands-gitlab: – `fontawesome/brands/gitlab`
+- :fontawesome-brands-gitkraken: – `fontawesome/brands/gitkraken`
+- :fontawesome-brands-bitbucket: – `fontawesome/brands/bitbucket`
+- :fontawesome-solid-trash: – `fontawesome/solid/trash`
 
   [4]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
