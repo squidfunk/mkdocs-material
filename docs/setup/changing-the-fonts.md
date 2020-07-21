@@ -58,10 +58,10 @@ If you want to load fonts from other destinations or don't want to use Google
 Fonts for [data privacy][5] reasons, e.g. _due to GDPR_, you may customize
 font loading as described below.
 
-### Disable font loading
+### Disabling font loading
 
 [:octicons-file-code-24: Source][2] ·
-:octicons-mortar-board-24: Difficulty: _none_
+:octicons-mortar-board-24: Difficulty: _easy_
 
 If you want to prevent typefaces from being loaded from Google Fonts and fall
 back to system fonts, add the following lines to `mkdocs.yml`:
@@ -87,11 +87,10 @@ corresponding `@font-face` definition:
 }
 ```
 
-The font can then be configured to be used globally as the regular or
-proportional font, or limited to be used for specific elements only, e.g.
-headlines:
+The font can then be applied to specific elements, e.g. only headlines, or 
+globally to be used as the site-wide regular or proportional font:
 
-=== "Body copy"
+=== "Regular font"
 
     ``` css
     body, input {
@@ -99,15 +98,7 @@ headlines:
     }
     ```
 
-=== "Headlines"
-
-    ``` css
-    .md-typeset h1 {
-      font-family: "<font>", -apple-system, Helvetica, Arial, sans-serif;
-    }
-    ```
-
-=== "Code blocks"
+=== "Proportional font"
 
     ``` css
     pre, code, kbd {

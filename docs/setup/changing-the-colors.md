@@ -10,7 +10,7 @@ Google's original [color palette][1], which can be easily configured through
 fit your brand's identity by using [CSS variables][2].
 
   [1]: http://www.materialui.co/colors
-  [2]: #customization
+  [2]: #custom-colors
 
 ## Configuration
 
@@ -184,7 +184,7 @@ color:
 
 ## Customization
 
-### Brand colors
+### Custom colors
 
 [:octicons-file-code-24: Source][6] ·
 :octicons-mortar-board-24: Difficulty: _easy_

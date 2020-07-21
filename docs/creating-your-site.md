@@ -29,6 +29,7 @@ If you're running Material for MkDocs from within Docker, use:
 This will create the following structure:
 
 ```
+.
 ├─ docs/
 │  └─ index.md
 └─ mkdocs.yml
