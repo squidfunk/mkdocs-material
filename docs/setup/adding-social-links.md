@@ -70,7 +70,7 @@ For each entry, the following fields are available:
         extra:
           social:
             - icon: fontawesome/solid/paper-plane
-              link: mailto:martin.donath@squidfunk.com
+              link: mailto:<email-address>
         ```
 
 `name`
