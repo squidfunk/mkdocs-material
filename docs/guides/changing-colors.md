@@ -7,7 +7,7 @@ template: overrides/main.html
 As any good Material Design implementation, Material for MkDocs supports
 Google's original [color palette][1], which can be easily configured through 
 `mkdocs.yml`. Furthermore, colors can be customized with a few lines of CSS to
-fit your brand identity by using [CSS variables][2].
+fit your brand's identity by using [CSS variables][2].
 
   [1]: http://www.materialui.co/colors
   [2]: #customization
@@ -251,5 +251,5 @@ colors or neutral colors:
   [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_colors.scss
   [7]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
   [8]: ../customization.md#additional-stylesheets
-  [9]: ../writing/code-blocks.md
-  [10]: ../writing/admonitions.md
+  [9]: ../reference/code-blocks.md
+  [10]: ../reference/admonitions.md

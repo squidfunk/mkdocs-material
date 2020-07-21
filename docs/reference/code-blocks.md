@@ -15,9 +15,10 @@ during runtime using a JavaScript syntax highlighter.
 
 ### Highlight
 
-[:octicons-file-code-24: Source][2] · [:octicons-workflow-24: Extension][3]
+[:octicons-file-code-24: Source][2] · [:octicons-workflow-24: Extension][3] ·
+:octicons-zap-24: Supersedes: [CodeHilite][4]
 
-The [Highlight][3] extension, which is part of [Python Markdown Extensions][4],
+The [Highlight][3] extension, which is part of [Python Markdown Extensions][5],
 integrates with Material for MkDocs and provides several options for
 configuring syntax highlighting of code blocks:
 
@@ -26,7 +27,7 @@ configuring syntax highlighting of code blocks:
 :   :octicons-milestone-24: Default: `true` · This option allows to control
     whether highlighting should be carried out during build time by
     [Pygments][1] or runtime with a JavaScript highlighter. Remember to add the
-    necessary  [additional stylesheets][5] and [JavaScript][6] if you want to
+    necessary  [additional stylesheets][6] and [JavaScript][7] if you want to
     use the latter:
 
     === "Pygments"
@@ -45,12 +46,12 @@ configuring syntax highlighting of code blocks:
               use_pygments: false
         ```
 
-    ??? example "Syntax highlighting with [Highlight.js][7]"
+    ??? example "Syntax highlighting with Highlight.js"
 
-        Highlight.js can be integrated by creating an [additional JavaScript][6]
-        file initializing the highlighter and including the respective
-        stylesheet and JavaScript from a [CDN][8] serving Highlight.js in
-        `mkdocs.yml`:
+        [Highlight.js][8] can be integrated by creating an [additional
+        JavaScript][7] file initializing the highlighter and including the 
+        respective stylesheet and JavaScript from a [CDN][9] serving
+        Highlight.js in `mkdocs.yml`:
 
         === "docs/javascripts/extra.js"
 
@@ -74,7 +75,7 @@ configuring syntax highlighting of code blocks:
 
 :   :octicons-milestone-24: Default: `false` · This option will add line numbers
     to _all_ code blocks. If you wish to add line numbers to _some_, but not all
-    code blocks, consult the section on [adding line numbers][9] later in this
+    code blocks, consult the section on [adding line numbers][10] later in this
     document, which also contains some tips on working with line numbers:
 
     ``` yaml
@@ -107,20 +108,21 @@ them at your own risk._
 
   [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/pymdown/_highlight.scss
   [3]: https://facelessuser.github.io/pymdown-extensions/extensions/highlight/
-  [4]: https://facelessuser.github.io/pymdown-extensions/
-  [5]: ../customization.md#additional-stylesheets
-  [6]: ../customization.md#additional-javascript
-  [7]: https://highlightjs.org/
-  [8]: https://cdnjs.com/libraries/highlight.js/
-  [9]: #adding-line-numbers
+  [4]: https://python-markdown.github.io/extensions/code_hilite/
+  [5]: https://facelessuser.github.io/pymdown-extensions/
+  [6]: ../customization.md#additional-stylesheets
+  [7]: ../customization.md#additional-javascript
+  [8]: https://highlightjs.org/
+  [9]: https://cdnjs.com/libraries/highlight.js/
+  [10]: #adding-line-numbers
 
 ### InlineHilite
 
-[:octicons-file-code-24: Source][2] · [:octicons-workflow-24: Extension][10]
+[:octicons-file-code-24: Source][2] · [:octicons-workflow-24: Extension][11]
 
-The [InlineHilite][10] extension, which is part of [Python Markdown 
-Extensions][4] also integrates with Material for MkDocs and adds support for
-syntax highlighting of inline code blocks. It's built on top of the
+The [InlineHilite][11] extension, which is part of [Python Markdown 
+Extensions][5] also integrates with Material for MkDocs and adds support for
+__syntax highlighting of inline code blocks__. It's built on top of the
 [Highlight][3] extension and can be enabled from `mkdocs.yml`:
 
 ``` yaml
@@ -128,10 +130,26 @@ markdown_extensions:
   - pymdownx.inlinehilite
 ```
 
-See the section on [inline code blocks][11] for usage information.
+See the section on [inline code blocks][12] for usage information.
 
-  [10]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
-  [11]: #inline-code-blocks
+  [11]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
+  [12]: #inline-code-blocks
+
+### SuperFences
+
+[:octicons-file-code-24: Source][13] · [:octicons-workflow-24: Extension][14]
+
+The [SuperFences][14] extension, which is also part of [Python Markdown
+Extensions][5], allows for the __nesting of code blocks inside other blocks__,
+and is therefore strongly recommended:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.superfences
+```
+
+  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_typeset.scss
+  [14]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 ## Usage
 
@@ -143,7 +161,7 @@ a JavaScript syntax highlighter.
 
 Code blocks must be enclosed with two separate lines containing three backticks.
 To add code highlighting to those blocks, add the language short name directly
-after the opening block. See the [list of available lexers][12] to find the
+after the opening block. See the [list of available lexers][15] to find the
 short name for a given language.
 
 _Example_:
@@ -160,7 +178,7 @@ _Result_:
 import tensorflow as tf
 ```
 
-  [12]: https://pygments.org/docs/lexers/
+  [15]: https://pygments.org/docs/lexers/
 
 ### Adding line numbers
 
@@ -221,9 +239,9 @@ def bubble_sort(items):
 
 ### Inline code blocks
 
-When [InlineHilite][13] is enabled, inline code blocks can be highlighted by
+When [InlineHilite][16] is enabled, inline code blocks can be highlighted by
 prefixing them with a shebang-like sequence, i.e. `#!`, directly followed by
-the [language short name][12].
+the [language short name][15].
 
 _Example_:
 
@@ -235,4 +253,4 @@ _Result_:
 
 The `#!python range()` function is used to generate a sequence of numbers.
 
-  [13]: #inlinehilite
+  [16]: #inlinehilite

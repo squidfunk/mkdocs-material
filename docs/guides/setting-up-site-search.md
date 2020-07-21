@@ -59,25 +59,25 @@ The following options are supported:
     The following languages are supported:
 
     <ul class="tx-columns">
-      <li><code>ar</code> / Arabic</li>
-      <li><code>da</code> / Danish</li>
-      <li><code>du</code> / Dutch</li>
-      <li><code>en</code> / English</li>
-      <li><code>fi</code> / Finnish</li>
-      <li><code>fr</code> / French</li>
-      <li><code>de</code> / German</li>
-      <li><code>hu</code> / Hungarian</li>
-      <li><code>it</code> / Italian</li>
-      <li><code>ja</code> / Japanese</li>
-      <li><code>no</code> / Norwegian</li>
-      <li><code>pt</code> / Portuguese</li>
-      <li><code>ro</code> / Romanian</li>
-      <li><code>ru</code> / Russian</li>
-      <li><code>es</code> / Spanish</li>
-      <li><code>sv</code> / Swedish</li>
-      <li><code>th</code> / Thai</li>
-      <li><code>tr</code> / Turkish</li>
-      <li><code>vi</code> / Vietnamese</li>
+      <li><code>ar</code> – Arabic</li>
+      <li><code>da</code> – Danish</li>
+      <li><code>du</code> – Dutch</li>
+      <li><code>en</code> – English</li>
+      <li><code>fi</code> – Finnish</li>
+      <li><code>fr</code> – French</li>
+      <li><code>de</code> – German</li>
+      <li><code>hu</code> – Hungarian</li>
+      <li><code>it</code> – Italian</li>
+      <li><code>ja</code> – Japanese</li>
+      <li><code>no</code> – Norwegian</li>
+      <li><code>pt</code> – Portuguese</li>
+      <li><code>ro</code> – Romanian</li>
+      <li><code>ru</code> – Russian</li>
+      <li><code>es</code> – Spanish</li>
+      <li><code>sv</code> – Swedish</li>
+      <li><code>th</code> – Thai</li>
+      <li><code>tr</code> – Turkish</li>
+      <li><code>vi</code> – Vietnamese</li>
     </ul>
 
     _Material for MkDocs also tries to support languages which are not part of

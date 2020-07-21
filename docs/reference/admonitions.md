@@ -4,7 +4,7 @@ template: overrides/main.html
 
 # Admonitions
 
-Admonitions, also know as _call-outs_, are an excellent choice for including
+Admonitions, also known as _call-outs_, are an excellent choice for including
 side content without significantly interrupting the document flow. Material for
 MkDocs provides several different types of admonitions and allows for the
 inclusion and nesting of arbitrary content.
@@ -32,7 +32,7 @@ markdown_extensions:
 [:octicons-file-code-24: Source][3] · [:octicons-workflow-24: Extension][4]
 
 The [Details][4] extension, which is part of [Python Markdown Extensions][5],
-adds the abilty to make admonitions collapsible. It can be enabled from
+adds the ability to __make admonitions collapsible__. It can be enabled from
 `mkdocs.yml`:
 
 ``` yaml
@@ -49,8 +49,8 @@ markdown_extensions:
 [:octicons-file-code-24: Source][6] · [:octicons-workflow-24: Extension][7]
 
 The [SuperFences][7] extension, which is also part of [Python Markdown
-Extensions][5], allows for the arbitrary nesting of content inside blocks, and
-is therefore strongly recommended:
+Extensions][5], allows for the __nesting of content blocks inside admonitions__, 
+and is therefore strongly recommended:
 
 ``` yaml
 markdown_extensions:
@@ -87,9 +87,9 @@ _Result_:
 
 ### Changing the title
 
-By default, the admonition title will equal the type qualifier in titlecase.
-However, it can be changed to a custom string by adding a quoted string after
-the type qualifier.
+By default, the title will equal the type qualifier in titlecase. However, it
+can be changed by adding a quoted string containing valid Markdown (including
+links, formatting, ...) after the type qualifier.
 
 _Example_:
 
@@ -110,8 +110,9 @@ _Result_:
 
 ### Removing the title
 
-Similar to [changing the title][9], the icon and title can be omitted by adding
-an empty string directly after the type qualifier.
+Similar to [changing the title][9], the icon and title can be omitted entirely
+by adding an empty string directly after the type qualifier. Note that this 
+will not work for [collapsible blocks][10].
 
 _Example_:
 
@@ -131,13 +132,14 @@ _Result_:
     massa, nec semper lorem quam in massa.
 
   [9]: #changing-the-title
+  [10]: #collapsible-blocks
 
 ### Embedded content
 
 Admonitions can contain all kinds of text content, including headlines, lists,
 paragraphs and other blocks. While the parser from the standard Markdown library
-doesn't account for nested code blocks, the [SuperFences][10] extension adds
-the ability to nest arbitrary content inside admonitions.
+doesn't account for nested blocks, the [SuperFences][11] extension adds the 
+ability to nest arbitrary content inside admonitions.
 
 _Example_:
 
@@ -180,11 +182,11 @@ _Result_:
     sem ut cursus. Nullam sit amet tincidunt ipsum, sit amet elementum turpis.
     Etiam ipsum quam, mattis in purus vitae, lacinia fermentum enim.
 
-  [10]: #superfences
+  [11]: #superfences
 
 ### Collapsible blocks
 
-The [Details][11] extension adds support for rendering collapsible admonition
+The [Details][12] extension adds support for rendering collapsible admonition
 blocks. This is useful for FAQs or content that is of secondary nature. A
 details block follows the syntax and semantics of admonition blocks, but must
 start with `???`.
@@ -206,7 +208,7 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-Adding a `+` after `???` will render the block open on page load:
+Adding a `+` after `???` will render the block as open on page load:
 
 _Example_:
 
@@ -225,7 +227,7 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-  [11]: #details
+  [12]: #details
 
 ### Supported types
 

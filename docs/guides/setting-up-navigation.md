@@ -50,8 +50,9 @@ theme:
 ```
 
 Note that all __top-level pages__ (i.e. all top-level entries that directly
-refer to an `*.md` file) defined inside the `nav` entry of `mkdocs.yml` will be
-grouped under the first tab which will receive the title of the first page.
+refer to an `*.md` file) defined inside the [`nav`][4] entry of `mkdocs.yml`
+will be grouped under the first tab which will receive the title of the first
+page.
 
 This means that there will effectively be no collapsible subsections for the
 first tab, because each subsection is rendered as another tab. If you want more
@@ -87,17 +88,18 @@ sections. This is illustrated in the following example:
     ```
 
 Note that tabs are only shown for larger screens, so make sure that navigation
-is plausible on mobile devices. As another example, see the [`mkdocs.yml`][4]
+is plausible on mobile devices. As another example, see the [`mkdocs.yml`][5]
 used to render these pages.
 
-[3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/tabs.html
-[4]: https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
+  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/tabs.html
+  [4]: https://www.mkdocs.org/user-guide/configuration/#nav
+  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
 
 ### Table of contents
 
-[:octicons-file-code-24: Source][5] · [:octicons-workflow-24: Extension][6]
+[:octicons-file-code-24: Source][6] · [:octicons-workflow-24: Extension][7]
 
-The [Table of contents][7] extension, which is part of the standard Markdown
+The [Table of contents][8] extension, which is part of the standard Markdown
 library, provides some options that are supported by Material for MkDocs to
 customize its appearance:
 
@@ -129,7 +131,7 @@ customize its appearance:
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for 
     customization of the slug function. For some languages, the default may not
     produce good and readable identifiers. Consider using another slug function
-    like for example those from [Python Markdown Extensions][8]:
+    like for example those from [Python Markdown Extensions][9]:
 
     === "Unicode"
 
@@ -174,21 +176,21 @@ _Material for MkDocs doesn't provide official support for the other options of
 this extension, so they may be supported but can also yield weird results. Use
 them at your own risk._
 
-  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/toc.html
-  [6]: https://python-markdown.github.io/extensions/toc/
-  [7]: https://python-markdown.github.io/extensions/toc/#usage
-  [8]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
+  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/toc.html
+  [7]: https://python-markdown.github.io/extensions/toc/
+  [8]: https://python-markdown.github.io/extensions/toc/#usage
+  [9]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
 ## Customization
 
-[:octicons-file-code-24: Source][9] · 
+[:octicons-file-code-24: Source][10] ·
 :octicons-mortar-board-24: Difficulty: moderate
 
 All navigational elements are defined as partials and can be overridden through
-[theme extension][10] by [overriding partials][11] or [blocks][12], i.e.
+[theme extension][11] by [overriding partials][12] or [blocks][13], i.e.
 `site_nav` which contains both sidebars, `tabs` and `footer`.
 
-  [9]: https://github.com/squidfunk/mkdocs-material/tree/master/src/partials
-  [10]: ../customization.md#extending-the-theme
-  [11]: ../customization.md#overriding-partials
-  [12]: ../customization.md#overriding-blocks
+  [10]: https://github.com/squidfunk/mkdocs-material/tree/master/src/partials
+  [11]: ../customization.md#extending-the-theme
+  [12]: ../customization.md#overriding-partials
+  [13]: ../customization.md#overriding-blocks

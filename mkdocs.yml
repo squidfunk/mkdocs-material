@@ -131,11 +131,12 @@ nav:
     - Customization: customization.md
     #- Troubleshooting: troubleshooting.md
     - Data privacy: data-privacy.md
-  - Writing:
-    - Admonitions: writing/admonitions.md
-    - Code blocks: writing/code-blocks.md
-    - Content tabs: writing/content-tabs.md
-    - Footnotes: writing/footnotes.md
+  - Reference:
+    - Admonitions: reference/admonitions.md
+    - Code blocks: reference/code-blocks.md
+    - Content tabs: reference/content-tabs.md
+    - Footnotes: reference/footnotes.md
+    - Lists: reference/lists.md
   - Guides:
     - Changing colors: guides/changing-colors.md
     - Changing the fonts: guides/changing-the-fonts.md

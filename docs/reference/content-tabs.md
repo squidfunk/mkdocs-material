@@ -6,8 +6,7 @@ template: overrides/main.html
 
 Sometimes, it's desirable to group alternative content under different tabs,
 e.g. when describing how to access an API from different languages or
-environments. Material for MkDocs allows for beautiful and functional tabbed
-content, including code blocks or body copy.
+environments. Material for MkDocs allows for beautiful and functional tabs, grouping code blocks and other content.
 
 ## Configuration
 
