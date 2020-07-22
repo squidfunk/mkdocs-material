@@ -143,9 +143,9 @@ nav:
     - Creating your site: creating-your-site.md
     - Publishing your site: publishing-your-site.md
     - Customization: customization.md
-    - Sponsorship: sponsorship.md
-    #- Troubleshooting: troubleshooting.md
+    - Troubleshooting: troubleshooting.md
     - Data privacy: data-privacy.md
+    - Sponsorship: sponsorship.md
     - License: license.md
   - Setup:
     - Changing the colors: setup/changing-the-colors.md

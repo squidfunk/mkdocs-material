@@ -94,3 +94,21 @@ of a single documentation project, with the help of a plugin.
 
 Add an alternative, completely different _vertical layout_, optimized to read 
 documentation and code side-by-side, e.g. for the documentation of APIs.
+
+## Terms
+
+Regardless of whether you're an individual or a company, you may use the
+_sponsor edition_ exactly under the same terms as the _community edition_,
+which are given by the [MIT license][12]. However, we kindly ask you to respect 
+the following guidelines:
+
+- Please __don't distribute the source code__ from the _sponsor edition_.
+  You may freely use it for public, private or commercial projects, fork it, 
+  mirror it, do whatever you want with it, as long as you're not releasing the
+  source code, as this would cannibalize the sponsorware model.
+
+- If you cancel your subscription, you're removed as a collaborator and will not
+  receive future updates of the sponsor edition. However, you may continue to
+  use the latest version that's available to you for as long as you like.
+
+  [12]: license.md

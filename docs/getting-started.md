@@ -22,18 +22,32 @@ In case you're running into problems, consult the [troubleshooting][4] section.
 
 Material for MkDocs can be installed with `pip`:
 
-``` sh
-pip install mkdocs-material
-```
+=== "Community edition"
+
+    ``` sh
+    pip install mkdocs-material
+    ```
+
+=== "Sponsor edition"
+
+    ``` sh
+    pip install git+https://$GH_TOKEN@github.com/squidfunk/mkdocs-material-next.git
+    ```
 
 This will automatically install compatible versions of all dependencies:
 [MkDocs][1], [Markdown][5], [Pygments][6] and [PyMdown Extensions][7]. Material
 for MkDocs always strives to support the latest versions, so there's no need to
 install those packages separately.
 
+Note that in order to install the [sponsor edition][8], you'll need to create a 
+[personal access token][9] and set the `GH_TOKEN` environment variable to the
+token's value.
+
   [5]: https://python-markdown.github.io/
   [6]: https://pygments.org/
   [7]: https://facelessuser.github.io/pymdown-extensions/
+  [8]: sponsorship.md
+  [9]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
 ### with docker
 
@@ -49,7 +63,7 @@ The `mkdocs` executable is provided as an entry point and `serve` is the
 default command. If you're not familar with Docker don't worry, we have you
 covered in the following sections.
 
-  [8]: https://hub.docker.com/r/squidfunk/mkdocs-material/
+  [10]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
 ### with git
 
@@ -57,9 +71,17 @@ Material for MkDocs can be directly used from [GitHub][9] by cloning the
 repository into a subfolder of your project root which might be useful if you
 want to use the very latest version:
 
-``` sh
-git clone https://github.com/squidfunk/mkdocs-material.git
-```
+=== "Community edition"
+
+    ``` sh
+    git clone https://github.com/squidfunk/mkdocs-material.git
+    ```
+
+=== "Sponsor edition"
+
+    ``` sh
+    git clone git@github.com:squidfunk/mkdocs-material-next.git mkdocs-material
+    ```
 
 The theme will reside in the folder `mkdocs-material/material`. Note that when
 cloning from `git`, you must install all required dependencies yourself:
@@ -68,4 +90,4 @@ cloning from `git`, you must install all required dependencies yourself:
 pip install -r mkdocs-material/requirements.txt
 ```
 
-  [9]: https://github.com/squidfunk/mkdocs-material
+  [11]: https://github.com/squidfunk/mkdocs-material

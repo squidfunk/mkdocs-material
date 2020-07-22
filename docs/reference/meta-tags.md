@@ -6,11 +6,6 @@ template: overrides/main.html
 
 TBD
 
-<!-- Material for MkDocs supports several flavors of lists that cater to different
-use cases, including _unordered lists_ and _ordered lists_, which are supported
-through standard Markdown, as well as _definition lists_ and _task lists_, which
-are supported through extensions. -->
-
 ## Configuration
 
 ### Metadata
