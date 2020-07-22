@@ -21,6 +21,8 @@
 [build]
 publish = "site"
 command = """
-pip install mkdocs-minify-plugin
+pip install \
+  mkdocs-minify-plugin>=0.3 \
+  mkdocs-redirects>=1.0
 python -m mkdocs build
 """

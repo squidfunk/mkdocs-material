@@ -25,14 +25,14 @@ theme:
   font: false
 ```
 
-When Google Fonts are disabled, Material for MkDocs will default to **Helvetica
-Neue** and **Monaco** with their corresponding fall backs, relying on system
+When Google Fonts are disabled, Material for MkDocs will default to __Helvetica
+Neue__ and __Monaco__ with their corresponding fall backs, relying on system
 fonts. You can easily include your own, self-hosted webfont by [overriding][4]
 the `fonts` block.
 
-  [2]: getting-started.md#fonts
+  [2]: setup/changing-the-fonts.md
   [3]: https://github.com/google/fonts/issues/1495
-  [4]: customization.md#overriding-template-blocks
+  [4]: customization.md#overriding-blocks
 
 ### Google Analytics and Disqus
 

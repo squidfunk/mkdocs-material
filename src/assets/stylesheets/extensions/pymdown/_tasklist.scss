@@ -26,8 +26,12 @@
 
 // Icon definitions
 :root {
-  --md-tasklist-icon: svg-load("@mdi/svg/svg/checkbox-blank-circle.svg");
-  --md-tasklist-icon--checked: svg-load("@mdi/svg/svg/check-circle.svg");
+  --md-tasklist-icon: svg-load(
+    "@primer/octicons/build/svg/check-circle-fill-24.svg"
+  );
+  --md-tasklist-icon--checked: svg-load(
+    "@primer/octicons/build/svg/check-circle-fill-24.svg"
+  );
 }
 
 // ----------------------------------------------------------------------------

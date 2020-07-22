@@ -50,7 +50,7 @@ export interface SearchSetupMessage {
  * A message indicating the search index is ready
  */
 export interface SearchReadyMessage {
-  type: SearchMessageType.READY       /* Message type */
+  type: SearchMessageType.READY        /* Message type */
 }
 
 /**

@@ -27,7 +27,7 @@
 {% if repo | last == "/" %}
   {% set repo = repo[:-1] %}
 {% endif %}
-{% set path = page.meta.path | default([""]) %}
+{% set path = page.meta.path | default("") %}
 <a
   href="{{ [repo, path, page.meta.source] | join('/') }}"
   title="{{ page.meta.source }}"

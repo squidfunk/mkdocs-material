@@ -52,7 +52,7 @@ kbd {
 // ----------------------------------------------------------------------------
 
 // Content that is typeset - if possible, all margins, paddings and font sizes
-// should be set in ems, so nested blocks (e.g. Admonition) render correctly,
+// should be set in ems, so nested blocks (e.g. admonitions) render correctly,
 // except headlines that should only appear on the top level and need to have
 // consistent spacing due to layout constraints.
 .md-typeset {
@@ -246,19 +246,21 @@ kbd {
     }
   }
 
-  // Keystrokes
+  // Keyboard key
   kbd {
     display: inline-block;
     padding: 0 px2em(8px, 12px);
+    color: var(--md-default-fg-color);
     font-size: px2em(12px);
     line-height: 1.5;
     vertical-align: text-top;
     word-break: break-word;
+    background-color: var(--md-kbd-color);
     border-radius: px2rem(2px);
     box-shadow:
-      0 px2rem(2px) 0 px2rem(1px) var(--md-default-fg-color--lighter),
-      0 px2rem(2px) 0             var(--md-default-fg-color--lighter),
-      inset 0 px2rem(-2px) px2rem(4px) var(--md-default-bg-color);
+      0 px2rem(2px)  0 px2rem(1px) var(--md-kbd-border-color),
+      0 px2rem(2px)  0             var(--md-kbd-border-color),
+      0 px2rem(-2px) px2rem(4px)   var(--md-kbd-accent-color) inset;
   }
 
   // Text highlighting marker
@@ -374,7 +376,7 @@ kbd {
 
   // Definition lists
   dd {
-    margin: 1em 0 1em px2em(30px, 16px);
+    margin: 1em 0 1.5em px2em(30px, 16px);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -454,7 +456,7 @@ kbd {
       // Add background on hover
       &:hover {
         background-color: rgba(0, 0, 0, 0.035);
-        box-shadow: 0 px2rem(1px)  0 var(--md-default-bg-color) inset;
+        box-shadow: 0 px2rem(1px) 0 var(--md-default-bg-color) inset;
       }
 
       // Remove top border on first row

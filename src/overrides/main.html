@@ -51,30 +51,16 @@
   <meta name="twitter:title" content="{{ title }}" />
   <meta name="twitter:description" content="{{ config.site_description }}" />
   <meta name="twitter:image" content="{{ image }}" />
+
+  <!-- Extra stylesheets -->
+  <link
+    rel="stylesheet"
+    href="{{ 'assets/stylesheets/overrides.css' | url }}"
+  />
 {% endblock %}
 
 <!-- Announcement bar -->
 {% block announce %}
-  <style>
-
-    /* Preserve link color */
-    .md-announce a,
-    .md-announce a:focus,
-    .md-announce a:hover {
-      color: currentColor;
-    }
-
-    /* Don't wrap name of blog article */
-    .md-announce strong {
-      white-space: nowrap;
-    }
-
-    /* Twitter icon */
-    .md-announce .twitter {
-      margin-left: .2em;
-      color: #00acee;
-    }
-  </style>
   <a href="https://twitter.com/squidfunk">
     For updates follow <strong>@squidfunk</strong> on
     <span class="twemoji twitter">
@@ -84,4 +70,35 @@
     </span>
     <strong>Twitter</strong>
   </a>
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+  {{ super() }}
+
+  <!-- Sponsor banner -->
+  <aside class="tx-sponsor md-typeset">
+    <a href="{{ 'sponsorship' | url }}" title="Becoming a sponsor">
+      <hr />
+      <span class="twemoji">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+          <path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"></path>
+          <path fill-opacity=".5" d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"></path>
+          <path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"></path>
+          <path fill-opacity=".25" d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"></path>
+        </svg>
+      </span>
+      <span class="twemoji">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+        </svg>
+      </span>
+      <span class="twemoji tx-sponsor__heart">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 01-.686 0 16.709 16.709 0 01-.465-.252 31.147 31.147 0 01-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0114 20.408z"></path>
+        </svg>
+      </span>
+      <hr />
+    </a>
+  </aside>
 {% endblock %}

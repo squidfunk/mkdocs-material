@@ -52,7 +52,7 @@ $admonitions: (
     $name: nth($names, 1);
     $icon: nth($props, 1);
 
-    // Inline icon through postcss in webpack
+    // Inline icon through PostCSS in Webpack
     --md-admonition-icon--#{$name}: svg-load("@mdi/svg/svg/#{$icon}.svg");
   }
 }
@@ -107,6 +107,11 @@ $admonitions: (
     .md-typeset__table {
       padding: 0 px2rem(12px);
     }
+
+    // Tabbed block container is the only child
+    > .tabbed-set:only-child {
+      margin-top: 0;
+    }
   }
 
   // Admonition title
@@ -144,7 +149,7 @@ $admonitions: (
       }
     }
 
-    // Reset code inside Admonition titles
+    // Reset code inside admonition titles
     code {
       margin: initial;
       padding: initial;
@@ -152,6 +157,11 @@ $admonitions: (
       background-color: transparent;
       border-radius: initial;
       box-shadow: none;
+    }
+
+    // Tabbed block container is the last child
+    + .tabbed-set:last-child {
+      margin-top: 0;
     }
   }
 }

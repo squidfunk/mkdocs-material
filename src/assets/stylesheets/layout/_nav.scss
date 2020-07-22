@@ -208,7 +208,7 @@
           overflow-y: auto;
           background-color: var(--md-default-bg-color);
           box-shadow:
-            inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
+            0 px2rem(1px) 0 var(--md-default-fg-color--lightest) inset;
           scroll-snap-type: y mandatory;
           touch-action: pan-y;
 

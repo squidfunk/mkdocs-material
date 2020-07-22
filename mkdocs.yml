@@ -67,6 +67,20 @@ theme:
 # Plugins
 plugins:
   - search
+  - redirects:
+      redirect_maps:
+        extensions/admonition.md: reference/admonitions.md
+        extensions/codehilite.md: reference/code-blocks.md
+        extensions/footnotes.md: reference/footnotes.md
+        extensions/metadata.md: reference/meta-tags.md
+        extensions/permalinks.md: setup/setting-up-navigation.md #permalink
+        plugins/search.md: setup/setting-up-site-search.md
+        # plugins/minification.md:
+        # plugins/revision-date.md:
+        # plugins/awesome-pages.md:
+        releases/4.md: upgrading.md #upgrading-from-4x-to-5x
+        releases/5.md: upgrading.md #upgrading-from-3x-to-4x
+        releases/changelog.md: changelog.md
   - minify:
       minify_html: true
 
@@ -90,8 +104,6 @@ extra:
 markdown_extensions:
   - markdown.extensions.admonition
   - markdown.extensions.attr_list
-  - markdown.extensions.codehilite:
-      guess_lang: false
   - markdown.extensions.def_list
   - markdown.extensions.footnotes
   - markdown.extensions.meta
@@ -106,8 +118,7 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  # - pymdownx.highlight:
-  #     linenums_style: pymdownx-inline
+  - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
@@ -127,27 +138,38 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
-  - Getting started: getting-started.md
-  - Extensions:
-    - Admonition: extensions/admonition.md
-    - CodeHilite: extensions/codehilite.md
-    - Footnotes: extensions/footnotes.md
-    - Metadata: extensions/metadata.md
-    - Permalinks: extensions/permalinks.md
-    - PyMdown: extensions/pymdown.md
-  - Plugins:
-    - Search: plugins/search.md
-    - Minification: plugins/minification.md
-    - Revision date: plugins/revision-date.md
-    - Awesome pages: plugins/awesome-pages.md
-  - Releases:
-    - Upgrading to 5.x: releases/5.md
-    - Upgrading to 4.x: releases/4.md
-    - Changelog: releases/changelog.md
-  - Customization: customization.md
-  - Data privacy: data-privacy.md
-  - Contributing: contributing.md
-  - License: license.md
+  - Getting started:
+    - Installation: getting-started.md
+    - Creating your site: creating-your-site.md
+    - Publishing your site: publishing-your-site.md
+    - Customization: customization.md
+    - Troubleshooting: troubleshooting.md
+    - Data privacy: data-privacy.md
+    - Sponsorship: sponsorship.md
+    - License: license.md
+  - Setup:
+    - Changing the colors: setup/changing-the-colors.md
+    - Changing the fonts: setup/changing-the-fonts.md
+    - Changing the language: setup/changing-the-language.md
+    - Changing the logo and icons: setup/changing-the-logo-and-icons.md
+    - Setting up navigation: setup/setting-up-navigation.md
+    - Setting up site search: setup/setting-up-site-search.md
+    - Setting up site analytics: setup/setting-up-site-analytics.md
+    - Adding social links: setup/adding-social-links.md
+    - Adding a git repository: setup/adding-a-git-repository.md
+    - Adding a comment system: setup/adding-a-comment-system.md
+    #- Adding an announcement bar: setup/adding-an-announcement-bar.md
+    #- Adding a landing page: setup/adding-a-landing-page.md
+  - Reference:
+    - Admonitions: reference/admonitions.md
+    - Code blocks: reference/code-blocks.md
+    - Content tabs: reference/content-tabs.md
+    - Footnotes: reference/footnotes.md
+    - Lists: reference/lists.md
+    - Meta tags: reference/meta-tags.md
+  - Changelog:
+    - Release notes: changelog.md
+    - Upgrading: upgrading.md
 
 # Google Analytics
 google_analytics:

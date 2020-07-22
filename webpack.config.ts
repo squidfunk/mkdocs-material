@@ -187,9 +187,10 @@ export default (_env: never, args: Configuration): Configuration[] => {
     {
       ...base,
       entry: {
-        "assets/javascripts/bundle":  "src/assets/javascripts",
-        "assets/stylesheets/main":    "src/assets/stylesheets/main.scss",
-        "assets/stylesheets/palette": "src/assets/stylesheets/palette.scss"
+        "assets/javascripts/bundle":    "src/assets/javascripts",
+        "assets/stylesheets/main":      "src/assets/stylesheets/main.scss",
+        "assets/stylesheets/overrides": "src/assets/stylesheets/overrides.scss",
+        "assets/stylesheets/palette":   "src/assets/stylesheets/palette.scss"
       },
       output: {
         path: path.resolve(__dirname, "material"),
@@ -312,16 +313,21 @@ export default (_env: never, args: Configuration): Configuration[] => {
         new EventHooksPlugin({
           afterEmit: () => {
 
-            /* Replace asset URLs in base template */
+            /* Replace asset URLs in templates */
             if (args.mode === "production") {
               const manifest = require("./material/assets/manifest.json")
-              const template = toPairs<string>(manifest)
-                .reduce((content, [from, to]) => {
-                  return content.replace(new RegExp(from, "g"), to)
-                }, fs.readFileSync("material/base.html", "utf8"))
+              for (const file of [
+                "material/base.html",
+                "material/overrides/main.html"
+              ]) {
+                const template = toPairs<string>(manifest)
+                  .reduce((content, [from, to]) => {
+                    return content.replace(new RegExp(from, "g"), to)
+                  }, fs.readFileSync(file, "utf8"))
 
-              /* Save template with replaced assets */
-              fs.writeFileSync("material/base.html", template, "utf8")
+                /* Save template with replaced assets */
+                fs.writeFileSync(file, template, "utf8")
+              }
             }
           }
         }),
