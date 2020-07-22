@@ -21,22 +21,46 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Keyframes
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
+// Heart animation
+@keyframes tx-sponsor {
+  0%, 40%, 80%, 100% {
+    transform: scale(1);
+  }
+  20%, 60% {
+    transform: scale(1.1);
+  }
+}
 
 // ----------------------------------------------------------------------------
-// Local imports
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "utilities/break";
-@import "utilities/convert";
+// Sponsor banner
+.tx-sponsor {
+  margin-top: px2rem(20px);
+  text-align: center;
 
-@import "config";
+  // Sponsor link
+  a {
+    color: $clr-pink-500;
+    font-variant: all-petite-caps;
+  }
 
-@import "overrides/admonition";
-@import "overrides/announce";
-@import "overrides/sponsor";
-@import "overrides/typeset";
+  // Horizontal separators
+  hr {
+    display: inline-block;
+    width: px2rem(40px);
+    margin: px2em(16px);
+    vertical-align: middle;
+    background-color: currentColor;
+    border: none;
+  }
+
+  // Pumping heart
+  &__heart {
+    animation: tx-sponsor 1000ms infinite;
+  }
+}
