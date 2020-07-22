@@ -31,7 +31,7 @@ google_analytics:
   [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/integrations/analytics.html
   [4]: https://support.google.com/analytics/answer/1042508
 
-### Tracking site search
+#### Enabling site search tracking
 
 Besides basic page views, _site search_ can also be tracked to better understand
 how people use your documentation and what they expect to find. To enable

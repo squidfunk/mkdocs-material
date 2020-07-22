@@ -2,21 +2,9 @@
 template: overrides/main.html
 ---
 
-# Upgrading
+# Changelog
 
-To upgrade to the latest version:
-
-``` sh
-pip install --upgrade mkdocs-material
-```
-
-To inspect the currently installed version:
-
-``` sh
-pip show mkdocs-material
-```
-
-## Changelog
+## Release notes
 
 ### 5.4.0 <small>_ June 29, 2020</small>
 

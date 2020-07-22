@@ -2,29 +2,43 @@
 template: overrides/main.html
 ---
 
-# Upgrading to 5.x
+# Upgrading
 
-## Highlights
+Upgrade to the latest version with:
+
+``` sh
+pip install --upgrade mkdocs-material
+```
+
+Inspect the currently installed version with:
+
+``` sh
+pip show mkdocs-material
+```
+
+## Upgrading from 4.x to 5.x
+
+### What's new?
 
 * Reactive architecture – try `app.dialog$.next("Hi!")` in the console
-* [Instant loading][5] – make Material behave like a Single Page Application
-* Improved CSS customization with [CSS variables][1] – set your brand's colors
+* [Instant loading][1] – make Material behave like a Single Page Application
+* Improved CSS customization with [CSS variables][2] – set your brand's colors
 * Improved CSS resilience, e.g. proper sidebar locking for customized headers
-* Improved [icon integration][6] and configuration – now including over 5k icons
+* Improved [icon integration][3] and configuration – now including over 5k icons
 * Added possibility to use any icon for logo, repository and social links
 * Search UI does not freeze anymore (moved to web worker)
 * Search index built only once when using instant loading
 * Improved extensible keyboard handling
-* Support for [prebuilt search indexes][2]
+* Support for [prebuilt search indexes][4]
 * Support for displaying stars and forks for GitLab repositories
 * Support for scroll snapping of sidebars and search results
 * Reduced HTML and CSS footprint due to deprecation of Internet Explorer support
 * Slight facelifting of some UI elements (Admonitions, tables, ...)
 
-  [1]: https://github.com/squidfunk/mkdocs-material/blob/081d540127c41703da3d73aa69eb521615c1cb89/src/assets/stylesheets/base/_colors.scss#L27-L55
-  [2]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
-
-## How to upgrade
+  [1]: setup/navigation.md#instant-loading
+  [2]: setup/changing-the-colors.md#custom-colors
+  [3]: setup/changing-the-logo-and-icons.md#icons
+  [4]: setup/setting-up-site-search.md#built-in-search
 
 ### Changes to `mkdocs.yml`
 
@@ -34,7 +48,7 @@ does not contain the key, you can skip it.
 
 #### `theme.feature`
 
-Optional features like [tabs][4] and [instant loading][5] are now implemented as
+Optional features like [tabs][5] and [instant loading][1] are now implemented as
 flags and can be enabled by listing them in `mkdocs.yml` under `theme.features`:
 
 === "5.x"
@@ -54,13 +68,12 @@ flags and can be enabled by listing them in `mkdocs.yml` under `theme.features`:
         tabs: true
     ```
 
-  [4]: ../../getting-started/#tabs
-  [5]: ../../getting-started/#instant-loading
+  [5]: setup/navigation.md#navigation-tabs
 
 #### `theme.logo.icon`
 
 The logo icon configuration was centralized under `theme.icon.logo` and can now
-be set to any of the [icons bundled with the theme][6]:
+be set to any of the [icons bundled with the theme][3]:
 
 === "5.x"
 
@@ -69,8 +82,6 @@ be set to any of the [icons bundled with the theme][6]:
       icon:
         logo: material/cloud
     ```
-
-  [6]: ../../getting-started/#icons
 
 === "4.x"
 
@@ -83,7 +94,7 @@ be set to any of the [icons bundled with the theme][6]:
 #### `extra.repo_icon`
 
 The repo icon configuration was centralized under `theme.icon.repo` and can now
-be set to any of the [icons bundled with the theme][6]:
+be set to any of the [icons bundled with the theme][3]:
 
 === "5.x"
 
@@ -102,7 +113,7 @@ be set to any of the [icons bundled with the theme][6]:
 
 #### `extra.search.*`
 
-Search is now configured as part of the [plugin options][7]. Note that the
+Search is now configured as part of the [plugin options][6]. Note that the
 search languages must now be listed as an array of strings and the `tokenizer`
 was renamed to `separator`:
 
@@ -127,7 +138,7 @@ was renamed to `separator`:
         tokenizer: [\s\-\.]+
     ```
 
-  [7]: ../../plugins/search/#configuration
+  [6]: setup/setting-up-site-search.md#built-in-search
 
 #### `extra.social.*`
 
@@ -158,8 +169,8 @@ The templates have undergone a set of changes to make them future-proof. If
 you've used theme extension to override a block or template, make sure that it 
 matches the new structure:
 
-- If you've overridden a __block__, check `base.html` for potential changes
-- If you've overridden a __template__, check the respective `*.html` file for
+- If you've overridden a **block**, check `base.html` for potential changes
+- If you've overridden a **template**, check the respective `*.html` file for
   potential changes
 
 #### `base.html`
@@ -869,3 +880,26 @@ matches the new structure:
    {% endif %}
  </nav>
 ```
+
+## Upgrading from 3.x to 4.x
+
+### What's new?
+
+Material for MkDocs 4 fixes incorrect layout on Chinese systems. The fix
+includes a mandatory change of the base font-size from `10px` to `20px` which
+means all `rem` values needed to be updated. Within the theme, `px` to `rem` 
+calculation is now encapsulated in a new function called `px2rem` which is part
+of the SASS code base.
+
+If you use Material for MkDocs with custom CSS that is based on `rem` values,
+note that those values must now be divided by 2. Now, `1.0rem` doesn't map to
+`10px`, but `20px`. To learn more about the problem and implications, please
+refer to #911 in which the problem was discovered and fixed.
+
+### Changes to `mkdocs.yml`
+
+None.
+
+### Changes to `*.html` files
+
+None.
