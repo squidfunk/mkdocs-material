@@ -39,7 +39,12 @@
 
   // Code color shades
   --md-code-bg-color:                  hsla(232, 15%, 18%, 1);
-  --md-code-fg-color:                  hsla(60, 30%, 96%, 1);
+  --md-code-fg-color:                  hsla(232, 18%, 86%, 1);
+
+  // Keyboard color shades
+  --md-kbd-color:                      hsla(232, 15%, 94%, 0.12);
+  --md-kbd-accent-color:               hsla(232, 15%, 94%, 0.2);
+  --md-kbd-border-color:               hsla(232, 15%, 14%, 1);
 
   // Text color shades
   --md-text-color:                     var(--md-default-fg-color--light);

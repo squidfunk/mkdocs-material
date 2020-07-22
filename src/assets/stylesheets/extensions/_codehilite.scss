@@ -242,7 +242,7 @@ $codehilite-whitespace: transparent;
   // Add spacing to line number container
   .linenodiv {
     padding-right: px2em(8px, 13.6px);
-    box-shadow: inset px2rem(-1px) 0 var(--md-default-fg-color--lightest);
+    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
 
     // Reset spacings
     pre {

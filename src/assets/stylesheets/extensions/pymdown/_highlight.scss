@@ -40,7 +40,7 @@
     padding-left: px2em(16px, 13.6px);
     color: var(--md-default-fg-color--lighter);
     background-color: var(--md-code-bg-color);
-    box-shadow: inset px2rem(-1px) 0 var(--md-default-fg-color--lightest);
+    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
     content: attr(data-linenos);
     user-select: none;
   }
