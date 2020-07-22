@@ -103,7 +103,7 @@ The [Table of contents][8] extension, which is part of the standard Markdown
 library, provides some options that are supported by Material for MkDocs to
 customize its appearance:
 
-`permalink`
+`permalink`{: #permalink }
 
 :   :octicons-milestone-24: Default: `false` – This option adds an anchor link
     containing the paragraph symbol `¶` or another custom symbol at the end of
@@ -126,7 +126,7 @@ customize its appearance:
               permalink: ⚓︎
         ```
 
-`slugify`
+`slugify`{: #slugify }
 
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for 
     customization of the slug function. For some languages, the default may not
@@ -149,7 +149,7 @@ customize its appearance:
               slugify: pymdownx.slugs.uslugify_cased
         ```
 
-`toc_depth`
+`toc_depth`{: #toc_depth }
 
 :   :octicons-milestone-24: Default: `6` – Define the range of levels to be
     included in the table of contents. This may be useful for project

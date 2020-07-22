@@ -22,7 +22,7 @@ The [Highlight][3] extension, which is part of [Python Markdown Extensions][5],
 integrates with Material for MkDocs and provides several options for
 configuring syntax highlighting of code blocks:
 
-`use_pygments`
+`use_pygments`{: #use_pygments }
 
 :   :octicons-milestone-24: Default: `true` – This option allows to control
     whether highlighting should be carried out during build time by
@@ -71,7 +71,7 @@ configuring syntax highlighting of code blocks:
 
         Note that Highlight.js has no affiliation with the Highlight extension.
 
-`linenums`
+`linenums`{: #linenums }
 
 :   :octicons-milestone-24: Default: `false` – This option will add line numbers
     to _all_ code blocks. If you wish to add line numbers to _some_, but not all
@@ -84,7 +84,7 @@ configuring syntax highlighting of code blocks:
           linenums: true
     ```
 
-`linenums_style`
+`linenums_style`{: #linenums_style }
 
 :   :octicons-milestone-24: Default: `table` – The Highlight extension provides
     three ways to add line numbers, all of which are supported by Material for

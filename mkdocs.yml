@@ -73,13 +73,13 @@ plugins:
         extensions/codehilite.md: reference/code-blocks.md
         extensions/footnotes.md: reference/footnotes.md
         extensions/metadata.md: reference/meta-tags.md
-        extensions/permalinks.md: setup/setting-up-navigation.md
+        extensions/permalinks.md: setup/setting-up-navigation.md #permalink
         plugins/search.md: setup/setting-up-site-search.md
         # plugins/minification.md:
         # plugins/revision-date.md:
         # plugins/awesome-pages.md:
-        releases/4.md: upgrading.md
-        releases/5.md: upgrading.md
+        releases/4.md: upgrading.md #upgrading-from-4x-to-5x
+        releases/5.md: upgrading.md #upgrading-from-3x-to-4x
         releases/changelog.md: changelog.md
   - minify:
       minify_html: true
