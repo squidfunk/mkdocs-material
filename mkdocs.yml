@@ -67,6 +67,20 @@ theme:
 # Plugins
 plugins:
   - search
+  - redirects:
+      redirect_maps:
+        extensions/admonition.md: reference/admonitions.md
+        extensions/codehilite.md: reference/code-blocks.md
+        extensions/footnotes.md: reference/footnotes.md
+        extensions/metadata.md: reference/meta-tags.md
+        extensions/permalinks.md: setup/setting-up-navigation.md
+        plugins/search.md: setup/setting-up-site-search.md
+        # plugins/minification.md:
+        # plugins/revision-date.md:
+        # plugins/awesome-pages.md:
+        releases/4.md: upgrading.md
+        releases/5.md: upgrading.md
+        releases/changelog.md: changelog.md
   - minify:
       minify_html: true
 

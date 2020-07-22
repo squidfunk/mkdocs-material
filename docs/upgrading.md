@@ -35,7 +35,7 @@ pip show mkdocs-material
 * Reduced HTML and CSS footprint due to deprecation of Internet Explorer support
 * Slight facelifting of some UI elements (Admonitions, tables, ...)
 
-  [1]: setup/navigation.md#instant-loading
+  [1]: setup/setting-up-navigation.md#instant-loading
   [2]: setup/changing-the-colors.md#custom-colors
   [3]: setup/changing-the-logo-and-icons.md#icons
   [4]: setup/setting-up-site-search.md#built-in-search
@@ -68,7 +68,7 @@ flags and can be enabled by listing them in `mkdocs.yml` under `theme.features`:
         tabs: true
     ```
 
-  [5]: setup/navigation.md#navigation-tabs
+  [5]: setup/setting-up-navigation.md#navigation-tabs
 
 #### `theme.logo.icon`
 
