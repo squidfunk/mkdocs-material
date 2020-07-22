@@ -12,7 +12,7 @@ your project to be located and enter:
 mkdocs new .
 ```
 
-If you're running Material for MkDocs from within Docker, use:
+Alternatively, if you're running Material for MkDocs from within Docker, use:
 
 === "Unix"
 

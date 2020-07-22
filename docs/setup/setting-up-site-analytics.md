@@ -68,7 +68,7 @@ and [override the `analytics` block][6]:
 [:octicons-file-code-24: Source][2] · 
 :octicons-mortar-board-24: Difficulty: _easy_
 
-If you're using [instant loading][7], you may use the `location$` observable
+If you're using [instant loading][7], you may use the `location$` observable,
 which will emit the current `URL` to listen for navigation events and register
 a page view event with:
 

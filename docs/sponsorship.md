@@ -32,8 +32,8 @@ with the sponsor edition__][5].
 
 ## How to become a sponsor
 
-You've decided to become a sponsor? You're just __three easy steps__ away from 
-enjoying the latest features of Material for MkDocs. Complete the following
+You've decided to become a sponsor? Great! You're just __three easy steps__ away
+from enjoying the latest features of Material for MkDocs. Complete the following
 steps and you're in:
 
 - Visit [squidfunk's sponsor profile][6] and pick a tier that includes exclusive
@@ -59,7 +59,7 @@ you're free to do at any time.__
 ## Roadmap
 
 The following list of funding goals – named after varieties of chili peppers 
-[I'm growing on my balcony][11] – show which features are already part of the 
+[I'm growing on my balcony][11] – shows, which features are already part of the
 sponsor edition or yet to come.
 
   [11]: https://www.instagram.com/squidfunk/
@@ -109,6 +109,8 @@ the following guidelines:
 
 - If you cancel your subscription, you're removed as a collaborator and will not
   receive future updates of the sponsor edition. However, you may continue to
-  use the latest version that's available to you for as long as you like.
+  use the latest version that's available to you for __as long as you like__.
+  Just remember that __[GitHub deletes private forks][13]__.
 
   [12]: license.md
+  [13]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

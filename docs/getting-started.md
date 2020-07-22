@@ -35,23 +35,24 @@ Material for MkDocs can be installed with `pip`:
     ```
 
 This will automatically install compatible versions of all dependencies:
-[MkDocs][1], [Markdown][5], [Pygments][6] and [PyMdown Extensions][7]. Material
-for MkDocs always strives to support the latest versions, so there's no need to
-install those packages separately.
+[MkDocs][1], [Markdown][5], [Pygments][6] and [Python Markdown Extensions][7].
+Material for MkDocs always strives to support the latest versions, so there's
+no need to install those packages separately.
 
-Note that in order to install the [sponsor edition][8], you'll need to create a 
-[personal access token][9] and set the `GH_TOKEN` environment variable to the
-token's value.
+Note that in order to install the [sponsor edition][8], you'll need to [become
+a sponsor][9], create a [personal access token][10], and set the `GH_TOKEN`
+environment variable to the token's value.
 
   [5]: https://python-markdown.github.io/
   [6]: https://pygments.org/
   [7]: https://facelessuser.github.io/pymdown-extensions/
   [8]: sponsorship.md
-  [9]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+  [9]: sponsorship.md#how-to-become-a-sponsor
+  [10]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
 ### with docker
 
-The official [Docker image][8] is a great way to get up and running in a few
+The official [Docker image][11] is a great way to get up and running in a few
 minutes, as it comes with all dependencies pre-installed. Pull the image for the 
 `latest` version with:
 
@@ -63,11 +64,11 @@ The `mkdocs` executable is provided as an entry point and `serve` is the
 default command. If you're not familar with Docker don't worry, we have you
 covered in the following sections.
 
-  [10]: https://hub.docker.com/r/squidfunk/mkdocs-material/
+  [11]: https://hub.docker.com/r/squidfunk/mkdocs-material/
 
 ### with git
 
-Material for MkDocs can be directly used from [GitHub][9] by cloning the
+Material for MkDocs can be directly used from [GitHub][12] by cloning the
 repository into a subfolder of your project root which might be useful if you
 want to use the very latest version:
 
@@ -90,4 +91,4 @@ cloning from `git`, you must install all required dependencies yourself:
 pip install -r mkdocs-material/requirements.txt
 ```
 
-  [11]: https://github.com/squidfunk/mkdocs-material
+  [12]: https://github.com/squidfunk/mkdocs-material

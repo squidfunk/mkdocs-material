@@ -5,7 +5,7 @@ template: overrides/main.html
 # Publishing your site
 
 The great thing about hosting project documentation in a `git` repository is
-the ability to automatically deploy it when new changes are pushed. MkDocs
+the ability to deploy it automatically when new changes are pushed. MkDocs
 makes this ridiculously simple.
 
 ## GitHub Pages

@@ -5,7 +5,7 @@ template: overrides/main.html
 # Setting up site search
 
 Material for MkDocs provides a great, client-side search implementation,
-omitting the need for the integation of third-party services, which might
+omitting the need for the integration of third-party services, which might
 violate data privacy regulations. Furthermore, with some effort, search can
 be made available [offline][1].
 
@@ -140,7 +140,7 @@ will not work out-of-the-box due to the restrictions modern browsers impose for
 security reasons. This can be mitigated with the [localsearch plugin][9] in
 combination with @squidfunk's [iframe-worker][10] polyfill.
 
-For [setup instructions][11], refer to the official documentation.
+For setup instructions, refer to the [official documentation][11].
 
   [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L378-L390
   [9]: https://github.com/wilhelmer/mkdocs-localsearch/
