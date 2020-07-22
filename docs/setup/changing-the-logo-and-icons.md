@@ -55,7 +55,7 @@ theme:
 
   [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L71
 
-### Emoji (icons)
+### Icons
 
 [:octicons-file-code-24: Source][5] · [:octicons-workflow-24: Extension][6]
 

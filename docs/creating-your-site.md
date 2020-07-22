@@ -70,9 +70,9 @@ icons and much more:
 * [Changing the logo and icons][6]
 * [Setting up navigation][7]
 * [Setting up site search][8]
-* [Adding a git repository][9]
-* [Adding social links][10]
-* [Adding site analytics][11]
+* [Setting up site analytics][9]
+* [Adding a git repository][10]
+* [Adding social links][11]
 * [Adding a comment system][12]
 * [Adding an announcement bar][13]
 <!-- * [Adding a landing page][14] -->
@@ -84,9 +84,9 @@ icons and much more:
   [6]: setup/changing-the-logo-and-icons.md
   [7]: setup/setting-up-navigation.md
   [8]: setup/setting-up-site-search.md
-  [9]: setup/adding-a-git-repository.md
-  [10]: setup/adding-social-links.md
-  [11]: setup/adding-site-analytics.md
+  [9]: setup/setting-up-site-analytics.md
+  [10]: setup/adding-a-git-repository.md
+  [11]: setup/adding-social-links.md
   [12]: setup/adding-a-comment-system.md
   [13]: setup/adding-an-announcement-bar.md
   <!--[14]: setup/adding-a-landing-page.md-->

@@ -13,6 +13,8 @@ configured through `mkdocs.yml`.
 
 ## Configuration
 
+### Social links
+
 [:octicons-file-code-24: Source][1] · 
 :octicons-milestone-24: Default: _none_
 
@@ -75,7 +77,7 @@ For each entry, the following fields are available:
 
 `name`
 
-:   :octicons-milestone-24: Default: _domain name from_ `link`, if available – 
+:   :octicons-milestone-24: Default: _domain name from_ `link`_, if available_ –
     This field is used as the link's `title` attribute and can be set to a 
     discernable name to improve accessibility:
 
