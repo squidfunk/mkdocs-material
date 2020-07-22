@@ -230,7 +230,7 @@ and must return the processed query string to be submitted to the search index.
   [13]: ../customization.md#extending-the-theme
   [14]: ../customization.md#overriding-blocks
 
-### Worker implementation
+### Custom search
 
 [:octicons-file-code-24: Source][15] · 
 :octicons-mortar-board-24: Difficulty: _challenging_

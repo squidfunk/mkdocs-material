@@ -96,12 +96,15 @@ The directory layout of the theme is as follows:
 
 ``` sh
 .
+├─ .icons/                             # Bundled icon sets
 ├─ assets/
 │  ├─ images/                          # Images and icons
 │  ├─ javascripts/                     # JavaScript
 │  └─ stylesheets/                     # Stylesheets
 ├─ partials/
 │  ├─ integrations/                    # Third-party integrations
+│  │  ├─ analytics.html                # - Google Analytics
+│  │  └─ disqus.html                   # - Disqus
 │  ├─ language/                        # Localized languages
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar

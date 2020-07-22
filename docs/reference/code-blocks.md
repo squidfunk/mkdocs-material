@@ -133,7 +133,7 @@ markdown_extensions:
 See the section on [inline code blocks][12] for usage information.
 
   [11]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
-  [12]: #inline-code-blocks
+  [12]: #highlighting-inline-code-blocks
 
 ### SuperFences
 
@@ -151,6 +151,22 @@ markdown_extensions:
   [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_typeset.scss
   [14]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
+### Keys
+
+[:octicons-file-code-24: Source][15] · [:octicons-workflow-24: Extension][16]
+
+The [Keys][16] extension, which is part of [Python Markdown Extensions][5],
+allows for inserting __keyboard keys__, e.g. ++ctrl+alt+delete++ , and
+can be enabled from `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.keys
+```
+
+  [15]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/pymdown/_keys.scss
+  [16]: https://facelessuser.github.io/pymdown-extensions/extensions/keys/
+
 ## Usage
 
 This section discusses how to use different syntax highlighting features with
@@ -161,7 +177,7 @@ a JavaScript syntax highlighter.
 
 Code blocks must be enclosed with two separate lines containing three backticks.
 To add code highlighting to those blocks, add the language short name directly
-after the opening block. See the [list of available lexers][15] to find the
+after the opening block. See the [list of available lexers][17] to find the
 short name for a given language.
 
 _Example_:
@@ -178,7 +194,7 @@ _Result_:
 import tensorflow as tf
 ```
 
-  [15]: https://pygments.org/docs/lexers/
+  [17]: https://pygments.org/docs/lexers/
 
 ### Adding line numbers
 
@@ -237,11 +253,11 @@ def bubble_sort(items):
                 items[j], items[j + 1] = items[j + 1], items[j]
 ```
 
-### Inline code blocks
+### Highlighting inline code blocks
 
-When [InlineHilite][16] is enabled, inline code blocks can be highlighted by
+When [InlineHilite][18] is enabled, inline code blocks can be highlighted by
 prefixing them with a shebang-like sequence, i.e. `#!`, directly followed by
-the [language short name][15].
+the [language short name][17].
 
 _Example_:
 
@@ -253,4 +269,22 @@ _Result_:
 
 The `#!python range()` function is used to generate a sequence of numbers.
 
-  [16]: #inlinehilite
+  [18]: #inlinehilite
+
+### Displaying keyboard keys
+
+When [Keys][19] is enabled, keyboard keys can be inserted with a simple syntax.
+See the [Python Markdown Extensions][16] documentation for a list of all
+available keys.
+
+_Example_:
+
+```
+++ctrl+alt+del++
+```
+
+_Result_:
+
+++ctrl+alt+del++
+
+  [19]: #keys
