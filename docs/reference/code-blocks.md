@@ -135,27 +135,11 @@ See the section on [inline code blocks][12] for usage information.
   [11]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
   [12]: #highlighting-inline-code-blocks
 
-### SuperFences
+### Keys
 
 [:octicons-file-code-24: Source][13] · [:octicons-workflow-24: Extension][14]
 
-The [SuperFences][14] extension, which is also part of [Python Markdown
-Extensions][5], allows for the __nesting of code blocks inside other blocks__,
-and is therefore strongly recommended:
-
-``` yaml
-markdown_extensions:
-  - pymdownx.superfences
-```
-
-  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss
-  [14]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
-
-### Keys
-
-[:octicons-file-code-24: Source][15] · [:octicons-workflow-24: Extension][16]
-
-The [Keys][16] extension, which is part of [Python Markdown Extensions][5],
+The [Keys][14] extension, which is part of [Python Markdown Extensions][5],
 allows for inserting __keyboard keys__, e.g. ++ctrl+alt+delete++ , and
 can be enabled via `mkdocs.yml`:
 
@@ -164,8 +148,34 @@ markdown_extensions:
   - pymdownx.keys
 ```
 
-  [15]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_keys.scss
-  [16]: https://facelessuser.github.io/pymdown-extensions/extensions/keys/
+  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_keys.scss
+  [14]: https://facelessuser.github.io/pymdown-extensions/extensions/keys/
+
+### SuperFences
+
+The [SuperFences][15] extension, which is also part of [Python Markdown
+Extensions][5], allows for the __nesting of code blocks inside other blocks__,
+and is therefore strongly recommended:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.superfences
+```
+
+  [15]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+
+### Snippets
+
+The [Snippets][16] extension, which is also part of [Python Markdown
+Extensions][5], allows to __insert content from other files__ or other, regular
+content, and can be enabled via `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.snippets
+```
+
+  [16]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
 
 ## Usage
 
@@ -271,11 +281,11 @@ The `#!python range()` function is used to generate a sequence of numbers.
 
   [18]: #inlinehilite
 
-### Displaying keyboard keys
+### Adding keyboard keys
 
 When [Keys][19] is enabled, keyboard keys can be inserted with a simple syntax.
-See the [Python Markdown Extensions][16] documentation for a list of all
-available keys.
+Consult the [Python Markdown Extensions][16] documentation to learn about all
+available short key codes.
 
 _Example_:
 
@@ -288,3 +298,29 @@ _Result_:
 ++ctrl+alt+del++
 
   [19]: #keys
+
+### Adding external files
+
+When [Snippets][20] is enabled, content from other files can be inserted, which
+is especially useful to reference and embed the contents of source files
+directly into your project documentation.
+
+_Example_:
+
+```` markdown
+```
+--8<--​ ".browserslistrc"
+```
+````
+
+_Result_:
+
+```
+--8<-- ".browserslistrc"
+```
+
+Note that [Snippets][20] is not limited to code blocks, but can be used anywhere
+in a Markdown file to put repeating content into separate files, which is also
+explained in the [official documentation][16].
+
+  [20]: #snippets

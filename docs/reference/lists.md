@@ -15,7 +15,7 @@ are supported through extensions.
 
 [:octicons-file-code-24: Source][1] · [:octicons-workflow-24: Extension][2]
 
-The [Definition List][1] extension, which is part of the standard Markdown
+The [Definition List][2] extension, which is part of the standard Markdown
 library, adds the ability to add definitions lists to a document and can be 
 enabled via `mkdocs.yml`:
 

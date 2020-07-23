@@ -40,11 +40,11 @@ repo_name: squidfunk/mkdocs-material
 ```
 
   [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source.html
-  [3]: https://www.mkdocs.org/user-guide/configuration/#repo_url
+  [3]: https://www.mkdocs.org/user-guide/configuration/#repo_name
 
 ### Repository icon
 
-[:octicons-file-code-24: Source][1] · :octicons-milestone-24: Default:
+[:octicons-file-code-24: Source][2] · :octicons-milestone-24: Default:
 `fontawesome/brands/git-alt`
 
 While the default _repository icon_ is a generic git icon, it can be set to

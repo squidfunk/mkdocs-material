@@ -15,9 +15,12 @@ integrated, too.
 
 ### Disqus
 
-First, ensure you've set [`site_url`][2] in `mkdocs.yml`. Then, to integrate
+[:octicons-file-code-24: Source][2] ·
+:octicons-milestone-24: Default: _none_
+
+First, ensure you've set [`site_url`][3] in `mkdocs.yml`. Then, to integrate
 Material for MkDocs with [Disqus][1], create an account and a site giving you a
-[shortname][3], and add it to `mkdocs.yml`:
+[shortname][4], and add it to `mkdocs.yml`:
 
 ``` yaml
 extra:
@@ -26,14 +29,18 @@ extra:
 
 This will insert a comment system on _every page, except the index page_.
 
-  [2]: https://www.mkdocs.org/user-guide/configuration/#site_url
-  [3]: https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/integrations/disqus.html
+  [3]: https://www.mkdocs.org/user-guide/configuration/#site_url
+  [4]: https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 ## Customization
 
 ### Selective integration
 
-If the [Metadata][4] extension is enabled, you can disable or enable Disqus for
+[:octicons-file-code-24: Source][2] ·
+:octicons-mortar-board-24: Difficulty: _easy_
+
+If the [Metadata][5] extension is enabled, you can disable or enable Disqus for
 specific pages by adding the following to the front matter of a page:
 
 === "Enable Disqus"
@@ -52,4 +59,4 @@ specific pages by adding the following to the front matter of a page:
     ---
     ```
 
-  [4]: ../reference/meta-tags.md#metadata
+  [5]: ../reference/meta-tags.md#metadata

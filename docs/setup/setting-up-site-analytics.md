@@ -47,7 +47,7 @@ search tracking:
 
 ### Using other analytics services
 
-[:octicons-file-code-24: Source][2] · 
+[:octicons-file-code-24: Source][3] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 In order to integrate another analytics service provider offering an
@@ -65,7 +65,7 @@ and [override the `analytics` block][6]:
 
 ### Using instant loading
 
-[:octicons-file-code-24: Source][2] · 
+[:octicons-file-code-24: Source][3] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 If you're using [instant loading][7], you may use the `location$` observable,

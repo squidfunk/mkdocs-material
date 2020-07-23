@@ -10,7 +10,7 @@ template: overrides/main.html
 
 ### Metadata
 
-[:octicons-file-code-24: Source][1] · [:octicons-workflow-24: Extension][2]
+[:octicons-workflow-24: Extension][1]
 
 The [Metadata][1] extension, which is part of the standard Markdown
 library, adds the ability to add custom metadata to a document and can be 
@@ -22,7 +22,6 @@ markdown_extensions:
 ```
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [2]: https://python-markdown.github.io/extensions/meta_data/
 
 ## Usage
 

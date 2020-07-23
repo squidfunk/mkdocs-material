@@ -46,24 +46,20 @@ markdown_extensions:
 
 ### SuperFences
 
-[:octicons-file-code-24: Source][6] · [:octicons-workflow-24: Extension][7]
-
-The [SuperFences][7] extension, which is also part of [Python Markdown
-Extensions][5], allows for the __nesting of content blocks inside admonitions__, 
-and is therefore strongly recommended:
+The [SuperFences][6] extension, which is also part of [Python Markdown
+Extensions][5], allows for the __nesting of code and content blocks inside
+admonitions__, and is therefore strongly recommended:
 
 ``` yaml
 markdown_extensions:
   - pymdownx.superfences
 ```
-
-  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss
-  [7]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+  [6]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 ## Usage
 
 Admonitions follow a simple syntax: a block must start with `!!!`, followed
-by a single keyword which is used as the [type qualifier][8] of the block. The
+by a single keyword which is used as the [type qualifier][7] of the block. The
 content of the block then follows on the next line, indented by four spaces.
 
 _Example_:
@@ -83,7 +79,7 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-  [8]: #supported-types
+  [7]: #supported-types
 
 ### Changing the title
 
@@ -110,9 +106,9 @@ _Result_:
 
 ### Removing the title
 
-Similar to [changing the title][9], the icon and title can be omitted entirely
+Similar to [changing the title][8], the icon and title can be omitted entirely
 by adding an empty string directly after the type qualifier. Note that this 
-will not work for [collapsible blocks][10].
+will not work for [collapsible blocks][9].
 
 _Example_:
 
@@ -131,14 +127,14 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-  [9]: #changing-the-title
-  [10]: #collapsible-blocks
+  [8]: #changing-the-title
+  [9]: #collapsible-blocks
 
 ### Embedded content
 
 Admonitions can contain all kinds of text content, including headlines, lists,
 paragraphs and other blocks. While the parser from the standard Markdown library
-doesn't account for nested blocks, the [SuperFences][11] extension adds the 
+doesn't account for nested blocks, the [SuperFences][10] extension adds the
 ability to nest arbitrary content inside admonitions.
 
 _Example_:
@@ -182,11 +178,11 @@ _Result_:
     sem ut cursus. Nullam sit amet tincidunt ipsum, sit amet elementum turpis.
     Etiam ipsum quam, mattis in purus vitae, lacinia fermentum enim.
 
-  [11]: #superfences
+  [10]: #superfences
 
 ### Collapsible blocks
 
-The [Details][12] extension adds support for rendering collapsible admonition
+The [Details][11] extension adds support for rendering collapsible admonition
 blocks. This is useful for FAQs or content that is of secondary nature. A
 details block follows the syntax and semantics of admonition blocks, but must
 start with `???`.
@@ -227,14 +223,14 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-  [12]: #details
+  [11]: #details
 
 ### Supported types
 
 Following is a list of type qualifiers provided by Material for MkDocs, whereas
 the default type, and thus fallback for unknown type qualifiers, is `note`:
 
-`note`, `seealso`
+`note`{: #note }, `seealso`
 
 :   !!! note
 
@@ -242,7 +238,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`abstract`, `summary`, `tldr`
+`abstract`{: #abstract }, `summary`, `tldr`
 
 :   !!! abstract
 
@@ -250,7 +246,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`info`, `todo`
+`info`{: #info}, `todo`
 
 :   !!! info
 
@@ -258,7 +254,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`tip`, `hint`, `important`
+`tip`{: #tip }, `hint`, `important`
 
 :   !!! tip
 
@@ -266,7 +262,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`success`, `check`, `done`
+`success`{: #success }, `check`, `done`
 
 :   !!! success
 
@@ -274,7 +270,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`question`, `help`, `faq`
+`question`{: #question }, `help`, `faq`
 
 :   !!! question
 
@@ -282,7 +278,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`warning`, `caution`, `attention`
+`warning`{: #warning }, `caution`, `attention`
 
 :   !!! warning
 
@@ -290,7 +286,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`failure`, `fail`, `missing`
+`failure`{: #failure }, `fail`, `missing`
 
 :   !!! failure
 
@@ -298,7 +294,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`danger`, `error`
+`danger`{: #danger }, `error`
 
 :   !!! danger
 
@@ -306,7 +302,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`bug`
+`bug`{: #bug }
 
 :   !!! bug
 
@@ -314,7 +310,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`example`
+`example`{: #example }
 
 :   !!! example
 
@@ -322,7 +318,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`quote`, `cite`
+`quote`{: #quote }, `cite`
 
 :   !!! quote
 
