@@ -170,6 +170,7 @@ nav:
   - Changelog:
     - Release notes: changelog.md
     - Upgrading: upgrading.md
+    - Deprecations: deprecations.md
 
 # Google Analytics
 google_analytics:

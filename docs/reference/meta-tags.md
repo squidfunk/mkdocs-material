@@ -10,11 +10,9 @@ template: overrides/main.html
 
 ### Metadata
 
-[:octicons-workflow-24: Extension][1]
-
-The [Metadata][1] extension, which is part of the standard Markdown
-library, adds the ability to add custom metadata to a document and can be 
-enabled via `mkdocs.yml`:
+The [Metadata][1] extension, which is part of the standard Markdown library,
+adds the ability to add front matter to a document and can be enabled via
+`mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -36,8 +34,6 @@ Example:
 ---
 title: Lorem ipsum dolor sit amet
 description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
-path: path/to/file
-source: file.js
 ---
 
 # Headline
@@ -56,39 +52,7 @@ you can see on the current page when you scroll to the top. It's as simple as:
 hero: Set heroes with metadata
 ```
 
-### Linking sources
 
-When a document is related to a specific source file and the `repo_url` is
-defined inside the project's `mkdocs.yml`, the file can be linked using the
-`source` key:
-
-``` markdown
-source: file.js
-```
-
-The filename is appended to the `repo_url` set in `mkdocs.yml`, but can be
-prefixed with a `path` to ensure correct path resolving. The name of the source
-file is shown in the tooltip.
-
-Example:
-
-``` markdown
-path: tree/master/docs/extensions
-source: metadata.md
-```
-
-### Redirecting to another page
-
-It's sometimes necessary to move documents around in the navigation tree and
-redirect users from the old URL to the new one. The `redirect` meta-tag allows
-to create a redirection from the current document to the address specified in
-the tag.
-
-For instance, if your document contains:
-
-``` markdown
-redirect: /new/url
-```
 
 accessing that document's URL will automatically redirect to `/new/url`.
 
