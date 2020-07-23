@@ -2,7 +2,7 @@
 template: overrides/main.html
 ---
 
-# <span hidden>Sponsorship</span> :logo: :material-plus: :octicons-heart-fill-24:{: .tx-sponsor__heart }
+# <span hidden>Sponsorship</span> :logo: :material-plus: :octicons-heart-fill-24:{: .tx-heart }
 
 Material for MkDocs uses the [sponsorware][1] release strategy, which means that
 __new features are first exclusively released to sponsors__. Read on to learn 
@@ -15,13 +15,18 @@ latest features before everybody else.
 
 ## How sponsorship works
 
-__Material for MkDocs is split into a community edition and a sponsor edition__.
+__Material for MkDocs is available as a community edition and sponsor edition__.
 
 New features will first land in the _sponsor edition_, which means that sponsors 
 will have access immediately. Every feature is tied to a funding goal in monthly 
 subscriptions. If this funding goal is hit, the feature is merged into the 
 _community edition_ and released to the public to be generally available. Bugs
-will be fixed in the community edition and merged back into the sponsor edition.
+will be fixed in the community edition and merged back into the sponsor edition:
+
+- :material-bug-check: Bugfixes: _community edition_ :material-arrow-right:
+  _sponsor edition_
+- :material-new-box: Features: _community edition_ :material-arrow-left:
+  _sponsor edition_
 
 See the [roadmap][4] for a list of available and upcoming features of the
 _sponsor edition_, and for demonstration purposes, [__the official docs built

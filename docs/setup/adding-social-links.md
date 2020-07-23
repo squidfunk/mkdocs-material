@@ -88,3 +88,17 @@ For each entry, the following fields are available:
           link: https://twitter.com/squidfunk
           name: squidfunk on Twitter
     ```
+
+## Customization
+
+### Custom icons
+
+[:octicons-file-code-24: Source][2] ·
+:octicons-mortar-board-24: Difficulty: _moderate_
+
+The social links feature uses the available [icon integration][3] of Material for
+MkDocs. If you want to use custom icons, follow the guide explaining how to
+add [additional icons][4].
+
+  [3]: changing-the-logo-and-icons.md#icons
+  [4]: changing-the-logo-and-icons.md#additional-icons

@@ -60,8 +60,8 @@ theme:
 [:octicons-file-code-24: Source][5] · [:octicons-workflow-24: Extension][6]
 
 The [Emoji][6] extension, which is part of [Python Markdown Extensions][7],
-adds the ability to __integrate custom icons__ in the `*.svg` file format,
-which are inlined into the HTML when [building your site][8]:
+adds the ability to __integrate icons__ in the `*.svg` file format, which are
+inlined into the HTML when [building your site][8]:
 
 ``` yaml
 markdown_extensions:
