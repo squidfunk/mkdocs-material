@@ -66,9 +66,9 @@
     background-color: currentColor;
     border: none;
   }
+}
 
-  // Pumping heart
-  &__heart {
-    animation: tx-sponsor 1000ms infinite;
-  }
+// Pumping heart
+.tx-heart {
+  animation: tx-sponsor 1000ms infinite;
 }
