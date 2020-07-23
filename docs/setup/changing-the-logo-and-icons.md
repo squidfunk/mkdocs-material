@@ -78,7 +78,7 @@ The following icon sets are bundled with Material for MkDocs:
 
 If you want to add [additional icons][1], read on.
 
-  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/pymdown/_emoji.scss
+  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_emoji.scss
   [6]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
   [7]: https://facelessuser.github.io/pymdown-extensions/
   [8]: ../creating-your-site.md#building-your-site

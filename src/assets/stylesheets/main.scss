@@ -37,38 +37,38 @@
 
 @import "config";
 
-@import "base/reset";
-@import "base/colors";
-@import "base/icons";
-@import "base/typeset";
+@import "main/reset";
+@import "main/colors";
+@import "main/icons";
+@import "main/typeset";
 
-@import "layout/base";
-@import "layout/announce";
-@import "layout/button";
-@import "layout/clipboard";
-@import "layout/content";
-@import "layout/dialog";
-@import "layout/header";
-@import "layout/hero";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/search";
-@import "layout/sidebar";
-@import "layout/source";
-@import "layout/tabs";
+@import "main/layout/base";
+@import "main/layout/announce";
+@import "main/layout/button";
+@import "main/layout/clipboard";
+@import "main/layout/content";
+@import "main/layout/dialog";
+@import "main/layout/header";
+@import "main/layout/hero";
+@import "main/layout/footer";
+@import "main/layout/nav";
+@import "main/layout/search";
+@import "main/layout/sidebar";
+@import "main/layout/source";
+@import "main/layout/tabs";
 
-@import "extensions/admonition";
-@import "extensions/codehilite";
-@import "extensions/footnotes";
-@import "extensions/permalinks";
+@import "main/extensions/markdown/admonition";
+@import "main/extensions/markdown/codehilite";
+@import "main/extensions/markdown/footnotes";
+@import "main/extensions/markdown/toc";
 
-@import "extensions/pymdown/arithmatex";
-@import "extensions/pymdown/critic";
-@import "extensions/pymdown/details";
-@import "extensions/pymdown/emoji";
-@import "extensions/pymdown/highlight";
-@import "extensions/pymdown/keys";
-@import "extensions/pymdown/tabbed";
-@import "extensions/pymdown/tasklist";
+@import "main/extensions/pymdownx/arithmatex";
+@import "main/extensions/pymdownx/critic";
+@import "main/extensions/pymdownx/details";
+@import "main/extensions/pymdownx/emoji";
+@import "main/extensions/pymdownx/highlight";
+@import "main/extensions/pymdownx/keys";
+@import "main/extensions/pymdownx/tabbed";
+@import "main/extensions/pymdownx/tasklist";
 
-@import "shame";
+@import "main/shame";

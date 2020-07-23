@@ -24,7 +24,7 @@ markdown_extensions:
   - admonition
 ```
 
-  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/_admonition.scss
+  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_admonition.scss
   [2]: https://python-markdown.github.io/extensions/admonition/
 
 ### Details
@@ -40,7 +40,7 @@ markdown_extensions:
   - pymdownx.details
 ```
 
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/pymdown/_details.scss
+  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_details.scss
   [4]: https://facelessuser.github.io/pymdown-extensions/extensions/details/
   [5]: https://facelessuser.github.io/pymdown-extensions/
 
@@ -57,7 +57,7 @@ markdown_extensions:
   - pymdownx.superfences
 ```
 
-  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_typeset.scss
+  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss
   [7]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 ## Usage

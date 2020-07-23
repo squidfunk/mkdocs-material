@@ -24,7 +24,7 @@ markdown_extensions:
   - footnotes
 ```
 
-  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/_footnotes.scss
+  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_footnotes.scss
   [2]: https://python-markdown.github.io/extensions/footnotes/
 
 ## Usage

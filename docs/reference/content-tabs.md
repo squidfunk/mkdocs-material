@@ -22,7 +22,7 @@ markdown_extensions:
   - pymdownx.tabbed
 ```
 
-  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/pymdown/_tabbed.scss
+  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_tabbed.scss
   [2]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
   [3]: https://facelessuser.github.io/pymdown-extensions/
 
@@ -39,7 +39,7 @@ markdown_extensions:
   - pymdownx.superfences
 ```
 
-  [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_typeset.scss
+  [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss
   [5]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 ## Usage

@@ -106,7 +106,7 @@ _Material for MkDocs doesn't provide official support for the other options of
 this extension, so they may be supported but can also yield weird results. Use
 them at your own risk._
 
-  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/pymdown/_highlight.scss
+  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
   [3]: https://facelessuser.github.io/pymdown-extensions/extensions/highlight/
   [4]: https://python-markdown.github.io/extensions/code_hilite/
   [5]: https://facelessuser.github.io/pymdown-extensions/
@@ -148,7 +148,7 @@ markdown_extensions:
   - pymdownx.superfences
 ```
 
-  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_typeset.scss
+  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss
   [14]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 ### Keys
@@ -164,7 +164,7 @@ markdown_extensions:
   - pymdownx.keys
 ```
 
-  [15]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/pymdown/_keys.scss
+  [15]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_keys.scss
   [16]: https://facelessuser.github.io/pymdown-extensions/extensions/keys/
 
 ## Usage

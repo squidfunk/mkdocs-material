@@ -250,7 +250,7 @@ colors or neutral colors:
 }
 ```
 
-  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_colors.scss
+  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss
   [7]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
   [8]: ../customization.md#additional-stylesheets
   [9]: ../reference/code-blocks.md

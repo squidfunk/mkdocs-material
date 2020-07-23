@@ -24,7 +24,7 @@ markdown_extensions:
   - def_list
 ```
 
-  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/base/_typeset.scss
+  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss
   [2]: https://python-markdown.github.io/extensions/definition_lists/
 
 ### Tasklist
@@ -59,7 +59,7 @@ configuring the style:
           clickable_checkbox: true
     ```
 
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/extensions/pymdown/_tasklist.scss
+  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_tasklist.scss
   [4]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
   [5]: https://facelessuser.github.io/pymdown-extensions/
 
