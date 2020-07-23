@@ -102,7 +102,7 @@ The following options are supported:
           separator: '[\s\-\.]+'
     ```
 
-`prebuild_index`{: #prebuild_index }
+`prebuild_index`{: #prebuild-index }
 
 :   :octicons-milestone-24: Default: `false` · :octicons-beaker-24:
     Experimental – MkDocs can generate a [prebuilt index][7] of all pages during

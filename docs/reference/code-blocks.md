@@ -22,7 +22,7 @@ The [Highlight][3] extension, which is part of [Python Markdown Extensions][5],
 integrates with Material for MkDocs and provides several options for
 configuring syntax highlighting of code blocks:
 
-`use_pygments`{: #use_pygments }
+`use_pygments`{: #use-pygments }
 
 :   :octicons-milestone-24: Default: `true` – This option allows to control
     whether highlighting should be carried out during build time by
@@ -84,7 +84,7 @@ configuring syntax highlighting of code blocks:
           linenums: true
     ```
 
-`linenums_style`{: #linenums_style }
+`linenums_style`{: #linenums-style }
 
 :   :octicons-milestone-24: Default: `table` – The Highlight extension provides
     three ways to add line numbers, all of which are supported by Material for
@@ -283,7 +283,7 @@ The `#!python range()` function is used to generate a sequence of numbers.
 
 ### Adding keyboard keys
 
-When [Keys][19] is enabled, keyboard keys can be inserted with a simple syntax.
+When [Keys][19] is enabled, keyboard keys can be rendered with a simple syntax.
 Consult the [Python Markdown Extensions][16] documentation to learn about all
 available short key codes.
 
@@ -299,9 +299,9 @@ _Result_:
 
   [19]: #keys
 
-### Adding external files
+### Embedding external files
 
-When [Snippets][20] is enabled, content from other files can be inserted, which
+When [Snippets][20] is enabled, content from other files can be embedded, which
 is especially useful to reference and embed the contents of source files
 directly into your project documentation.
 
@@ -320,7 +320,21 @@ _Result_:
 ```
 
 Note that [Snippets][20] is not limited to code blocks, but can be used anywhere
-in a Markdown file to put repeating content into separate files, which is also
+from a document to move repeating content to separate files, which is also
 explained in the [official documentation][16].
 
   [20]: #snippets
+
+## Customization
+
+### Custom syntax theme
+
+[:octicons-file-code-24: Source][21] ·
+:octicons-mortar-board-24: Difficulty: _easy_
+
+If syntax highlighting is done with [Pygments][22], Material for MkDocs
+provides the styles defining the [appeareance][21] of code blocks, which can
+be adjusted with [additional stylesheets][6].
+
+  [21]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/_codehilite.scss
+  [22]: #use-pygments
