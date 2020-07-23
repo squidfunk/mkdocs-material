@@ -15,7 +15,7 @@ environments. Material for MkDocs allows for beautiful and functional tabs, grou
 [:octicons-file-code-24: Source][1] · [:octicons-workflow-24: Extension][2]
 
 The [Tabbed][2] extension, which is part of [Python Markdown Extensions][3],
-integrates with Material for MkDocs and can be enabled from `mkdocs.yml`:
+integrates with Material for MkDocs and can be enabled via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:

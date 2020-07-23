@@ -14,7 +14,7 @@ search can be configured to use a language-specific stemmer (if available).
 
 [:octicons-file-code-24: Source][1] · :octicons-milestone-24: Default: `en`
 
-You can set the _site language_ from `mkdocs.yml` with:
+You can set the _site language_ in `mkdocs.yml` with:
 
 ``` yaml
 theme:
@@ -129,7 +129,7 @@ directionality:
 
 ## Customization
 
-### Translations
+### Custom translations
 
 [:octicons-file-code-24: Source][1] ·
 :octicons-mortar-board-24: Difficulty: _easy_
@@ -137,8 +137,9 @@ directionality:
 If you want to customize some (or all) of the translations for your language,
 you may follow the guide on [theme extension][6] and create a new partial in
 `partials/language`, e.g. `en-custom.html`. Next, look up the translation you
-want to change in the [base translation][1] and add it to the partial you just
-created. Say, you want to change "__Table of contents__" to "__On this page__":
+want to change in the [base translation][1] and add it to the partial.
+
+Let's say you want to change "__Table of contents__" to "__On this page__":
 
 ``` jinja
 {% macro t(key) %}{{ {

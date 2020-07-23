@@ -20,7 +20,7 @@ fit your brand's identity by using [CSS variables][2].
 
 Material for MkDocs supports two _color schemes_: a light mode, which is just
 called `default`, and a dark mode, which is called `slate`. The color scheme
-can be set from `mkdocs.yml`:
+can be set via `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -192,66 +192,45 @@ color:
 Material for MkDocs implements colors using [CSS variables][7] (custom
 properties). If you want to customize the colors beyond the palette (e.g. to
 use your brand-specific colors), you can add an [additional stylesheet][8] and
-tweak the following CSS variables:
+tweak the values of the CSS variables.
+
+Let's say you're :fontawesome-brands-youtube:{: style="color: #EE0F0F" }
+__YouTube__, and want to set the primary color to your brand's palette, just
+add:
 
 ``` css
 :root {
-
-  /* Default color shades */
-  --md-default-fg-color:               hsla(0, 0%, 0%, 0.87);
-  --md-default-fg-color--light:        hsla(0, 0%, 0%, 0.54);
-  --md-default-fg-color--lighter:      hsla(0, 0%, 0%, 0.32);
-  --md-default-fg-color--lightest:     hsla(0, 0%, 0%, 0.07);
-  --md-default-bg-color:               hsla(0, 0%, 100%, 1);
-  --md-default-bg-color--light:        hsla(0, 0%, 100%, 0.7);
-  --md-default-bg-color--lighter:      hsla(0, 0%, 100%, 0.3);
-  --md-default-bg-color--lightest:     hsla(0, 0%, 100%, 0.12);
-
-  /* Primary color shades */
-  --md-primary-fg-color:               hsla(231, 48%, 48%, 1);
-  --md-primary-fg-color--light:        hsla(231, 44%, 56%, 1);
-  --md-primary-fg-color--dark:         hsla(232, 54%, 41%, 1);
-  --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
-  --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
-
-  /* Accent color shades */
-  --md-accent-fg-color:                hsla(231, 99%, 66%, 1);
-  --md-accent-fg-color--transparent:   hsla(231, 99%, 66%, 0.1);
-  --md-accent-bg-color:                hsla(0, 0%, 100%, 1);
-  --md-accent-bg-color--light:         hsla(0, 0%, 100%, 0.7);
+  --md-primary-fg-color:        #EE0F0F;
+  --md-primary-fg-color--light: #ECB7B7;
+  --md-primary-fg-color--dark:  #90030C;
 }
 ```
 
-The colors of [code blocks][9], [admonitions][10], text links and the footer can
-be adjusted through dedicated CSS variables, which partly default to the base
-colors or neutral colors:
-
-``` css
-:root > * {
-
-  /* Code color shades */
-  --md-code-bg-color:                  hsla(0, 0%, 96%, 1);
-  --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
-
-  /* Text color shades */
-  --md-text-color:                     var(--md-default-fg-color);
-  --md-text-link-color:                var(--md-primary-fg-color);
-
-  /* Admonition color shades */
-  --md-admonition-bg-color:            var(--md-default-bg-color);
-  --md-admonition-fg-color:            var(--md-default-fg-color);
-
-  /* Footer color shades */
-  --md-footer-bg-color:                hsla(0, 0%, 0%, 0.87);
-  --md-footer-bg-color--dark:          hsla(0, 0%, 0%, 0.32);
-  --md-footer-fg-color:                hsla(0, 0%, 100%, 1);
-  --md-footer-fg-color--light:         hsla(0, 0%, 100%, 0.7);
-  --md-footer-fg-color--lighter:       hsla(0, 0%, 100%, 0.3);
-}
-```
+See the file containing the [color definitions][6] for a list of all CSS
+variables.
 
   [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss
   [7]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
   [8]: ../customization.md#additional-stylesheets
-  [9]: ../reference/code-blocks.md
-  [10]: ../reference/admonitions.md
+
+
+### Custom color schemes
+
+[:octicons-file-code-24: Source][3] ·
+:octicons-mortar-board-24: Difficulty: _easy_
+
+Besides overriding specific colors, you can create your own, named color scheme
+by wrapping the definitions in the `[data-md-color-scheme="..."]`
+[attribute selector][9], which you can then set via `mkdocs.yml` as described
+in the [color schemes][10] section:
+
+``` css
+[data-md-color-scheme="youtube"] {
+  --md-primary-fg-color:        #EE0F0F;
+  --md-primary-fg-color--light: #ECB7B7;
+  --md-primary-fg-color--dark:  #90030C;
+}
+```
+
+  [9]: https://www.w3.org/TR/selectors-4/#attribute-selectors
+  [10]: #color-scheme

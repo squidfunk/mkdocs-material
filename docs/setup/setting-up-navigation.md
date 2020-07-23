@@ -18,7 +18,7 @@ behavior of navigational elements, some of those through _feature flags_.
 
 When _instant loading_ is activated, clicks on all internal links will be
 intercepted and dispatched via [XHR][2] without fully reloading the page. It
-can be enabled from `mkdocs.yml` with:
+can be enabled via `mkdocs.yml` with:
 
 ``` yaml
 theme:
@@ -41,7 +41,7 @@ intact in-between document switches.
 
 When _tabs_ are activated, top-level sections are rendered in a menu layer
 below the header on big screens (but not when the sidebar is hidden). It can be
-enabled from `mkdocs.yml` with:
+enabled via `mkdocs.yml` with:
 
 ``` yaml
 theme:
@@ -180,3 +180,52 @@ them at your own risk._
   [7]: https://python-markdown.github.io/extensions/toc/
   [8]: https://python-markdown.github.io/extensions/toc/#usage
   [9]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
+
+## Customization
+
+### Keyboard shortcuts
+
+[:octicons-file-code-24: Source][10] ·
+:octicons-mortar-board-24: Difficulty: _easy_
+
+Material for MkDocs includes several keyboard shortcuts that make it possible
+to navigate your project documentation via keyboard. There're two modes:
+
+`search`{: #search }
+
+:   This mode is active when the _search is focused_. It provides several key
+    bindings to make search accessible and navigable via keyboard:
+
+    - ++arrow-down++ , ++arrow-up++ : select next / previous result
+    - ++esc++ , ++tab++ : close search dialog
+    - ++enter++ : follow selected result
+
+`global`{: #global }
+
+:   This mode is the active when _search is not active_, i.e. when there's no
+    other focussed element that is suceptible to keyboard input. The following
+    keys are bound:
+
+    - ++f++ , ++s++ , ++slash++ : open search dialog
+    - ++p++ , ++comma++ : go to previous page
+    - ++n++ , ++period++ : go to next page
+
+Let's say you want to bind some action to the ++x++ key. By using [additional
+JavaScript][11], you can subscribe to the `keyboard$` observable and attach
+your custom event listener:
+
+``` js
+app.keyboard$.subscribe(key => {
+  if (key.mode === "global" && key.type === "x") {
+    /* Add custom keyboard handler here */
+    key.claim()
+  }
+})
+```
+
+The call to `#!js key.claim()` will essentially execute `#!js preventDefault()`
+on the underlying event, so the key press will not propagate further and touch
+other event listeners.
+
+  [10]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/keyboard/index.ts
+  [11]: ../customization.md#additional-javascript

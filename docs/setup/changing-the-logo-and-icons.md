@@ -20,7 +20,7 @@ additional icons][1] with very little effort.
 
 There're two ways to specify a _logo_: it must be a valid path to [any icon 
 bundled with the theme][3], or to a user-provided image located in the `docs`
-folder. Both can be set from `mkdocs.yml`:
+folder. Both can be set via `mkdocs.yml`:
 
 === "Icon"
 
@@ -46,7 +46,7 @@ folder. Both can be set from `mkdocs.yml`:
 :octicons-milestone-24: Default: `assets/images/favicon.png`
 
 The _favicon_ can be changed to a path pointing to a user-provided image, which 
-must be located in the `docs` folder. It can be set from `mkdocs.yml`:
+must be located in the `docs` folder. It can be set via `mkdocs.yml`:
 
 ``` yaml
 theme:

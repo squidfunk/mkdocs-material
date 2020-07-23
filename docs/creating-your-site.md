@@ -60,7 +60,7 @@ theme:
 
 ### Advanced configuration
 
-Material for MkDocs comes with a lot of configuration options. The _guides_
+Material for MkDocs comes with a lot of configuration options. The _setup_
 section explains in great detail how to configure and customize colors, fonts,
 icons and much more:
 

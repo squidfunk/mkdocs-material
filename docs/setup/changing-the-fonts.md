@@ -39,7 +39,7 @@ The typeface will be loaded in 300, 400, _400i_ and __700__.
 :octicons-milestone-24: Default: [`Roboto Mono`][4]
 
 The _proportional font_ is used for code blocks and can be configured separately.
-Just like the regular font, it can be set to any valid [Google Font][1] from
+Just like the regular font, it can be set to any valid [Google Font][1] via
 `mkdocs.yml` with:
 
 ``` yaml

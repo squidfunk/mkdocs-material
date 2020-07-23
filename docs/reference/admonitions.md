@@ -16,7 +16,7 @@ inclusion and nesting of arbitrary content.
 [:octicons-file-code-24: Source][1] · [:octicons-workflow-24: Extension][2]
 
 The [Admonition][2] extension, which is part of the standard Markdown
-library, is integrated with Material for MkDocs and can be enabled from
+library, is integrated with Material for MkDocs and can be enabled via
 `mkdocs.yml`:
 
 ``` yaml
@@ -32,7 +32,7 @@ markdown_extensions:
 [:octicons-file-code-24: Source][3] · [:octicons-workflow-24: Extension][4]
 
 The [Details][4] extension, which is part of [Python Markdown Extensions][5],
-adds the ability to __make admonitions collapsible__. It can be enabled from
+adds the ability to __make admonitions collapsible__. It can be enabled via
 `mkdocs.yml`:
 
 ``` yaml

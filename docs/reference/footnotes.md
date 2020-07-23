@@ -16,7 +16,7 @@ footnotes and render them at the bottom of the page.
 [:octicons-file-code-24: Source][1] · [:octicons-workflow-24: Extension][2]
 
 The [Footnotes][2] extension, which is part of the standard Markdown library,
-adds the ability to add inline footnotes to a document and can be enabled from
+adds the ability to add inline footnotes to a document and can be enabled via
 `mkdocs.yml`:
 
 ``` yaml

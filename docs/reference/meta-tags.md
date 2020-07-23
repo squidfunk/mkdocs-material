@@ -14,7 +14,7 @@ template: overrides/main.html
 
 The [Metadata][1] extension, which is part of the standard Markdown
 library, adds the ability to add custom metadata to a document and can be 
-enabled from `mkdocs.yml`:
+enabled via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:

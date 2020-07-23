@@ -8,8 +8,8 @@ The footer of your project documentation is a good place to add links to
 websites or platforms you or your company are using as additional marketing 
 channels, e.g. :fontawesome-brands-medium:{: style="color: #00AB6C" },
 :fontawesome-brands-twitter:{: style="color: #1DA1F2" } or
-:fontawesome-brands-facebook:{: style="color: #3B5998" }, which can be
-configured through `mkdocs.yml`.
+:fontawesome-brands-facebook:{: style="color: #4267B2" }, which can be
+configured via `mkdocs.yml`.
 
 ## Configuration
 

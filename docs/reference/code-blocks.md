@@ -123,7 +123,7 @@ them at your own risk._
 The [InlineHilite][11] extension, which is part of [Python Markdown 
 Extensions][5] also integrates with Material for MkDocs and adds support for
 __syntax highlighting of inline code blocks__. It's built on top of the
-[Highlight][3] extension and can be enabled from `mkdocs.yml`:
+[Highlight][3] extension and can be enabled via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -157,7 +157,7 @@ markdown_extensions:
 
 The [Keys][16] extension, which is part of [Python Markdown Extensions][5],
 allows for inserting __keyboard keys__, e.g. ++ctrl+alt+delete++ , and
-can be enabled from `mkdocs.yml`:
+can be enabled via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
