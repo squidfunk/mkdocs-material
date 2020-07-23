@@ -21,24 +21,30 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Rules
 // ----------------------------------------------------------------------------
 
-@import "modularscale";
-@import "material-color";
+// Landing page container
+.tx-container {
+  padding-top: px2rem(20px);
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(0, 0%, 100%, 1)' /></svg>") no-repeat bottom,
+    linear-gradient(
+      to bottom,
+      var(--md-primary-fg-color),
+      hsla(280, 67%, 55%, 1) 99%,
+      var(--md-default-bg-color) 99%
+    );
 
-// ----------------------------------------------------------------------------
-// Local imports
-// ----------------------------------------------------------------------------
-
-@import "utilities/break";
-@import "utilities/convert";
-
-@import "config";
-
-@import "overrides/typeset";
-
-@import "overrides/layout/announce";
-@import "overrides/layout/base";
-@import "overrides/layout/hero";
-@import "overrides/layout/sponsor";
+  // Adjust background for slate theme
+  [data-md-color-scheme="slate"] & {
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(232, 15%, 21%, 1)' /></svg>") no-repeat bottom,
+      linear-gradient(
+        to bottom,
+        var(--md-primary-fg-color),
+        hsla(280, 67%, 55%, 1) 99%,
+        var(--md-default-bg-color) 99%
+      );
+  }
+}

@@ -34,7 +34,7 @@
     "selector-class-pattern": "^[a-z0-9]+(-[a-z0-9]+)*(__[a-z]+)?(--[a-z]+)?$",
     "selector-descendant-combinator-no-non-space": null,
     "string-quotes": "double",
-    "unit-whitelist": ["px", "em", "deg", "ms", "%", "mm", "vh", "dppx"],
+    "unit-whitelist": ["px", "em", "deg", "ms", "%", "mm", "vh", "vw", "dppx"],
     "value-keyword-case": "lower",
     "value-no-vendor-prefix": true
   }

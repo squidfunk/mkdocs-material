@@ -44,94 +44,12 @@
       display: none;
     }
 
-    /* Gradient background + blob */
-    .tx-container {
-      padding-top: 1rem;
-      background:
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: white' /></svg>") no-repeat bottom,
-        linear-gradient(
-          to bottom,
-          var(--md-primary-fg-color),
-          hsla(280, 67%, 55%, 1) 99%,
-          white 99%
-        );
-    }
-
-    /* Set inverted text color on hero */
-    .tx-hero {
-      margin: 0 .8rem;
-      color: var(--md-primary-bg-color);
-    }
-
-    /* Make main headline thicker */
-    .tx-hero h1 {
-      margin-bottom: 1rem;
-      color: currentColor;
-      font-weight: 700;
-    }
-
-    /* Ensure that blob doesn't overlap buttons */
-    .tx-hero__content {
-      padding-bottom: 6rem;
-    }
-
-    /* Adjust spacing of buttons and invert them */
-    .tx-hero .md-button {
-      margin-top: .5rem;
-      margin-right: .5rem;
-      color: var(--md-primary-bg-color);
-    }
-
-    /* Invert primary button */
-    .tx-hero .md-button--primary {
-      background-color: var(--md-primary-bg-color);
-      color: hsla(280deg, 37%, 48%, 1);
-      border-color: var(--md-primary-bg-color);
-    }
-
-    /* Invert hover and focus button states */
-    .tx-hero .md-button:hover,
-    .tx-hero .md-button:focus {
-      background-color: var(--md-accent-fg-color);
-      color: var(--md-default-bg-color);
-      border-color: var(--md-accent-fg-color);
-    }
-
-    /* [mobile portrait -]: Adjust headline */
-    @media screen and (max-width: 30em) {
-
-      /* Make main headline smaller */
-      .tx-hero h1 {
-        font-size: 1.4rem;
-      }
-    }
-
     /* [tablet landscape +]: Display content and image next to each other */
     @media screen and (min-width: 60em) {
 
       /* Hide table of contents */
       .md-sidebar--secondary {
         display: none;
-      }
-
-      /* Use flex layout to align items */
-      .tx-hero {
-        display: flex;
-        align-items: stretch;
-      }
-
-      /* Increase bottom spacing and set dimensions */
-      .tx-hero__content {
-        max-width: 19rem;
-        margin-top: 3.5rem;
-        padding-bottom: 14vw;
-      }
-
-      /* Swap with teaser and set dimensions */
-      .tx-hero__image {
-        width: 38rem;
-        order: 1;
-        transform: translateX(4rem);
       }
     }
 
@@ -141,11 +59,6 @@
       /* Hide navigation */
       .md-sidebar--primary {
         display: none;
-      }
-
-      /* Ensure the image aligns with the repository information */
-      .tx-hero__image {
-        transform: translateX(8rem);
       }
     }
   </style>
