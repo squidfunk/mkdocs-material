@@ -51,3 +51,17 @@
     </a>
   </aside>
 {% endblock %}
+{% block analytics %}
+  {{ super() }}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.body.addEventListener("click", ev => {
+        if (ev.target instanceof HTMLElement) {
+          var el = ev.target.closest("a[href^=http]")
+          if (el)
+            ga('send', 'event', 'outbound', 'click', el.href)
+        }
+      })
+    })
+  </script>
+{% endblock %}
