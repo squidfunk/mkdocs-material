@@ -23,7 +23,7 @@ If you want to tweak some colors or change the spacing of certain elements,
 you can do this in a separate stylesheet. The easiest way is by creating a
 new stylesheet file in the `docs` directory:
 
-``` sh
+```
 mkdir docs/stylesheets
 touch docs/stylesheets/extra.css
 ```
@@ -46,7 +46,7 @@ The same is true for additional JavaScript. If you want to integrate another
 syntax highlighter or add some custom logic to your theme, create a new
 JavaScript file in the `docs` directory:
 
-``` sh
+```
 mkdir docs/javascripts
 touch docs/javascripts/extra.js
 ```
@@ -193,13 +193,13 @@ the source of the theme and recompile it.
 In order to start development on Material for MkDocs, a [Node.js][9] version of
 at least 12 is required. First, clone the repository:
 
-``` sh
+```
 git clone https://github.com/squidfunk/mkdocs-material
 ```
 
 Next, all dependencies need to be installed, which is done with:
 
-``` sh
+```
 cd mkdocs-material
 pip install -r requirements.txt
 pip install mkdocs-minify-plugin
@@ -212,13 +212,13 @@ npm install
 
 Start the Webpack watchdog with:
 
-``` sh
+```
 npm start
 ```
 
 Then, in a second session, start the MkDocs server with:
 
-```sh
+```
 mkdocs serve
 ```
 
@@ -237,7 +237,7 @@ in front of you.
 
 When you're finished making your changes, you can build the theme by invoking:
 
-``` sh
+```
 npm run build
 ```
 

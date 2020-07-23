@@ -14,30 +14,18 @@ some third-party services that may not.
 
 ### Google Fonts
 
-Material for MkDocs makes fonts [easily configurable][2] by relying on Google
-Fonts CDN. Embedding fonts from Google is currently within a gray area as there's
-no official statement or ruling regarding GDPR compliance and the topic is still
-[actively discussed][3]. If you need to ensure GDPR compliance, you may disable
-the usage of the Google Font CDN with:
-
-``` yaml
-theme:
-  font: false
-```
-
-When Google Fonts are disabled, Material for MkDocs will default to __Helvetica
-Neue__ and __Monaco__ with their corresponding fall backs, relying on system
-fonts. You can easily include your own, self-hosted webfont by [overriding][4]
-the `fonts` block.
+Material for MkDocs makes fonts [configurable][2] by relying on Google Fonts
+CDN, which may be in breach with GDPR. The usage of Google's CDN can be [easily 
+disabled][3] via `mkdocs.yml`.
 
   [2]: setup/changing-the-fonts.md
-  [3]: https://github.com/google/fonts/issues/1495
-  [4]: customization.md#overriding-blocks
+  [3]: setup/changing-the-fonts.md#disabling-font-loading
 
 ### Google Analytics and Disqus
 
-Material for MkDocs comes with optional [Google Analytics][5] and [Disqus][6] 
-integrations, both of which must be enabled explicitly.
+Material for MkDocs comes with optional [Google Analytics][4] and [Disqus][5] 
+integrations, both of which must be enabled explicitly, so there's no immediate
+action if you don't use those.
 
-  [5]: getting-started.md#google-analytics
-  [6]: getting-started.md#disqus
+  [4]: setup/setting-up-site-analytics.md#google-analytics
+  [5]: setup/adding-a-comment-system.md#disqus

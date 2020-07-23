@@ -24,7 +24,7 @@ Material for MkDocs can be installed with `pip`:
 
 === "Community edition"
 
-    ``` sh
+    ```
     pip install mkdocs-material
     ```
 
@@ -74,20 +74,20 @@ want to use the very latest version:
 
 === "Community edition"
 
-    ``` sh
+    ```
     git clone https://github.com/squidfunk/mkdocs-material.git
     ```
 
 === "Sponsor edition"
 
-    ``` sh
+    ```
     git clone git@github.com:squidfunk/mkdocs-material-next.git mkdocs-material
     ```
 
 The theme will reside in the folder `mkdocs-material/material`. Note that when
 cloning from `git`, you must install all required dependencies yourself:
 
-``` sh
+```
 pip install -r mkdocs-material/requirements.txt
 ```
 

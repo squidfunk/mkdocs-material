@@ -6,13 +6,13 @@ template: overrides/main.html
 
 Upgrade to the latest version with:
 
-``` sh
+```
 pip install --upgrade mkdocs-material
 ```
 
 Inspect the currently installed version with:
 
-``` sh
+```
 pip show mkdocs-material
 ```
 
