@@ -30,7 +30,7 @@
     transform: scale(1);
   }
   20%, 60% {
-    transform: scale(1.1);
+    transform: scale(1.15);
   }
 }
 
@@ -45,8 +45,16 @@
 
   // Sponsor link
   a {
+    display: inline-block;
     color: $clr-pink-500;
     font-variant: all-petite-caps;
+    transition: transform 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
+
+    // Focused or hovered links
+    &:focus,
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   // Horizontal separators

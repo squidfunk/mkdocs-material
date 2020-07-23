@@ -2,7 +2,7 @@
 template: overrides/main.html
 ---
 
-# <span hidden>Sponsorship</span> :logo: :material-plus: :octicons-heart-fill-24:
+# <span hidden>Sponsorship</span> :logo: :material-plus: :octicons-heart-fill-24:{: .tx-sponsor__heart }
 
 Material for MkDocs uses the [sponsorware][1] release strategy, which means that
 __new features are first exclusively released to sponsors__. Read on to learn 
