@@ -21,8 +21,8 @@ Material for MkDocs.
 [:octicons-file-code-24: Source][5] · [:octicons-workflow-24: Extension][6]
 
 The [Arithmatex][6] extension, which is part of of [Python Markdown
-Extensions][7], allows rendering block-style and inline equations, and can be
-enabled via `mkdocs.yml`:
+Extensions][7], allows the rendering of block and inline block equations, and
+can be enabled via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -90,8 +90,7 @@ information._
 
 ### Using block syntax
 
-When using LaTeX syntax, blocks must be enclosed in `#!latex $$...$$` on 
-separate lines:
+Blocks must be enclosed in `#!latex $$...$$` or `#!latex \[...\]`on separate lines:
 
 _Example_:
 
@@ -107,9 +106,9 @@ $$
 \operatorname{ker} f=\{g\in G:f(g)=e_{H}\}{\mbox{.}}
 $$
 
-### Using inline syntax
+### Using inline block syntax
 
-When using LaTeX syntax, inline blocks must be enclosed in `#!latex $...$`:
+Inline blocks must be enclosed in `#!latex $...$` or `#!latex \(...\)`:
 
 _Example_:
 
