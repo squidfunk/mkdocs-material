@@ -33,7 +33,7 @@ body {
 // Default fonts
 body,
 input {
-  color: var(--md-text-color);
+  color: var(--md-typeset-color);
   font-feature-settings: "kern", "liga";
   font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
 }
@@ -42,7 +42,7 @@ input {
 code,
 pre,
 kbd {
-  color: var(--md-text-color);
+  color: var(--md-typeset-color);
   font-feature-settings: "kern";
   font-family: SFMono-Regular, Consolas, Menlo, monospace;
 }
@@ -132,7 +132,7 @@ kbd {
 
   // Links
   a {
-    color: var(--md-text-link-color);
+    color: var(--md-typeset-a-color);
     word-break: break-word;
 
     // Also enable color transition on pseudo elements
@@ -255,12 +255,12 @@ kbd {
     line-height: 1.5;
     vertical-align: text-top;
     word-break: break-word;
-    background-color: var(--md-kbd-color);
+    background-color: var(--md-typeset-kbd-color);
     border-radius: px2rem(2px);
     box-shadow:
-      0 px2rem(2px)  0 px2rem(1px) var(--md-kbd-border-color),
-      0 px2rem(2px)  0             var(--md-kbd-border-color),
-      0 px2rem(-2px) px2rem(4px)   var(--md-kbd-accent-color) inset;
+      0 px2rem(2px)  0 px2rem(1px) var(--md-typeset-kbd-border-color),
+      0 px2rem(2px)  0             var(--md-typeset-kbd-border-color),
+      0 px2rem(-2px) px2rem(4px)   var(--md-typeset-kbd-accent-color) inset;
   }
 
   // Text highlighting marker

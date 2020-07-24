@@ -38,17 +38,17 @@
 
   // Deletion
   del.critic {
-    background-color: $codehilite-diff-deleted;
+    background-color: var(--md-typeset-del-color);
   }
 
   // Addition
   ins.critic {
-    background-color: $codehilite-diff-inserted;
+    background-color: var(--md-typeset-ins-color);
   }
 
   // Comment
   .critic.comment {
-    color: $codehilite-comment;
+    color: var(--md-code-hl-comment-color);
 
     // Comment opening mark
     &::before {

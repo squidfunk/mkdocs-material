@@ -27,34 +27,40 @@
 // Slate theme, i.e. dark mode
 [data-md-color-scheme="slate"] {
 
+  // Slate's hue in the range [0,255] - change this variable to alter the tone
+  // of the theme, e.g. to make it more redish or greenish. This is a slate-
+  // specific variable, but the same approach may be adapted to custom themes.
+  --md-hue: 232;
+
   // Default color shades
-  --md-default-fg-color:               hsla(0, 0%, 100%, 1);
-  --md-default-fg-color--light:        hsla(0, 0%, 100%, 0.87);
-  --md-default-fg-color--lighter:      hsla(0, 0%, 100%, 0.32);
-  --md-default-fg-color--lightest:     hsla(0, 0%, 100%, 0.12);
-  --md-default-bg-color:               hsla(232, 15%, 21%, 1);
-  --md-default-bg-color--light:        hsla(232, 15%, 21%, 0.54);
-  --md-default-bg-color--lighter:      hsla(232, 15%, 21%, 0.26);
-  --md-default-bg-color--lightest:     hsla(232, 15%, 21%, 0.07);
+  --md-default-fg-color:               hsla(var(--md-hue), 75%, 95%, 1);
+  --md-default-fg-color--light:        hsla(var(--md-hue), 75%, 90%, 0.87);
+  --md-default-fg-color--lighter:      hsla(var(--md-hue), 75%, 90%, 0.32);
+  --md-default-fg-color--lightest:     hsla(var(--md-hue), 75%, 90%, 0.12);
+  --md-default-bg-color:               hsla(var(--md-hue), 15%, 21%, 1);
+  --md-default-bg-color--light:        hsla(var(--md-hue), 15%, 21%, 0.54);
+  --md-default-bg-color--lighter:      hsla(var(--md-hue), 15%, 21%, 0.26);
+  --md-default-bg-color--lightest:     hsla(var(--md-hue), 15%, 21%, 0.07);
 
   // Code color shades
-  --md-code-bg-color:                  hsla(232, 15%, 18%, 1);
-  --md-code-fg-color:                  hsla(232, 18%, 86%, 1);
+  --md-code-bg-color:                  hsla(var(--md-hue), 15%, 18%, 1);
+  --md-code-fg-color:                  hsla(var(--md-hue), 18%, 86%, 1);
 
-  // Keyboard color shades
-  --md-kbd-color:                      hsla(232, 15%, 94%, 0.12);
-  --md-kbd-accent-color:               hsla(232, 15%, 94%, 0.2);
-  --md-kbd-border-color:               hsla(232, 15%, 14%, 1);
+  // Code highlighting color shades
+  --md-code-hl-punctuation-color:      hsla(var(--md-hue), 34%, 71%, 0.3);
+  --md-code-hl-comment-color:          hsla(var(--md-hue), 34%, 71%, 0.3);
+  --md-code-hl-generic-color:          hsla(var(--md-hue), 34%, 71%, 0.3);
 
-  // Text color shades
-  --md-text-color:                     var(--md-default-fg-color--light);
-  --md-text-link-color:                var(--md-primary-fg-color);
+  // Typeset `kbd` color shades
+  --md-typeset-kbd-color:              hsla(var(--md-hue), 15%, 94%, 0.12);
+  --md-typeset-kbd-accent-color:       hsla(var(--md-hue), 15%, 94%, 0.2);
+  --md-typeset-kbd-border-color:       hsla(var(--md-hue), 15%, 14%, 1);
 
   // Admonition color shades
-  --md-admonition-bg-color:            hsla(0, 0%, 100%, 0.025);
+  --md-admonition-bg-color:            hsla(var(--md-hue), 0%, 100%, 0.025);
   --md-admonition-fg-color:            var(--md-default-fg-color);
 
   // Footer color shades
-  --md-footer-bg-color:                hsla(232, 15%, 12%, 0.87);
-  --md-footer-bg-color--dark:          hsla(232, 15%, 10%, 1);
+  --md-footer-bg-color:                hsla(var(--md-hue), 15%, 12%, 0.87);
+  --md-footer-bg-color--dark:          hsla(var(--md-hue), 15%, 10%, 1);
 }

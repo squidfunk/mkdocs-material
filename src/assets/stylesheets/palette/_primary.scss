@@ -75,8 +75,8 @@
   --md-primary-bg-color:               hsla(0, 0%, 0%, 0.87);
   --md-primary-bg-color--light:        hsla(0, 0%, 0%, 0.54);
 
-  // Text color shades
-  --md-text-link-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
+  // Typeset color shades
+  --md-typeset-a-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
 
   // Add a border if there are no tabs
   .md-hero--expand {
@@ -139,7 +139,7 @@
   --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
 
   // Text color shades
-  --md-text-link-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
+  --md-typeset-a-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
 
   // Application header (stays always on top)
   .md-header {

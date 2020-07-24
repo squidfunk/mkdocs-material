@@ -271,7 +271,7 @@ the [language short name][17].
 
 _Example_:
 
-```
+``` markdown
 The `#!python range()` function is used to generate a sequence of numbers.
 ```
 
@@ -289,7 +289,7 @@ available short key codes.
 
 _Example_:
 
-```
+``` markdown
 ++ctrl+alt+del++
 ```
 
@@ -336,5 +336,5 @@ If syntax highlighting is done with [Pygments][22], Material for MkDocs
 provides the styles defining the [appeareance][21] of code blocks, which can
 be adjusted with [additional stylesheets][6].
 
-  [21]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/_codehilite.scss
+  [21]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_codehilite.scss
   [22]: #use-pygments

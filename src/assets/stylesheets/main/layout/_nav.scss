@@ -127,7 +127,7 @@
 
     // Active link
     .md-nav__item &--active {
-      color: var(--md-text-link-color);
+      color: var(--md-typeset-a-color);
     }
 
     // Reset active color for nested list titles
@@ -275,7 +275,7 @@
 
         // Active parent item
         &--active > .md-nav__link {
-          color: var(--md-text-link-color);
+          color: var(--md-typeset-a-color);
 
           // Focused or hovered linl
           &:focus,

@@ -52,7 +52,7 @@ theme:
   language: en
   features:
     - tabs
-    #- instant
+    - instant
   palette:
     scheme: default
     primary: indigo
@@ -165,6 +165,7 @@ nav:
     - Code blocks: reference/code-blocks.md
     - Content tabs: reference/content-tabs.md
     - Footnotes: reference/footnotes.md
+    - Icons + Emojis: reference/icons-emojis.md
     - Lists: reference/lists.md
     - Meta tags: reference/meta-tags.md
   - Changelog:

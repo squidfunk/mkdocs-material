@@ -118,7 +118,7 @@
   // Footnote back reference
   .footnote-backref {
     display: inline-block;
-    color: var(--md-text-link-color);
+    color: var(--md-typeset-a-color);
     // Hack: remove Unicode arrow for icon
     font-size: 0;
     vertical-align: text-bottom;
@@ -155,7 +155,7 @@
 
     // Always show for print
     @media print {
-      color: var(--md-text-link-color);
+      color: var(--md-typeset-a-color);
       transform: translateX(0);
       opacity: 1;
     }

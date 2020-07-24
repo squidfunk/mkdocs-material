@@ -57,14 +57,33 @@
     --md-code-bg-color:                hsla(0, 0%, 96%, 1);
     --md-code-fg-color:                hsla(200, 18%, 26%, 1);
 
-    // Keyboard color shades
-    --md-kbd-color:                    hsla(0, 0%, 98%, 1);
-    --md-kbd-accent-color:             hsla(0, 100%, 100%, 1);
-    --md-kbd-border-color:             hsla(0, 0%, 72%, 1);
+    // Code highlighting color shades
+    --md-code-hl-color:                var(--md-default-fg-color--lightest);
+    --md-code-hl-number-color:         hsla(6, 71%, 60%, 1);
+    --md-code-hl-special-color:        hsla(340, 83%, 66%, 1);
+    --md-code-hl-function-color:       hsla(291, 57%, 65%, 1);
+    --md-code-hl-constant-color:       hsla(250, 70%, 64%, 1);
+    --md-code-hl-keyword-color:        hsla(219, 71%, 60%, 1);
+    --md-code-hl-string-color:         hsla(150, 58%, 44%, 1);
+    --md-code-hl-name-color:           var(--md-code-fg-color);
+    --md-code-hl-operator-color:       var(--md-default-fg-color--light);
+    --md-code-hl-punctuation-color:    var(--md-default-fg-color--lighter);
+    --md-code-hl-comment-color:        var(--md-default-fg-color--lighter);
+    --md-code-hl-generic-color:        var(--md-default-fg-color--lighter);
+    --md-code-hl-variable-color:       var(--md-default-fg-color--light);
 
-    // Text color shades
-    --md-text-color:                   var(--md-default-fg-color);
-    --md-text-link-color:              var(--md-primary-fg-color);
+    // Typeset color shades
+    --md-typeset-color:                var(--md-default-fg-color);
+    --md-typeset-a-color:              var(--md-primary-fg-color);
+
+    // Typeset `del` and `ins` color shades
+    --md-typeset-del-color:            hsla(6, 90%, 60%, 0.15);
+    --md-typeset-ins-color:            hsla(150, 90%, 44%, 0.15);
+
+    // Typeset `kbd` color shades
+    --md-typeset-kbd-color:            hsla(0, 0%, 98%, 1);
+    --md-typeset-kbd-accent-color:     hsla(0, 100%, 100%, 1);
+    --md-typeset-kbd-border-color:     hsla(0, 0%, 72%, 1);
 
     // Admonition color shades
     --md-admonition-bg-color:          var(--md-default-bg-color);
