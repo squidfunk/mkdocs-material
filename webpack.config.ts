@@ -225,7 +225,8 @@ export default (_env: never, args: Configuration): Configuration[] => {
           /* Material Design icons */
           new CopyPlugin({
             patterns: [
-              { to: ".icons/material", from: "*.svg" }
+              { to: ".icons/material", from: "*.svg" },
+              { to: ".icons/material", from: "../LICENSE" }
             ].map(pattern => ({
               context: "node_modules/@mdi/svg/svg",
               ...pattern
