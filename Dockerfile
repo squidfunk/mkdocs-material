@@ -40,7 +40,8 @@ RUN \
   && apk add --no-cache --virtual .build gcc musl-dev \
   && pip install --no-cache-dir . \
   && pip install --no-cache-dir \
-    'mkdocs-minify-plugin>=0.2' \
+    'mkdocs-minify-plugin>=0.3' \
+    'mkdocs-redirects>=1.0' \
     'mkdocs-git-revision-date-localized-plugin>=0.4' \
     'mkdocs-awesome-pages-plugin>=2.2.1' \
   && apk del .build gcc musl-dev \
