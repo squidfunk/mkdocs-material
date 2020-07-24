@@ -229,7 +229,6 @@ export function setupInstantLoading(
       withLatestFrom(document$)
     )
       .subscribe(([, { title, head }]) => {
-        document.dispatchEvent(new CustomEvent("DOMContentSwitch"))
         document.title = title
 
         /* Replace meta tags */
@@ -247,6 +246,9 @@ export function setupInstantLoading(
             replaceElement(prev, next)
           }
         }
+
+        /* Finished, dispatch document switch event */
+        document.dispatchEvent(new CustomEvent("DOMContentSwitch"))
       })
 
   /* Debounce update of viewport offset */
