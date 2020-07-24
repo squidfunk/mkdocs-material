@@ -195,7 +195,7 @@ use your brand-specific colors), you can add an [additional stylesheet][8] and
 tweak the values of the CSS variables.
 
 Let's say you're :fontawesome-brands-youtube:{: style="color: #EE0F0F" }
-__YouTube__, and want to set the primary color to your brand's palette, just
+__YouTube__, and want to set the primary color to your brand's palette. Just
 add:
 
 ``` css
@@ -220,7 +220,7 @@ variables.
 :octicons-mortar-board-24: Difficulty: _easy_
 
 Besides overriding specific colors, you can create your own, named color scheme
-by wrapping the definitions in the `[data-md-color-scheme="..."]`
+by wrapping the definitions in the `#!css [data-md-color-scheme="..."]`
 [attribute selector][9], which you can then set via `mkdocs.yml` as described
 in the [color schemes][10] section:
 

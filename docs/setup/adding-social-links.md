@@ -96,7 +96,7 @@ For each entry, the following fields are available:
 [:octicons-file-code-24: Source][2] ·
 :octicons-mortar-board-24: Difficulty: _moderate_
 
-The social links feature uses the available [icon integration][3] of Material for
+The social links feature uses the standard [icon integration][3] of Material for
 MkDocs. If you want to use custom icons, follow the guide explaining how to
 add [additional icons][4].
 

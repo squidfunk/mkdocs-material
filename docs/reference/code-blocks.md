@@ -332,9 +332,47 @@ explained in the [official documentation][16].
 [:octicons-file-code-24: Source][21] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
-If syntax highlighting is done with [Pygments][22], Material for MkDocs
-provides the styles defining the [appeareance][21] of code blocks, which can
-be adjusted with [additional stylesheets][6].
+If [Pygments][22] is used, Material for MkDocs provides the [styles for code
+blocks][21], which are built with a custom and well-balanced palette that works
+equally well for both [color schemes][23]:
 
-  [21]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_codehilite.scss
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-number-color) " } `--md-code-hl-number-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-special-color) " } `--md-code-hl-special-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-function-color) " } `--md-code-hl-function-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-constant-color) " } `--md-code-hl-constant-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-keyword-color) " } `--md-code-hl-keyword-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-string-color) " } `--md-code-hl-string-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-name-color) " } `--md-code-hl-name-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-operator-color) " } `--md-code-hl-operator-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-punctuation-color) " } `--md-code-hl-punctuation-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-comment-color) " } `--md-code-hl-comment-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-generic-color) " } `--md-code-hl-generic-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-variable-color) " } `--md-code-hl-variable-color`
+
+Let's say you want to change the color of `#!js "strings"`. While there are
+several [types of string tokens][24], Material for MkDocs assigns a single color
+to most of them.
+
+Add an [additional stylesheet][6], and add:
+
+``` css
+:root {
+  --md-code-hl-string-color: #0FF1CE;
+}
+```
+
+If you want to tweak a specific type of string, i.e. ``#!js `backticks` ``, you
+can lookup the specific class name in the [syntax theme definition][25], and
+override it as part of your additional stylesheet:
+
+``` css
+.highlight .sb {
+  color: #0FF1CE;
+}
+```
+
+  [21]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss#L60-L73
   [22]: #use-pygments
+  [23]: ../setup/changing-the-colors.md#color-scheme
+  [24]: https://pygments.org/docs/tokens/#literals
+  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_codehilite.scss#L42

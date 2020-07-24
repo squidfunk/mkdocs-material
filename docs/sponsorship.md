@@ -114,7 +114,7 @@ the following guidelines:
 
 - If you cancel your subscription, you're removed as a collaborator and will not
   receive future updates of the sponsor edition. However, you may continue to
-  use the latest version that's available to you for __as long as you like__.
+  __use the latest version__ that's available to you __as long as you like__.
   Just remember that __[GitHub deletes private forks][13]__.
 
   [12]: license.md
