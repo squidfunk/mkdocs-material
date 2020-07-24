@@ -34,7 +34,7 @@
 
   // Default color shades
   --md-default-fg-color:               hsla(var(--md-hue), 75%, 95%, 1);
-  --md-default-fg-color--light:        hsla(var(--md-hue), 75%, 90%, 0.87);
+  --md-default-fg-color--light:        hsla(var(--md-hue), 75%, 90%, 0.57);
   --md-default-fg-color--lighter:      hsla(var(--md-hue), 75%, 90%, 0.32);
   --md-default-fg-color--lightest:     hsla(var(--md-hue), 75%, 90%, 0.12);
   --md-default-bg-color:               hsla(var(--md-hue), 15%, 21%, 1);
@@ -51,6 +51,9 @@
   --md-code-hl-comment-color:          hsla(var(--md-hue), 34%, 71%, 0.3);
   --md-code-hl-generic-color:          hsla(var(--md-hue), 34%, 71%, 0.3);
 
+  // Typeset color shades
+  --md-typeset-a-color:                var(--md-primary-fg-color--light);
+
   // Typeset `kbd` color shades
   --md-typeset-kbd-color:              hsla(var(--md-hue), 15%, 94%, 0.12);
   --md-typeset-kbd-accent-color:       hsla(var(--md-hue), 15%, 94%, 0.2);
@@ -58,7 +61,6 @@
 
   // Admonition color shades
   --md-admonition-bg-color:            hsla(var(--md-hue), 0%, 100%, 0.025);
-  --md-admonition-fg-color:            var(--md-default-fg-color);
 
   // Footer color shades
   --md-footer-bg-color:                hsla(var(--md-hue), 15%, 12%, 0.87);
