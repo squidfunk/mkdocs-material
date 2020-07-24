@@ -109,7 +109,8 @@ markdown_extensions:
   - markdown.extensions.meta
   - markdown.extensions.toc:
       permalink: true
-  - pymdownx.arithmatex
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
@@ -167,6 +168,7 @@ nav:
     - Footnotes: reference/footnotes.md
     - Icons + Emojis: reference/icons-emojis.md
     - Lists: reference/lists.md
+    - MathJax: reference/mathjax.md
     - Meta tags: reference/meta-tags.md
   - Changelog:
     - Release notes: changelog.md

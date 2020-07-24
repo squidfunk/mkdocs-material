@@ -29,26 +29,22 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // MathJax integration - add padding to omit vertical scrollbar
-  .MJXc-display {
-    margin: 0.75em 0;
-    padding: 0.75em 0;
-    overflow: auto;
-    touch-action: auto;
-  }
-
-  // Stretch top-level containers
-  > p > .MJXc-display {
+  // Scroll math block on overflow
+  div.arithmatex {
+    overflow-x: scroll;
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
-      margin: 0.75em px2rem(-16px);
-      padding: 0.25em px2rem(16px);
+      margin: 0 px2rem(-16px);
     }
-  }
 
-  // Remove outline on tab index
-  .MathJax_CHTML {
-    outline: 0;
+    // MathJax integration
+    > * {
+      width: min-content;
+      margin: 1em auto !important;
+      padding: 0 px2rem(16px);
+      overflow: auto;
+      touch-action: auto;
+    }
   }
 }

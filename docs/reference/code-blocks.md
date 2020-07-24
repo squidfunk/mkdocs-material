@@ -53,7 +53,7 @@ configuring syntax highlighting of code blocks:
         respective stylesheet and JavaScript from a [CDN][9] serving
         Highlight.js in `mkdocs.yml`:
 
-        === "docs/javascripts/extra.js"
+        === "docs/javascripts/config.js"
 
             ``` js
             hljs.initHighlighting()
@@ -64,7 +64,7 @@ configuring syntax highlighting of code blocks:
             ``` yaml
             extra_javascript:
               - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js
-              - javascripts/extra.js
+              - javascripts/config.js
             extra_css:
               - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css
             ```
