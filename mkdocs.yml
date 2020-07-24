@@ -52,7 +52,7 @@ theme:
   language: en
   features:
     - tabs
-    - instant
+    #- instant
   palette:
     scheme: default
     primary: indigo

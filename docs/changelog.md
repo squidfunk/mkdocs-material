@@ -4,7 +4,28 @@ template: overrides/main.html
 
 # Changelog
 
-## Release notes
+## Sponsor edition
+
+### 1.0.0 <small>_ July 14, 2020</small>
+
+* Added grouping of search results
+* Added missing query terms to search result
+* Improved search result relevance and scoring
+
+## Community edition
+
+### 5.5.0 <small>_ July 24, 2020</small>
+
+* Rewrite of entire documentation
+* Rewrite of syntax highlighting to be customizable with CSS variables
+* Improved syntax highlighting to work with light and dark theme
+* Improved `slate` color scheme to be more customizable and easier on the eyes
+* Added licenses of icon sets to distribution files
+* Fixed stale document titles in Google Analytics when using instant loading
+* Fixed width of previous and next footer links for tablet and above
+* Fixed issues with top scroll margin for footnotes
+* Fixed top margin for tabbed content when using a JavaScript highlighter
+* Deprecated metadata-based redirects, source links and heroes
 
 ### 5.4.0 <small>_ June 29, 2020</small>
 

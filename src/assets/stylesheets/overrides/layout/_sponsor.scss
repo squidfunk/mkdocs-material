@@ -25,7 +25,7 @@
 // ----------------------------------------------------------------------------
 
 // Heart animation
-@keyframes tx-sponsor {
+@keyframes tx-heart {
   0%, 40%, 80%, 100% {
     transform: scale(1);
   }
@@ -48,7 +48,9 @@
     display: inline-block;
     color: $clr-pink-500;
     font-variant: all-petite-caps;
-    transition: transform 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
+    transition:
+      transform 250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      color     125ms;
 
     // Focused or hovered links
     &:focus,
@@ -70,5 +72,5 @@
 
 // Pumping heart
 .tx-heart {
-  animation: tx-sponsor 1000ms infinite;
+  animation: tx-heart 1000ms infinite;
 }

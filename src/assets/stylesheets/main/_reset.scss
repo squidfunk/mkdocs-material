@@ -76,20 +76,7 @@ small {
 // Prevent subscript and superscript from affecting line-height
 sub,
 sup {
-  position: relative;
-  font-size: 80%;
-  line-height: 0;
-  vertical-align: baseline;
-}
-
-// Correct subscript offset
-sub {
-  bottom: -0.25em;
-}
-
-// Correct superscript offset
-sup {
-  top: -0.5em;
+  line-height: 1em;
 }
 
 // Remove borders on images
