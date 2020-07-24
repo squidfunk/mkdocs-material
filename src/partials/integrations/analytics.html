@@ -48,7 +48,10 @@
 
   /* Send page view on document switch (instant loading, custom event) */
   document.addEventListener("DOMContentSwitch", function() {
-    ga("send", "pageview", document.location.pathname)
+    ga("send", "pageview", {
+      title: document.title,
+      location: document.location
+    })
   })
 </script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
