@@ -27,12 +27,14 @@
 // Copy to clipboard
 .md-clipboard {
   position: absolute;
-  top: px2rem(8px);
-  right: px2em(8px, 16px);
+  top: 0;
+  right: 0;
   z-index: 1;
-  width: px2em(24px, 16px);
-  height: px2em(24px, 16px);
+  padding: px2em(8px);
+  width: px2em(32px, 24px);
+  height: px2em(32px, 24px);
   color: var(--md-default-fg-color--lightest);
+  background-color: var(--md-code-bg-color);
   border-radius: px2rem(2px);
   cursor: pointer;
   transition: color 125ms;
