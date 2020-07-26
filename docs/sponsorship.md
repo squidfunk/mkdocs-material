@@ -26,7 +26,7 @@ for demonstration purposes, [the official docs][5] built with Material for
 MkDocs Insiders.
 
   [4]: #roadmap
-  [5]: https://squidfunk.github.io/mkdocs-material-next/
+  [5]: https://squidfunk.github.io/mkdocs-material-insiders/
 
 ## How to become a sponsor
 
