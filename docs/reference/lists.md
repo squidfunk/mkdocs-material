@@ -11,7 +11,7 @@ are supported through extensions.
 
 ## Configuration
 
-### Definition Lists
+### Definition List
 
 [:octicons-file-code-24: Source][1] · [:octicons-workflow-24: Extension][2]
 

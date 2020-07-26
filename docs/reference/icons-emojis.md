@@ -46,7 +46,7 @@ about configuration options.
   [8]: https://octicons.github.com/
   [9]: ../setup/changing-the-logo-and-icons.md#additional-icons
 
-### Attribute Lists
+### Attribute List
 
 The [Attribute List][10] extension, which is part of the standard Markdown
 library, allows to __add HTML attributes and classes to Markdown elements__,
@@ -105,6 +105,103 @@ _Result_:
   [15]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/fontawesome/regular/laugh-wink.svg
   [16]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/octoface-16.svg
 
-### Using colored icons
+#### with colors
 
-### Using animated icons
+When the [Attribute List][17] extension is enabled, custom CSS classes and
+attributes can be added to icons by suffixing the icon with a special syntax.
+While HTML and CSS allow to use [inline styles][18], it's always best to add
+an [additional stylesheet][19] and put styles into dedicated CSS classes:
+
+``` css
+.medium {
+  color: #00AB6C;
+}
+.twitter {
+  color: #1DA1F2;
+}
+.facebook {
+  color: #4267B2;
+}
+```
+
+Then, add the CSS classes to the icons:
+
+<style>
+  .medium {
+    color: #00AB6C;
+  }
+  .twitter {
+    color: #1DA1F2;
+  }
+  .facebook {
+    color: #4267B2;
+  }
+</style>
+
+_Example_:
+
+``` markdown
+- :fontawesome-brands-medium:{: .medium } – Medium
+- :fontawesome-brands-twitter:{: .twitter } – Twitter
+- :fontawesome-brands-facebook:{: .facebook } – Facebook
+```
+
+_Result_:
+
+- :fontawesome-brands-medium:{: .medium } – Medium
+- :fontawesome-brands-twitter:{: .twitter } – Twitter
+- :fontawesome-brands-facebook:{: .facebook } – Facebook
+
+  [17]: #attribute-list
+  [18]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
+  [19]: ../customization.md#additional-stylesheets
+
+#### with animations
+
+Similar to adding [colors][20], it's just as easy to add [CSS animations][21] to
+icons by using an [additional stylesheet][6], defining a `#!css @keyframes` rule
+and adding the dedicated CSS class to the icon:
+
+``` css
+@keyframes heart {
+  0%, 40%, 80%, 100% {
+    transform: scale(1);
+  }
+  20%, 60% {
+    transform: scale(1.15);
+  }
+}
+.heart {
+  color: #E91E63;
+  animation: heart 1000ms infinite;
+}
+```
+
+Then, add the CSS class to the icon:
+
+<style>
+  @keyframes heart {
+    0%, 40%, 80%, 100% {
+      transform: scale(1);
+    }
+    20%, 60% {
+      transform: scale(1.15);
+    }
+  }
+  .heart {
+    animation: heart 1000ms infinite;
+  }
+</style>
+
+_Example_:
+
+``` markdown
+:octicons-heart-fill-24:{: .heart }
+```
+
+_Result_:
+
+:octicons-heart-fill-24:{: .heart }
+
+  [20]: #with-colors
+  [21]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation
