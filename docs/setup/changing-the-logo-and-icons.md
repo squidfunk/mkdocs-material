@@ -7,7 +7,7 @@ template: overrides/main.html
 When installing Material for MkDocs, you immediately get access to _over 7.000 
 icons_ ready to be used for customization of specific parts of the theme and/or 
 when writing your documentation in Markdown. Not enough? You can also [add
-additional icons][1] with very little effort.
+additional icons][1] with minimal effort.
 
   [1]: #additional-icons
 
@@ -92,7 +92,7 @@ If you want to add [additional icons][1], read on.
 [:octicons-file-code-24: Source][3] · 
 :octicons-mortar-board-24: Difficulty: _moderate_
 
-In order to add additional icons, [extend the theme][11] and create a folder
+In order to add additional icons, [extend the theme][11], and create a folder
 named `.icons` in the [`custom_dir`][12] you want to use for overrides. Next,
 add your `*.svg` icons into a subfolder of the `.icons` folder. Let's say you 
 downloaded and unpacked the [Bootstrap][13] icon set, and want to add it to

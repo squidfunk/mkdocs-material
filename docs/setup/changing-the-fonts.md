@@ -76,7 +76,7 @@ theme:
 [:octicons-file-code-24: Source][2] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
-If you want to load an (additional) font from another destination, or override
+If you want to load an (additional) font from another  or override
 the fallback font, you can use an [additional stylesheet][8] to add the
 corresponding `@font-face` definition:
 

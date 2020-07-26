@@ -285,7 +285,7 @@ The `#!python range()` function is used to generate a sequence of numbers.
 
 When [Keys][19] is enabled, keyboard keys can be rendered with a simple syntax.
 Consult the [Python Markdown Extensions][16] documentation to learn about all
-available short key codes.
+available key codes.
 
 _Example_:
 

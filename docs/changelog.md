@@ -4,7 +4,7 @@ template: overrides/main.html
 
 # Changelog
 
-## Sponsor edition
+## Material for MkDocs Insiders
 
 ### 1.0.0 <small>_ July 14, 2020</small>
 
@@ -12,7 +12,7 @@ template: overrides/main.html
 * Added missing query terms to search result
 * Improved search result relevance and scoring
 
-## Community edition
+## Material for MkDocs
 
 ### 5.5.0 <small>_ July 24, 2020</small>
 

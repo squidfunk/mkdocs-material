@@ -4,7 +4,7 @@ template: overrides/main.html
 
 # Setting up site analytics
 
-As with any other service that is offered on the web, understanding how your
+As with any other service offered on the web, understanding how your project
 documentation is actually used can be an essential success factor. While
 Material for MkDocs natively integrates with [Google Analytics][1], [other
 analytics services][2] can be used, too.
@@ -19,8 +19,8 @@ analytics services][2] can be used, too.
 [:octicons-file-code-24: Source][3] · :octicons-milestone-24: Default: _none_
 
 After heading over to your [Google Analytics][1] account to [create a new
-property][4] in order to obtain a new tracking id of the form `UA-XXXXXXXX-X`,
-add it to `mkdocs.yml`:
+property][4] in order to obtain a unique tracking id of the form
+`UA-XXXXXXXX-X`, add it to `mkdocs.yml`:
 
 ``` yaml
 google_analytics:
@@ -33,7 +33,7 @@ google_analytics:
 
 #### Site search tracking
 
-Besides basic page views, _site search_ can also be tracked to better understand
+Besides basic page views, _site search_ can also be tracked to understand better
 how people use your documentation and what they expect to find. To enable
 search tracking:
 
@@ -79,7 +79,7 @@ app.location$.subscribe(function(url) {
 ```
 
 Note that this must be integrated with [additional JavaScript][8], and cannot be
-included as part of the `analytics` block, which is included in the `head` of
+included as part of the `analytics` block, as it is included in the `head` of
 the document.
 
   [7]: setting-up-navigation.md#instant-loading

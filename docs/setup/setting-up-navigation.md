@@ -27,10 +27,10 @@ theme:
 ```
 
 The resulting page is parsed and injected and all event handlers and components
-are automatically rebound. This means that __Material for MkDocs behaves like a
+are rebound automatically. This means that __Material for MkDocs behaves like a
 Single Page Application__, which is especially useful for large documentation
-sites that come with a huge search index, as the search index will now remain
-intact in-between document switches.
+sites that come with a massive search index, as the search index will now
+remain intact in-between document switches.
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/instant/index.ts
   [2]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
@@ -202,9 +202,9 @@ to navigate your project documentation via keyboard. There're two modes:
 
 `global`{: #global }
 
-:   This mode is the active when _search is not active_, i.e. when there's no
-    other focussed element that is suceptible to keyboard input. The following
-    keys are bound:
+:   This mode is active when _search is not focussed_ and when there's no other
+    focussed element that is susceptible to keyboard input. The following keys
+    are bound:
 
     - ++f++ , ++s++ , ++slash++ : open search dialog
     - ++p++ , ++comma++ : go to previous page
@@ -224,7 +224,7 @@ app.keyboard$.subscribe(key => {
 ```
 
 The call to `#!js key.claim()` will essentially execute `#!js preventDefault()`
-on the underlying event, so the key press will not propagate further and touch
+on the underlying event, so the keypress will not propagate further and touch
 other event listeners.
 
   [10]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/keyboard/index.ts

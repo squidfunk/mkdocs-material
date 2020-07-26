@@ -6,7 +6,8 @@ template: overrides/main.html
 
 Material for MkDocs supports internationalization (i18n) and provides
 translations for template variables and labels in 40+ languages. Additionally,
-search can be configured to use a language-specific stemmer (if available).
+the site search can be configured to use a language-specific stemmer (if
+available).
 
 ## Configuration
 
@@ -105,7 +106,7 @@ theme:
   direction: ltr
 ```
 
-:material-cursor-default-click-outline: click on a tile to change the
+:material-cursor-default-click-outline: Click on a tile to change the
 directionality:
 
 <div class="tx-switch">

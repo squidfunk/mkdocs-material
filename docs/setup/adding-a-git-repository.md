@@ -6,7 +6,7 @@ template: overrides/main.html
 
 If your documentation is related to source code, Material for MkDocs provides
 the ability to display information to the project's repository as part of the
-static site, including statistics like stars and forks. Furthermore, certain
+static site, including statistics like stars and forks. Furthermore, individual
 documents can be linked to specific source files.
 
 ## Configuration

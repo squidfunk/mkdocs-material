@@ -4,7 +4,7 @@ template: overrides/main.html
 
 # Adding social links
 
-The footer of your project documentation is a good place to add links to
+The footer of your project documentation is a great place to add links to
 websites or platforms you or your company are using as additional marketing 
 channels, e.g. :fontawesome-brands-medium:{: style="color: #00AB6C" },
 :fontawesome-brands-twitter:{: style="color: #1DA1F2" } or

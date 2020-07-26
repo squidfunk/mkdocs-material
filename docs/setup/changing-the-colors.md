@@ -4,7 +4,7 @@ template: overrides/main.html
 
 # Changing the colors
 
-As any good Material Design implementation, Material for MkDocs supports
+As any proper Material Design implementation, Material for MkDocs supports
 Google's original [color palette][1], which can be easily configured through 
 `mkdocs.yml`. Furthermore, colors can be customized with a few lines of CSS to
 fit your brand's identity by using [CSS variables][2].
@@ -28,7 +28,7 @@ theme:
     scheme: default
 ```
 
-:material-cursor-default-click-outline: click on a tile to change the color
+:material-cursor-default-click-outline: Click on a tile to change the color
 scheme:
 
 <div class="tx-switch">
@@ -74,7 +74,7 @@ theme:
     primary: indigo
 ```
 
-:material-cursor-default-click-outline: click on a tile to change the primary
+:material-cursor-default-click-outline: Click on a tile to change the primary
 color:
 
 <div class="tx-switch">
@@ -121,7 +121,7 @@ color:
 
 The _accent color_ is used to denote elements that can be interacted with, e.g.
 hovered links, buttons and scrollbars. It can be changed in `mkdocs.yml` by
-chosing a valid color name:
+choosing a valid color name:
 
 ``` yaml
 theme:
@@ -129,7 +129,7 @@ theme:
     accent: indigo
 ```
 
-:material-cursor-default-click-outline: click on a tile to change the accent
+:material-cursor-default-click-outline: Click on a tile to change the accent
 color:
 
 <style>
@@ -178,7 +178,7 @@ color:
 
     With __2__ (color schemes) __x 21__ (primary colors) __x 17__ (accent color)
     = __714__ combinations, it's impossible to ensure that all configurations
-    provide a good user experience (e.g. _yellow on light background_), so make
+    provide a good user experience (e.g. _yellow on light background_). Make
     sure that the color combination of your choosing provides enough contrast
     and tweak CSS variables where necessary.
 

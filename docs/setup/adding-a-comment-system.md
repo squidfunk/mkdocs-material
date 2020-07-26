@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+disqus: mkdocs material
 ---
 
 # Adding a comment system
