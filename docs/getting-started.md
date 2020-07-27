@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+title: Getting started - Material for MkDocs
 ---
 
 # Getting started
