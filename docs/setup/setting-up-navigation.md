@@ -196,9 +196,9 @@ to navigate your project documentation via keyboard. There're two modes:
 :   This mode is active when the _search is focused_. It provides several key
     bindings to make search accessible and navigable via keyboard:
 
-    - ++arrow-down++ , ++arrow-up++ : select next / previous result
-    - ++esc++ , ++tab++ : close search dialog
-    - ++enter++ : follow selected result
+    * ++arrow-down++ , ++arrow-up++ : select next / previous result
+    * ++esc++ , ++tab++ : close search dialog
+    * ++enter++ : follow selected result
 
 `global`{: #global }
 
@@ -206,9 +206,9 @@ to navigate your project documentation via keyboard. There're two modes:
     focussed element that is susceptible to keyboard input. The following keys
     are bound:
 
-    - ++f++ , ++s++ , ++slash++ : open search dialog
-    - ++p++ , ++comma++ : go to previous page
-    - ++n++ , ++period++ : go to next page
+    * ++f++ , ++s++ , ++slash++ : open search dialog
+    * ++p++ , ++comma++ : go to previous page
+    * ++n++ , ++period++ : go to next page
 
 Let's say you want to bind some action to the ++x++ key. By using [additional
 JavaScript][11], you can subscribe to the `keyboard$` observable and attach

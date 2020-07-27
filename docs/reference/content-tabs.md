@@ -108,9 +108,9 @@ _Example_:
 ```
 === "Unordered list"
 
-    - Sed sagittis eleifend rutrum
-    - Donec vitae suscipit est
-    - Nulla tempor lobortis orci
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
 
 === "Ordered list"
 
@@ -123,9 +123,9 @@ _Result_:
 
 === "Unordered list"
 
-    - Sed sagittis eleifend rutrum
-    - Donec vitae suscipit est
-    - Nulla tempor lobortis orci
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
 
 === "Ordered list"
 
@@ -149,16 +149,16 @@ _Example_:
         _Example_:
 
         ``` markdown
-        - Sed sagittis eleifend rutrum
-        - Donec vitae suscipit est
-        - Nulla tempor lobortis orci
+        * Sed sagittis eleifend rutrum
+        * Donec vitae suscipit est
+        * Nulla tempor lobortis orci
         ```
 
         _Result_:
 
-        - Sed sagittis eleifend rutrum
-        - Donec vitae suscipit est
-        - Nulla tempor lobortis orci
+        * Sed sagittis eleifend rutrum
+        * Donec vitae suscipit est
+        * Nulla tempor lobortis orci
 
     === "Ordered List"
 
@@ -186,16 +186,16 @@ _Result_:
         _Example_:
 
         ``` markdown
-        - Sed sagittis eleifend rutrum
-        - Donec vitae suscipit est
-        - Nulla tempor lobortis orci
+        * Sed sagittis eleifend rutrum
+        * Donec vitae suscipit est
+        * Nulla tempor lobortis orci
         ```
 
         _Result_:
 
-        - Sed sagittis eleifend rutrum
-        - Donec vitae suscipit est
-        - Nulla tempor lobortis orci
+        * Sed sagittis eleifend rutrum
+        * Donec vitae suscipit est
+        * Nulla tempor lobortis orci
 
     === "Ordered List"
 

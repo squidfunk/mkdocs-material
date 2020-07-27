@@ -37,16 +37,16 @@ For each entry, the following fields are available:
       This field must point to a valid icon path referencing [any icon bundled 
       with the theme][2], or the build will not succeed. Some popular choices:
 
-      - :fontawesome-brands-behance: – `fontawesome/brands/behance`
-      - :fontawesome-brands-docker: – `fontawesome/brands/docker`
-      - :fontawesome-brands-github: – `fontawesome/brands/github`
-      - :fontawesome-brands-instagram: – `fontawesome/brands/instagram`
-      - :fontawesome-brands-linkedin: – `fontawesome/brands/linkedin`
-      - :fontawesome-brands-medium: – `fontawesome/brands/medium`
-      - :fontawesome-brands-pied-piper-alt: – `fontawesome/brands/pied-piper-alt`
-      - :fontawesome-brands-product-hunt: – `fontawesome/brands/product-hunt`
-      - :fontawesome-brands-slack: – `fontawesome/brands/slack`
-      - :fontawesome-brands-twitter: – `fontawesome/brands/twitter`
+      * :fontawesome-brands-behance: – `fontawesome/brands/behance`
+      * :fontawesome-brands-docker: – `fontawesome/brands/docker`
+      * :fontawesome-brands-github: – `fontawesome/brands/github`
+      * :fontawesome-brands-instagram: – `fontawesome/brands/instagram`
+      * :fontawesome-brands-linkedin: – `fontawesome/brands/linkedin`
+      * :fontawesome-brands-medium: – `fontawesome/brands/medium`
+      * :fontawesome-brands-pied-piper-alt: – `fontawesome/brands/pied-piper-alt`
+      * :fontawesome-brands-product-hunt: – `fontawesome/brands/product-hunt`
+      * :fontawesome-brands-slack: – `fontawesome/brands/slack`
+      * :fontawesome-brands-twitter: – `fontawesome/brands/twitter`
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/social.html
   [2]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons

@@ -49,7 +49,7 @@ about configuration options.
 ### Attribute List
 
 The [Attribute List][10] extension, which is part of the standard Markdown
-library, allows to __add HTML attributes and classes to Markdown elements__,
+library, allows to __add HTML attributes and CSS classes to Markdown elements__,
 and can be enabled via `mkdocs.yml`
 
 ``` yaml
@@ -141,16 +141,16 @@ Then, add the CSS classes to the icons:
 _Example_:
 
 ``` markdown
-- :fontawesome-brands-medium:{: .medium } – Medium
-- :fontawesome-brands-twitter:{: .twitter } – Twitter
-- :fontawesome-brands-facebook:{: .facebook } – Facebook
+* :fontawesome-brands-medium:{: .medium } – Medium
+* :fontawesome-brands-twitter:{: .twitter } – Twitter
+* :fontawesome-brands-facebook:{: .facebook } – Facebook
 ```
 
 _Result_:
 
-- :fontawesome-brands-medium:{: .medium } – Medium
-- :fontawesome-brands-twitter:{: .twitter } – Twitter
-- :fontawesome-brands-facebook:{: .facebook } – Facebook
+* :fontawesome-brands-medium:{: .medium } – Medium
+* :fontawesome-brands-twitter:{: .twitter } – Twitter
+* :fontawesome-brands-facebook:{: .facebook } – Facebook
 
   [17]: #attribute-list
   [18]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
