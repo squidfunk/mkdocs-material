@@ -45,9 +45,8 @@ title: Lorem ipsum dolor sit amet
 ```
 
 This will set the `title` tag inside the document `head` for the current page
-to the provided value. It will also override the default behavior of Material
-for MkDocs which appends the site title using a dash as a separator to the page
-title.
+to the provided value. Note that the site title is appended using a dash as a
+separator, which is the default behavior.
 
   [5]: #metadata
 
