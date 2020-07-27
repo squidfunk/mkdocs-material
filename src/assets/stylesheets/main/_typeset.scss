@@ -389,6 +389,38 @@ kbd {
   svg {
     max-width: 100%;
     height: auto;
+
+    // Left-aligned
+    &[align="left"] {
+      margin: 1em;
+      margin-left: 0;
+    }
+
+    // Right-aligned
+    &[align="right"] {
+      margin: 1em;
+      margin-right: 0;
+    }
+
+    // Remove top spacing of sole children
+    &[align]:only-child {
+      margin-top: 0;
+    }
+  }
+
+  // Figures
+  figure {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  // Figure captions
+  figcaption {
+    max-width: px2rem(480px);
+    margin: 0.5em auto;
+    font-style: italic;
   }
 
   // Limit width to container

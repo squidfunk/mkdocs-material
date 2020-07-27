@@ -171,6 +171,7 @@ nav:
     - Footnotes: reference/footnotes.md
     - Formatting: reference/formatting.md
     - Icons + Emojis: reference/icons-emojis.md
+    - Images: reference/images.md
     - Lists: reference/lists.md
     - MathJax: reference/mathjax.md
     - Meta tags: reference/meta-tags.md
