@@ -54,9 +54,9 @@ In order to integrate another analytics service provider offering an
 asynchronous JavaScript-based tracking solution, you can [extend the theme][5]
 and [override the `analytics` block][6]:
 
-``` jinja
+``` html
 {% block analytics %}
-  {# Add custom analytics integration here #}
+  <!-- Add custom analytics integration here -->
 {% endblock %}
 ```
 

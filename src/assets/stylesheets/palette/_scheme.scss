@@ -27,7 +27,7 @@
 // Slate theme, i.e. dark mode
 [data-md-color-scheme="slate"] {
 
-  // Slate's hue in the range [0,255] - change this variable to alter the tone
+  // Slate's hue in the range [0,360] - change this variable to alter the tone
   // of the theme, e.g. to make it more redish or greenish. This is a slate-
   // specific variable, but the same approach may be adapted to custom themes.
   --md-hue: 232;

@@ -34,6 +34,23 @@ This will insert a comment system on _every page, except the index page_.
   [3]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [4]: https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
+### Metadata
+
+The [Metadata][5] extension, which is part of the standard Markdown library,
+adds the ability to add [front matter][6] to a document and can be enabled via
+`mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - meta
+```
+
+Front matter is written as a series of key-value pairs at the beginning of the
+Markdown document, delimited by a blank line which ends the YAML context.
+
+  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
+  [6]: https://jekyllrb.com/docs/front-matter/
+
 ## Customization
 
 ### Selective integration
@@ -41,7 +58,7 @@ This will insert a comment system on _every page, except the index page_.
 [:octicons-file-code-24: Source][2] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
-If the [Metadata][5] extension is enabled, you can disable or enable Disqus for
+If the [Metadata][7] extension is enabled, you can disable or enable Disqus for
 specific pages by adding the following to the front matter of a page:
 
 === "Enable Disqus"
@@ -60,4 +77,4 @@ specific pages by adding the following to the front matter of a page:
     ---
     ```
 
-  [5]: ../reference/meta-tags.md#metadata
+  [7]: #metadata

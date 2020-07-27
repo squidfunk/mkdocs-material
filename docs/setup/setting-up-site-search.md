@@ -212,7 +212,7 @@ template, both of which don't transform the query prior to submission, or
 customize the `transform` function, you can do this by [overriding the 
 `config` block][14]:
 
-``` jinja
+``` html
 {% block config %}
   <script>
     var search = {
@@ -241,7 +241,7 @@ want to switch the web worker with your own implementation, e.g. to submit
 search to an external service, you can add a custom JavaScript file to the `docs`
 directory and [override the `config` block][14]:
 
-``` jinja
+``` html
 {% block config %}
   <script>
     var search = {

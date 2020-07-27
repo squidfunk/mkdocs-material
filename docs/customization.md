@@ -142,7 +142,7 @@ called _blocks_, which are defined inside the templates and wrap specific
 features. To override a block, create a `main.html` inside the `overrides`
 directory and define the block, e.g.:
 
-``` jinja
+``` html
 {% extends "base.html" %}
 
 {% block htmltitle %}

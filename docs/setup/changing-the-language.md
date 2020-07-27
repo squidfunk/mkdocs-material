@@ -142,7 +142,7 @@ want to change in the [base translation][1] and add it to the partial.
 
 Let's say you want to change "__Table of contents__" to "__On this page__":
 
-``` jinja
+``` html
 {% macro t(key) %}{{ {
   "toc.title": "On this page"
 }[key] }}{% endmacro %}

@@ -353,7 +353,7 @@ Let's say you want to change the color of `#!js "strings"`. While there are
 several [types of string tokens][24], Material for MkDocs assigns a single color
 to most of them.
 
-Add an [additional stylesheet][6], and add:
+Create an [additional stylesheet][6], and add:
 
 ``` css
 :root {

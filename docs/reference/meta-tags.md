@@ -4,12 +4,20 @@ template: overrides/main.html
 
 # Meta tags
 
+In HTML, `meta` tags allow to provide additional metadata for a document, e.g.
+page titles and descriptions, additional assets to be loaded, and [Open Graph]
+[1] data. While metadata can always be added via [customization][2], some tags
+can be configured.
+
+  [1]: https://ogp.me/
+  [2]: #customization
+
 ## Configuration
 
 ### Metadata
 
-The [Metadata][1] extension, which is part of the standard Markdown library,
-adds the ability to add [front matter][2] to a document and can be enabled via
+The [Metadata][3] extension, which is part of the standard Markdown library,
+adds the ability to add [front matter][4] to a document and can be enabled via
 `mkdocs.yml`:
 
 ``` yaml
@@ -20,14 +28,14 @@ markdown_extensions:
 Front matter is written as a series of key-value pairs at the beginning of the
 Markdown document, delimited by a blank line which ends the YAML context.
 
-  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [2]: https://jekyllrb.com/docs/front-matter/
+  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
+  [4]: https://jekyllrb.com/docs/front-matter/
 
 ## Usage
 
 ### Setting the page title
 
-If the [Metadata][3] extension is enabled, the page title can be overridden on
+If the [Metadata][5] extension is enabled, the page title can be overridden on
 a per-document basis with custom front matter:
 
 ``` markdown
@@ -41,11 +49,11 @@ to the provided value. It will also override the default behavior of Material
 for MkDocs which appends the site title using a dash as a separator to the page
 title.
 
-  [3]: #metadata
+  [5]: #metadata
 
 ### Setting the page description
 
-If the [Metadata][3] extension is enabled, the page description can also be 
+If the [Metadata][5] extension is enabled, the page description can also be
 overridden on a per-document basis with custom front matter:
 
 ``` markdown
@@ -59,11 +67,58 @@ document `head` for the current page to the provided value.
 
 ### Adding a web app manifest
 
-A [web app manifest][4] is a simple JSON file that specifies how your web application should behave when installed on the user's mobile device or desktop, which can be set via `mkdocs.yml`:
+A [web app manifest][6] is a simple JSON file that specifies how your web application should behave when installed on the user's mobile device or desktop, which can be set via `mkdocs.yml`:
 
 ``` yaml
 extra:
   manifest: manifest.webmanifest
 ```
   
-  [4]: https://developers.google.com/web/fundamentals/web-app-manifest/
+  [6]: https://developers.google.com/web/fundamentals/web-app-manifest/
+
+## Customization
+
+### Open Graph
+
+In order to add [Open Graph][1] data to your document, you can [extend the
+theme][7] and [override the `extrahead` block][8] to add the respective `meta`
+tags to the template:
+
+``` html
+{% block extrahead %}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ config.site_description }}" />
+  <meta property="og:url" content="{{ page.canonical_url }}" />
+  <meta property="og:image" content="<url>" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+{% endblock %}
+```
+
+  [7]: ../customization.md#extending-the-theme
+  [8]: ../customization.md#overriding-blocks
+
+### Twitter Cards
+
+When you post links to your project documentation on [Twitter][9], it's
+highly recommended to add [Twitter's `meta` tags][10] to optimize the preview
+of your site:
+
+``` html
+{% block extrahead %}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="<username>" />
+  <meta name="twitter:creator" content="<username>" />
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ config.site_description }}" />
+  <meta name="twitter:image" content="<url>" />
+{% endblock %}
+```
+
+You should also [check the preview][11] of your Tweets.
+
+  [9]: https://twitter.com
+  [10]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
+  [11]: https://cards-dev.twitter.com/validator

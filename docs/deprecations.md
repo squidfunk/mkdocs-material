@@ -99,9 +99,9 @@ templates can be shared among multiple pages:
 
 === "Template"
 
-    ``` jinja
+    ``` html
     {% block hero %}
-      {# Add custom hero here #}
+      <!-- Add custom hero here -->
     {% endblock %}
     ```
 

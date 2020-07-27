@@ -232,5 +232,15 @@ in the [color schemes][10] section:
 }
 ```
 
+Additionally, the `slate` color scheme defines all of it's colors via `hsla`
+color functions and deduces its colors from the `--md-hue` CSS variable. You
+can tune the `slate` theme with:
+
+``` css
+[data-md-color-scheme="slate"] {
+  --md-hue: 210; /* [0, 360] */
+}
+```
+
   [9]: https://www.w3.org/TR/selectors-4/#attribute-selectors
   [10]: #color-scheme
