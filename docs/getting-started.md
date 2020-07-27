@@ -46,8 +46,8 @@ the `GH_TOKEN` environment variable to the token's value.
   [5]: https://python-markdown.github.io/
   [6]: https://pygments.org/
   [7]: https://facelessuser.github.io/pymdown-extensions/
-  [8]: sponsorship.md
-  [9]: sponsorship.md#how-to-become-a-sponsor
+  [8]: insiders.md
+  [9]: insiders.md#how-to-become-a-sponsor
   [10]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
 ### with docker

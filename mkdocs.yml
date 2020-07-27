@@ -82,6 +82,7 @@ plugins:
         releases/4.md: upgrading.md #upgrading-from-4x-to-5x
         releases/5.md: upgrading.md #upgrading-from-3x-to-4x
         releases/changelog.md: changelog.md
+        sponsorship.md: insiders.md
   - minify:
       minify_html: true
 
@@ -147,7 +148,7 @@ nav:
     - Customization: customization.md
     - Troubleshooting: troubleshooting.md
     - Data privacy: data-privacy.md
-    - Sponsorship: sponsorship.md
+    - Insiders: insiders.md
     - License: license.md
   - Setup:
     - Changing the colors: setup/changing-the-colors.md
