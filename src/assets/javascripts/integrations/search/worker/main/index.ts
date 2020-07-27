@@ -20,8 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import "expose-loader?lunr!lunr"
-
 import { Search, SearchIndexConfig } from "../../_"
 import { SearchMessage, SearchMessageType } from "../message"
 
