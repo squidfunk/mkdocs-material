@@ -41,7 +41,7 @@ to the provided value. It will also override the default behavior of Material
 for MkDocs which appends the site title using a dash as a separator to the page
 title.
 
-  [3]: metadata
+  [3]: #metadata
 
 ### Setting the page description
 
