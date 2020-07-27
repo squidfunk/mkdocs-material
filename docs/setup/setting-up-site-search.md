@@ -15,8 +15,9 @@ made available [offline][1].
 
 ### Built-in search
 
-[:octicons-file-code-24: Source][2] · 
-[:octicons-cpu-24: Plugin][3]
+[:octicons-file-code-24: Source][2] ·
+[:octicons-cpu-24: Plugin][3] ·
+[:octicons-heart-fill-24:{: .tx-heart } Insiders: new search UI/UX](../insiders.md){: .tx-insiders }
 
 The [built-in search plugin][3] integrates seamlessly with Material for MkDocs,
 adding multilingual client-side search with [lunr][4] and [lunr-languages][5].

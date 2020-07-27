@@ -174,12 +174,12 @@ $admonitions: (
   $name: nth($names, 1);
   $tint: nth($props, 2);
 
-  // Define base class
+  // Admonition base class
   .md-typeset .admonition.#{$name} {
     border-color: $tint;
   }
 
-  // Define base class
+  // Admonition title
   .md-typeset .#{$name} > .admonition-title {
     background-color: transparentize($tint, 0.9);
 

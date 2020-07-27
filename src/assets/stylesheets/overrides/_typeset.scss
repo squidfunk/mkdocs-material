@@ -27,6 +27,11 @@
 // Typesetted content
 .md-typeset {
 
+  // Insiders color (for links, etc.)
+  .tx-insiders {
+    color: $clr-pink-500;
+  }
+
   // Extension: switch buttons
   .tx-switch button {
     cursor: pointer;

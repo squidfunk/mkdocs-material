@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ config.site_description }}">
   <meta name="twitter:image" content="{{ image }}">
-  <link rel="stylesheet" href="{{ 'assets/stylesheets/overrides.5036298b.min.css' | url }}">
+  <link rel="stylesheet" href="{{ 'assets/stylesheets/overrides.f63bc39a.min.css' | url }}">
 {% endblock %}
 {% block announce %}
   <a href="https://twitter.com/squidfunk">
@@ -35,7 +35,7 @@
 {% endblock %}
 {% block content %}
   {{ super() }}
-  <aside class="tx-sponsor md-typeset">
+  <footer class="tx-content__footer md-typeset">
     <a href="{{ 'insiders/' | url }}" title="Material for MkDocs Insiders">
       <hr>
       <span class="twemoji">
@@ -49,7 +49,7 @@
       </span>
       <hr>
     </a>
-  </aside>
+  </footer>
 {% endblock %}
 {% block analytics %}
   {{ super() }}
