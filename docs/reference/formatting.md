@@ -149,21 +149,21 @@ tags on separate lines and adding new lines between the tags and the content.
 ### Highlighting text
 
 When the [Caret, Mark & Tilde][11] extensions are enabled, text can be 
-highlighted with a nicer syntax than using the corresponding `mark`, `del` and 
-`ins` HTML tags:
+highlighted with a nicer syntax than using the corresponding `mark`, `ins` and 
+`del` HTML tags:
 
 _Example_:
 
 ``` markdown 
-* ^^This was inserted^^
 * ==This was marked==
+* ^^This was inserted^^
 * ~~This was deleted~~
 ```
 
 _Result_:
 
-* ^^This was inserted^^
 * ==This was marked==
+* ^^This was inserted^^
 * ~~This was deleted~~
 
   [11]: #caret-mark-tilde
@@ -177,13 +177,13 @@ HTML tags:
 _Example_:
 
 ``` markdown 
-* A^T^A
 * H~2~0
+* A^T^A
 ```
 
 _Result_:
 
-* A^T^A
 * H~2~0
+* A^T^A
 
   [11]: #caret-mark-tilde
