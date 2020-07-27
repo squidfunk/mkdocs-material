@@ -165,6 +165,7 @@ nav:
     #- Adding a landing page: setup/adding-a-landing-page.md
   - Reference:
     - Admonitions: reference/admonitions.md
+    - Buttons: reference/buttons.md
     - Code blocks: reference/code-blocks.md
     - Content tabs: reference/content-tabs.md
     - Footnotes: reference/footnotes.md
