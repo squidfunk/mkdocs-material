@@ -74,6 +74,7 @@ plugins:
         extensions/footnotes.md: reference/footnotes.md
         extensions/metadata.md: reference/meta-tags.md
         extensions/permalinks.md: setup/setting-up-navigation.md #permalink
+        extensions/pymdown.md: reference/admonitions.md
         plugins/search.md: setup/setting-up-site-search.md
         # plugins/minification.md:
         # plugins/revision-date.md:
