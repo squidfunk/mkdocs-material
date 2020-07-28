@@ -19,12 +19,11 @@
     - ESLint does not support allowing standalone function declarations.
     - ESLint does not support allowing named functions defined with the function keyword.
 
-66 rules are not known by tslint-to-eslint-config to have ESLint equivalents:
+65 rules are not known by tslint-to-eslint-config to have ESLint equivalents:
   * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "arguments-order".
   * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "ban".
   * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "bool-param-default".
   * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "consecutive-overloads".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "import-spacing".
   * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "max-switch-cases".
   * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-accessor-field-mismatch".
   * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-all-duplicated-branches".

@@ -292,7 +292,7 @@ export function initialize(config: unknown) {
 
         return useComponent("search")
           .pipe(
-            mountSearch(worker, { query$, reset$, result$ }),
+            mountSearch(worker, { query$, reset$, result$ })
           )
       }),
       catchError(() => {
