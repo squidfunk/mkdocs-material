@@ -356,7 +356,7 @@ to most of them.
 Create an [additional stylesheet][6], and add:
 
 ``` css
-:root {
+:root > * {
   --md-code-hl-string-color: #0FF1CE;
 }
 ```
