@@ -87,9 +87,9 @@ tags to the template:
 {% block extrahead %}
   {% set title = config.site_name %}
   {% if page and page.meta and page.meta.title %}
-    {% set title = config.site_name ~ " - " ~ page.meta.title %}
+    {% set title = title ~ " - " ~ page.meta.title %}
   {% elif page and page.title and not page.is_homepage %}
-    {% set title = config.site_name ~ " - " ~ page.title | striptags %}
+    {% set title = title ~ " - " ~ page.title | striptags %}
   {% endif %}
   <meta property="og:type" content="website" />
   <meta property="og:title" content="{{ title }}" />
@@ -115,9 +115,9 @@ of your site:
 {% block extrahead %}
   {% set title = config.site_name %}
   {% if page and page.meta and page.meta.title %}
-    {% set title = config.site_name ~ " - " ~ page.meta.title %}
+    {% set title = title ~ " - " ~ page.meta.title %}
   {% elif page and page.title and not page.is_homepage %}
-    {% set title = config.site_name ~ " - " ~ page.title | striptags %}
+    {% set title = title ~ " - " ~ page.title | striptags %}
   {% endif %}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="<username>" />
