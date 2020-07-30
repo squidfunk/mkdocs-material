@@ -448,6 +448,21 @@ kbd {
       margin-top: 1.5em;
     }
 
+    // Elements inside cells
+    th > *,
+    td > * {
+
+      // Remove top spacing of first child
+      &:first-child {
+        margin-top: 0;
+      }
+
+      // Remove bottom spacing of last child
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
     // Table headings and cells
     th:not([align]),
     td:not([align]) {
