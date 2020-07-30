@@ -205,3 +205,22 @@ _Result_:
 
   [20]: #with-colors
   [21]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation
+
+## Customization
+
+### Using icons in templates
+
+When you're [extending the theme][22] with partials or blocks, you can simply
+reference any icon that's [bundled with the theme][1] with Jinja's
+[`include`][23] function and wrap it with the `twemoji` class:
+
+``` html
+<span class="twemoji">
+  {% include ".icons/fontawesome/brands/twitter.svg" %}
+</span>
+```
+
+This is exactly what Material for MkDocs does in its templates.
+
+  [22]: ../customization.md#extending-the-theme
+  [23]: https://jinja.palletsprojects.com/en/2.11.x/templates/#include
