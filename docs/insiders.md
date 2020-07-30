@@ -95,6 +95,7 @@ New features and improvements for _table of contents_, including:
 
 - [ ] Table of contents can be moved into navigation for more space
 - [ ] Table of contents shows which sections have search results
+- [ ] Table of contents auto-collapses and expands only the active section
 - [ ] Better support for wide screens, i.e. more horizontal space
 - [ ] ... more to come
 
