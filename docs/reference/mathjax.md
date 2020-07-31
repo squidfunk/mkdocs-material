@@ -64,6 +64,14 @@ _MathJax can be configured in many different ways, for which Material for MkDocs
 might not provide native support. See the [official documentation][6] for more 
 information._
 
+!!! tip "Using MathJax with [instant loading][9]"
+
+    There's no additional effort necessary to integrate _MathJax 3_ with
+    [instant loading][7] – it's expected to work straight away. However, a
+    previous version of this document explained how to integrate Material for
+    MkDocs with _MathJax 2_, which doesn't exhibit this behavior. It's therefore
+    highly recommended to switch to _MathJax 3_.
+
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
@@ -85,6 +93,7 @@ information._
   [6]: https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
   [7]: https://facelessuser.github.io/pymdown-extensions/extensions/
   [8]: ../customization.md#additional-javascript
+  [9]: ../setup/setting-up-navigation.md#instant-loading
 
 ## Usage
 
