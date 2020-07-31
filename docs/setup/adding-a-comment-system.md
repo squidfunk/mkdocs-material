@@ -1,6 +1,5 @@
 ---
 template: overrides/main.html
-disqus: mkdocs material
 ---
 
 # Adding a comment system
@@ -78,3 +77,21 @@ specific pages by adding the following to the front matter of a page:
     ```
 
   [7]: #metadata
+
+### Other comment systems
+
+[:octicons-file-code-24: Source][8] ·
+:octicons-mortar-board-24: Difficulty: _easy_
+
+In order to integrate another JavaScript-based comment system provider, you can
+[extend the theme][9] and [override the `disqus` block][10]:
+
+``` html
+{% block disqus %}
+  <!-- Add custom comment system integration here -->
+{% endblock %}
+```
+
+  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L340-342
+  [9]: ../customization.md#extending-the-theme
+  [10]: ../customization.md#overriding-blocks
