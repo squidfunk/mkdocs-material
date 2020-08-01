@@ -27,11 +27,11 @@
 // Copy to clipboard
 .md-clipboard {
   position: absolute;
-  top: px2rem(8px);
-  right: px2em(8px, 16px);
+  top: px2em(8px);
+  right: px2em(8px);
   z-index: 1;
-  width: px2em(24px, 16px);
-  height: px2em(24px, 16px);
+  width: px2em(24px);
+  height: px2em(24px);
   color: var(--md-default-fg-color--lightest);
   border-radius: px2rem(2px);
   cursor: pointer;
@@ -44,8 +44,8 @@
 
   // Slightly smaller icon
   svg {
-    width: px2em(18px, 16px);
-    height: px2em(18px, 16px);
+    width: px2em(18px);
+    height: px2em(18px);
   }
 
   // Show on container hover

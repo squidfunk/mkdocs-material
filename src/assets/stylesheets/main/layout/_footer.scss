@@ -133,7 +133,7 @@
     left: 0;
     margin-top: px2rem(-20px);
     padding: 0 px2rem(20px);
-    font-size: ms(-1);
+    font-size: px2rem(12.8px);
     opacity: 0.7;
   }
 }
@@ -168,7 +168,7 @@
   margin: auto px2rem(12px);
   padding: px2rem(8px) 0;
   color: var(--md-footer-fg-color--lighter);
-  font-size: ms(-1);
+  font-size: px2rem(12.8px);
 
   // [tablet portrait +]: Show next to social media links
   @include break-from-device(tablet portrait) {

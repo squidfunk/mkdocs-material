@@ -265,7 +265,7 @@ $md-toggle__search--checked:
       height: px2rem(36px);
       padding-left: px2rem(44px);
       color: inherit;
-      font-size: ms(0);
+      font-size: px2rem(16px);
       background-color: hsla(0, 0%, 0%, 0.26);
       border-radius: px2rem(2px);
 
@@ -508,7 +508,7 @@ $md-toggle__search--checked:
   &__meta {
     padding: 0 px2rem(16px);
     color: var(--md-default-fg-color--light);
-    font-size: ms(-1);
+    font-size: px2rem(12.8px);
     line-height: px2rem(36px);
     background-color: var(--md-default-fg-color--lightest);
     scroll-snap-align: start;
@@ -590,7 +590,7 @@ $md-toggle__search--checked:
       .md-search-result__title {
         margin: px2rem(11px) 0;
         font-weight: 400;
-        font-size: ms(0);
+        font-size: px2rem(16px);
         line-height: 1.4;
       }
     }
@@ -625,7 +625,7 @@ $md-toggle__search--checked:
   &__title {
     margin: 0.5em 0;
     font-weight: 700;
-    font-size: ms(-1);
+    font-size: px2rem(12.8px);
     line-height: 1.4;
   }
 
@@ -638,7 +638,7 @@ $md-toggle__search--checked:
     margin: 0.5em 0;
     overflow: hidden;
     color: var(--md-default-fg-color--light);
-    font-size: ms(-1);
+    font-size: px2rem(12.8px);
     line-height: 1.4;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;

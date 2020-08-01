@@ -74,7 +74,7 @@
   // Footnotes extension
   .footnote {
     color: var(--md-default-fg-color--light);
-    font-size: ms(-1);
+    font-size: px2rem(12.8px);
 
     // Remove additional spacing on footnotes
     ol {

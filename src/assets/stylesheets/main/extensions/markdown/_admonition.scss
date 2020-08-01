@@ -64,11 +64,11 @@ $admonitions: (
 
   // Admonition extension
   .admonition {
-    margin: 1.5625em 0;
+    margin: px1em(20px, 12.8px) 0;
     padding: 0 px2rem(12px);
     overflow: hidden;
     color: var(--md-admonition-fg-color);
-    font-size: ms(-1);
+    font-size: px2rem(12.8px);
     page-break-inside: avoid;
     background-color: var(--md-admonition-bg-color);
     border-left: px2rem(4px) solid $clr-blue-a200;
