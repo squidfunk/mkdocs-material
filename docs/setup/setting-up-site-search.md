@@ -133,12 +133,12 @@ them at your own risk._
 
 ### Offline search
 
-[:octicons-file-code-24: Source][8] · 
+[:octicons-file-code-24: Source][8] ·
 [:octicons-cpu-24: Plugin][9] · :octicons-beaker-24: Experimental
 
 If you distribute your documentation as `*.html` files, the built-in search
 will not work out-of-the-box due to the restrictions modern browsers impose for
-security reasons. This can be mitigated with the [localsearch plugin][9] in
+security reasons. This can be mitigated with the [localsearch][9] plugin in
 combination with @squidfunk's [iframe-worker][10] polyfill.
 
 For setup instructions, refer to the [official documentation][11].

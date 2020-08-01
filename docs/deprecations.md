@@ -25,13 +25,18 @@ redirect: /path/to/new/file
 ---
 ```
 
-The [mkdocs-redirects][2] plugin provides the ability to define redirect
-mappings via `mkdocs.yml`, which is considered to be a much better solution to
-achieve the same result:
+The [redirects][2] plugin provides the ability to define redirect mappings via
+`mkdocs.yml`, which is considered to be a much better solution to achieve the
+same result. It can be installed with `pip`:
+
+```
+pip install mkdocs-redirects
+```
+
+Redirect mappings can then be added to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - search
   - redirects:
       redirect_maps:
         path/to/old/file.md: path/to/new/file.md
