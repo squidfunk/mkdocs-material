@@ -60,6 +60,12 @@ kbd {
   line-height: 1.6;
   color-adjust: exact;
 
+  // We'll use a smaller font-size for printing, so code examples don't break
+  // too early, and 16px looks too big anyway.
+  @media print {
+    font-size: px2rem(13.6px);
+  }
+
   // Default spacing
   p,
   ul,
