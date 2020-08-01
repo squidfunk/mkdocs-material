@@ -135,7 +135,7 @@ was renamed to `separator`:
     extra:
       search:
         language: en, de, ru
-        tokenizer: [\s\-\.]+
+        tokenizer: '[\s\-\.]+'
     ```
 
   [6]: setup/setting-up-site-search.md#built-in-search

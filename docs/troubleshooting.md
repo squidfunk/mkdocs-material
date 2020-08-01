@@ -34,7 +34,7 @@ Operating systems: :fontawesome-brands-apple:
 
     ``` sh
     pip install mkdocs-material
-    # => Could not install packages due to an EnvironmentError: [Errno 13] Permission denied: '...'  
+    # => Could not install packages due to an EnvironmentError: [Errno 13] Permission denied: '...'
     # => Consider using the --user option or check the permissions.
     ```
 
