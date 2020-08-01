@@ -43,7 +43,7 @@ adding the respective alignment directions via the `align` attribute, i.e.
 
     _Result_:
 
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=left width=300 }
+    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -59,7 +59,7 @@ adding the respective alignment directions via the `align` attribute, i.e.
 
     _Result_:
 
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=right width=300 }
+    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -84,6 +84,6 @@ _Example_:
 
 _Result_:
 <figure>
-  <img src="https://dummyimage.com/600x400/eee/aaa" width="300" />
+  <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
   <figcaption>Image caption</figcaption>
 </figure>
