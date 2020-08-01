@@ -14,6 +14,13 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.1 <small>_ August 1, 2020</small>
+
+* Improved typesetting by basing `font-size` and spacings on `em`
+* Improved print view by slightly scaling down `font-size`
+* Changed custom site title (metadata) to be suffixed with site name
+* Fixed top- and bottom spacing of paragraphs inside table cells
+
 ### 5.5.0 <small>_ July 24, 2020</small>
 
 * Rewrite of entire documentation
