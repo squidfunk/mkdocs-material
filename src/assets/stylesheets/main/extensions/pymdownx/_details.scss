@@ -42,7 +42,6 @@
     padding-top: 0;
     overflow: visible;
 
-
     // Rotate title icon
     &[open] > summary::after {
       transform: rotate(90deg);
@@ -75,6 +74,12 @@
     padding: px2rem(8px) px2rem(36px) px2rem(8px) px2rem(40px);
     border-top-right-radius: px2rem(2px);
     cursor: pointer;
+
+    // Disable ugly outline on touch devices
+    @media (hover: none) {
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
