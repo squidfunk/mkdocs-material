@@ -32,8 +32,8 @@ tied to it are merged back into Material for MkDocs and released for general
 availability. Bugfixes will always be released simultaneously in both editions.
 
 See the [roadmap][4] for a list of already available and upcoming features, and
-for demonstration purposes, [the official docs][5] built with Material for
-MkDocs Insiders.
+for demonstration purposes, [the official documentation][5] built with Material
+for MkDocs Insiders.
 
   [4]: #roadmap
   [5]: https://squidfunk.github.io/mkdocs-material-insiders/
@@ -75,7 +75,7 @@ in Material for MkDocs Insiders.
 ### Madame Jeanette
 
 [:octicons-fire-24: Funding goal: __$500__][6] ·
-:octicons-lock-24: Status: _exclusively available_
+:octicons-lock-24: Status: _exclusive_
 
 New features and improvements for _search_, including:
 
@@ -88,11 +88,11 @@ New features and improvements for _search_, including:
 ### Prairie Fire
 
 [:octicons-fire-24: Funding goal: __$1,000__][6] ·
-:octicons-lock-24: Status: _pending_
+:octicons-lock-24: Status: _exclusive_
 
 New features and improvements for _content and toc_, including:
 
-- [ ] Highlighting of matched search terms in content area
+- [x] Highlighting of matched search terms in content area
 - [ ] Better support for wide screens, i.e. more horizontal space
 - [ ] Table of contents can be moved into navigation for more space
 - [ ] Table of contents shows which sections have search results
