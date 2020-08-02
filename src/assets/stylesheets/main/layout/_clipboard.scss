@@ -33,7 +33,7 @@
   width: px2em(24px);
   height: px2em(24px);
   color: var(--md-default-fg-color--lightest);
-  background-color: var(--md-code-bg-color);
+  // background-color: var(--md-code-bg-color);
   border-radius: px2rem(2px);
   cursor: pointer;
   transition: color 125ms;
@@ -43,10 +43,10 @@
     display: none;
   }
 
-  // Make room for clipboard button in case of overflowing code
-  .md-typeset & + code {
-    padding-right: px2em(24px + 2 * 8px, 13.6px);
-  }
+  // // Make room for clipboard button in case of overflowing code
+  // .md-typeset & + code {
+  //   padding-right: px2em(24px + 2 * 8px, 13.6px);
+  // }
 
   // Slightly smaller icon
   svg {
