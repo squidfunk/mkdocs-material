@@ -82,7 +82,6 @@ New features and improvements for _search_, including:
 - [x] Improved search result grouping (pages + headings)
 - [x] Improved search result relevance and scoring
 - [x] Display of missing query terms in search results
-- [ ] Highlighting of query terms on followed page
 - [ ] Improved search result summaries
 - [ ] ... more to come
 
@@ -91,12 +90,13 @@ New features and improvements for _search_, including:
 [:octicons-fire-24: Funding goal: __$1,000__][6] ·
 :octicons-lock-24: Status: _pending_
 
-New features and improvements for _table of contents_, including:
+New features and improvements for _content and toc_, including:
 
+- [ ] Highlighting of matched search terms in content area
+- [ ] Better support for wide screens, i.e. more horizontal space
 - [ ] Table of contents can be moved into navigation for more space
 - [ ] Table of contents shows which sections have search results
 - [ ] Table of contents auto-collapses and expands only the active section
-- [ ] Better support for wide screens, i.e. more horizontal space
 - [ ] ... more to come
 
 ### Bhut Jolokia
