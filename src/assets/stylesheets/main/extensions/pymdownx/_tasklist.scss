@@ -71,6 +71,7 @@
       height: px2em(20px);
       background-color: var(--md-default-fg-color--lightest);
       mask-image: var(--md-tasklist-icon);
+      mask-repeat: no-repeat;
       content: "";
 
       // Adjust for right-to-left languages

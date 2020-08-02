@@ -141,6 +141,7 @@
       height: px2rem(16px);
       background-color: currentColor;
       mask-image: var(--md-footnotes-icon);
+      mask-repeat: no-repeat;
       content: "";
 
       // Adjust for right-to-left languages
