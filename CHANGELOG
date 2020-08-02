@@ -1,3 +1,10 @@
+mkdocs-material-5.5.x (2020-08-xx)
+
+  * Improved highlight colors and spacing for ins, del and mark
+  * Changed some keyboard symbols for better equivalents
+  * Fixed margins for Admonitions (regression from 5.5.1)
+  * Removed focus outline for details and code blocks on touch devices
+
 mkdocs-material-5.5.1 (2020-08-01)
 
   * Improved typesetting by basing font-size and spacings on em
