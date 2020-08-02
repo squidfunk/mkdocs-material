@@ -109,7 +109,7 @@ tags to the template:
 
 When you post links to your project documentation on [Twitter][9], it's
 highly recommended to add [Twitter's `meta` tags][10] to optimize the preview
-of your site:
+of your tweet:
 
 ``` html
 {% block extrahead %}

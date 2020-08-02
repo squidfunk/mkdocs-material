@@ -124,7 +124,7 @@ an [additional stylesheet][19] and put styles into dedicated CSS classes:
 }
 ```
 
-Then, add the CSS classes to the icons:
+Then, simply add the CSS class to the icon.
 
 <style>
   .medium {
@@ -177,7 +177,7 @@ and adding the dedicated CSS class to the icon:
 }
 ```
 
-Then, add the CSS class to the icon:
+Then, simply add the CSS class to the icon.
 
 <style>
   @keyframes heart {
