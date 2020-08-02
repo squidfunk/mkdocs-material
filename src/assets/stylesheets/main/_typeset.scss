@@ -269,10 +269,9 @@ kbd {
 
   // Text highlighting marker
   mark {
-    padding: 0 px2em(4px, 16px);
+    color: inherit;
     word-break: break-word;
-    background-color: transparentize($clr-yellow-500, 0.5);
-    border-radius: px2rem(2px);
+    background-color: var(--md-typeset-mark-color);
     box-decoration-break: clone;
   }
 

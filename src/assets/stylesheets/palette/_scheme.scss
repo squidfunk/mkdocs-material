@@ -47,12 +47,16 @@
   --md-code-bg-color:                  hsla(var(--md-hue), 15%, 18%, 1);
 
   // Code highlighting color shades
+  --md-code-hl-color:                  hsla(#{hex2hsl($clr-blue-a200)}, 0.3);
   --md-code-hl-punctuation-color:      hsla(var(--md-hue), 34%, 71%, 0.3);
   --md-code-hl-comment-color:          hsla(var(--md-hue), 34%, 71%, 0.3);
   --md-code-hl-generic-color:          hsla(var(--md-hue), 34%, 71%, 0.3);
 
   // Typeset color shades
   --md-typeset-a-color:                var(--md-primary-fg-color--light);
+
+  // Typeset `mark` color shades
+  --md-typeset-mark-color:             hsla(#{hex2hsl($clr-blue-a200)}, 0.3);
 
   // Typeset `kbd` color shades
   --md-typeset-kbd-color:              hsla(var(--md-hue), 15%, 94%, 0.12);

@@ -58,7 +58,7 @@
     --md-code-bg-color:                hsla(0, 0%, 96%, 1);
 
     // Code highlighting color shades
-    --md-code-hl-color:                var(--md-default-fg-color--lightest);
+    --md-code-hl-color:                hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
     --md-code-hl-number-color:         hsla(6, 71%, 60%, 1);
     --md-code-hl-special-color:        hsla(340, 83%, 66%, 1);
     --md-code-hl-function-color:       hsla(291, 57%, 65%, 1);
@@ -75,6 +75,9 @@
     // Typeset color shades
     --md-typeset-color:                var(--md-default-fg-color);
     --md-typeset-a-color:              var(--md-primary-fg-color);
+
+    // Typeset `mark` color shades
+    --md-typeset-mark-color:           hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
 
     // Typeset `del` and `ins` color shades
     --md-typeset-del-color:            hsla(6, 90%, 60%, 0.15);
