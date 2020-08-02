@@ -349,6 +349,12 @@ equally well for both [color schemes][23]:
 * :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-generic-color) " } `--md-code-hl-generic-color`
 * :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-variable-color) " } `--md-code-hl-variable-color`
 
+Code block foreground, background and line highlight colors are defined via:
+
+* :material-checkbox-blank-circle:{: style="color: var(--md-code-fg-color) " } `--md-code-fg-color`
+* :material-checkbox-blank-circle:{: style="color: var(--md-code-bg-color) " } `--md-code-bg-color`
+* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-color) " } `--md-code-hl-color`
+
 Let's say you want to change the color of `#!js "strings"`. While there are
 several [types of string tokens][24], Material for MkDocs assigns a single color
 to most of them.
