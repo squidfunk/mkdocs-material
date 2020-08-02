@@ -128,7 +128,7 @@ of your site:
 {% endblock %}
 ```
 
-You should also [check the preview][11] of your Tweets.
+You should also [check the preview][11] of your Twitter Card.
 
   [9]: https://twitter.com
   [10]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
