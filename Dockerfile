@@ -20,6 +20,9 @@
 
 FROM python:3.8.1-alpine3.11
 
+# Build-time flags
+ARG WITH_PLUGINS=true
+
 # Set build directory
 WORKDIR /tmp
 
@@ -39,11 +42,14 @@ RUN \
     openssh \
   && apk add --no-cache --virtual .build gcc musl-dev \
   && pip install --no-cache-dir . \
-  && pip install --no-cache-dir \
-    'mkdocs-awesome-pages-plugin>=2.2.1' \
-    'mkdocs-git-revision-date-localized-plugin>=0.4' \
-    'mkdocs-minify-plugin>=0.3' \
-    'mkdocs-redirects>=1.0' \
+  && \
+    if [ "${WITH_PLUGINS}" = "true" ]; then \
+      pip install --no-cache-dir \
+        'mkdocs-awesome-pages-plugin>=2.2.1' \
+        'mkdocs-git-revision-date-localized-plugin>=0.4' \
+        'mkdocs-minify-plugin>=0.3' \
+        'mkdocs-redirects>=1.0'; \
+    fi \
   && apk del .build gcc musl-dev \
   && rm -rf /tmp/*
 
