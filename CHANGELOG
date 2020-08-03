@@ -1,9 +1,15 @@
-mkdocs-material-5.5.x (2020-08-xx)
+mkdocs-material-5.5.2+insiders-1.1.0 (2020-08-03)
+
+  * Added highlighting of search results
+
+mkdocs-material-5.5.2 (2020-08-03)
 
   * Improved highlight colors and spacing for ins, del and mark
   * Changed some keyboard symbols for better equivalents
-  * Fixed margins for Admonitions (regression from 5.5.1)
   * Removed focus outline for details and code blocks on touch devices
+  * Fixed margins for Admonitions (5.5.1 regression)
+  * Fixed too small content tab labels (5.5.1 regression)
+  * Fixed icon repeating for custom admonition icons
 
 mkdocs-material-5.5.1 (2020-08-01)
 

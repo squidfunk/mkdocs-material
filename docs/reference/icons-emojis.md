@@ -172,7 +172,6 @@ and adding the dedicated CSS class to the icon:
   }
 }
 .heart {
-  color: #E91E63;
   animation: heart 1000ms infinite;
 }
 ```

@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.1.0 <small>_ August 3, 2020</small>
+
+  * Added highlighting of search results
+
 ### 1.0.0 <small>_ July 14, 2020</small>
 
 * Added grouping of search results
@@ -13,6 +17,15 @@ template: overrides/main.html
 * Improved search result relevance and scoring
 
 ## Material for MkDocs
+
+### 5.5.2 <small>_ August 3, 2020</small>
+
+* Improved highlight colors and spacing for `ins`, `del` and `mark`
+* Changed some keyboard symbols for better equivalents
+* Removed focus `outline` for details and code blocks on touch devices
+* Fixed margins for Admonitions (5.5.1 regression)
+* Fixed too small content tab labels (5.5.1 regression)
+* Fixed icon repeating for custom admonition icons
 
 ### 5.5.1 <small>_ August 1, 2020</small>
 
