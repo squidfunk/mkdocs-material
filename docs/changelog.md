@@ -18,6 +18,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.3 <small>_ August 4, 2020</small>
+
+* Fixed search for languages other than English (5.5.1 regression)
+
 ### 5.5.2 <small>_ August 3, 2020</small>
 
 * Improved highlight colors and spacing for `ins`, `del` and `mark`
