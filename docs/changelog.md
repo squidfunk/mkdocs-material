@@ -8,7 +8,7 @@ template: overrides/main.html
 
 ### 1.1.0 <small>_ August 3, 2020</small>
 
-  * Added highlighting of search results
+* Added highlighting of search results
 
 ### 1.0.0 <small>_ July 14, 2020</small>
 
