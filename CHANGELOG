@@ -1,6 +1,6 @@
 mkdocs-material-5.5.3 (2020-08-03)
 
-  * Fixed search not languages other than English (5.5.1 regression)
+  * Fixed search for languages other than English (5.5.1 regression)
 
 mkdocs-material-5.5.2+insiders-1.1.0 (2020-08-03)
 
