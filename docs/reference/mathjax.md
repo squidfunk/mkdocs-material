@@ -34,7 +34,7 @@ Besides enabling the extension in `mkdocs.yml`, a MathJax configuration and
 the JavaScript runtime need to be included, which can be done with [additional 
 JavaScript][8]:
 
-=== "docs/javascript/config.js"
+=== "docs/javascripts/config.js"
 
     ``` js
     window.MathJax = {

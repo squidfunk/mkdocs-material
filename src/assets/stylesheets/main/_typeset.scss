@@ -51,6 +51,14 @@ kbd {
 // Rules: typesetted content
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-typeset-table--ascending: svg-load("@mdi/svg/svg/arrow-down.svg");
+  --md-typeset-table--descending: svg-load("@mdi/svg/svg/arrow-up.svg");
+}
+
+// ----------------------------------------------------------------------------
+
 // Content that is typeset - if possible, all margins, paddings and font sizes
 // should be set in ems, so nested blocks (e.g. admonitions) render correctly,
 // except headlines that should only appear on the top level and need to have
@@ -437,7 +445,7 @@ kbd {
     display: inline-block;
     max-width: 100%;
     overflow: auto;
-    font-size: px2em(12.8px);
+    font-size: px2rem(12.8px);
     background: var(--md-default-bg-color);
     border-radius: px2rem(2px);
     box-shadow:
@@ -518,6 +526,34 @@ kbd {
     // Do not wrap links in tables
     a {
       word-break: normal;
+    }
+  }
+
+  // Sortable tables
+  table th[role="columnheader"] {
+    cursor: pointer;
+
+    // Icons
+    &::after {
+      display: inline-block;
+      width: 1.2em;
+      height: 1.2em;
+      margin-left: 0.5em;
+      vertical-align: sub;
+      mask-repeat: no-repeat;
+      content: " ";
+    }
+
+    // Sort ascending
+    &[aria-sort="ascending"]::after {
+      background-color: currentColor;
+      mask-image: var(--md-typeset-table--ascending);
+    }
+
+    // Sort descending
+    &[aria-sort="descending"]::after {
+      background-color: currentColor;
+      mask-image: var(--md-typeset-table--descending);
     }
   }
 
