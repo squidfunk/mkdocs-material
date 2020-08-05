@@ -301,7 +301,9 @@ _Result_:
 
 ### Embedding external files
 
-When [Snippets][20] is enabled, content from other files can be embedded, which
+_Also known as transcludes or file transclusion in [Multi-Markdown][20]_.
+
+When [Snippets][21] is enabled, content from other files can be embedded, which
 is especially useful to reference and embed the contents of source files
 directly into your project documentation.
 
@@ -319,22 +321,23 @@ _Result_:
 --8<-- ".browserslistrc"
 ```
 
-Note that [Snippets][20] is not limited to code blocks, but can be used anywhere
+Note that [Snippets][21] is not limited to code blocks, but can be used anywhere
 from a document to move repeating content to separate files, which is also
 explained in the [official documentation][16].
 
-  [20]: #snippets
+  [20]: https://fletcher.github.io/MultiMarkdown-5/transclusion.html
+  [21]: #snippets
 
 ## Customization
 
 ### Custom syntax theme
 
-[:octicons-file-code-24: Source][21] ·
+[:octicons-file-code-24: Source][22] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
-If [Pygments][22] is used, Material for MkDocs provides the [styles for code
-blocks][21], which are built with a custom and well-balanced palette that works
-equally well for both [color schemes][23]:
+If [Pygments][23] is used, Material for MkDocs provides the [styles for code
+blocks][22], which are built with a custom and well-balanced palette that works
+equally well for both [color schemes][24]:
 
 * :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-number-color) " } `--md-code-hl-number-color`
 * :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-special-color) " } `--md-code-hl-special-color`
@@ -356,7 +359,7 @@ Code block foreground, background and line highlight colors are defined via:
 * :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-color) " } `--md-code-hl-color`
 
 Let's say you want to change the color of `#!js "strings"`. While there are
-several [types of string tokens][24], Material for MkDocs assigns a single color
+several [types of string tokens][25], Material for MkDocs assigns a single color
 to most of them.
 
 Create an [additional stylesheet][6], and add:
@@ -368,7 +371,7 @@ Create an [additional stylesheet][6], and add:
 ```
 
 If you want to tweak a specific type of string, i.e. ``#!js `backticks` ``, you
-can lookup the specific class name in the [syntax theme definition][25], and
+can lookup the specific class name in the [syntax theme definition][26], and
 override it as part of your additional stylesheet:
 
 ``` css
@@ -377,8 +380,8 @@ override it as part of your additional stylesheet:
 }
 ```
 
-  [21]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss#L60-L73
-  [22]: #use-pygments
-  [23]: ../setup/changing-the-colors.md#color-scheme
-  [24]: https://pygments.org/docs/tokens/#literals
-  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_codehilite.scss#L42
+  [22]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss#L60-L73
+  [23]: #use-pygments
+  [24]: ../setup/changing-the-colors.md#color-scheme
+  [25]: https://pygments.org/docs/tokens/#literals
+  [26]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_codehilite.scss#L42
