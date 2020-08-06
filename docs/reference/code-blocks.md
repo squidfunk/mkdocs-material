@@ -301,7 +301,7 @@ _Result_:
 
 ### Embedding external files
 
-_Also known as transcludes or file transclusion in [Multi-Markdown][20]_.
+_Also known as transcludes or file transclusion in [MultiMarkdown][20]_.
 
 When [Snippets][21] is enabled, content from other files can be embedded, which
 is especially useful to reference and embed the contents of source files

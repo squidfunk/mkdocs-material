@@ -116,9 +116,9 @@ and/or end of the divider.
 
 ### Sortable tables
 
-If you want to make data tables sortable, you can add [tablesort][5] via
-[additional JavaScript][2], which is natively integrated with Material for
-MkDocs and will also work with [instant loading][6]:
+If you want to make data tables sortable, you can add [tablesort][5], which is
+natively integrated with Material for MkDocs and will also work with [instant
+loading][6] via [additional JavaScript][2]:
 
 === "docs/javascripts/tables.js"
 
