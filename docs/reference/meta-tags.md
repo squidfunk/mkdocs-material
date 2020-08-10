@@ -77,59 +77,58 @@ extra:
 
 ## Customization
 
-### Open Graph
-
-In order to add [Open Graph][1] data to your document, you can [extend the
-theme][7] and [override the `extrahead` block][8] to add the respective `meta`
-tags to the template:
+In order to add `meta` tags to your document, you can [extend the theme][7] and
+simply [override the `extrahead` block][8] with the respective tags, e.g. to set
+policies for search engines:
 
 ``` html
 {% block extrahead %}
-  {% set title = config.site_name %}
-  {% if page and page.meta and page.meta.title %}
-    {% set title = title ~ " - " ~ page.meta.title %}
-  {% elif page and page.title and not page.is_homepage %}
-    {% set title = title ~ " - " ~ page.title | striptags %}
-  {% endif %}
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{ title }}" />
-  <meta property="og:description" content="{{ config.site_description }}" />
-  <meta property="og:url" content="{{ page.canonical_url }}" />
-  <meta property="og:image" content="<url>" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="robots" content="noindex, nofollow" />
 {% endblock %}
 ```
+
+Some further examples, including [Open Graph][1] and [Twitter Cards][9]:
+
+=== "Open Graph"
+
+    ``` html
+    {% block extrahead %}
+      {% set title = config.site_name %}
+      {% if page and page.meta and page.meta.title %}
+        {% set title = title ~ " - " ~ page.meta.title %}
+      {% elif page and page.title and not page.is_homepage %}
+        {% set title = title ~ " - " ~ page.title | striptags %}
+      {% endif %}
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="{{ title }}" />
+      <meta property="og:description" content="{{ config.site_description }}" />
+      <meta property="og:url" content="{{ page.canonical_url }}" />
+      <meta property="og:image" content="<url>" />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    {% endblock %}
+    ```
+
+=== "Twitter Cards"
+
+    ``` html
+    {% block extrahead %}
+      {% set title = config.site_name %}
+      {% if page and page.meta and page.meta.title %}
+        {% set title = title ~ " - " ~ page.meta.title %}
+      {% elif page and page.title and not page.is_homepage %}
+        {% set title = title ~ " - " ~ page.title | striptags %}
+      {% endif %}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="<username>" />
+      <meta name="twitter:creator" content="<username>" />
+      <meta name="twitter:title" content="{{ title }}" />
+      <meta name="twitter:description" content="{{ config.site_description }}" />
+      <meta name="twitter:image" content="<url>" />
+    {% endblock %}
+    ```
 
   [7]: ../customization.md#extending-the-theme
   [8]: ../customization.md#overriding-blocks
-
-### Twitter Cards
-
-When you post links to your project documentation on [Twitter][9], it's
-highly recommended to add [Twitter's `meta` tags][10] to optimize the preview
-of your tweet:
-
-``` html
-{% block extrahead %}
-  {% set title = config.site_name %}
-  {% if page and page.meta and page.meta.title %}
-    {% set title = title ~ " - " ~ page.meta.title %}
-  {% elif page and page.title and not page.is_homepage %}
-    {% set title = title ~ " - " ~ page.title | striptags %}
-  {% endif %}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="<username>" />
-  <meta name="twitter:creator" content="<username>" />
-  <meta name="twitter:title" content="{{ title }}" />
-  <meta name="twitter:description" content="{{ config.site_description }}" />
-  <meta name="twitter:image" content="<url>" />
-{% endblock %}
-```
-
-You should also [check the preview][11] of your Twitter Card.
-
-  [9]: https://twitter.com
-  [10]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
-  [11]: https://cards-dev.twitter.com/validator
+  [9]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
