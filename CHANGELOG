@@ -1,3 +1,7 @@
+mkdocs-material-5.5.5+insiders-1.2.0 (2020-08-11)
+
+  * Added feature to expand navigation by default
+
 mkdocs-material-5.5.5 (2020-08-11)
 
   * Fixed missing vendor and worker distribution files

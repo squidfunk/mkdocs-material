@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.2.0 <small>_ August 11, 2020</small>
+
+* Added feature to expand navigation by default
+
 ### 1.1.0 <small>_ August 3, 2020</small>
 
 * Added highlighting of search results

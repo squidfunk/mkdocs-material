@@ -93,11 +93,11 @@ New features and improvements for _search_, including:
 New features and improvements for _content and toc_, including:
 
 - [x] Highlighting of matched search terms in content area
+- [x] Navigation can always be expanded via configuration
 - [ ] Better support for wide screens, i.e. more horizontal space
 - [ ] Table of contents can be moved into navigation for more space
 - [ ] Table of contents shows which sections have search results
 - [ ] Table of contents auto-collapses and expands only the active section
-- [ ] Navigation can be always expanded via configuration
 - [ ] ... more to come
 
 ### Bhut Jolokia
