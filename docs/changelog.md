@@ -18,6 +18,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.4 <small>_ August 11, 2020</small>
+
+* Added support for sortable data tables
+
 ### 5.5.3 <small>_ August 4, 2020</small>
 
 * Fixed search for languages other than English (5.5.1 regression)

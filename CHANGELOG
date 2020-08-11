@@ -1,3 +1,7 @@
+mkdocs-material-5.5.4 (2020-08-11)
+
+  * Added support for sortable data tables
+
 mkdocs-material-5.5.3 (2020-08-04)
 
   * Fixed search for languages other than English (5.5.1 regression)
