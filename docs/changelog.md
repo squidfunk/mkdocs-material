@@ -18,6 +18,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.5 <small>_ August 11, 2020</small>
+
+* Fixed missing vendor and worker distribution files
+
 ### 5.5.4 <small>_ August 11, 2020</small>
 
 * Added support for sortable data tables
