@@ -22,6 +22,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.6 <small>_ August 12, 2020</small>
+
+* Switched base template for `404.html` to `main.html`
+* Fixed #1864: GitHub organisation stats not loading
+
 ### 5.5.5 <small>_ August 11, 2020</small>
 
 * Fixed missing vendor and worker distribution files
