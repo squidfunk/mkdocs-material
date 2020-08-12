@@ -69,7 +69,7 @@ function fetchSourceFacts(
 
     /* GitHub repository */
     case "github":
-      const [, user, repo] = url.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)/i)
+      const [, user, repo] = url.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)?/i)
       return fetchSourceFactsFromGitHub(user, repo)
 
     /* GitLab repository */
