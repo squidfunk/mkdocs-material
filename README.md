@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material">
+  <a href="https://squidfunk.github.io/mkdocs-material/">
     <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.png" width="320" alt="Material for MkDocs">
   </a>
 </p>
@@ -18,10 +18,10 @@
     src="https://github.com/squidfunk/mkdocs-material/workflows/ci/badge.svg?branch=master"
     alt="GitHub Action"
   /></a>
-  <a href="https://pypistats.org/packages/mkdocs-material"><img
+  <!--<a href="https://pypistats.org/packages/mkdocs-material"><img
     src="https://img.shields.io/pypi/dm/mkdocs-material.svg" 
     alt="Downloads"
-  /></a>
+  /></a>-->
   <a href="https://gitter.im/squidfunk/mkdocs-material"><img 
     src="https://badges.gitter.im/squidfunk/mkdocs-material.svg" 
     alt="Chat on Gitter"
@@ -34,8 +34,8 @@
     src="https://img.shields.io/docker/pulls/squidfunk/mkdocs-material" 
     alt="Docker Pulls"
   /></a>
-  <a href="https://github.com/sponsors/squidfunk"><img
-    src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub&color=ea4aaa"
+  <a href="https://squidfunk.github.io/mkdocs-material/insiders/"><img
+    src="https://img.shields.io/static/v1?label=%E2%86%92&message=insiders&color=e91e63"
   /></a>
 </p>
 
@@ -97,6 +97,15 @@
   with TypeScript, RxJS, and SCSS, and is compiled with Webpack, bringing
   excellent possibilities for theme extension and customization.
 
+_Material for MkDocs uses the [sponsorware][2] release strategy, which means
+that new features are first exclusively released to sponsors as part of Material
+for MkDocs Insiders. Read on to learn [how sponsorship works][3], and how you
+can [become a sponsor][4]._
+
+  [2]: https://github.com/sponsorware/docs
+  [3]: https://squidfunk.github.io/mkdocs-material/insiders/#how-sponsorship-works
+  [4]: https://squidfunk.github.io/mkdocs-material/insiders/#how-to-become-a-sponsor
+
 ## Quick start
 
 Material for MkDocs can be installed with `pip`:
@@ -116,6 +125,14 @@ For other installation methods, configuration options, and a demo, visit
 [squidfunk.github.io/mkdocs-material][1]
 
   [1]: https://squidfunk.github.io/mkdocs-material/
+
+## Sponsors
+
+<p>
+  <a href="https://cirrus-ci.org/" target=_blank>
+    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg" width="155" />
+  </a>
+</p>
 
 ## Users
 
@@ -144,20 +161,6 @@ For other installation methods, configuration options, and a demo, visit
   [Traefik](https://docs.traefik.io/),
   [Vapor](https://docs.vapor.codes/),
   [ZeroNet](https://zeronet.io/docs/)
-
-## Sponsors
-
-<p>
-  <a href="https://cirrus-ci.org/" target=_blank>
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg" width="155" />
-  </a>
-</p>
-
-If you're using this project a lot, consider [sponsoring][2] it! This will give
-me the opportunity to sustain my efforts maintaining it. Every contribution
-counts, no matter how small!
-
-  [2]: https://github.com/sponsors/squidfunk
 
 ## License
 

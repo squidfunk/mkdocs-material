@@ -45,7 +45,7 @@ away from enjoying the latest features of Material for MkDocs Insiders.
 Complete the following steps and you're in:
 
 - Visit [squidfunk's sponsor profile][6] and pick a tier that includes exclusive
-  access to squidfunk's sponsorware, which is _any tier above $10/month_. Select
+  access to squidfunk's sponsorware, which is _any tier from $10/month_. Select
   the tier and complete the checkout.
 - Within 24 hours, you will become a collaborator of the private Material for
   MkDocs Insiders GitHub repository, a fork of Material for MkDocs with
