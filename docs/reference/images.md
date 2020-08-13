@@ -38,12 +38,12 @@ adding the respective alignment directions via the `align` attribute, i.e.
     _Example_:
 
     ``` markdown
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=left }
+    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){: align=left }
     ```
 
     _Result_:
 
-    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
+    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){: align=left width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -54,12 +54,12 @@ adding the respective alignment directions via the `align` attribute, i.e.
     _Example_:
 
     ``` markdown
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=right }
+    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){: align=right }
     ```
 
     _Result_:
 
-    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
+    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){: align=right width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
