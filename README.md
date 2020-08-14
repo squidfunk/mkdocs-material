@@ -155,6 +155,7 @@ For other installation methods, configuration options, and a demo, visit
   [BFE](https://www.bfe-networks.net/),
   [FastAPI](https://fastapi.tiangolo.com/),
   [Kubernetes](https://kops.sigs.k8s.io/),
+  [Nokogiri](https://nokogiri.org/),
   [OpenFaaS](https://docs.openfaas.com/),
   [Pi-Hole](https://docs.pi-hole.net/),
   [Pydantic](https://pydantic-docs.helpmanual.io/),
