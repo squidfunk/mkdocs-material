@@ -154,7 +154,7 @@ kbd {
       transition: color 125ms;
     }
 
-    // Focused or hover links
+    // Focused or hovered links
     &:focus,
     &:hover {
       color: var(--md-accent-fg-color);

@@ -65,17 +65,25 @@
 
     // Hide radio buttons
     > input {
-      display: none;
+      position: absolute;
+      opacity: 0;
 
       // Active tab label
       &:checked + label {
-        color: var(--md-accent-fg-color);
-        border-color: var(--md-accent-fg-color);
+        color: var(--md-primary-fg-color);
+        border-color: var(--md-primary-fg-color);
 
         // Show tabbed block content
         & + .tabbed-content {
           display: block;
         }
+      }
+
+      // Focused or hovered tab label
+      &:focus + label,
+      &:hover + label {
+        color: var(--md-accent-fg-color);
+        border-color: var(--md-accent-fg-color);
       }
     }
 
@@ -90,11 +98,6 @@
       border-bottom: px2rem(2px) solid transparent;
       cursor: pointer;
       transition: color 250ms;
-
-      // Hovered tab label
-      html &:hover {
-        color: var(--md-accent-fg-color);
-      }
     }
   }
 }
