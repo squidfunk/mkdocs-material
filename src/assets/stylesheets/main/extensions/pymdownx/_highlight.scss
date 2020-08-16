@@ -38,9 +38,9 @@
     margin-right: px2em(16px, 13.6px);
     margin-left: px2em(-16px, 13.6px);
     padding-left: px2em(16px, 13.6px);
-    color: var(--md-default-fg-color--lighter);
+    color: var(--md-default-fg-color--light);
     background-color: var(--md-code-bg-color);
-    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
+    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lighter) inset;
     content: attr(data-linenos);
     user-select: none;
   }

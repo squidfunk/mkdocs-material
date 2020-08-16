@@ -193,11 +193,11 @@
   // Add spacing to line number container
   .linenodiv {
     padding-right: px2em(8px, 13.6px);
-    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
+    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lighter) inset;
 
     // Reset spacings
     pre {
-      color: var(--md-default-fg-color--lighter);
+      color: var(--md-default-fg-color--light);
       text-align: right;
     }
   }

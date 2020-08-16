@@ -59,17 +59,17 @@
 
     // Code highlighting color shades
     --md-code-hl-color:                hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
-    --md-code-hl-number-color:         hsla(6, 71%, 60%, 1);
-    --md-code-hl-special-color:        hsla(340, 83%, 66%, 1);
-    --md-code-hl-function-color:       hsla(291, 57%, 65%, 1);
-    --md-code-hl-constant-color:       hsla(250, 70%, 64%, 1);
-    --md-code-hl-keyword-color:        hsla(219, 71%, 60%, 1);
-    --md-code-hl-string-color:         hsla(150, 58%, 44%, 1);
+    --md-code-hl-number-color:         hsla(0, 65%, 54%, 1);
+    --md-code-hl-special-color:        hsla(340, 83%, 47%, 1);
+    --md-code-hl-function-color:       hsla(291, 45%, 50%, 1);
+    --md-code-hl-constant-color:       hsla(250, 63%, 61%, 1);
+    --md-code-hl-keyword-color:        hsla(219, 54%, 51%, 1);
+    --md-code-hl-string-color:         hsla(150, 63%, 31%, 1);
     --md-code-hl-name-color:           var(--md-code-fg-color);
     --md-code-hl-operator-color:       var(--md-default-fg-color--light);
-    --md-code-hl-punctuation-color:    var(--md-default-fg-color--lighter);
-    --md-code-hl-comment-color:        var(--md-default-fg-color--lighter);
-    --md-code-hl-generic-color:        var(--md-default-fg-color--lighter);
+    --md-code-hl-punctuation-color:    var(--md-default-fg-color--light);
+    --md-code-hl-comment-color:        var(--md-default-fg-color--light);
+    --md-code-hl-generic-color:        var(--md-default-fg-color--light);
     --md-code-hl-variable-color:       var(--md-default-fg-color--light);
 
     // Typeset color shades
