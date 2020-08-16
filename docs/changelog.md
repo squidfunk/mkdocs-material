@@ -22,6 +22,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.7 <small>_ August 16, 2020</small>
+
+* Improved contrast ratio to 4.5:1 for syntax highlighting
+* Improved contrast ratio to 4.5:1 for table of contents
+
 ### 5.5.6 <small>_ August 12, 2020</small>
 
 * Switched base template for `404.html` to `main.html`
