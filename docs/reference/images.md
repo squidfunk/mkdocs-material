@@ -29,7 +29,7 @@ markdown_extensions:
 
 ### Image alignment
 
-When the [Attribute List][2] extension is enabled, images can be aligned by
+When the [Attribute List][3] extension is enabled, images can be aligned by
 adding the respective alignment directions via the `align` attribute, i.e.
 `align=left` or `align=right`
 
@@ -68,6 +68,8 @@ adding the respective alignment directions via the `align` attribute, i.e.
 _If there's insufficient space to render the text next to the image, the image
 will stretch to the full width of the viewport, e.g. on mobile viewports._
 
+  [3]: #attribute-list
+
 ### Image captions
 
 Sadly, the Markdown syntax doesn't provide native support for image captions,
@@ -87,3 +89,24 @@ _Result_:
   <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
   <figcaption>Image caption</figcaption>
 </figure>
+
+
+### Image lazy-loading
+
+Modern browsers provide [native support for lazy-loading images][4] through the
+`loading` attribute, which degrades to eager-loading in browsers without
+support. As with [image alignment][5], if the [Attribute List][3] extension is
+enabled, images can be lazy-loaded by adding `loading=lazy`.
+
+_Example_:
+
+``` markdown
+![Placeholder](https://dummyimage.com/600x400/eee/aaa){: loading=lazy }
+```
+
+_Result_:
+
+![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){: loading=lazy width=300 }
+
+  [4]: https://caniuse.com/#feat=loading-lazy-attr
+  [5]: #image-alignment
