@@ -70,8 +70,8 @@
 
       // Active tab label
       &:checked + label {
-        color: var(--md-primary-fg-color);
-        border-color: var(--md-primary-fg-color);
+        color: var(--md-accent-fg-color);
+        border-color: var(--md-accent-fg-color);
 
         // Show tabbed block content
         & + .tabbed-content {
@@ -79,11 +79,9 @@
         }
       }
 
-      // Focused or hovered tab label
-      &:focus + label,
-      &:hover + label {
-        color: var(--md-accent-fg-color);
-        border-color: var(--md-accent-fg-color);
+      // Focused tab label
+      &:focus + label {
+        outline: auto;
       }
     }
 
@@ -98,6 +96,11 @@
       border-bottom: px2rem(2px) solid transparent;
       cursor: pointer;
       transition: color 250ms;
+
+      // Hovered label
+      html &:hover {
+        color: var(--md-accent-fg-color);
+      }
     }
   }
 }

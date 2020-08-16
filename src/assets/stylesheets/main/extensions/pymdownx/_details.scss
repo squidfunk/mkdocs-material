@@ -71,7 +71,7 @@
 
     display: block;
     min-height: px2rem(20px);
-    padding: px2rem(8px) px2rem(36px) px2rem(8px) px2rem(40px);
+    padding: px2rem(8px) px2rem(36px) px2rem(8px) px2rem(44px);
     border-top-right-radius: px2rem(2px);
     cursor: pointer;
 
@@ -83,7 +83,7 @@
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
-      padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(36px);
+      padding: px2rem(8px) px2rem(44px) px2rem(8px) px2rem(36px);
     }
 
     // Remove default details marker
