@@ -18,10 +18,10 @@
     src="https://github.com/squidfunk/mkdocs-material/workflows/ci/badge.svg?branch=master"
     alt="GitHub Action"
   /></a>
-  <!--<a href="https://pypistats.org/packages/mkdocs-material"><img
+  <a href="https://pypistats.org/packages/mkdocs-material"><img
     src="https://img.shields.io/pypi/dm/mkdocs-material.svg" 
     alt="Downloads"
-  /></a>-->
+  /></a>
   <a href="https://gitter.im/squidfunk/mkdocs-material"><img 
     src="https://badges.gitter.im/squidfunk/mkdocs-material.svg" 
     alt="Chat on Gitter"
