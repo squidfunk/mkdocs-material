@@ -59,7 +59,7 @@ The following options are supported:
         ```
 
   [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_critic.scss
-  [3]: https://facelessuser.github.io/pymdown-extensions/critic/
+  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/critic/
   [4]: https://facelessuser.github.io/pymdown-extensions/
 
 ### BetterEm
@@ -89,9 +89,9 @@ markdown_extensions:
   - pymdownx.tilde
 ```
 
-  [6]: https://facelessuser.github.io/pymdown-extensions/caret/
-  [7]: https://facelessuser.github.io/pymdown-extensions/mark/
-  [8]: https://facelessuser.github.io/pymdown-extensions/tilde/
+  [6]: https://facelessuser.github.io/pymdown-extensions/extensions/caret/
+  [7]: https://facelessuser.github.io/pymdown-extensions/extensions/mark/
+  [8]: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
 
 ### SmartSymbols
 

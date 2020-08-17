@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
-    "@mdi/svg": "^5.4.55",
+    "@mdi/svg": "^5.5.55",
     "@primer/octicons": "^10.0.0",
     "@types/clipboard": "^2.0.1",
     "@types/copy-webpack-plugin": "^6.0.0",
@@ -67,7 +67,7 @@
     "imagemin-webpack-plugin": "^2.4.2",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
-    "mini-css-extract-plugin": "^0.9.0",
+    "mini-css-extract-plugin": "^0.10.0",
     "postcss-inline-svg": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-svgo": "^4.0.2",
