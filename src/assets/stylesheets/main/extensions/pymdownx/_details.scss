@@ -54,7 +54,7 @@
       // We cannot set overflow: hidden, as the outline would not be visible,
       // so we need to correct the border radius
       > summary {
-        border-bottom-right-radius: px2rem(2px);
+        border-radius: px2rem(2px);
       }
     }
 
@@ -72,6 +72,7 @@
     display: block;
     min-height: px2rem(20px);
     padding: px2rem(8px) px2rem(36px) px2rem(8px) px2rem(44px);
+    border-top-left-radius: px2rem(2px);
     border-top-right-radius: px2rem(2px);
     cursor: pointer;
 
