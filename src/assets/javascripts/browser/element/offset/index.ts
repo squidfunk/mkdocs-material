@@ -21,7 +21,7 @@
  */
 
 import { Observable, fromEvent, merge } from "rxjs"
-import { map, shareReplay, startWith } from "rxjs/operators"
+import { map, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -71,7 +71,6 @@ export function watchElementOffset(
   )
     .pipe(
       map(() => getElementOffset(el)),
-      startWith(getElementOffset(el)),
-      shareReplay(1)
+      startWith(getElementOffset(el))
     )
 }

@@ -21,8 +21,23 @@
  */
 
 import ResizeObserver from "resize-observer-polyfill"
-import { Observable, fromEventPattern } from "rxjs"
-import { shareReplay, startWith } from "rxjs/operators"
+import {
+  NEVER,
+  Observable,
+  Subject,
+  defer,
+  merge,
+  of
+} from "rxjs"
+import {
+  filter,
+  finalize,
+  map,
+  shareReplay,
+  startWith,
+  switchMap,
+  tap
+} from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -35,6 +50,40 @@ export interface ElementSize {
   width: number                        /* Element width */
   height: number                       /* Element height */
 }
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Resize observer entry subject
+ */
+const entry$ = new Subject<ResizeObserverEntry>()
+
+/**
+ * Resize observer observable
+ *
+ * This observable will create a `ResizeObserver` on the first subscription
+ * and will automatically terminate it when there are no more subscribers.
+ * It's quite important to centralize observation in a single `ResizeObserver`,
+ * as the performance difference can be quite dramatic, as the link shows.
+ *
+ * @see https://bit.ly/3iIYfEm - Google Groups on performance
+ */
+const observer$ = defer(() => of(
+  new ResizeObserver(entries => {
+    for (const entry of entries)
+      entry$.next(entry)
+  })
+))
+  .pipe(
+    switchMap(resize => merge(of(resize), NEVER)
+      .pipe(
+        finalize(() => resize.disconnect())
+      )
+    ),
+    shareReplay({ bufferSize: 1, refCount: true })
+  )
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -59,6 +108,11 @@ export function getElementSize(el: HTMLElement): ElementSize {
 /**
  * Watch element size
  *
+ * This function returns an observable that will subscribe to a single internal
+ * instance of `ResizeObserver` upon subscription, and emit resize events until
+ * termination. Note that this function should not be called with the same
+ * element twice, as the first unsubscription will terminate observation.
+ *
  * @param el - Element
  *
  * @return Element size observable
@@ -66,15 +120,19 @@ export function getElementSize(el: HTMLElement): ElementSize {
 export function watchElementSize(
   el: HTMLElement
 ): Observable<ElementSize> {
-  return fromEventPattern<ElementSize>(next => {
-    new ResizeObserver(([{ contentRect }]) => next({
-      width:  Math.round(contentRect.width),
-      height: Math.round(contentRect.height)
-    }))
-      .observe(el)
-  })
+  return observer$
     .pipe(
-      startWith(getElementSize(el)),
-      shareReplay(1)
+      tap(observer => observer.observe(el)),
+      switchMap(observer => entry$
+        .pipe(
+          filter(({ target }) => target === el),
+          finalize(() => observer.unobserve(el)),
+          map(({ contentRect }) => ({
+            width:  contentRect.width,
+            height: contentRect.height
+          }))
+        )
+      ),
+      startWith(getElementSize(el))
     )
 }

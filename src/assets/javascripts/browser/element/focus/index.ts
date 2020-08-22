@@ -21,7 +21,7 @@
  */
 
 import { Observable, fromEvent, merge } from "rxjs"
-import { map, shareReplay, startWith } from "rxjs/operators"
+import { map, startWith } from "rxjs/operators"
 
 import { getActiveElement } from "../_"
 
@@ -62,7 +62,6 @@ export function watchElementFocus(
   )
     .pipe(
       map(({ type }) => type === "focus"),
-      startWith(el === getActiveElement()),
-      shareReplay(1)
+      startWith(el === getActiveElement())
     )
 }
