@@ -70,7 +70,7 @@ export function patchScrollfix(
   const els$ = document$
     .pipe(
       map(() => getElements("[data-md-scrollfix]")),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 
   /* Remove marker attribute, so we'll only add the fix once */

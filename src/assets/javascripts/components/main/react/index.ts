@@ -34,7 +34,6 @@ import {
   map,
   observeOn,
   pluck,
-  shareReplay,
   switchMap,
   tap
 } from "rxjs/operators"
@@ -84,8 +83,7 @@ export function watchMain(
   const adjust$ = header$
     .pipe(
       pluck("height"),
-      distinctUntilChanged(),
-      shareReplay(1)
+      distinctUntilChanged()
     )
 
   /* Compute the main area's top and bottom borders */
@@ -96,11 +94,10 @@ export function watchMain(
           map(({ height }) => ({
             top:    el.offsetTop,
             bottom: el.offsetTop + height
-          }))
+          })),
+          distinctUntilKeyChanged("bottom")
         )
-      ),
-      distinctUntilKeyChanged("bottom"),
-      shareReplay(1)
+      )
     )
 
   /* Compute the main area's offset, visible height and if we scrolled past */

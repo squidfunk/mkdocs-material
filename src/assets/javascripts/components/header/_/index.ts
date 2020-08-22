@@ -25,7 +25,6 @@ import {
   distinctUntilChanged,
   filter,
   map,
-  shareReplay,
   startWith,
   switchMap,
   withLatestFrom
@@ -116,8 +115,7 @@ export function mountHeader(
       /* Combine into single observable */
       return combineLatest([header$, type$])
         .pipe(
-          map(([header, type]): Header => ({ type, ...header })),
-          shareReplay(1)
+          map(([header, type]): Header => ({ type, ...header }))
         )
     })
   )

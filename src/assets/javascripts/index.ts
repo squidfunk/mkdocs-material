@@ -200,13 +200,13 @@ export function initialize(config: unknown) {
   const header$ = useComponent("header")
     .pipe(
       mountHeader({ document$, viewport$ }),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 
   const main$ = useComponent("main")
     .pipe(
       mountMain({ header$, viewport$ }),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 
   /* ----------------------------------------------------------------------- */
@@ -214,25 +214,25 @@ export function initialize(config: unknown) {
   const navigation$ = useComponent("navigation")
     .pipe(
       mountNavigation({ header$, main$, viewport$, screen$ }),
-      shareReplay(1) // shareReplay because there might be late subscribers
+      shareReplay({ bufferSize: 1, refCount: true }) // shareReplay because there might be late subscribers
     )
 
   const toc$ = useComponent("toc")
     .pipe(
       mountTableOfContents({ header$, main$, viewport$, tablet$ }),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 
   const tabs$ = useComponent("tabs")
     .pipe(
       mountTabs({ header$, viewport$, screen$ }),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 
   const hero$ = useComponent("hero")
     .pipe(
       mountHero({ header$, viewport$ }),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 
   /* ----------------------------------------------------------------------- */
@@ -277,21 +277,21 @@ export function initialize(config: unknown) {
         const query$ = useComponent("search-query")
           .pipe(
             mountSearchQuery(worker, { transform: config.search.transform }),
-            shareReplay(1)
+            shareReplay({ bufferSize: 1, refCount: true })
           )
 
         /* Mount search reset */
         const reset$ = useComponent("search-reset")
           .pipe(
             mountSearchReset(),
-            shareReplay(1)
+            shareReplay({ bufferSize: 1, refCount: true })
           )
 
         /* Mount search result */
         const result$ = useComponent("search-result")
           .pipe(
             mountSearchResult(worker, { query$ }),
-            shareReplay(1)
+            shareReplay({ bufferSize: 1, refCount: true })
           )
 
         return useComponent("search")
@@ -304,7 +304,7 @@ export function initialize(config: unknown) {
           .subscribe(el => el.hidden = true) // TODO: Hack
         return NEVER
       }),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 
   /* ----------------------------------------------------------------------- */

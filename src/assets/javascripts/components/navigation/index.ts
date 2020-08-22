@@ -20,4 +20,91 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
+import { Observable, OperatorFunction, of, pipe } from "rxjs"
+import { map, switchMap } from "rxjs/operators"
+
+import { Viewport } from "browser"
+
+import { Header } from "../header"
+import { Main } from "../main"
+import {
+  Sidebar,
+  applySidebar,
+  watchSidebar
+} from "../shared"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Navigation for [screen -]
+ */
+interface NavigationBelowScreen {} // tslint:disable-line
+
+/**
+ * Navigation for [screen +]
+ */
+interface NavigationAboveScreen {
+  sidebar: Sidebar                     /* Sidebar */
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Navigation
+ */
+export type Navigation =
+  | NavigationBelowScreen
+  | NavigationAboveScreen
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Mount options
+ */
+interface MountOptions {
+  header$: Observable<Header>          /* Header observable */
+  main$: Observable<Main>              /* Main area observable */
+  viewport$: Observable<Viewport>      /* Viewport observable */
+  screen$: Observable<boolean>         /* Screen media observable */
+}
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Mount navigation from source observable
+ *
+ * @param options - Options
+ *
+ * @return Operator function
+ */
+export function mountNavigation(
+  { header$, main$, viewport$, screen$ }: MountOptions
+): OperatorFunction<HTMLElement, Navigation> {
+  return pipe(
+    switchMap(el => screen$
+      .pipe(
+        switchMap(screen => {
+
+          /* [screen +]: Mount navigation in sidebar */
+          if (screen) {
+            return watchSidebar(el, { main$, viewport$ })
+              .pipe(
+                applySidebar(el, { header$ }),
+                map(sidebar => ({ sidebar }))
+              )
+
+          /* [screen -]: Mount navigation in drawer */
+          } else {
+            return of({})
+          }
+        })
+      )
+    )
+  )
+}

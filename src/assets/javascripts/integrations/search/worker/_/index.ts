@@ -25,7 +25,7 @@ import { Observable, Subject, asyncScheduler } from "rxjs"
 import {
   map,
   observeOn,
-  shareReplay,
+  share,
   withLatestFrom
 } from "rxjs/operators"
 
@@ -120,7 +120,7 @@ export function setupSearchWorker(
         }
         return message
       }),
-      shareReplay(1)
+      share()
     )
 
   /* Set up search index */

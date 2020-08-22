@@ -545,7 +545,7 @@ $md-toggle__search--checked:
   // Link inside item
   &__link {
     display: block;
-    outline: 0;
+    outline: none;
     transition: background 250ms;
     scroll-snap-align: start;
 

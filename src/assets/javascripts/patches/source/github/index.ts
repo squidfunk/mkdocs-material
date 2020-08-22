@@ -21,9 +21,9 @@
  */
 
 import { Repo, User } from "github-types"
-import { Observable, of } from "rxjs"
+import { Observable } from "rxjs"
 import { ajax } from "rxjs/ajax"
-import { filter, pluck, switchMap } from "rxjs/operators"
+import { filter, map, pluck } from "rxjs/operators"
 
 import { round } from "utilities"
 
@@ -53,22 +53,22 @@ export function fetchSourceFactsFromGitHub(
     .pipe(
       filter(({ status }) => status === 200),
       pluck("response"),
-      switchMap(data => {
+      map(data => {
 
         /* GitHub repository */
         if (typeof repo !== "undefined") {
           const { stargazers_count, forks_count }: Repo = data
-          return of([
+          return [
             `${round(stargazers_count || 0)} Stars`,
             `${round(forks_count || 0)} Forks`
-          ])
+          ]
 
         /* GitHub user/organization */
         } else {
           const { public_repos }: User = data
-          return of([
+          return [
             `${round(public_repos || 0)} Repositories`
-          ])
+          ]
         }
       })
     )

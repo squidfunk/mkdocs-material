@@ -137,7 +137,7 @@ export function setupComponents(
       }),
 
       /* Convert to hot observable */
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 }
 
