@@ -237,32 +237,35 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  /* Search worker */
-  const worker$ = defer(() => {
-    const index = config.search && config.search.index
-      ? config.search.index
-      : undefined
+  /* Search worker - only if search is present */
+  const worker$ = useComponent("search")
+    .pipe(
+      switchMap(() => defer(() => {
+        const index = config.search && config.search.index
+          ? config.search.index
+          : undefined
 
-    /* Fetch index if it wasn't passed explicitly */
-    const index$ = typeof index !== "undefined"
-      ? from(index)
-      : base$
-          .pipe(
-            switchMap(base => ajax({
-              url: `${base}/search/search_index.json`,
-              responseType: "json",
-              withCredentials: true
-            })
-              .pipe<SearchIndex>(
-                pluck("response")
+        /* Fetch index if it wasn't passed explicitly */
+        const index$ = typeof index !== "undefined"
+          ? from(index)
+          : base$
+              .pipe(
+                switchMap(base => ajax({
+                  url: `${base}/search/search_index.json`,
+                  responseType: "json",
+                  withCredentials: true
+                })
+                  .pipe<SearchIndex>(
+                    pluck("response")
+                  )
+                )
               )
-            )
-          )
 
-    return of(setupSearchWorker(config.search.worker, {
-      base$, index$
-    }))
-  })
+        return of(setupSearchWorker(config.search.worker, {
+          base$, index$
+        }))
+      }))
+    )
 
   /* ----------------------------------------------------------------------- */
 
