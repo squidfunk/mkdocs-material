@@ -51,6 +51,6 @@ export function watchLocationBase(
         .toString()
         .replace(/\/$/, "")
       ),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 }

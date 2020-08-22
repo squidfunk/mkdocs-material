@@ -78,7 +78,7 @@ export function watchViewport(): Observable<Viewport> {
   ])
     .pipe(
       map(([offset, size]) => ({ offset, size })),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     )
 }
 
@@ -116,7 +116,6 @@ export function watchViewportAt(
           y: offset.y - y + height
         },
         size
-      })),
-      shareReplay(1)
+      }))
     )
 }
