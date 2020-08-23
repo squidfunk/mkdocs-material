@@ -99,7 +99,7 @@
   <!-- Track external links -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      document.body.addEventListener("click", ev => {
+      document.body.addEventListener("click", function(ev) {
         if (ev.target instanceof HTMLElement) {
           var el = ev.target.closest("a[href^=http]")
           if (el)
