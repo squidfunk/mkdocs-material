@@ -22,6 +22,14 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.8 <small>_ August 23, 2020</small>
+
+* Removed focus outline on `details` and content tabs for pointer devices
+* Improved accessibility of content tabs (now navigable via arrow keys)
+* Fixed #1877: `404` on search index when search is disabled
+* Fixed some memleaks in observable subscriptions
+* Fixed color definitions for `theme-color` meta tag
+
 ### 5.5.7 <small>_ August 16, 2020</small>
 
 * Improved contrast ratio to 4.5:1 for syntax highlighting

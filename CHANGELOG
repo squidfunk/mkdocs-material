@@ -1,3 +1,11 @@
+mkdocs-material-5.5.8 (2020-08-23)
+
+  * Removed focus outline on details and content tabs for pointer devices
+  * Improved accessibility of content tabs (now navigable via arrow keys)
+  * Fixed #1877: 404 on search index when search is disabled
+  * Fixed some memleaks in observable subscriptions
+  * Fixed color definitions for theme-color meta tag
+
 mkdocs-material-5.5.7 (2020-08-16)
 
   * Improved contrast ratio to 4.5:1 for syntax highlighting
