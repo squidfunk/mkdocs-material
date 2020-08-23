@@ -171,6 +171,16 @@
         // Remove spacing on 2nd level items
         > .md-nav__list > .md-nav__item {
           padding: 0 px2rem(12px);
+
+          // Add bottom spacing to last item
+          &:last-child {
+            padding-bottom: px2rem(12px);
+
+            // Remove bottom spacing for nested items
+            .md-nav__item {
+              padding-bottom: 0;
+            }
+          }
         }
 
         // Hide titles from 2nd level on
