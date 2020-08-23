@@ -24,6 +24,8 @@
 // which must be tackled after we gathered some feedback on v5.
 // tslint:disable
 
+import "focus-visible"
+
 import { sortBy, prop, values } from "ramda"
 import {
   merge,

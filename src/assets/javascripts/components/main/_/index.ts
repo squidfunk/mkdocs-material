@@ -20,8 +20,19 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, Subject, pipe } from "rxjs"
-import { distinctUntilKeyChanged, switchMap, tap } from "rxjs/operators"
+import {
+  Observable,
+  OperatorFunction,
+  Subject,
+  noop,
+  pipe
+} from "rxjs"
+import {
+  distinctUntilKeyChanged,
+  finalize,
+  switchMap,
+  tap
+} from "rxjs/operators"
 
 import { Viewport } from "browser"
 
@@ -88,11 +99,12 @@ export function mountMain(
         )
       )
     )
-      .subscribe()
+      .subscribe(noop)
 
   /* Return operator */
   return pipe(
     switchMap(el => watchMain(el, { header$, viewport$ })),
-    tap(main => main$.next(main))
+    tap(main => main$.next(main)),
+    finalize(() => main$.complete())
   )
 }

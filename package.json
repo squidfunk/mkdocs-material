@@ -34,8 +34,10 @@
   "dependencies": {
     "clipboard": "^2.0.6",
     "escape-html": "^1.0.3",
+    "focus-visible": "^5.1.0",
     "lunr": "^2.3.8",
     "lunr-languages": "^1.4.0",
+    "resize-observer-polyfill": "^1.5.1",
     "ramda": "^0.27.1",
     "rxjs": "^7.0.0-beta.4"
   },
@@ -72,7 +74,6 @@
     "postcss-loader": "^3.0.0",
     "postcss-svgo": "^4.0.2",
     "preact": "^10.4.7",
-    "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",

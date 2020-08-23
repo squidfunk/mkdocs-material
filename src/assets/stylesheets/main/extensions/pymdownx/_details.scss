@@ -76,8 +76,8 @@
     border-top-right-radius: px2rem(2px);
     cursor: pointer;
 
-    // Disable ugly outline on touch devices
-    @media (hover: none) {
+    // Disable focus indicator for pointer devices
+    &:not(.focus-visible) {
       outline: none;
       -webkit-tap-highlight-color: transparent;
     }

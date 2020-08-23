@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Subject, animationFrameScheduler, of } from "rxjs"
+import { Subject, animationFrameScheduler, noop, of } from "rxjs"
 import {
   delay,
   map,
@@ -84,7 +84,7 @@ export function setupDialog(
         )
       )
     )
-      .subscribe()
+      .subscribe(noop)
 
   /* Return dialog */
   return dialog$
