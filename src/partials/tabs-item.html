@@ -66,4 +66,13 @@
       {% endif %}
     </li>
   {% endif %}
+
+<!-- Navigation item with an external link -->
+{% elif (config.site_url not in nav_item.url) and ("http" in nav_item.url) %}
+  <li class="md-tabs__item">
+    <a href="{{ nav_item.url | url }}" class="md-tabs__link">
+      {{ nav_item.title }}
+    </a>
+  </li>
+
 {% endif %}
