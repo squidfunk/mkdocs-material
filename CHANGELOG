@@ -1,3 +1,8 @@
+mkdocs-material-5.5.9 (2020-08-26)
+
+  * Added Esperanto translations
+  * Fixed #1884: External links not included in navigation tabs
+
 mkdocs-material-5.5.8 (2020-08-23)
 
   * Removed focus outline on details and content tabs for pointer devices

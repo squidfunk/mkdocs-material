@@ -22,6 +22,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.9 <small>_ August 26, 2020</small>
+
+* Added Esperanto translations
+* Fixed #1884: External links not included in navigation tabs
+
 ### 5.5.8 <small>_ August 23, 2020</small>
 
 * Removed focus outline on `details` and content tabs for pointer devices
