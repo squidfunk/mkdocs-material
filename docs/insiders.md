@@ -119,7 +119,7 @@ New features and improvements for _hosting multiple versions_, including:
 
 New features and improvements for _user preferences_, including:
 
-- [ ] Support for user-toggleable themes
+- [x] Support for user-toggleable themes
 - [ ] Support for user-toggleable code-block styles (light/dark)
 - [ ] Display last searches when search is empty
 - [ ] ... more to come
