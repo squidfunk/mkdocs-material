@@ -103,7 +103,7 @@ New features and improvements for _content and toc_, including:
 ### Bhut Jolokia
 
 [:octicons-fire-24: Funding goal: __$1,500__][6] ·
-:octicons-lock-24: Status: _pending_
+:octicons-lock-24: Status: _exclusive_
 
 New features and improvements for _hosting multiple versions_, including:
 
@@ -115,7 +115,7 @@ New features and improvements for _hosting multiple versions_, including:
 ### Black Pearl
 
 [:octicons-fire-24: Funding goal: __$2,000__][6] ·
-:octicons-lock-24: Status: _pending_
+:octicons-lock-24: Status: _exclusive_
 
 New features and improvements for _user preferences_, including:
 
@@ -127,7 +127,7 @@ New features and improvements for _user preferences_, including:
 ### Caribbean Red
 
 [:octicons-fire-24: Funding goal: __$3,000__][6] ·
-:octicons-lock-24: Status: _pending_
+:octicons-lock-24: Status: _exclusive_
 
 Alternative, completely different _vertical layout_, optimized to read
 documentation and code side-by-side, e.g. for the documentation of APIs with

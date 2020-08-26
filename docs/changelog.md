@@ -8,7 +8,7 @@ template: overrides/main.html
 
 ### 1.3.0 <small>_ August 26, 2020</small>
 
-* Added support for user-selectable color schemes
+* Added support for user-selectable color palettes
 
 ### 1.2.0 <small>_ August 11, 2020</small>
 
