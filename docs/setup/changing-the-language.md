@@ -33,6 +33,7 @@ The following languages are supported:
   <li><code>da</code> – Danish</li>
   <li><code>de</code> – German</li>
   <li><code>en</code> – English</li>
+  <li><code>eo</code> – Esperanto</li>
   <li><code>es</code> – Spanish</li>
   <li><code>et</code> – Estonian</li>
   <li><code>fa</code> – Persian (Farsi)</li>
