@@ -1,3 +1,8 @@
+mkdocs-material-5.5.10 (2020-08-28)
+
+  * Improved rendering by moving Disqus integration after page load
+  * Fixed #1887: Moved navigation icons to CSS to reduce size of HTML
+
 mkdocs-material-5.5.9+insiders-1.3.0 (2020-08-26)
 
   * Added support for user-selectable color palettes

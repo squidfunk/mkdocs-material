@@ -26,6 +26,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.10 <small>_ August 28, 2020</small>
+
+* Improved rendering by moving Disqus integration after page load
+* Fixed #1887: Moved navigation icons to CSS to reduce size of HTML
+
 ### 5.5.9 <small>_ August 26, 2020</small>
 
 * Added Esperanto translations
