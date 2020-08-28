@@ -1,3 +1,7 @@
+mkdocs-material-5.5.11 (2020-08-28)
+
+  * Fixed Disqus integration, as the minifier killed the config
+
 mkdocs-material-5.5.10 (2020-08-28)
 
   * Improved rendering by moving Disqus integration after page load

@@ -26,6 +26,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.11 <small>_ August 28, 2020</small>
+
+  * Fixed Disqus integration, as the minifier killed the config
+
 ### 5.5.10 <small>_ August 28, 2020</small>
 
 * Improved rendering by moving Disqus integration after page load
