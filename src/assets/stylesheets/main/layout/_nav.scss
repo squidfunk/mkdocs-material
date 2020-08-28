@@ -24,6 +24,15 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-nav-icon--prev: svg-load("@mdi/svg/svg/arrow-left.svg");
+  --md-nav-icon--next: svg-load("@mdi/svg/svg/chevron-right.svg");
+  --md-toc-icon: svg-load("@mdi/svg/svg/table-of-contents.svg");
+}
+
+// ----------------------------------------------------------------------------
+
 // Navigation container
 .md-nav {
   font-size: px2rem(14px);
@@ -186,7 +195,7 @@
         background-color: var(--md-default-fg-color--lightest);
         cursor: pointer;
 
-        // Icon
+        // Navigation icon
         .md-nav__icon {
           position: absolute;
           top: px2rem(8px);
@@ -195,6 +204,17 @@
           width: px2rem(24px);
           height: px2rem(24px);
           margin: px2rem(4px);
+
+          // Previous navigation item icon
+          &::after {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: currentColor;
+            mask-image: var(--md-nav-icon--prev);
+            mask-repeat: no-repeat;
+            content: "";
+          }
 
           // Adjust for right-to-left languages
           [dir="rtl"] & {
@@ -291,14 +311,27 @@
         margin-top: 0;
         padding: px2rem(12px) px2rem(16px);
 
-        // Icon
+        // Navigation icon
         .md-nav__icon {
           position: absolute;
           top: 50%;
           right: px2rem(12px);
+          width: px2rem(24px);
+          height: px2rem(24px);
           margin-top: px2rem(-12px);
           color: inherit;
           font-size: px2rem(24px);
+
+          // Next navigation item icon
+          &::after {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: currentColor;
+            mask-image: var(--md-nav-icon--next);
+            mask-repeat: no-repeat;
+            content: "";
+          }
 
           // Adjust for right-to-left languages
           [dir="rtl"] & {
@@ -308,14 +341,14 @@
         }
       }
 
-      // Icon
+      // Navigation icon
       .md-nav__icon {
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
 
           // Flip icon vertically
-          svg {
+          &::after {
             transform: scale(-1);
           }
         }
@@ -425,6 +458,16 @@
         display: none;
       }
 
+      // Table of contents icon
+      .md-icon::after {
+        display: block;
+        width: 100%;
+        height: 100%;
+        mask-image: var(--md-toc-icon);
+        background-color: currentColor;
+        content: "";
+      }
+
       // Show table of contents
       & ~ .md-nav {
         display: flex;
@@ -497,9 +540,10 @@
       display: none;
     }
 
-    // Icon
+    // Navigation icon
     &__icon {
       float: right;
+      width: px2rem(18px);
       height: px2rem(18px);
       transition: transform 250ms;
 
@@ -509,12 +553,16 @@
         transform: rotate(180deg);
       }
 
-      // Inline icon and adjust to match font size
-      svg {
+      // Inline icon and adjust icon to match font size
+      &::after {
         display: inline-block;
-        width: px2rem(18px);
-        height: px2rem(18px);
+        width: 100%;
+        height: 100%;
         vertical-align: px2rem(-2px);
+        background-color: currentColor;
+        mask-image: var(--md-nav-icon--next);
+        mask-repeat: no-repeat;
+        content: "";
       }
 
       // Rotate icon for expanded lists

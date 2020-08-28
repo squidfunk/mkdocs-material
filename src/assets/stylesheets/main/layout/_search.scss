@@ -274,7 +274,7 @@ $md-toggle__search--checked:
         padding-right: px2rem(44px);
       }
 
-      // Icon color
+      // Search icon color
       + .md-search__icon {
         color: var(--md-primary-bg-color);
       }
@@ -296,7 +296,7 @@ $md-toggle__search--checked:
         background-color: var(--md-default-bg-color);
         border-radius: px2rem(2px) px2rem(2px) 0 0;
 
-        // Icon and placeholder color in active state
+        // Search icon and placeholder color in active state
         + .md-search__icon,
         &::placeholder {
           color: var(--md-default-fg-color--light);
@@ -305,7 +305,7 @@ $md-toggle__search--checked:
     }
   }
 
-  // Icon
+  // Search icon
   &__icon {
     position: absolute;
     z-index: 2;
@@ -596,7 +596,7 @@ $md-toggle__search--checked:
     }
   }
 
-  // Icon
+  // Search result icon
   &__icon {
     position: absolute;
     left: 0;

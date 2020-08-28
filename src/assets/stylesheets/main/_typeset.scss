@@ -533,7 +533,7 @@ kbd {
   table th[role="columnheader"] {
     cursor: pointer;
 
-    // Icons
+    // Sort icon
     &::after {
       display: inline-block;
       width: 1.2em;

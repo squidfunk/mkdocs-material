@@ -133,7 +133,7 @@ $admonitions: (
       margin-bottom: 0;
     }
 
-    // Icon
+    // Admonition icon
     &::before {
       position: absolute;
       left: px2rem(16px);
@@ -185,7 +185,7 @@ $admonitions: (
   .md-typeset .#{$name} > .admonition-title {
     background-color: transparentize($tint, 0.9);
 
-    // Icon
+    // Admonition icon
     &::before {
       background-color: $tint;
       mask-image: var(--md-admonition-icon--#{$name});
