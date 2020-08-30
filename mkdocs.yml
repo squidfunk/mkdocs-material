@@ -164,7 +164,6 @@ nav:
     - Adding social links: setup/adding-social-links.md
     - Adding a git repository: setup/adding-a-git-repository.md
     - Adding a comment system: setup/adding-a-comment-system.md
-    #- Adding an announcement bar: setup/adding-an-announcement-bar.md
     #- Adding a landing page: setup/adding-a-landing-page.md
   - Reference:
     - Admonitions: reference/admonitions.md
