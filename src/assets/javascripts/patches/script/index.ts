@@ -23,7 +23,6 @@
 import { EMPTY, Observable, noop, of } from "rxjs"
 import {
   concatMap,
-  filter,
   map,
   skip,
   switchMap,
@@ -74,7 +73,6 @@ export function patchScripts(
   els$
     .pipe(
       switchMap(els => of(...els)),
-      filter(el => !!el.src || /(^|\/javascript)$/i.test(el.type)),
       concatMap(el => {
         const script = createElement("script")
         if (el.src) {
@@ -83,9 +81,7 @@ export function patchScripts(
 
           /* Complete when script is loaded */
           return new Observable(observer => {
-            script.onload = () => {
-              observer.complete()
-            }
+            script.onload = () => observer.complete()
           })
 
         /* Complete immediately */
