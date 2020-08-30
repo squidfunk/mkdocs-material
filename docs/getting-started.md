@@ -29,7 +29,7 @@ Material for MkDocs can be installed with `pip`:
     pip install mkdocs-material
     ```
 
-=== "Material for MkDocs Insiders"
+=== "Insiders"
 
     ``` sh
     pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
@@ -40,9 +40,9 @@ This will automatically install compatible versions of all dependencies:
 Material for MkDocs always strives to support the latest versions, so there's
 no need to install those packages separately.
 
-Note that in order to install [__Material for MkDocs Insiders__][8], you'll
-need to [become a sponsor][9], create a [personal access token][10], and set
-the `GH_TOKEN` environment variable to the token's value.
+_Note that in order to install [Material for MkDocs Insiders][8], you'll
+need to [become a sponsor][9], create a [personal access token][10][^1], and
+set the_ `GH_TOKEN` _environment variable to the token's value._
 
   [5]: https://python-markdown.github.io/
   [6]: https://pygments.org/
@@ -90,7 +90,7 @@ want to use the very latest version:
     git clone https://github.com/squidfunk/mkdocs-material.git
     ```
 
-=== "Material for MkDocs Insiders"
+=== "Insiders"
 
     ```
     git clone git@github.com:squidfunk/mkdocs-material-insiders.git mkdocs-material
@@ -103,7 +103,18 @@ cloning from `git`, you must install all required dependencies yourself:
 pip install -r mkdocs-material/requirements.txt
 ```
 
-Note that in order to install [__Material for MkDocs Insiders__][8], you'll
-need to [become a sponsor][9].
+_Note that in order to install [Material for MkDocs Insiders][8], you'll
+need to [become a sponsor][9]._
 
   [16]: https://github.com/squidfunk/mkdocs-material
+
+  [^1]:
+    In order to use `pip` to install from the private repository over HTTPS, the
+    personal access token requires the [`repo`][17] scope. Note that the usage
+    of an access token is only necessary when installing Insiders over HTTPS,
+    which is the recommended way when building from within a CI/CD workflow,
+    e.g. using [GitHub Pages][18] or [GitLab Pages][19].
+
+  [17]: https://docs.github.com/en/developers/apps/scopes-for-oauth-apps#available-scopes
+  [18]: publishing-your-site.md#github-pages
+  [19]: publishing-your-site.md#gitlab-pages

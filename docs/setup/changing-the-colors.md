@@ -190,7 +190,7 @@ color:
   :octicons-beaker-24: Experimental ·
   [:octicons-heart-fill-24:{: .tx-heart } Insiders only][6]{: .tx-insiders }
 
-[__Material for MkDocs Insiders__][6] makes it possible to define multiple color
+[Material for MkDocs Insiders][6] makes it possible to define multiple color
 palettes, including a [scheme][7], [primary][8] and [accent][9] color each, and
 let the user choose. Define them via `mkdocs.yml`:
 
