@@ -20,8 +20,15 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
-import { map, skip, withLatestFrom } from "rxjs/operators"
+import { EMPTY, Observable, noop, of } from "rxjs"
+import {
+  concatMap,
+  filter,
+  map,
+  skip,
+  switchMap,
+  withLatestFrom
+} from "rxjs/operators"
 
 import {
   createElement,
@@ -63,15 +70,31 @@ export function patchScripts(
       map(([, el]) => getElements<HTMLScriptElement>("script", el))
     )
 
-  /* Evaluate all scripts via replacement */
-  els$.subscribe(els => {
-    for (const el of els) {
-      if (el.src || /(^|\/javascript)$/i.test(el.type)) {
+  /* Evaluate all scripts via replacement in order */
+  els$
+    .pipe(
+      switchMap(els => of(...els)),
+      filter(el => !!el.src || /(^|\/javascript)$/i.test(el.type)),
+      concatMap(el => {
         const script = createElement("script")
-        const key = el.src ? "src" : "textContent"
-        script[key] = el[key]!
-        replaceElement(el, script)
-      }
-    }
-  })
+        if (el.src) {
+          script.src = el.src
+          replaceElement(el, script)
+
+          /* Complete when script is loaded */
+          return new Observable(observer => {
+            script.onload = () => {
+              observer.complete()
+            }
+          })
+
+        /* Complete immediately */
+        } else {
+          script.textContent = el.textContent!
+          replaceElement(el, script)
+          return EMPTY
+        }
+      })
+    )
+      .subscribe(noop)
 }
