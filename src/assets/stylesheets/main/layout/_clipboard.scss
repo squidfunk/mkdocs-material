@@ -24,6 +24,13 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-clipboard-icon: svg-load("@mdi/svg/svg/content-copy.svg");
+}
+
+// ----------------------------------------------------------------------------
+
 // Copy to clipboard
 .md-clipboard {
   position: absolute;
@@ -49,9 +56,15 @@
   // }
 
   // Slightly smaller icon
-  svg {
+  &::after {
+    display: block;
     width: px2em(18px);
     height: px2em(18px);
+    margin: 0 auto;
+    background-color: currentColor;
+    mask-image: var(--md-clipboard-icon);
+    mask-repeat: no-repeat;
+    content: "";
   }
 
   // Show on container hover
