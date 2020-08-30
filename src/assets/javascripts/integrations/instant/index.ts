@@ -188,7 +188,8 @@ export function setupInstantLoading(
             return NEVER
           })
         )
-      )
+      ),
+      share()
     )
 
   /* Set new location as soon as the document was fetched */
