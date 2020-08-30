@@ -160,6 +160,7 @@ nav:
     - Setting up navigation: setup/setting-up-navigation.md
     - Setting up site search: setup/setting-up-site-search.md
     - Setting up site analytics: setup/setting-up-site-analytics.md
+    - Setting up the header: setup/setting-up-the-header.md
     - Adding social links: setup/adding-social-links.md
     - Adding a git repository: setup/adding-a-git-repository.md
     - Adding a comment system: setup/adding-a-comment-system.md

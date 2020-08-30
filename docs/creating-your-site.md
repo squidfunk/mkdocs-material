@@ -71,10 +71,10 @@ icons and much more:
 * [Setting up navigation][7]
 * [Setting up site search][8]
 * [Setting up site analytics][9]
-* [Adding social links][10]
-* [Adding a git repository][11]
-* [Adding a comment system][12]
-<!-- * [Adding an announcement bar][13] -->
+* [Setting up the header][10]
+* [Adding social links][11]
+* [Adding a git repository][12]
+* [Adding a comment system][13]
 <!-- * [Adding a landing page][14] -->
 
   [2]: getting-started.md#installation
@@ -85,10 +85,10 @@ icons and much more:
   [7]: setup/setting-up-navigation.md
   [8]: setup/setting-up-site-search.md
   [9]: setup/setting-up-site-analytics.md
-  [10]: setup/adding-social-links.md
-  [11]: setup/adding-a-git-repository.md
-  [12]: setup/adding-a-comment-system.md
-  <!-- [13]: setup/adding-an-announcement-bar.md -->
+  [10]: setup/setting-up-the-header.md
+  [11]: setup/adding-social-links.md
+  [12]: setup/adding-a-git-repository.md
+  [13]: setup/adding-a-comment-system.md
   <!--[14]: setup/adding-a-landing-page.md-->
 
 ## Previewing as you write
