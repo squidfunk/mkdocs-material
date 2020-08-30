@@ -94,6 +94,7 @@ New features and improvements for _content and toc_, including:
 
 - [x] Highlighting of matched search terms in content area
 - [x] Navigation can always be expanded via configuration
+- [x] Header can be automatically hidden on scrolling
 - [ ] Better support for wide screens, i.e. more horizontal space
 - [ ] Table of contents can be moved into navigation for more space
 - [ ] Table of contents shows which sections have search results
