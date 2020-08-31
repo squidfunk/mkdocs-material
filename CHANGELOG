@@ -1,3 +1,7 @@
+mkdocs-material-5.5.12 (2020-08-31)
+
+  * Fixed #1638: occasional 404 for images when using instant loading
+
 mkdocs-material-5.5.11+insiders-1.4.0 (2020-08-30)
 
   * Added support for auto-hiding header on scroll
