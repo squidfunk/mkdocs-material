@@ -32,11 +32,11 @@ template: overrides/main.html
 
 ### 5.5.12 <small>_ August 31, 2020</small>
 
-  * Fixed #1638: occasional `404` for images when using instant loading
+* Fixed #1638: occasional `404` for images when using instant loading
 
 ### 5.5.11 <small>_ August 28, 2020</small>
 
-  * Fixed Disqus integration, as the minifier killed the config
+* Fixed Disqus integration, as the minifier killed the config
 
 ### 5.5.10 <small>_ August 28, 2020</small>
 
