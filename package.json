@@ -59,7 +59,7 @@
     "@types/webpack-assets-manifest": "^3.0.1",
     "autoprefixer": "9.8.6",
     "copy-webpack-plugin": "^6.0.4",
-    "css-loader": "^4.2.1",
+    "css-loader": "^4.2.2",
     "event-hooks-webpack-plugin": "^2.1.7",
     "expose-loader": "^1.0.0",
     "github-types": "^1.0.0",
