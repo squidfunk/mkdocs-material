@@ -73,7 +73,7 @@
     "postcss-inline-svg": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-svgo": "^4.0.2",
-    "preact": "^10.4.7",
+    "preact": "^10.4.8",
     "rimraf": "^3.0.2",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
