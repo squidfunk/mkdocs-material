@@ -134,12 +134,31 @@ Alternative, completely different _vertical layout_, optimized to read
 documentation and code side-by-side, e.g. for the documentation of APIs with
 the same functionality as Material for MkDocs.
 
-## Terms
+## Frequently asked questions
 
-Whether you're an individual or a company, you may use _Material for MkDocs
-Insiders_ precisely under the same terms as _Material for MkDocs_, which are
-given by the [MIT license][12]. However, we kindly ask you to respect
-the following guidelines:
+### Compatibility
+
+_I'm running an open source project and want to make sure that users can build the documentation without having access to Insiders. Is that still possible?_
+
+Yes. Material for MkDocs Insiders strives to be compatible with Material for
+MkDocs, so all new features are implemented as feature flags and all
+improvements (e.g. search) do not require any changes to existing configuration.
+This means that your users will be able to build the docs locally with the
+regular version and when they push their changes to CI/CD, they will be built
+with Material for MkDocs Insiders. For this reason, it's recommended to
+[install Insiders][12] only in CI, as you don't want to expose your `GH_TOKEN`
+to users.
+
+### Terms
+
+_We're using Material for MkDocs to build the developer documentation of a
+commercial project. Can we use Material for MkDocs Insiders under the same
+terms?_
+
+Yes. Whether you're an individual or a company, you may use _Material for MkDocs
+Insiders_ precisely under the same terms as Material for MkDocs, which are given
+by the [MIT license][13]. However, we kindly ask you to respect the following
+guidelines:
 
 - Please __don't distribute the source code__ from Material for MkDocs Insiders.
   You may freely use it for public, private or commercial projects, fork it,
@@ -149,7 +168,8 @@ the following guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Material for MkDocs Insiders. However, you may
   __use the latest version__ that's available to you __as long as you like__.
-  Just remember that __[GitHub deletes private forks][13]__.
+  Just remember that __[GitHub deletes private forks][14]__.
 
-  [12]: license.md
-  [13]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [12]: publishing-your-site.md#github-pages
+  [13]: license.md
+  [14]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
