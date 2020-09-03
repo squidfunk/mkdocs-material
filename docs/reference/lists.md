@@ -171,7 +171,7 @@ _Result_:
     Nam vulputate tincidunt fringilla.
     Nullam dignissim ultrices urna non auctor.
 
-  [6]: #definition-lists
+  [6]: #definition-list
 
 ### Using tasklists
 

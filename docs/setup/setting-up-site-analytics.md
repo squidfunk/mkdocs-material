@@ -10,7 +10,7 @@ Material for MkDocs natively integrates with [Google Analytics][1], [other
 analytics services][2] can be used, too.
 
   [1]: https://developers.google.com/analytics
-  [2]: #using-other-analytics-services
+  [2]: #other-analytics-providers
 
 ## Configuration
 
