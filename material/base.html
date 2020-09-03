@@ -3,6 +3,9 @@
 -#}
 {% import "partials/language.html" as lang with context %}
 {% set palette = config.theme.palette %}
+{% if not palette is mapping %}
+  {% set palette = palette | first %}
+{% endif %}
 {% set font = config.theme.font %}
 <!doctype html>
 <html lang="{{ lang.t('language') }}" class="no-js">

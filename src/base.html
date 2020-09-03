@@ -24,6 +24,9 @@
 
 <!-- Theme options -->
 {% set palette = config.theme.palette %}
+{% if not palette is mapping %}
+  {% set palette = palette | first %}
+{% endif %}
 {% set font = config.theme.font %}
 
 <!doctype html>
