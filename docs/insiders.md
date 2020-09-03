@@ -138,7 +138,8 @@ the same functionality as Material for MkDocs.
 
 ### Compatibility
 
-_I'm running an open source project and want to make sure that users can build the documentation without having access to Insiders. Is that still possible?_
+_We're running an open source project and want to make sure that users can build
+the documentation without having access to Insiders. Is that still possible?_
 
 Yes. Material for MkDocs Insiders strives to be compatible with Material for
 MkDocs, so all new features are implemented as feature flags and all
