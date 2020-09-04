@@ -22,8 +22,8 @@ which are inlined when [building your site][5]:
 ``` yaml
 markdown_extensions:
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
 ```
 
 The following icon sets are bundled with Material for MkDocs:
