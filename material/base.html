@@ -44,9 +44,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.a32019b5.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.4dd2dd8d.min.css' | url }}">
       {% if palette.scheme or palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.38c36bb3.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.6a5ad368.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -210,7 +210,7 @@
           base: "{{ base_url }}",
           features: {{ config.theme.features | tojson }},
           search: Object.assign({
-            worker: "{{ 'assets/javascripts/worker/search.fae956e7.min.js' | url }}"
+            worker: "{{ 'assets/javascripts/worker/search.5eca75d3.min.js' | url }}"
           }, typeof search !== "undefined" && search)
         })
       </script>
