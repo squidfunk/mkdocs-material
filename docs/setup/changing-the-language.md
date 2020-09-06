@@ -81,7 +81,7 @@ the default slug function works. Consider using a Unicode-aware slug function,
 as [documented here][2]._
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/language/en.html
-  [2]: http://localhost:8000/setup/setting-up-navigation/#slugify
+  [2]: setting-up-navigation.md#slugify
 
 ### Site search language
 
