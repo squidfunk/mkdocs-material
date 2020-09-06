@@ -96,8 +96,8 @@ want to use the very latest version:
     git clone git@github.com:squidfunk/mkdocs-material-insiders.git mkdocs-material
     ```
 
-The theme will reside in the folder `mkdocs-material/material`. Note that when
-cloning from `git`, you must install all required dependencies yourself:
+The theme will reside in the folder `mkdocs-material/material`. When cloning
+from `git`, you must install all required dependencies yourself:
 
 ```
 pip install -r mkdocs-material/requirements.txt
@@ -110,10 +110,10 @@ need to [become a sponsor][9]._
 
   [^1]:
     In order to use `pip` to install from the private repository over HTTPS, the
-    personal access token requires the [`repo`][17] scope. Note that the usage
-    of an access token is only necessary when installing Insiders over HTTPS,
-    which is the recommended way when building from within a CI/CD workflow,
-    e.g. using [GitHub Pages][18] or [GitLab Pages][19].
+    personal access token requires the [`repo`][17] scope. The creation and
+    usage of an access token is only necessary when installing Insiders over
+    HTTPS, which is the recommended way when building from within a CI/CD
+    workflow, e.g. using [GitHub Pages][18] or [GitLab Pages][19].
 
   [17]: https://docs.github.com/en/developers/apps/scopes-for-oauth-apps#available-scopes
   [18]: publishing-your-site.md#github-pages
