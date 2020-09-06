@@ -1,3 +1,7 @@
+mkdocs-material-5.5.12+insiders-1.4.1 (2020-09-06)
+
+  * Improved typeahead and search result scoring / ordering
+
 mkdocs-material-5.5.12 (2020-08-31)
 
   * Fixed #1638: occasional 404 for images when using instant loading

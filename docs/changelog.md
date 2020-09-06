@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.4.1 <small>_ September 6, 2020</small>
+
+* Improved typeahead and search result scoring / ordering
+
 ### 1.4.0 <small>_ August 30, 2020</small>
 
 * Added support for auto-hiding header on scroll
