@@ -8,7 +8,7 @@ template: overrides/main.html
 
 ### 1.4.1 <small>_ September 6, 2020</small>
 
-* Improved typeahead and search result scoring / ordering
+* Improved typeahead and search result relevance and scoring
 
 ### 1.4.0 <small>_ August 30, 2020</small>
 
