@@ -157,7 +157,7 @@ customize its appearance:
         ``` yaml
         markdown_extensions:
           - toc:
-              slugify: pymdownx.slugs.uslugify
+              slugify: !!python/name:pymdownx.slugs.uslugify
         ```
 
     === "Unicode, case-sensitive"
@@ -165,7 +165,7 @@ customize its appearance:
         ``` yaml
         markdown_extensions:
           - toc:
-              slugify: pymdownx.slugs.uslugify_cased
+              slugify: !!python/name:pymdownx.slugs.uslugify_cased
         ```
 
 `toc_depth`{: #toc_depth }
