@@ -26,9 +26,10 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Enforce correct box model
+// Enforce correct box model and prevent adjustments of font size after orientation changes in IE and iOS
 html {
   box-sizing: border-box;
+  text-size-adjust: none;
 }
 
 // All elements shall inherit the document default
@@ -36,11 +37,6 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-// Prevent adjustments of font size after orientation changes in IE and iOS
-html {
-  text-size-adjust: none;
 }
 
 // Remove margin in all browsers
