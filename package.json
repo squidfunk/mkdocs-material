@@ -39,7 +39,7 @@
     "lunr-languages": "^1.4.0",
     "resize-observer-polyfill": "^1.5.1",
     "ramda": "^0.27.1",
-    "rxjs": "^7.0.0-beta.4"
+    "rxjs": "^7.0.0-beta.5"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
