@@ -30,12 +30,12 @@
     "function-url-quotes": "always",
     "no-descending-specificity": null,
     "no-unknown-animations": true,
-    "property-no-vendor-prefix": true,
+    "property-no-vendor-prefix": [true, {"ignoreProperties": ["line-clamp", "box-orient"]}],
     "selector-class-pattern": "^[a-z0-9]+(-[a-z0-9]+)*(__[a-z]+)?(--[a-z]+)?$",
     "selector-descendant-combinator-no-non-space": null,
     "string-quotes": "double",
-    "unit-whitelist": ["px", "em", "deg", "ms", "%", "mm", "vh", "vw", "dppx"],
+    "unit-allowed-list": ["px", "em", "deg", "ms", "%", "mm", "vh", "vw", "dppx"],
     "value-keyword-case": "lower",
-    "value-no-vendor-prefix": true
+    "value-no-vendor-prefix": [true, {"ignoreValues": ["box"]}]
   }
 }
