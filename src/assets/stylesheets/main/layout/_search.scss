@@ -629,8 +629,6 @@ $md-toggle__search--checked:
     line-height: 1.4;
   }
 
-  // stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix
-
   // Teaser
   &__teaser {
     display: -webkit-box;
@@ -656,8 +654,6 @@ $md-toggle__search--checked:
       -webkit-line-clamp: 3;
     }
   }
-
-  // stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix
 
   // Search term highlighting
   em {
