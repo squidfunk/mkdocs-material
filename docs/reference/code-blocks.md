@@ -34,8 +34,8 @@ configuring syntax highlighting of code blocks:
 
         ``` yaml
         markdown_extensions:
-          - pymdownx.highlight:
-              use_pygments: true
+          - pymdownx.highlight
+          - pymdownx.superfences
         ```
 
     === "JavaScript"
