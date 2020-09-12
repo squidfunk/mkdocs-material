@@ -69,7 +69,7 @@ body {
   min-height: 100%;
   // Hack: reset font-size to 10px, so the spacing for all inline elements is
   // correct again. Otherwise the spacing would be based on 20px.
-  font-size: 0.5rem; // stylelint-disable-line unit-whitelist
+  font-size: 0.5rem; // stylelint-disable-line unit-allowed-list
   background-color: var(--md-default-bg-color);
 
   // [tablet portrait -]: Lock body to disable scroll bubbling
