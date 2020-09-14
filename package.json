@@ -71,7 +71,7 @@
     "material-shadows": "^3.0.1",
     "mini-css-extract-plugin": "^0.11.2",
     "postcss-inline-svg": "^4.1.0",
-    "postcss-loader": "^3.0.0",
+    "postcss-loader": "^4.0.1",
     "postcss-svgo": "^4.0.2",
     "preact": "^10.4.8",
     "rimraf": "^3.0.2",
