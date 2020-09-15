@@ -71,12 +71,14 @@ The following plugins are bundled with the Docker image:
 * [mkdocs-git-revision-date-localized-plugin][13]
 * [mkdocs-minify-plugin][14]
 * [mkdocs-redirects][15]
+* [mkdocs-rss-plugin][16]
 
   [11]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [12]: https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
   [13]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
   [14]: https://github.com/byrnereese/mkdocs-minify-plugin
   [15]: https://github.com/datarobot/mkdocs-redirects
+  [16]: https://github.com/Guts/mkdocs-rss-plugin
 
 ### with git
 

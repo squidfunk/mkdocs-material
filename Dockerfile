@@ -49,6 +49,7 @@ RUN \
         'mkdocs-git-revision-date-localized-plugin>=0.4' \
         'mkdocs-minify-plugin>=0.3' \
         'mkdocs-redirects>=1.0'; \
+        'mkdocs-rss-plugin>=0.6.1'; \
     fi \
   && apk del .build gcc musl-dev \
   && rm -rf /tmp/*
