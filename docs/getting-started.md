@@ -78,6 +78,26 @@ The following plugins are bundled with the Docker image:
   [14]: https://github.com/byrnereese/mkdocs-minify-plugin
   [15]: https://github.com/datarobot/mkdocs-redirects
 
+??? question "How can I add plugins to the Docker image?"
+
+    Material for MkDocs bundles useful and common plugins while trying not to
+    blow up the size of the official image. If the plugin you want to use is
+    not included, create a new `Dockerfile` and extend the official Docker image
+    with your custom installation routine:
+
+    ``` Dockerfile
+    FROM squidfunk/mkdocs-material
+    RUN pip install ...
+    ```
+
+    Next, you can build the image with the following command:
+
+    ```
+    docker build -t squidfunk/mkdocs-material .
+    ```
+
+    The new image can be used exactly like the official image.
+
 ### with git
 
 Material for MkDocs can be directly used from [GitHub][16] by cloning the
