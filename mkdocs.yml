@@ -178,6 +178,7 @@ nav:
     - Lists: reference/lists.md
     - MathJax: reference/mathjax.md
     - Meta tags: reference/meta-tags.md
+    - Variables and macros: reference/variables-macros.md
   - Changelog:
     - Release notes: changelog.md
     - Upgrading: upgrading.md
