@@ -88,23 +88,24 @@ function config(args: Configuration): Configuration {
             {
               loader: "postcss-loader",
               options: {
-                ident: "postcss",
-                plugins: () => [
-                  require("autoprefixer")(),
-                  require("postcss-inline-svg")({
-                    paths: [
-                      path.resolve(__dirname, "node_modules")
-                    ],
-                    encode: false
-                  }),
-                  require("postcss-svgo")({
-                    plugins: [
-                      { removeDimensions: true },
-                      { removeViewBox: false }
-                    ],
-                    encode: false
-                  })
-                ],
+                postcssOptions: {
+                  plugins: [
+                    ["autoprefixer"],
+                    ["postcss-inline-svg", {
+                      paths: [
+                        path.resolve(__dirname, "node_modules")
+                      ],
+                      encode: false
+                    }],
+                    ["postcss-svgo", {
+                      plugins: [
+                        { removeDimensions: true },
+                        { removeViewBox: false }
+                      ],
+                      encode: false
+                    }]
+                  ]
+                },
                 sourceMap: true
               }
             },
