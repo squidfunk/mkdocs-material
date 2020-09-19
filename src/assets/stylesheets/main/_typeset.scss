@@ -288,6 +288,32 @@ kbd {
     text-decoration: none;
     border-bottom: px2rem(1px) dotted var(--md-default-fg-color--light);
     cursor: help;
+
+    // Render a tooltip for touch devices
+    @media (hover: none) {
+      position: relative;
+
+      // Tooltip
+      &[title]:focus::after,
+      &[title]:hover::after {
+        @include z-depth(2);
+
+        position: absolute;
+        left: 0;
+        display: inline-block;
+        width: auto;
+        min-width: max-content;
+        max-width: 80%;
+        margin-top: 2em;
+        padding: px2rem(4px) px2rem(6px);
+        color: var(--md-default-bg-color);
+        font-size: px2rem(14px);
+        background: var(--md-default-fg-color);
+        border-radius: px2rem(2px);
+        content: attr(title);
+      }
+    }
+
   }
 
   // Small text
