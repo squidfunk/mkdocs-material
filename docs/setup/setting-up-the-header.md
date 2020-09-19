@@ -28,7 +28,7 @@ be enabled via `mkdocs.yml` with:
 ``` yaml
 theme:
   features:
-    - header.hide
+    - header.autohide
 ```
 
 _Give this feature a try on [the official documentation][4] built with Material
