@@ -1,3 +1,7 @@
+mkdocs-material-5.5.13+insiders-1.5.0 (2020-09-19)
+
+  * Added support for autohiding table of contents when empty
+
 mkdocs-material-5.5.13 (2020-09-19)
 
   * Improved abbreviations on touch devices
@@ -12,7 +16,7 @@ mkdocs-material-5.5.12 (2020-08-31)
 
 mkdocs-material-5.5.11+insiders-1.4.0 (2020-08-30)
 
-  * Added support for auto-hiding header on scroll
+  * Added support for autohiding header on scroll
 
 mkdocs-material-5.5.11 (2020-08-28)
 

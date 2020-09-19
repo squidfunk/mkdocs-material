@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.5.0 <small>_ September 19, 2020</small>
+
+* Added support for autohiding table of contents when empty
+
 ### 1.4.1 <small>_ September 6, 2020</small>
 
 * Improved typeahead and search result relevance and scoring
