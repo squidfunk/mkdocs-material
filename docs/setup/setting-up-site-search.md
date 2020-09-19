@@ -156,7 +156,7 @@ Searching for `"code blocks"` yields:
 _Give this feature a try on [the official documentation][10] built with Material
 for MkDocs Insiders!_
 
-  [9]: ../assets/search-highlighting.png
+  [9]: ../assets/screenshots/search-highlighting.png
   [10]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/?h=code+blocks
 
 ### Offline search

@@ -200,6 +200,25 @@ them at your own risk._
   [9]: https://python-markdown.github.io/extensions/toc/#usage
   [10]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
+#### Automatic hiding
+
+[:octicons-file-code-24: Source][3] ·
+:octicons-unlock-24: Feature flag ·
+:octicons-beaker-24: Experimental ·
+[:octicons-heart-fill-24:{: .tx-heart } Insiders only][3]{: .tx-insiders }
+
+When _autohiding_ is activated, the table of contents is automatically hidden
+when the current page defines no headings, or only a single `h1` heading to be
+rendered, so content stretches.
+
+It can be enabled via `mkdocs.yml` with:
+
+``` yaml
+theme:
+  features:
+    - toc.autohide
+```
+
 ## Customization
 
 ### Keyboard shortcuts

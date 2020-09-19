@@ -120,7 +120,7 @@ Point your browser to [localhost:8000][15] and you should see:
 [![Creating your site][16]][15]
 
   [15]: http://localhost:8000
-  [16]: assets/creating-your-site.png
+  [16]: assets/screenshots/creating-your-site.png
 
 ## Building your site
 
