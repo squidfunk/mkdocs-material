@@ -131,7 +131,7 @@ directionality:
   })
 </script>
 
-  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L168
+  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L171
 
 ## Customization
 

@@ -52,7 +52,7 @@ _Example_:
 The HTML specification is maintained by the W3C.
 
 *[HTML]: Hyper Text Markup Language
-*[W3C]:  World Wide Web Consortium
+*[W3C]: World Wide Web Consortium
 ```
 
 _Result_:
@@ -60,7 +60,7 @@ _Result_:
 The HTML specification is maintained by the W3C.
 
 *[HTML]: Hyper Text Markup Language
-*[W3C]:  World Wide Web Consortium
+*[W3C]: World Wide Web Consortium
 
   [4]: #abbreviations_1
   [5]: footnotes.md
@@ -85,7 +85,7 @@ _Example_:
 
     ```` markdown
     *[HTML]: Hyper Text Markup Language
-    *[W3C]:  World Wide Web Consortium
+    *[W3C]: World Wide Web Consortium
     ````
 
 _Result_:

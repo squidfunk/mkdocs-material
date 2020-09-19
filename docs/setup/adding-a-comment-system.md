@@ -92,6 +92,6 @@ In order to integrate another JavaScript-based comment system provider, you can
 {% endblock %}
 ```
 
-  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L340-342
+  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L343-L345
   [9]: ../customization.md#extending-the-theme
   [10]: ../customization.md#overriding-blocks
