@@ -110,7 +110,7 @@ them at your own risk._
   [3]: https://facelessuser.github.io/pymdown-extensions/extensions/highlight/
   [4]: https://python-markdown.github.io/extensions/code_hilite/
   [5]: https://facelessuser.github.io/pymdown-extensions/
-  [6]: ../customization.md#additional-stylesheets
+  [6]: ../customization.md#additional-css
   [7]: ../customization.md#additional-javascript
   [8]: https://highlightjs.org/
   [9]: https://cdnjs.com/libraries/highlight.js/

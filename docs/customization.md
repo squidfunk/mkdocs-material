@@ -17,7 +17,7 @@ files to the `docs` directory.
 
   [1]: https://www.mkdocs.org
 
-### Additional stylesheets
+### Additional CSS
 
 If you want to tweak some colors or change the spacing of certain elements,
 you can do this in a separate stylesheet. The easiest way is by creating a

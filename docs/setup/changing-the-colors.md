@@ -272,7 +272,7 @@ variables.
 
   [12]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss
   [13]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
-  [14]: ../customization.md#additional-stylesheets
+  [14]: ../customization.md#additional-css
 
 
 ### Custom color schemes

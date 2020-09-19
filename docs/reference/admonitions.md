@@ -396,5 +396,5 @@ _Result_:
     massa, nec semper lorem quam in massa.
 
   [9]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
-  [10]: ../customization.md#additional-stylesheets
+  [10]: ../customization.md#additional-css
   [11]: https://facelessuser.github.io/pymdown-extensions/extensions/details/

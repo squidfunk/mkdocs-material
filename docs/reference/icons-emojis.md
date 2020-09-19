@@ -154,7 +154,7 @@ _Result_:
 
   [17]: #attribute-list
   [18]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
-  [19]: ../customization.md#additional-stylesheets
+  [19]: ../customization.md#additional-css
 
 #### with animations
 
