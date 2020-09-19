@@ -34,6 +34,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.13 <small>_ September 19, 2020</small>
+
+* Improved abbreviations on touch devices
+
 ### 5.5.12 <small>_ August 31, 2020</small>
 
 * Fixed #1638: occasional `404` for images when using instant loading
