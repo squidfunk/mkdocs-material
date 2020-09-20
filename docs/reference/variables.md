@@ -92,7 +92,7 @@ The unit price is 12.50.
 
 ### Custom macros
 
-The [macros][1] plugin allows to define custom macros which can then be used
+The [macros][1] plugin allows to define custom macros, which can then be used
 from Markdown files. See the [official documentation][2] for more information
 how to define custom macros.
 
