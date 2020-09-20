@@ -77,6 +77,8 @@ extra:
 
 ## Customization
 
+### Custom meta tags
+
 In order to add `meta` tags to your document, you can [extend the theme][7] and
 simply [override the `extrahead` block][8] with the respective tags, e.g. to set
 policies for search engines:

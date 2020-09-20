@@ -73,7 +73,7 @@ and embed them into any other file.
 
 _Example_:
 
-=== "docs/path/to/a/page.md"
+=== "docs/page.md"
 
     ```` markdown
     The HTML specification is maintained by the W3C.

@@ -5,9 +5,9 @@ template: overrides/main.html
 # Icons + Emojis
 
 One of the best features of Material for MkDocs is the possibility to use [more
-than _7.000 icons_][1] and _thousands of emojis_ in your project documentation
-with practically zero additional effort. Furthermore, custom icons can be used
-in `mkdocs.yml`, documents and templates.
+than 7.000 icons][1] and thousands of emojis in your project documentation
+with practically zero additional effort. Furthermore, custom icons can be added
+and used in `mkdocs.yml`, documents and templates.
 
 ## Configuration
 
