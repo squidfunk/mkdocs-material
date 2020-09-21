@@ -75,7 +75,7 @@
     "postcss-svgo": "^4.0.2",
     "preact": "^10.4.8",
     "rimraf": "^3.0.2",
-    "sass": "^1.26.10",
+    "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "stylelint": "^13.7.1",
     "stylelint-config-rational-order": "^0.1.2",
