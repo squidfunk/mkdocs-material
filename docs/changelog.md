@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.5.1 <small>_ September 21, 2020</small>
+
+* Fixed content area stretching to whole width for long code blocks
+
 ### 1.5.0 <small>_ September 19, 2020</small>
 
 * Added support for autohiding table of contents when empty

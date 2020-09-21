@@ -1,3 +1,7 @@
+mkdocs-material-5.5.13+insiders-1.5.1 (2020-09-21)
+
+  * Fixed content area stretching to whole width for long code blocks
+
 mkdocs-material-5.5.13+insiders-1.5.0 (2020-09-19)
 
   * Added support for autohiding table of contents when empty
