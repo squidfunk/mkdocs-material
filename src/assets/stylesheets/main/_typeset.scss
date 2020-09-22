@@ -479,6 +479,11 @@ kbd {
       0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
     touch-action: auto;
 
+    // Reset display mode so table header wraps correctly when printing
+    @media print {
+      display: table;
+    }
+
     // Due to margin collapse because of the necessary inline-block hack, we
     // cannot increase the bottom margin on the table, so we just increase the
     // top margin on the following element
@@ -596,8 +601,13 @@ kbd {
     margin-bottom: 0.5em;
     padding: 0 px2rem(16px);
 
+    // Reset display mode so table header wraps correctly when printing
+    @media print {
+      display: block;
+    }
+
     // Data tables
-    table {
+    html & table {
       display: table;
       width: 100%;
       margin: 0;
