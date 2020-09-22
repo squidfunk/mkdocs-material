@@ -85,6 +85,7 @@ _Example_:
 ```
 
 _Result_:
+
 <figure>
   <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
   <figcaption>Image caption</figcaption>
