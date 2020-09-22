@@ -90,7 +90,6 @@ _Result_:
   <figcaption>Image caption</figcaption>
 </figure>
 
-
 ### Image lazy-loading
 
 Modern browsers provide [native support for lazy-loading images][4] through the
