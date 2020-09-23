@@ -42,6 +42,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 5.5.14 <small>_ September 23, 2020</small>
+
+* Improved spacing around image captions
+* Fixed #1939: Long tables cause header overlap in print view
+
 ### 5.5.13 <small>_ September 19, 2020</small>
 
 * Improved abbreviations on touch devices

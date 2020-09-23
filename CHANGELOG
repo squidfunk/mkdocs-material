@@ -1,3 +1,8 @@
+mkdocs-material-5.5.14 (2020-09-23)
+
+  * Improved spacing around image captions
+  * Fixed #1939: Long tables cause header overlap in print view
+
 mkdocs-material-5.5.13+insiders-1.5.1 (2020-09-21)
 
   * Fixed content area stretching to whole width for long code blocks
