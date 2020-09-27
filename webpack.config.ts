@@ -65,7 +65,8 @@ function config(args: Configuration): Configuration {
                 transpileOnly: true,
                 compilerOptions: {
                   importHelpers: true,
-                  module: "esnext"
+                  module: "esnext",
+                  target: "es2015"
                 }
               }
             }
@@ -139,6 +140,7 @@ function config(args: Configuration): Configuration {
 
     /* Module resolver */
     resolve: {
+      mainFields: ["es2015", "module", "main"],
       modules: [
         __dirname,
         path.resolve(__dirname, "node_modules")
