@@ -75,15 +75,13 @@ in Material for MkDocs Insiders.
 ### Madame Jeanette
 
 [:octicons-flame-24: Funding goal: __$500__][6] ·
-:octicons-lock-24: Status: _exclusive_
+:octicons-unlock-24: Status: _released_
 
 New features and improvements for _search_, including:
 
 - [x] Improved search result grouping (pages + headings)
 - [x] Improved search result relevance and scoring
 - [x] Display of missing query terms in search results
-- [ ] Improved search result summaries
-- [ ] ... more to come
 
 ### Prairie Fire
 
@@ -124,6 +122,7 @@ New features and improvements for _user preferences_, including:
 - [x] Support for user-toggleable themes
 - [ ] Support for user-toggleable code-block styles (light/dark)
 - [ ] Display last searches when search is empty
+- [ ] Improved search result summaries
 - [ ] ... more to come
 
 ### Caribbean Red
