@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, fromEventPattern } from "rxjs"
+import { Observable, Subject, fromEvent } from "rxjs"
 import {
   pluck,
   share,
@@ -88,9 +88,7 @@ export function watchWorker<T extends WorkerMessage>(
 ): Observable<T> {
 
   /* Intercept messages from worker-like objects */
-  const rx$ = fromEventPattern<MessageEvent>(next =>
-    worker.addEventListener("message", next)
-  )
+  const rx$ = fromEvent<MessageEvent>(worker, "message")
     .pipe<T>(
       pluck("data")
     )
