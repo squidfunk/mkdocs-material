@@ -29,6 +29,7 @@ import {
 } from "rxjs/operators"
 
 import { WorkerHandler, watchWorker } from "browser"
+import { translate } from "utilities"
 
 import { SearchIndex, SearchIndexPipeline } from "../../_"
 import {
@@ -37,7 +38,6 @@ import {
   SearchSetupMessage,
   isSearchResultMessage
 } from "../message"
-import { translate } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Helper types

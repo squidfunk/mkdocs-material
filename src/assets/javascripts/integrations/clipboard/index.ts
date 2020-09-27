@@ -66,7 +66,10 @@ export function setupClipboard(
     blocks.forEach((block, index) => {
       const parent = block.parentElement!
       parent.id = `__code_${index}`
-      parent.insertBefore(renderClipboardButton(parent.id), block)
+      parent.insertBefore(
+        renderClipboardButton(parent.id),
+        block
+      )
     })
   })
 
