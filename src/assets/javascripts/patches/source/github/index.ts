@@ -22,7 +22,7 @@
 
 import { Repo, User } from "github-types"
 import { Observable, from } from "rxjs"
-import { filter, map } from "rxjs/operators"
+import { map } from "rxjs/operators"
 
 import { round } from "utilities"
 
@@ -48,12 +48,11 @@ export function fetchSourceFactsFromGitHub(
     : `https://api.github.com/users/${user}`
   return from(fetch(url).then(res => res.json()))
     .pipe(
-      filter(({ status }) => status === 200),
-      map(({ response }) => {
+      map(data => {
 
         /* GitHub repository */
         if (typeof repo !== "undefined") {
-          const { stargazers_count, forks_count }: Repo = response
+          const { stargazers_count, forks_count }: Repo = data
           return [
             `${round(stargazers_count || 0)} Stars`,
             `${round(forks_count || 0)} Forks`
@@ -61,7 +60,7 @@ export function fetchSourceFactsFromGitHub(
 
         /* GitHub user/organization */
         } else {
-          const { public_repos }: User = response
+          const { public_repos }: User = data
           return [
             `${round(public_repos || 0)} Repositories`
           ]

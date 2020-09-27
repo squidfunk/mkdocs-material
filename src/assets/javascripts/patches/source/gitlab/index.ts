@@ -22,7 +22,7 @@
 
 import { ProjectSchema } from "gitlab"
 import { Observable, from } from "rxjs"
-import { filter, map } from "rxjs/operators"
+import { map } from "rxjs/operators"
 
 import { round } from "utilities"
 
@@ -46,8 +46,6 @@ export function fetchSourceFactsFromGitLab(
   const url = `https://${base}/api/v4/projects/${encodeURIComponent(project)}`
   return from(fetch(url).then(res => res.json()))
     .pipe(
-      filter(({ status }) => status === 200),
-      map(({ response }) => response),
       map(({ star_count, forks_count }: ProjectSchema) => ([
         `${round(star_count)} Stars`,
         `${round(forks_count)} Forks`
