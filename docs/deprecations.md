@@ -118,7 +118,7 @@ templates can be shared among multiple pages:
 ### Bundled plugins
 
 :octicons-archive-24: Deprecated: 5.5 ·
-:octicons-trash-24: Removal: 6.x
+:octicons-trash-24: Removed: 6.0
 
 Over the last years, the Docker image has continually increased in size. For CI
 it's important that download times are as short as possible, which is why the
