@@ -100,6 +100,7 @@ function renderSearchDocument(
  * Render a search result
  *
  * @param result - Search result
+ * @param threshold - Score threshold
  *
  * @return Element
  */
