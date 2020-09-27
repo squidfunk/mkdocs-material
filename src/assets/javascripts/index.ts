@@ -400,7 +400,10 @@ export function initialize(config: unknown) {
       })
 
   /* Enable instant loading, if not on file:// protocol */
-  if (config.features.includes("instant") && location.protocol !== "file:") {
+  if (
+    config.features.includes("navigation.instant") &&
+    location.protocol !== "file:"
+  ) {
 
     /* Fetch sitemap and extract URL whitelist */
     base$

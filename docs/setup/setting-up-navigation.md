@@ -23,7 +23,7 @@ can be enabled via `mkdocs.yml` with:
 ``` yaml
 theme:
   features:
-    - instant
+    - navigation.instant
 ```
 
 The resulting page is parsed and injected and all event handlers and components
@@ -65,7 +65,7 @@ enabled via `mkdocs.yml` with:
 ``` yaml
 theme:
   features:
-    - tabs
+    - navigation.tabs
 ```
 
 Note that all __top-level pages__ (i.e. all top-level entries that directly

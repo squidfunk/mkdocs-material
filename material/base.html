@@ -114,7 +114,7 @@
     <div class="md-container" data-md-component="container">
       {% block hero %}{% endblock %}
       {% block tabs %}
-        {% if "tabs" in config.theme.features %}
+        {% if "navigation.tabs" in config.theme.features %}
           {% include "partials/tabs.html" %}
         {% endif %}
       {% endblock %}
@@ -173,7 +173,7 @@
     </div>
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.141042ad.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.97a86bda.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.75f65488.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",

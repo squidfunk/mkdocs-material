@@ -51,8 +51,8 @@ theme:
   # Default values, taken from mkdocs_theme.yml
   language: en
   features:
-    - tabs
-    #- instant
+    - navigation.tabs
+    #- navigation.instant
   palette:
     scheme: default
     primary: indigo
