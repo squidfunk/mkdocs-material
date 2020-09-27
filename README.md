@@ -126,15 +126,15 @@ For other installation methods, configuration options, and a demo, visit
 
   [1]: https://squidfunk.github.io/mkdocs-material/
 
-## Sponsors
+## Premium Sponsors
 
 <p>
-  <a href="https://docs.baslerweb.com/" target=_blank>
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/basler.png" width="155" />
-  </a>
-  <a href="https://cirrus-ci.org/" target=_blank>
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg" width="155" />
-  </a>
+  <a href="https://docs.baslerweb.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/basler.png" width="155"
+  /></a>
+  <a href="https://cirrus-ci.org/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg" width="155"
+  /></a>
 </p>
 
 ## Users
