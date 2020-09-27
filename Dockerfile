@@ -48,6 +48,7 @@ RUN \
         'mkdocs-minify-plugin>=0.3' \
         'mkdocs-redirects>=1.0'; \
     fi \
+  && rm -rf /usr/local/lib/python3.8/site-packages/mkdocs/themes/*/* \
   && apk del .build gcc musl-dev \
   && rm -rf /tmp/*
 
