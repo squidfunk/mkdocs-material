@@ -31,7 +31,7 @@ import { SearchIndex, SearchTransformFn } from "integrations"
  */
 export type Feature =
   | "navigation.tabs"                  /* Tabs navigation */
-  | "navigation.instant"               /* Instant loading
+  | "navigation.instant"               /* Instant loading */
 
 /* ------------------------------------------------------------------------- */
 
