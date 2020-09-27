@@ -341,16 +341,12 @@
         }
       }
 
-      // Navigation icon
-      .md-nav__icon {
+      // Flip icon vertically
+      .md-nav__icon::after {
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
-
-          // Flip icon vertically
-          &::after {
-            transform: scale(-1);
-          }
+          transform: scale(-1);
         }
       }
 

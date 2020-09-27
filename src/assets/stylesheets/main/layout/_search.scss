@@ -32,6 +32,13 @@ $md-toggle__search--checked:
 // Rules
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-search-result-icon: svg-load("@mdi/svg/svg/file-search-outline.svg");
+}
+
+// ----------------------------------------------------------------------------
+
 // Search container
 .md-search {
   position: relative;
@@ -646,9 +653,21 @@ $md-toggle__search--checked:
   &__icon {
     position: absolute;
     left: 0;
-    margin: px2rem(2px);
-    padding: px2rem(8px);
+    width: px2rem(24px);
+    height: px2rem(24px);
+    margin: px2rem(10px);
     color: var(--md-default-fg-color--light);
+
+    // Inline icon and adjust icon to match font size
+    &::after {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      background-color: currentColor;
+      mask-image: var(--md-search-result-icon);
+      mask-repeat: no-repeat;
+      content: "";
+    }
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -656,7 +675,7 @@ $md-toggle__search--checked:
       left: initial;
 
       // Flip icon vertically
-      svg {
+      &::after {
         transform: scaleX(-1);
       }
     }
