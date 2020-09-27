@@ -115,7 +115,6 @@ The directory layout of the theme is as follows:
 │  ├─ language/                        # Localized languages
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
-│  ├─ hero.html                        # Hero teaser
 │  ├─ language.html                    # Localized labels
 │  ├─ logo.html                        # Logo in header and sidebar
 │  ├─ nav.html                         # Main navigation

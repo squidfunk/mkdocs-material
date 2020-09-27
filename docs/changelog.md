@@ -42,6 +42,17 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.0.0 <small>_ September 25, 2020</small>
+
+* Improved search result look and feel
+* Improved search result stability while typing
+* Improved search result grouping (pages + headings)
+* Improved search result relevance and scoring
+* Added display of missing query terms to search results
+* Reduced size of the Docker image to improve CI build performance
+* Removed hero partial in favor of custom implementation
+* Removed deprecated front matter features
+
 ### 5.5.14 <small>_ September 23, 2020</small>
 
 * Improved spacing around image captions
