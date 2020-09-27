@@ -30,8 +30,8 @@ pip show mkdocs-material
 * Removed hero partial in favor of [custom implementation][1]
 * Removed [deprecated front matter features][2]
 
-  [1]: http://localhost:8000/deprecations/#hero
-  [2]: http://localhost:8000/deprecations/#front-matter
+  [1]: deprecations/#hero
+  [2]: deprecations/#front-matter
 
 ### Changes to `mkdocs.yml`
 
