@@ -1,5 +1,6 @@
 mkdocs-material-6.x.x (2020-09-xx)
 
+  * Fixed details marker showing for search result in Firefox
   * Removed mkdocs and readthedocs themes from Docker image
 
 mkdocs-material-6.0.0 (2020-09-25)
