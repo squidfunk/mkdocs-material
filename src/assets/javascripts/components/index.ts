@@ -22,7 +22,6 @@
 
 export * from "./_"
 export * from "./header"
-export * from "./hero"
 export * from "./main"
 export * from "./navigation"
 export * from "./search"

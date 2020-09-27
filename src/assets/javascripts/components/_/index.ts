@@ -43,7 +43,6 @@ export type Component =
   | "container"                        /* Container */
   | "header"                           /* Header */
   | "header-title"                     /* Header title */
-  | "hero"                             /* Hero */
   | "main"                             /* Main area */
   | "navigation"                       /* Navigation */
   | "search"                           /* Search */
