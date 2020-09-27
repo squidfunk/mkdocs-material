@@ -13,8 +13,7 @@ behavior of navigational elements, some of those through _feature flags_.
 ### Instant loading
 
 [:octicons-file-code-24: Source][1] · 
-:octicons-unlock-24: Feature flag · 
-:octicons-beaker-24: Experimental
+:octicons-unlock-24: Feature flag
 
 When _instant loading_ is activated, clicks on all internal links will be
 intercepted and dispatched via [XHR][2] without fully reloading the page. It
