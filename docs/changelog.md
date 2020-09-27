@@ -42,6 +42,15 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.0.1 <small>_ September 26, 2020</small>
+
+* Fixed stemmer support for `file://` protocol through `iframe-worker`
+* Fixed details marker showing for search result in Firefox
+* Fixed tabbing behavior when search query is not empty
+* Switched TypeScript compilation target to ES2015
+* Reduced size of JavaScript by 36% (`176kb` -> `113kb`)
+* Removed `mkdocs` and `readthedocs` themes from Docker image
+
 ### 6.0.0 <small>_ September 25, 2020</small>
 
 * Improved search result look and feel
