@@ -39,7 +39,7 @@ Following is a list of changes that need to be made to `mkdocs.yml`. Note that
 you only have to adjust the value if you defined it, so if your configuration
 does not contain the key, you can skip it.
 
-#### `theme.feature`
+#### `theme.features`
 
 All feature flags that can be set from `mkdocs.yml`, like [tabs][3] and
 [instant loading][4], are now prefixed with the name of the component or
