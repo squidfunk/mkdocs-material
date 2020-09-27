@@ -568,6 +568,7 @@ $md-toggle__search--checked:
 
   // Search result container
   &__more summary {
+    display: block;
     padding: px2em(12px) px2rem(16px);
     color: var(--md-typeset-a-color);
     font-size: px2rem(12.8px);
