@@ -169,7 +169,7 @@ export function renderSearchResult(
     ...best.map(renderSection),
     ...more.length ? [
       <details class={css.more}>
-        <summary>
+        <summary tabIndex={-1}>
           {more.length > 0 && more.length === 1
             ? translate("search.result.more.one")
             : translate("search.result.more.other", more.length)

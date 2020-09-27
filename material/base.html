@@ -173,7 +173,7 @@
     </div>
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.186f2b9b.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.d5b17bb4.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.5795c3cd.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -200,7 +200,7 @@
           base: "{{ base_url }}",
           features: {{ config.theme.features or [] | tojson }},
           search: Object.assign({
-            worker: "{{ 'assets/javascripts/worker/search.c9a3f22b.min.js' | url }}"
+            worker: "{{ 'assets/javascripts/worker/search.e0a2b82c.min.js' | url }}"
           }, typeof search !== "undefined" && search)
         })
       </script>

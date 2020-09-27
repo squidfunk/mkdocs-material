@@ -83,10 +83,10 @@ async function fetchSearchIndex(url: string): Promise<SearchIndex> {
  * This function will automatically import the stemmers necessary to process
  * the languages which were given through the search index configuration.
  *
- * If the worker runs inside of an `iframe` (when using `iframe-worker` as a
- * shim), the base URL must be determined by searching for the first `script`
- * element with a `src` attribute, which will equal the worker script, and
- * determine the base URL by examining the worker URL.
+ * If the worker runs inside of an `iframe` (when using `iframe-worker` as
+ * a shim), the base URL for the stemmers to be loaded must be determined by
+ * searching for the first `script` element with a `src` attribute, which will
+ * contain the contents of this script.
  *
  * @param config - Search index configuration
  *

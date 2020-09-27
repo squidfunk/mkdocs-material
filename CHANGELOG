@@ -1,6 +1,8 @@
 mkdocs-material-6.x.x (2020-09-xx)
 
+  * Fixed stemmer support for file:// protocol through `iframe-worker`
   * Fixed details marker showing for search result in Firefox
+  * Fixed tabbing behavior when search query is not empty
   * Removed mkdocs and readthedocs themes from Docker image
 
 mkdocs-material-6.0.0 (2020-09-25)
