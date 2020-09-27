@@ -21,9 +21,8 @@
  */
 
 import { Repo, User } from "github-types"
-import { Observable } from "rxjs"
-import { ajax } from "rxjs/ajax"
-import { filter, map, pluck } from "rxjs/operators"
+import { Observable, from } from "rxjs"
+import { filter, map } from "rxjs/operators"
 
 import { round } from "utilities"
 
@@ -44,20 +43,17 @@ import { SourceFacts } from ".."
 export function fetchSourceFactsFromGitHub(
   user: string, repo?: string
 ): Observable<SourceFacts> {
-  return ajax({
-    url: typeof repo !== "undefined"
-      ? `https://api.github.com/repos/${user}/${repo}`
-      : `https://api.github.com/users/${user}`,
-    responseType: "json"
-  })
+  const url = typeof repo !== "undefined"
+    ? `https://api.github.com/repos/${user}/${repo}`
+    : `https://api.github.com/users/${user}`
+  return from(fetch(url).then(res => res.json()))
     .pipe(
       filter(({ status }) => status === 200),
-      pluck("response"),
-      map(data => {
+      map(({ response }) => {
 
         /* GitHub repository */
         if (typeof repo !== "undefined") {
-          const { stargazers_count, forks_count }: Repo = data
+          const { stargazers_count, forks_count }: Repo = response
           return [
             `${round(stargazers_count || 0)} Stars`,
             `${round(forks_count || 0)} Forks`
@@ -65,7 +61,7 @@ export function fetchSourceFactsFromGitHub(
 
         /* GitHub user/organization */
         } else {
-          const { public_repos }: User = data
+          const { public_repos }: User = response
           return [
             `${round(public_repos || 0)} Repositories`
           ]

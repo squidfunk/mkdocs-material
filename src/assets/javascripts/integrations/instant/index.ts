@@ -20,8 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, Subject, fromEvent, merge, of } from "rxjs"
-import { ajax } from "rxjs//ajax"
+import { NEVER, Observable, Subject, from, fromEvent, merge, of } from "rxjs"
 import {
   bufferCount,
   catchError,
@@ -30,7 +29,6 @@ import {
   distinctUntilKeyChanged,
   filter,
   map,
-  pluck,
   sample,
   share,
   skip,
@@ -168,7 +166,7 @@ export function setupInstantLoading(
   merge(push$, pop$)
     .pipe(
       distinctUntilChanged((prev, next) => prev.url.href === next.url.href),
-      pluck("url")
+      map(({ url }) => url)
     )
       .subscribe(location$)
 
@@ -177,11 +175,9 @@ export function setupInstantLoading(
     .pipe(
       distinctUntilKeyChanged("pathname"),
       skip(1),
-      switchMap(url => ajax({
-        url: url.href,
-        responseType: "text",
-        withCredentials: true
-      })
+      switchMap(url => from(fetch(url.href, {
+        credentials: "same-origin"
+      }).then(res => res.text()))
         .pipe(
           catchError(() => {
             setLocation(url)
@@ -205,7 +201,7 @@ export function setupInstantLoading(
   const dom = new DOMParser()
   ajax$
     .pipe(
-      map(({ response }) => dom.parseFromString(response, "text/html"))
+      map(response => dom.parseFromString(response, "text/html"))
     )
       .subscribe(document$)
 

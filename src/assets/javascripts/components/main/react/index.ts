@@ -33,7 +33,6 @@ import {
   finalize,
   map,
   observeOn,
-  pluck,
   switchMap,
   tap
 } from "rxjs/operators"
@@ -82,7 +81,7 @@ export function watchMain(
   /* Compute necessary adjustment for header */
   const adjust$ = header$
     .pipe(
-      pluck("height"),
+      map(({ height }) => height),
       distinctUntilChanged()
     )
 

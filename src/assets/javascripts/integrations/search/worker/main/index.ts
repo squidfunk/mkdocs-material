@@ -22,11 +22,7 @@
 
 import "lunr"
 
-import {
-  Search,
-  SearchIndex,
-  SearchIndexConfig
-} from "../../_"
+import { Search, SearchIndexConfig } from "../../_"
 import {
   SearchMessage,
   SearchMessageType
@@ -62,20 +58,6 @@ let index: Search
 /* ----------------------------------------------------------------------------
  * Helper functions
  * ------------------------------------------------------------------------- */
-
-/**
- * Fetch search index from given URL
- *
- * @param url - Search index URL
- *
- * @return Promise resolving with search index
- */
-async function fetchSearchIndex(url: string): Promise<SearchIndex> {
-  return fetch(url, {
-    credentials: "same-origin"
-  })
-    .then(res => res.json())
-}
 
 /**
  * Fetch (= import) multi-language support through `lunr-languages`
@@ -143,13 +125,8 @@ export async function handler(
 
     /* Search setup message */
     case SearchMessageType.SETUP:
-      const data = typeof message.data === "string"
-        ? await fetchSearchIndex(message.data)
-        : message.data
-
-      /* Set up search index with multi-language support */
-      await setupSearchLanguages(data.config)
-      index = new Search(data)
+      await setupSearchLanguages(message.data.config)
+      index = new Search(message.data)
       return {
         type: SearchMessageType.READY
       }

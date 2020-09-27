@@ -36,7 +36,6 @@ import {
   of,
   NEVER
 } from "rxjs"
-import { ajax } from "rxjs/ajax"
 import {
   delay,
   switchMap,
@@ -46,7 +45,6 @@ import {
   observeOn,
   take,
   shareReplay,
-  pluck,
   catchError,
   map
 } from "rxjs/operators"
@@ -94,7 +92,7 @@ import {
   patchSource,
   patchScripts
 } from "patches"
-import { isConfig, translate } from "utilities"
+import { isConfig } from "utilities"
 
 /* ------------------------------------------------------------------------- */
 
@@ -132,38 +130,6 @@ export function resetScrollLock(
   el.style.top = ""
   if (value)
     window.scrollTo(0, value)
-}
-
-/* ----------------------------------------------------------------------------
- * Helper functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Set up search index
- *
- * @param data - Search index
- *
- * @return Search index
- */
-function setupSearchIndex(                                                      // Hack: move this outside here, temporarily...
-  { config, docs, index }: SearchIndex
-): SearchIndex {
-
-  /* Override default language with value from translation */
-  if (config.lang.length === 1 && config.lang[0] === "en")
-    config.lang = [translate("search.config.lang")]
-
-  /* Override default separator with value from translation */
-  if (config.separator === "[\\s\\-]+")
-    config.separator = translate("search.config.separator")
-
-  /* Set pipeline from translation */
-  const pipeline = translate("search.config.pipeline")
-    .split(/\s*,\s*/)
-    .filter(Boolean) as SearchIndexPipeline
-
-  /* Return search index after defaulting */
-  return { config, docs, index, pipeline }
 }
 
 /* ----------------------------------------------------------------------------
@@ -277,21 +243,11 @@ export function initialize(config: unknown) {
             ? from(index)
             : base$
                 .pipe(
-                  switchMap(base => ajax({
-                    url: `${base}/search/search_index.json`,
-                    responseType: "json",
-                    withCredentials: true
-                  })
-                    .pipe<SearchIndex>(
-                      pluck("response")
-                    )
-                  )
+                  switchMap(base => fetch(`${base}/search/search_index.json`, {
+                    credentials: "same-origin"
+                  }).then(res => res.json())) // SearchIndex
                 )
         )
-          .pipe(
-            map(setupSearchIndex),
-            shareReplay(1)
-          )
 
         return of(setupSearchWorker(config.search.worker, {
           base$, index$
@@ -396,19 +352,15 @@ export function initialize(config: unknown) {
     config.features.includes("navigation.instant") &&
     location.protocol !== "file:"
   ) {
+    const dom = new DOMParser()
 
     /* Fetch sitemap and extract URL whitelist */
     base$
       .pipe(
-        switchMap(base => ajax({
-          url: `${base}/sitemap.xml`,
-          responseType: "document",
-          withCredentials: true
-        })
-          .pipe<Document>(
-            pluck("response")
-          )
-        ),
+        switchMap(base => from(fetch(`${base}/sitemap.xml`)
+          .then(res => res.text())
+          .then(text => dom.parseFromString(text, "text/xml"))
+        )),
         withLatestFrom(base$),
         map(([document, base]) => {
           const urls = getElements("loc", document)

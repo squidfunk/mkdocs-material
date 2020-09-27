@@ -43,7 +43,7 @@ export const enum SearchMessageType {
  */
 export interface SearchSetupMessage {
   type: SearchMessageType.SETUP        /* Message type */
-  data: SearchIndex | string           /* Message data */
+  data: SearchIndex                    /* Message data */
 }
 
 /**

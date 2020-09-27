@@ -82,7 +82,7 @@ export type SearchIndexPipeline = SearchIndexPipelineFn[]
 export interface SearchIndex {
   config: SearchIndexConfig            /* Search index configuration */
   docs: SearchIndexDocument[]          /* Search index documents */
-  index?: object | string              /* Prebuilt or serialized index */
+  index?: object                       /* Prebuilt index */
   pipeline?: SearchIndexPipeline       /* Search index pipeline */
 }
 
@@ -204,13 +204,9 @@ export class Search {
           this.add(doc)
       })
 
-    /* Handle prebuilt or serialized index */
+    /* Handle prebuilt index */
     } else {
-      this.index = lunr.Index.load(
-        typeof index === "string"
-          ? JSON.parse(index)
-          : index
-      )
+      this.index = lunr.Index.load(index)
     }
   }
 

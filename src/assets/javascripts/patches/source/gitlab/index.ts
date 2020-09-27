@@ -21,9 +21,8 @@
  */
 
 import { ProjectSchema } from "gitlab"
-import { Observable } from "rxjs"
-import { ajax } from "rxjs/ajax"
-import { filter, map, pluck } from "rxjs/operators"
+import { Observable, from } from "rxjs"
+import { filter, map } from "rxjs/operators"
 
 import { round } from "utilities"
 
@@ -44,13 +43,11 @@ import { SourceFacts } from ".."
 export function fetchSourceFactsFromGitLab(
   base: string, project: string
 ): Observable<SourceFacts> {
-  return ajax({
-    url: `https://${base}/api/v4/projects/${encodeURIComponent(project)}`,
-    responseType: "json"
-  })
+  const url = `https://${base}/api/v4/projects/${encodeURIComponent(project)}`
+  return from(fetch(url).then(res => res.json()))
     .pipe(
       filter(({ status }) => status === 200),
-      pluck("response"),
+      map(({ response }) => response),
       map(({ star_count, forks_count }: ProjectSchema) => ([
         `${round(star_count)} Stars`,
         `${round(forks_count)} Forks`

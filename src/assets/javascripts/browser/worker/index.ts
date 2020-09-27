@@ -22,7 +22,7 @@
 
 import { Observable, Subject, fromEvent } from "rxjs"
 import {
-  pluck,
+  map,
   share,
   switchMapTo,
   tap,
@@ -90,7 +90,7 @@ export function watchWorker<T extends WorkerMessage>(
   /* Intercept messages from worker-like objects */
   const rx$ = fromEvent<MessageEvent>(worker, "message")
     .pipe<T>(
-      pluck("data")
+      map(({ data }) => data)
     )
 
   /* Send and receive messages, return hot observable */

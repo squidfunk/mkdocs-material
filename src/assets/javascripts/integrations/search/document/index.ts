@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+// @ts-ignore
 import * as escapeHTML from "escape-html"
 
 import { SearchIndexDocument } from "../_"
