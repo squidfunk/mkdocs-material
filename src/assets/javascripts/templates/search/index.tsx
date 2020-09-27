@@ -28,72 +28,63 @@ import {
 import { h, translate, truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------
- * Helper function
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Render an article document
- *
- * @param document - Article document
- * @param teaser - Whether to render the teaser
- *
- * @return Element
+ * Render flag
  */
-function renderArticleDocument(
-  { location, title, text, terms, score }: SearchDocument & SearchMetadata,
-  teaser: boolean
-) {
-  const miss = Object.keys(terms)
-    // tslint:disable-next-line: array-type
-    .reduce<Array<Element | string>>((list, key) => [
-      ...list, ...!terms[key] ? [<del>{key}</del>, " "] : []
-    ], [])
-  return (
-    <a href={location.toString().replace(/%20/g, "+")} class="md-search-result__link" tabIndex={-1}>
-      <article
-        class="md-search-result__article md-search-result__article--document"
-        data-md-score={score.toFixed(2)}
-      >
-        <div class="md-search-result__icon md-icon"></div>
-        <h1 class="md-search-result__title">{title}</h1>
-        {teaser && text.length > 0 &&
-          <p class="md-search-result__teaser">{truncate(text, 320)}</p>
-        }
-        {teaser && miss.length > 0 &&
-          <p class="md-search-result__terms">
-            {translate("search.result.term.missing")}: {...miss.slice(0, -1)}
-          </p>
-        }
-      </article>
-    </a>
-  )
+const enum Flag {
+  TEASER = 1,                          /* Render teaser */
+  PARENT = 2                           /* Render as parent */
 }
+
+/* ----------------------------------------------------------------------------
+ * Helper function
+ * ------------------------------------------------------------------------- */
 
 /**
  * Render a search document
  *
  * @param section - Search document
+ * @param flag - Render flags
  *
  * @return Element
  */
-function renderSection(
-  { location, title, text, terms, score }: SearchDocument & SearchMetadata
+function renderSearchDocument(
+  document: SearchDocument & SearchMetadata, flag: Flag
 ) {
-  const miss = Object.keys(terms)
-    // tslint:disable-next-line: array-type
-    .reduce<Array<Element | string>>((list, key) => [
-      ...list, ...!terms[key] ? [<del>{key}</del>, " "] : []
-    ], [])
+  const parent = flag & Flag.PARENT
+  const teaser = flag & Flag.TEASER
+
+  /* Render missing query terms */
+  const missing = Object.keys(document.terms)
+    .filter(key => !document.terms[key])
+    .map(key => [<del>{key}</del>, " "])
+    .flat()
+    .slice(0, -1)
+
+  /* Render article or section, depending on flags */
+  const url = document.location.replace(/%20/g, "+")
   return (
-    <a href={location.toString().replace(/%20/g, "+")} class="md-search-result__link" tabIndex={-1}>
-      <article class="md-search-result__article" data-md-score={score.toFixed(2)}>
-        <h1 class="md-search-result__title">{title}</h1>
-        {text.length > 0 &&
-          <p class="md-search-result__teaser">{truncate(text, 320)}</p>
+    <a href={url} class="md-search-result__link" tabIndex={-1}>
+      <article
+        class={["md-search-result__article", ...parent
+          ? ["md-search-result__article--document"]
+          : []
+        ].join(" ")}
+        data-md-score={document.score.toFixed(2)}
+      >
+        {parent > 0 && <div class="md-search-result__icon md-icon"></div>}
+        <h1 class="md-search-result__title">{document.title}</h1>
+        {teaser > 0 && document.text.length > 0 &&
+          <p class="md-search-result__teaser">
+            {truncate(document.text, 320)}
+          </p>
         }
-        {miss.length > 0 &&
+        {teaser > 0 && missing.length > 0 &&
           <p class="md-search-result__terms">
-            {translate("search.result.term.missing")}: {...miss.slice(0, -1)}
+            {translate("search.result.term.missing")}: {...missing}
           </p>
         }
       </article>
@@ -132,8 +123,8 @@ export function renderSearchResult(
 
   /* Render children */
   const children = [
-    renderArticleDocument(article, !parent && index === 0),
-    ...best.map(renderSection),
+    renderSearchDocument(article, Flag.PARENT | +(!parent && index === 0)),
+    ...best.map(section => renderSearchDocument(section, Flag.TEASER)),
     ...more.length ? [
       <details class="md-search-result__more">
         <summary tabIndex={-1}>
@@ -142,7 +133,7 @@ export function renderSearchResult(
             : translate("search.result.more.other", more.length)
           }
         </summary>
-        {...more.map(renderSection)}
+        {...more.map(section => renderSearchDocument(section, Flag.TEASER))}
       </details>
     ] : []
   ]
