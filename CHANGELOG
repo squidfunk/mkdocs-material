@@ -1,3 +1,14 @@
+mkdocs-material-6.0.0 (2020-09-25)
+
+  * Improved search result look and feel
+  * Improved search result stability while typing
+  * Improved search result grouping (pages + headings)
+  * Improved search result relevance and scoring
+  * Added display of missing query terms to search results
+  * Reduced size of the Docker image to improve CI build performance
+  * Removed hero partial in favor of custom implementation
+  * Removed deprecated front matter features
+
 mkdocs-material-5.5.14 (2020-09-23)
 
   * Improved spacing around image captions
