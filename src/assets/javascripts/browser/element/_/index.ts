@@ -99,9 +99,9 @@ export function getElements<T extends HTMLElement>(
  *
  * @return Element
  */
-export function createElement<
-  T extends keyof HTMLElementTagNameMap
->(tagName: T): HTMLElementTagNameMap[T] {
+export function createElement<T extends keyof HTMLElementTagNameMap>(
+  tagName: T
+): HTMLElementTagNameMap[T] {
   return document.createElement(tagName)
 }
 

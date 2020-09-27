@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEventPattern } from "rxjs"
-import { shareReplay, startWith } from "rxjs/operators"
+import { Observable, fromEvent } from "rxjs"
+import { map, shareReplay, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -36,10 +36,9 @@ import { shareReplay, startWith } from "rxjs/operators"
  */
 export function watchMedia(query: string): Observable<boolean> {
   const media = matchMedia(query)
-  return fromEventPattern<boolean>(next =>
-    media.addListener(() => next(media.matches))
-  )
+  return fromEvent<MediaQueryListEvent>(media, "change")
     .pipe(
+      map(ev => ev.matches),
       startWith(media.matches),
       shareReplay({ bufferSize: 1, refCount: true })
     )
