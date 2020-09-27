@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import { identity } from "ramda"
 import { Observable, OperatorFunction, pipe } from "rxjs"
 import {
   distinctUntilChanged,
@@ -87,7 +86,7 @@ export function mountSearchResult(
             return y >= container.scrollHeight - container.offsetHeight - 16
           }),
           distinctUntilChanged(),
-          filter(identity)
+          filter(Boolean)
         )
 
       /* Apply search results */

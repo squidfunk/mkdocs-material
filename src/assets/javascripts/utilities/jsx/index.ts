@@ -23,7 +23,6 @@
 // tslint:disable no-null-keyword
 
 import { JSX as JSXInternal } from "preact"
-import { keys } from "ramda"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -150,7 +149,7 @@ export function h(
 
   /* Set attributes, if any */
   if (attributes)
-    for (const attr of keys(attributes))
+    for (const attr of Object.keys(attributes))
       setAttribute(el, attr, attributes[attr])
 
   /* Append child nodes */

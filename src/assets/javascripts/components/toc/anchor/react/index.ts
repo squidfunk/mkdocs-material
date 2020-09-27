@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import { reverse } from "ramda"
 import {
   MonoTypeOperatorFunction,
   Observable,
@@ -132,7 +131,7 @@ export function watchAnchorList(
 
           /* Map reversed anchor path to vertical offset */
           return index.set(
-            reverse(path = [...path, anchor]),
+            [...path = [...path, anchor]].reverse(),
             offset
           )
         }, new Map<HTMLAnchorElement[], number>())

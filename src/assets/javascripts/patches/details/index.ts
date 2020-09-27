@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import { identity } from "ramda"
 import { Observable, fromEvent, merge } from "rxjs"
 import {
   filter,
@@ -69,7 +68,7 @@ export function patchDetails(
 
   /* Open all details before printing */
   merge(
-    watchMedia("print").pipe(filter(identity)), /* Webkit */
+    watchMedia("print").pipe(filter(Boolean)),  /* Webkit */
     fromEvent(window, "beforeprint")            /* IE, FF */
   )
     .pipe(

@@ -26,7 +26,6 @@
 
 import "focus-visible"
 
-import { sortBy, prop, values, identity } from "ramda"
 import {
   merge,
   combineLatest,
@@ -84,7 +83,8 @@ import {
   setupKeyboard,
   setupInstantLoading,
   setupSearchWorker,
-  SearchIndex, SearchIndexPipeline
+  SearchIndex,
+  SearchIndexPipeline
 } from "integrations"
 import {
   patchCodeBlocks,
@@ -160,7 +160,7 @@ function setupSearchIndex(                                                      
   /* Set pipeline from translation */
   const pipeline = translate("search.config.pipeline")
     .split(/\s*,\s*/)
-    .filter(identity) as SearchIndexPipeline
+    .filter(Boolean) as SearchIndexPipeline
 
   /* Return search index after defaulting */
   return { config, docs, index, pipeline }
@@ -421,7 +421,7 @@ export function initialize(config: unknown) {
           // domain. If there're no two domains, we just leave it as-is, as
           // there isn't anything to be loaded anway.
           if (urls.length > 1) {
-            const [a, b] = sortBy(prop("length"), urls)
+            const [a, b] = urls.sort((a, b) => a.length - b.length)
 
             /* Determine common prefix */
             let index = 0
@@ -480,7 +480,7 @@ export function initialize(config: unknown) {
   }
 
   /* Subscribe to all observables */
-  merge(...values(state))
+  merge(...Object.values(state))
     .subscribe()
   return state
 }
