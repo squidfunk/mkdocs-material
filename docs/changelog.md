@@ -49,6 +49,7 @@ template: overrides/main.html
 * Improved search result grouping (pages + headings)
 * Improved search result relevance and scoring
 * Added display of missing query terms to search results
+* Reduced size of vendor bundle by 25% (84kb → 67kb)
 * Reduced size of the Docker image to improve CI build performance
 * Removed hero partial in favor of custom implementation
 * Removed deprecated front matter features
