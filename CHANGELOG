@@ -1,3 +1,7 @@
+mkdocs-material-6.x.x (2020-09-xx)
+
+  * Removed mkdocs and readthedocs themes from Docker image
+
 mkdocs-material-6.0.0 (2020-09-25)
 
   * Improved search result look and feel
