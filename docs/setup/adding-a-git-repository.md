@@ -93,7 +93,7 @@ behavior can be changed by setting [`edit_uri`][9] in `mkdocs.yml`:
     edit_uri: ""
     ```
 
-  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L302-L311
+  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L285-L294
   [6]: https://github.com/
   [7]: https://about.gitlab.com/
   [8]: https://bitbucket.org/
