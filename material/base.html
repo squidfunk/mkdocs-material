@@ -2,11 +2,6 @@
   This file was automatically generated - do not edit
 -#}
 {% import "partials/language.html" as lang with context %}
-{% set palette = config.theme.palette %}
-{% if not palette is mapping %}
-  {% set palette = palette | first %}
-{% endif %}
-{% set font = config.theme.font %}
 <!doctype html>
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
@@ -39,21 +34,23 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.45ead06e.min.css' | url }}">
-      {% if palette.scheme or palette.primary or palette.accent %}
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.b6d72156.min.css' | url }}">
+      {% if config.theme.palette %}
+        {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.6b892c47.min.css' | url }}">
-      {% endif %}
-      {% if palette.primary %}
-        {% import "partials/palette.html" as map %}
-        {% set primary = map.primary(
-          palette.primary | replace(" ", "-") | lower
-        ) %}
-        <meta name="theme-color" content="{{ primary }}">
+        {% if palette.primary %}
+          {% import "partials/palette.html" as map %}
+          {% set primary = map.primary(
+            palette.primary | replace(" ", "-") | lower
+          ) %}
+          <meta name="theme-color" content="{{ primary }}">
+        {% endif %}
       {% endif %}
     {% endblock %}
     {% block libs %}{% endblock %}
     {% block fonts %}
-      {% if font != false %}
+      {% if config.theme.font != false %}
+        {% set font = config.theme.font %}
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
             font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
@@ -76,17 +73,21 @@
     {% block extrahead %}{% endblock %}
   </head>
   {% set direction = config.theme.direction or lang.t('direction') %}
-  {% if palette.scheme or palette.primary or palette.accent %}
-    {% set scheme  = palette.scheme | lower %}
+  {% if config.theme.palette %}
+    {% set palette = config.theme.palette %}
+    {% if not palette is mapping %}
+      {% set palette = palette | first %}
+    {% endif %}
+    {% set scheme  = palette.scheme  | replace(" ", "-") | lower %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
     {% set accent  = palette.accent  | replace(" ", "-") | lower %}
     <body dir="{{ direction }}" data-md-color-scheme="{{ scheme }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
+      {% if "preference" == scheme %}
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      {% endif %}
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
-    {% if "preference" == palette.scheme %}
-      <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
-    {% endif %}
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -171,8 +172,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.581c8fc6.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.66a8d459.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.141042ad.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.10eaee41.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -183,7 +184,10 @@
         "search.result.placeholder",
         "search.result.none",
         "search.result.one",
-        "search.result.other"
+        "search.result.other",
+        "search.result.more.one",
+        "search.result.more.other",
+        "search.result.term.missing"
       ] -%}
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
@@ -196,7 +200,7 @@
           base: "{{ base_url }}",
           features: {{ config.theme.features or [] | tojson }},
           search: Object.assign({
-            worker: "{{ 'assets/javascripts/worker/search.5eca75d3.min.js' | url }}"
+            worker: "{{ 'assets/javascripts/worker/search.cbc634e2.min.js' | url }}"
           }, typeof search !== "undefined" && search)
         })
       </script>

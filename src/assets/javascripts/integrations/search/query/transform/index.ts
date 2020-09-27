@@ -54,24 +54,18 @@ export type SearchTransformFn = (value: string) => string
  *
  * 3. Trim excess whitespace from left and right.
  *
- * 4. Append a wildcard to the end of every word to make every word a prefix
- *    query in order to provide a good typeahead experience, by adding an
- *    asterisk (wildcard) in between terms, which can be denoted by whitespace,
- *    any non-control character, or a word boundary.
- *
- * @param value - Query value
+ * @param query - Query value
  *
  * @return Transformed query value
  */
-export function defaultTransform(value: string): string {
-  return value
+export function defaultTransform(query: string): string {
+  return query
     .split(/"([^"]+)"/g)                            /* => 1 */
-      .map((terms, i) => i & 1
+      .map((terms, index) => index & 1
         ? terms.replace(/^\b|^(?![^\x00-\x7F]|$)|\s+/g, " +")
         : terms
       )
       .join("")
     .replace(/"|(?:^|\s+)[*+\-:^~]+(?=\s+|$)/g, "") /* => 2 */
     .trim()                                         /* => 3 */
-    .replace(/\s+|(?![^\x00-\x7F]|^)$|\b$/g, "* ")  /* => 4 */
 }

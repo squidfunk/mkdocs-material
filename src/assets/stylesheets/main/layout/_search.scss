@@ -560,9 +560,54 @@ $md-toggle__search--checked:
       }
     }
 
-    // Add a little spacing on the teaser of the last link
-    &:last-child .md-search-result__teaser {
+    // Add a little spacing on the last element of the last link
+    &:last-child p:last-child {
       margin-bottom: px2rem(12px);
+    }
+  }
+
+  // Search result container
+  &__more summary {
+    padding: px2em(12px) px2rem(16px);
+    color: var(--md-typeset-a-color);
+    font-size: px2rem(12.8px);
+    outline: 0;
+    cursor: pointer;
+    transition:
+      color            250ms,
+      background-color 250ms;
+    scroll-snap-align: start;
+
+    // Focused or hovered button
+    &:focus,
+    &:hover {
+      color: var(--md-accent-fg-color);
+      background-color: var(--md-accent-fg-color--transparent);
+    }
+
+    // [tablet landscape +]: Increase left indent
+    @include break-from-device(tablet landscape) {
+      padding-left: px2rem(44px);
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        padding-right: px2rem(44px);
+        padding-left: px2rem(16px);
+      }
+    }
+
+    // Remove default details marker
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    // All following elements
+    & ~ * {
+
+      // Make less relevant terms more transparent
+      > * {
+        opacity: 0.65;
+      }
     }
   }
 
@@ -626,39 +671,50 @@ $md-toggle__search--checked:
     margin: 0.5em 0;
     font-weight: 700;
     font-size: px2rem(12.8px);
-    line-height: 1.4;
+    line-height: 1.6;
   }
 
   // Teaser
   &__teaser {
     display: -webkit-box;
-    max-height: px2rem(33px);
+    max-height: px2rem(40px);
     margin: 0.5em 0;
     overflow: hidden;
     color: var(--md-default-fg-color--light);
     font-size: px2rem(12.8px);
-    line-height: 1.4;
+    line-height: 1.6;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 
     // [mobile -]: Increase number of lines
     @include break-to-device(mobile) {
-      max-height: px2rem(50px);
+      max-height: px2rem(60px);
       -webkit-line-clamp: 3;
     }
 
     // [tablet landscape]: Increase number of lines
     @include break-at-device(tablet landscape) {
-      max-height: px2rem(50px);
+      max-height: px2rem(60px);
       -webkit-line-clamp: 3;
+    }
+
+    // Search term highlighting
+    mark {
+      background-color: transparent;
+      border-bottom: px2rem(1px) solid var(--md-accent-fg-color);
     }
   }
 
+  // Terms
+  &__terms {
+    margin: 0.5em 0;
+    font-size: px2rem(12.8px);
+    font-style: italic;
+  }
+
   // Search term highlighting
-  em {
-    font-weight: 700;
-    font-style: normal;
-    text-decoration: underline;
+  mark {
+    color: var(--md-accent-fg-color);
   }
 }

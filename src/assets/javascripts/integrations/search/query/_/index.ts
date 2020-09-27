@@ -20,86 +20,73 @@
  * IN THE SOFTWARE.
  */
 
-import * as escapeHTML from "escape-html"
-
-import { SearchIndexDocument } from "../_"
-
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Search document
+ * Search query clause
  */
-export interface SearchDocument extends SearchIndexDocument {
-  parent?: SearchIndexDocument         /* Parent article */
+export interface SearchQueryClause {
+  presence: lunr.Query.presence        /* Clause presence */
+  term: string                         /* Clause term */
 }
 
 /* ------------------------------------------------------------------------- */
 
 /**
- * Search document mapping
+ * Search query terms
  */
-export type SearchDocumentMap = Map<string, SearchDocument>
+export type SearchQueryTerms = Record<string, boolean>
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Create a search document mapping
+ * Parse a search query for analysis
  *
- * @param docs - Search index documents
+ * @param value - Query value
  *
- * @return Search document map
+ * @return Search query clauses
  */
-export function setupSearchDocumentMap(
-  docs: SearchIndexDocument[]
-): SearchDocumentMap {
-  const documents = new Map<string, SearchDocument>()
-  const parents   = new Set<SearchDocument>()
-  for (const doc of docs) {
-    const [path, hash] = doc.location.split("#")
+export function parseSearchQuery(
+  value: string
+): SearchQueryClause[] {
+  const query  = new (lunr as any).Query(["title", "text"])
+  const parser = new (lunr as any).QueryParser(value, query)
 
-    /* Extract location and title */
-    const location = doc.location
-    const title    = doc.title
+  /* Parse and return query clauses */
+  parser.parse()
+  return query.clauses
+}
 
-    /* Escape and cleanup text */
-    const text = escapeHTML(doc.text)
-      .replace(/\s+(?=[,.:;!?])/g, "")
-      .replace(/\s+/g, " ")
+/**
+ * Analyze the search query clauses in regard to the search terms found
+ *
+ * @param query - Search query clauses
+ * @param terms - Search terms
+ *
+ * @return Search query terms
+ */
+export function getSearchQueryTerms(
+  query: SearchQueryClause[], terms: string[]
+): SearchQueryTerms {
+  const clauses = new Set<SearchQueryClause>(query)
 
-    /* Handle section */
-    if (hash) {
-      const parent = documents.get(path)!
-
-      /* Ignore first section, override article */
-      if (!parents.has(parent)) {
-        parent.title = doc.title
-        parent.text  = text
-
-        /* Remember that we processed the article */
-        parents.add(parent)
-
-      /* Add subsequent section */
-      } else {
-        documents.set(location, {
-          location,
-          title,
-          text,
-          parent
-        })
+  /* Match query clauses against terms */
+  const result: SearchQueryTerms = {}
+  for (let t = 0; t < terms.length; t++)
+    for (const clause of clauses)
+      if (terms[t].startsWith(clause.term)) {
+        result[clause.term] = true
+        clauses.delete(clause)
       }
 
-    /* Add article */
-    } else {
-      documents.set(location, {
-        location,
-        title,
-        text
-      })
-    }
-  }
-  return documents
+  /* Annotate unmatched query clauses */
+  for (const clause of clauses)
+    result[clause.term] = false
+
+  /* Return query terms */
+  return result
 }

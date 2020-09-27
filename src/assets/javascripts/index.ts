@@ -26,7 +26,7 @@
 
 import "focus-visible"
 
-import { sortBy, prop, values } from "ramda"
+import { sortBy, prop, values, identity } from "ramda"
 import {
   merge,
   combineLatest,
@@ -85,7 +85,7 @@ import {
   setupKeyboard,
   setupInstantLoading,
   setupSearchWorker,
-  SearchIndex
+  SearchIndex, SearchIndexPipeline
 } from "integrations"
 import {
   patchCodeBlocks,
@@ -95,7 +95,7 @@ import {
   patchSource,
   patchScripts
 } from "patches"
-import { isConfig } from "utilities"
+import { isConfig, translate } from "utilities"
 
 /* ------------------------------------------------------------------------- */
 
@@ -133,6 +133,38 @@ export function resetScrollLock(
   el.style.top = ""
   if (value)
     window.scrollTo(0, value)
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Set up search index
+ *
+ * @param data - Search index
+ *
+ * @return Search index
+ */
+function setupSearchIndex(                                                      // Hack: move this outside here, temporarily...
+  { config, docs, index }: SearchIndex
+): SearchIndex {
+
+  /* Override default language with value from translation */
+  if (config.lang.length === 1 && config.lang[0] === "en")
+    config.lang = [translate("search.config.lang")]
+
+  /* Override default separator with value from translation */
+  if (config.separator === "[\\s\\-]+")
+    config.separator = translate("search.config.separator")
+
+  /* Set pipeline from translation */
+  const pipeline = translate("search.config.pipeline")
+    .split(/\s*,\s*/)
+    .filter(identity) as SearchIndexPipeline
+
+  /* Return search index after defaulting */
+  return { config, docs, index, pipeline }
 }
 
 /* ----------------------------------------------------------------------------
@@ -248,20 +280,26 @@ export function initialize(config: unknown) {
           : undefined
 
         /* Fetch index if it wasn't passed explicitly */
-        const index$ = typeof index !== "undefined"
-          ? from(index)
-          : base$
-              .pipe(
-                switchMap(base => ajax({
-                  url: `${base}/search/search_index.json`,
-                  responseType: "json",
-                  withCredentials: true
-                })
-                  .pipe<SearchIndex>(
-                    pluck("response")
+        const index$ = (
+          typeof index !== "undefined"
+            ? from(index)
+            : base$
+                .pipe(
+                  switchMap(base => ajax({
+                    url: `${base}/search/search_index.json`,
+                    responseType: "json",
+                    withCredentials: true
+                  })
+                    .pipe<SearchIndex>(
+                      pluck("response")
+                    )
                   )
                 )
-              )
+        )
+          .pipe(
+            map(setupSearchIndex),
+            shareReplay(1)
+          )
 
         return of(setupSearchWorker(config.search.worker, {
           base$, index$

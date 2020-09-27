@@ -22,31 +22,74 @@
 
 import "lunr"
 
-import { Search, SearchIndexConfig } from "../../_"
-import { SearchMessage, SearchMessageType } from "../message"
+import {
+  Search,
+  SearchIndex,
+  SearchIndexConfig
+} from "../../_"
+import {
+  SearchMessage,
+  SearchMessageType
+} from "../message"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Add support for usage with `iframe-worker` polyfill
+ *
+ * While `importScripts` is synchronous when executed inside of a webworker,
+ * it's not possible to provide a synchronous polyfilled implementation. The
+ * cool thing is that awaiting a non-Promise is a noop, so extending the type
+ * definition to return a `Promise` shouldn't break anything.
+ *
+ * @see https://bit.ly/2PjDnXi - GitHub comment
+ */
+declare global {
+  function importScripts(...urls: string[]): Promise<void> | void
+}
 
 /* ----------------------------------------------------------------------------
  * Data
  * ------------------------------------------------------------------------- */
 
 /**
- * Search
+ * Search index
  */
-let search: Search
+let index: Search
 
 /* ----------------------------------------------------------------------------
  * Helper functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Set up multi-language support through `lunr-languages`
+ * Fetch search index from given URL
+ *
+ * @param url - Search index URL
+ *
+ * @return Promise resolving with search index
+ */
+async function fetchSearchIndex(url: string): Promise<SearchIndex> {
+  return fetch(url, {
+    credentials: "same-origin"
+  })
+    .then(res => res.json())
+}
+
+/**
+ * Fetch (= import) multi-language support through `lunr-languages`
  *
  * This function will automatically import the stemmers necessary to process
  * the languages which were given through the search index configuration.
  *
  * @param config - Search index configuration
+ *
+ * @return Promise resolving with no result
  */
-function setupLunrLanguages(config: SearchIndexConfig): void {
+async function setupSearchLanguages(
+  config: SearchIndexConfig
+): Promise<void> {
   const base = "../lunr"
 
   /* Add scripts for languages */
@@ -62,7 +105,7 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
 
   /* Load scripts synchronously */
   if (scripts.length)
-    importScripts(
+    await importScripts(
       `${base}/min/lunr.stemmer.support.min.js`,
       ...scripts
     )
@@ -79,13 +122,20 @@ function setupLunrLanguages(config: SearchIndexConfig): void {
  *
  * @return Target message
  */
-export function handler(message: SearchMessage): SearchMessage {
+export async function handler(
+  message: SearchMessage
+): Promise<SearchMessage> {
   switch (message.type) {
 
     /* Search setup message */
     case SearchMessageType.SETUP:
-      setupLunrLanguages(message.data.config)
-      search = new Search(message.data)
+      const data = typeof message.data === "string"
+        ? await fetchSearchIndex(message.data)
+        : message.data
+
+      /* Set up search index with multi-language support */
+      await setupSearchLanguages(data.config)
+      index = new Search(data)
       return {
         type: SearchMessageType.READY
       }
@@ -94,7 +144,7 @@ export function handler(message: SearchMessage): SearchMessage {
     case SearchMessageType.QUERY:
       return {
         type: SearchMessageType.RESULT,
-        data: search ? search.query(message.data) : []
+        data: index ? index.search(message.data) : []
       }
 
     /* All other messages */
@@ -107,6 +157,6 @@ export function handler(message: SearchMessage): SearchMessage {
  * Worker
  * ------------------------------------------------------------------------- */
 
-addEventListener("message", ev => {
-  postMessage(handler(ev.data))
+addEventListener("message", async ev => {
+  postMessage(await handler(ev.data))
 })

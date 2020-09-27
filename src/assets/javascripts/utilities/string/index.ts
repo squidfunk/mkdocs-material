@@ -39,6 +39,9 @@ type TranslateKey =
   | "search.result.none"               /* No matching documents */
   | "search.result.one"                /* 1 matching document */
   | "search.result.other"              /* # matching documents */
+  | "search.result.more.one"           /* 1 more on this page */
+  | "search.result.more.other"         /* # more on this page */
+  | "search.result.term.missing"       /* Missing */
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -61,7 +64,9 @@ let lang: Record<string, string>
  *
  * @return Translation
  */
-export function translate(key: TranslateKey, value?: string): string {
+export function translate(
+  key: TranslateKey, value?: string | number
+): string {
   if (typeof lang === "undefined") {
     const el = getElementOrThrow("#__lang")
     lang = JSON.parse(el.textContent!)
@@ -70,7 +75,7 @@ export function translate(key: TranslateKey, value?: string): string {
     throw new ReferenceError(`Invalid translation: ${key}`)
   }
   return typeof value !== "undefined"
-    ? lang[key].replace("#", value)
+    ? lang[key].replace("#", value.toString())
     : lang[key]
 }
 
@@ -131,10 +136,10 @@ export function round(value: number): string {
  * @return Hash as 32bit integer
  */
 export function hash(value: string): number {
-    let h = 0
-    for (let i = 0, len = value.length; i < len; i++) {
-      h  = ((h << 5) - h) + value.charCodeAt(i)
-      h |= 0 // Convert to 32bit integer
-    }
-    return h
+  let h = 0
+  for (let i = 0, len = value.length; i < len; i++) {
+    h  = ((h << 5) - h) + value.charCodeAt(i)
+    h |= 0 // Convert to 32bit integer
   }
+  return h
+}

@@ -49,7 +49,7 @@ export function setSearchResultMeta(
 
     /* Multiple result */
     default:
-      el.textContent = translate("search.result.other", value.toString())
+      el.textContent = translate("search.result.other", value)
   }
 }
 

@@ -21,7 +21,6 @@
  */
 
 import { SearchIndexConfig } from "../_"
-import { SearchDocument } from "../document"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -30,24 +29,20 @@ import { SearchDocument } from "../document"
 /**
  * Search highlight function
  *
- * @template T - Search document type
+ * @param value - Value
  *
- * @param document - Search document
- *
- * @return Highlighted document
+ * @return Highlighted value
  */
-export type SearchHighlightFn = <
-  T extends SearchDocument
->(document: Readonly<T>) => T
+export type SearchHighlightFn = (value: string) => string
 
 /**
  * Search highlight factory function
  *
- * @param value - Query value
+ * @param query - Query value
  *
  * @return Search highlight function
  */
-export type SearchHighlightFactoryFn = (value: string) => SearchHighlightFn
+export type SearchHighlightFactoryFn = (query: string) => SearchHighlightFn
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -65,27 +60,25 @@ export function setupSearchHighlighter(
 ): SearchHighlightFactoryFn {
   const separator = new RegExp(config.separator, "img")
   const highlight = (_: unknown, data: string, term: string) => {
-    return `${data}<em>${term}</em>`
+    return `${data}<mark data-md-highlight>${term}</mark>`
   }
 
   /* Return factory function */
-  return (value: string) => {
-    value = value
+  return (query: string) => {
+    query = query
       .replace(/[\s*+\-:~^]+/g, " ")
       .trim()
 
     /* Create search term match expression */
     const match = new RegExp(`(^|${config.separator})(${
-      value
+      query
         .replace(/[|\\{}()[\]^$+*?.-]/g, "\\$&")
         .replace(separator, "|")
     })`, "img")
 
-    /* Highlight document */
-    return document => ({
-      ...document,
-      title: document.title.replace(match, highlight),
-      text:  document.text.replace(match, highlight)
-    })
+    /* Highlight string value */
+    return value => value
+      .replace(match, highlight)
+      .replace(/<\/mark>(\s+)<mark[^>]*>/img, "\$1")
   }
 }

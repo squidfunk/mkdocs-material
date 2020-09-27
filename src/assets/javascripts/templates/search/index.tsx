@@ -20,8 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchResult } from "integrations/search"
-import { h, truncate } from "utilities"
+import {
+  SearchDocument,
+  SearchMetadata,
+  SearchResult
+} from "integrations/search"
+import { h, translate, truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------
  * Data
@@ -33,10 +37,12 @@ import { h, truncate } from "utilities"
 const css = {
   item:    "md-search-result__item",
   link:    "md-search-result__link",
+  more:    "md-search-result__more",
   article: "md-search-result__article md-search-result__article--document",
   section: "md-search-result__article",
   title:   "md-search-result__title",
-  teaser:  "md-search-result__teaser"
+  teaser:  "md-search-result__teaser",
+  terms:   "md-search-result__terms"
 }
 
 /* ------------------------------------------------------------------------- */
@@ -54,6 +60,99 @@ const path =
   "14,16.5A2.5,2.5 0 0,1 16.5,14A2.5,2.5 0 0,1 19,16.5A2.5,2.5 0 0,1 16.5,19Z"
 
 /* ----------------------------------------------------------------------------
+ * Helper function
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Render an article document
+ *
+ * @param document - Article document
+ * @param teaser - Whether to render the teaser
+ *
+ * @return Element
+ */
+function renderArticleDocument(
+  { location, title, text, terms, score }: SearchDocument & SearchMetadata,
+  teaser: boolean
+) {
+
+  const highlight: string[] = []
+  for (const [value, found] of Object.entries(terms))
+    if (found)
+      highlight.push(value)
+
+  const url = new URL(location)
+  url.searchParams.append("h", highlight.join(" "))
+
+  const miss = Object.keys(terms)
+    // tslint:disable-next-line: array-type
+    .reduce<Array<Element | string>>((list, key) => [
+      ...list, ...!terms[key] ? [<del>{key}</del>, " "] : []
+    ], [])
+  return (
+    <a href={url.toString().replace(/%20/g, "+")} class={css.link} tabIndex={-1}>
+      <article class={css.article} data-md-score={score.toFixed(2)}>
+        <div class="md-search-result__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d={path}></path>
+          </svg>
+        </div>
+        <h1 class={css.title}>{title}</h1>
+        {teaser && text.length > 0 &&
+          <p class={css.teaser}>{truncate(text, 320)}</p>
+        }
+        {teaser && miss.length > 0 &&
+          <p class={css.terms}>
+            {translate("search.result.term.missing")}: {...miss.slice(0, -1)}
+          </p>
+        }
+      </article>
+    </a>
+  )
+}
+
+/**
+ * Render a search document
+ *
+ * @param section - Search document
+ *
+ * @return Element
+ */
+function renderSection(
+  { location, title, text, terms, score }: SearchDocument & SearchMetadata
+) {
+
+  const highlight: string[] = []
+  for (const [value, found] of Object.entries(terms))
+    if (found)
+      highlight.push(value)
+
+  const url = new URL(location)
+  url.searchParams.append("h", highlight.join(" "))
+
+  const miss = Object.keys(terms)
+    // tslint:disable-next-line: array-type
+    .reduce<Array<Element | string>>((list, key) => [
+      ...list, ...!terms[key] ? [<del>{key}</del>, " "] : []
+    ], [])
+  return (
+    <a href={url.toString().replace(/%20/g, "+")} class={css.link} tabIndex={-1}>
+      <article class={css.section} data-md-score={score.toFixed(2)}>
+        <h1 class={css.title}>{title}</h1>
+        {text.length > 0 &&
+          <p class={css.teaser}>{truncate(text, 320)}</p>
+        }
+        {miss.length > 0 &&
+          <p class={css.terms}>
+            {translate("search.result.term.missing")}: {...miss.slice(0, -1)}
+          </p>
+        }
+      </article>
+    </a>
+  )
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -65,31 +164,39 @@ const path =
  * @return Element
  */
 export function renderSearchResult(
-  { article, sections }: SearchResult
+  result: SearchResult, threshold: number = Infinity
 ) {
+  const docs = [...result]
 
-  /* Render icon */
-  const icon = (
-    <div class="md-search-result__icon md-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d={path}></path>
-      </svg>
-    </div>
-  )
+  /* Find and extract parent article */
+  const parent = docs.findIndex(doc => !doc.location.includes("#"))
+  const [article] = docs.splice(parent, 1)
 
-  /* Render article and sections */
-  const children = [article, ...sections].map(document => {
-    const { location, title, text } = document
-    return (
-      <a href={location} class={css.link} tabIndex={-1}>
-        <article class={"parent" in document ? css.section : css.article}>
-          {!("parent" in document) && icon}
-          <h1 class={css.title}>{title}</h1>
-          {text.length > 0 && <p class={css.teaser}>{truncate(text, 320)}</p>}
-        </article>
-      </a>
-    )
-  })
+  /* Determine last index above threshold */
+  let index = docs.findIndex(doc => doc.score < threshold)
+  if (index === -1)
+    index = docs.length
+
+  /* Partition sections */
+  const best = docs.slice(0, index)
+  const more = docs.slice(index)
+
+  /* Render children */
+  const children = [
+    renderArticleDocument(article, !parent && index === 0),
+    ...best.map(renderSection),
+    ...more.length ? [
+      <details class={css.more}>
+        <summary>
+          {more.length > 0 && more.length === 1
+            ? translate("search.result.more.one")
+            : translate("search.result.more.other", more.length)
+          }
+        </summary>
+        {...more.map(renderSection)}
+      </details>
+    ] : []
+  ]
 
   /* Render search result */
   return (

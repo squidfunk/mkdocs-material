@@ -34,6 +34,8 @@ assignees: ''
   "search.result.none": "No matching documents",
   "search.result.one": "1 matching document",
   "search.result.other": "# matching documents",
+  "search.result.more.one": "1 more on this page",
+  "search.result.more.other": "# more on this page",
   "skip.link.title": "Skip to content",
   "source.link.title": "Go to repository",
   "source.revision.date": "Last update",

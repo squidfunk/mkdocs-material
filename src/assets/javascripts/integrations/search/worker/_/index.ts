@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import { identity } from "ramda"
 import { Observable, Subject, asyncScheduler } from "rxjs"
 import {
   map,
@@ -30,9 +29,8 @@ import {
 } from "rxjs/operators"
 
 import { WorkerHandler, watchWorker } from "browser"
-import { translate } from "utilities"
 
-import { SearchIndex, SearchIndexPipeline } from "../../_"
+import { SearchIndex } from "../../_"
 import {
   SearchMessage,
   SearchMessageType,
@@ -50,38 +48,6 @@ import {
 interface SetupOptions {
   index$: Observable<SearchIndex>      /* Search index observable */
   base$: Observable<string>            /* Location base observable */
-}
-
-/* ----------------------------------------------------------------------------
- * Helper functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Set up search index
- *
- * @param data - Search index
- *
- * @return Search index
- */
-function setupSearchIndex(
-  { config, docs, index }: SearchIndex
-): SearchIndex {
-
-  /* Override default language with value from translation */
-  if (config.lang.length === 1 && config.lang[0] === "en")
-    config.lang = [translate("search.config.lang")]
-
-  /* Override default separator with value from translation */
-  if (config.separator === "[\\s\\-]+")
-    config.separator = translate("search.config.separator")
-
-  /* Set pipeline from translation */
-  const pipeline = translate("search.config.pipeline")
-    .split(/\s*,\s*/)
-    .filter(identity) as SearchIndexPipeline
-
-  /* Return search index after defaulting */
-  return { config, docs, index, pipeline }
 }
 
 /* ----------------------------------------------------------------------------
@@ -112,11 +78,9 @@ export function setupSearchWorker(
       withLatestFrom(base$),
       map(([message, base]) => {
         if (isSearchResultMessage(message)) {
-          for (const { article, sections } of message.data) {
-            article.location = `${base}/${article.location}`
-            for (const section of sections)
-              section.location = `${base}/${section.location}`
-          }
+          for (const result of message.data)
+            for (const document of result)
+              document.location = `${base}/${document.location}`
         }
         return message
       }),
@@ -126,9 +90,9 @@ export function setupSearchWorker(
   /* Set up search index */
   index$
     .pipe(
-      map<SearchIndex, SearchSetupMessage>(index => ({
+      map<SearchIndex, SearchSetupMessage>(data => ({
         type: SearchMessageType.SETUP,
-        data: setupSearchIndex(index)
+        data
       })),
       observeOn(asyncScheduler)
     )

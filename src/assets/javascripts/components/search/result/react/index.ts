@@ -96,29 +96,34 @@ export function applySearchResult(
     }),
 
     /* Apply search result list */
-    switchMap(result => fetch$
-      .pipe(
+    switchMap(result => {
+      const thresholds = [...result.map(([best]) => best.score), 0]
+      return fetch$
+        .pipe(
 
-        /* Defer repaint to next animation frame */
-        observeOn(animationFrameScheduler),
-        scan(index => {
-          const container = el.parentElement!
-          while (index < result.length) {
-            addToSearchResultList(list, renderSearchResult(result[index++]))
-            if (container.scrollHeight - container.offsetHeight > 16)
-              break
-          }
-          return index
-        }, 0),
+          /* Defer repaint to next animation frame */
+          observeOn(animationFrameScheduler),
+          scan(index => {
+            const container = el.parentElement!
+            while (index < result.length) {
+              addToSearchResultList(list, renderSearchResult(
+                result[index++], thresholds[index]
+              ))
+              if (container.scrollHeight - container.offsetHeight > 16)
+                break
+            }
+            return index
+          }, 0),
 
-        /* Re-map to search result */
-        mapTo(result),
+          /* Re-map to search result */
+          mapTo(result),
 
-        /* Reset on complete or error */
-        finalize(() => {
-          resetSearchResultList(list)
-        })
-      )
+          /* Reset on complete or error */
+          finalize(() => {
+            resetSearchResultList(list)
+          })
+        )
+      }
     )
   )
 }
