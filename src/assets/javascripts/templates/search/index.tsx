@@ -28,24 +28,6 @@ import {
 import { h, translate, truncate } from "utilities"
 
 /* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * CSS classes
- */
-const css = {
-  item:    "md-search-result__item",
-  link:    "md-search-result__link",
-  more:    "md-search-result__more",
-  article: "md-search-result__article md-search-result__article--document",
-  section: "md-search-result__article",
-  title:   "md-search-result__title",
-  teaser:  "md-search-result__teaser",
-  terms:   "md-search-result__terms"
-}
-
-/* ----------------------------------------------------------------------------
  * Helper function
  * ------------------------------------------------------------------------- */
 
@@ -67,15 +49,18 @@ function renderArticleDocument(
       ...list, ...!terms[key] ? [<del>{key}</del>, " "] : []
     ], [])
   return (
-    <a href={location.toString().replace(/%20/g, "+")} class={css.link} tabIndex={-1}>
-      <article class={css.article} data-md-score={score.toFixed(2)}>
+    <a href={location.toString().replace(/%20/g, "+")} class="md-search-result__link" tabIndex={-1}>
+      <article
+        class="md-search-result__article md-search-result__article--document"
+        data-md-score={score.toFixed(2)}
+      >
         <div class="md-search-result__icon md-icon"></div>
-        <h1 class={css.title}>{title}</h1>
+        <h1 class="md-search-result__title">{title}</h1>
         {teaser && text.length > 0 &&
-          <p class={css.teaser}>{truncate(text, 320)}</p>
+          <p class="md-search-result__teaser">{truncate(text, 320)}</p>
         }
         {teaser && miss.length > 0 &&
-          <p class={css.terms}>
+          <p class="md-search-result__terms">
             {translate("search.result.term.missing")}: {...miss.slice(0, -1)}
           </p>
         }
@@ -100,14 +85,14 @@ function renderSection(
       ...list, ...!terms[key] ? [<del>{key}</del>, " "] : []
     ], [])
   return (
-    <a href={location.toString().replace(/%20/g, "+")} class={css.link} tabIndex={-1}>
-      <article class={css.section} data-md-score={score.toFixed(2)}>
-        <h1 class={css.title}>{title}</h1>
+    <a href={location.toString().replace(/%20/g, "+")} class="md-search-result__link" tabIndex={-1}>
+      <article class="md-search-result__article" data-md-score={score.toFixed(2)}>
+        <h1 class="md-search-result__title">{title}</h1>
         {text.length > 0 &&
-          <p class={css.teaser}>{truncate(text, 320)}</p>
+          <p class="md-search-result__teaser">{truncate(text, 320)}</p>
         }
         {miss.length > 0 &&
-          <p class={css.terms}>
+          <p class="md-search-result__terms">
             {translate("search.result.term.missing")}: {...miss.slice(0, -1)}
           </p>
         }
@@ -150,7 +135,7 @@ export function renderSearchResult(
     renderArticleDocument(article, !parent && index === 0),
     ...best.map(renderSection),
     ...more.length ? [
-      <details class={css.more}>
+      <details class="md-search-result__more">
         <summary tabIndex={-1}>
           {more.length > 0 && more.length === 1
             ? translate("search.result.more.one")
@@ -164,7 +149,7 @@ export function renderSearchResult(
 
   /* Render search result */
   return (
-    <li class={css.item}>
+    <li class="md-search-result__item">
       {children}
     </li>
   )

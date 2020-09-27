@@ -23,17 +23,6 @@
 import { h, translate } from "utilities"
 
 /* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * CSS classes
- */
-const css = {
-  container: "md-clipboard md-icon"
-}
-
-/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -44,12 +33,10 @@ const css = {
  *
  * @return Element
  */
-export function renderClipboardButton(
-  id: string
-) {
+export function renderClipboardButton(id: string) {
   return (
     <button
-      class={css.container}
+      class="md-clipboard md-icon"
       title={translate("clipboard.copy")}
       data-clipboard-target={`#${id} > code`}
     ></button>

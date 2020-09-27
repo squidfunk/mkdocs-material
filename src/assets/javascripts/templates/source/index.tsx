@@ -24,18 +24,6 @@ import { SourceFacts } from "patches/source"
 import { h } from "utilities"
 
 /* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * CSS classes
- */
-const css = {
-  facts: "md-source__facts",
-  fact:  "md-source__fact"
-}
-
-/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -49,12 +37,11 @@ const css = {
 export function renderSource(
   facts: SourceFacts
 ) {
-  const children = facts.map(fact => (
-    <li class={css.fact}>{fact}</li>
-  ))
   return (
-    <ul class={css.facts}>
-      {children}
+    <ul class="md-source__facts">
+      {facts.map(fact => (
+        <li class="md-source__fact">{fact}</li>
+      ))}
     </ul>
   )
 }
