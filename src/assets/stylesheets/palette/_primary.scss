@@ -78,20 +78,6 @@
   // Typeset color shades
   --md-typeset-a-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
 
-  // Add a border if there are no tabs
-  .md-hero--expand {
-    border-bottom: px2rem(1px) solid hsla(0, 0%, 0%, 0.07);
-  }
-
-  // [tablet -]: Set bottom border for hero
-  @include break-to-device(tablet) {
-
-    // Hero teaser
-    .md-hero {
-      border-bottom: px2rem(1px) solid hsla(0, 0%, 0%, 0.07);
-    }
-  }
-
   // [tablet portrait +]: Change color of search input
   @include break-from-device(tablet landscape) {
 
@@ -143,11 +129,6 @@
 
   // Application header (stays always on top)
   .md-header {
-    background-color: hsla(0, 0%, 0%, 1);
-  }
-
-  // Hero teaser
-  .md-hero {
     background-color: hsla(0, 0%, 0%, 1);
   }
 

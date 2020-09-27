@@ -13,7 +13,7 @@ not be used anymore.
 ### Redirect
 
 :octicons-archive-24: Deprecated: 5.5 ·
-:octicons-trash-24: Removal: 6.x
+:octicons-trash-24: Removed: 6.0
 
 The `redirect` key, which could be added via [Metadata][1], allowed to
 specify a redirect from within a document to a new address, which is a good
@@ -48,7 +48,7 @@ plugins:
 ### Source link
 
 :octicons-archive-24: Deprecated: 5.5 ·
-:octicons-trash-24: Removal: 6.x
+:octicons-trash-24: Removed: 6.0
 
 The `source` and `path` keys, which could be added via [Metadata][1], showed
 a source icon at the top right corner of a document, linking a document to a
@@ -78,7 +78,7 @@ at arbitrary positions in any document.
 ### Hero
 
 :octicons-archive-24: Deprecated: 5.5 ·
-:octicons-trash-24: Removal: 6.x
+:octicons-trash-24: Removed: 6.0
 
 The `hero` key, which could be added via [Metadata][1], allowed to render a
 simple, text-only and page-local teaser text as part of a document. It could

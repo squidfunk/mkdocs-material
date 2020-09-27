@@ -18,12 +18,7 @@
       {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
-      {% if page and page.meta and page.meta.redirect %}
-        <script>var anchor=window.location.hash.substr(1);location.href="{{ page.meta.redirect }}"+(anchor?"#"+anchor:"")</script>
-        <meta http-equiv="refresh" content="0; url={{ page.meta.redirect }}">
-        <meta name="robots" content="noindex">
-        <link rel="canonical" href="{{ page.meta.redirect }}">
-      {% elif page.canonical_url %}
+      {% if page.canonical_url %}
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       {% if page and page.meta and page.meta.author %}
@@ -44,9 +39,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.593e13b9.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.45ead06e.min.css' | url }}">
       {% if palette.scheme or palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.ff0a5ce4.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.6b892c47.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -116,11 +111,7 @@
       {% include "partials/header.html" %}
     {% endblock %}
     <div class="md-container" data-md-component="container">
-      {% block hero %}
-        {% if page and page.meta and page.meta.hero %}
-          {% include "partials/hero.html" with context %}
-        {% endif %}
-      {% endblock %}
+      {% block hero %}{% endblock %}
       {% block tabs %}
         {% if "tabs" in config.theme.features %}
           {% include "partials/tabs.html" %}
@@ -156,11 +147,6 @@
                     {% include ".icons/material/pencil.svg" %}
                   </a>
                 {% endif %}
-                {% block source %}
-                  {% if page and page.meta and page.meta.source %}
-                    {% include "partials/source-link.html" %}
-                  {% endif %}
-                {% endblock %}
                 {% if not "\x3ch1" in page.content %}
                   <h1>{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}

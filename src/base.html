@@ -45,21 +45,8 @@
         <meta name="description" content="{{ config.site_description }}" />
       {% endif %}
 
-      <!-- Redirect -->
-      {% if page and page.meta and page.meta.redirect %}
-        <script>
-          var anchor = window.location.hash.substr(1)
-          location.href = '{{ page.meta.redirect }}' +
-            (anchor ? '#' + anchor : '')
-        </script>
-
-        <!-- Fallback in case JavaScript is not available -->
-        <meta http-equiv="refresh" content="0; url={{ page.meta.redirect }}" />
-        <meta name="robots" content="noindex" />
-        <link rel="canonical" href="{{ page.meta.redirect }}" />
-
       <!-- Canonical -->
-      {% elif page.canonical_url %}
+      {% if page.canonical_url %}
         <link rel="canonical" href="{{ page.canonical_url }}" />
       {% endif %}
 
@@ -243,13 +230,9 @@
     <div class="md-container" data-md-component="container">
 
       <!-- Hero teaser -->
-      {% block hero %}
-        {% if page and page.meta and page.meta.hero %}
-          {% include "partials/hero.html" with context %}
-        {% endif %}
-      {% endblock %}
+      {% block hero %}{% endblock %}
 
-      <!-- Tabs with outline -->
+      <!-- Tabs navigation -->
       {% block tabs %}
         {% if "tabs" in config.theme.features %}
           {% include "partials/tabs.html" %}
@@ -309,13 +292,6 @@
                     {% include ".icons/material/pencil.svg" %}
                   </a>
                 {% endif %}
-
-                <!-- Link to source file -->
-                {% block source %}
-                  {% if page and page.meta and page.meta.source %}
-                    {% include "partials/source-link.html" %}
-                  {% endif %}
-                {% endblock %}
 
                 <!--
                   Hack: check whether the content contains a h1 headline. If it
