@@ -36,7 +36,7 @@ import { getActiveElement } from "../_"
  * @param value - Whether the element should be focused
  */
 export function setElementFocus(
-el: HTMLElement, value: boolean = true
+  el: HTMLElement, value: boolean = true
 ): void {
   if (value)
     el.focus()

@@ -27,7 +27,7 @@ import {
   map,
   startWith,
   switchMap,
-  withLatestFrom
+  zipWith
 } from "rxjs/operators"
 
 import {
@@ -99,7 +99,7 @@ export function mountHeader(
         .pipe(
           map(main => getElement("h1, h2, h3, h4, h5, h6", main)!),
           filter(hx => typeof hx !== "undefined"),
-          withLatestFrom(useComponent("header-title")),
+          zipWith(useComponent("header-title")),
           switchMap(([hx, title]) => watchViewportAt(hx, { header$, viewport$ })
             .pipe(
               map(({ offset: { y } }) => {
