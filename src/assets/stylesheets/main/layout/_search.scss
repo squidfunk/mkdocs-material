@@ -716,5 +716,6 @@ $md-toggle__search--checked:
   // Search term highlighting
   mark {
     color: var(--md-accent-fg-color);
+    background-color: transparent;
   }
 }
