@@ -39,7 +39,7 @@ import {
 /**
  * Add support for usage with `iframe-worker` polyfill
  *
- * While `importScripts` is synchronous when executed inside of a webworker,
+ * While `importScripts` is synchronous when executed inside of a web worker,
  * it's not possible to provide a synchronous polyfilled implementation. The
  * cool thing is that awaiting a non-Promise is a noop, so extending the type
  * definition to return a `Promise` shouldn't break anything.
@@ -83,6 +83,11 @@ async function fetchSearchIndex(url: string): Promise<SearchIndex> {
  * This function will automatically import the stemmers necessary to process
  * the languages which were given through the search index configuration.
  *
+ * If the worker runs inside of an `iframe` (when using `iframe-worker` as a
+ * shim), the base URL must be determined by searching for the first `script`
+ * element with a `src` attribute, which will equal the worker script, and
+ * determine the base URL by examining the worker URL.
+ *
  * @param config - Search index configuration
  *
  * @return Promise resolving with no result
@@ -90,7 +95,16 @@ async function fetchSearchIndex(url: string): Promise<SearchIndex> {
 async function setupSearchLanguages(
   config: SearchIndexConfig
 ): Promise<void> {
-  const base = "../lunr"
+  let base = "../lunr"
+
+  /* Detect `iframe-worker` and fix base URL */
+  if (typeof parent !== "undefined" && "IFrameWorker" in parent) {
+    const worker = document.querySelector<HTMLScriptElement>("script[src]")!
+    const [path] = worker.src.split("/worker")
+
+    /* Prefix base with path */
+    base = base.replace("..", path)
+  }
 
   /* Add scripts for languages */
   const scripts = []
