@@ -48,7 +48,7 @@ template: overrides/main.html
 * Fixed details marker showing for search result in Firefox
 * Fixed tabbing behavior when search query is not empty
 * Switched TypeScript compilation target to ES2015
-* Reduced size of JavaScript by 36% (`176kb` → `113kb`)
+* Reduced size of JavaScript by 30% (`176kb` → `124kb`)
 * Removed `mkdocs` and `readthedocs` themes from Docker image
 
 ### 6.0.0 <small>_ September 25, 2020</small>
