@@ -28,7 +28,7 @@
 
     <!-- Link to home -->
     <a
-      href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
+      href="{{ config.site_url | default(nav.homepage.url, true) | url }}{% if not config.use_directory_urls %}index.html{% endif %}"
       title="{{ config.site_name }}"
       class="md-header-nav__button md-logo"
       aria-label="{{ config.site_name }}"
