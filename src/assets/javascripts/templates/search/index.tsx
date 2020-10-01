@@ -65,7 +65,7 @@ function renderSearchDocument(
     .slice(0, -1)
 
   /* Render article or section, depending on flags */
-  const url = document.location.replace(/%20/g, "+")
+  const url = document.location
   return (
     <a href={url} class="md-search-result__link" tabIndex={-1}>
       <article
