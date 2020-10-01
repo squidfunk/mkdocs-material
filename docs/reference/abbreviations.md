@@ -19,7 +19,7 @@ shown on hover__, e.g. for glossaries:
 
 ``` yaml
 markdown_extensions:
-  - abbr
+  - markdown.extensions.abbr
 ```
 
   [1]: https://python-markdown.github.io/extensions/abbreviations/

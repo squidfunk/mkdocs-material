@@ -21,7 +21,7 @@ adds the ability to add inline footnotes to a document and can be enabled via
 
 ``` yaml
 markdown_extensions:
-  - footnotes
+  - markdown.extensions.footnotes
 ```
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_footnotes.scss

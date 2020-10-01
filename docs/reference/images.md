@@ -20,7 +20,7 @@ and can be enabled via `mkdocs.yml`
 
 ``` yaml
 markdown_extensions:
-  - attr_list
+  - markdown.extensions.attr_list
 ```
 
   [2]: https://python-markdown.github.io/extensions/attr_list/

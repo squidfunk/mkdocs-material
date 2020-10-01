@@ -22,7 +22,7 @@ adds the ability to add [front matter][4] to a document and can be enabled via
 
 ``` yaml
 markdown_extensions:
-  - meta
+  - markdown.extensions.meta
 ```
 
 Front matter is written as a series of key-value pairs at the beginning of the

@@ -21,7 +21,7 @@ library, is integrated with Material for MkDocs and can be enabled via
 
 ``` yaml
 markdown_extensions:
-  - admonition
+  - markdown.extensions.admonition
 ```
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_admonition.scss

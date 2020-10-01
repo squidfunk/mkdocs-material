@@ -132,7 +132,7 @@ customize its appearance:
 
         ``` yaml
         markdown_extensions:
-          - toc:
+          - markdown.extensions.toc:
               permalink: true
         ```
 
@@ -140,7 +140,7 @@ customize its appearance:
 
         ``` yaml
         markdown_extensions:
-          - toc:
+          - markdown.extensions.toc:
               permalink: ⚓︎
         ```
 
@@ -155,7 +155,7 @@ customize its appearance:
 
         ``` yaml
         markdown_extensions:
-          - toc:
+          - markdown.extensions.toc:
               slugify: !!python/name:pymdownx.slugs.uslugify
         ```
 
@@ -163,7 +163,7 @@ customize its appearance:
 
         ``` yaml
         markdown_extensions:
-          - toc:
+          - markdown.extensions.toc:
               slugify: !!python/name:pymdownx.slugs.uslugify_cased
         ```
 
@@ -178,7 +178,7 @@ customize its appearance:
 
         ``` yaml
         markdown_extensions:
-          - toc:
+          - markdown.extensions.toc:
               toc_depth: 3
         ```
 
@@ -186,7 +186,7 @@ customize its appearance:
 
         ``` yaml
         markdown_extensions:
-          - toc:
+          - markdown.extensions.toc:
               toc_depth: 0
         ```
 

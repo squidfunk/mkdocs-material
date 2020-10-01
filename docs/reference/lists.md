@@ -21,7 +21,7 @@ enabled via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
-  - def_list
+  - markdown.extensions.def_list
 ```
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss
