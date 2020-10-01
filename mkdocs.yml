@@ -81,8 +81,7 @@ plugins:
         releases/5.md: upgrading.md #upgrading-from-3x-to-4x
         releases/changelog.md: changelog.md
         sponsorship.md: insiders.md
-  - minify:
-      minify_html: true
+  - mermaid2
 
 # Customization
 extra:
@@ -135,7 +134,7 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          format: !!python/name:mermaid2.fence_mermaid
   - pymdownx.tabbed
   - pymdownx.tasklist:
       custom_checkbox: true

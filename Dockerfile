@@ -45,7 +45,7 @@ RUN \
   && \
     if [ "${WITH_PLUGINS}" = "true" ]; then \
       pip install --no-cache-dir \
-        'mkdocs-minify-plugin>=0.3' \
+        'mkdocs-mermaid2-plugin>=0.5' \
         'mkdocs-redirects>=1.0'; \
     fi \
   && apk del .build gcc musl-dev \
