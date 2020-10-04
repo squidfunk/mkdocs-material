@@ -42,6 +42,13 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.0.2 <small>_ October 4, 2020</small>
+
+* Added Georgian translations
+* Added escaping for link `title` attributes where necessary
+* Fixed #1956: Pages with whitespace in names have invalid links in search
+* Removed unnecessary (duplicated) link `title` attributes
+
 ### 6.0.1 <small>_ September 26, 2020</small>
 
 * Fixed stemmer support for `file://` protocol through `iframe-worker`

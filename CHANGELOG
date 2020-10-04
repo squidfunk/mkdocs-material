@@ -1,4 +1,11 @@
-mkdocs-material-6.1.1 (2020-09-26)
+mkdocs-material-6.0.2 (2020-10-04)
+
+  * Added Georgian translations
+  * Added escaping for link title attributes where necessary
+  * Fixed #1956: Pages with whitespace in names have invalid links in search
+  * Removed unnecessary (duplicated) link title attributes
+
+mkdocs-material-6.0.1 (2020-09-26)
 
   * Fixed stemmer support for file:// protocol through iframe-worker
   * Fixed details marker showing for search result in Firefox
