@@ -48,6 +48,7 @@ The following languages are supported:
   <li><code>id</code> – Indonesian</li>
   <li><code>it</code> – Italian</li>
   <li><code>ja</code> – Japanese</li>
+  <li><code>ka</code> – Georgian</li>
   <li><code>kr</code> – Korean</li>
   <li><code>my</code> – Burmese</li>
   <li><code>nl</code> – Dutch</li>
