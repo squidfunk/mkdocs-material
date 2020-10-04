@@ -37,7 +37,6 @@
         {% if page.previous_page %}
           <a
             href="{{ page.previous_page.url | url }}"
-            title="{{ page.previous_page.title | striptags }}"
             class="md-footer-nav__link md-footer-nav__link--prev"
             rel="prev"
           >
@@ -59,7 +58,6 @@
         {% if page.next_page %}
           <a
             href="{{ page.next_page.url | url }}"
-            title="{{ page.next_page.title | striptags }}"
             class="md-footer-nav__link md-footer-nav__link--next"
             rel="next"
           >

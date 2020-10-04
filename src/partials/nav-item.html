@@ -102,7 +102,6 @@
     {% endif %}
     <a
       href="{{ nav_item.url | url }}"
-      title="{{ nav_item.title | striptags }}"
       class="md-nav__link md-nav__link--active"
     >
       {{ nav_item.title }}
@@ -117,11 +116,7 @@
 <!-- Main navigation item -->
 {% else %}
   <li class="{{ class }}">
-    <a
-      href="{{ nav_item.url | url }}"
-      title="{{ nav_item.title | striptags }}"
-      class="md-nav__link"
-    >
+    <a href="{{ nav_item.url | url }}" class="md-nav__link">
       {{ nav_item.title }}
     </a>
   </li>
