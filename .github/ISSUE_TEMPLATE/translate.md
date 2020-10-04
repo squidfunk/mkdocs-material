@@ -8,7 +8,7 @@ assignees: ''
 
 ## Instructions
 
-1. Check, if your language is already available: [here](https://bit.ly/3c2ox0C)
+1. Check, if your language is already available: [here](https://bit.ly/33vFDD0)
 2. If it isn't, please translate the labels on the right:
 
 ``` jinja
