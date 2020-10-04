@@ -81,7 +81,7 @@
           <p>{{ config.site_description }}. Set up in 5 minutes.</p>
           <a
             href="{{ page.next_page.url | url }}"
-            title="{{ page.next_page.title | striptags }}"
+            title="{{ page.next_page.title | e }}"
             class="md-button md-button--primary"
           >
             Get started

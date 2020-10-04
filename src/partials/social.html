@@ -32,7 +32,7 @@
       <a
         href="{{ social.link }}"
         target="_blank" rel="noopener"
-        title="{{ title }}"
+        title="{{ title | e }}"
         class="md-footer-social__link"
       >
         {% include ".icons/" ~ social.icon ~ ".svg" %}

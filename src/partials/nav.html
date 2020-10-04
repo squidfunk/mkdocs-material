@@ -31,7 +31,7 @@
   <label class="md-nav__title" for="__drawer">
     <a
       href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
-      title="{{ config.site_name }}"
+      title="{{ config.site_name | e }}"
       class="md-nav__button md-logo"
       aria-label="{{ config.site_name }}"
     >
