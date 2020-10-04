@@ -23,7 +23,6 @@
 import {
   MonoTypeOperatorFunction,
   Observable,
-  animationFrameScheduler,
   combineLatest,
   fromEvent,
   merge,
@@ -34,7 +33,6 @@ import {
   distinctUntilChanged,
   finalize,
   map,
-  observeOn,
   startWith,
   tap
 } from "rxjs/operators"
@@ -114,8 +112,7 @@ export function applySearchQuery(
 ): MonoTypeOperatorFunction<SearchQuery> {
   return pipe(
 
-    /* Defer repaint to next animation frame */
-    observeOn(animationFrameScheduler),
+    /* Hide placeholder when search is focused */
     tap(({ focus }) => {
       if (focus) {
         setSearchQueryPlaceholder(el, "")
