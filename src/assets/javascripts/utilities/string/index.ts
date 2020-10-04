@@ -35,6 +35,7 @@ type TranslateKey =
   | "search.config.lang"               /* Search language */
   | "search.config.pipeline"           /* Search pipeline */
   | "search.config.separator"          /* Search separator */
+  | "search.placeholder"               /* Search */
   | "search.result.placeholder"        /* Type to start searching */
   | "search.result.none"               /* No matching documents */
   | "search.result.one"                /* 1 matching document */

@@ -20,6 +20,31 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./react"
-export * from "./set"
+import { translate } from "utilities"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Set search query placeholder
+ *
+ * @param el - Search query element
+ * @param value - Placeholder
+ */
+export function setSearchQueryPlaceholder(
+  el: HTMLInputElement, value: string
+): void {
+  el.placeholder = value
+}
+
+/**
+ * Reset search query placeholder
+ *
+ * @param el - Search query element
+ */
+export function resetSearchQueryPlaceholder(
+  el: HTMLInputElement
+): void {
+  el.placeholder = translate("search.placeholder")
+}

@@ -20,18 +20,33 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, combineLatest, fromEvent, merge } from "rxjs"
+import {
+  MonoTypeOperatorFunction,
+  Observable,
+  animationFrameScheduler,
+  combineLatest,
+  fromEvent,
+  merge,
+  pipe
+} from "rxjs"
 import {
   delay,
   distinctUntilChanged,
+  finalize,
   map,
-  startWith
+  observeOn,
+  startWith,
+  tap
 } from "rxjs/operators"
 
 import { watchElementFocus } from "browser"
 import { SearchTransformFn, defaultTransform } from "integrations"
 
 import { SearchQuery } from "../_"
+import {
+  resetSearchQueryPlaceholder,
+  setSearchQueryPlaceholder
+} from "../set"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -83,4 +98,35 @@ export function watchSearchQuery(
     .pipe(
       map(([value, focus]) => ({ value, focus }))
     )
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Apply search query
+ *
+ * @param el - Search query element
+ *
+ * @return Operator function
+ */
+export function applySearchQuery(
+  el: HTMLInputElement
+): MonoTypeOperatorFunction<SearchQuery> {
+  return pipe(
+
+    /* Defer repaint to next animation frame */
+    observeOn(animationFrameScheduler),
+    tap(({ focus }) => {
+      if (focus) {
+        setSearchQueryPlaceholder(el, "")
+      } else {
+        resetSearchQueryPlaceholder(el)
+      }
+    }),
+
+    /* Reset on complete or error */
+    finalize(() => {
+      resetSearchQueryPlaceholder(el)
+    })
+  )
 }

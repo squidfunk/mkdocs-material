@@ -35,7 +35,10 @@ import {
   SearchTransformFn
 } from "integrations"
 
-import { watchSearchQuery } from "../react"
+import {
+  applySearchQuery,
+  watchSearchQuery
+} from "../react"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -102,6 +105,9 @@ export function mountSearchQuery(
 
       /* Return search query */
       return query$
+        .pipe(
+          applySearchQuery(el)
+        )
     })
   )
 }
