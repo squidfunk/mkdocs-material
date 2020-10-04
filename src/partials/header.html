@@ -20,6 +20,12 @@
   IN THE SOFTWARE.
 -->
 
+<!-- Determine site url to mitigate a MkDocs bugs -->
+{% set site_url = config.site_url | default(nav.homepage.url, true) | url %}
+{% if not config.use_directory_urls and site_url == "." %}
+  {% set site_url = site_url ~ "/index.html" %}
+{% endif %}
+
 <!-- Application header -->
 <header class="md-header" data-md-component="header">
 
@@ -28,7 +34,7 @@
 
     <!-- Link to home -->
     <a
-      href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
+      href="{{ site_url }}"
       title="{{ config.site_name | e }}"
       class="md-header-nav__button md-logo"
       aria-label="{{ config.site_name }}"
