@@ -70,7 +70,7 @@
     "material-shadows": "^3.0.1",
     "mini-css-extract-plugin": "^0.11.3",
     "postcss-inline-svg": "^4.1.0",
-    "postcss-loader": "^4.0.2",
+    "postcss-loader": "^4.0.3",
     "postcss-svgo": "^4.0.2",
     "preact": "^10.5.2",
     "ramda": "^0.27.1",
