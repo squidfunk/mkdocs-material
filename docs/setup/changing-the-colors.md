@@ -233,8 +233,11 @@ color palettes:
     This field is used as the toggle's `title` attribute and should be set to a
     discernable name to improve accessibility.
 
-_Give this feature a try on [the official documentation][11] built with Material
-for MkDocs Insiders!_
+[Try this feature][11]{: .md-button .md-button--primary }
+
+_This feature is enabled on the [official documentation][11] built with
+Insiders. Click the button to go to Material for MkDocs Insiders and give this
+feature a try._
 
   [6]: ../insiders.md
   [7]: #color-scheme

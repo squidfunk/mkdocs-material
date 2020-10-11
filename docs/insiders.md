@@ -61,27 +61,29 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
 
 - [x] [Remove _Made with Material for MkDocs_ from footer][11]
 - [x] [Support for user-toggleable themes (light/dark mode switch)][12]
-- [x] [Highlighting of matched search terms in content area][13]
-- [x] [Navigation can always be expanded via configuration][14]
-- [x] [Header can be automatically hidden on scrolling][15]
-- [x] [Table of contents can be automatically hidden when empty][16]
+- [x] [Search suggestions help to save keystrokes][13]
+- [x] [Highlighting of matched search terms in content area][14]
+- [x] [Navigation can always be expanded via configuration][15]
+- [x] [Header can be automatically hidden on scrolling][16]
+- [x] [Table of contents can be automatically hidden when empty][17]
 
   [11]: setup/setting-up-the-footer.md#remove-generator
   [12]: setup/changing-the-colors.md#color-palette-toggle
-  [13]: setup/setting-up-site-search.md#highlighting-search
-  [14]: setup/setting-up-navigation.md#navigation-expansion
-  [15]: setup/setting-up-the-header.md#automatic-hiding
-  [16]: setup/setting-up-navigation.md#automatic-hiding
+  [13]: setup/setting-up-site-search.md#search-suggestions
+  [14]: setup/setting-up-site-search.md#search-highlighting
+  [15]: setup/setting-up-navigation.md#navigation-expansion
+  [16]: setup/setting-up-the-header.md#automatic-hiding
+  [17]: setup/setting-up-navigation.md#automatic-hiding
 
 ## Roadmap
 
 The following list of funding goals – named after varieties of chili peppers 
-[I'm growing on my balcony][17] – shows which features are already available
+[I'm growing on my balcony][18] – shows which features are already available
 in Material for MkDocs Insiders.
 
-  [17]: https://www.instagram.com/squidfunk/
+  [18]: https://www.instagram.com/squidfunk/
 
-### Madame Jeanette :octicons-check-24:
+### Madame Jeanette
 
 [:octicons-flame-24: Funding goal: __$500__][6] ·
 :octicons-unlock-24: Status: _released_
@@ -95,10 +97,9 @@ in Material for MkDocs Insiders.
 [:octicons-flame-24: Funding goal: __$1,000__][6] ·
 :octicons-lock-24: Status: _exclusive_
 
-- [x] [Highlighting of matched search terms in content area][13]
-- [x] [Navigation can always be expanded via configuration][14]
-- [x] [Header can be automatically hidden on scrolling][15]
-- [x] [Table of contents can be automatically hidden when empty][16]
+- [x] [Navigation can always be expanded via configuration][15]
+- [x] [Header can be automatically hidden on scrolling][16]
+- [x] [Table of contents can be automatically hidden when empty][17]
 - [ ] Table of contents can be moved into navigation for more space
 - [ ] Table of contents shows which sections have search results
 - [ ] Table of contents auto-collapses and expands only the active section
@@ -126,7 +127,8 @@ in Material for MkDocs Insiders.
 [:octicons-flame-24: Funding goal: __$2,500__][6] ·
 :octicons-lock-24: Status: _exclusive_
 
-- [ ] Support for search suggestions
+- [x] [Search suggestions help to save keystrokes][13]
+- [x] [Highlighting of matched search terms in content area][14]
 - [ ] Support for a user's last searches
 - [ ] Improved search result summaries
 
