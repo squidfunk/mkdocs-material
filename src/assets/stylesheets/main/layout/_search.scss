@@ -721,8 +721,8 @@ $md-toggle__search--checked:
 
     // Search term highlighting
     mark {
+      text-decoration: underline;
       background-color: transparent;
-      border-bottom: px2rem(1px) solid var(--md-accent-fg-color);
     }
   }
 
