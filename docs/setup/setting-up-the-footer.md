@@ -2,7 +2,7 @@
 template: overrides/main.html
 ---
 
-# Adding social links
+# Setting up the footer
 
 The footer of your project documentation is a great place to add links to
 websites or platforms you or your company are using as additional marketing 
@@ -88,6 +88,22 @@ For each entry, the following fields are available:
           link: https://twitter.com/squidfunk
           name: squidfunk on Twitter
     ```
+
+### Remove generator
+
+[:octicons-file-code-24: Source][8] ·
+[:octicons-heart-fill-24:{: .tx-heart } Insiders only][8]{: .tx-insiders }
+
+The footer displays a __Made with Material for MkDocs__ notice to denote how
+the site was generated. The notice can be removed with the following setting
+via `mkdocs.yml`:
+
+``` yaml
+extra:
+  generator: false
+```
+
+  [8]: ../insiders.md
 
 ## Customization
 

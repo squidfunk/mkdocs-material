@@ -59,32 +59,32 @@ monthly subscription, which you can do at any time.__
 The following list shows which features are currently only available in Material
 for MkDocs Insiders. You can click on each feature to learn more about it:
 
-- [x] [Support for user-toggleable themes (light/dark mode switch)][11]
-- [x] [Highlighting of matched search terms in content area][12]
-- [x] [Navigation can always be expanded via configuration][13]
-- [x] [Header can be automatically hidden on scrolling][14]
-- [x] [Table of contents can be automatically hidden when empty][15]
+- [x] [Remove _Made with Material for MkDocs_ from footer][11]
+- [x] [Support for user-toggleable themes (light/dark mode switch)][12]
+- [x] [Highlighting of matched search terms in content area][13]
+- [x] [Navigation can always be expanded via configuration][14]
+- [x] [Header can be automatically hidden on scrolling][15]
+- [x] [Table of contents can be automatically hidden when empty][16]
 
-  [11]: setup/changing-the-colors.md#color-palette-toggle
-  [12]: setup/setting-up-site-search.md#highlighting-search
-  [13]: setup/setting-up-navigation.md#navigation-expansion
-  [14]: setup/setting-up-the-header.md#automatic-hiding
-  [15]: setup/setting-up-navigation.md#automatic-hiding
+  [11]: setup/setting-up-the-footer.md#remove-generator
+  [12]: setup/changing-the-colors.md#color-palette-toggle
+  [13]: setup/setting-up-site-search.md#highlighting-search
+  [14]: setup/setting-up-navigation.md#navigation-expansion
+  [15]: setup/setting-up-the-header.md#automatic-hiding
+  [16]: setup/setting-up-navigation.md#automatic-hiding
 
 ## Roadmap
 
 The following list of funding goals – named after varieties of chili peppers 
-[I'm growing on my balcony][16] – shows which features are already available
+[I'm growing on my balcony][17] – shows which features are already available
 in Material for MkDocs Insiders.
 
-  [16]: https://www.instagram.com/squidfunk/
+  [17]: https://www.instagram.com/squidfunk/
 
-### Madame Jeanette
+### Madame Jeanette :octicons-check-24:
 
 [:octicons-flame-24: Funding goal: __$500__][6] ·
 :octicons-unlock-24: Status: _released_
-
-New features and improvements for _search_, including:
 
 - [x] Improved search result grouping (pages + headings)
 - [x] Improved search result relevance and scoring
@@ -95,12 +95,10 @@ New features and improvements for _search_, including:
 [:octicons-flame-24: Funding goal: __$1,000__][6] ·
 :octicons-lock-24: Status: _exclusive_
 
-New features and improvements for _content and toc_, including:
-
-- [x] [Highlighting of matched search terms in content area][12]
-- [x] [Navigation can always be expanded via configuration][13]
-- [x] [Header can be automatically hidden on scrolling][14]
-- [x] [Table of contents can be automatically hidden when empty][15]
+- [x] [Highlighting of matched search terms in content area][13]
+- [x] [Navigation can always be expanded via configuration][14]
+- [x] [Header can be automatically hidden on scrolling][15]
+- [x] [Table of contents can be automatically hidden when empty][16]
 - [ ] Table of contents can be moved into navigation for more space
 - [ ] Table of contents shows which sections have search results
 - [ ] Table of contents auto-collapses and expands only the active section
@@ -111,8 +109,6 @@ New features and improvements for _content and toc_, including:
 [:octicons-flame-24: Funding goal: __$1,500__][6] ·
 :octicons-lock-24: Status: _exclusive_
 
-New features and improvements for _hosting multiple versions_, including:
-
 - [ ] Support for multiple languages of documents 
 - [ ] Support for multiple versions of documents
 - [ ] Support for one or more management plugins
@@ -122,17 +118,13 @@ New features and improvements for _hosting multiple versions_, including:
 [:octicons-flame-24: Funding goal: __$2,000__][6] ·
 :octicons-lock-24: Status: _exclusive_
 
-New features and improvements for _user preferences_, including:
-
-- [x] [Support for user-toggleable themes (light/dark mode switch)][11]
+- [x] [Support for user-toggleable themes (light/dark mode switch)][12]
 - [ ] Support for user-toggleable code-block styles (light/dark mode switch)
 
 ### Biquinho Vermelho
 
 [:octicons-flame-24: Funding goal: __$2,500__][6] ·
 :octicons-lock-24: Status: _exclusive_
-
-Even more features and improvements for _search_, including:
 
 - [ ] Support for search suggestions
 - [ ] Support for a user's last searches
@@ -143,9 +135,8 @@ Even more features and improvements for _search_, including:
 [:octicons-flame-24: Funding goal: __$3,000__][6] ·
 :octicons-lock-24: Status: _exclusive_
 
-Alternative, completely different _vertical layout_, optimized to read
-documentation and code side-by-side, e.g. for the documentation of APIs with
-the same functionality as Material for MkDocs.
+- [x] [Remove _Made with Material for MkDocs_ from footer][11]
+- [ ] Brand-new and exclusive vertical layout
 
 ## Frequently asked questions
 
@@ -160,8 +151,10 @@ improvements (e.g. search) do not require any changes to existing configuration.
 This means that your users will be able to build the docs locally with the
 regular version and when they push their changes to CI/CD, they will be built
 with Material for MkDocs Insiders. For this reason, it's recommended to
-[install Insiders][17] only in CI, as you don't want to expose your `GH_TOKEN`
+[install Insiders][18] only in CI, as you don't want to expose your `GH_TOKEN`
 to users.
+
+  [18]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -171,7 +164,7 @@ terms?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][18]. However, we kindly ask you to respect the following
+by the [MIT license][19]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ from Material for MkDocs Insiders.
@@ -182,8 +175,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Material for MkDocs Insiders. However, you may
   __use the latest version__ that's available to you __as long as you like__.
-  Just remember that __[GitHub deletes private forks][19]__.
+  Just remember that __[GitHub deletes private forks][20]__.
 
-  [17]: publishing-your-site.md#github-pages
-  [18]: license.md
-  [19]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [19]: license.md
+  [20]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

@@ -72,8 +72,8 @@ The templates have undergone a set of changes to make them future-proof. If
 you've used theme extension to override a block or template, make sure that it
 matches the new structure:
 
-- If you've overridden a **block**, check `base.html` for potential changes
-- If you've overridden a **template**, check the respective `*.html` file for
+- If you've overridden a __block__, check `base.html` for potential changes
+- If you've overridden a __template__, check the respective `*.html` file for
   potential changes
 
 ??? quote "`base.html`"
@@ -433,8 +433,8 @@ The templates have undergone a set of changes to make them future-proof. If
 you've used theme extension to override a block or template, make sure that it 
 matches the new structure:
 
-- If you've overridden a **block**, check `base.html` for potential changes
-- If you've overridden a **template**, check the respective `*.html` file for
+- If you've overridden a __block__, check `base.html` for potential changes
+- If you've overridden a __template__, check the respective `*.html` file for
   potential changes
 
 ??? quote "`base.html`"

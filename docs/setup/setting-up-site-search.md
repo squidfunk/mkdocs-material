@@ -19,7 +19,7 @@ made available [offline][1].
 [:octicons-cpu-24: Plugin][3]
 
 The [built-in search plugin][3] integrates seamlessly with Material for MkDocs,
-adding multilingual client-side search with [lunr][5] and [lunr-languages][6].
+adding multilingual client-side search with [lunr][4] and [lunr-languages][5].
 It's enabled by default, but must be re-added to `mkdocs.yml` when other plugins
 are used:
 
@@ -33,9 +33,9 @@ The following options are supported:
 `lang`{: #lang }
 
 :   :octicons-milestone-24: Default: _automatically set_ – This option allows
-    to include the language-specific stemmers provided by [lunr-languages][6].
+    to include the language-specific stemmers provided by [lunr-languages][5].
     Note that Material for MkDocs will set this automatically based on the
-    [site language][7], but it may be overridden, e.g. to support multiple
+    [site language][6], but it may be overridden, e.g. to support multiple
     languages:
 
     === "A single language"
@@ -105,7 +105,7 @@ The following options are supported:
 `prebuild_index`{: #prebuild-index }
 
 :   :octicons-milestone-24: Default: `false` · :octicons-beaker-24:
-    Experimental – MkDocs can generate a [prebuilt index][8] of all pages during
+    Experimental – MkDocs can generate a [prebuilt index][7] of all pages during
     build time, which provides performance improvements at the cost of more
     bandwidth, as it reduces the build time of the search index:
 
@@ -125,18 +125,17 @@ them at your own risk._
 
   [2]: https://github.com/squidfunk/mkdocs-material/tree/master/src/assets/javascripts/integrations/search
   [3]: https://www.mkdocs.org/user-guide/configuration/#search
-  [4]: ../insiders.md
-  [5]: https://lunrjs.com
-  [6]: https://github.com/MihaiValentin/lunr-languages
-  [7]: changing-the-language.md#site-language
-  [8]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
+  [4]: https://lunrjs.com
+  [5]: https://github.com/MihaiValentin/lunr-languages
+  [6]: changing-the-language.md#site-language
+  [7]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
 
 ### Highlighting search
 
-[:octicons-file-code-24: Source][4] ·
+[:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][4]{: .tx-insiders }
+[:octicons-heart-fill-24:{: .tx-heart } Insiders only][8]{: .tx-insiders }
 
 When _search highlighting_ is activated and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
@@ -155,6 +154,7 @@ Searching for `"code blocks"` yields:
 _Give this feature a try on [the official documentation][10] built with Material
 for MkDocs Insiders!_
 
+  [8]: ../insiders.md
   [9]: ../assets/screenshots/search-highlighting.png
   [10]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/?h=code+blocks
 
