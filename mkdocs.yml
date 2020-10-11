@@ -75,8 +75,8 @@ plugins:
         extensions/metadata.md: reference/meta-tags.md
         extensions/permalinks.md: setup/setting-up-navigation.md #permalink
         extensions/pymdown.md: reference/admonitions.md
-        plugins/search.md: setup/setting-up-site-search.md
         plugins/revision-date.md: setup/adding-a-git-repository.md #revision-date
+        plugins/search.md: setup/setting-up-site-search.md
         releases/4.md: upgrading.md #upgrading-from-4x-to-5x
         releases/5.md: upgrading.md #upgrading-from-3x-to-4x
         releases/changelog.md: changelog.md
