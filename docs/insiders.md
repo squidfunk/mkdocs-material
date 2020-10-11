@@ -63,6 +63,7 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
 - [x] [Support for user-toggleable themes (light/dark mode switch)][12]
 - [x] [Search suggestions help to save keystrokes][13]
 - [x] [Highlighting of matched search terms in content area][14]
+- [x] Search goes to first result on ++enter++ (I'm feeling lucky)
 - [x] [Navigation can always be expanded via configuration][15]
 - [x] [Header can be automatically hidden on scrolling][16]
 - [x] [Table of contents can be automatically hidden when empty][17]
@@ -129,6 +130,7 @@ in Material for MkDocs Insiders.
 
 - [x] [Search suggestions help to save keystrokes][13]
 - [x] [Highlighting of matched search terms in content area][14]
+- [x] Search goes to first result on ++enter++ (I'm feeling lucky)
 - [ ] Support for a user's last searches
 - [ ] Improved search result summaries
 

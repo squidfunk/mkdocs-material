@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.6.0 <small>_ October 11, 2020</small>
+
+* Added support for search suggestions to save keystrokes
+* Added support for removing __Made with Material for MkDocs__ from footer
+* Fixed #1915: search should go to first result by pressing ++enter++
+
 ### 1.5.1 <small>_ September 21, 2020</small>
 
 * Fixed content area stretching to whole width for long code blocks
