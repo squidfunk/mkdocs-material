@@ -139,7 +139,9 @@ them at your own risk._
 
 When _search suggestions_ are activated, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
-suggestion with ++arrow-right++:
+suggestion with ++arrow-right++
+
+It can be enabled via `mkdocs.yml` with:
 
 ``` yaml
 theme:
