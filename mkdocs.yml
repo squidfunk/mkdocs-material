@@ -20,7 +20,7 @@
 
 # Project information
 site_name: Material for MkDocs
-site_url: https://squidfunk.github.io/mkdocs-material/
+# TEST site_url: https://squidfunk.github.io/mkdocs-material/
 site_author: Martin Donath
 site_description: >-
   Create a branded static site from a set of Markdown files to host the
@@ -145,6 +145,10 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
+  - Test:
+      - Level 0: index.md
+      - Level 1: test/index.md
+      - Level 2: test/test/index.md
   - Getting started:
     - Installation: getting-started.md
     - Creating your site: creating-your-site.md

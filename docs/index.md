@@ -1,4 +1,4 @@
 ---
-template: overrides/home.html
-title: Material for MkDocs
+-x-template: overrides/home.html
+title: Level 0 - Material for MkDocs
 ---

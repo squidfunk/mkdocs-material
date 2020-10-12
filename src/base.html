@@ -319,6 +319,35 @@
               {% block disqus %}
                 {% include "partials/integrations/disqus.html" %}
               {% endblock %}
+
+              <!-- TEST theme variables -->
+              <hr>
+                <div>
+                  <ul>
+                    <li><code>{{config.site_url | default(nav.homepage.url, true) | url}}</code> (<i>url-filtered home link</i>)
+                      <hr>
+                    <!-- Mitigate bug: https://github.com/mkdocs/mkdocs/issues/2191 -->
+                    {% set site_url = config.site_url | default(nav.homepage.url, true) | url %}
+                    {% if not config.use_directory_urls and site_url[0] == site_url[-1] == "." %}
+                    {% set site_url = site_url ~ "/index.html" %}
+                    {% endif %}
+                    <li><code>{{site_url}}</code> (<i>site_url</i>)
+
+                    <!-- Mitigate bug: https://github.com/mkdocs/mkdocs/issues/2191 -->
+                    {% set site_url = config.site_url | default(nav.homepage.url, true) | url %}
+                    {% if not config.use_directory_urls and site_url == "." %}
+                    {% set site_url = site_url ~ "/index.html" %}
+                    {% endif %}
+                    <li><code>{{site_url}}</code> (<i>previous site_url</i>)
+                      <hr>
+                    <li><code>{{config.site_url}}</code> (<i>config.site_url</i>)
+                    <li><code>{{nav.homepage.url}}</code> (<i>nav.homepage.url</i>)
+                    <li><code>{{config.use_directory_urls}}</code> (<i>config.use_directory_urls</i>)
+                    <li><code>{{page.url}}</code> (<i>page.url</i>)
+                    <li><code>{{base_url}}</code> (<i>base_url</i>)
+                  </ul>
+                </div>
+
             </article>
           </div>
         </div>
