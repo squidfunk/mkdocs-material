@@ -68,7 +68,7 @@
     "imagemin-webpack-plugin": "^2.4.2",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
-    "mini-css-extract-plugin": "^0.11.3",
+    "mini-css-extract-plugin": "^1.0.0",
     "postcss-inline-svg": "^4.1.0",
     "postcss-loader": "^4.0.4",
     "postcss-svgo": "^4.0.2",
