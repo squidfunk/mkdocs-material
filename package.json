@@ -60,7 +60,7 @@
     "copy-webpack-plugin": "^6.2.0",
     "css-loader": "^4.3.0",
     "event-hooks-webpack-plugin": "^2.1.7",
-    "expose-loader": "^1.0.0",
+    "expose-loader": "^1.0.1",
     "github-types": "^1.0.0",
     "gitlab": "^14.2.2",
     "html-minifier": "^4.0.0",
