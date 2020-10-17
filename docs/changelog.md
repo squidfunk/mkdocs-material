@@ -48,6 +48,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.1.0 <small>_ October 17, 2020</small>
+
+* Fixed #1973: Added support for printing in dark mode
+* Fixed #1974: Added support for printing content tabs
+* Fixed #1995: Improved customizability of details extension
+
 ### 6.0.2 <small>_ October 4, 2020</small>
 
 * Added Georgian translations

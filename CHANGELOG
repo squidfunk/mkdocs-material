@@ -1,3 +1,9 @@
+mkdocs-material-6.1.0 (2020-10-17)
+
+  * Fixed #1973: Added support for printing in dark mode
+  * Fixed #1974: Added support for printing content tabs
+  * Fixed #1995: Improved customizability of details extension
+
 mkdocs-material-6.0.2+insiders-1.6.0 (2020-10-11)
 
   * Added support for search suggestions to save keystrokes
