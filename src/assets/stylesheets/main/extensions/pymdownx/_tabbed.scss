@@ -34,6 +34,12 @@
     width: 100%;
     box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest);
 
+    // Show all tabs when printing
+    @media print {
+      display: block;
+      order: initial;
+    }
+
     // Mirror old superfences behavior, if there's only a single code block.
     > pre:only-child,
     > .codehilite:only-child pre,
