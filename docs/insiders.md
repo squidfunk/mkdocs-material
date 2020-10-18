@@ -49,7 +49,7 @@ get updates for Material for MkDocs Insiders, until you decide to cancel your
 monthly subscription, which you can do at any time.__
 
   [6]: https://github.com/sponsors/squidfunk
-  [7]: #roadmap
+  [7]: #available-features
   [8]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
   [9]: https://gitlab.com
   [10]: https://bitbucket.org
