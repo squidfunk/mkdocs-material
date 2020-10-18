@@ -1,7 +1,7 @@
 # Contributing
 
 Interested in contributing to the Material for MkDocs? Want to report a bug?
-Before you do, please read the following guidelines.
+Have a question? Before you do, please read the following guidelines.
 
 ## Submission context
 
@@ -27,8 +27,8 @@ a Pull Request with a fix. However, before doing so, please read the
 You can request a new feature by submitting an issue to our GitHub Repository.
 If you would like to implement a new feature, please submit an issue with a
 proposal for your work first, to be sure that it is of use for everyone, as
-the Material for MkDocs is highly opinionated. Please consider what kind of
-change it is:
+Material for MkDocs is highly opinionated. Please consider what kind of change
+it is:
 
 * For a **major feature**, first open an issue and outline your proposal so
   that it can be discussed. This will also allow us to better coordinate our

@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Question
-    url: https://stackoverflow.com
-    about: If you have a question ask it there! All questions on GitHub will be deleted!
+    url: https://gitter.im/squidfunk/mkdocs-material
+    about: Do not create issues for questions, ask them on Gitter

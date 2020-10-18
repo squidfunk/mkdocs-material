@@ -44,4 +44,4 @@ assignees: ''
 }[key] }}{% endmacro %}
 ```
 
-Thanks!
+<!-- Thanks you! You've made Material for MkDocs even better! -->
