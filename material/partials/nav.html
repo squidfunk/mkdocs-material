@@ -2,7 +2,7 @@
   This file was automatically generated - do not edit
 -#}
 {% set site_url = config.site_url | default(nav.homepage.url, true) | url %}
-{% if not config.use_directory_urls and site_url == "." %}
+{% if not config.use_directory_urls and site_url[0] == site_url[-1] == "." %}
   {% set site_url = site_url ~ "/index.html" %}
 {% endif %}
 <nav class="md-nav md-nav--primary" aria-label="{{ lang.t('nav.title') }}" data-md-level="0">
