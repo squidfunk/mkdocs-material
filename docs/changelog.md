@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.7.0 <small>_ October 25, 2020</small>
+
+* Added support for deploying multiple versions
+* Fixed alignment of sidebar when content area is too small
+
 ### 1.6.0 <small>_ October 11, 2020</small>
 
 * Added support for search suggestions to save keystrokes

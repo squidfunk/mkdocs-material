@@ -61,7 +61,7 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
 
 - [x] [Remove _Made with Material for MkDocs_ from footer][11]
 - [x] [Support for user-toggleable themes (light/dark mode switch)][12]
-- [x] [Support for multiple versions of documents][13]
+- [x] [Support for deploying multiple versions][13]
 - [x] [Search suggestions help to save keystrokes][14]
 - [x] [Highlighting of matched search terms in content area][15]
 - [x] Search goes to first result on ++enter++ (I'm feeling lucky)
@@ -111,8 +111,8 @@ in Material for MkDocs Insiders.
 [:octicons-flame-24: Funding goal: __$1,500__][6] ·
 :octicons-lock-24: Status: _exclusive_
 
-- [x] [Support for multiple versions of documents][13]
-- [ ] Support for multiple languages of documents 
+- [x] [Support for deploying multiple versions][13]
+- [ ] Support for deploying multiple languages
 
 ### Black Pearl
 

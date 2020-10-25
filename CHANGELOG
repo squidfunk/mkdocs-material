@@ -1,3 +1,8 @@
+mkdocs-material-6.1.0+insiders-1.7.0 (2020-10-25)
+
+  * Added support for deploying multiple versions
+  * Fixed alignment of sidebar when content area is too small
+
 mkdocs-material-6.1.0 (2020-10-17)
 
   * Fixed #1973: Added support for printing in dark mode
