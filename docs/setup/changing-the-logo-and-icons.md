@@ -100,8 +100,6 @@ your project documentation. The structure of your project should look like this:
 
 ``` sh
 .
-├─ docs/
-│  └─ index.md
 ├─ overrides/
 │  └─ .icons/
 │     └─ bootstrap/
