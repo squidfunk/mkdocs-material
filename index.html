@@ -1,4 +1,918 @@
-<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><link href=https://squidfunk.github.io/mkdocs-material/ rel=canonical><meta name=author content="Martin Donath"><link rel="shortcut icon" href=assets/favicon.png><meta name=generator content="mkdocs-1.1.2, mkdocs-material-6.1.0"><title>Material for MkDocs - Material for MkDocs</title><link rel=stylesheet href=assets/stylesheets/main.ce7da9e3.min.css><link rel=stylesheet href=assets/stylesheets/palette.31e6bbac.min.css><meta name=theme-color content=#4051b5><link href=https://fonts.gstatic.com rel=preconnect crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-73586301-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script><script async src=https://www.google-analytics.com/analytics.js></script><script>document.addEventListener("DOMContentLoaded",function(){document.body.addEventListener("click",function(e){if(e.target instanceof HTMLElement){var t=e.target.closest("a[href^=http]");t&&ga("send","event","outbound","click",t.href)}})})</script><meta property=og:type content=website><meta property=og:title content="Material for MkDocs"><meta property=og:description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><meta content=https://squidfunk.github.io/mkdocs-material/ property=og:url><meta property=og:image content=https://squidfunk.github.io/mkdocs-material/assets/images/banner.png><meta property=og:image:type content=image/png><meta property=og:image:width content=1080><meta property=og:image:height content=568><meta name=twitter:card content=summary_large_image><meta name=twitter:site content=@squidfunk><meta name=twitter:creator content=@squidfunk><meta name=twitter:title content="Material for MkDocs"><meta name=twitter:description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><meta name=twitter:image content=https://squidfunk.github.io/mkdocs-material/assets/images/banner.png><link rel=stylesheet href=assets/stylesheets/overrides.2a4bbe42.min.css></head> <body dir=ltr data-md-color-scheme=default data-md-color-primary=indigo data-md-color-accent=indigo> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> </div> <div data-md-component=announce> <aside class=md-announce> <div class="md-announce__inner md-grid md-typeset"> <a href=https://twitter.com/squidfunk> For updates follow <strong>@squidfunk</strong> on <span class="twemoji twitter"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> </span> <strong>Twitter</strong> </a> </div> </aside> </div> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid" aria-label=Header> <a href=https://squidfunk.github.io/mkdocs-material/ title="Material for MkDocs" class="md-header-nav__button md-logo" aria-label="Material for MkDocs"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path fill-opacity=.5 d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path fill-opacity=.25 d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"/></svg> </a> <label class="md-header-nav__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header-nav__title data-md-component=header-title> <div class=md-header-nav__ellipsis> <span class="md-header-nav__topic md-ellipsis"> Material for MkDocs </span> <span class="md-header-nav__topic md-ellipsis"> Material for MkDocs </span> </div> </div> <label class="md-header-nav__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query data-md-state=active> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <button type=reset class="md-search__icon md-icon" aria-label=Clear data-md-component=search-reset tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header-nav__source> <a href=https://github.com/squidfunk/mkdocs-material title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> squidfunk/mkdocs-material </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <nav class=md-tabs aria-label=Tabs data-md-component=tabs> <div class="md-tabs__inner md-grid"> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=. class="md-tabs__link md-tabs__link--active"> Home </a> </li> <li class=md-tabs__item> <a href=getting-started/ class=md-tabs__link> Getting started </a> </li> <li class=md-tabs__item> <a href=setup/changing-the-colors/ class=md-tabs__link> Setup </a> </li> <li class=md-tabs__item> <a href=reference/abbreviations/ class=md-tabs__link> Reference </a> </li> <li class=md-tabs__item> <a href=changelog/ class=md-tabs__link> Changelog </a> </li> </ul> </div> </nav> <style>.md-header{position:initial}.md-main__inner{margin:0}.md-content{display:none}@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}@media screen and (min-width:76.25em){.md-sidebar--primary{display:none}}</style> <section class=tx-container> <div class="md-grid md-typeset"> <div class=tx-hero> <div class=tx-hero__image> <img src=assets/images/illustration.png alt width=1659 height=1200 draggable=false> </div> <div class=tx-hero__content> <h1>Technical documentation that just works</h1> <p>Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages. Set up in 5 minutes.</p> <a href=getting-started/ title=Installation class="md-button md-button--primary"> Quick start </a> <a href=insiders/ title="Material for MkDocs Insiders" class=md-button> Get Insiders </a> </div> </div> </div> </section> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://squidfunk.github.io/mkdocs-material/ title="Material for MkDocs" class="md-nav__button md-logo" aria-label="Material for MkDocs"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path fill-opacity=.5 d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path fill-opacity=.25 d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"/></svg> </a> Material for MkDocs </label> <div class=md-nav__source> <a href=https://github.com/squidfunk/mkdocs-material title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> squidfunk/mkdocs-material </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <a href=. class="md-nav__link md-nav__link--active"> Home </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-2 type=checkbox id=nav-2> <label class=md-nav__link for=nav-2> Getting started <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Getting started" data-md-level=1> <label class=md-nav__title for=nav-2> <span class="md-nav__icon md-icon"></span> Getting started </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=getting-started/ class=md-nav__link> Installation </a> </li> <li class=md-nav__item> <a href=creating-your-site/ class=md-nav__link> Creating your site </a> </li> <li class=md-nav__item> <a href=publishing-your-site/ class=md-nav__link> Publishing your site </a> </li> <li class=md-nav__item> <a href=customization/ class=md-nav__link> Customization </a> </li> <li class=md-nav__item> <a href=troubleshooting/ class=md-nav__link> Troubleshooting </a> </li> <li class=md-nav__item> <a href=data-privacy/ class=md-nav__link> Data privacy </a> </li> <li class=md-nav__item> <a href=insiders/ class=md-nav__link> Insiders </a> </li> <li class=md-nav__item> <a href=license/ class=md-nav__link> License </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-3 type=checkbox id=nav-3> <label class=md-nav__link for=nav-3> Setup <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Setup data-md-level=1> <label class=md-nav__title for=nav-3> <span class="md-nav__icon md-icon"></span> Setup </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=setup/changing-the-colors/ class=md-nav__link> Changing the colors </a> </li> <li class=md-nav__item> <a href=setup/changing-the-fonts/ class=md-nav__link> Changing the fonts </a> </li> <li class=md-nav__item> <a href=setup/changing-the-language/ class=md-nav__link> Changing the language </a> </li> <li class=md-nav__item> <a href=setup/changing-the-logo-and-icons/ class=md-nav__link> Changing the logo and icons </a> </li> <li class=md-nav__item> <a href=setup/setting-up-navigation/ class=md-nav__link> Setting up navigation </a> </li> <li class=md-nav__item> <a href=setup/setting-up-site-search/ class=md-nav__link> Setting up site search </a> </li> <li class=md-nav__item> <a href=setup/setting-up-site-analytics/ class=md-nav__link> Setting up site analytics </a> </li> <li class=md-nav__item> <a href=setup/setting-up-versioning/ class=md-nav__link> Setting up versioning </a> </li> <li class=md-nav__item> <a href=setup/setting-up-the-header/ class=md-nav__link> Setting up the header </a> </li> <li class=md-nav__item> <a href=setup/setting-up-the-footer/ class=md-nav__link> Setting up the footer </a> </li> <li class=md-nav__item> <a href=setup/adding-a-git-repository/ class=md-nav__link> Adding a git repository </a> </li> <li class=md-nav__item> <a href=setup/adding-a-comment-system/ class=md-nav__link> Adding a comment system </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-4 type=checkbox id=nav-4> <label class=md-nav__link for=nav-4> Reference <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Reference data-md-level=1> <label class=md-nav__title for=nav-4> <span class="md-nav__icon md-icon"></span> Reference </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=reference/abbreviations/ class=md-nav__link> Abbreviations </a> </li> <li class=md-nav__item> <a href=reference/admonitions/ class=md-nav__link> Admonitions </a> </li> <li class=md-nav__item> <a href=reference/buttons/ class=md-nav__link> Buttons </a> </li> <li class=md-nav__item> <a href=reference/code-blocks/ class=md-nav__link> Code blocks </a> </li> <li class=md-nav__item> <a href=reference/content-tabs/ class=md-nav__link> Content tabs </a> </li> <li class=md-nav__item> <a href=reference/data-tables/ class=md-nav__link> Data tables </a> </li> <li class=md-nav__item> <a href=reference/footnotes/ class=md-nav__link> Footnotes </a> </li> <li class=md-nav__item> <a href=reference/formatting/ class=md-nav__link> Formatting </a> </li> <li class=md-nav__item> <a href=reference/icons-emojis/ class=md-nav__link> Icons + Emojis </a> </li> <li class=md-nav__item> <a href=reference/images/ class=md-nav__link> Images </a> </li> <li class=md-nav__item> <a href=reference/lists/ class=md-nav__link> Lists </a> </li> <li class=md-nav__item> <a href=reference/mathjax/ class=md-nav__link> MathJax </a> </li> <li class=md-nav__item> <a href=reference/meta-tags/ class=md-nav__link> Meta tags </a> </li> <li class=md-nav__item> <a href=reference/variables/ class=md-nav__link> Variables </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-5 type=checkbox id=nav-5> <label class=md-nav__link for=nav-5> Changelog <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Changelog data-md-level=1> <label class=md-nav__title for=nav-5> <span class="md-nav__icon md-icon"></span> Changelog </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=changelog/ class=md-nav__link> Release notes </a> </li> <li class=md-nav__item> <a href=upgrading/ class=md-nav__link> Upgrading </a> </li> <li class=md-nav__item> <a href=deprecations/ class=md-nav__link> Deprecations </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> </article> </div> </div> </main> </div> <script src=assets/javascripts/vendor.a018d6bb.min.js></script> <script src=assets/javascripts/bundle.4b42b5e6.min.js></script><script id=__lang type=application/json>{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script> <script>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages">
+      
+      
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/">
+      
+      
+        <meta name="author" content="Martin Donath">
+      
+      <link rel="shortcut icon" href="assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Material for MkDocs - Material for MkDocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ce7da9e3.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.31e6bbac.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+  
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","None","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+  <script>document.addEventListener("DOMContentLoaded",function(){document.body.addEventListener("click",function(e){if(e.target instanceof HTMLElement){var t=e.target.closest("a[href^=http]");t&&ga("send","event","outbound","click",t.href)}})})</script>
+
+    
+  
+  
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Material for MkDocs">
+  <meta property="og:description" content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages">
+  <meta property="og:url" content="https://squidfunk.github.io/mkdocs-material/">
+  <meta property="og:image" content="https://squidfunk.github.io/mkdocs-material/assets/images/banner.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="568">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@squidfunk">
+  <meta name="twitter:creator" content="@squidfunk">
+  <meta name="twitter:title" content="Material for MkDocs">
+  <meta name="twitter:description" content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages">
+  <meta name="twitter:image" content="https://squidfunk.github.io/mkdocs-material/assets/images/banner.png">
+  <link rel="stylesheet" href="assets/stylesheets/overrides.2a4bbe42.min.css">
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-announce">
+          <div class="md-announce__inner md-grid md-typeset">
+            
+  <a href="https://twitter.com/squidfunk">
+    For updates follow <strong>@squidfunk</strong> on
+    <span class="twemoji twitter">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </span>
+    <strong>Twitter</strong>
+  </a>
+
+          </div>
+        </aside>
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs" class="md-header-nav__button md-logo" aria-label="Material for MkDocs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z" fill-opacity=".5"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z" fill-opacity=".25"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Material for MkDocs
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Material for MkDocs
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/squidfunk/mkdocs-material" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    squidfunk/mkdocs-material
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+  
+        
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="getting-started/" class="md-tabs__link">
+          Getting started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="setup/changing-the-colors/" class="md-tabs__link">
+          Setup
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="reference/abbreviations/" class="md-tabs__link">
+          Reference
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="changelog/" class="md-tabs__link">
+          Changelog
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+  <style>.md-header{position:initial}.md-main__inner{margin:0}.md-content{display:none}@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}@media screen and (min-width:76.25em){.md-sidebar--primary{display:none}}</style>
+  <section class="tx-container">
+    <div class="md-grid md-typeset">
+      <div class="tx-hero">
+        <div class="tx-hero__image">
+          <img src="assets/images/illustration.png" alt="" width="1659" height="1200" draggable="false">
+        </div>
+        <div class="tx-hero__content">
+          <h1>Technical documentation that just works</h1>
+          <p>Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages. Set up in 5 minutes.</p>
+          <a href="getting-started/" title="Installation" class="md-button md-button--primary">
+            Quick start
+          </a>
+          <a href="insiders/" title="Material for MkDocs Insiders" class="md-button">
+            Get Insiders
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs" class="md-nav__button md-logo" aria-label="Material for MkDocs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z" fill-opacity=".5"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z" fill-opacity=".25"/></svg>
+
+    </a>
+    Material for MkDocs
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/squidfunk/mkdocs-material" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    squidfunk/mkdocs-material
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="." class="md-nav__link md-nav__link--active">
+      Home
+    </a>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Getting started
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Getting started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started/" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="creating-your-site/" class="md-nav__link">
+      Creating your site
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="publishing-your-site/" class="md-nav__link">
+      Publishing your site
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="customization/" class="md-nav__link">
+      Customization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="troubleshooting/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="data-privacy/" class="md-nav__link">
+      Data privacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="insiders/" class="md-nav__link">
+      Insiders
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="license/" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Setup" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/changing-the-colors/" class="md-nav__link">
+      Changing the colors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/changing-the-fonts/" class="md-nav__link">
+      Changing the fonts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/changing-the-language/" class="md-nav__link">
+      Changing the language
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/changing-the-logo-and-icons/" class="md-nav__link">
+      Changing the logo and icons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/setting-up-navigation/" class="md-nav__link">
+      Setting up navigation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/setting-up-site-search/" class="md-nav__link">
+      Setting up site search
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/setting-up-site-analytics/" class="md-nav__link">
+      Setting up site analytics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/setting-up-versioning/" class="md-nav__link">
+      Setting up versioning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/setting-up-the-header/" class="md-nav__link">
+      Setting up the header
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/setting-up-the-footer/" class="md-nav__link">
+      Setting up the footer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/adding-a-git-repository/" class="md-nav__link">
+      Adding a git repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/adding-a-comment-system/" class="md-nav__link">
+      Adding a comment system
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/abbreviations/" class="md-nav__link">
+      Abbreviations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/admonitions/" class="md-nav__link">
+      Admonitions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/buttons/" class="md-nav__link">
+      Buttons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/code-blocks/" class="md-nav__link">
+      Code blocks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/content-tabs/" class="md-nav__link">
+      Content tabs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/data-tables/" class="md-nav__link">
+      Data tables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/footnotes/" class="md-nav__link">
+      Footnotes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/formatting/" class="md-nav__link">
+      Formatting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/icons-emojis/" class="md-nav__link">
+      Icons + Emojis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/images/" class="md-nav__link">
+      Images
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/lists/" class="md-nav__link">
+      Lists
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/mathjax/" class="md-nav__link">
+      MathJax
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/meta-tags/" class="md-nav__link">
+      Meta tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reference/variables/" class="md-nav__link">
+      Variables
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Changelog
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Changelog" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Changelog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="changelog/" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="upgrading/" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="deprecations/" class="md-nav__link">
+      Deprecations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.a018d6bb.min.js"></script>
+      <script src="assets/javascripts/bundle.4b42b5e6.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
         app = initialize({
           base: ".",
           features: ['navigation.tabs'],
@@ -6,4 +920,8 @@
             worker: "assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
-      </script> </body> </html>
+      </script>
+      
+    
+  </body>
+</html>

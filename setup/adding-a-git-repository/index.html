@@ -1,26 +1,1314 @@
-<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><link href=https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/ rel=canonical><meta name=author content="Martin Donath"><link rel="shortcut icon" href=../../assets/favicon.png><meta name=generator content="mkdocs-1.1.2, mkdocs-material-6.1.0"><title>Adding a git repository - Material for MkDocs</title><link rel=stylesheet href=../../assets/stylesheets/main.ce7da9e3.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.31e6bbac.min.css><meta name=theme-color content=#4051b5><link href=https://fonts.gstatic.com rel=preconnect crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback"><style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-73586301-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script><script async src=https://www.google-analytics.com/analytics.js></script><script>document.addEventListener("DOMContentLoaded",function(){document.body.addEventListener("click",function(e){if(e.target instanceof HTMLElement){var t=e.target.closest("a[href^=http]");t&&ga("send","event","outbound","click",t.href)}})})</script><meta property=og:type content=website><meta property=og:title content="Material for MkDocs - Adding a git repository"><meta property=og:description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><meta content=https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/ property=og:url><meta property=og:image content=https://squidfunk.github.io/mkdocs-material/assets/images/banner.png><meta property=og:image:type content=image/png><meta property=og:image:width content=1080><meta property=og:image:height content=568><meta name=twitter:card content=summary_large_image><meta name=twitter:site content=@squidfunk><meta name=twitter:creator content=@squidfunk><meta name=twitter:title content="Material for MkDocs - Adding a git repository"><meta name=twitter:description content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages"><meta name=twitter:image content=https://squidfunk.github.io/mkdocs-material/assets/images/banner.png><link rel=stylesheet href=../../assets/stylesheets/overrides.2a4bbe42.min.css></head> <body dir=ltr data-md-color-scheme=default data-md-color-primary=indigo data-md-color-accent=indigo> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#adding-a-git-repository class=md-skip> Skip to content </a> </div> <div data-md-component=announce> <aside class=md-announce> <div class="md-announce__inner md-grid md-typeset"> <a href=https://twitter.com/squidfunk> For updates follow <strong>@squidfunk</strong> on <span class="twemoji twitter"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> </span> <strong>Twitter</strong> </a> </div> </aside> </div> <header class=md-header data-md-component=header> <nav class="md-header-nav md-grid" aria-label=Header> <a href=https://squidfunk.github.io/mkdocs-material/ title="Material for MkDocs" class="md-header-nav__button md-logo" aria-label="Material for MkDocs"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path fill-opacity=.5 d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path fill-opacity=.25 d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"/></svg> </a> <label class="md-header-nav__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg> </label> <div class=md-header-nav__title data-md-component=header-title> <div class=md-header-nav__ellipsis> <span class="md-header-nav__topic md-ellipsis"> Material for MkDocs </span> <span class="md-header-nav__topic md-ellipsis"> Adding a git repository </span> </div> </div> <label class="md-header-nav__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query data-md-state=active> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </label> <button type=reset class="md-search__icon md-icon" aria-label=Clear data-md-component=search-reset tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg> </button> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header-nav__source> <a href=https://github.com/squidfunk/mkdocs-material title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> squidfunk/mkdocs-material </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <nav class="md-tabs md-tabs--active" aria-label=Tabs data-md-component=tabs> <div class="md-tabs__inner md-grid"> <ul class=md-tabs__list> <li class=md-tabs__item> <a href=../.. class=md-tabs__link> Home </a> </li> <li class=md-tabs__item> <a href=../../getting-started/ class=md-tabs__link> Getting started </a> </li> <li class=md-tabs__item> <a href=../changing-the-colors/ class="md-tabs__link md-tabs__link--active"> Setup </a> </li> <li class=md-tabs__item> <a href=../../reference/abbreviations/ class=md-tabs__link> Reference </a> </li> <li class=md-tabs__item> <a href=../../changelog/ class=md-tabs__link> Changelog </a> </li> </ul> </div> </nav> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://squidfunk.github.io/mkdocs-material/ title="Material for MkDocs" class="md-nav__button md-logo" aria-label="Material for MkDocs"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path fill-opacity=.5 d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path fill-opacity=.25 d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"/></svg> </a> Material for MkDocs </label> <div class=md-nav__source> <a href=https://github.com/squidfunk/mkdocs-material title="Go to repository" class=md-source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg> </div> <div class=md-source__repository> squidfunk/mkdocs-material </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. class=md-nav__link> Home </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-2 type=checkbox id=nav-2> <label class=md-nav__link for=nav-2> Getting started <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Getting started" data-md-level=1> <label class=md-nav__title for=nav-2> <span class="md-nav__icon md-icon"></span> Getting started </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../getting-started/ class=md-nav__link> Installation </a> </li> <li class=md-nav__item> <a href=../../creating-your-site/ class=md-nav__link> Creating your site </a> </li> <li class=md-nav__item> <a href=../../publishing-your-site/ class=md-nav__link> Publishing your site </a> </li> <li class=md-nav__item> <a href=../../customization/ class=md-nav__link> Customization </a> </li> <li class=md-nav__item> <a href=../../troubleshooting/ class=md-nav__link> Troubleshooting </a> </li> <li class=md-nav__item> <a href=../../data-privacy/ class=md-nav__link> Data privacy </a> </li> <li class=md-nav__item> <a href=../../insiders/ class=md-nav__link> Insiders </a> </li> <li class=md-nav__item> <a href=../../license/ class=md-nav__link> License </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-3 type=checkbox id=nav-3 checked> <label class=md-nav__link for=nav-3> Setup <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Setup data-md-level=1> <label class=md-nav__title for=nav-3> <span class="md-nav__icon md-icon"></span> Setup </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../changing-the-colors/ class=md-nav__link> Changing the colors </a> </li> <li class=md-nav__item> <a href=../changing-the-fonts/ class=md-nav__link> Changing the fonts </a> </li> <li class=md-nav__item> <a href=../changing-the-language/ class=md-nav__link> Changing the language </a> </li> <li class=md-nav__item> <a href=../changing-the-logo-and-icons/ class=md-nav__link> Changing the logo and icons </a> </li> <li class=md-nav__item> <a href=../setting-up-navigation/ class=md-nav__link> Setting up navigation </a> </li> <li class=md-nav__item> <a href=../setting-up-site-search/ class=md-nav__link> Setting up site search </a> </li> <li class=md-nav__item> <a href=../setting-up-site-analytics/ class=md-nav__link> Setting up site analytics </a> </li> <li class=md-nav__item> <a href=../setting-up-versioning/ class=md-nav__link> Setting up versioning </a> </li> <li class=md-nav__item> <a href=../setting-up-the-header/ class=md-nav__link> Setting up the header </a> </li> <li class=md-nav__item> <a href=../setting-up-the-footer/ class=md-nav__link> Setting up the footer </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> Adding a git repository <span class="md-nav__icon md-icon"></span> </label> <a href=./ class="md-nav__link md-nav__link--active"> Adding a git repository </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#configuration class=md-nav__link> Configuration </a> <nav class=md-nav aria-label=Configuration> <ul class=md-nav__list> <li class=md-nav__item> <a href=#repository-name class=md-nav__link> Repository name </a> </li> <li class=md-nav__item> <a href=#repository-icon class=md-nav__link> Repository icon </a> </li> <li class=md-nav__item> <a href=#edit-button class=md-nav__link> Edit button </a> </li> <li class=md-nav__item> <a href=#revision-date class=md-nav__link> Revision date </a> </li> <li class=md-nav__item> <a href=#revision-date-localized class=md-nav__link> Revision date, localized </a> </li> </ul> </nav> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../adding-a-comment-system/ class=md-nav__link> Adding a comment system </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-4 type=checkbox id=nav-4> <label class=md-nav__link for=nav-4> Reference <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Reference data-md-level=1> <label class=md-nav__title for=nav-4> <span class="md-nav__icon md-icon"></span> Reference </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../reference/abbreviations/ class=md-nav__link> Abbreviations </a> </li> <li class=md-nav__item> <a href=../../reference/admonitions/ class=md-nav__link> Admonitions </a> </li> <li class=md-nav__item> <a href=../../reference/buttons/ class=md-nav__link> Buttons </a> </li> <li class=md-nav__item> <a href=../../reference/code-blocks/ class=md-nav__link> Code blocks </a> </li> <li class=md-nav__item> <a href=../../reference/content-tabs/ class=md-nav__link> Content tabs </a> </li> <li class=md-nav__item> <a href=../../reference/data-tables/ class=md-nav__link> Data tables </a> </li> <li class=md-nav__item> <a href=../../reference/footnotes/ class=md-nav__link> Footnotes </a> </li> <li class=md-nav__item> <a href=../../reference/formatting/ class=md-nav__link> Formatting </a> </li> <li class=md-nav__item> <a href=../../reference/icons-emojis/ class=md-nav__link> Icons + Emojis </a> </li> <li class=md-nav__item> <a href=../../reference/images/ class=md-nav__link> Images </a> </li> <li class=md-nav__item> <a href=../../reference/lists/ class=md-nav__link> Lists </a> </li> <li class=md-nav__item> <a href=../../reference/mathjax/ class=md-nav__link> MathJax </a> </li> <li class=md-nav__item> <a href=../../reference/meta-tags/ class=md-nav__link> Meta tags </a> </li> <li class=md-nav__item> <a href=../../reference/variables/ class=md-nav__link> Variables </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=nav-5 type=checkbox id=nav-5> <label class=md-nav__link for=nav-5> Changelog <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=Changelog data-md-level=1> <label class=md-nav__title for=nav-5> <span class="md-nav__icon md-icon"></span> Changelog </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../changelog/ class=md-nav__link> Release notes </a> </li> <li class=md-nav__item> <a href=../../upgrading/ class=md-nav__link> Upgrading </a> </li> <li class=md-nav__item> <a href=../../deprecations/ class=md-nav__link> Deprecations </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=#configuration class=md-nav__link> Configuration </a> <nav class=md-nav aria-label=Configuration> <ul class=md-nav__list> <li class=md-nav__item> <a href=#repository-name class=md-nav__link> Repository name </a> </li> <li class=md-nav__item> <a href=#repository-icon class=md-nav__link> Repository icon </a> </li> <li class=md-nav__item> <a href=#edit-button class=md-nav__link> Edit button </a> </li> <li class=md-nav__item> <a href=#revision-date class=md-nav__link> Revision date </a> </li> <li class=md-nav__item> <a href=#revision-date-localized class=md-nav__link> Revision date, localized </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class=md-content> <article class="md-content__inner md-typeset"> <h1 id=adding-a-git-repository>Adding a git repository<a class=headerlink href=#adding-a-git-repository title="Permanent link">&para;</a></h1> <p>If your documentation is related to source code, Material for MkDocs provides the ability to display information to the project's repository as part of the static site, including statistics like stars and forks. Furthermore, individual documents can be linked to specific source files.</p> <h2 id=configuration>Configuration<a class=headerlink href=#configuration title="Permanent link">&para;</a></h2> <p>In order to display a link to the repository of your project as part of your documentation, set <a href=https://www.mkdocs.org/user-guide/configuration/#repo_url><code>repo_url</code></a> in <code>mkdocs.yml</code> to the public URL of your repository, e.g.:</p> <div class=highlight><pre><span></span><code><span class=nt>repo_url</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/squidfunk/mkdocs-material</span>
-</code></pre></div> <p>The link to the repository will be rendered next to the search bar on big screens and as part of the main navigation drawer on smaller screen sizes. Additionally, for GitHub and GitLab, the number of stars and forks is automatically requested and rendered for <em>public repositories</em>.</p> <h3 id=repository-name>Repository name<a class=headerlink href=#repository-name title="Permanent link">&para;</a></h3> <p><a href=https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source.html><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> · <span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default: <em>automatically set to</em> <code>GitHub</code>, <code>GitLab</code> <em>or</em> <code>Bitbucket</code></p> <p>MkDocs will infer the source provider by examining the URL and try to set the <em>repository name</em> automatically. If you wish to customize the name, set <a href=https://www.mkdocs.org/user-guide/configuration/#repo_name><code>repo_name</code></a> in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>repo_name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">squidfunk/mkdocs-material</span>
-</code></pre></div> <h3 id=repository-icon>Repository icon<a class=headerlink href=#repository-icon title="Permanent link">&para;</a></h3> <p><a href=https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source.html><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> · <span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default: <code>fontawesome/brands/git-alt</code></p> <p>While the default <em>repository icon</em> is a generic git icon, it can be set to <a href=https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons>any icon bundled with the theme</a> by referencing a valid icon path in <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>theme</span><span class=p>:</span>
-  <span class=nt>icon</span><span class=p>:</span>
-    <span class=nt>repo</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/git-alt</span>
-</code></pre></div> <p>Some popular choices:</p> <ul> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M216.29 158.39H137C97 147.9 6.51 150.63 6.51 233.18c0 30.09 15 51.23 35 61-25.1 23-37 33.85-37 49.21 0 11 4.47 21.14 17.89 26.81C8.13 383.61 0 393.35 0 411.65c0 32.11 28.05 50.82 101.63 50.82 70.75 0 111.79-26.42 111.79-73.18 0-58.66-45.16-56.5-151.63-63l13.43-21.55c27.27 7.58 118.7 10 118.7-67.89 0-18.7-7.73-31.71-15-41.07l37.41-2.84zm-63.42 241.9c0 32.06-104.89 32.1-104.89 2.43 0-8.14 5.27-15 10.57-21.54 77.71 5.3 94.32 3.37 94.32 19.11zm-50.81-134.58c-52.8 0-50.46-71.16 1.2-71.16 49.54 0 50.82 71.16-1.2 71.16zm133.3 100.51v-32.1c26.75-3.66 27.24-2 27.24-11V203.61c0-8.5-2.05-7.38-27.24-16.26l4.47-32.92H324v168.71c0 6.51.4 7.32 6.51 8.14l20.73 2.84v32.1zm52.45-244.31c-23.17 0-36.59-13.43-36.59-36.61s13.42-35.77 36.59-35.77c23.58 0 37 12.62 37 35.77s-13.42 36.61-37 36.61zM512 350.46c-17.49 8.53-43.1 16.26-66.28 16.26-48.38 0-66.67-19.5-66.67-65.46V194.75c0-5.42 1.05-4.06-31.71-4.06V154.5c35.78-4.07 50-22 54.47-66.27h38.63c0 65.83-1.34 61.81 3.26 61.81H501v40.65h-60.56v97.15c0 6.92-4.92 51.41 60.57 26.84z"/></svg></span> – <code>fontawesome/brands/git</code></li> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg></span> – <code>fontawesome/brands/git-alt</code></li> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M100.59 334.24c48.57 3.31 58.95 2.11 58.95 11.94 0 20-65.55 20.06-65.55 1.52.01-5.09 3.29-9.4 6.6-13.46zm27.95-116.64c-32.29 0-33.75 44.47-.75 44.47 32.51 0 31.71-44.47.75-44.47zM448 80v352a48 48 0 01-48 48H48a48 48 0 01-48-48V80a48 48 0 0148-48h352a48 48 0 0148 48zm-227 69.31c0 14.49 8.38 22.88 22.86 22.88 14.74 0 23.13-8.39 23.13-22.88S258.62 127 243.88 127c-14.48 0-22.88 7.84-22.88 22.31zM199.18 195h-49.55c-25-6.55-81.56-4.85-81.56 46.75 0 18.8 9.4 32 21.85 38.11C74.23 294.23 66.8 301 66.8 310.6c0 6.87 2.79 13.22 11.18 16.76-8.9 8.4-14 14.48-14 25.92C64 373.35 81.53 385 127.52 385c44.22 0 69.87-16.51 69.87-45.73 0-36.67-28.23-35.32-94.77-39.38l8.38-13.43c17 4.74 74.19 6.23 74.19-42.43 0-11.69-4.83-19.82-9.4-25.67l23.38-1.78zm84.34 109.84l-13-1.78c-3.82-.51-4.07-1-4.07-5.09V192.52h-52.6l-2.79 20.57c15.75 5.55 17 4.86 17 10.17V298c0 5.62-.31 4.58-17 6.87v20.06h72.42zM384 315l-6.87-22.37c-40.93 15.37-37.85-12.41-37.85-16.73v-60.72h37.85v-25.41h-35.82c-2.87 0-2 2.52-2-38.63h-24.18c-2.79 27.7-11.68 38.88-34 41.42v22.62c20.47 0 19.82-.85 19.82 2.54v66.57c0 28.72 11.43 40.91 41.67 40.91 14.45 0 30.45-4.83 41.38-10.2z"/></svg></span> – <code>fontawesome/brands/git-square</code></li> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span> – <code>fontawesome/brands/github</code></li> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg></span> – <code>fontawesome/brands/github-alt</code></li> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg></span> – <code>fontawesome/brands/github-square</code></li> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M105.2 24.9c-3.1-8.9-15.7-8.9-18.9 0L29.8 199.7h132c-.1 0-56.6-174.8-56.6-174.8zM.9 287.7c-2.6 8 .3 16.9 7.1 22l247.9 184-226.2-294zm160.8-88l94.3 294 94.3-294zm349.4 88l-28.8-88-226.3 294 247.9-184c6.9-5.1 9.7-14 7.2-22zM425.7 24.9c-3.1-8.9-15.7-8.9-18.9 0l-56.6 174.8h132z"/></svg></span> – <code>fontawesome/brands/gitlab</code></li> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 592 512"><path d="M565.7 118.1c-2.3-6.1-9.3-9.2-15.3-6.6-5.7 2.4-8.5 8.9-6.3 14.6 10.9 29 16.9 60.5 16.9 93.3 0 134.6-100.3 245.7-230.2 262.7V358.4c7.9-1.5 15.5-3.6 23-6.2v104c106.7-25.9 185.9-122.1 185.9-236.8 0-91.8-50.8-171.8-125.8-213.3-5.7-3.2-13-.9-15.9 5-2.7 5.5-.6 12.2 4.7 15.1 67.9 37.6 113.9 110 113.9 193.2 0 93.3-57.9 173.1-139.8 205.4v-92.2c14.2-4.5 24.9-17.7 24.9-33.5 0-13.1-6.8-24.4-17.3-30.5 8.3-79.5 44.5-58.6 44.5-83.9V170c0-38-87.9-161.8-129-164.7-2.5-.2-5-.2-7.6 0C251.1 8.3 163.2 132 163.2 170v14.8c0 25.3 36.3 4.3 44.5 83.9-10.6 6.1-17.3 17.4-17.3 30.5 0 15.8 10.6 29 24.8 33.5v92.2c-81.9-32.2-139.8-112-139.8-205.4 0-83.1 46-155.5 113.9-193.2 5.4-3 7.4-9.6 4.7-15.1-2.9-5.9-10.1-8.2-15.9-5-75 41.5-125.8 121.5-125.8 213.3 0 114.7 79.2 210.8 185.9 236.8v-104c7.6 2.5 15.1 4.6 23 6.2v123.7C131.4 465.2 31 354.1 31 219.5c0-32.8 6-64.3 16.9-93.3 2.2-5.8-.6-12.2-6.3-14.6-6-2.6-13 .4-15.3 6.6C14.5 149.7 8 183.8 8 219.5c0 155.1 122.6 281.6 276.3 287.8V361.4c6.8.4 15 .5 23.4 0v145.8C461.4 501.1 584 374.6 584 219.5c0-35.7-6.5-69.8-18.3-101.4zM365.9 275.5c13 0 23.7 10.5 23.7 23.7 0 13.1-10.6 23.7-23.7 23.7-13 0-23.7-10.5-23.7-23.7 0-13.1 10.6-23.7 23.7-23.7zm-139.8 47.3c-13.2 0-23.7-10.7-23.7-23.7s10.5-23.7 23.7-23.7c13.1 0 23.7 10.6 23.7 23.7 0 13-10.5 23.7-23.7 23.7z"/></svg></span> – <code>fontawesome/brands/gitkraken</code></li> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M22.2 32A16 16 0 006 47.8a26.35 26.35 0 00.2 2.8l67.9 412.1a21.77 21.77 0 0021.3 18.2h325.7a16 16 0 0016-13.4L505 50.7a16 16 0 00-13.2-18.3 24.58 24.58 0 00-2.8-.2L22.2 32zm285.9 297.8h-104l-28.1-147h157.3l-25.2 147z"/></svg></span> – <code>fontawesome/brands/bitbucket</code></li> <li><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M432 32H312l-9.4-18.7A24 24 0 00281.1 0H166.8a23.72 23.72 0 00-21.4 13.3L136 32H16A16 16 0 000 48v32a16 16 0 0016 16h416a16 16 0 0016-16V48a16 16 0 00-16-16zM53.2 467a48 48 0 0047.9 45h245.8a48 48 0 0047.9-45L416 128H32z"/></svg></span> – <code>fontawesome/solid/trash</code></li> </ul> <h3 id=edit-button>Edit button<a class=headerlink href=#edit-button title="Permanent link">&para;</a></h3> <p><a href=https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L285-L294><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> · <span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default: <em>automatically set</em></p> <p>If the repository URL points to a <a href=https://github.com/ >GitHub</a>, <a href=https://about.gitlab.com/ >GitLab</a> or <a href=https://bitbucket.org/ >Bitbucket</a> repository, an <em>edit button</em> is displayed at the top of each document. This behavior can be changed by setting <a href=https://www.mkdocs.org/user-guide/configuration/#edit_uri><code>edit_uri</code></a> in <code>mkdocs.yml</code>:</p> <div class=tabbed-set data-tabs=1:2><input checked=checked id=__tabbed_1_1 name=__tabbed_1 type=radio><label for=__tabbed_1_1>Customize edit path</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>edit_uri</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">edit/master/docs/</span>
-</code></pre></div> </div> <input id=__tabbed_1_2 name=__tabbed_1 type=radio><label for=__tabbed_1_2>Hide edit button</label><div class=tabbed-content> <div class=highlight><pre><span></span><code><span class=nt>edit_uri</span><span class=p>:</span> <span class=s>&quot;&quot;</span>
-</code></pre></div> </div> </div> <h3 id=revision-date>Revision date<a class=headerlink href=#revision-date title="Permanent link">&para;</a></h3> <p><a href=https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-date.html><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> · <a href=https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M8.75 8a.75.75 0 00-.75.75v6.5c0 .414.336.75.75.75h6.5a.75.75 0 00.75-.75v-6.5a.75.75 0 00-.75-.75h-6.5zm.75 6.5v-5h5v5h-5z"/><path fill-rule=evenodd d="M15.25 1a.75.75 0 01.75.75V4h2.25c.966 0 1.75.784 1.75 1.75V8h2.25a.75.75 0 010 1.5H20v5h2.25a.75.75 0 010 1.5H20v2.25A1.75 1.75 0 0118.25 20H16v2.25a.75.75 0 01-1.5 0V20h-5v2.25a.75.75 0 01-1.5 0V20H5.75A1.75 1.75 0 014 18.25V16H1.75a.75.75 0 010-1.5H4v-5H1.75a.75.75 0 010-1.5H4V5.75C4 4.784 4.784 4 5.75 4H8V1.75a.75.75 0 011.5 0V4h5V1.75a.75.75 0 01.75-.75zm3 17.5a.25.25 0 00.25-.25V5.75a.25.25 0 00-.25-.25H5.75a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h12.5z"/></svg></span> Plugin</a></p> <p>The <a href=https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin>git-revision-date</a> plugin adds support for displaying the date a document was <em>last updated</em> at the bottom of each page. It can be installed with <code>pip</code>:</p> <div class=highlight><pre><span></span><code>pip install mkdocs-git-revision-date-plugin
-</code></pre></div> <p>Then, add the following to <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>plugins</span><span class=p>:</span>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages">
+      
+      
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/">
+      
+      
+        <meta name="author" content="Martin Donath">
+      
+      <link rel="shortcut icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Adding a git repository - Material for MkDocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ce7da9e3.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.31e6bbac.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+  
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","None","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+  <script>document.addEventListener("DOMContentLoaded",function(){document.body.addEventListener("click",function(e){if(e.target instanceof HTMLElement){var t=e.target.closest("a[href^=http]");t&&ga("send","event","outbound","click",t.href)}})})</script>
+
+    
+  
+  
+    
+  
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Material for MkDocs - Adding a git repository">
+  <meta property="og:description" content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages">
+  <meta property="og:url" content="https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/">
+  <meta property="og:image" content="https://squidfunk.github.io/mkdocs-material/assets/images/banner.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="568">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@squidfunk">
+  <meta name="twitter:creator" content="@squidfunk">
+  <meta name="twitter:title" content="Material for MkDocs - Adding a git repository">
+  <meta name="twitter:description" content="Create a branded static site from a set of Markdown files to host the documentation of your Open Source or commercial project – customizable, searchable, mobile-friendly, 40+ languages">
+  <meta name="twitter:image" content="https://squidfunk.github.io/mkdocs-material/assets/images/banner.png">
+  <link rel="stylesheet" href="../../assets/stylesheets/overrides.2a4bbe42.min.css">
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adding-a-git-repository" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-announce">
+          <div class="md-announce__inner md-grid md-typeset">
+            
+  <a href="https://twitter.com/squidfunk">
+    For updates follow <strong>@squidfunk</strong> on
+    <span class="twemoji twitter">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </span>
+    <strong>Twitter</strong>
+  </a>
+
+          </div>
+        </aside>
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs" class="md-header-nav__button md-logo" aria-label="Material for MkDocs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z" fill-opacity=".5"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z" fill-opacity=".25"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Material for MkDocs
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Adding a git repository
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/squidfunk/mkdocs-material" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    squidfunk/mkdocs-material
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../getting-started/" class="md-tabs__link">
+          Getting started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../changing-the-colors/" class="md-tabs__link md-tabs__link--active">
+          Setup
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../reference/abbreviations/" class="md-tabs__link">
+          Reference
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../changelog/" class="md-tabs__link">
+          Changelog
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs" class="md-nav__button md-logo" aria-label="Material for MkDocs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z" fill-opacity=".5"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z" fill-opacity=".25"/></svg>
+
+    </a>
+    Material for MkDocs
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/squidfunk/mkdocs-material" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    squidfunk/mkdocs-material
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Getting started
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Getting started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../creating-your-site/" class="md-nav__link">
+      Creating your site
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../publishing-your-site/" class="md-nav__link">
+      Publishing your site
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../customization/" class="md-nav__link">
+      Customization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../troubleshooting/" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data-privacy/" class="md-nav__link">
+      Data privacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../insiders/" class="md-nav__link">
+      Insiders
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../license/" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Setup" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../changing-the-colors/" class="md-nav__link">
+      Changing the colors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../changing-the-fonts/" class="md-nav__link">
+      Changing the fonts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../changing-the-language/" class="md-nav__link">
+      Changing the language
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../changing-the-logo-and-icons/" class="md-nav__link">
+      Changing the logo and icons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setting-up-navigation/" class="md-nav__link">
+      Setting up navigation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setting-up-site-search/" class="md-nav__link">
+      Setting up site search
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setting-up-site-analytics/" class="md-nav__link">
+      Setting up site analytics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setting-up-versioning/" class="md-nav__link">
+      Setting up versioning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setting-up-the-header/" class="md-nav__link">
+      Setting up the header
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setting-up-the-footer/" class="md-nav__link">
+      Setting up the footer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Adding a git repository
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Adding a git repository
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-name" class="md-nav__link">
+    Repository name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository-icon" class="md-nav__link">
+    Repository icon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-button" class="md-nav__link">
+    Edit button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revision-date" class="md-nav__link">
+    Revision date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revision-date-localized" class="md-nav__link">
+    Revision date, localized
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../adding-a-comment-system/" class="md-nav__link">
+      Adding a comment system
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Reference
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/abbreviations/" class="md-nav__link">
+      Abbreviations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/admonitions/" class="md-nav__link">
+      Admonitions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/buttons/" class="md-nav__link">
+      Buttons
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/code-blocks/" class="md-nav__link">
+      Code blocks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/content-tabs/" class="md-nav__link">
+      Content tabs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/data-tables/" class="md-nav__link">
+      Data tables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/footnotes/" class="md-nav__link">
+      Footnotes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/formatting/" class="md-nav__link">
+      Formatting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/icons-emojis/" class="md-nav__link">
+      Icons + Emojis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/images/" class="md-nav__link">
+      Images
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/lists/" class="md-nav__link">
+      Lists
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/mathjax/" class="md-nav__link">
+      MathJax
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/meta-tags/" class="md-nav__link">
+      Meta tags
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/variables/" class="md-nav__link">
+      Variables
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Changelog
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Changelog" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Changelog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../changelog/" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../upgrading/" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deprecations/" class="md-nav__link">
+      Deprecations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-name" class="md-nav__link">
+    Repository name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository-icon" class="md-nav__link">
+    Repository icon
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-button" class="md-nav__link">
+    Edit button
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revision-date" class="md-nav__link">
+    Revision date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revision-date-localized" class="md-nav__link">
+    Revision date, localized
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+  
+                
+                
+                <h1 id="adding-a-git-repository">Adding a git repository<a class="headerlink" href="#adding-a-git-repository" title="Permanent link">&para;</a></h1>
+<p>If your documentation is related to source code, Material for MkDocs provides
+the ability to display information to the project's repository as part of the
+static site, including statistics like stars and forks. Furthermore, individual
+documents can be linked to specific source files.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>In order to display a link to the repository of your project as part of your
+documentation, set <a href="https://www.mkdocs.org/user-guide/configuration/#repo_url"><code>repo_url</code></a> in <code>mkdocs.yml</code> to the public URL of your
+repository, e.g.:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">repo_url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/squidfunk/mkdocs-material</span>
+</code></pre></div>
+<p>The link to the repository will be rendered next to the search bar on big
+screens and as part of the main navigation drawer on smaller screen sizes.
+Additionally, for GitHub and GitLab, the number of stars and forks is
+automatically requested and rendered for <em>public repositories</em>.</p>
+<h3 id="repository-name">Repository name<a class="headerlink" href="#repository-name" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source.html"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default:
+<em>automatically set to</em> <code>GitHub</code>, <code>GitLab</code> <em>or</em> <code>Bitbucket</code></p>
+<p>MkDocs will infer the source provider by examining the URL and try to set the
+<em>repository name</em> automatically. If you wish to customize the name, set
+<a href="https://www.mkdocs.org/user-guide/configuration/#repo_name"><code>repo_name</code></a> in <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">repo_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">squidfunk/mkdocs-material</span>
+</code></pre></div>
+<h3 id="repository-icon">Repository icon<a class="headerlink" href="#repository-icon" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source.html"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default:
+<code>fontawesome/brands/git-alt</code></p>
+<p>While the default <em>repository icon</em> is a generic git icon, it can be set to
+<a href="https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons">any icon bundled with the theme</a> by referencing a valid icon path in
+<code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+  <span class="nt">icon</span><span class="p">:</span>
+    <span class="nt">repo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fontawesome/brands/git-alt</span>
+</code></pre></div>
+<p>Some popular choices:</p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M216.29 158.39H137C97 147.9 6.51 150.63 6.51 233.18c0 30.09 15 51.23 35 61-25.1 23-37 33.85-37 49.21 0 11 4.47 21.14 17.89 26.81C8.13 383.61 0 393.35 0 411.65c0 32.11 28.05 50.82 101.63 50.82 70.75 0 111.79-26.42 111.79-73.18 0-58.66-45.16-56.5-151.63-63l13.43-21.55c27.27 7.58 118.7 10 118.7-67.89 0-18.7-7.73-31.71-15-41.07l37.41-2.84zm-63.42 241.9c0 32.06-104.89 32.1-104.89 2.43 0-8.14 5.27-15 10.57-21.54 77.71 5.3 94.32 3.37 94.32 19.11zm-50.81-134.58c-52.8 0-50.46-71.16 1.2-71.16 49.54 0 50.82 71.16-1.2 71.16zm133.3 100.51v-32.1c26.75-3.66 27.24-2 27.24-11V203.61c0-8.5-2.05-7.38-27.24-16.26l4.47-32.92H324v168.71c0 6.51.4 7.32 6.51 8.14l20.73 2.84v32.1zm52.45-244.31c-23.17 0-36.59-13.43-36.59-36.61s13.42-35.77 36.59-35.77c23.58 0 37 12.62 37 35.77s-13.42 36.61-37 36.61zM512 350.46c-17.49 8.53-43.1 16.26-66.28 16.26-48.38 0-66.67-19.5-66.67-65.46V194.75c0-5.42 1.05-4.06-31.71-4.06V154.5c35.78-4.07 50-22 54.47-66.27h38.63c0 65.83-1.34 61.81 3.26 61.81H501v40.65h-60.56v97.15c0 6.92-4.92 51.41 60.57 26.84z"/></svg></span> – <code>fontawesome/brands/git</code></li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg></span> – <code>fontawesome/brands/git-alt</code></li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.59 334.24c48.57 3.31 58.95 2.11 58.95 11.94 0 20-65.55 20.06-65.55 1.52.01-5.09 3.29-9.4 6.6-13.46zm27.95-116.64c-32.29 0-33.75 44.47-.75 44.47 32.51 0 31.71-44.47.75-44.47zM448 80v352a48 48 0 01-48 48H48a48 48 0 01-48-48V80a48 48 0 0148-48h352a48 48 0 0148 48zm-227 69.31c0 14.49 8.38 22.88 22.86 22.88 14.74 0 23.13-8.39 23.13-22.88S258.62 127 243.88 127c-14.48 0-22.88 7.84-22.88 22.31zM199.18 195h-49.55c-25-6.55-81.56-4.85-81.56 46.75 0 18.8 9.4 32 21.85 38.11C74.23 294.23 66.8 301 66.8 310.6c0 6.87 2.79 13.22 11.18 16.76-8.9 8.4-14 14.48-14 25.92C64 373.35 81.53 385 127.52 385c44.22 0 69.87-16.51 69.87-45.73 0-36.67-28.23-35.32-94.77-39.38l8.38-13.43c17 4.74 74.19 6.23 74.19-42.43 0-11.69-4.83-19.82-9.4-25.67l23.38-1.78zm84.34 109.84l-13-1.78c-3.82-.51-4.07-1-4.07-5.09V192.52h-52.6l-2.79 20.57c15.75 5.55 17 4.86 17 10.17V298c0 5.62-.31 4.58-17 6.87v20.06h72.42zM384 315l-6.87-22.37c-40.93 15.37-37.85-12.41-37.85-16.73v-60.72h37.85v-25.41h-35.82c-2.87 0-2 2.52-2-38.63h-24.18c-2.79 27.7-11.68 38.88-34 41.42v22.62c20.47 0 19.82-.85 19.82 2.54v66.57c0 28.72 11.43 40.91 41.67 40.91 14.45 0 30.45-4.83 41.38-10.2z"/></svg></span> – <code>fontawesome/brands/git-square</code></li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span> – <code>fontawesome/brands/github</code></li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg></span> – <code>fontawesome/brands/github-alt</code></li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"/></svg></span> – <code>fontawesome/brands/github-square</code></li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M105.2 24.9c-3.1-8.9-15.7-8.9-18.9 0L29.8 199.7h132c-.1 0-56.6-174.8-56.6-174.8zM.9 287.7c-2.6 8 .3 16.9 7.1 22l247.9 184-226.2-294zm160.8-88l94.3 294 94.3-294zm349.4 88l-28.8-88-226.3 294 247.9-184c6.9-5.1 9.7-14 7.2-22zM425.7 24.9c-3.1-8.9-15.7-8.9-18.9 0l-56.6 174.8h132z"/></svg></span> – <code>fontawesome/brands/gitlab</code></li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 592 512"><path d="M565.7 118.1c-2.3-6.1-9.3-9.2-15.3-6.6-5.7 2.4-8.5 8.9-6.3 14.6 10.9 29 16.9 60.5 16.9 93.3 0 134.6-100.3 245.7-230.2 262.7V358.4c7.9-1.5 15.5-3.6 23-6.2v104c106.7-25.9 185.9-122.1 185.9-236.8 0-91.8-50.8-171.8-125.8-213.3-5.7-3.2-13-.9-15.9 5-2.7 5.5-.6 12.2 4.7 15.1 67.9 37.6 113.9 110 113.9 193.2 0 93.3-57.9 173.1-139.8 205.4v-92.2c14.2-4.5 24.9-17.7 24.9-33.5 0-13.1-6.8-24.4-17.3-30.5 8.3-79.5 44.5-58.6 44.5-83.9V170c0-38-87.9-161.8-129-164.7-2.5-.2-5-.2-7.6 0C251.1 8.3 163.2 132 163.2 170v14.8c0 25.3 36.3 4.3 44.5 83.9-10.6 6.1-17.3 17.4-17.3 30.5 0 15.8 10.6 29 24.8 33.5v92.2c-81.9-32.2-139.8-112-139.8-205.4 0-83.1 46-155.5 113.9-193.2 5.4-3 7.4-9.6 4.7-15.1-2.9-5.9-10.1-8.2-15.9-5-75 41.5-125.8 121.5-125.8 213.3 0 114.7 79.2 210.8 185.9 236.8v-104c7.6 2.5 15.1 4.6 23 6.2v123.7C131.4 465.2 31 354.1 31 219.5c0-32.8 6-64.3 16.9-93.3 2.2-5.8-.6-12.2-6.3-14.6-6-2.6-13 .4-15.3 6.6C14.5 149.7 8 183.8 8 219.5c0 155.1 122.6 281.6 276.3 287.8V361.4c6.8.4 15 .5 23.4 0v145.8C461.4 501.1 584 374.6 584 219.5c0-35.7-6.5-69.8-18.3-101.4zM365.9 275.5c13 0 23.7 10.5 23.7 23.7 0 13.1-10.6 23.7-23.7 23.7-13 0-23.7-10.5-23.7-23.7 0-13.1 10.6-23.7 23.7-23.7zm-139.8 47.3c-13.2 0-23.7-10.7-23.7-23.7s10.5-23.7 23.7-23.7c13.1 0 23.7 10.6 23.7 23.7 0 13-10.5 23.7-23.7 23.7z"/></svg></span> – <code>fontawesome/brands/gitkraken</code></li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M22.2 32A16 16 0 006 47.8a26.35 26.35 0 00.2 2.8l67.9 412.1a21.77 21.77 0 0021.3 18.2h325.7a16 16 0 0016-13.4L505 50.7a16 16 0 00-13.2-18.3 24.58 24.58 0 00-2.8-.2L22.2 32zm285.9 297.8h-104l-28.1-147h157.3l-25.2 147z"/></svg></span> – <code>fontawesome/brands/bitbucket</code></li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 32H312l-9.4-18.7A24 24 0 00281.1 0H166.8a23.72 23.72 0 00-21.4 13.3L136 32H16A16 16 0 000 48v32a16 16 0 0016 16h416a16 16 0 0016-16V48a16 16 0 00-16-16zM53.2 467a48 48 0 0047.9 45h245.8a48 48 0 0047.9-45L416 128H32z"/></svg></span> – <code>fontawesome/solid/trash</code></li>
+</ul>
+<h3 id="edit-button">Edit button<a class="headerlink" href="#edit-button" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L285-L294"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default:
+<em>automatically set</em></p>
+<p>If the repository URL points to a <a href="https://github.com/">GitHub</a>, <a href="https://about.gitlab.com/">GitLab</a> or <a href="https://bitbucket.org/">Bitbucket</a>
+repository, an <em>edit button</em> is displayed at the top of each document. This
+behavior can be changed by setting <a href="https://www.mkdocs.org/user-guide/configuration/#edit_uri"><code>edit_uri</code></a> in <code>mkdocs.yml</code>:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Customize edit path</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nt">edit_uri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">edit/master/docs/</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Hide edit button</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nt">edit_uri</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+</code></pre></div>
+</div>
+</div>
+<h3 id="revision-date">Revision date<a class="headerlink" href="#revision-date" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-date.html"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> ·
+<a href="https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.75 8a.75.75 0 00-.75.75v6.5c0 .414.336.75.75.75h6.5a.75.75 0 00.75-.75v-6.5a.75.75 0 00-.75-.75h-6.5zm.75 6.5v-5h5v5h-5z"/><path fill-rule="evenodd" d="M15.25 1a.75.75 0 01.75.75V4h2.25c.966 0 1.75.784 1.75 1.75V8h2.25a.75.75 0 010 1.5H20v5h2.25a.75.75 0 010 1.5H20v2.25A1.75 1.75 0 0118.25 20H16v2.25a.75.75 0 01-1.5 0V20h-5v2.25a.75.75 0 01-1.5 0V20H5.75A1.75 1.75 0 014 18.25V16H1.75a.75.75 0 010-1.5H4v-5H1.75a.75.75 0 010-1.5H4V5.75C4 4.784 4.784 4 5.75 4H8V1.75a.75.75 0 011.5 0V4h5V1.75a.75.75 0 01.75-.75zm3 17.5a.25.25 0 00.25-.25V5.75a.25.25 0 00-.25-.25H5.75a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h12.5z"/></svg></span> Plugin</a></p>
+<p>The <a href="https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin">git-revision-date</a> plugin adds support for displaying the date a 
+document was <em>last updated</em> at the bottom of each page. It can be installed
+with <code>pip</code>:</p>
+<div class="highlight"><pre><span></span><code>pip install mkdocs-git-revision-date-plugin
+</code></pre></div>
+<p>Then, add the following to <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git-revision-date</span>
-</code></pre></div> <p>The following options are supported:</p> <dl> <dt><code id=enabled_if_env>enabled_if_env</code></dt> <dd> <p><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default: <em>none</em> – This option defines whether the date is actually extracted from git, which makes it possible to disable extraction for cases when the repository is not available:</p> <div class=highlight><pre><span></span><code><span class=nt>plugins</span><span class=p>:</span>
-  <span class="p p-Indicator">-</span> <span class=nt>git-revision-date</span><span class=p>:</span>
-      <span class=nt>enabled_if_env</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">CI</span>
-</code></pre></div> </dd> </dl> <p><em>Material for MkDocs doesn't provide official support for the other options of this plugin, so they may be supported but can also yield weird results. Use them at your own risk.</em></p> <h3 id=revision-date-localized>Revision date, localized<a class=headerlink href=#revision-date-localized title="Permanent link">&para;</a></h3> <p><a href=https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-date.html><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> · <a href=https://github.com/timvink/mkdocs-git-revision-date-localized-plugin><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M8.75 8a.75.75 0 00-.75.75v6.5c0 .414.336.75.75.75h6.5a.75.75 0 00.75-.75v-6.5a.75.75 0 00-.75-.75h-6.5zm.75 6.5v-5h5v5h-5z"/><path fill-rule=evenodd d="M15.25 1a.75.75 0 01.75.75V4h2.25c.966 0 1.75.784 1.75 1.75V8h2.25a.75.75 0 010 1.5H20v5h2.25a.75.75 0 010 1.5H20v2.25A1.75 1.75 0 0118.25 20H16v2.25a.75.75 0 01-1.5 0V20h-5v2.25a.75.75 0 01-1.5 0V20H5.75A1.75 1.75 0 014 18.25V16H1.75a.75.75 0 010-1.5H4v-5H1.75a.75.75 0 010-1.5H4V5.75C4 4.784 4.784 4 5.75 4H8V1.75a.75.75 0 011.5 0V4h5V1.75a.75.75 0 01.75-.75zm3 17.5a.25.25 0 00.25-.25V5.75a.25.25 0 00-.25-.25H5.75a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h12.5z"/></svg></span> Plugin</a></p> <p>Similarly, the <a href=https://github.com/timvink/mkdocs-git-revision-date-localized-plugin>git-revision-date-localized</a> plugin adds support for adding a localized <em>last updated</em> date at the bottom of each page. It can be installed with <code>pip</code>:</p> <div class=highlight><pre><span></span><code>pip install mkdocs-git-revision-date-localized-plugin
-</code></pre></div> <p>Then, add the following to <code>mkdocs.yml</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>plugins</span><span class=p>:</span>
+</code></pre></div>
+<p>The following options are supported:</p>
+<dl>
+<dt><code id="enabled_if_env">enabled_if_env</code></dt>
+<dd>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default: <em>none</em> – This option defines whether the
+date is actually extracted from git, which makes it possible to disable
+extraction for cases when the repository is not available:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">git-revision-date</span><span class="p">:</span>
+      <span class="nt">enabled_if_env</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CI</span>
+</code></pre></div>
+</dd>
+</dl>
+<p><em>Material for MkDocs doesn't provide official support for the other options of
+this plugin, so they may be supported but can also yield weird results. Use
+them at your own risk.</em></p>
+<h3 id="revision-date-localized">Revision date, localized<a class="headerlink" href="#revision-date-localized" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-date.html"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 012-2h9.982a2 2 0 011.414.586l4.018 4.018A2 2 0 0121 7.018V21a2 2 0 01-2 2H4.75a.75.75 0 010-1.5H19a.5.5 0 00.5-.5V8.5h-4a2 2 0 01-2-2v-4H5a.5.5 0 00-.5.5v6.25a.75.75 0 01-1.5 0V3zm12-.5v4a.5.5 0 00.5.5h4a.5.5 0 00-.146-.336l-4.018-4.018A.5.5 0 0015 2.5z"/><path d="M4.53 12.24a.75.75 0 01-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 11-1.022 1.1l-3.23-3a.75.75 0 010-1.1l3.23-3a.75.75 0 011.06.04zm3.979 1.06a.75.75 0 111.02-1.1l3.231 3a.75.75 0 010 1.1l-3.23 3a.75.75 0 11-1.021-1.1l2.639-2.45-2.64-2.45z"/></svg></span> Source</a> ·
+<a href="https://github.com/timvink/mkdocs-git-revision-date-localized-plugin"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.75 8a.75.75 0 00-.75.75v6.5c0 .414.336.75.75.75h6.5a.75.75 0 00.75-.75v-6.5a.75.75 0 00-.75-.75h-6.5zm.75 6.5v-5h5v5h-5z"/><path fill-rule="evenodd" d="M15.25 1a.75.75 0 01.75.75V4h2.25c.966 0 1.75.784 1.75 1.75V8h2.25a.75.75 0 010 1.5H20v5h2.25a.75.75 0 010 1.5H20v2.25A1.75 1.75 0 0118.25 20H16v2.25a.75.75 0 01-1.5 0V20h-5v2.25a.75.75 0 01-1.5 0V20H5.75A1.75 1.75 0 014 18.25V16H1.75a.75.75 0 010-1.5H4v-5H1.75a.75.75 0 010-1.5H4V5.75C4 4.784 4.784 4 5.75 4H8V1.75a.75.75 0 011.5 0V4h5V1.75a.75.75 0 01.75-.75zm3 17.5a.25.25 0 00.25-.25V5.75a.25.25 0 00-.25-.25H5.75a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h12.5z"/></svg></span> Plugin</a></p>
+<p>Similarly, the <a href="https://github.com/timvink/mkdocs-git-revision-date-localized-plugin">git-revision-date-localized</a> plugin adds support for adding 
+a localized <em>last updated</em> date at the bottom of each page. It can be installed
+with <code>pip</code>:</p>
+<div class="highlight"><pre><span></span><code>pip install mkdocs-git-revision-date-localized-plugin
+</code></pre></div>
+<p>Then, add the following to <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git-revision-date-localized</span>
-</code></pre></div> <p>The following options are supported:</p> <dl> <dt><code id=type>type</code></dt> <dd> <p><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default: <code>date</code> – This option allows to change the format of the date to be displayed. Valid values are <code>date</code>, <code>datetime</code>, <code>iso_date</code>, <code>iso_datetime</code> and <code>timeago</code>:</p> <div class=highlight><pre><span></span><code><span class=nt>plugins</span><span class=p>:</span>
-  <span class="p p-Indicator">-</span> <span class=nt>git-revision-date-localized</span><span class=p>:</span>
-      <span class=nt>type</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
-</code></pre></div> </dd> <dt><code id=fallback_to_build_date>fallback_to_build_date</code></dt> <dd> <p><span class=twemoji><svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path fill-rule=evenodd d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default: <code>false</code> – This option specifies whether the time when <code>mkdocs build</code> was executed should be used as a fallback when the git repository is not available:</p> <div class=highlight><pre><span></span><code><span class=nt>plugins</span><span class=p>:</span>
-  <span class="p p-Indicator">-</span> <span class=nt>git-revision-date-localized</span><span class=p>:</span>
-      <span class=nt>fallback_to_build_date</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div> </dd> </dl> <p><em>Material for MkDocs doesn't provide official support for the other options of this plugin, so they may be supported but can also yield weird results. Use them at your own risk.</em></p> <footer class="tx-content__footer md-typeset"> <a href=../../insiders/ title="Material for MkDocs Insiders"> <hr> <span class=twemoji> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path fill-opacity=.5 d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path fill-opacity=.25 d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z"/></svg> </span> <span class=twemoji> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg> </span> <span class="twemoji tx-heart"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 01-.686 0 16.709 16.709 0 01-.465-.252 31.147 31.147 0 01-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0114 20.408z"/></svg> </span> <hr> </a> </footer> </article> </div> </div> </main> <footer class=md-footer> <div class=md-footer-nav> <nav class="md-footer-nav__inner md-grid" aria-label=Footer> <a href=../setting-up-the-footer/ class="md-footer-nav__link md-footer-nav__link--prev" rel=prev> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg> </div> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Previous </span> Setting up the footer </div> </div> </a> <a href=../adding-a-comment-system/ class="md-footer-nav__link md-footer-nav__link--next" rel=next> <div class=md-footer-nav__title> <div class=md-ellipsis> <span class=md-footer-nav__direction> Next </span> Adding a comment system </div> </div> <div class="md-footer-nav__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg> </div> </a> </nav> </div> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-copyright> <div class=md-footer-copyright__highlight> Copyright &copy; 2016 - 2020 Martin Donath </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> <div class=md-footer-social> <a href=https://github.com/squidfunk target=_blank rel=noopener title=github.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> </a> <a href=https://gitter.im/squidfunk/mkdocs-material target=_blank rel=noopener title=gitter.im class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 384 512"><path d="M66.4 322.5H16V0h50.4v322.5zM166.9 76.1h-50.4V512h50.4V76.1zm100.6 0h-50.4V512h50.4V76.1zM368 76h-50.4v247H368V76z"/></svg> </a> <a href=https://hub.docker.com/r/squidfunk/mkdocs-material/ target=_blank rel=noopener title=hub.docker.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg> </a> <a href=https://twitter.com/squidfunk target=_blank rel=noopener title=twitter.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> </a> <a href=https://linkedin.com/in/squidfunk/ target=_blank rel=noopener title=linkedin.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg> </a> <a href=https://instagram.com/squidfunk target=_blank rel=noopener title=instagram.com class=md-footer-social__link> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg> </a> </div> </div> </div> </footer> </div> <script src=../../assets/javascripts/vendor.a018d6bb.min.js></script> <script src=../../assets/javascripts/bundle.4b42b5e6.min.js></script><script id=__lang type=application/json>{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script> <script>
+</code></pre></div>
+<p>The following options are supported:</p>
+<dl>
+<dt><code id="type">type</code></dt>
+<dd>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default: <code>date</code> – This option allows to change the
+format of the date to be displayed. Valid values are <code>date</code>, <code>datetime</code>,
+<code>iso_date</code>, <code>iso_datetime</code> and <code>timeago</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">git-revision-date-localized</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
+</code></pre></div>
+</dd>
+<dt><code id="fallback_to_build_date">fallback_to_build_date</code></dt>
+<dd>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M11.75 1a.75.75 0 01.75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 010 2.65l-3.187 2.75a1.75 1.75 0 01-1.143.425H12.5v9.25a.75.75 0 01-1.5 0V13H3.75A1.75 1.75 0 012 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 01.75-.75zm0 4.5h7.282a.25.25 0 01.163.06l3.188 2.75a.25.25 0 010 .38l-3.188 2.75a.25.25 0 01-.163.06H3.75a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25h8z"/></svg></span> Default: <code>false</code> – This option specifies whether
+the time when <code>mkdocs build</code> was executed should be used as a fallback when
+the git repository is not available:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">git-revision-date-localized</span><span class="p">:</span>
+      <span class="nt">fallback_to_build_date</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+</dd>
+</dl>
+<p><em>Material for MkDocs doesn't provide official support for the other options of
+this plugin, so they may be supported but can also yield weird results. Use
+them at your own risk.</em></p>
+                
+                  
+                
+              
+  <footer class="tx-content__footer md-typeset">
+    <a href="../../insiders/" title="Material for MkDocs Insiders">
+      <hr>
+      <span class="twemoji">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89"><path d="M3.136 17.387v42.932l42.932 21.467L3.136 17.387z"/><path d="M21.91 8l42.933 64.398-18.775 9.388L3.136 17.387 21.91 8z" fill-opacity=".5"/><path d="M67.535 17.387L40.273 35.543l21.878 32.818 5.384 2.691V17.387z"/><path d="M67.535 17.387v53.666l18.774-9.388V8l-18.774 9.387z" fill-opacity=".25"/></svg>
+      </span>
+      <span class="twemoji">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      </span>
+      <span class="twemoji tx-heart">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 01-.686 0 16.709 16.709 0 01-.465-.252 31.147 31.147 0 01-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0114 20.408z"/></svg>
+      </span>
+      <hr>
+    </a>
+  </footer>
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../setting-up-the-footer/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Setting up the footer
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../adding-a-comment-system/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Adding a comment system
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 Martin Donath
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/squidfunk" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://gitter.im/squidfunk/mkdocs-material" target="_blank" rel="noopener" title="gitter.im" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M66.4 322.5H16V0h50.4v322.5zM166.9 76.1h-50.4V512h50.4V76.1zm100.6 0h-50.4V512h50.4V76.1zM368 76h-50.4v247H368V76z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://hub.docker.com/r/squidfunk/mkdocs-material/" target="_blank" rel="noopener" title="hub.docker.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/squidfunk" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://linkedin.com/in/squidfunk/" target="_blank" rel="noopener" title="linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://instagram.com/squidfunk" target="_blank" rel="noopener" title="instagram.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.a018d6bb.min.js"></script>
+      <script src="../../assets/javascripts/bundle.4b42b5e6.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
         app = initialize({
           base: "../..",
           features: ['navigation.tabs'],
@@ -28,4 +1316,8 @@
             worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
-      </script> </body> </html>
+      </script>
+      
+    
+  </body>
+</html>
