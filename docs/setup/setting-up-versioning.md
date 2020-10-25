@@ -37,9 +37,7 @@ project:
 
 [Try this feature][4]{: .md-button .md-button--primary }
 
-_This feature is enabled in the [versioning example][4] built with
-Insiders. Click the button to go to Material for MkDocs Insiders and give this
-feature a try._
+_This feature is enabled in the [versioning example][4] built with Insiders._
 
 !!! quote "[Why use mike?][5]"
 

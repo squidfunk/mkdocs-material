@@ -236,8 +236,7 @@ color palettes:
 [Try this feature][11]{: .md-button .md-button--primary }
 
 _This feature is enabled on the [official documentation][11] built with
-Insiders. Click the button to go to Material for MkDocs Insiders and give this
-feature a try._
+Insiders._
 
   [6]: ../insiders.md
   [7]: #color-scheme

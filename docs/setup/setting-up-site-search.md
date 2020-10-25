@@ -157,8 +157,7 @@ Searching for [ :material-magnify: ^^code high^^ ] yields [ :material-magnify:
 [Try this feature][10]{: .md-button .md-button--primary }
 
 _This feature is enabled on the [official documentation][10] built with
-Insiders. Click the button to go to Material for MkDocs Insiders and give this
-feature a try._
+Insiders._
 
   [8]: ../insiders.md
   [9]: ../assets/screenshots/search-suggestions.png
@@ -188,8 +187,7 @@ Searching for [ :material-magnify: ^^code blocks^^ ] yields:
 [Try this feature][12]{: .md-button .md-button--primary }
 
 _This feature is enabled on the [official documentation][12] built with
-Insiders. Click the button to go to Material for MkDocs Insiders and give this
-feature a try._
+Insiders._
 
   [11]: ../assets/screenshots/search-highlighting.png
   [12]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/?h=code+blocks
