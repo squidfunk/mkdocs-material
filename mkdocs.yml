@@ -162,6 +162,7 @@ nav:
     - Setting up navigation: setup/setting-up-navigation.md
     - Setting up site search: setup/setting-up-site-search.md
     - Setting up site analytics: setup/setting-up-site-analytics.md
+    - Setting up versioning: setup/setting-up-versioning.md
     - Setting up the header: setup/setting-up-the-header.md
     - Setting up the footer: setup/setting-up-the-footer.md
     - Adding a git repository: setup/adding-a-git-repository.md

@@ -71,11 +71,12 @@ icons and much more:
 * [Setting up navigation][7]
 * [Setting up site search][8]
 * [Setting up site analytics][9]
-* [Setting up the header][10]
-* [Setting up the footer][11]
-* [Adding a git repository][12]
-* [Adding a comment system][13]
-<!-- * [Adding a landing page][14] -->
+* [Setting up versioning][10]
+* [Setting up the header][11]
+* [Setting up the footer][12]
+* [Adding a git repository][13]
+* [Adding a comment system][14]
+<!-- * [Adding a landing page][15] -->
 
   [2]: getting-started.md#installation
   [3]: setup/changing-the-colors.md
@@ -85,11 +86,12 @@ icons and much more:
   [7]: setup/setting-up-navigation.md
   [8]: setup/setting-up-site-search.md
   [9]: setup/setting-up-site-analytics.md
-  [10]: setup/setting-up-the-header.md
-  [11]: setup/setting-up-the-footer.md
-  [12]: setup/adding-a-git-repository.md
-  [13]: setup/adding-a-comment-system.md
-  <!--[14]: setup/adding-a-landing-page.md-->
+  [10]: setup/setting-up-versioning.md
+  [11]: setup/setting-up-the-header.md
+  [12]: setup/setting-up-the-footer.md
+  [13]: setup/adding-a-git-repository.md
+  [14]: setup/adding-a-comment-system.md
+  <!--[15]: setup/adding-a-landing-page.md-->
 
 ## Previewing as you write
 
