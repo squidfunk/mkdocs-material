@@ -35,9 +35,11 @@ project:
 
 [![Versioning][3]][3]
 
-_Note that you don't need to run `mike install-extras` as noted in the
-[official documentation][4], as [mike][1] is now natively integrated with
-Material for MkDocs._
+[Try this feature][4]{: .md-button .md-button--primary }
+
+_This feature is enabled in the [versioning example][4] built with
+Insiders. Click the button to go to Material for MkDocs Insiders and give this
+feature a try._
 
 !!! quote "[Why use mike?][5]"
 
@@ -52,16 +54,37 @@ Material for MkDocs._
     to particularly notable versions. This makes it easy to make permalinks to
     whatever version of the documentation you want to direct people to.
 
+_Note that you don't need to run `mike install-extras` as noted in the
+[official documentation][6], as [mike][1] is now natively integrated with
+Material for MkDocs._
+
   [2]: ../insiders.md
   [3]: ../assets/screenshots/versioning.png
-  [4]: https://github.com/jimporter/mike#usage
+  [4]: https://squidfunk.github.io/mkdocs-material-example-versioning/
   [5]: https://github.com/jimporter/mike#why-use-mike
+  [6]: https://github.com/jimporter/mike#usage
 
 ## Usage
 
 While this section outlines the basic workflow for publishing new versions, 
 it's best to check out the [official documentation][4] to make yourself familar
 with [mike][1].
+
+### Publishing a new version
+
+If you want to publish a new version of your project documentation, choose a
+version identifier and update the alias set as the default version with:
+
+```
+mike deploy --push --update-aliases 0.1 latest
+```
+
+Note that every version will be deployed as a subdirectory of your `site_url`,
+e.g.:
+
+- _docs.example.com/0.1_
+- _docs.example.com/0.2_
+- ...
 
 ### Setting a default version
 
@@ -70,28 +93,10 @@ version, e.g. `latest`, and when publishing a new version, always update the
 alias to point to the latest version:
 
 ```
-mike set-default latest
+mike set-default --push latest
 ```
 
 When publishing a new version, [mike][1] will create a redirect in the root of
 your project documentation to the version associated with the alias:
 
 _docs.example.com_ :octicons-arrow-right-24: _docs.example.com/0.1_
-
-### Publishing a new version
-
-If you want to publish a new version of your project documentation, choose a new
-version identifier and update the alias set as the default version with:
-
-```
-mike deploy --push --update-aliases 0.2 latest
-```
-
-_docs.example.com_ :octicons-arrow-right-24: _docs.example.com/0.2_
-
-Note that every version will be deployed as a subdirectory of your `site_url`,
-e.g.:
-
-- _docs.example.com/0.1_
-- _docs.example.com/0.2_
-- ...
