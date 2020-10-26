@@ -1,3 +1,140 @@
-site_name: My Docs
+# Project information
+site_name: Observer for WebRTC
+site_url: 
+site_author: Observer
+site_description: >-
+  Create a branded static site from a set of Markdown files to host the
+  documentation of your Open Source or commercial project – customizable,
+  searchable, mobile-friendly, 40+ languages
+# Repository
+repo_name: ObserveRTC/observertc.github.io
+repo_url: https://github.com/ObserveRTC/observertc.github.io
+edit_uri: ""
+
+# Copyright
+copyright: Copyright &copy; 2016 - 2020 ObserveRTC
+
+# Configuration
 theme:
-  name: material
+  name: null
+  custom_dir: material
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  features:
+    - navigation.tabs
+    #- navigation.instant
+  palette:
+    scheme: default
+    primary: indigo
+    accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+
+# Plugins
+plugins:
+  - search
+  - redirects:
+      redirect_maps:
+        extensions/admonition.md: reference/admonitions.md
+        extensions/codehilite.md: reference/code-blocks.md
+        extensions/footnotes.md: reference/footnotes.md
+        extensions/metadata.md: reference/meta-tags.md
+        extensions/permalinks.md: setup/setting-up-navigation.md #permalink
+        extensions/pymdown.md: reference/admonitions.md
+        plugins/revision-date.md: setup/adding-a-git-repository.md #revision-date
+        plugins/search.md: setup/setting-up-site-search.md
+        releases/4.md: upgrading.md #upgrading-from-4x-to-5x
+        releases/5.md: upgrading.md #upgrading-from-3x-to-4x
+        releases/changelog.md: changelog.md
+        setup/adding-social-links.md: setup/setting-up-the-footer.md
+        sponsorship.md: insiders.md
+ # - minify:
+  #    minify_html: true
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ObserveRTC/observertc.github.io
+    - icon: fontawesome/brands/gitter
+      link: https://github.com/ObserveRTC/observertc.github.io
+    - icon: fontawesome/brands/docker
+      link: https://github.com/ObserveRTC/observertc.github.io
+    - icon: fontawesome/brands/twitter
+      link: https://github.com/ObserveRTC/observertc.github.io
+    - icon: fontawesome/brands/linkedin
+      link: https://github.com/ObserveRTC/observertc.github.io
+    - icon: fontawesome/brands/instagram
+      link: https://github.com/ObserveRTC/observertc.github.io
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+nav:
+  - Home: index.md
+  - Getting started:
+    - Installation: getting-started.md
+  - Setup:
+    - Changing the colors: setup/changing-the-colors.md
+    - Changing the fonts: setup/changing-the-fonts.md
+  - Reference:
+    - Abbreviations: reference/abbreviations.md
+  - Changelog:
+    - Release notes: changelog.md
+
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
