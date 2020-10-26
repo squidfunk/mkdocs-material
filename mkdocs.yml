@@ -7,8 +7,8 @@ site_description: >-
   documentation of your Open Source or commercial project – customizable,
   searchable, mobile-friendly, 40+ languages
 # Repository
-repo_name: ObserveRTC/observertc.github.io
-repo_url: https://github.com/ObserveRTC/observertc.github.io
+repo_name: ObserveRTC
+repo_url: https://github.com/ObserveRTC/
 edit_uri: ""
 
 # Copyright
