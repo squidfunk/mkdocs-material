@@ -1,6 +1,7 @@
 mkdocs-material-6.x.x (2020-xx-xx)
 
   * Fixed link colors for black and white on slate color scheme
+  * Removed focus outline on scrolling code blocks for pointer devices
 
 mkdocs-material-6.1.2 (2020-10-31)
 
