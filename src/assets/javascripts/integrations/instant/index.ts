@@ -32,8 +32,7 @@ import {
   sample,
   share,
   skip,
-  switchMap,
-  withLatestFrom
+  switchMap
 } from "rxjs/operators"
 
 import {
@@ -221,11 +220,11 @@ export function setupInstantLoading(
   })
 
   /* Replace document metadata */
-  instant$
+  document$
     .pipe(
-      withLatestFrom(document$)
+      skip(1) // Skip initial
     )
-      .subscribe(([, { title, head }]) => {
+      .subscribe(({ title, head }) => {
         document.title = title
 
         /* Replace meta tags */
