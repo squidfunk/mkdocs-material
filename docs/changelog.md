@@ -53,6 +53,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.1.2 <small>_ October 31, 2020</small>
+
+* Fixed sizing of icons in Admonition, Tasklist, etc. (6.1.1 regression)
+
 ### 6.1.1 <small>_ October 31, 2020</small>
 
 * Fixed #2019: Page title not correctly updated when using instant loading
