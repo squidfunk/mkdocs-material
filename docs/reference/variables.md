@@ -90,74 +90,68 @@ The unit price is 12.50.
 
 ### Using variables in snippets
 
-You may want to use variables in snippets, for example, when describing the same procedure in multiple contexts where only one piece of information differs. This does not work with snippets that are included using the [Snippets](../abbreviations.md#snippets) extension. Instead, you can use the [macros](#macros) plugin for defining snippets.
+You may want to use variables in snippets, for example, when describing the same
+procedure in multiple contexts where only one piece of information differs. This
+does not work with snippets that are included using the [Snippets][2] extension.
+Instead, you can use the [macros][3] plugin for defining snippets.
 
-To this end, add the snippet location using the `include_dir` parameter to the plugin's configuration in `mkdocs.yml`, for example:
+To this end, add the snippet location using the `include_dir` parameter to the 
+plugin's configuration in `mkdocs.yml`, for example:
 
-```
+``` yaml
 plugins:
-    - search
-    - macros:
-        include_dir: snippets
+  - search
+  - macros:
+      include_dir: snippets
 ```
 
-In your Markdown file, you call the snippets like
+In your Markdown file, you can include snippets with Jinja's [`include`][4]
+function:
 
-```markdown
-{% include 'snip.md' %}
+``` markdown
+{% include "definitions.md" %}
 ```
 
 This example illustrates the behavior:
 
-=== "snippets/snip.md"
+=== "snippets/definitions.md"
 
-    _Code_
-
-    ```markdown
-    Here goes the variable: {{ page.meta.variables.number }}
+    ``` markdown
+    The unit price is {{ page.meta.unit.price }}
     ```
 
-=== "docs/page1.md"
+=== "docs/page-1.md"
 
-    _Code_
-
-    ```markdown
+    ``` markdown
     ---
-    variables:
-        number: 500
+    unit:
+      price: 12.50
     ---
 
-    {% include 'snip.md' %}
+    {% include "definitions.md" %}
     ```
 
-    _Result_
+=== "docs/page-2.md"
 
-    Here goes the variable: 500
-
-=== "docs/page2.md"
-
-    _Code_
-
-    ```markdown
+    ``` markdown
     ---
-    variables:
-        number: 1000
+    unit:
+      price: 25.00
     ---
 
-    {% include 'snip.md' %}
+    {% include "definitions.md" %}
     ```
 
-    _Result_
-
-    Here goes the variable: 1000
-
+  [2]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
+  [3]: #macros
+  [4]: https://jinja.palletsprojects.com/en/2.11.x/templates/#include
 
 ## Customization
 
 ### Custom macros
 
 The [macros][1] plugin allows to define custom macros, which can then be used
-from Markdown files. See the [official documentation][2] for more information
+from Markdown files. See the [official documentation][5] for more information
 how to define custom macros.
 
-  [2]: https://mkdocs-macros-plugin.readthedocs.io/en/latest/python/
+  [5]: https://mkdocs-macros-plugin.readthedocs.io/en/latest/python/
