@@ -88,6 +88,70 @@ _Result_:
 
 The unit price is 12.50.
 
+### Using variables in snippets
+
+You may want to use variables in snippets, for example, when describing the same procedure in multiple contexts where only one piece of information differs. This does not work with snippets that are included using the [Snippets](../abbreviations.md#snippets) extension. Instead, you can use the [macros](#macros) plugin for defining snippets.
+
+To this end, add the snippet location using the `include_dir` parameter to the plugin's configuration in `mkdocs.yml`, for example:
+
+```
+plugins:
+    - search
+    - macros:
+        include_dir: snippets
+```
+
+In your Markdown file, you call the snippets like
+
+```markdown
+{% include 'snip.md' %}
+```
+
+This example illustrates the behavior:
+
+=== "snippets/snip.md"
+
+    _Code_
+
+    ```markdown
+    Here goes the variable: {{ page.meta.variables.number }}
+    ```
+
+=== "docs/page1.md"
+
+    _Code_
+
+    ```markdown
+    ---
+    variables:
+        number: 500
+    ---
+
+    {% include 'snip.md' %}
+    ```
+
+    _Result_
+
+    Here goes the variable: 500
+
+=== "docs/page2.md"
+
+    _Code_
+
+    ```markdown
+    ---
+    variables:
+        number: 1000
+    ---
+
+    {% include 'snip.md' %}
+    ```
+
+    _Result_
+
+    Here goes the variable: 1000
+
+
 ## Customization
 
 ### Custom macros
