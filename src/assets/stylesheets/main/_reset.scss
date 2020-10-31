@@ -26,7 +26,8 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Enforce correct box model and prevent adjustments of font size after orientation changes in IE and iOS
+// Enforce correct box model and prevent adjustments of font size after
+// orientation changes in IE and iOS
 html {
   box-sizing: border-box;
   text-size-adjust: none;
