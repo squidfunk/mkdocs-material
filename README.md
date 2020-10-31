@@ -140,7 +140,7 @@ For other installation methods, configuration options, and a demo, visit
 ## Users
 
 * **Companies** — 
-  [AWS](https://awssecworkshops.com/),
+  [AWS](https://aws.github.io/copilot-cli/),
   [Binance](https://docs.binance.org/),
   [Datadog](https://datadoghq.dev/integrations-core/),
   [ING](https://ing-bank.github.io/baker/),
