@@ -75,5 +75,13 @@
     // Footer color shades
     --md-footer-bg-color:              hsla(var(--md-hue), 15%, 12%, 0.87);
     --md-footer-bg-color--dark:        hsla(var(--md-hue), 15%, 10%, 1);
+
+    // Black and white primary colors
+    &[data-md-color-primary="black"],
+    &[data-md-color-primary="white"] {
+
+      // Typeset color shades
+      --md-typeset-a-color:            hsla(#{hex2hsl($clr-indigo-400)}, 1);
+    }
   }
 }
