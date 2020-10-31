@@ -53,6 +53,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.1.1 <small>_ October 31, 2020</small>
+
+* Fixed #2019: Page title not correctly updated when using instant loading
+
 ### 6.1.0 <small>_ October 17, 2020</small>
 
 * Fixed #1973: Added support for printing in dark mode

@@ -1,3 +1,7 @@
+mkdocs-material-6.1.1 (2020-10-31)
+
+  * Fixed #2019: Page title not correctly updated when using instant loading
+
 mkdocs-material-6.1.0+insiders-1.7.0 (2020-10-25)
 
   * Added support for deploying multiple versions
