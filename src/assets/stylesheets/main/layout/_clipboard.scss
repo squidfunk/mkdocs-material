@@ -64,6 +64,7 @@
     background-color: currentColor;
     mask-image: var(--md-clipboard-icon);
     mask-repeat: no-repeat;
+    mask-size: contain;
     content: "";
   }
 

@@ -213,6 +213,7 @@
             background-color: currentColor;
             mask-image: var(--md-nav-icon--prev);
             mask-repeat: no-repeat;
+            mask-size: contain;
             content: "";
           }
 
@@ -330,6 +331,7 @@
             background-color: currentColor;
             mask-image: var(--md-nav-icon--next);
             mask-repeat: no-repeat;
+            mask-size: contain;
             content: "";
           }
 
@@ -558,6 +560,7 @@
         background-color: currentColor;
         mask-image: var(--md-nav-icon--next);
         mask-repeat: no-repeat;
+        mask-size: contain;
         content: "";
       }
 

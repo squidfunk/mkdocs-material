@@ -72,6 +72,7 @@
       background-color: var(--md-default-fg-color--lightest);
       mask-image: var(--md-tasklist-icon);
       mask-repeat: no-repeat;
+      mask-size: contain;
       content: "";
 
       // Adjust for right-to-left languages

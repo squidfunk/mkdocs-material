@@ -143,6 +143,7 @@ $admonitions: (
       background-color: $clr-blue-a200;
       mask-image: var(--md-admonition-icon--note);
       mask-repeat: no-repeat;
+      mask-size: contain;
       content: "";
 
       // Adjust for right-to-left languages
@@ -192,6 +193,7 @@ $admonitions: (
       background-color: $tint;
       mask-image: var(--md-admonition-icon--#{$name});
       mask-repeat: no-repeat;
+      mask-size: contain;
     }
   }
 

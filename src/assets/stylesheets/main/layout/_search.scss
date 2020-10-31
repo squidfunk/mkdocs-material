@@ -666,6 +666,7 @@ $md-toggle__search--checked:
       background-color: currentColor;
       mask-image: var(--md-search-result-icon);
       mask-repeat: no-repeat;
+      mask-size: contain;
       content: "";
     }
 

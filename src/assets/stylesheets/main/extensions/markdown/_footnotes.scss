@@ -142,6 +142,7 @@
       background-color: currentColor;
       mask-image: var(--md-footnotes-icon);
       mask-repeat: no-repeat;
+      mask-size: contain;
       content: "";
 
       // Adjust for right-to-left languages

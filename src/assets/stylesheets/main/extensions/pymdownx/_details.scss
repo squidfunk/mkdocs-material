@@ -102,6 +102,7 @@
       background-color: currentColor;
       mask-image: var(--md-details-icon);
       mask-repeat: no-repeat;
+      mask-size: contain;
       transform: rotate(0deg);
       transition: transform 250ms;
       content: "";
