@@ -1,3 +1,7 @@
+mkdocs-material-6.x.x (2020-xx-xx)
+
+  * Fixed link colors for black and white on slate color scheme
+
 mkdocs-material-6.1.2 (2020-10-31)
 
   * Fixed sizing of icons in Admonition, Tasklist, etc. (6.1.1 regression)
