@@ -21,7 +21,7 @@ It also includes the [search bar][1] and a place to display your project's
 :octicons-beaker-24: Experimental ·
 [:octicons-heart-fill-24:{: .tx-heart } Insiders only][3]{: .tx-insiders }
 
-When _autohiding_ is activated, the header is automatically hidden when the
+When _autohiding_ is enabled, the header is automatically hidden when the
 user scrolls past a certain threshold, leaving more space for content. It can
 be enabled via `mkdocs.yml` with:
 

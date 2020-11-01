@@ -137,7 +137,7 @@ them at your own risk._
 :octicons-beaker-24: Experimental ·
 [:octicons-heart-fill-24:{: .tx-heart } Insiders only][8]{: .tx-insiders }
 
-When _search suggestions_ are activated, the search will display the likeliest
+When _search suggestions_ are enabled, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
 suggestion with ++arrow-right++
 
@@ -170,7 +170,7 @@ Insiders._
 :octicons-beaker-24: Experimental ·
 [:octicons-heart-fill-24:{: .tx-heart } Insiders only][8]{: .tx-insiders }
 
-When _search highlighting_ is activated and a user clicks on a search result,
+When _search highlighting_ is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
 It can be enabled via `mkdocs.yml` with:
 

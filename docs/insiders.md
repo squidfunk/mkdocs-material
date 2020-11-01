@@ -65,26 +65,28 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
 - [x] [Search suggestions help to save keystrokes][14]
 - [x] [Highlighting of matched search terms in content area][15]
 - [x] Search goes to first result on ++enter++ (I'm feeling lucky)
-- [x] [Navigation can always be expanded via configuration][16]
-- [x] [Header can be automatically hidden on scrolling][17]
-- [x] [Table of contents can be automatically hidden when empty][18]
+- [x] [Navigation can be grouped into sections][16]
+- [x] [Navigation can always be expanded via configuration][17]
+- [x] [Header can be automatically hidden on scrolling][18]
+- [x] [Table of contents can be automatically hidden when empty][19]
 
   [11]: setup/setting-up-the-footer.md#remove-generator
   [12]: setup/changing-the-colors.md#color-palette-toggle
   [13]: setup/setting-up-versioning.md#versioning
   [14]: setup/setting-up-site-search.md#search-suggestions
   [15]: setup/setting-up-site-search.md#search-highlighting
-  [16]: setup/setting-up-navigation.md#navigation-expansion
-  [17]: setup/setting-up-the-header.md#automatic-hiding
-  [18]: setup/setting-up-navigation.md#automatic-hiding
+  [16]: setup/setting-up-navigation.md#navigation-sections
+  [17]: setup/setting-up-navigation.md#navigation-expansion
+  [18]: setup/setting-up-the-header.md#automatic-hiding
+  [19]: setup/setting-up-navigation.md#automatic-hiding
 
 ## Roadmap
 
 The following list of funding goals – named after varieties of chili peppers 
-[I'm growing on my balcony][19] – shows which features are already available
+[I'm growing on my balcony][20] – shows which features are already available
 in Material for MkDocs Insiders.
 
-  [19]: https://www.instagram.com/squidfunk/
+  [20]: https://www.instagram.com/squidfunk/
 
 ### Madame Jeanette
 
@@ -100,9 +102,10 @@ in Material for MkDocs Insiders.
 [:octicons-flame-24: Funding goal: __$1,000__][6] ·
 :octicons-lock-24: Status: _exclusive_
 
-- [x] [Navigation can always be expanded via configuration][16]
-- [x] [Header can be automatically hidden on scrolling][17]
-- [x] [Table of contents can be automatically hidden when empty][18]
+- [x] [Navigation can be grouped into sections][16]
+- [x] [Navigation can always be expanded via configuration][17]
+- [x] [Header can be automatically hidden on scrolling][18]
+- [x] [Table of contents can be automatically hidden when empty][19]
 - [ ] Table of contents can be moved into navigation for more space
 - [ ] Better support for wide screens, i.e. more horizontal space
 
@@ -156,10 +159,10 @@ improvements (e.g. search) do not require any changes to existing configuration.
 This means that your users will be able to build the docs locally with the
 regular version and when they push their changes to CI/CD, they will be built
 with Material for MkDocs Insiders. For this reason, it's recommended to
-[install Insiders][20] only in CI, as you don't want to expose your `GH_TOKEN`
+[install Insiders][21] only in CI, as you don't want to expose your `GH_TOKEN`
 to users.
 
-  [20]: publishing-your-site.md#github-pages
+  [21]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -169,7 +172,7 @@ terms?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][21]. However, we kindly ask you to respect the following
+by the [MIT license][22]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ from Material for MkDocs Insiders.
@@ -180,7 +183,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Material for MkDocs Insiders. However, you may
   __use the latest version__ that's available to you __as long as you like__.
-  Just remember that __[GitHub deletes private forks][22]__.
+  Just remember that __[GitHub deletes private forks][23]__.
 
-  [21]: license.md
-  [22]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [22]: license.md
+  [23]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
