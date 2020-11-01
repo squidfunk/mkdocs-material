@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.8.0 <small>_ November 1, 2020</small>
+
+* Added support for navigation sections
+* Fixed appearance of inactive search suggestions
+
 ### 1.7.0 <small>_ October 25, 2020</small>
 
 * Added support for deploying multiple versions
