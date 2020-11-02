@@ -64,7 +64,7 @@
     "github-types": "^1.0.0",
     "gitlab": "^14.2.2",
     "html-minifier": "^4.0.0",
-    "ignore-emit-webpack-plugin": "2.0.3",
+    "ignore-emit-webpack-plugin": "2.0.4",
     "imagemin-webpack-plugin": "^2.4.2",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
