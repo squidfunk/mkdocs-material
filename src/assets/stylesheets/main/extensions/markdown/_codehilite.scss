@@ -183,7 +183,7 @@
   // Disable user selection, so code can be easily copied without
   // accidentally also copying the line numbers
   .linenos {
-    padding: px2rem(10.5px) px2em(16px, 13.6px);
+    padding: px2em(10.5px, 13.6px) px2em(16px, 13.6px);
     padding-right: 0;
     font-size: px2em(13.6px);
     background-color: var(--md-code-bg-color);
