@@ -31,6 +31,13 @@
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width,initial-scale=1" />
 
+      <!-- Page keywords -->
+      {% if page and page.meta and page.meta.keywords %}
+        <meta name="keywords" content="{{ page.meta.keywords }}" />
+      {% elif config.site_keywords %}
+        <meta name="keywords" content="{{ config.site_keywords }}" />
+      {% endif %}
+
       <!-- Page description -->
       {% if page and page.meta and page.meta.description %}
         <meta name="description" content="{{ page.meta.description }}" />
