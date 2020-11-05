@@ -13,6 +13,16 @@ and how you can [become a sponsor][3].
   [2]: #how-sponsorship-works
   [3]: #how-to-become-a-sponsor
 
+<div style="width:100%;height:0px;position:relative;padding-bottom:56.138%;">
+  <iframe src="https://streamable.com/e/90e84w" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe>
+</div>
+<p style="text-align: center; font-style: oblique">
+  A demo is worth a thousand words — check it out at<br />
+  <a href="https://squidfunk.github.io/mkdocs-material-insiders/">
+    squidfunk.github.io/mkdocs-material-insiders
+  </a>
+</p>
+
 ## How sponsorship works
 
 New features will first land in Material for MkDocs Insiders, which means that
