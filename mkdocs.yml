@@ -22,7 +22,6 @@
 site_name: Material for MkDocs
 site_url: https://squidfunk.github.io/mkdocs-material/
 site_author: Martin Donath
-site_keywords: Material,MkDocs
 site_description: >-
   Create a branded static site from a set of Markdown files to host the
   documentation of your Open Source or commercial project – customizable,
