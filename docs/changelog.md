@@ -62,7 +62,7 @@ template: overrides/main.html
 
 * Added support for keywords `meta` tag
 * Fixed #2027: Line numbers don't scale with smaller font size
-* Fixed link colors for black and white on slate color scheme
+* Fixed link colors for black and white on `slate` color scheme
 * Removed focus outline on scrolling code blocks for pointer devices
 
 ### 6.1.2 <small>_ October 31, 2020</small>
