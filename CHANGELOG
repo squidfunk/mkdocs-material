@@ -1,5 +1,7 @@
-mkdocs-material-6.x.x (2020-xx-xx)
+mkdocs-material-6.1.3 (2020-11-05)
 
+  * Added support for keywords meta tag
+  * Fixed #2027: Line numbers don't scale with smaller font size
   * Fixed link colors for black and white on slate color scheme
   * Removed focus outline on scrolling code blocks for pointer devices
 
