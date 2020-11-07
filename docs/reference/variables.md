@@ -90,13 +90,11 @@ The unit price is 12.50.
 
 ### Using variables in snippets
 
-You may want to use variables in snippets, for example, when describing the same
-procedure in multiple contexts where only one piece of information differs. This
-does not work with snippets that are included using the [Snippets][2] extension.
-Instead, you can use the [macros][3] plugin for defining snippets.
-
-To this end, add the snippet location using the `include_dir` parameter to the 
-plugin's configuration in `mkdocs.yml`, for example:
+In order to use variables in snippets, e.g., when using the same snippet in
+multiple contexts. This does not work with snippets that are included using the
+[Snippets][2] extension. Instead, you can use the [macros][3] plugin for
+defining snippets. Add the snippet location using the `include_dir` parameter
+to the plugin configuration in `mkdocs.yml`, for example:
 
 ``` yaml
 plugins:
@@ -105,14 +103,13 @@ plugins:
       include_dir: snippets
 ```
 
-In your Markdown file, you can include snippets with Jinja's [`include`][4]
-function:
+In your Markdown file, include snippets with Jinja's [`include`][4] function:
 
 ``` markdown
 {% include "definitions.md" %}
 ```
 
-This example illustrates the behavior:
+_Example_:
 
 === "snippets/definitions.md"
 

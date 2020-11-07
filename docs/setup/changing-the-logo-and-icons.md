@@ -53,7 +53,7 @@ theme:
   favicon: images/favicon.png
 ```
 
-  [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L53-L54
+  [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L60-L61
 
 ### Icons
 

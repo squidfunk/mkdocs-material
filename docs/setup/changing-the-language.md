@@ -94,7 +94,7 @@ work properly. Material for MkDocs relies on [lunr-languages][4] to provide this
 functionality. See the guide detailing how to [set up site search][5] for
 more information.
 
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/main/index.ts#L90-L112
+  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/main/index.ts#L77-L108
   [4]: https://github.com/MihaiValentin/lunr-languages
   [5]: setting-up-site-search.md
 
@@ -132,7 +132,7 @@ directionality:
   })
 </script>
 
-  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L178
+  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L185
 
 ## Customization
 

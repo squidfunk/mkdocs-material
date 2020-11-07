@@ -30,7 +30,7 @@ theme:
 
 The typeface will be loaded in 300, 400, _400i_ and __700__.
 
-  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L100-L125
+  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L107-L132
   [3]: https://fonts.google.com/specimen/Roboto
 
 ### Proportional font

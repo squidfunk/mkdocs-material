@@ -204,7 +204,7 @@ combination with @squidfunk's [iframe-worker][15] polyfill.
 
 For setup instructions, refer to the [official documentation][16].
 
-  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L360-L372
+  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L368-L369
   [14]: https://github.com/wilhelmer/mkdocs-localsearch/
   [15]: https://github.com/squidfunk/iframe-worker
   [16]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5

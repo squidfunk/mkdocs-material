@@ -1,3 +1,8 @@
+mkdocs-material-6.1.4+insiders-1.9.0 (2020-11-07)
+
+  * Added support for hidding navigation and table of contents on any page
+  * Removed autohiding table of contents when empty
+
 mkdocs-material-6.1.4 (2020-11-07)
 
   * Fixed sidebar jitter when scrolling footer into view
