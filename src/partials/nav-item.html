@@ -31,22 +31,14 @@
   <li class="{{ class }} md-nav__item--nested">
 
     <!-- Active checkbox expands items contained within nested section -->
-    {% if nav_item.active %}
-      <input
-        class="md-nav__toggle md-toggle"
-        data-md-toggle="{{ path }}"
-        type="checkbox"
-        id="{{ path }}"
-        checked
-      />
-    {% else %}
-      <input
-        class="md-nav__toggle md-toggle"
-        data-md-toggle="{{ path }}"
-        type="checkbox"
-        id="{{ path }}"
-      />
-    {% endif %}
+    {% set checked = "checked" if nav_item.active %}
+    <input
+      class="md-nav__toggle md-toggle"
+      data-md-toggle="{{ path }}"
+      type="checkbox"
+      id="{{ path }}"
+      {{ checked }}
+    />
 
     <!-- Expand active pages -->
     <label class="md-nav__link" for="{{ path }}">
