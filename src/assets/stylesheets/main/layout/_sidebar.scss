@@ -53,8 +53,8 @@ $md-toggle__drawer--checked:
   top: px2rem(48px);
   align-self: flex-start;
   width: px2rem(242px);
+  height: 0;
   padding: px2rem(24px) 0;
-  overflow: hidden;
 
   // Hide for print
   @media print {
@@ -103,6 +103,16 @@ $md-toggle__drawer--checked:
     }
   }
 
+  // [screen +]: Convert navigation to sidebar
+  @include break-from-device(screen) {
+    height: 0;
+
+    // Normal sticky behavior, if JavaScript is not available.
+    .no-js & {
+      height: auto;
+    }
+  }
+
   // Secondary sidebar with table of contents
   &--secondary {
     display: none;
@@ -111,6 +121,12 @@ $md-toggle__drawer--checked:
     // [tablet landscape +]: Show table of contents next to body copy
     @include break-from-device(tablet landscape) {
       display: block;
+      height: 0;
+
+      // Normal sticky behavior, if JavaScript is not available.
+      .no-js & {
+        height: auto;
+      }
 
       // Ensure smooth scrolling on iOS
       .md-sidebar__scrollwrap {
@@ -121,7 +137,6 @@ $md-toggle__drawer--checked:
 
   // Wrapper for scrolling on overflow
   &__scrollwrap {
-    max-height: 100%;
     margin: 0 px2rem(4px);
     overflow-y: auto;
     // Hack: reduce jitter
@@ -135,7 +150,7 @@ $md-toggle__drawer--checked:
     // this reason, we use an animation to set scroll snaping with a slight
     // delay, which seems to fix the issue (#1667).
     .js & {
-      animation: md-sidebar__scrollwrap--hack 400ms forwards;
+      animation: md-sidebar__scrollwrap--hack 1000ms forwards;
     }
 
     // [tablet -]: Adjust margins
