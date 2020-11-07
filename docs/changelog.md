@@ -58,6 +58,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.1.4 <small>_ November 7, 2020</small>
+
+* Fixed sidebar jitter when scrolling footer into view
+
 ### 6.1.3 <small>_ November 5, 2020</small>
 
 * Added support for keywords `meta` tag

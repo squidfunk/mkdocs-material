@@ -1,3 +1,7 @@
+mkdocs-material-6.1.4 (2020-11-07)
+
+  * Fixed sidebar jitter when scrolling footer into view
+
 mkdocs-material-6.1.3 (2020-11-05)
 
   * Added support for keywords meta tag
