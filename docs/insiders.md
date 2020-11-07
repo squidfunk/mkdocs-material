@@ -76,9 +76,9 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
 - [x] [Highlighting of matched search terms in content area][15]
 - [x] Search goes to first result on ++enter++ (I'm feeling lucky)
 - [x] [Navigation can be grouped into sections][16]
-- [x] [Navigation can always be expanded via configuration][17]
-- [x] [Header can be automatically hidden on scrolling][18]
-- [x] [Table of contents can be automatically hidden when empty][19]
+- [x] [Navigation can be always expanded][17]
+- [x] [Navigation and table of contents can be hidden][18]
+- [x] [Header can be automatically hidden on scrolling][19]
 
   [11]: setup/setting-up-the-footer.md#remove-generator
   [12]: setup/changing-the-colors.md#color-palette-toggle
@@ -87,8 +87,8 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
   [15]: setup/setting-up-site-search.md#search-highlighting
   [16]: setup/setting-up-navigation.md#navigation-sections
   [17]: setup/setting-up-navigation.md#navigation-expansion
-  [18]: setup/setting-up-the-header.md#automatic-hiding
-  [19]: setup/setting-up-navigation.md#automatic-hiding
+  [18]: setup/setting-up-navigation.md#hide-the-sidebars
+  [19]: setup/setting-up-the-header.md#automatic-hiding
 
 ## Roadmap
 
@@ -113,9 +113,9 @@ in Material for MkDocs Insiders.
 :octicons-lock-24: Status: _exclusive_
 
 - [x] [Navigation can be grouped into sections][16]
-- [x] [Navigation can always be expanded via configuration][17]
-- [x] [Header can be automatically hidden on scrolling][18]
-- [x] [Table of contents can be automatically hidden when empty][19]
+- [x] [Navigation can be always expanded][17]
+- [x] [Navigation and table of contents can be hidden][18]
+- [x] [Header can be automatically hidden on scrolling][19]
 - [ ] Table of contents can be moved into navigation for more space
 - [ ] Better support for wide screens, i.e. more horizontal space
 
@@ -145,7 +145,7 @@ in Material for MkDocs Insiders.
 - [x] [Highlighting of matched search terms in content area][15]
 - [x] Search goes to first result on ++enter++ (I'm feeling lucky)
 - [ ] Table of contents shows which sections have search results
-- [ ] Support for a user's last searches
+- [ ] Support for displaying a user's last searches
 - [ ] Improved search result summaries
 
 ### Caribbean Red
