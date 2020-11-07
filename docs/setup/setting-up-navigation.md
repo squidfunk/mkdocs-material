@@ -266,9 +266,9 @@ them at your own risk._
 [:octicons-file-code-24: Source][11] ·
 [:octicons-heart-fill-24:{: .tx-heart } Insiders only][11]{: .tx-insiders }
 
-Sometimes it's desirable to hide the navigation sidebar or table of contents,
-especially when there's a single navigation item. This can be done for any
-page using the [Metadata][20] extension:
+Sometimes it's desirable to hide the navigation and/or table of contents
+sidebar, especially when there's a single navigation item. This can be done for
+any page using the [Metadata][20] extension:
 
 ``` yaml
 ---
