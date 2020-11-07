@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.9.0 <small>_ November 7, 2020</small>
+
+* Added support for hiding navigation and table of contents on any page
+* Removed autohiding table of contents when empty
+
 ### 1.8.0 <small>_ November 1, 2020</small>
 
 * Added support for navigation sections
@@ -36,7 +41,7 @@ template: overrides/main.html
 
 ### 1.4.0 <small>_ August 30, 2020</small>
 
-* Added support for auto-hiding header on scroll
+* Added support for autohiding header on scroll
 
 ### 1.3.0 <small>_ August 26, 2020</small>
 
