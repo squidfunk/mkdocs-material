@@ -59,7 +59,7 @@
     "autoprefixer": "10.0.1",
     "copy-webpack-plugin": "^6.2.1",
     "css-loader": "^5.0.1",
-    "event-hooks-webpack-plugin": "^2.1.7",
+    "event-hooks-webpack-plugin": "^2.2.0",
     "expose-loader": "^1.0.1",
     "github-types": "^1.0.0",
     "gitlab": "^14.2.2",
