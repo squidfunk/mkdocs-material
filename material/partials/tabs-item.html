@@ -1,0 +1,40 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% if nav_item.is_homepage or nav_item.url == "index.html" %}
+  <li class="md-tabs__item">
+    {% if not page.ancestors | length and nav | selectattr("url", page.url) %}
+      <a href="{{ nav_item.url | url }}" class="md-tabs__link md-tabs__link--active">
+        {{ nav_item.title }}
+      </a>
+    {% else %}
+      <a href="{{ nav_item.url | url }}" class="md-tabs__link">
+        {{ nav_item.title }}
+      </a>
+    {% endif %}
+  </li>
+{% elif nav_item.children and nav_item.children | length > 0 %}
+  {% set title = title | default(nav_item.title) %}
+  {% if (nav_item.children | first).children %}
+    {% set nav_item = nav_item.children | first %}
+    {% include "partials/tabs-item.html" %}
+  {% else %}
+    <li class="md-tabs__item">
+      {% if nav_item.active %}
+        <a href="{{ (nav_item.children | first).url | url }}" class="md-tabs__link md-tabs__link--active">
+          {{ title }}
+        </a>
+      {% else %}
+        <a href="{{ (nav_item.children | first).url | url }}" class="md-tabs__link">
+          {{ title }}
+        </a>
+      {% endif %}
+    </li>
+  {% endif %}
+{% elif nav_item.url.startswith("http") %}
+  <li class="md-tabs__item">
+    <a href="{{ nav_item.url | url }}" class="md-tabs__link">
+      {{ nav_item.title }}
+    </a>
+  </li>
+{% endif %}
