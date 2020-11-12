@@ -124,13 +124,16 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
+  - Architecture:
+    - Observer: observer-arch.md
+    - Exporter: exporter-arch.md
+    - Client Library: client-lib-arch.md
   - Getting started:
-    - Installation: getting-started.md
-  - Setup:
-    - Changing the colors: setup/changing-the-colors.md
-    - Changing the fonts: setup/changing-the-fonts.md
-  - Reference:
-    - Abbreviations: reference/abbreviations.md
+    - Step 1 Observer and Exporter Installation: setup/step-1-observer-and-exporter-installation.md
+    - Step 2 Client Library Integration: setup/step-2-client-library-integration.md
+    - Step 3 Visualization: setup/step-3-visualization.md
+  - Team: 
+      Members: team.md
   - Changelog:
     - Release notes: changelog.md
 
