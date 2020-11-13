@@ -77,6 +77,8 @@
     display: block;
     margin-top: px2rem(16px);
     font-size: px2rem(14px);
+    // Hack: save a repaint when the tabs are appearing when scrolling up
+    backface-visibility: hidden;
     opacity: 0.7;
     transition:
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
@@ -112,9 +114,8 @@
       transform: translateY(50%);
       opacity: 0;
       transition:
-        color     250ms,
-        transform   0ms 400ms,
-        opacity   100ms;
+        transform 0ms 100ms,
+        opacity 100ms;
     }
   }
 
@@ -164,7 +165,7 @@
 
       // Always expand nested navigation on 2nd level
       .md-nav[data-md-level="1"] {
-        // Hack: Always show active navigation tab on breakpoint screen, despite
+        // Hack: always show active navigation tab on breakpoint screen, despite
         // of checkbox being checked or not. Fixes #1655.
         display: block;
 
