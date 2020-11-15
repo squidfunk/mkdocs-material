@@ -29,7 +29,7 @@
 
   // Scroll math block on overflow
   div.arithmatex {
-    overflow-x: scroll;
+    overflow: auto;
 
     // [mobile -]: Stretch to whole width
     @include break-to-device(mobile) {
