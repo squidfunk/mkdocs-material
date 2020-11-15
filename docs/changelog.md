@@ -67,6 +67,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.1.5 <small>_ November 15, 2020</small>
+
+* Fixed search reset button not showing/hiding correctly
+
 ### 6.1.4 <small>_ November 7, 2020</small>
 
 * Fixed sidebar jitter when scrolling footer into view
