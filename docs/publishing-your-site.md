@@ -30,7 +30,7 @@ contents:
     on:
       push:
         branches:
-          - master
+          - main
     jobs:
       deploy:
         runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ contents:
     on:
       push:
         branches:
-          - master
+          - main
     jobs:
       deploy:
         runs-on: ubuntu-latest
@@ -66,7 +66,7 @@ contents:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     ```
 
-Now, when a new commit is pushed to `master`, the static site is automatically
+Now, when a new commit is pushed to `main`, the static site is automatically
 built and deployed. Commit and push the file to your repository to see the
 workflow in action.
 
