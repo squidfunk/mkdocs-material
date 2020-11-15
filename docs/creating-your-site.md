@@ -91,7 +91,6 @@ Material for MkDocs comes with a lot of configuration options. The _setup_
 section explains in great detail how to configure and customize colors, fonts,
 icons and much more:
 
-<ul class="tx-columns" markdown="1">
 - [Changing the colors][5]
 - [Changing the fonts][6]
 - [Changing the language][7]
@@ -104,7 +103,6 @@ icons and much more:
 - [Setting up the footer][14]
 - [Adding a git repository][15]
 - [Adding a comment system][16]
-</ul>
 
   [5]: setup/changing-the-colors.md
   [6]: setup/changing-the-fonts.md
