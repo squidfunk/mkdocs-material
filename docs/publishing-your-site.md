@@ -54,6 +54,7 @@ contents:
     jobs:
       deploy:
         runs-on: ubuntu-latest
+        if: github.event.pull_request.head.repo.fork == false
         steps:
           - uses: actions/checkout@v2
           - uses: actions/setup-python@v2
