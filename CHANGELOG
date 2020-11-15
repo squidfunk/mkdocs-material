@@ -1,10 +1,10 @@
+mkdocs-material-6.1.5+insiders-1.10.0 (2020-11-15)
+
+  * Added support for integrating table of contents into navigation
+
 mkdocs-material-6.1.5 (2020-11-15)
 
   * Fixed search reset button not showing/hiding correctly
-
-mkdocs-material-6.1.4+insiders-1.10.0 (2020-11-15)
-
-  * Added support for integrating table of contents into navigation
 
 mkdocs-material-6.1.4+insiders-1.9.0 (2020-11-07)
 
