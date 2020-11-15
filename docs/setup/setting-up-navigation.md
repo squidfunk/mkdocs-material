@@ -5,9 +5,9 @@ template: overrides/main.html
 # Setting up navigation
 
 A clear and concise navigation structure is an important aspect of good project 
-documentation. Material for MkDocs provides several options to configure the
-behavior of navigational elements, including [tabs][1] and [sections][2], and
-its flag-ship feature: [instant loading][3].
+documentation. Material for MkDocs provides a multitude of options to configure
+the behavior of navigational elements, including [tabs][1] and [sections][2],
+and its flag-ship feature: [instant loading][3].
 
   [1]: #navigation-tabs
   [2]: #navigation-sections
@@ -46,7 +46,7 @@ _Material for MkDocs is the only MkDocs theme offering this feature._
 [:octicons-file-code-24: Source][6] · :octicons-unlock-24: Feature flag
 
 When _tabs_ are enabled, top-level sections are rendered in a menu layer below
-the header on big screens (but not when the sidebar is hidden). They can be
+the header for viewports above `1220px`, but remain as-is on mobile. They can be
 enabled via `mkdocs.yml` with:
 
 ``` yaml
@@ -118,8 +118,8 @@ navigation is plausible on mobile devices. As another example, see the
 [:octicons-heart-fill-24:{: .tx-heart } Insiders only][11]{: .tx-insiders }
 
 When _sections_ are enabled, top-level sections are rendered as groups in the
-sidebar on big screens (but not when the sidebar is hidden). It can be enabled
-via `mkdocs.yml`:
+sidebar for viewports above `1220px`, but remain as-is on mobile. They can also
+be enabled via `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -261,6 +261,36 @@ them at your own risk._
   [18]: #permalink
   [19]: #hide-the-sidebars
 
+#### Navigation integration
+
+[:octicons-file-code-24: Source][11] ·
+:octicons-unlock-24: Feature flag ·
+[:octicons-heart-fill-24:{: .tx-heart } Insiders only][11]{: .tx-insiders }
+
+When _integration_ is enabled, the table of contents is rendered as part of
+the navigation for viewports above `1220px`, but remain as-is on mobile. This
+can be enabled via `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - toc.integrate
+```
+
+=== "Integrate table of contents"
+
+    [![Integrate table of contents][20]][20]
+
+=== "Separate table of contents"
+
+    [![Separate table of contents][8]][8]
+
+  [20]: ../assets/screenshots/toc-integrate.png
+
+The content section will now always stretch to the right side, resulting in
+more space for your content. This feature flag can be combined with all other
+feature flags, e.g. [tabs][1] and [sections][2]. 
+
 ### Hide the sidebars
 
 [:octicons-file-code-24: Source][11] ·
@@ -268,7 +298,7 @@ them at your own risk._
 
 Sometimes it's desirable to hide the navigation and/or table of contents
 sidebar, especially when there's a single navigation item. This can be done for
-any page using the [Metadata][20] extension:
+any page using the [Metadata][21] extension:
 
 ``` yaml
 ---
@@ -282,26 +312,26 @@ hide:
 
 === "Hide navigation"
 
-    [![Hide navigation][21]][21]
+    [![Hide navigation][22]][22]
 
 === "Hide table of contents"
 
-    [![Hide table of contents][22]][22]
+    [![Hide table of contents][23]][23]
 
 === "Hide both"
 
-    [![Hide navigation and table of contents][23]][23]
+    [![Hide navigation and table of contents][24]][24]
 
-  [20]: ../../reference/meta-tags/#metadata
-  [21]: ../assets/screenshots/hide-navigation.png
-  [22]: ../assets/screenshots/hide-toc.png
-  [23]: ../assets/screenshots/hide-navigation-toc.png
+  [21]: ../../reference/meta-tags/#metadata
+  [22]: ../assets/screenshots/hide-navigation.png
+  [23]: ../assets/screenshots/hide-toc.png
+  [24]: ../assets/screenshots/hide-navigation-toc.png
 
 ## Customization
 
 ### Keyboard shortcuts
 
-[:octicons-file-code-24: Source][24] ·
+[:octicons-file-code-24: Source][25] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 Material for MkDocs includes several keyboard shortcuts that make it possible
@@ -327,7 +357,7 @@ to navigate your project documentation via keyboard. There're two modes:
     * ++n++ , ++period++ : go to next page
 
 Let's say you want to bind some action to the ++x++ key. By using [additional
-JavaScript][25], you can subscribe to the `keyboard$` observable and attach
+JavaScript][26], you can subscribe to the `keyboard$` observable and attach
 your custom event listener:
 
 ``` js
@@ -343,5 +373,38 @@ The call to `#!js key.claim()` will essentially execute `#!js preventDefault()`
 on the underlying event, so the keypress will not propagate further and touch
 other event listeners.
 
-  [24]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/keyboard/index.ts
-  [25]: ../customization.md#additional-javascript
+  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/keyboard/index.ts
+  [26]: ../customization.md#additional-javascript
+
+### Content area width
+
+[:octicons-file-code-24: Source][27] ·
+:octicons-mortar-board-24: Difficulty: _easy_
+
+The width of the content area is set so the length of each line doesn't exceed
+80-100 characters, depending on the width of the characters. While this
+is a reasonable default, as longer lines tend to be harder to read, it may be
+desirable to increase the overall width of the content area, or even make it
+stretch to the entire available space.
+
+This can easily be achieved with an [additional stylesheet][28] and a few lines
+of CSS:
+
+=== "Increase width"
+
+    ``` css
+    .md-grid {
+      max-width: 1440px;
+    }
+    ```
+
+=== "Stretch to fit"
+
+    ``` css
+    .md-grid {
+      max-width: initial;
+    }
+    ```
+
+  [27]: https://github.com/squidfunk/mkdocs-material/blob/aeaa00a625abf952f355164de02c539b061e6127/src/assets/stylesheets/main/layout/_base.scss#L99-L104
+  [28]: ../customization.md#additional-css

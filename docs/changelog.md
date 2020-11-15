@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.10.0 <small>_ November 15, 2020</small>
+
+* Added support for integrating table of contents into navigation
+
 ### 1.9.0 <small>_ November 7, 2020</small>
 
 * Added support for hiding navigation and table of contents on any page

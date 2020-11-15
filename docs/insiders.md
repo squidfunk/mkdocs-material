@@ -78,7 +78,8 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
 - [x] [Navigation can be grouped into sections][16]
 - [x] [Navigation can be always expanded][17]
 - [x] [Navigation and table of contents can be hidden][18]
-- [x] [Header can be automatically hidden on scrolling][19]
+- [x] [Table of contents can be integrated into navigation][19]
+- [x] [Header can be automatically hidden on scrolling][20]
 
   [11]: setup/setting-up-the-footer.md#remove-generator
   [12]: setup/changing-the-colors.md#color-palette-toggle
@@ -88,15 +89,16 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
   [16]: setup/setting-up-navigation.md#navigation-sections
   [17]: setup/setting-up-navigation.md#navigation-expansion
   [18]: setup/setting-up-navigation.md#hide-the-sidebars
-  [19]: setup/setting-up-the-header.md#automatic-hiding
+  [19]: setup/setting-up-navigation.md#navigation-integration
+  [20]: setup/setting-up-the-header.md#automatic-hiding
 
 ## Roadmap
 
 The following list of funding goals – named after varieties of chili peppers 
-[I'm growing on my balcony][20] – shows which features are already available
+[I'm growing on my balcony][21] – shows which features are already available
 in Material for MkDocs Insiders.
 
-  [20]: https://www.instagram.com/squidfunk/
+  [21]: https://www.instagram.com/squidfunk/
 
 ### Madame Jeanette
 
@@ -115,9 +117,8 @@ in Material for MkDocs Insiders.
 - [x] [Navigation can be grouped into sections][16]
 - [x] [Navigation can be always expanded][17]
 - [x] [Navigation and table of contents can be hidden][18]
-- [x] [Header can be automatically hidden on scrolling][19]
-- [ ] Table of contents can be moved into navigation for more space
-- [ ] Better support for wide screens, i.e. more horizontal space
+- [x] [Table of contents can be integrated into navigation][19]
+- [x] [Header can be automatically hidden on scrolling][20]
 
 ### Bhut Jolokia
 
@@ -169,10 +170,10 @@ improvements (e.g. search) do not require any changes to existing configuration.
 This means that your users will be able to build the docs locally with the
 regular version and when they push their changes to CI/CD, they will be built
 with Material for MkDocs Insiders. For this reason, it's recommended to
-[install Insiders][21] only in CI, as you don't want to expose your `GH_TOKEN`
+[install Insiders][22] only in CI, as you don't want to expose your `GH_TOKEN`
 to users.
 
-  [21]: publishing-your-site.md#github-pages
+  [22]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -182,7 +183,7 @@ terms?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][22]. However, we kindly ask you to respect the following
+by the [MIT license][23]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ from Material for MkDocs Insiders.
@@ -193,7 +194,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Material for MkDocs Insiders. However, you may
   __use the latest version__ that's available to you __as long as you like__.
-  Just remember that __[GitHub deletes private forks][23]__.
+  Just remember that __[GitHub deletes private forks][24]__.
 
-  [22]: license.md
-  [23]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [23]: license.md
+  [24]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
