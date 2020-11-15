@@ -90,11 +90,9 @@ The unit price is 12.50.
 
 ### Using variables in snippets
 
-In order to use variables in snippets, e.g., when using the same snippet in
-multiple contexts. This does not work with snippets that are included using the
-[Snippets][2] extension. Instead, you can use the [macros][3] plugin for
-defining snippets. Add the snippet location using the `include_dir` parameter
-to the plugin configuration in `mkdocs.yml`, for example:
+The [macros][2] plugin can be used to allow variables in snippets, which is not
+possible with the [Snippets][3] extension alone. Add the snippets location to
+the plugin configuration in `mkdocs.yml`:
 
 ``` yaml
 plugins:
@@ -139,8 +137,8 @@ _Example_:
     {% include "definitions.md" %}
     ```
 
-  [2]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
-  [3]: #macros
+  [2]: #macros
+  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
   [4]: https://jinja.palletsprojects.com/en/2.11.x/templates/#include
 
 ## Customization
