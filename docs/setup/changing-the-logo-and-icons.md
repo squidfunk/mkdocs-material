@@ -72,9 +72,9 @@ markdown_extensions:
 
 The following icon sets are bundled with Material for MkDocs:
 
-* :material-material-design: – [Material Design][8]
-* :fontawesome-brands-font-awesome-flag: – [FontAwesome][9]
-* :octicons-mark-github-16: – [Octicons][10]
+- :material-material-design: – [Material Design][8]
+- :fontawesome-brands-font-awesome-flag: – [FontAwesome][9]
+- :octicons-mark-github-16: – [Octicons][10]
 
 If you want to add [additional icons][1], read on.
 

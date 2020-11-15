@@ -312,15 +312,15 @@ message format using _discriminated unions_, i.e. through the `type` property
 of the message. See the following interface definitions to learn about the
 message formats:
 
-* [:octicons-file-code-24: `SearchMessage`][22]
-* [:octicons-file-code-24: `SearchIndex` and `SearchResult`][23]
+- [:octicons-file-code-24: `SearchMessage`][22]
+- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][23]
 
 The sequence and direction of messages is rather intuitive:
 
-* :octicons-arrow-right-24: `SearchSetupMessage`
-* :octicons-arrow-left-24: `SearchReadyMessage`
-* :octicons-arrow-right-24: `SearchQueryMessage`
-* :octicons-arrow-left-24: `SearchResultMessage`
+- :octicons-arrow-right-24: `SearchSetupMessage`
+- :octicons-arrow-left-24: `SearchReadyMessage`
+- :octicons-arrow-right-24: `SearchQueryMessage`
+- :octicons-arrow-left-24: `SearchResultMessage`
 
   [20]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker
   [21]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers

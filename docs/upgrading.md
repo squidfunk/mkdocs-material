@@ -20,15 +20,15 @@ pip show mkdocs-material
 
 ### What's new?
 
-* Improved search result look and feel
-* Improved search result stability while typing
-* Improved search result grouping (pages + headings)
-* Improved search result relevance and scoring
-* Added display of missing query terms to search results
-* Reduced size of vendor bundle by 25% (84kb → 67kb)
-* Reduced size of the Docker image to improve CI build performance
-* Removed hero partial in favor of [custom implementation][1]
-* Removed [deprecated front matter features][2]
+- Improved search result look and feel
+- Improved search result stability while typing
+- Improved search result grouping (pages + headings)
+- Improved search result relevance and scoring
+- Added display of missing query terms to search results
+- Reduced size of vendor bundle by 25% (84kb → 67kb)
+- Reduced size of the Docker image to improve CI build performance
+- Removed hero partial in favor of [custom implementation][1]
+- Removed [deprecated front matter features][2]
 
   [1]: deprecations.md#hero
   [2]: deprecations.md#front-matter
@@ -287,20 +287,20 @@ matches the new structure:
 
 ### What's new?
 
-* Reactive architecture – try `#!js app.dialog$.next("Hi!")` in the console
-* [Instant loading][4] – make Material behave like a Single Page Application
-* Improved CSS customization with [CSS variables][5] – set your brand's colors
-* Improved CSS resilience, e.g. proper sidebar locking for customized headers
-* Improved [icon integration][6] and configuration – now including over 5k icons
-* Added possibility to use any icon for logo, repository and social links
-* Search UI does not freeze anymore (moved to web worker)
-* Search index built only once when using instant loading
-* Improved extensible keyboard handling
-* Support for [prebuilt search indexes][7]
-* Support for displaying stars and forks for GitLab repositories
-* Support for scroll snapping of sidebars and search results
-* Reduced HTML and CSS footprint due to deprecation of Internet Explorer support
-* Slight facelifting of some UI elements (Admonitions, tables, ...)
+- Reactive architecture – try `#!js app.dialog$.next("Hi!")` in the console
+- [Instant loading][4] – make Material behave like a Single Page Application
+- Improved CSS customization with [CSS variables][5] – set your brand's colors
+- Improved CSS resilience, e.g. proper sidebar locking for customized headers
+- Improved [icon integration][6] and configuration – now including over 5k icons
+- Added possibility to use any icon for logo, repository and social links
+- Search UI does not freeze anymore (moved to web worker)
+- Search index built only once when using instant loading
+- Improved extensible keyboard handling
+- Support for [prebuilt search indexes][7]
+- Support for displaying stars and forks for GitLab repositories
+- Support for scroll snapping of sidebars and search results
+- Reduced HTML and CSS footprint due to deprecation of Internet Explorer support
+- Slight facelifting of some UI elements (Admonitions, tables, ...)
 
   [5]: setup/changing-the-colors.md#custom-colors
   [6]: setup/changing-the-logo-and-icons.md#icons

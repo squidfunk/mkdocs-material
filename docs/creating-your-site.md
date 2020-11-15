@@ -77,9 +77,9 @@ be slightly different:
         logo: logo
     ```
 
-_If you cloned Material for MkDocs from GitHub, you must add all of the themes'
-defaults by yourself, since_ [`mkdocs_theme.yml`][3] _is not loaded (as
-[described in the official documentation][4])._
+_If you cloned Material for MkDocs from GitHub, you must list all of the themes'
+defaults, because_ [`mkdocs_theme.yml`][3] _is not loaded automatically as
+[described in the official documentation][4]._
 
   [2]: getting-started.md#installation
   [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
@@ -91,18 +91,22 @@ Material for MkDocs comes with a lot of configuration options. The _setup_
 section explains in great detail how to configure and customize colors, fonts,
 icons and much more:
 
-* [Changing the colors][5]
-* [Changing the fonts][6]
-* [Changing the language][7]
-* [Changing the logo and icons][8]
-* [Setting up navigation][9]
-* [Setting up site search][10]
-* [Setting up site analytics][11]
-* [Setting up versioning][12]
-* [Setting up the header][13]
-* [Setting up the footer][14]
-* [Adding a git repository][15]
-* [Adding a comment system][16]
+<ul class="tx-columns" markdown="1">
+
+- [Changing the colors][5]
+- [Changing the fonts][6]
+- [Changing the language][7]
+- [Changing the logo and icons][8]
+- [Setting up navigation][9]
+- [Setting up site search][10]
+- [Setting up site analytics][11]
+- [Setting up versioning][12]
+- [Setting up the header][13]
+- [Setting up the footer][14]
+- [Adding a git repository][15]
+- [Adding a comment system][16]
+
+</ul>
 
   [5]: setup/changing-the-colors.md
   [6]: setup/changing-the-fonts.md

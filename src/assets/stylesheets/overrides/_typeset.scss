@@ -58,5 +58,10 @@
     > * {
       break-inside: avoid;
     }
+
+    // [mobile portrait -]: Reset columns on mobile
+    @include break-to-device(mobile portrait) {
+      columns: initial;
+    }
   }
 }

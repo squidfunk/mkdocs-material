@@ -62,18 +62,22 @@ specific pages by adding the following to the front matter of a page:
 
 === "Enable Disqus"
 
-    ``` markdown
+    ``` yaml
     ---
     disqus: <shortname>
     ---
+
+    ...
     ```
 
 === "Disable Disqus"
 
-    ``` markdown
+    ``` yaml
     ---
     disqus: ""
     ---
+
+    ...
     ```
 
   [7]: #metadata

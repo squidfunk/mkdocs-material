@@ -67,8 +67,8 @@ covered in the following sections.
 
 The following plugins are bundled with the Docker image:
 
-* [mkdocs-minify-plugin][12]
-* [mkdocs-redirects][13]
+- [mkdocs-minify-plugin][12]
+- [mkdocs-redirects][13]
 
   [11]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [12]: https://github.com/byrnereese/mkdocs-minify-plugin

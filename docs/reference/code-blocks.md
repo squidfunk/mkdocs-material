@@ -339,24 +339,24 @@ If [Pygments][23] is used, Material for MkDocs provides the [styles for code
 blocks][22], which are built with a custom and well-balanced palette that works
 equally well for both [color schemes][24]:
 
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-number-color) " } `--md-code-hl-number-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-special-color) " } `--md-code-hl-special-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-function-color) " } `--md-code-hl-function-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-constant-color) " } `--md-code-hl-constant-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-keyword-color) " } `--md-code-hl-keyword-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-string-color) " } `--md-code-hl-string-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-name-color) " } `--md-code-hl-name-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-operator-color) " } `--md-code-hl-operator-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-punctuation-color) " } `--md-code-hl-punctuation-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-comment-color) " } `--md-code-hl-comment-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-generic-color) " } `--md-code-hl-generic-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-variable-color) " } `--md-code-hl-variable-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-number-color) " } `--md-code-hl-number-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-special-color) " } `--md-code-hl-special-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-function-color) " } `--md-code-hl-function-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-constant-color) " } `--md-code-hl-constant-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-keyword-color) " } `--md-code-hl-keyword-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-string-color) " } `--md-code-hl-string-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-name-color) " } `--md-code-hl-name-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-operator-color) " } `--md-code-hl-operator-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-punctuation-color) " } `--md-code-hl-punctuation-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-comment-color) " } `--md-code-hl-comment-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-generic-color) " } `--md-code-hl-generic-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-variable-color) " } `--md-code-hl-variable-color`
 
 Code block foreground, background and line highlight colors are defined via:
 
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-fg-color) " } `--md-code-fg-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-bg-color) " } `--md-code-bg-color`
-* :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-color) " } `--md-code-hl-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-fg-color) " } `--md-code-fg-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-bg-color) " } `--md-code-bg-color`
+- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-color) " } `--md-code-hl-color`
 
 Let's say you want to change the color of `#!js "strings"`. While there are
 several [types of string tokens][25], Material for MkDocs assigns a single color
