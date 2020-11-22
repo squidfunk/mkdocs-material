@@ -64,6 +64,9 @@ setup(
     entry_points = {
         "mkdocs.themes": [
             "material = material",
+        ],
+        "mike.themes": [
+            "material = material.mike",
         ]
     },
     zip_safe = False
