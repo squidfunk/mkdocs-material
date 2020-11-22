@@ -50,6 +50,7 @@
     // Remove bottom spacing for closed details
     &:not([open]) {
       padding-bottom: 0;
+      box-shadow: none;
 
       // We cannot set overflow: hidden, as the outline would not be visible,
       // so we need to correct the border radius
