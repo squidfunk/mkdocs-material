@@ -28,31 +28,31 @@ env:
   PYTHON_VERSION: 3.x
 
 jobs:
-  # publish_pypi:
-  #   name: Build and push Python package
-  #   if: github.event.pull_request.head.repo.fork == false
-  #   runs-on: ubuntu-latest
-  #   steps:
+  publish_pypi:
+    name: Build and push Python package
+    if: github.event.pull_request.head.repo.fork == false
+    runs-on: ubuntu-latest
+    steps:
 
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-  #     - name: Set up Python runtime
-  #       uses: actions/setup-python@v1
-  #       with:
-  #         python-version: ${{ env.PYTHON_VERSION }}
+      - name: Set up Python runtime
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
 
-  #     - name: Set up Python dependencies
-  #       run: pip install --upgrade setuptools wheel twine
+      - name: Set up Python dependencies
+        run: pip install --upgrade setuptools wheel twine
 
-  #     - name: Build Python package
-  #       run: python setup.py build sdist bdist_wheel --universal
+      - name: Build Python package
+        run: python setup.py build sdist bdist_wheel --universal
 
-  #     - name: Publish Python package
-  #       env:
-  #         PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-  #         PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-  #       run: twine upload --disable-progress-bar -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
+      - name: Publish Python package
+        env:
+          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: twine upload --disable-progress-bar -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
 
   publish_docker:
     name: Build and push Docker image
