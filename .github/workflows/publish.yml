@@ -81,19 +81,19 @@ jobs:
         with:
           context: .
           tags: |
-            ${GITHUB_REPOSITORY}:latest
-            ${GITHUB_REPOSITORY}:${{ github.event.release.tag_name }}
-            ghcr.io/${GITHUB_REPOSITORY}:latest
-            ghcr.io/${GITHUB_REPOSITORY}:${{ github.event.release.tag_name }}
+            ${{ github.event.repository.full_name }}:latest
+            ${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
+            ghcr.io/${{ github.event.repository.full_name }}:latest
+            ghcr.io/${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
 
       - name: Check Docker image
         run:
-          docker run --rm -i -v ${PWD}:/docs ${GITHUB_REPOSITORY} build
+          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} build
 
       - name: Publish Docker image
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          docker push --quiet ${GITHUB_REPOSITORY}
-          docker push --quiet ghcr.io/${GITHUB_REPOSITORY}
+          docker push --quiet ${{ github.event.repository.full_name }}
+          docker push --quiet ghcr.io/${{ github.event.repository.full_name }}
