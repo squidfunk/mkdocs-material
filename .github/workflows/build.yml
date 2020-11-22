@@ -35,19 +35,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js runtime
+      - name: Set up Node.js runtime
         uses: actions/setup-node@v1
         with:
           python-version: ${{ env.NODE_VERSION }}
 
-      - name: Setup Node.js dependency cache
+      - name: Set up Node.js dependency cache
         uses: actions/cache@v2
         id: cache
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Setup Node.js dependencies
+      - name: Set up Node.js dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
 

@@ -37,12 +37,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Python runtime
+      - name: Set up Python runtime
         uses: actions/setup-python@v1
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Setup Python dependencies
+      - name: Set up Python dependencies
         run: pip install --upgrade setuptools wheel twine
 
       - name: Build Python package
