@@ -80,6 +80,7 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
 - [x] [Navigation and table of contents can be hidden][18]
 - [x] [Table of contents can be integrated into navigation][19]
 - [x] [Header can be automatically hidden on scrolling][20]
+- [x] [Support for Admonitions as inline blocks][21]
 
   [11]: setup/setting-up-the-footer.md#remove-generator
   [12]: setup/changing-the-colors.md#color-palette-toggle
@@ -91,14 +92,15 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
   [18]: setup/setting-up-navigation.md#hide-the-sidebars
   [19]: setup/setting-up-navigation.md#navigation-integration
   [20]: setup/setting-up-the-header.md#automatic-hiding
+  [21]: reference/admonitions.md#inline-blocks
 
 ## Roadmap
 
 The following list of funding goals – named after varieties of chili peppers 
-[I'm growing on my balcony][21] – shows which features are already available
+[I'm growing on my balcony][22] – shows which features are already available
 in Material for MkDocs Insiders.
 
-  [21]: https://www.instagram.com/squidfunk/
+  [22]: https://www.instagram.com/squidfunk/
 
 ### Madame Jeanette
 
@@ -125,6 +127,7 @@ in Material for MkDocs Insiders.
 [:octicons-flame-24: Funding goal: __$1,500__][6] ·
 :octicons-lock-24: Status: _exclusive_
 
+- [x] [Support for Admonitions as inline blocks][21]
 - [x] [Support for deploying multiple versions][13]
 - [ ] Support for deploying multiple languages
 
@@ -170,10 +173,10 @@ improvements (e.g. search) do not require any changes to existing configuration.
 This means that your users will be able to build the docs locally with the
 regular version and when they push their changes to CI/CD, they will be built
 with Material for MkDocs Insiders. For this reason, it's recommended to
-[install Insiders][22] only in CI, as you don't want to expose your `GH_TOKEN`
+[install Insiders][23] only in CI, as you don't want to expose your `GH_TOKEN`
 to users.
 
-  [22]: publishing-your-site.md#github-pages
+  [23]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -183,7 +186,7 @@ terms?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][23]. However, we kindly ask you to respect the following
+by the [MIT license][24]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ from Material for MkDocs Insiders.
@@ -194,7 +197,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Material for MkDocs Insiders. However, you may
   __use the latest version__ that's available to you __as long as you like__.
-  Just remember that __[GitHub deletes private forks][24]__.
+  Just remember that __[GitHub deletes private forks][25]__.
 
-  [23]: license.md
-  [24]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [24]: license.md
+  [25]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

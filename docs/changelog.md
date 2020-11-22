@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.11.0 <small>_ November 22, 2020</small>
+
+- Added support for rendering Admonitions as inline blocks
+
 ### 1.10.0 <small>_ November 15, 2020</small>
 
 - Added support for integrating table of contents into navigation

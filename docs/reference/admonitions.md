@@ -225,6 +225,39 @@ _Result_:
 
   [11]: #details
 
+### Inline blocks
+
+[:octicons-file-code-24: Source][12] ·
+:octicons-beaker-24: Experimental ·
+[:octicons-heart-fill-24:{: .tx-heart } Insiders only][12]{: .tx-insiders }
+
+Admonitions and [Details][11] can also be rendered as inline blocks (i.e.
+sidebars), moving them to the right using the `inline` + `end` modifiers, or
+to the left using only the `inline` modifier.
+
+_Example_:
+
+``` markdown
+!!! note inline end
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+```
+
+_Result_:
+
+=== "inline end"
+
+    [![Admonition, inline end][13]][13]
+
+=== "inline"
+
+    [![Admonition, inline][14]][14]
+
+  [12]: ../insiders.md
+  [13]: ../assets/screenshots/admonition-inline-end.png
+  [14]: ../assets/screenshots/admonition-inline.png
+
 ### Supported types
 
 Following is a list of type qualifiers provided by Material for MkDocs, whereas
@@ -331,8 +364,8 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
 ### Custom admonitions
 
 If you want to add a custom admonition type, all you need is a color and an
-`svg` icon. Copy the icon's `svg` code from the [`.icons`][9] folder and add the
-following CSS to an [additional stylesheet][10]:
+`svg` icon. Copy the icon's `svg` code from the [`.icons`][15] folder and add the
+following CSS to an [additional stylesheet][16]:
 
 ``` css
 :root {
@@ -356,7 +389,7 @@ following CSS to an [additional stylesheet][10]:
 
 You should now be able to create an admonition of the `pied-piper` type. Note
 that you can also use this technique to override existing admonition icons or
-colors. [You can even add animations][11].
+colors. [You can even add animations][17].
 
 <style>
   :root {
@@ -395,6 +428,6 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-  [9]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
-  [10]: ../customization.md#additional-css
-  [11]: https://facelessuser.github.io/pymdown-extensions/extensions/details/
+  [15]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [16]: ../customization.md#additional-css
+  [17]: https://facelessuser.github.io/pymdown-extensions/extensions/details/

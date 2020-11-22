@@ -1,3 +1,7 @@
+mkdocs-material-6.1.6+insiders-1.11.0 (2020-11-22)
+
+  * Added support for rendering Admonitions as inline blocks
+
 mkdocs-material-6.1.6 (2020-11-22)
 
   * Fixed #2048: Math formulas show scrollbars (Windows)
