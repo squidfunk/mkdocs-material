@@ -125,6 +125,8 @@ $admonitions: (
     [dir="rtl"] & {
       margin: 0 px2rem(-16px) 0 px2rem(-12px);
       padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(12px);
+      border-right: px2rem(4px) solid $clr-blue-a200;
+      border-left: none;
     }
 
     // Reset spacing, if title is the only element
@@ -146,7 +148,7 @@ $admonitions: (
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        right: px2rem(16px);
+        right: px2rem(12px);
         left: initial;
       }
     }

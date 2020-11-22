@@ -238,7 +238,7 @@ to the left using only the `inline` modifier.
 _Example_:
 
 ``` markdown
-!!! note inline end
+!!! info inline end
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
