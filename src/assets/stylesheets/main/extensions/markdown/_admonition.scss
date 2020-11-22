@@ -72,8 +72,8 @@ $admonitions: (
     border-left: px2rem(4px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
     box-shadow:
-      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
-      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+      0   px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
+      0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.05);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
