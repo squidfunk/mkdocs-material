@@ -67,6 +67,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.1.6 <small>_ November 22, 2020</small>
+
+- Fixed #2048: Math formulas show scrollbars (Windows)
+
 ### 6.1.5 <small>_ November 15, 2020</small>
 
 - Fixed search reset button not showing/hiding correctly
