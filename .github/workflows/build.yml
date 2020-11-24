@@ -38,7 +38,7 @@ jobs:
       - name: Set up Node.js runtime
         uses: actions/setup-node@v1
         with:
-          python-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Set up Node.js dependency cache
         uses: actions/cache@v2
