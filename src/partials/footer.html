@@ -24,61 +24,37 @@
 
 <!-- Application footer -->
 <footer class="md-footer">
-
-  <!-- Link to previous and/or next page -->
-  {% if page.previous_page or page.next_page %}
-    <div class="md-footer-nav">
-      <nav
-        class="md-footer-nav__inner md-grid"
-        aria-label="{{ lang.t('footer.title') }}"
-      >
-
-        <!-- Link to previous page -->
-        {% if page.previous_page %}
-          <a
-            href="{{ page.previous_page.url | url }}"
-            title="{{ page.previous_page.title | striptags }}"
-            class="md-footer-nav__link md-footer-nav__link--prev"
-            rel="prev"
-          >
-            <div class="md-footer-nav__button md-icon">
-              {% include ".icons/material/arrow-left.svg" %}
-            </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  {{ lang.t("footer.previous") }}
-                </span>
-                {{ page.previous_page.title }}
-              </div>
-            </div>
-          </a>
-        {% endif %}
-
-        <!-- Link to next page -->
-        {% if page.next_page %}
-          <a
-            href="{{ page.next_page.url | url }}"
-            title="{{ page.next_page.title | striptags }}"
-            class="md-footer-nav__link md-footer-nav__link--next"
-            rel="next"
-          >
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  {{ lang.t("footer.next") }}
-                </span>
-                {{ page.next_page.title }}
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              {% include ".icons/material/arrow-right.svg" %}
-            </div>
-          </a>
-        {% endif %}
-      </nav>
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner">
+      <div class="footer-logo">
+        <img src="{{ 'assets/images/codacy-logo-black.svg' | url }}" alt="Codacy">
+      </div>
+      <div class="nav-links-wrapper">
+      <ul>
+        <li>Product</li>
+        <li><a href="https://www.codacy.com/product">Product</a></li>
+        <li><a href="https://www.codacy.com/customers">Customers</a></li>
+        <li><a href="https://www.codacy.com/pricing">Pricing</a></li>
+        <li><a href="https://www.codacy.com/self-hosted">Self-hosted</a></li>
+      </ul>
+      <ul>
+        <li>Company</li>
+        <li><a href="https://www.codacy.com/about">About us</a></li>
+        <li><a href="https://www.codacy.com/careers">Careers</a></li>
+        <li><a href="https://security.codacy.com/">Security</a></li>
+        <li><a href="https://www.codacy.com/blog/">Blog</a></li>
+        <li><a href="https://www.codacy.com/ebook">Ebooks</a></li>
+      </ul>
+      <ul>
+        <li>Help</li>
+        <li><a href="https://www.codacy.com/self-hosted">Request a demo</a></li>
+        <li><a href="https://www.codacy.com/privacy">Privacy policy</a></li>
+        <li><a href="https://www.codacy.com/cookies">Cookies policy</a></li>
+        <li><a href="https://www.codacy.com/terms">Terms of service</a></li>
+      </ul>
     </div>
-  {% endif %}
+    </nav>
+  </div>
 
   <!-- Further information -->
   <div class="md-footer-meta md-typeset">
@@ -91,13 +67,6 @@
             {{ config.copyright }}
           </div>
         {% endif %}
-        Made with
-        <a
-          href="https://squidfunk.github.io/mkdocs-material/"
-          target="_blank" rel="noopener"
-        >
-          Material for MkDocs
-        </a>
       </div>
 
       <!-- Social links -->

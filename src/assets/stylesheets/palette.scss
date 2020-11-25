@@ -41,6 +41,7 @@
 // ----------------------------------------------------------------------------
 
 @each $name, $colors in (
+  "codacy":      $codacy-700          $codacy-400          $codacy-900,
   "red":         $clr-red-400         $clr-red-200         $clr-red-600,
   "pink":        $clr-pink-500        $clr-pink-200        $clr-pink-700,
   "purple":      $clr-purple-400      $clr-purple-200      $clr-purple-600,
@@ -238,6 +239,7 @@
 // ----------------------------------------------------------------------------
 
 @each $name, $color in (
+  "codacy":      $codacy-600,
   "red":         $clr-red-a400,
   "pink":        $clr-pink-a400,
   "purple":      $clr-purple-a200,

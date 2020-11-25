@@ -35,9 +35,14 @@ $md-toggle__drawer--checked:
 // Sidebar container
 .md-sidebar {
   position: absolute;
-  width: px2rem(242px);
+  width: px2rem(280px);
   padding: px2rem(24px) 0;
   overflow: hidden;
+  background-color: var(--codacy-primary);
+
+  &--primary {
+    color: var(--md-primary-bg-color);
+  }
 
   // Hide for print
   @media print {
@@ -57,9 +62,9 @@ $md-toggle__drawer--checked:
     &--primary {
       position: fixed;
       top: 0;
-      left: px2rem(-242px);
+      left: px2rem(-280px);
       z-index: 3;
-      width: px2rem(242px);
+      width: px2rem(280px);
       height: 100%;
       background-color: var(--md-default-bg-color);
       transform: translateX(0);
@@ -69,7 +74,7 @@ $md-toggle__drawer--checked:
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        right: px2rem(-242px);
+        right: px2rem(-280px);
         left: initial;
       }
 
@@ -77,11 +82,11 @@ $md-toggle__drawer--checked:
       #{$md-toggle__drawer--checked} & {
         @include z-depth(8);
 
-        transform: translateX(px2rem(242px));
+        transform: translateX(px2rem(280px));
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
-          transform: translateX(px2rem(-242px));
+          transform: translateX(px2rem(-280px));
         }
       }
 
@@ -95,15 +100,17 @@ $md-toggle__drawer--checked:
   // Secondary sidebar with table of contents
   &--secondary {
     display: none;
+    background-color: var(--md-primary-bg-color);
+    color: var(--codacy-primary);
 
     // [tablet landscape +]: Show table of contents next to body copy
     @include break-from-device(tablet landscape) {
       display: block;
-      margin-left: calc(100% - #{px2rem(242px)});
+      margin-left: calc(100% - #{px2rem(280px)});
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        margin-right: calc(100% - #{px2rem(242px)});
+        margin-right: calc(100% - #{px2rem(280px)});
         margin-left: initial;
       }
 
@@ -113,22 +120,22 @@ $md-toggle__drawer--checked:
       }
     }
 
-    // [screen +]: Limit to grid
-    @include break-from-device(screen) {
-      margin-left: px2rem((1220 - 242) * 1px);
+    // // [screen +]: Limit to grid
+    // @include break-from-device(screen) {
+    //   margin-left: px2rem((1220 - 242) * 1px);
 
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: px2rem((1220 - 242) * 1px);
-        margin-left: initial;
-      }
-    }
+    //   // Adjust for right-to-left languages
+    //   [dir="rtl"] & {
+    //     margin-right: px2rem((1220 - 242) * 1px);
+    //     margin-left: initial;
+    //   }
+    // }
   }
 
   // Wrapper for scrolling on overflow
   &__scrollwrap {
     max-height: 100%;
-    margin: 0 px2rem(4px);
+    padding: 0 px2rem(16px);
     overflow-y: auto;
     // Hack: reduce jitter
     backface-visibility: hidden;

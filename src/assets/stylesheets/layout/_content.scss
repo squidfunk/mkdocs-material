@@ -27,24 +27,24 @@
 // Content container
 .md-content {
 
-  // [tablet landscape +]: Add space for table of contents
-  @include break-from-device(tablet landscape) {
-    margin-right: px2rem(242px);
+  // // [tablet landscape +]: Add space for table of contents
+  // @include break-from-device(tablet landscape) {
+  //   margin-right: px2rem(280px);
 
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: initial;
-      margin-left: px2rem(242px);
-    }
-  }
+  //   // Adjust for right-to-left languages
+  //   [dir="rtl"] & {
+  //     margin-right: initial;
+  //     margin-left: px2rem(280px);
+  //   }
+  // }
 
   // [screen +]: Add space for table of contents
   @include break-from-device(screen) {
-    margin-left: px2rem(242px);
+    margin-left: px2rem(280px);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
-      margin-right: px2rem(242px);
+      margin-right: px2rem(280px);
     }
   }
 
@@ -108,4 +108,9 @@
       display: none;
     }
   }
+}
+
+// Last update date container
+.md-source-date {
+  text-align: right;
 }

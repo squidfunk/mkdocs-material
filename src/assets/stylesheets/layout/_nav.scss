@@ -29,6 +29,10 @@
   font-size: px2rem(14px);
   line-height: 1.3;
 
+  &--toc{
+    font-size: ms(-1);
+  }
+
   // List title
   &__title {
     display: block;
@@ -75,7 +79,23 @@
 
   // List item
   &__item {
-    padding: 0 px2rem(12px);
+    padding: px2rem(6px);
+    font-weight: bold;
+    color: #DDE6FF;
+
+    &--toc{
+      padding: 0;
+      & > .md-nav__link {
+        padding-left: px2rem(12px);
+        height: px2rem(18px);
+        line-height: px2rem(18px);
+        &--active {
+          border-left: 3px solid #6695FF;
+          position: relative;
+          left: -2px;
+        }
+      }
+    }
 
     // Add bottom spacing to last item
     &:last-child {
@@ -84,7 +104,14 @@
 
     // 2nd+ level items
     & & {
+      padding: 0 px2rem(12px);
+      color: white;
+      font-weight: normal;
       padding-right: 0;
+
+      &--toc{
+        padding: 0;
+      }
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -97,12 +124,16 @@
         padding-bottom: 0;
       }
     }
+    &--active > label.md-nav__link{
+      color: #6695FF;
+      font-weight: bold;
+    }
   }
 
   // Link inside item
   &__link {
     display: block;
-    margin-top: 0.625em;
+    margin-top: px2rem(14px);
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
@@ -116,23 +147,26 @@
 
       // Hide table of contents by default
       & ~ .md-nav {
-        display: none;
+        display: block;
+        border-left: 1px solid #4C6083;
       }
     }
 
     // Blurred link
     &[data-md-state="blur"] {
-      color: var(--md-default-fg-color--light);
+      color: rgba(255,255,255,0.75);
     }
 
     // Active link
     .md-nav__item &--active {
-      color: var(--md-primary-fg-color);
+      color: white;
+      font-weight: bold;
     }
 
     // Reset active color for nested list titles
     .md-nav__item--nested > & {
-      color: inherit;
+      color: #DDE6FF;
+      font-weight: bold;
     }
 
     // Focused or hovered link

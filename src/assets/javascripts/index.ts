@@ -148,8 +148,8 @@ export function initialize(config: unknown) {
   const base$     = watchLocationBase(config.base, { location$ })
   const hash$     = watchLocationHash()
   const viewport$ = watchViewport()
-  const tablet$   = watchMedia("(min-width: 960px)")
-  const screen$   = watchMedia("(min-width: 1220px)")
+  const tablet$   = watchMedia("(min-width: 1px)")
+  const screen$   = watchMedia("(min-width: 2px)")
 
   /* ----------------------------------------------------------------------- */
 

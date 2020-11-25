@@ -23,7 +23,7 @@
 {% import "partials/language.html" as lang with context %}
 
 <!-- Table of contents -->
-<nav class="md-nav md-nav--secondary" aria-label="{{ lang.t('toc.title') }}">
+<nav class="md-nav md-nav--secondary md-nav--toc" data-md-component="toc" aria-label="{{ lang.t('toc.title') }}">
   {% set toc = page.toc %}
 
   <!--
@@ -38,12 +38,12 @@
 
   <!-- Render item list -->
   {% if toc | first is defined %}
-    <label class="md-nav__title" for="__toc">
+    <!-- <label class="md-nav__title">
       <span class="md-nav__icon md-icon">
         {% include ".icons/material/arrow-left.svg" %}
       </span>
       {{ lang.t("toc.title") }}
-    </label>
+    </label> -->
     <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc %}
         {% include "partials/toc-item.html" %}

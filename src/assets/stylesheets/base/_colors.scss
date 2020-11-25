@@ -53,4 +53,12 @@
   // Code block color shades
   --md-code-bg-color:                  hsla(0, 0%, 96%, 1);
   --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
+
+  --codacy-primary: hsla(#{hex2hsl($codacy-neutral-800)}, 1);
+  --codacy-neutral-700: hsla(#{hex2hsl($codacy-neutral-700)}, 1);
+  --codacy-neutral-600: hsla(#{hex2hsl($codacy-neutral-600)}, 1);
+  --codacy-neutral-400: hsla(#{hex2hsl($codacy-neutral-400)}, 1);
+  --codacy-neutral-50: hsla(#{hex2hsl($codacy-neutral-50)}, 1);
+
+  --codacy-blue-700: hsla(#{hex2hsl($codacy-700)}, 1);
 }

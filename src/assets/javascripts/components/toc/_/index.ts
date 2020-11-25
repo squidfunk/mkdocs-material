@@ -108,10 +108,10 @@ export function mountTableOfContents(
             const els = getElements<HTMLAnchorElement>(".md-nav__link", el)
 
             /* Watch and apply sidebar */
-            const sidebar$ = watchSidebar(el, { main$, viewport$ })
-              .pipe(
-                applySidebar(el, { header$ })
-              )
+            // const sidebar$ = watchSidebar(el, { main$, viewport$ })
+            //   .pipe(
+            //     applySidebar(el, { header$ })
+            //   )
 
             /* Watch and apply anchor list (scroll spy) */
             const anchors$ = watchAnchorList(els, { header$, viewport$ })
@@ -120,9 +120,9 @@ export function mountTableOfContents(
               )
 
             /* Combine into a single hot observable */
-            return combineLatest([sidebar$, anchors$])
+            return combineLatest([anchors$])
               .pipe(
-                map(([sidebar, anchors]) => ({ sidebar, anchors }))
+                map(([anchors]) => ({ anchors }))
               )
 
           /* [tablet -]: Unmount table of contents */

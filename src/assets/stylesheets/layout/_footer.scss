@@ -26,8 +26,9 @@
 
 // Application footer
 .md-footer {
-  color: var(--md-default-bg-color);
-  background-color: var(--md-default-fg-color);
+  color: var(--md-default-fg-color);
+  background-color: var(--md-default-bg-color);
+  border-top: 1px solid var(--codacy-neutral-400);
 
   // Hide for print
   @media print {
@@ -37,106 +38,53 @@
 
 // Navigation within footer
 .md-footer-nav {
-
   // Set spacing
   &__inner {
-    padding: px2rem(4px);
+    padding: px2rem(64px) px2rem(48px);
     overflow: auto;
-  }
-
-  // Links to previous and next page
-  &__link {
     display: flex;
-    padding-top: px2rem(28px);
-    padding-bottom: px2rem(8px);
-    transition: opacity 250ms;
+    color: var(--codacy-neutral-600);
 
-    // [tablet +]: Set proportional width
-    @include break-from-device(tablet) {
-      width: 50%;
+    .nav-links-wrapper {
+      display: flex;
+      flex-grow:1;
+      justify-content: space-around;
     }
+  }
 
-    // Focused or hovered links
-    &:focus,
-    &:hover {
-      opacity: 0.7;
+  .footer-logo img {
+    width: 100%;
+    min-width: px2rem(80px);
+    max-width: px2rem(200px);
+    margin-right: px2rem(24px);
+  }
+
+  ul {
+    padding: 0 px2rem(16px);
+    margin: 0;
+    list-style: none;
+    font-size: ms(0);
+
+    li:first-child {
+      font-size: ms(1);
+      font-weight: bold;
+      margin-bottom: px2rem(18px);
     }
-
-    // Link to previous page
-    &--prev {
-      float: left;
-      width: 25%;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        float: right;
-
-        // Flip icon vertically
-        svg {
-          transform: scaleX(-1);
-        }
-      }
-
-      // Title
-      .md-footer-nav__title {
-
-        // [mobile -]: Hide title for previous page
-        @include break-to-device(mobile) {
-          display: none;
-        }
+    li {
+      margin-bottom: px2rem(14px);
+      a:hover {
+        color: var(--codacy-primary);
       }
     }
 
-    // Link to next page
-    &--next {
-      float: right;
-      width: 75%;
-      text-align: right;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        float: left;
-        text-align: left;
-
-        // Flip icon vertically
-        svg {
-          transform: scaleX(-1);
-        }
-      }
-    }
   }
 
-  // Link title - set line height to match icon for correct alignment
-  &__title {
-    position: relative;
-    flex-grow: 1;
-    max-width: calc(100% - #{px2rem(48px)});
-    padding: 0 px2rem(20px);
-    font-size: px2rem(18px);
-    line-height: px2rem(48px);
-  }
-
-  // Link button
-  &__button {
-    margin: px2rem(4px);
-    padding: px2rem(8px);
-  }
-
-  // Link direction
-  &__direction {
-    position: absolute;
-    right: 0;
-    left: 0;
-    margin-top: px2rem(-20px);
-    padding: 0 px2rem(20px);
-    color: var(--md-default-bg-color--light);
-    font-size: ms(-1);
-  }
 }
 
 // Non-navigational information
 .md-footer-meta {
-  background-color: var(--md-default-fg-color--lighter);
+  background-color: var(--codacy-neutral-50);
+  padding: 0 px2rem(48px);
 
   // Set spacing
   &__inner {
@@ -148,12 +96,12 @@
 
   // Use a decent color for non-hovered links and ensure specificity
   html &.md-typeset a {
-    color: var(--md-default-bg-color--light);
+    color: var(--codacy-blue-700);
 
     // Focused or hovered link
     &:focus,
     &:hover {
-      color: var(--md-default-bg-color);
+      color: var(--codacy-primary);
     }
   }
 }
@@ -161,11 +109,11 @@
 // Copyright and theme information
 .md-footer-copyright {
   width: 100%;
-  margin: auto px2rem(12px);
+  margin: auto 0;
   padding: px2rem(8px) 0;
-  color: var(--md-default-bg-color--lighter);
+  color: var(--codacy-neutral-600);
   font-size: ms(-1);
-
+  text-transform: uppercase;
   // [tablet portrait +]: Show next to social media links
   @include break-from-device(tablet portrait) {
     width: auto;
@@ -173,13 +121,12 @@
 
   // Highlight copyright information
   &__highlight {
-    color: var(--md-default-bg-color--light);
+    color: var(--codacy-neutral-600);
   }
 }
 
 // Social links
 .md-footer-social {
-  margin: 0 px2rem(8px);
   padding: px2rem(4px) 0 px2rem(12px);
 
   // [tablet portrait +]: Show next to copyright information

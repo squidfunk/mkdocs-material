@@ -68,6 +68,7 @@ body {
   flex-direction: column;
   width: 100%;
   min-height: 100%;
+  min-width: 960px;
   // Hack: reset font-size to 10px, so the spacing for all inline elements is
   // correct again. Otherwise the spacing would be based on 20px.
   font-size: 0.5rem; // stylelint-disable-line unit-whitelist
@@ -98,7 +99,7 @@ hr {
 
 // Template-wide grid
 .md-grid {
-  max-width: px2rem(1220px);
+  max-width: px2rem(960px);
   margin-right: auto;
   margin-left: auto;
 }

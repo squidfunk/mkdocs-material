@@ -24,7 +24,7 @@
 <header class="md-header" data-md-component="header">
 
   <!-- Top-level navigation -->
-  <nav class="md-header-nav md-grid" aria-label="{{ lang.t('header.title') }}">
+  <nav class="md-header-nav" aria-label="{{ lang.t('header.title') }}">
 
     <!-- Link to home -->
     <a
@@ -41,7 +41,7 @@
       {% include ".icons/material/menu" ~ ".svg" %}
     </label>
 
-    <!-- Header title -->
+    <!-- Header title
     <div class="md-header-nav__title" data-md-component="header-title">
       {% if config.site_name == page.title %}
         <div class="md-header-nav__ellipsis md-ellipsis">
@@ -61,23 +61,26 @@
           </span>
         </div>
       {% endif %}
+    </div> -->
+    <div class="search-cta-top">
+      {% if "search" in config["plugins"] %}
+        <label class="md-header-nav__button md-icon" for="__search">
+          {% include ".icons/material/magnify.svg" %}
+        </label>
+
+        <!-- Search interface -->
+        {% include "partials/search.html" %}
+      {% endif %}
+      <a href="https://www.codacy.com/signup" class="cta-btn">Get started</a>
     </div>
 
     <!-- Button to open search dialogue -->
-    {% if "search" in config["plugins"] %}
-      <label class="md-header-nav__button md-icon" for="__search">
-        {% include ".icons/material/magnify.svg" %}
-      </label>
 
-      <!-- Search interface -->
-      {% include "partials/search.html" %}
-    {% endif %}
-
-    <!-- Repository containing source -->
+    <!-- Repository containing source
     {% if config.repo_url %}
       <div class="md-header-nav__source">
         {% include "partials/source.html" %}
       </div>
-    {% endif %}
+    {% endif %} -->
   </nav>
 </header>

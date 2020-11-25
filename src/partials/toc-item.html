@@ -21,15 +21,15 @@
 -->
 
 <!-- Table of contents item -->
-<li class="md-nav__item">
+<li class="md-nav__item md-nav__item--toc">
   <a href="{{ toc_item.url }}" class="md-nav__link">
     {{ toc_item.title }}
   </a>
 
   <!-- Render nested item list -->
   {% if toc_item.children %}
-    <nav class="md-nav" aria-label="{{ toc_item.title }}">
-      <ul class="md-nav__list">
+    <nav class="md-nav md-nav--toc" aria-label="{{ toc_item.title }}">
+      <ul class="md-nav__list md-nav__list--toc">
         {% for toc_item in toc_item.children %}
           {% include "partials/toc-item.html" %}
         {% endfor %}

@@ -153,10 +153,10 @@
       <link rel="stylesheet" href="{{ path | url }}" />
     {% endfor %}
 
-    <!-- Analytics -->
-    {% block analytics %}
-      {% if config.google_analytics %}
-        {% include "partials/integrations/analytics.html" %}
+    <!-- Segment -->
+    {% block segment %}
+      {% if config.extra.segment_key %}
+        {% include "partials/integrations/segment.html" %}
       {% endif %}
     {% endblock %}
 
@@ -210,7 +210,7 @@
       {% endif %}
     </div>
 
-    <!-- Announcement bar -->
+    <!-- Announcement bar
     <div data-md-component="announce">
       {% if self.announce() %}
         <aside class="md-announce">
@@ -219,7 +219,7 @@
           </div>
         </aside>
       {% endif %}
-    </div>
+    </div> -->
 
     <!-- Application header -->
     {% block header %}
@@ -229,55 +229,55 @@
     <!-- Container, necessary for web-application context -->
     <div class="md-container" data-md-component="container">
 
-      <!-- Hero teaser -->
+      <!-- Hero teaser
       {% block hero %}
         {% if page and page.meta and page.meta.hero %}
           {% include "partials/hero.html" with context %}
         {% endif %}
-      {% endblock %}
+      {% endblock %} -->
 
-      <!-- Tabs with outline -->
+      <!-- Tabs with outline
       {% block tabs %}
         {% if "tabs" in config.theme.features %}
           {% include "partials/tabs.html" %}
         {% endif %}
-      {% endblock %}
+      {% endblock %} -->
 
       <!-- Main area -->
       <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
 
-          <!-- Navigation -->
-          {% block site_nav %}
+        <!-- Navigation -->
+        {% block site_nav %}
 
-            <!-- Main navigation -->
-            {% if nav %}
-              <div
-                class="md-sidebar md-sidebar--primary"
-                data-md-component="navigation"
-              >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    {% include "partials/nav.html" %}
-                  </div>
+          <!-- Main navigation -->
+          {% if nav %}
+            <div
+              class="md-sidebar md-sidebar--primary"
+              data-md-component="navigation"
+            >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  {% include "partials/nav.html" %}
                 </div>
               </div>
-            {% endif %}
+            </div>
+          {% endif %}
 
-            <!-- Table of contents -->
-            {% if page.toc %}
-              <div
-                class="md-sidebar md-sidebar--secondary"
-                data-md-component="toc"
-              >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    {% include "partials/toc.html" %}
-                  </div>
+          <!-- Table of contents -->
+          <!-- {% if page.toc %}
+            <div
+              class="md-sidebar md-sidebar--secondary"
+            >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  {% include "partials/toc.html" %}
                 </div>
               </div>
-            {% endif %}
-          {% endblock %}
+            </div>
+          {% endif %} -->
+        {% endblock %}
+
+        <div class="md-main__inner">
 
           <!-- Article -->
           <div class="md-content">
@@ -331,14 +331,13 @@
                 {% include "partials/integrations/disqus.html" %}
               {% endblock %}
             </article>
+            <!-- Application footer -->
+            {% block footer %}
+              {% include "partials/footer.html" %}
+            {% endblock %}
           </div>
         </div>
       </main>
-
-      <!-- Application footer -->
-      {% block footer %}
-        {% include "partials/footer.html" %}
-      {% endblock %}
     </div>
 
     <!-- Theme-related JavaScript -->

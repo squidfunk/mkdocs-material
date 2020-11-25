@@ -92,10 +92,10 @@
         content: "";
       }
 
-      // Targeted anchor (48px from header, 12px from sidebar offset)
+      // Targeted anchor (84px from header, 12px from sidebar offset)
       &:target::before {
-        margin-top: -1 * px2rem(48px + 12px + $delta);
-        padding-top: px2rem(48px + 12px + $delta);
+        margin-top: -1 * px2rem(84px + 12px + $delta);
+        padding-top: px2rem(84px + 12px + $delta);
       }
     }
 

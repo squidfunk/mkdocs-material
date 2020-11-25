@@ -2,3 +2,7 @@
   This file was automatically generated - do not edit
 -#}
 {% extends "base.html" %}
+{% block extrahead %}
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of new documentation pages" href="/feed_rss_created.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of updated documentation pages" href="/feed_rss_updated.xml">
+{% endblock %}

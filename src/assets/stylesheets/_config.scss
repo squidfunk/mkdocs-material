@@ -35,16 +35,36 @@ $ms-ratio: $major-third;
 // Device-specific breakpoints
 $break-devices: (
   mobile: (
-    portrait:  px2em(220px)  px2em(479px),
-    landscape: px2em(480px)  px2em(719px)
+    portrait:  px2em(0px)  px2em(1px),
+    landscape: px2em(0px)  px2em(1px)
   ),
   tablet: (
-    portrait:  px2em(720px)  px2em(959px),
-    landscape: px2em(960px)  px2em(1219px)
+    portrait:  px2em(0px)  px2em(1px),
+    landscape: px2em(0px)  px2em(1px)
   ),
   screen: (
-    small:     px2em(1220px) px2em(1599px),
+    small:     px2em(2px) px2em(1599px),
     medium:    px2em(1600px) px2em(1999px),
     large:     px2em(2000px)
   )
 );
+
+
+// ----------------------------------------------------------------------------
+// Variables: Colors
+// ----------------------------------------------------------------------------
+$codacy-neutral-900: #172B4D;
+$codacy-neutral-800: #1D3660;
+$codacy-neutral-700: #354B71;
+$codacy-neutral-600: #4C6083;
+$codacy-neutral-500: #7E90B2;
+$codacy-neutral-400: #B6C6E0;
+$codacy-neutral-300: #C9D8EF;
+$codacy-neutral-200: #E5ECF5;
+$codacy-neutral-100: #F2F5FD;
+$codacy-neutral-50: #F5F8FE;
+
+$codacy-700: #2A6CFF;
+$codacy-900: #0052CC;
+$codacy-600: #3E7AFF;
+$codacy-400: #94B4FF;

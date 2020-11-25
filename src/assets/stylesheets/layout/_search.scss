@@ -184,15 +184,8 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       position: relative;
-      float: right;
-      width: px2rem(234px);
-      padding: px2rem(2px) 0;
+      width: 100%;
       transition: width 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        float: left;
-      }
     }
 
     // Set maximum width
@@ -205,7 +198,7 @@ $md-toggle__search--checked:
 
       // [screen +]: Match content width
       @include break-from-device(screen) {
-        width: px2rem(688px);
+        width: 100%;
       }
     }
   }
@@ -258,11 +251,11 @@ $md-toggle__search--checked:
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       width: 100%;
-      height: px2rem(36px);
+      height: px2rem(40px);
       padding-left: px2rem(44px);
       color: inherit;
       font-size: ms(0);
-      background-color: var(--md-default-fg-color--lighter);
+      background-color: transparent;
       border-radius: px2rem(2px);
       transition:
         color            250ms,
@@ -275,12 +268,12 @@ $md-toggle__search--checked:
 
       // Icon color
       + .md-search__icon {
-        color: var(--md-primary-bg-color);
+        color: #4C6083;
       }
 
       // Placeholder color
       &::placeholder {
-        color: var(--md-primary-bg-color--light);
+        color: #4C6083C4;
       }
 
       // Hovered search field
@@ -460,7 +453,7 @@ $md-toggle__search--checked:
 
     // [screen +]: Set absolute width to omit unnecessary reflow
     @include break-from-device(screen) {
-      width: px2rem(688px);
+      width: 100%;
     }
 
     // [tablet landscape +]: Limit height to viewport

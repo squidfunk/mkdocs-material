@@ -1,0 +1,49 @@
+.topic-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+
+  a.topic-card {
+    display: flex;
+    border: 1px solid #6695FF;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    flex-basis: 33%;
+    margin: 0 1rem;
+    text-decoration: none;
+    color: var(--codacy-primary);
+    &:hover, &:focus {
+      color: var(--codacy-primary);
+      box-shadow: 0px 6px 5px #6695ff26;
+    }
+
+    &:first-child { margin-left: 0 }
+    &:last-child { margin-right: 0 }
+
+    .tc-icon {
+      width: 1.75rem;
+      height: 1.75rem;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+
+      > img, > svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .tc-content {
+      > div:first-child {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+      > div:last-child{
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+

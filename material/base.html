@@ -41,9 +41,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.75004596.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.2ead8185.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.a4b61a0c.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.84c9b78b.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -70,9 +70,9 @@
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
-    {% block analytics %}
-      {% if config.google_analytics %}
-        {% include "partials/integrations/analytics.html" %}
+    {% block segment %}
+      {% if config.extra.segment_key %}
+        {% include "partials/integrations/segment.html" %}
       {% endif %}
     {% endblock %}
     {% block extrahead %}{% endblock %}
@@ -96,51 +96,23 @@
         </a>
       {% endif %}
     </div>
-    <div data-md-component="announce">
-      {% if self.announce() %}
-        <aside class="md-announce">
-          <div class="md-announce__inner md-grid md-typeset">
-            {% block announce %}{% endblock %}
-          </div>
-        </aside>
-      {% endif %}
-    </div>
     {% block header %}
       {% include "partials/header.html" %}
     {% endblock %}
     <div class="md-container" data-md-component="container">
-      {% block hero %}
-        {% if page and page.meta and page.meta.hero %}
-          {% include "partials/hero.html" with context %}
-        {% endif %}
-      {% endblock %}
-      {% block tabs %}
-        {% if "tabs" in config.theme.features %}
-          {% include "partials/tabs.html" %}
-        {% endif %}
-      {% endblock %}
       <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          {% block site_nav %}
-            {% if nav %}
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    {% include "partials/nav.html" %}
-                  </div>
+        {% block site_nav %}
+          {% if nav %}
+            <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  {% include "partials/nav.html" %}
                 </div>
               </div>
-            {% endif %}
-            {% if page.toc %}
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    {% include "partials/toc.html" %}
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-          {% endblock %}
+            </div>
+          {% endif %}
+        {% endblock %}
+        <div class="md-main__inner">
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               {% block content %}
@@ -170,16 +142,16 @@
                 {% include "partials/integrations/disqus.html" %}
               {% endblock %}
             </article>
+            {% block footer %}
+              {% include "partials/footer.html" %}
+            {% endblock %}
           </div>
         </div>
       </main>
-      {% block footer %}
-        {% include "partials/footer.html" %}
-      {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.d7126665.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.0f38e514.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.8a62c8c7.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.fb712d40.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
