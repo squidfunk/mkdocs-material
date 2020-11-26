@@ -43,42 +43,7 @@ for MkDocs Insiders.
   <div class="tx-sponsor__list"></div>
 </div>
 <script>
-  fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/")
-    .then(function (res) { return res.json() })
-    .then(function (res) {
-      const list = document.querySelector(".tx-sponsor__list")
-      var private = 0
-      for (var sponsor of res.sponsors) {
-        if (sponsor.type === "PUBLIC") {
-          var link = document.createElement("a")
-          link.href  = sponsor.url
-          link.title = "@" + sponsor.name
-          link.className = "tx-sponsor__item"
-          list.appendChild(link)
-          var image = document.createElement("img")
-          image.src = sponsor.image
-          link.appendChild(image)
-        } else {
-          private++
-        }
-      }
-      var link = document.createElement("a")
-      link.href  = "https://github.com/sponsors/squidfunk"
-      link.title = "[private]"
-      link.innerText = "+" + private
-      link.className = "tx-sponsor__item tx-sponsor__item--private"
-      list.appendChild(link)
-      var total = document.querySelector(".tx-sponsor__count")
-      total.innerText = res.sponsors.length
-      const container = document.querySelector(".tx-sponsor")
-      container.removeAttribute("hidden")
-      /*function format(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      }
-      const total = document.querySelector(".tx-sponsor__amount")
-      total.innerText = "$ " + format(res.total)*/
-    })
-    .catch(console.log)
+  fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/").then(function(e){return e.json()}).then(function(e){var t=document.querySelector(".tx-sponsor__list"),n=0;for(var o of e.sponsors)if("PUBLIC"===o.type){var s;(s=document.createElement("a")).href=o.url,s.title="@"+o.name,s.className="tx-sponsor__item",t.appendChild(s);var r=document.createElement("img");r.src=o.image,s.appendChild(r)}else n++;(s=document.createElement("a")).href="https://github.com/sponsors/squidfunk",s.title="[private]",s.innerText="+"+n,s.className="tx-sponsor__item tx-sponsor__item--private",t.appendChild(s),document.querySelector(".tx-sponsor__count").innerText=e.sponsors.length,document.querySelector(".tx-sponsor").removeAttribute("hidden")}).catch(console.log);
 </script>
 <style>
   .tx-sponsor {
