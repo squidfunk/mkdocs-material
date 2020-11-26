@@ -38,6 +38,79 @@ for MkDocs Insiders.
   [4]: #roadmap
   [5]: https://squidfunk.github.io/mkdocs-material-insiders/
 
+<div class="tx-sponsor" hidden>
+  <h3>Join <span class="tx-sponsor__count"></span> awesome sponsors</h3>
+  <div class="tx-sponsor__list"></div>
+</div>
+<script>
+  fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/")
+    .then(function (res) { return res.json() })
+    .then(function (res) {
+      const list = document.querySelector(".tx-sponsor__list")
+      var private = 0
+      for (var sponsor of res.sponsors) {
+        if (sponsor.type === "PUBLIC") {
+          var link = document.createElement("a")
+          link.href  = sponsor.url
+          link.title = "@" + sponsor.name
+          link.className = "tx-sponsor__item"
+          list.appendChild(link)
+          var image = document.createElement("img")
+          image.src = sponsor.image
+          link.appendChild(image)
+        } else {
+          private++
+        }
+      }
+      var link = document.createElement("a")
+      link.href  = "https://github.com/sponsors/squidfunk"
+      link.title = "[private]"
+      link.innerText = "+" + private
+      link.className = "tx-sponsor__item tx-sponsor__item--private"
+      list.appendChild(link)
+      var total = document.querySelector(".tx-sponsor__count")
+      total.innerText = res.sponsors.length
+      const container = document.querySelector(".tx-sponsor")
+      container.removeAttribute("hidden")
+      /*function format(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      const total = document.querySelector(".tx-sponsor__amount")
+      total.innerText = "$ " + format(res.total)*/
+    })
+    .catch(console.log)
+</script>
+<style>
+  .tx-sponsor {
+    margin: 2em 0;
+  }
+  .tx-sponsor__list {
+    overflow: auto;
+  }
+  .tx-sponsor__item {
+    display: block;
+    float: left;
+    width: 3.2rem;
+    height: 3.2rem;
+    margin: 0.1rem;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+  .tx-sponsor__item img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .md-typeset .tx-sponsor__item--private {
+    background: #CCC;
+    color: #666;
+    font-size: 1.2rem;
+    line-height: 3.2rem;
+    text-align: center;
+    font-weight: bold;
+  }
+</style>
+
 ## How to become a sponsor
 
 So you've decided to become a sponsor? Great! You're just __three easy steps__
