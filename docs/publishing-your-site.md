@@ -101,7 +101,7 @@ following contents:
 
     ``` yaml
     image: python:latest
-    deploy:
+    pages:
       stage: deploy
       only:
         - master
