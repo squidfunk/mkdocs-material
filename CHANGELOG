@@ -1,3 +1,7 @@
+mkdocs-material-6.1.6+insiders-1.11.2 (2020-11-29)
+
+  * Fixed #2068: Search highlight interprets code blocks as JavaScript
+
 mkdocs-material-6.1.6+insiders-1.11.1 (2020-11-29)
 
   * Refactored styling to be more stable and easier to adjust

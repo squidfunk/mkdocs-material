@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.11.2 <small>_ November 29, 2020</small>
+
+- Fixed #2068: Search highlight interprets code blocks as JavaScript
+
 ### 1.11.1 <small>_ November 29, 2020</small>
 
 - Refactored styling to be more stable and easier to adjust
