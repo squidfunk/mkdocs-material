@@ -41,6 +41,10 @@ for MkDocs Insiders.
 <div class="tx-sponsor" hidden>
   <h3>Join <span class="tx-sponsor__count"></span> awesome sponsors</h3>
   <div class="tx-sponsor__list"></div>
+  <p>
+    You can sponsor <em>publicly</em> or <em>privately</em>! As a public sponsor,
+    you'll be listed here with your GitHub avatar.
+  </p>
 </div>
 <script>
   fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/").then(function(e){return e.json()}).then(function(e){var t=document.querySelector(".tx-sponsor__list"),n=0;for(var o of e.sponsors)if("PUBLIC"===o.type){var s;(s=document.createElement("a")).href=o.url,s.title="@"+o.name,s.className="tx-sponsor__item",t.appendChild(s);var r=document.createElement("img");r.src=o.image,s.appendChild(r)}else n++;(s=document.createElement("a")).href="https://github.com/sponsors/squidfunk",s.title="[private]",s.innerText="+"+n,s.className="tx-sponsor__item tx-sponsor__item--private",t.appendChild(s),document.querySelector(".tx-sponsor__count").innerText=e.sponsors.length,document.querySelector(".tx-sponsor").removeAttribute("hidden")}).catch(console.log);
