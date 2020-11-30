@@ -69,7 +69,7 @@
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
     "mini-css-extract-plugin": "^1.3.1",
-    "postcss": "^8.1.9",
+    "postcss": "^8.1.10",
     "postcss-inline-svg": "^5.0.0",
     "postcss-loader": "^4.1.0",
     "postcss-svgo": "^4.0.2",
