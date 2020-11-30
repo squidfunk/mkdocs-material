@@ -149,7 +149,7 @@ For other installation methods, configuration options, and a demo, visit
   [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
   [SAP](https://sap.github.io/ui5-tooling/),
   [SoundCloud](https://intervene.dev/),
-  [Spotify](https://spotify.github.io/mkdocs-monorepo-plugin/),
+  [Spotify](https://backstage.github.io/mkdocs-monorepo-plugin/),
   [Square](https://square.github.io/okhttp/),
   [Uber](https://ludwig-ai.github.io/ludwig-docs/getting_started/),
   [Zalando](https://opensource.zalando.com/skipper/)
