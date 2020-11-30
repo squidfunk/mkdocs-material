@@ -31,6 +31,7 @@ contents:
       push:
         branches:
           - master
+          - main
     jobs:
       deploy:
         runs-on: ubuntu-latest
@@ -51,6 +52,7 @@ contents:
       push:
         branches:
           - master
+          - main
     jobs:
       deploy:
         runs-on: ubuntu-latest
@@ -66,9 +68,9 @@ contents:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     ```
 
-Now, when a new commit is pushed to `master`, the static site is automatically
-built and deployed. Commit and push the file to your repository to see the
-workflow in action.
+Now, when a new commit is pushed to either the `master` or `main` branches,
+the static site is automatically built and deployed. Commit and push the file
+to your repository to see the workflow in action.
 
 Your documentation should shortly appear at `<username>.github.io/<repository>`.
 
