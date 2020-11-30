@@ -31,6 +31,7 @@ contents:
       push:
         branches:
           - master
+          - main
     jobs:
       deploy:
         runs-on: ubuntu-latest
@@ -51,6 +52,7 @@ contents:
       push:
         branches:
           - master
+          - main
     jobs:
       deploy:
         runs-on: ubuntu-latest
@@ -66,11 +68,17 @@ contents:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     ```
 
-Now, when a new commit is pushed to `master`, the static site is automatically
-built and deployed. Commit and push the file to your repository to see the
-workflow in action.
+Now, when a new commit is pushed to either the `master` or `main` branches,
+the static site is automatically built and deployed. Commit and push the file
+to your repository to see the workflow in action.
 
 Your documentation should shortly appear at `<username>.github.io/<repository>`.
+
+!!! note
+    The sample GitHub Action workflow above will run on both the `main` and `master`
+    branches. It is recommended that users remove one of either `main` or `master`
+    depending on how the target repository is set up. If a branch is included in the
+    workflow but does not exist in the repo then it will be a no-op.
 
 _Remember to set the_ `GH_TOKEN` _environment variable to the value of your
 [personal access token][3] when using [Material for MkDocs Insiders][4], which
