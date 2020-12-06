@@ -1,3 +1,7 @@
+mkdocs-material-6.1.7+insiders-1.12.0 (2020-12-06)
+
+  * Added support for adding a language selector
+
 mkdocs-material-6.1.7 (2020-12-06)
 
   * Fixed #2081: Fixed stats for private GitHub repositories

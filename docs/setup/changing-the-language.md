@@ -84,23 +84,70 @@ as [documented here][2]._
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/language/en.html
   [2]: setting-up-navigation.md#slugify
 
-### Site search language
+### Site language selector
 
 [:octicons-file-code-24: Source][3] ·
+:octicons-beaker-24: Experimental ·
+[:octicons-heart-fill-24:{: .tx-heart } Insiders only][3]{: .tx-insiders }
+
+If your documentation is available in multiple languages, a _language selector_
+can be added to the header next to the search bar. Languages can be defined via
+`mkdocs.yml`:
+
+``` yaml
+extra:
+  alternate:
+    - name: English
+      link: https://squidfunk.github.io/mkdocs-material-insiders/en/
+      lang: en
+    - name: Deutsch
+      link: https://squidfunk.github.io/mkdocs-material-insiders/de/
+      lang: de
+    - name: 日本語
+      link: https://squidfunk.github.io/mkdocs-material-insiders/jp/
+      lang: jp
+```
+
+This will render a language selector in the header next to the search bar:
+
+  [![Language selection][4]][4]
+
+  [3]: ../insiders.md
+  [4]: ../assets/screenshots/language-selection.png
+
+This assumes that your project is structured into multiple subfolders, each of
+which contain the entire documentation for a given language, e.g.:
+
+``` sh
+.
+├─ en/
+│  ├─ docs/
+│  └─ mkdocs.yml
+├─ de/
+│  ├─ docs/
+│  └─ mkdocs.yml
+└─ jp/
+   ├─ docs/
+   └─ mkdocs.yml
+```
+
+### Site search language
+
+[:octicons-file-code-24: Source][5] ·
 :octicons-milestone-24: Default: _automatically set_
 
 Some languages, like Arabic or Japanese, need dedicated stemmers for search to
-work properly. Material for MkDocs relies on [lunr-languages][4] to provide this
-functionality. See the guide detailing how to [set up site search][5] for
+work properly. Material for MkDocs relies on [lunr-languages][6] to provide this
+functionality. See the guide detailing how to [set up site search][7] for
 more information.
 
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/main/index.ts#L77-L108
-  [4]: https://github.com/MihaiValentin/lunr-languages
-  [5]: setting-up-site-search.md
+  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/main/index.ts#L77-L108
+  [6]: https://github.com/MihaiValentin/lunr-languages
+  [7]: setting-up-site-search.md
 
 ### Directionality
 
-[:octicons-file-code-24: Source][6] ·
+[:octicons-file-code-24: Source][8] ·
 :octicons-milestone-24: Default: _automatically set_
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
@@ -132,7 +179,7 @@ directionality:
   })
 </script>
 
-  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L185
+  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L185
 
 ## Customization
 
@@ -142,7 +189,7 @@ directionality:
 :octicons-mortar-board-24: Difficulty: _easy_
 
 If you want to customize some (or all) of the translations for your language,
-you may follow the guide on [theme extension][7] and create a new partial in
+you may follow the guide on [theme extension][9] and create a new partial in
 `partials/language`, e.g. `en-custom.html`. Next, look up the translation you
 want to change in the [base translation][1] and add it to the partial.
 
@@ -161,4 +208,4 @@ theme:
   language: en-custom
 ```
 
-  [7]: ../customization.md#extending-the-theme
+  [9]: ../customization.md#extending-the-theme

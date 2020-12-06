@@ -33,7 +33,7 @@ extra:
 This will render a version selector in the header next to the title of your
 project:
 
-[![Versioning][3]][3]
+[![Version selection][3]][3]
 
 [Try this feature][4]{: .md-button .md-button--primary }
 

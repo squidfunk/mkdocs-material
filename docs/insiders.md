@@ -114,6 +114,7 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
 - [x] [Remove _Made with Material for MkDocs_ from footer][11]
 - [x] [Support for user-toggleable themes (light/dark mode switch)][12]
 - [x] [Support for deploying multiple versions][13]
+- [x] [Support for deploying multiple languages][22]
 - [x] [Search suggestions help to save keystrokes][14]
 - [x] [Highlighting of matched search terms in content area][15]
 - [x] Search goes to first result on ++enter++ (I'm feeling lucky)
@@ -135,19 +136,20 @@ for MkDocs Insiders. You can click on each feature to learn more about it:
   [19]: setup/setting-up-navigation.md#navigation-integration
   [20]: setup/setting-up-the-header.md#automatic-hiding
   [21]: reference/admonitions.md#inline-blocks
+  [22]: setup/changing-the-language.md#site-language-selector
 
 ## Roadmap
 
 The following list of funding goals – named after varieties of chili peppers 
-[I'm growing on my balcony][22] – shows which features are already available
+[I'm growing on my balcony][23] – shows which features are already available
 in Material for MkDocs Insiders.
 
-  [22]: https://www.instagram.com/squidfunk/
+  [23]: https://www.instagram.com/squidfunk/
 
 ### Madame Jeanette
 
 [:octicons-flame-24: Funding goal: __$500__][6] ·
-:octicons-unlock-24: Status: _released_
+:octicons-unlock-24: Status: _Generally available_
 
 - [x] Improved search result grouping (pages + headings)
 - [x] Improved search result relevance and scoring
@@ -156,7 +158,7 @@ in Material for MkDocs Insiders.
 ### Prairie Fire
 
 [:octicons-flame-24: Funding goal: __$1,000__][6] ·
-:octicons-lock-24: Status: _exclusive_
+:octicons-lock-24: Status: _Insiders only_
 
 - [x] [Navigation can be grouped into sections][16]
 - [x] [Navigation can be always expanded][17]
@@ -167,16 +169,16 @@ in Material for MkDocs Insiders.
 ### Bhut Jolokia
 
 [:octicons-flame-24: Funding goal: __$1,500__][6] ·
-:octicons-lock-24: Status: _exclusive_
+:octicons-lock-24: Status: _Insiders only_
 
 - [x] [Support for Admonitions as inline blocks][21]
 - [x] [Support for deploying multiple versions][13]
-- [ ] Support for deploying multiple languages
+- [x] [Support for deploying multiple languages][22]
 
 ### Black Pearl
 
 [:octicons-flame-24: Funding goal: __$2,000__][6] ·
-:octicons-lock-24: Status: _exclusive_
+:octicons-lock-24: Status: _Insiders only_
 
 - [x] [Support for user-toggleable themes (light/dark mode switch)][12]
 - [ ] Support for user-toggleable code-block styles (light/dark mode switch)
@@ -185,7 +187,7 @@ in Material for MkDocs Insiders.
 ### Biquinho Vermelho
 
 [:octicons-flame-24: Funding goal: __$2,500__][6] ·
-:octicons-lock-24: Status: _exclusive_
+:octicons-lock-24: Status: _Insiders only_
 
 - [x] [Search suggestions help to save keystrokes][14]
 - [x] [Highlighting of matched search terms in content area][15]
@@ -197,7 +199,7 @@ in Material for MkDocs Insiders.
 ### Caribbean Red
 
 [:octicons-flame-24: Funding goal: __$3,000__][6] ·
-:octicons-lock-24: Status: _exclusive_
+:octicons-lock-24: Status: _Insiders only_
 
 - [x] [Remove _Made with Material for MkDocs_ from footer][11]
 - [ ] Brand-new and exclusive vertical layout
@@ -215,10 +217,10 @@ improvements (e.g. search) do not require any changes to existing configuration.
 This means that your users will be able to build the docs locally with the
 regular version and when they push their changes to CI/CD, they will be built
 with Material for MkDocs Insiders. For this reason, it's recommended to
-[install Insiders][23] only in CI, as you don't want to expose your `GH_TOKEN`
+[install Insiders][24] only in CI, as you don't want to expose your `GH_TOKEN`
 to users.
 
-  [23]: publishing-your-site.md#github-pages
+  [24]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -228,7 +230,7 @@ terms?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][24]. However, we kindly ask you to respect the following
+by the [MIT license][25]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ from Material for MkDocs Insiders.
@@ -239,7 +241,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Material for MkDocs Insiders. However, you may
   __use the latest version__ that's available to you __as long as you like__.
-  Just remember that __[GitHub deletes private forks][25]__.
+  Just remember that __[GitHub deletes private forks][26]__.
 
-  [24]: license.md
-  [25]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [25]: license.md
+  [26]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

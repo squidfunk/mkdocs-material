@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.12.0 <small>_ December 6, 2020</small>
+
+- Added support for adding a language selector
+
 ### 1.11.2 <small>_ November 29, 2020</small>
 
 - Fixed #2068: Search highlight interprets code blocks as JavaScript
