@@ -22,7 +22,13 @@
 
 import { ProjectSchema } from "gitlab"
 import { Observable, from } from "rxjs"
-import { map } from "rxjs/operators"
+import {
+  defaultIfEmpty,
+  filter,
+  map,
+  share,
+  switchMap
+} from "rxjs/operators"
 
 import { round } from "utilities"
 
@@ -44,11 +50,15 @@ export function fetchSourceFactsFromGitLab(
   base: string, project: string
 ): Observable<SourceFacts> {
   const url = `https://${base}/api/v4/projects/${encodeURIComponent(project)}`
-  return from(fetch(url).then(res => res.json()))
+  return from(fetch(url))
     .pipe(
+      filter(res => res.status === 200),
+      switchMap(res => res.json()),
       map(({ star_count, forks_count }: ProjectSchema) => ([
         `${round(star_count)} Stars`,
         `${round(forks_count)} Forks`
-      ]))
+      ])),
+      defaultIfEmpty([]),
+      share()
     )
 }
