@@ -17,7 +17,7 @@ template: overrides/main.html
 
 ### 1.11.0 <small>_ November 22, 2020</small>
 
-- Added support for rendering Admonitions as inline blocks
+- Added support for rendering admonitions as inline blocks
 
 ### 1.10.0 <small>_ November 15, 2020</small>
 
@@ -80,6 +80,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.1.7 <small>_ December 6, 2020</small>
+
+- Fixed #2081: Fixed stats for private GitHub repositories
+- Fixed alignment for admonition icon alignment for right-to-left languages
+
 ### 6.1.6 <small>_ November 22, 2020</small>
 
 - Fixed #2048: Math formulas show scrollbars (Windows)
@@ -101,7 +106,7 @@ template: overrides/main.html
 
 ### 6.1.2 <small>_ October 31, 2020</small>
 
-- Fixed sizing of icons in Admonition, Tasklist, etc. (6.1.1 regression)
+- Fixed sizing of icons in admonitions, task lists, etc. (6.1.1 regression)
 
 ### 6.1.1 <small>_ October 31, 2020</small>
 
@@ -203,7 +208,7 @@ template: overrides/main.html
 - Improved highlight colors and spacing for `ins`, `del` and `mark`
 - Changed some keyboard symbols for better equivalents
 - Removed focus `outline` for details and code blocks on touch devices
-- Fixed margins for Admonitions (5.5.1 regression)
+- Fixed margins for admonitions (5.5.1 regression)
 - Fixed too small content tab labels (5.5.1 regression)
 - Fixed icon repeating for custom admonition icons
 
@@ -353,7 +358,7 @@ template: overrides/main.html
 - Support for displaying stars and forks for GitLab repositories
 - Support for scroll snapping of sidebars and search results
 - Reduced HTML and CSS footprint due to deprecation of Internet Explorer support
-- Slight facelifting of some UI elements (Admonitions, tables, ...)
+- Slight facelifting of some UI elements (admonitions, tables, ...)
 
 ### 4.6.3 <small>_ February 14, 2020</small>
 
@@ -652,8 +657,8 @@ template: overrides/main.html
 
 ### 2.3.0 <small>_ January 9, 2018</small>
 
-- Added `example` (synonym: `snippet`) style for Admonition
-- Added synonym `abstract` for `summary` style for Admonition
+- Added `example` (synonym: `snippet`) style for admonitions
+- Added synonym `abstract` for `summary` style for admonitions
 
 ### 2.2.6 <small>_ December 27, 2017</small>
 
@@ -677,11 +682,11 @@ template: overrides/main.html
 
 - Added Dutch translations
 - Adjusted targeted link and footnote offsets
-- Simplified Admonition styles and fixed padding bug
+- Simplified admonition styles and fixed padding bug
 
 ### 2.2.1 <small>_ December 2, 2017</small>
 
-- Fixed #616: Minor styling error with title-only admonition blocks
+- Fixed #616: Minor styling error with title-only admonitions
 - Removed border for table of contents and improved spacing
 
 ### 2.2.0 <small>_ November 22, 2017</small>
@@ -791,10 +796,10 @@ template: overrides/main.html
 
 ### 1.9.0 <small>_ August 29, 2017</small>
 
-- Added `info` (synonym: `todo`) style for Admonition
-- Added `question` (synonym: `help`, `faq`) style for Admonition
+- Added `info` (synonym: `todo`) style for admonitions
+- Added `question` (synonym: `help`, `faq`) style for admonitions
 - Added support for Details from PyMdown Extensions package
-- Improved Admonition styles to match Details
+- Improved admonition styles to match details
 - Improved styles for social links in footer
 - Replaced ligatures with Unicode code points to avoid broken layout
 - Upgraded PyMdown Extensions package dependency to >= 3.4
@@ -941,7 +946,7 @@ template: overrides/main.html
 
 ### 1.2.0 <small>_ March 3, 2017</small>
 
-- Added `quote` (synonym: `cite`) style for Admonition
+- Added `quote` (synonym: `cite`) style for admonitions
 - Added help message to build pipeline
 - Fixed wrong navigation link colors when applying palette
 - Fixed #197: Link missing in tabs navigation on deeply nested items
