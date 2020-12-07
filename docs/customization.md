@@ -137,7 +137,7 @@ The directory layout of the theme is as follows:
 ### Overriding partials
 
 In order to override a partial, we can replace it with a file of the same name
-and location in the `overrides` directory. For example. to replace the original
+and location in the `overrides` directory. For example, to replace the original
 `footer.html`, create a `footer.html` file in the `overrides/partials`
 directory:
 
