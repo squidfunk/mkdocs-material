@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.12.1 <small>_ December 8, 2020</small>
+
+  * Fixed empty language selector being shown
+
 ### 1.12.0 <small>_ December 6, 2020</small>
 
 - Added support for adding a language selector
