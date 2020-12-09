@@ -144,12 +144,12 @@ For other installation methods, configuration options, and a demo, visit
   [Binance](https://docs.binance.org/),
   [Datadog](https://datadoghq.dev/integrations-core/),
   [ING](https://ing-bank.github.io/baker/),
+  [LinkedIn](https://linkedin.github.io/school-of-sre/),
   [Microsoft](https://www.electionguard.vote/),
   [Netflix](https://netflix.github.io/titus/),
   [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
   [SAP](https://sap.github.io/ui5-tooling/),
   [SoundCloud](https://intervene.dev/),
-  [Spotify](https://backstage.github.io/mkdocs-monorepo-plugin/),
   [Square](https://square.github.io/okhttp/),
   [Uber](https://ludwig-ai.github.io/ludwig-docs/getting_started/),
   [Zalando](https://opensource.zalando.com/skipper/)
