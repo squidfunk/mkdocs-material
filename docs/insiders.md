@@ -41,13 +41,13 @@ for MkDocs Insiders.
 <div class="tx-sponsor" hidden>
   <h3>Join <span class="tx-sponsor__count"></span> awesome sponsors</h3>
   <div class="tx-sponsor__list"></div>
-  <a class="md-button md-button--primary" href="https://github.com/sponsors/squidfunk">
-    <span class="twemoji tx-heart"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 01-.686 0 16.709 16.709 0 01-.465-.252 31.147 31.147 0 01-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0114 20.408z"></path></svg> </span> &nbsp; Become a sponsor
-  </a>
   <p>
     You can sponsor publicly or privately. As a public sponsor, you'll be listed
     here with your GitHub avatar, showing your support for Material for MkDocs!
   </p>
+  <a class="md-button md-button--primary" href="https://github.com/sponsors/squidfunk">
+    <span class="twemoji tx-heart"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 01-.686 0 16.709 16.709 0 01-.465-.252 31.147 31.147 0 01-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0114 20.408z"></path></svg> </span> &nbsp; Become a sponsor
+  </a>
 </div>
 <script>
   fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/").then(function(e){return e.json()}).then(function(e){var t=document.querySelector(".tx-sponsor__list"),n=0;for(var o of e.sponsors)if("PUBLIC"===o.type){var s;(s=document.createElement("a")).href=o.url,s.title="@"+o.name,s.className="tx-sponsor__item",t.appendChild(s);var r=document.createElement("img");r.src=o.image,s.appendChild(r)}else n++;(s=document.createElement("a")).href="https://github.com/sponsors/squidfunk",s.title="[private]",s.innerText="+"+n,s.className="tx-sponsor__item tx-sponsor__item--private",t.appendChild(s),document.querySelector(".tx-sponsor__count").innerText=e.sponsors.length,document.querySelector(".tx-sponsor").removeAttribute("hidden")}).catch(console.log);
