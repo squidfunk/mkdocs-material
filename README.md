@@ -157,6 +157,7 @@ For other installation methods, configuration options, and a demo, visit
 * **Open Source** —
   [AutoKeras](https://autokeras.com/),
   [BFE](https://www.bfe-networks.net/),
+  [Crystal](https://crystal-lang.org/reference/),
   [FastAPI](https://fastapi.tiangolo.com/),
   [Kubernetes](https://kops.sigs.k8s.io/),
   [Nokogiri](https://nokogiri.org/),
