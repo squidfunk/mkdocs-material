@@ -1,0 +1,10 @@
+{
+  "name": "mkdocs-material",
+  "short_name": "mkdocs-material",
+  "orientation": "any",
+  "display": "standalone",
+  "start_url": "/?utm_source=web_app_manifest&utm_medium=web_app_manifest&utm_campaign=web_app_manifest",
+  "description": "A Material Design theme for MkDocs",
+  "theme_color": "",
+  "background_color": ""
+}

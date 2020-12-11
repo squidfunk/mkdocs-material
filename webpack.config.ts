@@ -33,6 +33,8 @@ import { minify as minjs } from "terser"
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin"
 import { Configuration } from "webpack"
 import * as AssetsManifestPlugin from "webpack-assets-manifest"
+const WebpackPwaManifest = require("webpack-pwa-manifest")
+const metadata = require("./package.json")
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -157,7 +159,21 @@ function config(args: Configuration): Configuration {
       new AssetsManifestPlugin({
         output: "assets/manifest.json",
         assets
-      })
+      }),
+
+      new WebpackPwaManifest({
+        filename: "manifest.json",
+        name: metadata.name,
+        short_name: metadata.name,
+        start_url: "/?utm_source=web_app_manifest&utm_medium=web_app_manifest&utm_campaign=web_app_manifest",
+        display: "standalone",
+        description: metadata.description,
+        theme_color: "",
+        background_color: "",
+        orientation: "any",
+        fingerprints: false,
+        icons: []
+      }),
     ],
 
     /* Source maps */
