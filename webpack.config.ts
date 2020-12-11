@@ -21,18 +21,18 @@
  */
 
 import * as CopyPlugin from "copy-webpack-plugin"
-import * as EventHooksPlugin from "event-hooks-webpack-plugin"
+import EventHooksPlugin from "event-hooks-webpack-plugin"
 import * as fs from "fs"
 import { minify as minhtml } from "html-minifier"
 import IgnoreEmitPlugin from "ignore-emit-webpack-plugin"
 import ImageminPlugin from "imagemin-webpack-plugin"
-import MiniCssExtractPlugin = require("mini-css-extract-plugin")
+import MiniCssExtractPlugin from "mini-css-extract-plugin"
 import * as path from "path"
 import { toPairs } from "ramda"
 import { minify as minjs } from "terser"
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin"
 import { Configuration } from "webpack"
-import * as AssetsManifestPlugin from "webpack-assets-manifest"
+import AssetsManifestPlugin from "webpack-assets-manifest"
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -224,7 +224,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
         ...args.watch ? [] : [
 
           /* FontAwesome icons */
-          new CopyPlugin({
+          new CopyPlugin.default({
             patterns: [
               { to: ".icons/fontawesome", from: "**/*.svg" },
               { to: ".icons/fontawesome", from: "../LICENSE.txt" }
@@ -235,7 +235,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
           }),
 
           /* Material Design icons */
-          new CopyPlugin({
+          new CopyPlugin.default({
             patterns: [
               { to: ".icons/material", from: "*.svg" },
               { to: ".icons/material", from: "../LICENSE" }
@@ -246,7 +246,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
           }),
 
           /* GitHub octicons */
-          new CopyPlugin({
+          new CopyPlugin.default({
             patterns: [
               { to: ".icons/octicons", from: "*.svg" },
               { to: ".icons/octicons", from: "../../LICENSE" }
@@ -257,7 +257,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
           }),
 
           /* Search stemmers and segmenters */
-          new CopyPlugin({
+          new CopyPlugin.default({
             patterns: [
               { to: "assets/javascripts/lunr", from: "min/*.js" },
               {
@@ -272,7 +272,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
           }),
 
           /* Assets and configuration */
-          new CopyPlugin({
+          new CopyPlugin.default({
             patterns: [
               { from: ".icons/*.svg" },
               { from: "assets/images/*" },
@@ -285,7 +285,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
         ],
 
         /* Template files */
-        new CopyPlugin({
+        new CopyPlugin.default({
           patterns: [
             {
               from: "**/*.html",

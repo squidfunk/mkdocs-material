@@ -5,6 +5,7 @@
     "declaration": false,
     "declarationMap": false,
     "downlevelIteration": true,
+    "esModuleInterop": true,
     "jsx": "react",
     "jsxFactory": "h",
     "lib": [
