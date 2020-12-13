@@ -1,3 +1,10 @@
+mkdocs-material-6.1.7+insiders-1.13.0 (2020-12-13)
+
+  * Refactored navigation tabs to simplify grouping behavior
+  * Added support for sticky navigation tabs
+  * Added support for arbitrary links in navigation tabs
+  * Fixed #2098: Subsequent active subsection not highlighted correctly
+
 mkdocs-material-6.1.7+insiders-1.12.1 (2020-12-08)
 
   * Fixed empty language selector being shown

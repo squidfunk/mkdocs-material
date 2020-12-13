@@ -6,9 +6,16 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.13.0 <small>_ December 13, 2020</small>
+
+- Refactored navigation tabs to simplify grouping behavior
+- Added support for sticky navigation tabs
+- Added support for arbitrary links in navigation tabs
+- Fixed #2098: Subsequent active subsection not highlighted correctly
+
 ### 1.12.1 <small>_ December 8, 2020</small>
 
-  * Fixed empty language selector being shown
+- Fixed empty language selector being shown
 
 ### 1.12.0 <small>_ December 6, 2020</small>
 
