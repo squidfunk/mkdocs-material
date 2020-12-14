@@ -83,7 +83,7 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.18.0",
-    "ts-loader": "^8.0.11",
+    "ts-loader": "^8.0.12",
     "ts-node": "^9.1.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.0.3",
