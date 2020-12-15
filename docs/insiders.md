@@ -107,6 +107,19 @@ __Congratulations! :partying_face: You're now officially a sponsor and will
 get updates for Material for MkDocs Insiders, until you decide to cancel your
 monthly subscription, which you can do at any time.__
 
+??? info "Sponsoring via a GitHub organization?"
+
+    If you sponsor @squidfunk through a GitHub organization (which is currently
+    in beta), please note that it's not possible to grant access to all
+    organization members, as GitHub does not allow to do that. Thus, after
+    sponsoring, please send an email to sponsors@squidfunk.com, explaining
+    which account should become a collaborator of the Insiders repository.
+    To ensure that access is not tied to a particular individual, it's best to
+    create a bot account (i.e. a GitHub account that is not tied to a specific
+    individual), and use that for the sponsoring. After being added to the list
+    of collaborators, the bot account can create a private fork of the private
+    Insiders GitHub repository, effectively granting access to all members.
+
   [6]: https://github.com/sponsors/squidfunk
   [7]: #available-features
   [8]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
