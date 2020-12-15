@@ -128,13 +128,14 @@ export default class Result {
    * @property {string} value_ - Last input value
    *
    * @param {(string|HTMLElement)} el - Selector or HTML element
-   * @param {(Array<Object>|Function)} data - Function providing data or array
+   * @param {string} baseUrl - Relative path to the root of the MkDocs project.
    */
 
-  constructor(el, data) {
+  constructor(el, baseUrl) {
     const ref = typeof el === "string" ? document.querySelector(el) : el;
     if (!(ref instanceof HTMLElement)) throw new ReferenceError();
     this.el_ = ref;
+    this.baseUrl = baseUrl;
 
     /* Retrieve metadata and list element */
     const [meta, list] = Array.prototype.slice.call(this.el_.children);
@@ -206,7 +207,7 @@ export default class Result {
           const article = (
             <li class="md-search-result__item">
               <a
-                href={item.url}
+                href={this.baseUrl + item.url}
                 title={item.title}
                 class="md-search-result__link"
                 tabindex="-1"
