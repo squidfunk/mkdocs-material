@@ -225,9 +225,8 @@
     {% endblock %}
 
     <!-- Material icons as iconset -->
-    <link rel="stylesheet" type="text/css"
-        href="{{ 'assets/fonts/material-icons.css' | url }}" />
-
+    <!-- <link rel="stylesheet" type="text/css" href="{{ 'assets/fonts/material-icons.css' | url }}" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@0.2.3/iconfont/material-icons.min.css">
     <!-- Progressive Web App Manifest -->
     {% if config.extra.manifest %}
       <link rel="manifest" href="{{ config.extra.manifest | url }}">
