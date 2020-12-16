@@ -80,80 +80,7 @@
     {% endblock %}
     {% block fonts %}
       {% if font != false %}
-        <style>
-          /* fira-sans-300 */
-          @font-face {
-            font-family: 'Fira Sans';
-            font-style: normal;
-            font-weight: 300;
-            src: url('//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot'); /* IE9 Compat Modes */
-            src: local('Fira Sans'), local('FiraSans-Normal'),
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff2') format('woff2'), /* Super Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff') format('woff'), /* Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-300.ttf') format('truetype'), /* Safari, Android, iOS */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-300.svg#FiraSans') format('svg'); /* Legacy iOS */
-          }
-
-          /* fira-sans-regular */
-          @font-face {
-            font-family: 'Fira Sans';
-            font-style: normal;
-            font-weight: regular;
-            src: url('//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot'); /* IE9 Compat Modes */
-            src: local('Fira Sans'), local('FiraSans-Normal'),
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff2') format('woff2'), /* Super Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff') format('woff'), /* Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.svg#FiraSans') format('svg'); /* Legacy iOS */
-          }
-
-          /* fira-sans-italic */
-          @font-face {
-            font-family: 'Fira Sans';
-            font-style: italic;
-            font-weight: regular;
-            src: url('//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot'); /* IE9 Compat Modes */
-            src: local('Fira Sans'), local('FiraSans-Italic'),
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff2') format('woff2'), /* Super Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff') format('woff'), /* Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.ttf') format('truetype'), /* Safari, Android, iOS */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.svg#FiraSans') format('svg'); /* Legacy iOS */
-          }
-
-          /* fira-sans-700 */
-          @font-face {
-            font-family: 'Fira Sans';
-            font-style: normal;
-            font-weight: 700;
-            src: url('//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot'); /* IE9 Compat Modes */
-            src: local('Fira Sans'), local('FiraSans-Normal'),
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff2') format('woff2'), /* Super Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff') format('woff'), /* Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-700.ttf') format('truetype'), /* Safari, Android, iOS */
-            url('//lib.baomitu.com/fonts/fira-sans/fira-sans-700.svg#FiraSans') format('svg'); /* Legacy iOS */
-          }
-
-
-          /* fira-mono-regular */
-          @font-face {
-            font-family: 'Fira Mono';
-            font-style: normal;
-            font-weight: regular;
-            src: url('//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot'); /* IE9 Compat Modes */
-            src: local('Fira Mono'), local('FiraMono-Normal'),
-            url('//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-            url('//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff2') format('woff2'), /* Super Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff') format('woff'), /* Modern Browsers */
-            url('//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-            url('//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.svg#FiraMono') format('svg'); /* Legacy iOS */
-          }
-
-          body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}
-        </style>
+        <style>@font-face{font-family:'Fira Sans';font-style:normal;font-weight:300;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:italic;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot);src:local('Fira Sans'),local('FiraSans-Italic'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:700;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Mono';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot);src:local('Fira Mono'),local('FiraMono-Normal'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.svg#FiraMono) format('svg')}body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
       {% endif %}
     {% endblock %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@0.2.3/iconfont/material-icons.min.css">
@@ -268,7 +195,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.320a2241.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/application.5f6571bd.js' | url }}"></script>
       <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
