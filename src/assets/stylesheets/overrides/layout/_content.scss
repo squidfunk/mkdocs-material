@@ -24,7 +24,7 @@
 // Keyframes
 // ----------------------------------------------------------------------------
 
-// Heart animation
+// Pumping heart animation
 @keyframes tx-heart {
   0%, 40%, 80%, 100% {
     transform: scale(1);
@@ -43,7 +43,7 @@
   margin-top: px2rem(20px);
   text-align: center;
 
-  // Link container
+  // Link to Insiders
   a {
     display: inline-block;
     color: $clr-pink-500;
@@ -51,14 +51,14 @@
       transform 250ms cubic-bezier(0.1, 0.7, 0.1, 1),
       color     125ms;
 
-    // Focused or hovered links
+    // Link to Insiders on focus/hover
     &:focus,
     &:hover {
       transform: scale(1.2);
     }
   }
 
-  // Horizontal separators
+  // Horizontal separator
   hr {
     display: inline-block;
     width: px2rem(40px);

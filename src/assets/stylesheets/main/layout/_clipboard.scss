@@ -31,7 +31,7 @@
 
 // ----------------------------------------------------------------------------
 
-// Copy to clipboard
+// Button to copy to clipboard
 .md-clipboard {
   position: absolute;
   top: px2em(8px);
@@ -40,22 +40,28 @@
   width: px2em(24px);
   height: px2em(24px);
   color: var(--md-default-fg-color--lightest);
-  // background-color: var(--md-code-bg-color);
   border-radius: px2rem(2px);
   cursor: pointer;
-  transition: color 125ms;
+  transition: color 250ms;
 
-  // Hide for print
+  // [print]: Hide button
   @media print {
     display: none;
   }
 
-  // // Make room for clipboard button in case of overflowing code
-  // .md-typeset & + code {
-  //   padding-right: px2em(24px + 2 * 8px, 13.6px);
-  // }
+  // Darken color on code block hover
+  :hover > & {
+    color: var(--md-default-fg-color--light);
+  }
 
-  // Slightly smaller icon
+  // Button on focus/hover
+  &:focus,
+  &:hover {
+    color: var(--md-accent-fg-color);
+  }
+
+  // Button icon - the width and height are defined in `em`, so the size is
+  // automatically adjusted for nested code blocks (e.g. in admonitions)
   &::after {
     display: block;
     width: px2em(18px);
@@ -66,16 +72,5 @@
     mask-repeat: no-repeat;
     mask-size: contain;
     content: "";
-  }
-
-  // Show on container hover
-  pre:hover & {
-    color: var(--md-default-fg-color--light);
-  }
-
-  // Focused or hovered icon
-  pre &:focus,
-  pre &:hover {
-    color: var(--md-accent-fg-color);
   }
 }

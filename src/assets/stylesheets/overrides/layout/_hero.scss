@@ -29,7 +29,7 @@
   margin: 0 px2rem(16px);
   color: var(--md-primary-bg-color);
 
-  // Make main headline thicker
+  // Main headline
   h1 {
     margin-bottom: px2rem(20px);
     color: currentColor;
@@ -51,14 +51,14 @@
     display: flex;
     align-items: stretch;
 
-    // Increase bottom spacing and set dimensions
+    // Adjust spacing and set dimensions
     &__content {
       max-width: px2rem(380px);
       margin-top: px2rem(70px);
       padding-bottom: 14vw;
     }
 
-    // Swap with teaser and set dimensions
+    // Adjust order and set dimensions
     &__image {
       order: 1;
       width: px2rem(760px);

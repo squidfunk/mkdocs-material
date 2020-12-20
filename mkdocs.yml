@@ -51,6 +51,7 @@ theme:
   # Default values, taken from mkdocs_theme.yml
   language: en
   features:
+    - navigation.sections
     - navigation.tabs
     #- navigation.instant
   palette:

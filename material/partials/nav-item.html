@@ -1,14 +1,24 @@
 {#-
   This file was automatically generated - do not edit
 -#}
+{% set features = config.theme.features or [] %}
 {% set class = "md-nav__item" %}
 {% if nav_item.active %}
-  {% set class = "md-nav__item md-nav__item--active" %}
+  {% set class = class ~ " md-nav__item--active" %}
 {% endif %}
 {% if nav_item.children %}
+  {% if "navigation.sections" in features and level == 1 + (
+    "navigation.tabs" in features
+  ) %}
+    {% set class = class ~ " md-nav__item--section" %}
+  {% endif %}
   <li class="{{ class }} md-nav__item--nested">
     {% set checked = "checked" if nav_item.active %}
-    <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" {{ checked }}>
+    {% if "navigation.expand" in features and not checked %}
+      <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" data-md-state="indeterminate" type="checkbox" id="{{ path }}" checked>
+    {% else %}
+      <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" {{ checked }}>
+    {% endif %}
     <label class="md-nav__link" for="{{ path }}">
       {{ nav_item.title }}
       <span class="md-nav__icon md-icon"></span>

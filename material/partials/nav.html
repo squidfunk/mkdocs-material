@@ -1,11 +1,18 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% set site_url = config.site_url | default(nav.homepage.url, true) | url %}
+{% set site_url = config.site_url | d(nav.homepage.url, true) | url %}
 {% if not config.use_directory_urls and site_url[0] == site_url[-1] == "." %}
   {% set site_url = site_url ~ "/index.html" %}
 {% endif %}
-<nav class="md-nav md-nav--primary" aria-label="{{ lang.t('nav.title') }}" data-md-level="0">
+{% set class = "md-nav md-nav--primary" %}
+{% if "navigation.tabs" in features %}
+  {% set class = class ~ " md-nav--lifted" %}
+{% endif %}
+{% if "toc.integrate" in features %}
+  {% set class = class ~ " md-nav--integrated" %}
+{% endif %}
+<nav class="{{ class }}" aria-label="{{ lang.t('nav.title') }}" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="{{ site_url }}" title="{{ config.site_name | e }}" class="md-nav__button md-logo" aria-label="{{ config.site_name }}">
       {% include "partials/logo.html" %}

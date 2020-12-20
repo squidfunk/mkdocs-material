@@ -46,7 +46,9 @@ import {
   take,
   shareReplay,
   catchError,
-  map
+  map,
+  bufferCount,
+  distinctUntilKeyChanged
 } from "rxjs/operators"
 
 import {
@@ -60,7 +62,8 @@ import {
   watchViewport,
   isLocalLocation,
   setLocationHash,
-  watchLocationBase
+  watchLocationBase,
+  getElement
 } from "browser"
 import {
   mountHeader,
@@ -397,16 +400,42 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  /* Unhide permalinks on first tab */
-  keyboard$
-    .pipe(
-      filter(key => key.mode === "global" && key.type === "Tab"),
-      take(1)
-    )
-      .subscribe(() => {
-        for (const link of getElements(".headerlink"))
-          link.style.visibility = "visible"
-      })
+  // Make indeterminate toggles indeterminate to expand navigation on screen
+  document$.subscribe(() => {
+    const toggles = getElements<HTMLInputElement>("[data-md-state=indeterminate]")
+    for (const toggle of toggles) {
+      toggle.dataset.mdState = ""
+      toggle.indeterminate = true
+      toggle.checked = false
+    }
+  })
+
+  // Auto hide header - this is still experimental, so there might be some
+  // opportunities for refactoring, but we'll address them when this feature
+  // got some feedback from the community.
+  if (config.features.includes("header.autohide")) {
+    viewport$
+      .pipe(
+        map(({ offset }) => offset.y),
+        bufferCount(2, 1),
+        map(([a, b]) => [a < b, b] as const),
+        distinctUntilKeyChanged(0),
+        switchMap(([direction, y0]) => viewport$
+          .pipe(
+            map(({ offset }) => offset.y),
+            filter(y1 => y1 > 400),
+            map(y1 => Math.abs(y0 - y1)),
+            filter(y => y > 100),
+            map(() => direction),
+            take(1)
+          )
+        )
+      )
+        .subscribe(hide => {
+          const header = getElement("[data-md-component=header]")
+          header?.setAttribute("data-md-state", hide ? "hidden": "shadow")
+        })
+  }
 
   /* ----------------------------------------------------------------------- */
 

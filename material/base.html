@@ -18,13 +18,13 @@
       {% elif config.site_keywords %}
         <meta name="keywords" content="{{ config.site_keywords }}">
       {% endif %}
-      {% if page.canonical_url %}
-        <link rel="canonical" href="{{ page.canonical_url }}">
-      {% endif %}
       {% if page and page.meta and page.meta.author %}
         <meta name="author" content="{{ page.meta.author }}">
       {% elif config.site_author %}
         <meta name="author" content="{{ config.site_author }}">
+      {% endif %}
+      {% if page.canonical_url %}
+        <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-6.1.7">
@@ -39,10 +39,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.19753c6b.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0e475462.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.196e0c26.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.7cb87594.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -56,7 +56,7 @@
     {% block fonts %}
       {% if config.theme.font != false %}
         {% set font = config.theme.font %}
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
             font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
             font.code | replace(' ', '+')
@@ -93,6 +93,7 @@
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
+    {%  set features = config.theme.features or [] %}
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -119,7 +120,7 @@
     <div class="md-container" data-md-component="container">
       {% block hero %}{% endblock %}
       {% block tabs %}
-        {% if "navigation.tabs" in config.theme.features %}
+        {% if "navigation.tabs" in features %}
           {% include "partials/tabs.html" %}
         {% endif %}
       {% endblock %}
@@ -127,7 +128,10 @@
         <div class="md-main__inner md-grid">
           {% block site_nav %}
             {% if nav %}
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+              {% if page and page.meta and page.meta.hide %}
+                {% set hidden = "hidden" if "navigation" in page.meta.hide %}
+              {% endif %}
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     {% include "partials/nav.html" %}
@@ -135,8 +139,11 @@
                 </div>
               </div>
             {% endif %}
-            {% if page.toc %}
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            {% if page.toc and not "toc.integrate" in features %}
+              {% if page and page.meta and page.meta.hide %}
+                {% set hidden = "hidden" if "toc" in page.meta.hide %}
+              {% endif %}
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     {% include "partials/toc.html" %}
@@ -154,7 +161,7 @@
                   </a>
                 {% endif %}
                 {% if not "\x3ch1" in page.content %}
-                  <h1>{{ page.title | default(config.site_name, true)}}</h1>
+                  <h1>{{ page.title | d(config.site_name, true)}}</h1>
                 {% endif %}
                 {{ page.content }}
                 {% if page and page.meta %}
@@ -178,7 +185,7 @@
     </div>
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.0ac82a11.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.f81dfb4d.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.4a6c075e.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -204,7 +211,7 @@
       <script>
         app = initialize({
           base: "{{ base_url }}",
-          features: {{ config.theme.features or [] | tojson }},
+          features: {{ features or [] | tojson }},
           search: Object.assign({
             worker: "{{ 'assets/javascripts/worker/search.4ac00218.min.js' | url }}"
           }, typeof search !== "undefined" && search)

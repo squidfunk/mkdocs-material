@@ -21,16 +21,136 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Rules
+// Rules: syntax highlighting
 // ----------------------------------------------------------------------------
 
-// When pymdownx.superfences is enabled but codehilite is disabled,
-// pymdownx.highlight will be used. When this happens, the outer container
-// and tables get this class names by default
+// Code block
 .highlight {
-  @extend .codehilite;
 
-  // Inline line numbers
+  .o,   // Operator
+  .ow { // Operator, word
+    color: var(--md-code-hl-operator-color);
+  }
+
+  .p {  // Punctuation
+    color: var(--md-code-hl-punctuation-color);
+  }
+
+  .cpf, // Comment, preprocessor file
+  .l,   // Literal
+  .s,   // Literal, string
+  .sb,  // Literal, string backticks
+  .sc,  // Literal, string char
+  .s2,  // Literal, string double
+  .si,  // Literal, string interpol
+  .s1,  // Literal, string single
+  .ss { // Literal, string symbol
+    color: var(--md-code-hl-string-color);
+  }
+
+  .cp,  // Comment, pre-processor
+  .se,  // Literal, string escape
+  .sh,  // Literal, string heredoc
+  .sr,  // Literal, string regex
+  .sx { // Literal, string other
+    color: var(--md-code-hl-special-color);
+  }
+
+  .m,   // Number
+  .mf,  // Number, float
+  .mh,  // Number, hex
+  .mi,  // Number, integer
+  .il,  // Number, integer long
+  .mo { // Number, octal
+    color: var(--md-code-hl-number-color);
+  }
+
+  .k,   // Keyword,
+  .kd,  // Keyword, declaration
+  .kn,  // Keyword, namespace
+  .kp,  // Keyword, pseudo
+  .kr,  // Keyword, reserved
+  .kt { // Keyword, type
+    color: var(--md-code-hl-keyword-color);
+  }
+
+  .kc,  // Keyword, constant
+  .n {  // Name
+    color: var(--md-code-hl-name-color);
+  }
+
+  .no,  // Name, constant
+  .nb,  // Name, builtin
+  .bp { // Name, builtin pseudo
+    color: var(--md-code-hl-constant-color);
+  }
+
+  .nc,  // Name, class
+  .ne,  // Name, exception
+  .nf,  // Name, function
+  .nn { // Name, namespace
+    color: var(--md-code-hl-function-color);
+  }
+
+  .nd,  // Name, decorator
+  .ni,  // Name, entity
+  .nl,  // Name, label
+  .nt { // Name, tag
+    color: var(--md-code-hl-keyword-color);
+  }
+
+  .c,   // Comment
+  .cm,  // Comment, multiline
+  .c1,  // Comment, single
+  .ch,  // Comment, shebang
+  .cs,  // Comment, special
+  .sd { // Literal, string doc
+    color: var(--md-code-hl-comment-color);
+  }
+
+  .na,  // Name, attribute
+  .nv,  // Variable,
+  .vc,  // Variable, class
+  .vg,  // Variable, global
+  .vi { // Variable, instance
+    color: var(--md-code-hl-variable-color);
+  }
+
+  .ge,  // Generic, emph
+  .gr,  // Generic, error
+  .gh,  // Generic, heading
+  .go,  // Generic, output
+  .gp,  // Generic, prompt
+  .gs,  // Generic, strong
+  .gu,  // Generic, subheading
+  .gt { // Generic, traceback
+    color: var(--md-code-hl-generic-color);
+  }
+
+  .gd,  // Diff, delete
+  .gi { // Diff, insert
+    margin: 0 px2em(-2px);
+    padding: 0 px2em(2px);
+    border-radius: px2rem(2px);
+  }
+
+  .gd { // Diff, delete
+    background-color: var(--md-typeset-del-color);
+  }
+
+  .gi { // Diff, insert
+    background-color: var(--md-typeset-ins-color)
+  }
+
+  // Highlighted line
+  .hll {
+    display: block;
+    margin: 0 px2em(-16px, 13.6px);
+    padding: 0 px2em(16px, 13.6px);
+    background-color: var(--md-code-hl-color)
+  }
+
+  // Code block line numbers (inline)
   [data-linenos]::before {
     position: sticky;
     left: px2em(-16px, 13.6px);
@@ -40,13 +160,116 @@
     padding-left: px2em(16px, 13.6px);
     color: var(--md-default-fg-color--light);
     background-color: var(--md-code-bg-color);
-    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lighter) inset;
+    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
     content: attr(data-linenos);
     user-select: none;
   }
 }
 
-// Same as above, but for code blocks with line numbers enabled
+// ----------------------------------------------------------------------------
+// Rules: layout
+// ----------------------------------------------------------------------------
+
+// Code block with line numbers
 .highlighttable {
-  @extend .codehilitetable;
+  display: flow-root;
+  overflow: hidden;
+
+  // Set table elements to block layout, because otherwise the whole flexbox
+  // hacking won't work correctly
+  tbody,
+  td {
+    display: block;
+    padding: 0;
+  }
+
+  // We need to use flexbox layout, because otherwise it's not possible to
+  // make the code container scroll while keeping the line numbers static
+  tr {
+    display: flex;
+  }
+
+  // The pre tags are nested inside a table, so we need to omit the margin
+  // because it collapses below all the overflows
+  pre {
+    margin: 0;
+  }
+
+  // Code block line numbers - disable user selection, so code can be easily
+  // copied without accidentally also copying the line numbers
+  .linenos {
+    padding: px2em(10.5px, 13.6px) px2em(16px, 13.6px);
+    padding-right: 0;
+    font-size: px2em(13.6px);
+    background-color: var(--md-code-bg-color);
+    user-select: none;
+  }
+
+  // Code block line numbers container
+  .linenodiv {
+    padding-right: px2em(8px, 13.6px);
+    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
+
+    // Adjust colors and alignment
+    pre {
+      color: var(--md-default-fg-color--light);
+      text-align: right;
+    }
+  }
+
+  // Code block container - stretch to remaining space
+  .code {
+    flex: 1;
+    overflow: hidden;
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Code block with line numbers
+  .highlighttable {
+    margin: 1em 0;
+    direction: ltr;
+    border-radius: px2rem(2px);
+
+    // Omit rounded borders on contained code block
+    code {
+      border-radius: 0;
+    }
+  }
+
+  // [mobile -]: Align with body copy
+  @include break-to-device(mobile) {
+
+    // Top-level code block
+    > .highlight {
+      margin: 1em px2rem(-16px);
+
+      // Highlighted line
+      .hll {
+        margin: 0 px2rem(-16px);
+        padding: 0 px2rem(16px);
+      }
+
+      // Omit rounded borders
+      code {
+        border-radius: 0;
+      }
+    }
+
+    // Top-level code block with line numbers
+    > .highlighttable {
+      margin: 1em px2rem(-16px);
+      border-radius: 0;
+
+      // Highlighted line
+      .hll {
+        margin: 0 px2rem(-16px);
+        padding: 0 px2rem(16px);
+      }
+    }
+  }
 }

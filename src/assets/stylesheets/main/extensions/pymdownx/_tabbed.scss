@@ -34,28 +34,27 @@
     width: 100%;
     box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest);
 
-    // Show all tabs when printing
+    // [print]: Show all tabs (even hidden ones) when printing
     @media print {
       display: block;
       order: initial;
     }
 
-    // Mirror old superfences behavior, if there's only a single code block.
+    // Code block is the only child of a tab - remove margin and mirror
+    // previous (now deprecated) SuperFences code block grouping behavior
     > pre:only-child,
-    > .codehilite:only-child pre,
-    > .codehilitetable:only-child,
     > .highlight:only-child pre,
     > .highlighttable:only-child {
       margin: 0;
 
-      // Remove rounded borders at the top
+      // Omit rounded borders
       > code {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
       }
     }
 
-    // Nested tabs
+    // Adjust spacing for nested tab
     > .tabbed-set {
       margin: 0;
     }
@@ -69,14 +68,17 @@
     margin: 1em 0;
     border-radius: px2rem(2px);
 
-    // Hide radio buttons
+    // Tab radio button - the Tabbed extension will generate radio buttons with
+    // labels, so tabs can be triggered without the necessity for JavaScript.
+    // This is pretty cool, as it has great accessibility out-of-the box, so
+    // we just hide the radio button and toggle the label color for indication.
     > input {
       position: absolute;
       width: 0;
       height: 0;
       opacity: 0;
 
-      // Active tab label
+      // Tab label for checked radio button
       &:checked + label {
         color: var(--md-accent-fg-color);
         border-color: var(--md-accent-fg-color);
@@ -87,12 +89,12 @@
         }
       }
 
-      // Focused tab label
+      // Tab label on focus
       &:focus + label {
         outline-style: auto;
       }
 
-      // Disable focus indicator for pointer devices
+      // Hide outline for pointer devices
       &:not(.focus-visible) + label {
         outline: none;
         -webkit-tap-highlight-color: transparent;
@@ -111,8 +113,8 @@
       cursor: pointer;
       transition: color 250ms;
 
-      // Hovered label
-      html &:hover {
+      // Tab label on hover
+      &:hover {
         color: var(--md-accent-fg-color);
       }
     }

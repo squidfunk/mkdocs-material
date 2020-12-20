@@ -24,7 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Typesetted content
+// Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
   // Insiders color (for links, etc.)
@@ -32,12 +32,13 @@
     color: $clr-pink-500;
   }
 
-  // Extension: switch buttons
+  // Switch buttons
   .tx-switch button {
     cursor: pointer;
     transition: opacity 250ms;
 
-    // Hovered button
+    // Button on hover
+    &:focus,
     &:hover {
       opacity: 0.75;
     }

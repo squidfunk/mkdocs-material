@@ -34,7 +34,7 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Details extension
+  // Details
   details {
     @extend .admonition;
 
@@ -42,18 +42,20 @@
     padding-top: 0;
     overflow: visible;
 
-    // Rotate title icon
+    // Details title icon - rotate icon on transition to open state
     &[open] > summary::after {
       transform: rotate(90deg);
     }
 
-    // Remove bottom spacing for closed details
+    // Adjust spacing for details in closed state
     &:not([open]) {
       padding-bottom: 0;
       box-shadow: none;
 
-      // We cannot set overflow: hidden, as the outline would not be visible,
-      // so we need to correct the border radius
+      // Hack: we cannot set `overflow: hidden` on the `details` element (which
+      // is why we set it to `overflow: visible`, as the outline would not be
+      // visible when focusing. Therefore, we must set the border radius on the
+      // summary explicitly.
       > summary {
         border-radius: px2rem(2px);
       }
@@ -77,20 +79,15 @@
     border-top-right-radius: px2rem(2px);
     cursor: pointer;
 
-    // Disable focus indicator for pointer devices
-    &:not(.focus-visible) {
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       padding: px2rem(8px) px2rem(44px) px2rem(8px) px2rem(36px);
     }
 
-    // Remove default details marker
-    &::-webkit-details-marker {
-      display: none;
+    // Hide outline for pointer devices
+    &:not(.focus-visible) {
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     // Details marker
@@ -114,6 +111,11 @@
         left: px2rem(8px);
         transform: rotate(180deg);
       }
+    }
+
+    // Hide native details marker
+    &::-webkit-details-marker {
+      display: none;
     }
   }
 }
