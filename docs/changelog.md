@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.13.1 <small>_ December 13, 2020</small>
+
+- Removed horizontal scrollbars on language and version selector
+- Fixed type conversion in JavaScript config
+
 ### 1.13.0 <small>_ December 13, 2020</small>
 
 - Refactored navigation tabs to simplify grouping behavior
