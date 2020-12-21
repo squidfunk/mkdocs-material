@@ -57,7 +57,7 @@
     "@types/webpack": "^4.41.25",
     "@types/webpack-assets-manifest": "^3.0.1",
     "autoprefixer": "10.1.0",
-    "copy-webpack-plugin": "^6.4.0",
+    "copy-webpack-plugin": "^6.4.1",
     "css-loader": "^5.0.1",
     "event-hooks-webpack-plugin": "^2.2.0",
     "expose-loader": "^1.0.3",
