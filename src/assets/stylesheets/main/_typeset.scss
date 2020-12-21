@@ -456,12 +456,17 @@ kbd {
     max-width: 100%;
     margin: 0 auto;
     text-align: center;
+
+    // Figure images
+    img {
+      display: block;
+    }
   }
 
   // Figure caption
   figcaption {
     max-width: px2rem(480px);
-    margin: 0.5em auto 2em;
+    margin: 1em auto 2em;
     font-style: italic;
   }
 

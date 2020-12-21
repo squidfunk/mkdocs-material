@@ -35,8 +35,9 @@
 .md-typeset {
 
   // Footnote reference container - improve alignment
-  [id^="fnref:"] {
+  html & [id^="fnref:"] {
     display: inline-block;
+    scroll-margin-top: px2rem(48px + 24px - 3px);
   }
 
   // Footnote container

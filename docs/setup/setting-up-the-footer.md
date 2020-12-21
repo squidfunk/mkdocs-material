@@ -101,7 +101,7 @@ displayed next to the social links. It can be defined as part of `mkdocs.yml`:
 copyright: Copyright &copy; 2016 - 2020 Martin Donath
 ```
 
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/footer.html#L85-L99
+  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/footer.html
 
 ### Remove generator
 

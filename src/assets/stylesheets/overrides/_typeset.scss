@@ -21,15 +21,129 @@
 ////
 
 // ----------------------------------------------------------------------------
+// Keyframes
+// ----------------------------------------------------------------------------
+
+// Pumping heart animation
+@keyframes tx-heart {
+  0%, 40%, 80%, 100% {
+    transform: scale(1);
+  }
+  20%, 60% {
+    transform: scale(1.15);
+  }
+}
+
+// ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
+  // Screenshot caption
+  figure > p + figcaption {
+    margin-top: px2rem(-24px);
+  }
+
+  // Twitter icon
+  .twitter {
+    color: #00ACEE;
+  }
+
+  // Insiders video
+  .tx-video {
+    width: auto;
+
+    // Insiders video container
+    &__inner {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.138%;
+    }
+
+    // Insiders video iframe
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: none;
+    }
+  }
+
+  // Pumping heart
+  .tx-heart {
+    animation: tx-heart 1000ms infinite;
+  }
+
   // Insiders color (for links, etc.)
   .tx-insiders {
     color: $clr-pink-500;
+  }
+
+  // Insiders button
+  .tx-insiders-button {
+    font-weight: 400;
+  }
+
+  // Insiders count
+  .tx-insiders-count {
+    font-weight: 700;
+  }
+
+  // Insiders list
+  .tx-insiders-list {
+    margin: 2em 0;
+    overflow: auto;
+
+    // Insiders list item
+    &__item {
+      display: block;
+      float: left;
+      width: px2rem(60px);
+      height: px2rem(60px);
+      margin: px2rem(4px);
+      overflow: hidden;
+      border-radius: 100%;
+      transform: scale(1);
+      transition:
+        color     125ms,
+        transform 125ms;
+
+      // Sponsor avatar
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: grayscale(100%);
+        transition: filter 125ms;
+      }
+
+      // Sponsor item on focus/hover
+      &:focus,
+      &:hover {
+        transform: scale(1.1);
+
+        // Sponsor avatar
+        img {
+          filter: grayscale(0%);
+        }
+      }
+
+      // Private sponsor
+      &--private {
+        color: var(--md-default-fg-color--lighter);
+        font-weight: 700;
+        font-size: px2rem(24px);
+        line-height: px2rem(60px);
+        text-align: center;
+        background: var(--md-default-fg-color--lightest);
+      }
+    }
   }
 
   // Switch buttons
@@ -37,7 +151,7 @@
     cursor: pointer;
     transition: opacity 250ms;
 
-    // Button on hover
+    // Button on focus/hover
     &:focus,
     &:hover {
       opacity: 0.75;
@@ -53,16 +167,21 @@
 
   // Two-column layout
   .tx-columns {
-    columns: 2;
 
     // Column
-    > * {
-      break-inside: avoid;
+    ol,
+    ul {
+      columns: 2;
+
+      // [mobile portrait -]: Reset columns on mobile
+      @include break-to-device(mobile portrait) {
+        columns: initial;
+      }
     }
 
-    // [mobile portrait -]: Reset columns on mobile
-    @include break-to-device(mobile portrait) {
-      columns: initial;
+    // Column item
+    li {
+      break-inside: avoid;
     }
   }
 }

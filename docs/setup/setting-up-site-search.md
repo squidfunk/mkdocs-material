@@ -6,8 +6,8 @@ template: overrides/main.html
 
 Material for MkDocs provides an excellent, client-side search implementation,
 omitting the need for the integration of third-party services, which might
-violate data privacy regulations. Moreover, with some effort, search can be
-made available [offline][1].
+be tricky to integrate to be compliant with data privacy regulations. Moreover,
+with some effort, search can be made available [offline][1].
 
   [1]: #offline-search
 
@@ -58,27 +58,29 @@ The following options are supported:
 
     The following languages are supported:
 
-    <ul class="tx-columns">
-      <li><code>ar</code> – Arabic</li>
-      <li><code>da</code> – Danish</li>
-      <li><code>du</code> – Dutch</li>
-      <li><code>en</code> – English</li>
-      <li><code>fi</code> – Finnish</li>
-      <li><code>fr</code> – French</li>
-      <li><code>de</code> – German</li>
-      <li><code>hu</code> – Hungarian</li>
-      <li><code>it</code> – Italian</li>
-      <li><code>ja</code> – Japanese</li>
-      <li><code>no</code> – Norwegian</li>
-      <li><code>pt</code> – Portuguese</li>
-      <li><code>ro</code> – Romanian</li>
-      <li><code>ru</code> – Russian</li>
-      <li><code>es</code> – Spanish</li>
-      <li><code>sv</code> – Swedish</li>
-      <li><code>th</code> – Thai</li>
-      <li><code>tr</code> – Turkish</li>
-      <li><code>vi</code> – Vietnamese</li>
-    </ul>
+    <div class="tx-columns" markdown="1">
+
+    - `ar` – Arabic
+    - `da` – Danish
+    - `du` – Dutch
+    - `en` – English
+    - `fi` – Finnish
+    - `fr` – French
+    - `de` – German
+    - `hu` – Hungarian
+    - `it` – Italian
+    - `ja` – Japanese
+    - `no` – Norwegian
+    - `pt` – Portuguese
+    - `ro` – Romanian
+    - `ru` – Russian
+    - `es` – Spanish
+    - `sv` – Swedish
+    - `th` – Thai
+    - `tr` – Turkish
+    - `vi` – Vietnamese
+
+    </div>
 
     _Material for MkDocs also tries to support languages that are not part of
     this list by choosing the stemmer yielding the best result automatically_.
@@ -149,19 +151,19 @@ theme:
     - search.suggest
 ```
 
-Searching for [ :material-magnify: ^^code high^^ ] yields [ :material-magnify:
-^^code highlighting^^ ] as a suggestion:
+Searching for ^^code high^^ yields ^^code highlighting^^ as a suggestion:
 
-[![Search suggestions][9]][9]
-
-[Try this feature][10]{: .md-button .md-button--primary }
-
-_This feature is enabled on the [official documentation][10] built with
-Insiders._
+<figure markdown="1">
+  [![Search suggestions][9]][9]
+  <figcaption markdown="1">
+    A demo is worth a thousand words — check it out at
+    [squidfunk.github.io/mkdocs-material-insiders][10]
+  </figcaption>
+</figure>
 
   [8]: ../insiders.md
   [9]: ../assets/screenshots/search-suggestions.png
-  [10]: https://squidfunk.github.io/mkdocs-material-insiders/setup/setting-up-site-search
+  [10]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/?q=code+high
 
 ### Search highlighting
 
@@ -180,14 +182,15 @@ theme:
     - search.highlight
 ```
 
-Searching for [ :material-magnify: ^^code blocks^^ ] yields:
+Searching for ^^code blocks^^ yields:
 
-[![Search highlighting][11]][11]
-
-[Try this feature][12]{: .md-button .md-button--primary }
-
-_This feature is enabled on the [official documentation][12] built with
-Insiders._
+<figure markdown="1">
+  [![Search highlighting][11]][11]
+  <figcaption markdown="1">
+    A demo is worth a thousand words — check it out at
+    [squidfunk.github.io/mkdocs-material-insiders][12]
+  </figcaption>
+</figure>
 
   [11]: ../assets/screenshots/search-highlighting.png
   [12]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/?h=code+blocks
@@ -204,7 +207,7 @@ combination with @squidfunk's [iframe-worker][15] polyfill.
 
 For setup instructions, refer to the [official documentation][16].
 
-  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L368-L369
+  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
   [14]: https://github.com/wilhelmer/mkdocs-localsearch/
   [15]: https://github.com/squidfunk/iframe-worker
   [16]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5

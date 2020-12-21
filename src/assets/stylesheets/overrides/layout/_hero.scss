@@ -24,29 +24,54 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Landing page container
+.tx-container {
+  padding-top: px2rem(20px);
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(0, 0%, 100%, 1)' /></svg>") no-repeat bottom,
+    linear-gradient(
+      to bottom,
+      var(--md-primary-fg-color),
+      hsla(280, 67%, 55%, 1) 99%,
+      var(--md-default-bg-color) 99%
+    );
+
+  // Adjust background for slate theme
+  [data-md-color-scheme="slate"] & {
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(232, 15%, 21%, 1)' /></svg>") no-repeat bottom,
+      linear-gradient(
+        to bottom,
+        var(--md-primary-fg-color),
+        hsla(280, 67%, 55%, 1) 99%,
+        var(--md-default-bg-color) 99%
+      );
+  }
+}
+
 // Landing page hero
 .tx-hero {
   margin: 0 px2rem(16px);
   color: var(--md-primary-bg-color);
 
-  // Main headline
+  // Hero headline
   h1 {
     margin-bottom: px2rem(20px);
     color: currentColor;
     font-weight: 700;
 
-    // [mobile portrait -]: Adjust headline
+    // [mobile portrait -]: Larger hero headline
     @include break-to-device(mobile portrait) {
       font-size: px2rem(28px);
     }
   }
 
-  // Ensure that blob doesn't overlap buttons
+  // Hero content
   &__content {
     padding-bottom: px2rem(120px);
   }
 
-  // [tablet landscape +]: Display content and image next to each other
+  // [tablet landscape +]: Columnar display
   @include break-from-device(tablet landscape) {
     display: flex;
     align-items: stretch;
@@ -58,7 +83,7 @@
       padding-bottom: 14vw;
     }
 
-    // Adjust order and set dimensions
+    // Hero image
     &__image {
       order: 1;
       width: px2rem(760px);
@@ -66,30 +91,30 @@
     }
   }
 
-  // [screen +]: Adjust spacing
+  // [screen +]: Columnar display and adjusted spacing
   @include break-from-device(screen) {
 
-    // Ensure the image aligns with the repository information
+    // Hero image
     &__image {
       transform: translateX(#{px2rem(160px)});
     }
   }
 
-  // Adjust spacing of buttons and invert them
+  // Button
   .md-button {
     margin-top: px2rem(10px);
     margin-right: px2rem(10px);
     color: var(--md-primary-bg-color);
 
-    // Invert hover and focus button states
-    &:hover,
-    &:focus {
+    // Button on focus/hover
+    &:focus,
+    &:hover {
       color: var(--md-default-bg-color);
       background-color: var(--md-accent-fg-color);
       border-color: var(--md-accent-fg-color);
     }
 
-    // Invert primary button
+    // Primary button
     &--primary {
       color: hsla(280deg, 37%, 48%, 1);
       background-color: var(--md-primary-bg-color);
