@@ -40,9 +40,16 @@ This will automatically install compatible versions of all dependencies:
 Material for MkDocs always strives to support the latest versions, so there's
 no need to install those packages separately.
 
-_Note that in order to install [Material for MkDocs Insiders][8], you'll
-need to [become a sponsor][9], create a personal access token[^1], and
-set the_ `GH_TOKEN` _environment variable to the token's value._
+_Note that in order to install [Insiders][8], you'll need to [become a
+sponsor][9], create a personal access token[^1], and set the_ `GH_TOKEN`
+_environment variable to the token's value._
+
+  [^1]:
+    In order to use `pip` to install from the private repository over HTTPS, the
+    [personal access token][14] requires the [`repo`][15] scope. The creation
+    and usage of an access token is only necessary when installing Insiders
+    over HTTPS, which is the recommended way when building from within a CI/CD
+    workflow, e.g. using [GitHub Pages][16] or [GitLab Pages][17].
 
   [5]: https://python-markdown.github.io/
   [6]: https://pygments.org/
@@ -78,15 +85,22 @@ The following plugins are bundled with the Docker image:
 - [mkdocs-minify-plugin][11]
 - [mkdocs-redirects][12]
 
-_Note that in order to install [Material for MkDocs Insiders][8], you'll
-need to [become a sponsor][9], create a personal access token[^2], and
-set the_ `GH_TOKEN` _environment variable to the token's value._
+_Note that in order to install [Insiders][8], you'll need to [become a
+sponsor][9], create a personal access token[^2], and set the_ `GH_TOKEN` 
+_environment variable to the token's value._
+
+  [^2]:
+    If you want to use `docker` to pull the private Docker image from the
+    [GitHub Container Registry][18], the [personal access token][14] requires
+    the [`read:packages`][15] scope. Note that you need to login before pulling
+    the Docker image. As an example, see the [`publish`][19] workflow of the
+    Material for MkDocs repository.
 
   [10]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [11]: https://github.com/byrnereese/mkdocs-minify-plugin
   [12]: https://github.com/datarobot/mkdocs-redirects
 
-??? question "How can I add plugins to the Docker image?"
+??? question "How to add plugins to the Docker image?"
 
     Material for MkDocs bundles useful and common plugins while trying not to
     blow up the size of the official image. If the plugin you want to use is
@@ -131,28 +145,14 @@ from `git`, you must install all required dependencies yourself:
 pip install -r mkdocs-material/requirements.txt
 ```
 
-_Note that in order to install [Material for MkDocs Insiders][8], you'll
-need to [become a sponsor][9]._
+_Note that in order to install [Insiders][8], you'll need to [become a
+sponsor][9]._
 
   [13]: https://github.com/squidfunk/mkdocs-material
-
-  [^1]:
-    In order to use `pip` to install from the private repository over HTTPS, the
-    [personal access token][14] requires the [`repo`][15] scope. The creation
-    and usage of an access token is only necessary when installing Insiders
-    over HTTPS, which is the recommended way when building from within a CI/CD
-    workflow, e.g. using [GitHub Pages][16] or [GitLab Pages][17].
-
-  [^2]:
-    If you want to use `docker` to pull the private Docker image from the
-    [GitHub Container Registry][18], the [personal access token][14] requires
-    the [`read:packages`][15] scope. Note that you need to login before pulling
-    the Docker image. As an example, see the [`publish`][19] workflow of the
-    Material for MkDocs repository.
 
   [14]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
   [15]: https://docs.github.com/en/developers/apps/scopes-for-oauth-apps#available-scopes
   [16]: publishing-your-site.md#github-pages
   [17]: publishing-your-site.md#gitlab-pages
   [18]: https://docs.github.com/en/free-pro-team@latest/packages/getting-started-with-github-container-registry/about-github-container-registry
-  [19]: https://github.com/squidfunk/mkdocs-material/blob/master/.github/workflows/publish.yml#L72-L77
+  [19]: https://github.com/squidfunk/mkdocs-material/blob/master/.github/workflows/publish.yml

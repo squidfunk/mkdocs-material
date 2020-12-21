@@ -39,7 +39,7 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Remove list icon on task items
+  // Tasklist item
   .task-list-item {
     position: relative;
     list-style-type: none;
@@ -59,39 +59,35 @@
     }
   }
 
-  // Wrapper for list controls, in case custom checkboxes are enabled
-  .task-list-control {
+  // Hide native checkbox, when custom classes are enabled
+  .task-list-control [type="checkbox"] {
+    z-index: -1;
+    opacity: 0;
+  }
 
-    // Checkbox icon in unchecked state
-    .task-list-indicator::before {
-      position: absolute;
-      top: 0.15em;
-      left: px2em(-24px);
-      width: px2em(20px);
-      height: px2em(20px);
-      background-color: var(--md-default-fg-color--lightest);
-      mask-image: var(--md-tasklist-icon);
-      mask-repeat: no-repeat;
-      mask-size: contain;
-      content: "";
+  // Tasklist indicator in unchecked state
+  .task-list-indicator::before {
+    position: absolute;
+    top: 0.15em;
+    left: px2em(-24px);
+    width: px2em(20px);
+    height: px2em(20px);
+    background-color: var(--md-default-fg-color--lightest);
+    mask-image: var(--md-tasklist-icon);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    content: "";
 
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        right: px2em(-24px);
-        left: initial;
-      }
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      right: px2em(-24px);
+      left: initial;
     }
+  }
 
-    // Checkbox icon in checked state
-    [type="checkbox"]:checked + .task-list-indicator::before {
-      background-color: $clr-green-a400;
-      mask-image: var(--md-tasklist-icon--checked);
-    }
-
-    // Hide original checkbox behind icon
-    [type="checkbox"] {
-      z-index: -1;
-      opacity: 0;
-    }
+  // Tasklist indicator in checked state
+  [type="checkbox"]:checked + .task-list-indicator::before {
+    background-color: $clr-green-a400;
+    mask-image: var(--md-tasklist-icon--checked);
   }
 }

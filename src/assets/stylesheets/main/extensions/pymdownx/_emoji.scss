@@ -27,22 +27,15 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Emojis
-  img.emojione,
-  img.twemoji,
-  img.gemoji {
-    width: px2em(18px);
-    max-height: 100%;
-    vertical-align: -15%;
-  }
-
-  // Inlined SVG icons via mkdocs-material-extensions
-  span.twemoji {
+  // Emoji and icon container
+  .emojione,
+  .twemoji,
+  .gemoji {
     display: inline-block;
     height: px2em(18px);
     vertical-align: text-top;
 
-    // Icon
+    // Icon - inlined via mkdocs-material-extensions
     svg {
       width: px2em(18px);
       max-height: 100%;

@@ -34,92 +34,50 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // All footnote references
-  [id^="fnref:"] {
+  // Footnote reference container - improve alignment
+  html & [id^="fnref:"] {
     display: inline-block;
-
-    // Targeted anchor
-    &:target {
-      margin-top: -1 * px2rem(48px + 12px + 16px);
-      padding-top: px2rem(48px + 12px + 16px);
-      pointer-events: none;
-      scroll-margin-top: initial;
-    }
+    scroll-margin-top: px2rem(48px + 24px - 3px);
   }
 
-  // All footnote back references
-  [id^="fn:"] {
-
-    // Add spacing to anchor for offset
-    &::before {
-      display: none;
-      height: 0;
-      content: "";
-    }
-
-    // Reset, as we use the anchor-correction hack here.
-    &:target {
-      scroll-margin-top: initial;
-    }
-
-    // Targeted anchor
-    &:target::before {
-      display: block;
-      margin-top: -1 * px2rem(48px + 12px + 10px);
-      padding-top: px2rem(48px + 12px + 10px);
-      pointer-events: none;
-    }
-  }
-
-  // Footnotes extension
+  // Footnote container
   .footnote {
     color: var(--md-default-fg-color--light);
     font-size: px2rem(12.8px);
 
-    // Remove additional spacing on footnotes
+    // Footnote list - omit left indentation
     ol {
       margin-left: 0;
     }
 
-    // Footnote
+    // Footnote list item
     li {
       transition: color 125ms;
 
-      // Darken color for targeted footnote
+      // Darken color on target
       &:target {
         color: var(--md-default-fg-color);
       }
 
-      // Remove spacing on first element
-      :first-child {
-        margin-top: 0;
-      }
-
-      // Make back references visible on container hover
+      // Show backreferences on footnote hover
       &:hover  .footnote-backref,
       &:target .footnote-backref {
         transform: translateX(0);
         opacity: 1;
       }
 
-      // Hovered back reference
-      &:hover  .footnote-backref:hover {
-        color: var(--md-accent-fg-color);
+      // Adjust spacing on first child
+      > :first-child {
+        margin-top: 0;
       }
     }
   }
 
-  // Footnote reference
-  .footnote-ref {
-    display: inline-block;
-    pointer-events: initial;
-  }
-
-  // Footnote back reference
+  // Footnote backreference
   .footnote-backref {
     display: inline-block;
     color: var(--md-typeset-a-color);
-    // Hack: remove Unicode arrow for icon
+    // Hack: omit Unicode arrow for replacement with icon
     font-size: 0;
     vertical-align: text-bottom;
     transform: translateX(px2rem(5px));
@@ -129,12 +87,24 @@
       transform 250ms 250ms,
       opacity   125ms 250ms;
 
+    // [print]: Show footnote backreferences
+    @media print {
+      color: var(--md-typeset-a-color);
+      transform: translateX(0);
+      opacity: 1;
+    }
+
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       transform: translateX(px2rem(-5px));
     }
 
-    // Back reference icon
+    // Adjust color on hover
+    &:hover {
+      color: var(--md-accent-fg-color);
+    }
+
+    // Footnote backreference icon
     &::before {
       display: inline-block;
       width: px2rem(16px);
@@ -153,13 +123,6 @@
           transform: scaleX(-1)
         }
       }
-    }
-
-    // Always show for print
-    @media print {
-      color: var(--md-typeset-a-color);
-      transform: translateX(0);
-      opacity: 1;
     }
   }
 }

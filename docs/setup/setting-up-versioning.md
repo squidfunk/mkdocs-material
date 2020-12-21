@@ -33,11 +33,13 @@ extra:
 This will render a version selector in the header next to the title of your
 project:
 
-[![Version selection][3]][3]
-
-[Try this feature][4]{: .md-button .md-button--primary }
-
-_This feature is enabled in the [versioning example][4] built with Insiders._
+<figure markdown="1">
+  [![Version selection][3]][3]
+  <figcaption markdown="1">
+    A demo is worth a thousand words — check it out at
+    [squidfunk.github.io/mkdocs-material-example-versioning][4]
+  </figcaption>
+</figure>
 
 !!! quote "[Why use mike?][5]"
 
@@ -52,7 +54,7 @@ _This feature is enabled in the [versioning example][4] built with Insiders._
     to particularly notable versions. This makes it easy to make permalinks to
     whatever version of the documentation you want to direct people to.
 
-_Note that you don't need to run `mike install-extras` as noted in the
+_Note that you don't need to run_ `mike install-extras` _as noted in the
 [official documentation][6], as [mike][1] is now natively integrated with
 Material for MkDocs._
 

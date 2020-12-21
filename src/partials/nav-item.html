@@ -20,25 +20,48 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Determine class according to level -->
+<!-- Retrieve features from configuration -->
+{% set features = config.theme.features or [] %}
+
+<!-- Determine class according to state -->
 {% set class = "md-nav__item" %}
 {% if nav_item.active %}
-  {% set class = "md-nav__item md-nav__item--active" %}
+  {% set class = class ~ " md-nav__item--active" %}
 {% endif %}
 
 <!-- Main navigation item with nested items -->
 {% if nav_item.children %}
+
+  <!-- Determine whether to render item as a section -->
+  {% if "navigation.sections" in features and level == 1 + (
+    "navigation.tabs" in features
+  ) %}
+    {% set class = class ~ " md-nav__item--section" %}
+  {% endif %}
+
+  <!-- Render item with nested items -->
   <li class="{{ class }} md-nav__item--nested">
 
     <!-- Active checkbox expands items contained within nested section -->
     {% set checked = "checked" if nav_item.active %}
-    <input
-      class="md-nav__toggle md-toggle"
-      data-md-toggle="{{ path }}"
-      type="checkbox"
-      id="{{ path }}"
-      {{ checked }}
-    />
+    {% if "navigation.expand" in features and not checked %}
+      <input
+        class="md-nav__toggle md-toggle"
+        data-md-toggle="{{ path }}"
+        data-md-state="indeterminate"
+        type="checkbox"
+        id="{{ path }}"
+        checked
+      />
+    {% else %}
+      <input
+        class="md-nav__toggle md-toggle"
+        data-md-toggle="{{ path }}"
+        type="checkbox"
+        id="{{ path }}"
+        {{ checked }}
+      />
+    {% endif %}
 
     <!-- Expand active pages -->
     <label class="md-nav__link" for="{{ path }}">

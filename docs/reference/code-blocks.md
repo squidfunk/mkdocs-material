@@ -380,8 +380,8 @@ override it as part of your additional stylesheet:
 }
 ```
 
-  [22]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss#L60-L73
+  [22]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss#
   [23]: #use-pygments
   [24]: ../setup/changing-the-colors.md#color-scheme
   [25]: https://pygments.org/docs/tokens/#literals
-  [26]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_codehilite.scss#L42
+  [26]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_codehilite.scss

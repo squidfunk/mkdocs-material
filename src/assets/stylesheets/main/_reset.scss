@@ -20,8 +20,6 @@
 /// DEALINGS
 ////
 
-// stylelint-disable no-duplicate-selectors
-
 // ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
@@ -45,12 +43,6 @@ body {
   margin: 0;
 }
 
-// Reset horizontal rules in FF
-hr {
-  box-sizing: content-box;
-  overflow: visible;
-}
-
 // Reset tap outlines on iOS and Android
 a,
 button,
@@ -65,6 +57,16 @@ a {
   text-decoration: none;
 }
 
+// Normalize horizontal separator styles
+hr {
+  display: block;
+  box-sizing: content-box;
+  height: px2rem(1px);
+  padding: 0;
+  overflow: visible;
+  border: 0;
+}
+
 // Normalize font-size in all browsers
 small {
   font-size: 80%;
@@ -76,7 +78,7 @@ sup {
   line-height: 1em;
 }
 
-// Remove borders on images
+// Remove border on image
 img {
   border-style: none;
 }
@@ -90,7 +92,7 @@ table {
 // Reset table cell styles
 td,
 th {
-  font-weight: normal; // stylelint-disable-line
+  font-weight: 400;
   vertical-align: top;
 }
 

@@ -27,7 +27,7 @@
 // Announcement bar
 .md-announce {
 
-  // Preserve link colors
+  // Text link, also on focus/hover
   a,
   a:focus,
   a:hover {
@@ -42,6 +42,5 @@
   // Twitter icon
   .twitter {
     margin-left: .2em;
-    color: #00ACEE;
   }
 }

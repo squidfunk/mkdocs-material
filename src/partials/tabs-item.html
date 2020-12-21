@@ -20,44 +20,36 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Home page -->
-{% if nav_item.is_homepage or nav_item.url == "index.html" %}
-  <li class="md-tabs__item">
-    {% set class = "md-tabs__link" %}
-    {% if not page.ancestors | length and nav | selectattr("url", page.url) %}
-      {% set class = "md-tabs__link md-tabs__link--active" %}
-    {% endif %}
-    <a href="{{ nav_item.url | url }}" class="{{ class }}">
-      {{ nav_item.title }}
-    </a>
-  </li>
+<!-- Determine class according to state -->
+{% if not class %}
+  {% set class = "md-tabs__link" %}
+  {% if nav_item.active %}
+    {% set class = class ~ " md-tabs__link--active" %}
+  {% endif %}
+{% endif %}
 
 <!-- Main navigation item with nested items -->
-{% elif nav_item.children and nav_item.children | length > 0 %}
-  {% set title = title | default(nav_item.title) %}
+{% if nav_item.children %}
+  {% set title = title | d(nav_item.title) %}
+  {% set nav_item = nav_item.children | first %}
 
-  <!-- Recurse, if the first item has nested items -->
-  {% if (nav_item.children | first).children %}
-    {% set nav_item = nav_item.children | first %}
+  <!-- Recurse, if the first item has further nested items -->
+  {% if nav_item.children %}
     {% include "partials/tabs-item.html" %}
 
   <!-- Render item -->
   {% else %}
     <li class="md-tabs__item">
-      {% set class = "md-tabs__link" %}
-      {% if nav_item.active %}
-        {% set class = "md-tabs__link md-tabs__link--active" %}
-      {% endif %}
-      <a href="{{ (nav_item.children | first).url | url }}" class="{{ class }}">
+      <a href="{{ nav_item.url | url }}" class="{{ class }}">
         {{ title }}
       </a>
     </li>
   {% endif %}
 
-<!-- Main navigation item with external link -->
-{% elif nav_item.url.startswith("http") %}
+<!-- Main navigation item -->
+{% else %}
   <li class="md-tabs__item">
-    <a href="{{ nav_item.url | url }}" class="md-tabs__link">
+    <a href="{{ nav_item.url | url }}" class="{{ class }}">
       {{ nav_item.title }}
     </a>
   </li>

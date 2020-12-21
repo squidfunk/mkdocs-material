@@ -21,55 +21,34 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Variables
-// ----------------------------------------------------------------------------
-
-// Active (toggled) drawer
-$md-toggle__drawer--checked:
-  "[data-md-toggle=\"drawer\"]:checked ~ .md-container";
-
-// ----------------------------------------------------------------------------
-// Keyframes
-// ----------------------------------------------------------------------------
-
-// Activate scroll snapping with delay
-@keyframes md-sidebar__scrollwrap--hack {
-  0%, 99% {
-    scroll-snap-type: none;
-  }
-
-  100% {
-    scroll-snap-type: y mandatory;
-  }
-}
-
-// ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
-// Sidebar container
+// Sidebar
 .md-sidebar {
   position: sticky;
   top: px2rem(48px);
+  flex-shrink: 0;
   align-self: flex-start;
   width: px2rem(242px);
   height: 0;
   padding: px2rem(24px) 0;
 
-  // Hide for print
+  // [print]: Hide sidebar
   @media print {
     display: none;
   }
 
-  // [tablet -]: Convert navigation to drawer
+  // [tablet -]: Show navigation as drawer
   @include break-to-device(tablet) {
 
-    // Render primary sidebar as a slideout container
+    // Primary sidebar with navigation
     &--primary {
       position: fixed;
       top: 0;
       left: px2rem(-242px);
       z-index: 3;
+      display: block;
       width: px2rem(242px);
       height: 100%;
       background-color: var(--md-default-bg-color);
@@ -84,8 +63,8 @@ $md-toggle__drawer--checked:
         left: initial;
       }
 
-      // Expanded drawer
-      #{$md-toggle__drawer--checked} & {
+      // Show sidebar when drawer is active
+      [data-md-toggle="drawer"]:checked ~ .md-container & {
         @include z-depth(8);
 
         transform: translateX(px2rem(242px));
@@ -96,18 +75,25 @@ $md-toggle__drawer--checked:
         }
       }
 
-      // Hide overflow for nested navigation
+      // Stretch scroll wrapper for primary sidebar
       .md-sidebar__scrollwrap {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        scroll-snap-type: none;
         overflow: hidden;
       }
     }
   }
 
-  // [screen +]: Convert navigation to sidebar
+  // [screen +]: Show navigation as sidebar
   @include break-from-device(screen) {
     height: 0;
 
-    // Normal sticky behavior, if JavaScript is not available.
+    // [no-js]: Switch to native sticky behavior
     .no-js & {
       height: auto;
     }
@@ -118,14 +104,18 @@ $md-toggle__drawer--checked:
     display: none;
     order: 2;
 
-    // [tablet landscape +]: Show table of contents next to body copy
+    // [tablet landscape +]: Show table of contents as sidebar
     @include break-from-device(tablet landscape) {
-      display: block;
       height: 0;
 
-      // Normal sticky behavior, if JavaScript is not available.
+      // [no-js]: Switch to native sticky behavior
       .no-js & {
         height: auto;
+      }
+
+      // Sidebar is visible
+      &:not([hidden]) {
+        display: block;
       }
 
       // Ensure smooth scrolling on iOS
@@ -135,58 +125,68 @@ $md-toggle__drawer--checked:
     }
   }
 
-  // Wrapper for scrolling on overflow
+  // Sidebar scroll wrapper
   &__scrollwrap {
     margin: 0 px2rem(4px);
     overflow-y: auto;
-    // Hack: reduce jitter
+    // Hack: promote to own layer to reduce jitter
     backface-visibility: hidden;
-    // Override Firefox scrollbar style
+    // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
+    // to the bottom if `scroll-snap-type` is set on the initial render. For
+    // this reason, we disable scroll snapping until this is resolved (#1667).
+    // scroll-snap-type: y mandatory;
     scrollbar-width: thin;
     scrollbar-color: var(--md-default-fg-color--lighter) transparent;
 
-    // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
-    // to the bottom if `scroll-snap-type` is set on the initial render. For
-    // this reason, we use an animation to set scroll snaping with a slight
-    // delay, which seems to fix the issue (#1667).
-    .js & {
-      animation: md-sidebar__scrollwrap--hack 1000ms forwards;
-    }
-
-    // [tablet -]: Adjust margins
-    @include break-to-device(tablet) {
-
-      // Stretch scrollwrap for primary sidebar
-      .md-sidebar--primary & {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: 0;
-        scroll-snap-type: none;
-      }
-    }
-
-    // Override Firefox scrollbar hover color
+    // Sidebar scroll wrapper on hover
     &:hover {
       scrollbar-color: var(--md-accent-fg-color) transparent;
     }
 
-    // Override native scrollbar styles
+    // Webkit scrollbar
     &::-webkit-scrollbar {
       width: px2rem(4px);
       height: px2rem(4px);
     }
 
-    // Scrollbar thumb
+    // Webkit scrollbar thumb
     &::-webkit-scrollbar-thumb {
       background-color: var(--md-default-fg-color--lighter);
 
-      // Hovered scrollbar thumb
+      // Webkit scrollbar thumb on hover
       &:hover {
         background-color: var(--md-accent-fg-color);
       }
+    }
+  }
+}
+
+// [tablet -]: Show overlay on active drawer
+@include break-to-device(tablet) {
+
+  // Sidebar overlay
+  .md-overlay {
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    width: 0;
+    height: 0;
+    background-color: hsla(0, 0%, 0%, 0.54);
+    opacity: 0;
+    transition:
+      width     0ms 250ms,
+      height    0ms 250ms,
+      opacity 250ms;
+
+    // Show overlay when drawer is active
+    [data-md-toggle="drawer"]:checked ~ & {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      transition:
+        width     0ms,
+        height    0ms,
+        opacity 250ms;
     }
   }
 }

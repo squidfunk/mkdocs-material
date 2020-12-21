@@ -55,6 +55,7 @@ Markdown document, delimited by a blank line which ends the YAML context.
 ### Selective integration
 
 [:octicons-file-code-24: Source][2] ·
+:octicons-note-24: Metadata ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 If the [Metadata][7] extension is enabled, you can disable or enable Disqus for
@@ -96,6 +97,6 @@ In order to integrate another JavaScript-based comment system provider, you can
 {% endblock %}
 ```
 
-  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L325-L328
+  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
   [9]: ../customization.md#extending-the-theme
   [10]: ../customization.md#overriding-blocks

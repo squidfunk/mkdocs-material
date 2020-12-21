@@ -24,58 +24,56 @@ theme:
 
 The following languages are supported:
 
-<ul class="tx-columns">
-  <li><code>af</code> – Afrikaans</li>
-  <li><code>ar</code> – Arabic</li>
-  <li><code>bn</code> – Bengali (Bangla)</li>
-  <li><code>ca</code> – Catalan</li>
-  <li><code>cs</code> – Czech</li>
-  <li><code>da</code> – Danish</li>
-  <li><code>de</code> – German</li>
-  <li><code>en</code> – English</li>
-  <li><code>eo</code> – Esperanto</li>
-  <li><code>es</code> – Spanish</li>
-  <li><code>et</code> – Estonian</li>
-  <li><code>fa</code> – Persian (Farsi)</li>
-  <li><code>fi</code> – Finnish</li>
-  <li><code>fr</code> – French</li>
-  <li><code>gl</code> – Galician</li>
-  <li><code>gr</code> – Greek</li>
-  <li><code>he</code> – Hebrew</li>
-  <li><code>hi</code> – Hindi</li>
-  <li><code>hr</code> – Croatian</li>
-  <li><code>hu</code> – Hungarian</li>
-  <li><code>id</code> – Indonesian</li>
-  <li><code>it</code> – Italian</li>
-  <li><code>ja</code> – Japanese</li>
-  <li><code>ka</code> – Georgian</li>
-  <li><code>kr</code> – Korean</li>
-  <li><code>my</code> – Burmese</li>
-  <li><code>nl</code> – Dutch</li>
-  <li><code>nn</code> – Norwegian (Nynorsk)</li>
-  <li><code>no</code> – Norwegian</li>
-  <li><code>pl</code> – Polish</li>
-  <li><code>pt</code> – Portuguese</li>
-  <li><code>ro</code> – Romanian</li>
-  <li><code>ru</code> – Russian</li>
-  <li><code>sh</code> – Serbo-Croatian</li>
-  <li><code>si</code> – Slovenian</li>
-  <li><code>sk</code> – Slovak</li>
-  <li><code>sr</code> – Serbian</li>
-  <li><code>sv</code> – Swedish</li>
-  <li><code>th</code> – Thai</li>
-  <li><code>tr</code> – Turkish</li>
-  <li><code>uk</code> – Ukrainian</li>
-  <li><code>vi</code> – Vietnamese</li>
-  <li><code>zh</code> – Chinese (Simplified)</li>
-  <li><code>zh-Hant</code> – Chinese (Traditional)</li>
-  <li><code>zh-TW</code> – Chinese (Taiwanese)</li>
-  <li>
-    <a href="https://bit.ly/38F5RCa">
-      Add language
-    </a>
-  </li>
-</ul>
+<div class="tx-columns" markdown="1">
+
+- `af` – Afrikaans
+- `ar` – Arabic
+- `bn` – Bengali (Bangla)
+- `ca` – Catalan
+- `cs` – Czech
+- `da` – Danish
+- `de` – German
+- `en` – English
+- `eo` – Esperanto
+- `es` – Spanish
+- `et` – Estonian
+- `fa` – Persian (Farsi)
+- `fi` – Finnish
+- `fr` – French
+- `gl` – Galician
+- `gr` – Greek
+- `he` – Hebrew
+- `hi` – Hindi
+- `hr` – Croatian
+- `hu` – Hungarian
+- `id` – Indonesian
+- `it` – Italian
+- `ja` – Japanese
+- `ka` – Georgian
+- `kr` – Korean
+- `my` – Burmese
+- `nl` – Dutch
+- `nn` – Norwegian (Nynorsk)
+- `no` – Norwegian
+- `pl` – Polish
+- `pt` – Portuguese
+- `ro` – Romanian
+- `ru` – Russian
+- `sh` – Serbo-Croatian
+- `si` – Slovenian
+- `sk` – Slovak
+- `sr` – Serbian
+- `sv` – Swedish
+- `th` – Thai
+- `tr` – Turkish
+- `uk` – Ukrainian
+- `vi` – Vietnamese
+- `zh` – Chinese (Simplified)
+- `zh-Hant` – Chinese (Traditional)
+- `zh-TW` – Chinese (Taiwanese)
+- [Add language](https://bit.ly/38F5RCa)
+
+</div>
 
 _Note that some languages will produce unreadable anchor links, due to the way
 the default slug function works. Consider using a Unicode-aware slug function,
@@ -97,39 +95,29 @@ can be added to the header next to the search bar. Languages can be defined via
 ``` yaml
 extra:
   alternate:
+
+    # Switch to English
     - name: English
-      link: https://squidfunk.github.io/mkdocs-material-insiders/en/
+      link: <your-site>/en/
       lang: en
+
+    # Switch to German
     - name: Deutsch
-      link: https://squidfunk.github.io/mkdocs-material-insiders/de/
+      link: <your-site>/de/
       lang: de
+
+    # Switch to Japanese
     - name: 日本語
-      link: https://squidfunk.github.io/mkdocs-material-insiders/jp/
-      lang: jp
+      link: <your-site>/ja/
+      lang: ja
 ```
 
 This will render a language selector in the header next to the search bar:
 
-  [![Language selection][4]][4]
+[![Language selection][4]][4]
 
   [3]: ../insiders.md
   [4]: ../assets/screenshots/language-selection.png
-
-This assumes that your project is structured into multiple subfolders, each of
-which contain the entire documentation for a given language, e.g.:
-
-``` sh
-.
-├─ en/
-│  ├─ docs/
-│  └─ mkdocs.yml
-├─ de/
-│  ├─ docs/
-│  └─ mkdocs.yml
-└─ jp/
-   ├─ docs/
-   └─ mkdocs.yml
-```
 
 ### Site search language
 
@@ -141,7 +129,7 @@ work properly. Material for MkDocs relies on [lunr-languages][6] to provide this
 functionality. See the guide detailing how to [set up site search][7] for
 more information.
 
-  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/main/index.ts#L77-L108
+  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/main/index.ts
   [6]: https://github.com/MihaiValentin/lunr-languages
   [7]: setting-up-site-search.md
 
@@ -159,8 +147,7 @@ theme:
   direction: ltr
 ```
 
-:material-cursor-default-click-outline: Click on a tile to change the
-directionality:
+Click on a tile to change the directionality:
 
 <div class="tx-switch">
   <button data-md-dir="ltr"><code>ltr</code></button>
@@ -179,7 +166,7 @@ directionality:
   })
 </script>
 
-  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L185
+  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
 
 ## Customization
 

@@ -13,7 +13,9 @@ enable site-wide glossaries.
 
 ### Abbreviations
 
-The [Abbreviations][1] extension, which is part of the standard Markdown
+[:octicons-file-code-24: Source][1] · [:octicons-workflow-24: Extension][2]
+
+The [Abbreviations][2] extension, which is part of the standard Markdown
 library, allows to __add additional content to parts of the text which are then
 shown on hover__, e.g. for glossaries:
 
@@ -22,11 +24,12 @@ markdown_extensions:
   - abbr
 ```
 
-  [1]: https://python-markdown.github.io/extensions/abbreviations/
+  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss
+  [2]: https://python-markdown.github.io/extensions/abbreviations/
 
 ### Snippets
 
-The [Snippets][2] extension, which is part of [Python Markdown Extensions][3], 
+The [Snippets][3] extension, which is part of [Python Markdown Extensions][4], 
 allows to __insert content from other files__ or other, regular content, and can
 be enabled via `mkdocs.yml`:
 
@@ -35,15 +38,15 @@ markdown_extensions:
   - pymdownx.snippets
 ```
 
-  [2]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
-  [3]: https://facelessuser.github.io/pymdown-extensions/
+  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
+  [4]: https://facelessuser.github.io/pymdown-extensions/
 
 ## Usage
 
 ### Adding abbreviations
 
-When the [Abbreviations][4] extension is enabled, abbreviations can be defined
-with a special syntax similar to URLs and [footnotes][5] at any point in the
+When the [Abbreviations][5] extension is enabled, abbreviations can be defined
+with a special syntax similar to URLs and [footnotes][6] at any point in the
 Markdown document.
 
 _Example_:
@@ -62,12 +65,12 @@ The HTML specification is maintained by the W3C.
 *[HTML]: Hyper Text Markup Language
 *[W3C]: World Wide Web Consortium
 
-  [4]: #abbreviations_1
-  [5]: footnotes.md
+  [5]: #abbreviations_1
+  [6]: footnotes.md
 
 ### Adding a glossary
 
-When [Snippets][6] is enabled, content from other files can be embedded, which
+When [Snippets][7] is enabled, content from other files can be embedded, which
 is especially useful to include abbreviations from a central file – a glossary –
 and embed them into any other file.
 
@@ -96,4 +99,4 @@ _Remember to locate the Markdown file containing the definitions outside of the_
 `docs` _folder (here_ `includes` _is used), or MkDocs may complain about an 
 unreferenced file._
 
-  [6]: #snippets
+  [7]: #snippets

@@ -24,14 +24,14 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Application header (stays always on top)
+// Header - by default, the header will be sticky and stay always on top of the
+// viewport. If this behavior is not desired, just set `position: static`.
 .md-header {
   position: sticky;
   top: 0;
   right: 0;
   left: 0;
   z-index: 2;
-  height: px2rem(48px);
   color: var(--md-primary-bg-color);
   background-color: var(--md-primary-fg-color);
   // Hack: reduce jitter by adding a transparent box shadow of the same size
@@ -43,63 +43,73 @@
     color            250ms,
     background-color 250ms;
 
-  // Always hide shadow, in case JavaScript is not available
-  .no-js & {
-    box-shadow: none;
-    transition: none;
+  // [print]: Hide header
+  @media print {
+    display: none;
   }
 
-  // Show and animate shadow
+  // Header in shadow state, i.e. shadow is visible
   &[data-md-state="shadow"] {
     box-shadow:
       0 0           px2rem(4px) rgba(0, 0, 0, 0.1),
       0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0.2);
     transition:
+      transform        250ms cubic-bezier(0.1, 0.7, 0.1, 1),
       color            250ms,
       background-color 250ms,
       box-shadow       250ms;
   }
 
-  // Hide for print
-  @media print {
-    display: none;
+  // Header in hidden state, i.e. moved out of sight
+  &[data-md-state="hidden"] {
+    transform: translateY(-100%);
+    transition:
+      transform        250ms cubic-bezier(0.8, 0, 0.6, 1),
+      color            250ms,
+      background-color 250ms,
+      box-shadow       250ms;
   }
 }
 
-// Navigation within header
+// Header navigation - if the header exceeds the default height of `48px`, i.e.
+// by adding a bigger logo, the items are agned at the center
 .md-header-nav {
   display: flex;
+  align-items: center;
   padding: 0 px2rem(4px);
 
-  // Icon buttons
+  // Header navigation button
   &__button {
     position: relative;
     z-index: 1;
-    display: block;
+    display: inline-block;
     margin: px2rem(4px);
     padding: px2rem(8px);
+    color: currentColor;
+    vertical-align: middle;
     cursor: pointer;
     transition: opacity 250ms;
 
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-
-      // Flip icon vertically
-      svg {
-        transform: scaleX(-1);
-      }
-    }
-
-    // Focused or hovered icon
+    // Button on focus/hover
     &:focus,
     &:hover {
       opacity: 0.7;
     }
 
-    // Logo
+    // Hide outline for pointer devices
+    &:not(.focus-visible) {
+      outline: none;
+    }
+
+    // Button with logo, pointing to `config.site_url`
     &.md-logo {
       margin: px2rem(4px);
       padding: px2rem(8px);
+
+      // [tablet -]: Hide button
+      @include break-to-device(tablet) {
+        display: none;
+      }
 
       // Image or icon
       img,
@@ -111,48 +121,49 @@
       }
     }
 
-    // Hide search icon, if JavaScript is not available.
-    .no-js &[for="__search"] {
-      display: none;
-    }
+    // Button for search
+    &[for="__search"] {
 
-    // [tablet landscape +]: Hide the search button
-    @include break-from-device(tablet landscape) {
-
-      // Search button
-      &[for="__search"] {
+      // [tablet landscape +]: Hide button
+      @include break-from-device(tablet landscape) {
         display: none;
+      }
+
+      // [no-js]: Hide button
+      .no-js & {
+        display: none
+      }
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+
+        // Flip icon vertically
+        svg {
+          transform: scaleX(-1);
+        }
       }
     }
 
-    // [tablet -]: Hide the logo
-    @include break-to-device(tablet) {
+    // Button for drawer
+    &[for="__drawer"] {
 
-      // Logo
-      &.md-logo {
-        display: none;
-      }
-    }
-
-    // [screen +]: Hide the menu button
-    @include break-from-device(screen) {
-
-      // Menu button
-      &[for="__drawer"] {
+      // [screen +]: Hide button
+      @include break-from-device(screen) {
         display: none;
       }
     }
   }
 
-  // Header topics
+  // Header navigation topic
   &__topic {
     position: absolute;
-    width: 100%;
+    display: flex;
+    max-width: 100%;
     transition:
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   150ms;
 
-    // Page title
+    // Second header topic - title of the current page
     & + & {
       z-index: -1;
       transform: translateX(px2rem(25px));
@@ -167,26 +178,18 @@
         transform: translateX(px2rem(-25px));
       }
     }
-
-    // Induce ellipsis, if no JavaScript is available
-    .no-js & {
-      position: initial;
-    }
-
-    // Hide page title as it is invisible anyway and will overflow the header
-    .no-js & + & {
-      display: none;
-    }
   }
 
-  // Header title - set line height to match icon for correct alignment
+  // Header navigation title
   &__title {
     flex-grow: 1;
-    padding: 0 px2rem(20px);
+    height: px2rem(48px);
+    margin-right: px2rem(8px);
+    margin-left: px2rem(20px);
     font-size: px2rem(18px);
     line-height: px2rem(48px);
 
-    // Show page title
+    // Header title in active state, i.e. page title is visible
     &[data-md-state="active"] .md-header-nav__topic {
       z-index: -1;
       transform: translateX(px2rem(-25px));
@@ -201,7 +204,7 @@
         transform: translateX(px2rem(25px));
       }
 
-      // Page title
+      // Second header topic - title of the current page
       & + .md-header-nav__topic {
         z-index: 0;
         transform: translateX(0);
@@ -213,7 +216,7 @@
       }
     }
 
-    // Patch ellipsis
+    // Add ellipsis in case of overflowing text
     > .md-header-nav__ellipsis {
       position: relative;
       width: 100%;
@@ -221,11 +224,11 @@
     }
   }
 
-  // Repository containing source
+  // Repository information container
   &__source {
     display: none;
 
-    // [tablet landscape +]: Show the reposistory from tablet
+    // [tablet landscape +]: Show repository information
     @include break-from-device(tablet landscape) {
       display: block;
       width: px2rem(234px);
@@ -239,7 +242,7 @@
       }
     }
 
-    // [screen +]: Increase spacing of search bar
+    // [screen +]: Adjust spacing of search bar
     @include break-from-device(screen) {
       margin-left: px2rem(28px);
 

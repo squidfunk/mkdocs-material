@@ -1,7 +1,7 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% set site_url = config.site_url | default(nav.homepage.url, true) | url %}
+{% set site_url = config.site_url | d(nav.homepage.url, true) | url %}
 {% if not config.use_directory_urls and site_url[0] == site_url[-1] == "." %}
   {% set site_url = site_url ~ "/index.html" %}
 {% endif %}
@@ -14,16 +14,14 @@
       {% include ".icons/material/menu" ~ ".svg" %}
     </label>
     <div class="md-header-nav__title" data-md-component="header-title">
-      {% if config.site_name == page.title %}
-        <div class="md-header-nav__ellipsis md-ellipsis">
-          {{ config.site_name }}
-        </div>
-      {% else %}
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
             {{ config.site_name }}
           </span>
-          <span class="md-header-nav__topic md-ellipsis">
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
             {% if page and page.meta and page.meta.title %}
               {{ page.meta.title }}
             {% else %}
@@ -31,7 +29,7 @@
             {% endif %}
           </span>
         </div>
-      {% endif %}
+      </div>
     </div>
     {% if "search" in config["plugins"] %}
       <label class="md-header-nav__button md-icon" for="__search">

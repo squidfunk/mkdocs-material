@@ -27,16 +27,16 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Scroll math block on overflow
+  // Arithmatex container
   div.arithmatex {
     overflow: auto;
 
-    // [mobile -]: Stretch to whole width
+    // [mobile -]: Align with body copy
     @include break-to-device(mobile) {
       margin: 0 px2rem(-16px);
     }
 
-    // MathJax integration
+    // Arithmatex content
     > * {
       width: min-content;
       margin: 1em auto !important;

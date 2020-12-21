@@ -24,30 +24,46 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Content container
+// Content area
 .md-content {
-  flex: 1;
-  max-width: 100%;
+  flex-grow: 1;
+  // Hack: we must use `overflow: auto`, so the content area is capped by the
+  // dimensions of its parent. Otherwise, long code blocks might lead to a
+  // wider content area which will break everything. This, however, induces
+  // margin collapse, which will break scroll margins. Adding a large enough
+  // scroll padding seems to do the trick, at least in Chrome and Firefox.
+  overflow: auto;
+  scroll-padding-top: px2rem(1024px);
 
-  // [tablet landscape]: Decrease horizontal width
-  @include break-at-device(tablet landscape) {
-    max-width: calc(100% - #{px2rem(242px)});
-  }
-
-  // [screen +]: Decrease horizontal width
-  @include break-from-device(screen) {
-    max-width: calc(100% - #{px2rem(242px)} * 2);
-  }
-
-  // Define spacing
+  // Content wrapper
   &__inner {
     margin: 0 px2rem(16px) px2rem(24px);
     padding-top: px2rem(12px);
 
-    // [screen +]: Increase horizontal spacing
+    // [screen +]: Adjust spacing between content area and sidebars
     @include break-from-device(screen) {
-      margin-right: px2rem(24px);
-      margin-left: px2rem(24px);
+
+      // Sidebar with navigation is visible
+      .md-sidebar--primary:not([hidden]) ~ .md-content > & {
+        margin-left: px2rem(24px);
+
+        // Adjust for right-to-left languages
+        [dir="rtl"] & {
+          margin-right: px2rem(24px);
+          margin-left: px2rem(16px);
+        }
+      }
+
+      // Sidebar with table of contents is visible
+      .md-sidebar--secondary:not([hidden]) ~ .md-content > & {
+        margin-right: px2rem(24px);
+
+        // Adjust for right-to-left languages
+        [dir="rtl"] & {
+          margin-right: px2rem(16px);
+          margin-left: px2rem(24px);
+        }
+      }
     }
 
     // Hack: add pseudo element for spacing, as the overflow of the content
@@ -58,18 +74,24 @@
       content: "";
     }
 
-    // Hack: remove bottom spacing of last element, due to margin collapse
+    // Adjust spacing on last child
     > :last-child {
       margin-bottom: 0;
     }
   }
 
-  // Button next to the title
+  // Button inside of the content area - these buttons are meant for actions on
+  // a document-level, i.e. linking to related source code files, printing etc.
   &__button {
     float: right;
     margin: px2rem(8px) 0;
     margin-left: px2rem(8px);
     padding: 0;
+
+    // [print]: Hide buttons
+    @media print {
+      display: none;
+    }
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -83,20 +105,15 @@
       }
     }
 
-    // Override default link color for icons
+    // Adjust default link color for icons
     .md-typeset & {
       color: var(--md-default-fg-color--lighter);
     }
 
-    // Align text with icon
+    // Align with body copy located next to icon
     svg {
       display: inline;
       vertical-align: top;
-    }
-
-    // Hide for print
-    @media print {
-      display: none;
     }
   }
 }

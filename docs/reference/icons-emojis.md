@@ -91,19 +91,19 @@ _Example_:
 ```
 - :material-account-circle: – `.icons/material/account-circle.svg`
 - :fontawesome-regular-laugh-wink: – `.icons/fontawesome/regular/laugh-wink.svg`
-- :octicons-octoface-16: – `.icons/octicons/octoface-16.svg`
+- :octicons-octoface-24: – `.icons/octicons/octoface-24.svg`
 ```
 
 _Result_:
 
 - :material-account-circle: – [`.icons/material/account-circle.svg`][14]
 - :fontawesome-regular-laugh-wink: – [`.icons/fontawesome/regular/laugh-wink.svg`][15]
-- :octicons-octoface-16: – [`.icons/octicons/octoface-16.svg`][16]
+- :octicons-octoface-24: – [`.icons/octicons/octoface-24.svg`][16]
 
   [13]: #emoji
   [14]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/material/account-circle.svg
   [15]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/fontawesome/regular/laugh-wink.svg
-  [16]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/octoface-16.svg
+  [16]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/octoface-24.svg
 
 #### with colors
 
@@ -178,20 +178,6 @@ and adding the dedicated CSS class to the icon:
 
 Then, simply add the CSS class to the icon.
 
-<style>
-  @keyframes heart {
-    0%, 40%, 80%, 100% {
-      transform: scale(1);
-    }
-    20%, 60% {
-      transform: scale(1.15);
-    }
-  }
-  .heart {
-    animation: heart 1000ms infinite;
-  }
-</style>
-
 _Example_:
 
 ``` markdown
@@ -200,7 +186,7 @@ _Example_:
 
 _Result_:
 
-:octicons-heart-fill-24:{: .heart }
+:octicons-heart-fill-24:{: .tx-heart }
 
   [20]: #with-colors
   [21]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation
