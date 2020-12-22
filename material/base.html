@@ -1,7 +1,7 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% import "partials/language.html" as lang with context %}
+{% import "partials/partials/language.html" as lang with context %}
 <!doctype html>
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
@@ -27,7 +27,7 @@
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-6.1.7">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-6.2.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -39,12 +39,12 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.379d0e29.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.73f7c429.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.7cb87594.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.39b8e14a.min.css' | url }}">
         {% if palette.primary %}
-          {% import "partials/palette.html" as map %}
+          {% import "partials/partials/palette.html" as map %}
           {% set primary = map.primary(
             palette.primary | replace(" ", "-") | lower
           ) %}
@@ -72,7 +72,7 @@
     {% endfor %}
     {% block analytics %}
       {% if config.google_analytics %}
-        {% include "partials/integrations/analytics.html" %}
+        {% include "partials/integrations/partials/integrations/analytipartials/language/cs.html" %}
       {% endif %}
     {% endblock %}
     {% block extrahead %}{% endblock %}
@@ -115,13 +115,13 @@
       {% endif %}
     </div>
     {% block header %}
-      {% include "partials/header.html" %}
+      {% include "partials/partials/header.html" %}
     {% endblock %}
     <div class="md-container" data-md-component="container">
       {% block hero %}{% endblock %}
       {% block tabs %}
         {% if "navigation.tabs" in features %}
-          {% include "partials/tabs.html" %}
+          {% include "partials/partials/tabs.html" %}
         {% endif %}
       {% endblock %}
       <main class="md-main" data-md-component="main">
@@ -134,7 +134,7 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    {% include "partials/nav.html" %}
+                    {% include "partials/partials/nav.html" %}
                   </div>
                 </div>
               </div>
@@ -146,7 +146,7 @@
               <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    {% include "partials/toc.html" %}
+                    {% include "partials/partials/toc.html" %}
                   </div>
                 </div>
               </div>
@@ -157,7 +157,7 @@
               {% block content %}
                 {% if page.edit_url %}
                   <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-content__button md-icon">
-                    {% include ".icons/material/pencil.svg" %}
+                    {% include ".icons/material/.icons/material/pencil.svg" %}
                   </a>
                 {% endif %}
                 {% if not "\x3ch1" in page.content %}
@@ -168,24 +168,24 @@
                   {% if page.meta.git_revision_date_localized or
                         page.meta.revision_date
                   %}
-                    {% include "partials/source-date.html" %}
+                    {% include "partials/partials/source-date.html" %}
                   {% endif %}
                 {% endif %}
               {% endblock %}
               {% block disqus %}
-                {% include "partials/integrations/disqus.html" %}
+                {% include "partials/integrations/partials/integrations/disqus.html" %}
               {% endblock %}
             </article>
           </div>
         </div>
       </main>
       {% block footer %}
-        {% include "partials/footer.html" %}
+        {% include "partials/partials/footer.html" %}
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.0ac82a11.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.4a6c075e.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.08c56446.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.6ced434e.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -213,7 +213,7 @@
           base: "{{ base_url }}",
           features: {{ features or [] | tojson }},
           search: Object.assign({
-            worker: "{{ 'assets/javascripts/worker/search.4ac00218.min.js' | url }}"
+            worker: "{{ 'assets/javascripts/worker/search.8c7e0a7e.min.js' | url }}"
           }, typeof search !== "undefined" && search)
         })
       </script>
