@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.1 <small>_ December 22, 2020</small>
+
+- Fixed all import and asset paths in templates (6.2.0 regression)
+- Downgraded webpack-asset-manifest-plugin - broke all asset paths
+
 ### 6.2.0 <small>_ December 22, 2020</small>
 
 - Added support for navigation sections
