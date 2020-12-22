@@ -156,6 +156,7 @@ the public for general availability.
 
 - [x] [Sticky navigation tabs][18]
 - [x] [Remove generator notice][19]
+- [ ] Support for index pages
 
   [18]: setup/setting-up-navigation.md#sticky-navigation-tabs
   [19]: setup/setting-up-the-footer.md#remove-generator
