@@ -14,8 +14,10 @@ to [get access to Insiders][2].
     <iframe src="https://streamable.com/e/b6ij21" allowfullscreen></iframe>
   </div>
   <figcaption markdown="1">
-    A demo is worth a thousand words — check it out at
-    [squidfunk.github.io/mkdocs-material-insiders][3]
+
+A demo is worth a thousand words — check it out at
+[squidfunk.github.io/mkdocs-material-insiders][3]
+
   </figcaption>
 </figure>
 

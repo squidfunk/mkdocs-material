@@ -34,10 +34,14 @@ This will render a version selector in the header next to the title of your
 project:
 
 <figure markdown="1">
-  [![Version selection][3]][3]
+
+[![Version selection][3]][3]
+
   <figcaption markdown="1">
-    A demo is worth a thousand words — check it out at
-    [squidfunk.github.io/mkdocs-material-example-versioning][4]
+
+A demo is worth a thousand words — check it out at
+[squidfunk.github.io/mkdocs-material-example-versioning][4]
+
   </figcaption>
 </figure>
 

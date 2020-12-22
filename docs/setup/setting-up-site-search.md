@@ -154,10 +154,14 @@ theme:
 Searching for ^^code high^^ yields ^^code highlighting^^ as a suggestion:
 
 <figure markdown="1">
-  [![Search suggestions][9]][9]
+
+[![Search suggestions][9]][9]
+
   <figcaption markdown="1">
-    A demo is worth a thousand words — check it out at
-    [squidfunk.github.io/mkdocs-material-insiders][10]
+
+A demo is worth a thousand words — check it out at
+[squidfunk.github.io/mkdocs-material-insiders][10]
+
   </figcaption>
 </figure>
 
@@ -185,10 +189,14 @@ theme:
 Searching for ^^code blocks^^ yields:
 
 <figure markdown="1">
-  [![Search highlighting][11]][11]
+
+[![Search highlighting][11]][11]
+
   <figcaption markdown="1">
-    A demo is worth a thousand words — check it out at
-    [squidfunk.github.io/mkdocs-material-insiders][12]
+
+A demo is worth a thousand words — check it out at
+[squidfunk.github.io/mkdocs-material-insiders][12]
+
   </figcaption>
 </figure>
 

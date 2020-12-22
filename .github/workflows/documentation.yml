@@ -43,7 +43,6 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install -r requirements.txt
           pip install .
           pip install \
             mkdocs-minify-plugin>=0.3 \

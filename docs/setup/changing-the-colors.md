@@ -215,10 +215,14 @@ theme:
 This will render a color palette toggle in the header next to the search bar:
 
 <figure markdown="1">
-  [![Color palette toggle][11]][11]
+
+[![Color palette toggle][11]][11]
+
   <figcaption markdown="1">
-    A demo is worth a thousand words — check it out at
-    [squidfunk.github.io/mkdocs-material-insiders][7]
+
+A demo is worth a thousand words — check it out at
+[squidfunk.github.io/mkdocs-material-insiders][7]
+
   </figcaption>
 </figure>
 
