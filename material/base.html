@@ -1,7 +1,7 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% import "partials/partials/language.html" as lang with context %}
+{% import "partials/language.html" as lang with context %}
 <!doctype html>
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
@@ -44,7 +44,7 @@
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.39b8e14a.min.css' | url }}">
         {% if palette.primary %}
-          {% import "partials/partials/palette.html" as map %}
+          {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
             palette.primary | replace(" ", "-") | lower
           ) %}
@@ -72,7 +72,7 @@
     {% endfor %}
     {% block analytics %}
       {% if config.google_analytics %}
-        {% include "partials/integrations/partials/integrations/analytipartials/language/cs.html" %}
+        {% include "partials/integrations/analytics.html" %}
       {% endif %}
     {% endblock %}
     {% block extrahead %}{% endblock %}
@@ -115,13 +115,13 @@
       {% endif %}
     </div>
     {% block header %}
-      {% include "partials/partials/header.html" %}
+      {% include "partials/header.html" %}
     {% endblock %}
     <div class="md-container" data-md-component="container">
       {% block hero %}{% endblock %}
       {% block tabs %}
         {% if "navigation.tabs" in features %}
-          {% include "partials/partials/tabs.html" %}
+          {% include "partials/tabs.html" %}
         {% endif %}
       {% endblock %}
       <main class="md-main" data-md-component="main">
@@ -134,7 +134,7 @@
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    {% include "partials/partials/nav.html" %}
+                    {% include "partials/nav.html" %}
                   </div>
                 </div>
               </div>
@@ -146,7 +146,7 @@
               <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    {% include "partials/partials/toc.html" %}
+                    {% include "partials/toc.html" %}
                   </div>
                 </div>
               </div>
@@ -157,7 +157,7 @@
               {% block content %}
                 {% if page.edit_url %}
                   <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-content__button md-icon">
-                    {% include ".icons/material/.icons/material/pencil.svg" %}
+                    {% include ".icons/material/pencil.svg" %}
                   </a>
                 {% endif %}
                 {% if not "\x3ch1" in page.content %}
@@ -168,19 +168,19 @@
                   {% if page.meta.git_revision_date_localized or
                         page.meta.revision_date
                   %}
-                    {% include "partials/partials/source-date.html" %}
+                    {% include "partials/source-date.html" %}
                   {% endif %}
                 {% endif %}
               {% endblock %}
               {% block disqus %}
-                {% include "partials/integrations/partials/integrations/disqus.html" %}
+                {% include "partials/integrations/disqus.html" %}
               {% endblock %}
             </article>
           </div>
         </div>
       </main>
       {% block footer %}
-        {% include "partials/partials/footer.html" %}
+        {% include "partials/footer.html" %}
       {% endblock %}
     </div>
     {% block scripts %}
