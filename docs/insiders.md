@@ -67,14 +67,13 @@ organization and the account that should be added as a collaborator.[^1]
 You can cancel your sponsorship anytime.[^2]
 
   [^2]:
-    All charges are processed by GitHub through Stripe. As we don't receive any
-    information regarding your payment, and GitHub doesn't offer refunds,
-    sponsorships are also non-refundable. If you cancel your sponsorship, GitHub
-    schedules a cancellation request which will become effective at the end of
-    the billing cycle, which ends at the 22nd of a month for monthly
-    sponsorships. This means that even though you cancel your sponsorship, you
-    will keep your access to Insiders as long as your cancellation isn't
-    effective.
+    If you cancel your sponsorship, GitHub schedules a cancellation request
+    which will become effective at the end of the billing cycle, which ends at
+    the 22nd of a month for monthly sponsorships. This means that even though
+    you cancel your sponsorship, you will keep your access to Insiders as long
+    as your cancellation isn't effective. All charges are processed by GitHub
+    through Stripe. As we don't receive any information regarding your payment,
+    and GitHub doesn't offer refunds, sponsorships are non-refundable.
 
 [:octicons-heart-fill-24:{: .tx-heart } &nbsp; Join our <span class="tx-insiders-count"></span> awesome sponsors][5]{: .md-button .md-button--primary .tx-insiders-button }
 
@@ -165,6 +164,7 @@ the public for general availability.
 - [ ] Improved search result summaries
 - [ ] Table of contents auto-collapse
 - [ ] Table of contents shows which sections have search results
+- [ ] Native lightbox for (inline) images
 - [ ] New layouts and styles (e.g. vertical)
 - [ ] ... and much more ...
 
