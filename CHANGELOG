@@ -1,3 +1,17 @@
+mkdocs-material-6.2.0 (2020-12-22)
+
+  * Added support for navigation sections
+  * Added support for navigation expansion
+  * Added support for integrating table of contents into navigation
+  * Added support for auto-hiding header on scroll
+  * Added support for hiding navigation and table of contents per page
+  * Added support for arbitrary items in navigation tabs
+  * Refactored navigation tabs to simplify grouping behavior
+  * Fixed anchor offset for permalinks in Safari (partial revert)
+  * Fixed #2098: Active tab sometimes not highlighted correctly
+  * Improved appearance for horizontal rulers
+  * Improved Spanish and Swedish translations
+
 mkdocs-material-6.1.7+insiders-1.13.1 (2020-12-20)
 
   * Fixed horizontal scrollbars for language and version selection

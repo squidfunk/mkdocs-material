@@ -6,6 +6,20 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.0 <small>_ December 22, 2020</small>
+
+- Added support for navigation sections
+- Added support for navigation expansion
+- Added support for integrating table of contents into navigation
+- Added support for auto-hiding header on scroll
+- Added support for hiding navigation and table of contents per page
+- Added support for arbitrary items in navigation tabs
+- Refactored navigation tabs to simplify grouping behavior
+- Fixed anchor offset for permalinks in Safari (partial revert)
+- Fixed #2098: Active tab sometimes not highlighted correctly
+- Improved appearance for horizontal rulers
+- Improved Spanish and Swedish translations
+
 ### 6.1.7 <small>_ December 6, 2020</small>
 
 - Fixed #2081: Fixed stats for private GitHub repositories
