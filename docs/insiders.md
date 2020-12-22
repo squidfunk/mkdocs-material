@@ -11,7 +11,7 @@ to [get access to Insiders][2].
 
 <figure class="tx-video" markdown="1">
   <div class="tx-video__inner">
-    <iframe src="https://streamable.com/e/b6ij21" allowfullscreen></iframe>
+    <iframe src="https://streamable.com/e/zmtb00" allowfullscreen></iframe>
   </div>
   <figcaption markdown="1">
 
