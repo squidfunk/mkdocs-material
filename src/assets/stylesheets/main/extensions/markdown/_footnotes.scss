@@ -34,10 +34,18 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Footnote reference container - improve alignment
-  html & [id^="fnref:"] {
-    display: inline-block;
-    scroll-margin-top: px2rem(48px + 24px - 3px);
+  // Footnote reference
+  [id^="fnref:"]:target {
+    scroll-margin-top: initial;
+    margin-top: -1 * px2rem(48px + 24px - 4px);
+    padding-top: px2rem(48px + 24px - 4px);
+  }
+
+  // Footnote
+  [id^="fn:"]:target {
+    scroll-margin-top: initial;
+    margin-top: -1 * px2rem(48px + 24px - 3px);
+    padding-top: px2rem(48px + 24px - 3px);
   }
 
   // Footnote container

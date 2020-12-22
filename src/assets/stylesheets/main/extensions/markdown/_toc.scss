@@ -66,7 +66,10 @@
     color: var(--md-accent-fg-color);
   }
 
-  // Adjust scroll offset for all elements with `id` attributes
+  // Adjust scroll offset for all elements with `id` attributes - general scroll
+  // margin offset for anything that can be targeted. Browser support is pretty
+  // decent by now, but Edge <79 and Safari (iOS and macOS) still don't support
+  // it properly, so we settle with a cross-browser anchor correction solution.
   :target {
     scroll-margin-top: px2rem(48px + 24px);
   }
@@ -75,11 +78,41 @@
   h1:target,
   h2:target,
   h3:target {
-    scroll-margin-top: px2rem(48px + 24px - 4px);
+    scroll-margin-top: initial;
+
+    // Anchor correction hack
+    &::before {
+      display: block;
+      margin-top: -1 * px2rem(48px + 24px - 4px);
+      padding-top: px2rem(48px + 24px - 4px);
+      content: "";
+    }
   }
 
   // Adjust scroll offset for headlines of level 4
   h4:target {
-    scroll-margin-top: px2rem(48px + 24px - 3px);
+    scroll-margin-top: initial;
+
+    // Anchor correction hack
+    &::before {
+      display: block;
+      margin-top: -1 * px2rem(48px + 24px - 3px);
+      padding-top: px2rem(48px + 24px - 3px);
+      content: "";
+    }
+  }
+
+  // Adjust scroll offset for headlines of level 5-6
+  h5:target,
+  h6:target {
+    scroll-margin-top: initial;
+
+    // Anchor correction hack
+    &::before {
+      display: block;
+      margin-top: -1 * px2rem(48px + 24px);
+      padding-top: px2rem(48px + 24px);
+      content: "";
+    }
   }
 }

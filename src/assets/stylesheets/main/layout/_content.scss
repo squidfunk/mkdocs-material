@@ -27,12 +27,12 @@
 // Content area
 .md-content {
   flex-grow: 1;
-  // Hack: we must use `overflow: auto`, so the content area is capped by the
-  // dimensions of its parent. Otherwise, long code blocks might lead to a
-  // wider content area which will break everything. This, however, induces
+  // Hack: we must use `overflow: hidden`, so the content area is capped by
+  // the dimensions of its parent. Otherwise, long code blocks might lead to
+  // a wider content area which will break everything. This, however, induces
   // margin collapse, which will break scroll margins. Adding a large enough
   // scroll padding seems to do the trick, at least in Chrome and Firefox.
-  overflow: auto;
+  overflow: hidden;
   scroll-padding-top: px2rem(1024px);
 
   // Content wrapper
