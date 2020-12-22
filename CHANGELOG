@@ -1,3 +1,7 @@
+mkdocs-material-6.2.2 (2020-12-22)
+
+  * Removed Markdown version range limit (6.2.0 regression)
+
 mkdocs-material-6.2.1 (2020-12-22)
 
   * Fixed all import and asset paths in templates (6.2.0 regression)

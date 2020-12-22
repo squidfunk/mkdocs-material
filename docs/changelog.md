@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.2 <small>_ December 22, 2020</small>
+
+- Removed Markdown version range limit (6.2.0 regression)
+
 ### 6.2.1 <small>_ December 22, 2020</small>
 
 - Fixed all import and asset paths in templates (6.2.0 regression)
