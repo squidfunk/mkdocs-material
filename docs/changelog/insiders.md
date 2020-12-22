@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.13.2 <small>_ December 22, 2020</small>
+
+- Fixed version selector + sticky tabs navigation rendering issues
+- Fixed version selector wrapping
+
 ### 1.13.1 <small>_ December 20, 2020</small>
 
 - Removed horizontal scrollbars on language and version selector

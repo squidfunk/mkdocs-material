@@ -1,3 +1,8 @@
+mkdocs-material-6.2.2+insiders-1.13.2 (2020-12-22)
+
+  * Fixed version selector + sticky tabs navigation rendering issues
+  * Fixed version selector wrapping
+
 mkdocs-material-6.2.2 (2020-12-22)
 
   * Removed Markdown version range limit (6.2.0 regression)
