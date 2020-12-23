@@ -98,7 +98,7 @@ templates can be shared among multiple pages:
 
     ``` markdown
     ---
-    template: overrides/hero.html
+    template: hero.html
     ---
     ```
 
