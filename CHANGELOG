@@ -1,3 +1,8 @@
+mkdocs-material-6.2.3 (2020-12-27)
+
+  * Added back hidden overflow on root container
+  * Fixed #2142: MathJax formulas sometimes have vertical scrollbars
+
 mkdocs-material-6.2.2+insiders-1.13.2 (2020-12-22)
 
   * Fixed version selector + sticky tabs navigation rendering issues

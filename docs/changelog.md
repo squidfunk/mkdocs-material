@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.3 <small>_ December 27, 2020</small>
+
+- Added back hidden overflow on root container
+- Fixed #2142: MathJax formulas sometimes have vertical scrollbars
+
 ### 6.2.2 <small>_ December 22, 2020</small>
 
 - Removed Markdown version range limit (6.2.0 regression)
