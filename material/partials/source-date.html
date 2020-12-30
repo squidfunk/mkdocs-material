@@ -6,9 +6,9 @@
 <div class="md-source-date">
   <small>
     {% if page.meta.git_revision_date_localized %}
-      {{ label }}: {{ page.meta.git_revision_date_localized }}
+      {{ label }} {{ page.meta.git_revision_date_localized }}
     {% elif page.meta.revision_date %}
-      {{ label }}: {{ page.meta.revision_date }}
+      {{ label }} {{ page.meta.revision_date }}
     {% endif %}
   </small>
 </div>

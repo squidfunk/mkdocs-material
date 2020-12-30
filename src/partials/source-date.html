@@ -30,11 +30,11 @@
 
     <!-- mkdocs-git-revision-date-localized-plugin -->
     {% if page.meta.git_revision_date_localized %}
-      {{ label }}: {{ page.meta.git_revision_date_localized }}
+      {{ label }} {{ page.meta.git_revision_date_localized }}
 
     <!-- mkdocs-git-revision-date-plugin -->
     {% elif page.meta.revision_date %}
-      {{ label }}: {{ page.meta.revision_date }}
+      {{ label }} {{ page.meta.revision_date }}
     {% endif %}
   </small>
 </div>

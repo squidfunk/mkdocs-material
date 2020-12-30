@@ -1,0 +1,85 @@
+<!-- User feedback -->
+{% if not page.is_homepage %}
+  <style>
+    .user-feedback-answer {
+      background-color: var(--md-accent-fg-color--transparent);
+      border-radius: .3em;
+      color: var(--codacy-neutral-600);
+      display: inline-block;
+      font: inherit;
+      font-size: .9em;
+      padding: .2em;
+      width: 6em;
+    }
+    .user-feedback-answer .svg-icon {
+      display: inline-block;
+      margin-right: .5em;
+      vertical-align: top;
+      width: 1.3em;
+    }
+    .user-feedback-answer:disabled {
+      background-color: var(--md-default-fg-color--lightest);
+    }
+    .user-feedback-answer--no {
+      margin-left: 1em;
+    }
+    .user-feedback-response {
+      display: none;
+    }
+    .user-feedback-response--visible {
+      display: block;
+    }
+  </style>  
+  <div id="user-feedback">
+    <h2 id="user-feedback-title">Feedback</h2>
+    <p>Did this page help you?</p>
+
+    <button class="user-feedback-answer user-feedback-answer--yes md-icon">
+    <span class="svg-icon">{% set icon = "material/check" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}</span> Yes
+    </button>
+    <button class="user-feedback-answer user-feedback-answer--no md-icon">
+    <span class="svg-icon">{% set icon = "material/close" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}</span> No
+    </button>
+
+    <p class="user-feedback-response user-feedback-response--yes">
+    Thank you for the feedback!
+    </p>
+    <p class="user-feedback-response user-feedback-response--no">
+    We're sorry to hear that. Please <a target="_blank" href="https://github.com/codacy/docs/issues/new?labels=user%20feedback&template=documentation-feedback.md&title=Feedback%20on%20%22{{ page.title }}%22">let us know what we can improve</a>.
+    </p>  
+  </div>
+  <script>
+    const yesButton = document.querySelector('.user-feedback-answer--yes');
+    const noButton = document.querySelector('.user-feedback-answer--no');
+    const yesResponse = document.querySelector('.user-feedback-response--yes');
+    const noResponse = document.querySelector('.user-feedback-response--no');
+    const disableButtons = () => {
+      yesButton.disabled = true;
+      noButton.disabled = true;
+    };
+    const sendFeedback = (value) => {
+      if (typeof ga !== 'function') return;
+      const args = {
+        command: 'send',
+        hitType: 'event',
+        category: 'User Feedback',
+        action: 'click',
+        label: window.location.pathname,
+        value: value
+      };
+      ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+    };
+    yesButton.addEventListener('click', () => {
+      yesResponse.classList.add('user-feedback-response--visible');
+      disableButtons();
+      sendFeedback(1);
+    });
+    noButton.addEventListener('click', () => {
+      noResponse.classList.add('user-feedback-response--visible');
+      disableButtons();
+      sendFeedback(0);
+    });
+  </script>
+{% endif %}
