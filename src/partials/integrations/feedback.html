@@ -69,7 +69,7 @@
       };
       // Send an event to Google Analytics using the default Tracker object
       // https://developers.google.com/analytics/devguides/collection/analyticsjs/tracker-object-reference#send
-      ga.getAll()[0].send(args.category, args.action, args.label, args.value);
+      ga.getAll()[0].send("event", args.category, args.action, args.label, args.value);
     };
     yesButton.addEventListener('click', () => {
       yesResponse.classList.add('user-feedback-response--visible');
