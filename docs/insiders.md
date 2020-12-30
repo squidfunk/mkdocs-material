@@ -103,11 +103,12 @@ The following features are currently exclusively available to sponsors:
 - [x] [Color palette toggle][15]
 - [x] [Versioning][14]
 - [x] [Site language selection][13]
-- [x] [Sticky navigation tabs][18]
+- [x] [Sticky navigation tabs][19]
+- [x] [Admonition inline blocks][12]
 - [x] [Search suggestions][16]
 - [x] [Search highlighting][17]
-- [x] [Admonition inline blocks][12]
-- [x] [Remove generator notice][19]
+- [x] [Search sharing][18]
+- [x] [Remove generator notice][20]
 
 </div>
 
@@ -137,7 +138,6 @@ the public for general availability.
 
 #### $ 2,000 – Black Pearl
 
-- [x] Deep linking of search results
 - [x] [Color palette toggle][15]
 - [ ] Code block palette toggle
 
@@ -147,31 +147,34 @@ the public for general availability.
 
 - [x] [Search suggestions][16]
 - [x] [Search highlighting][17]
-- [ ] List of last searches
+- [x] [Search sharing][18]
 
   [16]: setup/setting-up-site-search.md#search-suggestions
   [17]: setup/setting-up-site-search.md#search-highlighting
+  [18]: setup/setting-up-site-search.md#search-sharing
 
 #### $ 3,000 – Caribbean Red
 
-- [x] [Sticky navigation tabs][18]
-- [x] [Remove generator notice][19]
+- [x] [Sticky navigation tabs][19]
+- [x] [Remove generator notice][20]
 - [ ] Support for index pages
 
-  [18]: setup/setting-up-navigation.md#sticky-navigation-tabs
-  [19]: setup/setting-up-the-footer.md#remove-generator
+  [19]: setup/setting-up-navigation.md#sticky-navigation-tabs
+  [20]: setup/setting-up-the-footer.md#remove-generator
 
 #### Future
 
-- [ ] [Material for MkDocs Live Edit][20]
+- [ ] [Material for MkDocs Live Edit][21]
 - [ ] Improved search result summaries
+- [ ] List of last searches
+- [ ] Table of contents follows active anchor
 - [ ] Table of contents auto-collapse
 - [ ] Table of contents shows which sections have search results
 - [ ] Native lightbox for (inline) images
 - [ ] New layouts and styles (e.g. vertical)
 - [ ] ... and much more ...
 
-  [20]: https://twitter.com/squidfunk/status/1338252230265360391
+  [21]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
 
@@ -207,10 +210,10 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][21] only in CI, as you don't want to expose
+recommended to [install Insiders][22] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [21]: publishing-your-site.md#github-pages
+  [22]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -219,7 +222,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][22]. However, we kindly ask you to respect the following
+by the [MIT license][23]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -230,7 +233,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][23].
+  [GitHub deletes private forks][24].
 
-  [22]: license.md
-  [23]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [23]: license.md
+  [24]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

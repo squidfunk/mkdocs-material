@@ -1,3 +1,7 @@
+mkdocs-material-6.2.3+insiders-1.14.0 (2020-12-30)
+
+  * Added support for sharing searches
+
 mkdocs-material-6.2.3 (2020-12-27)
 
   * Added back hidden overflow on root container
