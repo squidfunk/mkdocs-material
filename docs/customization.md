@@ -112,7 +112,7 @@ The directory layout of the theme is as follows:
 │  ├─ integrations/                    # Third-party integrations
 │  │  ├─ analytics.html                # - Google Analytics
 │  │  └─ disqus.html                   # - Disqus
-│  ├─ language/                        # Localized languages
+│  ├─ languages/                       # Localized languages
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
 │  ├─ language.html                    # Localized labels
