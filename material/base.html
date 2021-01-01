@@ -195,7 +195,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.5f6571bd.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/application.ad30b88d.js' | url }}"></script>
       <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
