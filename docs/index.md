@@ -1,18 +1,27 @@
-# Welcome to ObserveRTC
+# ObserveRTC
 
-ObserverRTC is an open source framework for monitoring WebRTC services. 
-
-We are in the process of documenting this project - please check back often.
-
-See our [integrations](https://github.com/ObserveRTC/integrations) for quick use with [Jitsi Meet](https://github.com/jitsi/jitsi-meet) and Tokbox/Vonage/Nexmo [Opentok](https://github.com/opentok). 
-
-See [here](https://github.com/ObserveRTC/WebRTC-Deployments) for deploying the infrastructure with docker-compose. 
-
-## Use Case
-
-coming soon..
+ObserveRTC is an open source initiative aimed to provide tools to collect, interpret, and visualize WebRTC metrics in real-time.![Placeholder](images/observertc-overview.png)
 
 
-## Architecture
+## Benefits of collecting WebRTC stats
 
-coming soon..
+* Performance tuning - Ability to debug/improve your WebRTC applications.
+* Regression analysis - Quantify the impact of changes you made. 
+* System operations - Measure and monitor the performance of your application.
+* Troubleshooting & debugging - Investigate technical issues. 
+* Usage trends - Track/Undetstand how your app is used. 
+
+## Use cases
+
+**As an application developer** you can use ObserveRTC to debug your WebRTC applications.
+
+**As a product owner** you can use ObserveRTC to measure and monitor the performance of your application.
+
+**As an operations team member** you can monitor the health and get critical alerts about your application. 
+
+## Why to choose ObserveRTC?
+
+* Open source and designed to be integrated with other open-source solutions.
+* Own the data from your applications and run further analysis. 
+* Designed for the cloud. When the size of your memory and compute requirements increase, new resources can be dynamically added to your cluster to scale elastically. e.g. [hazelcast](https://hazelcast.org) as an in-memory distributed databse for resiliance. 
+

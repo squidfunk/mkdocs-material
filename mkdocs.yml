@@ -124,18 +124,19 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
-  - Architecture:
-    - Observer: observer-arch.md
-    - Exporter: exporter-arch.md
-    - Client Library: client-lib-arch.md
-  - Getting started:
-    - Step 1 Observer and Exporter Installation: setup/step-1-observer-and-exporter-installation.md
-    - Step 2 Client Library Integration: setup/step-2-client-library-integration.md
-    - Step 3 Visualization: setup/step-3-visualization.md
-  - Team: 
-      Members: team.md
+  - Quick Start:
+    - Step 1 Include client libraries: quick-start/step-1-observer-js-integrations.md
+    - Step 2 Deploy observer: quick-start/step-2-observer.md
+    - Step 3 Deploy observer-connector: quick-start/step-3-observer-connector.md
+    - Step 4 Visualise: quick-start/step-4-observer-visualiser.md
+  - Customization:
+    - observer-js: observer-js.md
+    - observer: observer.md
+    - observer-connector: observer-connector.md
   - Changelog:
     - Release notes: changelog.md
+  - Team: 
+      Members: team/team.md
 
 # Google Analytics
 google_analytics:
