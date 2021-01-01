@@ -39,10 +39,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.4ac31c8c.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.15aa0b43.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.39b8e14a.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.75751829.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -184,8 +184,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.08c56446.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.bf7b0f12.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.93c04032.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.ab328eb8.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
