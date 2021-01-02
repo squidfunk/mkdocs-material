@@ -104,6 +104,7 @@ The following features are currently exclusively available to sponsors:
 - [x] [Versioning][14]
 - [x] [Site language selection][13]
 - [x] [Sticky navigation tabs][19]
+- [x] [Native Mermaid.js integration][21]
 - [x] [Admonition inline blocks][12]
 - [x] [Search suggestions][16]
 - [x] [Search highlighting][17]
@@ -162,9 +163,15 @@ the public for general availability.
   [19]: setup/setting-up-navigation.md#sticky-navigation-tabs
   [20]: setup/setting-up-the-footer.md#remove-generator
 
+#### $ 5,000 - Aji Panca
+
+- [x] [Native Mermaid.js integration][21]
+
+  [21]: reference/diagrams.md
+
 #### Future
 
-- [ ] [Material for MkDocs Live Edit][21]
+- [ ] [Material for MkDocs Live Edit][22]
 - [ ] Improved search result summaries
 - [ ] List of last searches
 - [ ] Table of contents follows active anchor
@@ -174,7 +181,7 @@ the public for general availability.
 - [ ] New layouts and styles (e.g. vertical)
 - [ ] ... and much more ...
 
-  [21]: https://twitter.com/squidfunk/status/1338252230265360391
+  [22]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
 
@@ -210,10 +217,10 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][22] only in CI, as you don't want to expose
+recommended to [install Insiders][23] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [22]: publishing-your-site.md#github-pages
+  [23]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -222,7 +229,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][23]. However, we kindly ask you to respect the following
+by the [MIT license][24]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -233,7 +240,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][24].
+  [GitHub deletes private forks][25].
 
-  [23]: license.md
-  [24]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [24]: license.md
+  [25]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

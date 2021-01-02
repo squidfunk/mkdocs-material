@@ -264,8 +264,7 @@ export function initialize(config: unknown) {
   const search$ = worker$
     .pipe(
       switchMap(worker => {
-
-        const query$ = useComponent("search-query")
+        const query$ = useComponent<HTMLInputElement>("search-query")
           .pipe(
             mountSearchQuery(worker, { transform: config.search.transform }),
             shareReplay({ bufferSize: 1, refCount: true })
