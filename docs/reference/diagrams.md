@@ -25,7 +25,7 @@ render [Mermaid.js][1] diagrams with zero effort:
 
 ``` yaml
 markdown_extensions:
-  - pymdownx.superfences
+  - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid-experimental
