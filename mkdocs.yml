@@ -125,8 +125,10 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Quick Start:
-    - Step 1 Include client libraries: quick-start/step-1-observer-js-integrations.md
-    - Step 2 Deploy observer: quick-start/step-2-observer.md
+    - Step 1 Deploy observer: quick-start/step-1-observer.md
+    - Step 2 Include client libraries: 
+      - Jitsi: quick-start/step-2-1-jitsi-integration.md
+      - Tokbox: quick-start/step-2-2-tokbox-integration.md
     - Step 3 Deploy observer-connector: quick-start/step-3-observer-connector.md
     - Step 4 Visualise: quick-start/step-4-observer-visualiser.md
   - Customization:
