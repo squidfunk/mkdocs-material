@@ -1,7 +1,7 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% if not page.is_homepage %}
+{% if config.extra.user_feedback == "true" and not page.is_homepage %}
   <style>.user-feedback-answer{background-color:var(--md-accent-fg-color--transparent);border-radius:.3em;color:var(--codacy-neutral-600);display:inline-block;font:inherit;font-size:.9em;padding:.2em;width:6em}.user-feedback-answer .svg-icon{display:inline-block;margin-right:.5em;vertical-align:top;width:1.3em}.user-feedback-answer:disabled{background-color:var(--md-default-fg-color--lightest)}.user-feedback-answer--no{margin-left:1em}.user-feedback-response{display:none}.user-feedback-response--visible{display:block}</style>  
   <div id="user-feedback">
     <h2 id="user-feedback-title">Feedback</h2>

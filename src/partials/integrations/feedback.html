@@ -1,5 +1,10 @@
-<!-- User feedback -->
-{% if not page.is_homepage %}
+<!-- User feedback
+     Must be enabled on mkdocs.yml:
+     
+     extra:
+       user_feedback: "true"
+-->
+{% if config.extra.user_feedback == "true" and not page.is_homepage %}
   <style>
     .user-feedback-answer {
       background-color: var(--md-accent-fg-color--transparent);
