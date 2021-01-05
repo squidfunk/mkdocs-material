@@ -54,10 +54,15 @@
   --md-code-bg-color:                  hsla(0, 0%, 96%, 1);
   --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
 
+  --codacy-neutral-900: hsla(#{hex2hsl($codacy-neutral-900)}, 1);
   --codacy-primary: hsla(#{hex2hsl($codacy-neutral-800)}, 1);
   --codacy-neutral-700: hsla(#{hex2hsl($codacy-neutral-700)}, 1);
   --codacy-neutral-600: hsla(#{hex2hsl($codacy-neutral-600)}, 1);
+  --codacy-neutral-500: hsla(#{hex2hsl($codacy-neutral-500)}, 1);
   --codacy-neutral-400: hsla(#{hex2hsl($codacy-neutral-400)}, 1);
+  --codacy-neutral-300: hsla(#{hex2hsl($codacy-neutral-300)}, 1);
+  --codacy-neutral-200: hsla(#{hex2hsl($codacy-neutral-200)}, 1);
+  --codacy-neutral-100: hsla(#{hex2hsl($codacy-neutral-100)}, 1);
   --codacy-neutral-50: hsla(#{hex2hsl($codacy-neutral-50)}, 1);
 
   --codacy-blue-700: hsla(#{hex2hsl($codacy-700)}, 1);
