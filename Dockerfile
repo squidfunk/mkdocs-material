@@ -23,6 +23,9 @@ FROM python:3.8.1-alpine3.11
 # Build-time flags
 ARG WITH_PLUGINS=true
 
+# Packages directory
+ENV PACKAGES=/usr/local/lib/python3.8/site-packages
+
 # Set build directory
 WORKDIR /tmp
 
@@ -49,7 +52,13 @@ RUN \
         'mkdocs-redirects>=1.0'; \
     fi \
   && apk del .build gcc musl-dev \
-  && rm -rf /usr/local/lib/python3.8/site-packages/mkdocs/themes/*/* \
+  && \
+    for theme in mkdocs readthedocs; do \
+      rm -rf ${PACKAGES}/mkdocs/themes/$theme; \
+      ln -s \
+        ${PACKAGES}/material \
+        ${PACKAGES}/mkdocs/themes/$theme; \
+    done \
   && rm -rf /tmp/*
 
 # Set working directory
