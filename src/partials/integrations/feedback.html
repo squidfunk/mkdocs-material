@@ -45,19 +45,24 @@
 
     <button class="user-feedback-answer user-feedback-answer--yes md-icon">
     <span class="svg-icon">{% set icon = "material/check" %}
-    {% include ".icons/" ~ icon ~ ".svg" %}</span> Yes
+      {% include ".icons/" ~ icon ~ ".svg" %}</span> Yes
     </button>
     <button class="user-feedback-answer user-feedback-answer--no md-icon">
     <span class="svg-icon">{% set icon = "material/close" %}
-    {% include ".icons/" ~ icon ~ ".svg" %}</span> No
+      {% include ".icons/" ~ icon ~ ".svg" %}</span> No
     </button>
 
     <p class="user-feedback-response user-feedback-response--yes">
-    Thank you for the feedback!
+      Thank you for the feedback!
     </p>
-    <p class="user-feedback-response user-feedback-response--no">
-    We're sorry to hear that. Please <a target="_blank" href="{{ config.repo_url }}/issues/new?labels=user%20feedback&template=documentation-feedback.md&title=Feedback%20on%20%22{{ page.title }}%22">let us know what we can improve</a>.
-    </p>  
+    <div class="user-feedback-response user-feedback-response--no">
+      <p>
+        We're sorry to hear that. Please <a target="_blank" href="{{ config.repo_url }}/issues/new?labels=user%20feedback&template=documentation-feedback.md&title=Feedback%20on%20%22{{ page.title }}%22">let us know what we can improve</a>.
+      </p>
+      <p>
+        If you have a question, please contact <a href="mailto:{{ config.site_author }}?subject=Question%20regarding%20{{ page.title }}">{{ config.site_author }}</a>.
+      </p>
+    </div>
   </div>
   <script>
     const yesButton = document.querySelector('.user-feedback-answer--yes');
