@@ -50,6 +50,7 @@ _environment variable to the token's value._
     and usage of an access token is only necessary when installing Insiders
     over HTTPS, which is the recommended way when building from within a CI/CD
     workflow, e.g. using [GitHub Pages][16] or [GitLab Pages][17].
+    
 
   [5]: https://python-markdown.github.io/
   [6]: https://pygments.org/
@@ -94,7 +95,8 @@ _environment variable to the token's value._
     [GitHub Container Registry][18], the [personal access token][14] requires
     the [`read:packages`][15] scope. Note that you need to login before pulling
     the Docker image. As an example, see the [`publish`][19] workflow of the
-    Material for MkDocs repository.
+    Material for MkDocs repository. You'll also need to enable "[Improved Container Support][20]"
+    on your account.
 
   [10]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [11]: https://github.com/byrnereese/mkdocs-minify-plugin
@@ -156,3 +158,4 @@ sponsor][9]._
   [17]: publishing-your-site.md#gitlab-pages
   [18]: https://docs.github.com/en/free-pro-team@latest/packages/getting-started-with-github-container-registry/about-github-container-registry
   [19]: https://github.com/squidfunk/mkdocs-material/blob/master/.github/workflows/publish.yml
+  [20]: https://docs.github.com/en/free-pro-team@latest/packages/guides/enabling-improved-container-support
