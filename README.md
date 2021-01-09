@@ -143,6 +143,7 @@ For other installation methods, configuration options, and a demo, visit
   [AWS](https://aws.github.io/copilot-cli/),
   [Binance](https://docs.binance.org/),
   [Datadog](https://datadoghq.dev/integrations-core/),
+  [Google](https://google.github.io/xls/),
   [ING](https://ing-bank.github.io/baker/),
   [LinkedIn](https://linkedin.github.io/school-of-sre/),
   [Microsoft](https://www.electionguard.vote/),
