@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.4 <small>_ January 9, 2021</small>
+
+- Fixed #2156: Missing syntax highlighting for binary numbers
+- Fixed #2186: Disqus showing on 404 page
+
 ### 6.2.3 <small>_ December 27, 2020</small>
 
 - Added back hidden overflow on root container
