@@ -311,7 +311,7 @@ _Example_:
 
 ```` markdown
 ```
---8<--​ ".browserslistrc"
+--8<-- ".browserslistrc"
 ```
 ````
 
