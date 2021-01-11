@@ -50,7 +50,7 @@
     "@types/html-minifier": "^4.0.0",
     "@types/lunr": "^2.3.3",
     "@types/mini-css-extract-plugin": "^1.2.2",
-    "@types/node": "^14.14.19",
+    "@types/node": "^14.14.20",
     "@types/ramda": "^0.27.34",
     "@types/resize-observer-browser": "^0.1.4",
     "@types/webpack": "^4.41.25",
