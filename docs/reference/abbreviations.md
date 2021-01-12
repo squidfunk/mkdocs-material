@@ -81,7 +81,7 @@ _Example_:
     ```` markdown
     The HTML specification is maintained by the W3C.
     
-    --8<--​ "includes/abbreviations.md"
+    --8<-- "includes/abbreviations.md"
     ````
 
 === "includes/abbreviations.md"

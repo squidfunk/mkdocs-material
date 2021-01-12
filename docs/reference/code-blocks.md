@@ -318,7 +318,7 @@ _Example_:
 _Result_:
 
 ```
---8<-- ".browserslistrc"
+last 4 years
 ```
 
 Note that [Snippets][21] is not limited to code blocks, but can be used anywhere
