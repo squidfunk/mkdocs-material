@@ -78,11 +78,11 @@ _Example_:
 
 === "docs/page.md"
 
-    ```` markdown
-    The HTML specification is maintained by the W3C.
-    
-    --8<--​ "includes/abbreviations.md"
-    ````
+    <div class="highlight">
+    <pre><code>The HTML specification is maintained by the W3C.
+
+    --8&lt;-- "includes/abbreviations.md"</code></pre>
+    </div>
 
 === "includes/abbreviations.md"
 

@@ -309,11 +309,11 @@ directly into your project documentation.
 
 _Example_:
 
-```` markdown
-```
---8<--​ ".browserslistrc"
-```
-````
+<div class="highlight">
+<pre><code>```
+--8&lt;-- ".browserslistrc"
+```</code></pre>
+</div>
 
 _Result_:
 
