@@ -1,3 +1,8 @@
+mkdocs-material-6.2.5 (2021-01-17)
+
+  * Fixed syntax error in Swedish translations
+  * Optimized navigation partials to improve build speed for huge docs
+
 mkdocs-material-6.2.4 (2021-01-09)
 
   * Fixed #2156: Missing syntax highlighting for binary numbers

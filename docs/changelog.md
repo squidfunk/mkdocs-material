@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.5 <small>_ January 17, 2021</small>
+
+- Fixed syntax error in Swedish translations
+- Optimized navigation partials to improve build speed for huge docs
+
 ### 6.2.4 <small>_ January 9, 2021</small>
 
 - Fixed #2156: Missing syntax highlighting for binary numbers
