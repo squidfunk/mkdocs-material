@@ -9,7 +9,7 @@ template: overrides/main.html
 ### 1.16.0 <small>_ January 7, 2021</small>
 
 - Added latest release to repository info (GitHub)
-- Slight facelift of repsitory info (lighter fonts, spacing and icons)
+- Slight facelift of repository info (lighter fonts, spacing and icons)
 
 ### 1.15.0 <small>_ January 2, 2021</small>
 
