@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.16.0 <small>_ January 7, 2021</small>
+
+- Added latest release to repository info (GitHub)
+- Slight facelift of repsitory info (lighter fonts, spacing and icons)
+
 ### 1.15.0 <small>_ January 2, 2021</small>
 
 - Added support for native Mermaid.js integration

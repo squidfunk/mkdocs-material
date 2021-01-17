@@ -100,16 +100,17 @@ The following features are currently exclusively available to sponsors:
 
 <div class="tx-columns" markdown="1">
 
-- [x] [Color palette toggle][15]
+- [x] [Latest release tag :material-new-box:][15]
+- [x] [Color palette toggle][16]
 - [x] [Versioning][14]
 - [x] [Site language selection][13]
-- [x] [Sticky navigation tabs][19]
-- [x] [Native Mermaid.js integration][21]
+- [x] [Sticky navigation tabs][20]
+- [x] [Native Mermaid.js integration][22]
 - [x] [Admonition inline blocks][12]
-- [x] [Search suggestions][16]
-- [x] [Search highlighting][17]
-- [x] [Search sharing][18]
-- [x] [Remove generator notice][20]
+- [x] [Search suggestions][17]
+- [x] [Search highlighting][18]
+- [x] [Search sharing][19]
+- [x] [Remove generator notice][21]
 
 </div>
 
@@ -139,39 +140,41 @@ the public for general availability.
 
 #### $ 2,000 – Black Pearl
 
-- [x] [Color palette toggle][15]
+- [x] [Latest release tag][15]
+- [x] [Color palette toggle][16]
 - [ ] Code block palette toggle
 
-  [15]: setup/changing-the-colors.md#color-palette-toggle
+  [15]: setup/adding-a-git-repository.md#latest-release
+  [16]: setup/changing-the-colors.md#color-palette-toggle
 
 #### $ 2,500 – Biquinho Vermelho
 
-- [x] [Search suggestions][16]
-- [x] [Search highlighting][17]
-- [x] [Search sharing][18]
+- [x] [Search suggestions][17]
+- [x] [Search highlighting][18]
+- [x] [Search sharing][19]
 
-  [16]: setup/setting-up-site-search.md#search-suggestions
-  [17]: setup/setting-up-site-search.md#search-highlighting
-  [18]: setup/setting-up-site-search.md#search-sharing
+  [17]: setup/setting-up-site-search.md#search-suggestions
+  [18]: setup/setting-up-site-search.md#search-highlighting
+  [19]: setup/setting-up-site-search.md#search-sharing
 
 #### $ 3,000 – Caribbean Red
 
-- [x] [Sticky navigation tabs][19]
-- [x] [Remove generator notice][20]
+- [x] [Sticky navigation tabs][20]
+- [x] [Remove generator notice][21]
 - [ ] Support for index pages
 
-  [19]: setup/setting-up-navigation.md#sticky-navigation-tabs
-  [20]: setup/setting-up-the-footer.md#remove-generator
+  [20]: setup/setting-up-navigation.md#sticky-navigation-tabs
+  [21]: setup/setting-up-the-footer.md#remove-generator
 
 #### $ 5,000 - Aji Panca
 
-- [x] [Native Mermaid.js integration][21]
+- [x] [Native Mermaid.js integration][22]
 
-  [21]: reference/diagrams.md
+  [22]: reference/diagrams.md
 
 #### Future
 
-- [ ] [Material for MkDocs Live Edit][22]
+- [ ] [Material for MkDocs Live Edit][23]
 - [ ] Improved search result summaries
 - [ ] List of last searches
 - [ ] Table of contents follows active anchor
@@ -181,7 +184,7 @@ the public for general availability.
 - [ ] New layouts and styles (e.g. vertical)
 - [ ] ... and much more ...
 
-  [22]: https://twitter.com/squidfunk/status/1338252230265360391
+  [23]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
 
@@ -217,10 +220,10 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][23] only in CI, as you don't want to expose
+recommended to [install Insiders][24] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [23]: publishing-your-site.md#github-pages
+  [24]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -229,7 +232,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][24]. However, we kindly ask you to respect the following
+by the [MIT license][25]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -240,7 +243,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][25].
+  [GitHub deletes private forks][26].
 
-  [24]: license.md
-  [25]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [25]: license.md
+  [26]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
