@@ -37,7 +37,7 @@
     "focus-visible": "^5.2.0",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.4.0",
-    "rxjs": "^7.0.0-beta.9"
+    "rxjs": "^7.0.0-beta.10"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
