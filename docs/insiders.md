@@ -166,7 +166,7 @@ the public for general availability.
   [20]: setup/setting-up-navigation.md#sticky-navigation-tabs
   [21]: setup/setting-up-the-footer.md#remove-generator
 
-#### $ 5,000 - Aji Panca
+#### $ 5,000 – Aji Panca
 
 - [x] [Native Mermaid.js integration][22]
 
