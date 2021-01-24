@@ -39,10 +39,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.e67d4e15.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.cb6bc1d0.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.3e379585.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.39b8e14a.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -184,8 +184,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.5f54cce3.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.596b5164.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.53cc9318.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.e9c9f54f.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -213,7 +213,7 @@
           base: "{{ base_url }}",
           features: {{ features or [] | tojson }},
           search: Object.assign({
-            worker: "{{ 'assets/javascripts/worker/search.8c7e0a7e.min.js' | url }}"
+            worker: "{{ 'assets/javascripts/worker/search.9c0e82ba.min.js' | url }}"
           }, typeof search !== "undefined" && search)
         })
       </script>
