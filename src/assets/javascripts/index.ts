@@ -48,7 +48,11 @@ import {
   catchError,
   map,
   bufferCount,
-  distinctUntilKeyChanged
+  distinctUntilKeyChanged,
+  mapTo,
+  startWith,
+  combineLatestWith,
+  distinctUntilChanged
 } from "rxjs/operators"
 
 import {
@@ -413,26 +417,58 @@ export function initialize(config: unknown) {
   // opportunities for refactoring, but we'll address them when this feature
   // got some feedback from the community.
   if (config.features.includes("header.autohide")) {
-    viewport$
+
+    // Threshold for header-hiding - always show if scrolled less than 400px.
+    // Also, search is not allowed to be active. Maybe make this dynamic.
+    const threshold$ = viewport$
+      .pipe(
+        map(({ offset }) => offset.y > 400),
+        combineLatestWith(watchToggle("search")),
+        map(([threshold, search]) => threshold && !search),
+        distinctUntilChanged()
+      )
+
+    // Scroll direction (true = down, false = up) + inflection point
+    const direction$ = viewport$
       .pipe(
         map(({ offset }) => offset.y),
         bufferCount(2, 1),
         map(([a, b]) => [a < b, b] as const),
-        distinctUntilKeyChanged(0),
-        switchMap(([direction, y0]) => viewport$
-          .pipe(
-            map(({ offset }) => offset.y),
-            filter(y1 => y1 > 400),
-            map(y1 => Math.abs(y0 - y1)),
-            filter(y => y > 100),
-            map(() => direction),
-            take(1)
-          )
-        )
+        distinctUntilKeyChanged(0)
       )
-        .subscribe(hide => {
-          const header = getElement("[data-md-component=header]")
-          header?.setAttribute("data-md-state", hide ? "hidden": "shadow")
+
+    // When the threshold is exceeded, and the search is not active, subscribe
+    // to the direction observable (always do a new subscription), and track
+    // scroll progress.
+    const hide$ = threshold$
+      .pipe(
+        switchMap(active => !active
+          ? of(false)
+          : direction$
+              .pipe(
+                combineLatestWith(viewport$),
+                filter(([[, y], { offset }]) => Math.abs(y - offset.y) > 100),
+                map(([[direction]]) => direction)
+              )
+        ),
+        distinctUntilChanged()
+      )
+
+    // Set header state depending on main state. There's still some possibility
+    // for improvement, as the page seems to jump when focusing the unfocused
+    // search. This would mean we would need to delay the focus/change event
+    // until the header is focussed, which we need to address in a refactoring.
+    hide$
+      .pipe(
+        combineLatestWith(main$),
+        map(([hide, main]) => main.active
+          ? hide ? "hidden" : "shadow"
+          : ""
+        ),
+        combineLatestWith(useComponent("header"))
+      )
+        .subscribe(([state, el]) => {
+          el.setAttribute("data-md-state", state)
         })
   }
 

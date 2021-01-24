@@ -104,7 +104,11 @@
       // Show overlay when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
         width: 100%;
-        height: 100%;
+        // Hack: when the header is translated upon scrolling, a new layer is
+        // induced, which means that the height will now refer to the height of
+        // the header, albeit positioning is fixed. This should be mitigated
+        // in all cases when setting the height to 2x the viewport.
+        height: 200vh;
         opacity: 1;
         transition:
           width     0ms,

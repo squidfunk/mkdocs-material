@@ -35,7 +35,7 @@ template: overrides/main.html
 - Added support for navigation sections
 - Added support for navigation expansion
 - Added support for integrating table of contents into navigation
-- Added support for auto-hiding header on scroll
+- Added support for autohiding header on scroll
 - Added support for hiding navigation and table of contents per page
 - Added support for arbitrary items in navigation tabs
 - Refactored navigation tabs to simplify grouping behavior
