@@ -140,7 +140,7 @@
       />
     {% endif %}
 
-    <!-- Custom stylesheets, might contain media query after URL -->
+    <!-- Custom stylesheets -->
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}" />
     {% endfor %}
