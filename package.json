@@ -55,7 +55,7 @@
     "@types/resize-observer-browser": "^0.1.5",
     "@types/webpack": "^4.41.26",
     "@types/webpack-assets-manifest": "^3.0.1",
-    "autoprefixer": "10.2.1",
+    "autoprefixer": "10.2.3",
     "copy-webpack-plugin": "^6.4.1",
     "css-loader": "^5.0.1",
     "event-hooks-webpack-plugin": "^2.2.0",
