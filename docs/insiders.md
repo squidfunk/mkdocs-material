@@ -89,7 +89,7 @@ You can cancel your sponsorship anytime.[^2]
 </div>
 
 <script>
-  fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/").then(function(e){return e.json()}).then(function(e){var t=document.querySelector(".tx-insiders-list"),n=0;for(var o of e.sponsors)if("PUBLIC"===o.type){var s;(s=document.createElement("a")).href=o.url,s.title="@"+o.name,s.className="tx-insiders-list__item",t.appendChild(s);var r=document.createElement("img");r.src=o.image,s.appendChild(r)}else n++;(s=document.createElement("a")).href="https://github.com/sponsors/squidfunk",s.title="[private]",s.innerText="+"+n,s.className="tx-insiders-list__item tx-insiders-list__item--private",t.appendChild(s),document.querySelector(".tx-insiders-count").innerText=e.sponsors.length,document.querySelector(".tx-insiders-container").removeAttribute("hidden"),document.querySelector('.tx-insiders-total').innerText=" – $ "+e.total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}).catch(console.log);
+  fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/").then(function(e){return e.json()}).then(function(e){var t=document.querySelector(".tx-insiders-list"),n=0;for(var o of e.sponsors)if("PUBLIC"===o.type){var s;(s=document.createElement("a")).href=o.url,s.title="@"+o.name,s.className="tx-insiders-list__item",t.appendChild(s);var r=document.createElement("img");r.src=o.image,s.appendChild(r)}else n++;(s=document.createElement("a")).href="https://github.com/sponsors/squidfunk",s.title="[private]",s.innerText="+"+n,s.className="tx-insiders-list__item tx-insiders-list__item--private",t.appendChild(s),document.querySelector(".tx-insiders-count").innerText=e.sponsors.length,document.querySelector(".tx-insiders-container").removeAttribute("hidden"),document.querySelector('.tx-insiders-total').innerText=" $ "+e.total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}).catch(console.log);
 </script>
 
   [5]: https://github.com/sponsors/squidfunk
@@ -120,7 +120,7 @@ from time to time to learn about what's new, or follow [@squidfunk on
 
   [6]: https://twitter.com/squidfunk
 
-## Funding<span class="tx-insiders-total"></span>
+## Funding<span class="tx-insiders-total tx-insiders-count"></span>
 
 ### Goals
 
