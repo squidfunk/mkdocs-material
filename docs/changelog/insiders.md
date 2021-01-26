@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.16.1 <small>_ January 26, 2021</small>
+
+- Fixed #2249: Instant loading + sticky tabs result in invalid links
+- Fixed #2248: Search highlighting URL parameter always added
+- Fixed #2235: Version selector doesn't select current version for aliases
+
 ### 1.16.0 <small>_ January 7, 2021</small>
 
 - Added latest release to repository info (GitHub)

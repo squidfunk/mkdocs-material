@@ -1,3 +1,9 @@
+mkdocs-material-6.2.6+insiders-1.16.1 (2021-01-26)
+
+  * Fixed #2249: Instant loading + sticky tabs result in invalid links
+  * Fixed #2248: Search highlighting URL parameter always added
+  * Fixed #2235: Version selector doesn't select current version for aliases
+
 mkdocs-material-6.2.6 (2021-01-26)
 
   * Added Bulgarian translations
