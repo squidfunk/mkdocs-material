@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.6 <small>_ January 26, 2021</small>
+
+- Added Bulgarian translations
+- Fixed #2233: Search not shown when using header autohiding
+
 ### 6.2.5 <small>_ January 17, 2021</small>
 
 - Fixed syntax error in Swedish translations

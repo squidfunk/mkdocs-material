@@ -1,3 +1,8 @@
+mkdocs-material-6.2.6 (2021-01-26)
+
+  * Added Bulgarian translations
+  * Fixed #2233: Search not shown when using header autohiding
+
 mkdocs-material-6.2.5+insiders-1.16.0 (2021-01-17)
 
   * Added latest release to repository info (GitHub)
