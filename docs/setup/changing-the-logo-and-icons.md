@@ -53,7 +53,7 @@ theme:
   favicon: images/favicon.png
 ```
 
-  [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html#L53-L54
+  [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
 
 ### Icons
 
@@ -72,9 +72,9 @@ markdown_extensions:
 
 The following icon sets are bundled with Material for MkDocs:
 
-* :material-material-design: – [Material Design][8]
-* :fontawesome-brands-font-awesome-flag: – [FontAwesome][9]
-* :octicons-mark-github-16: – [Octicons][10]
+- :material-material-design: – [Material Design][8]
+- :fontawesome-brands-font-awesome-flag: – [FontAwesome][9]
+- :octicons-mark-github-16: – [Octicons][10]
 
 If you want to add [additional icons][1], read on.
 
@@ -100,8 +100,6 @@ your project documentation. The structure of your project should look like this:
 
 ``` sh
 .
-├─ docs/
-│  └─ index.md
 ├─ overrides/
 │  └─ .icons/
 │     └─ bootstrap/

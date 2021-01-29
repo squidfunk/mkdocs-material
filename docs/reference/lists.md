@@ -74,7 +74,7 @@ of lists can be nested inside each other.
 _Example_:
 
 ``` markdown
-* Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
+- Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
   accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh
   lacinia sed. Aenean in finibus diam.
 
@@ -85,7 +85,7 @@ _Example_:
 
 _Result_:
 
-* Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
+- Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
   accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh
   lacinia sed. Aenean in finibus diam.
 
@@ -182,21 +182,21 @@ checkbox.
 _Example_:
 
 ``` markdown
-* [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit
-* [ ] Vestibulum convallis sit amet nisi a tincidunt
+- [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit
+- [ ] Vestibulum convallis sit amet nisi a tincidunt
     * [x] In hac habitasse platea dictumst
     * [x] In scelerisque nibh non dolor mollis congue sed et metus
     * [ ] Praesent sed risus massa
-* [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
+- [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
 ```
 
 _Result_:
 
-* [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit
-* [ ] Vestibulum convallis sit amet nisi a tincidunt
+- [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit
+- [ ] Vestibulum convallis sit amet nisi a tincidunt
     * [x] In hac habitasse platea dictumst
     * [x] In scelerisque nibh non dolor mollis congue sed et metus
     * [ ] Praesent sed risus massa
-* [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
+- [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
 
   [7]: #tasklist

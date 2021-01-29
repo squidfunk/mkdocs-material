@@ -152,12 +152,6 @@ export function setupComponents(
  *
  * @return Component observable
  */
-export function useComponent<T extends HTMLInputElement>(
-  name: "search-query"
-): Observable<T>
-export function useComponent<T extends HTMLElement>(
-  name: Component
-): Observable<T>
 export function useComponent<T extends HTMLElement>(
   name: Component
 ): Observable<T> {

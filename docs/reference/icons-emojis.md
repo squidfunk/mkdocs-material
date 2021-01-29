@@ -28,9 +28,9 @@ markdown_extensions:
 
 The following icon sets are bundled with Material for MkDocs:
 
-* :material-material-design: – [Material Design][6]
-* :fontawesome-brands-font-awesome-flag: – [FontAwesome][7]
-* :octicons-mark-github-16: – [Octicons][8]
+- :material-material-design: – [Material Design][6]
+- :fontawesome-brands-font-awesome-flag: – [FontAwesome][7]
+- :octicons-mark-github-16: – [Octicons][8]
 
 You can also add [additional icons][9]. When using emojis, it's recommended to
 consult the official documentation of [Python Markdown Extensions][3] to learn
@@ -89,21 +89,21 @@ a valid path to any icon bundled with the theme, which are located in the
 _Example_:
 
 ```
-* :material-account-circle: – `.icons/material/account-circle.svg`
-* :fontawesome-regular-laugh-wink: – `.icons/fontawesome/regular/laugh-wink.svg`
-* :octicons-octoface-16: – `.icons/octicons/octoface-16.svg`
+- :material-account-circle: – `.icons/material/account-circle.svg`
+- :fontawesome-regular-laugh-wink: – `.icons/fontawesome/regular/laugh-wink.svg`
+- :octicons-octoface-24: – `.icons/octicons/octoface-24.svg`
 ```
 
 _Result_:
 
-* :material-account-circle: – [`.icons/material/account-circle.svg`][14]
-* :fontawesome-regular-laugh-wink: – [`.icons/fontawesome/regular/laugh-wink.svg`][15]
-* :octicons-octoface-16: – [`.icons/octicons/octoface-16.svg`][16]
+- :material-account-circle: – [`.icons/material/account-circle.svg`][14]
+- :fontawesome-regular-laugh-wink: – [`.icons/fontawesome/regular/laugh-wink.svg`][15]
+- :octicons-octoface-24: – [`.icons/octicons/octoface-24.svg`][16]
 
   [13]: #emoji
   [14]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/material/account-circle.svg
   [15]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/fontawesome/regular/laugh-wink.svg
-  [16]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/octoface-16.svg
+  [16]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/octoface-24.svg
 
 #### with colors
 
@@ -141,16 +141,16 @@ Then, simply add the CSS class to the icon.
 _Example_:
 
 ``` markdown
-* :fontawesome-brands-medium:{: .medium } – Medium
-* :fontawesome-brands-twitter:{: .twitter } – Twitter
-* :fontawesome-brands-facebook:{: .facebook } – Facebook
+- :fontawesome-brands-medium:{: .medium } – Medium
+- :fontawesome-brands-twitter:{: .twitter } – Twitter
+- :fontawesome-brands-facebook:{: .facebook } – Facebook
 ```
 
 _Result_:
 
-* :fontawesome-brands-medium:{: .medium } – Medium
-* :fontawesome-brands-twitter:{: .twitter } – Twitter
-* :fontawesome-brands-facebook:{: .facebook } – Facebook
+- :fontawesome-brands-medium:{: .medium } – Medium
+- :fontawesome-brands-twitter:{: .twitter } – Twitter
+- :fontawesome-brands-facebook:{: .facebook } – Facebook
 
   [17]: #attribute-list
   [18]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
@@ -178,20 +178,6 @@ and adding the dedicated CSS class to the icon:
 
 Then, simply add the CSS class to the icon.
 
-<style>
-  @keyframes heart {
-    0%, 40%, 80%, 100% {
-      transform: scale(1);
-    }
-    20%, 60% {
-      transform: scale(1.15);
-    }
-  }
-  .heart {
-    animation: heart 1000ms infinite;
-  }
-</style>
-
 _Example_:
 
 ``` markdown
@@ -200,7 +186,7 @@ _Example_:
 
 _Result_:
 
-:octicons-heart-fill-24:{: .heart }
+:octicons-heart-fill-24:{: .tx-heart }
 
   [20]: #with-colors
   [21]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation

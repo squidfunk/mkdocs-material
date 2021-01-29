@@ -2,7 +2,6 @@
 name: Feature
 about: Suggest an idea
 title: ''
-labels: ''
 assignees: ''
 ---
 
@@ -15,15 +14,20 @@ assignees: ''
   that does not meet these conditions may be closed unnoticed.
 
   Why? Because the maintainers of this project are wasting a lot of time
-  answering questions that are not directly related to this project.
+  answering questions that are not directly related to this project. If you
+  have a question, please ask your question over in "Discussions", so other
+  users can help you work towards a solution.
 
-  Make sure that your request fulfills all of the following requirements
+  Make sure that your request fulfills ALL of the following requirements. If one
+  requirement cannot be satisfied, please explain in detail why.
 -->
 
-__I checked that...__
+- [ ] I've read the [contribution guidelines][1] and agree with them
 
-- [ ] ... the documentation does not mention anything about my idea
+__I want to suggest an idea and checked that ...__
+
 - [ ] ... to my best knowledge, my idea wouldn't break something for other users
+- [ ] ... the documentation does not mention anything about my idea
 - [ ] ... there are no open or closed issues that are related to my idea
 
 ## Description
@@ -37,3 +41,5 @@ __I checked that...__
 ### Screenshots / Mockups
 
 <!-- If applicable, provide some mockups or screenshots -->
+
+  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/CONTRIBUTING.md

@@ -24,30 +24,30 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Tabs with outline
+// Navigation tabs
 .md-tabs {
   width: 100%;
   overflow: auto;
   color: var(--md-primary-bg-color);
   background-color: var(--md-primary-fg-color);
-  transition: background 250ms;
+  transition: background-color 250ms;
 
-  // Omit transitions, in case JavaScript is not available
-  .no-js & {
-    transition: none;
-  }
-
-  // [tablet -]: Hide tabs for tablet and below, as they don't make any sense
-  @include break-to-device(tablet) {
-    display: none;
-  }
-
-  // Hide for print
+  // [print]: Hide tabs
   @media print {
     display: none;
   }
 
-  // List of items
+  // [tablet -]: Hide tabs
+  @include break-to-device(tablet) {
+    display: none;
+  }
+
+  // Tabs in hidden state, i.e. when scrolling down
+  &[data-md-state="hidden"] {
+    pointer-events: none;
+  }
+
+  // Navigation tabs list
   &__list {
     margin: 0;
     margin-left: px2rem(4px);
@@ -63,7 +63,7 @@
     }
   }
 
-  // List item
+  // Navigation tabs item
   &__item {
     display: inline-block;
     height: px2rem(48px);
@@ -71,24 +71,22 @@
     padding-left: px2rem(12px);
   }
 
-  // Link inside item - could be defined as block elements and aligned via
+  // Navigation tabs link - could be defined as block elements and aligned via
   // line height, but this would imply more repaints when scrolling
   &__link {
     display: block;
     margin-top: px2rem(16px);
     font-size: px2rem(14px);
+    // Hack: save a repaint when tabs are appearing on scrolling up
+    backface-visibility: hidden;
     opacity: 0.7;
     transition:
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   250ms;
 
-    // Omit transitions, in case JavaScript is not available
-    .no-js & {
-      transition: none;
-    }
-
-    // Active or hovered link
+    // Active link and link on focus/hover
     &--active,
+    &:focus,
     &:hover {
       color: inherit;
       opacity: 1;
@@ -100,94 +98,15 @@
         transition-delay: 20ms * ($i - 1);
       }
     }
-  }
-
-  // Fade-out tabs background upon scrolling
-  &[data-md-state="hidden"] {
-    pointer-events: none;
 
     // Hide tabs upon scrolling - disable transition to minimizes repaints
     // while scrolling down, while scrolling up seems to be okay
-    .md-tabs__link {
+    .md-tabs[data-md-state="hidden"] & {
       transform: translateY(50%);
       opacity: 0;
       transition:
-        color     250ms,
-        transform   0ms 400ms,
-        opacity   100ms;
-    }
-  }
-
-  // [screen +]: Adjust main navigation styles
-  @include break-from-device(screen) {
-
-    // Hide 1st level nested items, as they are listed in the tabs
-    ~ .md-main .md-nav--primary > .md-nav__list > .md-nav__item--nested {
-      display: none;
-    }
-
-    // Active tab
-    &--active ~ .md-main {
-
-      // Adjust 1st level styles
-      .md-nav--primary {
-
-        // Show title and remove spacing
-        .md-nav__title {
-          display: block;
-          padding: 0 px2rem(12px);
-          pointer-events: none;
-          scroll-snap-align: start;
-
-          // Hide site title
-          &[for="__drawer"] {
-            display: none;
-          }
-        }
-
-        // Hide 1st level items
-        > .md-nav__list > .md-nav__item {
-          display: none;
-
-          // Show 1st level active nested items
-          &--active {
-            display: block;
-            padding: 0;
-
-            // Hide nested links
-            > .md-nav__link {
-              display: none;
-            }
-          }
-        }
-      }
-
-      // Always expand nested navigation on 2nd level
-      .md-nav[data-md-level="1"] {
-        // Hack: Always show active navigation tab on breakpoint screen, despite
-        // of checkbox being checked or not. Fixes #1655.
-        display: block;
-
-        // Remove spacing on 2nd level items
-        > .md-nav__list > .md-nav__item {
-          padding: 0 px2rem(12px);
-
-          // Add bottom spacing to last item
-          &:last-child {
-            padding-bottom: px2rem(12px);
-
-            // Remove bottom spacing for nested items
-            .md-nav__item {
-              padding-bottom: 0;
-            }
-          }
-        }
-
-        // Hide titles from 2nd level on
-        .md-nav .md-nav__title {
-          display: none;
-        }
-      }
+        transform 0ms 100ms,
+        opacity 100ms;
     }
   }
 }

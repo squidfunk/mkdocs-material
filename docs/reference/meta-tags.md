@@ -28,7 +28,7 @@ markdown_extensions:
 Front matter is written as a series of key-value pairs at the beginning of the
 Markdown document, delimited by a blank line which ends the YAML context.
 
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
+  [3]: https://python-markdown.github.io/extensions/meta_data/
   [4]: https://jekyllrb.com/docs/front-matter/
 
 ## Usage

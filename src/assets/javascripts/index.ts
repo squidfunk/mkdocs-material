@@ -46,7 +46,13 @@ import {
   take,
   shareReplay,
   catchError,
-  map
+  map,
+  bufferCount,
+  distinctUntilKeyChanged,
+  mapTo,
+  startWith,
+  combineLatestWith,
+  distinctUntilChanged
 } from "rxjs/operators"
 
 import {
@@ -60,7 +66,8 @@ import {
   watchViewport,
   isLocalLocation,
   setLocationHash,
-  watchLocationBase
+  watchLocationBase,
+  getElement
 } from "browser"
 import {
   mountHeader,
@@ -261,8 +268,7 @@ export function initialize(config: unknown) {
   const search$ = worker$
     .pipe(
       switchMap(worker => {
-
-        const query$ = useComponent("search-query")
+        const query$ = useComponent<HTMLInputElement>("search-query")
           .pipe(
             mountSearchQuery(worker, { transform: config.search.transform }),
             shareReplay({ bufferSize: 1, refCount: true })
@@ -397,16 +403,74 @@ export function initialize(config: unknown) {
 
   /* ----------------------------------------------------------------------- */
 
-  /* Unhide permalinks on first tab */
-  keyboard$
-    .pipe(
-      filter(key => key.mode === "global" && key.type === "Tab"),
-      take(1)
-    )
-      .subscribe(() => {
-        for (const link of getElements(".headerlink"))
-          link.style.visibility = "visible"
-      })
+  // Make indeterminate toggles indeterminate to expand navigation on screen
+  document$.subscribe(() => {
+    const toggles = getElements<HTMLInputElement>("[data-md-state=indeterminate]")
+    for (const toggle of toggles) {
+      toggle.dataset.mdState = ""
+      toggle.indeterminate = true
+      toggle.checked = false
+    }
+  })
+
+  // Auto hide header - this is still experimental, so there might be some
+  // opportunities for refactoring, but we'll address them when this feature
+  // got some feedback from the community.
+  if (config.features.includes("header.autohide")) {
+
+    // Threshold for header-hiding - always show if scrolled less than 400px.
+    // Also, search is not allowed to be active. Maybe make this dynamic.
+    const threshold$ = viewport$
+      .pipe(
+        map(({ offset }) => offset.y > 400),
+        combineLatestWith(watchToggle("search")),
+        map(([threshold, search]) => threshold && !search),
+        distinctUntilChanged()
+      )
+
+    // Scroll direction (true = down, false = up) + inflection point
+    const direction$ = viewport$
+      .pipe(
+        map(({ offset }) => offset.y),
+        bufferCount(2, 1),
+        map(([a, b]) => [a < b, b] as const),
+        distinctUntilKeyChanged(0)
+      )
+
+    // When the threshold is exceeded, and the search is not active, subscribe
+    // to the direction observable (always do a new subscription), and track
+    // scroll progress.
+    const hide$ = threshold$
+      .pipe(
+        switchMap(active => !active
+          ? of(false)
+          : direction$
+              .pipe(
+                combineLatestWith(viewport$),
+                filter(([[, y], { offset }]) => Math.abs(y - offset.y) > 100),
+                map(([[direction]]) => direction)
+              )
+        ),
+        distinctUntilChanged()
+      )
+
+    // Set header state depending on main state. There's still some possibility
+    // for improvement, as the page seems to jump when focusing the unfocused
+    // search. This would mean we would need to delay the focus/change event
+    // until the header is focussed, which we need to address in a refactoring.
+    hide$
+      .pipe(
+        combineLatestWith(main$),
+        map(([hide, main]) => main.active
+          ? hide ? "hidden" : "shadow"
+          : ""
+        ),
+        combineLatestWith(useComponent("header"))
+      )
+        .subscribe(([state, el]) => {
+          el.setAttribute("data-md-state", state)
+        })
+  }
 
   /* ----------------------------------------------------------------------- */
 

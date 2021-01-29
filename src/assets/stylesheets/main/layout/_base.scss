@@ -21,106 +21,88 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Variables
-// ----------------------------------------------------------------------------
-
-// Active (toggled) drawer
-$md-toggle__drawer--checked:
-  "[data-md-toggle=\"drawer\"]:checked ~";
-
-// ----------------------------------------------------------------------------
 // Rules: base grid and containers
 // ----------------------------------------------------------------------------
 
-// Stretch container to viewport and set base font-sizefor simple calculations
-// based on relative ems (rems)
+// Stretch container to viewport and set base `font-size`
 html {
   height: 100%;
-  // Hack: some browsers on some operating systems don't account for scroll
-  // bars when firing media queries, so we need to do this for safety. This
-  // currently impacts the table of contents component between 1220 and 1234px
-  // and is to current knowledge not fixable.
   overflow-x: hidden;
-  // Hack: normally, we would set the base font-size to 62.5%, so we can base
-  // all calculations on 10px, but Chromium and Chrome define a minimal font
-  // size of 12 if the system language is set to Chinese. For this reason we
-  // just double the font-size, set it to 20px which seems to do the trick.
+  // Hack: normally, we would set the base `font-size` to `62.5%`, so we can
+  // base all calculations on `10px`, but Chromium and Chrome define a minimal
+  // `font-size` of `12px` if the system language is set to Chinese. For this
+  // reason we just double the `font-size` and set it to `20px`.
   //
   // See https://github.com/squidfunk/mkdocs-material/issues/911
   font-size: 125%;
 
-  // [screen medium +]: Set base font-size to 11px
+  // [screen medium +]: Set base `font-size` to `11px`
   @include break-from-device(screen medium) {
     font-size: 137.50%;
   }
 
-  // [screen large +]: Set base font-size to 12px
+  // [screen large +]: Set base `font-size` to `12px`
   @include break-from-device(screen large) {
     font-size: 150%;
   }
 }
 
-// Stretch body to container and leave room for footer
+// Stretch body to container - flexbox is used, so the footer will always be
+// aligned to the bottom of the viewport
 body {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 100%;
-  // Hack: reset font-size to 10px, so the spacing for all inline elements is
-  // correct again. Otherwise the spacing would be based on 20px.
-  font-size: 0.5rem; // stylelint-disable-line unit-allowed-list
+  // Hack: reset `font-size` to `10px`, so the spacing for all inline elements
+  // is correct again. Otherwise the spacing would be based on `20px`.
+  font-size: px2rem(10px);
   background-color: var(--md-default-bg-color);
 
-  // [tablet portrait -]: Lock body to disable scroll bubbling
-  @include break-to-device(tablet portrait) {
-
-    // Lock body to viewport height (e.g. in search mode)
-    &[data-md-state="lock"] {
-      position: fixed;
-    }
-  }
-
-  // Hack: we must not use flex, or Firefox will only print the first page
-  // see https://mzl.la/39DgR3m
+  // [print]: Omit flexbox layout due to a Firefox bug (https://mzl.la/39DgR3m)
   @media print {
     display: block;
   }
+
+  // Body in locked state
+  &[data-md-state="lock"] {
+
+    // [tablet portrait -]: Omit scroll bubbling
+    @include break-to-device(tablet portrait) {
+      position: fixed;
+    }
+  }
 }
 
-// Horizontal separators
-hr {
-  display: block;
-  height: px2rem(1px);
-  padding: 0;
-  border: 0;
-}
+// ----------------------------------------------------------------------------
 
-// Template-wide grid
+// Grid container - this class is applied to wrapper elements within the
+// header, content area and footer, and makes sure that their width is limited
+// to `1220px`, and they are rendered centered if the screen is larger.
 .md-grid {
   max-width: px2rem(1220px);
   margin-right: auto;
   margin-left: auto;
 }
 
-// Content wrapper
+// Main container
 .md-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 
-  // Hack: we must not use flex, or Firefox will only print the first page
-  // see https://mzl.la/39DgR3m
+  // [print]: Omit flexbox layout due to a Firefox bug (https://mzl.la/39DgR3m)
   @media print {
     display: block;
   }
 }
 
-// The main content should stretch to maximum height in the table
+// Main area - stretch to remaining space of container
 .md-main {
   flex-grow: 1;
 
-  // Increase top spacing of content area to give typography more room
+  // Main area wrapper
   &__inner {
     display: flex;
     height: 100%;
@@ -128,9 +110,8 @@ hr {
   }
 }
 
-// Apply ellipsis in case of overflowing text
+// Add ellipsis in case of overflowing text
 .md-ellipsis {
-  display: block;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -140,49 +121,16 @@ hr {
 // Rules: navigational elements
 // ----------------------------------------------------------------------------
 
-// Toggle checkbox
+// Toggle - this class is applied to the checkbox elements, which are used to
+// implement the CSS-only drawer and navigation, as well as the search
 .md-toggle {
   display: none;
 }
 
-// Overlay below expanded drawer
-.md-overlay {
-  position: fixed;
-  top: 0;
-  z-index: 3;
-  width: 0;
-  height: 0;
-  background-color: hsla(0, 0%, 0%, 0.54);
-  opacity: 0;
-  transition:
-    width     0ms 250ms,
-    height    0ms 250ms,
-    opacity 250ms;
-
-  // [tablet -]: Trigger overlay
-  @include break-to-device(tablet) {
-
-    // Expanded drawer
-    #{$md-toggle__drawer--checked} & {
-      width: 100%;
-      height: 100%;
-      opacity: 1;
-      transition:
-        width     0ms,
-        height    0ms,
-        opacity 250ms;
-    }
-  }
-}
-
-// ----------------------------------------------------------------------------
-// Rules: skip link
-// ----------------------------------------------------------------------------
-
 // Skip link
 .md-skip {
   position: fixed;
-  // Hack: if we don't set the negative z-index, the skip link will induce the
+  // Hack: if we don't set the negative `z-index`, the skip link will force the
   // creation of new layers when code blocks are near the header on scrolling
   z-index: -1;
   margin: px2rem(10px);

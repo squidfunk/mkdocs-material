@@ -21,7 +21,7 @@
  */
 
 import { NEVER, Observable } from "rxjs"
-import { catchError, map, switchMap } from "rxjs/operators"
+import { catchError, filter, map, switchMap } from "rxjs/operators"
 
 import { getElementOrThrow, getElements } from "browser"
 import { renderSource } from "templates"
@@ -69,12 +69,12 @@ function fetchSourceFacts(
 
     /* GitHub repository */
     case "github":
-      const [, user, repo] = url.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)?/i)
+      const [, user, repo] = url.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)?/i)!
       return fetchSourceFactsFromGitHub(user, repo)
 
     /* GitLab repository */
     case "gitlab":
-      const [, base, slug] = url.match(/^.+?([^\/]*gitlab[^\/]+)\/(.+?)\/?$/i)
+      const [, base, slug] = url.match(/^.+?([^\/]*gitlab[^\/]+)\/(.+?)\/?$/i)!
       return fetchSourceFactsFromGitLab(base, slug)
 
     /* Everything else */
@@ -104,6 +104,7 @@ export function patchSource(
       switchMap(({ href }) => (
         cache(`${hash(href)}`, () => fetchSourceFacts(href))
       )),
+      filter(facts => facts.length > 0),
       catchError(() => NEVER)
     )
       .subscribe(facts => {

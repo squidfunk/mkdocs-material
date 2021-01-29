@@ -27,95 +27,92 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Permalinks extension
+  // Headerlink
   .headerlink {
     display: inline-block;
     margin-left: px2rem(10px);
-    // Hack: if we don't set visibility hidden, the text content of the node
-    // will include the headerlink character, which is why Google indexes them.
-    visibility: hidden;
+    color: var(--md-default-fg-color--lighter);
     opacity: 0;
     transition:
       color      250ms,
-      visibility   0ms 500ms,
       opacity    125ms;
 
-    // Adjust for RTL languages
+    // [print]: Hide headerlinks
+    @media print {
+      display: none;
+    }
+
+    // Adjust for right-to-left languages
     [dir="rtl"] & {
       margin-right: px2rem(10px);
       margin-left: initial;
     }
-
-    // Higher specificity for color due to palettes integration
-    html body & {
-      color: var(--md-default-fg-color--lighter);
-    }
-
-    // Hide for print
-    @media print {
-      display: none;
-    }
   }
 
-  // Make permalink visible on hover
+  // Show headerlinks on parent hover
   :hover  > .headerlink,
   :target > .headerlink,
   .headerlink:focus {
-    visibility: visible;
     opacity: 1;
     transition:
       color      250ms,
-      visibility   0ms,
       opacity    125ms;
   }
 
-  // Active or targeted permalink
+  // Adjust color on parent target or focus/hover
   :target > .headerlink,
   .headerlink:focus,
   .headerlink:hover {
     color: var(--md-accent-fg-color);
   }
 
-  // General scroll margin offset for anything that can be targeted. Browser
-  // support is pretty decent by now, and if we wait until Edge 79+ has more
-  // adoption, we can get rid of all anchor-correction hacks.
+  // Adjust scroll offset for all elements with `id` attributes - general scroll
+  // margin offset for anything that can be targeted. Browser support is pretty
+  // decent by now, but Edge <79 and Safari (iOS and macOS) still don't support
+  // it properly, so we settle with a cross-browser anchor correction solution.
   :target {
     scroll-margin-top: px2rem(48px + 24px);
   }
 
-  // Correct anchor offset for link blurring
-  @each $level, $delta in (
-    h1 h2 h3: 8px,
-    h4: 9px,
-    h5 h6: 12px,
-  ) {
-    %#{nth($level, 1)} {
+  // Adjust scroll offset for headlines of level 1-3
+  h1:target,
+  h2:target,
+  h3:target {
+    scroll-margin-top: initial;
 
-      // Reset, as we use the anchor-correction hack here.
-      &:target {
-        scroll-margin-top: initial;
-      }
-
-      // Un-targeted anchor
-      &::before {
-        display: block;
-        margin-top: -1 * px2rem($delta);
-        padding-top: px2rem($delta);
-        content: "";
-      }
-
-      // Targeted anchor (48px from header, 12px from sidebar offset)
-      &:target::before {
-        margin-top: -1 * px2rem(48px + 12px + $delta);
-        padding-top: px2rem(48px + 12px + $delta);
-      }
+    // Anchor correction hack
+    &::before {
+      display: block;
+      margin-top: -1 * px2rem(48px + 24px - 4px);
+      padding-top: px2rem(48px + 24px - 4px);
+      content: "";
     }
+  }
 
-    // Define levels
-    @for $n from 1 through length($level) {
-      #{nth($level, $n)}[id] {
-        @extend %#{nth($level, 1)};
-      }
+  // Adjust scroll offset for headlines of level 4
+  h4:target {
+    scroll-margin-top: initial;
+
+    // Anchor correction hack
+    &::before {
+      display: block;
+      margin-top: -1 * px2rem(48px + 24px - 3px);
+      padding-top: px2rem(48px + 24px - 3px);
+      content: "";
+    }
+  }
+
+  // Adjust scroll offset for headlines of level 5-6
+  h5:target,
+  h6:target {
+    scroll-margin-top: initial;
+
+    // Anchor correction hack
+    &::before {
+      display: block;
+      margin-top: -1 * px2rem(48px + 24px);
+      padding-top: px2rem(48px + 24px);
+      content: "";
     }
   }
 }

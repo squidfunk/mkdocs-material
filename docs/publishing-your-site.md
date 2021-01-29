@@ -31,6 +31,7 @@ contents:
       push:
         branches:
           - master
+          - main
     jobs:
       deploy:
         runs-on: ubuntu-latest
@@ -51,9 +52,11 @@ contents:
       push:
         branches:
           - master
+          - main
     jobs:
       deploy:
         runs-on: ubuntu-latest
+        if: github.event.pull_request.head.repo.fork == false
         steps:
           - uses: actions/checkout@v2
           - uses: actions/setup-python@v2
@@ -65,15 +68,15 @@ contents:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     ```
 
-Now, when a new commit is pushed to `master`, the static site is automatically
-built and deployed. Commit and push the file to your repository to see the
-workflow in action.
+Now, when a new commit is pushed to either the `master` or `main` branches,
+the static site is automatically built and deployed. Commit and push the file
+to your repository to see the workflow in action.
 
 Your documentation should shortly appear at `<username>.github.io/<repository>`.
 
 _Remember to set the_ `GH_TOKEN` _environment variable to the value of your
-[personal access token][3] when using [Material for MkDocs Insiders][4], which
-can be done using [secrets][5]._
+[personal access token][3] when deploying [Insiders][4], which can be done
+using [secrets][5]._
 
   [2]: https://github.com/features/actions
   [3]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
@@ -100,7 +103,7 @@ following contents:
 
     ``` yaml
     image: python:latest
-    deploy:
+    pages:
       stage: deploy
       only:
         - master
@@ -116,7 +119,7 @@ following contents:
 
     ``` yaml
     image: python:latest
-    deploy:
+    pages:
       stage: deploy
       only:
         - master
@@ -135,8 +138,8 @@ workflow in action.
 Your documentation should shortly appear at `<username>.gitlab.io/<repository>`.
 
 _Remember to set the_ `GH_TOKEN` _environment variable to the value of your
-[personal access token][3] when using [Material for MkDocs Insiders][4], which
-can be done using [masked custom variables][8]._
+[personal access token][3] when deploying [Insiders][4], which can be done
+using [masked custom variables][8]._
 
   [6]: https://gitlab.com/pages
   [7]: https://docs.gitlab.com/ee/ci/

@@ -59,7 +59,7 @@
     }
   }
 
-  // Block
+  // Critic block
   .critic.block {
     display: block;
     margin: 1em 0;
@@ -68,13 +68,13 @@
     overflow: auto;
     box-shadow: none;
 
-    // Decrease spacing on first element
-    :first-child {
+    // Adjust spacing on first child
+    > :first-child {
       margin-top: 0.5em;
     }
 
-    // Decrease spacing on last element
-    :last-child {
+    // Adjust spacing on last child
+    > :last-child {
       margin-bottom: 0.5em;
     }
   }

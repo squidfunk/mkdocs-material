@@ -88,12 +88,65 @@ _Result_:
 
 The unit price is 12.50.
 
+### Using variables in snippets
+
+The [macros][2] plugin can be used to allow variables in snippets, which is not
+possible with the [Snippets][3] extension alone. Add the snippets location to
+the plugin configuration in `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - search
+  - macros:
+      include_dir: snippets
+```
+
+In your Markdown file, include snippets with Jinja's [`include`][4] function:
+
+``` markdown
+{% include "definitions.md" %}
+```
+
+_Example_:
+
+=== "snippets/definitions.md"
+
+    ``` markdown
+    The unit price is {{ page.meta.unit.price }}
+    ```
+
+=== "docs/page-1.md"
+
+    ``` markdown
+    ---
+    unit:
+      price: 12.50
+    ---
+
+    {% include "definitions.md" %}
+    ```
+
+=== "docs/page-2.md"
+
+    ``` markdown
+    ---
+    unit:
+      price: 25.00
+    ---
+
+    {% include "definitions.md" %}
+    ```
+
+  [2]: #macros
+  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
+  [4]: https://jinja.palletsprojects.com/en/2.11.x/templates/#include
+
 ## Customization
 
 ### Custom macros
 
 The [macros][1] plugin allows to define custom macros, which can then be used
-from Markdown files. See the [official documentation][2] for more information
+from Markdown files. See the [official documentation][5] for more information
 how to define custom macros.
 
-  [2]: https://mkdocs-macros-plugin.readthedocs.io/en/latest/python/
+  [5]: https://mkdocs-macros-plugin.readthedocs.io/en/latest/python/

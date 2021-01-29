@@ -101,7 +101,7 @@ export function watchAnchorList(
   /* Compute necessary adjustment for header */
   const adjust$ = header$
     .pipe(
-      map(header => 18 + header.height)
+      map(header => 24 + header.height)
     )
 
   /* Compute partition of previous and next anchors */

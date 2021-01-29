@@ -33,7 +33,7 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 edit_uri: ""
 
 # Copyright
-copyright: Copyright &copy; 2016 - 2020 Martin Donath
+copyright: Copyright &copy; 2016 - 2021 Martin Donath
 
 # Configuration
 theme:
@@ -51,8 +51,9 @@ theme:
   # Default values, taken from mkdocs_theme.yml
   language: en
   features:
+    # - navigation.instant
+    - navigation.sections
     - navigation.tabs
-    #- navigation.instant
   palette:
     scheme: default
     primary: indigo
@@ -75,11 +76,12 @@ plugins:
         extensions/metadata.md: reference/meta-tags.md
         extensions/permalinks.md: setup/setting-up-navigation.md #permalink
         extensions/pymdown.md: reference/admonitions.md
-        plugins/search.md: setup/setting-up-site-search.md
         plugins/revision-date.md: setup/adding-a-git-repository.md #revision-date
+        plugins/search.md: setup/setting-up-site-search.md
         releases/4.md: upgrading.md #upgrading-from-4x-to-5x
         releases/5.md: upgrading.md #upgrading-from-3x-to-4x
         releases/changelog.md: changelog.md
+        setup/adding-social-links.md: setup/setting-up-the-footer.md
         sponsorship.md: insiders.md
   - minify:
       minify_html: true
@@ -108,6 +110,7 @@ markdown_extensions:
   - def_list
   - footnotes
   - meta
+  - md_in_html
   - toc:
       permalink: true
   - pymdownx.arithmatex:
@@ -129,8 +132,6 @@ markdown_extensions:
       repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.snippets:
-      check_paths: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -161,11 +162,11 @@ nav:
     - Setting up navigation: setup/setting-up-navigation.md
     - Setting up site search: setup/setting-up-site-search.md
     - Setting up site analytics: setup/setting-up-site-analytics.md
+    - Setting up versioning: setup/setting-up-versioning.md
     - Setting up the header: setup/setting-up-the-header.md
-    - Adding social links: setup/adding-social-links.md
+    - Setting up the footer: setup/setting-up-the-footer.md
     - Adding a git repository: setup/adding-a-git-repository.md
     - Adding a comment system: setup/adding-a-comment-system.md
-    #- Adding a landing page: setup/adding-a-landing-page.md
   - Reference:
     - Abbreviations: reference/abbreviations.md
     - Admonitions: reference/admonitions.md
@@ -173,6 +174,7 @@ nav:
     - Code blocks: reference/code-blocks.md
     - Content tabs: reference/content-tabs.md
     - Data tables: reference/data-tables.md
+    - Diagrams: reference/diagrams.md
     - Footnotes: reference/footnotes.md
     - Formatting: reference/formatting.md
     - Icons + Emojis: reference/icons-emojis.md
@@ -182,9 +184,11 @@ nav:
     - Meta tags: reference/meta-tags.md
     - Variables: reference/variables.md
   - Changelog:
-    - Release notes: changelog.md
-    - Upgrading: upgrading.md
-    - Deprecations: deprecations.md
+    - Material for MkDocs: changelog.md
+    - Material for MkDocs Insiders: changelog/insiders.md
+    - Guides:
+      - Upgrading: upgrading.md
+      - Deprecations: deprecations.md
 
 # Google Analytics
 google_analytics:

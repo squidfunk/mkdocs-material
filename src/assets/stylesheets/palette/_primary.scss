@@ -78,7 +78,7 @@
   // Typeset color shades
   --md-typeset-a-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
 
-  // [tablet portrait +]: Change color of search input
+  // [tablet portrait +]: Header-embedded search
   @include break-from-device(tablet landscape) {
 
     // Search input
@@ -102,10 +102,10 @@
     }
   }
 
-  // [screen +]: Set bottom border for tabs
+  // [screen +]: Add bottom border for tabs
   @include break-from-device(screen) {
 
-    // Tabs with outline
+    // Navigation tabs
     .md-tabs {
       border-bottom: px2rem(1px) solid hsla(0, 0%, 0%, 0.07);
     }
@@ -127,7 +127,7 @@
   // Text color shades
   --md-typeset-a-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
 
-  // Application header (stays always on top)
+  // Header
   .md-header {
     background-color: hsla(0, 0%, 0%, 1);
   }
@@ -135,7 +135,7 @@
   // [tablet portrait -]: Layered navigation
   @include break-to-device(tablet portrait) {
 
-    // Repository containing source
+    // Repository information container
     .md-nav__source {
       background-color: hsla(0, 0%, 0%, 0.87);
     }
@@ -148,7 +148,7 @@
     .md-search__input {
       background-color: hsla(0, 0%, 100%, 0.12);
 
-      // Hovered search field
+      // Search form on hover
       &:hover {
         background-color: hsla(0, 0%, 100%, 0.3);
       }
@@ -167,7 +167,7 @@
   // [screen +]: Set background color for tabs
   @include break-from-device(screen) {
 
-    // Tabs with outline
+    // Navigation tabs
     .md-tabs {
       background-color: hsla(0, 0%, 0%, 1);
     }

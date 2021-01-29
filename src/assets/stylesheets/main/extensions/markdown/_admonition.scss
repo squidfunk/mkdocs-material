@@ -24,9 +24,7 @@
 // Variables
 // ----------------------------------------------------------------------------
 
-///
 /// Admonition flavours
-///
 $admonitions: (
   note:                       pencil $clr-blue-a200,
   abstract summary tldr:      text-subject $clr-light-blue-a400,
@@ -49,11 +47,9 @@ $admonitions: (
 // Icon definitions
 :root {
   @each $names, $props in $admonitions {
-    $name: nth($names, 1);
-    $icon: nth($props, 1);
-
-    // Inline icon through PostCSS in Webpack
-    --md-admonition-icon--#{$name}: svg-load("@mdi/svg/svg/#{$icon}.svg");
+    --md-admonition-icon--#{nth($names, 1)}: svg-load(
+      "@mdi/svg/svg/#{nth($props, 1)}.svg"
+    );
   }
 }
 
@@ -62,7 +58,7 @@ $admonitions: (
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Admonition extension
+  // Admonition
   .admonition {
     margin: px2em(20px, 12.8px) 0;
     padding: 0 px2rem(12px);
@@ -74,8 +70,13 @@ $admonitions: (
     border-left: px2rem(4px) solid $clr-blue-a200;
     border-radius: px2rem(2px);
     box-shadow:
-      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
-      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+      0 px2rem(4px)   px2rem(10px) hsla(0, 0%, 0%, 0.05),
+      0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.05);
+
+    // [print]: Omit shadow as it may lead to rendering errors
+    @media print {
+      box-shadow: none;
+    }
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -83,34 +84,29 @@ $admonitions: (
       border-left: none;
     }
 
-    // Hack: omit rendering errors for print
-    @media print {
-      box-shadow: none;
-    }
-
-    // Adjust spacing on last element
-    html & > :last-child {
-      margin-bottom: px2rem(12px);
-    }
-
-    // Adjust margin for nested admonition blocks
+    // Adjust spacing for nested admonitions
     .admonition {
       margin: 1em 0;
     }
 
-    // Wrapper for scrolling on overflow
+    // Adjust spacing for contained table wrappers
     .md-typeset__scrollwrap {
       margin: 1em px2rem(-12px);
     }
 
-    // Data table wrapper, in case JavaScript is available
+    // Adjust spacing for contained tables
     .md-typeset__table {
       padding: 0 px2rem(12px);
     }
 
-    // Tabbed block container is the only child
+    // Adjust spacing for single-child tabbed block container
     > .tabbed-set:only-child {
       margin-top: 0;
+    }
+
+    // Adjust spacing on last child
+    html & > :last-child {
+      margin-bottom: px2rem(12px);
     }
   }
 
@@ -118,17 +114,20 @@ $admonitions: (
   .admonition-title {
     position: relative;
     margin: 0 px2rem(-12px) 0 px2rem(-16px);
-    padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(44px);
+    padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
     font-weight: 700;
     background-color: transparentize($clr-blue-a200, 0.9);
+    border-left: px2rem(4px) solid $clr-blue-a200;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       margin: 0 px2rem(-16px) 0 px2rem(-12px);
       padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(12px);
+      border-right: px2rem(4px) solid $clr-blue-a200;
+      border-left: none;
     }
 
-    // Reset spacing, if title is the only element
+    // Adjust spacing for title-only admonitions
     html &:last-child {
       margin-bottom: 0;
     }
@@ -136,22 +135,24 @@ $admonitions: (
     // Admonition icon
     &::before {
       position: absolute;
-      left: px2rem(16px);
+      left: px2rem(12px);
       width: px2rem(20px);
       height: px2rem(20px);
       background-color: $clr-blue-a200;
       mask-image: var(--md-admonition-icon--note);
       mask-repeat: no-repeat;
+      mask-size: contain;
       content: "";
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        right: px2rem(16px);
+        right: px2rem(12px);
         left: initial;
       }
     }
 
-    // Reset code inside admonition titles
+    // Omit background on inline code blocks, as they don't go well with the
+    // pastelly tones applied to admonition titles
     code {
       margin: initial;
       padding: initial;
@@ -161,7 +162,8 @@ $admonitions: (
       box-shadow: none;
     }
 
-    // Tabbed block container is the last child
+    // Adjust spacing on last tabbed block container child - if the tabbed
+    // block container is the sole child, it looks better to omit the margin
     + .tabbed-set:last-child {
       margin-top: 0;
     }
@@ -176,24 +178,26 @@ $admonitions: (
   $name: nth($names, 1);
   $tint: nth($props, 2);
 
-  // Admonition base class
+  // Admonition flavour
   .md-typeset .admonition.#{$name} {
     border-color: $tint;
   }
 
-  // Admonition title
+  // Admonition flavour title
   .md-typeset .#{$name} > .admonition-title {
     background-color: transparentize($tint, 0.9);
+    border-color: $tint;
 
     // Admonition icon
     &::before {
       background-color: $tint;
       mask-image: var(--md-admonition-icon--#{$name});
       mask-repeat: no-repeat;
+      mask-size: contain;
     }
   }
 
-  // Define synonyms for base class
+  // Define synonyms for flavours
   @if length($names) > 1 {
     @for $n from 2 through length($names) {
       .#{nth($names, $n)} {

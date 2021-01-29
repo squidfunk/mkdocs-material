@@ -24,7 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Dialog rendered as snackbar
+// Dialog
 .md-dialog {
   @include z-depth(2);
 
@@ -38,7 +38,7 @@
   padding: px2rem(8px) px2rem(12px);
   color: var(--md-default-bg-color);
   font-size: px2rem(14px);
-  background: var(--md-default-fg-color);
+  background-color: var(--md-default-fg-color);
   border: none;
   border-radius: px2rem(2px);
   transform: translateY(100%);
@@ -47,23 +47,23 @@
     transform 0ms   400ms,
     opacity   400ms;
 
+  // [print]: Hide dialog
+  @media print {
+    display: none;
+  }
+
   // Adjust for right-to-left languages
   [dir="rtl"] & {
     right: initial;
     left: px2rem(16px);
   }
 
-  // Show open dialog
+  // Dialog in open state
   &[data-md-state="open"] {
     transform: translateY(0);
     opacity: 1;
     transition:
       transform 400ms cubic-bezier(0.075, 0.85, 0.175, 1),
       opacity   400ms;
-  }
-
-  // Hide for print
-  @media print {
-    display: none;
   }
 }

@@ -15,8 +15,8 @@
 
 <p align="center">
   <a href="https://github.com/squidfunk/mkdocs-material/actions"><img
-    src="https://github.com/squidfunk/mkdocs-material/workflows/ci/badge.svg?branch=master"
-    alt="GitHub Action"
+    src="https://github.com/squidfunk/mkdocs-material/workflows/build/badge.svg?branch=master"
+    alt="Build"
   /></a>
   <a href="https://pypistats.org/packages/mkdocs-material"><img
     src="https://img.shields.io/pypi/dm/mkdocs-material.svg" 
@@ -140,16 +140,17 @@ For other installation methods, configuration options, and a demo, visit
 ## Users
 
 * **Companies** — 
-  [AWS](https://awssecworkshops.com/),
+  [AWS](https://aws.github.io/copilot-cli/),
   [Binance](https://docs.binance.org/),
   [Datadog](https://datadoghq.dev/integrations-core/),
+  [Google](https://google.github.io/xls/),
   [ING](https://ing-bank.github.io/baker/),
-  [Lyft](https://lyft.github.io/amundsen/),
+  [LinkedIn](https://linkedin.github.io/school-of-sre/),
+  [Microsoft](https://www.electionguard.vote/),
   [Netflix](https://netflix.github.io/titus/),
   [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
   [SAP](https://sap.github.io/ui5-tooling/),
   [SoundCloud](https://intervene.dev/),
-  [Spotify](https://spotify.github.io/mkdocs-monorepo-plugin/),
   [Square](https://square.github.io/okhttp/),
   [Uber](https://ludwig-ai.github.io/ludwig-docs/getting_started/),
   [Zalando](https://opensource.zalando.com/skipper/)
@@ -157,15 +158,19 @@ For other installation methods, configuration options, and a demo, visit
 * **Open Source** —
   [AutoKeras](https://autokeras.com/),
   [BFE](https://www.bfe-networks.net/),
+  [Crystal](https://crystal-lang.org/reference/),
   [FastAPI](https://fastapi.tiangolo.com/),
   [Kubernetes](https://kops.sigs.k8s.io/),
+  [kSQL](https://docs.ksqldb.io/),
   [Nokogiri](https://nokogiri.org/),
   [OpenFaaS](https://docs.openfaas.com/),
   [Pi-Hole](https://docs.pi-hole.net/),
   [Pydantic](https://pydantic-docs.helpmanual.io/),
+  [Renovatebot](https://docs.renovatebot.com/),
   [Traefik](https://docs.traefik.io/),
   [Vapor](https://docs.vapor.codes/),
-  [ZeroNet](https://zeronet.io/docs/)
+  [ZeroNet](https://zeronet.io/docs/),
+  [WTF](https://wtfutil.com/)
 
 ## License
 

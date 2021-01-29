@@ -1,3 +1,166 @@
+mkdocs-material-6.2.6+insiders-1.16.1 (2021-01-26)
+
+  * Fixed #2249: Instant loading + sticky tabs result in invalid links
+  * Fixed #2248: Search highlighting URL parameter always added
+  * Fixed #2235: Version selector doesn't select current version for aliases
+
+mkdocs-material-6.2.6 (2021-01-26)
+
+  * Added Bulgarian translations
+  * Fixed #2233: Search not shown when using header autohiding
+
+mkdocs-material-6.2.5+insiders-1.16.0 (2021-01-17)
+
+  * Added latest release to repository info (GitHub)
+  * Slight facelift of repository info (lighter fonts, spacing and icons)
+
+mkdocs-material-6.2.5 (2021-01-17)
+
+  * Fixed syntax error in Swedish translations
+  * Optimized navigation partials to improve build speed for huge docs
+
+mkdocs-material-6.2.4 (2021-01-09)
+
+  * Fixed #2156: Missing syntax highlighting for binary numbers
+  * Fixed #2186: Disqus showing on 404 page
+
+mkdocs-material-6.2.3+insiders-1.15.0 (2021-01-02)
+
+  * Added support for native Mermaid.js integration
+
+mkdocs-material-6.2.3+insiders-1.14.0 (2020-12-30)
+
+  * Added support for sharing searches
+
+mkdocs-material-6.2.3 (2020-12-27)
+
+  * Added back hidden overflow on root container
+  * Fixed #2142: MathJax formulas sometimes have vertical scrollbars
+
+mkdocs-material-6.2.2+insiders-1.13.2 (2020-12-22)
+
+  * Fixed version selector + sticky tabs navigation rendering issues
+  * Fixed version selector wrapping
+
+mkdocs-material-6.2.2 (2020-12-22)
+
+  * Removed Markdown version range limit (6.2.0 regression)
+
+mkdocs-material-6.2.1 (2020-12-22)
+
+  * Fixed all import and asset paths in templates (6.2.0 regression)
+  * Downgraded webpack-asset-manifest-plugin - broke all asset paths
+
+mkdocs-material-6.2.0 (2020-12-22)
+
+  * Added support for navigation sections
+  * Added support for navigation expansion
+  * Added support for integrating table of contents into navigation
+  * Added support for autohiding header on scroll
+  * Added support for hiding navigation and table of contents per page
+  * Added support for arbitrary items in navigation tabs
+  * Refactored navigation tabs to simplify grouping behavior
+  * Fixed anchor offset for permalinks in Safari (partial revert)
+  * Fixed #2098: Active tab sometimes not highlighted correctly
+  * Improved appearance for horizontal rulers
+  * Improved Spanish and Swedish translations
+
+mkdocs-material-6.1.7+insiders-1.13.1 (2020-12-20)
+
+  * Fixed horizontal scrollbars for language and version selection
+  * Fixed type conversion in JavaScript config (#6)
+
+mkdocs-material-6.1.7+insiders-1.13.0 (2020-12-13)
+
+  * Added support for sticky navigation tabs
+  * Added support for arbitrary links in navigation tabs
+  * Refactored navigation tabs to simplify grouping behavior
+  * Fixed #2098: Subsequent active subsection not highlighted correctly
+
+mkdocs-material-6.1.7+insiders-1.12.1 (2020-12-08)
+
+  * Fixed empty language selector being shown
+
+mkdocs-material-6.1.7+insiders-1.12.0 (2020-12-06)
+
+  * Added support for adding a language selector
+
+mkdocs-material-6.1.7 (2020-12-06)
+
+  * Fixed #2081: Fixed stats for private GitHub repositories
+  * Fixed alignment for admonition icon alignment for right-to-left languages
+
+mkdocs-material-6.1.6+insiders-1.11.2 (2020-11-29)
+
+  * Fixed #2068: Search highlight interprets code blocks as JavaScript
+
+mkdocs-material-6.1.6+insiders-1.11.1 (2020-11-29)
+
+  * Refactored styling to be more stable and easier to adjust
+  * Fixed some styling regressions from latest features
+
+mkdocs-material-6.1.6+insiders-1.11.0 (2020-11-22)
+
+  * Added support for rendering admonitions as inline blocks
+
+mkdocs-material-6.1.6 (2020-11-22)
+
+  * Fixed #2048: Math formulas show scrollbars (Windows)
+
+mkdocs-material-6.1.5+insiders-1.10.0 (2020-11-15)
+
+  * Added support for integrating table of contents into navigation
+
+mkdocs-material-6.1.5 (2020-11-15)
+
+  * Fixed search reset button not showing/hiding correctly
+
+mkdocs-material-6.1.4+insiders-1.9.0 (2020-11-07)
+
+  * Added support for hiding navigation and table of contents on any page
+  * Removed autohiding table of contents when empty
+
+mkdocs-material-6.1.4 (2020-11-07)
+
+  * Fixed sidebar jitter when scrolling footer into view
+
+mkdocs-material-6.1.3 (2020-11-05)
+
+  * Added support for keywords meta tag
+  * Fixed #2027: Line numbers don't scale with smaller font size
+  * Fixed link colors for black and white on slate color scheme
+  * Removed focus outline on scrolling code blocks for pointer devices
+
+mkdocs-material-6.1.2+insiders-1.8.0 (2020-11-01)
+
+  * Added support for navigation sections
+  * Fixed appearance of inactive search suggestions
+
+mkdocs-material-6.1.2 (2020-10-31)
+
+  * Fixed sizing of icons in admonitions, task lists, etc. (6.1.1 regression)
+
+mkdocs-material-6.1.1 (2020-10-31)
+
+  * Fixed #2019: Page title not correctly updated when using instant loading
+
+mkdocs-material-6.1.0+insiders-1.7.0 (2020-10-25)
+
+  * Added support for deploying multiple versions
+  * Fixed alignment of sidebar when content area is too small
+
+mkdocs-material-6.1.0 (2020-10-17)
+
+  * Fixed #1973: Added support for printing in dark mode
+  * Fixed #1974: Added support for printing content tabs
+  * Fixed #1995: Improved customizability of details extension
+
+mkdocs-material-6.0.2+insiders-1.6.0 (2020-10-11)
+
+  * Added support for search suggestions to save keystrokes
+  * Added support for removing 'Made with Material for MkDocs' from footer
+  * Fixed #1915: search should go to first result by pressing Enter
+
 mkdocs-material-6.0.2 (2020-10-04)
 
   * Added Georgian translations
@@ -116,7 +279,7 @@ mkdocs-material-5.5.2 (2020-08-03)
   * Improved highlight colors and spacing for ins, del and mark
   * Changed some keyboard symbols for better equivalents
   * Removed focus outline for details and code blocks on touch devices
-  * Fixed margins for Admonitions (5.5.1 regression)
+  * Fixed margins for admonitions (5.5.1 regression)
   * Fixed too small content tab labels (5.5.1 regression)
   * Fixed icon repeating for custom admonition icons
 
@@ -268,7 +431,7 @@ mkdocs-material-5.0.0 (2020-04-07)
   * Support for displaying stars and forks for GitLab repositories
   * Support for scroll snapping of sidebars and search results
   * Reduced HTML and CSS footprint due to deprecation of IE support
-  * Slight facelifting of some UI elements (Admonitions, tables, ...)
+  * Slight facelifting of some UI elements (admonitions, tables, ...)
 
 mkdocs-material-4.6.3 (2020-02-14)
 
@@ -565,8 +728,8 @@ mkdocs-material-2.4.0 (2018-01-11)
 
 mkdocs-material-2.3.0 (2018-01-09)
 
-  * Added example (synonym: snippet) style for Admonition
-  * Added synonym abstract for summary style for Admonition
+  * Added example (synonym: snippet) style for admonitions
+  * Added synonym abstract for summary style for admonitions
 
 mkdocs-material-2.2.6 (2017-12-27)
 
@@ -590,11 +753,11 @@ mkdocs-material-2.2.2 (2017-12-08)
 
   * Added Dutch translations
   * Adjusted targeted link and footnote offsets
-  * Simplified Admonition styles and fixed padding bug
+  * Simplified admonition styles and fixed padding bug
 
 mkdocs-material-2.2.1 (2017-12-02)
 
-  * Fixed #616: Minor styling error with title-only admonition blocks
+  * Fixed #616: Minor styling error with title-only admonitions
   * Removed border for table of contents and improved spacing
 
 mkdocs-material-2.2.0 (2017-11-22)
@@ -706,10 +869,10 @@ mkdocs-material-1.10.0 (2017-09-01)
 
 mkdocs-material-1.9.0 (2017-08-29)
 
-  * Added info (synonym: todo) style for Admonition
-  * Added question (synonym: help, faq) style for Admonition
+  * Added info (synonym: todo) style for admonitions
+  * Added question (synonym: help, faq) style for admonitions
   * Added support for Details from PyMdown Extensions package
-  * Improved Admonition styles to match Details
+  * Improved admonition styles to match details
   * Improved styles for social links in footer
   * Replaced ligatures with Unicode code points to avoid broken layout
   * Upgraded PyMdown Extensions package dependency to >= 3.4
@@ -856,7 +1019,7 @@ mkdocs-material-1.3.0 (2017-03-11)
 
 mkdocs-material-1.2.0 (2017-03-03)
 
-  * Added quote (synonym: cite) style for Admonition
+  * Added quote (synonym: cite) style for admonitions
   * Added help message to build pipeline
   * Fixed wrong navigation link colors when applying palette
   * Fixed #197: Link missing in tabs navigation on deeply nested items

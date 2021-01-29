@@ -33,12 +33,12 @@
 
 // ----------------------------------------------------------------------------
 
-// Navigation container
+// Navigation
 .md-nav {
   font-size: px2rem(14px);
   line-height: 1.3;
 
-  // List title
+  // Navigation title
   &__title {
     display: block;
     padding: 0 px2rem(12px);
@@ -46,17 +46,17 @@
     font-weight: 700;
     text-overflow: ellipsis;
 
-    // Hide buttons by default
+    // Navigaton button
     .md-nav__button {
       display: none;
 
-      // Stretch images
+      // Stretch images based on height, as it's the smaller dimension
       img {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
       }
 
-      // Logo
+      // Button with logo, pointing to `config.site_url`
       &.md-logo {
 
         // Image or icon
@@ -65,33 +65,24 @@
           display: block;
           width: px2rem(48px);
           height: px2rem(48px);
-        }
-
-        // Icon
-        svg {
           fill: currentColor;
         }
       }
     }
   }
 
-  // List of items
+  // Navigation list
   &__list {
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  // List item
+  // Navigation item
   &__item {
     padding: 0 px2rem(12px);
 
-    // Add bottom spacing to last item
-    &:last-child {
-      padding-bottom: px2rem(12px);
-    }
-
-    // 2nd+ level items
+    // Navigation item on level 2
     & & {
       padding-right: 0;
 
@@ -100,15 +91,10 @@
         padding-right: px2rem(12px);
         padding-left: 0;
       }
-
-      // Remove bottom spacing for nested items
-      &:last-child {
-        padding-bottom: 0;
-      }
     }
   }
 
-  // Link inside item
+  // Navigation link
   &__link {
     display: block;
     margin-top: 0.625em;
@@ -118,18 +104,7 @@
     transition: color 125ms;
     scroll-snap-align: start;
 
-    // Hide link to table of contents by default - this will only match the
-    // table of contents inside the drawer below and including tablet portrait
-    html &[for="__toc"] {
-      display: none;
-
-      // Hide table of contents by default
-      & ~ .md-nav {
-        display: none;
-      }
-    }
-
-    // Blurred link
+    // Link in blurred state
     &[data-md-state="blur"] {
       color: var(--md-default-fg-color--light);
     }
@@ -139,30 +114,48 @@
       color: var(--md-typeset-a-color);
     }
 
-    // Reset active color for nested list titles
+    // Navigation link in nested list
     .md-nav__item--nested > & {
       color: inherit;
     }
 
-    // Focused or hovered link
+    // Navigation link on focus/hover
     &:focus,
     &:hover {
       color: var(--md-accent-fg-color);
     }
+
+    // Navigation link to table of contents
+    .md-nav--primary &[for="__toc"] {
+      display: none;
+
+      // Table of contents icon
+      .md-icon::after {
+        display: block;
+        width: 100%;
+        height: 100%;
+        mask-image: var(--md-toc-icon);
+        background-color: currentColor;
+      }
+
+      // Hide table of contents
+      & ~ .md-nav {
+        display: none;
+      }
+    }
   }
 
-  // Repository containing source
+  // Repository information container
   &__source {
     display: none;
   }
 
   // [tablet -]: Layered navigation
   @include break-to-device(tablet) {
-    background-color: var(--md-default-bg-color);
 
-    // Stretch primary navigation to drawer
+    // Primary and nested navigation
     &--primary,
-    &--primary .md-nav {
+    &--primary & {
       position: absolute;
       top: 0;
       right: 0;
@@ -171,19 +164,20 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      background-color: var(--md-default-bg-color);
     }
 
-    // Adjust styles for primary navigation
+    // Primary navigation
     &--primary {
 
-      // List title and item
+      // Navigation title and item
       .md-nav__title,
       .md-nav__item {
         font-size: px2rem(16px);
         line-height: 1.5;
       }
 
-      // List title
+      // Navigation title
       .md-nav__title {
         position: relative;
         height: px2rem(112px);
@@ -205,7 +199,13 @@
           height: px2rem(24px);
           margin: px2rem(4px);
 
-          // Previous navigation item icon
+          // Adjust for right-to-left languages
+          [dir="rtl"] & {
+            right: px2rem(8px);
+            left: initial;
+          }
+
+          // Navigation icon in link to previous level
           &::after {
             display: block;
             width: 100%;
@@ -213,17 +213,12 @@
             background-color: currentColor;
             mask-image: var(--md-nav-icon--prev);
             mask-repeat: no-repeat;
+            mask-size: contain;
             content: "";
-          }
-
-          // Adjust for right-to-left languages
-          [dir="rtl"] & {
-            right: px2rem(8px);
-            left: initial;
           }
         }
 
-        // Main lists
+        // Navigation list
         ~ .md-nav__list {
           overflow-y: auto;
           background-color: var(--md-default-bg-color);
@@ -232,57 +227,46 @@
           scroll-snap-type: y mandatory;
           touch-action: pan-y;
 
-          // Remove border for first list item
-          > .md-nav__item:first-child {
+          // Omit border on first child
+          > :first-child {
             border-top: 0;
           }
         }
 
-        // Site title in main navigation
+        // Top-level navigation title
         &[for="__drawer"] {
-          position: relative;
           color: var(--md-primary-bg-color);
           background-color: var(--md-primary-fg-color);
+        }
 
-          // Site logo
-          .md-nav__button {
-            position: absolute;
-            top: px2rem(4px);
-            left: px2rem(4px);
-            display: block;
-            margin: px2rem(4px);
-            padding: px2rem(8px);
-            font-size: px2rem(48px);
+        // Button with logo, pointing to `config.site_url`
+        .md-logo {
+          position: absolute;
+          top: px2rem(4px);
+          left: px2rem(4px);
+          display: block;
+          margin: px2rem(4px);
+          padding: px2rem(8px);
+
+          // Adjust for right-to-left languages
+          [dir="rtl"] & {
+            right: px2rem(4px);
+            left: initial;
           }
         }
       }
 
-      // Adjust for right-to-left languages
-      html [dir="rtl"] & .md-nav__title {
-
-        // Site title in main navigation
-        &[for="__drawer"] .md-nav__button {
-          right: px2rem(4px);
-          left: initial;
-        }
-      }
-
-      // List of items
+      // Navigation list
       .md-nav__list {
         flex: 1;
       }
 
-      // List item
+      // Navigation item
       .md-nav__item {
         padding: 0;
         border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
 
-        // Adjust for right-to-left languages
-        [dir="rtl"] & {
-          padding: 0;
-        }
-
-        // Increase spacing to account for icon
+        // Navigation link in nested navigation
         &--nested > .md-nav__link {
           padding-right: px2rem(48px);
 
@@ -293,11 +277,11 @@
           }
         }
 
-        // Active parent item
+        // Navigation link in active navigation
         &--active > .md-nav__link {
           color: var(--md-typeset-a-color);
 
-          // Focused or hovered linl
+          // Navigation link on focus/hover
           &:focus,
           &:hover {
             color: var(--md-accent-fg-color);
@@ -305,7 +289,7 @@
         }
       }
 
-      // Link inside item
+      // Navigation link
       .md-nav__link {
         position: relative;
         margin-top: 0;
@@ -322,7 +306,13 @@
           color: inherit;
           font-size: px2rem(24px);
 
-          // Next navigation item icon
+          // Adjust for right-to-left languages
+          [dir="rtl"] & {
+            right: initial;
+            left: px2rem(12px);
+          }
+
+          // Navigation icon in link to next level
           &::after {
             display: block;
             width: 100%;
@@ -330,40 +320,35 @@
             background-color: currentColor;
             mask-image: var(--md-nav-icon--next);
             mask-repeat: no-repeat;
+            mask-size: contain;
             content: "";
-          }
-
-          // Adjust for right-to-left languages
-          [dir="rtl"] & {
-            right: initial;
-            left: px2rem(12px);
           }
         }
       }
 
       // Flip icon vertically
-      .md-nav__icon::after {
+      .md-nav__icon {
 
         // Adjust for right-to-left languages
-        [dir="rtl"] & {
+        [dir="rtl"] &::after {
           transform: scale(-1);
         }
       }
 
-      // Table of contents inside navigation
+      // Table of contents contained in primary navigation
       .md-nav--secondary {
 
-        // Set links to static to avoid unnecessary layering
+        // Navigation link - omit unnecessary layering
         .md-nav__link {
           position: static;
         }
 
-        // Set nested navigation for table of contents to static
+        // Navigation on level 2-6
         .md-nav {
           position: static;
           background-color: transparent;
 
-          // 3rd level link
+          // Navigation link on level 3
           .md-nav__link {
             padding-left: px2rem(28px);
 
@@ -374,7 +359,7 @@
             }
           }
 
-          // 4th level link
+          // Navigation link on level 4
           .md-nav .md-nav__link {
             padding-left: px2rem(40px);
 
@@ -385,7 +370,7 @@
             }
           }
 
-          // 5th level link
+          // Navigation link on level 5
           .md-nav .md-nav .md-nav__link {
             padding-left: px2rem(52px);
 
@@ -396,7 +381,7 @@
             }
           }
 
-          // 6th level link
+          // Navigation link on level 6
           .md-nav .md-nav .md-nav .md-nav__link {
             padding-left: px2rem(64px);
 
@@ -410,8 +395,13 @@
       }
     }
 
-    // Hide nested navigation by default
-    .md-nav__toggle ~ & {
+    // Table of contents
+    &--secondary {
+      background-color: transparent;
+    }
+
+    // Toggle for nested navigation
+    &__toggle ~ & {
       display: flex;
       transform: translateX(100%);
       opacity: 0;
@@ -425,43 +415,44 @@
       }
     }
 
-    // Expand nested navigation, if toggle is checked
-    .md-nav__toggle:checked ~ & {
+    // Show nested navigation when toggle is active
+    &__toggle:checked ~ & {
       transform: translateX(0);
       opacity: 1;
       transition:
         transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
         opacity   125ms 125ms;
 
-      // Hack: reduce jitter
+      // Navigation list
       > .md-nav__list {
+        // Hack: promote to own layer to reduce jitter
         backface-visibility: hidden;
       }
     }
   }
 
-  // [tablet portrait -]: Show table of contents in drawer
+  // [tablet portrait -]: Layered navigation with table of contents
   @include break-to-device(tablet portrait) {
 
-    // Show link to table of contents - higher specificity is necessary to
-    // display the table of contents inside the drawer
-    html &__link[for="__toc"] {
+    // Show link to table of contents
+    &--primary &__link[for="__toc"] {
       display: block;
       padding-right: px2rem(48px);
 
-      // Hide link to current item
-      + .md-nav__link {
-        display: none;
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        padding-right: px2rem(16px);
+        padding-left: px2rem(48px);
       }
 
-      // Table of contents icon
+      // Show table of contents icon
       .md-icon::after {
-        display: block;
-        width: 100%;
-        height: 100%;
-        mask-image: var(--md-toc-icon);
-        background-color: currentColor;
         content: "";
+      }
+
+      // Hide navigation link to current page
+      + .md-nav__link {
+        display: none;
       }
 
       // Show table of contents
@@ -470,13 +461,7 @@
       }
     }
 
-    // Adjust for right-to-left languages
-    html [dir="rtl"] &__link {
-      padding-right: px2rem(16px);
-      padding-left: px2rem(48px);
-    }
-
-    // Repository containing source
+    // Repository information container
     &__source {
       display: block;
       padding: 0 px2rem(4px);
@@ -485,18 +470,50 @@
     }
   }
 
-  // [tablet landscape +]: Tree-like navigation
+  // [tablet landscape]: Layered navigation with table of contents
+  @include break-at-device(tablet landscape) {
+
+    // Show link to integrated table of contents
+    &--integrated &__link[for="__toc"] {
+      display: block;
+      padding-right: px2rem(48px);
+      scroll-snap-align: initial;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        padding-right: px2rem(16px);
+        padding-left: px2rem(48px);
+      }
+
+      // Show table of contents icon
+      .md-icon::after {
+        content: "";
+      }
+
+      // Hide navigation link to current page
+      + .md-nav__link {
+        display: none;
+      }
+
+      // Show table of contents
+      & ~ .md-nav {
+        display: flex;
+      }
+    }
+  }
+
+  // [tablet landscape +]: Tree-like table of contents
   @include break-from-device(tablet landscape) {
 
-    // List title
-    &--secondary .md-nav__title {
+    // Navigation title
+    &--secondary &__title {
 
-      // Snap to table of contents title
+      // Adjust snapping behavior
       &[for="__toc"] {
         scroll-snap-align: start;
       }
 
-      // Hide icon
+      // Hide navigation icon
       .md-nav__icon {
         display: none;
       }
@@ -507,33 +524,68 @@
   @include break-from-device(screen) {
     transition: max-height 250ms cubic-bezier(0.86, 0, 0.07, 1);
 
-    // List title
-    &--primary .md-nav__title {
+    // Navigation title
+    &--primary &__title {
 
-      // Snap to site title
+      // Adjust snapping behavior
       &[for="__drawer"] {
         scroll-snap-align: start;
       }
 
-      // Hide icon
+      // Hide navigation icon
       .md-nav__icon {
         display: none;
       }
     }
 
-    // Hide nested navigation by default
-    .md-nav__toggle ~ & {
+    // Hide toggle for nested navigation
+    &__toggle ~ & {
       display: none;
     }
 
-    // Show nested navigation, if toggle is checked
-    .md-nav__toggle:checked ~ & {
+    // Show nested navigation when toggle is active or indeterminate
+    &__toggle:checked ~ &,
+    &__toggle:indeterminate ~ & {
       display: block;
     }
 
-    // Hide titles for nested navigation
-    &__item--nested > .md-nav > &__title {
+    // Hide navigation title in nested navigation
+    &__item--nested > & > &__title {
       display: none;
+    }
+
+    // Navigation section
+    &__item--section {
+      display: block;
+      margin: 1.25em 0;
+
+      // Adjust spacing on last child
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      // Hide navigation link, as sections are always expanded
+      > .md-nav__link {
+        display: none;
+      }
+
+      // Navigation
+      > .md-nav {
+        display: block;
+
+        // Navigation title
+        > .md-nav__title {
+          display: block;
+          padding: 0;
+          pointer-events: none;
+          scroll-snap-align: start;
+        }
+
+        // Adjust spacing on next level item
+        > .md-nav__list > .md-nav__item {
+          padding: 0;
+        }
+      }
     }
 
     // Navigation icon
@@ -549,7 +601,7 @@
         transform: rotate(180deg);
       }
 
-      // Inline icon and adjust icon to match font size
+      // Navigation icon content
       &::after {
         display: inline-block;
         width: 100%;
@@ -558,12 +610,71 @@
         background-color: currentColor;
         mask-image: var(--md-nav-icon--next);
         mask-repeat: no-repeat;
+        mask-size: contain;
         content: "";
       }
 
-      // Rotate icon for expanded lists
-      .md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link & {
+      // Navigation icon - rotate icon when toggle is active or indeterminate
+      .md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link &,
+      .md-nav__item--nested .md-nav__toggle:indeterminate ~ .md-nav__link & {
         transform: rotate(90deg);
+      }
+    }
+
+    // Modifier for when navigation tabs are rendered
+    &--lifted {
+
+      // Hide nested items on level 1 and site title
+      > .md-nav__list > .md-nav__item--nested,
+      > .md-nav__title {
+        display: none;
+      }
+
+      // Hide level 1 items
+      > .md-nav__list > .md-nav__item {
+        display: none;
+
+        // Active parent navigation item
+        &--active {
+          display: block;
+          padding: 0;
+
+          // Hide nested links
+          > .md-nav__link {
+            display: none;
+          }
+
+          // Show title and adjust spacing
+          > .md-nav > .md-nav__title {
+            display: block;
+            padding: 0 px2rem(12px);
+            pointer-events: none;
+            scroll-snap-align: start;
+          }
+        }
+
+        // Adjust spacing for navigation item on level 2
+        > .md-nav__item {
+          padding-right: px2rem(12px);
+        }
+      }
+
+      // Hack: Always show active navigation tab on breakpoint screen, despite
+      // of checkbox being checked or not. Fixes #1655.
+      .md-nav[data-md-level="1"] {
+        display: block;
+      }
+    }
+
+    // Modifier for when table of contents is rendered in primary navigation
+    &--integrated &__link[for="__toc"] ~ .md-nav {
+      display: block;
+      margin-bottom: 1.25em;
+      border-left: px2rem(1px) solid var(--md-primary-fg-color);
+
+      // Hide navigation title
+      > .md-nav__title {
+        display: none;
       }
     }
   }

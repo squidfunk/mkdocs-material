@@ -38,9 +38,11 @@
         <meta name="description" content="{{ config.site_description }}" />
       {% endif %}
 
-      <!-- Canonical -->
-      {% if page.canonical_url %}
-        <link rel="canonical" href="{{ page.canonical_url }}" />
+      <!-- Page keywords -->
+      {% if page and page.meta and page.meta.keywords %}
+        <meta name="keywords" content="{{ page.meta.keywords }}" />
+      {% elif config.site_keywords %}
+        <meta name="keywords" content="{{ config.site_keywords }}" />
       {% endif %}
 
       <!-- Page author -->
@@ -48,6 +50,11 @@
         <meta name="author" content="{{ page.meta.author }}" />
       {% elif config.site_author %}
         <meta name="author" content="{{ config.site_author }}" />
+      {% endif %}
+
+      <!-- Canonical -->
+      {% if page.canonical_url %}
+        <link rel="canonical" href="{{ page.canonical_url }}" />
       {% endif %}
 
       <!-- Favicon -->
@@ -103,7 +110,7 @@
       <!-- Load fonts from Google -->
       {% if config.theme.font != false %}
         {% set font = config.theme.font %}
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family={{
@@ -133,7 +140,7 @@
       />
     {% endif %}
 
-    <!-- Custom stylesheets, might contain media query after URL -->
+    <!-- Custom stylesheets -->
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}" />
     {% endfor %}
@@ -177,6 +184,9 @@
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
+
+    <!-- Retrieve features from configuration -->
+    {%  set features = config.theme.features or [] %}
 
     <!--
       State toggles - we need to set autocomplete="off" in order to reset the
@@ -232,9 +242,9 @@
       <!-- Hero teaser -->
       {% block hero %}{% endblock %}
 
-      <!-- Tabs navigation -->
+      <!-- Navigation tabs -->
       {% block tabs %}
-        {% if "navigation.tabs" in config.theme.features %}
+        {% if "navigation.tabs" in features %}
           {% include "partials/tabs.html" %}
         {% endif %}
       {% endblock %}
@@ -248,9 +258,13 @@
 
             <!-- Main navigation -->
             {% if nav %}
+              {% if page and page.meta and page.meta.hide %}
+                {% set hidden = "hidden" if "navigation" in page.meta.hide %}
+              {% endif %}
               <div
                 class="md-sidebar md-sidebar--primary"
                 data-md-component="navigation"
+                {{ hidden }}
               >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -261,10 +275,14 @@
             {% endif %}
 
             <!-- Table of contents -->
-            {% if page.toc %}
+            {% if page.toc and not "toc.integrate" in features %}
+              {% if page and page.meta and page.meta.hide %}
+                {% set hidden = "hidden" if "toc" in page.meta.hide %}
+              {% endif %}
               <div
                 class="md-sidebar md-sidebar--secondary"
                 data-md-component="toc"
+                {{ hidden }}
               >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -299,7 +317,7 @@
                   as the main headline.
                 -->
                 {% if not "\x3ch1" in page.content %}
-                  <h1>{{ page.title | default(config.site_name, true)}}</h1>
+                  <h1>{{ page.title | d(config.site_name, true)}}</h1>
                 {% endif %}
 
                 <!-- Content -->
@@ -365,7 +383,7 @@
       <script>
         app = initialize({
           base: "{{ base_url }}",
-          features: {{ config.theme.features or [] | tojson }},
+          features: {{ features or [] | tojson }},
           search: Object.assign({
             worker: "{{ 'assets/javascripts/worker/search.js' | url }}"
           }, typeof search !== "undefined" && search)

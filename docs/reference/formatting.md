@@ -155,16 +155,16 @@ highlighted with a nicer syntax than using the corresponding `mark`, `ins` and
 _Example_:
 
 ``` markdown 
-* ==This was marked==
-* ^^This was inserted^^
-* ~~This was deleted~~
+- ==This was marked==
+- ^^This was inserted^^
+- ~~This was deleted~~
 ```
 
 _Result_:
 
-* ==This was marked==
-* ^^This was inserted^^
-* ~~This was deleted~~
+- ==This was marked==
+- ^^This was inserted^^
+- ~~This was deleted~~
 
   [11]: #caret-mark-tilde
 
@@ -177,13 +177,13 @@ HTML tags:
 _Example_:
 
 ``` markdown 
-* H~2~0
-* A^T^A
+- H~2~0
+- A^T^A
 ```
 
 _Result_:
 
-* H~2~0
-* A^T^A
+- H~2~0
+- A^T^A
 
   [11]: #caret-mark-tilde

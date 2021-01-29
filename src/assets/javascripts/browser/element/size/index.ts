@@ -20,13 +20,11 @@
  * IN THE SOFTWARE.
  */
 
-import ResizeObserver from "resize-observer-polyfill"
 import {
   NEVER,
   Observable,
   Subject,
   defer,
-  merge,
   of
 } from "rxjs"
 import {
@@ -77,7 +75,7 @@ const observer$ = defer(() => of(
   })
 ))
   .pipe(
-    switchMap(resize => merge(of(resize), NEVER)
+    switchMap(resize => NEVER.pipe(startWith(resize))
       .pipe(
         finalize(() => resize.disconnect())
       )

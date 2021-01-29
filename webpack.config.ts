@@ -213,7 +213,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
 
       /* Plugins */
       plugins: [
-        ...base.plugins,
+        ...base.plugins || [],
 
         /* Stylesheets */
         new MiniCssExtractPlugin({
