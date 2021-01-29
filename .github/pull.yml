@@ -1,0 +1,6 @@
+version: "1"
+rules:
+  - base: master
+    upstream: squidfunk:master
+    # Avoid losing any work for forks by merging instead of hardresets.
+    mergeMethod: merge
