@@ -21,8 +21,8 @@ and its flag-ship feature: [instant loading][3].
 :octicons-unlock-24: Feature flag
 
 When _instant loading_ is enabled, clicks on all internal links will be
-intercepted and dispatched via [XHR][5] without fully reloading the page. It
-can be enabled via `mkdocs.yml` with:
+intercepted and dispatched via [XHR][5] without fully reloading the page. Add
+the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -46,8 +46,8 @@ _Material for MkDocs is the only MkDocs theme offering this feature._
 [:octicons-file-code-24: Source][6] · :octicons-unlock-24: Feature flag
 
 When _tabs_ are enabled, top-level sections are rendered in a menu layer below
-the header for viewports above `1220px`, but remain as-is on mobile.[^1] They
-can be enabled via `mkdocs.yml`:
+the header for viewports above `1220px`, but remain as-is on mobile.[^1] Add
+the following lines to `mkdocs.yml`:
 
   [^1]:
     Prior to version 6.2, navigation tabs had a slightly different behavior.
@@ -112,8 +112,8 @@ theme:
 :octicons-unlock-24: Feature flag
 
 When _sections_ are enabled, top-level sections are rendered as groups in the
-sidebar for viewports above `1220px`, but remain as-is on mobile. They can also
-be enabled via `mkdocs.yml`:
+sidebar for viewports above `1220px`, but remain as-is on mobile. Add the
+following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -143,7 +143,7 @@ items.
 
 When _expansion_ is enabled, the left sidebar will expand all collapsible
 subsections by default, so the user doesn't have to open subsections manually.
-It can be enabled via `mkdocs.yml` with:
+Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -169,8 +169,8 @@ theme:
 [:octicons-heart-fill-24:{: .tx-heart } Insiders only][9]{: .tx-insiders }
 
 When _section index pages_ are enabled, documents can be directly attached to
-sections, which is particularly useful for providing overview pages. This can
-be enabled via `mkdocs.yml` with:
+sections, which is particularly useful for providing overview pages. Add the
+following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -313,8 +313,8 @@ them at your own risk._
 :octicons-unlock-24: Feature flag
 
 When _integration_ is enabled, the table of contents is rendered as part of
-the navigation for viewports above `1220px`, but remains as-is on mobile. This
-can be enabled via `mkdocs.yml`:
+the navigation for viewports above `1220px`, but remains as-is on mobile. Add
+the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:

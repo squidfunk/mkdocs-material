@@ -141,9 +141,9 @@ them at your own risk._
 
 When _search suggestions_ are enabled, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
-suggestion with ++arrow-right++
+suggestion with the ++arrow-right++ key.
 
-It can be enabled via `mkdocs.yml` with:
+Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -178,7 +178,7 @@ A demo is worth a thousand words — check it out at
 
 When _search highlighting_ is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
-It can be enabled via `mkdocs.yml` with:
+Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -212,7 +212,7 @@ A demo is worth a thousand words — check it out at
 
 When _search sharing_ is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
-search query and result. It can be enabled via `mkdocs.yml` with:
+search query and result. Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
