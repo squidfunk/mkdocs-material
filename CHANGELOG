@@ -1,3 +1,7 @@
+mkdocs-material-6.2.7+insiders-1.17.0 (2021-01-31)
+
+  * Added support for section index pages
+
 mkdocs-material-6.2.7 (2021-01-31)
 
   * Fixed #2251: Updated Docker image to latest Alpine Linux

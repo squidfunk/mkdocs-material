@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 1.17.0 <small>_ January 31, 2021</small>
+
+- Added support for section index pages
+
 ### 1.16.1 <small>_ January 26, 2021</small>
 
 - Fixed #2249: Instant loading + sticky tabs result in invalid links
