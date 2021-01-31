@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.7 <small>_ January 31, 2021</small>
+
+- Fixed #2251: Updated Docker image to latest Alpine Linux
+
 ### 6.2.6 <small>_ January 26, 2021</small>
 
 - Added Bulgarian translations
