@@ -206,8 +206,8 @@ Note that it doesn't rely on third-party plugins[^2]._
   [^2]:
     If you don't want to use the native integration, the
     [mkdocs-section-index][18] plugin might be an alternative. However, note
-    that this plugin may not be compatible with all features offered by Material
-    for MkDocs, e.g. [tabs][1] and [sections][2].
+    that this plugin may not be compatible with all navigation-related features
+    offered by Material for MkDocs.
 
   [15]: ../assets/screenshots/navigation-index-on.png
   [16]: ../assets/screenshots/navigation-index-off.png
