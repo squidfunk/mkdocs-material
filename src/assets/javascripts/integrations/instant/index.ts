@@ -32,6 +32,7 @@ import {
   sample,
   share,
   skip,
+  skipUntil,
   switchMap
 } from "rxjs/operators"
 
@@ -250,6 +251,7 @@ export function setupInstantLoading(
   /* Debounce update of viewport offset */
   viewport$
     .pipe(
+      skipUntil(push$),
       debounceTime(250),
       distinctUntilKeyChanged("offset")
     )

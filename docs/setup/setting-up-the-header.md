@@ -21,7 +21,7 @@ It also includes the [search bar][1] and a place to display your project's
 :octicons-beaker-24: Experimental
 
 When _autohiding_ is enabled, the header is automatically hidden when the
-user scrolls past a certain threshold, leaving more space for content. Add the 
+user scrolls past a certain threshold, leaving more space for content. Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml
