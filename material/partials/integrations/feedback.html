@@ -17,14 +17,12 @@
     <p class="user-feedback-response user-feedback-response--yes">
       Thank you for the feedback!
     </p>
-    <div class="user-feedback-response user-feedback-response--no">
-      <p>
-        We're sorry to hear that. Please <a target="_blank" href="{{ config.repo_url }}/issues/new?labels=user%20feedback&template=documentation-feedback.md&title=Feedback%20on%20%22{{ page.title }}%22">let us know what we can improve</a>.
-      </p>
-      <p>
-        If you have a question, please contact <a href="mailto:{{ config.site_author }}?subject=Question%20regarding%20{{ page.title }}">{{ config.site_author }}</a>.
-      </p>
-    </div>
+    <p class="user-feedback-response user-feedback-response--no">
+      We're sorry to hear that. Please <a target="_blank" href="{{ config.repo_url }}/issues/new?labels=user%20feedback&template=documentation-feedback.md&title=Feedback%20on%20%22{{ page.title }}%22">let us know what we can improve</a>.
+    </p>
+    <p>
+      If you have a question, please <a href="{{ config.extra.community_url }}">ask our community</a> or contact <a href="mailto:{{ config.site_author }}?subject=Question%20regarding%20{{ page.title }}">{{ config.site_author }}</a>.
+    </p>
   </div>
   <script>
     const yesButton = document.querySelector('.user-feedback-answer--yes');
