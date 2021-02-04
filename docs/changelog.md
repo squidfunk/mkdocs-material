@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.8 <small>_ February 4, 2021</small>
+
+- Updated Japanese and Polish translations
+- Fixed #2261: Print dialog auto-closing when using instant loading
+
 ### 6.2.7 <small>_ January 31, 2021</small>
 
 - Fixed #2251: Updated Docker image to latest Alpine Linux

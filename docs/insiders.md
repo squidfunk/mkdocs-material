@@ -31,7 +31,19 @@ New features first land in Insiders, which means that _sponsors will have access
 immediately_. Every feature is tied to a funding goal in monthly subscriptions.
 When a funding goal is hit, the features that are tied to it are merged back
 into Material for MkDocs and released for general availability. Bugfixes are
-always released simultaneously in both editions.
+always released simultaneously in both editions.[^1]
+
+  [^1]:
+    You may ask yourself why you should pay for something that is Open Source.
+    Doesn't that contradict the ethos of Open Source software? Yes and no. Yes,
+    some features are locked behind a monthly subscription, which means they are
+    only accessible when paying a small amount of money. No, the features are
+    only exclusive for a short time until specific funding goals are hit. Making
+    an Open Source project sustainable is exceptionally hard: maintainers burn
+    out, projects are abandoned. That's not great and very unpredictable. The
+    sponsorware model ensures that if you decide to use Material for MkDocs,
+    you can be sure that bugs are fixed quickly and new features are added
+    regularly.
 
 _Don't want to sponsor? No problem, Material for MkDocs already has tons of
 features available, so chances are that most of your requirements are already
@@ -51,9 +63,9 @@ features][4].
 
 __Important__: If you're sponsoring @squidfunk through a GitHub organization,
 please send a short email to sponsors@squidfunk.com with the name of your
-organization and the account that should be added as a collaborator.[^1]
+organization and the account that should be added as a collaborator.[^2]
 
-  [^1]:
+  [^2]:
     It's currently not possible to grant access to each member of an
     organization, as GitHub only allows for adding users. Thus, after
     sponsoring, please send an email to sponsors@squidfunk.com, stating which
@@ -66,9 +78,9 @@ organization and the account that should be added as a collaborator.[^1]
     private Insiders GitHub repository, and grant access to all members of the
     organizations.
 
-You can cancel your sponsorship anytime.[^2]
+You can cancel your sponsorship anytime.[^3]
 
-  [^2]:
+  [^3]:
     If you cancel your sponsorship, GitHub schedules a cancellation request
     which will become effective at the end of the billing cycle, which ends at
     the 22nd of a month for monthly sponsorships. This means that even though

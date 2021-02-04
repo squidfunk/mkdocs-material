@@ -1,3 +1,8 @@
+mkdocs-material-6.2.8 (2021-02-04)
+
+  * Updated Japanese and Polish translations
+  * Fixed #2261: Print dialog auto-closing when using instant loading
+
 mkdocs-material-6.2.7+insiders-1.17.0 (2021-01-31)
 
   * Added support for section index pages
