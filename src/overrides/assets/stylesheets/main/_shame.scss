@@ -21,25 +21,46 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Dependencies
+// Nothing to see here, move along
 // ----------------------------------------------------------------------------
 
-@import "material-color";
-@import "material-shadows";
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
 
-// ----------------------------------------------------------------------------
-// Local imports
-// ----------------------------------------------------------------------------
+  // Input
+  .md-input {
+    @include z-depth(1);
 
-@import "utilities/break";
-@import "utilities/convert";
+    width: 100%;
+    height: px2rem(36px);
+    padding: 0 px2rem(12px);
+    font-size: px2rem(16px);
+    border-radius: px2rem(2px);
+    box-shadow:
+      0 px2rem(4px)   px2rem(10px) hsla(0, 0%, 0%, 0.1),
+      0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+    transition: box-shadow 250ms;
 
-@import "config";
+    &:hover,
+    &:focus {
+      box-shadow:
+        0 px2rem(8px)   px2rem(20px) hsla(0, 0%, 0%, 0.15),
+        0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.15);
+    }
+  }
 
-@import "main/typeset";
+  .md-clipboard--inline {
+    cursor: pointer;
+    code {
+      transition:
+        color            250ms,
+        background-color 250ms;
+    }
 
-@import "main/layout/announce";
-@import "main/layout/content";
-@import "main/layout/hero";
-
-@import "main/shame";
+    &:focus code,
+    &:hover code {
+      color: var(--md-accent-fg-color);
+      background-color: var(--md-accent-fg-color--transparent);
+    }
+  }
+}

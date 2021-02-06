@@ -34,6 +34,7 @@
   "dependencies": {
     "clipboard": "^2.0.6",
     "escape-html": "^1.0.3",
+    "fuzzaldrin-plus": "^0.6.0",
     "focus-visible": "^5.2.0",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.4.0",
@@ -47,6 +48,7 @@
     "@types/copy-webpack-plugin": "^6.4.0",
     "@types/escape-html": "1.0.0",
     "@types/event-hooks-webpack-plugin": "^2.2.0",
+    "@types/fuzzaldrin-plus": "^0.6.1",
     "@types/html-minifier": "^4.0.0",
     "@types/lunr": "^2.3.3",
     "@types/mini-css-extract-plugin": "^1.2.2",
@@ -82,6 +84,7 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.18.0",
+    "tiny-glob": "^0.2.8",
     "ts-loader": "^8.0.14",
     "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",

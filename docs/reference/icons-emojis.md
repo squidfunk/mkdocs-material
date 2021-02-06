@@ -5,9 +5,21 @@ template: overrides/main.html
 # Icons + Emojis
 
 One of the best features of Material for MkDocs is the possibility to use [more
-than 7.000 icons][1] and thousands of emojis in your project documentation
+than 8.000 icons][1] and thousands of emojis in your project documentation
 with practically zero additional effort. Furthermore, custom icons can be added
 and used in `mkdocs.yml`, documents and templates.
+
+## Search
+
+<input id="icon-search" class="md-input" placeholder="Search the icon database" />
+
+<div class="tx-icon-result" markdown="1">
+  <small>
+    :octicons-light-bulb-16:
+    **Tip:** Enter some keywords to find the perfect icon and click on the
+    shortcode to copy it to your clipboard.
+  </small>
+</div>
 
 ## Configuration
 

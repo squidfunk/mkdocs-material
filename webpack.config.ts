@@ -29,6 +29,7 @@ import ImageminPlugin from "imagemin-webpack-plugin"
 import MiniCssExtractPlugin = require("mini-css-extract-plugin")
 import * as path from "path"
 import { toPairs } from "ramda"
+import glob = require("tiny-glob")
 import { minify as minjs } from "terser"
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin"
 import { Configuration } from "webpack"
@@ -328,7 +329,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
 
         /* Hooks */
         new EventHooksPlugin({
-          afterEmit: () => {
+          afterEmit: async () => {
 
             /* Replace asset URLs in templates */
             if (args.mode === "production") {
@@ -346,6 +347,13 @@ export default (_env: never, args: Configuration): Configuration[] => {
                 fs.writeFileSync(file, template, "utf8")
               }
             }
+
+            /* Build search index for bundled icons */
+            const index = await glob("**/*.svg", { cwd: "material/.icons" })
+            fs.writeFileSync(
+              "material/overrides/assets/javascripts/icons.json",
+              JSON.stringify(index)
+            )
           }
         }),
 
