@@ -20,11 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-import { from, fromEvent } from "rxjs"
 import { filter } from "fuzzaldrin-plus"
+import { from, fromEvent } from "rxjs"
 
 import { getElement, getElementOrThrow } from "browser"
 import { map, switchMap } from "rxjs/operators"
+
 import { renderIconSearch } from "./templates/icon"
 
 // Obtain configuration
@@ -59,8 +60,8 @@ if (search) {
 fromEvent(document.body, "click")
   .subscribe(ev => {
     if (ev.target instanceof HTMLElement) {
-      var el = ev.target.closest("a[href^=http]")
-      if (el instanceof HTMLLinkElement)
+      const el2 = ev.target.closest("a[href^=http]")
+      if (el2 instanceof HTMLLinkElement)
         // @ts-ignore
         ga("send", "event", "outbound", "click", el.href)
     }
