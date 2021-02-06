@@ -1,6 +1,5 @@
 recursive-include material *.js *.css *.map *.html *.svg *.png *.yml
 recursive-include material *.ttf *.woff *.woff2 LICENSE*
-recursive-exclude material/assets overrides*
 recursive-exclude material/overrides *
 recursive-exclude site *
 recursive-exclude src *

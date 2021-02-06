@@ -116,6 +116,7 @@ function config(args: Configuration): Configuration {
                 implementation: require("sass"),
                 sassOptions: {
                   includePaths: [
+                    "src/assets/stylesheets",
                     "node_modules/modularscale-sass/stylesheets",
                     "node_modules/material-design-color",
                     "node_modules/material-shadows"
@@ -145,7 +146,7 @@ function config(args: Configuration): Configuration {
         __dirname,
         path.resolve(__dirname, "node_modules")
       ],
-      extensions: [".ts", ".tsx", ".js", ".json"],
+      extensions: [".scss", ".ts", ".tsx", ".js", ".json"],
       plugins: [
         new TsconfigPathsPlugin()
       ]
@@ -201,8 +202,9 @@ export default (_env: never, args: Configuration): Configuration[] => {
       entry: {
         "assets/javascripts/bundle":    "src/assets/javascripts",
         "assets/stylesheets/main":      "src/assets/stylesheets/main.scss",
-        "assets/stylesheets/overrides": "src/assets/stylesheets/overrides.scss",
-        "assets/stylesheets/palette":   "src/assets/stylesheets/palette.scss"
+        "assets/stylesheets/palette":   "src/assets/stylesheets/palette.scss",
+        "overrides/assets/stylesheets/main":
+          "src/overrides/assets/stylesheets/main.scss"
       },
       output: {
         path: path.resolve(__dirname, "material"),
@@ -334,9 +336,9 @@ export default (_env: never, args: Configuration): Configuration[] => {
                 "material/overrides/main.html"
               ]) {
                 const template = toPairs<string>(manifest)
-                  .reduce((content, [from, to]) => {
-                    return content.replace(new RegExp(from, "g"), to)
-                  }, fs.readFileSync(file, "utf8"))
+                  .reduce((content, [from, to]) => (
+                    content.replace(new RegExp(`'${from}'`, "g"), `'${to}'`)
+                  ), fs.readFileSync(file, "utf8"))
 
                 /* Save template with replaced assets */
                 fs.writeFileSync(file, template, "utf8")
