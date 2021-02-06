@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ config.site_description }}">
   <meta name="twitter:image" content="{{ image }}">
-  <link rel="stylesheet" href="{{ 'overrides/assets/stylesheets/main.b1224278.min.css' | url }}">
+  <link rel="stylesheet" href="{{ 'overrides/assets/stylesheets/main.21a5b0f1.min.css' | url }}">
 {% endblock %}
 {% block announce %}
   <a href="https://twitter.com/squidfunk">
@@ -51,7 +51,7 @@
     </a>
   </footer>
 {% endblock %}
-{% block analytics %}
+{% block scripts %}
   {{ super() }}
-  <script>document.addEventListener("DOMContentLoaded",function(){document.body.addEventListener("click",function(e){if(e.target instanceof HTMLElement){var t=e.target.closest("a[href^=http]");t&&ga("send","event","outbound","click",t.href)}})})</script>
+  <script src="{{ 'overrides/assets/javascripts/bundle.cdb09f69.min.js' | url }}"></script>
 {% endblock %}

@@ -39,7 +39,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.cb6bc1d0.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0258fc15.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.5b7c1fa0.min.css' | url }}">
@@ -61,7 +61,7 @@
             font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
             font.code | replace(' ', '+')
           }}&display=fallback">
-        <style>body,input{font-family:"{{ font.text }}",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <style>:root{--md-text-font-family:"{{ font.text }}",;--md-code-font-family:"{{ font.code }}",}</style>
       {% endif %}
     {% endblock %}
     {% if config.extra.manifest %}
@@ -184,8 +184,8 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.18f0862e.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.994580cf.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.d018e87b.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.87ed5edf.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",

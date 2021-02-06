@@ -92,20 +92,10 @@
   </footer>
 {% endblock %}
 
-<!-- Analytics -->
-{% block analytics %}
+<!-- Theme-related JavaScript -->
+{% block scripts %}
   {{ super() }}
 
-  <!-- Track external links -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      document.body.addEventListener("click", function(ev) {
-        if (ev.target instanceof HTMLElement) {
-          var el = ev.target.closest("a[href^=http]")
-          if (el)
-            ga("send", "event", "outbound", "click", el.href)
-        }
-      })
-    })
-  </script>
+  <!-- Extra JavaScript -->
+  <script src="{{ 'overrides/assets/javascripts/bundle.js' | url }}"></script>
 {% endblock %}

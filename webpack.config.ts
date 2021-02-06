@@ -203,6 +203,8 @@ export default (_env: never, args: Configuration): Configuration[] => {
         "assets/javascripts/bundle":    "src/assets/javascripts",
         "assets/stylesheets/main":      "src/assets/stylesheets/main.scss",
         "assets/stylesheets/palette":   "src/assets/stylesheets/palette.scss",
+        "overrides/assets/javascripts/bundle":
+          "src/overrides/assets/javascripts",
         "overrides/assets/stylesheets/main":
           "src/overrides/assets/stylesheets/main.scss"
       },
