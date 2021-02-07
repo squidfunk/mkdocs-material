@@ -82,6 +82,9 @@ setupClipboardJS()
 // TODO: watchElements + general mount function that takes a factory...
 // + a toggle function (optionally)
 
+// TODO: catch errors on all components when mounting, so one error doesn't
+// take down the whole site.
+
 const app$ = merge(
 
   /* Content */

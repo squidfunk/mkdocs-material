@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, asyncScheduler } from "rxjs"
-import { map, observeOn, share } from "rxjs/operators"
+import { Subject, asyncScheduler, from } from "rxjs"
+import { delay, map, observeOn, share } from "rxjs/operators"
 
 import { configuration, translation } from "~/_"
 import { WorkerHandler, watchWorker } from "~/browser"
@@ -42,17 +42,6 @@ import {
  * Search worker
  */
 export type SearchWorker = WorkerHandler<SearchMessage>
-
-/* ----------------------------------------------------------------------------
- * Helper types
- * ------------------------------------------------------------------------- */
-
-/**
- * Setup options
- */
-interface SetupOptions {
-  index$: Observable<SearchIndex>      /* Search index observable */
-}
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -100,12 +89,12 @@ function setupSearchIndex(
  * enable hacks like _localsearch_ via search index embedding as JSON.
  *
  * @param url - Worker URL
- * @param options - Options
+ * @param index - Promise resolving with search index
  *
  * @return Search worker
  */
 export function setupSearchWorker(
-  url: string, { index$ }: SetupOptions
+  url: string, index: Promise<SearchIndex>
 ): SearchWorker {
   const config = configuration()
   const worker = new Worker(url)
@@ -126,13 +115,12 @@ export function setupSearchWorker(
     )
 
   /* Set up search index */
-  index$
+  from(index)
     .pipe(
       map<SearchIndex, SearchSetupMessage>(data => ({
         type: SearchMessageType.SETUP,
         data: setupSearchIndex(data)
-      })),
-      observeOn(asyncScheduler)
+      }))
     )
       .subscribe(tx$.next.bind(tx$))
 

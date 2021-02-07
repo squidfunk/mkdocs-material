@@ -20,45 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-import {
-  Observable,
-  Subject,
-  combineLatest,
-  fromEvent,
-  merge,
-  defer
-} from "rxjs"
-import {
-  delay,
-  distinctUntilChanged,
-  distinctUntilKeyChanged,
-  finalize,
-  map,
-  startWith,
-  takeLast,
-  takeUntil,
-  tap
-} from "rxjs/operators"
+import { Observable, merge } from "rxjs"
+import { filter, sample, take } from "rxjs/operators"
 
-import {
-  resetSearchQueryPlaceholder,
-  setSearchQueryPlaceholder
-} from "~/actions"
-import {
-  getElementOrThrow,
-  setElementFocus,
-  setToggle,
-  watchElementFocus
-} from "~/browser"
-import {
-  SearchTransformFn,
-  defaultTransform,
-  SearchWorker,
-  SearchQueryMessage,
-  SearchMessageType,
-  setupSearchWorker,
-} from "~/integrations"
 import { configuration } from "~/_"
+import { getElementOrThrow } from "~/browser"
+import { isSearchQueryMessage, isSearchReadyMessage, setupSearchWorker } from "~/integrations"
 
 import { Component } from "../../_"
 import { mountSearchQuery, SearchQuery } from "../query"
@@ -80,10 +47,15 @@ export type Search =
  * ------------------------------------------------------------------------- */
 
 /**
+ * Fetch search index
  *
+ * @param url - Search index URL
+ *
+ * @return Promise resolving with search index
  */
-function fetchSearchIndex() {
-
+function fetchSearchIndex(url: string) {
+  return __search?.index || fetch(url, { credentials: "same-origin" })
+    .then(res => res.json())
 }
 
 /* ----------------------------------------------------------------------------
@@ -100,48 +72,29 @@ function fetchSearchIndex() {
 export function mountSearch(
   el: HTMLElement
 ): Observable<Component<Search>> {
-
-  const searchQueryEl = getElementOrThrow<HTMLInputElement>("[data-md-component=search-query]", el)
-  const searchResultEl = getElementOrThrow("[data-md-component=search-result]", el)
-
   const config = configuration()
+  const worker = setupSearchWorker(config.search, fetchSearchIndex(
+    `${config.base}/search/search_index.json`
+  ))
 
-  // TODO: determine correct BASE URL -> may change on instant loading!
-  const index$ = defer(() => fetch(`${config.base}/search/search_index.json`, {
-    credentials: "same-origin"
-  }).then(res => res.json()))
+  /* Re-emit query when search is ready */
+  const { tx$, rx$ } = worker
+  tx$
+    .pipe(
+      filter(isSearchQueryMessage),
+      sample(rx$.pipe(filter(isSearchReadyMessage))),
+      take(1)
+    )
+      .subscribe(tx$.next.bind(tx$))
 
-  // TODO: shouldnt be necessary, as it's done from config?
-  const worker$ = setupSearchWorker(config.search, {
-    index$
-  })
-  // TODO: hand transformFn to
+  /* Obtain search query and result elements */
+  const query  = getElementOrThrow("[data-md-component=search-query]", el)
+  const result = getElementOrThrow("[data-md-component=search-result]", el)
 
-  // __search.transform -> search transform
-  // __search.index     -> search index
-
-  const query$ = mountSearchQuery(searchQueryEl, worker$)
-  const result$ = mountSearchResult(searchResultEl, worker$, { query$ })
-
-
-
+  /* Create and return component */
+  const query$ = mountSearchQuery(query as HTMLInputElement, worker)
   return merge(
     query$,
-    result$
-
-    // /* Search query */
-    // ...getElements("[data-md-component=search-query]", el)
-    //   .map(child => mountSearchQuery(child, worker$)),
-
-    // /* Search result */
-    // ...getElements("[data-md-component=search-query]", el)
-    //   .map(child => mountSearchResult(child, worker$)),
+    mountSearchResult(result, worker, { query$ })
   )
-  // /* Create and return component */
-  // return watchSearchQuery(el, transform)
-  //   .pipe(
-  //     tap(internal$),
-  //     finalize(() => internal$.complete()),
-  //     map(state => ({ ref: el, ...state }))
-  //   )
 }
