@@ -49,6 +49,12 @@
     display: none;
   }
 
+  // Hide outline for pointer devices
+  &:not(.focus-visible) {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   // Darken color on code block hover
   :hover > & {
     color: var(--md-default-fg-color--light);

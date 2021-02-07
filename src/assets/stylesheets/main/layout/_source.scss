@@ -24,7 +24,7 @@
 // Keyframes
 // ----------------------------------------------------------------------------
 
-// Show source facts
+// Show repository facts
 @keyframes md-source__facts--done {
   0% {
     height: 0;
@@ -34,7 +34,7 @@
   }
 }
 
-// Show source fact
+// Show repository fact
 @keyframes md-source__fact--done {
   0% {
     transform: translateY(100%);

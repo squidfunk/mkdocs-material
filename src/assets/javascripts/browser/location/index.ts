@@ -21,5 +21,4 @@
  */
 
 export * from "./_"
-export * from "./base"
 export * from "./hash"

@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
-import { shareReplay, startWith } from "rxjs/operators"
+import { Observable, fromEvent, merge } from "rxjs"
+import { filter, map, mapTo, startWith } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -36,11 +36,24 @@ import { shareReplay, startWith } from "rxjs/operators"
  */
 export function watchMedia(query: string): Observable<boolean> {
   const media = matchMedia(query)
-  return new Observable<boolean>(subscriber => {
-    media.addListener(ev => subscriber.next(ev.matches))
-  })
+  return fromEvent<MediaQueryListEvent>(media, "change")
     .pipe(
-      startWith(media.matches),
-      shareReplay({ bufferSize: 1, refCount: true })
+      map(ev => ev.matches),
+      startWith(media.matches)
+    )
+}
+
+/**
+ * Watch print mode, cross-browser
+ *
+ * @return Print observable
+ */
+export function watchPrint(): Observable<void> {
+  return merge(
+    watchMedia("print").pipe(filter(Boolean)),  /* Webkit */
+    fromEvent(window, "beforeprint")            /* IE, FF */
+  )
+    .pipe(
+      mapTo(undefined)
     )
 }

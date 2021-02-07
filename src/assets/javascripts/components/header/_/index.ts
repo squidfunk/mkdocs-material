@@ -20,46 +20,30 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
+import { Observable, defer, of, Subject, animationFrameScheduler } from "rxjs"
 import {
+  combineLatestWith,
   distinctUntilChanged,
-  filter,
+  distinctUntilKeyChanged,
   map,
-  startWith,
-  switchMap,
-  zipWith
+  observeOn,
+  shareReplay
 } from "rxjs/operators"
 
-import {
-  Viewport,
-  getElement,
-  watchViewportAt
-} from "browser"
+import { resetHeaderState, setHeaderState } from "~/actions"
+import { Viewport, watchElementSize } from "~/browser"
 
-import { useComponent } from "../../_"
-import {
-  applyHeaderType,
-  watchHeader
-} from "../react"
+import { Component } from "../../_"
+import { Main } from "../../main"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Header type
- */
-export type HeaderType =
-  | "site"                             /* Header shows site title */
-  | "page"                             /* Header shows page title */
-
-/* ------------------------------------------------------------------------- */
-
-/**
  * Header
  */
 export interface Header {
-  type: HeaderType                     /* Header type */
   sticky: boolean                      /* Header stickyness */
   height: number                       /* Header visible height */
 }
@@ -72,8 +56,9 @@ export interface Header {
  * Mount options
  */
 interface MountOptions {
-  document$: Observable<Document>      /* Document observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
+  header$: Observable<Header>          /* Header observable */
+  main$: Observable<Main>              /* Main area observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -81,42 +66,69 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount header from source observable
+ * Watch header
  *
+ * @param el - Header element
+ *
+ * @return Header observable
+ */
+export function watchHeader(
+  el: HTMLElement
+): Observable<Header> {
+  return defer(() => {
+    const styles = getComputedStyle(el)
+    return of(
+      styles.position === "sticky" ||
+      styles.position === "-webkit-sticky"
+    )
+  })
+    .pipe(
+      combineLatestWith(watchElementSize(el)),
+      map(([sticky, { height }]) => ({
+        sticky,
+        height: sticky ? height : 0
+      })),
+      distinctUntilChanged((a, b) => (
+        a.sticky === b.sticky &&
+        a.height === b.height
+      ))
+    )
+}
+
+/**
+ * Mount header
+ *
+ * The header must be connected to the main area observable outside of the
+ * operator function, as the header will persist in-between document switches
+ * while the main area is replaced. However, the header observable must be
+ * passed to this function, so we connect both via a long-living subject.
+ *
+ * @param el - Header element
  * @param options - Options
  *
- * @return Operator function
+ * @return Header component observable
  */
 export function mountHeader(
-  { document$, viewport$ }: MountOptions
-): OperatorFunction<HTMLElement, Header> {
-  return pipe(
-    switchMap(el => {
-      const header$ = watchHeader(el, { document$ })
+  el: HTMLElement, { header$, main$ }: MountOptions
+): Observable<Component<Header>> {
+  const internal$ = new Subject<Main>()
+  internal$
+    .pipe(
+      distinctUntilKeyChanged("active"),
+      observeOn(animationFrameScheduler)
+    )
+      .subscribe(({ active }) => {
+        if (active)
+          setHeaderState(el, "shadow")
+        else
+          resetHeaderState(el)
+      })
 
-      /* Compute whether the header should switch to page header */
-      const type$ = useComponent("main")
-        .pipe(
-          map(main => getElement("h1, h2, h3, h4, h5, h6", main)!),
-          filter(hx => typeof hx !== "undefined"),
-          zipWith(useComponent("header-title")),
-          switchMap(([hx, title]) => watchViewportAt(hx, { header$, viewport$ })
-            .pipe(
-              map(({ offset: { y } }) => {
-                return y >= hx.offsetHeight ? "page" : "site"
-              }),
-              distinctUntilChanged(),
-              applyHeaderType(title)
-            )
-          ),
-          startWith<HeaderType>("site")
-        )
-
-      /* Combine into single observable */
-      return combineLatest([header$, type$])
-        .pipe(
-          map(([header, type]): Header => ({ type, ...header }))
-        )
-    })
-  )
+  /* Connect to long-living subject and return component */
+  main$.subscribe(main => internal$.next(main))
+  return header$
+    .pipe(
+      map(state => ({ ref: el, ...state })),
+      shareReplay(1)
+    )
 }

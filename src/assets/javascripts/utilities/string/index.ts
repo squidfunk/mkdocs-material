@@ -20,65 +20,9 @@
  * IN THE SOFTWARE.
  */
 
-import { getElementOrThrow } from "browser"
-
-/* ----------------------------------------------------------------------------
- * Helper types
- * ------------------------------------------------------------------------- */
-
-/**
- * Translation keys
- */
-type TranslateKey =
-  | "clipboard.copy"                   /* Copy to clipboard */
-  | "clipboard.copied"                 /* Copied to clipboard */
-  | "search.config.lang"               /* Search language */
-  | "search.config.pipeline"           /* Search pipeline */
-  | "search.config.separator"          /* Search separator */
-  | "search.placeholder"               /* Search */
-  | "search.result.placeholder"        /* Type to start searching */
-  | "search.result.none"               /* No matching documents */
-  | "search.result.one"                /* 1 matching document */
-  | "search.result.other"              /* # matching documents */
-  | "search.result.more.one"           /* 1 more on this page */
-  | "search.result.more.other"         /* # more on this page */
-  | "search.result.term.missing"       /* Missing */
-
-/* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * Translations
- */
-let lang: Record<string, string>
-
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
-
-/**
- * Translate the given key
- *
- * @param key - Key to be translated
- * @param value - Value to be replaced
- *
- * @return Translation
- */
-export function translate(
-  key: TranslateKey, value?: string | number
-): string {
-  if (typeof lang === "undefined") {
-    const el = getElementOrThrow("#__lang")
-    lang = JSON.parse(el.textContent!)
-  }
-  if (typeof lang[key] === "undefined") {
-    throw new ReferenceError(`Invalid translation: ${key}`)
-  }
-  return typeof value !== "undefined"
-    ? lang[key].replace("#", value.toString())
-    : lang[key]
-}
 
 /**
  * Truncate a string after the given number of characters
@@ -96,16 +40,16 @@ export function translate(
 export function truncate(value: string, n: number): string {
   let i = n
   if (value.length > i) {
-    while (value[i] !== " " && --i > 0); // tslint:disable-line
+    while (value[i] !== " " && --i > 0) { /* keep eating */ }
     return `${value.substring(0, i)}...`
   }
   return value
 }
 
 /**
- * Round a number for display with source facts
+ * Round a number for display with repository facts
  *
- * This is a reverse engineered version of GitHub's weird rounding algorithm
+ * This is a reverse-engineered version of GitHub's weird rounding algorithm
  * for stars, forks and all other numbers. While all numbers below `1,000` are
  * returned as-is, bigger numbers are converted to fixed numbers:
  *

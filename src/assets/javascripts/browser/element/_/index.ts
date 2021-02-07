@@ -34,6 +34,14 @@
  *
  * @return Element or nothing
  */
+export function getElement<T extends keyof HTMLElementTagNameMap>(
+  selector: T, node?: ParentNode
+): HTMLElementTagNameMap[T]
+
+export function getElement<T extends HTMLElement>(
+  selector: string, node?: ParentNode
+): T
+
 export function getElement<T extends HTMLElement>(
   selector: string, node: ParentNode = document
 ): T | undefined {
@@ -50,6 +58,14 @@ export function getElement<T extends HTMLElement>(
  *
  * @return Element
  */
+export function getElementOrThrow<T extends keyof HTMLElementTagNameMap>(
+  selector: T, node?: ParentNode
+): HTMLElementTagNameMap[T]
+
+export function getElementOrThrow<T extends HTMLElement>(
+  selector: string, node?: ParentNode
+): T
+
 export function getElementOrThrow<T extends HTMLElement>(
   selector: string, node: ParentNode = document
 ): T {
@@ -82,6 +98,14 @@ export function getActiveElement(): HTMLElement | undefined {
  *
  * @return Elements
  */
+export function getElements<T extends keyof HTMLElementTagNameMap>(
+  selector: T, node?: ParentNode
+): HTMLElementTagNameMap[T][]
+
+export function getElements<T extends HTMLElement>(
+  selector: string, node?: ParentNode
+): T[]
+
 export function getElements<T extends HTMLElement>(
   selector: string, node: ParentNode = document
 ): T[] {

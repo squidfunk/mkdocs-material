@@ -20,5 +20,253 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./_"
-export * from "./anchor"
+import {
+  Observable,
+  Subject,
+  animationFrameScheduler,
+  combineLatest
+} from "rxjs"
+import {
+  bufferCount,
+  distinctUntilChanged,
+  distinctUntilKeyChanged,
+  finalize,
+  map,
+  observeOn,
+  scan,
+  startWith,
+  switchMap,
+  tap
+} from "rxjs/operators"
+
+import {
+  resetAnchorActive,
+  resetAnchorState,
+  setAnchorActive,
+  setAnchorState
+} from "~/actions"
+import {
+  getElement,
+  getElements,
+  Viewport,
+  watchElementSize
+} from "~/browser"
+
+import { Component } from "../_"
+import { Header } from "../header"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Table of contents
+ */
+export interface TableOfContents {
+  prev: HTMLAnchorElement[][]          /* Anchors (previous) */
+  next: HTMLAnchorElement[][]          /* Anchors (next) */
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch options
+ */
+interface WatchOptions {
+  viewport$: Observable<Viewport>      /* Viewport observable */
+  header$: Observable<Header>          /* Header observable */
+}
+
+/**
+ * Mount options
+ */
+interface MountOptions {
+  viewport$: Observable<Viewport>      /* Viewport observable */
+  header$: Observable<Header>          /* Header observable */
+}
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch table of contents
+ *
+ * This is effectively a scroll spy implementation which will account for the
+ * fixed header and automatically re-calculate anchor offsets when the viewport
+ * is resized. The returned observable will only emit if the table of contents
+ * needs to be repainted.
+ *
+ * This implementation tracks an anchor element's entire path starting from its
+ * level up to the top-most anchor element, e.g. `[h3, h2, h1]`. Although the
+ * Material theme currently doesn't make use of this information, it enables
+ * the styling of the entire hierarchy through customization.
+ *
+ * Note that the current anchor is the last item of the `prev` anchor list.
+ *
+ * @param anchors - Anchor elements
+ * @param options - Options
+ *
+ * @return Table of contents observable
+ */
+export function watchTableOfContents(
+  anchors: HTMLAnchorElement[], { viewport$, header$ }: WatchOptions
+): Observable<TableOfContents> {
+  const table = new Map<HTMLAnchorElement, HTMLElement>()
+  for (const anchor of anchors) {
+    const id = decodeURIComponent(anchor.hash.substring(1))
+    const target = getElement(`[id="${id}"]`)
+    if (typeof target !== "undefined")
+      table.set(anchor, target)
+  }
+
+  /* Compute necessary adjustment for header */
+  const adjust$ = header$
+    .pipe(
+      map(header => 24 + header.height)
+    )
+
+  /* Compute partition of previous and next anchors */
+  const partition$ = watchElementSize(document.body)
+    .pipe(
+      distinctUntilKeyChanged("height"),
+
+      /* Build index to map anchor paths to vertical offsets */
+      map(() => {
+        let path: HTMLAnchorElement[] = []
+        return [...table].reduce((index, [anchor, target]) => {
+          while (path.length) {
+            const last = table.get(path[path.length - 1])!
+            if (last.tagName >= target.tagName) {
+              path.pop()
+            } else {
+              break
+            }
+          }
+
+          /* If the current anchor is hidden, continue with its parent */
+          let offset = target.offsetTop
+          while (!offset && target.parentElement) {
+            target = target.parentElement
+            offset = target.offsetTop
+          }
+
+          /* Map reversed anchor path to vertical offset */
+          return index.set(
+            [...path = [...path, anchor]].reverse(),
+            offset
+          )
+        }, new Map<HTMLAnchorElement[], number>())
+      }),
+
+      /* Re-compute partition when viewport offset changes */
+      switchMap(index => combineLatest([adjust$, viewport$])
+        .pipe(
+          scan(([prev, next], [adjust, { offset: { y } }]) => {
+
+            /* Look forward */
+            while (next.length) {
+              const [, offset] = next[0]
+              if (offset - adjust < y) {
+                prev = [...prev, next.shift()!]
+              } else {
+                break
+              }
+            }
+
+            /* Look backward */
+            while (prev.length) {
+              const [, offset] = prev[prev.length - 1]
+              if (offset - adjust >= y) {
+                next = [prev.pop()!, ...next]
+              } else {
+                break
+              }
+            }
+
+            /* Return partition */
+            return [prev, next]
+          }, [[], [...index]]),
+          distinctUntilChanged((a, b) => (
+            a[0] === b[0] &&
+            a[1] === b[1]
+          ))
+        )
+      )
+    )
+
+  /* Compute and return anchor list migrations */
+  return partition$
+    .pipe(
+      map(([prev, next]) => ({
+        prev: prev.map(([path]) => path),
+        next: next.map(([path]) => path)
+      })),
+
+      /* Extract anchor list migrations */
+      startWith({ prev: [], next: [] }),
+      bufferCount(2, 1),
+      map(([a, b]) => {
+
+        /* Moving down */
+        if (a.prev.length < b.prev.length) {
+          return {
+            prev: b.prev.slice(Math.max(0, a.prev.length - 1), b.prev.length),
+            next: []
+          }
+
+        /* Moving up */
+        } else {
+          return {
+            prev: b.prev.slice(-1),
+            next: b.next.slice(0, b.next.length - a.next.length)
+          }
+        }
+      })
+    )
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Mount table of contents
+ *
+ * @param el - Anchor list element
+ * @param options - Options
+ *
+ * @return Table of contents component observable
+ */
+export function mountTableOfContents(
+  el: HTMLElement, options: MountOptions
+): Observable<Component<TableOfContents>> {
+  const internal$ = new Subject<TableOfContents>()
+  internal$
+    .pipe(
+      observeOn(animationFrameScheduler),
+    )
+      .subscribe(({ prev, next }) => {
+
+        /* Look forward */
+        for (const [anchor] of next) {
+          resetAnchorActive(anchor)
+          resetAnchorState(anchor)
+        }
+
+        /* Look backward */
+        for (const [index, [anchor]] of prev.entries()) {
+          setAnchorActive(anchor, index === prev.length - 1)
+          setAnchorState(anchor, "blur")
+        }
+      })
+
+  /* Create and return component */
+  const anchors = getElements<HTMLAnchorElement>("[href^=\\#]", el)
+  return watchTableOfContents(anchors, options)
+    .pipe(
+      tap(internal$),
+      finalize(() => internal$.complete()),
+      map(state => ({ ref: el, ...state }))
+    )
+}

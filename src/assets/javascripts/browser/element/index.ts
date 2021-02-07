@@ -23,5 +23,5 @@
 export * from "./_"
 export * from "./focus"
 export * from "./offset"
-export * from "./select"
+export * from "./selection"
 export * from "./size"

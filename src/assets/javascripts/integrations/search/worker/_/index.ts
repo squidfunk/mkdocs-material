@@ -21,15 +21,10 @@
  */
 
 import { Observable, Subject, asyncScheduler } from "rxjs"
-import {
-  map,
-  observeOn,
-  share,
-  withLatestFrom
-} from "rxjs/operators"
+import { map, observeOn, share } from "rxjs/operators"
 
-import { WorkerHandler, watchWorker } from "browser"
-import { translate } from "utilities"
+import { configuration, translation } from "~/_"
+import { WorkerHandler, watchWorker } from "~/browser"
 
 import { SearchIndex, SearchIndexPipeline } from "../../_"
 import {
@@ -40,6 +35,15 @@ import {
 } from "../message"
 
 /* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Search worker
+ */
+export type SearchWorker = WorkerHandler<SearchMessage>
+
+/* ----------------------------------------------------------------------------
  * Helper types
  * ------------------------------------------------------------------------- */
 
@@ -48,11 +52,10 @@ import {
  */
 interface SetupOptions {
   index$: Observable<SearchIndex>      /* Search index observable */
-  base$: Observable<string>            /* Location base observable */
 }
 
 /* ----------------------------------------------------------------------------
- * Functions
+ * Helper functions
  * ------------------------------------------------------------------------- */
 
 /**
@@ -68,14 +71,16 @@ function setupSearchIndex(
 
   /* Override default language with value from translation */
   if (config.lang.length === 1 && config.lang[0] === "en")
-    config.lang = [translate("search.config.lang")]
+    config.lang = [
+      translation("search.config.lang")
+    ]
 
   /* Override default separator with value from translation */
   if (config.separator === "[\\s\\-]+")
-    config.separator = translate("search.config.separator")
+    config.separator = translation("search.config.separator")
 
   /* Set pipeline from translation */
-  const pipeline = translate("search.config.pipeline")
+  const pipeline = translation("search.config.pipeline")
     .split(/\s*,\s*/)
     .filter(Boolean) as SearchIndexPipeline
 
@@ -84,7 +89,7 @@ function setupSearchIndex(
 }
 
 /* ----------------------------------------------------------------------------
- * Helper functions
+ * Functions
  * ------------------------------------------------------------------------- */
 
 /**
@@ -97,23 +102,23 @@ function setupSearchIndex(
  * @param url - Worker URL
  * @param options - Options
  *
- * @return Worker handler
+ * @return Search worker
  */
 export function setupSearchWorker(
-  url: string, { index$, base$ }: SetupOptions
-): WorkerHandler<SearchMessage> {
+  url: string, { index$ }: SetupOptions
+): SearchWorker {
+  const config = configuration()
   const worker = new Worker(url)
 
   /* Create communication channels and resolve relative links */
   const tx$ = new Subject<SearchMessage>()
   const rx$ = watchWorker(worker, { tx$ })
     .pipe(
-      withLatestFrom(base$),
-      map(([message, base]) => {
+      map(message => {
         if (isSearchResultMessage(message)) {
           for (const result of message.data)
             for (const document of result)
-              document.location = `${base}/${document.location}`
+              document.location = `${config.base}/${document.location}`
         }
         return message
       }),
@@ -131,6 +136,6 @@ export function setupSearchWorker(
     )
       .subscribe(tx$.next.bind(tx$))
 
-  /* Return worker handler */
+  /* Return search worker */
   return { tx$, rx$ }
 }

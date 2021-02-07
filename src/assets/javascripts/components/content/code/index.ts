@@ -1,0 +1,154 @@
+/*
+ * Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+import ClipboardJS from "clipboard"
+import { Observable, Subject } from "rxjs"
+import {
+  distinctUntilKeyChanged,
+  finalize,
+  map,
+  tap,
+  withLatestFrom
+} from "rxjs/operators"
+
+import { resetFocusable, setFocusable } from "~/actions"
+import {
+  getElementContentSize,
+  getElementSize,
+  Viewport,
+  watchMedia
+} from "~/browser"
+import { renderClipboardButton } from "~/templates"
+
+import { Component } from "../../_"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Code block
+ */
+export interface CodeBlock {
+  scroll: boolean                      /* Code block overflows */
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch options
+ */
+interface WatchOptions {
+  viewport$: Observable<Viewport>      /* Viewport observable */
+}
+
+/**
+ * Mount options
+ */
+interface MountOptions {
+  viewport$: Observable<Viewport>      /* Viewport observable */
+}
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Global index for Clipboard.js integration
+ */
+let index = 0
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Watch code block
+ *
+ * @param el - Code block element
+ * @param options - Options
+ *
+ * @return Code block observable
+ */
+export function watchCodeBlock(
+  el: HTMLElement, { viewport$ }: WatchOptions
+): Observable<CodeBlock> {
+  return viewport$
+    .pipe(
+      distinctUntilKeyChanged("size"),
+      map(() => {
+        const visible = getElementSize(el)
+        const content = getElementContentSize(el)
+        return {
+          scroll: content.width > visible.width
+        }
+      }),
+      distinctUntilKeyChanged("scroll")
+    )
+}
+
+/**
+ * Mount code block
+ *
+ * This function ensures that overflowing code blocks are focusable by keyboard,
+ * so they can be scrolled without a mouse to improve on accessibility.
+ *
+ * @param el - Code block element
+ * @param options - Options
+ *
+ * @return Code block component observable
+ */
+export function mountCodeBlock(
+  el: HTMLElement, options: MountOptions
+): Observable<Component<CodeBlock>> {
+  const internal$ = new Subject<CodeBlock>()
+  internal$
+    .pipe(
+      withLatestFrom(watchMedia("(hover)"))
+    )
+      .subscribe(([{ scroll }, hover]) => {
+        if (scroll && hover)
+          setFocusable(el)
+        else
+          resetFocusable(el)
+      })
+
+  /* Inject button for Clipboard.js integration */
+  if (ClipboardJS.isSupported()) {
+    const parent = el.closest("pre")!
+    parent.id = `__code_${index++}`
+    parent.insertBefore(
+      renderClipboardButton(parent.id),
+      el
+    )
+  }
+
+  /* Create and return component */
+  return watchCodeBlock(el, options)
+    .pipe(
+      tap(internal$),
+      finalize(() => internal$.complete()),
+      map(state => ({ ref: el, ...state }))
+    )
+}

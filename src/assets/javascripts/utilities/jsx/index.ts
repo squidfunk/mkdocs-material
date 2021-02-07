@@ -20,8 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-// tslint:disable no-null-keyword
-
 import { JSX as JSXInternal } from "preact"
 
 /* ----------------------------------------------------------------------------

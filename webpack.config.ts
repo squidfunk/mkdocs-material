@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import * as CopyPlugin from "copy-webpack-plugin"
-import * as EventHooksPlugin from "event-hooks-webpack-plugin"
+import CopyPlugin from "copy-webpack-plugin"
+import EventHooksPlugin from "event-hooks-webpack-plugin"
 import * as fs from "fs"
 import { minify as minhtml } from "html-minifier"
 import IgnoreEmitPlugin from "ignore-emit-webpack-plugin"
@@ -32,7 +32,7 @@ import { toPairs } from "ramda"
 import { minify as minjs } from "terser"
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin"
 import { Configuration } from "webpack"
-import * as AssetsManifestPlugin from "webpack-assets-manifest"
+import AssetsManifestPlugin from "webpack-assets-manifest"
 
 /* ----------------------------------------------------------------------------
  * Helper functions

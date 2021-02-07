@@ -101,9 +101,7 @@ export interface SearchMetadata {
 /**
  * Search result
  */
-export type SearchResult = Array<
-  SearchDocument & SearchMetadata
-> // tslint:disable-line
+export type SearchResult = Array<SearchDocument & SearchMetadata>
 
 /* ----------------------------------------------------------------------------
  * Functions

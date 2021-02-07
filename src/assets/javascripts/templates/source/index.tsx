@@ -20,23 +20,21 @@
  * IN THE SOFTWARE.
  */
 
-import { SourceFacts } from "patches/source"
-import { h } from "utilities"
+import { SourceFacts } from "~/components"
+import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Render source facts
+ * Render repository facts
  *
- * @param facts - Source facts
+ * @param facts - Repository facts
  *
  * @return Element
  */
-export function renderSource(
-  facts: SourceFacts
-) {
+export function renderSourceFacts(facts: SourceFacts) {
   return (
     <ul class="md-source__facts">
       {facts.map(fact => (

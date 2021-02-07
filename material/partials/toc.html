@@ -12,7 +12,7 @@
       <span class="md-nav__icon md-icon"></span>
       {{ lang.t("toc.title") }}
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       {% for toc_item in toc %}
         {% include "partials/toc-item.html" %}
       {% endfor %}
