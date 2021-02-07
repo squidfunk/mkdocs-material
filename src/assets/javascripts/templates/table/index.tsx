@@ -31,7 +31,7 @@ import { h } from "utilities"
  *
  * @param table - Table element
  *
- * @return Element
+ * @returns Element
  */
 export function renderTable(table: HTMLElement) {
   return (

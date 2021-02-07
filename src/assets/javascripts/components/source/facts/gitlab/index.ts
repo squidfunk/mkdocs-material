@@ -43,7 +43,7 @@ import { SourceFacts } from "../_"
  * @param base - GitLab base
  * @param project - GitLab project
  *
- * @return Repository facts observable
+ * @returns Repository facts observable
  */
 export function fetchSourceFactsFromGitLab(
   base: string, project: string

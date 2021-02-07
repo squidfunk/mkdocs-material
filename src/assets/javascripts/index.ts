@@ -21,9 +21,10 @@
  */
 
 import "focus-visible"
-import { merge, NEVER, Observable, Subject } from "rxjs"
+import { NEVER, Observable, Subject, merge } from "rxjs"
 import { switchMap } from "rxjs/operators"
 
+import { translation } from "./_"
 import {
   getElementOrThrow,
   getElements,
@@ -48,7 +49,6 @@ import {
 import {
   setupClipboardJS
 } from "./integrations"
-import { translation } from "./_"
 
 /* ----------------------------------------------------------------------------
  * Program
@@ -72,7 +72,7 @@ const header = getElementOrThrow("[data-md-component=header]")
 const main   = getElementOrThrow("[data-md-component=main]")
 
 const header$ = watchHeader(header)
-const main$   = watchMain(main, { header$: header$, viewport$ })
+const main$   = watchMain(main, { header$, viewport$ })
 
 /* Setup Clipboard.js integration */
 const message$ = new Subject<string>()
@@ -127,12 +127,19 @@ const app$ = merge(
     .map(child => mountTableOfContents(child, { viewport$, header$ })),
 )
 
+// eslint-disable-next-line
 app$.subscribe(console.log)
-
 
 /* ------------------------------------------------------------------------- */
 
-// put this somewhere else
+/**
+ * Test
+ *
+ * @param toggle$ - Toggle observable
+ * @param factory - Observable factory
+ *
+ * @returns New observable
+ */
 function at<T>(
   toggle$: Observable<boolean>, factory: () => Observable<T>
 ) {

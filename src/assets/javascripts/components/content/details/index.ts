@@ -71,7 +71,7 @@ interface MountOptions {
  * @param el - Details element
  * @param options - Options
  *
- * @return Details observable
+ * @returns Details observable
  */
 export function watchDetails(
   el: HTMLDetailsElement, { target$, print$ }: WatchOptions
@@ -94,7 +94,7 @@ export function watchDetails(
  * @param el - Details element
  * @param options - Options
  *
- * @return Details component observable
+ * @returns Details component observable
  */
 export function mountDetails(
   el: HTMLDetailsElement, options: MountOptions

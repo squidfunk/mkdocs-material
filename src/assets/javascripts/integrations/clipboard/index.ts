@@ -31,7 +31,7 @@ import { share } from "rxjs/operators"
 /**
  * Set up Clipboard.js integration
  *
- * @return Clipboard.js event observable
+ * @returns Clipboard.js event observable
  */
 export function setupClipboardJS(): Observable<ClipboardJS.Event> {
   if (!ClipboardJS.isSupported())

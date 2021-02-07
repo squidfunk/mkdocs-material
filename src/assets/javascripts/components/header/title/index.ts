@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, animationFrameScheduler, Subject } from "rxjs"
+import { Observable, Subject, animationFrameScheduler } from "rxjs"
 import {
   distinctUntilKeyChanged,
   finalize,
@@ -84,7 +84,7 @@ interface MountOptions {
  * @param el - Heading element
  * @param options - Options
  *
- * @return Header title observable
+ * @returns Header title observable
  */
 export function watchHeaderTitle(
   el: HTMLHeadingElement, { viewport$, header$ }: WatchOptions
@@ -107,7 +107,7 @@ export function watchHeaderTitle(
  * @param el - Header title element
  * @param options - Options
  *
- * @return Header title component observable
+ * @returns Header title component observable
  */
 export function mountHeaderTitle(
   el: HTMLElement, options: MountOptions

@@ -89,7 +89,7 @@ export type SearchMessage =
  *
  * @param message - Search worker message
  *
- * @return Test result
+ * @returns Test result
  */
 export function isSearchSetupMessage(
   message: SearchMessage
@@ -102,7 +102,7 @@ export function isSearchSetupMessage(
  *
  * @param message - Search worker message
  *
- * @return Test result
+ * @returns Test result
  */
 export function isSearchReadyMessage(
   message: SearchMessage
@@ -115,7 +115,7 @@ export function isSearchReadyMessage(
  *
  * @param message - Search worker message
  *
- * @return Test result
+ * @returns Test result
  */
 export function isSearchQueryMessage(
   message: SearchMessage
@@ -128,7 +128,7 @@ export function isSearchQueryMessage(
  *
  * @param message - Search worker message
  *
- * @return Test result
+ * @returns Test result
  */
 export function isSearchResultMessage(
   message: SearchMessage

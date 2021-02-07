@@ -44,7 +44,7 @@ export interface ElementOffset {
  *
  * @param el - Element
  *
- * @return Element offset
+ * @returns Element offset
  */
 export function getElementOffset(el: HTMLElement): ElementOffset {
   return {
@@ -60,7 +60,7 @@ export function getElementOffset(el: HTMLElement): ElementOffset {
  *
  * @param el - Element
  *
- * @return Element offset observable
+ * @returns Element offset observable
  */
 export function watchElementOffset(
   el: HTMLElement

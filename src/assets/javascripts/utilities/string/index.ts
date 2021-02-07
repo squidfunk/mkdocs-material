@@ -35,7 +35,7 @@
  * @param value - Value to be truncated
  * @param n - Number of characters
  *
- * @return Truncated value
+ * @returns Truncated value
  */
 export function truncate(value: string, n: number): string {
   let i = n
@@ -60,7 +60,7 @@ export function truncate(value: string, n: number): string {
  *
  * @param value - Original value
  *
- * @return Rounded value
+ * @returns Rounded value
  */
 export function round(value: number): string {
   if (value > 999) {
@@ -78,7 +78,7 @@ export function round(value: number): string {
  *
  * @param value - Value to be hashed
  *
- * @return Hash as 32bit integer
+ * @returns Hash as 32bit integer
  */
 export function hash(value: string): number {
   let h = 0

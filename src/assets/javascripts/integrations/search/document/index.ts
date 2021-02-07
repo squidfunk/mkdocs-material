@@ -51,7 +51,7 @@ export type SearchDocumentMap = Map<string, SearchDocument>
  *
  * @param docs - Search index documents
  *
- * @return Search document map
+ * @returns Search document map
  */
 export function setupSearchDocumentMap(
   docs: SearchIndexDocument[]

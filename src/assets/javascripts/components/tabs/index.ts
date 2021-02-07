@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, animationFrameScheduler, Subject } from "rxjs"
+import { Observable, Subject, animationFrameScheduler } from "rxjs"
 import {
   distinctUntilKeyChanged,
   finalize,
@@ -76,7 +76,7 @@ interface MountOptions {
  * @param el - Navigation tabs element
  * @param options - Options
  *
- * @return Navigation tabs observable
+ * @returns Navigation tabs observable
  */
 export function watchTabs(
   el: HTMLElement, { viewport$, header$ }: WatchOptions
@@ -98,7 +98,7 @@ export function watchTabs(
  * @param el - Navigation tabs element
  * @param options - Options
  *
- * @return Navigation tabs component observable
+ * @returns Navigation tabs component observable
  */
 export function mountTabs(
   el: HTMLElement, options: MountOptions

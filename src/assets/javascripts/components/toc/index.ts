@@ -46,9 +46,9 @@ import {
   setAnchorState
 } from "~/actions"
 import {
+  Viewport,
   getElement,
   getElements,
-  Viewport,
   watchElementSize
 } from "~/browser"
 
@@ -109,7 +109,7 @@ interface MountOptions {
  * @param anchors - Anchor elements
  * @param options - Options
  *
- * @return Table of contents observable
+ * @returns Table of contents observable
  */
 export function watchTableOfContents(
   anchors: HTMLAnchorElement[], { viewport$, header$ }: WatchOptions
@@ -236,7 +236,7 @@ export function watchTableOfContents(
  * @param el - Anchor list element
  * @param options - Options
  *
- * @return Table of contents component observable
+ * @returns Table of contents component observable
  */
 export function mountTableOfContents(
   el: HTMLElement, options: MountOptions

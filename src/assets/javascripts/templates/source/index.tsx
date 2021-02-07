@@ -32,7 +32,7 @@ import { h } from "~/utilities"
  *
  * @param facts - Repository facts
  *
- * @return Element
+ * @returns Element
  */
 export function renderSourceFacts(facts: SourceFacts) {
   return (

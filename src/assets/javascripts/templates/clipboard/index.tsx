@@ -32,7 +32,7 @@ import { h } from "~/utilities"
  *
  * @param id - Unique identifier
  *
- * @return Element
+ * @returns Element
  */
 export function renderClipboardButton(id: string) {
   return (

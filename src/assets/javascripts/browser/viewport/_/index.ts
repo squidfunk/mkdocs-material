@@ -69,7 +69,7 @@ interface WatchAtOptions {
 /**
  * Watch viewport
  *
- * @return Viewport observable
+ * @returns Viewport observable
  */
 export function watchViewport(): Observable<Viewport> {
   return combineLatest([
@@ -88,7 +88,7 @@ export function watchViewport(): Observable<Viewport> {
  * @param el - Element
  * @param options - Options
  *
- * @return Viewport observable
+ * @returns Viewport observable
  */
 export function watchViewportAt(
   el: HTMLElement, { viewport$, header$ }: WatchAtOptions

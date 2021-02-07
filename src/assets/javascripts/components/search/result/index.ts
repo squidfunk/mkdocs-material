@@ -80,7 +80,7 @@ interface MountOptions {
  * @param worker - Search worker
  * @param options - Options
  *
- * @return Search result list component observable
+ * @returns Search result list component observable
  */
 export function mountSearchResult(
   el: HTMLElement, { rx$ }: SearchWorker, { query$ }: MountOptions

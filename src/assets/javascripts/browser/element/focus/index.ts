@@ -36,7 +36,7 @@ import { getActiveElement } from "../_"
  * @param value - Whether the element should be focused
  */
 export function setElementFocus(
-  el: HTMLElement, value: boolean = true
+  el: HTMLElement, value = true
 ): void {
   if (value)
     el.focus()
@@ -51,7 +51,7 @@ export function setElementFocus(
  *
  * @param el - Element
  *
- * @return Element focus observable
+ * @returns Element focus observable
  */
 export function watchElementFocus(
   el: HTMLElement

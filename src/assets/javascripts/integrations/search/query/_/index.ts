@@ -48,7 +48,7 @@ export type SearchQueryTerms = Record<string, boolean>
  *
  * @param value - Query value
  *
- * @return Search query clauses
+ * @returns Search query clauses
  */
 export function parseSearchQuery(
   value: string
@@ -67,7 +67,7 @@ export function parseSearchQuery(
  * @param query - Search query clauses
  * @param terms - Search terms
  *
- * @return Search query terms
+ * @returns Search query terms
  */
 export function getSearchQueryTerms(
   query: SearchQueryClause[], terms: string[]

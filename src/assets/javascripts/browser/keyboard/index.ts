@@ -44,7 +44,7 @@ export interface Key {
  *
  * @param el - Element
  *
- * @return Test result
+ * @returns Test result
  */
 export function isSusceptibleToKeyboard(el: HTMLElement): boolean {
   switch (el.tagName) {
@@ -66,7 +66,7 @@ export function isSusceptibleToKeyboard(el: HTMLElement): boolean {
 /**
  * Watch keyboard
  *
- * @return Keyboard observable
+ * @returns Keyboard observable
  */
 export function watchKeyboard(): Observable<Key> {
   return fromEvent<KeyboardEvent>(window, "keydown")

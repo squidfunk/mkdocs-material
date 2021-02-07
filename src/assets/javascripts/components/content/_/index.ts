@@ -22,7 +22,7 @@
 
 import { Observable, merge } from "rxjs"
 
-import { getElements, Viewport } from "~/browser"
+import { Viewport, getElements } from "~/browser"
 
 import { Component } from "../../_"
 import { CodeBlock, mountCodeBlock } from "../code"
@@ -64,7 +64,7 @@ interface MountOptions {
  * @param el - Content element
  * @param options - Options
  *
- * @return Content component observable
+ * @returns Content component observable
  */
 export function mountContent(
   el: HTMLElement, { target$, viewport$, print$ }: MountOptions

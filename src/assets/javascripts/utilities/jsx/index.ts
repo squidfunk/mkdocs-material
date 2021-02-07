@@ -81,7 +81,7 @@ function appendChild(el: HTMLElement, child: Child | Child[]): void {
  * @param attributes - HTML attributes
  * @param children - Child elements
  *
- * @return Element
+ * @returns Element
  */
 export function h(
   tag: string, attributes: Attributes | null, ...children: Child[]

@@ -20,7 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, defer, of, Subject, animationFrameScheduler } from "rxjs"
+import {
+  Observable,
+  Subject,
+  animationFrameScheduler,
+  defer,
+  of
+} from "rxjs"
 import {
   combineLatestWith,
   distinctUntilChanged,
@@ -70,7 +76,7 @@ interface MountOptions {
  *
  * @param el - Header element
  *
- * @return Header observable
+ * @returns Header observable
  */
 export function watchHeader(
   el: HTMLElement
@@ -106,7 +112,7 @@ export function watchHeader(
  * @param el - Header element
  * @param options - Options
  *
- * @return Header component observable
+ * @returns Header component observable
  */
 export function mountHeader(
   el: HTMLElement, { header$, main$ }: MountOptions

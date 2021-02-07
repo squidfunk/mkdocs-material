@@ -28,7 +28,7 @@
 /// Strip units from a number
 ///
 @function strip-units($number) {
-  @return $number / ($number * 0 + 1);
+  @returns $number / ($number * 0 + 1);
 }
 
 ///
@@ -52,7 +52,7 @@
 @function px2em($size, $base: 16px) {
   @if unit($size) == px {
     @if unit($base) == px {
-      @return ($size / $base) * 1em;
+      @returns ($size / $base) * 1em;
     } @else {
       @error "Invalid base: #{$base} - unit must be 'px'";
     }
@@ -67,7 +67,7 @@
 @function px2rem($size, $base: 20px) {
   @if unit($size) == px {
     @if unit($base) == px {
-      @return ($size / $base) * 1.0rem;
+      @returns ($size / $base) * 1.0rem;
     } @else {
       @error "Invalid base: #{$base} - unit must be 'px'";
     }

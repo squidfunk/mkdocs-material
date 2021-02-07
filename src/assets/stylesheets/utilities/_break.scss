@@ -78,7 +78,7 @@ $break-devices: () !default;
       @error "Invalid value: #{$value}";
     }
   }
-  @return $min, $max;
+  @returns $min, $max;
 }
 
 ///
@@ -96,7 +96,7 @@ $break-devices: () !default;
   @if type-of($current) == list or type-of($current) == number {
     $current: (default: $current);
   }
-  @return break-select-min-max($current);
+  @returns break-select-min-max($current);
 }
 
 // ----------------------------------------------------------------------------

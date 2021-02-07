@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "jsdoc/require-jsdoc": "off"
+  }
+}

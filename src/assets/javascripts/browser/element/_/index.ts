@@ -32,7 +32,7 @@
  * @param selector - Query selector
  * @param node - Node of reference
  *
- * @return Element or nothing
+ * @returns Element or nothing
  */
 export function getElement<T extends keyof HTMLElementTagNameMap>(
   selector: T, node?: ParentNode
@@ -56,7 +56,7 @@ export function getElement<T extends HTMLElement>(
  * @param selector - Query selector
  * @param node - Node of reference
  *
- * @return Element
+ * @returns Element
  */
 export function getElementOrThrow<T extends keyof HTMLElementTagNameMap>(
   selector: T, node?: ParentNode
@@ -80,7 +80,7 @@ export function getElementOrThrow<T extends HTMLElement>(
 /**
  * Retrieve the currently active element
  *
- * @return Element or nothing
+ * @returns Element or nothing
  */
 export function getActiveElement(): HTMLElement | undefined {
   return document.activeElement instanceof HTMLElement
@@ -96,7 +96,7 @@ export function getActiveElement(): HTMLElement | undefined {
  * @param selector - Query selector
  * @param node - Node of reference
  *
- * @return Elements
+ * @returns Elements
  */
 export function getElements<T extends keyof HTMLElementTagNameMap>(
   selector: T, node?: ParentNode
@@ -121,7 +121,7 @@ export function getElements<T extends HTMLElement>(
  *
  * @param tagName - Tag name
  *
- * @return Element
+ * @returns Element
  */
 export function createElement<T extends keyof HTMLElementTagNameMap>(
   tagName: T

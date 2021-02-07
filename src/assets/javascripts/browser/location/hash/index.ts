@@ -23,8 +23,7 @@
 import { Observable, fromEvent, of } from "rxjs"
 import { filter, map, share, startWith, switchMap } from "rxjs/operators"
 
-import { createElement } from "browser"
-import { getElement } from "~/browser/element"
+import { createElement, getElement } from "~/browser"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -33,7 +32,7 @@ import { getElement } from "~/browser/element"
 /**
  * Retrieve location hash
  *
- * @return Location hash
+ * @returns Location hash
  */
 export function getLocationHash(): string {
   return location.hash.substring(1)
@@ -61,7 +60,7 @@ export function setLocationHash(hash: string): void {
 /**
  * Watch location hash
  *
- * @return Location hash observable
+ * @returns Location hash observable
  */
 export function watchLocationHash(): Observable<string> {
   return fromEvent<HashChangeEvent>(window, "hashchange")
@@ -76,7 +75,7 @@ export function watchLocationHash(): Observable<string> {
 /**
  * Watch location target
  *
- * @return Location target observable
+ * @returns Location target observable
  */
 export function watchLocationTarget(): Observable<HTMLElement> {
   return watchLocationHash()

@@ -49,10 +49,10 @@ import {
   watchElementFocus
 } from "~/browser"
 import {
-  defaultTransform,
-  SearchWorker,
+  SearchMessageType,
   SearchQueryMessage,
-  SearchMessageType
+  SearchWorker,
+  defaultTransform
 } from "~/integrations"
 
 import { Component } from "../../_"
@@ -80,9 +80,8 @@ export interface SearchQuery {
  * is delayed by `1ms` so the input's empty state is allowed to propagate.
  *
  * @param el - Search query element
- * @param transform - Transformation function
  *
- * @return Search query observable
+ * @returns Search query observable
  */
 export function watchSearchQuery(
   el: HTMLInputElement
@@ -113,9 +112,8 @@ export function watchSearchQuery(
  *
  * @param el - Search query element
  * @param worker - Search worker
- * @param transform - Transformation function
  *
- * @return Search query component observable
+ * @returns Search query component observable
  */
 export function mountSearchQuery(
   el: HTMLInputElement, { tx$ }: SearchWorker

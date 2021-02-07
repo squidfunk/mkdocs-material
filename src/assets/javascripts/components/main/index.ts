@@ -75,7 +75,7 @@ interface WatchOptions {
  * @param el - Main area element
  * @param options - Options
  *
- * @return Main area observable
+ * @returns Main area observable
  */
 export function watchMain(
   el: HTMLElement, { viewport$, header$ }: WatchOptions

@@ -29,7 +29,7 @@
  *
  * @param value - Query value
  *
- * @return Transformed query value
+ * @returns Transformed query value
  */
 export type SearchTransformFn = (value: string) => string
 
@@ -56,7 +56,7 @@ export type SearchTransformFn = (value: string) => string
  *
  * @param query - Query value
  *
- * @return Transformed query value
+ * @returns Transformed query value
  */
 export function defaultTransform(query: string): string {
   return query

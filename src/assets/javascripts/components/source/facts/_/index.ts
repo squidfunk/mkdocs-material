@@ -43,7 +43,7 @@ export type SourceFacts = string[]
  *
  * @param url - Repository URL
  *
- * @return Repository facts observable
+ * @returns Repository facts observable
  */
 export function fetchSourceFacts(
   url: string
@@ -53,12 +53,12 @@ export function fetchSourceFacts(
 
     /* GitHub repository */
     case "github":
-      const [, user, repo] = url.match(/^.+github\.com\/([^\/]+)\/?([^\/]+)?/i)!
+      const [, user, repo] = url.match(/^.+github\.com\/([^/]+)\/?([^/]+)?/i)!
       return fetchSourceFactsFromGitHub(user, repo)
 
     /* GitLab repository */
     case "gitlab":
-      const [, base, slug] = url.match(/^.+?([^\/]*gitlab[^\/]+)\/(.+?)\/?$/i)!
+      const [, base, slug] = url.match(/^.+?([^/]*gitlab[^/]+)\/(.+?)\/?$/i)!
       return fetchSourceFactsFromGitLab(base, slug)
 
     /* Everything else */

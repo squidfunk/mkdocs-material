@@ -43,7 +43,7 @@ import { SourceFacts } from "../_"
  * @param user - GitHub user
  * @param repo - GitHub repository
  *
- * @return Repository facts observable
+ * @returns Repository facts observable
  */
 export function fetchSourceFactsFromGitHub(
   user: string, repo?: string

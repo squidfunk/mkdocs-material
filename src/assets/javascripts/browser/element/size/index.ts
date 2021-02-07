@@ -92,7 +92,7 @@ const observer$ = defer(() => of(
  *
  * @param el - Element
  *
- * @return Element size
+ * @returns Element size
  */
 export function getElementSize(el: HTMLElement): ElementSize {
   return {
@@ -106,7 +106,7 @@ export function getElementSize(el: HTMLElement): ElementSize {
  *
  * @param el - Element
  *
- * @return Element size
+ * @returns Element size
  */
 export function getElementContentSize(el: HTMLElement): ElementSize {
   return {
@@ -127,7 +127,7 @@ export function getElementContentSize(el: HTMLElement): ElementSize {
  *
  * @param el - Element
  *
- * @return Element size observable
+ * @returns Element size observable
  */
 export function watchElementSize(
   el: HTMLElement

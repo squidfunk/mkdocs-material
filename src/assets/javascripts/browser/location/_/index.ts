@@ -34,7 +34,7 @@ import { BehaviorSubject, Subject } from "rxjs"
  * tracked without setting them and `Location` is a singleton which represents
  * the current location.
  *
- * @return URL
+ * @returns URL
  */
 export function getLocation(): URL {
   return new URL(location.href)
@@ -54,7 +54,7 @@ export function setLocation(url: URL): void {
 /**
  * Watch location
  *
- * @return Location subject
+ * @returns Location subject
  */
 export function watchLocation(): Subject<URL> {
   return new BehaviorSubject<URL>(getLocation())

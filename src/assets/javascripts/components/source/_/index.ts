@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, defer, of, NEVER } from "rxjs"
+import { NEVER, Observable, Subject, defer, of } from "rxjs"
 import {
   catchError,
   filter,
@@ -35,10 +35,7 @@ import { renderSourceFacts } from "~/templates"
 import { hash } from "~/utilities"
 
 import { Component } from "../../_"
-import {
-  fetchSourceFacts,
-  SourceFacts
-} from "../facts"
+import { SourceFacts, fetchSourceFacts } from "../facts"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -69,7 +66,7 @@ let fetch$: Observable<Source>
  *
  * @param el - Repository information element
  *
- * @return Repository information observable
+ * @returns Repository information observable
  */
 export function watchSource(
   el: HTMLAnchorElement
@@ -108,7 +105,7 @@ export function watchSource(
  *
  * @param el - Repository information element
  *
- * @return Repository information component observable
+ * @returns Repository information component observable
  */
 export function mountSource(
   el: HTMLAnchorElement

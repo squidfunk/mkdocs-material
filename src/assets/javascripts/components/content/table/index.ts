@@ -54,7 +54,7 @@ const sentinel = createElement("table")
  *
  * @param el - Data table element
  *
- * @return Data table component observable
+ * @returns Data table component observable
  */
 export function mountDataTable(
   el: HTMLElement

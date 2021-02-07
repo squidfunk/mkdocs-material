@@ -25,11 +25,15 @@ import { filter, sample, take } from "rxjs/operators"
 
 import { configuration } from "~/_"
 import { getElementOrThrow } from "~/browser"
-import { isSearchQueryMessage, isSearchReadyMessage, setupSearchWorker } from "~/integrations"
+import {
+  isSearchQueryMessage,
+  isSearchReadyMessage,
+  setupSearchWorker
+} from "~/integrations"
 
 import { Component } from "../../_"
-import { mountSearchQuery, SearchQuery } from "../query"
-import { mountSearchResult, SearchResult } from "../result"
+import { SearchQuery, mountSearchQuery } from "../query"
+import { SearchResult, mountSearchResult } from "../result"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -51,7 +55,7 @@ export type Search =
  *
  * @param url - Search index URL
  *
- * @return Promise resolving with search index
+ * @returns Promise resolving with search index
  */
 function fetchSearchIndex(url: string) {
   return __search?.index || fetch(url, { credentials: "same-origin" })
@@ -67,7 +71,7 @@ function fetchSearchIndex(url: string) {
  *
  * @param el - Search element
  *
- * @return Search component observable
+ * @returns Search component observable
  */
 export function mountSearch(
   el: HTMLElement

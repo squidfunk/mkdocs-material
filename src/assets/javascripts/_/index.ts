@@ -78,7 +78,7 @@ export interface Config {
 /**
  * Retrieve global configuration and make base URL absolute
  */
-let config: Config = JSON.parse(getElementOrThrow("#__config").textContent!)
+const config: Config = JSON.parse(getElementOrThrow("#__config").textContent!)
 config.base = new URL(config.base, getLocation())
   .toString()
   .replace(/\/$/, "")
@@ -90,7 +90,7 @@ config.base = new URL(config.base, getLocation())
 /**
  * Retrieve global configuration
  *
- * @return Global configuration
+ * @returns Global configuration
  */
 export function configuration(): Config {
   return config
@@ -113,7 +113,7 @@ export function flag(feature: Feature): boolean {
  * @param key - Key to be translated
  * @param value - Value to be replaced
  *
- * @return Translation
+ * @returns Translation
  */
 export function translation(
   key: Translation, value?: string | number

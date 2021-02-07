@@ -43,7 +43,7 @@ import AssetsManifestPlugin from "webpack-assets-manifest"
  *
  * @param args - Command-line arguments
  *
- * @return Webpack configuration
+ * @returns Webpack configuration
  */
 function config(args: Configuration): Configuration {
   const assets = {}
@@ -188,7 +188,7 @@ function config(args: Configuration): Configuration {
  * @param env - Webpack environment arguments
  * @param args - Command-line arguments
  *
- * @return Webpack configurations
+ * @returns Webpack configurations
  */
 export default (_env: never, args: Configuration): Configuration[] => {
   const hash = args.mode === "production" ? ".[chunkhash].min" : ""

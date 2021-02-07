@@ -50,7 +50,7 @@ const enum Flag {
  * @param section - Search document
  * @param flag - Render flags
  *
- * @return Element
+ * @returns Element
  */
 function renderSearchDocument(
   document: SearchDocument & SearchMetadata, flag: Flag
@@ -103,7 +103,7 @@ function renderSearchDocument(
  * @param result - Search result
  * @param threshold - Score threshold
  *
- * @return Element
+ * @returns Element
  */
 export function renderSearchResult(
   result: SearchResult, threshold: number = Infinity

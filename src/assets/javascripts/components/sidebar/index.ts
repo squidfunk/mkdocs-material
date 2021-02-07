@@ -95,7 +95,7 @@ interface MountOptions {
  * @param el - Sidebar element
  * @param options - Options
  *
- * @return Sidebar observable
+ * @returns Sidebar observable
  */
 export function watchSidebar(
   el: HTMLElement, { viewport$, main$ }: WatchOptions
@@ -129,7 +129,7 @@ export function watchSidebar(
  * @param el - Sidebar element
  * @param options - Options
  *
- * @return Sidebar component observable
+ * @returns Sidebar component observable
  */
 export function mountSidebar(
   el: HTMLElement, { header$, ...options }: MountOptions

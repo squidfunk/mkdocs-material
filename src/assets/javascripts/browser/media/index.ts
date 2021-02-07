@@ -32,7 +32,7 @@ import { filter, map, mapTo, startWith } from "rxjs/operators"
  *
  * @param query - Media query
  *
- * @return Media observable
+ * @returns Media observable
  */
 export function watchMedia(query: string): Observable<boolean> {
   const media = matchMedia(query)
@@ -46,7 +46,7 @@ export function watchMedia(query: string): Observable<boolean> {
 /**
  * Watch print mode, cross-browser
  *
- * @return Print observable
+ * @returns Print observable
  */
 export function watchPrint(): Observable<void> {
   return merge(

@@ -23,8 +23,8 @@
 import {
   Observable,
   Subject,
-  merge,
   animationFrameScheduler,
+  merge,
   of
 } from "rxjs"
 import {
@@ -81,10 +81,10 @@ interface MountOptions {
 /**
  * Watch dialog
  *
- * @param el - Dialog element
+ * @param _el - Dialog element
  * @param options - Options
  *
- * @return Dialog observable
+ * @returns Dialog observable
  */
 export function watchDialog(
   _el: HTMLElement, { message$ }: WatchOptions
@@ -102,14 +102,13 @@ export function watchDialog(
     )
 }
 
-
 /**
  * Mount dialog
  *
  * @param el - Dialog element
  * @param options - Options
  *
- * @return Dialog component observable
+ * @returns Dialog component observable
  */
 export function mountDialog(
   el: HTMLElement, { message$ }: MountOptions

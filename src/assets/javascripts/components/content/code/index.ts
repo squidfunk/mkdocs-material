@@ -32,9 +32,9 @@ import {
 
 import { resetFocusable, setFocusable } from "~/actions"
 import {
+  Viewport,
   getElementContentSize,
   getElementSize,
-  Viewport,
   watchMedia
 } from "~/browser"
 import { renderClipboardButton } from "~/templates"
@@ -89,7 +89,7 @@ let index = 0
  * @param el - Code block element
  * @param options - Options
  *
- * @return Code block observable
+ * @returns Code block observable
  */
 export function watchCodeBlock(
   el: HTMLElement, { viewport$ }: WatchOptions
@@ -117,7 +117,7 @@ export function watchCodeBlock(
  * @param el - Code block element
  * @param options - Options
  *
- * @return Code block component observable
+ * @returns Code block component observable
  */
 export function mountCodeBlock(
   el: HTMLElement, options: MountOptions

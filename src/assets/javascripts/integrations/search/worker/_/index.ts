@@ -52,7 +52,7 @@ export type SearchWorker = WorkerHandler<SearchMessage>
  *
  * @param data - Search index
  *
- * @return Search index
+ * @returns Search index
  */
 function setupSearchIndex(
   { config, docs, index }: SearchIndex
@@ -91,7 +91,7 @@ function setupSearchIndex(
  * @param url - Worker URL
  * @param index - Promise resolving with search index
  *
- * @return Search worker
+ * @returns Search worker
  */
 export function setupSearchWorker(
   url: string, index: Promise<SearchIndex>
