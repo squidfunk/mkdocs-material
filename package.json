@@ -26,7 +26,7 @@
   "scripts": {
     "build": "npm run clean && webpack --mode production",
     "clean": "rimraf material",
-    "lint": "npm run lint:*",
+    "lint": "npm run lint:scss && npm run lint:ts",
     "lint:scss": "stylelint \"src/assets/**/*.scss\"",
     "lint:ts": "eslint --cache \"src/**/*.ts\"",
     "start": "webpack --mode development --watch"
