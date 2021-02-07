@@ -28,7 +28,7 @@
 /// Strip units from a number
 ///
 @function strip-units($number) {
-  @returns $number / ($number * 0 + 1);
+  @return $number / ($number * 0 + 1);
 }
 
 ///

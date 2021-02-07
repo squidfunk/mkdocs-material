@@ -39,10 +39,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.9c987ffa.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.1e9203c3.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.00fa6fd5.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.a4a42c2a.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -191,7 +191,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/worker/search.cc7c7442.min.js" | url,
+        "search": "assets/javascripts/worker/search.b9424174.min.js" | url,
       } -%}
       {%- set translations = app.translations -%}
       {%- for key in [
@@ -217,7 +217,7 @@
     {% endblock %}
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.250c9a34.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.5c26acfa.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.48bdffa8.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
