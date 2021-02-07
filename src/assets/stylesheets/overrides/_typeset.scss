@@ -26,10 +26,15 @@
 
 // Pumping heart animation
 @keyframes tx-heart {
-  0%, 40%, 80%, 100% {
+  0%,
+  40%,
+  80%,
+  100% {
     transform: scale(1);
   }
-  20%, 60% {
+
+  20%,
+  60% {
     transform: scale(1.15);
   }
 }
@@ -48,7 +53,7 @@
 
   // Twitter icon
   .twitter {
-    color: #00ACEE;
+    color: #00acee;
   }
 
   // Insiders video

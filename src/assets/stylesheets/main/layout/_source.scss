@@ -29,6 +29,7 @@
   0% {
     height: 0;
   }
+
   100% {
     height: px2rem(13px);
   }
@@ -40,9 +41,11 @@
     transform: translateY(100%);
     opacity: 0;
   }
+
   50% {
     opacity: 0;
   }
+
   100% {
     transform: translateY(0%);
     opacity: 1;

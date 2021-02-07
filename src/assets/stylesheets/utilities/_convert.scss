@@ -52,7 +52,7 @@
 @function px2em($size, $base: 16px) {
   @if unit($size) == px {
     @if unit($base) == px {
-      @returns ($size / $base) * 1em;
+      @return ($size / $base) * 1em;
     } @else {
       @error "Invalid base: #{$base} - unit must be 'px'";
     }
@@ -67,7 +67,7 @@
 @function px2rem($size, $base: 20px) {
   @if unit($size) == px {
     @if unit($base) == px {
-      @returns ($size / $base) * 1.0rem;
+      @return ($size / $base) * 1rem;
     } @else {
       @error "Invalid base: #{$base} - unit must be 'px'";
     }

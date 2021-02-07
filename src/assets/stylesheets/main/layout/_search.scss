@@ -600,7 +600,7 @@
     }
 
     // Adjust transparency of less relevant results
-    & ~ * > * {
+    ~ * > * {
       opacity: 0.65;
     }
   }

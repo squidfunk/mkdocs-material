@@ -20,8 +20,12 @@
         ],
         "ignoreAtRules": [
           "if",
+          "each",
           "else",
-          "elseif"
+          "elseif",
+          "for",
+          "import",
+          "return"
         ]
       }
     ],
@@ -47,16 +51,16 @@
       }
     ],
     "custom-property-empty-line-before": null,
-    "custom-property-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "declaration-colon-space-after": null,
     "declaration-no-important": true,
     "declaration-block-single-line-max-declarations": 0,
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
     "font-family-name-quotes": "always-where-recommended",
     "font-weight-notation": "numeric",
-    "keyframes-name-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "linebreaks": "unix",
     "media-feature-name-no-unknown": null,
+    "no-descending-specificity": null,
     "no-empty-first-line": true,
     "no-unknown-animations": true,
     "property-no-unknown": null,
@@ -69,11 +73,11 @@
         ]
       }
     ],
+    "selector-combinator-space-before": null,
+    "selector-descendant-combinator-no-non-space": null,
     "selector-max-empty-lines": 0,
     "selector-max-id": 0,
-    "selector-max-type": 1,
-    "selector-max-universal": 1,
-    "selector-no-qualifying-type": true,
+    "selector-no-qualifying-type": null,
     "selector-pseudo-class-no-unknown": null,
     "selector-pseudo-element-no-unknown": null,
     "string-quotes": "double",
@@ -89,10 +93,8 @@
       "vh",
       "vw"
     ],
-    "value-no-vendor-prefix": true,
     "scss/at-each-key-value-single-line": true,
     "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
-    "scss/at-extend-no-missing-placeholder": true,
     "scss/at-function-parentheses-space-before": "never",
     "scss/at-function-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
@@ -103,7 +105,6 @@
     "scss/at-mixin-parentheses-space-before": "never",
     "scss/at-mixin-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "scss/at-rule-conditional-no-parentheses": true,
-    "scss/comment-no-empty": true,
     "scss/comment-no-loud": true,
     "scss/declaration-nested-properties": "never",
     "scss/dimension-no-non-numeric-values": true,
@@ -126,9 +127,6 @@
     "scss/dollar-variable-no-missing-interpolation": true,
     "scss/dollar-variable-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "scss/double-slash-comment-whitespace-inside": "always",
-    "scss/no-dollar-variables": true,
-    "scss/no-global-function-names": true,
-    "scss/no-duplicate-dollar-variables": true,
     "scss/no-duplicate-mixins": true,
     "scss/operator-no-unspaced": true,
     "scss/partial-no-import": true,

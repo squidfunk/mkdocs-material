@@ -39,4 +39,4 @@ $break-devices: (
     medium:    px2em(1600px) px2em(1999px),
     large:     px2em(2000px)
   )
-);
+) !default;

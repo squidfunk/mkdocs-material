@@ -26,7 +26,6 @@
 
 // Code block
 .highlight {
-
   .o,   // Operator
   .ow { // Operator, word
     color: var(--md-code-hl-operator-color);
@@ -140,7 +139,7 @@
   }
 
   .gi { // Diff, insert
-    background-color: var(--md-typeset-ins-color)
+    background-color: var(--md-typeset-ins-color);
   }
 
   // Highlighted line
@@ -148,7 +147,7 @@
     display: block;
     margin: 0 px2em(-16px, 13.6px);
     padding: 0 px2em(16px, 13.6px);
-    background-color: var(--md-code-hl-color)
+    background-color: var(--md-code-hl-color);
   }
 
   // Code block line numbers (inline)

@@ -317,7 +317,6 @@ kbd {
         content: attr(title);
       }
     }
-
   }
 
   // Small text
@@ -496,7 +495,7 @@ kbd {
     // Due to margin collapse because of the necessary inline-block hack, we
     // cannot increase the bottom margin on the table, so we just increase the
     // top margin on the following element
-    & + * {
+    + * {
       margin-top: 1.5em;
     }
 

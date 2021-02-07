@@ -84,7 +84,7 @@
         border-color: var(--md-accent-fg-color);
 
         // Show tabbed block content
-        & + .tabbed-content {
+        + .tabbed-content {
           display: block;
         }
       }

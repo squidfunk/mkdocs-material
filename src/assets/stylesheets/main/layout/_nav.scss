@@ -139,7 +139,7 @@
       }
 
       // Hide table of contents
-      & ~ .md-nav {
+      ~ .md-nav {
         display: none;
       }
     }
@@ -456,7 +456,7 @@
       }
 
       // Show table of contents
-      & ~ .md-nav {
+      ~ .md-nav {
         display: flex;
       }
     }
@@ -496,7 +496,7 @@
       }
 
       // Show table of contents
-      & ~ .md-nav {
+      ~ .md-nav {
         display: flex;
       }
     }

@@ -64,7 +64,7 @@ $break-devices: () !default;
       @each $number in $value {
         @if type-of($number) == number {
           $min: min($number, $min);
-          @if $max != null {
+          @if $max {
             $max: max($number, $max);
           }
         } @else {
@@ -78,7 +78,7 @@ $break-devices: () !default;
       @error "Invalid value: #{$value}";
     }
   }
-  @returns $min, $max;
+  @return $min, $max;
 }
 
 ///
@@ -96,7 +96,7 @@ $break-devices: () !default;
   @if type-of($current) == list or type-of($current) == number {
     $current: (default: $current);
   }
-  @returns break-select-min-max($current);
+  @return break-select-min-max($current);
 }
 
 // ----------------------------------------------------------------------------
@@ -161,9 +161,10 @@ $break-devices: () !default;
   }
   @if type-of($device) == list {
     $breakpoint: break-select-device($device);
-    @if nth($breakpoint, 2) != null {
+    @if nth($breakpoint, 2) {
       $min: nth($breakpoint, 1);
       $max: nth($breakpoint, 2);
+
       @media screen and (min-width: $min) and (max-width: $max) {
         @content;
       }
@@ -185,6 +186,7 @@ $break-devices: () !default;
   @if type-of($device) == list {
     $breakpoint: break-select-device($device);
     $min: nth($breakpoint, 1);
+
     @media screen and (min-width: $min) {
       @content;
     }
@@ -203,6 +205,7 @@ $break-devices: () !default;
   @if type-of($device) == list {
     $breakpoint: break-select-device($device);
     $max: nth($breakpoint, 2);
+
     @media screen and (max-width: $max) {
       @content;
     }
