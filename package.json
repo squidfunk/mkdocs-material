@@ -85,7 +85,7 @@
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.18.0",
     "tiny-glob": "^0.2.8",
-    "ts-loader": "^8.0.14",
+    "ts-loader": "^8.0.15",
     "ts-node": "^9.1.1",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
     "tslib": "^2.1.0",
