@@ -102,7 +102,7 @@ function initialize(config) { // eslint-disable-line func-style
 
     /* Clipboard integration */
     if (Clipboard.isSupported()) {
-      const blocks = document.querySelectorAll(".codehilite > pre, pre > code")
+      const blocks = document.querySelectorAll(".highlight > pre, pre > code")
       Array.prototype.forEach.call(blocks, (block, index) => {
         const id = `__code_${index}`
 
@@ -281,11 +281,11 @@ function initialize(config) { // eslint-disable-line func-style
         new Material.Search.Lock("[data-md-toggle=search]")))
 
     /* Component: search results */
-    new Material.Event.Listener("[data-md-component=query]", [
-      "focus", "keyup", "change"
-    ], new Material.Search.Result("[data-md-component=result]", () => {
-      return '';
-    })).listen()
+    new Material.Event.Listener(
+      "[data-md-component=query]",
+      ["focus", "keyup", "change"],
+      new Material.Search.Result("[data-md-component=result]", config.url.base)
+    ).listen();
 
     /* Listener: focus input after form reset */
     new Material.Event.Listener("[data-md-component=reset]", "click", () => {

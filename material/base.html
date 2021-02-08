@@ -11,7 +11,6 @@
     {% block site_meta %}
       <meta charset="utf-8">
       <meta http-equiv="x-dns-prefetch-control" content="on">
-      <link rel="dns-prefetch" href="//fonts.googleapis.com">
       <link rel="dns-prefetch" href="//oi-wiki.org">
       <link rel="dns-prefetch" href="//search.oi-wiki.org">
       <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
@@ -81,12 +80,7 @@
     {% endblock %}
     {% block fonts %}
       {% if font != false %}
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
-              font.text | replace(' ', '+') + ':300,400,400i,700|' +
-              font.code | replace(' ', '+')
-            }}&display=fallback">
-        <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
+        <style>@font-face{font-family:'Fira Sans';font-style:normal;font-weight:300;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:italic;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot);src:local('Fira Sans'),local('FiraSans-Italic'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:700;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Mono';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot);src:local('Fira Mono'),local('FiraMono-Normal'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.svg#FiraMono) format('svg')}body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
       {% endif %}
     {% endblock %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@0.2.3/iconfont/material-icons.min.css">
@@ -201,7 +195,7 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/application.320a2241.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/application.ad30b88d.js' | url }}"></script>
       <script>app.initialize({version:"{{ mkdocs_version }}",url:{base:"{{ base_url }}"}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
