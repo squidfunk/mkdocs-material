@@ -43,7 +43,7 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@mdi/svg": "^5.9.55",
-    "@primer/octicons": "^11.2.0",
+    "@primer/octicons": "^12.0.0",
     "@types/clipboard": "^2.0.1",
     "@types/copy-webpack-plugin": "^6.4.0",
     "@types/escape-html": "1.0.0",
