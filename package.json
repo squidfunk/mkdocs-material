@@ -34,8 +34,8 @@
   "dependencies": {
     "clipboard": "^2.0.6",
     "escape-html": "^1.0.3",
-    "fuzzaldrin-plus": "^0.6.0",
     "focus-visible": "^5.2.0",
+    "fuzzaldrin-plus": "^0.6.0",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.4.0",
     "rxjs": "^7.0.0-beta.10"
