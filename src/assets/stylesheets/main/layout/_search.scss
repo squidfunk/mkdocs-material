@@ -595,7 +595,7 @@
     }
 
     // Hide native details marker
-    &::-webkit-details-marker {
+    &::marker {
       display: none;
     }
 
