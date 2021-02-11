@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, animationFrameScheduler } from "rxjs"
+import { NEVER, Observable, Subject, animationFrameScheduler } from "rxjs"
 import {
   distinctUntilKeyChanged,
   finalize,
@@ -35,7 +35,7 @@ import {
 } from "~/actions"
 import {
   Viewport,
-  getElementOrThrow,
+  getElement,
   getElementSize,
   watchViewportAt
 } from "~/browser"
@@ -124,8 +124,12 @@ export function mountHeaderTitle(
           resetHeaderTitleState(el)
       })
 
+  /* Obtain headline, if any */
+  const headline = getElement<HTMLHeadingElement>("article h1")
+  if (typeof headline === "undefined")
+    return NEVER
+
   /* Create and return component */
-  const headline = getElementOrThrow<HTMLHeadingElement>("article h1")
   return watchHeaderTitle(headline, options)
     .pipe(
       tap(internal$),

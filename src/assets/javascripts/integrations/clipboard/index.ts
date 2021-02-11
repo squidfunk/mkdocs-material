@@ -21,8 +21,20 @@
  */
 
 import ClipboardJS from "clipboard"
-import { NEVER, Observable } from "rxjs"
-import { share } from "rxjs/operators"
+import { Observable, Subject } from "rxjs"
+
+import { translation } from "~/_"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Setup options
+ */
+interface SetupOptions {
+  message$: Subject<string>            /* Message subject */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -31,18 +43,16 @@ import { share } from "rxjs/operators"
 /**
  * Set up Clipboard.js integration
  *
- * @returns Clipboard.js event observable
+ * @param options - Options
  */
-export function setupClipboardJS(): Observable<ClipboardJS.Event> {
-  if (!ClipboardJS.isSupported())
-    return NEVER
-
-  /* Initialize Clipboard.js */
-  return new Observable<ClipboardJS.Event>(subscriber => {
-    new ClipboardJS("[data-clipboard-target], [data-clipboard-text]")
-      .on("success", ev => subscriber.next(ev))
-  })
-    .pipe(
-      share()
-    )
+export function setupClipboardJS(
+  { message$ }: SetupOptions
+): void {
+  if (!ClipboardJS.isSupported()) {
+    new Observable<ClipboardJS.Event>(subscriber => {
+      new ClipboardJS("[data-clipboard-target], [data-clipboard-text]")
+        .on("success", ev => subscriber.next(ev))
+    })
+      .subscribe(() => message$.next(translation("clipboard.copied")))
+  }
 }

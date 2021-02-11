@@ -24,8 +24,9 @@ import { Observable, merge } from "rxjs"
 import { filter, sample, take } from "rxjs/operators"
 
 import { configuration } from "~/_"
-import { getElementOrThrow } from "~/browser"
+import { fetchJSON, getElementOrThrow } from "~/browser"
 import {
+  SearchIndex,
   isSearchQueryMessage,
   isSearchReadyMessage,
   setupSearchWorker
@@ -58,8 +59,7 @@ export type Search =
  * @returns Promise resolving with search index
  */
 function fetchSearchIndex(url: string) {
-  return __search?.index || fetch(url, { credentials: "same-origin" })
-    .then(res => res.json())
+  return __search?.index || fetchJSON<SearchIndex>(url)
 }
 
 /* ----------------------------------------------------------------------------
@@ -91,14 +91,18 @@ export function mountSearch(
     )
       .subscribe(tx$.next.bind(tx$))
 
-  /* Obtain search query and result elements */
-  const query  = getElementOrThrow("[data-md-component=search-query]", el)
-  const result = getElementOrThrow("[data-md-component=search-result]", el)
+  /* Mount search query component */
+  const query$ = mountSearchQuery(
+    getElementOrThrow("[data-md-component=search-query]", el),
+    worker
+  )
 
-  /* Create and return component */
-  const query$ = mountSearchQuery(query as HTMLInputElement, worker)
+  /* Mount search result and return component */
   return merge(
     query$,
-    mountSearchResult(result, worker, { query$ })
+    mountSearchResult(
+      getElementOrThrow("[data-md-component=search-result]", el),
+      worker, { query$ }
+    )
   )
 }

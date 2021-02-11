@@ -22,6 +22,7 @@
 
 export * from "./document"
 export * from "./element"
+export * from "./fetch"
 export * from "./keyboard"
 export * from "./location"
 export * from "./media"

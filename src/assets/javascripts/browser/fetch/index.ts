@@ -20,37 +20,64 @@
  * IN THE SOFTWARE.
  */
 
-import { ProjectSchema } from "gitlab"
-import { Observable } from "rxjs"
-import { defaultIfEmpty, map } from "rxjs/operators"
+import { Observable, from } from "rxjs"
+import {
+  filter,
+  map,
+  shareReplay,
+  switchMap
+} from "rxjs/operators"
 
-import { fetchJSON } from "~/browser"
-import { round } from "~/utilities"
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
 
-import { SourceFacts } from "../_"
+/**
+ * XML parser
+ */
+const dom = new DOMParser()
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Fetch GitLab repository facts
+ * Fetch given URL as JSON
  *
- * @param base - GitLab base
- * @param project - GitLab project
+ * @template T - Data type
  *
- * @returns Repository facts observable
+ * @param url - Request URL
+ * @param options - Request options
+ *
+ * @returns Data observable
  */
-export function fetchSourceFactsFromGitLab(
-  base: string, project: string
-): Observable<SourceFacts> {
-  const url = `https://${base}/api/v4/projects/${encodeURIComponent(project)}`
-  return fetchJSON<ProjectSchema>(url)
+export function fetchJSON<T>(
+  url: string, options: RequestInit = { credentials: "same-origin" }
+): Observable<T> {
+  return from(fetch(url, options))
     .pipe(
-      map(({ star_count, forks_count }) => ([
-        `${round(star_count)} Stars`,
-        `${round(forks_count)} Forks`
-      ])),
-      defaultIfEmpty([])
+      filter(res => res.status === 200),
+      switchMap(res => res.json()),
+      shareReplay(1)
+    )
+}
+
+/**
+ * Fetch given URL as XML
+ *
+ * @param url - Request URL
+ * @param options - Request options
+ *
+ * @returns Data observable
+ */
+export function fetchXML(
+  url: string, options: RequestInit = { credentials: "same-origin" }
+): Observable<Document> {
+  return from(fetch(url, options))
+    .pipe(
+      filter(res => res.status === 200),
+      switchMap(res => res.json()),
+      map(res => dom.parseFromString(res, "text/xml")),
+      shareReplay(1)
     )
 }

@@ -88,7 +88,7 @@ export function mountSearchResult(
   const internal$ = new Subject<SearchResult>()
 
   /* Update search result metadata */
-  const meta = getElementOrThrow(":first-child", el)
+  const meta = getElementOrThrow(":scope > :first-child", el)
   internal$
     .pipe(
       withLatestFrom(query$)
@@ -101,7 +101,7 @@ export function mountSearchResult(
       })
 
   /* Update search result list */
-  const list = getElementOrThrow(":last-child", el)
+  const list = getElementOrThrow(":scope > :last-child", el)
   internal$
     .subscribe(({ data }) => {
       resetSearchResultList(list)

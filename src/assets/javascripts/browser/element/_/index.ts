@@ -40,7 +40,7 @@ export function getElement<T extends keyof HTMLElementTagNameMap>(
 
 export function getElement<T extends HTMLElement>(
   selector: string, node?: ParentNode
-): T
+): T | undefined
 
 export function getElement<T extends HTMLElement>(
   selector: string, node: ParentNode = document

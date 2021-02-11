@@ -29,7 +29,7 @@ import { getElementOrThrow, getLocation } from "~/browser"
 /**
  * Feature flag
  */
-export type Feature =
+export type Flag =
   | "header.autohide"                  /* Hide header */
   | "navigation.tabs"                  /* Tabs navigation */
   | "navigation.instant"               /* Instant loading */
@@ -66,7 +66,7 @@ export type Translations = Record<Translation, string>
  */
 export interface Config {
   base: string                         /* Base URL */
-  features: Feature[]                  /* Feature flags */
+  features: Flag[]                     /* Feature flags */
   translations: Translations           /* Translations */
   search: string                       /* Search worker URL */
 }
@@ -78,7 +78,8 @@ export interface Config {
 /**
  * Retrieve global configuration and make base URL absolute
  */
-const config: Config = JSON.parse(getElementOrThrow("#__config").textContent!)
+const script = getElementOrThrow("#__config")
+const config: Config = JSON.parse(script.textContent!)
 config.base = new URL(config.base, getLocation())
   .toString()
   .replace(/\/$/, "")
@@ -97,14 +98,14 @@ export function configuration(): Config {
 }
 
 /**
- * Check whether a feature is enabled
+ * Check whether a feature flag is enabled
  *
- * @param feature - Feature
+ * @param flag - Feature flag
  *
  * @returns Test result
  */
-export function flag(feature: Feature): boolean {
-  return config.features.includes(feature)
+export function feature(flag: Flag): boolean {
+  return config.features.includes(flag)
 }
 
 /**
@@ -118,9 +119,6 @@ export function flag(feature: Feature): boolean {
 export function translation(
   key: Translation, value?: string | number
 ): string {
-  if (typeof config.translations[key] === "undefined") {
-    throw new ReferenceError(`Invalid translation: ${key}`)
-  }
   return typeof value !== "undefined"
     ? config.translations[key].replace("#", value.toString())
     : config.translations[key]

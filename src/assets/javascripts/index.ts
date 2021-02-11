@@ -24,7 +24,6 @@ import "focus-visible"
 import { NEVER, Observable, Subject, merge } from "rxjs"
 import { switchMap } from "rxjs/operators"
 
-import { translation } from "./_"
 import {
   getElementOrThrow,
   getElements,
@@ -76,8 +75,7 @@ const main$   = watchMain(main, { header$, viewport$ })
 
 /* Setup Clipboard.js integration */
 const message$ = new Subject<string>()
-setupClipboardJS()
-  .subscribe(() => message$.next(translation("clipboard.copied")))
+setupClipboardJS({ message$ })
 
 // TODO: watchElements + general mount function that takes a factory...
 // + a toggle function (optionally)

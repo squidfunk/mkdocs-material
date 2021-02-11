@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { Subject, asyncScheduler, from } from "rxjs"
-import { delay, map, observeOn, share } from "rxjs/operators"
+import { ObservableInput, Subject, from } from "rxjs"
+import { map, share } from "rxjs/operators"
 
 import { configuration, translation } from "~/_"
 import { WorkerHandler, watchWorker } from "~/browser"
@@ -82,19 +82,19 @@ function setupSearchIndex(
  * ------------------------------------------------------------------------- */
 
 /**
- * Set up search web worker
+ * Set up search worker
  *
  * This function will create a web worker to set up and query the search index
  * which is done using `lunr`. The index must be passed as an observable to
  * enable hacks like _localsearch_ via search index embedding as JSON.
  *
  * @param url - Worker URL
- * @param index - Promise resolving with search index
+ * @param index - Search index observable input
  *
  * @returns Search worker
  */
 export function setupSearchWorker(
-  url: string, index: Promise<SearchIndex>
+  url: string, index: ObservableInput<SearchIndex>
 ): SearchWorker {
   const config = configuration()
   const worker = new Worker(url)
