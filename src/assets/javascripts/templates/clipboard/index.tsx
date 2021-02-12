@@ -20,7 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { h, translate } from "utilities"
+import { translation } from "~/_"
+import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -31,13 +32,13 @@ import { h, translate } from "utilities"
  *
  * @param id - Unique identifier
  *
- * @return Element
+ * @returns Element
  */
 export function renderClipboardButton(id: string) {
   return (
     <button
       class="md-clipboard md-icon"
-      title={translate("clipboard.copy")}
+      title={translation("clipboard.copy")}
       data-clipboard-target={`#${id} > code`}
     ></button>
   )

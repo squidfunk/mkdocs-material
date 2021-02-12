@@ -20,483 +20,195 @@
  * IN THE SOFTWARE.
  */
 
-// DISCLAIMER: this file is still WIP. There're some refactoring opportunities
-// which must be tackled after we gathered some feedback on v5.
-// tslint:disable
-
 import "focus-visible"
-
+import { Subject, defer, merge } from "rxjs"
 import {
-  merge,
-  combineLatest,
-  animationFrameScheduler,
-  fromEvent,
-  from,
-  defer,
-  of,
-  NEVER
-} from "rxjs"
-import {
-  delay,
-  switchMap,
-  tap,
   filter,
-  withLatestFrom,
-  observeOn,
-  take,
-  shareReplay,
-  catchError,
   map,
-  bufferCount,
-  distinctUntilKeyChanged,
-  mapTo,
-  startWith,
-  combineLatestWith,
-  distinctUntilChanged
+  mergeWith,
+  shareReplay,
+  switchMap
 } from "rxjs/operators"
 
+import { feature } from "./_"
 import {
-  watchToggle,
-  setToggle,
+  at,
+  getElement,
+  getElementOrThrow,
   getElements,
-  watchMedia,
+  setToggle,
   watchDocument,
+  watchKeyboard,
   watchLocation,
-  watchLocationHash,
-  watchViewport,
-  isLocalLocation,
-  setLocationHash,
-  watchLocationBase,
-  getElement
-} from "browser"
+  watchLocationTarget,
+  watchMedia,
+  watchPrint,
+  watchViewport
+} from "./browser"
 import {
+  mountContent,
+  mountDialog,
   mountHeader,
-  mountMain,
-  mountNavigation,
+  mountHeaderTitle,
   mountSearch,
+  mountSidebar,
+  mountSource,
   mountTableOfContents,
   mountTabs,
-  useComponent,
-  setupComponents,
-  mountSearchQuery,
-  mountSearchReset,
-  mountSearchResult
-} from "components"
+  watchHeader,
+  watchMain
+} from "./components"
 import {
-  setupClipboard,
-  setupDialog,
-  setupKeyboard,
-  setupInstantLoading,
-  setupSearchWorker,
-  SearchIndex,
-  SearchIndexPipeline
-} from "integrations"
+  setupClipboardJS,
+  setupInstantLoading
+} from "./integrations"
 import {
-  patchCodeBlocks,
-  patchTables,
-  patchDetails,
-  patchScrollfix,
-  patchSource,
-  patchScripts
-} from "patches"
-import { isConfig } from "utilities"
+  patchIndeterminate,
+  patchScrollfix
+} from "./patches"
 
-/* ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Application
+ * ------------------------------------------------------------------------- */
 
-/* Denote that JavaScript is available */
+/* Yay, JavaScript is available */
 document.documentElement.classList.remove("no-js")
 document.documentElement.classList.add("js")
 
-/* Test for iOS */
-if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g))
-  document.documentElement.classList.add("ios")
+/* Set up navigation observables */
+const document$ = watchDocument()
+const location$ = watchLocation()
+const target$   = watchLocationTarget()
+const keyboard$ = watchKeyboard()
 
-/**
- * Set scroll lock
- *
- * @param el - Scrollable element
- * @param value - Vertical offset
- */
-export function setScrollLock(
-  el: HTMLElement, value: number
-): void {
-  el.setAttribute("data-md-state", "lock")
-  el.style.top = `-${value}px`
-}
+/* Set up media observables */
+const viewport$ = watchViewport()
+const tablet$   = watchMedia("(min-width: 960px)")
+const screen$   = watchMedia("(min-width: 1220px)")
+const print$    = watchPrint()
 
-/**
- * Reset scroll lock
- *
- * @param el - Scrollable element
- */
-export function resetScrollLock(
-  el: HTMLElement
-): void {
-  const value = -1 * parseInt(el.style.top, 10)
-  el.removeAttribute("data-md-state")
-  el.style.top = ""
-  if (value)
-    window.scrollTo(0, value)
-}
+/* Set up Clipboard.js integration */
+const alert$ = new Subject<string>()
+setupClipboardJS({ alert$ })
 
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
+/* Set up instant loading, if enabled */
+if (feature("navigation.instant"))
+  setupInstantLoading({ document$, location$, viewport$ })
 
-/**
- * Initialize Material for MkDocs
- *
- * @param config - Configuration
- */
-export function initialize(config: unknown) {
-  if (!isConfig(config))
-    throw new SyntaxError(`Invalid configuration: ${JSON.stringify(config)}`)
+/* Always close drawer on navigation */
+merge(location$, target$)
+  .subscribe(() => setToggle("drawer", false))
 
-  /* Set up subjects */
-  const document$ = watchDocument()
-  const location$ = watchLocation()
+/* Set up global keyboard handlers */
+keyboard$
+  .pipe(
+    filter(({ mode }) => mode === "global")
+  )
+    .subscribe(key => {
+      switch (key.type) {
 
-  /* Set up user interface observables */
-  const base$     = watchLocationBase(config.base, { location$ })
-  const hash$     = watchLocationHash()
-  const viewport$ = watchViewport()
-  const tablet$   = watchMedia("(min-width: 960px)")
-  const screen$   = watchMedia("(min-width: 1220px)")
+        /* Go to previous page */
+        case "p":
+        case ",":
+          const prev = getElement("[href][rel=prev]")
+          if (typeof prev !== "undefined")
+            prev.click()
+          break
 
-  /* ----------------------------------------------------------------------- */
+        /* Go to next page */
+        case "n":
+        case ".":
+          const next = getElement("[href][rel=next]")
+          if (typeof next !== "undefined")
+            next.click()
+          break
+      }
+    })
 
-  /* Set up component bindings */
-  setupComponents([
-    "announce",                        /* Announcement bar */
-    "container",                       /* Container */
-    "header",                          /* Header */
-    "header-title",                    /* Header title */
-    "main",                            /* Main area */
-    "navigation",                      /* Navigation */
-    "search",                          /* Search */
-    "search-query",                    /* Search input */
-    "search-reset",                    /* Search reset */
-    "search-result",                   /* Search results */
-    "skip",                            /* Skip link */
-    "tabs",                            /* Tabs */
-    "toc"                              /* Table of contents */
-  ], { document$ })
+/* Set up patches */
+patchIndeterminate({ document$ })
+patchScrollfix({ document$ })
 
-  const keyboard$ = setupKeyboard()
+/* Set up header observable */
+const header$ = watchHeader(
+  getElementOrThrow("[data-md-component=header]"),
+  { viewport$ }
+)
 
-  // Hack: only make code blocks focusable on non-touch devices
-  if (matchMedia("(hover)").matches)
-    patchCodeBlocks({ document$, viewport$ })
-  patchDetails({ document$, hash$ })
-  patchScripts({ document$ })
-  patchSource({ document$ })
-  patchTables({ document$ })
+/* Set up main area observable */
+const main$ = document$
+  .pipe(
+    map(() => getElementOrThrow("[data-md-component=main]")),
+    switchMap(el => watchMain(el, { viewport$, header$ })),
+    shareReplay(1)
+  )
 
-  /* Force 1px scroll offset to trigger overflow scrolling */
-  patchScrollfix({ document$ })
+/* Set up control component observables */
+const control$ = merge(
 
-  /* Set up clipboard and dialog */
-  const dialog$ = setupDialog()
-  const clipboard$ = setupClipboard({ document$, dialog$ })
+  /* Dialog */
+  ...getElements("[data-md-component=dialog]")
+    .map(child => mountDialog(child, { alert$ })),
 
-  /* ----------------------------------------------------------------------- */
+    /* Header */
+  ...getElements("[data-md-component=header]")
+    .map(child => mountHeader(child, { viewport$, header$, main$ })),
 
-  /* Create header observable */
-  const header$ = useComponent("header")
-    .pipe(
-      mountHeader({ document$, viewport$ }),
-      shareReplay({ bufferSize: 1, refCount: true })
-    )
+  /* Search */
+  ...getElements("[data-md-component=search]")
+    .map(child => mountSearch(child, { keyboard$ })),
 
-  const main$ = useComponent("main")
-    .pipe(
-      mountMain({ header$, viewport$ }),
-      shareReplay({ bufferSize: 1, refCount: true })
-    )
+  /* Repository information */
+  ...getElements("[data-md-component=source]")
+    .map(child => mountSource(child as HTMLAnchorElement)),
 
-  /* ----------------------------------------------------------------------- */
+  /* Navigation tabs */
+  ...getElements("[data-md-component=tabs]")
+    .map(child => mountTabs(child, { viewport$, header$ })),
+)
 
-  const navigation$ = useComponent("navigation")
-    .pipe(
-      mountNavigation({ header$, main$, viewport$, screen$ }),
-      shareReplay({ bufferSize: 1, refCount: true }) // shareReplay because there might be late subscribers
-    )
+/* Set up content component observables */
+const content$ = defer(() => merge(
 
-  const toc$ = useComponent("toc")
-    .pipe(
-      mountTableOfContents({ header$, main$, viewport$, tablet$ }),
-      shareReplay({ bufferSize: 1, refCount: true })
-    )
+  /* Content */
+  ...getElements("[data-md-component=content]")
+    .map(child => mountContent(child, { target$, viewport$, print$ })),
 
-  const tabs$ = useComponent("tabs")
-    .pipe(
-      mountTabs({ header$, viewport$, screen$ }),
-      shareReplay({ bufferSize: 1, refCount: true })
-    )
+  /* Header title */
+  ...getElements("[data-md-component=header-title]")
+    .map(child => mountHeaderTitle(child, { viewport$, header$ })),
 
-  /* ----------------------------------------------------------------------- */
+  /* Sidebar */
+  ...getElements("[data-md-component=sidebar]")
+    .map(child => child.getAttribute("data-md-type") === "navigation"
+      ? at(screen$, () => mountSidebar(child, { viewport$, header$, main$ }))
+      : at(tablet$, () => mountSidebar(child, { viewport$, header$, main$ }))
+    ),
 
-  /* Search worker - only if search is present */
-  const worker$ = useComponent("search")
-    .pipe(
-      switchMap(() => defer(() => {
-        const index = config.search && config.search.index
-          ? config.search.index
-          : undefined
+  /* Table of contents */
+  ...getElements("[data-md-component=toc]")
+    .map(child => mountTableOfContents(child, { viewport$, header$ })),
+))
 
-        /* Fetch index if it wasn't passed explicitly */
-        const index$ = (
-          typeof index !== "undefined"
-            ? from(index)
-            : base$
-                .pipe(
-                  switchMap(base => fetch(`${base}/search/search_index.json`, {
-                    credentials: "same-origin"
-                  }).then(res => res.json())) // SearchIndex
-                )
-        )
+/* Set up component observables */
+const component$ = document$
+  .pipe(
+    switchMap(() => content$),
+    mergeWith(control$)
+  )
 
-        return of(setupSearchWorker(config.search.worker, {
-          base$, index$
-        }))
-      }))
-    )
+/* Subscribe to all components */
+component$.subscribe()
 
-  /* ----------------------------------------------------------------------- */
-
-  /* Mount search query */
-  const search$ = worker$
-    .pipe(
-      switchMap(worker => {
-        const query$ = useComponent<HTMLInputElement>("search-query")
-          .pipe(
-            mountSearchQuery(worker, { transform: config.search.transform }),
-            shareReplay({ bufferSize: 1, refCount: true })
-          )
-
-        /* Mount search reset */
-        const reset$ = useComponent("search-reset")
-          .pipe(
-            mountSearchReset(),
-            shareReplay({ bufferSize: 1, refCount: true })
-          )
-
-        /* Mount search result */
-        const result$ = useComponent("search-result")
-          .pipe(
-            mountSearchResult(worker, { query$ }),
-            shareReplay({ bufferSize: 1, refCount: true })
-          )
-
-        return useComponent("search")
-          .pipe(
-            mountSearch(worker, { query$, reset$, result$ }),
-          )
-      }),
-      catchError(() => {
-        useComponent("search")
-          .subscribe(el => el.hidden = true) // TODO: Hack
-        return NEVER
-      }),
-      shareReplay({ bufferSize: 1, refCount: true })
-    )
-
-  /* ----------------------------------------------------------------------- */
-
-  // // put into search...
-  hash$
-    .pipe(
-      tap(() => setToggle("search", false)),
-      delay(125), // ensure that it runs after the body scroll reset...
-    )
-      .subscribe(hash => setLocationHash(`#${hash}`))
-
-  // TODO: scroll restoration must be centralized
-  combineLatest([
-    watchToggle("search"),
-    tablet$,
-  ])
-    .pipe(
-      withLatestFrom(viewport$),
-      switchMap(([[toggle, tablet], { offset: { y }}]) => {
-        const active = toggle && !tablet
-        return document$
-          .pipe(
-            delay(active ? 400 : 100),
-            observeOn(animationFrameScheduler),
-            tap(({ body }) => active
-              ? setScrollLock(body, y)
-              : resetScrollLock(body)
-            )
-          )
-      })
-    )
-      .subscribe()
-
-  /* ----------------------------------------------------------------------- */
-
-  /* Always close drawer on click */
-  fromEvent<MouseEvent>(document.body, "click")
-    .pipe(
-      filter(ev => !(ev.metaKey || ev.ctrlKey)),
-      filter(ev => {
-        if (ev.target instanceof HTMLElement) {
-          const el = ev.target.closest("a") // TODO: abstract as link click?
-          if (el && isLocalLocation(el)) {
-            return true
-          }
-        }
-        return false
-      })
-    )
-      .subscribe(() => {
-        setToggle("drawer", false)
-      })
-
-  /* Enable instant loading, if not on file:// protocol */
-  if (
-    config.features.includes("navigation.instant") &&
-    location.protocol !== "file:"
-  ) {
-    const dom = new DOMParser()
-
-    /* Fetch sitemap and extract URL whitelist */
-    base$
-      .pipe(
-        switchMap(base => from(fetch(`${base}/sitemap.xml`)
-          .then(res => res.text())
-          .then(text => dom.parseFromString(text, "text/xml"))
-        )),
-        withLatestFrom(base$),
-        map(([document, base]) => {
-          const urls = getElements("loc", document)
-            .map(node => node.textContent!)
-
-          // Hack: This is a temporary fix to normalize instant loading lookup
-          // on localhost and Netlify previews. If this approach proves to be
-          // suitable, we'll refactor URL whitelisting anyway. We take the two
-          // shortest URLs and determine the common prefix to isolate the
-          // domain. If there're no two domains, we just leave it as-is, as
-          // there isn't anything to be loaded anway.
-          if (urls.length > 1) {
-            const [a, b] = urls.sort((a, b) => a.length - b.length)
-
-            /* Determine common prefix */
-            let index = 0
-            if (a === b)
-              index = a.length
-            else
-              while (a.charAt(index) === b.charAt(index))
-                index++
-
-            /* Replace common prefix (i.e. base) with effective base */
-            for (let i = 0; i < urls.length; i++)
-              urls[i] = urls[i].replace(a.slice(0, index), `${base}/`)
-          }
-          return urls
-        })
-      )
-        .subscribe(urls => {
-          setupInstantLoading(urls, { document$, location$, viewport$ })
-        })
-  }
-
-  /* ----------------------------------------------------------------------- */
-
-  // Make indeterminate toggles indeterminate to expand navigation on screen
-  document$.subscribe(() => {
-    const toggles = getElements<HTMLInputElement>("[data-md-state=indeterminate]")
-    for (const toggle of toggles) {
-      toggle.dataset.mdState = ""
-      toggle.indeterminate = true
-      toggle.checked = false
-    }
-  })
-
-  // Auto hide header - this is still experimental, so there might be some
-  // opportunities for refactoring, but we'll address them when this feature
-  // got some feedback from the community.
-  if (config.features.includes("header.autohide")) {
-
-    // Threshold for header-hiding - always show if scrolled less than 400px.
-    // Also, search is not allowed to be active. Maybe make this dynamic.
-    const threshold$ = viewport$
-      .pipe(
-        map(({ offset }) => offset.y > 400),
-        combineLatestWith(watchToggle("search")),
-        map(([threshold, search]) => threshold && !search),
-        distinctUntilChanged()
-      )
-
-    // Scroll direction (true = down, false = up) + inflection point
-    const direction$ = viewport$
-      .pipe(
-        map(({ offset }) => offset.y),
-        bufferCount(2, 1),
-        map(([a, b]) => [a < b, b] as const),
-        distinctUntilKeyChanged(0)
-      )
-
-    // When the threshold is exceeded, and the search is not active, subscribe
-    // to the direction observable (always do a new subscription), and track
-    // scroll progress.
-    const hide$ = threshold$
-      .pipe(
-        switchMap(active => !active
-          ? of(false)
-          : direction$
-              .pipe(
-                combineLatestWith(viewport$),
-                filter(([[, y], { offset }]) => Math.abs(y - offset.y) > 100),
-                map(([[direction]]) => direction)
-              )
-        ),
-        distinctUntilChanged()
-      )
-
-    // Set header state depending on main state. There's still some possibility
-    // for improvement, as the page seems to jump when focusing the unfocused
-    // search. This would mean we would need to delay the focus/change event
-    // until the header is focussed, which we need to address in a refactoring.
-    hide$
-      .pipe(
-        combineLatestWith(main$),
-        map(([hide, main]) => main.active
-          ? hide ? "hidden" : "shadow"
-          : ""
-        ),
-        combineLatestWith(useComponent("header"))
-      )
-        .subscribe(([state, el]) => {
-          el.setAttribute("data-md-state", state)
-        })
-  }
-
-  /* ----------------------------------------------------------------------- */
-
-  const state = {
-
-    /* Browser observables */
-    document$,
-    location$,
-    viewport$,
-
-    /* Component observables */
-    header$,
-    main$,
-    navigation$,
-    search$,
-    tabs$,
-    toc$,
-
-    /* Integration observables */
-    clipboard$,
-    keyboard$,
-    dialog$
-  }
-
-  /* Subscribe to all observables */
-  merge(...Object.values(state))
-    .subscribe()
-  return state
+/* Export to window */
+export {
+  document$,
+  location$,
+  target$,
+  keyboard$,
+  viewport$,
+  tablet$,
+  screen$,
+  print$,
+  component$
 }

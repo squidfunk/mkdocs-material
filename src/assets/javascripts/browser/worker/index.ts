@@ -81,7 +81,7 @@ interface WatchOptions<T extends WorkerMessage> {
  * @param worker - Web worker
  * @param options - Options
  *
- * @return Worker message observable
+ * @returns Worker message observable
  */
 export function watchWorker<T extends WorkerMessage>(
   worker: Worker, { tx$ }: WatchOptions<T>
@@ -90,8 +90,8 @@ export function watchWorker<T extends WorkerMessage>(
   /* Intercept messages from worker-like objects */
   const rx$ = fromEvent<MessageEvent>(worker, "message")
     .pipe<T>(
-      map(({ data }) => data)
-    )
+    map(({ data }) => data)
+  )
 
   /* Send and receive messages, return hot observable */
   return tx$

@@ -27,7 +27,7 @@ import {
   shareReplay
 } from "rxjs/operators"
 
-import { Header } from "components"
+import { Header } from "~/components"
 
 import {
   ViewportOffset,
@@ -58,8 +58,8 @@ export interface Viewport {
  * Watch at options
  */
 interface WatchAtOptions {
-  header$: Observable<Header>          /* Header observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
+  header$: Observable<Header>          /* Header observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -69,7 +69,7 @@ interface WatchAtOptions {
 /**
  * Watch viewport
  *
- * @return Viewport observable
+ * @returns Viewport observable
  */
 export function watchViewport(): Observable<Viewport> {
   return combineLatest([
@@ -78,7 +78,7 @@ export function watchViewport(): Observable<Viewport> {
   ])
     .pipe(
       map(([offset, size]) => ({ offset, size })),
-      shareReplay({ bufferSize: 1, refCount: true })
+      shareReplay(1)
     )
 }
 
@@ -88,10 +88,10 @@ export function watchViewport(): Observable<Viewport> {
  * @param el - Element
  * @param options - Options
  *
- * @return Viewport observable
+ * @returns Viewport observable
  */
 export function watchViewportAt(
-  el: HTMLElement, { header$, viewport$ }: WatchAtOptions
+  el: HTMLElement, { viewport$, header$ }: WatchAtOptions
 ): Observable<Viewport> {
   const size$ = viewport$
     .pipe(

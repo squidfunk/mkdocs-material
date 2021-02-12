@@ -20,13 +20,10 @@
  * IN THE SOFTWARE.
  */
 
-import * as ClipboardJS from "clipboard"
-import { NEVER, Observable, Subject } from "rxjs"
-import { mapTo, share, tap } from "rxjs/operators"
+import ClipboardJS from "clipboard"
+import { Observable, Subject } from "rxjs"
 
-import { getElements } from "browser"
-import { renderClipboardButton } from "templates"
-import { translate } from "utilities"
+import { translation } from "~/_"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -36,8 +33,7 @@ import { translate } from "utilities"
  * Setup options
  */
 interface SetupOptions {
-  document$: Observable<Document>      /* Document observable */
-  dialog$: Subject<string>             /* Dialog subject */
+  alert$: Subject<string>              /* Alert subject */
 }
 
 /* ----------------------------------------------------------------------------
@@ -45,51 +41,18 @@ interface SetupOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Set up clipboard
- *
- * This function implements the Clipboard.js integration and injects a button
- * into all code blocks when the document changes.
+ * Set up Clipboard.js integration
  *
  * @param options - Options
- *
- * @return Clipboard observable
  */
-export function setupClipboard(
-  { document$, dialog$ }: SetupOptions
-): Observable<ClipboardJS.Event> {
-  if (!ClipboardJS.isSupported())
-    return NEVER
-
-  /* Inject 'copy-to-clipboard' buttons */
-  document$.subscribe(() => {
-    const blocks = getElements("pre > code")
-    blocks.forEach((block, index) => {
-      const parent = block.parentElement!
-      parent.id = `__code_${index}`
-      parent.insertBefore(
-        renderClipboardButton(parent.id),
-        block
-      )
+export function setupClipboardJS(
+  { alert$ }: SetupOptions
+): void {
+  if (ClipboardJS.isSupported()) {
+    new Observable<ClipboardJS.Event>(subscriber => {
+      new ClipboardJS("[data-clipboard-target], [data-clipboard-text]")
+        .on("success", ev => subscriber.next(ev))
     })
-  })
-
-  /* Initialize clipboard */
-  const clipboard$ = new Observable<ClipboardJS.Event>(subscriber => {
-    new ClipboardJS("[data-clipboard-target], [data-clipboard-text]")
-      .on("success", ev => subscriber.next(ev))
-  })
-    .pipe(
-      share()
-    )
-
-  /* Display notification for clipboard event */
-  clipboard$
-    .pipe(
-      tap(ev => ev.clearSelection()),
-      mapTo(translate("clipboard.copied"))
-    )
-      .subscribe(dialog$)
-
-  /* Return clipboard */
-  return clipboard$
+      .subscribe(() => alert$.next(translation("clipboard.copied")))
+  }
 }

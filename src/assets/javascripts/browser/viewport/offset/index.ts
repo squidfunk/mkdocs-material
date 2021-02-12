@@ -45,7 +45,7 @@ export interface ViewportOffset {
  * On iOS Safari, viewport offset can be negative due to overflow scrolling.
  * As this may induce strange behaviors downstream, we'll just limit it to 0.
  *
- * @return Viewport offset
+ * @returns Viewport offset
  */
 export function getViewportOffset(): ViewportOffset {
   return {
@@ -70,7 +70,7 @@ export function setViewportOffset(
 /**
  * Watch viewport offset
  *
- * @return Viewport offset observable
+ * @returns Viewport offset observable
  */
 export function watchViewportOffset(): Observable<ViewportOffset> {
   return merge(

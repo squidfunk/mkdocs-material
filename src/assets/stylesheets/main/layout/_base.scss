@@ -38,7 +38,7 @@ html {
 
   // [screen medium +]: Set base `font-size` to `11px`
   @include break-from-device(screen medium) {
-    font-size: 137.50%;
+    font-size: 137.5%;
   }
 
   // [screen large +]: Set base `font-size` to `12px`

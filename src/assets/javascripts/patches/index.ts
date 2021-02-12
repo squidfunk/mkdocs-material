@@ -20,9 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./code"
-export * from "./details"
-export * from "./script"
+export * from "./indeterminate"
 export * from "./scrollfix"
-export * from "./source"
-export * from "./table"

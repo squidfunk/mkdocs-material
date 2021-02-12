@@ -131,7 +131,7 @@
 
       // [no-js]: Hide button
       .no-js & {
-        display: none
+        display: none;
       }
 
       // Adjust for right-to-left languages
@@ -205,7 +205,7 @@
       }
 
       // Second header topic - title of the current page
-      & + .md-header-nav__topic {
+      + .md-header-nav__topic {
         z-index: 0;
         transform: translateX(0);
         opacity: 1;

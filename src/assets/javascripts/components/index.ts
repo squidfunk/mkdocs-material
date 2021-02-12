@@ -21,10 +21,12 @@
  */
 
 export * from "./_"
+export * from "./content"
+export * from "./dialog"
 export * from "./header"
 export * from "./main"
-export * from "./navigation"
 export * from "./search"
-export * from "./shared"
+export * from "./sidebar"
+export * from "./source"
 export * from "./tabs"
 export * from "./toc"

@@ -20,48 +20,41 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, OperatorFunction, combineLatest, pipe } from "rxjs"
-import {
-  filter,
-  map,
-  mapTo,
-  sample,
-  startWith,
-  switchMap,
-  take
-} from "rxjs/operators"
+import { Observable, merge } from "rxjs"
+import { filter, sample, take } from "rxjs/operators"
 
-import { WorkerHandler } from "browser"
+import { configuration } from "~/_"
 import {
-  SearchMessage,
-  SearchResult,
+  Keyboard,
+  getActiveElement,
+  getElementOrThrow,
+  getElements,
+  requestJSON,
+  setElementFocus,
+  setElementSelection,
+  setToggle
+} from "~/browser"
+import {
+  SearchIndex,
   isSearchQueryMessage,
-  isSearchReadyMessage
-} from "integrations/search"
+  isSearchReadyMessage,
+  setupSearchWorker
+} from "~/integrations"
 
-import { SearchQuery } from "../query"
+import { Component } from "../../_"
+import { SearchQuery, mountSearchQuery } from "../query"
+import { SearchResult, mountSearchResult } from "../result"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Search status
- */
-export type SearchStatus =
-  | "waiting"                          /* Search waiting for initialization */
-  | "ready"                            /* Search ready */
-
-/* ------------------------------------------------------------------------- */
-
-/**
  * Search
  */
-export interface Search {
-  status: SearchStatus                 /* Search status */
-  query: SearchQuery                   /* Search query */
-  result: SearchResult[]               /* Search result list */
-}
+export type Search =
+  | SearchQuery
+  | SearchResult
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -71,9 +64,22 @@ export interface Search {
  * Mount options
  */
 interface MountOptions {
-  query$: Observable<SearchQuery>      /* Search query observable */
-  reset$: Observable<void>             /* Search reset observable */
-  result$: Observable<SearchResult[]>  /* Search result observable */
+  keyboard$: Observable<Keyboard>      /* Keyboard observable */
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Fetch search index
+ *
+ * @param url - Search index URL
+ *
+ * @returns Promise resolving with search index
+ */
+function fetchSearchIndex(url: string) {
+  return __search?.index || requestJSON<SearchIndex>(url)
 }
 
 /* ----------------------------------------------------------------------------
@@ -81,46 +87,109 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount search from source observable
+ * Mount search
  *
- * @param handler - Worker handler
+ * @param el - Search element
  * @param options - Options
  *
- * @return Operator function
+ * @returns Search component observable
  */
 export function mountSearch(
-  { rx$, tx$ }: WorkerHandler<SearchMessage>,
-  { query$, reset$, result$ }: MountOptions
-): OperatorFunction<HTMLElement, Search> {
-  return pipe(
-    switchMap(() => {
+  el: HTMLElement, { keyboard$ }: MountOptions
+): Observable<Component<Search>> {
+  const config = configuration()
+  const worker = setupSearchWorker(config.search, fetchSearchIndex(
+    `${config.base}/search/search_index.json`
+  ))
 
-      /* Compute search status */
-      const status$ = rx$
-        .pipe(
-          filter(isSearchReadyMessage),
-          mapTo<SearchStatus>("ready"),
-          startWith("waiting")
-        ) as Observable<SearchStatus>
+  /* Retrieve elements */
+  const query  = getElementOrThrow("[data-md-component=search-query]", el)
+  const result = getElementOrThrow("[data-md-component=search-result]", el)
 
-      /* Re-emit the latest query when search is ready */
-      tx$
-        .pipe(
-          filter(isSearchQueryMessage),
-          sample(status$),
-          take(1)
-        )
-          .subscribe(tx$.next.bind(tx$))
+  /* Re-emit query when search is ready */
+  const { tx$, rx$ } = worker
+  tx$
+    .pipe(
+      filter(isSearchQueryMessage),
+      sample(rx$.pipe(filter(isSearchReadyMessage))),
+      take(1)
+    )
+      .subscribe(tx$.next.bind(tx$))
 
-      /* Combine into single observable */
-      return combineLatest([status$, query$, result$, reset$])
-        .pipe(
-          map(([status, query, result]) => ({
-            status,
-            query,
-            result
-          }))
-        )
-    })
+  /* Set up search keyboard handlers */
+  keyboard$
+    .pipe(
+      filter(({ mode }) => mode === "search")
+    )
+      .subscribe(key => {
+        const active = getActiveElement()
+        switch (key.type) {
+
+          /* Enter: prevent form submission */
+          case "Enter":
+            if (active === query)
+              key.claim()
+            break
+
+          /* Escape or Tab: close search */
+          case "Escape":
+          case "Tab":
+            setToggle("search", false)
+            setElementFocus(query, false)
+            break
+
+          /* Vertical arrows: select previous or next search result */
+          case "ArrowUp":
+          case "ArrowDown":
+            if (typeof active === "undefined") {
+              setElementFocus(query)
+            } else {
+              const els = [query, ...getElements(
+                ":not(details) > [href], summary, details[open] [href]",
+                result
+              )]
+              const i = Math.max(0, (
+                Math.max(0, els.indexOf(active)) + els.length + (
+                  key.type === "ArrowUp" ? -1 : +1
+                )
+              ) % els.length)
+              setElementFocus(els[i])
+            }
+
+            /* Prevent scrolling of page */
+            key.claim()
+            break
+
+          /* All other keys: hand to search query */
+          default:
+            if (query !== getActiveElement())
+              setElementFocus(query)
+        }
+      })
+
+  /* Set up global keyboard handlers */
+  keyboard$
+    .pipe(
+      filter(({ mode }) => mode === "global"),
+    )
+      .subscribe(key => {
+        switch (key.type) {
+
+          /* Open search and select query */
+          case "f":
+          case "s":
+          case "/":
+            setElementFocus(query)
+            setElementSelection(query)
+            key.claim()
+            break
+        }
+      })
+
+  /* Create and return component */
+  const query$ = mountSearchQuery(query as HTMLInputElement, worker)
+  return merge(
+    query$,
+    mountSearchResult(result, worker, { query$ })
   )
 }

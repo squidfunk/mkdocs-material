@@ -32,8 +32,16 @@
  * @param selector - Query selector
  * @param node - Node of reference
  *
- * @return Element or nothing
+ * @returns Element or nothing
  */
+export function getElement<T extends keyof HTMLElementTagNameMap>(
+  selector: T, node?: ParentNode
+): HTMLElementTagNameMap[T]
+
+export function getElement<T extends HTMLElement>(
+  selector: string, node?: ParentNode
+): T | undefined
+
 export function getElement<T extends HTMLElement>(
   selector: string, node: ParentNode = document
 ): T | undefined {
@@ -48,8 +56,16 @@ export function getElement<T extends HTMLElement>(
  * @param selector - Query selector
  * @param node - Node of reference
  *
- * @return Element
+ * @returns Element
  */
+export function getElementOrThrow<T extends keyof HTMLElementTagNameMap>(
+  selector: T, node?: ParentNode
+): HTMLElementTagNameMap[T]
+
+export function getElementOrThrow<T extends HTMLElement>(
+  selector: string, node?: ParentNode
+): T
+
 export function getElementOrThrow<T extends HTMLElement>(
   selector: string, node: ParentNode = document
 ): T {
@@ -64,7 +80,7 @@ export function getElementOrThrow<T extends HTMLElement>(
 /**
  * Retrieve the currently active element
  *
- * @return Element or nothing
+ * @returns Element or nothing
  */
 export function getActiveElement(): HTMLElement | undefined {
   return document.activeElement instanceof HTMLElement
@@ -80,8 +96,16 @@ export function getActiveElement(): HTMLElement | undefined {
  * @param selector - Query selector
  * @param node - Node of reference
  *
- * @return Elements
+ * @returns Elements
  */
+export function getElements<T extends keyof HTMLElementTagNameMap>(
+  selector: T, node?: ParentNode
+): HTMLElementTagNameMap[T][]
+
+export function getElements<T extends HTMLElement>(
+  selector: string, node?: ParentNode
+): T[]
+
 export function getElements<T extends HTMLElement>(
   selector: string, node: ParentNode = document
 ): T[] {
@@ -97,7 +121,7 @@ export function getElements<T extends HTMLElement>(
  *
  * @param tagName - Tag name
  *
- * @return Element
+ * @returns Element
  */
 export function createElement<T extends keyof HTMLElementTagNameMap>(
   tagName: T

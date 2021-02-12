@@ -34,7 +34,7 @@ import { mapTo } from "rxjs/operators"
  * automatically updated when a new document is emitted. This enabled features
  * like instant loading.
  *
- * @return Document subject
+ * @returns Document subject
  */
 export function watchDocument(): Subject<Document> {
   const document$ = new ReplaySubject<Document>()

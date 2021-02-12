@@ -31,11 +31,9 @@ import { h } from "utilities"
  *
  * @param table - Table element
  *
- * @return Element
+ * @returns Element
  */
-export function renderTable(
-  table: HTMLTableElement
-) {
+export function renderTable(table: HTMLElement) {
   return (
     <div class="md-typeset__scrollwrap">
       <div class="md-typeset__table">

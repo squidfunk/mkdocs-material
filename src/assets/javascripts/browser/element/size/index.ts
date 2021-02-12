@@ -80,7 +80,7 @@ const observer$ = defer(() => of(
         finalize(() => resize.disconnect())
       )
     ),
-    shareReplay({ bufferSize: 1, refCount: true })
+    shareReplay(1)
   )
 
 /* ----------------------------------------------------------------------------
@@ -92,12 +92,26 @@ const observer$ = defer(() => of(
  *
  * @param el - Element
  *
- * @return Element size
+ * @returns Element size
  */
 export function getElementSize(el: HTMLElement): ElementSize {
   return {
     width:  el.offsetWidth,
     height: el.offsetHeight
+  }
+}
+
+/**
+ * Retrieve element content size, i.e. including overflowing content
+ *
+ * @param el - Element
+ *
+ * @returns Element size
+ */
+export function getElementContentSize(el: HTMLElement): ElementSize {
+  return {
+    width:  el.scrollWidth,
+    height: el.scrollHeight
   }
 }
 
@@ -113,7 +127,7 @@ export function getElementSize(el: HTMLElement): ElementSize {
  *
  * @param el - Element
  *
- * @return Element size observable
+ * @returns Element size observable
  */
 export function watchElementSize(
   el: HTMLElement

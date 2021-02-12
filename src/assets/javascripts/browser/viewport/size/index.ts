@@ -42,7 +42,7 @@ export interface ViewportSize {
 /**
  * Retrieve viewport size
  *
- * @return Viewport size
+ * @returns Viewport size
  */
 export function getViewportSize(): ViewportSize {
   return {
@@ -56,7 +56,7 @@ export function getViewportSize(): ViewportSize {
 /**
  * Watch viewport size
  *
- * @return Viewport size observable
+ * @returns Viewport size observable
  */
 export function watchViewportSize(): Observable<ViewportSize> {
   return fromEvent(window, "resize", { passive: true })

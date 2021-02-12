@@ -72,7 +72,7 @@ let index: Search
  *
  * @param config - Search index configuration
  *
- * @return Promise resolving with no result
+ * @returns Promise resolving with no result
  */
 async function setupSearchLanguages(
   config: SearchIndexConfig
@@ -116,7 +116,7 @@ async function setupSearchLanguages(
  *
  * @param message - Source message
  *
- * @return Target message
+ * @returns Target message
  */
 export async function handler(
   message: SearchMessage

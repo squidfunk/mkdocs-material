@@ -20,12 +20,13 @@
  * IN THE SOFTWARE.
  */
 
+import { translation } from "~/_"
 import {
   SearchDocument,
   SearchMetadata,
   SearchResult
-} from "integrations/search"
-import { h, translate, truncate } from "utilities"
+} from "~/integrations/search"
+import { h, truncate } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -49,7 +50,7 @@ const enum Flag {
  * @param section - Search document
  * @param flag - Render flags
  *
- * @return Element
+ * @returns Element
  */
 function renderSearchDocument(
   document: SearchDocument & SearchMetadata, flag: Flag
@@ -84,7 +85,7 @@ function renderSearchDocument(
         }
         {teaser > 0 && missing.length > 0 &&
           <p class="md-search-result__terms">
-            {translate("search.result.term.missing")}: {...missing}
+            {translation("search.result.term.missing")}: {...missing}
           </p>
         }
       </article>
@@ -102,7 +103,7 @@ function renderSearchDocument(
  * @param result - Search result
  * @param threshold - Score threshold
  *
- * @return Element
+ * @returns Element
  */
 export function renderSearchResult(
   result: SearchResult, threshold: number = Infinity
@@ -130,8 +131,8 @@ export function renderSearchResult(
       <details class="md-search-result__more">
         <summary tabIndex={-1}>
           {more.length > 0 && more.length === 1
-            ? translate("search.result.more.one")
-            : translate("search.result.more.other", more.length)
+            ? translation("search.result.more.one")
+            : translation("search.result.more.other", more.length)
           }
         </summary>
         {...more.map(section => renderSearchDocument(section, Flag.TEASER))}

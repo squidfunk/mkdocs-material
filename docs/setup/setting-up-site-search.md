@@ -294,7 +294,7 @@ following transformations, which can be customized by [extending the theme][20]:
  *
  * @param query - Query value
  *
- * @return Transformed query value
+ * @returns Transformed query value
  */
 export function defaultTransform(query: string): string {
   return query

@@ -101,9 +101,7 @@ export interface SearchMetadata {
 /**
  * Search result
  */
-export type SearchResult = Array<
-  SearchDocument & SearchMetadata
-> // tslint:disable-line
+export type SearchResult = Array<SearchDocument & SearchMetadata>
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -115,7 +113,7 @@ export type SearchResult = Array<
  * @param a - 1st list of strings
  * @param b - 2nd list of strings
  *
- * @return Difference
+ * @returns Difference
  */
 function difference(a: string[], b: string[]): string[] {
   const [x, y] = [new Set(a), new Set(b)]
@@ -170,7 +168,7 @@ export class Search {
 
     /* If no index was given, create it */
     if (typeof index === "undefined") {
-      this.index = lunr(function() {
+      this.index = lunr(function () {
 
         /* Set up multi-language support */
         if (config.lang.length === 1 && config.lang[0] !== "en") {
@@ -224,7 +222,7 @@ export class Search {
    *
    * @param query - Query value
    *
-   * @return Search results
+   * @returns Search results
    */
   public search(query: string): SearchResult[] {
     if (query) {
@@ -285,7 +283,6 @@ export class Search {
 
       /* Log errors to console (for now) */
       } catch {
-        // tslint:disable-next-line no-console
         console.warn(`Invalid query: ${query} – see https://bit.ly/2s3ChXG`)
       }
     }

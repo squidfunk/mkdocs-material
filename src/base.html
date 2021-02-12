@@ -259,7 +259,7 @@
               {% endif %}
               <div
                 class="md-sidebar md-sidebar--primary"
-                data-md-component="navigation"
+                data-md-component="sidebar" data-md-type="navigation"
                 {{ hidden }}
               >
                 <div class="md-sidebar__scrollwrap">
@@ -277,7 +277,7 @@
               {% endif %}
               <div
                 class="md-sidebar md-sidebar--secondary"
-                data-md-component="toc"
+                data-md-component="sidebar" data-md-type="toc"
                 {{ hidden }}
               >
                 <div class="md-sidebar__scrollwrap">
@@ -290,7 +290,7 @@
           {% endblock %}
 
           <!-- Article -->
-          <div class="md-content">
+          <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
 
               <!-- Content -->
@@ -344,13 +344,22 @@
       {% endblock %}
     </div>
 
-    <!-- Theme-related JavaScript -->
-    {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
+    <!-- Dialog -->
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+
+    <!-- Theme-related configuration -->
+    {% block config %}
+      {%- set app = {
+        "base": base_url,
+        "features": features,
+        "translations": {},
+        "search": "assets/javascripts/worker/search.js" | url,
+      } -%}
 
       <!-- Translations -->
-      {%- set translations = {} -%}
+      {%- set translations = app.translations -%}
       {%- for key in [
         "clipboard.copy",
         "clipboard.copied",
@@ -368,23 +377,17 @@
       ] -%}
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
-      <script id="__lang" type="application/json">
-        {{- translations | tojson -}}
-      </script>
 
-      <!-- Application configuration -->
-      {% block config %}{% endblock %}
-
-      <!-- Application initialization -->
-      <script>
-        app = initialize({
-          base: "{{ base_url }}",
-          features: {{ features or [] | tojson }},
-          search: Object.assign({
-            worker: "{{ 'assets/javascripts/worker/search.js' | url }}"
-          }, typeof search !== "undefined" && search)
-        })
+      <!-- Configuration -->
+      <script id="__config" type="application/json">
+        {{- app | tojson -}}
       </script>
+    {% endblock %}
+
+    <!-- Theme-related JavaScript -->
+    {% block scripts %}
+      <script src="{{ 'assets/javascripts/vendor.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
 
       <!-- Custom JavaScript -->
       {% for path in config["extra_javascript"] %}

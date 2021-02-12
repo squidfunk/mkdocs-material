@@ -595,12 +595,13 @@
     }
 
     // Hide native details marker
-    &::marker {
+    &::marker,
+    &::-webkit-details-marker {
       display: none;
     }
 
     // Adjust transparency of less relevant results
-    & ~ * > * {
+    ~ * > * {
       opacity: 0.65;
     }
   }

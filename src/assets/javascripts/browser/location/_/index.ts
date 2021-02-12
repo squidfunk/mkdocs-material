@@ -34,7 +34,7 @@ import { BehaviorSubject, Subject } from "rxjs"
  * tracked without setting them and `Location` is a singleton which represents
  * the current location.
  *
- * @return URL
+ * @returns URL
  */
 export function getLocation(): URL {
   return new URL(location.href)
@@ -52,43 +52,9 @@ export function setLocation(url: URL): void {
 /* ------------------------------------------------------------------------- */
 
 /**
- * Check whether a URL is a local link or a file (except `.html`)
- *
- * @param url - URL or HTML anchor element
- * @param ref - Reference URL
- *
- * @return Test result
- */
-export function isLocalLocation(
-  url: URL | HTMLAnchorElement,
-  ref: URL | Location = location
-): boolean {
-  return url.host === ref.host
-      && /^(?:\/[\w-]+)*(?:\/?|\.html)$/i.test(url.pathname)
-}
-
-/**
- * Check whether a URL is an anchor link on the current page
- *
- * @param url - URL or HTML anchor element
- * @param ref - Reference URL
- *
- * @return Test result
- */
-export function isAnchorLocation(
-  url: URL | HTMLAnchorElement,
-  ref: URL | Location = location
-): boolean {
-  return url.pathname === ref.pathname
-      && url.hash.length > 0
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
  * Watch location
  *
- * @return Location subject
+ * @returns Location subject
  */
 export function watchLocation(): Subject<URL> {
   return new BehaviorSubject<URL>(getLocation())

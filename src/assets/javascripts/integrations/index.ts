@@ -21,7 +21,5 @@
  */
 
 export * from "./clipboard"
-export * from "./dialog"
 export * from "./instant"
-export * from "./keyboard"
 export * from "./search"

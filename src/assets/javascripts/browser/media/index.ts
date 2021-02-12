@@ -20,8 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
-import { shareReplay, startWith } from "rxjs/operators"
+import { NEVER, Observable, fromEvent, merge } from "rxjs"
+import {
+  filter,
+  map,
+  mapTo,
+  startWith,
+  switchMap
+} from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -32,15 +38,49 @@ import { shareReplay, startWith } from "rxjs/operators"
  *
  * @param query - Media query
  *
- * @return Media observable
+ * @returns Media observable
  */
 export function watchMedia(query: string): Observable<boolean> {
   const media = matchMedia(query)
-  return new Observable<boolean>(subscriber => {
-    media.addListener(ev => subscriber.next(ev.matches))
-  })
+  return fromEvent<MediaQueryListEvent>(media, "change")
     .pipe(
-      startWith(media.matches),
-      shareReplay({ bufferSize: 1, refCount: true })
+      map(ev => ev.matches),
+      startWith(media.matches)
+    )
+}
+
+/**
+ * Watch print mode, cross-browser
+ *
+ * @returns Print observable
+ */
+export function watchPrint(): Observable<void> {
+  return merge(
+    watchMedia("print").pipe(filter(Boolean)),  /* Webkit */
+    fromEvent(window, "beforeprint")            /* IE, FF */
+  )
+    .pipe(
+      mapTo(undefined)
+    )
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Toggle an observable with another one
+ *
+ * @template T - Data type
+ *
+ * @param toggle$ - Toggle observable
+ * @param factory - Observable factory
+ *
+ * @returns Toggled observable
+ */
+export function at<T>(
+  toggle$: Observable<boolean>, factory: () => Observable<T>
+): Observable<T> {
+  return toggle$
+    .pipe(
+      switchMap(active => active ? factory() : NEVER)
     )
 }

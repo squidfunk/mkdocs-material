@@ -20,16 +20,11 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, asyncScheduler } from "rxjs"
-import {
-  map,
-  observeOn,
-  share,
-  withLatestFrom
-} from "rxjs/operators"
+import { ObservableInput, Subject, from } from "rxjs"
+import { map, share } from "rxjs/operators"
 
-import { WorkerHandler, watchWorker } from "browser"
-import { translate } from "utilities"
+import { configuration, translation } from "~/_"
+import { WorkerHandler, watchWorker } from "~/browser"
 
 import { SearchIndex, SearchIndexPipeline } from "../../_"
 import {
@@ -40,19 +35,16 @@ import {
 } from "../message"
 
 /* ----------------------------------------------------------------------------
- * Helper types
+ * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Setup options
+ * Search worker
  */
-interface SetupOptions {
-  index$: Observable<SearchIndex>      /* Search index observable */
-  base$: Observable<string>            /* Location base observable */
-}
+export type SearchWorker = WorkerHandler<SearchMessage>
 
 /* ----------------------------------------------------------------------------
- * Functions
+ * Helper functions
  * ------------------------------------------------------------------------- */
 
 /**
@@ -60,7 +52,7 @@ interface SetupOptions {
  *
  * @param data - Search index
  *
- * @return Search index
+ * @returns Search index
  */
 function setupSearchIndex(
   { config, docs, index }: SearchIndex
@@ -68,14 +60,16 @@ function setupSearchIndex(
 
   /* Override default language with value from translation */
   if (config.lang.length === 1 && config.lang[0] === "en")
-    config.lang = [translate("search.config.lang")]
+    config.lang = [
+      translation("search.config.lang")
+    ]
 
   /* Override default separator with value from translation */
   if (config.separator === "[\\s\\-]+")
-    config.separator = translate("search.config.separator")
+    config.separator = translation("search.config.separator")
 
   /* Set pipeline from translation */
-  const pipeline = translate("search.config.pipeline")
+  const pipeline = translation("search.config.pipeline")
     .split(/\s*,\s*/)
     .filter(Boolean) as SearchIndexPipeline
 
@@ -84,36 +78,36 @@ function setupSearchIndex(
 }
 
 /* ----------------------------------------------------------------------------
- * Helper functions
+ * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Set up search web worker
+ * Set up search worker
  *
  * This function will create a web worker to set up and query the search index
  * which is done using `lunr`. The index must be passed as an observable to
  * enable hacks like _localsearch_ via search index embedding as JSON.
  *
  * @param url - Worker URL
- * @param options - Options
+ * @param index - Search index observable input
  *
- * @return Worker handler
+ * @returns Search worker
  */
 export function setupSearchWorker(
-  url: string, { index$, base$ }: SetupOptions
-): WorkerHandler<SearchMessage> {
+  url: string, index: ObservableInput<SearchIndex>
+): SearchWorker {
+  const config = configuration()
   const worker = new Worker(url)
 
   /* Create communication channels and resolve relative links */
   const tx$ = new Subject<SearchMessage>()
   const rx$ = watchWorker(worker, { tx$ })
     .pipe(
-      withLatestFrom(base$),
-      map(([message, base]) => {
+      map(message => {
         if (isSearchResultMessage(message)) {
           for (const result of message.data)
             for (const document of result)
-              document.location = `${base}/${document.location}`
+              document.location = `${config.base}/${document.location}`
         }
         return message
       }),
@@ -121,16 +115,15 @@ export function setupSearchWorker(
     )
 
   /* Set up search index */
-  index$
+  from(index)
     .pipe(
       map<SearchIndex, SearchSetupMessage>(data => ({
         type: SearchMessageType.SETUP,
         data: setupSearchIndex(data)
-      })),
-      observeOn(asyncScheduler)
+      }))
     )
       .subscribe(tx$.next.bind(tx$))
 
-  /* Return worker handler */
+  /* Return search worker */
   return { tx$, rx$ }
 }

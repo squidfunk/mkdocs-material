@@ -20,10 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, fromEvent, iif, merge } from "rxjs"
-import { map, mapTo, shareReplay, switchMap } from "rxjs/operators"
+import { Observable, fromEvent, of } from "rxjs"
+import {
+  filter,
+  mapTo,
+  mergeMap,
+  switchMap,
+  tap
+} from "rxjs/operators"
 
-import { getElements } from "browser"
+import { getElements } from "~/browser"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -43,7 +49,7 @@ interface PatchOptions {
 /**
  * Check whether the given device is an Apple device
  *
- * @return Test result
+ * @returns Test result
  */
 function isAppleDevice(): boolean {
   return /(iPad|iPhone|iPod)/.test(navigator.userAgent)
@@ -67,27 +73,16 @@ function isAppleDevice(): boolean {
 export function patchScrollfix(
   { document$ }: PatchOptions
 ): void {
-  const els$ = document$
+  document$
     .pipe(
-      map(() => getElements("[data-md-scrollfix]")),
-      shareReplay({ bufferSize: 1, refCount: true })
-    )
-
-  /* Remove marker attribute, so we'll only add the fix once */
-  els$.subscribe(els => {
-    for (const el of els)
-      el.removeAttribute("data-md-scrollfix")
-  })
-
-  /* Patch overflow scrolling on touch start */
-  iif(isAppleDevice, els$, NEVER)
-    .pipe(
-      switchMap(els => merge(...els.map(el => (
-        fromEvent(el, "touchstart")
-          .pipe(
-            mapTo(el)
-          )
-      ))))
+      switchMap(() => of(...getElements("[data-md-scrollfix]"))),
+      tap(el => el.removeAttribute("data-md-scrollfix")),
+      filter(isAppleDevice),
+      mergeMap(el => fromEvent(el, "touchstart")
+        .pipe(
+          mapTo(el)
+        )
+      )
     )
       .subscribe(el => {
         const top = el.scrollTop
