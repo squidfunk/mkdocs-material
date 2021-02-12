@@ -27,7 +27,7 @@
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-6.2.5">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-6.2.8">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -39,10 +39,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.77762a86.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.c7b58751.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.07fb9723.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.d4a7bf42.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -61,7 +61,7 @@
             font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
             font.code | replace(' ', '+')
           }}&display=fallback">
-        <style>body,input{font-family:"{{ font.text }}",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <style>:root{--md-text-font-family:"{{ font.text }}",;--md-code-font-family:"{{ font.code }}",}</style>
       {% endif %}
     {% endblock %}
     {% if config.extra.manifest %}
@@ -191,7 +191,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/worker/search.b9424174.min.js" | url,
+        "search": "assets/javascripts/worker/search.js" | url,
       } -%}
       {%- set translations = app.translations -%}
       {%- for key in [
@@ -216,8 +216,8 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.e4dae721.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.15008d17.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.9418a44e.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.7e5d1283.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

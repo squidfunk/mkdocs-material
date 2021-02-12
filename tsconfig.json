@@ -33,6 +33,7 @@
   },
   "include": [
     "src/assets/javascripts",
+    "src/overrides/assets/javascripts",
     "typings",
     "webpack.config.ts"
   ]

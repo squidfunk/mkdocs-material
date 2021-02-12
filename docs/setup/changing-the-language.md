@@ -28,6 +28,7 @@ The following languages are supported:
 
 - `af` – Afrikaans
 - `ar` – Arabic
+- `bg` – Bulgarian
 - `bn` – Bengali (Bangla)
 - `ca` – Catalan
 - `cs` – Czech
@@ -79,7 +80,7 @@ _Note that some languages will produce unreadable anchor links, due to the way
 the default slug function works. Consider using a Unicode-aware slug function,
 as [documented here][2]._
 
-  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/language/en.html
+  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/languages/en.html
   [2]: setting-up-navigation.md#slugify
 
 ### Site language selector
@@ -177,7 +178,7 @@ Click on a tile to change the directionality:
 
 If you want to customize some (or all) of the translations for your language,
 you may follow the guide on [theme extension][9] and create a new partial in
-`partials/language`, e.g. `en-custom.html`. Next, look up the translation you
+`partials/languages`, e.g. `en-custom.html`. Next, look up the translation you
 want to change in the [base translation][1] and add it to the partial.
 
 Let's say you want to change "__Table of contents__" to "__On this page__":

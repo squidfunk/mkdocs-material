@@ -6,6 +6,20 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 6.2.8 <small>_ February 4, 2021</small>
+
+- Updated Japanese and Polish translations
+- Fixed #2261: Print dialog auto-closing when using instant loading
+
+### 6.2.7 <small>_ January 31, 2021</small>
+
+- Fixed #2251: Updated Docker image to latest Alpine Linux
+
+### 6.2.6 <small>_ January 26, 2021</small>
+
+- Added Bulgarian translations
+- Fixed #2233: Search not shown when using header autohiding
+
 ### 6.2.5 <small>_ January 17, 2021</small>
 
 - Fixed syntax error in Swedish translations

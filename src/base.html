@@ -119,13 +119,9 @@
           }}&display=fallback"
         />
         <style>
-          body, input {
-            font-family: "{{ font.text }}",
-              -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-          }
-          pre, code, kbd {
-            font-family: "{{ font.code }}",
-              SFMono-Regular, Consolas, Menlo, monospace;
+          :root {
+            --md-text-font-family: "{{ font.text }}",;
+            --md-code-font-family: "{{ font.code }}",;
           }
         </style>
       {% endif %}
@@ -210,7 +206,7 @@
     <!-- Overlay for expanded drawer -->
     <label class="md-overlay" for="__drawer"></label>
 
-    <!-- Link to skip to content -->
+    <!-- Skip to content -->
     <div data-md-component="skip">
       {% if page.toc | first is defined %}
         {% set skip = page.toc | first %}
@@ -236,7 +232,7 @@
       {% include "partials/header.html" %}
     {% endblock %}
 
-    <!-- Container, necessary for web-application context -->
+    <!-- Container -->
     <div class="md-container" data-md-component="container">
 
       <!-- Hero teaser -->

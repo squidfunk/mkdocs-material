@@ -25,6 +25,7 @@
 // ----------------------------------------------------------------------------
 
 @import "material-color";
+@import "material-shadows";
 
 // ----------------------------------------------------------------------------
 // Local imports
@@ -35,8 +36,10 @@
 
 @import "config";
 
-@import "overrides/typeset";
+@import "main/typeset";
 
-@import "overrides/layout/announce";
-@import "overrides/layout/content";
-@import "overrides/layout/hero";
+@import "main/layout/announce";
+@import "main/layout/content";
+@import "main/layout/hero";
+
+@import "main/shame";

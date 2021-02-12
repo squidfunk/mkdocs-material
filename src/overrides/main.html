@@ -55,7 +55,7 @@
   <!-- Extra stylesheets -->
   <link
     rel="stylesheet"
-    href="{{ 'assets/stylesheets/overrides.css' | url }}"
+    href="{{ 'overrides/assets/stylesheets/main.css' | url }}"
   />
 {% endblock %}
 
@@ -92,20 +92,22 @@
   </footer>
 {% endblock %}
 
-<!-- Analytics -->
-{% block analytics %}
+<!-- Theme-related JavaScript -->
+{% block scripts %}
   {{ super() }}
 
-  <!-- Track external links -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      document.body.addEventListener("click", function(ev) {
-        if (ev.target instanceof HTMLElement) {
-          var el = ev.target.closest("a[href^=http]")
-          if (el)
-            ga("send", "event", "outbound", "click", el.href)
-        }
-      })
-    })
-  </script>
+  <!-- Application configuration -->
+  {% block config %}
+    {%- set configuration = {
+      "base": base_url,
+      "features": features
+    } -%}
+    <script id="__config" type="application/json">
+      {{- configuration | tojson -}}
+    </script>
+  {% endblock %}
+
+  <!-- Extra JavaScript -->
+  <script src="{{ 'overrides/assets/javascripts/bundle.js' | url }}"></script>
 {% endblock %}
+

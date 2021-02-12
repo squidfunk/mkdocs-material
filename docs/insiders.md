@@ -31,7 +31,19 @@ New features first land in Insiders, which means that _sponsors will have access
 immediately_. Every feature is tied to a funding goal in monthly subscriptions.
 When a funding goal is hit, the features that are tied to it are merged back
 into Material for MkDocs and released for general availability. Bugfixes are
-always released simultaneously in both editions.
+always released simultaneously in both editions.[^1]
+
+  [^1]:
+    You may ask yourself why you should pay for something that is Open Source.
+    Doesn't that contradict the ethos of Open Source software? Yes and no. Yes,
+    some features are locked behind a monthly subscription, which means they are
+    only accessible when paying a small amount of money. No, the features are
+    only exclusive for a short time until specific funding goals are hit. Making
+    an Open Source project sustainable is exceptionally hard: maintainers burn
+    out, projects are abandoned. That's not great and very unpredictable. The
+    sponsorware model ensures that if you decide to use Material for MkDocs,
+    you can be sure that bugs are fixed quickly and new features are added
+    regularly.
 
 _Don't want to sponsor? No problem, Material for MkDocs already has tons of
 features available, so chances are that most of your requirements are already
@@ -51,9 +63,9 @@ features][4].
 
 __Important__: If you're sponsoring @squidfunk through a GitHub organization,
 please send a short email to sponsors@squidfunk.com with the name of your
-organization and the account that should be added as a collaborator.[^1]
+organization and the account that should be added as a collaborator.[^2]
 
-  [^1]:
+  [^2]:
     It's currently not possible to grant access to each member of an
     organization, as GitHub only allows for adding users. Thus, after
     sponsoring, please send an email to sponsors@squidfunk.com, stating which
@@ -66,9 +78,9 @@ organization and the account that should be added as a collaborator.[^1]
     private Insiders GitHub repository, and grant access to all members of the
     organizations.
 
-You can cancel your sponsorship anytime.[^2]
+You can cancel your sponsorship anytime.[^3]
 
-  [^2]:
+  [^3]:
     If you cancel your sponsorship, GitHub schedules a cancellation request
     which will become effective at the end of the billing cycle, which ends at
     the 22nd of a month for monthly sponsorships. This means that even though
@@ -89,7 +101,7 @@ You can cancel your sponsorship anytime.[^2]
 </div>
 
 <script>
-  fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/").then(function(e){return e.json()}).then(function(e){var t=document.querySelector(".tx-insiders-list"),n=0;for(var o of e.sponsors)if("PUBLIC"===o.type){var s;(s=document.createElement("a")).href=o.url,s.title="@"+o.name,s.className="tx-insiders-list__item",t.appendChild(s);var r=document.createElement("img");r.src=o.image,s.appendChild(r)}else n++;(s=document.createElement("a")).href="https://github.com/sponsors/squidfunk",s.title="[private]",s.innerText="+"+n,s.className="tx-insiders-list__item tx-insiders-list__item--private",t.appendChild(s),document.querySelector(".tx-insiders-count").innerText=e.sponsors.length,document.querySelector(".tx-insiders-container").removeAttribute("hidden"),document.querySelector('.tx-insiders-total').innerText=" – $ "+e.total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}).catch(console.log);
+  fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/").then(function(e){return e.json()}).then(function(e){var t=document.querySelector(".tx-insiders-list"),n=0;for(var o of e.sponsors)if("PUBLIC"===o.type){var s;(s=document.createElement("a")).href=o.url,s.title="@"+o.name,s.className="tx-insiders-list__item",t.appendChild(s);var r=document.createElement("img");r.src=o.image,s.appendChild(r)}else n++;(s=document.createElement("a")).href="https://github.com/sponsors/squidfunk",s.title="[private]",s.innerText="+"+n,s.className="tx-insiders-list__item tx-insiders-list__item--private",t.appendChild(s),document.querySelector(".tx-insiders-count").innerText=e.sponsors.length,document.querySelector(".tx-insiders-container").removeAttribute("hidden"),document.querySelector('.tx-insiders-total').innerText=" $ "+e.total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}).catch(console.log);
 </script>
 
   [5]: https://github.com/sponsors/squidfunk
@@ -100,17 +112,18 @@ The following features are currently exclusively available to sponsors:
 
 <div class="tx-columns" markdown="1">
 
-- [x] [Latest release tag :material-new-box:][15]
+- [x] [Section index pages :material-new-box:][21]
+- [x] [Latest release tag][15]
 - [x] [Color palette toggle][16]
 - [x] [Versioning][14]
 - [x] [Site language selection][13]
 - [x] [Sticky navigation tabs][20]
-- [x] [Native Mermaid.js integration][22]
+- [x] [Native Mermaid.js integration][23]
 - [x] [Admonition inline blocks][12]
 - [x] [Search suggestions][17]
 - [x] [Search highlighting][18]
 - [x] [Search sharing][19]
-- [x] [Remove generator notice][21]
+- [x] [Remove generator notice][22]
 
 </div>
 
@@ -120,7 +133,7 @@ from time to time to learn about what's new, or follow [@squidfunk on
 
   [6]: https://twitter.com/squidfunk
 
-## Funding<span class="tx-insiders-total"></span>
+## Funding<span class="tx-insiders-total tx-insiders-count"></span>
 
 ### Goals
 
@@ -160,21 +173,23 @@ the public for general availability.
 #### $ 3,000 – Caribbean Red
 
 - [x] [Sticky navigation tabs][20]
-- [x] [Remove generator notice][21]
-- [ ] Support for index pages
+- [x] [Section index pages][21]
+- [x] [Remove generator notice][22]
 
   [20]: setup/setting-up-navigation.md#sticky-navigation-tabs
-  [21]: setup/setting-up-the-footer.md#remove-generator
+  [21]: setup/setting-up-navigation.md#section-index-pages
+  [22]: setup/setting-up-the-footer.md#remove-generator
+
 
 #### $ 5,000 – Aji Panca
 
-- [x] [Native Mermaid.js integration][22]
+- [x] [Native Mermaid.js integration][23]
 
-  [22]: reference/diagrams.md
+  [23]: reference/diagrams.md
 
 #### Future
 
-- [ ] [Material for MkDocs Live Edit][23]
+- [ ] [Material for MkDocs Live Edit][24]
 - [ ] Improved search result summaries
 - [ ] List of last searches
 - [ ] Table of contents follows active anchor
@@ -184,7 +199,7 @@ the public for general availability.
 - [ ] New layouts and styles (e.g. vertical)
 - [ ] ... and much more ...
 
-  [23]: https://twitter.com/squidfunk/status/1338252230265360391
+  [24]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
 
@@ -220,10 +235,10 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][24] only in CI, as you don't want to expose
+recommended to [install Insiders][25] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [24]: publishing-your-site.md#github-pages
+  [25]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -232,7 +247,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][25]. However, we kindly ask you to respect the following
+by the [MIT license][26]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -243,7 +258,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][26].
+  [GitHub deletes private forks][27].
 
-  [25]: license.md
-  [26]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [26]: license.md
+  [27]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
