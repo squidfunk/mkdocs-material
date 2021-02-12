@@ -21,7 +21,13 @@
  */
 
 import { Observable, fromEvent, of } from "rxjs"
-import { mapTo, mergeMap, switchMap, tap } from "rxjs/operators"
+import {
+  filter,
+  mapTo,
+  mergeMap,
+  switchMap,
+  tap
+} from "rxjs/operators"
 
 import { getElements } from "~/browser"
 
@@ -67,28 +73,27 @@ function isAppleDevice(): boolean {
 export function patchScrollfix(
   { document$ }: PatchOptions
 ): void {
-  if (isAppleDevice()) {
-    document$
-      .pipe(
-        switchMap(() => of(...getElements("[data-md-scrollfix]"))),
-        tap(el => el.removeAttribute("data-md-scrollfix")),
-        mergeMap(el => fromEvent(el, "touchstart")
-          .pipe(
-            mapTo(el)
-          )
+  document$
+    .pipe(
+      switchMap(() => of(...getElements("[data-md-scrollfix]"))),
+      tap(el => el.removeAttribute("data-md-scrollfix")),
+      filter(isAppleDevice),
+      mergeMap(el => fromEvent(el, "touchstart")
+        .pipe(
+          mapTo(el)
         )
       )
-        .subscribe(el => {
-          const top = el.scrollTop
+    )
+      .subscribe(el => {
+        const top = el.scrollTop
 
-          /* We're at the top of the container */
-          if (top === 0) {
-            el.scrollTop = 1
+        /* We're at the top of the container */
+        if (top === 0) {
+          el.scrollTop = 1
 
-          /* We're at the bottom of the container */
-          } else if (top + el.offsetHeight === el.scrollHeight) {
-            el.scrollTop = top - 1
-          }
-        })
-  }
+        /* We're at the bottom of the container */
+        } else if (top + el.offsetHeight === el.scrollHeight) {
+          el.scrollTop = top - 1
+        }
+      })
 }

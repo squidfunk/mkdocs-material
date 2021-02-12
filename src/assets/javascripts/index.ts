@@ -36,6 +36,7 @@ import {
   getElement,
   getElementOrThrow,
   getElements,
+  setToggle,
   watchDocument,
   watchKeyboard,
   watchLocation,
@@ -93,6 +94,10 @@ setupClipboardJS({ alert$ })
 /* Set up instant loading, if enabled */
 if (feature("navigation.instant"))
   setupInstantLoading({ document$, location$, viewport$ })
+
+/* Always close drawer on navigation */
+merge(location$, target$)
+  .subscribe(() => setToggle("drawer", false))
 
 /* Set up global keyboard handlers */
 keyboard$
