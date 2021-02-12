@@ -58,6 +58,10 @@ import {
   setupClipboardJS,
   setupInstantLoading
 } from "./integrations"
+import {
+  patchIndeterminate,
+  patchScrollfix
+} from "./patches"
 
 /* ----------------------------------------------------------------------------
  * Program
@@ -85,6 +89,10 @@ setupClipboardJS({ alert$ })
 /* Set up instant loading, if enabled */
 if (feature("navigation.instant"))
   setupInstantLoading({ document$, location$, viewport$ })
+
+/* Set up patches */
+patchIndeterminate({ document$ })
+patchScrollfix({ document$ })
 
 /* Set up header observable */
 const header$ = watchHeader(

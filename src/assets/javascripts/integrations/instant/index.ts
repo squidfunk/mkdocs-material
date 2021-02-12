@@ -21,6 +21,7 @@
  */
 
 import {
+  EMPTY,
   NEVER,
   Observable,
   Subject,
@@ -31,6 +32,7 @@ import {
 import {
   bufferCount,
   catchError,
+  concatMap,
   debounceTime,
   distinctUntilChanged,
   distinctUntilKeyChanged,
@@ -47,7 +49,9 @@ import { configuration } from "~/_"
 import {
   Viewport,
   ViewportOffset,
+  createElement,
   getElement,
+  getElementOrThrow,
   getElements,
   replaceElement,
   request,
@@ -279,16 +283,43 @@ export function setupInstantLoading(
           "[data-md-component=container]",
           "[data-md-component=skip]"
         ]) {
-          const next = getElement(selector, replacement)
-          const prev = getElement(selector)
+          const source = getElement(selector)
+          const target = getElement(selector, replacement)
           if (
-            typeof next !== "undefined" &&
-            typeof prev !== "undefined"
+            typeof source !== "undefined" &&
+            typeof target !== "undefined"
           ) {
-            replaceElement(prev, next)
+            replaceElement(source, target)
           }
         }
       })
+
+  /* Re-evaluate scripts */
+  document$
+    .pipe(
+      skip(1),
+      map(() => getElementOrThrow("[data-md-component=container]")),
+      switchMap(el => of(...getElements("script", el))),
+      concatMap(el => {
+        const script = createElement("script")
+        if (el.src) {
+          script.src = el.src
+          replaceElement(el, script)
+
+          /* Complete when script is loaded */
+          return new Observable(observer => {
+            script.onload = () => observer.complete()
+          })
+
+        /* Complete immediately */
+        } else {
+          script.textContent = el.textContent!
+          replaceElement(el, script)
+          return EMPTY
+        }
+      })
+    )
+      .subscribe()
 
   /* Debounce update of viewport offset */
   viewport$
