@@ -201,13 +201,9 @@ export default (_env: never, args: Configuration): Configuration[] => {
     {
       ...base,
       entry: {
-        "assets/javascripts/bundle":    "src/assets/javascripts",
-        "assets/stylesheets/main":      "src/assets/stylesheets/main.scss",
-        "assets/stylesheets/palette":   "src/assets/stylesheets/palette.scss",
-        "overrides/assets/javascripts/bundle":
-          "src/overrides/assets/javascripts",
-        "overrides/assets/stylesheets/main":
-          "src/overrides/assets/stylesheets/main.scss"
+        "assets/javascripts/bundle":  "src/assets/javascripts",
+        "assets/stylesheets/main":    "src/assets/stylesheets/main.scss",
+        "assets/stylesheets/palette": "src/assets/stylesheets/palette.scss"
       },
       output: {
         path: path.resolve(__dirname, "material"),
@@ -340,7 +336,10 @@ export default (_env: never, args: Configuration): Configuration[] => {
               ]) {
                 const template = toPairs<string>(manifest)
                   .reduce((content, [from, to]) => (
-                    content.replace(new RegExp(`'${from}'`, "g"), `'${to}'`)
+                    content.replace(new RegExp(
+                      `('|")${from}\\1`, "g"),
+                      `$1${to}$1`
+                    )
                   ), fs.readFileSync(file, "utf8"))
 
                 /* Save template with replaced assets */
@@ -394,6 +393,44 @@ export default (_env: never, args: Configuration): Configuration[] => {
         filename: `[name]${hash}.js`,
         hashDigestLength: 8,
         libraryTarget: "var"
+      }
+    },
+
+    /* Overrides */
+    {
+      ...base,
+      entry: {
+        "overrides/assets/javascripts/bundle": "src/overrides/assets/javascripts",
+        "overrides/assets/stylesheets/main":   "src/overrides/assets/stylesheets/main.scss"
+      },
+      output: {
+        path: path.resolve(__dirname, "material"),
+        filename: `[name]${hash}.js`,
+        hashDigestLength: 8,
+        libraryTarget: "window"
+      },
+
+      /* Plugins */
+      plugins: [
+        ...base.plugins || [],
+
+        /* Stylesheets */
+        new MiniCssExtractPlugin({
+          filename: `[name]${hash}.css`
+        }),
+      ],
+
+      /* Optimizations */
+      optimization: {
+        splitChunks: {
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: "overrides/assets/javascripts/vendor",
+              chunks: "all"
+            }
+          }
+        }
       }
     }
   ]

@@ -88,7 +88,8 @@ if (feature("navigation.instant"))
 
 /* Set up header observable */
 const header$ = watchHeader(
-  getElementOrThrow("[data-md-component=header]")
+  getElementOrThrow("[data-md-component=header]"),
+  { viewport$ }
 )
 
 /* Set up main area observable */
@@ -152,6 +153,8 @@ const component$ = document$
     switchMap(() => content$),
     mergeWith(control$)
   )
+
+component$.subscribe()
 
 /* Export to window */
 export {

@@ -21,7 +21,6 @@
  */
 
 /* eslint-disable */
-
 import { filter } from "fuzzaldrin-plus"
 import { from, fromEvent } from "rxjs"
 import { map, switchMap } from "rxjs/operators"

@@ -22,7 +22,7 @@
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ config.site_description }}">
   <meta name="twitter:image" content="{{ image }}">
-  <link rel="stylesheet" href="{{ 'overrides/assets/stylesheets/main.dadc6109.min.css' | url }}">
+  <link rel="stylesheet" href="{{ 'overrides/assets/stylesheets/main.8e98f424.min.css' | url }}">
 {% endblock %}
 {% block announce %}
   <a href="https://twitter.com/squidfunk">
@@ -53,14 +53,6 @@
 {% endblock %}
 {% block scripts %}
   {{ super() }}
-  {% block config %}
-    {%- set configuration = {
-      "base": base_url,
-      "features": features
-    } -%}
-    <script id="__config" type="application/json">
-      {{- configuration | tojson -}}
-    </script>
-  {% endblock %}
-  <script src="{{ 'overrides/assets/javascripts/bundle.75e3dcac.min.js' | url }}"></script>
+  <script src="{{ 'overrides/assets/javascripts/vendor.1aa446d9.min.js' | url }}"></script>
+  <script src="{{ 'overrides/assets/javascripts/bundle.b79ba6f2.min.js' | url }}"></script>
 {% endblock %}

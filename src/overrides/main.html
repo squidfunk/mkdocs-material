@@ -97,6 +97,7 @@
   {{ super() }}
 
   <!-- Extra JavaScript -->
+  <script src="{{ 'overrides/assets/javascripts/vendor.js' | url }}"></script>
   <script src="{{ 'overrides/assets/javascripts/bundle.js' | url }}"></script>
 {% endblock %}
 
