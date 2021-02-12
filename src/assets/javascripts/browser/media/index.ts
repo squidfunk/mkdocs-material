@@ -20,8 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import { filter, map, mapTo, startWith } from "rxjs/operators"
+import { NEVER, Observable, fromEvent, merge } from "rxjs"
+import {
+  filter,
+  map,
+  mapTo,
+  startWith,
+  switchMap
+} from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -55,5 +61,26 @@ export function watchPrint(): Observable<void> {
   )
     .pipe(
       mapTo(undefined)
+    )
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Toggle an observable with another one
+ *
+ * @template T - Data type
+ *
+ * @param toggle$ - Toggle observable
+ * @param factory - Observable factory
+ *
+ * @returns Toggled observable
+ */
+export function at<T>(
+  toggle$: Observable<boolean>, factory: () => Observable<T>
+): Observable<T> {
+  return toggle$
+    .pipe(
+      switchMap(active => active ? factory() : NEVER)
     )
 }

@@ -24,7 +24,7 @@ import { Repo, User } from "github-types"
 import { Observable } from "rxjs"
 import { defaultIfEmpty, map } from "rxjs/operators"
 
-import { fetchJSON } from "~/browser"
+import { requestJSON } from "~/browser"
 import { round } from "~/utilities"
 
 import { SourceFacts } from "../_"
@@ -47,7 +47,7 @@ export function fetchSourceFactsFromGitHub(
   const url = typeof repo !== "undefined"
     ? `https://api.github.com/repos/${user}/${repo}`
     : `https://api.github.com/users/${user}`
-  return fetchJSON<Repo & User>(url)
+  return requestJSON<Repo & User>(url)
     .pipe(
       map(data => {
 

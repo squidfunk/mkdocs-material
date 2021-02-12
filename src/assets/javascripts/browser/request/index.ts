@@ -29,20 +29,28 @@ import {
 } from "rxjs/operators"
 
 /* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * XML parser
- */
-const dom = new DOMParser()
-
-/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Fetch given URL as JSON
+ * Fetch the given URL
+ *
+ * @param url - Request URL
+ * @param options - Request options
+ *
+ * @returns Response observable
+ */
+export function request(
+  url: string, options: RequestInit = { credentials: "same-origin" }
+): Observable<Response> {
+  return from(fetch(url, options))
+    .pipe(
+      filter(res => res.status === 200),
+    )
+}
+
+/**
+ * Fetch JSON from the given URL
  *
  * @template T - Data type
  *
@@ -51,32 +59,31 @@ const dom = new DOMParser()
  *
  * @returns Data observable
  */
-export function fetchJSON<T>(
-  url: string, options: RequestInit = { credentials: "same-origin" }
+export function requestJSON<T>(
+  url: string, options?: RequestInit
 ): Observable<T> {
-  return from(fetch(url, options))
+  return request(url, options)
     .pipe(
-      filter(res => res.status === 200),
       switchMap(res => res.json()),
       shareReplay(1)
     )
 }
 
 /**
- * Fetch given URL as XML
+ * Fetch XML from the given URL
  *
  * @param url - Request URL
  * @param options - Request options
  *
  * @returns Data observable
  */
-export function fetchXML(
-  url: string, options: RequestInit = { credentials: "same-origin" }
+export function requestXML(
+  url: string, options?: RequestInit
 ): Observable<Document> {
-  return from(fetch(url, options))
+  const dom = new DOMParser()
+  return request(url, options)
     .pipe(
-      filter(res => res.status === 200),
-      switchMap(res => res.json()),
+      switchMap(res => res.text()),
       map(res => dom.parseFromString(res, "text/xml")),
       shareReplay(1)
     )

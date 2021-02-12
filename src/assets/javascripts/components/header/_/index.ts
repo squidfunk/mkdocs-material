@@ -97,7 +97,8 @@ export function watchHeader(
       distinctUntilChanged((a, b) => (
         a.sticky === b.sticky &&
         a.height === b.height
-      ))
+      )),
+      shareReplay(1)
     )
 }
 
@@ -134,7 +135,6 @@ export function mountHeader(
   main$.subscribe(main => internal$.next(main))
   return header$
     .pipe(
-      map(state => ({ ref: el, ...state })),
-      shareReplay(1)
+      map(state => ({ ref: el, ...state }))
     )
 }

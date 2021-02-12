@@ -28,7 +28,6 @@ import {
   distinctUntilChanged,
   distinctUntilKeyChanged,
   map,
-  shareReplay,
   switchMap
 } from "rxjs/operators"
 
@@ -120,7 +119,6 @@ export function watchMain(
         a.offset === b.offset &&
         a.height === b.height &&
         a.active === b.active
-      )),
-      shareReplay(1)
+      ))
     )
 }

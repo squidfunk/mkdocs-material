@@ -64,14 +64,14 @@ export interface Dialog {
  * Watch options
  */
 interface WatchOptions {
-  message$: Subject<string>            /* Message subject */
+  alert$: Subject<string>              /* Alert subject */
 }
 
 /**
  * Mount options
  */
 interface MountOptions {
-  message$: Subject<string>            /* Message subject */
+  alert$: Subject<string>              /* Alert subject */
 }
 
 /* ----------------------------------------------------------------------------
@@ -87,9 +87,9 @@ interface MountOptions {
  * @returns Dialog observable
  */
 export function watchDialog(
-  _el: HTMLElement, { message$ }: WatchOptions
+  _el: HTMLElement, { alert$ }: WatchOptions
 ): Observable<Dialog> {
-  return message$
+  return alert$
     .pipe(
       switchMap(message => merge(
         of(true),
@@ -111,7 +111,7 @@ export function watchDialog(
  * @returns Dialog component observable
  */
 export function mountDialog(
-  el: HTMLElement, { message$ }: MountOptions
+  el: HTMLElement, options: MountOptions
 ): Observable<Component<Dialog>> {
   const internal$ = new Subject<Dialog>()
   internal$
@@ -127,7 +127,7 @@ export function mountDialog(
       })
 
   /* Create and return component */
-  return watchDialog(el, { message$ })
+  return watchDialog(el, options)
     .pipe(
       tap(internal$),
       finalize(() => internal$.complete()),

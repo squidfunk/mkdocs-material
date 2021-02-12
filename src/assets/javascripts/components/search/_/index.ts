@@ -24,7 +24,7 @@ import { Observable, merge } from "rxjs"
 import { filter, sample, take } from "rxjs/operators"
 
 import { configuration } from "~/_"
-import { fetchJSON, getElementOrThrow } from "~/browser"
+import { requestJSON, getElementOrThrow } from "~/browser"
 import {
   SearchIndex,
   isSearchQueryMessage,
@@ -59,7 +59,7 @@ export type Search =
  * @returns Promise resolving with search index
  */
 function fetchSearchIndex(url: string) {
-  return __search?.index || fetchJSON<SearchIndex>(url)
+  return __search?.index || requestJSON<SearchIndex>(url)
 }
 
 /* ----------------------------------------------------------------------------

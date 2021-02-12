@@ -33,7 +33,7 @@ import { translation } from "~/_"
  * Setup options
  */
 interface SetupOptions {
-  message$: Subject<string>            /* Message subject */
+  alert$: Subject<string>              /* Alert subject */
 }
 
 /* ----------------------------------------------------------------------------
@@ -46,13 +46,13 @@ interface SetupOptions {
  * @param options - Options
  */
 export function setupClipboardJS(
-  { message$ }: SetupOptions
+  { alert$ }: SetupOptions
 ): void {
-  if (!ClipboardJS.isSupported()) {
+  if (ClipboardJS.isSupported()) {
     new Observable<ClipboardJS.Event>(subscriber => {
       new ClipboardJS("[data-clipboard-target], [data-clipboard-text]")
         .on("success", ev => subscriber.next(ev))
     })
-      .subscribe(() => message$.next(translation("clipboard.copied")))
+      .subscribe(() => alert$.next(translation("clipboard.copied")))
   }
 }

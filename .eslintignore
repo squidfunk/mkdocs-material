@@ -33,6 +33,9 @@ MANIFEST
 manifest.json
 site
 
+# Configuration
+webpack.config.ts
+
 # Distribution files
 dist
 mkdocs_material.egg-info
@@ -47,18 +50,5 @@ mkdocs_material.egg-info
 # General
 # -----------------------------------------------------------------------------
 
-# Never ignore .gitkeep files
-!**/.gitkeep
-
-# Husky hooks
-.husky/.gitignore
-.husky/_
-
-# macOS internals
-.DS_Store
-
 # Temporary files
 tmp
-
-# IDEs
-.vscode

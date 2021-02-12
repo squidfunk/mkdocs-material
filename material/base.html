@@ -39,10 +39,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.1e9203c3.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.77762a86.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.a4a42c2a.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.07fb9723.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -182,9 +182,9 @@
       {% block footer %}
         {% include "partials/footer.html" %}
       {% endblock %}
-      <div class="md-dialog" data-md-component="dialog">
-        <div class="md-dialog__inner md-typeset"></div>
-      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
     </div>
     {% block config %}
       {%- set app = {
@@ -216,8 +216,8 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.250c9a34.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.1ed0f3ef.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.e4dae721.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.15008d17.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

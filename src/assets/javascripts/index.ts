@@ -21,12 +21,21 @@
  */
 
 import "focus-visible"
-import { NEVER, Observable, Subject, merge } from "rxjs"
-import { switchMap } from "rxjs/operators"
-
+import { Subject, defer, merge } from "rxjs"
 import {
+  map,
+  mergeWith,
+  shareReplay,
+  switchMap
+} from "rxjs/operators"
+
+import { feature } from "./_"
+import {
+  at,
   getElementOrThrow,
   getElements,
+  watchDocument,
+  watchLocation,
   watchLocationTarget,
   watchMedia,
   watchPrint,
@@ -46,7 +55,8 @@ import {
   watchMain
 } from "./components"
 import {
-  setupClipboardJS
+  setupClipboardJS,
+  setupInstantLoading
 } from "./integrations"
 
 /* ----------------------------------------------------------------------------
@@ -57,60 +67,52 @@ import {
 document.documentElement.classList.remove("no-js")
 document.documentElement.classList.add("js")
 
-/* Set up subjects */
+/* Set up navigation observables */
+const document$ = watchDocument()
+const location$ = watchLocation()
 const target$   = watchLocationTarget()
 
-/* Set up user interface observables */
+/* Set up media observables */
 const viewport$ = watchViewport()
 const tablet$   = watchMedia("(min-width: 960px)")
 const screen$   = watchMedia("(min-width: 1220px)")
 const print$    = watchPrint()
 
-// these elements MUST be available
-const header = getElementOrThrow("[data-md-component=header]")
-const main   = getElementOrThrow("[data-md-component=main]")
+/* Set up Clipboard.js integration */
+const alert$ = new Subject<string>()
+setupClipboardJS({ alert$ })
 
-const header$ = watchHeader(header)
-const main$   = watchMain(main, { header$, viewport$ })
+/* Set up instant loading, if enabled */
+if (feature("navigation.instant"))
+  setupInstantLoading({ document$, location$, viewport$ })
 
-/* Setup Clipboard.js integration */
-const message$ = new Subject<string>()
-setupClipboardJS({ message$ })
+/* Set up header observable */
+const header$ = watchHeader(
+  getElementOrThrow("[data-md-component=header]")
+)
 
-// TODO: watchElements + general mount function that takes a factory...
-// + a toggle function (optionally)
+/* Set up main area observable */
+const main$ = document$
+  .pipe(
+    map(() => getElementOrThrow("[data-md-component=main]")),
+    switchMap(el => watchMain(el, { viewport$, header$ })),
+    shareReplay(1)
+  )
 
-// TODO: catch errors on all components when mounting, so one error doesn't
-// take down the whole site.
-
-const app$ = merge(
-
-  /* Content */
-  ...getElements("[data-md-component=content]")
-    .map(child => mountContent(child, { target$, viewport$, print$ })),
+/* Set up control component observables */
+const control$ = merge(
 
   /* Dialog */
   ...getElements("[data-md-component=dialog]")
-    .map(child => mountDialog(child, { message$ })),
+    .map(child => mountDialog(child, { alert$ })),
 
-  /* Header */
+    /* Header */
   ...getElements("[data-md-component=header]")
     .map(child => mountHeader(child, { viewport$, header$, main$ })),
-
-  /* Header title */
-  ...getElements("[data-md-component=header-title]")
-    .map(child => mountHeaderTitle(child, { viewport$, header$ })),
 
   /* Search */
   ...getElements("[data-md-component=search]")
     .map(child => mountSearch(child)),
-
-  /* Sidebar */
-  ...getElements("[data-md-component=sidebar]")
-    .map(child => child.getAttribute("data-md-type") === "navigation"
-      ? at(screen$, () => mountSidebar(child, { viewport$, header$, main$ }))
-      : at(tablet$, () => mountSidebar(child, { viewport$, header$, main$ }))
-    ),
 
   /* Repository information */
   ...getElements("[data-md-component=source]")
@@ -119,30 +121,46 @@ const app$ = merge(
   /* Navigation tabs */
   ...getElements("[data-md-component=tabs]")
     .map(child => mountTabs(child, { viewport$, header$ })),
+)
+
+/* Set up content component observables */
+const content$ = defer(() => merge(
+
+  /* Content */
+  ...getElements("[data-md-component=content]")
+    .map(child => mountContent(child, { target$, viewport$, print$ })),
+
+  /* Header title */
+  ...getElements("[data-md-component=header-title]")
+    .map(child => mountHeaderTitle(child, { viewport$, header$ })),
+
+  /* Sidebar */
+  ...getElements("[data-md-component=sidebar]")
+    .map(child => child.getAttribute("data-md-type") === "navigation"
+      ? at(screen$, () => mountSidebar(child, { viewport$, header$, main$ }))
+      : at(tablet$, () => mountSidebar(child, { viewport$, header$, main$ }))
+    ),
 
   /* Table of contents */
   ...getElements("[data-md-component=toc]")
     .map(child => mountTableOfContents(child, { viewport$, header$ })),
-)
+))
 
-// eslint-disable-next-line
-app$.subscribe(console.log)
+/* Set up component observables */
+const component$ = document$
+  .pipe(
+    switchMap(() => content$),
+    mergeWith(control$)
+  )
 
-/* ------------------------------------------------------------------------- */
-
-/**
- * Test
- *
- * @param toggle$ - Toggle observable
- * @param factory - Observable factory
- *
- * @returns New observable
- */
-function at<T>(
-  toggle$: Observable<boolean>, factory: () => Observable<T>
-) {
-  return toggle$
-    .pipe(
-      switchMap(active => active ? factory() : NEVER),
-    )
+/* Export to window */
+export {
+  document$,
+  component$,
+  viewport$,
+  location$,
+  target$,
+  screen$,
+  tablet$,
+  print$
 }
