@@ -25,8 +25,14 @@ import { filter, sample, take } from "rxjs/operators"
 
 import { configuration } from "~/_"
 import {
+  Keyboard,
+  getActiveElement,
   getElementOrThrow,
-  requestJSON
+  getElements,
+  requestJSON,
+  setElementFocus,
+  setElementSelection,
+  setToggle
 } from "~/browser"
 import {
   SearchIndex,
@@ -51,6 +57,17 @@ export type Search =
   | SearchResult
 
 /* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Mount options
+ */
+interface MountOptions {
+  keyboard$: Observable<Keyboard>      /* Keyboard observable */
+}
+
+/* ----------------------------------------------------------------------------
  * Helper functions
  * ------------------------------------------------------------------------- */
 
@@ -73,16 +90,21 @@ function fetchSearchIndex(url: string) {
  * Mount search
  *
  * @param el - Search element
+ * @param options - Options
  *
  * @returns Search component observable
  */
 export function mountSearch(
-  el: HTMLElement
+  el: HTMLElement, { keyboard$ }: MountOptions
 ): Observable<Component<Search>> {
   const config = configuration()
   const worker = setupSearchWorker(config.search, fetchSearchIndex(
     `${config.base}/search/search_index.json`
   ))
+
+  /* Retrieve elements */
+  const query  = getElementOrThrow("[data-md-component=search-query]", el)
+  const result = getElementOrThrow("[data-md-component=search-result]", el)
 
   /* Re-emit query when search is ready */
   const { tx$, rx$ } = worker
@@ -94,18 +116,80 @@ export function mountSearch(
     )
       .subscribe(tx$.next.bind(tx$))
 
-  /* Mount search query component */
-  const query$ = mountSearchQuery(
-    getElementOrThrow("[data-md-component=search-query]", el),
-    worker
-  )
+  /* Set up search keyboard handlers */
+  keyboard$
+    .pipe(
+      filter(({ mode }) => mode === "search")
+    )
+      .subscribe(key => {
+        const active = getActiveElement()
+        switch (key.type) {
 
-  /* Mount search result and return component */
+          /* Enter: prevent form submission */
+          case "Enter":
+            if (active === query)
+              key.claim()
+            break
+
+          /* Escape or Tab: close search */
+          case "Escape":
+          case "Tab":
+            setToggle("search", false)
+            setElementFocus(query, false)
+            break
+
+          /* Vertical arrows: select previous or next search result */
+          case "ArrowUp":
+          case "ArrowDown":
+            if (typeof active === "undefined") {
+              setElementFocus(query)
+            } else {
+              const els = [query, ...getElements(
+                ":not(details) > [href], summary, details[open] [href]",
+                result
+              )]
+              const i = Math.max(0, (
+                Math.max(0, els.indexOf(active)) + els.length + (
+                  key.type === "ArrowUp" ? -1 : +1
+                )
+              ) % els.length)
+              setElementFocus(els[i])
+            }
+
+            /* Prevent scrolling of page */
+            key.claim()
+            break
+
+          /* All other keys: hand to search query */
+          default:
+            if (query !== getActiveElement())
+              setElementFocus(query)
+        }
+      })
+
+  /* Set up global keyboard handlers */
+  keyboard$
+    .pipe(
+      filter(({ mode }) => mode === "global"),
+    )
+      .subscribe(key => {
+        switch (key.type) {
+
+          /* Open search and select query */
+          case "f":
+          case "s":
+          case "/":
+            setElementFocus(query)
+            setElementSelection(query)
+            key.claim()
+            break
+        }
+      })
+
+  /* Create and return component */
+  const query$ = mountSearchQuery(query as HTMLInputElement, worker)
   return merge(
     query$,
-    mountSearchResult(
-      getElementOrThrow("[data-md-component=search-result]", el),
-      worker, { query$ }
-    )
+    mountSearchResult(result, worker, { query$ })
   )
 }

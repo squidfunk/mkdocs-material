@@ -23,6 +23,7 @@
 import "focus-visible"
 import { Subject, defer, merge } from "rxjs"
 import {
+  filter,
   map,
   mergeWith,
   shareReplay,
@@ -32,9 +33,11 @@ import {
 import { feature } from "./_"
 import {
   at,
+  getElement,
   getElementOrThrow,
   getElements,
   watchDocument,
+  watchKeyboard,
   watchLocation,
   watchLocationTarget,
   watchMedia,
@@ -64,7 +67,7 @@ import {
 } from "./patches"
 
 /* ----------------------------------------------------------------------------
- * Program
+ * Application
  * ------------------------------------------------------------------------- */
 
 /* Yay, JavaScript is available */
@@ -75,6 +78,7 @@ document.documentElement.classList.add("js")
 const document$ = watchDocument()
 const location$ = watchLocation()
 const target$   = watchLocationTarget()
+const keyboard$ = watchKeyboard()
 
 /* Set up media observables */
 const viewport$ = watchViewport()
@@ -89,6 +93,32 @@ setupClipboardJS({ alert$ })
 /* Set up instant loading, if enabled */
 if (feature("navigation.instant"))
   setupInstantLoading({ document$, location$, viewport$ })
+
+/* Set up global keyboard handlers */
+keyboard$
+  .pipe(
+    filter(({ mode }) => mode === "global")
+  )
+    .subscribe(key => {
+      switch (key.type) {
+
+        /* Go to previous page */
+        case "p":
+        case ",":
+          const prev = getElement("[href][rel=prev]")
+          if (typeof prev !== "undefined")
+            prev.click()
+          break
+
+        /* Go to next page */
+        case "n":
+        case ".":
+          const next = getElement("[href][rel=next]")
+          if (typeof next !== "undefined")
+            next.click()
+          break
+      }
+    })
 
 /* Set up patches */
 patchIndeterminate({ document$ })
@@ -121,7 +151,7 @@ const control$ = merge(
 
   /* Search */
   ...getElements("[data-md-component=search]")
-    .map(child => mountSearch(child)),
+    .map(child => mountSearch(child, { keyboard$ })),
 
   /* Repository information */
   ...getElements("[data-md-component=source]")
@@ -162,16 +192,18 @@ const component$ = document$
     mergeWith(control$)
   )
 
+/* Subscribe to all components */
 component$.subscribe()
 
 /* Export to window */
 export {
   document$,
-  component$,
-  viewport$,
   location$,
   target$,
-  screen$,
+  keyboard$,
+  viewport$,
   tablet$,
-  print$
+  screen$,
+  print$,
+  component$
 }
