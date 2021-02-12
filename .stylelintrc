@@ -93,6 +93,7 @@
       "vh",
       "vw"
     ],
+    "value-list-comma-newline-after": null,
     "scss/at-each-key-value-single-line": true,
     "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
     "scss/at-function-parentheses-space-before": "never",
