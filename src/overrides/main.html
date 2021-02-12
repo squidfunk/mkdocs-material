@@ -96,17 +96,6 @@
 {% block scripts %}
   {{ super() }}
 
-  <!-- Application configuration -->
-  {% block config %}
-    {%- set configuration = {
-      "base": base_url,
-      "features": features
-    } -%}
-    <script id="__config" type="application/json">
-      {{- configuration | tojson -}}
-    </script>
-  {% endblock %}
-
   <!-- Extra JavaScript -->
   <script src="{{ 'overrides/assets/javascripts/bundle.js' | url }}"></script>
 {% endblock %}

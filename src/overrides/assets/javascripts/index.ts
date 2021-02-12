@@ -20,11 +20,13 @@
  * IN THE SOFTWARE.
  */
 
+/* eslint-disable */
+
 import { filter } from "fuzzaldrin-plus"
 import { from, fromEvent } from "rxjs"
-
-import { getElement, getElementOrThrow } from "browser"
 import { map, switchMap } from "rxjs/operators"
+
+import { getElement, getElementOrThrow } from "~/browser"
 
 import { renderIconSearch } from "./templates/icon"
 

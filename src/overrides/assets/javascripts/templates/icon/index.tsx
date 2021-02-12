@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+/* eslint-disable */
+
 import { wrap } from "fuzzaldrin-plus"
 import { h, round } from "utilities"
 

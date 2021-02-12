@@ -24,7 +24,10 @@ import { Observable, merge } from "rxjs"
 import { filter, sample, take } from "rxjs/operators"
 
 import { configuration } from "~/_"
-import { requestJSON, getElementOrThrow } from "~/browser"
+import {
+  getElementOrThrow,
+  requestJSON
+} from "~/browser"
 import {
   SearchIndex,
   isSearchQueryMessage,
