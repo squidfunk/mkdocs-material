@@ -5,14 +5,14 @@
   "assets/javascripts/vendor.js.map": "assets/javascripts/vendor.e32ed4d0.min.js.map",
   "assets/javascripts/worker/search.js": "assets/javascripts/worker/search.b9424174.min.js",
   "assets/javascripts/worker/search.js.map": "assets/javascripts/worker/search.b9424174.min.js.map",
-  "assets/stylesheets/main.css": "assets/stylesheets/main.a86e6725.min.css",
-  "assets/stylesheets/main.css.map": "assets/stylesheets/main.a86e6725.min.css.map",
+  "assets/stylesheets/main.css": "assets/stylesheets/main.c55d56a9.min.css",
+  "assets/stylesheets/main.css.map": "assets/stylesheets/main.c55d56a9.min.css.map",
   "assets/stylesheets/palette.css": "assets/stylesheets/palette.e70b70b6.min.css",
   "assets/stylesheets/palette.css.map": "assets/stylesheets/palette.e70b70b6.min.css.map",
   "overrides/assets/javascripts/bundle.js": "overrides/assets/javascripts/bundle.63116035.min.js",
   "overrides/assets/javascripts/bundle.js.map": "overrides/assets/javascripts/bundle.63116035.min.js.map",
   "overrides/assets/javascripts/vendor.js": "overrides/assets/javascripts/vendor.1aa446d9.min.js",
   "overrides/assets/javascripts/vendor.js.map": "overrides/assets/javascripts/vendor.1aa446d9.min.js.map",
-  "overrides/assets/stylesheets/main.css": "overrides/assets/stylesheets/main.8e98f424.min.css",
-  "overrides/assets/stylesheets/main.css.map": "overrides/assets/stylesheets/main.8e98f424.min.css.map"
+  "overrides/assets/stylesheets/main.css": "overrides/assets/stylesheets/main.d67efea2.min.css",
+  "overrides/assets/stylesheets/main.css.map": "overrides/assets/stylesheets/main.d67efea2.min.css.map"
 }

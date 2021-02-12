@@ -79,4 +79,23 @@
     mask-size: contain;
     content: "";
   }
+
+  // Inline copy to clipboard
+  &--inline {
+    cursor: pointer;
+
+    // Code blocks
+    code {
+      transition:
+        color            250ms,
+        background-color 250ms;
+    }
+
+    // Code block on focus/hover
+    &:focus code,
+    &:hover code {
+      color: var(--md-accent-fg-color);
+      background-color: var(--md-accent-fg-color--transparent);
+    }
+  }
 }

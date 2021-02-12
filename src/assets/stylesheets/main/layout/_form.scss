@@ -55,4 +55,25 @@
       border-color: var(--md-accent-fg-color);
     }
   }
+
+  // Input
+  .md-input {
+    width: 100%;
+    height: px2rem(36px);
+    padding: 0 px2rem(12px);
+    font-size: px2rem(16px);
+    border-radius: px2rem(2px);
+    box-shadow:
+      0 px2rem(4px)   px2rem(10px) hsla(0, 0%, 0%, 0.1),
+      0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+    transition: box-shadow 250ms;
+
+    // Input on focus/hover
+    &:focus,
+    &:hover {
+      box-shadow:
+        0 px2rem(8px)   px2rem(20px) hsla(0, 0%, 0%, 0.15),
+        0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.15);
+    }
+  }
 }
