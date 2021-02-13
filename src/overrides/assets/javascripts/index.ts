@@ -25,13 +25,13 @@ import { filter } from "fuzzaldrin-plus"
 import { from, fromEvent } from "rxjs"
 import { map, switchMap } from "rxjs/operators"
 
+import { configuration } from "~/_"
 import { getElement, getElementOrThrow } from "~/browser"
 
 import { renderIconSearch } from "./templates/icon"
 
 // Obtain configuration
-const el = getElementOrThrow("#__config")
-const config = JSON.parse(el.textContent!)
+const config = configuration()
 
 // Now, load icons.json
 const icons$ =

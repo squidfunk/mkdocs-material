@@ -31,8 +31,11 @@ import { getElementOrThrow, getLocation } from "~/browser"
  */
 export type Flag =
   | "header.autohide"                  /* Hide header */
-  | "navigation.tabs"                  /* Tabs navigation */
+  | "navigation.expand"                /* Automatic expansion */
   | "navigation.instant"               /* Instant loading */
+  | "navigation.sections"              /* Sections navigation */
+  | "navigation.tabs"                  /* Tabs navigation */
+  | "toc.integrate"                    /* Integrated table of contents */
 
 /* ------------------------------------------------------------------------- */
 

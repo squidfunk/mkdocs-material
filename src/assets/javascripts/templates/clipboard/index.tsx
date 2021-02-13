@@ -34,7 +34,7 @@ import { h } from "~/utilities"
  *
  * @returns Element
  */
-export function renderClipboardButton(id: string) {
+export function renderClipboardButton(id: string): HTMLElement {
   return (
     <button
       class="md-clipboard md-icon"

@@ -27,7 +27,7 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Button
+  // Form button
   .md-button {
     display: inline-block;
     padding: px2em(10px) px2em(32px);
@@ -56,9 +56,8 @@
     }
   }
 
-  // Input
+  // Form input
   .md-input {
-    width: 100%;
     height: px2rem(36px);
     padding: 0 px2rem(12px);
     font-size: px2rem(16px);
@@ -74,6 +73,11 @@
       box-shadow:
         0 px2rem(8px)   px2rem(20px) hsla(0, 0%, 0%, 0.15),
         0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.15);
+    }
+
+    // Stretch to full width
+    &--stretch {
+      width: 100%;
     }
   }
 }

@@ -80,11 +80,11 @@
     content: "";
   }
 
-  // Inline copy to clipboard
+  // Inline button
   &--inline {
     cursor: pointer;
 
-    // Code blocks
+    // Code block
     code {
       transition:
         color            250ms,

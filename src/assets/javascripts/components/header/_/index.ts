@@ -34,12 +34,15 @@ import {
   combineLatestWith,
   distinctUntilChanged,
   distinctUntilKeyChanged,
+  endWith,
   filter,
+  finalize,
   map,
   observeOn,
   shareReplay,
   startWith,
-  switchMap
+  switchMap,
+  tap
 } from "rxjs/operators"
 
 import { feature } from "~/_"
@@ -118,7 +121,7 @@ function isHidden({ viewport$ }: WatchOptions): Observable<boolean> {
     .pipe(
       filter(([{ offset }, [, y]]) => Math.abs(y - offset.y) > 100),
       map(([, [direction]]) => direction),
-      distinctUntilChanged(),
+      distinctUntilChanged()
     )
 
   /* Compute threshold for autohiding */
@@ -127,7 +130,7 @@ function isHidden({ viewport$ }: WatchOptions): Observable<boolean> {
     .pipe(
       map(([{ offset }, search]) => offset.y > 400 && !search),
       distinctUntilChanged(),
-      switchMap(active => active ? hidden$ : NEVER),
+      switchMap(active => active ? hidden$ : of(false)),
       startWith(false)
     )
 }
@@ -173,10 +176,8 @@ export function watchHeader(
 /**
  * Mount header
  *
- * The header must be connected to the main area observable outside of the
- * operator function, as the header will persist in-between document switches
- * while the main area is replaced. However, the header observable must be
- * passed to this function, so we connect both via a long-living subject.
+ * This function manages the different states of the header, i.e. whether it's
+ * hidden or rendered with a shadow. This depends heavily on the main area.
  *
  * @param el - Header element
  * @param options - Options

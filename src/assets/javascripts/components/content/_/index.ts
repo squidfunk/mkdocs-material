@@ -61,6 +61,9 @@ interface MountOptions {
 /**
  * Mount content
  *
+ * This function mounts all components that are found in the content of the
+ * actual article, including code blocks, data tables and details.
+ *
  * @param el - Content element
  * @param options - Options
  *

@@ -20,7 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, Subject, animationFrameScheduler } from "rxjs"
+import {
+  NEVER,
+  Observable,
+  Subject,
+  animationFrameScheduler
+} from "rxjs"
 import {
   distinctUntilKeyChanged,
   finalize,
@@ -103,6 +108,9 @@ export function watchHeaderTitle(
 
 /**
  * Mount header title
+ *
+ * This function swaps the header title from the site title to the title of the
+ * current page when the user scrolls past the first headline.
  *
  * @param el - Header title element
  * @param options - Options

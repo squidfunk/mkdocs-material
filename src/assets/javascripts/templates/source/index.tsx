@@ -34,7 +34,7 @@ import { h } from "~/utilities"
  *
  * @returns Element
  */
-export function renderSourceFacts(facts: SourceFacts) {
+export function renderSourceFacts(facts: SourceFacts): HTMLElement {
   return (
     <ul class="md-source__facts">
       {facts.map(fact => (

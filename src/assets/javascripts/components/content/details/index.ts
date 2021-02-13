@@ -88,8 +88,8 @@ export function watchDetails(
 /**
  * Mount details
  *
- * This function ensures that `details` tags are opened prior to printing, so
- * the whole content of the page is included and on anchor jumps.
+ * This function ensures that `details` tags are opened on anchor jumps and
+ * prior to printing, so the whole content of the page is visible.
  *
  * @param el - Details element
  * @param options - Options

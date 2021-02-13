@@ -47,7 +47,7 @@ const enum Flag {
 /**
  * Render a search document
  *
- * @param section - Search document
+ * @param document - Search document
  * @param flag - Render flags
  *
  * @returns Element
@@ -106,8 +106,8 @@ function renderSearchDocument(
  * @returns Element
  */
 export function renderSearchResult(
-  result: SearchResult, threshold: number = Infinity
-) {
+  result: SearchResult, threshold = Infinity
+): HTMLElement {
   const docs = [...result]
 
   /* Find and extract parent article */

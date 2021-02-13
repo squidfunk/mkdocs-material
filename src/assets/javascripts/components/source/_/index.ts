@@ -64,6 +64,9 @@ let fetch$: Observable<Source>
 /**
  * Watch repository information
  *
+ * This function will try to read the repository facts from session storage,
+ * and if unsuccessful, fetch them from the underlying provider.
+ *
  * @param el - Repository information element
  *
  * @returns Repository information observable

@@ -51,7 +51,6 @@ import {
   ViewportOffset,
   createElement,
   getElement,
-  getElementOrThrow,
   getElements,
   replaceElement,
   request,
@@ -60,6 +59,7 @@ import {
   setLocationHash,
   setViewportOffset
 } from "~/browser"
+import { getComponentElement } from "~/components"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -261,14 +261,12 @@ export function setupInstantLoading(
           setViewportOffset(offset || { y: 0 })
       })
 
-  /* Replace components */
+  /* Replace meta tags and components */
   document$
     .pipe(
       skip(1)
     )
       .subscribe(replacement => {
-
-        /* Replace meta tags and components */
         for (const selector of [
 
           /* Meta tags */
@@ -298,7 +296,7 @@ export function setupInstantLoading(
   document$
     .pipe(
       skip(1),
-      map(() => getElementOrThrow("[data-md-component=container]")),
+      map(() => getComponentElement("container")),
       switchMap(el => of(...getElements("script", el))),
       concatMap(el => {
         const script = createElement("script")

@@ -34,8 +34,6 @@ import { feature } from "./_"
 import {
   at,
   getElement,
-  getElementOrThrow,
-  getElements,
   setToggle,
   watchDocument,
   watchKeyboard,
@@ -46,6 +44,8 @@ import {
   watchViewport
 } from "./browser"
 import {
+  getComponentElement,
+  getComponentElements,
   mountContent,
   mountDialog,
   mountHeader,
@@ -129,16 +129,11 @@ keyboard$
 patchIndeterminate({ document$ })
 patchScrollfix({ document$ })
 
-/* Set up header observable */
-const header$ = watchHeader(
-  getElementOrThrow("[data-md-component=header]"),
-  { viewport$ }
-)
-
-/* Set up main area observable */
+/* Set up header and main area observable */
+const header$ = watchHeader(getComponentElement("header"), { viewport$ })
 const main$ = document$
   .pipe(
-    map(() => getElementOrThrow("[data-md-component=main]")),
+    map(() => getComponentElement("main")),
     switchMap(el => watchMain(el, { viewport$, header$ })),
     shareReplay(1)
   )
@@ -147,23 +142,23 @@ const main$ = document$
 const control$ = merge(
 
   /* Dialog */
-  ...getElements("[data-md-component=dialog]")
+  ...getComponentElements("dialog")
     .map(child => mountDialog(child, { alert$ })),
 
     /* Header */
-  ...getElements("[data-md-component=header]")
+  ...getComponentElements("header")
     .map(child => mountHeader(child, { viewport$, header$, main$ })),
 
   /* Search */
-  ...getElements("[data-md-component=search]")
+  ...getComponentElements("search")
     .map(child => mountSearch(child, { keyboard$ })),
 
   /* Repository information */
-  ...getElements("[data-md-component=source]")
+  ...getComponentElements("source")
     .map(child => mountSource(child as HTMLAnchorElement)),
 
   /* Navigation tabs */
-  ...getElements("[data-md-component=tabs]")
+  ...getComponentElements("tabs")
     .map(child => mountTabs(child, { viewport$, header$ })),
 )
 
@@ -171,22 +166,22 @@ const control$ = merge(
 const content$ = defer(() => merge(
 
   /* Content */
-  ...getElements("[data-md-component=content]")
+  ...getComponentElements("content")
     .map(child => mountContent(child, { target$, viewport$, print$ })),
 
   /* Header title */
-  ...getElements("[data-md-component=header-title]")
+  ...getComponentElements("header-title")
     .map(child => mountHeaderTitle(child, { viewport$, header$ })),
 
   /* Sidebar */
-  ...getElements("[data-md-component=sidebar]")
+  ...getComponentElements("sidebar")
     .map(child => child.getAttribute("data-md-type") === "navigation"
       ? at(screen$, () => mountSidebar(child, { viewport$, header$, main$ }))
       : at(tablet$, () => mountSidebar(child, { viewport$, header$, main$ }))
     ),
 
   /* Table of contents */
-  ...getElements("[data-md-component=toc]")
+  ...getComponentElements("toc")
     .map(child => mountTableOfContents(child, { viewport$, header$ })),
 ))
 
@@ -194,7 +189,8 @@ const content$ = defer(() => merge(
 const component$ = document$
   .pipe(
     switchMap(() => content$),
-    mergeWith(control$)
+    mergeWith(control$),
+    shareReplay(1)
   )
 
 /* Subscribe to all components */

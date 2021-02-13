@@ -111,8 +111,8 @@ export function watchCodeBlock(
 /**
  * Mount code block
  *
- * This function ensures that overflowing code blocks are focusable by keyboard,
- * so they can be scrolled without a mouse to improve on accessibility.
+ * This function ensures that an overflowing code block is focusable through
+ * keyboard, so it can be scrolled without a mouse to improve on accessibility.
  *
  * @param el - Code block element
  * @param options - Options

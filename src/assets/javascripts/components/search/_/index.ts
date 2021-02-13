@@ -27,7 +27,6 @@ import { configuration } from "~/_"
 import {
   Keyboard,
   getActiveElement,
-  getElementOrThrow,
   getElements,
   requestJSON,
   setElementFocus,
@@ -41,7 +40,7 @@ import {
   setupSearchWorker
 } from "~/integrations"
 
-import { Component } from "../../_"
+import { Component, getComponentElement } from "../../_"
 import { SearchQuery, mountSearchQuery } from "../query"
 import { SearchResult, mountSearchResult } from "../result"
 
@@ -89,6 +88,9 @@ function fetchSearchIndex(url: string) {
 /**
  * Mount search
  *
+ * This function sets up the search functionality, including the underlying
+ * web worker and all keyboard bindings.
+ *
  * @param el - Search element
  * @param options - Options
  *
@@ -103,8 +105,8 @@ export function mountSearch(
   ))
 
   /* Retrieve elements */
-  const query  = getElementOrThrow("[data-md-component=search-query]", el)
-  const result = getElementOrThrow("[data-md-component=search-result]", el)
+  const query  = getComponentElement("search-query", el)
+  const result = getComponentElement("search-result", el)
 
   /* Re-emit query when search is ready */
   const { tx$, rx$ } = worker

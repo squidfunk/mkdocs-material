@@ -67,19 +67,19 @@ export function watchPrint(): Observable<void> {
 /* ------------------------------------------------------------------------- */
 
 /**
- * Toggle an observable with another one
+ * Toggle an observable with a media observable
  *
  * @template T - Data type
  *
- * @param toggle$ - Toggle observable
+ * @param query$ - Media observable
  * @param factory - Observable factory
  *
  * @returns Toggled observable
  */
 export function at<T>(
-  toggle$: Observable<boolean>, factory: () => Observable<T>
+  query$: Observable<boolean>, factory: () => Observable<T>
 ): Observable<T> {
-  return toggle$
+  return query$
     .pipe(
       switchMap(active => active ? factory() : NEVER)
     )

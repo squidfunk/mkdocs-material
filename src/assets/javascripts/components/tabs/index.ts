@@ -95,6 +95,9 @@ export function watchTabs(
 /**
  * Mount navigation tabs
  *
+ * This function hides the navigation tabs when scrolling past the threshold
+ * and makes them reappear in a nice CSS animation when scrolling back up.
+ *
  * @param el - Navigation tabs element
  * @param options - Options
  *

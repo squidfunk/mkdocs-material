@@ -20,5 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./jsx"
+export * from "./h"
 export * from "./string"
