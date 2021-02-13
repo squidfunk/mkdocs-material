@@ -44,11 +44,12 @@
         }
       })
     }
-  })
 
-  /* Send page view on document switch (instant loading, custom event) */
-  document.addEventListener("DOMContentSwitch", function() {
-    ga("send", "pageview", document.location.pathname)
+    /* Send page view on location change */
+    if (typeof location$ !== "undefined")
+      location$.subscribe(function(url) {
+        ga("send", "pageview", url.pathname)
+      })
   })
 </script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
