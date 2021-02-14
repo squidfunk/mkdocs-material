@@ -54,7 +54,7 @@ const enum Flag {
  */
 function renderSearchDocument(
   document: SearchDocument & SearchMetadata, flag: Flag
-) {
+): HTMLElement {
   const parent = flag & Flag.PARENT
   const teaser = flag & Flag.TEASER
 
@@ -101,13 +101,13 @@ function renderSearchDocument(
  * Render a search result
  *
  * @param result - Search result
- * @param threshold - Score threshold
  *
  * @returns Element
  */
 export function renderSearchResult(
-  result: SearchResult, threshold = Infinity
+  result: SearchResult
 ): HTMLElement {
+  const threshold = result[0].score
   const docs = [...result]
 
   /* Find and extract parent article */

@@ -120,7 +120,7 @@ export function getElementContentSize(el: HTMLElement): ElementSize {
 /**
  * Watch element size
  *
- * This function returns an observable that will subscribe to a single internal
+ * This function returns an observable that subscribes to a single internal
  * instance of `ResizeObserver` upon subscription, and emit resize events until
  * termination. Note that this function should not be called with the same
  * element twice, as the first unsubscription will terminate observation.

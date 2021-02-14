@@ -20,50 +20,60 @@
  * IN THE SOFTWARE.
  */
 
-/* eslint-disable */
+import { Observable, combineLatest, fromEvent, merge } from "rxjs"
+import {
+  delay,
+  distinctUntilChanged,
+  map,
+  startWith
+} from "rxjs/operators"
 
-import { wrap } from "fuzzaldrin-plus"
-import { h, round } from "utilities"
+import { watchElementFocus } from "~/browser"
+
+import { Component } from "../../_"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Icon search query
+ */
+export interface IconSearchQuery {
+  value: string                        /* Query value */
+  focus: boolean                       /* Query focus */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
-function transform(value: string, query: string) {
-  return `:${wrap(value.replace(/\.svg$/, "").replace(/\//g, "-"), query, {
-    wrap: {
-      tagOpen: "<b>",
-      tagClose: "</b>"
-    }
-  })}:`
-}
+/**
+ * Mount icon search query
+ *
+ * @param el - Icon search query element
+ *
+ * @returns Icon search query component observable
+ */
+export function mountIconSearchQuery(
+  el: HTMLInputElement
+): Observable<Component<IconSearchQuery, HTMLInputElement>> {
 
-const base = "https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/"
-
-export function renderIconSearch(
-  results: string[], query: string
-) {
-  if (!query.length)
-    return <div class=""></div>
-  return (
-    <div class="">
-      <span>{round(results.length)} results</span>
-      <ul class="tx-icon-search__list">
-        {results.slice(0, 10).map(result => (
-          <li class="tx-icon-search__item">
-            <span class="twemoji">
-              <img src={base + result} style="width: 18px; height: 18px" />
-            </span> – <button
-              class="md-clipboard--inline"
-              data-clipboard-text={
-                ":" + result.replace(/\.svg$/, "").replace(/\//g, "-") + ":"
-              }
-            >
-              <code>{transform(result, query)}</code>
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+  /* Intercept focus and input events */
+  const focus$ = watchElementFocus(el)
+  const value$ = merge(
+    fromEvent(el, "keyup"),
+    fromEvent(el, "focus").pipe(delay(1))
   )
+    .pipe(
+      map(() => el.value),
+      startWith(el.value),
+      distinctUntilChanged()
+    )
+
+  /* Combine into single observable */
+  return combineLatest([value$, focus$])
+    .pipe(
+      map(([value, focus]) => ({ ref: el, value, focus })),
+    )
 }

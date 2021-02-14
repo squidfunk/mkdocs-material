@@ -20,31 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndex, SearchTransformFn } from "~/integrations";
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Global search configuration
- */
-export interface GlobalSearchConfig {
-  transform?: SearchTransformFn        /* Transformation function */
-  index?: Promise<SearchIndex>         /* Alternate index */
-}
-
-/* ------------------------------------------------------------------------- */
-
-declare global {
-
-  /**
-   * GLobal search configuration
-   */
-  var __search: GlobalSearchConfig | undefined
-
-  /**
-   * Google Analytics
-   */
-  function ga(...args: string[]): void
-}
+export * from "./_"
+export * from "./icon-search"

@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, merge } from "rxjs"
+import { Observable, ObservableInput, merge } from "rxjs"
 import { filter, sample, take } from "rxjs/operators"
 
 import { configuration } from "~/_"
@@ -75,9 +75,9 @@ interface MountOptions {
  *
  * @param url - Search index URL
  *
- * @returns Promise resolving with search index
+ * @returns Promise or observable
  */
-function fetchSearchIndex(url: string) {
+function fetchSearchIndex(url: string): ObservableInput<SearchIndex> {
   return __search?.index || requestJSON<SearchIndex>(url)
 }
 
@@ -104,7 +104,7 @@ export function mountSearch(
     `${config.base}/search/search_index.json`
   ))
 
-  /* Retrieve elements */
+  /* Retrieve nested components */
   const query  = getComponentElement("search-query", el)
   const result = getComponentElement("search-result", el)
 

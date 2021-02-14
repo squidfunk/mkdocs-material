@@ -20,42 +20,30 @@
  * IN THE SOFTWARE.
  */
 
-/* eslint-disable */
-import { filter } from "fuzzaldrin-plus"
-import { from, fromEvent } from "rxjs"
-import { map, switchMap } from "rxjs/operators"
+import { Observable, fromEvent, merge } from "rxjs"
+import { switchMap } from "rxjs/operators"
 
-import { configuration } from "~/_"
-import { getElement, getElementOrThrow } from "~/browser"
+import {
+  getComponentElements,
+  mountIconSearch
+} from "./components"
 
-import { renderIconSearch } from "./templates/icon"
+/* ----------------------------------------------------------------------------
+ * Application
+ * ------------------------------------------------------------------------- */
 
-// Obtain configuration
-const config = configuration()
+/* Set up extra component observables */
+declare const document$: Observable<Document>
+document$
+  .pipe(
+    switchMap(() => merge(
 
-// Now, load icons.json
-const icons$ =
-  from(fetch(`${config.base}/overrides/assets/javascripts/icons.json`)
-    .then(res => res.json())
+      /* Icon search */
+      ...getComponentElements("icon-search")
+        .map(child => mountIconSearch(child))
+    ))
   )
-
-// Render icon search, if present
-const search = getElement<HTMLInputElement>("#icon-search")
-if (search) {
-  icons$
-    .pipe(
-      switchMap(icons => fromEvent<InputEvent>(search, "keyup")
-        .pipe(
-          map(() => filter(icons, search.value))
-        )
-      )
-    )
-      .subscribe((result: any[]) => {
-        const list = getElementOrThrow(".tx-icon-result")
-        list.innerHTML = ""
-        list.appendChild(renderIconSearch(result, search.value))
-      })
-}
+    .subscribe()
 
 // Track click events
 fromEvent(document.body, "click")
@@ -63,8 +51,7 @@ fromEvent(document.body, "click")
     if (ev.target instanceof HTMLElement) {
       const el2 = ev.target.closest("a[href^=http]")
       if (el2 instanceof HTMLLinkElement)
-        // @ts-ignore
-        ga("send", "event", "outbound", "click", el.href)
+        ga("send", "event", "outbound", "click", el2.href)
     }
   })
 

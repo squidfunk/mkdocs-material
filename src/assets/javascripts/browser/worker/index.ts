@@ -73,7 +73,7 @@ interface WatchOptions<T extends WorkerMessage> {
 /**
  * Watch a web worker
  *
- * This function returns an observable that will send all values emitted by the
+ * This function returns an observable that sends all values emitted by the
  * message observable to the web worker. Web worker communication is expected
  * to be bidirectional (request-response) and synchronous. Messages that are
  * emitted during a pending request are throttled, the last one is emitted.

@@ -20,72 +20,64 @@
  * IN THE SOFTWARE.
  */
 
-import { translation } from "~/_"
-import { round } from "~/utilities"
+import { Observable, merge } from "rxjs"
+
+import { configuration } from "~/_"
+import { requestJSON } from "~/browser"
+
+import { Component, getComponentElement } from "../../_"
+import {
+  IconSearchQuery,
+  mountIconSearchQuery
+} from "../query"
+import {
+  IconSearchResult,
+  mountIconSearchResult
+} from "../result"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Icon search index
+ */
+export type IconSearchIndex = string[]
+
+/**
+ * Icon search
+ */
+export type IconSearch =
+  | IconSearchQuery
+  | IconSearchResult
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Set number of search results
+ * Mount icon search
  *
- * @param el - Search result metadata element
- * @param value - Number of results
- */
-export function setSearchResultMeta(
-  el: HTMLElement, value: number
-): void {
-  switch (value) {
-
-    /* No results */
-    case 0:
-      el.textContent = translation("search.result.none")
-      break
-
-    /* One result */
-    case 1:
-      el.textContent = translation("search.result.one")
-      break
-
-    /* Multiple result */
-    default:
-      el.textContent = translation("search.result.other", round(value))
-  }
-}
-
-/**
- * Reset number of search results
+ * @param el - Icon search element
  *
- * @param el - Search result metadata element
+ * @returns Icon search component observable
  */
-export function resetSearchResultMeta(
+export function mountIconSearch(
   el: HTMLElement
-): void {
-  el.textContent = translation("search.result.placeholder")
-}
+): Observable<Component<IconSearch>> {
+  const config = configuration()
+  const index$ = requestJSON<IconSearchIndex>(
+    `${config.base}/overrides/assets/javascripts/icons.json`
+  )
 
-/* ------------------------------------------------------------------------- */
+  /* Retrieve nested components */
+  const query  = getComponentElement("icon-search-query", el)
+  const result = getComponentElement("icon-search-result", el)
 
-/**
- * Add an element to the search result list
- *
- * @param el - Search result list element
- * @param child - Search result element
- */
-export function addToSearchResultList(
-  el: HTMLElement, child: Element
-): void {
-  el.appendChild(child)
-}
-
-/**
- * Reset search result list
- *
- * @param el - Search result list element
- */
-export function resetSearchResultList(
-  el: HTMLElement
-): void {
-  el.innerHTML = ""
+  /* Create and return component */
+  const query$ = mountIconSearchQuery(query as HTMLInputElement)
+  return merge(
+    query$,
+    mountIconSearchResult(result, { index$, query$ })
+  )
 }

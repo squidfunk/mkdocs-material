@@ -34,6 +34,7 @@ manifest.json
 site
 
 # Configuration
+typings
 webpack.config.ts
 
 # Distribution files

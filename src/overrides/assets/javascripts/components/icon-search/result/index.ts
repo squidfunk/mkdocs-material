@@ -20,10 +20,12 @@
  * IN THE SOFTWARE.
  */
 
+import { filter as search } from "fuzzaldrin-plus"
 import {
   Observable,
   Subject,
   animationFrameScheduler,
+  combineLatest,
   merge,
   of
 } from "rxjs"
@@ -34,7 +36,6 @@ import {
   finalize,
   map,
   observeOn,
-  startWith,
   switchMap,
   tap,
   withLatestFrom,
@@ -51,25 +52,21 @@ import {
   getElementOrThrow,
   watchElementThreshold
 } from "~/browser"
-import {
-  SearchResult as SearchResultData,
-  SearchWorker,
-  isSearchResultMessage
-} from "~/integrations"
-import { renderSearchResult } from "~/templates"
 
+import { renderIconSearchResult } from "../../../templates"
 import { Component } from "../../_"
-import { SearchQuery } from "../query"
+import { IconSearchIndex } from "../_"
+import { IconSearchQuery } from "../query"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Search result
+ * Icon search result
  */
-export interface SearchResult {
-  data: SearchResultData[]             /* Search result data */
+export interface IconSearchResult {
+  data: string[]                       /* Search result data */
 }
 
 /* ----------------------------------------------------------------------------
@@ -80,7 +77,8 @@ export interface SearchResult {
  * Mount options
  */
 interface MountOptions {
-  query$: Observable<SearchQuery>      /* Search query observable */
+  index$: Observable<IconSearchIndex>  /* Search index observable */
+  query$: Observable<IconSearchQuery>  /* Search query observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -88,22 +86,18 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount search result list
+ * Mount icon search result
  *
- * This function will perform a lazy rendering of the search results, depending
- * on the vertical offset of the search result container.
- *
- * @param el - Search result list element
- * @param worker - Search worker
+ * @param el - Icon search result element
  * @param options - Options
  *
- * @returns Search result list component observable
+ * @returns Icon search result component observable
  */
-export function mountSearchResult(
-  el: HTMLElement, { rx$ }: SearchWorker, { query$ }: MountOptions
-): Observable<Component<SearchResult>> {
-  const internal$ = new Subject<SearchResult>()
-  const boundary$ = watchElementThreshold(el.parentElement!)
+export function mountIconSearchResult(
+  el: HTMLElement, { index$, query$ }: MountOptions
+): Observable<Component<IconSearchResult, HTMLElement>> {
+  const internal$ = new Subject<IconSearchResult>()
+  const boundary$ = watchElementThreshold(el)
     .pipe(
       filter(Boolean)
     )
@@ -122,7 +116,7 @@ export function mountSearchResult(
           resetSearchResultMeta(meta)
       })
 
-  /* Update search result list */
+  /* Update icon search result list */
   const list = getElementOrThrow(":scope > :last-child", el)
   internal$
     .pipe(
@@ -132,27 +126,24 @@ export function mountSearchResult(
         of(...data.slice(0, 10)),
         of(...data.slice(10))
           .pipe(
-            bufferCount(4),
+            bufferCount(10),
             zipWith(boundary$),
             switchMap(([chunk]) => of(...chunk))
           )
-      ))
+      )),
+      withLatestFrom(query$)
     )
-      .subscribe(result => {
-        addToSearchResultList(list, renderSearchResult(result))
+      .subscribe(([result, { value }]) => {
+        addToSearchResultList(list, renderIconSearchResult(result, value))
       })
 
-  /* Filter search result list */
-  const result$ = rx$
+  /* Crate and return component */
+  return combineLatest([
+    index$,
+    query$.pipe(distinctUntilKeyChanged("value"))
+  ])
     .pipe(
-      filter(isSearchResultMessage),
-      map(({ data }) => ({ data })),
-      startWith({ data: [] })
-    )
-
-  /* Create and return component */
-  return result$
-    .pipe(
+      map(([index, { value }]) => ({ data: search(index, value) })),
       tap(internal$),
       finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))

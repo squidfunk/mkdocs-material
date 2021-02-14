@@ -11,15 +11,22 @@ and used in `mkdocs.yml`, documents and templates.
 
 ## Search
 
-<input id="icon-search" class="md-input" placeholder="Search the icon database" />
-
-<div class="tx-icon-result" markdown="1">
-  <small>
-    :octicons-light-bulb-16:
-    **Tip:** Enter some keywords to find the perfect icon and click on the
-    shortcode to copy it to your clipboard.
-  </small>
+<div class="mdx-icon-search" data-mdx-component="icon-search">
+  <input
+    class="md-input md-input--stretch mdx-icon-search__input"
+    placeholder="Search the icon database"
+    data-mdx-component="icon-search-query"
+  />
+  <div class="mdx-icon-search-result" data-mdx-component="icon-search-result">
+    <div class="mdx-icon-search-result__meta"></div>
+    <ol class="mdx-icon-search-result__list"></ol>
+  </div>
 </div>
+<small>
+  :octicons-light-bulb-16:
+  **Tip:** Enter some keywords to find the perfect icon and click on the
+  shortcode to copy it to your clipboard.
+</small>
 
 ## Configuration
 

@@ -58,6 +58,7 @@ mkdocs_material.egg-info
 .DS_Store
 
 # Temporary files
+TODO
 tmp
 
 # IDEs

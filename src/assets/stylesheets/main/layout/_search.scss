@@ -230,9 +230,11 @@
     padding: 0 px2rem(44px) 0 px2rem(72px);
     text-overflow: ellipsis;
     background-color: var(--md-default-bg-color);
+    box-shadow: 0 0 px2rem(12px) transparent;
     transition:
       color            250ms,
-      background-color 250ms;
+      background-color 250ms,
+      box-shadow       250ms;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -253,6 +255,11 @@
     // Remove the "x" rendered by Internet Explorer
     &::-ms-clear {
       display: none;
+    }
+
+    // Adjust appearance when search is active
+    [data-md-toggle="search"]:checked ~ .md-header & {
+      box-shadow: 0 0 px2rem(12px) var(--md-default-fg-color--lightest);
     }
 
     // [tablet portrait -]: Search modal
@@ -448,7 +455,9 @@
     background-color: var(--md-default-bg-color);
     // Hack: promote to own layer to reduce jitter
     backface-visibility: hidden;
-    scroll-snap-type: y mandatory;
+    // Hack: Chrome 88+ has weird overscroll behavior. Overall, scroll snapping
+    // seems to be something that is not ready for prime time on some browsers.
+    // scroll-snap-type: y mandatory;
     touch-action: pan-y;
 
     // Mitigiate excessive repaints on non-retina devices

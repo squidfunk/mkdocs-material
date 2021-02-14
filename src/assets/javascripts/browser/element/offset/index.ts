@@ -21,7 +21,9 @@
  */
 
 import { Observable, fromEvent, merge } from "rxjs"
-import { map, startWith } from "rxjs/operators"
+import { distinctUntilChanged, map, startWith } from "rxjs/operators"
+
+import { getElementContentSize, getElementSize } from "../size"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -72,5 +74,32 @@ export function watchElementOffset(
     .pipe(
       map(() => getElementOffset(el)),
       startWith(getElementOffset(el))
+    )
+}
+
+/**
+ * Watch element threshold
+ *
+ * This function returns an observable which emits whether the bottom scroll
+ * offset of an elements is within a certain threshold.
+ *
+ * @param el - Element
+ * @param threshold - Threshold
+ *
+ * @returns Element threshold observable
+ */
+export function watchElementThreshold(
+  el: HTMLElement, threshold = 16
+): Observable<boolean> {
+  return watchElementOffset(el)
+    .pipe(
+      map(({ y }) => {
+        const visible = getElementSize(el)
+        const content = getElementContentSize(el)
+        return y >= (
+          content.height - visible.height - threshold
+        )
+      }),
+      distinctUntilChanged()
     )
 }
