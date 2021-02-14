@@ -61,8 +61,9 @@ The following languages are supported:
 - `ro` – Romanian
 - `ru` – Russian
 - `sh` – Serbo-Croatian
-- `si` – Slovenian
+- `si` – Sinhalese
 - `sk` – Slovak
+- `sl` – Slovenian
 - `sr` – Serbian
 - `sv` – Swedish
 - `th` – Thai

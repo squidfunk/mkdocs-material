@@ -21,7 +21,6 @@
  */
 
 import {
-  NEVER,
   Observable,
   Subject,
   animationFrameScheduler,
@@ -34,15 +33,12 @@ import {
   combineLatestWith,
   distinctUntilChanged,
   distinctUntilKeyChanged,
-  endWith,
   filter,
-  finalize,
   map,
   observeOn,
   shareReplay,
   startWith,
-  switchMap,
-  tap
+  switchMap
 } from "rxjs/operators"
 
 import { feature } from "~/_"
