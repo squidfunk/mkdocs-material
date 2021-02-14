@@ -372,7 +372,7 @@ export default (_env: never, args: Configuration): Configuration[] => {
         splitChunks: {
           cacheGroups: {
             vendor: {
-              test: /[\\/]node_modules[\\/]/,
+              test: /\/node_modules\//,
               name: "assets/javascripts/vendor",
               chunks: "all"
             }
@@ -417,20 +417,21 @@ export default (_env: never, args: Configuration): Configuration[] => {
         /* Stylesheets */
         new MiniCssExtractPlugin({
           filename: `[name]${hash}.css`
-        }),
+        })
       ],
 
       /* Optimizations */
       optimization: {
-        splitChunks: {
-          cacheGroups: {
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: "overrides/assets/javascripts/vendor",
-              chunks: "all"
-            }
-          }
-        }
+        // minimize: false,
+        // splitChunks: {
+        //   cacheGroups: {
+        //     vendor: {
+        //       test: /\/node_modules\//,
+        //       name: "overrides/assets/javascripts/vendor",
+        //       chunks: "all"
+        //     }
+        //   }
+        // }
       }
     }
   ]
