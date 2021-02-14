@@ -22,8 +22,8 @@
 
 import { wrap } from "fuzzaldrin-plus"
 
-import { h } from "~/utilities"
 import { translation } from "~/_"
+import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
  * Data

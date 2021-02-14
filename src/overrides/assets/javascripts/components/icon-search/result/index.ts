@@ -137,7 +137,7 @@ export function mountIconSearchResult(
         addToSearchResultList(list, renderIconSearchResult(result, value))
       })
 
-  /* Crate and return component */
+  /* Create and return component */
   return combineLatest([
     index$,
     query$.pipe(distinctUntilKeyChanged("value"))
