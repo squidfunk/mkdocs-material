@@ -20,17 +20,21 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
+import { Observable, merge } from "rxjs"
 import { switchMap } from "rxjs/operators"
 
 import {
   getComponentElements,
   mountIconSearch
 } from "./components"
+import { setupAnalytics } from "./integrations"
 
 /* ----------------------------------------------------------------------------
  * Application
  * ------------------------------------------------------------------------- */
+
+/* Set up extra analytics events */
+setupAnalytics()
 
 /* Set up extra component observables */
 declare const document$: Observable<Document>
@@ -40,18 +44,7 @@ document$
 
       /* Icon search */
       ...getComponentElements("icon-search")
-        .map(child => mountIconSearch(child))
+        .map(el => mountIconSearch(el))
     ))
   )
     .subscribe()
-
-// Track click events
-fromEvent(document.body, "click")
-  .subscribe(ev => {
-    if (ev.target instanceof HTMLElement) {
-      const el2 = ev.target.closest("a[href^=http]")
-      if (el2 instanceof HTMLLinkElement)
-        ga("send", "event", "outbound", "click", el2.href)
-    }
-  })
-

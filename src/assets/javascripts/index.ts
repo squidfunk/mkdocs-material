@@ -143,23 +143,23 @@ const control$ = merge(
 
   /* Dialog */
   ...getComponentElements("dialog")
-    .map(child => mountDialog(child, { alert$ })),
+    .map(el => mountDialog(el, { alert$ })),
 
     /* Header */
   ...getComponentElements("header")
-    .map(child => mountHeader(child, { viewport$, header$, main$ })),
+    .map(el => mountHeader(el, { viewport$, header$, main$ })),
 
   /* Search */
   ...getComponentElements("search")
-    .map(child => mountSearch(child, { keyboard$ })),
+    .map(el => mountSearch(el, { keyboard$ })),
 
   /* Repository information */
   ...getComponentElements("source")
-    .map(child => mountSource(child as HTMLAnchorElement)),
+    .map(el => mountSource(el as HTMLAnchorElement)),
 
   /* Navigation tabs */
   ...getComponentElements("tabs")
-    .map(child => mountTabs(child, { viewport$, header$ })),
+    .map(el => mountTabs(el, { viewport$, header$ })),
 )
 
 /* Set up content component observables */
@@ -167,22 +167,22 @@ const content$ = defer(() => merge(
 
   /* Content */
   ...getComponentElements("content")
-    .map(child => mountContent(child, { target$, viewport$, print$ })),
+    .map(el => mountContent(el, { target$, viewport$, print$ })),
 
   /* Header title */
   ...getComponentElements("header-title")
-    .map(child => mountHeaderTitle(child, { viewport$, header$ })),
+    .map(el => mountHeaderTitle(el, { viewport$, header$ })),
 
   /* Sidebar */
   ...getComponentElements("sidebar")
-    .map(child => child.getAttribute("data-md-type") === "navigation"
-      ? at(screen$, () => mountSidebar(child, { viewport$, header$, main$ }))
-      : at(tablet$, () => mountSidebar(child, { viewport$, header$, main$ }))
+    .map(el => el.getAttribute("data-md-type") === "navigation"
+      ? at(screen$, () => mountSidebar(el, { viewport$, header$, main$ }))
+      : at(tablet$, () => mountSidebar(el, { viewport$, header$, main$ }))
     ),
 
   /* Table of contents */
   ...getComponentElements("toc")
-    .map(child => mountTableOfContents(child, { viewport$, header$ })),
+    .map(el => mountTableOfContents(el, { viewport$, header$ })),
 ))
 
 /* Set up component observables */
