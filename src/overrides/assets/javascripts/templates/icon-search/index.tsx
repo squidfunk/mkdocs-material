@@ -25,7 +25,17 @@ import { wrap } from "fuzzaldrin-plus"
 import { translation } from "~/_"
 import { h } from "~/utilities"
 
-import { Icon } from "../../components"
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Icon
+ */
+export interface Icon {
+  shortcode: string                    /* Icon shortcode */
+  url: string                          /* Icon URL */
+}
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -34,13 +44,13 @@ import { Icon } from "../../components"
 /**
  * Highlight an icon search result
  *
- * @param value - Icon search result
- * @param query - Icon search query
+ * @param icon - Icon
+ * @param query - Search query
  *
  * @returns Highlighted result
  */
-function highlight(value: string, query: string) {
-  return wrap(value, query, {
+function highlight(icon: Icon, query: string) {
+  return wrap(icon.shortcode, query, {
     wrap: {
       tagOpen: "<b>",
       tagClose: "</b>"
@@ -55,8 +65,8 @@ function highlight(value: string, query: string) {
 /**
  * Render an icon search result
  *
- * @param icon - Icon search result
- * @param query - Icon search query
+ * @param icon - Icon
+ * @param query - Search query
  *
  * @returns Element
  */
@@ -73,7 +83,7 @@ export function renderIconSearchResult(
         title={translation("clipboard.copy")}
         data-clipboard-text={`:${icon.shortcode}:`}
       >
-        <code>{`:${highlight(icon.shortcode, query)}:`}</code>
+        <code>{`:${highlight(icon, query)}:`}</code>
       </button>
     </li>
   )

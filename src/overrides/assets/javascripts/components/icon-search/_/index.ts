@@ -40,19 +40,9 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Icon
+ * Icon category
  */
-export interface Icon {
-  shortcode: string                    /* Icon shortcode */
-  url: string                          /* Icon URL */
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
- * Icon search database
- */
-export interface IconSearchDatabase {
+export interface IconCategory {
   base: string                         /* Category base URL */
   data: Record<string, string>         /* Category data */
 }
@@ -61,8 +51,8 @@ export interface IconSearchDatabase {
  * Icon search index
  */
 export interface IconSearchIndex {
-  icons: IconSearchDatabase            /* Icon database */
-  emojis: IconSearchDatabase           /* Emoji database */
+  icons: IconCategory                  /* Icons */
+  emojis: IconCategory                 /* Emojis */
 }
 
 /* ------------------------------------------------------------------------- */

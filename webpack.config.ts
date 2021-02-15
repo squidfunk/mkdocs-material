@@ -346,8 +346,11 @@ export default (_env: never, args: Configuration): Configuration[] => {
                 fs.writeFileSync(file, template, "utf8")
               }
 
+              /* Icon indexes */
+              const icons:  Record<string, string> = {}
+              const emojis: Record<string, string> = {}
+
               /* Build search index for bundled icons */
-              const icons: Record<string, string> = {}
               for (const file of await glob("**/*.svg", {
                 cwd: "material/.icons"
               })) {
@@ -356,7 +359,6 @@ export default (_env: never, args: Configuration): Configuration[] => {
               }
 
               /* Build search index for emojis (based on Twemoji) */
-              const emojis: Record<string, string> = {}
               const [database] = await glob("venv/**/twemoji_db.py")
               if (typeof database !== "undefined") {
                 const contents = fs.readFileSync(database, "utf8")
