@@ -5,10 +5,16 @@
 
         @keyframes logo {
           0%, 100% {
-            box-shadow: 0 0 0 10px #FFFFFF;
+            opacity: 0;
+            transform: scale(.9);
+          }
+          20%, 80% {
+            opacity: 1;
+            transform: scale(1.1);
           }
           50% {
-            box-shadow: 0 0 0 4px #CCCCCC;
+            opacity: 1;
+            transform: scale(1);
           }
         }
 
@@ -26,17 +32,24 @@
 				}
 
         .logo {
+          position: relative;
           width: 40%;
-          border-radius: 100%;
-          background-image: linear-gradient(#1A1A1A, #5E5E5E);
-          box-shadow: 0 0 0 4px transparent;
-          transition: box-shadow 1s;
         }
 
         .logo svg {
+          position: relative;
           display: block;
           margin: 20%;
           fill: white;
+        }
+
+        .backdrop {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          background-image: linear-gradient(#1A1A1A, #5E5E5E);
+          animation: logo infinite both 10s 1s ease-in-out;
         }
 
         h1 {
@@ -59,16 +72,26 @@
 			</style>
 			<div class="container">
         <div class="logo">
+          <div class="backdrop"></div>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
 
             <polygon>
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="4s" begin="1s"
+                dur="2s" begin="1s;a2.end+1s" id="a1"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   3.136 17.387, 3.136 60.319,  3.136 60.319, 3.136 60.319;
                   3.136 17.387, 3.136 60.319, 46.068 81.786, 3.136 17.387
+                "
+              />
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="a1.end+5s" id="a2"
+                keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                values="
+                  3.136 17.387, 3.136 60.319, 46.068 81.786, 3.136 17.387;
+                  3.136 17.387, 3.136 60.319,  3.136 60.319, 3.136 60.319
                 "
               />
             </polygon>
@@ -76,11 +99,20 @@
             <polygon style="fill-opacity: 0.5;">
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="4s" begin="1s"
+                dur="2s" begin="1s;b2.end+1s" id="b1"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   21.910 50.932, 21.910 50.932,  3.136 60.319, 3.136 60.319;
                   21.910  8.000, 64.843 72.398, 46.068 81.786, 3.136 17.387
+                "
+              />
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="b1.end+5s" id="b2"
+                keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                values="
+                  21.910  8.000, 64.843 72.398, 46.068 81.786, 3.136 17.387;
+                  21.910 50.932, 21.910 50.932,  3.136 60.319, 3.136 60.319
                 "
               />
             </polygon>
@@ -89,11 +121,20 @@
               <polygon>
                 <animate
                   attributeName="points" calcMode="spline" fill="freeze"
-                  dur="4s" begin="1s"
+                  dur="2s" begin="1s;c2.end+1s" id="c1"
                   keyTimes="0;1" keySplines="0.87 0 0.13 1"
                   values="
                     21.910 50.932, 21.910 50.932, 89 89, 89 0;
                     21.910  8.000, 64.843 72.398, 89 89, 89 0
+                  "
+                />
+                <animate
+                  attributeName="points" calcMode="spline" fill="freeze"
+                  dur="2s" begin="c1.end+5s" id="c2"
+                  keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                  values="
+                    21.910  8.000, 64.843 72.398, 89 89, 89 0;
+                    21.910 50.932, 21.910 50.932, 89 89, 89 0
                   "
                 />
               </polygon>
@@ -102,11 +143,20 @@
             <polygon clip-path="url(#clip)">
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="4s" begin="1.125s"
+                dur="2s" begin="1.125s;d2.end+1s" id="d1"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   67.535 71.052, 67.535 71.052, 62.151 68.361, 67.535 71.052;
                   67.535 17.387, 21.509  48.04, 62.151 68.361, 67.535 71.052
+                "
+              />
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="d1.end+5s" id="d2"
+                keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                values="
+                  67.535 17.387, 21.509  48.04, 62.151 68.361, 67.535 71.052;
+                  67.535 71.052, 67.535 71.052, 62.151 68.361, 67.535 71.052
                 "
               />
             </polygon>
@@ -114,11 +164,20 @@
             <polygon clip-path="url(#clip)" style="fill-opacity: 0.25;">
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="4s" begin="1.125s"
+                dur="2s" begin="1.125s;e2.end+1s" id="e1"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   67.535 71.053, 86.309 61.665, 86.309 61.665, 67.535 71.053;
                   67.535 71.053, 86.309 61.665, 86.309  8.000, 67.535 17.387
+                "
+              />
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="e1.end+5s" id="e2"
+                keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                values="
+                  67.535 71.053, 86.309 61.665, 86.309  8.000, 67.535 17.387;
+                  67.535 71.053, 86.309 61.665, 86.309 61.665, 67.535 71.053
                 "
               />
             </polygon>
