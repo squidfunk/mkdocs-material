@@ -33,11 +33,6 @@
           transition: box-shadow 1s;
         }
 
-        .logo:hover {
-          box-shadow: 0 0 0 4px red;
-          animation: logo 2s infinite ease-in-out;
-        }
-
         .logo svg {
           display: block;
           margin: 20%;
@@ -66,36 +61,66 @@
         <div class="logo">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
 
-            <polygon
-              points="3.136 17.387, 3.136 60.319, 46.068 81.786, 3.136 17.387"
-            >
+            <polygon>
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="4s" begin="1s"
+                keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                values="
+                  3.136 17.387, 3.136 60.319,  3.136 60.319, 3.136 60.319;
+                  3.136 17.387, 3.136 60.319, 46.068 81.786, 3.136 17.387
+                "
+              />
+            </polygon>
+
+            <polygon style="fill-opacity: 0.5;">
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="4s" begin="1s"
+                keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                values="
+                  21.910 50.932, 21.910 50.932,  3.136 60.319, 3.136 60.319;
+                  21.910  8.000, 64.843 72.398, 46.068 81.786, 3.136 17.387
+                "
+              />
             </polygon>
 
             <clipPath id="clip">
-              <polygon
-                points="21.910  8.000, 64.843 72.398, 89 89, 89 0"
-                style="fill: blue; fill-opacity: 0.25"
-              >
+              <polygon>
+                <animate
+                  attributeName="points" calcMode="spline" fill="freeze"
+                  dur="4s" begin="1s"
+                  keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                  values="
+                    21.910 50.932, 21.910 50.932, 89 89, 89 0;
+                    21.910  8.000, 64.843 72.398, 89 89, 89 0
+                  "
+                />
               </polygon>
             </clipPath>
 
-            <polygon
-              points="21.910  8.000, 64.843 72.398, 46.068 81.786, 3.136 17.387"
-              style="fill-opacity: 0.5;"
-            >
+            <polygon clip-path="url(#clip)">
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="4s" begin="1.125s"
+                keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                values="
+                  67.535 71.052, 67.535 71.052, 62.151 68.361, 67.535 71.052;
+                  67.535 17.387, 21.509  48.04, 62.151 68.361, 67.535 71.052
+                "
+              />
             </polygon>
 
-            <polygon 
-              clip-path="url(#clip)"
-              points="67.535 17.387, 21.509  48.04, 62.151 68.361, 67.535 71.052"
-            >
-            </polygon>
-
-            <polygon
-              clip-path="url(#clip)"
-              points="67.535 71.053, 86.309 61.665, 86.309  8.000, 67.535 17.387"
-              style="fill-opacity: 0.25;"
-            >
+            <polygon clip-path="url(#clip)" style="fill-opacity: 0.25;">
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="4s" begin="1.125s"
+                keyTimes="0;1" keySplines="0.87 0 0.13 1"
+                values="
+                  67.535 71.053, 86.309 61.665, 86.309 61.665, 67.535 71.053;
+                  67.535 71.053, 86.309 61.665, 86.309  8.000, 67.535 17.387
+                "
+              />
             </polygon>
           </svg>
         </div>
