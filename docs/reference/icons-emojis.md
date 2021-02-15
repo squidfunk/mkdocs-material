@@ -14,7 +14,7 @@ and used in `mkdocs.yml`, documents and templates.
 <div class="mdx-icon-search" data-mdx-component="icon-search">
   <input
     class="md-input md-input--stretch mdx-icon-search__input"
-    placeholder="Search the icon database"
+    placeholder="Search the icon and emoji database"
     data-mdx-component="icon-search-query"
   />
   <div class="mdx-icon-search-result" data-mdx-component="icon-search-result">
@@ -24,8 +24,8 @@ and used in `mkdocs.yml`, documents and templates.
 </div>
 <small>
   :octicons-light-bulb-16:
-  **Tip:** Enter some keywords to find the perfect icon and click on the
-  shortcode to copy it to your clipboard.
+  **Tip:** Enter some keywords to find the perfect icon or emoji and click on
+  the shortcode to copy it to your clipboard.
 </small>
 
 ## Configuration

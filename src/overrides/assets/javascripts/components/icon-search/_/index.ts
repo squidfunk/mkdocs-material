@@ -40,9 +40,32 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
+ * Icon
+ */
+export interface Icon {
+  shortcode: string                    /* Icon shortcode */
+  url: string                          /* Icon URL */
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Icon search database
+ */
+export interface IconSearchDatabase {
+  base: string                         /* Category base URL */
+  data: Record<string, string>         /* Category data */
+}
+
+/**
  * Icon search index
  */
-export type IconSearchIndex = string[]
+export interface IconSearchIndex {
+  icons: IconSearchDatabase            /* Icon database */
+  emojis: IconSearchDatabase           /* Emoji database */
+}
+
+/* ------------------------------------------------------------------------- */
 
 /**
  * Icon search
@@ -67,7 +90,7 @@ export function mountIconSearch(
 ): Observable<Component<IconSearch>> {
   const config = configuration()
   const index$ = requestJSON<IconSearchIndex>(
-    `${config.base}/overrides/assets/javascripts/icons.json`
+    `${config.base}/overrides/assets/javascripts/icon_search_index.json`
   )
 
   /* Retrieve nested components */

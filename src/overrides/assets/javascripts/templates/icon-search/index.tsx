@@ -25,32 +25,11 @@ import { wrap } from "fuzzaldrin-plus"
 import { translation } from "~/_"
 import { h } from "~/utilities"
 
-/* ----------------------------------------------------------------------------
- * Data
- * ------------------------------------------------------------------------- */
-
-/**
- * Icon CDN URL
- */
-const base =
-  "https://raw.githubusercontent.com/" +
-  "squidfunk/mkdocs-material/" +
-  "master/material/.icons/"
+import { Icon } from "../../components"
 
 /* ----------------------------------------------------------------------------
  * Helper functions
  * ------------------------------------------------------------------------- */
-
-/**
- * Convert icon search result to shortcode
- *
- * @param value - Icon search result
- *
- * @returns Shortcode
- */
-function shortcode(value: string): string {
-  return `:${value.replace(/\.svg$/, "").replace(/\//g, "-")}:`
-}
 
 /**
  * Highlight an icon search result
@@ -61,7 +40,7 @@ function shortcode(value: string): string {
  * @returns Highlighted result
  */
 function highlight(value: string, query: string) {
-  return wrap(shortcode(value), query, {
+  return wrap(value, query, {
     wrap: {
       tagOpen: "<b>",
       tagClose: "</b>"
@@ -76,25 +55,25 @@ function highlight(value: string, query: string) {
 /**
  * Render an icon search result
  *
- * @param value - Icon search result
+ * @param icon - Icon search result
  * @param query - Icon search query
  *
  * @returns Element
  */
 export function renderIconSearchResult(
-  value: string, query: string
+  icon: Icon, query: string
 ): HTMLElement {
   return (
     <li class="mdx-icon-search-result__item">
       <span class="twemoji">
-        <img src={base + value} />
+        <img src={icon.url} />
       </span>
       <button
         class="md-clipboard--inline"
         title={translation("clipboard.copy")}
-        data-clipboard-text={shortcode(value)}
+        data-clipboard-text={`:${icon.shortcode}:`}
       >
-        <code>{highlight(value, query)}</code>
+        <code>{`:${highlight(icon.shortcode, query)}:`}</code>
       </button>
     </li>
   )

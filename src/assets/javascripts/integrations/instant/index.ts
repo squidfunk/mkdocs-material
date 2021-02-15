@@ -184,7 +184,7 @@ export function setupInstantLoading(
               const el = ev.target.closest("a")
               if (el && !el.target && urls.includes(el.href)) {
                 ev.preventDefault()
-                return of<HistoryState>({
+                return of({
                   url: new URL(el.href)
                 })
               }
@@ -193,7 +193,7 @@ export function setupInstantLoading(
           })
         )
       ),
-      share()
+      share<HistoryState>()
     )
 
   /* Intercept history back and forward */
@@ -203,8 +203,8 @@ export function setupInstantLoading(
       map(ev => ({
         url: new URL(location.href),
         offset: ev.state
-      } as HistoryState)),
-      share()
+      })),
+      share<HistoryState>()
     )
 
   /* Emit location change */

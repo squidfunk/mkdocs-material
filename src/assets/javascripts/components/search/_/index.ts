@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, ObservableInput, merge } from "rxjs"
+import { NEVER, Observable, ObservableInput, merge } from "rxjs"
 import { filter, sample, take } from "rxjs/operators"
 
 import { configuration } from "~/_"
@@ -99,6 +99,10 @@ function fetchSearchIndex(url: string): ObservableInput<SearchIndex> {
 export function mountSearch(
   el: HTMLElement, { keyboard$ }: MountOptions
 ): Observable<Component<Search>> {
+  if (location.protocol === "file:")
+    return NEVER
+
+  /* Set up search worker */
   const config = configuration()
   const worker = setupSearchWorker(config.search, fetchSearchIndex(
     `${config.base}/search/search_index.json`

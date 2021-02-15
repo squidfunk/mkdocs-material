@@ -55,7 +55,7 @@ import {
 
 import { renderIconSearchResult } from "../../../templates"
 import { Component } from "../../_"
-import { IconSearchIndex } from "../_"
+import { Icon, IconSearchIndex } from "../_"
 import { IconSearchQuery } from "../query"
 
 /* ----------------------------------------------------------------------------
@@ -66,7 +66,7 @@ import { IconSearchQuery } from "../query"
  * Icon search result
  */
 export interface IconSearchResult {
-  data: string[]                       /* Search result data */
+  data: Icon[]                         /* Search result data */
 }
 
 /* ----------------------------------------------------------------------------
@@ -139,11 +139,35 @@ export function mountIconSearchResult(
 
   /* Create and return component */
   return combineLatest([
-    index$,
-    query$.pipe(distinctUntilKeyChanged("value"))
+    query$.pipe(distinctUntilKeyChanged("value")),
+    index$
+      .pipe(
+        map(({ icons, emojis }) => [
+          ...Object.keys(icons.data),
+          ...Object.keys(emojis.data)
+        ])
+      )
   ])
     .pipe(
-      map(([index, { value }]) => ({ data: search(index, value) })),
+      withLatestFrom(index$),
+      map(([[{ value }, data], index]) => {
+        const results = search(data, value)
+        return {
+          data: results.map(name => {
+            if (name in index.icons.data) {
+              return {
+                shortcode: name,
+                url: `${index.icons.base}${index.icons.data[name]}`
+              }
+            } else {
+              return {
+                shortcode: name,
+                url: `${index.emojis.base}${index.emojis.data[name]}`
+              }
+            }
+          })
+        }
+      }),
       tap(internal$),
       finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
