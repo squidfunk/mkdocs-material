@@ -21,11 +21,20 @@
  */
 
 import ClipboardJS from "clipboard"
-import { Observable, Subject } from "rxjs"
+import {
+  NEVER,
+  Observable,
+  Subject,
+  fromEvent,
+  merge,
+  of
+} from "rxjs"
 import {
   distinctUntilKeyChanged,
   finalize,
   map,
+  share,
+  switchMap,
   tap,
   withLatestFrom
 } from "rxjs/operators"
@@ -35,6 +44,7 @@ import {
   Viewport,
   getElementContentSize,
   getElementSize,
+  getElements,
   watchMedia
 } from "~/browser"
 import { renderClipboardButton } from "~/templates"
@@ -86,6 +96,9 @@ let index = 0
 /**
  * Watch code block
  *
+ * This function will monitor size changes of the viewport, as well as switches
+ * of content tabs with embedded code blocks, as both may trigger overflow.
+ *
  * @param el - Code block element
  * @param options - Options
  *
@@ -94,9 +107,27 @@ let index = 0
 export function watchCodeBlock(
   el: HTMLElement, { viewport$ }: WatchOptions
 ): Observable<CodeBlock> {
-  return viewport$
+  const container$ = of(el)
     .pipe(
-      distinctUntilKeyChanged("size"),
+      switchMap(child => {
+        const container = child.closest("[data-tabs]")
+        if (container instanceof HTMLElement) {
+          return merge(
+            ...getElements("input", container)
+              .map(input => fromEvent(input, "change"))
+          )
+        }
+        return NEVER
+      }),
+      share()
+    )
+
+  /* Check overflow on resize and tab change */
+  return merge(
+    viewport$.pipe(distinctUntilKeyChanged("size")),
+    container$
+  )
+    .pipe(
       map(() => {
         const visible = getElementSize(el)
         const content = getElementContentSize(el)
