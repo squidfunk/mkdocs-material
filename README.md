@@ -137,40 +137,40 @@ For other installation methods, configuration options, and a demo, visit
   /></a>
 </p>
 
-## Users
+## Trusted by ...
 
-* **Companies** — 
-  [AWS](https://aws.github.io/copilot-cli/),
-  [Binance](https://docs.binance.org/),
-  [Datadog](https://datadoghq.dev/integrations-core/),
-  [Google](https://google.github.io/xls/),
-  [ING](https://ing-bank.github.io/baker/),
-  [LinkedIn](https://linkedin.github.io/school-of-sre/),
-  [Microsoft](https://www.electionguard.vote/),
-  [Netflix](https://netflix.github.io/titus/),
-  [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
-  [SAP](https://sap.github.io/ui5-tooling/),
-  [SoundCloud](https://intervene.dev/),
-  [Square](https://square.github.io/okhttp/),
-  [Uber](https://ludwig-ai.github.io/ludwig-docs/getting_started/),
-  [Zalando](https://opensource.zalando.com/skipper/)
+### ... leading companies
 
-* **Open Source** —
-  [AutoKeras](https://autokeras.com/),
-  [BFE](https://www.bfe-networks.net/),
-  [Crystal](https://crystal-lang.org/reference/),
-  [FastAPI](https://fastapi.tiangolo.com/),
-  [Kubernetes](https://kops.sigs.k8s.io/),
-  [kSQL](https://docs.ksqldb.io/),
-  [Nokogiri](https://nokogiri.org/),
-  [OpenFaaS](https://docs.openfaas.com/),
-  [Pi-Hole](https://docs.pi-hole.net/),
-  [Pydantic](https://pydantic-docs.helpmanual.io/),
-  [Renovatebot](https://docs.renovatebot.com/),
-  [Traefik](https://docs.traefik.io/),
-  [Vapor](https://docs.vapor.codes/),
-  [ZeroNet](https://zeronet.io/docs/),
-  [WTF](https://wtfutil.com/)
+[AWS](https://aws.github.io/copilot-cli/),
+[Binance](https://docs.binance.org/),
+[Datadog](https://datadoghq.dev/integrations-core/),
+[Google](https://google.github.io/xls/),
+[ING](https://ing-bank.github.io/baker/),
+[LinkedIn](https://linkedin.github.io/school-of-sre/),
+[Microsoft](https://www.electionguard.vote/),
+[Netflix](https://netflix.github.io/titus/),
+[Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
+[SoundCloud](https://intervene.dev/),
+[Square](https://square.github.io/okhttp/),
+[Zalando](https://opensource.zalando.com/skipper/)
+
+### ... and successful Open Source projects
+
+[AutoKeras](https://autokeras.com/),
+[BFE](https://www.bfe-networks.net/),
+[Crystal](https://crystal-lang.org/reference/),
+[FastAPI](https://fastapi.tiangolo.com/),
+[Kubernetes](https://kops.sigs.k8s.io/),
+[kSQL](https://docs.ksqldb.io/),
+[Nokogiri](https://nokogiri.org/),
+[OpenFaaS](https://docs.openfaas.com/),
+[Pi-Hole](https://docs.pi-hole.net/),
+[Pydantic](https://pydantic-docs.helpmanual.io/),
+[Renovatebot](https://docs.renovatebot.com/),
+[Traefik](https://docs.traefik.io/),
+[Vapor](https://docs.vapor.codes/),
+[ZeroNet](https://zeronet.io/docs/),
+[WTF](https://wtfutil.com/)
 
 ## License
 
