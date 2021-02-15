@@ -3,17 +3,16 @@
 		<div xmlns="http://www.w3.org/1999/xhtml">
 			<style>
 
-        @keyframes logo {
+        @keyframes backdrop {
           0%, 100% {
-            opacity: 0;
+            opacity: .1;
             transform: scale(.9);
           }
-          20%, 80% {
+          20%, 70% {
             opacity: 1;
             transform: scale(1.1);
           }
           50% {
-            opacity: 1;
             transform: scale(1);
           }
         }
@@ -49,7 +48,7 @@
           height: 100%;
           border-radius: 100%;
           background-image: linear-gradient(#1A1A1A, #5E5E5E);
-          animation: logo infinite both 10s 1s ease-in-out;
+          animation: backdrop infinite both 10s 1s ease-in-out;
         }
 
         h1 {
@@ -75,10 +74,10 @@
           <div class="backdrop"></div>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
 
-            <polygon>
+            <polygon id="p1">
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="2s" begin="1s;a2.end+1s" id="a1"
+                dur="2s" begin="1s;p1o.end+1s" id="p1i"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   3.136 17.387, 3.136 60.319,  3.136 60.319, 3.136 60.319;
@@ -87,19 +86,29 @@
               />
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="2s" begin="a1.end+5s" id="a2"
+                dur="2s" begin="p1i.end+5s" id="p1o"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   3.136 17.387, 3.136 60.319, 46.068 81.786, 3.136 17.387;
                   3.136 17.387, 3.136 60.319,  3.136 60.319, 3.136 60.319
                 "
               />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="5s" begin="p1i.end"
+                from="1" to="0.5"
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="0.1s" begin="p1o.end"
+                from="0.5" to="1"
+              />
             </polygon>
 
-            <polygon style="fill-opacity: 0.5;">
+            <polygon id="p2" style="fill-opacity: 0.5;">
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="2s" begin="1s;b2.end+1s" id="b1"
+                dur="2s" begin="1s;p2o.end+1s" id="p2i"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   21.910 50.932, 21.910 50.932,  3.136 60.319, 3.136 60.319;
@@ -108,20 +117,30 @@
               />
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="2s" begin="b1.end+5s" id="b2"
+                dur="2s" begin="p2i.end+5s" id="p2o"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   21.910  8.000, 64.843 72.398, 46.068 81.786, 3.136 17.387;
                   21.910 50.932, 21.910 50.932,  3.136 60.319, 3.136 60.319
                 "
               />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="5s" begin="p1i.end"
+                from="0.5" to="1"
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="0.1s" begin="p2o.end"
+                from="1" to="0.5"
+              />
             </polygon>
 
             <clipPath id="clip">
-              <polygon>
+              <polygon id="p3">
                 <animate
                   attributeName="points" calcMode="spline" fill="freeze"
-                  dur="2s" begin="1s;c2.end+1s" id="c1"
+                  dur="2s" begin="1s;p3o.end+1s" id="p3i"
                   keyTimes="0;1" keySplines="0.87 0 0.13 1"
                   values="
                     21.910 50.932, 21.910 50.932, 89 89, 89 0;
@@ -130,7 +149,7 @@
                 />
                 <animate
                   attributeName="points" calcMode="spline" fill="freeze"
-                  dur="2s" begin="c1.end+5s" id="c2"
+                  dur="2s" begin="p3i.end+5s" id="p3o"
                   keyTimes="0;1" keySplines="0.87 0 0.13 1"
                   values="
                     21.910  8.000, 64.843 72.398, 89 89, 89 0;
@@ -140,10 +159,10 @@
               </polygon>
             </clipPath>
 
-            <polygon clip-path="url(#clip)">
+            <polygon id="p4" clip-path="url(#clip)">
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="2s" begin="1.125s;d2.end+1s" id="d1"
+                dur="2s" begin="1.125s;p4o.end+1s" id="p4i"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   67.535 71.052, 67.535 71.052, 62.151 68.361, 67.535 71.052;
@@ -152,19 +171,29 @@
               />
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="2s" begin="d1.end+5s" id="d2"
+                dur="2s" begin="p4i.end+5s" id="p4o"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   67.535 17.387, 21.509  48.04, 62.151 68.361, 67.535 71.052;
                   67.535 71.052, 67.535 71.052, 62.151 68.361, 67.535 71.052
                 "
               />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="5s" begin="p1i.end"
+                from="1" to="0.5"
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="0.1s" begin="p4o.end"
+                from="0.5" to="1"
+              />
             </polygon>
 
-            <polygon clip-path="url(#clip)" style="fill-opacity: 0.25;">
+            <polygon id="p5" clip-path="url(#clip)" style="fill-opacity: 0.25;">
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="2s" begin="1.125s;e2.end+1s" id="e1"
+                dur="2s" begin="1.125s;p5o.end+1s" id="p5i"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   67.535 71.053, 86.309 61.665, 86.309 61.665, 67.535 71.053;
@@ -173,12 +202,22 @@
               />
               <animate
                 attributeName="points" calcMode="spline" fill="freeze"
-                dur="2s" begin="e1.end+5s" id="e2"
+                dur="2s" begin="p5i.end+5s" id="p5o"
                 keyTimes="0;1" keySplines="0.87 0 0.13 1"
                 values="
                   67.535 71.053, 86.309 61.665, 86.309  8.000, 67.535 17.387;
                   67.535 71.053, 86.309 61.665, 86.309 61.665, 67.535 71.053
                 "
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="5s" begin="p1i.end"
+                from="0.25" to="1"
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="0.1s" begin="p5o.end"
+                from="1" to="0.25"
               />
             </polygon>
           </svg>
