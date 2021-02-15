@@ -58,7 +58,7 @@
 
         h1 {
           margin: 24px 0 4px;
-          color: CanvasText;
+          color: #1A1A1A;
           font-weight: bold;
           font-size: 24px;
         }
