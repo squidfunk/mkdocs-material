@@ -62,49 +62,47 @@
 
 ## Features
 
-* **It's just Markdown** — write your technical documentation in plain Markdown
-  – no need to know HTML, JavaScript, or CSS. Material for MkDocs will do the
-  heavy lifting and convert your writing to a beautiful and functional website.
+* **It's just Markdown ...** — write your technical documentation in Markdown –
+  no need to know HTML, JavaScript or CSS. Material for MkDocs will do the heavy
+  lifting and create a beautiful and functional website.
 
-* **Responsive by design** — built from the ground up to work on all sorts of 
-  devices – from mobile phones to widescreens. The underlying fluid layout will 
+* **... but there's more** — integrates natively with Python Markdown
+  Extensions, adding callouts, tabbed content containers, mathematical formulas,
+  critic markup, task lists, and [more than 10k icons and emojis][2].
+
+* **Responsive by design** — built from the ground up to work on all kinds of
+  devices – from mobile phones to widescreens. The underlying fluid layout will
   always adapt perfectly to the available screen space.
 
-* **Static, yet searchable** — almost magically, your technical documentation 
+* **Static, but searchable** — almost magically, your technical documentation
   website will be searchable without any further ado. Material for MkDocs comes
-  with built-in search – no server needed – that will instantly answer your
-  users' queries.
+  with built-in search – no server needed.
 
-* **Many configuration options** — change the color palette, font families, 
+* **Many configuration options** — change the color palette, font families,
   language, icons, favicon and logo. Add a source repository link, links to your
-  social profiles, Google Analytics and Disqus - all with a few lines of code.
+  social profiles, Google Analytics and Disqus - all with a few lines of config.
 
-* **Truly international** — thanks to many contributors, Material for MkDocs 
-  includes translations for more than 40 languages and offers full native RTL 
-  (right-to-left) support for languages such as Arabic, Persian (Farsi) and
-  Hebrew.
+* **Truly international** — thanks to many contributors, Material for MkDocs
+  includes translations for more than 40 languages and offers full native RTL
+  (right-to-left) support.
 
 * **Accessible** — Material for MkDocs provides extensible keyboard navigation
   and semantic markup including role attributes and landmarks. Furthermore, the
-  layout is entirely based on `rem` values, respecting the user's default font
-  size.
-
-* **Beyond GitHub Markdown** — integrates natively with Python Markdown
-  Extensions, offering additional elements like callouts, tabbed content
-  containers, mathematical formulas, critic markup, task lists, and emojis.
+  layout respects the user's default font size.
 
 * **Modern architecture** — Material for MkDocs's underlying codebase is built
   with TypeScript, RxJS, and SCSS, and is compiled with Webpack, bringing
   excellent possibilities for theme extension and customization.
 
-_Material for MkDocs uses the [sponsorware][2] release strategy, which means
+_Material for MkDocs uses the [sponsorware][3] release strategy, which means
 that new features are first exclusively released to sponsors as part of Material
-for MkDocs Insiders. Read on to learn [how sponsorship works][3], and how you
-can [become a sponsor][4]._
+for MkDocs Insiders. Read on to learn [how sponsorship works][4], and how you
+can [become a sponsor][5]._
 
-  [2]: https://github.com/sponsorware/docs
-  [3]: https://squidfunk.github.io/mkdocs-material/insiders/#how-sponsorship-works
-  [4]: https://squidfunk.github.io/mkdocs-material/insiders/#how-to-become-a-sponsor
+  [2]: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
+  [3]: https://github.com/sponsorware/docs
+  [4]: https://squidfunk.github.io/mkdocs-material/insiders/#how-sponsorship-works
+  [5]: https://squidfunk.github.io/mkdocs-material/insiders/#how-to-become-a-sponsor
 
 ## Quick start
 
