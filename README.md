@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://squidfunk.github.io/mkdocs-material/">
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.png" width="320" alt="Material for MkDocs">
+    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.svg" width="320" alt="Material for MkDocs">
   </a>
 </p>
 
