@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+	<foreignObject width="100%" height="100%">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<style>
+
+        @keyframes logo {
+          0%, 100% {
+            box-shadow: 0 0 0 10px #FFFFFF;
+          }
+          50% {
+            box-shadow: 0 0 0 4px #CCCCCC;
+          }
+        }
+
+				.container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 320px;
+          height: 320px;
+					font-family:
+						system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+						sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+          letter-spacing: -1px;
+				}
+
+        .logo {
+          width: 40%;
+          border-radius: 100%;
+          background-image: linear-gradient(#1A1A1A, #5E5E5E);
+          box-shadow: 0 0 0 4px transparent;
+          transition: box-shadow 1s;
+        }
+
+        .logo:hover {
+          box-shadow: 0 0 0 4px red;
+          animation: logo 2s infinite ease-in-out;
+        }
+
+        .logo svg {
+          display: block;
+          margin: 20%;
+          fill: white;
+        }
+
+        h1 {
+          margin: 24px 0 4px;
+          color: #1A1A1A;
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        h2 {
+          margin: 4px 0;
+          color: #5E5E5E;
+          font-size: 14px;
+        }
+
+        [data-color-mode=dark] h1 {
+          color: #E5E5E5;
+        }
+
+			</style>
+			<div class="container">
+        <div class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+
+            <polygon
+              points="3.136 17.387, 3.136 60.319, 46.068 81.786, 3.136 17.387"
+            >
+            </polygon>
+
+            <clipPath id="clip">
+              <polygon
+                points="21.910  8.000, 64.843 72.398, 89 89, 89 0"
+                style="fill: blue; fill-opacity: 0.25"
+              >
+              </polygon>
+            </clipPath>
+
+            <polygon
+              points="21.910  8.000, 64.843 72.398, 46.068 81.786, 3.136 17.387"
+              style="fill-opacity: 0.5;"
+            >
+            </polygon>
+
+            <polygon 
+              clip-path="url(#clip)"
+              points="67.535 17.387, 21.509  48.04, 62.151 68.361, 67.535 71.052"
+            >
+            </polygon>
+
+            <polygon
+              clip-path="url(#clip)"
+              points="67.535 71.053, 86.309 61.665, 86.309  8.000, 67.535 17.387"
+              style="fill-opacity: 0.25;"
+            >
+            </polygon>
+          </svg>
+        </div>
+        <h1>Material for MkDocs</h1>
+				<h2>Technical documentation that just works</h2>
+			</div>
+		</div>
+	</foreignObject>
+</svg>
