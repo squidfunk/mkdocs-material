@@ -80,4 +80,4 @@ _Result_:
 [Submit :fontawesome-solid-paper-plane:][4]{: .md-button .md-button--primary }
 
   [6]: icons-emojis.md#using-icons
-  [7]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [7]: icons-emojis.md#search

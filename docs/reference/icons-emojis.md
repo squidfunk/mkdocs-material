@@ -55,7 +55,7 @@ You can also add [additional icons][9]. When using emojis, it's recommended to
 consult the official documentation of [Python Markdown Extensions][3] to learn
 about configuration options.
 
-  [1]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [1]: icons-emojis.md#search
   [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_emoji.scss
   [3]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
   [4]: https://facelessuser.github.io/pymdown-extensions/
