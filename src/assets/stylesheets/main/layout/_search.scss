@@ -259,7 +259,7 @@
 
     // Adjust appearance when search is active
     [data-md-toggle="search"]:checked ~ .md-header & {
-      box-shadow: 0 0 px2rem(12px) var(--md-default-fg-color--lightest);
+      box-shadow: 0 0 px2rem(12px) hsla(0, 0%, 0%, 0.07);
     }
 
     // [tablet portrait -]: Search modal

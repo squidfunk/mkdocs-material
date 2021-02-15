@@ -47,7 +47,13 @@
 
     // Icon search input
     .md-input {
-      box-shadow: 0 0 px2rem(12px) var(--md-default-fg-color--lightest);
+      background: var(--md-default-bg-color);
+      box-shadow: 0 0 px2rem(12px) hsla(0, 0%, 0%, 0.07);
+
+      // Slate theme, i.e. dark mode
+      [data-md-color-scheme="slate"] & {
+        background: var(--md-code-bg-color);
+      }
     }
   }
 
@@ -99,7 +105,7 @@
       padding: px2rem(4px) px2rem(12px);
       border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
 
-      // TODO:
+      // Omit border on last child
       &:last-child {
         border-bottom: none;
       }
@@ -113,6 +119,11 @@
       img {
         width: px2rem(18px);
         height: px2rem(18px);
+
+        // Slate theme, i.e. dark mode
+        [data-md-color-scheme="slate"] &[src*=squidfunk] {
+          filter: invert(1);
+        }
       }
     }
   }
