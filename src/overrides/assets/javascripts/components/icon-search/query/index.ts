@@ -24,8 +24,10 @@ import { Observable, combineLatest, fromEvent, merge } from "rxjs"
 import {
   delay,
   distinctUntilChanged,
+  filter,
   map,
-  startWith
+  startWith,
+  withLatestFrom
 } from "rxjs/operators"
 
 import { watchElementFocus } from "~/browser"
@@ -70,6 +72,17 @@ export function mountIconSearchQuery(
       startWith(el.value),
       distinctUntilChanged()
     )
+
+  /* Log search on blur */
+  focus$
+    .pipe(
+      filter(active => !active),
+      withLatestFrom(value$)
+    )
+      .subscribe(([, value]) => {
+        const path = document.location.pathname
+        ga("send", "pageview", `${path}?q=[icon]+${value}`)
+      })
 
   /* Combine into single observable */
   return combineLatest([value$, focus$])
