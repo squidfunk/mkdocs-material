@@ -145,7 +145,7 @@ const control$ = merge(
   ...getComponentElements("dialog")
     .map(el => mountDialog(el, { alert$ })),
 
-    /* Header */
+  /* Header */
   ...getComponentElements("header")
     .map(el => mountHeader(el, { viewport$, header$, main$ })),
 

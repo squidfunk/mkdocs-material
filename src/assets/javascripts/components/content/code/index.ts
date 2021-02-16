@@ -33,7 +33,6 @@ import {
   distinctUntilKeyChanged,
   finalize,
   map,
-  share,
   switchMap,
   tap,
   withLatestFrom
@@ -118,8 +117,7 @@ export function watchCodeBlock(
           )
         }
         return NEVER
-      }),
-      share()
+      })
     )
 
   /* Check overflow on resize and tab change */
