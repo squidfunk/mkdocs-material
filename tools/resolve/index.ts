@@ -55,7 +55,7 @@ export const base = "material2"
  * @param pattern - Pattern
  * @param options - Options
  *
- * @returns Files
+ * @returns File observable
  */
 export function resolve(
   pattern: string, options?: ResolveOptions

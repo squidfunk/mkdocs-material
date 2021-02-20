@@ -20,14 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-// import { build } from "esbuild"
 import { minify as minhtml } from "html-minifier"
-import { concat } from "rxjs"
+import { concat, merge } from "rxjs"
 import { concatMap } from "rxjs/operators"
 
 import { copyAll } from "./copy"
 import { base, resolve } from "./resolve"
-import { transformStyle } from "./transform"
+import {
+  transformScript,
+  transformStyle
+} from "./transform"
 
 /* ----------------------------------------------------------------------------
  * Program
@@ -79,7 +81,7 @@ const assets$ = concat(
   copyAll("**/*.html", {
     src: "src",
     out: base,
-    fn: content => {
+    fn: async content => {
       const metadata = require("../package.json")
       const banner =
         "{#-\n" +
@@ -113,15 +115,37 @@ const styles$ = resolve("**/[!_]*.scss", { cwd: "src" })
   .pipe(
     concatMap(file => transformStyle({
       src: `src/${file}`,
-      out: `${base}/${file.replace(/\.scss$/, ".css")}`,
-      optimize: true // TODO: wrap with commander
+      out: `${base}/${file.replace(/\.scss$/, ".css")}`
     }))
   )
+
+/* Transform scripts with ESBuild */
+const scripts$ = merge(
+
+  /* Transform application */
+  transformScript({
+    src: "src/assets/javascripts/index.ts",
+    out: `${base}/assets/javascripts/bundle.js`
+  }),
+
+  /* Transform application overrides */
+  transformScript({
+    src: "src/overrides/assets/javascripts/index.ts",
+    out: `${base}/overrides/assets/javascripts/bundle.js`
+  }),
+
+  /* Transform search worker */
+  transformScript({
+    src: "src/assets/javascripts/integrations/search/worker/main/index.ts",
+    out: `${base}/assets/javascripts/worker/search.js`
+  })
+)
 
 /* Compile everything */
 concat(
   dependencies$,
   assets$,
-  styles$
+  styles$,
+  scripts$
 )
-  .subscribe()
+  .subscribe(console.log)

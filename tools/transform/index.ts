@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+import { build } from "esbuild"
 import * as fs from "fs/promises"
 import * as path from "path"
 import postcss from "postcss"
@@ -27,6 +28,7 @@ import { Observable, defer, merge } from "rxjs"
 import {
   endWith,
   ignoreElements,
+  mapTo,
   switchMap,
   tap
 } from "rxjs/operators"
@@ -45,7 +47,6 @@ import { base, mkdir } from "../resolve"
 interface TransformOptions {
   src: string                          /* Source file */
   out: string                          /* Target file */
-  optimize?: boolean                   /* Optimize assets */
 }
 
 /* ----------------------------------------------------------------------------
@@ -69,7 +70,7 @@ const root = new RegExp(`file://${path.resolve(".")}/`, "g")
  * @returns File observable
  */
 export function transformStyle(
-  { src, out, optimize }: TransformOptions
+  { src, out }: TransformOptions
 ): Observable<string> {
   return defer(() => promisify(sass)({
     file: src,
@@ -92,7 +93,7 @@ export function transformStyle(
           ],
           encode: false
         }),
-        ...optimize ? [require("cssnano")] : []
+        require("cssnano")
       ])
         .process(css, {
           from: src,
@@ -110,5 +111,27 @@ export function transformStyle(
       )),
       ignoreElements(),
       endWith(out)
+    )
+}
+
+/**
+ * Transform a script
+ *
+ * @param options - Options
+ *
+ * @returns File observable
+ */
+export function transformScript(
+  { src, out }: TransformOptions
+): Observable<string> {
+  return defer(() => build({
+    entryPoints: [src],
+    outfile: out,
+    bundle: true,
+    sourcemap: true,
+    minify: true
+  }))
+    .pipe(
+      mapTo(out)
     )
 }

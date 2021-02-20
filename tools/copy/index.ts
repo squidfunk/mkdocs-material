@@ -38,7 +38,7 @@ import { mkdir, resolve } from "../resolve"
  *
  * @returns Transformed content
  */
-type CopyTransformFn = (content: string) => Promise<string> | string
+type CopyTransformFn = (content: string) => Promise<string>
 
 /* ------------------------------------------------------------------------- */
 
@@ -71,7 +71,7 @@ export function copy(
         ? from(fs.copyFile(src, out))
         : from(fs.readFile(src, "utf8"))
             .pipe(
-              switchMap(content => from(fn(content))),
+              switchMap(content => fn(content)),
               switchMap(content => fs.writeFile(out, content))
             )
       ),
