@@ -57,8 +57,8 @@ kbd {
 
 // Icon definitions
 :root {
-  --md-typeset-table--ascending: svg-load("@mdi/svg/svg/arrow-down.svg");
-  --md-typeset-table--descending: svg-load("@mdi/svg/svg/arrow-up.svg");
+  --md-typeset-table--ascending: svg-load("material/arrow-down.svg");
+  --md-typeset-table--descending: svg-load("material/arrow-up.svg");
 }
 
 // ----------------------------------------------------------------------------

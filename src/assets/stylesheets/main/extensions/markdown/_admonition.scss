@@ -48,7 +48,7 @@ $admonitions: (
 :root {
   @each $names, $props in $admonitions {
     --md-admonition-icon--#{nth($names, 1)}:
-      svg-load("@mdi/svg/svg/#{nth($props, 1)}.svg");
+      svg-load("material/#{nth($props, 1)}.svg");
   }
 }
 

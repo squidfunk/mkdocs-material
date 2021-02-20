@@ -20,71 +20,64 @@
  * IN THE SOFTWARE.
  */
 
+import * as fs from "fs/promises"
 import { Observable, from } from "rxjs"
-import {
-  filter,
-  map,
-  shareReplay,
-  switchMap
-} from "rxjs/operators"
+import { mapTo, switchMap } from "rxjs/operators"
+import glob from "tiny-glob"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Resolve options
+ */
+interface ResolveOptions {
+  cwd: string                          /* Working directory */
+}
+
+/* ----------------------------------------------------------------------------
+ * Data
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Base directory for compiled files
+ */
+export const base = "material2"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Fetch the given URL
+ * Resolve a pattern
  *
- * @param url - Request URL
+ * @param pattern - Pattern
  * @param options - Options
  *
- * @returns Response observable
+ * @returns Files
  */
-export function request(
-  url: string, options: RequestInit = { credentials: "same-origin" }
-): Observable<Response> {
-  return from(fetch(url, options))
+export function resolve(
+  pattern: string, options?: ResolveOptions
+): Observable<string> {
+  return from(glob(pattern, options))
     .pipe(
-      filter(res => res.status === 200),
+      switchMap(files => from(files))
     )
 }
 
 /**
- * Fetch JSON from the given URL
+ * Recursively create the given directory
  *
- * @template T - Data type
+ * @param directory - Directory
  *
- * @param url - Request URL
- * @param options - Options
- *
- * @returns Data observable
+ * @returns Directory observable
  */
-export function requestJSON<T>(
-  url: string, options?: RequestInit
-): Observable<T> {
-  return request(url, options)
+export function mkdir(
+  directory: string
+): Observable<string> {
+  return from(fs.mkdir(directory, { recursive: true }))
     .pipe(
-      switchMap(res => res.json()),
-      shareReplay(1)
-    )
-}
-
-/**
- * Fetch XML from the given URL
- *
- * @param url - Request URL
- * @param options - Options
- *
- * @returns Data observable
- */
-export function requestXML(
-  url: string, options?: RequestInit
-): Observable<Document> {
-  const dom = new DOMParser()
-  return request(url, options)
-    .pipe(
-      switchMap(res => res.text()),
-      map(res => dom.parseFromString(res, "text/xml")),
-      shareReplay(1)
+      mapTo(directory)
     )
 }
