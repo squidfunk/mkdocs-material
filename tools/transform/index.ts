@@ -91,8 +91,10 @@ export function transformStyle(
             `${base}/.icons`
           ],
           encode: false
-        })
-        // require("cssnano")
+        }),
+        ...process.argv.includes("--optimize")
+          ? [require("cssnano")]
+          : []
       ])
         .process(css, {
           from: src,
@@ -105,10 +107,10 @@ export function transformStyle(
       ),
       switchMap(({ css, map }) => concat(
         mkdir(path.dirname(out)),
-        merge(
+        defer(() => merge(
           fs.writeFile(`${out}`, css),
           fs.writeFile(`${out}.map`, map.toString())
-        )
+        ))
       )),
       ignoreElements(),
       endWith(out)
@@ -130,7 +132,7 @@ export function transformScript(
     outfile: out,
     bundle: true,
     sourcemap: true,
-    minify: true
+    minify: process.argv.includes("--optimize")
   }))
     .pipe(
       mapTo(out)
