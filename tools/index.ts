@@ -24,17 +24,21 @@ import { createHash } from "crypto"
 import * as fs from "fs/promises"
 import { minify as minhtml } from "html-minifier"
 import * as path from "path"
-import { concat, defer, from, merge, of } from "rxjs"
+import { EMPTY, concat, defer, from, merge, of } from "rxjs"
 import {
   concatMap,
   map,
+  mergeMap,
   switchMap,
-  takeWhile
+  toArray
 } from "rxjs/operators"
-import { extendDefaultPlugins, optimize } from "svgo"
+import {
+  extendDefaultPlugins,
+  optimize
+} from "svgo"
 
-import { copyAll } from "./copy"
-import { base, resolve } from "./resolve"
+import { copy, copyAll } from "./copy"
+import { base, cachebust, resolve } from "./resolve"
 import {
   transformScript,
   transformStyle
@@ -176,24 +180,53 @@ const javascripts$ = resolve("**/{bundle,search}.ts", { cwd: "src" })
   )
 
 /* Add content hashes to assets and replace occurrences */
-const manifest$ = defer(() => resolve(`${base}/**/*.{css,js}`)
+const manifest$ = defer(() => process.argv.includes("--optimize")
+  ? resolve("**/*.{css,js}", { cwd: base })
+  : EMPTY
+)
   .pipe(
-    takeWhile(() => process.argv.includes("--optimize")),
-    concatMap(asset => from(fs.readFile(asset, "utf8"))
+    concatMap(file => from(fs.readFile(`${base}/${file}`, "utf8"))
       .pipe(
         map(data => createHash("sha256").update(data).digest("hex")),
-        switchMap(hash => of(`${asset}`, `${asset}.map`)
+        switchMap(hash => of(`${file}`, `${file}.map`)
           .pipe(
-            switchMap(file => fs.rename(
-              file,
-              file.replace(/\b(?=\.)/, `.${hash.slice(0, 8)}.min`)
-            ))
+            concatMap(part => cachebust(part, hash, { cwd: base }))
           )
         )
       )
-    )
+    ),
+    toArray(),
+    map(tuples => new Map(tuples)),
+    mergeMap(manifest => concat(
+
+      // TODO: split this into two. manifest + cachebust!
+      ...["base.html", "overrides/main.html"]
+        .map(file => copy({
+          src: `${base}/${file}`,
+          out: `${base}/${file}`,
+          transform: async data => [...manifest.entries()]
+            .reduce((content, [key, value]) => content
+              .replace(
+                new RegExp(`('|")${key}\\1`, "g"),
+                `$1${value}$1`
+              ),
+              data
+            )
+        })),
+
+        // TODO: interate this into the actual compilation...
+        ...[...manifest.keys()]
+          .filter(file => !file.endsWith(".map"))
+          .map(file => copy({
+            src: `${base}/${manifest.get(file)!}`,
+            out: `${base}/${manifest.get(file)!}`,
+            transform: async data => data.replace(
+              path.basename(file),
+              path.basename(manifest.get(file)!),
+            )
+          }))
+    ))
   )
-)
 
 /* Copy Lunr.js search stemmers and segmenter */
 const stemmers$ = ["min/*.js", "tinyseg.js"]

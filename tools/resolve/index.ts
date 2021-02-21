@@ -81,3 +81,25 @@ export function mkdir(
       mapTo(directory)
     )
 }
+
+/**
+ * Cachebust a file using a content hash
+ *
+ * @param file - File
+ * @param hash - Content hash
+ * @param options - Options
+ *
+ * @returns Cachebusting tuple observable
+ */
+export function cachebust(
+  file: string, hash: string, options: ResolveOptions
+): Observable<[string, string]> {
+  const name = file.replace(/\b(?=\.)/, `.${hash.slice(0, 8)}.min`)
+  return from(fs.rename(
+    `${options.cwd}/${file}`,
+    `${options.cwd}/${name}`
+  ))
+    .pipe(
+      mapTo([file, name])
+    )
+}
