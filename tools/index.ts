@@ -20,10 +20,17 @@
  * IN THE SOFTWARE.
  */
 
+import { createHash } from "crypto"
+import * as fs from "fs/promises"
 import { minify as minhtml } from "html-minifier"
 import * as path from "path"
-import { concat, defer, merge } from "rxjs"
-import { concatMap, tap } from "rxjs/operators"
+import { concat, defer, from, merge, of } from "rxjs"
+import {
+  concatMap,
+  map,
+  switchMap,
+  takeWhile
+} from "rxjs/operators"
 import { extendDefaultPlugins, optimize } from "svgo"
 
 import { copyAll } from "./copy"
@@ -168,9 +175,25 @@ const javascripts$ = resolve("**/{bundle,search}.ts", { cwd: "src" })
     }))
   )
 
-/* Add content hashes to files and replace occurrences */
-const manifest$ = defer(() => resolve("**/*.{css,js}", {cwd: base })
-  .pipe(tap(console.log)))
+/* Add content hashes to assets and replace occurrences */
+const manifest$ = defer(() => resolve(`${base}/**/*.{css,js}`)
+  .pipe(
+    takeWhile(() => process.argv.includes("--optimize")),
+    concatMap(asset => from(fs.readFile(asset, "utf8"))
+      .pipe(
+        map(data => createHash("sha256").update(data).digest("hex")),
+        switchMap(hash => of(`${asset}`, `${asset}.map`)
+          .pipe(
+            switchMap(file => fs.rename(
+              file,
+              file.replace(/\b(?=\.)/, `.${hash.slice(0, 8)}.min`)
+            ))
+          )
+        )
+      )
+    )
+  )
+)
 
 /* Copy Lunr.js search stemmers and segmenter */
 const stemmers$ = ["min/*.js", "tinyseg.js"]
