@@ -34,11 +34,12 @@ import { mkdir, resolve } from "../resolve"
 /**
  * Copy transform function
  *
- * @param content - Content
+ * @param data - File data
+ * @param name - File name
  *
- * @returns Transformed content
+ * @returns Transformed file data
  */
-type CopyTransformFn = (content: string) => Promise<string>
+type CopyTransformFn = (data: string, name: string) => Promise<string>
 
 /* ------------------------------------------------------------------------- */
 
@@ -71,8 +72,8 @@ export function copy(
         ? from(fs.copyFile(src, out))
         : from(fs.readFile(src, "utf8"))
             .pipe(
-              switchMap(content => transform(content)),
-              switchMap(content => fs.writeFile(out, content))
+              switchMap(data => transform(data, src)),
+              switchMap(data => fs.writeFile(out, data))
             )
       ),
       mapTo(out)
