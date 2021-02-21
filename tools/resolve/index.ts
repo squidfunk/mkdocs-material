@@ -43,7 +43,7 @@ interface ResolveOptions {
 /**
  * Base directory for compiled files
  */
-export const base = "material2"
+export const base = "material"
 
 /* ----------------------------------------------------------------------------
  * Functions

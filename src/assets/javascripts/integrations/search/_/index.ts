@@ -128,9 +128,6 @@ function difference(a: string[], b: string[]): string[] {
 
 /**
  * Search index
- *
- * Note that `lunr` is injected via Webpack, as it will otherwise also be
- * bundled in the application bundle.
  */
 export class Search {
 
@@ -139,8 +136,8 @@ export class Search {
    *
    * A mapping of URLs (including hash fragments) to the actual articles and
    * sections of the documentation. The search document mapping must be created
-   * regardless of whether the index was prebuilt or not, as `lunr` itself will
-   * only store the actual index.
+   * regardless of whether the index was prebuilt or not, as Lunr.js itself
+   * only stores the actual index.
    */
   protected documents: SearchDocumentMap
 
@@ -150,7 +147,7 @@ export class Search {
   protected highlight: SearchHighlightFactoryFn
 
   /**
-   * The underlying `lunr` search index
+   * The underlying Lunr.js search index
    */
   protected index: lunr.Index
 

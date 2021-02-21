@@ -51,7 +51,7 @@ export type Content =
 interface MountOptions {
   target$: Observable<HTMLElement>     /* Location target observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
-  print$: Observable<void>             /* Print observable */
+  print$: Observable<void>             /* Print mode observable */
 }
 
 /* ----------------------------------------------------------------------------

@@ -50,7 +50,7 @@ export interface Details {}
  */
 interface WatchOptions {
   target$: Observable<HTMLElement>     /* Location target observable */
-  print$: Observable<void>             /* Print observable */
+  print$: Observable<void>             /* Print mode observable */
 }
 
 /**
@@ -58,7 +58,7 @@ interface WatchOptions {
  */
 interface MountOptions {
   target$: Observable<HTMLElement>     /* Location target observable */
-  print$: Observable<void>             /* Print observable */
+  print$: Observable<void>             /* Print mode observable */
 }
 
 /* ----------------------------------------------------------------------------

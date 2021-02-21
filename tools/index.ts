@@ -21,6 +21,7 @@
  */
 
 import { minify as minhtml } from "html-minifier"
+import * as path from "path"
 import { concat, merge } from "rxjs"
 import { concatMap } from "rxjs/operators"
 
@@ -30,6 +31,22 @@ import {
   transformScript,
   transformStyle
 } from "./transform"
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Replace file extension
+ *
+ * @param file - File
+ * @param extension - New extension
+ *
+ * @returns File with new extension
+ */
+function ext(file: string, extension: string): string {
+  return file.replace(path.extname(file), extension)
+}
 
 /* ----------------------------------------------------------------------------
  * Program
@@ -81,7 +98,7 @@ const assets$ = concat(
   copyAll("**/*.html", {
     src: "src",
     out: base,
-    fn: async content => {
+    transform: async content => {
       const metadata = require("../package.json")
       const banner =
         "{#-\n" +
@@ -111,16 +128,16 @@ const assets$ = concat(
 )
 
 /* Transform stylesheets with SASS and PostCSS */
-const styles$ = resolve("**/[!_]*.scss", { cwd: "src" })
+const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
   .pipe(
     concatMap(file => transformStyle({
       src: `src/${file}`,
-      out: `${base}/${file.replace(/\.scss$/, ".css")}`
+      out: ext(`${base}/${file}`, ".css")
     }))
   )
 
 /* Transform scripts with ESBuild */
-const scripts$ = merge(
+const javascripts$ = merge(
 
   /* Transform application */
   transformScript({
@@ -144,8 +161,11 @@ const scripts$ = merge(
 /* Compile everything */
 concat(
   dependencies$,
-  assets$,
-  styles$,
-  scripts$
+  merge(
+    assets$,
+    stylesheets$,
+    javascripts$
+  )
 )
-  .subscribe(console.log)
+  .subscribe()
+  // .subscribe(console.log)

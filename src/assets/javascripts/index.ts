@@ -75,7 +75,7 @@ import {
 document.documentElement.classList.remove("no-js")
 document.documentElement.classList.add("js")
 
-/* Set up navigation observables */
+/* Set up navigation observables and subjects */
 const document$ = watchDocument()
 const location$ = watchLocation()
 const target$   = watchLocationTarget()
@@ -196,15 +196,16 @@ const component$ = document$
 /* Subscribe to all components */
 component$.subscribe()
 
-/* Export to window */
-export {
-  document$,
-  location$,
-  target$,
-  keyboard$,
-  viewport$,
-  tablet$,
-  screen$,
-  print$,
-  component$
-}
+/* ----------------------------------------------------------------------------
+ * Exports
+ * ------------------------------------------------------------------------- */
+
+window.document$  = document$          /* Document observable */
+window.location$  = location$          /* Location subject */
+window.target$    = target$            /* Location target observable */
+window.keyboard$  = keyboard$          /* Keyboard observable */
+window.viewport$  = viewport$          /* Viewport observable */
+window.tablet$    = tablet$            /* Tablet observable */
+window.screen$    = screen$            /* Screen observable */
+window.print$     = print$             /* Print mode observable */
+window.component$ = component$         /* Component observable */

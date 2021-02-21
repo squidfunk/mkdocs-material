@@ -48,7 +48,7 @@ type CopyTransformFn = (content: string) => Promise<string>
 interface CopyOptions {
   src: string                          /* Source file */
   out: string                          /* Target file */
-  fn?: CopyTransformFn                 /* Transform function */
+  transform?: CopyTransformFn          /* Transform function */
 }
 
 /* ----------------------------------------------------------------------------
@@ -63,15 +63,15 @@ interface CopyOptions {
  * @returns File observable
  */
 export function copy(
-  { src, out, fn }: CopyOptions
+  { src, out, transform }: CopyOptions
 ): Observable<string> {
   return mkdir(path.dirname(out))
     .pipe(
-      switchMap(() => typeof fn === "undefined"
+      switchMap(() => typeof transform === "undefined"
         ? from(fs.copyFile(src, out))
         : from(fs.readFile(src, "utf8"))
             .pipe(
-              switchMap(content => fn(content)),
+              switchMap(content => transform(content)),
               switchMap(content => fs.writeFile(out, content))
             )
       ),

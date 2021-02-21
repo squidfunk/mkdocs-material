@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import "lunr"
+import lunr from "lunr"
 
 import { Search, SearchIndexConfig } from "../../_"
 import {
@@ -148,6 +148,10 @@ export async function handler(
  * Worker
  * ------------------------------------------------------------------------- */
 
+/* @ts-ignore - expose Lunr.js in global scope, or stemmers will not work */
+self.lunr = lunr
+
+/* Handle messages */
 addEventListener("message", async ev => {
   postMessage(await handler(ev.data))
 })

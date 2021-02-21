@@ -52,7 +52,7 @@ export function watchMedia(query: string): Observable<boolean> {
 /**
  * Watch print mode, cross-browser
  *
- * @returns Print observable
+ * @returns Print mode observable
  */
 export function watchPrint(): Observable<void> {
   return merge(

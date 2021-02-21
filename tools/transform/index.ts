@@ -24,13 +24,12 @@ import { build } from "esbuild"
 import * as fs from "fs/promises"
 import * as path from "path"
 import postcss from "postcss"
-import { Observable, defer, merge } from "rxjs"
+import { Observable, concat, defer, merge } from "rxjs"
 import {
   endWith,
   ignoreElements,
   mapTo,
-  switchMap,
-  tap
+  switchMap
 } from "rxjs/operators"
 import { render as sass } from "sass"
 import { promisify } from "util"
@@ -92,8 +91,8 @@ export function transformStyle(
             `${base}/.icons`
           ],
           encode: false
-        }),
-        require("cssnano")
+        })
+        // require("cssnano")
       ])
         .process(css, {
           from: src,
@@ -104,10 +103,12 @@ export function transformStyle(
           }
         })
       ),
-      tap(() => mkdir(path.dirname(out))),
-      switchMap(({ css, map }) => merge(
-        fs.writeFile(`${out}`, css),
-        fs.writeFile(`${out}.map`, map.toString())
+      switchMap(({ css, map }) => concat(
+        mkdir(path.dirname(out)),
+        merge(
+          fs.writeFile(`${out}`, css),
+          fs.writeFile(`${out}.map`, map.toString())
+        )
       )),
       ignoreElements(),
       endWith(out)

@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, merge } from "rxjs"
+import { merge } from "rxjs"
 import { switchMap } from "rxjs/operators"
 
 import {
@@ -37,8 +37,7 @@ import { setupAnalytics } from "./integrations"
 setupAnalytics()
 
 /* Set up extra component observables */
-declare const document$: Observable<Document>
-document$
+window.document$
   .pipe(
     switchMap(() => merge(
 
