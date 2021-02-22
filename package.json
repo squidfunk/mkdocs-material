@@ -31,7 +31,7 @@
     "lint": "run-p lint:*",
     "lint:scss": "stylelint \"src/assets/**/*.scss\"",
     "lint:ts": "eslint --cache \"src/**/*.ts\"",
-    "start": "webpack --mode development --watch"
+    "start": "ts-node -T tools --watch"
   },
   "dependencies": {
     "clipboard": "^2.0.6",

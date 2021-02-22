@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "utilities"
+import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
  * Functions

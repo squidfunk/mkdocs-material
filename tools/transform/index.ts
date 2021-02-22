@@ -20,21 +20,27 @@
  * IN THE SOFTWARE.
  */
 
-import { build } from "esbuild"
+import { createHash } from "crypto"
+import { build as esbuild } from "esbuild"
 import * as fs from "fs/promises"
 import * as path from "path"
 import postcss from "postcss"
-import { Observable, concat, defer, merge } from "rxjs"
+import {
+  Observable,
+  concat,
+  defer,
+  merge,
+  of
+} from "rxjs"
 import {
   endWith,
   ignoreElements,
-  mapTo,
   switchMap
 } from "rxjs/operators"
 import { render as sass } from "sass"
 import { promisify } from "util"
 
-import { base, mkdir } from "../resolve"
+import { base, mkdir } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -44,8 +50,8 @@ import { base, mkdir } from "../resolve"
  * Transform options
  */
 interface TransformOptions {
-  src: string                          /* Source file */
-  out: string                          /* Target file */
+  from: string                         /* Source destination */
+  to: string                           /* Target destination */
 }
 
 /* ----------------------------------------------------------------------------
@@ -53,9 +59,28 @@ interface TransformOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Base directory for source maps
+ * Base directory for source map resolution
  */
 const root = new RegExp(`file://${path.resolve(".")}/`, "g")
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Compute a digest for cachebusting a file
+ *
+ * @param file - File
+ * @param data - File data
+ *
+ * @returns File with digest
+ */
+function digest(file: string, data: string): string {
+  const hash = createHash("sha256").update(data).digest("hex")
+  return process.argv.includes("--optimize")
+    ? file.replace(/\b(?=\.)/, `.${hash.slice(0, 8)}.min`)
+    : file
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -69,10 +94,11 @@ const root = new RegExp(`file://${path.resolve(".")}/`, "g")
  * @returns File observable
  */
 export function transformStyle(
-  { src, out }: TransformOptions
+  options: TransformOptions
 ): Observable<string> {
   return defer(() => promisify(sass)({
-    file: src,
+    file: options.from,
+    outFile: options.to,
     includePaths: [
       "src/assets/stylesheets",
       "node_modules/modularscale-sass/stylesheets",
@@ -80,8 +106,7 @@ export function transformStyle(
       "node_modules/material-shadows"
     ],
     sourceMap: true,
-    sourceMapRoot: ".",
-    outFile: out
+    sourceMapContents: true
   }))
     .pipe(
       switchMap(({ css, map }) => postcss([
@@ -97,23 +122,30 @@ export function transformStyle(
           : []
       ])
         .process(css, {
-          from: src,
-          to: out,
+          from: options.from,
           map: {
-            prev: `${map}`.replace(root, ""),
+            prev: `${map}`,
             inline: false
           }
         })
       ),
-      switchMap(({ css, map }) => concat(
-        mkdir(path.dirname(out)),
-        defer(() => merge(
-          fs.writeFile(`${out}`, css),
-          fs.writeFile(`${out}.map`, map.toString())
-        ))
-      )),
-      ignoreElements(),
-      endWith(out)
+      switchMap(({ css, map }) => {
+        const file = digest(options.to, css)
+        return concat(
+          mkdir(path.dirname(file)),
+          defer(() => merge(
+            fs.writeFile(`${file}.map`, `${map}`.replace(root, "")),
+            fs.writeFile(`${file}`, css.replace(
+              options.from,
+              path.basename(file)
+            )),
+          ))
+        )
+          .pipe(
+            ignoreElements(),
+            endWith(file)
+          )
+      })
     )
 }
 
@@ -125,16 +157,40 @@ export function transformStyle(
  * @returns File observable
  */
 export function transformScript(
-  { src, out }: TransformOptions
+  options: TransformOptions
 ): Observable<string> {
-  return defer(() => build({
-    entryPoints: [src],
-    outfile: out,
+  return defer(() => esbuild({
+    entryPoints: [options.from],
+    write: false,
     bundle: true,
     sourcemap: true,
     minify: process.argv.includes("--optimize")
   }))
     .pipe(
-      mapTo(out)
+      switchMap(({ outputFiles: [file] }) => {
+        const contents = file.text.split("\n")
+        const [, data] = contents[contents.length - 2].split(",")
+        return of({
+          js:  file.text,
+          map: Buffer.from(data, "base64")
+        })
+      }),
+      switchMap(({ js, map }) => {
+        const file = digest(options.to, js)
+        return concat(
+          mkdir(path.dirname(file)),
+          defer(() => merge(
+            fs.writeFile(`${file}.map`, map),
+            fs.writeFile(`${file}`, js.replace(
+              /(sourceMappingURL=)(.*)/,
+              `$1${path.basename(file)}\n`
+            )),
+          ))
+        )
+          .pipe(
+            ignoreElements(),
+            endWith(file)
+          )
+      })
     )
 }

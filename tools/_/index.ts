@@ -20,9 +20,10 @@
  * IN THE SOFTWARE.
  */
 
+import * as chokidar from "chokidar"
 import * as fs from "fs/promises"
-import { Observable, from } from "rxjs"
-import { mapTo, switchMap } from "rxjs/operators"
+import { Observable, from, fromEvent, identity } from "rxjs"
+import { mapTo, mergeWith, switchMap } from "rxjs/operators"
 import glob from "tiny-glob"
 
 /* ----------------------------------------------------------------------------
@@ -33,6 +34,14 @@ import glob from "tiny-glob"
  * Resolve options
  */
 interface ResolveOptions {
+  cwd: string                          /* Working directory */
+  watch?: boolean                      /* Watch mode */
+}
+
+/**
+ * Watch options
+ */
+interface WatchOptions {
   cwd: string                          /* Working directory */
 }
 
@@ -48,23 +57,6 @@ export const base = "material"
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
-
-/**
- * Resolve a pattern
- *
- * @param pattern - Pattern
- * @param options - Options
- *
- * @returns File observable
- */
-export function resolve(
-  pattern: string, options?: ResolveOptions
-): Observable<string> {
-  return from(glob(pattern, options))
-    .pipe(
-      switchMap(files => from(files))
-    )
-}
 
 /**
  * Recursively create the given directory
@@ -83,23 +75,35 @@ export function mkdir(
 }
 
 /**
- * Cachebust a file using a content hash
+ * Resolve a pattern
  *
- * @param file - File
- * @param hash - Content hash
+ * @param pattern - Pattern
  * @param options - Options
  *
- * @returns Cachebusting tuple observable
+ * @returns File observable
  */
-export function cachebust(
-  file: string, hash: string, options: ResolveOptions
-): Observable<[string, string]> {
-  const name = file.replace(/\b(?=\.)/, `.${hash.slice(0, 8)}.min`)
-  return from(fs.rename(
-    `${options.cwd}/${file}`,
-    `${options.cwd}/${name}`
-  ))
+export function resolve(
+  pattern: string, options?: ResolveOptions
+): Observable<string> {
+  return from(glob(pattern, options))
     .pipe(
-      mapTo([file, name])
+      switchMap(files => from(files)),
+      options?.watch
+        ? mergeWith(watch(pattern, options))
+        : identity
     )
+}
+
+/**
+ * Watch all files matching the given pattern
+ *
+ * @param pattern - Pattern
+ * @param options - Options
+ *
+ * @returns File observable
+ */
+export function watch(
+  pattern: string, options: WatchOptions
+): Observable<string> {
+  return fromEvent(chokidar.watch(pattern, options), "change")
 }

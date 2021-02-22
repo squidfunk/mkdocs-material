@@ -30,7 +30,6 @@ venv
 # Build files
 build
 MANIFEST
-manifest.json
 site
 
 # Distribution files

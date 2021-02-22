@@ -25,7 +25,7 @@ import * as path from "path"
 import { Observable, from } from "rxjs"
 import { mapTo, mergeMap, switchMap } from "rxjs/operators"
 
-import { mkdir, resolve } from "../resolve"
+import { mkdir, resolve } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -47,9 +47,10 @@ type CopyTransformFn = (data: string, name: string) => Promise<string>
  * Copy options
  */
 interface CopyOptions {
-  src: string                          /* Source file */
-  out: string                          /* Target file */
+  from: string                         /* Source destination */
+  to: string                           /* Target destination */
   transform?: CopyTransformFn          /* Transform function */
+  watch?: boolean                      /* Watch mode */
 }
 
 /* ----------------------------------------------------------------------------
@@ -64,19 +65,19 @@ interface CopyOptions {
  * @returns File observable
  */
 export function copy(
-  { src, out, transform }: CopyOptions
+  { transform, ...options }: CopyOptions
 ): Observable<string> {
-  return mkdir(path.dirname(out))
+  return mkdir(path.dirname(options.to))
     .pipe(
       switchMap(() => typeof transform === "undefined"
-        ? from(fs.copyFile(src, out))
-        : from(fs.readFile(src, "utf8"))
+        ? from(fs.copyFile(options.from, options.to))
+        : from(fs.readFile(options.from, "utf8"))
             .pipe(
-              switchMap(data => transform(data, src)),
-              switchMap(data => fs.writeFile(out, data))
+              switchMap(data => transform(data, options.from)),
+              switchMap(data => fs.writeFile(options.to, data))
             )
       ),
-      mapTo(out)
+      mapTo(options.to)
     )
 }
 
@@ -94,12 +95,12 @@ export function copy(
 export function copyAll(
   pattern: string, options: CopyOptions
 ): Observable<string> {
-  return resolve(pattern, { cwd: options.src })
+  return resolve(pattern, { ...options, cwd: options.from })
     .pipe(
       mergeMap(file => copy({
         ...options,
-        src: `${options.src}/${file}`,
-        out: `${options.out}/${file.replace(/(\.{2}\/)+/, "")}`
+        from: `${options.from}/${file}`,
+        to:   `${options.to}/${file.replace(/(\.{2}\/)+/, "")}`
       }), 16)
     )
 }

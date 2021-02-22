@@ -53,7 +53,8 @@ import {
   watchElementThreshold
 } from "~/browser"
 
-import { Icon, renderIconSearchResult } from "../../../templates"
+import { Icon, renderIconSearchResult } from "_/templates"
+
 import { Component } from "../../_"
 import { IconSearchIndex } from "../_"
 import { IconSearchQuery } from "../query"
