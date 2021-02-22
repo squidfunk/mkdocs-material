@@ -87,8 +87,7 @@ as [documented here][2]._
 ### Site language selector
 
 [:octicons-file-code-24: Source][3] ·
-:octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][3]{: .tx-insiders }
+:octicons-beaker-24: Experimental
 
 If your documentation is available in multiple languages, a _language selector_
 can be added to the header next to the search bar. Languages can be defined via
@@ -118,7 +117,7 @@ This will render a language selector in the header next to the search bar:
 
 [![Language selection][4]][4]
 
-  [3]: ../insiders.md
+  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/header.html
   [4]: ../assets/screenshots/language-selection.png
 
 ### Site search language

@@ -36,6 +36,7 @@ export type ComponentType =
   | "dialog"                           /* Dialog */
   | "header"                           /* Header */
   | "header-title"                     /* Header title */
+  | "header-topic"                     /* Header topic */
   | "main"                             /* Main area */
   | "search"                           /* Search */
   | "search-query"                     /* Search input */
