@@ -64,7 +64,8 @@ import {
 } from "./integrations"
 import {
   patchIndeterminate,
-  patchScrollfix
+  patchScrollfix,
+  patchScrolllock
 } from "./patches"
 
 /* ----------------------------------------------------------------------------
@@ -128,6 +129,7 @@ keyboard$
 /* Set up patches */
 patchIndeterminate({ document$ })
 patchScrollfix({ document$ })
+patchScrolllock({ viewport$, tablet$ })
 
 /* Set up header and main area observable */
 const header$ = watchHeader(getComponentElement("header"), { viewport$ })
@@ -208,4 +210,5 @@ window.viewport$  = viewport$          /* Viewport observable */
 window.tablet$    = tablet$            /* Tablet observable */
 window.screen$    = screen$            /* Screen observable */
 window.print$     = print$             /* Print mode observable */
+window.alert$     = alert$             /* Alert subject */
 window.component$ = component$         /* Component observable */

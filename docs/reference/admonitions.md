@@ -234,28 +234,53 @@ Admonitions and [Details][11] can also be rendered as inline blocks (i.e.
 sidebars), moving them to the right using the `inline` + `end` modifiers, or
 to the left using only the `inline` modifier.
 
-_Example_:
-
-``` markdown
-!!! info inline end
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
-```
-
-_Result_:
-
 === "inline end"
 
-    [![Admonition, inline end][13]][13]
+    _Example_ / _Result_:
+
+    !!! info inline end
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+        euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+        purus auctor massa, nec semper lorem quam in massa.
+
+    ``` markdown
+    !!! info inline end
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nulla et euismod nulla.
+        Curabitur feugiat, tortor non consequat
+        finibus, justo purus auctor massa, nec
+        semper lorem quam in massa.
+    ```
+
+    Use `inline end` to align to the right (left for rtl languages).
 
 === "inline"
 
-    [![Admonition, inline][14]][14]
+    _Example_ / _Result_:
+
+    !!! info inline
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+        euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+        purus auctor massa, nec semper lorem quam in massa.
+
+    ``` markdown
+    !!! info inline
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nulla et euismod nulla.
+        Curabitur feugiat, tortor non consequat
+        finibus, justo purus auctor massa, nec
+        semper lorem quam in massa.
+    ```
+
+    Use `inline` to align to the left (right for rtl languages).
+
+_If there's insufficient space to render the admonition next to the block, the
+admonition will stretch to the full width of the viewport, e.g. on mobile
+viewports._
 
   [12]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_modifiers.scss
-  [13]: ../assets/screenshots/admonition-inline-end.png
-  [14]: ../assets/screenshots/admonition-inline.png
 
 ### Supported types
 
@@ -363,8 +388,8 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
 ### Custom admonitions
 
 If you want to add a custom admonition type, all you need is a color and an
-`svg` icon. Copy the icon's `svg` code from the [`.icons`][15] folder and add the
-following CSS to an [additional stylesheet][16]:
+`svg` icon. Copy the icon's `svg` code from the [`.icons`][13] folder and add the
+following CSS to an [additional stylesheet][14]:
 
 ``` css
 :root {
@@ -388,7 +413,7 @@ following CSS to an [additional stylesheet][16]:
 
 You should now be able to create an admonition of the `pied-piper` type. Note
 that you can also use this technique to override existing admonition icons or
-colors. [You can even add animations][17].
+colors. [You can even add animations][15].
 
 <style>
   :root {
@@ -427,6 +452,6 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-  [15]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
-  [16]: ../customization.md#additional-css
-  [17]: https://facelessuser.github.io/pymdown-extensions/extensions/details/
+  [13]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [14]: ../customization.md#additional-css
+  [15]: https://facelessuser.github.io/pymdown-extensions/extensions/details/

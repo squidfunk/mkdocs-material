@@ -316,8 +316,9 @@ customize the `transform` function, you can do this by [overriding the
 
 ``` html
 {% block config %}
+  {{ super() }}
   <script>
-    var search = {
+    var __search = {
       transform: function(query) {
         return query
       }
@@ -345,8 +346,9 @@ directory and [override the `config` block][21]:
 
 ``` html
 {% block config %}
+  {{ super() }}
   <script>
-    var search = {
+    var __search = {
       worker: "<url>"
     }
   </script>

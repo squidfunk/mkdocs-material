@@ -68,7 +68,7 @@ which will emit the current `URL` to listen for navigation events and register
 a page view event with:
 
 ``` js
-app.location$.subscribe(function(url) {
+location$.subscribe(function(url) {
   /* Add custom page event tracking here */
 })
 ```

@@ -90,8 +90,8 @@ as [documented here][2]._
 :octicons-beaker-24: Experimental
 
 If your documentation is available in multiple languages, a _language selector_
-can be added to the header next to the search bar. Languages can be defined via
-`mkdocs.yml`:
+can be added to the header next to the search bar. Alternate languages can be
+defined via `mkdocs.yml`:
 
 ``` yaml
 extra:

@@ -123,7 +123,7 @@ loading][6] via [additional JavaScript][2]:
 === "docs/javascripts/tables.js"
 
     ``` js
-    app.document$.subscribe(function() {
+    document$.subscribe(function() {
       var tables = document.querySelectorAll("article table")
       tables.forEach(function(table) {
         new Tablesort(table)

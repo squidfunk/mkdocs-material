@@ -43,7 +43,7 @@ _Result_:
 
   [2]: #attribute-list
   [3]: ../setup/changing-the-colors.md#primary-color
-  [4]: javascript:app.dialog$.next("Done!")
+  [4]: javascript:alert$.next("Done!")
 
 ### Adding primary buttons
 

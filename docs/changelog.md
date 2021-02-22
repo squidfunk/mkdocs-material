@@ -6,6 +6,15 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.0.0 <small>_ February 22, 2021</small>
+
+- Added support for deploying multiple versions
+- Added support for adding a language selector
+- Added support for rendering admonitions as inline blocks
+- Rewrite of the underlying reactive architecture
+- Removed Webpack in favor of reactive build strategy (-480 dependencies)
+- Fixed keyboard navigation for code blocks after content tabs switch
+
 ### 6.2.8 <small>_ February 4, 2021</small>
 
 - Updated Japanese and Polish translations

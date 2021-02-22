@@ -20,57 +20,67 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject } from "rxjs"
-
-import { Keyboard, Viewport } from "~/browser"
-import { Component } from "~/components"
 import {
-  SearchIndex,
-  SearchTransformFn
-} from "~/integrations"
+  Observable,
+  animationFrameScheduler,
+  combineLatest,
+  of
+} from "rxjs"
+import {
+  delay,
+  map,
+  observeOn,
+  switchMap,
+  withLatestFrom
+} from "rxjs/operators"
+
+import { resetScrollLock, setScrollLock } from "~/actions"
+import { Viewport, watchToggle } from "~/browser"
 
 /* ----------------------------------------------------------------------------
- * Global types
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Global search configuration
+ * Patch options
  */
-export interface GlobalSearchConfig {
-  transform?: SearchTransformFn        /* Transformation function */
-  index?: Promise<SearchIndex>         /* Alternate index */
-}
-
-/* ------------------------------------------------------------------------- */
-
-declare global {
-
-  /**
-   * Global search configuration
-   */
-  const __search: GlobalSearchConfig | undefined
-
-  /**
-   * Google Analytics
-   */
-  function ga(...args: string[]): void
+interface PatchOptions {
+  viewport$: Observable<Viewport>      /* Viewport observable */
+  tablet$: Observable<boolean>         /* Tablet breakpoint observable */
 }
 
 /* ----------------------------------------------------------------------------
- * Types
+ * Functions
  * ------------------------------------------------------------------------- */
 
-declare global {
-  interface Window {
-    document$: Observable<Document>    /* Document observable */
-    location$: Subject<URL>            /* Location subject */
-    target$: Observable<HTMLElement>   /* Location target observable */
-    keyboard$: Observable<Keyboard>    /* Keyboard observable */
-    viewport$: Observable<Viewport>    /* Viewport obsevable */
-    tablet$: Observable<boolean>       /* Tablet breakpoint observable */
-    screen$: Observable<boolean>       /* Screen breakpoint observable */
-    print$: Observable<void>           /* Print mode observable */
-    alert$: Subject<string>            /* Alert subject */
-    component$: Observable<Component>  /* Component observable */
-  }
+/**
+ * Patch the document body to lock when search is open
+ *
+ * For mobile and tablet viewports, the search is rendered full screen, which
+ * leads to scroll leaking when at the top or bottom of the search result. This
+ * function locks the body when the search is in full screen mode, and restores
+ * the scroll position when leaving.
+ *
+ * @param options - Options
+ */
+export function patchScrolllock(
+  { viewport$, tablet$ }: PatchOptions
+): void {
+  combineLatest([watchToggle("search"), tablet$])
+    .pipe(
+      map(([active, tablet]) => active && !tablet),
+      switchMap(active => of(active)
+        .pipe(
+          delay(active ? 400 : 100),
+          observeOn(animationFrameScheduler)
+        )
+      ),
+      withLatestFrom(viewport$)
+    )
+      .subscribe(([active, { offset: { y }}]) => {
+        if (active)
+          setScrollLock(document.body, y)
+        else
+          resetScrollLock(document.body)
+      })
 }

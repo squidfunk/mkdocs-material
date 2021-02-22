@@ -408,7 +408,7 @@ JavaScript][33], you can subscribe to the `keyboard$` observable and attach
 your custom event listener:
 
 ``` js
-app.keyboard$.subscribe(function(key) {
+keyboard$.subscribe(function(key) {
   if (key.mode === "global" && key.type === "x") {
     /* Add custom keyboard handler here */
     key.claim()
