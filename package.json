@@ -86,7 +86,7 @@
     "rimraf": "^3.0.2",
     "sass": "^1.32.6",
     "sass-loader": "^10.1.1",
-    "stylelint": "^13.9.0",
+    "stylelint": "^13.11.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-standard": "^20.0.0",
