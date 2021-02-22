@@ -23,6 +23,7 @@
 import "focus-visible"
 import { Subject, defer, merge } from "rxjs"
 import {
+  delay,
   filter,
   map,
   mergeWith,
@@ -96,9 +97,15 @@ setupClipboardJS({ alert$ })
 if (feature("navigation.instant"))
   setupInstantLoading({ document$, location$, viewport$ })
 
-/* Always close drawer on navigation */
+/* Always close drawer and search on navigation */
 merge(location$, target$)
-  .subscribe(() => setToggle("drawer", false))
+  .pipe(
+    delay(125)
+  )
+    .subscribe(() => {
+      setToggle("drawer", false)
+      setToggle("search", false)
+    })
 
 /* Set up global keyboard handlers */
 keyboard$
