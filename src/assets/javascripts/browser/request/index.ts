@@ -41,9 +41,9 @@ import {
  * @returns Response observable
  */
 export function request(
-  url: string, options: RequestInit = { credentials: "same-origin" }
+  url: URL | string, options: RequestInit = { credentials: "same-origin" }
 ): Observable<Response> {
-  return from(fetch(url, options))
+  return from(fetch(url.toString(), options))
     .pipe(
       filter(res => res.status === 200),
     )
@@ -60,7 +60,7 @@ export function request(
  * @returns Data observable
  */
 export function requestJSON<T>(
-  url: string, options?: RequestInit
+  url: URL | string, options?: RequestInit
 ): Observable<T> {
   return request(url, options)
     .pipe(
@@ -78,7 +78,7 @@ export function requestJSON<T>(
  * @returns Data observable
  */
 export function requestXML(
-  url: string, options?: RequestInit
+  url: URL | string, options?: RequestInit
 ): Observable<Document> {
   const dom = new DOMParser()
   return request(url, options)

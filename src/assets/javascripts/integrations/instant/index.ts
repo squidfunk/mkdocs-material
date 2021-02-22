@@ -277,7 +277,7 @@ export function setupInstantLoading(
 
           /* Components */
           "[data-md-component=announce]",
-          "[data-md-component=header-title]",
+          "[data-md-component=header-topic]",
           "[data-md-component=container]",
           "[data-md-component=skip]"
         ]) {

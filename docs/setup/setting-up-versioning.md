@@ -18,7 +18,6 @@ documentation remain untouched.
 [:octicons-file-code-24: Source][2] ·
 [:octicons-package-24: Utility][1] ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][2]{: .tx-insiders }
 
 [mike][1] makes it easy to deploy multiple versions of your project
 documentation. It integrates natively with Material for MkDocs and can be
@@ -27,7 +26,7 @@ enabled via `mkdocs.yml`:
 ``` yaml
 extra:
   version:
-    method: mike
+    provider: mike
 ```
 
 This will render a version selector in the header next to the title of your
@@ -62,7 +61,7 @@ _Note that you don't need to run_ `mike install-extras` _as noted in the
 [official documentation][6], as [mike][1] is now natively integrated with
 Material for MkDocs._
 
-  [2]: ../insiders.md
+  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/header.html
   [3]: ../assets/screenshots/versioning.png
   [4]: https://squidfunk.github.io/mkdocs-material-example-versioning/
   [5]: https://github.com/jimporter/mike#why-use-mike

@@ -65,6 +65,13 @@ export type Translations = Record<Translation, string>
 /* ------------------------------------------------------------------------- */
 
 /**
+ * Versioning
+ */
+export interface Versioning {
+  provider: "mike"                     /* Version provider */
+}
+
+/**
  * Configuration
  */
 export interface Config {
@@ -72,6 +79,7 @@ export interface Config {
   features: Flag[]                     /* Feature flags */
   translations: Translations           /* Translations */
   search: string                       /* Search worker URL */
+  version?: Versioning                 /* Versioning */
 }
 
 /* ----------------------------------------------------------------------------

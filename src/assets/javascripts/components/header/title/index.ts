@@ -34,6 +34,7 @@ import {
   tap
 } from "rxjs/operators"
 
+import { configuration } from "~/_"
 import {
   resetHeaderTitleState,
   setHeaderTitleState
@@ -41,9 +42,15 @@ import {
 import {
   Viewport,
   getElement,
+  getElementOrThrow,
   getElementSize,
+  requestJSON,
   watchViewportAt
 } from "~/browser"
+import {
+  Version,
+  renderVersionSelector
+} from "~/templates"
 
 import { Component } from "../../_"
 import { Header } from "../_"
@@ -130,6 +137,15 @@ export function mountHeaderTitle(
           setHeaderTitleState(el, "active")
         else
           resetHeaderTitleState(el)
+      })
+
+  /* Render version selector */
+  const config = configuration()
+  if (config.version?.provider === "mike")
+    requestJSON<Version[]>(new URL("../versions.json", config.base))
+      .subscribe(versions => {
+        const topic = getElementOrThrow(".md-header__topic", el)
+        topic.appendChild(renderVersionSelector(versions))
       })
 
   /* Obtain headline, if any */
