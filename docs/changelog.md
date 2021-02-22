@@ -9,7 +9,7 @@ template: overrides/main.html
 ### 7.0.0 <small>_ February 22, 2021</small>
 
 - Added support for deploying multiple versions
-- Added support for adding a language selector
+- Added support for integrating a language selector
 - Added support for rendering admonitions as inline blocks
 - Rewrite of the underlying reactive architecture
 - Removed Webpack in favor of reactive build strategy (-480 dependencies)

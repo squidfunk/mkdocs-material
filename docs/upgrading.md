@@ -16,6 +16,311 @@ Inspect the currently installed version with:
 pip show mkdocs-material
 ```
 
+## Upgrading from 6.x to 7.x
+
+### What's new?
+
+- Added support for deploying multiple versions
+- Added support for integrating a language selector
+- Added support for rendering admonitions as inline blocks
+- Rewrite of the underlying reactive architecture
+- Removed Webpack in favor of reactive build strategy (-480 dependencies)
+- Fixed keyboard navigation for code blocks after content tabs switch
+
+### Changes to `mkdocs.yml`
+
+#### `extra.version.method`
+
+The versioning method configuration was renamed to `extra.version.provider` to
+allow for different versioning strategies in the future:
+
+=== "7.x"
+
+    ``` yaml
+    extra:
+      version:
+        provider: mike
+    ```
+
+=== "6.x"
+
+    ``` yaml
+    extra:
+      version:
+        method: mike
+    ```
+
+### Changes to `*.html` files
+
+The templates have undergone a set of changes to make them future-proof. If
+you've used theme extension to override a block or template, make sure that it
+matches the new structure:
+
+- If you've overridden a __block__, check `base.html` for potential changes
+- If you've overridden a __template__, check the respective `*.html` file for
+  potential changes
+
+??? quote "`base.html`"
+
+    ``` diff
+    @@ -61,7 +61,7 @@
+                font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
+                font.code | replace(' ', '+')
+              }}&display=fallback">
+    -        <style>body,input{font-family:"{{ font.text }}",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}",SFMono-Regular,Consolas,Menlo,monospace}</style>
+    +        <style>:root{--md-text-font-family:"{{ font.text }}";--md-code-font-family:"{{ font.code }}"}</style>
+          {% endif %}
+        {% endblock %}
+        {% if config.extra.manifest %}
+    @@ -131,7 +131,7 @@
+                  {% if page and page.meta and page.meta.hide %}
+                    {% set hidden = "hidden" if "navigation" in page.meta.hide %}
+                  {% endif %}
+    -              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" {{ hidden }}>
+    +              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
+                    <div class="md-sidebar__scrollwrap">
+                      <div class="md-sidebar__inner">
+                        {% include "partials/nav.html" %}
+    @@ -143,7 +143,7 @@
+                  {% if page and page.meta and page.meta.hide %}
+                    {% set hidden = "hidden" if "toc" in page.meta.hide %}
+                  {% endif %}
+    -              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" {{ hidden }}>
+    +              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
+                    <div class="md-sidebar__scrollwrap">
+                      <div class="md-sidebar__inner">
+                        {% include "partials/toc.html" %}
+    @@ -152,7 +152,7 @@
+                  </div>
+                {% endif %}
+              {% endblock %}
+    -          <div class="md-content">
+    +          <div class="md-content" data-md-component="content">
+                <article class="md-content__inner md-typeset">
+                  {% block content %}
+                    {% if page.edit_url %}
+    @@ -183,10 +183,18 @@
+            {% include "partials/footer.html" %}
+          {% endblock %}
+        </div>
+    -    {% block scripts %}
+    -      <script src="{{ 'assets/javascripts/vendor.18f0862e.min.js' | url }}"></script>
+    -      <script src="{{ 'assets/javascripts/bundle.994580cf.min.js' | url }}"></script>
+    -      {%- set translations = {} -%}
+    +    <div class="md-dialog" data-md-component="dialog">
+    +      <div class="md-dialog__inner md-typeset"></div>
+    +    </div>
+    +    {% block config %}
+    +      {%- set app = {
+    +        "base": base_url,
+    +        "features": features,
+    +        "translations": {},
+    +        "search": "assets/javascripts/workers/search.217ffd95.min.js" | url,
+    +        "version": config.extra.version or None
+    +      } -%}
+    +      {%- set translations = app.translations -%}
+          {%- for key in [
+            "clipboard.copy",
+            "clipboard.copied",
+    @@ -204,19 +212,12 @@
+          ] -%}
+            {%- set _ = translations.update({ key: lang.t(key) }) -%}
+          {%- endfor -%}
+    -      <script id="__lang" type="application/json">
+    -        {{- translations | tojson -}}
+    -      </script>
+    -      {% block config %}{% endblock %}
+    -      <script>
+    -        app = initialize({
+    -          base: "{{ base_url }}",
+    -          features: {{ features or [] | tojson }},
+    -          search: Object.assign({
+    -            worker: "{{ 'assets/javascripts/worker/search.9c0e82ba.min.js' | url }}"
+    -          }, typeof search !== "undefined" && search)
+    -        })
+    +      <script id="__config" type="application/json">
+    +        {{- app | tojson -}}
+          </script>
+    +    {% endblock %}
+    +    {% block scripts %}
+    +      <script src="{{ 'assets/javascripts/bundle.926459b3.min.js' | url }}"></script>
+          {% for path in config["extra_javascript"] %}
+            <script src="{{ path | url }}"></script>
+          {% endfor %}
+    ```
+
+??? quote "`partials/footer.html`"
+
+    ``` diff
+    -    <div class="md-footer-nav">
+    -      <nav class="md-footer-nav__inner md-grid" aria-label="{{ lang.t('footer.title') }}">
+    -        {% if page.previous_page %}
+    -          <a href="{{ page.previous_page.url | url }}" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+    -            <div class="md-footer-nav__button md-icon">
+    -              {% include ".icons/material/arrow-left.svg" %}
+    -            </div>
+    -            <div class="md-footer-nav__title">
+    -              <div class="md-ellipsis">
+    -                <span class="md-footer-nav__direction">
+    -                  {{ lang.t("footer.previous") }}
+    -                </span>
+    -                {{ page.previous_page.title }}
+    -              </div>
+    -            </div>
+    -          </a>
+    -        {% endif %}
+    -        {% if page.next_page %}
+    -          <a href="{{ page.next_page.url | url }}" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+    -            <div class="md-footer-nav__title">
+    -              <div class="md-ellipsis">
+    -                <span class="md-footer-nav__direction">
+    -                  {{ lang.t("footer.next") }}
+    -                </span>
+    -                {{ page.next_page.title }}
+    -              </div>
+    +    <nav class="md-footer__inner md-grid" aria-label="{{ lang.t('footer.title') }}">
+    +      {% if page.previous_page %}
+    +        <a href="{{ page.previous_page.url | url }}" class="md-footer__link md-footer__link--prev" rel="prev">
+    +          <div class="md-footer__button md-icon">
+    +            {% include ".icons/material/arrow-left.svg" %}
+    +          </div>
+    +          <div class="md-footer__title">
+    +            <div class="md-ellipsis">
+    +              <span class="md-footer__direction">
+    +                {{ lang.t("footer.previous") }}
+    +              </span>
+    +              {{ page.previous_page.title }}
+                </div>
+    -            <div class="md-footer-nav__button md-icon">
+    -              {% include ".icons/material/arrow-right.svg" %}
+    +          </div>
+    +        </a>
+    +      {% endif %}
+    +      {% if page.next_page %}
+    +        <a href="{{ page.next_page.url | url }}" class="md-footer__link md-footer__link--next" rel="next">
+    +          <div class="md-footer__title">
+    +            <div class="md-ellipsis">
+    +              <span class="md-footer__direction">
+    +                {{ lang.t("footer.next") }}
+    +              </span>
+    +              {{ page.next_page.title }}
+                </div>
+    -          </a>
+    -        {% endif %}
+    -      </nav>
+    -    </div>
+    +          </div>
+    +          <div class="md-footer__button md-icon">
+    +            {% include ".icons/material/arrow-right.svg" %}
+    +          </div>
+    +        </a>
+    +      {% endif %}
+    +    </nav>
+      {% endif %}
+      <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+    ```
+
+??? quote "`partials/header.html`"
+
+    ``` diff
+    @@ -6,21 +6,21 @@
+      {% set site_url = site_url ~ "/index.html" %}
+    {% endif %}
+    <header class="md-header" data-md-component="header">
+    -  <nav class="md-header-nav md-grid" aria-label="{{ lang.t('header.title') }}">
+    -    <a href="{{ site_url }}" title="{{ config.site_name | e }}" class="md-header-nav__button md-logo" aria-label="{{ config.site_name }}">
+    +  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header.title') }}">
+    +    <a href="{{ site_url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}">
+          {% include "partials/logo.html" %}
+        </a>
+    -    <label class="md-header-nav__button md-icon" for="__drawer">
+    +    <label class="md-header__button md-icon" for="__drawer">
+          {% include ".icons/material/menu" ~ ".svg" %}
+        </label>
+    -    <div class="md-header-nav__title" data-md-component="header-title">
+    -      <div class="md-header-nav__ellipsis">
+    -        <div class="md-header-nav__topic">
+    +    <div class="md-header__title" data-md-component="header-title">
+    +      <div class="md-header__ellipsis">
+    +        <div class="md-header__topic">
+              <span class="md-ellipsis">
+                {{ config.site_name }}
+              </span>
+            </div>
+    -        <div class="md-header-nav__topic">
+    +        <div class="md-header__topic" data-md-component="header-topic">
+              <span class="md-ellipsis">
+                {% if page and page.meta and page.meta.title %}
+                  {{ page.meta.title }}
+    @@ -31,14 +31,35 @@
+            </div>
+          </div>
+        </div>
+    +    <div class="md-header__options">
+    +      {% if config.extra.alternate %}
+    +        <div class="md-select">
+    +          {% set icon = config.theme.icon.translate or "material/translate" %}
+    +          <span class="md-header__button md-icon">
+    +            {% include ".icons/" ~ icon ~ ".svg" %}
+    +          </span>
+    +          <div class="md-select__inner">
+    +            <ul class="md-select__list">
+    +              {% for alt in config.extra.alternate %}
+    +                <li class="md-select__item">
+    +                  <a href="{{ alt.link | url }}" class="md-select__link">
+    +                    {{ alt.name }}
+    +                  </a>
+    +                </li>
+    +                {% endfor %}
+    +            </ul>
+    +          </div>
+    +        </div>
+    +      {% endif %}
+    +    </div>
+        {% if "search" in config["plugins"] %}
+    -      <label class="md-header-nav__button md-icon" for="__search">
+    +      <label class="md-header__button md-icon" for="__search">
+            {% include ".icons/material/magnify.svg" %}
+          </label>
+          {% include "partials/search.html" %}
+        {% endif %}
+        {% if config.repo_url %}
+    -      <div class="md-header-nav__source">
+    +      <div class="md-header__source">
+            {% include "partials/source.html" %}
+          </div>
+        {% endif %}
+
+    ```
+
+??? quote "`partials/source.html`"
+
+    ``` diff
+    @@ -4,5 +4,5 @@
+    {% import "partials/language.html" as lang with context %}
+    -<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source">
+    +<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source" data-md-component="source">
+      <div class="md-source__icon md-icon">
+        {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+    ```
+
+??? quote "`partials/toc.html`"
+
+    ``` diff
+    @@ -12,7 +12,7 @@
+          <span class="md-nav__icon md-icon"></span>
+          {{ lang.t("toc.title") }}
+        </label>
+    -    <ul class="md-nav__list" data-md-scrollfix>
+    +    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+          {% for toc_item in toc %}
+            {% include "partials/toc-item.html" %}
+          {% endfor %}
+
+    ```
+
 ## Upgrading from 5.x to 6.x
 
 ### What's new?
