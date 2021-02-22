@@ -228,8 +228,7 @@ _Result_:
 ### Inline blocks
 
 [:octicons-file-code-24: Source][12] ·
-:octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][12]{: .tx-insiders }
+:octicons-beaker-24: Experimental
 
 Admonitions and [Details][11] can also be rendered as inline blocks (i.e.
 sidebars), moving them to the right using the `inline` + `end` modifiers, or
@@ -254,7 +253,7 @@ _Result_:
 
     [![Admonition, inline][14]][14]
 
-  [12]: ../insiders.md
+  [12]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_modifiers.scss
   [13]: ../assets/screenshots/admonition-inline-end.png
   [14]: ../assets/screenshots/admonition-inline.png
 
