@@ -189,7 +189,7 @@ const templates$ = manifest$
       to: base,
       watch: process.argv.includes("--watch"),
       transform: async data => {
-        const metadata = require("../package.json")
+        const metadata = require("../../package.json")
         const banner =
           "{#-\n" +
           "  This file was automatically generated - do not edit\n" +

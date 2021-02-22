@@ -26,12 +26,12 @@
   "scripts": {
     "build": "run-s build:*",
     "build:clean": "rimraf material",
-    "build:tools": "ts-node -T tools --optimize",
+    "build:tools": "ts-node -T tools/build --optimize",
     "clean": "rimraf material",
     "lint": "run-p lint:*",
     "lint:scss": "stylelint \"src/assets/**/*.scss\"",
     "lint:ts": "eslint --cache \"src/**/*.ts\"",
-    "start": "ts-node -T tools --watch"
+    "start": "ts-node -T tools/build --watch"
   },
   "dependencies": {
     "clipboard": "^2.0.6",

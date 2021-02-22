@@ -23,18 +23,18 @@
 # -----------------------------------------------------------------------------
 
 # Dependencies
-node_modules
-__pycache__
-venv
+/node_modules
+/__pycache__
+/venv
 
 # Build files
-build
-MANIFEST
-site
+/build
+/MANIFEST
+/site
 
 # Distribution files
-dist
-mkdocs_material.egg-info
+/dist
+/mkdocs_material.egg-info
 
 # Caches and logs
 *.cpuprofile
