@@ -115,11 +115,8 @@ The following features are currently exclusively available to sponsors:
 - [x] [Section index pages :material-new-box:][21]
 - [x] [Latest release tag][15]
 - [x] [Color palette toggle][16]
-- [x] [Versioning][14]
-- [x] [Site language selection][13]
 - [x] [Sticky navigation tabs][20]
 - [x] [Native Mermaid.js integration][23]
-- [x] [Admonition inline blocks][12]
 - [x] [Search suggestions][17]
 - [x] [Search highlighting][18]
 - [x] [Search sharing][19]
@@ -140,16 +137,6 @@ from time to time to learn about what's new, or follow [@squidfunk on
 Following is a list of funding goals. When a funding goal is hit, the features
 that are tied to it are merged back into Material for MkDocs and released to
 the public for general availability.
-
-#### $ 1,500 – Bhut Jolokia
-
-- [x] [Admonition inline blocks][12]
-- [x] [Site language selection][13]
-- [x] [Versioning][14]
-
-  [12]: reference/admonitions.md#inline-blocks
-  [13]: setup/changing-the-language.md#site-language-selector
-  [14]: setup/setting-up-versioning.md#versioning
 
 #### $ 2,000 – Black Pearl
 
@@ -222,6 +209,16 @@ the public for general availability.
   [9]: setup/setting-up-navigation.md#hide-the-sidebars
   [10]: setup/setting-up-navigation.md#navigation-integration
   [11]: setup/setting-up-the-header.md#automatic-hiding
+
+#### $ 1,500 – Bhut Jolokia
+
+- [x] [Admonition inline blocks][12]
+- [x] [Site language selection][13]
+- [x] [Versioning][14]
+
+  [12]: reference/admonitions.md#inline-blocks
+  [13]: setup/changing-the-language.md#site-language-selector
+  [14]: setup/setting-up-versioning.md#versioning
 
 ## Frequently asked questions
 
