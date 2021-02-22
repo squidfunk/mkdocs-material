@@ -205,12 +205,12 @@ For more on this topic refer to the [MkDocs documentation][5].
 
 ## Theme development
 
-Material for MkDocs uses [Webpack][6] as a build tool to leverage modern web
+Material for MkDocs uses [ESBuild][6] as a build tool to leverage modern web
 technologies like [TypeScript][7] and [SASS][8]. If you want to make more
 fundamental changes, it may be necessary to make the adjustments directly in
 the source of the theme and recompile it.
 
-  [6]: https://webpack.js.org/
+  [6]: https://esbuild.github.io/
   [7]: https://www.typescriptlang.org/
   [8]: https://sass-lang.com
 
@@ -237,7 +237,7 @@ npm install
 
 ### Development mode
 
-Start the Webpack watchdog with:
+Start the watcher with:
 
 ```
 npm start
