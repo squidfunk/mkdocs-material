@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import "lunr"
+import lunr from "lunr"
 
 import { Search, SearchIndexConfig } from "../../_"
 import {
@@ -91,7 +91,7 @@ async function setupSearchLanguages(
   /* Add scripts for languages */
   const scripts = []
   for (const lang of config.lang) {
-    if (lang === "ja") scripts.push(`${base}/tinyseg.min.js`)
+    if (lang === "ja") scripts.push(`${base}/tinyseg.js`)
     if (lang !== "en") scripts.push(`${base}/min/lunr.${lang}.min.js`)
   }
 
@@ -148,6 +148,10 @@ export async function handler(
  * Worker
  * ------------------------------------------------------------------------- */
 
+/* @ts-ignore - expose Lunr.js in global scope, or stemmers will not work */
+self.lunr = lunr
+
+/* Handle messages */
 addEventListener("message", async ev => {
   postMessage(await handler(ev.data))
 })

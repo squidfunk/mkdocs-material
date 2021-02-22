@@ -120,8 +120,8 @@
         />
         <style>
           :root {
-            --md-text-font-family: "{{ font.text }}",;
-            --md-code-font-family: "{{ font.code }}",;
+            --md-text-font-family: "{{ font.text }}";
+            --md-code-font-family: "{{ font.code }}";
           }
         </style>
       {% endif %}
@@ -355,7 +355,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/worker/search.js" | url,
+        "search": "assets/javascripts/workers/search.js" | url,
       } -%}
 
       <!-- Translations -->
@@ -386,7 +386,6 @@
 
     <!-- Theme-related JavaScript -->
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.js' | url }}"></script>
       <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
 
       <!-- Custom JavaScript -->

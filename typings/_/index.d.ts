@@ -20,10 +20,17 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndex, SearchTransformFn } from "~/integrations";
+import { Observable, Subject } from "rxjs"
+
+import { Keyboard, Viewport } from "~/browser"
+import { Component } from "~/components"
+import {
+  SearchIndex,
+  SearchTransformFn
+} from "~/integrations"
 
 /* ----------------------------------------------------------------------------
- * Types
+ * Global types
  * ------------------------------------------------------------------------- */
 
 /**
@@ -39,12 +46,30 @@ export interface GlobalSearchConfig {
 declare global {
 
   /**
-   * GLobal search configuration
+   * Global search configuration
    */
-  var __search: GlobalSearchConfig | undefined
+  const __search: GlobalSearchConfig | undefined
 
   /**
    * Google Analytics
    */
   function ga(...args: string[]): void
+}
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+declare global {
+  interface Window {
+    document$: Observable<Document>    /* Document observable */
+    location$: Subject<URL>            /* Location subject */
+    target$: Observable<HTMLElement>   /* Location target observable */
+    keyboard$: Observable<Keyboard>    /* Keyboard observable */
+    viewport$: Observable<Viewport>    /* Viewport obsevable */
+    tablet$: Observable<boolean>       /* Tablet breakpoint observable */
+    screen$: Observable<boolean>       /* Screen breakpoint observable */
+    print$: Observable<void>           /* Print mode observable */
+    component$: Observable<Component>  /* Component observable */
+  }
 }

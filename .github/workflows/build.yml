@@ -24,7 +24,7 @@ on:
   - pull_request
 
 env:
-  NODE_VERSION: 12.x
+  NODE_VERSION: 14.x
 
 jobs:
   build:

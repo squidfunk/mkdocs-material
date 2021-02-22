@@ -44,7 +44,7 @@ export type SearchTransformFn = (value: string) => string
  *    that the resulting document must contain all terms, converting the query
  *    to an `AND` query (as opposed to the default `OR` behavior). While users
  *    may expect terms enclosed in quotation marks to map to span queries, i.e.
- *    for which order is important, `lunr` doesn't support them, so the best
+ *    for which order is important, Lunr.js doesn't support them, so the best
  *    we can do is to convert the terms to an `AND` query.
  *
  * 2. Replace control characters which are not located at the beginning of the

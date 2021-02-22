@@ -36,7 +36,7 @@ import {
  * Fetch the given URL
  *
  * @param url - Request URL
- * @param options - Request options
+ * @param options - Options
  *
  * @returns Response observable
  */
@@ -55,7 +55,7 @@ export function request(
  * @template T - Data type
  *
  * @param url - Request URL
- * @param options - Request options
+ * @param options - Options
  *
  * @returns Data observable
  */
@@ -73,7 +73,7 @@ export function requestJSON<T>(
  * Fetch XML from the given URL
  *
  * @param url - Request URL
- * @param options - Request options
+ * @param options - Options
  *
  * @returns Data observable
  */

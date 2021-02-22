@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "alwaysStrict": true,
-    "baseUrl": "src/assets/javascripts",
+    "baseUrl": "src",
     "esModuleInterop": true,
     "jsx": "react",
     "jsxFactory": "h",
@@ -20,7 +20,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./assets/javascripts/*"],
+      "_/*": ["./overrides/assets/javascripts/*"]
     },
     "removeComments": false,
     "sourceMap": true,
@@ -32,6 +33,7 @@
     "target": "es2015"
   },
   "include": [
+    "tools",
     "src/assets/javascripts",
     "src/overrides/assets/javascripts",
     "typings",
