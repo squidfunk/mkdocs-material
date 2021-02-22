@@ -58,7 +58,7 @@
     "@types/webpack": "^4.41.26",
     "@types/webpack-assets-manifest": "^3.0.1",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
-    "@typescript-eslint/parser": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.1",
     "autoprefixer": "10.2.4",
     "copy-webpack-plugin": "^6.4.1",
     "css-loader": "^5.0.2",
