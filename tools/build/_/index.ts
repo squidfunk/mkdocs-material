@@ -22,8 +22,19 @@
 
 import * as chokidar from "chokidar"
 import * as fs from "fs/promises"
-import { Observable, from, fromEvent, identity } from "rxjs"
-import { mapTo, mergeWith, switchMap } from "rxjs/operators"
+import {
+  Observable,
+  from,
+  fromEvent,
+  identity,
+  EMPTY
+} from "rxjs"
+import {
+  catchError,
+  mapTo,
+  mergeWith,
+  switchMap
+} from "rxjs/operators"
 import glob from "tiny-glob"
 
 /* ----------------------------------------------------------------------------
@@ -87,6 +98,7 @@ export function resolve(
 ): Observable<string> {
   return from(glob(pattern, options))
     .pipe(
+      catchError(() => EMPTY),
       switchMap(files => from(files)),
       options?.watch
         ? mergeWith(watch(pattern, options))
