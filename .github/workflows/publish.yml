@@ -95,5 +95,5 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          docker push ${{ github.event.repository.full_name }}
-          docker push ghcr.io/${{ github.event.repository.full_name }}
+          docker push --all-tags ${{ github.event.repository.full_name }}
+          docker push --all-tags ghcr.io/${{ github.event.repository.full_name }}
