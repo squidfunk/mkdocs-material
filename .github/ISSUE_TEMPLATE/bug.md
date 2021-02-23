@@ -45,7 +45,7 @@ __I've found a bug and checked that ...__
 
 ### Steps to reproduce the bug
 
-<!-- Please provide the steps to repoduce the issue -->
+<!-- Please provide the steps to reproduce the issue -->
 
 1. ...
 2. ...
