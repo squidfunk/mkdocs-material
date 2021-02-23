@@ -231,8 +231,8 @@ const templates$ = manifest$
 const icons$ = defer(() => resolve("**/*.svg", { cwd: "material/.icons" }))
   .pipe(
     reduce((index, file) => index.set(
-      file,
-      file.replace(/\.svg$/, "").replace(/\//g, "-")
+      file.replace(/\.svg$/, "").replace(/\//g, "-"),
+      file
     ), new Map<string, string>())
   )
 
