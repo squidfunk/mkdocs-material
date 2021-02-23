@@ -260,7 +260,7 @@ matches the new structure:
     +    <div class="md-header__options">
     +      {% if config.extra.alternate %}
     +        <div class="md-select">
-    +          {% set icon = config.theme.icon.translate or "material/translate" %}
+    +          {% set icon = config.theme.icon.alternate or "material/translate" %}
     +          <span class="md-header__button md-icon">
     +            {% include ".icons/" ~ icon ~ ".svg" %}
     +          </span>
