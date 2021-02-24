@@ -1,3 +1,8 @@
+mkdocs-material-7.0.1+insiders-2.0.0 (2021-02-24)
+
+  * Migrated Insiders to the new architecture
+  * Swapped color palette toggle configuration
+
 mkdocs-material-7.0.1 (2021-02-24)
 
   * Fixed #2334: Google Analytics triggers page view twice (7.0.0 regression)

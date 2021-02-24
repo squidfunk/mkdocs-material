@@ -195,21 +195,21 @@ palette toggle can be added via `mkdocs.yml`:
 theme:
   palette:
 
-    # Toggle light mode
+    # Light mode
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
 
-    # Toggle dark mode
+    # Dark mode
     - scheme: slate
       primary: blue
       accent: blue
       toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
+        icon: material/toggle-switch
+        name: Switch to light mode
 ```
 
 This will render a color palette toggle in the header next to the search bar:
