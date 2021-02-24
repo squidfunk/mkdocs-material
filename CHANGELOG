@@ -1,3 +1,9 @@
+mkdocs-material-7.0.1 (2021-02-24)
+
+  * Fixed #2334: Google Analytics triggers page view twice (7.0.0 regression)
+  * Fixed #2336: Details bleed into inline admonitions
+  * Fixed #2337: Images don't align correctly (7.0.0 regression)
+
 mkdocs-material-7.0.0 (2021-02-22)
 
   * Added support for deploying multiple versions
