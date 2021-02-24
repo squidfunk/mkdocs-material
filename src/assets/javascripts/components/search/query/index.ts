@@ -33,7 +33,6 @@ import {
   distinctUntilKeyChanged,
   finalize,
   map,
-  startWith,
   takeLast,
   takeUntil,
   tap
@@ -96,7 +95,6 @@ export function watchSearchQuery(
   )
     .pipe(
       map(() => fn(el.value)),
-      startWith(fn(el.value)),
       distinctUntilChanged()
     )
 

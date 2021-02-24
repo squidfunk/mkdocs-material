@@ -81,7 +81,7 @@ theme:
 [:octicons-file-code-24: Source][9] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][9]{: .tx-insiders }
+[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][9]{: .mdx-insiders }
 
 When _sticky tabs_ are enabled, navigation tabs will lock below the header and
 always remain visible when scrolling down. Just add the following two feature
@@ -166,7 +166,7 @@ theme:
 [:octicons-file-code-24: Source][9] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][9]{: .tx-insiders }
+[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][9]{: .mdx-insiders }
 
 When _section index pages_ are enabled, documents can be directly attached to
 sections, which is particularly useful for providing overview pages. Add the

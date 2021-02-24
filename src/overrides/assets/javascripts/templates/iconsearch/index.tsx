@@ -20,30 +20,42 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, combineLatest, fromEvent, merge } from "rxjs"
-import {
-  delay,
-  distinctUntilChanged,
-  filter,
-  map,
-  startWith,
-  withLatestFrom
-} from "rxjs/operators"
+import { wrap } from "fuzzaldrin-plus"
 
-import { watchElementFocus } from "~/browser"
-
-import { Component } from "../../_"
+import { translation } from "~/_"
+import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Icon search query
+ * Icon
  */
-export interface IconSearchQuery {
-  value: string                        /* Query value */
-  focus: boolean                       /* Query focus */
+export interface Icon {
+  shortcode: string                    /* Icon shortcode */
+  url: string                          /* Icon URL */
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Highlight an icon search result
+ *
+ * @param icon - Icon
+ * @param query - Search query
+ *
+ * @returns Highlighted result
+ */
+function highlight(icon: Icon, query: string): string {
+  return wrap(icon.shortcode, query, {
+    wrap: {
+      tagOpen: "<b>",
+      tagClose: "</b>"
+    }
+  })
 }
 
 /* ----------------------------------------------------------------------------
@@ -51,42 +63,28 @@ export interface IconSearchQuery {
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount icon search query
+ * Render an icon search result
  *
- * @param el - Icon search query element
+ * @param icon - Icon
+ * @param query - Search query
  *
- * @returns Icon search query component observable
+ * @returns Element
  */
-export function mountIconSearchQuery(
-  el: HTMLInputElement
-): Observable<Component<IconSearchQuery, HTMLInputElement>> {
-
-  /* Intercept focus and input events */
-  const focus$ = watchElementFocus(el)
-  const value$ = merge(
-    fromEvent(el, "keyup"),
-    fromEvent(el, "focus").pipe(delay(1))
+export function renderIconSearchResult(
+  icon: Icon, query: string
+): HTMLElement {
+  return (
+    <li class="mdx-iconsearch-result__item">
+      <span class="twemoji">
+        <img src={icon.url} />
+      </span>
+      <button
+        class="md-clipboard--inline"
+        title={translation("clipboard.copy")}
+        data-clipboard-text={`:${icon.shortcode}:`}
+      >
+        <code>{`:${highlight(icon, query)}:`}</code>
+      </button>
+    </li>
   )
-    .pipe(
-      map(() => el.value),
-      startWith(el.value),
-      distinctUntilChanged()
-    )
-
-  /* Log search on blur */
-  focus$
-    .pipe(
-      filter(active => !active),
-      withLatestFrom(value$)
-    )
-      .subscribe(([, value]) => {
-        const path = document.location.pathname
-        ga("send", "pageview", `${path}?q=[icon]+${value}`)
-      })
-
-  /* Combine into single observable */
-  return combineLatest([value$, focus$])
-    .pipe(
-      map(([value, focus]) => ({ ref: el, value, focus })),
-    )
 }

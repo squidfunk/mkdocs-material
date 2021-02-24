@@ -105,8 +105,8 @@ export function watchDialog(
 /**
  * Mount dialog
  *
- * This function makes the dialog in the right corner appear when a new alert
- * is emitted through the subject that is passed as part of the options.
+ * This function reveals the dialog in the right cornerwhen a new alert is
+ * emitted through the subject that is passed as part of the options.
  *
  * @param el - Dialog element
  * @param options - Options

@@ -11,15 +11,15 @@ and used in `mkdocs.yml`, documents and templates.
 
 ## Search
 
-<div class="mdx-icon-search" data-mdx-component="icon-search">
+<div class="mdx-iconsearch" data-mdx-component="iconsearch">
   <input
-    class="md-input md-input--stretch mdx-icon-search__input"
+    class="md-input md-input--stretch mdx-iconsearch__input"
     placeholder="Search the icon and emoji database"
-    data-mdx-component="icon-search-query"
+    data-mdx-component="iconsearch-query"
   />
-  <div class="mdx-icon-search-result" data-mdx-component="icon-search-result">
-    <div class="mdx-icon-search-result__meta"></div>
-    <ol class="mdx-icon-search-result__list"></ol>
+  <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result">
+    <div class="mdx-iconsearch-result__meta"></div>
+    <ol class="mdx-iconsearch-result__list"></ol>
   </div>
 </div>
 <small>
@@ -205,7 +205,7 @@ _Example_:
 
 _Result_:
 
-:octicons-heart-fill-24:{: .tx-heart }
+:octicons-heart-fill-24:{: .mdx-heart }
 
   [20]: #with-colors
   [21]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation

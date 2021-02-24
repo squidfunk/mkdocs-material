@@ -62,37 +62,63 @@ export type Component<
   }
 
 /* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Component type map
+ */
+interface ComponentTypeMap {
+  "announce": HTMLElement              /* Announcement bar */
+  "container": HTMLElement             /* Container */
+  "content": HTMLElement               /* Content */
+  "dialog": HTMLElement                /* Dialog */
+  "header": HTMLElement                /* Header */
+  "header-title": HTMLElement          /* Header title */
+  "header-topic": HTMLElement          /* Header topic */
+  "main": HTMLElement                  /* Main area */
+  "search": HTMLElement                /* Search */
+  "search-query": HTMLInputElement     /* Search input */
+  "search-result": HTMLElement         /* Search results */
+  "sidebar": HTMLElement               /* Sidebar */
+  "skip": HTMLAnchorElement            /* Skip link */
+  "source": HTMLAnchorElement          /* Repository information */
+  "tabs": HTMLElement                  /* Navigation tabs */
+  "toc": HTMLElement                   /* Table of contents */
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
  * Retrieve the element for a given component or throw a reference error
  *
- * @template T - Element type
+ * @template T - Component type
  *
  * @param type - Component type
  * @param node - Node of reference
  *
  * @returns Element
  */
-export function getComponentElement<T extends HTMLElement>(
-  type: ComponentType, node: ParentNode = document
-): T {
+export function getComponentElement<T extends ComponentType>(
+  type: T, node: ParentNode = document
+): ComponentTypeMap[T] {
   return getElementOrThrow(`[data-md-component=${type}]`, node)
 }
 
 /**
  * Retrieve all elements for a given component
  *
- * @template T - Element type
+ * @template T - Component type
  *
  * @param type - Component type
  * @param node - Node of reference
  *
  * @returns Elements
  */
-export function getComponentElements<T extends HTMLElement>(
-  type: ComponentType, node: ParentNode = document
-): T[] {
+export function getComponentElements<T extends ComponentType>(
+  type: T, node: ParentNode = document
+): ComponentTypeMap[T][] {
   return getElements(`[data-md-component=${type}]`, node)
 }

@@ -20,71 +20,77 @@
  * IN THE SOFTWARE.
  */
 
-import { wrap } from "fuzzaldrin-plus"
+import { Observable, merge } from "rxjs"
 
-import { translation } from "~/_"
-import { h } from "~/utilities"
+import { configuration } from "~/_"
+import { requestJSON } from "~/browser"
+
+import { Component, getComponentElement } from "../../_"
+import {
+  IconSearchQuery,
+  mountIconSearchQuery
+} from "../query"
+import {
+  IconSearchResult,
+  mountIconSearchResult
+} from "../result"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Icon
+ * Icon category
  */
-export interface Icon {
-  shortcode: string                    /* Icon shortcode */
-  url: string                          /* Icon URL */
+export interface IconCategory {
+  base: string                         /* Category base URL */
+  data: Record<string, string>         /* Category data */
 }
-
-/* ----------------------------------------------------------------------------
- * Helper functions
- * ------------------------------------------------------------------------- */
 
 /**
- * Highlight an icon search result
- *
- * @param icon - Icon
- * @param query - Search query
- *
- * @returns Highlighted result
+ * Icon search index
  */
-function highlight(icon: Icon, query: string) {
-  return wrap(icon.shortcode, query, {
-    wrap: {
-      tagOpen: "<b>",
-      tagClose: "</b>"
-    }
-  })
+export interface IconSearchIndex {
+  icons: IconCategory                  /* Icons */
+  emojis: IconCategory                 /* Emojis */
 }
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Icon search
+ */
+export type IconSearch =
+  | IconSearchQuery
+  | IconSearchResult
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Render an icon search result
+ * Mount icon search
  *
- * @param icon - Icon
- * @param query - Search query
+ * @param el - Icon search element
  *
- * @returns Element
+ * @returns Icon search component observable
  */
-export function renderIconSearchResult(
-  icon: Icon, query: string
-): HTMLElement {
-  return (
-    <li class="mdx-icon-search-result__item">
-      <span class="twemoji">
-        <img src={icon.url} />
-      </span>
-      <button
-        class="md-clipboard--inline"
-        title={translation("clipboard.copy")}
-        data-clipboard-text={`:${icon.shortcode}:`}
-      >
-        <code>{`:${highlight(icon, query)}:`}</code>
-      </button>
-    </li>
+export function mountIconSearch(
+  el: HTMLElement
+): Observable<Component<IconSearch>> {
+  const config = configuration()
+  const index$ = requestJSON<IconSearchIndex>(
+    `${config.base}/overrides/assets/javascripts/iconsearch_index.json`
+  )
+
+  /* Retrieve nested components */
+  const query  = getComponentElement("iconsearch-query", el)
+  const result = getComponentElement("iconsearch-result", el)
+
+  /* Create and return component */
+  const query$ = mountIconSearchQuery(query)
+  return merge(
+    query$,
+    mountIconSearchResult(result, { index$, query$ })
   )
 }

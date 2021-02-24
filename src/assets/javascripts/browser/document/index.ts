@@ -30,9 +30,8 @@ import { mapTo } from "rxjs/operators"
 /**
  * Watch document
  *
- * Documents must be implemented as subjects, so all downstream observables are
- * automatically updated when a new document is emitted. This enabled features
- * like instant loading.
+ * Documents are implemented as subjects, so all downstream observables are
+ * automatically updated when a new document is emitted.
  *
  * @returns Document subject
  */

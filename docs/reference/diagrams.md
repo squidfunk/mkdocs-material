@@ -17,7 +17,7 @@ popular and flexible solution for drawing diagrams.
 
 [:octicons-file-code-24: Source][2] ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][2]{: .tx-insiders }
+[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][2]{: .mdx-insiders }
 
 The [SuperFences][3] extension, which is part of [Python Markdown
 Extensions][4], allows for adding __custom fences__, which can be used to

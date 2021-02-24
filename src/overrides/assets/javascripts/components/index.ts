@@ -21,4 +21,4 @@
  */
 
 export * from "./_"
-export * from "./icon-search"
+export * from "./iconsearch"

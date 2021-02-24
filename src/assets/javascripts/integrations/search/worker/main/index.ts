@@ -62,8 +62,8 @@ let index: Search
 /**
  * Fetch (= import) multi-language support through `lunr-languages`
  *
- * This function will automatically import the stemmers necessary to process
- * the languages which were given through the search index configuration.
+ * This function automatically imports the stemmers necessary to process the
+ * languages, which are defined through the search index configuration.
  *
  * If the worker runs inside of an `iframe` (when using `iframe-worker` as
  * a shim), the base URL for the stemmers to be loaded must be determined by

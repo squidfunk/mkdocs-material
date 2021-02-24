@@ -84,7 +84,7 @@ function setupSearchIndex(
 /**
  * Set up search worker
  *
- * This function will create a web worker to set up and query the search index
+ * This function creates a web worker to set up and query the search index,
  * which is done using Lunr.js. The index must be passed as an observable to
  * enable hacks like _localsearch_ via search index embedding as JSON.
  *

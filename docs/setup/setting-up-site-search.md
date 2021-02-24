@@ -58,7 +58,7 @@ The following options are supported:
 
     The following languages are supported:
 
-    <div class="tx-columns" markdown="1">
+    <div class="mdx-columns" markdown="1">
 
     - `ar` – Arabic
     - `da` – Danish
@@ -137,7 +137,7 @@ them at your own risk._
 [:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][8]{: .tx-insiders }
+[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][8]{: .mdx-insiders }
 
 When _search suggestions_ are enabled, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
@@ -174,7 +174,7 @@ A demo is worth a thousand words — check it out at
 [:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][8]{: .tx-insiders }
+[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][8]{: .mdx-insiders }
 
 When _search highlighting_ is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
@@ -208,7 +208,7 @@ A demo is worth a thousand words — check it out at
 [:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][8]{: .tx-insiders }
+[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][8]{: .mdx-insiders }
 
 When _search sharing_ is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current

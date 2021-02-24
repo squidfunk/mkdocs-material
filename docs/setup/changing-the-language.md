@@ -24,7 +24,7 @@ theme:
 
 The following languages are supported:
 
-<div class="tx-columns" markdown="1">
+<div class="mdx-columns" markdown="1">
 
 - `af` – Afrikaans
 - `ar` – Arabic
@@ -150,7 +150,7 @@ theme:
 
 Click on a tile to change the directionality:
 
-<div class="tx-switch">
+<div class="mdx-switch">
   <button data-md-dir="ltr"><code>ltr</code></button>
   <button data-md-dir="rtl"><code>rtl</code></button>
 </div>

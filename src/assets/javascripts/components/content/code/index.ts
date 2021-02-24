@@ -95,8 +95,8 @@ let index = 0
 /**
  * Watch code block
  *
- * This function will monitor size changes of the viewport, as well as switches
- * of content tabs with embedded code blocks, as both may trigger overflow.
+ * This function monitors size changes of the viewport, as well as switches of
+ * content tabs with embedded code blocks, as both may trigger overflow.
  *
  * @param el - Code block element
  * @param options - Options
@@ -163,7 +163,7 @@ export function mountCodeBlock(
           resetFocusable(el)
       })
 
-  /* Inject button for Clipboard.js integration */
+  /* Render button for Clipboard.js integration */
   if (ClipboardJS.isSupported()) {
     const parent = el.closest("pre")!
     parent.id = `__code_${index++}`

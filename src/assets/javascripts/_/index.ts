@@ -123,7 +123,7 @@ export function feature(flag: Flag): boolean {
  * Retrieve the translation for the given key
  *
  * @param key - Key to be translated
- * @param value - Value to be replaced
+ * @param value - Positional value, if any
  *
  * @returns Translation
  */

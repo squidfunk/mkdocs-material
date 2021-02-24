@@ -1,0 +1,130 @@
+////
+/// Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Icon search
+  .mdx-iconsearch {
+    position: relative;
+    background-color: var(--md-default-bg-color);
+    border-radius: px2rem(2px);
+    box-shadow:
+      0 px2rem(4px)   px2rem(10px) hsla(0, 0%, 0%, 0.1),
+      0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+    transition: box-shadow 125ms;
+
+    // Icon search on focus/hover
+    &:focus-within,
+    &:hover {
+      box-shadow:
+        0 px2rem(8px)   px2rem(20px) hsla(0, 0%, 0%, 0.15),
+        0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.15);
+    }
+
+    // Icon search input
+    .md-input {
+      background: var(--md-default-bg-color);
+      box-shadow: 0 0 px2rem(12px) hsla(0, 0%, 0%, 0.07);
+
+      // Slate theme, i.e. dark mode
+      [data-md-color-scheme="slate"] & {
+        background: var(--md-code-bg-color);
+      }
+    }
+  }
+
+  // Icon search result
+  .mdx-iconsearch-result {
+    max-height: 50vh;
+    overflow-y: auto;
+    // Hack: promote to own layer to reduce jitter
+    backface-visibility: hidden;
+    touch-action: pan-y;
+    scrollbar-width: thin;
+    scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+
+    // Webkit scrollbar
+    &::-webkit-scrollbar {
+      width: px2rem(4px);
+      height: px2rem(4px);
+    }
+
+    // Webkit scrollbar thumb
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--md-default-fg-color--lighter);
+
+      // Webkit scrollbar thumb on hover
+      &:hover {
+        background-color: var(--md-accent-fg-color);
+      }
+    }
+
+    // Icon search result metadata
+    &__meta {
+      position: absolute;
+      top: px2rem(8px);
+      right: px2rem(12px);
+      color: var(--md-default-fg-color--lighter);
+      font-size: px2rem(12.8px);
+    }
+
+    // Icon search result list
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    // Icon search result item
+    &__item {
+      margin: 0;
+      padding: px2rem(4px) px2rem(12px);
+      border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
+
+      // Omit border on last child
+      &:last-child {
+        border-bottom: none;
+      }
+
+      // Item content
+      > * {
+        margin-right: px2rem(12px);
+      }
+
+      // Set icon dimensions to fit
+      img {
+        width: px2rem(18px);
+        height: px2rem(18px);
+
+        // Slate theme, i.e. dark mode
+        [data-md-color-scheme="slate"] &[src*=squidfunk] {
+          filter: invert(1);
+        }
+      }
+    }
+  }
+}

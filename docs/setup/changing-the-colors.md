@@ -32,7 +32,7 @@ theme:
 
 _Click on a tile to change the color scheme_:
 
-<div class="tx-switch">
+<div class="mdx-switch">
   <button data-md-color-scheme="default"><code>default</code></button>
   <button data-md-color-scheme="slate"><code>slate</code></button>
 </div>
@@ -77,7 +77,7 @@ theme:
 
 _Click on a tile to change the primary color_:
 
-<div class="tx-switch">
+<div class="mdx-switch">
   <button data-md-color-primary="red"><code>red</code></button>
   <button data-md-color-primary="pink"><code>pink</code></button>
   <button data-md-color-primary="purple"><code>purple</code></button>
@@ -138,7 +138,7 @@ _Click on a tile to change the accent color_:
   }
 </style>
 
-<div class="tx-switch">
+<div class="mdx-switch">
   <button data-md-color-accent="red"><code>red</code></button>
   <button data-md-color-accent="pink"><code>pink</code></button>
   <button data-md-color-accent="purple"><code>purple</code></button>
@@ -185,7 +185,7 @@ _Click on a tile to change the accent color_:
 
 [:octicons-file-code-24: Source][6] ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][6]{: .tx-insiders }
+[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][6]{: .mdx-insiders }
 
 [Insiders][6] can easily add multiple color palettes, including a [scheme][8],
 [primary][9] and [accent][10] color each, and let the user choose. A color

@@ -89,8 +89,8 @@ interface MountOptions {
 /**
  * Mount search result list
  *
- * This function will perform a lazy rendering of the search results, depending
- * on the vertical offset of the search result container.
+ * This function performs a lazy rendering of the search results, depending on
+ * the vertical offset of the search result container.
  *
  * @param el - Search result list element
  * @param worker - Search worker

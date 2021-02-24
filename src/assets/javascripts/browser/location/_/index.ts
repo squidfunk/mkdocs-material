@@ -29,10 +29,10 @@ import { Subject } from "rxjs"
 /**
  * Retrieve location
  *
- * This function will return a `URL` object (and not `Location`) in order to
- * normalize typings across the application. Furthermore, locations need to be
- * tracked without setting them and `Location` is a singleton which represents
- * the current location.
+ * This function returns a `URL` object (and not `Location`) to normalize the
+ * typings across the application. Furthermore, locations need to be tracked
+ * without setting them and `Location` is a singleton which represents the
+ * current location.
  *
  * @returns URL
  */

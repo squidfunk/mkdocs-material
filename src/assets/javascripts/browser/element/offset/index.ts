@@ -21,9 +21,16 @@
  */
 
 import { Observable, fromEvent, merge } from "rxjs"
-import { distinctUntilChanged, map, startWith } from "rxjs/operators"
+import {
+  distinctUntilChanged,
+  map,
+  startWith
+} from "rxjs/operators"
 
-import { getElementContentSize, getElementSize } from "../size"
+import {
+  getElementContentSize,
+  getElementSize
+} from "../size"
 
 /* ----------------------------------------------------------------------------
  * Types

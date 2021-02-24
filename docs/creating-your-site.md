@@ -91,7 +91,7 @@ Material for MkDocs comes with many configuration options. The _setup_ section
 explains in great detail how to configure and customize colors, fonts, icons
 and much more:
 
-<div class="tx-columns" markdown="1">
+<div class="mdx-columns" markdown="1">
 
 - [Changing the colors][5]
 - [Changing the fonts][6]

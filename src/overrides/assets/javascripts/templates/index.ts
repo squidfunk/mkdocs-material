@@ -20,4 +20,4 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./icon-search"
+export * from "./iconsearch"

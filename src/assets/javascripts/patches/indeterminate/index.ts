@@ -42,7 +42,7 @@ interface PatchOptions {
 /**
  * Patch indeterminate checkboxes
  *
- * This function will replace the indeterminate "pseudo state" with the actual
+ * This function replaces the indeterminate "pseudo state" with the actual
  * indeterminate state, which is used to keep navigation always expanded.
  *
  * @param options - Options

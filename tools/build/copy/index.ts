@@ -84,7 +84,7 @@ export function copy(
 /**
  * Copy all files matching the given pattern
  *
- * Note that this function will rebase all files that match the pattern to the
+ * Note that this function rebases all files that match the pattern to the
  * target folder, even if the pattern resolves to a parent folder.
  *
  * @param pattern - Pattern

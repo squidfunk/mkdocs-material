@@ -37,12 +37,12 @@ import { setupAnalytics } from "./integrations"
 setupAnalytics()
 
 /* Set up extra component observables */
-window.document$
+document$
   .pipe(
     switchMap(() => merge(
 
       /* Icon search */
-      ...getComponentElements("icon-search")
+      ...getComponentElements("iconsearch")
         .map(el => mountIconSearch(el))
     ))
   )

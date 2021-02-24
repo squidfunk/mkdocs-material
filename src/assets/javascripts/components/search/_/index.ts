@@ -28,7 +28,6 @@ import {
   Keyboard,
   getActiveElement,
   getElements,
-  requestJSON,
   setElementFocus,
   setElementSelection,
   setToggle
@@ -63,22 +62,8 @@ export type Search =
  * Mount options
  */
 interface MountOptions {
+  index$: ObservableInput<SearchIndex> /* Search index observable */
   keyboard$: Observable<Keyboard>      /* Keyboard observable */
-}
-
-/* ----------------------------------------------------------------------------
- * Helper functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Fetch search index
- *
- * @param url - Search index URL
- *
- * @returns Promise or observable
- */
-function fetchSearchIndex(url: string): ObservableInput<SearchIndex> {
-  return __search?.index || requestJSON<SearchIndex>(url)
 }
 
 /* ----------------------------------------------------------------------------
@@ -97,16 +82,14 @@ function fetchSearchIndex(url: string): ObservableInput<SearchIndex> {
  * @returns Search component observable
  */
 export function mountSearch(
-  el: HTMLElement, { keyboard$ }: MountOptions
+  el: HTMLElement, { index$, keyboard$ }: MountOptions
 ): Observable<Component<Search>> {
   if (location.protocol === "file:")
     return NEVER
 
   /* Set up search worker */
   const config = configuration()
-  const worker = setupSearchWorker(config.search, fetchSearchIndex(
-    `${config.base}/search/search_index.json`
-  ))
+  const worker = setupSearchWorker(config.search, index$)
 
   /* Retrieve nested components */
   const query  = getComponentElement("search-query", el)
@@ -193,7 +176,7 @@ export function mountSearch(
       })
 
   /* Create and return component */
-  const query$ = mountSearchQuery(query as HTMLInputElement, worker)
+  const query$ = mountSearchQuery(query, worker)
   return merge(
     query$,
     mountSearchResult(result, worker, { query$ })

@@ -32,7 +32,7 @@ import {
 
 import { setSourceFacts, setSourceState } from "~/actions"
 import { renderSourceFacts } from "~/templates"
-import { hash } from "~/utilities"
+import { digest } from "~/utilities"
 
 import { Component } from "../../_"
 import { SourceFacts, fetchSourceFacts } from "../facts"
@@ -53,7 +53,7 @@ export interface Source {
  * ------------------------------------------------------------------------- */
 
 /**
- * Repository facts observable
+ * Repository information observable
  */
 let fetch$: Observable<Source>
 
@@ -64,8 +64,8 @@ let fetch$: Observable<Source>
 /**
  * Watch repository information
  *
- * This function will try to read the repository facts from session storage,
- * and if unsuccessful, fetch them from the underlying provider.
+ * This function tries to read the repository facts from session storage, and
+ * if unsuccessful, fetches them from the underlying provider.
  *
  * @param el - Repository information element
  *
@@ -74,18 +74,15 @@ let fetch$: Observable<Source>
 export function watchSource(
   el: HTMLAnchorElement
 ): Observable<Source> {
-  const digest = hash(el.href).toString()
-
-  /* Fetch repository facts once */
   return fetch$ ||= defer(() => {
-    const data = sessionStorage.getItem(digest)
+    const data = sessionStorage.getItem(digest("__repo"))
     if (data) {
-      return of(JSON.parse(data))
+      return of<SourceFacts>(JSON.parse(data))
     } else {
       const value$ = fetchSourceFacts(el.href)
       value$.subscribe(value => {
         try {
-          sessionStorage.setItem(digest, JSON.stringify(value))
+          sessionStorage.setItem(digest("__repo"), JSON.stringify(value))
         } catch (err) {
           /* Uncritical, just swallow */
         }

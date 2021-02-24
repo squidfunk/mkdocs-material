@@ -75,7 +75,7 @@ Some popular choices:
 ### Latest release
 
 [:octicons-file-code-24: Source][5] ·
-[:octicons-heart-fill-24:{: .tx-heart } Insiders only][5]{: .tx-insiders }
+[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][5]{: .mdx-insiders }
 
 The visual appearance of the repository link has been improved as part of
 [Insiders][5], and will now automatically include the latest release tag which

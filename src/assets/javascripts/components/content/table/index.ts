@@ -52,8 +52,8 @@ const sentinel = createElement("table")
 /**
  * Mount data table
  *
- * This function wraps a data table in another scrollable container, so they
- * can be scrolled on smaller screen sizes and won't break the layout.
+ * This function wraps a data table in another scrollable container, so it can
+ * be smoothly scrolled on smaller screen sizes and won't break the layout.
  *
  * @param el - Data table element
  *

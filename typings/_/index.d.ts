@@ -61,16 +61,14 @@ declare global {
  * ------------------------------------------------------------------------- */
 
 declare global {
-  interface Window {
-    document$: Observable<Document>    /* Document observable */
-    location$: Subject<URL>            /* Location subject */
-    target$: Observable<HTMLElement>   /* Location target observable */
-    keyboard$: Observable<Keyboard>    /* Keyboard observable */
-    viewport$: Observable<Viewport>    /* Viewport obsevable */
-    tablet$: Observable<boolean>       /* Tablet breakpoint observable */
-    screen$: Observable<boolean>       /* Screen breakpoint observable */
-    print$: Observable<void>           /* Print mode observable */
-    alert$: Subject<string>            /* Alert subject */
-    component$: Observable<Component>  /* Component observable */
-  }
+  var document$: Observable<Document>  /* Document observable */
+  var location$: Subject<URL>          /* Location subject */
+  var target$: Observable<HTMLElement> /* Location target observable */
+  var keyboard$: Observable<Keyboard>  /* Keyboard observable */
+  var viewport$: Observable<Viewport>  /* Viewport obsevable */
+  var tablet$: Observable<boolean>     /* Tablet breakpoint observable */
+  var screen$: Observable<boolean>     /* Screen breakpoint observable */
+  var print$: Observable<void>         /* Print mode observable */
+  var alert$: Subject<string>          /* Alert subject */
+  var component$: Observable<Component>/* Component observable */
 }
