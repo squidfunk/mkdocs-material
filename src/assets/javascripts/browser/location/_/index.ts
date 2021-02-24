@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { BehaviorSubject, Subject } from "rxjs"
+import { Subject } from "rxjs"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -57,5 +57,5 @@ export function setLocation(url: URL): void {
  * @returns Location subject
  */
 export function watchLocation(): Subject<URL> {
-  return new BehaviorSubject<URL>(getLocation())
+  return new Subject<URL>()
 }

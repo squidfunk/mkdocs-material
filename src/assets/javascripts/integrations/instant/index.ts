@@ -219,7 +219,6 @@ export function setupInstantLoading(
   const response$ = location$
     .pipe(
       distinctUntilKeyChanged("pathname"),
-      skip(1),
       switchMap(url => request(url.href)
         .pipe(
           catchError(() => {
