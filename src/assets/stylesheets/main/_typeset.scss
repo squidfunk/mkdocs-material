@@ -77,11 +77,12 @@ kbd {
   }
 
   // Default spacing
-  p,
   ul,
   ol,
   dl,
-  blockquote {
+  figure,
+  blockquote,
+  pre {
     display: flow-root;
     margin: 1em 0;
   }
@@ -216,8 +217,6 @@ kbd {
   // Unformatted content
   pre {
     position: relative;
-    display: flow-root;
-    margin: 1em 0;
     line-height: 1.4;
 
     // Code block

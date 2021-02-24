@@ -38,7 +38,7 @@
   details {
     @extend .admonition;
 
-    display: block;
+    display: flow-root;
     padding-top: 0;
     overflow: visible;
 
