@@ -183,7 +183,7 @@ export function transformScript(
             fs.writeFile(`${file}.map`, map),
             fs.writeFile(`${file}`, js.replace(
               /(sourceMappingURL=)(.*)/,
-              `$1${path.basename(file)}\n`
+              `$1${path.basename(file)}.map\n`
             )),
           ))
         )
