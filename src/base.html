@@ -182,7 +182,7 @@
   {% endif %}
 
     <!-- Retrieve features from configuration -->
-    {%  set features = config.theme.features or [] %}
+    {% set features = config.theme.features or [] %}
 
     <!--
       State toggles - we need to set autocomplete="off" in order to reset the

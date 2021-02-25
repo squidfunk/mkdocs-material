@@ -40,7 +40,7 @@ theme:
   name: null
   custom_dir: material
 
-  # 404 page
+  # Static files
   static_templates:
     - 404.html
 
