@@ -142,7 +142,7 @@ export function mountHeaderTitle(
   /* Render version selector */
   const config = configuration()
   if (config.version?.provider === "mike")
-    requestJSON<Version[]>(new URL("../versions.json", config.base))
+    requestJSON<Version[]>(new URL("versions.json", config.base))
       .subscribe(versions => {
         const topic = getElementOrThrow(".md-header__topic", el)
         topic.appendChild(renderVersionSelector(versions))
