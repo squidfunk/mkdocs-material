@@ -20,8 +20,8 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Wrap everything into a macro to reduce file roundtrips (see #2213) -->
-{% macro render_nav_item(nav_item, path, level) %}
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+{% macro render(nav_item, path, level) %}
 
   <!-- Determine class according to state -->
   {% set class = "md-nav__item" %}
@@ -80,13 +80,8 @@
         <ul class="md-nav__list" data-md-scrollfix>
 
           <!-- Render nested item list -->
-          {% set base = path %}
           {% for nav_item in nav_item.children %}
-            {{ render_nav_item(
-              nav_item,
-              path = base ~ "_" ~ loop.index,
-              level = level + 1)
-            }}
+            {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
           {% endfor %}
         </ul>
       </nav>
@@ -141,4 +136,4 @@
 {% endmacro %}
 
 <!-- Render current and nested navigation items -->
-{{ render_nav_item(nav_item, path, level) }}
+{{ render(nav_item, path, level) }}
