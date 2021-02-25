@@ -291,11 +291,6 @@ customize its appearance:
               toc_depth: 0
         ```
 
-    Note that MkDocs will not generate [anchor links][23] for levels outside
-    the range defined with `toc_depth`. However, Material for MkDocs also allows
-    to [hide the table of contents][24] on a specific page while keeping
-    permalinks.
-
 _Material for MkDocs doesn't provide official support for the other options of
 this extension, so they may be supported but can also yield weird results. Use
 them at your own risk._
@@ -304,12 +299,10 @@ them at your own risk._
   [20]: https://python-markdown.github.io/extensions/toc/
   [21]: https://python-markdown.github.io/extensions/toc/#usage
   [22]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
-  [23]: #permalink
-  [24]: #hide-the-sidebars
 
 #### Navigation integration
 
-[:octicons-file-code-24: Source][25] ·
+[:octicons-file-code-24: Source][23] ·
 :octicons-unlock-24: Feature flag
 
 When _integration_ is enabled, the table of contents is rendered as part of
@@ -324,14 +317,14 @@ theme:
 
 === "Integrate table of contents"
 
-    [![Integrate table of contents][26]][26]
+    [![Integrate table of contents][24]][24]
 
 === "Separate table of contents"
 
     [![Separate table of contents][8]][8]
 
-  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_nav.scss
-  [26]: ../assets/screenshots/toc-integrate.png
+  [23]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_nav.scss
+  [24]: ../assets/screenshots/toc-integrate.png
 
 The content section will now always stretch to the right side, resulting in
 more space for your content. This feature flag can be combined with all other
@@ -339,12 +332,12 @@ feature flags, e.g. [tabs][1] and [sections][2].
 
 ### Hide the sidebars
 
-[:octicons-file-code-24: Source][27] ·
+[:octicons-file-code-24: Source][25] ·
 :octicons-note-24: Metadata
 
 Sometimes it's desirable to hide the navigation and/or table of contents
 sidebar, especially when there's a single navigation item. This can be done for
-any page using the [Metadata][28] extension:
+any page using the [Metadata][26] extension:
 
 ``` yaml
 ---
@@ -358,27 +351,27 @@ hide:
 
 === "Hide navigation"
 
-    [![Hide navigation][29]][29]
+    [![Hide navigation][27]][27]
 
 === "Hide table of contents"
 
-    [![Hide table of contents][30]][30]
+    [![Hide table of contents][28]][28]
 
 === "Hide both"
 
-    [![Hide navigation and table of contents][31]][31]
+    [![Hide navigation and table of contents][29]][29]
 
-  [27]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [28]: ../../reference/meta-tags/#metadata
-  [29]: ../assets/screenshots/hide-navigation.png
-  [30]: ../assets/screenshots/hide-toc.png
-  [31]: ../assets/screenshots/hide-navigation-toc.png
+  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
+  [26]: ../../reference/meta-tags/#metadata
+  [27]: ../assets/screenshots/hide-navigation.png
+  [28]: ../assets/screenshots/hide-toc.png
+  [29]: ../assets/screenshots/hide-navigation-toc.png
 
 ## Customization
 
 ### Keyboard shortcuts
 
-[:octicons-file-code-24: Source][32] ·
+[:octicons-file-code-24: Source][30] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 Material for MkDocs includes several keyboard shortcuts that make it possible
@@ -404,7 +397,7 @@ to navigate your project documentation via keyboard. There're two modes:
     * ++n++ , ++period++ : go to next page
 
 Let's say you want to bind some action to the ++x++ key. By using [additional
-JavaScript][33], you can subscribe to the `keyboard$` observable and attach
+JavaScript][31], you can subscribe to the `keyboard$` observable and attach
 your custom event listener:
 
 ``` js
@@ -420,12 +413,12 @@ The call to `#!js key.claim()` will essentially execute `#!js preventDefault()`
 on the underlying event, so the keypress will not propagate further and touch
 other event listeners.
 
-  [32]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/keyboard/index.ts
-  [33]: ../customization.md#additional-javascript
+  [30]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/keyboard/index.ts
+  [31]: ../customization.md#additional-javascript
 
 ### Content area width
 
-[:octicons-file-code-24: Source][34] ·
+[:octicons-file-code-24: Source][32] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 The width of the content area is set so the length of each line doesn't exceed
@@ -434,7 +427,7 @@ is a reasonable default, as longer lines tend to be harder to read, it may be
 desirable to increase the overall width of the content area, or even make it
 stretch to the entire available space.
 
-This can easily be achieved with an [additional stylesheet][35] and a few lines
+This can easily be achieved with an [additional stylesheet][33] and a few lines
 of CSS:
 
 === "Increase width"
@@ -453,5 +446,5 @@ of CSS:
     }
     ```
 
-  [34]: https://github.com/squidfunk/mkdocs-material/blob/aeaa00a625abf952f355164de02c539b061e6127/src/assets/stylesheets/main/layout/_base.scss
-  [35]: ../customization.md#additional-css
+  [32]: https://github.com/squidfunk/mkdocs-material/blob/aeaa00a625abf952f355164de02c539b061e6127/src/assets/stylesheets/main/layout/_base.scss
+  [33]: ../customization.md#additional-css
