@@ -91,8 +91,8 @@
   layout respects the user's default font size.
 
 * **Modern architecture** — Material for MkDocs's underlying codebase is built
-  with TypeScript, RxJS, and SCSS, and is compiled with Webpack, bringing
-  excellent possibilities for theme extension and customization.
+  on top of TypeScript, RxJS, and SCSS, bringing excellent possibilities for
+  theme extension and customization.
 
 _Material for MkDocs uses the [sponsorware][3] release strategy, which means
 that new features are first exclusively released to sponsors as part of Material

@@ -205,19 +205,26 @@ For more on this topic refer to the [MkDocs documentation][5].
 
 ## Theme development
 
-Material for MkDocs uses [ESBuild][6] as a build tool to leverage modern web
-technologies like [TypeScript][7] and [SASS][8]. If you want to make more
-fundamental changes, it may be necessary to make the adjustments directly in
-the source of the theme and recompile it.
+Material for MkDocs is built on top of [TypeScript][6], [RxJS][7] and [SASS][8],
+and uses a lean, custom build process to put everything together.[^1] If you
+want to make more fundamental changes, it may be necessary to make the
+adjustments directly in the source of the theme and recompile it.
 
-  [6]: https://esbuild.github.io/
-  [7]: https://www.typescriptlang.org/
+  [^1]:
+    Prior to version 7.0, the build was based on Webpack. This led to broken
+    builds due to frequent incompatibilities with loaders and plugins, so we
+    decided to swap Webpack for a leaner custom solution which is now based on
+    [RxJS][7] as the application itself. This enabled us to remove more than
+    500 dependencies (~30% less).
+
+  [6]: https://www.typescriptlang.org/
+  [7]: https://github.com/ReactiveX/rxjs
   [8]: https://sass-lang.com
 
 ### Environment setup
 
 In order to start development on Material for MkDocs, a [Node.js][9] version of
-at least 12 is required. First, clone the repository:
+at least 14 is required. First, clone the repository:
 
 ```
 git clone https://github.com/squidfunk/mkdocs-material
