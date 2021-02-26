@@ -20,15 +20,18 @@
  * IN THE SOFTWARE.
  */
 
-import * as fs from "fs/promises"
 import { minify as minhtml } from "html-minifier"
 import * as path from "path"
-import { concat, defer, merge, of, zip } from "rxjs"
+import { concat, defer, EMPTY, merge, of, zip } from "rxjs"
 import {
   concatMap,
   map,
   reduce,
-  switchMap
+  scan,
+  startWith,
+  switchMap,
+  switchMapTo,
+  toArray
 } from "rxjs/operators"
 import {
   extendDefaultPlugins,
@@ -37,7 +40,7 @@ import {
 
 import { IconSearchIndex } from "_/components"
 
-import { base, resolve } from "./_"
+import { base, read, resolve, watch, write } from "./_"
 import { copyAll } from "./copy"
 import {
   transformScript,
@@ -92,7 +95,7 @@ function minsvg(data: string): string {
 }
 
 /* ----------------------------------------------------------------------------
- * Program
+ * Tasks
  * ------------------------------------------------------------------------- */
 
 /* Copy all assets */
@@ -103,9 +106,7 @@ const assets$ = concat(
     .map(pattern => copyAll(pattern, {
       from: "node_modules/@mdi/svg/svg",
       to: `${base}/.icons/material`,
-      ...process.argv.includes("--optimize") && {
-        transform: async data => minsvg(data)
-      }
+      transform: async data => minsvg(data)
     })),
 
   /* Copy GitHub octicons */
@@ -113,9 +114,7 @@ const assets$ = concat(
     .map(pattern => copyAll(pattern, {
       from: "node_modules/@primer/octicons/build/svg",
       to: `${base}/.icons/octicons`,
-      ...process.argv.includes("--optimize") && {
-        transform: async data => minsvg(data)
-      }
+      transform: async data => minsvg(data)
     })),
 
   /* Copy FontAwesome icons */
@@ -123,9 +122,7 @@ const assets$ = concat(
     .map(pattern => copyAll(pattern, {
       from: "node_modules/@fortawesome/fontawesome-free/svgs",
       to: `${base}/.icons/fontawesome`,
-      ...process.argv.includes("--optimize") && {
-        transform: async data => minsvg(data)
-      }
+      transform: async data => minsvg(data)
     })),
 
   /* Copy Lunr.js search stemmers and segmenter */
@@ -171,14 +168,27 @@ const javascripts$ = resolve("**/{bundle,search}.ts", { cwd: "src" })
 
 /* Compute manifest */
 const manifest$ = merge(
-  stylesheets$,
-  javascripts$
+  ...Object.entries({
+    "**/*.scss": stylesheets$,
+    "**/*.ts*":  javascripts$
+  })
+    .map(([pattern, observable$]) => (
+      defer(() => process.argv.includes("--watch")
+        ? watch(pattern, { cwd: "src" })
+        : EMPTY
+      )
+        .pipe(
+          startWith("*"),
+          switchMapTo(observable$.pipe(toArray()))
+        )
+    ))
 )
   .pipe(
-    reduce((manifest, [key, value]) => manifest.set(
-      key,
-      value.replace(`${base}/`, "")
-    ), new Map<string, string>())
+    scan((prev, mapping) => (
+      mapping.reduce((next, [key, value]) => (
+        next.set(key, value.replace(`${base}/`, ""))
+      ), prev)
+    ), new Map<string, string>()),
   )
 
 /* Transform templates */
@@ -239,7 +249,7 @@ const icons$ = defer(() => resolve("**/*.svg", { cwd: "material/.icons" }))
 /* Compute emoji mappings (based on Twemoji) */
 const emojis$ = defer(() => resolve("venv/**/twemoji_db.py"))
   .pipe(
-    switchMap(file => fs.readFile(file, "utf8")),
+    switchMap(file => read(file)),
     map(data => {
       const [, payload] = data.match(/^emoji = ({.*})$.alias/ms)!
       return Object.entries<TwemojiIcon>(JSON.parse(payload))
@@ -266,21 +276,21 @@ const index$ = zip(icons$, emojis$)
         }
       } as IconSearchIndex
     }),
-    switchMap(data => fs.writeFile(
+    switchMap(data => write(
       `${base}/overrides/assets/javascripts/iconsearch_index.json`,
       JSON.stringify(data)
     ))
   )
 
-/* ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Program
+ * ------------------------------------------------------------------------- */
 
-/* Put everything together */
-concat(
-  assets$,
-  merge(
-    templates$,
-    index$
-  )
-)
-  .subscribe()
-  // .subscribe(console.log)
+/* Assemble pipeline */
+const build$ =
+  process.argv.includes("--dirty")
+    ? templates$
+    : concat(assets$, merge(templates$, index$))
+
+/* Let's get rolling */
+build$.subscribe()

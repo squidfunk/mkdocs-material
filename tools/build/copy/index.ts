@@ -25,7 +25,7 @@ import * as path from "path"
 import { Observable, from } from "rxjs"
 import { mapTo, mergeMap, switchMap } from "rxjs/operators"
 
-import { mkdir, resolve } from "../_"
+import { mkdir, read, resolve, write } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -71,10 +71,10 @@ export function copy(
     .pipe(
       switchMap(() => typeof transform === "undefined"
         ? from(fs.copyFile(options.from, options.to))
-        : from(fs.readFile(options.from, "utf8"))
+        : read(options.from)
             .pipe(
               switchMap(data => transform(data, options.from)),
-              switchMap(data => fs.writeFile(options.to, data))
+              switchMap(data => write(options.to, data))
             )
       ),
       mapTo(options.to)
