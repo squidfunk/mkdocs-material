@@ -41,6 +41,22 @@ _Material for MkDocs is the only MkDocs theme offering this feature._
   [4]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/instant/index.ts
   [5]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
+### Anchor tracking
+
+[:octicons-file-code-24: Source][9] ·
+:octicons-unlock-24: Feature flag ·
+[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][9]{: .mdx-insiders }
+
+When _anchor tracking_ is enabled, the URL in the address bar is automatically
+updated with the active anchor as highlighted in the table of contents. Add the
+following lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - navigation.tracking
+```
+
 ### Navigation tabs
 
 [:octicons-file-code-24: Source][6] · :octicons-unlock-24: Feature flag
