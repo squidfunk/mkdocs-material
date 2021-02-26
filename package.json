@@ -27,7 +27,7 @@
     "build": "rimraf material && ts-node -T tools/build --optimize",
     "build:dirty": "ts-node -T tools/build --dirty",
     "clean": "rimraf material",
-    "lint": "npm run lint:scss && npm run lint:scss",
+    "lint": "npm run lint:scss && npm run lint:ts",
     "lint:scss": "stylelint \"src/assets/**/*.scss\"",
     "lint:ts": "eslint --cache \"src/**/*.ts\"",
     "start": "ts-node -T tools/build --verbose --dirty --watch"
