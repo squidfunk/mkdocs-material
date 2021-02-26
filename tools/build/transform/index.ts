@@ -161,6 +161,7 @@ export function transformScript(
 ): Observable<string> {
   return defer(() => esbuild({
     entryPoints: [options.from],
+    target: "es2015",
     write: false,
     bundle: true,
     sourcemap: true,
