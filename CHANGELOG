@@ -1,3 +1,7 @@
+mkdocs-material-7.0.3 (2021-02-26)
+
+  * Fixed JavaScript errors in older browsers (target ES2020 -> ES2015)
+
 mkdocs-material-7.0.2 (2021-02-25)
 
   * Fixed #2343: Invalid source map URLs for JS and CSS files

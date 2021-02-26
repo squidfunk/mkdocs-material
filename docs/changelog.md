@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.0.3 <small>_ February 26, 2021</small>
+
+- Fixed JavaScript errors in older browsers (target ES2020 -> ES2015)
+
 ### 7.0.2 <small>_ February 25, 2021</small>
 
 - Fixed #2343: Invalid source map URLs for JS and CSS files
