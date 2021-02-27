@@ -23,8 +23,9 @@ FROM python:3.8.7-alpine3.12
 # Build-time flags
 ARG WITH_PLUGINS=true
 
-# Packages directory
+# Environment variables
 ENV PACKAGES=/usr/local/lib/python3.8/site-packages
+ENV PYTHONDONTWRITEBYTECODE=1
 
 # Set build directory
 WORKDIR /tmp
@@ -37,7 +38,7 @@ COPY README.md README.md
 COPY requirements.txt requirements.txt
 COPY setup.py setup.py
 
-# Perform build and cleanup artifacts
+# Perform build and cleanup artifacts and caches
 RUN \
   apk add --no-cache \
     git \
@@ -48,8 +49,8 @@ RUN \
   && \
     if [ "${WITH_PLUGINS}" = "true" ]; then \
       pip install --no-cache-dir \
-        'mkdocs-minify-plugin>=0.3' \
-        'mkdocs-redirects>=1.0'; \
+        "mkdocs-minify-plugin>=0.3" \
+        "mkdocs-redirects>=1.0"; \
     fi \
   && apk del .build gcc musl-dev \
   && \
@@ -59,7 +60,12 @@ RUN \
         ${PACKAGES}/material \
         ${PACKAGES}/mkdocs/themes/$theme; \
     done \
-  && rm -rf /tmp/*
+  && rm -rf /tmp/* /root/.cache \
+  && \
+    find ${PACKAGES} \
+      -type f \
+      -path "*/__pycache__/*" \
+      -exec rm -f {} \;
 
 # Set working directory
 WORKDIR /docs
