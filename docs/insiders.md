@@ -112,12 +112,12 @@ The following features are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown="1">
 
-- [x] [Anchor tracking :material-new-box:][24]
+- [x] [Anchor tracking :material-new-box:][23]
 - [x] [Section index pages][21]
 - [x] [Latest release tag][15]
 - [x] [Color palette toggle][16]
 - [x] [Sticky navigation tabs][20]
-- [x] [Mermaid.js integration][23]
+- [x] [Mermaid.js integration][24]
 - [x] [Search suggestions][17]
 - [x] [Search highlighting][18]
 - [x] [Search sharing][19]
@@ -168,26 +168,38 @@ the public for general availability.
   [21]: setup/setting-up-navigation.md#section-index-pages
   [22]: setup/setting-up-the-footer.md#remove-generator
 
+#### $ 4,000 – Ghost Pepper
+
+- [x] [Anchor tracking][23]
+- [ ] Code block annotations
+- [ ] Back-to-top button
+
+[23]: setup/setting-up-navigation.md#anchor-tracking
 
 #### $ 5,000 – Aji Panca
 
-- [x] [Mermaid.js integration][23]
-- [x] [Anchor tracking][24]
+- [x] [Mermaid.js integration][24]
+- [ ] List of last searches
+- [ ] Advanced routing for versioning
 
-  [23]: reference/diagrams.md
-  [24]: setup/setting-up-navigation.md#anchor-tracking
+  [24]: reference/diagrams.md
+
+#### $ 6,000 – Trinidad Scorpion
+
+- [ ] Improved search result summaries
+- [ ] Table of contents shows which sections have search results
+- [ ] Advanced routing for multi-language sites
+
+#### $ 7,000 – Royal Gold
+
+- [ ] Table of contents auto-collapse
+- [ ] Table of contents follows active anchor
+- [ ] Native lightbox integration
 
 #### Future
 
 - [ ] [Material for MkDocs Live Edit][25]
-- [ ] Improved search result summaries
-- [ ] List of last searches
-- [ ] Table of contents follows active anchor
-- [ ] Table of contents auto-collapse
-- [ ] Table of contents shows which sections have search results
-- [ ] Native lightbox for (inline) images
-- [ ] New layouts and styles (e.g. vertical)
-- [ ] ... and much more ...
+- [ ] New layouts and styles
 
   [25]: https://twitter.com/squidfunk/status/1338252230265360391
 
