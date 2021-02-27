@@ -25,6 +25,7 @@ import { build as esbuild } from "esbuild"
 import * as path from "path"
 import postcss from "postcss"
 import {
+  NEVER,
   Observable,
   concat,
   defer,
@@ -32,6 +33,7 @@ import {
   of
 } from "rxjs"
 import {
+  catchError,
   endWith,
   ignoreElements,
   switchMap
@@ -130,6 +132,10 @@ export function transformStyle(
           }
         })
       ),
+      catchError(err => {
+        console.log(err.formatted || err.message)
+        return NEVER
+      }),
       switchMap(({ css, map }) => {
         const file = digest(options.to, css)
         return concat(
