@@ -28,17 +28,18 @@
 /// Admonition flavours
 ///
 $admonitions: (
-  note:                       pencil $clr-blue-a200,
-  abstract summary tldr:      text-subject $clr-light-blue-a400,
-  info todo:                  information $clr-cyan-a700,
-  tip hint important:         fire $clr-teal-a700,
+  note:                       pencil $codacy-600,
+  abstract summary tldr:      text-subject $codacy-600,
+  info todo:                  information $codacy-600,
+  tip hint:                   information $codacy-highlight-green,
+  important:                  clipboard-alert $codacy-highlight-orange,
   success check done:         check-circle $clr-green-a700,
   question help faq:          help-circle $clr-light-green-a700,
-  warning caution attention:  alert $clr-orange-a400,
+  warning caution attention:  alert $codacy-highlight-red,
   failure fail missing:       close-circle $clr-red-a200,
   danger error:               flash-circle $clr-red-a400,
   bug:                        bug $clr-pink-a400,
-  example:                    format-list-numbered $clr-deep-purple-a400,
+  example:                    format-list-numbered $codacy-600,
   quote cite:                 format-quote-close $clr-grey
 ) !default;
 
