@@ -16,8 +16,7 @@ documentation remain untouched.
 ### Versioning
 
 [:octicons-file-code-24: Source][2] ·
-[:octicons-package-24: Utility][1] ·
-:octicons-beaker-24: Experimental ·
+[:octicons-package-24: Utility][1]
 
 [mike][1] makes it easy to deploy multiple versions of your project
 documentation. It integrates natively with Material for MkDocs and can be

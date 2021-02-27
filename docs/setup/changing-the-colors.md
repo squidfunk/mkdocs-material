@@ -184,7 +184,6 @@ _Click on a tile to change the accent color_:
 ### Color palette toggle
 
 [:octicons-file-code-24: Source][6] ·
-:octicons-beaker-24: Experimental ·
 [:octicons-heart-fill-24:{: .mdx-heart } Insiders only][6]{: .mdx-insiders }
 
 [Insiders][6] can easily add multiple color palettes, including a [scheme][8],

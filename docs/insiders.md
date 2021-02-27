@@ -117,7 +117,7 @@ The following features are currently exclusively available to sponsors:
 - [x] [Latest release tag][15]
 - [x] [Color palette toggle][16]
 - [x] [Sticky navigation tabs][20]
-- [x] [Native Mermaid.js integration][23]
+- [x] [Mermaid.js integration][23]
 - [x] [Search suggestions][17]
 - [x] [Search highlighting][18]
 - [x] [Search sharing][19]
@@ -171,7 +171,7 @@ the public for general availability.
 
 #### $ 5,000 – Aji Panca
 
-- [x] [Native Mermaid.js integration][23]
+- [x] [Mermaid.js integration][23]
 - [x] [Anchor tracking][24]
 
   [23]: reference/diagrams.md
