@@ -4,7 +4,7 @@
      extra:
        user_feedback: "true"
 -->
-{% if config.extra.user_feedback == "true" and not page.is_homepage %}
+{% if config.extra.user_feedback == "true" and (not page.is_homepage and page.content) %}
   <style>
     .user-feedback-answer {
       background-color: var(--md-accent-fg-color--transparent);
