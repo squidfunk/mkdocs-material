@@ -112,6 +112,7 @@ The following features are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown="1">
 
+- [x] [Code block annotations :material-new-box:][24]
 - [x] [Anchor tracking :material-new-box:][23]
 - [x] [Section index pages][21]
 - [x] [Latest release tag][15]
@@ -171,18 +172,19 @@ the public for general availability.
 #### $ 4,000 – Ghost Pepper
 
 - [x] [Anchor tracking][23]
-- [ ] Code block annotations
+- [x] [Code block annotations][24]
 - [ ] Back-to-top button
 
 [23]: setup/setting-up-navigation.md#anchor-tracking
+[24]: reference/code-blocks.md#adding-annotations
 
 #### $ 5,000 – Aji Panca
 
-- [x] [Mermaid.js integration][24]
+- [x] [Mermaid.js integration][25]
 - [ ] List of last searches
 - [ ] Advanced routing for versioning
 
-  [24]: reference/diagrams.md
+  [25]: reference/diagrams.md
 
 #### $ 6,000 – Trinidad Scorpion
 
@@ -198,10 +200,10 @@ the public for general availability.
 
 #### Future
 
-- [ ] [Material for MkDocs Live Edit][25]
+- [ ] [Material for MkDocs Live Edit][26]
 - [ ] New layouts and styles
 
-  [25]: https://twitter.com/squidfunk/status/1338252230265360391
+  [26]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
 
@@ -247,10 +249,10 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][26] only in CI, as you don't want to expose
+recommended to [install Insiders][27] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [26]: publishing-your-site.md#github-pages
+  [27]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -259,7 +261,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][27]. However, we kindly ask you to respect the following
+by the [MIT license][28]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -270,7 +272,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][28].
+  [GitHub deletes private forks][29].
 
-  [27]: license.md
-  [28]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [28]: license.md
+  [29]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
