@@ -454,4 +454,5 @@ _Result_:
 
   [13]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
   [14]: ../customization.md#additional-css
-  [15]: https://facelessuser.github.io/pymdown-extensions/extensions/details/
+  [15]: ../icons-emojis.md#with-animations
+  
