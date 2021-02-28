@@ -36,7 +36,7 @@ $admonitions: (
   failure fail missing:       close-circle $clr-red-a200,
   danger error:               flash-circle $clr-red-a400,
   bug:                        bug $clr-pink-a400,
-  example:                    format-list-numbered $clr-deep-purple-a400,
+  example:                    format-list-numbered $clr-deep-purple-a200,
   quote cite:                 format-quote-close $clr-grey
 ) !default;
 
