@@ -143,8 +143,12 @@
 
     <!-- Analytics -->
     {% block analytics %}
-      {% if config.google_analytics %}
-        {% include "partials/integrations/analytics.html" %}
+      {% if config.google_analytics_4 %}
+        {% include "partials/integrations/analytics-4.html" %}
+      {% else %}
+        {% if config.google_analytics %}
+          {% include "partials/integrations/analytics.html" %}
+        {% endif %}
       {% endif %}
     {% endblock %}
 
