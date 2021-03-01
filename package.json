@@ -39,12 +39,12 @@
     "fuzzaldrin-plus": "^0.6.0",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.4.0",
-    "rxjs": "^7.0.0-beta.10"
+    "rxjs": "^7.0.0-beta.12"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@mdi/svg": "^5.9.55",
-    "@primer/octicons": "^12.0.0",
+    "@primer/octicons": "^12.1.0",
     "@types/clipboard": "^2.0.1",
     "@types/escape-html": "1.0.0",
     "@types/fuzzaldrin-plus": "^0.6.1",
@@ -58,8 +58,8 @@
     "autoprefixer": "^10.2.4",
     "chokidar": "^3.5.1",
     "cssnano": "^4.1.10",
-    "esbuild": "^0.8.50",
-    "eslint": "^7.20.0",
+    "esbuild": "^0.8.53",
+    "eslint": "^7.21.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsdoc": "^32.1.0",
