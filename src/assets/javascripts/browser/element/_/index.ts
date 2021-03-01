@@ -130,13 +130,13 @@ export function createElement<T extends keyof HTMLElementTagNameMap>(
 }
 
 /**
- * Replace an element with another element
+ * Replace an element with the given list of nodes
  *
- * @param source - Source element
- * @param target - Target element
+ * @param el - Element
+ * @param nodes - Replacement nodes
  */
 export function replaceElement(
-  source: HTMLElement, target: Node
+  el: HTMLElement, ...nodes: Node[]
 ): void {
-  source.replaceWith(target)
+  el.replaceWith(...nodes)
 }

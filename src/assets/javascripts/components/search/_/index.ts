@@ -84,10 +84,6 @@ interface MountOptions {
 export function mountSearch(
   el: HTMLElement, { index$, keyboard$ }: MountOptions
 ): Observable<Component<Search>> {
-  if (location.protocol === "file:")
-    return NEVER
-
-  /* Set up search worker */
   const config = configuration()
   const worker = setupSearchWorker(config.search, index$)
 
