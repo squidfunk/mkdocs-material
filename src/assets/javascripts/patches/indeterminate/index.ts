@@ -20,7 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
+import { Observable, fromEvent, of } from "rxjs"
+import {
+  mapTo,
+  mergeMap,
+  switchMap,
+  takeWhile,
+  tap
+} from "rxjs/operators"
 
 import { getElements } from "~/browser"
 
@@ -50,13 +57,24 @@ interface PatchOptions {
 export function patchIndeterminate(
   { document$ }: PatchOptions
 ): void {
-  document$.subscribe(() => {
-    for (const el of getElements<HTMLInputElement>(
-      "[data-md-state=indeterminate]"
-    )) {
-      el.setAttribute("data-md-state", "")
-      el.indeterminate = true
-      el.checked = false
-    }
-  })
+  document$
+    .pipe(
+      switchMap(() => of(...getElements<HTMLInputElement>(
+        "[data-md-state=indeterminate]"
+      ))),
+      tap(el => {
+        el.indeterminate = true
+        el.checked = false
+      }),
+      mergeMap(el => fromEvent(el, "change")
+        .pipe(
+          takeWhile(() => el.hasAttribute("data-md-state")),
+          mapTo(el)
+        )
+      )
+    )
+      .subscribe(el => {
+        el.removeAttribute("data-md-state")
+        el.checked = false
+      })
 }
