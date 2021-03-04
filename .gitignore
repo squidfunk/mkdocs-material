@@ -26,6 +26,7 @@
 /node_modules
 /__pycache__
 /venv
+/.venv
 
 # Build files
 /build
@@ -62,3 +63,4 @@ tmp
 
 # IDEs
 .vscode
+.idea

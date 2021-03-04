@@ -178,26 +178,27 @@ Then, e.g. to override the site title, add the following line to `main.html`:
 
 Material for MkDocs provides the following template blocks:
 
-| Block name   | Wrapped contents                                |
-| ------------ | ----------------------------------------------- |
-| `analytics`  | Wraps the Google Analytics integration          |
-| `announce`   | Wraps the announcement bar                      |
-| `config`     | Wraps the JavaScript application config         |
-| `content`    | Wraps the main content                          |
-| `disqus`     | Wraps the Disqus integration                    |
-| `extrahead`  | Empty block to add custom meta tags             |
-| `fonts`      | Wraps the font definitions                      |
-| `footer`     | Wraps the footer with navigation and copyright  |
-| `header`     | Wraps the fixed header bar                      |
-| `hero`       | Wraps the hero teaser (if available)            |
-| `htmltitle`  | Wraps the `<title>` tag                         |
-| `libs`       | Wraps the JavaScript libraries (header)         |
-| `scripts`    | Wraps the JavaScript application (footer)       |
-| `source`     | Wraps the linked source files                   |
-| `site_meta`  | Wraps the meta tags in the document head        |
-| `site_nav`   | Wraps the site navigation and table of contents |
-| `styles`     | Wraps the stylesheets (also extra sources)      |
-| `tabs`       | Wraps the tabs navigation (if available)        |
+| Block name        | Wrapped contents                                |
+|:------------------|:------------------------------------------------|
+| `analytics`       | Wraps the Google Analytics integration          |
+| `announce`        | Wraps the announcement bar                      |
+| `config`          | Wraps the JavaScript application config         |
+| `content`         | Wraps the main content                          |
+| `disqus`          | Wraps the Disqus integration                    |
+| `extracopyright`  | Empty block to add custom copyright information |
+| `extrahead`       | Empty block to add custom meta tags             |
+| `fonts`           | Wraps the font definitions                      |
+| `footer`          | Wraps the footer with navigation and copyright  |
+| `header`          | Wraps the fixed header bar                      |
+| `hero`            | Wraps the hero teaser (if available)            |
+| `htmltitle`       | Wraps the `<title>` tag                         |
+| `libs`            | Wraps the JavaScript libraries (header)         |
+| `scripts`         | Wraps the JavaScript application (footer)       |
+| `source`          | Wraps the linked source files                   |
+| `site_meta`       | Wraps the meta tags in the document head        |
+| `site_nav`        | Wraps the site navigation and table of contents |
+| `styles`          | Wraps the stylesheets (also extra sources)      |
+| `tabs`            | Wraps the tabs navigation (if available)        |
 
 For more on this topic refer to the [MkDocs documentation][5].
 
