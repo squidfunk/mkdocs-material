@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.2.1 <small>_ March 4, 2021</small>
+
+- Fixed #2382: Repository stats failing when no release tag is present
+
 ### 2.2.0 <small>_ February 28, 2021</small>
 
 - Added support for code block annotations

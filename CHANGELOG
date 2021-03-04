@@ -1,3 +1,7 @@
+mkdocs-material-7.0.4+insiders-2.2.1 (2021-03-04)
+
+  * Fixed #2382: Repository stats failing when no release tag is present
+
 mkdocs-material-7.0.4 (2021-03-04)
 
   * Added Islandic translations
