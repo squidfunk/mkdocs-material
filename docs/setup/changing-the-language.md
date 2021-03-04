@@ -48,6 +48,7 @@ The following languages are supported:
 - `hr` – Croatian
 - `hu` – Hungarian
 - `id` – Indonesian
+- `is` – Islandic
 - `it` – Italian
 - `ja` – Japanese
 - `ka` – Georgian
