@@ -1,3 +1,14 @@
+mkdocs-material-7.0.4 (2021-03-04)
+
+  * Added Islandic translations
+  * Fixed #2386: Section close requires two clicks (navigation expansion)
+  * Fixed console error when search is disabled (7.0.0 regression)
+  * Fixed localsearch integration (7.0.0 regression)
+
+mkdocs-material-7.0.3+insiders-2.2.0 (2021-02-28)
+
+  * Added support for code block annotations
+
 mkdocs-material-7.0.3+insiders-2.1.0 (2021-02-26)
 
   * Added support for anchor tracking

@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.2.0 <small>_ February 28, 2021</small>
+
+- Added support for code block annotations
+
 ### 2.1.0 <small>_ February 26, 2021</small>
 
 - Added support for anchor tracking
