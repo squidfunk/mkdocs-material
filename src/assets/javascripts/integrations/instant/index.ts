@@ -104,22 +104,27 @@ function preprocess(urls: string[]): string[] {
   if (urls.length < 2)
     return urls
 
-  /* Compute references URLs */
-  const [root, next] = urls.sort((a, b) => a.length - b.length)
-
-  /* Compute common prefix */
-  let index = 0
-  if (root === next)
-    index = root.length
-  else
-    while (root.charCodeAt(index) === root.charCodeAt(index))
-      index++
+  /* Compute longest common prefix */
+  let prefix = urls[0]
+  for (let url of urls) {
+    // Exclude the portion of url after the last slash.
+    const lastSlash = url.lastIndexOf("/")
+    if (lastSlash !== -1) {
+      url = url.substring(0, lastSlash + 1)
+    }
+    const length = Math.min(url.length, prefix.length)
+    let i
+    for (i = 0; i < length; ++i) {
+      if (prefix.charCodeAt(i) !== url.charCodeAt(i)) {
+        break
+      }
+    }
+    prefix = prefix.substring(0, length)
+  }
 
   /* Replace common prefix (i.e. base) with effective base */
   const config = configuration()
-  return urls.map(url => (
-    url.replace(root.slice(0, index), `${config.base}/`)
-  ))
+  return urls.map(url => `${config.base}/${url.substring(prefix.length)}`)
 }
 
 /* ----------------------------------------------------------------------------
