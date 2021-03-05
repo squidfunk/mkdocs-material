@@ -276,7 +276,9 @@ export function setupInstantLoading(
 
           /* Components */
           "[data-md-component=announce]",
-          "[data-md-component=header-topic]",
+          // Replace header-title rather than header-topic in order to avoid problem with
+          // versioning.
+          "[data-md-component=header-title]",
           "[data-md-component=container]",
           "[data-md-component=skip]"
         ]) {
