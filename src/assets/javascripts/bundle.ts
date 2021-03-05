@@ -144,7 +144,7 @@ keyboard$
     })
 
 /* Set up patches */
-patchIndeterminate({ document$ })
+patchIndeterminate({ document$, tablet$ })
 patchScrollfix({ document$ })
 patchScrolllock({ viewport$, tablet$ })
 

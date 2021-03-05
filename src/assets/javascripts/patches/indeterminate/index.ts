@@ -26,7 +26,8 @@ import {
   mergeMap,
   switchMap,
   takeWhile,
-  tap
+  tap,
+  withLatestFrom
 } from "rxjs/operators"
 
 import { getElements } from "~/browser"
@@ -40,6 +41,7 @@ import { getElements } from "~/browser"
  */
 interface PatchOptions {
   document$: Observable<Document>      /* Document observable */
+  tablet$: Observable<boolean>         /* Tablet breakpoint observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -55,7 +57,7 @@ interface PatchOptions {
  * @param options - Options
  */
 export function patchIndeterminate(
-  { document$ }: PatchOptions
+  { document$, tablet$ }: PatchOptions
 ): void {
   document$
     .pipe(
@@ -71,10 +73,12 @@ export function patchIndeterminate(
           takeWhile(() => el.hasAttribute("data-md-state")),
           mapTo(el)
         )
-      )
+      ),
+      withLatestFrom(tablet$)
     )
-      .subscribe(el => {
+      .subscribe(([el, tablet]) => {
         el.removeAttribute("data-md-state")
-        el.checked = false
+        if (tablet)
+          el.checked = false
       })
 }
