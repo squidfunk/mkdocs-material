@@ -8,7 +8,7 @@ template: overrides/main.html
 
 ### 7.0.4 <small>_ March 4, 2021</small>
 
-- Added Islandic translations
+- Added Icelandic translations
 - Fixed #2386: Section close requires two clicks (navigation expansion)
 - Fixed console error when search is disabled (7.0.0 regression)
 - Fixed localsearch integration (7.0.0 regression)

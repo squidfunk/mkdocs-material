@@ -4,7 +4,7 @@ mkdocs-material-7.0.4+insiders-2.2.1 (2021-03-04)
 
 mkdocs-material-7.0.4 (2021-03-04)
 
-  * Added Islandic translations
+  * Added Icelandic translations
   * Fixed #2386: Section close requires two clicks (navigation expansion)
   * Fixed console error when search is disabled (7.0.0 regression)
   * Fixed localsearch integration (7.0.0 regression)
