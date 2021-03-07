@@ -1,3 +1,12 @@
+mkdocs-material-7.0.5 (2021-03-07)
+
+  * Added extracopyright block to allow for custom copyright info
+  * Fixed evaluation of third-party scripts when using instant loading
+  * Fixed edge cases when using instant loading without directory URLs
+  * Fixed handling of version selector when using instant loading
+  * Fixed regression with header title not being updated correctly
+  * Fixed expanded sections not opening on first click (7.0.4 regression)
+
 mkdocs-material-7.0.4+insiders-2.2.1 (2021-03-04)
 
   * Fixed #2382: Repository stats failing when no release tag is present
