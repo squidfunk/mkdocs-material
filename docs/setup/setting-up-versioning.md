@@ -69,7 +69,7 @@ Material for MkDocs._
 ## Usage
 
 While this section outlines the basic workflow for publishing new versions, 
-it's best to check out the [official documentation][4] to make yourself familar
+it's best to check out the [official documentation][6] to make yourself familar
 with [mike][1].
 
 ### Publishing a new version
