@@ -16,11 +16,19 @@ additional icons][1] with minimal effort.
 ### Logo
 
 [:octicons-file-code-24: Source][2] ·
-:octicons-milestone-24: Default: `material/library`
+:octicons-milestone-24: Default: [`material/library`](https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/material/library.svg)
 
-There're two ways to specify a _logo_: it must be a valid path to [any icon 
-bundled with the theme][3], or to a user-provided image located in the `docs`
-folder. Both can be set via `mkdocs.yml`:
+Configured in your `mkdocs.yml`; there are two types of _logo_ (choose only one):
+
+- `theme.logo` a user-provided image (_supports SVG_) located in the `docs` folder.
+- `theme.icon.logo` for using [any icon bundled with the theme][3].
+
+=== "Image"
+
+    ``` yaml
+    theme:
+      logo: assets/logo.png
+    ```
 
 === "Icon"
 
@@ -28,13 +36,6 @@ folder. Both can be set via `mkdocs.yml`:
     theme:
       icon:
         logo: material/library
-    ```
-
-=== "Image"
-
-    ``` yaml
-    theme:
-      logo: assets/logo.png
     ```
 
   [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/logo.html
