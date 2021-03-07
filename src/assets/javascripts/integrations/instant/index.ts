@@ -281,6 +281,7 @@ export function setupInstantLoading(
           /* Components */
           "[data-md-component=announce]",
           "[data-md-component=header-topic]",
+          "[data-md-component=home], .md-logo", // compat
           "[data-md-component=container]",
           "[data-md-component=skip]"
         ]) {
