@@ -168,6 +168,10 @@ const control$ = merge(
   ...getComponentElements("header")
     .map(el => mountHeader(el, { viewport$, header$, main$ })),
 
+  /* Header title */
+  ...getComponentElements("header-title")
+    .map(el => mountHeaderTitle(el, { viewport$, header$ })),
+
   /* Search */
   ...getComponentElements("search")
     .map(el => mountSearch(el, { index$, keyboard$ })),
@@ -187,10 +191,6 @@ const content$ = defer(() => merge(
   /* Content */
   ...getComponentElements("content")
     .map(el => mountContent(el, { target$, viewport$, print$ })),
-
-  /* Header title */
-  ...getComponentElements("header-title")
-    .map(el => mountHeaderTitle(el, { viewport$, header$ })),
 
   /* Sidebar */
   ...getComponentElements("sidebar")
