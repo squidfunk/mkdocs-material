@@ -180,8 +180,8 @@ export function setupInstantLoading(
         .pipe(
           filter(ev => !ev.metaKey && !ev.ctrlKey),
           switchMap(ev => {
-            // Check for `Element` rather than `HTMLElement` to also
-            // handle <svg> elements within <a> elements.
+
+            /* Handle HTML and SVG elements */
             if (ev.target instanceof Element) {
               const el = ev.target.closest("a")
               if (el && !el.target && urls.includes(el.href)) {
