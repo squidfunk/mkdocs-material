@@ -20,12 +20,6 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Mitigate bug: https://github.com/mkdocs/mkdocs/issues/2191 -->
-{% set site_url = config.site_url | d(nav.homepage.url, true) | url %}
-{% if not config.use_directory_urls and site_url[0] == site_url[-1] == "." %}
-  {% set site_url = site_url ~ "/index.html" %}
-{% endif %}
-
 <!-- Determine class according to configuration -->
 {% set class = "md-nav md-nav--primary" %}
 {% if "navigation.tabs" in features %}
@@ -45,7 +39,7 @@
   <!-- Site title -->
   <label class="md-nav__title" for="__drawer">
     <a
-      href="{{ site_url }}"
+      href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
       title="{{ config.site_name | e }}"
       class="md-nav__button md-logo"
       aria-label="{{ config.site_name }}"
