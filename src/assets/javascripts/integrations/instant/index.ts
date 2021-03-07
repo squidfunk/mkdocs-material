@@ -105,9 +105,9 @@ function preprocess(urls: string[]): string[] {
     return urls
 
   /* Take the first two URLs and remove everything after the last slash */
-  const [root, next] = urls.slice(0, 2).map(url => (
-    url.replace(/[^/]+$/, "")
-  ))
+  const [root, next] = urls
+    .sort((a, b) => a.length - b.length)
+    .map(url => url.replace(/[^/]+$/, ""))
 
   /* Compute common prefix */
   let index = 0
