@@ -304,7 +304,8 @@ export function setupInstantLoading(
       concatMap(el => {
         const script = createElement("script")
         if (el.src) {
-          script.src = el.src
+          for (const name of el.getAttributeNames())
+            script.setAttribute(name, el.getAttribute(name)!)
           replaceElement(el, script)
 
           /* Complete when script is loaded */
