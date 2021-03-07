@@ -281,8 +281,8 @@ export function setupInstantLoading(
           /* Components */
           "[data-md-component=announce]",
           "[data-md-component=header-topic]",
-          "[data-md-component=home], .md-logo", // compat
           "[data-md-component=container]",
+          "[data-md-component=logo], .md-logo", // compat
           "[data-md-component=skip]"
         ]) {
           const source = getElement(selector)
