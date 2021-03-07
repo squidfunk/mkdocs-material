@@ -63,7 +63,8 @@ import {
 import {
   SearchIndex,
   setupClipboardJS,
-  setupInstantLoading
+  setupInstantLoading,
+  setupVersionSelector
 } from "./integrations"
 import {
   patchIndeterminate,
@@ -106,6 +107,10 @@ setupClipboardJS({ alert$ })
 /* Set up instant loading, if enabled */
 if (feature("navigation.instant"))
   setupInstantLoading({ document$, location$, viewport$ })
+
+/* Set up version selector */
+if (config.version?.provider === "mike")
+  setupVersionSelector()
 
 /* Always close drawer and search on navigation */
 merge(location$, target$)
@@ -168,10 +173,6 @@ const control$ = merge(
   ...getComponentElements("header")
     .map(el => mountHeader(el, { viewport$, header$, main$ })),
 
-  /* Header title */
-  ...getComponentElements("header-title")
-    .map(el => mountHeaderTitle(el, { viewport$, header$ })),
-
   /* Search */
   ...getComponentElements("search")
     .map(el => mountSearch(el, { index$, keyboard$ })),
@@ -191,6 +192,10 @@ const content$ = defer(() => merge(
   /* Content */
   ...getComponentElements("content")
     .map(el => mountContent(el, { target$, viewport$, print$ })),
+
+  /* Header title */
+  ...getComponentElements("header-title")
+    .map(el => mountHeaderTitle(el, { viewport$, header$ })),
 
   /* Sidebar */
   ...getComponentElements("sidebar")
