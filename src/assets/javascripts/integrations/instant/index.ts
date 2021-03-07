@@ -104,15 +104,17 @@ function preprocess(urls: string[]): string[] {
   if (urls.length < 2)
     return urls
 
-  /* Compute references URLs */
-  const [root, next] = urls.sort((a, b) => a.length - b.length)
+  /* Take the first two URLs and remove everything after the last slash */
+  const [root, next] = urls.slice(0, 2).map(url => (
+    url.replace(/[^/]+$/, "")
+  ))
 
   /* Compute common prefix */
   let index = 0
   if (root === next)
     index = root.length
   else
-    while (root.charCodeAt(index) === root.charCodeAt(index))
+    while (root.charCodeAt(index) === next.charCodeAt(index))
       index++
 
   /* Replace common prefix (i.e. base) with effective base */
