@@ -402,6 +402,7 @@ following CSS to an [additional stylesheet][14]:
 .md-typeset .pied-piper > .admonition-title,
 .md-typeset .pied-piper > summary {
   background-color: rgba(43, 155, 70, 0.1);
+  border-color: rgb(43, 155, 70);
 }
 .md-typeset .pied-piper > .admonition-title::before,
 .md-typeset .pied-piper > summary::before {
@@ -426,6 +427,7 @@ colors. [You can even add animations][15].
   .md-typeset .pied-piper > .admonition-title,
   .md-typeset .pied-piper > summary {
     background-color: rgba(43, 155, 70, 0.1);
+    border-color: rgb(43, 155, 70);
   }
   .md-typeset .pied-piper > .admonition-title::before,
   .md-typeset .pied-piper > summary::before {
