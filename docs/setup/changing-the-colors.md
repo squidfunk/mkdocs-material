@@ -195,7 +195,8 @@ theme:
   palette:
 
     # Light mode
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: indigo
       toggle:
@@ -203,7 +204,8 @@ theme:
         name: Switch to dark mode
 
     # Dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: blue
       accent: blue
       toggle:
@@ -211,7 +213,9 @@ theme:
         name: Switch to light mode
 ```
 
-This will render a color palette toggle in the header next to the search bar:
+In order to set a default theme based on user preference, add a valid media
+query to the `media` attribute. This will render a color palette toggle in the
+header next to the search bar:
 
 <figure markdown="1">
 
