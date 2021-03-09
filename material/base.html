@@ -26,7 +26,7 @@
       {% if page.canonical_url %}
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
-      <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
+      <link rel="icon" href="{{ config.theme.favicon | url }}">
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-7.0.5">
     {% endblock %}
     {% block htmltitle %}
@@ -217,7 +217,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.c9759047.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.659e5423.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

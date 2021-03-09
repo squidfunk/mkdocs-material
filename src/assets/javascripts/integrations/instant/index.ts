@@ -168,7 +168,7 @@ export function setupInstantLoading(
   }
 
   /* Hack: ensure absolute favicon link to omit 404s when switching */
-  const favicon = getElement<HTMLLinkElement>("link[rel='shortcut icon']")
+  const favicon = getElement<HTMLLinkElement>("link[rel=icon]")
   if (typeof favicon !== "undefined")
     favicon.href = favicon.href
 
