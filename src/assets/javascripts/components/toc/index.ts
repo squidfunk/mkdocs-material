@@ -161,6 +161,13 @@ export function watchTableOfContents(
         }, new Map<HTMLAnchorElement[], number>())
       }),
 
+      /* Sort index by vertical offset */
+      map(index => (
+        new Map<HTMLAnchorElement[], number>(
+          [...index].sort(([, offsetA], [, offsetB]) => offsetA - offsetB)
+        )
+      )),
+
       /* Re-compute partition when viewport offset changes */
       switchMap(index => combineLatest([adjust$, viewport$])
         .pipe(
