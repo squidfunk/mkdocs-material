@@ -30,7 +30,7 @@ plugins:
 
 The following options are supported:
 
-`lang`{: #lang }
+`lang`{ #lang }
 
 :   :octicons-milestone-24: Default: _automatically set_ – This option allows
     to include the language-specific stemmers provided by [lunr-languages][5].
@@ -91,7 +91,7 @@ The following options are supported:
         JavaScript payload by around 20kb (before `gzip`) and by another 15-30kb
         per language.
 
-`separator`{: #separator }
+`separator`{ #separator }
 
 :   :octicons-milestone-24: Default: _automatically set_ – The separator for
     indexing and query tokenization can be customized, making it possible to
@@ -104,7 +104,7 @@ The following options are supported:
           separator: '[\s\-\.]+'
     ```
 
-`prebuild_index`{: #prebuild-index }
+`prebuild_index`{ #prebuild-index }
 
 :   :octicons-milestone-24: Default: `false` · :octicons-beaker-24:
     Experimental – MkDocs can generate a [prebuilt index][7] of all pages during
@@ -137,7 +137,7 @@ them at your own risk._
 [:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][8]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][8]{ .mdx-insiders }
 
 When _search suggestions_ are enabled, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
@@ -174,7 +174,7 @@ A demo is worth a thousand words — check it out at
 [:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][8]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][8]{ .mdx-insiders }
 
 When _search highlighting_ is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
@@ -208,7 +208,7 @@ A demo is worth a thousand words — check it out at
 [:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][8]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][8]{ .mdx-insiders }
 
 When _search sharing_ is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current

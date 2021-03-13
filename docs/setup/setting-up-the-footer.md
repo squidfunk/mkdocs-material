@@ -6,9 +6,9 @@ template: overrides/main.html
 
 The footer of your project documentation is a great place to add links to
 websites or platforms you or your company are using as additional marketing 
-channels, e.g. :fontawesome-brands-medium:{: style="color: #00AB6C" },
-:fontawesome-brands-twitter:{: style="color: #1DA1F2" } or
-:fontawesome-brands-facebook:{: style="color: #4267B2" }, which can be
+channels, e.g. :fontawesome-brands-medium:{ style="color: #00AB6C" },
+:fontawesome-brands-twitter:{ style="color: #1DA1F2" } or
+:fontawesome-brands-facebook:{ style="color: #4267B2" }, which can be
 configured via `mkdocs.yml`.
 
 ## Configuration
@@ -31,7 +31,7 @@ extra:
 
 For each entry, the following fields are available:
 
-`icon`{: #icon }
+`icon`{ #icon }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
     This field must point to a valid icon path referencing [any icon bundled
@@ -51,7 +51,7 @@ For each entry, the following fields are available:
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/social.html
   [2]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
-`link`{: #link }
+`link`{ #link }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
     This field must contain a valid relative or absolute URL including the URI 
@@ -75,7 +75,7 @@ For each entry, the following fields are available:
               link: mailto:<email-address>
         ```
 
-`name`{: #name }
+`name`{ #name }
 
 :   :octicons-milestone-24: Default: _domain name from_ `link`_, if available_ –
     This field is used as the link's `title` attribute and can be set to a 
@@ -106,7 +106,7 @@ copyright: Copyright &copy; 2016 - 2020 Martin Donath
 ### Remove generator
 
 [:octicons-file-code-24: Source][4] ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][4]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][4]{ .mdx-insiders }
 
 The footer displays a _Made with Material for MkDocs_ notice to denote how
 the site was generated. The notice can be removed with the following setting

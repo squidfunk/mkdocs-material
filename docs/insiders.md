@@ -2,7 +2,7 @@
 template: overrides/main.html
 ---
 
-# <span hidden>Insiders</span> :logo: :material-plus: :octicons-heart-fill-24:{: .mdx-heart }
+# <span hidden>Insiders</span> :logo: :material-plus: :octicons-heart-fill-24:{ .mdx-heart }
 
 Material for MkDocs uses the _sponsorware_ release strategy, which means
 that _new features are first exclusively released to sponsors_ as part of
@@ -89,20 +89,18 @@ You can cancel your sponsorship anytime.[^3]
     through Stripe. As we don't receive any information regarding your payment,
     and GitHub doesn't offer refunds, sponsorships are non-refundable.
 
-[:octicons-heart-fill-24:{: .mdx-heart } &nbsp; Join our <span class="mdx-insiders-count"></span> awesome sponsors][5]{: .md-button .md-button--primary .mdx-insiders-button }
+[:octicons-heart-fill-24:{ .mdx-heart } &nbsp; Join our <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span> awesome sponsors][5]{ .md-button .md-button--primary .mdx-sponsorship-button }
 
-<div class="mdx-insiders-container" markdown="1" hidden>
-  <div class="mdx-insiders-list"></div>
-  _If you sponsor publicly, you're automatically added here with a link to
-  your profile and avatar to show your support for Material for MkDocs.
-  Alternatively, if you wish to keep your sponsorship private, you'll be a 
-  silent +1. You can select visibility during checkout and change it 
-  afterwards._
+<div class="mdx-sponsorship" data-mdx-component="sponsorship" hidden>
+  <div class="mdx-sponsorship__list"></div>
+  <small>
+    If you sponsor publicly, you're automatically added here with a link to
+    your profile and avatar to show your support for Material for MkDocs.
+    Alternatively, if you wish to keep your sponsorship private, you'll be a
+    silent +1. You can select visibility during checkout and change it
+    afterwards.
+  </small>
 </div>
-
-<script>
-  fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/").then(function(e){return e.json()}).then(function(e){var t=document.querySelector(".mdx-insiders-list"),n=0;for(var o of e.sponsors)if("PUBLIC"===o.type){var s;(s=document.createElement("a")).href=o.url,s.title="@"+o.name,s.className="mdx-insiders-list__item",t.appendChild(s);var r=document.createElement("img");r.src=o.image,s.appendChild(r)}else n++;(s=document.createElement("a")).href="https://github.com/sponsors/squidfunk",s.title="[private]",s.innerText="+"+n,s.className="mdx-insiders-list__item mdx-insiders-list__item--private",t.appendChild(s),document.querySelector(".mdx-insiders-count").innerText=e.sponsors.length,document.querySelector(".mdx-insiders-container").removeAttribute("hidden"),document.querySelector('.mdx-insiders-total').innerText=" $ "+e.total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}).catch(console.log);
-</script>
 
   [5]: https://github.com/sponsors/squidfunk
 
@@ -112,27 +110,28 @@ The following features are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown="1">
 
-- [x] [Code block annotations :material-new-box:][24]
-- [x] [Anchor tracking :material-new-box:][23]
-- [x] [Section index pages][21]
+- [x] [Code block annotations :material-new-box:][25]
+- [x] [Anchor tracking :material-new-box:][24]
+- [x] [Back-to-top button :material-new-box:][17]
+- [x] [Section index pages][22]
 - [x] [Latest release tag][15]
 - [x] [Color palette toggle][16]
-- [x] [Sticky navigation tabs][20]
-- [x] [Mermaid.js integration][25]
-- [x] [Search suggestions][17]
-- [x] [Search highlighting][18]
-- [x] [Search sharing][19]
-- [x] [Remove generator notice][22]
+- [x] [Sticky navigation tabs][21]
+- [x] [Mermaid.js integration][26]
+- [x] [Search suggestions][18]
+- [x] [Search highlighting][19]
+- [x] [Search sharing][20]
+- [x] [Remove generator notice][23]
 
 </div>
 
 _New features are added to this list every few weeks, so be sure to come back
 from time to time to learn about what's new, or follow [@squidfunk on 
-:fontawesome-brands-twitter:{: .twitter } Twitter][6] to stay updated._
+:fontawesome-brands-twitter:{ .twitter } Twitter][6] to stay updated._
 
   [6]: https://twitter.com/squidfunk
 
-## Funding<span class="mdx-insiders-total mdx-insiders-count"></span>
+## Funding <span class="mdx-sponsorship-total" data-mdx-component="sponsorship-total"></span>
 
 ### Goals
 
@@ -144,47 +143,48 @@ the public for general availability.
 
 - [x] [Latest release tag][15]
 - [x] [Color palette toggle][16]
-- [ ] Code block palette toggle
+- [x] [Back-to-top button][17]
 
   [15]: setup/adding-a-git-repository.md#latest-release
   [16]: setup/changing-the-colors.md#color-palette-toggle
+  [17]: setup/setting-up-navigation.md#back-to-top-button
 
 #### $ 2,500 – Biquinho Vermelho
 
-- [x] [Search suggestions][17]
-- [x] [Search highlighting][18]
-- [x] [Search sharing][19]
+- [x] [Search suggestions][18]
+- [x] [Search highlighting][19]
+- [x] [Search sharing][20]
 
-  [17]: setup/setting-up-site-search.md#search-suggestions
-  [18]: setup/setting-up-site-search.md#search-highlighting
-  [19]: setup/setting-up-site-search.md#search-sharing
+  [18]: setup/setting-up-site-search.md#search-suggestions
+  [19]: setup/setting-up-site-search.md#search-highlighting
+  [20]: setup/setting-up-site-search.md#search-sharing
 
 #### $ 3,000 – Caribbean Red
 
-- [x] [Sticky navigation tabs][20]
-- [x] [Section index pages][21]
-- [x] [Remove generator notice][22]
+- [x] [Sticky navigation tabs][21]
+- [x] [Section index pages][22]
+- [x] [Remove generator notice][23]
 
-  [20]: setup/setting-up-navigation.md#sticky-navigation-tabs
-  [21]: setup/setting-up-navigation.md#section-index-pages
-  [22]: setup/setting-up-the-footer.md#remove-generator
+  [21]: setup/setting-up-navigation.md#sticky-navigation-tabs
+  [22]: setup/setting-up-navigation.md#section-index-pages
+  [23]: setup/setting-up-the-footer.md#remove-generator
 
 #### $ 4,000 – Ghost Pepper
 
-- [x] [Anchor tracking][23]
-- [x] [Code block annotations][24]
-- [ ] Back-to-top button
+- [x] [Anchor tracking][24]
+- [x] [Code block annotations][25]
+- [ ] Non-latest version warning
 
-[23]: setup/setting-up-navigation.md#anchor-tracking
-[24]: reference/code-blocks.md#adding-annotations
+[24]: setup/setting-up-navigation.md#anchor-tracking
+[25]: reference/code-blocks.md#adding-annotations
 
 #### $ 5,000 – Aji Panca
 
-- [x] [Mermaid.js integration][25]
+- [x] [Mermaid.js integration][26]
 - [ ] List of last searches
 - [ ] Advanced routing for versioning
 
-  [25]: reference/diagrams.md
+  [26]: reference/diagrams.md
 
 #### $ 6,000 – Trinidad Scorpion
 
@@ -200,10 +200,11 @@ the public for general availability.
 
 #### Future
 
-- [ ] [Material for MkDocs Live Edit][26]
+- [ ] [Material for MkDocs Live Edit][27]
 - [ ] New layouts and styles
+- [ ] Code block palette toggle
 
-  [26]: https://twitter.com/squidfunk/status/1338252230265360391
+  [27]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
 
@@ -249,10 +250,10 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][27] only in CI, as you don't want to expose
+recommended to [install Insiders][28] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [27]: publishing-your-site.md#github-pages
+  [28]: publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -261,7 +262,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][28]. However, we kindly ask you to respect the following
+by the [MIT license][29]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -272,7 +273,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][29].
+  [GitHub deletes private forks][30].
 
-  [28]: license.md
-  [29]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [29]: license.md
+  [30]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

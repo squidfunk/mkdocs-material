@@ -25,7 +25,8 @@ import { switchMap } from "rxjs/operators"
 
 import {
   getComponentElements,
-  mountIconSearch
+  mountIconSearch,
+  mountSponsorship
 } from "./components"
 import { setupAnalytics } from "./integrations"
 
@@ -43,7 +44,11 @@ document$
 
       /* Icon search */
       ...getComponentElements("iconsearch")
-        .map(el => mountIconSearch(el))
+        .map(el => mountIconSearch(el)),
+
+      /* Sponsorship */
+      ...getComponentElements("sponsorship")
+        .map(el => mountSponsorship(el))
     ))
   )
     .subscribe()

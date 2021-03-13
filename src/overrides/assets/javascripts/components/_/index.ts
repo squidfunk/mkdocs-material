@@ -33,6 +33,9 @@ export type ComponentType =
   | "iconsearch"                       /* Icon search */
   | "iconsearch-query"                 /* Icon search input */
   | "iconsearch-result"                /* Icon search results */
+  | "sponsorship"                      /* Sponsorship */
+  | "sponsorship-count"                /* Sponsorship count */
+  | "sponsorship-total"                /* Sponsorship total */
 
 /**
  * A component
@@ -59,6 +62,9 @@ interface ComponentTypeMap {
   "iconsearch": HTMLElement            /* Icon search */
   "iconsearch-query": HTMLInputElement /* Icon search input */
   "iconsearch-result": HTMLElement     /* Icon search results */
+  "sponsorship": HTMLElement           /* Sponsorship */
+  "sponsorship-count": HTMLElement     /* Sponsorship count */
+  "sponsorship-total": HTMLElement     /* Sponsorship total */
 }
 
 /* ----------------------------------------------------------------------------
