@@ -1,3 +1,7 @@
+mkdocs-material-7.0.5+insiders-2.3.0 (2021-03-13)
+
+  * Added support for back-to-top button
+
 mkdocs-material-7.0.5 (2021-03-07)
 
   * Added extracopyright block to allow for custom copyright info

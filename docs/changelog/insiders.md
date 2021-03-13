@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.3.0 <small>_ March 13, 2021</small>
+
+-  Added support for back-to-top button
+
 ### 2.2.1 <small>_ March 4, 2021</small>
 
 - Fixed #2382: Repository stats failing when no release tag is present
