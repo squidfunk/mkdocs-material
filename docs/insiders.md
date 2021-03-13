@@ -89,20 +89,18 @@ You can cancel your sponsorship anytime.[^3]
     through Stripe. As we don't receive any information regarding your payment,
     and GitHub doesn't offer refunds, sponsorships are non-refundable.
 
-[:octicons-heart-fill-24:{ .mdx-heart } &nbsp; Join our <span class="mdx-insiders-count"></span> awesome sponsors][5]{ .md-button .md-button--primary .mdx-insiders-button }
+[:octicons-heart-fill-24:{ .mdx-heart } &nbsp; Join our <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span> awesome sponsors][5]{ .md-button .md-button--primary .mdx-sponsorship-button }
 
-<div class="mdx-insiders-container" markdown="1" hidden>
-  <div class="mdx-insiders-list"></div>
-  _If you sponsor publicly, you're automatically added here with a link to
-  your profile and avatar to show your support for Material for MkDocs.
-  Alternatively, if you wish to keep your sponsorship private, you'll be a 
-  silent +1. You can select visibility during checkout and change it 
-  afterwards._
+<div class="mdx-sponsorship" data-mdx-component="sponsorship" hidden>
+  <div class="mdx-sponsorship__list"></div>
+  <small>
+    If you sponsor publicly, you're automatically added here with a link to
+    your profile and avatar to show your support for Material for MkDocs.
+    Alternatively, if you wish to keep your sponsorship private, you'll be a
+    silent +1. You can select visibility during checkout and change it
+    afterwards.
+  </small>
 </div>
-
-<script>
-  fetch("https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/").then(function(e){return e.json()}).then(function(e){var t=document.querySelector(".mdx-insiders-list"),n=0;for(var o of e.sponsors)if("PUBLIC"===o.type){var s;(s=document.createElement("a")).href=o.url,s.title="@"+o.name,s.className="mdx-insiders-list__item",t.appendChild(s);var r=document.createElement("img");r.src=o.image,s.appendChild(r)}else n++;(s=document.createElement("a")).href="https://github.com/sponsors/squidfunk",s.title="[private]",s.innerText="+"+n,s.className="mdx-insiders-list__item mdx-insiders-list__item--private",t.appendChild(s),document.querySelector(".mdx-insiders-count").innerText=e.sponsors.length,document.querySelector(".mdx-insiders-container").removeAttribute("hidden"),document.querySelector('.mdx-insiders-total').innerText=" $ "+e.total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}).catch(console.log);
-</script>
 
   [5]: https://github.com/sponsors/squidfunk
 
@@ -133,7 +131,7 @@ from time to time to learn about what's new, or follow [@squidfunk on
 
   [6]: https://twitter.com/squidfunk
 
-## Funding<span class="mdx-insiders-total mdx-insiders-count"></span>
+## Funding <span class="mdx-sponsorship-total" data-mdx-component="sponsorship-total"></span>
 
 ### Goals
 

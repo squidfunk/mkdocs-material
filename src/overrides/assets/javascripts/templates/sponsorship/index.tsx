@@ -20,5 +20,48 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./iconsearch"
-export * from "./sponsorship"
+import { h } from "~/utilities"
+
+import { PublicSponsor } from "_/components"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Render public sponsor
+ *
+ * @param sponsor - Public sponsor
+ *
+ * @returns Element
+ */
+export function renderPublicSponsor(
+  sponsor: PublicSponsor
+): HTMLElement {
+  const title = `@${sponsor.name}`
+  return (
+    <a href={sponsor.url} title={title} class="mdx-sponsorship__item">
+      <img src={sponsor.image} />
+    </a>
+  )
+}
+
+/**
+ * Render private sponsor
+ *
+ * @param count - Number of private sponsors
+ *
+ * @returns Element
+ */
+export function renderPrivateSponsor(
+  count: number
+): HTMLElement {
+  return (
+    <a
+      href="https://github.com/sponsors/squidfunk"
+      class="mdx-sponsorship__item mdx-sponsorship__item--private"
+    >
+      +{count}
+    </a>
+  )
+}
