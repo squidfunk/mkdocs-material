@@ -90,67 +90,6 @@
     color: $clr-pink-500;
   }
 
-  // Insiders button
-  .mdx-insiders-button {
-    font-weight: 400;
-  }
-
-  // Insiders count
-  .mdx-insiders-count {
-    font-weight: 700;
-  }
-
-  // Insiders list
-  .mdx-insiders-list {
-    margin: 2em 0;
-    overflow: auto;
-
-    // Insiders list item
-    &__item {
-      display: block;
-      float: left;
-      width: px2rem(60px);
-      height: px2rem(60px);
-      margin: px2rem(4px);
-      overflow: hidden;
-      border-radius: 100%;
-      transform: scale(1);
-      transition:
-        color     125ms,
-        transform 125ms;
-
-      // Sponsor avatar
-      img {
-        display: block;
-        width: 100%;
-        height: auto;
-        filter: grayscale(100%);
-        transition: filter 125ms;
-      }
-
-      // Sponsor item on focus/hover
-      &:focus,
-      &:hover {
-        transform: scale(1.1);
-
-        // Sponsor avatar
-        img {
-          filter: grayscale(0%);
-        }
-      }
-
-      // Private sponsor
-      &--private {
-        color: var(--md-default-fg-color--lighter);
-        font-weight: 700;
-        font-size: px2rem(24px);
-        line-height: px2rem(60px);
-        text-align: center;
-        background: var(--md-default-fg-color--lightest);
-      }
-    }
-  }
-
   // Switch buttons
   .mdx-switch button {
     cursor: pointer;

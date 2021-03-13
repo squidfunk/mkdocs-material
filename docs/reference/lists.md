@@ -35,7 +35,7 @@ The [Tasklist][4] extension, which is part of [Python Markdown Extensions][5],
 adds support for lists with styled checkboxes, and provides several options for 
 configuring the style:
 
-`custom_checkbox`{: #custom-checkbox }
+`custom_checkbox`{ #custom-checkbox }
 
 :   :octicons-milestone-24: Default: `false` · This option toggles the rendering
     style of checkboxes, replacing native checkbox styles with beautiful icons, 
@@ -47,7 +47,7 @@ configuring the style:
           custom_checkbox: true
     ```
 
-`clickable_checkbox`{: #clickable-checkbox }
+`clickable_checkbox`{ #clickable-checkbox }
 
 :   :octicons-milestone-24: Default: `false` · This option toggles whether
     checkboxes are clickable. As the state is not persisted, the use of this 

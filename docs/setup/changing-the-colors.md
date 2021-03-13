@@ -184,7 +184,7 @@ _Click on a tile to change the accent color_:
 ### Color palette toggle
 
 [:octicons-file-code-24: Source][6] ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][6]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][6]{ .mdx-insiders }
 
 [Insiders][6] can easily add multiple color palettes, including a [scheme][8],
 [primary][9] and [accent][10] color each, and let the user choose. A color
@@ -233,7 +233,7 @@ The `toggle` field allows to specify an `icon` and `name` for each palette. The
 toggle is rendered next to the search bar and will cycle through all defined
 color palettes:
 
-`icon`{: #icon }
+`icon`{ #icon }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
     This field must point to a valid icon path referencing [any icon bundled
@@ -245,7 +245,7 @@ color palettes:
     * :material-eye-outline: + :material-eye: – `material/eye-outline` + `material/eye`
     * :material-lightbulb-outline: + :material-lightbulb: – `material/lightbulb-outline` + `material/lightbulb`
 
-`name`{: #name }
+`name`{ #name }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
     This field is used as the toggle's `title` attribute and should be set to a
@@ -271,7 +271,7 @@ properties). If you want to customize the colors beyond the palette (e.g. to
 use your brand-specific colors), you can add an [additional stylesheet][15] and
 tweak the values of the CSS variables.
 
-Let's say you're :fontawesome-brands-youtube:{: style="color: #EE0F0F" }
+Let's say you're :fontawesome-brands-youtube:{ style="color: #EE0F0F" }
 __YouTube__, and want to set the primary color to your brand's palette. Just
 add:
 

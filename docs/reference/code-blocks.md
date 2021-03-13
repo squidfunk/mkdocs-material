@@ -22,7 +22,7 @@ The [Highlight][3] extension, which is part of [Python Markdown Extensions][5],
 integrates with Material for MkDocs and provides several options for
 configuring syntax highlighting of code blocks:
 
-`use_pygments`{: #use-pygments }
+`use_pygments`{ #use-pygments }
 
 :   :octicons-milestone-24: Default: `true` – This option allows to control
     whether highlighting should be carried out during build time by
@@ -71,7 +71,7 @@ configuring syntax highlighting of code blocks:
 
         Note that Highlight.js has no affiliation with the Highlight extension.
 
-`linenums`{: #linenums }
+`linenums`{ #linenums }
 
 :   :octicons-milestone-24: Default: `false` – This option will add line numbers
     to _all_ code blocks. If you wish to add line numbers to _some_, but not all
@@ -84,7 +84,7 @@ configuring syntax highlighting of code blocks:
           linenums: true
     ```
 
-`linenums_style`{: #linenums-style }
+`linenums_style`{ #linenums-style }
 
 :   :octicons-milestone-24: Default: `table` – The Highlight extension provides
     three ways to add line numbers, all of which are supported by Material for
@@ -210,7 +210,7 @@ import tensorflow as tf
 
 [:octicons-file-code-24: Source][18] ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][18]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][18]{ .mdx-insiders }
 
 Annotations offer a comfortable and friendly way to attach explanations to
 arbitrary sections of code blocks by adding simple markers within block/inline
@@ -226,7 +226,7 @@ class, after the three backticks.
 _Example_:
 
 ```` markdown
-``` {: .js .annotate }
+``` { .js .annotate }
 document$.subscribe(function() { // (1)
   var tables = document.querySelectorAll(/* (2) */ "article table")
   tables.forEach(function(table) {
@@ -394,24 +394,24 @@ If [Pygments][26] is used, Material for MkDocs provides the [styles for code
 blocks][25], which are built with a custom and well-balanced palette that works
 equally well for both [color schemes][27]:
 
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-number-color) " } `--md-code-hl-number-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-special-color) " } `--md-code-hl-special-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-function-color) " } `--md-code-hl-function-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-constant-color) " } `--md-code-hl-constant-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-keyword-color) " } `--md-code-hl-keyword-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-string-color) " } `--md-code-hl-string-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-name-color) " } `--md-code-hl-name-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-operator-color) " } `--md-code-hl-operator-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-punctuation-color) " } `--md-code-hl-punctuation-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-comment-color) " } `--md-code-hl-comment-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-generic-color) " } `--md-code-hl-generic-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-variable-color) " } `--md-code-hl-variable-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-number-color) " } `--md-code-hl-number-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-special-color) " } `--md-code-hl-special-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-function-color) " } `--md-code-hl-function-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-constant-color) " } `--md-code-hl-constant-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-keyword-color) " } `--md-code-hl-keyword-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-string-color) " } `--md-code-hl-string-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-name-color) " } `--md-code-hl-name-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-operator-color) " } `--md-code-hl-operator-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-punctuation-color) " } `--md-code-hl-punctuation-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-comment-color) " } `--md-code-hl-comment-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-generic-color) " } `--md-code-hl-generic-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-variable-color) " } `--md-code-hl-variable-color`
 
 Code block foreground, background and line highlight colors are defined via:
 
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-fg-color) " } `--md-code-fg-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-bg-color) " } `--md-code-bg-color`
-- :material-checkbox-blank-circle:{: style="color: var(--md-code-hl-color) " } `--md-code-hl-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-fg-color) " } `--md-code-fg-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-bg-color) " } `--md-code-bg-color`
+- :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-color) " } `--md-code-hl-color`
 
 Let's say you want to change the color of `#!js "strings"`. While there are
 several [types of string tokens][28], Material for MkDocs assigns a single color
