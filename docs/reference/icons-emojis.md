@@ -160,16 +160,16 @@ Then, simply add the CSS class to the icon.
 _Example_:
 
 ``` markdown
-- :fontawesome-brands-medium:{: .medium } – Medium
-- :fontawesome-brands-twitter:{: .twitter } – Twitter
-- :fontawesome-brands-facebook:{: .facebook } – Facebook
+- :fontawesome-brands-medium:{ .medium } – Medium
+- :fontawesome-brands-twitter:{ .twitter } – Twitter
+- :fontawesome-brands-facebook:{ .facebook } – Facebook
 ```
 
 _Result_:
 
-- :fontawesome-brands-medium:{: .medium } – Medium
-- :fontawesome-brands-twitter:{: .twitter } – Twitter
-- :fontawesome-brands-facebook:{: .facebook } – Facebook
+- :fontawesome-brands-medium:{ .medium } – Medium
+- :fontawesome-brands-twitter:{ .twitter } – Twitter
+- :fontawesome-brands-facebook:{ .facebook } – Facebook
 
   [17]: #attribute-list
   [18]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
@@ -200,12 +200,12 @@ Then, simply add the CSS class to the icon.
 _Example_:
 
 ``` markdown
-:octicons-heart-fill-24:{: .heart }
+:octicons-heart-fill-24:{ .heart }
 ```
 
 _Result_:
 
-:octicons-heart-fill-24:{: .mdx-heart }
+:octicons-heart-fill-24:{ .mdx-heart }
 
   [20]: #with-colors
   [21]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation

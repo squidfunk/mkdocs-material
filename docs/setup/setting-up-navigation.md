@@ -45,7 +45,7 @@ _Material for MkDocs is the only MkDocs theme offering this feature._
 
 [:octicons-file-code-24: Source][9] ·
 :octicons-unlock-24: Feature flag ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][9]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][9]{ .mdx-insiders }
 
 When _anchor tracking_ is enabled, the URL in the address bar is automatically
 updated with the active anchor as highlighted in the table of contents. Add the
@@ -97,7 +97,7 @@ theme:
 [:octicons-file-code-24: Source][9] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][9]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][9]{ .mdx-insiders }
 
 When _sticky tabs_ are enabled, navigation tabs will lock below the header and
 always remain visible when scrolling down. Just add the following two feature
@@ -182,7 +182,7 @@ theme:
 [:octicons-file-code-24: Source][9] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][9]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][9]{ .mdx-insiders }
 
 When _section index pages_ are enabled, documents can be directly attached to
 sections, which is particularly useful for providing overview pages. Add the
@@ -234,7 +234,7 @@ Note that it doesn't rely on third-party plugins[^2]._
 
 [:octicons-file-code-24: Source][9] ·
 :octicons-unlock-24: Feature flag ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][9]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][9]{ .mdx-insiders }
 
 A _back-to-top button_ can be shown when the user, after scrolling down, starts
 to scroll up again. It's rendered in the lower right corner of the viewport. Add
@@ -269,7 +269,7 @@ The [Table of contents][23] extension, which is part of the standard Markdown
 library, provides some options that are supported by Material for MkDocs to
 customize its appearance:
 
-`permalink`{: #permalink }
+`permalink`{ #permalink }
 
 :   :octicons-milestone-24: Default: `false` – This option adds an anchor link
     containing the paragraph symbol `¶` or another custom symbol at the end of
@@ -292,7 +292,7 @@ customize its appearance:
               permalink: ⚓︎
         ```
 
-`slugify`{: #slugify }
+`slugify`{ #slugify }
 
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for 
     customization of the slug function. For some languages, the default may not
@@ -315,7 +315,7 @@ customize its appearance:
               slugify: !!python/name:pymdownx.slugs.uslugify_cased
         ```
 
-`toc_depth`{: #toc_depth }
+`toc_depth`{ #toc_depth }
 
 :   :octicons-milestone-24: Default: `6` – Define the range of levels to be
     included in the table of contents. This may be useful for project
@@ -424,7 +424,7 @@ hide:
 Material for MkDocs includes several keyboard shortcuts that make it possible
 to navigate your project documentation via keyboard. There're two modes:
 
-`search`{: #search }
+`search`{ #search }
 
 :   This mode is active when the _search is focused_. It provides several key
     bindings to make search accessible and navigable via keyboard:
@@ -433,7 +433,7 @@ to navigate your project documentation via keyboard. There're two modes:
     * ++esc++ , ++tab++ : close search dialog
     * ++enter++ : follow selected result
 
-`global`{: #global }
+`global`{ #global }
 
 :   This mode is active when _search is not focussed_ and when there's no other
     focussed element that is susceptible to keyboard input. The following keys

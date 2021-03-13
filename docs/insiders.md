@@ -2,7 +2,7 @@
 template: overrides/main.html
 ---
 
-# <span hidden>Insiders</span> :logo: :material-plus: :octicons-heart-fill-24:{: .mdx-heart }
+# <span hidden>Insiders</span> :logo: :material-plus: :octicons-heart-fill-24:{ .mdx-heart }
 
 Material for MkDocs uses the _sponsorware_ release strategy, which means
 that _new features are first exclusively released to sponsors_ as part of
@@ -89,7 +89,7 @@ You can cancel your sponsorship anytime.[^3]
     through Stripe. As we don't receive any information regarding your payment,
     and GitHub doesn't offer refunds, sponsorships are non-refundable.
 
-[:octicons-heart-fill-24:{: .mdx-heart } &nbsp; Join our <span class="mdx-insiders-count"></span> awesome sponsors][5]{: .md-button .md-button--primary .mdx-insiders-button }
+[:octicons-heart-fill-24:{ .mdx-heart } &nbsp; Join our <span class="mdx-insiders-count"></span> awesome sponsors][5]{ .md-button .md-button--primary .mdx-insiders-button }
 
 <div class="mdx-insiders-container" markdown="1" hidden>
   <div class="mdx-insiders-list"></div>
@@ -129,7 +129,7 @@ The following features are currently exclusively available to sponsors:
 
 _New features are added to this list every few weeks, so be sure to come back
 from time to time to learn about what's new, or follow [@squidfunk on 
-:fontawesome-brands-twitter:{: .twitter } Twitter][6] to stay updated._
+:fontawesome-brands-twitter:{ .twitter } Twitter][6] to stay updated._
 
   [6]: https://twitter.com/squidfunk
 

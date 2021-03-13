@@ -28,7 +28,7 @@ markdown_extensions:
 
 The following options are supported:
 
-`mode`{: #mode }
+`mode`{ #mode }
 
 :   :octicons-milestone-24: Default: `view` – This option defines how the markup 
     should be parsed, i.e. whether to just `view` all suggest changes, or

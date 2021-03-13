@@ -75,7 +75,7 @@ Some popular choices:
 ### Latest release
 
 [:octicons-file-code-24: Source][5] ·
-[:octicons-heart-fill-24:{: .mdx-heart } Insiders only][5]{: .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][5]{ .mdx-insiders }
 
 The visual appearance of the repository link has been improved as part of
 [Insiders][5], and will now automatically include the latest release tag which
@@ -146,7 +146,7 @@ plugins:
 
 The following options are supported:
 
-`enabled_if_env`{: #enabled_if_env }
+`enabled_if_env`{ #enabled_if_env }
 
 :   :octicons-milestone-24: Default: _none_ – This option defines whether the
     date is actually extracted from git, which makes it possible to disable
@@ -187,7 +187,7 @@ plugins:
 
 The following options are supported:
 
-`type`{: #type }
+`type`{ #type }
 
 :   :octicons-milestone-24: Default: `date` – This option allows to change the
     format of the date to be displayed. Valid values are `date`, `datetime`,
@@ -199,7 +199,7 @@ The following options are supported:
           type: date
     ```
 
-`fallback_to_build_date`{: #fallback_to_build_date }
+`fallback_to_build_date`{ #fallback_to_build_date }
 
 :   :octicons-milestone-24: Default: `false` – This option specifies whether
     the time when `mkdocs build` was executed should be used as a fallback when
