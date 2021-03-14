@@ -151,7 +151,7 @@ theme:
     - search.suggest
 ```
 
-Searching for ^^code high^^ yields ^^code highlighting^^ as a suggestion:
+Searching for ^^search su^^ yields ^^search suggestions^^ as a suggestion:
 
 <figure markdown="1">
 
@@ -186,7 +186,7 @@ theme:
     - search.highlight
 ```
 
-Searching for ^^code blocks^^ yields:
+Searching for ^^code highlighting^^ yields:
 
 <figure markdown="1">
 

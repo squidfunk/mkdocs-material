@@ -368,7 +368,7 @@ theme:
 
 === "Separate table of contents"
 
-    [![Separate table of contents][8]][8]
+    [![Separate table of contents][7]][7]
 
   [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_nav.scss
   [26]: ../assets/screenshots/toc-integrate.png
