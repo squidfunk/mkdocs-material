@@ -68,7 +68,7 @@ export function renderVersionSelector(versions: Version[]): HTMLElement {
           <li class="md-version__item">
             <a
               class="md-version__link"
-              href={`${new URL(version.version, config.base)}`}
+              href={`${new URL(`${version.version}/`, config.base)}`}
             >
               {version.title}
             </a>
