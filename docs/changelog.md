@@ -6,6 +6,17 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.0.6 <small>_ March 14, 2021</small>
+
+- Added trailing slash to version selector URL
+- Added support for out-of-order anchors in table of contents
+- Added `extra.homepage` option to link logo to arbitrary URL
+- Improved security of Docker image (always update apk)
+- Fixed horizontal spacing for nested inline admonitions
+- Fixed text color of code blocks inside links
+- Fixed version selector to always use version title
+- Fixed logo link when using versioning with instant loading
+
 ### 7.0.5 <small>_ March 7, 2021</small>
 
 - Added `extracopyright` block to allow for custom copyright info
