@@ -215,13 +215,17 @@ import tensorflow as tf
 Annotations offer a comfortable and friendly way to attach explanations to
 arbitrary sections of code blocks by adding simple markers within block/inline
 comments that refer to items of a list following the code block, i.e. `(1)`,
-`(2)`, etc. Material for MkDocs removes the list from the flow of the document,
+`(2)`, etc. Material for MkDocs detaches the list from the flow of the document,
 injects the content of each list item into a tooltip, and links each list marker
 to the corresponding tooltip.
 
 In order to opt-in to annotation support, a slightly different syntax is
 required – just add the respective [language short code][17] and the `.annotate`
 class, after the three backticks.
+
+Note that annotations can be __placed anywhere__ in a code block where a comment
+for the language can be placed, which for JavaScript is `// (1)` and
+`/* (2) */`, for Yaml `# (3)`, etc.
 
 _Example_:
 
