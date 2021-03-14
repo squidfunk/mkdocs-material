@@ -456,4 +456,4 @@ _Result_:
 
   [13]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
   [14]: ../customization.md#additional-css
-  [15]: ../icons-emojis.md#with-animations
+  [15]: ./icons-emojis.md#with-animations
