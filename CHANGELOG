@@ -1,3 +1,7 @@
+mkdocs-material-7.0.6+insiders-2.3.1 (2021-03-14)
+
+  * Fixed anchor offset for permalinks when using sticky navigation tabs
+
 mkdocs-material-7.0.6 (2021-03-14)
 
   * Added trailing slash to version selector URL

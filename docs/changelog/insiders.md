@@ -6,9 +6,13 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.3.1 <small>_ March 14, 2021</small>
+
+- Fixed anchor offset for permalinks when using sticky navigation tabs
+
 ### 2.3.0 <small>_ March 13, 2021</small>
 
--  Added support for back-to-top button
+- Added support for back-to-top button
 
 ### 2.2.1 <small>_ March 4, 2021</small>
 
