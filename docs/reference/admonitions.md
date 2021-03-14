@@ -231,8 +231,13 @@ _Result_:
 :octicons-beaker-24: Experimental
 
 Admonitions and [Details][11] can also be rendered as inline blocks (i.e.
-sidebars), moving them to the right using the `inline` + `end` modifiers, or
+sidebars), placing them to the right using the `inline` + `end` modifiers, or
 to the left using only the `inline` modifier.
+
+__Important__: Admonitions that use the `inline` modifiers _must_ be declared
+prior to the content block you want to place them beside. If there's
+insufficient space to render the admonition next to the block, the admonition
+will stretch to the full width of the viewport, e.g. on mobile viewports.
 
 === "inline end"
 
@@ -275,10 +280,6 @@ to the left using only the `inline` modifier.
     ```
 
     Use `inline` to align to the left (right for rtl languages).
-
-_If there's insufficient space to render the admonition next to the block, the
-admonition will stretch to the full width of the viewport, e.g. on mobile
-viewports._
 
   [12]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_modifiers.scss
 
