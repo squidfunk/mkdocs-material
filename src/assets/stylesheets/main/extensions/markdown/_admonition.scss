@@ -83,9 +83,10 @@ $admonitions: (
       border-left: none;
     }
 
-    // Adjust spacing for nested admonitions
+    // Adjust horizontal spacing for nested admonitions
     .admonition {
-      margin: 1em 0;
+      margin-top: 1em;
+      margin-bottom: 1em;
     }
 
     // Adjust spacing for contained table wrappers
