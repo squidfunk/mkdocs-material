@@ -231,29 +231,10 @@ _Result_:
 :octicons-beaker-24: Experimental
 
 Admonitions and [Details][11] can also be rendered as inline blocks (i.e.
-sidebars), moving them to the right using the `inline` + `end` modifiers, or
-to the left using only the `inline` modifier.
+sidebars), placing them to the left using the `inline` modifier, or
+to the right with an additional context modifier: `inline end`.
 
-=== "inline end"
-
-    _Example_ / _Result_:
-
-    !!! info inline end
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
-        euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
-        purus auctor massa, nec semper lorem quam in massa.
-
-    ``` markdown
-    !!! info inline end
-        Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Nulla et euismod nulla.
-        Curabitur feugiat, tortor non consequat
-        finibus, justo purus auctor massa, nec
-        semper lorem quam in massa.
-    ```
-
-    Use `inline end` to align to the right (left for rtl languages).
+Admonitions that use `inline` should be declared prior to the content block you want to place them beside.
 
 === "inline"
 
@@ -275,6 +256,27 @@ to the left using only the `inline` modifier.
     ```
 
     Use `inline` to align to the left (right for rtl languages).
+
+=== "inline end"
+
+    _Example_ / _Result_:
+
+    !!! info inline end
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+        euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+        purus auctor massa, nec semper lorem quam in massa.
+
+    ``` markdown
+    !!! info inline end
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nulla et euismod nulla.
+        Curabitur feugiat, tortor non consequat
+        finibus, justo purus auctor massa, nec
+        semper lorem quam in massa.
+    ```
+
+    Use `inline end` to align to the right (left for rtl languages).
 
 _If there's insufficient space to render the admonition next to the block, the
 admonition will stretch to the full width of the viewport, e.g. on mobile
