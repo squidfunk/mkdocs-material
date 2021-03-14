@@ -38,7 +38,7 @@ import { setupAnalytics } from "./integrations"
 setupAnalytics()
 
 /* Set up extra component observables */
-document$
+const component$ = document$
   .pipe(
     switchMap(() => merge(
 
@@ -51,4 +51,6 @@ document$
         .map(el => mountSponsorship(el))
     ))
   )
-    .subscribe()
+
+/* Subscribe to all components */
+component$.subscribe()

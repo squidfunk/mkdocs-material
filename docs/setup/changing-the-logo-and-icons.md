@@ -41,6 +41,15 @@ Add the following lines to `mkdocs.yml`:
   [3]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/material/library.svg
   [4]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
+Normally, the logo in the header and sidebar links to the homepage of the
+documentation, which is the same as `site_url`. This behavior can be changed
+with the following configuration:
+
+``` yaml
+extra:
+  homepage: https://example.com
+```
+
 ### Favicon
 
 [:octicons-file-code-24: Source][5] ·
