@@ -33,7 +33,7 @@
     "start": "ts-node -T tools/build --verbose --dirty --watch"
   },
   "dependencies": {
-    "clipboard": "^2.0.7",
+    "clipboard": "^2.0.8",
     "escape-html": "^1.0.3",
     "focus-visible": "^5.2.0",
     "fuzzaldrin-plus": "^0.6.0",
