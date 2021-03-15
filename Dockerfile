@@ -40,7 +40,7 @@ COPY setup.py setup.py
 
 # Perform build and cleanup artifacts and caches
 RUN \
-  apk upgrade --update-cache -a \
+  apk upgrade --update-cache -a && \
   apk add --no-cache \
     git \
     git-fast-import \
