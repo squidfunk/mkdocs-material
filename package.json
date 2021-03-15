@@ -71,7 +71,7 @@
     "material-shadows": "^3.0.1",
     "postcss": "^8.2.8",
     "postcss-inline-svg": "^5.0.0",
-    "preact": "^10.5.12",
+    "preact": "^10.5.13",
     "rimraf": "^3.0.2",
     "sass": "^1.32.8",
     "stylelint": "^13.12.0",
