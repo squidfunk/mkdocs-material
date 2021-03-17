@@ -39,7 +39,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.2c0c5eaf.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.7a40789f.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.7fa14f5b.min.css' | url }}">
@@ -191,7 +191,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.fb4a9340.min.js" | url,
+        "search": "assets/javascripts/workers/search.fe42c31b.min.js" | url,
         "version": config.extra.version or None
       } -%}
       {%- set translations = app.translations -%}
@@ -217,7 +217,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.a1c7c35e.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.7865d441.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
