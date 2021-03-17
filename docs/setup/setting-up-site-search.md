@@ -255,6 +255,12 @@ For setup instructions, refer to the [official documentation][18].
   [17]: https://github.com/squidfunk/iframe-worker
   [18]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5
 
+!!! tip
+
+    When distributing documentation as HTML files to be opened from the file
+    system, you will also want to set `use_directory_urls: false` in
+    `mkdocs.yml` to make page links function correctly.
+
 ## Customization
 
 The search implementation of Material for MkDocs is probably its most
