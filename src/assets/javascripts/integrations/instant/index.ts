@@ -316,7 +316,7 @@ export function setupInstantLoading(
 
         /* Complete immediately */
         } else {
-          script.textContent = el.textContent!
+          script.textContent = el.textContent
           replaceElement(el, script)
           return EMPTY
         }
