@@ -642,7 +642,7 @@ flags and can be enabled by listing them in `mkdocs.yml` under `theme.features`:
 #### `theme.logo.icon`
 
 The logo icon configuration was centralized under `theme.icon.logo` and can now
-be set to any of the [icons bundled with the theme][3]:
+be set to any of the [icons bundled with the theme][6]:
 
 === "5.x"
 
@@ -663,7 +663,7 @@ be set to any of the [icons bundled with the theme][3]:
 #### `extra.repo_icon`
 
 The repo icon configuration was centralized under `theme.icon.repo` and can now
-be set to any of the [icons bundled with the theme][3]:
+be set to any of the [icons bundled with the theme][6]:
 
 === "5.x"
 

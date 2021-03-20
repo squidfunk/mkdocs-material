@@ -384,13 +384,78 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
+### Changing the icons
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][13]{ .mdx-insiders }
+
+Each of the supported admonition types has a distinct icon, which can be changed
+to any icon bundled with the theme. Just set the name of the admonition type to
+a valid icon in `mkdocs.yml`:
+
+=== "Octicons"
+
+    _Example_:
+
+    ``` yaml
+    theme:
+      icon:
+        admonition:
+          note: octicons/tag-16
+          abstract: octicons/checklist-16
+          info: octicons/info-16
+          tip: octicons/squirrel-16
+          success: octicons/check-16
+          question: octicons/question-16
+          warning: octicons/alert-16
+          failure: octicons/x-circle-16
+          danger: octicons/zap-16
+          bug: octicons/bug-16
+          example: octicons/beaker-16
+          quote: octicons/quote-16
+    ```
+
+    _Result_:
+
+    [![Admonition with Octicons icons][14]][14]
+
+
+=== "FontAwesome"
+
+    _Example_:
+
+    ``` yaml
+    theme:
+      icon:
+        admonition:
+          note: fontawesome/solid/sticky-note
+          abstract: fontawesome/solid/book
+          info: fontawesome/solid/info-circle
+          tip: fontawesome/solid/bullhorn
+          success: fontawesome/solid/check
+          question: fontawesome/solid/question-circle
+          warning: fontawesome/solid/exclamation-triangle
+          failure: fontawesome/solid/bomb
+          danger: fontawesome/solid/skull
+          bug: fontawesome/solid/robot
+          example: fontawesome/solid/flask
+          quote: fontawesome/solid/quote-left
+    ```
+
+    _Result_:
+
+    [![Admonition with FontAwesome icons][15]][15]
+
+  [13]: ../insiders.md
+  [14]: ../assets/screenshots/admonition-octicons.png
+  [15]: ../assets/screenshots/admonition-fontawesome.png
+
 ## Customization
 
 ### Custom admonitions
 
 If you want to add a custom admonition type, all you need is a color and an
-`svg` icon. Copy the icon's `svg` code from the [`.icons`][13] folder and add the
-following CSS to an [additional stylesheet][14]:
+`svg` icon. Copy the icon's `svg` code from the [`.icons`][16] folder and add the
+following CSS to an [additional stylesheet][17]:
 
 ``` css
 :root {
@@ -415,7 +480,7 @@ following CSS to an [additional stylesheet][14]:
 
 You should now be able to create an admonition of the `pied-piper` type. Note
 that you can also use this technique to override existing admonition icons or
-colors. [You can even add animations][15].
+colors. [You can even add animations][18].
 
 <style>
   :root {
@@ -455,6 +520,6 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-  [13]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
-  [14]: ../customization.md#additional-css
-  [15]: ./icons-emojis.md#with-animations
+  [16]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [17]: ../customization.md#additional-css
+  [18]: icons-emojis.md#with-animations

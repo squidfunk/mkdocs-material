@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.4.0 <small>_ March 20, 2021</small>
+
+- Added support for custom admonition icons
+- Fixed #2444: Code block annotations with extra comments have wrong index
+
 ### 2.3.1 <small>_ March 14, 2021</small>
 
 - Fixed anchor offset for permalinks when using sticky navigation tabs
