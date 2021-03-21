@@ -103,8 +103,8 @@ configuring syntax highlighting of code blocks:
     `pymdownx.inline` is recommended.
 
 _Material for MkDocs doesn't provide official support for the other options of
-this extension, so they may be supported but can also yield weird results. Use
-them at your own risk._
+this extension, so they may be supported but might yield unexpected results.
+Use them at your own risk._
 
   [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
   [3]: https://facelessuser.github.io/pymdown-extensions/extensions/highlight/
@@ -261,7 +261,7 @@ _Annotations require syntax highlighting with [Pygments][24] – they're current
 not compatible with other JavaScript-based syntax highlighters. Support may be
 added later on._
 
-  [18]: ../insiders.md
+  [18]: ../insiders/index.md
   [19]: ../assets/screenshots/annotations.png
   [20]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/#adding-annotations
 

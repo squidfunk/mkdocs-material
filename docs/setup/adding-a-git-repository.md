@@ -93,7 +93,7 @@ A demo is worth a thousand words — check it out at
   </figcaption>
 </figure>
 
-  [5]: ../insiders.md
+  [5]: ../insiders/index.md
   [6]: ../assets/screenshots/repository.png
   [7]: https://squidfunk.github.io/mkdocs-material-insiders/setup/adding-a-git-repository/
 
@@ -159,8 +159,8 @@ The following options are supported:
     ```
 
 _Material for MkDocs doesn't provide official support for the other options of
-this plugin, so they may be supported but can also yield weird results. Use
-them at your own risk._
+this plugin, so they may be supported but might yield unexpected results.
+Use them at your own risk._
 
   [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-date.html
   [14]: https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin
@@ -212,7 +212,7 @@ The following options are supported:
     ```
 
 _Material for MkDocs doesn't provide official support for the other options of
-this plugin, so they may be supported but can also yield weird results. Use
-them at your own risk._
+this plugin, so they may be supported but might yield unexpected results.
+Use them at your own risk._
 
   [15]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin

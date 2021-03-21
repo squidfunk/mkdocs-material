@@ -118,7 +118,7 @@ theme:
 
     [![Without sticky tabs][11]][11]
 
-  [9]: ../insiders.md
+  [9]: ../insiders/index.md
   [10]: ../assets/screenshots/navigation-tabs-sticky.png
   [11]: ../assets/screenshots/navigation-tabs-collapsed.png
 
@@ -339,8 +339,8 @@ customize its appearance:
         ```
 
 _Material for MkDocs doesn't provide official support for the other options of
-this extension, so they may be supported but can also yield weird results. Use
-them at your own risk._
+this extension, so they may be supported but might yield unexpected results.
+Use them at your own risk._
 
   [21]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/toc.html
   [22]: https://python-markdown.github.io/extensions/toc/

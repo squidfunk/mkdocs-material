@@ -1,10 +1,11 @@
 ---
 template: overrides/main.html
+title: Insiders
 ---
 
-# <span hidden>Insiders</span> :logo: :material-plus: :octicons-heart-fill-24:{ .mdx-heart }
+# Insiders
 
-Material for MkDocs uses the _sponsorware_ release strategy, which means
+Material for MkDocs follows the _sponsorware_ release strategy, which means
 that _new features are first exclusively released to sponsors_ as part of
 __Insiders__. Read on to learn [how sponsorship works][1], and how easy it is
 to [get access to Insiders][2].
@@ -146,9 +147,9 @@ the public for general availability.
 - [x] [Color palette toggle][16]
 - [x] [Back-to-top button][17]
 
-  [15]: setup/adding-a-git-repository.md#latest-release
-  [16]: setup/changing-the-colors.md#color-palette-toggle
-  [17]: setup/setting-up-navigation.md#back-to-top-button
+  [15]: ../setup/adding-a-git-repository.md#latest-release
+  [16]: ../setup/changing-the-colors.md#color-palette-toggle
+  [17]: ../setup/setting-up-navigation.md#back-to-top-button
 
 #### $ 2,500 – Biquinho Vermelho
 
@@ -156,9 +157,9 @@ the public for general availability.
 - [x] [Search highlighting][19]
 - [x] [Search sharing][20]
 
-  [18]: setup/setting-up-site-search.md#search-suggestions
-  [19]: setup/setting-up-site-search.md#search-highlighting
-  [20]: setup/setting-up-site-search.md#search-sharing
+  [18]: ../setup/setting-up-site-search.md#search-suggestions
+  [19]: ../setup/setting-up-site-search.md#search-highlighting
+  [20]: ../setup/setting-up-site-search.md#search-sharing
 
 #### $ 3,000 – Caribbean Red
 
@@ -166,9 +167,9 @@ the public for general availability.
 - [x] [Section index pages][22]
 - [x] [Remove generator notice][23]
 
-  [21]: setup/setting-up-navigation.md#sticky-navigation-tabs
-  [22]: setup/setting-up-navigation.md#section-index-pages
-  [23]: setup/setting-up-the-footer.md#remove-generator
+  [21]: ../setup/setting-up-navigation.md#sticky-navigation-tabs
+  [22]: ../setup/setting-up-navigation.md#section-index-pages
+  [23]: ../setup/setting-up-the-footer.md#remove-generator
 
 #### $ 4,000 – Ghost Pepper
 
@@ -176,8 +177,8 @@ the public for general availability.
 - [x] [Code block annotations][25]
 - [ ] Non-latest version warning
 
-[24]: setup/setting-up-navigation.md#anchor-tracking
-[25]: reference/code-blocks.md#adding-annotations
+[24]: ../setup/setting-up-navigation.md#anchor-tracking
+[25]: ../reference/code-blocks.md#adding-annotations
 
 #### $ 5,000 – Aji Panca
 
@@ -185,7 +186,7 @@ the public for general availability.
 - [ ] List of last searches
 - [ ] Advanced routing for versioning
 
-  [26]: reference/diagrams.md
+  [26]: ../reference/diagrams.md
 
 #### $ 6,000 – Trinidad Scorpion
 
@@ -205,7 +206,7 @@ the public for general availability.
 - [ ] TBA
 - [ ] TBA
 
-  [27]: reference/admonitions.md#changing-the-icons
+  [27]: ../reference/admonitions.md#changing-the-icons
 
 #### Future
 
@@ -231,11 +232,11 @@ the public for general availability.
 - [x] [Table of contents in navigation][10]
 - [x] [Header hides on scroll][11]
 
-  [7]: setup/setting-up-navigation.md#navigation-sections
-  [8]: setup/setting-up-navigation.md#navigation-expansion
-  [9]: setup/setting-up-navigation.md#hide-the-sidebars
-  [10]: setup/setting-up-navigation.md#navigation-integration
-  [11]: setup/setting-up-the-header.md#automatic-hiding
+  [7]: ../setup/setting-up-navigation.md#navigation-sections
+  [8]: ../setup/setting-up-navigation.md#navigation-expansion
+  [9]: ../setup/setting-up-navigation.md#hide-the-sidebars
+  [10]: ../setup/setting-up-navigation.md#navigation-integration
+  [11]: ../setup/setting-up-the-header.md#automatic-hiding
 
 #### $ 1,500 – Bhut Jolokia
 
@@ -243,9 +244,9 @@ the public for general availability.
 - [x] [Site language selection][13]
 - [x] [Versioning][14]
 
-  [12]: reference/admonitions.md#inline-blocks
-  [13]: setup/changing-the-language.md#site-language-selector
-  [14]: setup/setting-up-versioning.md#versioning
+  [12]: ../reference/admonitions.md#inline-blocks
+  [13]: ../setup/changing-the-language.md#site-language-selector
+  [14]: ../setup/setting-up-versioning.md#versioning
 
 ## Frequently asked questions
 
@@ -262,7 +263,7 @@ it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
 recommended to [install Insiders][29] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [29]: publishing-your-site.md#github-pages
+  [29]: ../publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -284,5 +285,5 @@ guidelines:
   version__ that's available to you __as long as you like__. Just remember that
   [GitHub deletes private forks][31].
 
-  [30]: license.md
+  [30]: ../license.md
   [31]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

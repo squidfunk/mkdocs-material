@@ -88,21 +88,22 @@ corresponding `@font-face` definition:
 ```
 
 The font can then be applied to specific elements, e.g. only headlines, or 
-globally to be used as the site-wide regular or monospaced font:
+globally to be used as the site-wide regular or monospaced font (with fallback
+fonts being added automatically):
 
 === "Regular font"
 
     ``` css
-    body, input {
-      font-family: "<font>", -apple-system, Helvetica, Arial, sans-serif;
+    :root {
+      --md-text-font-family: "<font>";
     }
     ```
 
 === "Monospaced font"
 
     ``` css
-    pre, code, kbd {
-      font-family: "<font>", SFMono-Regular, Consolas, Menlo, monospace;
+    :root {
+      --md-code-font-family: "<font>";
     }
     ```
 

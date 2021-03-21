@@ -117,14 +117,14 @@ extra:
   generator: false
 ```
 
-  [4]: ../insiders.md
+  [4]: ../insiders/index.md
 
 ## Customization
 
 ### Custom icons
 
 [:octicons-file-code-24: Source][2] ·
-:octicons-mortar-board-24: Difficulty: _moderate_
+:octicons-mortar-board-24: Difficulty: _easy_
 
 The social links feature uses the standard [icon integration][5] of Material for
 MkDocs. If you want to use custom icons, follow the guide explaining how to

@@ -258,7 +258,7 @@ color palettes:
     This field is used as the toggle's `title` attribute and should be set to a
     discernable name to improve accessibility.
 
-  [6]: ../insiders.md
+  [6]: ../insiders/index.md
   [7]: https://squidfunk.github.io/mkdocs-material-insiders/setup/changing-the-colors
   [8]: #color-scheme
   [9]: #primary-color

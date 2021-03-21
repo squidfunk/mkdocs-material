@@ -386,6 +386,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
 
 ### Changing the icons
 
+[:octicons-file-code-24: Source][13] ·
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders only][13]{ .mdx-insiders }
 
 Each of the supported admonition types has a distinct icon, which can be changed
@@ -445,7 +446,7 @@ a valid icon in `mkdocs.yml`:
 
     [![Admonition with FontAwesome icons][15]][15]
 
-  [13]: ../insiders.md
+  [13]: ../insiders/index.md
   [14]: ../assets/screenshots/admonition-octicons.png
   [15]: ../assets/screenshots/admonition-fontawesome.png
 

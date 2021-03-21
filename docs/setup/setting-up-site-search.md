@@ -122,8 +122,8 @@ The following options are supported:
     deployment is recommended.
 
 _Material for MkDocs doesn't provide official support for the other options of
-this plugin, so they may be supported but can also yield weird results. Use
-them at your own risk._
+this plugin, so they may be supported but might yield unexpected results.
+Use them at your own risk._
 
   [2]: https://github.com/squidfunk/mkdocs-material/tree/master/src/assets/javascripts/integrations/search
   [3]: https://www.mkdocs.org/user-guide/configuration/#search
@@ -165,7 +165,7 @@ A demo is worth a thousand words — check it out at
   </figcaption>
 </figure>
 
-  [8]: ../insiders.md
+  [8]: ../insiders/index.md
   [9]: ../assets/screenshots/search-suggestions.png
   [10]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/?q=code+high
 

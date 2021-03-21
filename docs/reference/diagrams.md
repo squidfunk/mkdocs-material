@@ -57,7 +57,7 @@ ensures interoperability with all Material for MkDocs features._
     in conjunction with the [mkdocs-minify-plugin][9] and doesn't adapt to
     dark mode.
 
-  [2]: ../insiders.md
+  [2]: ../insiders/index.md
   [3]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
   [4]: https://facelessuser.github.io/pymdown-extensions/
   [5]: #usage

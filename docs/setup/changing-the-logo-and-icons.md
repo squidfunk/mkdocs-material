@@ -100,7 +100,7 @@ If you want to add [additional icons][1], read on.
 ### Additional icons
 
 [:octicons-file-code-24: Source][4] · 
-:octicons-mortar-board-24: Difficulty: _moderate_
+:octicons-mortar-board-24: Difficulty: _easy_
 
 In order to add additional icons, [extend the theme][12], and create a folder
 named `.icons` in the [`custom_dir`][13] you want to use for overrides. Next,
