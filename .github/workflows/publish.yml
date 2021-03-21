@@ -30,7 +30,7 @@ env:
 jobs:
   publish_pypi:
     name: Build and push Python package
-    if: github.event.pull_request.head.repo.fork == false
+    if: github.event.repository.fork == false
     runs-on: ubuntu-latest
     steps:
 
@@ -56,7 +56,7 @@ jobs:
 
   publish_docker:
     name: Build and push Docker image
-    if: github.event.pull_request.head.repo.fork == false
+    if: github.event.repository.fork == false
     runs-on: ubuntu-latest
     steps:
 
