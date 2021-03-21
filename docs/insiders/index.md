@@ -1,10 +1,11 @@
 ---
 template: overrides/main.html
+title: Insiders
 ---
 
-# Material for MkDocs Insiders
+# Insiders
 
-Material for MkDocs uses the _sponsorware_ release strategy, which means
+Material for MkDocs follows the _sponsorware_ release strategy, which means
 that _new features are first exclusively released to sponsors_ as part of
 __Insiders__. Read on to learn [how sponsorship works][1], and how easy it is
 to [get access to Insiders][2].

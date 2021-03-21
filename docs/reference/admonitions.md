@@ -386,6 +386,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
 
 ### Changing the icons
 
+[:octicons-file-code-24: Source][13] ·
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders only][13]{ .mdx-insiders }
 
 Each of the supported admonition types has a distinct icon, which can be changed

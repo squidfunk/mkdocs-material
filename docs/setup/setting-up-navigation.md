@@ -339,8 +339,8 @@ customize its appearance:
         ```
 
 _Material for MkDocs doesn't provide official support for the other options of
-this extension, so they may be supported but can also yield weird results. Use
-them at your own risk._
+this extension, so they may be supported but might yield unexpected results.
+Use them at your own risk._
 
   [21]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/toc.html
   [22]: https://python-markdown.github.io/extensions/toc/

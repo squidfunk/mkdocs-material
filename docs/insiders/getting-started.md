@@ -1,156 +1,112 @@
 ---
 template: overrides/main.html
-title: Getting started
+title: Switching to Insiders
 ---
 
-# Getting started
+# Switching to Insiders
 
-Material for MkDocs is a theme for [MkDocs][1], a static site generator geared
-towards (technical) project documentation. If you're familiar with Python, you
-can install Material for MkDocs with [`pip`][2], the Python package manager.
-If not, we recommended using [`docker`][3].
+Material for MkDocs Insiders is a fully compatible drop-in replacement for 
+Material for MkDocs, and can be installed similar to the public version using
+[`pip`][1], [`docker`][2] or [`git`][3]. When you sponsor @squidfunk, your
+account is added to the list of collaborators of the private Insiders
+repository.
 
-In case you're running into problems, consult the [troubleshooting][4] section.
+  [1]: #with-pip
+  [2]: #with-docker
+  [3]: #with-git
 
-  [1]: https://www.mkdocs.org
-  [2]: #with-pip
-  [3]: #with-docker
-  [4]: ../troubleshooting.md
+## Requirements
+
+In order to access the Insiders repository programmatically (from the command
+line or GitHub Actions workflows), you need to create a [personal access 
+token][4]:
+
+1. Go to https://github.com/settings/tokens
+2. Click on [Generate a new token][5]
+3. Enter a name and select the [`repo`][6] scope
+4. Generate the token and store it in a safe place
+
+  [4]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+  [5]: https://github.com/settings/tokens/new
+  [6]: https://docs.github.com/en/developers/apps/scopes-for-oauth-apps#available-scopes
 
 ## Installation
 
 ### with pip
 
-Material for MkDocs can be installed with `pip`:
+Material for MkDocs Insiders can be installed with `pip`:
 
-=== "Material for MkDocs"
+``` sh
+pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+```
 
-    ```
-    pip install mkdocs-material
-    ```
-
-=== "Insiders"
-
-    ``` sh
-    pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
-    ```
-
-This will automatically install compatible versions of all dependencies:
-[MkDocs][1], [Markdown][5], [Pygments][6] and [Python Markdown Extensions][7].
-Material for MkDocs always strives to support the latest versions, so there's
-no need to install those packages separately.
-
-_Note that in order to install [Insiders][8], you'll need to [become a
-sponsor][9], create a personal access token[^1], and set the_ `GH_TOKEN`
-_environment variable to the token's value._
-
-  [^1]:
-    In order to use `pip` to install from the private repository over HTTPS, the
-    [personal access token][14] requires the [`repo`][15] scope. The creation
-    and usage of an access token is only necessary when installing Insiders
-    over HTTPS, which is the recommended way when building from within a CI/CD
-    workflow, e.g. using [GitHub Pages][16] or [GitLab Pages][17].
-    
-
-  [5]: https://python-markdown.github.io/
-  [6]: https://pygments.org/
-  [7]: https://facelessuser.github.io/pymdown-extensions/
-  [8]: index.md
-  [9]: index.md#how-to-become-a-sponsor
+The `GH_TOKEN` environment variable must be set to the value of the personal
+access token you generated in the previous step. Note that the personal access
+token must be kept secret at all times, as it allows the owner to access your
+private repositories.
 
 ### with docker
 
-- Fork the Insiders repository to your private or organization account
-  - https://github.com/squidfunk/mkdocs-material-insiders/fork
-- Got to Actions, and enable them
-  - https://github.com/stylezenbot/mkdocs-material-insiders/actions
-  - There are three actions (two of which can be deleted, but are no-op in forks)
-    - Build: the action will not be run on forks
-    - Documentaiton: build Insiders documentation
-    - publish: publish, when a new tag is pushed... (!)
-- Create a token with the write_packages scope
-- Set GHCR_TOKEN as a secret in settings
-  - 
+In case you want to use Material for MkDocs Insiders from within Docker, some additional steps are necessary. While we cannot provide a hosted Docker image
+for Insiders[^1], [GitHub Container Registry][7] allows for simple and
+comfortable self-hosting:
 
-The official [Docker image][10] is a great way to get up and running in a few
-minutes, as it comes with all dependencies pre-installed. Pull the image for the 
-`latest` version with:
+1. [Fork the Insiders repository][8]
+2. Enable [GitHub Actions][9] on your fork[^2]
+3. Create a new personal access token[^3]
+    1. Go to https://github.com/settings/tokens
+    2. Click on [Generate a new token][5]
+    3. Enter a name and select the [`write:packages`][10] scope
+    4. Generate the token and store it in a safe place
+4. Add a [GitHub Actions secret][11] on your fork
+    1. Set the name to `GHCR_TOKEN`
+    2. Set the value to the personal access token created in the previous step
+5. [Create a new release][12] to build and publish the Docker image
+6. Install [Pull App][13] on your fork to stay in-sync with upstream
 
-=== "Material for MkDocs"
+The [`publish`][14] workflow[^4] is automatically run when a new tag (release)
+is created. When a new Insiders version is released on the upstream repository,
+the [Pull App][13] will create a pull request with the changes and pull in the
+new tag, which is picked up by the [`publish`][14] workflow that builds and
+publishes the Docker image automatically to your private registry.
 
-    ```
-    docker pull squidfunk/mkdocs-material
-    ```
+Now, you should be able to pull the Docker image from your private registry:
 
-=== "Insiders"
+```
+docker login -u ${GH_USERNAME} -p ${GHCR_TOKEN} ghcr.io
+docker pull ghcr.io/${GH_USERNAME}/mkdocs-material-insiders
+```
 
-    ```
-    docker login -u ${GH_USERNAME} -p ${GH_TOKEN} ghcr.io
-    docker pull ghcr.io/squidfunk/mkdocs-material-insiders
-    ```
-
-The `mkdocs` executable is provided as an entry point and `serve` is the 
-default command. If you're not familiar with Docker don't worry, we have you
-covered in the following sections.
-
-The following plugins are bundled with the Docker image:
-
-- [mkdocs-minify-plugin][11]
-- [mkdocs-redirects][12]
-
-_Note that in order to install [Insiders][8], you'll need to [become a
-sponsor][9], create a personal access token[^2], and set the_ `GH_TOKEN` 
-_environment variable to the token's value._
+  [^1]:
+    Earlier, Insiders provided a dedicated Docker image which was available to
+    all sponsors. On March 21, 2021, the image was deprecated for the reasons
+    outlined and discussed in #2442. It will be removed on June 1, 2021.
 
   [^2]:
-    If you want to use `docker` to pull the private Docker image from the
-    [GitHub Container Registry][18], the [personal access token][14] requires
-    the [`read:packages`][15] scope. Note that you need to login before pulling
-    the Docker image. As an example, see the [`publish`][19] workflow of the
-    Material for MkDocs repository. You'll also need to enable "[Improved Container Support][20]"
-    on your account.
+    When forking a repository, GitHub will disables all workflows. While this
+    is a reasonable default setting, you need to enable GitHub Actions to be
+    able to automatically build and publish a Docker image on
+    [GitHub Container Registry][7].
 
-  [10]: https://hub.docker.com/r/squidfunk/mkdocs-material/
-  [11]: https://github.com/byrnereese/mkdocs-minify-plugin
-  [12]: https://github.com/datarobot/mkdocs-redirects
+  [^3]:
+    While you could just add the `write:packages` scope to the personal access
+    token created to access the Insiders repository, it's safer to create a
+    dedicated token which you'll only use for publishing the Docker image.
 
-??? question "How to add plugins to the Docker image?"
+  [^4]:
+    The Insiders repository contains three GitHub Actions workflows:
 
-    Material for MkDocs bundles useful and common plugins while trying not to
-    blow up the size of the official image. If the plugin you want to use is
-    not included, create a new `Dockerfile` and extend the official Docker image
-    with your custom installation routine:
-
-    ``` Dockerfile
-    FROM squidfunk/mkdocs-material
-    RUN pip install ...
-    ```
-
-    Next, you can build the image with the following command:
-
-    ```
-    docker build -t squidfunk/mkdocs-material .
-    ```
-
-    The new image can be used exactly like the official image.
+    - `build.yml` – Build and lint the project (disabled on forks)
+    - `documentation.yml` – Build and deploy the documentation (disabled on forks)
+    - `publish.yml` – Build and publish the Docker image
 
 ### with git
 
-Material for MkDocs can be directly used from [GitHub][13] by cloning the
-repository into a subfolder of your project root which might be useful if you
-want to use the very latest version:
+Of course, you can use Material for MkDocs Insiders directly from `git`:
 
-=== "Material for MkDocs"
-
-    ```
-    git clone https://github.com/squidfunk/mkdocs-material.git
-    ```
-
-=== "Insiders"
-
-    ```
-    git clone git@github.com:squidfunk/mkdocs-material-insiders.git mkdocs-material
-    ```
+```
+git clone git@github.com:squidfunk/mkdocs-material-insiders.git mkdocs-material
+```
 
 The theme will reside in the folder `mkdocs-material/material`. When cloning
 from `git`, you must install all required dependencies yourself:
@@ -159,15 +115,11 @@ from `git`, you must install all required dependencies yourself:
 pip install -r mkdocs-material/requirements.txt
 ```
 
-_Note that in order to install [Insiders][8], you'll need to [become a
-sponsor][9]._
-
-  [13]: https://github.com/squidfunk/mkdocs-material
-
-  [14]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
-  [15]: https://docs.github.com/en/developers/apps/scopes-for-oauth-apps#available-scopes
-  [16]: ../publishing-your-site.md#github-pages
-  [17]: ../publishing-your-site.md#gitlab-pages
-  [18]: https://docs.github.com/en/free-pro-team@latest/packages/getting-started-with-github-container-registry/about-github-container-registry
-  [19]: https://github.com/squidfunk/mkdocs-material/blob/master/.github/workflows/publish.yml
-  [20]: https://docs.github.com/en/free-pro-team@latest/packages/guides/enabling-improved-container-support
+  [7]: https://docs.github.com/en/packages/guides/about-github-container-registry
+  [8]: https://github.com/squidfunk/mkdocs-material-insiders/fork
+  [9]: https://docs.github.com/en/github/administering-a-repository/disabling-or-limiting-github-actions-for-a-repository
+  [10]: https://docs.github.com/en/developers/apps/scopes-for-oauth-apps#available-scopes
+  [11]: https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository
+  [12]: https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository#creating-a-release
+  [13]: https://github.com/apps/pull
+  [14]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/.github/workflows/publish.yml

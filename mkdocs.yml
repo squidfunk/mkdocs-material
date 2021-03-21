@@ -155,7 +155,7 @@ nav:
     - License: license.md
     - Releases:
       - Changelog: changelog.md
-      - How to upgrade: upgrading.md
+      - Upgrade guide: upgrading.md
       - Deprecations: deprecations.md
   - Setup:
     - Changing the colors: setup/changing-the-colors.md
@@ -187,7 +187,7 @@ nav:
     - Meta tags: reference/meta-tags.md
     - Variables: reference/variables.md
   - Insiders:
-    - Sponsorware: insiders/index.md
+    - Sponsorship: insiders/index.md
     - Getting started:
       - Installation: insiders/getting-started.md
       - Changelog: insiders/changelog.md
