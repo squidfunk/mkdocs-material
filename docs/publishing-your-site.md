@@ -80,7 +80,7 @@ using [secrets][5]._
 
   [2]: https://github.com/features/actions
   [3]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
-  [4]: insiders.md
+  [4]: insiders/index.md
   [5]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
 
 ### with MkDocs

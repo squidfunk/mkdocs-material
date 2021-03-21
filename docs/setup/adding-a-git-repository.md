@@ -93,7 +93,7 @@ A demo is worth a thousand words — check it out at
   </figcaption>
 </figure>
 
-  [5]: ../insiders.md
+  [5]: ../insiders/index.md
   [6]: ../assets/screenshots/repository.png
   [7]: https://squidfunk.github.io/mkdocs-material-insiders/setup/adding-a-git-repository/
 

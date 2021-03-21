@@ -118,7 +118,7 @@ theme:
 
     [![Without sticky tabs][11]][11]
 
-  [9]: ../insiders.md
+  [9]: ../insiders/index.md
   [10]: ../assets/screenshots/navigation-tabs-sticky.png
   [11]: ../assets/screenshots/navigation-tabs-collapsed.png
 

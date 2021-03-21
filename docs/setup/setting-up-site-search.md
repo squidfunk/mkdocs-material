@@ -165,7 +165,7 @@ A demo is worth a thousand words — check it out at
   </figcaption>
 </figure>
 
-  [8]: ../insiders.md
+  [8]: ../insiders/index.md
   [9]: ../assets/screenshots/search-suggestions.png
   [10]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/?q=code+high
 

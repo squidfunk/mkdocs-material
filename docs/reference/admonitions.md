@@ -445,7 +445,7 @@ a valid icon in `mkdocs.yml`:
 
     [![Admonition with FontAwesome icons][15]][15]
 
-  [13]: ../insiders.md
+  [13]: ../insiders/index.md
   [14]: ../assets/screenshots/admonition-octicons.png
   [15]: ../assets/screenshots/admonition-fontawesome.png
 

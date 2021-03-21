@@ -261,7 +261,7 @@ _Annotations require syntax highlighting with [Pygments][24] – they're current
 not compatible with other JavaScript-based syntax highlighters. Support may be
 added later on._
 
-  [18]: ../insiders.md
+  [18]: ../insiders/index.md
   [19]: ../assets/screenshots/annotations.png
   [20]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/#adding-annotations
 

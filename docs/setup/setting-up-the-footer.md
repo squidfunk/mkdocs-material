@@ -117,7 +117,7 @@ extra:
   generator: false
 ```
 
-  [4]: ../insiders.md
+  [4]: ../insiders/index.md
 
 ## Customization
 

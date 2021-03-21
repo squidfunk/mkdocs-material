@@ -82,7 +82,7 @@ plugins:
         releases/5.md: upgrading.md #upgrading-from-3x-to-4x
         releases/changelog.md: changelog.md
         setup/adding-social-links.md: setup/setting-up-the-footer.md
-        sponsorship.md: insiders.md
+        sponsorship.md: insiders/index.md
   - minify:
       minify_html: true
 
@@ -152,8 +152,11 @@ nav:
     - Customization: customization.md
     - Troubleshooting: troubleshooting.md
     - Data privacy: data-privacy.md
-    - Insiders: insiders.md
     - License: license.md
+    - Releases:
+      - Changelog: changelog.md
+      - How to upgrade: upgrading.md
+      - Deprecations: deprecations.md
   - Setup:
     - Changing the colors: setup/changing-the-colors.md
     - Changing the fonts: setup/changing-the-fonts.md
@@ -183,12 +186,11 @@ nav:
     - MathJax: reference/mathjax.md
     - Meta tags: reference/meta-tags.md
     - Variables: reference/variables.md
-  - Changelog:
-    - Material for MkDocs: changelog.md
-    - Material for MkDocs Insiders: changelog/insiders.md
-    - Guides:
-      - Upgrading: upgrading.md
-      - Deprecations: deprecations.md
+  - Insiders:
+    - Sponsorware: insiders/index.md
+    - Getting started:
+      - Installation: insiders/getting-started.md
+      - Changelog: insiders/changelog.md
 
 # Google Analytics
 google_analytics:
