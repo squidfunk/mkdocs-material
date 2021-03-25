@@ -44,10 +44,10 @@
     }
 
     window.addEventListener("load", setupDisqus);
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       // support for instant loading
       if(typeof DISQUS === "undefined"){
-        // the previous page doesn't have disqus section
+        // the previous page doesn't have a disqus section
         setupDisqus();
       }else{
         DISQUS.reset({
