@@ -36,11 +36,30 @@
       this.page.identifier =
         "{{ page.canonical_url | replace(config.site_url, '') }}";
     };
-    window.addEventListener("load", function() {
+    function setUpDisqus() {
       var d = document, s = d.createElement("script");
       s.src = "//{{ disqus }}.disqus.com/embed.js";
       s.setAttribute("data-timestamp", +new Date());
       (d.head || d.body).appendChild(s);
-    })
+    }
+
+    window.addEventListener("load", setUpDisqus);
+    if (document.readyState === 'complete') {
+      // support for instant loading
+      if(typeof DISQUS === "undefined"){
+        // the previous page doesn't have disqus section
+        setUpDisqus();
+      }else{
+        DISQUS.reset({
+          reload: true,
+          config: function () {
+            this.page.identifier = document.title
+            this.page.url = window.location.href
+            this.page.title = document.title
+            console.log(this.page)
+          }
+        });
+      }
+    }
   </script>
 {% endif %}
