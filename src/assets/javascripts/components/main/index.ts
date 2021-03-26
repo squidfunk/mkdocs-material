@@ -26,9 +26,7 @@ import {
 } from "rxjs"
 import {
   distinctUntilChanged,
-  distinctUntilKeyChanged,
-  map,
-  switchMap
+  map
 } from "rxjs/operators"
 
 import { Viewport, watchElementSize } from "~/browser"
@@ -88,17 +86,16 @@ export function watchMain(
     )
 
   /* Compute the main area's top and bottom borders */
-  const border$ = adjust$
+  const border$ = watchElementSize(el)
     .pipe(
-      switchMap(() => watchElementSize(el)
-        .pipe(
-          map(({ height }) => ({
-            top:    el.offsetTop,
-            bottom: el.offsetTop + height
-          })),
-          distinctUntilKeyChanged("bottom")
-        )
-      )
+      map(() => {
+        const boundingRect = el.getBoundingClientRect()
+        return {
+          top: boundingRect.top,
+          bottom: boundingRect.bottom
+        }
+      }),
+      distinctUntilChanged(),
     )
 
   /* Compute the main area's offset, visible height and if we scrolled past */
@@ -112,7 +109,7 @@ export function watchMain(
         return {
           offset: top - header,
           height,
-          active: top - header <= y
+          active: top - header < y
         }
       }),
       distinctUntilChanged((a, b) => (
