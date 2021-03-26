@@ -112,7 +112,7 @@ export function watchMain(
         return {
           offset: top - header,
           height,
-          active: top - header <= y
+          active: top - header + 1 < y
         }
       }),
       distinctUntilChanged((a, b) => (
