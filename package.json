@@ -39,7 +39,7 @@
     "fuzzaldrin-plus": "^0.6.0",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.4.0",
-    "rxjs": "^7.0.0-beta.12"
+    "rxjs": "^7.0.0-beta.13"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
@@ -58,7 +58,7 @@
     "autoprefixer": "^10.2.5",
     "chokidar": "^3.5.1",
     "cssnano": "^4.1.10",
-    "esbuild": "^0.9.3",
+    "esbuild": "^0.9.6",
     "eslint": "^7.22.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.22.1",
