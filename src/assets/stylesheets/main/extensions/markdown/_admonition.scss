@@ -151,17 +151,6 @@ $admonitions: (
       }
     }
 
-    // Omit background on inline code blocks, as they don't go well with the
-    // pastelly tones applied to admonition titles
-    code {
-      margin: initial;
-      padding: initial;
-      color: currentColor;
-      background-color: transparent;
-      border-radius: initial;
-      box-shadow: none;
-    }
-
     // Adjust spacing on last tabbed block container child - if the tabbed
     // block container is the sole child, it looks better to omit the margin
     + .tabbed-set:last-child {
