@@ -125,6 +125,13 @@ export function getElementContentSize(el: HTMLElement): ElementSize {
  * termination. Note that this function should not be called with the same
  * element twice, as the first unsubscription will terminate observation.
  *
+ * Sadly, we can't use the `DOMRect` objects returned by the observer, because
+ * we need the emitted values to be consistent with `getElementSize`, which will
+ * return the used values (rounded) and not actual values (unrounded). Thus, we
+ * use the `offset*` properties. See the linked GitHub issue.
+ *
+ * @see https://bit.ly/3m0k3he - GitHub issue
+ *
  * @param el - Element
  *
  * @returns Element size observable
@@ -139,10 +146,7 @@ export function watchElementSize(
         .pipe(
           filter(({ target }) => target === el),
           finalize(() => observer.unobserve(el)),
-          map(({ contentRect }) => ({
-            width:  contentRect.width,
-            height: contentRect.height
-          }))
+          map(() => getElementSize(el))
         )
       ),
       startWith(getElementSize(el))
