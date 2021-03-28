@@ -6,6 +6,13 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.0.7 <small>_ March 28, 2021</small>
+
+- Updated Hungarian translations
+- Fixed #2466: Docker image not based on latest Python and Alpine
+- Fixed #2488: Inconsistent header shadow behavior
+- Fixed #2492: Inline code blocks in admonition titles missing background
+
 ### 7.0.6 <small>_ March 14, 2021</small>
 
 - Added trailing slash to version selector URL

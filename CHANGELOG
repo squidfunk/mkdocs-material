@@ -1,3 +1,10 @@
+mkdocs-material-7.0.7 (2021-03-28)
+
+  * Updated Hungarian translations
+  * Fixed #2466: Docker image not based on latest Python and Alpine
+  * Fixed #2488: Inconsistent header shadow behavior
+  * Fixed #2492: Inline code blocks in admonition titles missing background
+
 mkdocs-material-7.0.6+insiders-2.4.0 (2021-03-20)
 
   * Added support for custom admonition icons
