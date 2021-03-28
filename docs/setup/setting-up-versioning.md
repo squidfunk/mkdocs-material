@@ -66,6 +66,46 @@ Material for MkDocs._
   [5]: https://github.com/jimporter/mike#why-use-mike
   [6]: https://github.com/jimporter/mike#usage
 
+### Version warning
+
+[:octicons-file-code-24: Source][7] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][7]{ .mdx-insiders }
+
+If you're using versioning, you might want to display a warning when the user
+visits any other version than the latest version. Using [theme extension][8],
+you can [define the `outdated` block][9]:
+
+``` html
+{% block outdated %}
+  You're not viewing the latest version.
+  <a href="{{ config.site_url | url }}">
+    Click here to go to latest.
+  </a>
+{% endblock %}
+```
+
+This will render a version warning above the header:
+
+[![Version warning][10]][10]
+
+By default, the default version is identified by the `latest` alias. If you
+wish to set another alias as the latest version, e.g. `stable`, add the
+following to `mkdocs.yml`:
+
+``` yaml
+extra:
+  version:
+    default: stable
+```
+
+Make sure that this matches the [default version][11].
+
+  [7]: ../insiders/index.md
+  [8]: ../customization.md#extending-the-theme
+  [9]: ../customization.md#overriding-blocks
+  [10]: ../assets/screenshots/version-warning.png
+  [11]: #setting-a-default-version
+
 ## Usage
 
 While this section outlines the basic workflow for publishing new versions, 

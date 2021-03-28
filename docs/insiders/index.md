@@ -111,15 +111,16 @@ The following features are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown="1">
 
-- [x] [Custom admonition icons :material-new-box:][27]
+- [x] [Version warning :material-new-box:][26]
+- [x] [Custom admonition icons :material-new-box:][28]
 - [x] [Code block annotations :material-new-box:][25]
-- [x] [Back-to-top button :material-new-box:][17]
+- [x] [Back-to-top button][17]
 - [x] [Anchor tracking ][24]
 - [x] [Section index pages][22]
 - [x] [Latest release tag][15]
 - [x] [Color palette toggle][16]
 - [x] [Sticky navigation tabs][21]
-- [x] [Mermaid.js integration][26]
+- [x] [Mermaid.js integration][27]
 - [x] [Search suggestions][18]
 - [x] [Search highlighting][19]
 - [x] [Search sharing][20]
@@ -175,18 +176,19 @@ the public for general availability.
 
 - [x] [Anchor tracking][24]
 - [x] [Code block annotations][25]
-- [ ] Non-latest version warning
+- [x] [Version warning][26]
 
 [24]: ../setup/setting-up-navigation.md#anchor-tracking
 [25]: ../reference/code-blocks.md#adding-annotations
+[26]: ../setup/setting-up-versioning#version-warning
 
 #### $ 5,000 – Aji Panca
 
-- [x] [Mermaid.js integration][26]
+- [x] [Mermaid.js integration][27]
 - [ ] List of last searches
 - [ ] Advanced routing for versioning
 
-  [26]: ../reference/diagrams.md
+  [27]: ../reference/diagrams.md
 
 #### $ 6,000 – Trinidad Scorpion
 
@@ -202,19 +204,19 @@ the public for general availability.
 
 #### $ 8,000 - Scotch Bonnet
 
-- [x] [Custom admonition icons][27]
+- [x] [Custom admonition icons][28]
 - [ ] TBA
 - [ ] TBA
 
-  [27]: ../reference/admonitions.md#changing-the-icons
+  [28]: ../reference/admonitions.md#changing-the-icons
 
 #### Future
 
-- [ ] [Material for MkDocs Live Edit][28]
+- [ ] [Material for MkDocs Live Edit][29]
 - [ ] New layouts and styles
 - [ ] Code block palette toggle
 
-  [28]: https://twitter.com/squidfunk/status/1338252230265360391
+  [29]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
 
@@ -260,10 +262,10 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][29] only in CI, as you don't want to expose
+recommended to [install Insiders][30] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [29]: ../publishing-your-site.md#github-pages
+  [30]: ../publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -272,7 +274,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][30]. However, we kindly ask you to respect the following
+by the [MIT license][31]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -283,7 +285,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][31].
+  [GitHub deletes private forks][32].
 
-  [30]: ../license.md
-  [31]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [31]: ../license.md
+  [32]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

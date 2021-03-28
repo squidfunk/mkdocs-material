@@ -193,6 +193,7 @@ Material for MkDocs provides the following template blocks:
 | `hero`            | Wraps the hero teaser (if available)            |
 | `htmltitle`       | Wraps the `<title>` tag                         |
 | `libs`            | Wraps the JavaScript libraries (header)         |
+| `outdated`        | Wraps the version warning                       |
 | `scripts`         | Wraps the JavaScript application (footer)       |
 | `source`          | Wraps the linked source files                   |
 | `site_meta`       | Wraps the meta tags in the document head        |

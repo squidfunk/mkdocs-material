@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.5.0 <small>_ March 28, 2021</small>
+
+- Added support for version warning
+
 ### 2.4.0 <small>_ March 20, 2021</small>
 
 - Added support for custom admonition icons
