@@ -144,6 +144,8 @@ the public for general availability.
 
 #### $ 2,000 – Black Pearl
 
+_Goal reached :tada: – features will be merged in the next days!_
+
 - [x] [Latest release tag][15]
 - [x] [Color palette toggle][16]
 - [x] [Back-to-top button][17]
