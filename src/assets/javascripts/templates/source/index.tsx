@@ -21,7 +21,7 @@
  */
 
 import { SourceFacts } from "~/components"
-import { h } from "~/utilities"
+import { h, round } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -37,8 +37,10 @@ import { h } from "~/utilities"
 export function renderSourceFacts(facts: SourceFacts): HTMLElement {
   return (
     <ul class="md-source__facts">
-      {facts.map(fact => (
-        <li class="md-source__fact">{fact}</li>
+      {Object.entries(facts).map(([key, value]) => (
+        <li class={`md-source__fact md-source__fact--${key}`}>
+          {typeof value === "number" ? round(value) : value}
+        </li>
       ))}
     </ul>
   )

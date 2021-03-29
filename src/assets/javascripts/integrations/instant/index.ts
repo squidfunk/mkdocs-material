@@ -240,7 +240,7 @@ export function setupInstantLoading(
       sample(response$)
     )
       .subscribe(({ url }) => {
-        history.pushState({}, "", url.toString())
+        history.pushState({}, "", `${url}`)
       })
 
   /* Parse and emit fetched document */
@@ -274,14 +274,14 @@ export function setupInstantLoading(
 
           /* Meta tags */
           "title",
-          "link[rel='canonical']",
-          "meta[name='author']",
-          "meta[name='description']",
+          "link[rel=canonical]",
+          "meta[name=author]",
+          "meta[name=description]",
 
           /* Components */
           "[data-md-component=announce]",
-          "[data-md-component=header-topic]",
           "[data-md-component=container]",
+          "[data-md-component=header-topic]",
           "[data-md-component=logo], .md-logo", // compat
           "[data-md-component=skip]"
         ]) {

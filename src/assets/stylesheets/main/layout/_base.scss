@@ -121,10 +121,29 @@ body {
 // Rules: navigational elements
 // ----------------------------------------------------------------------------
 
-// Toggle - this class is applied to the checkbox elements, which are used to
+// Toggle - this class is applied to checkbox elements, which are used to
 // implement the CSS-only drawer and navigation, as well as the search
 .md-toggle {
   display: none;
+}
+
+// Option - this class is applied to radio elements, which are used to
+// implement the color palette toggle
+.md-option {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+
+  // Option label for checked radio button
+  &:checked + label:not([hidden]) {
+    display: block;
+  }
+
+  // Option label on focus
+  &.focus-visible + label {
+    outline-style: auto;
+  }
 }
 
 // Skip link

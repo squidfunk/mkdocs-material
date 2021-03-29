@@ -48,10 +48,12 @@ import {
 import {
   getComponentElement,
   getComponentElements,
+  mountBackToTop,
   mountContent,
   mountDialog,
   mountHeader,
   mountHeaderTitle,
+  mountPalette,
   mountSearch,
   mountSidebar,
   mountSource,
@@ -173,17 +175,17 @@ const control$ = merge(
   ...getComponentElements("header")
     .map(el => mountHeader(el, { viewport$, header$, main$ })),
 
+  /* Color palette */
+  ...getComponentElements("palette")
+    .map(el => mountPalette(el)),
+
   /* Search */
   ...getComponentElements("search")
     .map(el => mountSearch(el, { index$, keyboard$ })),
 
   /* Repository information */
   ...getComponentElements("source")
-    .map(el => mountSource(el)),
-
-  /* Navigation tabs */
-  ...getComponentElements("tabs")
-    .map(el => mountTabs(el, { viewport$, header$ })),
+    .map(el => mountSource(el))
 )
 
 /* Set up content component observables */
@@ -204,9 +206,17 @@ const content$ = defer(() => merge(
       : at(tablet$, () => mountSidebar(el, { viewport$, header$, main$ }))
     ),
 
+  /* Navigation tabs */
+  ...getComponentElements("tabs")
+    .map(el => mountTabs(el, { viewport$, header$ })),
+
   /* Table of contents */
   ...getComponentElements("toc")
     .map(el => mountTableOfContents(el, { viewport$, header$ })),
+
+  /* Back-to-top button */
+  ...getComponentElements("top")
+    .map(el => mountBackToTop(el, { viewport$, main$ }))
 ))
 
 /* Set up component observables */

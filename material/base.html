@@ -39,10 +39,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.c772ddf0.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.33e2939f.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.7fa14f5b.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.ef6f36e2.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -87,13 +87,14 @@
     {% set primary = palette.primary | replace(" ", "-") | lower %}
     {% set accent  = palette.accent  | replace(" ", "-") | lower %}
     <body dir="{{ direction }}" data-md-color-scheme="{{ scheme }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
-      {% if "preference" == scheme %}
-        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
-      {% endif %}
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
     {% set features = config.theme.features or [] %}
+    {% include "partials/javascripts/base.html" %}
+    {% if not config.theme.palette is mapping %}
+      {% include "partials/javascripts/palette.html" %}
+    {% endif %}
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -178,6 +179,11 @@
             </article>
           </div>
         </div>
+        {% if "navigation.top" in features %}
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            {% include ".icons/material/arrow-up.svg" %}
+          </a>
+        {% endif %}
       </main>
       {% block footer %}
         {% include "partials/footer.html" %}
@@ -217,7 +223,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.65ce87ac.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.d892486b.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

@@ -20,8 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import { configuration } from "~/_"
-
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -89,19 +87,4 @@ export function hash(value: string): number {
     h |= 0 // Convert to 32bit integer
   }
   return h
-}
-
-/**
- * Add a digest to a value to ensure uniqueness
- *
- * When a single account hosts multiple sites on the same GitHub Pages domain,
- * entries would collide, because session and local storage are not unique.
- *
- * @param value - Value
- *
- * @returns Value with digest
- */
-export function digest(value: string): string {
-  const config = configuration()
-  return `${value}[${hash(config.base)}]`
 }

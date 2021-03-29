@@ -20,36 +20,29 @@
  * IN THE SOFTWARE.
  */
 
-import { ProjectSchema } from "gitlab"
-import { Observable } from "rxjs"
-import { defaultIfEmpty, map } from "rxjs/operators"
-
-import { requestJSON } from "~/browser"
-
-import { SourceFacts } from "../_"
-
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Fetch GitLab repository facts
+ * Set back-to-top state
  *
- * @param base - GitLab base
- * @param project - GitLab project
- *
- * @returns Repository facts observable
+ * @param el - Back-to-top element
+ * @param state - Back-to-top state
  */
-export function fetchSourceFactsFromGitLab(
-  base: string, project: string
-): Observable<SourceFacts> {
-  const url = `https://${base}/api/v4/projects/${encodeURIComponent(project)}`
-  return requestJSON<ProjectSchema>(url)
-    .pipe(
-      map(({ star_count, forks_count }) => ({
-        stars: star_count,
-        forks: forks_count
-      })),
-      defaultIfEmpty({})
-    )
+export function setBackToTopState(
+  el: HTMLElement, state: "hidden"
+): void {
+  el.setAttribute("data-md-state", state)
+}
+
+/**
+ * Reset back-to-top state
+ *
+ * @param el - Back-to-top element
+ */
+export function resetBackToTopState(
+  el: HTMLElement
+): void {
+  el.removeAttribute("data-md-state")
 }

@@ -20,27 +20,20 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Set from config but allow override -->
-{% set disqus = config.extra.disqus %}
-{% if page and page.meta and page.meta.disqus is string %}
-  {% set disqus = page.meta.disqus %}
-{% endif %}
+<!--
+  A collection of functions used from within some partials to allow the usage
+  of state saved in local or session storage, e.g. to model preferences.
+-->
+<script>
 
-<!-- Disqus integration -->
-{% if not page.is_homepage and disqus %}
-  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
-  <div id="disqus_thread"></div>
-  <script>
-    var disqus_config = function () {
-      this.page.url = "{{ page.canonical_url }}";
-      this.page.identifier =
-        "{{ page.canonical_url | replace(config.site_url, '') }}";
-    };
-    window.addEventListener("load", function() {
-      var d = document, s = d.createElement("script");
-      s.src = "//{{ disqus }}.disqus.com/embed.js";
-      s.setAttribute("data-timestamp", +new Date());
-      (d.head || d.body).appendChild(s);
-    })
-  </script>
-{% endif %}
+  /* Prepend the base path to the given key to ensure uniqueness */
+  function __prefix(key) {
+    var prefix = new URL("{{ base_url }}", location)
+    return prefix.pathname + "." + key
+  }
+
+  /* Fetch the given key from the given storage */
+  function __get(key, storage = localStorage) {
+    return JSON.parse(storage.getItem(__prefix(key)))
+  }
+</script>

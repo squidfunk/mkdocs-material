@@ -27,8 +27,20 @@
         </div>
       </div>
     </div>
-    <div class="md-header__options">
-      {% if config.extra.alternate %}
+    {% if not config.theme.palette is mapping %}
+      <form class="md-header__option" data-md-component="palette">
+        {% for option in config.theme.palette %}
+          {% set primary = option.primary | replace(" ", "-") | lower %}
+          {% set accent  = option.accent  | replace(" ", "-") | lower %}
+          <input class="md-option" data-md-color-media="{{ option.media }}" data-md-color-scheme="{{ option.scheme }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}" type="radio" name="__palette" id="__palette_{{ loop.index }}">
+          <label class="md-header__button md-icon" title="{{ option.toggle.name }}" for="__palette_{{ loop.index0 or loop.length }}" hidden>
+            {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
+          </label>
+        {% endfor %}
+      </form>
+    {% endif %}
+    {% if config.extra.alternate %}
+      <div class="md-header__option">
         <div class="md-select">
           {% set icon = config.theme.icon.alternate or "material/translate" %}
           <span class="md-header__button md-icon">
@@ -46,8 +58,8 @@
             </ul>
           </div>
         </div>
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
     {% if "search" in config["plugins"] %}
       <label class="md-header__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}

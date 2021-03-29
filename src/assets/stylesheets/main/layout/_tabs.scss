@@ -30,7 +30,6 @@
   overflow: auto;
   color: var(--md-primary-bg-color);
   background-color: var(--md-primary-fg-color);
-  transition: background-color 250ms;
 
   // [print]: Hide tabs
   @media print {

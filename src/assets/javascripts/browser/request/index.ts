@@ -43,7 +43,7 @@ import {
 export function request(
   url: URL | string, options: RequestInit = { credentials: "same-origin" }
 ): Observable<Response> {
-  return from(fetch(url.toString(), options))
+  return from(fetch(`${url}`, options))
     .pipe(
       filter(res => res.status === 200),
     )

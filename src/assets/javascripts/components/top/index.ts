@@ -20,35 +20,37 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, animationFrameScheduler } from "rxjs"
 import {
+  Observable,
+  Subject,
+  animationFrameScheduler,
+  combineLatest
+} from "rxjs"
+import {
+  bufferCount,
+  distinctUntilChanged,
   distinctUntilKeyChanged,
   finalize,
   map,
   observeOn,
-  switchMap,
   tap
 } from "rxjs/operators"
 
-import { resetTabsState, setTabsState } from "~/actions"
-import {
-  Viewport,
-  watchElementSize,
-  watchViewportAt
-} from "~/browser"
+import { resetBackToTopState, setBackToTopState } from "~/actions"
+import { Viewport } from "~/browser"
 
 import { Component } from "../_"
-import { Header } from "../header"
+import { Main } from "../main"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Navigation tabs
+ * Back-to-top button
  */
-export interface Tabs {
-  hidden: boolean                      /* User scrolled past tabs */
+export interface BackToTop {
+  hidden: boolean                      /* User scrolled up */
 }
 
 /* ----------------------------------------------------------------------------
@@ -60,7 +62,7 @@ export interface Tabs {
  */
 interface WatchOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
-  header$: Observable<Header>          /* Header observable */
+  main$: Observable<Main>              /* Main area observable */
 }
 
 /**
@@ -68,7 +70,7 @@ interface WatchOptions {
  */
 interface MountOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
-  header$: Observable<Header>          /* Header observable */
+  main$: Observable<Main>              /* Main area observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -76,43 +78,58 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch navigation tabs
+ * Watch back-to-top
  *
- * @param el - Navigation tabs element
+ * @param _el - Back-to-top element
  * @param options - Options
  *
- * @returns Navigation tabs observable
+ * @returns Back-to-top observable
  */
-export function watchTabs(
-  el: HTMLElement, { viewport$, header$ }: WatchOptions
-): Observable<Tabs> {
-  return watchElementSize(document.body)
+export function watchBackToTop(
+  _el: HTMLElement, { viewport$, main$ }: WatchOptions
+): Observable<BackToTop> {
+
+  /* Compute direction */
+  const direction$ = viewport$
     .pipe(
-      switchMap(() => watchViewportAt(el, { header$, viewport$ })),
-      map(({ offset: { y } }) => {
-        return {
-          hidden: y >= 10
-        }
-      }),
-      distinctUntilKeyChanged("hidden")
+      map(({ offset: { y } }) => y),
+      bufferCount(2, 1),
+      map(([a, b]) => a > b),
+      distinctUntilChanged()
+    )
+
+  /* Compute whether button should be hidden */
+  const hidden$ = main$
+    .pipe(
+      distinctUntilKeyChanged("active")
+    )
+
+  /* Compute threshold for hiding */
+  return combineLatest([hidden$, direction$])
+    .pipe(
+      map(([{ active }, direction]) => ({
+        hidden: !(active && direction)
+      })),
+      distinctUntilChanged((a, b) => (
+        a.hidden === b.hidden
+      ))
     )
 }
 
+/* ------------------------------------------------------------------------- */
+
 /**
- * Mount navigation tabs
+ * Mount back-to-top
  *
- * This function hides the navigation tabs when scrolling past the threshold
- * and makes them reappear in a nice CSS animation when scrolling back up.
- *
- * @param el - Navigation tabs element
+ * @param el - Back-to-top element
  * @param options - Options
  *
- * @returns Navigation tabs component observable
+ * @returns Back-to-top component observable
  */
-export function mountTabs(
+export function mountBackToTop(
   el: HTMLElement, options: MountOptions
-): Observable<Component<Tabs>> {
-  const internal$ = new Subject<Tabs>()
+): Observable<Component<BackToTop>> {
+  const internal$ = new Subject<BackToTop>()
   internal$
     .pipe(
       observeOn(animationFrameScheduler)
@@ -122,19 +139,19 @@ export function mountTabs(
         /* Update state */
         next({ hidden }) {
           if (hidden)
-            setTabsState(el, "hidden")
+            setBackToTopState(el, "hidden")
           else
-            resetTabsState(el)
+            resetBackToTopState(el)
         },
 
         /* Reset on complete */
         complete() {
-          resetTabsState(el)
+          resetBackToTopState(el)
         }
       })
 
   /* Create and return component */
-  return watchTabs(el, options)
+  return watchBackToTop(el, options)
     .pipe(
       tap(internal$),
       finalize(() => internal$.complete()),

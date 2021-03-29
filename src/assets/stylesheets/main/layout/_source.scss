@@ -56,6 +56,16 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Icon definitions
+:root {
+  --md-source-forks-icon: svg-load("octicons/repo-forked-16.svg");
+  --md-source-repositories-icon: svg-load("octicons/repo-16.svg");
+  --md-source-stars-icon: svg-load("octicons/star-16.svg");
+  --md-source-version-icon: svg-load("octicons/tag-16.svg");
+}
+
+// ----------------------------------------------------------------------------
+
 // Repository information
 .md-source {
   display: block;
@@ -66,8 +76,7 @@
   backface-visibility: hidden;
   transition: opacity 250ms;
 
-  // Repository information on focus/hover
-  &:focus,
+  // Repository information on hover
   &:hover {
     opacity: 0.7;
   }
@@ -75,7 +84,7 @@
   // Repository icon
   &__icon {
     display: inline-block;
-    width: px2rem(48px);
+    width: px2rem(40px);
     height: px2rem(48px);
     vertical-align: middle;
 
@@ -112,17 +121,15 @@
     max-width: calc(100% - #{px2rem(24px)});
     margin-left: px2rem(12px);
     overflow: hidden;
-    font-weight: 700;
     text-overflow: ellipsis;
     vertical-align: middle;
   }
 
   // Repository facts
   &__facts {
-    margin: 0;
+    margin: px2rem(2px) 0 0;
     padding: 0;
     overflow: hidden;
-    font-weight: 700;
     font-size: px2rem(11px);
     list-style-type: none;
     opacity: 0.75;
@@ -135,27 +142,61 @@
 
   // Repository fact
   &__fact {
-    float: left;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      float: right;
-    }
+    display: inline-block;
 
     // Show after the data was loaded
     [data-md-state="done"] & {
       animation: md-source__fact--done 400ms ease-out;
     }
 
-    // Middle dot before fact
+    // Repository fact icon
     &::before {
-      margin: 0 px2rem(2px);
-      content: "\00B7";
+      display: inline-block;
+      width: px2rem(12px);
+      height: px2rem(12px);
+      margin-right: px2rem(2px);
+      vertical-align: text-top;
+      background-color: currentColor;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      content: "";
     }
 
-    // Remove middle dot on first fact
-    &:first-child::before {
-      display: none;
+    // Adjust spacing for repository fact icon
+    &:nth-child(1n+2)::before {
+      margin-left: px2rem(8px);
+    }
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      margin-right: initial;
+      margin-left: px2rem(2px);
+
+      // Adjust spacing for repository fact icon
+      &:nth-child(1n+2)::before {
+        margin-right: px2rem(8px);
+        margin-left: initial;
+      }
+    }
+
+    // Repository fact: version
+    &--version::before {
+      mask-image: var(--md-source-version-icon);
+    }
+
+    // Repository fact: stars
+    &--stars::before {
+      mask-image: var(--md-source-stars-icon);
+    }
+
+    // Repository fact: forks
+    &--forks::before {
+      mask-image: var(--md-source-forks-icon);
+    }
+
+    // Repository fact: repositories
+    &--repositories::before {
+      mask-image: var(--md-source-repositories-icon);
     }
   }
 }

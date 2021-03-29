@@ -120,7 +120,7 @@ function isHidden({ viewport$ }: WatchOptions): Observable<boolean> {
       distinctUntilChanged()
     )
 
-  /* Compute threshold for autohiding */
+  /* Compute threshold for hiding */
   const search$ = watchToggle("search")
   return combineLatest([viewport$, search$])
     .pipe(

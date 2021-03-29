@@ -168,21 +168,18 @@
       data-md-color-primary="{{ primary }}"
       data-md-color-accent="{{ accent }}"
     >
-
-      <!-- Experimental: set color scheme based on preference -->
-      {% if "preference" == scheme %}
-        <script>
-          if (matchMedia("(prefers-color-scheme: dark)").matches)
-            document.body.setAttribute("data-md-color-scheme", "slate")
-        </script>
-      {% endif %}
-
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
 
     <!-- Retrieve features from configuration -->
     {% set features = config.theme.features or [] %}
+    {% include "partials/javascripts/base.html" %}
+
+    <!-- User preference: color palette -->
+    {% if not config.theme.palette is mapping %}
+      {% include "partials/javascripts/palette.html" %}
+    {% endif %}
 
     <!--
       State toggles - we need to set autocomplete="off" in order to reset the
@@ -338,6 +335,18 @@
             </article>
           </div>
         </div>
+
+        <!-- Back-to-top button -->
+        {% if "navigation.top" in features %}
+          <a
+            href="#"
+            class="md-top md-icon"
+            data-md-component="top"
+            data-md-state="hidden"
+          >
+            {% include ".icons/material/arrow-up.svg" %}
+          </a>
+        {% endif %}
       </main>
 
       <!-- Footer -->

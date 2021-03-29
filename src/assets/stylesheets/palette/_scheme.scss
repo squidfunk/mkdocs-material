@@ -57,9 +57,16 @@
     --md-code-hl-constant-color:       hsla(250, 62%, 70%, 1);
     --md-code-hl-keyword-color:        hsla(219, 66%, 64%, 1);
     --md-code-hl-string-color:         hsla(150, 58%, 44%, 1);
+    --md-code-hl-name-color:           var(--md-code-fg-color);
+    --md-code-hl-operator-color:       var(--md-default-fg-color--light);
+    --md-code-hl-punctuation-color:    var(--md-default-fg-color--light);
+    --md-code-hl-comment-color:        var(--md-default-fg-color--light);
+    --md-code-hl-generic-color:        var(--md-default-fg-color--light);
+    --md-code-hl-variable-color:       var(--md-default-fg-color--light);
 
     // Typeset color shades
-    --md-typeset-a-color:              var(--md-primary-fg-color--light);
+    --md-typeset-color:                var(--md-default-fg-color);
+    --md-typeset-a-color:              var(--md-primary-fg-color);
 
     // Typeset `mark` color shades
     --md-typeset-mark-color:           hsla(#{hex2hsl($clr-blue-a200)}, 0.3);

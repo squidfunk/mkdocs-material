@@ -38,6 +38,7 @@ export type ComponentType =
   | "header-title"                     /* Header title */
   | "header-topic"                     /* Header topic */
   | "main"                             /* Main area */
+  | "palette"                          /* Color palette */
   | "search"                           /* Search */
   | "search-query"                     /* Search input */
   | "search-result"                    /* Search results */
@@ -46,6 +47,7 @@ export type ComponentType =
   | "source"                           /* Repository information */
   | "tabs"                             /* Navigation tabs */
   | "toc"                              /* Table of contents */
+  | "top"                              /* Back-to-top button */
 
 /**
  * A component
@@ -77,6 +79,7 @@ interface ComponentTypeMap {
   "header-title": HTMLElement          /* Header title */
   "header-topic": HTMLElement          /* Header topic */
   "main": HTMLElement                  /* Main area */
+  "palette": HTMLElement               /* Color palette */
   "search": HTMLElement                /* Search */
   "search-query": HTMLInputElement     /* Search input */
   "search-result": HTMLElement         /* Search results */
@@ -85,6 +88,7 @@ interface ComponentTypeMap {
   "source": HTMLAnchorElement          /* Repository information */
   "tabs": HTMLElement                  /* Navigation tabs */
   "toc": HTMLElement                   /* Table of contents */
+  "top": HTMLAnchorElement             /* Back-to-top button */
 }
 
 /* ----------------------------------------------------------------------------
