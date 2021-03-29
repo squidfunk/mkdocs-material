@@ -6,6 +6,13 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.1.0 <small>_ March 29, 2021</small>
+
+- Added support for back-to-top button
+- Added support for color palette toggle
+- Added latest release to repository info (GitHub)
+- Slight facelift of repository info (lighter fonts, spacing and icons)
+
 ### 7.0.7 <small>_ March 28, 2021</small>
 
 - Updated Hungarian translations

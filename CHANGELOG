@@ -1,3 +1,10 @@
+mkdocs-material-7.1.0 (2021-03-29)
+
+  * Added support for color palette toggle
+  * Added support for back-to-top button
+  * Added latest release to repository info (GitHub)
+  * Slight facelift of repository info (lighter fonts, spacing and icons)
+
 mkdocs-material-7.0.7+insiders-2.5.0 (2021-03-28)
 
   * Added support for version warning

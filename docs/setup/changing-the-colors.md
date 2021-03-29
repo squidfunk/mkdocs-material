@@ -49,16 +49,6 @@ _Click on a tile to change the color scheme_:
   })
 </script>
 
-The _color scheme_ can also be set based on _user preference_, which makes use
-of the `prefers-color-scheme` media query, by setting the value in `mkdocs.yml`
-to `preference`:
-
-``` yaml
-theme:
-  palette:
-    scheme: preference
-```
-
   [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/palette/_scheme.scss
 
 #### Primary color
@@ -183,10 +173,7 @@ _Click on a tile to change the accent color_:
 
 ### Color palette toggle
 
-[:octicons-file-code-24: Source][6] ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][6]{ .mdx-insiders }
-
-[Insiders][6] can easily add multiple color palettes, including a [scheme][8],
+It's also possible to add multiple color palettes, including a [scheme][8],
 [primary][9] and [accent][10] color each, and let the user choose. A color
 palette toggle can be added via `mkdocs.yml`:
 

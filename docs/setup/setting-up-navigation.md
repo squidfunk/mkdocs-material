@@ -232,9 +232,8 @@ Note that it doesn't rely on third-party plugins[^2]._
 
 ### Back-to-top button
 
-[:octicons-file-code-24: Source][9] ·
-:octicons-unlock-24: Feature flag ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][9]{ .mdx-insiders }
+[:octicons-file-code-24: Source][19] ·
+:octicons-unlock-24: Feature flag
 
 A _back-to-top button_ can be shown when the user, after scrolling down, starts
 to scroll up again. It's rendered in the lower right corner of the viewport. Add
@@ -248,24 +247,25 @@ theme:
 
 <figure markdown="1">
 
-[![back-to-top button][19]][19]
+[![back-to-top button][20]][20]
 
   <figcaption markdown="1">
 
 A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-insiders][20]
+[squidfunk.github.io/mkdocs-material-insiders][21]
 
   </figcaption>
 </figure>
 
-  [19]: ../assets/screenshots/back-to-top.png
-  [20]: https://squidfunk.github.io/mkdocs-material-insiders/setup/setting-up-navigation/#back-to-top-button
+  [19]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_top.scss
+  [20]: ../assets/screenshots/back-to-top.png
+  [21]: https://squidfunk.github.io/mkdocs-material-insiders/setup/setting-up-navigation/#back-to-top-button
 
 ### Table of contents
 
-[:octicons-file-code-24: Source][21] · [:octicons-workflow-24: Extension][22]
+[:octicons-file-code-24: Source][22] · [:octicons-workflow-24: Extension][23]
 
-The [Table of contents][23] extension, which is part of the standard Markdown
+The [Table of contents][24] extension, which is part of the standard Markdown
 library, provides some options that are supported by Material for MkDocs to
 customize its appearance:
 
@@ -342,14 +342,14 @@ _Material for MkDocs doesn't provide official support for the other options of
 this extension, so they may be supported but might yield unexpected results.
 Use them at your own risk._
 
-  [21]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/toc.html
-  [22]: https://python-markdown.github.io/extensions/toc/
-  [23]: https://python-markdown.github.io/extensions/toc/#usage
-  [24]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
+  [22]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/toc.html
+  [23]: https://python-markdown.github.io/extensions/toc/
+  [24]: https://python-markdown.github.io/extensions/toc/#usage
+  [25]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
 #### Navigation integration
 
-[:octicons-file-code-24: Source][25] ·
+[:octicons-file-code-24: Source][26] ·
 :octicons-unlock-24: Feature flag
 
 When _integration_ is enabled, the table of contents is rendered as part of
@@ -364,14 +364,14 @@ theme:
 
 === "Integrate table of contents"
 
-    [![Integrate table of contents][26]][26]
+    [![Integrate table of contents][27]][27]
 
 === "Separate table of contents"
 
     [![Separate table of contents][7]][7]
 
-  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_nav.scss
-  [26]: ../assets/screenshots/toc-integrate.png
+  [26]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_nav.scss
+  [27]: ../assets/screenshots/toc-integrate.png
 
 The content section will now always stretch to the right side, resulting in
 more space for your content. This feature flag can be combined with all other
@@ -379,12 +379,12 @@ feature flags, e.g. [tabs][1] and [sections][2].
 
 ### Hide the sidebars
 
-[:octicons-file-code-24: Source][27] ·
+[:octicons-file-code-24: Source][28] ·
 :octicons-note-24: Metadata
 
 Sometimes it's desirable to hide the navigation and/or table of contents
 sidebar, especially when there's a single navigation item. This can be done for
-any page using the [Metadata][28] extension:
+any page using the [Metadata][29] extension:
 
 ``` yaml
 ---
@@ -398,27 +398,27 @@ hide:
 
 === "Hide navigation"
 
-    [![Hide navigation][29]][29]
+    [![Hide navigation][30]][30]
 
 === "Hide table of contents"
 
-    [![Hide table of contents][30]][30]
+    [![Hide table of contents][31]][31]
 
 === "Hide both"
 
-    [![Hide navigation and table of contents][31]][31]
+    [![Hide navigation and table of contents][32]][32]
 
-  [27]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [28]: ../../reference/meta-tags/#metadata
-  [29]: ../assets/screenshots/hide-navigation.png
-  [30]: ../assets/screenshots/hide-toc.png
-  [31]: ../assets/screenshots/hide-navigation-toc.png
+  [28]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
+  [29]: ../../reference/meta-tags/#metadata
+  [30]: ../assets/screenshots/hide-navigation.png
+  [31]: ../assets/screenshots/hide-toc.png
+  [32]: ../assets/screenshots/hide-navigation-toc.png
 
 ## Customization
 
 ### Keyboard shortcuts
 
-[:octicons-file-code-24: Source][32] ·
+[:octicons-file-code-24: Source][33] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 Material for MkDocs includes several keyboard shortcuts that make it possible
@@ -444,7 +444,7 @@ to navigate your project documentation via keyboard. There're two modes:
     * ++n++ , ++period++ : go to next page
 
 Let's say you want to bind some action to the ++x++ key. By using [additional
-JavaScript][33], you can subscribe to the `keyboard$` observable and attach
+JavaScript][34], you can subscribe to the `keyboard$` observable and attach
 your custom event listener:
 
 ``` js
@@ -460,12 +460,12 @@ The call to `#!js key.claim()` will essentially execute `#!js preventDefault()`
 on the underlying event, so the keypress will not propagate further and touch
 other event listeners.
 
-  [32]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/keyboard/index.ts
-  [33]: ../customization.md#additional-javascript
+  [33]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/keyboard/index.ts
+  [34]: ../customization.md#additional-javascript
 
 ### Content area width
 
-[:octicons-file-code-24: Source][34] ·
+[:octicons-file-code-24: Source][35] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 The width of the content area is set so the length of each line doesn't exceed
@@ -474,7 +474,7 @@ is a reasonable default, as longer lines tend to be harder to read, it may be
 desirable to increase the overall width of the content area, or even make it
 stretch to the entire available space.
 
-This can easily be achieved with an [additional stylesheet][35] and a few lines
+This can easily be achieved with an [additional stylesheet][36] and a few lines
 of CSS:
 
 === "Increase width"
@@ -493,5 +493,5 @@ of CSS:
     }
     ```
 
-  [34]: https://github.com/squidfunk/mkdocs-material/blob/aeaa00a625abf952f355164de02c539b061e6127/src/assets/stylesheets/main/layout/_base.scss
-  [35]: ../customization.md#additional-css
+  [35]: https://github.com/squidfunk/mkdocs-material/blob/aeaa00a625abf952f355164de02c539b061e6127/src/assets/stylesheets/main/layout/_base.scss
+  [36]: ../customization.md#additional-css

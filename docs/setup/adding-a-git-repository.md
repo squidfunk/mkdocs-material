@@ -72,39 +72,14 @@ Some popular choices:
 
   [4]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
-### Latest release
-
-[:octicons-file-code-24: Source][5] ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][5]{ .mdx-insiders }
-
-The visual appearance of the repository link has been improved as part of
-[Insiders][5], and will now automatically include the latest release tag which
-is not marked as a draft or pre-release:
-
-<figure markdown="1">
-
-[![Search suggestions][6]][6]
-
-  <figcaption markdown="1">
-
-A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-insiders][7]
-
-  </figcaption>
-</figure>
-
-  [5]: ../insiders/index.md
-  [6]: ../assets/screenshots/repository.png
-  [7]: https://squidfunk.github.io/mkdocs-material-insiders/setup/adding-a-git-repository/
-
 ### Edit button
 
-[:octicons-file-code-24: Source][8] · :octicons-milestone-24: Default:
+[:octicons-file-code-24: Source][5] · :octicons-milestone-24: Default:
 _automatically set_
 
-If the repository URL points to a [GitHub][9], [GitLab][10] or [Bitbucket][11]
+If the repository URL points to a [GitHub][6], [GitLab][7] or [Bitbucket][8]
 repository, an _edit button_ is displayed at the top of each document. This
-behavior can be changed by setting [`edit_uri`][12] in `mkdocs.yml`:
+behavior can be changed by setting [`edit_uri`][9] in `mkdocs.yml`:
 
 === "Customize edit path"
 
@@ -118,18 +93,18 @@ behavior can be changed by setting [`edit_uri`][12] in `mkdocs.yml`:
     edit_uri: ""
     ```
 
-  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [9]: https://github.com/
-  [10]: https://about.gitlab.com/
-  [11]: https://bitbucket.org/
-  [12]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
+  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
+  [6]: https://github.com/
+  [7]: https://about.gitlab.com/
+  [8]: https://bitbucket.org/
+  [9]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
 
 ### Revision date
 
-[:octicons-file-code-24: Source][13] ·
-[:octicons-cpu-24: Plugin][14]
+[:octicons-file-code-24: Source][10] ·
+[:octicons-cpu-24: Plugin][11]
 
-The [git-revision-date][13] plugin adds support for displaying the date a
+The [git-revision-date][10] plugin adds support for displaying the date a
 document was _last updated_ at the bottom of each page. It can be installed
 with `pip`:
 
@@ -162,15 +137,15 @@ _Material for MkDocs doesn't provide official support for the other options of
 this plugin, so they may be supported but might yield unexpected results.
 Use them at your own risk._
 
-  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-date.html
-  [14]: https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin
+  [10]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-date.html
+  [11]: https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin
 
 ### Revision date, localized
 
-[:octicons-file-code-24: Source][13] ·
-[:octicons-cpu-24: Plugin][15]
+[:octicons-file-code-24: Source][10] ·
+[:octicons-cpu-24: Plugin][12]
 
-Similarly, the [git-revision-date-localized][15] plugin adds support for adding
+Similarly, the [git-revision-date-localized][12] plugin adds support for adding
 a localized _last updated_ date at the bottom of each page. It can be installed
 with `pip`:
 
@@ -215,4 +190,4 @@ _Material for MkDocs doesn't provide official support for the other options of
 this plugin, so they may be supported but might yield unexpected results.
 Use them at your own risk._
 
-  [15]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+  [12]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
