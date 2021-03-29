@@ -204,7 +204,7 @@ _Goal reached :tada: – features will be merged in the next days!_
 - [ ] Table of contents follows active anchor
 - [ ] Native lightbox integration
 
-#### $ 8,000 - Scotch Bonnet
+#### $ 8,000 – Scotch Bonnet
 
 - [x] [Custom admonition icons][28]
 - [ ] TBA
