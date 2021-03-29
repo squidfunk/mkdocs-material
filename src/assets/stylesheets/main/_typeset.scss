@@ -83,7 +83,6 @@ kbd {
   figure,
   blockquote,
   pre {
-    display: flow-root;
     margin: 1em 0;
   }
 
@@ -217,6 +216,7 @@ kbd {
   // Unformatted content
   pre {
     position: relative;
+    display: flow-root;
     line-height: 1.4;
 
     // Code block
@@ -344,6 +344,7 @@ kbd {
 
   // Blockquotes, possibly nested
   blockquote {
+    display: flow-root;
     padding-left: px2rem(12px);
     color: var(--md-default-fg-color--light);
     border-left: px2rem(4px) solid var(--md-default-fg-color--lighter);
@@ -457,6 +458,7 @@ kbd {
 
   // Figure
   figure {
+    display: flow-root;
     width: fit-content;
     max-width: 100%;
     margin: 0 auto;
