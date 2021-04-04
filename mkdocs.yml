@@ -79,6 +79,7 @@ plugins:
   - search
   - redirects:
       redirect_maps:
+        changelog/insiders.md: insiders/changelog.md
         extensions/admonition.md: reference/admonitions.md
         extensions/codehilite.md: reference/code-blocks.md
         extensions/footnotes.md: reference/footnotes.md
