@@ -150,6 +150,7 @@ For other installation methods, configuration options, and a demo, visit
 [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
 [SoundCloud](https://intervene.dev/),
 [Square](https://square.github.io/okhttp/),
+[Venafi](https://docs.venafi.cloud),
 [Zalando](https://opensource.zalando.com/skipper/)
 
 ### ... and successful Open Source projects
