@@ -153,6 +153,12 @@
       <link rel="stylesheet" href="{{ path | url }}" />
     {% endfor %}
 
+    <!-- RSS Feed -->
+    {% if page and page.meta and
+          page.meta.rss_title and page.meta.rss_href %}
+      <link rel="alternate" type="application/rss+xml" title="{{ page.meta.rss_title }}" href="{{ page.meta.rss_href }}">
+    {% endif %}
+
     <!-- Segment -->
     {% block segment %}
       {% if config.extra.segment_key %}

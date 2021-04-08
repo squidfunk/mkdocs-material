@@ -41,9 +41,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.f7bfb3f2.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.04f57cfe.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.a21e7d60.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.84c9b78b.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -70,6 +70,10 @@
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
+    {% if page and page.meta and
+          page.meta.rss_title and page.meta.rss_href %}
+      <link rel="alternate" type="application/rss+xml" title="{{ page.meta.rss_title }}" href="{{ page.meta.rss_href }}">
+    {% endif %}
     {% block segment %}
       {% if config.extra.segment_key %}
         {% include "partials/integrations/segment.html" %}
