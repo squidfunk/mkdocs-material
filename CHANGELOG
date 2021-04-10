@@ -1,3 +1,10 @@
+mkdocs-material-7.1.1 (2021-04-10)
+
+  * Fixed #2501: Nested definition lists compound bottom margin
+  * Fixed #2508: Switch extracopyright block to template variable
+  * Fixed #2533: Search (and other parts) not working in Safari <14
+  * Fixed #2538: Visual quirk when opening language selector
+
 mkdocs-material-7.1.0 (2021-03-29)
 
   * Added support for color palette toggle

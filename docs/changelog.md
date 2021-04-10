@@ -6,6 +6,13 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.1.1 <small>_ April 10, 2021</small>
+
+- Fixed #2501: Nested definition lists compound bottom margin
+- Fixed #2508: Switch `extracopyright` block to template variable
+- Fixed #2533: Search (and other parts) not working in Safari <14
+- Fixed #2538: Visual quirk when opening language selector
+
 ### 7.1.0 <small>_ March 29, 2021</small>
 
 - Added support for back-to-top button
