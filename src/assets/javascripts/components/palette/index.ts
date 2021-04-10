@@ -131,8 +131,9 @@ export function mountPalette(
 
     /* Toggle visibility */
     for (let index = 0; index < inputs.length; index++) {
-      const label = inputs[index].nextElementSibling as HTMLElement
-      label.hidden = palette.index !== index
+      const label = inputs[index].nextElementSibling
+      if (label instanceof HTMLElement)
+        label.hidden = palette.index !== index
     }
   })
 

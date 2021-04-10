@@ -79,14 +79,16 @@
             name="__palette"
             id="__palette_{{ loop.index }}"
           />
-          <label
-            class="md-header__button md-icon"
-            title="{{ option.toggle.name }}"
-            for="__palette_{{ loop.index0 or loop.length }}"
-            hidden
-          >
-            {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
-          </label>
+          {% if option.toggle %}
+            <label
+              class="md-header__button md-icon"
+              title="{{ option.toggle.name }}"
+              for="__palette_{{ loop.index0 or loop.length }}"
+              hidden
+            >
+              {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
+            </label>
+          {% endif %}
         {% endfor %}
       </form>
     {% endif %}

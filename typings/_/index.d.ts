@@ -51,6 +51,11 @@ declare global {
   const __search: GlobalSearchConfig | undefined
 
   /**
+   * Global function to prefix storage items
+   */
+   function __prefix(key: string): string
+
+  /**
    * Google Analytics
    */
   function ga(...args: string[]): void
