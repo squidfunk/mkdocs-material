@@ -185,7 +185,6 @@ Material for MkDocs provides the following template blocks:
 | `config`          | Wraps the JavaScript application config         |
 | `content`         | Wraps the main content                          |
 | `disqus`          | Wraps the Disqus integration                    |
-| `extracopyright`  | Empty block to add custom copyright information |
 | `extrahead`       | Empty block to add custom meta tags             |
 | `fonts`           | Wraps the font definitions                      |
 | `footer`          | Wraps the footer with navigation and copyright  |
@@ -203,7 +202,18 @@ Material for MkDocs provides the following template blocks:
 
 For more on this topic refer to the [MkDocs documentation][5].
 
-  [5]: https://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
+[5]: https://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
+  
+Material for MkDocs provides also extra variables that can be set in `main.html`, e.g.
+
+``` html
+{% extends "base.html" %}
+
+{% set extracopyright %}
+an this other tool
+{% endset %}
+```
+will add `an this other tool` next to the `Made with Material for Mkdocs` in the footer.
 
 ## Theme development
 
