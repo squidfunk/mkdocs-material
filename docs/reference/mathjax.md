@@ -49,6 +49,10 @@ JavaScript][8]:
         processHtmlClass: "arithmatex"
       }
     };
+
+    document$.subscribe(() => {
+      MathJax.typesetPromise()
+    })
     ```
 
 === "mkdocs.yml"
