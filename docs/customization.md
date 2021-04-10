@@ -178,7 +178,7 @@ Then, e.g. to override the site title, add the following line to `main.html`:
 
 Material for MkDocs provides the following template blocks:
 
-| Block name        | Wrapped contents                                |
+| Block name        | Purpose                                         |
 |:------------------|:------------------------------------------------|
 | `analytics`       | Wraps the Google Analytics integration          |
 | `announce`        | Wraps the announcement bar                      |
@@ -203,17 +203,28 @@ Material for MkDocs provides the following template blocks:
 For more on this topic refer to the [MkDocs documentation][5].
 
 [5]: https://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
-  
-Material for MkDocs provides also extra variables that can be set in `main.html`, e.g.
+
+#### Additional variables
+
+Besides template blocks, Material for MkDocs provides extra variables for parts
+that cannot be overridden with template blocks (due to technical limitations of
+the template engine). If you want to add further information after the _Made
+with Material for MkDocs_ hint in the footer, add the following line to
+`main.html`:
 
 ``` html
 {% extends "base.html" %}
 
 {% set extracopyright %}
-an this other tool
+  <!-- Add your additional information here -->
 {% endset %}
 ```
-will add `an this other tool` next to the `Made with Material for Mkdocs` in the footer.
+
+Material for MkDocs provides the following additional variables:
+
+| Block name        | Purpose                                         |
+|:------------------|:------------------------------------------------|
+| `extracopyright`  | Adds custom copyright information               |
 
 ## Theme development
 
