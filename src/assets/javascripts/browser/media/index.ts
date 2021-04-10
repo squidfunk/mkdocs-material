@@ -20,10 +20,15 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, fromEvent, merge } from "rxjs"
+import {
+  NEVER,
+  Observable,
+  fromEvent,
+  fromEventPattern,
+  merge
+} from "rxjs"
 import {
   filter,
-  map,
   mapTo,
   startWith,
   switchMap
@@ -36,15 +41,21 @@ import {
 /**
  * Watch media query
  *
+ * Note that although `MediaQueryList.addListener` is deprecated we have to
+ * use it, because it's the only way to ensure proper downward compatibility.
+ *
+ * @see https://bit.ly/3dUBH2m - GitHub issue
+ *
  * @param query - Media query
  *
  * @returns Media observable
  */
 export function watchMedia(query: string): Observable<boolean> {
   const media = matchMedia(query)
-  return fromEvent<MediaQueryListEvent>(media, "change")
+  return fromEventPattern<boolean>(next => (
+    media.addListener(() => next(media.matches))
+  ))
     .pipe(
-      map(ev => ev.matches),
       startWith(media.matches)
     )
 }
