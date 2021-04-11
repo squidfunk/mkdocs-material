@@ -106,6 +106,41 @@ Make sure that this matches the [default version][11].
   [10]: ../assets/screenshots/version-warning.png
   [11]: #setting-a-default-version
 
+### Stay on page
+
+[:octicons-file-code-24: Source][7] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][7]{ .mdx-insiders }
+
+Insiders improves the user experience when switching between versions: if
+version A and B contain a page with the same path name, the user will stay on
+the current page:
+
+=== "New behavior"
+
+    ```
+    docs.example.com/0.1/     -> docs.example.com/0.2/
+    docs.example.com/0.1/foo/ -> docs.example.com/0.2/foo/
+    docs.example.com/0.1/bar/ -> docs.example.com/0.2/bar/
+    ```
+
+=== "Old behavior"
+
+    ```
+    docs.example.com/0.1/     -> docs.example.com/0.2/
+    docs.example.com/0.1/foo/ -> docs.example.com/0.2/
+    docs.example.com/0.1/bar/ -> docs.example.com/0.2/
+    ```
+
+<figure markdown="1">
+  <figcaption markdown="1">
+
+A demo is worth a thousand words — check it out at
+[squidfunk.github.io/mkdocs-material-example-versioning][4]
+
+  </figcaption>
+</figure>
+
+
 ## Usage
 
 While this section outlines the basic workflow for publishing new versions, 
@@ -124,8 +159,8 @@ mike deploy --push --update-aliases 0.1 latest
 Note that every version will be deployed as a subdirectory of your `site_url`,
 e.g.:
 
-- _docs.example.com/0.1_
-- _docs.example.com/0.2_
+- _docs.example.com/0.1/_
+- _docs.example.com/0.2/_
 - ...
 
 ### Setting a default version

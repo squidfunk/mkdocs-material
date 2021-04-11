@@ -111,9 +111,10 @@ The following features are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown="1">
 
+- [x] [Stay on page when switching versions :material-new-box:][28]
 - [x] [Version warning :material-new-box:][26]
 - [x] [Custom admonition icons :material-new-box:][28]
-- [x] [Code block annotations :material-new-box:][25]
+- [x] [Code block annotations][25]
 - [x] [Anchor tracking ][24]
 - [x] [Section index pages][22]
 - [x] [Sticky navigation tabs][21]
@@ -172,16 +173,17 @@ the public for general availability.
 #### $ 5,000 – Aji Panca
 
 - [x] [Mermaid.js integration][27]
+- [x] [Stay on page when switching versions][28]
 - [ ] List of last searches
-- [ ] Advanced routing for versioning
 
   [27]: ../reference/diagrams.md
+  [28]: ../setup/setting-up-versioning#improved-navigation
 
 #### $ 6,000 – Trinidad Scorpion
 
 - [ ] Improved search result summaries
 - [ ] Table of contents shows which sections have search results
-- [ ] Advanced routing for multi-language sites
+- [ ] Stay on page when switching languages
 
 #### $ 7,000 – Royal Gold
 
@@ -191,19 +193,19 @@ the public for general availability.
 
 #### $ 8,000 – Scotch Bonnet
 
-- [x] [Custom admonition icons][28]
+- [x] [Custom admonition icons][29]
 - [ ] TBA
 - [ ] TBA
 
-  [28]: ../reference/admonitions.md#changing-the-icons
+  [29]: ../reference/admonitions.md#changing-the-icons
 
 #### Future
 
-- [ ] [Material for MkDocs Live Edit][29]
+- [ ] [Material for MkDocs Live Edit][30]
 - [ ] New layouts and styles
 - [ ] Code block palette toggle
 
-  [29]: https://twitter.com/squidfunk/status/1338252230265360391
+  [30]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
 
@@ -258,10 +260,10 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][30] only in CI, as you don't want to expose
+recommended to [install Insiders][31] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [30]: ../publishing-your-site.md#github-pages
+  [31]: ../publishing-your-site.md#github-pages
 
 ### Terms
 
@@ -270,7 +272,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][31]. However, we kindly ask you to respect the following
+by the [MIT license][32]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -281,7 +283,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][32].
+  [GitHub deletes private forks][33].
 
-  [31]: ../license.md
-  [32]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [32]: ../license.md
+  [33]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

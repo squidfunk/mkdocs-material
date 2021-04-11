@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.6.0 <small>_ April 11, 2021</small>
+
+- Stay on page when switching versions
+
 ### 2.5.0 <small>_ March 28, 2021</small>
 
 - Added support for version warning
