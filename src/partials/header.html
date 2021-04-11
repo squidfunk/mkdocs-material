@@ -64,9 +64,10 @@
     </div>
 
     <!-- Color palette -->
-    {% if not config.theme.palette is mapping %}
+    {% set palette = config.theme.palette %}
+    {% if palette and not palette is mapping %}
       <form class="md-header__option" data-md-component="palette">
-        {% for option in config.theme.palette %}
+        {% for option in palette %}
           {% set primary = option.primary | replace(" ", "-") | lower %}
           {% set accent  = option.accent  | replace(" ", "-") | lower %}
           <input
@@ -98,14 +99,18 @@
       <div class="md-header__option"></form>
         <div class="md-select">
           {% set icon = config.theme.icon.alternate or "material/translate" %}
-          <span class="md-header__button md-icon">
+          <button class="md-header__button md-icon">
             {% include ".icons/" ~ icon ~ ".svg" %}
-          </span>
+          </button>
           <div class="md-select__inner">
             <ul class="md-select__list">
               {% for alt in config.extra.alternate %}
                 <li class="md-select__item">
-                  <a href="{{ alt.link | url }}" class="md-select__link">
+                  <a
+                    href="{{ alt.link | url }}"
+                    hreflang="{{ alt.lang }}"
+                    class="md-select__link"
+                  >
                     {{ alt.name }}
                   </a>
                 </li>

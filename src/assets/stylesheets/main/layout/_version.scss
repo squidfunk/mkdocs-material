@@ -47,6 +47,9 @@
     top: px2rem(1px);
     margin-right: px2rem(8px);
     margin-left: px2rem(28px);
+    color: inherit;
+    outline: none;
+    cursor: pointer;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -78,7 +81,7 @@
     position: absolute;
     top: px2rem(3px);
     z-index: 1;
-    max-height: px2rem(36px);
+    max-height: 0;
     margin: px2rem(4px) px2rem(16px);
     padding: 0;
     overflow: auto;
@@ -95,14 +98,14 @@
       opacity  250ms 250ms;
     scroll-snap-type: y mandatory;
 
-    // List on focus/hover
-    &:focus-within,
-    &:hover {
+    // Version selection list on parent focus/hover
+    .md-version:focus-within &,
+    .md-version:hover & {
       max-height: px2rem(200px);
       opacity: 1;
       transition:
-        max-height 250ms,
-        opacity    250ms;
+        max-height 0ms,
+        opacity  250ms;
     }
   }
 
@@ -118,6 +121,7 @@
     padding-right: px2rem(24px);
     padding-left: px2rem(12px);
     white-space: nowrap;
+    outline: none;
     cursor: pointer;
     transition:
       color            250ms,
@@ -133,6 +137,11 @@
     // Link on focus/hover
     &:focus,
     &:hover {
+      color: var(--md-accent-fg-color);
+    }
+
+    // Link on focus
+    &:focus {
       background-color: var(--md-default-fg-color--lightest);
     }
   }

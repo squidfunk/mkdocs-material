@@ -99,6 +99,7 @@
     width: 100%;
     padding-right: px2rem(24px);
     padding-left: px2rem(12px);
+    outline: none;
     cursor: pointer;
     transition:
       background-color 250ms,
@@ -114,6 +115,11 @@
     // Link on focus/hover
     &:focus,
     &:hover {
+      color: var(--md-accent-fg-color);
+    }
+
+    // Link on focus
+    &:focus {
       background-color: var(--md-default-fg-color--lightest);
     }
   }

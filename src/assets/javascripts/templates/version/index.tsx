@@ -85,9 +85,9 @@ export function renderVersionSelector(versions: Version[]): HTMLElement {
   /* Render version selector */
   return (
     <div class="md-version">
-      <span class="md-version__current">
+      <button class="md-version__current">
         {active.title}
-      </span>
+      </button>
       <ul class="md-version__list">
         {versions.map(renderVersion)}
       </ul>
