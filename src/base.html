@@ -152,7 +152,7 @@
     {% block extrahead %}{% endblock %}
   </head>
 
-  <!-- Text direction and color palette, if defined -->
+  <!-- Set text direction and color palette, if defined -->
   {% set direction = config.theme.direction or lang.t('direction') %}
   {% if config.theme.palette %}
     {% set palette = config.theme.palette %}

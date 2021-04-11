@@ -64,10 +64,9 @@
     </div>
 
     <!-- Color palette -->
-    {% set palette = config.theme.palette %}
-    {% if palette and not palette is mapping %}
+    {% if not config.theme.palette is mapping %}
       <form class="md-header__option" data-md-component="palette">
-        {% for option in palette %}
+        {% for option in config.theme.palette %}
           {% set primary = option.primary | replace(" ", "-") | lower %}
           {% set accent  = option.accent  | replace(" ", "-") | lower %}
           <input
