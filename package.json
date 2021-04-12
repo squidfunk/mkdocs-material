@@ -53,7 +53,7 @@
     "@types/node": "^14.14.37",
     "@types/resize-observer-browser": "^0.1.5",
     "@types/sass": "^1.16.0",
-    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
     "@typescript-eslint/parser": "^4.21.0",
     "autoprefixer": "^10.2.5",
     "chokidar": "^3.5.1",
