@@ -13,7 +13,7 @@
     <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-nav__button md-logo" aria-label="{{ config.site_name }}" data-md-component="logo">
       {% include "partials/logo.html" %}
     </a>
-    {{ config.site_name }}
+    {% if nav_title|trim %}{{ nav_title }}{% else %}{{ config.site_name }}{% endif %}
   </label>
   {% if config.repo_url %}
     <div class="md-nav__source">
