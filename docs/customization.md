@@ -225,6 +225,7 @@ Material for MkDocs provides the following additional variables:
 | Block name        | Purpose                                         |
 |:------------------|:------------------------------------------------|
 | `extracopyright`  | Adds custom copyright information               |
+| `nav_title`       | Overrides left navigation menu title            |
 
 ## Theme development
 
