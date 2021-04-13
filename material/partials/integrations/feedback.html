@@ -44,6 +44,8 @@
       // Send an event to Google Analytics using the default Tracker object
       // https://developers.google.com/analytics/devguides/collection/analyticsjs/tracker-object-reference#send
       ga.getAll()[0].send("event", args.category, args.action, args.label, args.value);
+      // Send an event to Segment
+      analytics.track("User Feedback Sent", {url: window.location.href, value: value});
     };
     yesButton.addEventListener('click', () => {
       yesResponse.classList.add('user-feedback-response--visible');
