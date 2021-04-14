@@ -177,7 +177,7 @@ the public for general availability.
 - [ ] List of last searches
 
   [27]: ../reference/diagrams.md
-  [28]: ../setup/setting-up-versioning#improved-navigation
+  [28]: ../setup/setting-up-versioning#stay-on-page
 
 #### $ 6,000 – Trinidad Scorpion
 
