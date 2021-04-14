@@ -44,7 +44,7 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@mdi/svg": "^5.9.55",
-    "@primer/octicons": "^12.1.0",
+    "@primer/octicons": "^13.0.0",
     "@types/clipboard": "^2.0.1",
     "@types/escape-html": "1.0.0",
     "@types/fuzzaldrin-plus": "^0.6.1",
@@ -53,13 +53,13 @@
     "@types/node": "^14.14.37",
     "@types/resize-observer-browser": "^0.1.5",
     "@types/sass": "^1.16.0",
-    "@typescript-eslint/eslint-plugin": "^4.20.0",
-    "@typescript-eslint/parser": "^4.20.0",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
     "autoprefixer": "^10.2.5",
     "chokidar": "^3.5.1",
-    "cssnano": "^4.1.10",
-    "esbuild": "^0.11.5",
-    "eslint": "^7.23.0",
+    "cssnano": "^5.0.0",
+    "esbuild": "^0.11.8",
+    "eslint": "^7.24.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsdoc": "^32.3.0",
@@ -69,7 +69,7 @@
     "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
-    "postcss": "^8.2.9",
+    "postcss": "^8.2.10",
     "postcss-inline-svg": "^5.0.0",
     "preact": "^10.5.13",
     "rimraf": "^3.0.2",
@@ -82,7 +82,7 @@
     "svgo": "^2.3.0",
     "tiny-glob": "^0.2.8",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.4"
   },
   "engines": {
     "node": ">= 14"
