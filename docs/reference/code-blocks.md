@@ -56,7 +56,9 @@ configuring syntax highlighting of code blocks:
         === "docs/javascripts/config.js"
 
             ``` js
-            hljs.highlightAll()
+            document$.subscribe(() => {
+              hljs.highlightAll()
+            })
             ```
 
         === "mkdocs.yml"
