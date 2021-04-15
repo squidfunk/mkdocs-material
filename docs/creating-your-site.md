@@ -14,7 +14,7 @@ mkdocs new .
 
 Alternatively, if you're running Material for MkDocs from within Docker, use:
 
-=== "Unix"
+=== "Unix, Powershell"
 
     ```
     docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material new .
@@ -133,7 +133,7 @@ mkdocs serve
 
 If you're running Material for MkDocs from within Docker, use:
 
-=== "Unix"
+=== "Unix, Powershell"
 
     ```
     docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
