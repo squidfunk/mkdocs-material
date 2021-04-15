@@ -20,10 +20,16 @@ Alternatively, if you're running Material for MkDocs from within Docker, use:
     docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material new .
     ```
 
-=== "Windows"
+=== "Windows (CMD)"
 
     ```
     docker run --rm -it -v "%cd%":/docs squidfunk/mkdocs-material new .
+    ```
+
+=== "Windows (Powershell)"
+
+    ```
+    docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material new .
     ```
 
 This will create the following structure:
@@ -139,10 +145,16 @@ If you're running Material for MkDocs from within Docker, use:
     docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
     ```
 
-=== "Windows"
+=== "Windows (CMD)"
 
     ```
     docker run --rm -it -p 8000:8000 -v "%cd%":/docs squidfunk/mkdocs-material
+    ```
+
+=== "Windows (Powershell)"
+
+    ```
+    docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
     ```
 
 Point your browser to [localhost:8000][17] and you should see:
