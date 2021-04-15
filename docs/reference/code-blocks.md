@@ -56,17 +56,19 @@ configuring syntax highlighting of code blocks:
         === "docs/javascripts/config.js"
 
             ``` js
-            hljs.initHighlighting()
+            document$.subscribe(() => {
+              hljs.highlightAll()
+            })
             ```
 
         === "mkdocs.yml"
 
             ``` yaml
             extra_javascript:
-              - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js
+              - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
               - javascripts/config.js
             extra_css:
-              - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css
+              - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
             ```
 
         Note that Highlight.js has no affiliation with the Highlight extension.
