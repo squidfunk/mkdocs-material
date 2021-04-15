@@ -54,6 +54,7 @@
   &[data-md-state="hidden"] {
     transform: translateY(px2rem(-4px));
     opacity: 0;
+    pointer-events: none;
   }
 
   // Back-to-top button on focus/hover
