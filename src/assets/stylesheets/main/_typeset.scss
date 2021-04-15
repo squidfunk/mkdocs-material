@@ -366,6 +366,7 @@ kbd {
   // Unordered and ordered list
   ul,
   ol {
+    display: flow-root;
     margin-left: px2em(10px);
     padding: 0;
 
