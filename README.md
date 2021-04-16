@@ -1,5 +1,7 @@
 # Codacy MkDocs Material theme
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b314b528adc8490d97e92c3662a4ae8a)](https://www.codacy.com/gh/codacy/codacy-mkdocs-material/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codacy/codacy-mkdocs-material&amp;utm_campaign=Badge_Grade)
+
 MkDocs theme used by [codacy/docs](https://github.com/codacy/docs) to build the [Codacy documentation](https://docs.codacy.com) site.
 
 This theme was adapted from the theme [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
