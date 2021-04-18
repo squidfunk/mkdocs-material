@@ -1,3 +1,9 @@
+mkdocs-material-7.1.2 (2021-04-18)
+
+  * Fixed #2554: List markers sometimes overlap floated elements
+  * Fixed #2563: Adding a class to a h1 breaks the table of contents
+  * Fixed #2566: Back-to-top button clickable when invisible
+
 mkdocs-material-7.1.1+insiders-2.6.0 (2021-04-11)
 
   * Stay on page when switching versions

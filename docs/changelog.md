@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.1.2 <small>_ April 18, 2021</small>
+
+- Fixed #2554: List markers sometimes overlap floated elements
+- Fixed #2563: Adding a class to a `h1` breaks the table of contents
+- Fixed #2566: Back-to-top button clickable when invisible
+
 ### 7.1.1 <small>_ April 10, 2021</small>
 
 - Fixed #2501: Nested definition lists compound bottom margin
