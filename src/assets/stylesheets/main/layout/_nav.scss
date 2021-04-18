@@ -624,13 +624,13 @@
     // Modifier for when navigation tabs are rendered
     &--lifted {
 
-      // Hide nested items on level 1 and site title
+      // Hide nested level 0 items and site title
       > .md-nav__list > .md-nav__item--nested,
       > .md-nav__title {
         display: none;
       }
 
-      // Hide level 1 items
+      // Hide level 0 items
       > .md-nav__list > .md-nav__item {
         display: none;
 
@@ -652,17 +652,17 @@
             scroll-snap-align: start;
           }
         }
-
-        // Adjust spacing for navigation item on level 2
-        > .md-nav__item {
-          padding-right: px2rem(12px);
-        }
       }
 
       // Hack: Always show active navigation tab on breakpoint screen, despite
       // of checkbox being checked or not. Fixes #1655.
       .md-nav[data-md-level="1"] {
         display: block;
+
+        // Adjust spacing for level 1 items
+        > .md-nav__list > .md-nav__item {
+          padding-right: px2rem(12px);
+        }
       }
     }
 
