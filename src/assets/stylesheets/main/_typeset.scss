@@ -164,6 +164,12 @@ kbd {
     &:hover {
       color: var(--md-accent-fg-color);
     }
+
+    // Text link on keyboard focus
+    &.focus-visible {
+      outline-color: var(--md-accent-fg-color);
+      outline-offset: px2rem(4px);
+    }
   }
 
   // Code block

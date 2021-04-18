@@ -72,6 +72,7 @@
   font-size: px2rem(13px);
   line-height: 1.2;
   white-space: nowrap;
+  outline-color: var(--md-accent-fg-color);
   // Hack: promote to own layer to reduce jitter
   backface-visibility: hidden;
   transition: opacity 250ms;

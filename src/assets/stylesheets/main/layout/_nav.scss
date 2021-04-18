@@ -125,6 +125,12 @@
       color: var(--md-accent-fg-color);
     }
 
+    // Navigation link on keyboard focus
+    &.focus-visible {
+      outline-color: var(--md-accent-fg-color);
+      outline-offset: px2rem(4px);
+    }
+
     // Navigation link to table of contents
     .md-nav--primary &[for="__toc"] {
       display: none;

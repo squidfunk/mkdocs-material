@@ -63,11 +63,6 @@
       box-shadow 250ms;
   }
 
-  // Link or button on focus
-  .focus-visible {
-    outline-color: currentColor;
-  }
-
   // Header wrapper
   &__inner {
     display: flex;
@@ -83,6 +78,7 @@
     padding: px2rem(8px);
     color: currentColor;
     vertical-align: middle;
+    outline-color: var(--md-accent-fg-color);
     cursor: pointer;
     transition: opacity 250ms;
 

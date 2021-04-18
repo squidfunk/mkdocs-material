@@ -41,6 +41,8 @@
   height: px2em(24px);
   color: var(--md-default-fg-color--lightest);
   border-radius: px2rem(2px);
+  outline-color: var(--md-accent-fg-color);
+  outline-offset: px2rem(2px);
   cursor: pointer;
   transition: color 250ms;
 

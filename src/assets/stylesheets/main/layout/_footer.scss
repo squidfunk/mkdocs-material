@@ -45,6 +45,7 @@
     display: flex;
     padding-top: px2rem(28px);
     padding-bottom: px2rem(8px);
+    outline-color: var(--md-accent-fg-color);
     transition: opacity 250ms;
 
     // [tablet +]: Adjust width to 50/50

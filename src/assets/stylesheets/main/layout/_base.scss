@@ -140,9 +140,10 @@ body {
     display: block;
   }
 
-  // Option label on focus
+  // Show outline for pointer devices
   &.focus-visible + label {
     outline-style: auto;
+    outline-color: var(--md-accent-fg-color);
   }
 }
 
@@ -158,6 +159,7 @@ body {
   font-size: px2rem(12.8px);
   background-color: var(--md-default-fg-color);
   border-radius: px2rem(2px);
+  outline-color: var(--md-accent-fg-color);
   transform: translateY(px2rem(8px));
   opacity: 0;
 

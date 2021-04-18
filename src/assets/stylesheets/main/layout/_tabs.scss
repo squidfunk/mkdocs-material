@@ -76,6 +76,8 @@
     display: block;
     margin-top: px2rem(16px);
     font-size: px2rem(14px);
+    outline-color: var(--md-accent-fg-color);
+    outline-offset: px2rem(4px);
     // Hack: save a repaint when tabs are appearing on scrolling up
     backface-visibility: hidden;
     opacity: 0.7;

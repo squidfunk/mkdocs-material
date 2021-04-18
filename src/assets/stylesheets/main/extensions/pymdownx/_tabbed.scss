@@ -92,6 +92,7 @@
       // Tab label on focus
       &:focus + label {
         outline-style: auto;
+        outline-color: var(--md-accent-fg-color);
       }
 
       // Hide outline for pointer devices
