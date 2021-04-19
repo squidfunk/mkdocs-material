@@ -39,6 +39,7 @@ assignees: ''
   "skip.link.title": "Skip to content",
   "source.link.title": "Go to repository",
   "source.revision.date": "Last update",
+  "source.revision.date_created": "Created",
   "tabs.title": "Tabs",
   "toc.title": "Table of contents"
 }[key] }}{% endmacro %}

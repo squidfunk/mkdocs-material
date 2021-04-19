@@ -186,6 +186,17 @@ The following options are supported:
           fallback_to_build_date: true
     ```
 
+`enable_creation_date`{ #enable_creation_date }
+
+:   :octicons-milestone-24: Default: `false` – This option specifies whether to also add a page *Created* date at the bottom of each page.
+
+    ``` yaml
+    plugins:
+      - git-revision-date-localized:
+          enable_creation_date: true
+    ```
+
+
 _Material for MkDocs doesn't provide official support for the other options of
 this plugin, so they may be supported but might yield unexpected results.
 Use them at your own risk._
