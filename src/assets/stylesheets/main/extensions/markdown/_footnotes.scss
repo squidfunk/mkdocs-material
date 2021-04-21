@@ -82,6 +82,12 @@
     }
   }
 
+  // Footnote reference
+  .footnote-ref {
+    font-weight: 700;
+    font-size: px2em(12px, 16px);
+  }
+
   // Footnote backreference
   .footnote-backref {
     display: inline-block;
