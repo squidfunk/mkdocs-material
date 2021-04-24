@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.1.3 <small>_ April 24, 2021</small>
+
+- Fixed #2586: Empty table of contents shown (7.1.2 regression)
+
 ### 7.1.2 <small>_ April 18, 2021</small>
 
 - Fixed #2554: List markers sometimes overlap floated elements
