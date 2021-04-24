@@ -33,12 +33,12 @@
     directly continue with the children of the anchor.
   -->
   {% set first = toc | first %}
-  {% if first is defined and first.level == 1 %}
+  {% if first and first.level == 1 %}
     {% set toc = first.children %}
   {% endif %}
 
   <!-- Render item list -->
-  {% if toc is iterable %}
+  {% if toc %}
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       {{ lang.t("toc.title") }}
