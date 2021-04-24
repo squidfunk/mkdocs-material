@@ -145,7 +145,7 @@ For other installation methods, configuration options, and a demo, visit
 [Google](https://google.github.io/xls/),
 [ING](https://ing-bank.github.io/baker/),
 [LinkedIn](https://linkedin.github.io/school-of-sre/),
-[Microsoft](https://www.electionguard.vote/),
+[Microsoft](https://microsoft.github.io/code-with-engineering-playbook/),
 [Netflix](https://netflix.github.io/titus/),
 [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
 [SoundCloud](https://intervene.dev/),
