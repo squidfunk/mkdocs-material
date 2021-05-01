@@ -152,7 +152,7 @@ directory:
 MkDocs will now use the new partial when rendering the theme. This can be done
 with any file.
 
-### Overriding blocks
+### Overriding blocks <small>recommended</small> { data-toc-label="Overiding blocks" }
 
 Besides overriding partials, it's also possible to override (and extend)
 _template blocks_, which are defined inside the templates and wrap specific
@@ -273,7 +273,7 @@ Start the watcher with:
 npm start
 ```
 
-Then, in a second session, start the MkDocs server with:
+Then, in a second session, start the MkDocs live preview server with:
 
 ```
 mkdocs serve

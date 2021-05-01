@@ -94,7 +94,7 @@ policies for search engines:
 ```
 
   [7]: ../customization.md#extending-the-theme
-  [8]: ../customization.md#overriding-blocks
+  [8]: ../customization.md#overriding-blocks-recommended
 
 #### on a single page
 

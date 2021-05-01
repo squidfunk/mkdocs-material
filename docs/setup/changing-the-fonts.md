@@ -109,5 +109,5 @@ fonts being added automatically):
 
   [5]: ../data-privacy.md
   [6]: ../customization.md#extending-the-theme
-  [7]: ../customization.md#overriding-blocks
+  [7]: ../customization.md#overriding-blocks-recommended
   [8]: ../customization.md#additional-stylesheets

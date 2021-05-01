@@ -113,5 +113,5 @@ of which is to use virtual environments:
     ```
 
   [1]: https://docs.python.org/3/tutorial/venv.html
-  [2]: getting-started.md#with-pip
+  [2]: getting-started.md#with-pip-recommended
   [3]: https://brew.sh/

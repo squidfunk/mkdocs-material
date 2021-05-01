@@ -11,7 +11,7 @@ Material for MkDocs, and can be installed similar to the public version using
 account is added to the list of collaborators of the private Insiders
 repository.
 
-  [1]: #with-pip
+  [1]: #with-pip-recommended
   [2]: #with-docker
   [3]: #with-git
 

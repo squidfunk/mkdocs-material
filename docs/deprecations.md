@@ -112,7 +112,7 @@ templates can be shared among multiple pages:
     {% endblock %}
     ```
 
-  [5]: customization.md#overriding-blocks
+  [5]: customization.md#overriding-blocks-recommended
   [6]: customization.md#extending-the-theme
 
 ## Docker image

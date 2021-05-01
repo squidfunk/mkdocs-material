@@ -82,4 +82,4 @@ In order to integrate another JavaScript-based comment system provider, you can
 
   [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
   [7]: ../customization.md#extending-the-theme
-  [8]: ../customization.md#overriding-blocks
+  [8]: ../customization.md#overriding-blocks-recommended

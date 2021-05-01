@@ -13,13 +13,13 @@ If not, we recommended using [`docker`][3].
 In case you're running into problems, consult the [troubleshooting][4] section.
 
   [1]: https://www.mkdocs.org
-  [2]: #with-pip
+  [2]: #with-pip-recommended
   [3]: #with-docker
   [4]: troubleshooting.md
 
 ## Installation
 
-### with pip
+### with pip <small>recommended</small> { data-toc-label="with pip" }
 
 Material for MkDocs can be installed with `pip`:
 

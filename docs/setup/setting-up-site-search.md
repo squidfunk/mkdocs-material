@@ -315,9 +315,9 @@ export function defaultTransform(query: string): string {
 }
 ```
 
-If you want to switch to the default behavior of the `mkdocs` or `readthedocs`
-template, both of which don't transform the query prior to submission, or
-customize the `transform` function, you can do this by [overriding the 
+If you want to switch to the default behavior of the `mkdocs` and `readthedocs`
+themes, both of which don't transform the query prior to submission, or
+customize the `transform` function, you can do this by [overriding the
 `config` block][21]:
 
 ``` html
@@ -338,7 +338,7 @@ and must return the processed query string to be submitted to the search index.
 
   [19]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
   [20]: ../customization.md#extending-the-theme
-  [21]: ../customization.md#overriding-blocks
+  [21]: ../customization.md#overriding-blocks-recommended
 
 ### Custom search
 
@@ -361,10 +361,10 @@ directory and [override the `config` block][21]:
 {% endblock %}
 ```
 
-Communication with the search worker is implemented using a standardized
-message format using _discriminated unions_, i.e. through the `type` property
-of the message. See the following interface definitions to learn about the
-message formats:
+Communication with the search worker is implemented using a designated message
+format using _discriminated unions_, i.e. through the `type` property of the
+message. See the following interface definitions to learn about the message
+formats:
 
 - [:octicons-file-code-24: `SearchMessage`][24]
 - [:octicons-file-code-24: `SearchIndex` and `SearchResult`][25]

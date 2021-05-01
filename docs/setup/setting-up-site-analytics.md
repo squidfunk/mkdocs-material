@@ -7,7 +7,7 @@ template: overrides/main.html
 As with any other service offered on the web, understanding how your project
 documentation is actually used can be an essential success factor. While
 Material for MkDocs natively integrates with [Google Analytics][1], [other
-analytics services][2] can be used, too.
+analytics providers][2] can be used, too.
 
   [1]: https://developers.google.com/analytics
   [2]: #other-analytics-providers
@@ -61,7 +61,7 @@ and [override the `analytics` block][6]:
 ```
 
   [5]: ../customization.md#extending-the-theme
-  [6]: ../customization.md#overriding-blocks
+  [6]: ../customization.md#overriding-blocks-recommended
 
 If you're using [instant loading][7], you may use the `location$` observable,
 which will emit the current `URL` to listen for navigation events and register

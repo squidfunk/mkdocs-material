@@ -72,8 +72,8 @@ The following options are available:
 [:octicons-file-code-24: Source][1] ·
 :octicons-note-24: Metadata
 
-If the [built-in tags plugin][4] and [Metadata][5] extension are enabled, tags
-can be added for any page as part of the front matter, e.g. to add the tags 
+If both, the [built-in tags plugin][4] and [Metadata][5] extension are enabled,
+tags can be added for any page as part of the front matter, e.g. to add the tags
 `insiders` and `brand new` to this page, add:
 
 ``` yaml
@@ -87,7 +87,7 @@ tags:
 ```
 
 The page will now render with those tags below the main headline and within the
-search preview, which now allows to __search for tags__, as shown in the
+search preview, which now allows to __find pages by tags__, as shown in the
 following screenshots:
 
 === "Tags"

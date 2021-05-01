@@ -48,4 +48,4 @@ block][5], which is empty by default:
 ```
 
   [4]: ../customization.md#extending-the-theme
-  [5]: ../customization.md#overriding-blocks
+  [5]: ../customization.md#overriding-blocks-recommended
