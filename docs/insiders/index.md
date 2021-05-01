@@ -111,7 +111,7 @@ The following features are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown="1">
 
-- [x] [Tags with search integration :material-new-box:][29]
+- [x] [Tags (with search integration) :material-new-box:][29]
 - [x] [Stay on page when switching versions :material-new-box:][28]
 - [x] [Version warning :material-new-box:][26]
 - [x] [Custom admonition icons][28]
@@ -175,7 +175,7 @@ the public for general availability.
 
 - [x] [Mermaid.js integration][27]
 - [x] [Stay on page when switching versions][28]
-- [x] [Tags with search integration][29]
+- [x] [Tags (with search integration)][29]
 
   [27]: ../reference/diagrams.md
   [28]: ../setup/setting-up-versioning.md#stay-on-page
