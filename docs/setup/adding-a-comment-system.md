@@ -33,23 +33,6 @@ This will insert a comment system on _every page, except the index page_.
   [3]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [4]: https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
-### Metadata
-
-The [Metadata][5] extension, which is part of the standard Markdown library,
-adds the ability to add [front matter][6] to a document and can be enabled via
-`mkdocs.yml`:
-
-``` yaml
-markdown_extensions:
-  - meta
-```
-
-Front matter is written as a series of key-value pairs at the beginning of the
-Markdown document, delimited by a blank line which ends the YAML context.
-
-  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [6]: https://jekyllrb.com/docs/front-matter/
-
 ## Customization
 
 ### Selective integration
@@ -58,7 +41,7 @@ Markdown document, delimited by a blank line which ends the YAML context.
 :octicons-note-24: Metadata ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
-If the [Metadata][7] extension is enabled, you can disable or enable Disqus for
+If the [Metadata][5] extension is enabled, you can disable or enable Disqus for
 specific pages by adding the following to the front matter of a page:
 
 === "Enable Disqus"
@@ -81,15 +64,15 @@ specific pages by adding the following to the front matter of a page:
     ...
     ```
 
-  [7]: #metadata
+  [5]: ../../reference/meta-tags/#metadata
 
 ### Other comment systems
 
-[:octicons-file-code-24: Source][8] ·
+[:octicons-file-code-24: Source][6] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 In order to integrate another JavaScript-based comment system provider, you can
-[extend the theme][9] and [override the `disqus` block][10]:
+[extend the theme][7] and [override the `disqus` block][8]:
 
 ``` html
 {% block disqus %}
@@ -97,6 +80,6 @@ In order to integrate another JavaScript-based comment system provider, you can
 {% endblock %}
 ```
 
-  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [9]: ../customization.md#extending-the-theme
-  [10]: ../customization.md#overriding-blocks
+  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
+  [7]: ../customization.md#extending-the-theme
+  [8]: ../customization.md#overriding-blocks

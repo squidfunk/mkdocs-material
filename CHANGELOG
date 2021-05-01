@@ -1,3 +1,7 @@
+mkdocs-material-7.1.3+insiders.2.7.0 (2021-05-01)
+
+  * Added support for tags (with search integration)
+
 mkdocs-material-7.1.3 (2021-04-24)
 
   * Fixed #2586: Empty table of contents shown (7.1.2 regression)

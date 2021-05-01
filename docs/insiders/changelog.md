@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.7.0 <small>_ May 1, 2021</small>
+
+- Added support for tags (with search integration)
+
 ### 2.6.0 <small>_ April 11, 2021</small>
 
 - Stay on page when switching versions

@@ -377,7 +377,9 @@ The content section will now always stretch to the right side, resulting in
 more space for your content. This feature flag can be combined with all other
 feature flags, e.g. [tabs][1] and [sections][2]. 
 
-### Hide the sidebars
+## Usage
+
+### Hiding the sidebars
 
 [:octicons-file-code-24: Source][28] ·
 :octicons-note-24: Metadata
