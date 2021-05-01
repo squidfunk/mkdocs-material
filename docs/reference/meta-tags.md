@@ -6,8 +6,8 @@ template: overrides/main.html
 
 In HTML, `meta` tags allow to provide additional metadata for a document, e.g.
 page titles and descriptions, additional assets to be loaded, and [Open Graph]
-[1] data. While metadata can always be added via [customization][2], some tags
-can be configured.
+[1] data. While arbitrary metadata can always be added via [customization][2],
+some common `meta` tags can be configured.
 
   [1]: https://ogp.me/
   [2]: #customization
@@ -66,21 +66,25 @@ document `head` for the current page to the provided value.
 
 ### Adding a web app manifest
 
-A [web app manifest][6] is a simple JSON file that specifies how your web application should behave when installed on the user's mobile device or desktop, which can be set via `mkdocs.yml`:
+A [web app manifest][6] is a simple JSON file that specifies how your web
+application should behave when installed on the user's mobile device or desktop,
+which can be set via `mkdocs.yml`:
 
 ``` yaml
 extra:
   manifest: manifest.webmanifest
 ```
-  
+
   [6]: https://developers.google.com/web/fundamentals/web-app-manifest/
 
 ## Customization
 
 ### Custom meta tags
 
-In order to add `meta` tags to your document, you can [extend the theme][7] and
-simply [override the `extrahead` block][8] with the respective tags, e.g. to set
+#### on all pages
+
+In order to add custom `meta` tags to your document, you can [extend the theme
+][7] and simply [override the `extrahead` block][8], e.g. to add indexing
 policies for search engines:
 
 ``` html
@@ -89,7 +93,35 @@ policies for search engines:
 {% endblock %}
 ```
 
-Some further examples, including [Open Graph][1] and [Twitter Cards][9]:
+  [7]: ../customization.md#extending-the-theme
+  [8]: ../customization.md#overriding-blocks
+
+#### on a single page
+
+If you want to set a `meta` tag on a single page, or want to set different
+values for different pages, you can use the `page.meta` object inside your
+template override, e.g.:
+
+``` html
+{% block extrahead %}
+  {% if page and page.meta and page.meta.robots %}
+    <meta property="robots" content="{{ page.meta.robots }}" />
+  {% else %}
+    <meta property="robots" content="index, follow" />
+  {% endif %}
+{% endblock %}
+```
+
+You can now use `robots` exactly like [`title`][9] and [`description`][10] to
+set values. Note that in this case, the template defines an `else` branch, which
+would set a default if none was given.
+
+  [9]: #setting-the-page-title
+  [10]: #setting-the-page-description
+
+### Social meta tags
+
+Some further examples, including [Open Graph][1] and [Twitter Cards][11]:
 
 === "Open Graph"
 
@@ -131,6 +163,4 @@ Some further examples, including [Open Graph][1] and [Twitter Cards][9]:
     {% endblock %}
     ```
 
-  [7]: ../customization.md#extending-the-theme
-  [8]: ../customization.md#overriding-blocks
-  [9]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
+  [11]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
