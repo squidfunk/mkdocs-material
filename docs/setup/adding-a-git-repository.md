@@ -123,8 +123,8 @@ The following options are supported:
 
 `enabled_if_env`{ #enabled_if_env }
 
-:   :octicons-milestone-24: Default: _none_ – This option defines whether the
-    date is actually extracted from git, which makes it possible to disable
+:   :octicons-milestone-24: Default: _none_ – When specified the data will only be extracted from git
+    if the environment variable exists. This makes it possible to disable
     extraction for cases when the repository is not available:
 
     ``` yaml
@@ -164,9 +164,8 @@ The following options are supported:
 
 `type`{ #type }
 
-:   :octicons-milestone-24: Default: `date` – This option allows to change the
-    format of the date to be displayed. Valid values are `date`, `datetime`,
-    `iso_date`, `iso_datetime` and `timeago`:
+:   :octicons-milestone-24: Default: `date` – The format of the date to be displayed.
+    Valid values are `date`, `datetime`, `iso_date`, `iso_datetime` and `timeago`:
 
     ``` yaml
     plugins:
@@ -176,8 +175,8 @@ The following options are supported:
 
 `fallback_to_build_date`{ #fallback_to_build_date }
 
-:   :octicons-milestone-24: Default: `false` – This option specifies whether
-    the time when `mkdocs build` was executed should be used as a fallback when
+:   :octicons-milestone-24: Default: `false` – Enables falling back to
+    the time when `mkdocs build` was executed. Can be used as a fallback when
     the git repository is not available:
 
     ``` yaml
@@ -185,6 +184,17 @@ The following options are supported:
       - git-revision-date-localized:
           fallback_to_build_date: true
     ```
+
+`enable_creation_date`{ #enable_creation_date }
+
+:   :octicons-milestone-24: Default: `false` – Enables adding a *Created* date at the bottom of each page.
+
+    ``` yaml
+    plugins:
+      - git-revision-date-localized:
+          enable_creation_date: true
+    ```
+
 
 _Material for MkDocs doesn't provide official support for the other options of
 this plugin, so they may be supported but might yield unexpected results.
