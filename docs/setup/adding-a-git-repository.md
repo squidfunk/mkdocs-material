@@ -146,8 +146,8 @@ Use them at your own risk._
 [:octicons-cpu-24: Plugin][12]
 
 Similarly, the [git-revision-date-localized][12] plugin adds support for adding
-a localized _last updated_ date at the bottom of each page. It can be installed
-with `pip`:
+a localized _updated at_ and _created at_ date at the bottom of each page. It
+can be installed with `pip`:
 
 ```
 pip install mkdocs-git-revision-date-localized-plugin
@@ -164,8 +164,9 @@ The following options are supported:
 
 `type`{ #type }
 
-:   :octicons-milestone-24: Default: `date` – The format of the date to be displayed.
-    Valid values are `date`, `datetime`, `iso_date`, `iso_datetime` and `timeago`:
+:   :octicons-milestone-24: Default: `date` – The format of the date to be
+    displayed. Valid values are `date`, `datetime`, `iso_date`, `iso_datetime`
+    and `timeago`:
 
     ``` yaml
     plugins:
@@ -177,7 +178,7 @@ The following options are supported:
 
 :   :octicons-milestone-24: Default: `false` – Enables falling back to
     the time when `mkdocs build` was executed. Can be used as a fallback when
-    the git repository is not available:
+    the build is performed outside of the git repository:
 
     ``` yaml
     plugins:
@@ -187,7 +188,9 @@ The following options are supported:
 
 `enable_creation_date`{ #enable_creation_date }
 
-:   :octicons-milestone-24: Default: `false` – Enables adding a *Created* date at the bottom of each page.
+:   :octicons-milestone-24: Default: `false` – Enables the display of the
+    _created at_ date of the file associated with the page next to the
+    _updated at_ date at the bottom of the page:
 
     ``` yaml
     plugins:

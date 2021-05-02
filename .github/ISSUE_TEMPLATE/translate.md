@@ -38,8 +38,8 @@ assignees: ''
   "search.result.more.other": "# more on this page",
   "skip.link.title": "Skip to content",
   "source.link.title": "Go to repository",
-  "source.revision.date": "Last update",
-  "source.revision.date_created": "Created",
+  "source.file.date.updated": "Last update",
+  "source.file.date.created": "Created",
   "tabs.title": "Tabs",
   "toc.title": "Table of contents"
 }[key] }}{% endmacro %}
