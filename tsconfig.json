@@ -33,10 +33,9 @@
     "target": "es2015"
   },
   "include": [
-    "tools",
     "src/assets/javascripts",
     "src/overrides/assets/javascripts",
-    "typings",
-    "webpack.config.ts"
+    "tools",
+    "typings"
   ]
 }
