@@ -1,0 +1,33 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: ignore-emit-webpack-plugin
+    versions:
+    - "> 2.0.5"
+  - dependency-name: unfetch
+    versions:
+    - ">= 4.1.a, < 4.2"
+  - dependency-name: webpack-assets-manifest
+    versions:
+    - "> 4.0.0"
+  - dependency-name: "@typescript-eslint/parser"
+    versions:
+    - 4.19.0
+  - dependency-name: "@typescript-eslint/eslint-plugin"
+    versions:
+    - 4.17.0
+  - dependency-name: webpack
+    versions:
+    - 5.23.0
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "04:00"
+  open-pull-requests-limit: 10
