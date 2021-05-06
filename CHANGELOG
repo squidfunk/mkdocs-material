@@ -1,3 +1,8 @@
+mkdocs-material-7.1.4 (2021-05-06)
+
+  * Added support for git-revision-date-localized plugin creation date
+  * Improved footnote styles on :target and :focus
+
 mkdocs-material-7.1.3+insiders.2.7.1 (2021-05-03)
 
   * Fixed git-revision-date-localized plugin integration (2.7.0 regression)
