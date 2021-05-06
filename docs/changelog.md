@@ -9,7 +9,7 @@ template: overrides/main.html
 ### 7.1.4 <small>_ May 6, 2021</small>
 
 - Added support for git-revision-date-localized plugin creation date
-- Improved footnote styles on :target and :focus
+- Improved footnote styles on `:target` and `:focus`
 
 ### 7.1.3 <small>_ April 24, 2021</small>
 
