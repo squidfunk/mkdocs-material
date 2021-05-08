@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.7.2 <small>_ May 8, 2021</small>
+
+- Fixed #2638: Warnings shown when using `tags` plugin without directory URLs
+
 ### 2.7.1 <small>_ May 3, 2021</small>
 
 - Fixed `git-revision-date-localized` plugin integration (2.7.0 regression)

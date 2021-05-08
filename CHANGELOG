@@ -1,3 +1,7 @@
+mkdocs-material-7.1.4+insiders.2.7.2 (2021-05-08)
+
+  - Fixed #2638: Warnings shown when using tags plugin without directory URLs
+
 mkdocs-material-7.1.4 (2021-05-06)
 
   * Added support for git-revision-date-localized plugin creation date
