@@ -69,7 +69,7 @@
     "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
-    "postcss": "^8.2.13",
+    "postcss": "^8.2.14",
     "postcss-inline-svg": "^5.0.0",
     "preact": "^10.5.13",
     "rimraf": "^3.0.2",
