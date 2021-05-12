@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.8.0 <small>_ May 12, 2021</small>
+
+- Added support for boosting pages in search
+
 ### 2.7.2 <small>_ May 8, 2021</small>
 
 - Fixed #2638: Warnings shown when using `tags` plugin without directory URLs

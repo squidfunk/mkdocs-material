@@ -1,6 +1,10 @@
+mkdocs-material-7.1.4+insiders.2.8.0 (2021-05-12)
+
+  * Added support for boosting pages in search
+
 mkdocs-material-7.1.4+insiders.2.7.2 (2021-05-08)
 
-  - Fixed #2638: Warnings shown when using tags plugin without directory URLs
+  * Fixed #2638: Warnings shown when using tags plugin without directory URLs
 
 mkdocs-material-7.1.4 (2021-05-06)
 
