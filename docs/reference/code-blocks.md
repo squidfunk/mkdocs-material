@@ -445,4 +445,4 @@ override it as part of your additional stylesheet:
   [26]: #use-pygments
   [27]: ../setup/changing-the-colors.md#color-scheme
   [28]: https://pygments.org/docs/tokens/#literals
-  [29]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_codehilite.scss
+  [29]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
