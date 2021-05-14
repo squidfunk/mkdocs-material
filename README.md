@@ -158,6 +158,7 @@ For other installation methods, configuration options, and a demo, visit
 [AutoKeras](https://autokeras.com/),
 [BFE](https://www.bfe-networks.net/),
 [Crystal](https://crystal-lang.org/reference/),
+[Electron](https://www.electron.build/),
 [FastAPI](https://fastapi.tiangolo.com/),
 [Kubernetes](https://kops.sigs.k8s.io/),
 [kSQL](https://docs.ksqldb.io/),
