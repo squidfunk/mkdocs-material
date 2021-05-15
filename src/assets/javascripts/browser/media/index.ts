@@ -24,11 +24,9 @@ import {
   NEVER,
   Observable,
   fromEvent,
-  fromEventPattern,
-  merge
+  fromEventPattern
 } from "rxjs"
 import {
-  filter,
   mapTo,
   startWith,
   switchMap
@@ -66,10 +64,7 @@ export function watchMedia(query: string): Observable<boolean> {
  * @returns Print mode observable
  */
 export function watchPrint(): Observable<void> {
-  return merge(
-    watchMedia("print").pipe(filter(Boolean)),  /* Webkit */
-    fromEvent(window, "beforeprint")            /* IE, FF */
-  )
+  return fromEvent(window, "beforeprint")
     .pipe(
       mapTo(undefined)
     )
