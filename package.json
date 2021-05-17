@@ -44,7 +44,7 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@mdi/svg": "^5.9.55",
-    "@primer/octicons": "^13.0.0",
+    "@primer/octicons": "^14.1.0",
     "@types/clipboard": "^2.0.1",
     "@types/escape-html": "1.0.1",
     "@types/fuzzaldrin-plus": "^0.6.1",
