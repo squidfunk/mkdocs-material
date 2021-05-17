@@ -39,7 +39,7 @@
     "fuzzaldrin-plus": "^0.6.0",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.4.0",
-    "rxjs": "^7.0.0"
+    "rxjs": "^7.0.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
