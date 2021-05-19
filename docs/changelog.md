@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.1.5 <small>_ May 19, 2021</small>
+
+- Fixed #2655: Details breaking page margins on print
+
 ### 7.1.4 <small>_ May 6, 2021</small>
 
 - Added support for git-revision-date-localized plugin creation date
