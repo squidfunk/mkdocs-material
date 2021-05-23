@@ -6,7 +6,8 @@ template: overrides/main.html
 
 Sometimes, it's desirable to group alternative content under different tabs,
 e.g. when describing how to access an API from different languages or
-environments. Material for MkDocs allows for beautiful and functional tabs, grouping code blocks and other content.
+environments. Material for MkDocs allows for beautiful and functional tabs,
+grouping code blocks and other content.
 
 ## Configuration
 
@@ -133,11 +134,45 @@ _Result_:
     2. Donec vitae suscipit est
     3. Nulla tempor lobortis orci
 
+### Linking content tabs
+
+[:octicons-file-code-24: Source][5] ·
+:octicons-beaker-24: Experimental ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][5]{ .mdx-insiders }
+
+When _linking_ is enabled, all content tabs on a page will be linked and show
+the same active tab when the user clicks on a label. Add the following lines
+to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - content.tabs.link
+```
+
+Content tabs are linked based on their label, not offset. This means that all
+tabs with the same label will be activated when a user clicks a content tab
+regardless of order inside a container. Furthermore, this feature is fully
+integrated with [instant loading][6] and persisted across page loads.
+
+=== "With linking"
+
+    [![With linking][7]][7]
+
+=== "Without linking"
+
+    [![Without linking][8]][8]
+
+  [5]: ../insiders/index.md
+  [6]: ../setup/setting-up-navigation.md#instant-loading
+  [7]: ../assets/screenshots/content-tabs-link.png
+  [8]: ../assets/screenshots/content-tabs.png
+
 ### Embedded content
 
-When [SuperFences][5] is enabled, content tabs can contain arbitrary nested
+When [SuperFences][9] is enabled, content tabs can contain arbitrary nested
 content, including further content tabs, and can be nested in other blocks like
-[admonitions][6], [details][7] or blockquotes:
+[admonitions][10], [details][11] or blockquotes:
 
 _Example_:
 
@@ -213,6 +248,6 @@ _Result_:
         2. Donec vitae suscipit est
         3. Nulla tempor lobortis orci
 
-  [5]: #superfences
-  [6]: admonitions.md
-  [7]: admonitions.md#details
+  [9]: #superfences
+  [10]: admonitions.md
+  [11]: admonitions.md#details

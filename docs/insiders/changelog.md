@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.9.0 <small>_ May 23, 2021</small>
+
+- Added support for linking of content tabs
+
 ### 2.8.0 <small>_ May 12, 2021</small>
 
 - Added support for boosting pages in search
