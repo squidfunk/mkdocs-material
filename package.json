@@ -81,7 +81,7 @@
     "stylelint-scss": "^3.19.0",
     "svgo": "^2.3.0",
     "tiny-glob": "^0.2.9",
-    "ts-node": "^9.1.1",
+    "ts-node": "^10.0.0",
     "typescript": "^4.2.4"
   },
   "engines": {
