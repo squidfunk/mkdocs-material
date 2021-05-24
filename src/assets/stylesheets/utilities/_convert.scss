@@ -20,6 +20,8 @@
 /// DEALINGS
 ////
 
+@use "sass:math";
+
 // ----------------------------------------------------------------------------
 // Helpers
 // ----------------------------------------------------------------------------
@@ -28,7 +30,7 @@
 /// Strip units from a number
 ///
 @function strip-units($number) {
-  @return $number / ($number * 0 + 1);
+  @return math.div($number, ($number * 0 + 1));
 }
 
 ///
@@ -52,7 +54,7 @@
 @function px2em($size, $base: 16px) {
   @if unit($size) == px {
     @if unit($base) == px {
-      @return ($size / $base) * 1em;
+      @return math.div($size, $base) * 1em;
     } @else {
       @error "Invalid base: #{$base} - unit must be 'px'";
     }
@@ -67,7 +69,7 @@
 @function px2rem($size, $base: 20px) {
   @if unit($size) == px {
     @if unit($base) == px {
-      @return ($size / $base) * 1rem;
+      @return math.div($size, $base) * 1rem;
     } @else {
       @error "Invalid base: #{$base} - unit must be 'px'";
     }
