@@ -288,7 +288,7 @@ will stretch to the full width of the viewport, e.g. on mobile viewports.
 Following is a list of type qualifiers provided by Material for MkDocs, whereas
 the default type, and thus fallback for unknown type qualifiers, is `note`:
 
-`note`{ #note }, `seealso`
+`note`{ #note }, ~~`seealso`~~ [^1]
 
 :   !!! note
 
@@ -383,6 +383,13 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
+
+  [^1]:
+    The `seealso` qualifier was originally adapted from the `readthedocs` theme,
+    in order to make it easier for authors to migrate to Material for MkDocs.
+    However, when the title is omitted, the admonition extension will render it
+    as `Seealso`, which is incorrect English. For this reason, it was deprecated
+    as of 7.1.5 and will be removed in 8.x.
 
 ### Changing the icons
 
