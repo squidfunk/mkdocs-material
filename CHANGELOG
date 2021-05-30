@@ -1,3 +1,10 @@
+mkdocs-material-7.1.6 (2021-05-30)
+
+  * Deprecated seealso admonition qualifier
+  * Added Mongolian and updated Chinese translations
+  * Fixed #2429: Version selector not touch-friendly on Android devices
+  * Fixed #2703: Printed 'Initializing search' albeit ready on mobile
+
 mkdocs-material-7.1.5+insiders.2.9.0 (2021-05-23)
 
   * Added support for linking of content tabs
