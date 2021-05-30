@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.9.2 <small>_ May 30, 2021</small>
+
+- Moved tags to partial for easier customization
+- Added support for hiding tags on any page
+
 ### 2.9.1 <small>_ May 24, 2021</small>
 
 - Added missing guard for linking of content tabs
