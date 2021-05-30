@@ -78,8 +78,8 @@ you can [define the `outdated` block][9]:
 ``` html
 {% block outdated %}
   You're not viewing the latest version.
-  <a href="{{ config.site_url | url }}">
-    Click here to go to latest.
+  <a href="{{ '../' ~ base_url }}">
+    <strong>Click here to go to latest.</strong>
   </a>
 {% endblock %}
 ```
