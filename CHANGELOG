@@ -5,6 +5,10 @@ mkdocs-material-7.1.6 (2021-05-30)
   * Fixed #2429: Version selector not touch-friendly on Android devices
   * Fixed #2703: Printed 'Initializing search' albeit ready on mobile
 
+mkdocs-material-7.1.5+insiders.2.9.1 (2021-05-24)
+
+  * Added missing guard for linking of content tabs
+
 mkdocs-material-7.1.5+insiders.2.9.0 (2021-05-23)
 
   * Added support for linking of content tabs

@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.9.1 <small>_ May 24, 2021</small>
+
+- Added missing guard for linking of content tabs
+
 ### 2.9.0 <small>_ May 23, 2021</small>
 
 - Added support for linking of content tabs
