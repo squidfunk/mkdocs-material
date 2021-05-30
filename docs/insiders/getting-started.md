@@ -109,10 +109,11 @@ git clone git@github.com:squidfunk/mkdocs-material-insiders.git mkdocs-material
 ```
 
 The theme will reside in the folder `mkdocs-material/material`. When cloning
-from `git`, you must install all required dependencies yourself:
+from `git`, the theme must be installed, so MkDocs can find the built-in
+plugins:
 
 ```
-pip install -r mkdocs-material/requirements.txt
+pip install -e mkdocs-material
 ```
 
   [7]: https://docs.github.com/en/packages/guides/about-github-container-registry
