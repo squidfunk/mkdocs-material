@@ -49,7 +49,7 @@ theme:
   search_index_only: true
 
   # Default values, taken from mkdocs_theme.yml
-  language: en
+  language: mn
   features:
     # - navigation.instant
     - navigation.sections

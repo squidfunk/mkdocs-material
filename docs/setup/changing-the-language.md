@@ -53,6 +53,7 @@ The following languages are supported:
 - `ja` – Japanese
 - `ka` – Georgian
 - `kr` – Korean
+- `mn` – Mongolian
 - `my` – Burmese
 - `nl` – Dutch
 - `nn` – Norwegian (Nynorsk)
