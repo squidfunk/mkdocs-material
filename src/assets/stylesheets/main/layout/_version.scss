@@ -21,6 +21,17 @@
 ////
 
 // ----------------------------------------------------------------------------
+// Keyframes
+// ----------------------------------------------------------------------------
+
+// See https://github.com/squidfunk/mkdocs-material/issues/2429
+@keyframes hoverfix {
+  0% {
+    pointer-events: none;
+  }
+}
+
+// ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
@@ -106,6 +117,20 @@
       transition:
         max-height 0ms,
         opacity  250ms;
+    }
+
+    // Fix hover on touch devices
+    @media (pointer: coarse) {
+
+      // Switch off on hover
+      .md-version:hover & {
+        animation: hoverfix 250ms forwards;
+      }
+
+      // Enable on focus
+      .md-version:focus-within & {
+        animation: none;
+      }
     }
   }
 

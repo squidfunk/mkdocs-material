@@ -25,7 +25,7 @@
 // ----------------------------------------------------------------------------
 
 // Show repository facts
-@keyframes md-source__facts--done {
+@keyframes facts {
   0% {
     height: 0;
   }
@@ -36,7 +36,7 @@
 }
 
 // Show repository fact
-@keyframes md-source__fact--done {
+@keyframes fact {
   0% {
     transform: translateY(100%);
     opacity: 0;
@@ -137,7 +137,7 @@
 
     // Show after the data was loaded
     [data-md-state="done"] & {
-      animation: md-source__facts--done 250ms ease-in;
+      animation: facts 250ms ease-in;
     }
   }
 
@@ -147,7 +147,7 @@
 
     // Show after the data was loaded
     [data-md-state="done"] & {
-      animation: md-source__fact--done 400ms ease-out;
+      animation: fact 400ms ease-out;
     }
 
     // Repository fact icon
