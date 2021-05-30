@@ -86,7 +86,7 @@ tags:
 ...
 ```
 
-The page will now render with those tags below the main headline and within the
+The page will now render with those tags above the main headline and within the
 search preview, which now allows to __find pages by tags__, as shown in the
 following screenshots:
 
@@ -125,3 +125,24 @@ arbitrary content before and after the marker:
 
   [8]: #tags_file
   [9]: ../assets/screenshots/tags-index.png
+
+### Hiding the tags
+
+[:octicons-file-code-24: Source][1] ·
+:octicons-note-24: Metadata
+
+While the tags are rendered above the main headline, sometimes, it might be
+desirable to hide them for a specific page, which can be achieved by using the
+[Metadata][10] extension:
+
+``` bash
+---
+hide:
+  - tags
+---
+
+# Document title
+...
+```
+
+  [10]: ../../reference/meta-tags/#metadata

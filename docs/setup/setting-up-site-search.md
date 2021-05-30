@@ -273,12 +273,13 @@ In order to give specific pages a higher relevance in search, [lunr][4] supports
 page-specific boosts, which can be defined for each page by leveraging the
 [Metadata][19] extension:
 
-``` yaml
+``` bash
 ---
 search:
   boost: 100
 ---
 
+# Document title
 ...
 ```
 

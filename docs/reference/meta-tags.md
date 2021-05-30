@@ -38,10 +38,13 @@ Markdown document, delimited by a blank line which ends the YAML context.
 If the [Metadata][5] extension is enabled, the page title can be overridden on
 a per-document basis with custom front matter:
 
-``` markdown
+``` bash
 ---
 title: Lorem ipsum dolor sit amet
 ---
+
+# Document title
+...
 ```
 
 This will set the `title` tag inside the document `head` for the current page
@@ -55,10 +58,13 @@ separator, which is the default behavior.
 If the [Metadata][5] extension is enabled, the page description can also be
 overridden on a per-document basis with custom front matter:
 
-``` markdown
+``` bash
 ---
 description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
 ---
+
+# Document title
+...
 ```
 
 This will set the `meta` tag containing the site description inside the

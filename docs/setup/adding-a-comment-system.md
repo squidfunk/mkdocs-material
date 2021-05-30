@@ -46,21 +46,23 @@ specific pages by adding the following to the front matter of a page:
 
 === "Enable Disqus"
 
-    ``` yaml
+    ``` bash
     ---
     disqus: <shortname>
     ---
 
+    # Document title
     ...
     ```
 
 === "Disable Disqus"
 
-    ``` yaml
+    ``` bash
     ---
     disqus: ""
     ---
 
+    # Document title
     ...
     ```
 

@@ -388,13 +388,14 @@ Sometimes it's desirable to hide the navigation and/or table of contents
 sidebar, especially when there's a single navigation item. This can be done for
 any page using the [Metadata][29] extension:
 
-``` yaml
+``` bash
 ---
 hide:
-  - navigation # Hide navigation
-  - toc        # Hide table of contents
+  - navigation
+  - toc
 ---
 
+# Document title
 ...
 ```
 

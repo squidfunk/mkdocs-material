@@ -19,10 +19,13 @@ The `redirect` key, which could be added via [Metadata][1], allowed to
 specify a redirect from within a document to a new address, which is a good
 idea when moving content around:
 
-``` markdown
+``` bash
 ---
 redirect: /path/to/new/file
 ---
+
+# Document title
+...
 ```
 
 The [redirects][2] plugin provides the ability to define redirect mappings via
@@ -54,11 +57,14 @@ The `source` and `path` keys, which could be added via [Metadata][1], showed
 a source icon at the top right corner of a document, linking a document to a
 single source file:
 
-``` markdown
+``` bash
 ---
 path: tree/master/docs
 source: deprecations.md
 ---
+
+# Document title
+...
 ```
 
 Only a single source file could be linked, which is useless if a document refers
@@ -84,10 +90,13 @@ The `hero` key, which could be added via [Metadata][1], allowed to render a
 simple, text-only and page-local teaser text as part of a document. It could
 be set from front matter with:
 
-``` markdown
+``` bash
 ---
 hero: Lorem ipsum dolor sit amet
 ---
+
+# Document title
+...
 ```
 
 The recommended way is to [override the `hero` block][5] via [theme
@@ -96,10 +105,13 @@ templates can be shared among multiple pages:
 
 === "Markdown"
 
-    ``` markdown
+    ``` bash
     ---
     template: hero.html
     ---
+
+    # Document title
+    ...
     ```
 
 === "Template"
