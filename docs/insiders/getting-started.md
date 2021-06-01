@@ -47,7 +47,8 @@ private repositories.
 
 ### with docker
 
-In case you want to use Material for MkDocs Insiders from within Docker, some additional steps are necessary. While we cannot provide a hosted Docker image
+In case you want to use Material for MkDocs Insiders from within Docker, some
+additional steps are necessary. While we cannot provide a hosted Docker image
 for Insiders[^1], [GitHub Container Registry][7] allows for simple and
 comfortable self-hosting:
 
