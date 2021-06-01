@@ -80,7 +80,7 @@ docker pull ghcr.io/${GH_USERNAME}/mkdocs-material-insiders
   [^1]:
     Earlier, Insiders provided a dedicated Docker image which was available to
     all sponsors. On March 21, 2021, the image was deprecated for the reasons
-    outlined and discussed in #2442. It will be removed on June 1, 2021.
+    outlined and discussed in #2442. It was removed on June 1, 2021.
 
   [^2]:
     When forking a repository, GitHub will disables all workflows. While this
