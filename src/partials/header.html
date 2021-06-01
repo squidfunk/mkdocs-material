@@ -70,6 +70,7 @@
           {% set primary = option.primary | replace(" ", "-") | lower %}
           {% set accent  = option.accent  | replace(" ", "-") | lower %}
           <input
+            aria-label="{{ option.toggle.name }}"
             class="md-option"
             data-md-color-media="{{ option.media }}"
             data-md-color-scheme="{{ option.scheme }}"
