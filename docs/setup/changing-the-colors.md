@@ -216,7 +216,7 @@ To match a color palette to the user's system preference upon the user's first
 visit, provide a media query via the `media` field next to the `scheme` definition
 in `mkdocs.yml`:
 
-``` yaml hl_lines="3 8"
+``` yaml hl_lines="4, 9"
 theme:
   palette:
     - scheme: default
