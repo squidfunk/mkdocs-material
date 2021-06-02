@@ -5,7 +5,7 @@ template: overrides/main.html
 # Changing the colors
 
 As any proper Material Design implementation, Material for MkDocs supports
-Google's original [color palette][1], which can be easily configured through 
+Google's original [color palette][1], which can be easily configured through
 `mkdocs.yml`. Furthermore, colors can be customized with a few lines of CSS to
 fit your brand's identity by using [CSS variables][2].
 
@@ -212,28 +212,28 @@ The following fields must be set for each toggle:
 
 [:octicons-file-code-24: Source][6] · :octicons-milestone-24: Default: _none_
 
-In order to automatically set the color palette to the user's system preference,
-a media query can be set as part of the `media` field next to the toggle
-definition in `mkdocs.yml`:
+To match a color palette to the user's system preference upon the user's first
+visit, provide a media query via the `media` field next to the `scheme` definition
+in `mkdocs.yml`:
 
 ``` yaml hl_lines="3 8"
 theme:
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
 ```
 
-When the user first visits your site, the media queries are evaluated in the
-order of their definition. The first media query that matches selects the
-default color palette.
+Media queries are evaluated in the order of their definition. The first media
+query that matches will determine the user's initial color palette. Once set,
+further palette switching must be done manually by the user.
 
 !!! warning "Accessibility – not all color combinations work well"
 
