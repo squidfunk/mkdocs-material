@@ -216,16 +216,16 @@ To match a color palette to the user's system preference upon the user's first
 visit, provide a media query via the `media` field next to the `scheme` definition
 in `mkdocs.yml`:
 
-``` yaml hl_lines="4, 9"
+``` yaml hl_lines="3 8"
 theme:
   palette:
-    - scheme: default
-      media: "(prefers-color-scheme: light)"
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-    - scheme: slate
-      media: "(prefers-color-scheme: dark)"
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
