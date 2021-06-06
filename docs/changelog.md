@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.1.7 <small>_ June 6, 2021</small>
+
+- Improved screen reader support
+
 ### 7.1.6 <small>_ May 30, 2021</small>
 
 - Deprecated `seealso` admonition qualifier
