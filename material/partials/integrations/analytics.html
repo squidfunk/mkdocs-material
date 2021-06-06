@@ -7,4 +7,6 @@
 {% if config.extra.analytics %}
   {% set provider = config.extra.analytics.provider %}
 {% endif %}
-{% include "partials/integrations/analytics/" ~ provider ~ ".html" %}
+{% if provider %}
+  {% include "partials/integrations/analytics/" ~ provider ~ ".html" %}
+{% endif %}

@@ -30,5 +30,7 @@
   {% set provider = config.extra.analytics.provider %}
 {% endif %}
 
-<!-- Analytics provider -->
-{% include "partials/integrations/analytics/" ~ provider ~ ".html" %}
+<!-- Set up analytics provider -->
+{% if provider %}
+  {% include "partials/integrations/analytics/" ~ provider ~ ".html" %}
+{% endif %}
