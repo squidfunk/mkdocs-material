@@ -98,6 +98,9 @@ plugins:
 
 # Customization
 extra:
+  analytics:
+    provider: google
+    property: !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/squidfunk
@@ -202,8 +205,3 @@ nav:
     - Getting started:
       - Installation: insiders/getting-started.md
       - Changelog: insiders/changelog.md
-
-# Google Analytics
-google_analytics:
-  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
-  - auto

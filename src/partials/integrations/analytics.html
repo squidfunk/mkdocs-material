@@ -20,36 +20,15 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Google Analytics integration -->
-{% set analytics = config.google_analytics %}
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
+<!-- Determine analytics provider (deprecated, removed in v8) -->
+{% if config.google_analytics %}
+  {% set provider = "google" %}
+{% endif %}
 
-  /* Set up integration and send page view */
-  ga("create", "{{ analytics[0] }}", "{{ analytics[1] }}")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
+<!-- Determine analytics provider -->
+{% if config.extra.analytics %}
+  {% set provider = config.extra.analytics.provider %}
+{% endif %}
 
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", function() {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-
-    /* Send page view on location change */
-    if (typeof location$ !== "undefined")
-      location$.subscribe(function(url) {
-        ga("send", "pageview", url.pathname)
-      })
-  })
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- Analytics provider -->
+{% include "partials/integrations/analytics/" ~ provider ~ ".html" %}

@@ -1,0 +1,16 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% if config.google_analytics %}
+  {% set property = config.google_analytics[0] %}
+{% endif %}
+{% if config.extra.analytics %}
+  {% set property = config.extra.analytics.property | d("", true) %}
+{% endif %}
+{% if property.startswith("G-") %}
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","{{ property }}"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","{{ property }}",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ property }}"></script>
+{% elif property.startswith("UA-") %}
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","{{ property }}","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+{% endif %}
