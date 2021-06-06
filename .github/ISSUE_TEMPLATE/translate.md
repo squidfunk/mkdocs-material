@@ -30,18 +30,23 @@ assignees: ''
   "search.config.separator": "[\s\-]+",
   "search.placeholder": "Search",
   "search.reset": "Clear",
+  "search.result.initializer": "Initializing search",
   "search.result.placeholder": "Type to start searching",
   "search.result.none": "No matching documents",
   "search.result.one": "1 matching document",
   "search.result.other": "# matching documents",
   "search.result.more.one": "1 more on this page",
   "search.result.more.other": "# more on this page",
+  "search.result.term.missing": "Missing",
+  "select.language.title": "Select language",
+  "select.version.title": "Select version",
   "skip.link.title": "Skip to content",
   "source.link.title": "Go to repository",
   "source.file.date.updated": "Last update",
   "source.file.date.created": "Created",
   "tabs.title": "Tabs",
-  "toc.title": "Table of contents"
+  "toc.title": "Table of contents",
+  "top.title": "Back to top"
 }[key] }}{% endmacro %}
 ```
 

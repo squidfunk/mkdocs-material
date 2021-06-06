@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { configuration } from "~/_"
+import { configuration, translation } from "~/_"
 import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
@@ -85,7 +85,10 @@ export function renderVersionSelector(versions: Version[]): HTMLElement {
   /* Render version selector */
   return (
     <div class="md-version">
-      <button class="md-version__current">
+      <button
+        class="md-version__current"
+        aria-label={translation("select.version.title")}
+      >
         {active.title}
       </button>
       <ul class="md-version__list">
