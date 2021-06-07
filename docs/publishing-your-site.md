@@ -37,6 +37,8 @@ contents:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v2
+            with:
+              fetch-depth: 0
           - uses: actions/setup-python@v2
             with:
               python-version: 3.x
@@ -59,6 +61,8 @@ contents:
         if: github.event.repository.fork == false
         steps:
           - uses: actions/checkout@v2
+            with:
+              fetch-depth: 0
           - uses: actions/setup-python@v2
             with:
               python-version: 3.x
