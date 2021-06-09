@@ -48,6 +48,7 @@ with the following configuration:
 ``` yaml
 extra:
   homepage: https://example.com
+  homepage_title: Example
 ```
 
 ### Favicon

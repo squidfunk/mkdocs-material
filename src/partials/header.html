@@ -30,9 +30,9 @@
     <!-- Link to home -->
     <a
       href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
-      title="{{ config.site_name | e }}"
+      title="{{ config.extra.homepage_title | d(config.site_name, true) | e }}"
       class="md-header__button md-logo"
-      aria-label="{{ config.site_name }}"
+      aria-label="{{ config.extra.homepage_title | d(config.site_name, true) }}"
       data-md-component="logo"
     >
       {% include "partials/logo.html" %}
