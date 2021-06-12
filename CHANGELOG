@@ -1,3 +1,9 @@
+mkdocs-material-7.1.8 (2021-06-12)
+
+  * Refactored analytics integration (because of MkDocs 1.2)
+  * Added support for Google Analytics 4 (gtag.js)
+  * Fixed missing escape for aria-label in footer links
+
 mkdocs-material-7.1.7 (2021-06-06)
 
   * Improved screen reader support

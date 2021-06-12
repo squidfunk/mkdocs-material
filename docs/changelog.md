@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.1.8 <small>_ June 12, 2021</small>
+
+- Refactored analytics integration (because of MkDocs 1.2)
+- Added support for Google Analytics 4 (`gtag.js`)
+- Fixed missing escape for `aria-label` in footer links
+
 ### 7.1.7 <small>_ June 6, 2021</small>
 
 - Improved screen reader support
