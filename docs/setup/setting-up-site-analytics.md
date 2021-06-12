@@ -18,18 +18,29 @@ analytics providers][2] can be used, too.
 
 [:octicons-file-code-24: Source][3] · :octicons-milestone-24: Default: _none_
 
-After heading over to your [Google Analytics][1] account to [create a new
-property][4] in order to obtain a unique tracking id of the form
-`UA-XXXXXXXX-X`, add it to `mkdocs.yml`:
+Material for MkDocs integrates with both, Google Analytics 4 and the now phasing
+out Universal Analytics (`UA-*`). Depending on the prefix of the property, add
+the following to `mkdocs.yml`:
 
-``` yaml
-google_analytics:
-  - UA-XXXXXXXX-X
-  - auto
-```
+=== "Google Analytics 4"
+
+    ``` yaml
+    extra:
+      analytics:
+        provider: google
+        property: G-XXXXXXXXXX
+    ```
+
+=== "Universal Analytics"
+
+    ``` yaml
+    extra:
+      analytics:
+        provider: google
+        property: UA-XXXXXXXX-X
+    ```
 
   [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/integrations/analytics.html
-  [4]: https://support.google.com/analytics/answer/1042508
 
 #### Site search tracking
 
@@ -42,6 +53,12 @@ search tracking:
 3. Go to the __view settings__ tab.
 4. Scroll down and enable __site search settings__
 5. Set the __query parameter__ to `q`.
+
+_Site search tracking is not supported with Google Analytics 4 due to the much
+more complicated manual setup. If you want to set up site search tracking
+yourself, [this tutorial][4] might be a good start._
+
+  [4]: https://www.analyticsmania.com/post/track-site-search-with-google-tag-manager-and-google-analytics/
 
 ## Customization
 
