@@ -286,7 +286,7 @@ in front of you.
 
     Never make any changes in the `material` directory, as the contents of this
     directory are automatically generated from the `src` directory and will be
-    overridden when the theme is built.
+    overwritten when the theme is built.
 
   [10]: http://localhost:8000
 

@@ -70,8 +70,9 @@ You can cancel your sponsorship anytime.[^4]
 
   [^2]:
     Note that $10/month is the minimum amount to become eligible for Insiders.
-    If you sponsor with a lower amount, it's still very much apprecaited, but
-    you won't be granted access to Insiders. Custom amounts of $10+ are also eligible.
+    If you sponsor with a lower amount, it's still very much appreciated, but
+    you won't be granted access to Insiders. Custom amounts of $10+ are also
+    eligible.
 
   [^3]:
     It's currently not possible to grant access to each member of an
