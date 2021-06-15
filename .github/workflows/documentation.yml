@@ -42,6 +42,15 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install Python dependencies
+        if: github.event.repository.fork == false
+        run: |
+          pip install git+https://github.com/squidfunk/mkdocs-material-insiders.git
+          pip install \
+            mkdocs-minify-plugin>=0.3 \
+            mkdocs-redirects>=1.0
+
+      - name: Install Python dependencies
+        if: github.event.repository.fork == true
         run: |
           pip install .
           pip install \
