@@ -43,8 +43,10 @@ jobs:
 
       - name: Install Python dependencies
         if: github.event.repository.fork == false
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          pip install git+https://github.com/squidfunk/mkdocs-material-insiders.git
+          pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           pip install \
             mkdocs-minify-plugin>=0.3 \
             mkdocs-redirects>=1.0
