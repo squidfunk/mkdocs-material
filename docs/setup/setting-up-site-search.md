@@ -151,23 +151,13 @@ theme:
     - search.suggest
 ```
 
-Searching for ^^search su^^ yields ^^search suggestions^^ as a suggestion:
+Searching for [:octicons-search-24: ^^search su^^][9] yields ^^search suggestions^^ as a suggestion:
 
-<figure markdown="1">
-
-[![Search suggestions][9]][9]
-
-  <figcaption markdown="1">
-
-A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-insiders][10]
-
-  </figcaption>
-</figure>
+[![Search suggestions][10]][10]
 
   [8]: ../insiders/index.md
-  [9]: ../assets/screenshots/search-suggestions.png
-  [10]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/?q=code+high
+  [9]: ?q=search+su
+  [10]: ../assets/screenshots/search-suggestions.png
 
 ### Search highlighting
 
@@ -186,22 +176,15 @@ theme:
     - search.highlight
 ```
 
-Searching for ^^code highlighting^^ yields:
+Searching for [:octicons-search-24: ^^code highlighting^^][11] yields:
 
-<figure markdown="1">
-
-[![Search highlighting][11]][11]
-
-  <figcaption markdown="1">
-
-A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-insiders][12]
+[![Search highlighting][12]][12]
 
   </figcaption>
 </figure>
 
-  [11]: ../assets/screenshots/search-highlighting.png
-  [12]: https://squidfunk.github.io/mkdocs-material-insiders/reference/code-blocks/?h=code+blocks
+  [11]: ../reference/code-blocks.md?h=code+blocks
+  [12]: ../assets/screenshots/search-highlighting.png
 
 ### Search sharing
 
@@ -223,37 +206,26 @@ theme:
 When a user clicks the share button, the URL is automatically copied to the
 clipboard.
 
-<figure markdown="1">
-
 [![Search sharing][13]][13]
 
-  <figcaption markdown="1">
-
-A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-insiders][14]
-
-  </figcaption>
-</figure>
-
   [13]: ../assets/screenshots/search-share.png
-  [14]: https://squidfunk.github.io/mkdocs-material-insiders/setup/setting-up-site-search/?q=share+search
 
 ### Offline search
 
-[:octicons-file-code-24: Source][15] ·
-[:octicons-cpu-24: Plugin][16] · :octicons-beaker-24: Experimental
+[:octicons-file-code-24: Source][14] ·
+[:octicons-cpu-24: Plugin][15] · :octicons-beaker-24: Experimental
 
 If you distribute your documentation as `*.html` files, the built-in search
 will not work out-of-the-box due to the restrictions modern browsers impose for
-security reasons. This can be mitigated with the [localsearch][16] plugin in
-combination with @squidfunk's [iframe-worker][17] polyfill.
+security reasons. This can be mitigated with the [localsearch][15] plugin in
+combination with @squidfunk's [iframe-worker][16] polyfill.
 
-For setup instructions, refer to the [official documentation][18].
+For setup instructions, refer to the [official documentation][17].
 
-  [15]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [16]: https://github.com/wilhelmer/mkdocs-localsearch/
-  [17]: https://github.com/squidfunk/iframe-worker
-  [18]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5
+  [14]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
+  [15]: https://github.com/wilhelmer/mkdocs-localsearch/
+  [16]: https://github.com/squidfunk/iframe-worker
+  [17]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5
 
 !!! tip
 
@@ -271,7 +243,7 @@ For setup instructions, refer to the [official documentation][18].
 
 In order to give specific pages a higher relevance in search, [lunr][4] supports
 page-specific boosts, which can be defined for each page by leveraging the
-[Metadata][19] extension:
+[Metadata][18] extension:
 
 ``` bash
 ---
@@ -283,7 +255,7 @@ search:
 ...
 ```
 
-  [19]: ../../reference/meta-tags/#metadata
+  [18]: ../../reference/meta-tags/#metadata
 
 ## Customization
 
@@ -297,52 +269,45 @@ your needs.
 
 ### Query transformation
 
-[:octicons-file-code-24: Source][20] ·
+[:octicons-file-code-24: Source][19] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 When a user enters a query into the search box, the query is pre-processed
 before it is submitted to the search index. Material for MkDocs will apply the
-following transformations, which can be customized by [extending the theme][21]:
+following transformations, which can be customized by [extending the theme][20]:
 
 ``` ts
-/**
- * Default transformation function
- *
- * 1. Search for terms in quotation marks and prepend a `+` modifier to denote
- *    that the resulting document must contain all terms, converting the query
- *    to an `AND` query (as opposed to the default `OR` behavior). While users
- *    may expect terms enclosed in quotation marks to map to span queries, i.e.
- *    for which order is important, `lunr` doesn't support them, so the best
- *    we can do is to convert the terms to an `AND` query.
- *
- * 2. Replace control characters which are not located at the beginning of the
- *    query or preceded by white space, or are not followed by a non-whitespace
- *    character or are at the end of the query string. Furthermore, filter
- *    unmatched quotation marks.
- *
- * 3. Trim excess whitespace from left and right.
- *
- * @param query - Query value
- *
- * @returns Transformed query value
- */
 export function defaultTransform(query: string): string {
   return query
-    .split(/"([^"]+)"/g)                            /* => 1 */
+    .split(/"([^"]+)"/g) /* (1) */
       .map((terms, index) => index & 1
         ? terms.replace(/^\b|^(?![^\x00-\x7F]|$)|\s+/g, " +")
         : terms
       )
       .join("")
-    .replace(/"|(?:^|\s+)[*+\-:^~]+(?=\s+|$)/g, "") /* => 2 */
-    .trim()                                         /* => 3 */
+    .replace(/"|(?:^|\s+)[*+\-:^~]+(?=\s+|$)/g, "") /* (2) */
+    .trim() /* (3) */
 }
 ```
+
+1. Search for terms in quotation marks and prepend a `+` modifier to denote
+   that the resulting document must contain all terms, converting the query
+   to an `AND` query (as opposed to the default `OR` behavior). While users
+   may expect terms enclosed in quotation marks to map to span queries, i.e.
+   for which order is important, `lunr` doesn't support them, so the best
+   we can do is to convert the terms to an `AND` query.
+
+2. Replace control characters which are not located at the beginning of the
+   query or preceded by white space, or are not followed by a non-whitespace
+   character or are at the end of the query string. Furthermore, filter
+   unmatched quotation marks.
+
+3. Trim excess whitespace from left and right.
 
 If you want to switch to the default behavior of the `mkdocs` and `readthedocs`
 themes, both of which don't transform the query prior to submission, or
 customize the `transform` function, you can do this by [overriding the
-`config` block][22]:
+`config` block][21]:
 
 ``` html
 {% block config %}
@@ -360,19 +325,19 @@ customize the `transform` function, you can do this by [overriding the
 The `transform` function will receive the query string as entered by the user
 and must return the processed query string to be submitted to the search index.
 
-  [20]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
-  [21]: ../customization.md#extending-the-theme
-  [22]: ../customization.md#overriding-blocks-recommended
+  [19]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
+  [20]: ../customization.md#extending-the-theme
+  [21]: ../customization.md#overriding-blocks-recommended
 
 ### Custom search
 
-[:octicons-file-code-24: Source][23] ·
+[:octicons-file-code-24: Source][22] ·
 :octicons-mortar-board-24: Difficulty: _challenging_
 
-Material for MkDocs implements search as part of a [web worker][24]. If you
+Material for MkDocs implements search as part of a [web worker][23]. If you
 want to switch the web worker with your own implementation, e.g. to submit
 search to an external service, you can add a custom JavaScript file to the
-`docs` directory and [override the `config` block][21]:
+`docs` directory and [override the `config` block][20]:
 
 ``` html
 {% block config %}
@@ -390,8 +355,8 @@ format using _discriminated unions_, i.e. through the `type` property of the
 message. See the following interface definitions to learn about the message
 formats:
 
-- [:octicons-file-code-24: `SearchMessage`][25]
-- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][26]
+- [:octicons-file-code-24: `SearchMessage`][24]
+- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][25]
 
 The sequence and direction of messages is rather intuitive:
 
@@ -400,7 +365,7 @@ The sequence and direction of messages is rather intuitive:
 - :octicons-arrow-right-24: `SearchQueryMessage`
 - :octicons-arrow-left-24: `SearchResultMessage`
 
-  [23]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker
-  [24]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/message/index.ts
-  [26]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/_/index.ts
+  [22]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker
+  [23]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+  [24]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/message/index.ts
+  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/_/index.ts

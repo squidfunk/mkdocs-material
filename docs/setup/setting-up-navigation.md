@@ -245,17 +245,7 @@ theme:
     - navigation.top
 ```
 
-<figure markdown="1">
-
 [![back-to-top button][20]][20]
-
-  <figcaption markdown="1">
-
-A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-insiders][21]
-
-  </figcaption>
-</figure>
 
   [19]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_top.scss
   [20]: ../assets/screenshots/back-to-top.png

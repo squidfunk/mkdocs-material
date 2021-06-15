@@ -16,15 +16,15 @@ to [get access to Insiders][2].
   </div>
   <figcaption markdown="1">
 
-A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-insiders][3]
+The official documentation is built with Insiders
+[squidfunk.github.io/mkdocs-material][3]
 
   </figcaption>
 </figure>
 
   [1]: #how-sponsorship-works
   [2]: #how-to-become-a-sponsor
-  [3]: https://squidfunk.github.io/mkdocs-material-insiders/
+  [3]: https://squidfunk.github.io/mkdocs-material/
 
 ## How sponsorship works
 
