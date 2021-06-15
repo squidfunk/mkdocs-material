@@ -53,7 +53,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git material
+          git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           echo "::set-env name=THEME_DIR::mkdocs-material-insiders/material"
 
       - name: Deploy documentation
