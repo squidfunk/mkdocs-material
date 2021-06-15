@@ -42,22 +42,19 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install Python dependencies
-        if: github.event.repository.fork == false
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
-          pip install \
-            mkdocs-minify-plugin>=0.3 \
-            mkdocs-redirects>=1.0
-
-      - name: Install Python dependencies
-        if: github.event.repository.fork == true
         run: |
           pip install .
           pip install \
             mkdocs-minify-plugin>=0.3 \
             mkdocs-redirects>=1.0
+
+      - name: Install Insiders build
+        if: github.event.repository.fork == false
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git material
+          echo "::set-env name=THEME_DIR::mkdocs-material-insiders/material"
 
       - name: Deploy documentation
         env:
