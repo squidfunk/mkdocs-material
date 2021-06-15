@@ -89,11 +89,17 @@ graph LR
 
 _Result_:
 
-[![Diagram][12]{ style="width: 100%; max-width: 594px" }][12]
+``` mermaid
+graph LR
+  A[Start] --> B{Error?};
+  B -->|Yes| C[Hmm...];
+  C --> D[Debug];
+  D --> B;
+  B ---->|No| E[Yay!];
+```
 
 _See the [official documentation][1] to learn about all available diagram 
 types._
 
   [10]: code-blocks.md
   [11]: #superfences
-  [12]: ../assets/screenshots/diagram.png

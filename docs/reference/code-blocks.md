@@ -247,19 +247,56 @@ document$.subscribe(function() { // (1)
 
 _Result_:
 
-<figure markdown="1">
+``` {: .js .annotate }
+document$.subscribe(function() { // (1)
+  var tables = document.querySelectorAll(/* (2) */ "article table")
+  tables.forEach(function(table) {
+    new Tablesort(table) // (3)
+  })
+})
+```
 
-[![Annotations][19]][19]
+1. Annotations can contain __arbitrary content__ which is shown when the marker
+   is focussed, including any kind of formatting, links, admonitions, details,
+   and even diagrams:
 
-  <figcaption markdown="1">
+    ``` mermaid
+    graph LR
+      A[I'm] --> B{a} --> C[diagram];
+    ```
 
-A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-insiders][20]
+    :octicons-light-bulb-16:
+    **Tip:** You can use ++tab++ to navigate annotations.
 
-  </figcaption>
-</figure>
+2. Annotations can be __placed anywhere__ in a code block were a comment for the
+   underlying language can be placed. 
 
-_Annotations require syntax highlighting with [Pygments][24] – they're currently
+    === "Python"
+
+        ``` python
+        # (1)
+        ```
+
+    === "JavaScript"
+
+        ``` js
+        // (2)
+        /* (2) */
+        ```
+
+    === "Lua"
+
+        ``` lua
+        -- (3)
+        ```
+
+    _We're working on a solution for languages without comments, which will be
+    available shortly._
+
+  1. Of course, this can be combined with [line numbers][10], highlighting and
+     all other code block related features.
+
+_Annotations require syntax highlighting with [Pygments][26] – they're currently
 not compatible with other JavaScript-based syntax highlighters. Support may be
 added later on._
 
