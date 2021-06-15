@@ -247,7 +247,7 @@ document$.subscribe(function() { // (1)
 
 _Result_:
 
-``` {: .js .annotate }
+``` { .js .annotate }
 document$.subscribe(function() { // (1)
   var tables = document.querySelectorAll(/* (2) */ "article table")
   tables.forEach(function(table) {
