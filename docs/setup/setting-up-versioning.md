@@ -75,14 +75,20 @@ If you're using versioning, you might want to display a warning when the user
 visits any other version than the latest version. Using [theme extension][8],
 you can [define the `outdated` block][9]:
 
-``` html
+``` { .html .annotate }
 {% block outdated %}
   You're not viewing the latest version.
-  <a href="{{ '../' ~ base_url }}">
+  <a href="{{ '../' ~ base_url }}"> <!-- (1) -->
     <strong>Click here to go to latest.</strong>
   </a>
 {% endblock %}
 ```
+
+1. Given this value for the `href` attribute, the link will always redirect to 
+   the root of your site, which will then redirect to the latest version. This
+   ensures that older versions of your site do not depend on a specific alias,
+   e.g. `latest`, to allow for changing the alias later on without breaking
+   earlier versions.
 
 This will render a version warning above the header:
 
