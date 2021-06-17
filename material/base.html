@@ -195,7 +195,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.b0710199.min.js" | url,
+        "search": "assets/javascripts/workers/search.00c949be.min.js" | url,
         "version": config.extra.version or None
       } -%}
       {%- set translations = app.translations -%}
@@ -222,7 +222,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.76f349be.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.82b56eb2.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
