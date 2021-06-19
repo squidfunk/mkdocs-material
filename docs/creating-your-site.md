@@ -56,7 +56,7 @@ slightly different:
 
     ``` yaml
     theme:
-      name: null
+      name: material
       custom_dir: mkdocs-material/material
 
       # 404 page
