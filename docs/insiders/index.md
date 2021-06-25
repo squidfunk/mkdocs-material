@@ -122,7 +122,7 @@ The following features are currently exclusively available to sponsors:
 - [x] [Tags (with search integration) :material-new-box:][29]
 - [x] [Stay on page when switching versions][28]
 - [x] [Version warning][26]
-- [x] [Custom admonition icons][28]
+- [x] [Custom admonition icons][31]
 - [x] [Code block annotations][25]
 - [x] [Anchor tracking ][24]
 - [x] [Section index pages][22]
