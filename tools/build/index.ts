@@ -125,8 +125,8 @@ const assets$ = concat(
       transform: async data => minsvg(data)
     })),
 
-  /* Copy Lunr.js search stemmers and segmenter */
-  ...["min/*.js", "tinyseg.js"]
+  /* Copy Lunr.js search stemmers and segmenters */
+  ...["min/*.js", "tinyseg.js", "wordcut.js"]
     .map(pattern => copyAll(pattern, {
       from: "node_modules/lunr-languages",
       to: `${base}/assets/javascripts/lunr`
