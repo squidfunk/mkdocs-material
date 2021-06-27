@@ -33,21 +33,21 @@ body:
     label: Description
     description: Please provide a breif descroption of the bug.
     placeholder: Material for MkDocs does ...
-  validation:
+  validations:
     required: true
 - type: textarea
   attributes:
     label: Expected behaviour
     description: Please describe what you expect to happen.
     placeholder: Material for MkDocs should...
-  validation:
+  validations:
     required: true
 - type: textarea
   attributes:
     label: Actual Behaviour
     description: Please describe what is actually happening.
     placeholder: Material for MkDocs instead does ...
-  validation:
+  validations:
     required: true
 - type: textarea
   attributes:
@@ -57,7 +57,7 @@ body:
       1. ...
       2. ...
       3. ...
-  validation:
+  validations:
     required: true
 - type: textarea
   attributes:
@@ -72,7 +72,7 @@ body:
       - Python: `<python version>`
       - MkDocs: `<mkdocs version>`
       - Material: `<material version>`
-  validation:
+  validations:
     required: true
 - type: textarea
   attributes:
@@ -82,7 +82,7 @@ body:
       site_name: My Docs
       site_url: https://example.com/docs
     render: yaml
-  validation:
+  validations:
     required: true
 - type: textarea
   attributes:
@@ -91,3 +91,5 @@ body:
     value: |-
       - OS: `<operating system>`
       - Browser: `<browser version>`
+  validations:
+    required: true
