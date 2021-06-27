@@ -3,7 +3,7 @@ description: 'Help translate Material into more languages'
 title: 'New translation: {Insert language}'
 labels: [enhancement]
 body:
-- type: Markdown
+- type: markdown
   attributes:
     value: |-
       ## Instructions
