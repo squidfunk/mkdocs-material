@@ -4,7 +4,7 @@ body:
 - type: markdown
   attributes:
     value: |-
-      ⚠️ **WARNING**
+      ### ⚠️ WARNING
       
       Half of all issues created do not contain enough to help or are not appropriate for the issue tracker (i.e. one-line questions).
       If you think you found a bug, follow the steps outlined below closely.
