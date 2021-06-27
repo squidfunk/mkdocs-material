@@ -21,7 +21,7 @@ body:
       required: true
 - type: checkboxes
   attributes:
-    label: I've found a bug and checked that...
+    label: I've found a bug and checked that ...
     description: Make sure that your request fulfills ALL of the following requirements. If one requirement cannot be satisfied, please explain in detail why.
     options:
     - label: ... the problem doesn't occur with the default MkDocs template
@@ -31,7 +31,7 @@ body:
 - type: textarea
   attributes:
     label: Description
-    description: Please provide a breif descroption of the bug.
+    description: Please provide a breif description of the bug.
     placeholder: Material for MkDocs does ...
   validations:
     required: true
