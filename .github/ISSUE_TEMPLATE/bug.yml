@@ -3,42 +3,43 @@ description: Report a bug
 body:
   - type: checkboxes
     attributes:
-      label: Accept the contribution guidelines
-      description: Please read the contribution guidelines before proceeding.
+      label: Contribution guidelines
+      description: Please read the contribution guidelines before proceeding
       options:
         - label: I've read the [contribution guidelines](https://github.com/squidfunk/mkdocs-material/blob/master/CONTRIBUTING.md) and wholeheartedly agree
           required: true
   - type: checkboxes
     attributes:
       label: I've found a bug and checked that ...
-      description: Make sure that your request fulfills all of the following requirements. If one requirement cannot be satisfied, you must explain in detail why.
+      description: Make sure that your request fulfills all of the following requirements. If one requirement cannot be satisfied, explain in detail why.
       options:
       - label: ... the problem doesn't occur with the `mkdocs` or `readthedocs` themes
-      - label: ... the problem persists, even when I remove all of my overrides (`custom_dir`, ...)
+        required: true
+      - label: ... the problem persists, even when I remove all of my overrides (`custom_dir`, `extra_javascripts`, `extra_css`)
       - label: ... the documentation does not mention anything about my problem
       - label: ... there are no open or closed issues that are related to my problem
   - type: textarea
     attributes:
       label: Description
-      description: Please provide a brief (1-2 sentence) description of the bug
+      description: Please provide a brief description of the bug in 1-2 sentences
     validations:
       required: true
   - type: textarea
     attributes:
       label: Expected behaviour
-      description: Please describe what you'd expect to happen
+      description: Please describe precisely what you'd expect to happen
     validations:
       required: true
   - type: textarea
     attributes:
       label: Actual behaviour
-      description: Please describe what is actually happening
+      description: Please describe precisely what is actually happening
     validations:
       required: true
   - type: textarea
     attributes:
       label: Steps to reproduce
-      description: Please provide the steps necessary to reproduce the bug
+      description: Please describe the steps to reproduce the bug
       placeholder: |-
         1. ...
         2. ...
@@ -48,7 +49,7 @@ body:
   - type: textarea
     attributes:
       label: Package versions
-      description: Please provide all package versions (run the commands in backticks)
+      description: Please provide all package versions (run the commands in backticks on a shell)
       value: |-
         - Python: `python --version`
         - MkDocs: `mkdocs --version`
@@ -58,7 +59,7 @@ body:
   - type: textarea
     attributes:
       label: Configuration
-      description: Please provide your `mkdocs.yml` to a reasonable amount of detail
+      description: Please provide a minimal (!) `mkdocs.yml` to reproduce the bug
       placeholder: |-
         site_name: My Docs
         site_url: https://example.com/docs
