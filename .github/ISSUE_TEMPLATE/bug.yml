@@ -1,95 +1,76 @@
 name: Bug Report
 description: Report a bug
 body:
-- type: markdown
-  attributes:
-    value: |-
-      ### ⚠️ WARNING
-      
-      Half of all issues created do not contain enough to help or are not appropriate for the issue tracker (i.e. one-line questions).
-      If you think you found a bug, follow the steps outlined below closely.
-      Any issue that does not meet these conditions may be closed unnoticed.
-      
-      Why? Because the maintainers of this project are wasting a lot of time answering questions that are not directly related to this project.
-      If you have a question, please ask your question over in [Discussions](https://github.com/squidfunk/mkdocs-material/discussions), so other users can help you work towards a solution.
-- type: checkboxes
-  attributes:
-    label: Read and understand the Contributing guidelines
-    description: You need to have read the contributing guidelines in order to proceed.
-    options:
-    - label: I've read the [contribution Guidelines](https://github.com/squidfunk/mkdocs-material/blob/master/CONTRIBUTING.md) and agree with them
+  - type: checkboxes
+    attributes:
+      label: Accept the contribution guidelines
+      description: Please read the contribution guidelines before proceeding.
+      options:
+        - label: I've read the [contribution guidelines](https://github.com/squidfunk/mkdocs-material/blob/master/CONTRIBUTING.md) and wholeheartedly agree
+          required: true
+  - type: checkboxes
+    attributes:
+      label: I've found a bug and checked that ...
+      description: Make sure that your request fulfills all of the following requirements. If one requirement cannot be satisfied, you must explain in detail why.
+      options:
+      - label: ... the problem doesn't occur with the `mkdocs` or `readthedocs` themes
+      - label: ... the problem persists, even when I remove all of my overrides (`custom_dir`, ...)
+      - label: ... the documentation does not mention anything about my problem
+      - label: ... there are no open or closed issues that are related to my problem
+  - type: textarea
+    attributes:
+      label: Description
+      description: Please provide a brief (1-2 sentence) description of the bug
+    validations:
       required: true
-- type: checkboxes
-  attributes:
-    label: I've found a bug and checked that ...
-    description: Make sure that your request fulfills ALL of the following requirements. If one requirement cannot be satisfied, please explain in detail why.
-    options:
-    - label: ... the problem doesn't occur with the default MkDocs template
-    - label: ... the problem is not in any of my customizations (CSS, JS, template)
-    - label: ... the documentation does not mention anything about my problem
-    - label: ... there are no open or closed issues that are related to my problem.
-- type: textarea
-  attributes:
-    label: Description
-    description: Please provide a breif description of the bug.
-    placeholder: Material for MkDocs does ...
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Expected behaviour
-    description: Please describe what you expect to happen.
-    placeholder: Material for MkDocs should...
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Actual Behaviour
-    description: Please describe what is actually happening.
-    placeholder: Material for MkDocs instead does ...
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Steps to reproduce
-    description: Please provide the steps to reproduce the issue.
-    placeholder: |-
-      1. ...
-      2. ...
-      3. ...
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Package versions
-    description: |-
-      Please provide all required package versions.
-      
-      - For Python, run `python --version`
-      - For MkDocs, run `mkdocs --version`
-      - For Material for MkDocs, run `pip show mkdocs-material | grep -E ^Version`
-    value: |-
-      - Python: `<python version>`
-      - MkDocs: `<mkdocs version>`
-      - Material: `<material version>`
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Configuration
-    description: Please provide your mkdocs.yml to a reasonable amount of detail.
-    placeholder: |-
-      site_name: My Docs
-      site_url: https://example.com/docs
-    render: yaml
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: System information
-    description: Please provide your operating system and browser type and version.
-    value: |-
-      - OS: `<operating system>`
-      - Browser: `<browser version>`
-  validations:
-    required: true
+  - type: textarea
+    attributes:
+      label: Expected behaviour
+      description: Please describe what you'd expect to happen
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual behaviour
+      description: Please describe what is actually happening
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Please provide the steps necessary to reproduce the bug
+      placeholder: |-
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Package versions
+      description: Please provide all package versions (run the commands in backticks)
+      value: |-
+        - Python: `python --version`
+        - MkDocs: `mkdocs --version`
+        - Material: `pip show mkdocs-material | grep -E ^Version`
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Configuration
+      description: Please provide your `mkdocs.yml` to a reasonable amount of detail
+      placeholder: |-
+        site_name: My Docs
+        site_url: https://example.com/docs
+      render: yaml
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: System information
+      description: Please provide your operating system and browser type and version
+      value: |-
+        - Operating system: ...
+        - Browser: ...
+    validations:
+      required: true
