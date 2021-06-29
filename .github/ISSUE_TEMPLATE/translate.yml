@@ -12,14 +12,14 @@ body:
   - type: checkboxes
     attributes:
       label: Language availability
-      description: Please ensure that the language you're adding isn't already available
+      description: Please ensure that the language you're adding isn't already available.
       options:
         - label: I've checked the [list of available languages](https://bit.ly/33vFDD0)
           required: true
   - type: textarea
     attributes:
       label: Translation
-      description: Please translate the labels on the right, e.h. "Copy to clipboard", etc.
+      description: Please translate the labels on the right, e.g. "Copy to clipboard", etc.
       value: |-
         {% macro t(key) %}{{ {
           "language": "en",
