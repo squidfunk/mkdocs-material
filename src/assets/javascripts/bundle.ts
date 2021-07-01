@@ -216,7 +216,7 @@ const content$ = defer(() => merge(
 
   /* Back-to-top button */
   ...getComponentElements("top")
-    .map(el => mountBackToTop(el, { viewport$, main$ }))
+    .map(el => mountBackToTop(el, { viewport$, header$, main$ }))
 ))
 
 /* Set up component observables */

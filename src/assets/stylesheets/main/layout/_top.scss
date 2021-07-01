@@ -26,20 +26,20 @@
 
 // Back-to-top button
 .md-top {
-  position: sticky;
-  bottom: px2rem(8px);
+  position: fixed;
+  top: px2rem(48px + 16px);
   z-index: 1;
-  float: right;
-  margin: px2rem(-56px) px2rem(8px) px2rem(8px);
-  padding: px2rem(8px);
-  color: var(--md-primary-bg-color);
-  background: var(--md-primary-fg-color);
-  border-radius: 100%;
+  margin-left: 50%;
+  padding: px2rem(8px) px2rem(16px);
+  color: var(--md-default-fg-color--light);
+  font-size: px2rem(14px);
+  background: var(--md-default-bg-color);
+  border-radius: px2rem(32px);
   outline: none;
   box-shadow:
-    0 px2rem(4px)   px2rem(10px) hsla(0, 0%, 0%, 0.1),
-    0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.1);
-  transform: translateY(0);
+    0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.1),
+    0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.25);
+  transform: translate(-50%, 0);
   transition:
     opacity          125ms,
     transform        125ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -52,7 +52,7 @@
 
   // Back-to-top button in hidden state
   &[data-md-state="hidden"] {
-    transform: translateY(px2rem(-4px));
+    transform: translate(-50%, px2rem(+4px));
     opacity: 0;
     pointer-events: none;
   }
@@ -60,7 +60,13 @@
   // Back-to-top button on focus/hover
   &:focus,
   &:hover {
+    color: var(--md-accent-bg-color);
     background: var(--md-accent-fg-color);
-    transform: scale(1.1);
+  }
+
+  // Inline icon
+  svg {
+    display: inline-block;
+    vertical-align: -0.5em;
   }
 }
