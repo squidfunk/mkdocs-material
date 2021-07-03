@@ -236,8 +236,8 @@ Note that it doesn't rely on third-party plugins[^2]._
 :octicons-unlock-24: Feature flag
 
 A _back-to-top button_ can be shown when the user, after scrolling down, starts
-to scroll up again. It's rendered in the lower right corner of the viewport. Add
-the following lines to `mkdocs.yml`:
+to scroll up again. It's rendered centered and just below the header. Add the
+following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
