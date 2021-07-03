@@ -163,6 +163,7 @@ For other installation methods, configuration options, and a demo, visit
 [Kubernetes](https://kops.sigs.k8s.io/),
 [kSQL](https://docs.ksqldb.io/),
 [Nokogiri](https://nokogiri.org/),
+[OkHttp](https://square.github.io/okhttp/),
 [OpenFaaS](https://docs.openfaas.com/),
 [Pi-Hole](https://docs.pi-hole.net/),
 [Pydantic](https://pydantic-docs.helpmanual.io/),
