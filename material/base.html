@@ -39,7 +39,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.1ff57afd.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.3d0eea20.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.f1a3b89f.min.css' | url }}">
@@ -178,7 +178,7 @@
           </div>
         </div>
         {% if "navigation.top" in features %}
-          <a href="#" class="md-top md-icon" title="{{ lang.t('top.title') }}" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
             {% include ".icons/material/arrow-up.svg" %}
             {{ lang.t('top.title') }}
           </a>
