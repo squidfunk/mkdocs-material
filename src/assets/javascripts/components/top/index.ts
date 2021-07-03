@@ -152,7 +152,7 @@ export function mountBackToTop(
 
         /* Update state */
         next([{ hidden }, { height }]) {
-          setBackToTopOffset(el, height + 16)
+          setBackToTopOffset(el, height + 12)
           if (hidden)
             setBackToTopState(el, "hidden")
           else
