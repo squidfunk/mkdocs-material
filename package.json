@@ -39,7 +39,7 @@
     "fuzzaldrin-plus": "^0.6.0",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.8.0",
-    "rxjs": "^7.1.0"
+    "rxjs": "^7.2.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
@@ -50,16 +50,16 @@
     "@types/fuzzaldrin-plus": "^0.6.1",
     "@types/html-minifier": "^4.0.0",
     "@types/lunr": "^2.3.3",
-    "@types/node": "^15.12.5",
+    "@types/node": "^15.14.1",
     "@types/resize-observer-browser": "^0.1.5",
     "@types/sass": "^1.16.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.28.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
     "autoprefixer": "^10.2.6",
     "chokidar": "^3.5.2",
     "cssnano": "^5.0.6",
-    "esbuild": "^0.12.12",
-    "eslint": "^7.29.0",
+    "esbuild": "^0.12.15",
+    "eslint": "^7.30.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsdoc": "^35.4.1",
@@ -71,7 +71,7 @@
     "material-shadows": "^3.0.1",
     "postcss": "^8.3.5",
     "postcss-inline-svg": "^5.0.0",
-    "preact": "^10.5.13",
+    "preact": "^10.5.14",
     "rimraf": "^3.0.2",
     "sass": "^1.35.1",
     "stylelint": "^13.13.1",
@@ -82,7 +82,7 @@
     "svgo": "^2.3.1",
     "tiny-glob": "^0.2.9",
     "ts-node": "^10.0.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.5"
   },
   "engines": {
     "node": ">= 14"
