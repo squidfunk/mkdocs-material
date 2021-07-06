@@ -12,9 +12,12 @@
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
-          <span class="md-ellipsis">
+          <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
+             title="{{ config.site_name | e }}"
+             aria-label="{{ config.site_name }}"
+             class="md-ellipsis">
             {{ config.site_name }}
-          </span>
+          </a>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
