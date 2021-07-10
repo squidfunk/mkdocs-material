@@ -55,7 +55,7 @@ export function resetBackToTopState(
  * @param el - Back-to-top element
  * @param value - Back-to-top offset
  */
- export function setBackToTopOffset(
+export function setBackToTopOffset(
   el: HTMLElement, value: number
 ): void {
   el.style.top = `${value}px`
