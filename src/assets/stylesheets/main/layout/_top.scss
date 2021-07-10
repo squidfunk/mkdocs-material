@@ -33,7 +33,7 @@
   padding: px2rem(8px) px2rem(16px);
   color: var(--md-default-fg-color--light);
   font-size: px2rem(14px);
-  background: var(--md-default-bg-color);
+  background-color: var(--md-default-bg-color);
   border-radius: px2rem(32px);
   outline: none;
   box-shadow:
@@ -41,9 +41,10 @@
     0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.25);
   transform: translate(-50%, 0);
   transition:
-    opacity          125ms,
+    color            125ms,
+    background-color 125ms,
     transform        125ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 125ms;
+    opacity          125ms;
 
   // [print]: Hide back-to-top button
   @media print {
@@ -67,7 +68,7 @@
   &:focus,
   &:hover {
     color: var(--md-accent-bg-color);
-    background: var(--md-accent-fg-color);
+    background-color: var(--md-accent-fg-color);
   }
 
   // Inline icon
