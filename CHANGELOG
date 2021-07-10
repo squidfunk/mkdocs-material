@@ -1,3 +1,8 @@
+mkdocs-material-7.1.10 (2021-07-10)
+
+  * Refactored appearance of back-to-top button
+  * Fixed graceful handling of search when browsing locally
+
 mkdocs-material-7.1.9 (2021-06-25)
 
   * Improved search language support for Thai and Hindi
