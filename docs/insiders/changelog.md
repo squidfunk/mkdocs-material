@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.10.0 <small>_ July 10, 2021</small>
+
+- Added support for cookie consent
+- Fixed #2807: Back-to-top button not hidden when using sticky tabs
+
 ### 2.9.2 <small>_ May 30, 2021</small>
 
 - Moved tags to partial for easier customization
