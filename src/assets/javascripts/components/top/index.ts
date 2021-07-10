@@ -43,7 +43,7 @@ import {
   setBackToTopOffset,
   setBackToTopState
 } from "~/actions"
-import { Viewport } from "~/browser"
+import { Viewport, setElementFocus } from "~/browser"
 
 import { Component } from "../_"
 import { Header } from "../header"
@@ -103,7 +103,7 @@ export function watchBackToTop(
     .pipe(
       map(({ offset: { y } }) => y),
       bufferCount(2, 1),
-      map(([a, b]) => a > b),
+      map(([a, b]) => a > b && b),
       distinctUntilChanged()
     )
 
@@ -153,10 +153,12 @@ export function mountBackToTop(
         /* Update state */
         next([{ hidden }, { height }]) {
           setBackToTopOffset(el, height + 16)
-          if (hidden)
+          if (hidden) {
             setBackToTopState(el, "hidden")
-          else
+            setElementFocus(el, false)
+          } else {
             resetBackToTopState(el)
+          }
         },
 
         /* Reset on complete */
