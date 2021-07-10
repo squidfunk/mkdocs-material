@@ -60,6 +60,33 @@ yourself, [this tutorial][4] might be a good start._
 
   [4]: https://www.analyticsmania.com/post/track-site-search-with-google-tag-manager-and-google-analytics/
 
+### Cookie consent
+
+[:octicons-file-code-24: Source][5] ·
+:octicons-beaker-24: Experimental ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][5]{ .mdx-insiders }
+
+Material for MkDocs ships a native and extensible cookie consent form, which
+when enabled will ask the user for his consent prior to sending analytics.
+Add the following to `mkdocs.yml`:
+
+``` yaml
+extra:
+  consent: true
+```
+
+When a user first visits your site, a cookie consent form is rendered:
+
+[![With tabs][6]][6]
+
+  [5]: ../insiders/index.md
+  [6]: ../assets/screenshots/consent.png
+
+_Let's get this feature out of the experimental status! You are encouraged to
+share your feedback in #1914, so we can provide the necessary configuration
+options for easy customizations. If you wish to customize it today, you can
+override_ `partials/consent.html`.
+
 ## Customization
 
 ### Other analytics providers
@@ -68,8 +95,8 @@ yourself, [this tutorial][4] might be a good start._
 :octicons-mortar-board-24: Difficulty: _easy_
 
 In order to integrate another analytics service provider offering an
-asynchronous JavaScript-based tracking solution, you can [extend the theme][5]
-and [override the `analytics` block][6]:
+asynchronous JavaScript-based tracking solution, you can [extend the theme][7]
+and [override the `analytics` block][8]:
 
 ``` html
 {% block analytics %}
@@ -77,10 +104,10 @@ and [override the `analytics` block][6]:
 {% endblock %}
 ```
 
-  [5]: ../customization.md#extending-the-theme
-  [6]: ../customization.md#overriding-blocks-recommended
+  [7]: ../customization.md#extending-the-theme
+  [8]: ../customization.md#overriding-blocks-recommended
 
-If you're using [instant loading][7], you may use the `location$` observable,
+If you're using [instant loading][9], you may use the `location$` observable,
 which will emit the current `URL` to listen for navigation events and register
 a page view event with:
 
@@ -90,9 +117,9 @@ location$.subscribe(function(url) {
 })
 ```
 
-Note that this must be integrated with [additional JavaScript][8], and cannot be
+Note that this must be integrated with [additional JavaScript][10], and cannot be
 included as part of the `analytics` block, as it is included in the `head` of
 the document.
 
-  [7]: setting-up-navigation.md#instant-loading
-  [8]: ../customization.md#additional-javascript
+  [9]: setting-up-navigation.md#instant-loading
+  [10]: ../customization.md#additional-javascript
