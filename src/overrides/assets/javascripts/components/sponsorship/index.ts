@@ -34,11 +34,29 @@ import { Component, getComponentElement } from "../_"
  * ------------------------------------------------------------------------- */
 
 /**
+ * Sponsor type
+ */
+export type SponsorType =
+  | "user"                             /* Sponsor is a user */
+  | "organization"                     /* Sponsor is an organization */
+
+/**
  * Sponsor visibility
  */
-export enum SponsorType {
-  PUBLIC  = "PUBLIC",                  /* Public sponsorship */
-  PRIVATE = "PRIVATE"                  /* Private sponsorship */
+export type SponsorVisibility =
+  | "public"                           /* Sponsor is a user */
+  | "private"                          /* Sponsor is an organization */
+
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Sponsor user
+ */
+export interface SponsorUser {
+  type: SponsorType                    /* Sponsor type */
+  name: string                         /* Sponsor login name */
+  image: string                        /* Sponsor image URL */
+  url: string                          /* Sponsor URL */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -47,17 +65,15 @@ export enum SponsorType {
  * Public sponsor
  */
 export interface PublicSponsor {
-  type: SponsorType.PUBLIC             /* Sponsor visibility */
-  name: string                         /* Sponsor login name */
-  image: string                        /* Sponsor image URL */
-  url: string                          /* Sponsor URL */
+  type: "public"                       /* Sponsor visibility */
+  user: SponsorUser                    /* Sponsor user */
 }
 
 /**
  * Private sponsor
  */
 export interface PrivateSponsor {
-  type: SponsorType.PRIVATE            /* Sponsor visibility */
+  type: "private"                      /* Sponsor visibility */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -94,7 +110,7 @@ export function mountSponsorship(
   el: HTMLElement
 ): Observable<Component<Sponsorship>> {
   const sponsorship$ = requestJSON<Sponsorship>(
-    "https://gpiqp43wvb.execute-api.us-east-1.amazonaws.com/_/"
+    "https://3if8u9o552.execute-api.us-east-1.amazonaws.com/_/"
   )
 
   /* Retrieve adjacent components */
@@ -108,13 +124,13 @@ export function mountSponsorship(
     /* Render public sponsors with avatar and links */
     const list = getElementOrThrow(":scope > :first-child", el)
     for (const sponsor of sponsorship.sponsors)
-      if (sponsor.type === SponsorType.PUBLIC)
+      if (sponsor.type === "public")
         list.appendChild(renderPublicSponsor(sponsor))
 
     /* Render combined private sponsors */
     list.appendChild(renderPrivateSponsor(
       sponsorship.sponsors.filter(({ type }) => (
-        type === SponsorType.PRIVATE
+        type === "private"
       )).length
     ))
 
