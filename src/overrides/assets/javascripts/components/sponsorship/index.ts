@@ -125,7 +125,7 @@ export function mountSponsorship(
     const list = getElementOrThrow(":scope > :first-child", el)
     for (const sponsor of sponsorship.sponsors)
       if (sponsor.type === "public")
-        list.appendChild(renderPublicSponsor(sponsor))
+        list.appendChild(renderPublicSponsor(sponsor.user))
 
     /* Render combined private sponsors */
     list.appendChild(renderPrivateSponsor(

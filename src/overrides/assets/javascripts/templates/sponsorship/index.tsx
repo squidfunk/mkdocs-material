@@ -22,7 +22,7 @@
 
 import { h } from "~/utilities"
 
-import { PublicSponsor } from "_/components"
+import { SponsorUser } from "_/components"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -31,17 +31,17 @@ import { PublicSponsor } from "_/components"
 /**
  * Render public sponsor
  *
- * @param sponsor - Public sponsor
+ * @param user - Sponsor user
  *
  * @returns Element
  */
 export function renderPublicSponsor(
-  sponsor: PublicSponsor
+  user: SponsorUser
 ): HTMLElement {
-  const title = `@${sponsor.name}`
+  const title = `@${user.name}`
   return (
-    <a href={sponsor.url} title={title} class="mdx-sponsorship__item">
-      <img src={sponsor.image} />
+    <a href={user.url} title={title} class="mdx-sponsorship__item">
+      <img src={user.image} />
     </a>
   )
 }
