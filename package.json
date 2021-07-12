@@ -48,7 +48,7 @@
     "@types/clipboard": "^2.0.7",
     "@types/escape-html": "1.0.1",
     "@types/fuzzaldrin-plus": "^0.6.1",
-    "@types/html-minifier": "^4.0.0",
+    "@types/html-minifier": "^4.0.1",
     "@types/lunr": "^2.3.3",
     "@types/node": "^16.0.0",
     "@types/resize-observer-browser": "^0.1.5",
