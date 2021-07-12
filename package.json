@@ -47,7 +47,7 @@
     "@primer/octicons": "^14.2.2",
     "@types/clipboard": "^2.0.7",
     "@types/escape-html": "1.0.1",
-    "@types/fuzzaldrin-plus": "^0.6.1",
+    "@types/fuzzaldrin-plus": "^0.6.2",
     "@types/html-minifier": "^4.0.0",
     "@types/lunr": "^2.3.3",
     "@types/node": "^16.0.0",
