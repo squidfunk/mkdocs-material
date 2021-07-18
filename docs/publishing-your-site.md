@@ -25,7 +25,7 @@ contents:
 
 === "Material for MkDocs"
 
-    ``` { .yaml .annotate }
+    ``` yaml
     name: ci # (1)
     on:
       push:

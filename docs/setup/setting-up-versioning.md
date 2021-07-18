@@ -75,7 +75,7 @@ If you're using versioning, you might want to display a warning when the user
 visits any other version than the latest version. Using [theme extension][8],
 you can [define the `outdated` block][9]:
 
-``` { .html .annotate }
+``` html
 {% block outdated %}
   You're not viewing the latest version.
   <a href="{{ '../' ~ base_url }}"> <!-- (1) -->

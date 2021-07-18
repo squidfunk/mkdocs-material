@@ -276,7 +276,7 @@ When a user enters a query into the search box, the query is pre-processed
 before it is submitted to the search index. Material for MkDocs will apply the
 following transformations, which can be customized by [extending the theme][20]:
 
-``` { .ts .annotate }
+``` ts
 export function defaultTransform(query: string): string {
   return query
     .split(/"([^"]+)"/g) /* (1) */

@@ -51,6 +51,7 @@ theme:
   # Default values, taken from mkdocs_theme.yml
   language: en
   features:
+    - content.code.annotate
     - content.tabs.link
     # - navigation.instant
     - navigation.sections

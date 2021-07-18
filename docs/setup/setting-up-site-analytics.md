@@ -72,7 +72,13 @@ Add the following to `mkdocs.yml`:
 
 ``` yaml
 extra:
-  consent: true
+  consent:
+    title: Cookie consent
+    description: >
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
 ```
 
 When a user first visits your site, a cookie consent form is rendered:

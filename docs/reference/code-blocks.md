@@ -223,7 +223,14 @@ to the corresponding tooltip.
 
 In order to opt-in to annotation support, a slightly different syntax is
 required – just add the respective [language short code][17] and the `.annotate`
-class, after the three backticks.
+class, after the three backticks. Alternatively, if you want to enable annotations
+globally, add the following to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - content.code.annotate
+```
 
 Note that annotations can be __placed anywhere__ in a code block where a comment
 for the language can be placed, which for JavaScript is `// (1)` and
@@ -232,7 +239,7 @@ for the language can be placed, which for JavaScript is `// (1)` and
 _Example_:
 
 ```` markdown
-``` { .js .annotate }
+``` js
 document$.subscribe(function() { // (1)
   var tables = document.querySelectorAll(/* (2) */ "article table")
   tables.forEach(function(table) {
@@ -247,7 +254,7 @@ document$.subscribe(function() { // (1)
 
 _Result_:
 
-``` { .js .annotate }
+``` js
 document$.subscribe(function() { // (1)
   var tables = document.querySelectorAll(/* (2) */ "article table")
   tables.forEach(function(table) {
