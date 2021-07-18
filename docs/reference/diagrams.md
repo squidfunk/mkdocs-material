@@ -28,7 +28,7 @@ markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
-          class: mermaid-experimental
+          class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 ```
 
@@ -47,9 +47,8 @@ ensures interoperability with all Material for MkDocs features._
 
   [^1]:
     While all [Mermaid.js][1] features should work out-of-the-box, Material for
-    MkDocs will currently only adjust the fonts and colors for flow charts,
-    class and state diagrams. Support for further diagram types will be added
-    gradually.
+    MkDocs will currently adjust the fonts and colors for flow charts, sequence
+    diagrams, class diagams, state diagrams and entity relationship diagrams.
 
   [^2]:
     If you don't want to use the native integration, [mkdocs-mermaid2-plugin][8]
@@ -68,11 +67,18 @@ ensures interoperability with all Material for MkDocs features._
 
 ## Usage
 
-### Using diagrams
-
 Mermaid diagrams are written as [code blocks][10] with the help of the
 [SuperFences][11] extension. They must be enclosed with two separate lines
-containing three backticks:
+containing three backticks.
+
+  [10]: code-blocks.md
+  [11]: #superfences
+
+### Using flowcharts
+
+[Flowcharts][12] are diagrams that represent workflows or processes. The steps
+are rendered as nodes of various kinds and are connected by edges, describing
+the necessary order of steps.
 
 _Example_:
 
@@ -98,8 +104,194 @@ graph LR
   B ---->|No| E[Yay!];
 ```
 
-_See the [official documentation][1] to learn about all available diagram 
-types._
+  [12]: https://mermaid-js.github.io/mermaid/#/flowchart
 
-  [10]: code-blocks.md
-  [11]: #superfences
+### Using sequence diagrams
+
+[Sequence diagrams][13] describe a specific scenario as sequential interactions 
+between multiple objects or actors, including the messages that are exchanged
+between those actors.
+
+_Example_:
+
+```` markdown
+``` mermaid
+sequenceDiagram
+  Alice->>John: Hello John, how are you?
+  loop Healthcheck
+      John->>John: Fight against hypochondria
+  end
+  Note right of John: Rational thoughts!
+  John-->>Alice: Great!
+  John->>Bob: How about you?
+  Bob-->>John: Jolly good!
+```
+````
+
+_Result_:
+
+``` mermaid
+sequenceDiagram
+  Alice->>John: Hello John, how are you?
+  loop Healthcheck
+      John->>John: Fight against hypochondria
+  end
+  Note right of John: Rational thoughts!
+  John-->>Alice: Great!
+  John->>Bob: How about you?
+  Bob-->>John: Jolly good!
+```
+
+  [13]: https://mermaid-js.github.io/mermaid/#/sequenceDiagram
+
+### Using state diagrams
+
+[State diagrams][14] are a great tool to describe the behavior of a system,
+decomposing it into a finite number of states, and transitions between those
+states.
+
+_Example_:
+
+```` markdown
+``` mermaid
+stateDiagram-v2
+  [*] --> Active
+
+  state Active {
+    [*] --> NumLockOff
+    NumLockOff --> NumLockOn : EvNumLockPressed
+    NumLockOn --> NumLockOff : EvNumLockPressed
+    --
+    [*] --> CapsLockOff
+    CapsLockOff --> CapsLockOn : EvCapsLockPressed
+    CapsLockOn --> CapsLockOff : EvCapsLockPressed
+    --
+    [*] --> ScrollLockOff
+    ScrollLockOff --> ScrollLockOn : EvScrollLockPressed
+    ScrollLockOn --> ScrollLockOff : EvScrollLockPressed
+  }
+```
+````
+
+_Result_:
+
+``` mermaid
+stateDiagram-v2
+  [*] --> Active
+
+  state Active {
+    [*] --> NumLockOff
+    NumLockOff --> NumLockOn : EvNumLockPressed
+    NumLockOn --> NumLockOff : EvNumLockPressed
+    --
+    [*] --> CapsLockOff
+    CapsLockOff --> CapsLockOn : EvCapsLockPressed
+    CapsLockOn --> CapsLockOff : EvCapsLockPressed
+    --
+    [*] --> ScrollLockOff
+    ScrollLockOff --> ScrollLockOn : EvScrollLockPressed
+    ScrollLockOn --> ScrollLockOff : EvScrollLockPressed
+  }
+```
+
+  [14]: https://mermaid-js.github.io/mermaid/#/stateDiagram
+
+### Using class diagrams
+
+[Class diagrams][15] are central to object oriented programing, describing the
+structure of a system by modelling entities as classes and relationships between
+them.
+
+_Example_:
+
+```` markdown
+``` mermaid
+classDiagram
+  Person <|-- Student
+  Person <|-- Professor
+  Person : +String name
+  Person : +String phoneNumber
+  Person : +String emailAddress
+  Person: +purchaseParkingPass()
+  Address "1" <-- "0..1" Person:lives at
+  class Student{
+    +int studentNumber
+    +int averageMark
+    +isEligibleToEnrol()
+    +getSeminarsTaken()
+  }
+  class Professor{
+    +int salary
+  }
+  class Address{
+    +String street
+    +String city
+    +String state
+    +int postalCode
+    +String country
+    -validate()
+    +outputAsLabel()  
+  }
+```
+````
+
+_Result_:
+
+``` mermaid
+classDiagram
+  Person <|-- Student
+  Person <|-- Professor
+  Person : +String name
+  Person : +String phoneNumber
+  Person : +String emailAddress
+  Person: +purchaseParkingPass()
+  Address "1" <-- "0..1" Person:lives at
+  class Student{
+    +int studentNumber
+    +int averageMark
+    +isEligibleToEnrol()
+    +getSeminarsTaken()
+  }
+  class Professor{
+    +int salary
+  }
+  class Address{
+    +String street
+    +String city
+    +String state
+    +int postalCode
+    +String country
+    -validate()
+    +outputAsLabel()  
+  }
+```
+
+  [15]: https://mermaid-js.github.io/mermaid/#/classDiagram
+
+### Using entity-relationship diagrams
+
+An [entity-relationship diagram][16] is composed of entity types and specifies
+relationships that exist between entities. It describes inter-related things in
+a specific domain of knowledge.
+
+_Example_:
+
+```` markdown
+``` mermaid
+erDiagram
+  CUSTOMER ||--o{ ORDER : places
+  ORDER ||--|{ LINE-ITEM : contains
+  CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+```
+````
+
+_Result_:
+
+``` mermaid
+erDiagram
+  CUSTOMER ||--o{ ORDER : places
+  ORDER ||--|{ LINE-ITEM : contains
+  CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+```
+
+  [16]: https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram
