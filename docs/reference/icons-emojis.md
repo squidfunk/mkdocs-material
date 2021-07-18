@@ -110,19 +110,19 @@ _Example_:
 ```
 - :material-account-circle: – `.icons/material/account-circle.svg`
 - :fontawesome-regular-laugh-wink: – `.icons/fontawesome/regular/laugh-wink.svg`
-- :octicons-octoface-24: – `.icons/octicons/octoface-24.svg`
+- :octicons-repo-push-24: – `.icons/octicons/repo-push-24.svg`
 ```
 
 _Result_:
 
 - :material-account-circle: – [`.icons/material/account-circle.svg`][14]
 - :fontawesome-regular-laugh-wink: – [`.icons/fontawesome/regular/laugh-wink.svg`][15]
-- :octicons-octoface-24: – [`.icons/octicons/octoface-24.svg`][16]
+- :octicons-repo-push-24: – [`.icons/octicons/repo-push-24.svg`][16]
 
   [13]: #emoji
   [14]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/material/account-circle.svg
   [15]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/fontawesome/regular/laugh-wink.svg
-  [16]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/octoface-24.svg
+  [16]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/repo-push-24.svg
 
 #### with colors
 
