@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.1.11 <small>_ July 18, 2021</small>
+
+- Updated Spanish and Galician translations
+
 ### 7.1.10 <small>_ July 10, 2021</small>
 
 - Refactored appearance of back-to-top button

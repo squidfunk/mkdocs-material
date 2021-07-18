@@ -1,3 +1,15 @@
+mkdocs-material-7.1.11+insiders.2.11.0 (2021-07-18)
+
+  * Improved Mermaid.js intergration, now stable
+  * Added support for sequence diagrams
+  * Added support for entity relationship diagrams
+  * Added support for cookie consent configuration
+  * Added feature flag to always enable annotations
+
+mkdocs-material-7.1.11 (2021-07-18)
+
+  * Updated Spanish and Galician translations
+
 mkdocs-material-7.1.10+insiders.2.10.0 (2021-07-10)
 
   * Added support for cookie consent
