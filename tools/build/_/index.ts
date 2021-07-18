@@ -128,7 +128,10 @@ export function resolve(
 export function watch(
   pattern: string, options: WatchOptions
 ): Observable<string> {
-  return fromEvent(chokidar.watch(pattern, options), "change")
+  return fromEvent(
+    chokidar.watch(pattern, options),
+    "change"
+  ) as Observable<string>
 }
 
 /* ------------------------------------------------------------------------- */
