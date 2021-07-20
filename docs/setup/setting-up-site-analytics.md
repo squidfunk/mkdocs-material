@@ -115,7 +115,15 @@ integrated by using the `cookies` field:
 
 When a user first visits your site, a cookie consent form is rendered:
 
-[![With tabs][7]][7]
+[![Cookie consent][7]][7]
+
+In order to comply with GDPR, users must be able to change their cookie settings
+at any time. This can be done by creating a simple link as part of any document,
+e.g. privacy policy:
+
+``` markdown
+[Change cookie settings](#__consent){ .md-button }
+```
 
   [5]: ../insiders/index.md
   [6]: #custom-cookies
