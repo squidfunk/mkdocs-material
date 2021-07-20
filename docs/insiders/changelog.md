@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.11.1 <small>_ July 20, 2021</small>
+
+- Fixed order of tags index, now sorted alphabetically
+
 ### 2.11.0 <small>_ July 18, 2021</small>
 
 - Improved Mermaid.js intergration, now stable

@@ -1,3 +1,7 @@
+mkdocs-material-7.1.11+insiders.2.11.1 (2021-07-20)
+
+  * Fixed order of tags index, now sorted alphabetically
+
 mkdocs-material-7.1.11+insiders.2.11.0 (2021-07-18)
 
   * Improved Mermaid.js intergration, now stable
