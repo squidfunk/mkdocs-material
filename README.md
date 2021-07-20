@@ -161,6 +161,7 @@ For other installation methods, configuration options, and a demo, visit
 [Electron](https://www.electron.build/),
 [FastAPI](https://fastapi.tiangolo.com/),
 [Kubernetes](https://kops.sigs.k8s.io/),
+[Knative](https://knative.dev/docs/),
 [kSQL](https://docs.ksqldb.io/),
 [Nokogiri](https://nokogiri.org/),
 [OpenFaaS](https://docs.openfaas.com/),
