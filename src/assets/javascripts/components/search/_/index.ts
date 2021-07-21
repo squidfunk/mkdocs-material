@@ -21,7 +21,7 @@
  */
 
 import { NEVER, Observable, ObservableInput, merge } from "rxjs"
-import { filter, sample, take } from "rxjs/operators"
+import { filter, mergeWith, sample, take } from "rxjs/operators"
 
 import { configuration } from "~/_"
 import {
@@ -34,14 +34,21 @@ import {
 } from "~/browser"
 import {
   SearchIndex,
+  SearchResult,
   isSearchQueryMessage,
   isSearchReadyMessage,
   setupSearchWorker
 } from "~/integrations"
 
-import { Component, getComponentElement } from "../../_"
+import {
+  Component,
+  getComponentElement,
+  getComponentElements
+} from "../../_"
 import { SearchQuery, mountSearchQuery } from "../query"
-import { SearchResult, mountSearchResult } from "../result"
+import { mountSearchResult } from "../result"
+import { SearchShare, mountSearchShare } from "../share"
+import { SearchSuggest, mountSearchSuggest } from "../suggest"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -53,6 +60,8 @@ import { SearchResult, mountSearchResult } from "../result"
 export type Search =
   | SearchQuery
   | SearchResult
+  | SearchShare
+  | SearchSuggest
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -88,7 +97,7 @@ export function mountSearch(
   try {
     const worker = setupSearchWorker(config.search, index$)
 
-    /* Retrieve nested components */
+    /* Retrieve query and result components */
     const query  = getComponentElement("search-query", el)
     const result = getComponentElement("search-result", el)
 
@@ -97,8 +106,12 @@ export function mountSearch(
     tx$
       .pipe(
         filter(isSearchQueryMessage),
-        sample(rx$.pipe(filter(isSearchReadyMessage))),
-        take(1)
+        sample(rx$
+          .pipe(
+            filter(isSearchReadyMessage),
+            take(1)
+          )
+        )
       )
         .subscribe(tx$.next.bind(tx$))
 
@@ -111,10 +124,28 @@ export function mountSearch(
           const active = getActiveElement()
           switch (key.type) {
 
-            /* Enter: prevent form submission */
+            /* Enter: go to first (best) result */
             case "Enter":
-              if (active === query)
+              if (active === query) {
+                const anchors = new Map<HTMLAnchorElement, number>()
+                for (const anchor of getElements<HTMLAnchorElement>(
+                  ":first-child [href]", result
+                )) {
+                  const article = anchor.firstElementChild!
+                  anchors.set(anchor, parseFloat(
+                    article.getAttribute("data-md-score")!
+                  ))
+                }
+
+                /* Go to result with highest score, if any */
+                if (anchors.size) {
+                  const [[best]] = [...anchors].sort(([, a], [, b]) => b - a)
+                  best.click()
+                }
+
+                /* Otherwise omit form submission */
                 key.claim()
+              }
               break
 
             /* Escape or Tab: close search */
@@ -173,11 +204,21 @@ export function mountSearch(
         })
 
     /* Create and return component */
-    const query$ = mountSearchQuery(query, worker)
-    return merge(
-      query$,
-      mountSearchResult(result, worker, { query$ })
-    )
+    const query$  = mountSearchQuery(query, worker)
+    const result$ = mountSearchResult(result, worker, { query$ })
+    return merge(query$, result$)
+      .pipe(
+        mergeWith(
+
+          /* Search sharing */
+          ...getComponentElements("search-share", el)
+          .map(child => mountSearchShare(child, { query$ })),
+
+          /* Search suggestions */
+          ...getComponentElements("search-suggest", el)
+            .map(child => mountSearchSuggest(child, worker, { keyboard$ }))
+        )
+      )
 
   /* Gracefully handle broken search */
   } catch (err) {

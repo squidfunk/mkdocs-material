@@ -81,24 +81,19 @@
   // [tablet portrait +]: Header-embedded search
   @include break-from-device(tablet landscape) {
 
-    // Search input
-    .md-search__input {
+    // Search form
+    .md-search__form {
       background-color: hsla(0, 0%, 0%, 0.07);
 
-      // Search icon color
-      + .md-search__icon {
-        color: hsla(0, 0%, 0%, 0.87);
-      }
-
-      // Placeholder color
-      &::placeholder {
-        color: hsla(0, 0%, 0%, 0.54);
-      }
-
-      // Search input on hover
+      // Search form on hover
       &:hover {
         background-color: hsla(0, 0%, 0%, 0.32);
       }
+    }
+
+    // Search icon
+    .md-search__input + .md-search__icon {
+      color: hsla(0, 0%, 0%, 0.87);
     }
   }
 
@@ -144,8 +139,8 @@
   // [tablet landscape +]: Header-embedded search
   @include break-from-device(tablet landscape) {
 
-    // Search input
-    .md-search__input {
+    // Search form
+    .md-search__form {
       background-color: hsla(0, 0%, 100%, 0.12);
 
       // Search form on hover

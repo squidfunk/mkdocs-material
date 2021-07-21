@@ -66,7 +66,7 @@ export interface SearchQueryMessage {
  */
 export interface SearchResultMessage {
   type: SearchMessageType.RESULT       /* Message type */
-  data: SearchResult[]                 /* Message data */
+  data: SearchResult                   /* Message data */
 }
 
 /* ------------------------------------------------------------------------- */

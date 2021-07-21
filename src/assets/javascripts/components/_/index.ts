@@ -42,6 +42,8 @@ export type ComponentType =
   | "search"                           /* Search */
   | "search-query"                     /* Search input */
   | "search-result"                    /* Search results */
+  | "search-share"                     /* Search sharing */
+  | "search-suggest"                   /* Search suggestions */
   | "sidebar"                          /* Sidebar */
   | "skip"                             /* Skip link */
   | "source"                           /* Repository information */
@@ -83,6 +85,8 @@ interface ComponentTypeMap {
   "search": HTMLElement                /* Search */
   "search-query": HTMLInputElement     /* Search input */
   "search-result": HTMLElement         /* Search results */
+  "search-share": HTMLAnchorElement    /* Search sharing */
+  "search-suggest": HTMLElement        /* Search suggestions */
   "sidebar": HTMLElement               /* Sidebar */
   "skip": HTMLAnchorElement            /* Skip link */
   "source": HTMLAnchorElement          /* Repository information */

@@ -23,43 +23,36 @@
 import {
   Observable,
   Subject,
-  animationFrameScheduler,
-  merge,
-  of
+  asyncScheduler,
+  fromEvent
 } from "rxjs"
 import {
-  bufferCount,
+  combineLatestWith,
+  distinctUntilChanged,
   filter,
   finalize,
   map,
   observeOn,
-  switchMap,
-  take,
-  tap,
-  withLatestFrom,
-  zipWith
+  tap
 } from "rxjs/operators"
 
-import {
-  addToSearchResultList,
-  resetSearchResultList,
-  resetSearchResultMeta,
-  setSearchResultMeta
-} from "~/actions"
-import {
-  getElementOrThrow,
-  watchElementThreshold
-} from "~/browser"
+import { Keyboard } from "~/browser"
 import {
   SearchResult,
   SearchWorker,
-  isSearchReadyMessage,
   isSearchResultMessage
 } from "~/integrations"
-import { renderSearchResultItem } from "~/templates"
 
-import { Component } from "../../_"
-import { SearchQuery } from "../query"
+import { Component, getComponentElement } from "../../_"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Search suggestions
+ */
+export interface SearchSuggest {}
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -69,7 +62,7 @@ import { SearchQuery } from "../query"
  * Mount options
  */
 interface MountOptions {
-  query$: Observable<SearchQuery>      /* Search query observable */
+  keyboard$: Observable<Keyboard>      /* Keyboard observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -77,10 +70,10 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount search result list
+ * Mount search suggestions
  *
- * This function performs a lazy rendering of the search results, depending on
- * the vertical offset of the search result container.
+ * This function will perform a lazy rendering of the search results, depending
+ * on the vertical offset of the search result container.
  *
  * @param el - Search result list element
  * @param worker - Search worker
@@ -88,59 +81,58 @@ interface MountOptions {
  *
  * @returns Search result list component observable
  */
-export function mountSearchResult(
-  el: HTMLElement, { rx$ }: SearchWorker, { query$ }: MountOptions
-): Observable<Component<SearchResult>> {
+export function mountSearchSuggest(
+  el: HTMLElement, { rx$ }: SearchWorker, { keyboard$ }: MountOptions
+): Observable<Component<SearchSuggest>> {
   const internal$ = new Subject<SearchResult>()
-  const boundary$ = watchElementThreshold(el.parentElement!)
+
+  /* Retrieve query component and track all changes */
+  const query  = getComponentElement("search-query")
+  const query$ = fromEvent(query, "keydown")
     .pipe(
-      filter(Boolean)
+      observeOn(asyncScheduler),
+      map(() => query.value),
+      distinctUntilChanged(),
     )
 
-  /* Retrieve nested components */
-  const meta = getElementOrThrow(":scope > :first-child", el)
-  const list = getElementOrThrow(":scope > :last-child", el)
-
-  /* Update search result metadata when ready */
-  rx$
-    .pipe(
-      filter(isSearchReadyMessage),
-      take(1)
-    )
-      .subscribe(() => {
-        resetSearchResultMeta(meta)
-      })
-
-  /* Update search result metadata */
+  /* Update search suggestions */
   internal$
     .pipe(
-      observeOn(animationFrameScheduler),
-      withLatestFrom(query$)
-    )
-      .subscribe(([{ items }, { value }]) => {
-        if (value)
-          setSearchResultMeta(meta, items.length)
-        else
-          resetSearchResultMeta(meta)
+      combineLatestWith(query$),
+      map(([{ suggestions }, value]) => {
+        const words = value.split(/([\s-]+)/)
+        if (suggestions?.length && words[words.length - 1]) {
+          const last = suggestions[suggestions.length - 1]
+          if (last.startsWith(words[words.length - 1]))
+            words[words.length - 1] = last
+        } else {
+          words.length = 0
+        }
+        return words
       })
-
-  /* Update search result list */
-  internal$
-    .pipe(
-      observeOn(animationFrameScheduler),
-      tap(() => resetSearchResultList(list)),
-      switchMap(({ items }) => merge(
-        of(...items.slice(0, 10)),
-        of(...items.slice(10))
-          .pipe(
-            bufferCount(4),
-            zipWith(boundary$),
-            switchMap(([chunk]) => of(...chunk))
-          )
-      ))
     )
-      .subscribe(result => {
-        addToSearchResultList(list, renderSearchResultItem(result))
+      .subscribe(words => el.innerHTML = words
+        .join("")
+        .replace(/\s/g, "&nbsp;")
+      )
+
+  /* Set up search keyboard handlers */
+  keyboard$
+    .pipe(
+      filter(({ mode }) => mode === "search")
+    )
+      .subscribe(key => {
+        switch (key.type) {
+
+          /* Right arrow: accept current suggestion */
+          case "ArrowRight":
+            if (
+              el.innerText.length &&
+              query.selectionStart === query.value.length
+            )
+              query.value = el.innerText
+            break
+        }
       })
 
   /* Filter search result message */
@@ -155,6 +147,6 @@ export function mountSearchResult(
     .pipe(
       tap(internal$),
       finalize(() => internal$.complete()),
-      map(state => ({ ref: el, ...state }))
+      map(() => ({ ref: el }))
     )
 }

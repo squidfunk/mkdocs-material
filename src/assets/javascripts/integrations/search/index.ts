@@ -23,5 +23,6 @@
 export * from "./_"
 export * from "./document"
 export * from "./highlighter"
+export * from "./options"
 export * from "./query"
 export * from "./worker"

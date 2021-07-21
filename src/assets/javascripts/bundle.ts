@@ -55,6 +55,7 @@ import {
   mountHeaderTitle,
   mountPalette,
   mountSearch,
+  mountSearchHiglight,
   mountSidebar,
   mountSource,
   mountTableOfContents,
@@ -194,6 +195,13 @@ const content$ = defer(() => merge(
   /* Content */
   ...getComponentElements("content")
     .map(el => mountContent(el, { target$, viewport$, print$ })),
+
+  /* Search highlighting */
+  ...getComponentElements("content")
+    .map(el => feature("search.highlight")
+      ? mountSearchHiglight(el, { index$, location$ })
+      : NEVER
+    ),
 
   /* Header title */
   ...getComponentElements("header-title")

@@ -150,7 +150,7 @@ export async function handler(
     case SearchMessageType.QUERY:
       return {
         type: SearchMessageType.RESULT,
-        data: index ? index.search(message.data) : []
+        data: index ? index.search(message.data) : { items: [] }
       }
 
     /* All other messages */

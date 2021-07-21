@@ -216,10 +216,32 @@
   // Search form
   &__form {
     position: relative;
+    z-index: 2;
+    height: px2rem(48px);
+    background-color: var(--md-default-bg-color);
+    box-shadow: 0 0 px2rem(12px) transparent;
+    transition:
+      color            250ms,
+      background-color 250ms;
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
+      height: px2rem(36px);
+      background-color: hsla(0, 0%, 0%, 0.26);
       border-radius: px2rem(2px);
+
+      // Search form on hover
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.12);
+      }
+    }
+
+    // Adjust appearance when search is active
+    [data-md-toggle="search"]:checked ~ .md-header & {
+      color: var(--md-default-fg-color);
+      background-color: var(--md-default-bg-color);
+      border-radius: px2rem(2px) px2rem(2px) 0 0;
+      box-shadow: 0 0 px2rem(12px) hsla(0, 0%, 0%, 0.07);
     }
   }
 
@@ -227,14 +249,12 @@
   &__input {
     position: relative;
     z-index: 2;
+    width: 100%;
+    height: 100%;
     padding: 0 px2rem(44px) 0 px2rem(72px);
+    font-size: px2rem(18px);
     text-overflow: ellipsis;
-    background-color: var(--md-default-bg-color);
-    box-shadow: 0 0 px2rem(12px) transparent;
-    transition:
-      color            250ms,
-      background-color 250ms,
-      box-shadow       250ms;
+    background: transparent;
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
@@ -257,11 +277,6 @@
       display: none;
     }
 
-    // Adjust appearance when search is active
-    [data-md-toggle="search"]:checked ~ .md-header & {
-      box-shadow: 0 0 px2rem(12px) hsla(0, 0%, 0%, 0.07);
-    }
-
     // [tablet portrait -]: Search modal
     @include break-to-device(tablet portrait) {
       width: 100%;
@@ -271,22 +286,13 @@
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
-      width: 100%;
-      height: px2rem(36px);
       padding-left: px2rem(44px);
       color: inherit;
       font-size: px2rem(16px);
-      background-color: hsla(0, 0%, 0%, 0.26);
-      border-radius: px2rem(2px);
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
         padding-right: px2rem(44px);
-      }
-
-      // Search icon
-      + .md-search__icon {
-        color: var(--md-primary-bg-color);
       }
 
       // Search placeholder
@@ -294,17 +300,14 @@
         color: var(--md-primary-bg-color--light);
       }
 
-      // Search input on hover
-      &:hover {
-        background-color: hsla(0, 0%, 100%, 0.12);
+      // Search icon
+      + .md-search__icon {
+        color: var(--md-primary-bg-color);
       }
 
       // Adjust appearance when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
-        color: var(--md-default-fg-color);
         text-overflow: clip;
-        background-color: var(--md-default-bg-color);
-        border-radius: px2rem(2px) px2rem(2px) 0 0;
 
         // Search icon and placeholder
         + .md-search__icon,
@@ -317,8 +320,7 @@
 
   // Search icon
   &__icon {
-    position: absolute;
-    z-index: 2;
+    display: inline-block;
     width: px2rem(24px);
     height: px2rem(24px);
     cursor: pointer;
@@ -333,8 +335,10 @@
 
     // Search focus button
     &[for="__search"] {
+      position: absolute;
       top: px2rem(6px);
       left: px2rem(10px);
+      z-index: 2;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -374,34 +378,48 @@
         }
       }
     }
+  }
 
-    // Search reset button
-    &[type="reset"] {
-      top: px2rem(6px);
-      right: px2rem(10px);
+  // Search options
+  &__options {
+    position: absolute;
+    top: px2rem(6px);
+    right: px2rem(10px);
+    z-index: 2;
+    pointer-events: none;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      right: initial;
+      left: px2rem(10px);
+    }
+
+    // [tablet portrait -]: Search modal
+    @include break-to-device(tablet portrait) {
+      top: px2rem(12px);
+      right: px2rem(16px);
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        right: initial;
+        left: px2rem(16px);
+      }
+    }
+
+    // Search option buttons
+    > * {
+      margin-left: px2rem(4px);
+      color: var(--md-default-fg-color--light);
       transform: scale(0.75);
       opacity: 0;
       transition:
         transform 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
         opacity   150ms;
-      pointer-events: none;
 
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        right: initial;
-        left: px2rem(10px);
-      }
-
-      // [tablet portrait -]: Search modal
-      @include break-to-device(tablet portrait) {
-        top: px2rem(12px);
-        right: px2rem(16px);
-
-        // Adjust for right-to-left languages
-        [dir="rtl"] & {
-          right: initial;
-          left: px2rem(16px);
-        }
+      // Hide outline for pointer devices
+      &:not(.focus-visible) {
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
       }
 
       // Show reset button when search is active and input non-empty
@@ -416,6 +434,44 @@
           opacity: 0.7;
         }
       }
+    }
+  }
+
+  // Search suggestions
+  &__suggest {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 px2rem(44px) 0 px2rem(72px);
+    color: var(--md-default-fg-color--lighter);
+    font-size: px2rem(18px);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 50ms;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      padding: 0 px2rem(72px) 0 px2rem(44px);
+    }
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      padding-left: px2rem(44px);
+      font-size: px2rem(16px);
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        padding-right: px2rem(44px);
+      }
+    }
+
+    // Show suggestions when search is active
+    [data-md-toggle="search"]:checked ~ .md-header & {
+      opacity: 1;
+      transition: opacity 300ms 100ms;
     }
   }
 

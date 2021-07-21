@@ -36,6 +36,9 @@ export type Flag =
   | "navigation.sections"              /* Sections navigation */
   | "navigation.tabs"                  /* Tabs navigation */
   | "navigation.top"                   /* Back-to-top button */
+  | "search.highlight"                 /* Search highlighting */
+  | "search.share"                     /* Search sharing */
+  | "search.suggest"                   /* Search suggestions */
   | "toc.integrate"                    /* Integrated table of contents */
 
 /* ------------------------------------------------------------------------- */

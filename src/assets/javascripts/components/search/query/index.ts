@@ -31,8 +31,10 @@ import {
   delay,
   distinctUntilChanged,
   distinctUntilKeyChanged,
+  filter,
   finalize,
   map,
+  take,
   takeLast,
   takeUntil,
   tap
@@ -43,6 +45,7 @@ import {
   setSearchQueryPlaceholder
 } from "~/actions"
 import {
+  getLocation,
   setElementFocus,
   setToggle,
   watchElementFocus
@@ -51,7 +54,8 @@ import {
   SearchMessageType,
   SearchQueryMessage,
   SearchWorker,
-  defaultTransform
+  defaultTransform,
+  isSearchReadyMessage
 } from "~/integrations"
 
 import { Component } from "../../_"
@@ -79,11 +83,12 @@ export interface SearchQuery {
  * is delayed by `1ms` so the input's empty state is allowed to propagate.
  *
  * @param el - Search query element
+ * @param worker - Search worker
  *
  * @returns Search query observable
  */
 export function watchSearchQuery(
-  el: HTMLInputElement
+  el: HTMLInputElement, { rx$ }: SearchWorker
 ): Observable<SearchQuery> {
   const fn = __search?.transform || defaultTransform
 
@@ -97,6 +102,21 @@ export function watchSearchQuery(
       map(() => fn(el.value)),
       distinctUntilChanged()
     )
+
+  /* Intercept deep links */
+  const location = getLocation()
+  if (location.searchParams.has("q")) {
+    setToggle("search", true)
+    rx$
+      .pipe(
+        filter(isSearchReadyMessage),
+        take(1)
+      )
+        .subscribe(() => {
+          el.value = location.searchParams.get("q")!
+          setElementFocus(el)
+        })
+  }
 
   /* Combine into single observable */
   return combineLatest([value$, focus$])
@@ -114,7 +134,7 @@ export function watchSearchQuery(
  * @returns Search query component observable
  */
 export function mountSearchQuery(
-  el: HTMLInputElement, { tx$ }: SearchWorker
+  el: HTMLInputElement, { tx$, rx$ }: SearchWorker
 ): Observable<Component<SearchQuery, HTMLInputElement>> {
   const internal$ = new Subject<SearchQuery>()
 
@@ -151,7 +171,7 @@ export function mountSearchQuery(
       .subscribe(() => setElementFocus(el))
 
   /* Create and return component */
-  return watchSearchQuery(el)
+  return watchSearchQuery(el, { tx$, rx$ })
     .pipe(
       tap(internal$),
       finalize(() => internal$.complete()),
