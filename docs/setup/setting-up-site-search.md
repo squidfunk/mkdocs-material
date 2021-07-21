@@ -136,8 +136,7 @@ Use them at your own risk._
 
 [:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][8]{ .mdx-insiders }
+:octicons-beaker-24: Experimental
 
 When _search suggestions_ are enabled, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
@@ -155,16 +154,15 @@ Searching for [:octicons-search-24: ^^search su^^][9] yields ^^search suggestion
 
 [![Search suggestions][10]][10]
 
-  [8]: ../insiders/index.md
+  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/suggest/index.ts
   [9]: ?q=search+su
   [10]: ../assets/screenshots/search-suggestions.png
 
 ### Search highlighting
 
-[:octicons-file-code-24: Source][8] ·
+[:octicons-file-code-24: Source][11] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][8]{ .mdx-insiders }
+:octicons-beaker-24: Experimental
 
 When _search highlighting_ is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
@@ -176,22 +174,22 @@ theme:
     - search.highlight
 ```
 
-Searching for [:octicons-search-24: ^^code blocks^^][11] yields:
+Searching for [:octicons-search-24: ^^code blocks^^][12] yields:
 
-[![Search highlighting][12]][12]
+[![Search highlighting][13]][13]
 
   </figcaption>
 </figure>
 
-  [11]: ../reference/code-blocks.md?h=code+blocks
-  [12]: ../assets/screenshots/search-highlighting.png
+  [11]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/highlight/index.ts
+  [12]: ../reference/code-blocks.md?h=code+blocks
+  [13]: ../assets/screenshots/search-highlighting.png
 
 ### Search sharing
 
-[:octicons-file-code-24: Source][8] ·
+[:octicons-file-code-24: Source][14] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][8]{ .mdx-insiders }
+:octicons-beaker-24: Experimental
 
 When _search sharing_ is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
@@ -206,26 +204,27 @@ theme:
 When a user clicks the share button, the URL is automatically copied to the
 clipboard.
 
-[![Search sharing][13]][13]
+[![Search sharing][15]][15]
 
-  [13]: ../assets/screenshots/search-share.png
+  [14]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/share/index.ts
+  [15]: ../assets/screenshots/search-share.png
 
 ### Offline search
 
-[:octicons-file-code-24: Source][14] ·
-[:octicons-cpu-24: Plugin][15] · :octicons-beaker-24: Experimental
+[:octicons-file-code-24: Source][16] ·
+[:octicons-cpu-24: Plugin][17]
 
 If you distribute your documentation as `*.html` files, the built-in search
 will not work out-of-the-box due to the restrictions modern browsers impose for
-security reasons. This can be mitigated with the [localsearch][15] plugin in
-combination with @squidfunk's [iframe-worker][16] polyfill.
+security reasons. This can be mitigated with the [localsearch][17] plugin in
+combination with @squidfunk's [iframe-worker][18] polyfill.
 
-For setup instructions, refer to the [official documentation][17].
+For setup instructions, refer to the [official documentation][19].
 
-  [14]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [15]: https://github.com/wilhelmer/mkdocs-localsearch/
-  [16]: https://github.com/squidfunk/iframe-worker
-  [17]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5
+  [16]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
+  [17]: https://github.com/wilhelmer/mkdocs-localsearch/
+  [18]: https://github.com/squidfunk/iframe-worker
+  [19]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5
 
 !!! tip
 
@@ -237,13 +236,13 @@ For setup instructions, refer to the [official documentation][17].
 
 ### Boosting a page
 
-[:octicons-file-code-24: Source][8] ·
+[:octicons-file-code-24: Source][20] ·
 :octicons-note-24: Metadata ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][8]{ .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][20]{ .mdx-insiders }
 
 In order to give specific pages a higher relevance in search, [lunr][4] supports
 page-specific boosts, which can be defined for each page by leveraging the
-[Metadata][18] extension:
+[Metadata][21] extension:
 
 ``` bash
 ---
@@ -255,7 +254,8 @@ search:
 ...
 ```
 
-  [18]: ../../reference/meta-tags/#metadata
+  [20]: ../insiders/index.md
+  [21]: ../../reference/meta-tags/#metadata
 
 ## Customization
 
@@ -269,12 +269,12 @@ your needs.
 
 ### Query transformation
 
-[:octicons-file-code-24: Source][19] ·
+[:octicons-file-code-24: Source][22] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
 When a user enters a query into the search box, the query is pre-processed
 before it is submitted to the search index. Material for MkDocs will apply the
-following transformations, which can be customized by [extending the theme][20]:
+following transformations, which can be customized by [extending the theme][23]:
 
 ``` ts
 export function defaultTransform(query: string): string {
@@ -307,7 +307,7 @@ export function defaultTransform(query: string): string {
 If you want to switch to the default behavior of the `mkdocs` and `readthedocs`
 themes, both of which don't transform the query prior to submission, or
 customize the `transform` function, you can do this by [overriding the
-`config` block][21]:
+`config` block][24]:
 
 ``` html
 {% block config %}
@@ -325,19 +325,19 @@ customize the `transform` function, you can do this by [overriding the
 The `transform` function will receive the query string as entered by the user
 and must return the processed query string to be submitted to the search index.
 
-  [19]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
-  [20]: ../customization.md#extending-the-theme
-  [21]: ../customization.md#overriding-blocks-recommended
+  [22]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
+  [23]: ../customization.md#extending-the-theme
+  [24]: ../customization.md#overriding-blocks-recommended
 
 ### Custom search
 
-[:octicons-file-code-24: Source][22] ·
+[:octicons-file-code-24: Source][25] ·
 :octicons-mortar-board-24: Difficulty: _challenging_
 
-Material for MkDocs implements search as part of a [web worker][23]. If you
+Material for MkDocs implements search as part of a [web worker][26]. If you
 want to switch the web worker with your own implementation, e.g. to submit
 search to an external service, you can add a custom JavaScript file to the
-`docs` directory and [override the `config` block][20]:
+`docs` directory and [override the `config` block][23]:
 
 ``` html
 {% block config %}
@@ -355,8 +355,8 @@ format using _discriminated unions_, i.e. through the `type` property of the
 message. See the following interface definitions to learn about the message
 formats:
 
-- [:octicons-file-code-24: `SearchMessage`][24]
-- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][25]
+- [:octicons-file-code-24: `SearchMessage`][27]
+- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][28]
 
 The sequence and direction of messages is rather intuitive:
 
@@ -365,7 +365,7 @@ The sequence and direction of messages is rather intuitive:
 - :octicons-arrow-right-24: `SearchQueryMessage`
 - :octicons-arrow-left-24: `SearchResultMessage`
 
-  [22]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker
-  [23]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-  [24]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/message/index.ts
-  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/_/index.ts
+  [25]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker
+  [26]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+  [27]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/message/index.ts
+  [28]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/_/index.ts

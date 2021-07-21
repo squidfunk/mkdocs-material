@@ -129,9 +129,6 @@ The following features are currently exclusively available to sponsors:
 - [x] [Section index pages][22]
 - [x] [Sticky navigation tabs][21]
 - [x] [Mermaid.js integration][27]
-- [x] [Search suggestions][18]
-- [x] [Search highlighting][19]
-- [x] [Search sharing][20]
 - [x] [Remove generator notice][23]
 
 </div>
@@ -149,16 +146,6 @@ from time to time to learn about what's new, or follow [@squidfunk on
 Following is a list of funding goals. When a funding goal is hit, the features
 that are tied to it are merged back into Material for MkDocs and released to
 the public for general availability.
-
-#### $ 2,500 – Biquinho Vermelho
-
-- [x] [Search suggestions][18]
-- [x] [Search highlighting][19]
-- [x] [Search sharing][20]
-
-  [18]: ../setup/setting-up-site-search.md#search-suggestions
-  [19]: ../setup/setting-up-site-search.md#search-highlighting
-  [20]: ../setup/setting-up-site-search.md#search-sharing
 
 #### $ 3,000 – Caribbean Red
 
@@ -224,6 +211,16 @@ the public for general availability.
   [34]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
+
+#### $ 2,500 – Biquinho Vermelho
+
+- [x] [Search suggestions][18]
+- [x] [Search highlighting][19]
+- [x] [Search sharing][20]
+
+  [18]: ../setup/setting-up-site-search.md#search-suggestions
+  [19]: ../setup/setting-up-site-search.md#search-highlighting
+  [20]: ../setup/setting-up-site-search.md#search-sharing
 
 #### $ 2,000 – Black Pearl
 

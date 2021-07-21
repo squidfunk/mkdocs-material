@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.2.0 <small>_ July 21, 2021</small>
+
+- Added support for search suggestions to save keystrokes
+- Added support for search highlighting
+- Added support for search sharing (i.e. deep linking)
+
 ### 7.1.11 <small>_ July 18, 2021</small>
 
 - Updated Spanish and Galician translations

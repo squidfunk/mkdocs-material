@@ -1,3 +1,9 @@
+mkdocs-material-7.2.0 (2021-07-21)
+
+  * Added support for search suggestions to save keystrokes
+  * Added support for search highlighting
+  * Added support for search sharing (i.e. deep linking)
+
 mkdocs-material-7.1.11+insiders.2.11.1 (2021-07-20)
 
   * Fixed order of tags index, now sorted alphabetically
