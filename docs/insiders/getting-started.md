@@ -59,9 +59,10 @@ comfortable self-hosting:
     2. Click on [Generate a new token][5]
     3. Enter a name and select the [`write:packages`][10] scope
     4. Generate the token and store it in a safe place
-4. Add a [GitHub Actions secret][11] on your fork
-    1. Set the name to `GHCR_TOKEN`
-    2. Set the value to the personal access token created in the previous step
+4. Add [GitHub Actions secrets][11] on your fork
+    1. Set the name to `GHCR_TOKEN`. Set the value to the personal access token created in the previous step
+    2. Set the name to `DOCKER_USERNAME`. Set the value to your Docker ID from hub.docker.com.
+    3. Set the name to `DOCKER_PASSWORD`. Set the value to your Docker Access Token that you can create at https://hub.docker.com/settings/security.
 5. [Create a new release][12] to build and publish the Docker image
 6. Install [Pull App][13] on your fork to stay in-sync with upstream
 
