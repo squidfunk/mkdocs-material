@@ -25,34 +25,7 @@
 <!-- Custom front matter -->
 {% block extrahead %}
 
-  <!-- Determine title -->
-  {% set title = config.site_name %}
-  {% if page and page.title and not page.is_homepage %}
-    {% set title = config.site_name ~ " - " ~ page.title | striptags %}
-  {% endif %}
-
-  <!-- The image needs to have an absolute URL -->
-  {% set image = config.site_url ~ 'assets/images/banner.png' %}
-
-  <!-- Open graph meta tags -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{ title }}" />
-  <meta property="og:description" content="{{ config.site_description }}" />
-  <meta property="og:url" content="{{ page.canonical_url }}" />
-  <meta property="og:image" content="{{ image }}" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1080" />
-  <meta property="og:image:height" content="568" />
-
-  <!-- Twitter meta tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@squidfunk" />
-  <meta name="twitter:creator" content="@squidfunk" />
-  <meta name="twitter:title" content="{{ title }}" />
-  <meta name="twitter:description" content="{{ config.site_description }}" />
-  <meta name="twitter:image" content="{{ image }}" />
-
-  <!-- Extra stylesheets -->
+  <!-- Extra stylesheets (can't be set in mkdocs.yml due to content hash) -->
   <link
     rel="stylesheet"
     href="{{ 'overrides/assets/stylesheets/main.css' | url }}"
@@ -74,7 +47,7 @@
 {% block scripts %}
   {{ super() }}
 
-  <!-- Extra JavaScript -->
+  <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
   <script src="{{ 'overrides/assets/javascripts/bundle.js' | url }}"></script>
 {% endblock %}
 

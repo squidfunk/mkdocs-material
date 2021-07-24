@@ -24,8 +24,7 @@ site_url: https://squidfunk.github.io/mkdocs-material/
 site_author: Martin Donath
 site_description: >-
   Create a branded static site from a set of Markdown files to host the
-  documentation of your Open Source or commercial project – customizable,
-  searchable, mobile-friendly, 40+ languages
+  documentation of your Open Source or commercial project
 
 # Repository
 repo_name: squidfunk/mkdocs-material
@@ -53,14 +52,19 @@ theme:
   features:
     - content.code.annotate
     - content.tabs.link
+    # - header.autohide
+    # - navigation.expand
+    # - navigation.indexes
     # - navigation.instant
     - navigation.sections
     - navigation.tabs
+    # - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - search.highlight
     - search.share
     - search.suggest
+    # - toc.integrate
   palette:
     - scheme: default
       primary: indigo
@@ -84,7 +88,6 @@ theme:
 # Plugins
 plugins:
   - search
-  - social
   - redirects:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md

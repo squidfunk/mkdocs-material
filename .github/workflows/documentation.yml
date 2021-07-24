@@ -55,6 +55,7 @@ jobs:
         run: |
           git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           pip install -e mkdocs-material-insiders
+          cp mkdocs-material-insiders/mkdocs.yml mkdocs.yml
           echo "THEME_DIR=mkdocs-material-insiders/material" >> $GITHUB_ENV
 
       - name: Deploy documentation
