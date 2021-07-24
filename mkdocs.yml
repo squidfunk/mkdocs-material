@@ -84,6 +84,7 @@ theme:
 # Plugins
 plugins:
   - search
+  - social
   - redirects:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
