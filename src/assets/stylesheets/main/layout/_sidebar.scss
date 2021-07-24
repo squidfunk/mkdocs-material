@@ -46,7 +46,7 @@
       position: fixed;
       top: 0;
       left: px2rem(-242px);
-      z-index: 3;
+      z-index: 4;
       display: block;
       width: px2rem(242px);
       height: 100%;
@@ -167,7 +167,7 @@
   .md-overlay {
     position: fixed;
     top: 0;
-    z-index: 3;
+    z-index: 4;
     width: 0;
     height: 0;
     background-color: hsla(0, 0%, 0%, 0.54);
