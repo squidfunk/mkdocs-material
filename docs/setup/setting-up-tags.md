@@ -1,8 +1,5 @@
 ---
 template: overrides/main.html
-tags:
-  - insiders
-  - brand new
 ---
 
 # Setting up tags
