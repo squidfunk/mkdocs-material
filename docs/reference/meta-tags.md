@@ -172,7 +172,7 @@ Some further examples, including [Open Graph][1] and [Twitter Cards][11]:
 !!! tip "Automatically generated social cards"
 
     If you don't want to bother with meta tags and social cards yourself, you
-    can might be interested in the [built-in social cards plugin][12], which
+    can let the [built-in social cards plugin][12] do the work for you, which
     generates beautiful image previews for social media automatically during
     the build.
 
