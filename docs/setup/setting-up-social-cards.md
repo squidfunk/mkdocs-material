@@ -109,7 +109,7 @@ whether the social cards need to be regenerated. You might want to:
     ```
 
   [8]: #built-in-social-cards
-  [9]: ../publishing-your-site.md
+  [9]: ../publishing-your-site.md#with-github-actions
 
 ## Usage
 
