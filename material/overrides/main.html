@@ -3,26 +3,7 @@
 -#}
 {% extends "base.html" %}
 {% block extrahead %}
-  {% set title = config.site_name %}
-  {% if page and page.title and not page.is_homepage %}
-    {% set title = config.site_name ~ " - " ~ page.title | striptags %}
-  {% endif %}
-  {% set image = config.site_url ~ 'assets/images/banner.png' %}
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ config.site_description }}">
-  <meta property="og:url" content="{{ page.canonical_url }}">
-  <meta property="og:image" content="{{ image }}">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1080">
-  <meta property="og:image:height" content="568">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@squidfunk">
-  <meta name="twitter:creator" content="@squidfunk">
-  <meta name="twitter:title" content="{{ title }}">
-  <meta name="twitter:description" content="{{ config.site_description }}">
-  <meta name="twitter:image" content="{{ image }}">
-  <link rel="stylesheet" href="{{ 'overrides/assets/stylesheets/main.90c53ea0.min.css' | url }}">
+  <link rel="stylesheet" href="{{ 'overrides/assets/stylesheets/main.14225c90.min.css' | url }}">
 {% endblock %}
 {% block announce %}
   <a href="https://twitter.com/squidfunk">

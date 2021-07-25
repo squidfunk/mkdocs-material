@@ -46,11 +46,6 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Screenshot caption
-  figure > p + figcaption {
-    margin-top: px2rem(-24px);
-  }
-
   // Twitter icon
   .twitter {
     color: #00acee;

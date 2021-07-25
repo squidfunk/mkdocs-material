@@ -117,9 +117,10 @@ The following features are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown="1">
 
+- [x] [Social cards :material-new-box:][34]
 - [x] [Cookie consent :material-new-box:][33]
 - [x] [Linking content tabs :material-new-box:][32]
-- [x] [Boosting pages in search :material-new-box:][30]
+- [x] [Boosting pages in search][30]
 - [x] [Tags (with search integration)][29]
 - [x] [Stay on page when switching versions][28]
 - [x] [Version warning][26]
@@ -190,25 +191,28 @@ the public for general availability.
 #### $ 7,000 – Royal Gold
 
 - [x] [Cookie consent][33]
-- [ ] Table of contents auto-collapse
-- [ ] Table of contents follows active anchor
+- [ ] Improved search result summaries
+- [ ] List of last searches
 
   [33]: ../setup/setting-up-site-analytics.md#cookie-consent
 
 #### $ 8,000 – Scotch Bonnet
 
-- [ ] Improved search result summaries
+- [x] [Social cards][34]
 - [ ] Stay on page when switching languages
-- [ ] List of last searches
+- [ ] Table of contents follows active anchor
+
+  [34]: ../setup/setting-up-social-cards.md
 
 #### Future
 
-- [ ] [Material for MkDocs Live Edit][34]
+- [ ] [Material for MkDocs Live Edit][35]
 - [ ] New layouts and styles
 - [ ] Code block palette toggle
 - [ ] Native lightbox integration
+- [ ] Table of contents auto-collapse
 
-  [34]: https://twitter.com/squidfunk/status/1338252230265360391
+  [35]: https://twitter.com/squidfunk/status/1338252230265360391
 
 ### Goals completed
 
@@ -273,23 +277,23 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][35] only in CI, as you don't want to expose
+recommended to [install Insiders][36] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [35]: ../publishing-your-site.md#github-pages
+  [36]: ../publishing-your-site.md#github-pages
 
 ### Payment
 
 _We don't want to pay for sponsorship every month. Are there any other options?_
 
 Yes. You can sponsor on a yearly basis by [switching your GitHub account to a
-yearly billing cycle][36]. If for some reason you cannot do that, you could
+yearly billing cycle][37]. If for some reason you cannot do that, you could
 also create a dedicated GitHub account with a yearly billing cycle, which you
 only use for sponsoring (some sponsors already do that).
 
 One-time payments are not eligible for Insiders.
 
-  [36]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/changing-the-duration-of-your-billing-cycle
+  [37]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/changing-the-duration-of-your-billing-cycle
 
 ### Terms
 
@@ -298,7 +302,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][37]. However, we kindly ask you to respect the following
+by the [MIT license][38]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -309,7 +313,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][38].
+  [GitHub deletes private forks][39].
 
-  [37]: ../license.md
-  [38]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [38]: ../license.md
+  [39]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

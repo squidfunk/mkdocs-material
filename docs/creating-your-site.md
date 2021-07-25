@@ -100,12 +100,13 @@ and much more:
 - [Setting up navigation][9]
 - [Setting up site search][10]
 - [Setting up site analytics][11]
-- [Setting up tags][12]
-- [Setting up versioning][13]
-- [Setting up the header][14]
-- [Setting up the footer][15]
-- [Adding a git repository][16]
-- [Adding a comment system][17]
+- [Setting up social cards][12]
+- [Setting up tags][13]
+- [Setting up versioning][14]
+- [Setting up the header][15]
+- [Setting up the footer][16]
+- [Adding a git repository][17]
+- [Adding a comment system][18]
 
 </div>
 
@@ -116,12 +117,13 @@ and much more:
   [9]: setup/setting-up-navigation.md
   [10]: setup/setting-up-site-search.md
   [11]: setup/setting-up-site-analytics.md
-  [12]: setup/setting-up-tags.md
-  [13]: setup/setting-up-versioning.md
-  [14]: setup/setting-up-the-header.md
-  [15]: setup/setting-up-the-footer.md
-  [16]: setup/adding-a-git-repository.md
-  [17]: setup/adding-a-comment-system.md
+  [12]: setup/setting-up-social-cards.md
+  [13]: setup/setting-up-tags.md
+  [14]: setup/setting-up-versioning.md
+  [15]: setup/setting-up-the-header.md
+  [16]: setup/setting-up-the-footer.md
+  [17]: setup/adding-a-git-repository.md
+  [18]: setup/adding-a-comment-system.md
 
 ## Previewing as you write
 
@@ -147,12 +149,12 @@ If you're running Material for MkDocs from within Docker, use:
     docker run --rm -it -p 8000:8000 -v "%cd%":/docs squidfunk/mkdocs-material
     ```
 
-Point your browser to [localhost:8000][18] and you should see:
+Point your browser to [localhost:8000][19] and you should see:
 
-[![Creating your site][19]][19]
+[![Creating your site][20]][20]
 
-  [18]: http://localhost:8000
-  [19]: assets/screenshots/creating-your-site.png
+  [19]: http://localhost:8000
+  [20]: assets/screenshots/creating-your-site.png
 
 ## Building your site
 
@@ -165,8 +167,8 @@ mkdocs build
 
 The contents of this directory make up your project documentation. There's no
 need for operating a database or server, as it is completely self-contained.
-The site can be hosted on [GitHub Pages][20], [GitLab Pages][21], a CDN of your
+The site can be hosted on [GitHub Pages][21], [GitLab Pages][22], a CDN of your
 choice or your private web space.
 
-  [20]: publishing-your-site.md#github-pages
-  [21]: publishing-your-site.md#gitlab-pages
+  [21]: publishing-your-site.md#github-pages
+  [22]: publishing-your-site.md#gitlab-pages
