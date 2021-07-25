@@ -1,4 +1,4 @@
-mkdocs-material-7.2.1+insiders.2.12.0 (2021-07-25)
+mkdocs-material-7.2.1+insiders-2.12.0 (2021-07-25)
 
   * Added support for social cards
 
@@ -12,11 +12,11 @@ mkdocs-material-7.2.0 (2021-07-21)
   * Added support for search highlighting
   * Added support for search sharing (i.e. deep linking)
 
-mkdocs-material-7.1.11+insiders.2.11.1 (2021-07-20)
+mkdocs-material-7.1.11+insiders-2.11.1 (2021-07-20)
 
   * Fixed order of tags index, now sorted alphabetically
 
-mkdocs-material-7.1.11+insiders.2.11.0 (2021-07-18)
+mkdocs-material-7.1.11+insiders-2.11.0 (2021-07-18)
 
   * Improved Mermaid.js intergration, now stable
   * Added support for sequence diagrams
@@ -28,7 +28,7 @@ mkdocs-material-7.1.11 (2021-07-18)
 
   * Updated Spanish and Galician translations
 
-mkdocs-material-7.1.10+insiders.2.10.0 (2021-07-10)
+mkdocs-material-7.1.10+insiders-2.10.0 (2021-07-10)
 
   * Added support for cookie consent
   * Fixed #2807: Back-to-top button not hidden when using sticky tabs
@@ -53,7 +53,7 @@ mkdocs-material-7.1.7 (2021-06-06)
 
   * Improved screen reader support
 
-mkdocs-material-7.1.6+insiders.2.9.2 (2021-05-30)
+mkdocs-material-7.1.6+insiders-2.9.2 (2021-05-30)
 
   * Moved tags to partial for easier customization
   * Added support for hiding tags on any page
@@ -65,11 +65,11 @@ mkdocs-material-7.1.6 (2021-05-30)
   * Fixed #2429: Version selector not touch-friendly on Android devices
   * Fixed #2703: Printed 'Initializing search' albeit ready on mobile
 
-mkdocs-material-7.1.5+insiders.2.9.1 (2021-05-24)
+mkdocs-material-7.1.5+insiders-2.9.1 (2021-05-24)
 
   * Added missing guard for linking of content tabs
 
-mkdocs-material-7.1.5+insiders.2.9.0 (2021-05-23)
+mkdocs-material-7.1.5+insiders-2.9.0 (2021-05-23)
 
   * Added support for linking of content tabs
 
@@ -77,11 +77,11 @@ mkdocs-material-7.1.5 (2021-05-19)
 
   * Fixed #2655: Details breaking page margins on print
 
-mkdocs-material-7.1.4+insiders.2.8.0 (2021-05-12)
+mkdocs-material-7.1.4+insiders-2.8.0 (2021-05-12)
 
   * Added support for boosting pages in search
 
-mkdocs-material-7.1.4+insiders.2.7.2 (2021-05-08)
+mkdocs-material-7.1.4+insiders-2.7.2 (2021-05-08)
 
   * Fixed #2638: Warnings shown when using tags plugin without directory URLs
 
@@ -90,11 +90,11 @@ mkdocs-material-7.1.4 (2021-05-06)
   * Added support for git-revision-date-localized plugin creation date
   * Improved footnote styles on :target and :focus
 
-mkdocs-material-7.1.3+insiders.2.7.1 (2021-05-03)
+mkdocs-material-7.1.3+insiders-2.7.1 (2021-05-03)
 
   * Fixed git-revision-date-localized plugin integration (2.7.0 regression)
 
-mkdocs-material-7.1.3+insiders.2.7.0 (2021-05-01)
+mkdocs-material-7.1.3+insiders-2.7.0 (2021-05-01)
 
   * Added support for tags (with search integration)
 

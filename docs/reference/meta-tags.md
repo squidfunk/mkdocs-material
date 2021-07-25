@@ -169,4 +169,12 @@ Some further examples, including [Open Graph][1] and [Twitter Cards][11]:
     {% endblock %}
     ```
 
+!!! tip "Automatically generated social cards"
+
+    If you don't want to bother with meta tags and social cards yourself, you
+    can might be interested in the [built-in social cards plugin][12], which
+    generates beautiful image previews for social media automatically during
+    the build.
+
   [11]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
+  [12]: ../setup/setting-up-social-cards.md

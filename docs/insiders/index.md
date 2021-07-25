@@ -291,7 +291,9 @@ yearly billing cycle][37]. If for some reason you cannot do that, you could
 also create a dedicated GitHub account with a yearly billing cycle, which you
 only use for sponsoring (some sponsors already do that).
 
-One-time payments are not eligible for Insiders.
+If you have any problems or further questions, don't hesitate to contact me at
+sponsors@squidfunk.com. Note that one-time payments are not eligible for
+Insiders, but of course, very appreciated.
 
   [37]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/changing-the-duration-of-your-billing-cycle
 
