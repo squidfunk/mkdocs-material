@@ -1,3 +1,8 @@
+mkdocs-material-7.2.1+insiders-2.12.1 (2021-07-26)
+
+  * Fixed error in social cards plugin when site_description was not set
+  * Fixed error in social cards plugin for non-ASCII characters
+
 mkdocs-material-7.2.1+insiders-2.12.0 (2021-07-25)
 
   * Added support for social cards

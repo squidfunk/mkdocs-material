@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.12.1 <small>_ July 26, 2021</small>
+
+- Fixed error in social cards plugin when `site_description` was not set
+- Fixed error in social cards plugin for non-ASCII characters
+
 ### 2.12.0 <small>_ July 25, 2021</small>
 
 - Added support for social cards
