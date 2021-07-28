@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+import escapeHTML from "escape-html"
+
 import { SearchIndexConfig } from "../_"
 
 /* ----------------------------------------------------------------------------
@@ -77,7 +79,7 @@ export function setupSearchHighlighter(
     })`, "img")
 
     /* Highlight string value */
-    return value => value
+    return value => escapeHTML(value)
       .replace(match, highlight)
       .replace(/<\/mark>(\s+)<mark[^>]*>/img, "$1")
   }
