@@ -6,7 +6,7 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
-### 7.2.0 <small>_ July 25, 2021</small>
+### 7.2.1 <small>_ July 25, 2021</small>
 
 - Fixed #2862: Back-to-top button overlays active search bar
 
