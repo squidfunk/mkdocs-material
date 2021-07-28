@@ -1,5 +1,7 @@
 ---
 template: overrides/main.html
+search:
+  boost: 1.05
 ---
 
 # Setting up site search
