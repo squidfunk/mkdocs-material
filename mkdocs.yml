@@ -91,8 +91,6 @@ plugins:
       separator: '[\s\-\.]+'
       lang:
         - en
-  - minify:
-      minify_html: true
 
 # Customization
 extra:
