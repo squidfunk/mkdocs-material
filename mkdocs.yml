@@ -119,8 +119,6 @@ extra:
       link: https://gitter.im/squidfunk/mkdocs-material
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/r/squidfunk/mkdocs-material/
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/squidfunk
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/squidfunk/
     - icon: fontawesome/brands/instagram
