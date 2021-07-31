@@ -144,7 +144,7 @@ For other installation methods, configuration options, and a demo, visit
 [Datadog](https://datadoghq.dev/integrations-core/),
 [Google](https://google.github.io/iree/),
 [ING](https://ing-bank.github.io/baker/),
-[Intel](https://open-amt-cloud-toolkit.github.io/),
+[Intel](https://open-amt-cloud-toolkit.github.io/docs/),
 [LinkedIn](https://linkedin.github.io/school-of-sre/),
 [Mozilla](https://mozillafoundation.github.io/engineering-handbook/),
 [Microsoft](https://microsoft.github.io/code-with-engineering-playbook/),
