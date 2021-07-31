@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.2.2 <small>_ July 31, 2021</small>
+
+- Updated Korean translations
+- Fixed #2879: Search highlighting does not properly escape HTML
+
 ### 7.2.1 <small>_ July 25, 2021</small>
 
 - Fixed #2862: Back-to-top button overlays active search bar
