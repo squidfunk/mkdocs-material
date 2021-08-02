@@ -368,6 +368,30 @@ def bubble_sort(items):
                 items[j], items[j + 1] = items[j + 1], items[j]
 ```
 
+Line ranges can also be used for conveniently specifying multiple lines.
+
+_Example_:
+
+```` markdown
+``` python hl_lines="2-5"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+````
+
+_Result_:
+
+``` python hl_lines="2-5"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+
 ### Highlighting inline code blocks
 
 When [InlineHilite][21] is enabled, inline code blocks can be highlighted by
