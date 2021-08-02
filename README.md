@@ -139,7 +139,7 @@ For other installation methods, configuration options, and a demo, visit
 
 ### ... leading companies
 
-[Atlassian](https://atlassian-labs.github.io/data-center-helm-charts/)
+[Atlassian](https://atlassian-labs.github.io/data-center-helm-charts/),
 [AWS](https://aws.github.io/copilot-cli/),
 [Binance](https://docs.binance.org/),
 [Datadog](https://datadoghq.dev/integrations-core/),
