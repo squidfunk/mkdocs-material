@@ -1,3 +1,7 @@
+mkdocs-material-7.2.2+insiders-2.12.2 (2021-08-04)
+
+  * Fixed #2891: Division by zero error in social plugin
+
 mkdocs-material-7.2.2 (2021-07-31)
 
   * Updated Korean translations
@@ -5,8 +9,8 @@ mkdocs-material-7.2.2 (2021-07-31)
 
 mkdocs-material-7.2.1+insiders-2.12.1 (2021-07-26)
 
-  * Fixed error in social cards plugin when site_description was not set
-  * Fixed error in social cards plugin for non-ASCII characters
+  * Fixed error in social plugin when site_description was not set
+  * Fixed error in social plugin for non-ASCII characters
 
 mkdocs-material-7.2.1+insiders-2.12.0 (2021-07-25)
 
