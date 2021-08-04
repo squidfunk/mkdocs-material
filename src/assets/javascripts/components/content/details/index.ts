@@ -23,7 +23,6 @@
 import { Observable, Subject } from "rxjs"
 import {
   filter,
-  finalize,
   map,
   mapTo,
   mergeWith,
@@ -109,7 +108,6 @@ export function mountDetails(
   return watchDetails(el, options)
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       mapTo({ ref: el })
     )
 }

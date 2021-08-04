@@ -32,7 +32,6 @@ import {
   distinctUntilChanged,
   distinctUntilKeyChanged,
   filter,
-  finalize,
   map,
   take,
   takeLast,
@@ -174,7 +173,6 @@ export function mountSearchQuery(
   return watchSearchQuery(el, { tx$, rx$ })
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

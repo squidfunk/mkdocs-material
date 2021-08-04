@@ -27,7 +27,6 @@ import {
   of
 } from "rxjs"
 import {
-  finalize,
   map,
   mapTo,
   mergeMap,
@@ -142,7 +141,6 @@ export function mountPalette(
   return watchPalette(inputs)
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

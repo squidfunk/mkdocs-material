@@ -25,11 +25,7 @@ import {
   Subject,
   fromEvent
 } from "rxjs"
-import {
-  finalize,
-  map,
-  tap
-} from "rxjs/operators"
+import { map, tap } from "rxjs/operators"
 
 import { getLocation } from "~/browser"
 
@@ -117,7 +113,6 @@ export function mountSearchShare(
   return watchSearchShare(el, options)
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

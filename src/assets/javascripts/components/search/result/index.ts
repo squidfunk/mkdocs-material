@@ -30,7 +30,6 @@ import {
 import {
   bufferCount,
   filter,
-  finalize,
   map,
   observeOn,
   switchMap,
@@ -154,7 +153,6 @@ export function mountSearchResult(
   return result$
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

@@ -31,7 +31,6 @@ import {
 } from "rxjs"
 import {
   distinctUntilKeyChanged,
-  finalize,
   map,
   switchMap,
   tap,
@@ -177,7 +176,6 @@ export function mountCodeBlock(
   return watchCodeBlock(el, options)
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

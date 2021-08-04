@@ -28,7 +28,6 @@ import {
 } from "rxjs"
 import {
   distinctUntilChanged,
-  finalize,
   map,
   observeOn,
   tap,
@@ -159,7 +158,6 @@ export function mountSidebar(
   return watchSidebar(el, options)
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

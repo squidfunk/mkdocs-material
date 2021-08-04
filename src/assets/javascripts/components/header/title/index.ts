@@ -28,7 +28,6 @@ import {
 } from "rxjs"
 import {
   distinctUntilKeyChanged,
-  finalize,
   map,
   observeOn,
   tap
@@ -141,7 +140,6 @@ export function mountHeaderTitle(
   return watchHeaderTitle(headline, options)
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

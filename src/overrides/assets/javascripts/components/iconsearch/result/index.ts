@@ -33,7 +33,6 @@ import {
   bufferCount,
   distinctUntilKeyChanged,
   filter,
-  finalize,
   map,
   observeOn,
   switchMap,
@@ -193,7 +192,6 @@ export function mountIconSearchResult(
   return watchIconSearchResult(el, { query$, index$ })
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

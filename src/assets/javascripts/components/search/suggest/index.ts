@@ -30,7 +30,6 @@ import {
   combineLatestWith,
   distinctUntilChanged,
   filter,
-  finalize,
   map,
   observeOn,
   tap
@@ -146,7 +145,6 @@ export function mountSearchSuggest(
   return result$
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(() => ({ ref: el }))
     )
 }

@@ -29,7 +29,6 @@ import {
 } from "rxjs"
 import {
   delay,
-  finalize,
   map,
   observeOn,
   switchMap,
@@ -133,7 +132,6 @@ export function mountDialog(
   return watchDialog(el, options)
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

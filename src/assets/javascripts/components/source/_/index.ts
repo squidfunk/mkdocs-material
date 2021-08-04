@@ -24,7 +24,6 @@ import { NEVER, Observable, Subject, defer, of } from "rxjs"
 import {
   catchError,
   filter,
-  finalize,
   map,
   shareReplay,
   tap
@@ -119,7 +118,6 @@ export function mountSource(
   return watchSource(el)
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

@@ -30,7 +30,6 @@ import {
   bufferCount,
   distinctUntilChanged,
   distinctUntilKeyChanged,
-  finalize,
   map,
   observeOn,
   tap,
@@ -172,7 +171,6 @@ export function mountBackToTop(
   return watchBackToTop(el, { viewport$, header$, main$ })
     .pipe(
       tap(internal$),
-      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }
