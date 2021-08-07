@@ -186,11 +186,23 @@ export function setupInstantLoading(
             /* Handle HTML and SVG elements */
             if (ev.target instanceof Element) {
               const el = ev.target.closest("a")
-              if (el && !el.target && urls.includes(el.href)) {
-                ev.preventDefault()
-                return of({
-                  url: new URL(el.href)
-                })
+              if (el && !el.target) {
+                const url = new URL(el.href)
+
+                /* Canonicalize URL */
+                url.search = ""
+                url.hash = ""
+
+                /* Check if URL should be intercepted */
+                if (
+                  url.pathname !== location.pathname &&
+                  urls.includes(url.toString())
+                ) {
+                  ev.preventDefault()
+                  return of({
+                    url: new URL(el.href)
+                  })
+                }
               }
             }
             return NEVER
@@ -252,18 +264,6 @@ export function setupInstantLoading(
     )
       .subscribe(document$)
 
-  /* Emit history state change */
-  merge(push$, pop$)
-    .pipe(
-      sample(document$)
-    )
-      .subscribe(({ url, offset }) => {
-        if (url.hash && !offset)
-          setLocationHash(url.hash)
-        else
-          setViewportOffset(offset || { y: 0 })
-      })
-
   /* Replace meta tags and components */
   document$
     .pipe(
@@ -323,6 +323,19 @@ export function setupInstantLoading(
       })
     )
       .subscribe()
+
+  /* Emit history state change */
+  merge(push$, pop$)
+    .pipe(
+      sample(document$),
+    )
+      .subscribe(({ url, offset }) => {
+        if (url.hash && !offset) {
+          setLocationHash(url.hash)
+        } else {
+          setViewportOffset(offset || { y: 0 })
+        }
+      })
 
   /* Debounce update of viewport offset */
   viewport$
