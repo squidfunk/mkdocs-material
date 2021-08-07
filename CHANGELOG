@@ -1,3 +1,7 @@
+mkdocs-material-7.2.2+insiders-2.13.0 (2021-08-07)
+
+  * Added support for custom colors in social cards
+
 mkdocs-material-7.2.2+insiders-2.12.2 (2021-08-04)
 
   * Fixed #2891: Division by zero error in social plugin

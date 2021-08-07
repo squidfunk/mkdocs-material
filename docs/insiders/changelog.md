@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.13.0 <small>_ August 7, 2021</small>
+
+- Added support for custom colors in social cards
+
 ### 2.12.2 <small>_ August 4, 2021</small>
 
 - Fixed #2891: Division by zero error in social plugin

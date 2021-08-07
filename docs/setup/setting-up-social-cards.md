@@ -55,6 +55,24 @@ This is a built-in plugin, which means that no third-party plugin needs to be
 installed, as Material for MkDocs already bundles it. The following options
 are available:
 
+`cards_color`{ #cards_color } :material-new-box:
+
+:   :octicons-milestone-24: Default: _automatically set based on [primary
+    color][8]_ – This option specifies which colors to use for the background
+    `fill` and foreground `text` when generating the social card.
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_color:
+            fill: "#0FF1CE"
+            text: "#FFFFFF"
+    ```
+
+    Note that the values for `fill` and `text` can either be HEX color values
+    (e.g. `#0FF1CE`, must be enclosed in quotes) or CSS color keywords (e.g.
+    `red`, `green`, etc.).
+
 `cards_directory`{ #cards_directory }
 
 :   :octicons-milestone-24: Default: `assets/images/social` – This option
@@ -71,10 +89,11 @@ are available:
   [5]: setting-up-site-analytics.md
   [6]: ../assets/screenshots/social-cards.png
   [7]: https://cards-dev.twitter.com/validator
+  [8]: changing-the-colors.md#primary-color
 
 #### Caching
 
-When enabled, the [social cards plugin][8] automatically fetches the fonts you
+When enabled, the [social cards plugin][9] automatically fetches the fonts you
 define in `mkdocs.yml` from Google Fonts, and uses them to render the text that
 is displayed on the social card. The font files and generated cards are both
 written to the `.cache` directory, which is used in subsequent builds to detect
@@ -83,7 +102,7 @@ whether the social cards need to be regenerated. You might want to:
 1. Ignore the `.cache` directory in your project, by adding it to `.gitignore`.
 2. When building your site for publishing, use a build cache to save the
    `.cache` directory in between builds. Taking the example from the
-   [publishing guide][9], add the following lines:
+   [publishing guide][10], add the following lines:
 
     ``` yaml hl_lines="15-18"
     name: ci
@@ -108,18 +127,18 @@ whether the social cards need to be regenerated. You might want to:
             - run: mkdocs gh-deploy --force
     ```
 
-  [8]: #built-in-social-cards
-  [9]: ../publishing-your-site.md#with-github-actions
+  [9]: #built-in-social-cards
+  [10]: ../publishing-your-site.md#with-github-actions
 
 ## Usage
 
 If you want to adjust the title or set a custom description for the social card,
-you can use the [Metadata][10] extension, which takes precedence over the
+you can use the [Metadata][11] extension, which takes precedence over the
 default values.
 
-- [Changing the title][11]
-- [Changing the description][12]
+- [Changing the title][12]
+- [Changing the description][13]
 
-  [10]: ../reference/meta-tags.md#metadata
-  [11]: ../reference/meta-tags.md#setting-the-page-title
-  [12]: ../reference/meta-tags.md#setting-the-page-description
+  [11]: ../reference/meta-tags.md#metadata
+  [12]: ../reference/meta-tags.md#setting-the-page-title
+  [13]: ../reference/meta-tags.md#setting-the-page-description
