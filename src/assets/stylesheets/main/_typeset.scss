@@ -57,8 +57,9 @@ kbd {
 
 // Icon definitions
 :root {
-  --md-typeset-table--ascending: svg-load("material/arrow-down.svg");
-  --md-typeset-table--descending: svg-load("material/arrow-up.svg");
+  --md-typeset-table-sort-icon: svg-load("material/sort.svg");
+  --md-typeset-table-sort-icon--asc: svg-load("material/sort-ascending.svg");
+  --md-typeset-table-sort-icon--desc: svg-load("material/sort-descending.svg");
 }
 
 // ----------------------------------------------------------------------------
@@ -496,10 +497,8 @@ kbd {
     overflow: auto;
     font-size: px2rem(12.8px);
     background-color: var(--md-default-bg-color);
-    border-radius: px2rem(2px);
-    box-shadow:
-      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
-      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+    border: px2rem(1px) solid var(--md-typeset-table-color);
+    border-radius: px2rem(4px);
     touch-action: auto;
 
     // [print]: Reset display mode so table header wraps when printing
@@ -544,9 +543,8 @@ kbd {
     th {
       min-width: px2rem(100px);
       padding: px2em(12px, 12.8px) px2em(16px, 12.8px);
-      color: var(--md-default-bg-color);
+      font-weight: 700;
       vertical-align: top;
-      background-color: var(--md-default-fg-color--light);
 
       // Links in table headings
       a {
@@ -558,22 +556,17 @@ kbd {
     td {
       padding: px2em(12px, 12.8px) px2em(16px, 12.8px);
       vertical-align: top;
-      border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
+      border-top: px2rem(1px) solid var(--md-typeset-table-color);
     }
 
-    // Table row
-    tr {
+    // Table body row
+    tbody tr {
       transition: background-color 125ms;
 
       // Table row on hover
       &:hover {
         background-color: rgba(0, 0, 0, 0.035);
         box-shadow: 0 px2rem(1px) 0 var(--md-default-bg-color) inset;
-      }
-
-      // Hide border on first table row
-      &:first-child td {
-        border-top: 0;
       }
     }
 
@@ -594,21 +587,28 @@ kbd {
       height: 1.2em;
       margin-left: 0.5em;
       vertical-align: sub;
+      mask-image: var(--md-typeset-table-sort-icon);
       mask-repeat: no-repeat;
       mask-size: contain;
+      transition: background-color 125ms;
       content: "";
     }
 
     // Sort ascending
+    &:hover::after {
+      background-color: var(--md-default-fg-color--lighter);
+    }
+
+    // Sort ascending
     &[aria-sort="ascending"]::after {
-      background-color: currentColor;
-      mask-image: var(--md-typeset-table--ascending);
+      background-color: var(--md-default-fg-color--light);
+      mask-image: var(--md-typeset-table-sort-icon--asc);
     }
 
     // Sort descending
     &[aria-sort="descending"]::after {
-      background-color: currentColor;
-      mask-image: var(--md-typeset-table--descending);
+      background-color: var(--md-default-fg-color--light);
+      mask-image: var(--md-typeset-table-sort-icon--desc);
     }
   }
 
