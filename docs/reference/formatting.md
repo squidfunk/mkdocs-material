@@ -121,20 +121,6 @@ document:
 _Example_:
 
 ``` markdown
-Text can be {​--deleted--} and replacement text {​++added++}. This can also be
-combined into {​~~one~>a single~~} operation. {​==Highlighting==} is also
-possible {​>>and comments can be added inline<<}.
-
-{​==
-
-Formatting can also be applied to blocks, by putting the opening and closing
-tags on separate lines and adding new lines between the tags and the content.
-
-==}
-```
-
-_Result_:
-
 Text can be {--deleted--} and replacement text {++added++}. This can also be
 combined into {~~one~>a single~~} operation. {==Highlighting==} is also
 possible {>>and comments can be added inline<<}.
@@ -145,6 +131,25 @@ Formatting can also be applied to blocks, by putting the opening and closing
 tags on separate lines and adding new lines between the tags and the content.
 
 ==}
+```
+
+_Result_:
+
+Text can be <del class="critic">deleted</del> and replacement text
+<ins class="critic">added</ins>. This can also be combined into
+<del class="critic">one</del><ins class="critic">a single</ins> operation.
+<mark class="critic">Highlighting</mark> is also possible
+<span class="critic comment">and comments can be added inline</span>.
+
+<div>
+  <mark class="critic block">
+    <p>
+      Formatting can also be applied to blocks, by putting the opening and
+      closing tags on separate lines and adding new lines between the tags and
+      the content.
+    </p>
+  </mark>
+</div>
 
 ### Highlighting text
 
