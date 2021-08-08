@@ -498,7 +498,7 @@ kbd {
     font-size: px2rem(12.8px);
     background-color: var(--md-default-bg-color);
     border: px2rem(1px) solid var(--md-typeset-table-color);
-    border-radius: px2rem(4px);
+    border-radius: px2rem(2px);
     touch-action: auto;
 
     // [print]: Reset display mode so table header wraps when printing
@@ -586,7 +586,7 @@ kbd {
       width: 1.2em;
       height: 1.2em;
       margin-left: 0.5em;
-      vertical-align: sub;
+      vertical-align: text-bottom;
       mask-image: var(--md-typeset-table-sort-icon);
       mask-repeat: no-repeat;
       mask-size: contain;
