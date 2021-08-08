@@ -134,8 +134,12 @@
 
 // Tab label placeholder
 %tabbed-label {
-  color: var(--md-accent-fg-color);
-  border-color: var(--md-accent-fg-color);
+
+  // [screen]: Show active state
+  @media screen {
+    color: var(--md-accent-fg-color);
+    border-color: var(--md-accent-fg-color);
+  }
 }
 
 // Tab label on keyboard focus placeholder
@@ -165,6 +169,11 @@
     -ms-overflow-style: none;          // IE, Edge
     scrollbar-width: none;             // Firefox
 
+    // [print]: Move one layer up for ordering
+    @media print {
+      display: contents;
+    }
+
     // Webkit scrollbar
     &::-webkit-scrollbar {
       display: none;                   // Chrome, Safari
@@ -184,7 +193,20 @@
       border-top-left-radius: px2rem(2px);
       border-top-right-radius: px2rem(2px);
       cursor: pointer;
-      transition: background-color 250ms, color 250ms;
+      transition:
+        background-color 250ms,
+        color            250ms;
+
+      // [print]: Intersperse labels with containers
+      @media print {
+
+        // Ensure correct order of labels
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            order: $i;
+          }
+        }
+      }
 
       // Tab label on hover
       &:hover {
@@ -195,16 +217,34 @@
 
   // Tab block container
   .tabbed-alternate {
+    flex-direction: column;
 
     // Tab content container
     .tabbed-content {
       all: initial;
       width: 100%;
+
+      // [print]: Move one layer up for ordering
+      @media print {
+        display: contents;
+      }
     }
 
     // Tab content
     .tabbed-subcontent {
       display: none;
+
+      // [print]: Intersperse labels with containers
+      @media print {
+        display: block;
+
+        // Ensure correct order of containers
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            order: $i;
+          }
+        }
+      }
 
       // Code block is the only child of a tab - remove margin and mirror
       // previous (now deprecated) SuperFences code block grouping behavior
