@@ -594,18 +594,18 @@ kbd {
       content: "";
     }
 
-    // Sort ascending
+    // Show sort icon on hover
     &:hover::after {
       background-color: var(--md-default-fg-color--lighter);
     }
 
-    // Sort ascending
+    // Sort ascending icon
     &[aria-sort="ascending"]::after {
       background-color: var(--md-default-fg-color--light);
       mask-image: var(--md-typeset-table-sort-icon--asc);
     }
 
-    // Sort descending
+    // Sort descending icon
     &[aria-sort="descending"]::after {
       background-color: var(--md-default-fg-color--light);
       mask-image: var(--md-typeset-table-sort-icon--desc);
