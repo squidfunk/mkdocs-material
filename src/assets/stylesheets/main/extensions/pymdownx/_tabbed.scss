@@ -20,6 +20,8 @@
 /// DEALINGS
 ////
 
+@use "sass:selector";
+
 // ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
@@ -117,6 +119,135 @@
       // Tab label on hover
       &:hover {
         color: var(--md-accent-fg-color);
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// See https://github.com/facelessuser/pymdown-extensions/issues/1415
+// ----------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------
+// Placeholders: improve colocation for better compression
+// ----------------------------------------------------------------------------
+
+// Tab label placeholder
+%tabbed-label {
+  color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+}
+
+// Tab label on keyboard focus placeholder
+%tabbed-label-focus-visible {
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+// Tab content placeholder
+%tabbed-content {
+  display: block;
+}
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset { // stylelint-disable-line
+
+  // Tab labels container
+  .tabbed-labels {
+    display: flex;
+    width: 100%;
+    overflow: auto;
+    box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest) inset;
+    scroll-snap-type: x proximity;
+    -ms-overflow-style: none;          // IE, Edge
+    scrollbar-width: none;             // Firefox
+
+    // Webkit scrollbar
+    &::-webkit-scrollbar {
+      display: none;                   // Chrome, Safari
+    }
+
+    // Tab label
+    > label {
+      z-index: 1;
+      width: auto;
+      padding: px2em(12px, 12.8px) 1.25em px2em(10px, 12.8px);
+      color: var(--md-default-fg-color--light);
+      font-weight: 700;
+      font-size: px2rem(12.8px);
+      white-space: nowrap;
+      border-bottom: px2rem(2px) solid transparent;
+      scroll-snap-align: start;
+      border-top-left-radius: px2rem(2px);
+      border-top-right-radius: px2rem(2px);
+      cursor: pointer;
+      transition: background-color 250ms, color 250ms;
+
+      // Tab label on hover
+      &:hover {
+        color: var(--md-accent-fg-color);
+      }
+    }
+  }
+
+  // Tab block container
+  .tabbed-alternate {
+
+    // Tab content container
+    .tabbed-content {
+      all: initial;
+      width: 100%;
+    }
+
+    // Tab content
+    .tabbed-subcontent {
+      display: none;
+
+      // Code block is the only child of a tab - remove margin and mirror
+      // previous (now deprecated) SuperFences code block grouping behavior
+      > pre:only-child,
+      > .highlight:only-child pre,
+      > .highlighttable:only-child {
+        margin: 0;
+
+        // Omit rounded borders
+        > code {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+
+      // Adjust spacing for nested tab
+      > .tabbed-set {
+        margin: 0;
+      }
+    }
+
+    // Tab label states
+    @for $i from 10 through 1 {
+      input:nth-child(#{$i}) {
+
+        // Tab is active
+        &:checked {
+
+          // Tab label
+          ~ .tabbed-labels > :nth-child(#{$i}) {
+            @extend %tabbed-label;
+          }
+
+          // Tab content
+          ~ .tabbed-content > :nth-child(#{$i}) {
+            @extend %tabbed-content;
+          }
+        }
+
+        // Tab on keyboard focus
+        &.focus-visible ~ .tabbed-labels > :nth-child(#{$i}) {
+          @extend %tabbed-label-focus-visible;
+        }
       }
     }
   }

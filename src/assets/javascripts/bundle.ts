@@ -21,20 +21,25 @@
  */
 
 import "focus-visible"
-import { NEVER, Subject, defer, merge } from "rxjs"
+import { NEVER, Subject, defer, fromEvent, merge, of } from "rxjs"
 import {
   delay,
   filter,
   map,
+  mapTo,
+  mergeMap,
   mergeWith,
   shareReplay,
-  switchMap
+  switchMap,
+  tap
 } from "rxjs/operators"
 
 import { configuration, feature } from "./_"
 import {
   at,
   getElement,
+  getElementOrThrow,
+  getElements,
   requestJSON,
   setToggle,
   watchDocument,
@@ -252,3 +257,20 @@ window.screen$    = screen$            /* Screen observable */
 window.print$     = print$             /* Print mode observable */
 window.alert$     = alert$             /* Alert subject */
 window.component$ = component$         /* Component observable */
+
+/* ----------------------------------------------------------------------------
+ * Temporary, before we integrate this into master
+ * ------------------------------------------------------------------------- */
+
+document$
+  .pipe(
+    switchMap(() => of(...getElements(".tabbed-alternate > input"))
+      .pipe(
+        mergeMap(el => fromEvent(el, "change").pipe(mapTo(el))),
+        map(el => getElementOrThrow(`label[for=${el.id}]`))
+      )
+    )
+  )
+    .subscribe(el => {
+      el.scrollIntoView({ behavior: "smooth",  block: "nearest" })
+    })
