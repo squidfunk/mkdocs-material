@@ -221,8 +221,10 @@
 
     // Tab content container
     .tabbed-content {
-      all: initial;
+      display: initial;
+      order: initial;
       width: 100%;
+      box-shadow: initial;
 
       // [print]: Move one layer up for ordering
       @media print {
