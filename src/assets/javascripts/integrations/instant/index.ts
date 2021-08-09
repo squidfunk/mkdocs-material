@@ -120,7 +120,7 @@ function preprocess(urls: string[]): string[] {
   /* Replace common prefix (i.e. base) with effective base */
   const config = configuration()
   return urls.map(url => (
-    url.replace(root.slice(0, index), `${config.base}/`)
+    url.replace(root.slice(0, index), config.base)
   ))
 }
 
@@ -173,7 +173,7 @@ export function setupInstantLoading(
     favicon.href = favicon.href
 
   /* Intercept internal navigation */
-  const push$ = requestXML(`${config.base}/sitemap.xml`)
+  const push$ = requestXML(new URL("sitemap.xml", config.base))
     .pipe(
       map(sitemap => preprocess(getElements("loc", sitemap)
         .map(node => node.textContent!)

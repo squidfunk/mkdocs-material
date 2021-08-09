@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.2.3 <small>_ August 9, 2021</small>
+
+- Slight facelift of data tables, now closer to Material Design
+- Fixed instant loading not respecting clicks on search results
+- Fixed #2881: Invalid anchor offsets when using instant loading
+
 ### 7.2.2 <small>_ July 31, 2021</small>
 
 - Updated Korean translations
