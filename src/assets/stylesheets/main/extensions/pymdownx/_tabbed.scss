@@ -232,8 +232,8 @@
       }
     }
 
-    // Tab content
-    .tabbed-subcontent {
+    // Tab content - TODO: nested tabs might break here...
+    .tabbed-subcontent { // TODO: this might not be necessary to nest under .tabbed-alternate!
       display: none;
 
       // [print]: Intersperse labels with containers
