@@ -117,7 +117,7 @@ export function setupSearchWorker(
         if (isSearchResultMessage(message)) {
           for (const result of message.data.items)
             for (const document of result)
-              document.location = `${config.base}/${document.location}`
+              document.location = `${new URL(document.location, config.base)}`
         }
         return message
       }),

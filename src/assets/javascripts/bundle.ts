@@ -99,7 +99,7 @@ const print$    = watchPrint()
 const config = configuration()
 const index$ = document.forms.namedItem("search")
   ? __search?.index || requestJSON<SearchIndex>(
-    `${config.base}/search/search_index.json`
+    new URL("search/search_index.json", config.base)
   )
   : NEVER
 
