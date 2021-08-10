@@ -162,7 +162,7 @@
   // Tab labels container
   .tabbed-labels {
     display: flex;
-    width: 100%;
+    max-width: 100vw; // TODO: see if we can use something else
     overflow: auto;
     box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest) inset;
     scroll-snap-type: x proximity;
@@ -212,6 +212,17 @@
       &:hover {
         color: var(--md-accent-fg-color);
       }
+    }
+  }
+
+  // [mobile -]: Align with body copy
+  @include break-to-device(mobile) {
+
+    // Top-level tab label containers
+    > .tabbed-alternate .tabbed-labels {
+      margin: 1em px2rem(-16px);
+      padding: 0 px2rem(16px);
+      scroll-padding: 0 px2rem(16px);
     }
   }
 
