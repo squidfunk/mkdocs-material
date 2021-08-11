@@ -27,6 +27,7 @@ import {
   of
 } from "rxjs"
 import {
+  finalize,
   map,
   mapTo,
   mergeMap,
@@ -140,7 +141,8 @@ export function mountPalette(
   const inputs = getElements<HTMLInputElement>("input", el)
   return watchPalette(inputs)
     .pipe(
-      tap(internal$),
+      tap(state => internal$.next(state)),
+      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

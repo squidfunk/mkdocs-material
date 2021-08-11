@@ -23,6 +23,7 @@
 import { Observable, Subject, animationFrameScheduler } from "rxjs"
 import {
   distinctUntilKeyChanged,
+  finalize,
   map,
   observeOn,
   switchMap,
@@ -135,7 +136,8 @@ export function mountTabs(
   /* Create and return component */
   return watchTabs(el, options)
     .pipe(
-      tap(internal$),
+      tap(state => internal$.next(state)),
+      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

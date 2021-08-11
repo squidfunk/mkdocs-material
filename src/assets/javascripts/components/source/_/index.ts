@@ -24,6 +24,7 @@ import { NEVER, Observable, Subject, defer, of } from "rxjs"
 import {
   catchError,
   filter,
+  finalize,
   map,
   shareReplay,
   tap
@@ -117,7 +118,8 @@ export function mountSource(
   /* Create and return component */
   return watchSource(el)
     .pipe(
-      tap(internal$),
+      tap(state => internal$.next(state)),
+      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }
