@@ -28,8 +28,8 @@ import {
   of
 } from "rxjs"
 import {
-  finalize,
   delay,
+  finalize,
   map,
   observeOn,
   switchMap,
