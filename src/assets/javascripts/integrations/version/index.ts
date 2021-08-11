@@ -33,7 +33,7 @@ import { Version, renderVersionSelector } from "~/templates"
  */
 export function setupVersionSelector(): void {
   const config = configuration()
-  requestJSON<Version[]>(new URL("versions.json", config.base))
+  requestJSON<Version[]>(new URL("../versions.json", config.base))
     .subscribe(versions => {
       const topic = getElementOrThrow(".md-header__topic")
       topic.appendChild(renderVersionSelector(versions))
