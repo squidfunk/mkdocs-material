@@ -1,3 +1,8 @@
+mkdocs-material-7.2.4 (2021-08-11)
+
+  * Fixed #2926: Version selector not working (7.2.3 regression)
+  * Fixed #2929: Missing CSS class for banner (consistency with Insiders)
+
 mkdocs-material-7.2.3 (2021-08-09)
 
   * Slight facelift of data tables, now closer to Material Design

@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.2.4 <small>_ August 11, 2021</small>
+
+- Fixed #2926: Version selector not working (7.2.3 regression)
+- Fixed #2929: Missing CSS class for banner (consistency with Insiders)
+
 ### 7.2.3 <small>_ August 9, 2021</small>
 
 - Slight facelift of data tables, now closer to Material Design
