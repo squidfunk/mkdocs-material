@@ -137,11 +137,12 @@ For other installation methods, configuration options, and a demo, visit
 
 ## Trusted by ...
 
-### ... leading companies
+### ... leading organizations
 
 [Atlassian](https://atlassian-labs.github.io/data-center-helm-charts/),
 [AWS](https://aws.github.io/copilot-cli/),
 [Binance](https://docs.binance.org/),
+[CERN](http://abpcomputing.web.cern.ch/),
 [Datadog](https://datadoghq.dev/integrations-core/),
 [Google](https://google.github.io/accompanist/),
 [ING](https://ing-bank.github.io/baker/),
