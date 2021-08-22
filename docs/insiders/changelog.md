@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.13.1 <small>_ August 21, 2021</small>
+
+- Fixed #2948: Social cards are not cached
+- Fixed #2953: Mermaid.js diagrams can't be centered anymore
+
 ### 2.13.0 <small>_ August 7, 2021</small>
 
 - Added support for custom colors in social cards

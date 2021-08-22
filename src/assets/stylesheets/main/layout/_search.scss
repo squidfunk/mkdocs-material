@@ -53,7 +53,7 @@
     // [tablet portrait -]: Search modal
     @include break-to-device(tablet portrait) {
       position: absolute;
-      top: px2rem(4px);
+      top: px2rem(-20px);
       left: px2rem(-44px);
       width: px2rem(40px);
       height: px2rem(40px);
