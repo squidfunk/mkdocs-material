@@ -60,7 +60,7 @@
     "@typescript-eslint/parser": "^4.29.1",
     "autoprefixer": "^10.3.1",
     "chokidar": "^3.5.2",
-    "cssnano": "^5.0.7",
+    "cssnano": "^5.0.8",
     "esbuild": "^0.12.20",
     "eslint": "^7.32.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
