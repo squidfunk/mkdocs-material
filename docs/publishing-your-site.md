@@ -20,13 +20,13 @@ charge and pretty easy to set up.
 
 Using [GitHub Actions][2] you can automate the deployment of your project
 documentation. At the root of your repository, create a new GitHub Actions
-workflow, e.g. `.github/workflows/ci.yml`, and copy and paste the following
+workflow, e.g. `.github/workflows/deploy.yml`, and copy and paste the following
 contents:
 
 === "Material for MkDocs"
 
     ``` yaml
-    name: ci # (1)
+    name: Deploy # (1)
     on:
       push:
         branches: # (2)
@@ -62,7 +62,7 @@ contents:
 === "Insiders"
 
     ``` yaml
-    name: ci
+    name: deploy
     on:
       push:
         branches:
