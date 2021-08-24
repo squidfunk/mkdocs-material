@@ -83,7 +83,7 @@ export function mountSearchHiglight(
       )
   ])
     .pipe(
-      map(([index, url]) => setupSearchHighlighter(index.config)(
+      map(([index, url]) => setupSearchHighlighter(index.config, true)(
         url.searchParams.get("h")!
       )),
       map(fn => {
