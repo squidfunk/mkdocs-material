@@ -1,3 +1,9 @@
+mkdocs-material-7.2.5 (2021-08-25)
+
+  * Updated Portuguese translations
+  * Fixed execution of RxJS teardown logic (7.2.3 regression)
+  * Fixed #2970: Search results show escaped characters (7.2.2 regression)
+
 mkdocs-material-7.2.4+insiders-2.13.1 (2021-08-22)
 
   * Fixed #2948: Social cards are not cached

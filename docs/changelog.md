@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.2.5 <small>_ August 25, 2021</small>
+
+- Updated Portuguese translations
+- Fixed execution of RxJS teardown logic (7.2.3 regression)
+- Fixed #2970: Search results show escaped characters (7.2.2 regression)
+
 ### 7.2.4 <small>_ August 11, 2021</small>
 
 - Fixed #2926: Version selector not working (7.2.3 regression)
