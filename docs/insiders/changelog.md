@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.13.2 <small>_ August 25, 2021</small>
+
+- Fixed #2965: Social plugin error when primary color is not defined
+
 ### 2.13.1 <small>_ August 21, 2021</small>
 
 - Fixed #2948: Social cards are not cached

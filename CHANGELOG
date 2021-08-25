@@ -1,3 +1,7 @@
+mkdocs-material-7.2.5+insiders-2.13.2 (2021-08-25)
+
+  * Fixed #2965: Social plugin error when primary color is not defined
+
 mkdocs-material-7.2.5 (2021-08-25)
 
   * Updated Portuguese translations
