@@ -7,7 +7,7 @@
   {% if toc | first is defined and "\x3ch1 id=" in page.content %}
     {% set toc = (toc | first).children %}
   {% endif %}
-  {% if toc | first is defined %}
+  {% if toc | first is defined and not page.meta.hide_toc %}
     <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc %}
         {% include "partials/toc-item.html" %}

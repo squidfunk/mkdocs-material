@@ -37,7 +37,7 @@
   {% endif %}
 
   <!-- Render item list -->
-  {% if toc | first is defined %}
+  {% if toc | first is defined and not page.meta.hide_toc %}
     <!-- <label class="md-nav__title">
       <span class="md-nav__icon md-icon">
         {% include ".icons/material/arrow-left.svg" %}
