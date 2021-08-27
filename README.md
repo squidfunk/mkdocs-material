@@ -158,6 +158,7 @@ For other installation methods, configuration options, and a demo, visit
 
 ### ... and successful Open Source projects
 
+[Arduino](https://arduino.github.io/arduino-cli/),
 [AutoKeras](https://autokeras.com/),
 [BFE](https://www.bfe-networks.net/),
 [Crystal](https://crystal-lang.org/reference/),
