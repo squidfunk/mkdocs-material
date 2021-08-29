@@ -39,6 +39,7 @@ import {
 export interface GlobalSearchConfig {
   transform?: SearchTransformFn        /* Transformation function */
   index?: Promise<SearchIndex>         /* Alternate index */
+  worker?: string                      /* Alternate worker URL */
 }
 
 /* ------------------------------------------------------------------------- */

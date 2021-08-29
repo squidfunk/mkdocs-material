@@ -95,7 +95,8 @@ export function mountSearch(
 ): Observable<Component<Search>> {
   const config = configuration()
   try {
-    const worker = setupSearchWorker(config.search, index$)
+    const url = __search?.worker || config.search
+    const worker = setupSearchWorker(url, index$)
 
     /* Retrieve query and result components */
     const query  = getComponentElement("search-query", el)
