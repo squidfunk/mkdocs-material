@@ -30,7 +30,7 @@
     "check": "run-p check:*",
     "check:build": "tsc --noEmit",
     "check:style": "run-p check:style:*",
-    "check:style:scss": "stylelint \"src/assets/**/*.scss\"",
+    "check:style:scss": "stylelint \"src/**/*.scss\"",
     "check:style:ts": "eslint --cache \"src/**/*.ts\"",
     "start": "ts-node -T tools/build --verbose --dirty --watch",
     "upgrade": "run-s upgrade:*",
