@@ -1,3 +1,8 @@
+mkdocs-material-7.2.6 (2021-09-01)
+
+  * Fixed rendering of blockquote elements (7.0.0 regression)
+  * Fixed #2973: Custom search worker setting ignored
+
 mkdocs-material-7.2.5+insiders-2.13.2 (2021-08-25)
 
   * Fixed #2965: Social plugin error when primary color is not defined

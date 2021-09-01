@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.2.6 <small>_ September 1, 2021</small>
+
+- Fixed rendering of `blockquote` elements (7.0.0 regression)
+- Fixed #2973: Custom search worker setting ignored
+
 ### 7.2.5 <small>_ August 25, 2021</small>
 
 - Updated Portuguese translations
