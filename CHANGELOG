@@ -1,3 +1,7 @@
+mkdocs-material-7.2.6+insiders-2.13.3 (2021-09-01)
+
+  * Added support for disabling social card generation
+
 mkdocs-material-7.2.6 (2021-09-01)
 
   * Fixed rendering of blockquote elements (7.0.0 regression)

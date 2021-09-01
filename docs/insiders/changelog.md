@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 2.13.3 <small>_ September 1, 2021</small>
+
+- Added support for disabling social card generation
+
 ### 2.13.2 <small>_ August 25, 2021</small>
 
 - Fixed #2965: Social plugin error when primary color is not defined
