@@ -59,8 +59,7 @@
 
 <h2></h2>
 <p>&nbsp;</p>
-<h3 id="premium-sponsors" align="center">Special thanks to</h3>
-<p align="center">our premium sponsors</p>
+<p id="premium-sponsors" align="center"><strong>Special thanks</strong> to our <strong>premium sponsors</strong>:</p>
 <p>&nbsp;</p>
 <p align="center">
   <a href="https://hummingbot.io/" target=_blank><img
