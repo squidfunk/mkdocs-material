@@ -27,6 +27,21 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
+  // Premium sponsors
+  .mdx-premium {
+
+    // Paragraphs
+    p {
+      margin: 2em 0;
+      text-align: center;
+    }
+
+    // Images
+    img {
+      height: px2rem(40px);
+    }
+  }
+
   // Sponsorship
   .mdx-sponsorship {
 

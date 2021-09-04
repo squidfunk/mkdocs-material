@@ -98,6 +98,26 @@ You can cancel your sponsorship anytime.[^4]
 
 [:octicons-heart-fill-24:{ .mdx-heart } &nbsp; Join our <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span> awesome sponsors][5]{ .md-button .md-button--primary .mdx-sponsorship-button }
 
+<hr />
+
+<div class="mdx-premium" markdown="1">
+
+**Special thanks** to our **premium sponsors**:
+
+[![Hummingbot]](https://hummingbot.io/){ target=_blank }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![Basler]](https://docs.baslerweb.com/){ target=_blank }
+&nbsp;&nbsp;
+[![Cirrus CI]](https://cirrus-ci.org/){ target=_blank }
+
+</div>
+
+  [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/hummingbot.png
+  [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/basler.png
+  [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg
+
+<hr />
+
 <div class="mdx-sponsorship" data-mdx-component="sponsorship" hidden>
   <div class="mdx-sponsorship__list"></div>
   <small>
