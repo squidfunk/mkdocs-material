@@ -60,7 +60,7 @@
     "@types/sass": "^1.16.1",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
-    "autoprefixer": "^10.3.3",
+    "autoprefixer": "^10.3.4",
     "chokidar": "^3.5.2",
     "cssnano": "^5.0.8",
     "esbuild": "^0.12.24",
