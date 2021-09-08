@@ -145,6 +145,7 @@ For other installation methods, configuration options, and a demo, visit
 [Atlassian](https://atlassian.github.io/data-center-helm-charts/),
 [AWS](https://aws.github.io/copilot-cli/),
 [Binance](https://docs.binance.org/),
+[Bloomberg](https://bloomberg.github.io/selekt/),
 [CERN](http://abpcomputing.web.cern.ch/),
 [Datadog](https://datadoghq.dev/integrations-core/),
 [Google](https://google.github.io/accompanist/),
