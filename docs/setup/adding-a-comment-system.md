@@ -77,6 +77,8 @@ In order to integrate another JavaScript-based comment system provider, you can
 [extend the theme][7] and [override the `disqus` block][8]:
 
 ``` html
+{% extends "base.html" %}
+
 {% block disqus %}
   <!-- Add custom comment system integration here -->
 {% endblock %}

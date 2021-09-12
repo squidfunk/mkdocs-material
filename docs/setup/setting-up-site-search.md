@@ -312,6 +312,8 @@ customize the `transform` function, you can do this by [overriding the
 `config` block][24]:
 
 ``` html
+{% extends "base.html" %}
+
 {% block config %}
   {{ super() }}
   <script>
