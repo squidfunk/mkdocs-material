@@ -1,7 +1,7 @@
 ---
 template: overrides/main.html
 search:
-  boost: 0.5
+  exclude: true
 ---
 
 # Search: better, faster, smaller
@@ -51,7 +51,7 @@ const index$ = document.forms.namedItem("search")
 
 The search index includes a stripped-down version of all pages. Let's take a look at an example, to understand precisely what the search index contains from the original Markdown file:
 
-??? example "Expand to see full example"
+??? example "Expand to inspect example"
 
     === "`docs/page.md`"
 
@@ -99,23 +99,23 @@ The search index includes a stripped-down version of all pages. Let's take a loo
           "docs": [
             {
               "location": "page/",
-              "text": "Example Text It's very easy to make some words bold and other words italic with Markdown. You can even add links , or even code : if (isAwesome) { return true } Lists Sometimes you want numbered lists: One Two Three Sometimes you want bullet points: Start a line with a star Profit!",
-              "title": "Example"
+              "title": "Example",
+              "text": "Example Text It's very easy to make some words bold and other words italic with Markdown. You can even add links , or even code : if (isAwesome) { return true } Lists Sometimes you want numbered lists: One Two Three Sometimes you want bullet points: Start a line with a star Profit!"
             },
             {
               "location": "page/#example",
-              "text": "",
-              "title": "Example"
+              "title": "Example",
+              "text": ""
             },
             {
               "location": "page/#text",
-              "text": "It's very easy to make some words bold and other words italic with Markdown. You can even add links , or even code : if (isAwesome) { return true }",
-              "title": "Text"
+              "title": "Text",
+              "text": "It's very easy to make some words bold and other words italic with Markdown. You can even add links , or even code : if (isAwesome) { return true }"
             },
             {
               "location": "page/#lists",
-              "text": "Sometimes you want numbered lists: One Two Three Sometimes you want bullet points: Start a line with a star Profit!",
-              "title": "Lists"
+              "title": "Lists",
+              "text": "Sometimes you want numbered lists: One Two Three Sometimes you want bullet points: Start a line with a star Profit!"
             }
           ]
         }
@@ -128,7 +128,7 @@ If we inspect the search index, we immediately see several problems:
   2. __All structure is lost__: when the search index is built, all structural information like HTML tags and attributes are stripped from the content. While this approach works well for paragraphs and inline formatting, it might be problematic for lists and code blocks. An excerpt:
 
     ```
-    [...] links , or even code : if (isAwesome) { ... } Lists Sometimes [...]
+    … links , or even code : if (isAwesome) { … } Lists Sometimes you want …
     ```
 
     - __Context__: for an untrained eye, the result can look like gibberish, as it's not immediately apparent what classifies as text and what as code. Furthermore, it's not clear that `Lists` is a headline as it's merged with the code block before and the paragraph after it.
@@ -168,7 +168,7 @@ This is where the current search preview generation falls short, as some of the 
 
 <figure markdown="1">
 
-[![Search previews][16]][16]
+![Search previews][16]
 
   <figcaption markdown="1">
 
@@ -182,10 +182,10 @@ A better solution to this problem has been on the roadmap for a very, very long 
 1. __Word boundaries__: some themes[^2] for static site generators generate search previews by expanding the text left and right next to an occurrence, stopping at a whitespace character when enough words have been consumed. A preview might look like this:
 
     ``` 
-    ... channels, e.g. or which can be configured via mkdocs.yml.
+    … channels, e.g. or which can be configured via mkdocs.yml.
     ```
 
-    While this may work for languages that use whitespace as a separator between words, it breaks down for languages like Japanese or Chinese[^2], as they have non-whitespace word boundaries and use dedicated segmenters to split strings into tokens.
+    While this may work for languages that use whitespace as a separator between words, it breaks down for languages like Japanese or Chinese[^3], as they have non-whitespace word boundaries and use dedicated segmenters to split strings into tokens.
 
   [^2]: At the time of writing, [Just the Docs][17] and [Docusaurus][18] use this method for generating search previews. Note that the latter by default uses Algolia, which is a fully managed server-based solution.
 
@@ -204,32 +204,125 @@ A better solution to this problem has been on the roadmap for a very, very long 
 
 After we built a solid understanding of the problem space and before we dive into the internals of the new search implementation to see which of the problems it already solves, a quick overview:
 
-- __Better__: support for [rich search results][19], preserving the structural information of code blocks, inline code and lists, so they are rendered as-is, as well as more [accurate highlighting][20] and improved stability of typeahead. Additionall, some small [interface improvements][21].
-- __Faster__: Up to 40% faster indexing and querying
-- __Smaller__: Up to 50% savings in index size
+- __Better__: support for [rich search previews][19], preserving the structural information of code blocks, inline code and lists, so they are rendered as-is, as well as [lookahead tokenization][20], [more accurate highlighting][21], and improved stability of typeahead. Also, a [slightly better UX][22].
+- __Faster__ and __smaller__: significant decrease in search index size of up to 50%, due to improved extraction and construction techniques, resulting in up to 40% faster search, yielding huge improvements, particularly for large documentation projects.
 
-  [19]: #rich-search-results
-  [20]: #accurate-highlighting
-  [21]: #interface-improvements
+  [19]: #rich-search-previews
+  [20]: #tokenizer-lookahead
+  [21]: #
+  [22]: #
 
-### Rich search results
+### Rich search previews
 
-- HTML awareness
-- tokenization now
-- faster indexing
-- smaller index size
-- faster search results
+As we've rebuilt the search plugin from scratch, we reworked the construction of the search index to preserve the structural information of code blocks, inline code, as well as unordered and ordered lists. Using the example from the [search index][23] section, here's how it looks:
+
+=== "Now"
+
+    ![Search preview now][24]
+
+=== "Before"
+
+    ![Search preview before][25]
+
+Now, code blocks are first-class citizens of search previews, and even inline code formatting is preserved. Let's take a look at the new structure of the search index to understand why:
+
+??? example "Expand to inspect search index"
+
+    === "Now"
+
+        ``` json
+        {
+          ...
+          "docs": [
+            {
+              "location": "page/",
+              "title": "Example",
+              "text": ""
+            },
+            {
+              "location": "page/#text",
+              "title": "Text",
+              "text": "<p>It's very easy to make some words bold and other words italic with Markdown. You can even add links, or even <code>code</code>:</p> <pre><code>if (isAwesome){\n  return true\n}\n</code></pre>"
+            },
+            {
+              "location": "page/#lists",
+              "title": "Lists",
+              "text": "<p>Sometimes you want numbered lists:</p> <ol> <li>One</li> <li>Two</li> <li>Three</li> </ol> <p>Sometimes you want bullet points:</p> <ul> <li>Start a line with a star</li> <li>Profit!</li> </ul>"
+            }
+          ]
+        }
+        ```
+
+    === "Before"
+
+        ``` json
+        {
+          ...
+          "docs": [
+            {
+              "location": "page/",
+              "title": "Example",
+              "text": "Example Text It's very easy to make some words bold and other words italic with Markdown. You can even add links , or even code : if (isAwesome) { return true } Lists Sometimes you want numbered lists: One Two Three Sometimes you want bullet points: Start a line with a star Profit!"
+            },
+            {
+              "location": "page/#example",
+              "title": "Example",
+              "text": ""
+            },
+            {
+              "location": "page/#text",
+              "title": "Text",
+              "text": "It's very easy to make some words bold and other words italic with Markdown. You can even add links , or even code : if (isAwesome) { return true }"
+            },
+            {
+              "location": "page/#lists",
+              "title": "Lists",
+              "text": "Sometimes you want numbered lists: One Two Three Sometimes you want bullet points: Start a line with a star Profit!"
+            }
+          ]
+        }
+        ```
+
+If we inspect the search index again, we can see how the situation improved:
+
+1. __All content is included once__: the search index does not include the content of the page twice, as only the sections of a page are part of the search index. This leads to a significant reduction in size, fewer bytes to transfer and a smaller search index.
+
+2. __Some structure is preserved__: each section of the search index includes a small subset of HTML to provide the necessary structure to allow for more sophisticated search previews. Revisiting our example from before, let's look at an excerpt:
+
+    === "Now"
+
+        ``` html
+        … links, or even <code>code</code>:</p> <pre><code>if (isAwesome){ … }\n</code></pre>
+        ```
+
+    === "Before"
+
+        ```
+        … links , or even code : if (isAwesome) { … }
+        ```
+
+    The punctuation issue is gone, as no additional whitespace is inserted, and the preserved markup yields additional context to make scanning search results more effective.
+
+On to the next step in the process: __tokenization__.
+
+  [23]: #search-index
+  [24]: search-better-faster-smaller/search-preview-now.png
+  [25]: search-better-faster-smaller/search-preview-before.png
+
+### Tokenizer lookahead
+
+- explain tokenization
+- add examples explaining lookahead
+    - camelcase
+    - version numbers
+    - code examples (<> etc...)
 
 ## Highlighting
 
-x the problem with highlighting
-x how highlighting was implemented
+- the problem with highlighting
+- how highlighting was implemented
 - how its implemented now
 - division into blocks
-- lookahead tokenization
-
-- add "jump to improvements"
 - ux improvements
-  - scrolling more butotn
-
-## 
+  - scrolling more button
+  - search exclude
