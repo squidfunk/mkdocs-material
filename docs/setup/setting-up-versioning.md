@@ -76,6 +76,8 @@ visits any other version than the latest version. Using [theme extension][8],
 you can [define the `outdated` block][9]:
 
 ``` html
+{% extends "base.html" %}
+
 {% block outdated %}
   You're not viewing the latest version.
   <a href="{{ '../' ~ base_url }}"> <!-- (1) -->

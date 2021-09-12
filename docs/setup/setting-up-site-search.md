@@ -180,9 +180,6 @@ Searching for [:octicons-search-24: ^^code blocks^^][12] yields:
 
 [![Search highlighting][13]][13]
 
-  </figcaption>
-</figure>
-
   [11]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/highlight/index.ts
   [12]: ../reference/code-blocks.md?h=code+blocks
   [13]: ../assets/screenshots/search-highlighting.png
@@ -312,6 +309,8 @@ customize the `transform` function, you can do this by [overriding the
 `config` block][24]:
 
 ``` html
+{% extends "base.html" %}
+
 {% block config %}
   {{ super() }}
   <script>
