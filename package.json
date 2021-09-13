@@ -80,7 +80,7 @@
     "postcss-inline-svg": "^5.0.0",
     "preact": "^10.5.14",
     "rimraf": "^3.0.2",
-    "sass": "^1.39.0",
+    "sass": "^1.39.2",
     "stylelint": "^13.13.1",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^5.0.0",
