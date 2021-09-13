@@ -53,7 +53,7 @@ configuring syntax highlighting of code blocks:
         respective stylesheet and JavaScript from a [CDN][9] serving
         Highlight.js in `mkdocs.yml`:
 
-        === "docs/javascripts/config.js"
+        === "`docs/javascripts/config.js`"
 
             ``` js
             document$.subscribe(() => {
@@ -61,7 +61,7 @@ configuring syntax highlighting of code blocks:
             })
             ```
 
-        === "mkdocs.yml"
+        === "`mkdocs.yml`"
 
             ``` yaml
             extra_javascript:

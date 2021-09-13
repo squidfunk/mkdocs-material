@@ -76,7 +76,7 @@ and embed them into any other file.
 
 _Example_:
 
-=== "docs/page.md"
+=== "`docs/page.md`"
 
     ```` markdown
     The HTML specification is maintained by the W3C.
@@ -84,7 +84,7 @@ _Example_:
     --8<-- "includes/abbreviations.md"
     ````
 
-=== "includes/abbreviations.md"
+=== "`includes/abbreviations.md`"
 
     ```` markdown
     *[HTML]: Hyper Text Markup Language

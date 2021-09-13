@@ -46,7 +46,8 @@ jobs:
           pip install .
           pip install \
             mkdocs-minify-plugin>=0.3 \
-            mkdocs-redirects>=1.0
+            mkdocs-redirects>=1.0 \
+            mkdocs-rss-plugin>=0.17
 
       - name: Install Insiders build
         if: github.event.repository.fork == false

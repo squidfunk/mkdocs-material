@@ -152,7 +152,7 @@ theme:
     - search.suggest
 ```
 
-Searching for [:octicons-search-24: ^^search su^^][9] yields ^^search suggestions^^ as a suggestion:
+Searching for [:octicons-search-24: search su][9] yields ^^search suggestions^^ as a suggestion:
 
 [![Search suggestions][10]][10]
 
@@ -176,7 +176,7 @@ theme:
     - search.highlight
 ```
 
-Searching for [:octicons-search-24: ^^code blocks^^][12] yields:
+Searching for [:octicons-search-24: code blocks][12] yields:
 
 [![Search highlighting][13]][13]
 
