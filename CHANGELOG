@@ -1,3 +1,11 @@
+mkdocs-material-7.2.6+insiders-3.0.0 (2021-09-13)
+
+  * Rewrite of MkDocs' search plugin
+  * Added support for rich search previews
+  * Added support for tokenizer with lookahead
+  * Improved search indexing performance (twice as fast)
+  * Improved search highlighting
+
 mkdocs-material-7.2.6+insiders-2.13.3 (2021-09-01)
 
   * Added support for disabling social card generation

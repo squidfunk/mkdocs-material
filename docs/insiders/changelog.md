@@ -6,6 +6,14 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 3.0.0 <small>_ September 13, 2021</small>
+
+- Rewrite of MkDocs' search plugin
+- Added support for rich search previews
+- Added support for tokenizer with lookahead
+- Improved search indexing performance (twice as fast)
+- Improved search highlighting
+
 ### 2.13.3 <small>_ September 1, 2021</small>
 
 - Added support for disabling social card generation

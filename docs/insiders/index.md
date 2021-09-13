@@ -137,9 +137,13 @@ The following features are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown="1">
 
-- [x] [Social cards :material-new-box:][34]
-- [x] [Cookie consent :material-new-box:][33]
-- [x] [Linking content tabs :material-new-box:][32]
+- [x] [Brand new search plugin :material-new-box:][35]
+- [x] [Rich search previews :material-new-box:][36]
+- [x] [Tokenizer with lookahead :material-new-box:][37]
+- [x] [Advanced search highlighting :material-new-box:][38]
+- [x] [Social cards][34]
+- [x] [Cookie consent][33]
+- [x] [Linking content tabs][32]
 - [x] [Boosting pages in search][30]
 - [x] [Tags (with search integration)][29]
 - [x] [Stay on page when switching versions][28]
@@ -211,8 +215,8 @@ the public for general availability.
 #### $ 7,000 – Royal Gold
 
 - [x] [Cookie consent][33]
-- [ ] Improved search result summaries
-- [ ] List of last searches
+- [ ] Exclude pages from search
+- [ ] Link cards
 
   [33]: ../setup/setting-up-site-analytics.md#cookie-consent
 
@@ -224,15 +228,17 @@ the public for general availability.
 
   [34]: ../setup/setting-up-social-cards.md
 
-#### Future
+#### $ 10,000 – Carolina Reaper
 
-- [ ] [Material for MkDocs Live Edit][35]
-- [ ] New layouts and styles
-- [ ] Code block palette toggle
-- [ ] Native lightbox integration
-- [ ] Table of contents auto-collapse
+- [x] [Brand new search plugin][35]
+- [x] [Rich search previews][36]
+- [x] [Tokenizer with lookahead][37]
+- [x] [Advanced search highlighting][38]
 
-  [35]: https://twitter.com/squidfunk/status/1338252230265360391
+  [35]: ../blog/2021/search-better-faster-smaller.md
+  [36]: ../blog/2021/search-better-faster-smaller.md#rich-search-previews
+  [37]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
+  [38]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
 
 ### Goals completed
 
@@ -297,17 +303,17 @@ implemented behind feature flags; all configuration changes are
 backward-compatible. This means that your users will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
 it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][36] only in CI, as you don't want to expose
+recommended to [install Insiders][39] only in CI, as you don't want to expose
 your `GH_TOKEN` to users.
 
-  [36]: ../publishing-your-site.md#github-pages
+  [39]: ../publishing-your-site.md#github-pages
 
 ### Payment
 
 _We don't want to pay for sponsorship every month. Are there any other options?_
 
 Yes. You can sponsor on a yearly basis by [switching your GitHub account to a
-yearly billing cycle][37]. If for some reason you cannot do that, you could
+yearly billing cycle][40]. If for some reason you cannot do that, you could
 also create a dedicated GitHub account with a yearly billing cycle, which you
 only use for sponsoring (some sponsors already do that).
 
@@ -315,7 +321,7 @@ If you have any problems or further questions, don't hesitate to contact me at
 sponsors@squidfunk.com. Note that one-time payments are not eligible for
 Insiders, but of course, very appreciated.
 
-  [37]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/changing-the-duration-of-your-billing-cycle
+  [40]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/changing-the-duration-of-your-billing-cycle
 
 ### Terms
 
@@ -324,7 +330,7 @@ commercial project. Can we use Insiders under the same terms and conditions?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][38]. However, we kindly ask you to respect the following
+by the [MIT license][41]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
@@ -335,7 +341,7 @@ guidelines:
 - If you cancel your subscription, you're removed as a collaborator and will
   miss out on future updates of Insiders. However, you may __use the latest
   version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][39].
+  [GitHub deletes private forks][42].
 
-  [38]: ../license.md
-  [39]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [41]: ../license.md
+  [42]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository

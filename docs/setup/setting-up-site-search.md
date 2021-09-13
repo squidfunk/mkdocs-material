@@ -17,8 +17,13 @@ with some effort, search can be made available [offline][1].
 
 ### Built-in search
 
+!!! danger "[Search: better, faster, smaller](../blog/2021/search-better-faster-smaller.md)"
+
+    We rebuilt the search plugin and integration from the ground up, introducing [rich search previews](../blog/2021/search-better-faster-smaller.md#rich-search-previews), much better [tokenizer support](../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead), [more accurate highlighting](../blog/2021/search-better-faster-smaller.md#accurate-highlighting) and much more. Read the [blog article](../blog/2021/search-better-faster-smaller.md) to learn more about our new search implementation. Start using it immediately by [becoming a sponsor][20]!
+
 [:octicons-file-code-24: Source][2] ·
-[:octicons-cpu-24: Plugin][3]
+[:octicons-cpu-24: Plugin][3] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Better in Insiders][20]{ .mdx-insiders }
 
 The [built-in search plugin][3] integrates seamlessly with Material for MkDocs,
 adding multilingual client-side search with [lunr][4] and [lunr-languages][5].
