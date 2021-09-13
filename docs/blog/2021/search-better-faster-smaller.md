@@ -1,7 +1,7 @@
 ---
 template: overrides/main.html
 description: >
-  How we rebuilt client-side search, delivering a better user experience, while
+  How we rebuilt client-side search, delivering a better user experience while
   making it faster and smaller at the same time
 disqus: mkdocs-material
 search:
@@ -11,7 +11,7 @@ search:
 # Search: better, faster, smaller
 
 __This is the story of how we managed to completely rebuild client-side search,
-delivering a significantly better user experience, while making it faster and
+delivering a significantly better user experience while making it faster and
 smaller at the same time.__
 
 <aside class="mdx-author" markdown="1">
@@ -29,14 +29,14 @@ smaller at the same time.__
 ---
 
 The [search][2] of Material for MkDocs is by far one of its best and most-loved
-assets: [multilingual][3], [offline-capable][4] and most importantly: _all
+assets: [multilingual][3], [offline-capable][4], and most importantly: _all
 client-side_. It provides a solution to empower the users of your documentation
 to find what they're searching for instantly without the headache of managing
 additional servers. However, even though several iterations have been made,
 there's still some room for improvement, which is why we rebuilt the search
 plugin and integration from the ground up. This article shines some light on the
 internals of the new search, why it's much more powerful than the previous
-version and what's about to come.
+version, and what's about to come.
 
 _The next section discusses the architecture and issues of the current search
 implementation. If you immediately want to learn what's new, skip to the
@@ -70,7 +70,7 @@ const index$ = document.forms.namedItem("search")
 ### Search index
 
 The search index includes a stripped-down version of all pages. Let's take a
-look at an example, to understand precisely what the search index contains from
+look at an example to understand precisely what the search index contains from
 the original Markdown file:
 
 ??? example "Expand to inspect example"
@@ -145,9 +145,9 @@ the original Markdown file:
 
 If we inspect the search index, we immediately see several problems:
 
-  1. __All content is included twice__: the search index includes one entry
+  1. __All content is included twice__: the search index contains one entry
      with the entire contents of the page, and one entry for each section of
-     the page, i.e. each block preceded by a headline or subheadline. This
+     the page, i.e., each block preceded by a headline or subheadline. This
      significantly contributes to the size of the search index.
 
   2. __All structure is lost__: when the search index is built, all structural
@@ -164,14 +164,14 @@ If we inspect the search index, we immediately see several problems:
       Furthermore, it's not clear that `Lists` is a headline as it's merged
       with the code block before and the paragraph after it.
 
-    - __Punctuation__: inline elements like links, that are immediately followed
+    - __Punctuation__: inline elements like links that are immediately followed
       by punctuation are separated by whitespace (see `,` and `:` in the
       excerpt). This is because all extracted text is joined with a whitespace
       character during the construction of the search index.
 
 It's not difficult to see that it can be quite challenging to implement a good
 search experience for theme authors, which is why Material for MkDocs (up to
-now) did some [monkey patching][9] to be able to render slighltly more
+now) did some [monkey patching][9] to be able to render slightly more
 meaningful search previews.
 
 ### Search worker
@@ -186,7 +186,7 @@ initialized, the following steps are taken:
     reported in #904 and, after some back and forth, fixed and released in
     version 5.0.
 
-1. __Linking sections with pages__: The search index is parsed and each section
+1. __Linking sections with pages__: The search index is parsed, and each section
    is linked to its parent page. The parent page itself is _not indexed_, as it
    would lead to duplicate results, so only the sections remain. Linking is
    necessary, as search results are grouped by page.
@@ -206,8 +206,8 @@ initialized, the following steps are taken:
    main thread.
 
 Now, that's basically how the search worker operates. Sure, there's a little
-more magic involved, e.g. search results are [post-processed][13] and
-[rescored][14] to account for some shortcomings of [lunr][6], but in general
+more magic involved, e.g., search results are [post-processed][13] and
+[rescored][14] to account for some shortcomings of [lunr][6], but in general,
 this is how data gets into and out of the index.
 
   [9]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/document/index.ts#L68-L71
@@ -225,7 +225,7 @@ occurrences of the search terms found is an essential part of a great search
 experience.
 
 This is where the current search preview generation falls short, as some of the
-search previews appear to not include any occurrence of any of the search
+search previews appear not to include any occurrence of any of the search
 terms. This was due to the fact that search previews were [truncated after a
 maximum of 320 characters][15], as can be seen here:
 
@@ -251,7 +251,7 @@ carefully considered:
    preview might look like this:
 
     ``` 
-    … channels, e.g. or which can be configured via mkdocs.yml …
+    … channels, e.g., or which can be configured via mkdocs.yml …
     ```
 
     While this may work for languages that use whitespace as a separator
@@ -273,8 +273,8 @@ carefully considered:
   [17]: https://pmarsceill.github.io/just-the-docs/
   [18]: https://github.com/lelouch77/docusaurus-lunr-search
 
-2. __Context awareness__: Although whitespace doesn't work for all languages,
-  one could argue that it could be a good-enough solution. Unfortunately, this
+2. __Context-awareness__: Although whitespace doesn't work for all languages,
+  one could argue that it could be a good enough solution. Unfortunately, this
   is not necessarily true for code blocks, as the removal of whitespace might
   change meaning in some languages.
 
@@ -291,7 +291,7 @@ problems it already solves, a quick overview of what features and improvements
 it brings:
 
 - __Better__: support for [rich search previews][19], preserving the structural
-  information of code blocks, inline code and lists, so they are rendered
+  information of code blocks, inline code, and lists, so they are rendered
   as-is, as well as [lookahead tokenization][20],
   [more accurate highlighting][21], and improved stability of typeahead. Also,
   a [slightly better UX][22].
@@ -301,7 +301,7 @@ it brings:
   large documentation projects.
 
 _Note that our new search implementation is currently 'Insiders only', which
-means that it is reserved for sponsors, because it's those sponsors that make
+means that it is reserved for sponsors because it's those sponsors that make
 features like this possible._
 
 [:octicons-heart-fill-24:{ .mdx-heart } &nbsp; I want to become a sponsor](../../insiders/index.md){ .md-button .md-button--primary }
@@ -392,7 +392,7 @@ If we inspect the search index again, we can see how the situation improved:
 1. __Content is included only once__: the search index does not include the
    content of the page twice, as only the sections of a page are part of the
    search index. This leads to a significant reduction in size, fewer bytes to
-   transfer and a smaller search index.
+   transfer, and a smaller search index.
 
 2. __Some structure is preserved__: each section of the search index includes a
    small subset of HTML to provide the necessary structure to allow for more
@@ -424,13 +424,13 @@ On to the next step in the process: __tokenization__.
 ### Tokenizer lookahead
 
 The [default tokenizer][12] of [lunr][6] uses a regular expression to split a
-given string, by matching each character against the [separator][11] as defined
+given string by matching each character against the [separator][11] as defined
 in `mkdocs.yml`. This doesn't allow for more complex separators based on
 lookahead or multiple characters.
 
 Fortunately, __our new search implementation provides an advanced tokenizer__
 that doesn't have these shortcomings and supports more complex regular
-expressions. As a result, Material for MkDocs just changed it's own separator
+expressions. As a result, Material for MkDocs just changed its own separator
 configuration to the following value:
 
 ```
@@ -461,8 +461,8 @@ the separator, this can now be achieved with ease:
 (?!\b)(?=[A-Z][a-z])
 ```
 
-This regular expression is a combination of a negative lookahead (`\b`, i.e.
-not a word boundary) and a positive lookahead (`[A-Z][a-z]`, i.e. an uppercase
+This regular expression is a combination of a negative lookahead (`\b`, i.e.,
+not a word boundary) and a positive lookahead (`[A-Z][a-z]`, i.e., an uppercase
 character followed by a lowercase character), and has the following behavior:
 
 - `PascalCase` :octicons-arrow-right-24: `Pascal`, `Case`
@@ -493,8 +493,8 @@ undiscoverable. Thus, the following expression:
 \.(?!\d)
 ```
 
-This regular expression matches a `.`, but  not immediately followed by a digit
-`\d`, which leaves version numbers discoverable. Searching for
+This regular expression matches a `.` only if not immediately followed by a
+digit `\d`, which leaves version numbers discoverable. Searching for
 [:octicons-search-24: 7.2.6][28] brings up the [7.2.6][29] release notes.
 
   [28]: ?q=7.2.6
@@ -532,13 +532,13 @@ long time, highlighting was implemented through dynamically generated
 [regular expressions][32].[^6]
 
 This approach has some problems with non-whitespace languages like Japanese or
-Chinese[^3], since it only works if the highlighted term is at a word boundary.
+Chinese[^3] since it only works if the highlighted term is at a word boundary.
 However, Asian languages are tokenized using a [dedicated segmenter][33], which
-cannot be modelled with regular expressions.
+cannot be modeled with regular expressions.
 
   [^6]:
     Using the separator as defined in `mkdocs.yml`, a regular expression was
-    constructed that was trying to mimick the tokenizer. As an example, the
+    constructed that was trying to mimic the tokenizer. As an example, the
     search query `search highlight` was transformed into the rather cumbersome
     regular expression `(^|<separator>)(search|highlight)`, which only matches
     at word boundaries.
@@ -549,19 +549,20 @@ exactly as powerful as tokenization:
 
 1. __Word boundaries__: as the new highlighter uses token positions, word
    boundaries are equal to token boundaries. This means that more complex cases
-   of tokenization (e.g. [case changes][35], [version numbers][36], [HTML/XML
+   of tokenization (e.g., [case changes][35], [version numbers][36], [HTML/XML
    tags][37]), are now all highlighted accurately.
 
-1. __Context awareness__: as the new search index preserves some of the
+2. __Context-awareness__: as the new search index preserves some of the
    structural information of the original document, the content of a section is
-   now divided into separate content blocks – paragraphs, code blocks and lists.
+   now divided into separate content blocks – paragraphs, code blocks, and
+   lists.
 
     Now, only the content blocks that actually contain occurrences of one of
     the search terms are considered for inclusion into the search preview. If a
     term only occurs in a code block, it's the code block that gets rendered,
-    see for example the results of [:octicons-search-24: twitter][38].
+    see, for example, the results of [:octicons-search-24: twitter][38].
 
-  [32]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/highlighter/index.ts#L61-91
+  [32]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/highlighter/index.ts#L61-L91
   [33]: http://chasen.org/~taku/software/TinySegmenter/
   [34]: #tokenizer-lookahead
   [35]: #case-changes
@@ -607,7 +608,7 @@ new search is up to 95% faster__. This is a significant improvement,
 particularly relevant for large documentation projects.
 
 While 1,3s still may sound like a long time, using the new client-side search
-together with [instant loading][40] only initializes the search on the first
+together with [instant loading][40] only initializes the search on the initial
 page load. When navigating, the search index is preserved across pages, so the
 cost does only have to be paid once.
 
@@ -628,7 +629,7 @@ solves some long-standing issues which needed to be tackled for years. Yet,
 it's only the start of a search experience that is going to get better and
 better. Next up:
 
-- __Context aware search summarization__: currently, the first two matching
+- __Context-aware search summarization__: currently, the first two matching
   content blocks are rendered as a search preview. With the new tokenization
   technique, we laid the groundwork for more sophisticated shortening and
   summarization methods, which we're tackling next.
@@ -638,7 +639,7 @@ better. Next up:
   a better experience. We'll explore some of those paths in the future.
 
 If you've made it this far, thank you for your time and interest in Material
-for MkDocs! This is the first blog article which I decided to write after a
+for MkDocs! This is the first blog article that I decided to write after a
 short [Twitter survey][41] made me to. Feel free to leave a comment when you
 have something to say.
 
