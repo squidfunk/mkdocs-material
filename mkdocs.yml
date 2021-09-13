@@ -212,13 +212,12 @@ nav:
     - MathJax: reference/mathjax.md
     - Meta tags: reference/meta-tags.md
     - Variables: reference/variables.md
-  - Blog:
-    - blog/index.md
-    - 2021:
-      - blog/2021/search-better-faster-smaller.md
-
   - Insiders:
     - Sponsorship: insiders/index.md
     - Getting started:
       - Installation: insiders/getting-started.md
       - Changelog: insiders/changelog.md
+  - Blog:
+    - blog/index.md
+    - 2021:
+      - blog/2021/search-better-faster-smaller.md

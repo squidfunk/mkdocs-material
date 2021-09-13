@@ -13,8 +13,8 @@ __This is the story of how we managed to completely rebuild client-side search, 
 
 <span>__Martin Donath__ · @squidfunk</span>
 <span>
-:octicons-calendar-24: September 12, 2021 ·
-:octicons-clock-24: 15 min read
+:octicons-calendar-24: September 13, 2021 ·
+:octicons-clock-24: 20 min read
 </span>
 </aside>
 
@@ -22,9 +22,9 @@ __This is the story of how we managed to completely rebuild client-side search, 
 
 ---
 
-The [search][2] of Material for MkDocs is genuinely one of its best and most-loved assets: fast, [multi-lingual][3], [offline-capable][4] and most importantly: _all client-side_. It provides a solution to empower the users of your documentation to find what they're searching for instantly without the headache of managing additional servers. However, even though several iterations have been made, there's still some room for improvement, which is why we rebuilt the search plugin and integration from the ground up. This article shines some light on the internals of the new search, why it's much more powerful than the previous version and what's about to come.
+The [search][2] of Material for MkDocs is by far one of its best and most-loved assets: [multilingual][3], [offline-capable][4] and most importantly: _all client-side_. It provides a solution to empower the users of your documentation to find what they're searching for instantly without the headache of managing additional servers. However, even though several iterations have been made, there's still some room for improvement, which is why we rebuilt the search plugin and integration from the ground up. This article shines some light on the internals of the new search, why it's much more powerful than the previous version and what's about to come.
 
-_The next section explains the architecture and issues of the current search implementation. If you immediately want to learn what's new, skip to the [next section][5]._
+_The next section discusses the architecture and issues of the current search implementation. If you immediately want to learn what's new, skip to the [section just after that][5]._
 
   [2]: ../../setup/setting-up-site-search.md
   [3]: ../../setup/setting-up-site-search.md#lang
@@ -123,7 +123,7 @@ The search index includes a stripped-down version of all pages. Let's take a loo
 
 If we inspect the search index, we immediately see several problems:
 
-  1. __All content is included twice__: the search index includes one entry with the entire contents of the page, and one entry for each section of the page, i.e. each block preceded by a headline or subheadline. This significantly increases the size of the search index.
+  1. __All content is included twice__: the search index includes one entry with the entire contents of the page, and one entry for each section of the page, i.e. each block preceded by a headline or subheadline. This significantly contributes to the size of the search index.
 
   2. __All structure is lost__: when the search index is built, all structural information like HTML tags and attributes are stripped from the content. While this approach works well for paragraphs and inline formatting, it might be problematic for lists and code blocks. An excerpt:
 
@@ -135,7 +135,7 @@ If we inspect the search index, we immediately see several problems:
 
     - __Punctuation__: inline elements like links, that are immediately followed by punctuation are separated by whitespace (see `,` and `:` in the excerpt). This is because all extracted text is joined with a whitespace character during the construction of the search index.
 
-It's not difficult to see that it can be quite challenging to implement a good search experience for theme authors, which is why Material for MkDocs (up to now) does some [monkey patching][9] to be able to render more meaningful search previews.
+It's not difficult to see that it can be quite challenging to implement a good search experience for theme authors, which is why Material for MkDocs (up to now) did some [monkey patching][9] to be able to render slighltly more meaningful search previews.
 
 ### Search worker
 
@@ -143,7 +143,7 @@ The actual search functionality is implemented as part of a web worker[^1], whic
 
   [^1]: Prior to [version 5.0][10], search was carried out in the main thread which locked up the browser, rendering it unusable. This problem was first reported in #904 and, after some back and forth, fixed and released in version 5.0.
 
-1. __Linking sections with pages__: The search index is parsed and each section is linked to its parent page. The parent page itself is _not indexed_, as it would lead to duplicate results, so only the sections remain. Linking is necessary, as search results need to be grouped by page.
+1. __Linking sections with pages__: The search index is parsed and each section is linked to its parent page. The parent page itself is _not indexed_, as it would lead to duplicate results, so only the sections remain. Linking is necessary, as search results are grouped by page.
 
 2. __Tokenization__: The `title` and `text` values of each section are split into tokens by using the [separator][11] as configured in `mkdocs.yml`. Tokenization itself is carried out by [lunr's default tokenizer][12], which doesn't allow for lookahead or separators spanning multiple characters.
 
@@ -151,7 +151,7 @@ The actual search functionality is implemented as part of a web worker[^1], whic
 
 3. __Indexing__: As a final step, each section is indexed. When querying the index, if a search query includes one of the tokens as returned by step 2., the section is considered to be part of the search result and passed to the main thread.
 
-Now, that's basically how the search worker operates. Sure, there's a little more magic involved, e.g. search results are [post-processed][13] and [rescored][14] to account for some shortcomings of [lunr][6], but in general this is how search results get into and out of the index.
+Now, that's basically how the search worker operates. Sure, there's a little more magic involved, e.g. search results are [post-processed][13] and [rescored][14] to account for some shortcomings of [lunr][6], but in general this is how data gets into and out of the index.
 
   [9]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/document/index.ts#L68-L71
   [10]: https://squidfunk.github.io/mkdocs-material/upgrading/#upgrading-from-4x-to-5x
@@ -162,9 +162,9 @@ Now, that's basically how the search worker operates. Sure, there's a little mor
 
 ### Search previews
 
-Users should be able to quickly scan an evaluate the relevance of a search result in the given context, which is why a concise summary with highlighted occurrences of the words found is an essential part of a great search experience.
+Users should be able to quickly scan an evaluate the relevance of a search result in the given context, which is why a concise summary with highlighted occurrences of the search terms found is an essential part of a great search experience.
 
-This is where the current search preview generation falls short, as some of the search previews appear to not include any occurrence of any of the search terms. This was due to the fact that search previews were [truncated after 320 characters][15], as can be seen here:
+This is where the current search preview generation falls short, as some of the search previews appear to not include any occurrence of any of the search terms. This was due to the fact that search previews were [truncated after a maximum of 320 characters][15], as can be seen here:
 
 <figure markdown="1">
 
@@ -182,14 +182,14 @@ A better solution to this problem has been on the roadmap for a very, very long 
 1. __Word boundaries__: some themes[^2] for static site generators generate search previews by expanding the text left and right next to an occurrence, stopping at a whitespace character when enough words have been consumed. A preview might look like this:
 
     ``` 
-    … channels, e.g. or which can be configured via mkdocs.yml.
+    … channels, e.g. or which can be configured via mkdocs.yml …
     ```
 
     While this may work for languages that use whitespace as a separator between words, it breaks down for languages like Japanese or Chinese[^3], as they have non-whitespace word boundaries and use dedicated segmenters to split strings into tokens.
 
-  [^2]: At the time of writing, [Just the Docs][17] and [Docusaurus][18] use this method for generating search previews. Note that the latter by default uses Algolia, which is a fully managed server-based solution.
+  [^2]: At the time of writing, [Just the Docs][17] and [Docusaurus][18] use this method for generating search previews. Note that the latter also integrates with Algolia, which is a fully managed server-based solution.
 
-  [^3]: In fact, China and Japan are both within the top 5 countries of origin of users of Material for MkDocs.
+  [^3]: China and Japan are both within the top 5 countries of origin of users of Material for MkDocs.
 
   [15]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/templates/search/index.tsx#L90
   [16]: search-better-faster-smaller/search-preview.png
@@ -198,23 +198,23 @@ A better solution to this problem has been on the roadmap for a very, very long 
 
 2. __Context awareness__: Although whitespace doesn't work for all languages, one could argue that it could be a good-enough solution. Unfortunately, this is not necessarily true for code blocks, as the removal of whitespace might change meaning in some languages.
 
-3. __Structure__: Preserving structural information is not a must, but apparently beneficial to build more meaningful search previews which allow for a quick evaluation of relevance. If the user expects a match within a code block, it should be rendered as a code block.
+3. __Structure__: Preserving structural information is not a must, but apparently beneficial to build more meaningful search previews which allow for a quick evaluation of relevance. If a word occurrence is part of a code block, it should be rendered as a code block.
 
 ## What's new?
 
-After we built a solid understanding of the problem space and before we dive into the internals of the new search implementation to see which of the problems it already solves, a quick overview:
+After we built a solid understanding of the problem space and before we dive into the internals of the new search implementation to see which of the problems it already solves, a quick overview of what the new search implementation brings:
 
 - __Better__: support for [rich search previews][19], preserving the structural information of code blocks, inline code and lists, so they are rendered as-is, as well as [lookahead tokenization][20], [more accurate highlighting][21], and improved stability of typeahead. Also, a [slightly better UX][22].
-- __Faster__ and __smaller__: significant decrease in search index size of up to 50%, due to improved extraction and construction techniques, resulting in up to 40% faster search, yielding huge improvements, particularly for large documentation projects.
+- __Faster__ and __smaller__: significant decrease in search index size of up to 48% due to improved extraction and construction techniques, resulting in a search experience that is up to 95% faster, which is particularly helpful for large documentation projects.
 
   [19]: #rich-search-previews
   [20]: #tokenizer-lookahead
-  [21]: #
-  [22]: #
+  [21]: #accurate-highlighting
+  [22]: #user-interface
 
 ### Rich search previews
 
-As we've rebuilt the search plugin from scratch, we reworked the construction of the search index to preserve the structural information of code blocks, inline code, as well as unordered and ordered lists. Using the example from the [search index][23] section, here's how it looks:
+As we rebuilt the search plugin from scratch, we reworked the construction of the search index to preserve the structural information of code blocks, inline code, as well as unordered and ordered lists. Using the example from the [search index][23] section, here's how it looks:
 
 === "Now"
 
@@ -224,7 +224,8 @@ As we've rebuilt the search plugin from scratch, we reworked the construction of
 
     ![Search preview before][25]
 
-Now, code blocks are first-class citizens of search previews, and even inline code formatting is preserved. Let's take a look at the new structure of the search index to understand why:
+Now, __code blocks are first-class citizens of search previews__, and even inline code formatting is preserved. Let's take a look at the new structure of the search index to understand why:
+{ #example }
 
 ??? example "Expand to inspect search index"
 
@@ -285,7 +286,7 @@ Now, code blocks are first-class citizens of search previews, and even inline co
 
 If we inspect the search index again, we can see how the situation improved:
 
-1. __All content is included once__: the search index does not include the content of the page twice, as only the sections of a page are part of the search index. This leads to a significant reduction in size, fewer bytes to transfer and a smaller search index.
+1. __Content is included only once__: the search index does not include the content of the page twice, as only the sections of a page are part of the search index. This leads to a significant reduction in size, fewer bytes to transfer and a smaller search index.
 
 2. __Some structure is preserved__: each section of the search index includes a small subset of HTML to provide the necessary structure to allow for more sophisticated search previews. Revisiting our example from before, let's look at an excerpt:
 
@@ -311,18 +312,134 @@ On to the next step in the process: __tokenization__.
 
 ### Tokenizer lookahead
 
-- explain tokenization
-- add examples explaining lookahead
-    - camelcase
-    - version numbers
-    - code examples (<> etc...)
+The [default tokenizer][12] of [lunr][6] uses a regular expression to split a given string, by matching each character against the [separator][11] as defined in `mkdocs.yml`. This doesn't allow for more complex separators based on lookahead or multiple characters.
 
-## Highlighting
+Fortunately, __the new search implementation provides an advanced tokenizer__ that doesn't have these shortcomings and supports more complex regular expressions. As a result, Material for MkDocs just changed it's own separator configuration to the following value:
 
-- the problem with highlighting
-- how highlighting was implemented
-- how its implemented now
-- division into blocks
-- ux improvements
-  - scrolling more button
-  - search exclude
+```
+[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;
+```
+
+While the first part up to the first `|` contains a list of single control characters at which the string should be split, the following three sections explain the remainder of the regular expression.[^4]
+
+  [^4]: As a fun fact: the [separator default value][26] of the search plugin being `[\s\-]+` always has been kind of irritating, as it suggests that multiple characters can be considered being a separator. However, the `+` is completely irrelevant, as regular expression groups involving multiple characters were never supported by [lunr's default tokenizer][12].
+
+  [26]: https://www.mkdocs.org/user-guide/configuration/#separator
+
+#### Case changes
+
+Many programming languages use `PascalCase` or `camelCase` naming conventions. When a user searches for the term `case`, it's quite natural to expect for `PascalCase` and `camelCase` to show up. By adding the following match group to the separator, this can now be achieved with ease:
+
+```
+(?!\b)(?=[A-Z][a-z])
+```
+
+This regular expression is a combination of a negative lookahead (`\b`, i.e. not a word boundary) and a positive lookahead (`[A-Z][a-z]`, i.e. an uppercase character followed by a lowercase character), and has the following behavior:
+
+- `PascalCase` :octicons-arrow-right-24: `Pascal`, `Case`
+- `camelCase` :octicons-arrow-right-24: `camel`, `Case`
+- `UPPERCASE` :octicons-arrow-right-24: `UPPERCASE`
+
+Searching for [:octicons-search-24: searchHighlight][27] now brings up the section discussing the `search.highlight` feature flag, which also demonstrates that this even works for search queries now![^5]
+
+  [^5]: Previously, the search query was not correctly tokenized due to the way [lunr][6] treats wildcards, as it disables the pipeline for search terms that contain wildcards. In order to provide a good typeahead experience, Material for MkDocs adds wildcards to the end of each search term not explicitly preceded with `+` or `-`, effectively disabling tokenization.
+
+  [27]: ?q=searchHighlight
+
+#### Version numbers
+
+Indexing version numbers is another problem that can be solved with a small lookahead. Usually, `.` should be considered a separator to split words like `search.highlight`. However, splitting version numbers at `.` will make them undiscoverable. Thus, the following expression:
+
+```
+\.(?!\d)
+```
+
+This regular expression matches a `.`, but  not immediately followed by a digit `\d`, which leaves version numbers discoverable. Searching for [:octicons-search-24: 7.2.6][28] brings up the [7.2.6][29] release notes.
+
+  [28]: ?q=7.2.6
+  [29]: ../../changelog.md#726-_-september-1-2021
+
+#### HTML/XML tags
+
+If your documentation includes HTML/XML code examples, you may want to allow users to find specific tag names. Unfortunately, the `<` and `>` control characters are encoded in code blocks as `&lt;` and `&gt;`. Now, adding the following expression to the separator allows for just that:
+
+```
+&[lg]t;
+```
+
+Searching for [:octicons-search-24: custom search worker script][30] brings up the section on [custom search][31] and matches the `script` tag among the other search terms discovered.
+
+---
+
+_We've only just begun to scratch the surface of the new possibilities tokenizer lookahead brings. If you found other useful expressions, you're invited to share them in the comment section._
+
+  [30]: ?q=custom+search+worker+script
+  [31]: ../../setup/setting-up-site-search.md#custom-search
+
+### Accurate highlighting
+
+Highlighting is the last step in the process of search and involves the highlighting of all search term occurrences in a given search result. For a long time, highlighting was implemented through dynamically generated [regular expressions][32].[^6]
+
+This approach has some problems with non-whitespace languages like Japanese or Chinese[^3], since it only works if the highlighted term is at a word boundary. However, Asian languages are tokenized using a [dedicated segmenter][33], which cannot be modelled with regular expressions.
+
+  [^6]: Using the separator as defined in `mkdocs.yml`, a regular expression was constructed that was trying to mimick the tokenizer. As an example, the search query `search highlight` was transformed into the rather cumbersome regular expression `(^|<separator>)(search|highlight)`, which only matches at word boundaries.
+
+Now, as a direct result of the [new tokenization approach][34], __the new search implementation uses token positions for highlighting__, making it exactly as powerful as tokenization:
+
+1. __Word boundaries__: as the new highlighter uses token positions, word boundaries are equal to token boundaries. This means that more complex cases of tokenization (e.g. [case changes][35], [version numbers][36], [HTML/XML tags][37]), are now all highlighted accurately.
+
+2. __Context awareness__: as the new search index preserves some of the structural information of the original document, the content of a section is now divided into separate content blocks – paragraphs, code blocks and lists.
+
+    Now, only the content blocks that actually contain occurrences of one of the search terms are considered for inclusion into the search preview. If a term only occurs in a code block, it's the code block that gets rendered, see for example the results of [:octicons-search-24: twitter][38].
+
+  [32]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/highlighter/index.ts#L61-91
+  [33]: http://chasen.org/~taku/software/TinySegmenter/
+  [34]: #tokenizer-lookahead
+  [35]: #case-changes
+  [36]: #version-numbers
+  [37]: #htmlxml-tags
+  [38]: ?q=twitter
+
+### Benchmarks
+
+We conducted two benchmarks – one with the documentation of Material for MkDocs itself, and one with a rather large corpus of Markdown files with more than 800k words:
+
+<figure markdown="1">
+
+|                         |   Before |            Now |     Relative |
+| ----------------------- | -------: | -------------: | -----------: |
+| __Material for MkDocs__ |          |                |              |
+| Index size              |   573 kB |     __335 kB__ |     __–42%__ |
+| Index size (`gzip`)     |   105 kB |      __78 kB__ |     __–27%__ |
+| Indexing time^‡^        |   265 ms |     __177 ms__ |     __–34%__ |
+| __KJV Markdown[^7]__    |          |                |              |
+| Index size              |   8.2 MB |     __4.4 MB__ |     __–47%__ |
+| Index size (`gzip`)     |   2.3 MB |     __1.2 MB__ |     __–48%__ |
+| Indexing time^‡^        | 2,700 ms |   __1,390 ms__ |     __–48%__ |
+
+</figure>
+
+  [^7]: We agnostically use [KJV Markdown][39] as a tool for testing to learn how Material for MkDocs behaves on large corpora, as it's a rather large set of Markdown files with over 800k words.
+
+The results show that indexing time, which is the time that it takes to set up the search when the page is loaded, has dropped by up to 48%, which means __the new search is up to 95% faster__. This is a significant improvement, particularly relevant for large documentation projects.
+
+While 1,3s still may sound like a long time, using the new client-side search together with [instant loading][40] only initializes the search on the first page load. When navigating, the search index is preserved across pages, so the cost does only have to be paid once.
+
+  [39]: https://github.com/arleym/kjv-markdown
+  [40]: ../../setup/setting-up-navigation.md#instant-loading
+
+### User interface
+
+Additionally, some small improvements have been made, most prominently the __# more results on this page__ button, which now sticks to the top of the search result list when open. This enables the user to jump out of the list more quickly.
+
+## What's next?
+
+The new search implementation is a big improvement to Material for MkDocs. It solves some long-standing issues which needed to be tackled for years. Yet, it's only the start of a search experience that is going to get better and better. Next up:
+
+- __Context aware search summarization__: currently, the first two matching content blocks are rendered as a search preview. With the new tokenization technique, we laid the groundwork for more sophisticated shortening and summarization methods, which we're tackling next.
+
+- __User interface improvements__: as we now gained full control over the search plugin, we can now add meaningful metadata to provide more context and a better experience. We'll explore some of those paths in the future.
+
+If you've made it this far, thank you for your time and interest in Material for MkDocs! This is the first blog article which I decided to write after a short [Twitter survey][41] made me to. Feel free to leave a comment when you have something to say.
+
+  [41]: https://twitter.com/squidfunk/status/1434477478823743488
