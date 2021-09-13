@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+disqus: mkdocs-material
 search:
   exclude: true
 ---
