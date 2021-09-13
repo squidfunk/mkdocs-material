@@ -87,8 +87,7 @@ theme:
 
 # Plugins
 plugins:
-  - search:
-      separator: "[\\s\\-,:!=\\[\\]()\"/]+|\\.(?!\\d)|&[lg]t;|(?!\\b)(?=[A-Z][a-z])"
+  - search
   - redirects:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
