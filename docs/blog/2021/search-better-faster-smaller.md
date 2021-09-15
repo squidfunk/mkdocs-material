@@ -584,20 +584,22 @@ reach:
 | __Material for MkDocs__ |          |                |              |
 | Index size              |   573 kB |     __335 kB__ |     __–42%__ |
 | Index size (`gzip`)     |   105 kB |      __78 kB__ |     __–27%__ |
-| Indexing time^‡^        |   265 ms |     __177 ms__ |     __–34%__ |
-| __KJV Markdown[^7]__    |          |                |              |
+| Indexing time[^7]       |   265 ms |     __177 ms__ |     __–34%__ |
+| __KJV Markdown[^8]__    |          |                |              |
 | Index size              |   8.2 MB |     __4.4 MB__ |     __–47%__ |
 | Index size (`gzip`)     |   2.3 MB |     __1.2 MB__ |     __–48%__ |
-| Indexing time^‡^        | 2,700 ms |   __1,390 ms__ |     __–48%__ |
+| Indexing time           | 2,700 ms |   __1,390 ms__ |     __–48%__ |
 
 <figcaption>
   <p>Benchmark results</p>
-  <small>‡ Smallest value of ten distinct runs</small>
 </figcaption>
 
 </figure>
 
   [^7]:
+    Smallest value of ten distinct runs.
+
+  [^8]:
     We agnostically use [KJV Markdown][39] as a tool for testing to learn how
     Material for MkDocs behaves on large corpora, as it's a very large set of
     Markdown files with over 800k words.
@@ -608,7 +610,7 @@ new search is up to 95% faster__. This is a significant improvement,
 particularly relevant for large documentation projects.
 
 While 1,3s still may sound like a long time, using the new client-side search
-together with [instant loading][40] only initializes the search on the initial
+together with [instant loading][40] only creates the search index on the initial
 page load. When navigating, the search index is preserved across pages, so the
 cost does only have to be paid once.
 
@@ -617,8 +619,8 @@ cost does only have to be paid once.
 
 ### User interface
 
-Additionally, some small improvements have been made, most prominently the __#
-more results on this page__ button, which now sticks to the top of the search
+Additionally, some small improvements have been made, most prominently the
+__more results on this page__ button, which now sticks to the top of the search
 result list when open. This enables the user to jump out of the list more
 quickly.
 
@@ -640,7 +642,8 @@ better. Next up:
 
 If you've made it this far, thank you for your time and interest in Material
 for MkDocs! This is the first blog article that I decided to write after a
-short [Twitter survey][41] made me to. Feel free to leave a comment when you
-have something to say.
+short [Twitter survey][41] made me to. You're invited to [leave a comment][42]
+to share your experiences with the new search implementation.
 
   [41]: https://twitter.com/squidfunk/status/1434477478823743488
+  [42]: #__comments
