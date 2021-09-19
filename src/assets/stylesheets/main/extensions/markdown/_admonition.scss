@@ -27,14 +27,14 @@
 /// Admonition flavours
 $admonitions: (
   note:                       pencil $clr-blue-a200,
-  abstract summary tldr:      text-subject $clr-light-blue-a400,
+  abstract summary tldr:      clipboard-text $clr-light-blue-a400,
   info todo:                  information $clr-cyan-a700,
   tip hint important:         fire $clr-teal-a700,
-  success check done:         check-circle $clr-green-a700,
+  success check done:         check-bold $clr-green-a700,
   question help faq:          help-circle $clr-light-green-a700,
   warning caution attention:  alert $clr-orange-a400,
-  failure fail missing:       close-circle $clr-red-a200,
-  danger error:               flash-circle $clr-red-a400,
+  failure fail missing:       close-thick $clr-red-a200,
+  danger error:               lightning-bolt $clr-red-a400,
   bug:                        bug $clr-pink-a400,
   example:                    format-list-numbered $clr-deep-purple-a200,
   quote cite:                 format-quote-close $clr-grey
