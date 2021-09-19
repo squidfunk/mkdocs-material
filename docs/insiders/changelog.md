@@ -6,7 +6,7 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
-### 3.0.1 <small>_ September 13, 2021</small>
+### 3.0.1 <small>_ September 19, 2021</small>
 
 - Added support for using literal `h1-6` tags for search plugin
 - Fixed search plugin breaking on void elements without slashes
