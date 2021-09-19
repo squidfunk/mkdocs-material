@@ -79,9 +79,22 @@ The following plugins are bundled with the Docker image:
 
     The new image can be used exactly like the official image.
 
+!!! info ":material-apple: Apple Silicon (M1) and :fontawesome-brands-raspberry-pi: Raspberry Pi"
+
+    The official Docker image is only available for `linux/amd64`. We recommend
+    the [third-party image][11] by @afritzler if you want to run Material for
+    MkDocs via Docker on `arm64` or `armv7`, as it is automatically built on
+    every release:
+
+    ```
+    docker pull ghcr.io/afritzler/mkdocs-material
+    ```
+
+  [11]: https://github.com/afritzler/mkdocs-material
+
 ### with git
 
-Material for MkDocs can be directly used from [GitHub][11] by cloning the
+Material for MkDocs can be directly used from [GitHub][12] by cloning the
 repository into a subfolder of your project root which might be useful if you
 want to use the very latest version:
 
@@ -96,4 +109,4 @@ from `git`, you must install all required dependencies yourself:
 pip install -r mkdocs-material/requirements.txt
 ```
 
-  [11]: https://github.com/squidfunk/mkdocs-material
+  [12]: https://github.com/squidfunk/mkdocs-material
