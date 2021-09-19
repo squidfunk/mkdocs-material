@@ -1,3 +1,12 @@
+mkdocs-material-7.2.7 (2021-09-19)
+
+  * Updated Serbian and Serbo-Croatian translations
+  * Improved appearance of outline on details
+  * Fixed #2934: Scrollbar when header is hidden on some mobile browsers
+  * Fixed #3032: Anchor in details doesn't open on load (7.0.0 regression)
+  * Fixed back-to-top button being focusable when invisible
+  * Fixed broken admonition icons (removed in upstream)
+
 mkdocs-material-7.2.6+insiders-3.0.0 (2021-09-13)
 
   * Rewrite of MkDocs' search plugin

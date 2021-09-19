@@ -6,6 +6,15 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.2.7 <small>_ September 19, 2021</small>
+
+- Updated Serbian and Serbo-Croatian translations
+- Improved appearance of outline on details
+- Fixed #2934: Scrollbar when header is hidden on some mobile browsers
+- Fixed #3032: Anchor in details doesn't open on load (7.0.0 regression)
+- Fixed back-to-top button being focusable when invisible
+- Fixed broken admonition icons (removed in upstream)
+
 ### 7.2.6 <small>_ September 1, 2021</small>
 
 - Fixed rendering of `blockquote` elements (7.0.0 regression)
