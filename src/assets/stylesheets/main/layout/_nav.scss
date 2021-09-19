@@ -125,7 +125,7 @@
       color: var(--md-accent-fg-color);
     }
 
-    // Navigation link on keyboard focus
+    // Show outline for keyboard devices
     &.focus-visible {
       outline-color: var(--md-accent-fg-color);
       outline-offset: px2rem(4px);

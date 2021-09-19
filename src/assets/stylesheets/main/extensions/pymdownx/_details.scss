@@ -84,6 +84,12 @@
       padding: px2rem(8px) px2rem(44px) px2rem(8px) px2rem(36px);
     }
 
+    // Show outline for keyboard devices
+    &.focus-visible {
+      outline-color: var(--md-accent-fg-color);
+      outline-offset: px2rem(4px);
+    }
+
     // Hide outline for pointer devices
     &:not(.focus-visible) {
       outline: none;
