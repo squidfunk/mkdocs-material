@@ -40,8 +40,10 @@ import {
 import {
   resetBackToTopOffset,
   resetBackToTopState,
+  resetFocusable,
   setBackToTopOffset,
-  setBackToTopState
+  setBackToTopState,
+  setFocusable
 } from "~/actions"
 import { Viewport, setElementFocus } from "~/browser"
 
@@ -156,8 +158,10 @@ export function mountBackToTop(
           if (hidden) {
             setBackToTopState(el, "hidden")
             setElementFocus(el, false)
+            setFocusable(el, -1)
           } else {
             resetBackToTopState(el)
+            resetFocusable(el)
           }
         },
 
@@ -165,6 +169,7 @@ export function mountBackToTop(
         complete() {
           resetBackToTopOffset(el)
           resetBackToTopState(el)
+          resetFocusable(el)
         }
       })
 
