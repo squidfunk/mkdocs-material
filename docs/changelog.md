@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.2.8 <small>_ September 20, 2021</small>
+
+- Fixed #3039: Search modal overlays menu on mobile (7.2.7 regression)
+
 ### 7.2.7 <small>_ September 19, 2021</small>
 
 - Updated Serbian and Serbo-Croatian translations

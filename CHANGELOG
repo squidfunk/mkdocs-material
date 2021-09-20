@@ -1,3 +1,7 @@
+mkdocs-material-7.2.8 (2021-09-20)
+
+  * Fixed #3039: Search modal overlays menu on mobile (7.2.7 regression)
+
 mkdocs-material-7.2.7+insiders-3.0.1 (2021-09-19)
 
   * Added support for using literal h1-6 tags for search plugin
