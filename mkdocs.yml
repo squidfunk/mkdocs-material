@@ -212,7 +212,7 @@ nav:
     - Meta tags: reference/meta-tags.md
     - Variables: reference/variables.md
   - Insiders:
-    - Sponsorship: insiders/index.md
+    - insiders/index.md
     - Getting started:
       - Installation: insiders/getting-started.md
       - Changelog: insiders/changelog.md

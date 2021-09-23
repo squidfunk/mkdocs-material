@@ -39,7 +39,7 @@ export const enum SearchMessageType {
 /* ------------------------------------------------------------------------- */
 
 /**
- * A message containing the data necessary to setup the search index
+ * Message containing the data necessary to setup the search index
  */
 export interface SearchSetupMessage {
   type: SearchMessageType.SETUP        /* Message type */
@@ -47,14 +47,14 @@ export interface SearchSetupMessage {
 }
 
 /**
- * A message indicating the search index is ready
+ * Message indicating the search index is ready
  */
 export interface SearchReadyMessage {
   type: SearchMessageType.READY        /* Message type */
 }
 
 /**
- * A message containing a search query
+ * Message containing a search query
  */
 export interface SearchQueryMessage {
   type: SearchMessageType.QUERY        /* Message type */
@@ -62,7 +62,7 @@ export interface SearchQueryMessage {
 }
 
 /**
- * A message containing results for a search query
+ * Message containing results for a search query
  */
 export interface SearchResultMessage {
   type: SearchMessageType.RESULT       /* Message type */
@@ -72,7 +72,7 @@ export interface SearchResultMessage {
 /* ------------------------------------------------------------------------- */
 
 /**
- * A message exchanged with the search worker
+ * Message exchanged with the search worker
  */
 export type SearchMessage =
   | SearchSetupMessage

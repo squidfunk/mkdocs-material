@@ -54,7 +54,7 @@ declare global {
   /**
    * Global function to prefix storage items
    */
-   function __prefix(key: string): string
+  function __prefix(key: string): string
 
   /**
    * Google Analytics

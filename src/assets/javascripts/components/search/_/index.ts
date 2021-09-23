@@ -213,7 +213,7 @@ export function mountSearch(
 
           /* Search sharing */
           ...getComponentElements("search-share", el)
-          .map(child => mountSearchShare(child, { query$ })),
+            .map(child => mountSearchShare(child, { query$ })),
 
           /* Search suggestions */
           ...getComponentElements("search-suggest", el)

@@ -36,7 +36,7 @@
  */
 export function getElement<T extends keyof HTMLElementTagNameMap>(
   selector: T, node?: ParentNode
-): HTMLElementTagNameMap[T]
+): HTMLElementTagNameMap[T] | undefined
 
 export function getElement<T extends HTMLElement>(
   selector: string, node?: ParentNode
@@ -74,6 +74,8 @@ export function getElementOrThrow<T extends HTMLElement>(
     throw new ReferenceError(
       `Missing element: expected "${selector}" to be present`
     )
+
+  /* Return element */
   return el
 }
 
@@ -113,21 +115,6 @@ export function getElements<T extends HTMLElement>(
 }
 
 /* ------------------------------------------------------------------------- */
-
-/**
- * Create an element
- *
- * @template T - Tag name type
- *
- * @param tagName - Tag name
- *
- * @returns Element
- */
-export function createElement<T extends keyof HTMLElementTagNameMap>(
-  tagName: T
-): HTMLElementTagNameMap[T] {
-  return document.createElement(tagName)
-}
 
 /**
  * Replace an element with the given list of nodes

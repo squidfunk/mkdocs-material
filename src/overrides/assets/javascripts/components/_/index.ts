@@ -27,7 +27,7 @@ import { getElementOrThrow, getElements } from "~/browser"
  * ------------------------------------------------------------------------- */
 
 /**
- * Component
+ * Component type
  */
 export type ComponentType =
   | "iconsearch"                       /* Icon search */
@@ -38,7 +38,7 @@ export type ComponentType =
   | "sponsorship-total"                /* Sponsorship total */
 
 /**
- * A component
+ * Component
  *
  * @template T - Component type
  * @template U - Reference type
