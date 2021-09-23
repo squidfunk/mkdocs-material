@@ -40,33 +40,40 @@ COPY setup.py setup.py
 
 # Perform build and cleanup artifacts and caches
 RUN \
-  apk upgrade --update-cache -a && \
+  apk upgrade --update-cache -a \
+&& \
   apk add --no-cache \
     git \
     git-fast-import \
     openssh \
-  && apk add --no-cache --virtual .build gcc musl-dev \
-  && pip install --no-cache-dir . \
-  && \
-    if [ "${WITH_PLUGINS}" = "true" ]; then \
-      pip install --no-cache-dir \
-        "mkdocs-minify-plugin>=0.3" \
-        "mkdocs-redirects>=1.0"; \
-    fi \
-  && apk del .build gcc musl-dev \
-  && \
-    for theme in mkdocs readthedocs; do \
-      rm -rf ${PACKAGES}/mkdocs/themes/$theme; \
-      ln -s \
-        ${PACKAGES}/material \
-        ${PACKAGES}/mkdocs/themes/$theme; \
-    done \
-  && rm -rf /tmp/* /root/.cache \
-  && \
-    find ${PACKAGES} \
-      -type f \
-      -path "*/__pycache__/*" \
-      -exec rm -f {} \;
+&& \
+  apk add --no-cache --virtual .build \
+    gcc \
+    musl-dev \
+&& \
+  pip install --no-cache-dir . \
+&& \
+  if [ "${WITH_PLUGINS}" = "true" ]; then \
+    pip install --no-cache-dir \
+      "mkdocs-minify-plugin>=0.3" \
+      "mkdocs-redirects>=1.0"; \
+  fi \
+&& \
+  apk del .build \
+&& \
+  for theme in mkdocs readthedocs; do \
+    rm -rf ${PACKAGES}/mkdocs/themes/$theme; \
+    ln -s \
+      ${PACKAGES}/material \
+      ${PACKAGES}/mkdocs/themes/$theme; \
+  done \
+&& \
+  rm -rf /tmp/* /root/.cache \
+&& \
+  find ${PACKAGES} \
+    -type f \
+    -path "*/__pycache__/*" \
+    -exec rm -f {} \;
 
 # Set working directory
 WORKDIR /docs
