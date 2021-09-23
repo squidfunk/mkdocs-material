@@ -1,3 +1,9 @@
+mkdocs-material-7.3.0 (2021-09-23)
+
+  * Added support for sticky navigation tabs
+  * Added support for section index pages
+  * Added support for removing generator notice
+
 mkdocs-material-7.2.8 (2021-09-20)
 
   * Fixed #3039: Search modal overlays menu on mobile (7.2.7 regression)

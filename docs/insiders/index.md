@@ -151,10 +151,7 @@ The following features are currently exclusively available to sponsors:
 - [x] [Custom admonition icons][31]
 - [x] [Code block annotations][25]
 - [x] [Anchor tracking ][24]
-- [x] [Section index pages][22]
-- [x] [Sticky navigation tabs][21]
 - [x] [Mermaid.js integration][27]
-- [x] [Remove generator notice][23]
 
 </div>
 
@@ -171,16 +168,6 @@ from time to time to learn about what's new, or follow [@squidfunk on
 Following is a list of funding goals. When a funding goal is hit, the features
 that are tied to it are merged back into Material for MkDocs and released to
 the public for general availability.
-
-#### $ 3,000 – Caribbean Red
-
-- [x] [Sticky navigation tabs][21]
-- [x] [Section index pages][22]
-- [x] [Remove generator notice][23]
-
-  [21]: ../setup/setting-up-navigation.md#sticky-navigation-tabs
-  [22]: ../setup/setting-up-navigation.md#section-index-pages
-  [23]: ../setup/setting-up-the-footer.md#remove-generator
 
 #### $ 4,000 – Ghost Pepper
 
@@ -241,6 +228,16 @@ the public for general availability.
   [38]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
 
 ### Goals completed
+
+#### $ 3,000 – Caribbean Red
+
+- [x] [Sticky navigation tabs][21]
+- [x] [Section index pages][22]
+- [x] [Remove generator notice][23]
+
+  [21]: ../setup/setting-up-navigation.md#sticky-navigation-tabs
+  [22]: ../setup/setting-up-navigation.md#section-index-pages
+  [23]: ../setup/setting-up-the-footer.md#remove-generator
 
 #### $ 2,500 – Biquinho Vermelho
 

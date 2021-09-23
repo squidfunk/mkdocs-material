@@ -43,9 +43,9 @@ _Material for MkDocs is the only MkDocs theme offering this feature._
 
 ### Anchor tracking
 
-[:octicons-file-code-24: Source][9] ·
+[:octicons-file-code-24: Source][6] ·
 :octicons-unlock-24: Feature flag ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][9]{ .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][6]{ .mdx-insiders }
 
 When _anchor tracking_ is enabled, the URL in the address bar is automatically
 updated with the active anchor as highlighted in the table of contents. Add the
@@ -57,9 +57,11 @@ theme:
     - navigation.tracking
 ```
 
+  [6]: ../insiders/index.md
+
 ### Navigation tabs
 
-[:octicons-file-code-24: Source][6] · :octicons-unlock-24: Feature flag
+[:octicons-file-code-24: Source][7] · :octicons-unlock-24: Feature flag
 
 When _tabs_ are enabled, top-level sections are rendered in a menu layer below
 the header for viewports above `1220px`, but remain as-is on mobile.[^1] Add
@@ -82,22 +84,21 @@ theme:
 
 === "With tabs"
 
-    [![With tabs][7]][7]
+    [![With tabs][8]][8]
 
 === "Without tabs"
 
-    [![Without tabs][8]][8]
+    [![Without tabs][9]][9]
 
-  [6]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/tabs.html
-  [7]: ../assets/screenshots/navigation-tabs.png
-  [8]: ../assets/screenshots/navigation.png
+  [7]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/tabs.html
+  [8]: ../assets/screenshots/navigation-tabs.png
+  [9]: ../assets/screenshots/navigation.png
 
 #### Sticky navigation tabs
 
-[:octicons-file-code-24: Source][9] ·
+[:octicons-file-code-24: Source][10] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][9]{ .mdx-insiders }
+:octicons-beaker-24: Experimental
 
 When _sticky tabs_ are enabled, navigation tabs will lock below the header and
 always remain visible when scrolling down. Just add the following two feature
@@ -112,19 +113,19 @@ theme:
 
 === "With sticky tabs"
 
-    [![With sticky tabs][10]][10]
+    [![With sticky tabs][11]][11]
 
 === "Without sticky tabs"
 
-    [![Without sticky tabs][11]][11]
+    [![Without sticky tabs][12]][12]
 
-  [9]: ../insiders/index.md
-  [10]: ../assets/screenshots/navigation-tabs-sticky.png
-  [11]: ../assets/screenshots/navigation-tabs-collapsed.png
+  [10]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/header.html
+  [11]: ../assets/screenshots/navigation-tabs-sticky.png
+  [12]: ../assets/screenshots/navigation-tabs-collapsed.png
 
 ### Navigation sections
 
-[:octicons-file-code-24: Source][12] ·
+[:octicons-file-code-24: Source][13] ·
 :octicons-unlock-24: Feature flag
 
 When _sections_ are enabled, top-level sections are rendered as groups in the
@@ -139,14 +140,14 @@ theme:
 
 === "With sections"
 
-    [![With sections][13]][13]
+    [![With sections][14]][14]
 
 === "Without sections"
 
-    [![Without sections][8]][8]
+    [![Without sections][9]][9]
 
-  [12]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/nav-item.html
-  [13]: ../assets/screenshots/navigation-sections.png
+  [13]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/nav-item.html
+  [14]: ../assets/screenshots/navigation-sections.png
 
 Both feature flags, _tabs_ and _sections_, can be combined with each other. If
 both feature flags are enabled, sections are rendered for level 2 navigation
@@ -154,7 +155,7 @@ items.
 
 ### Navigation expansion
 
-[:octicons-file-code-24: Source][12] ·
+[:octicons-file-code-24: Source][13] ·
 :octicons-unlock-24: Feature flag
 
 When _expansion_ is enabled, the left sidebar will expand all collapsible
@@ -169,20 +170,19 @@ theme:
 
 === "With expansion"
 
-    [![With expansion][14]][14]
+    [![With expansion][15]][15]
 
 === "Without expansion"
 
-    [![Without expansion][8]][8]
+    [![Without expansion][9]][9]
 
-  [14]: ../assets/screenshots/navigation-expand.png
+  [15]: ../assets/screenshots/navigation-expand.png
 
 ### Section index pages
 
-[:octicons-file-code-24: Source][9] ·
+[:octicons-file-code-24: Source][16] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][9]{ .mdx-insiders }
+:octicons-beaker-24: Experimental
 
 When _section index pages_ are enabled, documents can be directly attached to
 sections, which is particularly useful for providing overview pages. Add the
@@ -196,11 +196,11 @@ theme:
 
 === "With section index pages"
 
-    [![With expansion][15]][15]
+    [![With expansion][17]][17]
 
 === "Without section index pages"
 
-    [![Without expansion][16]][16]
+    [![Without expansion][18]][18]
 
 In order to link a page to a section, create a new document with the name
 `index.md` in the respective folder, and add it to the beginning of your
@@ -216,23 +216,16 @@ nav:
 ```
 
 _This feature flag can be combined with all other feature flags, e.g. [tabs][1]
-and [sections][2], except for table of contents [navigation integration][17].
-Note that it doesn't rely on third-party plugins[^2]._
+and [sections][2], except for table of contents [navigation integration][19]._
 
-  [^2]:
-    If you don't want to use the native integration, the
-    [mkdocs-section-index][18] plugin might be an alternative. However, note
-    that this plugin may not be compatible with all navigation-related features
-    offered by Material for MkDocs.
-
-  [15]: ../assets/screenshots/navigation-index-on.png
-  [16]: ../assets/screenshots/navigation-index-off.png
-  [17]: #navitation-intergation
-  [18]: https://github.com/oprypin/mkdocs-section-index
+  [16]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/nav-item.html
+  [17]: ../assets/screenshots/navigation-index-on.png
+  [18]: ../assets/screenshots/navigation-index-off.png
+  [19]: #navigation-integration
 
 ### Back-to-top button
 
-[:octicons-file-code-24: Source][19] ·
+[:octicons-file-code-24: Source][20] ·
 :octicons-unlock-24: Feature flag
 
 A _back-to-top button_ can be shown when the user, after scrolling down, starts
@@ -245,11 +238,10 @@ theme:
     - navigation.top
 ```
 
-[![back-to-top button][20]][20]
+[![back-to-top button][21]][21]
 
-  [19]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_top.scss
-  [20]: ../assets/screenshots/back-to-top.png
-  [21]: https://squidfunk.github.io/mkdocs-material-insiders/setup/setting-up-navigation/#back-to-top-button
+  [20]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_top.scss
+  [21]: ../assets/screenshots/back-to-top.png
 
 ### Table of contents
 
@@ -287,7 +279,7 @@ customize its appearance:
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for 
     customization of the slug function. For some languages, the default may not
     produce good and readable identifiers – consider using another slug function
-    like for example those from [Python Markdown Extensions][24]:
+    like for example those from [Python Markdown Extensions][25]:
 
     === "Unicode"
 
@@ -358,7 +350,7 @@ theme:
 
 === "Separate table of contents"
 
-    [![Separate table of contents][7]][7]
+    [![Separate table of contents][8]][8]
 
   [26]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_nav.scss
   [27]: ../assets/screenshots/toc-integrate.png

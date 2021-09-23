@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.3.0 <small>_ September 23, 2021</small>
+
+- Added support for sticky navigation tabs
+- Added support for section index pages
+- Added support for removing generator notice
+
 ### 7.2.8 <small>_ September 20, 2021</small>
 
 - Fixed #3039: Search modal overlays menu on mobile (7.2.7 regression)
