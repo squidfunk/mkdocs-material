@@ -137,7 +137,12 @@
 
     // Blog author content
     p {
-      margin-right: px2rem(16px);
+
+      // TODO: refactor, use dedicated classes
+      &:first-child {
+        flex-shrink: 0;
+        margin-right: px2rem(16px);
+      }
 
       // Blog metadata
       > span {
