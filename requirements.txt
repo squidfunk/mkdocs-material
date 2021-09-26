@@ -22,8 +22,5 @@
 mkdocs>=1.2.2
 Pygments>=2.4
 markdown>=3.2
-# pymdown-extensions>=7.0
+pymdown-extensions>=8.2
 mkdocs-material-extensions>=1.0
-
-# Use feature branch temporarily
-pymdown-extensions @ git+https://github.com/facelessuser/pymdown-extensions.git@feature/tabbed-alternate
