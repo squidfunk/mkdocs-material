@@ -1,8 +1,8 @@
 ---
 template: overrides/main.html
 description: >
-  How we rebuilt client-side search, delivering a better user experience while
-  making it faster and smaller at the same time
+  Three new simple ways to exclude dedicated parts of a document from the search
+  index, allowing for more fine-grained control
 disqus: mkdocs-material
 search:
   exclude: true
