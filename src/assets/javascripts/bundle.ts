@@ -256,20 +256,3 @@ window.screen$    = screen$            /* Screen observable */
 window.print$     = print$             /* Print mode observable */
 window.alert$     = alert$             /* Alert subject */
 window.component$ = component$         /* Component observable */
-
-/* ----------------------------------------------------------------------------
- * Temporary, before we integrate this into master
- * ------------------------------------------------------------------------- */
-
-document$
-  .pipe(
-    switchMap(() => of(...getElements(".tabbed-alternate > input"))
-      .pipe(
-        mergeMap(el => fromEvent(el, "change").pipe(mapTo(el))),
-        map(el => getElementOrThrow(`label[for=${el.id}]`))
-      )
-    )
-  )
-    .subscribe(el => {
-      el.scrollIntoView({ behavior: "smooth",  block: "nearest" })
-    })
