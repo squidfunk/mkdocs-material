@@ -30,8 +30,7 @@ import {
   mergeMap,
   mergeWith,
   shareReplay,
-  switchMap,
-  tap
+  switchMap
 } from "rxjs/operators"
 
 import { configuration, feature } from "./_"
