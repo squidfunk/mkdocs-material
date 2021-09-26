@@ -1,3 +1,12 @@
+mkdocs-material-7.3.0+insiders-3.1.1 (2021-09-26)
+
+  * Fixed ordering bug in search exclusion logic
+
+mkdocs-material-7.3.0+insiders-3.1.0 (2021-09-26)
+
+  * Added support for excluding pages, sections, and elements from search
+  * Fixed #2803: Code block annotations not visible when printing
+
 mkdocs-material-7.3.0 (2021-09-23)
 
   * Added support for sticky navigation tabs

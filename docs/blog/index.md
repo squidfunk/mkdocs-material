@@ -6,6 +6,25 @@ search:
 
 # Blog
 
+<h2>Excluding content from search</h2>
+
+__The latest Insiders release brings three new simple ways to exclude dedicated
+parts of a document from the search index, allowing for more fine-grained
+control.__
+
+Two weeks ago, Material for MkDocs Insiders shipped a brand new search plugin,
+yielding massive improvements in usability, but also in speed and size of the
+search index. Interestingly, as discussed in the previous blog article, we only
+scratched the surface of what's now possible. This release brings some useful
+features that enhance the writing experience, allowing for more fine-grained
+control of what pages, sections and blocks of a Markdown file should be indexed
+by the built-in search functionality.
+
+[Continue reading :octicons-arrow-right-24:][2]{ .md-button }
+
+  [2]: 2021/excluding-content-from-search.md
+
+
 <h2>Search: better, faster, smaller</h2>
 
 __This is the story of how we managed to completely rebuild client-side search,

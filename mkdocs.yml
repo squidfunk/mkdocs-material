@@ -219,4 +219,5 @@ nav:
   - Blog:
     - blog/index.md
     - 2021:
+      - blog/2021/excluding-content-from-search.md
       - blog/2021/search-better-faster-smaller.md

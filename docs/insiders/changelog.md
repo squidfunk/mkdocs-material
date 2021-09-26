@@ -6,6 +6,15 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 3.1.1 <small>_ September 26, 2021</small>
+
+- Fixed ordering bug in search exclusion logic
+
+### 3.1.0 <small>_ September 26, 2021</small>
+
+- Added support for excluding pages, sections, and elements from search
+- Fixed #2803: Code block annotations not visible when printing
+
 ### 3.0.1 <small>_ September 19, 2021</small>
 
 - Added support for using literal `h1-6` tags for search plugin

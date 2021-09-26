@@ -20,7 +20,8 @@ smaller at the same time.__
 <span>__Martin Donath__ · @squidfunk</span>
 <span>
 :octicons-calendar-24: September 13, 2021 ·
-:octicons-clock-24: 15 min read
+:octicons-clock-24: 15 min read ·
+[:octicons-tag-24: 7.2.6+insiders-3.0.0](../../insiders/changelog.md#300-_-september-13-2021)
 </span>
 </aside>
 
