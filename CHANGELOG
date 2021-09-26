@@ -1,3 +1,67 @@
+mkdocs-material-7.3.0 (2021-09-23)
+
+  * Added support for sticky navigation tabs
+  * Added support for section index pages
+  * Added support for removing generator notice
+
+mkdocs-material-7.2.8 (2021-09-20)
+
+  * Fixed #3039: Search modal overlays menu on mobile (7.2.7 regression)
+
+mkdocs-material-7.2.7+insiders-3.0.1 (2021-09-19)
+
+  * Added support for using literal h1-6 tags for search plugin
+  * Fixed search plugin breaking on void elements without slashes
+  * Fixed search plugin filtering link contents from headlines
+  * Fixed search plugin handling of multiple h1 headlines
+  * Fixed search plugin handling of missing h1 headlines
+
+mkdocs-material-7.2.7 (2021-09-19)
+
+  * Updated Serbian and Serbo-Croatian translations
+  * Improved appearance of outline on details
+  * Fixed #2934: Scrollbar when header is hidden on some mobile browsers
+  * Fixed #3032: Anchor in details doesn't open on load (7.0.0 regression)
+  * Fixed back-to-top button being focusable when invisible
+  * Fixed broken admonition icons (removed in upstream)
+
+mkdocs-material-7.2.6+insiders-3.0.0 (2021-09-13)
+
+  * Rewrite of MkDocs' search plugin
+  * Added support for rich search previews
+  * Added support for tokenizer with lookahead
+  * Improved search indexing performance (twice as fast)
+  * Improved search highlighting
+
+mkdocs-material-7.2.6+insiders-2.13.3 (2021-09-01)
+
+  * Added support for disabling social card generation
+
+mkdocs-material-7.2.6 (2021-09-01)
+
+  * Fixed rendering of blockquote elements (7.0.0 regression)
+  * Fixed #2973: Custom search worker setting ignored
+
+mkdocs-material-7.2.5+insiders-2.13.2 (2021-08-25)
+
+  * Fixed #2965: Social plugin error when primary color is not defined
+
+mkdocs-material-7.2.5 (2021-08-25)
+
+  * Updated Portuguese translations
+  * Fixed execution of RxJS teardown logic (7.2.3 regression)
+  * Fixed #2970: Search results show escaped characters (7.2.2 regression)
+
+mkdocs-material-7.2.4+insiders-2.13.1 (2021-08-22)
+
+  * Fixed #2948: Social cards are not cached
+  * Fixed #2953: Mermaid.js diagrams can't be centered anymore
+
+mkdocs-material-7.2.4 (2021-08-11)
+
+  * Fixed #2926: Version selector not working (7.2.3 regression)
+  * Fixed #2929: Missing CSS class for banner (consistency with Insiders)
+
 mkdocs-material-7.2.3 (2021-08-09)
 
   * Slight facelift of data tables, now closer to Material Design

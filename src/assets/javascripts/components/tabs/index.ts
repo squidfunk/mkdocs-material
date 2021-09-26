@@ -20,15 +20,22 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, animationFrameScheduler } from "rxjs"
+import {
+  Observable,
+  Subject,
+  animationFrameScheduler,
+  of
+} from "rxjs"
 import {
   distinctUntilKeyChanged,
+  finalize,
   map,
   observeOn,
   switchMap,
   tap
 } from "rxjs/operators"
 
+import { feature } from "~/_"
 import { resetTabsState, setTabsState } from "~/actions"
 import {
   Viewport,
@@ -133,9 +140,14 @@ export function mountTabs(
       })
 
   /* Create and return component */
-  return watchTabs(el, options)
+  return (
+    feature("navigation.tabs.sticky")
+      ? of({ hidden: false })
+      : watchTabs(el, options)
+  )
     .pipe(
-      tap(internal$),
+      tap(state => internal$.next(state)),
+      finalize(() => internal$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

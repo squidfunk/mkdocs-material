@@ -85,6 +85,25 @@ extra:
 
 ## Customization
 
+### Displaying the metadata
+
+Sometimes it's useful to be able to display the medatada in the page body, e.g.
+print the name of the page author at the bottom of the page. To achieve that,
+you can [extend the theme][7] by adding the following contents to `main.html`:
+
+``` html
+{% extends "base.html" %}
+
+{% block content %}
+  {{ super() }}
+  {% if page and page.meta and page.meta.author %}
+    <p><small>Author: {{ page.meta.author }}</small></p>
+  {% endif %}
+{% endblock %}
+```
+
+  [7]: ../customization.md#extending-the-theme
+
 ### Custom meta tags
 
 #### on all pages
@@ -94,12 +113,13 @@ In order to add custom `meta` tags to your document, you can [extend the theme
 policies for search engines:
 
 ``` html
+{% extends "base.html" %}
+
 {% block extrahead %}
   <meta property="robots" content="noindex, nofollow" />
 {% endblock %}
 ```
 
-  [7]: ../customization.md#extending-the-theme
   [8]: ../customization.md#overriding-blocks-recommended
 
 #### on a single page
@@ -109,6 +129,8 @@ values for different pages, you can use the `page.meta` object inside your
 template override, e.g.:
 
 ``` html
+{% extends "base.html" %}
+
 {% block extrahead %}
   {% if page and page.meta and page.meta.robots %}
     <meta property="robots" content="{{ page.meta.robots }}" />

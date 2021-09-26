@@ -42,6 +42,8 @@ an announcement bar, [extend the theme][4] and [override the `announce`
 block][5], which is empty by default:
 
 ``` html
+{% extends "base.html" %}
+
 {% block announce %}
   <!-- Add your announcement here, including arbitrary HTML -->
 {% endblock %}

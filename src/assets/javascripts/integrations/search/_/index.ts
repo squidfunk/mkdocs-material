@@ -167,7 +167,7 @@ export class Search {
 
     /* Set up document map and highlighter factory */
     this.documents = setupSearchDocumentMap(docs)
-    this.highlight = setupSearchHighlighter(config)
+    this.highlight = setupSearchHighlighter(config, false)
 
     /* Set separator for tokenizer */
     lunr.tokenizer.separator = new RegExp(config.separator)

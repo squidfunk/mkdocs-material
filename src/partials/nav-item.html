@@ -63,11 +63,36 @@
         />
       {% endif %}
 
-      <!-- Expand active pages -->
-      <label class="md-nav__link" for="{{ path }}">
-        {{ nav_item.title }}
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      <!-- Determine all nested items that are index pages -->
+      {% set indexes = [] %}
+      {% if "navigation.indexes" in features %}
+        {% for item in nav_item.children %}
+          {% if item.is_index and not index is defined %}
+            {% set _ = indexes.append(item) %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <!-- Render toggle to expand nested items -->
+      {% if not indexes %}
+        <label class="md-nav__link" for="{{ path }}">
+          {{ nav_item.title }}
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      {% else %}
+        {% set index = indexes | first %}
+        {% set class = "md-nav__link--active" if index == page %}
+        <div class="md-nav__link md-nav__link--container {{ class }}">
+          <a href="{{ index.url | url }}">{{ nav_item.title }}</a>
+          <label for="{{ path }}">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      {% endif %}
+
+      <!-- Render nested navigation -->
       <nav
         class="md-nav"
         aria-label="{{ nav_item.title }}"
@@ -81,7 +106,11 @@
 
           <!-- Render nested item list -->
           {% for nav_item in nav_item.children %}
-            {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+            {% if "navigation.indexes" in features and nav_item.is_index %}
+              <!-- Render nothing -->
+            {% else %}
+              {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+            {% endif %}
           {% endfor %}
         </ul>
       </nav>

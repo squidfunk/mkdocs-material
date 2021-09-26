@@ -166,7 +166,7 @@ kbd {
       color: var(--md-accent-fg-color);
     }
 
-    // Text link on keyboard focus
+    // Show outline for keyboard devices
     &.focus-visible {
       outline-color: var(--md-accent-fg-color);
       outline-offset: px2rem(4px);
@@ -351,7 +351,6 @@ kbd {
 
   // Blockquotes, possibly nested
   blockquote {
-    display: flow-root;
     padding-left: px2rem(12px);
     color: var(--md-default-fg-color--light);
     border-left: px2rem(4px) solid var(--md-default-fg-color--lighter);

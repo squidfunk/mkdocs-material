@@ -123,4 +123,26 @@
       break-inside: avoid;
     }
   }
+
+  // Blog author
+  .mdx-author {
+    display: flex;
+    font-size: px2rem(13.6px);
+
+    // Blog author image
+    img {
+      height: px2rem(40px);
+      border-radius: 100%;
+    }
+
+    // Blog author content
+    p {
+      margin-right: px2rem(16px);
+
+      // Blog metadata
+      > span {
+        display: block;
+      }
+    }
+  }
 }

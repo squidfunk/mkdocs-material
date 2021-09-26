@@ -6,6 +6,41 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.3.0 <small>_ September 23, 2021</small>
+
+- Added support for sticky navigation tabs
+- Added support for section index pages
+- Added support for removing generator notice
+
+### 7.2.8 <small>_ September 20, 2021</small>
+
+- Fixed #3039: Search modal overlays menu on mobile (7.2.7 regression)
+
+### 7.2.7 <small>_ September 19, 2021</small>
+
+- Updated Serbian and Serbo-Croatian translations
+- Improved appearance of outline on details
+- Fixed #2934: Scrollbar when header is hidden on some mobile browsers
+- Fixed #3032: Anchor in details doesn't open on load (7.0.0 regression)
+- Fixed back-to-top button being focusable when invisible
+- Fixed broken admonition icons (removed in upstream)
+
+### 7.2.6 <small>_ September 1, 2021</small>
+
+- Fixed rendering of `blockquote` elements (7.0.0 regression)
+- Fixed #2973: Custom search worker setting ignored
+
+### 7.2.5 <small>_ August 25, 2021</small>
+
+- Updated Portuguese translations
+- Fixed execution of RxJS teardown logic (7.2.3 regression)
+- Fixed #2970: Search results show escaped characters (7.2.2 regression)
+
+### 7.2.4 <small>_ August 11, 2021</small>
+
+- Fixed #2926: Version selector not working (7.2.3 regression)
+- Fixed #2929: Missing CSS class for banner (consistency with Insiders)
+
 ### 7.2.3 <small>_ August 9, 2021</small>
 
 - Slight facelift of data tables, now closer to Material Design

@@ -27,7 +27,7 @@ import { getElementOrThrow, getElements } from "~/browser"
  * ------------------------------------------------------------------------- */
 
 /**
- * Component
+ * Component type
  */
 export type ComponentType =
   | "announce"                         /* Announcement bar */
@@ -52,7 +52,7 @@ export type ComponentType =
   | "top"                              /* Back-to-top button */
 
 /**
- * A component
+ * Component
  *
  * @template T - Component type
  * @template U - Reference type

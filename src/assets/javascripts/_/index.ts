@@ -33,8 +33,10 @@ export type Flag =
   | "header.autohide"                  /* Hide header */
   | "navigation.expand"                /* Automatic expansion */
   | "navigation.instant"               /* Instant loading */
-  | "navigation.sections"              /* Sections navigation */
+  | "navigation.indexes"               /* Section pages */
+  | "navigation.sections"              /* Section navigation */
   | "navigation.tabs"                  /* Tabs navigation */
+  | "navigation.tabs.sticky"           /* Tabs navigation (sticky) */
   | "navigation.top"                   /* Back-to-top button */
   | "search.highlight"                 /* Search highlighting */
   | "search.share"                     /* Search sharing */
@@ -96,7 +98,7 @@ export interface Config {
  */
 const script = getElementOrThrow("#__config")
 const config: Config = JSON.parse(script.textContent!)
-config.base = new URL(config.base, getLocation()).toString()
+config.base = `${new URL(config.base, getLocation())}`
 
 /* ----------------------------------------------------------------------------
  * Functions

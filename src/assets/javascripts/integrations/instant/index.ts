@@ -45,11 +45,10 @@ import {
   switchMap
 } from "rxjs/operators"
 
-import { configuration } from "~/_"
+import { configuration, feature } from "~/_"
 import {
   Viewport,
   ViewportOffset,
-  createElement,
   getElement,
   getElements,
   replaceElement,
@@ -60,6 +59,7 @@ import {
   setViewportOffset
 } from "~/browser"
 import { getComponentElement } from "~/components"
+import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -283,7 +283,10 @@ export function setupInstantLoading(
           "[data-md-component=container]",
           "[data-md-component=header-topic]",
           "[data-md-component=logo], .md-logo", // compat
-          "[data-md-component=skip]"
+          "[data-md-component=skip]",
+          ...feature("navigation.tabs.sticky")
+            ? ["[data-md-component=tabs]"]
+            : []
         ]) {
           const source = getElement(selector)
           const target = getElement(selector, replacement)
@@ -303,7 +306,7 @@ export function setupInstantLoading(
       map(() => getComponentElement("container")),
       switchMap(el => of(...getElements("script", el))),
       concatMap(el => {
-        const script = createElement("script")
+        const script = h("script")
         if (el.src) {
           for (const name of el.getAttributeNames())
             script.setAttribute(name, el.getAttribute(name)!)

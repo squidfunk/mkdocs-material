@@ -178,7 +178,7 @@ Click on a tile to change the directionality:
 [:octicons-file-code-24: Source][1] ·
 :octicons-mortar-board-24: Difficulty: _easy_
 
-If you want to customize some of the translations for your language, just follow
+If you want to customize some of the translations for a language, just follow
 the guide on [theme extension][9] and create a new partial in
 `partials/languages`, e.g. `en-custom.html`. Next, look up the translation you
 want to change in the [base translation][1] and add it to the partial.
@@ -186,9 +186,14 @@ want to change in the [base translation][1] and add it to the partial.
 Let's say you want to change "__Table of contents__" to "__On this page__":
 
 ``` html
-{% macro t(key) %}{{ {
+<!-- Use en language as fallback -->
+{% import "partials/languages/en.html" as fallback %}
+{% macro override(key) %}{{ {
   "toc.title": "On this page"
 }[key] }}{% endmacro %}
+
+<!-- Re-export the translation macro for mkbuild-material to use -->
+{% macro t(key) %}{{ override(key) or fallback.t(key) }}{% endmacro %}
 ```
 
 Then, add the following lines to `mkdocs.yml`:

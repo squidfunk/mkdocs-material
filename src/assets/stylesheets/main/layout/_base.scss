@@ -140,7 +140,7 @@ body {
     display: block;
   }
 
-  // Show outline for pointer devices
+  // Show outline for keyboard devices
   &.focus-visible + label {
     outline-style: auto;
     outline-color: var(--md-accent-fg-color);

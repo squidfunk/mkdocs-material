@@ -23,6 +23,7 @@
 import { Observable, Subject } from "rxjs"
 import {
   filter,
+  finalize,
   map,
   mapTo,
   mergeWith,
@@ -38,7 +39,9 @@ import { Component } from "../../_"
 /**
  * Details
  */
-export interface Details {}
+export interface Details {
+  scroll?: boolean                     /* Scroll into view */
+}
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -79,8 +82,8 @@ export function watchDetails(
     .pipe(
       map(target => target.closest("details:not([open])")!),
       filter(details => el === details),
-      mergeWith(print$),
-      mapTo(el)
+      mapTo({ scroll: true }),
+      mergeWith(print$.pipe(mapTo({})))
     )
 }
 
@@ -99,15 +102,17 @@ export function mountDetails(
   el: HTMLDetailsElement, options: MountOptions
 ): Observable<Component<Details>> {
   const internal$ = new Subject<Details>()
-  internal$.subscribe(() => {
+  internal$.subscribe(({ scroll }) => {
     el.setAttribute("open", "")
-    el.scrollIntoView()
+    if (scroll)
+      el.scrollIntoView()
   })
 
   /* Create and return component */
   return watchDetails(el, options)
     .pipe(
-      tap(internal$),
+      tap(state => internal$.next(state)),
+      finalize(() => internal$.complete()),
       mapTo({ ref: el })
     )
 }

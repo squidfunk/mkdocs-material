@@ -70,13 +70,13 @@ storage and management.
 
 _Example_:
 
-=== "docs/page.md"
+=== "`docs/page.md`"
 
     ```` markdown
     The unit price is {{ unit.price }}
     ````
 
-=== "mkdocs.yml"
+=== "`mkdocs.yml`"
 
     ``` yaml
     extra:
@@ -109,13 +109,13 @@ In your Markdown file, include snippets with Jinja's [`include`][4] function:
 
 _Example_:
 
-=== "snippets/definitions.md"
+=== "`snippets/definitions.md`"
 
     ``` markdown
     The unit price is {{ page.meta.unit.price }}
     ```
 
-=== "docs/page-1.md"
+=== "`docs/page-1.md`"
 
     ``` markdown
     ---
@@ -126,7 +126,7 @@ _Example_:
     {% include "definitions.md" %}
     ```
 
-=== "docs/page-2.md"
+=== "`docs/page-2.md`"
 
     ``` markdown
     ---

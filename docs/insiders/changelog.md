@@ -6,6 +6,35 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 3.0.1 <small>_ September 19, 2021</small>
+
+- Added support for using literal `h1-6` tags for search plugin
+- Fixed search plugin breaking on void elements without slashes
+- Fixed search plugin filtering link contents from headlines
+- Fixed search plugin handling of multiple `h1` headlines
+- Fixed search plugin handling of missing `h1` headlines
+
+### 3.0.0 <small>_ September 13, 2021</small>
+
+- Rewrite of MkDocs' search plugin
+- Added support for rich search previews
+- Added support for tokenizer with lookahead
+- Improved search indexing performance (twice as fast)
+- Improved search highlighting
+
+### 2.13.3 <small>_ September 1, 2021</small>
+
+- Added support for disabling social card generation
+
+### 2.13.2 <small>_ August 25, 2021</small>
+
+- Fixed #2965: Social plugin error when primary color is not defined
+
+### 2.13.1 <small>_ August 21, 2021</small>
+
+- Fixed #2948: Social cards are not cached
+- Fixed #2953: Mermaid.js diagrams can't be centered anymore
+
 ### 2.13.0 <small>_ August 7, 2021</small>
 
 - Added support for custom colors in social cards

@@ -54,7 +54,7 @@ theme:
     - content.tabs.link
     # - header.autohide
     # - navigation.expand
-    # - navigation.indexes
+    - navigation.indexes
     # - navigation.instant
     - navigation.sections
     - navigation.tabs
@@ -213,7 +213,11 @@ nav:
     - Meta tags: reference/meta-tags.md
     - Variables: reference/variables.md
   - Insiders:
-    - Sponsorship: insiders/index.md
+    - insiders/index.md
     - Getting started:
       - Installation: insiders/getting-started.md
       - Changelog: insiders/changelog.md
+  - Blog:
+    - blog/index.md
+    - 2021:
+      - blog/2021/search-better-faster-smaller.md

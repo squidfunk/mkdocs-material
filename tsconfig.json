@@ -7,7 +7,6 @@
     "jsxFactory": "h",
     "lib": [
       "dom",
-      "es2017",
       "esnext",
       "webworker"
     ],
@@ -25,6 +24,7 @@
     },
     "removeComments": false,
     "sourceMap": true,
+    "skipLibCheck": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,

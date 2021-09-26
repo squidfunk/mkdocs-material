@@ -19,10 +19,29 @@
       {% else %}
         <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" {{ checked }}>
       {% endif %}
-      <label class="md-nav__link" for="{{ path }}">
-        {{ nav_item.title }}
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      {% set indexes = [] %}
+      {% if "navigation.indexes" in features %}
+        {% for item in nav_item.children %}
+          {% if item.is_index and not index is defined %}
+            {% set _ = indexes.append(item) %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if not indexes %}
+        <label class="md-nav__link" for="{{ path }}">
+          {{ nav_item.title }}
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      {% else %}
+        {% set index = indexes | first %}
+        {% set class = "md-nav__link--active" if index == page %}
+        <div class="md-nav__link md-nav__link--container {{ class }}">
+          <a href="{{ index.url | url }}">{{ nav_item.title }}</a>
+          <label for="{{ path }}">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      {% endif %}
       <nav class="md-nav" aria-label="{{ nav_item.title }}" data-md-level="{{ level }}">
         <label class="md-nav__title" for="{{ path }}">
           <span class="md-nav__icon md-icon"></span>
@@ -30,7 +49,10 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           {% for nav_item in nav_item.children %}
-            {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+            {% if "navigation.indexes" in features and nav_item.is_index %}
+            {% else %}
+              {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+            {% endif %}
           {% endfor %}
         </ul>
       </nav>
