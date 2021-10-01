@@ -83,7 +83,7 @@ export function fetchSourceFactsFromGitHub(
 
   /* User or organization */
   } else {
-    const url = `https://api.github.com/repos/${user}`
+    const url = `https://api.github.com/users/${user}`
     return requestJSON<User>(url)
       .pipe(
         map(info => ({
