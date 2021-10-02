@@ -51,10 +51,7 @@
     } else {
       DISQUS.reset({
         reload: true,
-        config: function () {
-          this.page.identifier = "{{ page.title }}"
-          this.page.url = "{{ page.canonical_url }}"
-        }
+        config: disqus_config
       })
     }
   </script>
