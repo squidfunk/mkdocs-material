@@ -1,3 +1,13 @@
+mkdocs-material-7.3.1 (2021-10-02)
+
+  * Added new experimental content tabs implementation
+  * Fixed #3069: GitHub stats broken for users/orgs (7.1.0 regression)
+  * Fixed #3070: Sections not linking to index page
+  * Fixed title not linking to index page when using tabs
+  * Fixed Disqus integration when using instant loading
+  * Fixed some spacing issues for right-to-left languages
+  * Fixed syntax error in Serbian translations
+
 mkdocs-material-7.3.0+insiders-3.1.1 (2021-09-26)
 
   * Fixed ordering bug in search exclusion logic

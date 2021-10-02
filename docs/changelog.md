@@ -6,6 +6,16 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.3.1 <small>_ October 2, 2021</small>
+
+- Added new experimental content tabs implementation
+- Fixed #3069: GitHub stats broken for users/orgs (7.1.0 regression)
+- Fixed #3070: Sections not linking to index page
+- Fixed title not linking to index page when using tabs
+- Fixed Disqus integration when using instant loading
+- Fixed some spacing issues for right-to-left languages
+- Fixed syntax error in Serbian translations
+
 ### 7.3.0 <small>_ September 23, 2021</small>
 
 - Added support for sticky navigation tabs
