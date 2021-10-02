@@ -111,10 +111,10 @@ The following options are supported:
           separator: '[\s\-\.]+'
     ```
 
-`prebuild_index`{ #prebuild-index }
+~~`prebuild_index`~~{ #prebuild-index }[^1]
 
-:   :octicons-milestone-24: Default: `false` · :octicons-beaker-24:
-    Experimental – MkDocs can generate a [prebuilt index][7] of all pages during
+:   :octicons-milestone-24: Default: `false` · :octicons-archive-24: Deprecated
+    – MkDocs can generate a [prebuilt index][7] of all pages during
     build time, which provides performance improvements at the cost of more
     bandwidth, as it reduces the build time of the search index:
 
@@ -123,10 +123,15 @@ The following options are supported:
       - search:
           prebuild_index: true
     ```
-    
+
     This may be beneficial for large documentation projects served with
     appropriate headers, i.e. `Content-Encoding: gzip`, but benchmarking before
     deployment is recommended.
+
+    [^1]:
+      The `prebuild_index` feature was deprecated in 7.3.0 and will be removed
+      in 8.x. Insiders removed support in 3.0.0 with the advent of the new
+      search plugin.
 
 _Material for MkDocs doesn't provide official support for the other options of
 this plugin, so they may be supported but might yield unexpected results.
