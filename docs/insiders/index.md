@@ -12,7 +12,7 @@ to [get access to Insiders][2].
 
 <figure class="mdx-video" markdown="1">
   <div class="mdx-video__inner">
-    <iframe src="https://streamable.com/e/dxqe78" allowfullscreen></iframe>
+    <iframe src="https://streamable.com/e/ihhxw0" allowfullscreen></iframe>
   </div>
   <figcaption markdown="1">
 
