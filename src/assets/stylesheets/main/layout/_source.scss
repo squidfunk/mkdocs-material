@@ -161,22 +161,22 @@
       mask-repeat: no-repeat;
       mask-size: contain;
       content: "";
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        margin-right: initial;
+        margin-left: px2rem(2px);
+      }
     }
 
     // Adjust spacing for repository fact icon
     &:nth-child(1n+2)::before {
       margin-left: px2rem(8px);
-    }
 
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: initial;
-      margin-left: px2rem(2px);
-
-      // Adjust spacing for repository fact icon
-      &:nth-child(1n+2)::before {
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
         margin-right: px2rem(8px);
-        margin-left: initial;
+        margin-left: px2rem(2px);
       }
     }
 

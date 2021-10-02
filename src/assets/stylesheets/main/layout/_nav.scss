@@ -305,6 +305,12 @@
           margin-right: px2rem(-4px);
           font-size: px2rem(24px);
 
+          // Adjust for right-to-left languages
+          [dir="rtl"] & {
+            margin-right: 0;
+            margin-left: px2rem(-4px);
+          }
+
           // Navigation icon in link to next level
           &::after {
             display: block;
