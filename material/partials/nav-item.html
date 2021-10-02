@@ -37,9 +37,11 @@
         {% set class = "md-nav__link--active" if index == page %}
         <div class="md-nav__link md-nav__link--index {{ class }}">
           <a href="{{ index.url | url }}">{{ nav_item.title }}</a>
-          <label for="{{ path }}">
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+          {% if nav_item.children | length > 1 %}
+            <label for="{{ path }}">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          {% endif %}
         </div>
       {% endif %}
       <nav class="md-nav" aria-label="{{ nav_item.title }}" data-md-level="{{ level }}">
