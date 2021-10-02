@@ -31,16 +31,31 @@
   <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
   <div id="disqus_thread"></div>
   <script>
-    var disqus_config = function () {
-      this.page.url = "{{ page.canonical_url }}";
+    var disqus_config = function() {
+      this.page.url = "{{ page.canonical_url }}"
       this.page.identifier =
-        "{{ page.canonical_url | replace(config.site_url, '') }}";
-    };
-    window.addEventListener("load", function() {
-      var d = document, s = d.createElement("script");
-      s.src = "//{{ disqus }}.disqus.com/embed.js";
-      s.setAttribute("data-timestamp", +new Date());
-      (d.head || d.body).appendChild(s);
-    })
+        "{{ page.canonical_url | replace(config.site_url, '') }}"
+    }
+
+    /* Set up for the first time */
+    if (typeof DISQUS === "undefined") {
+      var script = document.createElement("script")
+      script.async = true
+      script.src = "https://{{ disqus }}.disqus.com/embed.js"
+      script.setAttribute("data-timestamp", Date.now())
+
+      /* Inject script tag */
+      document.body.appendChild(script)
+
+    /* Set up on navigation (instant loading) */
+    } else {
+      DISQUS.reset({
+        reload: true,
+        config: function () {
+          this.page.identifier = "{{ page.title }}"
+          this.page.url = "{{ page.canonical_url }}"
+        }
+      })
+    }
   </script>
 {% endif %}
