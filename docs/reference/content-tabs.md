@@ -18,10 +18,29 @@ grouping code blocks and other content.
 The [Tabbed][2] extension, which is part of [Python Markdown Extensions][3],
 integrates with Material for MkDocs and can be enabled via `mkdocs.yml`:
 
-``` yaml
-markdown_extensions:
-  - pymdownx.tabbed
-```
+=== "Modern"
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tabbed:
+          alternate_style: true # (1)
+    ```
+
+    1. As of 7.3.1, support was added for the new [`alternate_style`][12] flag,
+       which has much better behavior on smaller screen sizes, as content tabs
+       are now scrollable and will overflow instead of break across multiple
+       lines.
+
+        __The legacy style will be deprecated with the next major release.__
+
+  [12]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#alternate-style
+
+=== "Legacy"
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tabbed
+    ```
 
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_tabbed.scss
   [2]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
