@@ -623,6 +623,7 @@
 
           // Show navigation link as title
           > .md-nav__link {
+            margin-top: 0;
             padding: 0 px2rem(12px);
             font-weight: 700;
             pointer-events: none;
