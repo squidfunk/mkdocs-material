@@ -173,7 +173,7 @@ _Result_:
 
   [6]: #definition-list
 
-### Using tasklists
+### Using task lists
 
 When the [Tasklist][7] extension is enabled, unordered list items can be
 prefixed with `[ ]` to render an unchecked or `[x]` to render a checked

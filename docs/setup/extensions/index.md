@@ -56,8 +56,5 @@ title: Extensions
 
       # Python Markdown Extensions
       - pymdownx.highlight
-      - pymdownx.inlinehilite
       - pymdownx.superfences
-      - pymdownx.tabbed:
-          alternate_style: true
     ```

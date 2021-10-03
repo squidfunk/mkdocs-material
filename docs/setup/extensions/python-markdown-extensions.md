@@ -14,7 +14,7 @@ installed with a supported version.
 ## Supported extensions
 
 The following extensions are all supported by Material for MkDocs and therefore
-strongly recommended. See the [overview][Extensions] page for a minimal and
+_strongly recommended_. See the [overview][Extensions] page for a minimal and
 recommended configuration.
 
   [Extensions]: index.md
@@ -73,8 +73,9 @@ of [additional JavaScript]:
       - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     ```
 
-Arithmatex can be configured in many different ways, for which Material for
-MkDocs might not provide native support. See the [Arithmatex documentation][Arithmatex] for more information.
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, so they may yield unexpected results. Use them at your
+own risk.
 
 See reference for usage:
 
@@ -96,8 +97,8 @@ See reference for usage:
 [:octicons-tag-24: 1.0.0 – present][Critic support]
 
 The [Critic] extension allows for the usage of [Critic Markup] to highlight
-added, deleted or updated sections in a Markdown document, e.g. for tracking 
-changes. Enable it via `mkdocs.yml`:
+added, deleted or updated sections in a document, i.e. for tracking changes in
+Markdown syntax. Enable it via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -229,13 +230,17 @@ The following configuration options are supported:
               - overrides/.icons
     ```
 
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, so they may yield unexpected results. Use them at your
+own risk.
+
 See reference for usage:
 
 - [Using emojis]
 - [Using icons]
 - [Using icons in templates]
 
-  [Emoji]: https://facelessuser.github.io/pymdown-extensions/extensions/details/
+  [Emoji]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
   [Emoji support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [Emoji index]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/#default-emoji-indexes
   [icon customization guide]: ../changing-the-logo-and-icons.md#additional-icons
@@ -251,8 +256,7 @@ See reference for usage:
 
 The [Highlight] extension adds support for syntax highlighting of code blocks
 (with the help of [SuperFences][SuperFences #]) and inline code blocks (with
-the help of [InlineHilite][InlineHilite #]). Enable it via
-`mkdocs.yml`:
+the help of [InlineHilite][InlineHilite #]). Enable it via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -266,7 +270,7 @@ markdown_extensions:
 
     However, this only applies for when [Pygments] is used. If you use a
     JavaScript syntax highlighter, [SuperFences][SuperFences #] might not
-    be necessary, but it's strongly recommended anyway.
+    be necessary, but it's _strongly recommended_ anyway.
 
 The following configuration options are supported:
 
@@ -349,6 +353,10 @@ The following configuration options are supported:
     copying a code block to the clipboard. Thus, the usage of either `table`
     or `pymdownx-inline` is recommended.
 
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, so they may yield unexpected results. Use them at your
+own risk.
+
 See reference for usage:
 
 - [Specifying the language]
@@ -398,13 +406,190 @@ No configuration options are supported. See reference for usage:
 [:octicons-workflow-24: Extension][Snippets] ·
 [:octicons-tag-24: 0.1.0 – present][Snippets support]
 
+The [Snippets] extension adds the ability to embed content from arbitrary files
+into a document, including other documents or source files, by using a simple
+syntax. Enable it via `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.snippets
+```
+
+The configuration options of this extension are not specific to Material for
+MkDocs, as they only impact the Markdown parsing stage. See the [Snippets 
+documentation][Snippets] for more information.
+
+See reference for usage:
+
+- [Embedding external files]
+
+  [Snippets]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
+  [Snippets support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [Embedding external files]: ../../reference/code-blocks.md#embedding-external-files
+
 ### SuperFences
 
-TODO: document Mermaid setup!
+[:octicons-workflow-24: Extension][SuperFences] ·
+[:octicons-tag-24: 5.0.0 – present][SuperFences support] ·
+:octicons-zap-24: Supersedes [Fenced Code Blocks]
+
+The [SuperFences] extension allows for arbitrary nesting of code and content
+blocks inside each other, including admonitions, tabs, lists and all other
+elements. Enable it via `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.superfences
+```
+
+The following configuration options are supported:
+
+`custom_fences`{ #custom_fences }
+
+:   :octicons-milestone-24: Default: _none_ – This option allows to define a
+    handler for custom fences, e.g. to preserve the definitions of [Mermaid.js]
+    diagrams to be interpreted in the browser:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.superfences:
+          custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_code_format
+    ```
+
+    Note that this will primarily prevent syntax highlighting from being
+    applied. See the reference on [diagrams] to learn how Mermaid.js is
+    integrated with Material for MkDocs.
+
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, so they may yield unexpected results. Use them at your
+own risk.
+
+See reference for usage:
+
+- [Using flowcharts]
+- [Using sequence diagrams]
+- [Using state diagrams]
+- [Using class diagrams]
+- [Using entity-relationship diagrams]
+
+  [SuperFences]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+  [SuperFences support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [Fenced Code Blocks]: python-markdown.md#fenced-code-blocks
+  [Mermaid.js]: https://mermaid-js.github.io/mermaid/
+  [diagrams]: ../../reference/diagrams.md
+  [Using flowcharts]: ../../reference/diagrams.md#using-flowcharts
+  [Using sequence diagrams]: ../../reference/diagrams.md#using-sequence-diagrams
+  [Using state diagrams]: ../../reference/diagrams.md#using-state-diagrams
+  [Using class diagrams]: ../../reference/diagrams.md#using-class-diagrams
+  [Using entity-relationship diagrams]: ../../reference/diagrams.md#using-entity-relationship-diagrams
 
 ### Tabbed
 
+[:octicons-workflow-24: Extension][Tabbed] ·
+[:octicons-tag-24: 5.0.0 – present][Tabbed support]
+
+The [Tabbed] extension allows the usage of content tabs, a simple way to group
+related content and code blocks under accessible tabs. Enable it via
+`mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true 
+```
+
+The following configuration options are supported:
+
+`alternate_style`{ #alternate_style }
+
+:   :octicons-milestone-24: Default: `false` · [:octicons-tag-24: 7.3.1]
+    [Tabbed alternate support] – This option enables the [alternate style] of
+    content tabs, which has [better behavior on smaller screen sizes], and thus
+    is _strongly recommended_:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tabbed:
+          alternate_style: true 
+    ```
+
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, so they may yield unexpected results. Use them at your
+own risk.
+
+See reference for usage:
+
+- [Grouping code blocks]
+- [Grouping other content]
+- [Embedded content]
+
+  [Tabbed]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
+  [Tabbed support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
+  [Tabbed alternate support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.1
+  [alternate style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#alternate-style
+  [better behavior on smaller screen sizes]: https://twitter.com/squidfunk/status/1424740370596958214
+  [Grouping code blocks]: ../../reference/content-tabs.md#grouping-code-blocks
+  [Grouping other content]: ../../reference/content-tabs.md#grouping-other-content
+  [Embedded content]: ../../reference/content-tabs.md#embedded-content
+
 ### Tasklist
+
+[:octicons-workflow-24: Extension][Tasklist] ·
+[:octicons-tag-24: 1.0.0 – present][Tasklist support]
+
+The [Tasklist] extension allows for the usage of [GitHub Flavored Markdown]
+inspired [task lists][Spec], following the same syntactical conventions. Enable
+it via `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+```
+
+The following configuration options are supported:
+
+`custom_checkbox`{ #custom-checkbox }
+
+:   :octicons-milestone-24: Default: `false` · This option toggles the rendering
+    style of checkboxes, replacing native checkbox styles with beautiful icons, 
+    and is therefore _strongly recommended_:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tasklist:
+          custom_checkbox: true
+    ```
+
+`clickable_checkbox`{ #clickable-checkbox }
+
+:   :octicons-milestone-24: Default: `false` · This option toggles whether
+    checkboxes are clickable. As the state is not persisted, the use of this 
+    option is _rather discouraged_ from a user experience perspective:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tasklist:
+          clickable_checkbox: true
+    ```
+
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, so they may yield unexpected results. Use them at your
+own risk.
+
+See reference for usage:
+
+- [Using task lists]
+
+  [Tasklist]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
+  [Tasklist support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
+  [GitHub Flavored Markdown]: https://github.github.com/gfm/
+  [Tasklist #]: #tasklist
+  [Spec]: https://github.github.com/gfm/#task-list-items-extension-
+  [Using task lists]: ../../reference/lists.md#using-task-lists
 
 ### Other
 

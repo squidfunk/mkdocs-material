@@ -14,7 +14,7 @@ reference for what features they need to be enabled.
 ## Supported extensions
 
 The following extensions are all supported by Material for MkDocs and therefore
-strongly recommended. See the [overview][Extensions] page for a minimal and
+_strongly recommended_. See the [overview][Extensions] page for a minimal and
 recommended configuration.
 
   [Extensions]: index.md
@@ -49,8 +49,8 @@ No configuration options are available. See reference for usage:
 [:octicons-tag-24: 0.1.0 – present][Admonition support]
 
 The [Admonition] extension adds support for admonitions, more commonly known as 
-_call-outs_, which can be added to Markdown by using a simple syntax. Enable it
-via `mkdocs.yml`:
+_call-outs_, which can be defined in Markdown by using a simple syntax. Enable
+it via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -106,8 +106,8 @@ No configuration options are available. See reference for usage:
 [:octicons-tag-24: 1.1.0 – present][Definition Lists support]
 
 The [Definition Lists] extension adds the ability to add definition lists (more
-commonly known as [description lists] – `dl` in HTML) to any Markdown document.
-Enable it via `mkdocs.yml`:
+commonly known as [description lists] – `dl` in HTML) via Markdown to a
+document. Enable it via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -129,7 +129,7 @@ No configuration options are available. See reference for usage:
 [:octicons-tag-24: 1.0.0 – present][Footnotes support]
 
 The [Footnotes] extension allows to define footnotes inline with the content,
-which are then rendered after the content of the Markdown document. Enable it
+which are then rendered after the Markdown content of a document. Enable it
 via `mkdocs.yml`:
 
 ``` yaml
@@ -153,8 +153,8 @@ No configuration options are supported. See reference for usage:
 [:octicons-tag-24: 1.0.0 – present][Metadata support]
 
 The [Metadata] extension adds the ability to attach arbitrary key-value pairs
-to a Markdown document via front matter written in YAML syntax. It can be
-enabled via `mkdocs.yml`:
+to a document via front matter written in YAML syntax before the Markdown. It
+can be enabled via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -208,9 +208,9 @@ No configuration options are available. See reference for usage:
 [:octicons-workflow-24: Extension][Table of Contents] ·
 [:octicons-tag-24: 0.1.0 – present][Table of Contents support]
 
-The [Table of Contents] extension generates a table of contents from a Markdown
-document, which Material for MkDocs will render as part of the resulting page.
-Enable it via `mkdocs.yml`:
+The [Table of Contents] extension automatically generates a table of contents
+from a document, which Material for MkDocs will render as part of the resulting 
+page. Enable it via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -289,6 +289,10 @@ The following configuration options are supported:
               toc_depth: 0
         ```
 
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, so they may yield unexpected results. Use them at your
+own risk.
+
   [Table of Contents]: https://python-markdown.github.io/extensions/toc/
   [Table of Contents support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Pymdownx slug]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
@@ -298,9 +302,9 @@ The following configuration options are supported:
 [:octicons-workflow-24: Extension][Tables] ·
 [:octicons-tag-24: 0.1.0 – present][Tables support]
 
-The [Tables] extension adds the ability to create tables in Markdown documents
-by using a simple syntax. Enabled it via `mkdocs.yml` (albeit it should be
-enabled by default):
+The [Tables] extension adds the ability to create tables in Markdown by using a 
+simple syntax. Enable it via `mkdocs.yml` (albeit it should be enabled by
+default):
 
 ``` yaml
 markdown_extensions:
