@@ -16,7 +16,9 @@ and extendable [cookie consent][2].
 
 ### Google Analytics
 
-[:octicons-file-code-24: Source][3] · :octicons-milestone-24: Default: _none_
+:octicons-hash-24: Setting ·
+:octicons-milestone-24: Default: _none_ ·
+[:octicons-tag-24: 7.1.8 ... present][Google Analytics support]
 
 Material for MkDocs integrates with both, Google Analytics 4 and the now phasing
 out Universal Analytics (`UA-*`). Depending on the prefix of the property, add
@@ -40,6 +42,7 @@ the following to `mkdocs.yml`:
         property: UA-XXXXXXXX-X
     ```
 
+  [Google Analytics support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.8
   [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/integrations/analytics.html
 
 #### Site search tracking
@@ -62,9 +65,10 @@ yourself, [this tutorial][4] might be a good start._
 
 ### Cookie consent
 
-[:octicons-file-code-24: Source][5] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+:octicons-hash-24: Setting ·
 :octicons-milestone-24: Default: _none_ ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][5]{ .mdx-insiders }
+[:octicons-tag-24: insiders-2.10.0 ... present][Insiders]
 
 Material for MkDocs ships a native and extensible cookie consent form, which
 asks the user for his consent prior to setting up analytics. Add the following
@@ -125,6 +129,7 @@ e.g. privacy policy:
 [Change cookie settings](#__consent){ .md-button }
 ```
 
+  [Insiders]: ../insiders/index.md
   [5]: ../insiders/index.md
   [6]: #custom-cookies
   [7]: ../assets/screenshots/consent.png

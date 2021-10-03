@@ -23,10 +23,10 @@ MkDocs can generate beautiful social cards automatically, using the [colors][1],
 
 ### Built-in social cards
 
-[:octicons-file-code-24: Source][4] ·
-[:octicons-cpu-24: Plugin][4] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+:octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][4]{ .mdx-insiders }
+[:octicons-tag-24: insiders-2.12.0 ... present][Insiders]
 
 The [built-in social cards plugin][4] generates a social card image for every
 page and adds the necessary meta tags, so it's displayed on social media when
@@ -85,6 +85,7 @@ are available:
           cards_directory: assets/images/social
     ```
 
+  [Insiders]: ../insiders/index.md
   [4]: ../insiders/index.md
   [5]: setting-up-site-analytics.md
   [6]: ../assets/screenshots/social-cards.png

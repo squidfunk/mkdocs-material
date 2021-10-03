@@ -146,9 +146,9 @@ Use them at your own risk._
 
 ### Search suggestions
 
-[:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-beaker-24: Experimental ·
+[:octicons-tag-24: 7.2.0 ... present][Search suggestions support]
 
 When _search suggestions_ are enabled, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
@@ -166,15 +166,16 @@ Searching for [:octicons-search-24: search su][9] yields ^^search suggestions^^ 
 
 [![Search suggestions][10]][10]
 
+  [Search suggestions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/suggest/index.ts
   [9]: ?q=search+su
   [10]: ../assets/screenshots/search-suggestions.png
 
 ### Search highlighting
 
-[:octicons-file-code-24: Source][11] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-beaker-24: Experimental ·
+[:octicons-tag-24: 7.2.0 ... present][Search highlighting support]
 
 When _search highlighting_ is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
@@ -190,15 +191,16 @@ Searching for [:octicons-search-24: code blocks][12] yields:
 
 [![Search highlighting][13]][13]
 
+  [Search highlighting support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [11]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/highlight/index.ts
   [12]: ../reference/code-blocks.md?h=code+blocks
   [13]: ../assets/screenshots/search-highlighting.png
 
 ### Search sharing
 
-[:octicons-file-code-24: Source][14] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-beaker-24: Experimental ·
+[:octicons-tag-24: 7.2.0 ... present][Search highlighting support]
 
 When _search sharing_ is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
@@ -215,6 +217,7 @@ clipboard.
 
 [![Search sharing][15]][15]
 
+  [Search sharing support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [14]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/share/index.ts
   [15]: ../assets/screenshots/search-share.png
 
@@ -245,9 +248,9 @@ For setup instructions, refer to the [official documentation][19].
 
 ### Search boosting
 
-[:octicons-file-code-24: Source][20] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
 :octicons-note-24: Metadata ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][20]{ .mdx-insiders }
+[:octicons-tag-24: insiders-2.8.0 ... present][Insiders]
 
 In order to give specific pages a higher relevance in search, [lunr][4] supports
 page-specific boosts, which can be defined for each page by leveraging the
@@ -263,14 +266,16 @@ search:
 ...
 ```
 
+  [Insiders]: ../insiders/index.md
   [20]: ../insiders/index.md
   [21]: ../reference/meta-tags.md#metadata
 
 ### Search exclusion
 
-[:octicons-file-code-24: Source][20] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+:octicons-note-24: Metadata ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][20]{ .mdx-insiders }
+[:octicons-tag-24: insiders-3.1.0 ... present][Insiders]
 
 #### Excluding pages
 

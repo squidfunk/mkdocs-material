@@ -68,8 +68,9 @@ Material for MkDocs._
 
 ### Version warning
 
-[:octicons-file-code-24: Source][7] ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][7]{ .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+:octicons-file-symlink-file-24: Customization ·
+[:octicons-tag-24: insiders-2.5.0 ... present][Insiders]
 
 If you're using versioning, you might want to display a warning when the user
 visits any other version than the latest version. Using [theme extension][8],
@@ -108,6 +109,7 @@ extra:
 
 Make sure that this matches the [default version][11].
 
+  [Insiders]: ../insiders/index.md
   [7]: ../insiders/index.md
   [8]: ../customization.md#extending-the-theme
   [9]: ../customization.md#overriding-blocks-recommended
@@ -116,8 +118,8 @@ Make sure that this matches the [default version][11].
 
 ### Stay on page
 
-[:octicons-file-code-24: Source][7] ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][7]{ .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.6.0 ... present][Insiders]
 
 Insiders improves the user experience when switching between versions: if
 version A and B contain a page with the same path name, the user will stay on

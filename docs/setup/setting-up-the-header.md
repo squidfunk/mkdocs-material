@@ -16,8 +16,8 @@ It also includes the [search bar][1] and a place to display your project's
 
 ### Automatic hiding
 
-[:octicons-file-code-24: Source][3] · 
-:octicons-unlock-24: Feature flag
+:octicons-unlock-24: Feature flag ·
+[:octicons-tag-24: 6.2.0 ... present][Automatic hiding support]
 
 When _autohiding_ is enabled, the header is automatically hidden when the
 user scrolls past a certain threshold, leaving more space for content. Add the
@@ -29,11 +29,14 @@ theme:
     - header.autohide
 ```
 
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/layout/_header.scss
+  [Automatic hiding support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
 
 ## Customization
 
 ### Announcement bar
+
+:octicons-file-symlink-file-24: Customization ·
+[:octicons-tag-24: 5.0.0 ... present][Announcement bar support]
 
 Material for MkDocs includes an announcement bar, which is the perfect place to
 display project news or other important information to the user. When the user
@@ -48,6 +51,8 @@ block][5], which is empty by default:
   <!-- Add your announcement here, including arbitrary HTML -->
 {% endblock %}
 ```
+
+  [Announcement bar support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
 
   [4]: ../customization.md#extending-the-theme
   [5]: ../customization.md#overriding-blocks-recommended

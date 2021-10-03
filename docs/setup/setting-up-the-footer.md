@@ -15,10 +15,11 @@ configured via `mkdocs.yml`.
 
 ### Social links
 
-[:octicons-file-code-24: Source][1] ·
-:octicons-milestone-24: Default: _none_
+:octicons-hash-24: Setting ·
+:octicons-milestone-24: Default: _none_ ·
+[:octicons-tag-24: 1.0.0 ... present][Social links support]
 
-All _social links_ are rendered next to the copyright information as part of the 
+Social links are rendered next to the copyright notice as part of the 
 footer of your project documentation. Add a list of social links in `mkdocs.yml` 
 with:
 
@@ -48,6 +49,7 @@ For each entry, the following fields are available:
     * :fontawesome-brands-slack: – `fontawesome/brands/slack`
     * :fontawesome-brands-twitter: – `fontawesome/brands/twitter`
 
+  [Social links support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/social.html
   [2]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
@@ -91,21 +93,25 @@ For each entry, the following fields are available:
 
 ### Copyright notice
 
-[:octicons-file-code-24: Source][3] · 
-:octicons-milestone-24: Default: _none_
+:octicons-hash-24: Setting ·
+:octicons-milestone-24: Default: _none_ ·
+[:octicons-tag-24: 0.1.0 ... present][Copyright notice support]
 
-A custom _copyright banner_ can be rendered as part of the footer, which is
+A custom copyright banner can be rendered as part of the footer, which is
 displayed next to the social links. It can be defined as part of `mkdocs.yml`:
 
 ``` yaml
 copyright: Copyright &copy; 2016 - 2020 Martin Donath
 ```
 
+  [Copyright notice support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/footer.html
 
-### Remove generator
+### Generator notice
 
-[:octicons-file-code-24: Source][3]
+:octicons-hash-24: Setting ·
+:octicons-milestone-24: Default: `true` ·
+[:octicons-tag-24: 7.3.0 ... present][Generator notice support]
 
 The footer displays a _Made with Material for MkDocs_ notice to denote how
 the site was generated. The notice can be removed with the following setting
@@ -128,7 +134,7 @@ extra:
     consider [sponsoring][4] the project. __Thank you__
     :octicons-heart-fill-24:{ .mdx-heart .mdx-insiders }
 
-  [4]: ../insiders/index.md
+  [Generator notice support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
 
 ## Customization
 

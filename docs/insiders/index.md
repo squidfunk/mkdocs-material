@@ -240,7 +240,7 @@ the public for general availability.
 
   [21]: ../setup/setting-up-navigation.md#sticky-navigation-tabs
   [22]: ../setup/setting-up-navigation.md#section-index-pages
-  [23]: ../setup/setting-up-the-footer.md#remove-generator
+  [23]: ../setup/setting-up-the-footer.md#generator-notice
 
 #### $ 2,500 – Biquinho Vermelho
 

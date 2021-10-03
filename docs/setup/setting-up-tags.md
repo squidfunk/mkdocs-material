@@ -13,10 +13,10 @@ can help to discover relevant information faster.
 
 ### Built-in tags
 
-[:octicons-file-code-24: Source][1] ·
-[:octicons-cpu-24: Plugin][1] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+:octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][1]{ .mdx-insiders }
+[:octicons-tag-24: insiders-2.7.0 ... present][Insiders]
 
 The [built-in tags plugin][1] adds the ability to categorize any page with tags
 as part of the front matter of the page. In order to add support for tags, add
@@ -58,6 +58,7 @@ The following options are available:
     additional effort. The built-in tags plugin supports all of these
     features out-of-the-box.
 
+  [Insiders]: ../insiders/index.md
   [1]: ../insiders/index.md
   [2]: https://github.com/jldiaz/mkdocs-plugin-tags
   [3]: #adding-a-tags-index
@@ -65,9 +66,6 @@ The following options are available:
 ## Usage
 
 ### Adding tags
-
-[:octicons-file-code-24: Source][1] ·
-:octicons-note-24: Metadata
 
 If both, the [built-in tags plugin][4] and [Metadata][5] extension are enabled,
 tags can be added for any page as part of the front matter, e.g. to add the tags
@@ -124,9 +122,6 @@ arbitrary content before and after the marker:
   [9]: ../assets/screenshots/tags-index.png
 
 ### Hiding the tags
-
-[:octicons-file-code-24: Source][1] ·
-:octicons-note-24: Metadata
 
 While the tags are rendered above the main headline, sometimes, it might be
 desirable to hide them for a specific page, which can be achieved by using the
