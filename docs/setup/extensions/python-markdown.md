@@ -7,10 +7,9 @@ template: overrides/main.html
 Material for MkDocs supports a large number of [Python Markdown] extensions,
 which is part of what makes it so attractive for technical writing. Following
 is a list of all supported extensions, linking to the relevant sections of the
-[reference] for what features they need to be enabled.
+reference for what features they need to be enabled.
 
   [Python Markdown]: https://python-markdown.github.io/
-  [reference]: ../../reference/abbreviations.md
 
 ## Supported extensions
 
@@ -107,7 +106,7 @@ No configuration options are available. See reference for usage:
 [:octicons-tag-24: 1.1.0 – present][Definition Lists support]
 
 The [Definition Lists] extension adds the ability to add definition lists (more
-commonly known as [description lists] `dl` in HTML) to any Markdown document.
+commonly known as [description lists] – `dl` in HTML) to any Markdown document.
 Enable it via `mkdocs.yml`:
 
 ``` yaml
@@ -249,7 +248,7 @@ The following configuration options are supported:
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for
     customization of the slug function. For some languages, the default may not
     produce good and readable identifiers – consider using another slug function
-    like for example those from [Python Markdown Extensions][Pymdownx Slug]:
+    like for example those from [Python Markdown Extensions][Pymdownx slug]:
 
     === "Unicode"
 
@@ -292,7 +291,7 @@ The following configuration options are supported:
 
   [Table of Contents]: https://python-markdown.github.io/extensions/toc/
   [Table of Contents support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [Pymdownx Slug]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
+  [Pymdownx slug]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
 ### Tables
 
@@ -343,7 +342,7 @@ nesting, and therefore strongly recommended.
 [:octicons-tag-24: 0.1.0 – 5.5.14][CodeHilite support]
 
 Superseded by [Highlight]. Support for CodeHilite was dropped in version 6.0.0,
-as [Highlight] has a better integration with other great extensions like 
+as [Highlight] has a better integration with other essential extensions like 
 [SuperFences] and [InlineHilite].
 
   [CodeHilite]: https://python-markdown.github.io/extensions/code_hilite/
