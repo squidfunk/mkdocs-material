@@ -532,7 +532,7 @@ See reference for usage:
 ### SuperFences
 
 [:octicons-workflow-24: Extension][SuperFences] ·
-[:octicons-tag-24: 5.0.0 ... present][SuperFences support] ·
+[:octicons-tag-24: 0.1.0 ... present][SuperFences support] ·
 :octicons-zap-24: Supersedes [Fenced Code Blocks]
 
 The [SuperFences] extension allows for arbitrary nesting of code and content
