@@ -197,8 +197,8 @@ the public for general availability.
 - [x] [Linking content tabs][32]
 
   [30]: ../setup/setting-up-site-search.md#search-boosting
-  [31]: ../reference/admonitions.md#changing-the-icons
-  [32]: ../reference/content-tabs.md#linking-content-tabs
+  [31]: ../reference/admonitions.md#admonition-icons
+  [32]: ../reference/content-tabs.md#linked-content-tabs
 
 #### $ 7,000 – Royal Gold
 

@@ -40,6 +40,7 @@ See additional configuration options:
 ### Code annotations
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+:octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
 [:octicons-tag-24: insiders-2.2.0 ... present][Insiders]
 

@@ -32,6 +32,72 @@ See additional configuration options:
   [Details]: ../setup/extensions/python-markdown-extensions.md#details
   [SuperFences]: ../setup/extensions/python-markdown-extensions.md#superfences
 
+### Admonition icons
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.4.0 ... present][Insiders]
+
+Each of the supported admonition types has a distinct icon, which can be changed
+to any icon bundled with the theme. Just set the name of the admonition type to
+a valid icon in `mkdocs.yml`:
+
+=== ":octicons-mark-github-16: Octicons"
+
+    _Example_:
+
+    ``` yaml
+    theme:
+      icon:
+        admonition:
+          note: octicons/tag-16
+          abstract: octicons/checklist-16
+          info: octicons/info-16
+          tip: octicons/squirrel-16
+          success: octicons/check-16
+          question: octicons/question-16
+          warning: octicons/alert-16
+          failure: octicons/x-circle-16
+          danger: octicons/zap-16
+          bug: octicons/bug-16
+          example: octicons/beaker-16
+          quote: octicons/quote-16
+    ```
+
+    _Result_:
+
+    [![Octicons]][Octicons]
+
+
+=== ":fontawesome-brands-font-awesome: FontAwesome"
+
+    _Example_:
+
+    ``` yaml
+    theme:
+      icon:
+        admonition:
+          note: fontawesome/solid/sticky-note
+          abstract: fontawesome/solid/book
+          info: fontawesome/solid/info-circle
+          tip: fontawesome/solid/bullhorn
+          success: fontawesome/solid/check
+          question: fontawesome/solid/question-circle
+          warning: fontawesome/solid/exclamation-triangle
+          failure: fontawesome/solid/bomb
+          danger: fontawesome/solid/skull
+          bug: fontawesome/solid/robot
+          example: fontawesome/solid/flask
+          quote: fontawesome/solid/quote-left
+    ```
+
+    _Result_:
+
+    [![FontAwesome]][FontAwesome]
+
+  [Insiders]: ../insiders/index.md
+  [Octicons]: ../assets/screenshots/admonition-octicons.png
+  [FontAwesome]: ../assets/screenshots/admonition-fontawesome.png
+
 ## Usage
 
 Admonitions follow a simple syntax: a block starts with `!!!`, followed by a
@@ -320,72 +386,6 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
     However, when the title is omitted, the admonition extension will render it
     as `Seealso`, which is incorrect English. For this reason, it was deprecated
     in :octicons-tag-24: 7.1.5 and will be removed in :octicons-tag-24: 8.0.0.
-
-### Changing the icons
-
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.4.0 ... present][Insiders]
-
-Each of the supported admonition types has a distinct icon, which can be changed
-to any icon bundled with the theme. Just set the name of the admonition type to
-a valid icon in `mkdocs.yml`:
-
-=== ":octicons-mark-github-16: Octicons"
-
-    _Example_:
-
-    ``` yaml
-    theme:
-      icon:
-        admonition:
-          note: octicons/tag-16
-          abstract: octicons/checklist-16
-          info: octicons/info-16
-          tip: octicons/squirrel-16
-          success: octicons/check-16
-          question: octicons/question-16
-          warning: octicons/alert-16
-          failure: octicons/x-circle-16
-          danger: octicons/zap-16
-          bug: octicons/bug-16
-          example: octicons/beaker-16
-          quote: octicons/quote-16
-    ```
-
-    _Result_:
-
-    [![Admonition with Octicons icons][Octicons]][Octicons]
-
-
-=== ":fontawesome-brands-font-awesome: FontAwesome"
-
-    _Example_:
-
-    ``` yaml
-    theme:
-      icon:
-        admonition:
-          note: fontawesome/solid/sticky-note
-          abstract: fontawesome/solid/book
-          info: fontawesome/solid/info-circle
-          tip: fontawesome/solid/bullhorn
-          success: fontawesome/solid/check
-          question: fontawesome/solid/question-circle
-          warning: fontawesome/solid/exclamation-triangle
-          failure: fontawesome/solid/bomb
-          danger: fontawesome/solid/skull
-          bug: fontawesome/solid/robot
-          example: fontawesome/solid/flask
-          quote: fontawesome/solid/quote-left
-    ```
-
-    _Result_:
-
-    [![Admonition with FontAwesome icons][FontAwesome]][FontAwesome]
-
-  [Insiders]: ../insiders/index.md
-  [Octicons]: ../assets/screenshots/admonition-octicons.png
-  [FontAwesome]: ../assets/screenshots/admonition-fontawesome.png
 
 ## Customization
 
