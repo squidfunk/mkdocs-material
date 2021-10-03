@@ -93,6 +93,24 @@ markdown_extensions:
   [7]: https://facelessuser.github.io/pymdown-extensions/extensions/mark/
   [8]: https://facelessuser.github.io/pymdown-extensions/extensions/tilde/
 
+### Adding keyboard keys
+
+When [Keys][22] is enabled, keyboard keys can be rendered with a simple syntax.
+Consult the [Python Markdown Extensions][14] documentation to learn about all
+available key codes.
+
+_Example_:
+
+``` markdown
+++ctrl+alt+del++
+```
+
+_Result_:
+
+++ctrl+alt+del++
+
+  [22]: #keys
+
 ### SmartSymbols
 
 The [SmartSymbols][9] extension, which is also part of [Python Markdown 

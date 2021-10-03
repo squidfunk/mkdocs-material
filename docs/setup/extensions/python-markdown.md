@@ -248,7 +248,7 @@ The following configuration options are supported:
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for
     customization of the slug function. For some languages, the default may not
     produce good and readable identifiers – consider using another slug function
-    like for example those from [Python Markdown Extensions][Pymdownx slug]:
+    like for example those from [Python Markdown Extensions][Slugs]:
 
     === "Unicode"
 
@@ -295,7 +295,7 @@ own risk.
 
   [Table of Contents]: https://python-markdown.github.io/extensions/toc/
   [Table of Contents support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [Pymdownx slug]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
+  [Slugs]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
 ### Tables
 

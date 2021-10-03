@@ -79,9 +79,9 @@ your documentation project.
 
 ### Minimal configuration
 
-The minimal configuration is a good starting point for when you're using
-Material for MkDocs for the first time. The best idea is to explore the
-[reference], and gradually add what you want to use:
+This configuration is a good starting point for when you're using Material for 
+MkDocs for the first time. The best idea is to explore the [reference], and 
+gradually add what you want to use:
 
 ``` yaml
 markdown_extensions:
@@ -100,8 +100,8 @@ markdown_extensions:
 
 ### Recommended configuration
 
-The recommended configuration enables all Markdown-related features of Material
-for MkDocs and is great for bootstrapping a new documentation project:
+This configuration enables all Markdown-related features of Material for MkDocs
+and is great for experienced users bootstrapping a new documentation project:
 
 ``` yaml
 markdown_extensions:

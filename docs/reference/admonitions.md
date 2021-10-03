@@ -11,9 +11,9 @@ inclusion and nesting of arbitrary content.
 
 ## Configuration
 
-The following configuration enables admonitions, allows to make them collapsible
-and to nest arbitrary content inside admonition bodies. Add the following lines
-to `mkdocs.yml`:
+This configuration enables admonitions, allows to make them collapsible and to
+nest arbitrary content inside admonition bodies. Add the following lines to
+`mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -111,9 +111,9 @@ _Result_:
 
 ### Collapsible blocks
 
-If the [Details] extension is enabled and an admonition is started with `???` 
-instead of `!!!`, the admonition is rendered as a collapsible block with a
-small marker on the right side.
+When [Details] is enabled and an admonition block is started with `???` instead
+of `!!!`, the admonition is rendered as a collapsible block with a small toggle
+on the right side.
 
 _Example_:
 
@@ -154,6 +154,9 @@ _Result_:
     massa, nec semper lorem quam in massa.
 
 ### Inline blocks
+
+:octicons-beaker-24: Experimental ·
+[:octicons-tag-24: 7.0.0 ... present][Inline support]
 
 Admonitions can also be rendered as inline blocks (i.e. for sidebars), placing
 them to the right using the `inline` + `end` modifiers, or to the left using
@@ -207,6 +210,8 @@ __Important__: Admonitions that use the `inline` modifiers _must_ be declared
 prior to the content block you want to place them beside. If there's
 insufficient space to render the admonition next to the block, the admonition
 will stretch to the full width of the viewport, e.g. on mobile viewports.
+
+  [Inline support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
 
 ### Supported types
 
@@ -318,7 +323,8 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
 
 ### Changing the icons
 
-> This feature is currently only available in [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.4.0 ... present][Insiders]
 
 Each of the supported admonition types has a distinct icon, which can be changed
 to any icon bundled with the theme. Just set the name of the admonition type to
@@ -385,6 +391,9 @@ a valid icon in `mkdocs.yml`:
 
 ### Custom admonitions
 
+[:octicons-file-code-24: Source][Source] ·
+:octicons-mortar-board-24: Difficulty: _easy_
+
 If you want to add a custom admonition type, all you need is a color and an
 `*.svg` icon. Copy the icon's code from the [`.icons`][Custom icons] folder
 and add the following CSS to an [additional stylesheet]:
@@ -439,6 +448,7 @@ _Example_:
 
 ``` markdown
 !!! pied-piper "Pied Piper"
+
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -452,6 +462,7 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
+  [Source]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/markdown/_admonition.scss
   [Custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
   [Custom animations]: icons-emojis.md#with-animations
   [additional stylesheet]: ../customization.md#additional-css

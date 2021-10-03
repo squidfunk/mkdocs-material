@@ -150,7 +150,7 @@ The following features are currently exclusively available to sponsors:
 - [x] [Stay on page when switching versions][28]
 - [x] [Version warning][26]
 - [x] [Custom admonition icons][31]
-- [x] [Code block annotations][25]
+- [x] [Code annotations][25]
 - [x] [Anchor tracking ][24]
 - [x] [Mermaid.js integration][27]
 
@@ -173,7 +173,7 @@ the public for general availability.
 #### $ 4,000 – Ghost Pepper
 
 - [x] [Anchor tracking][24]
-- [x] [Code block annotations][25]
+- [x] [Code annotations][25]
 - [x] [Version warning][26]
 
 [24]: ../setup/setting-up-navigation.md#anchor-tracking
