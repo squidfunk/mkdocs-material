@@ -13,19 +13,13 @@ installed with a supported version.
 
 ## Supported extensions
 
-The following extensions are all supported by Material for MkDocs and therefore
-_strongly recommended_. See the [overview][Extensions] page for a minimal and
-recommended configuration.
-
-  [Extensions]: index.md
-
 ### Arithmatex
 
 [:octicons-workflow-24: Extension][Arithmatex] ·
 [:octicons-tag-24: 1.0.0 ... present][Arithmatex support]
 
 The [Arithmatex] extension allows for rendering of block and inline block
-equations, and integrates seamlessly with [MathJax][^1] – a library for
+equations and integrates seamlessly with [MathJax][^1] – a library for
 mathematical typesetting. Enable it via `mkdocs.yml`:
 
   [^1]:
@@ -74,8 +68,8 @@ of [additional JavaScript]:
     ```
 
 The other configuration options of this extension are not officially supported
-by Material for MkDocs, so they may yield unexpected results. Use them at your
-own risk.
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
 
 See reference for usage:
 
@@ -284,8 +278,8 @@ The following configuration options are supported:
     ```
 
 The other configuration options of this extension are not officially supported
-by Material for MkDocs, so they may yield unexpected results. Use them at your
-own risk.
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
 
 See reference for usage:
 
@@ -323,7 +317,7 @@ markdown_extensions:
 
     However, this only applies for when [Pygments] is used. If you use a
     JavaScript syntax highlighter, [SuperFences][SuperFences #] might not
-    be necessary, but it's _strongly recommended_ anyway.
+    be necessary, but it's strongly recommended anyway.
 
 The following configuration options are supported:
 
@@ -407,8 +401,8 @@ The following configuration options are supported:
     or `pymdownx-inline` is recommended.
 
 The other configuration options of this extension are not officially supported
-by Material for MkDocs, so they may yield unexpected results. Use them at your
-own risk.
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
 
 See reference for usage:
 
@@ -478,9 +472,14 @@ MkDocs, as they only impact the Markdown parsing stage. The only exception is
 the [`class`][Keys options] option, which must not be changed. See the 
 [Keys documentation][Keys] for more information.
 
+See reference for usage:
+
+- [Adding keyboard keys]
+
   [Keys]: https://facelessuser.github.io/pymdown-extensions/extensions/keys/
   [Keys support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [Keys options]: https://facelessuser.github.io/pymdown-extensions/extensions/keys/#options
+  [Adding keyboard keys]: ../../reference/formatting.md#adding-keyboard-keys
 
 ### SmartSymbols
 
@@ -523,10 +522,12 @@ documentation][Snippets] for more information.
 
 See reference for usage:
 
+- [Adding a glossary]
 - [Embedding external files]
 
   [Snippets]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
   [Snippets support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [Adding a glossary]: ../../reference/abbreviations.md#adding-a-glossary
   [Embedding external files]: ../../reference/code-blocks.md#embedding-external-files
 
 ### SuperFences
@@ -566,8 +567,8 @@ The following configuration options are supported:
     integrated with Material for MkDocs.
 
 The other configuration options of this extension are not officially supported
-by Material for MkDocs, so they may yield unexpected results. Use them at your
-own risk.
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
 
 See reference for usage:
 
@@ -619,8 +620,8 @@ The following configuration options are supported:
     ```
 
 The other configuration options of this extension are not officially supported
-by Material for MkDocs, so they may yield unexpected results. Use them at your
-own risk.
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
 
 See reference for usage:
 
@@ -658,7 +659,7 @@ The following configuration options are supported:
 
 :   :octicons-milestone-24: Default: `false` · This option toggles the rendering
     style of checkboxes, replacing native checkbox styles with beautiful icons, 
-    and is therefore _strongly recommended_:
+    and is therefore strongly recommended:
 
     ``` yaml
     markdown_extensions:
@@ -679,8 +680,8 @@ The following configuration options are supported:
     ```
 
 The other configuration options of this extension are not officially supported
-by Material for MkDocs, so they may yield unexpected results. Use them at your
-own risk.
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
 
 See reference for usage:
 

@@ -11,8 +11,8 @@ enable site-wide glossaries.
 
 ## Configuration
 
-This configuration enables abbreviations, and allows to build a simple
-project-wide glossary sourcing definitions from a central location. Add the
+This configuration enables abbreviations and allows to build a simple
+project-wide glossary, sourcing definitions from a central location. Add the
 following line to `mkdocs.yml`:
 
 ``` yaml
@@ -57,8 +57,8 @@ The HTML specification is maintained by the W3C.
 
 ### Adding a glossary
 
-The [Snippets] extension can be used to implement a simple glossary, by moving
-all abbreviations in a dedicated file[^1] and include it with the
+The [Snippets] extension can be used to implement a simple glossary by moving
+all abbreviations in a dedicated file[^1], and embedding it with the
 [`--8<--` notation][Snippets notation] at the end of each document.
 
   [^1]:
@@ -73,7 +73,7 @@ _Example_:
 
     ```` markdown
     The HTML specification is maintained by the W3C.
-    
+
     --8<-- "includes/abbreviations.md"
     ````
 

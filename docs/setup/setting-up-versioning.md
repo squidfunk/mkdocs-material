@@ -31,11 +31,11 @@ extra:
 This will render a version selector in the header next to the title of your
 project:
 
-<figure markdown="1">
+<figure markdown>
 
 [![Version selection][3]][3]
 
-  <figcaption markdown="1">
+  <figcaption markdown>
 
 A demo is worth a thousand words — check it out at
 [squidfunk.github.io/mkdocs-material-example-versioning][4]
@@ -141,8 +141,8 @@ the current page:
     docs.example.com/0.1/bar/ -> docs.example.com/0.2/
     ```
 
-<figure markdown="1">
-  <figcaption markdown="1">
+<figure markdown>
+  <figcaption markdown>
 
 A demo is worth a thousand words — check it out at
 [squidfunk.github.io/mkdocs-material-example-versioning][4]

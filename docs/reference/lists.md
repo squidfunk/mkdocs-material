@@ -39,7 +39,7 @@ configuring the style:
 
 :   :octicons-milestone-24: Default: `false` · This option toggles the rendering
     style of checkboxes, replacing native checkbox styles with beautiful icons, 
-    and is therefore _strongly recommended_:
+    and is therefore strongly recommended:
 
     ``` yaml
     markdown_extensions:

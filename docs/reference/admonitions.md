@@ -12,7 +12,7 @@ inclusion and nesting of arbitrary content.
 ## Configuration
 
 This configuration enables admonitions, allows to make them collapsible and to
-nest arbitrary content inside admonition bodies. Add the following lines to
+nest arbitrary content inside admonitions. Add the following lines to
 `mkdocs.yml`:
 
 ``` yaml
@@ -38,63 +38,76 @@ See additional configuration options:
 [:octicons-tag-24: insiders-2.4.0 ... present][Insiders]
 
 Each of the supported admonition types has a distinct icon, which can be changed
-to any icon bundled with the theme. Just set the name of the admonition type to
-a valid icon in `mkdocs.yml`:
+to any icon bundled with the theme. Add the following lines to `mkdocs.yml`:
 
-=== ":octicons-mark-github-16: Octicons"
+``` yaml
+theme:
+  icon:
+    admonition:
+      <type>: <icon> # (1)
+```
 
-    _Example_:
+1.  Set `<type`> to any of the [supported types] and `<icon>` to any valid icon 
+    shortcode, which you can find by using the [icon search].
 
-    ``` yaml
-    theme:
-      icon:
-        admonition:
-          note: octicons/tag-16
-          abstract: octicons/checklist-16
-          info: octicons/info-16
-          tip: octicons/squirrel-16
-          success: octicons/check-16
-          question: octicons/question-16
-          warning: octicons/alert-16
-          failure: octicons/x-circle-16
-          danger: octicons/zap-16
-          bug: octicons/bug-16
-          example: octicons/beaker-16
-          quote: octicons/quote-16
-    ```
+??? example "Example: using alternative icon sets"
 
-    _Result_:
+    === ":octicons-mark-github-16: Octicons"
 
-    [![Octicons]][Octicons]
+        _Example_:
+
+        ``` yaml
+        theme:
+          icon:
+            admonition:
+              note: octicons/tag-16
+              abstract: octicons/checklist-16
+              info: octicons/info-16
+              tip: octicons/squirrel-16
+              success: octicons/check-16
+              question: octicons/question-16
+              warning: octicons/alert-16
+              failure: octicons/x-circle-16
+              danger: octicons/zap-16
+              bug: octicons/bug-16
+              example: octicons/beaker-16
+              quote: octicons/quote-16
+        ```
+
+        _Result_:
+
+        [![Octicons]][Octicons]
 
 
-=== ":fontawesome-brands-font-awesome: FontAwesome"
+    === ":fontawesome-brands-font-awesome: FontAwesome"
 
-    _Example_:
+        _Example_:
 
-    ``` yaml
-    theme:
-      icon:
-        admonition:
-          note: fontawesome/solid/sticky-note
-          abstract: fontawesome/solid/book
-          info: fontawesome/solid/info-circle
-          tip: fontawesome/solid/bullhorn
-          success: fontawesome/solid/check
-          question: fontawesome/solid/question-circle
-          warning: fontawesome/solid/exclamation-triangle
-          failure: fontawesome/solid/bomb
-          danger: fontawesome/solid/skull
-          bug: fontawesome/solid/robot
-          example: fontawesome/solid/flask
-          quote: fontawesome/solid/quote-left
-    ```
+        ``` yaml
+        theme:
+          icon:
+            admonition:
+              note: fontawesome/solid/sticky-note
+              abstract: fontawesome/solid/book
+              info: fontawesome/solid/info-circle
+              tip: fontawesome/solid/bullhorn
+              success: fontawesome/solid/check
+              question: fontawesome/solid/question-circle
+              warning: fontawesome/solid/exclamation-triangle
+              failure: fontawesome/solid/bomb
+              danger: fontawesome/solid/skull
+              bug: fontawesome/solid/robot
+              example: fontawesome/solid/flask
+              quote: fontawesome/solid/quote-left
+        ```
 
-    _Result_:
+        _Result_:
 
-    [![FontAwesome]][FontAwesome]
+        [![FontAwesome]][FontAwesome]
 
   [Insiders]: ../insiders/index.md
+  [supported types]: #supported-types
+  [icon search]: icons-emojis.md#search
   [Octicons]: ../assets/screenshots/admonition-octicons.png
   [FontAwesome]: ../assets/screenshots/admonition-fontawesome.png
 

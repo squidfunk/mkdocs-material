@@ -5,9 +5,11 @@ template: overrides/main.html
 # Icons + Emojis
 
 One of the best features of Material for MkDocs is the possibility to use [more
-than 8.000 icons][1] and thousands of emojis in your project documentation
-with practically zero additional effort. Furthermore, custom icons can be added
-and used in `mkdocs.yml`, documents and templates.
+than 8.000 icons][icon search] and thousands of emojis in your project 
+documentation with practically zero additional effort. Moreover, custom icons 
+can be added and used in `mkdocs.yml`, documents and templates.
+
+  [icon search]: #search
 
 ## Search
 
@@ -24,19 +26,15 @@ and used in `mkdocs.yml`, documents and templates.
 </div>
 <small>
   :octicons-light-bulb-16:
-  **Tip:** Enter some keywords to find the perfect icon or emoji and click on
-  the shortcode to copy it to your clipboard.
+  **Tip:** Enter some keywords to find icons and emojis and click on the
+  shortcode to copy it to your clipboard.
 </small>
 
 ## Configuration
 
-### Emoji
-
-[:octicons-file-code-24: Source][2] · [:octicons-workflow-24: Extension][3]
-
-The [Emoji][3] extension, which is part of [Python Markdown Extensions][4],
-adds the ability to __integrate emojis and icons__ in the `*.svg` file format,
-which are inlined when [building your site][5]:
+This configuration enables the use of icons and emojis by using simple
+shortcodes which can be discovered through the [icon search]. Add the following
+lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -47,44 +45,29 @@ markdown_extensions:
 
 The following icon sets are bundled with Material for MkDocs:
 
-- :material-material-design: – [Material Design][6]
-- :fontawesome-brands-font-awesome-flag: – [FontAwesome][7]
-- :octicons-mark-github-16: – [Octicons][8]
+- :material-material-design: – [Material Design]
+- :fontawesome-brands-font-awesome: – [FontAwesome]
+- :octicons-mark-github-16: – [Octicons]
 
-You can also add [additional icons][9]. When using emojis, it's recommended to
-consult the official documentation of [Python Markdown Extensions][3] to learn
-about configuration options.
+See additional configuration options:
 
-  [1]: icons-emojis.md#search
-  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_emoji.scss
-  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/emoji/
-  [4]: https://facelessuser.github.io/pymdown-extensions/
-  [5]: ../creating-your-site.md#building-your-site
-  [6]: https://materialdesignicons.com/
-  [7]: https://fontawesome.com/icons?d=gallery&m=free
-  [8]: https://octicons.github.com/
-  [9]: ../setup/changing-the-logo-and-icons.md#additional-icons
+- [Emoji]
+- [Emoji with custom icons]
 
-### Attribute List
-
-The [Attribute List][10] extension, which is part of the standard Markdown
-library, allows to __add HTML attributes and CSS classes to Markdown elements__,
-and can be enabled via `mkdocs.yml`
-
-``` yaml
-markdown_extensions:
-  - attr_list
-```
-
-  [10]: https://python-markdown.github.io/extensions/attr_list/
+  [Material Design]: https://materialdesignicons.com/
+  [FontAwesome]: https://fontawesome.com/icons?d=gallery&m=free
+  [Octicons]: https://octicons.github.com/
+  [additional icons]: ../setup/changing-the-logo-and-icons.md#additional-icons
+  [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
+  [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom_icons
 
 ## Usage
 
 ### Using emojis
 
 Emojis can be integrated in Markdown by putting the shortcode of the emoji
-between two colons. If you're using [Twemoji][11] (recommended), you can look up
-the shortcodes at [Emojipedia][12].
+between two colons. If you're using [Twemoji] (recommended), you can look up
+the shortcodes at [Emojipedia].
 
 _Example_:
 
@@ -96,12 +79,12 @@ _Result_:
 
 :smile:
 
-  [11]: https://twemoji.twitter.com/
-  [12]: https://emojipedia.org/twitter/
+  [Twemoji]: https://twemoji.twitter.com/
+  [Emojipedia]: https://emojipedia.org/twitter/
 
 ### Using icons
 
-When [Emoji][13] is enabled, icons can be used similar to emojis, by referencing
+When [Emoji] is enabled, icons can be used similar to emojis, by referencing
 a valid path to any icon bundled with the theme, which are located in the
 [`.icons`][1] directory, and replacing `/` with `-`:
 
@@ -119,7 +102,6 @@ _Result_:
 - :fontawesome-regular-laugh-wink: – [`.icons/fontawesome/regular/laugh-wink.svg`][15]
 - :octicons-repo-push-16: – [`.icons/octicons/repo-push-16.svg`][16]
 
-  [13]: #emoji
   [14]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/material/account-circle.svg
   [15]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/fontawesome/regular/laugh-wink.svg
   [16]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/repo-push-16.svg

@@ -7,17 +7,11 @@ template: overrides/main.html
 Material for MkDocs supports a large number of [Python Markdown] extensions,
 which is part of what makes it so attractive for technical writing. Following
 is a list of all supported extensions, linking to the relevant sections of the
-reference for what features they need to be enabled.
+reference for which features they need to be enabled.
 
   [Python Markdown]: https://python-markdown.github.io/
 
 ## Supported extensions
-
-The following extensions are all supported by Material for MkDocs and therefore
-_strongly recommended_. See the [overview][Extensions] page for a minimal and
-recommended configuration.
-
-  [Extensions]: index.md
 
 ### Abbreviations
 
@@ -129,7 +123,7 @@ No configuration options are available. See reference for usage:
 [:octicons-tag-24: 1.0.0 ... present][Footnotes support]
 
 The [Footnotes] extension allows to define footnotes inline with the content,
-which are then rendered after the Markdown content of a document. Enable it
+which are then rendered below all Markdown content of a document. Enable it
 via `mkdocs.yml`:
 
 ``` yaml
@@ -153,8 +147,8 @@ No configuration options are supported. See reference for usage:
 [:octicons-tag-24: 1.0.0 ... present][Metadata support]
 
 The [Metadata] extension adds the ability to attach arbitrary key-value pairs
-to a document via front matter written in YAML syntax before the Markdown. It
-can be enabled via `mkdocs.yml`:
+to a document via front matter written in YAML syntax before the Markdown.
+Enable it via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -180,9 +174,9 @@ No configuration options are available. See reference for usage:
 [:octicons-workflow-24: Extension][Markdown in HTML] ·
 [:octicons-tag-24: 0.1.0 ... present][Markdown in HTML support]
 
-The [Markdown in HTML] extension allows the author to write Markdown inside of
-HTML, which is useful for wrapping Markdown with custom markup. Enable it via
-`mkdocs.yml`:
+The [Markdown in HTML] extension allows for writing Markdown inside of HTML,
+which is useful for wrapping Markdown content with custom elements. Enable it
+via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -191,8 +185,8 @@ markdown_extensions:
 
 > By default, Markdown ignores any content within a raw HTML block-level
 > element. With the `md_in_html` extension enabled, the content of a raw HTML
-> block-level element can be parsed as Markdown by including a markdown
-> attribute on the opening tag. The markdown attribute will be stripped from
+> block-level element can be parsed as Markdown by including a `markdown`
+> attribute on the opening tag. The `markdown` attribute will be stripped from
 > the output, while all other attributes will be preserved.
 
 No configuration options are available. See reference for usage:
@@ -290,7 +284,7 @@ The following configuration options are supported:
         ```
 
 The other configuration options of this extension are not officially supported
-by Material for MkDocs, so they may yield unexpected results. Use them at your
+by Material for MkDocs, which is why they may yield unexpected results. Use them at your
 own risk.
 
   [Table of Contents]: https://python-markdown.github.io/extensions/toc/
@@ -345,9 +339,9 @@ nesting, and therefore strongly recommended.
 [:octicons-workflow-24: Extension][CodeHilite] ·
 [:octicons-tag-24: 0.1.0 ... 5.5.14][CodeHilite support]
 
-Superseded by [Highlight]. Support for CodeHilite was dropped in version 6.0.0,
-as [Highlight] has a better integration with other essential extensions like 
-[SuperFences] and [InlineHilite].
+Superseded by [Highlight]. Support for CodeHilite was dropped in
+:octicons-tag-24: 6.0.0, as [Highlight] has a better integration with other 
+essential extensions like [SuperFences] and [InlineHilite].
 
   [CodeHilite]: https://python-markdown.github.io/extensions/code_hilite/
   [CodeHilite support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0

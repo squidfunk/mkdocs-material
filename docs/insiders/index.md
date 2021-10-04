@@ -10,11 +10,11 @@ that _new features are first exclusively released to sponsors_ as part of
 __Insiders__. Read on to learn [how sponsorship works][1], and how easy it is
 to [get access to Insiders][2].
 
-<figure class="mdx-video" markdown="1">
+<figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
     <iframe src="https://streamable.com/e/ihhxw0" allowfullscreen></iframe>
   </div>
-  <figcaption markdown="1">
+  <figcaption markdown>
 
 The official documentation is built with Insiders
 [squidfunk.github.io/mkdocs-material][3]
@@ -100,7 +100,7 @@ You can cancel your sponsorship anytime.[^4]
 
 <hr />
 
-<div class="mdx-premium" markdown="1">
+<div class="mdx-premium" markdown>
 
 **Special thanks** to our **premium sponsors**:
 
@@ -135,7 +135,7 @@ You can cancel your sponsorship anytime.[^4]
 
 The following features are currently exclusively available to sponsors:
 
-<div class="mdx-columns" markdown="1">
+<div class="mdx-columns" markdown>
 
 - [x] [Brand new search plugin :material-new-box:][35]
 - [x] [Rich search previews :material-new-box:][36]

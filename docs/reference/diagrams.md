@@ -30,41 +30,24 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 ```
 
-No further configuration is necessary. Advantages over custom integration:
+No further configuration is necessary. Advantages over a custom integration:
 
 - [x] Works with [instant loading] without any additional effort
 - [x] Diagrams automatically use fonts and colors defined in `mkdocs.yml`[^1]
 - [x] Fonts and colors can be customized with [additional stylesheets]
 - [x] Support for both, light and dark color schemes
 
-_While it's also possible to integrate [Mermaid.js] using existing
-third-party plugins[^2], the new native integration is recommended as it
-ensures interoperability with all Material for MkDocs features._
-
   [^1]:
     While all [Mermaid.js] features should work out-of-the-box, Material for
-    MkDocs will currently adjust the fonts and colors for flow charts, sequence
-    diagrams, class diagams, state diagrams and entity relationship diagrams.
-
-  [^2]:
-    If you don't want to use the native integration, [mkdocs-mermaid2-plugin]
-    might be a good alternative. However, note that this plugin cannot be used
-    in conjunction with the [mkdocs-minify-plugin] and doesn't adapt to
-    dark mode.
+    MkDocs will currently only adjust the fonts and colors for flowcharts,
+    sequence diagrams, class diagams, state diagrams and entity relationship 
+    diagrams.
 
   [Insiders]: ../insiders/index.md
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [additional stylesheets]: ../customization.md#additional-css
-  [mkdocs-mermaid2-plugin]: https://github.com/fralau/mkdocs-mermaid2-plugin
-  [mkdocs-minify-plugin]: https://github.com/byrnereese/mkdocs-minify-plugin
 
 ## Usage
-
-Mermaid diagrams are written as code blocks with the help of the [SuperFences]extension. They must be enclosed with two separate lines containing three
-backticks.
-
-  [code blocks]: code-blocks.md
-  [SuperFences]: ../setup/extensions/python-markdown-extensions.md#superfences
 
 ### Using flowcharts
 

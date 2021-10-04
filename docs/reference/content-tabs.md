@@ -11,9 +11,9 @@ grouping code blocks and other content.
 
 ## Configuration
 
-This configuration enables content tabs, and allows to nest arbirtrary content
+This configuration enables content tabs, and allows to nest arbitrary content
 inside content tabs, including code blocks and ... more content tabs! Add the 
-following lines to `mkdocs.yml`
+following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:

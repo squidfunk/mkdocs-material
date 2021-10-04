@@ -16,10 +16,11 @@ syntax extensions for technical writing.
 
 ## Supported extensions
 
-The following extensions are all supported by Material for MkDocs and therefore _strongly recommended_. Click on each extension to learn about its purpose and
+The following extensions are all supported by Material for MkDocs and therefore 
+strongly recommended. Click on each extension to learn about its purpose and
 configuration:
 
-<div class="mdx-columns" markdown="1">
+<div class="mdx-columns" markdown>
 
 - [Abbreviations]
 - [Admonition]

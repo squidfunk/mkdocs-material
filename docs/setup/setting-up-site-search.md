@@ -65,7 +65,7 @@ The following options are supported:
 
     The following languages are supported:
 
-    <div class="mdx-columns" markdown="1">
+    <div class="mdx-columns" markdown>
 
     - `ar` – Arabic
     - `da` – Danish

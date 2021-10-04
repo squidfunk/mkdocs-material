@@ -24,7 +24,7 @@ theme:
 
 The following languages are supported:
 
-<div class="mdx-columns" markdown="1">
+<div class="mdx-columns" markdown>
 
 - `af` – Afrikaans
 - `ar` – Arabic

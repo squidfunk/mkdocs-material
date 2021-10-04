@@ -78,18 +78,23 @@ but it's always possible to resort to HTML. Using `figure` and `figcaption`, cap
 _Example_:
 
 ```html
-<figure>
-  <img src="https://dummyimage.com/600x400/eee/aaa" width="300" />
+<figure markdown> <!-- (1) -->
+  ![Dummy image](https://dummyimage.com/600x400/){ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>
 ```
 
+1.  :man_raising_hand: Remember to enable the [Markdown in HTML] extension.
+
 _Result_:
 
-<figure>
-  <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
+<figure markdown>
+  ![Dummy image]{ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>
+
+  [Dummy image]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–
+  [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html
 
 ### Image lazy-loading
 

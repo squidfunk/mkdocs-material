@@ -15,7 +15,7 @@ during runtime using a JavaScript syntax highlighter.
 
 This configuration enables syntax highlighting on code blocks and inline code 
 blocks, and allows to include source code directly from other files. Add the 
-following lines to `mkdocs.yml`
+following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -46,7 +46,7 @@ See additional configuration options:
 
 Code annotations offer a comfortable and friendly way to attach arbitrary
 content to specific sections of code blocks by adding numeric markers in block
-and inline comments in the language of the block. Add the following to
+and inline comments in the language of the code block. Add the following to
 `mkdocs.yml` to enable them globally:
 
 ``` yaml
@@ -58,7 +58,7 @@ theme:
 1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
     text__, images, ... basically anything that can be expressed in Markdown.
 
-??? info "Enabling code annotations only for specific code blocks"
+??? info "Enabling code annotations for a specific code block"
 
     If you don't want to enable code annotations globally, because you don't
     like the automatic inlining behavior, you can enable them for a specific
@@ -182,7 +182,7 @@ at `1`, regardless of the starting line number specified as part of
 
     _Example_:
 
-    ```` markdown
+    ```` markdown 
     ``` python hl_lines="2 3"
     def bubble_sort(items):
         for i in range(len(items)):
@@ -194,7 +194,7 @@ at `1`, regardless of the starting line number specified as part of
 
     _Result_:
 
-    ``` python hl_lines="2 3"
+    ``` python linenums="1" hl_lines="2 3"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):
@@ -218,7 +218,7 @@ at `1`, regardless of the starting line number specified as part of
 
     _Result_:
 
-    ``` python hl_lines="2-5"
+    ``` python linenums="1" hl_lines="2-5"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):
@@ -246,8 +246,9 @@ The `#!python range()` function is used to generate a sequence of numbers.
 
 ### Embedding external files
 
-When [Snippets] is enabled, content from other files can be embedded, which is particularly useful to reference and embed the contents of source files
-directly in a document without copying.
+When [Snippets] is enabled, content from other files (including source files)
+can be embedded by using the [`--8<--` notation][Snippets notation] directly
+from within a code block:
 
 _Example_:
 
@@ -262,6 +263,8 @@ _Result_:
 ```
 last 4 years
 ```
+
+  [Snippets notation]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippets-notation
 
 ## Customization
 
@@ -303,9 +306,9 @@ a new color by using an [additional stylesheet]:
 }
 ```
 
-If you want to tweak a specific type of string, i.e. ``#!js `backticks` ``, you
-can lookup the specific class name in the [syntax theme definition], and
-override it as part of your additional stylesheet:
+If you want to tweak a specific type of string, e.g. ``#!js `backticks` ``, you
+can lookup the specific CSS class name in the [syntax theme definition], and
+override it as part of your [additional stylesheet]:
 
 ``` css
 .highlight .sb {

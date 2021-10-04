@@ -39,11 +39,11 @@ plugins:
 
 For example, the page on [setting up site analytics][5] renders as:
 
-<figure markdown="1">
+<figure markdown>
 
 [![Social Cards][6]][6]
 
-  <figcaption markdown="1">
+  <figcaption markdown>
 
 Want to try it out? Copy the current URL and paste it into [Twitter's Card
 validator][7] to see how social cards look in action.

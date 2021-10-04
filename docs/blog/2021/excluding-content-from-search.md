@@ -14,7 +14,7 @@ __The latest Insiders release brings three new simple ways to exclude
 dedicated parts of a document from the search index, allowing for more
 fine-grained control.__
 
-<aside class="mdx-author" markdown="1">
+<aside class="mdx-author" markdown>
 ![@squidfunk][1]
 
 <span>__Martin Donath__ · @squidfunk</span>

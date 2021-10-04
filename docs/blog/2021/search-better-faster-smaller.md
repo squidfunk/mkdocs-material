@@ -14,7 +14,7 @@ __This is the story of how we managed to completely rebuild client-side search,
 delivering a significantly better user experience while making it faster and
 smaller at the same time.__
 
-<aside class="mdx-author" markdown="1">
+<aside class="mdx-author" markdown>
 ![@squidfunk][1]
 
 <span>__Martin Donath__ · @squidfunk</span>
@@ -230,11 +230,11 @@ search previews appear not to include any occurrence of any of the search
 terms. This was due to the fact that search previews were [truncated after a
 maximum of 320 characters][15], as can be seen here:
 
-<figure markdown="1">
+<figure markdown>
 
 ![Search previews][16]
 
-  <figcaption markdown="1">
+  <figcaption markdown>
 
 The first two results look like they're not relevant, as they don't seem to
 include the query string the user just searched for. Yet, they are.
@@ -578,7 +578,7 @@ itself, and one with a very massive corpus of Markdown files with more than
 800,000 words – a size most documentation projects will likely never
 reach:
 
-<figure markdown="1">
+<figure markdown>
 
 |                         |   Before |            Now |     Relative |
 | ----------------------- | -------: | -------------: | -----------: |
