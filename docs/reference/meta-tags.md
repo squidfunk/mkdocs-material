@@ -81,7 +81,7 @@ extra:
   manifest: manifest.webmanifest
 ```
 
-  [6]: https://developers.google.com/web/fundamentals/web-app-manifest/
+  [6]: https://web.dev/add-manifest/
 
 ## Customization
 
