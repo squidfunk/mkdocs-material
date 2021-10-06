@@ -1,3 +1,7 @@
+mkdocs-material-7.3.2+insiders-3.1.2 (2021-10-06)
+
+  * Fixed incorrect path separators for social cards on Windows
+
 mkdocs-material-7.3.2 (2021-10-06)
 
   * Deprecated prebuilding of search index

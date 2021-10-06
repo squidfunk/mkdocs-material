@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 3.1.2 <small>_ October 6, 2021</small>
+
+- Fixed incorrect path separators for social cards on Windows
+
 ### 3.1.1 <small>_ September 26, 2021</small>
 
 - Fixed ordering bug in search exclusion logic
