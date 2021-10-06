@@ -33,6 +33,7 @@ import {
   finalize,
   map,
   observeOn,
+  skipUntil,
   switchMap,
   take,
   tap,
@@ -102,20 +103,18 @@ export function mountSearchResult(
   const list = getElementOrThrow(":scope > :last-child", el)
 
   /* Update search result metadata when ready */
-  rx$
+  const ready$ = rx$
     .pipe(
       filter(isSearchReadyMessage),
       take(1)
     )
-      .subscribe(() => {
-        resetSearchResultMeta(meta)
-      })
 
   /* Update search result metadata */
   internal$
     .pipe(
       observeOn(animationFrameScheduler),
-      withLatestFrom(query$)
+      withLatestFrom(query$),
+      skipUntil(ready$)
     )
       .subscribe(([{ items }, { value }]) => {
         if (value)

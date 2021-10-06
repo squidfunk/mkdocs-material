@@ -127,10 +127,10 @@ export function setupSearchWorker(
   /* Set up search index */
   from(index)
     .pipe(
-      map<SearchIndex, SearchSetupMessage>(data => ({
+      map(data => ({
         type: SearchMessageType.SETUP,
         data: setupSearchIndex(data)
-      }))
+      } as SearchSetupMessage))
     )
       .subscribe(tx$.next.bind(tx$))
 
