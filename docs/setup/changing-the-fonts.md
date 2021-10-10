@@ -66,7 +66,7 @@ theme:
   font: false
 ```
 
-  [data privacy]: ../data-privacy.md
+  [data privacy]: https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users
   [font=false support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
 
 ## Customization

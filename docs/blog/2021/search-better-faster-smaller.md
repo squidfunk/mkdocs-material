@@ -499,7 +499,7 @@ digit `\d`, which leaves version numbers discoverable. Searching for
 [:octicons-search-24: 7.2.6][28] brings up the [7.2.6][29] release notes.
 
   [28]: ?q=7.2.6
-  [29]: ../../changelog.md#726-_-september-1-2021
+  [29]: ../../changelog/index.md#726-_-september-1-2021
 
 #### HTML/XML tags
 

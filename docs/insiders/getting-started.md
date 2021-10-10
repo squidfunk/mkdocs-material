@@ -7,13 +7,13 @@ title: Switching to Insiders
 
 Material for MkDocs Insiders is a fully compatible drop-in replacement for 
 Material for MkDocs, and can be installed similar to the public version using
-[`pip`][1], [`docker`][2] or [`git`][3]. When you sponsor @squidfunk, your
-account is added to the list of collaborators of the private Insiders
+[`pip`][pip], [`docker`][docker] or [`git`][git]. When you sponsor @squidfunk,
+your account is added to the list of collaborators of the private Insiders
 repository.
 
-  [1]: #with-pip-recommended
-  [2]: #with-docker
-  [3]: #with-git
+  [pip]: #with-pip
+  [docker]: #with-docker
+  [git]: #with-git
 
 ## Requirements
 

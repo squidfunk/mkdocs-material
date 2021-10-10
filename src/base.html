@@ -78,7 +78,7 @@
       {% endif %}
     {% endblock %}
 
-    <!-- Theme-related stylesheets -->
+    <!-- Theme-related style sheets -->
     {% block styles %}
       <link rel="stylesheet" href="{{ 'assets/stylesheets/main.css' | url }}" />
 
@@ -136,7 +136,7 @@
       />
     {% endif %}
 
-    <!-- Custom stylesheets -->
+    <!-- Custom style sheets -->
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}" />
     {% endfor %}

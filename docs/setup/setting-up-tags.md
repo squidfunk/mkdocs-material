@@ -54,7 +54,7 @@ The following configuration options are available:
 
 ### Adding tags
 
-When both, the [built-in tags plugin] and [Metadata] extension are enabled,
+When both, the [built-in tags] plugin and [Metadata] extension are enabled,
 tags can be added for a document with custom front matter. Add the following
 lines at the top of a Markdown file:
 
@@ -80,14 +80,14 @@ following screenshots:
 
     [![Tag search preview]][Tag search preview]
 
-  [built-in tags plugin]: #built-in-tags
+  [built-in tags]: #built-in-tags
   [Metadata]: extensions/python-markdown.md#metadata
   [Tags preview]: ../assets/screenshots/tags.png
   [Tag search preview]: ../assets/screenshots/tags-search.png
 
 ### Adding a tags index
 
-The [built-in tags plugin] allows to define a file to render a [tags index]
+The [built-in tags] plugin allows to define a file to render a [tags index]
 [tags.tags_file], which can be any page that is part of the `nav` section. To
 add a tags index, create a page, e.g. `tags.md`:
 

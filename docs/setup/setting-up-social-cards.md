@@ -97,7 +97,7 @@ The following configuration options are available:
 
 #### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
 
-The [built-in social cards plugin] automatically fetches the fonts you define
+The [built-in social cards] plugin automatically fetches the fonts you define
 in `mkdocs.yml` from Google Fonts, and uses them to render the text that is
 displayed on the social card. The font files and generated cards are both
 written to the `.cache` directory, which is used in subsequent builds to detect
@@ -131,12 +131,12 @@ whether the social cards need to be regenerated. You might want to:
             - run: mkdocs gh-deploy --force
     ```
 
-  [built-in social cards plugin]: #built-in-social-cards
+  [built-in social cards]: #built-in-social-cards
   [publishing guide]: ../publishing-your-site.md#with-github-actions
 
 #### Meta tags
 
-The [built-in social cards plugin] automatically sets all necessary `meta` tags,
+The [built-in social cards] plugin automatically sets all necessary `meta` tags,
 equivalent to the following two customizations, which you can set manually when
 you don't want to use it:
 
@@ -179,8 +179,6 @@ you don't want to use it:
     ```
 
   [Twitter Cards]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
-  [built-in social cards plugin]: ../setup/setting-up-social-cards.md#built-in-social-cards
-
 
 ## Usage
 

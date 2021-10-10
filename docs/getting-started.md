@@ -5,17 +5,14 @@ title: Getting started
 
 # Getting started
 
-Material for MkDocs is a theme for [MkDocs][1], a static site generator geared
+Material for MkDocs is a theme for [MkDocs], a static site generator geared
 towards (technical) project documentation. If you're familiar with Python, you
-can install Material for MkDocs with [`pip`][2], the Python package manager.
-If not, we recommended using [`docker`][3].
+can install Material for MkDocs with [`pip`][pip], the Python package manager.
+If not, we recommended using [`docker`][docker].
 
-In case you're running into problems, consult the [troubleshooting][4] section.
-
-  [1]: https://www.mkdocs.org
-  [2]: #with-pip-recommended
-  [3]: #with-docker
-  [4]: troubleshooting.md
+  [MkDocs]: https://www.mkdocs.org
+  [pip]: #with-pip
+  [docker]: #with-docker
 
 ## Installation
 
@@ -28,17 +25,17 @@ pip install mkdocs-material
 ```
 
 This will automatically install compatible versions of all dependencies:
-[MkDocs][1], [Markdown][5], [Pygments][6] and [Python Markdown Extensions][7].
-Material for MkDocs always strives to support the latest versions, so there's
-no need to install those packages separately.
+[MkDocs], [Markdown], [Pygments] and [Python Markdown Extensions]. Material for
+MkDocs always strives to support the latest versions, so there's no need to
+install those packages separately.
 
-  [5]: https://python-markdown.github.io/
-  [6]: https://pygments.org/
-  [7]: https://facelessuser.github.io/pymdown-extensions/
+  [Markdown]: https://python-markdown.github.io/
+  [Pygments]: https://pygments.org/
+  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
 
 ### with docker
 
-The official [Docker image][8] is a great way to get up and running in a few
+The official [Docker image] is a great way to get up and running in a few
 minutes, as it comes with all dependencies pre-installed. Pull the image for the 
 `latest` version with:
 
@@ -52,12 +49,12 @@ covered in the following sections.
 
 The following plugins are bundled with the Docker image:
 
-- [mkdocs-minify-plugin][9]
-- [mkdocs-redirects][10]
+- [mkdocs-minify-plugin]
+- [mkdocs-redirects]
 
-  [8]: https://hub.docker.com/r/squidfunk/mkdocs-material/
-  [9]: https://github.com/byrnereese/mkdocs-minify-plugin
-  [10]: https://github.com/datarobot/mkdocs-redirects
+  [Docker image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
+  [mkdocs-minify-plugin]: https://github.com/byrnereese/mkdocs-minify-plugin
+  [mkdocs-redirects]: https://github.com/datarobot/mkdocs-redirects
 
 ??? question "How to add plugins to the Docker image?"
 
@@ -82,19 +79,19 @@ The following plugins are bundled with the Docker image:
 !!! info ":material-apple: Apple Silicon (M1) and :fontawesome-brands-raspberry-pi: Raspberry Pi"
 
     The official Docker image is only available for `linux/amd64`. We recommend
-    the [third-party image][11] by @afritzler if you want to run Material for
-    MkDocs via Docker on `arm64` or `armv7`, as it is automatically built on
-    every release:
+    the [third-party image] by @afritzler if you want to run Material for MkDocs
+    via Docker on `arm64` or `armv7`, as it is automatically built on every
+    release:
 
     ```
     docker pull ghcr.io/afritzler/mkdocs-material
     ```
 
-  [11]: https://github.com/afritzler/mkdocs-material
+  [third-party image]: https://github.com/afritzler/mkdocs-material
 
 ### with git
 
-Material for MkDocs can be directly used from [GitHub][12] by cloning the
+Material for MkDocs can be directly used from [GitHub] by cloning the
 repository into a subfolder of your project root which might be useful if you
 want to use the very latest version:
 
@@ -106,7 +103,7 @@ The theme will reside in the folder `mkdocs-material/material`. When cloning
 from `git`, you must install all required dependencies yourself:
 
 ```
-pip install -r mkdocs-material/requirements.txt
+pip install -e mkdocs-material
 ```
 
-  [12]: https://github.com/squidfunk/mkdocs-material
+  [GitHub]: https://github.com/squidfunk/mkdocs-material
