@@ -50,7 +50,6 @@
         // Adjust for right-to-left languages
         [dir="rtl"] & {
           margin-right: px2rem(24px);
-          margin-left: px2rem(16px);
         }
       }
 
@@ -60,7 +59,6 @@
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
-          margin-right: px2rem(16px);
           margin-left: px2rem(24px);
         }
       }
