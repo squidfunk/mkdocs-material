@@ -120,8 +120,8 @@ theme:
     [![navigation.tabs.sticky disabled]][navigation.tabs.sticky disabled]
 
   [navigation.tabs.sticky support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
-  [navigation.tabs.sticky enabled]: ../assets/screenshots/navigation-tabs.png
-  [navigation.tabs.sticky disabled]: ../assets/screenshots/navigation.png
+  [navigation.tabs.sticky enabled]: ../assets/screenshots/navigation-tabs-sticky.png
+  [navigation.tabs.sticky disabled]: ../assets/screenshots/navigation-tabs-collapsed.png
 
 ### Navigation sections
 
