@@ -4,7 +4,7 @@ template: overrides/main.html
 
 # Abbreviations
 
-Technical documentation often incurs the usage of a lot of acronyms, which may
+Technical documentation often incurs the usage of many acronyms, which may
 need additional explanation, especially for new user of your project. For these
 matters, Material for MkDocs uses a combination of Markdown extensions to
 enable site-wide glossaries.
@@ -69,7 +69,7 @@ all abbreviations in a dedicated file[^1], and embedding it with the
 
 _Example_:
 
-=== ":octicons-file-code-16: docs/page.md"
+=== ":octicons-file-code-16: docs/example.md"
 
     ```` markdown
     The HTML specification is maintained by the W3C.

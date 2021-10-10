@@ -31,7 +31,7 @@ Note that no third-party plugin[^1] needs to be installed, as Material for
 MkDocs provides its own implementation to allow for a meaningful integration.
 The following options are available:
 
-`tags_file`{ #tags_file }
+`tags_file`{ #tags-file }
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies which file
     should be used to render the tags index. See the section on [adding a tags 

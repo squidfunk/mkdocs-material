@@ -122,9 +122,8 @@ No configuration options are available. See reference for usage:
 [:octicons-workflow-24: Extension][Footnotes] ·
 [:octicons-tag-24: 1.0.0 ... present][Footnotes support]
 
-The [Footnotes] extension allows to define footnotes inline with the content,
-which are then rendered below all Markdown content of a document. Enable it
-via `mkdocs.yml`:
+The [Footnotes] extension allows to define inline footnotes, which are then
+rendered below all Markdown content of a document. Enable it via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -328,7 +327,7 @@ should be considered.
 
 Superseded by [SuperFences]. This extension might still work, but the
 [SuperFences] extension is superior in many ways, as it allows for arbitrary 
-nesting, and therefore strongly recommended.
+nesting, and is therefore recommended.
 
   [Fenced Code Blocks]: https://python-markdown.github.io/extensions/fenced_code_blocks/
   [Fenced Code Blocks support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
@@ -345,5 +344,5 @@ essential extensions like [SuperFences] and [InlineHilite].
 
   [CodeHilite]: https://python-markdown.github.io/extensions/code_hilite/
   [CodeHilite support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [Highlight]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+  [Highlight]: https://facelessuser.github.io/pymdown-extensions/extensions/highlight/
   [InlineHilite]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/

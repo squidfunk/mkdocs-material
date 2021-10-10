@@ -55,7 +55,7 @@ This is a built-in plugin, which means that no third-party plugin needs to be
 installed, as Material for MkDocs already bundles it. The following options
 are available:
 
-`cards_color`{ #cards_color } :material-new-box:
+`cards_color`{ #cards-color } :material-new-box:
 
 :   :octicons-milestone-24: Default: _automatically set based on [primary
     color][8]_ – This option specifies which colors to use for the background
@@ -73,7 +73,7 @@ are available:
     (e.g. `#0FF1CE`, must be enclosed in quotes) or CSS color keywords (e.g.
     `red`, `green`, etc.).
 
-`cards_directory`{ #cards_directory }
+`cards_directory`{ #cards-directory }
 
 :   :octicons-milestone-24: Default: `assets/images/social` – This option
     specifies where the generated social card images will be written to. It
@@ -100,10 +100,10 @@ is displayed on the social card. The font files and generated cards are both
 written to the `.cache` directory, which is used in subsequent builds to detect
 whether the social cards need to be regenerated. You might want to:
 
-1. Ignore the `.cache` directory in your project, by adding it to `.gitignore`.
-2. When building your site for publishing, use a build cache to save the
-   `.cache` directory in between builds. Taking the example from the
-   [publishing guide][10], add the following lines:
+1.  Ignore the `.cache` directory in your project, by adding it to `.gitignore`.
+2.  When building your site for publishing, use a build cache to save the
+    `.cache` directory in between builds. Taking the example from the
+    [publishing guide][10], add the following lines:
 
     ``` yaml hl_lines="15-18"
     name: ci

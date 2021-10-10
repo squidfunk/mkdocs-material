@@ -13,8 +13,8 @@ for a document.
 
 ## Configuration
 
-This configuration enables support for keyboard keys, highlighting changes
-to documents, highlighting text and defining sub- and superscript. Add the 
+This configuration enables support for keyboard keys, tracking changes in
+documents, defining sub- and superscript and highlighting text. Add the 
 following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -25,6 +25,8 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
 ```
+
+See additional configuration options:
 
 - [Critic]
 - [Caret, Mark & Tilde]
@@ -77,8 +79,8 @@ Text can be <del class="critic">deleted</del> and replacement text
 ### Highlighting text
 
 When [Caret, Mark & Tilde] are enabled, text can be highlighted with a simple 
-syntax, which is more convenient that directly using the corresponding `mark`, 
-`ins` and `del` HTML tags.
+syntax, which is more convenient that directly using the corresponding
+[`mark`][mark], [`ins`][ins] and [`del`][del] HTML tags.
 
 _Example_:
 
@@ -93,12 +95,16 @@ _Result_:
 - ==This was marked==
 - ^^This was inserted^^
 - ~~This was deleted~~
+
+  [mark]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+  [ins]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
+  [del]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
 
 ### Sub- and superscripts
 
 When [Caret & Tilde][Caret, Mark & Tilde] are enabled, text can be sub- and 
 superscripted with a simple syntax, which is more convenient that directly
-using the corresponding `sub` and `sup`  HTML tags:
+using the corresponding [`sub`][sub] and [`sup`][sup]  HTML tags:
 
 _Example_:
 
@@ -111,6 +117,9 @@ _Result_:
 
 - H~2~0
 - A^T^A
+
+  [sub]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub
+  [sup]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
 
 ### Adding keyboard keys
 
@@ -128,4 +137,4 @@ _Result_:
 
 ++ctrl+alt+del++
 
-  [Python Markdown Extensions]: [#keys](https://facelessuser.github.io/pymdown-extensions/extensions/keys/#extendingmodifying-key-map-index)
+  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extensions/keys/#extendingmodifying-key-map-index

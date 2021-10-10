@@ -51,11 +51,11 @@ Besides basic page views, _site search_ can also be tracked to understand better
 how people use your documentation and what they expect to find. To enable
 search tracking:
 
-1. Go to your Google Analytics __admin settings__
-2. Select the property for the respective tracking code
-3. Go to the __view settings__ tab.
-4. Scroll down and enable __site search settings__
-5. Set the __query parameter__ to `q`.
+1.  Go to your Google Analytics __admin settings__
+2.  Select the property for the respective tracking code
+3.  Go to the __view settings__ tab.
+4.  Scroll down and enable __site search settings__
+5.  Set the __query parameter__ to `q`.
 
 _Site search tracking is not supported with Google Analytics 4 due to the much
 more complicated manual setup. If you want to set up site search tracking
@@ -85,8 +85,8 @@ extra:
       make our documentation better.
 ```
 
-1. You can add arbitrary HTML tags in the `description`, e.g. to link to your
-   terms of service or other parts of the site.
+1.  You can add arbitrary HTML tags in the `description`, e.g. to link to your
+    terms of service or other parts of the site.
 
 Note that both, `title` and `description`, are required. If Google Analytics was
 configured via `mkdocs.yml`, the cookie consent will automatically include a
@@ -153,10 +153,10 @@ extra:
     key: value # (2)
 ```
 
-1. Of course, you can change the name to the partial to anything you like.
-2. You can add arbitrary `key` and `value` combinations to configure your custom
-   integration. This is especially useful if you're sharing the custom
-   integration across multiple repositories.
+1.  Of course, you can change the name to the partial to anything you like.
+2.  You can add arbitrary `key` and `value` combinations to configure your custom
+    integration. This is especially useful if you're sharing the custom
+    integration across multiple repositories.
 
   [8]: ../customization.md#extending-the-theme
   [9]: https://github.com/squidfunk/mkdocs-material/tree/master/src/partials/integrations/analytics

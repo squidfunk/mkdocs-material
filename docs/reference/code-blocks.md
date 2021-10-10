@@ -63,7 +63,7 @@ theme:
     If you don't want to enable code annotations globally, because you don't
     like the automatic inlining behavior, you can enable them for a specific
     code block by using a slightly different syntax based on the
-    [Attribute List] extension:
+    [Attribute Lists] extension:
 
     ```` yaml
     ``` { .yaml .annotate }
@@ -75,7 +75,7 @@ theme:
     prefixed by a `.`.
 
   [Insiders]: ../insiders/index.md
-  [Attribute List]: ../setup/extensions/python-markdown.md#attribute-lists
+  [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
 
 ## Usage
 
@@ -270,11 +270,8 @@ last 4 years
 
 ### Custom syntax theme
 
-[:octicons-file-code-24: Source][Source] ·
-:octicons-mortar-board-24: Difficulty: _easy_
-
 If [Pygments] is used, Material for MkDocs provides the [styles for code blocks]
-[Source], which are built with a custom and well-balanced palette that works
+[colors], which are built with a custom and well-balanced palette that works
 equally well for both [color schemes]:
 
 - :material-checkbox-blank-circle:{ style="color: var(--md-code-hl-number-color) " } `--md-code-hl-number-color`
@@ -298,26 +295,44 @@ Code block foreground, background and line highlight colors are defined via:
 
 Let's say you want to change the color of `#!js "strings"`. While there are
 several [types of string tokens], they use the same color. You can assign
-a new color by using an [additional stylesheet]:
+a new color by using an [additional style sheet]:
 
-``` css
-:root > * {
-  --md-code-hl-string-color: #0FF1CE;
-}
-```
+=== ":octicons-file-code-16: docs/stylesheets/colors.css"
+
+    ``` css
+    :root > * {
+      --md-code-hl-string-color: #0FF1CE;
+    }
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_css:
+      - stylesheets/colors.css
+    ```
 
 If you want to tweak a specific type of string, e.g. ``#!js `backticks` ``, you
 can lookup the specific CSS class name in the [syntax theme definition], and
-override it as part of your [additional stylesheet]:
+override it as part of your [additional style sheet]:
 
-``` css
-.highlight .sb {
-  color: #0FF1CE;
-}
-```
+=== ":octicons-file-code-16: docs/stylesheets/colors.css"
 
-  [Source]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss
+    ``` css
+    .highlight .sb {
+      color: #0FF1CE;
+    }
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_css:
+      - stylesheets/colors.css
+    ```
+
+  [colors]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss
   [color schemes]: ../setup/changing-the-colors.md#color-scheme
   [types of string tokens]: https://pygments.org/docs/tokens/#literals
-  [additional stylesheet]: ../customization.md#additional-css
+  [additional style sheet]: ../customization.md#additional-css
   [syntax theme definition]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss

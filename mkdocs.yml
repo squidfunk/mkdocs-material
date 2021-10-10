@@ -51,7 +51,7 @@ theme:
   language: en
   features:
     - content.code.annotate
-    - content.tabs.link
+    # - content.tabs.link
     # - header.autohide
     # - navigation.expand
     - navigation.indexes

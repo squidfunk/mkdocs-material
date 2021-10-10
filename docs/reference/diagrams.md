@@ -34,8 +34,8 @@ No further configuration is necessary. Advantages over a custom integration:
 
 - [x] Works with [instant loading] without any additional effort
 - [x] Diagrams automatically use fonts and colors defined in `mkdocs.yml`[^1]
-- [x] Fonts and colors can be customized with [additional stylesheets]
-- [x] Support for both, light and dark color schemes
+- [x] Fonts and colors can be customized with [additional style sheets]
+- [x] Support for both, light and dark color schemes – _try it on this page!_
 
   [^1]:
     While all [Mermaid.js] features should work out-of-the-box, Material for
@@ -45,7 +45,7 @@ No further configuration is necessary. Advantages over a custom integration:
 
   [Insiders]: ../insiders/index.md
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
-  [additional stylesheets]: ../customization.md#additional-css
+  [additional style sheets]: ../customization.md#additional-css
 
 ## Usage
 

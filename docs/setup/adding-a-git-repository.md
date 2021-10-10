@@ -121,7 +121,7 @@ plugins:
 
 The following options are supported:
 
-`enabled_if_env`{ #enabled_if_env }
+`enabled_if_env`{ #enabled-if-env }
 
 :   :octicons-milestone-24: Default: _none_ – When specified the data will only be extracted from git
     if the environment variable exists. This makes it possible to disable
@@ -174,7 +174,7 @@ The following options are supported:
           type: date
     ```
 
-`fallback_to_build_date`{ #fallback_to_build_date }
+`fallback_to_build_date`{ #fallback-to-build-date }
 
 :   :octicons-milestone-24: Default: `false` – Enables falling back to
     the time when `mkdocs build` was executed. Can be used as a fallback when
@@ -186,7 +186,7 @@ The following options are supported:
           fallback_to_build_date: true
     ```
 
-`enable_creation_date`{ #enable_creation_date }
+`enable_creation_date`{ #enable-creation-date }
 
 :   :octicons-milestone-24: Default: `false` – Enables the display of the
     _created at_ date of the file associated with the page next to the

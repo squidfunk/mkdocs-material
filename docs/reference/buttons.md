@@ -30,38 +30,38 @@ See additional configuration options:
 ### Adding buttons
 
 In order to render a link as a button, suffix it with curly braces and add the
-`#!css .md-button` class selector to it. The button will receive the selected
+`.md-button` class selector to it. The button will receive the selected
 [primary color] and [accent color] if active.
 
 _Example_:
 
 ``` markdown
-[Don't click me](#){ .md-button }
+[Subscribe to our newsletter](#){ .md-button }
 ```
 
 _Result_:
 
-[Don't click me][Demo]{ .md-button }
+[Subscribe to our newsletter][Demo]{ .md-button }
 
   [primary color]: ../setup/changing-the-colors.md#primary-color
   [accent color]: ../setup/changing-the-colors.md#accent-color 
-  [Demo]: javascript:alert$.next("Hi!")
+  [Demo]: javascript:alert$.next("Demo")
 
 ### Adding primary buttons
 
 If you want to display a filled, primary button (like on the [landing page]
-of Material for MkDocs), add both, the `#!css .md-button` and
-`#!css .md-button--primary` CSS class selectors.
+of Material for MkDocs), add both, the `.md-button` and `.md-button--primary`
+CSS class selectors.
 
 _Example_:
 
 ``` markdown
-[Don't click me](#){ .md-button .md-button--primary }
+[Subscribe to our newsletter](#){ .md-button .md-button--primary }
 ```
 
 _Result_:
 
-[Don't click me][Demo]{ .md-button .md-button--primary }
+[Subscribe to our newsletter][Demo]{ .md-button .md-button--primary }
 
   [landing page]: ../index.md
 

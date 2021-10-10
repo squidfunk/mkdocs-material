@@ -5,7 +5,7 @@ template: overrides/main.html
 # Python Markdown Extensions
 
 The [Python Markdown Extensions] package is an excellent collection of
-additional Markdown extensions that make technical writing a breeze. Material
+additional extensions perfectly suited for advanced technical writing. Material
 for MkDocs lists this package as an explicit dependency, so it's automatically
 installed with a supported version.
 
@@ -37,7 +37,7 @@ Besides enabling the extension in `mkdocs.yml`, a MathJax configuration and
 the JavaScript runtime need to be included, which can be done with a few lines
 of [additional JavaScript]:
 
-=== ":octicons-file-code-16: docs/javascripts/config.js"
+=== ":octicons-file-code-16: docs/javascripts/mathjax.js"
 
     ``` js
     window.MathJax = {
@@ -62,7 +62,7 @@ of [additional JavaScript]:
 
     ``` yaml
     extra_javascript:
-      - javascripts/config.js
+      - javascripts/mathjax.js
       - https://polyfill.io/v3/polyfill.min.js?features=es6
       - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     ```
@@ -237,7 +237,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`emoji_index`{ #emoji_index }
+`emoji_index`{ #emoji-index }
 
 :   :octicons-milestone-24: Default: `emojione` – This option defines which set
     of emojis is used for rendering. Note that the use of `emojione` is not
@@ -249,7 +249,7 @@ The following configuration options are supported:
           emoji_index: !!python/name:materialx.emoji.twemoji
     ```
 
-`emoji_generator`{ #emoji_generator }
+`emoji_generator`{ #emoji-generator }
 
 :   :octicons-milestone-24: Default: `to_png` – This option defines how the
     resolved emoji or icon shortcode is render. Note that icons can only be
@@ -261,10 +261,10 @@ The following configuration options are supported:
           emoji_generator: !!python/name:materialx.emoji.to_svg
     ```
 
-`options.custom_icons`{ #custom_icons }
+`options.custom_icons`{ #custom-icons }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to list folders
-    with additional icon sets to be used in Markdown documents, which is 
+    with additional icon sets to be used in Markdown or `mkdocs.yml`, which is 
     explained in more detail in the [icon customization guide].
 
     ``` yaml
@@ -315,17 +315,13 @@ markdown_extensions:
     perform syntax highlighting on code blocks, not the other way round, which
     is why this extension also needs to be enabled.
 
-    However, this only applies for when [Pygments] is used. If you use a
-    JavaScript syntax highlighter, [SuperFences][SuperFences #] might not
-    be necessary, but it's strongly recommended anyway.
-
 The following configuration options are supported:
 
 `use_pygments`{ #use-pygments }
 
 :   :octicons-milestone-24: Default: `true` – This option allows to control
     whether highlighting should be carried out during build time using
-    [Pygments] or runtime with a JavaScript syntax highlighter:
+    [Pygments] or in the browser with a JavaScript syntax highlighter:
 
     === "Pygments"
 
@@ -348,7 +344,7 @@ The following configuration options are supported:
         integrated with some [additional JavaScript] and [CSS][additional CSS]
         in `mkdocs.yml`:
 
-        === ":octicons-file-code-16: docs/javascripts/config.js"
+        === ":octicons-file-code-16: docs/javascripts/highlight.js"
 
             ``` js
             document$.subscribe(() => {
@@ -361,7 +357,7 @@ The following configuration options are supported:
             ``` yaml
             extra_javascript:
               - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
-              - javascripts/config.js
+              - javascripts/highlight.js
             extra_css:
               - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
             ```
@@ -547,7 +543,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`custom_fences`{ #custom_fences }
+`custom_fences`{ #custom-fences }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to define a
     handler for custom fences, e.g. to preserve the definitions of [Mermaid.js]
@@ -606,12 +602,12 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`alternate_style`{ #alternate_style }
+`alternate_style`{ #alternate-style }
 
 :   :octicons-milestone-24: Default: `false` · [:octicons-tag-24: 7.3.1]
     [Tabbed alternate support] – This option enables the [alternate style] of
-    content tabs, which has [better behavior on smaller screen sizes], and thus
-    is _strongly recommended_:
+    content tabs, which has [better behavior on mobile viewports], and thus
+    is strongly recommended:
 
     ``` yaml
     markdown_extensions:
@@ -633,7 +629,7 @@ See reference for usage:
   [Tabbed support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [Tabbed alternate support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.1
   [alternate style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#alternate-style
-  [better behavior on smaller screen sizes]: https://twitter.com/squidfunk/status/1424740370596958214
+  [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
   [Grouping code blocks]: ../../reference/content-tabs.md#grouping-code-blocks
   [Grouping other content]: ../../reference/content-tabs.md#grouping-other-content
   [Embedded content]: ../../reference/content-tabs.md#embedded-content
@@ -644,8 +640,8 @@ See reference for usage:
 [:octicons-tag-24: 1.0.0 ... present][Tasklist support]
 
 The [Tasklist] extension allows for the usage of [GitHub Flavored Markdown]
-inspired [task lists][Spec], following the same syntactical conventions. Enable
-it via `mkdocs.yml`:
+inspired [task lists][Tasklist specification], following the same syntactical
+conventions. Enable it via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -659,7 +655,7 @@ The following configuration options are supported:
 
 :   :octicons-milestone-24: Default: `false` · This option toggles the rendering
     style of checkboxes, replacing native checkbox styles with beautiful icons, 
-    and is therefore strongly recommended:
+    and is therefore recommended:
 
     ``` yaml
     markdown_extensions:
@@ -691,5 +687,5 @@ See reference for usage:
   [Tasklist support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [GitHub Flavored Markdown]: https://github.github.com/gfm/
   [Tasklist #]: #tasklist
-  [Spec]: https://github.github.com/gfm/#task-list-items-extension-
+  [Tasklist specification]: https://github.github.com/gfm/#task-list-items-extension-
   [Using task lists]: ../../reference/lists.md#using-task-lists

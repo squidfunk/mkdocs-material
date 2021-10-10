@@ -4,16 +4,16 @@ template: overrides/main.html
 
 # Footnotes
 
-Footnotes are a great way to add references to supplemental or additional
-information to a specific word, phrase or sentence without interrupting the
-flow of a document. Material for MkDocs provides the ability to define and
-render footnotes.
+Footnotes are a great way to add supplemental or additional information to a
+specific word, phrase or sentence without interrupting the flow of a document.
+Material for MkDocs provides the ability to define, reference and render
+footnotes.
 
 ## Configuration
 
-This configuration adds the ability to define footnotes inline with the content,
-which are then rendered below all Markdown content of a document. Add the 
-following lines to `mkdocs.yml`:
+This configuration adds the ability to define inline footnotes, which are then
+rendered below all Markdown content of a document. Add the following lines to
+`mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:

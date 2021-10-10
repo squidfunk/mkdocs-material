@@ -52,18 +52,18 @@ tabs with the same label will be activated when a user clicks a content tab
 regardless of order inside a container. Furthermore, this feature is fully
 integrated with [instant loading] and persisted across page loads.
 
-=== "With linking"
+=== ":octicons-check-circle-fill-16: Enabled"
 
-    [![With linking]][With linking]
+    [![linking enabled]][linking enabled]
 
-=== "Without linking"
+=== ":octicons-skip-16: Disabled"
 
-    [![Without linking]][Without linking]
+    [![linking disabled]][linking disabled]
 
   [Insiders]: ../insiders/index.md
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
-  [With linking]: ../assets/screenshots/content-tabs-link.png
-  [Without linking]: ../assets/screenshots/content-tabs.png
+  [linking enabled]: ../assets/screenshots/content-tabs-link.png
+  [linking disabled]: ../assets/screenshots/content-tabs.png
 
 ## Usage
 

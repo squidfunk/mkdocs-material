@@ -87,11 +87,11 @@ you can [define the `outdated` block][9]:
 {% endblock %}
 ```
 
-1. Given this value for the `href` attribute, the link will always redirect to 
-   the root of your site, which will then redirect to the latest version. This
-   ensures that older versions of your site do not depend on a specific alias,
-   e.g. `latest`, to allow for changing the alias later on without breaking
-   earlier versions.
+1.  Given this value for the `href` attribute, the link will always redirect to 
+    the root of your site, which will then redirect to the latest version. This
+    ensures that older versions of your site do not depend on a specific alias,
+    e.g. `latest`, to allow for changing the alias later on without breaking
+    earlier versions.
 
 This will render a version warning above the header:
 

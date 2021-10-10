@@ -59,7 +59,7 @@ See additional configuration options:
   [Octicons]: https://octicons.github.com/
   [additional icons]: ../setup/changing-the-logo-and-icons.md#additional-icons
   [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
-  [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom_icons
+  [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom-icons
 
 ## Usage
 
@@ -86,46 +86,33 @@ _Result_:
 
 When [Emoji] is enabled, icons can be used similar to emojis, by referencing
 a valid path to any icon bundled with the theme, which are located in the
-[`.icons`][1] directory, and replacing `/` with `-`:
+[`.icons`][custom icons] directory, and replacing `/` with `-`:
 
 _Example_:
 
 ```
-- :material-account-circle: – `.icons/material/account-circle.svg`
-- :fontawesome-regular-laugh-wink: – `.icons/fontawesome/regular/laugh-wink.svg`
-- :octicons-repo-push-16: – `.icons/octicons/repo-push-16.svg`
+- :material-account-circle: – `material/account-circle.svg`
+- :fontawesome-regular-laugh-wink: – `fontawesome/regular/laugh-wink.svg`
+- :octicons-repo-push-16: – `octicons/repo-push-16.svg`
 ```
 
 _Result_:
 
-- :material-account-circle: – [`.icons/material/account-circle.svg`][14]
-- :fontawesome-regular-laugh-wink: – [`.icons/fontawesome/regular/laugh-wink.svg`][15]
-- :octicons-repo-push-16: – [`.icons/octicons/repo-push-16.svg`][16]
+- :material-account-circle: – [`material/account-circle.svg`][icon Material]
+- :fontawesome-regular-laugh-wink: – [`fontawesome/regular/laugh-wink.svg`][icon FontAwesome]
+- :octicons-repo-push-16: – [`octicons/repo-push-16.svg`][icon Octicons]
 
-  [14]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/material/account-circle.svg
-  [15]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/fontawesome/regular/laugh-wink.svg
-  [16]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/repo-push-16.svg
+  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [icon Material]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/material/account-circle.svg
+  [icon FontAwesome]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/fontawesome/regular/laugh-wink.svg
+  [icon Octicons]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/repo-push-16.svg
 
 #### with colors
 
-When the [Attribute List][17] extension is enabled, custom CSS classes and
-attributes can be added to icons by suffixing the icon with a special syntax.
-While HTML and CSS allow to use [inline styles][18], it's always best to add
-an [additional stylesheet][19] and put styles into dedicated CSS classes:
-
-``` css
-.medium {
-  color: #00AB6C;
-}
-.twitter {
-  color: #1DA1F2;
-}
-.facebook {
-  color: #4267B2;
-}
-```
-
-Then, simply add the CSS class to the icon.
+When [Attribute Lists] is enabled, custom CSS classes can be added to icons by
+suffixing the icon with a special syntax. While HTML allows to use
+[inline styles], it's always recommended to add an [additional style sheet] and
+move declarations into dedicated CSS classes.
 
 <style>
   .medium {
@@ -141,11 +128,34 @@ Then, simply add the CSS class to the icon.
 
 _Example_:
 
-``` markdown
-- :fontawesome-brands-medium:{ .medium } – Medium
-- :fontawesome-brands-twitter:{ .twitter } – Twitter
-- :fontawesome-brands-facebook:{ .facebook } – Facebook
-```
+=== ":octicons-file-code-16: docs/example.md"
+
+    ``` markdown
+    - :fontawesome-brands-medium:{ .medium } – Medium
+    - :fontawesome-brands-twitter:{ .twitter } – Twitter
+    - :fontawesome-brands-facebook:{ .facebook } – Facebook
+    ```
+
+=== ":octicons-file-code-16: docs/stylesheets/icons.css"
+
+    ``` css
+    .medium {
+      color: #00AB6C;
+    }
+    .twitter {
+      color: #1DA1F2;
+    }
+    .facebook {
+      color: #4267B2;
+    }
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_css:
+      - stylesheets/icons.css
+    ```
 
 _Result_:
 
@@ -153,52 +163,61 @@ _Result_:
 - :fontawesome-brands-twitter:{ .twitter } – Twitter
 - :fontawesome-brands-facebook:{ .facebook } – Facebook
 
-  [17]: #attribute-list
-  [18]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
-  [19]: ../customization.md#additional-css
+  [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
+  [inline styles]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
+  [additional style sheet]: ../customization.md#additional-css
 
 #### with animations
 
-Similar to adding [colors][20], it's just as easy to add [CSS animations][21] to
-icons by using an [additional stylesheet][6], defining a `#!css @keyframes` rule
-and adding the dedicated CSS class to the icon:
-
-``` css
-@keyframes heart {
-  0%, 40%, 80%, 100% {
-    transform: scale(1);
-  }
-  20%, 60% {
-    transform: scale(1.15);
-  }
-}
-.heart {
-  animation: heart 1000ms infinite;
-}
-```
-
-Then, simply add the CSS class to the icon.
+Similar to adding [colors], it's just as easy to add [animations] to icons by
+using an [additional style sheet], defining a `@keyframes` rule and adding a
+dedicated CSS class to the icon.
 
 _Example_:
 
-``` markdown
-:octicons-heart-fill-24:{ .heart }
-```
+=== ":octicons-file-code-16: docs/example.md"
+
+    ``` markdown
+    :octicons-heart-fill-24:{ .heart }
+    ```
+
+=== ":octicons-file-code-16: docs/stylesheets/icons.css"
+
+    ``` css
+    @keyframes heart {
+      0%, 40%, 80%, 100% {
+        transform: scale(1);
+      }
+      20%, 60% {
+        transform: scale(1.15);
+      }
+    }
+    .heart {
+      animation: heart 1000ms infinite;
+    }
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_css:
+      - stylesheets/icons.css
+    ```
 
 _Result_:
 
 :octicons-heart-fill-24:{ .mdx-heart }
 
-  [20]: #with-colors
-  [21]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation
+  [colors]: #with-colors
+  [animations]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation
 
 ## Customization
 
 ### Using icons in templates
 
-When you're [extending the theme][22] with partials or blocks, you can simply
-reference any icon that's [bundled with the theme][1] with Jinja's
-[`include`][23] function and wrap it with the `twemoji` class:
+When you're [extending the theme] with partials or blocks, you can simply
+reference any icon that's [bundled with the theme][icon search] with Jinja's
+[`include`][include] function and wrap it with the `.twemoji` CSS class:
 
 ``` html
 <span class="twemoji">
@@ -208,5 +227,5 @@ reference any icon that's [bundled with the theme][1] with Jinja's
 
 This is exactly what Material for MkDocs does in its templates.
 
-  [22]: ../customization.md#extending-the-theme
-  [23]: https://jinja.palletsprojects.com/en/2.11.x/templates/#include
+  [extending the theme]: ../customization.md#extending-the-theme
+  [include]: https://jinja.palletsprojects.com/en/2.11.x/templates/#include

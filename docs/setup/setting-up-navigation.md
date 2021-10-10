@@ -82,11 +82,11 @@ theme:
     - navigation.tabs
 ```
 
-=== "With tabs"
+=== ":octicons-check-circle-fill-16: Enabled"
 
     [![With tabs][8]][8]
 
-=== "Without tabs"
+=== ":octicons-skip-16: Disabled"
 
     [![Without tabs][9]][9]
 
@@ -111,11 +111,11 @@ theme:
     - navigation.tabs.sticky
 ```
 
-=== "With sticky tabs"
+=== ":octicons-check-circle-fill-16: Enabled"
 
     [![With sticky tabs][11]][11]
 
-=== "Without sticky tabs"
+=== ":octicons-skip-16: Disabled"
 
     [![Without sticky tabs][12]][12]
 
@@ -138,11 +138,11 @@ theme:
     - navigation.sections
 ```
 
-=== "With sections"
+=== ":octicons-check-circle-fill-16: Enabled"
 
     [![With sections][14]][14]
 
-=== "Without sections"
+=== ":octicons-skip-16: Disabled"
 
     [![Without sections][9]][9]
 
@@ -168,11 +168,11 @@ theme:
     - navigation.expand
 ```
 
-=== "With expansion"
+=== ":octicons-check-circle-fill-16: Enabled"
 
     [![With expansion][15]][15]
 
-=== "Without expansion"
+=== ":octicons-skip-16: Disabled"
 
     [![Without expansion][9]][9]
 
@@ -194,11 +194,11 @@ theme:
     - navigation.indexes
 ```
 
-=== "With section index pages"
+=== ":octicons-check-circle-fill-16: Enabled"
 
     [![With expansion][17]][17]
 
-=== "Without section index pages"
+=== ":octicons-skip-16: Disabled"
 
     [![Without expansion][18]][18]
 
@@ -297,7 +297,7 @@ customize its appearance:
               slugify: !!python/name:pymdownx.slugs.uslugify_cased
         ```
 
-`toc_depth`{ #toc_depth }
+`toc_depth`{ #toc-depth }
 
 :   :octicons-milestone-24: Default: `6` – Define the range of levels to be
     included in the table of contents. This may be useful for project
@@ -344,11 +344,11 @@ theme:
     - toc.integrate
 ```
 
-=== "Integrate table of contents"
+=== ":octicons-check-circle-fill-16: Enabled"
 
     [![Integrate table of contents][27]][27]
 
-=== "Separate table of contents"
+=== ":octicons-skip-16: Disabled"
 
     [![Separate table of contents][8]][8]
 
@@ -459,7 +459,7 @@ is a reasonable default, as longer lines tend to be harder to read, it may be
 desirable to increase the overall width of the content area, or even make it
 stretch to the entire available space.
 
-This can easily be achieved with an [additional stylesheet][36] and a few lines
+This can easily be achieved with an [additional style sheet][36] and a few lines
 of CSS:
 
 === "Increase width"

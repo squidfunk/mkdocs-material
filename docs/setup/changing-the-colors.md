@@ -252,7 +252,7 @@ default color palette.
 
 Material for MkDocs implements colors using [CSS variables][12] (custom
 properties). If you want to customize the colors beyond the palette (e.g. to
-use your brand-specific colors), you can add an [additional stylesheet][13] and
+use your brand-specific colors), you can add an [additional style sheet][13] and
 tweak the values of the CSS variables.
 
 Let's say you're :fontawesome-brands-youtube:{ style="color: #EE0F0F" }

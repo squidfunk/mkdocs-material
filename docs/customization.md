@@ -39,7 +39,7 @@ extra_css:
 ```
 
 Spin up the [live preview server][2] and start typing your changes in your
-additional stylesheet file – you should see them almost instantly after saving.
+additional style sheet file – you should see them almost instantly after saving.
 
   [2]: creating-your-site.md#previewing-as-you-write
 
