@@ -143,3 +143,52 @@ default values.
   [11]: ../reference/meta-tags.md#metadata
   [12]: ../reference/meta-tags.md#setting-the-page-title
   [13]: ../reference/meta-tags.md#setting-the-page-description
+
+### Using social media meta tags
+
+The [built-in social cards plugin] generates beautiful image previews for social
+media during the build and sets all necessary `meta` tags, equivalent to the
+following two customizations:
+
+=== ":material-graph: Open Graph"
+
+    ``` html
+    {% block extrahead %}
+      {% set title = config.site_name %}
+      {% if page and page.meta and page.meta.title %}
+        {% set title = title ~ " - " ~ page.meta.title %}
+      {% elif page and page.title and not page.is_homepage %}
+        {% set title = title ~ " - " ~ page.title | striptags %}
+      {% endif %}
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="{{ title }}" />
+      <meta property="og:description" content="{{ config.site_description }}" />
+      <meta property="og:url" content="{{ page.canonical_url }}" />
+      <meta property="og:image" content="<url>" />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    {% endblock %}
+    ```
+
+=== ":fontawesome-brands-twitter: Twitter Cards"
+
+    ``` html
+    {% block extrahead %}
+      {% set title = config.site_name %}
+      {% if page and page.meta and page.meta.title %}
+        {% set title = title ~ " - " ~ page.meta.title %}
+      {% elif page and page.title and not page.is_homepage %}
+        {% set title = title ~ " - " ~ page.title | striptags %}
+      {% endif %}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="<username>" />
+      <meta name="twitter:creator" content="<username>" />
+      <meta name="twitter:title" content="{{ title }}" />
+      <meta name="twitter:description" content="{{ config.site_description }}" />
+      <meta name="twitter:image" content="<url>" />
+    {% endblock %}
+    ```
+
+  [Twitter Cards]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
+  [built-in social cards plugin]: ../setup/setting-up-social-cards.md#built-in-social-cards

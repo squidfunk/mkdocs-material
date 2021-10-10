@@ -215,7 +215,6 @@ nav:
     - Lists: reference/lists.md
     - MathJax: reference/mathjax.md
     - Meta tags: reference/meta-tags.md
-    - Variables: reference/variables.md
   - Insiders:
     - insiders/index.md
     - Getting started:

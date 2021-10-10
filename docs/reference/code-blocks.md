@@ -110,7 +110,7 @@ import tensorflow as tf
 
 Code annotations can be placed anywhere in a code block where a comment for the
 language of the block can be placed, e.g. for JavaScript in `#!js // ...` and
-`#!js /* ... */`, for Yaml `#!yaml # ...`, etc.[^1]
+`#!js /* ... */`, for YAML in `#!yaml # ...`, etc.[^1]
 
   [^1]:
     Code annotations require syntax highlighting with [Pygments] – they're
@@ -202,7 +202,7 @@ at `1`, regardless of the starting line number specified as part of
                     items[j], items[j + 1] = items[j + 1], items[j]
     ```
 
-=== "Line ranges"
+=== "Line number ranges"
 
     _Example_:
 
