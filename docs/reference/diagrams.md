@@ -6,22 +6,20 @@ template: overrides/main.html
 
 Diagrams help to communicate complex relationships and interconnections between
 different technical components, and are a great addition to project
-documentation. Material for MkDocs integrates with [Mermaid.js][1], a very
+documentation. Material for MkDocs integrates with [Mermaid.js], a very
 popular and flexible solution for drawing diagrams.
 
-  [1]: https://mermaid-js.github.io/mermaid/
+  [Mermaid.js]: https://mermaid-js.github.io/mermaid/
 
 ## Configuration
 
-### SuperFences
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-1.15.0][Insiders] ·
+:octicons-beaker-24: Experimental
 
-[:octicons-file-code-24: Source][2] ·
-:octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][2]{ .mdx-insiders }
-
-The [SuperFences][3] extension, which is part of [Python Markdown
-Extensions][4], allows for adding __custom fences__, which can be used to
-render [Mermaid.js][1] diagrams with zero effort:
+This configuration enables native support for [Mermaid.js] diagrams. Material
+for MkDocs will automatically initialize the JavaScript runtime when a page 
+includes a `mermaid` code block:
 
 ``` yaml
 markdown_extensions:
@@ -32,51 +30,28 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 ```
 
-No further configuration is necessary. Material for MkDocs will automatically
-load and initialize the [Mermaid.js][1] runtime when a page includes a [fenced
-`mermaid` block][5]. Furthermore:
+No further configuration is necessary. Advantages over a custom integration:
 
-- [x] Works with [instant loading][6] without any additional effort
+- [x] Works with [instant loading] without any additional effort
 - [x] Diagrams automatically use fonts and colors defined in `mkdocs.yml`[^1]
-- [x] Fonts and colors can be customized with [additional stylesheets][7]
-- [x] Support for both, light and dark color schemes
-
-_While it's also possible to integrate [Mermaid.js][1] using existing
-third-party plugins[^2], the new native integration is recommended as it
-ensures interoperability with all Material for MkDocs features._
+- [x] Fonts and colors can be customized with [additional style sheets]
+- [x] Support for both, light and dark color schemes – _try it on this page!_
 
   [^1]:
-    While all [Mermaid.js][1] features should work out-of-the-box, Material for
-    MkDocs will currently adjust the fonts and colors for flow charts, sequence
-    diagrams, class diagams, state diagrams and entity relationship diagrams.
+    While all [Mermaid.js] features should work out-of-the-box, Material for
+    MkDocs will currently only adjust the fonts and colors for flowcharts,
+    sequence diagrams, class diagams, state diagrams and entity relationship 
+    diagrams.
 
-  [^2]:
-    If you don't want to use the native integration, [mkdocs-mermaid2-plugin][8]
-    might be a good alternative. However, note that this plugin cannot be used
-    in conjunction with the [mkdocs-minify-plugin][9] and doesn't adapt to
-    dark mode.
-
-  [2]: ../insiders/index.md
-  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
-  [4]: https://facelessuser.github.io/pymdown-extensions/
-  [5]: #usage
-  [6]: ../setup/setting-up-navigation.md#instant-loading
-  [7]: ../customization.md#additional-css
-  [8]: https://github.com/fralau/mkdocs-mermaid2-plugin
-  [9]: https://github.com/byrnereese/mkdocs-minify-plugin
+  [Insiders]: ../insiders/index.md
+  [instant loading]: ../setup/setting-up-navigation.md#instant-loading
+  [additional style sheets]: ../customization.md#additional-css
 
 ## Usage
 
-Mermaid diagrams are written as [code blocks][10] with the help of the
-[SuperFences][11] extension. They must be enclosed with two separate lines
-containing three backticks.
-
-  [10]: code-blocks.md
-  [11]: #superfences
-
 ### Using flowcharts
 
-[Flowcharts][12] are diagrams that represent workflows or processes. The steps
+[Flowcharts] are diagrams that represent workflows or processes. The steps
 are rendered as nodes of various kinds and are connected by edges, describing
 the necessary order of steps.
 
@@ -104,11 +79,11 @@ graph LR
   B ---->|No| E[Yay!];
 ```
 
-  [12]: https://mermaid-js.github.io/mermaid/#/flowchart
+  [Flowcharts]: https://mermaid-js.github.io/mermaid/#/flowchart
 
 ### Using sequence diagrams
 
-[Sequence diagrams][13] describe a specific scenario as sequential interactions 
+[Sequence diagrams] describe a specific scenario as sequential interactions 
 between multiple objects or actors, including the messages that are exchanged
 between those actors.
 
@@ -142,11 +117,11 @@ sequenceDiagram
   Bob-->>John: Jolly good!
 ```
 
-  [13]: https://mermaid-js.github.io/mermaid/#/sequenceDiagram
+  [Sequence diagrams]: https://mermaid-js.github.io/mermaid/#/sequenceDiagram
 
 ### Using state diagrams
 
-[State diagrams][14] are a great tool to describe the behavior of a system,
+[State diagrams] are a great tool to describe the behavior of a system,
 decomposing it into a finite number of states, and transitions between those
 states.
 
@@ -194,11 +169,11 @@ stateDiagram-v2
   }
 ```
 
-  [14]: https://mermaid-js.github.io/mermaid/#/stateDiagram
+  [State diagrams]: https://mermaid-js.github.io/mermaid/#/stateDiagram
 
 ### Using class diagrams
 
-[Class diagrams][15] are central to object oriented programing, describing the
+[Class diagrams] are central to object oriented programing, describing the
 structure of a system by modelling entities as classes and relationships between
 them.
 
@@ -266,11 +241,11 @@ classDiagram
   }
 ```
 
-  [15]: https://mermaid-js.github.io/mermaid/#/classDiagram
+  [Class diagrams]: https://mermaid-js.github.io/mermaid/#/classDiagram
 
 ### Using entity-relationship diagrams
 
-An [entity-relationship diagram][16] is composed of entity types and specifies
+An [entity-relationship diagram] is composed of entity types and specifies
 relationships that exist between entities. It describes inter-related things in
 a specific domain of knowledge.
 
@@ -294,4 +269,4 @@ erDiagram
   CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
-  [16]: https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram
+  [entity-relationship diagram]: https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram

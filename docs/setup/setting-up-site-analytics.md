@@ -6,23 +6,24 @@ template: overrides/main.html
 
 As with any other service offered on the web, understanding how your project
 documentation is actually used can be an essential success factor. Material for
-MkDocs natively integrates with [Google Analytics][1] and offers a customizable
-and extendable [cookie consent][2].
+MkDocs natively integrates with [Google Analytics] and offers a customizable
+and extendable [cookie consent][extra.consent].
 
-  [1]: https://developers.google.com/analytics
-  [2]: #cookie-consent
+  [Google Analytics]: https://developers.google.com/analytics
+  [extra.consent]: #cookie-consent
 
 ## Configuration
 
 ### Google Analytics
 
-[:octicons-file-code-24: Source][3] · :octicons-milestone-24: Default: _none_
+[:octicons-tag-24: 7.1.8][Google Analytics support] ·
+:octicons-milestone-24: Default: _none_
 
 Material for MkDocs integrates with both, Google Analytics 4 and the now phasing
-out Universal Analytics (`UA-*`). Depending on the prefix of the property, add
-the following to `mkdocs.yml`:
+out Universal Analytics. Depending on the given property prefix, add the
+following lines to `mkdocs.yml`:
 
-=== "Google Analytics 4"
+=== ":material-google-analytics: Google Analytics 4"
 
     ``` yaml
     extra:
@@ -31,7 +32,7 @@ the following to `mkdocs.yml`:
         property: G-XXXXXXXXXX
     ```
 
-=== "Universal Analytics"
+=== ":material-google-analytics: Universal Analytics"
 
     ``` yaml
     extra:
@@ -40,34 +41,34 @@ the following to `mkdocs.yml`:
         property: UA-XXXXXXXX-X
     ```
 
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/integrations/analytics.html
+  [Google Analytics support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.8
 
 #### Site search tracking
 
-Besides basic page views, _site search_ can also be tracked to understand better
+Besides basic page views, site search can also be tracked to understand better
 how people use your documentation and what they expect to find. To enable
 search tracking:
 
-1. Go to your Google Analytics __admin settings__
-2. Select the property for the respective tracking code
-3. Go to the __view settings__ tab.
-4. Scroll down and enable __site search settings__
-5. Set the __query parameter__ to `q`.
+1.  Go to your Google Analytics __admin settings__
+2.  Select the property for the respective tracking code
+3.  Go to the __view settings__ tab.
+4.  Scroll down and enable __site search settings__
+5.  Set the __query parameter__ to `q`.
 
-_Site search tracking is not supported with Google Analytics 4 due to the much
-more complicated manual setup. If you want to set up site search tracking
-yourself, [this tutorial][4] might be a good start._
+Site search tracking is not supported with Google Analytics 4 due to the more
+complicated manual setup. If you want to set up site search tracking yourself,
+[this tutorial][tutorial] is a good start.
 
-  [4]: https://www.analyticsmania.com/post/track-site-search-with-google-tag-manager-and-google-analytics/
+  [tutorial]: https://www.analyticsmania.com/post/track-site-search-with-google-tag-manager-and-google-analytics/
 
 ### Cookie consent
 
-[:octicons-file-code-24: Source][5] ·
-:octicons-milestone-24: Default: _none_ ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][5]{ .mdx-insiders }
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.10.0][Insiders] ·
+:octicons-milestone-24: Default: _none_
 
-Material for MkDocs ships a native and extensible cookie consent form, which
-asks the user for his consent prior to setting up analytics. Add the following
+Material for MkDocs ships a native and extensible cookie consent form which
+asks the user for his consent prior to sending any analytics. Add the following
 to `mkdocs.yml`:
 
 ``` yaml
@@ -81,15 +82,15 @@ extra:
       make our documentation better.
 ```
 
-1. You can add arbitrary HTML tags in the `description`, e.g. to link to your
-   terms of service or other parts of the site.
+1.  You can add arbitrary HTML tags in the `description`, e.g. to link to your
+    terms of service or other parts of the site.
 
 Note that both, `title` and `description`, are required. If Google Analytics was
 configured via `mkdocs.yml`, the cookie consent will automatically include a
-setting for the user to disable it. Furthermore, [custom cookies][6] can be
+setting for the user to disable it. Furthermore, [custom cookies] can be
 integrated by using the `cookies` field:
 
-===  "Change cookie name"
+===  "Custom cookie name"
 
     ``` yaml
     extra:
@@ -100,7 +101,7 @@ integrated by using the `cookies` field:
 
     1. The default name of the `analytics` cookie is `Google Analytics`.
 
-===  "Add custom cookie"
+===  "Custom cookie"
 
     ``` yaml
     extra:
@@ -115,78 +116,87 @@ integrated by using the `cookies` field:
 
 When a user first visits your site, a cookie consent form is rendered:
 
-[![Cookie consent][7]][7]
+[![extra.consent enabled]][extra.consent enabled]
 
 In order to comply with GDPR, users must be able to change their cookie settings
 at any time. This can be done by creating a simple link as part of any document,
-e.g. privacy policy:
+e.g. your privacy policy:
 
 ``` markdown
 [Change cookie settings](#__consent){ .md-button }
 ```
 
-  [5]: ../insiders/index.md
-  [6]: #custom-cookies
-  [7]: ../assets/screenshots/consent.png
+  [Insiders]: ../insiders/index.md
+  [custom cookies]: #custom-cookies
+  [extra.consent enabled]: ../assets/screenshots/consent.png
 
 ## Customization
 
 ### Custom site analytics
 
-[:octicons-file-code-24: Source][3] ·
-:octicons-mortar-board-24: Difficulty: _moderate_
-
 In order to integrate another analytics service provider offering a 
-JavaScript-based tracking solution, you can [extend the theme][8] and add a new 
-`custom.html` partial [here][9]. The name of the partial can then be used to 
-configure the custom integration from `mkdocs.yml`:
+JavaScript-based tracking solution, just follow the guide on [theme extension]
+and create a new partial in the `overrides` folder. The name of the partial is
+used to configure the custom integration via `mkdocs.yml`:
 
-``` yaml
-extra:
-  analytics:
-    provider: custom # (1)
-    key: value # (2)
-```
+=== ":octicons-file-code-16: partials/integrations/analytics/custom.html"
 
-1. Of course, you can change the name to the partial to anything you like.
-2. You can add arbitrary `key` and `value` combinations to configure your custom
-   integration. This is especially useful if you're sharing the custom
-   integration across multiple repositories.
+    ``` html
+    <script>
+      /* Add custom analytics integration here, e.g. */
+      var property = "{{ config.extra.analytics.property }}" // (1)
 
-  [8]: ../customization.md#extending-the-theme
-  [9]: https://github.com/squidfunk/mkdocs-material/tree/master/src/partials/integrations/analytics
+      /* Wait for page to load and application to mount */
+      document.addEventListener("DOMContentLoaded", function() {
+        location$.subscribe(function(url) {
+          /* Add custom page event tracking here */ // (2)
+        })
+      })
+    </script>
+    ```
 
-#### Instant loading
+    1.  As an example, this variable receives the value set in `mkdocs.yml`,
+        which is `"foobar"` for `property`.
+    2.  If you're using [instant loading], you can use the `location$`
+        observable to listen for navigation events, which always emits the
+        current `URL`.
 
-If you're using [instant loading][10], you may use the `location$` observable,
-which will emit the current `URL` to listen for navigation events and register
-a page view event with:
+=== ":octicons-file-code-16: mkdocs.yml"
 
-``` js
-location$.subscribe(function(url) {
-  /* Track a page event */
-})
-```
+    ``` yaml
+    extra:
+      analytics:
+        provider: custom
+        property: foobar # (1)
+    ```
 
-Note that this must be integrated with [additional JavaScript][11].
+    1.  You can add arbitrary key-value combinations to configure your
+        custom integration. This is especially useful if you're sharing the
+        custom integration across multiple repositories.
 
-  [10]: setting-up-navigation.md#instant-loading
-  [11]: ../customization.md#additional-javascript
+  [theme extension]: ../customization.md#extending-the-theme
+  [instant loading]: setting-up-navigation.md#instant-loading
 
 ### Custom cookies
 
-[:octicons-file-code-24: Source][3] ·
-:octicons-mortar-board-24: Difficulty: _moderate_
+If you've customized the [cookie consent][extra.consent] and added a `custom`
+cookie, the user will be prompted to accept your custom cookie. Use [additional
+JavaScript] to check whether the user accepted it:
 
-If you've customized the [cookie consent][12] and added a `custom` cookie, the
-user will be prompted to accept your custom cookie. Use
-[additional JavaScript][11] to check whether the user accepted it:
+=== ":octicons-file-code-16: docs/javascripts/consent.js"
 
-``` js
-var consent = __md_get("__consent")
-if (consent && consent.custom) {
-  /* The user accepted the cookie */
-}
-```
+    ``` js
+    var consent = __md_get("__consent")
+    if (consent && consent.custom) {
+      /* The user accepted the cookie */
+    }
+    ```
 
-  [12]: #cookie-consent
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_javascript:
+      - javascripts/consent.js
+    ```
+
+  [additional JavaScript]: ../customization.md#additional-javascript

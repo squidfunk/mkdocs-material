@@ -37,7 +37,7 @@ plugins:
 
 The following options are supported:
 
-`lang`{ #lang }
+`lang`{ #search-lang }
 
 :   :octicons-milestone-24: Default: _automatically set_ – This option allows
     to include the language-specific stemmers provided by [lunr-languages][5].
@@ -65,7 +65,7 @@ The following options are supported:
 
     The following languages are supported:
 
-    <div class="mdx-columns" markdown="1">
+    <div class="mdx-columns" markdown>
 
     - `ar` – Arabic
     - `da` – Danish
@@ -98,7 +98,7 @@ The following options are supported:
         JavaScript payload by around 20kb (before `gzip`) and by another 15-30kb
         per language.
 
-`separator`{ #separator }
+`separator`{ #search-separator }
 
 :   :octicons-milestone-24: Default: _automatically set_ – The separator for
     indexing and query tokenization can be customized, making it possible to
@@ -111,7 +111,7 @@ The following options are supported:
           separator: '[\s\-\.]+'
     ```
 
-~~`prebuild_index`~~{ #prebuild-index }[^1]
+~~`prebuild_index`~~{ #search-prebuild-index }[^1]
 
 :   :octicons-milestone-24: Default: `false` · :octicons-archive-24: Deprecated
     – MkDocs can generate a [prebuilt index][7] of all pages during
@@ -146,11 +146,11 @@ Use them at your own risk._
 
 ### Search suggestions
 
-[:octicons-file-code-24: Source][8] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-beaker-24: Experimental ·
+[:octicons-tag-24: 7.2.0][Search suggestions support]
 
-When _search suggestions_ are enabled, the search will display the likeliest
+When search suggestions are enabled, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
 suggestion with the ++arrow-right++ key.
 
@@ -166,17 +166,18 @@ Searching for [:octicons-search-24: search su][9] yields ^^search suggestions^^ 
 
 [![Search suggestions][10]][10]
 
+  [Search suggestions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/suggest/index.ts
   [9]: ?q=search+su
   [10]: ../assets/screenshots/search-suggestions.png
 
 ### Search highlighting
 
-[:octicons-file-code-24: Source][11] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-beaker-24: Experimental ·
+[:octicons-tag-24: 7.2.0][Search highlighting support]
 
-When _search highlighting_ is enabled and a user clicks on a search result,
+When search highlighting is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
 Add the following lines to `mkdocs.yml`:
 
@@ -190,17 +191,18 @@ Searching for [:octicons-search-24: code blocks][12] yields:
 
 [![Search highlighting][13]][13]
 
+  [Search highlighting support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [11]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/highlight/index.ts
   [12]: ../reference/code-blocks.md?h=code+blocks
   [13]: ../assets/screenshots/search-highlighting.png
 
 ### Search sharing
 
-[:octicons-file-code-24: Source][14] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-beaker-24: Experimental ·
+[:octicons-tag-24: 7.2.0][Search highlighting support]
 
-When _search sharing_ is activated, a :material-share-variant: share button is
+When search sharing is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
 search query and result. Add the following lines to `mkdocs.yml`:
 
@@ -215,6 +217,7 @@ clipboard.
 
 [![Search sharing][15]][15]
 
+  [Search sharing support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [14]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/share/index.ts
   [15]: ../assets/screenshots/search-share.png
 
@@ -245,9 +248,9 @@ For setup instructions, refer to the [official documentation][19].
 
 ### Search boosting
 
-[:octicons-file-code-24: Source][20] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
 :octicons-note-24: Metadata ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][20]{ .mdx-insiders }
+[:octicons-tag-24: insiders-2.8.0][Insiders]
 
 In order to give specific pages a higher relevance in search, [lunr][4] supports
 page-specific boosts, which can be defined for each page by leveraging the
@@ -263,14 +266,16 @@ search:
 ...
 ```
 
+  [Insiders]: ../insiders/index.md
   [20]: ../insiders/index.md
   [21]: ../reference/meta-tags.md#metadata
 
 ### Search exclusion
 
-[:octicons-file-code-24: Source][20] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+:octicons-note-24: Metadata ·
 :octicons-beaker-24: Experimental ·
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders only][20]{ .mdx-insiders }
+[:octicons-tag-24: insiders-3.1.0][Insiders]
 
 #### Excluding pages
 
@@ -395,19 +400,19 @@ export function defaultTransform(query: string): string {
 }
 ```
 
-1. Search for terms in quotation marks and prepend a `+` modifier to denote
-   that the resulting document must contain all terms, converting the query
-   to an `AND` query (as opposed to the default `OR` behavior). While users
-   may expect terms enclosed in quotation marks to map to span queries, i.e.
-   for which order is important, `lunr` doesn't support them, so the best
-   we can do is to convert the terms to an `AND` query.
+1.  Search for terms in quotation marks and prepend a `+` modifier to denote
+    that the resulting document must contain all terms, converting the query
+    to an `AND` query (as opposed to the default `OR` behavior). While users
+    may expect terms enclosed in quotation marks to map to span queries, i.e.
+    for which order is important, `lunr` doesn't support them, so the best
+    we can do is to convert the terms to an `AND` query.
 
-2. Replace control characters which are not located at the beginning of the
-   query or preceded by white space, or are not followed by a non-whitespace
-   character or are at the end of the query string. Furthermore, filter
-   unmatched quotation marks.
+2.  Replace control characters which are not located at the beginning of the
+    query or preceded by white space, or are not followed by a non-whitespace
+    character or are at the end of the query string. Furthermore, filter
+    unmatched quotation marks.
 
-3. Trim excess whitespace from left and right.
+3.  Trim excess whitespace from left and right.
 
 If you want to switch to the default behavior of the `mkdocs` and `readthedocs`
 themes, both of which don't transform the query prior to submission, or
@@ -434,7 +439,7 @@ and must return the processed query string to be submitted to the search index.
 
   [23]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
   [24]: ../customization.md#extending-the-theme
-  [25]: ../customization.md#overriding-blocks-recommended
+  [25]: ../customization.md#overriding-blocks
 
 ### Custom search
 

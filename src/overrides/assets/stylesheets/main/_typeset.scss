@@ -104,6 +104,18 @@
     }
   }
 
+  // Deprecation
+  .mdx-deprecated {
+    opacity: 0.5;
+    transition: opacity 250ms;
+
+    // Deprecation on focus/hover
+    &:focus-within,
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   // Two-column layout
   .mdx-columns {
 

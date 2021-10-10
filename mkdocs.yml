@@ -51,7 +51,7 @@ theme:
   language: en
   features:
     - content.code.annotate
-    - content.tabs.link
+    # - content.tabs.link
     # - header.autohide
     # - navigation.expand
     - navigation.indexes
@@ -91,18 +91,7 @@ plugins:
   - redirects:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
-        extensions/admonition.md: reference/admonitions.md
-        extensions/codehilite.md: reference/code-blocks.md
-        extensions/footnotes.md: reference/footnotes.md
-        extensions/metadata.md: reference/meta-tags.md
-        extensions/permalinks.md: setup/setting-up-navigation.md #permalink
-        extensions/pymdown.md: reference/admonitions.md
-        plugins/revision-date.md: setup/adding-a-git-repository.md #revision-date
-        plugins/search.md: setup/setting-up-site-search.md
-        releases/4.md: upgrading.md #upgrading-from-4x-to-5x
-        releases/5.md: upgrading.md #upgrading-from-3x-to-4x
-        releases/changelog.md: changelog.md
-        setup/adding-social-links.md: setup/setting-up-the-footer.md
+        upgrading.md: upgrade.md
         sponsorship.md: insiders/index.md
   - minify:
       minify_html: true
@@ -174,13 +163,10 @@ nav:
     - Creating your site: creating-your-site.md
     - Publishing your site: publishing-your-site.md
     - Customization: customization.md
-    - Troubleshooting: troubleshooting.md
-    - Data privacy: data-privacy.md
     - License: license.md
-    - Releases:
-      - Changelog: changelog.md
-      - Upgrade guide: upgrading.md
-      - Deprecations: deprecations.md
+    - Changelog:
+      - changelog/index.md
+      - How to upgrade: upgrade.md
   - Setup:
     - Changing the colors: setup/changing-the-colors.md
     - Changing the fonts: setup/changing-the-fonts.md
@@ -196,6 +182,10 @@ nav:
     - Setting up the footer: setup/setting-up-the-footer.md
     - Adding a git repository: setup/adding-a-git-repository.md
     - Adding a comment system: setup/adding-a-comment-system.md
+    - Extensions:
+      - setup/extensions/index.md
+      - Python Markdown: setup/extensions/python-markdown.md
+      - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
   - Reference:
     - Abbreviations: reference/abbreviations.md
     - Admonitions: reference/admonitions.md
@@ -211,7 +201,6 @@ nav:
     - Lists: reference/lists.md
     - MathJax: reference/mathjax.md
     - Meta tags: reference/meta-tags.md
-    - Variables: reference/variables.md
   - Insiders:
     - insiders/index.md
     - Getting started:

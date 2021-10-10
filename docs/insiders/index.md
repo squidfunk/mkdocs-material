@@ -10,11 +10,11 @@ that _new features are first exclusively released to sponsors_ as part of
 __Insiders__. Read on to learn [how sponsorship works][1], and how easy it is
 to [get access to Insiders][2].
 
-<figure class="mdx-video" markdown="1">
+<figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
     <iframe src="https://streamable.com/e/ihhxw0" allowfullscreen></iframe>
   </div>
-  <figcaption markdown="1">
+  <figcaption markdown>
 
 The official documentation is built with Insiders
 [squidfunk.github.io/mkdocs-material][3]
@@ -100,7 +100,7 @@ You can cancel your sponsorship anytime.[^4]
 
 <hr />
 
-<div class="mdx-premium" markdown="1">
+<div class="mdx-premium" markdown>
 
 **Special thanks** to our **premium sponsors**:
 
@@ -135,7 +135,7 @@ You can cancel your sponsorship anytime.[^4]
 
 The following features are currently exclusively available to sponsors:
 
-<div class="mdx-columns" markdown="1">
+<div class="mdx-columns" markdown>
 
 - [x] [Brand new search plugin :material-new-box:][35]
 - [x] [Rich search previews :material-new-box:][36]
@@ -150,7 +150,7 @@ The following features are currently exclusively available to sponsors:
 - [x] [Stay on page when switching versions][28]
 - [x] [Version warning][26]
 - [x] [Custom admonition icons][31]
-- [x] [Code block annotations][25]
+- [x] [Code annotations][25]
 - [x] [Anchor tracking ][24]
 - [x] [Mermaid.js integration][27]
 
@@ -173,7 +173,7 @@ the public for general availability.
 #### $ 4,000 – Ghost Pepper
 
 - [x] [Anchor tracking][24]
-- [x] [Code block annotations][25]
+- [x] [Code annotations][25]
 - [x] [Version warning][26]
 
 [24]: ../setup/setting-up-navigation.md#anchor-tracking
@@ -197,8 +197,8 @@ the public for general availability.
 - [x] [Linking content tabs][32]
 
   [30]: ../setup/setting-up-site-search.md#search-boosting
-  [31]: ../reference/admonitions.md#changing-the-icons
-  [32]: ../reference/content-tabs.md#linking-content-tabs
+  [31]: ../reference/admonitions.md#admonition-icons
+  [32]: ../reference/content-tabs.md#linked-content-tabs
 
 #### $ 7,000 – Royal Gold
 
@@ -240,7 +240,7 @@ the public for general availability.
 
   [21]: ../setup/setting-up-navigation.md#sticky-navigation-tabs
   [22]: ../setup/setting-up-navigation.md#section-index-pages
-  [23]: ../setup/setting-up-the-footer.md#remove-generator
+  [23]: ../setup/setting-up-the-footer.md#generator-notice
 
 #### $ 2,500 – Biquinho Vermelho
 

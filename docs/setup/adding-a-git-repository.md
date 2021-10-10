@@ -11,9 +11,14 @@ documents can be linked to specific source files.
 
 ## Configuration
 
+### Repository
+
+[:octicons-tag-24: 0.1.0][repo_url support] ·
+:octicons-milestone-24: Default: _none_
+
 In order to display a link to the repository of your project as part of your
-documentation, set [`repo_url`][1] in `mkdocs.yml` to the public URL of your
-repository, e.g.:
+documentation, set [`repo_url`][repo_url] in `mkdocs.yml` to the public URL of
+your repository, e.g.:
 
 ``` yaml
 repo_url: https://github.com/squidfunk/mkdocs-material
@@ -21,35 +26,38 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 
 The link to the repository will be rendered next to the search bar on big
 screens and as part of the main navigation drawer on smaller screen sizes.
-Additionally, for GitHub and GitLab, the number of stars and forks is
-automatically requested and rendered for _public repositories_.
+Additionally, for public repositories hosted on [GitHub] or [GitLab], the
+number of stars and forks is automatically requested and rendered.
 
-  [1]: https://www.mkdocs.org/user-guide/configuration/#repo_url
+  [repo_url support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [repo_url]: https://www.mkdocs.org/user-guide/configuration/#repo_url
 
 ### Repository name
 
-[:octicons-file-code-24: Source][2] · :octicons-milestone-24: Default:
-_automatically set to_ `GitHub`, `GitLab` _or_ `Bitbucket`
+[:octicons-tag-24: 0.1.0][repo_name support] ·
+:octicons-milestone-24: Default: _automatically set to_ `GitHub`, `GitLab` _or_
+`Bitbucket`
 
 MkDocs will infer the source provider by examining the URL and try to set the
 _repository name_ automatically. If you wish to customize the name, set
-[`repo_name`][3] in `mkdocs.yml`:
+[`repo_name`][repo_name] in `mkdocs.yml`:
 
 ``` yaml
 repo_name: squidfunk/mkdocs-material
 ```
 
-  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source.html
-  [3]: https://www.mkdocs.org/user-guide/configuration/#repo_name
+  [repo_name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [repo_name]: https://www.mkdocs.org/user-guide/configuration/#repo_name
 
 ### Repository icon
 
-[:octicons-file-code-24: Source][2] · :octicons-milestone-24: Default:
-`fontawesome/brands/git-alt`
+[:octicons-tag-24: 5.0.0][icon.repo support] ·
+:octicons-milestone-24: Default:
+[`fontawesome/brands/git-alt`][icon.repo default]
 
-While the default _repository icon_ is a generic git icon, it can be set to
-[any icon bundled with the theme][4] by referencing a valid icon path in
-`mkdocs.yml`:
+While the default repository icon is a generic git icon, it can be set to
+[any icon bundled with the theme][custom icons] by referencing a valid icon
+path in `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -70,16 +78,18 @@ Some popular choices:
 - :fontawesome-brands-bitbucket: – `fontawesome/brands/bitbucket`
 - :fontawesome-solid-trash: – `fontawesome/solid/trash`
 
-  [4]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [icon.repo support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
+  [icon.repo default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/fontawesome/brands/git-alt.svg
+  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
 ### Edit button
 
-[:octicons-file-code-24: Source][5] · :octicons-milestone-24: Default:
-_automatically set_
+[:octicons-tag-24: 0.1.0][edit_uri support] ·
+:octicons-milestone-24: Default: _automatically set_
 
-If the repository URL points to a [GitHub][6], [GitLab][7] or [Bitbucket][8]
-repository, an _edit button_ is displayed at the top of each document. This
-behavior can be changed by setting [`edit_uri`][9] in `mkdocs.yml`:
+If the repository URL points to a [GitHub], [GitLab] or [Bitbucket] repository,
+an edit button is displayed at the top of each document. This behavior can be
+changed by setting [`edit_uri`][edit_uri] in `mkdocs.yml`:
 
 === "Customize edit path"
 
@@ -93,39 +103,39 @@ behavior can be changed by setting [`edit_uri`][9] in `mkdocs.yml`:
     edit_uri: ""
     ```
 
-  [5]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [6]: https://github.com/
-  [7]: https://about.gitlab.com/
-  [8]: https://bitbucket.org/
-  [9]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
+  [edit_uri support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [edit_uri]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
+  [GitHub]: https://github.com/
+  [GitLab]: https://about.gitlab.com/
+  [Bitbucket]: https://bitbucket.org/
 
 ### Revision date
 
-[:octicons-file-code-24: Source][10] ·
-[:octicons-cpu-24: Plugin][11]
+[:octicons-tag-24: 4.6.0][git-revision-date support] ·
+[:octicons-cpu-24: Plugin][git-revision-date]
 
-The [git-revision-date][10] plugin adds support for displaying the date a
-document was _last updated_ at the bottom of each page. It can be installed
+The [git-revision-date] plugin adds support for displaying the date a
+document was last updated at the bottom of each page. It can be installed
 with `pip`:
 
 ```
 pip install mkdocs-git-revision-date-plugin
 ```
 
-Then, add the following to `mkdocs.yml`:
+Then, add the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
   - git-revision-date
 ```
 
-The following options are supported:
+The following configuration options are supported:
 
-`enabled_if_env`{ #enabled_if_env }
+`enabled_if_env`{ #enabled-if-env }
 
-:   :octicons-milestone-24: Default: _none_ – When specified the data will only be extracted from git
-    if the environment variable exists. This makes it possible to disable
-    extraction for cases when the repository is not available:
+:   :octicons-milestone-24: Default: _none_ – When specified, the plugin will
+    only be invoked if the environment variable exists. This makes it easy to
+    disable extraction for cases when the repository is not available:
 
     ``` yaml
     plugins:
@@ -133,21 +143,21 @@ The following options are supported:
           enabled_if_env: CI
     ```
 
-_Material for MkDocs doesn't provide official support for the other options of
-this plugin, so they may be supported but might yield unexpected results.
-Use them at your own risk._
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
 
-  [10]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/source-date.html
-  [11]: https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin
+  [git-revision-date support]: https://github.com/squidfunk/mkdocs-material/releases/tag/4.6.0
+  [git-revision-date]: https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin
 
 ### Revision date, localized
 
-[:octicons-file-code-24: Source][10] ·
-[:octicons-cpu-24: Plugin][12]
+[:octicons-tag-24: 4.6.0][git-revision-date-localized support] ·
+[:octicons-cpu-24: Plugin][git-revision-date-localized]
 
-Similarly, the [git-revision-date-localized][12] plugin adds support for adding
-a localized _updated at_ and _created at_ date at the bottom of each page. It
-can be installed with `pip`:
+Similarly, the [git-revision-date-localized] plugin adds support for adding
+a localized update and creation date at the bottom of each page. It can be
+installed with `pip`:
 
 ```
 pip install mkdocs-git-revision-date-localized-plugin
@@ -160,7 +170,7 @@ plugins:
   - git-revision-date-localized
 ```
 
-The following options are supported:
+The following configuration options are supported:
 
 `type`{ #type }
 
@@ -174,11 +184,11 @@ The following options are supported:
           type: date
     ```
 
-`fallback_to_build_date`{ #fallback_to_build_date }
+`fallback_to_build_date`{ #fallback-to-build-date }
 
 :   :octicons-milestone-24: Default: `false` – Enables falling back to
     the time when `mkdocs build` was executed. Can be used as a fallback when
-    the build is performed outside of the git repository:
+    the build is performed outside of a git repository:
 
     ``` yaml
     plugins:
@@ -186,11 +196,11 @@ The following options are supported:
           fallback_to_build_date: true
     ```
 
-`enable_creation_date`{ #enable_creation_date }
+`enable_creation_date`{ #enable-creation-date }
 
 :   :octicons-milestone-24: Default: `false` – Enables the display of the
-    _created at_ date of the file associated with the page next to the
-    _updated at_ date at the bottom of the page:
+    creation date of the file associated with the page next to the last updated
+    date at the bottom of the page:
 
     ``` yaml
     plugins:
@@ -199,8 +209,9 @@ The following options are supported:
     ```
 
 
-_Material for MkDocs doesn't provide official support for the other options of
-this plugin, so they may be supported but might yield unexpected results.
-Use them at your own risk._
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
 
-  [12]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+  [git-revision-date-localized support]: https://github.com/squidfunk/mkdocs-material/releases/tag/4.6.0
+  [git-revision-date-localized]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin

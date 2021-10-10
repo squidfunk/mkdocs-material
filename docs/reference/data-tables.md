@@ -6,15 +6,27 @@ template: overrides/main.html
 
 Material for MkDocs defines default styles for data tables – an excellent way
 of rendering tabular data in project documentation. Furthermore, customizations
-like [sortable tables][1] can be achieved with a third-party library and some
-[additional JavaScript][2].
+like [sortable tables] can be achieved with a third-party library and some
+[additional JavaScript].
 
-  [1]: #sortable-tables
-  [2]: ../customization.md#additional-javascript 
+  [sortable tables]: #sortable-tables
+  [additional JavaScript]: ../customization.md#additional-javascript 
 
 ## Configuration
 
-None.
+This configuration enables Markdown table support, which should normally be
+enabled by default, but to be sure, add the following lines to `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - tables
+```
+
+See additional configuration options:
+
+- [Tables]
+
+  [Tables]: ../setup/extensions/python-markdown.md#tables
 
 ## Usage
 
@@ -22,7 +34,7 @@ None.
 
 Data tables can be used at any position in your project documentation and can
 contain arbitrary Markdown, including inline code blocks, as well as [icons and
-emojis][3].
+emojis].
 
 _Example_:
 
@@ -42,12 +54,12 @@ _Result_:
 | `PUT`       | :material-check-all: Update resource |
 | `DELETE`    | :material-close:     Delete resource |
 
-  [3]: icons-emojis.md
+  [icons and emojis]: icons-emojis.md
 
 ### Column alignment
 
 If you want to align a specific column to the `left`, `center` or `right`, you
-can use the [regular Markdown syntax][4] placing `:` characters at the beginning
+can use the [regular Markdown syntax] placing `:` characters at the beginning
 and/or end of the divider.
 
 === "Left"
@@ -110,17 +122,17 @@ and/or end of the divider.
     | `PUT`       | :material-check-all: Update resource |
     | `DELETE`    | :material-close:     Delete resource |
 
-  [4]: https://www.markdownguide.org/extended-syntax/#tables
+  [regular Markdown syntax]: https://www.markdownguide.org/extended-syntax/#tables
 
 ## Customization
 
 ### Sortable tables
 
-If you want to make data tables sortable, you can add [tablesort][5], which is
+If you want to make data tables sortable, you can add [tablesort], which is
 natively integrated with Material for MkDocs and will also work with [instant
-loading][6] via [additional JavaScript][2]:
+loading] via [additional JavaScript]:
 
-=== "`docs/javascripts/tables.js`"
+=== ":octicons-file-code-16: docs/javascripts/tablesort.js"
 
     ``` js
     document$.subscribe(function() {
@@ -131,17 +143,17 @@ loading][6] via [additional JavaScript][2]:
     })
     ```
 
-=== "`mkdocs.yml`"
+=== ":octicons-file-code-16: mkdocs.yml"
 
     ``` yaml
     extra_javascript:
       - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
-      - javascripts/tables.js
+      - javascripts/tablesort.js
     ```
 
-_Note that [tablesort][5] provides alternative comparison implementations like
-numbers, dates, filesizes and month names. See the official documentation for
-more information._
+Note that [tablesort] provides alternative comparison implementations like
+numbers, filesizes, dates and month names. See the [tablesort documentation]
+[tablesort] for more information.
 
 _Example_:
 
@@ -167,5 +179,5 @@ _Result_:
   new Tablesort(tables.item(tables.length - 1));
 </script>
 
-  [5]: http://tristen.ca/tablesort/demo/
-  [6]: ../setup/setting-up-navigation.md#instant-loading
+  [tablesort]: http://tristen.ca/tablesort/demo/
+  [instant loading]: ../setup/setting-up-navigation.md#instant-loading

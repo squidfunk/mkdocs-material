@@ -11,11 +11,11 @@ necessary to preserve your brand's style.
 
 ## Adding assets
 
-[MkDocs][1] provides several ways to customize a theme. In order to make a few
-tweaks to Material for MkDocs, you can just add your stylesheets and JavaScript
-files to the `docs` directory.
+[MkDocs] provides several ways to customize a theme. In order to make a few
+small tweaks to Material for MkDocs, you can just CSS and JavaScript files to
+the `docs` directory.
 
-  [1]: https://www.mkdocs.org
+  [MkDocs]: https://www.mkdocs.org
 
 ### Additional CSS
 
@@ -31,23 +31,17 @@ new stylesheet file in the `docs` directory:
 └─ mkdocs.yml
 ```
 
-Then, add the following line to `mkdocs.yml`:
+Then, add the following lines to `mkdocs.yml`:
 
 ``` yaml
 extra_css:
   - stylesheets/extra.css
 ```
 
-Spin up the [live preview server][2] and start typing your changes in your
-additional stylesheet file – you should see them almost instantly after saving.
-
-  [2]: creating-your-site.md#previewing-as-you-write
-
 ### Additional JavaScript
 
-The same is true for additional JavaScript. If you want to integrate another
-syntax highlighter or add some custom logic to your theme, create a new
-JavaScript file in the `docs` directory:
+If you want to integrate another syntax highlighter or add some custom logic to
+your theme, create a new JavaScript file in the `docs` directory:
 
 ``` sh
 .
@@ -57,30 +51,27 @@ JavaScript file in the `docs` directory:
 └─ mkdocs.yml
 ```
 
-Then, add the following line to `mkdocs.yml`:
+Then, add the following lines to `mkdocs.yml`:
 
 ``` yaml
 extra_javascript:
   - javascripts/extra.js
 ```
 
-Further assistance can be found in the [MkDocs documentation][3].
-
-  [3]: https://www.mkdocs.org/user-guide/styling-your-docs/#customizing-a-theme
-
 ## Extending the theme
 
 If you want to alter the HTML source (e.g. add or remove some parts), you can
-extend the theme. MkDocs supports [theme extension][4], an easy way to override
+extend the theme. MkDocs supports [theme extension], an easy way to override
 parts of Material for MkDocs without forking from git. This ensures that you
 can update to the latest version more easily.
 
-  [4]: https://www.mkdocs.org/user-guide/styling-your-docs/#using-the-theme-custom_dir
+  [theme extension]: https://www.mkdocs.org/user-guide/styling-your-docs/#using-the-theme-custom_dir
 
 ### Setup and theme structure
 
 Enable Material for MkDocs as usual in `mkdocs.yml`, and create a new folder
-for `overrides` which you then reference using the `custom_dir` key:
+for `overrides` which you then reference using the [`custom_dir`][custom_dir]
+setting:
 
 ``` yaml
 theme:
@@ -90,16 +81,15 @@ theme:
 
 !!! warning "Theme extension prerequisites"
 
-    As the `custom_dir` variable is used for the theme extension process,
-    Material for MkDocs needs to be installed via `pip` and referenced with the
-    `name` parameter in `mkdocs.yml`. It will not work when cloning from `git`.
+    As the [`custom_dir`][custom_dir] setting is used for the theme extension
+    process, Material for MkDocs needs to be installed via `pip` and referenced
+    with the [`name`][name] setting in `mkdocs.yml`. It will not work when
+    cloning from `git`.
 
 The structure in the `overrides` directory must mirror the directory structure
 of the original theme, as any file in the `overrides` directory will replace the
 file with the same name which is part of the original theme. Besides, further
-assets may also be put in the `overrides` directory.
-
-The directory layout of the theme is as follows:
+assets may also be put in the `overrides` directory:
 
 ``` sh
 .
@@ -123,8 +113,7 @@ The directory layout of the theme is as follows:
 │  ├─ search.html                      # Search box
 │  ├─ social.html                      # Social links
 │  ├─ source.html                      # Repository information
-│  ├─ source-date.html                 # Last updated date
-│  ├─ source-link.html                 # Link to source file
+│  ├─ source-file.html                 # Source file information
 │  ├─ tabs.html                        # Tabs navigation
 │  ├─ tabs-item.html                   # Tabs navigation item
 │  ├─ toc.html                         # Table of contents
@@ -134,11 +123,14 @@ The directory layout of the theme is as follows:
 └─ main.html                           # Default page
 ```
 
+  [custom_dir]: https://www.mkdocs.org/user-guide/configuration/#custom_dir
+  [name]: https://www.mkdocs.org/user-guide/configuration/#name
+
 ### Overriding partials
 
 In order to override a partial, we can replace it with a file of the same name
 and location in the `overrides` directory. For example, to replace the original
-`footer.html`, create a `footer.html` file in the `overrides/partials`
+`footer.html` partial, create a new `footer.html` partial in the `overrides`
 directory:
 
 ``` sh
@@ -152,12 +144,12 @@ directory:
 MkDocs will now use the new partial when rendering the theme. This can be done
 with any file.
 
-### Overriding blocks <small>recommended</small> { data-toc-label="Overriding blocks" }
+### Overriding blocks <small>recommended</small> { #overriding-blocks data-toc-label="Overriding blocks" }
 
 Besides overriding partials, it's also possible to override (and extend)
-_template blocks_, which are defined inside the templates and wrap specific
-features. To override a block, create a `main.html` file inside the `overrides`
-directory:
+template blocks, which are defined inside the templates and wrap specific
+features. In order to set up block overrides, create a `main.html` file inside
+the `overrides` directory:
 
 ``` sh
 .
@@ -166,7 +158,7 @@ directory:
 └─ mkdocs.yml
 ```
 
-Then, e.g. to override the site title, add the following line to `main.html`:
+Then, e.g. to override the site title, add the following lines to `main.html`:
 
 ``` html
 {% extends "base.html" %}
@@ -176,7 +168,7 @@ Then, e.g. to override the site title, add the following line to `main.html`:
 {% endblock %}
 ```
 
-Material for MkDocs provides the following template blocks:
+The following template blocks are provided by the theme:
 
 | Block name        | Purpose                                         |
 |:------------------|:------------------------------------------------|
@@ -194,15 +186,10 @@ Material for MkDocs provides the following template blocks:
 | `libs`            | Wraps the JavaScript libraries (header)         |
 | `outdated`        | Wraps the version warning                       |
 | `scripts`         | Wraps the JavaScript application (footer)       |
-| `source`          | Wraps the linked source files                   |
 | `site_meta`       | Wraps the meta tags in the document head        |
 | `site_nav`        | Wraps the site navigation and table of contents |
-| `styles`          | Wraps the stylesheets (also extra sources)      |
+| `styles`          | Wraps the style sheets (also extra sources)     |
 | `tabs`            | Wraps the tabs navigation (if available)        |
-
-For more on this topic refer to the [MkDocs documentation][5].
-
-[5]: https://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
 
 #### Additional variables
 
@@ -216,11 +203,11 @@ with Material for MkDocs_ hint in the footer, add the following line to
 {% extends "base.html" %}
 
 {% set extracopyright %}
-  <!-- Add your additional information here -->
+  <!-- Add additional copyright information here -->
 {% endset %}
 ```
 
-Material for MkDocs provides the following additional variables:
+The following template variables are provided by the theme:
 
 | Block name        | Purpose                                         |
 |:------------------|:------------------------------------------------|
@@ -228,25 +215,25 @@ Material for MkDocs provides the following additional variables:
 
 ## Theme development
 
-Material for MkDocs is built on top of [TypeScript][6], [RxJS][7] and [SASS][8],
-and uses a lean, custom build process to put everything together.[^1] If you
-want to make more fundamental changes, it may be necessary to make the
-adjustments directly in the source of the theme and recompile it.
+Material for MkDocs is built on top of [TypeScript], [RxJS] and [SASS], and
+uses a lean, custom build process to put everything together.[^1] If you want
+to make more fundamental changes, it may be necessary to make the adjustments
+directly in the source of the theme and recompile it.
 
   [^1]:
-    Prior to version 7.0, the build was based on Webpack. This led to broken
-    builds due to frequent incompatibilities with loaders and plugins, so we
-    decided to swap Webpack for a leaner custom solution which is now based on
-    [RxJS][7] as the application itself. This enabled us to remove more than
-    500 dependencies (~30% less).
+    Prior to :octicons-tag-24: 7.0.0 the build was based on Webpack, resulting
+    in occasional broken builds due to incompatibilities with loaders and
+    plugins. Therefore, we decided to swap Webpack for a leaner solution which
+    is now based on [RxJS] as the application itself. This allowed for the
+    pruning of more than 500 dependencies (~30% less).
 
-  [6]: https://www.typescriptlang.org/
-  [7]: https://github.com/ReactiveX/rxjs
-  [8]: https://sass-lang.com
+  [TypeScript]: https://www.typescriptlang.org/
+  [RxJS]: https://github.com/ReactiveX/rxjs
+  [SASS]: https://sass-lang.com
 
 ### Environment setup
 
-In order to start development on Material for MkDocs, a [Node.js][9] version of
+In order to start development on Material for MkDocs, a [Node.js] version of
 at least 14 is required. First, clone the repository:
 
 ```
@@ -263,7 +250,7 @@ pip install mkdocs-redirects
 npm install
 ```
 
-  [9]: https://nodejs.org
+  [Node.js]: https://nodejs.org
 
 ### Development mode
 
@@ -273,14 +260,14 @@ Start the watcher with:
 npm start
 ```
 
-Then, in a second session, start the MkDocs live preview server with:
+Then, in a second terminal window, start the MkDocs live preview server with:
 
 ```
 mkdocs serve
 ```
 
-Point your browser to [localhost:8000][10] and you should see this documentation
-in front of you.
+Point your browser to [localhost:8000][live preview] and you should see this
+very documentation in front of you.
 
 !!! warning "Automatically generated files"
 
@@ -288,7 +275,7 @@ in front of you.
     directory are automatically generated from the `src` directory and will be
     overwritten when the theme is built.
 
-  [10]: http://localhost:8000
+  [live preview]: http://localhost:8000
 
 ### Building the theme
 
@@ -298,10 +285,7 @@ When you're finished making your changes, you can build the theme by invoking:
 npm run build
 ```
 
-This triggers the production-level compilation and minification of all
-stylesheets and JavaScript sources. When the command exits, the final files are
-located in the `material` directory. Add the `theme_dir` variable pointing to
-the aforementioned directory in the original `mkdocs.yml`.
-
-Now you can run `mkdocs build` and you should see your documentation with your
-changes to the original theme.
+This triggers the production-level compilation and minification of all style
+sheets and JavaScript files. After the command exits, the compiled files are
+located in the `material` directory. When running `mkdocs build`, you should
+now see your changes to the original theme.

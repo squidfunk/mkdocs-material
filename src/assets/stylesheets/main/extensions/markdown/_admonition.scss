@@ -150,12 +150,6 @@ $admonitions: (
         left: initial;
       }
     }
-
-    // Adjust spacing on last tabbed block container child - if the tabbed
-    // block container is the sole child, it looks better to omit the margin
-    + .tabbed-set:last-child {
-      margin-top: 0;
-    }
   }
 }
 

@@ -2,7 +2,7 @@
 template: overrides/main.html
 ---
 
-# Upgrading
+# How to upgrade
 
 Upgrade to the latest version with:
 
@@ -10,7 +10,7 @@ Upgrade to the latest version with:
 pip install --upgrade mkdocs-material
 ```
 
-Inspect the currently installed version with:
+Show the currently installed version with:
 
 ```
 pip show mkdocs-material

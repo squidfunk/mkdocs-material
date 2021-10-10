@@ -4,50 +4,38 @@ template: overrides/main.html
 
 # Abbreviations
 
-Technical documentation often incurs the usage of a lot of acronyms, which may
+Technical documentation often incurs the usage of many acronyms, which may
 need additional explanation, especially for new user of your project. For these
 matters, Material for MkDocs uses a combination of Markdown extensions to
 enable site-wide glossaries.
 
 ## Configuration
 
-### Abbreviations
-
-[:octicons-file-code-24: Source][1] · [:octicons-workflow-24: Extension][2]
-
-The [Abbreviations][2] extension, which is part of the standard Markdown
-library, allows to __add additional content to parts of the text which are then
-shown on hover__, e.g. for glossaries:
+This configuration enables abbreviations and allows to build a simple
+project-wide glossary, sourcing definitions from a central location. Add the
+following line to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
   - abbr
-```
-
-  [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_typeset.scss
-  [2]: https://python-markdown.github.io/extensions/abbreviations/
-
-### Snippets
-
-The [Snippets][3] extension, which is part of [Python Markdown Extensions][4], 
-allows to __insert content from other files__ or other, regular content, and can
-be enabled via `mkdocs.yml`:
-
-``` yaml
-markdown_extensions:
   - pymdownx.snippets
 ```
 
-  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
-  [4]: https://facelessuser.github.io/pymdown-extensions/
+See additional configuration options:
+
+- [Abbreviations]
+- [Snippets]
+
+  [Abbreviations]: ../setup/extensions/python-markdown.md#abbreviations
+  [Snippets]: ../setup/extensions/python-markdown-extensions.md#snippets
 
 ## Usage
 
 ### Adding abbreviations
 
-When the [Abbreviations][5] extension is enabled, abbreviations can be defined
-with a special syntax similar to URLs and [footnotes][6] at any point in the
-Markdown document.
+Abbreviations can be defined by using a special syntax similar to URLs and 
+[footnotes], starting with a `*` and immediately followed by the term or
+acronym to be associated in square brackets.
 
 _Example_:
 
@@ -65,26 +53,31 @@ The HTML specification is maintained by the W3C.
 *[HTML]: Hyper Text Markup Language
 *[W3C]: World Wide Web Consortium
 
-  [5]: #abbreviations_1
-  [6]: footnotes.md
+  [footnotes]: footnotes.md
 
 ### Adding a glossary
 
-When [Snippets][7] is enabled, content from other files can be embedded, which
-is especially useful to include abbreviations from a central file – a glossary –
-and embed them into any other file.
+The [Snippets] extension can be used to implement a simple glossary by moving
+all abbreviations in a dedicated file[^1], and embedding it with the
+[`--8<--` notation][Snippets notation] at the end of each document.
+
+  [^1]:
+    It's highly recommended to put the Markdown file containing the
+    abbreviations outside of the `docs` folder (here, a folder with the name 
+    `includes` is used), as MkDocs might otherwise complain about an
+    unreferenced file.
 
 _Example_:
 
-=== "`docs/page.md`"
+=== ":octicons-file-code-16: docs/example.md"
 
     ```` markdown
     The HTML specification is maintained by the W3C.
-    
+
     --8<-- "includes/abbreviations.md"
     ````
 
-=== "`includes/abbreviations.md`"
+=== ":octicons-file-code-16: includes/abbreviations.md"
 
     ```` markdown
     *[HTML]: Hyper Text Markup Language
@@ -95,8 +88,4 @@ _Result_:
 
 The HTML specification is maintained by the W3C.
 
-_Remember to locate the Markdown file containing the definitions outside of the_
-`docs` _folder (here_ `includes` _is used), or MkDocs may complain about an 
-unreferenced file._
-
-  [7]: #snippets
+  [Snippets notation]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippets-notation

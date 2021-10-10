@@ -4,7 +4,7 @@ template: overrides/main.html
 
 # Creating your site
 
-After you've [installed][1] Material for MkDocs, you can bootstrap your project 
+After you've [installed] Material for MkDocs, you can bootstrap your project 
 documentation using the `mkdocs` executable. Go to the directory where you want
 your project to be located and enter:
 
@@ -35,14 +35,14 @@ This will create the following structure:
 └─ mkdocs.yml
 ```
 
-  [1]: getting-started.md
+  [installed]: getting-started.md
 
 ## Configuration
 
 ### Minimal configuration
 
 Simply add the following lines to `mkdocs.yml` to enable the theme. Note that
-since there are several [installation methods][2], configuration might be
+since there are several [installation methods], minimal configuration might be
 slightly different:
 
 === "pip, docker"
@@ -77,53 +77,53 @@ slightly different:
         logo: logo
     ```
 
-_If you cloned Material for MkDocs from GitHub, you must list all of the themes'
-defaults, because_ [`mkdocs_theme.yml`][3] _is not loaded automatically as
-[described in the official documentation][4]._
+    When you clone from GitHub, you must list all of the themes' defaults
+    explicitly, because [`mkdocs_theme.yml`][mkdocs_theme.yml] is not
+    loaded automatically as described in the [custom theme guide].
 
-  [2]: getting-started.md#installation
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
-  [4]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
+  [installation methods]: getting-started.md#installation
+  [mkdocs_theme.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
+  [custom theme guide]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 
 ### Advanced configuration
 
-Material for MkDocs comes with many configuration options. The _setup_ section
+Material for MkDocs comes with many configuration options. The setup section
 explains in great detail how to configure and customize colors, fonts, icons
 and much more:
 
-<div class="mdx-columns" markdown="1">
+<div class="mdx-columns" markdown>
 
-- [Changing the colors][5]
-- [Changing the fonts][6]
-- [Changing the language][7]
-- [Changing the logo and icons][8]
-- [Setting up navigation][9]
-- [Setting up site search][10]
-- [Setting up site analytics][11]
-- [Setting up social cards][12]
-- [Setting up tags][13]
-- [Setting up versioning][14]
-- [Setting up the header][15]
-- [Setting up the footer][16]
-- [Adding a git repository][17]
-- [Adding a comment system][18]
+- [Changing the colors]
+- [Changing the fonts]
+- [Changing the language]
+- [Changing the logo and icons]
+- [Setting up navigation]
+- [Setting up site search]
+- [Setting up site analytics]
+- [Setting up social cards]
+- [Setting up tags]
+- [Setting up versioning]
+- [Setting up the header]
+- [Setting up the footer]
+- [Adding a git repository]
+- [Adding a comment system]
 
 </div>
 
-  [5]: setup/changing-the-colors.md
-  [6]: setup/changing-the-fonts.md
-  [7]: setup/changing-the-language.md
-  [8]: setup/changing-the-logo-and-icons.md
-  [9]: setup/setting-up-navigation.md
-  [10]: setup/setting-up-site-search.md
-  [11]: setup/setting-up-site-analytics.md
-  [12]: setup/setting-up-social-cards.md
-  [13]: setup/setting-up-tags.md
-  [14]: setup/setting-up-versioning.md
-  [15]: setup/setting-up-the-header.md
-  [16]: setup/setting-up-the-footer.md
-  [17]: setup/adding-a-git-repository.md
-  [18]: setup/adding-a-comment-system.md
+  [Changing the colors]: setup/changing-the-colors.md
+  [Changing the fonts]: setup/changing-the-fonts.md
+  [Changing the language]: setup/changing-the-language.md
+  [Changing the logo and icons]: setup/changing-the-logo-and-icons.md
+  [Setting up navigation]: setup/setting-up-navigation.md
+  [Setting up site search]: setup/setting-up-site-search.md
+  [Setting up site analytics]: setup/setting-up-site-analytics.md
+  [Setting up social cards]: setup/setting-up-social-cards.md
+  [Setting up tags]: setup/setting-up-tags.md
+  [Setting up versioning]: setup/setting-up-versioning.md
+  [Setting up the header]: setup/setting-up-the-header.md
+  [Setting up the footer]: setup/setting-up-the-footer.md
+  [Adding a git repository]: setup/adding-a-git-repository.md
+  [Adding a comment system]: setup/adding-a-comment-system.md
 
 ## Previewing as you write
 
@@ -149,12 +149,12 @@ If you're running Material for MkDocs from within Docker, use:
     docker run --rm -it -p 8000:8000 -v "%cd%":/docs squidfunk/mkdocs-material
     ```
 
-Point your browser to [localhost:8000][19] and you should see:
+Point your browser to [localhost:8000][live preview] and you should see:
 
-[![Creating your site][20]][20]
+[![Creating your site]][Creating your site]
 
-  [19]: http://localhost:8000
-  [20]: assets/screenshots/creating-your-site.png
+  [live preview]: http://localhost:8000
+  [Creating your site]: assets/screenshots/creating-your-site.png
 
 ## Building your site
 
@@ -167,8 +167,8 @@ mkdocs build
 
 The contents of this directory make up your project documentation. There's no
 need for operating a database or server, as it is completely self-contained.
-The site can be hosted on [GitHub Pages][21], [GitLab Pages][22], a CDN of your
-choice or your private web space.
+The site can be hosted on [GitHub Pages], [GitLab Pages], a CDN of your choice
+or your private web space.
 
-  [21]: publishing-your-site.md#github-pages
-  [22]: publishing-your-site.md#gitlab-pages
+  [GitHub Pages]: publishing-your-site.md#github-pages
+  [GitLab pages]: publishing-your-site.md#gitlab-pages
