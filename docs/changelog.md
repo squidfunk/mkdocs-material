@@ -6,6 +6,15 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.3.2 <small>_ October 6, 2021</small>
+
+- Deprecated prebuilding of search index
+- Improved graceful handling of broken search for `file://`
+- Added minimum Jinja version to list of requirements
+- Fixed #3071: section index pages render empty directories
+- Fixed margin issues when using navigation tabs (7.3.1 regression)
+- Fixed search placeholder sometimes being shown too early
+
 ### 7.3.1 <small>_ October 2, 2021</small>
 
 - Added new experimental content tabs implementation

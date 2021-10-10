@@ -107,12 +107,8 @@ export function mountSearch(
     tx$
       .pipe(
         filter(isSearchQueryMessage),
-        sample(rx$
-          .pipe(
-            filter(isSearchReadyMessage),
-            take(1)
-          )
-        )
+        sample(rx$.pipe(filter(isSearchReadyMessage))),
+        take(1)
       )
         .subscribe(tx$.next.bind(tx$))
 
