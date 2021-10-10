@@ -312,6 +312,9 @@ in the [color schemes][palette.scheme] section:
 === ":octicons-file-code-16: mkdocs.yml"
 
     ``` yaml
+    theme:
+      palette:
+        scheme: youtube
     extra_css:
       - stylesheets/extra.css
     ```

@@ -32,7 +32,7 @@ extra:
 
 For each entry, the following settings are available:
 
-`icon`{ #icon }
+`icon`{ #social-icon }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
     This field must point to a valid icon path referencing [any icon bundled
@@ -53,7 +53,7 @@ For each entry, the following settings are available:
   [1]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/social.html
   [2]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
-`link`{ #link }
+`link`{ #social-link }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
     This field must contain a valid relative or absolute URL including the URI 
@@ -77,7 +77,7 @@ For each entry, the following settings are available:
               link: mailto:<email-address>
         ```
 
-`name`{ #name }
+`name`{ #social-name }
 
 :   :octicons-milestone-24: Default: _domain name from_ `link`_, if available_ –
     This field is used as the link's `title` attribute and can be set to a 

@@ -132,12 +132,12 @@ The following properties must be set for each alternate language:
     the `hreflang` attribute of the link, improving discoverability via search
     engines.
 
-[![Language selector]][Language selector]
+[![Language selector preview]][Language selector preview]
 
   [alternate support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [ISO 639-1 language code]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-  [Language selector]: ../assets/screenshots/language-selection.png
+  [Language selector preview]: ../assets/screenshots/language-selection.png
 
 ### Directionality
 
@@ -180,23 +180,31 @@ Click on a tile to change the directionality:
 
 If you want to customize some of the translations for a language, just follow
 the guide on [theme extension] and create a new partial in the `overrides`
-folder. Then import the [translations] of your language as a fallback and only
+folder. Then, import the [translations] of the language as a fallback and only
 adjust the ones you want to override:
 
 === ":octicons-file-code-16: partials/languages/custom.html"
 
     ``` html
-    <!-- Import translations for your language as fallback -->
-    {% import "partials/languages/" ~ config.theme.language ~ ".html" as fallback %}
+    <!-- Import translations for language and fallback -->
+    {% import "partials/languages/de.html" as language %}
+    {% import "partials/languages/en.html" as fallback %} <!-- (1) -->
+
+    <!-- Define custom translations -->
     {% macro override(key) %}{{ {
-      "toc.title": "On this page" <!-- (1) -->
+      "toc.title": "Auf dieser Seite" <!-- (2) -->
     }[key] }}{% endmacro %}
 
     <!-- Re-export translations -->
-    {% macro t(key) %}{{ override(key) or fallback.t(key) }}{% endmacro %}
+    {% macro t(key) %}{{
+      override(key) or language(key) or fallback.t(key)
+    }}{% endmacro %}
     ```
 
-    1.  Check the [list of available languages], pick the translation you want
+    1.  Note that `en` must always be used as a fallback language, as it's the
+        default theme language.
+
+    2.  Check the [list of available languages], pick the translation you want
         to override for your language and add them here.
 
 === ":octicons-file-code-16: mkdocs.yml"

@@ -37,9 +37,9 @@ plugins:
 
 The following options are supported:
 
-`lang`{ #lang }
+`lang`{ #search-lang }
 
-:   :octicons-milestone-24: Default: _auto_ – This option allows
+:   :octicons-milestone-24: Default: _automatically set_ – This option allows
     to include the language-specific stemmers provided by [lunr-languages][5].
     Note that Material for MkDocs will set this automatically based on the
     [site language][6], but it may be overridden, e.g. to support multiple
@@ -98,9 +98,9 @@ The following options are supported:
         JavaScript payload by around 20kb (before `gzip`) and by another 15-30kb
         per language.
 
-`separator`{ #separator }
+`separator`{ #search-separator }
 
-:   :octicons-milestone-24: Default: _auto_ – The separator for
+:   :octicons-milestone-24: Default: _automatically set_ – The separator for
     indexing and query tokenization can be customized, making it possible to
     index parts of words separated by other characters than whitespace and `-`,
     e.g. by including `.`:
@@ -111,7 +111,7 @@ The following options are supported:
           separator: '[\s\-\.]+'
     ```
 
-~~`prebuild_index`~~{ #prebuild-index }[^1]
+~~`prebuild_index`~~{ #search-prebuild-index }[^1]
 
 :   :octicons-milestone-24: Default: `false` · :octicons-archive-24: Deprecated
     – MkDocs can generate a [prebuilt index][7] of all pages during

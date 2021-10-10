@@ -317,7 +317,7 @@ hide:
 Material for MkDocs includes several keyboard shortcuts that make it possible
 to navigate your project documentation via keyboard. There're two modes:
 
-`search`{ #search }
+`search`{ #mode-search }
 
 :   This mode is active when the _search is focused_. It provides several key
     bindings to make search accessible and navigable via keyboard:
@@ -326,7 +326,7 @@ to navigate your project documentation via keyboard. There're two modes:
     * ++esc++ , ++tab++ : close search dialog
     * ++enter++ : follow selected result
 
-`global`{ #global }
+`global`{ #mode-global }
 
 :   This mode is active when _search is not focussed_ and when there's no other
     focussed element that is susceptible to keyboard input. The following keys

@@ -6,21 +6,21 @@ template: overrides/main.html
 
 Material for MkDocs makes it easy to deploy multiple versions of your project
 documentation by integrating with external utilities that add those capabilities
-to MkDocs, i.e. [mike][1]. When deploying a new version, older versions of your
+to MkDocs, i.e. [mike]. When deploying a new version, older versions of your
 documentation remain untouched.
 
-  [1]: https://github.com/jimporter/mike
+  [mike]: https://github.com/jimporter/mike
 
 ## Configuration
 
 ### Versioning
 
-[:octicons-file-code-24: Source][2] ·
-[:octicons-package-24: Utility][1]
+[:octicons-tag-24: 7.0.0][version support] ·
+[:octicons-package-24: Utility][mike]
 
-[mike][1] makes it easy to deploy multiple versions of your project
-documentation. It integrates natively with Material for MkDocs and can be
-enabled via `mkdocs.yml`:
+[mike] makes it easy to deploy multiple versions of your project documentation.
+It integrates natively with Material for MkDocs and can be enabled via
+`mkdocs.yml`:
 
 ``` yaml
 extra:
@@ -28,22 +28,21 @@ extra:
     provider: mike
 ```
 
-This will render a version selector in the header next to the title of your
-project:
+This renders a version selector in the header:
 
 <figure markdown>
 
-[![Version selection][3]][3]
+[![Version selector preview]][Version selector preview]
 
   <figcaption markdown>
 
-A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-example-versioning][4]
+Check out the versioning example to see it in action –
+[squidfunk.github.io/mkdocs-material-example-versioning][version example]
 
   </figcaption>
 </figure>
 
-!!! quote "[Why use mike?][5]"
+!!! quote "[Why use mike?]"
 
     mike is built around the idea that once you've generated your docs for a
     particular version, you should never need to touch that version again. This
@@ -56,15 +55,10 @@ A demo is worth a thousand words — check it out at
     to particularly notable versions. This makes it easy to make permalinks to
     whatever version of the documentation you want to direct people to.
 
-_Note that you don't need to run_ `mike install-extras` _as noted in the
-[official documentation][6], as [mike][1] is now natively integrated with
-Material for MkDocs._
-
-  [2]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/header.html
-  [3]: ../assets/screenshots/versioning.png
-  [4]: https://squidfunk.github.io/mkdocs-material-example-versioning/
-  [5]: https://github.com/jimporter/mike#why-use-mike
-  [6]: https://github.com/jimporter/mike#usage
+  [version support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.2.0
+  [Version selector preview]: ../assets/screenshots/versioning.png
+  [version example]: https://squidfunk.github.io/mkdocs-material-example-versioning/
+  [Why use mike?]: https://github.com/jimporter/mike#why-use-mike
 
 ### Version warning
 

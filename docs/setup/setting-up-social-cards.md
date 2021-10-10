@@ -6,8 +6,8 @@ template: overrides/main.html
 
 Social cards, also known as social previews, are images that are displayed when
 a link to your project documentation is shared on social media. Material for
-MkDocs can generate beautiful social cards automatically, using the [colors][1],
-[fonts][2] and [logo][3][^1] defined in `mkdocs.yml`.
+MkDocs can generate beautiful social cards automatically, using the [colors]
+[palette.primary], [fonts][font.text] and [logo][^1] defined in `mkdocs.yml`.
 
   [^1]:
     Both types of logos, images (`theme.logo`) and icons (`theme.icon.logo`)
@@ -15,69 +15,66 @@ MkDocs can generate beautiful social cards automatically, using the [colors][1],
     color used in the header (white or black), which depends on the primary
     color.
 
-  [1]: changing-the-colors.md#primary-color
-  [2]: changing-the-fonts.md#regular-font
-  [3]: changing-the-logo-and-icons.md#logo
+  [palette.primary]: changing-the-colors.md#primary-color
+  [font.text]: changing-the-fonts.md#regular-font
+  [logo]: changing-the-logo-and-icons.md#logo
 
 ## Configuration
 
 ### Built-in social cards
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.12.0][Insiders] ·
 :octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental ·
-[:octicons-tag-24: insiders-2.12.0][Insiders]
+:octicons-beaker-24: Experimental
 
-The [built-in social cards plugin][4] generates a social card image for every
-page and adds the necessary meta tags, so it's displayed on social media when
-shared. Enable it via `mkdocs.yml`:
+The built-in social cards plugin generates a social preview image for every page
+and adds the necessary meta tags, so it's displayed on social media when shared.
+Enable it via `mkdocs.yml`:
 
 ``` yaml
 plugins:
   - social
 ```
 
-For example, the page on [setting up site analytics][5] renders as:
+For example, the page on [setting up site analytics] renders as:
 
 <figure markdown>
 
-[![Social Cards][6]][6]
+[![Social cards preview]][Social cards preview]
 
   <figcaption markdown>
 
 Want to try it out? Copy the current URL and paste it into [Twitter's Card
-validator][7] to see how social cards look in action.
+validator] to see how social cards look in action.
 
   </figcaption>
 </figure>
 
-This is a built-in plugin, which means that no third-party plugin needs to be 
-installed, as Material for MkDocs already bundles it. The following options
-are available:
+The following configuration options are available:
 
-`cards_color`{ #cards-color } :material-new-box:
+`cards_color`{ #cards-color }
 
-:   :octicons-milestone-24: Default: [`primary
-    color`][8]_ – This option specifies which colors to use for the background
-    `fill` and foreground `text` when generating the social card.
+:   :octicons-milestone-24: Default: [primary color][palette.primary] + header
+    text color – This option specifies which colors to use for the background
+    `fill` and foreground `text` when generating the social card:
 
     ``` yaml
     plugins:
       - social:
           cards_color:
-            fill: "#0FF1CE"
+            fill: "#0FF1CE" # (1)
             text: "#FFFFFF"
     ```
 
-    Note that the values for `fill` and `text` can either be HEX color values
-    (e.g. `#0FF1CE`, must be enclosed in quotes) or CSS color keywords (e.g.
-    `red`, `green`, etc.).
+    1.  Colors can either be defined as HEX colors, or as [CSS color keywords].
+        Note that HEX colors must be enclosed in quotes.
 
 `cards_directory`{ #cards-directory }
 
 :   :octicons-milestone-24: Default: `assets/images/social` – This option
-    specifies where the generated social card images will be written to. It
-    should normally not be necessary to change this option.
+    specifies where the generated social card images will be written to. It's
+    normally not necessary to change this option:
 
     ``` yaml
     plugins:
@@ -86,24 +83,23 @@ are available:
     ```
 
   [Insiders]: ../insiders/index.md
-  [4]: ../insiders/index.md
-  [5]: setting-up-site-analytics.md
-  [6]: ../assets/screenshots/social-cards.png
-  [7]: https://cards-dev.twitter.com/validator
-  [8]: changing-the-colors.md#primary-color
+  [setting up site analytics]: setting-up-site-analytics.md
+  [Social cards preview]: ../assets/screenshots/social-cards.png
+  [Twitter's Card validator]: https://cards-dev.twitter.com/validator
+  [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
 
-#### Caching
+#### Caching <small>recommended</small> { data-toc-label="Caching" }
 
-When enabled, the [social cards plugin][9] automatically fetches the fonts you
-define in `mkdocs.yml` from Google Fonts, and uses them to render the text that
-is displayed on the social card. The font files and generated cards are both
+The [built-in social cards plugin] automatically fetches the fonts you define
+in `mkdocs.yml` from Google Fonts, and uses them to render the text that is
+displayed on the social card. The font files and generated cards are both
 written to the `.cache` directory, which is used in subsequent builds to detect
 whether the social cards need to be regenerated. You might want to:
 
 1.  Ignore the `.cache` directory in your project, by adding it to `.gitignore`.
 2.  When building your site for publishing, use a build cache to save the
     `.cache` directory in between builds. Taking the example from the
-    [publishing guide][10], add the following lines:
+    [publishing guide], add the following lines:
 
     ``` yaml hl_lines="15-18"
     name: ci
@@ -128,27 +124,14 @@ whether the social cards need to be regenerated. You might want to:
             - run: mkdocs gh-deploy --force
     ```
 
-  [9]: #built-in-social-cards
-  [10]: ../publishing-your-site.md#with-github-actions
+  [built-in social cards plugin]: #built-in-social-cards
+  [publishing guide]: ../publishing-your-site.md#with-github-actions
 
-## Usage
+#### Meta tags
 
-If you want to adjust the title or set a custom description for the social card,
-you can use the [Metadata][11] extension, which takes precedence over the
-default values.
-
-- [Changing the title][12]
-- [Changing the description][13]
-
-  [11]: ../reference/meta-tags.md#metadata
-  [12]: ../reference/meta-tags.md#setting-the-page-title
-  [13]: ../reference/meta-tags.md#setting-the-page-description
-
-### Using social media meta tags
-
-The [built-in social cards plugin] generates beautiful image previews for social
-media during the build and sets all necessary `meta` tags, equivalent to the
-following two customizations:
+The [built-in social cards plugin] automatically sets all necessary `meta` tags,
+equivalent to the following two customizations, which you can set manually when
+you don't want to use it:
 
 === ":material-graph: Open Graph"
 
@@ -158,7 +141,7 @@ following two customizations:
       {% if page and page.meta and page.meta.title %}
         {% set title = title ~ " - " ~ page.meta.title %}
       {% elif page and page.title and not page.is_homepage %}
-        {% set title = title ~ " - " ~ page.title | striptags %}
+        {% set title = title ~ " - " ~ page.title %}
       {% endif %}
       <meta property="og:type" content="website" />
       <meta property="og:title" content="{{ title }}" />
@@ -179,11 +162,9 @@ following two customizations:
       {% if page and page.meta and page.meta.title %}
         {% set title = title ~ " - " ~ page.meta.title %}
       {% elif page and page.title and not page.is_homepage %}
-        {% set title = title ~ " - " ~ page.title | striptags %}
+        {% set title = title ~ " - " ~ page.title %}
       {% endif %}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="<username>" />
-      <meta name="twitter:creator" content="<username>" />
       <meta name="twitter:title" content="{{ title }}" />
       <meta name="twitter:description" content="{{ config.site_description }}" />
       <meta name="twitter:image" content="<url>" />
@@ -192,3 +173,17 @@ following two customizations:
 
   [Twitter Cards]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
   [built-in social cards plugin]: ../setup/setting-up-social-cards.md#built-in-social-cards
+
+
+## Usage
+
+If you want to adjust the title or set a custom description for the social card,
+you can use the [Metadata] extension, which takes precedence over the
+default values.
+
+- [Changing the title]
+- [Changing the description]
+
+  [Metadata]: extensions/python-markdown.md#metadata
+  [Changing the title]: ../reference/meta-tags.md#setting-the-page-title
+  [Changing the description]: ../reference/meta-tags.md#setting-the-page-description

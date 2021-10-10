@@ -299,7 +299,7 @@ will stretch to the full width of the viewport, e.g. on mobile viewports.
 Following is a list of type qualifiers provided by Material for MkDocs, whereas
 the default type, and thus fallback for unknown type qualifiers, is `note`:
 
-`note`{ #note }, ~~`seealso`~~ [^1]
+`note`{ #type-note }, ~~`seealso`~~ [^1]
 
 :   !!! note
 
@@ -307,7 +307,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`abstract`{ #abstract }, `summary`, `tldr`
+`abstract`{ #type-abstract }, `summary`, `tldr`
 
 :   !!! abstract
 
@@ -315,7 +315,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`info`{ #info }, `todo`
+`info`{ #type-info }, `todo`
 
 :   !!! info
 
@@ -323,7 +323,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`tip`{ #tip }, `hint`, `important`
+`tip`{ #type-tip }, `hint`, `important`
 
 :   !!! tip
 
@@ -331,7 +331,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`success`{ #success }, `check`, `done`
+`success`{ #type-success }, `check`, `done`
 
 :   !!! success
 
@@ -339,7 +339,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`question`{ #question }, `help`, `faq`
+`question`{ #type-question }, `help`, `faq`
 
 :   !!! question
 
@@ -347,7 +347,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`warning`{ #warning }, `caution`, `attention`
+`warning`{ #type-warning }, `caution`, `attention`
 
 :   !!! warning
 
@@ -355,7 +355,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`failure`{ #failure }, `fail`, `missing`
+`failure`{ #type-failure }, `fail`, `missing`
 
 :   !!! failure
 
@@ -363,7 +363,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`danger`{ #danger }, `error`
+`danger`{ #type-danger }, `error`
 
 :   !!! danger
 
@@ -371,7 +371,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`bug`{ #bug }
+`bug`{ #type-bug }
 
 :   !!! bug
 
@@ -379,7 +379,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`example`{ #example }
+`example`{ #type-example }
 
 :   !!! example
 
@@ -387,7 +387,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-`quote`{ #quote }, `cite`
+`quote`{ #type-quote }, `cite`
 
 :   !!! quote
 

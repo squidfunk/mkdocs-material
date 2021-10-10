@@ -154,7 +154,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`mode`{ #mode }
+`mode`{ #critic-mode }
 
 :   :octicons-milestone-24: Default: `view` – This option defines how the markup 
     should be parsed, i.e. whether to just `view` all suggested changes, or
@@ -265,7 +265,7 @@ The following configuration options are supported:
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to list folders
     with additional icon sets to be used in Markdown or `mkdocs.yml`, which is 
-    explained in more detail in the [icon customization guide].
+    explained in more detail in the [icon customization guide]:
 
     ``` yaml
     markdown_extensions:
@@ -318,7 +318,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`use_pygments`{ #use-pygments }
+`use_pygments`{ #highlight-use-pygments }
 
 :   :octicons-milestone-24: Default: `true` – This option allows to control
     whether highlighting should be carried out during build time using
@@ -365,7 +365,7 @@ The following configuration options are supported:
 
         Note that [Highlight.js] has no affiliation with the Highlight extension.
 
-`linenums`{ #linenums }
+`linenums`{ #highlight-linenums }
 
 :   :octicons-milestone-24: Default: `false` – This option will add line numbers
     to _all_ code blocks. If you wish to add line numbers to _some_, but not all
@@ -379,7 +379,7 @@ The following configuration options are supported:
           linenums: true
     ```
 
-`linenums_style`{ #linenums-style }
+`linenums_style`{ #highlight-linenums-style }
 
 :   :octicons-milestone-24: Default: `table` – The [Highlight] extension
     provides three ways to add line numbers, all of which are supported by
@@ -544,7 +544,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`custom_fences`{ #custom-fences }
+`custom_fences`{ #superfences-custom-fences }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to define a
     handler for custom fences, e.g. to preserve the definitions of [Mermaid.js]
@@ -603,7 +603,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`alternate_style`{ #alternate-style }
+`alternate_style`{ #tabbed-alternate-style }
 
 :   :octicons-milestone-24: Default: `false` · [:octicons-tag-24: 7.3.1]
     [Tabbed alternate support] – This option enables the [alternate style] of
@@ -652,7 +652,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`custom_checkbox`{ #custom-checkbox }
+`custom_checkbox`{ #tasklist-custom-checkbox }
 
 :   :octicons-milestone-24: Default: `false` · This option toggles the rendering
     style of checkboxes, replacing native checkbox styles with beautiful icons, 
@@ -664,7 +664,7 @@ The following configuration options are supported:
           custom_checkbox: true
     ```
 
-`clickable_checkbox`{ #clickable-checkbox }
+`clickable_checkbox`{ #tasklist-clickable-checkbox }
 
 :   :octicons-milestone-24: Default: `false` · This option toggles whether
     checkboxes are clickable. As the state is not persisted, the use of this 

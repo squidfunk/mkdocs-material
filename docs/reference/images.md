@@ -120,16 +120,10 @@ _Result_:
 
 Modern browsers provide [native support for lazy-loading images][lazy-loading]
 through the `loading=lazy` directive, which degrades to eager-loading in
-browsers without support
-
-_Example_:
+browsers without support:
 
 ``` markdown
 ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ loading=lazy }
 ```
-
-_Result_:
-
-![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ loading=lazy width=300 }
 
   [lazy-loading]: https://caniuse.com/#feat=loading-lazy-attr
