@@ -39,7 +39,7 @@ The following options are supported:
 
 `lang`{ #lang }
 
-:   :octicons-milestone-24: Default: _automatically set_ – This option allows
+:   :octicons-milestone-24: Default: _auto_ – This option allows
     to include the language-specific stemmers provided by [lunr-languages][5].
     Note that Material for MkDocs will set this automatically based on the
     [site language][6], but it may be overridden, e.g. to support multiple
@@ -100,7 +100,7 @@ The following options are supported:
 
 `separator`{ #separator }
 
-:   :octicons-milestone-24: Default: _automatically set_ – The separator for
+:   :octicons-milestone-24: Default: _auto_ – The separator for
     indexing and query tokenization can be customized, making it possible to
     index parts of words separated by other characters than whitespace and `-`,
     e.g. by including `.`:
@@ -148,7 +148,7 @@ Use them at your own risk._
 
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-tag-24: 7.2.0 ... present][Search suggestions support]
+[:octicons-tag-24: 7.2.0][Search suggestions support]
 
 When _search suggestions_ are enabled, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
@@ -175,7 +175,7 @@ Searching for [:octicons-search-24: search su][9] yields ^^search suggestions^^ 
 
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-tag-24: 7.2.0 ... present][Search highlighting support]
+[:octicons-tag-24: 7.2.0][Search highlighting support]
 
 When _search highlighting_ is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
@@ -200,7 +200,7 @@ Searching for [:octicons-search-24: code blocks][12] yields:
 
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental ·
-[:octicons-tag-24: 7.2.0 ... present][Search highlighting support]
+[:octicons-tag-24: 7.2.0][Search highlighting support]
 
 When _search sharing_ is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
@@ -250,7 +250,7 @@ For setup instructions, refer to the [official documentation][19].
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
 :octicons-note-24: Metadata ·
-[:octicons-tag-24: insiders-2.8.0 ... present][Insiders]
+[:octicons-tag-24: insiders-2.8.0][Insiders]
 
 In order to give specific pages a higher relevance in search, [lunr][4] supports
 page-specific boosts, which can be defined for each page by leveraging the
@@ -275,7 +275,7 @@ search:
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
 :octicons-note-24: Metadata ·
 :octicons-beaker-24: Experimental ·
-[:octicons-tag-24: insiders-3.1.0 ... present][Insiders]
+[:octicons-tag-24: insiders-3.1.0][Insiders]
 
 #### Excluding pages
 

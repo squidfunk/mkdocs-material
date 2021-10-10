@@ -14,8 +14,8 @@ popular and flexible solution for drawing diagrams.
 ## Configuration
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-:octicons-beaker-24: Experimental ·
-[:octicons-tag-24: insiders-1.15.0 ... present][Insiders]
+[:octicons-tag-24: insiders-1.15.0][Insiders] ·
+:octicons-beaker-24: Experimental
 
 This configuration enables native support for [Mermaid.js] diagrams. Material
 for MkDocs will automatically initialize the JavaScript runtime when a page 

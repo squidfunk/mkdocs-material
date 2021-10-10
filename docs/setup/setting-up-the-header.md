@@ -17,7 +17,7 @@ It also includes the [search bar][1] and a place to display your project's
 ### Automatic hiding
 
 :octicons-unlock-24: Feature flag ·
-[:octicons-tag-24: 6.2.0 ... present][Automatic hiding support]
+[:octicons-tag-24: 6.2.0][Automatic hiding support]
 
 When _autohiding_ is enabled, the header is automatically hidden when the
 user scrolls past a certain threshold, leaving more space for content. Add the
@@ -36,7 +36,7 @@ theme:
 ### Announcement bar
 
 :octicons-file-symlink-file-24: Customization ·
-[:octicons-tag-24: 5.0.0 ... present][Announcement bar support]
+[:octicons-tag-24: 5.0.0][Announcement bar support]
 
 Material for MkDocs includes an announcement bar, which is the perfect place to
 display project news or other important information to the user. When the user

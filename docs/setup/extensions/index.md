@@ -11,8 +11,8 @@ are two packages that enhance the Markdown writing experience, adding useful
 syntax extensions for technical writing.
 
   [John Gruber's Markdown]: https://daringfireball.net/projects/markdown/
-  [Python Markdown]: #python-markdown.md
-  [Python Markdown Extensions]: #python-markdown-extensions.md
+  [Python Markdown]: python-markdown.md
+  [Python Markdown Extensions]: python-markdown-extensions.md
 
 ## Supported extensions
 

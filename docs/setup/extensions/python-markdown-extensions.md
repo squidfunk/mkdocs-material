@@ -15,8 +15,8 @@ installed with a supported version.
 
 ### Arithmatex
 
-[:octicons-workflow-24: Extension][Arithmatex] ·
-[:octicons-tag-24: 1.0.0 ... present][Arithmatex support]
+[:octicons-tag-24: 1.0.0][Arithmatex support] ·
+[:octicons-workflow-24: Extension][Arithmatex]
 
 The [Arithmatex] extension allows for rendering of block and inline block
 equations and integrates seamlessly with [MathJax][^1] – a library for
@@ -87,8 +87,8 @@ See reference for usage:
 
 ### BetterEm
 
-[:octicons-workflow-24: Extension][BetterEm] ·
-[:octicons-tag-24: 0.1.0 ... present][BetterEm support]
+[:octicons-tag-24: 0.1.0][BetterEm support] ·
+[:octicons-workflow-24: Extension][BetterEm]
 
 The [BetterEm] extension improves the detection of Markup to emphasize text
 in Markdown using special characters, i.e. for `**bold**` and `_italic_`
@@ -108,8 +108,8 @@ documentation][BetterEm] for more information.
 
 ### Caret, Mark & Tilde
 
-[:octicons-workflow-24: Extension][Caret] ·
-[:octicons-tag-24: 1.0.0 ... present][Caret support]
+[:octicons-tag-24: 1.0.0][Caret support] ·
+[:octicons-workflow-24: Extension][Caret]
 
 The [Caret], [Mark] and [Tilde] extensions add the ability to highlight text
 and define sub- and superscript using a simple syntax. Enable them together
@@ -140,8 +140,8 @@ See reference for usage:
 
 ### Critic
 
-[:octicons-workflow-24: Extension][Critic] ·
-[:octicons-tag-24: 1.0.0 ... present][Critic support]
+[:octicons-tag-24: 1.0.0][Critic support] ·
+[:octicons-workflow-24: Extension][Critic]
 
 The [Critic] extension allows for the usage of [Critic Markup] to highlight
 added, deleted or updated sections in a document, i.e. for tracking changes in
@@ -195,8 +195,8 @@ See reference for usage:
 
 ### Details
 
-[:octicons-workflow-24: Extension][Details] ·
-[:octicons-tag-24: 1.9.0 ... present][Details support]
+[:octicons-tag-24: 1.9.0][Details support] ·
+[:octicons-workflow-24: Extension][Details]
 
 The [Details] extension supercharges the [Admonition] extension, making the
 resulting _call-outs_ collapsible, allowing them to be opened and closed by the
@@ -218,8 +218,8 @@ No configuration options are available. See reference for usage:
 
 ### Emoji
 
-[:octicons-workflow-24: Extension][Emoji] ·
-[:octicons-tag-24: 1.0.0 ... present][Emoji support]
+[:octicons-tag-24: 1.0.0][Emoji support] ·
+[:octicons-workflow-24: Extension][Emoji]
 
 The [Emoji] extension automatically inlines bundled and custom icons and emojis
 in `*.svg` file format into the resulting HTML page. Enable it via `mkdocs.yml`:
@@ -297,13 +297,14 @@ See reference for usage:
 
 ### Highlight
 
+[:octicons-tag-24: 5.0.0][Highlight support] ·
 [:octicons-workflow-24: Extension][Highlight] ·
-[:octicons-tag-24: 5.0.0 ... present][Highlight support] ·
 :octicons-zap-24: Supersedes [CodeHilite]
 
 The [Highlight] extension adds support for syntax highlighting of code blocks
-(with the help of [SuperFences][SuperFences #]) and inline code blocks (with
-the help of [InlineHilite][InlineHilite #]). Enable it via `mkdocs.yml`:
+(with the help of [SuperFences][pymdownx.superfences]) and inline code blocks
+(with the help of [InlineHilite][pymdownx.inlinehilite]). Enable it via
+`mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -311,7 +312,7 @@ markdown_extensions:
   - pymdownx.superfences # (1)
 ```
 
-1.  [Highlight] is used by the [SuperFences][SuperFences #] extension to
+1.  [Highlight] is used by the [SuperFences][pymdownx.superfences] extension to
     perform syntax highlighting on code blocks, not the other way round, which
     is why this extension also needs to be enabled.
 
@@ -410,8 +411,8 @@ See reference for usage:
   [Highlight]: https://facelessuser.github.io/pymdown-extensions/extensions/highlight/
   [Highlight support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [CodeHilite]: python-markdown.md#codehilite
-  [SuperFences #]: #superfences
-  [InlineHilite #]: #inlinehilite
+  [pymdownx.superfences]: #superfences
+  [pymdownx.inlinehilite]: #inlinehilite
   [Pygments]: https://pygments.org
   [additional CSS]: ../../customization.md#additional-css
   [Highlight.js]: https://highlightjs.org/
@@ -422,12 +423,12 @@ See reference for usage:
 
 ### InlineHilite
 
-[:octicons-workflow-24: Extension][InlineHilite] ·
-[:octicons-tag-24: 5.0.0 ... present][InlineHilite support]
+[:octicons-tag-24: 5.0.0][InlineHilite support] ·
+[:octicons-workflow-24: Extension][InlineHilite]
 
 The [InlineHilite] extension add support for syntax highlighting of inline code 
-blocks. It's built on top of the [Highlight][Highlight #] extension, from which
-it sources its configuration. Enable it via `mkdocs.yml`:
+blocks. It's built on top of the [Highlight][pymdownx.highlight] extension, from
+which it sources its configuration. Enable it via `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -447,13 +448,13 @@ See reference for usage:
   [InlineHilite]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
   [InlineHilite support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [InlineHilite options]: https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/#options
-  [Highlight #]: #highlight
+  [pymdownx.highlight]: #highlight
   [Highlighting inline code blocks]: ../../reference/code-blocks.md#highlighting-inline-code-blocks
 
 ### Keys
 
-[:octicons-workflow-24: Extension][Keys] ·
-[:octicons-tag-24: 1.0.0 ... present][Keys support]
+[:octicons-tag-24: 1.0.0][Keys support] ·
+[:octicons-workflow-24: Extension][Keys]
 
 The [Keys] extension adds a simple syntax to allow for the rendering of keyboard 
 keys and combinations, e.g. ++ctrl+alt+del++. Enable it via `mkdocs.yml`:
@@ -479,8 +480,8 @@ See reference for usage:
 
 ### SmartSymbols
 
-[:octicons-workflow-24: Extension][SmartSymbols] ·
-[:octicons-tag-24: 0.1.0 ... present][SmartSymbols support]
+[:octicons-tag-24: 0.1.0][SmartSymbols support] ·
+[:octicons-workflow-24: Extension][SmartSymbols]
 
 The [SmartSymbols] extension converts some sequences of characters into their 
 corresponding symbols, e.h. copyright symbols or fractions. Enable it via
@@ -500,8 +501,8 @@ documentation][SmartSymbols] for guidance.
 
 ### Snippets
 
-[:octicons-workflow-24: Extension][Snippets] ·
-[:octicons-tag-24: 0.1.0 ... present][Snippets support]
+[:octicons-tag-24: 0.1.0][Snippets support] ·
+[:octicons-workflow-24: Extension][Snippets]
 
 The [Snippets] extension adds the ability to embed content from arbitrary files
 into a document, including other documents or source files, by using a simple
@@ -528,8 +529,8 @@ See reference for usage:
 
 ### SuperFences
 
+[:octicons-tag-24: 0.1.0][SuperFences support] ·
 [:octicons-workflow-24: Extension][SuperFences] ·
-[:octicons-tag-24: 0.1.0 ... present][SuperFences support] ·
 :octicons-zap-24: Supersedes [Fenced Code Blocks]
 
 The [SuperFences] extension allows for arbitrary nesting of code and content
@@ -587,8 +588,8 @@ See reference for usage:
 
 ### Tabbed
 
-[:octicons-workflow-24: Extension][Tabbed] ·
-[:octicons-tag-24: 5.0.0 ... present][Tabbed support]
+[:octicons-tag-24: 5.0.0][Tabbed support] ·
+[:octicons-workflow-24: Extension][Tabbed]
 
 The [Tabbed] extension allows the usage of content tabs, a simple way to group
 related content and code blocks under accessible tabs. Enable it via
@@ -636,8 +637,8 @@ See reference for usage:
 
 ### Tasklist
 
-[:octicons-workflow-24: Extension][Tasklist] ·
-[:octicons-tag-24: 1.0.0 ... present][Tasklist support]
+[:octicons-tag-24: 1.0.0][Tasklist support] ·
+[:octicons-workflow-24: Extension][Tasklist]
 
 The [Tasklist] extension allows for the usage of [GitHub Flavored Markdown]
 inspired [task lists][Tasklist specification], following the same syntactical
@@ -686,6 +687,5 @@ See reference for usage:
   [Tasklist]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
   [Tasklist support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [GitHub Flavored Markdown]: https://github.github.com/gfm/
-  [Tasklist #]: #tasklist
   [Tasklist specification]: https://github.github.com/gfm/#task-list-items-extension-
   [Using task lists]: ../../reference/lists.md#using-task-lists

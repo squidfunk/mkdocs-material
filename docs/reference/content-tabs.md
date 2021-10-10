@@ -33,9 +33,9 @@ See additional configuration options:
 ### Linked content tabs
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.9.0][Insiders] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-tag-24: insiders-2.9.0 ... present][Insiders]
+:octicons-beaker-24: Experimental
 
 When enabled, all content tabs across the whole documentation site will be
 linked and switch to the same label when the user clicks on a tab. Add the 
@@ -54,16 +54,16 @@ integrated with [instant loading] and persisted across page loads.
 
 === ":octicons-check-circle-fill-16: Enabled"
 
-    [![linking enabled]][linking enabled]
+    [![content.tabs.link enabled]][content.tabs.link enabled]
 
 === ":octicons-skip-16: Disabled"
 
-    [![linking disabled]][linking disabled]
+    [![content.tabs.link disabled]][content.tabs.link disabled]
 
   [Insiders]: ../insiders/index.md
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
-  [linking enabled]: ../assets/screenshots/content-tabs-link.png
-  [linking disabled]: ../assets/screenshots/content-tabs.png
+  [content.tabs.link enabled]: ../assets/screenshots/content-tabs-link.png
+  [content.tabs.link disabled]: ../assets/screenshots/content-tabs.png
 
 ## Usage
 

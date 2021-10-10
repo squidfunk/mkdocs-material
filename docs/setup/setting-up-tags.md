@@ -16,7 +16,7 @@ can help to discover relevant information faster.
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental ·
-[:octicons-tag-24: insiders-2.7.0 ... present][Insiders]
+[:octicons-tag-24: insiders-2.7.0][Insiders]
 
 The [built-in tags plugin][1] adds the ability to categorize any page with tags
 as part of the front matter of the page. In order to add support for tags, add

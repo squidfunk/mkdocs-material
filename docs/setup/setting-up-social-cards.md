@@ -26,7 +26,7 @@ MkDocs can generate beautiful social cards automatically, using the [colors][1],
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental ·
-[:octicons-tag-24: insiders-2.12.0 ... present][Insiders]
+[:octicons-tag-24: insiders-2.12.0][Insiders]
 
 The [built-in social cards plugin][4] generates a social card image for every
 page and adds the necessary meta tags, so it's displayed on social media when
@@ -57,8 +57,8 @@ are available:
 
 `cards_color`{ #cards-color } :material-new-box:
 
-:   :octicons-milestone-24: Default: _automatically set based on [primary
-    color][8]_ – This option specifies which colors to use for the background
+:   :octicons-milestone-24: Default: [`primary
+    color`][8]_ – This option specifies which colors to use for the background
     `fill` and foreground `text` when generating the social card.
 
     ``` yaml

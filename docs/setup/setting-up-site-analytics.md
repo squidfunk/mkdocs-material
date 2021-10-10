@@ -18,7 +18,7 @@ and extendable [cookie consent][2].
 
 :octicons-hash-24: Setting ·
 :octicons-milestone-24: Default: _none_ ·
-[:octicons-tag-24: 7.1.8 ... present][Google Analytics support]
+[:octicons-tag-24: 7.1.8][Google Analytics support]
 
 Material for MkDocs integrates with both, Google Analytics 4 and the now phasing
 out Universal Analytics (`UA-*`). Depending on the prefix of the property, add
@@ -68,7 +68,7 @@ yourself, [this tutorial][4] might be a good start._
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
 :octicons-hash-24: Setting ·
 :octicons-milestone-24: Default: _none_ ·
-[:octicons-tag-24: insiders-2.10.0 ... present][Insiders]
+[:octicons-tag-24: insiders-2.10.0][Insiders]
 
 Material for MkDocs ships a native and extensible cookie consent form, which
 asks the user for his consent prior to setting up analytics. Add the following

@@ -34,9 +34,8 @@ See additional configuration options:
 
 ### Setting the page title
 
-When [Metadata] is enabled, the page title can be overridden on a per-document
-basis with custom front matter. Add the following lines at the top of a Markdown
-file:
+When [Metadata] is enabled, the page title can be overridden for a document with
+some custom front matter. Add the following lines at the top of a Markdown file:
 
 ``` bash
 ---
@@ -57,9 +56,9 @@ title: Lorem ipsum dolor sit amet # (1)
 
 ### Setting the page description
 
-When [Metadata] is enabled, the page description can also be overridden on a
-per-document basis with custom front matter. Add the following lines at the top
-of a Markdown file:
+When [Metadata] is enabled, the page description can be overridden for a
+document with custom front matter. Add the following lines at the top of a
+Markdown file:
 
 ``` bash
 ---
@@ -77,8 +76,8 @@ document `head` for the current page to the provided value.
 
 ### Adding a web app manifest
 
+[:octicons-tag-24: 3.1.0][manifest support] ·
 :octicons-archive-24: Deprecated ·
-[:octicons-tag-24: 3.1.0 ... present][web app manifest support] ·
 :octicons-trash-24: 8.0.0
 
 A [web app manifest] is a simple JSON file that specifies how your web
@@ -94,7 +93,7 @@ extra:
     can be achieved with [theme extension].
 
   [web app manifest]: https://developers.google.com/web/fundamentals/web-app-manifest/
-  [web app manifest support]: https://github.com/squidfunk/mkdocs-material/releases/tag/3.1.0
+  [manifest support]: https://github.com/squidfunk/mkdocs-material/releases/tag/3.1.0
   [theme extension]: ../customization.md#extending-the-theme
 
 </div>

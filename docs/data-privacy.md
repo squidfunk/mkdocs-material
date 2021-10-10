@@ -19,7 +19,7 @@ CDN, which may be in breach with GDPR. The usage of Google's CDN can be [easily
 disabled][3] via `mkdocs.yml`.
 
   [2]: setup/changing-the-fonts.md
-  [3]: setup/changing-the-fonts.md#disabling-font-loading
+  [3]: setup/changing-the-fonts.md#autoloading
 
 ### Google Analytics and Disqus
 

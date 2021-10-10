@@ -35,10 +35,11 @@ See additional configuration options:
 ### Admonition icons
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.4.0 ... present][Insiders]
+[:octicons-tag-24: insiders-2.4.0][Insiders]
 
 Each of the supported admonition types has a distinct icon, which can be changed
-to any icon bundled with the theme. Add the following lines to `mkdocs.yml`:
+to any icon bundled with the theme, or even a [custom icon]. Add the following
+lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
@@ -106,6 +107,7 @@ theme:
         [![FontAwesome]][FontAwesome]
 
   [Insiders]: ../insiders/index.md
+  [custom icon]: icons-emojis.md#additional-icons
   [supported types]: #supported-types
   [icon search]: icons-emojis.md#search
   [Octicons]: ../assets/screenshots/admonition-octicons.png
@@ -234,8 +236,8 @@ _Result_:
 
 ### Inline blocks
 
-:octicons-beaker-24: Experimental ·
-[:octicons-tag-24: 7.0.0 ... present][Inline support]
+[:octicons-tag-24: 7.0.0][Inline support] ·
+:octicons-beaker-24: Experimental
 
 Admonitions can also be rendered as inline blocks (i.e. for sidebars), placing
 them to the right using the `inline` + `end` modifiers, or to the left using
@@ -441,7 +443,7 @@ _Example_:
         purus auctor massa, nec semper lorem quam in massa.
     ```
 
-=== ":octicons-file-code-16: docs/stylesheets/admonitions.css"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     :root {
@@ -468,7 +470,7 @@ _Example_:
 
     ``` yaml
     extra_css:
-      - stylesheets/admonitions.css
+      - stylesheets/extra.css
     ```
 
 _Result_:

@@ -57,7 +57,6 @@ See additional configuration options:
   [Material Design]: https://materialdesignicons.com/
   [FontAwesome]: https://fontawesome.com/icons?d=gallery&m=free
   [Octicons]: https://octicons.github.com/
-  [additional icons]: ../setup/changing-the-logo-and-icons.md#additional-icons
   [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
   [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom-icons
 
@@ -136,7 +135,7 @@ _Example_:
     - :fontawesome-brands-facebook:{ .facebook } – Facebook
     ```
 
-=== ":octicons-file-code-16: docs/stylesheets/icons.css"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     .medium {
@@ -154,7 +153,7 @@ _Example_:
 
     ``` yaml
     extra_css:
-      - stylesheets/icons.css
+      - stylesheets/extra.css
     ```
 
 _Result_:
@@ -181,7 +180,7 @@ _Example_:
     :octicons-heart-fill-24:{ .heart }
     ```
 
-=== ":octicons-file-code-16: docs/stylesheets/icons.css"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     @keyframes heart {
@@ -201,7 +200,7 @@ _Example_:
 
     ``` yaml
     extra_css:
-      - stylesheets/icons.css
+      - stylesheets/extra.css
     ```
 
 _Result_:

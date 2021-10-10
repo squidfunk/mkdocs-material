@@ -40,9 +40,9 @@ See additional configuration options:
 ### Code annotations
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.2.0][Insiders] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-tag-24: insiders-2.2.0 ... present][Insiders]
+:octicons-beaker-24: Experimental
 
 Code annotations offer a comfortable and friendly way to attach arbitrary
 content to specific sections of code blocks by adding numeric markers in block
@@ -297,7 +297,7 @@ Let's say you want to change the color of `#!js "strings"`. While there are
 several [types of string tokens], they use the same color. You can assign
 a new color by using an [additional style sheet]:
 
-=== ":octicons-file-code-16: docs/stylesheets/colors.css"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     :root > * {
@@ -309,14 +309,14 @@ a new color by using an [additional style sheet]:
 
     ``` yaml
     extra_css:
-      - stylesheets/colors.css
+      - stylesheets/extra.css
     ```
 
 If you want to tweak a specific type of string, e.g. ``#!js `backticks` ``, you
 can lookup the specific CSS class name in the [syntax theme definition], and
 override it as part of your [additional style sheet]:
 
-=== ":octicons-file-code-16: docs/stylesheets/colors.css"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     .highlight .sb {
@@ -328,7 +328,7 @@ override it as part of your [additional style sheet]:
 
     ``` yaml
     extra_css:
-      - stylesheets/colors.css
+      - stylesheets/extra.css
     ```
 
   [colors]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss

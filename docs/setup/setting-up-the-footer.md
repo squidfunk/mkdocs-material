@@ -17,7 +17,7 @@ configured via `mkdocs.yml`.
 
 :octicons-hash-24: Setting ·
 :octicons-milestone-24: Default: _none_ ·
-[:octicons-tag-24: 1.0.0 ... present][Social links support]
+[:octicons-tag-24: 1.0.0][Social links support]
 
 Social links are rendered next to the copyright notice as part of the 
 footer of your project documentation. Add a list of social links in `mkdocs.yml` 
@@ -30,7 +30,7 @@ extra:
       link: https://twitter.com/squidfunk
 ```
 
-For each entry, the following fields are available:
+For each entry, the following settings are available:
 
 `icon`{ #icon }
 
@@ -95,7 +95,7 @@ For each entry, the following fields are available:
 
 :octicons-hash-24: Setting ·
 :octicons-milestone-24: Default: _none_ ·
-[:octicons-tag-24: 0.1.0 ... present][Copyright notice support]
+[:octicons-tag-24: 0.1.0][Copyright notice support]
 
 A custom copyright banner can be rendered as part of the footer, which is
 displayed next to the social links. It can be defined as part of `mkdocs.yml`:
@@ -111,7 +111,7 @@ copyright: Copyright &copy; 2016 - 2020 Martin Donath
 
 :octicons-hash-24: Setting ·
 :octicons-milestone-24: Default: `true` ·
-[:octicons-tag-24: 7.3.0 ... present][Generator notice support]
+[:octicons-tag-24: 7.3.0][Generator notice support]
 
 The footer displays a _Made with Material for MkDocs_ notice to denote how
 the site was generated. The notice can be removed with the following setting

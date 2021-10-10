@@ -70,7 +70,7 @@ Material for MkDocs._
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
 :octicons-file-symlink-file-24: Customization ·
-[:octicons-tag-24: insiders-2.5.0 ... present][Insiders]
+[:octicons-tag-24: insiders-2.5.0][Insiders]
 
 If you're using versioning, you might want to display a warning when the user
 visits any other version than the latest version. Using [theme extension][8],
@@ -119,7 +119,7 @@ Make sure that this matches the [default version][11].
 ### Stay on page
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.6.0 ... present][Insiders]
+[:octicons-tag-24: insiders-2.6.0][Insiders]
 
 Insiders improves the user experience when switching between versions: if
 version A and B contain a page with the same path name, the user will stay on

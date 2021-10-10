@@ -15,8 +15,8 @@ reference for which features they need to be enabled.
 
 ### Abbreviations
 
-[:octicons-workflow-24: Extension][Abbreviations] ·
-[:octicons-tag-24: 1.0.0 ... present][Abbreviations support]
+[:octicons-tag-24: 1.0.0][Abbreviations support] ·
+[:octicons-workflow-24: Extension][Abbreviations]
 
 The [Abbreviations] extension adds the ability to add a small tooltip to an
 element, by wrapping it with an `abbr` tag. Only plain text (no markup) is
@@ -39,8 +39,8 @@ No configuration options are available. See reference for usage:
 
 ### Admonition
 
-[:octicons-workflow-24: Extension][Admonition] ·
-[:octicons-tag-24: 0.1.0 ... present][Admonition support]
+[:octicons-tag-24: 0.1.0][Admonition support] ·
+[:octicons-workflow-24: Extension][Admonition]
 
 The [Admonition] extension adds support for admonitions, more commonly known as 
 _call-outs_, which can be defined in Markdown by using a simple syntax. Enable
@@ -67,8 +67,8 @@ No configuration options are available. See reference for usage:
 
 ### Attribute Lists
 
-[:octicons-workflow-24: Extension][Attribute Lists] ·
-[:octicons-tag-24: 0.1.0 ... present][Attribute Lists support]
+[:octicons-tag-24: 0.1.0][Attribute Lists support] ·
+[:octicons-workflow-24: Extension][Attribute Lists]
 
 The [Attribute Lists] extension allows to add HTML attributes and CSS classes
 to [almost every][Attribute Lists limitations] Markdown inline- and block-level
@@ -96,8 +96,8 @@ No configuration options are available. See reference for usage:
 
 ### Definition Lists
 
-[:octicons-workflow-24: Extension][Definition Lists] ·
-[:octicons-tag-24: 1.1.0 ... present][Definition Lists support]
+[:octicons-tag-24: 1.1.0][Definition Lists support] ·
+[:octicons-workflow-24: Extension][Definition Lists]
 
 The [Definition Lists] extension adds the ability to add definition lists (more
 commonly known as [description lists] – `dl` in HTML) via Markdown to a
@@ -119,8 +119,8 @@ No configuration options are available. See reference for usage:
 
 ### Footnotes
 
-[:octicons-workflow-24: Extension][Footnotes] ·
-[:octicons-tag-24: 1.0.0 ... present][Footnotes support]
+[:octicons-tag-24: 1.0.0][Footnotes support] ·
+[:octicons-workflow-24: Extension][Footnotes]
 
 The [Footnotes] extension allows to define inline footnotes, which are then
 rendered below all Markdown content of a document. Enable it via `mkdocs.yml`:
@@ -142,8 +142,8 @@ No configuration options are supported. See reference for usage:
 
 ### Metadata
 
-[:octicons-workflow-24: Extension][Metadata] ·
-[:octicons-tag-24: 1.0.0 ... present][Metadata support]
+[:octicons-tag-24: 1.0.0][Metadata support] ·
+[:octicons-workflow-24: Extension][Metadata]
 
 The [Metadata] extension adds the ability to attach arbitrary key-value pairs
 to a document via front matter written in YAML syntax before the Markdown.
@@ -170,8 +170,8 @@ No configuration options are available. See reference for usage:
 
 ### Markdown in HTML
 
-[:octicons-workflow-24: Extension][Markdown in HTML] ·
-[:octicons-tag-24: 0.1.0 ... present][Markdown in HTML support]
+[:octicons-tag-24: 0.1.0][Markdown in HTML support] ·
+[:octicons-workflow-24: Extension][Markdown in HTML]
 
 The [Markdown in HTML] extension allows for writing Markdown inside of HTML,
 which is useful for wrapping Markdown content with custom elements. Enable it
@@ -198,8 +198,8 @@ No configuration options are available. See reference for usage:
 
 ### Table of Contents
 
-[:octicons-workflow-24: Extension][Table of Contents] ·
-[:octicons-tag-24: 0.1.0 ... present][Table of Contents support]
+[:octicons-tag-24: 0.1.0][Table of Contents support] ·
+[:octicons-workflow-24: Extension][Table of Contents]
 
 The [Table of Contents] extension automatically generates a table of contents
 from a document, which Material for MkDocs will render as part of the resulting 
@@ -292,8 +292,8 @@ own risk.
 
 ### Tables
 
-[:octicons-workflow-24: Extension][Tables] ·
-[:octicons-tag-24: 0.1.0 ... present][Tables support]
+[:octicons-tag-24: 0.1.0][Tables support] ·
+[:octicons-workflow-24: Extension][Tables]
 
 The [Tables] extension adds the ability to create tables in Markdown by using a 
 simple syntax. Enable it via `mkdocs.yml` (albeit it should be enabled by
@@ -322,8 +322,8 @@ should be considered.
 
 ### Fenced Code Blocks
 
-[:octicons-workflow-24: Extension][Fenced Code Blocks] ·
-[:octicons-tag-24: 0.1.0 ... present][Fenced Code Blocks support]
+[:octicons-tag-24: 0.1.0][Fenced Code Blocks support] ·
+[:octicons-workflow-24: Extension][Fenced Code Blocks]
 
 Superseded by [SuperFences]. This extension might still work, but the
 [SuperFences] extension is superior in many ways, as it allows for arbitrary 
@@ -335,8 +335,8 @@ nesting, and is therefore recommended.
 
 ### CodeHilite
 
-[:octicons-workflow-24: Extension][CodeHilite] ·
-[:octicons-tag-24: 0.1.0 ... 5.5.14][CodeHilite support]
+[:octicons-tag-24: 0.1.0 ... 5.5.14][CodeHilite support] ·
+[:octicons-workflow-24: Extension][CodeHilite]
 
 Superseded by [Highlight]. Support for CodeHilite was dropped in
 :octicons-tag-24: 6.0.0, as [Highlight] has a better integration with other 
