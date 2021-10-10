@@ -92,7 +92,7 @@ extra:
 1.  This option was deprecated, as it's not widely used and the same behavior
     can be achieved with [theme extension].
 
-  [web app manifest]: https://developers.google.com/web/fundamentals/web-app-manifest/
+  [web app manifest]: https://web.dev/add-manifest/
   [manifest support]: https://github.com/squidfunk/mkdocs-material/releases/tag/3.1.0
   [theme extension]: ../customization.md#extending-the-theme
 
