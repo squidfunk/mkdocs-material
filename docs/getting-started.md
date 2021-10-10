@@ -19,7 +19,7 @@ In case you're running into problems, consult the [troubleshooting][4] section.
 
 ## Installation
 
-### with pip <small>recommended</small> { data-toc-label="with pip" }
+### with pip <small>recommended</small> { #with-pip data-toc-label="with pip" }
 
 Material for MkDocs can be installed with `pip`:
 

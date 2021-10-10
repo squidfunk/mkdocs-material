@@ -20,7 +20,7 @@ and extendable [cookie consent][extra.consent].
 :octicons-milestone-24: Default: _none_
 
 Material for MkDocs integrates with both, Google Analytics 4 and the now phasing
-out Universal Analytics (`UA-*`). Depending on the property prefix, add the
+out Universal Analytics. Depending on the given property prefix, add the
 following lines to `mkdocs.yml`:
 
 === ":material-google-analytics: Google Analytics 4"

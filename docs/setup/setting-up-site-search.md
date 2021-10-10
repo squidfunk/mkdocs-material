@@ -150,7 +150,7 @@ Use them at your own risk._
 :octicons-beaker-24: Experimental ·
 [:octicons-tag-24: 7.2.0][Search suggestions support]
 
-When _search suggestions_ are enabled, the search will display the likeliest
+When search suggestions are enabled, the search will display the likeliest
 completion for the last word, saving the user many key strokes by accepting the
 suggestion with the ++arrow-right++ key.
 
@@ -177,7 +177,7 @@ Searching for [:octicons-search-24: search su][9] yields ^^search suggestions^^ 
 :octicons-beaker-24: Experimental ·
 [:octicons-tag-24: 7.2.0][Search highlighting support]
 
-When _search highlighting_ is enabled and a user clicks on a search result,
+When search highlighting is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
 Add the following lines to `mkdocs.yml`:
 
@@ -202,7 +202,7 @@ Searching for [:octicons-search-24: code blocks][12] yields:
 :octicons-beaker-24: Experimental ·
 [:octicons-tag-24: 7.2.0][Search highlighting support]
 
-When _search sharing_ is activated, a :material-share-variant: share button is
+When search sharing is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
 search query and result. Add the following lines to `mkdocs.yml`:
 
@@ -439,7 +439,7 @@ and must return the processed query string to be submitted to the search index.
 
   [23]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
   [24]: ../customization.md#extending-the-theme
-  [25]: ../customization.md#overriding-blocks-recommended
+  [25]: ../customization.md#overriding-blocks
 
 ### Custom search
 

@@ -105,7 +105,7 @@ extra:
 #### on all pages
 
 In order to add custom `meta` tags to your document, you can [extend the theme
-][theme extension] and [override the `extrahead` block][override block],
+][theme extension] and [override the `extrahead` block][overriding blocks],
 e.g. to add indexing policies for search engines via the `robots` property:
 
 ``` html
@@ -116,7 +116,7 @@ e.g. to add indexing policies for search engines via the `robots` property:
 {% endblock %}
 ```
 
-  [override block]: ../customization.md#overriding-blocks-recommended
+  [overriding blocks]: ../customization.md#overriding-blocks
 
 #### on a single page
 

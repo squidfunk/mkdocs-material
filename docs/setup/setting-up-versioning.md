@@ -63,12 +63,12 @@ Check out the versioning example to see it in action –
 ### Version warning
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-:octicons-file-symlink-file-24: Customization ·
-[:octicons-tag-24: insiders-2.5.0][Insiders]
+[:octicons-tag-24: insiders-2.5.0][Insiders] ·
+:octicons-file-symlink-file-24: Customization
 
 If you're using versioning, you might want to display a warning when the user
-visits any other version than the latest version. Using [theme extension][8],
-you can [define the `outdated` block][9]:
+visits any other version than the latest version. Using [theme extension],
+you can [override the `outdated` block][overriding blocks]:
 
 ``` html
 {% extends "base.html" %}
@@ -89,11 +89,11 @@ you can [define the `outdated` block][9]:
 
 This will render a version warning above the header:
 
-[![Version warning][10]][10]
+[![Version warning preview]][Version warning preview]
 
-By default, the default version is identified by the `latest` alias. If you
-wish to set another alias as the latest version, e.g. `stable`, add the
-following to `mkdocs.yml`:
+The default version is identified by the `latest` alias. If you wish to set
+another alias as the latest version, e.g. `stable`, add the following lines
+to `mkdocs.yml`:
 
 ``` yaml
 extra:
@@ -101,14 +101,13 @@ extra:
     default: stable
 ```
 
-Make sure that this matches the [default version][11].
+Make sure that this matches the [default version].
 
   [Insiders]: ../insiders/index.md
-  [7]: ../insiders/index.md
-  [8]: ../customization.md#extending-the-theme
-  [9]: ../customization.md#overriding-blocks-recommended
-  [10]: ../assets/screenshots/version-warning.png
-  [11]: #setting-a-default-version
+  [theme extension]: ../customization.md#extending-the-theme
+  [overriding blocks]: ../customization.md#overriding-blocks
+  [Version warning preview]: ../assets/screenshots/version-warning.png
+  [default version]: #setting-a-default-version
 
 ### Stay on page
 
@@ -135,21 +134,11 @@ the current page:
     docs.example.com/0.1/bar/ -> docs.example.com/0.2/
     ```
 
-<figure markdown>
-  <figcaption markdown>
-
-A demo is worth a thousand words — check it out at
-[squidfunk.github.io/mkdocs-material-example-versioning][4]
-
-  </figcaption>
-</figure>
-
-
 ## Usage
 
 While this section outlines the basic workflow for publishing new versions, 
-it's best to check out the [official documentation][6] to make yourself familar
-with [mike][1].
+it's best to check out [mike's documentation][mike] to make yourself familar
+with its mechanics.
 
 ### Publishing a new version
 
@@ -169,15 +158,15 @@ e.g.:
 
 ### Setting a default version
 
-When starting with [mike][1], a good idea is to set an alias as a default
-version, e.g. `latest`, and when publishing a new version, always update the
-alias to point to the latest version:
+When starting with [mike], a good idea is to set an alias as a default version,
+e.g. `latest`, and when publishing a new version, always update the alias to
+point to the latest version:
 
 ```
 mike set-default --push latest
 ```
 
-When publishing a new version, [mike][1] will create a redirect in the root of
+When publishing a new version, [mike] will create a redirect in the root of
 your project documentation to the version associated with the alias:
 
 _docs.example.com_ :octicons-arrow-right-24: _docs.example.com/0.1_

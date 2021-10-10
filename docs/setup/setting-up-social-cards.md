@@ -30,7 +30,12 @@ MkDocs can generate beautiful social cards automatically, using the [colors]
 
 The built-in social cards plugin generates a social preview image for every page
 and adds the necessary meta tags, so it's displayed on social media when shared.
-Enable it via `mkdocs.yml`:
+First, ensure you've set [`site_url`][site_url] in `mkdocs.yml`.[^2] Then, add
+the following lines to `mkdocs.yml` to enable the plugin:
+
+  [^2]:
+    When using this plugin, the [`site_url`][site_url] setting is mandatory, as
+    social preview images don't work with relative URLs.
 
 ``` yaml
 plugins:
@@ -83,12 +88,14 @@ The following configuration options are available:
     ```
 
   [Insiders]: ../insiders/index.md
+  [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [setting up site analytics]: setting-up-site-analytics.md
   [Social cards preview]: ../assets/screenshots/social-cards.png
   [Twitter's Card validator]: https://cards-dev.twitter.com/validator
+  [meta tags]: #meta-tags
   [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
 
-#### Caching <small>recommended</small> { data-toc-label="Caching" }
+#### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
 
 The [built-in social cards plugin] automatically fetches the fonts you define
 in `mkdocs.yml` from Google Fonts, and uses them to render the text that is

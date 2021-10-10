@@ -152,7 +152,7 @@ directory:
 MkDocs will now use the new partial when rendering the theme. This can be done
 with any file.
 
-### Overriding blocks <small>recommended</small> { data-toc-label="Overriding blocks" }
+### Overriding blocks <small>recommended</small> { #overriding-blocks data-toc-label="Overriding blocks" }
 
 Besides overriding partials, it's also possible to override (and extend)
 _template blocks_, which are defined inside the templates and wrap specific
@@ -216,7 +216,7 @@ with Material for MkDocs_ hint in the footer, add the following line to
 {% extends "base.html" %}
 
 {% set extracopyright %}
-  <!-- Add your additional information here -->
+  <!-- Add additional copyright information here -->
 {% endset %}
 ```
 
