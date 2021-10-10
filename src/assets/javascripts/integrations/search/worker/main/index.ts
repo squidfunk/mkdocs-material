@@ -163,7 +163,7 @@ export async function handler(
  * Worker
  * ------------------------------------------------------------------------- */
 
-/* @ts-ignore - expose Lunr.js in global scope, or stemmers will not work */
+/* @ts-expect-error - expose Lunr.js in global scope, or stemmers won't work */
 self.lunr = lunr
 
 /* Handle messages */
