@@ -24,7 +24,7 @@ pip show mkdocs-material
 - Added support for integrating a language selector
 - Added support for rendering admonitions as inline blocks
 - Rewrite of the underlying reactive architecture
-- Removed Webpack in favor of reactive build strategy (-480 dependencies)
+- Removed Webpack in favor of reactive build strategy (–480 dependencies)
 - Fixed keyboard navigation for code blocks after content tabs switch
 
 ### Changes to `mkdocs.yml`
@@ -605,7 +605,7 @@ matches the new structure:
 - Slight facelifting of some UI elements (Admonitions, tables, ...)
 
   [CSS variables]: setup/changing-the-colors.md#custom-colors
-  [icon integration]: setup/changing-the-logo-and-icons.md#icons
+  [icon integration]: reference/icons-emojis.md#search
   [prebuilt search indexes]: setup/setting-up-site-search.md#built-in-search
 
 ### Changes to `mkdocs.yml`
@@ -616,7 +616,7 @@ does not contain the key, you can skip it.
 
 #### `theme.feature`
 
-Optional features like [tabs][3] and [instant loading][4] are now implemented as
+Optional features like [tabs] and [instant loading] are now implemented as
 flags and can be enabled by listing them in `mkdocs.yml` under `theme.features`:
 
 === "5.x"
@@ -639,7 +639,7 @@ flags and can be enabled by listing them in `mkdocs.yml` under `theme.features`:
 #### `theme.logo.icon`
 
 The logo icon configuration was centralized under `theme.icon.logo` and can now
-be set to any of the [icons bundled with the theme][6]:
+be set to any of the [icons bundled with the theme][icon integration]:
 
 === "5.x"
 
@@ -660,7 +660,7 @@ be set to any of the [icons bundled with the theme][6]:
 #### `extra.repo_icon`
 
 The repo icon configuration was centralized under `theme.icon.repo` and can now
-be set to any of the [icons bundled with the theme][6]:
+be set to any of the [icons bundled with the theme][icon integration]:
 
 === "5.x"
 
@@ -679,7 +679,7 @@ be set to any of the [icons bundled with the theme][6]:
 
 #### `extra.search.*`
 
-Search is now configured as part of the [plugin options][6]. Note that the
+Search is now configured as part of the [plugin options]. Note that the
 search languages must now be listed as an array of strings and the `tokenizer`
 was renamed to `separator`:
 
@@ -704,7 +704,7 @@ was renamed to `separator`:
         tokenizer: '[\s\-\.]+'
     ```
 
-  [6]: setup/setting-up-site-search.md#built-in-search
+  [plugin options]: setup/setting-up-site-search.md#built-in-search
 
 #### `extra.social.*`
 
