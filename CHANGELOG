@@ -1,3 +1,13 @@
+mkdocs-material-7.3.3 (2021-10-11)
+
+  * Rewrite of entire documentation
+  * Adjusted height of new content tabs to match single line code blocks
+  * Fixed new content tabs missing right padding in some browsers on overflow
+  * Fixed new content tabs bleeding out of flex container on overflow
+  * Fixed new content tabs overflow scrolling bugs on some browsers
+  * Fixed new content tabs stealing keyboard access when active
+  * Fixed some spacings issues for right-to-left languages
+
 mkdocs-material-7.3.2+insiders-3.1.2 (2021-10-06)
 
   * Fixed incorrect path separators for social cards on Windows

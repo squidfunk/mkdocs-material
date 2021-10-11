@@ -6,6 +6,16 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.3.3 <small>_ October 11, 2021</small> { id="7.3.3" }
+
+- Rewrite of entire documentation
+- Adjusted height of new content tabs to match single line code blocks
+- Fixed new content tabs missing right padding in some browsers on overflow
+- Fixed new content tabs bleeding out of flex container on overflow
+- Fixed new content tabs overflow scrolling bugs on some browsers
+- Fixed new content tabs stealing keyboard access when active
+- Fixed some spacings issues for right-to-left languages
+
 ### 7.3.2 <small>_ October 6, 2021</small> { id="7.3.2" }
 
 - Deprecated prebuilding of search index
