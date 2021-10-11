@@ -24,7 +24,8 @@ import {
   Observable,
   Subject,
   asyncScheduler,
-  fromEvent
+  fromEvent,
+  merge
 } from "rxjs"
 import {
   combineLatestWith,
@@ -88,7 +89,10 @@ export function mountSearchSuggest(
 
   /* Retrieve query component and track all changes */
   const query  = getComponentElement("search-query")
-  const query$ = fromEvent(query, "keydown")
+  const query$ = merge(
+    fromEvent(query, "keydown"),
+    fromEvent(query, "focus")
+  )
     .pipe(
       observeOn(asyncScheduler),
       map(() => query.value),

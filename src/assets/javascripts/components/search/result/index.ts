@@ -102,7 +102,7 @@ export function mountSearchResult(
   const meta = getElementOrThrow(":scope > :first-child", el)
   const list = getElementOrThrow(":scope > :last-child", el)
 
-  /* Update search result metadata when ready */
+  /* Wait until search is ready */
   const ready$ = rx$
     .pipe(
       filter(isSearchReadyMessage),

@@ -34,6 +34,8 @@ import {
   filter,
   finalize,
   map,
+  shareReplay,
+  startWith,
   take,
   takeLast,
   takeUntil,
@@ -92,36 +94,43 @@ export function watchSearchQuery(
 ): Observable<SearchQuery> {
   const fn = __search?.transform || defaultTransform
 
+  /* Immediately show search dialog */
+  const { searchParams } = getLocation()
+  if (searchParams.has("q"))
+    setToggle("search", true)
+
+  /* Intercept query parameter (deep link) */
+  const param$ = rx$
+    .pipe(
+      filter(isSearchReadyMessage),
+      take(1),
+      map(() => searchParams.get("q") || "")
+    )
+
+  /* Set query from parameter */
+  param$.subscribe(value => { // TODO: not ideal - find a better way
+    if (value)
+      el.value = value
+  })
+
   /* Intercept focus and input events */
   const focus$ = watchElementFocus(el)
   const value$ = merge(
     fromEvent(el, "keyup"),
-    fromEvent(el, "focus").pipe(delay(1))
+    fromEvent(el, "focus").pipe(delay(1)),
+    param$
   )
     .pipe(
       map(() => fn(el.value)),
-      distinctUntilChanged()
+      startWith(""),
+      distinctUntilChanged(),
     )
-
-  /* Intercept deep links */
-  const location = getLocation()
-  if (location.searchParams.has("q")) {
-    setToggle("search", true)
-    rx$
-      .pipe(
-        filter(isSearchReadyMessage),
-        take(1)
-      )
-        .subscribe(() => {
-          el.value = location.searchParams.get("q")!
-          setElementFocus(el)
-        })
-  }
 
   /* Combine into single observable */
   return combineLatest([value$, focus$])
     .pipe(
-      map(([value, focus]) => ({ value, focus }))
+      map(([value, focus]) => ({ value, focus })),
+      shareReplay(1)
     )
 }
 
