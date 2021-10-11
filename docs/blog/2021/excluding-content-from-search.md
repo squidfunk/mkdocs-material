@@ -3,7 +3,6 @@ template: overrides/main.html
 description: >
   Three new simple ways to exclude dedicated parts of a document from the search
   index, allowing for more fine-grained control
-disqus: mkdocs-material
 search:
   exclude: true
 ---
@@ -15,7 +14,7 @@ dedicated parts of a document from the search index, allowing for more
 fine-grained control.__
 
 <aside class="mdx-author" markdown>
-![@squidfunk][1]
+![@squidfunk][@squidfunk avatar]
 
 <span>__Martin Donath__ · @squidfunk</span>
 <span>
@@ -25,13 +24,13 @@ fine-grained control.__
 </span>
 </aside>
 
-  [1]: https://avatars.githubusercontent.com/u/932156
+  [@squidfunk avatar]: https://avatars.githubusercontent.com/u/932156
 
 ---
 
 Two weeks ago, Material for MkDocs Insiders shipped a [brand new search
-plugin][2], yielding [massive improvements in usability][3], but also in [speed
-and size][4] of the search index. Interestingly, as discussed in the previous
+plugin], yielding [massive improvements in usability], but also in [speed
+and size] of the search index. Interestingly, as discussed in the previous
 blog article, we only scratched the surface of what's now possible. This
 release brings some useful features that enhance the writing experience,
 allowing for more fine-grained control of what pages, sections and blocks of a
@@ -39,18 +38,18 @@ Markdown file should be indexed by the built-in search functionality.
 
 _The following section discusses existing solutions for excluding pages and
 sections from the search index. If you immediately want to learn what's new,
-skip to the [section just after that][5]._
+skip to the [section just after that][what's new]._
 
-  [2]: search-better-faster-smaller.md
-  [3]: search-better-faster-smaller.md#whats-new
-  [4]: search-better-faster-smaller.md#benchmarks
-  [5]: #whats-new
+  [brand new search plugin]: search-better-faster-smaller.md
+  [massive improvements in usability]: search-better-faster-smaller.md#whats-new
+  [speed and size]: search-better-faster-smaller.md#benchmarks
+  [what's new]: #whats-new
 
 ## Prior art
 
-MkDocs has a rich and thriving ecosystem of [plugins][6], and it comes as no
+MkDocs has a rich and thriving ecosystem of [plugins], and it comes as no
 surprise that there's already a fantastic plugin by @chrieke to exclude specific
-sections of a Markdown file – the [mkdocs-exclude-search][7] plugin. It can be
+sections of a Markdown file – the [mkdocs-exclude-search] plugin. It can be
 installed with:
 
 ```
@@ -78,10 +77,10 @@ adds support for advanced filtering techniques like infix- and suffix-filtering
 using wildcards. While this is a very powerful idea, it comes with some
 downsides:
 
-1. __Exclusion patterns and content are not co-located__: exclusion patterns
-   need to be defined in `mkdocs.yml`, and not as part of the respective
-   document or section to be excluded. This might result in stale exclusion
-   patterns, leading to unintended behavior:
+1.  __Exclusion patterns and content are not co-located__: exclusion patterns
+    need to be defined in `mkdocs.yml`, and not as part of the respective
+    document or section to be excluded. This might result in stale exclusion
+    patterns, leading to unintended behavior:
 
     - When a headline is changed, its slug (permalink) also changes, which might
       suddenly match (or unmatch) a pattern, e.g., when an author fixes a typo
@@ -97,23 +96,23 @@ downsides:
     pages and sections have been excluded from the search index, but MkDocs will
     now flood the terminal with debug output from its core and other plugins.
 
-2. __Exclusion control might be too coarse__: The [mkdocs-exclude-search][7]
-   plugin only allows for the exclusion of pages and sections. It's not possible
-   to exclude parts of a section, e.g., content that is irrelevant to search but
-   must be included as part of the documentation.
+2.  __Exclusion control might be too coarse__: The [mkdocs-exclude-search]
+    plugin only allows for the exclusion of pages and sections. It's not
+    possible to exclude parts of a section, e.g., content that is irrelevant
+    to search but must be included as part of the documentation.
 
-  [6]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
-  [7]: https://github.com/chrieke/mkdocs-exclude-search
+  [plugins]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
+  [mkdocs-exclude-search]: https://github.com/chrieke/mkdocs-exclude-search
 
 ## What's new?
 
 The latest Insiders release brings fine-grained control for [__excluding pages,
-sections, and blocks__][8] from the search index, implemented through front
-matter, as well as the [Attribute List][9] extension. Note that it doesn't
-replace the [mkdocs-exclude-search][7] plugin but _complements_ it.
+sections, and blocks__][search exclusion] from the search index, implemented
+through front matter, as well as the [Attribute Lists]. Note that it doesn't
+replace the [mkdocs-exclude-search] plugin but __complements__ it.
 
-  [8]: ../../setup/setting-up-site-search.md#search-exclusion
-  [9]: https://python-markdown.github.io/extensions/attr_list/
+  [search exclusion]: ../../setup/setting-up-site-search.md#search-exclusion
+  [Attribute Lists]: ../../setup/extensions/python-markdown.md#attribute-lists
 
 ### Excluding pages
 
@@ -134,12 +133,12 @@ search:
 
 ### Excluding sections
 
-If a section should be excluded, the author can use the [Attribute List][9]
+If a section should be excluded, the author can use the [Attribute Lists]
 extension to add a __pragma__ called `{ data-search-exclude }` at the end of a
 heading. The pragma is not included in the final HTML, as search pragmas are
 filtered by the search plugin before the page is rendered:
 
-=== "`docs/page.md`"
+=== ":octicons-file-code-16: docs/page.md"
 
     ``` markdown
     # Document title
@@ -153,7 +152,7 @@ filtered by the search plugin before the page is rendered:
     The content of this section is excluded
     ```
 
-=== "`search_index.json`"
+=== ":octicons-codescan-16: search_index.json"
 
     ``` json
     {
@@ -176,10 +175,10 @@ filtered by the search plugin before the page is rendered:
 ### Excluding blocks
 
 If even more fine-grained control is desired, the __pragma__ can be added to
-any [block-level element][10] or [inline-level element][11] that is officially
-supported by the [Attribute List][9] extension:
+any [block-level element] or [inline-level element] that is officially
+supported by the [Attribute Lists] extension:
 
-=== "`docs/page.md`"
+=== ":octicons-file-code-16: docs/page.md"
 
     ``` markdown
     # Document title
@@ -190,7 +189,7 @@ supported by the [Attribute List][9] extension:
     { data-search-exclude }
     ```
 
-=== "`search_index.json`"
+=== ":octicons-codescan-16: search_index.json"
 
     ``` json
     {
@@ -205,12 +204,12 @@ supported by the [Attribute List][9] extension:
     }
     ```
 
-  [10]: https://python-markdown.github.io/extensions/attr_list/#block-level
-  [11]: https://python-markdown.github.io/extensions/attr_list/#inline-level
+  [block-level element]: https://python-markdown.github.io/extensions/attr_list/#block-level
+  [inline-level element]: https://python-markdown.github.io/extensions/attr_list/#inline
 
 ## Conclusion
 
 The latest release brings three simple ways to control more precisely what goes
 into the search index and what doesn't. It complements the already very powerful
-[mkdocs-exclude-search][7] plugin, allowing for new methods of shaping the
+[mkdocs-exclude-search] plugin, allowing for new methods of shaping the
 structure, size and content of the search index.

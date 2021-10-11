@@ -4,13 +4,34 @@ search:
   exclude: true
 ---
 
+<style>
+  .md-sidebar--secondary:not([hidden]) {
+    visibility: hidden;
+  }
+</style>
+
 # Blog
 
-<h2>Excluding content from search</h2>
+## [Excluding content from search]
 
 __The latest Insiders release brings three new simple ways to exclude dedicated
 parts of a document from the search index, allowing for more fine-grained
 control.__
+
+<aside class="mdx-author" markdown>
+![@squidfunk][@squidfunk avatar]
+
+<span>__Martin Donath__ · @squidfunk</span>
+<span>
+:octicons-calendar-24: September 26, 2021 ·
+:octicons-clock-24: 5 min read ·
+[:octicons-tag-24: 7.3.0+insiders-3.1.1](../../insiders/changelog.md#311-_-september-26-2021)
+</span>
+</aside>
+
+  [@squidfunk avatar]: https://avatars.githubusercontent.com/u/932156
+
+---
 
 Two weeks ago, Material for MkDocs Insiders shipped a brand new search plugin,
 yielding massive improvements in usability, but also in speed and size of the
@@ -20,16 +41,28 @@ features that enhance the writing experience, allowing for more fine-grained
 control of what pages, sections and blocks of a Markdown file should be indexed
 by the built-in search functionality.
 
-[Continue reading :octicons-arrow-right-24:][2]{ .md-button }
+[:octicons-arrow-right-24: Continue reading][Excluding content from search]
 
-  [2]: 2021/excluding-content-from-search.md
+  [Excluding content from search]: 2021/excluding-content-from-search.md
 
-
-<h2>Search: better, faster, smaller</h2>
+## [Search: better, faster, smaller]
 
 __This is the story of how we managed to completely rebuild client-side search,
 delivering a significantly better user experience while making it faster and
 smaller at the same time.__
+
+<aside class="mdx-author" markdown>
+![@squidfunk][@squidfunk avatar]
+
+<span>__Martin Donath__ · @squidfunk</span>
+<span>
+:octicons-calendar-24: September 13, 2021 ·
+:octicons-clock-24: 15 min read ·
+[:octicons-tag-24: 7.2.6+insiders-3.0.0](../../insiders/changelog.md#300-_-september-13-2021)
+</span>
+</aside>
+
+---
 
 The search of Material for MkDocs is by far one of its best and most-loved
 assets: multilingual, offline-capable, and most importantly: _all client-side_.
@@ -41,6 +74,6 @@ integration from the ground up. This article shines some light on the internals
 of the new search, why it's much more powerful than the previous version, and
 what's about to come.
 
-[Continue reading :octicons-arrow-right-24:][1]{ .md-button }
+[:octicons-arrow-right-24: Continue reading][Search: better, faster, smaller]
 
-  [1]: 2021/search-better-faster-smaller.md
+  [Search: better, faster, smaller]: 2021/search-better-faster-smaller.md
