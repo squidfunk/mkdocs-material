@@ -9,25 +9,20 @@ search:
 Material for MkDocs provides an excellent, client-side search implementation,
 omitting the need for the integration of third-party services, which might
 be tricky to integrate to be compliant with data privacy regulations. Moreover,
-with some effort, search can be made available [offline][1].
+with some effort, search can be made available [offline].
 
-  [1]: #offline-search
+  [offline]: #offline-search
 
 ## Configuration
 
 ### Built-in search
 
-!!! danger "[Search: better, faster, smaller](../blog/2021/search-better-faster-smaller.md)"
+[:octicons-tag-24: 0.1.0][search support] ·
+:octicons-cpu-24: Plugin
 
-    We rebuilt the search plugin and integration from the ground up, introducing [rich search previews](../blog/2021/search-better-faster-smaller.md#rich-search-previews), much better [tokenizer support](../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead), [more accurate highlighting](../blog/2021/search-better-faster-smaller.md#accurate-highlighting) and much more. Read the [blog article](../blog/2021/search-better-faster-smaller.md) to learn more about our new search implementation. Start using it immediately by [becoming a sponsor][20]!
-
-[:octicons-file-code-24: Source][2] ·
-[:octicons-cpu-24: Plugin][3] ·
-[:octicons-heart-fill-24:{ .mdx-heart } Better in Insiders][20]{ .mdx-insiders }
-
-The [built-in search plugin][3] integrates seamlessly with Material for MkDocs,
-adding multilingual client-side search with [lunr][4] and [lunr-languages][5].
-It's enabled by default, but must be re-added to `mkdocs.yml` when other plugins
+The built-in search plugin integrates seamlessly with Material for MkDocs,
+adding multilingual client-side search with [lunr] and [lunr-languages]. It's 
+enabled by default, but must be re-added to `mkdocs.yml` when other plugins
 are used:
 
 ``` yaml
@@ -35,14 +30,14 @@ plugins:
   - search
 ```
 
-The following options are supported:
+The following configuration options are supported:
 
 `lang`{ #search-lang }
 
 :   :octicons-milestone-24: Default: _automatically set_ – This option allows
-    to include the language-specific stemmers provided by [lunr-languages][5].
+    to include the language-specific stemmers provided by [lunr-languages].
     Note that Material for MkDocs will set this automatically based on the
-    [site language][6], but it may be overridden, e.g. to support multiple
+    [site language], but it may be overridden, e.g. to support multiple
     languages:
 
     === "A single language"
@@ -58,10 +53,14 @@ The following options are supported:
         ``` yaml
         plugins:
           - search:
-              lang:
+              lang: # (1)
                 - en
                 - ru
         ```
+
+        1.  Be aware that including support for other languages increases the
+            general JavaScript payload by around 20kb (before `gzip`) and by
+            another 15-30kb per language.
 
     The following languages are supported:
 
@@ -89,14 +88,9 @@ The following options are supported:
 
     </div>
 
-    _Material for MkDocs also tries to support languages that are not part of
-    this list by choosing the stemmer yielding the best result automatically_.
-
-    !!! warning "Only specify the languages you really need"
-
-        Be aware that including support for other languages increases the general
-        JavaScript payload by around 20kb (before `gzip`) and by another 15-30kb
-        per language.
+    Material for MkDocs goes to great lengths to support languages that are not
+    part of this list by automatically falling back to the stemmer yielding the
+    best result.
 
 `separator`{ #search-separator }
 
@@ -108,13 +102,21 @@ The following options are supported:
     ``` yaml
     plugins:
       - search:
-          separator: '[\s\-\.]+'
+          separator: '[\s\-\.]' # (1)
     ```
 
-~~`prebuild_index`~~{ #search-prebuild-index }[^1]
+    1.  Tokenization itself is carried out by [lunr's default tokenizer], which 
+        doesn't allow for lookahead or separators spanning multiple characters.
+
+        For more finegrained control over the tokenization process, see the
+        section on [tokenizer lookahead].
+
+<div class="mdx-deprecated" markdown>
+
+`prebuild_index`{ #search-prebuild-index }
 
 :   :octicons-milestone-24: Default: `false` · :octicons-archive-24: Deprecated
-    – MkDocs can generate a [prebuilt index][7] of all pages during
+    · :octicons-trash-24: 8.0.0 – MkDocs can generate a [prebuilt index] of all pages during
     build time, which provides performance improvements at the cost of more
     bandwidth, as it reduces the build time of the search index:
 
@@ -124,36 +126,126 @@ The following options are supported:
           prebuild_index: true
     ```
 
-    This may be beneficial for large documentation projects served with
-    appropriate headers, i.e. `Content-Encoding: gzip`, but benchmarking before
-    deployment is recommended.
+    Note that this configuration option was deprecated, as the [new search
+    plugin] generates up to [50% smaller] search indexes, doubling search
+    performance.
 
-    [^1]:
-      The `prebuild_index` feature was deprecated in 7.3.0 and will be removed
-      in 8.x. Insiders removed support in 3.0.0 with the advent of the new
-      search plugin.
+    [:octicons-arrow-right-24: Read more on the new search plugin]
+    [new search plugin]
 
-_Material for MkDocs doesn't provide official support for the other options of
-this plugin, so they may be supported but might yield unexpected results.
-Use them at your own risk._
+</div>
 
-  [2]: https://github.com/squidfunk/mkdocs-material/tree/master/src/assets/javascripts/integrations/search
-  [3]: https://www.mkdocs.org/user-guide/configuration/#search
-  [4]: https://lunrjs.com
-  [5]: https://github.com/MihaiValentin/lunr-languages
-  [6]: changing-the-language.md#site-language
-  [7]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
+The other configuration options of this plugin are not officially supported
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
+
+  [search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [lunr]: https://lunrjs.com
+  [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
+  [lunr's default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
+  [site language]: changing-the-language.md#site-language
+  [tokenizer lookahead]: #tokenizer-lookahead
+  [prebuilt index]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
+  [50% smaller]: ../blog/2021/search-better-faster-smaller.md#benchmarks
+
+### Rich search previews
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-3.0.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+Insiders ships rich search previews as part of the [new search plugin], which
+will render code blocks directly in the search result, and highlight all
+occurrences inside those blocks:
+
+=== "Insiders"
+
+    ![search preview now]
+
+=== "Material for MkDocs"
+
+    ![search preview before]
+
+  [Insiders]: ../insiders/index.md
+  [new search plugin]: ../blog/2021/search-better-faster-smaller.md
+  [search preview now]: ../blog/2021/search-better-faster-smaller/search-preview-now.png
+  [search preview before]: ../blog/2021/search-better-faster-smaller/search-preview-before.png
+
+### Tokenizer lookahead
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-3.0.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+Insiders allows for more complex configurations of the [`separator`][separator] 
+setting as part of the [new search plugin], yielding more influence on the way 
+documents are tokenized:
+
+``` yaml
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+```
+
+The following section explains what can be achieved with tokenizer lookahead:
+
+=== "Case changes"
+
+    ```
+    (?!\b)(?=[A-Z][a-z])
+    ```
+
+    `PascalCase` and `camelCase` are used as naming conventions in many
+    programming languages. By adding this match group to the [`separator`]
+    [separator], [words are split at case changes], tokenizing the word
+    `PascalCase` into `Pascal` and `Case`, so both terms can be searched 
+    individually.
+
+    [:octicons-arrow-right-24: Read more on tokenizing case changes]
+    [tokenize case changes]
+
+=== "Version numbers"
+
+    ```
+    \.(?!\d)
+    ```
+
+    When `.` is added to the [`separator`][separator], version numbers would be
+    split into parts, rendering them undiscoverable via search. By adding
+    this match group, a small lookahead is introduced, so version numbers will
+    remain as they are, and can be found through search.
+
+    [:octicons-arrow-right-24: Read more on tokenizing version numbers]
+    [tokenize version numbers]
+
+=== "HTML/XML tags"
+
+    ```
+    &[lg]t;
+    ```
+
+    If your documentation includes HTML/XML code examples, you may want to allow
+    users to find specific tag names. Unfortunately, the `<` and `>` control
+    characters are encoded in code blocks as `&lt;` and `&gt;`. Adding this
+    expression to the separator allows for just that.
+
+    [:octicons-arrow-right-24: Read more on tokenizing HTML/XML tags]
+    [tokenize html-xml tags]
+
+  [separator]: #search-separator
+  [words are split at case changes]: ?q=searchHighlight
+  [tokenize case changes]: ../blog/2021/search-better-faster-smaller.md#case-changes
+  [tokenize version numbers]: ../blog/2021/search-better-faster-smaller.md#version-numbers
+  [tokenize html-xml tags]: ../blog/2021/search-better-faster-smaller.md#htmlxml-tags
 
 ### Search suggestions
 
+[:octicons-tag-24: 7.2.0][search.suggest support] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-tag-24: 7.2.0][Search suggestions support]
+:octicons-beaker-24: Experimental
 
 When search suggestions are enabled, the search will display the likeliest
-completion for the last word, saving the user many key strokes by accepting the
-suggestion with the ++arrow-right++ key.
-
+completion for the last word which can be accepted with the ++arrow-right++ key.
 Add the following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -162,20 +254,17 @@ theme:
     - search.suggest
 ```
 
-Searching for [:octicons-search-24: search su][9] yields ^^search suggestions^^ as a suggestion:
+Searching for [:octicons-search-24: search su][search.suggest example] yields 
+^^search suggestions^^ as a suggestion.
 
-[![Search suggestions][10]][10]
-
-  [Search suggestions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
-  [8]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/suggest/index.ts
-  [9]: ?q=search+su
-  [10]: ../assets/screenshots/search-suggestions.png
+  [search.suggest support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
+  [search.suggest example]: ?q=search+su
 
 ### Search highlighting
 
+[:octicons-tag-24: 7.2.0][search.highlight support] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-tag-24: 7.2.0][Search highlighting support]
+:octicons-beaker-24: Experimental
 
 When search highlighting is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
@@ -187,20 +276,17 @@ theme:
     - search.highlight
 ```
 
-Searching for [:octicons-search-24: code blocks][12] yields:
+Searching for [:octicons-search-24: code blocks][search.highlight example]
+highlights all occurrences of both terms.
 
-[![Search highlighting][13]][13]
-
-  [Search highlighting support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
-  [11]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/highlight/index.ts
-  [12]: ../reference/code-blocks.md?h=code+blocks
-  [13]: ../assets/screenshots/search-highlighting.png
+  [search.highlight support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
+  [search.highlight example]: ../reference/code-blocks.md?h=code+blocks
 
 ### Search sharing
 
+[:octicons-tag-24: 7.2.0][search.share support] ·
 :octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental ·
-[:octicons-tag-24: 7.2.0][Search highlighting support]
+:octicons-beaker-24: Experimental
 
 When search sharing is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
@@ -215,28 +301,24 @@ theme:
 When a user clicks the share button, the URL is automatically copied to the
 clipboard.
 
-[![Search sharing][15]][15]
-
-  [Search sharing support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
-  [14]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/components/search/share/index.ts
-  [15]: ../assets/screenshots/search-share.png
+  [search.share support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
 
 ### Offline search
 
-[:octicons-file-code-24: Source][16] ·
-[:octicons-cpu-24: Plugin][17]
+[:octicons-tag-24: 5.0.0][offline search support] ·
+[:octicons-cpu-24: Plugin][localsearch]
 
 If you distribute your documentation as `*.html` files, the built-in search
 will not work out-of-the-box due to the restrictions modern browsers impose for
-security reasons. This can be mitigated with the [localsearch][17] plugin in
-combination with @squidfunk's [iframe-worker][18] polyfill.
+security reasons. This can be mitigated with the [localsearch] plugin in
+combination with @squidfunk's [iframe-worker] polyfill.
 
-For setup instructions, refer to the [official documentation][19].
+For setup instructions, refer to the [localsearch documentation].
 
-  [16]: https://github.com/squidfunk/mkdocs-material/blob/master/src/base.html
-  [17]: https://github.com/wilhelmer/mkdocs-localsearch/
-  [18]: https://github.com/squidfunk/iframe-worker
-  [19]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5
+  [offline search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
+  [localsearch]: https://github.com/wilhelmer/mkdocs-localsearch/
+  [iframe-worker]: https://github.com/squidfunk/iframe-worker
+  [localsearch documentation]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5
 
 !!! tip
 
@@ -249,39 +331,36 @@ For setup instructions, refer to the [official documentation][19].
 ### Search boosting
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-:octicons-note-24: Metadata ·
 [:octicons-tag-24: insiders-2.8.0][Insiders]
 
-In order to give specific pages a higher relevance in search, [lunr][4] supports
-page-specific boosts, which can be defined for each page by leveraging the
-[Metadata][21] extension:
+When [Metadata] is enabled, pages can be boosted in search with custom front
+matter, which will make them rank higher. Add the following lines at the top of
+a Markdown file:
 
 ``` bash
 ---
 search:
-  boost: 100
+  boost: 2 # (1)
 ---
 
 # Document title
 ...
 ```
 
-  [Insiders]: ../insiders/index.md
-  [20]: ../insiders/index.md
-  [21]: ../reference/meta-tags.md#metadata
+1.  :woman_in_lotus_position: When boosting pages, be gentle and start with
+    __low values__.
+
+  [Metadata]: extensions/python-markdown.md#metadata
 
 ### Search exclusion
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-:octicons-note-24: Metadata ·
-:octicons-beaker-24: Experimental ·
-[:octicons-tag-24: insiders-3.1.0][Insiders]
+[:octicons-tag-24: insiders-3.1.0][Insiders] ·
+:octicons-beaker-24: Experimental
 
-#### Excluding pages
-
-Sometimes, it's necessary to exclude a page from the search index, which can be
-achieved by adding the following front matter using the [Metadata][21]
-extension:
+When [Metadata] is enabled, pages can be excluded from search with custom front 
+matter, removing them from the index. Add the following lines at the top of a 
+Markdown file:
 
 ``` bash
 ---
@@ -295,11 +374,11 @@ search:
 
 #### Excluding sections
 
-With the help of the [Attribute List][22] extension, it's possible to exclude a
-specific section of a page from search by adding the `{ data-search-exclude }`
-pragma after the Markdown heading:
+When [Attribute Lists] is enabled, specific sections of pages can be excluded
+from search by adding the `{ data-search-exclude }` pragma after a Markdown
+heading:
 
-=== "`docs/page.md`"
+=== ":octicons-file-code-16: docs/page.md"
 
     ``` markdown
     # Document title
@@ -313,7 +392,7 @@ pragma after the Markdown heading:
     The content of this section is excluded
     ```
 
-=== "`search_index.json`"
+=== ":octicons-codescan-16: search_index.json"
 
     ``` json
     {
@@ -333,15 +412,15 @@ pragma after the Markdown heading:
     }
     ```
 
-  [22]: ../reference/images.md#attribute-list
+  [Attribute Lists]: extensions/python-markdown.md#attribute-lists
 
 #### Excluding blocks
 
-If even more fine-grained control is needed, content blocks can be excluded
-from search sections with a `{ data-search-exclude }` pragma, so they will not
-be included in the search index:
+When [Attribute Lists] is enabled, specific sections of pages can be excluded
+from search by adding the `{ data-search-exclude }` pragma after a Markdown
+inline- or block-level element:
 
-=== "`docs/page.md`"
+=== ":octicons-file-code-16: docs/page.md"
 
     ``` markdown
     # Document title
@@ -352,7 +431,7 @@ be included in the search index:
     { data-search-exclude }
     ```
 
-=== "`search_index.json`"
+=== ":octicons-codescan-16: search_index.json"
 
     ``` json
     {
@@ -370,8 +449,8 @@ be included in the search index:
 ## Customization
 
 The search implementation of Material for MkDocs is probably its most
-sophisticated feature, as it tries to balance a _great typeahead experience_,
-_good performance_, _accessibility_, and a result list that is _easy to scan_.
+sophisticated feature, as it tries to balance a great typeahead experience,
+good performance, accessibility, and a result list that is easy to scan.
 This is where Material for MkDocs deviates from other themes.
 
 The following section explains how search can be customized to tailor it to
@@ -379,12 +458,9 @@ your needs.
 
 ### Query transformation
 
-[:octicons-file-code-24: Source][23] ·
-:octicons-mortar-board-24: Difficulty: _easy_
-
 When a user enters a query into the search box, the query is pre-processed
 before it is submitted to the search index. Material for MkDocs will apply the
-following transformations, which can be customized by [extending the theme][24]:
+following transformations, which can be customized by [extending the theme]:
 
 ``` ts
 export function defaultTransform(query: string): string {
@@ -417,7 +493,7 @@ export function defaultTransform(query: string): string {
 If you want to switch to the default behavior of the `mkdocs` and `readthedocs`
 themes, both of which don't transform the query prior to submission, or
 customize the `transform` function, you can do this by [overriding the
-`config` block][25]:
+`config` block][overriding blocks]:
 
 ``` html
 {% extends "base.html" %}
@@ -437,19 +513,15 @@ customize the `transform` function, you can do this by [overriding the
 The `transform` function will receive the query string as entered by the user
 and must return the processed query string to be submitted to the search index.
 
-  [23]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/transform/index.ts
-  [24]: ../customization.md#extending-the-theme
-  [25]: ../customization.md#overriding-blocks
+  [extending the theme]: ../customization.md#extending-the-theme
+  [overriding blocks]: ../customization.md#overriding-blocks
 
 ### Custom search
 
-[:octicons-file-code-24: Source][26] ·
-:octicons-mortar-board-24: Difficulty: _challenging_
-
-Material for MkDocs implements search as part of a [web worker][27]. If you
+Material for MkDocs implements search as part of a [web worker]. If you
 want to switch the web worker with your own implementation, e.g. to submit
 search to an external service, you can add a custom JavaScript file to the
-`docs` directory and [override the `config` block][24]:
+`docs` directory and [override the `config` block][overriding blocks]:
 
 ``` html
 {% block config %}
@@ -463,12 +535,12 @@ search to an external service, you can add a custom JavaScript file to the
 ```
 
 Communication with the search worker is implemented using a designated message
-format using _discriminated unions_, i.e. through the `type` property of the
+format using discriminated unions, i.e. through the `type` property of the
 message. See the following interface definitions to learn about the message
 formats:
 
-- [:octicons-file-code-24: `SearchMessage`][28]
-- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][29]
+- [:octicons-file-code-24: `SearchMessage`][SearchMessage]
+- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][SearchIndex]
 
 The sequence and direction of messages is rather intuitive:
 
@@ -477,7 +549,6 @@ The sequence and direction of messages is rather intuitive:
 - :octicons-arrow-right-24: `SearchQueryMessage`
 - :octicons-arrow-left-24: `SearchResultMessage`
 
-  [26]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker
-  [27]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-  [28]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/message/index.ts
-  [29]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/_/index.ts
+  [web worker]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+  [SearchMessage]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/message/index.ts
+  [SearchIndex]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/_/index.ts

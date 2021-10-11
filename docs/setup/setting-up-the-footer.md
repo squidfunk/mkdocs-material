@@ -15,7 +15,7 @@ configured via `mkdocs.yml`.
 
 ### Social links
 
-[:octicons-tag-24: 1.0.0][Social links support] ·
+[:octicons-tag-24: 1.0.0][social support] ·
 :octicons-milestone-24: Default: _none_
 
 Social links are rendered next to the copyright notice as part of the 
@@ -33,10 +33,10 @@ For each entry, the following settings are available:
 
 `icon`{ #social-icon }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
-    This field must point to a valid icon path referencing [any icon bundled
-    with the theme][custom icons], or the build will not succeed. Some popular
-    choices:
+:   [:octicons-tag-24: 5.0.0][social.icon support] · :octicons-milestone-24:
+    Default: _none_ · :octicons-alert-24: Required – This field must point to an 
+    icon path referencing [any icon bundled with the theme][custom icons], or
+    the build will not succeed. Some popular choices:
 
     * :fontawesome-brands-behance: – `fontawesome/brands/behance`
     * :fontawesome-brands-docker: – `fontawesome/brands/docker`
@@ -48,9 +48,6 @@ For each entry, the following settings are available:
     * :fontawesome-brands-product-hunt: – `fontawesome/brands/product-hunt`
     * :fontawesome-brands-slack: – `fontawesome/brands/slack`
     * :fontawesome-brands-twitter: – `fontawesome/brands/twitter`
-
-  [Social links support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
-  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
 `link`{ #social-link }
 
@@ -78,9 +75,10 @@ For each entry, the following settings are available:
 
 `name`{ #social-name }
 
-:   :octicons-milestone-24: Default: _domain name from_ `link`_, if available_ –
-    This field is used as the link's `title` attribute and can be set to a 
-    discernable name to improve accessibility:
+:   [:octicons-tag-24: 5.1.5][social.name support] · :octicons-milestone-24: 
+    Default: _domain name from_ `link`_, if available_ – This field is used as
+    the link's `title` attribute and can be set to a  discernable name to
+    improve accessibility:
 
     ``` yaml
     extra:
@@ -89,6 +87,11 @@ For each entry, the following settings are available:
           link: https://twitter.com/squidfunk
           name: squidfunk on Twitter
     ```
+
+  [social support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
+  [social.icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
+  [social.name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.1.5
+  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
 ### Copyright notice
 

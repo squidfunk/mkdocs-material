@@ -60,9 +60,10 @@ The following configuration options are available:
 
 `cards_color`{ #cards-color }
 
-:   :octicons-milestone-24: Default: [primary color][palette.primary] + header
-    text color – This option specifies which colors to use for the background
-    `fill` and foreground `text` when generating the social card:
+:   [:octicons-tag-24: insiders-2.13.0][Insiders] · :octicons-milestone-24:
+    Default: [primary color][palette.primary] – This option specifies which
+    colors to use for the background `fill` and foreground `text` when
+    generating the social card:
 
     ``` yaml
     plugins:

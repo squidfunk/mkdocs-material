@@ -231,7 +231,7 @@ This feature flag is not compatible with [`toc.integrate`][toc.integrate].
 [:octicons-tag-24: 6.2.0][toc.integrate support] ·
 :octicons-unlock-24: Feature flag
 
-When navigation integration for the table of contents is enabled, it is always
+When navigation integration for the [table of contents] is enabled, it is always
 rendered as part of the navigation sidebar on the left. Add the following lines
 to `mkdocs.yml`:
 
@@ -252,6 +252,7 @@ theme:
 This feature flag is not compatible with [`navigation.indexes`]
 [navigation.indexes].
 
+  [table of contents]: extensions/python-markdown.md#table-of-contents
   [toc.integrate support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [toc.integrate enabled]: ../assets/screenshots/toc-integrate.png
   [toc.integrate disabled]: ../assets/screenshots/navigation-tabs.png

@@ -76,7 +76,7 @@ The following languages are supported:
 - `zh` – Chinese (Simplified)
 - `zh-Hant` – Chinese (Traditional)
 - `zh-TW` – Chinese (Taiwanese)
-- [Add language](https://bit.ly/38F5RCa)
+- [Add language]
 
 </div>
 
@@ -85,6 +85,7 @@ the default slug function works. Consider using a [Unicode-aware slug function].
 
   [language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.12.0
   [Unicode-aware slug function]: setting-up-navigation.md#slugify
+  [Add language]: https://bit.ly/38F5RCa
 
 ### Site language selector
 

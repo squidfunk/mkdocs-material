@@ -198,7 +198,8 @@ The following configuration options are supported:
 
 `enable_creation_date`{ #enable-creation-date }
 
-:   :octicons-milestone-24: Default: `false` – Enables the display of the
+:   [:octicons-tag-24: 7.1.4][enable_creation_date support] ·
+    :octicons-milestone-24: Default: `false` – Enables the display of the
     creation date of the file associated with the page next to the last updated
     date at the bottom of the page:
 
@@ -215,3 +216,4 @@ them at your own risk.
 
   [git-revision-date-localized support]: https://github.com/squidfunk/mkdocs-material/releases/tag/4.6.0
   [git-revision-date-localized]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+  [enable_creation_date support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.4

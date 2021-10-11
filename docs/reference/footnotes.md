@@ -63,7 +63,7 @@ _Example_:
 
 _Result_:
 
-[Jump to footnote at the bottom of the page](#fn:1)
+[:octicons-arrow-down-24: Jump to footnote](#fn:1)
 
   [^1]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
@@ -87,4 +87,4 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus
     auctor massa, nec semper lorem quam in massa.
 
-[Jump to footnote at the bottom of the page](#fn:2)
+[:octicons-arrow-down-24: Jump to footnote](#fn:2)
