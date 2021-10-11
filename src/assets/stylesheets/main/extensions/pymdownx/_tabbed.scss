@@ -176,6 +176,7 @@
     // Tab label
     > label {
       z-index: 1;
+      flex-shrink: 0;
       width: auto;
       padding: px2em(12px, 12.8px) 1.25em px2em(10px, 12.8px);
       color: var(--md-default-fg-color--light);

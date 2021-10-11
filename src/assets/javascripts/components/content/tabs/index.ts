@@ -52,7 +52,7 @@ export interface ContentTabs {
 export function watchContentTabs(
   el: HTMLElement
 ): Observable<ContentTabs> {
-  if (!el.classList.contains(".tabbed-alternate"))
+  if (!el.classList.contains("tabbed-alternate"))
     return NEVER
   else
     return merge(...getElements(":scope > input", el)
@@ -77,7 +77,11 @@ export function mountContentTabs(
 ): Observable<Component<ContentTabs>> {
   const internal$ = new Subject<ContentTabs>()
   internal$.subscribe(({ active }) => {
-    active.scrollIntoView({ behavior: "smooth",  block: "nearest" })
+    active.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "start"
+    })
   })
 
   /* Create and return component */
