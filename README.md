@@ -175,7 +175,7 @@ For other installation methods, configuration options, and a demo, visit
 [OpenFaaS](https://docs.openfaas.com/),
 [Pi-Hole](https://docs.pi-hole.net/),
 [Pydantic](https://pydantic-docs.helpmanual.io/),
-[Renovatebot](https://docs.renovatebot.com/),
+[Renovate](https://docs.renovatebot.com/),
 [Traefik](https://docs.traefik.io/),
 [Vapor](https://docs.vapor.codes/),
 [ZeroNet](https://zeronet.io/docs/),
