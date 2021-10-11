@@ -115,8 +115,9 @@ The following configuration options are supported:
 
 `prebuild_index`{ #search-prebuild-index }
 
-:   :octicons-milestone-24: Default: `false` · :octicons-archive-24: Deprecated
-    · :octicons-trash-24: 8.0.0 – MkDocs can generate a [prebuilt index] of all pages during
+:   [:octicons-tag-24: 7.2.0][prebuilt index support] · :octicons-archive-24:
+    Deprecated · :octicons-trash-24: 8.0.0 · :octicons-milestone-24: Default:
+    `false` – MkDocs can generate a [prebuilt index] of all pages during
     build time, which provides performance improvements at the cost of more
     bandwidth, as it reduces the build time of the search index:
 
@@ -145,6 +146,7 @@ them at your own risk.
   [lunr's default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
   [site language]: changing-the-language.md#site-language
   [tokenizer lookahead]: #tokenizer-lookahead
+  [prebuilt index support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [prebuilt index]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
   [50% smaller]: ../blog/2021/search-better-faster-smaller.md#benchmarks
 

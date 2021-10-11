@@ -60,7 +60,7 @@ matches the new structure:
 - If you've overridden a __template__, check the respective `*.html` file for
   potential changes
 
-??? quote "`base.html`"
+=== ":octicons-file-code-24: base.html"
 
     ``` diff
     @@ -61,7 +61,7 @@
@@ -149,7 +149,7 @@ matches the new structure:
           {% endfor %}
     ```
 
-??? quote "`partials/footer.html`"
+=== ":octicons-file-code-24: partials/footer.html"
 
     ``` diff
     -    <div class="md-footer-nav">
@@ -221,7 +221,7 @@ matches the new structure:
         <div class="md-footer-meta__inner md-grid">
     ```
 
-??? quote "`partials/header.html`"
+=== ":octicons-file-code-24: partials/header.html"
 
     ``` diff
     @@ -6,21 +6,21 @@
@@ -294,7 +294,7 @@ matches the new structure:
 
     ```
 
-??? quote "`partials/source.html`"
+=== ":octicons-file-code-24: partials/source.html"
 
     ``` diff
     @@ -4,5 +4,5 @@
@@ -306,7 +306,7 @@ matches the new structure:
         {% include ".icons/" ~ icon ~ ".svg" %}
     ```
 
-??? quote "`partials/toc.html`"
+=== ":octicons-file-code-24: partials/toc.html"
 
     ``` diff
     @@ -12,7 +12,7 @@
@@ -332,11 +332,8 @@ matches the new structure:
 - Added display of missing query terms to search results
 - Reduced size of vendor bundle by 25% (84kb → 67kb)
 - Reduced size of the Docker image to improve CI build performance
-- Removed hero partial in favor of [custom implementation][1]
-- Removed [deprecated front matter features][2]
-
-  [1]: deprecations.md#hero
-  [2]: deprecations.md#front-matter
+- Removed hero partial in favor of custom implementation
+- Removed deprecated front matter features
 
 ### Changes to `mkdocs.yml`
 
@@ -346,8 +343,8 @@ does not contain the key, you can skip it.
 
 #### `theme.features`
 
-All feature flags that can be set from `mkdocs.yml`, like [tabs][3] and
-[instant loading][4], are now prefixed with the name of the component or
+All feature flags that can be set from `mkdocs.yml`, like [tabs] and
+[instant loading], are now prefixed with the name of the component or
 function they apply to, e.g. `navigation.*`:
 
 === "6.x"
@@ -368,8 +365,8 @@ function they apply to, e.g. `navigation.*`:
         - instant
     ```
 
-  [3]: setup/setting-up-navigation.md#navigation-tabs
-  [4]: setup/setting-up-navigation.md#instant-loading
+  [tabs]: setup/setting-up-navigation.md#navigation-tabs
+  [instant loading]: setup/setting-up-navigation.md#instant-loading
 
 ### Changes to `*.html` files
 
@@ -381,7 +378,7 @@ matches the new structure:
 - If you've overridden a __template__, check the respective `*.html` file for
   potential changes
 
-??? quote "`base.html`"
+=== ":octicons-file-code-24: base.html"
 
     ``` diff
     @@ -22,13 +22,6 @@
@@ -551,7 +548,7 @@ matches the new structure:
           {%- endfor -%}
     ```
 
-??? quote "`partials/hero.html`"
+=== ":octicons-file-code-24: partials/hero.html"
 
     ``` diff
     @@ -1,12 +0,0 @@
@@ -569,7 +566,7 @@ matches the new structure:
     -</div>
     ```
 
-??? quote "`partials/source-link`"
+=== ":octicons-file-code-24: partials/source-link"
 
     ``` diff
     -{#-
@@ -593,23 +590,23 @@ matches the new structure:
 ### What's new?
 
 - Reactive architecture – try `#!js app.dialog$.next("Hi!")` in the console
-- [Instant loading][4] – make Material behave like a Single Page Application
-- Improved CSS customization with [CSS variables][5] – set your brand's colors
+- [Instant loading] – make Material behave like a Single Page Application
+- Improved CSS customization with [CSS variables] – set your brand's colors
 - Improved CSS resilience, e.g. proper sidebar locking for customized headers
-- Improved [icon integration][6] and configuration – now including over 5k icons
+- Improved [icon integration] and configuration – now including over 5k icons
 - Added possibility to use any icon for logo, repository and social links
 - Search UI does not freeze anymore (moved to web worker)
 - Search index built only once when using instant loading
 - Improved extensible keyboard handling
-- Support for [prebuilt search indexes][7]
+- Support for [prebuilt search indexes]
 - Support for displaying stars and forks for GitLab repositories
 - Support for scroll snapping of sidebars and search results
 - Reduced HTML and CSS footprint due to deprecation of Internet Explorer support
 - Slight facelifting of some UI elements (Admonitions, tables, ...)
 
-  [5]: setup/changing-the-colors.md#custom-colors
-  [6]: setup/changing-the-logo-and-icons.md#icons
-  [7]: setup/setting-up-site-search.md#built-in-search
+  [CSS variables]: setup/changing-the-colors.md#custom-colors
+  [icon integration]: setup/changing-the-logo-and-icons.md#icons
+  [prebuilt search indexes]: setup/setting-up-site-search.md#built-in-search
 
 ### Changes to `mkdocs.yml`
 
@@ -742,7 +739,7 @@ matches the new structure:
 - If you've overridden a __template__, check the respective `*.html` file for
   potential changes
 
-??? quote "`base.html`"
+=== ":octicons-file-code-24: base.html"
 
     ``` diff
     @@ -2,7 +2,6 @@
@@ -993,7 +990,7 @@ matches the new structure:
           {% endfor %}
     ```
 
-??? quote "`partials/footer.html`"
+=== ":octicons-file-code-24: partials/footer.html"
 
     ``` diff
     @@ -5,34 +5,34 @@
@@ -1044,7 +1041,7 @@ matches the new structure:
             {% endif %}
     ```
 
-??? quote "`partials/header.html`"
+=== ":octicons-file-code-24: partials/header.html"
 
     ``` diff
     @@ -2,51 +2,43 @@
@@ -1135,7 +1132,7 @@ matches the new structure:
     </header>
     ```
 
-??? quote "`partials/hero.html`"
+=== ":octicons-file-code-24: partials/hero.html"
 
     ``` diff
     @@ -1,9 +1,8 @@
@@ -1151,7 +1148,7 @@ matches the new structure:
     <div class="{{ class }}" data-md-component="hero">
     ```
 
-??? quote "`partials/language.html`"
+=== ":octicons-file-code-24: partials/language.html"
 
     ``` diff
     @@ -3,12 +3,4 @@
@@ -1170,7 +1167,7 @@ matches the new structure:
     +{% macro t(key) %}{{ lang.t(key) | default(fallback.t(key)) }}{% endmacro %}
     ```
 
-??? quote "`partials/logo.html`"
+=== ":octicons-file-code-24: partials/logo.html"
 
     ``` diff
     @@ -0,0 +1,9 @@
@@ -1185,7 +1182,7 @@ matches the new structure:
     +{% endif %}
     ```
 
-??? quote "`partials/nav-item.html`"
+=== ":octicons-file-code-24: partials/nav-item.html"
 
     ``` diff
     @@ -14,9 +14,15 @@
@@ -1217,7 +1214,7 @@ matches the new structure:
         <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}" class="md-nav__link md-nav__link--active">
     ```
 
-??? quote "`partials/nav.html`"
+=== ":octicons-file-code-24: partials/nav.html"
 
     ``` diff
     @@ -1,14 +1,10 @@
@@ -1241,7 +1238,7 @@ matches the new structure:
       </label>
     ```
 
-??? quote "`partials/search.html`"
+=== ":octicons-file-code-24: partials/search.html"
 
     ``` diff
     @@ -6,15 +6,18 @@
@@ -1269,7 +1266,7 @@ matches the new structure:
               </div>
     ```
 
-??? quote "`partials/social.html`"
+=== ":octicons-file-code-24: partials/social.html"
 
     ``` diff
     @@ -3,9 +3,12 @@
@@ -1289,7 +1286,7 @@ matches the new structure:
     {% endif %}
     ```
 
-??? quote "`partials/source-date.html`"
+=== ":octicons-file-code-24: partials/source-date.html"
 
     ``` diff
     @@ -0,0 +1,15 @@
@@ -1310,7 +1307,7 @@ matches the new structure:
     +</div>
     ```
 
-??? quote "`partials/source-link.html`"
+=== ":octicons-file-code-24: partials/source-link.html"
 
     ``` diff
     @@ -0,0 +1,13 @@
@@ -1329,7 +1326,7 @@ matches the new structure:
     +</a>
     ```
 
-??? quote "`partials/source.html`"
+=== ":octicons-file-code-24: partials/source.html"
 
     ``` diff
     @@ -2,24 +2,11 @@
@@ -1364,7 +1361,7 @@ matches the new structure:
       </div>
     ```
 
-??? quote "`partials/tabs-item.html`"
+=== ":octicons-file-code-24: partials/tabs-item.html"
 
     ``` diff
     @@ -1,7 +1,7 @@
@@ -1378,7 +1375,7 @@ matches the new structure:
           <a href="{{ nav_item.url | url }}" class="md-tabs__link md-tabs__link--active">
     ```
 
-??? quote "`partials/tabs.html`"
+=== ":octicons-file-code-24: partials/tabs.html"
 
     ``` diff
     @@ -5,7 +5,7 @@
@@ -1392,7 +1389,7 @@ matches the new structure:
           {% for nav_item in nav %}
     ```
 
-??? quote "`partials/toc-item.html`"
+=== ":octicons-file-code-24: partials/toc-item.html"
 
     ``` diff
     @@ -6,7 +6,7 @@
@@ -1406,7 +1403,7 @@ matches the new structure:
               {% include "partials/toc-item.html" %}
     ```
 
-??? quote "`partials/toc.html`"
+=== ":octicons-file-code-24: partials/toc.html"
 
     ``` diff
     @@ -2,35 +2,22 @@
