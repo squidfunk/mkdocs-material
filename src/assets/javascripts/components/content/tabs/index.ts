@@ -80,7 +80,7 @@ export function mountContentTabs(
     // TODO: Hack, scrollIntoView is too buggy
     const container = active.parentElement!
     if (
-      active.offsetLeft + active.offsetWidth > container.offsetWidth ||
+      active.offsetLeft + active.offsetWidth > container.scrollLeft + container.offsetWidth ||
       active.offsetLeft                      < container.scrollLeft
     )
       container.scrollTo({

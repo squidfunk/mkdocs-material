@@ -156,7 +156,7 @@
   // Tabbed labels
   .tabbed-labels {
     display: flex;
-    max-width: 100vw;
+    max-width: 100%;
     overflow: auto;
     box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest) inset;
     scroll-snap-type: x proximity;
@@ -196,7 +196,7 @@
       @media print {
 
         // Ensure correct order of labels
-        @for $i from 1 through 10 {
+        @for $i from 1 through 20 {
           &:nth-child(#{$i}) {
             order: $i;
           }
@@ -215,6 +215,7 @@
 
     // Top-level tabbed labels
     > .tabbed-alternate .tabbed-labels {
+      max-width: 100vw;
       margin: 0 px2rem(-16px);
       padding: 0 px2rem(16px);
       scroll-padding: 0 px2rem(16px);
@@ -247,7 +248,7 @@
         display: block;
 
         // Ensure correct order of containers
-        @for $i from 1 through 10 {
+        @for $i from 1 through 20 {
           &:nth-child(#{$i}) {
             order: $i;
           }
@@ -275,7 +276,7 @@
     }
 
     // Tab label states
-    @for $i from 10 through 1 {
+    @for $i from 20 through 1 {
       input:nth-child(#{$i}) {
 
         // Tab is active
