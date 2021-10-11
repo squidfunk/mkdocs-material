@@ -20,11 +20,12 @@ fine-grained control.__
 <span>
 :octicons-calendar-24: September 26, 2021 ·
 :octicons-clock-24: 5 min read ·
-[:octicons-tag-24: 7.3.0+insiders-3.1.1](../../insiders/changelog.md#311-_-september-26-2021)
+[:octicons-tag-24: 7.3.0+insiders-3.1.1][insiders-3.1.1]
 </span>
 </aside>
 
   [@squidfunk avatar]: https://avatars.githubusercontent.com/u/932156
+  [insiders-3.1.1]: ../../insiders/changelog.md#3.1.1
 
 ---
 

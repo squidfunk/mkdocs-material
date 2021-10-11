@@ -25,7 +25,7 @@ control.__
 <span>
 :octicons-calendar-24: September 26, 2021 ·
 :octicons-clock-24: 5 min read ·
-[:octicons-tag-24: 7.3.0+insiders-3.1.1](../../insiders/changelog.md#311-_-september-26-2021)
+[:octicons-tag-24: 7.3.0+insiders-3.1.1][insiders-3.1.1]
 </span>
 </aside>
 
@@ -44,6 +44,7 @@ by the built-in search functionality.
 [:octicons-arrow-right-24: Continue reading][Excluding content from search]
 
   [Excluding content from search]: 2021/excluding-content-from-search.md
+  [insiders-3.1.1]: ../insiders/changelog.md#3.1.1
 
 ## [Search: better, faster, smaller]
 
@@ -58,7 +59,7 @@ smaller at the same time.__
 <span>
 :octicons-calendar-24: September 13, 2021 ·
 :octicons-clock-24: 15 min read ·
-[:octicons-tag-24: 7.2.6+insiders-3.0.0](../../insiders/changelog.md#300-_-september-13-2021)
+[:octicons-tag-24: 7.2.6+insiders-3.0.0][insiders-3.0.0]
 </span>
 </aside>
 
@@ -77,3 +78,4 @@ what's about to come.
 [:octicons-arrow-right-24: Continue reading][Search: better, faster, smaller]
 
   [Search: better, faster, smaller]: 2021/search-better-faster-smaller.md
+  [insiders-3.0.0]: ../insiders/changelog.md#3.0.0
