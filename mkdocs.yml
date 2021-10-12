@@ -92,6 +92,7 @@ plugins:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
         upgrading.md: upgrade.md
+        reference/variables.md: https://mkdocs-macros-plugin.readthedocs.io/
         sponsorship.md: insiders/index.md
   - minify:
       minify_html: true
