@@ -1,3 +1,9 @@
+mkdocs-material-7.3.2+insiders-3.1.3 (2021-10-12)
+
+  * Added warnings to search plugin for unsupported options and syntax
+  * Fixed #3503: Search sometimes returns entire page
+  * Fixed #3089: Single-line code annotations disappear when printing
+
 mkdocs-material-7.3.3 (2021-10-11)
 
   * Rewrite of entire documentation
@@ -17,7 +23,7 @@ mkdocs-material-7.3.2 (2021-10-06)
   * Deprecated prebuilding of search index
   * Improved graceful handling of broken search for file://
   * Added minimum Jinja version to list of requirements
-  * Fixed #3071: section index pages render empty directories
+  * Fixed #3071: Section index pages render empty directories
   * Fixed margin issues when using navigation tabs (7.3.1 regression)
   * Fixed search placeholder sometimes being shown too early
 

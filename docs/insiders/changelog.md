@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 3.1.3 <small>_ October 12, 2021</small> { id="3.1.3" }
+
+- Added warnings to search plugin for unsupported options and syntax
+- Fixed #3503: Search sometimes returns entire page
+- Fixed #3089: Single-line code annotations disappear when printing
+
 ### 3.1.2 <small>_ October 6, 2021</small> { id="3.1.2" }
 
 - Fixed incorrect path separators for social cards on Windows
