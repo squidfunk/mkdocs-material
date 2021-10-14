@@ -104,6 +104,8 @@ You can cancel your sponsorship anytime.[^4]
 
 **Special thanks** to our **premium sponsors**:
 
+[![KX]](https://kx.com/){ target=_blank }
+&nbsp;&nbsp;
 [![Hummingbot]](https://hummingbot.io/){ target=_blank }
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![Basler]](https://docs.baslerweb.com/){ target=_blank }
@@ -112,6 +114,7 @@ You can cancel your sponsorship anytime.[^4]
 
 </div>
 
+  [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/kx.svg
   [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/hummingbot.png
   [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/basler.png
   [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg
