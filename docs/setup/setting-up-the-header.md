@@ -50,6 +50,6 @@ block][overriding blocks], which is empty by default:
 {% endblock %}
 ```
 
-  [Announcement bar support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
+  [Announcement bar support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [extend the theme]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
