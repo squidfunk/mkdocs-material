@@ -1,3 +1,10 @@
+mkdocs-material-7.3.4+insiders-3.1.4 (2021-10-17)
+
+  * Fixed #2974: Text cropped with other fonts than Roboto in social plugin
+  * Fixed #3099: Encoding problems with non-latin character in social plugin
+  * Fixed #3112: Japanese segmenter not executed as part of new tokenizer
+  * Fixed tags (front matter) appearing in search with disabled tags plugin
+
 mkdocs-material-7.3.4 (2021-10-17)
 
   * Bumped MkDocs version to 1.2.3 to mitigate CVE-2021-40978

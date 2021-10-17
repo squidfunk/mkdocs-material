@@ -6,6 +6,13 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 3.1.4 <small>_ October 17, 2021</small> { id="3.1.4" }
+
+- Fixed #2974: Text cropped with other fonts than `Roboto` in social plugin
+- Fixed #3099: Encoding problems with non-latin character in social plugin
+- Fixed #3112: Japanese segmenter not executed as part of new tokenizer
+- Fixed tags (front matter) appearing in search with disabled tags plugin
+
 ### 3.1.3 <small>_ October 12, 2021</small> { id="3.1.3" }
 
 - Added warnings to search plugin for unsupported options and syntax
