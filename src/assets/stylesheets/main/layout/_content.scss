@@ -45,7 +45,11 @@
 
       // Sidebar with navigation is visible
       .md-sidebar--primary:not([hidden]) ~ .md-content > & {
-        margin-left: px2rem(24px);
+
+        // Adjust for left-to-right languages
+        [dir="ltr"] & {
+          margin-left: px2rem(24px);
+        }
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
@@ -55,7 +59,11 @@
 
       // Sidebar with table of contents is visible
       .md-sidebar--secondary:not([hidden]) ~ .md-content > & {
-        margin-right: px2rem(24px);
+
+        // Adjust for left-to-right languages
+        [dir="ltr"] & {
+          margin-right: px2rem(24px);
+        }
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
