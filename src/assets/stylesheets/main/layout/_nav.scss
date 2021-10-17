@@ -654,14 +654,28 @@
     }
 
     // Modifier for when table of contents is rendered in primary navigation
-    &--integrated &__link[for="__toc"] ~ .md-nav {
-      display: block;
-      margin-bottom: 1.25em;
-      border-left: px2rem(1px) solid var(--md-primary-fg-color);
+    &--integrated > .md-nav__list > .md-nav__item--active {
 
-      // Hide navigation title
-      > .md-nav__title {
-        display: none;
+      // Add spacing to container for non-nested navigation items
+      &:not(.md-nav__item--nested) {
+        padding: 0 px2rem(12px);
+
+        // Remove padding as it's given by container
+        > .md-nav__link {
+          padding: 0;
+        }
+      }
+
+      // Show integrated table of contents
+      .md-nav--secondary {
+        display: block;
+        margin-bottom: 1.25em;
+        border-left: px2rem(1px) solid var(--md-primary-fg-color);
+
+        // Hide table of contents title
+        > .md-nav__title {
+          display: none;
+        }
       }
     }
   }
