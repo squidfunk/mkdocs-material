@@ -11,7 +11,7 @@ template: overrides/main.html
 - Bumped MkDocs version to 1.2.3 to mitigate [CVE-2021-40978]
 - Fixed spacing issues when using integrate table of contents with tabs
 - Fixed some spacings issues for right-to-left languages
-- Fixed race condition in search intialization
+- Fixed race condition in search initialization
 
   [CVE-2021-40978]: https://nvd.nist.gov/vuln/detail/CVE-2021-40978
 
