@@ -62,6 +62,9 @@
 <p id="premium-sponsors" align="center"><strong>Special thanks</strong> to our <strong>premium sponsors</strong>:</p>
 <p>&nbsp;</p>
 <p align="center">
+  <a href="https://www.manticoregames.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/manticoregames.png" height="40"
+  /></a>&nbsp;&nbsp;
   <a href="https://kx.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/kx.svg" height="40"
   /></a>&nbsp;&nbsp;

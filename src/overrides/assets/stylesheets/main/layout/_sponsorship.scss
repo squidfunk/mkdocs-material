@@ -36,9 +36,30 @@
       text-align: center;
     }
 
-    // Images
+    // Premium sponsor image
     img {
-      height: px2rem(40px);
+      height: px2rem(60px);
+    }
+
+    // Premium sponsor list
+    p:last-child {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      // Premium sponsor link
+      > a {
+        display: block;
+        flex-shrink: 0;
+        padding: px2rem(10px) px2rem(20px);
+        transition: transform 125ms;
+
+        // Premium sponsor item on focus/hover
+        &:focus,
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
     }
   }
 
@@ -48,7 +69,13 @@
     // Sponsorship list
     &__list {
       margin: 2em 0;
-      overflow: auto;
+
+      // Clearfix, because we can't use overflow: auto
+      &::after {
+        display: block;
+        clear: both;
+        content: "";
+      }
     }
 
     // Sponsorship item
@@ -91,7 +118,7 @@
         display: block;
         width: 100%;
         height: auto;
-        filter: grayscale(100%);
+        filter: grayscale(100%) opacity(75%);
         transition: filter 125ms;
       }
     }

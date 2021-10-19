@@ -104,16 +104,15 @@ You can cancel your sponsorship anytime.[^4]
 
 **Special thanks** to our **premium sponsors**:
 
-[![KX]](https://kx.com/){ target=_blank }
-&nbsp;&nbsp;
-[![Hummingbot]](https://hummingbot.io/){ target=_blank }
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![Basler]](https://docs.baslerweb.com/){ target=_blank }
-&nbsp;&nbsp;
-[![Cirrus CI]](https://cirrus-ci.org/){ target=_blank }
+[![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
+[![KX]](https://kx.com/){ target=_blank title="KX Systems" }
+[![Hummingbot]](https://hummingbot.io/){ target=_blank title="Hummingbot" }
+[![Basler]](https://docs.baslerweb.com/){ target=_blank title="Basler" }
+[![Cirrus CI]](https://cirrus-ci.org/){ target=_blank title="Cirrus CI" }
 
 </div>
 
+  [Manticore Games]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/manticoregames.png
   [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/kx.svg
   [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/hummingbot.png
   [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/basler.png
