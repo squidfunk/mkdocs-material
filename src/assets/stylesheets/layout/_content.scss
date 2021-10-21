@@ -26,6 +26,9 @@
 
 // Content container
 .md-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   // // [tablet landscape +]: Add space for table of contents
   // @include break-from-device(tablet landscape) {
@@ -50,6 +53,14 @@
 
   // Define spacing
   &__inner {
+    // Ensure that md-content__innner occupies available space to push footer to bottom of viewport.
+    // Set initial height to 100vh minus:
+    // * header height
+    // * footer height
+    // * top margin of md-main__inner
+    // * top margin of md-content__inner
+    flex-basis: calc(100vh - 26.65rem);
+
     margin: 0 px2rem(16px) px2rem(24px);
     padding-top: px2rem(12px);
 
