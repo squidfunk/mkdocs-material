@@ -20,6 +20,9 @@
 /// DEALINGS
 ////
 
+@use "sass:color";
+@use "sass:list";
+
 // ----------------------------------------------------------------------------
 // Variables
 // ----------------------------------------------------------------------------
@@ -116,7 +119,7 @@ $admonitions: (
     margin: 0 px2rem(-12px) 0 px2rem(-16px);
     padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
     font-weight: 700;
-    background-color: transparentize($clr-blue-a200, 0.9);
+    background-color: color.adjust($clr-blue-a200, $alpha: -0.9);
     border-left: px2rem(4px) solid $clr-blue-a200;
 
     // Adjust for right-to-left languages
@@ -158,8 +161,8 @@ $admonitions: (
 // ----------------------------------------------------------------------------
 
 @each $names, $props in $admonitions {
-  $name: nth($names, 1);
-  $tint: nth($props, 2);
+  $name: list.nth($names, 1);
+  $tint: list.nth($props, 2);
 
   // Admonition flavour
   .md-typeset .admonition.#{$name} {
@@ -168,7 +171,7 @@ $admonitions: (
 
   // Admonition flavour title
   .md-typeset .#{$name} > .admonition-title {
-    background-color: transparentize($tint, 0.9);
+    background-color: color.adjust($tint, $alpha: -0.9);
     border-color: $tint;
 
     // Admonition icon

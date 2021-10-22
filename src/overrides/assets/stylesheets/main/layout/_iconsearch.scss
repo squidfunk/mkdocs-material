@@ -121,8 +121,8 @@
         height: px2rem(18px);
 
         // Slate theme, i.e. dark mode
-        [data-md-color-scheme="slate"] &[src*=squidfunk] {
-          filter: invert(1);
+        [data-md-color-scheme="slate"] &[src*="squidfunk"] {
+          filter: invert(1); /* stylelint-disable-line */
         }
       }
     }
