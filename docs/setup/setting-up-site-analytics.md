@@ -68,8 +68,8 @@ complicated manual setup. If you want to set up site search tracking yourself,
 :octicons-milestone-24: Default: _none_
 
 Material for MkDocs ships a native and extensible cookie consent form which
-asks the user for his consent prior to sending any analytics. Add the following
-to `mkdocs.yml`:
+asks the user for his consent prior to sending any data via analytics. Add the
+following to `mkdocs.yml`:
 
 ``` yaml
 extra:
