@@ -236,6 +236,19 @@ The following configuration options are supported:
               permalink: ⚓︎
         ```
 
+`permalink_title`{ #toc-permalink-title }
+
+:   :octicons-milestone-24: Default: `Permanent link` – This option sets the
+    title of the anchor link which is shown on hover and read by screen readers.
+    For accessibility reasons, it might be beneficial to change it to a more 
+    discernable name, stating that the anchor links to the section itself:
+
+    ``` yaml
+    markdown_extensions:
+      - toc:
+          permalink_title: Anchor link to this section for reference
+    ```
+
 `slugify`{ #toc-slugify }
 
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for
