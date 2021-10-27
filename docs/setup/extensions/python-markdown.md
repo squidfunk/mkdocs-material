@@ -215,8 +215,9 @@ The following configuration options are supported:
 
 `title`{ #toc-title }
 
-:   :octicons-milestone-24: Default: _automatically set_ – This option sets the
-    title of the table of contents navigation in the right sidebar, which is
+:   [:octicons-tag-24: 7.3.5][title support] ·
+    :octicons-milestone-24: Default: _automatically set_ – This option sets the
+    title of the table of contents in the right navigation sidebar, which is
     normally automatically sourced from the translations for the [site language]
     as set in `mkdocs.yml`:
 
@@ -309,11 +310,12 @@ The following configuration options are supported:
         ```
 
 The other configuration options of this extension are not officially supported
-by Material for MkDocs, which is why they may yield unexpected results. Use them at your
-own risk.
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
 
   [Table of Contents]: https://python-markdown.github.io/extensions/toc/
   [Table of Contents support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [title support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.5
   [site language]: ../changing-the-language.md#site-language
   [Slugs]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
