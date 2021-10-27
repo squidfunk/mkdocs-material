@@ -22,8 +22,14 @@
 
 {% import "partials/language.html" as lang with context %}
 
+<!-- Determine title -->
+{% set title = title | default(lang.t("toc.title")) %}
+{% if "toc" in config.mdx_configs and config.mdx_configs.toc.title %}
+  {% set title = config.mdx_configs.toc.title %}
+{% endif %}
+
 <!-- Table of contents -->
-<nav class="md-nav md-nav--secondary" aria-label="{{ lang.t('toc.title') }}">
+<nav class="md-nav md-nav--secondary" aria-label="{{ title }}">
   {% set toc = page.toc %}
 
   <!--
@@ -41,7 +47,7 @@
   {% if toc %}
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      {{ lang.t("toc.title") }}
+      {{ title }}
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       {% for toc_item in toc %}

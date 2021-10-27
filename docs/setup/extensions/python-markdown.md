@@ -213,6 +213,19 @@ markdown_extensions:
 
 The following configuration options are supported:
 
+`title`{ #toc-title }
+
+:   :octicons-milestone-24: Default: _automatically set_ – This option sets the
+    title of the table of contents navigation in the right sidebar, which is
+    normally automatically sourced from the translations for the [site language]
+    as set in `mkdocs.yml`:
+
+    ``` yaml
+    markdown_extensions:
+      - toc:
+          title: On this page
+    ```
+
 `permalink`{ #toc-permalink }
 
 :   :octicons-milestone-24: Default: `false` – This option adds an anchor link
@@ -301,6 +314,7 @@ own risk.
 
   [Table of Contents]: https://python-markdown.github.io/extensions/toc/
   [Table of Contents support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [site language]: ../changing-the-language.md#site-language
   [Slugs]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
 ### Tables
