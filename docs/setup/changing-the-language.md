@@ -193,7 +193,8 @@ adjust the ones you want to override:
 
     <!-- Define custom translations -->
     {% macro override(key) %}{{ {
-      "toc.title": "Auf dieser Seite" <!-- (2) -->
+      "source.file.date.created": "Erstellt am", <!-- (2) -->
+      "source.file.date.updated": "Aktualisiert am"
     }[key] }}{% endmacro %}
 
     <!-- Re-export translations -->
