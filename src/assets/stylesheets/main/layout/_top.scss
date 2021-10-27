@@ -53,7 +53,9 @@
 
   // Adjust for right-to-left languages
   [dir="rtl"] & {
-    float: left;
+    margin-right: 50%;
+    margin-left: initial;
+    transform: translate(50%, 0);
   }
 
   // Back-to-top button in hidden state
@@ -62,6 +64,11 @@
     opacity: 0;
     transition-duration: 0ms;
     pointer-events: none;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      transform: translate(50%, px2rem(4px));
+    }
   }
 
   // Back-to-top button on focus/hover
