@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.3.5 <small>_ October 27, 2021</small> { id="7.3.5" }
+
+- Added support for setting table of contents title via `mkdocs.yml`
+- Fixed back-to-top button position for right-to-left languages
+
 ### 7.3.4 <small>_ October 17, 2021</small> { id="7.3.4" }
 
 - Bumped MkDocs version to 1.2.3 to mitigate [CVE-2021-40978]

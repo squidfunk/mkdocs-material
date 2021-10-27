@@ -1,3 +1,8 @@
+mkdocs-material-7.3.5 (2021-10-27)
+
+  * Added support for setting table of contents title via mkdocs.yml
+  * Fixed back-to-top button position for right-to-left languages
+
 mkdocs-material-7.3.4+insiders-3.1.4 (2021-10-17)
 
   * Fixed #2974: Text cropped with other fonts than Roboto in social plugin
