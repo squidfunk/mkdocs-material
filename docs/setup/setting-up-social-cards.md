@@ -105,33 +105,63 @@ The following configuration options are available:
 
 #### Dependencies
 
-Two Python packages are installed alongside to generate the social preview 
-images, both of which are based on the [Cairo Graphics] library:
+Two Python packages are installed alongside Material for MkDocs to generate the
+social preview images, both of which are based on the [Cairo Graphics] library:
 
 - [Pillow] – Python imaging library
 - [CairoSVG] – Converter for `*.svg` files
 
-In order for the [built-in social cards] plugin to work, follow the
-[installation guide] for the [Cairo Graphics] library for your operating system,
-and make sure that `zlib`, `libjpeg`, `libfreetype` and `libffi` are installed.
-Otherwise you might see warnings such as:
+The [Docker image] for Insiders comes with all dependencies pre-installed. If
+you don't want to use Docker, see the following section which explains how to
+install all dependencies on your system:
 
-```
-no library called "cairo" was found
-no library called "libcairo-2" was found
-cannot load library 'libcairo.so.2': error 0x7e
-cannot load library 'libcairo.2.dylib': error 0x7e
-cannot load library 'libcairo-2.dll': error 0x7e
-```
+=== ":material-apple: macOS"
 
-_Don't want to bother? The [Docker image] for Insiders comes with all
-dependencies pre-installed._
+    Make sure [Homebrew] is installed, which is a modern package manager for
+    macOS. Next, use the following command to install all necessary
+    dependencies:
+
+    ```
+    brew install cairo freetype libffi libjpeg libpng zlib
+    ```
+
+=== ":fontawesome-brands-windows: Windows"
+
+    As stated in the [installation guide], the easiest way to get up and running
+    with the [Cairo Graphics] library on Windows is by installing [GTK+], since
+    it has Cairo as a dependency.
+
+=== ":material-linux: Linux"
+
+    There are several package managers for Linux with varying availability per
+    distribution. The [installation guide] explains how to install the [Cairo
+    Graphics] library for your distribution:
+
+    === ":material-ubuntu: Ubuntu"
+
+        ```
+        apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
+        ```
+
+    === ":material-fedora: Fedora"
+
+        ```
+        yum install cairo-devel freetype-devel libffi-devel libjpeg-devel libpng-devel zlib-devel
+        ```
+
+    === ":fontawesome-brands-suse: openSUSE"
+
+        ```
+        zypper install cairo-devel freetype-devel libffi-devel libjpeg-devel libpng-devel zlib-devel
+        ```
 
   [Cairo Graphics]: https://www.cairographics.org/
   [Pillow]: https://pillow.readthedocs.io/
   [CairoSVG]: https://cairosvg.org/
-  [installation guide]: https://www.cairographics.org/download/
   [Docker image]: ../insiders/getting-started.md#with-docker
+  [Homebrew]: https://brew.sh/
+  [installation guide]: https://www.cairographics.org/download/
+  [GTK+]: https://www.gtk.org/docs/installations/windows/
 
 #### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
 

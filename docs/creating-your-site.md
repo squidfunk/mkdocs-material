@@ -45,14 +45,21 @@ Simply add the following lines to `mkdocs.yml` to enable the theme. Note that
 since there are several [installation methods], minimal configuration might be
 slightly different:
 
-=== "pip, docker"
+=== ":fontawesome-brands-python: pip"
 
     ``` yaml
     theme:
       name: material
     ```
 
-=== "git"
+=== ":fontawesome-brands-docker: docker"
+
+    ``` yaml
+    theme:
+      name: material
+    ```
+
+=== ":fontawesome-brands-git-alt: git"
 
     ``` yaml
     theme:
