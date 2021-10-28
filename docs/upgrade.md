@@ -50,7 +50,7 @@ allow for different versioning strategies in the future:
         method: mike
     ```
 
-### Changes to `*.html` files
+### Changes to `*.html` files { data-search-exclude }
 
 The templates have undergone a set of changes to make them future-proof. If
 you've used theme extension to override a block or template, make sure that it
@@ -368,7 +368,7 @@ function they apply to, e.g. `navigation.*`:
   [tabs]: setup/setting-up-navigation.md#navigation-tabs
   [instant loading]: setup/setting-up-navigation.md#instant-loading
 
-### Changes to `*.html` files
+### Changes to `*.html` files { data-search-exclude }
 
 The templates have undergone a set of changes to make them future-proof. If
 you've used theme extension to override a block or template, make sure that it
@@ -729,7 +729,7 @@ in order to match the new way of specifying which icon to be used:
           link: https://github.com/squidfunk
     ```
 
-### Changes to `*.html` files
+### Changes to `*.html` files { data-search-exclude }
 
 The templates have undergone a set of changes to make them future-proof. If
 you've used theme extension to override a block or template, make sure that it 
