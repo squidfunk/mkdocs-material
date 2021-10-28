@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 3.1.5 <small>_ October 28, 2021</small> { id="3.1.5" }
+
+- Fixed #3144: Rogue link when using tags with auto-populated navigation
+- Fixed #3147: Code block line numbers appear in search results
+- Fixed #3158: Social cards do not strip HTML tags from title
+
 ### 3.1.4 <small>_ October 17, 2021</small> { id="3.1.4" }
 
 - Fixed #2974: Text cropped with other fonts than `Roboto` in social plugin

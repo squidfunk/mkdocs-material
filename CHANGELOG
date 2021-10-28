@@ -1,3 +1,9 @@
+mkdocs-material-7.3.5+insiders-3.1.5 (2021-10-28)
+
+  * Fixed #3144: Rogue link when using tags with auto-populated navigation
+  * Fixed #3147: Code block line numbers appear in search results
+  * Fixed #3158: Social cards do not strip HTML tags from title
+
 mkdocs-material-7.3.5 (2021-10-27)
 
   * Added support for setting table of contents title via mkdocs.yml
