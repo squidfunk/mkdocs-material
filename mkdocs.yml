@@ -102,13 +102,6 @@ extra:
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
-    feedback:
-      - icon: material/emoticon-happy-outline
-        name: This page was helpful
-        data: 1
-      - icon: material/emoticon-sad-outline
-        name: This page could be improved
-        data: 0
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/squidfunk
