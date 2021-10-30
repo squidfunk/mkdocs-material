@@ -84,8 +84,8 @@ Note that some languages will produce unreadable anchor links due to the way
 the default slug function works. Consider using a [Unicode-aware slug function].
 
   [language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.12.0
-  [Unicode-aware slug function]: setting-up-navigation.md#slugify
-  [Add language]: https://bit.ly/38F5RCa
+  [Unicode-aware slug function]: extensions/python-markdown.md#toc-slugify
+  [Add language]: https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.yml&title=New+language%3A+%7Breplace+with+language+name%7D
 
 ### Site language selector
 
