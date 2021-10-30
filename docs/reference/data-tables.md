@@ -30,8 +30,6 @@ See additional configuration options:
 
 ## Usage
 
-### Using data tables
-
 Data tables can be used at any position in your project documentation and can
 contain arbitrary Markdown, including inline code blocks, as well as [icons and
 emojis].

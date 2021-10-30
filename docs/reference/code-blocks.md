@@ -25,6 +25,10 @@ markdown_extensions:
   - pymdownx.snippets
 ```
 
+The following sections discuss how to use different syntax highlighting features
+with [Pygments], the recommended highlighter, so they don't apply when using a
+JavaScript syntax highlighter.
+
 See additional configuration options:
 
 - [Highlight]
@@ -79,12 +83,6 @@ theme:
 
 ## Usage
 
-This section discusses how to use different syntax highlighting features with
-[Pygments] – the default highlighter – so they don't apply when using
-a JavaScript syntax highlighter.
-
-### Specifying the language
-
 Code blocks must be enclosed with two separate lines containing three backticks.
 To add syntax highlighting to those blocks, add the language shortcode directly
 after the opening block. See the [list of available lexers] to find the
@@ -105,6 +103,39 @@ import tensorflow as tf
 ```
 
   [list of available lexers]: https://pygments.org/docs/lexers/
+
+### Adding a title
+
+[:octicons-tag-24: 7.3.6][Title support] ·
+:octicons-beaker-24: Experimental
+
+In order to provide additional context, a custom title can be added to a code
+block by using the `title="<custom title>"` option directly after the shortcode,
+e.g. to display the name of a file:
+
+_Example_:
+
+```` markdown
+``` py title="bubble_sort.py"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+````
+
+_Result_:
+
+``` py title="bubble_sort.py"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+
+  [Title support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.6
 
 ### Adding annotations
 
@@ -253,14 +284,14 @@ from within a code block:
 _Example_:
 
 ```` markdown
-```
+``` title=".browserslistrc"
 --8<--​ ".browserslistrc"
 ```
 ````
 
 _Result_:
 
-```
+``` title=".browserslistrc"
 last 4 years
 ```
 

@@ -340,7 +340,7 @@ No configuration options are available. See reference for usage:
 
   [Tables]: https://python-markdown.github.io/extensions/tables/
   [Tables support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [Using data tables]: ../../reference/data-tables.md#using-data-tables
+  [Using data tables]: ../../reference/data-tables.md#usage
   [Column alignment]: ../../reference/data-tables.md#column-alignment
 
 ## Superseded extensions

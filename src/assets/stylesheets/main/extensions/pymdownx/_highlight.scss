@@ -150,6 +150,25 @@
     background-color: var(--md-code-hl-color);
   }
 
+  // Code block title
+  span.filename {
+    position: relative;
+    display: block;
+    margin-top: 1em;
+    padding: px2em(10.5px, 13.6px) px2em(16px, 13.6px);
+    font-weight: 700;
+    font-size: px2em(13.6px);
+    background-color: var(--md-code-bg-color);
+    border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
+    border-top-left-radius: px2rem(2px);
+    border-top-right-radius: px2rem(2px);
+
+    // Adjust spacing for code block
+    + pre {
+      margin-top: 0;
+    }
+  }
+
   // Code block line numbers (inline)
   [data-linenos]::before {
     position: sticky;
@@ -193,6 +212,13 @@
   // because it collapses below all the overflows
   pre {
     margin: 0;
+  }
+
+  // Code block title container
+  th.filename {
+    flex-grow: 1;
+    padding: 0;
+    text-align: left;
   }
 
   // Code block line numbers - disable user selection, so code can be easily

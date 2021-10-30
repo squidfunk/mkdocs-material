@@ -342,8 +342,8 @@ The following configuration options are supported:
         ```
 
         As an example, [Highlight.js], a JavaScript syntax highlighter, can be 
-        integrated with some [additional JavaScript] and [CSS][additional CSS]
-        in `mkdocs.yml`:
+        integrated with some [additional JavaScript] and [additional CSS] in
+        `mkdocs.yml`:
 
         === ":octicons-file-code-16: docs/javascripts/highlight.js"
 
@@ -363,7 +363,24 @@ The following configuration options are supported:
               - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
             ```
 
-        Note that [Highlight.js] has no affiliation with the Highlight extension.
+        Note that [Highlight.js] has no affiliation with the
+        [Highlight][pymdownx.highlight] extension.
+
+    All following configuration options are only compatible with build-time
+    syntax highlighting using [Pygments], so they don't apply if `use_pygments`
+    is set to `false`.
+
+`auto_title`{ #highlight-auto-title }
+
+:   :octicons-milestone-24: Default: `false` – This option will automatically
+    add a [title] to all code blocks that shows the name of the language being
+    used, e.g. `Python` is printed for a `py` block:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.highlight:
+          auto_title: true
+    ```
 
 `linenums`{ #highlight-linenums }
 
@@ -403,7 +420,8 @@ them at your own risk.
 
 See reference for usage:
 
-- [Specifying the language]
+- [Using code blocks]
+- [Adding a title]
 - [Adding line numbers]
 - [Highlighting specific lines]
 - [Custom syntax theme]
@@ -416,8 +434,10 @@ See reference for usage:
   [Pygments]: https://pygments.org
   [additional CSS]: ../../customization.md#additional-css
   [Highlight.js]: https://highlightjs.org/
+  [title]: ../../reference/code-blocks.md#adding-a-title
   [Adding line numbers]: ../../reference/code-blocks.md#adding-line-numbers
-  [Specifying the language]: ../../reference/code-blocks.md#specifying-the-language
+  [Using code blocks]: ../../reference/code-blocks.md#usage
+  [Adding a title]: ../../reference/code-blocks.md#adding-a-title
   [Highlighting specific lines]: ../../reference/code-blocks.md#highlighting-specific-lines
   [Custom syntax theme]: ../../reference/code-blocks.md#custom-syntax-theme
 
