@@ -1,3 +1,7 @@
+mkdocs-material-7.3.6 (2021-10-30)
+
+  * Added support for adding titles to code blocks
+
 mkdocs-material-7.3.5+insiders-3.1.5 (2021-10-28)
 
   * Fixed #3144: Rogue link when using tags with auto-populated navigation

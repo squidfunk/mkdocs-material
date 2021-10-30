@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 7.3.6 <small>_ October 30, 2021</small> { id="7.3.6" }
+
+- Added support for adding titles to code blocks
+
 ### 7.3.5 <small>_ October 27, 2021</small> { id="7.3.5" }
 
 - Added support for setting table of contents title via `mkdocs.yml`
