@@ -7,10 +7,12 @@ template: overrides/main.html
 As with any other service offered on the web, understanding how your project
 documentation is actually used can be an essential success factor. Material for
 MkDocs natively integrates with [Google Analytics] and offers a customizable
-and extendable [cookie consent][extra.consent].
+[cookie consent][extra.consent] and a [feedback widget]
+[extra.analytics.feedback].
 
   [Google Analytics]: https://developers.google.com/analytics
   [extra.consent]: #cookie-consent
+  [extra.analytics.feedback]: #was-this-page-helpful
 
 ## Configuration
 
@@ -43,23 +45,147 @@ following lines to `mkdocs.yml`:
 
   [Google Analytics support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.8
 
-#### Site search tracking
+??? question "How to measure the site search usage?"
 
-Besides basic page views, site search can also be tracked to understand better
-how people use your documentation and what they expect to find. To enable
-search tracking:
+    Besides page views and events, [site search] can be tracked to better
+    understand how people use your documentation and what they expect to find.
+    In order to enable site search tracking, the following steps are required:
 
-1.  Go to your Google Analytics __admin settings__
-2.  Select the property for the respective tracking code
-3.  Go to the __view settings__ tab.
-4.  Scroll down and enable __site search settings__
-5.  Set the __query parameter__ to `q`.
+    1.  Go to your Google Analytics __admin settings__
+    2.  Select the property for the respective tracking code
+    3.  Go to the __view settings__ tab
+    4.  Scroll down and enable __site search settings__
+    5.  Set the __query parameter__ to `q`
 
-Site search tracking is not supported with Google Analytics 4 due to the more
-complicated manual setup. If you want to set up site search tracking yourself,
-[this tutorial][tutorial] is a good start.
+    Note that currently, site search tracking is not supported with Google
+    Analytics 4 due to the more complicated manual setup. If you want to set up
+    site search tracking yourself, [this tutorial][tutorial] is a good start.
 
+  [site search]: setting-up-site-search.md
   [tutorial]: https://www.analyticsmania.com/post/track-site-search-with-google-tag-manager-and-google-analytics/
+
+### Was this page helpful?
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-3.2.0][Insiders] ·
+:octicons-milestone-24: Default: _none_
+
+A simple [feedback widget] can be included at the bottom of each page,
+encouraging users to give instant feedback whether a page was helpful or not.
+Add the following lines to `mkdocs.yml`:
+
+``` yaml
+extra:
+  analytics: # (1)
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- # (2)
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target=_blank>feedback form</a>.
+```
+
+1.  This feature is natively integrated with [Google Analytics][extra.analytics],
+    which is why `provider` and `property` are also required. However, it's also
+    possible to provide a [custom feedback integration].
+
+2.  You can add arbitrary HTML tags to the note which is shown after the user
+    submitted the feedback, e.g. to link to a feedback form.
+
+Both properties, `title` and `ratings`, are required. Note that it's allowed to
+define more than two ratings, e.g. to implement a 1-5 star rating. Since the
+feedback widget sends data to a third-party service, it is, of course, natively 
+integrated with the [cookie consent][extra.consent] feature[^1].
+
+  [^1]:
+    If the user doesn't accept the `analytics` cookie, the feedback widget is
+    not shown.
+
+??? question "How to visualize the collected feedback ratings?"
+
+    It's quite easy to build a custom report with [Google Analytics] that will
+    quickly show you the worst- and best-rated pages of your project
+    documentation. You can generate a custom report with the following steps:
+
+    1. Go to your Google Analytics __dashboard__
+    2. Open the __customization__ panel on the left and go to __custom reports__
+    3. Create a __new custom report__ and set a custom __title__ and __name__
+    4. Add `Avg. Value` and `Total Events` to the __metric group__
+    5. Add `Event Label` to the __dimension drilldown__
+    6. Add `Event Category` to __filters__ and filter for the value __feedback__
+
+    Now, after you've saved the report and collected some feedback ratings, 
+    you'll have a list of all pages with the total number of ratings, and an
+    average rating per page. This should help you identify pages that need to
+    be improved:
+
+    [![feedback report]][feedback report]
+
+The following properties must be set for each rating:
+
+`icon`{ #feedback-rating-icon }
+
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+    This property must point to a valid icon path referencing [any icon bundled
+    with the theme][custom icons], or the build will not succeed. Some popular
+    combinations:
+
+    * :material-emoticon-happy-outline: + :material-emoticon-sad-outline: – `material/emoticon-happy-outline` + `material/emoticon-sad-outline`
+    * :material-thumb-up-outline: + :material-thumb-down-outline: – `material/thumb-up-outline` + `material/thumb-down-outline`
+    * :material-heart: + :material-heart-broken: – `material/heart` + `material/heart-broken`
+
+`name`{ #feedback-rating-name }
+
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+    The value of this property is shown on user interaction (i.e. keyboard focus
+    or mouse hover), explaining the meaning of the rating behind the icon.
+
+`data`{ #feedback-rating-data }
+
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+    The value of this property is sent as a data value with the custom event
+    that is transmitted to Google Analytics[^2] (or any custom integration).
+
+  [^2]:
+    Note that for Google Analytics, the data value must be an integer.
+
+`note`{ #feedback-rating-note }
+
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+    The value of this property is shown after the user selected the rating.
+    It may contain arbitrary HTML tags, which is especially useful to ask the
+    user to provide more detailed feedback for the current page through a form.
+    It's also possible to pre-fill forms with the path to the current page by
+    using the `{}` placeholder, e.g.:
+
+    ``` url
+    https://github.com/<username>/<repository>/issues/new/?title=[Feedback]+{}
+    ```
+
+    In this example, when clicking the link, the user is redirected to the "new 
+    issue" form of your repository, with a pre-filled title including the path
+    of the current document, e.g.:
+
+    ```
+    [Feedback] /setup/setting-up-site-analytics/
+    ```
+
+    An alternative to GitHub issues is [Google Forms].
+
+  [feedback widget]: #feedback
+  [extra.analytics]: #google-analytics
+  [feedback report]: ../assets/screenshots/feedback-report.png
+  [custom feedback integration]: #custom-site-feedback
+  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [Google Forms]: https://www.google.com/forms/about/
 
 ### Cookie consent
 
@@ -75,7 +201,7 @@ following to `mkdocs.yml`:
 extra:
   consent:
     title: Cookie consent
-    description: > # (1)
+    description: >- # (1)
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
@@ -85,9 +211,9 @@ extra:
 1.  You can add arbitrary HTML tags in the `description`, e.g. to link to your
     terms of service or other parts of the site.
 
-Note that both, `title` and `description`, are required. If Google Analytics was
-configured via `mkdocs.yml`, the cookie consent will automatically include a
-setting for the user to disable it. Furthermore, [custom cookies] can be
+Note that both, `title` and `description`, are required. If Google Analytics
+was configured via `mkdocs.yml`, the cookie consent will automatically include
+a setting for the user to disable it. Furthermore, [custom cookies] can be
 integrated by using the `cookies` field:
 
 ===  "Custom cookie name"
@@ -177,6 +303,32 @@ used to configure the custom integration via `mkdocs.yml`:
   [theme extension]: ../customization.md#extending-the-theme
   [instant loading]: setting-up-navigation.md#instant-loading
 
+### Custom site feedback
+
+A custom feedback widget integation just needs to process the events that are
+generated by users interacting with the feedback widget with the help of some
+[additional JavaScript]:
+
+=== ":octicons-file-code-16: docs/javascripts/feedback.js"
+
+    ``` js
+    var feedback = document.forms.feedback
+    feedback.addEventListener("submit", function(ev) {
+      ev.preventDefault()
+
+      /* Retrieve and send feedback */
+      var page = document.location.pathname
+      var data = ev.submitter.getAttribute("data-md-value")
+    })
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_javascript:
+      - javascripts/feedback.js
+    ```
+
 ### Custom cookies
 
 If you've customized the [cookie consent][extra.consent] and added a `custom`
@@ -198,5 +350,8 @@ JavaScript] to check whether the user accepted it:
     extra_javascript:
       - javascripts/consent.js
     ```
+
+&nbsp;
+{ #feedback style="margin: 0; height: 0" }
 
   [additional JavaScript]: ../customization.md#additional-javascript

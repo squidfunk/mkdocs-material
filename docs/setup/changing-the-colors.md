@@ -199,7 +199,7 @@ The following properties must be set for each toggle:
 `icon`{ #toggle-icon }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
-    This field must point to a valid icon path referencing [any icon bundled
+    This property must point to a valid icon path referencing [any icon bundled
     with the theme][custom icons], or the build will not succeed. Some popular
     combinations:
 
@@ -211,7 +211,7 @@ The following properties must be set for each toggle:
 `name`{ #toggle-name }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
-    This field is used as the toggle's `title` attribute and should be set to a
+    This property is used as the toggle's `title` attribute and should be set to a
     discernable name to improve accessibility. It will appear on mouse hover.
 
   [palette.toggle support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
@@ -226,7 +226,7 @@ The following properties must be set for each toggle:
 :octicons-milestone-24: Default: _none_
 
 In order to automatically set the color palette to the user's system preference,
-a media query can be set as part of the `media` field next to the toggle
+a media query can be set as part of the `media` property next to the toggle
 definition in `mkdocs.yml`:
 
 ``` yaml

@@ -115,7 +115,7 @@ The following configuration options are supported:
 
 `prebuild_index`{ #search-prebuild-index }
 
-:   [:octicons-tag-24: 7.2.0][prebuilt index support] · :octicons-archive-24:
+:   [:octicons-tag-24: 5.0.0][prebuilt index support] · :octicons-archive-24:
     Deprecated · :octicons-trash-24: 8.0.0 · :octicons-milestone-24: Default:
     `false` – MkDocs can generate a [prebuilt index] of all pages during
     build time, which provides performance improvements at the cost of more

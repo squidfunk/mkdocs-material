@@ -29,14 +29,14 @@ extra:
       link: https://twitter.com/squidfunk
 ```
 
-For each entry, the following settings are available:
+The following properties must be set for each link:
 
 `icon`{ #social-icon }
 
 :   [:octicons-tag-24: 5.0.0][social.icon support] · :octicons-milestone-24:
-    Default: _none_ · :octicons-alert-24: Required – This field must point to an 
-    icon path referencing [any icon bundled with the theme][custom icons], or
-    the build will not succeed. Some popular choices:
+    Default: _none_ · :octicons-alert-24: Required – This property must contain
+    a valid path to [any icon bundled with the theme][custom icons], or the
+    build will not succeed. Some popular choices:
 
     * :fontawesome-brands-behance: – `fontawesome/brands/behance`
     * :fontawesome-brands-docker: – `fontawesome/brands/docker`
@@ -52,7 +52,7 @@ For each entry, the following settings are available:
 `link`{ #social-link }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
-    This field must contain a valid relative or absolute URL including the URI 
+    This property must be set to a relative or absolute URL including the URI 
     scheme. All URI schemes are supported, including `mailto` and `bitcoin`:
 
     === ":fontawesome-brands-twitter: Twitter"
@@ -76,8 +76,8 @@ For each entry, the following settings are available:
 `name`{ #social-name }
 
 :   [:octicons-tag-24: 5.1.5][social.name support] · :octicons-milestone-24: 
-    Default: _domain name from_ `link`_, if available_ – This field is used as
-    the link's `title` attribute and can be set to a  discernable name to
+    Default: _domain name from_ `link`_, if available_ – This property is used
+    as the link's `title` attribute and can be set to a discernable name to
     improve accessibility:
 
     ``` yaml
@@ -114,7 +114,7 @@ copyright: Copyright &copy; 2016 - 2020 Martin Donath
 :octicons-milestone-24: Default: `true`
 
 The footer displays a _Made with Material for MkDocs_ notice to denote how
-the site was generated. The notice can be removed with the following setting
+the site was generated. The notice can be removed with the following option
 via `mkdocs.yml`:
 
 ``` yaml
