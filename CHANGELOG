@@ -1,3 +1,7 @@
+mkdocs-material-7.3.6+insiders-3.2.0 (2021-10-31)
+
+  * Added support for feedback widget (Was this page helpful?)
+
 mkdocs-material-7.3.6 (2021-10-30)
 
   * Added support for adding titles to code blocks

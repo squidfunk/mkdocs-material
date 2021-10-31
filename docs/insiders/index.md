@@ -139,11 +139,12 @@ The following features are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Was this page helpful? :material-new-box:][44]
 - [x] [Brand new search plugin :material-new-box:][35]
-- [x] [Rich search previews :material-new-box:][36]
-- [x] [Tokenizer with lookahead :material-new-box:][37]
-- [x] [Advanced search highlighting :material-new-box:][38]
-- [x] [Excluding content from search :material-new-box:][39]
+- [x] [Rich search previews][36]
+- [x] [Tokenizer with lookahead][37]
+- [x] [Advanced search highlighting][38]
+- [x] [Excluding content from search][39]
 - [x] [Social cards][34]
 - [x] [Cookie consent][33]
 - [x] [Linking content tabs][32]
@@ -205,10 +206,11 @@ the public for general availability.
 #### $ 7,000 – Royal Gold
 
 - [x] [Cookie consent][33]
-- [ ] Was this page helpful?
+- [x] [Was this page helpful?][44]
 - [ ] Link cards
 
   [33]: ../setup/setting-up-site-analytics.md#cookie-consent
+  [44]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
 
 #### $ 8,000 – Scotch Bonnet
 
