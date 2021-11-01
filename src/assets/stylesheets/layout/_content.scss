@@ -53,13 +53,15 @@
 
   // Define spacing
   &__inner {
-    // Ensure that md-content__innner occupies available space to push footer to bottom of viewport.
-    // Set initial height to 100vh minus:
-    // * header height
-    // * footer height
-    // * top margin of md-main__inner
-    // * top margin of md-content__inner
-    flex-basis: calc(100vh - 26.65rem);
+    // Ensure that md-content__innner occupies available space to push footer to bottom of viewport,
+    // depending on screen size
+    flex-basis: calc(100vh - 26.65rem); // stylelint-disable-line unit-whitelist
+    @include break-from-device(screen medium) {
+      flex-basis: calc(100vh - 26.79rem); // stylelint-disable-line unit-whitelist
+    }
+    @include break-from-device(screen large) {
+      flex-basis: calc(100vh - 26.55rem); // stylelint-disable-line unit-whitelist
+    }
 
     margin: 0 px2rem(16px) px2rem(24px);
     padding-top: px2rem(12px);
