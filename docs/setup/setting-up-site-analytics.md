@@ -45,7 +45,7 @@ following lines to `mkdocs.yml`:
 
   [Google Analytics support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.8
 
-??? question "How to measure the site search usage?"
+??? question "How to measure site search usage?"
 
     Besides page views and events, [site search] can be tracked to better
     understand how people use your documentation and what they expect to find.
@@ -118,8 +118,8 @@ integrated with the [cookie consent][extra.consent] feature[^1].
     1. Go to your Google Analytics __dashboard__
     2. Open the __customization__ panel on the left and go to __custom reports__
     3. Create a __new custom report__ and set a custom __title__ and __name__
-    4. Add `Avg. Value` and `Total Events` to the __metric group__
-    5. Add `Event Label` to the __dimension drilldown__
+    4. Add `Avg. Value` and `Total Events` to __metric group__
+    5. Add `Event Label` to __dimension drilldown__
     6. Add `Event Category` to __filters__ and filter for the value __feedback__
 
     Now, after you've saved the report and collected some feedback ratings, 
