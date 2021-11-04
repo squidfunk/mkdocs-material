@@ -35,6 +35,7 @@ The following languages are supported:
 - `cs` – Czech
 - `da` – Danish
 - `de` – German
+- `el` – Greek
 - `en` – English
 - `eo` – Esperanto
 - `es` – Spanish
@@ -43,7 +44,6 @@ The following languages are supported:
 - `fi` – Finnish
 - `fr` – French
 - `gl` – Galician
-- `gr` – Greek
 - `he` – Hebrew
 - `hi` – Hindi
 - `hr` – Croatian
