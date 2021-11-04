@@ -1,3 +1,10 @@
+mkdocs-material-7.3.6+insiders-3.2.1 (2021-11-06)
+
+  * Added support for custom Mermaid.js version via additional JavaScript
+  * Fixed some configuration edge cases for tags plugin (3.1.5 regression)
+  * Fixed feedback widget title not being centered in Firefox
+  * Fixed #3179: Safari doesn't send request for feedback widget
+
 mkdocs-material-7.3.6+insiders-3.2.0 (2021-10-31)
 
   * Added support for feedback widget (Was this page helpful?)
