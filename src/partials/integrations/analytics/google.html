@@ -42,6 +42,14 @@
 
     /* Register virtual event handlers */
     document.addEventListener("DOMContentLoaded", function() {
+      if (document.forms.search) {
+        var query = document.forms.search.query
+        query.addEventListener("blur", function() {
+          if (this.value) {
+            gtag("event", "search", {search_term: this.value})
+          }
+        })
+      }
 
       /* Send page view on location change */
       if (typeof location$ !== "undefined")

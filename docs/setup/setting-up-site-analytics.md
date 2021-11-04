@@ -51,18 +51,23 @@ following lines to `mkdocs.yml`:
     understand how people use your documentation and what they expect to find.
     In order to enable site search tracking, the following steps are required:
 
-    1.  Go to your Google Analytics __admin settings__
-    2.  Select the property for the respective tracking code
-    3.  Go to the __view settings__ tab
-    4.  Scroll down and enable __site search settings__
-    5.  Set the __query parameter__ to `q`
+    === ":material-google-analytics: Google Analytics 4"
 
-    Note that currently, site search tracking is not supported with Google
-    Analytics 4 due to the more complicated manual setup. If you want to set up
-    site search tracking yourself, [this tutorial][tutorial] is a good start.
+        1. Go to your Google Analytics __admin settings__
+        2. Select the property for the respective tracking code
+        3. Select the __Data Streams__ tab and click the corresponding URL
+        4. Click the gear icon within the __Enhanced measurement__ section
+        5. Ensure that __Site search__ is enabled
+
+    === ":material-google-analytics: Universal Analytics"
+
+        1.  Go to your Google Analytics __admin settings__
+        2.  Select the property for the respective tracking code
+        3.  Go to the __view settings__ tab
+        4.  Scroll down and enable __site search settings__
+        5.  Set the __query parameter__ to `q`
 
   [site search]: setting-up-site-search.md
-  [tutorial]: https://www.analyticsmania.com/post/track-site-search-with-google-tag-manager-and-google-analytics/
 
 ### Was this page helpful?
 
