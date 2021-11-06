@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 3.2.2 <small>_ November 6, 2021</small> { id="3.2.2" }
+
+- Fixed always last feedback rating being sent
+
 ### 3.2.1 <small>_ November 4, 2021</small> { id="3.2.1" }
 
 - Added support for custom Mermaid.js version via additional JavaScript
