@@ -55,7 +55,7 @@ Sponsorships start as low as [__$10 a month__][how to become a sponsor].[^2]
     technical reasons.
 
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
-  [funding goal]: #goals
+  [funding goal]: #funding
 
 ## What sponsorships achieve
 
