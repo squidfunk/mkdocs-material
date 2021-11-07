@@ -1,32 +1,14 @@
 ---
-template: overrides/main.html
+template: overrides/blog.html
+title: "Search: better, faster, smaller"
 description: >
-  How we rebuilt client-side search, delivering a better user experience while
-  making it faster and smaller at the same time
+  This is the story of how we managed to completely rebuild client-side search,
+  delivering a significantly better user experience while making it faster and
+  smaller at the same time.
+date: 2021-09-13
+gittag: 7.2.6+insiders-3.0.0
 search:
   exclude: true
----
-
-# Search: better, faster, smaller
-
-__This is the story of how we managed to completely rebuild client-side search,
-delivering a significantly better user experience while making it faster and
-smaller at the same time.__
-
-<aside class="mdx-author" markdown>
-![@squidfunk][@squidfunk avatar]
-
-<span>__Martin Donath__ · @squidfunk</span>
-<span>
-:octicons-calendar-24: September 13, 2021 ·
-:octicons-clock-24: 15 min read ·
-[:octicons-tag-24: 7.2.6+insiders-3.0.0][insiders-3.0.0]
-</span>
-</aside>
-
-  [@squidfunk avatar]: https://avatars.githubusercontent.com/u/932156
-  [insiders-3.0.0]: ../../insiders/changelog.md#3.0.0
-
 ---
 
 The [search] of Material for MkDocs is by far one of its best and most-loved
@@ -38,6 +20,8 @@ there's still some room for improvement, which is why we rebuilt the search
 plugin and integration from the ground up. This article shines some light on the
 internals of the new search, why it's much more powerful than the previous
 version, and what's about to come.
+
+<p hidden>more</p>
 
 _The next section discusses the architecture and issues of the current search
 implementation. If you immediately want to learn what's new, skip to the

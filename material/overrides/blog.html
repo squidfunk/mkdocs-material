@@ -1,0 +1,13 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% extends "overrides/main.html" %}
+{% block content %}
+  <h1>{{ page.title }}</h1>
+  <p>
+    <b>{{ page.meta.description }}</b>
+  </p>
+  {% include "partials/blog_metadata.html" %}
+  <hr>
+  {{ page.content }}
+{% endblock %}

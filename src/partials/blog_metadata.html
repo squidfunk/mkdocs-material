@@ -1,0 +1,33 @@
+<aside class="mdx-author">
+  <p>
+    <img alt="@squidfunk" src="https://avatars.githubusercontent.com/u/932156">
+  </p>
+  <p>
+    <span>
+      <strong>Martin Donath</strong> ·
+      <a class="magiclink magiclink-github magiclink-mention"
+         href="https://github.com/squidfunk"
+         title="GitHub User: squidfunk">@squidfunk
+      </a>
+    </span>
+    <span>
+      <span class="twemoji">
+        {% include ".icons/octicons/calendar-24.svg" %}
+      </span>
+      {{ page.meta.date.strftime("%B %d, %Y") }} ·
+      <span class="twemoji">
+        {% include ".icons/octicons/clock-24.svg" %}
+      </span>
+      {{ page.content | wordcount // config.extra.words_read_per_minute }} min read
+      {% if page.meta.gittag %}
+        {% set _, changelog_version = page.meta.gittag.split('-') %}
+        ·
+        <a href="../../../insiders/changelog/#{{ changelog_version }}">
+          <span class="twemoji">
+            {% include ".icons/octicons/tag-24.svg" %}
+          </span> {{ page.meta.gittag }}
+        </a>
+      {% endif %}
+    </span>
+  </p>
+</aside>

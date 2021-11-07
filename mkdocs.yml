@@ -115,6 +115,8 @@ extra:
       link: https://linkedin.com/in/squidfunk/
     - icon: fontawesome/brands/instagram
       link: https://instagram.com/squidfunk
+  # Used to estimate blog post page read time in minutes.
+  words_read_per_minute: 400
 
 # Extensions
 markdown_extensions:

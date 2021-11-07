@@ -1,0 +1,25 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% extends "overrides/main.html" %}
+<style>.md-sidebar--secondary:not([hidden]){visibility:hidden}</style>
+{% block content %}
+  {{ page.content }}
+  {% for page in nav.pages %}
+    {% if page.url.startswith("blog/") and page.meta.date is defined %}
+      <h2><a href="{{ page.url|url }}">{{ page.title }}</a></h2>
+      <p>
+        <b>{{ page.meta.description }}</b>
+      </p>
+      {% include "partials/blog_metadata.html" %}
+      <hr>
+      {{ page.content.split("<p hidden>more</p>", 1)[0] }}
+      <a href="{{ page.url|url }}">
+        <span class="twemoji">
+          {% include ".icons/octicons/arrow-right-24.svg" %}
+        </span>
+        Continue reading
+      </a>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
