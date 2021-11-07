@@ -45,9 +45,8 @@
       if (document.forms.search) {
         var query = document.forms.search.query
         query.addEventListener("blur", function() {
-          if (this.value) {
-            gtag("event", "search", {search_term: this.value})
-          }
+          if (this.value)
+            gtag("event", "search", { search_term: this.value })
         })
       }
 

@@ -55,9 +55,9 @@ following lines to `mkdocs.yml`:
 
         1. Go to your Google Analytics __admin settings__
         2. Select the property for the respective tracking code
-        3. Select the __Data Streams__ tab and click the corresponding URL
-        4. Click the gear icon within the __Enhanced measurement__ section
-        5. Ensure that __Site search__ is enabled
+        3. Select the __data streams__ tab and click the corresponding URL
+        4. Click the gear icon within the __enhanced measurement__ section
+        5. Ensure that __site search__ is enabled
 
     === ":material-google-analytics: Universal Analytics"
 
@@ -260,6 +260,27 @@ e.g. your privacy policy:
   [Insiders]: ../insiders/index.md
   [custom cookies]: #custom-cookies
   [extra.consent enabled]: ../assets/screenshots/consent.png
+
+## Usage
+
+### Hiding the feedback widget
+
+When [Metadata] is enabled, the [feedback widget][extra.analytics.feedback] can
+be hidden for a document with custom front matter. Add the following lines at
+the top of a Markdown file:
+
+``` bash
+---
+hide:
+  - feedback
+---
+
+# Document title
+...
+```
+
+  [Metadata]: extensions/python-markdown.md#metadata
+
 
 ## Customization
 
