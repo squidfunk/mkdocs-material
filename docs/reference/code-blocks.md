@@ -145,9 +145,10 @@ language of the block can be placed, e.g. for JavaScript in `#!js // ...` and
 
   [^1]:
     Code annotations require syntax highlighting with [Pygments] – they're
-    currently not compatible with JavaScript syntax highlighters. Support will
-    be added at a later point, allowing to always place code annotations at the
-    end of lines.
+    currently not compatible with JavaScript syntax highlighters, or languages
+    that do not have comments in their grammar. However, we're actively working
+    on supporting alternate ways of defining code annotations, allowing to
+    always place code annotations at the end of lines.
 
 _Example_:
 

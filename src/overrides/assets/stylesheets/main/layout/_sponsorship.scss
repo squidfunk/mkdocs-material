@@ -38,7 +38,7 @@
 
     // Premium sponsor image
     img {
-      height: px2rem(60px);
+      height: px2rem(65px);
     }
 
     // Premium sponsor list
@@ -51,14 +51,6 @@
       > a {
         display: block;
         flex-shrink: 0;
-        padding: px2rem(10px) px2rem(20px);
-        transition: transform 125ms;
-
-        // Premium sponsor item on focus/hover
-        &:focus,
-        &:hover {
-          transform: scale(1.1);
-        }
       }
     }
   }
@@ -82,8 +74,8 @@
     &__item {
       display: block;
       float: left;
-      width: px2rem(60px);
-      height: px2rem(60px);
+      width: px2rem(32px);
+      height: px2rem(32px);
       margin: px2rem(4px);
       overflow: hidden;
       border-radius: 100%;
@@ -107,8 +99,8 @@
       &--private {
         color: var(--md-default-fg-color--lighter);
         font-weight: 700;
-        font-size: px2rem(24px);
-        line-height: px2rem(60px);
+        font-size: px2rem(12px);
+        line-height: px2rem(32px);
         text-align: center;
         background: var(--md-default-fg-color--lightest);
       }

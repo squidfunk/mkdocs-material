@@ -139,7 +139,7 @@ export function mountSponsorship(
     total.innerText = `$ ${sponsorship.total
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    }`
+    } a month`
   })
 
   // /* Create and return component */

@@ -58,10 +58,9 @@ The following plugins are bundled with the Docker image:
 
 ??? question "How to add plugins to the Docker image?"
 
-    Material for MkDocs bundles useful and common plugins while trying not to
-    blow up the size of the official image. If the plugin you want to use is
-    not included, create a new `Dockerfile` and extend the official Docker image
-    with your custom installation routine:
+    Material for MkDocs only bundles selected plugins in order to keep the size
+    of the official image small. If the plugin you want to use is not included, 
+    create a new `Dockerfile` and extend the official Docker image:
 
     ``` Dockerfile
     FROM squidfunk/mkdocs-material

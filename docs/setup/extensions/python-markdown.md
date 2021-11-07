@@ -158,15 +158,19 @@ No configuration options are available. See reference for usage:
 
 - [Setting the page title]
 - [Setting the page description]
-- [Hiding the sidebars]
 - [Adding tags]
+- [Hiding the tags]
+- [Hiding the sidebars]
+- [Hiding the feedback widget]
 
   [Metadata]: https://python-markdown.github.io/extensions/meta_data/
   [Metadata support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [Setting the page title]: ../../reference/meta-tags.md#setting-the-page-title
   [Setting the page description]: ../../reference/meta-tags.md#setting-the-page-description
-  [Hiding the sidebars]: ../../setup/setting-up-navigation.md#hiding-the-sidebars
   [Adding tags]: ../../setup/setting-up-tags.md#adding-tags
+  [Hiding the tags]: ../../setup/setting-up-tags.md#hiding-the-tags
+  [Hiding the sidebars]: ../../setup/setting-up-navigation.md#hiding-the-sidebars
+  [Hiding the feedback widget]: ../../setup/setting-up-site-analytics.md#hiding-the-feedback-widget
 
 ### Markdown in HTML
 

@@ -62,20 +62,23 @@
 <p id="premium-sponsors" align="center"><strong>Special thanks</strong> to our <strong>premium sponsors</strong>:</p>
 <p>&nbsp;</p>
 <p align="center">
-  <a href="https://www.manticoregames.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/manticoregames.png" height="40"
-  /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://kx.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/kx.svg" height="40"
-  /></a>&nbsp;&nbsp;
-  <a href="https://hummingbot.io/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/hummingbot.png" height="40"
-  /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://docs.baslerweb.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/basler.png" height="40"
-  /></a>&nbsp;&nbsp;
   <a href="https://cirrus-ci.org/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg" height="40"
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png" height="65"
+  /></a>
+  <a href="https://docs.baslerweb.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png" height="65"
+  /></a>
+  <a href="https://hummingbot.io/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png" height="65"
+  /></a><br />
+  <a href="https://kx.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png" height="65"
+  /></a>
+  <a href="https://www.manticoregames.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-manticore-games.png" height="65"
+  /></a>
+  <a href="https://www.accounttechnologies.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-account-technologies.png" height="65"
   /></a>
 </p>
 <p>&nbsp;</p>
@@ -88,7 +91,7 @@
 
 * **... but there's more** — integrates natively with Python Markdown
   Extensions, adding callouts, tabbed content containers, mathematical formulas,
-  critic markup, task lists, and [more than 10k icons and emojis][2].
+  critic markup, task lists, and [more than 10k icons and emojis][icons-emojis].
 
 * **Responsive by design** — built from the ground up to work on all kinds of
   devices – from mobile phones to widescreens. The underlying fluid layout will
@@ -114,15 +117,17 @@
   on top of TypeScript, RxJS, and SCSS, bringing excellent possibilities for
   theme extension and customization.
 
-_Material for MkDocs uses the [sponsorware][3] release strategy, which means
-that new features are first exclusively released to sponsors as part of Material
-for MkDocs Insiders. Read on to learn [how sponsorship works][4], and how you
-can [become a sponsor][5]._
+Material for MkDocs follows the __sponsorware__ release strategy, which means
+that new features are first exclusively released to sponsors as part of
+[Insiders]. Read on to learn [what sponsorships achieve],
+[how to become a sponsor] to get access to Insiders, and
+[what's in for you][available features]!
 
-  [2]: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
-  [3]: https://github.com/sponsorware/docs
-  [4]: https://squidfunk.github.io/mkdocs-material/insiders/#how-sponsorship-works
-  [5]: https://squidfunk.github.io/mkdocs-material/insiders/#how-to-become-a-sponsor
+  [icons-emojis]: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+  [Insiders]: https://squidfunk.github.io/mkdocs-material/insiders/#what-is-insiders
+  [what sponsorships achieve]: https://squidfunk.github.io/mkdocs-material/insiders/#what-sponsorships-achieve
+  [how to become a sponsor]: https://squidfunk.github.io/mkdocs-material/insiders/#how-to-become-a-sponsor
+  [available features]: https://squidfunk.github.io/mkdocs-material/insiders/#available-features
 
 ## Quick start
 
@@ -140,9 +145,9 @@ theme:
 ```
 
 For other installation methods, configuration options, and a demo, visit
-[squidfunk.github.io/mkdocs-material][1]
+[squidfunk.github.io/mkdocs-material][Material for MkDocs]
 
-  [1]: https://squidfunk.github.io/mkdocs-material/
+  [Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
 
 ## Trusted by ...
 

@@ -117,6 +117,10 @@ and much more:
 
 </div>
 
+Furthermore, see the list of supported [Markdown extensions] that are natively
+integrated with Material for MkDocs, delivering a low-effort and unprecedented 
+technical writing experience.
+
   [Changing the colors]: setup/changing-the-colors.md
   [Changing the fonts]: setup/changing-the-fonts.md
   [Changing the language]: setup/changing-the-language.md
@@ -131,6 +135,7 @@ and much more:
   [Setting up the footer]: setup/setting-up-the-footer.md
   [Adding a git repository]: setup/adding-a-git-repository.md
   [Adding a comment system]: setup/adding-a-comment-system.md
+  [Markdown extensions]: setup/extensions/index.md
 
 ## Previewing as you write
 

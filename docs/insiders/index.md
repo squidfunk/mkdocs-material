@@ -5,10 +5,11 @@ title: Insiders
 
 # Insiders
 
-Material for MkDocs follows the _sponsorware_ release strategy, which means
-that _new features are first exclusively released to sponsors_ as part of
-__Insiders__. Read on to learn [how sponsorship works][1], and how easy it is
-to [get access to Insiders][2].
+Material for MkDocs follows the __sponsorware__ release strategy, which means
+that new features are first exclusively released to sponsors as part of
+[Insiders]. Read on to learn [what sponsorships achieve],
+[how to become a sponsor] to get access to Insiders, and
+[what's in for you][available features]!
 
 <figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
@@ -17,64 +18,83 @@ to [get access to Insiders][2].
   <figcaption markdown>
 
 The official documentation is built with Insiders
-[squidfunk.github.io/mkdocs-material][3]
+[squidfunk.github.io/mkdocs-material][Material for MkDocs]
 
   </figcaption>
 </figure>
 
-  [1]: #how-sponsorship-works
-  [2]: #how-to-become-a-sponsor
-  [3]: https://squidfunk.github.io/mkdocs-material/
+  [Insiders]: #what-is-insiders
+  [what sponsorships achieve]: #what-sponsorships-achieve
+  [how to become a sponsor]: #how-to-become-a-sponsor
+  [available features]: #available-features
+  [Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
 
-## How sponsorship works
+## What is Insiders?
 
-New features first land in Insiders, so _eligible sponsors have immediate
-access_. Every feature is tied to a funding goal in monthly subscriptions.
-When a funding goal is hit, the features that are tied to it are merged back
-into Material for MkDocs and released for general availability. Bugfixes are
-always released simultaneously in both editions.[^1]
+Material for MkDocs Insiders is a private fork of Material for MkDocs, hosted as
+a private GitHub repository. Almost[^1] all new features are developed as part of
+this fork, which means that they are immediately available to all eligible
+sponsors, as they are made collaborators of this repository.
 
   [^1]:
-    You may ask yourself why you should pay for something that is Open Source.
-    Doesn't that contradict the ethos of Open Source software? Yes and no. Yes,
-    some features are locked behind a monthly subscription, which means they are
-    only accessible when paying a small amount of money. No, the features are
-    only exclusive for a short time until specific funding goals are hit. Making
+    In general, every new feature is first exclusively released to sponsors, but
+    sometimes upstream dependencies like [Python Markdown Extensions] enhance
+    existing features that must be supported by Material for MkDocs.
+
+Every feature is tied to a [funding goal] in monthly subscriptions. When a
+funding goal is hit, the features that are tied to it are merged back into
+Material for MkDocs and released for general availability, making them available
+to all users. Bugfixes are always released in tandem.
+
+Sponsorships start as low as [__$10 a month__][how to become a sponsor].[^2]
+
+  [^2]:
+    Note that $10 a month is the minimum amount to become eligible for
+    Insiders. While GitHub Sponsors also allows to sponsor lower amounts or
+    one-time amounts, those can't be granted access to Insiders due to
+    technical reasons.
+
+  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
+  [funding goal]: #goals
+
+## What sponsorships achieve
+
+Sponsorships make this project sustainable, as they buy the maintainers of this
+project time – a very scarce resource – which is spent on the development of new
+features, bug fixing, stability improvement, issue triage and general support.
+The biggest bottleneck in Open Source is time.[^3]
+
+  [^3]:
+    Making
     an Open Source project sustainable is exceptionally hard: maintainers burn
     out, projects are abandoned. That's not great and very unpredictable. The
     sponsorware model ensures that if you decide to use Material for MkDocs,
     you can be sure that bugs are fixed quickly and new features are added
     regularly.
 
-_Don't want to sponsor? No problem, Material for MkDocs already has tons of
-features available, so chances are that most of your requirements are already
-satisfied. See the [list of exclusive features][4] to learn which features are
-currently only available to sponsors._
+If you're unsure if you should sponsor this project, check out the list of
+[completed funding goals] to learn whether you're already using features that
+were developed with the help of sponsorships. You're most likely using at least
+a handful of them, [thanks to our awesome sponsors]!
 
-  [4]: #exclusive-features
+  [completed funding goals]: #goals-completed
+  [thanks to our awesome sponsors]: #how-to-become-a-sponsor
 
 ## How to become a sponsor
 
-You can become an eligible sponsor with your individual or organization's GitHub
-account. Visit __[squidfunk's sponsor profile][5]__, pick any tier __from
-$10/month__[^2], and complete the checkout. Then, after a few hours, @squidfunk
-will add you as a collaborator to the super-secret private GitHub repositority
-containing the Insiders edition, which contains all [brand new and exclusive
-features][4].
+Thanks for your interest in sponsoring! In order to become an eligible sponsor
+with your GitHub account, visit [squidfunk's sponsor profile], and complete
+a sponsorship of __$10 a month or more__. You can use your individual or
+organization GitHub account for sponsoring.
 
 __Important__: If you're sponsoring @squidfunk through a GitHub organization,
 please send a short email to sponsors@squidfunk.com with the name of your
-organization and the account that should be added as a collaborator.[^3]
+organization and the GitHub account of the individual that should be added as a 
+collaborator.[^4]
 
-You can cancel your sponsorship anytime.[^4]
+You can cancel your sponsorship anytime.[^5]
 
-  [^2]:
-    Note that $10/month is the minimum amount to become eligible for Insiders.
-    If you sponsor with a lower amount, it's still very much appreciated, but
-    you won't be granted access to Insiders. Custom amounts of $10+ are also
-    eligible.
-
-  [^3]:
+  [^4]:
     It's currently not possible to grant access to each member of an
     organization, as GitHub only allows for adding users. Thus, after
     sponsoring, please send an email to sponsors@squidfunk.com, stating which
@@ -87,7 +107,7 @@ You can cancel your sponsorship anytime.[^4]
     private Insiders GitHub repository, and grant access to all members of the
     organizations.
 
-  [^4]:
+  [^5]:
     If you cancel your sponsorship, GitHub schedules a cancellation request
     which will become effective at the end of the billing cycle. This means
     that even though you cancel your sponsorship, you will keep your access to
@@ -96,7 +116,7 @@ You can cancel your sponsorship anytime.[^4]
     regarding your payment, and GitHub doesn't offer refunds, sponsorships are
     non-refundable.
 
-[:octicons-heart-fill-24:{ .mdx-heart } &nbsp; Join our <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span> awesome sponsors][5]{ .md-button .md-button--primary .mdx-sponsorship-button }
+[:octicons-heart-fill-24:{ .mdx-heart } &nbsp; Join our <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span> awesome sponsors][squidfunk's sponsor profile]{ .md-button .md-button--primary .mdx-sponsorship-button }
 
 <hr />
 
@@ -104,19 +124,22 @@ You can cancel your sponsorship anytime.[^4]
 
 **Special thanks** to our **premium sponsors**:
 
-[![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
-[![KX]](https://kx.com/){ target=_blank title="KX Systems" }
-[![Hummingbot]](https://hummingbot.io/){ target=_blank title="Hummingbot" }
-[![Basler]](https://docs.baslerweb.com/){ target=_blank title="Basler" }
 [![Cirrus CI]](https://cirrus-ci.org/){ target=_blank title="Cirrus CI" }
+[![Basler]](https://docs.baslerweb.com/){ target=_blank title="Basler" }
+[![Hummingbot]](https://hummingbot.io/){ target=_blank title="Hummingbot" }
+[![KX]](https://kx.com/){ target=_blank title="KX Systems" }
+[![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
+[![Account technologies]](https://www.accounttechnologies.com/){ target=_blank title="Account technologies" }
 
 </div>
 
-  [Manticore Games]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/manticoregames.png
-  [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/kx.svg
-  [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/hummingbot.png
-  [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/basler.png
-  [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg
+  [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png
+  [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png
+  [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png
+  [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png
+  [Manticore Games]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-manticore-games.png
+  [Account technologies]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-account-technologies.png
+
 
 <hr />
 
@@ -131,163 +154,163 @@ You can cancel your sponsorship anytime.[^4]
   </small>
 </div>
 
-  [5]: https://github.com/sponsors/squidfunk
+  [squidfunk's sponsor profile]: https://github.com/sponsors/squidfunk
 
-## Exclusive features
+## Available features
 
-The following features are currently exclusively available to sponsors:
+The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Was this page helpful? :material-new-box:][44]
-- [x] [Brand new search plugin :material-new-box:][35]
-- [x] [Rich search previews][36]
-- [x] [Tokenizer with lookahead][37]
-- [x] [Advanced search highlighting][38]
-- [x] [Excluding content from search][39]
-- [x] [Social cards][34]
-- [x] [Cookie consent][33]
-- [x] [Linking content tabs][32]
-- [x] [Boosting pages in search][30]
-- [x] [Tags (with search integration)][29]
-- [x] [Stay on page when switching versions][28]
-- [x] [Version warning][26]
-- [x] [Custom admonition icons][31]
-- [x] [Code annotations][25]
-- [x] [Anchor tracking ][24]
-- [x] [Mermaid.js integration][27]
+- [x] [Was this page helpful?] :material-new-box:
+- [x] [Brand new search plugin] :material-new-box:
+- [x] [Rich search previews]
+- [x] [Tokenizer with lookahead]
+- [x] [Advanced search highlighting]
+- [x] [Excluding content from search]
+- [x] [Social cards]
+- [x] [Cookie consent]
+- [x] [Linking content tabs]
+- [x] [Boosting pages in search]
+- [x] [Tags] with search integration
+- [x] [Stay on page when switching versions]
+- [x] [Version warning]
+- [x] [Custom admonition icons]
+- [x] [Code annotations]
+- [x] [Anchor tracking]
+- [x] [Mermaid.js integration]
 
 </div>
-
-_New features are added to this list every few weeks, so be sure to come back
-from time to time to learn about what's new, or follow [@squidfunk on 
-:fontawesome-brands-twitter:{ .twitter } Twitter][6] to stay updated._
-
-  [6]: https://twitter.com/squidfunk
 
 ## Funding <span class="mdx-sponsorship-total" data-mdx-component="sponsorship-total"></span>
 
 ### Goals
 
-Following is a list of funding goals. When a funding goal is hit, the features
-that are tied to it are merged back into Material for MkDocs and released to
-the public for general availability.
+The following section lists all funding goals. Each goal contains a list of
+features prefixed with a checkmark symbol, denoting whether a feature is
+:octicons-check-circle-fill-24:{ style="color: #00e676" } already available or 
+:octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
+are released for general availability.
 
 #### $ 4,000 – Ghost Pepper
 
-- [x] [Anchor tracking][24]
-- [x] [Code annotations][25]
-- [x] [Version warning][26]
+- [x] [Anchor tracking]
+- [x] [Code annotations]
+- [x] [Version warning]
 
-[24]: ../setup/setting-up-navigation.md#anchor-tracking
-[25]: ../reference/code-blocks.md#adding-annotations
-[26]: ../setup/setting-up-versioning.md#version-warning
+  [Anchor tracking]: ../setup/setting-up-navigation.md#anchor-tracking
+  [Code annotations]: ../reference/code-blocks.md#adding-annotations
+  [Version warning]: ../setup/setting-up-versioning.md#version-warning
 
 #### $ 5,000 – Aji Panca
 
-- [x] [Mermaid.js integration][27]
-- [x] [Stay on page when switching versions][28]
-- [x] [Tags (with search integration)][29]
+- [x] [Mermaid.js integration]
+- [x] [Stay on page when switching versions]
+- [x] [Tags] with search integration
 
-  [27]: ../reference/diagrams.md
-  [28]: ../setup/setting-up-versioning.md#stay-on-page
-  [29]: ../setup/setting-up-tags.md
+  [Mermaid.js integration]: ../reference/diagrams.md
+  [Stay on page when switching versions]: ../setup/setting-up-versioning.md#stay-on-page
+  [Tags]: ../setup/setting-up-tags.md
 
 #### $ 6,000 – Trinidad Scorpion
 
-- [x] [Boosting pages in search][30]
-- [x] [Custom admonition icons][31]
-- [x] [Linking content tabs][32]
+- [x] [Boosting pages in search]
+- [x] [Custom admonition icons]
+- [x] [Linking content tabs]
 
-  [30]: ../setup/setting-up-site-search.md#search-boosting
-  [31]: ../reference/admonitions.md#admonition-icons
-  [32]: ../reference/content-tabs.md#linked-content-tabs
+  [Boosting pages in search]: ../setup/setting-up-site-search.md#search-boosting
+  [Custom admonition icons]: ../reference/admonitions.md#admonition-icons
+  [Linking content tabs]: ../reference/content-tabs.md#linked-content-tabs
 
 #### $ 7,000 – Royal Gold
 
-- [x] [Cookie consent][33]
-- [x] [Was this page helpful?][44]
+- [x] [Cookie consent]
+- [x] [Was this page helpful?]
 - [ ] Link cards
 
-  [33]: ../setup/setting-up-site-analytics.md#cookie-consent
-  [44]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
+  [Cookie consent]: ../setup/setting-up-site-analytics.md#cookie-consent
+  [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
 
 #### $ 8,000 – Scotch Bonnet
 
-- [x] [Social cards][34]
+- [x] [Social cards]
 - [ ] Stay on page when switching languages
 - [ ] Table of contents follows active anchor
 
-  [34]: ../setup/setting-up-social-cards.md
+  [Social cards]: ../setup/setting-up-social-cards.md
 
 #### $ 10,000 – Carolina Reaper
 
-- [x] [Brand new search plugin][35]
-- [x] [Rich search previews][36]
-- [x] [Tokenizer with lookahead][37]
-- [x] [Advanced search highlighting][38]
-- [x] [Excluding content from search][39]
+- [x] [Brand new search plugin]
+- [x] [Rich search previews]
+- [x] [Tokenizer with lookahead]
+- [x] [Advanced search highlighting]
+- [x] [Excluding content from search]
 
-  [35]: ../blog/2021/search-better-faster-smaller.md
-  [36]: ../blog/2021/search-better-faster-smaller.md#rich-search-previews
-  [37]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
-  [38]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
-  [39]: ../setup/setting-up-site-search.md#search-exclusion
+  [Brand new search plugin]: ../blog/2021/search-better-faster-smaller.md
+  [Rich search previews]: ../blog/2021/search-better-faster-smaller.md#rich-search-previews
+  [Tokenizer with lookahead]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
+  [Advanced search highlighting]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
+  [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
 
 ### Goals completed
 
+This section lists all funding goals that were previously completed, which means
+that those features were part of Insiders, but are now generally available and
+can be used by all users.
+
 #### $ 3,000 – Caribbean Red
 
-- [x] [Sticky navigation tabs][21]
-- [x] [Section index pages][22]
-- [x] [Remove generator notice][23]
+- [x] [Sticky navigation tabs]
+- [x] [Section index pages]
+- [x] [Remove generator notice]
 
-  [21]: ../setup/setting-up-navigation.md#sticky-navigation-tabs
-  [22]: ../setup/setting-up-navigation.md#section-index-pages
-  [23]: ../setup/setting-up-the-footer.md#generator-notice
+  [Sticky navigation tabs]: ../setup/setting-up-navigation.md#sticky-navigation-tabs
+  [Section index pages]: ../setup/setting-up-navigation.md#section-index-pages
+  [Remove generator notice]: ../setup/setting-up-the-footer.md#generator-notice
 
 #### $ 2,500 – Biquinho Vermelho
 
-- [x] [Search suggestions][18]
-- [x] [Search highlighting][19]
-- [x] [Search sharing][20]
+- [x] [Search suggestions]
+- [x] [Search highlighting]
+- [x] [Search sharing]
 
-  [18]: ../setup/setting-up-site-search.md#search-suggestions
-  [19]: ../setup/setting-up-site-search.md#search-highlighting
-  [20]: ../setup/setting-up-site-search.md#search-sharing
+  [Search suggestions]: ../setup/setting-up-site-search.md#search-suggestions
+  [Search highlighting]: ../setup/setting-up-site-search.md#search-highlighting
+  [Search sharing]: ../setup/setting-up-site-search.md#search-sharing
 
 #### $ 2,000 – Black Pearl
 
 - [x] Latest release tag
-- [x] [Color palette toggle][16]
-- [x] [Back-to-top button][17]
+- [x] [Color palette toggle]
+- [x] [Back-to-top button]
 
-  [16]: ../setup/changing-the-colors.md#color-palette-toggle
-  [17]: ../setup/setting-up-navigation.md#back-to-top-button
+  [Color palette toggle]: ../setup/changing-the-colors.md#color-palette-toggle
+  [Back-to-top button]: ../setup/setting-up-navigation.md#back-to-top-button
 
 #### $ 1,500 – Bhut Jolokia
 
-- [x] [Admonition inline blocks][12]
-- [x] [Site language selection][13]
-- [x] [Versioning][14]
+- [x] [Admonition inline blocks]
+- [x] [Site language selection]
+- [x] [Versioning]
 
-  [12]: ../reference/admonitions.md#inline-blocks
-  [13]: ../setup/changing-the-language.md#site-language-selector
-  [14]: ../setup/setting-up-versioning.md#versioning
+  [Admonition inline blocks]: ../reference/admonitions.md#inline-blocks
+  [Site language selection]: ../setup/changing-the-language.md#site-language-selector
+  [Versioning]: ../setup/setting-up-versioning.md#versioning
 
 #### $ 1,000 – Prairie Fire
 
-- [x] [Navigation sections][7]
-- [x] [Navigation expansion][8]
-- [x] [Hiding the sidebars][9]
-- [x] [Table of contents in navigation][10]
-- [x] [Header hides on scroll][11]
+- [x] [Navigation sections]
+- [x] [Navigation expansion]
+- [x] [Hiding the sidebars]
+- [x] [Table of contents in navigation]
+- [x] [Header hides on scroll]
 
-  [7]: ../setup/setting-up-navigation.md#navigation-sections
-  [8]: ../setup/setting-up-navigation.md#navigation-expansion
-  [9]: ../setup/setting-up-navigation.md#hiding-the-sidebars
-  [10]: ../setup/setting-up-navigation.md#navigation-integration
-  [11]: ../setup/setting-up-the-header.md#automatic-hiding
+  [Navigation sections]: ../setup/setting-up-navigation.md#navigation-sections
+  [Navigation expansion]: ../setup/setting-up-navigation.md#navigation-expansion
+  [Hiding the sidebars]: ../setup/setting-up-navigation.md#hiding-the-sidebars
+  [Table of contents in navigation]: ../setup/setting-up-navigation.md#navigation-integration
+  [Header hides on scroll]: ../setup/setting-up-the-header.md#automatic-hiding
 
 #### $ 500 – Madame Jeanette
 
@@ -299,53 +322,59 @@ the public for general availability.
 
 ### Compatibility
 
-_We're running an open source project and want to make sure that users can build
-the documentation without having access to Insiders. Is this still possible?_
+_We're running an open source project and want to make sure that users can
+change and build the documentation without having access to Insiders. Is this
+still possible?_
 
-Yes. Insiders is compatible with Material for MkDocs. All new features are
-implemented behind feature flags; all configuration changes are 
-backward-compatible. This means that your users will be able to build the
+Yes. Insiders is compatible with Material for MkDocs. Almost all new features
+are implemented behind feature flags; almost all configuration changes are 
+backward-compatible. This means that developers will be able to build the
 documentation locally with Material for MkDocs and when they push their changes,
-it can be built with Insiders (e.g. as part of GitHub Actions). Thus, it's
-recommended to [install Insiders][40] only in CI, as you don't want to expose
-your `GH_TOKEN` to users.
+it can be built with Insiders (e.g. as part of GitHub Actions).
 
-  [40]: ../publishing-your-site.md#github-pages
+When using built-in plugins that are solely available via Insiders, it might be 
+necessary to split the `mkdocs.yml` configuration into a base configuration, and
+one with plugin overrides. Note that this is a limitation of MkDocs, which can
+be mitigated by using [configuration inheritance].
+
+See the [getting started guide] for more information.
+
+  [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
+  [getting started guide]: getting-started.md
 
 ### Payment
 
 _We don't want to pay for sponsorship every month. Are there any other options?_
 
 Yes. You can sponsor on a yearly basis by [switching your GitHub account to a
-yearly billing cycle][41]. If for some reason you cannot do that, you could
-also create a dedicated GitHub account with a yearly billing cycle, which you
-only use for sponsoring (some sponsors already do that).
+yearly billing cycle][billing cycle]. If for some reason you cannot do that, you
+could also create a dedicated GitHub account with a yearly billing cycle, which
+you only use for sponsoring (some sponsors already do that).
 
-If you have any problems or further questions, don't hesitate to contact me at
-sponsors@squidfunk.com. Note that one-time payments are not eligible for
-Insiders, but of course, very appreciated.
+If you have any problems or further questions, please reach out to
+sponsors@squidfunk.com.
 
-  [41]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/changing-the-duration-of-your-billing-cycle
+  [billing cycle]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/changing-the-duration-of-your-billing-cycle
 
 ### Terms
 
-_We're using Material for MkDocs to build the developer documentation of a
-commercial project. Can we use Insiders under the same terms and conditions?_
+_Are we allowed to use Insiders under the same terms and conditions as
+Material for MkDocs?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license][42]. However, we kindly ask you to respect the following
+by the [MIT license]. However, we kindly ask you to respect the following
 guidelines:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
-  it for public, private or commercial projects, fork it, mirror it, do whatever
-  you want with it, but please don't release the source code, as it would
-  counteract the sponsorware strategy.
+  it for public, private or commercial projects, privately fork or mirror it,
+  but please don't make the source code public, as it would counteract the 
+  sponsorware strategy.
 
-- If you cancel your subscription, you're removed as a collaborator and will
-  miss out on future updates of Insiders. However, you may __use the latest
-  version__ that's available to you __as long as you like__. Just remember that
-  [GitHub deletes private forks][43].
+- If you cancel your subscription, you're automatically removed as a
+  collaborator and will miss out on all future updates of Insiders. However, you
+  may __use the latest version__ that's available to you __as long as you like__.
+  Just remember that [GitHub deletes private forks].
 
-  [42]: ../license.md
-  [43]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
+  [MIT license]: ../license.md
+  [GitHub deletes private forks]: https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/removing-a-collaborator-from-a-personal-repository
