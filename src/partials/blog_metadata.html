@@ -22,7 +22,7 @@
       {% if page.meta.gittag %}
         {% set _, changelog_version = page.meta.gittag.split('-') %}
         ·
-        <a href="../../../insiders/changelog/#{{ changelog_version }}">
+        <a href="/mkdocs-material/insiders/changelog/#{{ changelog_version }}">
           <span class="twemoji">
             {% include ".icons/octicons/tag-24.svg" %}
           </span> {{ page.meta.gittag }}
