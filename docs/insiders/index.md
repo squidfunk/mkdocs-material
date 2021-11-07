@@ -65,10 +65,9 @@ features, bug fixing, stability improvement, issue triage and general support.
 The biggest bottleneck in Open Source is time.[^3]
 
   [^3]:
-    Making
-    an Open Source project sustainable is exceptionally hard: maintainers burn
-    out, projects are abandoned. That's not great and very unpredictable. The
-    sponsorware model ensures that if you decide to use Material for MkDocs,
+    Making an Open Source project sustainable is exceptionally hard: maintainers
+    burn out, projects are abandoned. That's not great and very unpredictable.
+    The sponsorware model ensures that if you decide to use Material for MkDocs,
     you can be sure that bugs are fixed quickly and new features are added
     regularly.
 
@@ -340,7 +339,7 @@ be mitigated by using [configuration inheritance].
 See the [getting started guide] for more information.
 
   [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
-  [getting started guide]: getting-started.md
+  [getting started guide]: getting-started.md#caveats
 
 ### Payment
 

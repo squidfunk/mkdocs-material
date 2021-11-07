@@ -1,23 +1,14 @@
 ---
 template: overrides/main.html
-title: Switching to Insiders
+title: Getting started with Insiders
 ---
 
-# Switching to Insiders
+# Getting started with Insiders
 
-Material for MkDocs Insiders is a fully compatible drop-in replacement[^1] for 
-Material for MkDocs, and can be installed similarily using [`pip`][pip],
-[`docker`][docker] or [`git`][git]. Note that in order to get access to the
-Insiders repository, you need to [become an eligible sponsor] of @squidfunk.
-
-  [^1]:
-    While Insiders always strives for full downward compatibility with Material
-    for MkDocs, there are some cases which slightly deviate from the non-Insiders,
-    
-    because
-    configuration can't be shared due to limitations of MkDocs. This is
-    particularly true for the `plugins` configuration, as Insiders provides
-    several built-in plugins.
+Material for MkDocs Insiders is a compatible drop-in replacement for Material
+for MkDocs, and can be installed similarily using [`pip`][pip],
+[`docker`][docker] or [`git`][git]. Note that in order to access the Insiders 
+repository, you need to [become an eligible sponsor] of @squidfunk on GitHub.
 
   [pip]: #with-pip
   [docker]: #with-docker
@@ -27,9 +18,9 @@ Insiders repository, you need to [become an eligible sponsor] of @squidfunk.
 ## Requirements
 
 After you've been added to the list of collaborators and accepted the
-invitation, the Insiders repository programmatically (from the command
-line or GitHub Actions workflows), you need to create a [personal access 
-token]:
+repository invitation, the next step is to create a [personal access token] for
+your GitHub account in order to access the Insiders repository programmatically 
+(from the command line or GitHub Actions workflows):
 
 1.  Go to https://github.com/settings/tokens
 2.  Click on [Generate a new token]
@@ -138,3 +129,39 @@ pip install -e mkdocs-material
   [publish]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/.github/workflows/publish.yml
 
 ## Caveats
+
+This sections describes some aspects to consider when using Insiders together
+with Material for MkDocs to ensure that users without access to Insiders can
+still build your documentation.
+
+### Built-in plugins
+
+When using built-in plugins that are solely available via Insiders, it might be 
+necessary to split the `mkdocs.yml` configuration into a base configuration, and
+one with plugin overrides. Note that this is a limitation of MkDocs, which can
+be mitigated by using [configuration inheritance]:
+
+=== ":octicons-file-code-16: mkdocs.insiders.yml"
+
+    ``` yaml
+    INHERIT: mkdocs.yml
+    plugins:
+      - search
+      - social
+      - tags
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    # Configuration with everything except Insiders plugins
+    ```
+
+Now, when you're in an environment with access to Insiders (e.g. in your CI
+pipeline), you can build your documentation project with the following lines:
+
+```
+mkdocs build --config-file mkdocs.insiders.yml
+```
+
+  [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
