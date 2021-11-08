@@ -9,6 +9,8 @@ template: overrides/main.html
 ### 3.2.2 <small>_ November 6, 2021</small> { id="3.2.2" }
 
 - Fixed always last feedback rating being sent
+- Fixed #3145: code annotations eat whole comment lines
+- Fixed #3170: Feedback widget doesn't send data to GA4
 
 ### 3.2.1 <small>_ November 4, 2021</small> { id="3.2.1" }
 

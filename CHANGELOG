@@ -1,6 +1,8 @@
 mkdocs-material-7.3.6+insiders-3.2.2 (2021-11-06)
 
   * Fixed always last feedback rating being sent
+  * Fixed #3145: code annotations eat whole comment lines
+  * Fixed #3170: Feedback widget doesn't send data to GA4
 
 mkdocs-material-7.3.6+insiders-3.2.1 (2021-11-04)
 
