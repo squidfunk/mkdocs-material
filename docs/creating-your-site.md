@@ -14,13 +14,14 @@ mkdocs new .
 
 Alternatively, if you're running Material for MkDocs from within Docker, use:
 
-=== "Unix, Powershell"
+=== "Unix"
 
     ```
     docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material new .
+    sudo chown -R $UID:$UID ./*
     ```
 
-=== "Windows"
+=== "Windows, Powershell"
 
     ```
     docker run --rm -it -v "%cd%":/docs squidfunk/mkdocs-material new .
@@ -158,13 +159,13 @@ mkdocs serve # (1)
 
 If you're running Material for MkDocs from within Docker, use:
 
-=== "Unix, Powershell"
+=== "Unix"
 
     ```
     docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
     ```
 
-=== "Windows"
+=== "Windows, Powershell"
 
     ```
     docker run --rm -it -p 8000:8000 -v "%cd%":/docs squidfunk/mkdocs-material
@@ -183,9 +184,24 @@ Point your browser to [localhost:8000][live preview] and you should see:
 When you're finished editing, you can build a static site from your Markdown
 files with:
 
-```
+``` sh
 mkdocs build
 ```
+
+If you're running Material for MkDocs from within Docker, use:
+
+=== "Unix"
+
+    ```
+    docker run --rm -v ${PWD}:/docs squidfunk/mkdocs-material build
+    sudo chown -R $UID:$UID site/
+    ```
+
+=== "Windows, Powershell"
+
+    ```
+    docker run --rm -v "%cd%":/docs squidfunk/mkdocs-material build
+    ```
 
 The contents of this directory make up your project documentation. There's no
 need for operating a database or server, as it is completely self-contained.
