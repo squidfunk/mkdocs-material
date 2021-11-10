@@ -129,6 +129,7 @@ You can cancel your sponsorship anytime.[^5]
 [![KX]](https://kx.com/){ target=_blank title="KX Systems" }
 [![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
 [![Account technologies]](https://www.accounttechnologies.com/){ target=_blank title="Account technologies" }
+[![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
 
 </div>
 
@@ -138,7 +139,7 @@ You can cancel your sponsorship anytime.[^5]
   [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png
   [Manticore Games]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-manticore-games.png
   [Account technologies]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-account-technologies.png
-
+  [Prefect]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png
 
 <hr />
 
