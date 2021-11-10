@@ -4,7 +4,7 @@ template: overrides/main.html
 
 # Creating your site
 
-After you've [installed] Material for MkDocs, you can bootstrap your project 
+After you've [installed] Material for MkDocs, you can bootstrap your project
 documentation using the `mkdocs` executable. Go to the directory where you want
 your project to be located and enter:
 
@@ -14,17 +14,17 @@ mkdocs new .
 
 Alternatively, if you're running Material for MkDocs from within Docker, use:
 
-=== "Unix"
+=== "Unix/Powershell"
 
     ```
-    docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material new .
+    docker run --rm -v ${PWD}:/docs squidfunk/mkdocs-material new .
     sudo chown -R $UID:$UID ./*
     ```
 
-=== "Windows, Powershell"
+=== "Windows"
 
     ```
-    docker run --rm -it -v "%cd%":/docs squidfunk/mkdocs-material new .
+    docker run --rm -v "%cd%":/docs squidfunk/mkdocs-material new .
     ```
 
 This will create the following structure:
@@ -119,7 +119,7 @@ and much more:
 </div>
 
 Furthermore, see the list of supported [Markdown extensions] that are natively
-integrated with Material for MkDocs, delivering a low-effort and unprecedented 
+integrated with Material for MkDocs, delivering a low-effort and unprecedented
 technical writing experience.
 
   [Changing the colors]: setup/changing-the-colors.md
@@ -159,13 +159,13 @@ mkdocs serve # (1)
 
 If you're running Material for MkDocs from within Docker, use:
 
-=== "Unix"
+=== "Unix/Powershell"
 
     ```
     docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
     ```
 
-=== "Windows, Powershell"
+=== "Windows"
 
     ```
     docker run --rm -it -p 8000:8000 -v "%cd%":/docs squidfunk/mkdocs-material
@@ -190,14 +190,14 @@ mkdocs build
 
 If you're running Material for MkDocs from within Docker, use:
 
-=== "Unix"
+=== "Unix/Powershell"
 
     ```
     docker run --rm -v ${PWD}:/docs squidfunk/mkdocs-material build
     sudo chown -R $UID:$UID site/
     ```
 
-=== "Windows, Powershell"
+=== "Windows"
 
     ```
     docker run --rm -v "%cd%":/docs squidfunk/mkdocs-material build
