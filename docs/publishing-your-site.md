@@ -91,6 +91,9 @@ Now, when a new commit is pushed to either the `master` or `main` branches,
 the static site is automatically built and deployed. Push your changes to see
 the workflow in action.
 
+After the first successful build, visit `github.com/<username>/<repository>/settings/pages`
+and set `Source (branch)` to `gh-pages`.
+
 Your documentation should shortly appear at `<username>.github.io/<repository>`.
 
   [GitHub Actions]: https://github.com/features/actions
