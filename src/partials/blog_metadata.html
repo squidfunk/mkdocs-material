@@ -18,7 +18,7 @@
       <span class="twemoji">
         {% include ".icons/octicons/clock-24.svg" %}
       </span>
-      {{ page.content | wordcount // config.extra.words_read_per_minute }} min read
+      {{ page.content | wordcount // config.extra.blog.words_read_per_minute }} min read
       {% if page.meta.gittag %}
         {% set _, changelog_version = page.meta.gittag.split('-') %}
         ·
