@@ -20,8 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { combineLatest } from "rxjs"
-import { map } from "rxjs/operators"
+import { combineLatest, map } from "rxjs"
 
 import { configuration } from "~/_"
 import {

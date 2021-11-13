@@ -21,8 +21,11 @@
  */
 
 import { ProjectSchema } from "gitlab"
-import { Observable } from "rxjs"
-import { defaultIfEmpty, map } from "rxjs/operators"
+import {
+  Observable,
+  defaultIfEmpty,
+  map
+} from "rxjs"
 
 import { requestJSON } from "~/browser"
 

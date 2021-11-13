@@ -23,9 +23,11 @@
 import {
   Observable,
   ObservableInput,
-  combineLatest
+  combineLatest,
+  filter,
+  map,
+  startWith
 } from "rxjs"
-import { filter, map, startWith } from "rxjs/operators"
 
 import { getLocation } from "~/browser"
 import {

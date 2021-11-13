@@ -25,22 +25,20 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
-  combineLatest,
-  merge,
-  of
-} from "rxjs"
-import {
   bufferCount,
+  combineLatest,
   distinctUntilKeyChanged,
   filter,
   finalize,
   map,
+  merge,
   observeOn,
+  of,
   switchMap,
   tap,
   withLatestFrom,
   zipWith
-} from "rxjs/operators"
+} from "rxjs"
 
 import {
   addToSearchResultList,

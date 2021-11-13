@@ -25,13 +25,11 @@ import {
   Observable,
   fromEvent,
   fromEventPattern,
-  merge
-} from "rxjs"
-import {
   mapTo,
+  merge,
   startWith,
   switchMap
-} from "rxjs/operators"
+} from "rxjs"
 
 /* ----------------------------------------------------------------------------
  * Functions

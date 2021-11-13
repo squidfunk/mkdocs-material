@@ -23,13 +23,11 @@
 import {
   Observable,
   Subject,
-  fromEvent
-} from "rxjs"
-import {
   finalize,
+  fromEvent,
   map,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { getLocation } from "~/browser"
 

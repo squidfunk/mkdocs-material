@@ -20,13 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent } from "rxjs"
 import {
+  Observable,
   filter,
+  fromEvent,
   map,
   shareReplay,
   startWith
-} from "rxjs/operators"
+} from "rxjs"
 
 import { getElement } from "~/browser"
 import { h } from "~/utilities"

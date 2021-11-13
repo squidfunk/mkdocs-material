@@ -24,23 +24,21 @@ import {
   Observable,
   Subject,
   combineLatest,
-  fromEvent,
-  merge
-} from "rxjs"
-import {
   delay,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   filter,
   finalize,
+  fromEvent,
   map,
+  merge,
   shareReplay,
   startWith,
   take,
   takeLast,
   takeUntil,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import {
   resetSearchQueryPlaceholder,

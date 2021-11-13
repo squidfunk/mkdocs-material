@@ -25,22 +25,20 @@ import {
   NEVER,
   Observable,
   Subject,
-  fromEvent,
-  merge,
-  of
-} from "rxjs"
-import {
   combineLatestWith,
   distinctUntilKeyChanged,
   finalize,
+  fromEvent,
   map,
+  merge,
   mergeWith,
+  of,
   switchMap,
   take,
   takeWhile,
   tap,
   withLatestFrom
-} from "rxjs/operators"
+} from "rxjs"
 
 import { feature } from "~/_"
 import { resetFocusable, setFocusable } from "~/actions"

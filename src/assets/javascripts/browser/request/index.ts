@@ -20,14 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-import { EMPTY, Observable, from } from "rxjs"
 import {
+  EMPTY,
+  Observable,
   catchError,
   filter,
+  from,
   map,
   shareReplay,
   switchMap
-} from "rxjs/operators"
+} from "rxjs"
 
 /* ----------------------------------------------------------------------------
  * Functions

@@ -24,18 +24,16 @@ import {
   Observable,
   Subject,
   asyncScheduler,
-  fromEvent,
-  merge
-} from "rxjs"
-import {
   combineLatestWith,
   distinctUntilChanged,
   filter,
   finalize,
+  fromEvent,
   map,
+  merge,
   observeOn,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { Keyboard } from "~/browser"
 import {

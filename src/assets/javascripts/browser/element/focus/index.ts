@@ -20,8 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import { map, startWith } from "rxjs/operators"
+import {
+  Observable,
+  fromEvent,
+  map,
+  merge,
+  startWith
+} from "rxjs"
 
 import { getActiveElement } from "../_"
 

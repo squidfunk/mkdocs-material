@@ -20,15 +20,19 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, Subject, defer, of } from "rxjs"
 import {
+  NEVER,
+  Observable,
+  Subject,
   catchError,
+  defer,
   filter,
   finalize,
   map,
+  of,
   shareReplay,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { setSourceFacts, setSourceState } from "~/actions"
 import { renderSourceFacts } from "~/templates"

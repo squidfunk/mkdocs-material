@@ -23,18 +23,16 @@
 import {
   Observable,
   Subject,
-  fromEvent,
-  of
-} from "rxjs"
-import {
   finalize,
+  fromEvent,
   map,
   mapTo,
   mergeMap,
+  of,
   shareReplay,
   startWith,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { getElements } from "~/browser"
 

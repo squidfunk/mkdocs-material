@@ -24,17 +24,15 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
-  merge,
-  of
-} from "rxjs"
-import {
   delay,
   finalize,
   map,
+  merge,
   observeOn,
+  of,
   switchMap,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import {
   resetDialogState,

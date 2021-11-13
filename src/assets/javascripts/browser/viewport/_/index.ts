@@ -20,12 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, combineLatest } from "rxjs"
 import {
+  Observable,
+  combineLatest,
   distinctUntilKeyChanged,
   map,
   shareReplay
-} from "rxjs/operators"
+} from "rxjs"
 
 import { Header } from "~/components"
 

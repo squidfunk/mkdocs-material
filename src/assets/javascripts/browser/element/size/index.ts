@@ -25,17 +25,15 @@ import {
   Observable,
   Subject,
   defer,
-  of
-} from "rxjs"
-import {
   filter,
   finalize,
   map,
+  of,
   shareReplay,
   startWith,
   switchMap,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 /* ----------------------------------------------------------------------------
  * Types

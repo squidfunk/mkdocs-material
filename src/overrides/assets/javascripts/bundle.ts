@@ -20,8 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { merge } from "rxjs"
-import { switchMap } from "rxjs/operators"
+import { merge, switchMap } from "rxjs"
 
 import {
   getComponentElements,

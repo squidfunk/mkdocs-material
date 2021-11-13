@@ -24,16 +24,14 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
-  of
-} from "rxjs"
-import {
   distinctUntilKeyChanged,
   finalize,
   map,
   observeOn,
+  of,
   switchMap,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { feature } from "~/_"
 import { resetTabsState, setTabsState } from "~/actions"

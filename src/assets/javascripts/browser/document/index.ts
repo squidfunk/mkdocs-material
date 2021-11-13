@@ -20,8 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-import { ReplaySubject, Subject, fromEvent } from "rxjs"
-import { mapTo } from "rxjs/operators"
+import {
+  ReplaySubject,
+  Subject,
+  fromEvent,
+  mapTo
+} from "rxjs"
 
 /* ----------------------------------------------------------------------------
  * Functions

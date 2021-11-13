@@ -20,14 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, merge } from "rxjs"
 import {
+  Observable,
+  Subject,
   filter,
   finalize,
   map,
   mapTo,
+  merge,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { Component } from "../../_"
 

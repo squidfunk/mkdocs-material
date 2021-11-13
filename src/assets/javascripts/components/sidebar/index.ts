@@ -24,16 +24,14 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
-  combineLatest
-} from "rxjs"
-import {
+  combineLatest,
   distinctUntilChanged,
   finalize,
   map,
   observeOn,
   tap,
   withLatestFrom
-} from "rxjs/operators"
+} from "rxjs"
 
 import {
   resetSidebarHeight,

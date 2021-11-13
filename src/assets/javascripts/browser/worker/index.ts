@@ -20,14 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject, fromEvent } from "rxjs"
 import {
+  Observable,
+  Subject,
+  fromEvent,
   map,
   share,
   switchMapTo,
   tap,
   throttle
-} from "rxjs/operators"
+} from "rxjs"
 
 /* ----------------------------------------------------------------------------
  * Types

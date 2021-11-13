@@ -24,22 +24,20 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
-  combineLatest,
-  defer,
-  of
-} from "rxjs"
-import {
   bufferCount,
+  combineLatest,
   combineLatestWith,
+  defer,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   filter,
   map,
   observeOn,
+  of,
   shareReplay,
   startWith,
   switchMap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { feature } from "~/_"
 import { resetHeaderState, setHeaderState } from "~/actions"

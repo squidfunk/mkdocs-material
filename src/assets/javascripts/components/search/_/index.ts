@@ -20,8 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, ObservableInput, merge } from "rxjs"
-import { filter, mergeWith, sample, take } from "rxjs/operators"
+import {
+  NEVER,
+  Observable,
+  ObservableInput,
+  filter,
+  merge,
+  mergeWith,
+  sample,
+  take
+} from "rxjs"
 
 import { configuration } from "~/_"
 import {

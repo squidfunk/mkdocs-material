@@ -20,15 +20,17 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, of } from "rxjs"
 import {
+  Observable,
+  fromEvent,
   mapTo,
   mergeMap,
+  of,
   switchMap,
   takeWhile,
   tap,
   withLatestFrom
-} from "rxjs/operators"
+} from "rxjs"
 
 import { getElements } from "~/browser"
 

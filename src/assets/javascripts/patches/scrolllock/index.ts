@@ -24,15 +24,13 @@ import {
   Observable,
   animationFrameScheduler,
   combineLatest,
-  of
-} from "rxjs"
-import {
   delay,
   map,
   observeOn,
+  of,
   switchMap,
   withLatestFrom
-} from "rxjs/operators"
+} from "rxjs"
 
 import { resetScrollLock, setScrollLock } from "~/actions"
 import { Viewport, watchToggle } from "~/browser"

@@ -20,8 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
-import { map } from "rxjs/operators"
+import { Observable, map } from "rxjs"
 
 import { getElementOrThrow, requestJSON } from "~/browser"
 

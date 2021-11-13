@@ -20,12 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
 import {
+  Observable,
   distinctUntilChanged,
+  fromEvent,
   map,
+  merge,
   startWith
-} from "rxjs/operators"
+} from "rxjs"
 
 import {
   getElementContentSize,

@@ -27,17 +27,15 @@ import postcss from "postcss"
 import {
   NEVER,
   Observable,
+  catchError,
   concat,
   defer,
-  merge,
-  of
-} from "rxjs"
-import {
-  catchError,
   endWith,
   ignoreElements,
+  merge,
+  of,
   switchMap
-} from "rxjs/operators"
+} from "rxjs"
 import { render as sass } from "sass"
 import { promisify } from "util"
 

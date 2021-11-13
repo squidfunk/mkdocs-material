@@ -24,15 +24,13 @@ import {
   NEVER,
   Observable,
   Subject,
-  animationFrameScheduler
-} from "rxjs"
-import {
+  animationFrameScheduler,
   distinctUntilKeyChanged,
   finalize,
   map,
   observeOn,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import {
   resetHeaderTitleState,

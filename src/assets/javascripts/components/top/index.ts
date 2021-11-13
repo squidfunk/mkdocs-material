@@ -24,10 +24,8 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
-  combineLatest
-} from "rxjs"
-import {
   bufferCount,
+  combineLatest,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   finalize,
@@ -35,7 +33,7 @@ import {
   observeOn,
   tap,
   withLatestFrom
-} from "rxjs/operators"
+} from "rxjs"
 
 import {
   resetBackToTopOffset,

@@ -20,8 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { ObservableInput, Subject, from } from "rxjs"
-import { map, share } from "rxjs/operators"
+import {
+  ObservableInput,
+  Subject,
+  from,
+  map,
+  share
+} from "rxjs"
 
 import { configuration, feature, translation } from "~/_"
 import { WorkerHandler, watchWorker } from "~/browser"

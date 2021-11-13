@@ -24,22 +24,20 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
+  bufferCount,
   combineLatest,
   defer,
-  of
-} from "rxjs"
-import {
-  bufferCount,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   finalize,
   map,
   observeOn,
+  of,
   scan,
   startWith,
   switchMap,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { feature } from "~/_"
 import {

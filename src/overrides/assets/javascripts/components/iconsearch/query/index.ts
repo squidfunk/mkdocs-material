@@ -23,16 +23,14 @@
 import {
   Observable,
   combineLatest,
-  fromEvent,
-  merge
-} from "rxjs"
-import {
   delay,
   distinctUntilChanged,
   filter,
+  fromEvent,
   map,
+  merge,
   withLatestFrom
-} from "rxjs/operators"
+} from "rxjs"
 
 import { watchElementFocus } from "~/browser"
 

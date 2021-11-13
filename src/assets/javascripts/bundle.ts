@@ -21,15 +21,18 @@
  */
 
 import "focus-visible"
-import { NEVER, Subject, defer, merge } from "rxjs"
 import {
+  NEVER,
+  Subject,
+  defer,
   delay,
   filter,
   map,
+  merge,
   mergeWith,
   shareReplay,
   switchMap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { configuration, feature } from "./_"
 import {

@@ -25,11 +25,6 @@ import {
   NEVER,
   Observable,
   Subject,
-  fromEvent,
-  merge,
-  of
-} from "rxjs"
-import {
   bufferCount,
   catchError,
   concatMap,
@@ -37,13 +32,16 @@ import {
   distinctUntilChanged,
   distinctUntilKeyChanged,
   filter,
+  fromEvent,
   map,
+  merge,
+  of,
   sample,
   share,
   skip,
   skipUntil,
   switchMap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { configuration, feature } from "~/_"
 import {

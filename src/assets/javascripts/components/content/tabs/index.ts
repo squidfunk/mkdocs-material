@@ -20,10 +20,22 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, Subject, fromEvent, merge } from "rxjs"
-import { finalize, map, mapTo, tap } from "rxjs/operators"
+import {
+  NEVER,
+  Observable,
+  Subject,
+  finalize,
+  fromEvent,
+  map,
+  mapTo,
+  merge,
+  tap
+} from "rxjs"
 
-import { getElementOrThrow, getElements } from "~/browser"
+import {
+  getElementOrThrow,
+  getElements
+} from "~/browser"
 
 import { Component } from "../../_"
 
