@@ -184,7 +184,7 @@ the guide on [theme extension] and create a new partial in the `overrides`
 folder. Then, import the [translations] of the language as a fallback and only
 adjust the ones you want to override:
 
-=== ":octicons-file-code-16: partials/languages/custom.html"
+=== ":octicons-file-code-16: overrides/partials/languages/custom.html"
 
     ``` html
     <!-- Import translations for language and fallback -->
