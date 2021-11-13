@@ -282,7 +282,7 @@ export function setupInstantLoading(
           "[data-md-component=announce]",
           "[data-md-component=container]",
           "[data-md-component=header-topic]",
-          "[data-md-component=logo], .md-logo", // compat
+          "[data-md-component=logo]",
           "[data-md-component=skip]",
           ...feature("navigation.tabs.sticky")
             ? ["[data-md-component=tabs]"]
