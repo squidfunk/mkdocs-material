@@ -103,6 +103,7 @@ assets may also be put in the `overrides` directory:
 │  │  ├─ analytics/                    # Analytics integrations
 │  │  └─ analytics.html                # Analytics setup
 │  ├─ languages/                       # Translation languages
+│  ├─ copyright.html                   # Copyright and theme information
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
 │  ├─ language.html                    # Translation setup
@@ -113,7 +114,7 @@ assets may also be put in the `overrides` directory:
 │  ├─ page-footer.html                 # Page footer
 │  ├─ page-header.html                 # Page header
 │  ├─ palette.html                     # Color palette
-│  ├─ search.html                      # Search box
+│  ├─ search.html                      # Search interface
 │  ├─ social.html                      # Social links
 │  ├─ source.html                      # Repository information
 │  ├─ source-file.html                 # Source file information

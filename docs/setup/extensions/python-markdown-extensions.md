@@ -625,10 +625,10 @@ The following configuration options are supported:
 
 `alternate_style`{ #tabbed-alternate-style }
 
-:   :octicons-milestone-24: Default: `false` · [:octicons-tag-24: 7.3.1]
-    [Tabbed alternate support] – This option enables the [alternate style] of
-    content tabs, which has [better behavior on mobile viewports], and thus
-    is strongly recommended:
+:   [:octicons-tag-24: 7.3.1][Tabbed alternate support] ·
+    :octicons-milestone-24: Default: `false` · :octicons-alert-24: Required – 
+    This option enables the content tabs [alternate style], which has
+    [better behavior on mobile viewports], and is the only supported style:
 
     ``` yaml
     markdown_extensions:
