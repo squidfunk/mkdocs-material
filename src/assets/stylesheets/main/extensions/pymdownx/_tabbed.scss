@@ -21,50 +21,17 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Rules: legacy implementation (deprecated, removed in v8)
+// Rules
 // ----------------------------------------------------------------------------
 
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Tabbed content
-  .tabbed-content {
-    display: none;
-    order: 99;
-    width: 100%;
-    box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest);
-
-    // [print]: Show all tabs (even hidden ones) when printing
-    @media print {
-      display: block;
-      order: initial;
-    }
-
-    // Code block is the first child of a tab - remove margin and mirror
-    // previous (now deprecated) SuperFences code block grouping behavior
-    > pre:first-child,
-    > .highlight:first-child pre,
-    > .highlighttable:first-child {
-      margin: 0;
-
-      // Omit rounded borders
-      > code {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
-    }
-
-    // Adjust spacing for nested tab
-    > .tabbed-set {
-      margin: 0;
-    }
-  }
-
   // Tabbed container
   .tabbed-set {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: column wrap;
     margin: 1em 0;
     border-radius: px2rem(2px);
 
@@ -78,86 +45,32 @@
       height: 0;
       opacity: 0;
 
-      // Tab label for checked radio button
-      &:checked + label {
-        color: var(--md-accent-fg-color);
-        border-color: var(--md-accent-fg-color);
+      // Tab label states
+      @for $i from 20 through 1 {
+        &:nth-child(#{$i}) {
 
-        // Show tabbed block content
-        + .tabbed-content {
-          display: block;
+          // Tab is active
+          &:checked {
+
+            // Tab label
+            ~ .tabbed-labels > :nth-child(#{$i}) {
+              @extend %tabbed-label;
+            }
+
+            // Tab content
+            ~ .tabbed-content > :nth-child(#{$i}) {
+              @extend %tabbed-content;
+            }
+          }
+
+          // Tab label on keyboard focus
+          &.focus-visible ~ .tabbed-labels > :nth-child(#{$i}) {
+            @extend %tabbed-label-focus-visible;
+          }
         }
       }
-
-      // Tab label on focus
-      &:focus + label {
-        outline-style: auto;
-        outline-color: var(--md-accent-fg-color);
-      }
-
-      // Hide outline for pointer devices
-      &:not(.focus-visible) + label {
-        outline: none;
-        -webkit-tap-highlight-color: transparent;
-      }
-    }
-
-    // Tab label
-    > label {
-      z-index: 1;
-      width: auto;
-      padding: px2em(12px, 12.8px) 1.25em px2em(10px, 12.8px);
-      color: var(--md-default-fg-color--light);
-      font-weight: 700;
-      font-size: px2rem(12.8px);
-      border-bottom: px2rem(2px) solid transparent;
-      cursor: pointer;
-      transition: color 250ms;
-
-      // Hack: omit flickering of content tabs label on initial page load when
-      // using linked content tabs.
-      .no-js & {
-        transition: none;
-      }
-
-      // Tab label on hover
-      &:hover {
-        color: var(--md-accent-fg-color);
-      }
     }
   }
-}
-
-// ----------------------------------------------------------------------------
-// Placeholders: improve colocation for better compression
-// ----------------------------------------------------------------------------
-
-// Tab label placeholder
-%tabbed-label {
-
-  // [screen]: Show active state
-  @media screen {
-    color: var(--md-accent-fg-color);
-    border-color: var(--md-accent-fg-color);
-  }
-}
-
-// Tab label on keyboard focus placeholder
-%tabbed-label-focus-visible {
-  background-color: var(--md-accent-fg-color--transparent);
-}
-
-// Tab content placeholder
-%tabbed-content {
-  display: block;
-}
-
-// ----------------------------------------------------------------------------
-// Rules
-// ----------------------------------------------------------------------------
-
-// Scoped in typesetted content to match specificity of regular content
-.md-typeset { // stylelint-disable-line
 
   // Tabbed labels
   .tabbed-labels {
@@ -220,7 +133,7 @@
   @include break-to-device(mobile) {
 
     // Top-level tabbed labels
-    > .tabbed-alternate .tabbed-labels {
+    > .tabbed-set .tabbed-labels {
       max-width: 100vw;
       margin: 0 px2rem(-16px);
       padding-left: px2rem(16px);
@@ -249,82 +162,92 @@
     }
   }
 
-  // Tabbed container
-  .tabbed-alternate {
-    flex-direction: column;
+  // Tabbed content
+  .tabbed-content {
+    width: 100%;
 
-    // Tabbed content
-    .tabbed-content {
-      display: initial;
-      order: initial;
-      width: 100%;
-      box-shadow: initial;
+    // [print]: Move one layer up for ordering
+    @media print {
+      display: contents;
+    }
 
-      // [print]: Move one layer up for ordering
-      @media print {
-        display: contents;
+    // Code block is the first child of a tab - remove margin and mirror
+    // previous (now deprecated) SuperFences code block grouping behavior
+    > pre:first-child,
+    > .highlight:first-child pre,
+    > .highlighttable:first-child {
+      margin: 0;
+
+      // Omit rounded borders
+      > code {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
       }
     }
 
-    // Tabbed block
-    .tabbed-block {
-      display: none;
-
-      // [print]: Intersperse labels with containers
-      @media print {
-        display: block;
-
-        // Ensure correct order of containers
-        @for $i from 1 through 20 {
-          &:nth-child(#{$i}) {
-            order: $i;
-          }
-        }
-      }
-
-      // Code block is the first child of a tab - remove margin and mirror
-      // previous (now deprecated) SuperFences code block grouping behavior
-      > pre:first-child,
-      > .highlight:first-child pre,
-      > .highlighttable:first-child {
-        margin: 0;
-
-        // Omit rounded borders
-        > code {
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-        }
-      }
-
-      // Adjust spacing for nested tabbed container
-      > .tabbed-set {
-        margin: 0;
-      }
-    }
-
-    // Tab label states
-    @for $i from 20 through 1 {
-      input:nth-child(#{$i}) {
-
-        // Tab is active
-        &:checked {
-
-          // Tab label
-          ~ .tabbed-labels > :nth-child(#{$i}) {
-            @extend %tabbed-label;
-          }
-
-          // Tab content
-          ~ .tabbed-content > :nth-child(#{$i}) {
-            @extend %tabbed-content;
-          }
-        }
-
-        // Tab label on keyboard focus
-        &.focus-visible ~ .tabbed-labels > :nth-child(#{$i}) {
-          @extend %tabbed-label-focus-visible;
-        }
-      }
+    // Adjust spacing for nested tab
+    > .tabbed-set {
+      margin: 0;
     }
   }
+
+  // Tabbed block
+  .tabbed-block {
+    display: none;
+
+    // [print]: Intersperse labels with containers
+    @media print {
+      display: block;
+
+      // Ensure correct order of containers
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          order: $i;
+        }
+      }
+    }
+
+    // Code block is the first child of a tab - remove margin and mirror
+    // previous (now deprecated) SuperFences code block grouping behavior
+    > pre:first-child,
+    > .highlight:first-child pre,
+    > .highlighttable:first-child {
+      margin: 0;
+
+      // Omit rounded borders
+      > code {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+
+    // Adjust spacing for nested tabbed container
+    > .tabbed-set {
+      margin: 0;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Placeholders: improve colocation for better compression
+// ----------------------------------------------------------------------------
+
+// Tab label placeholder
+%tabbed-label {
+
+  // [screen]: Show active state
+  @media screen {
+    color: var(--md-accent-fg-color);
+    border-color: var(--md-accent-fg-color);
+  }
+}
+
+// Tab label on keyboard focus placeholder
+%tabbed-label-focus-visible {
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+// Tab content placeholder
+%tabbed-content {
+  display: block;
 }
