@@ -26,7 +26,7 @@ import { map } from "rxjs/operators"
 import { configuration } from "~/_"
 import {
   getElementOrThrow,
-  requestJSON,
+  requestJSON
 } from "~/browser"
 import { getComponentElements } from "~/components"
 import {
