@@ -20,8 +20,6 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/language.html" as lang with context %}
-
 <!-- Determine title -->
 {% set title = title | default(lang.t("toc.title")) %}
 {% if config.mdx_configs.toc and config.mdx_configs.toc.title %}
