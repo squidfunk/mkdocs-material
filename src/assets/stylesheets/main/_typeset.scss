@@ -28,6 +28,16 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  // Font with fallback for body copy
+  --md-text-font-family:
+    var(--md-text-font, _),
+    -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+
+  // Font with fallback for code
+  --md-code-font-family:
+    var(--md-code-font, _),
+    SFMono-Regular, Consolas, Menlo, monospace;
 }
 
 // Define default fonts
@@ -35,9 +45,7 @@ body,
 input {
   color: var(--md-typeset-color);
   font-feature-settings: "kern", "liga";
-  font-family:
-    var(--md-text-font-family, _),
-    -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  font-family: var(--md-text-font-family);
 }
 
 // Define monospaced fonts
@@ -46,9 +54,7 @@ pre,
 kbd {
   color: var(--md-typeset-color);
   font-feature-settings: "kern";
-  font-family:
-    var(--md-code-font-family, _),
-    SFMono-Regular, Consolas, Menlo, monospace;
+  font-family: var(--md-code-font-family);
 }
 
 // ----------------------------------------------------------------------------
