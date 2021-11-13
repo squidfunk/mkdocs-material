@@ -62,8 +62,7 @@ Check out the versioning example to see it in action –
 
 ### Version warning
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.5.0][Insiders] ·
+[:octicons-tag-24: 8.0.0b1][Version warning support] ·
 :octicons-file-symlink-file-24: Customization
 
 If you're using versioning, you might want to display a warning when the user
@@ -103,7 +102,7 @@ extra:
 
 Make sure that this matches the [default version].
 
-  [Insiders]: ../insiders/index.md
+  [Version warning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0b1
   [theme extension]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
   [Version warning preview]: ../assets/screenshots/version-warning.png
@@ -133,6 +132,8 @@ the current page:
     docs.example.com/0.1/foo/ -> docs.example.com/0.2/
     docs.example.com/0.1/bar/ -> docs.example.com/0.2/
     ```
+
+  [Insiders]: ../insiders/index.md
 
 ## Usage
 

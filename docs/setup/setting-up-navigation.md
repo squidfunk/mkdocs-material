@@ -41,8 +41,7 @@ especially useful for large documentation sites.
 
 ### Anchor tracking
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.1.0][Insiders] ·
+[:octicons-tag-24: 8.0.0b1][Anchor tracking support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -56,7 +55,7 @@ theme:
     - navigation.tracking
 ```
 
-  [Insiders]: ../insiders/index.md
+  [Anchor tracking support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0b1
 
 ### Navigation tabs
 
