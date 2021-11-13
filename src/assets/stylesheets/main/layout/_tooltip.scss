@@ -156,12 +156,13 @@
     display: inline-block;
     min-width: 1.4em;
     padding: 0 px2em(6px);
-    color: var(--md-accent-bg-color);
+    color: var(--md-default-bg-color);
     text-align: center;
     background-color: var(--md-default-fg-color--lighter);
     border-radius: px2em(20px);
     cursor: pointer;
     transition:
+      color            250ms,
       background-color 250ms,
       z-index          250ms;
     animation: pulse 2000ms infinite;
@@ -176,6 +177,7 @@
     // Annotation index on focus
     :focus-within > & {
       transition:
+        color            250ms,
         background-color 250ms,
         z-index            0ms;
       animation: none;
@@ -189,6 +191,7 @@
     // Annotation index on focus/hover
     :focus-within > &,
     :hover > & {
+      color: var(--md-accent-bg-color);
       background-color: var(--md-accent-fg-color);
     }
   }
