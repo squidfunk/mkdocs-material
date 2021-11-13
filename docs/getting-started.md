@@ -16,6 +16,16 @@ If not, we recommended using [`docker`][docker].
 
 ## Installation
 
+!!! danger "8.0.0 Beta 1 is out!"
+
+    Help test the latest version of Material for MkDocs, introducing many new
+    features and improvements like [code annotations], [anchor tracking] and
+    [version warnings]. See #3219 for installation and upgrade instructions.
+
+  [code annotations]: reference/code-blocks.md#code-annotations
+  [anchor tracking]: setup/setting-up-navigation.md#anchor-tracking
+  [version warnings]: setup/setting-up-versioning.md#version-warning
+
 ### with pip <small>recommended</small> { #with-pip data-toc-label="with pip" }
 
 Material for MkDocs can be installed with `pip`:
