@@ -55,7 +55,9 @@
         {% endif %}
         {{ extracopyright }}
       </div>
-      {% include "partials/social.html" %}
+      {% if config.extra.social %}
+        {% include "partials/social.html" %}
+      {% endif %}
     </div>
   </div>
 </footer>

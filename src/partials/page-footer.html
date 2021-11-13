@@ -20,21 +20,15 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Social links in footer -->
-<div class="md-footer-social">
-  {% for social in config.extra.social %}
-    {% set title = social.name %}
-    {% if not title and "//" in social.link %}
-      {% set _, url = social.link.split("//") %}
-      {% set title  = url.split("/")[0] %}
-    {% endif %}
-    <a
-      href="{{ social.link }}"
-      target="_blank" rel="noopener"
-      title="{{ title | e }}"
-      class="md-footer-social__link"
-    >
-      {% include ".icons/" ~ social.icon ~ ".svg" %}
-    </a>
-  {% endfor %}
-</div>
+<!-- Source file information -->
+{% if page and page.meta and (
+  page.meta.git_revision_date_localized or
+  page.meta.revision_date
+) %}
+  {% include "partials/source-file.html" %}
+{% endif %}
+
+<!-- Disqus integration -->
+{% block disqus %}
+  {% include "partials/integrations/disqus.html" %}
+{% endblock %}

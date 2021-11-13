@@ -288,48 +288,13 @@
             {% endif %}
           {% endblock %}
 
-          <!-- Article -->
+          <!-- Page content -->
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
-
-              <!-- Content -->
               {% block content %}
-
-                <!-- Edit button -->
-                {% if page.edit_url %}
-                  <a
-                    href="{{ page.edit_url }}"
-                    title="{{ lang.t('edit.link.title') }}"
-                    class="md-content__button md-icon"
-                  >
-                    {% include ".icons/material/pencil.svg" %}
-                  </a>
-                {% endif %}
-
-                <!--
-                  Hack: check whether the content contains a h1 headline. If it
-                  doesn't, the page title (or respectively site name) is used
-                  as the main headline.
-                -->
-                {% if not "\x3ch1" in page.content %}
-                  <h1>{{ page.title | d(config.site_name, true)}}</h1>
-                {% endif %}
-
-                <!-- Markdown content -->
-                {{ page.content }}
-
-                <!-- Last update of source file -->
-                {% if page and page.meta and (
-                  page.meta.git_revision_date_localized or
-                  page.meta.revision_date
-                ) %}
-                  {% include "partials/source-file.html" %}
-                {% endif %}
-              {% endblock %}
-
-              <!-- Disqus integration -->
-              {% block disqus %}
-                {% include "partials/integrations/disqus.html" %}
+                {% include "partials/page-header.html" %}
+                {% include "partials/page.html" %}
+                {% include "partials/page-footer.html" %}
               {% endblock %}
             </article>
           </div>
