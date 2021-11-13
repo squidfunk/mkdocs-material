@@ -20,21 +20,20 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Social links in footer -->
-<div class="md-social">
-  {% for social in config.extra.social %}
-    {% set title = social.name %}
-    {% if not title and "//" in social.link %}
-      {% set _, url = social.link.split("//") %}
-      {% set title  = url.split("/")[0] %}
-    {% endif %}
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  {% if config.copyright %}
+    <div class="md-copyright__highlight">
+      {{ config.copyright }}
+    </div>
+  {% endif %}
+  {% if not config.extra.generator == false %}
+    Made with
     <a
-      href="{{ social.link }}"
+      href="https://squidfunk.github.io/mkdocs-material/"
       target="_blank" rel="noopener"
-      title="{{ title | e }}"
-      class="md-social__link"
     >
-      {% include ".icons/" ~ social.icon ~ ".svg" %}
+      Material for MkDocs
     </a>
-  {% endfor %}
+  {% endif %}
 </div>

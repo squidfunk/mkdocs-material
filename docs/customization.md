@@ -194,28 +194,6 @@ The following template blocks are provided by the theme:
 | `styles`          | Wraps the style sheets (also extra sources)     |
 | `tabs`            | Wraps the tabs navigation (if available)        |
 
-#### Additional variables
-
-Besides template blocks, Material for MkDocs provides extra variables for parts
-that cannot be overridden with template blocks (due to technical limitations of
-the template engine). If you want to add further information after the _Made
-with Material for MkDocs_ hint in the footer, add the following line to
-`main.html`:
-
-``` html
-{% extends "base.html" %}
-
-{% set extracopyright %}
-  <!-- Add additional copyright information here -->
-{% endset %}
-```
-
-The following template variables are provided by the theme:
-
-| Block name        | Purpose                                         |
-|:------------------|:------------------------------------------------|
-| `extracopyright`  | Adds custom copyright information               |
-
 ## Theme development
 
 Material for MkDocs is built on top of [TypeScript], [RxJS] and [SASS], and
