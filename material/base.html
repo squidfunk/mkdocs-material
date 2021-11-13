@@ -13,11 +13,6 @@
       {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
-      {% if page and page.meta and page.meta.keywords %}
-        <meta name="keywords" content="{{ page.meta.keywords }}">
-      {% elif config.site_keywords %}
-        <meta name="keywords" content="{{ config.site_keywords }}">
-      {% endif %}
       {% if page and page.meta and page.meta.author %}
         <meta name="author" content="{{ page.meta.author }}">
       {% elif config.site_author %}
@@ -64,9 +59,6 @@
         <style>:root{--md-text-font-family:"{{ font.text }}";--md-code-font-family:"{{ font.code }}"}</style>
       {% endif %}
     {% endblock %}
-    {% if config.extra.manifest %}
-      <link rel="manifest" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
-    {% endif %}
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
@@ -106,8 +98,8 @@
     </div>
     <div data-md-component="announce">
       {% if self.announce() %}
-        <aside class="md-banner md-announce">
-          <div class="md-banner__inner md-announce__inner md-grid md-typeset">
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
             {% block announce %}{% endblock %}
           </div>
         </aside>
@@ -225,7 +217,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.1e84347e.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.333da091.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
