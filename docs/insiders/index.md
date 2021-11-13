@@ -174,10 +174,7 @@ The following features are solely available via Material for MkDocs Insiders:
 - [x] [Boosting pages in search]
 - [x] [Tags] with search integration
 - [x] [Stay on page when switching versions]
-- [x] [Version warning]
 - [x] [Custom admonition icons]
-- [x] [Code annotations]
-- [x] [Anchor tracking]
 - [x] [Mermaid.js integration]
 
 </div>
@@ -191,16 +188,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: #00e676" } already available or 
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
-
-#### $ 4,000 – Ghost Pepper
-
-- [x] [Anchor tracking]
-- [x] [Code annotations]
-- [x] [Version warning]
-
-  [Anchor tracking]: ../setup/setting-up-navigation.md#anchor-tracking
-  [Code annotations]: ../reference/code-blocks.md#adding-annotations
-  [Version warning]: ../setup/setting-up-versioning.md#version-warning
 
 #### $ 5,000 – Aji Panca
 
@@ -258,6 +245,16 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 4,000 – Ghost Pepper
+
+- [x] [Anchor tracking]
+- [x] [Code annotations]
+- [x] [Version warning]
+
+  [Anchor tracking]: ../setup/setting-up-navigation.md#anchor-tracking
+  [Code annotations]: ../reference/code-blocks.md#adding-annotations
+  [Version warning]: ../setup/setting-up-versioning.md#version-warning
 
 #### $ 3,000 – Caribbean Red
 
