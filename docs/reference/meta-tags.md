@@ -72,32 +72,6 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
 This will set the `meta` tag containing the site description inside the
 document `head` for the current page to the provided value.
 
-<div class="mdx-deprecated" markdown>
-
-### Adding a web app manifest
-
-[:octicons-tag-24: 3.1.0][manifest support] ·
-:octicons-archive-24: Deprecated ·
-:octicons-trash-24: 8.0.0
-
-A [web app manifest] is a simple JSON file that specifies how your web
-application should behave when installed on the user's mobile device or desktop,
-which can be set via `mkdocs.yml`:
-
-``` yaml
-extra:
-  manifest: manifest.webmanifest # (1)
-```
-
-1.  This option was deprecated, as it's not widely used and the same behavior
-    can be achieved with [theme extension].
-
-  [web app manifest]: https://web.dev/add-manifest/
-  [manifest support]: https://github.com/squidfunk/mkdocs-material/releases/tag/3.1.0
-  [theme extension]: ../customization.md#extending-the-theme
-
-</div>
-
 ## Customization
 
 ### Using metadata in templates
@@ -116,6 +90,7 @@ e.g. to add indexing policies for search engines via the `robots` property:
 {% endblock %}
 ```
 
+  [theme extension]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
 
 #### on a single page
