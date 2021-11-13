@@ -20,9 +20,19 @@
  * IN THE SOFTWARE.
  */
 
+import { combineLatest } from "rxjs"
+import { map } from "rxjs/operators"
+
 import { configuration } from "~/_"
-import { getElementOrThrow, requestJSON } from "~/browser"
-import { Version, renderVersionSelector } from "~/templates"
+import {
+  getElementOrThrow,
+  requestJSON,
+} from "~/browser"
+import { getComponentElements } from "~/components"
+import {
+  Version,
+  renderVersionSelector
+} from "~/templates"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -33,9 +43,37 @@ import { Version, renderVersionSelector } from "~/templates"
  */
 export function setupVersionSelector(): void {
   const config = configuration()
-  requestJSON<Version[]>(new URL("../versions.json", config.base))
-    .subscribe(versions => {
+  const versions$ = requestJSON<Version[]>(
+    new URL("../versions.json", config.base)
+  )
+
+  /* Determine current version */
+  const current$ = versions$
+    .pipe(
+      map(versions => {
+        const [, current] = config.base.match(/([^/]+)\/?$/)!
+        return versions.find(({ version, aliases }) => (
+          version === current || aliases.includes(current)
+        )) || versions[0]
+      })
+    )
+
+  /* Render version selector and warning */
+  combineLatest([versions$, current$])
+    .subscribe(([versions, current]) => {
       const topic = getElementOrThrow(".md-header__topic")
-      topic.appendChild(renderVersionSelector(versions))
+      topic.appendChild(renderVersionSelector(versions, current))
+
+      /* Check if version state was already determined */
+      if (__md_get("__outdated", sessionStorage) === null) {
+        const latest = config.version?.default || "latest"
+        const outdated = !current.aliases.includes(latest)
+
+        /* Persist version state in session storage */
+        __md_set("__outdated", outdated, sessionStorage)
+        if (outdated)
+          for (const warning of getComponentElements("outdated"))
+            warning.hidden = false
+      }
     })
 }

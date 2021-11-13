@@ -20,9 +20,31 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./clipboard"
-export * from "./code"
-export * from "./search"
-export * from "./source"
-export * from "./table"
-export * from "./version"
+import { h } from "~/utilities"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Render a 'copy-to-clipboard' button
+ *
+ * @param id - Unique identifier
+ * @param content - Annotation content
+ *
+ * @returns Element
+ */
+export function renderAnnotation(
+  id: number, content: NodeListOf<ChildNode>
+): HTMLElement {
+  return (
+    <aside class="md-annotation" data-index={id} tabIndex={0}>
+      <div class="md-tooltip">
+        <div class="md-tooltip__inner md-typeset">
+          {...Array.from(content)}
+        </div>
+      </div>
+      <span class="md-annotation__index">{id}</span>
+    </aside>
+  )
+}

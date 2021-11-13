@@ -24,21 +24,23 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Announcement bar
-.md-announce {
-  overflow: auto;
-  background-color: var(--md-footer-bg-color);
+// Banner for announcements and warnings
+.md-banner {
 
-  // [print]: Hide announcement bar
-  @media print {
-    display: none;
+  // Text link, also on focus/hover
+  a,
+  a:focus,
+  a:hover {
+    color: currentColor;
   }
 
-  // Announcement wrapper
-  &__inner {
-    margin: px2rem(12px) auto;
-    padding: 0 px2rem(16px);
-    color: var(--md-footer-fg-color);
-    font-size: px2rem(14px);
+  // Don't wrap name of blog article
+  strong {
+    white-space: nowrap;
+  }
+
+  // Twitter icon
+  .twitter {
+    margin-left: 0.2em;
   }
 }

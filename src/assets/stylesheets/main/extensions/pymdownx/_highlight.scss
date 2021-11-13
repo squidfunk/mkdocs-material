@@ -173,6 +173,9 @@
   [data-linenos]::before {
     position: sticky;
     left: px2em(-16px, 13.6px);
+    // A `z-index` of 3 is necessary for ensuring that code block annotations
+    // don't overlay line numbers, as active annotations have a `z-index` of 2.
+    z-index: 3;
     float: left;
     margin-right: px2em(16px, 13.6px);
     margin-left: px2em(-16px, 13.6px);
@@ -192,7 +195,6 @@
 // Code block with line numbers
 .highlighttable {
   display: flow-root;
-  overflow: hidden;
 
   // Set table elements to block layout, because otherwise the whole flexbox
   // hacking won't work correctly
@@ -246,7 +248,7 @@
   // Code block container - stretch to remaining space
   .code {
     flex: 1;
-    overflow: hidden;
+    min-width: 0;
   }
 }
 

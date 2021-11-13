@@ -80,6 +80,7 @@
     "selector-class-pattern": null,
     "selector-combinator-space-before": null,
     "selector-descendant-combinator-no-non-space": null,
+    "selector-id-pattern": null,
     "selector-max-empty-lines": 0,
     "selector-max-id": 0,
     "selector-no-qualifying-type": null,

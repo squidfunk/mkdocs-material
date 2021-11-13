@@ -34,7 +34,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.75e88914.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.9e98b581.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.9204c3b2.min.css' | url }}">
@@ -62,6 +62,7 @@
     {% for path in config["extra_css"] %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
+    {% include "partials/javascripts/base.html" %}
     {% block analytics %}
       {% include "partials/integrations/analytics.html" %}
     {% endblock %}
@@ -81,7 +82,6 @@
     <body dir="{{ direction }}">
   {% endif %}
     {% set features = config.theme.features or [] %}
-    {% include "partials/javascripts/base.html" %}
     {% if not config.theme.palette is mapping %}
       {% include "partials/javascripts/palette.html" %}
     {% endif %}
@@ -105,6 +105,18 @@
         </aside>
       {% endif %}
     </div>
+    {% if config.extra.version %}
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          {% if self.outdated() %}
+            <div class="md-banner__inner md-grid md-typeset">
+              {% block outdated %}{% endblock %}
+            </div>
+            {% include "partials/javascripts/outdated.html" %}
+          {% endif %}
+        </aside>
+      </div>
+    {% endif %}
     {% block header %}
       {% include "partials/header.html" %}
     {% endblock %}
@@ -157,12 +169,11 @@
                   <h1>{{ page.title | d(config.site_name, true)}}</h1>
                 {% endif %}
                 {{ page.content }}
-                {% if page and page.meta %}
-                  {% if page.meta.git_revision_date_localized or
-                        page.meta.revision_date
-                  %}
-                    {% include "partials/source-file.html" %}
-                  {% endif %}
+                {% if page and page.meta and (
+                  page.meta.git_revision_date_localized or
+                  page.meta.revision_date
+                ) %}
+                  {% include "partials/source-file.html" %}
                 {% endif %}
               {% endblock %}
               {% block disqus %}
@@ -217,7 +228,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.ccba565e.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.6273739e.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

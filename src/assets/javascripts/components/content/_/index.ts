@@ -53,7 +53,7 @@ export type Content =
 interface MountOptions {
   target$: Observable<HTMLElement>     /* Location target observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
-  print$: Observable<void>             /* Print mode observable */
+  print$: Observable<boolean>          /* Print observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -78,7 +78,7 @@ export function mountContent(
 
     /* Code blocks */
     ...getElements("pre > code", el)
-      .map(child => mountCodeBlock(child, { viewport$ })),
+      .map(child => mountCodeBlock(child, { viewport$, print$ })),
 
     /* Data tables */
     ...getElements("table:not([class])", el)

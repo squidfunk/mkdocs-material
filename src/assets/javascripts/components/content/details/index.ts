@@ -20,13 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, Subject } from "rxjs"
+import { Observable, Subject, merge } from "rxjs"
 import {
   filter,
   finalize,
   map,
   mapTo,
-  mergeWith,
   tap
 } from "rxjs/operators"
 
@@ -40,6 +39,7 @@ import { Component } from "../../_"
  * Details
  */
 export interface Details {
+  action: "open" | "close"             /* Action */
   scroll?: boolean                     /* Scroll into view */
 }
 
@@ -52,7 +52,7 @@ export interface Details {
  */
 interface WatchOptions {
   target$: Observable<HTMLElement>     /* Location target observable */
-  print$: Observable<void>             /* Print mode observable */
+  print$: Observable<boolean>          /* Print observable */
 }
 
 /**
@@ -60,7 +60,7 @@ interface WatchOptions {
  */
 interface MountOptions {
   target$: Observable<HTMLElement>     /* Location target observable */
-  print$: Observable<void>             /* Print mode observable */
+  print$: Observable<boolean>          /* Print observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -78,13 +78,27 @@ interface MountOptions {
 export function watchDetails(
   el: HTMLDetailsElement, { target$, print$ }: WatchOptions
 ): Observable<Details> {
-  return target$
-    .pipe(
-      map(target => target.closest("details:not([open])")!),
-      filter(details => el === details),
-      mapTo({ scroll: true }),
-      mergeWith(print$.pipe(mapTo({})))
-    )
+  let open = false
+  return merge(
+
+    /* Open and focus details on location target */
+    target$
+      .pipe(
+        map(target => target.closest("details:not([open])")!),
+        filter(details => el === details),
+        mapTo<Details>({ action: "open", scroll: true })
+      ),
+
+    /* Open details on print and close afterwards */
+    print$
+      .pipe(
+        filter(active => active || !open),
+        tap(() => open = el.open),
+        map(active => ({
+          action: active ? "open" : "close"
+        }) as Details)
+      )
+  )
 }
 
 /**
@@ -102,8 +116,11 @@ export function mountDetails(
   el: HTMLDetailsElement, options: MountOptions
 ): Observable<Component<Details>> {
   const internal$ = new Subject<Details>()
-  internal$.subscribe(({ scroll }) => {
-    el.setAttribute("open", "")
+  internal$.subscribe(({ action, scroll }) => {
+    if (action === "open")
+      el.setAttribute("open", "")
+    else
+      el.removeAttribute("open")
     if (scroll)
       el.scrollIntoView()
   })
@@ -113,6 +130,6 @@ export function mountDetails(
     .pipe(
       tap(state => internal$.next(state)),
       finalize(() => internal$.complete()),
-      mapTo({ ref: el })
+      map(state => ({ ref: el, ...state }))
     )
 }

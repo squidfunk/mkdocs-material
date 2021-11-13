@@ -40,11 +40,11 @@
       order: initial;
     }
 
-    // Code block is the only child of a tab - remove margin and mirror
+    // Code block is the first child of a tab - remove margin and mirror
     // previous (now deprecated) SuperFences code block grouping behavior
-    > pre:only-child,
-    > .highlight:only-child pre,
-    > .highlighttable:only-child {
+    > pre:first-child,
+    > .highlight:first-child pre,
+    > .highlighttable:first-child {
       margin: 0;
 
       // Omit rounded borders
@@ -113,6 +113,12 @@
       border-bottom: px2rem(2px) solid transparent;
       cursor: pointer;
       transition: color 250ms;
+
+      // Hack: omit flickering of content tabs label on initial page load when
+      // using linked content tabs.
+      .no-js & {
+        transition: none;
+      }
 
       // Tab label on hover
       &:hover {
@@ -276,11 +282,11 @@
         }
       }
 
-      // Code block is the only child of a tab - remove margin and mirror
+      // Code block is the first child of a tab - remove margin and mirror
       // previous (now deprecated) SuperFences code block grouping behavior
-      > pre:only-child,
-      > .highlight:only-child pre,
-      > .highlighttable:only-child {
+      > pre:first-child,
+      > .highlight:first-child pre,
+      > .highlighttable:first-child {
         margin: 0;
 
         // Omit rounded borders

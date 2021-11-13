@@ -125,6 +125,9 @@
       <link rel="stylesheet" href="{{ path | url }}" />
     {% endfor %}
 
+    <!-- Helper functions for inline scripts -->
+    {% include "partials/javascripts/base.html" %}
+
     <!-- Analytics -->
     {% block analytics %}
       {% include "partials/integrations/analytics.html" %}
@@ -156,7 +159,6 @@
 
     <!-- Retrieve features from configuration -->
     {% set features = config.theme.features or [] %}
-    {% include "partials/javascripts/base.html" %}
 
     <!-- User preference: color palette -->
     {% if not config.theme.palette is mapping %}
@@ -205,6 +207,20 @@
         </aside>
       {% endif %}
     </div>
+
+    <!-- Version warning -->
+    {% if config.extra.version %}
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          {% if self.outdated() %}
+            <div class="md-banner__inner md-grid md-typeset">
+              {% block outdated %}{% endblock %}
+            </div>
+            {% include "partials/javascripts/outdated.html" %}
+          {% endif %}
+        </aside>
+      </div>
+    {% endif %}
 
     <!-- Header -->
     {% block header %}
@@ -303,12 +319,11 @@
                 {{ page.content }}
 
                 <!-- Last update of source file -->
-                {% if page and page.meta %}
-                  {% if page.meta.git_revision_date_localized or
-                        page.meta.revision_date
-                  %}
-                    {% include "partials/source-file.html" %}
-                  {% endif %}
+                {% if page and page.meta and (
+                  page.meta.git_revision_date_localized or
+                  page.meta.revision_date
+                ) %}
+                  {% include "partials/source-file.html" %}
                 {% endif %}
               {% endblock %}
 

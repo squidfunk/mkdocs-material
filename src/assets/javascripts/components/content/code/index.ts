@@ -30,23 +30,33 @@ import {
   of
 } from "rxjs"
 import {
+  combineLatestWith,
   distinctUntilKeyChanged,
   finalize,
   map,
+  mergeWith,
   switchMap,
+  take,
+  takeWhile,
   tap,
   withLatestFrom
 } from "rxjs/operators"
 
+import { feature } from "~/_"
 import { resetFocusable, setFocusable } from "~/actions"
 import {
   Viewport,
+  getElement,
   getElementContentSize,
+  getElementOrThrow,
   getElementSize,
   getElements,
   watchMedia
 } from "~/browser"
-import { renderClipboardButton } from "~/templates"
+import {
+  renderAnnotation,
+  renderClipboardButton
+} from "~/templates"
 
 import { Component } from "../../_"
 
@@ -59,6 +69,7 @@ import { Component } from "../../_"
  */
 export interface CodeBlock {
   scroll: boolean                      /* Code block overflows */
+  annotations?: HTMLElement[]          /* Code block annotations */
 }
 
 /* ----------------------------------------------------------------------------
@@ -70,6 +81,7 @@ export interface CodeBlock {
  */
 interface WatchOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
+  print$: Observable<boolean>          /* Print observable */
 }
 
 /**
@@ -77,6 +89,7 @@ interface WatchOptions {
  */
 interface MountOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
+  print$: Observable<boolean>          /* Print observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -104,7 +117,7 @@ let index = 0
  * @returns Code block observable
  */
 export function watchCodeBlock(
-  el: HTMLElement, { viewport$ }: WatchOptions
+  el: HTMLElement, { viewport$, print$ }: WatchOptions
 ): Observable<CodeBlock> {
   const container$ = of(el)
     .pipe(
@@ -112,7 +125,7 @@ export function watchCodeBlock(
         const container = child.closest("[data-tabs]")
         if (container instanceof HTMLElement) {
           return merge(
-            ...getElements("input", container)
+            ...getElements(":scope > input", container)
               .map(input => fromEvent(input, "change"))
           )
         }
@@ -120,17 +133,76 @@ export function watchCodeBlock(
       })
     )
 
+  /* Transform annotations */
+  const annotations: HTMLElement[] = []
+  const container =
+    el.closest(".highlighttable") ||
+    el.closest(".highlight")
+  if (container) {
+    const list = container.nextElementSibling
+    if (list instanceof HTMLOListElement && (
+      container.classList.contains("annotate") ||
+      feature("content.code.annotate")
+    )) {
+      const items = Array.from(list.children)
+      list.remove()
+
+      /* Replace comments with annotations */
+      for (const comment of getElements(".c, .c1, .cm", el)) {
+
+        /* Split comment at annotations */ // TODO: refactor when revisiting annotations
+        let match: RegExpExecArray | null
+        let text = comment.firstChild as Text
+        do {
+          match = /\((\d+)\)/.exec(text.textContent!)
+          if (match && match.index) {
+            const bubble = text.splitText(match.index)
+            text = bubble.splitText(match[0].length) // complete match length
+
+            const [, j = -1] = match
+            const content = items[+j - 1]
+            if (typeof content !== "undefined") {
+              const annotation = renderAnnotation(+j, content.childNodes)
+              bubble.replaceWith(annotation)
+              annotations.push(annotation)
+            }
+          }
+        } while (match)
+      }
+
+      /* Move elements back on print */ // TODO: refactor memleak (instant loading)
+      print$.subscribe(active => {
+        if (active) {
+          container.insertAdjacentElement("afterend", list)
+          for (const annotation of annotations) {
+            const id = parseInt(annotation.getAttribute("data-index")!, 10)
+            const typeset = getElement(":scope .md-typeset", annotation)!
+            items[id - 1].append(...Array.from(typeset.childNodes))
+          }
+        } else {
+          list.remove()
+          for (const annotation of annotations) {
+            const id = parseInt(annotation.getAttribute("data-index")!, 10)
+            const nodes = items[id - 1].childNodes
+            getElementOrThrow(":scope .md-typeset", annotation)
+              .append(...Array.from(nodes))
+          }
+        }
+      })
+    }
+  }
+
   /* Check overflow on resize and tab change */
-  return merge(
-    viewport$.pipe(distinctUntilKeyChanged("size")),
-    container$
-  )
+  return viewport$
     .pipe(
+      distinctUntilKeyChanged("size"),
+      mergeWith(container$),
       map(() => {
         const visible = getElementSize(el)
         const content = getElementContentSize(el)
         return {
-          scroll: content.width > visible.width
+          scroll: content.width > visible.width,
+          ...annotations.length && { annotations }
         }
       }),
       distinctUntilKeyChanged("scroll")
@@ -163,10 +235,34 @@ export function mountCodeBlock(
           resetFocusable(el)
       })
 
+  /* Compute annotation position */
+  internal$
+    .pipe(
+      take(1),
+      takeWhile(({ annotations }) => !!annotations?.length),
+      map(({ annotations }) => annotations!
+        .map(annotation => getElementOrThrow(".md-tooltip", annotation))
+      ),
+      combineLatestWith(viewport$
+        .pipe(
+          distinctUntilKeyChanged("size")
+        )
+      )
+    )
+      .subscribe(([tooltips, { size }]) => {
+        for (const tooltip of tooltips) {
+          const { x, width } = tooltip.getBoundingClientRect()
+          if (x + width > size.width)
+            tooltip.classList.add("md-tooltip--end")
+          else
+            tooltip.classList.remove("md-tooltip--end")
+        }
+      })
+
   /* Render button for Clipboard.js integration */
   if (ClipboardJS.isSupported()) {
     const parent = el.closest("pre")!
-    parent.id = `__code_${index++}`
+    parent.id = `__code_${++index}`
     parent.insertBefore(
       renderClipboardButton(parent.id),
       el

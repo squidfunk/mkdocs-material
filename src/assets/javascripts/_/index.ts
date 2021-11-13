@@ -30,6 +30,7 @@ import { getElementOrThrow, getLocation } from "~/browser"
  * Feature flag
  */
 export type Flag =
+  | "content.code.annotate"            /* Code annotations */
   | "header.autohide"                  /* Hide header */
   | "navigation.expand"                /* Automatic expansion */
   | "navigation.instant"               /* Instant loading */
@@ -38,6 +39,7 @@ export type Flag =
   | "navigation.tabs"                  /* Tabs navigation */
   | "navigation.tabs.sticky"           /* Tabs navigation (sticky) */
   | "navigation.top"                   /* Back-to-top button */
+  | "navigation.tracking"              /* Anchor tracking */
   | "search.highlight"                 /* Search highlighting */
   | "search.share"                     /* Search sharing */
   | "search.suggest"                   /* Search suggestions */
@@ -76,6 +78,7 @@ export type Translations = Record<Translation, string>
  */
 export interface Versioning {
   provider: "mike"                     /* Version provider */
+  default?: string                     /* Default version */
 }
 
 /**

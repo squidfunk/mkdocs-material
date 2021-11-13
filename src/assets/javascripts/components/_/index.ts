@@ -38,6 +38,7 @@ export type ComponentType =
   | "header-title"                     /* Header title */
   | "header-topic"                     /* Header topic */
   | "main"                             /* Main area */
+  | "outdated"                         /* Version warning */
   | "palette"                          /* Color palette */
   | "search"                           /* Search */
   | "search-query"                     /* Search input */
@@ -81,6 +82,7 @@ interface ComponentTypeMap {
   "header-title": HTMLElement          /* Header title */
   "header-topic": HTMLElement          /* Header topic */
   "main": HTMLElement                  /* Main area */
+  "outdated": HTMLElement              /* Version warning */
   "palette": HTMLElement               /* Color palette */
   "search": HTMLElement                /* Search */
   "search-query": HTMLInputElement     /* Search input */

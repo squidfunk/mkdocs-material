@@ -249,6 +249,6 @@ window.keyboard$  = keyboard$          /* Keyboard observable */
 window.viewport$  = viewport$          /* Viewport observable */
 window.tablet$    = tablet$            /* Tablet observable */
 window.screen$    = screen$            /* Screen observable */
-window.print$     = print$             /* Print mode observable */
+window.print$     = print$             /* Print observable */
 window.alert$     = alert$             /* Alert subject */
 window.component$ = component$         /* Component observable */

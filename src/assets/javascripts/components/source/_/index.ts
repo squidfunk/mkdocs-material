@@ -74,22 +74,14 @@ export function watchSource(
   el: HTMLAnchorElement
 ): Observable<Source> {
   return fetch$ ||= defer(() => {
-    const data = sessionStorage.getItem(__prefix("__source"))
-    if (data) {
-      return of<SourceFacts>(JSON.parse(data))
-    } else {
-      const value$ = fetchSourceFacts(el.href)
-      value$.subscribe(value => {
-        try {
-          sessionStorage.setItem(__prefix("__source"), JSON.stringify(value))
-        } catch (err) {
-          /* Uncritical, just swallow */
-        }
-      })
-
-      /* Return value */
-      return value$
-    }
+    const cached = __md_get<SourceFacts>("__source", sessionStorage)
+    if (cached)
+      return of(cached)
+    else
+      return fetchSourceFacts(el.href)
+        .pipe(
+          tap(facts => __md_set("__source", facts, sessionStorage))
+        )
   })
     .pipe(
       catchError(() => NEVER),

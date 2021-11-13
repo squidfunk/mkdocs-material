@@ -60,12 +60,6 @@
         border-radius: px2rem(2px);
       }
     }
-
-    // Hack: omit margin collapse
-    &::after {
-      display: table;
-      content: "";
-    }
   }
 
   // Details title
