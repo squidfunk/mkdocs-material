@@ -169,7 +169,7 @@
     }
   }
 
-  // Code block line numbers (inline)
+  // Code block line numbers (pymdownx-inline)
   [data-linenos]::before {
     position: sticky;
     left: px2em(-16px, 13.6px);
@@ -230,6 +230,8 @@
     padding-right: 0;
     font-size: px2em(13.6px);
     background-color: var(--md-code-bg-color);
+    border-top-left-radius: px2rem(2px);
+    border-bottom-left-radius: px2rem(2px);
     user-select: none;
   }
 
@@ -261,11 +263,11 @@
   .highlighttable {
     margin: 1em 0;
     direction: ltr;
-    border-radius: px2rem(2px);
 
-    // Omit rounded borders on contained code block
+    // Remove rounded borders on left side
     code {
-      border-radius: 0;
+      border-top-right-radius: px2rem(2px);
+      border-bottom-right-radius: px2rem(2px);
     }
   }
 
