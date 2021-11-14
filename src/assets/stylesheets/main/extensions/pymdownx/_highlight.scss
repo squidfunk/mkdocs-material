@@ -275,7 +275,7 @@
   @include break-to-device(mobile) {
 
     // Top-level code block
-    > .highlight {
+    &.md-content__inner > .highlight {
       margin: 1em px2rem(-16px);
 
       // Highlighted line
@@ -291,7 +291,7 @@
     }
 
     // Top-level code block with line numbers
-    > .highlighttable {
+    &.md-content__inner > > .highlighttable {
       margin: 1em px2rem(-16px);
       border-radius: 0;
 
