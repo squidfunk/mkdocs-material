@@ -17,13 +17,13 @@ can be integrate with the same principles
 
 In order to integrate a third-party comment provider offering a JavaScript-based
 solution, follow the guide on [theme extension], copy the contents from the
-[`page-footer.html`][page-footer partial] partial and create a file
-at the same location in the `overrides` folder:
+[`content.html`][content partial] partial and create a file at the same location
+in the `overrides` folder:
 
-=== ":octicons-file-code-16: overrides/partials/page-footer.html"
+=== ":octicons-file-code-16: overrides/partials/content.html"
 
     ``` html
-    <!-- Add copied contents from original page-footer.html here -->
+    <!-- Add copied contents from original content.html here -->
 
     <!-- Get setting from mkdocs.yml, but allow page-level overrides -->
     {% set disqus = config.extra.disqus %}
@@ -75,7 +75,7 @@ at the same location in the `overrides` folder:
     1.  Add your Disqus [shortname] here.
 
   [theme extension]: ../customization.md#extending-the-theme
-  [page-footer partial]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/page-footer.html
+  [content partial]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/content.html
   [shortname]: https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 #### on a single page
