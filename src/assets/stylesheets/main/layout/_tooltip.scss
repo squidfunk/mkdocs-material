@@ -104,31 +104,11 @@
     @media (prefers-reduced-motion) {
       transition: none;
     }
-
-    // Modifier for end alignment
-    &--end {
-      transform: translate(-100%, 0);
-    }
-
-    // Modifier for center alignment
-    &--center {
-      transform: translate(-50%, 0);
-    }
   }
 
   // Show outline for keyboard devices
   .focus-visible > & {
     outline: var(--md-accent-fg-color) auto;
-  }
-
-  // Modifier for end alignment
-  &--end {
-    transform: translate(-100%, px2rem(8px));
-  }
-
-  // Modifier for center alignment
-  &--center {
-    transform: translate(-50%, px2rem(8px));
   }
 }
 
@@ -202,10 +182,5 @@
     max-width: 60%;
     margin: px2em(-16px, 13.6px) px2em(10px, 13.6px) 0;
     font-family: var(--md-text-font-family);
-
-    // Modifier for center alignment
-    &--center {
-      margin-top: px2em(10px, 13.6px);
-    }
   }
 }

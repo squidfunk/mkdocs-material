@@ -53,7 +53,14 @@
           color: var(--md-default-fg-color);
         }
 
-        // Show backreferences on footnote hover
+        // Show backreferences on footnote focus without transition
+        &:focus-within .footnote-backref {
+          transform: translateX(0);
+          opacity: 1;
+          transition: none;
+        }
+
+        // Show backreferences on footnote hover/target
         &:hover  .footnote-backref,
         &:target .footnote-backref {
           transform: translateX(0);
