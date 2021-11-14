@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { getElementOrThrow, getElements } from "~/browser"
+import { getElement, getElements } from "~/browser"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -84,7 +84,7 @@ interface ComponentTypeMap {
 export function getComponentElement<T extends ComponentType>(
   type: T, node: ParentNode = document
 ): ComponentTypeMap[T] {
-  return getElementOrThrow(`[data-mdx-component=${type}]`, node)
+  return getElement(`[data-mdx-component=${type}]`, node)
 }
 
 /**

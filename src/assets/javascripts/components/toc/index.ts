@@ -48,9 +48,9 @@ import {
 } from "~/actions"
 import {
   Viewport,
-  getElement,
   getElements,
   getLocation,
+  getOptionalElement,
   watchElementSize
 } from "~/browser"
 
@@ -122,7 +122,7 @@ export function watchTableOfContents(
   const anchors = getElements<HTMLAnchorElement>("[href^=\\#]", el)
   for (const anchor of anchors) {
     const id = decodeURIComponent(anchor.hash.substring(1))
-    const target = getElement(`[id="${id}"]`)
+    const target = getOptionalElement(`[id="${id}"]`)
     if (typeof target !== "undefined")
       table.set(anchor, target)
   }

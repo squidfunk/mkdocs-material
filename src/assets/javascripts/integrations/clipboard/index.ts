@@ -25,7 +25,7 @@ import { Observable, Subject } from "rxjs"
 
 import { translation } from "~/_"
 import {
-  getElementOrThrow,
+  getElement,
   getElements
 } from "~/browser"
 
@@ -85,7 +85,7 @@ export function setupClipboardJS(
       new ClipboardJS("[data-clipboard-target], [data-clipboard-text]", {
         text: el => (
           el.getAttribute("data-clipboard-text")! ||
-          extract(getElementOrThrow(
+          extract(getElement(
             el.getAttribute("data-clipboard-target")!
           ))
         )

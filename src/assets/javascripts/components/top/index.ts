@@ -43,7 +43,10 @@ import {
   setBackToTopState,
   setFocusable
 } from "~/actions"
-import { Viewport, setElementFocus } from "~/browser"
+import {
+  Viewport,
+  setElementFocus
+} from "~/browser"
 
 import { Component } from "../_"
 import { Header } from "../header"

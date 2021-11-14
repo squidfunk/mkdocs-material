@@ -98,9 +98,10 @@ interface MountOptions {
 export function watchSidebar(
   el: HTMLElement, { viewport$, main$ }: WatchOptions
 ): Observable<Sidebar> {
+  const parent = el.parentElement!
   const adjust =
-    el.parentElement!.offsetTop -
-    el.parentElement!.parentElement!.offsetTop
+    parent.offsetTop -
+    parent.parentElement!.offsetTop
 
   /* Compute the sidebar's available height and if it should be locked */
   return combineLatest([main$, viewport$])

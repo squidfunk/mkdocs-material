@@ -47,8 +47,8 @@ import {
   setSearchResultMeta
 } from "~/actions"
 import {
-  getElementOrThrow,
-  watchElementThreshold
+  getElement,
+  watchElementBoundary
 } from "~/browser"
 
 import { Icon, renderIconSearchResult } from "_/templates"
@@ -147,13 +147,13 @@ export function mountIconSearchResult(
   el: HTMLElement, { index$, query$ }: MountOptions
 ): Observable<Component<IconSearchResult, HTMLElement>> {
   const internal$ = new Subject<IconSearchResult>()
-  const boundary$ = watchElementThreshold(el)
+  const boundary$ = watchElementBoundary(el)
     .pipe(
       filter(Boolean)
     )
 
   /* Update search result metadata */
-  const meta = getElementOrThrow(":scope > :first-child", el)
+  const meta = getElement(":scope > :first-child", el)
   internal$
     .pipe(
       observeOn(animationFrameScheduler),
@@ -167,7 +167,7 @@ export function mountIconSearchResult(
       })
 
   /* Update icon search result list */
-  const list = getElementOrThrow(":scope > :last-child", el)
+  const list = getElement(":scope > :last-child", el)
   internal$
     .pipe(
       observeOn(animationFrameScheduler),

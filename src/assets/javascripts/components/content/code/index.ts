@@ -41,14 +41,17 @@ import {
 } from "rxjs"
 
 import { feature } from "~/_"
-import { resetFocusable, setFocusable } from "~/actions"
+import {
+  resetFocusable,
+  setFocusable
+} from "~/actions"
 import {
   Viewport,
   getElement,
   getElementContentSize,
-  getElementOrThrow,
   getElementSize,
   getElements,
+  getOptionalElement,
   watchMedia
 } from "~/browser"
 import {
@@ -174,7 +177,7 @@ export function watchCodeBlock(
           container.insertAdjacentElement("afterend", list)
           for (const annotation of annotations) {
             const id = parseInt(annotation.getAttribute("data-index")!, 10)
-            const typeset = getElement(":scope .md-typeset", annotation)!
+            const typeset = getOptionalElement(":scope .md-typeset", annotation)!
             items[id - 1].append(...Array.from(typeset.childNodes))
           }
         } else {
@@ -182,7 +185,7 @@ export function watchCodeBlock(
           for (const annotation of annotations) {
             const id = parseInt(annotation.getAttribute("data-index")!, 10)
             const nodes = items[id - 1].childNodes
-            getElementOrThrow(":scope .md-typeset", annotation)
+            getElement(":scope .md-typeset", annotation)
               .append(...Array.from(nodes))
           }
         }
@@ -239,7 +242,7 @@ export function mountCodeBlock(
       take(1),
       takeWhile(({ annotations }) => !!annotations?.length),
       map(({ annotations }) => annotations!
-        .map(annotation => getElementOrThrow(".md-tooltip", annotation))
+        .map(annotation => getElement(".md-tooltip", annotation))
       ),
       combineLatestWith(viewport$
         .pipe(

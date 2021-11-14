@@ -21,7 +21,6 @@
  */
 
 import {
-  NEVER,
   Observable,
   Subject,
   finalize,
@@ -33,7 +32,7 @@ import {
 } from "rxjs"
 
 import {
-  getElementOrThrow,
+  getElement,
   getElements
 } from "~/browser"
 
@@ -64,17 +63,14 @@ export interface ContentTabs {
 export function watchContentTabs(
   el: HTMLElement
 ): Observable<ContentTabs> {
-  if (!el.classList.contains("tabbed-alternate"))
-    return NEVER
-  else
-    return merge(...getElements(":scope > input", el)
-      .map(input => fromEvent(input, "change").pipe(mapTo(input.id)))
+  return merge(...getElements(":scope > input", el)
+    .map(input => fromEvent(input, "change").pipe(mapTo(input.id)))
+  )
+    .pipe(
+      map(id => ({
+        active: getElement<HTMLLabelElement>(`label[for=${id}]`)
+      }))
     )
-      .pipe(
-        map(id => ({
-          active: getElementOrThrow<HTMLLabelElement>(`label[for=${id}]`)
-        }))
-      )
 }
 
 /**

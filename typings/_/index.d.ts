@@ -106,9 +106,10 @@ declare global {
   var target$: Observable<HTMLElement> /* Location target observable */
   var keyboard$: Observable<Keyboard>  /* Keyboard observable */
   var viewport$: Observable<Viewport>  /* Viewport obsevable */
-  var tablet$: Observable<boolean>     /* Tablet breakpoint observable */
-  var screen$: Observable<boolean>     /* Screen breakpoint observable */
-  var print$: Observable<boolean>      /* Print observable */
+  var tablet$: Observable<boolean>     /* Media tablet observable */
+  var screen$: Observable<boolean>     /* Media screen observable */
+  var hover$: Observable<boolean>      /* Media hover observable */
+  var print$: Observable<boolean>      /* Media print observable */
   var alert$: Subject<string>          /* Alert subject */
   var component$: Observable<Component>/* Component observable */
 }

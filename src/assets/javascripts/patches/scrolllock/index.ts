@@ -32,8 +32,14 @@ import {
   withLatestFrom
 } from "rxjs"
 
-import { resetScrollLock, setScrollLock } from "~/actions"
-import { Viewport, watchToggle } from "~/browser"
+import {
+  resetScrollLock,
+  setScrollLock
+} from "~/actions"
+import {
+  Viewport,
+  watchToggle
+} from "~/browser"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -44,7 +50,7 @@ import { Viewport, watchToggle } from "~/browser"
  */
 interface PatchOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
-  tablet$: Observable<boolean>         /* Tablet breakpoint observable */
+  tablet$: Observable<boolean>         /* Media tablet observable */
 }
 
 /* ----------------------------------------------------------------------------

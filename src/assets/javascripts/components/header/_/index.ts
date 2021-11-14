@@ -40,7 +40,10 @@ import {
 } from "rxjs"
 
 import { feature } from "~/_"
-import { resetHeaderState, setHeaderState } from "~/actions"
+import {
+  resetHeaderState,
+  setHeaderState
+} from "~/actions"
 import {
   Viewport,
   watchElementSize,

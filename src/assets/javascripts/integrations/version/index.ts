@@ -24,7 +24,7 @@ import { combineLatest, map } from "rxjs"
 
 import { configuration } from "~/_"
 import {
-  getElementOrThrow,
+  getElement,
   requestJSON
 } from "~/browser"
 import { getComponentElements } from "~/components"
@@ -60,7 +60,7 @@ export function setupVersionSelector(): void {
   /* Render version selector and warning */
   combineLatest([versions$, current$])
     .subscribe(([versions, current]) => {
-      const topic = getElementOrThrow(".md-header__topic")
+      const topic = getElement(".md-header__topic")
       topic.appendChild(renderVersionSelector(versions, current))
 
       /* Check if version state was already determined */

@@ -27,7 +27,7 @@ import { h } from "~/utilities"
  * ------------------------------------------------------------------------- */
 
 /**
- * Render a 'copy-to-clipboard' button
+ * Render a a code annotation
  *
  * @param id - Unique identifier
  * @param content - Annotation content

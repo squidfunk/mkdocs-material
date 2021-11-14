@@ -30,6 +30,7 @@ import {
 
 import { Header } from "~/components"
 
+import { getElementOffset } from "../../element"
 import {
   ViewportOffset,
   watchViewportOffset
@@ -102,10 +103,7 @@ export function watchViewportAt(
   /* Compute element offset */
   const offset$ = combineLatest([size$, header$])
     .pipe(
-      map((): ViewportOffset => ({
-        x: el.offsetLeft,
-        y: el.offsetTop
-      }))
+      map(() => getElementOffset(el))
     )
 
   /* Compute relative viewport, return hot observable */

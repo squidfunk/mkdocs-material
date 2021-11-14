@@ -43,7 +43,7 @@ import { getElements } from "~/browser"
  */
 interface PatchOptions {
   document$: Observable<Document>      /* Document observable */
-  tablet$: Observable<boolean>         /* Tablet breakpoint observable */
+  tablet$: Observable<boolean>         /* Media tablet observable */
 }
 
 /* ----------------------------------------------------------------------------

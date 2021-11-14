@@ -182,6 +182,7 @@ export function transformScript(
           map: Buffer.from(data, "base64")
         })
       }),
+      catchError(() => NEVER),
       switchMap(({ js, map }) => {
         const file = digest(options.to, js)
         return concat(

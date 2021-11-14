@@ -34,11 +34,17 @@ import {
   tap
 } from "rxjs"
 
-import { setSourceFacts, setSourceState } from "~/actions"
+import {
+  setSourceFacts,
+  setSourceState
+} from "~/actions"
 import { renderSourceFacts } from "~/templates"
 
 import { Component } from "../../_"
-import { SourceFacts, fetchSourceFacts } from "../facts"
+import {
+  SourceFacts,
+  fetchSourceFacts
+} from "../facts"
 
 /* ----------------------------------------------------------------------------
  * Types

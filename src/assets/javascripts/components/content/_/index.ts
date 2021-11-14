@@ -53,7 +53,8 @@ export type Content =
 interface MountOptions {
   target$: Observable<HTMLElement>     /* Location target observable */
   viewport$: Observable<Viewport>      /* Viewport observable */
-  print$: Observable<boolean>          /* Print observable */
+  hover$: Observable<boolean>          /* Media hover observable */
+  print$: Observable<boolean>          /* Media print observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -72,13 +73,13 @@ interface MountOptions {
  * @returns Content component observable
  */
 export function mountContent(
-  el: HTMLElement, { target$, viewport$, print$ }: MountOptions
+  el: HTMLElement, { target$, viewport$, hover$, print$ }: MountOptions
 ): Observable<Component<Content>> {
   return merge(
 
     /* Code blocks */
     ...getElements("pre > code", el)
-      .map(child => mountCodeBlock(child, { viewport$, print$ })),
+      .map(child => mountCodeBlock(child, { viewport$, hover$, print$ })),
 
     /* Data tables */
     ...getElements("table:not([class])", el)

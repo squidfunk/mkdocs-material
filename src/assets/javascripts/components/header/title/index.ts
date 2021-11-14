@@ -38,8 +38,8 @@ import {
 } from "~/actions"
 import {
   Viewport,
-  getElement,
   getElementSize,
+  getOptionalElement,
   watchViewportAt
 } from "~/browser"
 
@@ -131,7 +131,7 @@ export function mountHeaderTitle(
       })
 
   /* Obtain headline, if any */
-  const headline = getElement<HTMLHeadingElement>("article h1")
+  const headline = getOptionalElement<HTMLHeadingElement>("article h1")
   if (typeof headline === "undefined")
     return NEVER
 

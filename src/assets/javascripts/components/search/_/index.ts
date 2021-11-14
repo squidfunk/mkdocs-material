@@ -53,10 +53,19 @@ import {
   getComponentElement,
   getComponentElements
 } from "../../_"
-import { SearchQuery, mountSearchQuery } from "../query"
+import {
+  SearchQuery,
+  mountSearchQuery
+} from "../query"
 import { mountSearchResult } from "../result"
-import { SearchShare, mountSearchShare } from "../share"
-import { SearchSuggest, mountSearchSuggest } from "../suggest"
+import {
+  SearchShare,
+  mountSearchShare
+} from "../share"
+import {
+  SearchSuggest,
+  mountSearchSuggest
+} from "../suggest"
 
 /* ----------------------------------------------------------------------------
  * Types

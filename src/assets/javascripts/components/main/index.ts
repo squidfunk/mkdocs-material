@@ -29,7 +29,10 @@ import {
   switchMap
 } from "rxjs"
 
-import { Viewport, watchElementSize } from "~/browser"
+import {
+  Viewport,
+  watchElementSize
+} from "~/browser"
 
 import { Header } from "../header"
 

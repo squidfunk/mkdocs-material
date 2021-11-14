@@ -47,9 +47,8 @@ import { configuration, feature } from "~/_"
 import {
   Viewport,
   ViewportOffset,
-  getElement,
   getElements,
-  replaceElement,
+  getOptionalElement,
   request,
   requestXML,
   setLocation,
@@ -166,7 +165,7 @@ export function setupInstantLoading(
   }
 
   /* Hack: ensure absolute favicon link to omit 404s when switching */
-  const favicon = getElement<HTMLLinkElement>("link[rel=icon]")
+  const favicon = getOptionalElement<HTMLLinkElement>("link[rel=icon]")
   if (typeof favicon !== "undefined")
     favicon.href = favicon.href
 
@@ -286,13 +285,13 @@ export function setupInstantLoading(
             ? ["[data-md-component=tabs]"]
             : []
         ]) {
-          const source = getElement(selector)
-          const target = getElement(selector, replacement)
+          const source = getOptionalElement(selector)
+          const target = getOptionalElement(selector, replacement)
           if (
             typeof source !== "undefined" &&
             typeof target !== "undefined"
           ) {
-            replaceElement(source, target)
+            source.replaceWith(target)
           }
         }
       })
@@ -308,7 +307,7 @@ export function setupInstantLoading(
         if (el.src) {
           for (const name of el.getAttributeNames())
             script.setAttribute(name, el.getAttribute(name)!)
-          replaceElement(el, script)
+          el.replaceWith(script)
 
           /* Complete when script is loaded */
           return new Observable(observer => {
@@ -318,7 +317,7 @@ export function setupInstantLoading(
         /* Complete immediately */
         } else {
           script.textContent = el.textContent
-          replaceElement(el, script)
+          el.replaceWith(script)
           return EMPTY
         }
       })

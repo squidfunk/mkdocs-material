@@ -29,7 +29,7 @@ import {
   startWith
 } from "rxjs"
 
-import { getElement } from "~/browser"
+import { getOptionalElement } from "~/browser"
 import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
@@ -86,7 +86,7 @@ export function watchLocationHash(): Observable<string> {
 export function watchLocationTarget(): Observable<HTMLElement> {
   return watchLocationHash()
     .pipe(
-      map(id => getElement(`[id="${id}"]`)!),
+      map(id => getOptionalElement(`[id="${id}"]`)!),
       filter(el => typeof el !== "undefined")
     )
 }

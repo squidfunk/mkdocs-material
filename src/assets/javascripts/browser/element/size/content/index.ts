@@ -20,29 +20,22 @@
  * IN THE SOFTWARE.
  */
 
-import {
-  ReplaySubject,
-  Subject,
-  fromEvent
-} from "rxjs"
+import { ElementSize } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch document
+ * Retrieve element content size (= scroll width and height)
  *
- * Documents are implemented as subjects, so all downstream observables are
- * automatically updated when a new document is emitted.
+ * @param el - Element
  *
- * @returns Document subject
+ * @returns Element content size
  */
-export function watchDocument(): Subject<Document> {
-  const document$ = new ReplaySubject<Document>(1)
-  fromEvent(document, "DOMContentLoaded", { once: true })
-    .subscribe(() => document$.next(document))
-
-  /* Return document */
-  return document$
+export function getElementContentSize(el: HTMLElement): ElementSize {
+  return {
+    width:  el.scrollWidth,
+    height: el.scrollHeight
+  }
 }

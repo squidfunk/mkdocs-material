@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { getElementOrThrow, getLocation } from "~/browser"
+import { getElement, getLocation } from "~/browser"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -99,7 +99,7 @@ export interface Config {
 /**
  * Retrieve global configuration and make base URL absolute
  */
-const script = getElementOrThrow("#__config")
+const script = getElement("#__config")
 const config: Config = JSON.parse(script.textContent!)
 config.base = `${new URL(config.base, getLocation())}`
 

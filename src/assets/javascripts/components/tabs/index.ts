@@ -34,7 +34,10 @@ import {
 } from "rxjs"
 
 import { feature } from "~/_"
-import { resetTabsState, setTabsState } from "~/actions"
+import {
+  resetTabsState,
+  setTabsState
+} from "~/actions"
 import {
   Viewport,
   watchElementSize,

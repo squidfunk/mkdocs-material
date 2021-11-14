@@ -24,7 +24,6 @@ import {
   Observable,
   fromEvent,
   map,
-  merge,
   startWith
 } from "rxjs"
 
@@ -33,9 +32,9 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Viewport offset
+ * Element offset
  */
-export interface ViewportOffset {
+export interface ElementOffset {
   x: number                            /* Horizontal offset */
   y: number                            /* Vertical offset */
 }
@@ -45,45 +44,34 @@ export interface ViewportOffset {
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve viewport offset
+ * Retrieve element offset
  *
- * On iOS Safari, viewport offset can be negative due to overflow scrolling.
- * As this may induce strange behaviors downstream, we'll just limit it to 0.
+ * @param el - Element
  *
- * @returns Viewport offset
+ * @returns Element offset
  */
-export function getViewportOffset(): ViewportOffset {
+export function getElementOffset(el: HTMLElement): ElementOffset {
   return {
-    x: Math.max(0, scrollX),
-    y: Math.max(0, scrollY)
+    x: el.offsetLeft,
+    y: el.offsetTop
   }
-}
-
-/**
- * Set viewport offset
- *
- * @param offset - Viewport offset
- */
-export function setViewportOffset(
-  { x, y }: Partial<ViewportOffset>
-): void {
-  window.scrollTo(x || 0, y || 0)
 }
 
 /* ------------------------------------------------------------------------- */
 
 /**
- * Watch viewport offset
+ * Watch element offset
  *
- * @returns Viewport offset observable
+ * @param el - Element
+ *
+ * @returns Element offset observable
  */
-export function watchViewportOffset(): Observable<ViewportOffset> {
-  return merge(
-    fromEvent(window, "scroll", { passive: true }),
-    fromEvent(window, "resize", { passive: true })
-  )
+export function watchElementOffset(
+  el: HTMLElement
+): Observable<ElementOffset> {
+  return fromEvent(window, "resize")
     .pipe(
-      map(getViewportOffset),
-      startWith(getViewportOffset())
+      map(() => getElementOffset(el)),
+      startWith(getElementOffset(el))
     )
 }

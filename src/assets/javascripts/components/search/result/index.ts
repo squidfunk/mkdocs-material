@@ -46,8 +46,8 @@ import {
   setSearchResultMeta
 } from "~/actions"
 import {
-  getElementOrThrow,
-  watchElementThreshold
+  getElement,
+  watchElementBoundary
 } from "~/browser"
 import {
   SearchResult,
@@ -91,14 +91,14 @@ export function mountSearchResult(
   el: HTMLElement, { rx$ }: SearchWorker, { query$ }: MountOptions
 ): Observable<Component<SearchResult>> {
   const internal$ = new Subject<SearchResult>()
-  const boundary$ = watchElementThreshold(el.parentElement!)
+  const boundary$ = watchElementBoundary(el.parentElement!)
     .pipe(
       filter(Boolean)
     )
 
   /* Retrieve nested components */
-  const meta = getElementOrThrow(":scope > :first-child", el)
-  const list = getElementOrThrow(":scope > :last-child", el)
+  const meta = getElement(":scope > :first-child", el)
+  const list = getElement(":scope > :last-child", el)
 
   /* Wait until search is ready */
   const ready$ = rx$

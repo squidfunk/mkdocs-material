@@ -28,62 +28,44 @@ import {
   startWith
 } from "rxjs"
 
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Viewport offset
- */
-export interface ViewportOffset {
-  x: number                            /* Horizontal offset */
-  y: number                            /* Vertical offset */
-}
+import { ElementOffset } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve viewport offset
+ * Retrieve element content offset (= scroll offset)
  *
- * On iOS Safari, viewport offset can be negative due to overflow scrolling.
- * As this may induce strange behaviors downstream, we'll just limit it to 0.
+ * @param el - Element
  *
- * @returns Viewport offset
+ * @returns Element content offset
  */
-export function getViewportOffset(): ViewportOffset {
+export function getElementContentOffset(el: HTMLElement): ElementOffset {
   return {
-    x: Math.max(0, scrollX),
-    y: Math.max(0, scrollY)
+    x: el.scrollLeft,
+    y: el.scrollTop
   }
-}
-
-/**
- * Set viewport offset
- *
- * @param offset - Viewport offset
- */
-export function setViewportOffset(
-  { x, y }: Partial<ViewportOffset>
-): void {
-  window.scrollTo(x || 0, y || 0)
 }
 
 /* ------------------------------------------------------------------------- */
 
 /**
- * Watch viewport offset
+ * Watch element content offset
  *
- * @returns Viewport offset observable
+ * @param el - Element
+ *
+ * @returns Element content offset observable
  */
-export function watchViewportOffset(): Observable<ViewportOffset> {
+export function watchElementContentOffset(
+  el: HTMLElement
+): Observable<ElementOffset> {
   return merge(
-    fromEvent(window, "scroll", { passive: true }),
-    fromEvent(window, "resize", { passive: true })
+    fromEvent(el, "scroll"),
+    fromEvent(window, "resize")
   )
     .pipe(
-      map(getViewportOffset),
-      startWith(getViewportOffset())
+      map(() => getElementContentOffset(el)),
+      startWith(getElementContentOffset(el))
     )
 }
