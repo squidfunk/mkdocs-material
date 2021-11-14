@@ -602,7 +602,7 @@ matches the new structure:
 - Support for displaying stars and forks for GitLab repositories
 - Support for scroll snapping of sidebars and search results
 - Reduced HTML and CSS footprint due to deprecation of Internet Explorer support
-- Slight facelifting of some UI elements (Admonitions, tables, ...)
+- Slight facelifting of some UI elements (admonitions, tables, ...)
 
   [CSS variables]: setup/changing-the-colors.md#custom-colors
   [icon integration]: reference/icons-emojis.md#search

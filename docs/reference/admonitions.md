@@ -287,7 +287,7 @@ only the `inline` modifier.
 
     Use `inline` to align to the left (right for rtl languages).
 
-__Important__: Admonitions that use the `inline` modifiers _must_ be declared
+__Important__: admonitions that use the `inline` modifiers _must_ be declared
 prior to the content block you want to place them beside. If there's
 insufficient space to render the admonition next to the block, the admonition
 will stretch to the full width of the viewport, e.g. on mobile viewports.
