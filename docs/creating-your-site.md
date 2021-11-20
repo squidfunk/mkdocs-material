@@ -62,6 +62,7 @@ slightly different:
 === ":fontawesome-brands-git-alt: git"
 
     ``` yaml
+    site_name: Example-Name
     theme:
       name: null
       custom_dir: mkdocs-material/material
