@@ -1,7 +1,15 @@
+mkdocs-material-7.3.6+insiders-3.2.3 (2021-11-20)
+
+  * Updated Swedish and French translations
+  * Removed support for .mermaid-experimental class (now .mermaid)
+  * Fixed #3202: Cookie consent not dismissable on file:// locations
+  * Fixed #3216: Cookie consent not dismissed when invoked via anchor
+  * Fixed #3232: Mermaid.js sometimes runs twice (race condition)
+
 mkdocs-material-7.3.6+insiders-3.2.2 (2021-11-06)
 
   * Fixed always last feedback rating being sent
-  * Fixed #3145: code annotations eat whole comment lines
+  * Fixed #3145: Code annotations eat whole comment lines
   * Fixed #3170: Feedback widget doesn't send data to GA4
 
 mkdocs-material-7.3.6+insiders-3.2.1 (2021-11-04)

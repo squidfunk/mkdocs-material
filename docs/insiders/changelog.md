@@ -6,10 +6,18 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 3.2.3 <small>_ November 20, 2021</small> { id="3.2.3" }
+
+- Updated Swedish and French translations
+- Removed support for `.mermaid-experimental` class (now `.mermaid`)
+- Fixed #3202: Cookie consent not dismissable on `file://` locations
+- Fixed #3216: Cookie consent not dismissed when invoked via anchor
+- Fixed #3232: Mermaid.js sometimes runs twice (race condition)
+
 ### 3.2.2 <small>_ November 6, 2021</small> { id="3.2.2" }
 
 - Fixed always last feedback rating being sent
-- Fixed #3145: code annotations eat whole comment lines
+- Fixed #3145: Code annotations eat whole comment lines
 - Fixed #3170: Feedback widget doesn't send data to GA4
 
 ### 3.2.1 <small>_ November 4, 2021</small> { id="3.2.1" }
