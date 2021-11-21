@@ -16,7 +16,7 @@ If not, we recommended using [`docker`][docker].
 
 ## Installation
 
-!!! danger "8.0.0 Beta 1 is out!"
+!!! danger "8.0.0 Beta 2 is out!"
 
     Help test the latest version of Material for MkDocs, introducing many new
     features and improvements like [code annotations], [anchor tracking] and
