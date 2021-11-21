@@ -81,7 +81,7 @@ export function mountSearchHiglight(
     location$
       .pipe(
         startWith(getLocation()),
-        filter(url => url.searchParams.has("h"))
+        filter(url => !!url.searchParams.get("h"))
       )
   ])
     .pipe(
