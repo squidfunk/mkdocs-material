@@ -291,8 +291,6 @@ kbd {
 
       // Tooltip
       &[title]:is(:focus, :hover)::after {
-        @include z-depth(2);
-
         position: absolute;
         left: 0;
         display: inline-block;
@@ -305,6 +303,7 @@ kbd {
         font-size: px2rem(14px);
         background-color: var(--md-default-fg-color);
         border-radius: px2rem(2px);
+        box-shadow: var(--md-shadow-z3);
         content: attr(title);
       }
     }

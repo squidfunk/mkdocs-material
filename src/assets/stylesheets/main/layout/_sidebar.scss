@@ -64,8 +64,7 @@
 
       // Show sidebar when drawer is active
       [data-md-toggle="drawer"]:checked ~ .md-container & {
-        @include z-depth(8);
-
+        box-shadow: var(--md-shadow-z3);
         transform: translateX(px2rem(242px));
 
         // Adjust for right-to-left languages
