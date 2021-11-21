@@ -22,8 +22,11 @@
 
 import {
   Observable,
+  animationFrameScheduler,
+  auditTime,
   fromEvent,
   map,
+  merge,
   startWith
 } from "rxjs"
 
@@ -69,8 +72,12 @@ export function getElementOffset(el: HTMLElement): ElementOffset {
 export function watchElementOffset(
   el: HTMLElement
 ): Observable<ElementOffset> {
-  return fromEvent(window, "resize")
+  return merge(
+    fromEvent(window, "load"),
+    fromEvent(window, "resize")
+  )
     .pipe(
+      auditTime(0, animationFrameScheduler),
       map(() => getElementOffset(el)),
       startWith(getElementOffset(el))
     )

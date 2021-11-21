@@ -22,6 +22,8 @@
 
 import {
   Observable,
+  animationFrameScheduler,
+  auditTime,
   fromEvent,
   map,
   merge,
@@ -65,6 +67,7 @@ export function watchElementContentOffset(
     fromEvent(window, "resize")
   )
     .pipe(
+      auditTime(0, animationFrameScheduler),
       map(() => getElementContentOffset(el)),
       startWith(getElementContentOffset(el))
     )

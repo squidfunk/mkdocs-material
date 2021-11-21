@@ -25,31 +25,20 @@ import {
   NEVER,
   Observable,
   Subject,
+  combineLatest,
+  defer,
   distinctUntilKeyChanged,
   finalize,
   fromEvent,
   map,
+  mapTo,
   merge,
+  mergeMap,
   mergeWith,
   of,
-  switchMap,
-  tap,
-  withLatestFrom,
-  distinctUntilChanged,
-  takeWhile,
-  repeat,
-  EMPTY,
-  observeOn,
-  debounceTime,
-  mapTo,
-  throttle,
   share,
-  defer,
-  switchMapTo,
-  shareReplay,
-  combineLatest,
-  asapScheduler,
-  animationFrameScheduler
+  tap,
+  withLatestFrom
 } from "rxjs"
 
 import { feature } from "~/_"
@@ -64,10 +53,7 @@ import {
   getElementSize,
   getElements,
   getOptionalElement,
-  watchMedia,
   watchElementContentOffset,
-  watchElementVisibility,
-  getElementOffset,
   watchElementOffset
 } from "~/browser"
 import {
@@ -86,7 +72,7 @@ import { Component } from "../../_"
  */
 export interface CodeBlock {
   scrollable: boolean                  /* Code block overflows */
-  annotations?: HTMLElement[]          /* Code block annotations */
+  annotations: HTMLElement[]           /* Code block annotations */
 }
 
 /* ----------------------------------------------------------------------------
@@ -115,9 +101,9 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Global index for Clipboard.js integration
+ * Global sequence number for Clipboard.js integration
  */
-let index = 0
+let sequence = 0
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -136,7 +122,7 @@ function findAnnotationsList(el: HTMLElement): HTMLElement | undefined {
     if (sibling.tagName === "OL")
       return sibling
 
-    /* Paragraph, may be empty, see https://bit.ly/3r4ZJ2O */
+    /* Skip empty paragraphs, see https://bit.ly/3r4ZJ2O */
     else if (sibling.tagName === "P" && !sibling.children.length)
       return findAnnotationsList(sibling)
   }
@@ -164,7 +150,7 @@ export function watchCodeBlock(
   el: HTMLElement, { viewport$, print$ }: WatchOptions
 ): Observable<CodeBlock> {
 
-  /* Watch content tabs as they can reveal code blocks */
+  /* Trigger re-rendering when code blocks are revealed */
   const reveal$ = defer(() => {
     const container = el.closest("[data-tabs]")
     if (container instanceof HTMLElement) {
@@ -175,164 +161,110 @@ export function watchCodeBlock(
     }
     return NEVER
   })
+    .pipe(
+      mapTo(undefined),
+      share()
+    )
 
-  /* Compute overflow state on resize and content tab change */
-  const scroll$ = viewport$
+  /* Check for code annotations */
+  const annotations: HTMLElement[] = []
+  const container =
+    el.closest(".highlighttable") ||
+    el.closest(".highlight")
+  if (container instanceof HTMLElement) {
+    const list = findAnnotationsList(container)
+    if (typeof list !== "undefined" && (
+      container.classList.contains("annotate") ||
+      feature("content.code.annotate")
+    )) {
+      list.remove()
+
+      /* Replace comments with annotations */
+      const items = getElements(":scope > li", list)
+      for (const comment of getElements(".c, .c1, .cm", el)) {
+
+        /* Split comment at annotations */
+        let match: RegExpExecArray | null
+        let text = comment.firstChild as Text
+        do {
+          match = /\((\d+)\)/.exec(text.textContent!)
+          if (match && match.index) {
+            const index = text.splitText(match.index)
+            text = index.splitText(match[0].length)
+
+            /* Render and insert code annotation */
+            const [, j = -1] = match
+            const content = items[+j - 1]
+            if (typeof content !== "undefined") {
+              const annotation = renderAnnotation(+j, content.childNodes)
+              index.replaceWith(annotation)
+              annotations.push(annotation)
+            }
+          }
+        } while (match)
+      }
+
+      /* Move elements back on print */ // TODO: fix instant loading memleak
+      print$.subscribe(active => {
+        if (active) {
+          container.insertAdjacentElement("afterend", list)
+          for (const annotation of annotations) {
+            const id = parseInt(annotation.getAttribute("data-index")!, 10)
+            const typeset = getOptionalElement(":scope .md-typeset", annotation)!
+            items[id - 1].append(...Array.from(typeset.childNodes))
+          }
+        } else {
+          list.remove()
+          for (const annotation of annotations) {
+            const id = parseInt(annotation.getAttribute("data-index")!, 10)
+            const nodes = items[id - 1].childNodes
+            getElement(":scope .md-typeset", annotation)
+              .append(...Array.from(nodes))
+          }
+        }
+      })
+    }
+  }
+
+  const change$ = viewport$
     .pipe(
       distinctUntilKeyChanged("size"),
       mergeWith(reveal$),
+      mapTo(undefined)
+    )
+
+  /* Compute code annotation position */ // TODO: fix instant loading memleak
+  of(...annotations)
+    .pipe(
+      mergeMap(annotation => combineLatest([
+        of(annotation),
+        watchElementOffset(annotation),
+        watchElementContentOffset(el),
+        change$
+      ]))
+    )
+      // TODO: return to mountCodeBlock and render and complete there
+      .subscribe(([annotation, { x, y }, scroll]) => {
+        annotation.style.setProperty(
+          "--md-tooltip-x", `${x - scroll.x}px`
+        )
+        annotation.style.setProperty(
+          "--md-tooltip-y", `${y - scroll.y}px`
+        )
+      })
+
+  /* Compute overflow state on resize and content tab change */
+  return change$
+    .pipe(
       map(() => {
         const visible = getElementSize(el)
         const content = getElementContentSize(el)
-        return content.width > visible.width
-      }),
-      distinctUntilChanged()
-    )
-
-  /* Compute content offset of code block */
-  const offset$ = watchElementContentOffset(el)
-  // scroll$
-  //   .pipe(
-  //     switchMap(scrollable => scrollable
-  //       ? watchElementContentOffset(el)
-  //       : EMPTY
-  //     ),
-  //     shareReplay(1) // TBD
-  //   )
-
-  // TODO: from here, annotations #############################################
-
-  /* Compute whether code annotations must be temporarily hidden */
-  const finish$ = offset$.pipe(debounceTime(125), mapTo(false))
-  const hidden$ = merge(
-    finish$,
-    offset$.pipe(throttle(() => finish$), mapTo(true))
-  )
-
-  /* Hide tooltip while scrolling */
-  hidden$.subscribe(hidden => {
-    if (hidden) {
-      console.log("scrolling...")
-      // el.setAttribute("data-md-state", "scroll")
-    } else {
-      console.log("scrolling done")
-      el.removeAttribute("data-md-state")
-    }
-  })
-
-  const annotations$ = defer(() => {
-    const annotations: HTMLElement[] = []
-
-    /* */
-    const container = el.closest(".highlighttable") || el.closest(".highlight")
-    if (!(container instanceof HTMLElement))
-      return NEVER
-
-    /* */
-    if (container instanceof HTMLElement) {
-      const list = findAnnotationsList(container)
-      if (typeof list !== "undefined" && (
-        container.classList.contains("annotate") ||
-        feature("content.code.annotate")
-      )) {
-
-        /* Replace comments with annotations */
-        const items = getElements(":scope > li", list)
-        for (const comment of getElements(".c, .c1, .cm", el)) {
-
-          /* Split comment at annotations */ // TODO: refactor when revisiting annotations
-          let match: RegExpExecArray | null
-          let text = comment.firstChild as Text
-          do {
-            match = /\((\d+)\)/.exec(text.textContent!)
-            if (match && match.index) {
-              const bubble = text.splitText(match.index)
-              text = bubble.splitText(match[0].length) // complete match length
-
-              const [, j = -1] = match
-              const content = items[+j - 1]
-              if (typeof content !== "undefined") {
-                const annotation = renderAnnotation(+j, content.childNodes)
-                bubble.replaceWith(annotation) // bubble is and will stay replaced...
-                annotations.push(annotation)
-              }
-            }
-          } while (match)
-        }
-      }
-    }
-
-    // // offset, compute tooltip position...
-    // offset$.subscribe(({ x }) => {
-    //   el.style.setProperty("--md-tooltip-x", `${x}px`)
-    // })
-
-    // wrong, we must always recompute the position..
-    for (const annotation of annotations) {
-      const size = getElementSize(annotation)
-      offset$
-        .pipe(
-          // observeOn(animationFrameScheduler), // TODO: ?
-          withLatestFrom(watchElementOffset(annotation)),
-          map(([scroll, offset]) => {
-
-            // if left is clamped, we must add to top!
-            // TODO: this must also be placed here!
-            annotation.style.setProperty(
-              "--md-tooltip-x", `${offset.x - scroll.x}px`
-            )
-            annotation.style.setProperty(
-              "--md-tooltip-y", `${offset.y - scroll.y}px`
-            )
-          })
-        )
-          .subscribe()
-
-
-    }
-
-    return of(annotations)
-  })
-
-  //     // /* Move elements back on print */ // TODO: refactor memleak (instant loading)
-  //     // print$.subscribe(active => {
-  //     //   if (active) {
-  //     //     container.insertAdjacentElement("afterend", list)
-  //     //     for (const annotation of annotations) {
-  //     //       const id = parseInt(annotation.getAttribute("data-index")!, 10)
-  //     //       const typeset = getOptionalElement(":scope .md-typeset", annotation)!
-  //     //       items[id - 1].append(...Array.from(typeset.childNodes))
-  //     //     }
-  //     //   } else {
-  //     //     list.remove()
-  //     //     for (const annotation of annotations) {
-  //     //       const id = parseInt(annotation.getAttribute("data-index")!, 10)
-  //     //       const nodes = items[id - 1].childNodes
-  //     //       getElement(":scope .md-typeset", annotation)
-  //     //         .append(...Array.from(nodes))
-  //     //     }
-  //     //   }
-  //     // })
-  //   }
-  // }
-
-
-
-  /* Check overflow on resize and tab change */
-  return viewport$
-    .pipe(
-      distinctUntilKeyChanged("size"),
-      mergeWith(reveal$),
-      switchMapTo(annotations$),
-      map(annotations => {
-        const visible = getElementSize(el)
-        const content = getElementContentSize(el)
         return {
-          scroll: content.width > visible.width,
-          ...annotations.length && { annotations }
+          scrollable: content.width > visible.width,
+          annotations
         }
       }),
-      distinctUntilKeyChanged("scroll")
+      distinctUntilKeyChanged("scrollable")
     )
 }
 
@@ -362,46 +294,10 @@ export function mountCodeBlock(
           resetFocusable(el)
       })
 
-  // /* Compute annotation position */
-  // internal$
-  //   .pipe(
-  //     take(1),
-  //     takeWhile(({ annotations }) => !!annotations?.length),
-  //     combineLatestWith(viewport$
-  //       .pipe(
-  //         distinctUntilKeyChanged("size")
-  //       )
-  //     )
-  //   )
-  //     .subscribe(([{ annotations }, { size }]) => {
-  //       if (typeof annotations === "undefined")
-  //         return
-
-  //       /* Compute annotation positions */
-  //       for (const annotation of annotations) {
-  //         const annotationIndex = getElement(".md-annotation__index", annotation)
-  //         const tooltip = getElement(".md-tooltip", annotation)
-  //         console.log(annotationIndex, tooltip)
-
-  //         const { x } = getElementOffset(annotationIndex)
-
-  //         console.log(x)
-
-  //       }
-  //       // console.log(tooltips, size)
-  //       // for (const tooltip of tooltips) {
-  //       //   const { x, width } = tooltip.getBoundingClientRect()
-  //       //   if (x + width > size.width)
-  //       //     tooltip.classList.add("md-tooltip--end")
-  //       //   else
-  //       //     tooltip.classList.remove("md-tooltip--end")
-  //       // }
-  //     })
-
   /* Render button for Clipboard.js integration */
   if (ClipboardJS.isSupported()) {
     const parent = el.closest("pre")!
-    parent.id = `__code_${++index}`
+    parent.id = `__code_${++sequence}`
     parent.insertBefore(
       renderClipboardButton(parent.id),
       el
