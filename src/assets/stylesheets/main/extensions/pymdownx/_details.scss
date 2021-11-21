@@ -24,7 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// Details variables
 :root {
   --md-details-icon: svg-load("material/chevron-right.svg");
 }
@@ -36,8 +36,6 @@
 
   // Details
   details {
-    @extend .admonition;
-
     display: flow-root;
     padding-top: 0;
     overflow: visible;
@@ -64,8 +62,6 @@
 
   // Details title
   summary {
-    @extend .admonition-title;
-
     display: block;
     min-height: px2rem(20px);
     padding: px2rem(8px) px2rem(36px) px2rem(8px) px2rem(40px);
@@ -114,8 +110,7 @@
     }
 
     // Hide native details marker
-    &::marker,
-    &::-webkit-details-marker {
+    &:is(::marker, ::-webkit-details-marker) {
       display: none;
     }
   }

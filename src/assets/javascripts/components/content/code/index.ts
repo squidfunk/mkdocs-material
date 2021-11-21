@@ -25,7 +25,6 @@ import {
   NEVER,
   Observable,
   Subject,
-  combineLatestWith,
   distinctUntilKeyChanged,
   finalize,
   fromEvent,
@@ -34,10 +33,23 @@ import {
   mergeWith,
   of,
   switchMap,
-  take,
-  takeWhile,
   tap,
-  withLatestFrom
+  withLatestFrom,
+  distinctUntilChanged,
+  takeWhile,
+  repeat,
+  EMPTY,
+  observeOn,
+  debounceTime,
+  mapTo,
+  throttle,
+  share,
+  defer,
+  switchMapTo,
+  shareReplay,
+  combineLatest,
+  asapScheduler,
+  animationFrameScheduler
 } from "rxjs"
 
 import { feature } from "~/_"
@@ -52,7 +64,11 @@ import {
   getElementSize,
   getElements,
   getOptionalElement,
-  watchMedia
+  watchMedia,
+  watchElementContentOffset,
+  watchElementVisibility,
+  getElementOffset,
+  watchElementOffset
 } from "~/browser"
 import {
   renderAnnotation,
@@ -69,7 +85,7 @@ import { Component } from "../../_"
  * Code block
  */
 export interface CodeBlock {
-  scroll: boolean                      /* Code block overflows */
+  scrollable: boolean                  /* Code block overflows */
   annotations?: HTMLElement[]          /* Code block annotations */
 }
 
@@ -82,7 +98,7 @@ export interface CodeBlock {
  */
 interface WatchOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
-  print$: Observable<boolean>          /* Print observable */
+  print$: Observable<boolean>          /* Media print observable */
 }
 
 /**
@@ -90,7 +106,8 @@ interface WatchOptions {
  */
 interface MountOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
-  print$: Observable<boolean>          /* Print observable */
+  hover$: Observable<boolean>          /* Media hover observable */
+  print$: Observable<boolean>          /* Media print observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -101,6 +118,32 @@ interface MountOptions {
  * Global index for Clipboard.js integration
  */
 let index = 0
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Find the code annotations belonging to a code block
+ *
+ * @param el - Code block element
+ *
+ * @returns Code annotations or nothing
+ */
+function findAnnotationsList(el: HTMLElement): HTMLElement | undefined {
+  if (el.nextElementSibling) {
+    const sibling = el.nextElementSibling as HTMLElement
+    if (sibling.tagName === "OL")
+      return sibling
+
+    /* Paragraph, may be empty, see https://bit.ly/3r4ZJ2O */
+    else if (sibling.tagName === "P" && !sibling.children.length)
+      return findAnnotationsList(sibling)
+  }
+
+  /* Everything else */
+  return undefined
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -120,85 +163,168 @@ let index = 0
 export function watchCodeBlock(
   el: HTMLElement, { viewport$, print$ }: WatchOptions
 ): Observable<CodeBlock> {
-  const container$ = of(el)
+
+  /* Watch content tabs as they can reveal code blocks */
+  const reveal$ = defer(() => {
+    const container = el.closest("[data-tabs]")
+    if (container instanceof HTMLElement) {
+      return merge(
+        ...getElements(":scope > input", container)
+          .map(input => fromEvent(input, "change"))
+      )
+    }
+    return NEVER
+  })
+
+  /* Compute overflow state on resize and content tab change */
+  const scroll$ = viewport$
     .pipe(
-      switchMap(child => {
-        const container = child.closest("[data-tabs]")
-        if (container instanceof HTMLElement) {
-          return merge(
-            ...getElements(":scope > input", container)
-              .map(input => fromEvent(input, "change"))
-          )
-        }
-        return NEVER
-      })
+      distinctUntilKeyChanged("size"),
+      mergeWith(reveal$),
+      map(() => {
+        const visible = getElementSize(el)
+        const content = getElementContentSize(el)
+        return content.width > visible.width
+      }),
+      distinctUntilChanged()
     )
 
-  /* Transform annotations */
-  const annotations: HTMLElement[] = []
-  const container =
-    el.closest(".highlighttable") ||
-    el.closest(".highlight")
-  if (container) {
-    const list = container.nextElementSibling
-    if (list instanceof HTMLOListElement && (
-      container.classList.contains("annotate") ||
-      feature("content.code.annotate")
-    )) {
-      const items = Array.from(list.children)
-      list.remove()
+  /* Compute content offset of code block */
+  const offset$ = watchElementContentOffset(el)
+  // scroll$
+  //   .pipe(
+  //     switchMap(scrollable => scrollable
+  //       ? watchElementContentOffset(el)
+  //       : EMPTY
+  //     ),
+  //     shareReplay(1) // TBD
+  //   )
 
-      /* Replace comments with annotations */
-      for (const comment of getElements(".c, .c1, .cm", el)) {
+  // TODO: from here, annotations #############################################
 
-        /* Split comment at annotations */ // TODO: refactor when revisiting annotations
-        let match: RegExpExecArray | null
-        let text = comment.firstChild as Text
-        do {
-          match = /\((\d+)\)/.exec(text.textContent!)
-          if (match && match.index) {
-            const bubble = text.splitText(match.index)
-            text = bubble.splitText(match[0].length) // complete match length
+  /* Compute whether code annotations must be temporarily hidden */
+  const finish$ = offset$.pipe(debounceTime(125), mapTo(false))
+  const hidden$ = merge(
+    finish$,
+    offset$.pipe(throttle(() => finish$), mapTo(true))
+  )
 
-            const [, j = -1] = match
-            const content = items[+j - 1]
-            if (typeof content !== "undefined") {
-              const annotation = renderAnnotation(+j, content.childNodes)
-              bubble.replaceWith(annotation)
-              annotations.push(annotation)
-            }
-          }
-        } while (match)
-      }
-
-      /* Move elements back on print */ // TODO: refactor memleak (instant loading)
-      print$.subscribe(active => {
-        if (active) {
-          container.insertAdjacentElement("afterend", list)
-          for (const annotation of annotations) {
-            const id = parseInt(annotation.getAttribute("data-index")!, 10)
-            const typeset = getOptionalElement(":scope .md-typeset", annotation)!
-            items[id - 1].append(...Array.from(typeset.childNodes))
-          }
-        } else {
-          list.remove()
-          for (const annotation of annotations) {
-            const id = parseInt(annotation.getAttribute("data-index")!, 10)
-            const nodes = items[id - 1].childNodes
-            getElement(":scope .md-typeset", annotation)
-              .append(...Array.from(nodes))
-          }
-        }
-      })
+  /* Hide tooltip while scrolling */
+  hidden$.subscribe(hidden => {
+    if (hidden) {
+      console.log("scrolling...")
+      // el.setAttribute("data-md-state", "scroll")
+    } else {
+      console.log("scrolling done")
+      el.removeAttribute("data-md-state")
     }
-  }
+  })
+
+  const annotations$ = defer(() => {
+    const annotations: HTMLElement[] = []
+
+    /* */
+    const container = el.closest(".highlighttable") || el.closest(".highlight")
+    if (!(container instanceof HTMLElement))
+      return NEVER
+
+    /* */
+    if (container instanceof HTMLElement) {
+      const list = findAnnotationsList(container)
+      if (typeof list !== "undefined" && (
+        container.classList.contains("annotate") ||
+        feature("content.code.annotate")
+      )) {
+
+        /* Replace comments with annotations */
+        const items = getElements(":scope > li", list)
+        for (const comment of getElements(".c, .c1, .cm", el)) {
+
+          /* Split comment at annotations */ // TODO: refactor when revisiting annotations
+          let match: RegExpExecArray | null
+          let text = comment.firstChild as Text
+          do {
+            match = /\((\d+)\)/.exec(text.textContent!)
+            if (match && match.index) {
+              const bubble = text.splitText(match.index)
+              text = bubble.splitText(match[0].length) // complete match length
+
+              const [, j = -1] = match
+              const content = items[+j - 1]
+              if (typeof content !== "undefined") {
+                const annotation = renderAnnotation(+j, content.childNodes)
+                bubble.replaceWith(annotation) // bubble is and will stay replaced...
+                annotations.push(annotation)
+              }
+            }
+          } while (match)
+        }
+      }
+    }
+
+    // // offset, compute tooltip position...
+    // offset$.subscribe(({ x }) => {
+    //   el.style.setProperty("--md-tooltip-x", `${x}px`)
+    // })
+
+    // wrong, we must always recompute the position..
+    for (const annotation of annotations) {
+      const size = getElementSize(annotation)
+      offset$
+        .pipe(
+          // observeOn(animationFrameScheduler), // TODO: ?
+          withLatestFrom(watchElementOffset(annotation)),
+          map(([scroll, offset]) => {
+
+            // if left is clamped, we must add to top!
+            // TODO: this must also be placed here!
+            annotation.style.setProperty(
+              "--md-tooltip-x", `${offset.x - scroll.x}px`
+            )
+            annotation.style.setProperty(
+              "--md-tooltip-y", `${offset.y - scroll.y}px`
+            )
+          })
+        )
+          .subscribe()
+
+
+    }
+
+    return of(annotations)
+  })
+
+  //     // /* Move elements back on print */ // TODO: refactor memleak (instant loading)
+  //     // print$.subscribe(active => {
+  //     //   if (active) {
+  //     //     container.insertAdjacentElement("afterend", list)
+  //     //     for (const annotation of annotations) {
+  //     //       const id = parseInt(annotation.getAttribute("data-index")!, 10)
+  //     //       const typeset = getOptionalElement(":scope .md-typeset", annotation)!
+  //     //       items[id - 1].append(...Array.from(typeset.childNodes))
+  //     //     }
+  //     //   } else {
+  //     //     list.remove()
+  //     //     for (const annotation of annotations) {
+  //     //       const id = parseInt(annotation.getAttribute("data-index")!, 10)
+  //     //       const nodes = items[id - 1].childNodes
+  //     //       getElement(":scope .md-typeset", annotation)
+  //     //         .append(...Array.from(nodes))
+  //     //     }
+  //     //   }
+  //     // })
+  //   }
+  // }
+
+
 
   /* Check overflow on resize and tab change */
   return viewport$
     .pipe(
       distinctUntilKeyChanged("size"),
-      mergeWith(container$),
-      map(() => {
+      mergeWith(reveal$),
+      switchMapTo(annotations$),
+      map(annotations => {
         const visible = getElementSize(el)
         const content = getElementContentSize(el)
         return {
@@ -222,43 +348,55 @@ export function watchCodeBlock(
  * @returns Code block component observable
  */
 export function mountCodeBlock(
-  el: HTMLElement, options: MountOptions
+  el: HTMLElement, { hover$, ...options }: MountOptions
 ): Observable<Component<CodeBlock>> {
   const internal$ = new Subject<CodeBlock>()
   internal$
     .pipe(
-      withLatestFrom(watchMedia("(hover)"))
+      withLatestFrom(hover$)
     )
-      .subscribe(([{ scroll }, hover]) => {
+      .subscribe(([{ scrollable: scroll }, hover]) => {
         if (scroll && hover)
           setFocusable(el)
         else
           resetFocusable(el)
       })
 
-  /* Compute annotation position */
-  internal$
-    .pipe(
-      take(1),
-      takeWhile(({ annotations }) => !!annotations?.length),
-      map(({ annotations }) => annotations!
-        .map(annotation => getElement(".md-tooltip", annotation))
-      ),
-      combineLatestWith(viewport$
-        .pipe(
-          distinctUntilKeyChanged("size")
-        )
-      )
-    )
-      .subscribe(([tooltips, { size }]) => {
-        for (const tooltip of tooltips) {
-          const { x, width } = tooltip.getBoundingClientRect()
-          if (x + width > size.width)
-            tooltip.classList.add("md-tooltip--end")
-          else
-            tooltip.classList.remove("md-tooltip--end")
-        }
-      })
+  // /* Compute annotation position */
+  // internal$
+  //   .pipe(
+  //     take(1),
+  //     takeWhile(({ annotations }) => !!annotations?.length),
+  //     combineLatestWith(viewport$
+  //       .pipe(
+  //         distinctUntilKeyChanged("size")
+  //       )
+  //     )
+  //   )
+  //     .subscribe(([{ annotations }, { size }]) => {
+  //       if (typeof annotations === "undefined")
+  //         return
+
+  //       /* Compute annotation positions */
+  //       for (const annotation of annotations) {
+  //         const annotationIndex = getElement(".md-annotation__index", annotation)
+  //         const tooltip = getElement(".md-tooltip", annotation)
+  //         console.log(annotationIndex, tooltip)
+
+  //         const { x } = getElementOffset(annotationIndex)
+
+  //         console.log(x)
+
+  //       }
+  //       // console.log(tooltips, size)
+  //       // for (const tooltip of tooltips) {
+  //       //   const { x, width } = tooltip.getBoundingClientRect()
+  //       //   if (x + width > size.width)
+  //       //     tooltip.classList.add("md-tooltip--end")
+  //       //   else
+  //       //     tooltip.classList.remove("md-tooltip--end")
+  //       // }
+  //     })
 
   /* Render button for Clipboard.js integration */
   if (ClipboardJS.isSupported()) {

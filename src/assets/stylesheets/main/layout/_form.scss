@@ -49,8 +49,7 @@
     }
 
     // Button on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-bg-color);
       background-color: var(--md-accent-fg-color);
       border-color: var(--md-accent-fg-color);
@@ -69,8 +68,7 @@
     transition: box-shadow 250ms;
 
     // Input on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       box-shadow:
         0 px2rem(8px)   px2rem(20px) hsla(0, 0%, 0%, 0.15),
         0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.15);

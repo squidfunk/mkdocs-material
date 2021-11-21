@@ -24,14 +24,14 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// Clipboard button variables
 :root {
   --md-clipboard-icon: svg-load("material/content-copy.svg");
 }
 
 // ----------------------------------------------------------------------------
 
-// Button to copy to clipboard
+// Clipboard button
 .md-clipboard {
   position: absolute;
   top: px2em(8px);
@@ -63,8 +63,7 @@
   }
 
   // Button on focus/hover
-  &:focus,
-  &:hover {
+  &:is(:focus, :hover) {
     color: var(--md-accent-fg-color);
   }
 
@@ -82,7 +81,7 @@
     content: "";
   }
 
-  // Inline button
+  // Inline clipboard button
   &--inline {
     cursor: pointer;
 
@@ -94,8 +93,7 @@
     }
 
     // Code block on focus/hover
-    &:focus code,
-    &:hover code {
+    &:is(:focus, :hover) code {
       color: var(--md-accent-fg-color);
       background-color: var(--md-accent-fg-color--transparent);
     }

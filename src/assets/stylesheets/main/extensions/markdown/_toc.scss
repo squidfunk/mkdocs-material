@@ -50,8 +50,7 @@
   }
 
   // Show headerlinks on parent hover
-  :hover  > .headerlink,
-  :target > .headerlink,
+  :is(:hover, :target) > .headerlink,
   .headerlink:focus {
     opacity: 1;
     transition:
@@ -61,8 +60,7 @@
 
   // Adjust color on parent target or focus/hover
   :target > .headerlink,
-  .headerlink:focus,
-  .headerlink:hover {
+  .headerlink:is(:focus, :hover) {
     color: var(--md-accent-fg-color);
   }
 
@@ -84,9 +82,7 @@
   }
 
   // Adjust scroll offset for headlines of level 1-3
-  h1:target,
-  h2:target,
-  h3:target {
+  :is(h1, h2, h3):target {
     scroll-margin-top: initial;
 
     // Anchor correction hack
@@ -142,8 +138,7 @@
   }
 
   // Adjust scroll offset for headlines of level 5-6
-  h5:target,
-  h6:target {
+  :is(h5, h6):target {
     scroll-margin-top: initial;
 
     // Anchor correction hack

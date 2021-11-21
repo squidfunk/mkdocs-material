@@ -29,7 +29,7 @@
   position: relative;
   z-index: 1;
 
-  // Selection bubble
+  // Selection tooltip
   &__inner {
     position: absolute;
     top: calc(100% - #{px2rem(4px)});
@@ -50,8 +50,7 @@
       max-height   0ms 500ms;
 
     // Selection bubble on parent focus/hover
-    .md-select:focus-within &,
-    .md-select:hover & {
+    .md-select:is(:focus-within, :hover) & {
       max-height: px2rem(200px);
       transform: translate3d(-50%, 0, 0);
       opacity: 1;
@@ -113,8 +112,7 @@
     }
 
     // Link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 

@@ -26,8 +26,10 @@
 
 // Code block
 .highlight {
-  .o,   // Operator
-  .ow { // Operator, word
+
+  // .o  = Operator
+  // .ow = Operator, word
+  :is(.o, .ow) {
     color: var(--md-code-hl-operator-color);
   }
 
@@ -35,100 +37,112 @@
     color: var(--md-code-hl-punctuation-color);
   }
 
-  .cpf, // Comment, preprocessor file
-  .l,   // Literal
-  .s,   // Literal, string
-  .sb,  // Literal, string backticks
-  .sc,  // Literal, string char
-  .s2,  // Literal, string double
-  .si,  // Literal, string interpol
-  .s1,  // Literal, string single
-  .ss { // Literal, string symbol
+  // .cpf = Comment, preprocessor file
+  // .l   = Literal
+  // .s   = Literal, string
+  // .sb  = Literal, string backticks
+  // .sc  = Literal, string char
+  // .s2  = Literal, string double
+  // .si  = Literal, string interpol
+  // .s1  = Literal, string single
+  // .ss  = Literal, string symbol
+  :is(.cpf, .l, .s, .sb, .sc, .s2, .si, .s1, .ss) {
     color: var(--md-code-hl-string-color);
   }
 
-  .cp,  // Comment, pre-processor
-  .se,  // Literal, string escape
-  .sh,  // Literal, string heredoc
-  .sr,  // Literal, string regex
-  .sx { // Literal, string other
+  // .cp = Comment, pre-processor
+  // .se = Literal, string escape
+  // .sh = Literal, string heredoc
+  // .sr = Literal, string regex
+  // .sx = Literal, string other
+  :is(.cp, .se, .sh, .sr, .sx) {
     color: var(--md-code-hl-special-color);
   }
 
-  .m,   // Number
-  .mb,  // Number, binary
-  .mf,  // Number, float
-  .mh,  // Number, hex
-  .mi,  // Number, integer
-  .il,  // Number, integer long
-  .mo { // Number, octal
+  // .m  = Number
+  // .mb = Number, binary
+  // .mf = Number, float
+  // .mh = Number, hex
+  // .mi = Number, integer
+  // .il = Number, integer long
+  // .mo = Number, octal
+  :is(.m, .mb, .mf, .mh, .mi, .il, .mo) {
     color: var(--md-code-hl-number-color);
   }
 
-  .k,   // Keyword,
-  .kd,  // Keyword, declaration
-  .kn,  // Keyword, namespace
-  .kp,  // Keyword, pseudo
-  .kr,  // Keyword, reserved
-  .kt { // Keyword, type
+  // .k  = Keyword,
+  // .kd = Keyword, declaration
+  // .kn = Keyword, namespace
+  // .kp = Keyword, pseudo
+  // .kr = Keyword, reserved
+  // .kt = Keyword, type
+  :is(.k, .kd, .kn, .kp, .kr, .kt) {
     color: var(--md-code-hl-keyword-color);
   }
 
-  .kc,  // Keyword, constant
-  .n {  // Name
+  // .kc = Keyword, constant
+  // .n  = Name
+  :is(.kc, .n) {
     color: var(--md-code-hl-name-color);
   }
 
-  .no,  // Name, constant
-  .nb,  // Name, builtin
-  .bp { // Name, builtin pseudo
+  // .no = Name, constant
+  // .nb = Name, builtin
+  // .bp = Name, builtin pseudo
+  :is(.no, .nb, .bp) {
     color: var(--md-code-hl-constant-color);
   }
 
-  .nc,  // Name, class
-  .ne,  // Name, exception
-  .nf,  // Name, function
-  .nn { // Name, namespace
+  // .nc = Name, class
+  // .ne = Name, exception
+  // .nf = Name, function
+  // .nn = Name, namespace
+  :is(.nc, .ne, .nf, .nn) {
     color: var(--md-code-hl-function-color);
   }
 
-  .nd,  // Name, decorator
-  .ni,  // Name, entity
-  .nl,  // Name, label
-  .nt { // Name, tag
+  // .nd = Name, decorator
+  // .ni = Name, entity
+  // .nl = Name, label
+  // .nt = Name, tag
+  :is(.nd, .ni, .nl, .nt) {
     color: var(--md-code-hl-keyword-color);
   }
 
-  .c,   // Comment
-  .cm,  // Comment, multiline
-  .c1,  // Comment, single
-  .ch,  // Comment, shebang
-  .cs,  // Comment, special
-  .sd { // Literal, string doc
+  // .c  = Comment
+  // .cm = Comment, multiline
+  // .c1 = Comment, single
+  // .ch = Comment, shebang
+  // .cs = Comment, special
+  // .sd = Literal, string doc
+  :is(.c, .cm, .c1, .ch, .cs, .sd) {
     color: var(--md-code-hl-comment-color);
   }
 
-  .na,  // Name, attribute
-  .nv,  // Variable,
-  .vc,  // Variable, class
-  .vg,  // Variable, global
-  .vi { // Variable, instance
+  // .na = Name, attribute
+  // .nv = Variable,
+  // .vc = Variable, class
+  // .vg = Variable, global
+  // .vi = Variable, instance
+  :is(.na, .nv, .vc, .vg, .vi) {
     color: var(--md-code-hl-variable-color);
   }
 
-  .ge,  // Generic, emph
-  .gr,  // Generic, error
-  .gh,  // Generic, heading
-  .go,  // Generic, output
-  .gp,  // Generic, prompt
-  .gs,  // Generic, strong
-  .gu,  // Generic, subheading
-  .gt { // Generic, traceback
+  // .ge = Generic, emph
+  // .gr = Generic, error
+  // .gh = Generic, heading
+  // .go = Generic, output
+  // .gp = Generic, prompt
+  // .gs = Generic, strong
+  // .gu = Generic, subheading
+  // .gt = Generic, traceback
+  :is(.ge, .gr, .gh, .go, .gp, .gs, .gu, .gt) {
     color: var(--md-code-hl-generic-color);
   }
 
-  .gd,  // Diff, delete
-  .gi { // Diff, insert
+  // .gd = Diff, delete
+  // .gi = Diff, insert
+  :is(.gd, .gi) {
     margin: 0 px2em(-2px);
     padding: 0 px2em(2px);
     border-radius: px2rem(2px);
@@ -198,8 +212,7 @@
 
   // Set table elements to block layout, because otherwise the whole flexbox
   // hacking won't work correctly
-  tbody,
-  td {
+  :is(tbody, td) {
     display: block;
     padding: 0;
   }
@@ -270,36 +283,40 @@
       border-bottom-right-radius: px2rem(2px);
     }
   }
+}
 
-  // [mobile -]: Align with body copy
-  @include break-to-device(mobile) {
+// ----------------------------------------------------------------------------
+// Rules: top-level
+// ----------------------------------------------------------------------------
 
-    // Top-level code block
-    &.md-content__inner > .highlight {
-      margin: 1em px2rem(-16px);
+// [mobile -]: Align with body copy
+@include break-to-device(mobile) {
 
-      // Highlighted line
-      .hll {
-        margin: 0 px2rem(-16px);
-        padding: 0 px2rem(16px);
-      }
+  // Top-level code block
+  .md-content__inner > .highlight {
+    margin: 1em px2rem(-16px);
 
-      // Omit rounded borders
-      code {
-        border-radius: 0;
-      }
+    // Highlighted line
+    .hll {
+      margin: 0 px2rem(-16px);
+      padding: 0 px2rem(16px);
     }
 
-    // Top-level code block with line numbers
-    &.md-content__inner > > .highlighttable {
-      margin: 1em px2rem(-16px);
+    // Omit rounded borders
+    code {
       border-radius: 0;
+    }
+  }
 
-      // Highlighted line
-      .hll {
-        margin: 0 px2rem(-16px);
-        padding: 0 px2rem(16px);
-      }
+  // Top-level code block with line numbers
+  .md-content__inner > .highlighttable {
+    margin: 1em px2rem(-16px);
+    border-radius: 0;
+
+    // Highlighted line
+    .hll {
+      margin: 0 px2rem(-16px);
+      padding: 0 px2rem(16px);
     }
   }
 }

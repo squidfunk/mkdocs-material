@@ -109,8 +109,7 @@
       }
 
       // Image or icon
-      img,
-      svg {
+      :is(img, svg) {
         display: block;
         width: px2rem(24px);
         height: px2rem(24px);

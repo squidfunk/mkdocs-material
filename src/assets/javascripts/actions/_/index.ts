@@ -47,6 +47,8 @@ export function resetFocusable(
   el.removeAttribute("tabindex")
 }
 
+/* ------------------------------------------------------------------------- */
+
 /**
  * Set scroll lock
  *

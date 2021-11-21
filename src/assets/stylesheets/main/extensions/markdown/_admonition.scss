@@ -47,7 +47,7 @@ $admonitions: (
 // Rules: layout
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// Admonition variables
 :root {
   @each $names, $props in $admonitions {
     --md-admonition-icon--#{nth($names, 1)}:
@@ -60,8 +60,8 @@ $admonitions: (
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Admonition
-  .admonition {
+  // Admonition and Details
+  :is(.admonition, details) {
     display: flow-root;
     margin: px2em(20px, 12.8px) 0;
     padding: 0 px2rem(12px);
@@ -87,7 +87,7 @@ $admonitions: (
     }
 
     // Adjust vertical spacing for nested admonitions
-    .admonition {
+    :is(.admonition, details) {
       margin-top: 1em;
       margin-bottom: 1em;
     }
@@ -114,7 +114,7 @@ $admonitions: (
   }
 
   // Admonition title
-  .admonition-title {
+  :is(.admonition-title, summary) {
     position: relative;
     margin: 0 px2rem(-12px) 0 px2rem(-16px);
     padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
@@ -165,13 +165,19 @@ $admonitions: (
   $name: list.nth($names, 1);
   $tint: list.nth($props, 2);
 
+  // Admonition flavour selectors
+  $flavours: ();
+  @each $name in $names {
+    $flavours: list.join($flavours, ".#{$name}", $separator: comma);
+  }
+
   // Admonition flavour
-  .md-typeset .admonition.#{$name} {
+  .md-typeset :is(.admonition, details):is(#{$flavours}) {
     border-color: $tint;
   }
 
   // Admonition flavour title
-  .md-typeset .#{$name} > .admonition-title {
+  .md-typeset :is(#{$flavours}) > :is(.admonition-title, summary) {
     background-color: color.adjust($tint, $alpha: -0.9);
     border-color: $tint;
 
@@ -181,15 +187,6 @@ $admonitions: (
       mask-image: var(--md-admonition-icon--#{$name});
       mask-repeat: no-repeat;
       mask-size: contain;
-    }
-  }
-
-  // Define synonyms for flavours
-  @if length($names) > 1 {
-    @for $n from 2 through length($names) {
-      .#{nth($names, $n)} {
-        @extend .#{$name};
-      }
     }
   }
 }

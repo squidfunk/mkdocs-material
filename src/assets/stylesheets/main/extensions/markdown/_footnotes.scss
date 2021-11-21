@@ -24,7 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// Footnotes variables
 :root {
   --md-footnotes-icon: svg-load("material/keyboard-return.svg");
 }
@@ -61,8 +61,7 @@
         }
 
         // Show backreferences on footnote hover/target
-        &:hover  .footnote-backref,
-        &:target .footnote-backref {
+        &:is(:hover, :target) .footnote-backref {
           transform: translateX(0);
           opacity: 1;
         }

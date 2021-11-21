@@ -39,7 +39,7 @@ export function renderAnnotation(
 ): HTMLElement {
   return (
     <aside class="md-annotation" data-index={id} tabIndex={0}>
-      <div class="md-tooltip">
+      <div class="md-annotation__inner md-tooltip">
         <div class="md-tooltip__inner md-typeset">
           {...Array.from(content)}
         </div>

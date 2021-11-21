@@ -35,7 +35,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// Version selection variables
 :root {
   --md-version-icon: svg-load("fontawesome/solid/caret-down.svg");
 }
@@ -110,8 +110,7 @@
     scroll-snap-type: y mandatory;
 
     // Version selection list on parent focus/hover
-    .md-version:focus-within &,
-    .md-version:hover & {
+    .md-version:is(:focus-within, :hover) & {
       max-height: px2rem(200px);
       opacity: 1;
       transition:
@@ -160,8 +159,7 @@
     }
 
     // Link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 

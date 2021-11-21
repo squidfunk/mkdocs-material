@@ -90,6 +90,7 @@
     "unicode-bom": "never",
     "unit-allowed-list": [
       "%",
+      "ch",
       "dppx",
       "deg",
       "em",
@@ -142,6 +143,7 @@
     "scss/double-slash-comment-whitespace-inside": "always",
     "scss/at-extend-no-missing-placeholder": null,
     "scss/no-duplicate-mixins": true,
+    "scss/no-global-function-names": null,
     "scss/operator-no-unspaced": true,
     "scss/partial-no-import": true,
     "scss/percent-placeholder-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",

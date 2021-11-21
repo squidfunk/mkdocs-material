@@ -24,7 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// Search variables
 :root {
   --md-search-result-icon: svg-load("material/file-search-outline.svg");
 }
@@ -613,8 +613,7 @@
     scroll-snap-align: start;
 
     // Search result link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       background-color: var(--md-accent-fg-color--transparent);
     }
 
@@ -649,8 +648,7 @@
     }
 
     // Search result more link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
       background-color: var(--md-accent-fg-color--transparent);
     }
