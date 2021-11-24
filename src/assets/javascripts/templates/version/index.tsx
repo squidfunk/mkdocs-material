@@ -76,10 +76,12 @@ export function renderVersionSelector(versions: Version[]): HTMLElement {
   const config = configuration()
 
   /* Determine active version */
-  const [, current] = config.base.match(/([^/]*)\/?$/)!
+  const [, current] = config.base.match(/([^/]+)\/?$/)!
   const active =
     versions.find(({ version, aliases }) => (
       version === current || aliases.includes(current)
+    )) || versions.find(({ version }) => (
+      version === ""
     )) || versions[0]
 
   /* Render version selector */
