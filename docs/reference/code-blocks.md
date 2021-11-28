@@ -43,7 +43,7 @@ See additional configuration options:
 
 ### Code annotations
 
-[:octicons-tag-24: 8.0.0b1][Code annotations support] ·
+[:octicons-tag-24: 8.0.0][Code annotations support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -77,7 +77,7 @@ theme:
     Note that the language shortcode which has to come first must now also be 
     prefixed by a `.`.
 
-  [Code annotations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0b1
+  [Code annotations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
 
 ## Usage

@@ -6,6 +6,34 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.0.0 <small>_ November 28, 2021</small> { id="8.0.0" }
+
+_This is a release with several template changes, many of which were previously 
+deprecated, which might break your site if you customized the theme. Please see 
+the [upgrade guide] for instructions._
+
+- Added support for code annotations
+- Added support for anchor tracking
+- Added support for version warning
+- Added `copyright` partial for easier override
+- Removed deprecated content tabs legacy implementation
+- Removed deprecated `seealso` admonition type
+- Removed deprecated `site_keywords` setting (unsupported by MkDocs)
+- Removed deprecated prebuilt search index support
+- Removed deprecated web app manifest
+- Removed `extracopyright` variable
+- Removed Disqus integation in favor of overrides
+- Switched to `:is()` selectors for simple selector lists
+- Switched autoprefixer from `last 4 years` to `last 2 years`
+- Improved CSS overall to match modern standards
+- Improved CSS variable semantics for fonts
+- Improved extensibility by restructuring partials
+- Improved handling of `details` when printing
+- Improved keyboard navigation for footnotes
+- Fixed #3214: Search highlighting breaks site when empty
+
+  [upgrade guide]: ../upgrade.md##upgrading-from-7x-to-8x
+
 ### 7.3.6 <small>_ October 30, 2021</small> { id="7.3.6" }
 
 - Added support for adding titles to code blocks
@@ -39,7 +67,7 @@ template: overrides/main.html
 - Deprecated prebuilding of search index
 - Improved graceful handling of broken search for `file://`
 - Added minimum Jinja version to list of requirements
-- Fixed #3071: section index pages render empty directories
+- Fixed #3071: Section index pages render empty directories
 - Fixed margin issues when using navigation tabs (7.3.1 regression)
 - Fixed search placeholder sometimes being shown too early
 

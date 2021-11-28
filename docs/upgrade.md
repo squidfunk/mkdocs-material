@@ -16,6 +16,56 @@ Show the currently installed version with:
 pip show mkdocs-material
 ```
 
+## Upgrading from 7.x to 8.x
+
+### What's new?
+
+- Added support for code annotations
+- Added support for anchor tracking
+- Added support for version warning
+- Added `copyright` partial for easier override
+- Removed deprecated content tabs legacy implementation
+- Removed deprecated `seealso` admonition type
+- Removed deprecated `site_keywords` setting (unsupported by MkDocs)
+- Removed deprecated prebuilt search index support
+- Removed deprecated web app manifest
+- Removed `extracopyright` variable
+- Removed Disqus integation in favor of overrides
+- Switched to `:is()` selectors for simple selector lists
+- Switched autoprefixer from `last 4 years` to `last 2 years`
+- Improved CSS overall to match modern standards
+- Improved CSS variable semantics for fonts
+- Improved extensibility by restructuring partials
+- Improved handling of `details` when printing
+- Improved keyboard navigation for footnotes
+- Fixed #3214: Search highlighting breaks site when empty
+
+### Changes to `mkdocs.yml`
+
+#### `pymdownx.tabbed`
+
+Support for the legacy style of the [Tabbed] extension was dropped in favor
+of the new, alternate implementation which has [better behavior on mobile 
+viewports]:
+
+=== "8.x"
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tabbed:
+          alternate_style: true 
+    ```
+
+=== "7.x"
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tabbed
+    ```
+
+  [Tabbed]: setup/extensions/python-markdown-extensions.md#tabbed
+  [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
+
 ## Upgrading from 6.x to 7.x
 
 ### What's new?

@@ -140,11 +140,25 @@ extra:
 
 ## Customization
 
-### Custom icons
+### Custom copyright
 
-The social links feature uses the standard [icon integration] of Material for
-MkDocs. If you want to use custom icons, follow the guide explaining how to
-add [additional icons].
+[:octicons-tag-24: 8.0.0][Custom copyright support] ·
+:octicons-file-symlink-file-24: Customization
 
-  [icon integration]: extensions/python-markdown-extensions.md#emoji
-  [additional icons]: changing-the-logo-and-icons.md#additional-icons
+In order to customize and override the [copyright notice], [extend the theme]
+and [override the `copyright` block][overriding blocks], which is normally set
+to the `copyright` property set in `mkdocs.yml`:
+
+``` html
+{% extends "base.html" %}
+
+{% block copyright %}
+  <!-- Add copyright here, including arbitrary HTML -->
+{% endblock %}
+```
+
+  [Custom copyright support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
+  [copyright notice]: #copyright-notice
+  [generator notice]: #generator-notice
+  [extend the theme]: ../customization.md#extending-the-theme
+  [overriding blocks]: ../customization.md#overriding-blocks
