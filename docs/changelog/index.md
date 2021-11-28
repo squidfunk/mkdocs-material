@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.0.1 <small>_ November 28, 2021</small> { id="8.0.1" }
+
+- Improved rendering of code annotation markers
+- Fixed #3265: Wrong margin on nested admonitions
+- Fixed wrong `box-sizing` for code annotations in details
+
 ### 8.0.0 <small>_ November 28, 2021</small> { id="8.0.0" }
 
 - Added support for code annotations
