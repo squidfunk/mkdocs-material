@@ -79,6 +79,12 @@ $admonitions: (
       box-shadow: none;
     }
 
+    // Hack: Chrome exhibits a weird issue where it will set nested elements to
+    // content-box. Doesn't happen in other browsers, so looks like a bug.
+    > * {
+      box-sizing: border-box;
+    }
+
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       border-right: px2rem(4px) solid $clr-blue-a200;
