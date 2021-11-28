@@ -6,6 +6,24 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.0.0 <small>_ November 28, 2021</small> { id="4.0.0" }
+
+- Removed deprecated content tabs legacy implementation
+- Removed deprecated `seealso` admonition type
+- Removed deprecated `site_keywords` setting (unsupported by MkDocs)
+- Removed deprecated prebuilt search index support
+- Removed deprecated web app manifest – use customization
+- Removed `extracopyright` variable – use new `copyright` partial
+- Removed Disqus integation – use customization
+- Switched to `:is()` selectors for simple selector lists
+- Switched autoprefixer from `last 4 years` to `last 2 years`
+- Improved CSS overall to match modern standards
+- Improved CSS variable semantics for fonts
+- Improved extensibility by restructuring partials
+- Improved handling of `details` when printing
+- Improved keyboard navigation for footnotes
+- Fixed #3214: Search highlighting breaks site when empty
+
 ### 3.2.3 <small>_ November 20, 2021</small> { id="3.2.3" }
 
 - Updated Swedish and French translations
