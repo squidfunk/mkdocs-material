@@ -28,6 +28,16 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  // Font with fallback for body copy
+  --md-text-font-family:
+    var(--md-text-font, _),
+    -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+
+  // Font with fallback for code
+  --md-code-font-family:
+    var(--md-code-font, _),
+    SFMono-Regular, Consolas, Menlo, monospace;
 }
 
 // Define default fonts
@@ -35,9 +45,7 @@ body,
 input {
   color: var(--md-typeset-color);
   font-feature-settings: "kern", "liga";
-  font-family:
-    var(--md-text-font-family, _),
-    -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  font-family: var(--md-text-font-family);
 }
 
 // Define monospaced fonts
@@ -46,16 +54,14 @@ pre,
 kbd {
   color: var(--md-typeset-color);
   font-feature-settings: "kern";
-  font-family:
-    var(--md-code-font-family, _),
-    SFMono-Regular, Consolas, Menlo, monospace;
+  font-family: var(--md-code-font-family);
 }
 
 // ----------------------------------------------------------------------------
 // Rules: typesetted content
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// General variables
 :root {
   --md-typeset-table-sort-icon: svg-load("material/sort.svg");
   --md-typeset-table-sort-icon--asc: svg-load("material/sort-ascending.svg");
@@ -78,12 +84,7 @@ kbd {
   }
 
   // Default spacing
-  ul,
-  ol,
-  dl,
-  figure,
-  blockquote,
-  pre {
+  :is(ul, ol, dl, figure, blockquote, pre) {
     margin: 1em 0;
   }
 
@@ -128,8 +129,7 @@ kbd {
   }
 
   // Headline on level 5-6
-  h5,
-  h6 {
+  :is(h5, h6) {
     margin: px2em(16px, 12.8px) 0;
     color: var(--md-default-fg-color--light);
     font-weight: 700;
@@ -161,8 +161,7 @@ kbd {
     }
 
     // Text link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 
@@ -174,9 +173,7 @@ kbd {
   }
 
   // Code block
-  code,
-  pre,
-  kbd {
+  :is(code, pre, kbd) {
     color: var(--md-code-fg-color);
     direction: ltr;
 
@@ -203,12 +200,7 @@ kbd {
   }
 
   // Code block in headline
-  h1 code,
-  h2 code,
-  h3 code,
-  h4 code,
-  h5 code,
-  h6 code {
+  :is(h1, h2, h3, h4, h5, h6) code {
     margin: initial;
     padding: initial;
     background-color: transparent;
@@ -233,6 +225,7 @@ kbd {
       padding: px2em(10.5px, 13.6px) px2em(16px, 13.6px);
       overflow: auto;
       word-break: normal;
+      outline-color: var(--md-accent-fg-color);
       box-shadow: none;
       box-decoration-break: slice;
       touch-action: auto;
@@ -258,20 +251,6 @@ kbd {
         &:hover {
           background-color: var(--md-accent-fg-color);
         }
-      }
-    }
-  }
-
-  // [mobile -]: Align with body copy
-  @include break-to-device(mobile) {
-
-    // Unformatted text
-    > pre {
-      margin: 1em px2rem(-16px);
-
-      // Code block
-      code {
-        border-radius: 0;
       }
     }
   }
@@ -311,10 +290,7 @@ kbd {
       position: relative;
 
       // Tooltip
-      &[title]:focus::after,
-      &[title]:hover::after {
-        @include z-depth(2);
-
+      &[title]:is(:focus, :hover)::after {
         position: absolute;
         left: 0;
         display: inline-block;
@@ -327,6 +303,7 @@ kbd {
         font-size: px2rem(14px);
         background-color: var(--md-default-fg-color);
         border-radius: px2rem(2px);
+        box-shadow: var(--md-shadow-z3);
         content: attr(title);
       }
     }
@@ -338,8 +315,7 @@ kbd {
   }
 
   // Superscript and subscript
-  sup,
-  sub {
+  :is(sup, sub) {
     margin-left: px2em(1px, 12.8px);
 
     // Adjust for right-to-left languages
@@ -370,8 +346,7 @@ kbd {
   }
 
   // Unordered and ordered list
-  ul,
-  ol {
+  :is(ul, ol):not([hidden]) {
     display: flow-root;
     margin-left: px2em(10px);
     padding: 0;
@@ -404,8 +379,7 @@ kbd {
       }
 
       // Adjust spacing
-      p,
-      blockquote {
+      :is(p, blockquote) {
         margin: 0.5em 0;
       }
 
@@ -415,8 +389,7 @@ kbd {
       }
 
       // Nested list
-      ul,
-      ol {
+      :is(ul, ol) {
         margin: 0.5em 0 0.5em px2em(10px);
 
         // Adjust for right-to-left languages
@@ -440,8 +413,7 @@ kbd {
   }
 
   // Image or icon
-  img,
-  svg {
+  :is(img, svg) {
     max-width: 100%;
     height: auto;
 
@@ -513,8 +485,7 @@ kbd {
     }
 
     // Elements in table heading and cell
-    th > *,
-    td > * {
+    :is(th, td) > * {
 
       // Adjust spacing on first child
       &:first-child {
@@ -528,8 +499,7 @@ kbd {
     }
 
     // Table heading and cell
-    th:not([align]),
-    td:not([align]) {
+    :is(th, td):not([align]) {
       text-align: left;
 
       // Adjust for right-to-left languages
@@ -635,6 +605,24 @@ kbd {
       width: 100%;
       margin: 0;
       overflow: hidden;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: top-level
+// ----------------------------------------------------------------------------
+
+// [mobile -]: Align with body copy
+@include break-to-device(mobile) {
+
+  // Top-level unformatted content
+  .md-content__inner > pre {
+    margin: 1em px2rem(-16px);
+
+    // Code block
+    code {
+      border-radius: 0;
     }
   }
 }

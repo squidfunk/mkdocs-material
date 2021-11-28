@@ -20,31 +20,19 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import { map, startWith } from "rxjs/operators"
+import {
+  Observable,
+  fromEvent,
+  map,
+  merge,
+  startWith
+} from "rxjs"
 
 import { getActiveElement } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
-
-/**
- * Set element focus
- *
- * @param el - Element
- * @param value - Whether the element should be focused
- */
-export function setElementFocus(
-  el: HTMLElement, value = true
-): void {
-  if (value)
-    el.focus()
-  else
-    el.blur()
-}
-
-/* ------------------------------------------------------------------------- */
 
 /**
  * Watch element focus

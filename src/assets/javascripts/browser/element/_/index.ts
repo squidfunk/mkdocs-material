@@ -25,72 +25,6 @@
  * ------------------------------------------------------------------------- */
 
 /**
- * Retrieve an element matching the query selector
- *
- * @template T - Element type
- *
- * @param selector - Query selector
- * @param node - Node of reference
- *
- * @returns Element or nothing
- */
-export function getElement<T extends keyof HTMLElementTagNameMap>(
-  selector: T, node?: ParentNode
-): HTMLElementTagNameMap[T] | undefined
-
-export function getElement<T extends HTMLElement>(
-  selector: string, node?: ParentNode
-): T | undefined
-
-export function getElement<T extends HTMLElement>(
-  selector: string, node: ParentNode = document
-): T | undefined {
-  return node.querySelector<T>(selector) || undefined
-}
-
-/**
- * Retrieve an element matching a query selector or throw a reference error
- *
- * @template T - Element type
- *
- * @param selector - Query selector
- * @param node - Node of reference
- *
- * @returns Element
- */
-export function getElementOrThrow<T extends keyof HTMLElementTagNameMap>(
-  selector: T, node?: ParentNode
-): HTMLElementTagNameMap[T]
-
-export function getElementOrThrow<T extends HTMLElement>(
-  selector: string, node?: ParentNode
-): T
-
-export function getElementOrThrow<T extends HTMLElement>(
-  selector: string, node: ParentNode = document
-): T {
-  const el = getElement<T>(selector, node)
-  if (typeof el === "undefined")
-    throw new ReferenceError(
-      `Missing element: expected "${selector}" to be present`
-    )
-
-  /* Return element */
-  return el
-}
-
-/**
- * Retrieve the currently active element
- *
- * @returns Element or nothing
- */
-export function getActiveElement(): HTMLElement | undefined {
-  return document.activeElement instanceof HTMLElement
-    ? document.activeElement
-    : undefined
-}
-
-/**
  * Retrieve all elements matching the query selector
  *
  * @template T - Element type
@@ -114,16 +48,73 @@ export function getElements<T extends HTMLElement>(
   return Array.from(node.querySelectorAll<T>(selector))
 }
 
+/**
+ * Retrieve an element matching a query selector or throw a reference error
+ *
+ * Note that this function assumes that the element is present. If unsure if an
+ * element is existent, use the `getOptionalElement` function instead.
+ *
+ * @template T - Element type
+ *
+ * @param selector - Query selector
+ * @param node - Node of reference
+ *
+ * @returns Element
+ */
+export function getElement<T extends keyof HTMLElementTagNameMap>(
+  selector: T, node?: ParentNode
+): HTMLElementTagNameMap[T]
+
+export function getElement<T extends HTMLElement>(
+  selector: string, node?: ParentNode
+): T
+
+export function getElement<T extends HTMLElement>(
+  selector: string, node: ParentNode = document
+): T {
+  const el = getOptionalElement<T>(selector, node)
+  if (typeof el === "undefined")
+    throw new ReferenceError(
+      `Missing element: expected "${selector}" to be present`
+    )
+
+  /* Return element */
+  return el
+}
+
 /* ------------------------------------------------------------------------- */
 
 /**
- * Replace an element with the given list of nodes
+ * Retrieve an optional element matching the query selector
  *
- * @param el - Element
- * @param nodes - Replacement nodes
+ * @template T - Element type
+ *
+ * @param selector - Query selector
+ * @param node - Node of reference
+ *
+ * @returns Element or nothing
  */
-export function replaceElement(
-  el: HTMLElement, ...nodes: Node[]
-): void {
-  el.replaceWith(...nodes)
+export function getOptionalElement<T extends keyof HTMLElementTagNameMap>(
+  selector: T, node?: ParentNode
+): HTMLElementTagNameMap[T] | undefined
+
+export function getOptionalElement<T extends HTMLElement>(
+  selector: string, node?: ParentNode
+): T | undefined
+
+export function getOptionalElement<T extends HTMLElement>(
+  selector: string, node: ParentNode = document
+): T | undefined {
+  return node.querySelector<T>(selector) || undefined
+}
+
+/**
+ * Retrieve the currently active element
+ *
+ * @returns Element or nothing
+ */
+export function getActiveElement(): HTMLElement | undefined {
+  return document.activeElement instanceof HTMLElement
+    ? document.activeElement || undefined
+    : undefined
 }

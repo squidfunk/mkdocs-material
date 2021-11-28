@@ -127,7 +127,7 @@ The following configuration options are supported:
           prebuild_index: true
     ```
 
-    Note that this configuration option was deprecated, as the [new search
+    Note that this configuration option was removed, as the [new search
     plugin] generates up to [50% smaller] search indexes, doubling search
     performance.
 

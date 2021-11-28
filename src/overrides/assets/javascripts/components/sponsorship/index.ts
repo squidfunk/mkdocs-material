@@ -20,10 +20,9 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable } from "rxjs"
-import { map } from "rxjs/operators"
+import { Observable, map } from "rxjs"
 
-import { getElementOrThrow, requestJSON } from "~/browser"
+import { getElement, requestJSON } from "~/browser"
 
 import { renderPrivateSponsor, renderPublicSponsor } from "_/templates"
 
@@ -122,7 +121,7 @@ export function mountSponsorship(
     el.removeAttribute("hidden")
 
     /* Render public sponsors with avatar and links */
-    const list = getElementOrThrow(":scope > :first-child", el)
+    const list = getElement(":scope > :first-child", el)
     for (const sponsor of sponsorship.sponsors)
       if (sponsor.type === "public")
         list.appendChild(renderPublicSponsor(sponsor.user))

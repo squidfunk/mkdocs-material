@@ -24,7 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Color definitions
+// Color variables
 :root {
 
   // Default color shades
@@ -104,4 +104,19 @@
     --md-footer-bg-color:              hsla(0, 0%, 0%, 0.87);
     --md-footer-bg-color--dark:        hsla(0, 0%, 0%, 0.32);
   }
+
+  // Shadow depth 1
+  --md-shadow-z1:
+    0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.05),
+    0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.1);
+
+  // Shadow depth 2
+  --md-shadow-z2:
+    0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.1),
+    0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.25);
+
+  // Shadow depth 3
+  --md-shadow-z3:
+    0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.2),
+    0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.35);
 }

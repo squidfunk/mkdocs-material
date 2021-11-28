@@ -1,0 +1,243 @@
+////
+/// Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Keyframes
+// ----------------------------------------------------------------------------
+
+// Continuous pulse animation
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--md-default-fg-color--lightest);
+  }
+
+  75% {
+    box-shadow: 0 0 0 px2em(10px) transparent;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: layout
+// ----------------------------------------------------------------------------
+
+// Tooltip variables
+:root {
+  --md-tooltip-width: #{px2rem(400px)};
+}
+
+// ----------------------------------------------------------------------------
+
+// Tooltip
+.md-tooltip {
+  position: absolute;
+  top: var(--md-tooltip-y);
+  left:
+    clamp(
+      #{px2rem(16px)},
+      calc(var(--md-tooltip-x) - #{px2rem(16px)}),
+      calc(100vw - var(--md-tooltip-width) - #{px2rem(16px)})
+    );
+  // Hack: set an explicit `z-index` so we can transition it to ensure that any
+  // following elements are not overlaying the tooltip during the transition.
+  z-index: 0;
+  width: var(--md-tooltip-width);
+  max-width: calc(100vw - 2 * #{px2rem(16px)});
+  max-height: 0;
+  color: var(--md-default-fg-color);
+  background-color: var(--md-default-bg-color);
+  border-radius: px2rem(2px);
+  box-shadow: var(--md-shadow-z2);
+  transform: translateY(px2rem(-8px));
+  // Hack: promote to own layer to reduce jitter
+  backface-visibility: hidden;
+  opacity: 0;
+  transition:
+    transform    0ms 250ms,
+    opacity    250ms,
+    max-height   0ms 250ms,
+    z-index    250ms;
+
+  // [reduced-motion]: Disable animation
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
+
+  // Tooltip on parent focus
+  :focus-within > & {
+    max-height: 1000%;
+    transform: translateY(0);
+    opacity: 1;
+    transition:
+      transform  250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity    250ms,
+      max-height 250ms,
+      z-index      0ms;
+
+    // [reduced-motion]: Disable animation
+    @media (prefers-reduced-motion) {
+      transition: none;
+    }
+  }
+
+  // Show outline for keyboard devices
+  .focus-visible > & {
+    outline: var(--md-accent-fg-color) auto;
+  }
+
+  // Tooltip wrapper
+  &__inner {
+    padding: px2rem(16px);
+    font-size: px2rem(12.8px);
+
+    // Adjust spacing on first child
+    &.md-typeset > :first-child {
+      margin-top: 0;
+    }
+
+    // Adjust spacing on last child
+    &.md-typeset > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Code annotation
+.md-annotation {
+  white-space: normal;
+  outline: none;
+
+  // Code annotation is not hidden (e.g. when copying)
+  &:not([hidden]) {
+    display: inline-block;
+  }
+
+  // Promote children to top on focus
+  &:focus-within > * {
+    z-index: 2;
+  }
+
+  // Code annotation wrapper (= tooltip)
+  &__inner {
+    top: calc(var(--md-tooltip-y) + 1.2ch);
+    left:
+      clamp(
+        #{px2rem(0px)},
+        calc(var(--md-tooltip-x) + #{px2rem(12px)}),
+        calc(100vw - var(--md-tooltip-width) - 2 * #{px2rem(16px)})
+      );
+    font-family: var(--md-text-font-family);
+
+    // [mobile -]: Align with body copy
+    @include break-to-device(mobile) {
+
+      // Top-level code block
+      .md-content__inner > :is(pre, .highlight) & {
+        left:
+          clamp(
+            #{px2rem(16px)},
+            calc(var(--md-tooltip-x) + #{px2rem(12px)}),
+            calc(100vw - var(--md-tooltip-width) - #{px2rem(16px)})
+          );
+      }
+    }
+
+    // Code annotation tooltip when not focused
+    :not(:focus-within) > & {
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  // Code annotation index
+  &__index {
+    position: relative;
+    z-index: 0;
+    margin: 0 1ch;
+    color: hsla(0, 0%, 100%, 1);
+    cursor: pointer;
+    transition: z-index 250ms;
+    user-select: none;
+
+    // Code annotation marker – the marker must be positioned absolutely behind
+    // the index, because it shouldn't impact the rendering of a code block.
+    // Otherwise, small rounding differences in browsers can sometimes mess up
+    // alignment of text following a code annotation.
+    &::after {
+      position: absolute;
+      top: 0.1ch;
+      left: -0.2ch;
+      z-index: -1;
+      width: max(2.2ch, 100% + 1.2ch);
+      height: 2.2ch;
+      margin: 0 -0.4ch;
+      padding: 0 0.4ch;
+      background-color: var(--md-default-fg-color--lighter);
+      border-radius: 1em;
+      transition:
+        color            250ms,
+        background-color 250ms;
+      animation: pulse 2000ms infinite;
+      content: "";
+
+      // [reduced-motion]: Disable animation
+      @media (prefers-reduced-motion) {
+        transition: none;
+        animation: none;
+      }
+
+      // Code annotation marker on focus/hover
+      :is(:focus-within, :hover) > & {
+        background-color: var(--md-accent-fg-color);
+      }
+
+      // Code annotation marker on focus
+      :focus-within > & {
+        transition:
+          color            250ms,
+          background-color 250ms;
+        animation: none;
+
+        // [reduced-motion]: Disable animation
+        @media (prefers-reduced-motion) {
+          transition: none;
+        }
+      }
+    }
+
+    // Code annotation index on focus/hover
+    :is(:focus-within, :hover) > & {
+      color: var(--md-accent-bg-color);
+    }
+
+    // Code annotation index on focus
+    :focus-within > & {
+      transition: none;
+      animation: none;
+    }
+  }
+}

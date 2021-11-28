@@ -23,29 +23,17 @@
 import {
   Observable,
   Subject,
-  animationFrameScheduler,
-  combineLatest
-} from "rxjs"
-import {
   bufferCount,
+  combineLatest,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   finalize,
   map,
-  observeOn,
   tap,
   withLatestFrom
-} from "rxjs/operators"
+} from "rxjs"
 
-import {
-  resetBackToTopOffset,
-  resetBackToTopState,
-  resetFocusable,
-  setBackToTopOffset,
-  setBackToTopState,
-  setFocusable
-} from "~/actions"
-import { Viewport, setElementFocus } from "~/browser"
+import { Viewport } from "~/browser"
 
 import { Component } from "../_"
 import { Header } from "../header"
@@ -140,10 +128,9 @@ export function watchBackToTop(
 export function mountBackToTop(
   el: HTMLElement, { viewport$, header$, main$ }: MountOptions
 ): Observable<Component<BackToTop>> {
-  const internal$ = new Subject<BackToTop>()
-  internal$
+  const push$ = new Subject<BackToTop>()
+  push$
     .pipe(
-      observeOn(animationFrameScheduler),
       withLatestFrom(header$
         .pipe(
           distinctUntilKeyChanged("height")
@@ -152,32 +139,33 @@ export function mountBackToTop(
     )
       .subscribe({
 
-        /* Update state */
+        /* Handle emission */
         next([{ hidden }, { height }]) {
-          setBackToTopOffset(el, height + 16)
+          el.style.top = `${height + 16}px`
           if (hidden) {
-            setBackToTopState(el, "hidden")
-            setElementFocus(el, false)
-            setFocusable(el, -1)
+            el.setAttribute("data-md-state", "hidden")
+            el.setAttribute("tabindex", "-1")
+            el.blur()
           } else {
-            resetBackToTopState(el)
-            resetFocusable(el)
+            el.style.top = ""
+            el.removeAttribute("data-md-state")
+            el.removeAttribute("tabindex")
           }
         },
 
-        /* Reset on complete */
+        /* Handle complete */
         complete() {
-          resetBackToTopOffset(el)
-          resetBackToTopState(el)
-          resetFocusable(el)
+          el.style.top = ""
+          el.removeAttribute("data-md-state")
+          el.removeAttribute("tabindex")
         }
       })
 
   /* Create and return component */
   return watchBackToTop(el, { viewport$, header$, main$ })
     .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
+      tap(state => push$.next(state)),
+      finalize(() => push$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

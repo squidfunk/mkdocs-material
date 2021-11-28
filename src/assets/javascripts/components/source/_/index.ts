@@ -20,21 +20,28 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable, Subject, defer, of } from "rxjs"
 import {
+  EMPTY,
+  Observable,
+  Subject,
   catchError,
+  defer,
   filter,
   finalize,
   map,
+  of,
   shareReplay,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
-import { setSourceFacts, setSourceState } from "~/actions"
+import { getElement } from "~/browser"
 import { renderSourceFacts } from "~/templates"
 
 import { Component } from "../../_"
-import { SourceFacts, fetchSourceFacts } from "../facts"
+import {
+  SourceFacts,
+  fetchSourceFacts
+} from "../facts"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -74,25 +81,17 @@ export function watchSource(
   el: HTMLAnchorElement
 ): Observable<Source> {
   return fetch$ ||= defer(() => {
-    const data = sessionStorage.getItem(__prefix("__source"))
-    if (data) {
-      return of<SourceFacts>(JSON.parse(data))
-    } else {
-      const value$ = fetchSourceFacts(el.href)
-      value$.subscribe(value => {
-        try {
-          sessionStorage.setItem(__prefix("__source"), JSON.stringify(value))
-        } catch (err) {
-          /* Uncritical, just swallow */
-        }
-      })
-
-      /* Return value */
-      return value$
-    }
+    const cached = __md_get<SourceFacts>("__source", sessionStorage)
+    if (cached)
+      return of(cached)
+    else
+      return fetchSourceFacts(el.href)
+        .pipe(
+          tap(facts => __md_set("__source", facts, sessionStorage))
+        )
   })
     .pipe(
-      catchError(() => NEVER),
+      catchError(() => EMPTY),
       filter(facts => Object.keys(facts).length > 0),
       map(facts => ({ facts })),
       shareReplay(1)
@@ -109,17 +108,20 @@ export function watchSource(
 export function mountSource(
   el: HTMLAnchorElement
 ): Observable<Component<Source>> {
-  const internal$ = new Subject<Source>()
-  internal$.subscribe(({ facts }) => {
-    setSourceFacts(el, renderSourceFacts(facts))
-    setSourceState(el, "done")
-  })
+  const inner = getElement(":scope > :last-child", el)
+  return defer(() => {
+    const push$ = new Subject<Source>()
+    push$.subscribe(({ facts }) => {
+      inner.appendChild(renderSourceFacts(facts))
+      inner.setAttribute("data-md-state", "done")
+    })
 
-  /* Create and return component */
-  return watchSource(el)
-    .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
-      map(state => ({ ref: el, ...state }))
-    )
+    /* Create and return component */
+    return watchSource(el)
+      .pipe(
+        tap(state => push$.next(state)),
+        finalize(() => push$.complete()),
+        map(state => ({ ref: el, ...state }))
+      )
+  })
 }

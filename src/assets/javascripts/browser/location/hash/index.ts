@@ -20,15 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent } from "rxjs"
 import {
+  Observable,
   filter,
+  fromEvent,
   map,
   shareReplay,
   startWith
-} from "rxjs/operators"
+} from "rxjs"
 
-import { getElement } from "~/browser"
+import { getOptionalElement } from "~/browser"
 import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
@@ -85,7 +86,7 @@ export function watchLocationHash(): Observable<string> {
 export function watchLocationTarget(): Observable<HTMLElement> {
   return watchLocationHash()
     .pipe(
-      map(id => getElement(`[id="${id}"]`)!),
+      map(id => getOptionalElement(`[id="${id}"]`)!),
       filter(el => typeof el !== "undefined")
     )
 }

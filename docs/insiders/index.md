@@ -17,7 +17,7 @@ that new features are first exclusively released to sponsors as part of
   </div>
   <figcaption markdown>
 
-The official documentation is built with Insiders
+This documentation is built with Insiders
 [squidfunk.github.io/mkdocs-material][Material for MkDocs]
 
   </figcaption>

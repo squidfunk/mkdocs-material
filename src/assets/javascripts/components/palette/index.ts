@@ -23,18 +23,17 @@
 import {
   Observable,
   Subject,
-  fromEvent,
-  of
-} from "rxjs"
-import {
+  defer,
   finalize,
+  fromEvent,
   map,
   mapTo,
   mergeMap,
+  of,
   shareReplay,
   startWith,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { getElements } from "~/browser"
 
@@ -75,11 +74,10 @@ export interface Palette {
 export function watchPalette(
   inputs: HTMLInputElement[]
 ): Observable<Palette> {
-  const data = localStorage.getItem(__prefix("__palette"))!
-  const current = JSON.parse(data) || {
-    index: inputs.findIndex(input => (
-      matchMedia(input.getAttribute("data-md-color-media")!).matches
-    ))
+  const current = __md_get<Palette>("__palette") || {
+    index: inputs.findIndex(input => matchMedia(
+      input.getAttribute("data-md-color-media")!
+    ).matches)
   }
 
   /* Emit changes in color palette */
@@ -102,11 +100,6 @@ export function watchPalette(
       shareReplay(1)
     )
 
-  /* Persist preference in local storage */
-  palette$.subscribe(palette => {
-    localStorage.setItem(__prefix("__palette"), JSON.stringify(palette))
-  })
-
   /* Return palette */
   return palette$
 }
@@ -121,28 +114,33 @@ export function watchPalette(
 export function mountPalette(
   el: HTMLElement
 ): Observable<Component<Palette>> {
-  const internal$ = new Subject<Palette>()
+  return defer(() => {
+    const push$ = new Subject<Palette>()
+    push$.subscribe(palette => {
 
-  /* Set color palette */
-  internal$.subscribe(palette => {
-    for (const [key, value] of Object.entries(palette.color))
-      if (typeof value === "string")
-        document.body.setAttribute(`data-md-color-${key}`, value)
+      /* Set color palette */
+      for (const [key, value] of Object.entries(palette.color))
+        if (typeof value === "string")
+          document.body.setAttribute(`data-md-color-${key}`, value)
 
-    /* Toggle visibility */
-    for (let index = 0; index < inputs.length; index++) {
-      const label = inputs[index].nextElementSibling
-      if (label instanceof HTMLElement)
-        label.hidden = palette.index !== index
-    }
+      /* Toggle visibility */
+      for (let index = 0; index < inputs.length; index++) {
+        const label = inputs[index].nextElementSibling
+        if (label instanceof HTMLElement)
+          label.hidden = palette.index !== index
+      }
+
+      /* Persist preference in local storage */
+      __md_set("__palette", palette)
+    })
+
+    /* Create and return component */
+    const inputs = getElements<HTMLInputElement>("input", el)
+    return watchPalette(inputs)
+      .pipe(
+        tap(state => push$.next(state)),
+        finalize(() => push$.complete()),
+        map(state => ({ ref: el, ...state }))
+      )
   })
-
-  /* Create and return component */
-  const inputs = getElements<HTMLInputElement>("input", el)
-  return watchPalette(inputs)
-    .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
-      map(state => ({ ref: el, ...state }))
-    )
 }

@@ -25,11 +25,6 @@ import {
   NEVER,
   Observable,
   Subject,
-  fromEvent,
-  merge,
-  of
-} from "rxjs"
-import {
   bufferCount,
   catchError,
   concatMap,
@@ -37,26 +32,27 @@ import {
   distinctUntilChanged,
   distinctUntilKeyChanged,
   filter,
+  fromEvent,
   map,
+  merge,
+  of,
   sample,
   share,
   skip,
   skipUntil,
   switchMap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { configuration, feature } from "~/_"
 import {
   Viewport,
   ViewportOffset,
-  getElement,
   getElements,
-  replaceElement,
+  getOptionalElement,
   request,
   requestXML,
   setLocation,
-  setLocationHash,
-  setViewportOffset
+  setLocationHash
 } from "~/browser"
 import { getComponentElement } from "~/components"
 import { h } from "~/utilities"
@@ -168,7 +164,7 @@ export function setupInstantLoading(
   }
 
   /* Hack: ensure absolute favicon link to omit 404s when switching */
-  const favicon = getElement<HTMLLinkElement>("link[rel=icon]")
+  const favicon = getOptionalElement<HTMLLinkElement>("link[rel=icon]")
   if (typeof favicon !== "undefined")
     favicon.href = favicon.href
 
@@ -282,19 +278,19 @@ export function setupInstantLoading(
           "[data-md-component=announce]",
           "[data-md-component=container]",
           "[data-md-component=header-topic]",
-          "[data-md-component=logo], .md-logo", // compat
+          "[data-md-component=logo]",
           "[data-md-component=skip]",
           ...feature("navigation.tabs.sticky")
             ? ["[data-md-component=tabs]"]
             : []
         ]) {
-          const source = getElement(selector)
-          const target = getElement(selector, replacement)
+          const source = getOptionalElement(selector)
+          const target = getOptionalElement(selector, replacement)
           if (
             typeof source !== "undefined" &&
             typeof target !== "undefined"
           ) {
-            replaceElement(source, target)
+            source.replaceWith(target)
           }
         }
       })
@@ -310,7 +306,7 @@ export function setupInstantLoading(
         if (el.src) {
           for (const name of el.getAttributeNames())
             script.setAttribute(name, el.getAttribute(name)!)
-          replaceElement(el, script)
+          el.replaceWith(script)
 
           /* Complete when script is loaded */
           return new Observable(observer => {
@@ -320,7 +316,7 @@ export function setupInstantLoading(
         /* Complete immediately */
         } else {
           script.textContent = el.textContent
-          replaceElement(el, script)
+          el.replaceWith(script)
           return EMPTY
         }
       })
@@ -332,11 +328,11 @@ export function setupInstantLoading(
     .pipe(
       sample(document$),
     )
-      .subscribe(({ url, offset }) => {
+      .subscribe(({ url, offset = { y: 0 } }) => {
         if (url.hash && !offset) {
           setLocationHash(url.hash)
         } else {
-          setViewportOffset(offset || { y: 0 })
+          window.scrollTo(0, offset.y)
         }
       })
 
@@ -358,7 +354,7 @@ export function setupInstantLoading(
       filter(([a, b]) => a.url.pathname === b.url.pathname),
       map(([, state]) => state)
     )
-      .subscribe(({ offset }) => {
-        setViewportOffset(offset || { y: 0 })
+      .subscribe(({ offset = { y: 0 } }) => {
+        window.scrollTo(0, offset.y)
       })
 }

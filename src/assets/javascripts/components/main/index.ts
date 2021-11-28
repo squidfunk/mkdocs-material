@@ -22,16 +22,17 @@
 
 import {
   Observable,
-  combineLatest
-} from "rxjs"
-import {
+  combineLatest,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   map,
   switchMap
-} from "rxjs/operators"
+} from "rxjs"
 
-import { Viewport, watchElementSize } from "~/browser"
+import {
+  Viewport,
+  watchElementSize
+} from "~/browser"
 
 import { Header } from "../header"
 

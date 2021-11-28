@@ -23,20 +23,16 @@
 import {
   Observable,
   Subject,
-  animationFrameScheduler,
-  of
-} from "rxjs"
-import {
+  defer,
   distinctUntilKeyChanged,
   finalize,
   map,
-  observeOn,
+  of,
   switchMap,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { feature } from "~/_"
-import { resetTabsState, setTabsState } from "~/actions"
 import {
   Viewport,
   watchElementSize,
@@ -118,36 +114,34 @@ export function watchTabs(
 export function mountTabs(
   el: HTMLElement, options: MountOptions
 ): Observable<Component<Tabs>> {
-  const internal$ = new Subject<Tabs>()
-  internal$
-    .pipe(
-      observeOn(animationFrameScheduler)
+  return defer(() => {
+    const push$ = new Subject<Tabs>()
+    push$.subscribe({
+
+      /* Handle emission */
+      next({ hidden }) {
+        if (hidden)
+          el.setAttribute("data-md-state", "hidden")
+        else
+          el.removeAttribute("data-md-state")
+      },
+
+      /* Handle complete */
+      complete() {
+        el.removeAttribute("data-md-state")
+      }
+    })
+
+    /* Create and return component */
+    return (
+      feature("navigation.tabs.sticky")
+        ? of({ hidden: false })
+        : watchTabs(el, options)
     )
-      .subscribe({
-
-        /* Update state */
-        next({ hidden }) {
-          if (hidden)
-            setTabsState(el, "hidden")
-          else
-            resetTabsState(el)
-        },
-
-        /* Reset on complete */
-        complete() {
-          resetTabsState(el)
-        }
-      })
-
-  /* Create and return component */
-  return (
-    feature("navigation.tabs.sticky")
-      ? of({ hidden: false })
-      : watchTabs(el, options)
-  )
-    .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
-      map(state => ({ ref: el, ...state }))
-    )
+      .pipe(
+        tap(state => push$.next(state)),
+        finalize(() => push$.complete()),
+        map(state => ({ ref: el, ...state }))
+      )
+  })
 }

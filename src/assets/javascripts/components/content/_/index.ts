@@ -22,10 +22,14 @@
 
 import { Observable, merge } from "rxjs"
 
-import { Viewport, getElements } from "~/browser"
+import { getElements } from "~/browser"
 
 import { Component } from "../../_"
-import { CodeBlock, mountCodeBlock } from "../code"
+import {
+  Annotation,
+  CodeBlock,
+  mountCodeBlock
+} from "../code"
 import { Details, mountDetails } from "../details"
 import { DataTable, mountDataTable } from "../table"
 import { ContentTabs, mountContentTabs } from "../tabs"
@@ -38,6 +42,7 @@ import { ContentTabs, mountContentTabs } from "../tabs"
  * Content
  */
 export type Content =
+  | Annotation
   | ContentTabs
   | CodeBlock
   | DataTable
@@ -52,8 +57,8 @@ export type Content =
  */
 interface MountOptions {
   target$: Observable<HTMLElement>     /* Location target observable */
-  viewport$: Observable<Viewport>      /* Viewport observable */
-  print$: Observable<void>             /* Print mode observable */
+  hover$: Observable<boolean>          /* Media hover observable */
+  print$: Observable<boolean>          /* Media print observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -72,13 +77,13 @@ interface MountOptions {
  * @returns Content component observable
  */
 export function mountContent(
-  el: HTMLElement, { target$, viewport$, print$ }: MountOptions
+  el: HTMLElement, { target$, hover$, print$ }: MountOptions
 ): Observable<Component<Content>> {
   return merge(
 
     /* Code blocks */
     ...getElements("pre > code", el)
-      .map(child => mountCodeBlock(child, { viewport$ })),
+      .map(child => mountCodeBlock(child, { hover$, print$ })),
 
     /* Data tables */
     ...getElements("table:not([class])", el)

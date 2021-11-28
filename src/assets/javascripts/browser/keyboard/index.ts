@@ -20,8 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent } from "rxjs"
-import { filter, map, share } from "rxjs/operators"
+import {
+  Observable,
+  filter,
+  fromEvent,
+  map,
+  share
+} from "rxjs"
 
 import { getActiveElement } from "../element"
 import { getToggle } from "../toggle"

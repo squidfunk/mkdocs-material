@@ -20,15 +20,17 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, combineLatest } from "rxjs"
 import {
+  Observable,
+  combineLatest,
   distinctUntilKeyChanged,
   map,
   shareReplay
-} from "rxjs/operators"
+} from "rxjs"
 
 import { Header } from "~/components"
 
+import { getElementOffset } from "../../element"
 import {
   ViewportOffset,
   watchViewportOffset
@@ -101,10 +103,7 @@ export function watchViewportAt(
   /* Compute element offset */
   const offset$ = combineLatest([size$, header$])
     .pipe(
-      map((): ViewportOffset => ({
-        x: el.offsetLeft,
-        y: el.offsetTop
-      }))
+      map(() => getElementOffset(el))
     )
 
   /* Compute relative viewport, return hot observable */

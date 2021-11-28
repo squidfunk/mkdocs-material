@@ -36,25 +36,26 @@
 
 @import "config";
 
-@import "main/reset";
+@import "main/resets";
 @import "main/colors";
 @import "main/icons";
 @import "main/typeset";
 
 @import "main/layout/base";
-@import "main/layout/announce";
+@import "main/layout/banner";
 @import "main/layout/clipboard";
 @import "main/layout/content";
 @import "main/layout/dialog";
+@import "main/layout/footer";
 @import "main/layout/form";
 @import "main/layout/header";
-@import "main/layout/footer";
 @import "main/layout/nav";
 @import "main/layout/search";
 @import "main/layout/select";
 @import "main/layout/sidebar";
 @import "main/layout/source";
 @import "main/layout/tabs";
+@import "main/layout/tooltip";
 @import "main/layout/top";
 @import "main/layout/version";
 
@@ -72,4 +73,3 @@
 @import "main/extensions/pymdownx/tasklist";
 
 @import "main/modifiers";
-@import "main/shame";

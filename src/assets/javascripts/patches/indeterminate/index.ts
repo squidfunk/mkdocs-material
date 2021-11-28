@@ -20,15 +20,17 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, of } from "rxjs"
 import {
+  Observable,
+  fromEvent,
   mapTo,
   mergeMap,
+  of,
   switchMap,
   takeWhile,
   tap,
   withLatestFrom
-} from "rxjs/operators"
+} from "rxjs"
 
 import { getElements } from "~/browser"
 
@@ -41,7 +43,7 @@ import { getElements } from "~/browser"
  */
 interface PatchOptions {
   document$: Observable<Document>      /* Document observable */
-  tablet$: Observable<boolean>         /* Tablet breakpoint observable */
+  tablet$: Observable<boolean>         /* Media tablet observable */
 }
 
 /* ----------------------------------------------------------------------------

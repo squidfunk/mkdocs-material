@@ -27,13 +27,26 @@
 <script>
 
   /* Prepend the base path to the given key to ensure uniqueness */
-  function __prefix(key) {
-    var prefix = new URL("{{ base_url }}", location)
+  function __md_scope(key, storage, base) {
+    var prefix = new URL(base || (
+      storage === localStorage
+        ? "{{ config.extra.scope | d(base_url) }}"
+        : "{{ base_url }}"
+    ), location)
     return prefix.pathname + "." + key
   }
 
-  /* Fetch the given key from the given storage */
-  function __get(key, storage = localStorage) {
-    return JSON.parse(storage.getItem(__prefix(key)))
+  /* Fetch the value for a key from the given storage */
+  function __md_get(key, storage = localStorage, base) {
+    return JSON.parse(storage.getItem(__md_scope(key, storage, base)))
+  }
+
+  /* Persist a key-value pair in the given storage */
+  function __md_set(key, value, storage = localStorage, base) {
+    try {
+      storage.setItem(__md_scope(key, storage, base), JSON.stringify(value))
+    } catch (err) {
+      /* Uncritical, just swallow */
+    }
   }
 </script>

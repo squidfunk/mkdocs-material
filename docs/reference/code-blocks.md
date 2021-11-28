@@ -90,14 +90,14 @@ shortcode for a given language.
 _Example_:
 
 ```` markdown
-``` python
+``` py
 import tensorflow as tf
 ```
 ````
 
 _Result_:
 
-``` python
+``` py
 import tensorflow as tf
 ```
 
@@ -183,7 +183,7 @@ allows to split large code blocks for readability.
 _Example_:
 
 ```` markdown
-``` python linenums="1"
+``` py linenums="1"
 def bubble_sort(items):
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
@@ -194,7 +194,7 @@ def bubble_sort(items):
 
 _Result_:
 
-``` python linenums="1"
+``` py linenums="1"
 def bubble_sort(items):
     for i in range(len(items)):
         for j in range(len(items) - 1 - i):
@@ -214,7 +214,7 @@ at `1`, regardless of the starting line number specified as part of
     _Example_:
 
     ```` markdown 
-    ``` python hl_lines="2 3"
+    ``` py hl_lines="2 3"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):
@@ -225,7 +225,7 @@ at `1`, regardless of the starting line number specified as part of
 
     _Result_:
 
-    ``` python linenums="1" hl_lines="2 3"
+    ``` py linenums="1" hl_lines="2 3"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):
@@ -238,7 +238,7 @@ at `1`, regardless of the starting line number specified as part of
     _Example_:
 
     ```` markdown
-    ``` python hl_lines="2-5"
+    ``` py hl_lines="2-5"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):
@@ -249,7 +249,7 @@ at `1`, regardless of the starting line number specified as part of
 
     _Result_:
 
-    ``` python linenums="1" hl_lines="2-5"
+    ``` py linenums="1" hl_lines="2-5"
     def bubble_sort(items):
         for i in range(len(items)):
             for j in range(len(items) - 1 - i):

@@ -20,10 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent } from "rxjs"
-import { map, startWith } from "rxjs/operators"
+import {
+  Observable,
+  fromEvent,
+  map,
+  startWith
+} from "rxjs"
 
-import { getElementOrThrow } from "../element"
+import { getElement } from "../element"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -44,8 +48,8 @@ export type Toggle =
  * Toggle map
  */
 const toggles: Record<Toggle, HTMLInputElement> = {
-  drawer: getElementOrThrow("[data-md-toggle=drawer]"),
-  search: getElementOrThrow("[data-md-toggle=search]")
+  drawer: getElement("[data-md-toggle=drawer]"),
+  search: getElement("[data-md-toggle=search]")
 }
 
 /* ----------------------------------------------------------------------------

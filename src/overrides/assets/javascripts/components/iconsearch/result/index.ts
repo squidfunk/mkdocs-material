@@ -25,33 +25,27 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
-  combineLatest,
-  merge,
-  of
-} from "rxjs"
-import {
   bufferCount,
+  combineLatest,
   distinctUntilKeyChanged,
   filter,
   finalize,
   map,
+  merge,
   observeOn,
+  of,
   switchMap,
   tap,
   withLatestFrom,
   zipWith
-} from "rxjs/operators"
+} from "rxjs"
 
+import { translation } from "~/_"
 import {
-  addToSearchResultList,
-  resetSearchResultList,
-  resetSearchResultMeta,
-  setSearchResultMeta
-} from "~/actions"
-import {
-  getElementOrThrow,
-  watchElementThreshold
+  getElement,
+  watchElementBoundary
 } from "~/browser"
+import { round } from "~/utilities"
 
 import { Icon, renderIconSearchResult } from "_/templates"
 
@@ -148,32 +142,51 @@ export function watchIconSearchResult(
 export function mountIconSearchResult(
   el: HTMLElement, { index$, query$ }: MountOptions
 ): Observable<Component<IconSearchResult, HTMLElement>> {
-  const internal$ = new Subject<IconSearchResult>()
-  const boundary$ = watchElementThreshold(el)
+  const push$ = new Subject<IconSearchResult>()
+  const boundary$ = watchElementBoundary(el)
     .pipe(
       filter(Boolean)
     )
 
   /* Update search result metadata */
-  const meta = getElementOrThrow(":scope > :first-child", el)
-  internal$
+  const meta = getElement(":scope > :first-child", el)
+  push$
     .pipe(
       observeOn(animationFrameScheduler),
       withLatestFrom(query$)
     )
       .subscribe(([{ data }, { value }]) => {
-        if (value)
-          setSearchResultMeta(meta, data.length)
-        else
-          resetSearchResultMeta(meta)
+        if (value) {
+          switch (data.length) {
+
+            /* No results */
+            case 0:
+              meta.textContent = translation("search.result.none")
+              break
+
+            /* One result */
+            case 1:
+              meta.textContent = translation("search.result.one")
+              break
+
+            /* Multiple result */
+            default:
+              meta.textContent = translation(
+                "search.result.other",
+                round(data.length)
+              )
+          }
+        } else {
+          meta.textContent = translation("search.result.placeholder")
+        }
       })
 
   /* Update icon search result list */
-  const list = getElementOrThrow(":scope > :last-child", el)
-  internal$
+  const list = getElement(":scope > :last-child", el)
+  push$
     .pipe(
       observeOn(animationFrameScheduler),
-      tap(() => resetSearchResultList(list)),
+      tap(() => list.innerHTML = ""),
       switchMap(({ data }) => merge(
         of(...data.slice(0, 10)),
         of(...data.slice(10))
@@ -185,15 +198,15 @@ export function mountIconSearchResult(
       )),
       withLatestFrom(query$)
     )
-      .subscribe(([result, { value }]) => {
-        addToSearchResultList(list, renderIconSearchResult(result, value))
-      })
+      .subscribe(([result, { value }]) => list.appendChild(
+        renderIconSearchResult(result, value)
+      ))
 
   /* Create and return component */
   return watchIconSearchResult(el, { query$, index$ })
     .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
+      tap(state => push$.next(state)),
+      finalize(() => push$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

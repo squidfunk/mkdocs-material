@@ -69,20 +69,13 @@ function renderVersion(version: Version): HTMLElement {
  * Render a version selector
  *
  * @param versions - Versions
+ * @param active - Active version
  *
  * @returns Element
  */
-export function renderVersionSelector(versions: Version[]): HTMLElement {
-  const config = configuration()
-
-  /* Determine active version */
-  const [, current] = config.base.match(/([^/]+)\/?$/)!
-  const active =
-    versions.find(({ version, aliases }) => (
-      version === current || aliases.includes(current)
-    )) || versions[0]
-
-  /* Render version selector */
+export function renderVersionSelector(
+  versions: Version[], active: Version
+): HTMLElement {
   return (
     <div class="md-version">
       <button

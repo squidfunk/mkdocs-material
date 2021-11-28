@@ -22,8 +22,13 @@
 
 import * as fs from "fs/promises"
 import * as path from "path"
-import { Observable, from } from "rxjs"
-import { mapTo, mergeMap, switchMap } from "rxjs/operators"
+import {
+  Observable,
+  from,
+  mapTo,
+  mergeMap,
+  switchMap
+} from "rxjs"
 
 import { mkdir, read, resolve, write } from "../_"
 

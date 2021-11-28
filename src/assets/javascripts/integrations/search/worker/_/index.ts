@@ -20,8 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { ObservableInput, Subject, from } from "rxjs"
-import { map, share } from "rxjs/operators"
+import {
+  ObservableInput,
+  Subject,
+  from,
+  map,
+  share
+} from "rxjs"
 
 import { configuration, feature, translation } from "~/_"
 import { WorkerHandler, watchWorker } from "~/browser"
@@ -58,9 +63,7 @@ export type SearchWorker = WorkerHandler<SearchMessage>
  *
  * @returns Search index
  */
-function setupSearchIndex(
-  { config, docs, index }: SearchIndex
-): SearchIndex {
+function setupSearchIndex({ config, docs }: SearchIndex): SearchIndex {
 
   /* Override default language with value from translation */
   if (config.lang.length === 1 && config.lang[0] === "en")
@@ -84,7 +87,7 @@ function setupSearchIndex(
   }
 
   /* Return search index after defaulting */
-  return { config, docs, index, options }
+  return { config, docs, options }
 }
 
 /* ----------------------------------------------------------------------------

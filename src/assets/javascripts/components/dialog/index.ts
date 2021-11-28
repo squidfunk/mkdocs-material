@@ -23,24 +23,17 @@
 import {
   Observable,
   Subject,
-  animationFrameScheduler,
-  merge,
-  of
-} from "rxjs"
-import {
+  defer,
   delay,
   finalize,
   map,
-  observeOn,
+  merge,
+  of,
   switchMap,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
-import {
-  resetDialogState,
-  setDialogMessage,
-  setDialogState
-} from "~/actions"
+import { getElement } from "~/browser"
 
 import { Component } from "../_"
 
@@ -105,7 +98,7 @@ export function watchDialog(
 /**
  * Mount dialog
  *
- * This function reveals the dialog in the right cornerwhen a new alert is
+ * This function reveals the dialog in the right corner when a new alert is
  * emitted through the subject that is passed as part of the options.
  *
  * @param el - Dialog element
@@ -116,24 +109,23 @@ export function watchDialog(
 export function mountDialog(
   el: HTMLElement, options: MountOptions
 ): Observable<Component<Dialog>> {
-  const internal$ = new Subject<Dialog>()
-  internal$
-    .pipe(
-      observeOn(animationFrameScheduler)
-    )
-      .subscribe(({ message, open }) => {
-        setDialogMessage(el, message)
-        if (open)
-          setDialogState(el, "open")
-        else
-          resetDialogState(el)
-      })
+  const inner = getElement(".md-typeset", el)
+  return defer(() => {
+    const push$ = new Subject<Dialog>()
+    push$.subscribe(({ message, open }) => {
+      inner.textContent = message
+      if (open)
+        el.setAttribute("data-md-state", "open")
+      else
+        el.removeAttribute("data-md-state")
+    })
 
-  /* Create and return component */
-  return watchDialog(el, options)
-    .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
-      map(state => ({ ref: el, ...state }))
-    )
+    /* Create and return component */
+    return watchDialog(el, options)
+      .pipe(
+        tap(state => push$.next(state)),
+        finalize(() => push$.complete()),
+        map(state => ({ ref: el, ...state }))
+      )
+  })
 }

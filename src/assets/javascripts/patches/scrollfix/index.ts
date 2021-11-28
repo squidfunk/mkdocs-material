@@ -20,14 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, of } from "rxjs"
 import {
+  Observable,
   filter,
+  fromEvent,
   mapTo,
   mergeMap,
+  of,
   switchMap,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
 import { getElements } from "~/browser"
 

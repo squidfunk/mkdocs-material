@@ -1,7 +1,6 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% import "partials/language.html" as lang with context %}
 <footer class="md-footer">
   {% if page.previous_page or page.next_page %}
     <nav class="md-footer__inner md-grid" aria-label="{{ lang.t('footer.title') }}">
@@ -41,21 +40,10 @@
   {% endif %}
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        {% if config.copyright %}
-          <div class="md-footer-copyright__highlight">
-            {{ config.copyright }}
-          </div>
-        {% endif %}
-        {% if not config.extra.generator == false %}
-          Made with
-          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-            Material for MkDocs
-          </a>
-        {% endif %}
-        {{ extracopyright }}
-      </div>
-      {% include "partials/social.html" %}
+      {% include "partials/copyright.html" %}
+      {% if config.extra.social %}
+        {% include "partials/social.html" %}
+      {% endif %}
     </div>
   </div>
 </footer>

@@ -20,8 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, fromEvent, merge } from "rxjs"
-import { map, startWith } from "rxjs/operators"
+import {
+  Observable,
+  fromEvent,
+  map,
+  merge,
+  startWith
+} from "rxjs"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -49,20 +54,9 @@ export interface ViewportOffset {
  */
 export function getViewportOffset(): ViewportOffset {
   return {
-    x: Math.max(0, pageXOffset),
-    y: Math.max(0, pageYOffset)
+    x: Math.max(0, scrollX),
+    y: Math.max(0, scrollY)
   }
-}
-
-/**
- * Set viewport offset
- *
- * @param offset - Viewport offset
- */
-export function setViewportOffset(
-  { x, y }: Partial<ViewportOffset>
-): void {
-  window.scrollTo(x || 0, y || 0)
 }
 
 /* ------------------------------------------------------------------------- */

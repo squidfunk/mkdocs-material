@@ -24,7 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// Search variables
 :root {
   --md-search-result-icon: svg-load("material/file-search-outline.svg");
 }
@@ -493,8 +493,7 @@
 
       // Show output when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
-        @include z-depth(6);
-
+        box-shadow: var(--md-shadow-z3);
         opacity: 1;
       }
     }
@@ -597,7 +596,7 @@
 
   // Search result item
   &__item {
-    box-shadow: 0 px2rem(-1px) 0 var(--md-default-fg-color--lightest);
+    box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest);
 
     // Omit border on first child
     &:first-child {
@@ -613,8 +612,7 @@
     scroll-snap-align: start;
 
     // Search result link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       background-color: var(--md-accent-fg-color--transparent);
     }
 
@@ -649,8 +647,7 @@
     }
 
     // Search result more link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
       background-color: var(--md-accent-fg-color--transparent);
     }

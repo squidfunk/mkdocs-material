@@ -21,8 +21,12 @@
  */
 
 import { Repo, User } from "github-types"
-import { Observable, zip } from "rxjs"
-import { defaultIfEmpty, map } from "rxjs/operators"
+import {
+  Observable,
+  defaultIfEmpty,
+  map,
+  zip
+} from "rxjs"
 
 import { requestJSON } from "~/browser"
 
@@ -46,7 +50,7 @@ interface Release {
 /**
  * Fetch GitHub repository facts
  *
- * @param user - GitHub user
+ * @param user - GitHub user or organization
  * @param repo - GitHub repository
  *
  * @returns Repository facts observable

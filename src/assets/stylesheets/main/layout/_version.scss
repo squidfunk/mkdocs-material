@@ -35,7 +35,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// Version selection variables
 :root {
   --md-version-icon: svg-load("fontawesome/solid/caret-down.svg");
 }
@@ -100,9 +100,7 @@
     list-style-type: none;
     background-color: var(--md-default-bg-color);
     border-radius: px2rem(2px);
-    box-shadow:
-      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.1),
-      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.25);
+    box-shadow: var(--md-shadow-z2);
     opacity: 0;
     transition:
       max-height 0ms 500ms,
@@ -110,8 +108,7 @@
     scroll-snap-type: y mandatory;
 
     // Version selection list on parent focus/hover
-    .md-version:focus-within &,
-    .md-version:hover & {
+    .md-version:is(:focus-within, :hover) & {
       max-height: px2rem(200px);
       opacity: 1;
       transition:
@@ -160,8 +157,7 @@
     }
 
     // Link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 

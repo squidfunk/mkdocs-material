@@ -23,32 +23,26 @@
 import {
   Observable,
   Subject,
-  animationFrameScheduler,
-  combineLatest
-} from "rxjs"
-import {
   bufferCount,
+  combineLatest,
+  defer,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   finalize,
   map,
-  observeOn,
+  of,
   scan,
   startWith,
   switchMap,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 
-import {
-  resetAnchorActive,
-  resetAnchorState,
-  setAnchorActive,
-  setAnchorState
-} from "~/actions"
+import { feature } from "~/_"
 import {
   Viewport,
-  getElement,
   getElements,
+  getLocation,
+  getOptionalElement,
   watchElementSize
 } from "~/browser"
 
@@ -106,18 +100,21 @@ interface MountOptions {
  *
  * Note that the current anchor is the last item of the `prev` anchor list.
  *
- * @param anchors - Anchor elements
+ * @param el - Table of contents element
  * @param options - Options
  *
  * @returns Table of contents observable
  */
 export function watchTableOfContents(
-  anchors: HTMLAnchorElement[], { viewport$, header$ }: WatchOptions
+  el: HTMLElement, { viewport$, header$ }: WatchOptions
 ): Observable<TableOfContents> {
   const table = new Map<HTMLAnchorElement, HTMLElement>()
+
+  /* Compute anchor-to-target mapping */
+  const anchors = getElements<HTMLAnchorElement>("[href^=\\#]", el)
   for (const anchor of anchors) {
     const id = decodeURIComponent(anchor.hash.substring(1))
-    const target = getElement(`[id="${id}"]`)
+    const target = getOptionalElement(`[id="${id}"]`)
     if (typeof target !== "undefined")
       table.set(anchor, target)
   }
@@ -134,9 +131,9 @@ export function watchTableOfContents(
       distinctUntilKeyChanged("height"),
 
       /* Build index to map anchor paths to vertical offsets */
-      map(() => {
+      switchMap(body => defer(() => {
         let path: HTMLAnchorElement[] = []
-        return [...table].reduce((index, [anchor, target]) => {
+        return of([...table].reduce((index, [anchor, target]) => {
           while (path.length) {
             const last = table.get(path[path.length - 1])!
             if (last.tagName >= target.tagName) {
@@ -158,44 +155,48 @@ export function watchTableOfContents(
             [...path = [...path, anchor]].reverse(),
             offset
           )
-        }, new Map<HTMLAnchorElement[], number>())
-      }),
-
-      /* Sort index by vertical offset (see https://bit.ly/30z6QSO) */
-      map(index => new Map([...index].sort(([, a], [, b]) => a - b))),
-
-      /* Re-compute partition when viewport offset changes */
-      switchMap(index => combineLatest([adjust$, viewport$])
+        }, new Map<HTMLAnchorElement[], number>()))
+      })
         .pipe(
-          scan(([prev, next], [adjust, { offset: { y } }]) => {
 
-            /* Look forward */
-            while (next.length) {
-              const [, offset] = next[0]
-              if (offset - adjust < y) {
-                prev = [...prev, next.shift()!]
-              } else {
-                break
-              }
-            }
+          /* Sort index by vertical offset (see https://bit.ly/30z6QSO) */
+          map(index => new Map([...index].sort(([, a], [, b]) => a - b))),
 
-            /* Look backward */
-            while (prev.length) {
-              const [, offset] = prev[prev.length - 1]
-              if (offset - adjust >= y) {
-                next = [prev.pop()!, ...next]
-              } else {
-                break
-              }
-            }
+          /* Re-compute partition when viewport offset changes */
+          switchMap(index => combineLatest([viewport$, adjust$])
+            .pipe(
+              scan(([prev, next], [{ offset: { y }, size }, adjust]) => {
+                const last = y + size.height >= Math.floor(body.height)
 
-            /* Return partition */
-            return [prev, next]
-          }, [[], [...index]]),
-          distinctUntilChanged((a, b) => (
-            a[0] === b[0] &&
-            a[1] === b[1]
-          ))
+                /* Look forward */
+                while (next.length) {
+                  const [, offset] = next[0]
+                  if (offset - adjust < y || last) {
+                    prev = [...prev, next.shift()!]
+                  } else {
+                    break
+                  }
+                }
+
+                /* Look backward */
+                while (prev.length) {
+                  const [, offset] = prev[prev.length - 1]
+                  if (offset - adjust >= y && !last) {
+                    next = [prev.pop()!, ...next]
+                  } else {
+                    break
+                  }
+                }
+
+                /* Return partition */
+                return [prev, next]
+              }, [[], [...index]]),
+              distinctUntilChanged((a, b) => (
+                a[0] === b[0] &&
+                a[1] === b[1]
+              ))
+            )
+          )
         )
       )
     )
@@ -236,7 +237,7 @@ export function watchTableOfContents(
 /**
  * Mount table of contents
  *
- * @param el - Anchor list element
+ * @param el - Table of contents element
  * @param options - Options
  *
  * @returns Table of contents component observable
@@ -244,32 +245,55 @@ export function watchTableOfContents(
 export function mountTableOfContents(
   el: HTMLElement, options: MountOptions
 ): Observable<Component<TableOfContents>> {
-  const internal$ = new Subject<TableOfContents>()
-  internal$
-    .pipe(
-      observeOn(animationFrameScheduler),
-    )
-      .subscribe(({ prev, next }) => {
+  return defer(() => {
+    const push$ = new Subject<TableOfContents>()
+    push$.subscribe(({ prev, next }) => {
 
-        /* Look forward */
-        for (const [anchor] of next) {
-          resetAnchorActive(anchor)
-          resetAnchorState(anchor)
+      /* Look forward */
+      for (const [anchor] of next) {
+        anchor.removeAttribute("data-md-state")
+        anchor.classList.remove(
+          "md-nav__link--active"
+        )
+      }
+
+      /* Look backward */
+      for (const [index, [anchor]] of prev.entries()) {
+        anchor.setAttribute("data-md-state", "blur")
+        anchor.classList.toggle(
+          "md-nav__link--active",
+          index === prev.length - 1
+        )
+      }
+
+      /* Set up anchor tracking, if enabled */
+      if (feature("navigation.tracking")) {
+        const url = getLocation()
+
+        /* Set hash fragment to active anchor */
+        const anchor = prev[prev.length - 1]
+        if (anchor && anchor.length) {
+          const [active] = anchor
+          const { hash } = new URL(active.href)
+          if (url.hash !== hash) {
+            url.hash = hash
+            history.replaceState({}, "", `${url}`)
+          }
+
+        /* Reset anchor when at the top */
+        } else {
+          url.hash = ""
+          history.replaceState({}, "", `${url}`)
         }
+      }
+    })
 
-        /* Look backward */
-        for (const [index, [anchor]] of prev.entries()) {
-          setAnchorActive(anchor, index === prev.length - 1)
-          setAnchorState(anchor, "blur")
-        }
-      })
-
-  /* Create and return component */
-  const anchors = getElements<HTMLAnchorElement>("[href^=\\#]", el)
-  return watchTableOfContents(anchors, options)
-    .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
-      map(state => ({ ref: el, ...state }))
-    )
+    /* Create and return component */
+    return watchTableOfContents(el, options)
+      .pipe(
+        tap(state => push$.next(state)),
+        finalize(() => push$.complete()),
+        map(state => ({ ref: el, ...state }))
+      )
+  })
 }

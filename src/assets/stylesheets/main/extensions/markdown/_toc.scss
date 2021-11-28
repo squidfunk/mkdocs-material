@@ -34,8 +34,8 @@
     color: var(--md-default-fg-color--lighter);
     opacity: 0;
     transition:
-      color      250ms,
-      opacity    125ms;
+      color   250ms,
+      opacity 125ms;
 
     // [print]: Hide headerlinks
     @media print {
@@ -50,123 +50,49 @@
   }
 
   // Show headerlinks on parent hover
-  :hover  > .headerlink,
-  :target > .headerlink,
+  :is(:hover, :target) > .headerlink,
   .headerlink:focus {
     opacity: 1;
     transition:
-      color      250ms,
-      opacity    125ms;
+      color   250ms,
+      opacity 125ms;
   }
 
   // Adjust color on parent target or focus/hover
   :target > .headerlink,
-  .headerlink:focus,
-  .headerlink:hover {
+  .headerlink:is(:focus, :hover) {
     color: var(--md-accent-fg-color);
   }
 
-  // Adjust scroll offset for all elements with `id` attributes - general scroll
-  // margin offset for anything that can be targeted. Browser support is pretty
-  // decent by now, but Edge <79 and Safari (iOS and macOS) still don't support
-  // it properly, so we settle with a cross-browser anchor correction solution.
+  // Adjust scroll margin for all elements with `id` attributes
   :target {
-    scroll-margin-top: px2rem(48px + 24px);
+    --md-scroll-margin: #{px2rem(48px + 24px)};
+    --md-scroll-offset: #{px2rem(0px)};
+    // Scroll margin is finally ready for prime time - before, we used a hack
+    // for anchor correction based on pseudo elements but those times are gone.
+    scroll-margin-top:
+      calc(
+        var(--md-scroll-margin) -
+        var(--md-scroll-offset)
+      );
 
     // [screen +]: Sticky navigation tabs
     @include break-from-device(screen) {
 
-      // Adjust scroll offset for sticky navigation tabs
+      // Adjust scroll margin for sticky navigation tabs
       .md-header--lifted ~ .md-container & {
-        scroll-margin-top: px2rem(96px + 24px);
+        --md-scroll-margin: #{px2rem(96px + 24px)};
       }
     }
   }
 
   // Adjust scroll offset for headlines of level 1-3
-  h1:target,
-  h2:target,
-  h3:target {
-    scroll-margin-top: initial;
-
-    // Anchor correction hack
-    &::before {
-      display: block;
-      margin-top: -1 * px2rem(48px + 24px - 4px);
-      padding-top: px2rem(48px + 24px - 4px);
-      content: "";
-    }
-
-    // [screen +]: Sticky navigation tabs
-    @include break-from-device(screen) {
-
-      // Adjust scroll offset for sticky navigation tabs
-      .md-header--lifted ~ .md-container & {
-        scroll-margin-top: initial;
-
-        // Anchor correction hack
-        &::before {
-          margin-top: -1 * px2rem(96px + 24px - 4px);
-          padding-top: px2rem(96px + 24px - 4px);
-        }
-      }
-    }
+  :is(h1, h2, h3):target {
+    --md-scroll-offset: #{px2rem(4px)};
   }
 
   // Adjust scroll offset for headlines of level 4
   h4:target {
-    scroll-margin-top: initial;
-
-    // Anchor correction hack
-    &::before {
-      display: block;
-      margin-top: -1 * px2rem(48px + 24px - 3px);
-      padding-top: px2rem(48px + 24px - 3px);
-      content: "";
-    }
-
-    // [screen +]: Sticky navigation tabs
-    @include break-from-device(screen) {
-
-      // Adjust scroll offset for sticky navigation tabs
-      .md-header--lifted ~ .md-container & {
-        scroll-margin-top: initial;
-
-        // Anchor correction hack
-        &::before {
-          margin-top: -1 * px2rem(96px + 24px - 3px);
-          padding-top: px2rem(96px + 24px - 3px);
-        }
-      }
-    }
-  }
-
-  // Adjust scroll offset for headlines of level 5-6
-  h5:target,
-  h6:target {
-    scroll-margin-top: initial;
-
-    // Anchor correction hack
-    &::before {
-      display: block;
-      margin-top: -1 * px2rem(48px + 24px);
-      padding-top: px2rem(48px + 24px);
-      content: "";
-    }
-
-    // [screen +]: Sticky navigation tabs
-    @include break-from-device(screen) {
-
-      // Adjust scroll offset for sticky navigation tabs
-      .md-header--lifted ~ .md-container & {
-        scroll-margin-top: initial;
-
-        // Anchor correction hack
-        &::before {
-          margin-top: -1 * px2rem(96px + 24px);
-          padding-top: px2rem(96px + 24px);
-        }
-      }
-    }
+    --md-scroll-offset: #{px2rem(3px)};
   }
 }

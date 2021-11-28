@@ -24,7 +24,7 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Icon definitions
+// Navigation variables
 :root {
   --md-nav-icon--prev: svg-load("material/arrow-left.svg");
   --md-nav-icon--next: svg-load("material/chevron-right.svg");
@@ -60,8 +60,7 @@
       &.md-logo {
 
         // Image or icon
-        img,
-        svg {
+        :is(img, svg) {
           display: block;
           width: px2rem(48px);
           height: px2rem(48px);
@@ -122,8 +121,7 @@
     }
 
     // Navigation link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 
@@ -185,8 +183,7 @@
     &--primary {
 
       // Navigation title and item
-      .md-nav__title,
-      .md-nav__item {
+      :is(.md-nav__title, .md-nav__item) {
         font-size: px2rem(16px);
         line-height: 1.5;
       }
@@ -285,8 +282,7 @@
           color: var(--md-typeset-a-color);
 
           // Navigation link on focus/hover
-          &:focus,
-          &:hover {
+          &:is(:focus, :hover) {
             color: var(--md-accent-fg-color);
           }
         }
@@ -523,8 +519,7 @@
     }
 
     // Show nested navigation when toggle is active or indeterminate
-    &__toggle:checked ~ &,
-    &__toggle:indeterminate ~ & {
+    &__toggle:is(:checked, :indeterminate) ~ & {
       display: block;
     }
 

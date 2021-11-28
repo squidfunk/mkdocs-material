@@ -32,23 +32,19 @@
     position: relative;
     background-color: var(--md-default-bg-color);
     border-radius: px2rem(2px);
-    box-shadow:
-      0 px2rem(4px)   px2rem(10px) hsla(0, 0%, 0%, 0.1),
-      0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+    box-shadow: var(--md-shadow-z1);
     transition: box-shadow 125ms;
 
     // Icon search on focus/hover
     &:focus-within,
     &:hover {
-      box-shadow:
-        0 px2rem(8px)   px2rem(20px) hsla(0, 0%, 0%, 0.15),
-        0 px2rem(0.5px) px2rem(1px)  hsla(0, 0%, 0%, 0.15);
+      box-shadow: var(--md-shadow-z2);
     }
 
     // Icon search input
     .md-input {
       background: var(--md-default-bg-color);
-      box-shadow: 0 0 px2rem(12px) hsla(0, 0%, 0%, 0.07);
+      box-shadow: none;
 
       // Slate theme, i.e. dark mode
       [data-md-color-scheme="slate"] & {

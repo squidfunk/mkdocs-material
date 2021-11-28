@@ -24,6 +24,10 @@ import ClipboardJS from "clipboard"
 import { Observable, Subject } from "rxjs"
 
 import { translation } from "~/_"
+import {
+  getElement,
+  getElements
+} from "~/browser"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -34,6 +38,34 @@ import { translation } from "~/_"
  */
 interface SetupOptions {
   alert$: Subject<string>              /* Alert subject */
+}
+
+/* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Extract text to copy
+ *
+ * This function hides annotations prior to extracting the text from the given
+ * code block, so they're not included in the text that is copied to clipboard.
+ *
+ * @param el - HTML element
+ *
+ * @returns Extracted text
+ */
+function extract(el: HTMLElement): string {
+  const annotations = getElements(".md-annotation", el)
+  for (const annotation of annotations)
+    annotation.hidden = true
+
+  /* Extract text and show annotations */
+  const text = el.innerText
+  for (const annotation of annotations)
+    annotation.hidden = false
+
+  /* Return extracted text */
+  return text
 }
 
 /* ----------------------------------------------------------------------------
@@ -50,7 +82,14 @@ export function setupClipboardJS(
 ): void {
   if (ClipboardJS.isSupported()) {
     new Observable<ClipboardJS.Event>(subscriber => {
-      new ClipboardJS("[data-clipboard-target], [data-clipboard-text]")
+      new ClipboardJS("[data-clipboard-target], [data-clipboard-text]", {
+        text: el => (
+          el.getAttribute("data-clipboard-text")! ||
+          extract(getElement(
+            el.getAttribute("data-clipboard-target")!
+          ))
+        )
+      })
         .on("success", ev => subscriber.next(ev))
     })
       .subscribe(() => alert$.next(translation("clipboard.copied")))

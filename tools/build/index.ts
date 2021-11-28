@@ -22,17 +22,22 @@
 
 import { minify as minhtml } from "html-minifier"
 import * as path from "path"
-import { concat, defer, EMPTY, merge, of, zip } from "rxjs"
 import {
+  EMPTY,
+  concat,
   concatMap,
+  defer,
   map,
+  merge,
+  of,
   reduce,
   scan,
   startWith,
   switchMap,
   switchMapTo,
-  toArray
-} from "rxjs/operators"
+  toArray,
+  zip
+} from "rxjs"
 import {
   extendDefaultPlugins,
   optimize

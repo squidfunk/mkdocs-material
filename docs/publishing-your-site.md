@@ -91,9 +91,9 @@ Now, when a new commit is pushed to either the `master` or `main` branches,
 the static site is automatically built and deployed. Push your changes to see
 the workflow in action.
 
-If the GitHub Page doesn't show up after a few minutes, ensure the source branch
-for your GitHub Page is set to `gh-pages` in your repository settings 
-`github.com/<username>/<repository>/settings/pages`.
+If the GitHub Page doesn't show up after a few minutes, go to your
+settings of your repository and ensure that the [publishing source branch]
+for your GitHub Page is set to `gh-pages`.
 
 Your documentation should shortly appear at `<username>.github.io/<repository>`.
 
@@ -102,6 +102,7 @@ Your documentation should shortly appear at `<username>.github.io/<repository>`.
   [personal access token]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
   [Insiders]: insiders/index.md
   [GitHub secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
+  [publishing source branch]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
 ### with MkDocs
 

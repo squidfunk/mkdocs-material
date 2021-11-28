@@ -28,16 +28,14 @@ import {
   from,
   fromEvent,
   identity,
-  defer,
-  of
-} from "rxjs"
-import {
   catchError,
+  defer,
   mapTo,
   mergeWith,
+  of,
   switchMap,
   tap
-} from "rxjs/operators"
+} from "rxjs"
 import glob from "tiny-glob"
 
 /* ----------------------------------------------------------------------------

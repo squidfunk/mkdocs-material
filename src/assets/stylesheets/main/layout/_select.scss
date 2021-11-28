@@ -29,7 +29,7 @@
   position: relative;
   z-index: 1;
 
-  // Selection bubble
+  // Selection tooltip
   &__inner {
     position: absolute;
     top: calc(100% - #{px2rem(4px)});
@@ -39,9 +39,7 @@
     color: var(--md-default-fg-color);
     background-color: var(--md-default-bg-color);
     border-radius: px2rem(2px);
-    box-shadow:
-      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.1),
-      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.25);
+    box-shadow: var(--md-shadow-z2);
     transform: translate3d(-50%, px2rem(6px), 0);
     opacity: 0;
     transition:
@@ -50,8 +48,7 @@
       max-height   0ms 500ms;
 
     // Selection bubble on parent focus/hover
-    .md-select:focus-within &,
-    .md-select:hover & {
+    .md-select:is(:focus-within, :hover) & {
       max-height: px2rem(200px);
       transform: translate3d(-50%, 0, 0);
       opacity: 1;
@@ -113,8 +110,7 @@
     }
 
     // Link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 

@@ -46,7 +46,7 @@
       position: fixed;
       top: 0;
       left: px2rem(-242px);
-      z-index: 4;
+      z-index: 5;
       display: block;
       width: px2rem(242px);
       height: 100%;
@@ -64,8 +64,7 @@
 
       // Show sidebar when drawer is active
       [data-md-toggle="drawer"]:checked ~ .md-container & {
-        @include z-depth(8);
-
+        box-shadow: var(--md-shadow-z3);
         transform: translateX(px2rem(242px));
 
         // Adjust for right-to-left languages
@@ -163,11 +162,11 @@
 // [tablet -]: Show overlay on active drawer
 @include break-to-device(tablet) {
 
-  // Sidebar overlay
+  // Drawer overlay
   .md-overlay {
     position: fixed;
     top: 0;
-    z-index: 4;
+    z-index: 5;
     width: 0;
     height: 0;
     background-color: hsla(0, 0%, 0%, 0.54);
