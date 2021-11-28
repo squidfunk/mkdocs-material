@@ -66,6 +66,277 @@ viewports]:
   [Tabbed]: setup/extensions/python-markdown-extensions.md#tabbed
   [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
 
+### Changes to `*.html` files { data-search-exclude }
+
+The templates have undergone a set of changes to make them future-proof. If
+you've used theme extension to override a block or template, make sure that it
+matches the new structure:
+
+- If you've overridden a __block__, check `base.html` for potential changes
+- If you've overridden a __template__, check the respective `*.html` file for
+  potential changes
+
+=== ":octicons-file-code-16: base.html"
+
+    ``` diff
+    @@ -38,13 +38,6 @@
+             <meta name="description" content="{{ config.site_description }}" />
+           {% endif %}
+
+    -      <!-- Page keywords -->
+    -      {% if page and page.meta and page.meta.keywords %}
+    -        <meta name="keywords" content="{{ page.meta.keywords }}" />
+    -      {% elif config.site_keywords %}
+    -        <meta name="keywords" content="{{ config.site_keywords }}" />
+    -      {% endif %}
+    -
+           <!-- Page author -->
+           {% if page and page.meta and page.meta.author %}
+             <meta name="author" content="{{ page.meta.author }}" />
+    @@ -120,27 +113,21 @@
+             />
+             <style>
+               :root {
+    -            --md-text-font-family: "{{ font.text }}";
+    -            --md-code-font-family: "{{ font.code }}";
+    +            --md-text-font: "{{ font.text }}";
+    +            --md-code-font: "{{ font.code }}";
+               }
+             </style>
+           {% endif %}
+         {% endblock %}
+
+    -    <!-- Progressive Web App Manifest -->
+    -    {% if config.extra.manifest %}
+    -      <link
+    -        rel="manifest"
+    -        href="{{ config.extra.manifest | url }}"
+    -        crossorigin="use-credentials"
+    -      />
+    -    {% endif %}
+    -
+         <!-- Custom style sheets -->
+         {% for path in config["extra_css"] %}
+           <link rel="stylesheet" href="{{ path | url }}" />
+         {% endfor %}
+
+    +    <!-- Helper functions for inline scripts -->
+    +    {% include "partials/javascripts/base.html" %}
+    +
+         <!-- Analytics -->
+         {% block analytics %}
+           {% include "partials/integrations/analytics.html" %}
+    @@ -172,7 +159,6 @@
+
+         <!-- Retrieve features from configuration -->
+         {% set features = config.theme.features or [] %}
+    -    {% include "partials/javascripts/base.html" %}
+
+         <!-- User preference: color palette -->
+         {% if not config.theme.palette is mapping %}
+    @@ -214,14 +200,28 @@
+         <!-- Announcement bar -->
+         <div data-md-component="announce">
+           {% if self.announce() %}
+    -        <aside class="md-banner md-announce">
+    -          <div class="md-banner__inner md-announce__inner md-grid md-typeset">
+    +        <aside class="md-banner">
+    +          <div class="md-banner__inner md-grid md-typeset">
+                 {% block announce %}{% endblock %}
+               </div>
+             </aside>
+           {% endif %}
+         </div>
+
+    +    <!-- Version warning -->
+    +    {% if config.extra.version %}
+    +      <div data-md-component="outdated" hidden>
+    +        <aside class="md-banner md-banner--warning">
+    +          {% if self.outdated() %}
+    +            <div class="md-banner__inner md-grid md-typeset">
+    +              {% block outdated %}{% endblock %}
+    +            </div>
+    +            {% include "partials/javascripts/outdated.html" %}
+    +          {% endif %}
+    +        </aside>
+    +      </div>
+    +    {% endif %}
+    +
+         <!-- Header -->
+         {% block header %}
+           {% include "partials/header.html" %}
+    @@ -295,49 +295,11 @@
+                   {% block content %}
+    -
+    -                <!-- Edit button -->
+    -                {% if page.edit_url %}
+    -                  <a
+    -                    href="{{ page.edit_url }}"
+    -                    title="{{ lang.t('edit.link.title') }}"
+    -                    class="md-content__button md-icon"
+    -                  >
+    -                    {% include ".icons/material/pencil.svg" %}
+    -                  </a>
+    -                {% endif %}
+    -
+    -                <!--
+    -                  Hack: check whether the content contains a h1 headline. If it
+    -                  doesn't, the page title (or respectively site name) is used
+    -                  as the main headline.
+    -                -->
+    -                {% if not "\x3ch1" in page.content %}
+    -                  <h1>{{ page.title | d(config.site_name, true)}}</h1>
+    -                {% endif %}
+    -
+    -                <!-- Markdown content -->
+    -                {{ page.content }}
+    -
+    -                <!-- Last update of source file -->
+    -                {% if page and page.meta %}
+    -                  {% if page.meta.git_revision_date_localized or
+    -                        page.meta.revision_date
+    -                  %}
+    -                    {% include "partials/source-file.html" %}
+    -                  {% endif %}
+    -                {% endif %}
+    -              {% endblock %}
+    -
+    -              <!-- Disqus integration -->
+    -              {% block disqus %}
+    -                {% include "partials/integrations/disqus.html" %}
+    +                {% include "partials/content.html" %}
+                   {% endblock %}
+                 </article>
+               </div>
+    ```
+
+=== ":octicons-file-code-16: partials/copyright.html"
+
+    ``` diff
+    @@ -0,0 +1,39 @@
+    +<!--
+    +  Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+    +
+    +  Permission is hereby granted, free of charge, to any person obtaining a copy
+    +  of this software and associated documentation files (the "Software"), to
+    +  deal in the Software without restriction, including without limitation the
+    +  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+    +  sell copies of the Software, and to permit persons to whom the Software is
+    +  furnished to do so, subject to the following conditions:
+    +
+    +  The above copyright notice and this permission notice shall be included in
+    +  all copies or substantial portions of the Software.
+    +
+    +  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    +  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    +  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+    +  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    +  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    +  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+    +  IN THE SOFTWARE.
+    +-->
+    +
+    +<!-- Copyright and theme information -->
+    +<div class="md-copyright">
+    +  {% if config.copyright %}
+    +    <div class="md-copyright__highlight">
+    +      {{ config.copyright }}
+    +    </div>
+    +  {% endif %}
+    +  {% if not config.extra.generator == false %}
+    +    Made with
+    +    <a
+    +      href="https://squidfunk.github.io/mkdocs-material/"
+    +      target="_blank" rel="noopener"
+    +    >
+    +      Material for MkDocs
+    +    </a>
+    +  {% endif %}
+    +</div>
+    ```
+
+=== ":octicons-file-code-16: partials/footer.html"
+
+    ``` diff
+    @@ -83,28 +81,12 @@
+       <!-- Further information -->
+       <div class="md-footer-meta md-typeset">
+         <div class="md-footer-meta__inner md-grid">
+    -
+    -      <!-- Copyright and theme information -->
+    -      <div class="md-footer-copyright">
+    -        {% if config.copyright %}
+    -          <div class="md-footer-copyright__highlight">
+    -            {{ config.copyright }}
+    -          </div>
+    -        {% endif %}
+    -        {% if not config.extra.generator == false %}
+    -          Made with
+    -          <a
+    -            href="https://squidfunk.github.io/mkdocs-material/"
+    -            target="_blank" rel="noopener"
+    -          >
+    -            Material for MkDocs
+    -          </a>
+    -        {% endif %}
+    -        {{ extracopyright }}
+    -      </div>
+    +      {% include "partials/copyright.html" %}
+
+           <!-- Social links -->
+    -      {% include "partials/social.html" %}
+    +      {% if config.extra.social %}
+    +        {% include "partials/social.html" %}
+    +      {% endif %}
+         </div>
+       </div>
+     </footer>
+    ```
+
+=== ":octicons-file-code-16: partials/social.html"
+
+    ``` diff
+    @@ -22,23 +22,21 @@
+    -<!-- Social links in footer -->
+    -{% if config.extra.social %}
+    -  <div class="md-footer-social">
+    -    {% for social in config.extra.social %}
+    -      {% set title = social.name %}
+    -      {% if not title and "//" in social.link %}
+    -        {% set _,url = social.link.split("//") %}
+    -        {% set title = url.split("/")[0] %}
+    -      {% endif %}
+    -      <a
+    -        href="{{ social.link }}"
+    -        target="_blank" rel="noopener"
+    -        title="{{ title | e }}"
+    -        class="md-footer-social__link"
+    -      >
+    -        {% include ".icons/" ~ social.icon ~ ".svg" %}
+    -      </a>
+    -    {% endfor %}
+    -  </div>
+    -{% endif %}
+    +<!-- Social links -->
+    +<div class="md-social">
+    +  {% for social in config.extra.social %}
+    +    {% set title = social.name %}
+    +    {% if not title and "//" in social.link %}
+    +      {% set _, url = social.link.split("//") %}
+    +      {% set title  = url.split("/")[0] %}
+    +    {% endif %}
+    +    <a
+    +      href="{{ social.link }}"
+    +      target="_blank" rel="noopener"
+    +      title="{{ title | e }}"
+    +      class="md-social__link"
+    +    >
+    +      {% include ".icons/" ~ social.icon ~ ".svg" %}
+    +    </a>
+    +  {% endfor %}
+    +</div>
+    ```
+
 ## Upgrading from 6.x to 7.x
 
 ### What's new?
@@ -114,45 +385,45 @@ matches the new structure:
 
     ``` diff
     @@ -61,7 +61,7 @@
-                font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
-                font.code | replace(' ', '+')
-              }}&display=fallback">
+                 font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
+                 font.code | replace(' ', '+')
+               }}&display=fallback">
     -        <style>body,input{font-family:"{{ font.text }}",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}",SFMono-Regular,Consolas,Menlo,monospace}</style>
     +        <style>:root{--md-text-font-family:"{{ font.text }}";--md-code-font-family:"{{ font.code }}"}</style>
-          {% endif %}
-        {% endblock %}
-        {% if config.extra.manifest %}
+           {% endif %}
+         {% endblock %}
+         {% if config.extra.manifest %}
     @@ -131,7 +131,7 @@
-                  {% if page and page.meta and page.meta.hide %}
-                    {% set hidden = "hidden" if "navigation" in page.meta.hide %}
-                  {% endif %}
+                   {% if page and page.meta and page.meta.hide %}
+                     {% set hidden = "hidden" if "navigation" in page.meta.hide %}
+                   {% endif %}
     -              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" {{ hidden }}>
     +              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
-                    <div class="md-sidebar__scrollwrap">
-                      <div class="md-sidebar__inner">
-                        {% include "partials/nav.html" %}
+                     <div class="md-sidebar__scrollwrap">
+                       <div class="md-sidebar__inner">
+                         {% include "partials/nav.html" %}
     @@ -143,7 +143,7 @@
-                  {% if page and page.meta and page.meta.hide %}
-                    {% set hidden = "hidden" if "toc" in page.meta.hide %}
-                  {% endif %}
+                   {% if page and page.meta and page.meta.hide %}
+                     {% set hidden = "hidden" if "toc" in page.meta.hide %}
+                   {% endif %}
     -              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" {{ hidden }}>
     +              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
-                    <div class="md-sidebar__scrollwrap">
-                      <div class="md-sidebar__inner">
-                        {% include "partials/toc.html" %}
+                     <div class="md-sidebar__scrollwrap">
+                       <div class="md-sidebar__inner">
+                         {% include "partials/toc.html" %}
     @@ -152,7 +152,7 @@
-                  </div>
-                {% endif %}
-              {% endblock %}
+                   </div>
+                 {% endif %}
+               {% endblock %}
     -          <div class="md-content">
     +          <div class="md-content" data-md-component="content">
-                <article class="md-content__inner md-typeset">
-                  {% block content %}
-                    {% if page.edit_url %}
+                 <article class="md-content__inner md-typeset">
+                   {% block content %}
+                     {% if page.edit_url %}
     @@ -183,10 +183,18 @@
-            {% include "partials/footer.html" %}
-          {% endblock %}
-        </div>
+             {% include "partials/footer.html" %}
+           {% endblock %}
+         </div>
     -    {% block scripts %}
     -      <script src="{{ 'assets/javascripts/vendor.18f0862e.min.js' | url }}"></script>
     -      <script src="{{ 'assets/javascripts/bundle.994580cf.min.js' | url }}"></script>
@@ -169,13 +440,13 @@ matches the new structure:
     +        "version": config.extra.version or None
     +      } -%}
     +      {%- set translations = app.translations -%}
-          {%- for key in [
-            "clipboard.copy",
-            "clipboard.copied",
+           {%- for key in [
+             "clipboard.copy",
+             "clipboard.copied",
     @@ -204,19 +212,12 @@
-          ] -%}
-            {%- set _ = translations.update({ key: lang.t(key) }) -%}
-          {%- endfor -%}
+           ] -%}
+             {%- set _ = translations.update({ key: lang.t(key) }) -%}
+           {%- endfor -%}
     -      <script id="__lang" type="application/json">
     -        {{- translations | tojson -}}
     -      </script>
@@ -190,13 +461,13 @@ matches the new structure:
     -        })
     +      <script id="__config" type="application/json">
     +        {{- app | tojson -}}
-          </script>
+           </script>
     +    {% endblock %}
     +    {% block scripts %}
     +      <script src="{{ 'assets/javascripts/bundle.926459b3.min.js' | url }}"></script>
-          {% for path in config["extra_javascript"] %}
-            <script src="{{ path | url }}"></script>
-          {% endfor %}
+           {% for path in config["extra_javascript"] %}
+             <script src="{{ path | url }}"></script>
+           {% endfor %}
     ```
 
 === ":octicons-file-code-16: partials/footer.html"
@@ -240,7 +511,7 @@ matches the new structure:
     +                {{ lang.t("footer.previous") }}
     +              </span>
     +              {{ page.previous_page.title }}
-                </div>
+                 </div>
     -            <div class="md-footer-nav__button md-icon">
     -              {% include ".icons/material/arrow-right.svg" %}
     +          </div>
@@ -254,7 +525,7 @@ matches the new structure:
     +                {{ lang.t("footer.next") }}
     +              </span>
     +              {{ page.next_page.title }}
-                </div>
+                 </div>
     -          </a>
     -        {% endif %}
     -      </nav>
@@ -266,47 +537,47 @@ matches the new structure:
     +        </a>
     +      {% endif %}
     +    </nav>
-      {% endif %}
-      <div class="md-footer-meta md-typeset">
-        <div class="md-footer-meta__inner md-grid">
+       {% endif %}
+       <div class="md-footer-meta md-typeset">
+         <div class="md-footer-meta__inner md-grid">
     ```
 
 === ":octicons-file-code-16: partials/header.html"
 
     ``` diff
     @@ -6,21 +6,21 @@
-      {% set site_url = site_url ~ "/index.html" %}
-    {% endif %}
-    <header class="md-header" data-md-component="header">
+       {% set site_url = site_url ~ "/index.html" %}
+     {% endif %}
+     <header class="md-header" data-md-component="header">
     -  <nav class="md-header-nav md-grid" aria-label="{{ lang.t('header.title') }}">
     -    <a href="{{ site_url }}" title="{{ config.site_name | e }}" class="md-header-nav__button md-logo" aria-label="{{ config.site_name }}">
     +  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header.title') }}">
     +    <a href="{{ site_url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}">
-          {% include "partials/logo.html" %}
-        </a>
+           {% include "partials/logo.html" %}
+         </a>
     -    <label class="md-header-nav__button md-icon" for="__drawer">
     +    <label class="md-header__button md-icon" for="__drawer">
-          {% include ".icons/material/menu" ~ ".svg" %}
-        </label>
+           {% include ".icons/material/menu" ~ ".svg" %}
+         </label>
     -    <div class="md-header-nav__title" data-md-component="header-title">
     -      <div class="md-header-nav__ellipsis">
     -        <div class="md-header-nav__topic">
     +    <div class="md-header__title" data-md-component="header-title">
     +      <div class="md-header__ellipsis">
     +        <div class="md-header__topic">
-              <span class="md-ellipsis">
-                {{ config.site_name }}
-              </span>
-            </div>
+               <span class="md-ellipsis">
+                 {{ config.site_name }}
+               </span>
+             </div>
     -        <div class="md-header-nav__topic">
     +        <div class="md-header__topic" data-md-component="header-topic">
-              <span class="md-ellipsis">
-                {% if page and page.meta and page.meta.title %}
-                  {{ page.meta.title }}
+               <span class="md-ellipsis">
+                 {% if page and page.meta and page.meta.title %}
+                   {{ page.meta.title }}
     @@ -31,14 +31,35 @@
-            </div>
-          </div>
-        </div>
+             </div>
+           </div>
+         </div>
     +    <div class="md-header__options">
     +      {% if config.extra.alternate %}
     +        <div class="md-select">
@@ -328,47 +599,45 @@ matches the new structure:
     +        </div>
     +      {% endif %}
     +    </div>
-        {% if "search" in config["plugins"] %}
+         {% if "search" in config["plugins"] %}
     -      <label class="md-header-nav__button md-icon" for="__search">
     +      <label class="md-header__button md-icon" for="__search">
-            {% include ".icons/material/magnify.svg" %}
-          </label>
-          {% include "partials/search.html" %}
-        {% endif %}
-        {% if config.repo_url %}
+             {% include ".icons/material/magnify.svg" %}
+           </label>
+           {% include "partials/search.html" %}
+         {% endif %}
+         {% if config.repo_url %}
     -      <div class="md-header-nav__source">
     +      <div class="md-header__source">
-            {% include "partials/source.html" %}
-          </div>
-        {% endif %}
-
+             {% include "partials/source.html" %}
+           </div>
+         {% endif %}
     ```
 
 === ":octicons-file-code-16: partials/source.html"
 
     ``` diff
     @@ -4,5 +4,5 @@
-    {% import "partials/language.html" as lang with context %}
+     {% import "partials/language.html" as lang with context %}
     -<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source">
-    +<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-source" data-md-component="source">
-      <div class="md-source__icon md-icon">
-        {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
-        {% include ".icons/" ~ icon ~ ".svg" %}
+    +<a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}"  class="md-source" data-md-component="source">
+       <div class="md-source__icon md-icon">
+         {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+         {% include ".icons/" ~ icon ~ ".svg" %}
     ```
 
 === ":octicons-file-code-16: partials/toc.html"
 
     ``` diff
     @@ -12,7 +12,7 @@
-          <span class="md-nav__icon md-icon"></span>
-          {{ lang.t("toc.title") }}
-        </label>
+           <span class="md-nav__icon md-icon"></span>
+           {{ lang.t("toc.title") }}
+         </label>
     -    <ul class="md-nav__list" data-md-scrollfix>
     +    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-          {% for toc_item in toc %}
-            {% include "partials/toc-item.html" %}
-          {% endfor %}
-
+           {% for toc_item in toc %}
+             {% include "partials/toc-item.html" %}
+           {% endfor %}
     ```
 
 ## Upgrading from 5.x to 6.x
@@ -433,7 +702,7 @@ matches the new structure:
     ``` diff
     @@ -22,13 +22,6 @@
 
-    {% import "partials/language.html" as lang with context %}
+     {% import "partials/language.html" as lang with context %}
 
     -<!-- Theme options -->
     -{% set palette = config.theme.palette %}
@@ -442,12 +711,12 @@ matches the new structure:
     -{% endif %}
     -{% set font = config.theme.font %}
     -
-    <!doctype html>
-    <html lang="{{ lang.t('language') }}" class="no-js">
-      <head>
+     <!doctype html>
+     <html lang="{{ lang.t('language') }}" class="no-js">
+       <head>
     @@ -45,21 +38,8 @@
-            <meta name="description" content="{{ config.site_description }}" />
-          {% endif %}
+             <meta name="description" content="{{ config.site_description }}" />
+           {% endif %}
 
     -      <!-- Redirect -->
     -      {% if page and page.meta and page.meta.redirect %}
@@ -462,23 +731,23 @@ matches the new structure:
     -        <meta name="robots" content="noindex" />
     -        <link rel="canonical" href="{{ page.meta.redirect }}" />
     -
-          <!-- Canonical -->
+           <!-- Canonical -->
     -      {% elif page.canonical_url %}
     +      {% if page.canonical_url %}
-            <link rel="canonical" href="{{ page.canonical_url }}" />
-          {% endif %}
+             <link rel="canonical" href="{{ page.canonical_url }}" />
+           {% endif %}
 
     @@ -96,20 +76,21 @@
-          <link rel="stylesheet" href="{{ 'assets/stylesheets/main.css' | url }}" />
+           <link rel="stylesheet" href="{{ 'assets/stylesheets/main.css' | url }}" />
 
-          <!-- Extra color palette -->
+           <!-- Extra color palette -->
     -      {% if palette.scheme or palette.primary or palette.accent %}
     +      {% if config.theme.palette %}
     +        {% set palette = config.theme.palette %}
-            <link
-              rel="stylesheet"
-              href="{{ 'assets/stylesheets/palette.css' | url }}"
-            />
+             <link
+               rel="stylesheet"
+               href="{{ 'assets/stylesheets/palette.css' | url }}"
+             />
     -      {% endif %}
 
     -      <!-- Theme-color meta tag for Android -->
@@ -496,23 +765,23 @@ matches the new structure:
     +          ) %}
     +          <meta name="theme-color" content="{{ primary }}" />
     +        {% endif %}
-          {% endif %}
-        {% endblock %}
+           {% endif %}
+         {% endblock %}
 
     @@ -120,7 +101,8 @@
-        {% block fonts %}
+         {% block fonts %}
 
-          <!-- Load fonts from Google -->
+           <!-- Load fonts from Google -->
     -      {% if font != false %}
     +      {% if config.theme.font != false %}
     +        {% set font = config.theme.font %}
-            <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-            <link
+             <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+             <link
               rel="stylesheet"
     @@ -169,8 +151,12 @@
 
-      <!-- Text direction and color palette, if defined -->
-      {% set direction = config.theme.direction or lang.t('direction') %}
+       <!-- Text direction and color palette, if defined -->
+       {% set direction = config.theme.direction or lang.t('direction') %}
     -  {% if palette.scheme or palette.primary or palette.accent %}
     -    {% set scheme  = palette.scheme | lower %}
     +  {% if config.theme.palette %}
@@ -521,13 +790,13 @@ matches the new structure:
     +      {% set palette = palette | first %}
     +    {% endif %}
     +    {% set scheme  = palette.scheme  | replace(" ", "-") | lower %}
-        {% set primary = palette.primary | replace(" ", "-") | lower %}
-        {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-        <body
+         {% set primary = palette.primary | replace(" ", "-") | lower %}
+         {% set accent  = palette.accent  | replace(" ", "-") | lower %}
+         <body
     @@ -179,18 +165,19 @@
-          data-md-color-primary="{{ primary }}"
-          data-md-color-accent="{{ accent }}"
-        >
+           data-md-color-primary="{{ primary }}"
+           data-md-color-accent="{{ accent }}"
+         >
     +
     +      <!-- Experimental: set color scheme based on preference -->
     +      {% if "preference" == scheme %}
@@ -537,9 +806,9 @@ matches the new structure:
     +        </script>
     +      {% endif %}
     +
-      {% else %}
-        <body dir="{{ direction }}">
-      {% endif %}
+       {% else %}
+         <body dir="{{ direction }}">
+       {% endif %}
 
     -    <!-- Experimental: set color scheme based on preference -->
     -    {% if "preference" == palette.scheme %}
@@ -549,13 +818,13 @@ matches the new structure:
     -      </script>
     -    {% endif %}
     -
-        <!--
-          State toggles - we need to set autocomplete="off" in order to reset the
-          drawer on back button invocation in some browsers
+         <!--
+           State toggles - we need to set autocomplete="off" in order to reset the
+           drawer on back button invocation in some browsers
     @@ -243,15 +230,11 @@
-        <div class="md-container" data-md-component="container">
+         <div class="md-container" data-md-component="container">
 
-          <!-- Hero teaser -->
+           <!-- Hero teaser -->
     -      {% block hero %}
     -        {% if page and page.meta and page.meta.hero %}
     -          {% include "partials/hero.html" with context %}
@@ -563,16 +832,16 @@ matches the new structure:
     -      {% endblock %}
     +      {% block hero %}{% endblock %}
 
-          <!-- Tabs navigation -->
-          {% block tabs %}
+           <!-- Tabs navigation -->
+           {% block tabs %}
     -        {% if "tabs" in config.theme.features %}
     +        {% if "navigation.tabs" in config.theme.features %}
-              {% include "partials/tabs.html" %}
-            {% endif %}
-          {% endblock %}
+               {% include "partials/tabs.html" %}
+             {% endif %}
+           {% endblock %}
     @@ -310,13 +293,6 @@
-                      </a>
-                    {% endif %}
+                       </a>
+                     {% endif %}
 
     -                <!-- Link to source file -->
     -                {% block source %}
@@ -581,21 +850,21 @@ matches the new structure:
     -                  {% endif %}
     -                {% endblock %}
     -
-                    <!--
-                      Hack: check whether the content contains a h1 headline. If it
-                      doesn't, the page title (or respectively site name) is used
+                     <!--
+                       Hack: check whether the content contains a h1 headline. If it
+                       doesn't, the page title (or respectively site name) is used
     @@ -370,7 +346,10 @@
-            "search.result.placeholder",
-            "search.result.none",
-            "search.result.one",
+             "search.result.placeholder",
+             "search.result.none",
+             "search.result.one",
     -        "search.result.other"
     +        "search.result.other",
     +        "search.result.more.one",
     +        "search.result.more.other",
     +        "search.result.term.missing"
-          ] -%}
-            {%- set _ = translations.update({ key: lang.t(key) }) -%}
-          {%- endfor -%}
+           ] -%}
+             {%- set _ = translations.update({ key: lang.t(key) }) -%}
+           {%- endfor -%}
     ```
 
 === ":octicons-file-code-16: partials/hero.html"
@@ -619,6 +888,7 @@ matches the new structure:
 === ":octicons-file-code-16: partials/source-link"
 
     ``` diff
+    @@ -1,14 +0,0 @@
     -{#-
     -  This file was automatically generated - do not edit
     --#}
@@ -792,18 +1062,16 @@ matches the new structure:
 === ":octicons-file-code-16: base.html"
 
     ``` diff
-    @@ -2,7 +2,6 @@
-      This file was automatically generated - do not edit
-    -#}
-    {% import "partials/language.html" as lang with context %}
+    @@ -4,7 +4,6 @@
+     {% import "partials/language.html" as lang with context %}
     -{% set feature = config.theme.feature %}
-    {% set palette = config.theme.palette %}
-    {% set font = config.theme.font %}
-    <!doctype html>
+     {% set palette = config.theme.palette %}
+     {% set font = config.theme.font %}
+     <!doctype html>
     @@ -30,19 +29,6 @@
-          {% elif config.site_author %}
-            <meta name="author" content="{{ config.site_author }}">
-          {% endif %}
+           {% elif config.site_author %}
+             <meta name="author" content="{{ config.site_author }}">
+           {% endif %}
     -      {% for key in [
     -        "clipboard.copy",
     -        "clipboard.copied",
@@ -817,55 +1085,55 @@ matches the new structure:
     -      ] %}
     -        <meta name="lang:{{ key }}" content="{{ lang.t(key) }}">
     -      {% endfor %}
-          <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
-          <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0">
-        {% endblock %}
+           <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
+           <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.0.0">
+         {% endblock %}
     @@ -56,9 +42,9 @@
-          {% endif %}
-        {% endblock %}
-        {% block styles %}
+           {% endif %}
+         {% endblock %}
+         {% block styles %}
     -      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.********.css' | url }}">
     +      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.********.min.css' | url }}">
-          {% if palette.primary or palette.accent %}
+           {% if palette.primary or palette.accent %}
     -        <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.********.css' | url }}">
     +        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.********.min.css' | url }}">
-          {% endif %}
-          {% if palette.primary %}
-            {% import "partials/palette.html" as map %}
+           {% endif %}
+           {% if palette.primary %}
+             {% import "partials/palette.html" as map %}
     @@ -69,20 +55,17 @@
-          {% endif %}
-        {% endblock %}
-        {% block libs %}
+           {% endif %}
+         {% endblock %}
+         {% block libs %}
     -      <script src="{{ 'assets/javascripts/modernizr.********.js' | url }}"></script>
-        {% endblock %}
-        {% block fonts %}
-          {% if font != false %}
-            <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
-                font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
-                font.code | replace(' ', '+')
-              }}&display=fallback">
-            <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
-          {% endif %}
-        {% endblock %}
+         {% endblock %}
+         {% block fonts %}
+           {% if font != false %}
+             <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
+                 font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
+                 font.code | replace(' ', '+')
+               }}&display=fallback">
+             <style>body,input{font-family:"{{ font.text }}","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"{{ font.code }}","Courier New",Courier,monospace}</style>
+           {% endif %}
+         {% endblock %}
     -    <link rel="stylesheet" href="{{ 'assets/fonts/material-icons.css' | url }}">
-        {% if config.extra.manifest %}
-          <link rel="manifest" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
-        {% endif %}
+         {% if config.extra.manifest %}
+           <link rel="manifest" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
+         {% endif %}
     @@ -95,47 +77,50 @@
-        {% endblock %}
-        {% block extrahead %}{% endblock %}
-      </head>
+         {% endblock %}
+         {% block extrahead %}{% endblock %}
+       </head>
     +  {% set direction = config.theme.direction | default(lang.t('direction')) %}
-      {% if palette.primary or palette.accent %}
-        {% set primary = palette.primary | replace(" ", "-") | lower %}
-        {% set accent  = palette.accent  | replace(" ", "-") | lower %}
+       {% if palette.primary or palette.accent %}
+         {% set primary = palette.primary | replace(" ", "-") | lower %}
+         {% set accent  = palette.accent  | replace(" ", "-") | lower %}
     -    <body dir="{{ lang.t('direction') }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
     +    <body dir="{{ direction }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
-      {% else %}
+       {% else %}
     -    <body dir="{{ lang.t('direction') }}">
     +    <body dir="{{ direction }}">
-      {% endif %}
+       {% endif %}
     -    <svg class="md-svg">
     -      <defs>
     -        {% set platform = config.extra.repo_icon or config.repo_url %}
@@ -878,8 +1146,8 @@ matches the new structure:
     -        {% endif %}
     -      </defs>
     -    </svg>
-        <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-        <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+         <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+         <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     -    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     +    <label class="md-overlay" for="__drawer"></label>
     +    <div data-md-component="skip">
@@ -899,16 +1167,16 @@ matches the new structure:
     +        </aside>
     +      {% endif %}
     +    </div>
-        {% block header %}
-          {% include "partials/header.html" %}
-        {% endblock %}
+         {% block header %}
+           {% include "partials/header.html" %}
+         {% endblock %}
     -    <div class="md-container">
     +    <div class="md-container" data-md-component="container">
-          {% block hero %}
-            {% if page and page.meta and page.meta.hero %}
-              {% include "partials/hero.html" with context %}
-            {% endif %}
-          {% endblock %}
+           {% block hero %}
+             {% if page and page.meta and page.meta.hero %}
+               {% include "partials/hero.html" with context %}
+             {% endif %}
+           {% endblock %}
     -      {% if feature.tabs %}
     -        {% include "partials/tabs.html" %}
     -      {% endif %}
@@ -921,27 +1189,27 @@ matches the new structure:
     -        <div class="md-main__inner md-grid" data-md-component="container">
     +      <main class="md-main" data-md-component="main">
     +        <div class="md-main__inner md-grid">
-              {% block site_nav %}
-                {% if nav %}
-                  <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+               {% block site_nav %}
+                 {% if nav %}
+                   <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
     @@ -160,41 +141,25 @@
-                <article class="md-content__inner md-typeset">
-                  {% block content %}
-                    {% if page.edit_url %}
+                 <article class="md-content__inner md-typeset">
+                   {% block content %}
+                     {% if page.edit_url %}
     -                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">&#xE3C9;</a>
     +                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-content__button md-icon">
     +                    {% include ".icons/material/pencil.svg" %}
     +                  </a>
-                    {% endif %}
+                     {% endif %}
     +                {% block source %}
     +                  {% if page and page.meta and page.meta.source %}
     +                    {% include "partials/source-link.html" %}
     +                  {% endif %}
     +                {% endblock %}
-                    {% if not "\x3ch1" in page.content %}
-                      <h1>{{ page.title | default(config.site_name, true)}}</h1>
-                    {% endif %}
-                    {{ page.content }}
+                     {% if not "\x3ch1" in page.content %}
+                       <h1>{{ page.title | default(config.site_name, true)}}</h1>
+                     {% endif %}
+                     {{ page.content }}
     -                {% block source %}
     -                  {% if page and page.meta and page.meta.source %}
     -                    <h2 id="__source">{{ lang.t("meta.source") }}</h2>
@@ -976,14 +1244,14 @@ matches the new structure:
     -                      {% endif %}
     -                    </small>
     -                  </div>
-                    {% endif %}
-                  {% endblock %}
-                  {% block disqus %}
+                     {% endif %}
+                   {% endblock %}
+                   {% block disqus %}
     @@ -208,29 +174,35 @@
-            {% include "partials/footer.html" %}
-          {% endblock %}
-        </div>
-        {% block scripts %}
+             {% include "partials/footer.html" %}
+           {% endblock %}
+         </div>
+         {% block scripts %}
     -      <script src="{{ 'assets/javascripts/application.********.js' | url }}"></script>
     -      {% if lang.t("search.language") != "en" %}
     -        {% set languages = lang.t("search.language").split(",") %}
@@ -1035,69 +1303,67 @@ matches the new structure:
     +          }, typeof search !== "undefined" && search)
     +        })
     +      </script>
-          {% for path in config["extra_javascript"] %}
-            <script src="{{ path | url }}"></script>
-          {% endfor %}
+           {% for path in config["extra_javascript"] %}
+             <script src="{{ path | url }}"></script>
+           {% endfor %}
     ```
 
 === ":octicons-file-code-16: partials/footer.html"
 
     ``` diff
     @@ -5,34 +5,34 @@
-        <div class="md-footer-nav">
+         <div class="md-footer-nav">
     -      <nav class="md-footer-nav__inner md-grid">
     +      <nav class="md-footer-nav__inner md-grid" aria-label="{{ lang.t('footer.title') }}">
-            {% if page.previous_page %}
+             {% if page.previous_page %}
     -          <a href="{{ page.previous_page.url | url }}" title="{{ page.previous_page.title | striptags }}" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
     -            <div class="md-flex__cell md-flex__cell--shrink">
     -              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
     +          <a href="{{ page.previous_page.url | url }}" title="{{ page.previous_page.title | striptags }}" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
     +            <div class="md-footer-nav__button md-icon">
     +              {% include ".icons/material/arrow-left.svg" %}
-                </div>
+                 </div>
     -            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
     -              <span class="md-flex__ellipsis">
     +            <div class="md-footer-nav__title">
     +              <div class="md-ellipsis">
-                    <span class="md-footer-nav__direction">
-                      {{ lang.t("footer.previous") }}
-                    </span>
-                    {{ page.previous_page.title }}
+                     <span class="md-footer-nav__direction">
+                       {{ lang.t("footer.previous") }}
+                     </span>
+                     {{ page.previous_page.title }}
     -              </span>
     +              </div>
-                </div>
-              </a>
-            {% endif %}
-            {% if page.next_page %}
+                 </div>
+               </a>
+             {% endif %}
+             {% if page.next_page %}
     -          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
     -            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
     -              <span class="md-flex__ellipsis">
     +          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
     +            <div class="md-footer-nav__title">
     +              <div class="md-ellipsis">
-                    <span class="md-footer-nav__direction">
-                      {{ lang.t("footer.next") }}
-                    </span>
-                    {{ page.next_page.title }}
+                     <span class="md-footer-nav__direction">
+                       {{ lang.t("footer.next") }}
+                     </span>
+                     {{ page.next_page.title }}
     -              </span>
     +              </div>
-                </div>
+                 </div>
     -            <div class="md-flex__cell md-flex__cell--shrink">
     -              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
     +            <div class="md-footer-nav__button md-icon">
     +              {% include ".icons/material/arrow-right.svg" %}
-                </div>
-              </a>
-            {% endif %}
+                 </div>
+               </a>
+             {% endif %}
     ```
 
 === ":octicons-file-code-16: partials/header.html"
 
     ``` diff
-    @@ -2,51 +2,43 @@
-      This file was automatically generated - do not edit
-    -#}
-    <header class="md-header" data-md-component="header">
+    @@ -4,51 +4,43 @@
+     <header class="md-header" data-md-component="header">
     -  <nav class="md-header-nav md-grid">
     -    <div class="md-flex">
     -      <div class="md-flex__cell md-flex__cell--shrink">
@@ -1139,7 +1405,7 @@ matches the new structure:
     +      {% if config.site_name == page.title %}
     +        <div class="md-header-nav__ellipsis md-ellipsis">
     +          {{ config.site_name }}
-            </div>
+             </div>
     -      </div>
     -      <div class="md-flex__cell md-flex__cell--shrink">
     -        {% if "search" in config["plugins"] %}
@@ -1164,9 +1430,9 @@ matches the new structure:
     +              {{ page.title }}
     +            {% endif %}
     +          </span>
-            </div>
-          {% endif %}
-        </div>
+             </div>
+           {% endif %}
+         </div>
     +    {% if "search" in config["plugins"] %}
     +      <label class="md-header-nav__button md-icon" for="__search">
     +        {% include ".icons/material/magnify.svg" %}
@@ -1178,33 +1444,29 @@ matches the new structure:
     +        {% include "partials/source.html" %}
     +      </div>
     +    {% endif %}
-      </nav>
-    </header>
+       </nav>
+     </header>
     ```
 
 === ":octicons-file-code-16: partials/hero.html"
 
     ``` diff
-    @@ -1,9 +1,8 @@
-    {#-
-      This file was automatically generated - do not edit
-    -#}
+    @@ -4,9 +4,8 @@
     -{% set feature = config.theme.feature %}
-    {% set class = "md-hero" %}
+     {% set class = "md-hero" %}
     -{% if not feature.tabs %}
     +{% if "tabs" not in config.theme.features %}
-      {% set class = "md-hero md-hero--expand" %}
-    {% endif %}
-    <div class="{{ class }}" data-md-component="hero">
+       {% set class = "md-hero md-hero--expand" %}
+     {% endif %}
+     <div class="{{ class }}" data-md-component="hero">
     ```
 
 === ":octicons-file-code-16: partials/language.html"
 
     ``` diff
-    @@ -3,12 +3,4 @@
-    -#}
-    {% import "partials/language/" + config.theme.language + ".html" as lang %}
-    {% import "partials/language/en.html" as fallback %}
+    @@ -4,12 +4,4 @@
+     {% import "partials/language/" + config.theme.language + ".html" as lang %}
+     {% import "partials/language/en.html" as fallback %}
     -{% macro t(key) %}{{ {
     -  "direction": config.theme.direction,
     -  "search.language": (
@@ -1236,41 +1498,38 @@ matches the new structure:
 
     ``` diff
     @@ -14,9 +14,15 @@
-        {% endif %}
-        <label class="md-nav__link" for="{{ path }}">
-          {{ nav_item.title }}
+         {% endif %}
+         <label class="md-nav__link" for="{{ path }}">
+           {{ nav_item.title }}
     +      <span class="md-nav__icon md-icon">
     +        {% include ".icons/material/chevron-right.svg" %}
     +      </span>
-        </label>
+         </label>
     -    <nav class="md-nav" data-md-component="collapsible" data-md-level="{{ level }}">
     +    <nav class="md-nav" aria-label="{{ nav_item.title }}" data-md-level="{{ level }}">
-          <label class="md-nav__title" for="{{ path }}">
+           <label class="md-nav__title" for="{{ path }}">
     +        <span class="md-nav__icon md-icon">
     +          {% include ".icons/material/arrow-left.svg" %}
     +        </span>
-            {{ nav_item.title }}
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+             {{ nav_item.title }}
+           </label>
+           <ul class="md-nav__list" data-md-scrollfix>
     @@ -39,6 +45,9 @@
-        {% if toc | first is defined %}
-          <label class="md-nav__link md-nav__link--active" for="__toc">
-            {{ nav_item.title }}
+         {% if toc | first is defined %}
+           <label class="md-nav__link md-nav__link--active" for="__toc">
+             {{ nav_item.title }}
     +        <span class="md-nav__icon md-icon">
     +          {% include ".icons/material/table-of-contents.svg" %}
     +        </span>
-          </label>
-        {% endif %}
-        <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}" class="md-nav__link md-nav__link--active">
+           </label>
+         {% endif %}
+         <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}" class="md-nav__link md-nav__link--active">
     ```
 
 === ":octicons-file-code-16: partials/nav.html"
 
     ``` diff
-    @@ -1,14 +1,10 @@
-    {#-
-      This file was automatically generated - do not edit
-    -#}
+    @@ -4,14 +4,10 @@
     -<nav class="md-nav md-nav--primary" data-md-level="0">
     -  <label class="md-nav__title md-nav__title--site" for="__drawer">
     -    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-nav__button md-logo">
@@ -1283,57 +1542,56 @@ matches the new structure:
     +  <label class="md-nav__title" for="__drawer">
     +    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-nav__button md-logo" aria-label="{{ config.site_name }}">
     +      {% include "partials/logo.html" %}
-        </a>
-        {{ config.site_name }}
-      </label>
+         </a>
+         {{ config.site_name }}
+       </label>
     ```
 
 === ":octicons-file-code-16: partials/search.html"
 
     ``` diff
     @@ -6,15 +6,18 @@
-      <label class="md-search__overlay" for="__search"></label>
-      <div class="md-search__inner" role="search">
-        <form class="md-search__form" name="search">
+       <label class="md-search__overlay" for="__search"></label>
+       <div class="md-search__inner" role="search">
+         <form class="md-search__form" name="search">
     -      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="{{ lang.t('search.placeholder') }}" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
     +      <input type="text" class="md-search__input" name="query" aria-label="{{ lang.t('search.placeholder') }}" placeholder="{{ lang.t('search.placeholder') }}" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
-          <label class="md-search__icon md-icon" for="__search">
+           <label class="md-search__icon md-icon" for="__search">
     +        {% include ".icons/material/magnify.svg" %}
     +        {% include ".icons/material/arrow-left.svg" %}
-          </label>
+           </label>
     -      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
     -        &#xE5CD;
     +      <button type="reset" class="md-search__icon md-icon" aria-label="{{ lang.t('search.reset') }}" data-md-component="search-reset" tabindex="-1">
     +        {% include ".icons/material/close.svg" %}
-          </button>
-        </form>
-        <div class="md-search__output">
-          <div class="md-search__scrollwrap" data-md-scrollfix>
+           </button>
+         </form>
+         <div class="md-search__output">
+           <div class="md-search__scrollwrap" data-md-scrollfix>
     -        <div class="md-search-result" data-md-component="result">
     +        <div class="md-search-result" data-md-component="search-result">
-              <div class="md-search-result__meta">
-                {{ lang.t("search.result.placeholder") }}
-              </div>
+               <div class="md-search-result__meta">
+                 {{ lang.t("search.result.placeholder") }}
+               </div>
     ```
 
 === ":octicons-file-code-16: partials/social.html"
 
     ``` diff
-    @@ -3,9 +3,12 @@
-    -#}
-    {% if config.extra.social %}
-      <div class="md-footer-social">
+    @@ -4,9 +4,12 @@
+     {% if config.extra.social %}
+       <div class="md-footer-social">
     -    <link rel="stylesheet" href="{{ 'assets/fonts/font-awesome.css' | url }}">
-        {% for social in config.extra.social %}
+         {% for social in config.extra.social %}
     -      <a href="{{ social.link }}" target="_blank" rel="noopener" title="{{ social.type }}" class="md-footer-social__link fa fa-{{ social.type }}"></a>
     +      {% set _,rest = social.link.split("//") %}
     +      {% set domain = rest.split("/")[0] %}
     +      <a href="{{ social.link }}" target="_blank" rel="noopener" title="{{ domain }}" class="md-footer-social__link">
     +        {% include ".icons/" ~ social.icon ~ ".svg" %}
     +      </a>
-        {% endfor %}
-      </div>
-    {% endif %}
+         {% endfor %}
+       </div>
+     {% endif %}
     ```
 
 === ":octicons-file-code-16: partials/source-date.html"
@@ -1379,10 +1637,8 @@ matches the new structure:
 === ":octicons-file-code-16: partials/source.html"
 
     ``` diff
-    @@ -2,24 +2,11 @@
-      This file was automatically generated - do not edit
-    -#}
-    {% import "partials/language.html" as lang with context %}
+    @@ -4,24 +4,11 @@
+     {% import "partials/language.html" as lang with context %}
     -{% set platform = config.extra.repo_icon or config.repo_url %}
     -{% if "github" in platform %}
     -  {% set repo_type = "github" %}
@@ -1406,74 +1662,69 @@ matches the new structure:
     +    {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
     +    {% include ".icons/" ~ icon ~ ".svg" %}
     +  </div>
-      <div class="md-source__repository">
-        {{ config.repo_name }}
-      </div>
+       <div class="md-source__repository">
+         {{ config.repo_name }}
+       </div>
     ```
 
 === ":octicons-file-code-16: partials/tabs-item.html"
 
     ``` diff
-    @@ -1,7 +1,7 @@
-    {#-
-      This file was automatically generated - do not edit
-    -#}
+    @@ -4,7 +4,7 @@
     -{% if nav_item.is_homepage %}
     +{% if nav_item.is_homepage or nav_item.url == "index.html" %}
-      <li class="md-tabs__item">
-        {% if not page.ancestors | length and nav | selectattr("url", page.url) %}
-          <a href="{{ nav_item.url | url }}" class="md-tabs__link md-tabs__link--active">
+       <li class="md-tabs__item">
+         {% if not page.ancestors | length and nav | selectattr("url", page.url) %}
+           <a href="{{ nav_item.url | url }}" class="md-tabs__link md-tabs__link--active">
     ```
 
 === ":octicons-file-code-16: partials/tabs.html"
 
     ``` diff
     @@ -5,7 +5,7 @@
-    {% if page.ancestors | length > 0 %}
-      {% set class = "md-tabs md-tabs--active" %}
-    {% endif %}
+     {% if page.ancestors | length > 0 %}
+       {% set class = "md-tabs md-tabs--active" %}
+     {% endif %}
     -<nav class="{{ class }}" data-md-component="tabs">
     +<nav class="{{ class }}" aria-label="{{ lang.t('tabs.title') }}" data-md-component="tabs">
-      <div class="md-tabs__inner md-grid">
-        <ul class="md-tabs__list">
-          {% for nav_item in nav %}
+       <div class="md-tabs__inner md-grid">
+         <ul class="md-tabs__list">
+           {% for nav_item in nav %}
     ```
 
 === ":octicons-file-code-16: partials/toc-item.html"
 
     ``` diff
     @@ -6,7 +6,7 @@
-        {{ toc_item.title }}
-      </a>
-      {% if toc_item.children %}
+         {{ toc_item.title }}
+       </a>
+       {% if toc_item.children %}
     -    <nav class="md-nav">
     +    <nav class="md-nav" aria-label="{{ toc_item.title }}">
-          <ul class="md-nav__list">
-            {% for toc_item in toc_item.children %}
-              {% include "partials/toc-item.html" %}
+           <ul class="md-nav__list">
+             {% for toc_item in toc_item.children %}
+               {% include "partials/toc-item.html" %}
     ```
 
 === ":octicons-file-code-16: partials/toc.html"
 
     ``` diff
-    @@ -2,35 +2,22 @@
-      This file was automatically generated - do not edit
-    -#}
-    {% import "partials/language.html" as lang with context %}
+    @@ -4,35 +4,22 @@
+     {% import "partials/language.html" as lang with context %}
     -<nav class="md-nav md-nav--secondary">
     +<nav class="md-nav md-nav--secondary" aria-label="{{ lang.t('toc.title') }}">
-      {% endif %}
-      {% if toc | first is defined %}
-        <label class="md-nav__title" for="__toc">
+       {% endif %}
+       {% if toc | first is defined %}
+         <label class="md-nav__title" for="__toc">
     +      <span class="md-nav__icon md-icon">
     +        {% include ".icons/material/arrow-left.svg" %}
     +      </span>
-          {{ lang.t("toc.title") }}
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          {% for toc_item in toc %}
-            {% include "partials/toc-item.html" %}
-          {% endfor %}
+           {{ lang.t("toc.title") }}
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix>
+           {% for toc_item in toc %}
+             {% include "partials/toc-item.html" %}
+           {% endfor %}
     -      {% if page.meta.source and page.meta.source | length > 0 %}
     -        <li class="md-nav__item">
     -          <a href="#__source" class="md-nav__link md-nav__link--active">
@@ -1492,9 +1743,9 @@ matches the new structure:
     -          </a>
     -        </li>
     -      {% endif %}
-        </ul>
-      {% endif %}
-    </nav>
+         </ul>
+       {% endif %}
+     </nav>
     ```
 
 ## Upgrading from 3.x to 4.x
