@@ -222,7 +222,7 @@ are released for general availability.
 
 - [x] [Social cards]
 - [ ] Stay on page when switching languages
-- [ ] Table of contents follows active anchor
+- [ ] Sidebars automatically scroll to active item
 
   [Social cards]: ../setup/setting-up-social-cards.md
 

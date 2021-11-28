@@ -179,6 +179,7 @@ For other installation methods, configuration options, and a demo, visit
 [Arduino](https://arduino.github.io/arduino-cli/),
 [AutoKeras](https://autokeras.com/),
 [BFE](https://www.bfe-networks.net/),
+[CentOS](https://docs.infra.centos.org/),
 [Crystal](https://crystal-lang.org/reference/),
 [Electron](https://www.electron.build/),
 [FastAPI](https://fastapi.tiangolo.com/),
