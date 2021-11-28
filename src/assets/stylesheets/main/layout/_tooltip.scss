@@ -183,10 +183,10 @@
     transition: z-index 250ms;
     user-select: none;
 
-    // Code annotation index bubble – the bubble must be positioned absolutely
-    // behind the index, because it shouldn't impact the rendering of a code
-    // block. Otherwise, small rounding differences in browsers can sometimes
-    // mess up alignment of text following a code annotation.
+    // Code annotation marker – the marker must be positioned absolutely behind
+    // the index, because it shouldn't impact the rendering of a code block.
+    // Otherwise, small rounding differences in browsers can sometimes mess up
+    // alignment of text following a code annotation.
     &::after {
       position: absolute;
       top: 0.1ch;
@@ -210,12 +210,12 @@
         animation: none;
       }
 
-      // Code annotation index bubble on focus/hover
+      // Code annotation marker on focus/hover
       :is(:focus-within, :hover) > & {
         background-color: var(--md-accent-fg-color);
       }
 
-      // Code annotation index bubble on focus
+      // Code annotation marker on focus
       :focus-within > & {
         transition:
           color            250ms,

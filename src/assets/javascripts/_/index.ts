@@ -33,8 +33,8 @@ export type Flag =
   | "content.code.annotate"            /* Code annotations */
   | "header.autohide"                  /* Hide header */
   | "navigation.expand"                /* Automatic expansion */
-  | "navigation.instant"               /* Instant loading */
   | "navigation.indexes"               /* Section pages */
+  | "navigation.instant"               /* Instant loading */
   | "navigation.sections"              /* Section navigation */
   | "navigation.tabs"                  /* Tabs navigation */
   | "navigation.tabs.sticky"           /* Tabs navigation (sticky) */

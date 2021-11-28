@@ -92,7 +92,7 @@ interface MountOptions {
 export function watchHeaderTitle(
   el: HTMLHeadingElement, { viewport$, header$ }: WatchOptions
 ): Observable<HeaderTitle> {
-  return watchViewportAt(el, { header$, viewport$ })
+  return watchViewportAt(el, { viewport$, header$ })
     .pipe(
       map(({ offset: { y } }) => {
         const { height } = getElementSize(el)

@@ -29,6 +29,7 @@ import {
   filter,
   finalize,
   map,
+  merge,
   of,
   shareReplay,
   startWith,
@@ -68,7 +69,7 @@ const observer$ = defer(() => of(
   })
 ))
   .pipe(
-    switchMap(observer => NEVER.pipe(startWith(observer))
+    switchMap(observer => merge(NEVER, of(observer))
       .pipe(
         finalize(() => observer.disconnect())
       )

@@ -329,9 +329,13 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.js" | url,
-        "version": config.extra.version or None
+        "search": "assets/javascripts/workers/search.js" | url
       } -%}
+
+      <!-- Versioning -->
+      {%- if config.extra.version -%}
+        {%- set _ = app.update({ "version": config.extra.version }) -%}
+      {%- endif -%}
 
       <!-- Translations -->
       {%- set translations = app.translations -%}

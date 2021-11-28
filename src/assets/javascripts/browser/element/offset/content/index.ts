@@ -43,7 +43,9 @@ import { ElementOffset } from "../_"
  *
  * @returns Element content offset
  */
-export function getElementContentOffset(el: HTMLElement): ElementOffset {
+export function getElementContentOffset(
+  el: HTMLElement
+): ElementOffset {
   return {
     x: el.scrollLeft,
     y: el.scrollTop

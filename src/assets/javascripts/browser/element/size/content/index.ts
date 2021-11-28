@@ -33,7 +33,9 @@ import { ElementSize } from "../_"
  *
  * @returns Element content size
  */
-export function getElementContentSize(el: HTMLElement): ElementSize {
+export function getElementContentSize(
+  el: HTMLElement
+): ElementSize {
   return {
     width:  el.scrollWidth,
     height: el.scrollHeight

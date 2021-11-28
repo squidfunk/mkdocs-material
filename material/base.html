@@ -34,7 +34,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.6378942d.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.ad626c1e.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.9204c3b2.min.css' | url }}">
@@ -184,9 +184,11 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.01824240.min.js" | url,
-        "version": config.extra.version or None
+        "search": "assets/javascripts/workers/search.01824240.min.js" | url
       } -%}
+      {%- if config.extra.version -%}
+        {%- set _ = app.update({ "version": config.extra.version }) -%}
+      {%- endif -%}
       {%- set translations = app.translations -%}
       {%- for key in [
         "clipboard.copy",
@@ -211,7 +213,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.0885dc41.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.7c769d4b.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

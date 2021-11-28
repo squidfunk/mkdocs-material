@@ -20,26 +20,5 @@
  * IN THE SOFTWARE.
  */
 
-import { h } from "~/utilities"
-
-/* ----------------------------------------------------------------------------
- * Functions
- * ------------------------------------------------------------------------- */
-
-/**
- * Render an empty code annotation
- *
- * @param id - Annotation identifier
- *
- * @returns Element
- */
-export function renderAnnotation(id: number): HTMLElement {
-  return (
-    <aside class="md-annotation" tabIndex={0}>
-      <div class="md-annotation__inner md-tooltip">
-        <div class="md-tooltip__inner md-typeset"></div>
-      </div>
-      <span class="md-annotation__index">{id}</span>
-    </aside>
-  )
-}
+export * from "./_"
+export * from "./list"

@@ -28,6 +28,7 @@ import {
   filter,
   finalize,
   map,
+  merge,
   of,
   shareReplay,
   startWith,
@@ -73,7 +74,7 @@ const observer$ = defer(() => of(
   })
 ))
   .pipe(
-    switchMap(observer => NEVER.pipe(startWith(observer))
+    switchMap(observer => merge(NEVER, of(observer))
       .pipe(
         finalize(() => observer.disconnect())
       )
@@ -92,7 +93,9 @@ const observer$ = defer(() => of(
  *
  * @returns Element size
  */
-export function getElementSize(el: HTMLElement): ElementSize {
+export function getElementSize(
+  el: HTMLElement
+): ElementSize {
   return {
     width:  el.offsetWidth,
     height: el.offsetHeight

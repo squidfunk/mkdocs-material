@@ -53,7 +53,9 @@ export interface ElementOffset {
  *
  * @returns Element offset
  */
-export function getElementOffset(el: HTMLElement): ElementOffset {
+export function getElementOffset(
+  el: HTMLElement
+): ElementOffset {
   return {
     x: el.offsetLeft,
     y: el.offsetTop
