@@ -346,10 +346,14 @@ kbd {
   }
 
   // Unordered and ordered list
-  :is(ul, ol):not([hidden]) {
-    display: flow-root;
+  :is(ul, ol) {
     margin-left: px2em(10px);
     padding: 0;
+
+    // Adjust display mode if not hidden
+    &:not([hidden]) {
+      display: flow-root;
+    }
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
