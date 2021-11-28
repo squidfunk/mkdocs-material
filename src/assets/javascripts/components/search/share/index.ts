@@ -101,8 +101,8 @@ export function watchSearchShare(
 export function mountSearchShare(
   el: HTMLAnchorElement, options: MountOptions
 ): Observable<Component<SearchShare>> {
-  const internal$ = new Subject<SearchShare>()
-  internal$.subscribe(({ url }) => {
+  const push$ = new Subject<SearchShare>()
+  push$.subscribe(({ url }) => {
     el.setAttribute("data-clipboard-text", el.href)
     el.href = `${url}`
   })
@@ -114,8 +114,8 @@ export function mountSearchShare(
   /* Create and return component */
   return watchSearchShare(el, options)
     .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
+      tap(state => push$.next(state)),
+      finalize(() => push$.complete()),
       map(state => ({ ref: el, ...state }))
     )
 }

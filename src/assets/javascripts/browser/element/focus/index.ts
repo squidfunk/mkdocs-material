@@ -35,23 +35,6 @@ import { getActiveElement } from "../_"
  * ------------------------------------------------------------------------- */
 
 /**
- * Set element focus
- *
- * @param el - Element
- * @param value - Whether the element should be focused
- */
-export function setElementFocus(
-  el: HTMLElement, value = true
-): void {
-  if (value)
-    el.focus()
-  else
-    el.blur()
-}
-
-/* ------------------------------------------------------------------------- */
-
-/**
  * Watch element focus
  *
  * @param el - Element

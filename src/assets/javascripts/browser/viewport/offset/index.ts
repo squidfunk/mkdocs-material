@@ -59,17 +59,6 @@ export function getViewportOffset(): ViewportOffset {
   }
 }
 
-/**
- * Set viewport offset
- *
- * @param offset - Viewport offset
- */
-export function setViewportOffset(
-  { x, y }: Partial<ViewportOffset>
-): void {
-  window.scrollTo(x || 0, y || 0)
-}
-
 /* ------------------------------------------------------------------------- */
 
 /**

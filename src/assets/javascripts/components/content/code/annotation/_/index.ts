@@ -36,6 +36,7 @@ import {
 
 import {
   ElementOffset,
+  getElement,
   watchElementContentOffset,
   watchElementFocus,
   watchElementOffset
@@ -122,7 +123,7 @@ export function mountAnnotation(
     })
 
     /* Blur open annotation on click (= close) */
-    const index = el.lastElementChild!
+    const index = getElement(":scope > :last-child")
     const blur$ = fromEvent(index, "mousedown", { once: true })
     push$
       .pipe(

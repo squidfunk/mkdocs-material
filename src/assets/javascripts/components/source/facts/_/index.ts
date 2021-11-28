@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import { NEVER, Observable } from "rxjs"
+import { EMPTY, Observable } from "rxjs"
 
 import { fetchSourceFactsFromGitHub } from "../github"
 import { fetchSourceFactsFromGitLab } from "../gitlab"
@@ -83,6 +83,6 @@ export function fetchSourceFacts(
 
     /* Everything else */
     default:
-      return NEVER
+      return EMPTY
   }
 }

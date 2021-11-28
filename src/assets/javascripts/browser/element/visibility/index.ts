@@ -32,7 +32,6 @@ import {
   merge,
   of,
   shareReplay,
-  startWith,
   switchMap,
   tap
 } from "rxjs"
@@ -113,7 +112,7 @@ export function watchElementVisibility(
  * @param el - Element
  * @param threshold - Threshold
  *
- * @returns Element threshold observable
+ * @returns Element boundary observable
  */
 export function watchElementBoundary(
   el: HTMLElement, threshold = 16

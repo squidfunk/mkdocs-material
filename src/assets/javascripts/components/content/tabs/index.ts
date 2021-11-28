@@ -23,6 +23,7 @@
 import {
   Observable,
   Subject,
+  defer,
   finalize,
   fromEvent,
   map,
@@ -33,6 +34,7 @@ import {
 
 import {
   getElement,
+  getElementOffset,
   getElements
 } from "~/browser"
 
@@ -64,7 +66,11 @@ export function watchContentTabs(
   el: HTMLElement
 ): Observable<ContentTabs> {
   return merge(...getElements(":scope > input", el)
-    .map(input => fromEvent(input, "change").pipe(mapTo(input.id)))
+    .map(input => fromEvent(input, "change")
+      .pipe(
+        mapTo(input.id)
+      )
+    )
   )
     .pipe(
       map(id => ({
@@ -76,6 +82,11 @@ export function watchContentTabs(
 /**
  * Mount content tabs
  *
+ * This function scrolls the active tab into view. While this functionality is
+ * provided by browsers as part of `scrollInfoView`, browsers will always also
+ * scroll the vertical axis, which we do not want. Thus, we decided to provide
+ * this functionality ourselves.
+ *
  * @param el - Content tabs element
  *
  * @returns Content tabs component observable
@@ -83,25 +94,23 @@ export function watchContentTabs(
 export function mountContentTabs(
   el: HTMLElement
 ): Observable<Component<ContentTabs>> {
-  const internal$ = new Subject<ContentTabs>()
-  internal$.subscribe(({ active }) => {
-    // TODO: Hack, scrollIntoView is too buggy
-    const container = active.parentElement!
-    if (
-      active.offsetLeft + active.offsetWidth > container.scrollLeft + container.offsetWidth ||
-      active.offsetLeft                      < container.scrollLeft
-    )
+  const container = getElement(".tabbed-labels", el)
+  return defer(() => {
+    const push$ = new Subject<ContentTabs>()
+    push$.subscribe(({ active }) => {
+      const { x } = getElementOffset(active)
       container.scrollTo({
         behavior: "smooth",
-        left: active.offsetLeft
+        left: x
       })
-  })
+    })
 
-  /* Create and return component */
-  return watchContentTabs(el)
-    .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
-      map(state => ({ ref: el, ...state }))
-    )
+    /* Create and return component */
+    return watchContentTabs(el)
+      .pipe(
+        tap(state => push$.next(state)),
+        finalize(() => push$.complete()),
+        map(state => ({ ref: el, ...state }))
+      )
+  })
 }

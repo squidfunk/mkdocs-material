@@ -22,6 +22,7 @@
 
 import "focus-visible"
 import {
+  EMPTY,
   NEVER,
   Subject,
   defer,
@@ -198,13 +199,13 @@ const content$ = defer(() => merge(
 
   /* Content */
   ...getComponentElements("content")
-    .map(el => mountContent(el, { target$, viewport$, hover$, print$ })),
+    .map(el => mountContent(el, { target$, hover$, print$ })),
 
   /* Search highlighting */
   ...getComponentElements("content")
     .map(el => feature("search.highlight")
       ? mountSearchHiglight(el, { index$, location$ })
-      : NEVER
+      : EMPTY
     ),
 
   /* Header title */

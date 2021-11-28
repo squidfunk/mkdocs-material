@@ -120,36 +120,36 @@ export function mountAnnotationList(
 
   /* Create and return component */
   return defer(() => {
-    const push$ = new Subject<Annotation>()
+    const done$ = new Subject<void>()
 
     /* Handle print mode - see https://bit.ly/3rgPdpt */
     print$
       .pipe(
         startWith(false),
-        takeUntil(push$.pipe(takeLast(1)))
+        takeUntil(done$.pipe(takeLast(1)))
       )
         .subscribe(active => {
           el.hidden = !active
 
           /* Move annotation contents back into list */
           for (const [id, annotation] of annotations) {
-            const tooltip = getElement(".md-typeset", annotation)
+            const inner = getElement(".md-typeset", annotation)
             const child = getElement(`li:nth-child(${id})`, el)
             if (!active)
-              swap(child, tooltip)
+              swap(child, inner)
             else
-              swap(tooltip, child)
+              swap(inner, child)
           }
         })
 
     /* Create and return component */
-    return merge(
-      ...[...annotations].map(([, annotation]) => (
+    return merge(...[...annotations]
+      .map(([, annotation]) => (
         mountAnnotation(annotation, container)
       ))
     )
       .pipe(
-        finalize(() => push$.complete()),
+        finalize(() => done$.complete()),
         share()
       )
   })

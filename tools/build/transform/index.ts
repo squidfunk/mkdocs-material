@@ -25,7 +25,7 @@ import { build as esbuild } from "esbuild"
 import * as path from "path"
 import postcss from "postcss"
 import {
-  NEVER,
+  EMPTY,
   Observable,
   catchError,
   concat,
@@ -132,7 +132,7 @@ export function transformStyle(
       ),
       catchError(err => {
         console.log(err.formatted || err.message)
-        return NEVER
+        return EMPTY
       }),
       switchMap(({ css, map }) => {
         const file = digest(options.to, css)
@@ -182,7 +182,7 @@ export function transformScript(
           map: Buffer.from(data, "base64")
         })
       }),
-      catchError(() => NEVER),
+      catchError(() => EMPTY),
       switchMap(({ js, map }) => {
         const file = digest(options.to, js)
         return concat(

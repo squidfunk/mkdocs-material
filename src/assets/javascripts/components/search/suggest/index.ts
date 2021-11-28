@@ -83,7 +83,7 @@ interface MountOptions {
 export function mountSearchSuggest(
   el: HTMLElement, { rx$ }: SearchWorker, { keyboard$ }: MountOptions
 ): Observable<Component<SearchSuggest>> {
-  const internal$ = new Subject<SearchResult>()
+  const push$ = new Subject<SearchResult>()
 
   /* Retrieve query component and track all changes */
   const query  = getComponentElement("search-query")
@@ -98,7 +98,7 @@ export function mountSearchSuggest(
     )
 
   /* Update search suggestions */
-  internal$
+  push$
     .pipe(
       combineLatestWith(query$),
       map(([{ suggestions }, value]) => {
@@ -147,8 +147,8 @@ export function mountSearchSuggest(
   /* Create and return component */
   return result$
     .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
+      tap(state => push$.next(state)),
+      finalize(() => push$.complete()),
       map(() => ({ ref: el }))
     )
 }

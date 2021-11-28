@@ -33,10 +33,6 @@ import {
 } from "rxjs"
 
 import {
-  resetScrollLock,
-  setScrollLock
-} from "~/actions"
-import {
   Viewport,
   watchToggle
 } from "~/browser"
@@ -82,9 +78,15 @@ export function patchScrolllock(
       withLatestFrom(viewport$)
     )
       .subscribe(([active, { offset: { y }}]) => {
-        if (active)
-          setScrollLock(document.body, y)
-        else
-          resetScrollLock(document.body)
+        if (active) {
+          document.body.setAttribute("data-md-state", "lock")
+          document.body.style.top = `-${y}px`
+        } else {
+          const value = -1 * parseInt(document.body.style.top, 10)
+          document.body.removeAttribute("data-md-state")
+          document.body.style.top = ""
+          if (value)
+            window.scrollTo(0, value)
+        }
       })
 }

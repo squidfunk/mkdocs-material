@@ -23,7 +23,6 @@
 import {
   Observable,
   Subject,
-  animationFrameScheduler,
   bufferCount,
   combineLatest,
   combineLatestWith,
@@ -32,18 +31,15 @@ import {
   distinctUntilKeyChanged,
   filter,
   map,
-  observeOn,
   of,
   shareReplay,
   startWith,
-  switchMap
+  switchMap,
+  takeLast,
+  takeUntil
 } from "rxjs"
 
 import { feature } from "~/_"
-import {
-  resetHeaderState,
-  setHeaderState
-} from "~/actions"
 import {
   Viewport,
   watchElementSize,
@@ -184,24 +180,28 @@ export function watchHeader(
 export function mountHeader(
   el: HTMLElement, { header$, main$ }: MountOptions
 ): Observable<Component<Header>> {
-  const internal$ = new Subject<Main>()
-  internal$
-    .pipe(
-      distinctUntilKeyChanged("active"),
-      combineLatestWith(header$),
-      observeOn(animationFrameScheduler)
-    )
-      .subscribe(([{ active }, { hidden }]) => {
-        if (active)
-          setHeaderState(el, hidden ? "hidden" : "shadow")
-        else
-          resetHeaderState(el)
-      })
+  return defer(() => {
+    const push$ = new Subject<Main>()
+    push$
+      .pipe(
+        distinctUntilKeyChanged("active"),
+        combineLatestWith(header$)
+      )
+        .subscribe(([{ active }, { hidden }]) => {
+          if (active)
+            el.setAttribute("data-md-state", hidden ? "hidden" : "shadow")
+          else
+            el.removeAttribute("data-md-state")
+        })
 
-  /* Connect to long-living subject and return component */
-  main$.subscribe(main => internal$.next(main))
-  return header$
-    .pipe(
-      map(state => ({ ref: el, ...state }))
-    )
+    /* Link to main area */
+    main$.subscribe(push$)
+
+    /* Create and return component */
+    return header$
+      .pipe(
+        takeUntil(push$.pipe(takeLast(1))),
+        map(state => ({ ref: el, ...state }))
+      )
+  })
 }

@@ -21,7 +21,7 @@
  */
 
 import {
-  NEVER,
+  EMPTY,
   Observable,
   fromEvent,
   fromEventPattern,
@@ -86,6 +86,6 @@ export function at<T>(
 ): Observable<T> {
   return query$
     .pipe(
-      switchMap(active => active ? factory() : NEVER)
+      switchMap(active => active ? factory() : EMPTY)
     )
 }

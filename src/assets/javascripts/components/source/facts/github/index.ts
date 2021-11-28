@@ -50,7 +50,7 @@ interface Release {
 /**
  * Fetch GitHub repository facts
  *
- * @param user - GitHub user
+ * @param user - GitHub user or organization
  * @param repo - GitHub repository
  *
  * @returns Repository facts observable

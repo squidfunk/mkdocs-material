@@ -52,8 +52,7 @@ import {
   request,
   requestXML,
   setLocation,
-  setLocationHash,
-  setViewportOffset
+  setLocationHash
 } from "~/browser"
 import { getComponentElement } from "~/components"
 import { h } from "~/utilities"
@@ -329,11 +328,11 @@ export function setupInstantLoading(
     .pipe(
       sample(document$),
     )
-      .subscribe(({ url, offset }) => {
+      .subscribe(({ url, offset = { y: 0 } }) => {
         if (url.hash && !offset) {
           setLocationHash(url.hash)
         } else {
-          setViewportOffset(offset || { y: 0 })
+          window.scrollTo(0, offset.y)
         }
       })
 
@@ -355,7 +354,7 @@ export function setupInstantLoading(
       filter(([a, b]) => a.url.pathname === b.url.pathname),
       map(([, state]) => state)
     )
-      .subscribe(({ offset }) => {
-        setViewportOffset(offset || { y: 0 })
+      .subscribe(({ offset = { y: 0 } }) => {
+        window.scrollTo(0, offset.y)
       })
 }

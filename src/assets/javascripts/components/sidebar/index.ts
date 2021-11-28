@@ -24,22 +24,21 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
+  auditTime,
   combineLatest,
+  defer,
   distinctUntilChanged,
   finalize,
   map,
-  observeOn,
   tap,
   withLatestFrom
 } from "rxjs"
 
 import {
-  resetSidebarHeight,
-  resetSidebarOffset,
-  setSidebarHeight,
-  setSidebarOffset
-} from "~/actions"
-import { Viewport } from "~/browser"
+  Viewport,
+  getElement,
+  getElementOffset
+} from "~/browser"
 
 import { Component } from "../_"
 import { Header } from "../header"
@@ -125,6 +124,19 @@ export function watchSidebar(
 /**
  * Mount sidebar
  *
+ * This function doesn't set the height of the actual sidebar, but of its first
+ * child – the `.md-sidebar__scrollwrap` element in order to mitigiate jittery
+ * sidebars when the footer is scrolled into view. At some point we switched
+ * from `absolute` / `fixed` positioning to `sticky` positioning, significantly
+ * reducing jitter in some browsers (respectively Firefox and Safari) when
+ * scrolling from the top. However, top-aligned sticky positioning means that
+ * the sidebar snaps to the bottom when the end of the container is reached.
+ * This is what leads to the mentioned jitter, as the sidebar's height may be
+ * updated too slowly.
+ *
+ * This behaviour can be mitigiated by setting the height of the sidebar to `0`
+ * while preserving the padding, and the height on its first element.
+ *
  * @param el - Sidebar element
  * @param options - Options
  *
@@ -133,32 +145,36 @@ export function watchSidebar(
 export function mountSidebar(
   el: HTMLElement, { header$, ...options }: MountOptions
 ): Observable<Component<Sidebar>> {
-  const internal$ = new Subject<Sidebar>()
-  internal$
-    .pipe(
-      observeOn(animationFrameScheduler),
-      withLatestFrom(header$)
-    )
-      .subscribe({
+  const inner = getElement(".md-sidebar__scrollwrap", el)
+  const { y } = getElementOffset(inner)
+  return defer(() => {
+    const push$ = new Subject<Sidebar>()
+    push$
+      .pipe(
+        auditTime(0, animationFrameScheduler),
+        withLatestFrom(header$)
+      )
+        .subscribe({
 
-        /* Update height and offset */
-        next([{ height }, { height: offset }]) {
-          setSidebarHeight(el, height)
-          setSidebarOffset(el, offset)
-        },
+          /* Handle emission */
+          next([{ height }, { height: offset }]) {
+            inner.style.height = `${height - 2 * y}px`
+            el.style.top       = `${offset}px`
+          },
 
-        /* Reset on complete */
-        complete() {
-          resetSidebarOffset(el)
-          resetSidebarHeight(el)
-        }
-      })
+          /* Handle complete */
+          complete() {
+            inner.style.height = ""
+            el.style.top       = ""
+          }
+        })
 
-  /* Create and return component */
-  return watchSidebar(el, options)
-    .pipe(
-      tap(state => internal$.next(state)),
-      finalize(() => internal$.complete()),
-      map(state => ({ ref: el, ...state }))
-    )
+    /* Create and return component */
+    return watchSidebar(el, options)
+      .pipe(
+        tap(state => push$.next(state)),
+        finalize(() => push$.complete()),
+        map(state => ({ ref: el, ...state }))
+      )
+  })
 }
