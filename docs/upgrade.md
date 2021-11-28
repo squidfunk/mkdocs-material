@@ -28,9 +28,9 @@ pip show mkdocs-material
 - Removed deprecated `seealso` admonition type
 - Removed deprecated `site_keywords` setting (unsupported by MkDocs)
 - Removed deprecated prebuilt search index support
-- Removed deprecated web app manifest
-- Removed `extracopyright` variable
-- Removed Disqus integation in favor of overrides
+- Removed deprecated web app manifest – use customization
+- Removed `extracopyright` variable – use new `copyright` partial
+- Removed Disqus integation – use customization
 - Switched to `:is()` selectors for simple selector lists
 - Switched autoprefixer from `last 4 years` to `last 2 years`
 - Improved CSS overall to match modern standards
@@ -77,6 +77,102 @@ matches the new structure:
   potential changes
 
 === ":octicons-file-code-16: base.html"
+
+    ``` diff
+    @@ -13,11 +13,6 @@
+           {% elif config.site_description %}
+             <meta name="description" content="{{ config.site_description }}">
+           {% endif %}
+    -      {% if page and page.meta and page.meta.keywords %}
+    -        <meta name="keywords" content="{{ page.meta.keywords }}">
+    -      {% elif config.site_keywords %}
+    -        <meta name="keywords" content="{{ config.site_keywords }}">
+    -      {% endif %}
+           {% if page and page.meta and page.meta.author %}
+             <meta name="author" content="{{ page.meta.author }}">
+           {% elif config.site_author %}
+    @@ -61,15 +56,13 @@
+                 font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
+                 font.code | replace(' ', '+')
+               }}&display=fallback">
+    -        <style>:root{--md-text-font-family:"{{ font.text }}";--md-code-font-family:"{{ font.code }}"}</style>
+    +        <style>:root{--md-text-font:"{{ font.text }}";--md-code-font:"{{ font.code }}"}</style>
+           {% endif %}
+         {% endblock %}
+    -    {% if config.extra.manifest %}
+    -      <link rel="manifest" href="{{ config.extra.manifest | url }}" crossorigin="use-credentials">
+    -    {% endif %}
+         {% for path in config["extra_css"] %}
+           <link rel="stylesheet" href="{{ path | url }}">
+         {% endfor %}
+    +    {% include "partials/javascripts/base.html" %}
+         {% block analytics %}
+           {% include "partials/integrations/analytics.html" %}
+         {% endblock %}
+    @@ -89,7 +82,6 @@
+         <body dir="{{ direction }}">
+       {% endif %}
+         {% set features = config.theme.features or [] %}
+    -    {% include "partials/javascripts/base.html" %}
+         {% if not config.theme.palette is mapping %}
+           {% include "partials/javascripts/palette.html" %}
+         {% endif %}
+    @@ -106,13 +98,25 @@
+         </div>
+         <div data-md-component="announce">
+           {% if self.announce() %}
+    -        <aside class="md-banner md-announce">
+    -          <div class="md-banner__inner md-announce__inner md-grid md-typeset">
+    +        <aside class="md-banner">
+    +          <div class="md-banner__inner md-grid md-typeset">
+                 {% block announce %}{% endblock %}
+               </div>
+             </aside>
+           {% endif %}
+         </div>
+    +    {% if config.extra.version %}
+    +      <div data-md-component="outdated" hidden>
+    +        <aside class="md-banner md-banner--warning">
+    +          {% if self.outdated() %}
+    +            <div class="md-banner__inner md-grid md-typeset">
+    +              {% block outdated %}{% endblock %}
+    +            </div>
+    +            {% include "partials/javascripts/outdated.html" %}
+    +          {% endif %}
+    +        </aside>
+    +      </div>
+    +    {% endif %}
+         {% block header %}
+           {% include "partials/header.html" %}
+         {% endblock %}
+    @@ -156,25 +160,7 @@
+               <div class="md-content" data-md-component="content">
+                 <article class="md-content__inner md-typeset">
+                   {% block content %}
+    -                {% if page.edit_url %}
+    -                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-content__button md-icon">
+    -                    {% include ".icons/material/pencil.svg" %}
+    -                  </a>
+    -                {% endif %}
+    -                {% if not "\x3ch1" in page.content %}
+    -                  <h1>{{ page.title | d(config.site_name, true)}}</h1>
+    -                {% endif %}
+    -                {{ page.content }}
+    -                {% if page and page.meta %}
+    -                  {% if page.meta.git_revision_date_localized or
+    -                        page.meta.revision_date
+    -                  %}
+    -                    {% include "partials/source-file.html" %}
+    -                  {% endif %}
+    -                {% endif %}
+    -              {% endblock %}
+    -              {% block disqus %}
+    -                {% include "partials/integrations/disqus.html" %}
+    +                {% include "partials/content.html" %}
+                   {% endblock %}
+                 </article>
+               </div>
+    ```
 
     ``` diff
     @@ -38,13 +38,6 @@
@@ -213,30 +309,10 @@ matches the new structure:
 === ":octicons-file-code-16: partials/copyright.html"
 
     ``` diff
-    @@ -0,0 +1,39 @@
-    +<!--
-    +  Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
-    +
-    +  Permission is hereby granted, free of charge, to any person obtaining a copy
-    +  of this software and associated documentation files (the "Software"), to
-    +  deal in the Software without restriction, including without limitation the
-    +  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-    +  sell copies of the Software, and to permit persons to whom the Software is
-    +  furnished to do so, subject to the following conditions:
-    +
-    +  The above copyright notice and this permission notice shall be included in
-    +  all copies or substantial portions of the Software.
-    +
-    +  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    +  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    +  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-    +  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    +  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    +  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    +  IN THE SOFTWARE.
-    +-->
-    +
-    +<!-- Copyright and theme information -->
+    @@ -0,0 +1,16 @@
+    +{#-
+    +  This file was automatically generated - do not edit
+    +-#}
     +<div class="md-copyright">
     +  {% if config.copyright %}
     +    <div class="md-copyright__highlight">
@@ -245,10 +321,7 @@ matches the new structure:
     +  {% endif %}
     +  {% if not config.extra.generator == false %}
     +    Made with
-    +    <a
-    +      href="https://squidfunk.github.io/mkdocs-material/"
-    +      target="_blank" rel="noopener"
-    +    >
+    +    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
     +      Material for MkDocs
     +    </a>
     +  {% endif %}
@@ -258,12 +331,10 @@ matches the new structure:
 === ":octicons-file-code-16: partials/footer.html"
 
     ``` diff
-    @@ -83,28 +81,12 @@
-       <!-- Further information -->
+    @@ -41,21 +40,10 @@
+       {% endif %}
        <div class="md-footer-meta md-typeset">
          <div class="md-footer-meta__inner md-grid">
-    -
-    -      <!-- Copyright and theme information -->
     -      <div class="md-footer-copyright">
     -        {% if config.copyright %}
     -          <div class="md-footer-copyright__highlight">
@@ -272,19 +343,14 @@ matches the new structure:
     -        {% endif %}
     -        {% if not config.extra.generator == false %}
     -          Made with
-    -          <a
-    -            href="https://squidfunk.github.io/mkdocs-material/"
-    -            target="_blank" rel="noopener"
-    -          >
+    -          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
     -            Material for MkDocs
     -          </a>
     -        {% endif %}
     -        {{ extracopyright }}
     -      </div>
-    +      {% include "partials/copyright.html" %}
-
-           <!-- Social links -->
     -      {% include "partials/social.html" %}
+    +      {% include "partials/copyright.html" %}
     +      {% if config.extra.social %}
     +        {% include "partials/social.html" %}
     +      {% endif %}
@@ -296,8 +362,7 @@ matches the new structure:
 === ":octicons-file-code-16: partials/social.html"
 
     ``` diff
-    @@ -22,23 +22,21 @@
-    -<!-- Social links in footer -->
+    @@ -4,17 +4,15 @@
     -{% if config.extra.social %}
     -  <div class="md-footer-social">
     -    {% for social in config.extra.social %}
@@ -306,18 +371,12 @@ matches the new structure:
     -        {% set _,url = social.link.split("//") %}
     -        {% set title = url.split("/")[0] %}
     -      {% endif %}
-    -      <a
-    -        href="{{ social.link }}"
-    -        target="_blank" rel="noopener"
-    -        title="{{ title | e }}"
-    -        class="md-footer-social__link"
-    -      >
+    -      <a href="{{ social.link }}" target="_blank" rel="noopener" title="{{ title | e }}" class="md-footer-social__link">
     -        {% include ".icons/" ~ social.icon ~ ".svg" %}
     -      </a>
     -    {% endfor %}
     -  </div>
     -{% endif %}
-    +<!-- Social links -->
     +<div class="md-social">
     +  {% for social in config.extra.social %}
     +    {% set title = social.name %}
@@ -325,12 +384,7 @@ matches the new structure:
     +      {% set _, url = social.link.split("//") %}
     +      {% set title  = url.split("/")[0] %}
     +    {% endif %}
-    +    <a
-    +      href="{{ social.link }}"
-    +      target="_blank" rel="noopener"
-    +      title="{{ title | e }}"
-    +      class="md-social__link"
-    +    >
+    +    <a href="{{ social.link }}" target="_blank" rel="noopener" title="{{ title | e }}" class="md-social__link">
     +      {% include ".icons/" ~ social.icon ~ ".svg" %}
     +    </a>
     +  {% endfor %}

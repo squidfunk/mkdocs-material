@@ -62,7 +62,7 @@ Check out the versioning example to see it in action –
 
 ### Version warning
 
-[:octicons-tag-24: 8.0.0b1][Version warning support] ·
+[:octicons-tag-24: 8.0.0][Version warning support] ·
 :octicons-file-symlink-file-24: Customization
 
 If you're using versioning, you might want to display a warning when the user
@@ -102,7 +102,7 @@ extra:
 
 Make sure that this matches the [default version].
 
-  [Version warning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0b1
+  [Version warning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [theme extension]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
   [Version warning preview]: ../assets/screenshots/version-warning.png

@@ -97,7 +97,7 @@ assets may also be put in the `overrides` directory:
 ├─ assets/
 │  ├─ images/                          # Images and icons
 │  ├─ javascripts/                     # JavaScript files
-│  └─ stylesheets/                     # Stylesheets
+│  └─ stylesheets/                     # Style sheets
 ├─ partials/
 │  ├─ integrations/                    # Third-party integrations
 │  │  ├─ analytics/                    # Analytics integrations

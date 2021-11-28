@@ -41,7 +41,7 @@ especially useful for large documentation sites.
 
 ### Anchor tracking
 
-[:octicons-tag-24: 8.0.0b1][Anchor tracking support] ·
+[:octicons-tag-24: 8.0.0][Anchor tracking support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -55,7 +55,7 @@ theme:
     - navigation.tracking
 ```
 
-  [Anchor tracking support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0b1
+  [Anchor tracking support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
 
 ### Navigation tabs
 
