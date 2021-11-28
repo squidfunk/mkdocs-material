@@ -60,7 +60,8 @@ $admonitions: (
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Admonition and Details
+  // Admonition - note that all styles also apply to details tags, which are
+  // rendered as collapsible admonitions with summary elements as titles.
   :is(.admonition, details) {
     display: flow-root;
     margin: px2em(20px, 12.8px) 0;

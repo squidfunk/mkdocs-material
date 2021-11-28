@@ -346,7 +346,7 @@ kbd {
   }
 
   // Unordered and ordered list
-  :is(ul, ol) {
+  :is(ul, ol):not([hidden]) {
     display: flow-root;
     margin-left: px2em(10px);
     padding: 0;

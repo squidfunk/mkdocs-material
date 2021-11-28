@@ -62,6 +62,12 @@
     "font-family-name-quotes": "always-where-recommended",
     "font-weight-notation": "numeric",
     "hue-degree-notation": "number",
+    "length-zero-no-unit": [
+      true,
+      {
+        "ignore": ["custom-properties"]
+      }
+    ],
     "linebreaks": "unix",
     "media-feature-name-no-unknown": null,
     "no-descending-specificity": null,
@@ -144,6 +150,7 @@
     "scss/at-extend-no-missing-placeholder": null,
     "scss/no-duplicate-mixins": true,
     "scss/no-global-function-names": null,
+    "scss/operator-no-newline-after": null,
     "scss/operator-no-unspaced": true,
     "scss/partial-no-import": true,
     "scss/percent-placeholder-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
