@@ -25,6 +25,7 @@ import {
   Subject,
   bufferCount,
   combineLatest,
+  debounceTime,
   defer,
   distinctUntilChanged,
   distinctUntilKeyChanged,
@@ -34,7 +35,10 @@ import {
   scan,
   startWith,
   switchMap,
-  tap
+  takeLast,
+  takeUntil,
+  tap,
+  withLatestFrom
 } from "rxjs"
 
 import { feature } from "~/_"
@@ -243,7 +247,7 @@ export function watchTableOfContents(
  * @returns Table of contents component observable
  */
 export function mountTableOfContents(
-  el: HTMLElement, options: MountOptions
+  el: HTMLElement, { viewport$, header$ }: MountOptions
 ): Observable<Component<TableOfContents>> {
   return defer(() => {
     const push$ = new Subject<TableOfContents>()
@@ -265,31 +269,39 @@ export function mountTableOfContents(
           index === prev.length - 1
         )
       }
-
-      /* Set up anchor tracking, if enabled */
-      if (feature("navigation.tracking")) {
-        const url = getLocation()
-
-        /* Set hash fragment to active anchor */
-        const anchor = prev[prev.length - 1]
-        if (anchor && anchor.length) {
-          const [active] = anchor
-          const { hash } = new URL(active.href)
-          if (url.hash !== hash) {
-            url.hash = hash
-            history.replaceState({}, "", `${url}`)
-          }
-
-        /* Reset anchor when at the top */
-        } else {
-          url.hash = ""
-          history.replaceState({}, "", `${url}`)
-        }
-      }
     })
 
+    /* Set up anchor tracking, if enabled */
+    if (feature("navigation.tracking"))
+      viewport$
+        .pipe(
+          takeUntil(push$.pipe(takeLast(1))),
+          debounceTime(250),
+          distinctUntilKeyChanged("offset"),
+          withLatestFrom(push$)
+        )
+          .subscribe(([, { prev }]) => {
+            const url = getLocation()
+
+            /* Set hash fragment to active anchor */
+            const anchor = prev[prev.length - 1]
+            if (anchor && anchor.length) {
+              const [active] = anchor
+              const { hash } = new URL(active.href)
+              if (url.hash !== hash) {
+                url.hash = hash
+                history.replaceState({}, "", `${url}`)
+              }
+
+            /* Reset anchor when at the top */
+            } else {
+              url.hash = ""
+              history.replaceState({}, "", `${url}`)
+            }
+          })
+
     /* Create and return component */
-    return watchTableOfContents(el, options)
+    return watchTableOfContents(el, { viewport$, header$ })
       .pipe(
         tap(state => push$.next(state)),
         finalize(() => push$.complete()),

@@ -1,3 +1,25 @@
+mkdocs-material-8.0.0 (2021-11-28)
+
+  * Added support for code annotations
+  * Added support for anchor tracking
+  * Added support for version warning
+  * Added copyright partial for easier override
+  * Removed deprecated content tabs legacy implementation
+  * Removed deprecated seealso admonition type
+  * Removed deprecated site_keywords setting (unsupported by MkDocs)
+  * Removed deprecated prebuilt search index support
+  * Removed deprecated web app manifest – use customization
+  * Removed extracopyright variable – use new copyright partial
+  * Removed Disqus integation – use customization
+  * Switched to :is() selectors for simple selector lists
+  * Switched autoprefixer from last 4 years to last 2 years
+  * Improved CSS overall to match modern standards
+  * Improved CSS variable semantics for fonts
+  * Improved extensibility by restructuring partials
+  * Improved handling of details when printing
+  * Improved keyboard navigation for footnotes
+  * Fixed #3214: Search highlighting breaks site when empty
+
 mkdocs-material-7.3.6+insiders-3.2.3 (2021-11-20)
 
   * Updated Swedish and French translations
