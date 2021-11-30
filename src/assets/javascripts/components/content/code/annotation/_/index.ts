@@ -123,7 +123,7 @@ export function mountAnnotation(
     })
 
     /* Blur open annotation on click (= close) */
-    const index = getElement(":scope > :last-child")
+    const index = getElement(":scope > :last-child", el)
     const blur$ = fromEvent(index, "mousedown", { once: true })
     push$
       .pipe(
