@@ -66,6 +66,31 @@ viewports]:
   [Tabbed]: setup/extensions/python-markdown-extensions.md#tabbed
   [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
 
+#### `google_analytics`
+
+This option was [deprecated in MkDocs 1.2.0], as the implementation of a
+JavaScript-based analytics integration is the responsibility of a theme.
+The following lines must be changed:
+
+=== "8.x"
+
+    ``` yaml
+    extra:
+      analytics:
+        provider: google
+        property: UA-XXXXXXXX-X
+    ```
+
+=== "7.x"
+
+    ``` yaml
+    google_analytics:
+      - UA-XXXXXXXX-X
+      - auto
+    ```
+
+  [deprecated in MkDocs 1.2.0]: https://www.mkdocs.org/about/release-notes/#backward-incompatible-changes-in-12
+
 ### Changes to `*.html` files { data-search-exclude }
 
 The templates have undergone a set of changes to make them future-proof. If

@@ -1,9 +1,6 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% if config.google_analytics %}
-  {% set property = config.google_analytics[0] %}
-{% endif %}
 {% if config.extra.analytics %}
   {% set property = config.extra.analytics.property | d("", true) %}
 {% endif %}

@@ -20,11 +20,6 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Determine analytics property (deprecated, removed in v8) -->
-{% if config.google_analytics %}
-  {% set property = config.google_analytics[0] %}
-{% endif %}
-
 <!-- Determine analytics property -->
 {% if config.extra.analytics %}
   {% set property = config.extra.analytics.property | d("", true) %}

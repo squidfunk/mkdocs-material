@@ -20,11 +20,6 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Determine analytics provider (deprecated, removed in v8) -->
-{% if config.google_analytics %}
-  {% set provider = "google" %}
-{% endif %}
-
 <!-- Determine analytics provider -->
 {% if config.extra.analytics %}
   {% set provider = config.extra.analytics.provider %}
