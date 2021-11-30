@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.1.0 <small>_ November 30, 2021</small> { id="4.0.0" }
+
+- Added support for passing page title to feedback forms
+
 ### 4.0.0 <small>_ November 28, 2021</small> { id="4.0.0" }
 
 - Removed deprecated content tabs legacy implementation

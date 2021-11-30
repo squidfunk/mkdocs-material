@@ -1,3 +1,7 @@
+mkdocs-material-8.0.2+insiders-4.1.0 (2021-11-30)
+
+  * Added support for passing page title to feedback forms
+
 mkdocs-material-8.0.2 (2021-11-30)
 
   * Fixed #3275: Code annotations always disappear on click

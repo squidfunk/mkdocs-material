@@ -173,7 +173,7 @@ Then, e.g. to override the site title, add the following lines to `main.html`:
 The following template blocks are provided by the theme:
 
 | Block name        | Purpose                                         |
-|:------------------|:------------------------------------------------|
+| :---------------- | :---------------------------------------------- |
 | `analytics`       | Wraps the Google Analytics integration          |
 | `announce`        | Wraps the announcement bar                      |
 | `config`          | Wraps the JavaScript application config         |

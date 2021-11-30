@@ -168,11 +168,14 @@ The following properties must be set for each rating:
     The value of this property is shown after the user selected the rating.
     It may contain arbitrary HTML tags, which is especially useful to ask the
     user to provide more detailed feedback for the current page through a form.
-    It's also possible to pre-fill forms with the path to the current page by
-    using the `{}` placeholder, e.g.:
+    It's also possible to pre-fill forms with the URL and title of the current
+    page by using the following placeholders:
 
-    ``` url
-    https://github.com/<username>/<repository>/issues/new/?title=[Feedback]+{}
+    - `{url}` – Page URL
+    - `{title}` – Page title
+
+    ```
+    https://github.com/.../issues/new/?title=[Feedback]+{title}+-+{url}
     ```
 
     In this example, when clicking the link, the user is redirected to the "new 
@@ -180,7 +183,7 @@ The following properties must be set for each rating:
     of the current document, e.g.:
 
     ```
-    [Feedback] /setup/setting-up-site-analytics/
+    [Feedback] Setting up site analytics – /setup/setting-up-site-analytics/
     ```
 
     An alternative to GitHub issues is [Google Forms].
