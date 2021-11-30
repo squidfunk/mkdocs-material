@@ -1,3 +1,7 @@
+mkdocs-material-8.0.2 (2021-11-30)
+
+  * Fixed #3275: Code annotations always disappear on click
+
 mkdocs-material-8.0.1 (2021-11-28)
 
   * Improved rendering of code annotation markers
