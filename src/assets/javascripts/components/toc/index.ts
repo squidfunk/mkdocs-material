@@ -276,8 +276,8 @@ export function mountTableOfContents(
       viewport$
         .pipe(
           takeUntil(push$.pipe(takeLast(1))),
-          debounceTime(250),
           distinctUntilKeyChanged("offset"),
+          debounceTime(250),
           withLatestFrom(push$)
         )
           .subscribe(([, { prev }]) => {

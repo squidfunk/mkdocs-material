@@ -27,10 +27,12 @@ import {
   combineLatest,
   distinctUntilChanged,
   distinctUntilKeyChanged,
+  endWith,
   finalize,
   map,
-  tap,
-  withLatestFrom
+  takeLast,
+  takeUntil,
+  tap
 } from "rxjs"
 
 import { Viewport } from "~/browser"
@@ -129,36 +131,36 @@ export function mountBackToTop(
   el: HTMLElement, { viewport$, header$, main$ }: MountOptions
 ): Observable<Component<BackToTop>> {
   const push$ = new Subject<BackToTop>()
-  push$
+  push$.subscribe({
+
+    /* Handle emission */
+    next({ hidden }) {
+      if (hidden) {
+        el.setAttribute("data-md-state", "hidden")
+        el.setAttribute("tabindex", "-1")
+        el.blur()
+      } else {
+        el.removeAttribute("data-md-state")
+        el.removeAttribute("tabindex")
+      }
+    },
+
+    /* Handle complete */
+    complete() {
+      el.style.top = ""
+      el.removeAttribute("data-md-state")
+      el.removeAttribute("tabindex")
+    }
+  })
+
+  /* Watch header height */
+  header$
     .pipe(
-      withLatestFrom(header$
-        .pipe(
-          distinctUntilKeyChanged("height")
-        )
-      )
+      takeUntil(push$.pipe(endWith(0), takeLast(1))),
+      distinctUntilKeyChanged("height")
     )
-      .subscribe({
-
-        /* Handle emission */
-        next([{ hidden }, { height }]) {
-          el.style.top = `${height + 16}px`
-          if (hidden) {
-            el.setAttribute("data-md-state", "hidden")
-            el.setAttribute("tabindex", "-1")
-            el.blur()
-          } else {
-            el.style.top = ""
-            el.removeAttribute("data-md-state")
-            el.removeAttribute("tabindex")
-          }
-        },
-
-        /* Handle complete */
-        complete() {
-          el.style.top = ""
-          el.removeAttribute("data-md-state")
-          el.removeAttribute("tabindex")
-        }
+      .subscribe(({ height }) => {
+        el.style.top = `${height + 16}px`
       })
 
   /* Create and return component */
