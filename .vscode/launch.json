@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Application",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "runtimeArgs": [
+        "--disable-features=Translate",
+        "--incognito"
+      ],
+      "url": "http://localhost:8000/mkdocs-material/",
+      "webRoot": ".",
+      "smartStep": true
+    }
+  ]
+}

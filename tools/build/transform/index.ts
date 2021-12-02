@@ -170,6 +170,7 @@ export function transformScript(
     write: false,
     bundle: true,
     sourcemap: true,
+    sourceRoot: "../../../..",
     legalComments: "inline",
     minify: process.argv.includes("--optimize")
   }))
