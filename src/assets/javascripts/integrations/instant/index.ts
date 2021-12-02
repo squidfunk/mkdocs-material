@@ -326,13 +326,13 @@ export function setupInstantLoading(
   /* Emit history state change */
   merge(push$, pop$)
     .pipe(
-      sample(document$),
+      sample(document$)
     )
-      .subscribe(({ url, offset = { y: 0 } }) => {
+      .subscribe(({ url, offset }) => {
         if (url.hash && !offset) {
           setLocationHash(url.hash)
         } else {
-          window.scrollTo(0, offset.y)
+          window.scrollTo(0, offset?.y || 0)
         }
       })
 
@@ -354,7 +354,7 @@ export function setupInstantLoading(
       filter(([a, b]) => a.url.pathname === b.url.pathname),
       map(([, state]) => state)
     )
-      .subscribe(({ offset = { y: 0 } }) => {
-        window.scrollTo(0, offset.y)
+      .subscribe(({ offset }) => {
+        window.scrollTo(0, offset?.y || 0)
       })
 }
