@@ -6,6 +6,13 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.0.3 <small>_ December 2, 2021</small> { id="8.0.3" }
+
+- Removed deprecated `google_analytics` setting (was forgotten in 8.0.0)
+- Fixed syntax error in Swedish and Polish translations
+- Fixed #3283: Invalid back-to-top button position with sticky navigation tabs
+- Fixed #3285: Default details marker showing due to Safari bug
+
 ### 8.0.2 <small>_ November 30, 2021</small> { id="8.0.2" }
 
 - Fixed #3275: Code annotations always disappear on click

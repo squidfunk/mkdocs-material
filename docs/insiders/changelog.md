@@ -6,7 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
-### 4.1.0 <small>_ November 30, 2021</small> { id="4.0.0" }
+### 4.2.0 <small>_ December 2, 2021</small> { id="4.2.0" }
+
+- Added support for dismissable announcement bar
+- Added support for named placeholders in feedback widget
+
+### 4.1.0 <small>_ November 30, 2021</small> { id="4.1.0" }
 
 - Added support for passing page title to feedback forms
 
