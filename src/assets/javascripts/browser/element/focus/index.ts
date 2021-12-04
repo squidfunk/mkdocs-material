@@ -39,8 +39,8 @@ import { getActiveElement } from "../_"
  *
  * Previously, this function used `focus` and `blur` events to determine whether
  * an element is focused, but this doesn't work if there are focusable elements
- * within the elements itself. A better solutions it to use `focusin/out` events
- * events which bubble up the tree and allow for more fine-grained control.
+ * within the elements itself. A better solutions are `focusin` and `focusout`
+ * events, which bubble up the tree and allow for more fine-grained control.
  *
  * @param el - Element
  *

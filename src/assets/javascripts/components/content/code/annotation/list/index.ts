@@ -21,6 +21,7 @@
  */
 
 import {
+  EMPTY,
   Observable,
   Subject,
   defer,
@@ -117,6 +118,10 @@ export function mountAnnotationList(
     annotations.set(+id, renderAnnotation(+id))
     marker.replaceWith(annotations.get(+id)!)
   }
+
+  /* Keep list if there are no annotations to render */
+  if (annotations.size === 0)
+    return EMPTY
 
   /* Create and return component */
   return defer(() => {
