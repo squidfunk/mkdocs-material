@@ -134,8 +134,20 @@ export function mountAnnotation(
         map(() => container.getBoundingClientRect()),
         map(({ x }) => x)
       )
-        .subscribe(origin => {
-          el.style.setProperty("--md-tooltip-0", `${-origin}px`)
+        .subscribe({
+
+          /* Handle emission */
+          next(origin) {
+            if (origin)
+              el.style.setProperty("--md-tooltip-0", `${-origin}px`)
+            else
+              el.style.removeProperty("--md-tooltip-0")
+          },
+
+          /* Handle complete */
+          complete() {
+            el.style.removeProperty("--md-tooltip-0")
+          }
         })
 
     /* Close open annotation on click */

@@ -56,9 +56,20 @@
   top: var(--md-tooltip-y);
   left:
     clamp(
-      #{px2rem(16px)},
-      calc(var(--md-tooltip-x) - #{px2rem(16px)}),
-      calc(100vw - var(--md-tooltip-width) - #{px2rem(16px)})
+      calc(
+        var(--md-tooltip-0, #{px2rem(0px)}) +
+        #{px2rem(16px)}
+      ),
+      var(--md-tooltip-x),
+      calc(
+        100vw -
+        var(--md-tooltip-width) +
+        calc(
+          var(--md-tooltip-0, #{px2rem(0px)}) +
+          #{px2rem(16px)}
+        ) -
+        2 * #{px2rem(16px)}
+      )
     );
   // Hack: set an explicit `z-index` so we can transition it to ensure that any
   // following elements are not overlaying the tooltip during the transition.
@@ -144,23 +155,6 @@
   // Code annotation wrapper (= tooltip)
   &__inner {
     top: calc(var(--md-tooltip-y) + 1.2ch);
-    left:
-      clamp(
-        calc(
-          var(--md-tooltip-0, 0) +
-          #{px2rem(16px)}
-        ),
-        var(--md-tooltip-x),
-        calc(
-          100vw -
-          var(--md-tooltip-width) +
-          calc(
-            var(--md-tooltip-0, 0) +
-            #{px2rem(16px)}
-          ) -
-          2 * #{px2rem(16px)}
-        )
-      );
     font-family: var(--md-text-font-family);
 
     // Code annotation tooltip when not focused
