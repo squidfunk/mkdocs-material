@@ -6,6 +6,16 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.0.4 <small>_ December 4, 2021</small> { id="8.0.4" }
+
+- Improved support for deeply nested code annotations
+- Improved code annotation and copy-to-clipboard interop
+- Improved styling for code annotations inside admonitions
+- Fixed #3294: Lists after code blocks without code annotations disappearing
+- Fixed #3274: Invalid anchor positioning when using instant loading
+- Fixed several positioning issues for code annotations
+- Fixed JavaScript source map roots
+
 ### 8.0.3 <small>_ December 2, 2021</small> { id="8.0.3" }
 
 - Removed deprecated `google_analytics` setting (was forgotten in 8.0.0)
