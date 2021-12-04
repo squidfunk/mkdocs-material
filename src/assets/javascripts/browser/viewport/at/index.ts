@@ -23,29 +23,25 @@
 import {
   Observable,
   combineLatest,
-  map,
-  shareReplay
+  distinctUntilKeyChanged,
+  map
 } from "rxjs"
 
-import {
-  ViewportOffset,
-  watchViewportOffset
-} from "../offset"
-import {
-  ViewportSize,
-  watchViewportSize
-} from "../size"
+import { Header } from "~/components"
+
+import { getElementOffset } from "../../element"
+import { Viewport } from "../_"
 
 /* ----------------------------------------------------------------------------
- * Types
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Viewport
+ * Watch options
  */
-export interface Viewport {
-  offset: ViewportOffset               /* Viewport offset */
-  size: ViewportSize                   /* Viewport size */
+interface WatchOptions {
+  viewport$: Observable<Viewport>      /* Viewport observable */
+  header$: Observable<Header>          /* Header observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -53,17 +49,36 @@ export interface Viewport {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch viewport
+ * Watch viewport relative to element
+ *
+ * @param el - Element
+ * @param options - Options
  *
  * @returns Viewport observable
  */
-export function watchViewport(): Observable<Viewport> {
-  return combineLatest([
-    watchViewportOffset(),
-    watchViewportSize()
-  ])
+export function watchViewportAt(
+  el: HTMLElement, { viewport$, header$ }: WatchOptions
+): Observable<Viewport> {
+  const size$ = viewport$
     .pipe(
-      map(([offset, size]) => ({ offset, size })),
-      shareReplay(1)
+      distinctUntilKeyChanged("size")
+    )
+
+  /* Compute element offset */
+  const offset$ = combineLatest([size$, header$])
+    .pipe(
+      map(() => getElementOffset(el))
+    )
+
+  /* Compute relative viewport, return hot observable */
+  return combineLatest([header$, viewport$, offset$])
+    .pipe(
+      map(([{ height }, { offset, size }, { x, y }]) => ({
+        offset: {
+          x: offset.x - x,
+          y: offset.y - y + height
+        },
+        size
+      }))
     )
 }
