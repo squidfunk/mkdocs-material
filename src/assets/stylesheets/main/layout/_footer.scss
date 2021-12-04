@@ -36,6 +36,8 @@
 
   // Footer wrapper
   &__inner {
+    display: flex;
+    justify-content: space-between;
     padding: px2rem(4px);
     overflow: auto;
   }
@@ -48,11 +50,6 @@
     outline-color: var(--md-accent-fg-color);
     transition: opacity 250ms;
 
-    // [tablet +]: Adjust width to 50/50
-    @include break-from-device(tablet) {
-      width: 50%;
-    }
-
     // Footer link on focus/hover
     &:is(:focus, :hover) {
       opacity: 0.7;
@@ -60,11 +57,9 @@
 
     // Footer link to previous page
     &--prev {
-      float: left;
 
       // [mobile -]: Adjust width to 25/75 and hide title
       @include break-to-device(mobile) {
-        width: 25%;
 
         // Hide footer title
         .md-footer__title {
@@ -74,7 +69,6 @@
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        float: right;
 
         // Flip icon vertically
         svg {
@@ -85,17 +79,10 @@
 
     // Footer link to next page
     &--next {
-      float: right;
       text-align: right;
-
-      // [mobile -]: Adjust width to 25/75
-      @include break-to-device(mobile) {
-        width: 75%;
-      }
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        float: left;
         text-align: left;
 
         // Flip icon vertically
