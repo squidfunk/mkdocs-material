@@ -22,11 +22,9 @@
 
 import {
   Observable,
-  animationFrameScheduler,
   combineLatest,
   delay,
   map,
-  observeOn,
   of,
   switchMap,
   withLatestFrom
@@ -71,8 +69,7 @@ export function patchScrolllock(
       map(([active, tablet]) => active && !tablet),
       switchMap(active => of(active)
         .pipe(
-          delay(active ? 400 : 100),
-          observeOn(animationFrameScheduler)
+          delay(active ? 400 : 100)
         )
       ),
       withLatestFrom(viewport$)

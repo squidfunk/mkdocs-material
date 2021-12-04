@@ -24,7 +24,6 @@ import { filter as search } from "fuzzaldrin-plus"
 import {
   Observable,
   Subject,
-  animationFrameScheduler,
   bufferCount,
   combineLatest,
   distinctUntilKeyChanged,
@@ -32,7 +31,6 @@ import {
   finalize,
   map,
   merge,
-  observeOn,
   of,
   switchMap,
   tap,
@@ -152,7 +150,6 @@ export function mountIconSearchResult(
   const meta = getElement(":scope > :first-child", el)
   push$
     .pipe(
-      observeOn(animationFrameScheduler),
       withLatestFrom(query$)
     )
       .subscribe(([{ data }, { value }]) => {
@@ -185,7 +182,6 @@ export function mountIconSearchResult(
   const list = getElement(":scope > :last-child", el)
   push$
     .pipe(
-      observeOn(animationFrameScheduler),
       tap(() => list.innerHTML = ""),
       switchMap(({ data }) => merge(
         of(...data.slice(0, 10)),
