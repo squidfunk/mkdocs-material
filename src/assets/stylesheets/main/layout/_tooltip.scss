@@ -146,25 +146,22 @@
     top: calc(var(--md-tooltip-y) + 1.2ch);
     left:
       clamp(
-        #{px2rem(0px)},
-        calc(var(--md-tooltip-x) + #{px2rem(12px)}),
-        calc(100vw - var(--md-tooltip-width) - 2 * #{px2rem(16px)})
+        calc(
+          var(--md-tooltip-0, 0) +
+          #{px2rem(16px)}
+        ),
+        var(--md-tooltip-x),
+        calc(
+          100vw -
+          var(--md-tooltip-width) +
+          calc(
+            var(--md-tooltip-0, 0) +
+            #{px2rem(16px)}
+          ) -
+          2 * #{px2rem(16px)}
+        )
       );
     font-family: var(--md-text-font-family);
-
-    // [mobile -]: Align with body copy
-    @include break-to-device(mobile) {
-
-      // Top-level code block
-      .md-content__inner > :is(pre, .highlight) & {
-        left:
-          clamp(
-            #{px2rem(16px)},
-            calc(var(--md-tooltip-x) + #{px2rem(12px)}),
-            calc(100vw - var(--md-tooltip-width) - #{px2rem(16px)})
-          );
-      }
-    }
 
     // Code annotation tooltip when not focused
     :not(:focus-within) > & {
@@ -189,8 +186,8 @@
     // alignment of text following a code annotation.
     &::after {
       position: absolute;
-      top: 0.1ch;
-      left: -0.2ch;
+      top: 0.025em;
+      left: -0.126em;
       z-index: -1;
       width: max(2.2ch, 100% + 1.2ch);
       height: 2.2ch;

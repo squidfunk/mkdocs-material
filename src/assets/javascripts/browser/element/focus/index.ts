@@ -37,6 +37,11 @@ import { getActiveElement } from "../_"
 /**
  * Watch element focus
  *
+ * Previously, this function used `focus` and `blur` events to determine whether
+ * an element is focused, but this doesn't work if there are focusable elements
+ * within the elements itself. A better solutions it to use `focusin/out` events
+ * events which bubble up the tree and allow for more fine-grained control.
+ *
  * @param el - Element
  *
  * @returns Element focus observable
@@ -45,11 +50,16 @@ export function watchElementFocus(
   el: HTMLElement
 ): Observable<boolean> {
   return merge(
-    fromEvent<FocusEvent>(el, "focus"),
-    fromEvent<FocusEvent>(el, "blur")
+    fromEvent(document.body, "focusin"),
+    fromEvent(document.body, "focusout")
   )
     .pipe(
-      map(({ type }) => type === "focus"),
+      map(() => {
+        const active = getActiveElement()
+        return typeof active !== "undefined"
+          ? el.contains(active)
+          : false
+      }),
       startWith(el === getActiveElement())
     )
 }

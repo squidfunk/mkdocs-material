@@ -31,12 +31,14 @@ import {
   map,
   switchMap,
   take,
-  tap
+  tap,
+  throttleTime
 } from "rxjs"
 
 import {
   ElementOffset,
   getElement,
+  getElementSize,
   watchElementContentOffset,
   watchElementFocus,
   watchElementOffset
@@ -76,10 +78,13 @@ export function watchAnnotation(
     watchElementContentOffset(container)
   ]))
     .pipe(
-      map(([{ x, y }, scroll]) => ({
-        x: x - scroll.x,
-        y: y - scroll.y
-      }))
+      map(([{ x, y }, scroll]) => {
+        const { width } = getElementSize(el)
+        return ({
+          x: x - scroll.x + width / 2,
+          y: y - scroll.y
+        })
+      })
     )
 
   /* Actively watch code annotation on focus */
@@ -122,7 +127,18 @@ export function mountAnnotation(
       }
     })
 
-    /* Blur open annotation on click (= close) */
+    /* Track relative origin of tooltip */
+    push$
+      .pipe(
+        throttleTime(500),
+        map(() => container.getBoundingClientRect()),
+        map(({ x }) => x)
+      )
+        .subscribe(origin => {
+          el.style.setProperty("--md-tooltip-0", `${-origin}px`)
+        })
+
+    /* Close open annotation on click */
     const index = getElement(":scope > :last-child", el)
     const blur$ = fromEvent(index, "mousedown", { once: true })
     push$

@@ -97,7 +97,6 @@ const keyboard$ = watchKeyboard()
 const viewport$ = watchViewport()
 const tablet$   = watchMedia("(min-width: 960px)")
 const screen$   = watchMedia("(min-width: 1220px)")
-const hover$    = watchMedia("(hover)")
 const print$    = watchPrint()
 
 /* Retrieve search index, if search is enabled */
@@ -199,7 +198,7 @@ const content$ = defer(() => merge(
 
   /* Content */
   ...getComponentElements("content")
-    .map(el => mountContent(el, { target$, hover$, print$ })),
+    .map(el => mountContent(el, { target$, print$ })),
 
   /* Search highlighting */
   ...getComponentElements("content")
@@ -254,7 +253,6 @@ window.keyboard$  = keyboard$          /* Keyboard observable */
 window.viewport$  = viewport$          /* Viewport observable */
 window.tablet$    = tablet$            /* Media tablet observable */
 window.screen$    = screen$            /* Media screen observable */
-window.hover$     = hover$             /* Media hover observable */
 window.print$     = print$             /* Media print observable */
 window.alert$     = alert$             /* Alert subject */
 window.component$ = component$         /* Component observable */

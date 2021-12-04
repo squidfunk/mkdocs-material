@@ -33,8 +33,7 @@ import {
   switchMap,
   takeLast,
   takeUntil,
-  tap,
-  withLatestFrom
+  tap
 } from "rxjs"
 
 import { feature } from "~/_"
@@ -69,7 +68,6 @@ export interface CodeBlock {
  * Mount options
  */
 interface MountOptions {
-  hover$: Observable<boolean>          /* Media hover observable */
   print$: Observable<boolean>          /* Media print observable */
 }
 
@@ -87,13 +85,13 @@ let sequence = 0
  * ------------------------------------------------------------------------- */
 
 /**
- * Find the code annotations belonging to a code block
+ * Find candidate list element directly following a code block
  *
  * @param el - Code block element
  *
- * @returns Code annotation list or nothing
+ * @returns List element or nothing
  */
-function findAnnotationList(el: HTMLElement): HTMLElement | undefined {
+function findCandidateList(el: HTMLElement): HTMLElement | undefined {
   if (el.nextElementSibling) {
     const sibling = el.nextElementSibling as HTMLElement
     if (sibling.tagName === "OL")
@@ -101,7 +99,7 @@ function findAnnotationList(el: HTMLElement): HTMLElement | undefined {
 
     /* Skip empty paragraphs - see https://bit.ly/3r4ZJ2O */
     else if (sibling.tagName === "P" && !sibling.children.length)
-      return findAnnotationList(sibling)
+      return findCandidateList(sibling)
   }
 
   /* Everything else */
@@ -151,20 +149,17 @@ export function watchCodeBlock(
  * @returns Code block and annotation component observable
  */
 export function mountCodeBlock(
-  el: HTMLElement, { hover$, ...options }: MountOptions
+  el: HTMLElement, options: MountOptions
 ): Observable<Component<CodeBlock | Annotation>> {
+  const { matches: hover } = matchMedia("(hover)")
   return defer(() => {
     const push$ = new Subject<CodeBlock>()
-    push$
-      .pipe(
-        withLatestFrom(hover$)
-      )
-        .subscribe(([{ scrollable: scroll }, hover]) => {
-          if (scroll && hover)
-            el.setAttribute("tabindex", "0")
-          else
-            el.removeAttribute("tabindex")
-        })
+    push$.subscribe(({ scrollable }) => {
+      if (scrollable && hover)
+        el.setAttribute("tabindex", "0")
+      else
+        el.removeAttribute("tabindex")
+    })
 
     /* Render button for Clipboard.js integration */
     if (ClipboardJS.isSupported()) {
@@ -177,11 +172,12 @@ export function mountCodeBlock(
     }
 
     /* Handle code annotations */
-    const container =
-      el.closest(".highlighttable") ||
-      el.closest(".highlight")
+    const container = el.closest([
+      ":not(td.code) > .highlight",    /* Code blocks */
+      ".highlighttable"                /* Code blocks with line numbers */
+    ].join(", "))
     if (container instanceof HTMLElement) {
-      const list = findAnnotationList(container)
+      const list = findCandidateList(container)
 
       /* Mount code annotations, if enabled */
       if (typeof list !== "undefined" && (
