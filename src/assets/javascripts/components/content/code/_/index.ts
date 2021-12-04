@@ -26,6 +26,7 @@ import {
   Observable,
   Subject,
   defer,
+  distinctUntilChanged,
   distinctUntilKeyChanged,
   finalize,
   map,
@@ -195,11 +196,11 @@ export function mountCodeBlock(
             mergeWith(watchElementSize(container)
               .pipe(
                 takeUntil(push$.pipe(takeLast(1))),
-                switchMap(({ width, height }) => width && height
-                  ? annotations$
-                  : EMPTY
-                )
-              ))
+                map(({ width, height }) => width && height),
+                distinctUntilChanged(),
+                switchMap(active => active ? annotations$ : EMPTY)
+              )
+            )
           )
       }
     }

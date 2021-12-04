@@ -28,7 +28,6 @@ import {
   finalize,
   merge,
   share,
-  startWith,
   takeLast,
   takeUntil
 } from "rxjs"
@@ -100,6 +99,11 @@ function swap(source: HTMLElement, target: HTMLElement): void {
 /**
  * Mount code annotation list
  *
+ * This function analyzes the given container code block and checks for markers
+ * referring to elements in the given code annotation list. If no markers are
+ * found, the list is left untouched. Otherwise, list elements are rendered as
+ * code annotations inside the code block.
+ *
  * @param el - Code annotation list element
  * @param container - Containing code block element
  * @param options - Options
@@ -107,9 +111,8 @@ function swap(source: HTMLElement, target: HTMLElement): void {
  * @returns Code annotation list component observable
  */
 export function mountAnnotationList(
-  el: HTMLElement, container: HTMLElement, options: MountOptions
+  el: HTMLElement, container: HTMLElement, { print$ }: MountOptions
 ): Observable<Component<Annotation>> {
-  const { print$ } = options
 
   /* Find and replace all markers with empty annotations */
   const annotations = new Map<number, HTMLElement>()
@@ -130,7 +133,6 @@ export function mountAnnotationList(
     /* Handle print mode - see https://bit.ly/3rgPdpt */
     print$
       .pipe(
-        startWith(false),
         takeUntil(done$.pipe(takeLast(1)))
       )
         .subscribe(active => {

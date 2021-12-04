@@ -63,10 +63,14 @@ export function watchMedia(query: string): Observable<boolean> {
  * @returns Print observable
  */
 export function watchPrint(): Observable<boolean> {
+  const media = matchMedia("print")
   return merge(
     fromEvent(window, "beforeprint").pipe(mapTo(true)),
     fromEvent(window, "afterprint").pipe(mapTo(false))
   )
+    .pipe(
+      startWith(media.matches)
+    )
 }
 
 /* ------------------------------------------------------------------------- */
