@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+export * from "./annotation"
 export * from "./clipboard"
-export * from "./code"
 export * from "./search"
 export * from "./source"
 export * from "./table"
