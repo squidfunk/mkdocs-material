@@ -46,7 +46,7 @@ import { Header } from "../header"
 export interface Main {
   offset: number                       /* Main area top offset */
   height: number                       /* Main area visible height */
-  active: boolean                      /* User scrolled past header */
+  active: boolean                      /* Main area is active */
 }
 
 /* ----------------------------------------------------------------------------

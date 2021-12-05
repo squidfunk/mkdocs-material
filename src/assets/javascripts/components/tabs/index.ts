@@ -50,7 +50,7 @@ import { Header } from "../header"
  * Navigation tabs
  */
 export interface Tabs {
-  hidden: boolean                      /* User scrolled past tabs */
+  hidden: boolean                      /* Navigation tabs are hidden */
 }
 
 /* ----------------------------------------------------------------------------

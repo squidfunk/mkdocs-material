@@ -46,7 +46,7 @@ import { Component } from "../_"
  */
 export interface Dialog {
   message: string                      /* Dialog message */
-  open: boolean                        /* Dialog is visible */
+  active: boolean                      /* Dialog is active */
 }
 
 /* ----------------------------------------------------------------------------
@@ -89,7 +89,7 @@ export function watchDialog(
         of(false).pipe(delay(2000))
       )
         .pipe(
-          map(open => ({ message, open }))
+          map(active => ({ message, active }))
         )
       )
     )
@@ -112,9 +112,9 @@ export function mountDialog(
   const inner = getElement(".md-typeset", el)
   return defer(() => {
     const push$ = new Subject<Dialog>()
-    push$.subscribe(({ message, open }) => {
+    push$.subscribe(({ message, active }) => {
       inner.textContent = message
-      if (open)
+      if (active)
         el.setAttribute("data-md-state", "open")
       else
         el.removeAttribute("data-md-state")

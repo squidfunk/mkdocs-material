@@ -49,7 +49,7 @@ import { Main } from "../main"
  * Back-to-top button
  */
 export interface BackToTop {
-  hidden: boolean                      /* User scrolled up */
+  hidden: boolean                      /* Back-to-top button is hidden */
 }
 
 /* ----------------------------------------------------------------------------

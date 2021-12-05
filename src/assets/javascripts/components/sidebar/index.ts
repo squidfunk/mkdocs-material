@@ -53,7 +53,7 @@ import { Main } from "../main"
  */
 export interface Sidebar {
   height: number                       /* Sidebar height */
-  locked: boolean                      /* User scrolled past header */
+  locked: boolean                      /* Sidebar is locked */
 }
 
 /* ----------------------------------------------------------------------------

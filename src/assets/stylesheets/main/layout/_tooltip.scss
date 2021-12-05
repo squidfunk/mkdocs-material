@@ -40,7 +40,7 @@
 }
 
 // ----------------------------------------------------------------------------
-// Rules: layout
+// Rules
 // ----------------------------------------------------------------------------
 
 // Tooltip variables
@@ -137,12 +137,12 @@
 
 // ----------------------------------------------------------------------------
 
-// Code annotation
+// Annotation
 .md-annotation {
   white-space: normal;
   outline: none;
 
-  // Code annotation is not hidden (e.g. when copying)
+  // Annotation is not hidden (e.g. when copying)
   &:not([hidden]) {
     display: inline-block;
   }
@@ -152,19 +152,19 @@
     z-index: 2;
   }
 
-  // Code annotation wrapper (= tooltip)
+  // Annotation wrapper (= tooltip)
   &__inner {
     top: calc(var(--md-tooltip-y) + 1.2ch);
     font-family: var(--md-text-font-family);
 
-    // Code annotation tooltip when not focused
+    // Annotation tooltip when not focused
     :not(:focus-within) > & {
       user-select: none;
       pointer-events: none;
     }
   }
 
-  // Code annotation index
+  // Annotation index
   &__index {
     position: relative;
     z-index: 0;
@@ -174,10 +174,10 @@
     transition: z-index 250ms;
     user-select: none;
 
-    // Code annotation marker – the marker must be positioned absolutely behind
+    // Annotation marker – the marker must be positioned absolutely behind
     // the index, because it shouldn't impact the rendering of a code block.
     // Otherwise, small rounding differences in browsers can sometimes mess up
-    // alignment of text following a code annotation.
+    // alignment of text following a Annotation.
     &::after {
       position: absolute;
       top: 0.025em;
@@ -201,12 +201,12 @@
         animation: none;
       }
 
-      // Code annotation marker on focus/hover
+      // Annotation marker on focus/hover
       :is(:focus-within, :hover) > & {
         background-color: var(--md-accent-fg-color);
       }
 
-      // Code annotation marker on focus
+      // Annotation marker on focus
       :focus-within > & {
         transition:
           color            250ms,
@@ -220,12 +220,12 @@
       }
     }
 
-    // Code annotation index on focus/hover
+    // Annotation index on focus/hover
     :is(:focus-within, :hover) > & {
       color: var(--md-accent-bg-color);
     }
 
-    // Code annotation index on focus
+    // Annotation index on focus
     :focus-within > & {
       transition: none;
       animation: none;

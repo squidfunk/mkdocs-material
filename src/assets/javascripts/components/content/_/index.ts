@@ -25,11 +25,8 @@ import { Observable, merge } from "rxjs"
 import { getElements } from "~/browser"
 
 import { Component } from "../../_"
-import {
-  Annotation,
-  CodeBlock,
-  mountCodeBlock
-} from "../code"
+import { Annotation } from "../annotation"
+import { CodeBlock, mountCodeBlock } from "../code"
 import { Details, mountDetails } from "../details"
 import { DataTable, mountDataTable } from "../table"
 import { ContentTabs, mountContentTabs } from "../tabs"

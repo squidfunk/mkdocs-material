@@ -27,7 +27,7 @@ import { h } from "~/utilities"
  * ------------------------------------------------------------------------- */
 
 /**
- * Render an empty code annotation
+ * Render an empty annotation
  *
  * @param id - Annotation identifier
  *

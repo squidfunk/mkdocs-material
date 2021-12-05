@@ -43,7 +43,7 @@ import { Component } from "../../_"
  */
 export interface Details {
   action: "open" | "close"             /* Details state */
-  scroll?: boolean                     /* Scroll into view */
+  reveal?: boolean                     /* Details is revealed */
 }
 
 /* ----------------------------------------------------------------------------
@@ -89,7 +89,7 @@ export function watchDetails(
       .pipe(
         map(target => target.closest("details:not([open])")!),
         filter(details => el === details),
-        mapTo<Details>({ action: "open", scroll: true })
+        mapTo<Details>({ action: "open", reveal: true })
       ),
 
     /* Open details on print and close afterwards */
@@ -120,12 +120,12 @@ export function mountDetails(
 ): Observable<Component<Details>> {
   return defer(() => {
     const push$ = new Subject<Details>()
-    push$.subscribe(({ action, scroll }) => {
+    push$.subscribe(({ action, reveal }) => {
       if (action === "open")
         el.setAttribute("open", "")
       else
         el.removeAttribute("open")
-      if (scroll)
+      if (reveal)
         el.scrollIntoView()
     })
 

@@ -49,7 +49,7 @@ import { Header } from "../_"
  * Header
  */
 export interface HeaderTitle {
-  active: boolean                      /* User scrolled past first headline */
+  active: boolean                      /* Header title is active */
 }
 
 /* ----------------------------------------------------------------------------

@@ -38,7 +38,7 @@ import {
 } from "~/browser"
 import { renderAnnotation } from "~/templates"
 
-import { Component } from "../../../../_"
+import { Component } from "../../../_"
 import {
   Annotation,
   mountAnnotation
@@ -60,11 +60,11 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Find all code annotation markers in the given code block
+ * Find all annotation markers in the given code block
  *
- * @param container - Containing code block element
+ * @param container - Containing element
  *
- * @returns Code annotation markers
+ * @returns Annotation markers
  */
 function findAnnotationMarkers(container: HTMLElement): Text[] {
   const markers: Text[] = []
@@ -97,18 +97,18 @@ function swap(source: HTMLElement, target: HTMLElement): void {
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount code annotation list
+ * Mount annotation list
  *
- * This function analyzes the given container code block and checks for markers
- * referring to elements in the given code annotation list. If no markers are
- * found, the list is left untouched. Otherwise, list elements are rendered as
- * code annotations inside the code block.
+ * This function analyzes the containing code block and checks for markers
+ * referring to elements in the given annotation list. If no markers are found,
+ * the list is left untouched. Otherwise, list elements are rendered as
+ * annotations inside the code block.
  *
- * @param el - Code annotation list element
- * @param container - Containing code block element
+ * @param el - Annotation list element
+ * @param container - Containing element
  * @param options - Options
  *
- * @returns Code annotation list component observable
+ * @returns Annotation component observable
  */
 export function mountAnnotationList(
   el: HTMLElement, container: HTMLElement, { print$ }: MountOptions
@@ -138,7 +138,7 @@ export function mountAnnotationList(
         .subscribe(active => {
           el.hidden = !active
 
-          /* Move annotation contents back into list */
+          /* Show annotations in code block or list (print) */
           for (const [id, annotation] of annotations) {
             const inner = getElement(".md-typeset", annotation)
             const child = getElement(`li:nth-child(${id})`, el)

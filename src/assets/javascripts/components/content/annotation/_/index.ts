@@ -45,18 +45,18 @@ import {
   watchElementOffset
 } from "~/browser"
 
-import { Component } from "../../../../_"
+import { Component } from "../../../_"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Code annotation
+ * Annotation
  */
 export interface Annotation {
-  active: boolean                      /* Code annotation is visible */
-  offset: ElementOffset                /* Code annotation offset */
+  active: boolean                      /* Annotation is active */
+  offset: ElementOffset                /* Annotation offset */
 }
 
 /* ----------------------------------------------------------------------------
@@ -64,12 +64,12 @@ export interface Annotation {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch code annotation
+ * Watch annotation
  *
- * @param el - Code annotation element
- * @param container - Containing code block element
+ * @param el - Annotation element
+ * @param container - Containing element
  *
- * @returns Code annotation observable
+ * @returns Annotation observable
  */
 export function watchAnnotation(
   el: HTMLElement, container: HTMLElement
@@ -88,7 +88,7 @@ export function watchAnnotation(
       })
     )
 
-  /* Actively watch code annotation on focus */
+  /* Actively watch annotation on focus */
   return watchElementFocus(el)
     .pipe(
       switchMap(active => offset$
@@ -101,12 +101,12 @@ export function watchAnnotation(
 }
 
 /**
- * Mount code annotation
+ * Mount annotation
  *
- * @param el - Code annotation element
- * @param container - Containing code block element
+ * @param el - Annotation element
+ * @param container - Containing element
  *
- * @returns Code annotation component observable
+ * @returns Annotation component observable
  */
 export function mountAnnotation(
   el: HTMLElement, container: HTMLElement

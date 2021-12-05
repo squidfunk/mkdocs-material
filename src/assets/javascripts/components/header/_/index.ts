@@ -59,7 +59,7 @@ import { Main } from "../../main"
 export interface Header {
   height: number                       /* Header visible height */
   sticky: boolean                      /* Header stickyness */
-  hidden: boolean                      /* User scrolled past threshold */
+  hidden: boolean                      /* Header is hidden */
 }
 
 /* ----------------------------------------------------------------------------
