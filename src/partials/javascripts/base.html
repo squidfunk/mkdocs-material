@@ -26,25 +26,18 @@
 -->
 <script>
 
-  /* Prepend the base path to the given key to ensure uniqueness */
-  function __md_scope(key, storage, base) {
-    var prefix = new URL(base || (
-      storage === localStorage
-        ? "{{ config.extra.scope | d(base_url) }}"
-        : "{{ base_url }}"
-    ), location)
-    return prefix.pathname + "." + key
-  }
+  /* Compute base path once to integrate with instant loading */
+  __md_scope = new URL("{{ config.extra.scope | d(base_url) }}", location)
 
   /* Fetch the value for a key from the given storage */
-  function __md_get(key, storage = localStorage, base) {
-    return JSON.parse(storage.getItem(__md_scope(key, storage, base)))
-  }
+  __md_get = (key, storage = localStorage, scope = __md_scope) => (
+    JSON.parse(storage.getItem(scope.pathname + "." + key))
+  )
 
   /* Persist a key-value pair in the given storage */
-  function __md_set(key, value, storage = localStorage, base) {
+  __md_set = (key, value, storage = localStorage, scope = __md_scope) => {
     try {
-      storage.setItem(__md_scope(key, storage, base), JSON.stringify(value))
+      storage.setItem(scope.pathname + "." + key, JSON.stringify(value))
     } catch (err) {
       /* Uncritical, just swallow */
     }
