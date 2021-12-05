@@ -68,15 +68,12 @@ export function watchContentTabs(
   return merge(...getElements(":scope > input", el)
     .map(input => fromEvent(input, "change")
       .pipe(
-        mapTo(input.id)
+        mapTo<ContentTabs>({
+          active: getElement(`label[for=${input.id}]`)
+        })
       )
     )
   )
-    .pipe(
-      map(id => ({
-        active: getElement<HTMLLabelElement>(`label[for=${id}]`)
-      }))
-    )
 }
 
 /**

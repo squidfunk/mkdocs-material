@@ -85,7 +85,7 @@ interface MountOptions {
  * @returns Header title observable
  */
 export function watchHeaderTitle(
-  el: HTMLHeadingElement, { viewport$, header$ }: WatchOptions
+  el: HTMLElement, { viewport$, header$ }: WatchOptions
 ): Observable<HeaderTitle> {
   return watchViewportAt(el, { viewport$, header$ })
     .pipe(
@@ -123,7 +123,7 @@ export function mountHeaderTitle(
     })
 
     /* Obtain headline, if any */
-    const heading = getOptionalElement<HTMLHeadingElement>("article h1")
+    const heading = getOptionalElement("article h1")
     if (typeof heading === "undefined")
       return EMPTY
 
