@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.3.0 <small>_ December 5, 2021</small> { id="4.3.0" }
+
+- Added support for custom fonts in social cards
+- Fixed #3300: Announcement bar reappearing when using instant loading
+
 ### 4.2.0 <small>_ December 2, 2021</small> { id="4.2.0" }
 
 - Added support for dismissable announcement bar
