@@ -45,6 +45,11 @@
   // Footer link to previous and next page
   &__link {
     display: flex;
+    // Hack: some browsers induce ellipsis on flex children that have are set
+    // to `overflow: hidden` and `text-overflow: ellipsis`. Enforcing growth by
+    // a tiny factor seems to get rid of the ellipsis and renders the text as
+    // it should - see https://bit.ly/2ZUCXQ8
+    flex-grow: 0.01;
     padding-top: px2rem(28px);
     padding-bottom: px2rem(8px);
     outline-color: var(--md-accent-fg-color);
