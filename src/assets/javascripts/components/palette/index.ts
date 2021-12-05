@@ -81,7 +81,7 @@ export function watchPalette(
   }
 
   /* Emit changes in color palette */
-  const palette$ = of(...inputs)
+  return of(...inputs)
     .pipe(
       mergeMap(input => fromEvent(input, "change")
         .pipe(
@@ -99,9 +99,6 @@ export function watchPalette(
       } as Palette)),
       shareReplay(1)
     )
-
-  /* Return palette */
-  return palette$
 }
 
 /**

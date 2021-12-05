@@ -24,6 +24,7 @@ import {
   EMPTY,
   Observable,
   Subject,
+  animationFrameScheduler,
   combineLatest,
   defer,
   finalize,
@@ -130,7 +131,7 @@ export function mountAnnotation(
     /* Track relative origin of tooltip */
     push$
       .pipe(
-        throttleTime(500),
+        throttleTime(500, animationFrameScheduler),
         map(() => container.getBoundingClientRect()),
         map(({ x }) => x)
       )
