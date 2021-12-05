@@ -22,6 +22,7 @@
 
 import {
   Observable,
+  distinctUntilChanged,
   fromEvent,
   map,
   merge,
@@ -60,6 +61,7 @@ export function watchElementFocus(
           ? el.contains(active)
           : false
       }),
-      startWith(el === getActiveElement())
+      startWith(el === getActiveElement()),
+      distinctUntilChanged()
     )
 }
