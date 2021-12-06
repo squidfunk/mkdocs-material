@@ -81,7 +81,7 @@ interface MountOptions {
 export function watchDetails(
   el: HTMLDetailsElement, { target$, print$ }: WatchOptions
 ): Observable<Details> {
-  let open = false
+  let open = true
   return merge(
 
     /* Open and focus details on location target */
