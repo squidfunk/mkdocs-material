@@ -6,13 +6,18 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.0.5 <small>_ December 6, 2021</small> { id="8.0.5" }
+
+- Fixed #3302: Footer refactoring induced ellipsis in some browsers
+- Fixed #3313: Details always rendered closed on load (8.0.4 regression)
+
 ### 8.0.4 <small>_ December 4, 2021</small> { id="8.0.4" }
 
 - Improved support for deeply nested code annotations
 - Improved code annotation and copy-to-clipboard interop
 - Improved styling for code annotations inside admonitions
-- Fixed #3294: Lists after code blocks without code annotations disappearing
 - Fixed #3274: Invalid anchor positioning when using instant loading
+- Fixed #3294: Lists after code blocks without code annotations disappearing
 - Fixed several positioning issues for code annotations
 - Fixed JavaScript source map roots
 
