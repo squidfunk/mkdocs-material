@@ -31,8 +31,6 @@ theme:
 
   [Automatic hiding support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
 
-## Customization
-
 ### Announcement bar
 
 [:octicons-tag-24: 5.0.0][Announcement bar support] ·
