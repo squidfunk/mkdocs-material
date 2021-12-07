@@ -247,6 +247,7 @@
         // Top-level navigation title
         &[for="__drawer"] {
           color: var(--md-primary-bg-color);
+          font-weight: 700;
           background-color: var(--md-primary-fg-color);
         }
 
