@@ -56,18 +56,12 @@
   top: var(--md-tooltip-y);
   left:
     clamp(
-      calc(
-        var(--md-tooltip-0, #{px2rem(0px)}) +
-        #{px2rem(16px)}
-      ),
+      var(--md-tooltip-0, #{px2rem(0px)}) + #{px2rem(16px)},
       var(--md-tooltip-x),
-      calc(
-        100vw -
-        var(--md-tooltip-width) +
-        calc(
-          var(--md-tooltip-0, #{px2rem(0px)}) +
-          #{px2rem(16px)}
-        ) -
+      (
+        100vw +
+        var(--md-tooltip-0, #{px2rem(0px)}) + #{px2rem(16px)} -
+        var(--md-tooltip-width) -
         2 * #{px2rem(16px)}
       )
     );
