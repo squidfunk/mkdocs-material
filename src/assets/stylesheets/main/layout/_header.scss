@@ -174,6 +174,11 @@
         transform: translateX(px2rem(-25px));
       }
     }
+
+    // Adjust font weight of site title
+    &:first-child {
+      font-weight: 700;
+    }
   }
 
   // Header title
