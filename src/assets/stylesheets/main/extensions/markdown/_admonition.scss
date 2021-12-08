@@ -144,6 +144,7 @@ $admonitions: (
     // Admonition icon
     &::before {
       position: absolute;
+      top: px2em(10px);
       left: px2rem(12px);
       width: px2rem(20px);
       height: px2rem(20px);
