@@ -200,6 +200,14 @@
     content: attr(data-linenos);
     user-select: none;
   }
+
+  // Code block line anchors - Chrome and Safari seem to have a strange bug
+  // where scroll margin is not applied to anchors inside code blocks. Setting
+  // positioning to absolute seems to fix the problem. Interestingly, this does
+  // not happen in Firefox.
+  code a[id] {
+    position: absolute;
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -265,6 +273,11 @@
     flex: 1;
     min-width: 0;
   }
+}
+
+// Code block line numbers container
+.linenodiv a {
+  color: inherit;
 }
 
 // ----------------------------------------------------------------------------
