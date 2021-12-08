@@ -66,6 +66,38 @@ viewports]:
   [Tabbed]: setup/extensions/python-markdown-extensions.md#tabbed
   [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
 
+#### `pymdownx.superfences`
+
+The `*-experimental` suffix must be removed from the [custom fence][SuperFences]
+class property, which is used to target code blocks to be rendered as [diagrams]
+using [Mermaid.js]:
+
+=== "8.x"
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.superfences:
+          custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_code_format
+    ```
+
+=== "7.x"
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.superfences:
+          custom_fences:
+            - name: mermaid
+              class: mermaid-experimental
+              format: !!python/name:pymdownx.superfences.fence_code_format
+    ```
+
+  [SuperFences]: setup/extensions/python-markdown-extensions.md#superfences
+  [diagrams]: reference/diagrams.md
+  [Mermaid.js]: https://mermaid-js.github.io/mermaid/
+
 #### `google_analytics`
 
 This option was [deprecated in MkDocs 1.2.0], as the implementation of a
