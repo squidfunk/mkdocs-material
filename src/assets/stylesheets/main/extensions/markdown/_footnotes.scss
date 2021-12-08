@@ -85,6 +85,11 @@
     }
   }
 
+  // Show outline for all devices
+  [id^="fnref:"]:target > .footnote-ref {
+    outline: auto;
+  }
+
   // Footnote backreference
   .footnote-backref {
     display: inline-block;
@@ -136,24 +141,5 @@
         }
       }
     }
-  }
-
-  // Footnote reference wrapper
-  [id^="fnref:"]:target {
-    scroll-margin-top: initial;
-    margin-top: -1 * px2rem(48px + 24px - 4px);
-    padding-top: px2rem(48px + 24px - 4px);
-
-    // Show outline for all devices
-    > .footnote-ref {
-      outline: auto;
-    }
-  }
-
-  // Footnote wrapper
-  [id^="fn:"]:target {
-    scroll-margin-top: initial;
-    margin-top: -1 * px2rem(48px + 24px - 3px);
-    padding-top: px2rem(48px + 24px - 3px);
   }
 }
