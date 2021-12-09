@@ -22,6 +22,7 @@
 
 import {
   Observable,
+  debounceTime,
   distinctUntilChanged,
   fromEvent,
   map,
@@ -43,6 +44,9 @@ import { getActiveElement } from "../_"
  * within the elements itself. A better solutions are `focusin` and `focusout`
  * events, which bubble up the tree and allow for more fine-grained control.
  *
+ * `debounceTime` is necessary, because when a focus change happens inside an
+ * element, the observable would first emit `false` and then `true` again.
+ *
  * @param el - Element
  *
  * @returns Element focus observable
@@ -55,6 +59,7 @@ export function watchElementFocus(
     fromEvent(document.body, "focusout")
   )
     .pipe(
+      debounceTime(1),
       map(() => {
         const active = getActiveElement()
         return typeof active !== "undefined"

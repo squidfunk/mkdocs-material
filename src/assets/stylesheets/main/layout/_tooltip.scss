@@ -214,6 +214,24 @@
       }
     }
 
+    // Annotation marker content
+    [data-md-annotation-id]::before {
+      display: inline-block;
+      transition: transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1);
+      content: attr(data-md-annotation-id);
+
+      // [not print]: if we're not in print mode, show a `+` sign instead of
+      // the original numbers, as context is already given by the position.
+      @media not print {
+        content: "+";
+
+        // Annotation marker content on focus
+        :focus-within > & {
+          transform: rotate(45deg);
+        }
+      }
+    }
+
     // Annotation index on focus/hover
     :is(:focus-within, :hover) > & {
       color: var(--md-accent-bg-color);

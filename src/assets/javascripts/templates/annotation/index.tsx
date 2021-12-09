@@ -39,7 +39,9 @@ export function renderAnnotation(id: number): HTMLElement {
       <div class="md-annotation__inner md-tooltip">
         <div class="md-tooltip__inner md-typeset"></div>
       </div>
-      <span class="md-annotation__index">{id}</span>
+      <span class="md-annotation__index">
+        <span data-md-annotation-id={id}></span>
+      </span>
     </aside>
   )
 }
