@@ -220,6 +220,11 @@
       transition: transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1);
       content: attr(data-md-annotation-id);
 
+      // [reduced-motion]: Disable animation
+      @media (prefers-reduced-motion) {
+        transition: none;
+      }
+
       // [not print]: if we're not in print mode, show a `+` sign instead of
       // the original numbers, as context is already given by the position.
       @media not print {
