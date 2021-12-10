@@ -162,7 +162,9 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Dismissable announcement bar] :material-new-box:
+- [x] [Code annotations: anchor links] :material-new-box:
+- [x] [Code annotations: strip comments] :material-new-box:
+- [x] [Dismissable announcement bar]
 - [x] [Was this page helpful?]
 - [x] [Brand new search plugin]
 - [x] [Rich search previews]
@@ -223,10 +225,14 @@ are released for general availability.
 #### $ 8,000 – Scotch Bonnet
 
 - [x] [Social cards]
+- [x] [Code annotations: anchor links]
+- [x] [Code annotations: strip comments]
 - [ ] Stay on page when switching languages
 - [ ] Sidebars automatically scroll to active item
 
   [Social cards]: ../setup/setting-up-social-cards.md
+  [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
+  [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
 
 #### $ 10,000 – Carolina Reaper
 
