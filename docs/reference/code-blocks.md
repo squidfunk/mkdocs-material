@@ -19,10 +19,11 @@ following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.superfences
   - pymdownx.snippets
+  - pymdownx.superfences
 ```
 
 The following sections discuss how to use different syntax highlighting features
