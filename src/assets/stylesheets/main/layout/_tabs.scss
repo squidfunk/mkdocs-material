@@ -87,7 +87,7 @@
 
     // Active link and link on focus/hover
     &--active,
-    &:is(:focus, :hover) {
+    &:where(:focus, :hover) {
       color: inherit;
       opacity: 1;
     }

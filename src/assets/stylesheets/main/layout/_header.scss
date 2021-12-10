@@ -109,7 +109,7 @@
       }
 
       // Image or icon
-      :is(img, svg) {
+      :where(img, svg) {
         display: block;
         width: px2rem(24px);
         height: px2rem(24px);

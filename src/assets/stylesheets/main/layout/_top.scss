@@ -70,7 +70,7 @@
   }
 
   // Back-to-top button on focus/hover
-  &:is(:focus, :hover) {
+  &:where(:focus, :hover) {
     color: var(--md-accent-bg-color);
     background-color: var(--md-accent-fg-color);
   }

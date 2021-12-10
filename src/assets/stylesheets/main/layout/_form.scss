@@ -49,7 +49,7 @@
     }
 
     // Button on focus/hover
-    &:is(:focus, :hover) {
+    &:where(:focus, :hover) {
       color: var(--md-accent-bg-color);
       background-color: var(--md-accent-fg-color);
       border-color: var(--md-accent-fg-color);
@@ -69,7 +69,7 @@
       box-shadow 250ms;
 
     // Input on focus/hover
-    &:is(:focus, :hover) {
+    &:where(:focus, :hover) {
       border-bottom-color: var(--md-accent-fg-color);
       box-shadow: var(--md-shadow-z2);
     }

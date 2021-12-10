@@ -196,7 +196,7 @@
       }
 
       // Annotation marker on focus/hover
-      :is(:focus-within, :hover) > & {
+      :where(:focus-within, :hover) > & {
         background-color: var(--md-accent-fg-color);
       }
 
@@ -238,7 +238,7 @@
     }
 
     // Annotation index on focus/hover
-    :is(:focus-within, :hover) > & {
+    :where(:focus-within, :hover) > & {
       color: var(--md-accent-bg-color);
     }
 

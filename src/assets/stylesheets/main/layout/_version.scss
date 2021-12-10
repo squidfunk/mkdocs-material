@@ -108,7 +108,7 @@
     scroll-snap-type: y mandatory;
 
     // Version selection list on parent focus/hover
-    .md-version:is(:focus-within, :hover) & {
+    .md-version:where(:focus-within, :hover) & {
       max-height: px2rem(200px);
       opacity: 1;
       transition:
@@ -157,7 +157,7 @@
     }
 
     // Link on focus/hover
-    &:is(:focus, :hover) {
+    &:where(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 

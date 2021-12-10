@@ -62,7 +62,7 @@ $admonitions: (
 
   // Admonition - note that all styles also apply to details tags, which are
   // rendered as collapsible admonitions with summary elements as titles.
-  :is(.admonition, details) {
+  :where(.admonition, details) {
     display: flow-root;
     margin: px2em(20px, 12.8px) 0;
     padding: 0 px2rem(12px);
@@ -92,7 +92,7 @@ $admonitions: (
     }
 
     // Adjust vertical spacing for nested admonitions
-    :is(.admonition, details) {
+    :where(.admonition, details) {
       margin-top: 1em;
       margin-bottom: 1em;
     }
@@ -119,7 +119,7 @@ $admonitions: (
   }
 
   // Admonition title
-  :is(.admonition-title, summary) {
+  :where(.admonition-title, summary) {
     position: relative;
     margin: 0 px2rem(-12px) 0 px2rem(-16px);
     padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
@@ -178,12 +178,12 @@ $admonitions: (
   }
 
   // Admonition flavour
-  .md-typeset :is(.admonition, details):is(#{$flavours}) {
+  .md-typeset :where(.admonition, details):where(#{$flavours}) {
     border-color: $tint;
   }
 
   // Admonition flavour title
-  .md-typeset :is(#{$flavours}) > :is(.admonition-title, summary) {
+  .md-typeset :where(#{$flavours}) > :where(.admonition-title, summary) {
     background-color: color.adjust($tint, $alpha: -0.9);
     border-color: $tint;
 

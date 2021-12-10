@@ -56,7 +56,7 @@
     transition: opacity 250ms;
 
     // Footer link on focus/hover
-    &:is(:focus, :hover) {
+    &:where(:focus, :hover) {
       opacity: 0.7;
     }
 
@@ -143,7 +143,7 @@
     color: var(--md-footer-fg-color--light);
 
     // Text link on focus/hover
-    &:is(:focus, :hover) {
+    &:where(:focus, :hover) {
       color: var(--md-footer-fg-color);
     }
   }
