@@ -83,7 +83,7 @@ theme:
 #### Anchor links
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.1.0][Insiders] ·
+[:octicons-tag-24: insiders-4.4.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
 In order to link to code annotations and share them more easily, [Insiders] adds
@@ -196,7 +196,7 @@ theme:
 #### Stripping comments
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.1.0][Insiders] ·
+[:octicons-tag-24: insiders-4.4.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
 If you wish to strip the comment characters surrounding a code annotation,
