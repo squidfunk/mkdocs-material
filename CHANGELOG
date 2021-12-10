@@ -1,6 +1,18 @@
-mkdocs-material-8.0.5+insiders-4.x.x (2021-xx-xx)
+mkdocs-material-8.1.0+insiders-4.1.0 (2021-12-12)
 
+  * Added support for code annotation anchor links (deep linking)
+  * Added new code annotation syntax modifier to strip comment
   * Updated German translations for cookie consent
+
+mkdocs-material-8.1.0 (2012-12-12)
+
+  * Added basic support for code block line anchors
+  * Switched code annotation markers to + signs to improve usability
+  * Switched main site title to bold font
+  * Improved admonition icon positioning to align when font-size is increased
+  * Improved and simplified footnotes CSS
+  * Improved and simplified code annotation positioning
+  * Fixed syntax error in Russian translations
 
 mkdocs-material-8.0.5 (2012-12-04)
 

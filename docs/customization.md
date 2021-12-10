@@ -20,8 +20,8 @@ the `docs` directory.
 ### Additional CSS
 
 If you want to tweak some colors or change the spacing of certain elements,
-you can do this in a separate stylesheet. The easiest way is by creating a
-new stylesheet file in the `docs` directory:
+you can do this in a separate style sheet. The easiest way is by creating a
+new style sheet file in the `docs` directory:
 
 ``` sh
 .

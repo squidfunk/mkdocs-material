@@ -6,6 +6,16 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.0 <small>_ December 10, 2021</small> { id="8.1.0" }
+
+- Added basic support for code block line anchors
+- Switched code annotation markers to `+` signs to improve usability
+- Switched main site title to bold font
+- Improved admonition icon positioning to align when `font-size` is increased
+- Improved and simplified footnotes CSS
+- Improved and simplified code annotation positioning
+- Fixed syntax error in Russian translations
+
 ### 8.0.5 <small>_ December 6, 2021</small> { id="8.0.5" }
 
 - Fixed #3302: Footer refactoring induced ellipsis in some browsers

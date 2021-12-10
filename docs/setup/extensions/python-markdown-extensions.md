@@ -308,7 +308,8 @@ The [Highlight] extension adds support for syntax highlighting of code blocks
 
 ``` yaml
 markdown_extensions:
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.superfences # (1)
 ```
 
@@ -414,6 +415,19 @@ The following configuration options are supported:
     copying a code block to the clipboard. Thus, the usage of either `table`
     or `pymdownx-inline` is recommended.
 
+`anchor_linenums`{ #anchor-linenums }
+
+:   [:octicons-tag-24: 8.1.0][anchor_linenums support] · :octicons-milestone-24:
+    Default: `false` – If a code blocks contains line numbers, enabling this
+    setting will wrap them with anchor links, so they can be hyperlinked and
+    shared more easily:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.highlight:
+          anchor_linenums: true
+    ```
+
 The other configuration options of this extension are not officially supported
 by Material for MkDocs, which is why they may yield unexpected results. Use
 them at your own risk.
@@ -435,6 +449,7 @@ See reference for usage:
   [additional CSS]: ../../customization.md#additional-css
   [Highlight.js]: https://highlightjs.org/
   [title]: ../../reference/code-blocks.md#adding-a-title
+  [anchor_linenums support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.0
   [Adding line numbers]: ../../reference/code-blocks.md#adding-line-numbers
   [Using code blocks]: ../../reference/code-blocks.md#usage
   [Adding a title]: ../../reference/code-blocks.md#adding-a-title
