@@ -30,6 +30,11 @@
       {% endif %}
       <link rel="shortcut icon" href="{{ config.theme.favicon | url }}">
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-5.1.1">
+      {% if config.extra.noindex %}
+        <meta property="robots" content="noindex">
+      {% else %}
+        <meta property="robots" content="index, follow">
+      {% endif %}
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}

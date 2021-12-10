@@ -75,6 +75,13 @@
         name="generator"
         content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$"
       />
+
+      <!-- Block Search indexing with noindex -->
+      {% if config.extra.noindex %}
+        <meta property="robots" content="noindex" />
+      {% else %}
+        <meta property="robots" content="index, follow" />
+      {% endif %}
     {% endblock %}
 
     <!-- Site title -->
