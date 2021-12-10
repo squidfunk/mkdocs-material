@@ -1,4 +1,4 @@
-mkdocs-material-8.1.0+insiders-4.1.0 (2021-12-12)
+mkdocs-material-8.1.0+insiders-4.4.0 (2021-12-12)
 
   * Added support for code annotation anchor links (deep linking)
   * Added new code annotation syntax modifier to strip comment

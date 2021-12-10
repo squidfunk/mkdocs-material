@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.4.0 <small>_ December 12, 2021</small> { id="4.4.0" }
+
+- Added support for code annotation anchor links (deep linking)
+- Added new code annotation syntax modifier to strip comment
+- Updated German translations for cookie consent
+
 ### 4.3.0 <small>_ December 5, 2021</small> { id="4.3.0" }
 
 - Added support for custom fonts in social cards
