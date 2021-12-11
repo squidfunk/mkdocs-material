@@ -439,6 +439,11 @@ kbd {
     }
   }
 
+  // Hide images for dark mode
+  img[src$="#only-dark"] {
+    display: none;
+  }
+
   // Figure
   figure {
     display: flow-root;

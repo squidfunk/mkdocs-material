@@ -95,5 +95,15 @@
       // Typeset color shades
       --md-typeset-a-color:            hsla(#{hex2hsl($clr-indigo-400)}, 1);
     }
+
+    // Hide images for light mode
+    img[src$="#only-light"] {
+      display: none;
+    }
+
+    // Show images for dark mode
+    img[src$="#only-dark"] {
+      display: initial;
+    }
   }
 }
