@@ -70,7 +70,8 @@ $admonitions: (
     font-size: px2rem(12.8px);
     page-break-inside: avoid;
     background-color: var(--md-admonition-bg-color);
-    border-left: px2rem(4px) solid $clr-blue-a200;
+    border: 0 solid $clr-blue-a200;
+    border-left-width: px2rem(4px);
     border-radius: px2rem(2px);
     box-shadow: var(--md-shadow-z1);
 
@@ -87,8 +88,8 @@ $admonitions: (
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
-      border-right: px2rem(4px) solid $clr-blue-a200;
-      border-left: none;
+      border-right-width: px2rem(4px);
+      border-left-width: 0;
     }
 
     // Adjust vertical spacing for nested admonitions
@@ -125,15 +126,16 @@ $admonitions: (
     padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
     font-weight: 700;
     background-color: color.adjust($clr-blue-a200, $alpha: -0.9);
-    border-left: px2rem(4px) solid $clr-blue-a200;
+    border: 0 solid $clr-blue-a200;
+    border-left-width: px2rem(4px);
     border-top-left-radius: px2rem(2px);
 
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       margin: 0 px2rem(-16px) 0 px2rem(-12px);
       padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(12px);
-      border-right: px2rem(4px) solid $clr-blue-a200;
-      border-left: none;
+      border-right-width: px2rem(4px);
+      border-left-width: 0;
     }
 
     // Adjust spacing for title-only admonitions
