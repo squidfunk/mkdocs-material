@@ -42,12 +42,12 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
     _Example_:
 
     ``` markdown
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=left }
+    ![Placeholder](https://dummyimage.com/600x400/BDBDBD/ffffff){ align=left }
     ```
 
     _Result_:
 
-    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
+    ![Placeholder](https://dummyimage.com/600x400/BDBDBD/ffffff){ align=left width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -58,12 +58,12 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
     _Example_:
 
     ``` markdown
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=right }
+    ![Placeholder](https://dummyimage.com/600x400/BDBDBD/ffffff){ align=right }
     ```
 
     _Result_:
 
-    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
+    ![Placeholder](https://dummyimage.com/600x400/BDBDBD/ffffff){ align=right width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -99,7 +99,7 @@ _Example_:
 
 ```html
 <figure markdown> <!-- (1)! -->
-  ![Placeholder](https://dummyimage.com/600x400/){ width="300" }
+  ![Placeholder](https://dummyimage.com/600x400/BDBDBD/ffffff){ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>
 ```
@@ -113,7 +113,7 @@ _Result_:
   <figcaption>Image caption</figcaption>
 </figure>
 
-  [Placeholder]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–
+  [Placeholder]: https://dummyimage.com/600x400/BDBDBD/ffffff
   [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html
 
 ### Image lazy-loading
@@ -123,7 +123,7 @@ through the `loading=lazy` directive, which degrades to eager-loading in
 browsers without support:
 
 ``` markdown
-![Placeholder](https://dummyimage.com/600x400/){ loading=lazy }
+![Placeholder](https://dummyimage.com/600x400/BDBDBD/ffffff){ loading=lazy }
 ```
 
   [lazy-loading]: https://caniuse.com/#feat=loading-lazy-attr
@@ -140,7 +140,7 @@ hash fragment to the image URL:
 _Example_:
 
 ``` markdown
-![Placeholder light](https://dummyimage.com/600x400/f5f5f5/aaaaaa#only-light)
+![Placeholder light](https://dummyimage.com/600x400/BDBDBD/ffffff#only-light)
 ![Placeholder dark](https://dummyimage.com/600x400/21222c/d5d7e2#only-dark)
 ```
 
@@ -151,5 +151,5 @@ _Result_:
 
   [Light and dark mode support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.1
   [color palette toggle]: ../setup/changing-the-colors.md#color-palette-toggle
-  [Placeholder light]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–#only-light
-  [Placeholder dark]: https://dummyimage.com/600x400/21222c/d5d7e2&text=–%20Image%20–#only-dark
+  [Placeholder light]: https://dummyimage.com/600x400/BDBDBD/ffffff#only-light
+  [Placeholder dark]: https://dummyimage.com/600x400/21222c/d5d7e2#only-dark
