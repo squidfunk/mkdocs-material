@@ -84,10 +84,13 @@
 
     // Footer link to next page
     &--next {
+      margin-left: auto;
       text-align: right;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
+        margin-right: auto;
+        margin-left: initial;
         text-align: left;
 
         // Flip icon vertically
