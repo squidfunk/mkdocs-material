@@ -99,7 +99,7 @@ _Example_:
 
 ```html
 <figure markdown> <!-- (1)! -->
-  ![Dummy image](https://dummyimage.com/600x400/){ width="300" }
+  ![Placeholder](https://dummyimage.com/600x400/){ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>
 ```
@@ -109,11 +109,11 @@ _Example_:
 _Result_:
 
 <figure markdown>
-  ![Dummy image]{ width="300" }
+  ![Placeholder]{ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>
 
-  [Dummy image]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–
+  [Placeholder]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–
   [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html
 
 ### Image lazy-loading
@@ -123,7 +123,33 @@ through the `loading=lazy` directive, which degrades to eager-loading in
 browsers without support:
 
 ``` markdown
-![Placeholder](https://dummyimage.com/600x400/eee/aaa){ loading=lazy }
+![Placeholder](https://dummyimage.com/600x400/){ loading=lazy }
 ```
 
   [lazy-loading]: https://caniuse.com/#feat=loading-lazy-attr
+
+### Light and dark mode
+
+[:octicons-tag-24: Unreleased][Light and dark mode support] ·
+:octicons-beaker-24: Experimental
+
+If you added a [color palette toggle] and want to show different images for
+light and dark color schemes, you can append a `#only-light` or `#only-dark`
+hash fragment to the image URL:
+
+_Example_:
+
+``` markdown
+![Placeholder light](https://dummyimage.com/600x400/f5f5f5/aaaaaa#only-light)
+![Placeholder light](https://dummyimage.com/600x400/21222c/d5d7e2#only-dark)
+```
+
+_Result_:
+
+![Placeholder light]{ width="300" }
+![Placeholder dark]{ width="300" }
+
+  [Light and dark mode support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.1
+  [color palette toggle]: ../setup/changing-the-colors.md#color-palette-toggle
+  [Placeholder light]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–#only-light
+  [Placeholder dark]: https://dummyimage.com/600x400/21222c/d5d7e2&text=–%20Image%20–#only-dark
