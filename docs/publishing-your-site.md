@@ -144,7 +144,7 @@ contents:
       stage: deploy
       only:
         - master
-      script: # (1)
+      script: # (1)!
         - pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
         - mkdocs build --site-dir public
       artifacts:
