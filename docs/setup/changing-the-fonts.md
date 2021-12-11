@@ -100,7 +100,7 @@ globally to be used as the site-wide regular or monospaced font:
 
     ``` css
     :root {
-      --md-text-font-family: "<font>"; /* (1) */
+      --md-text-font-family: "<font>"; /* (1)! */
     }
     ```
 

@@ -78,7 +78,7 @@ The following configuration options are available:
     plugins:
       - social:
           cards_color:
-            fill: "#0FF1CE" # (1)
+            fill: "#0FF1CE" # (1)!
             text: "#FFFFFF"
     ```
 

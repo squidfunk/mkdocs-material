@@ -346,7 +346,7 @@ your custom event listener:
     keyboard$.subscribe(function(key) {
       if (key.mode === "global" && key.type === "x") {
         /* Add custom keyboard handler here */
-        key.claim() // (1)
+        key.claim() // (1)!
       }
     })
     ```
@@ -379,7 +379,7 @@ of CSS:
 
     ``` css
     .md-grid {
-      max-width: 1440px; /* (1) */
+      max-width: 1440px; /* (1)! */
     }
     ```
 

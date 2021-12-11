@@ -45,7 +45,7 @@ lines to `mkdocs.yml`:
 theme:
   icon:
     admonition:
-      <type>: <icon> # (1)
+      <type>: <icon> # (1)!
 ```
 
 1.  Set `<type`> to any of the [supported types] and `<icon>` to any valid icon 

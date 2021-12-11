@@ -74,7 +74,7 @@ you can [override the `outdated` block][overriding blocks]:
 
 {% block outdated %}
   You're not viewing the latest version.
-  <a href="{{ '../' ~ base_url }}"> <!-- (1) -->
+  <a href="{{ '../' ~ base_url }}"> <!-- (1)! -->
     <strong>Click here to go to latest.</strong>
   </a>
 {% endblock %}

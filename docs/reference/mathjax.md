@@ -36,7 +36,7 @@ lines to `mkdocs.yml`:
       }
     };
 
-    document$.subscribe(() => { // (1)
+    document$.subscribe(() => { // (1)!
       MathJax.typesetPromise()
     })
     ```

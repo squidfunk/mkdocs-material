@@ -56,7 +56,7 @@ and inline comments in the language of the code block. Add the following to
 ``` yaml
 theme:
   features:
-    - content.code.annotate # (1)
+    - content.code.annotate # (1)!
 ```
 
 1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted

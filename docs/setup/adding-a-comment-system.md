@@ -39,7 +39,7 @@ in the `overrides` folder:
         var disqus_config = function() {
           this.page.url = "{{ page.canonical_url }}"
           this.page.identifier =
-            "{{ page.canonical_url | replace(config.site_url, '') }}" // (1)
+            "{{ page.canonical_url | replace(config.site_url, '') }}" // (1)!
         }
 
         /* Set up for the first time */
@@ -69,7 +69,7 @@ in the `overrides` folder:
 
     ``` yaml
     extra:
-      disqus: <shortname> # (1)
+      disqus: <shortname> # (1)!
     ```
 
     1.  Add your Disqus [shortname] here.

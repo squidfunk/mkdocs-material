@@ -176,12 +176,12 @@ palettes:
 
 ``` yaml
 theme:
-  palette: # (1)
+  palette: # (1)!
     - scheme: default
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-    - scheme: slate # (2)
+    - scheme: slate # (2)!
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
@@ -232,12 +232,12 @@ definition in `mkdocs.yml`:
 ``` yaml
 theme:
   palette:
-    - media: "(prefers-color-scheme: light)" # (1)
+    - media: "(prefers-color-scheme: light)" # (1)!
       scheme: default
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)" # (2)
+    - media: "(prefers-color-scheme: dark)" # (2)!
       scheme: slate
       toggle:
         icon: material/toggle-switch
@@ -325,7 +325,7 @@ can tune the `slate` theme with:
 
 ``` css
 [data-md-color-scheme="slate"] {
-  --md-hue: 210; /* (1) */
+  --md-hue: 210; /* (1)! */
 }
 ```
 

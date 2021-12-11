@@ -98,7 +98,7 @@ can be added to images.
 _Example_:
 
 ```html
-<figure markdown> <!-- (1) -->
+<figure markdown> <!-- (1)! -->
   ![Dummy image](https://dummyimage.com/600x400/){ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>

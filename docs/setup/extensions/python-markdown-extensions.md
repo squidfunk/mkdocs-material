@@ -227,7 +227,7 @@ in `*.svg` file format into the resulting HTML page. Enable it via `mkdocs.yml`:
 ``` yaml
 markdown_extensions:
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji # (1)
+      emoji_index: !!python/name:materialx.emoji.twemoji # (1)!
       emoji_generator: !!python/name:materialx.emoji.to_svg
 ```
 
@@ -310,7 +310,7 @@ The [Highlight] extension adds support for syntax highlighting of code blocks
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences # (1)
+  - pymdownx.superfences # (1)!
 ```
 
 1.  [Highlight] is used by the [SuperFences][pymdownx.superfences] extension to

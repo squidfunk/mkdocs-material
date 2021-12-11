@@ -39,7 +39,7 @@ some custom front matter. Add the following lines at the top of a Markdown file:
 
 ``` bash
 ---
-title: Lorem ipsum dolor sit amet # (1)
+title: Lorem ipsum dolor sit amet # (1)!
 ---
 
 # Document title

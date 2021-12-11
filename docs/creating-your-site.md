@@ -144,7 +144,7 @@ write your documentation. The server will automatically rebuild the site upon
 saving. Start it with:
 
 ``` sh
-mkdocs serve # (1)
+mkdocs serve # (1)!
 ```
 
 1.  If you have a large documentation project, it might take minutes until

@@ -53,7 +53,7 @@ The following configuration options are supported:
         ``` yaml
         plugins:
           - search:
-              lang: # (1)
+              lang: # (1)!
                 - en
                 - ru
         ```
@@ -102,7 +102,7 @@ The following configuration options are supported:
     ``` yaml
     plugins:
       - search:
-          separator: '[\s\-\.]' # (1)
+          separator: '[\s\-\.]' # (1)!
     ```
 
     1.  Tokenization itself is carried out by [lunr's default tokenizer], which 
@@ -342,7 +342,7 @@ a Markdown file:
 ``` bash
 ---
 search:
-  boost: 2 # (1)
+  boost: 2 # (1)!
 ---
 
 # Document title
@@ -467,14 +467,14 @@ following transformations, which can be customized by [extending the theme]:
 ``` ts
 export function defaultTransform(query: string): string {
   return query
-    .split(/"([^"]+)"/g) /* (1) */
+    .split(/"([^"]+)"/g) /* (1)! */
       .map((terms, index) => index & 1
         ? terms.replace(/^\b|^(?![^\x00-\x7F]|$)|\s+/g, " +")
         : terms
       )
       .join("")
-    .replace(/"|(?:^|\s+)[*+\-:^~]+(?=\s+|$)/g, "") /* (2) */
-    .trim() /* (3) */
+    .replace(/"|(?:^|\s+)[*+\-:^~]+(?=\s+|$)/g, "") /* (2)! */
+    .trim() /* (3)! */
 }
 ```
 

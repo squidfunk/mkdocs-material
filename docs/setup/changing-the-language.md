@@ -101,7 +101,7 @@ can be defined via `mkdocs.yml`.
 extra:
   alternate:
     - name: English
-      link: /en/ # (1)
+      link: /en/ # (1)!
       lang: en
     - name: Deutsch
       link: /de/
@@ -189,11 +189,11 @@ adjust the ones you want to override:
     ``` html
     <!-- Import translations for language and fallback -->
     {% import "partials/languages/de.html" as language %}
-    {% import "partials/languages/en.html" as fallback %} <!-- (1) -->
+    {% import "partials/languages/en.html" as fallback %} <!-- (1)! -->
 
     <!-- Define custom translations -->
     {% macro override(key) %}{{ {
-      "source.file.date.created": "Erstellt am", <!-- (2) -->
+      "source.file.date.created": "Erstellt am", <!-- (2)! -->
       "source.file.date.updated": "Aktualisiert am"
     }[key] }}{% endmacro %}
 

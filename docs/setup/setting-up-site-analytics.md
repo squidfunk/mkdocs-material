@@ -81,7 +81,7 @@ Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 extra:
-  analytics: # (1)
+  analytics: # (1)!
     feedback:
       title: Was this page helpful?
       ratings:
@@ -93,7 +93,7 @@ extra:
         - icon: material/emoticon-sad-outline
           name: This page could be improved
           data: 0
-          note: >- # (2)
+          note: >- # (2)!
             Thanks for your feedback! Help us improve this page by
             using our <a href="..." target=_blank>feedback form</a>.
 ```
@@ -232,7 +232,7 @@ following to `mkdocs.yml`:
 extra:
   consent:
     title: Cookie consent
-    description: >- # (1)
+    description: >- # (1)!
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
@@ -253,7 +253,7 @@ integrated by using the `cookies` field:
     extra:
       consent:
         cookies:
-          analytics: Custom name # (1)
+          analytics: Custom name # (1)!
     ```
 
     1. The default name of the `analytics` cookie is `Google Analytics`.
@@ -264,7 +264,7 @@ integrated by using the `cookies` field:
     extra:
       consent:
         cookies:
-          analytics: Google Analytics # (1)
+          analytics: Google Analytics # (1)!
           custom: Custom cookie
     ```
 
@@ -322,12 +322,12 @@ used to configure the custom integration via `mkdocs.yml`:
     ``` html
     <script>
       /* Add custom analytics integration here, e.g. */
-      var property = "{{ config.extra.analytics.property }}" // (1)
+      var property = "{{ config.extra.analytics.property }}" // (1)!
 
       /* Wait for page to load and application to mount */
       document.addEventListener("DOMContentLoaded", function() {
         location$.subscribe(function(url) {
-          /* Add custom page event tracking here */ // (2)
+          /* Add custom page event tracking here */ // (2)!
         })
       })
     </script>
@@ -345,7 +345,7 @@ used to configure the custom integration via `mkdocs.yml`:
     extra:
       analytics:
         provider: custom
-        property: foobar # (1)
+        property: foobar # (1)!
     ```
 
     1.  You can add arbitrary key-value combinations to configure your

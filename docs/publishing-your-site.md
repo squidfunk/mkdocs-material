@@ -26,10 +26,10 @@ contents:
 === "Material for MkDocs"
 
     ``` yaml
-    name: ci # (1)
+    name: ci # (1)!
     on:
       push:
-        branches: # (2)
+        branches: # (2)!
           - master
           - main
     jobs:
@@ -40,7 +40,7 @@ contents:
           - uses: actions/setup-python@v2
             with:
               python-version: 3.x
-          - run: pip install mkdocs-material # (3)
+          - run: pip install mkdocs-material # (3)!
           - run: mkdocs gh-deploy --force
     ```
 
@@ -80,7 +80,7 @@ contents:
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           - run: mkdocs gh-deploy --force
     env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (1)
+      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (1)!
     ```
 
     1.  Remember to set the `GH_TOKEN` environment variable to the value of your
