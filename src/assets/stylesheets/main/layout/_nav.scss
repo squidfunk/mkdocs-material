@@ -121,7 +121,7 @@
     }
 
     // Navigation link on focus/hover
-    &:where(:focus, :hover) {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 

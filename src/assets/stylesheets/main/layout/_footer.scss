@@ -52,6 +52,7 @@
     flex-grow: 0.01;
     padding-top: px2rem(28px);
     padding-bottom: px2rem(8px);
+    overflow: hidden;
     outline-color: var(--md-accent-fg-color);
     transition: opacity 250ms;
 
