@@ -204,9 +204,12 @@
   // Code block line anchors - Chrome and Safari seem to have a strange bug
   // where scroll margin is not applied to anchors inside code blocks. Setting
   // positioning to absolute seems to fix the problem. Interestingly, this does
-  // not happen in Firefox.
+  // not happen in Firefox. Furthermore we must set `visibility: hidden` or
+  // the copy to clipboard functionality will include an empty line between
+  // each set of lines.
   code a[id] {
     position: absolute;
+    visibility: hidden;
   }
 }
 
