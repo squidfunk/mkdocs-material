@@ -190,6 +190,12 @@
     font-size: px2rem(18px);
     line-height: px2rem(48px);
 
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      margin-right: px2rem(20px);
+      margin-left: px2rem(8px);
+    }
+
     // Header title in active state, i.e. page title is visible
     &[data-md-state="active"] .md-header__topic {
       z-index: -1;
