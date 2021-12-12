@@ -248,6 +248,12 @@ are released for general availability.
   [Advanced search highlighting]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
   [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
 
+#### $ 12,000 – Piri Piri
+
+- [ ] Text annotations
+- [ ] Navigation icons
+- [ ] Navigation pruning
+
 ### Goals completed
 
 This section lists all funding goals that were previously completed, which means
