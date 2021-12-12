@@ -157,6 +157,11 @@
     }
   }
 
+  // Navigation icon
+  &__icon {
+    flex-shrink: 0;
+  }
+
   // Repository information container
   &__source {
     display: none;
@@ -296,7 +301,6 @@
 
         // Navigation icon
         .md-nav__icon {
-          flex-shrink: 0;
           width: px2rem(24px);
           height: px2rem(24px);
           margin-right: px2rem(-4px);
