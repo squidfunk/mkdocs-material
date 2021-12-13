@@ -54,7 +54,7 @@
     @include break-to-device(tablet portrait) {
       position: absolute;
       top: px2rem(-20px);
-      left: px2rem(-44px);
+      inset-inline-start: px2rem(-44px);
       width: px2rem(40px);
       height: px2rem(40px);
       overflow: hidden;
@@ -65,12 +65,6 @@
         transform 300ms 100ms,
         opacity   200ms 200ms;
       pointer-events: none;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        right: px2rem(-44px);
-        left: initial;
-      }
 
       // Show overlay when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
@@ -85,7 +79,7 @@
     @include break-from-device(tablet landscape) {
       position: fixed;
       top: 0;
-      left: 0;
+      inset-inline-start: 0;
       width: 0;
       height: 0;
       background-color: hsla(0, 0%, 0%, 0.54);
@@ -94,12 +88,6 @@
         width     0ms 250ms,
         height    0ms 250ms,
         opacity 250ms;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        right: 0;
-        left: initial;
-      }
 
       // Show overlay when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
@@ -146,7 +134,7 @@
     @include break-to-device(tablet portrait) {
       position: fixed;
       top: 0;
-      left: 0;
+      inset-inline-start: 0;
       z-index: 2;
       width: 0;
       height: 0;
@@ -161,8 +149,6 @@
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        right: 0;
-        left: initial;
         transform: translateX(-5%);
       }
 
@@ -247,15 +233,10 @@
     z-index: 2;
     width: 100%;
     height: 100%;
-    padding: 0 px2rem(44px) 0 px2rem(72px);
+    padding-inline: px2rem(72px) px2rem(44px);
     font-size: px2rem(18px);
     text-overflow: ellipsis;
     background: transparent;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      padding: 0 px2rem(72px) 0 px2rem(44px);
-    }
 
     // Search placeholder
     &::placeholder {
@@ -282,14 +263,9 @@
 
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
-      padding-left: px2rem(44px);
+      padding-inline-start: px2rem(44px);
       color: inherit;
       font-size: px2rem(16px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        padding-right: px2rem(44px);
-      }
 
       // Search placeholder
       &::placeholder {
@@ -333,30 +309,18 @@
     &[for="__search"] {
       position: absolute;
       top: px2rem(6px);
-      left: px2rem(10px);
+      inset-inline-start: px2rem(10px);
       z-index: 2;
 
       // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        right: px2rem(10px);
-        left: initial;
-
-        // Flip icon vertically
-        svg {
-          transform: scaleX(-1);
-        }
+      [dir="rtl"] & svg {
+        transform: scaleX(-1);
       }
 
       // [tablet portrait -]: Search modal
       @include break-to-device(tablet portrait) {
         top: px2rem(12px);
-        left: px2rem(16px);
-
-        // Adjust for right-to-left languages
-        [dir="rtl"] & {
-          right: px2rem(16px);
-          left: initial;
-        }
+        inset-inline-start: px2rem(16px);
 
         // Hide the magnifying glass
         svg:first-child {
@@ -380,31 +344,19 @@
   &__options {
     position: absolute;
     top: px2rem(6px);
-    right: px2rem(10px);
+    inset-inline-end: px2rem(10px);
     z-index: 2;
     pointer-events: none;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      right: initial;
-      left: px2rem(10px);
-    }
 
     // [tablet portrait -]: Search modal
     @include break-to-device(tablet portrait) {
       top: px2rem(12px);
-      right: px2rem(16px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        right: initial;
-        left: px2rem(16px);
-      }
+      inset-inline-end: px2rem(16px);
     }
 
     // Search option buttons
     > * {
-      margin-left: px2rem(4px);
+      margin-inline-start: px2rem(4px);
       color: var(--md-default-fg-color--light);
       transform: scale(0.75);
       opacity: 0;
@@ -441,27 +393,17 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 0 px2rem(44px) 0 px2rem(72px);
+    padding-inline: px2rem(72px) px2rem(44px);
     color: var(--md-default-fg-color--lighter);
     font-size: px2rem(18px);
     white-space: nowrap;
     opacity: 0;
     transition: opacity 50ms;
 
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      padding: 0 px2rem(72px) 0 px2rem(44px);
-    }
-
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
-      padding-left: px2rem(44px);
+      padding-inline-start: px2rem(44px);
       font-size: px2rem(16px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        padding-right: px2rem(44px);
-      }
     }
 
     // Show suggestions when search is active
@@ -477,7 +419,8 @@
     z-index: 1;
     width: 100%;
     overflow: hidden;
-    border-radius: 0 0 px2rem(2px) px2rem(2px);
+    border-end-start-radius: px2rem(2px);
+    border-end-end-radius: px2rem(2px);
 
     // [tablet portrait -]: Search modal
     @include break-to-device(tablet portrait) {
@@ -577,13 +520,7 @@
 
     // [tablet landscape +]: Adjust spacing
     @include break-from-device(tablet landscape) {
-      padding-left: px2rem(44px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        padding-right: px2rem(44px);
-        padding-left: initial;
-      }
+      padding-inline-start: px2rem(44px);
     }
   }
 
@@ -637,13 +574,7 @@
 
     // [tablet landscape +]: Adjust spacing
     @include break-from-device(tablet landscape) {
-      padding-left: px2rem(44px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        padding-right: px2rem(44px);
-        padding-left: px2rem(16px);
-      }
+      padding-inline-start: px2rem(44px);
     }
 
     // Search result more link on focus/hover
@@ -672,13 +603,7 @@
 
     // [tablet landscape +]: Adjust spacing
     @include break-from-device(tablet landscape) {
-      padding-left: px2rem(44px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        padding-right: px2rem(44px);
-        padding-left: px2rem(16px);
-      }
+      padding-inline-start: px2rem(44px);
     }
 
     // Search result article document
@@ -697,7 +622,7 @@
   // Search result icon
   &__icon {
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     width: px2rem(24px);
     height: px2rem(24px);
     margin: px2rem(10px);
@@ -718,15 +643,9 @@
       mask-repeat: no-repeat;
       mask-size: contain;
       content: "";
-    }
 
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      right: 0;
-      left: initial;
-
-      // Flip icon vertically
-      &::after {
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
         transform: scaleX(-1);
       }
     }

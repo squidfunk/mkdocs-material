@@ -49,25 +49,18 @@
   // Navigation tabs list
   &__list {
     margin: 0;
-    margin-left: px2rem(4px);
+    margin-inline-start: px2rem(4px);
     padding: 0;
     white-space: nowrap;
     list-style: none;
     contain: content;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: px2rem(4px);
-      margin-left: initial;
-    }
   }
 
   // Navigation tabs item
   &__item {
     display: inline-block;
     height: px2rem(48px);
-    padding-right: px2rem(12px);
-    padding-left: px2rem(12px);
+    padding-inline: px2rem(12px);
   }
 
   // Navigation tabs link - could be defined as block elements and aligned via

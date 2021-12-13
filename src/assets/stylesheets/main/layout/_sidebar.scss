@@ -45,7 +45,7 @@
     &--primary {
       position: fixed;
       top: 0;
-      left: px2rem(-242px);
+      inset-inline-start: px2rem(-242px);
       z-index: 5;
       display: block;
       width: px2rem(242px);
@@ -55,12 +55,6 @@
       transition:
         transform  250ms cubic-bezier(0.4, 0, 0.2, 1),
         box-shadow 250ms;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        right: px2rem(-242px);
-        left: initial;
-      }
 
       // Show sidebar when drawer is active
       [data-md-toggle="drawer"]:checked ~ .md-container & {
@@ -76,10 +70,7 @@
       // Stretch scroll wrapper for primary sidebar
       .md-sidebar__scrollwrap {
         position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        inset: 0;
         margin: 0;
         scroll-snap-type: none;
         overflow: hidden;

@@ -71,7 +71,7 @@ $admonitions: (
     page-break-inside: avoid;
     background-color: var(--md-admonition-bg-color);
     border: 0 solid $clr-blue-a200;
-    border-left-width: px2rem(4px);
+    border-inline-start-width: px2rem(4px);
     border-radius: px2rem(2px);
     box-shadow: var(--md-shadow-z1);
 
@@ -84,12 +84,6 @@ $admonitions: (
     // content-box. Doesn't happen in other browsers, so looks like a bug.
     > * {
       box-sizing: border-box;
-    }
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      border-right-width: px2rem(4px);
-      border-left-width: 0;
     }
 
     // Adjust vertical spacing for nested admonitions
@@ -122,21 +116,15 @@ $admonitions: (
   // Admonition title
   :where(.admonition-title, summary) {
     position: relative;
-    margin: 0 px2rem(-12px) 0 px2rem(-16px);
-    padding: px2rem(8px) px2rem(12px) px2rem(8px) px2rem(40px);
+    margin-block: 0;
+    margin-inline: px2rem(-16px) px2rem(-12px);
+    padding-block: px2rem(8px);
+    padding-inline: px2rem(40px) px2rem(12px);
     font-weight: 700;
     background-color: color.adjust($clr-blue-a200, $alpha: -0.9);
     border: 0 solid $clr-blue-a200;
-    border-left-width: px2rem(4px);
-    border-top-left-radius: px2rem(2px);
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin: 0 px2rem(-16px) 0 px2rem(-12px);
-      padding: px2rem(8px) px2rem(40px) px2rem(8px) px2rem(12px);
-      border-right-width: px2rem(4px);
-      border-left-width: 0;
-    }
+    border-inline-start-width: px2rem(4px);
+    border-start-start-radius: px2rem(2px);
 
     // Adjust spacing for title-only admonitions
     html &:last-child {
@@ -147,7 +135,7 @@ $admonitions: (
     &::before {
       position: absolute;
       top: px2em(10px);
-      left: px2rem(12px);
+      inset-inline-start: px2rem(12px);
       width: px2rem(20px);
       height: px2rem(20px);
       background-color: $clr-blue-a200;
@@ -155,12 +143,6 @@ $admonitions: (
       mask-repeat: no-repeat;
       mask-size: contain;
       content: "";
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        right: px2rem(12px);
-        left: initial;
-      }
     }
   }
 }

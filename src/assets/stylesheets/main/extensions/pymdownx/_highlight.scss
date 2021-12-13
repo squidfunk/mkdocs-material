@@ -191,8 +191,7 @@
     // don't overlay line numbers, as active annotations have a `z-index` of 2.
     z-index: 3;
     float: left;
-    margin-right: px2em(16px, 13.6px);
-    margin-left: px2em(-16px, 13.6px);
+    margin-inline: px2em(16px, 13.6px);
     padding-left: px2em(16px, 13.6px);
     color: var(--md-default-fg-color--light);
     background-color: var(--md-code-bg-color);

@@ -82,8 +82,7 @@ body {
 // to `1220px`, and they are rendered centered if the screen is larger.
 .md-grid {
   max-width: px2rem(1220px);
-  margin-right: auto;
-  margin-left: auto;
+  margin-inline: auto;
 }
 
 // Main container

@@ -41,7 +41,7 @@
 
     // Footnote list - omit left indentation
     > ol {
-      margin-left: 0;
+      margin-inline-start: 0;
 
       // Footnote item - footnote items can contain lists, so we need to scope
       // the spacing adjustments to the top-level footnote item.

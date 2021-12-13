@@ -61,6 +61,11 @@
       opacity: 0.7;
     }
 
+    // Adjust for right-to-left languages
+    [dir="rtl"] & svg {
+      transform: scaleX(-1);
+    }
+
     // Footer link to previous page
     &--prev {
 
@@ -72,32 +77,16 @@
           display: none;
         }
       }
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-
-        // Flip icon vertically
-        svg {
-          transform: scaleX(-1);
-        }
-      }
     }
 
     // Footer link to next page
     &--next {
-      margin-left: auto;
+      margin-inline-start: auto;
       text-align: right;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        margin-right: auto;
-        margin-left: initial;
         text-align: left;
-
-        // Flip icon vertically
-        svg {
-          transform: scaleX(-1);
-        }
       }
     }
   }
@@ -121,8 +110,7 @@
   // Footer link direction (i.e. prev and next)
   &__direction {
     position: absolute;
-    right: 0;
-    left: 0;
+    inset-inline: 0;
     margin-top: px2rem(-20px);
     padding: 0 px2rem(20px);
     font-size: px2rem(12.8px);

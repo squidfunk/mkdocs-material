@@ -42,30 +42,12 @@
 
       // Sidebar with navigation is visible
       .md-sidebar--primary:not([hidden]) ~ .md-content > & {
-
-        // Adjust for left-to-right languages
-        [dir="ltr"] & {
-          margin-left: px2rem(24px);
-        }
-
-        // Adjust for right-to-left languages
-        [dir="rtl"] & {
-          margin-right: px2rem(24px);
-        }
+        margin-inline-start: px2rem(24px);
       }
 
       // Sidebar with table of contents is visible
       .md-sidebar--secondary:not([hidden]) ~ .md-content > & {
-
-        // Adjust for left-to-right languages
-        [dir="ltr"] & {
-          margin-right: px2rem(24px);
-        }
-
-        // Adjust for right-to-left languages
-        [dir="rtl"] & {
-          margin-left: px2rem(24px);
-        }
+        margin-inline-end: px2rem(24px);
       }
     }
 
@@ -88,7 +70,7 @@
   &__button {
     float: right;
     margin: px2rem(8px) 0;
-    margin-left: px2rem(8px);
+    margin-inline-start: px2rem(8px);
     padding: 0;
 
     // [print]: Hide buttons
@@ -99,13 +81,6 @@
     // Adjust for right-to-left languages
     [dir="rtl"] & {
       float: left;
-      margin-right: px2rem(8px);
-      margin-left: initial;
-
-      // Flip icon vertically
-      svg {
-        transform: scaleX(-1);
-      }
     }
 
     // Adjust default link color for icons
@@ -117,6 +92,11 @@
     svg {
       display: inline;
       vertical-align: top;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        transform: scaleX(-1);
+      }
     }
   }
 }

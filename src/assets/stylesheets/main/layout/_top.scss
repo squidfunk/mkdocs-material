@@ -29,7 +29,7 @@
   position: fixed;
   top: px2rem(48px + 16px);
   z-index: 2;
-  margin-left: 50%;
+  margin-inline-start: 50%;
   padding: px2rem(8px) px2rem(16px);
   color: var(--md-default-fg-color--light);
   font-size: px2rem(14px);
@@ -51,8 +51,6 @@
 
   // Adjust for right-to-left languages
   [dir="rtl"] & {
-    margin-right: 50%;
-    margin-left: initial;
     transform: translate(50%, 0);
   }
 

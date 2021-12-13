@@ -292,7 +292,7 @@ kbd {
       // Tooltip
       &[title]:where(:focus, :hover)::after {
         position: absolute;
-        left: 0;
+        inset-inline-start: 0;
         display: inline-block;
         width: auto;
         min-width: max-content;
@@ -316,28 +316,14 @@ kbd {
 
   // Superscript and subscript
   :where(sup, sub) {
-    margin-left: px2em(1px, 12.8px);
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: px2em(1px, 12.8px);
-      margin-left: initial;
-    }
+    margin-inline-start: px2em(1px, 12.8px);
   }
 
   // Blockquotes, possibly nested
   blockquote {
-    padding-left: px2rem(12px);
+    padding-inline-start: px2rem(12px);
     color: var(--md-default-fg-color--light);
-    border-left: px2rem(4px) solid var(--md-default-fg-color--lighter);
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      padding-right: px2rem(12px);
-      padding-left: initial;
-      border-right: px2rem(4px) solid var(--md-default-fg-color--lighter);
-      border-left: initial;
-    }
+    border-inline-start: px2rem(4px) solid var(--md-default-fg-color--lighter);
   }
 
   // Unordered list
@@ -347,18 +333,12 @@ kbd {
 
   // Unordered and ordered list
   :where(ul, ol) {
-    margin-left: px2em(10px);
+    margin-inline-start: px2em(10px);
     padding: 0;
 
     // Adjust display mode if not hidden
     &:not([hidden]) {
       display: flow-root;
-    }
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: px2em(10px);
-      margin-left: initial;
     }
 
     // Nested ordered list
@@ -374,13 +354,7 @@ kbd {
     // List element
     li {
       margin-bottom: 0.5em;
-      margin-left: px2em(20px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: px2em(20px);
-        margin-left: initial;
-      }
+      margin-inline-start: px2em(20px);
 
       // Adjust spacing
       :where(p, blockquote) {
@@ -394,26 +368,16 @@ kbd {
 
       // Nested list
       :where(ul, ol) {
-        margin: 0.5em 0 0.5em px2em(10px);
-
-        // Adjust for right-to-left languages
-        [dir="rtl"] & {
-          margin-right: px2em(10px);
-          margin-left: initial;
-        }
+        margin-block: 0.5em;
+        margin-inline-start: px2em(10px);
       }
     }
   }
 
   // Definition list
   dd {
-    margin: 1em 0 1.5em px2em(30px);
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: px2em(30px);
-      margin-left: initial;
-    }
+    margin-block: 1em 1.5em;
+    margin-inline-start: px2em(30px);
   }
 
   // Image or icon
@@ -563,7 +527,7 @@ kbd {
       display: inline-block;
       width: 1.2em;
       height: 1.2em;
-      margin-left: 0.5em;
+      margin-inline-start: 0.5em;
       vertical-align: text-bottom;
       mask-image: var(--md-typeset-table-sort-icon);
       mask-repeat: no-repeat;

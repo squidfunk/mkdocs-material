@@ -47,13 +47,7 @@
     [type="checkbox"] {
       position: absolute;
       top: 0.45em;
-      left: -2em;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        right: -2em;
-        left: initial;
-      }
+      inset-inline-start: -2em;
     }
   }
 
@@ -67,7 +61,7 @@
   .task-list-indicator::before {
     position: absolute;
     top: 0.15em;
-    left: px2em(-24px);
+    inset-inline-start: px2em(-24px);
     width: px2em(20px);
     height: px2em(20px);
     background-color: var(--md-default-fg-color--lightest);
@@ -75,12 +69,6 @@
     mask-repeat: no-repeat;
     mask-size: contain;
     content: "";
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      right: px2em(-24px);
-      left: initial;
-    }
   }
 
   // Tasklist indicator in checked state

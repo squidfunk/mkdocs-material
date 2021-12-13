@@ -62,7 +62,8 @@
     padding: 0 px2rem(12px);
     font-size: px2rem(16px);
     border-bottom: px2rem(2px) solid var(--md-default-fg-color--lighter);
-    border-radius: px2rem(2px) px2rem(2px) 0 0;
+    border-start-start-radius: px2rem(2px);
+    border-start-end-radius: px2rem(2px);
     box-shadow: var(--md-shadow-z1);
     transition:
       border     250ms,

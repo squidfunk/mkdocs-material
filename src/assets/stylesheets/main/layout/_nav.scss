@@ -83,13 +83,7 @@
 
     // Navigation item on level 2
     & & {
-      padding-right: 0;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        padding-right: px2rem(12px);
-        padding-left: 0;
-      }
+      padding-inline-end: 0;
     }
   }
 
@@ -175,8 +169,7 @@
     &--primary & {
       position: absolute;
       top: 0;
-      right: 0;
-      left: 0;
+      inset-inline: 0;
       z-index: 1;
       display: flex;
       flex-direction: column;
@@ -209,17 +202,11 @@
         .md-nav__icon {
           position: absolute;
           top: px2rem(8px);
-          left: px2rem(8px);
+          inset-inline-start: px2rem(8px);
           display: block;
           width: px2rem(24px);
           height: px2rem(24px);
           margin: px2rem(4px);
-
-          // Adjust for right-to-left languages
-          [dir="rtl"] & {
-            right: px2rem(8px);
-            left: initial;
-          }
 
           // Navigation icon in link to previous level
           &::after {
@@ -260,16 +247,10 @@
         .md-logo {
           position: absolute;
           top: px2rem(4px);
-          left: px2rem(4px);
+          inset-inline-start: px2rem(4px);
           display: block;
           margin: px2rem(4px);
           padding: px2rem(8px);
-
-          // Adjust for right-to-left languages
-          [dir="rtl"] & {
-            right: px2rem(4px);
-            left: initial;
-          }
         }
       }
 
@@ -303,14 +284,8 @@
         .md-nav__icon {
           width: px2rem(24px);
           height: px2rem(24px);
-          margin-right: px2rem(-4px);
+          margin-inline-end: px2rem(-4px);
           font-size: px2rem(24px);
-
-          // Adjust for right-to-left languages
-          [dir="rtl"] & {
-            margin-right: 0;
-            margin-left: px2rem(-4px);
-          }
 
           // Navigation icon in link to next level
           &::after {
@@ -345,46 +320,22 @@
 
           // Navigation link on level 3
           .md-nav__link {
-            padding-left: px2rem(28px);
-
-            // Adjust for right-to-left languages
-            [dir="rtl"] & {
-              padding-right: px2rem(28px);
-              padding-left: initial;
-            }
+            padding-inline-start: px2rem(28px);
           }
 
           // Navigation link on level 4
           .md-nav .md-nav__link {
-            padding-left: px2rem(40px);
-
-            // Adjust for right-to-left languages
-            [dir="rtl"] & {
-              padding-right: px2rem(40px);
-              padding-left: initial;
-            }
+            padding-inline-start: px2rem(40px);
           }
 
           // Navigation link on level 5
           .md-nav .md-nav .md-nav__link {
-            padding-left: px2rem(52px);
-
-            // Adjust for right-to-left languages
-            [dir="rtl"] & {
-              padding-right: px2rem(52px);
-              padding-left: initial;
-            }
+            padding-inline-start: px2rem(52px);
           }
 
           // Navigation link on level 6
           .md-nav .md-nav .md-nav .md-nav__link {
-            padding-left: px2rem(64px);
-
-            // Adjust for right-to-left languages
-            [dir="rtl"] & {
-              padding-right: px2rem(64px);
-              padding-left: initial;
-            }
+            padding-inline-start: px2rem(64px);
           }
         }
       }
@@ -648,7 +599,7 @@
 
         // Adjust spacing for level 1 navigation items
         > .md-nav__list > .md-nav__item {
-          padding-right: px2rem(12px);
+          padding-inline-end: px2rem(12px);
         }
       }
     }
@@ -670,7 +621,7 @@
       .md-nav--secondary {
         display: block;
         margin-bottom: 1.25em;
-        border-left: px2rem(1px) solid var(--md-primary-fg-color);
+        border-inline-start: px2rem(1px) solid var(--md-primary-fg-color);
 
         // Hide table of contents title
         > .md-nav__title {

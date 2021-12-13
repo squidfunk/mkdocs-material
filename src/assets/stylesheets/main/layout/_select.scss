@@ -94,20 +94,13 @@
   &__link {
     display: block;
     width: 100%;
-    padding-right: px2rem(24px);
-    padding-left: px2rem(12px);
+    padding-inline: px2rem(12px) px2rem(24px);
     outline: none;
     cursor: pointer;
     transition:
       background-color 250ms,
       color            250ms;
     scroll-snap-align: start;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      padding-right: px2rem(12px);
-      padding-left: px2rem(24px);
-    }
 
     // Link on focus/hover
     &:where(:focus, :hover) {

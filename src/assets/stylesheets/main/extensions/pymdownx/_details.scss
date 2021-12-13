@@ -64,15 +64,10 @@
   summary {
     display: block;
     min-height: px2rem(20px);
-    padding-right: px2rem(36px);
-    border-top-left-radius: px2rem(2px);
-    border-top-right-radius: px2rem(2px);
+    padding-inline-end: px2rem(36px);
+    border-start-start-radius: px2rem(2px);
+    border-start-end-radius: px2rem(2px);
     cursor: pointer;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      padding: px2rem(8px) px2rem(44px) px2rem(8px) px2rem(36px);
-    }
 
     // Show outline for keyboard devices
     &.focus-visible {
@@ -90,7 +85,7 @@
     &::after {
       position: absolute;
       top: px2em(10px);
-      right: px2rem(8px);
+      inset-inline-end: px2rem(8px);
       width: px2rem(20px);
       height: px2rem(20px);
       background-color: currentColor;
@@ -103,8 +98,6 @@
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        right: initial;
-        left: px2rem(8px);
         transform: rotate(180deg);
       }
     }

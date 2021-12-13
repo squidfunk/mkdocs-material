@@ -29,8 +29,7 @@
 .md-header {
   position: sticky;
   top: 0;
-  right: 0;
-  left: 0;
+  inset-inline: 0;
   z-index: 4;
   color: var(--md-primary-bg-color);
   background-color: var(--md-primary-fg-color);
@@ -131,12 +130,8 @@
       }
 
       // Adjust for right-to-left languages
-      [dir="rtl"] & {
-
-        // Flip icon vertically
-        svg {
-          transform: scaleX(-1);
-        }
+      [dir="rtl"] & svg {
+        transform: scaleX(-1);
       }
     }
 
@@ -185,16 +180,10 @@
   &__title {
     flex-grow: 1;
     height: px2rem(48px);
-    margin-right: px2rem(8px);
-    margin-left: px2rem(20px);
+    margin-inline-end: px2rem(8px);
+    margin-inline-start: px2rem(20px);
     font-size: px2rem(18px);
     line-height: px2rem(48px);
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: px2rem(20px);
-      margin-left: px2rem(8px);
-    }
 
     // Header title in active state, i.e. page title is visible
     &[data-md-state="active"] .md-header__topic {
@@ -260,23 +249,12 @@
       display: block;
       width: px2rem(234px);
       max-width: px2rem(234px);
-      margin-left: px2rem(20px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: px2rem(20px);
-        margin-left: initial;
-      }
+      margin-inline-start: px2rem(20px);
     }
 
     // [screen +]: Adjust spacing of search bar
     @include break-from-device(screen) {
-      margin-left: px2rem(28px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: px2rem(28px);
-      }
+      margin-inline-start: px2rem(28px);
     }
   }
 }

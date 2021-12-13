@@ -56,34 +56,21 @@
     // this won't work consistently. Furthermore, we would need to use inline
     // positioning to align the links, which looks jagged.
     top: px2rem(1px);
-    margin-right: px2rem(8px);
-    margin-left: px2rem(28px);
+    margin-inline: px2rem(28px) px2rem(8px);
     color: inherit;
     outline: none;
     cursor: pointer;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: px2rem(28px);
-      margin-left: px2rem(8px);
-    }
 
     // Version selection icon
     &::after {
       display: inline-block;
       width: px2rem(8px);
       height: px2rem(12px);
-      margin-left: px2rem(8px);
+      margin-inline-start: px2rem(8px);
       background-color: currentColor;
       mask-image: var(--md-version-icon);
       mask-repeat: no-repeat;
       content: "";
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: px2rem(8px);
-        margin-left: initial;
-      }
     }
   }
 
@@ -140,8 +127,7 @@
   &__link {
     display: block;
     width: 100%;
-    padding-right: px2rem(24px);
-    padding-left: px2rem(12px);
+    padding-inline: px2rem(12px) px2rem(24px);
     white-space: nowrap;
     outline: none;
     cursor: pointer;
@@ -149,12 +135,6 @@
       color            250ms,
       background-color 250ms;
     scroll-snap-align: start;
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      padding-right: px2rem(12px);
-      padding-left: px2rem(24px);
-    }
 
     // Link on focus/hover
     &:where(:focus, :hover) {

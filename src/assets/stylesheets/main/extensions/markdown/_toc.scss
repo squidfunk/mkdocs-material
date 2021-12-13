@@ -30,7 +30,7 @@
   // Headerlink
   .headerlink {
     display: inline-block;
-    margin-left: px2rem(10px);
+    margin-inline-start: px2rem(10px);
     color: var(--md-default-fg-color--lighter);
     opacity: 0;
     transition:
@@ -40,12 +40,6 @@
     // [print]: Hide headerlinks
     @media print {
       display: none;
-    }
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      margin-right: px2rem(10px);
-      margin-left: initial;
     }
   }
 

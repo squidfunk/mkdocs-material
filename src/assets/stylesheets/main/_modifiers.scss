@@ -35,27 +35,22 @@
       float: left;
       width: px2rem(234px);
       margin-top: 0;
-      margin-right: px2rem(16px);
+      margin-inline-end: px2rem(16px);
       margin-bottom: px2rem(16px);
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
         float: right;
-        margin-right: 0;
-        margin-left: px2rem(16px);
       }
 
       // Modifier to move to end (ltr: right, rtl: left)
       &.end {
         float: right;
-        margin-right: 0;
-        margin-left: px2rem(16px);
+        margin-inline: px2rem(16px) 0;
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
           float: left;
-          margin-right: px2rem(16px);
-          margin-left: 0;
         }
       }
     }
