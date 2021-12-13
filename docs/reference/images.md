@@ -42,12 +42,12 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
     _Example_:
 
     ``` markdown
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=left }
+    ![Image title](https://dummyimage.com/600x400/eee/aaa){ align=left }
     ```
 
     _Result_:
 
-    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
+    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -58,12 +58,12 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
     _Example_:
 
     ``` markdown
-    ![Placeholder](https://dummyimage.com/600x400/eee/aaa){ align=right }
+    ![Image title](https://dummyimage.com/600x400/eee/aaa){ align=right }
     ```
 
     _Result_:
 
-    ![Placeholder](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
+    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -99,7 +99,7 @@ _Example_:
 
 ```html
 <figure markdown> <!-- (1)! -->
-  ![Placeholder](https://dummyimage.com/600x400/){ width="300" }
+  ![Image title](https://dummyimage.com/600x400/){ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>
 ```
@@ -123,7 +123,7 @@ through the `loading=lazy` directive, which degrades to eager-loading in
 browsers without support:
 
 ``` markdown
-![Placeholder](https://dummyimage.com/600x400/){ loading=lazy }
+![Image title](https://dummyimage.com/600x400/){ loading=lazy }
 ```
 
   [lazy-loading]: https://caniuse.com/#feat=loading-lazy-attr
@@ -140,16 +140,16 @@ hash fragment to the image URL:
 _Example_:
 
 ``` markdown
-![Placeholder light](https://dummyimage.com/600x400/f5f5f5/aaaaaa#only-light)
-![Placeholder dark](https://dummyimage.com/600x400/21222c/d5d7e2#only-dark)
+![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa#only-light)
+![Image title](https://dummyimage.com/600x400/21222c/d5d7e2#only-dark)
 ```
 
 _Result_:
 
-![Placeholder light]{ width="300" }
-![Placeholder dark]{ width="300" }
+![Zelda light world]{ width="300" }
+![Zelda dark world]{ width="300" }
 
   [Light and dark mode support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.1
   [color palette toggle]: ../setup/changing-the-colors.md#color-palette-toggle
-  [Placeholder light]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–#only-light
-  [Placeholder dark]: https://dummyimage.com/600x400/21222c/d5d7e2&text=–%20Image%20–#only-dark
+  [Zelda light world]: ../assets/images/zelda-light-world.png#only-light
+  [Zelda dark world]: ../assets/images/zelda-dark-world.png#only-dark
