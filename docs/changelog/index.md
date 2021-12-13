@@ -17,7 +17,7 @@ template: overrides/main.html
 - Fixed footer navigation title breaking out of container when too long
 - Fixed shrinking arrow in navigation title when too long
 - Fixed #3343: Filtered stopwords appear as missing search terms
-- Fixed #3346: Site unusable due to usage of :not() (Firefox 78 ESR)
+- Fixed #3346: Site unusable due to usage of `:not()` (Firefox 78 ESR)
 
 ### 8.1.0 <small>_ December 10, 2021</small> { id="8.1.0" }
 
