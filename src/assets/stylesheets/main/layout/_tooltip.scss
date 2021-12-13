@@ -136,6 +136,11 @@
   white-space: normal;
   outline: none;
 
+  // Adjust for right-to-left languages
+  [dir="rtl"] & {
+    direction: rtl;
+  }
+
   // Annotation is not hidden (e.g. when copying)
   &:not([hidden]) {
     display: inline-block;
