@@ -6,6 +6,19 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.1 <small>_ December 13, 2021</small> { id="8.1.1" }
+
+- Added support for `#only-light` and `#only-dark` image hash fragments
+- Fixed copy-to-clipboard adding blank lines when using line anchors
+- Fixed code annotation directionality for right-to-left languages
+- Fixed header title positioning for right-to-left languages
+- Fixed admonition borders for right-to-left languages (8.0.0 regression)
+- Fixed footer navigation link positioning (8.0.0 regression)
+- Fixed footer navigation title breaking out of container when too long
+- Fixed shrinking arrow in navigation title when too long
+- Fixed #3343: Filtered stopwords appear as missing search terms
+- Fixed #3346: Site unusable due to usage of :not() (Firefox 78 ESR)
+
 ### 8.1.0 <small>_ December 10, 2021</small> { id="8.1.0" }
 
 - Added basic support for code block line anchors

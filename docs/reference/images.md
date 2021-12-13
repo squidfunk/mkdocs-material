@@ -130,7 +130,7 @@ browsers without support:
 
 ### Light and dark mode
 
-[:octicons-tag-24: Unreleased][Light and dark mode support] ·
+[:octicons-tag-24: 8.1.1][Light and dark mode support] ·
 :octicons-beaker-24: Experimental
 
 If you added a [color palette toggle] and want to show different images for
