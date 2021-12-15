@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.2 <small>_ December 15, 2021</small> { id="8.1.2" }
+
+- Switched CSS sources to logical properties
+- Added transformation of logical properties to `ltr`/`rtl` equivalents
+- Fixed spacing for admonitions inside lists (8.1.1 regression)
+
 ### 8.1.1 <small>_ December 13, 2021</small> { id="8.1.1" }
 
 - Added support for `#only-light` and `#only-dark` image hash fragments
