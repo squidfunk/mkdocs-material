@@ -114,7 +114,7 @@ $admonitions: (
   }
 
   // Admonition title
-  :where(.admonition-title, summary) {
+  :is(.admonition-title, summary) {
     position: relative;
     margin-block: 0;
     margin-inline: px2rem(-16px) px2rem(-12px);
@@ -167,7 +167,7 @@ $admonitions: (
   }
 
   // Admonition flavour title
-  .md-typeset :where(#{$flavours}) > :where(.admonition-title, summary) {
+  .md-typeset :where(#{$flavours}) > :is(.admonition-title, summary) {
     background-color: color.adjust($tint, $alpha: -0.9);
     border-color: $tint;
 
