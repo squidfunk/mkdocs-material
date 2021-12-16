@@ -272,5 +272,5 @@ default values.
 - [Changing the description]
 
   [Metadata]: extensions/python-markdown.md#metadata
-  [Changing the title]: ../reference/meta-tags.md#setting-the-page-title
-  [Changing the description]: ../reference/meta-tags.md#setting-the-page-description
+  [Changing the title]: ../reference/index.md#setting-the-page-title
+  [Changing the description]: ../reference/index.md#setting-the-page-description

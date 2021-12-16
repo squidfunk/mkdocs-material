@@ -2,21 +2,18 @@
 template: overrides/main.html
 ---
 
-# Meta tags
+# Reference
 
-In HTML, `meta` tags allow to provide additional metadata for a document, e.g.
-page titles and descriptions, additional assets to be loaded, and [Open Graph]
-metadata. While arbitrary `meta` tags can always be added via [customization],
-some common `meta` tags can be configured.
-
-  [Open Graph]: https://ogp.me/
-  [customization]: #customization
+Material for MkDocs is packed with many great features that make technical
+writing a pleasure. This section of the documentation explains how to set up
+a page, and showcases all available specimen that can be used directly from
+within Markdown files.
 
 ## Configuration
 
-This configuration adds support for setting custom page titles and descriptions
-in [front matter], as well as for using custom metadata in templates. Add the
-following lines to `mkdocs.yml`:
+This configuration allows to set a title and description for a page, change the
+template or define an icon to be rendered in the navigation. Add the following 
+lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -62,15 +59,57 @@ Markdown file:
 
 ``` bash
 ---
-description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
+description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 ---
 
 # Document title
 ...
 ```
 
-This will set the `meta` tag containing the site description inside the
-document `head` for the current page to the provided value.
+1.  This will set the `meta` tag containing the site description inside the
+    document `head` for the current page to the provided value.
+
+### Setting the page icon
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.5.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+An icon can be assigned to each page, which is then rendered as part of the
+navigation sidebar. Ensure [Metadata] is enabled and add the following lines
+at the top of a Markdown file:
+
+``` bash
+---
+icon: material/emoticon-happy # (1)!
+---
+
+# Document title
+...
+```
+
+1.  Check out the left sidebar to see icons in action! Also check out our
+    [icon search] to find the perfect icon with a few keystrokes.
+
+  [Insiders]: ../insiders/index.md
+  [icon search]: icons-emojis.md#search
+
+### Setting the page template
+
+If you're using [theme extension] and created a new page template in the
+`overrides` directory, you can enable it for a specific page. Add the following 
+lines at the top of a Markdown file:
+
+``` bash
+---
+template: custom.html
+---
+
+# Document title
+...
+```
+
+  [theme extension]: ../customization.md#extending-the-theme
 
 ## Customization
 
@@ -90,7 +129,6 @@ e.g. to add indexing policies for search engines via the `robots` property:
 {% endblock %}
 ```
 
-  [theme extension]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
 
 #### on a single page

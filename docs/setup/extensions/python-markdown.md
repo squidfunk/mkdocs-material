@@ -165,8 +165,8 @@ No configuration options are available. See reference for usage:
 
   [Metadata]: https://python-markdown.github.io/extensions/meta_data/
   [Metadata support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
-  [Setting the page title]: ../../reference/meta-tags.md#setting-the-page-title
-  [Setting the page description]: ../../reference/meta-tags.md#setting-the-page-description
+  [Setting the page title]: ../../reference/index.md#setting-the-page-title
+  [Setting the page description]: ../../reference/index.md#setting-the-page-description
   [Adding tags]: ../../setup/setting-up-tags.md#adding-tags
   [Hiding the tags]: ../../setup/setting-up-tags.md#hiding-the-tags
   [Hiding the sidebars]: ../../setup/setting-up-navigation.md#hiding-the-sidebars

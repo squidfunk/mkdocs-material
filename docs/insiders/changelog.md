@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.5.0 <small>_ December 16, 2021</small> { id="4.5.0" }
+
+- Added support for navigation icons
+
 ### 4.4.0 <small>_ December 10, 2021</small> { id="4.4.0" }
 
 - Added support for code annotation anchor links (deep linking)

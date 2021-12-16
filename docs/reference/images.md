@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+icon: material/image-frame
 ---
 
 # Images

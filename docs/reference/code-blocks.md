@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+icon: material/code-tags
 ---
 
 # Code blocks
