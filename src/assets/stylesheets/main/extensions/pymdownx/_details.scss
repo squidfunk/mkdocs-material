@@ -103,7 +103,7 @@
     }
 
     // Hide native details marker - Safari (iOS and macOS)  does not seem to
-    // like :where() on details elements, so just go with a selector list.
+    // like :is() on details elements, so just go with a selector list.
     &::marker,
     &::-webkit-details-marker {
       display: none;

@@ -29,7 +29,7 @@
 
   // .o  = Operator
   // .ow = Operator, word
-  :where(.o, .ow) {
+  :is(.o, .ow) {
     color: var(--md-code-hl-operator-color);
   }
 
@@ -46,7 +46,7 @@
   // .si  = Literal, string interpol
   // .s1  = Literal, string single
   // .ss  = Literal, string symbol
-  :where(.cpf, .l, .s, .sb, .sc, .s2, .si, .s1, .ss) {
+  :is(.cpf, .l, .s, .sb, .sc, .s2, .si, .s1, .ss) {
     color: var(--md-code-hl-string-color);
   }
 
@@ -55,7 +55,7 @@
   // .sh = Literal, string heredoc
   // .sr = Literal, string regex
   // .sx = Literal, string other
-  :where(.cp, .se, .sh, .sr, .sx) {
+  :is(.cp, .se, .sh, .sr, .sx) {
     color: var(--md-code-hl-special-color);
   }
 
@@ -66,7 +66,7 @@
   // .mi = Number, integer
   // .il = Number, integer long
   // .mo = Number, octal
-  :where(.m, .mb, .mf, .mh, .mi, .il, .mo) {
+  :is(.m, .mb, .mf, .mh, .mi, .il, .mo) {
     color: var(--md-code-hl-number-color);
   }
 
@@ -76,20 +76,20 @@
   // .kp = Keyword, pseudo
   // .kr = Keyword, reserved
   // .kt = Keyword, type
-  :where(.k, .kd, .kn, .kp, .kr, .kt) {
+  :is(.k, .kd, .kn, .kp, .kr, .kt) {
     color: var(--md-code-hl-keyword-color);
   }
 
   // .kc = Keyword, constant
   // .n  = Name
-  :where(.kc, .n) {
+  :is(.kc, .n) {
     color: var(--md-code-hl-name-color);
   }
 
   // .no = Name, constant
   // .nb = Name, builtin
   // .bp = Name, builtin pseudo
-  :where(.no, .nb, .bp) {
+  :is(.no, .nb, .bp) {
     color: var(--md-code-hl-constant-color);
   }
 
@@ -97,7 +97,7 @@
   // .ne = Name, exception
   // .nf = Name, function
   // .nn = Name, namespace
-  :where(.nc, .ne, .nf, .nn) {
+  :is(.nc, .ne, .nf, .nn) {
     color: var(--md-code-hl-function-color);
   }
 
@@ -105,7 +105,7 @@
   // .ni = Name, entity
   // .nl = Name, label
   // .nt = Name, tag
-  :where(.nd, .ni, .nl, .nt) {
+  :is(.nd, .ni, .nl, .nt) {
     color: var(--md-code-hl-keyword-color);
   }
 
@@ -115,7 +115,7 @@
   // .ch = Comment, shebang
   // .cs = Comment, special
   // .sd = Literal, string doc
-  :where(.c, .cm, .c1, .ch, .cs, .sd) {
+  :is(.c, .cm, .c1, .ch, .cs, .sd) {
     color: var(--md-code-hl-comment-color);
   }
 
@@ -124,7 +124,7 @@
   // .vc = Variable, class
   // .vg = Variable, global
   // .vi = Variable, instance
-  :where(.na, .nv, .vc, .vg, .vi) {
+  :is(.na, .nv, .vc, .vg, .vi) {
     color: var(--md-code-hl-variable-color);
   }
 
@@ -136,13 +136,13 @@
   // .gs = Generic, strong
   // .gu = Generic, subheading
   // .gt = Generic, traceback
-  :where(.ge, .gr, .gh, .go, .gp, .gs, .gu, .gt) {
+  :is(.ge, .gr, .gh, .go, .gp, .gs, .gu, .gt) {
     color: var(--md-code-hl-generic-color);
   }
 
   // .gd = Diff, delete
   // .gi = Diff, insert
-  :where(.gd, .gi) {
+  :is(.gd, .gi) {
     margin: 0 px2em(-2px);
     padding: 0 px2em(2px);
     border-radius: px2rem(2px);
@@ -222,7 +222,7 @@
 
   // Set table elements to block layout, because otherwise the whole flexbox
   // hacking won't work correctly
-  :where(tbody, td) {
+  :is(tbody, td) {
     display: block;
     padding: 0;
   }

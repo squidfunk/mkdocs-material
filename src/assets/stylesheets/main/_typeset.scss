@@ -84,7 +84,7 @@ kbd {
   }
 
   // Default spacing
-  :where(ul, ol, dl, figure, blockquote, pre) {
+  :is(ul, ol, dl, figure, blockquote, pre) {
     margin: 1em 0;
   }
 
@@ -129,7 +129,7 @@ kbd {
   }
 
   // Headline on level 5-6
-  :where(h5, h6) {
+  :is(h5, h6) {
     margin: px2em(16px, 12.8px) 0;
     color: var(--md-default-fg-color--light);
     font-weight: 700;
@@ -161,7 +161,7 @@ kbd {
     }
 
     // Text link on focus/hover
-    &:where(:focus, :hover) {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 
@@ -173,7 +173,7 @@ kbd {
   }
 
   // Code block
-  :where(code, pre, kbd) {
+  :is(code, pre, kbd) {
     color: var(--md-code-fg-color);
     direction: ltr;
 
@@ -200,7 +200,7 @@ kbd {
   }
 
   // Code block in headline
-  :where(h1, h2, h3, h4, h5, h6) code {
+  :is(h1, h2, h3, h4, h5, h6) code {
     margin: initial;
     padding: initial;
     background-color: transparent;
@@ -290,7 +290,7 @@ kbd {
       position: relative;
 
       // Tooltip
-      &[title]:where(:focus, :hover)::after {
+      &[title]:is(:focus, :hover)::after {
         position: absolute;
         inset-inline-start: 0;
         display: inline-block;
@@ -315,7 +315,7 @@ kbd {
   }
 
   // Superscript and subscript
-  :where(sup, sub) {
+  :is(sup, sub) {
     margin-inline-start: px2em(1px, 12.8px);
   }
 
@@ -332,7 +332,7 @@ kbd {
   }
 
   // Unordered and ordered list
-  :where(ul, ol) {
+  :is(ul, ol) {
     margin-inline-start: px2em(10px);
     padding: 0;
 
@@ -357,7 +357,7 @@ kbd {
       margin-inline-start: px2em(20px);
 
       // Adjust spacing
-      :where(p, blockquote) {
+      :is(p, blockquote) {
         margin: 0.5em 0;
       }
 
@@ -367,7 +367,7 @@ kbd {
       }
 
       // Nested list
-      :where(ul, ol) {
+      :is(ul, ol) {
         margin-block: 0.5em;
         margin-inline-start: px2em(10px);
       }
@@ -381,7 +381,7 @@ kbd {
   }
 
   // Image or icon
-  :where(img, svg) {
+  :is(img, svg) {
     max-width: 100%;
     height: auto;
 
@@ -458,7 +458,7 @@ kbd {
     }
 
     // Elements in table heading and cell
-    :where(th, td) > * {
+    :is(th, td) > * {
 
       // Adjust spacing on first child
       &:first-child {
@@ -472,7 +472,7 @@ kbd {
     }
 
     // Table heading and cell
-    :where(th, td):not([align]) {
+    :is(th, td):not([align]) {
       text-align: left;
 
       // Adjust for right-to-left languages

@@ -31,7 +31,7 @@
   .keys {
 
     // Keyboard key icon
-    kbd:where(::before, ::after) {
+    kbd:is(::before, ::after) {
       position: relative;
       margin: 0;
       color: inherit;

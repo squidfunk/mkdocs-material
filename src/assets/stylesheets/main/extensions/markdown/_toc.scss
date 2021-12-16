@@ -44,7 +44,7 @@
   }
 
   // Show headerlinks on parent hover
-  :where(:hover, :target) > .headerlink,
+  :is(:hover, :target) > .headerlink,
   .headerlink:focus {
     opacity: 1;
     transition:
@@ -54,7 +54,7 @@
 
   // Adjust color on parent target or focus/hover
   :target > .headerlink,
-  .headerlink:where(:focus, :hover) {
+  .headerlink:is(:focus, :hover) {
     color: var(--md-accent-fg-color);
   }
 
@@ -81,7 +81,7 @@
   }
 
   // Adjust scroll offset for headlines of level 1-3
-  :where(h1, h2, h3):target {
+  :is(h1, h2, h3):target {
     --md-scroll-offset: #{px2rem(4px)};
   }
 

@@ -48,7 +48,7 @@
       max-height   0ms 500ms;
 
     // Selection bubble on parent focus/hover
-    .md-select:where(:focus-within, :hover) & {
+    .md-select:is(:focus-within, :hover) & {
       max-height: px2rem(200px);
       transform: translate3d(-50%, 0, 0);
       opacity: 1;
@@ -103,7 +103,7 @@
     scroll-snap-align: start;
 
     // Link on focus/hover
-    &:where(:focus, :hover) {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
     }
 

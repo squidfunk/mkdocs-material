@@ -28,7 +28,7 @@
 .md-typeset {
 
   // Emoji and icon container
-  :where(.emojione, .twemoji, .gemoji) {
+  :is(.emojione, .twemoji, .gemoji) {
     display: inline-flex;
     height: px2em(18px);
     vertical-align: text-top;

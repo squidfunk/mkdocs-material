@@ -28,7 +28,7 @@
 .md-typeset {
 
   // Deletion, addition or comment
-  :where(del, ins, .comment).critic {
+  :is(del, ins, .comment).critic {
     box-decoration-break: clone;
   }
 

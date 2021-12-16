@@ -61,7 +61,7 @@
         }
 
         // Show backreferences on footnote hover/target
-        &:where(:hover, :target) .footnote-backref {
+        &:is(:hover, :target) .footnote-backref {
           transform: translateX(0);
           opacity: 1;
         }

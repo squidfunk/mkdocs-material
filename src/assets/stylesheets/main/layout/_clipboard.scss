@@ -93,7 +93,7 @@
     }
 
     // Code block on focus/hover
-    &:where(:focus, :hover) code {
+    &:is(:focus, :hover) code {
       color: var(--md-accent-fg-color);
       background-color: var(--md-accent-fg-color--transparent);
     }
