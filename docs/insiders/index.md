@@ -252,8 +252,10 @@ are released for general availability.
 #### $ 12,000 – Piri Piri
 
 - [x] [Navigation icons]
+- [ ] Navigation status badges
 - [ ] Navigation pruning
 - [ ] Text annotations
+- [ ] Blog
 
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
 
