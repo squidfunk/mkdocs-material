@@ -526,12 +526,20 @@
       float: right;
       width: px2rem(18px);
       height: px2rem(18px);
-      transition: transform 250ms;
+      border-radius: 100%;
+      transition:
+        background-color 250ms,
+        transform        250ms;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
         float: left;
         transform: rotate(180deg);
+      }
+
+      // Navigation icon on hover
+      &:hover {
+        background-color: var(--md-accent-fg-color--transparent);
       }
 
       // Navigation icon content
