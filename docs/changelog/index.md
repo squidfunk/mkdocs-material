@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.3 <small>_ December 19, 2021</small> { id="8.1.3" }
+
+- Added animation to active content tab indicator
+- Fixed #3360: Highlighted lines add blank lines in copied text
+- Fixed usage of subsequent index files when using section index pages
+
 ### 8.1.2 <small>_ December 15, 2021</small> { id="8.1.2" }
 
 - Switched CSS sources to logical properties
