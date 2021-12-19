@@ -220,6 +220,17 @@ nav:
 
 This feature flag is not compatible with [`toc.integrate`][toc.integrate].
 
+!!! warning
+
+    You cannot have two `index.md` at the same hierarchical level of navigation, as this:
+
+    ```
+    nav:
+      - Section:
+        - section/index.md
+        - Page 1: exampleFolder/index.md
+    ```
+
   [navigation.indexes support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [navigation.indexes enabled]: ../assets/screenshots/navigation-index-on.png
   [navigation.indexes disabled]: ../assets/screenshots/navigation-index-off.png
