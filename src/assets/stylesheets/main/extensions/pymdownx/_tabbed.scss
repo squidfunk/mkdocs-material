@@ -87,24 +87,29 @@
       display: contents;
     }
 
-    // [js]: Show animated tab indicator
-    .js & {
-      position: relative;
+    // [screen and no reduced motion]: Disable animation
+    @media screen and (prefers-reduced-motion: no-preference) {
 
-      // Tab indicator
-      &::after {
-        position: absolute;
-        bottom: 0;
-        display: block;
-        width: var(--md-indicator-width);
-        height: 2px;
-        background: var(--md-accent-fg-color);
-        transform: translateX(var(--md-indicator-x));
-        transition:
-          width     250ms,
-          transform 250ms;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        content: "";
+      // [js]: Show animated tab indicator
+      .js & {
+        position: relative;
+
+        // Tab indicator
+        &::before {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: block;
+          width: var(--md-indicator-width);
+          height: 2px;
+          background: var(--md-accent-fg-color);
+          transform: translateX(var(--md-indicator-x));
+          transition:
+            width     250ms,
+            transform 250ms;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          content: "";
+        }
       }
     }
 
@@ -228,6 +233,11 @@
   // [screen]: Show active state
   @media screen {
     color: var(--md-accent-fg-color);
+
+    // [reduced motion]: Show border
+    @media (prefers-reduced-motion) {
+      border-color: var(--md-accent-fg-color);
+    }
 
     // [no-js]: Show border (indicator is animated with JavaScript)
     .no-js & {

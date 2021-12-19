@@ -148,7 +148,7 @@ export function mountBackToTop(
     /* Handle complete */
     complete() {
       el.style.top = ""
-      el.removeAttribute("data-md-state")
+      el.setAttribute("data-md-state", "hidden")
       el.removeAttribute("tabindex")
     }
   })

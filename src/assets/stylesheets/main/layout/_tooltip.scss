@@ -85,7 +85,7 @@
     max-height   0ms 250ms,
     z-index    250ms;
 
-  // [reduced-motion]: Disable animation
+  // [reduced motion]: Disable animation
   @media (prefers-reduced-motion) {
     transition: none;
   }
@@ -101,7 +101,7 @@
       max-height 250ms,
       z-index      0ms;
 
-    // [reduced-motion]: Disable animation
+    // [reduced motion]: Disable animation
     @media (prefers-reduced-motion) {
       transition: none;
     }
@@ -194,7 +194,7 @@
       animation: pulse 2000ms infinite;
       content: "";
 
-      // [reduced-motion]: Disable animation
+      // [reduced motion]: Disable animation
       @media (prefers-reduced-motion) {
         transition: none;
         animation: none;
@@ -212,7 +212,7 @@
           background-color 250ms;
         animation: none;
 
-        // [reduced-motion]: Disable animation
+        // [reduced motion]: Disable animation
         @media (prefers-reduced-motion) {
           transition: none;
         }
@@ -225,7 +225,7 @@
       transition: transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1);
       content: attr(data-md-annotation-id);
 
-      // [reduced-motion]: Disable animation
+      // [reduced motion]: Disable animation
       @media (prefers-reduced-motion) {
         transition: none;
       }

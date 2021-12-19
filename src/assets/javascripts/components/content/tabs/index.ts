@@ -23,6 +23,9 @@
 import {
   Observable,
   Subject,
+  animationFrameScheduler,
+  auditTime,
+  combineLatest,
   defer,
   finalize,
   fromEvent,
@@ -30,6 +33,8 @@ import {
   mapTo,
   merge,
   startWith,
+  takeLast,
+  takeUntil,
   tap
 } from "rxjs"
 
@@ -37,7 +42,8 @@ import {
   getElement,
   getElementOffset,
   getElementSize,
-  getElements
+  getElements,
+  watchElementSize
 } from "~/browser"
 
 import { Component } from "../../_"
@@ -97,33 +103,43 @@ export function watchContentTabs(
 export function mountContentTabs(
   el: HTMLElement
 ): Observable<Component<ContentTabs>> {
+  const { matches: reduce } = matchMedia("(prefers-reduced-motion)")
+
+  /* Mount component on subscription */
   const container = getElement(".tabbed-labels", el)
   return defer(() => {
     const push$ = new Subject<ContentTabs>()
-    push$.subscribe({
+    combineLatest([push$, watchElementSize(el)])
+      .pipe(
+        auditTime(1, animationFrameScheduler),
+        takeUntil(push$.pipe(takeLast(1)))
+      )
+        .subscribe({
 
-      /* Handle emission */
-      next({ active }) {
-        const offset = getElementOffset(active)
-        const { width } = getElementSize(active)
+          /* Handle emission */
+          next([{ active }]) {
+            const offset = getElementOffset(active)
+            if (!reduce) {
+              const { width } = getElementSize(active)
 
-        /* Set tab indicator offset and width */
-        el.style.setProperty("--md-indicator-x", `${offset.x}px`)
-        el.style.setProperty("--md-indicator-width", `${width}px`)
+              /* Set tab indicator offset and width */
+              el.style.setProperty("--md-indicator-x", `${offset.x}px`)
+              el.style.setProperty("--md-indicator-width", `${width}px`)
+            }
 
-        /* Smoothly scroll container */
-        container.scrollTo({
-          behavior: "smooth",
-          left: offset.x
+            /* Smoothly scroll container */
+            container.scrollTo({
+              behavior: "smooth",
+              left: offset.x
+            })
+          },
+
+          /* Handle complete */
+          complete() {
+            el.style.removeProperty("--md-indicator-x")
+            el.style.removeProperty("--md-indicator-width")
+          }
         })
-      },
-
-      /* Handle complete */
-      complete() {
-        el.style.removeProperty("--md-indicator-x")
-        el.style.removeProperty("--md-indicator-width")
-      }
-    })
 
     /* Create and return component */
     return watchContentTabs(el)
