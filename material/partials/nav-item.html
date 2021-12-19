@@ -21,9 +21,9 @@
       {% endif %}
       {% set indexes = [] %}
       {% if "navigation.indexes" in features %}
-        {% for item in nav_item.children %}
-          {% if item.is_index and not index is defined %}
-            {% set _ = indexes.append(item) %}
+        {% for nav_item in nav_item.children %}
+          {% if nav_item.is_index and not index is defined %}
+            {% set _ = indexes.append(nav_item) %}
           {% endif %}
         {% endfor %}
       {% endif %}
@@ -51,8 +51,7 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           {% for nav_item in nav_item.children %}
-            {% if "navigation.indexes" in features and nav_item.is_index %}
-            {% else %}
+            {% if not indexes or nav_item != indexes | first %}
               {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
             {% endif %}
           {% endfor %}

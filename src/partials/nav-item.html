@@ -66,9 +66,9 @@
       <!-- Determine all nested items that are index pages -->
       {% set indexes = [] %}
       {% if "navigation.indexes" in features %}
-        {% for item in nav_item.children %}
-          {% if item.is_index and not index is defined %}
-            {% set _ = indexes.append(item) %}
+        {% for nav_item in nav_item.children %}
+          {% if nav_item.is_index and not index is defined %}
+            {% set _ = indexes.append(nav_item) %}
           {% endif %}
         {% endfor %}
       {% endif %}
@@ -110,9 +110,7 @@
 
           <!-- Render nested item list -->
           {% for nav_item in nav_item.children %}
-            {% if "navigation.indexes" in features and nav_item.is_index %}
-              <!-- Render nothing -->
-            {% else %}
+            {% if not indexes or nav_item != indexes | first %}
               {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
             {% endif %}
           {% endfor %}
