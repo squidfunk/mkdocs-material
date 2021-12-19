@@ -88,7 +88,7 @@
     }
 
     // [screen and no reduced motion]: Disable animation
-    @media screen and (prefers-reduced-motion: no-preference) {
+    @media screen {
 
       // [js]: Show animated tab indicator
       .js & {
@@ -109,6 +109,11 @@
             transform 250ms;
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           content: "";
+
+          // [reduced motion]: Disable animation
+          @media (prefers-reduced-motion) {
+            transition: none;
+          }
         }
       }
     }
@@ -233,11 +238,6 @@
   // [screen]: Show active state
   @media screen {
     color: var(--md-accent-fg-color);
-
-    // [reduced motion]: Show border
-    @media (prefers-reduced-motion) {
-      border-color: var(--md-accent-fg-color);
-    }
 
     // [no-js]: Show border (indicator is animated with JavaScript)
     .no-js & {

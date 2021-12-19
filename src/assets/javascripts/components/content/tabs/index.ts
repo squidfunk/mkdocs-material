@@ -103,9 +103,6 @@ export function watchContentTabs(
 export function mountContentTabs(
   el: HTMLElement
 ): Observable<Component<ContentTabs>> {
-  const { matches: reduce } = matchMedia("(prefers-reduced-motion)")
-
-  /* Mount component on subscription */
   const container = getElement(".tabbed-labels", el)
   return defer(() => {
     const push$ = new Subject<ContentTabs>()
@@ -119,13 +116,11 @@ export function mountContentTabs(
           /* Handle emission */
           next([{ active }]) {
             const offset = getElementOffset(active)
-            if (!reduce) {
-              const { width } = getElementSize(active)
+            const { width } = getElementSize(active)
 
-              /* Set tab indicator offset and width */
-              el.style.setProperty("--md-indicator-x", `${offset.x}px`)
-              el.style.setProperty("--md-indicator-width", `${width}px`)
-            }
+            /* Set tab indicator offset and width */
+            el.style.setProperty("--md-indicator-x", `${offset.x}px`)
+            el.style.setProperty("--md-indicator-width", `${width}px`)
 
             /* Smoothly scroll container */
             container.scrollTo({
