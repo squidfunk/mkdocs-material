@@ -176,7 +176,7 @@
     // Annotation marker – the marker must be positioned absolutely behind
     // the index, because it shouldn't impact the rendering of a code block.
     // Otherwise, small rounding differences in browsers can sometimes mess up
-    // alignment of text following a Annotation.
+    // alignment of text following an annotation.
     &::after {
       position: absolute;
       top: 0.025em;
