@@ -210,6 +210,21 @@
     position: absolute;
     visibility: hidden;
   }
+
+  // Copying in progress - this class is set before the content is copied and
+  // removed after copying is done to mitigate whitespace-related issues.
+  code[data-md-copying] {
+
+    // Remove highlighted lines - see https://bit.ly/32iVGWh
+    .hll {
+      display: contents;
+    }
+
+    // Remove code annotation
+    .md-annotation {
+      display: none;
+    }
+  }
 }
 
 // ----------------------------------------------------------------------------

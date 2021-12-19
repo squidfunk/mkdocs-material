@@ -52,24 +52,14 @@ interface SetupOptions {
 /**
  * Extract text to copy
  *
- * This function hides annotations prior to extracting the text from the given
- * code block, so they're not included in the text that is copied to clipboard.
- *
  * @param el - HTML element
  *
  * @returns Extracted text
  */
 function extract(el: HTMLElement): string {
-  const annotations = getElements(".md-annotation", el)
-  for (const annotation of annotations)
-    annotation.hidden = true
-
-  /* Extract text and show annotations */
+  el.setAttribute("data-md-copying", "")
   const text = el.innerText
-  for (const annotation of annotations)
-    annotation.hidden = false
-
-  /* Return extracted text */
+  el.removeAttribute("data-md-copying")
   return text
 }
 
