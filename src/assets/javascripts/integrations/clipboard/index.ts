@@ -29,10 +29,7 @@ import {
 } from "rxjs"
 
 import { translation } from "~/_"
-import {
-  getElement,
-  getElements
-} from "~/browser"
+import { getElement } from "~/browser"
 
 /* ----------------------------------------------------------------------------
  * Helper types

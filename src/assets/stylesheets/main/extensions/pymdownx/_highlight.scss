@@ -215,12 +215,12 @@
   // removed after copying is done to mitigate whitespace-related issues.
   code[data-md-copying] {
 
-    // Remove highlighted lines - see https://bit.ly/32iVGWh
+    // Temporarily remove highlighted lines - see https://bit.ly/32iVGWh
     .hll {
       display: contents;
     }
 
-    // Remove code annotation
+    // Temporarily remove annotations
     .md-annotation {
       display: none;
     }
