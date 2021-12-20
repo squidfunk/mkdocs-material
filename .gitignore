@@ -41,3 +41,6 @@ venv
 
 # IDEs
 .vscode
+
+# Vendor resources
+/material/assets/vendor
