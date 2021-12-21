@@ -1,6 +1,6 @@
 ---
 template: overrides/main.html
-icon: material/format-superscript
+icon: material/format-align-bottom
 ---
 
 # Footnotes
