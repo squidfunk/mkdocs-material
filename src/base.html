@@ -42,6 +42,11 @@
         <meta name="description" content="{{ config.site_description }}" />
       {% endif %}
 
+      <!-- Last review date -->
+      {% if page and page.meta and page.meta.git_revision_date_localized_raw_iso_datetime %}
+        <meta http-equiv="last-modified" content="{{ page.meta.git_revision_date_localized_raw_iso_datetime }}" />  
+      {% endif %}
+
       <!-- Redirect -->
       {% if page and page.meta and page.meta.redirect %}
         <script>
