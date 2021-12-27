@@ -53,7 +53,7 @@
     "@types/clipboard": "^2.0.7",
     "@types/escape-html": "1.0.1",
     "@types/fuzzaldrin-plus": "^0.6.2",
-    "@types/html-minifier": "^4.0.1",
+    "@types/html-minifier": "^4.0.2",
     "@types/lunr": "^2.3.4",
     "@types/node": "^17.0.1",
     "@types/resize-observer-browser": "^0.1.6",
