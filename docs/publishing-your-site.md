@@ -44,13 +44,13 @@ contents:
           - run: mkdocs gh-deploy --force
     ```
 
-    1. You can change the name to your liking.
+    1.  You can change the name to your liking. 
 
-    2. At some point, GitHub renamed `master` to `main`. If your default branch
-       is named `master`, you can safely remove `main`, vice versa.
+    2.  At some point, GitHub renamed `master` to `main`. If your default branch
+        is named `master`, you can safely remove `main`, vice versa.
 
-    3. This is the place to install further [MkDocs plugins] or Markdown
-       extensions with `pip` to be used during the build:
+    3.  This is the place to install further [MkDocs plugins] or Markdown
+        extensions with `pip` to be used during the build:
 
         ``` sh
         pip install \
@@ -137,8 +137,8 @@ contents:
           - public
     ```
 
-    1. At some point, GitLab renamed `master` to `main`. If your default branch
-       is named `master`, you can safely remove `main`, vice versa.
+    1.  At some point, GitLab renamed `master` to `main`. If your default branch
+        is named `master`, you can safely remove `main`, vice versa.
 
 === "Insiders"
 
@@ -146,10 +146,10 @@ contents:
     image: python:latest
     pages:
       stage: deploy
-      only: # (1)!
+      only:
         - master
         - main
-      script: # (2)!
+      script: # (1)!
         - pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
         - mkdocs build --site-dir public
       artifacts:
@@ -157,10 +157,7 @@ contents:
           - public
     ```
 
-    1. At some point, GitLab renamed `master` to `main`. If your default branch
-       is named `master`, you can safely remove `main`, vice versa.
-
-    2.  Remember to set the `GH_TOKEN` environment variable to the value of your
+    1.  Remember to set the `GH_TOKEN` environment variable to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [masked custom variables].
 
