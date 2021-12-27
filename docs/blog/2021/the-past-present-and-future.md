@@ -211,7 +211,7 @@ __55__ times, `mkdocs-material-insiders` was shipped __72__ times.
 
 ### Funding
 
-The funding level in 2021 increased from $1,050 in the beginning of January to
+In 2021, monthly funding increased from $1,050 in the beginning of January to
 more than $4,300 (Dec 27, 2021), totaling in a yearly budget of more than
 $50,000. Compared to last year, __revenue from funding has increased by 617%__
 – which is absolutely unbelievable:
