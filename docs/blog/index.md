@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+title: Blog
 search:
   exclude: true
 ---
