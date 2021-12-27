@@ -126,8 +126,9 @@ contents:
     image: python:latest
     pages:
       stage: deploy
-      only:
+      only: # (1)!
         - master
+        - main
       script:
         - pip install mkdocs-material
         - mkdocs build --site-dir public
@@ -136,15 +137,19 @@ contents:
           - public
     ```
 
+    1. At some point, GitLab renamed `master` to `main`. If your default branch
+       is named `master`, you can safely remove `main`, vice versa.
+
 === "Insiders"
 
     ``` yaml
     image: python:latest
     pages:
       stage: deploy
-      only:
+      only: # (1)!
         - master
-      script: # (1)!
+        - main
+      script: # (2)!
         - pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
         - mkdocs build --site-dir public
       artifacts:
@@ -152,7 +157,10 @@ contents:
           - public
     ```
 
-    1.  Remember to set the `GH_TOKEN` environment variable to the value of your
+    1. At some point, GitLab renamed `master` to `main`. If your default branch
+       is named `master`, you can safely remove `main`, vice versa.
+
+    2.  Remember to set the `GH_TOKEN` environment variable to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [masked custom variables].
 
