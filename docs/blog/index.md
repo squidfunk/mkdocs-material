@@ -14,7 +14,7 @@ search:
 
 ## [The past, present and future]
 
-__2021 was an amazing year for this project as we shipped many new awesome
+__2021 was a fantastic year for this project as we shipped many new awesome
 features, saw significant user growth and leveraged GitHub Sponsors to make the
 project sustainable.__
 

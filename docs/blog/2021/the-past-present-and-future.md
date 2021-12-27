@@ -1,7 +1,7 @@
 ---
 template: overrides/main.html
 description: >
-  2021 was an amazing year for this project as we shipped many new awesome
+  2021 was a fantastic year for this project as we shipped many new awesome
   features and made this project sustainable
 search:
   exclude: true
@@ -9,7 +9,7 @@ search:
 
 # The past, present and future
 
-__2021 was an amazing year for this project as we shipped many new awesome
+__2021 was a fantastic year for this project as we shipped many new awesome
 features, saw significant user growth and leveraged GitHub Sponsors to make the
 project sustainable.__
 
@@ -37,7 +37,7 @@ static site generators. However, we're far from the end, as 2022 is going to
 bring some interesting new capabilities.
 
 _This article showcases all features that were added in 2021 and gives an
-outlook on what's going to drop in 2022. Additionally, it gives some context
+outlook on what's going to drop in 2022. Additionally, it provides some context
 on the history of the project._
 
   [MkDocs]: https://www.mkdocs.org
@@ -71,10 +71,10 @@ rudimentary and only supported section titles:
 
 ![Material for MkDocs 0.1.0 Search][Material for MkDocs 0.1.0 Search]
 
-It's important to known that at this point in time I've built Material for
+It's important to know that at this point in time I've built Material for
 MkDocs for [protobluff], the project I was really caring about. Almost 6 years
 later, nobody knows protobluff, but this little side project has taken off. If
-back in those days, you would've told me that big organizations like AWS,
+back in those days, you would've told me big organizations like AWS,
 Microsoft and CERN, as well as extremely popular Open Source projects like
 FastAPI and Kubernetes will be using this project in the future – I would've
 declared you insane.
@@ -88,7 +88,7 @@ although Material for MkDocs solves a problem for which thousands of solutions
 exist, it excels in a specific niche, and that niche is to be known as
 _technical project documentation_.
 
-Today, this project is not only popular, but funded by almost 300 individuals
+Today, this project is not only popular but funded by almost 300 individuals
 and organizations, resulting in a yearly budget of more than $50,000. This
 allows me to set aside enough time for the development of new features,
 bug fixing, stability improvement, issue triage and general support and still
@@ -105,7 +105,7 @@ Making Open Source sustainable is, after all, possible in 2021.
 
 ## 2021 in numbers
 
-2021 was a very interesting year, as the project has seen significant growth.
+2021 was an exciting year, as the project has seen significant growth.
 
 __166k people__ visited the official documentation in 2021, totalling in __1,6m
 page views__ which is an increase of 83% when compared to 2020. The average
@@ -115,7 +115,7 @@ countries__, which covers almost the whole world.
 
 ### Features
 
-It's absolutely mind blowing that __38 new features__ were added to Material
+It's absolutely mind-blowing that __38 new features__ were added to Material
 for MkDocs throughout 2021 – __that's a new feature every 9,6 days__ –
 which was only possible because of the constantly improving funding situation.
 Following is a list of all features shipped in alphabetical order, some of which
@@ -233,7 +233,7 @@ You can learn about the strategy in the [Insiders] guide.
 Standing at the verge of the next year, it's safe to say that the project will
 continue to prosper and evolve, yielding many awesome features that will make
 technical writing more comfortable and flexible. Here's an excerpt of the
-features that will be see the light of day in 2022:
+features that will see the light of day in 2022:
 
 - __Instant previews__: [instant previews] will render a specific page section
   inside a tooltip when hovering an internal link, which will allow to implement
@@ -242,7 +242,7 @@ features that will be see the light of day in 2022:
 
 - __Text annotations__: as a logical progression of [code annotations] which
   were added in 2021, authors will be able to add annotations to plain text,
-  yielding excellent opportunies for side content. Of course, text annotations
+  yielding excellent opportunities for side content. Of course, text annotations
   will be as easy to use as code annotations.
 
 - __Navigation pruning__: to optimize large documentation projects, Material
@@ -257,14 +257,14 @@ features that will be see the light of day in 2022:
   Custom status types will also be supported.
 
 - __Hover cards__: as a further component in the toolkit of technical writing,
-  [hover cards] will allow to arrange content in grids, which is especially
+  [hover cards] will allow arranging content in grids, which is especially
   useful for overview pages. They will allow to arrange arbitrary content in
   grids, including code blocks, admonitions, etc.
 
 - __Blog support__: blogging support is still [under investigation] and expected
   to be one of the major additions in 2022. Blogging will perfectly integrate
-  with writing documentation, allowing to use all components that are available
-  in Material for MkDocs.
+  with writing documentation, allowing to use all components available in
+  Material for MkDocs.
 
 This list is incomplete. Additionally, many new smaller features will be added
 next year, just as in 2021. You can follow [@squidfunk on Twitter] to stay
