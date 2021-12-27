@@ -256,7 +256,18 @@ integrated by using the `cookies` field:
           analytics: Custom name # (1)!
     ```
 
-    1. The default name of the `analytics` cookie is `Google Analytics`.
+    1.  The default name of the `analytics` cookie is `Google Analytics`.
+
+===  "Custom initial state"
+
+    ``` yaml
+    extra:
+      consent:
+        cookies:
+          analytics:
+            name: Google Analytics
+            checked: false
+    ```
 
 ===  "Custom cookie"
 
@@ -268,8 +279,8 @@ integrated by using the `cookies` field:
           custom: Custom cookie
     ```
 
-    1. If you add a custom cookie to the `cookies` field, the `analytics` cookie 
-       must be added back explicitly, or analytics won't be triggered.
+    1.  If you add a custom cookie to the `cookies` field, the `analytics`
+        cookie  must be added back explicitly, or analytics won't be triggered.
 
 When a user first visits your site, a cookie consent form is rendered:
 
