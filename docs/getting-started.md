@@ -20,15 +20,48 @@ If not, we recommended using [`docker`][docker].
 
 Material for MkDocs can be installed with `pip`:
 
-```
-pip install mkdocs-material
-```
+=== "Latest"
+
+    ``` sh
+    pip install mkdocs-material
+    ```
+
+=== "8.x <small>version range</small>"
+
+    ``` sh
+    pip install mkdocs-material=="8.*" #(1)!
+    ```
+
+    1.  Material for MkDocs uses [semantic versioning][^1], which is why it's a
+        good idea to limit upgrades to the current major version.
+
+        This will make sure that you don't accidentally [upgrade to the next
+        major version], which may include breaking changes that silently break
+        your site. Additionally, you can use `pip freeze` to create a lockfile,
+        so builds are reproducible at all times:
+
+        ```
+        pip freeze > requirements.txt
+        ```
+
+        Now, the lockfile can be used for installation:
+
+        ```
+        pip install -r requirements.txt
+        ```
+
+  [^1]:
+    Note that improvements of existing features are sometimes released as
+    patch releases, like for example improved rendering of content tabs, as
+    they're not considered to be new features.
 
 This will automatically install compatible versions of all dependencies:
 [MkDocs], [Markdown], [Pygments] and [Python Markdown Extensions]. Material for
 MkDocs always strives to support the latest versions, so there's no need to
 install those packages separately.
 
+  [semantic versioning]: https://semver.org/
+  [upgrade to the next major version]: upgrade.md
   [Markdown]: https://python-markdown.github.io/
   [Pygments]: https://pygments.org/
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
@@ -39,9 +72,17 @@ The official [Docker image] is a great way to get up and running in a few
 minutes, as it comes with all dependencies pre-installed. Pull the image for the 
 `latest` version with:
 
-```
-docker pull squidfunk/mkdocs-material
-```
+=== "Latest"
+
+    ```
+    docker pull squidfunk/mkdocs-material
+    ```
+
+=== "8.x <small>version range</small>"
+
+    ```
+    docker pull squidfunk/mkdocs-material:8
+    ```
 
 The `mkdocs` executable is provided as an entry point and `serve` is the 
 default command. If you're not familiar with Docker don't worry, we have you

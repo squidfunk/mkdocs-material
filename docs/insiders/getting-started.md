@@ -128,6 +128,27 @@ pip install -e mkdocs-material
   [Pull App]: https://github.com/apps/pull
   [publish]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/.github/workflows/publish.yml
 
+## Upgrading
+
+When upgrading Insiders, you should always check the version of Material for
+MkDocs which makes up the first part of the version qualifier, e.g.Insiders
+`4.x.x` is currently based on `8.x.x`:
+
+```
+8.x.x-insiders-4.x.x
+```
+
+If the major version increased, it's a good idea to consult the [upgrade
+guide] and go through the steps to ensure your configuration is up to date and
+all necessary changes have been made. If you installed Insiders via `pip`, you
+can upgrade your installation with the following command:
+
+```
+pip install --upgrade git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+```
+
+  [upgrade guide]: ../upgrade.md
+
 ## Caveats
 
 This sections describes some aspects to consider when using Insiders together
