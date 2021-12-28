@@ -207,7 +207,7 @@ export default class Result {
           const article = (
             <li class="md-search-result__item">
               <a
-                href={this.baseUrl + item.url}
+                href={(this.baseUrl !== '/' ? this.baseUrl : "") + item.url}
                 title={item.title}
                 class="md-search-result__link"
                 tabindex="-1"

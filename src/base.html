@@ -37,9 +37,7 @@
       <meta http-equiv="x-dns-prefetch-control" content="on" />
       <link rel="dns-prefetch" href="//oi-wiki.org">
       <link rel="dns-prefetch" href="//search.oi-wiki.org">
-      <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
       <link rel="dns-prefetch" href="//api.github.com">
-      <link rel="dns-prefetch" href="//cdn-for-oi-wiki.billchn.com">
       <link rel="dns-prefetch" href="//www.google-analytics.com">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -225,8 +223,8 @@
     {% endblock %}
 
     <!-- Material icons as iconset -->
-    <!-- <link rel="stylesheet" type="text/css" href="{{ 'assets/fonts/material-icons.css' | url }}" /> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@0.2.3/iconfont/material-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ 'assets/fonts/material-icons.css' | url }}" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@0.2.3/iconfont/material-icons.min.css"> -->
     <!-- Progressive Web App Manifest -->
     {% if config.extra.manifest %}
       <link rel="manifest" href="{{ config.extra.manifest | url }}">
