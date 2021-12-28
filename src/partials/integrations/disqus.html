@@ -19,8 +19,10 @@
 <div id="gitalk-container" data-no-instant>
 </div>
 </form>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OI-wiki/gitalk@master/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/gh/OI-wiki/gitalk@master/dist/gitalk.min.js"></script>
+<link rel="stylesheet" href="{{ 'assets/vendor/gitalk/gitalk.css' | url }}">
+<script src="{{ 'assets/vendor/gitalk/gitalk.min.js' | url }}"></script>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OI-wiki/gitalk@master/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/gh/OI-wiki/gitalk@master/dist/gitalk.min.js"></script> -->
 <script>
   const gitalk = new Gitalk({
     id: '{{ page.title | default("404", true)  }}',
