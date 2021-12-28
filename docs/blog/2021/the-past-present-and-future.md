@@ -256,10 +256,10 @@ features that will see the light of day in 2022:
   :material-alert-decagram: __new__ or :material-trash-can: __deprecated__.
   Custom status types will also be supported.
 
-- __Hover cards__: as a further component in the toolkit of technical writing,
-  [hover cards] will allow arranging content in grids, which is especially
-  useful for overview pages. They will allow to arrange arbitrary content in
-  grids, including code blocks, admonitions, etc.
+- __Card grids__: as a further component in the toolkit of technical writing,
+  [card grids] will allow arranging content in grids, which is especially
+  useful for overview pages. They will allow to arrange arbitrary content,
+  including code blocks, admonitions, etc.
 
 - __Blog support__: blogging support is still [under investigation] and expected
   to be one of the major additions in 2022. Blogging will perfectly integrate
@@ -273,6 +273,6 @@ updated.
 __Happy new year!__ :tada:
 
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
-  [hover cards]: https://github.com/squidfunk/mkdocs-material/issues/3018
+  [card grids]: https://github.com/squidfunk/mkdocs-material/issues/3018
   [under investigation]: https://github.com/squidfunk/mkdocs-material/issues/3353
   [@squidfunk on Twitter]: https://twitter.com/squidfunk
