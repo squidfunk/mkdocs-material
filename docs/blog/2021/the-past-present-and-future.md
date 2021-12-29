@@ -146,17 +146,17 @@ are still exclusively available to sponsors as part of [Insiders]:
 - Latest release tag
 - [Mermaid.js integration]
 - [Navigation icons]
-- [Stay on page when switching versions]
-- [Tags with search integration]
 - [Remove generator notice]
 - [Rich search previews]
-- [Search suggestions]
+- [Stay on page when switching versions]
 - [Search highlighting]
 - [Search sharing]
+- [Search suggestions]
 - [Section index pages]
 - [Site language selection]
 - [Social cards]
 - [Sticky navigation tabs]
+- [Tags with search integration]
 - [Tokenizer with lookahead]
 - [Versioning]
 - [Version warning]
@@ -194,9 +194,9 @@ __55__ times, `mkdocs-material-insiders` was shipped __72__ times.
   [Navigation icons]: ../../reference/index.md#setting-the-page-icon
   [Remove generator notice]: ../../setup/setting-up-the-footer.md#generator-notice
   [Rich search previews]: search-better-faster-smaller.md#rich-search-previews
-  [Search suggestions]: ../../setup/setting-up-site-search.md#search-suggestions
   [Search highlighting]: ../../setup/setting-up-site-search.md#search-highlighting
   [Search sharing]: ../../setup/setting-up-site-search.md#search-sharing
+  [Search suggestions]: ../../setup/setting-up-site-search.md#search-suggestions
   [Section index pages]: ../../setup/setting-up-navigation.md#section-index-pages
   [Site language selection]: ../../setup/changing-the-language.md#site-language-selector
   [Social cards]: ../../setup/setting-up-social-cards.md
