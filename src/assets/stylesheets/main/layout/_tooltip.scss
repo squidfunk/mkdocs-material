@@ -85,11 +85,6 @@
     max-height   0ms 250ms,
     z-index    250ms;
 
-  // [reduced motion]: Disable animation
-  @media (prefers-reduced-motion) {
-    transition: none;
-  }
-
   // Tooltip on parent focus
   :focus-within > & {
     max-height: 1000%;
@@ -100,11 +95,6 @@
       opacity    250ms,
       max-height 250ms,
       z-index      0ms;
-
-    // [reduced motion]: Disable animation
-    @media (prefers-reduced-motion) {
-      transition: none;
-    }
   }
 
   // Show outline for keyboard devices
@@ -196,7 +186,6 @@
 
       // [reduced motion]: Disable animation
       @media (prefers-reduced-motion) {
-        transition: none;
         animation: none;
       }
 
@@ -211,11 +200,6 @@
           color            250ms,
           background-color 250ms;
         animation: none;
-
-        // [reduced motion]: Disable animation
-        @media (prefers-reduced-motion) {
-          transition: none;
-        }
       }
     }
 
@@ -224,11 +208,6 @@
       display: inline-block;
       transition: transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1);
       content: attr(data-md-annotation-id);
-
-      // [reduced motion]: Disable animation
-      @media (prefers-reduced-motion) {
-        transition: none;
-      }
 
       // [not print]: if we're not in print mode, show a `+` sign instead of
       // the original numbers, as context is already given by the position.

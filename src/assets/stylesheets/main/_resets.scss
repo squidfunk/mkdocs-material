@@ -36,6 +36,11 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+
+  // [reduced motion]: Disable all transitions
+  @media (prefers-reduced-motion) {
+    transition: none !important; // stylelint-disable-line
+  }
 }
 
 // Remove margin in all browsers

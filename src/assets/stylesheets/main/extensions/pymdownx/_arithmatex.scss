@@ -39,8 +39,7 @@
     // Arithmatex content
     > * {
       width: min-content;
-      // stylelint-disable-next-line declaration-no-important
-      margin: 1em auto !important;
+      margin: 1em auto !important; // stylelint-disable-line
       padding: 0 px2rem(16px);
       touch-action: auto;
     }
