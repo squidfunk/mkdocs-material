@@ -40,7 +40,19 @@
 .md-footer-nav {
   // Set spacing
   &__inner {
-    padding: px2rem(64px) px2rem(48px);
+    // Limit the width of footer navigation
+    max-width: px2rem(1024px);
+
+    margin-left: px2rem(16px);
+    margin-right: px2rem(16px);
+
+    // [screen +]: Increase horizontal spacing
+    @include break-from-device(screen) {
+      margin-right: px2rem(24px);
+      margin-left: px2rem(24px);
+    }
+
+    padding: px2rem(64px) 0;
     overflow: auto;
     display: flex;
     color: var(--codacy-neutral-600);

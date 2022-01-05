@@ -53,6 +53,9 @@
 
   // Define spacing
   &__inner {
+    // Limit the width of page content
+    max-width: px2rem(1024px);
+
     // Ensure that md-content__innner occupies available space to push footer to bottom of viewport,
     // depending on screen size
     flex-basis: calc(100vh - 26.65rem); // stylelint-disable-line unit-whitelist

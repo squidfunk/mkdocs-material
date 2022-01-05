@@ -9,17 +9,13 @@
     border: 1px solid #6695FF;
     padding: 1rem;
     border-radius: 0.25rem;
-    flex-basis: 33%;
-    margin: 0 1rem;
+    flex-basis: 32%;
     text-decoration: none;
     color: var(--codacy-primary);
     &:hover, &:focus {
       color: var(--codacy-primary);
       box-shadow: 0px 6px 5px #6695ff26;
     }
-
-    &:first-child { margin-left: 0 }
-    &:last-child { margin-right: 0 }
 
     .tc-icon {
       width: 1.75rem;
@@ -38,7 +34,6 @@
         font-weight: bold;
         margin-bottom: 0.5rem;
         font-size: 0.8rem;
-        white-space: nowrap;
       }
       > div:last-child{
         font-size: 0.7rem;
