@@ -167,7 +167,14 @@ Click on a tile to change the directionality:
     button.addEventListener("click", function() {
       var attr = this.getAttribute("data-md-dir")
       document.body.dir = attr
-      var name = document.querySelector("#__code_3 code span:nth-child(5)")
+      var nodes = document.querySelector("#__code_3 code").childNodes
+      var name
+      for (var i = 0; i < nodes.length; ++i) {
+        var node = nodes[i]
+        if (node.innerText == "direction") {
+          name = nodes[i + 3]
+        }
+      }
       name.textContent = attr
     })
   })
