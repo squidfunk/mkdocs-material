@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+import { ComponentChild } from "preact"
+
 import { feature, translation } from "~/_"
 import {
   SearchDocument,
@@ -27,7 +29,6 @@ import {
   SearchResultItem
 } from "~/integrations/search"
 import { h, truncate } from "~/utilities"
-import { ComponentChild, ComponentChildren } from "preact"
 
 /* ----------------------------------------------------------------------------
  * Helper types
