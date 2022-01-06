@@ -20,12 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import "focus-visible"
-import "unfetch/polyfill"
-import "url-polyfill"
-
 /* ----------------------------------------------------------------------------
- * Custom polyfills
+ * Polyfills
  * ------------------------------------------------------------------------- */
 
 /* Polyfill for `Object.entries` */
@@ -40,8 +36,20 @@ if (!Object.entries)
     return data
   }
 
+/* Polyfill for `Object.values` */
+if (!Object.values)
+  Object.values = function (obj: object) {
+    const data: string[] = []
+    for (const key of Object.keys(obj))
+      // @ts-expect-error - ignore property access warning
+      data.push(obj[key])
+
+    /* Return values */
+    return data
+  }
+
 /* Polyfill for `Element.scrollTo` */
-if (!Element.prototype.scrollTo)
+if (typeof Element !== "undefined" && !Element.prototype.scrollTo)
   Element.prototype.scrollTo = function (
     x?: ScrollToOptions | number, y?: number
   ): void {

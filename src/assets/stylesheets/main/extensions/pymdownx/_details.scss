@@ -102,9 +102,13 @@
       }
     }
 
-    // Hide native details marker - Safari (iOS and macOS)  does not seem to
-    // like :is() on details elements, so just go with a selector list.
-    &::marker,
+    // Hide native details marker - modern
+    &::marker {
+      display: none;
+    }
+
+    // Hide native details marker - legacy, must be split into a seprate rule,
+    // so older browsers don't consider the selector list as invalid
     &::-webkit-details-marker {
       display: none;
     }

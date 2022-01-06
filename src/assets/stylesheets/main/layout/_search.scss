@@ -583,8 +583,13 @@
       background-color: var(--md-accent-fg-color--transparent);
     }
 
-    // Hide native details marker
-    &::marker,
+    // Hide native details marker - modern
+    &::marker {
+      display: none;
+    }
+
+    // Hide native details marker - legacy, must be split into a seprate rule,
+    // so older browsers don't consider the selector list as invalid
     &::-webkit-details-marker {
       display: none;
     }
