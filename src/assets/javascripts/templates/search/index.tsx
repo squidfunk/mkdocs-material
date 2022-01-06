@@ -27,6 +27,7 @@ import {
   SearchResultItem
 } from "~/integrations/search"
 import { h, truncate } from "~/utilities"
+import { ComponentChild, ComponentChildren } from "preact"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -61,8 +62,9 @@ function renderSearchDocument(
   /* Render missing query terms */
   const missing = Object.keys(document.terms)
     .filter(key => !document.terms[key])
-    .map(key => [<del>{key}</del>, " "])
-    .flat()
+    .reduce<ComponentChild[]>((list, key) => [
+      ...list, <del>{key}</del>, " "
+    ], [])
     .slice(0, -1)
 
   /* Assemble query string for highlighting */

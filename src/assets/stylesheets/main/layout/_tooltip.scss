@@ -172,6 +172,9 @@
       top: 0.025em;
       left: -0.126em;
       z-index: -1;
+      // Hack: the first property is used as a fallback for older browsers
+      // which don't support the min/max/clamp math functions.
+      width: calc(100% + 1.2ch);
       width: max(2.2ch, 100% + 1.2ch);
       height: 2.2ch;
       margin: 0 -0.4ch;
