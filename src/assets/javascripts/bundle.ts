@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import "focus-visible"
 import {
   EMPTY,
   NEVER,
@@ -78,6 +77,7 @@ import {
   patchScrollfix,
   patchScrolllock
 } from "./patches"
+import "./polyfills"
 
 /* ----------------------------------------------------------------------------
  * Application
