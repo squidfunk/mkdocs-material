@@ -1,6 +1,6 @@
 ---
 template: overrides/main.html
-icon: material/emoticon-wink-outline
+icon: material/emoticon-happy-outline
 ---
 
 # Icons + Emojis
