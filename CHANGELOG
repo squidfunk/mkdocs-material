@@ -1,7 +1,7 @@
 mkdocs-material-8.1.4+insiders-4.5.2 (2022-01-08)
 
-  * Fixed #3440: content tab indicator not moving when using linking
-  * Fixed #3445: content tab switch flickers/jitters when using linking
+  * Fixed #3440: Content tab indicator not moving when using linking
+  * Fixed #3445: Content tab switch flickers/jitters when using linking
 
 mkdocs-material-8.1.4+insiders-4.5.1 (2022-01-02)
 
