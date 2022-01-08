@@ -21,17 +21,6 @@
 ////
 
 // ----------------------------------------------------------------------------
-// Keyframes
-// ----------------------------------------------------------------------------
-
-// Fade text highlighting marker
-@keyframes fade {
-  100% {
-    background-color: transparent;
-  }
-}
-
-// ----------------------------------------------------------------------------
 // Rules: font definitions
 // ----------------------------------------------------------------------------
 
@@ -288,12 +277,6 @@ kbd {
     word-break: break-word;
     background-color: var(--md-typeset-mark-color);
     box-decoration-break: clone;
-
-    // Automatically fade programatically inserted markers - only active if the
-    // variable is defined by the author - see https://bit.ly/3r1C6qm
-    &[data-md-highlight] {
-      animation: fade var(--md-highlight-fade) forwards;
-    }
   }
 
   // Abbreviation
