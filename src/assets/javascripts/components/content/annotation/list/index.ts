@@ -34,7 +34,8 @@ import {
 
 import {
   getElement,
-  getElements
+  getElements,
+  getOptionalElement
 } from "~/browser"
 import { renderAnnotation } from "~/templates"
 
@@ -118,8 +119,10 @@ export function mountAnnotationList(
   const annotations = new Map<number, HTMLElement>()
   for (const marker of findAnnotationMarkers(container)) {
     const [, id] = marker.textContent!.match(/\((\d+)\)/)!
-    annotations.set(+id, renderAnnotation(+id))
-    marker.replaceWith(annotations.get(+id)!)
+    if (getOptionalElement(`li:nth-child(${id})`, el)) {
+      annotations.set(+id, renderAnnotation(+id))
+      marker.replaceWith(annotations.get(+id)!)
+    }
   }
 
   /* Keep list if there are no annotations to render */
