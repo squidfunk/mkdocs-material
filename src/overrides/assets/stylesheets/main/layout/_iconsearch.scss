@@ -91,6 +91,9 @@
     // Icon search result list
     &__list {
       margin: 0;
+      // Hack: necessary because of increased specificity due to the PostCSS
+      // plugin which prefixes this with `[dir=...]` selectors.
+      margin-inline-start: 0;
       padding: 0;
       list-style: none;
     }
@@ -98,6 +101,9 @@
     // Icon search result item
     &__item {
       margin: 0;
+      // Hack: necessary because of increased specificity due to the PostCSS
+      // plugin which prefixes this with `[dir=...]` selectors.
+      margin-inline-start: 0;
       padding: px2rem(4px) px2rem(12px);
       border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
 

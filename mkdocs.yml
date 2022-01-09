@@ -165,6 +165,7 @@ nav:
     - Installation: getting-started.md
     - Creating your site: creating-your-site.md
     - Publishing your site: publishing-your-site.md
+    - Browser support: browser-support.md
     - Customization: customization.md
     - License: license.md
     - Changelog:

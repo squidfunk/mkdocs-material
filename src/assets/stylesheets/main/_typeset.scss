@@ -84,8 +84,13 @@ kbd {
   }
 
   // Default spacing
-  :is(ul, ol, dl, figure, blockquote, pre) {
-    margin: 1em 0;
+  ul,
+  ol,
+  dl,
+  figure,
+  blockquote,
+  pre {
+    margin-block: 1em;
   }
 
   // Headline on level 1
@@ -129,7 +134,8 @@ kbd {
   }
 
   // Headline on level 5-6
-  :is(h5, h6) {
+  h5,
+  h6 {
     margin: px2em(16px, 12.8px) 0;
     color: var(--md-default-fg-color--light);
     font-weight: 700;
@@ -161,7 +167,8 @@ kbd {
     }
 
     // Text link on focus/hover
-    &:is(:focus, :hover) {
+    &:focus,
+    &:hover {
       color: var(--md-accent-fg-color);
     }
 
@@ -173,7 +180,9 @@ kbd {
   }
 
   // Code block
-  :is(code, pre, kbd) {
+  code,
+  pre,
+  kbd {
     color: var(--md-code-fg-color);
     direction: ltr;
 
@@ -197,14 +206,6 @@ kbd {
       outline: none;
       -webkit-tap-highlight-color: transparent;
     }
-  }
-
-  // Code block in headline
-  :is(h1, h2, h3, h4, h5, h6) code {
-    margin: initial;
-    padding: initial;
-    background-color: transparent;
-    box-shadow: none;
   }
 
   // Ensure link color in code blocks
@@ -315,7 +316,8 @@ kbd {
   }
 
   // Superscript and subscript
-  :is(sup, sub) {
+  sup,
+  sub {
     margin-inline-start: px2em(1px, 12.8px);
   }
 
@@ -332,7 +334,8 @@ kbd {
   }
 
   // Unordered and ordered list
-  :is(ul, ol) {
+  ul,
+  ol {
     margin-inline-start: px2em(10px);
     padding: 0;
 
@@ -381,7 +384,8 @@ kbd {
   }
 
   // Image or icon
-  :is(img, svg) {
+  img,
+  svg {
     max-width: 100%;
     height: auto;
 
