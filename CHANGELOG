@@ -3,6 +3,7 @@ mkdocs-material-8.1.5 (2022-01-09)
   * Improved browser support: Chrome 49+, Safari 10+, Firefox 53+, Edge 79+
   * Improved rendering of inline code blocks in headlines
   * Added Bahasa Malaysian translations
+  * Fixed #3354: MathJax formulas show vertical scrollbar
 
 mkdocs-material-8.1.4+insiders-4.5.2 (2022-01-08)
 
