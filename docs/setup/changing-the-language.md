@@ -5,7 +5,7 @@ template: overrides/main.html
 # Changing the language
 
 Material for MkDocs supports internationalization (i18n) and provides
-translations for template variables and labels in 40+ languages. Additionally,
+translations for template variables and labels in 50+ languages. Additionally,
 the site search can be configured to use a language-specific stemmer, if
 available.
 
@@ -55,6 +55,7 @@ The following languages are supported:
 - `ka` – Georgian
 - `kr` – Korean
 - `mn` – Mongolian
+- `ms` – Bahasa Malaysia
 - `my` – Burmese
 - `nl` – Dutch
 - `nn` – Norwegian (Nynorsk)

@@ -39,7 +39,7 @@
 <p align="center">
   Create a branded static site from a set of Markdown files to host the
   documentation of your Open Source or commercial project – customizable,
-  searchable, mobile-friendly, 40+ languages. Set up in 5 minutes.
+  searchable, mobile-friendly, 50+ languages. Set up in 5 minutes.
 </p>
 
 <p align="center">
