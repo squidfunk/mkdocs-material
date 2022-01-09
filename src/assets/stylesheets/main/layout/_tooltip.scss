@@ -134,6 +134,9 @@
   // Annotation is not hidden (e.g. when copying)
   &:not([hidden]) {
     display: inline-block;
+    // Hack: ensure that the line height doesn't exceed the line height of the
+    // hosting line, because it will lead to dancing pixels.
+    line-height: 1.325;
   }
 
   // Promote children to top on focus
