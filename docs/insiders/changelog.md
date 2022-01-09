@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.5.2 <small>_ January 8, 2022</small> { id="4.5.2" }
+
+- Fixed #3440: Content tab indicator not moving when using linking
+- Fixed #3445: Content tab switch flickers/jitters when using linking
+
 ### 4.5.1 <small>_ January 2, 2022</small> { id="4.5.1" }
 
 - Added support for setting initial state of cookie consent

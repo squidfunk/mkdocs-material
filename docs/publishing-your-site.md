@@ -29,8 +29,8 @@ contents:
     name: ci # (1)!
     on:
       push:
-        branches: # (2)!
-          - master
+        branches:
+          - master # (2)!
           - main
     jobs:
       deploy:
@@ -126,8 +126,8 @@ contents:
     image: python:latest
     pages:
       stage: deploy
-      only: # (1)!
-        - master
+      only:
+        - master # (1)!
         - main
       script:
         - pip install mkdocs-material

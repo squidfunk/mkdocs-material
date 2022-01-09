@@ -61,7 +61,7 @@ theme:
 ```
 
 1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
-    text__, images, ... basically anything that can be expressed in Markdown.
+    text__, images, ... basically anything that can be written in Markdown.
 
 ??? info "Enabling code annotations for a specific code block"
 
@@ -181,7 +181,7 @@ theme:
 ```
 
 1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
-    text__, images, ... basically anything that can be expressed in Markdown.
+    text__, images, ... basically anything that can be written in Markdown.
 ````
 
 _Result_:
@@ -193,7 +193,7 @@ theme:
 ```
 
 1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
-    text__, images, ... basically anything that can be expressed in Markdown.
+    text__, images, ... basically anything that can be written in Markdown.
 
 #### Stripping comments
 
