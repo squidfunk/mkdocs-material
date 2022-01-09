@@ -55,7 +55,7 @@ theme:
     # - header.autohide
     # - navigation.expand
     - navigation.indexes
-    - navigation.instant
+    # - navigation.instant
     - navigation.sections
     - navigation.tabs
     # - navigation.tabs.sticky
