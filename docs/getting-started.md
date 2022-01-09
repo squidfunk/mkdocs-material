@@ -26,7 +26,7 @@ Material for MkDocs can be installed with `pip`:
     pip install mkdocs-material
     ```
 
-=== "8.x <small>version range</small>"
+=== "8.x"
 
     ``` sh
     pip install mkdocs-material=="8.*" #(1)!
@@ -78,7 +78,7 @@ minutes, as it comes with all dependencies pre-installed. Pull the image for the
     docker pull squidfunk/mkdocs-material
     ```
 
-=== "8.x <small>version range</small>"
+=== "8.x"
 
     ```
     docker pull squidfunk/mkdocs-material:8

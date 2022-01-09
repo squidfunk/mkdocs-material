@@ -38,9 +38,11 @@ Browser support matrix sourced from [caniuse.com].[^1]
 </figure>
 
   [^1]:
-    The data was collected from [caniuse.com] in January 2022 and is primarily
+    The data was collected from [caniuse.com] in January 2022, and is primarily
     based on browser support for [custom properties], [mask images] and the
-    [:is pseudo selector] which are not completely polyfillable.
+    [:is pseudo selector] which are not entirely polyfillable. Browsers with a
+    cumulated market share of less than 1% were not considered, but might still
+    be fully or partially supported.
 
 Note that the usage data is based on global browser market share, so it could
 in fact be entirely different for your target demographic. It's a good idea to
