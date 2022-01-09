@@ -39,9 +39,14 @@
     // Arithmatex content
     > * {
       width: min-content;
-      margin: 1em auto !important; // stylelint-disable-line
+      margin-inline: auto !important; // stylelint-disable-line
       padding: 0 px2rem(16px);
       touch-action: auto;
+
+      // MathJax container - see https://bit.ly/3HR8YJ5
+      mjx-container {
+        margin: 0 !important; // stylelint-disable-line
+      }
     }
   }
 }
