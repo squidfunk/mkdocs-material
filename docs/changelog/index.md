@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.5 <small>_ January 9, 2022</small> { id="8.1.5" }
+
+- Improved browser support: Chrome 49+, Safari 10+, Firefox 53+, Edge 79+
+- Improved rendering of inline code blocks in headlines
+- Added Bahasa Malaysian translations
+
 ### 8.1.4 <small>_ January 2, 2022</small> { id="8.1.4" }
 
 - Added indicator to navigation expander icon
