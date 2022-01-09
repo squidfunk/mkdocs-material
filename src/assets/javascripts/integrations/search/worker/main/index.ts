@@ -22,6 +22,8 @@
 
 import lunr from "lunr"
 
+import "~/polyfills"
+
 import { Search, SearchIndexConfig } from "../../_"
 import {
   SearchMessage,

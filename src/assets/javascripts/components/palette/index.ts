@@ -117,8 +117,7 @@ export function mountPalette(
 
       /* Set color palette */
       for (const [key, value] of Object.entries(palette.color))
-        if (typeof value === "string")
-          document.body.setAttribute(`data-md-color-${key}`, value)
+        document.body.setAttribute(`data-md-color-${key}`, value)
 
       /* Toggle visibility */
       for (let index = 0; index < inputs.length; index++) {

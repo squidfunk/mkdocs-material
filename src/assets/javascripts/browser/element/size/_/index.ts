@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+import ResizeObserver from "resize-observer-polyfill"
 import {
   NEVER,
   Observable,

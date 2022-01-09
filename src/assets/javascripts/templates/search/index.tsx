@@ -20,6 +20,8 @@
  * IN THE SOFTWARE.
  */
 
+import { ComponentChild } from "preact"
+
 import { feature, translation } from "~/_"
 import {
   SearchDocument,
@@ -61,8 +63,9 @@ function renderSearchDocument(
   /* Render missing query terms */
   const missing = Object.keys(document.terms)
     .filter(key => !document.terms[key])
-    .map(key => [<del>{key}</del>, " "])
-    .flat()
+    .reduce<ComponentChild[]>((list, key) => [
+      ...list, <del>{key}</del>, " "
+    ], [])
     .slice(0, -1)
 
   /* Assemble query string for highlighting */

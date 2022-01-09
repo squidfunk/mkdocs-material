@@ -24,6 +24,6 @@
 <script>
   var palette = __md_get("__palette")
   if (palette && typeof palette.color === "object")
-    for (var [key, value] of Object.entries(palette.color))
-      document.body.setAttribute("data-md-color-" + key, value)
+    for (var key of Object.keys(palette.color))
+      document.body.setAttribute("data-md-color-" + key, palette.color[key])
 </script>

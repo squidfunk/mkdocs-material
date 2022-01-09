@@ -38,13 +38,17 @@
     "upgrade:install": "npm install"
   },
   "dependencies": {
+    "array-flat-polyfill": "^1.0.1",
     "clipboard": "^2.0.8",
     "escape-html": "^1.0.3",
     "focus-visible": "^5.2.0",
     "fuzzaldrin-plus": "^0.6.0",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.9.0",
-    "rxjs": "^7.5.1"
+    "resize-observer-polyfill": "^1.5.1",
+    "rxjs": "^7.5.1",
+    "unfetch": "^4.2.0",
+    "url-polyfill": "^1.1.12"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",

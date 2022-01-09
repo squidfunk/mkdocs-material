@@ -20,7 +20,11 @@
  * IN THE SOFTWARE.
  */
 
+import "array-flat-polyfill"
 import "focus-visible"
+import "unfetch/polyfill"
+import "url-polyfill"
+
 import {
   EMPTY,
   NEVER,
@@ -78,6 +82,7 @@ import {
   patchScrollfix,
   patchScrolllock
 } from "./patches"
+import "./polyfills"
 
 /* ----------------------------------------------------------------------------
  * Application
