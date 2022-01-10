@@ -324,6 +324,7 @@ kbd {
   // Blockquotes, possibly nested
   blockquote {
     padding-inline-start: px2rem(12px);
+    margin-inline: 0;
     color: var(--md-default-fg-color--light);
     border-inline-start: px2rem(4px) solid var(--md-default-fg-color--lighter);
   }
