@@ -318,10 +318,18 @@
   :is(.highlight, .highlighttable) + .result {
     margin-top: calc(-1em + #{px2em(-2px)});
     padding: 0 px2em(16px);
-    overflow: auto;
+    overflow: visible;
     border: px2rem(1px) solid var(--md-code-bg-color);
+    border-top-width: px2rem(2px);
     border-bottom-right-radius: px2rem(2px);
     border-bottom-left-radius: px2rem(2px);
+
+    // Clearfix, because we can't use overflow: auto
+    &::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
   }
 }
 
