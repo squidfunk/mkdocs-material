@@ -54,11 +54,9 @@ No further configuration is necessary. Advantages over a custom integration:
 
 [Flowcharts] are diagrams that represent workflows or processes. The steps
 are rendered as nodes of various kinds and are connected by edges, describing
-the necessary order of steps.
+the necessary order of steps:
 
-_Example_:
-
-```` markdown
+```` markdown title="Mermaid.js flow chart"
 ``` mermaid
 graph LR
   A[Start] --> B{Error?};
@@ -69,7 +67,7 @@ graph LR
 ```
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` mermaid
 graph LR
@@ -79,6 +77,8 @@ graph LR
   D --> B;
   B ---->|No| E[Yay!];
 ```
+
+</div>
 
   [Flowcharts]: https://mermaid-js.github.io/mermaid/#/flowchart
 
@@ -86,11 +86,9 @@ graph LR
 
 [Sequence diagrams] describe a specific scenario as sequential interactions 
 between multiple objects or actors, including the messages that are exchanged
-between those actors.
+between those actors:
 
-_Example_:
-
-```` markdown
+```` markdown title="Mermaid.js sequence diagram"
 ``` mermaid
 sequenceDiagram
   Alice->>John: Hello John, how are you?
@@ -104,7 +102,7 @@ sequenceDiagram
 ```
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` mermaid
 sequenceDiagram
@@ -117,6 +115,8 @@ sequenceDiagram
   John->>Bob: How about you?
   Bob-->>John: Jolly good!
 ```
+
+</div>
 
   [Sequence diagrams]: https://mermaid-js.github.io/mermaid/#/sequenceDiagram
 
@@ -124,51 +124,41 @@ sequenceDiagram
 
 [State diagrams] are a great tool to describe the behavior of a system,
 decomposing it into a finite number of states, and transitions between those
-states.
+states:
 
-_Example_:
-
-```` markdown
+```` markdown title="Mermaid.js state diagram"
 ``` mermaid
 stateDiagram-v2
-  [*] --> Active
+  state fork_state <<fork>>
+    [*] --> fork_state
+    fork_state --> State2
+    fork_state --> State3
 
-  state Active {
-    [*] --> NumLockOff
-    NumLockOff --> NumLockOn : EvNumLockPressed
-    NumLockOn --> NumLockOff : EvNumLockPressed
-    --
-    [*] --> CapsLockOff
-    CapsLockOff --> CapsLockOn : EvCapsLockPressed
-    CapsLockOn --> CapsLockOff : EvCapsLockPressed
-    --
-    [*] --> ScrollLockOff
-    ScrollLockOff --> ScrollLockOn : EvScrollLockPressed
-    ScrollLockOn --> ScrollLockOff : EvScrollLockPressed
-  }
+    state join_state <<join>>
+    State2 --> join_state
+    State3 --> join_state
+    join_state --> State4
+    State4 --> [*]
 ```
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` mermaid
 stateDiagram-v2
-  [*] --> Active
+  state fork_state <<fork>>
+    [*] --> fork_state
+    fork_state --> State2
+    fork_state --> State3
 
-  state Active {
-    [*] --> NumLockOff
-    NumLockOff --> NumLockOn : EvNumLockPressed
-    NumLockOn --> NumLockOff : EvNumLockPressed
-    --
-    [*] --> CapsLockOff
-    CapsLockOff --> CapsLockOn : EvCapsLockPressed
-    CapsLockOn --> CapsLockOff : EvCapsLockPressed
-    --
-    [*] --> ScrollLockOff
-    ScrollLockOff --> ScrollLockOn : EvScrollLockPressed
-    ScrollLockOn --> ScrollLockOff : EvScrollLockPressed
-  }
+    state join_state <<join>>
+    State2 --> join_state
+    State3 --> join_state
+    join_state --> State4
+    State4 --> [*]
 ```
+
+</div>
 
   [State diagrams]: https://mermaid-js.github.io/mermaid/#/stateDiagram
 
@@ -176,11 +166,9 @@ stateDiagram-v2
 
 [Class diagrams] are central to object oriented programing, describing the
 structure of a system by modelling entities as classes and relationships between
-them.
+them:
 
-_Example_:
-
-```` markdown
+```` markdown title="Mermaid.js class diagram"
 ``` mermaid
 classDiagram
   Person <|-- Student
@@ -211,7 +199,7 @@ classDiagram
 ```
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` mermaid
 classDiagram
@@ -241,6 +229,8 @@ classDiagram
     +outputAsLabel()  
   }
 ```
+
+</div>
 
   [Class diagrams]: https://mermaid-js.github.io/mermaid/#/classDiagram
 
@@ -248,11 +238,9 @@ classDiagram
 
 An [entity-relationship diagram] is composed of entity types and specifies
 relationships that exist between entities. It describes inter-related things in
-a specific domain of knowledge.
+a specific domain of knowledge:
 
-_Example_:
-
-```` markdown
+```` markdown title="Mermaid.js entity-relationship diagram"
 ``` mermaid
 erDiagram
   CUSTOMER ||--o{ ORDER : places
@@ -261,7 +249,7 @@ erDiagram
 ```
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` mermaid
 erDiagram
@@ -269,5 +257,7 @@ erDiagram
   ORDER ||--|{ LINE-ITEM : contains
   CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
+
+</div>
 
   [entity-relationship diagram]: https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram

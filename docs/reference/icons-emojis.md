@@ -67,17 +67,17 @@ See additional configuration options:
 
 Emojis can be integrated in Markdown by putting the shortcode of the emoji
 between two colons. If you're using [Twemoji] (recommended), you can look up
-the shortcodes at [Emojipedia].
+the shortcodes at [Emojipedia]:
 
-_Example_:
-
-```
+``` title="Emoji"
 :smile: 
 ```
 
-_Result_:
+<div class="result" markdown>
 
 :smile:
+
+</div>
 
   [Twemoji]: https://twemoji.twitter.com/
   [Emojipedia]: https://emojipedia.org/twitter/
@@ -88,65 +88,36 @@ When [Emoji] is enabled, icons can be used similar to emojis, by referencing
 a valid path to any icon bundled with the theme, which are located in the
 [`.icons`][custom icons] directory, and replacing `/` with `-`:
 
-_Example_:
-
-```
-- :material-account-circle: – `material/account-circle.svg`
-- :fontawesome-regular-laugh-wink: – `fontawesome/regular/laugh-wink.svg`
-- :octicons-repo-push-16: – `octicons/repo-push-16.svg`
+``` title="Icon"
+:fontawesome-regular-laugh-wink:
 ```
 
-_Result_:
+<div class="result" markdown>
 
-- :material-account-circle: – [`material/account-circle.svg`][icon Material]
-- :fontawesome-regular-laugh-wink: – [`fontawesome/regular/laugh-wink.svg`][icon FontAwesome]
-- :octicons-repo-push-16: – [`octicons/repo-push-16.svg`][icon Octicons]
+:fontawesome-regular-laugh-wink:
+
+</div>
 
   [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
-  [icon Material]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/material/account-circle.svg
-  [icon FontAwesome]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/fontawesome/regular/laugh-wink.svg
-  [icon Octicons]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/.icons/octicons/repo-push-16.svg
 
 #### with colors
 
-When [Attribute Lists] is enabled, custom CSS classes can be added to icons by
-suffixing the icon with a special syntax. While HTML allows to use
-[inline styles], it's always recommended to add an [additional style sheet] and
-move declarations into dedicated CSS classes.
+Custom CSS classes can be added to icons by suffixing the icon with a special
+syntax. While HTML allows to use [inline styles], it's always recommended to
+add an [additional style sheet] and move declarations into dedicated CSS
+classes:
 
 <style>
-  .medium {
-    color: #00AB6C;
-  }
   .twitter {
     color: #1DA1F2;
   }
-  .facebook {
-    color: #4267B2;
-  }
 </style>
-
-_Example_:
-
-=== ":octicons-file-code-16: docs/example.md"
-
-    ``` markdown
-    - :fontawesome-brands-medium:{ .medium } – Medium
-    - :fontawesome-brands-twitter:{ .twitter } – Twitter
-    - :fontawesome-brands-facebook:{ .facebook } – Facebook
-    ```
 
 === ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
-    .medium {
-      color: #00AB6C;
-    }
     .twitter {
       color: #1DA1F2;
-    }
-    .facebook {
-      color: #4267B2;
     }
     ```
 
@@ -157,11 +128,17 @@ _Example_:
       - stylesheets/extra.css
     ```
 
-_Result_:
+After applying the customization, add the CSS class to the icon shortcode:
 
-- :fontawesome-brands-medium:{ .medium } – Medium
-- :fontawesome-brands-twitter:{ .twitter } – Twitter
-- :fontawesome-brands-facebook:{ .facebook } – Facebook
+``` markdown title="Icon with color"
+:fontawesome-brands-twitter:{ .twitter }
+```
+
+<div class="result" markdown>
+
+:fontawesome-brands-twitter:{ .twitter }
+
+</div>
 
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [inline styles]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
@@ -171,15 +148,7 @@ _Result_:
 
 Similar to adding [colors], it's just as easy to add [animations] to icons by
 using an [additional style sheet], defining a `@keyframes` rule and adding a
-dedicated CSS class to the icon.
-
-_Example_:
-
-=== ":octicons-file-code-16: docs/example.md"
-
-    ``` markdown
-    :octicons-heart-fill-24:{ .heart }
-    ```
+dedicated CSS class to the icon:
 
 === ":octicons-file-code-16: docs/stylesheets/extra.css"
 
@@ -204,9 +173,17 @@ _Example_:
       - stylesheets/extra.css
     ```
 
-_Result_:
+After applying the customization, add the CSS class to the icon shortcode:
+
+``` markdown title="Icon with animation"
+:octicons-heart-fill-24:{ .heart }
+```
+
+<div class="result" markdown>
 
 :octicons-heart-fill-24:{ .mdx-heart }
+
+</div>
 
   [colors]: #with-colors
   [animations]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation

@@ -34,15 +34,15 @@ In order to render a link as a button, suffix it with curly braces and add the
 `.md-button` class selector to it. The button will receive the selected
 [primary color] and [accent color] if active.
 
-_Example_:
-
-``` markdown
+``` markdown title="Button"
 [Subscribe to our newsletter](#){ .md-button }
 ```
 
-_Result_:
+<div class="result" markdown>
 
 [Subscribe to our newsletter][Demo]{ .md-button }
+
+</div>
 
   [primary color]: ../setup/changing-the-colors.md#primary-color
   [accent color]: ../setup/changing-the-colors.md#accent-color 
@@ -54,15 +54,15 @@ If you want to display a filled, primary button (like on the [landing page]
 of Material for MkDocs), add both, the `.md-button` and `.md-button--primary`
 CSS class selectors.
 
-_Example_:
-
-``` markdown
+``` markdown title="Button, primary"
 [Subscribe to our newsletter](#){ .md-button .md-button--primary }
 ```
 
-_Result_:
+<div class="result" markdown>
 
 [Subscribe to our newsletter][Demo]{ .md-button .md-button--primary }
+
+</div>
 
   [landing page]: ../index.md
 
@@ -71,15 +71,15 @@ _Result_:
 Of course, icons can be added to all types of buttons by using the [icon syntax]
 together with any valid icon shortcode, which can be easily found with a few keystrokes through the [icon search].
 
-_Example_:
-
-``` markdown
-[Send :fontawesome-solid-paper-plane:](#){ .md-button .md-button--primary }
+``` markdown title="Button with icon"
+[Send :fontawesome-solid-paper-plane:](#){ .md-button }
 ```
 
-_Result_:
+<div class="result" markdown>
 
-[Send :fontawesome-solid-paper-plane:][Demo]{ .md-button .md-button--primary }
+[Send :fontawesome-solid-paper-plane:][Demo]{ .md-button }
+
+</div>
 
   [icon syntax]: icons-emojis.md#using-icons
   [icon search]: icons-emojis.md#search

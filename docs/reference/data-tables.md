@@ -33,11 +33,9 @@ See additional configuration options:
 
 Data tables can be used at any position in your project documentation and can
 contain arbitrary Markdown, including inline code blocks, as well as [icons and
-emojis].
+emojis]:
 
-_Example_:
-
-``` markdown
+``` markdown title="Data table"
 | Method      | Description                          |
 | ----------- | ------------------------------------ |
 | `GET`       | :material-check:     Fetch resource  |
@@ -45,13 +43,15 @@ _Example_:
 | `DELETE`    | :material-close:     Delete resource |
 ```
 
-_Result_:
+<div class="result" markdown>
 
 | Method      | Description                          |
 | ----------- | ------------------------------------ |
 | `GET`       | :material-check:     Fetch resource  |
 | `PUT`       | :material-check-all: Update resource |
 | `DELETE`    | :material-close:     Delete resource |
+
+</div>
 
   [icons and emojis]: icons-emojis.md
 
@@ -63,9 +63,7 @@ and/or end of the divider.
 
 === "Left"
 
-    _Example_:
-
-    ``` markdown hl_lines="2"
+    ``` markdown hl_lines="2" title="Data table, aligned to left"
     | Method      | Description                          |
     | :---------- | :----------------------------------- |
     | `GET`       | :material-check:     Fetch resource  |
@@ -73,19 +71,19 @@ and/or end of the divider.
     | `DELETE`    | :material-close:     Delete resource |
     ```
 
-    _Result_:
+    <div class="result" markdown>
 
     | Method      | Description                          |
     | :---------- | :----------------------------------- |
     | `GET`       | :material-check:     Fetch resource  |
     | `PUT`       | :material-check-all: Update resource |
     | `DELETE`    | :material-close:     Delete resource |
+
+    </div>
 
 === "Center"
 
-    _Example_:
-
-    ``` markdown hl_lines="2"
+    ``` markdown hl_lines="2" title="Data table, centered"
     | Method      | Description                          |
     | :---------: | :----------------------------------: |
     | `GET`       | :material-check:     Fetch resource  |
@@ -93,19 +91,19 @@ and/or end of the divider.
     | `DELETE`    | :material-close:     Delete resource |
     ```
 
-    _Result_:
+    <div class="result" markdown>
 
     | Method      | Description                          |
     | :---------: | :----------------------------------: |
     | `GET`       | :material-check:     Fetch resource  |
     | `PUT`       | :material-check-all: Update resource |
     | `DELETE`    | :material-close:     Delete resource |
+
+    </div>
 
 === "Right"
 
-    _Example_:
-
-    ``` markdown hl_lines="2"
+    ``` markdown hl_lines="2" title="Data table, aligned to right"
     | Method      | Description                          |
     | ----------: | -----------------------------------: |
     | `GET`       | :material-check:     Fetch resource  |
@@ -113,13 +111,15 @@ and/or end of the divider.
     | `DELETE`    | :material-close:     Delete resource |
     ```
 
-    _Result_:
+    <div class="result" markdown>
 
     | Method      | Description                          |
     | ----------: | -----------------------------------: |
     | `GET`       | :material-check:     Fetch resource  |
     | `PUT`       | :material-check-all: Update resource |
     | `DELETE`    | :material-close:     Delete resource |
+
+    </div>
 
   [regular Markdown syntax]: https://www.markdownguide.org/extended-syntax/#tables
 
@@ -150,13 +150,10 @@ loading] via [additional JavaScript]:
       - javascripts/tablesort.js
     ```
 
-Note that [tablesort] provides alternative comparison implementations like
-numbers, filesizes, dates and month names. See the [tablesort documentation]
-[tablesort] for more information.
+After applying the customization, data tables can be sorted by clicking on a
+column:
 
-_Example_:
-
-``` markdown
+``` markdown title="Data table"
 | Method      | Description                          |
 | ----------- | ------------------------------------ |
 | `GET`       | :material-check:     Fetch resource  |
@@ -164,13 +161,19 @@ _Example_:
 | `DELETE`    | :material-close:     Delete resource |
 ```
 
-_Result_:
+<div class="result" markdown>
 
 | Method      | Description                          |
 | ----------- | ------------------------------------ |
 | `GET`       | :material-check:     Fetch resource  |
 | `PUT`       | :material-check-all: Update resource |
 | `DELETE`    | :material-close:     Delete resource |
+
+</div>
+
+Note that [tablesort] provides alternative comparison implementations like
+numbers, filesizes, dates and month names. See the [tablesort documentation]
+[tablesort] for more information.
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
 <script>

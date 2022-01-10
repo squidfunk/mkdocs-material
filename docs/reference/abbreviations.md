@@ -36,23 +36,23 @@ See additional configuration options:
 
 Abbreviations can be defined by using a special syntax similar to URLs and 
 [footnotes], starting with a `*` and immediately followed by the term or
-acronym to be associated in square brackets.
+acronym to be associated in square brackets:
 
-_Example_:
-
-``` markdown
+``` markdown title="Text with abbreviations"
 The HTML specification is maintained by the W3C.
 
 *[HTML]: Hyper Text Markup Language
 *[W3C]: World Wide Web Consortium
 ```
 
-_Result_:
+<div class="result" markdown>
 
 The HTML specification is maintained by the W3C.
 
 *[HTML]: Hyper Text Markup Language
 *[W3C]: World Wide Web Consortium
+
+</div>
 
   [footnotes]: footnotes.md
 
@@ -60,15 +60,13 @@ The HTML specification is maintained by the W3C.
 
 The [Snippets] extension can be used to implement a simple glossary by moving
 all abbreviations in a dedicated file[^1], and embedding it with the
-[`--8<--` notation][Snippets notation] at the end of each document.
+[`--8<--` notation][Snippets notation] at the end of each document:
 
   [^1]:
     It's highly recommended to put the Markdown file containing the
     abbreviations outside of the `docs` folder (here, a folder with the name 
     `includes` is used), as MkDocs might otherwise complain about an
     unreferenced file.
-
-_Example_:
 
 === ":octicons-file-code-16: docs/example.md"
 
@@ -84,9 +82,5 @@ _Example_:
     *[HTML]: Hyper Text Markup Language
     *[W3C]: World Wide Web Consortium
     ````
-
-_Result_:
-
-The HTML specification is maintained by the W3C.
 
   [Snippets notation]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippets-notation

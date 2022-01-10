@@ -72,11 +72,9 @@ integrated with [instant loading] and persisted across page loads.
 
 Code blocks are one of the primary targets to be grouped, and can be considered
 a special case of content tabs, as tabs with a single code block are always
-rendered without horizontal spacing.
+rendered without horizontal spacing:
 
-_Example_:
-
-```
+``` title="Content tabs with code blocks"
 === "C"
 
     ``` c
@@ -100,7 +98,7 @@ _Example_:
     ```
 ```
 
-_Result_:
+<div class="result" markdown>
 
 === "C"
 
@@ -123,16 +121,16 @@ _Result_:
       return 0;
     }
     ```
+
+</div>
 
 ### Grouping other content
 
 When a content tab contains more than one code block, it is rendered with
 horizontal spacing. Vertical spacing is never added, but can be achieved
-by nesting tabs in other blocks.
+by nesting tabs in other blocks:
 
-_Example_:
-
-```
+``` title="Content tabs"
 === "Unordered list"
 
     * Sed sagittis eleifend rutrum
@@ -146,7 +144,7 @@ _Example_:
     3. Nulla tempor lobortis orci
 ```
 
-_Result_:
+<div class="result" markdown>
 
 === "Unordered list"
 
@@ -159,6 +157,8 @@ _Result_:
     1. Sed sagittis eleifend rutrum
     2. Donec vitae suscipit est
     3. Nulla tempor lobortis orci
+
+</div>
 
 ### Embedded content
 
@@ -166,78 +166,46 @@ When [SuperFences] is enabled, content tabs can contain arbitrary nested
 content, including further content tabs, and can be nested in other blocks like
 [admonitions] or blockquotes:
 
-_Example_:
-
-``` markdown
+``` title="Content tabs in admonition"
 !!! example
 
     === "Unordered List"
 
-        _Example_:
-
-        ``` markdown
+        ``` markdown title="List, unordered"
         * Sed sagittis eleifend rutrum
         * Donec vitae suscipit est
         * Nulla tempor lobortis orci
         ```
-
-        _Result_:
-
-        * Sed sagittis eleifend rutrum
-        * Donec vitae suscipit est
-        * Nulla tempor lobortis orci
 
     === "Ordered List"
 
-        _Example_:
-
-        ``` markdown
+        ``` markdown title="List, ordered"
         1. Sed sagittis eleifend rutrum
         2. Donec vitae suscipit est
         3. Nulla tempor lobortis orci
         ```
-
-        _Result_:
-
-        1. Sed sagittis eleifend rutrum
-        2. Donec vitae suscipit est
-        3. Nulla tempor lobortis orci
 ```
 
-_Result_:
+<div class="result" markdown>
 
 !!! example
 
     === "Unordered List"
 
-        _Example_:
-
-        ``` markdown
+        ``` markdown title="List, unordered"
         * Sed sagittis eleifend rutrum
         * Donec vitae suscipit est
         * Nulla tempor lobortis orci
         ```
-
-        _Result_:
-
-        * Sed sagittis eleifend rutrum
-        * Donec vitae suscipit est
-        * Nulla tempor lobortis orci
 
     === "Ordered List"
 
-        _Example_:
-
-        ``` markdown
+        ``` markdown title="List, ordered"
         1. Sed sagittis eleifend rutrum
         2. Donec vitae suscipit est
         3. Nulla tempor lobortis orci
         ```
 
-        _Result_:
-
-        1. Sed sagittis eleifend rutrum
-        2. Donec vitae suscipit est
-        3. Nulla tempor lobortis orci
+</div>
 
   [admonitions]: admonitions.md

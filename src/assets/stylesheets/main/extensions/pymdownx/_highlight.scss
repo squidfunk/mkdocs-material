@@ -313,6 +313,16 @@
       border-bottom-right-radius: px2rem(2px);
     }
   }
+
+  // Code block result container
+  :is(.highlight, .highlighttable) + .result {
+    margin-top: calc(-1em + #{px2em(-2px)});
+    padding: 0 px2em(16px);
+    overflow: auto;
+    border: px2rem(1px) solid var(--md-code-bg-color);
+    border-bottom-right-radius: px2rem(2px);
+    border-bottom-left-radius: px2rem(2px);
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -334,6 +344,13 @@
 
     // Omit rounded borders
     code {
+      border-radius: 0;
+    }
+
+    // Code block result container
+    + .result {
+      margin-inline: px2rem(-16px);
+      border-inline-width: 0;
       border-radius: 0;
     }
   }

@@ -107,21 +107,21 @@ click or open in a new tab:
 Code blocks must be enclosed with two separate lines containing three backticks.
 To add syntax highlighting to those blocks, add the language shortcode directly
 after the opening block. See the [list of available lexers] to find the
-shortcode for a given language.
+shortcode for a given language:
 
-_Example_:
-
-```` markdown
+```` markdown title="Code block"
 ``` py
 import tensorflow as tf
 ```
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` py
 import tensorflow as tf
 ```
+
+</div>
 
   [list of available lexers]: https://pygments.org/docs/lexers/
 
@@ -134,9 +134,7 @@ In order to provide additional context, a custom title can be added to a code
 block by using the `title="<custom title>"` option directly after the shortcode,
 e.g. to display the name of a file:
 
-_Example_:
-
-```` markdown
+```` markdown title="Code block with title"
 ``` py title="bubble_sort.py"
 def bubble_sort(items):
     for i in range(len(items)):
@@ -146,7 +144,7 @@ def bubble_sort(items):
 ```
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` py title="bubble_sort.py"
 def bubble_sort(items):
@@ -156,13 +154,15 @@ def bubble_sort(items):
                 items[j], items[j + 1] = items[j + 1], items[j]
 ```
 
+</div>
+
   [Title support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.6
 
 ### Adding annotations
 
 Code annotations can be placed anywhere in a code block where a comment for the
 language of the block can be placed, e.g. for JavaScript in `#!js // ...` and
-`#!js /* ... */`, for YAML in `#!yaml # ...`, etc.[^1]
+`#!js /* ... */`, for YAML in `#!yaml # ...`, etc.[^1]:
 
   [^1]:
     Code annotations require syntax highlighting with [Pygments] – they're
@@ -171,9 +171,7 @@ language of the block can be placed, e.g. for JavaScript in `#!js // ...` and
     on supporting alternate ways of defining code annotations, allowing to
     always place code annotations at the end of lines.
 
-_Example_:
-
-```` markdown
+```` markdown title="Code block with annotation"
 ``` yaml
 theme:
   features:
@@ -184,7 +182,7 @@ theme:
     text__, images, ... basically anything that can be written in Markdown.
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` yaml
 theme:
@@ -194,6 +192,8 @@ theme:
 
 1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
     text__, images, ... basically anything that can be written in Markdown.
+
+</div>
 
 #### Stripping comments
 
@@ -205,9 +205,7 @@ If you wish to strip the comment characters surrounding a code annotation,
 [Insiders] adds a new syntax that allows for just that. Simply add an `!` after
 the closing parens of the code annotation:
 
-_Example_:
-
-```` markdown
+```` markdown title="Code block with annotation, stripped"
 ``` yaml
 # (1)!
 ```
@@ -215,13 +213,15 @@ _Example_:
 1.  Look ma, less line noise!
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` yaml
 # (1)!
 ```
 
 1.  Look ma, less line noise!
+
+</div>
 
 Note that this only allows for a single code annotation to be rendered per
 comment. If you want to add multiple code annotations, comments cannot be
@@ -232,11 +232,9 @@ stripped for technical reasons.
 Line numbers can be added to a code block by using the `linenums="<start>"`
 option directly after the shortcode, whereas `<start>` represents the starting
 line number. A code block can start from a line number other than `1`, which
-allows to split large code blocks for readability.
+allows to split large code blocks for readability:
 
-_Example_:
-
-```` markdown
+```` markdown title="Code block with line numbers"
 ``` py linenums="1"
 def bubble_sort(items):
     for i in range(len(items)):
@@ -246,7 +244,7 @@ def bubble_sort(items):
 ```
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` py linenums="1"
 def bubble_sort(items):
@@ -256,60 +254,36 @@ def bubble_sort(items):
                 items[j], items[j + 1] = items[j + 1], items[j]
 ```
 
+</div>
+
 ### Highlighting specific lines
 
 Specific lines can be highlighted by passing the line numbers to the `hl_lines`
 argument placed right after the language shortcode. Note that line counts start
 at `1`, regardless of the starting line number specified as part of
-[`linenums`][Adding line numbers].
+[`linenums`][Adding line numbers]:
 
-=== "Line numbers"
+```` markdown title="Code block with highlighted lines"
+``` py hl_lines="2 3"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
+````
 
-    _Example_:
+<div class="result" markdown>
 
-    ```` markdown 
-    ``` py hl_lines="2 3"
-    def bubble_sort(items):
-        for i in range(len(items)):
-            for j in range(len(items) - 1 - i):
-                if items[j] > items[j + 1]:
-                    items[j], items[j + 1] = items[j + 1], items[j]
-    ```
-    ````
+``` py linenums="1" hl_lines="2 3"
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```
 
-    _Result_:
-
-    ``` py linenums="1" hl_lines="2 3"
-    def bubble_sort(items):
-        for i in range(len(items)):
-            for j in range(len(items) - 1 - i):
-                if items[j] > items[j + 1]:
-                    items[j], items[j + 1] = items[j + 1], items[j]
-    ```
-
-=== "Line number ranges"
-
-    _Example_:
-
-    ```` markdown
-    ``` py hl_lines="2-5"
-    def bubble_sort(items):
-        for i in range(len(items)):
-            for j in range(len(items) - 1 - i):
-                if items[j] > items[j + 1]:
-                    items[j], items[j + 1] = items[j + 1], items[j]
-    ```
-    ````
-
-    _Result_:
-
-    ``` py linenums="1" hl_lines="2-5"
-    def bubble_sort(items):
-        for i in range(len(items)):
-            for j in range(len(items) - 1 - i):
-                if items[j] > items[j + 1]:
-                    items[j], items[j + 1] = items[j + 1], items[j]
-    ```
+</div>
 
   [Adding line numbers]: #adding-line-numbers
 
@@ -319,15 +293,15 @@ When [InlineHilite] is enabled, syntax highlighting can be applied to inline
 code blocks by prefixing them with a shebang, i.e. `#!`, directly followed by
 the corresponding [language shortcode][list of available lexers].
 
-_Example_:
-
-``` markdown
+``` markdown title="Inline code block"
 The `#!python range()` function is used to generate a sequence of numbers.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 The `#!python range()` function is used to generate a sequence of numbers.
+
+</div>
 
 ### Embedding external files
 
@@ -335,19 +309,19 @@ When [Snippets] is enabled, content from other files (including source files)
 can be embedded by using the [`--8<--` notation][Snippets notation] directly
 from within a code block:
 
-_Example_:
-
-```` markdown
+```` markdown title="Code block with external content"
 ``` title=".browserslistrc"
 --8<--​ ".browserslistrc"
 ```
 ````
 
-_Result_:
+<div class="result" markdown>
 
 ``` title=".browserslistrc"
 last 4 years
 ```
+
+</div>
 
   [Snippets notation]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippets-notation
 

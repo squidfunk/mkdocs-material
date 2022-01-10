@@ -193,6 +193,11 @@
       }
     }
 
+    // Code block result container is the second child
+    > .result:nth-child(2) {
+      margin-top: 0;
+    }
+
     // Adjust spacing for nested tabbed container
     > .tabbed-set {
       margin: 0;

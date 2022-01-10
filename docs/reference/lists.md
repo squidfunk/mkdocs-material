@@ -37,11 +37,9 @@ See additional configuration options:
 
 Unordered lists can be written by prefixing a line with a `-`, `*` or `+` list
 marker, all of which can be used interchangeably. Furthermore, all flavors
-of lists can be nested inside each other.
+of lists can be nested inside each other:
 
-_Example_:
-
-``` markdown
+``` markdown title="List, unordered"
 - Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
   accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh
   lacinia sed. Aenean in finibus diam.
@@ -51,7 +49,7 @@ _Example_:
     * Nullam dignissim ultrices urna non auctor.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 - Nulla et rhoncus turpis. Mauris ultricies elementum leo. Duis efficitur
   accumsan nibh eu mattis. Vivamus tempus velit eros, porttitor placerat nibh
@@ -60,16 +58,16 @@ _Result_:
     * Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis.
     * Nam vulputate tincidunt fringilla.
     * Nullam dignissim ultrices urna non auctor.
+
+</div>
 
 ### Using ordered lists
 
 Ordered lists must start with a number immediately followed by a dot. The 
 numbers do not need to be consecutive and can be all set to `1.`, as they will
-be re-numbered when rendered.
+be re-numbered when rendered:
 
-_Example_:
-
-``` markdown
+``` markdown title="List, ordered"
 1.  Vivamus id mi enim. Integer id turpis sapien. Ut condimentum lobortis
     sagittis. Aliquam purus tellus, faucibus eget urna at, iaculis venenatis
     nulla. Vivamus a pharetra leo.
@@ -86,7 +84,7 @@ _Example_:
         3.  Suspendisse ac eros arcu
 ```
 
-_Result_:
+<div class="result" markdown>
 
 1.  Vivamus id mi enim. Integer id turpis sapien. Ut condimentum lobortis
     sagittis. Aliquam purus tellus, faucibus eget urna at, iaculis venenatis
@@ -102,15 +100,15 @@ _Result_:
         1.  Mauris dictum mi lacus
         2.  Ut sit amet placerat ante
         3.  Suspendisse ac eros arcu
+
+</div>
 
 ### Using definition lists
 
 When [Definition Lists] is enabled, lists of arbitrary key-value pairs, e.g. the
-parameters of functions or modules, can be enumerated with a simple syntax.
+parameters of functions or modules, can be enumerated with a simple syntax:
 
-_Example_:
-
-``` markdown
+``` markdown title="Definition list"
 `Lorem ipsum dolor sit amet`
 
 :   Sed sagittis eleifend rutrum. Donec vitae suscipit est. Nullam tempus
@@ -126,7 +124,7 @@ _Example_:
     Nullam dignissim ultrices urna non auctor.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 `Lorem ipsum dolor sit amet`
 
@@ -141,16 +139,16 @@ _Result_:
     Duis mollis est eget nibh volutpat, fermentum aliquet dui mollis.
     Nam vulputate tincidunt fringilla.
     Nullam dignissim ultrices urna non auctor.
+
+</div>
 
 ### Using task lists
 
 When [Tasklist] is enabled, unordered list items can be prefixed with `[ ]` to
 render an unchecked checkbox or `[x]` to render a checked checkbox, allowing
-for the definition of task lists.
+for the definition of task lists:
 
-_Example_:
-
-``` markdown
+``` markdown title="Task list"
 - [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - [ ] Vestibulum convallis sit amet nisi a tincidunt
     * [x] In hac habitasse platea dictumst
@@ -159,7 +157,7 @@ _Example_:
 - [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
 ```
 
-_Result_:
+<div class="result" markdown>
 
 - [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - [ ] Vestibulum convallis sit amet nisi a tincidunt
@@ -167,3 +165,5 @@ _Result_:
     * [x] In scelerisque nibh non dolor mollis congue sed et metus
     * [ ] Praesent sed risus massa
 - [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
+
+</div>

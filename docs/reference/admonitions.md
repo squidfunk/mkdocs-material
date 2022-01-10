@@ -52,13 +52,11 @@ theme:
 1.  Set `<type`> to any of the [supported types] and `<icon>` to any valid icon 
     shortcode, which you can find by using the [icon search].
 
-??? example "Example: using alternative icon sets"
+??? example "Expand to show alternate icon sets"
 
     === ":octicons-mark-github-16: Octicons"
 
-        _Example_:
-
-        ``` yaml
+        ``` yaml title="Admonition with alternate icon set"
         theme:
           icon:
             admonition:
@@ -76,16 +74,16 @@ theme:
               quote: octicons/quote-16
         ```
 
-        _Result_:
+        <div class="result" markdown>
 
         [![Octicons]][Octicons]
+
+        </div>
 
 
     === ":fontawesome-brands-font-awesome: FontAwesome"
 
-        _Example_:
-
-        ``` yaml
+        ``` yaml title="Admonition with alternate icon set"
         theme:
           icon:
             admonition:
@@ -103,9 +101,11 @@ theme:
               quote: fontawesome/solid/quote-left
         ```
 
-        _Result_:
+        <div class="result" markdown>
 
         [![FontAwesome]][FontAwesome]
+
+        </div>
 
   [Insiders]: ../insiders/index.md
   [custom icon]: icons-emojis.md#additional-icons
@@ -118,11 +118,9 @@ theme:
 
 Admonitions follow a simple syntax: a block starts with `!!!`, followed by a
 single keyword used as a [type qualifier]. The content of the block follows on
-the next line, indented by four spaces.
+the next line, indented by four spaces:
 
-_Example_:
-
-``` markdown
+``` markdown title="Admonition"
 !!! note
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
@@ -130,13 +128,15 @@ _Example_:
     massa, nec semper lorem quam in massa.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 !!! note
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+
+</div>
 
   [type qualifier]: #supported-types
 
@@ -144,11 +144,9 @@ _Result_:
 
 By default, the title will equal the type qualifier in titlecase. However, it
 can be changed by adding a quoted string containing valid Markdown (including
-links, formatting, ...) after the type qualifier.
+links, formatting, ...) after the type qualifier:
 
-_Example_:
-
-``` markdown
+``` markdown title="Admonition with custom title"
 !!! note "Phasellus posuere in sem ut cursus"
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
@@ -156,23 +154,23 @@ _Example_:
     massa, nec semper lorem quam in massa.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 !!! note "Phasellus posuere in sem ut cursus"
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+
+</div>
 
 ### Removing the title
 
 Similar to [changing the title], the icon and title can be omitted entirely by
 adding an empty string directly after the type qualifier. Note that this will
-not work for [collapsible blocks].
+not work for [collapsible blocks]:
 
-_Example_:
-
-``` markdown
+``` markdown title="Admonition without title"
 !!! note ""
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
@@ -180,13 +178,15 @@ _Example_:
     massa, nec semper lorem quam in massa.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 !!! note ""
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+
+</div>
 
   [changing the title]: #changing-the-title
   [collapsible blocks]: #collapsible-blocks
@@ -195,11 +195,9 @@ _Result_:
 
 When [Details] is enabled and an admonition block is started with `???` instead
 of `!!!`, the admonition is rendered as a collapsible block with a small toggle
-on the right side.
+on the right side:
 
-_Example_:
-
-``` markdown
+``` markdown title="Admonition, collapsible"
 ??? note
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
@@ -207,7 +205,7 @@ _Example_:
     massa, nec semper lorem quam in massa.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 ??? note
 
@@ -215,11 +213,11 @@ _Result_:
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
-Adding a `+` after the `???` token will render the block as open.
+</div>
 
-_Example_:
+Adding a `+` after the `???` token renders the block expanded:
 
-``` markdown
+``` markdown title="Admonition, collapsible and initially expanded"
 ???+ note
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
@@ -227,13 +225,15 @@ _Example_:
     massa, nec semper lorem quam in massa.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 ???+ note
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+
+</div>
 
 ### Inline blocks
 
@@ -242,11 +242,9 @@ _Result_:
 
 Admonitions can also be rendered as inline blocks (i.e. for sidebars), placing
 them to the right using the `inline` + `end` modifiers, or to the left using
-only the `inline` modifier.
+only the `inline` modifier:
 
 === ":octicons-arrow-right-16: inline end"
-
-    _Example_ / _Result_:
 
     !!! info inline end
 
@@ -267,8 +265,6 @@ only the `inline` modifier.
     Use `inline end` to align to the right (left for rtl languages).
 
 === ":octicons-arrow-left-16: inline"
-
-    _Example_ / _Result_:
 
     !!! info inline
 
@@ -425,18 +421,6 @@ and add the following CSS to an [additional style sheet]:
   }
 </style>
 
-_Example_:
-
-=== ":octicons-file-code-16: docs/example.md"
-
-    ``` markdown
-    !!! pied-piper "Pied Piper"
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
-        euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
-        purus auctor massa, nec semper lorem quam in massa.
-    ```
-
 === ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
@@ -467,13 +451,25 @@ _Example_:
       - stylesheets/extra.css
     ```
 
-_Result_:
+After applying the customization, you can use the custom admonition type:
+
+``` markdown title="Admonition with custom type"
+!!! pied-piper "Pied Piper"
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+    euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+    purus auctor massa, nec semper lorem quam in massa.
+```
+
+<div class="result" markdown>
 
 !!! pied-piper "Pied Piper"
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+
+</div>
 
   [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
   [additional style sheet]: ../customization.md#additional-css

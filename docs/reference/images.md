@@ -40,13 +40,11 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
 
 === "Left"
 
-    _Example_:
-
-    ``` markdown
+    ``` markdown title="Image, aligned to left"
     ![Image title](https://dummyimage.com/600x400/eee/aaa){ align=left }
     ```
 
-    _Result_:
+    <div class="result" markdown>
 
     ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
 
@@ -54,21 +52,23 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
+    </div>
+
 === "Right"
 
-    _Example_:
-
-    ``` markdown
+    ``` markdown title="Image, aligned to right"
     ![Image title](https://dummyimage.com/600x400/eee/aaa){ align=right }
     ```
 
-    _Result_:
+    <div class="result" markdown>
 
     ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+
+    </div>
 
 If there's insufficient space to render the text next to the image, the image
 will stretch to the full width of the viewport, e.g. on mobile viewports.
@@ -93,29 +93,22 @@ will stretch to the full width of the viewport, e.g. on mobile viewports.
 ### Image captions
 
 Sadly, the Markdown syntax doesn't provide native support for image captions,
-but it's always possible to use HTML. Using `figure` and `figcaption`, captions
-can be added to images.
+but it's always possible to use the [Markdown in HTML] extension with literal
+`figure` and `figcaption` tags:
 
-_Example_:
-
-```html
-<figure markdown> <!-- (1)! -->
+``` html title="Image with caption"
+<figure markdown>
   ![Image title](https://dummyimage.com/600x400/){ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>
 ```
 
-1.  :man_raising_hand: Remember to enable the [Markdown in HTML] extension.
-
-_Result_:
-
-<figure markdown>
-  ![Placeholder]{ width="300" }
-  <figcaption>Image caption</figcaption>
-</figure>
-
-  [Placeholder]: https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–
-  [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html
+<div class="result">
+  <figure>
+    <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
+    <figcaption>Image caption</figcaption>
+  </figure>
+</div>
 
 ### Image lazy-loading
 
@@ -123,9 +116,13 @@ Modern browsers provide [native support for lazy-loading images][lazy-loading]
 through the `loading=lazy` directive, which degrades to eager-loading in
 browsers without support:
 
-``` markdown
+``` markdown title="Image, lazy-loaded"
 ![Image title](https://dummyimage.com/600x400/){ loading=lazy }
 ```
+
+<div class="result" markdown>
+  <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
+</div>
 
   [lazy-loading]: https://caniuse.com/#feat=loading-lazy-attr
 
@@ -138,17 +135,18 @@ If you added a [color palette toggle] and want to show different images for
 light and dark color schemes, you can append a `#only-light` or `#only-dark`
 hash fragment to the image URL:
 
-_Example_:
-
-``` markdown
+``` markdown title="Image, different for light and dark mode"
 ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa#only-light)
 ![Image title](https://dummyimage.com/600x400/21222c/d5d7e2#only-dark)
 ```
 
-_Result_:
+<div class="result" markdown>
 
 ![Zelda light world]{ width="300" }
 ![Zelda dark world]{ width="300" }
+
+</div>
+
 
   [Light and dark mode support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.1
   [color palette toggle]: ../setup/changing-the-colors.md#color-palette-toggle

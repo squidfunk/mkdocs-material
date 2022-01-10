@@ -85,36 +85,37 @@ See additional configuration options:
 
 ### Using block syntax
 
-Blocks must be enclosed in `#!latex $$...$$` or `#!latex \[...\]`on separate lines:
+Blocks must be enclosed in `#!latex $$...$$` or `#!latex \[...\]` on separate
+lines:
 
-_Example_:
-
-``` latex
+``` latex title="MathJax, block syntax"
 $$
 \operatorname{ker} f=\{g\in G:f(g)=e_{H}\}{\mbox{.}}
 $$
 ```
 
-_Result_:
+<div class="result" markdown>
 
 $$
 \operatorname{ker} f=\{g\in G:f(g)=e_{H}\}{\mbox{.}}
 $$
+
+</div>
 
 ### Using inline block syntax
 
 Inline blocks must be enclosed in `#!latex $...$` or `#!latex \(...\)`:
 
-_Example_:
-
-``` latex
+``` latex title="MathJax, inline syntax"
 The homomorphism $f$ is injective if and only if its kernel is only the 
 singleton set $e_G$, because otherwise $\exists a,b\in G$ with $a\neq b$ such 
 that $f(a)=f(b)$.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 The homomorphism $f$ is injective if and only if its kernel is only the 
 singleton set $e_G$, because otherwise $\exists a,b\in G$ with $a\neq b$ such 
 that $f(a)=f(b)$.
+
+</div>

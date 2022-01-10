@@ -417,7 +417,7 @@ kbd {
     display: flow-root;
     width: fit-content;
     max-width: 100%;
-    margin: 0 auto;
+    margin: 1em auto;
     text-align: center;
 
     // Figure images
@@ -429,7 +429,7 @@ kbd {
   // Figure caption
   figcaption {
     max-width: px2rem(480px);
-    margin: 1em auto 2em;
+    margin: 1em auto;
     font-style: italic;
   }
 

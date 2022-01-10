@@ -35,15 +35,15 @@ A footnote reference must be enclosed in square brackets and must start with a
 caret `^`, directly followed by an arbitrary identifier, which is similar to
 the standard Markdown link syntax.
 
-_Example_:
-
-``` markdown
+``` title="Text with footnote references"
 Lorem ipsum[^1] dolor sit amet, consectetur adipiscing elit.[^2]
 ```
 
-_Result_:
+<div class="result" markdown>
 
 Lorem ipsum[^1] dolor sit amet, consectetur adipiscing elit.[^2]
+
+</div>
 
 ### Adding footnote content
 
@@ -54,38 +54,38 @@ reference is automatically added.
 
 #### on a single line
 
-Short footnotes can be written on the same line.
+Short footnotes can be written on the same line:
 
-_Example_:
-
-``` markdown
+``` title="Footnote"
 [^1]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 ```
 
-_Result_:
+<div class="result" markdown>
 
 [:octicons-arrow-down-24: Jump to footnote](#fn:1)
+
+</div>
 
   [^1]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 #### on multiple lines
 
-Paragraphs can be written on the next line and must be indented by four spaces.
+Paragraphs can be written on the next line and must be indented by four spaces:
 
-_Example_:
-
-``` markdown
+``` title="Footnote"
 [^2]:
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 ```
 
-_Result_:
+<div class="result" markdown>
+
+[:octicons-arrow-down-24: Jump to footnote](#fn:2)
+
+</div>
 
 [^2]:
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus
     auctor massa, nec semper lorem quam in massa.
-
-[:octicons-arrow-down-24: Jump to footnote](#fn:2)
