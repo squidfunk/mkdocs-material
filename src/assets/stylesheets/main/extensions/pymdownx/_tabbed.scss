@@ -186,11 +186,17 @@
     > .highlighttable:first-child {
       margin: 0;
 
-      // Omit rounded borders
-      > code {
+      // Remove rounded borders
+      code {
         border-start-start-radius: 0;
         border-start-end-radius: 0;
       }
+    }
+
+    // Remove rounded border on line numbers container
+    > .highlighttable:first-child .linenos {
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
     }
 
     // Code block result container is the second child

@@ -180,6 +180,12 @@
     // Adjust spacing for code block
     + pre {
       margin-top: 0;
+
+      // Remove rounded border on top side
+      > code {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
     }
   }
 
@@ -191,7 +197,8 @@
     // don't overlay line numbers, as active annotations have a `z-index` of 2.
     z-index: 3;
     float: left;
-    margin-inline: px2em(16px, 13.6px);
+    margin-right: px2em(16px, 13.6px);
+    margin-left: px2em(-16px, 13.6px);
     padding-left: px2em(16px, 13.6px);
     color: var(--md-default-fg-color--light);
     background-color: var(--md-code-bg-color);
@@ -309,8 +316,8 @@
 
     // Remove rounded borders on left side
     code {
-      border-top-right-radius: px2rem(2px);
-      border-bottom-right-radius: px2rem(2px);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 
@@ -350,7 +357,7 @@
       padding: 0 px2rem(16px);
     }
 
-    // Omit rounded borders
+    // Remove rounded borders
     code {
       border-radius: 0;
     }
