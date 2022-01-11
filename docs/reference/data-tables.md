@@ -63,7 +63,7 @@ and/or end of the divider.
 
 === "Left"
 
-    ``` markdown hl_lines="2" title="Data table, aligned to left"
+    ``` markdown hl_lines="2" title="Data table, columns aligned to left"
     | Method      | Description                          |
     | :---------- | :----------------------------------- |
     | `GET`       | :material-check:     Fetch resource  |
@@ -83,7 +83,7 @@ and/or end of the divider.
 
 === "Center"
 
-    ``` markdown hl_lines="2" title="Data table, centered"
+    ``` markdown hl_lines="2" title="Data table, columns centered"
     | Method      | Description                          |
     | :---------: | :----------------------------------: |
     | `GET`       | :material-check:     Fetch resource  |
@@ -103,7 +103,7 @@ and/or end of the divider.
 
 === "Right"
 
-    ``` markdown hl_lines="2" title="Data table, aligned to right"
+    ``` markdown hl_lines="2" title="Data table, columns aligned to right"
     | Method      | Description                          |
     | ----------: | -----------------------------------: |
     | `GET`       | :material-check:     Fetch resource  |
@@ -153,7 +153,7 @@ loading] via [additional JavaScript]:
 After applying the customization, data tables can be sorted by clicking on a
 column:
 
-``` markdown title="Data table"
+``` markdown title="Data table, columns sortable"
 | Method      | Description                          |
 | ----------- | ------------------------------------ |
 | `GET`       | :material-check:     Fetch resource  |

@@ -162,9 +162,10 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Annotations] :material-new-box:
 - [x] [Navigation icons] :material-new-box:
-- [x] [Code annotations: anchor links] :material-new-box:
-- [x] [Code annotations: strip comments] :material-new-box:
+- [x] [Code annotations: anchor links]
+- [x] [Code annotations: strip comments]
 - [x] [Dismissable announcement bar]
 - [x] [Was this page helpful?]
 - [x] [Brand new search plugin]
@@ -251,12 +252,13 @@ are released for general availability.
 
 #### $ 12,000 – Piri Piri
 
+- [x] [Annotations]
 - [x] [Navigation icons]
 - [ ] Navigation status badges
 - [ ] Navigation pruning
-- [ ] Text annotations
 - [ ] Blog
 
+  [Annotations]: ../reference/annotations.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
 
 ### Goals completed

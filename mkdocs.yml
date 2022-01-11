@@ -194,6 +194,7 @@ nav:
     - reference/index.md
     - Abbreviations: reference/abbreviations.md
     - Admonitions: reference/admonitions.md
+    - Annotations: reference/annotations.md
     - Buttons: reference/buttons.md
     - Code blocks: reference/code-blocks.md
     - Content tabs: reference/content-tabs.md

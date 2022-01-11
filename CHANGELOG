@@ -1,3 +1,13 @@
+mkdocs-material-8.1.6-insiders-4.6.0 (2022-01-11)
+
+  * Added support for annotations (outside of code blocks)
+
+mkdocs-material-8.1.6 (2022-01-11)
+
+  * Fixed spacing of blockquotes (8.1.5 regression)
+  * Fixed edge cases for rounded corners on code blocks (8.1.5 regression)
+  * Fixed rendering issues with code annotation line heights
+
 mkdocs-material-8.1.5 (2022-01-09)
 
   * Improved browser support: Chrome 49+, Safari 10+, Firefox 53+, Edge 79+

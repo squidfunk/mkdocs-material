@@ -56,7 +56,7 @@ No further configuration is necessary. Advantages over a custom integration:
 are rendered as nodes of various kinds and are connected by edges, describing
 the necessary order of steps:
 
-```` markdown title="Mermaid.js flow chart"
+```` markdown title="Flow chart"
 ``` mermaid
 graph LR
   A[Start] --> B{Error?};
@@ -88,7 +88,7 @@ graph LR
 between multiple objects or actors, including the messages that are exchanged
 between those actors:
 
-```` markdown title="Mermaid.js sequence diagram"
+```` markdown title="Sequence diagram"
 ``` mermaid
 sequenceDiagram
   Alice->>John: Hello John, how are you?
@@ -126,7 +126,7 @@ sequenceDiagram
 decomposing it into a finite number of states, and transitions between those
 states:
 
-```` markdown title="Mermaid.js state diagram"
+```` markdown title="State diagram"
 ``` mermaid
 stateDiagram-v2
   state fork_state <<fork>>
@@ -168,7 +168,7 @@ stateDiagram-v2
 structure of a system by modelling entities as classes and relationships between
 them:
 
-```` markdown title="Mermaid.js class diagram"
+```` markdown title="Class diagram"
 ``` mermaid
 classDiagram
   Person <|-- Student
@@ -240,7 +240,7 @@ An [entity-relationship diagram] is composed of entity types and specifies
 relationships that exist between entities. It describes inter-related things in
 a specific domain of knowledge:
 
-```` markdown title="Mermaid.js entity-relationship diagram"
+```` markdown title="Entity-relationship diagram"
 ``` mermaid
 erDiagram
   CUSTOMER ||--o{ ORDER : places
