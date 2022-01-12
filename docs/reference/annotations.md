@@ -196,9 +196,16 @@ leverage the [Markdown in HTML] extension to wrap arbitrary elements with a
 
 </div>
 
-With this trick, annotations can also be added to blockquotes, data tables,
-lists, and many other elements that are not supported by the [Attribute Lists]
-extension. Furthermore, note that [code blocks follow different semantics].
+With this trick, annotations can also be added to blockquotes, lists, and many
+other elements that are not supported by the [Attribute Lists] extension.
+Furthermore, note that [code blocks follow different semantics].
+
+!!! warning "Known limitations"
+
+    Please note that annotations currently don't work in [data tables] as
+    reported in #3453, as data tables are scrollable elements and positioning
+    is very tricky to get right. This might be fixed in the future.
 
   [limitations]: https://python-markdown.github.io/extensions/attr_list/#limitations
   [code blocks follow different semantics]: code-blocks.md#adding-annotations
+  [data tables]: data-tables.md
