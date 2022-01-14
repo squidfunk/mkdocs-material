@@ -57,6 +57,8 @@ RUN \
     pip install --no-cache-dir \
       "mkdocs-minify-plugin>=0.3" \
       "mkdocs-redirects>=1.0"; \
+      "mkdocs-git-revision-date-plugin>=1.0"; \
+      "git-revision-date-localized>=1.0"; \
   fi \
 && \
   apk del .build \
