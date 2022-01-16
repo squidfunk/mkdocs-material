@@ -207,6 +207,7 @@ The following properties must be set for each toggle:
     * :material-weather-sunny: + :material-weather-night: – `material/weather-sunny` + `material/weather-night`
     * :material-eye-outline: + :material-eye: – `material/eye-outline` + `material/eye`
     * :material-lightbulb-outline: + :material-lightbulb: – `material/lightbulb-outline` + `material/lightbulb`
+    * :material-brightness-4: + :material-brightness-7: – `material/brightness-4` + `material/brightness-7`
 
 `name`{ #toggle-name }
 
