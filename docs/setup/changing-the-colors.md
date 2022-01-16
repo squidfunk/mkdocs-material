@@ -200,7 +200,7 @@ theme:
       </div>
     </div>
 
-2.  With __2__ (color schemes) __x 21__ (primary colors) __x 17__ (accent color)
+3.  With __2__ (color schemes) __x 21__ (primary colors) __x 17__ (accent color)
     = __714__ combinations, it's impossible to ensure that all configurations
     provide a good user experience (e.g. _yellow on light background_). Make
     sure that the color combination of your choosing provides enough contrast
@@ -211,9 +211,8 @@ The following properties must be set for each toggle:
 `icon`{ #toggle-icon }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
-    This property must point to a valid icon path referencing [any icon bundled
-    with the theme][custom icons], or the build will not succeed. Some popular
-    combinations:
+    This property must point to a valid icon path referencing any icon bundled
+    with the theme, or the build will not succeed. Some popular combinations:
 
     * :material-toggle-switch-off-outline: + :material-toggle-switch: – `material/toggle-switch-off-outline` + `material/toggle-switch`
     * :material-weather-sunny: + :material-weather-night: – `material/weather-sunny` + `material/weather-night`
@@ -231,7 +230,7 @@ The following properties must be set for each toggle:
   [palette.scheme]: #color-scheme
   [palette.primary]: #primary-color
   [palette.accent]: #accent-color
-  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [icon search]: ../reference/icons-emojis.md#search
 
 ### System preference
 
