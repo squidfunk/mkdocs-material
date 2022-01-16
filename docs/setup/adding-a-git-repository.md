@@ -62,7 +62,7 @@ any icon bundled with the theme by referencing a valid icon path in
 ``` yaml
 theme:
   icon:
-    repo: fontawesome/brands/git-alt # (1)
+    repo: fontawesome/brands/git-alt # (1)!
 ```
 
 1.  Enter a few keywords to find the perfect icon using our [icon search] and
