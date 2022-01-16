@@ -34,11 +34,23 @@ Add the following lines to `mkdocs.yml`:
     ``` yaml
     theme:
       icon:
-        logo: material/library
+        logo: material/library # (1)!
     ```
+
+    1.  Enter a few keywords to find the perfect icon using our [icon search] and
+        click on the shortcode to copy it to your clipboard:
+
+        <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+          <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="material library" />
+          <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+            <div class="mdx-iconsearch-result__meta"></div>
+            <ol class="mdx-iconsearch-result__list"></ol>
+          </div>
+        </div>
 
   [logo support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [logo default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/material/library.svg
+  [icon search]: ../reference/icons-emojis.md#search
 
 Normally, the logo in the header and sidebar links to the homepage of the
 documentation, which is the same as `site_url`. This behavior can be changed

@@ -198,9 +198,20 @@ reference any icon that's [bundled with the theme][icon search] with Jinja's
 
 ``` html
 <span class="twemoji">
-  {% include ".icons/fontawesome/brands/twitter.svg" %}
+  {% include ".icons/fontawesome/brands/twitter.svg" %} <!-- (1)! -->
 </span>
 ```
+
+1.  Enter a few keywords to find the perfect icon using our [icon search] and
+    click on the shortcode to copy it to your clipboard:
+
+    <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="brands twitter" />
+      <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+        <div class="mdx-iconsearch-result__meta"></div>
+        <ol class="mdx-iconsearch-result__list"></ol>
+      </div>
+    </div>
 
 This is exactly what Material for MkDocs does in its templates.
 

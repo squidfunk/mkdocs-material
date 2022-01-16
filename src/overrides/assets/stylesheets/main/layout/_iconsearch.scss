@@ -63,6 +63,11 @@
     scrollbar-width: thin;
     scrollbar-color: var(--md-default-fg-color--lighter) transparent;
 
+    // Icon search result inside tooltip
+    .md-tooltip & {
+      max-height: px2rem(205px);
+    }
+
     // Webkit scrollbar
     &::-webkit-scrollbar {
       width: px2rem(4px);

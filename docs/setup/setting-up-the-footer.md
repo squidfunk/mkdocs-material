@@ -25,9 +25,20 @@ with:
 ``` yaml
 extra:
   social:
-    - icon: fontawesome/brands/twitter
+    - icon: fontawesome/brands/twitter # (1)!
       link: https://twitter.com/squidfunk
 ```
+
+1.  Enter a few keywords to find the perfect icon using our [icon search] and
+    click on the shortcode to copy it to your clipboard:
+
+    <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="brands twitter" />
+      <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+        <div class="mdx-iconsearch-result__meta"></div>
+        <ol class="mdx-iconsearch-result__list"></ol>
+      </div>
+    </div>
 
 The following properties must be set for each link:
 
@@ -35,7 +46,7 @@ The following properties must be set for each link:
 
 :   [:octicons-tag-24: 5.0.0][social.icon support] · :octicons-milestone-24:
     Default: _none_ · :octicons-alert-24: Required – This property must contain
-    a valid path to [any icon bundled with the theme][custom icons], or the
+    a valid path to any icon bundled with the theme, or the
     build will not succeed. Some popular choices:
 
     * :fontawesome-brands-behance: – `fontawesome/brands/behance`
@@ -91,7 +102,6 @@ The following properties must be set for each link:
   [social support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [social.icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [social.name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.1.5
-  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
 
 ### Copyright notice
 

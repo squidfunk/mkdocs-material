@@ -69,7 +69,7 @@ CSS class selectors.
 ### Adding icon buttons
 
 Of course, icons can be added to all types of buttons by using the [icon syntax]
-together with any valid icon shortcode, which can be easily found with a few keystrokes through the [icon search].
+together with any valid icon shortcode, which can be easily found with a few keystrokes through our [icon search].
 
 ``` markdown title="Button with icon"
 [Send :fontawesome-solid-paper-plane:](#){ .md-button }

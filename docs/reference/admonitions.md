@@ -49,8 +49,16 @@ theme:
       <type>: <icon> # (1)!
 ```
 
-1.  Set `<type`> to any of the [supported types] and `<icon>` to any valid icon 
-    shortcode, which you can find by using the [icon search].
+1.  Enter a few keywords to find the perfect icon using our [icon search] and
+    click on the shortcode to copy it to your clipboard:
+
+    <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="alert" />
+      <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+        <div class="mdx-iconsearch-result__meta"></div>
+        <ol class="mdx-iconsearch-result__list"></ol>
+      </div>
+    </div>
 
 ??? example "Expand to show alternate icon sets"
 

@@ -88,8 +88,16 @@ icon: material/emoticon-happy # (1)!
 ...
 ```
 
-1.  Check out the left sidebar to see icons in action! Also check out our
-    [icon search] to find the perfect icon with a few keystrokes.
+1.  Enter a few keywords to find the perfect icon using our [icon search] and
+    click on the shortcode to copy it to your clipboard:
+
+    <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="emoticon happy" />
+      <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+        <div class="mdx-iconsearch-result__meta"></div>
+        <ol class="mdx-iconsearch-result__list"></ol>
+      </div>
+    </div>
 
   [Insiders]: ../insiders/index.md
   [icon search]: icons-emojis.md#search

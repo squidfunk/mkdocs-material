@@ -29,6 +29,7 @@ import {
   fromEvent,
   map,
   merge,
+  startWith,
   withLatestFrom
 } from "rxjs"
 
@@ -71,7 +72,8 @@ export function mountIconSearchQuery(
   )
     .pipe(
       map(() => el.value),
-      distinctUntilChanged()
+      startWith(el.value),
+      distinctUntilChanged(),
     )
 
   /* Log search on blur */

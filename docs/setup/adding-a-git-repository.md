@@ -56,14 +56,25 @@ repo_name: squidfunk/mkdocs-material
 [`fontawesome/brands/git-alt`][icon.repo default]
 
 While the default repository icon is a generic git icon, it can be set to
-[any icon bundled with the theme][custom icons] by referencing a valid icon
-path in `mkdocs.yml`:
+any icon bundled with the theme by referencing a valid icon path in
+`mkdocs.yml`:
 
 ``` yaml
 theme:
   icon:
-    repo: fontawesome/brands/git-alt
+    repo: fontawesome/brands/git-alt # (1)
 ```
+
+1.  Enter a few keywords to find the perfect icon using our [icon search] and
+    click on the shortcode to copy it to your clipboard:
+
+    <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="git" />
+      <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+        <div class="mdx-iconsearch-result__meta"></div>
+        <ol class="mdx-iconsearch-result__list"></ol>
+      </div>
+    </div>
 
 Some popular choices:
 
@@ -80,7 +91,7 @@ Some popular choices:
 
   [icon.repo support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [icon.repo default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/fontawesome/brands/git-alt.svg
-  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [icon search]: ../reference/icons-emojis.md#search
 
 ### Edit button
 
