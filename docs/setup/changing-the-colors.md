@@ -179,15 +179,27 @@ theme:
   palette: # (1)!
     - scheme: default
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/toggle-switch-off-outline # (2)!
         name: Switch to dark mode
-    - scheme: slate # (2)!
+    - scheme: slate # (3)!
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
 ```
 
 1.  Note that the `theme.palette` setting is now defined as a list.
+
+2.  Enter a few keywords to find the perfect icon using our [icon search] and
+    click on the shortcode to copy it to your clipboard:
+
+    <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="toggle switch" />
+      <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+        <div class="mdx-iconsearch-result__meta"></div>
+        <ol class="mdx-iconsearch-result__list"></ol>
+      </div>
+    </div>
+
 2.  With __2__ (color schemes) __x 21__ (primary colors) __x 17__ (accent color)
     = __714__ combinations, it's impossible to ensure that all configurations
     provide a good user experience (e.g. _yellow on light background_). Make
