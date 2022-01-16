@@ -51,7 +51,9 @@ In order to integrate [Giscus], follow the guide on [theme extension] and
 [override the `content` block][overriding blocks], extending the default by
 calling the `super()` function at the beginning of the block:
 
-``` html hl_lines="6"
+``` html hl_lines="8"
+{% extends "base.html" %}
+
 {% block content %}
   {{ super() }}
 
