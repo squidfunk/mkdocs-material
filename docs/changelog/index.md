@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.7 <small>_ January 16, 2022</small> { id="8.1.7" }
+
+- Improved back-to-top button behavior - now not shown on anchor jump
+
 ### 8.1.6 <small>_ January 11, 2022</small> { id="8.1.6" }
 
 - Fixed spacing of blockquotes (8.1.5 regression)
