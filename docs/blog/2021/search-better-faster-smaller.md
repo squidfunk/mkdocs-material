@@ -5,6 +5,8 @@ description: >
   making it faster and smaller at the same time
 search:
   exclude: true
+hide:
+  - feedback
 ---
 
 # Search: better, faster, smaller

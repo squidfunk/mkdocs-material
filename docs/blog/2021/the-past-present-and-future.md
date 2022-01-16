@@ -5,6 +5,8 @@ description: >
   features and made this project sustainable
 search:
   exclude: true
+hide:
+  - feedback
 ---
 
 # The past, present and future

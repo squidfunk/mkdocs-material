@@ -5,6 +5,8 @@ description: >
   index, allowing for more fine-grained control
 search:
   exclude: true
+hide:
+  - feedback
 ---
 
 # Excluding content from search
