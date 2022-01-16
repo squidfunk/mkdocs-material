@@ -30,6 +30,8 @@ import {
   endWith,
   finalize,
   map,
+  repeat,
+  skip,
   takeLast,
   takeUntil,
   tap
@@ -61,8 +63,8 @@ export interface BackToTop {
  */
 interface WatchOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
-  header$: Observable<Header>          /* Header observable */
   main$: Observable<Main>              /* Main area observable */
+  target$: Observable<HTMLElement>     /* Location target observable */
 }
 
 /**
@@ -72,6 +74,7 @@ interface MountOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
   header$: Observable<Header>          /* Header observable */
   main$: Observable<Main>              /* Main area observable */
+  target$: Observable<HTMLElement>     /* Location target observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -87,7 +90,7 @@ interface MountOptions {
  * @returns Back-to-top observable
  */
 export function watchBackToTop(
-  _el: HTMLElement, { viewport$, main$ }: WatchOptions
+  _el: HTMLElement, { viewport$, main$, target$ }: WatchOptions
 ): Observable<BackToTop> {
 
   /* Compute direction */
@@ -95,25 +98,25 @@ export function watchBackToTop(
     .pipe(
       map(({ offset: { y } }) => y),
       bufferCount(2, 1),
-      map(([a, b]) => a > b && b),
+      map(([a, b]) => a > b),
       distinctUntilChanged()
     )
 
-  /* Compute whether button should be hidden */
-  const hidden$ = main$
+  /* Compute whether main area is active */
+  const active$ = main$
     .pipe(
-      distinctUntilKeyChanged("active")
+      map(({ active }) => active)
     )
 
   /* Compute threshold for hiding */
-  return combineLatest([hidden$, direction$])
+  return combineLatest([active$, direction$])
     .pipe(
-      map(([{ active }, direction]) => ({
-        hidden: !(active && direction)
-      })),
-      distinctUntilChanged((a, b) => (
-        a.hidden === b.hidden
-      ))
+      map(([active, direction]) => !(active && direction)),
+      distinctUntilChanged(),
+      takeUntil(target$.pipe(skip(1))),
+      endWith(true),
+      repeat({ delay: 250 }),
+      map(hidden => ({ hidden }))
     )
 }
 
@@ -128,7 +131,7 @@ export function watchBackToTop(
  * @returns Back-to-top component observable
  */
 export function mountBackToTop(
-  el: HTMLElement, { viewport$, header$, main$ }: MountOptions
+  el: HTMLElement, { viewport$, header$, main$, target$ }: MountOptions
 ): Observable<Component<BackToTop>> {
   const push$ = new Subject<BackToTop>()
   push$.subscribe({
@@ -164,7 +167,7 @@ export function mountBackToTop(
       })
 
   /* Create and return component */
-  return watchBackToTop(el, { viewport$, header$, main$ })
+  return watchBackToTop(el, { viewport$, main$, target$ })
     .pipe(
       tap(state => push$.next(state)),
       finalize(() => push$.complete()),
