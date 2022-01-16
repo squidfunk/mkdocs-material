@@ -5,104 +5,92 @@ template: overrides/main.html
 # Adding a comment system
 
 Material for MkDocs allows to easily add the third-party comment system of your
-choice to the footer of every page by using [theme extension]. As an example,
-we'll be integrating [Disqus] a wildly popular comment provider, but others
-can be integrate with the same principles
+choice to the footer of any page by using [theme extension]. As an example,
+we'll be integrating [Giscus], which is Open Source, free, and uses GitHub
+discussions as a backend.
 
-  [Disqus]: https://disqus.com/
+  [Giscus]: https://giscus.app/
 
 ## Customization
 
-### Disqus integration
+### Giscus integration
 
-In order to integrate a third-party comment provider offering a JavaScript-based
-solution, follow the guide on [theme extension], copy the contents from the
-[`content.html`][content partial] partial and create a file at the same location
-in the `overrides` folder:
+Before you can use [Giscus], you need to complete the following steps:
 
-=== ":octicons-file-code-16: overrides/partials/content.html"
+1.  __Install the [Giscus GitHub App]__ and grant access to the repository
+    that should host comments as GitHub discussions. Note that this can be a
+    repository different from your documentation.
+2.  __Visit [Giscus] and generate the snippet__ through their configuration tool
+    to load the comment system. Copy the snippet for the next step. The
+    resulting snippet should look similar to this:
 
     ``` html
-    <!-- Add copied contents from original content.html here -->
-
-    <!-- Get setting from mkdocs.yml, but allow page-level overrides -->
-    {% set disqus = config.extra.disqus %}
-    {% if page and page.meta and page.meta.disqus is string %}
-      {% set disqus = page.meta.disqus %}
-    {% endif %}
-
-    <!-- Inject Disqus into current page -->
-    {% if not page.is_homepage and disqus %}
-      <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
-      <div id="disqus_thread"></div>
-      <script>
-        var disqus_config = function() {
-          this.page.url = "{{ page.canonical_url }}"
-          this.page.identifier =
-            "{{ page.canonical_url | replace(config.site_url, '') }}" // (1)!
-        }
-
-        /* Set up for the first time */
-        if (typeof DISQUS === "undefined") {
-          var script = document.createElement("script")
-          script.async = true
-          script.src = "https://{{ disqus }}.disqus.com/embed.js"
-          script.setAttribute("data-timestamp", Date.now())
-
-          /* Inject script tag */
-          document.body.appendChild(script)
-
-        /* Set up on navigation (instant loading) */
-        } else {
-          DISQUS.reset({
-            reload: true,
-            config: disqus_config
-          })
-        }
-      </script>
-    {% endif %}
+    <script
+      src="https://giscus.app/client.js"
+      data-repo="<username>/<repository>"
+      data-repo-id="..."
+      data-category="..."
+      data-category-id="..."
+      data-mapping="pathname"
+      data-reactions-enabled="1"
+      data-emit-metadata="1"
+      data-theme="light"
+      data-lang="en"
+      crossorigin="anonymous"
+      async
+    >
+    </script>
     ```
 
-    1.  Ensure you've set [`site_url`][site_url] in `mkdocs.yml`.
+You can either integrate [Giscus] on every page by overriding the `main.html`
+template, or create a new template (e.g. `blog.html`) to extend from `main.html`
+which includes the comment system, so you can decide for each page whether you
+want to allow comments or not.
 
-=== ":octicons-file-code-16: mkdocs.yml"
+In order to integrate [Giscus], follow the guide on [theme extension] and
+[override the `content` block][overriding blocks], extending the default by
+calling the `super()` function at the beginning of the block:
 
-    ``` yaml
-    extra:
-      disqus: <shortname> # (1)!
-    ```
+``` html hl_lines="6"
+{% block content %}
+  {{ super() }}
 
-    1.  Add your Disqus [shortname] here.
+  <!-- Giscus -->
+  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+  <!-- Replace with generated snippet -->
 
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark") // (1)!
+      }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      component$.subscribe(function (component) {
+        if (component.ref === ref)
+          location.reload()
+      })
+    })
+  </script>
+{% endblock %}
+```
+
+1.  This code block ensures that [Giscus] renders with a dark theme when the
+    palette is set to `slate`. Note that multiple dark themes are available,
+    so you can change it to your liking.
+
+Replace the highlighted line with the snippet you generated with the [Giscus]
+configuration tool in the previous step. If you extended `main.html`, you should
+now see the [Giscus] comment system at the bottom of each page. If you created
+a new, separate template, you can enable Giscus by [setting the page template]
+via front matter.
+
+  [Giscus GitHub App]: https://github.com/apps/giscus
   [theme extension]: ../customization.md#extending-the-theme
-  [content partial]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/content.html
-  [shortname]: https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-
-#### on a single page
-
-When [Metadata] is enabled, Disqus can be enabled or disabled for a single page
-with custom front matter. Add the following lines at the top of a Markdown file:
-
-=== ":octicons-check-circle-fill-16: Enabled"
-
-    ``` bash
-    ---
-    disqus: <shortname>
-    ---
-
-    # Document title
-    ...
-    ```
-
-=== ":octicons-skip-16: Disabled"
-
-    ``` bash
-    ---
-    disqus: ""
-    ---
-
-    # Document title
-    ...
-    ```
-
-  [Metadata]: extensions/python-markdown.md#metadata
+  [overriding blocks]: ../customization.md#overriding-blocks
+  [setting the page template]: ../reference/index.md#setting-the-page-template

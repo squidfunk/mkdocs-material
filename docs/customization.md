@@ -178,7 +178,6 @@ The following template blocks are provided by the theme:
 | `announce`        | Wraps the announcement bar                      |
 | `config`          | Wraps the JavaScript application config         |
 | `content`         | Wraps the main content                          |
-| `disqus`          | Wraps the Disqus integration                    |
 | `extrahead`       | Empty block to add custom meta tags             |
 | `fonts`           | Wraps the font definitions                      |
 | `footer`          | Wraps the footer with navigation and copyright  |

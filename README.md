@@ -106,7 +106,7 @@
 
 * **Many configuration options** — change the color palette, font families,
   language, icons, favicon and logo. Add a source repository link, links to your
-  social profiles, Google Analytics and Disqus - all with a few lines of config.
+  social profiles, and Google Analytics - all with a few lines of config.
 
 * **Truly international** — thanks to many contributors, Material for MkDocs
   includes translations for more than 40 languages and offers full native RTL
