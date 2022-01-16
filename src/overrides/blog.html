@@ -43,4 +43,23 @@
     async
   >
   </script>
+
+  <!-- Reload on palette change -->
+  <script>
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object")
+      if (palette.color.scheme === "slate") {
+        var giscus = document.querySelector("script[src*=giscus]")
+        giscus.setAttribute("data-theme", "dark")
+      }
+
+    /* Reload on palette change */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      component$.subscribe(function (component) {
+        if (component.ref === ref)
+          location.reload()
+      })
+    })
+  </script>
 {% endblock %}
