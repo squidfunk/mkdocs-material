@@ -71,9 +71,8 @@ calling the `super()` function at the beginning of the block:
     /* Register event handlers after documented loaded */
     document.addEventListener("DOMContentLoaded", function() {
       var ref = document.querySelector("[data-md-component=palette]")
-      component$.subscribe(function (component) {
-        if (component.ref === ref)
-          location.reload()
+      ref.addEventListener("change", function() {
+        location.reload()
       })
     })
   </script>
