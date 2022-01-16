@@ -65,7 +65,7 @@ __Challenges__
 
 ## Sphinx
 
-[Sphinx] is an alternative static site generator specifically greared towards
+[Sphinx] is an alternative static site generator specifically geared towards
 generating reference documentation, offering powerful capabilities that are
 lacking in MkDocs. It uses [reStructured text], a format similar to Markdown,
 which some users find harder to use.
