@@ -526,6 +526,8 @@ search to an external service, you can add a custom JavaScript file to the
 `docs` directory and [override the `config` block][overriding blocks]:
 
 ``` html
+{% extends "base.html" %}
+
 {% block config %}
   {{ super() }}
   <script>

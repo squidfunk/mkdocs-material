@@ -225,6 +225,8 @@ you don't want to use it:
 === ":material-graph: Open Graph"
 
     ``` html
+    {% extends "base.html" %}
+
     {% block extrahead %}
       {% set title = config.site_name %}
       {% if page and page.meta and page.meta.title %}
@@ -246,6 +248,8 @@ you don't want to use it:
 === ":fontawesome-brands-twitter: Twitter Cards"
 
     ``` html
+    {% extends "base.html" %}
+
     {% block extrahead %}
       {% set title = config.site_name %}
       {% if page and page.meta and page.meta.title %}
