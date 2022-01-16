@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.6.1 <small>_ January 16, 2022</small> { id="4.6.1" }
+
+- Fixed #3459: Section index pages picking up wrong title
+
 ### 4.6.0 <small>_ January 11, 2022</small> { id="4.6.0" }
 
 - Added support for annotations (outside of code blocks)

@@ -1,3 +1,7 @@
+mkdocs-material-8.1.7+insiders-4.6.1 (2022-01-16)
+
+  * Fixed #3459: Section index pages picking up wrong title
+
 mkdocs-material-8.1.7 (2022-01-16)
 
   * Improved back-to-top button behavior - now not shown on anchor jump
