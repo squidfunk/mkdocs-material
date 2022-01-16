@@ -35,7 +35,7 @@
     gtag("js", new Date())
     gtag("config", "{{ property }}")
 
-    /* Register virtual event handlers */
+    /* Register event handlers after documented loaded */
     document.addEventListener("DOMContentLoaded", function() {
       if (document.forms.search) {
         var query = document.forms.search.query
@@ -70,7 +70,7 @@
     ga("set", "anonymizeIp", true)
     ga("send", "pageview")
 
-    /* Register virtual event handlers */
+    /* Register event handlers after documented loaded */
     document.addEventListener("DOMContentLoaded", function() {
       if (document.forms.search) {
         var query = document.forms.search.query
