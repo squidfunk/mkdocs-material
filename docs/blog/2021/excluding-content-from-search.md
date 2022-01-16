@@ -1,5 +1,5 @@
 ---
-template: overrides/main.html
+template: overrides/blog.html
 description: >
   Three new simple ways to exclude dedicated parts of a document from the search
   index, allowing for more fine-grained control

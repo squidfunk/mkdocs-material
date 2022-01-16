@@ -1,5 +1,5 @@
 ---
-template: overrides/main.html
+template: overrides/blog.html
 description: >
   How we rebuilt client-side search, delivering a better user experience while
   making it faster and smaller at the same time
@@ -639,12 +639,7 @@ better. Next up:
 
 If you've made it this far, thank you for your time and interest in Material
 for MkDocs! This is the first blog article that I decided to write after a
-short [Twitter survey] made me to. ~~You're invited to leave a comment
-to share your experiences with the new search implementation.~~[^9]
-
-  [^9]:
-    We've disabled comments due to Disqus' ads being so incredibly horrible
-    and invasive. If you know a better alternative, please ping me at
-    martin.donath@squidfunk.com.
+short [Twitter survey] made me to. You're invited to leave a comment
+to share your experiences with the new search implementation.
 
   [Twitter survey]: https://twitter.com/squidfunk/status/1434477478823743488
