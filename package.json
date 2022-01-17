@@ -81,7 +81,7 @@
     "npm-check-updates": "^12.1.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.5",
-    "postcss-dir-pseudo-class": "^6.0.2",
+    "postcss-dir-pseudo-class": "^6.0.3",
     "postcss-inline-svg": "^5.0.0",
     "postcss-logical": "^5.0.2",
     "preact": "^10.6.4",
