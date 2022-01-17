@@ -214,13 +214,7 @@ No configuration options are available. See reference for usage:
 
 The [Table of Contents] extension automatically generates a table of contents
 from a document, which Material for MkDocs will render as part of the resulting 
-page. Enable it via `mkdocs.yml`:
-
-``` yaml
-markdown_extensions:
-  - toc:
-      permalink: true
-```
+page.
 
 The following configuration options are supported:
 
