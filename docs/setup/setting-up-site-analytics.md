@@ -34,6 +34,15 @@ following lines to `mkdocs.yml`:
         property: G-XXXXXXXXXX
     ```
 
+=== ":material-google-analytics: Google Tag Manager"
+
+    ``` yaml
+    extra:
+      analytics:
+        provider: google
+        property: GTM-XXXXXXX
+    ```
+
 === ":material-google-analytics: Universal Analytics"
 
     ``` yaml
