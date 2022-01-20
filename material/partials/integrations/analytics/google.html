@@ -10,7 +10,6 @@
 {% elif property.startswith("UA-") %}
   <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","{{ property }}","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
   <script async src="https://www.google-analytics.com/analytics.js"></script>
-{% endif %}
 {% elif property.startswith("GTM-") %}
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ property }}');</script>
+  <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),n=t.getElementsByTagName(a)[0],(a=t.createElement(a)).async=!0,a.src="https://www.googletagmanager.com/gtm.js?id={{ property }}",n.parentNode.insertBefore(a,n)}(window,document,"script","dataLayer")</script>
 {% endif %}
