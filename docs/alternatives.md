@@ -84,7 +84,7 @@ __Challenges__
 
 [Sphinx Immaterial] is a great port of Material for MkDocs to Sphinx, as it
 follows the upstream repository closely. [Furo] is another great theme.
-Alternatively, [mkdocstrings] builds on top of Material for MkDocs to allow
+Alternatively, [mkdocstrings] builds on top of MkDocs to allow
 the generation of reference documentation.
 
   [Sphinx]: https://www.sphinx-doc.org/
