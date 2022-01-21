@@ -98,7 +98,7 @@ export function watchBackToTop(
     .pipe(
       map(({ offset: { y } }) => y),
       bufferCount(2, 1),
-      map(([a, b]) => a > b),
+      map(([a, b]) => a > b && b > 0),
       distinctUntilChanged()
     )
 
