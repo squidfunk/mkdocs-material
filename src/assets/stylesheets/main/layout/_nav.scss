@@ -62,7 +62,7 @@
         // Image or icon
         :is(img, svg) {
           display: block;
-          width: px2rem(48px);
+          width: auto;
           height: px2rem(48px);
           fill: currentColor;
         }
