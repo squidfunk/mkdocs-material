@@ -11,8 +11,8 @@ template: overrides/main.html
 
 - Added Latvian translations
 - Updated Giscus example integration with dynamic theme change support
-- Fixed #3491: Logo in header and drawer doesn't honor aspect ratio
 - Fixed #3479: Back-to-top button not hidden when using sticky navigation tabs
+- Fixed #3491: Logo in header and drawer doesn't honor aspect ratio
 
 ### 8.1.7 <small>_ January 16, 2022</small> { id="8.1.7" }
 

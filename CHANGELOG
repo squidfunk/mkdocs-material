@@ -2,8 +2,8 @@ mkdocs-material-8.1.8 (2022-01-23)
 
   * Added Latvian translations
   * Updated Giscus example integration with dynamic theme change support
-  * Fixed #3491: Logo in header and drawer doesn't honor aspect ratio
   * Fixed #3479: Back-to-top button not hidden when using sticky navigation tabs
+  * Fixed #3491: Logo in header and drawer doesn't honor aspect ratio
 
 mkdocs-material-8.1.7+insiders-4.6.1 (2022-01-16)
 
