@@ -54,6 +54,7 @@ The following languages are supported:
 - `ja` – Japanese
 - `ka` – Georgian
 - `kr` – Korean
+- `lv` – Latvian
 - `mn` – Mongolian
 - `ms` – Bahasa Malaysia
 - `my` – Burmese
