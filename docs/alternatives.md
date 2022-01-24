@@ -26,7 +26,7 @@ __Challenges__
 
 - High learning curve, JavaScript knowledge mandatory
 - JavaScript ecosystem is very volatile, rather high maintenance
-- More time necessary needed to get up and running
+- More time needed to get up and running
 
 While [Docusaurus] is one of the best choices when it comes to documentation
 sites that output a single page applications, there are many more solutions,
@@ -58,7 +58,7 @@ __Challenges__
 
 - Not specifically geared towards technical project documentation
 - Limited Markdown capabilities, not as advanced as Python Markdown
-- More time necessary needed to get up and running
+- More time needed to get up and running
 
   [Jekyll]: https://jekyllrb.com/
   [Ruby]: https://www.ruby-lang.org/de/
@@ -80,7 +80,7 @@ __Challenges__
 
 - High learning curve, [reStructured text] syntax might be challenging
 - Search is less powerful than the one provided by MkDocs
-- More time necessary needed to get up and running
+- More time needed to get up and running
 
 [Sphinx Immaterial] is a great port of Material for MkDocs to Sphinx, as it
 follows the upstream repository closely. [Furo] is another great theme.
