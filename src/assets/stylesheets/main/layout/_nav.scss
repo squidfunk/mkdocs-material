@@ -64,7 +64,7 @@
           display: block;
           width: auto;
           height: px2rem(48px);
-          fill: currentColor;
+          fill: currentcolor;
         }
       }
     }
@@ -135,7 +135,7 @@
         width: 100%;
         height: 100%;
         mask-image: var(--md-toc-icon);
-        background-color: currentColor;
+        background-color: currentcolor;
       }
 
       // Hide table of contents
@@ -213,7 +213,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            background-color: currentColor;
+            background-color: currentcolor;
             mask-image: var(--md-nav-icon--prev);
             mask-repeat: no-repeat;
             mask-size: contain;
@@ -292,7 +292,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            background-color: currentColor;
+            background-color: currentcolor;
             mask-image: var(--md-nav-icon--next);
             mask-repeat: no-repeat;
             mask-size: contain;
@@ -548,7 +548,7 @@
         width: 100%;
         height: 100%;
         vertical-align: px2rem(-2px);
-        background-color: currentColor;
+        background-color: currentcolor;
         mask-image: var(--md-nav-icon--next);
         mask-repeat: no-repeat;
         mask-size: contain;
