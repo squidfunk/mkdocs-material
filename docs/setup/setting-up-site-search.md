@@ -6,10 +6,10 @@ search:
 
 # Setting up site search
 
-Material for MkDocs provides an excellent, client-side search implementation,
+Material for MkDocs provides an excellent client-side search implementation,
 omitting the need for the integration of third-party services, which might
-be tricky to integrate to be compliant with data privacy regulations. Moreover,
-with some effort, search can be made available [offline].
+not be compliant with privacy regulations. Moreover, search even works
+[offline], allowing users to download your documentation.
 
   [offline]: #offline-search
 
@@ -307,26 +307,30 @@ clipboard.
 
 ### Offline search
 
-[:octicons-tag-24: 5.0.0][offline search support] ·
-[:octicons-cpu-24: Plugin][localsearch]
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.7.0][Insiders] ·
+:octicons-beaker-24: Experimental
 
-If you distribute your documentation as `*.html` files, the built-in search
-will not work out-of-the-box due to the restrictions modern browsers impose for
-security reasons. This can be mitigated with the [localsearch] plugin in
-combination with @squidfunk's [iframe-worker] polyfill.
+Insiders makes sure that the built-in search also works when you distribute your
+documentation as `*.html` files for download. Simply add the following lines to
+`mkdocs.yml`:
 
-For setup instructions, refer to the [localsearch documentation].
+``` yaml
+use_directory_urls: false
+```
 
-  [offline search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
+This ensures that `index.html` is appended to all internal URLs, which is
+necessary for allowing users to view your documentation locally and without
+Internet connection. No further setup is necessary – your documentation will
+work online and offline without any further ado.[^1]
+
+  [^1]:
+    Offline search was previously implemented through the third-party 
+    [localsearch] plugin, which is still possible if you don't want to use
+    [Insiders]. Note, however, that setup might be challenging if you're not
+    experienced with MkDocs.
+
   [localsearch]: https://github.com/wilhelmer/mkdocs-localsearch/
-  [iframe-worker]: https://github.com/squidfunk/iframe-worker
-  [localsearch documentation]: https://github.com/wilhelmer/mkdocs-localsearch#installation-material-v5
-
-!!! tip
-
-    When distributing documentation as HTML files to be opened from the file
-    system, you will also want to set `use_directory_urls: false` in
-    `mkdocs.yml` to make page links function correctly.
 
 ## Usage
 

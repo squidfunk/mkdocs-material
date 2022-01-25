@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.7.0 <small>_ January 25, 2022</small> { id="4.7.0" }
+
+- Added native support for offline search
+
 ### 4.6.1 <small>_ January 16, 2022</small> { id="4.6.1" }
 
 - Fixed #3459: Section index pages picking up wrong title
