@@ -324,6 +324,10 @@ necessary for allowing users to view your documentation locally and without
 Internet connection. No further setup is necessary – your documentation will
 work online and offline without any further ado.[^1]
 
+Now, after invoking `mkdocs build`, you can open `site/index.html` directly
+in your browser and the built-in search will work as if the documentation was
+hosted on a regular server.
+
   [^1]:
     Offline search was previously implemented through the third-party 
     [localsearch] plugin, which is still possible if you don't want to use
