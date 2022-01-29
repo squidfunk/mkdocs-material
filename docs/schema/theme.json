@@ -22,8 +22,7 @@
     "custom_dir": {
       "title": "Directory with theme overrides",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#setup-and-theme-structure",
-      "type": "string",
-      "default": "overrides"
+      "type": "string"
     },
     "static_templates": {
       "title": "Static templates to render",
@@ -381,7 +380,7 @@
         },
         "repo": {
           "title": "Repository icon",
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#repository-icon",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
           "type": "string",
           "default": "fontawesome/brands/git-alt"
         }
