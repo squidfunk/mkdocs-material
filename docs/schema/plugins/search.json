@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Built-in search plugin",
+  "description": "Configuration syntax",
+  "oneOf": [
+    {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/",
+      "enum": [
+        "search"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "search": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/",
+          "type": "object",
+          "properties": {
+            "lang": {
+              "oneOf": [
+                { "$ref": "#/definitions/lang" },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/lang"
+                  },
+                  "uniqueItems": true,
+                  "minItems": 1
+                }
+              ]
+            },
+            "separator": {
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-separator",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "definitions": {
+    "lang": {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-lang",
+      "oneOf": [
+        {
+          "description": "Arabic",
+          "enum": [
+            "ar"
+          ]
+        },
+        {
+          "description": "Danish",
+          "enum": [
+            "da"
+          ]
+        },
+        {
+          "description": "German",
+          "enum": [
+            "de"
+          ]
+        },
+        {
+          "description": "Dutch",
+          "enum": [
+            "du"
+          ]
+        },
+        {
+          "description": "English",
+          "enum": [
+            "en"
+          ]
+        },
+        {
+          "description": "Spanish",
+          "enum": [
+            "es"
+          ]
+        },
+        {
+          "description": "Finnish",
+          "enum": [
+            "fi"
+          ]
+        },
+        {
+          "description": "French",
+          "enum": [
+            "fr"
+          ]
+        },
+        {
+          "description": "Hungarian",
+          "enum": [
+            "hu"
+          ]
+        },
+        {
+          "description": "Italian",
+          "enum": [
+            "it"
+          ]
+        },
+        {
+          "description": "Japanese",
+          "enum": [
+            "ja"
+          ]
+        },
+        {
+          "description": "Norwegian",
+          "enum": [
+            "no"
+          ]
+        },
+        {
+          "description": "Portuguese",
+          "enum": [
+            "pt"
+          ]
+        },
+        {
+          "description": "Romanian",
+          "enum": [
+            "ro"
+          ]
+        },
+        {
+          "description": "Russian",
+          "enum": [
+            "ru"
+          ]
+        },
+        {
+          "description": "Swedish",
+          "enum": [
+            "sv"
+          ]
+        },
+        {
+          "description": "Thai",
+          "enum": [
+            "th"
+          ]
+        },
+        {
+          "description": "Turkish",
+          "enum": [
+            "tr"
+          ]
+        },
+        {
+          "description": "Vietnamese",
+          "enum": [
+            "vi"
+          ]
+        }
+      ]
+    }
+  }
+}
+

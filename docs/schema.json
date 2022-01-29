@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Material for MkDocs",
+  "markdownDescription": "Configuration syntax",
+  "type": "object",
+  "properties": {
+    "site_name": {
+      "title": "Site name – set in header, title and drawer",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#site_name",
+      "type": "string"
+    },
+    "site_url": {
+      "title": "Site URL",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#site_url",
+      "type": "string"
+    },
+    "site_author": {
+      "title": "Site author, set as meta tag",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#site_author",
+      "type": "string"
+    },
+    "site_description": {
+      "title": "Site description, set as meta tag and in social cards",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#site_description",
+      "type": "string"
+    },
+    "theme": {
+      "$ref": "schema/theme.json"
+    },
+    "plugins": {
+      "$ref": "schema/plugins.json"
+    },
+    "markdown_extensions": {
+      "$ref": "schema/extensions.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "site_name"
+  ]
+}

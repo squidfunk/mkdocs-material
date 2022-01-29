@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Redirects plugin",
+  "description": "Configuration syntax",
+  "type": "object",
+  "properties": {
+    "redirects": {
+      "markdownDescription": "https://github.com/datarobot/mkdocs-redirects",
+      "type": "object",
+      "properties": {
+        "redirect_maps": {
+          "description": "Internal and external redirects",
+          "type": "object",
+          "patternProperties": {
+            "\\.md$": {
+              "oneOf": [
+                {
+                  "description": "Internal redirect",
+                  "type": "string",
+                  "pattern": "\\.md$"
+                },
+                {
+                  "description": "External redirect",
+                  "type": "string",
+                  "pattern": "^https?:"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,483 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Theme configuration",
+  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/",
+  "type": "object",
+  "properties": {
+    "name": {
+      "title": "Theme name",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#name",
+      "oneOf": [
+        {
+          "enum": [
+            "material"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "custom_dir": {
+      "title": "Directory with theme overrides",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#setup-and-theme-structure",
+      "type": "string"
+    },
+    "static_templates": {
+      "title": "Static templates to render",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#static_templates",
+      "type": "array",
+      "items": {
+        "pattern": "\\.html$"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "language": {
+      "title": "Site language",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/",
+      "oneOf": [
+        {
+          "title": "Site language: Afrikaans",
+          "enum": [
+            "af"
+          ]
+        },
+        {
+          "title": "Site language: Arabic",
+          "enum": [
+            "ar"
+          ]
+        },
+        {
+          "title": "Site language: Bulgarian",
+          "enum": [
+            "bg"
+          ]
+        },
+        {
+          "title": "Site language: Bengali (Bangla)",
+          "enum": [
+            "bn"
+          ]
+        },
+        {
+          "title": "Site language: Catalan",
+          "enum": [
+            "ca"
+          ]
+        },
+        {
+          "title": "Site language: Czech",
+          "enum": [
+            "cs"
+          ]
+        },
+        {
+          "title": "Site language: Danish",
+          "enum": [
+            "da"
+          ]
+        },
+        {
+          "title": "Site language: German",
+          "enum": [
+            "de"
+          ]
+        },
+        {
+          "title": "Site language: Greek",
+          "enum": [
+            "el"
+          ]
+        },
+        {
+          "title": "Site language: English",
+          "enum": [
+            "en"
+          ]
+        },
+        {
+          "title": "Site language: Esperanto",
+          "enum": [
+            "eo"
+          ]
+        },
+        {
+          "title": "Site language: Spanish",
+          "enum": [
+            "es"
+          ]
+        },
+        {
+          "title": "Site language: Estonian",
+          "enum": [
+            "et"
+          ]
+        },
+        {
+          "title": "Site language: Persian (Farsi)",
+          "enum": [
+            "fa"
+          ]
+        },
+        {
+          "title": "Site language: Finnish",
+          "enum": [
+            "fi"
+          ]
+        },
+        {
+          "title": "Site language: French",
+          "enum": [
+            "fr"
+          ]
+        },
+        {
+          "title": "Site language: Galician",
+          "enum": [
+            "gl"
+          ]
+        },
+        {
+          "title": "Site language: Hebrew",
+          "enum": [
+            "he"
+          ]
+        },
+        {
+          "title": "Site language: Hindi",
+          "enum": [
+            "hi"
+          ]
+        },
+        {
+          "title": "Site language: Croatian",
+          "enum": [
+            "hr"
+          ]
+        },
+        {
+          "title": "Site language: Hungarian",
+          "enum": [
+            "hu"
+          ]
+        },
+        {
+          "title": "Site language: Indonesian",
+          "enum": [
+            "id"
+          ]
+        },
+        {
+          "title": "Site language: Icelandic",
+          "enum": [
+            "is"
+          ]
+        },
+        {
+          "title": "Site language: Italian",
+          "enum": [
+            "it"
+          ]
+        },
+        {
+          "title": "Site language: Japanese",
+          "enum": [
+            "ja"
+          ]
+        },
+        {
+          "title": "Site language: Georgian",
+          "enum": [
+            "ka"
+          ]
+        },
+        {
+          "title": "Site language: Korean",
+          "enum": [
+            "kr"
+          ]
+        },
+        {
+          "title": "Site language: Latvian",
+          "enum": [
+            "lv"
+          ]
+        },
+        {
+          "title": "Site language: Mongolian",
+          "enum": [
+            "mn"
+          ]
+        },
+        {
+          "title": "Site language: Bahasa Malaysia",
+          "enum": [
+            "ms"
+          ]
+        },
+        {
+          "title": "Site language: Burmese",
+          "enum": [
+            "my"
+          ]
+        },
+        {
+          "title": "Site language: Dutch",
+          "enum": [
+            "nl"
+          ]
+        },
+        {
+          "title": "Site language: Norwegian (Nynorsk)",
+          "enum": [
+            "nn"
+          ]
+        },
+        {
+          "title": "Site language: Norwegian",
+          "enum": [
+            "no"
+          ]
+        },
+        {
+          "title": "Site language: Polish",
+          "enum": [
+            "pl"
+          ]
+        },
+        {
+          "title": "Site language: Portuguese",
+          "enum": [
+            "pt"
+          ]
+        },
+        {
+          "title": "Site language: Romanian",
+          "enum": [
+            "ro"
+          ]
+        },
+        {
+          "title": "Site language: Russian",
+          "enum": [
+            "ru"
+          ]
+        },
+        {
+          "title": "Site language: Serbo-Croatian",
+          "enum": [
+            "sh"
+          ]
+        },
+        {
+          "title": "Site language: Sinhalese",
+          "enum": [
+            "si"
+          ]
+        },
+        {
+          "title": "Site language: Slovak",
+          "enum": [
+            "sk"
+          ]
+        },
+        {
+          "title": "Site language: Slovenian",
+          "enum": [
+            "sl"
+          ]
+        },
+        {
+          "title": "Site language: Serbian",
+          "enum": [
+            "sr"
+          ]
+        },
+        {
+          "title": "Site language: Swedish",
+          "enum": [
+            "sv"
+          ]
+        },
+        {
+          "title": "Site language: Thai",
+          "enum": [
+            "th"
+          ]
+        },
+        {
+          "title": "Site language: Turkish",
+          "enum": [
+            "tr"
+          ]
+        },
+        {
+          "title": "Site language: Ukrainian",
+          "enum": [
+            "uk"
+          ]
+        },
+        {
+          "title": "Site language: Vietnamese",
+          "enum": [
+            "vi"
+          ]
+        },
+        {
+          "title": "Site language: Chinese (Simplified)",
+          "enum": [
+            "zh"
+          ]
+        },
+        {
+          "title": "Site language: Chinese (Traditional)",
+          "enum": [
+            "zh-Hant"
+          ]
+        },
+        {
+          "title": "Site language: Chinese (Taiwanese)",
+          "enum": [
+            "zh-TW"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "title": "Feature flags",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "title": "Code annotations",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-annotations",
+            "enum": [
+              "content.code.annotate"
+            ]
+          },
+          {
+            "title": "Linked content tabs",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#linked-content-tabs",
+            "enum": [
+              "content.tabs.link"
+            ]
+          },
+          {
+            "title": "Header hides automatically when scrolling",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#automatic-hiding",
+            "enum": [
+              "header.autohide"
+            ]
+          },
+          {
+            "title": "Navigation expansion",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion",
+            "enum": [
+              "navigation.expand"
+            ]
+          },
+          {
+            "title": "Section index pages",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages",
+            "enum": [
+              "navigation.indexes"
+            ]
+          },
+          {
+            "title": "Instant loading",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-loading",
+            "enum": [
+              "navigation.instant"
+            ]
+          },
+          {
+            "title": "Navigation sections",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-sections",
+            "enum": [
+              "navigation.sections"
+            ]
+          },
+          {
+            "title": "Navigation tabs",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-tabs",
+            "enum": [
+              "navigation.tabs"
+            ]
+          },
+          {
+            "title": "Sticky navigation tabs",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#sticky-navigation-tabs",
+            "enum": [
+              "navigation.tabs.sticky"
+            ]
+          },
+          {
+            "title": "Back-to-top button",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#back-to-top-button",
+            "enum": [
+              "navigation.top"
+            ]
+          },
+          {
+            "title": "Anchor tracking",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-tracking",
+            "enum": [
+              "navigation.tracking"
+            ]
+          },
+          {
+            "title": "Search higlighting",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-highlighting",
+            "enum": [
+              "search.highlight"
+            ]
+          },
+          {
+            "title": "Search sharing",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-sharing",
+            "enum": [
+              "search.share"
+            ]
+          },
+          {
+            "title": "Search suggestions",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-suggestions",
+            "enum": [
+              "search.suggest"
+            ]
+          },
+          {
+            "title": "Integrated table of contents",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#integrated-table-of-contents",
+            "enum": [
+              "toc.integrate"
+            ]
+          }
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "include_search_page": {
+      "title": "Only necessary when installing from git",
+      "markdownDescription": "Must be set to `false`",
+      "enum": [
+        false
+      ]
+    },
+    "search_index_only": {
+      "title": "Only necessary when installing from git",
+      "markdownDescription": "Must be set to `false`",
+      "enum": [
+        true
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ]
+}

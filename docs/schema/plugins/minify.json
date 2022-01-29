@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Minify plugin",
+  "description": "Configuration syntax",
+  "type": "object",
+  "properties": {
+    "minify": {
+      "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin",
+      "type": "object",
+      "dependencies": {
+        "minify_js": [
+          "js_files"
+        ],
+        "minify_css": [
+          "css_files"
+        ]
+      },
+      "properties": {
+        "minify_html": {
+          "description": "Minify HTML files",
+          "type": "boolean"
+        },
+        "minify_js": {
+          "description": "Minify JS files",
+          "type": "boolean"
+        },
+        "minify_css": {
+          "description": "Minify CSS files",
+          "type": "boolean"
+        },
+        "htmlmin_opts": {
+          "description": "Options for HTML minifier",
+          "type": "object"
+        },
+        "js_files": {
+          "description": "List of JS files to minify",
+          "type": "array",
+          "items": {
+            "description": "JS file to minify",
+            "pattern": "\\.js$"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "css_files": {
+          "description": "List of CSS files to minify",
+          "type": "array",
+          "items": {
+            "description": "CSS file to minify",
+            "pattern": "\\.css$"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
