@@ -1,7 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
   "title": "Minify plugin",
-  "description": "Configuration syntax",
   "type": "object",
   "properties": {
     "minify": {
@@ -17,36 +16,47 @@
       },
       "properties": {
         "minify_html": {
-          "description": "Minify HTML files",
-          "type": "boolean"
+          "title": "Minify HTML files",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "boolean",
+          "default": true
         },
         "minify_js": {
-          "description": "Minify JS files",
-          "type": "boolean"
+          "title": "Minify JavaScript files",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "boolean",
+          "default": true
         },
         "minify_css": {
-          "description": "Minify CSS files",
-          "type": "boolean"
+          "title": "Minify CSS files",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "boolean",
+          "default": true
         },
         "htmlmin_opts": {
-          "description": "Options for HTML minifier",
+          "title": "Options for HTML minifier",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
           "type": "object"
         },
         "js_files": {
-          "description": "List of JS files to minify",
+          "title": "JavaScript files to minify",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
           "type": "array",
           "items": {
-            "description": "JS file to minify",
+            "title": "Path to JavaScript file",
+            "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
             "pattern": "\\.js$"
           },
           "uniqueItems": true,
           "minItems": 1
         },
         "css_files": {
-          "description": "List of CSS files to minify",
+          "title": "CSS files to minify",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
           "type": "array",
           "items": {
-            "description": "CSS file to minify",
+            "title": "Path to CSS file",
+            "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
             "pattern": "\\.css$"
           },
           "uniqueItems": true,

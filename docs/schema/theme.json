@@ -16,18 +16,22 @@
         {
           "type": "null"
         }
-      ]
+      ],
+      "default": "material"
     },
     "custom_dir": {
       "title": "Directory with theme overrides",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#setup-and-theme-structure",
-      "type": "string"
+      "type": "string",
+      "default": "overrides"
     },
     "static_templates": {
       "title": "Static templates to render",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#static_templates",
       "type": "array",
       "items": {
+        "title": "Path to HTML file",
+        "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#static_templates",
         "pattern": "\\.html$"
       },
       "uniqueItems": true,
@@ -343,7 +347,39 @@
             "zh-TW"
           ]
         }
+      ],
+      "default": "en"
+    },
+    "direction": {
+      "title": "Directionality",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#directionality",
+      "enum": [
+        "ltr",
+        "rtl"
       ]
+    },
+    "favicon": {
+      "title": "Favicon",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#favicon",
+      "pattern": "\\.(ico|png|svg|jpe?g)$"
+    },
+    "logo": {
+      "title": "Logo (Image)",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
+      "pattern": "\\.(png|svg|jpe?g)$"
+    },
+    "icon": {
+      "title": "Icons",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/",
+      "type": "object",
+      "properties": {
+        "logo": {
+          "title": "Logo (Icon)",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
+          "type": "string",
+          "default": "material/library"
+        }
+      }
     },
     "features": {
       "title": "Feature flags",
@@ -461,6 +497,127 @@
       "uniqueItems": true,
       "minItems": 1
     },
+    "palette": {
+      "oneOf": [
+        {
+          "title": "Color palette",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/",
+          "type": "object",
+          "properties": {
+            "scheme": {
+              "$ref": "#/definitions/scheme"
+            },
+            "primary": {
+              "$ref": "#/definitions/primary"
+            },
+            "accent": {
+              "$ref": "#/definitions/accent"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "title": "Color palette",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "scheme": {
+                "$ref": "#/definitions/scheme"
+              },
+              "primary": {
+                "$ref": "#/definitions/primary"
+              },
+              "accent": {
+                "$ref": "#/definitions/accent"
+              },
+              "media": {
+                "title": "System preference",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#system-preference",
+                "oneOf": [
+                  {
+                    "enum": [
+                      "\"(prefers-color-scheme: light)\"",
+                      "\"(prefers-color-scheme: dark)\""
+                    ]
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "toggle": {
+                "title": "Color palette toggle",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-palette-toggle",
+                "properties": {
+                  "icon": {
+                    "title": "Color palette toggle icon",
+                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#toggle-icon",
+                    "type": "string"
+                  },
+                  "name": {
+                    "title": "Color palette toggle name",
+                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#toggle-name",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "icon",
+                  "name"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "toggle"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      ],
+      "default": {
+        "scheme": "default",
+        "primary": "indigo",
+        "accent": "indigo"
+      }
+    },
+    "font": {
+      "oneOf": [
+        {
+          "title": "Google Fonts",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/",
+          "properties": {
+            "text": {
+              "title": "Regular font",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/#regular-font",
+              "type": "string",
+              "default": "Roboto"
+            },
+            "code": {
+              "title": "Monospaced font",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/#monospaced-font",
+              "type": "string",
+              "default": "Roboto Mono"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "text",
+            "code"
+          ]
+        },
+        {
+          "title": "Disable Google Fonts",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/#autoloading",
+          "enum": [
+            false
+          ]
+        }
+      ]
+    },
     "include_search_page": {
       "title": "Only necessary when installing from git",
       "markdownDescription": "Must be set to `false`",
@@ -479,5 +636,76 @@
   "additionalProperties": false,
   "required": [
     "name"
-  ]
+  ],
+  "definitions": {
+    "scheme": {
+      "title": "Color scheme",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-scheme",
+      "oneOf": [
+        {
+          "enum": [
+            "default",
+            "slate"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "primary": {
+      "title": "Primary color",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#primary-color",
+      "enum": [
+        "red",
+        "pink",
+        "purple",
+        "deep purple",
+        "indigo",
+        "blue",
+        "light blue",
+        "cyan",
+        "teal",
+        "green",
+        "light green",
+        "lime",
+        "yellow",
+        "amber",
+        "orange",
+        "deep orange",
+        "brown",
+        "grey",
+        "blue grey",
+        "black",
+        "white"
+      ]
+    },
+    "accent": {
+      "title": "Accent color",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#accent-color",
+      "enum": [
+        "red",
+        "pink",
+        "purple",
+        "deep purple",
+        "indigo",
+        "blue",
+        "light blue",
+        "cyan",
+        "teal",
+        "green",
+        "light green",
+        "lime",
+        "yellow",
+        "amber",
+        "orange",
+        "deep orange",
+        "brown",
+        "grey",
+        "blue-grey",
+        "black",
+        "white"
+      ]
+    }
+  }
 }

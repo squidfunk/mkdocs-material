@@ -83,11 +83,12 @@ theme:
     code: Roboto Mono
   favicon: assets/favicon.png
   icon:
-    logo: logo
+    logo: material/library
 
 # Plugins
 plugins:
-  - search
+  - search:
+      lang: en
   - redirects:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
@@ -158,9 +159,11 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Home: index.md
+  - Home: index.mds
   - Getting started:
+    - abcs.md
     - Installation: getting-started.md
+    - Installation: getting-started.mds
     - Creating your site: creating-your-site.md
     - Publishing your site: publishing-your-site.md
     - Customization: customization.md

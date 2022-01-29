@@ -1,7 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
   "title": "Built-in search plugin",
-  "description": "Configuration syntax",
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/",
@@ -18,7 +17,9 @@
           "properties": {
             "lang": {
               "oneOf": [
-                { "$ref": "#/definitions/lang" },
+                {
+                  "$ref": "#/definitions/lang"
+                },
                 {
                   "type": "array",
                   "items": {
@@ -27,9 +28,11 @@
                   "uniqueItems": true,
                   "minItems": 1
                 }
-              ]
+              ],
+              "default": "en"
             },
             "separator": {
+              "title": "Separator for indexing and query tokenization",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-separator",
               "type": "string"
             }
@@ -42,118 +45,119 @@
   ],
   "definitions": {
     "lang": {
+      "title": "Site search language",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-lang",
       "oneOf": [
         {
-          "description": "Arabic",
+          "title": "Site search language: Arabic",
           "enum": [
             "ar"
           ]
         },
         {
-          "description": "Danish",
+          "title": "Site search language: Danish",
           "enum": [
             "da"
           ]
         },
         {
-          "description": "German",
+          "title": "Site search language: German",
           "enum": [
             "de"
           ]
         },
         {
-          "description": "Dutch",
+          "title": "Site search language: Dutch",
           "enum": [
             "du"
           ]
         },
         {
-          "description": "English",
+          "title": "Site search language: English",
           "enum": [
             "en"
           ]
         },
         {
-          "description": "Spanish",
+          "title": "Site search language: Spanish",
           "enum": [
             "es"
           ]
         },
         {
-          "description": "Finnish",
+          "title": "Site search language: Finnish",
           "enum": [
             "fi"
           ]
         },
         {
-          "description": "French",
+          "title": "Site search language: French",
           "enum": [
             "fr"
           ]
         },
         {
-          "description": "Hungarian",
+          "title": "Site search language: Hungarian",
           "enum": [
             "hu"
           ]
         },
         {
-          "description": "Italian",
+          "title": "Site search language: Italian",
           "enum": [
             "it"
           ]
         },
         {
-          "description": "Japanese",
+          "title": "Site search language: Japanese",
           "enum": [
             "ja"
           ]
         },
         {
-          "description": "Norwegian",
+          "title": "Site search language: Norwegian",
           "enum": [
             "no"
           ]
         },
         {
-          "description": "Portuguese",
+          "title": "Site search language: Portuguese",
           "enum": [
             "pt"
           ]
         },
         {
-          "description": "Romanian",
+          "title": "Site search language: Romanian",
           "enum": [
             "ro"
           ]
         },
         {
-          "description": "Russian",
+          "title": "Site search language: Russian",
           "enum": [
             "ru"
           ]
         },
         {
-          "description": "Swedish",
+          "title": "Site search language: Swedish",
           "enum": [
             "sv"
           ]
         },
         {
-          "description": "Thai",
+          "title": "Site search language: Thai",
           "enum": [
             "th"
           ]
         },
         {
-          "description": "Turkish",
+          "title": "Site search language: Turkish",
           "enum": [
             "tr"
           ]
         },
         {
-          "description": "Vietnamese",
+          "title": "Site search language: Vietnamese",
           "enum": [
             "vi"
           ]

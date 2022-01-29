@@ -92,7 +92,8 @@
                         "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-permalink",
                         "type": "string"
                       }
-                    ]
+                    ],
+                    "default": true
                   },
                   "permalink_title": {
                     "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-permalink-title",
@@ -401,7 +402,7 @@
       {
         "oneOf": [
           {
-            "title": "˘ark – Python Markdown Extensions",
+            "title": "Mark – Python Markdown Extensions",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde",
             "enum": [
               "pymdownx.mark"
@@ -411,7 +412,7 @@
             "type": "object",
             "properties": {
               "pymdownx.mark": {
-                "title": "˘ark – Python Markdown Extensions",
+                "title": "Mark – Python Markdown Extensions",
                 "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde",
                 "type": "object",
                 "properties": {
