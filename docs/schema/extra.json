@@ -59,10 +59,11 @@
               "default": "Was this page helpful?"
             },
             "ratings": {
-              "title": "Feedback rating",
+              "title": "Feedback ratings",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#was-this-page-helpful",
               "type": "array",
               "items": {
+                "title": "Feedback rating",
                 "type": "object",
                 "properties": {
                   "icon": {
@@ -173,6 +174,7 @@
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#social-links",
       "type": "array",
       "items": {
+        "title": "Social link",
         "type": "object",
         "properties": {
           "icon": {
