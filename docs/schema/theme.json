@@ -364,7 +364,7 @@
       "pattern": "\\.(ico|png|svg|jpe?g)$"
     },
     "logo": {
-      "title": "Logo (Image)",
+      "title": "Logo",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
       "pattern": "\\.(png|svg|jpe?g)$"
     },
@@ -374,10 +374,16 @@
       "type": "object",
       "properties": {
         "logo": {
-          "title": "Logo (Icon)",
+          "title": "Logo icon",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
           "type": "string",
           "default": "material/library"
+        },
+        "repo": {
+          "title": "Repository icon",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#repository-icon",
+          "type": "string",
+          "default": "fontawesome/brands/git-alt"
         }
       }
     },
@@ -388,8 +394,15 @@
       "items": {
         "oneOf": [
           {
+            "title": "Mark as read",
+            "markdownDescription": "",
+            "enum": [
+              "announce.dismiss"
+            ]
+          },
+          {
             "title": "Code annotations",
-            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-annotations",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#mark-as-read",
             "enum": [
               "content.code.annotate"
             ]

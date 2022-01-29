@@ -112,6 +112,9 @@
     "markdown_extensions": {
       "$ref": "schema/extensions.json"
     },
+    "extra": {
+      "$ref": "schema/extra.json"
+    },
     "nav": {
       "$ref": "schema/nav.json"
     }

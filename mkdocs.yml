@@ -87,8 +87,7 @@ theme:
 
 # Plugins
 plugins:
-  - search:
-      lang: en
+  - search
   - redirects:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
