@@ -68,11 +68,12 @@ The following configuration options are supported:
 
     - `ar` – Arabic
     - `da` – Danish
+    - `de` – German
     - `du` – Dutch
     - `en` – English
+    - `es` – Spanish
     - `fi` – Finnish
     - `fr` – French
-    - `de` – German
     - `hu` – Hungarian
     - `it` – Italian
     - `ja` – Japanese
@@ -80,7 +81,6 @@ The following configuration options are supported:
     - `pt` – Portuguese
     - `ro` – Romanian
     - `ru` – Russian
-    - `es` – Spanish
     - `sv` – Swedish
     - `th` – Thai
     - `tr` – Turkish

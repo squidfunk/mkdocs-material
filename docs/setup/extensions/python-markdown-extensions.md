@@ -415,7 +415,7 @@ The following configuration options are supported:
     copying a code block to the clipboard. Thus, the usage of either `table`
     or `pymdownx-inline` is recommended.
 
-`anchor_linenums`{ #anchor-linenums }
+`anchor_linenums`{ #highlight-anchor-linenums }
 
 :   [:octicons-tag-24: 8.1.0][anchor_linenums support] · :octicons-milestone-24:
     Default: `false` – If a code blocks contains line numbers, enabling this
