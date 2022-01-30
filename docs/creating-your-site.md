@@ -96,7 +96,7 @@ slightly different:
 
     In order to minimize friction and maximize productivity, Material for MkDocs 
     provides its own [schema.json] for `mkdocs.yml`. If your editor supports
-    YAML schema validation, it's definitely recommdended to set it up:
+    YAML schema validation, it's definitely recommended to set it up:
 
     === "Visual Studio Code"
 
