@@ -103,6 +103,24 @@
       "uniqueItems": true,
       "minItems": 1
     },
+    "strict": {
+      "title": "Strict mode",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#strict",
+      "type": "boolean",
+      "default": false
+    },
+    "remote_branch": {
+      "title": "Remote branch to deploy to",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#remote_branch",
+      "type": "string",
+      "default": "gh-pages"
+    },
+    "remote_name": {
+      "title": "Remote origin to deploy to",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#remote_name",
+      "type": "string",
+      "default": "origin"
+    },
     "theme": {
       "$ref": "schema/theme.json"
     },
@@ -119,5 +137,19 @@
       "$ref": "schema/nav.json"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "defaultSnippets": [
+    {
+      "label": "site_author",
+      "body": "${1:Jane Doe}"
+    },
+    {
+      "label": "repo_url",
+      "body": "repo_url: https://github.com/${1:user}/${2:repo}"
+    },
+    {
+      "label": "copyright",
+      "body": "copyright: Copyright &copy; 2022 ${1:Jane Doe}"
+    }
+  ]
 }

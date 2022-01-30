@@ -22,7 +22,12 @@
     "custom_dir": {
       "title": "Directory with theme overrides",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#setup-and-theme-structure",
-      "type": "string"
+      "type": "string",
+      "defaultSnippets": [
+        {
+          "body": "${1:overrides}"
+        }
+      ]
     },
     "static_templates": {
       "title": "Static templates to render",
@@ -360,12 +365,22 @@
     "favicon": {
       "title": "Favicon",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#favicon",
-      "pattern": "\\.(ico|png|svg|jpe?g)$"
+      "pattern": "\\.(ico|png|svg|jpe?g)$",
+      "defaultSnippets": [
+        {
+          "body": "${1}.png"
+        }
+      ]
     },
     "logo": {
       "title": "Logo",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
-      "pattern": "\\.(png|svg|jpe?g)$"
+      "pattern": "\\.(png|svg|jpe?g)$",
+      "defaultSnippets": [
+        {
+          "body": "${1}.png"
+        }
+      ]
     },
     "icon": {
       "title": "Icons",
@@ -373,16 +388,10 @@
       "type": "object",
       "properties": {
         "logo": {
-          "title": "Logo icon",
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
-          "type": "string",
-          "default": "material/library"
+          "$ref": "#/definitions/icon"
         },
         "repo": {
-          "title": "Repository icon",
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
-          "type": "string",
-          "default": "fontawesome/brands/git-alt"
+          "$ref": "#/definitions/icon"
         },
         "admonition": {
           "title": "Admonition icon",
@@ -390,81 +399,106 @@
           "type": "object",
           "properties": {
             "note": {
-              "title": "Admonition note icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/pencil"
+              "$ref": "#/definitions/icon"
             },
             "abstract": {
-              "title": "Admonition abstract icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/clipboard-text"
+              "$ref": "#/definitions/icon"
             },
             "info": {
-              "title": "Admonition info icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/information"
+              "$ref": "#/definitions/icon"
             },
             "tip": {
-              "title": "Admonition tip icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/fire"
+              "$ref": "#/definitions/icon"
             },
             "success": {
-              "title": "Admonition success icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/check-bold"
+              "$ref": "#/definitions/icon"
             },
             "question": {
-              "title": "Admonition question icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/help-circle"
+              "$ref": "#/definitions/icon"
             },
             "warning": {
-              "title": "Admonition warning icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/alert"
+              "$ref": "#/definitions/icon"
             },
             "failure": {
-              "title": "Admonition failure icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/close-thick"
+              "$ref": "#/definitions/icon"
             },
             "danger": {
-              "title": "Admonition danger icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/lightning-bolt"
+              "$ref": "#/definitions/icon"
             },
             "bug": {
-              "title": "Admonition bug icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/bug"
+              "$ref": "#/definitions/icon"
             },
             "example": {
-              "title": "Admonition example icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/format-list-numbered"
+              "$ref": "#/definitions/icon"
             },
             "quote": {
-              "title": "Admonition quote icon",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
-              "type": "string",
-              "default": "material/format-quote-close"
+              "$ref": "#/definitions/icon"
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "defaultSnippets": [
+            {
+              "label": "note",
+              "body": "note: ${1:material/pencil}"
+            },
+            {
+              "label": "abstract",
+              "body": "abstract: ${1:material/clipboard-text}"
+            },
+            {
+              "label": "info",
+              "body": "info: ${1:material/information}"
+            },
+            {
+              "label": "tip",
+              "body": "tip: ${1:material/fire}"
+            },
+            {
+              "label": "success",
+              "body": "success: ${1:material/check-bold}"
+            },
+            {
+              "label": "question",
+              "body": "question: ${1:material/help-circle}"
+            },
+            {
+              "label": "warning",
+              "body": "warning: ${1:material/alert}"
+            },
+            {
+              "label": "failure",
+              "body": "failure: ${1:material/close-thick}"
+            },
+            {
+              "label": "danger",
+              "body": "danger: ${1:material/lightning-bolt}"
+            },
+            {
+              "label": "bug",
+              "body": "bug: ${1:material/bug}"
+            },
+            {
+              "label": "example",
+              "body": "example: ${1:material/format-list-numbered}"
+            },
+            {
+              "label": "quote",
+              "body": "quote: ${1:material/format-quote-close}"
+            }
+          ]
         }
-      }
+      },
+      "additionalProperties": false,
+      "defaultSnippets": [
+        {
+          "label": "logo",
+          "body": "logo: ${1:material/library}"
+        },
+        {
+          "label": "repo",
+          "body": "repo: ${1:fontawesome/brands/git-alt}"
+        }
+      ]
     },
     "features": {
       "title": "Feature flags",
@@ -474,14 +508,14 @@
         "oneOf": [
           {
             "title": "Mark as read",
-            "markdownDescription": "",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#mark-as-read",
             "enum": [
               "announce.dismiss"
             ]
           },
           {
             "title": "Code annotations",
-            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#mark-as-read",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-annotations",
             "enum": [
               "content.code.annotate"
             ]
@@ -625,10 +659,11 @@
                 "$ref": "#/definitions/accent"
               },
               "media": {
-                "title": "System preference",
-                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#system-preference",
                 "oneOf": [
                   {
+                    "title": "System preference",
+                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#system-preference",
+                    "type": "string",
                     "enum": [
                       "\"(prefers-color-scheme: light)\"",
                       "\"(prefers-color-scheme: dark)\""
@@ -636,6 +671,12 @@
                   },
                   {
                     "type": "string"
+                  }
+                ],
+                "defaultSnippets": [
+                  {
+                    "label": "\"(prefers-color-scheme: light)\"",
+                    "body": "\"(prefers-color-scheme: ${1:light})\""
                   }
                 ]
               },
@@ -702,6 +743,14 @@
             false
           ]
         }
+      ],
+      "defaultSnippets": [
+        {
+          "body": {
+            "text": "${1:Roboto}",
+            "code": "${2:Roboto Mono}"
+          }
+        }
       ]
     },
     "include_search_page": {
@@ -736,6 +785,12 @@
         },
         {
           "type": "string"
+        }
+      ],
+      "defaultSnippets": [
+        {
+          "label": "default",
+          "body": "${1:default}"
         }
       ]
     },
@@ -788,9 +843,20 @@
         "deep orange",
         "brown",
         "grey",
-        "blue-grey",
+        "blue grey",
         "black",
         "white"
+      ]
+    },
+    "icon": {
+      "oneOf": [
+        {
+          "$ref": "assets/icons.json"
+        },
+        {
+          "title": "Custom icon",
+          "type": "string"
+        }
       ]
     }
   }

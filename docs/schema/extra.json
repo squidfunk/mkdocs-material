@@ -67,9 +67,7 @@
                 "type": "object",
                 "properties": {
                   "icon": {
-                    "title": "Feedback rating icon",
-                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#feedback-rating-icon",
-                    "type": "string"
+                    "$ref": "#/definitions/icon"
                   },
                   "name": {
                     "title": "Feedback rating name",
@@ -107,6 +105,30 @@
       "required": [
         "provider",
         "property"
+      ],
+      "defaultSnippets": [
+        {
+          "label": "feedback",
+          "body": {
+            "feedback": {
+              "title": "${1:Was this page helpful}",
+              "ratings": [
+                {
+                  "icon": "${2:material/emoticon-happy-outline}",
+                  "name": "${3:This page was helpful}",
+                  "data": 1,
+                  "note": "${4:Thanks for your feedback!}"
+                },
+                {
+                  "icon": "${5:material/emoticon-sad-outline}",
+                  "name": "${6:This page could be improved}",
+                  "data": 0,
+                  "note": "${7:Thanks for your feedback!}"
+                }
+              ]
+            }
+          }
+        }
       ]
     },
     "consent": {
@@ -160,7 +182,18 @@
               ]
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "defaultSnippets": [
+            {
+              "label": "analytics",
+              "body": {
+                "analytics": {
+                  "name": "Google Analytics",
+                  "checked": true
+                }
+              }
+            }
+          ]
         }
       },
       "additionalProperties": false,
@@ -178,9 +211,7 @@
         "type": "object",
         "properties": {
           "icon": {
-            "title": "Social link icon",
-            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#social-icon",
-            "type": "string"
+            "$ref": "#/definitions/icon"
           },
           "link": {
             "title": "Social link",
@@ -259,5 +290,29 @@
       "default": true
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "definitions": {
+    "icon": {
+      "oneOf": [
+        {
+          "$ref": "assets/icons.json"
+        },
+        {
+          "title": "Custom icon",
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "defaultSnippets": [
+    {
+      "label": "analytics",
+      "body": {
+        "analytics": {
+          "provider": "${1:google}",
+          "property": "${2:UA-XXXXXXXX-X}"
+        }
+      }
+    }
+  ]
 }

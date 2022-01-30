@@ -297,6 +297,7 @@ const fonts$ = of(Object.keys(fonts))
       "$schema": "https://json-schema.org/draft-07/schema",
       "title": "Google Fonts",
       "markdownDescription": "https://fonts.google.com/",
+      "type": "string",
       "oneOf": items.map(item => ({
         "title": item,
         "markdownDescription": `https://fonts.google.com/specimen/${
@@ -313,8 +314,25 @@ const fonts$ = of(Object.keys(fonts))
     ))
   )
 
+const icons2$ = icons$
+  .pipe(
+    map(icons => ({
+      "$schema": "https://json-schema.org/draft-07/schema",
+      "title": "Icon",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search",
+      "type": "string",
+      "enum": [...icons.values()].map(item => item.replace(".svg", ""))
+    })),
+    switchMap(data => write(
+      "docs/schema/assets/icons.json",
+      JSON.stringify(data, undefined, 2)
+    ))
+  )
+
+
+
 /* Build schema */
-const schema$ = merge(fonts$)
+const schema$ = merge(fonts$, icons2$)
 
 /* ----------------------------------------------------------------------------
  * Program

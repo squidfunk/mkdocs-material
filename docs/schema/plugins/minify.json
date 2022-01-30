@@ -24,14 +24,12 @@
         "minify_js": {
           "title": "Minify JavaScript files",
           "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
-          "type": "boolean",
-          "default": true
+          "type": "boolean"
         },
         "minify_css": {
           "title": "Minify CSS files",
           "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
-          "type": "boolean",
-          "default": true
+          "type": "boolean"
         },
         "htmlmin_opts": {
           "title": "Options for HTML minifier",

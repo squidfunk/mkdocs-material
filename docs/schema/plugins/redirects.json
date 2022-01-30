@@ -27,6 +27,20 @@
               ]
             }
           },
+          "defaultSnippets": [
+            {
+              "label": "Internal redirect",
+              "body": {
+                "${1:from}.md": "${2:to}.md"
+              }
+            },
+            {
+              "label": "External redirect",
+              "body": {
+                "${1:from}.md": "https://${2:to.url}"
+              }
+            }
+          ],
           "additionalProperties": false
         }
       },

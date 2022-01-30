@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft-07/schema",
   "title": "Google Fonts",
   "markdownDescription": "https://fonts.google.com/",
+  "type": "string",
   "oneOf": [
     {
       "title": "ABeeZee",
