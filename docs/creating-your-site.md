@@ -95,8 +95,8 @@ slightly different:
 ???+ tip "Recommended: [configuration validation and auto-complete]"
 
     In order to minimize friction and maximize productivity, Material for MkDocs 
-    provides its own [schema.json][^1] for `mkdocs.yml`.[^2] If your editor
-    supports YAML schema validation, it's definitely recommended to set it up:
+    provides its own [schema.json][^1] for `mkdocs.yml`. If your editor supports
+    YAML schema validation, it's definitely recommended to set it up:
 
     === "Visual Studio Code"
 
