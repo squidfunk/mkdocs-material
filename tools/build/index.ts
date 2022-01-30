@@ -295,7 +295,7 @@ const schema$ = merge(
   /* Compute fonts schema */
   defer(() => import("google-fonts-complete"))
     .pipe(
-      map(Object.keys),
+      map(({ default: fonts }) => Object.keys(fonts)),
       map(fonts => ({
         "$schema": "https://json-schema.org/draft-07/schema",
         "title": "Google Fonts",
