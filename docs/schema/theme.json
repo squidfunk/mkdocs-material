@@ -383,6 +383,86 @@
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
           "type": "string",
           "default": "fontawesome/brands/git-alt"
+        },
+        "admonition": {
+          "title": "Admonition icon",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+          "type": "object",
+          "properties": {
+            "note": {
+              "title": "Admonition note icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/pencil"
+            },
+            "abstract": {
+              "title": "Admonition abstract icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/clipboard-text"
+            },
+            "info": {
+              "title": "Admonition info icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/information"
+            },
+            "tip": {
+              "title": "Admonition tip icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/fire"
+            },
+            "success": {
+              "title": "Admonition success icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/check-bold"
+            },
+            "question": {
+              "title": "Admonition question icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/help-circle"
+            },
+            "warning": {
+              "title": "Admonition warning icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/alert"
+            },
+            "failure": {
+              "title": "Admonition failure icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/close-thick"
+            },
+            "danger": {
+              "title": "Admonition danger icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/lightning-bolt"
+            },
+            "bug": {
+              "title": "Admonition bug icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/bug"
+            },
+            "example": {
+              "title": "Admonition example icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/format-list-numbered"
+            },
+            "quote": {
+              "title": "Admonition quote icon",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+              "type": "string",
+              "default": "material/format-quote-close"
+            }
+          },
+          "additionalProperties": false
         }
       }
     },
