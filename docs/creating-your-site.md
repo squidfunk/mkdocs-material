@@ -92,7 +92,7 @@ slightly different:
   [mkdocs_theme.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
   [custom theme guide]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 
-??? tip "Recommended: configuration validation and auto-complete"
+???+ tip "Recommended: configuration validation and auto-complete"
 
     In order to minimize friction and maximize productivity, Material for MkDocs 
     provides its own [schema.json] for `mkdocs.yml`. If your editor supports
