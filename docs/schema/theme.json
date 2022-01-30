@@ -685,9 +685,7 @@
                 "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-palette-toggle",
                 "properties": {
                   "icon": {
-                    "title": "Color palette toggle icon",
-                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#toggle-icon",
-                    "type": "string"
+                    "$ref": "#/definitions/icon"
                   },
                   "name": {
                     "title": "Color palette toggle name",
