@@ -64,13 +64,6 @@
       {
         "oneOf": [
           {
-            "title": "Table Of Contents – Python Markdown",
-            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents",
-            "enum": [
-              "toc"
-            ]
-          },
-          {
             "type": "object",
             "properties": {
               "toc": {
@@ -105,6 +98,7 @@
                   },
                   "toc_depth": {
                     "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-depth",
+                    "type": "number",
                     "enum": [
                       0,
                       1,
@@ -116,22 +110,28 @@
                     ]
                   }
                 },
-                "additionalProperties": false
+                "additionalProperties": false,
+                "defaultSnippets": [
+                  {
+                    "label": "permalink",
+                    "body": "permalink: true"
+                  }
+                ]
               }
             },
             "additionalProperties": false
+          },
+          {
+            "title": "Table Of Contents – Python Markdown",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents",
+            "enum": [
+              "toc"
+            ]
           }
         ]
       },
       {
         "oneOf": [
-          {
-            "title": "Arithmatex – Python Markdown Extensions",
-            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#arithmatex",
-            "enum": [
-              "pymdownx.arithmatex"
-            ]
-          },
           {
             "type": "object",
             "properties": {
@@ -150,18 +150,18 @@
               }
             },
             "additionalProperties": false
+          },
+          {
+            "title": "Arithmatex – Python Markdown Extensions",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#arithmatex",
+            "enum": [
+              "pymdownx.arithmatex"
+            ]
           }
         ]
       },
       {
         "oneOf": [
-          {
-            "title": "BetterEm – Python Markdown Extensions",
-            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#betterem",
-            "enum": [
-              "pymdownx.betterem"
-            ]
-          },
           {
             "type": "object",
             "properties": {
@@ -172,18 +172,27 @@
                 "properties": {
                   "smart_enable": {
                     "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/betterem/#options",
+                    "type": "string",
                     "enum": [
                       "all",
                       "asterisk",
                       "underscore",
                       "none"
-                    ]
+                    ],
+                    "default": "all"
                   }
                 },
                 "additionalProperties": false
               }
             },
             "additionalProperties": false
+          },
+          {
+            "title": "BetterEm – Python Markdown Extensions",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#betterem",
+            "enum": [
+              "pymdownx.betterem"
+            ]
           }
         ]
       },
@@ -277,11 +286,13 @@
             "properties": {
               "emoji_generator": {
                 "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/emoji/#options",
-                "type": "string"
+                "type": "string",
+                "default": "!!python/name:materialx.emoji.to_svg"
               },
               "emoji_index": {
                 "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/emoji/#options",
-                "type": "string"
+                "type": "string",
+                "default": "!!python/name:materialx.emoji.twemoji"
               },
               "options": {
                 "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#custom-icons",
@@ -395,10 +406,15 @@
               },
               "repo_url_shorthand": {
                 "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
-                "type": "boolean"
+                "type": "boolean",
+                "default": true
               }
             },
-            "additionalProperties": false
+            "additionalProperties": false,
+            "required": [
+              "user",
+              "repo"
+            ]
           }
         },
         "additionalProperties": false
@@ -595,9 +611,11 @@
             "properties": {
               "alternate_style": {
                 "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tabbed-alternate-style",
+                "type": "boolean",
                 "enum": [
                   true
-                ]
+                ],
+                "default": true
               }
             },
             "additionalProperties": false,
@@ -618,7 +636,8 @@
             "properties": {
               "custom_checkbox": {
                 "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tasklist-custom-checkbox",
-                "type": "boolean"
+                "type": "boolean",
+                "default": true
               },
               "clickable_checkbox": {
                 "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tasklist-clickable-checkbox",
