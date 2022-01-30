@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+import fonts from "google-fonts-complete"
 import { minify as minhtml } from "html-minifier"
 import * as path from "path"
 import {
@@ -287,6 +288,34 @@ const index$ = zip(icons$, emojis$)
     ))
   )
 
+/* ------------------------------------------------------------------------- */
+
+/* Compute font schema */
+const fonts$ = of(Object.keys(fonts))
+  .pipe(
+    map(items => ({
+      "$schema": "https://json-schema.org/draft-07/schema",
+      "title": "Google Fonts",
+      "markdownDescription": "https://fonts.google.com/",
+      "oneOf": items.map(item => ({
+        "title": item,
+        "markdownDescription": `https://fonts.google.com/specimen/${
+          item.replace(/\s+/g, "+")
+        }`,
+        "enum": [
+          item
+        ],
+      }))
+    })),
+    switchMap(data => write(
+      "docs/schema/assets/fonts.json",
+      JSON.stringify(data, undefined, 2)
+    ))
+  )
+
+/* Build schema */
+const schema$ = merge(fonts$)
+
 /* ----------------------------------------------------------------------------
  * Program
  * ------------------------------------------------------------------------- */
@@ -295,7 +324,7 @@ const index$ = zip(icons$, emojis$)
 const build$ =
   process.argv.includes("--dirty")
     ? templates$
-    : concat(assets$, merge(templates$, index$))
+    : concat(assets$, merge(templates$, index$, schema$))
 
 /* Let's get rolling */
 build$.subscribe()

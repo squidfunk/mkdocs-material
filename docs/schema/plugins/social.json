@@ -43,10 +43,7 @@
               ]
             },
             "cards_font": {
-              "title": "Social card font",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-font",
-              "type": "string",
-              "default": "Roboto"
+              "$ref": "../assets/fonts.json"
             },
             "cards_directory": {
               "title": "Social card directory",

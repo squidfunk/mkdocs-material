@@ -603,16 +603,10 @@
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/",
           "properties": {
             "text": {
-              "title": "Regular font",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/#regular-font",
-              "type": "string",
-              "default": "Roboto"
+              "$ref": "assets/fonts.json"
             },
             "code": {
-              "title": "Monospaced font",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/#monospaced-font",
-              "type": "string",
-              "default": "Roboto Mono"
+              "$ref": "assets/fonts.json"
             }
           },
           "additionalProperties": false,

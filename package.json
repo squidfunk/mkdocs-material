@@ -75,6 +75,7 @@
     "eslint-plugin-no-null": "^1.0.2",
     "github-types": "^1.0.0",
     "gitlab": "^14.2.2",
+    "google-fonts-complete": "^2.1.1",
     "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
