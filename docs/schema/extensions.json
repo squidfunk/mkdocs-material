@@ -142,7 +142,8 @@
                 "properties": {
                   "generic": {
                     "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/#options",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": true
                   }
                 },
                 "additionalProperties": false
@@ -205,15 +206,18 @@
                 "properties": {
                   "smart_insert": {
                     "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/caret/#options",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": true
                   },
                   "insert": {
                     "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/caret/#options",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": true
                   },
                   "superscript": {
                     "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/caret/#options",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": true
                   }
                 },
                 "additionalProperties": false
