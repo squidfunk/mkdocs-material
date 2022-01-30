@@ -92,6 +92,41 @@ slightly different:
   [mkdocs_theme.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
   [custom theme guide]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 
+??? tip "Recommended: configuration validation and auto-complete"
+
+    In order to minimize friction and maximize productivity, Material for MkDocs 
+    provides its own [schema.json] for `mkdocs.yml`. If your editor supports
+    YAML schema validation, it's definitely recommdended to set it up:
+
+    === "Visual Studio Code"
+
+        1.  Install [`vscode-yaml`][vscode-yaml] for YAML language support.
+        2.  Add the schema under the `yaml.schemas` key in your user or
+            workspace [`settings.json`][settings.json]:
+
+            ``` json
+            {
+              "yaml.schemas": {
+                "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+              }
+            }
+            ```
+
+    === "Other"
+
+        1.  Ensure your editor of choice has support for YAML schema validation.
+        2.  Add the following lines at the top of `mkdocs.yml`:
+
+            ``` yaml
+            # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+            ```
+
+
+  [schema.json]: schema.json
+  [vscode-yaml]: https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
+  [settings.json]: https://code.visualstudio.com/docs/getstarted/settings
+  [LSP-yaml]: https://github.com/sublimelsp/LSP-yaml
+
 ### Advanced configuration
 
 Material for MkDocs comes with many configuration options. The setup section
