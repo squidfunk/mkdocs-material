@@ -516,13 +516,6 @@
       {
         "oneOf": [
           {
-            "title": "Snippets – Python Markdown Extensions",
-            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#snippets",
-            "enum": [
-              "pymdownx.snippets"
-            ]
-          },
-          {
             "type": "object",
             "properties": {
               "pymdownx.snippets": {
@@ -543,12 +536,24 @@
                     },
                     "uniqueItems": true,
                     "minItems": 1
+                  },
+                  "check_paths": {
+                    "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                    "type": "boolean",
+                    "default": true
                   }
                 },
                 "additionalProperties": false
               }
             },
             "additionalProperties": false
+          },
+          {
+            "title": "Snippets – Python Markdown Extensions",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#snippets",
+            "enum": [
+              "pymdownx.snippets"
+            ]
           }
         ]
       },
