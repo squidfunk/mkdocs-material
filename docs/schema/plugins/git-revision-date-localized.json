@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Git revision date plugin with localization support",
+  "oneOf": [
+    {
+      "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/",
+      "enum": [
+        "git-revision-date-localized"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "git-revision-date-localized": {
+          "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Date display format",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/#type",
+              "type": "string",
+              "enum": [
+                "date",
+                "datetime",
+                "iso_date",
+                "iso_datetime",
+                "timeago"
+              ],
+              "default": "date"
+            },
+            "timezone": {
+              "title": "Date timezone",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/#timezone",
+              "type": "string"
+            },
+            "locale": {
+              "title": "Date locale",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/#locale",
+              "type": "string"
+            },
+            "fallback_to_build_date": {
+              "title": "Use build date when git is not available",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/#fallback_to_build_date",
+              "type": "boolean",
+              "default": false
+            },
+            "enable_creation_date": {
+              "title": "Enable support for creation date",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/#enable_creation_date",
+              "type": "boolean",
+              "default": false
+            },
+            "exclude": {
+              "title": "List of Markdown file patterns",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/#exclude",
+              "type": "array",
+              "items": {
+                "pattern": "(\\*|\\.md)$"
+              }
+            },
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/#enabled",
+              "type": "boolean",
+              "default": true
+            }
+          },
+          "additionalProperties": false,
+          "defaultSnippets": [
+            {
+              "label": "type",
+              "body": "type: date"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

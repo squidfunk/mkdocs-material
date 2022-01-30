@@ -6,6 +6,12 @@
   "items": {
     "oneOf": [
       {
+        "$ref": "plugins/git-revision-date.json"
+      },
+      {
+        "$ref": "plugins/git-revision-date-localized.json"
+      },
+      {
         "$ref": "plugins/minify.json"
       },
       {
