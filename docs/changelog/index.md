@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.9 <small>_ January 30, 2022</small> { id="8.1.9" }
+
+- [Added support for `mkdocs.yml` validation and auto-complete][validation]
+- Fixed errors in Latvian translations
+
+  [validation]: ../creating-your-site.md#minimal-configuration
 
 ### 8.1.8 <small>_ January 23, 2022</small> { id="8.1.8" }
 
