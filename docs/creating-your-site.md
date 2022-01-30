@@ -92,7 +92,7 @@ slightly different:
   [mkdocs_theme.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
   [custom theme guide]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 
-???+ tip "Recommended: configuration validation and auto-complete"
+???+ tip "Recommended: [configuration validation and auto-complete]"
 
     In order to minimize friction and maximize productivity, Material for MkDocs 
     provides its own [schema.json] for `mkdocs.yml`. If your editor supports
@@ -121,7 +121,7 @@ slightly different:
             # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
             ```
 
-
+  [configuration validation and auto-complete]: https://twitter.com/squidfunk/status/1487746003692400642
   [schema.json]: schema.json
   [vscode-yaml]: https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
   [settings.json]: https://code.visualstudio.com/docs/getstarted/settings

@@ -7045,6 +7045,13 @@
       "enum": [
         "Zilla Slab Highlight"
       ]
+    },
+    {
+      "title": "default",
+      "markdownDescription": "https://fonts.google.com/specimen/default",
+      "enum": [
+        "default"
+      ]
     }
   ]
 }
