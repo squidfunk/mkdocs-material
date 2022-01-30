@@ -852,7 +852,7 @@
           "$ref": "assets/icons.json"
         },
         {
-          "title": "Custom icon",
+          "title": "Unknown icon",
           "type": "string"
         }
       ]

@@ -38,7 +38,7 @@
             {
               "title": "Universal Analytics",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
-              "pattern": "^UA-\\w{8}-\\w$"
+              "pattern": "^UA-\\w{9}-\\w$"
             },
             {
               "title": "Unknown property",
@@ -290,7 +290,7 @@
       "default": true
     }
   },
-  "additionalProperties": false,
+  "additionalProperties": true,
   "definitions": {
     "icon": {
       "oneOf": [
@@ -298,7 +298,7 @@
           "$ref": "assets/icons.json"
         },
         {
-          "title": "Custom icon",
+          "title": "Unknown icon",
           "type": "string"
         }
       ]

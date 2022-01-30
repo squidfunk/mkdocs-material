@@ -52,7 +52,13 @@
               "default": "assets/images/social"
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "defaultSnippets": [
+            {
+              "label": "cards_font",
+              "body": "cards_font: ${1:Roboto}"
+            }
+          ]
         }
       },
       "additionalProperties": false
