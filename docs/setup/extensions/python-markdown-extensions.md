@@ -604,7 +604,9 @@ them at your own risk.
 
 See reference for usage:
 
-- [Annotations]
+- [Using annotations]
+- [Using code blocks]
+- [Using content tabs]
 - [Using flowcharts]
 - [Using sequence diagrams]
 - [Using state diagrams]
@@ -616,7 +618,8 @@ See reference for usage:
   [Fenced Code Blocks]: python-markdown.md#fenced-code-blocks
   [Mermaid.js]: https://mermaid-js.github.io/mermaid/
   [diagrams]: ../../reference/diagrams.md
-  [Annotations]: ../../reference/annotations.md
+  [Using annotations]: ../../reference/annotations.md#usage
+  [Using content tabs]: ../../reference/content-tabs.md#usage
   [Using flowcharts]: ../../reference/diagrams.md#using-flowcharts
   [Using sequence diagrams]: ../../reference/diagrams.md#using-sequence-diagrams
   [Using state diagrams]: ../../reference/diagrams.md#using-state-diagrams

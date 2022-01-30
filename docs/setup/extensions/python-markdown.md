@@ -81,7 +81,7 @@ markdown_extensions:
 
 No configuration options are available. See reference for usage:
 
-- [Annotations]
+- [Using annotations]
 - [Adding buttons]
 - [Adding icons with colors]
 - [Image alignment]
@@ -199,12 +199,12 @@ markdown_extensions:
 
 No configuration options are available. See reference for usage:
 
-- [Annotations]
+- [Using annotations]
 - [Image captions]
 
   [Markdown in HTML]: https://python-markdown.github.io/extensions/md_in_html/
   [Markdown in HTML support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [Annotations]: ../../reference/annotations.md
+  [Using annotations]: ../../reference/annotations.md#usage
   [Image captions]: ../../reference/images.md#image-captions
 
 ### Table of Contents
