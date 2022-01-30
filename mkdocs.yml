@@ -160,9 +160,7 @@ markdown_extensions:
 nav:
   - Home: index.mds
   - Getting started:
-    - abcs.md
     - Installation: getting-started.md
-    - Installation: getting-started.mds
     - Creating your site: creating-your-site.md
     - Publishing your site: publishing-your-site.md
     - Customization: customization.md
