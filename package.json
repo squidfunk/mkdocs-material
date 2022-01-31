@@ -67,7 +67,7 @@
     "autoprefixer": "^10.4.2",
     "chokidar": "^3.5.3",
     "cssnano": "^5.0.16",
-    "esbuild": "^0.14.13",
+    "esbuild": "^0.14.14",
     "eslint": "^8.7.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.25.4",
