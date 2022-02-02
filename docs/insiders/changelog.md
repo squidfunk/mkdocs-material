@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.7.2 <small>_ February 2, 2022</small> { id="4.7.2" }
+
+- Fixed #3526: Transparent sidebar title due to Safari bug
+- Fixed #3528: Firefox sometimes clips text in flow chart diagrams
+
 ### 4.7.1 <small>_ January 30, 2022</small> { id="4.7.1" }
 
 - Fixed #3506: Tags index not respecting title set via front matter

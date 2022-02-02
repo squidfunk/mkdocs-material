@@ -1,3 +1,8 @@
+mkdocs-material-8.1.9+insiders-4.7.2 (2022-02-02)
+
+  * Fixed #3526: Transparent sidebar title due to Safari bug
+  * Fixed #3528: Firefox sometimes clips text in flow chart diagrams
+
 mkdocs-material-8.1.9+insiders-4.7.1 (2022-01-30)
 
   * Fixed #3506: Tags index not respecting title set via front matter
