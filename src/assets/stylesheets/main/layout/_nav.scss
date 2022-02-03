@@ -63,7 +63,9 @@
         :is(img, svg) {
           display: block;
           width: auto;
+          max-width: 100%;
           height: px2rem(48px);
+          object-fit: contain;
           fill: currentcolor;
         }
       }
@@ -247,7 +249,7 @@
         .md-logo {
           position: absolute;
           top: px2rem(4px);
-          inset-inline-start: px2rem(4px);
+          inset-inline: px2rem(4px);
           display: block;
           margin: px2rem(4px);
           padding: px2rem(8px);
