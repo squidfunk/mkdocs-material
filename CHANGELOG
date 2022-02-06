@@ -1,3 +1,7 @@
+mkdocs-material-8.1.10+insiders-4.8.1 (2022-02-06)
+
+  * Fixed jump back to top on mobile when using anchor following
+
 mkdocs-material-8.1.10+insiders-4.8.0 (2022-02-06)
 
   * Added support for anchor following table of contents (= auto scroll)
