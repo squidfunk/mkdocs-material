@@ -709,7 +709,7 @@ template: overrides/main.html
 
 ### 4.6.0 <small>_ December 11, 2019</small> { id="4.6.0" }
 
-- Added support for [git-revision-date-localized-plugin][1]
+- Added support for [git-revision-date-localized-plugin]
 - Fixed invalid character in Google Fonts URL
 
   [git-revision-date-localized-plugin]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
