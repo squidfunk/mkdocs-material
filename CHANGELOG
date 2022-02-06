@@ -1,3 +1,7 @@
+mkdocs-material-8.1.10 (2022-02-06)
+
+  * Fixed cutoff of very wide logos in the sidebar on mobile
+
 mkdocs-material-8.1.9+insiders-4.7.2 (2022-02-02)
 
   * Fixed #3526: Transparent sidebar title due to Safari bug
