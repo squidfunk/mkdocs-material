@@ -47,6 +47,7 @@
       "oneOf": [
         {
           "title": "Site language: Custom",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#custom-translations",
           "enum": [
             "custom"
           ]
