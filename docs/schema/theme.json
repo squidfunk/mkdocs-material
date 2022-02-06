@@ -46,6 +46,12 @@
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/",
       "oneOf": [
         {
+          "title": "Site language: Custom",
+          "enum": [
+            "custom"
+          ]
+        },
+        {
           "title": "Site language: Afrikaans",
           "enum": [
             "af"
