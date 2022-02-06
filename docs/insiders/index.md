@@ -230,12 +230,14 @@ are released for general availability.
 - [x] [Social cards]
 - [x] [Code annotations: anchor links]
 - [x] [Code annotations: strip comments]
+- [x] [Table of contents anchor following]
+- [x] Sidebars automatically scroll to active item
 - [ ] Stay on page when switching languages
-- [ ] Sidebars automatically scroll to active item
 
   [Social cards]: ../setup/setting-up-social-cards.md
   [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
+  [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
 
 #### $ 10,000 – Carolina Reaper
 

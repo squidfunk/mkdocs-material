@@ -223,9 +223,29 @@ This feature flag is not compatible with [`toc.integrate`][toc.integrate].
   [navigation.indexes support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [navigation.indexes enabled]: ../assets/screenshots/navigation-index-on.png
   [navigation.indexes disabled]: ../assets/screenshots/navigation-index-off.png
-  [toc.integrate]: #integrated-table-of-contents
+  [toc.integrate]: #navigation-integration
 
-### Integrated table of contents
+### Table of contents
+
+#### Anchor following
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.8.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+When anchor following for the [table of contents] is enabled, the sidebar is
+automatically scrolled so that the active anchor is always visible. Add the
+following lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - toc.follow
+```
+
+  [Insiders]: ../insiders/index.md
+
+#### Navigation integration
 
 [:octicons-tag-24: 6.2.0][toc.integrate support] ·
 :octicons-unlock-24: Feature flag

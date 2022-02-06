@@ -64,6 +64,7 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
+    - toc.follow
     # - toc.integrate
   palette:
     - scheme: default

@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.8.0 <small>_ February 6, 2022</small> { id="4.8.0" }
+
+- Added support for anchor following table of contents (= auto scroll)
+
 ### 4.7.2 <small>_ February 2, 2022</small> { id="4.7.2" }
 
 - Fixed #3526: Transparent sidebar title due to Safari bug

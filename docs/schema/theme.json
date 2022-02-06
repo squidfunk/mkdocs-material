@@ -620,7 +620,14 @@
           },
           {
             "title": "Integrated table of contents",
-            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#integrated-table-of-contents",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-following",
+            "enum": [
+              "toc.follow"
+            ]
+          },
+          {
+            "title": "Integrated table of contents",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-integration",
             "enum": [
               "toc.integrate"
             ]
