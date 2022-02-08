@@ -162,8 +162,9 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Table of contents anchor following] :material-new-box:
 - [x] [Offline search] :material-new-box:
-- [x] [Annotations] :material-new-box:
+- [x] [Annotations]
 - [x] [Navigation icons]
 - [x] [Code annotations: anchor links]
 - [x] [Code annotations: strip comments]
