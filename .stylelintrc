@@ -58,6 +58,7 @@
     "declaration-no-important": true,
     "declaration-block-single-line-max-declarations": 0,
     "function-calc-no-unspaced-operator": null,
+    "function-no-unknown": null,
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
     "font-family-name-quotes": "always-where-recommended",
