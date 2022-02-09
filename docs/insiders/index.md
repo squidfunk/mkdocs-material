@@ -130,6 +130,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
 [![Account technologies]](https://www.accounttechnologies.com/){ target=_blank title="Account technologies" }
 [![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
+[![Datadog]](https://datadoghq.com/){ target=_blank title="Datadog" }
 
 </div>
 
@@ -140,6 +141,7 @@ You can cancel your sponsorship anytime.[^5]
   [Manticore Games]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-manticore-games.png
   [Account technologies]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-account-technologies.png
   [Prefect]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png
+  [Datadog]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png
 
 <hr />
 
