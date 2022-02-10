@@ -63,6 +63,7 @@ The following languages are supported:
 - `no` – Norwegian
 - `pl` – Polish
 - `pt` – Portuguese
+- `pt-BR` – Portuguese (Brasilian)
 - `ro` – Romanian
 - `ru` – Russian
 - `sh` – Serbo-Croatian
