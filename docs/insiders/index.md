@@ -131,6 +131,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Account technologies]](https://www.accounttechnologies.com/){ target=_blank title="Account technologies" }
 [![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
 [![Datadog]](https://datadoghq.com/){ target=_blank title="Datadog" }
+[![Zenoss]](https://zenoss.com/){ target=_blank title="Zenoss" }
 
 </div>
 
@@ -142,6 +143,7 @@ You can cancel your sponsorship anytime.[^5]
   [Account technologies]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-account-technologies.png
   [Prefect]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png
   [Datadog]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png
+  [Zenoss]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png
 
 <hr />
 
