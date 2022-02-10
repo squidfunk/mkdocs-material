@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.1.11 <small>_ February 10, 2022</small> { id="8.1.11" }
+
+- Added Portuguese (Brasilian) translations
+- Fixed #3545: Color palette toggle and search overlaying version selector
+
 ### 8.1.10 <small>_ February 6, 2022</small> { id="8.1.10" }
 
 - Fixed cutoff of very wide logos in the sidebar on mobile
