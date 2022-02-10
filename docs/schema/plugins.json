@@ -18,6 +18,9 @@
         "$ref": "plugins/redirects.json"
       },
       {
+        "$ref": "https://guts.github.io/mkdocs-rss-plugin/schema.json"
+      },
+      {
         "$ref": "plugins/search.json"
       },
       {
