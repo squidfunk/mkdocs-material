@@ -9,6 +9,7 @@ template: overrides/main.html
 ### 8.1.11 <small>_ February 10, 2022</small> { id="8.1.11" }
 
 - Added Portuguese (Brasilian) translations
+- Updated FontAwesome to v5 (might lead to missing icons)
 - Fixed #3545: Color palette toggle and search overlaying version selector
 
 ### 8.1.10 <small>_ February 6, 2022</small> { id="8.1.10" }

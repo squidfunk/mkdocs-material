@@ -5,6 +5,7 @@ mkdocs-material-8.1.11+insiders-4.8.2 (2022-02-10)
 mkdocs-material-8.1.11 (2022-02-10)
 
   * Added Portuguese (Brasilian) translations
+  * Updated FontAwesome to v5 (might lead to missing icons)
   * Fixed #3545: Color palette toggle and search overlaying version selector
 
 mkdocs-material-8.1.10+insiders-4.8.1 (2022-02-06)
