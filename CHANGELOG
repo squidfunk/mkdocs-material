@@ -1,3 +1,7 @@
+mkdocs-material-8.1.11+insiders-4.8.3 (2022-02-13)
+
+  * Fixed #3560: Mermaid diagrams don't render for file:// locations
+
 mkdocs-material-8.1.11+insiders-4.8.2 (2022-02-10)
 
   * Fixed #3559: Mermaid diagrams don't render inside closed details

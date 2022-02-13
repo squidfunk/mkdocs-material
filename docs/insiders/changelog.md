@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.8.3 <small>_ February 13, 2022</small> { id="4.8.3" }
+
+- Fixed #3560: Mermaid diagrams don't render for `file://` locations
+
 ### 4.8.2 <small>_ February 10, 2022</small> { id="4.8.2" }
 
 - Fixed #3559: Mermaid diagrams don't render inside closed `details`
