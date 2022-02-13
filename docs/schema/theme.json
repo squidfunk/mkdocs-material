@@ -269,6 +269,12 @@
           ]
         },
         {
+          "title": "Site language: Portuguese (Brasilian)",
+          "enum": [
+            "pt-BR"
+          ]
+        },
+        {
           "title": "Site language: Romanian",
           "enum": [
             "ro"
