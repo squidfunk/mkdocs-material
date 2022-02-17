@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.1 <small>_ February 17, 2022</small> { id="8.2.1" }
+
+- Fixed module `material.plugins` not being found (8.2.0 regression)
+
 ### 8.2.0 <small>_ February 17, 2022</small> { id="8.2.0" }
 
 - Added native support for Mermaid.js diagrams
