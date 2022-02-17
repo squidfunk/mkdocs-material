@@ -1,3 +1,9 @@
+mkdocs-material-8.2.0 (2022-02-17)
+
+  * Added native support for Mermaid.js diagrams
+  * Added native support for tags (with search integration)
+  * Added support for staying on page when switching versions
+
 mkdocs-material-8.1.11+insiders-4.8.3 (2022-02-13)
 
   * Fixed #3560: Mermaid diagrams don't render for file:// locations
