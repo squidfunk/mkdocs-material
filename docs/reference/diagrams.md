@@ -14,8 +14,7 @@ popular and flexible solution for drawing diagrams.
 
 ## Configuration
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-1.15.0][Insiders] ·
+[:octicons-tag-24: 8.2.0][Diagrams support] ·
 :octicons-beaker-24: Experimental
 
 This configuration enables native support for [Mermaid.js] diagrams. Material
@@ -44,7 +43,7 @@ No further configuration is necessary. Advantages over a custom integration:
     sequence diagrams, class diagams, state diagrams and entity relationship 
     diagrams.
 
-  [Insiders]: ../insiders/index.md
+  [Diagrams support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [additional style sheets]: ../customization.md#additional-css
 

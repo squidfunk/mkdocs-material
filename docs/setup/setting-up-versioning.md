@@ -108,33 +108,6 @@ Make sure that this matches the [default version].
   [Version warning preview]: ../assets/screenshots/version-warning.png
   [default version]: #setting-a-default-version
 
-### Stay on page
-
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.6.0][Insiders]
-
-Insiders improves the user experience when switching between versions: if
-version A and B contain a page with the same path name, the user will stay on
-the current page:
-
-=== "New behavior"
-
-    ```
-    docs.example.com/0.1/     -> docs.example.com/0.2/
-    docs.example.com/0.1/foo/ -> docs.example.com/0.2/foo/
-    docs.example.com/0.1/bar/ -> docs.example.com/0.2/bar/
-    ```
-
-=== "Old behavior"
-
-    ```
-    docs.example.com/0.1/     -> docs.example.com/0.2/
-    docs.example.com/0.1/foo/ -> docs.example.com/0.2/
-    docs.example.com/0.1/bar/ -> docs.example.com/0.2/
-    ```
-
-  [Insiders]: ../insiders/index.md
-
 ## Usage
 
 While this section outlines the basic workflow for publishing new versions, 

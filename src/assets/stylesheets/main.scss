@@ -55,6 +55,7 @@
 @import "main/layout/sidebar";
 @import "main/layout/source";
 @import "main/layout/tabs";
+@import "main/layout/tag";
 @import "main/layout/tooltip";
 @import "main/layout/top";
 @import "main/layout/version";
@@ -71,5 +72,7 @@
 @import "main/extensions/pymdownx/keys";
 @import "main/extensions/pymdownx/tabbed";
 @import "main/extensions/pymdownx/tasklist";
+
+@import "main/integrations/mermaid";
 
 @import "main/modifiers";

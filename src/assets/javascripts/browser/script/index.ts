@@ -20,8 +20,51 @@
  * IN THE SOFTWARE.
  */
 
-export * from "./clipboard"
-export * from "./instant"
-export * from "./search"
-export * from "./sitemap"
-export * from "./version"
+import {
+  Observable,
+  defer,
+  finalize,
+  fromEvent,
+  mapTo,
+  merge,
+  switchMap,
+  take,
+  throwError
+} from "rxjs"
+
+import { h } from "~/utilities"
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Create and load a `script` element
+ *
+ * This function returns an observable that will emit when the script was
+ * successfully loaded, or throw an error if it didn't.
+ *
+ * @param src - Script URL
+ *
+ * @returns Script observable
+ */
+export function watchScript(src: string): Observable<void> {
+  const script = h("script", { src })
+  return defer(() => {
+    document.head.appendChild(script)
+    return merge(
+      fromEvent(script, "load"),
+      fromEvent(script, "error")
+        .pipe(
+          switchMap(() => (
+            throwError(() => new ReferenceError(`Invalid script: ${src}`))
+          ))
+        )
+    )
+      .pipe(
+        mapTo(undefined),
+        finalize(() => document.head.removeChild(script)),
+        take(1)
+      )
+  })
+}

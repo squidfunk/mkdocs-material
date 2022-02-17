@@ -45,6 +45,11 @@
       height: 0;
       opacity: 0;
 
+      // Adjust scroll margin
+      &:target {
+        --md-scroll-offset: #{px2em(10px, 16px)};
+      }
+
       // Tab label states
       @for $i from 20 through 1 {
         &:nth-child(#{$i}) {

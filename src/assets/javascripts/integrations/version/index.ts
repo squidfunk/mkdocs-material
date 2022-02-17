@@ -20,18 +20,30 @@
  * IN THE SOFTWARE.
  */
 
-import { combineLatest, map } from "rxjs"
+import {
+  EMPTY,
+  combineLatest,
+  filter,
+  fromEvent,
+  map,
+  of,
+  switchMap
+} from "rxjs"
 
 import { configuration } from "~/_"
 import {
   getElement,
-  requestJSON
+  getLocation,
+  requestJSON,
+  setLocation
 } from "~/browser"
 import { getComponentElements } from "~/components"
 import {
   Version,
   renderVersionSelector
 } from "~/templates"
+
+import { fetchSitemap } from "../sitemap"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -56,6 +68,47 @@ export function setupVersionSelector(): void {
         )) || versions[0]
       })
     )
+
+  /* Intercept inter-version navigation */
+  combineLatest([versions$, current$])
+    .pipe(
+      map(([versions, current]) => new Map(versions
+        .filter(version => version !== current)
+        .map(version => [
+          `${new URL(`../${version.version}/`, config.base)}`,
+          version
+        ])
+      )),
+      switchMap(urls => fromEvent<MouseEvent>(document.body, "click")
+        .pipe(
+          filter(ev => !ev.metaKey && !ev.ctrlKey),
+          switchMap(ev => {
+            if (ev.target instanceof Element) {
+              const el = ev.target.closest("a")
+              if (el && !el.target && urls.has(el.href)) {
+                ev.preventDefault()
+                return of(el.href)
+              }
+            }
+            return EMPTY
+          }),
+          switchMap(url => {
+            const { version } = urls.get(url)!
+            return fetchSitemap(new URL(url))
+              .pipe(
+                map(sitemap => {
+                  const location = getLocation()
+                  const path = location.href.replace(config.base, "")
+                  return sitemap.includes(path)
+                    ? new URL(`../${version}/${path}`, config.base)
+                    : new URL(url)
+                })
+              )
+          })
+        )
+      )
+    )
+      .subscribe(url => setLocation(url))
 
   /* Render version selector and warning */
   combineLatest([versions$, current$])

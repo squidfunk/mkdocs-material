@@ -58,13 +58,17 @@ setup(
         "Topic :: Software Development :: Documentation",
         "Topic :: Text Processing :: Markup :: HTML"
     ],
-    packages = find_packages(exclude = ["src"]),
+    packages = find_packages(exclude = ["src", "src.*"]),
     include_package_data = True,
     install_requires = install_requires,
     python_requires='>=3.6',
     entry_points = {
         "mkdocs.themes": [
-            "material = material",
+            "material = material"
+        ],
+        "mkdocs.plugins": [
+            "search = material.plugins.search.plugin:SearchPlugin",
+            "tags = material.plugins.tags.plugin:TagsPlugin"
         ]
     },
     zip_safe = False

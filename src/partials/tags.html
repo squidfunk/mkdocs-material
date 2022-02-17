@@ -20,38 +20,22 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Edit button -->
-{% if page.edit_url %}
-<a
-  href="{{ page.edit_url }}"
-  title="{{ lang.t('edit.link.title') }}"
-  class="md-content__button md-icon"
->
-  {% include ".icons/material/pencil.svg" %}
-</a>
+<!-- Determine whether to show tags -->
+{% if page and page.meta and page.meta.hide %}
+  {% set hidden = "hidden" if "tags" in page.meta.hide %}
 {% endif %}
 
 <!-- Tags -->
-{% if "tags" in config.plugins %}
-  {% include "partials/tags.html" %}
-{% endif %}
-
-<!--
-  Hack: check whether the content contains a h1 headline. If it
-  doesn't, the page title (or respectively site name) is used
-  as the main headline.
--->
-{% if not "\x3ch1" in page.content %}
-  <h1>{{ page.title | d(config.site_name, true)}}</h1>
-{% endif %}
-
-<!-- Markdown content -->
-{{ page.content }}
-
-<!-- Source file information -->
-{% if page and page.meta and (
-  page.meta.git_revision_date_localized or
-  page.meta.revision_date
-) %}
-  {% include "partials/source-file.html" %}
+{% if tags %}
+  <nav class="md-tags" {{ hidden }}>
+    {% for tag in tags %}
+      {% if tag.url %}
+        <a href="{{ tag.url | url }}" class="md-tag">
+          {{ tag.name }}
+        </a>
+      {% else %}
+        <span class="md-tag">{{ tag.name }}</span>
+      {% endif %}
+    {% endfor %}
+  </nav>
 {% endif %}

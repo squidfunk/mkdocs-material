@@ -150,7 +150,7 @@ are still exclusively available to sponsors as part of [Insiders]:
 - [Navigation icons]
 - [Remove generator notice]
 - [Rich search previews]
-- [Stay on page when switching versions]
+- Stay on page when switching versions
 - [Search highlighting]
 - [Search sharing]
 - [Search suggestions]
@@ -202,7 +202,6 @@ __55__ times, `mkdocs-material-insiders` was shipped __72__ times.
   [Section index pages]: ../../setup/setting-up-navigation.md#section-index-pages
   [Site language selection]: ../../setup/changing-the-language.md#site-language-selector
   [Social cards]: ../../setup/setting-up-social-cards.md
-  [Stay on page when switching versions]: ../../setup/setting-up-versioning.md#stay-on-page
   [Sticky navigation tabs]: ../../setup/setting-up-navigation.md#sticky-navigation-tabs
   [Tags with search integration]: ../../setup/setting-up-tags.md
   [Tokenizer with lookahead]: search-better-faster-smaller.md#tokenizer-lookahead

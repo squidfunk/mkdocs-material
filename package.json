@@ -55,6 +55,7 @@
     "@mdi/svg": "^6.5.95",
     "@primer/octicons": "^16.3.1",
     "@types/clipboard": "^2.0.7",
+    "@types/css-modules": "^1.0.2",
     "@types/escape-html": "1.0.1",
     "@types/fuzzaldrin-plus": "^0.6.2",
     "@types/html-minifier": "^4.0.2",

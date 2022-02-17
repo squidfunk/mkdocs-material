@@ -61,9 +61,10 @@ export function setupSearchDocumentMap(
   for (const doc of docs) {
     const [path, hash] = doc.location.split("#")
 
-    /* Extract location and title */
+    /* Extract location, title and tags */
     const location = doc.location
     const title    = doc.title
+    const tags     = doc.tags
 
     /* Escape and cleanup text */
     const text = escapeHTML(doc.text)
@@ -97,7 +98,8 @@ export function setupSearchDocumentMap(
       documents.set(location, {
         location,
         title,
-        text
+        text,
+        ...tags && { tags }
       })
     }
   }

@@ -13,8 +13,7 @@ can help to discover relevant information faster.
 
 ### Built-in tags
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.7.0][Insiders] ·
+[:octicons-tag-24: 8.2.0][tags support] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
@@ -47,7 +46,7 @@ The following configuration options are available:
     option is not specified, tags are still rendered and searchable,
     but without a tags index.
 
-  [Insiders]: ../insiders/index.md
+  [tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
   [adding a tags index]: #adding-a-tags-index
 
 ## Usage

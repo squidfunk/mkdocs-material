@@ -20,56 +20,59 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, merge } from "rxjs"
+import {
+  Observable,
+  defaultIfEmpty,
+  map,
+  of,
+  tap
+} from "rxjs"
 
-import { getElements } from "~/browser"
-
-import { Component } from "../../_"
-import { Annotation } from "../annotation"
-import {
-  CodeBlock,
-  Mermaid,
-  mountCodeBlock,
-  mountMermaid
-} from "../code"
-import {
-  Details,
-  mountDetails
-} from "../details"
-import {
-  DataTable,
-  mountDataTable
-} from "../table"
-import {
-  ContentTabs,
-  mountContentTabs
-} from "../tabs"
+import { configuration } from "~/_"
+import { getElements, requestXML } from "~/browser"
 
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
 
 /**
- * Content
+ * Sitemap, i.e. a list of URLs
  */
-export type Content =
-  | Annotation
-  | ContentTabs
-  | CodeBlock
-  | Mermaid
-  | DataTable
-  | Details
+export type Sitemap = string[]
 
 /* ----------------------------------------------------------------------------
- * Helper types
+ * Helper functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount options
+ * Preprocess a list of URLs
+ *
+ * This function replaces the `site_url` in the sitemap with the actual base
+ * URL, to allow instant loading to work in occasions like Netlify previews.
+ *
+ * @param urls - URLs
+ *
+ * @returns URL path parts
  */
-interface MountOptions {
-  target$: Observable<HTMLElement>     /* Location target observable */
-  print$: Observable<boolean>          /* Media print observable */
+function preprocess(urls: Sitemap): Sitemap {
+  if (urls.length < 2)
+    return [""]
+
+  /* Take the first two URLs and remove everything after the last slash */
+  const [root, next] = [...urls]
+    .sort((a, b) => a.length - b.length)
+    .map(url => url.replace(/[^/]+$/, ""))
+
+  /* Compute common prefix */
+  let index = 0
+  if (root === next)
+    index = root.length
+  else
+    while (root.charCodeAt(index) === next.charCodeAt(index))
+      index++
+
+  /* Remove common prefix and return in original order */
+  return urls.map(url => url.replace(root.slice(0, index), ""))
 }
 
 /* ----------------------------------------------------------------------------
@@ -77,39 +80,25 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount content
+ * Fetch the sitemap for the given base URL
  *
- * This function mounts all components that are found in the content of the
- * actual article, including code blocks, data tables and details.
+ * @param base - Base URL
  *
- * @param el - Content element
- * @param options - Options
- *
- * @returns Content component observable
+ * @returns Sitemap observable
  */
-export function mountContent(
-  el: HTMLElement, { target$, print$ }: MountOptions
-): Observable<Component<Content>> {
-  return merge(
-
-    /* Code blocks */
-    ...getElements("pre:not(.mermaid) > code", el)
-      .map(child => mountCodeBlock(child, { print$ })),
-
-    /* Mermaid diagrams */
-    ...getElements("pre.mermaid", el)
-      .map(child => mountMermaid(child)),
-
-    /* Data tables */
-    ...getElements("table:not([class])", el)
-      .map(child => mountDataTable(child)),
-
-    /* Details */
-    ...getElements("details", el)
-      .map(child => mountDetails(child, { target$, print$ })),
-
-    /* Content tabs */
-    ...getElements("[data-tabs]", el)
-      .map(child => mountContentTabs(child))
-  )
+export function fetchSitemap(base?: URL): Observable<Sitemap> {
+  const cached = __md_get<Sitemap>("__sitemap", sessionStorage, base)
+  if (cached) {
+    return of(cached)
+  } else {
+    const config = configuration()
+    return requestXML(new URL("sitemap.xml", base || config.base))
+      .pipe(
+        map(sitemap => preprocess(getElements("loc", sitemap)
+          .map(node => node.textContent!)
+        )),
+        defaultIfEmpty([]),
+        tap(sitemap => __md_set("__sitemap", sitemap, sessionStorage, base))
+      )
+  }
 }
