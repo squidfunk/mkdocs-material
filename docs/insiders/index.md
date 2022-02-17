@@ -183,9 +183,7 @@ The following features are solely available via Material for MkDocs Insiders:
 - [x] [Cookie consent]
 - [x] [Linking content tabs]
 - [x] [Boosting pages in search]
-- [x] [Tags with search integration]
 - [x] [Custom admonition icons]
-- [x] [Mermaid.js integration]
 
 </div>
 
