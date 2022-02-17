@@ -11,7 +11,7 @@ that new features are first exclusively released to sponsors as part of
 [how to become a sponsor] to get access to Insiders, and
 [what's in for you][available features]!
 
-<figure class="mdx-video" markdown>
+<!-- <figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
     <iframe src="https://streamable.com/e/ihhxw0" allowfullscreen></iframe>
   </div>
@@ -21,7 +21,7 @@ This documentation is built with Insiders
 [squidfunk.github.io/mkdocs-material][Material for MkDocs]
 
   </figcaption>
-</figure>
+</figure> -->
 
   [Insiders]: #what-is-insiders
   [what sponsorships achieve]: #what-sponsorships-achieve
