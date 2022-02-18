@@ -89,12 +89,12 @@ a valid path to any icon bundled with the theme, which are located in the
 [`.icons`][custom icons] directory, and replacing `/` with `-`:
 
 ``` title="Icon"
-:fontawesome-regular-laugh-wink:
+:fontawesome-regular-face-laugh-wink:
 ```
 
 <div class="result" markdown>
 
-:fontawesome-regular-laugh-wink:
+:fontawesome-regular-face-laugh-wink:
 
 </div>
 
