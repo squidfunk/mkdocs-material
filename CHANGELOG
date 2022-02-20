@@ -1,3 +1,7 @@
+mkdocs-material-8.2.1+insiders-4.9.0 (2022-02-20)
+
+  * Added privacy plugin: automatic downloading of external assets
+
 mkdocs-material-8.2.1 (2022-02-17)
 
   * Fixed module 'material.plugins' not being found (8.2.0 regression)

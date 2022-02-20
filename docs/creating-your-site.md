@@ -148,6 +148,7 @@ and much more:
 - [Changing the fonts]
 - [Changing the language]
 - [Changing the logo and icons]
+- [Ensuring data privacy]
 - [Setting up navigation]
 - [Setting up site search]
 - [Setting up site analytics]
@@ -169,6 +170,7 @@ technical writing experience.
   [Changing the fonts]: setup/changing-the-fonts.md
   [Changing the language]: setup/changing-the-language.md
   [Changing the logo and icons]: setup/changing-the-logo-and-icons.md
+  [Ensuring data privacy]: setup/ensuring-data-privacy.md
   [Setting up navigation]: setup/setting-up-navigation.md
   [Setting up site search]: setup/setting-up-site-search.md
   [Setting up site analytics]: setup/setting-up-site-analytics.md

@@ -64,7 +64,7 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - social:
-          cards: !ENV [SOCIAL_CARDS, false]
+          cards: !ENV [CARDS, false]
     ```
 
 `cards_color`{ #cards-color }

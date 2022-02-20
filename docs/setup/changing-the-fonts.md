@@ -66,8 +66,15 @@ theme:
   font: false
 ```
 
+!!! tip "Automatically bundle Google Fonts"
+
+    The brand-new [built-in privacy] plugin makes it easy to use Google Fonts
+    while complying with the __General Data Protection Regulation__ (GDPR),
+    by automatically downloading and self-hosting the web font files.
+
   [data privacy]: https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users
   [font=false support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
+  [built-in privacy]: ensuring-data-privacy.md#built-in-privacy
 
 ## Customization
 

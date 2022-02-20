@@ -166,8 +166,9 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Privacy plugin] :material-new-box:
 - [x] [Table of contents anchor following] :material-new-box:
-- [x] [Offline search] :material-new-box:
+- [x] [Offline search]
 - [x] [Annotations]
 - [x] [Navigation icons]
 - [x] [Code annotations: anchor links]
@@ -257,6 +258,13 @@ are released for general availability.
 
   [Annotations]: ../reference/annotations.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
+
+#### $ 14,000 – Goat's Horn
+
+- [x] [Privacy plugin]
+- [ ] and much more, to be announced ...
+
+  [Privacy plugin]: ../setup/ensuring-data-privacy.md
 
 ### Goals completed
 
