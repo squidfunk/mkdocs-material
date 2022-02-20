@@ -33,7 +33,7 @@ plugins:
 
 1.  Note that the privacy plugin should be located at the end of the list of
     `plugins`, as it will scan the resulting HTML for links to download and
-    replace. If a plugin owing the privacy plugin adds further
+    replace. If a plugin after the privacy plugin adds further
     [external assets], these assets will not be downloaded.
 
 The following configuration options are available:
