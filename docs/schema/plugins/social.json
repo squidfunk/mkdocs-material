@@ -18,7 +18,8 @@
             "cards": {
               "title": "Social card generation",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards",
-              "type": "boolean"
+              "type": "boolean",
+              "default": true
             },
             "cards_color": {
               "title": "Social card color palette",
