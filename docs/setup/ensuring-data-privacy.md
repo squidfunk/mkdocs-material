@@ -65,13 +65,37 @@ The following configuration options are available:
   [external assets]: #how-it-works
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
 
+??? question "Why can't Material for MkDocs bundle all assets by design?"
+
+    The primary reason why Material for MkDocs can't just bundle all of its own
+    assets is the integration with [Google Fonts], which offers over a thousand
+    different fonts that can be used to render your documentation. Most of the
+    fonts include several weights and are split up into different character sets 
+    to keep the download size small, so the browser only downloads what is
+    really needed. For Roboto, our default [regular font], this results in [28
+    `*.woff2` files in total][example].
+    
+    If Material for MkDocs would bundle all font files, the download size would
+    be in the hundreds of megabytes, slowing down automated builds. Furthermore, 
+    authors might add external assets like third-party scripts or stylesheets 
+    that would need to be remembered to be defined as further local assets.
+    
+    This is the very reason the [built-in privacy] plugin exists — it automates
+    the process of downloading all external assets manually to ensure compliance
+    with GDPR. Note that there are some [technical limitations].
+
+  [Google Fonts]: changing-the-fonts.md
+  [regular font]: changing-the-fonts.md#regular-font
+  [example]: #example
+  [technical limitations]: #limitations
+
 #### How it works
 
 The [built-in privacy] plugin scans the resulting HTML for links to external
 resources, including external scripts, style sheets, images and web fonts, and
 downloads them to bundle them with your documentation site. Every URL refering
 to an external resource, no matter if part of a template or Markdown file is
-then replaced with the URL to the local copy. Example:
+then replaced with the URL to the local copy. An example:
 
 ``` html
 <script src="https://example.com/script.js"></script>
@@ -98,7 +122,7 @@ removed during the build process.
     For the official documentation, the [built-in privacy] plugin downloads the
     following resources:
 
-    ``` sh
+    ``` { .sh id="example" }
     .
     └─ assets/externals/
        ├─ cdnjs.cloudflare.com/ajax/tablesort/5.2.1/tablesort.min.js
@@ -144,7 +168,6 @@ removed during the build process.
     ```
 
   [built-in privacy]: #built-in-privacy
-  [Google Fonts]: changing-the-fonts.md
   [preconnect]: https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch
 
 #### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
@@ -188,6 +211,5 @@ carried out. You might want to:
 Note that dynamically created URLs as part of scripts are not detected, and thus
 cannot be automatically downloaded. The [built-in privacy] plugin does not
 execute scripts – it can only detect complete URLs to download and replace.
-This is why (currently) nested resources from `*.js` files are not processed.
 
   [Insiders]: ../insiders/index.md
