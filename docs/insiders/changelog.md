@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.9.1 <small>_ February 21, 2022</small> { id="4.9.1" }
+
+- Fixed #3610: missing `lxml` dependency for privacy plugin
+- Fixed error when charset is missing in `content-type` header
+
 ### 4.9.0 <small>_ February 20, 2022</small> { id="4.9.0" }
 
 - Added privacy plugin: automatic downloading of external assets

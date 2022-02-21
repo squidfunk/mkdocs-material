@@ -1,3 +1,8 @@
+mkdocs-material-8.2.1+insiders-4.9.1 (2022-02-21)
+
+  * Fixed #3610: missing lxml dependency for privacy plugin
+  * Fixed error when charset is missing in content-type header
+
 mkdocs-material-8.2.1+insiders-4.9.0 (2022-02-20)
 
   * Added privacy plugin: automatic downloading of external assets
