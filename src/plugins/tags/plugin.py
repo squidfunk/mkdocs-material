@@ -51,7 +51,7 @@ class TagsPlugin(BasePlugin):
 
             # Partially apply slugify function
             self.slugify = lambda value: (
-                toc["slugify"](value, toc["separator"])
+                toc["slugify"](str(value), toc["separator"])
             )
 
     # Hack: 2nd pass for tags index page
