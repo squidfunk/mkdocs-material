@@ -44,7 +44,8 @@ import { translation } from "~/_"
 import {
   getLocation,
   setToggle,
-  watchElementFocus
+  watchElementFocus,
+  watchToggle
 } from "~/browser"
 import {
   SearchMessageType,
@@ -100,6 +101,18 @@ export function watchSearchQuery(
       take(1),
       map(() => searchParams.get("q") || "")
     )
+
+  /* Remove query parameter when search is closed */
+  watchToggle("search")
+    .pipe(
+      filter(active => !active),
+      take(1)
+    )
+      .subscribe(() => {
+        const url = new URL(location.href)
+        url.searchParams.delete("q")
+        history.replaceState({}, "", `${url}`)
+      })
 
   /* Set query from parameter */
   param$.subscribe(value => { // TODO: not ideal - find a better way

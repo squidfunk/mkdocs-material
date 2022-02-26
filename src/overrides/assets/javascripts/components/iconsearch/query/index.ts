@@ -84,7 +84,7 @@ export function mountIconSearchQuery(
     )
       .subscribe(([, value]) => {
         const path = document.location.pathname
-        if (value.length)
+        if (typeof ga === "function" && value.length)
           ga("send", "pageview", `${path}?q=[icon]+${value}`)
       })
 
