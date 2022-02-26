@@ -32,7 +32,9 @@ import {
   finalize,
   map,
   of,
+  repeat,
   scan,
+  skip,
   startWith,
   switchMap,
   takeLast,
@@ -83,6 +85,7 @@ interface WatchOptions {
 interface MountOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
   header$: Observable<Header>          /* Header observable */
+  target$: Observable<HTMLElement>     /* Location target observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -247,7 +250,7 @@ export function watchTableOfContents(
  * @returns Table of contents component observable
  */
 export function mountTableOfContents(
-  el: HTMLElement, { viewport$, header$ }: MountOptions
+  el: HTMLElement, { viewport$, header$, target$ }: MountOptions
 ): Observable<Component<TableOfContents>> {
   return defer(() => {
     const push$ = new Subject<TableOfContents>()
@@ -278,6 +281,9 @@ export function mountTableOfContents(
           takeUntil(push$.pipe(takeLast(1))),
           distinctUntilKeyChanged("offset"),
           debounceTime(250),
+          skip(1),
+          takeUntil(target$.pipe(skip(1))),
+          repeat({ delay: 250 }),
           withLatestFrom(push$)
         )
           .subscribe(([, { prev }]) => {
