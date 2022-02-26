@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.2 <small>_ February 26, 2022</small> { id="8.2.2" }
+
+- Added automatic removal of query parameter when search is closed
+- Fixed #3599: Anchors always overriden when using navigation tracking
+
 ### 8.2.1 <small>_ February 17, 2022</small> { id="8.2.1" }
 
 - Fixed module `material.plugins` not being found (8.2.0 regression)

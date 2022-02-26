@@ -1,3 +1,8 @@
+mkdocs-material-8.2.2 (2022-02-26)
+
+  * Added automatic removal of query parameter when search is closed
+  * Fixed #3599: Anchors always overriden when using navigation tracking
+
 mkdocs-material-8.2.1+insiders-4.9.1 (2022-02-21)
 
   * Fixed #3610: missing lxml dependency for privacy plugin
