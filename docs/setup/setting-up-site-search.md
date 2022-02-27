@@ -11,7 +11,7 @@ omitting the need for the integration of third-party services, which might
 not be compliant with privacy regulations. Moreover, search even works
 [offline], allowing users to download your documentation.
 
-  [offline]: build-for-offline-usage.md
+  [offline]: building-for-offline-usage.md
 
 ## Configuration
 

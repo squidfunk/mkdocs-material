@@ -47,7 +47,7 @@ implementation. If you immediately want to learn what's new, skip to the
 
   [search]: ../../setup/setting-up-site-search.md
   [multilingual]: ../../setup/setting-up-site-search.md#lang
-  [offline-capable]: ../../setup/build-for-offline-usage.md
+  [offline-capable]: ../../setup/building-for-offline-usage.md
   [what's new]: #whats-new
 
 ## Architecture
