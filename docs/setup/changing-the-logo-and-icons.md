@@ -84,7 +84,7 @@ theme:
 In order to use custom icons, [extend the theme] and create a new folder named
 `.icons` in the [`custom_dir`][custom_dir] you want to use for overrides.
 Next, add your `*.svg` icons into a subfolder of the `.icons` folder. Let's say
-you  downloaded and unpacked the [Bootstrap] icon set, and want to add it to
+you downloaded and unpacked the [Bootstrap] icon set, and want to add it to
 your project documentation. The structure of your project should look like this:
 
 ``` sh

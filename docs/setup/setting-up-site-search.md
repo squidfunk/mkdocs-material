@@ -305,37 +305,6 @@ clipboard.
 
   [search.share support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
 
-### Offline search
-
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.7.0][Insiders] ·
-:octicons-beaker-24: Experimental
-
-Insiders makes sure that the built-in search also works when you distribute your
-documentation as `*.html` files for download. Simply add the following lines to
-`mkdocs.yml`:
-
-``` yaml
-use_directory_urls: false
-```
-
-This ensures that `index.html` is appended to all internal URLs, which is
-necessary for allowing users to view your documentation locally and without
-Internet connection. No further setup is necessary – your documentation will
-work online and offline without any further ado.[^1]
-
-Now, after invoking `mkdocs build`, you can open `site/index.html` directly
-in your browser and the built-in search will work as if the documentation was
-hosted on a regular server.
-
-  [^1]:
-    Offline search was previously implemented through the third-party 
-    [localsearch] plugin, which is still possible if you don't want to use
-    [Insiders]. Note, however, that setup might be challenging if you're not
-    experienced with MkDocs.
-
-  [localsearch]: https://github.com/wilhelmer/mkdocs-localsearch/
-
 ## Usage
 
 ### Search boosting

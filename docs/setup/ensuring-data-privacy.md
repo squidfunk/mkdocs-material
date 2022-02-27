@@ -7,7 +7,7 @@ template: overrides/main.html
 Material for MkDocs makes compliance with data privacy regulations very easy, 
 as it offers a native [cookie consent] solution to seek explicit consent from
 users before setting up [tracking]. Additionally, external assets can be
-automatically bundled as part of the build process.
+automatically downloaded for self-hosting.
 
   [cookie consent]: setting-up-site-analytics.md#cookie-consent
   [tracking]: setting-up-site-analytics.md
@@ -22,8 +22,8 @@ automatically bundled as part of the build process.
 :octicons-beaker-24: Experimental
 
 The built-in privacy plugin automatically identifies [external assets] as part
-of the build process and allows to download and serve them as part of your site.
-Add the following to `mkdocs.yml`:
+of the build process and download all assets for dead simple self-hosting. Add
+the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
@@ -65,9 +65,13 @@ The following configuration options are available:
     If you've removed all external assets from your project via [customization],
     it's still a good idea to enable the plugin and set the mode to `report`,
     as the plugin will make sure that there are no hidden external links in any
-    Markdown files that were unintentionally added to the build.
+    Markdown files that were unintentionally added.
+
+    Using `report` in [strict mode] will make the build fail when external
+    assets are detected.
 
     [customization]: ../customization.md
+    [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
 
 `externals_directory`{ #externals-directory }
 
