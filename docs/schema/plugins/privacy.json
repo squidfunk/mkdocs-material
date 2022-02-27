@@ -15,15 +15,34 @@
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/",
           "type": "object",
           "properties": {
-            "download": {
-              "title": "Download of external assets",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#download",
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#enabled",
               "type": "boolean",
               "default": true
             },
-            "download_directory": {
-              "title": "Download directory for external assets",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#download_directory",
+            "externals": {
+              "title": "External assets",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#externals",
+              "oneOf": [
+                {
+                  "title": "Bundle external assets",
+                  "enum": [
+                    "bundle"
+                  ]
+                },
+                {
+                  "title": "Report external assets as warnings",
+                  "enum": [
+                    "report"
+                  ]
+                }
+              ],
+              "default": "bundle"
+            },
+            "externals_directory": {
+              "title": "External assets download directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#externals-directory",
               "type": "string",
               "default": "assets/externals"
             }
