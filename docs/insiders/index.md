@@ -166,9 +166,9 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Offline plugin] :material-new-box:
 - [x] [Privacy plugin] :material-new-box:
-- [x] [Table of contents anchor following] :material-new-box:
-- [x] [Offline search]
+- [x] [Table of contents anchor following]
 - [x] [Annotations]
 - [x] [Navigation icons]
 - [x] [Code annotations: anchor links]
@@ -239,14 +239,14 @@ are released for general availability.
 - [x] [Tokenizer with lookahead]
 - [x] [Advanced search highlighting]
 - [x] [Excluding content from search]
-- [x] [Offline search]
+- [x] [Offline plugin]
 
   [Brand new search plugin]: ../blog/2021/search-better-faster-smaller.md
   [Rich search previews]: ../blog/2021/search-better-faster-smaller.md#rich-search-previews
   [Tokenizer with lookahead]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
   [Advanced search highlighting]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
   [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
-  [Offline search]: ../setup/setting-up-site-search.md#offline-search
+  [Offline plugin]: ../setup/building-for-offline-usage.md
 
 #### $ 12,000 – Piri Piri
 

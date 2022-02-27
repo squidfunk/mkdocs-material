@@ -54,7 +54,7 @@ The following configuration options are available:
 
     ``` yaml
     plugins:
-      - privacy:
+      - offline:
           enabled: !ENV [OFFLINE, false]
     ```
 
