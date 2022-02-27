@@ -24,7 +24,7 @@ import {
   Observable,
   Subject,
   bufferCount,
-  combineLatest,
+  combineLatestWith,
   debounceTime,
   defer,
   distinctUntilChanged,
@@ -34,6 +34,7 @@ import {
   of,
   repeat,
   scan,
+  share,
   skip,
   startWith,
   switchMap,
@@ -46,13 +47,17 @@ import {
 import { feature } from "~/_"
 import {
   Viewport,
+  getElement,
   getElements,
   getLocation,
   getOptionalElement,
   watchElementSize
 } from "~/browser"
 
-import { Component } from "../_"
+import {
+  Component,
+  getComponentElement
+} from "../_"
 import { Header } from "../header"
 
 /* ----------------------------------------------------------------------------
@@ -129,7 +134,16 @@ export function watchTableOfContents(
   /* Compute necessary adjustment for header */
   const adjust$ = header$
     .pipe(
-      map(header => 24 + header.height)
+      distinctUntilKeyChanged("height"),
+      map(({ height }) => {
+        const main = getComponentElement("main")
+        const grid = getElement(":scope > :first-child", main)
+        return height + 0.8 * (
+          grid.offsetTop -
+          main.offsetTop
+        )
+      }),
+      share()
     )
 
   /* Compute partition of previous and next anchors */
@@ -168,11 +182,12 @@ export function watchTableOfContents(
 
           /* Sort index by vertical offset (see https://bit.ly/30z6QSO) */
           map(index => new Map([...index].sort(([, a], [, b]) => a - b))),
+          combineLatestWith(adjust$),
 
           /* Re-compute partition when viewport offset changes */
-          switchMap(index => combineLatest([viewport$, adjust$])
+          switchMap(([index, adjust]) => viewport$
             .pipe(
-              scan(([prev, next], [{ offset: { y }, size }, adjust]) => {
+              scan(([prev, next], { offset: { y }, size }) => {
                 const last = y + size.height >= Math.floor(body.height)
 
                 /* Look forward */
