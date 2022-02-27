@@ -15,7 +15,7 @@ not be compliant with privacy regulations. Moreover, search even works
 
 ## Configuration
 
-### Built-in search
+### Built-in search plugin
 
 [:octicons-tag-24: 0.1.0][search support] ·
 :octicons-cpu-24: Plugin

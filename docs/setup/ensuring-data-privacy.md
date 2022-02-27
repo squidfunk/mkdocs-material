@@ -14,7 +14,7 @@ automatically bundled as part of the build process.
 
 ## Configuration
 
-### Built-in privacy
+### Built-in privacy plugin
 
 [:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.9.0][Insiders] ·
@@ -99,7 +99,7 @@ The following configuration options are available:
     authors might add external assets like third-party scripts or stylesheets 
     that would need to be remembered to be defined as further local assets.
     
-    This is the very reason the [built-in privacy] plugin exists — it automates
+    This is the very reason the [built-in privacy plugin] exists — it automates
     the process of downloading all external assets manually to ensure compliance
     with GDPR. Note that there are some [technical limitations].
 
@@ -110,7 +110,7 @@ The following configuration options are available:
 
 #### How it works
 
-The [built-in privacy] plugin scans the resulting HTML for links to external
+The [built-in privacy plugin] scans the resulting HTML for links to external
 resources, including external scripts, style sheets, images and web fonts, and
 downloads them to bundle them with your documentation site. Every URL refering
 to an external resource, no matter if part of a template or Markdown file is
@@ -129,7 +129,7 @@ The external script is downloaded, and the link is replaced with:
 Style sheets are scanned for external `url(...)` references, e.g. images and
 web fonts, which are then also downloaded and bundled with your documentation
 site. This means that [Google Fonts] can be configured in `mkdocs.yml` as usual,
-as the [built-in privacy] plugin automatically downloads and bundles all
+as the [built-in privacy plugin] automatically downloads and bundles all
 dependent resources.
 
 As a third measure, [`preconnect`][preconnect] hints used for DNS pre-fetching
@@ -138,7 +138,7 @@ removed during the build process.
 
 ??? example "Expand to inspect example"
 
-    For the official documentation, the [built-in privacy] plugin downloads the
+    For the official documentation, the [built-in privacy plugin] downloads the
     following resources:
 
     ``` { .sh id="example" }
@@ -206,7 +206,7 @@ removed during the build process.
        └─ polyfill.io/v3/polyfill.min.js
     ```
 
-  [built-in privacy]: #built-in-privacy
+  [built-in privacy plugin]: #built-in-privacy-plugin
   [preconnect]: https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch
 
 #### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
@@ -248,7 +248,7 @@ carried out. You might want to:
 #### Limitations
 
 Note that dynamically created URLs as part of scripts are not detected, and thus
-cannot be automatically downloaded. The [built-in privacy] plugin does not
+cannot be automatically downloaded. The [built-in privacy plugin] does not
 execute scripts – it can only detect fully qualified URLs to download and
 replace.
 

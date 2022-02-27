@@ -1037,7 +1037,7 @@ matches the new structure:
 
   [CSS variables]: setup/changing-the-colors.md#custom-colors
   [icon integration]: reference/icons-emojis.md#search
-  [prebuilt search indexes]: setup/setting-up-site-search.md#built-in-search
+  [prebuilt search indexes]: setup/setting-up-site-search.md#built-in-search-plugin
 
 ### Changes to `mkdocs.yml`
 
@@ -1135,7 +1135,7 @@ was renamed to `separator`:
         tokenizer: '[\s\-\.]+'
     ```
 
-  [plugin options]: setup/setting-up-site-search.md#built-in-search
+  [plugin options]: setup/setting-up-site-search.md#built-in-search-plugin
 
 #### `extra.social.*`
 
