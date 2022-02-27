@@ -29,7 +29,7 @@ Material for MkDocs can be installed with `pip`:
 === "8.x"
 
     ``` sh
-    pip install mkdocs-material=="8.*" #(1)!
+    pip install mkdocs-material=="8.*" # (1)!
     ```
 
     1.  Material for MkDocs uses [semantic versioning][^1], which is why it's a
