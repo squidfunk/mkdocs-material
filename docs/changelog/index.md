@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.3 <small>_ February 27, 2022</small> { id="8.2.3" }
+
+- Fixed #3578: Active element in table of contents off-by-one on large screens
+
 ### 8.2.2 <small>_ February 26, 2022</small> { id="8.2.2" }
 
 - Added automatic removal of query parameter when search is closed

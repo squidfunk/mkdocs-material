@@ -1,3 +1,7 @@
+mkdocs-material-8.2.3 (2022-02-27)
+
+  * Fixed #3578: Active element in table of contents off-by-one on large screens
+
 mkdocs-material-8.2.2 (2022-02-26)
 
   * Added automatic removal of query parameter when search is closed
