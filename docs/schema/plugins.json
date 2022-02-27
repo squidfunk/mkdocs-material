@@ -15,6 +15,9 @@
         "$ref": "plugins/minify.json"
       },
       {
+        "$ref": "plugins/offline.json"
+      },
+      {
         "$ref": "plugins/privacy.json"
       },
       {
