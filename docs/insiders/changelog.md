@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.10.0 <small>_ February 27, 2022</small> { id="4.10.0" }
+
+- Added support for offline plugin (supersedes offline search support)
+- Improved built-in privacy plugin to download nested JavaScript assets
+- Refactored configuration of built-in privacy plugin
+
 ### 4.9.1 <small>_ February 21, 2022</small> { id="4.9.1" }
 
 - Fixed #3610: missing `lxml` dependency for privacy plugin
