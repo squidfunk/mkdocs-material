@@ -53,7 +53,7 @@ The following configuration options are available:
 
 :   :octicons-milestone-24: Default: `bundle` – This option specifies what the
     plugin should do when encountering external assets. There are two options:
-    while `report` will issue a warning message during the build, `bundle` will
+    while `report` will issue warning messages during the build, `bundle` will
     automatically download all external files and adjust all references:
 
     ``` yaml
