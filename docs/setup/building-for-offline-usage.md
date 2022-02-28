@@ -41,7 +41,7 @@ plugins:
     experienced with MkDocs.
 
 The plugin will automatically disable [`use_directory_urls`][use_directory_urls]
-via `mkdocs.yml`, ensuring that the user can open your documentation directly
+via `mkdocs.yml`, ensuring that users can open your documentation directly
 from the local file system.
 
 The following configuration options are available:
