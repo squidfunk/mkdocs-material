@@ -88,7 +88,7 @@
     "postcss-logical": "^5.0.4",
     "preact": "^10.6.6",
     "rimraf": "^3.0.2",
-    "sass": "^1.49.8",
+    "sass": "^1.49.9",
     "stylelint": "^14.5.1",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^7.0.0",
