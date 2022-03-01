@@ -102,19 +102,20 @@
 
       <!-- Load fonts from Google -->
       {% if config.theme.font != false %}
-        {% set font = config.theme.font %}
+        {% set text = config.theme.font.text | d("Roboto", true) %}
+        {% set code = config.theme.font.code | d("Roboto Mono", true) %}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family={{
-            font.text | replace(' ', '+') + ':300,300i,400,400i,700,700i%7C' +
-            font.code | replace(' ', '+') + ':400,400i,700,700i'
+            text | replace(' ', '+') + ':300,300i,400,400i,700,700i%7C' +
+            code | replace(' ', '+') + ':400,400i,700,700i'
           }}&display=fallback"
         />
         <style>
           :root {
-            --md-text-font: "{{ font.text }}";
-            --md-code-font: "{{ font.code }}";
+            --md-text-font: "{{ text }}";
+            --md-code-font: "{{ code }}";
           }
         </style>
       {% endif %}
