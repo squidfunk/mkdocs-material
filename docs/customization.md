@@ -223,7 +223,7 @@ Next, all dependencies need to be installed, which is done with:
 
 ```
 cd mkdocs-material
-pip install -r requirements.txt
+pip install -e .
 pip install mkdocs-minify-plugin
 pip install mkdocs-redirects
 npm install
