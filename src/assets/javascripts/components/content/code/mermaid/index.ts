@@ -68,7 +68,7 @@ let index = 0
  * @returns Mermaid scripts observable
  */
 function fetchScripts(): Observable<void> {
-  return typeof mermaid === "undefined"
+  return typeof mermaid === "undefined" || mermaid instanceof Element
     ? watchScript("https://unpkg.com/mermaid@8.13.3/dist/mermaid.min.js")
     : of(undefined)
 }
