@@ -6,6 +6,13 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.10.1 <small>_ March 2, 2022</small> { id="4.10.1" }
+
+- Added missing build dependencies to Dockerfile
+- Fixed encoding issues in privacy plugin, now forcing UTF-8 encoding
+- Fixed #3624: Scroll to active navigation item unreliable in Firefox
+- Fixed #3642: Privacy plugin errors when font setting was omitted
+
 ### 4.10.0 <small>_ February 27, 2022</small> { id="4.10.0" }
 
 - Added support for offline plugin (supersedes offline search support)
