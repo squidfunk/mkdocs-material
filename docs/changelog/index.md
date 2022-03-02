@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.4 <small>_ March 2, 2022</small> { id="8.2.4" }
+
+- Fixed malformed Google Fonts URL when a font setting was omitted
+- Fixed #3648: Fixed specificity issue with admonitions in lists
+- Fixed #3653: Invalid outdated version banner URL when using instant loading
+
 ### 8.2.3 <small>_ February 27, 2022</small> { id="8.2.3" }
 
 - Fixed #3578: Active element in table of contents off-by-one on large screens
