@@ -22,12 +22,14 @@
 
 import {
   EMPTY,
+  Subject,
   combineLatest,
   filter,
   fromEvent,
   map,
   of,
-  switchMap
+  switchMap,
+  switchMapTo
 } from "rxjs"
 
 import { configuration } from "~/_"
@@ -46,13 +48,28 @@ import {
 import { fetchSitemap } from "../sitemap"
 
 /* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Setup options
+ */
+interface SetupOptions {
+  document$: Subject<Document>         /* Document subject */
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
  * Set up version selector
+ *
+ * @param options - Options
  */
-export function setupVersionSelector(): void {
+export function setupVersionSelector(
+  { document$ }: SetupOptions
+): void {
   const config = configuration()
   const versions$ = requestJSON<Version[]>(
     new URL("../versions.json", config.base)
@@ -115,17 +132,25 @@ export function setupVersionSelector(): void {
     .subscribe(([versions, current]) => {
       const topic = getElement(".md-header__topic")
       topic.appendChild(renderVersionSelector(versions, current))
+    })
+
+  /* Integrate outdated version banner with instant loading */
+  document$.pipe(switchMapTo(current$))
+    .subscribe(current => {
 
       /* Check if version state was already determined */
-      if (__md_get("__outdated", sessionStorage) === null) {
+      let outdated = __md_get("__outdated", sessionStorage)
+      if (outdated === null) {
         const latest = config.version?.default || "latest"
-        const outdated = !current.aliases.includes(latest)
+        outdated = !current.aliases.includes(latest)
 
         /* Persist version state in session storage */
         __md_set("__outdated", outdated, sessionStorage)
-        if (outdated)
-          for (const warning of getComponentElements("outdated"))
-            warning.hidden = false
       }
+
+      /* Unhide outdated version banner */
+      if (outdated)
+        for (const warning of getComponentElements("outdated"))
+          warning.hidden = false
     })
 }
