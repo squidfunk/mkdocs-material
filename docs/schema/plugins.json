@@ -12,6 +12,9 @@
         "$ref": "plugins/git-revision-date-localized.json"
       },
       {
+        "$ref": "https://mondeja.github.io/mkdocs-mdpo-plugin/schema.json"
+      },
+      {
         "$ref": "plugins/minify.json"
       },
       {
