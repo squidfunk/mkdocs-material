@@ -41,6 +41,9 @@ setup(
     name = "mkdocs-material",
     version = package["version"],
     url = package["homepage"],
+    project_urls = {
+        "Source": "https://github.com/squidfunk/mkdocs-material",
+    },
     license = package["license"],
     description = package["description"],
     long_description = long_description,
