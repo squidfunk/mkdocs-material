@@ -45,6 +45,18 @@
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#externals-directory",
               "type": "string",
               "default": "assets/externals"
+            },
+            "externals_exclude": {
+              "title": "External assets to be excluded",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#externals-exclude",
+              "type": "array",
+              "items": {
+                "title": "External assets matching this pattern will not be bundled",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#externals-exclude",
+                "pattern": ".*"
+              },
+              "uniqueItems": true,
+              "minItems": 1
             }
           },
           "additionalProperties": false
