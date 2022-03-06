@@ -361,7 +361,8 @@ kbd {
       margin-inline-start: px2em(20px);
 
       // Adjust spacing
-      :is(p, blockquote) {
+      p,
+      blockquote {
         margin: 0.5em 0;
       }
 
