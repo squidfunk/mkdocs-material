@@ -1,3 +1,9 @@
+mkdocs-material-8.2.5 (2022-03-06)
+
+  * Fixed #3596: Mermaid not working when headline with name 'Mermaid' present
+  * Fixed #3643: Reduce time to render pages with thousands of code blocks
+  * Fixed #3665: Missing styles for Mermaid.js flowcharts cluster labels
+
 mkdocs-material-8.2.4+insiders-4.10.1 (2022-03-02)
 
   * Added missing build dependencies to Dockerfile
