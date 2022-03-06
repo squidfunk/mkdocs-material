@@ -1,3 +1,7 @@
+mkdocs-material-8.2.5+insiders-4.11.0 (2022-03-06)
+
+  * Added support for excluding external assets from privacy plugin
+
 mkdocs-material-8.2.5 (2022-03-06)
 
   * Fixed #3596: Mermaid not working when headline with name 'Mermaid' present

@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.11.0 <small>_ March 6, 2022</small> { id="4.11.0" }
+
+- Added support for excluding external assets from privacy plugin
+
 ### 4.10.1 <small>_ March 2, 2022</small> { id="4.10.1" }
 
 - Added missing build dependencies to Dockerfile
