@@ -748,11 +748,7 @@
               "$ref": "assets/fonts.json"
             }
           },
-          "additionalProperties": false,
-          "required": [
-            "text",
-            "code"
-          ]
+          "additionalProperties": false
         },
         {
           "title": "Disable Google Fonts",
