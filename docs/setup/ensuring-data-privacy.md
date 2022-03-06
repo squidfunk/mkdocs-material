@@ -85,6 +85,36 @@ The following configuration options are available:
           externals_directory: assets/externals
     ```
 
+`externals_exclude`{ #externals-exclude }
+
+:   :octicons-milestone-24: Default: _none_ – This option allows to exclude
+    certain external assets from processing by the privacy plugin, so they will
+    not be downloaded and bundled during the build:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          externals_exclude: # (1)!
+            - cdn.jsdelivr.net/npm/mathjax@3/* 
+            - giscus.app/*
+    ```
+
+    1.  [MathJax] loads web fonts for typesetting of mathematical content
+        through relative URLs, and thus cannot be automatically bundled by the
+        privacy plugin. [MathJax can be self-hosted].
+
+        Giscus, which we recommend to use as a [comment system], uses a technique
+        called code-splitting to load only the code that is necessary, which
+        is implemented via relative URLs. [Giscus can be self-hosted] as well.
+
+    Excluding specific external assets can be necessary if they contain
+    dynamically created or relative URLs, which can't be resolved by the privacy
+    plugin due to [technical limitations].
+
+  [MathJax]: ../reference/mathjax.md
+  [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
+  [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
+  [comment system]: adding-a-comment-system.md
   [external assets]: #how-it-works
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
 
