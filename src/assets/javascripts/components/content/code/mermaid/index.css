@@ -98,6 +98,16 @@ marker {
   font-family: var(--md-mermaid-font-family);
 }
 
+/* Flowchart markers */
+#flowchart-circleStart,
+#flowchart-circleEnd,
+#flowchart-crossStart,
+#flowchart-crossEnd,
+#flowchart-pointStart,
+#flowchart-pointEnd {
+  stroke: none;
+}
+
 /* ----------------------------------------------------------------------------
  * Rules: class diagrams
  * ------------------------------------------------------------------------- */

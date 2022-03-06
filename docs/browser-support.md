@@ -13,6 +13,19 @@ modern CSS features like [custom properties] and [mask images].
 
 ## Supported browsers
 
+``` mermaid
+    flowchart BT
+        a2[リレー1] & a3[リレー2] <-- 開放FW --> a4[カルダノネットワーク]
+        subgraph ide1[プール]
+            subgraph リレーIP指定FW
+                a1[BP]
+            end
+                a1[BP] <--> a2[リレー1] & a3[リレー2]
+        end
+        c1[PC] --> ide1
+        c1[PC] --> エアギャップ
+```
+
 The following table lists all browsers for which Material for MkDocs offers full
 support, so it can be assumed that all features work without degradation. If you
 find a feature not to be working in a browser in the supported version range,
