@@ -260,7 +260,7 @@ export function setupInstantLoading(
     .pipe(
       skip(1),
       map(() => getComponentElement("container")),
-      switchMap(el => of(...getElements("script", el))),
+      switchMap(el => getElements("script", el)),
       concatMap(el => {
         const script = h("script")
         if (el.src) {

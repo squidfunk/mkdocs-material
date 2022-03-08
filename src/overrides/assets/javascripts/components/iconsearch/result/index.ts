@@ -218,7 +218,7 @@ export function mountIconSearchResult(
           .pipe(
             bufferCount(10),
             zipWith(boundary$),
-            switchMap(([chunk]) => of(...chunk))
+            switchMap(([chunk]) => chunk)
           )
       )),
       withLatestFrom(query$)

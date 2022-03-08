@@ -26,7 +26,6 @@ import {
   fromEvent,
   mapTo,
   mergeMap,
-  of,
   switchMap,
   tap
 } from "rxjs"
@@ -77,7 +76,7 @@ export function patchScrollfix(
 ): void {
   document$
     .pipe(
-      switchMap(() => of(...getElements("[data-md-scrollfix]"))),
+      switchMap(() => getElements("[data-md-scrollfix]")),
       tap(el => el.removeAttribute("data-md-scrollfix")),
       filter(isAppleDevice),
       mergeMap(el => fromEvent(el, "touchstart")

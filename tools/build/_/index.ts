@@ -108,7 +108,7 @@ export function resolve(
   return from(glob(pattern, options))
     .pipe(
       catchError(() => EMPTY),
-      switchMap(files => from(files)),
+      switchMap(files => files),
       options?.watch
         ? mergeWith(watch(pattern, options))
         : identity
