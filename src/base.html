@@ -81,8 +81,8 @@
         content="mkdocs-{{ mkdocs_version }}, $md-name$-$md-version$"
       />
 
-      <!-- Block Search indexing with noindex -->
-      {% if config.extra.noindex %}
+      <!-- Block search indexing on Codacy Self-hosted documentation pages -->
+      {% if config.extra.self_hosted %}
         <meta property="robots" content="noindex" />
       {% else %}
         <meta property="robots" content="index, follow" />
