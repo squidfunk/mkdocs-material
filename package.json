@@ -51,7 +51,7 @@
     "url-polyfill": "^1.1.12"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^6.0.0",
+    "@fortawesome/fontawesome-free": "^6.1.0",
     "@mdi/svg": "^6.5.95",
     "@primer/octicons": "^17.0.0",
     "@types/clipboard": "^2.0.7",
