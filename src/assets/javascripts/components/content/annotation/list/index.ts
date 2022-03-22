@@ -71,14 +71,15 @@ function findAnnotationMarkers(container: HTMLElement): Text[] {
   const markers: Text[] = []
   for (const comment of getElements(".c, .c1, .cm", container)) {
     let match: RegExpExecArray | null
-    let text = comment.firstChild as Text
 
     /* Split text at marker and add to list */
-    while ((match = /\((\d+)\)/.exec(text.textContent!))) {
-      const marker = text.splitText(match.index)
-      text = marker.splitText(match[0].length)
-      markers.push(marker)
-    }
+    let text = comment.firstChild as Text
+    if (text instanceof Text)
+      while ((match = /\((\d+)\)/.exec(text.textContent!))) {
+        const marker = text.splitText(match.index)
+        text = marker.splitText(match[0].length)
+        markers.push(marker)
+      }
   }
   return markers
 }
