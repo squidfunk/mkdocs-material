@@ -64,7 +64,7 @@ const observer$ = defer(() => of(
     for (const entry of entries)
       entry$.next(entry)
   }, {
-    threshold: 1
+    threshold: 0
   })
 ))
   .pipe(
