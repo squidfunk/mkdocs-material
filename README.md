@@ -92,6 +92,9 @@
   <a href="https://www.elli.eco/en/home" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elli.png" height="65"
   /></a>
+  <a href=" https://solutions.rstudio.com" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rstudio.png" height="65"
+  /></a>
 </p>
 <p>&nbsp;</p>
 

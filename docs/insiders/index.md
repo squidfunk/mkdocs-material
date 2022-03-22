@@ -132,7 +132,9 @@ You can cancel your sponsorship anytime.[^5]
 [![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
 [![Datadog]](https://datadoghq.com/){ target=_blank title="Datadog" }
 [![Zenoss]](https://zenoss.com/){ target=_blank title="Zenoss" }
-[![Elli]](https://www.elli.eco/en/home){ target=_blank title="Elli - A Brand of the Volkswagen Group" }
+[![Elli]](https://www.elli.eco/en/home){ target=_blank title="Elli - A Brand of the 
+Volkswagen Group" }
+[![RStudio]](https://solutions.rstudio.com){ target=_blank title="RStudio" }
 
 </div>
 
@@ -146,6 +148,7 @@ You can cancel your sponsorship anytime.[^5]
   [Datadog]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png
   [Zenoss]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png
   [Elli]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elli.png
+  [RStudio]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rstudio.png
 
 <hr />
 
