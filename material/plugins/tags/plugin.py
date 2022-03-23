@@ -28,6 +28,9 @@ from mkdocs.plugins import BasePlugin
 # Class
 # -----------------------------------------------------------------------------
 
+class TagsException(Exception):
+    pass
+
 # Tags plugin
 class TagsPlugin(BasePlugin):
 
@@ -58,7 +61,11 @@ class TagsPlugin(BasePlugin):
     def on_nav(self, nav, files, **kwargs):
         file = self.config.get("tags_file")
         if file:
-            self.tags_file = files.get_file_from_path(file)
+            tags_file = files.get_file_from_path(file)
+            if tags_file:
+                self.tags_file = tags_file
+            else:
+                raise TagsException(f"The tags file, {file}, doesn't exist.")
             files.append(self.tags_file)
 
     # Build and render tags index page
