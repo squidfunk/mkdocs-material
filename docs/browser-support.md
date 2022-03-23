@@ -61,7 +61,7 @@ the following older browser versions might work with some additional effort:
   boxes due to missing support for [mask images]. While this cannot be
   polyfilled, it might be mitigated by hiding icons with [additional CSS].
 - :fontawesome-brands-edge: __Edge 16-18__ – the spacing of some elements might be
-  a little of due to missing support for the [:is pseudo selector], which can be
+  a little off due to missing support for the [:is pseudo selector], which can be
   mitigated with some [additional CSS].
 - :fontawesome-brands-internet-explorer: __Internet Explorer__ - no support,
   mainly due to missing support for [custom properties]. The last version of
