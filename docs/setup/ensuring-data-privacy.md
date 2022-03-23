@@ -7,12 +7,93 @@ template: overrides/main.html
 Material for MkDocs makes compliance with data privacy regulations very easy, 
 as it offers a native [cookie consent] solution to seek explicit consent from
 users before setting up [tracking]. Additionally, external assets can be
-automatically downloaded for self-hosting.
+automatically downloaded for [self-hosting].
 
-  [cookie consent]: setting-up-site-analytics.md#cookie-consent
+  [cookie consent]: #cookie-consent
   [tracking]: setting-up-site-analytics.md
+  [self-hosting]: #built-in-privacy-plugin
 
 ## Configuration
+
+### Cookie consent
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.10.0][Insiders] ·
+:octicons-milestone-24: Default: _none_
+
+Material for MkDocs ships a native and extensible cookie consent form which
+asks the user for his consent prior to sending any data via analytics. Add the
+following to `mkdocs.yml`:
+
+``` yaml
+extra:
+  consent:
+    title: Cookie consent
+    description: >- # (1)!
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+```
+
+1.  You can add arbitrary HTML tags in the `description`, e.g. to link to your
+    terms of service or other parts of the site.
+
+Note that both, `title` and `description`, are required. If Google Analytics
+was configured via `mkdocs.yml`, the cookie consent will automatically include
+a setting for the user to disable it. Furthermore, [custom cookies] can be
+integrated by using the `cookies` field:
+
+===  "Custom cookie name"
+
+    ``` yaml
+    extra:
+      consent:
+        cookies:
+          analytics: Custom name # (1)!
+    ```
+
+    1.  The default name of the `analytics` cookie is `Google Analytics`.
+
+===  "Custom initial state"
+
+    ``` yaml
+    extra:
+      consent:
+        cookies:
+          analytics:
+            name: Google Analytics
+            checked: false
+    ```
+
+===  "Custom cookie"
+
+    ``` yaml
+    extra:
+      consent:
+        cookies:
+          analytics: Google Analytics # (1)!
+          custom: Custom cookie
+    ```
+
+    1.  If you add a custom cookie to the `cookies` field, the `analytics`
+        cookie  must be added back explicitly, or analytics won't be triggered.
+
+When a user first visits your site, a cookie consent form is rendered:
+
+[![cookie consent enabled]][cookie consent enabled]
+
+In order to comply with GDPR, users must be able to change their cookie settings
+at any time. This can be done by creating a simple link as part of any document,
+e.g. your privacy policy:
+
+``` markdown
+[Change cookie settings](#__consent){ .md-button }
+```
+
+  [Insiders]: ../insiders/index.md
+  [custom cookies]: #custom-cookies
+  [cookie consent enabled]: ../assets/screenshots/consent.png
 
 ### Built-in privacy plugin
 
@@ -299,4 +380,28 @@ Instead, always use fully qualified URLs:
 const url ="https://polyfill.io/v3/polyfill.min.js"
 ```
 
-  [Insiders]: ../insiders/index.md
+## Customization
+
+### Custom cookies
+
+If you've customized the [cookie consent] and added a `custom` cookie, the user
+will be prompted to accept your custom cookie. Use [additional JavaScript] to
+check whether the user accepted it:
+
+=== ":octicons-file-code-16: docs/javascripts/consent.js"
+
+    ``` js
+    var consent = __md_get("__consent")
+    if (consent && consent.custom) {
+      /* The user accepted the cookie */
+    }
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_javascript:
+      - javascripts/consent.js
+    ```
+
+  [additional JavaScript]: ../customization.md#additional-javascript

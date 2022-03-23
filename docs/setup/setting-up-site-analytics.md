@@ -7,12 +7,11 @@ template: overrides/main.html
 As with any other service offered on the web, understanding how your project
 documentation is actually used can be an essential success factor. Material for
 MkDocs natively integrates with [Google Analytics] and offers a customizable
-[cookie consent][extra.consent] and a [feedback widget]
-[extra.analytics.feedback].
+[cookie consent] and a [feedback widget].
 
   [Google Analytics]: https://developers.google.com/analytics
-  [extra.consent]: #cookie-consent
-  [extra.analytics.feedback]: #was-this-page-helpful
+  [cookie consent]: ensuring-data-privacy.md#cookie-consent
+  [feedback widget]: #was-this-page-helpful
 
 ## Configuration
 
@@ -98,7 +97,7 @@ extra:
             using our <a href="..." target=_blank>feedback form</a>.
 ```
 
-1.  This feature is natively integrated with [Google Analytics][extra.analytics],
+1.  This feature is natively integrated with [Google Analytics][analytics],
     which is why `provider` and `property` are also required. However, it's also
     possible to provide a [custom feedback integration].
 
@@ -108,7 +107,7 @@ extra:
 Both properties, `title` and `ratings`, are required. Note that it's allowed to
 define more than two ratings, e.g. to implement a 1-5 star rating. Since the
 feedback widget sends data to a third-party service, it is, of course, natively 
-integrated with the [cookie consent][extra.consent] feature[^1].
+integrated with the [cookie consent] feature[^1].
 
   [^1]:
     If the user doesn't accept the `analytics` cookie, the feedback widget is
@@ -211,100 +210,20 @@ The following properties must be set for each rating:
 
     An alternative to GitHub issues is [Google Forms].
 
+  [Insiders]: ../insiders/index.md
   [feedback widget]: #feedback
-  [extra.analytics]: #google-analytics
+  [analytics]: #google-analytics
   [feedback report]: ../assets/screenshots/feedback-report.png
   [custom feedback integration]: #custom-site-feedback
   [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
   [Google Forms]: https://www.google.com/forms/about/
 
-### Cookie consent
-
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.10.0][Insiders] ·
-:octicons-milestone-24: Default: _none_
-
-Material for MkDocs ships a native and extensible cookie consent form which
-asks the user for his consent prior to sending any data via analytics. Add the
-following to `mkdocs.yml`:
-
-``` yaml
-extra:
-  consent:
-    title: Cookie consent
-    description: >- # (1)!
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
-```
-
-1.  You can add arbitrary HTML tags in the `description`, e.g. to link to your
-    terms of service or other parts of the site.
-
-Note that both, `title` and `description`, are required. If Google Analytics
-was configured via `mkdocs.yml`, the cookie consent will automatically include
-a setting for the user to disable it. Furthermore, [custom cookies] can be
-integrated by using the `cookies` field:
-
-===  "Custom cookie name"
-
-    ``` yaml
-    extra:
-      consent:
-        cookies:
-          analytics: Custom name # (1)!
-    ```
-
-    1.  The default name of the `analytics` cookie is `Google Analytics`.
-
-===  "Custom initial state"
-
-    ``` yaml
-    extra:
-      consent:
-        cookies:
-          analytics:
-            name: Google Analytics
-            checked: false
-    ```
-
-===  "Custom cookie"
-
-    ``` yaml
-    extra:
-      consent:
-        cookies:
-          analytics: Google Analytics # (1)!
-          custom: Custom cookie
-    ```
-
-    1.  If you add a custom cookie to the `cookies` field, the `analytics`
-        cookie  must be added back explicitly, or analytics won't be triggered.
-
-When a user first visits your site, a cookie consent form is rendered:
-
-[![extra.consent enabled]][extra.consent enabled]
-
-In order to comply with GDPR, users must be able to change their cookie settings
-at any time. This can be done by creating a simple link as part of any document,
-e.g. your privacy policy:
-
-``` markdown
-[Change cookie settings](#__consent){ .md-button }
-```
-
-  [Insiders]: ../insiders/index.md
-  [custom cookies]: #custom-cookies
-  [extra.consent enabled]: ../assets/screenshots/consent.png
-
 ## Usage
 
 ### Hiding the feedback widget
 
-When [Metadata] is enabled, the [feedback widget][extra.analytics.feedback] can
-be hidden for a document with custom front matter. Add the following lines at
-the top of a Markdown file:
+When [Metadata] is enabled, the [feedback widget] can be hidden for a document
+with custom front matter. Add the following lines at the top of a Markdown file:
 
 ``` bash
 ---
@@ -317,7 +236,6 @@ hide:
 ```
 
   [Metadata]: extensions/python-markdown.md#metadata
-
 
 ## Customization
 
@@ -395,29 +313,5 @@ generated by users interacting with the feedback widget with the help of some
       - javascripts/feedback.js
     ```
 
-### Custom cookies
-
-If you've customized the [cookie consent][extra.consent] and added a `custom`
-cookie, the user will be prompted to accept your custom cookie. Use [additional
-JavaScript] to check whether the user accepted it:
-
-=== ":octicons-file-code-16: docs/javascripts/consent.js"
-
-    ``` js
-    var consent = __md_get("__consent")
-    if (consent && consent.custom) {
-      /* The user accepted the cookie */
-    }
-    ```
-
-=== ":octicons-file-code-16: mkdocs.yml"
-
-    ``` yaml
-    extra_javascript:
-      - javascripts/consent.js
-    ```
-
 &nbsp;
 { #feedback style="margin: 0; height: 0" }
-
-  [additional JavaScript]: ../customization.md#additional-javascript

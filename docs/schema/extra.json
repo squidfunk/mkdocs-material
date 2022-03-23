@@ -133,40 +133,40 @@
     },
     "consent": {
       "title": "Cookie consent",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#cookie-consent",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#cookie-consent",
       "type": "object",
       "properties": {
         "title": {
           "title": "Cookie consent title",
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#cookie-consent",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#cookie-consent",
           "type": "string",
           "default": "Cookie consent"
         },
         "description": {
           "title": "Cookie consent description",
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#cookie-consent",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#cookie-consent",
           "type": "string"
         },
         "cookies": {
           "title": "Cookies",
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#cookie-consent",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#cookie-consent",
           "type": "object",
           "properties": {
             "analytics": {
               "title": "Cookie",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#cookie-consent",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#cookie-consent",
               "oneOf": [
                 {
                   "type": "object",
                   "properties": {
                     "name": {
                       "title": "Cookie name",
-                      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#cookie-consent",
+                      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#cookie-consent",
                       "type": "string"
                     },
                     "checked": {
                       "title": "Initial state",
-                      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#cookie-consent",
+                      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#cookie-consent",
                       "type": "boolean",
                       "default": true
                     }

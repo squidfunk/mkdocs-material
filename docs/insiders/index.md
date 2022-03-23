@@ -218,7 +218,7 @@ are released for general availability.
 - [x] [Was this page helpful?]
 - [x] [Dismissable announcement bar]
 
-  [Cookie consent]: ../setup/setting-up-site-analytics.md#cookie-consent
+  [Cookie consent]: ../setup/ensuring-data-privacy.md#cookie-consent
   [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
   [Dismissable announcement bar]: ../setup/setting-up-the-header.md#mark-as-read
 

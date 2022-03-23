@@ -187,7 +187,7 @@ __55__ times, `mkdocs-material-insiders` was shipped __72__ times.
   [Color palette toggle]: ../../setup/changing-the-colors.md#color-palette-toggle
   [Content tabs: improved support]: ../../reference/content-tabs.md
   [Content tabs: auto-linking]: ../../reference/content-tabs.md#linked-content-tabs
-  [Cookie consent]: ../../setup/setting-up-site-analytics.md#cookie-consent
+  [Cookie consent]: ../../setup/ensuring-data-privacy.md#cookie-consent
   [Custom admonition icons]: ../../reference/admonitions.md#admonition-icons
   [Dark mode support for images]: ../../reference/images.md#light-and-dark-mode
   [Dismissable announcement bar]: ../../setup/setting-up-the-header.md#mark-as-read
