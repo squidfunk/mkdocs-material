@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.6 <small>_ March 23, 2022</small> { id="8.2.6" }
+
+- Fixed #3695: Deprecation warning for unescaped backslashes in templates
+- Fixed #3696: Annotations not mounted in some Terraform code blocks
+- Fixed #3698: Annotations not mounted in long code blocks (8.2.5 regression)
+
 ### 8.2.5 <small>_ March 6, 2022</small> { id="8.2.5" }
 
 - Fixed #3596: Mermaid not working when headline with name 'Mermaid' present
