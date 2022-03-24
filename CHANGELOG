@@ -1,3 +1,7 @@
+mkdocs-material-8.2.7 (2022-03-24)
+
+  * Temporarily limit Jinja version range to < 3.1 due to breaking changes
+
 mkdocs-material-8.2.6 (2022-03-23)
 
   * Fixed #3695: Deprecation warning for unescaped backslashes in templates

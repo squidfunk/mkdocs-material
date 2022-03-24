@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.7 <small>_ March 24, 2022</small> { id="8.2.7" }
+
+- Temporarily limit Jinja version range to < 3.1 due to breaking changes
+
 ### 8.2.6 <small>_ March 23, 2022</small> { id="8.2.6" }
 
 - Fixed #3695: Deprecation warning for unescaped backslashes in templates
