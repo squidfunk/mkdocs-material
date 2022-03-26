@@ -18,10 +18,15 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import logging
+import sys
+
 from collections import defaultdict
 from markdown.extensions.toc import slugify
 from mkdocs import utils
+from mkdocs.commands.build import DuplicateFilter
 from mkdocs.config.config_options import Type
+from mkdocs.exceptions import ConfigurationError
 from mkdocs.plugins import BasePlugin
 
 # -----------------------------------------------------------------------------
@@ -59,6 +64,11 @@ class TagsPlugin(BasePlugin):
         file = self.config.get("tags_file")
         if file:
             self.tags_file = files.get_file_from_path(file)
+            if not self.tags_file:
+                log.error(f"Configuration error: {file} doesn't exist.")
+                sys.exit()
+
+            # Add tags file to files
             files.append(self.tags_file)
 
     # Build and render tags index page
@@ -93,7 +103,7 @@ class TagsPlugin(BasePlugin):
 
     # Render the given tag and links to all pages with occurrences
     def __render_tag_links(self, tag, pages):
-        content = ["## <span class=\"md-tag\">{}</span>".format(tag), ""]
+        content = [f"## <span class=\"md-tag\">{tag}</span>", ""]
         for page in pages:
             url = utils.get_relative_url(
                 page.file.src_path,
@@ -113,5 +123,13 @@ class TagsPlugin(BasePlugin):
             return dict(name = tag)
         else:
             url = self.tags_file.url
-            url += "#{}".format(self.slugify(tag))
+            url += f"#{self.slugify(tag)}"
             return dict(name = tag, url = url)
+
+# -----------------------------------------------------------------------------
+# Data
+# -----------------------------------------------------------------------------
+
+# Set up logging
+log = logging.getLogger("mkdocs")
+log.addFilter(DuplicateFilter())
