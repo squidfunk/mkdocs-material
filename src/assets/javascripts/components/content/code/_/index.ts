@@ -198,13 +198,14 @@ export function mountCodeBlock(
             tap(state => push$.next(state)),
             finalize(() => push$.complete()),
             map(state => ({ ref: el, ...state })),
-            mergeWith(watchElementSize(container)
-              .pipe(
-                takeUntil(push$.pipe(takeLast(1))),
-                map(({ width, height }) => width && height),
-                distinctUntilChanged(),
-                switchMap(active => active ? annotations$ : EMPTY)
-              )
+            mergeWith(
+              watchElementSize(container)
+                .pipe(
+                  takeUntil(push$.pipe(takeLast(1))),
+                  map(({ width, height }) => width && height),
+                  distinctUntilChanged(),
+                  switchMap(active => active ? annotations$ : EMPTY)
+                )
             )
           )
       }
