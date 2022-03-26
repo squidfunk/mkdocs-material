@@ -172,7 +172,6 @@
     // alignment of text following an annotation.
     &::after {
       position: absolute;
-      top: 0.025em;
       left: -0.126em;
       z-index: -1;
       // Hack: the first property is used as a fallback for older browsers
@@ -209,20 +208,28 @@
       }
     }
 
-    // Annotation marker content
-    [data-md-annotation-id]::before {
+    // Annotation marker
+    [data-md-annotation-id] {
       display: inline-block;
-      transition: transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1);
-      content: attr(data-md-annotation-id);
+      line-height: 90%;
 
-      // [not print]: if we're not in print mode, show a `+` sign instead of
-      // the original numbers, as context is already given by the position.
-      @media not print {
-        content: "+";
+      // Annotation marker content
+      &::before {
+        display: inline-block;
+        padding-bottom: 0.1em;
+        vertical-align: 0.0625em;
+        transition: transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1);
+        content: attr(data-md-annotation-id);
 
-        // Annotation marker content on focus
-        :focus-within > & {
-          transform: rotate(45deg);
+        // [not print]: if we're not in print mode, show a `+` sign instead of
+        // the original numbers, as context is already given by the position.
+        @media not print {
+          content: "+";
+
+          // Annotation marker content on focus
+          :focus-within > & {
+            transform: rotate(45deg);
+          }
         }
       }
     }

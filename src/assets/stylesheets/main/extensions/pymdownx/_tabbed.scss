@@ -187,12 +187,12 @@
     // Code block is the first child of a tab - remove margin and mirror
     // previous (now deprecated) SuperFences code block grouping behavior
     > pre:first-child,
-    > .highlight:first-child pre,
+    > .highlight:first-child > pre:first-child,
     > .highlighttable:first-child {
       margin: 0;
 
       // Remove rounded borders
-      code {
+      > code {
         border-start-start-radius: 0;
         border-start-end-radius: 0;
       }
@@ -202,11 +202,6 @@
     > .highlighttable:first-child .linenos {
       border-start-start-radius: 0;
       border-start-end-radius: 0;
-    }
-
-    // Code block result container is the second child
-    > .result:nth-child(2) {
-      margin-top: 0;
     }
 
     // Adjust spacing for nested tabbed container
