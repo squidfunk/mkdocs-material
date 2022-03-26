@@ -24,6 +24,7 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
+  asyncScheduler,
   auditTime,
   combineLatest,
   defer,
@@ -33,6 +34,7 @@ import {
   mapTo,
   merge,
   startWith,
+  subscribeOn,
   takeLast,
   takeUntil,
   tap
@@ -73,7 +75,8 @@ export interface ContentTabs {
 export function watchContentTabs(
   el: HTMLElement
 ): Observable<ContentTabs> {
-  const inputs = getElements(":scope > input", el)
+  const inputs = getElements<HTMLInputElement>(":scope > input", el)
+  const active = inputs.find(input => input.checked) || inputs[0]
   return merge(...inputs.map(input => fromEvent(input, "change")
     .pipe(
       mapTo<ContentTabs>({
@@ -83,7 +86,7 @@ export function watchContentTabs(
   ))
     .pipe(
       startWith({
-        active: getElement(`label[for=${inputs[0].id}]`)
+        active: getElement(`label[for=${active.id}]`)
       } as ContentTabs)
     )
 }
@@ -144,4 +147,7 @@ export function mountContentTabs(
         map(state => ({ ref: el, ...state }))
       )
   })
+    .pipe(
+      subscribeOn(asyncScheduler)
+    )
 }
