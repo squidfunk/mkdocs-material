@@ -170,6 +170,16 @@ kbd {
     &:focus,
     &:hover {
       color: var(--md-accent-fg-color);
+
+      // Inline code block
+      code {
+        background-color: var(--md-accent-fg-color--transparent);
+      }
+    }
+
+    // Inline code block
+    code {
+      color: currentcolor;
     }
 
     // Show outline for keyboard devices
@@ -200,17 +210,13 @@ kbd {
     background-color: var(--md-code-bg-color);
     border-radius: px2rem(2px);
     box-decoration-break: clone;
+    transition: background-color 125ms;
 
     // Hide outline for pointer devices
     &:not(.focus-visible) {
       outline: none;
       -webkit-tap-highlight-color: transparent;
     }
-  }
-
-  // Ensure link color in code blocks
-  a code {
-    color: currentcolor;
   }
 
   // Unformatted content
