@@ -109,6 +109,12 @@
       "type": "boolean",
       "default": false
     },
+    "dev_addr": {
+      "title": "Development IP Address",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#dev_addr",
+      "type": "string",
+      "default": "127.0.0.1:8000"
+    },
     "remote_branch": {
       "title": "Remote branch to deploy to",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#remote_branch",
