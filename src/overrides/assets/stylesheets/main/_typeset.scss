@@ -25,7 +25,7 @@
 // ----------------------------------------------------------------------------
 
 // Pumping heart animation
-@keyframes mdx-heart {
+@keyframes heart {
   0%,
   40%,
   80%,
@@ -77,7 +77,7 @@
 
   // Pumping heart
   .mdx-heart {
-    animation: mdx-heart 1000ms infinite;
+    animation: heart 1000ms infinite;
   }
 
   // Insiders color (for links, etc.)
