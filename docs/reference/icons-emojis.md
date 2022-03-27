@@ -3,7 +3,7 @@ template: overrides/main.html
 icon: material/emoticon-happy-outline
 ---
 
-# Icons + Emojis
+# Icons, Emojis
 
 One of the best features of Material for MkDocs is the possibility to use [more
 than 8,000 icons][icon search] and thousands of emojis in your project 

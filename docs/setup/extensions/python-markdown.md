@@ -82,6 +82,7 @@ markdown_extensions:
 No configuration options are available. See reference for usage:
 
 - [Using annotations]
+- [Using grids]
 - [Adding buttons]
 - [Adding icons with colors]
 - [Image alignment]
@@ -90,6 +91,7 @@ No configuration options are available. See reference for usage:
   [Attribute Lists]: https://python-markdown.github.io/extensions/attr_list/
   [Attribute Lists support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Attribute Lists limitations]: https://python-markdown.github.io/extensions/attr_list/#limitations
+  [Using grids]: ../../reference/grids.md#using-grids
   [Adding buttons]: ../../reference/buttons.md#adding-buttons
   [Adding icons with colors]: ../../reference/buttons.md#with-colors
   [Image alignment]: ../../reference/images.md#image-alignment
@@ -200,11 +202,13 @@ markdown_extensions:
 No configuration options are available. See reference for usage:
 
 - [Using annotations]
+- [Using grids]
 - [Image captions]
 
   [Markdown in HTML]: https://python-markdown.github.io/extensions/md_in_html/
   [Markdown in HTML support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Using annotations]: ../../reference/annotations.md#usage
+  [Using grids]: ../../reference/grids.md#usage
   [Image captions]: ../../reference/images.md#image-captions
 
 ### Table of Contents

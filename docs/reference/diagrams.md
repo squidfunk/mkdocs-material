@@ -1,6 +1,6 @@
 ---
 template: overrides/main.html
-icon: material/chart-gantt
+icon: material/graph-outline
 ---
 
 # Diagrams
