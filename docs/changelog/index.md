@@ -6,6 +6,15 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.8 <small>_ March 27, 2022</small> { id="8.2.8" }
+
+- Bumped MkDocs version to 1.3.0 to mitigate breaking changes in Jinja
+- Reverted Jinja version range limitation (added in 8.2.7)
+- Improved styling of annotations and fixed borders of code blocks in tabs
+- Added background color to code blocks in focused/hovered links
+- Added check in tags plugin whether tags overview page exists
+- Fixed #3744: Content tab indicator on wrong position when using back button
+
 ### 8.2.7 <small>_ March 24, 2022</small> { id="8.2.7" }
 
 - Temporarily limit Jinja version range to < 3.1 due to breaking changes

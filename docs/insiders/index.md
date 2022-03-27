@@ -170,8 +170,9 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Card grids] :material-new-box:
 - [x] [Offline plugin] :material-new-box:
-- [x] [Privacy plugin] :material-new-box:
+- [x] [Privacy plugin]
 - [x] [Table of contents anchor following]
 - [x] [Annotations]
 - [x] [Navigation icons]
@@ -266,9 +267,13 @@ are released for general availability.
 #### $ 14,000 – Goat's Horn
 
 - [x] [Privacy plugin]
+- [x] [Card grids]
+- [ ] [Instant previews]
 - [ ] and much more, to be announced ...
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
+  [Card grids]: ../reference/grids.md
+  [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed
 
