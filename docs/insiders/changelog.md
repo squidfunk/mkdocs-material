@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.12.0 <small>_ March 27, 2022</small> { id="4.12.0" }
+
+- Added support for card grids and grid layouts
+- Fixed #3685: Annotations sometimes broken when using instant loading 
+- Fixed #3742: Automatically add Mermaid.js when building for offline usage
+
 ### 4.11.0 <small>_ March 6, 2022</small> { id="4.11.0" }
 
 - Added support for excluding external assets from privacy plugin

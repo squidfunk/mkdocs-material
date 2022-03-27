@@ -1,3 +1,9 @@
+mkdocs-material-8.2.8+insiders-4.12.0 (2022-03-27)
+
+  * Added support for card grids and grid layouts
+  * Fixed #3685: Annotations sometimes broken when using instant loading
+  * Fixed #3742: Automatically add Mermaid.js when building for offline usage
+
 mkdocs-material-8.2.8 (2022-03-27)
 
   * Bumped MkDocs version to 1.3.0 to mitigate breaking changes in Jinja
