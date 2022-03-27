@@ -53,14 +53,16 @@ plugins:
   - social
 ```
 
+See also [built-in-plugins] for a way to control when this plugin is
+required.
+
 The following configuration options are available:
 
 `cards`{ #cards }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     to generate social card images. If you want to switch the plugin off, e.g.
-    for local builds, you can either use MkDocs [configuration inheritance],
-    as described in [built-in-plugins], or use an [environment variable]:
+    for local builds, you can use an [environment variable]:
 
     ``` yaml
     plugins:
@@ -118,7 +120,6 @@ The following configuration options are available:
   [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
   [Google Fonts]: https://fonts.google.com
   [built-in-plugins]: ../insiders/getting-started.md#built-in-plugins
-  [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
 
 #### Dependencies
 
