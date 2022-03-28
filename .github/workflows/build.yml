@@ -41,7 +41,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Set up Node.js dependency cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache
         with:
           path: node_modules
