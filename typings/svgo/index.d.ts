@@ -38,7 +38,7 @@ declare module "svgo" {
    * Optimization configuration
    */
   interface OptimizeConfig {
-    plugins: Plugin[]
+    plugins: Array<string | Plugin>
   }
 
   /**
@@ -56,13 +56,4 @@ declare module "svgo" {
    * @returns Optimization result
    */
   function optimize(data: string, config: OptimizeConfig): OptimizeResult
-
-  /**
-   * Extend the list of default plugins
-   *
-   * @param plugins - Plugins
-   *
-   * @returns Plugins
-   */
-  function extendDefaultPlugins(plugins: Plugin[]): Plugin[]
 }

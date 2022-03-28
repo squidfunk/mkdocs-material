@@ -38,10 +38,7 @@ import {
   toArray,
   zip
 } from "rxjs"
-import {
-  extendDefaultPlugins,
-  optimize
-} from "svgo"
+import { optimize } from "svgo"
 
 import { IconSearchIndex } from "_/components"
 
@@ -91,10 +88,11 @@ function ext(file: string, extension: string): string {
  */
 function minsvg(data: string): string {
   const result = optimize(data, {
-    plugins: extendDefaultPlugins([
+    plugins: [
+      "preset-default",
       { name: "removeDimensions", active: true },
       { name: "removeViewBox", active: false }
-    ])
+    ]
   })
   return result.data || data
 }
