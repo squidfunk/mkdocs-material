@@ -126,6 +126,13 @@ $admonitions: (
     border-inline-start-width: px2rem(4px);
     border-start-start-radius: px2rem(2px);
 
+    // Hack: mitigate rounding errors in Firefox – see https://bit.ly/3uENoCS
+    @supports (-moz-appearance: meterbar) {
+      @include break-from-device(screen medium) {
+        margin-inline-start: px2rem(-15.5px);
+      }
+    }
+
     // Adjust spacing for title-only admonitions
     html &:last-child {
       margin-bottom: 0;
