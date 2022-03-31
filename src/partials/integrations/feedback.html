@@ -133,6 +133,15 @@
       Thanks for helping improve the Codacy documentation.
     </p>
 
+    {% if page.edit_url and not config.extra.self_hosted %}
+    <p>
+      <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}">
+        Edit this page on GitHub
+      </a>
+      if you notice something wrong or missing.
+    </p>
+    {% endif %}
+
     <p>
       If you have a question or need help please contact <a href="mailto:{{ config.extra.support_email }}?subject=Question%20regarding%20{{ page.title }}">{{ config.extra.support_email }}</a>.
     </p>

@@ -49,9 +49,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.2374c16b.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.b0218524.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.24453152.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.d932a83f.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -128,11 +128,6 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               {% block content %}
-                {% if page.edit_url %}
-                  <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-content__button md-icon">
-                    {% include ".icons/material/pencil.svg" %}
-                  </a>
-                {% endif %}
                 {% block source %}
                   {% if page and page.meta and page.meta.source %}
                     {% include "partials/source-link.html" %}
