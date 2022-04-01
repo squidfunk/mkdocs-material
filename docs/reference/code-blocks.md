@@ -396,6 +396,39 @@ override it as part of your [additional style sheet]:
   [additional style sheet]: ../customization.md#additional-css
   [syntax theme definition]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
 
+### Annotation tooltip width
+
+If you have a lot of content hosted inside your code annotations, it can be a
+good idea to increase the width of the tooltip by adding the following as part
+of an [additional style sheet]:
+
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+
+    ``` css
+    :root {
+      --md-tooltip-width: 600px;
+    }
+    ```
+
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ``` yaml
+    extra_css:
+      - stylesheets/extra.css
+    ```
+
+This will render annotations with a larger width:
+
+<div style="--md-tooltip-width: 600px;" markdown>
+
+``` yaml
+# (1)!
+```
+
+1. Muuuuuuuuuuuuuuuch more space for content
+
+</div>
+
 ### Annotations with numbers
 
 Prior to [:octicons-tag-24: 8.1.0][code annotation markers], code annotations

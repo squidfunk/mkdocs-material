@@ -59,14 +59,13 @@ the following older browser versions might work with some additional effort:
 
 - :fontawesome-brands-firefox: __Firefox 31-52__ – icons will render as little
   boxes due to missing support for [mask images]. While this cannot be
-  polyfilled, it might be mitigated by hiding icons with [additional CSS].
-- :fontawesome-brands-edge: __Edge 16-18__ – the spacing of some elements might be
-  a little off due to missing support for the [:is pseudo selector], which can be
-  mitigated with some [additional CSS].
+  polyfilled, it might be mitigated by hiding the icons altogether.
+- :fontawesome-brands-edge: __Edge 16-18__ – the spacing of some elements might
+  be a little off due to missing support for the [:is pseudo selector], which
+  can be mitigated with some additional effort.
 - :fontawesome-brands-internet-explorer: __Internet Explorer__ - no support,
   mainly due to missing support for [custom properties]. The last version of
   Material for MkDocs to support Internet Explorer is
   [:octicons-tag-24: 4.6.3][IE support].
 
-  [additional CSS]: customization.md#additional-css
   [IE support]: https://github.com/squidfunk/mkdocs-material/releases/tag/4.6.3

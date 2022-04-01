@@ -343,8 +343,8 @@ The following configuration options are supported:
         ```
 
         As an example, [Highlight.js], a JavaScript syntax highlighter, can be 
-        integrated with some [additional JavaScript] and [additional CSS] in
-        `mkdocs.yml`:
+        integrated with some [additional JavaScript] and an [additional style
+        sheet] in `mkdocs.yml`:
 
         === ":octicons-file-code-16: docs/javascripts/highlight.js"
 
@@ -446,7 +446,7 @@ See reference for usage:
   [pymdownx.superfences]: #superfences
   [pymdownx.inlinehilite]: #inlinehilite
   [Pygments]: https://pygments.org
-  [additional CSS]: ../../customization.md#additional-css
+  [additional style sheet]: ../../customization.md#additional-css
   [Highlight.js]: https://highlightjs.org/
   [title]: ../../reference/code-blocks.md#adding-a-title
   [anchor_linenums support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.0
