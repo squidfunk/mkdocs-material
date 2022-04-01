@@ -185,4 +185,17 @@ pipeline), you can build your documentation project with the following lines:
 mkdocs build --config-file mkdocs.insiders.yml
 ```
 
+!!! warning "Alternative syntax"
+    
+    If you plan to split `plugins` or `markdown_extensions` between the two files, you must use
+    alternative key / value syntax for these sections.  The above insiders file would then look like:
+    ``` yaml
+    INHERIT: mkdocs.yml
+    plugins:
+      search: {}
+      social: {}
+      tags: {}
+    ```
+
+
   [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
