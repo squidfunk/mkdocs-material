@@ -103,7 +103,7 @@ e.g. your privacy policy:
 :octicons-beaker-24: Experimental
 
 The built-in privacy plugin automatically identifies [external assets] as part
-of the build process and download all assets for dead simple self-hosting. Add
+of the build process and downloads all assets for very simple self-hosting. Add
 the following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -228,7 +228,7 @@ The following configuration options are available:
 The [built-in privacy plugin] scans the resulting HTML for links to external
 resources, including external scripts, style sheets, images and web fonts, and
 downloads them to bundle them with your documentation site. Every URL refering
-to an external resource, no matter if part of a template or Markdown file is
+to an external resource, no matter if part of a template or Markdown file, is
 then replaced with the URL to the local copy. An example:
 
 ``` html
