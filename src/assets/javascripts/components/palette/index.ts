@@ -23,12 +23,14 @@
 import {
   Observable,
   Subject,
+  asyncScheduler,
   defer,
   finalize,
   fromEvent,
   map,
   mapTo,
   mergeMap,
+  observeOn,
   of,
   shareReplay,
   startWith,
@@ -114,6 +116,7 @@ export function mountPalette(
   return defer(() => {
     const push$ = new Subject<Palette>()
     push$.subscribe(palette => {
+      document.body.setAttribute("data-md-color-switching", "")
 
       /* Set color palette */
       for (const [key, value] of Object.entries(palette.color))
@@ -129,6 +132,12 @@ export function mountPalette(
       /* Persist preference in local storage */
       __md_set("__palette", palette)
     })
+
+    /* Revert transition durations after color switch */
+    push$.pipe(observeOn(asyncScheduler))
+      .subscribe(() => {
+        document.body.removeAttribute("data-md-color-switching")
+      })
 
     /* Create and return component */
     const inputs = getElements<HTMLInputElement>("input", el)
