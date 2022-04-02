@@ -92,6 +92,7 @@ plugins:
   - redirects:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
+        conventions.md: philosophy.md
         reference/meta-tags.md: reference/index.md
         reference/variables.md: https://mkdocs-macros-plugin.readthedocs.io/
         sponsorship.md: insiders/index.md
@@ -166,8 +167,8 @@ nav:
     - Publishing your site: publishing-your-site.md
     - Customization: customization.md
     - Browser support: browser-support.md
+    - Philosophy: philosophy.md
     - Alternatives: alternatives.md
-    - Conventions: conventions.md
     - License: license.md
     - Changelog:
       - changelog/index.md
