@@ -116,8 +116,10 @@ export function watchSearchQuery(
 
   /* Set query from parameter */
   param$.subscribe(value => { // TODO: not ideal - find a better way
-    if (value)
+    if (value) {
       el.value = value
+      el.focus()
+    }
   })
 
   /* Intercept focus and input events */
