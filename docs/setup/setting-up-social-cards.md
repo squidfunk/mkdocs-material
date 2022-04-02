@@ -53,6 +53,10 @@ plugins:
   - social
 ```
 
+> If you need to be able to build your documentation with and without
+> [Insiders], please refer to the [built-in plugins] section to learn how
+> shared configurations help to achieve this.
+
 The following configuration options are available:
 
 `cards`{ #cards }
@@ -113,6 +117,7 @@ The following configuration options are available:
   [Insiders]: ../insiders/index.md
   [dependencies]: #dependencies
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
   [Google Fonts]: https://fonts.google.com

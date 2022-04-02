@@ -40,6 +40,10 @@ plugins:
     [Insiders]. Note, however, that setup might be challenging if you're not
     experienced with MkDocs.
 
+> If you need to be able to build your documentation with and without
+> [Insiders], please refer to the [built-in plugins] section to learn how
+> shared configurations help to achieve this.
+
 The plugin will automatically disable [`use_directory_urls`][use_directory_urls]
 via `mkdocs.yml`, ensuring that users can open your documentation directly
 from the local file system.
@@ -72,6 +76,7 @@ hosted on a regular server.
   [site search]: setting-up-site-search.md
   [site directory]: https://www.mkdocs.org/user-guide/configuration/#site_dir
   [localsearch]: https://github.com/wilhelmer/mkdocs-localsearch/
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [use_directory_urls]: https://www.mkdocs.org/user-guide/configuration/#use_directory_urls
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [built-in privacy plugin]: ensuring-data-privacy.md#built-in-privacy-plugin

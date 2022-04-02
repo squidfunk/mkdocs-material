@@ -116,6 +116,10 @@ plugins:
     replace. If a plugin after the privacy plugin adds further
     [external assets], these assets will not be downloaded.
 
+> If you need to be able to build your documentation with and without
+> [Insiders], please refer to the [built-in plugins] section to learn how
+> shared configurations help to achieve this.
+
 The following configuration options are available:
 
 `enabled`{ #enabled }
@@ -192,6 +196,7 @@ The following configuration options are available:
     dynamically created or relative URLs, which can't be resolved by the privacy
     plugin due to [technical limitations].
 
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [MathJax]: ../reference/mathjax.md
   [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
   [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
