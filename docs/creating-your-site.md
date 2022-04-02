@@ -235,6 +235,20 @@ files with:
 mkdocs build
 ```
 
+If you're running Material for MkDocs from within Docker, use:
+
+=== "Unix, Powershell"
+
+    ```
+    docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material build
+    ```
+
+=== "Windows"
+
+    ```
+    docker run --rm -it -v "%cd%":/docs squidfunk/mkdocs-material build
+    ```
+
 The contents of this directory make up your project documentation. There's no
 need for operating a database or server, as it is completely self-contained.
 The site can be hosted on [GitHub Pages], [GitLab Pages], a CDN of your choice
