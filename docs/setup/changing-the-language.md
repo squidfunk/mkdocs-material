@@ -20,8 +20,16 @@ You can set the site language in `mkdocs.yml` with:
 
 ``` yaml
 theme:
-  language: en
+  language: en # (1)!
 ```
+
+1.  HTML5 only allows to set a [single language per document], which is why
+    Material for MkDocs only supports setting a canonical language for the
+    entire project, i.e. one per `mkdocs.yml`.
+
+    The easiest way to build a multi-language documentation is to create one
+    project in a subfolder per language, and then use the [language selector]
+    to interlink those projects.
 
 The following languages are supported:
 
@@ -87,6 +95,8 @@ Note that some languages will produce unreadable anchor links due to the way
 the default slug function works. Consider using a [Unicode-aware slug function].
 
   [language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.12.0
+  [single language per document]: https://www.w3.org/International/questions/qa-html-language-declarations.en#attributes
+  [language selector]: #site-language-selector
   [Unicode-aware slug function]: extensions/python-markdown.md#toc-slugify
   [Add language]: https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.yml&title=New+language%3A+%7Breplace+with+language+name%7D
 
