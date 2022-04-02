@@ -146,7 +146,7 @@ loading] via [additional JavaScript]:
 
     ``` yaml
     extra_javascript:
-      - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
+      - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.3.0/tablesort.min.js
       - javascripts/tablesort.js
     ```
 
@@ -175,7 +175,7 @@ Note that [tablesort] provides alternative comparison implementations like
 numbers, filesizes, dates and month names. See the [tablesort documentation]
 [tablesort] for more information.
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.3.0/tablesort.min.js"></script>
 <script>
   var tables = document.querySelectorAll("article table")
   new Tablesort(tables.item(tables.length - 1));

@@ -259,7 +259,7 @@ removed during the build process.
     ``` { .sh id="example" }
     .
     └─ assets/externals/
-       ├─ cdnjs.cloudflare.com/ajax/tablesort/5.2.1/tablesort.min.js
+       ├─ cdnjs.cloudflare.com/ajax/tablesort/5.3.0/tablesort.min.js
        ├─ fonts.googleapis.com/css
        ├─ fonts.gstatic.com/s/
        │  ├─ roboto/v29/
