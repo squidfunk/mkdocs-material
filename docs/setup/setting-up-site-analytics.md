@@ -121,20 +121,31 @@ integrated with the [cookie consent] feature[^1].
 
     === ":material-google-analytics: Google Analytics 4"
 
-        1. Go to your Google Analytics __dashboard__
-        2. Go to the __Configure__ page on the left hand menu, then select __Custom Definitions__
-        3. Click the __Custom metrics__ tab and then __Create custom metrics__, enter the following values:
+        1.  Go to your Google Analytics __dashboard__
+
+        2.  Go to the __configure__ page on the left hand menu, then select
+            __custom definitions__
+
+        3.  Click the __custom metrics__ tab and then __create custom metrics__, 
+            enter the following values:
+
             * Metric name: Page helpful
             * Description: Was this page helpful?
-            * Event parameter: data
+            * Event parameter: `data`
             * Unit of measurement: Standard
-        4. Go to the __Explore__ page on the left hand menu, create a new __blank exploration__
-        5. Configure the report as follows:
+
+        4.  Go to the __explore__ page on the left hand menu, create a new
+            __blank exploration__
+
+        5.  Configure the report as follows:
+
             * Dimensions: Add `Event name` and `Page location`
-            * Metrics: Add `Event count` and `Page helpful` (the custom metric created in step 3)
+            * Metrics: Add `Event count` and `Page helpful`
+              (the custom metric created in step 3)
             * Rows: `Page location`
-            * Values: `Page helpful`
-            * Filters: Add a new filter for `Event name / exactly matches / feedback`
+            * Values: Drag in both `Event count` and `Page helpful`
+            * Filters: Add a new filter for 
+              `Event name / exactly matches / feedback`
 
         !!! warning "Delay in data availability"
 

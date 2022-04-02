@@ -108,8 +108,31 @@ markdown_extensions:
           - overrides/.icons
 ```
 
-You can now use all :fontawesome-brands-bootstrap: Bootstrap icons.
+You can now use all :fontawesome-brands-bootstrap: Bootstrap icons anywhere in
+Markdown files, as well as everywhere icons can be used in `mkdocs.yml`.
+However, note that the syntaxes are slightly different:
+
+- __Using icons in configuration__: take the path of the `*.svg` icon file
+  starting at the `.icons` folder and drop the file extension, e.g. for
+  `.icons/bootstrap/envelope-paper.svg`, use:
+
+    ``` yaml
+    theme:
+      icon:
+        logo: bootstrap/enveloper-paper
+    ```
+
+- __Using icons in Markdown files__: additionally to taking the path from the
+  `.icons` folder as noted above, replace all `/` with `-` and enclose the icon
+  shortcode in two colons:
+
+    ```
+    :bootstrap-enveloper-paper:
+    ```
+
+For further notes on icon usage, please consult the [icon reference].
 
   [extend the theme]: ../customization.md#extending-the-theme
   [custom_dir]: https://www.mkdocs.org/user-guide/configuration/#custom_dir
   [Bootstrap]: https://icons.getbootstrap.com/
+  [icon reference]: ../reference/icons-emojis.md#using-icons
