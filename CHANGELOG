@@ -1,3 +1,8 @@
+Unreleased
+
+  * Fixed #3782: Admonition titles have extra pixels on wide screens in Firefox
+  * Mitigate flicker on color palette switch by disabling all transitions
+
 mkdocs-material-8.2.8+insiders-4.12.0 (2022-03-27)
 
   * Added support for card grids and grid layouts
