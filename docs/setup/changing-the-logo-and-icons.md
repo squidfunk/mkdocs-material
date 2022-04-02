@@ -119,7 +119,7 @@ However, note that the syntaxes are slightly different:
     ``` yaml
     theme:
       icon:
-        logo: bootstrap/enveloper-paper
+        logo: bootstrap/envelope-paper
     ```
 
 - __Using icons in Markdown files__: additionally to taking the path from the
@@ -127,7 +127,7 @@ However, note that the syntaxes are slightly different:
   shortcode in two colons:
 
     ```
-    :bootstrap-enveloper-paper:
+    :bootstrap-envelope-paper:
     ```
 
 For further notes on icon usage, please consult the [icon reference].
