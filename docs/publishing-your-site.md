@@ -91,9 +91,9 @@ Now, when a new commit is pushed to either the `master` or `main` branches,
 the static site is automatically built and deployed. Push your changes to see
 the workflow in action.
 
-If the GitHub Page doesn't show up after a few minutes, go to your
-settings of your repository and ensure that the [publishing source branch]
-for your GitHub Page is set to `gh-pages`.
+If the GitHub Page doesn't show up after a few minutes, go to the settings of
+your repository and ensure that the [publishing source branch] for your GitHub
+Page is set to `gh-pages`.
 
 Your documentation should shortly appear at `<username>.github.io/<repository>`.
 

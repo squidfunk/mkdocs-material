@@ -29,8 +29,18 @@ screens and as part of the main navigation drawer on smaller screen sizes.
 Additionally, for public repositories hosted on [GitHub] or [GitLab], the
 number of stars and forks is automatically requested and rendered.
 
+GitHub repositories also include the tag of the latest release.[^1]
+
+  [^1]:
+    Unfortunately, GitHub only provides an API endpoint to obtain the [latest
+    release] - not the latest tag. Thus, make sure to [create a release] (not 
+    pre-release) for the latest tag you want to show up next to the number of
+    stars and forks.
+
   [repo_url support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [repo_url]: https://www.mkdocs.org/user-guide/configuration/#repo_url
+  [latest release]: https://docs.github.com/en/rest/reference/releases#get-the-latest-release
+  [create a release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release
 
 ### Repository name
 
