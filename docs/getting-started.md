@@ -18,7 +18,9 @@ If not, we recommended using [`docker`][docker].
 
 ### with pip <small>recommended</small> { #with-pip data-toc-label="with pip" }
 
-Material for MkDocs can be installed with `pip`:
+Material for MkDocs is published as a [Python package] and can be installed with
+`pip`, ideally by using a [virtual environment]. If not, scroll down and expand
+the help box. Install with:
 
 === "Latest"
 
@@ -60,11 +62,21 @@ This will automatically install compatible versions of all dependencies:
 MkDocs always strives to support the latest versions, so there's no need to
 install those packages separately.
 
+---
+
+__Tip__: If you don't have prior experience with Python, we recommend reading 
+[Using Python's pip to Manage Your Projects' Dependencies], which is a really
+good introduction on the mechanics of Python package management and helps you
+troubleshoot if you run into errors.
+
+  [Python package]: https://pypi.org/project/mkdocs-material/
+  [virtual environment]: https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment
   [semantic versioning]: https://semver.org/
   [upgrade to the next major version]: upgrade.md
   [Markdown]: https://python-markdown.github.io/
   [Pygments]: https://pygments.org/
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
+  [Using Python's pip to Manage Your Projects' Dependencies]: https://realpython.com/what-is-pip/
 
 ### with docker
 
