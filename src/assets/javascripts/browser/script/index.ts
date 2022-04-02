@@ -25,7 +25,7 @@ import {
   defer,
   finalize,
   fromEvent,
-  mapTo,
+  map,
   merge,
   switchMap,
   take,
@@ -62,7 +62,7 @@ export function watchScript(src: string): Observable<void> {
         )
     )
       .pipe(
-        mapTo(undefined),
+        map(() => undefined),
         finalize(() => document.head.removeChild(script)),
         take(1)
       )

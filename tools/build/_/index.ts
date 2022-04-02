@@ -30,7 +30,7 @@ import {
   identity,
   catchError,
   defer,
-  mapTo,
+  map,
   mergeWith,
   of,
   switchMap,
@@ -144,7 +144,7 @@ export function watch(
 export function mkdir(directory: string): Observable<string> {
   return defer(() => fs.mkdir(directory, { recursive: true }))
     .pipe(
-      mapTo(directory)
+      map(() => directory)
     )
 }
 
@@ -176,7 +176,7 @@ export function write(file: string, data: string): Observable<string> {
     cache.set(file, data)
     return defer(() => fs.writeFile(file, data))
       .pipe(
-        mapTo(file),
+        map(() => file),
         process.argv.includes("--verbose")
           ? tap(file => console.log(`${now()} + ${file}`))
           : identity

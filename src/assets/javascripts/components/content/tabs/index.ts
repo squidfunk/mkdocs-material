@@ -31,7 +31,6 @@ import {
   finalize,
   fromEvent,
   map,
-  mapTo,
   merge,
   startWith,
   subscribeOn,
@@ -79,9 +78,9 @@ export function watchContentTabs(
   const active = inputs.find(input => input.checked) || inputs[0]
   return merge(...inputs.map(input => fromEvent(input, "change")
     .pipe(
-      mapTo<ContentTabs>({
+      map(() => ({
         active: getElement(`label[for=${input.id}]`)
-      })
+      }) as ContentTabs)
     )
   ))
     .pipe(

@@ -25,7 +25,7 @@ import * as path from "path"
 import {
   Observable,
   from,
-  mapTo,
+  map,
   mergeMap,
   switchMap
 } from "rxjs"
@@ -82,7 +82,7 @@ export function copy(
               switchMap(data => write(options.to, data))
             )
       ),
-      mapTo(options.to)
+      map(() => options.to)
     )
 }
 

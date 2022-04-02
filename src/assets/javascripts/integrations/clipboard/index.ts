@@ -24,7 +24,7 @@ import ClipboardJS from "clipboard"
 import {
   Observable,
   Subject,
-  mapTo,
+  map,
   tap
 } from "rxjs"
 
@@ -89,7 +89,7 @@ export function setupClipboardJS(
           const trigger = ev.trigger as HTMLElement
           trigger.focus()
         }),
-        mapTo(translation("clipboard.copied"))
+        map(() => translation("clipboard.copied"))
       )
         .subscribe(alert$)
   }

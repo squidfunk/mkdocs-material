@@ -27,7 +27,6 @@ import {
   filter,
   finalize,
   map,
-  mapTo,
   merge,
   tap
 } from "rxjs"
@@ -89,7 +88,9 @@ export function watchDetails(
       .pipe(
         map(target => target.closest("details:not([open])")!),
         filter(details => el === details),
-        mapTo<Details>({ action: "open", reveal: true })
+        map(() => ({
+          action: "open", reveal: true
+        }) as Details)
       ),
 
     /* Open details on print and close afterwards */

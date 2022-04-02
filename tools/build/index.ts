@@ -34,7 +34,6 @@ import {
   scan,
   startWith,
   switchMap,
-  switchMapTo,
   toArray,
   zip
 } from "rxjs"
@@ -189,7 +188,7 @@ const manifest$ = merge(
       )
         .pipe(
           startWith("*"),
-          switchMapTo(observable$.pipe(toArray()))
+          switchMap(() => observable$.pipe(toArray()))
         )
     ))
 )

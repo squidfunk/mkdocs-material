@@ -22,7 +22,7 @@
 
 import {
   Observable,
-  mapTo,
+  map,
   of,
   shareReplay,
   tap
@@ -94,7 +94,7 @@ export function mountMermaid(
         startOnLoad: false,
         themeCSS
       })),
-      mapTo(undefined),
+      map(() => undefined),
       shareReplay(1)
     )
 
@@ -117,6 +117,6 @@ export function mountMermaid(
   /* Create and return component */
   return mermaid$
     .pipe(
-      mapTo({ ref: el })
+      map(() => ({ ref: el }))
     )
 }

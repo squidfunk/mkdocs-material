@@ -24,7 +24,7 @@ import {
   Observable,
   filter,
   fromEvent,
-  mapTo,
+  map,
   mergeMap,
   switchMap,
   tap
@@ -81,7 +81,7 @@ export function patchScrollfix(
       filter(isAppleDevice),
       mergeMap(el => fromEvent(el, "touchstart")
         .pipe(
-          mapTo(el)
+          map(() => el)
         )
       )
     )

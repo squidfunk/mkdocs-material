@@ -28,7 +28,6 @@ import {
   finalize,
   fromEvent,
   map,
-  mapTo,
   mergeMap,
   observeOn,
   of,
@@ -87,7 +86,7 @@ export function watchPalette(
     .pipe(
       mergeMap(input => fromEvent(input, "change")
         .pipe(
-          mapTo(input)
+          map(() => input)
         )
       ),
       startWith(inputs[Math.max(0, current.index)]),

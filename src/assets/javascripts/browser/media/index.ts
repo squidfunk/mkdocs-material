@@ -25,7 +25,7 @@ import {
   Observable,
   fromEvent,
   fromEventPattern,
-  mapTo,
+  map,
   merge,
   startWith,
   switchMap
@@ -65,8 +65,8 @@ export function watchMedia(query: string): Observable<boolean> {
 export function watchPrint(): Observable<boolean> {
   const media = matchMedia("print")
   return merge(
-    fromEvent(window, "beforeprint").pipe(mapTo(true)),
-    fromEvent(window, "afterprint").pipe(mapTo(false))
+    fromEvent(window, "beforeprint").pipe(map(() => true)),
+    fromEvent(window, "afterprint").pipe(map(() => false))
   )
     .pipe(
       startWith(media.matches)

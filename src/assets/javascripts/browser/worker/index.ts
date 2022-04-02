@@ -26,7 +26,7 @@ import {
   fromEvent,
   map,
   share,
-  switchMapTo,
+  switchMap,
   tap,
   throttle
 } from "rxjs"
@@ -100,7 +100,7 @@ export function watchWorker<T extends WorkerMessage>(
     .pipe(
       throttle(() => rx$, { leading: true, trailing: true }),
       tap(message => worker.postMessage(message)),
-      switchMapTo(rx$),
+      switchMap(() => rx$),
       share()
     )
 }
