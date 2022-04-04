@@ -264,7 +264,7 @@ removed during the build process.
     ``` { .sh id="example" }
     .
     └─ assets/externals/
-       ├─ unpkg.com/browse/tablesort@5.3.0/dist/tablesort.min.js
+       ├─ unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
        ├─ fonts.googleapis.com/css
        ├─ fonts.gstatic.com/s/
        │  ├─ roboto/v29/

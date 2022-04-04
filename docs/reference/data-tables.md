@@ -146,7 +146,7 @@ loading] via [additional JavaScript]:
 
     ``` yaml
     extra_javascript:
-      - https://unpkg.com/browse/tablesort@5.3.0/dist/tablesort.min.js
+      - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
       - javascripts/tablesort.js
     ```
 
@@ -175,7 +175,7 @@ Note that [tablesort] provides alternative comparison implementations like
 numbers, filesizes, dates and month names. See the [tablesort documentation]
 [tablesort] for more information.
 
-<script src="https://unpkg.com/browse/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script>
   var tables = document.querySelectorAll("article table")
   new Tablesort(tables.item(tables.length - 1));
