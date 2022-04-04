@@ -84,7 +84,8 @@ No configuration options are available. See reference for usage:
 - [Using annotations]
 - [Using grids]
 - [Adding buttons]
-- [Adding icons with colors]
+- [Using icons with colors]
+- [Using icons with animations]
 - [Image alignment]
 - [Image lazy-loading]
 
@@ -93,7 +94,8 @@ No configuration options are available. See reference for usage:
   [Attribute Lists limitations]: https://python-markdown.github.io/extensions/attr_list/#limitations
   [Using grids]: ../../reference/grids.md#using-grids
   [Adding buttons]: ../../reference/buttons.md#adding-buttons
-  [Adding icons with colors]: ../../reference/buttons.md#with-colors
+  [Using icons with colors]: ../../reference/icons-emojis.md#with-colors
+  [Using icons with animations]: ../../reference/icons-emojis.md#with-animations
   [Image alignment]: ../../reference/images.md#image-alignment
   [Image lazy-loading]: ../../reference/images.md#image-lazy-loading
 

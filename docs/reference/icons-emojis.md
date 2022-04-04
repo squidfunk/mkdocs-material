@@ -39,6 +39,7 @@ lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
+  - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -52,12 +53,14 @@ The following icon sets are bundled with Material for MkDocs:
 
 See additional configuration options:
 
+- [Attribute Lists]
 - [Emoji]
 - [Emoji with custom icons]
 
   [Material Design]: https://materialdesignicons.com/
   [FontAwesome]: https://fontawesome.com/search?m=free
   [Octicons]: https://octicons.github.com/
+  [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
   [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom-icons
 
