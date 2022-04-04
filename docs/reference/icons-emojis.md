@@ -105,10 +105,10 @@ a valid path to any icon bundled with the theme, which are located in the
 
 #### with colors
 
-Custom CSS classes can be added to icons by suffixing the icon with a special
-syntax. While HTML allows to use [inline styles], it's always recommended to
-add an [additional style sheet] and move declarations into dedicated CSS
-classes:
+When [Attribute Lists] is enabled, custom CSS classes can be added to icons by
+suffixing the icon with a special syntax. While HTML allows to use [inline
+styles], it's always recommended to add an [additional style sheet] and move
+declarations into dedicated CSS classes:
 
 <style>
   .twitter {
