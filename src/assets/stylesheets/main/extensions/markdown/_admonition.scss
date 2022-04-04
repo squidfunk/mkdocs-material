@@ -119,19 +119,12 @@ $admonitions: (
     margin-block: 0;
     margin-inline: px2rem(-16px) px2rem(-12px);
     padding-block: px2rem(8px);
-    padding-inline: px2rem(40px) px2rem(12px);
+    padding-inline: px2rem(44px) px2rem(12px);
     font-weight: 700;
     background-color: color.adjust($clr-blue-a200, $alpha: -0.9);
-    border: 0 solid $clr-blue-a200;
+    border: none;
     border-inline-start-width: px2rem(4px);
     border-start-start-radius: px2rem(2px);
-
-    // Hack: mitigate rounding errors in Firefox – see https://bit.ly/3uENoCS
-    @supports (-moz-appearance: meterbar) {
-      @include break-from-device(screen medium) {
-        margin-inline-start: px2rem(-15.5px);
-      }
-    }
 
     // Adjust spacing for title-only admonitions
     html &:last-child {
@@ -142,7 +135,7 @@ $admonitions: (
     &::before {
       position: absolute;
       top: px2em(10px);
-      inset-inline-start: px2rem(12px);
+      inset-inline-start: px2rem(16px);
       width: px2rem(20px);
       height: px2rem(20px);
       background-color: $clr-blue-a200;
@@ -176,7 +169,6 @@ $admonitions: (
   // Admonition flavour title
   .md-typeset :is(#{$flavours}) > :is(.admonition-title, summary) {
     background-color: color.adjust($tint, $alpha: -0.9);
-    border-color: $tint;
 
     // Admonition icon
     &::before {
