@@ -419,7 +419,6 @@ and add the following CSS to an [additional style sheet]:
   .md-typeset .pied-piper > .admonition-title,
   .md-typeset .pied-piper > summary {
     background-color: rgba(43, 155, 70, 0.1);
-    border-color: rgb(43, 155, 70);
   }
   .md-typeset .pied-piper > .admonition-title::before,
   .md-typeset .pied-piper > summary::before {
@@ -442,7 +441,6 @@ and add the following CSS to an [additional style sheet]:
     .md-typeset .pied-piper > .admonition-title,
     .md-typeset .pied-piper > summary {
       background-color: rgba(43, 155, 70, 0.1);
-      border-color: rgb(43, 155, 70);
     }
     .md-typeset .pied-piper > .admonition-title::before,
     .md-typeset .pied-piper > summary::before {
