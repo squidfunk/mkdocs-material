@@ -185,10 +185,13 @@ pipeline), you can build your documentation project with the following lines:
 mkdocs build --config-file mkdocs.insiders.yml
 ```
 
-!!! warning "Alternative syntax"
-    
-    If you plan to split `plugins` or `markdown_extensions` between the two files, you must use
-    alternative key / value syntax for these sections.  The above example would then look like:
+!!! tip "Sharing plugin and extension configuration"
+
+    If you want to share `plugins` or `markdown_extensions` between both
+    configuration files `mkdocs.insiders.yml` and `mkdocs.yml`, you can use
+    the alternative key-value syntax in both files. The above example would
+    then look like:
+
     === ":octicons-file-code-16: mkdocs.insiders.yml"
 
         ``` yaml
