@@ -270,7 +270,7 @@
             {% endif %}
 
             <!-- Table of contents -->
-            {% if page.toc and not "toc.integrate" in features %}
+            {% if not "toc.integrate" in features %}
               {% if page and page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "toc" in page.meta.hide %}
               {% endif %}
