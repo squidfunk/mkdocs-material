@@ -43,6 +43,11 @@
   </a>
 {% endblock %}
 
+<!-- Content -->
+{% block content %}
+  {% include "overrides/partials/content.html" %}
+{% endblock %}
+
 <!-- Theme-related JavaScript -->
 {% block scripts %}
   {{ super() }}
