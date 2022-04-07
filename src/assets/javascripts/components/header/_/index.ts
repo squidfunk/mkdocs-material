@@ -58,7 +58,6 @@ import { Main } from "../../main"
  */
 export interface Header {
   height: number                       /* Header visible height */
-  sticky: boolean                      /* Header stickyness */
   hidden: boolean                      /* Header is hidden */
 }
 
@@ -143,22 +142,16 @@ function isHidden({ viewport$ }: WatchOptions): Observable<boolean> {
 export function watchHeader(
   el: HTMLElement, options: WatchOptions
 ): Observable<Header> {
-  return defer(() => {
-    const styles = getComputedStyle(el)
-    return of(
-      styles.position === "sticky" ||
-      styles.position === "-webkit-sticky"
-    )
-  })
+  return defer(() => combineLatest([
+    watchElementSize(el),
+    isHidden(options)
+  ]))
     .pipe(
-      combineLatestWith(watchElementSize(el), isHidden(options)),
-      map(([sticky, { height }, hidden]) => ({
-        height: sticky ? height : 0,
-        sticky,
+      map(([{ height }, hidden]) => ({
+        height,
         hidden
       })),
       distinctUntilChanged((a, b) => (
-        a.sticky === b.sticky &&
         a.height === b.height &&
         a.hidden === b.hidden
       )),
