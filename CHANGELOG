@@ -1,7 +1,10 @@
-Unreleased
+mkdocs-material-8.2.9 (2022-04-08)
 
-  * Fixed #3782: Admonition titles have extra pixels on wide screens in Firefox
   * Mitigate flicker on color palette switch by disabling all transitions
+  * Fixed search suggestions not triggered when following deep link
+  * Fixed incorrectly computed header height when using instant loading
+  * Fixed #3782: Admonition titles have extra pixels on wide screens in Firefox
+  * Fixed #3802: Always render table of contents container (except when hidden)
 
 mkdocs-material-8.2.8+insiders-4.12.0 (2022-03-27)
 

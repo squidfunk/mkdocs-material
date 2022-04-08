@@ -6,6 +6,14 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.9 <small>_ April 8, 2022</small> { id="8.2.9" }
+
+- Mitigate flicker on color palette switch by disabling all transitions
+- Fixed search suggestions not triggered when following deep link
+- Fixed incorrectly computed header height when using instant loading
+- Fixed #3782: Admonition titles have extra pixels on wide screens in Firefox
+- Fixed #3802: Always render table of contents container (except when hidden)
+
 ### 8.2.8 <small>_ March 27, 2022</small> { id="8.2.8" }
 
 - Bumped MkDocs version to 1.3.0 to mitigate breaking changes in Jinja
