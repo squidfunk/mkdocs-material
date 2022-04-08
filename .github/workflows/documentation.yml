@@ -29,7 +29,6 @@ env:
 
 permissions:
   contents: write
-  pages: write
 
 jobs:
   documentation:
