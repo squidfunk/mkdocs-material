@@ -26,6 +26,9 @@ on:
 env:
   NODE_VERSION: 14.x
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build project

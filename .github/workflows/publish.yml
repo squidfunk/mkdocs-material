@@ -27,6 +27,9 @@ on:
 env:
   PYTHON_VERSION: 3.x
 
+permissions:
+  contents: read
+
 jobs:
   publish_pypi:
     name: Build and push Python package
