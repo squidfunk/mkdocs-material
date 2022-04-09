@@ -34,7 +34,7 @@ See additional configuration options:
 When [Metadata] is enabled, the page title can be overridden for a document with
 some custom front matter. Add the following lines at the top of a Markdown file:
 
-``` bash
+``` sh
 ---
 title: Lorem ipsum dolor sit amet # (1)!
 ---
@@ -57,7 +57,7 @@ When [Metadata] is enabled, the page description can be overridden for a
 document with custom front matter. Add the following lines at the top of a
 Markdown file:
 
-``` bash
+``` sh
 ---
 description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 ---
@@ -79,7 +79,7 @@ An icon can be assigned to each page, which is then rendered as part of the
 navigation sidebar. Ensure [Metadata] is enabled and add the following lines
 at the top of a Markdown file:
 
-``` bash
+``` sh
 ---
 icon: material/emoticon-happy # (1)!
 ---
@@ -108,7 +108,7 @@ If you're using [theme extension] and created a new page template in the
 `overrides` directory, you can enable it for a specific page. Add the following 
 lines at the top of a Markdown file:
 
-``` bash
+``` sh
 ---
 template: custom.html
 ---

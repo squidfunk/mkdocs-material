@@ -57,7 +57,7 @@ When both, the [built-in tags plugin] and [Metadata] extension are enabled,
 tags can be added for a document with custom front matter. Add the following
 lines at the top of a Markdown file:
 
-``` bash
+``` sh
 ---
 tags:
   - insiders
@@ -113,7 +113,7 @@ While the tags are rendered above the main headline, sometimes, it might be
 desirable to hide them for a specific page, which can be achieved by using the
 [Metadata] extension:
 
-``` bash
+``` sh
 ---
 hide:
   - tags

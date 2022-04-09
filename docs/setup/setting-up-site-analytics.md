@@ -236,7 +236,7 @@ The following properties must be set for each rating:
 When [Metadata] is enabled, the [feedback widget] can be hidden for a document
 with custom front matter. Add the following lines at the top of a Markdown file:
 
-``` bash
+``` sh
 ---
 hide:
   - feedback

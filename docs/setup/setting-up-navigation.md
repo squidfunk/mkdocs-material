@@ -302,7 +302,7 @@ When [Metadata] is enabled, the navigation and/or table of contents sidebars
 can be hidden for a document with custom front matter. Add the following lines
 at the top of a Markdown file:
 
-``` bash
+``` sh
 ---
 hide:
   - navigation

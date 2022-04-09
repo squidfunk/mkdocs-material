@@ -124,7 +124,7 @@ directive to the front matter of the respective Markdown file. The good thing
 is that the author now only has to check the top of the document to learn
 whether it is excluded or not:
 
-``` bash
+``` sh
 ---
 search:
   exclude: true

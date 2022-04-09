@@ -316,7 +316,7 @@ When [Metadata] is enabled, pages can be boosted in search with custom front
 matter, which will make them rank higher. Add the following lines at the top of
 a Markdown file:
 
-``` bash
+``` sh
 ---
 search:
   boost: 2 # (1)!
@@ -341,7 +341,7 @@ When [Metadata] is enabled, pages can be excluded from search with custom front
 matter, removing them from the index. Add the following lines at the top of a 
 Markdown file:
 
-``` bash
+``` sh
 ---
 search:
   exclude: true

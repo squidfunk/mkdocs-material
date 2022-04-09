@@ -260,9 +260,21 @@ very documentation in front of you.
 
 When you're finished making your changes, you can build the theme by invoking:
 
+``` sh
+npm run build # (1)!
 ```
-npm run build
-```
+
+1.  While this command will build all theme files, it will skip the overrides
+    used in Material for MkDocs' own documentation which are not distributed
+    with the theme. If you forked the theme and want to build the overrides
+    as well, use:
+
+    ```
+    npm run build:all
+    ```
+
+    This will take longer, as now the icon search index, schema files, as
+    well as additional style sheet and JavaScript files are built.
 
 This triggers the production-level compilation and minification of all style
 sheets and JavaScript files. After the command exits, the compiled files are
