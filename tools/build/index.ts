@@ -342,6 +342,12 @@ const schema$ = merge(
     )
 )
 
+/* Build overrides */
+const overrides$ =
+  process.argv.includes("--all")
+    ? merge(index$, schema$)
+    : EMPTY
+
 /* ----------------------------------------------------------------------------
  * Program
  * ------------------------------------------------------------------------- */
@@ -350,7 +356,7 @@ const schema$ = merge(
 const build$ =
   process.argv.includes("--dirty")
     ? merge(templates$, sources$)
-    : concat(assets$, merge(templates$, sources$, index$, schema$))
+    : concat(assets$, merge(templates$, sources$, overrides$))
 
 /* Let's get rolling */
 build$.subscribe()

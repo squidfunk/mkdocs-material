@@ -25,6 +25,8 @@ import * as fs from "fs/promises"
 import {
   EMPTY,
   Observable,
+  concatAll,
+  filter,
   from,
   fromEvent,
   identity,
@@ -33,7 +35,6 @@ import {
   map,
   mergeWith,
   of,
-  switchMap,
   tap
 } from "rxjs"
 import glob from "tiny-glob"
@@ -108,7 +109,14 @@ export function resolve(
   return from(glob(pattern, options))
     .pipe(
       catchError(() => EMPTY),
-      switchMap(files => files),
+      concatAll(),
+
+      /* Build overrides */
+      !process.argv.includes("--all")
+        ? filter(file => !file.startsWith("overrides/"))
+        : identity,
+
+      /* Start file watcher */
       options?.watch
         ? mergeWith(watch(pattern, options))
         : identity
