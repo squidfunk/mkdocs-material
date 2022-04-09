@@ -222,7 +222,7 @@ export function transformScript(
               contents: css,
               loader: "text"
             }
-          });
+          })
         }
       }
     ]
