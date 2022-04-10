@@ -33,7 +33,7 @@
     "check:style": "run-p check:style:*",
     "check:style:scss": "stylelint \"src/**/*.scss\"",
     "check:style:ts": "eslint --cache \"src/**/*.ts\"",
-    "start": "ts-node -T tools/build --verbose --dirty --watch",
+    "start": "ts-node -T tools/build --verbose --all --dirty --watch",
     "upgrade": "run-s upgrade:*",
     "upgrade:bump": "ncu --upgrade --filterVersion \"/^\\^/\"",
     "upgrade:install": "npm install"
