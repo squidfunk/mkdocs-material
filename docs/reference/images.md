@@ -110,6 +110,9 @@ but it's always possible to use the [Markdown in HTML] extension with literal
   </figure>
 </div>
 
+you can use mkdocs plugin [img2fig](https://github.com/stuebersystems/mkdocs-img2fig-plugin) to automatically convert `[title](x.png)` to `<figure>...</figure>`
+
+
 ### Image lazy-loading
 
 Modern browsers provide [native support for lazy-loading images][lazy-loading]
