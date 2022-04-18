@@ -103,39 +103,41 @@
 
 ## Everything you would expect
 
-* **It's just Markdown** – Focus on the content of your documentation and create
-  a professional static site in minutes. No need to know HTML, CSS or JavaScript
-  – let Material for MkDocs do the heavy lifting for you.
+### It's just Markdown
 
-* **Works on all devices** — Serve your documentation with confidence – Material
-  for MkDocs automatically adapts to perfectly fit the available screen estate,
-  no matter the type or size of the viewing device. Desktop. Tablet. Mobile.
-  All great.
+Focus on the content of your documentation and create a professional static site
+in minutes. No need to know HTML, CSS or JavaScript – let Material for MkDocs do
+the heavy lifting for you.
 
-* **Made to measure** — Make it yours – change the colors, fonts, language,
-  icons, logo, and more with a few lines of configuration. Material for MkDocs
-  can be easily extended and provides many options to alter appearance and
-  behavior.
+### Works on all devices
 
-* **Fast and lightweight** — Don't let your users wait – get incredible value
-  with a small footprint by using one of the fastest available themes with
-  excellent performance, yielding optimal search engine rankings and happy
-  users that return.
+Serve your documentation with confidence – Material for MkDocs automatically
+adapts to perfectly fit the available screen estate, no matter the type or size
+of the viewing device. Desktop. Tablet. Mobile. All great.
 
-* **Built for everyone** — Make accessibility a priority – users can navigate
-  your documentation with touch devices, keyboards, and screen readers. Semantic
-  markup ensures that your documentation works for everyone.
+### Made to measure
 
-* **Open Source** — Trust 10,000+ users – choose a mature and actively
-  maintained solution built with state-of-the-art Open Source technologies.
-  Keep ownership of your content without fear of vendor lock-in. Licensed
-  under MIT.
+Make it yours – change the colors, fonts, language, icons, logo, and more with
+a few lines of configuration. Material for MkDocs can be easily extended and
+provides many options to alter appearance and behavior.
 
-Material for MkDocs follows the __sponsorware__ release strategy, which means
-that new features are first exclusively released to sponsors as part of
-[Insiders]. Read on to learn [what sponsorships achieve],
-[how to become a sponsor] to get access to Insiders, and
-[what's in for you][available features]!
+### Fast and lightweight
+
+Don't let your users wait – get incredible value with a small footprint by using
+one of the fastest available themes with excellent performance, yielding optimal 
+search engine rankings and happy users that return.
+
+### Built for everyone
+
+Make accessibility a priority – users can navigate your documentation with touch
+devices, keyboards, and screen readers. Semantic markup ensures that your
+documentation works for everyone.
+
+### Open Source
+
+Trust 10,000+ users – choose a mature and actively maintained solution built
+with state-of-the-art Open Source technologies. Keep ownership of your content
+without fear of vendor lock-in. Licensed under MIT.
 
 By joining the [Insiders] program, you'll get immediate access to the latest
 features while also helping support the ongoing development of Material for
