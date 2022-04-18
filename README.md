@@ -171,7 +171,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 
 ## Trusted by ...
 
-### ... leading organizations
+### ... industry leaders
 
 [Atlassian](https://atlassian.github.io/data-center-helm-charts/),
 [AWS](https://aws.github.io/copilot-cli/),
