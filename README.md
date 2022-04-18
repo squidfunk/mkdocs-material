@@ -37,9 +37,9 @@
 </p>
 
 <p align="center">
-  Create a branded static site from a set of Markdown files to host the
-  documentation of your Open Source or commercial project – customizable,
-  searchable, mobile-friendly, 50+ languages. Set up in 5 minutes.
+  Write your documentation in Markdown and create a professional static site for
+  your Open Source or commercial project in minutes – searchable, customizable,
+  more than 50 languages, for all devices.
 </p>
 
 <p align="center">
@@ -101,39 +101,35 @@
 </p>
 <p>&nbsp;</p>
 
-## Features
+## Everything you would expect
 
-* **It's just Markdown ...** — write your technical documentation in Markdown –
-  no need to know HTML, JavaScript or CSS. Material for MkDocs will do the heavy
-  lifting and create a beautiful and functional website.
+* **It's just Markdown** – Focus on the content of your documentation and create
+  a professional static site in minutes. No need to know HTML, CSS or JavaScript
+  – let Material for MkDocs do the heavy lifting for you.
 
-* **... but there's more** — integrates natively with Python Markdown
-  Extensions, adding callouts, tabbed content containers, mathematical formulas,
-  critic markup, task lists, and [more than 10k icons and emojis][icons-emojis].
+* **Works on all devices** — Serve your documentation with confidence – Material
+  for MkDocs automatically adapts to perfectly fit the available screen estate,
+  no matter the type or size of the viewing device. Desktop. Tablet. Mobile.
+  All great.
 
-* **Responsive by design** — built from the ground up to work on all kinds of
-  devices – from mobile phones to widescreens. The underlying fluid layout will
-  always adapt perfectly to the available screen space.
+* **Made to measure** — Make it yours – change the colors, fonts, language,
+  icons, logo, and more with a few lines of configuration. Material for MkDocs
+  can be easily extended and provides many options to alter appearance and
+  behavior.
 
-* **Static, but searchable** — almost magically, your technical documentation
-  website will be searchable without any further ado. Material for MkDocs comes
-  with built-in search – no server needed.
+* **Fast and lightweight** — Don't let your users wait – get incredible value
+  with a small footprint by using one of the fastest available themes with
+  excellent performance, yielding optimal search engine rankings and happy
+  users that return.
 
-* **Many configuration options** — change the color palette, font families,
-  language, icons, favicon and logo. Add a source repository link, links to your
-  social profiles, and Google Analytics - all with a few lines of config.
+* **Built for everyone** — Make accessibility a priority – users can navigate
+  your documentation with touch devices, keyboards, and screen readers. Semantic
+  markup ensures that your documentation works for everyone.
 
-* **Truly international** — thanks to many contributors, Material for MkDocs
-  includes translations for more than 40 languages and offers full native RTL
-  (right-to-left) support.
-
-* **Accessible** — Material for MkDocs provides extensible keyboard navigation
-  and semantic markup including role attributes and landmarks. Furthermore, the
-  layout respects the user's default font size.
-
-* **Modern architecture** — Material for MkDocs's underlying codebase is built
-  on top of TypeScript, RxJS, and SCSS, bringing excellent possibilities for
-  theme extension and customization.
+* **Open Source** — Trust 10,000+ users – choose a mature and actively
+  maintained solution built with state-of-the-art Open Source technologies.
+  Keep ownership of your content without fear of vendor lock-in. Licensed
+  under MIT.
 
 Material for MkDocs follows the __sponsorware__ release strategy, which means
 that new features are first exclusively released to sponsors as part of
@@ -141,11 +137,13 @@ that new features are first exclusively released to sponsors as part of
 [how to become a sponsor] to get access to Insiders, and
 [what's in for you][available features]!
 
-  [icons-emojis]: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+By joining the [Insiders] program, you'll get immediate access to the latest
+features while also helping support the ongoing development of Material for
+MkDocs. Thanks to our [awesome sponsors], this project is actively maintained
+and kept in good shape.
+
   [Insiders]: https://squidfunk.github.io/mkdocs-material/insiders/#what-is-insiders
-  [what sponsorships achieve]: https://squidfunk.github.io/mkdocs-material/insiders/#what-sponsorships-achieve
-  [how to become a sponsor]: https://squidfunk.github.io/mkdocs-material/insiders/#how-to-become-a-sponsor
-  [available features]: https://squidfunk.github.io/mkdocs-material/insiders/#available-features
+  [awesome sponsors]: https://squidfunk.github.io/mkdocs-material/insiders/#how-to-become-a-sponsor
 
 ## Quick start
 
@@ -162,7 +160,7 @@ theme:
   name: material
 ```
 
-For other installation methods, configuration options, and a demo, visit
+For detailed installation instructions, configuration options, and a demo, visit
 [squidfunk.github.io/mkdocs-material][Material for MkDocs]
 
   [Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
