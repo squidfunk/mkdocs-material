@@ -124,7 +124,7 @@ provides many options to alter appearance and behavior.
 ### Fast and lightweight
 
 Don't let your users wait – get incredible value with a small footprint by using
-one of the fastest available themes with excellent performance, yielding optimal 
+one of the fastest themes available with excellent performance, yielding optimal
 search engine rankings and happy users that return.
 
 ### Built for everyone
