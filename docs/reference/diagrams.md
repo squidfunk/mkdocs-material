@@ -260,3 +260,43 @@ erDiagram
 </div>
 
   [entity-relationship diagram]: https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram
+
+### Using Gitgraphs
+
+A [Git Graph] is a pictorial representation of git commits and git actions(commands) on various branches.
+
+```` markdown title="Gitgraph diagram"
+``` mermaid
+gitGraph
+   commit
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   checkout main
+   merge develop
+   commit
+   commit
+```
+````
+
+<div class="result" markdown>
+
+``` mermaid
+gitGraph
+   commit
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   checkout main
+   merge develop
+   commit
+   commit
+```
+
+</div>
+
+  [Git Graph]: https://mermaid-js.github.io/mermaid/#/gitgraph
