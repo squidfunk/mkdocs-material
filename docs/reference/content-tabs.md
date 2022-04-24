@@ -171,7 +171,7 @@ content, including further content tabs, and can be nested in other blocks like
 
     === "Unordered List"
 
-        ``` markdown title="List, unordered"
+        ``` markdown
         * Sed sagittis eleifend rutrum
         * Donec vitae suscipit est
         * Nulla tempor lobortis orci
@@ -179,7 +179,7 @@ content, including further content tabs, and can be nested in other blocks like
 
     === "Ordered List"
 
-        ``` markdown title="List, ordered"
+        ``` markdown
         1. Sed sagittis eleifend rutrum
         2. Donec vitae suscipit est
         3. Nulla tempor lobortis orci
@@ -192,7 +192,7 @@ content, including further content tabs, and can be nested in other blocks like
 
     === "Unordered List"
 
-        ``` markdown title="List, unordered"
+        ``` markdown
         * Sed sagittis eleifend rutrum
         * Donec vitae suscipit est
         * Nulla tempor lobortis orci
@@ -200,7 +200,7 @@ content, including further content tabs, and can be nested in other blocks like
 
     === "Ordered List"
 
-        ``` markdown title="List, ordered"
+        ``` markdown
         1. Sed sagittis eleifend rutrum
         2. Donec vitae suscipit est
         3. Nulla tempor lobortis orci
