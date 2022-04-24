@@ -505,6 +505,17 @@
               "body": "quote: ${1:material/format-quote-close}"
             }
           ]
+        },
+        "tag": {
+          "title": "Tag icon",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons",
+          "type": "object",
+          "patternProperties": {
+            "^\\w+$": {
+              "$ref": "#/definitions/icon"
+            }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false,
