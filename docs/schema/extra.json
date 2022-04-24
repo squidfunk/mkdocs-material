@@ -264,6 +264,18 @@
         ]
       }
     },
+    "tags": {
+      "title": "Tag identifiers",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons",
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "title": "Tag identifier mapping",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons",
+          "pattern": "^[\\w-]+$"
+        }
+      }
+    },
     "version": {
       "title": "Versioning",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/#versioning",
