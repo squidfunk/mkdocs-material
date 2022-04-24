@@ -12,7 +12,7 @@ template: overrides/main.html
 - Updated Mermaid.js to version 9.0.1
 - Switched sidebar title in mobile navigation to bold font
 - Fixed color of arrows in class and state diagrams for dark mode
-- Fixed #3836: Inline admonitions overlayed by code blocks titles
+- Fixed #3836: Inline admonitions overlayed by code block titles
 
 ### 8.2.9 <small>_ April 8, 2022</small> { id="8.2.9" }
 
