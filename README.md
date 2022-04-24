@@ -180,6 +180,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [CERN](http://abpcomputing.web.cern.ch/),
 [Datadog](https://datadoghq.dev/integrations-core/),
 [Google](https://google.github.io/accompanist/),
+[Hewlett Packard](https://hewlettpackard.github.io/squest/),
 [ING](https://ing-bank.github.io/baker/),
 [Intel](https://open-amt-cloud-toolkit.github.io/docs/),
 [LinkedIn](https://linkedin.github.io/school-of-sre/),
