@@ -6,6 +6,14 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.10 <small>_ April 24, 2022</small> { id="8.2.10" }
+
+- Added Macedonian translations
+- Updated Mermaid.js to version 9.0.1
+- Switched sidebar title in mobile navigation to bold font
+- Fixed color of arrows in class and state diagrams for dark mode
+- Fixed #3836: Inline admonitions overlayed by code blocks titles
+
 ### 8.2.9 <small>_ April 8, 2022</small> { id="8.2.9" }
 
 - Mitigate flicker on color palette switch by disabling all transitions
