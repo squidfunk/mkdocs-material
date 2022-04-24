@@ -172,8 +172,9 @@ The following features are solely available via Material for MkDocs Insiders:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Tag icons]  :material-new-box:
 - [x] [Card grids] :material-new-box:
-- [x] [Offline plugin] :material-new-box:
+- [x] [Offline plugin]
 - [x] [Privacy plugin]
 - [x] [Table of contents anchor following]
 - [x] [Annotations]
@@ -230,13 +231,14 @@ are released for general availability.
 - [x] [Social cards]
 - [x] [Code annotations: anchor links]
 - [x] [Code annotations: strip comments]
+- [x] [Tag icons]
 - [x] [Table of contents anchor following]
 - [x] Sidebars automatically scroll to active item
-- [ ] Stay on page when switching languages
 
   [Social cards]: ../setup/setting-up-social-cards.md
   [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
+  [Tag icons]: ../setup/setting-up-tags.md#tag-icons
   [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
 
 #### $ 10,000 – Carolina Reaper

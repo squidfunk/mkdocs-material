@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.13.0 <small>_ April 24, 2022</small> { id="4.13.0" }
+
+- Added support for tag icons
+
 ### 4.12.0 <small>_ March 27, 2022</small> { id="4.12.0" }
 
 - Added support for card grids and grid layouts
