@@ -1,10 +1,5 @@
 ---
 template: overrides/main.html
-tags:
-  - HTML5
-  - JavaScript
-  - CSS
-  - Other
 ---
 
 # Setting up tags
