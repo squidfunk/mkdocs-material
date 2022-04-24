@@ -1,13 +1,20 @@
 ---
 template: overrides/main.html
+tags:
+  - HTML5
+  - JavaScript
+  - CSS
+  - Other
 ---
 
 # Setting up tags
 
 Material for MkDocs adds first-class support for categorizing pages with tags,
 which adds the possibility to group related pages and make them discoverable
-via search and a dedicated tags index. If your documentation is large, tags
+via search and a dedicated [tags index]. If your documentation is large, tags
 can help to discover relevant information faster.
+
+  [tags index]: #adding-a-tags-index
 
 ## Configuration
 
@@ -32,8 +39,9 @@ The following configuration options are available:
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies which file
     should be used to render the tags index. See the section on [adding a tags 
-    index] for more information. If this option is specified, tags will
-    become clickable, pointing to the corresponding section in the tags index:
+    index][tags index] for more information. If this option is specified, tags
+    will become clickable, pointing to the corresponding section in the tags
+    index:
 
     ``` yaml
     plugins:
@@ -42,12 +50,92 @@ The following configuration options are available:
     ```
 
     The page holding the tags index can be linked anywhere in the `nav` section
-    of `mkdocs.yml`. Note, however, that this options is not required. If this
-    option is not specified, tags are still rendered and searchable,
-    but without a tags index.
+    of `mkdocs.yml`. Note, however, that this options is not required – only use
+    it if you want a tags index page.
 
   [tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
-  [adding a tags index]: #adding-a-tags-index
+
+### Tag icons
+
+[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.13.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+Each tag can be associated with an icon, which is then rendered inside the tag.
+Before assigning icons to tags, associate each tag with a unique identifier,
+by adding the following to `mkdocs.yml`:
+
+``` yaml
+extra:
+  tags:
+    <tag>: <identifier> # (1)!
+```
+
+1.  The identifier can only include alphanumeric characters, as well as dashes
+    and underscores. For example, if you have a tag `Compatibility`, you can
+    set `compat` as an identifier:
+
+    ``` yaml
+    extra:
+      tags:
+        Compatibility: compat
+    ```
+
+    Identifiers can be reused between tags. Tags which are not explicitly
+    associated will use the default tag icon which is :material-pound:
+
+Next, each identifier can be associated with an icon, or even a [custom icon],
+by adding the following lines to `mkdocs.yml` under the `theme.icon`
+configuration setting:
+
+=== "Tag icon"
+
+    ``` yaml
+    theme:
+      icon:
+        tag:
+          <identifier>: <icon> # (1)!
+    ```
+
+    1.  Enter a few keywords to find the perfect icon using our [icon search] and
+        click on the shortcode to copy it to your clipboard:
+
+        <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+          <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="tag" />
+          <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+            <div class="mdx-iconsearch-result__meta"></div>
+            <ol class="mdx-iconsearch-result__list"></ol>
+          </div>
+        </div>
+
+=== "Tag default icon"
+
+    ``` yaml
+    theme:
+      icon:
+        tag:
+          default: <icon>
+    ```
+
+??? example "Expand to inspect example"
+
+    ``` yaml
+    theme:
+      icon:
+        tag:
+          html: fontawesome/brands/html5
+          js: fontawesome/brands/js
+          css:  fontawesome/brands/css3
+    extra:
+      tags:
+        HTML5: html
+        JavaScript: js
+        CSS: css
+    ```
+
+  [Insiders]: ../insiders/index.md
+  [custom icon]: changing-the-logo-and-icons.md#additional-icons
+  [icon search]: ../reference/icons-emojis.md#search
 
 ## Usage
 
@@ -60,8 +148,10 @@ lines at the top of a Markdown file:
 ``` sh
 ---
 tags:
-  - insiders
-  - brand new
+  - html
+  - js
+  - css
+  - other
 ---
 
 ...

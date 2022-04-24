@@ -64,7 +64,7 @@ theme:
 
     === ":octicons-mark-github-16: Octicons"
 
-        ``` yaml title="Admonition with alternate icon set"
+        ``` yaml
         theme:
           icon:
             admonition:
@@ -91,7 +91,7 @@ theme:
 
     === ":fontawesome-brands-font-awesome: FontAwesome"
 
-        ``` yaml title="Admonition with alternate icon set"
+        ``` yaml
         theme:
           icon:
             admonition:
@@ -116,7 +116,7 @@ theme:
         </div>
 
   [Insiders]: ../insiders/index.md
-  [custom icon]: icons-emojis.md#additional-icons
+  [custom icon]: ../setup/changing-the-logo-and-icons.md#additional-icons
   [supported types]: #supported-types
   [icon search]: icons-emojis.md#search
   [Octicons]: ../assets/screenshots/admonition-octicons.png
