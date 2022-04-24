@@ -167,7 +167,7 @@
   // Code block title
   span.filename {
     position: relative;
-    display: block;
+    display: flow-root;
     margin-top: 1em;
     padding: px2em(9px, 13.6px) px2em(16px, 13.6px);
     font-weight: 700;
@@ -266,6 +266,11 @@
     flex-grow: 1;
     padding: 0;
     text-align: left;
+
+    // Adjust spacing
+    span.filename {
+      margin-top: 0;
+    }
   }
 
   // Code block line numbers - disable user selection, so code can be easily
