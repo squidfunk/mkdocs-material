@@ -221,6 +221,12 @@
           ]
         },
         {
+          "title": "Site language: Macedonian",
+          "enum": [
+            "mk"
+          ]
+        },
+        {
           "title": "Site language: Mongolian",
           "enum": [
             "mn"

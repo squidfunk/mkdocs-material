@@ -63,6 +63,7 @@ The following languages are supported:
 - `ka` – Georgian
 - `kr` – Korean
 - `lv` – Latvian
+- `mk` – Macedonian
 - `mn` – Mongolian
 - `ms` – Bahasa Malaysia
 - `my` – Burmese
