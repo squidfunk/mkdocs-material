@@ -143,10 +143,10 @@ lines at the top of a Markdown file:
 ``` sh
 ---
 tags:
-  - html
-  - js
-  - css
-  - other
+  - HTML5
+  - JavaScript
+  - CSS
+  - Other
 ---
 
 ...
@@ -192,7 +192,7 @@ arbitrary content before and after the marker:
   [tags.tags_file]: #tags-file
   [9]: ../assets/screenshots/tags-index.png
 
-### Hiding the tags
+### Hiding tags on a page
 
 While the tags are rendered above the main headline, sometimes, it might be
 desirable to hide them for a specific page, which can be achieved by using the
