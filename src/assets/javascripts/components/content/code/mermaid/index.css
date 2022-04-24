@@ -99,12 +99,12 @@ marker {
 }
 
 /* Flowchart markers */
-#flowchart-circleStart,
-#flowchart-circleEnd,
-#flowchart-crossStart,
-#flowchart-crossEnd,
-#flowchart-pointStart,
-#flowchart-pointEnd {
+defs #flowchart-circleStart,
+defs #flowchart-circleEnd,
+defs #flowchart-crossStart,
+defs #flowchart-crossEnd,
+defs #flowchart-pointStart,
+defs #flowchart-pointEnd {
   stroke: none;
 }
 
@@ -160,19 +160,19 @@ g.classGroup text {
 }
 
 /* Class extension, composition and dependency marker */
-#extensionStart,
-#extensionEnd,
-#compositionStart,
-#compositionEnd,
-#dependencyStart,
-#dependencyEnd {
+defs #classDiagram-extensionStart,
+defs #classDiagram-extensionEnd,
+defs #classDiagram-compositionStart,
+defs #classDiagram-compositionEnd,
+defs #classDiagram-dependencyStart,
+defs #classDiagram-dependencyEnd {
   fill: var(--md-mermaid-edge-color) !important;
   stroke: var(--md-mermaid-edge-color) !important;
 }
 
 /* Class aggregation marker */
-#aggregationStart,
-#aggregationEnd {
+defs #classDiagram-aggregationStart,
+defs #classDiagram-aggregationEnd {
   fill: var(--md-mermaid-label-bg-color) !important;
   stroke: var(--md-mermaid-edge-color) !important;
 }
@@ -253,6 +253,11 @@ g.stateGroup .composit {
   stroke: var(--md-default-fg-color--lighter);
 }
 
+/* State diagram markers */
+defs #statediagram-barbEnd {
+  stroke: var(--md-mermaid-edge-color);
+}
+
 /* ----------------------------------------------------------------------------
  * Rules: entity-relationship diagrams
  * ------------------------------------------------------------------------- */
@@ -288,20 +293,20 @@ g.stateGroup .composit {
 }
 
 /* Entity relationship line markers */
-#ZERO_OR_ONE_START *,
-#ZERO_OR_ONE_END *,
-#ZERO_OR_MORE_START *,
-#ZERO_OR_MORE_END *,
-#ONLY_ONE_START *,
-#ONLY_ONE_END *,
-#ONE_OR_MORE_START *,
-#ONE_OR_MORE_END * {
+defs #ZERO_OR_ONE_START *,
+defs #ZERO_OR_ONE_END *,
+defs #ZERO_OR_MORE_START *,
+defs #ZERO_OR_MORE_END *,
+defs #ONLY_ONE_START *,
+defs #ONLY_ONE_END *,
+defs #ONE_OR_MORE_START *,
+defs #ONE_OR_MORE_END * {
   stroke: var(--md-mermaid-edge-color) !important;
 }
 
 /* Entity relationship line markers */
-#ZERO_OR_MORE_START circle,
-#ZERO_OR_MORE_END circle {
+defs #ZERO_OR_MORE_START circle,
+defs #ZERO_OR_MORE_END circle {
   fill: var(--md-mermaid-label-bg-color);
 }
 

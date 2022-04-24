@@ -1,3 +1,11 @@
+mkdocs-material-8.2.10 (2022-04-24)
+
+  * Added Macedonian translations
+  * Updated Mermaid.js 9.0.1
+  * Switched sidebar title in mobile navigation to bold font
+  * Fixed color of arrows in class and state diagrams for dark mode
+  * Fixed #3836: Inline admonitions overlayed by code blocks titles
+
 mkdocs-material-8.2.9 (2022-04-08)
 
   * Mitigate flicker on color palette switch by disabling all transitions
