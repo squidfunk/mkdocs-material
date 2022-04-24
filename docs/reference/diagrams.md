@@ -41,11 +41,13 @@ No further configuration is necessary. Advantages over a custom integration:
     While all [Mermaid.js] features should work out-of-the-box, Material for
     MkDocs will currently only adjust the fonts and colors for flowcharts,
     sequence diagrams, class diagams, state diagrams and entity relationship 
-    diagrams.
+    diagrams. See the section on [other diagrams] for more informaton why this
+    is currently not implemented for all diagrams.
 
   [Diagrams support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [additional style sheets]: ../customization.md#additional-css
+  [other diagrams]: #other-diagrams
 
 ## Usage
 
@@ -260,3 +262,17 @@ erDiagram
 </div>
 
   [entity-relationship diagram]: https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram
+
+### Other diagram types
+
+Besides the diagram types listed above, [Mermaid.js] provides support for
+[pie charts], [gantt charts], [user journeys], [git graphs] and
+[requirement diagrams], all of which are not officially supported by Material
+for MkDocs. Those diagrams should still work as advertised by [Mermaid.js], but
+we don't consider them a good choice, mostly as they don't work well on mobile.
+
+  [pie charts]: https://mermaid-js.github.io/mermaid/#/pie
+  [gantt charts]: https://mermaid-js.github.io/mermaid/#/gantt
+  [user journeys]: https://mermaid-js.github.io/mermaid/#/user-journey
+  [git graphs]: https://mermaid-js.github.io/mermaid/#/gitgraph
+  [requirement diagrams]: https://mermaid-js.github.io/mermaid/#/requirementDiagram
