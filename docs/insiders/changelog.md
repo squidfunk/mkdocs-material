@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.13.1 <small>_ April 25, 2022</small> { id="4.13.1" }
+
+- Fixed #3839: Tags plugin breaks without icons (4.13.0 regression)
+
 ### 4.13.0 <small>_ April 24, 2022</small> { id="4.13.0" }
 
 - Added support for tag icons
