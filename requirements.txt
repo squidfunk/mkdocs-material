@@ -23,5 +23,5 @@ jinja2>=2.11.1
 markdown>=3.2
 mkdocs>=1.3.0
 mkdocs-material-extensions>=1.0.3
-pygments>=2.10,<2.12
+pygments>=2.10,<2.13
 pymdown-extensions>=9.0,<9.4
