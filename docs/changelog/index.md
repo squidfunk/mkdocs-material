@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.11 <small>_ April 25, 2022</small> { id="8.2.11" }
+
+- Temporarily pinned Pygments to `<2.12`
+- Temporarily pinned Python Markdown Extensions to `<9.4`
+- Improved rendering of code annotation markers
+
 ### 8.2.10 <small>_ April 24, 2022</small> { id="8.2.10" }
 
 - Added Macedonian translations
