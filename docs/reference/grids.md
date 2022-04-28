@@ -90,7 +90,7 @@ List elements can contain arbitrary Markdown, as long as the surrounding `div`
 defines the `markdown` attribute. Following is a more complex example, which
 includes icons and links:
 
-``` html title="Grid with cards, complex example"
+``` html title="Card grid, complex example"
 <div class="grid cards" markdown>
 
 -   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
@@ -264,6 +264,7 @@ by using a `div` with the `grid` class:
     2. Donec vitae suscipit est
     3. Nulla tempor lobortis orci
 ```
+
 </div>
 ````
 

@@ -8,8 +8,7 @@ title: Insiders
 Material for MkDocs follows the __sponsorware__ release strategy, which means
 that new features are first exclusively released to sponsors as part of
 [Insiders]. Read on to learn [what sponsorships achieve],
-[how to become a sponsor] to get access to Insiders, and
-[what's in for you][available features]!
+[how to become a sponsor] to get access to Insiders, and [what's in for you]!
 
 <figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
@@ -26,15 +25,16 @@ This documentation is built with Insiders
   [Insiders]: #what-is-insiders
   [what sponsorships achieve]: #what-sponsorships-achieve
   [how to become a sponsor]: #how-to-become-a-sponsor
-  [available features]: #available-features
+  [what's in for you]: #whats-in-for-me
   [Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
 
 ## What is Insiders?
 
 Material for MkDocs Insiders is a private fork of Material for MkDocs, hosted as
-a private GitHub repository. Almost[^1] all new features are developed as part of
-this fork, which means that they are immediately available to all eligible
-sponsors, as they are made collaborators of this repository.
+a private GitHub repository. Almost[^1] [all new features][what's in for you]
+are developed as part of this fork, which means that they are immediately
+available to all eligible sponsors, as they are made collaborators of this
+repository.
 
   [^1]:
     In general, every new feature is first exclusively released to sponsors, but
@@ -166,9 +166,11 @@ You can cancel your sponsorship anytime.[^5]
 
   [squidfunk's sponsor profile]: https://github.com/sponsors/squidfunk
 
-## Available features
+## What's in for me?
 
-The following features are solely available via Material for MkDocs Insiders:
+The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
+access to many additional features__ that you can start using right away, and
+which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
