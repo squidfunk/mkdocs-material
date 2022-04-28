@@ -420,6 +420,11 @@ kbd {
     display: none;
   }
 
+  // Hide images for github dark mode
+  img[src$="#gh-dark-mode-only"] {
+    display: none;
+  }
+
   // Figure
   figure {
     display: flow-root;
