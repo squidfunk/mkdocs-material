@@ -416,11 +416,7 @@ kbd {
   }
 
   // Hide images for dark mode
-  img[src$="#only-dark"] {
-    display: none;
-  }
-
-  // Hide images for github dark mode
+  img[src$="#only-dark"],
   img[src$="#gh-dark-mode-only"] {
     display: none;
   }
