@@ -416,7 +416,8 @@ kbd {
   }
 
   // Hide images for dark mode
-  img[src$="#only-dark"] {
+  img[src$="#only-dark"],
+  img[src$="#gh-dark-mode-only"] {
     display: none;
   }
 
