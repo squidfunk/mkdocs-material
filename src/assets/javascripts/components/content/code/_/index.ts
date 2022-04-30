@@ -178,9 +178,7 @@ export function mountCodeBlock(
     }
 
     /* Handle code annotations */
-    const container = el.closest([
-      ":not(td):not(.code) > .highlight"
-    ].join(", "))
+    const container = el.closest(".highlight")
     if (container instanceof HTMLElement) {
       const list = findCandidateList(container)
 
