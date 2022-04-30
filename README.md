@@ -139,16 +139,6 @@ Trust 10,000+ users – choose a mature and actively maintained solution built
 with state-of-the-art Open Source technologies. Keep ownership of your content
 without fear of vendor lock-in. Licensed under MIT.
 
-## Become a sponsor
-
-By joining the [Insiders] program, you'll get immediate access to the latest
-features while also helping support the ongoing development of Material for
-MkDocs. Thanks to our [awesome sponsors], this project is actively maintained
-and kept in good shape.
-
-  [Insiders]: https://squidfunk.github.io/mkdocs-material/insiders/#what-is-insiders
-  [awesome sponsors]: https://squidfunk.github.io/mkdocs-material/insiders/#how-to-become-a-sponsor
-
 ## Quick start
 
 Material for MkDocs can be installed with `pip`:
