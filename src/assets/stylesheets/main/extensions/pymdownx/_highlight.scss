@@ -314,20 +314,21 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Code block with line numbers
+  // Code block with line numbers - unfortunately, these selectors need to be
+  // overly specific so they don't bleed into code blocks in annotations.
   .highlighttable {
     margin: 1em 0;
     direction: ltr;
 
-    // Remove rounded borders on left side
-    code {
+    // Remove rounded borders on code blocks
+    > tbody > tr > .code > div > pre > code {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
   }
 
   // Code block result container
-  :is(.highlight, .highlighttable) + .result {
+  .highlight + .result {
     margin-top: calc(-1em + #{px2em(-2px)});
     padding: 0 px2em(16px);
     overflow: visible;
@@ -356,14 +357,17 @@
   .md-content__inner > .highlight {
     margin: 1em px2rem(-16px);
 
-    // Highlighted line
-    .hll {
-      margin: 0 px2rem(-16px);
-      padding: 0 px2rem(16px);
+    // Remove rounded borders
+    > .filename,
+    > pre > code {
+      border-radius: 0;
     }
 
-    // Remove rounded borders
-    code {
+    // Code block with line numbers - unfortunately, these selectors need to be
+    // overly specific so they don't bleed into code blocks in annotations.
+    > .highlighttable > tbody > tr > .filename span.filename,
+    > .highlighttable > tbody > tr > .linenos,
+    > .highlighttable > tbody > tr > .code > div > pre > code {
       border-radius: 0;
     }
 
@@ -372,18 +376,6 @@
       margin-inline: px2rem(-16px);
       border-inline-width: 0;
       border-radius: 0;
-    }
-  }
-
-  // Top-level code block with line numbers
-  .md-content__inner > .highlighttable {
-    margin: 1em px2rem(-16px);
-    border-radius: 0;
-
-    // Highlighted line
-    .hll {
-      margin: 0 px2rem(-16px);
-      padding: 0 px2rem(16px);
     }
   }
 }

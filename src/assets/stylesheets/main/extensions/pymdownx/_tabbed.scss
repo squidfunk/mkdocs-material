@@ -187,21 +187,41 @@
     // Code block is the first child of a tab - remove margin and mirror
     // previous (now deprecated) SuperFences code block grouping behavior
     > pre:first-child,
-    > .highlight:first-child > pre:first-child,
-    > .highlight:first-child > .highlighttable {
+    > .highlight:first-child > pre {
       margin: 0;
 
-      // Remove rounded borders
+      // Remove rounded borders on code block
       > code {
-        border-start-start-radius: 0;
-        border-start-end-radius: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
       }
     }
 
-    // Remove rounded border on line numbers container
-    > .highlighttable:first-child .linenos {
-      border-start-start-radius: 0;
-      border-start-end-radius: 0;
+    // Code block title - remove spacing and rounded borders
+    > .highlight:first-child > .filename {
+      margin: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    // Code block with line numbers - unfortunately, these selectors need to be
+    // overly specific so they don't bleed into code blocks in annotations.
+    > .highlight:first-child > .highlighttable {
+      margin: 0;
+
+      // Remove rounded borders on line numbers and titles
+      > tbody > tr > .filename span.filename,
+      > tbody > tr > .linenos {
+        margin: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      // Remove rounded borders on code blocks
+      > tbody > tr > .code > div > pre > code {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
     }
 
     // Adjust spacing for nested tabbed container
