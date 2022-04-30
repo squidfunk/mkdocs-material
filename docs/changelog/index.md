@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.12 <small>_ April 30, 2022</small> { id="8.2.12" }
+
+- Added support for GitHub-style hash fragments for dark/light images
+- Improved rendering of nested code blocks in content tabs and annotations
+- Fixed #3862: Upgraded to latest Pygments and Python Markdown Extensions
+
 ### 8.2.11 <small>_ April 25, 2022</small> { id="8.2.11" }
 
 - Temporarily pinned Pygments to `<2.12`
