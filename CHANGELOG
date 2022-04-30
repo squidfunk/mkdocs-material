@@ -1,3 +1,8 @@
+mkdocs-material-8.2.12+insiders-4.13.2 (2022-04-30)
+
+  * Improved caching of downloaded resources in privacy plugin
+  * Fixed #3851: External images not downloaded by privacy plugin
+
 mkdocs-material-8.2.12 (2022-04-30)
 
   * Added support for GitHub-style hash fragments for dark/light images

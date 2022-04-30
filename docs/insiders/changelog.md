@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.13.2 <small>_ April 30, 2022</small> { id="4.13.2" }
+
+- Improved caching of downloaded resources in privacy plugin
+- Fixed #3851: External images not downloaded by privacy plugin
+
 ### 4.13.1 <small>_ April 25, 2022</small> { id="4.13.1" }
 
 - Fixed #3839: Tags plugin breaks without icons (4.13.0 regression)
