@@ -19,6 +19,7 @@
 # IN THE SOFTWARE.
 
 import logging
+import os
 import sys
 
 from collections import defaultdict
@@ -109,9 +110,12 @@ class TagsPlugin(BasePlugin):
                 page.file.src_path,
                 self.tags_file.src_path
             )
+
+            # Ensure forward slashes, as we have to use the path of the source
+            # file which contains the operating system's path separator.
             content.append("- [{}]({})".format(
                 page.meta.get("title", page.title),
-                url
+                url.replace(os.path.sep, "/")
             ))
 
         # Return rendered tag links
