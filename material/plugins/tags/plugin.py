@@ -107,15 +107,15 @@ class TagsPlugin(BasePlugin):
         content = [f"## <span class=\"md-tag\">{tag}</span>", ""]
         for page in pages:
             url = utils.get_relative_url(
-                page.file.src_path,
-                self.tags_file.src_path
+                page.file.src_path.replace(os.path.sep, "/"),
+                self.tags_file.src_path.replace(os.path.sep, "/")
             )
 
             # Ensure forward slashes, as we have to use the path of the source
             # file which contains the operating system's path separator.
             content.append("- [{}]({})".format(
                 page.meta.get("title", page.title),
-                url.replace(os.path.sep, "/")
+                url
             ))
 
         # Return rendered tag links
