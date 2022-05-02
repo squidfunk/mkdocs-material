@@ -64,7 +64,7 @@ setup(
     packages = find_packages(exclude = ["src", "src.*"]),
     include_package_data = True,
     install_requires = install_requires,
-    python_requires='>=3.6',
+    python_requires='>=3.7',
     entry_points = {
         "mkdocs.themes": [
             "material = material"
