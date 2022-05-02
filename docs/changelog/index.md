@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.13 <small>_ May 2, 2022</small> { id="8.2.13" }
+
+- Fixed #3865: Tags index links to tagged pages 404 on Windows
+- Fixed #3866: Bump required Python version from 3.6+ to 3.7+
+
 ### 8.2.12 <small>_ April 30, 2022</small> { id="8.2.12" }
 
 - Added support for GitHub-style hash fragments for dark/light images
