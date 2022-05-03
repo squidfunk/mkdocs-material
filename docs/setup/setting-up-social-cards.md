@@ -239,11 +239,16 @@ you don't want to use it:
       {% elif page and page.title and not page.is_homepage %}
         {% set title = title ~ " - " ~ page.title %}
       {% endif %}
+      {% if page and page.meta and page.meta.description %}
+        {% set description = page.meta.description %}
+      {% else %}
+        {% set description = config.site_description %}
+      {% endif %}
       <meta property="og:type" content="website" />
       <meta property="og:title" content="{{ title }}" />
-      <meta property="og:description" content="{{ config.site_description }}" />
+      <meta property="og:description" content="{{ description }}" />
       <meta property="og:url" content="{{ page.canonical_url }}" />
-      <meta property="og:image" content="<url>" />
+      <meta property="og:image" content="http://127.0.0.1:8000/" />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
@@ -261,6 +266,11 @@ you don't want to use it:
         {% set title = title ~ " - " ~ page.meta.title %}
       {% elif page and page.title and not page.is_homepage %}
         {% set title = title ~ " - " ~ page.title %}
+      {% endif %}
+      {% if page and page.meta and page.meta.description %}
+        {% set description = page.meta.description %}
+      {% else %}
+        {% set description = description %}
       {% endif %}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="{{ title }}" />
