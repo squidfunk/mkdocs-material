@@ -248,7 +248,7 @@ you don't want to use it:
       <meta property="og:title" content="{{ title }}" />
       <meta property="og:description" content="{{ description }}" />
       <meta property="og:url" content="{{ page.canonical_url }}" />
-      <meta property="og:image" content="http://127.0.0.1:8000/" />
+      <meta property="og:image" content="<url>" />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
