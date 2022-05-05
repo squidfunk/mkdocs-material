@@ -9,13 +9,13 @@ as it offers a native [cookie consent] solution to seek explicit consent from
 users before setting up [tracking]. Additionally, external assets can be
 automatically downloaded for [self-hosting].
 
-  [cookie consent]: #cookie-consent
+  [cookie consent]: #native-cookie-consent
   [tracking]: setting-up-site-analytics.md
   [self-hosting]: #built-in-privacy-plugin
 
 ## Configuration
 
-### Cookie consent
+### Cookie consent { #native-cookie-consent }
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-2.10.0][Insiders] ·

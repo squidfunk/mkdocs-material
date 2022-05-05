@@ -10,7 +10,7 @@ MkDocs natively integrates with [Google Analytics] and offers a customizable
 [cookie consent] and a [feedback widget].
 
   [Google Analytics]: https://developers.google.com/analytics
-  [cookie consent]: ensuring-data-privacy.md#cookie-consent
+  [cookie consent]: ensuring-data-privacy.md#native-cookie-consent
   [feedback widget]: #was-this-page-helpful
 
 ## Configuration
