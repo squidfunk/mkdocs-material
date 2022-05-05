@@ -102,7 +102,7 @@ The following configuration options are supported:
     ``` yaml
     plugins:
       - search:
-          separator: '[\s\-\.]' # (1)!
+          separator: '[\\s\\-\\.]' # (1)!
     ```
 
     1.  Tokenization itself is carried out by [lunr's default tokenizer], which 
@@ -186,7 +186,7 @@ documents are tokenized:
 ``` yaml
 plugins:
   - search:
-      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      separator: "[\\s\\-,:!=\\[\\]()\"/]+|\\.(?!\\d)|&[lg]t;|(?!\\b)(?=[A-Z][a-z])"
 ```
 
 The following section explains what can be achieved with tokenizer lookahead:

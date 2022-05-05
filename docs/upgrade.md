@@ -1119,7 +1119,7 @@ was renamed to `separator`:
     ``` yaml
     plugins:
       - search:
-          separator: '[\s\-\.]+'
+          separator: '[\\s\\-\\.]+'
           lang:
             - en
             - de
@@ -1132,7 +1132,7 @@ was renamed to `separator`:
     extra:
       search:
         language: en, de, ru
-        tokenizer: '[\s\-\.]+'
+        tokenizer: '[\\s\\-\\.]+'
     ```
 
   [plugin options]: setup/setting-up-site-search.md#built-in-search-plugin
