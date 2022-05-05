@@ -70,7 +70,7 @@ following lines to `mkdocs.yml`:
 
 ### Was this page helpful?
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-3.2.0][Insiders] ·
 :octicons-milestone-24: Default: _none_
 

@@ -84,7 +84,7 @@ theme:
 
 #### Anchor links
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.4.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
@@ -197,7 +197,7 @@ theme:
 
 #### Stripping comments
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.4.0][Insiders] ·
 :octicons-beaker-24: Experimental
 

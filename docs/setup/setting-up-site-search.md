@@ -159,7 +159,7 @@ them at your own risk.
 
 ### Rich search previews
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-3.0.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
@@ -182,7 +182,7 @@ occurrences inside those blocks:
 
 ### Tokenizer lookahead
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-3.0.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
@@ -316,7 +316,7 @@ clipboard.
 
 ### Search boosting
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-2.8.0][Insiders]
 
 When [Metadata] is enabled, pages can be boosted in search with custom front
@@ -340,7 +340,7 @@ search:
 
 ### Search exclusion
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-3.1.0][Insiders] ·
 :octicons-beaker-24: Experimental
 

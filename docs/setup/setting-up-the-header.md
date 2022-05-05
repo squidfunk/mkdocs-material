@@ -56,7 +56,7 @@ block][overriding blocks], which is empty by default:
 
 #### Mark as read
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.2.0][Insiders] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental

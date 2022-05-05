@@ -229,7 +229,7 @@ This feature flag is not compatible with [`toc.integrate`][toc.integrate].
 
 #### Anchor following
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.8.0][Insiders] ·
 :octicons-beaker-24: Experimental
 

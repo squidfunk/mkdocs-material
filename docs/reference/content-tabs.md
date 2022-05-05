@@ -33,7 +33,7 @@ See additional configuration options:
 
 ### Linked content tabs
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-2.9.0][Insiders] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental

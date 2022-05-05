@@ -39,7 +39,7 @@ The social preview image for the page on [setting up site analytics].
 
 ### Built-in social plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-2.12.0][Insiders] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental

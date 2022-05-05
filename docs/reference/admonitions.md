@@ -35,7 +35,7 @@ See additional configuration options:
 
 ### Admonition icons
 
-[:octicons-heart-fill-24:{ .mdx-heart } Insiders][Insiders]{ .mdx-insiders } ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-2.4.0][Insiders]
 
 Each of the supported admonition types has a distinct icon, which can be changed
