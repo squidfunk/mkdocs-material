@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.14.0 <small>_ May 5, 2022</small> { id="4.14.0" }
+
+- Added Chinese language support to built-in search plugin
+- Fixed all-numeric page titles raising error in social plugin
+
 ### 4.13.2 <small>_ April 30, 2022</small> { id="4.13.2" }
 
 - Improved caching of downloaded resources in privacy plugin

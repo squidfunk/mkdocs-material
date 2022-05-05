@@ -217,6 +217,8 @@ nav:
       - Changelog: insiders/changelog.md
   - Blog:
     - blog/index.md
+    - 2022:
+      - blog/2022/chinese-search-support.md
     - 2021:
       - blog/2021/the-past-present-and-future.md
       - blog/2021/excluding-content-from-search.md

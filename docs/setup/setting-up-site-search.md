@@ -92,6 +92,12 @@ The following configuration options are supported:
     part of this list by automatically falling back to the stemmer yielding the
     best result.
 
+    !!! tip "Chinese search support – 中文搜索​支持"
+
+        Material for MkDocs recently added __experimental language support for 
+        Chinese__ as part of [Insiders]. [Read the blog article][chinese search]
+        to learn how to set up search for Chinese in a matter of minutes.
+
 `separator`{ #search-separator }
 
 :   :octicons-milestone-24: Default: _automatically set_ – The separator for
@@ -143,6 +149,7 @@ them at your own risk.
   [search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [lunr]: https://lunrjs.com
   [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
+  [chinese search]: ../blog/2022/chinese-search-support.md
   [lunr's default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
   [site language]: changing-the-language.md#site-language
   [tokenizer lookahead]: #tokenizer-lookahead

@@ -1,3 +1,8 @@
+mkdocs-material-8.2.13+insiders-4.14.0 (2022-05-05)
+
+  * Added Chinese language support to built-in search plugin
+  * Fixed all-numeric page titles raising error in social plugin
+
 mkdocs-material-8.2.13 (2022-05-02)
 
   * Fixed #3865: Tags index links to tagged pages 404 on Windows

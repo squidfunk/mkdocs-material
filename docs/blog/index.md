@@ -13,6 +13,40 @@ search:
 
 # Blog
 
+## [Chinese search support – 中文搜索​支持]
+
+__Insiders adds experimental Chinese language support for the [built-in search 
+plugin] – a feature that has been requested for a long time given the large
+number of Chinese users.__
+
+<aside class="mdx-author" markdown>
+![@squidfunk][@squidfunk avatar]
+
+<span>__Martin Donath__ · @squidfunk</span>
+<span>
+:octicons-calendar-24: May 5, 2022 ·
+:octicons-clock-24: 5 min read ·
+[:octicons-tag-24: 8.2.13+insiders-4.14.0][insiders-4.14.0]
+</span>
+</aside>
+
+---
+
+After the United States and Germany, the third-largest country of origin of
+Material for MkDocs users is China. For a long time, the built-in search plugin
+didn't allow for proper segmentation of Chinese characters, mainly due to 
+missing support in [lunr-languages] which is used for search tokenization and 
+stemming. The latest Insiders release adds long-awaited Chinese language support 
+for the built-in search plugin, something that has been requested by many users.
+
+  [:octicons-arrow-right-24: Continue reading][Chinese search support – 中文搜索​支持]
+
+  [built-in search plugin]: ../setup/setting-up-site-search.md#built-in-search-plugin
+  [@squidfunk avatar]: https://avatars.githubusercontent.com/u/932156
+  [insiders-4.14.0]: ../insiders/changelog.md#4.14.0
+  [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
+  [Chinese search support – 中文搜索​支持]: 2022/chinese-search-support.md
+
 ## [The past, present and future]
 
 __2021 was a fantastic year for this project as we shipped many new awesome
@@ -28,8 +62,6 @@ project sustainable.__
 :octicons-clock-24: 10 min read
 </span>
 </aside>
-
-  [@squidfunk avatar]: https://avatars.githubusercontent.com/u/932156
 
 ---
 
