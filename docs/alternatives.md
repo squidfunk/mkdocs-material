@@ -82,15 +82,20 @@ __Challenges__
 - Search is less powerful than the one provided by MkDocs
 - More time needed to get up and running
 
-[Sphinx Immaterial] is a great port of Material for MkDocs to Sphinx, as it
-follows the upstream repository closely. [Furo] is another great theme.
-Alternatively, [mkdocstrings] builds on top of MkDocs to allow
-the generation of reference documentation.
+If you want to chose Sphinx over MkDocs, you might want to check out
+[Immaterial], an actively maintained Sphinx port of Material for MkDocs.
+However, be warned that the search experience is pretty far from what Material
+for MkDocs offers, mainly due to limitations of Sphinx.
+
+If you want the best of both worlds, you should give [mkdocstrings] a try – a
+popular framework building on top of MkDocs that generates documentation from
+sources, similar to what Sphinx offers. The project is still young, but already
+closed many gaps between MkDocs and Sphinx.
 
   [Sphinx]: https://www.sphinx-doc.org/
   [reStructured text]: https://en.wikipedia.org/wiki/ReStructuredText
   [Python Docstrings]: https://www.python.org/dev/peps/pep-0257/
-  [Sphinx Immaterial]: https://github.com/jbms/sphinx-immaterial
+  [Immaterial]: https://github.com/jbms/sphinx-immaterial
   [Furo]: https://pradyunsg.me/furo/
   [mkdocstrings]: https://github.com/mkdocstrings/mkdocstrings
 
