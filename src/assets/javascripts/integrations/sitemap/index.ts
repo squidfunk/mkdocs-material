@@ -21,7 +21,9 @@
  */
 
 import {
+  EMPTY,
   Observable,
+  catchError,
   defaultIfEmpty,
   map,
   of,
@@ -97,6 +99,7 @@ export function fetchSitemap(base?: URL): Observable<Sitemap> {
         map(sitemap => preprocess(getElements("loc", sitemap)
           .map(node => node.textContent!)
         )),
+        catchError(() => EMPTY), // @todo refactor instant loading
         defaultIfEmpty([]),
         tap(sitemap => __md_set("__sitemap", sitemap, sessionStorage, base))
       )

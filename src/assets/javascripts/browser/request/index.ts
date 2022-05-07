@@ -24,11 +24,12 @@ import {
   EMPTY,
   Observable,
   catchError,
-  filter,
   from,
   map,
+  of,
   shareReplay,
-  switchMap
+  switchMap,
+  throwError
 } from "rxjs"
 
 /* ----------------------------------------------------------------------------
@@ -51,8 +52,11 @@ export function request(
 ): Observable<Response> {
   return from(fetch(`${url}`, options))
     .pipe(
-      filter(res => res.status === 200),
-      catchError(() => EMPTY)
+      catchError(() => EMPTY),
+      switchMap(res => res.status !== 200
+        ? throwError(() => new Error(res.statusText))
+        : of(res)
+      )
     )
 }
 

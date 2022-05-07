@@ -22,7 +22,9 @@
 
 import { Repo, User } from "github-types"
 import {
+  EMPTY,
   Observable,
+  catchError,
   defaultIfEmpty,
   map,
   zip
@@ -65,6 +67,7 @@ export function fetchSourceFactsFromGitHub(
       /* Fetch version */
       requestJSON<Release>(`${url}/releases/latest`)
         .pipe(
+          catchError(() => EMPTY), // @todo refactor instant loading
           map(release => ({
             version: release.tag_name
           })),
@@ -74,6 +77,7 @@ export function fetchSourceFactsFromGitHub(
       /* Fetch stars and forks */
       requestJSON<Repo>(url)
         .pipe(
+          catchError(() => EMPTY), // @todo refactor instant loading
           map(info => ({
             stars: info.stargazers_count,
             forks: info.forks_count

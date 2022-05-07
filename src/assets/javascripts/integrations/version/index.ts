@@ -23,6 +23,7 @@
 import {
   EMPTY,
   Subject,
+  catchError,
   combineLatest,
   filter,
   fromEvent,
@@ -73,6 +74,9 @@ export function setupVersionSelector(
   const versions$ = requestJSON<Version[]>(
     new URL("../versions.json", config.base)
   )
+    .pipe(
+      catchError(() => EMPTY) // @todo refactor instant loading
+    )
 
   /* Determine current version */
   const current$ = versions$
