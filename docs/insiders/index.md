@@ -174,9 +174,10 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Tooltips] :material-new-box:
 - [x] [Chinese search support] :material-new-box:
 - [x] [Tag icons] :material-new-box:
-- [x] [Card grids] :material-new-box:
+- [x] [Card grids]
 - [x] [Offline plugin]
 - [x] [Privacy plugin]
 - [x] [Table of contents anchor following]
@@ -277,11 +278,13 @@ are released for general availability.
 
 - [x] [Privacy plugin]
 - [x] [Card grids]
+- [x] [Tooltips]
 - [ ] [Instant previews]
 - [ ] and much more, to be announced ...
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
   [Card grids]: ../reference/grids.md
+  [Tooltips]: ../reference/tooltips.md
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed

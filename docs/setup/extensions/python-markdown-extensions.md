@@ -559,7 +559,7 @@ See reference for usage:
 
   [Snippets]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
   [Snippets support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [Adding a glossary]: ../../reference/abbreviations.md#adding-a-glossary
+  [Adding a glossary]: ../../reference/tooltips.md#adding-a-glossary
   [Embedding external files]: ../../reference/code-blocks.md#embedding-external-files
 
 ### SuperFences

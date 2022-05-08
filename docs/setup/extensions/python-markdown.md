@@ -34,8 +34,8 @@ No configuration options are available. See reference for usage:
 
   [Abbreviations]: https://python-markdown.github.io/extensions/abbreviations/
   [Abbreviations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
-  [Adding abbreviations]: ../../reference/abbreviations.md#adding-abbreviations
-  [Adding a glossary]: ../../reference/abbreviations.md#adding-a-glossary
+  [Adding abbreviations]: ../../reference/tooltips.md#adding-abbreviations
+  [Adding a glossary]: ../../reference/tooltips.md#adding-a-glossary
 
 ### Admonition
 
