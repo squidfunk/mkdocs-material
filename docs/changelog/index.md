@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.14 <small>_ May 8, 2022</small> { id="8.2.14" }
+
+- Fixed missing top right rounded border on admonition
+- Fixed #3886: `4xx` status codes not handled when using instant loading
+
 ### 8.2.13 <small>_ May 2, 2022</small> { id="8.2.13" }
 
 - Fixed #3865: Tags index links to tagged pages 404 on Windows
