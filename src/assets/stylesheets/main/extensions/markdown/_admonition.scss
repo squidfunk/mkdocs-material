@@ -125,6 +125,7 @@ $admonitions: (
     border: none;
     border-inline-start-width: px2rem(4px);
     border-start-start-radius: px2rem(2px);
+    border-start-end-radius: px2rem(2px);
 
     // Adjust spacing for title-only admonitions
     html &:last-child {
