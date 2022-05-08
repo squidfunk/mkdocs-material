@@ -1,6 +1,7 @@
 mkdocs-material-8.2.14+insiders-4.15.0 (2022-05-08)
 
   * Added support for improved tooltips
+  * Fixed #3785: Show tooltip on hover for overflowing navigation link
 
 mkdocs-material-8.2.14 (2022-05-08)
 
