@@ -97,7 +97,7 @@ markdown_extensions:
   - pymdownx.superfences
 ```
 
-  [reference]: ../../reference/tooltips.md
+  [reference]: ../../reference/index.md
 
 ### Recommended configuration
 
