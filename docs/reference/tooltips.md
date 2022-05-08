@@ -19,15 +19,18 @@ following lines to `mkdocs.yml`:
 ``` yaml
 markdown_extensions:
   - abbr
+  - attr_list
   - pymdownx.snippets
 ```
 
 See additional configuration options:
 
 - [Abbreviations]
+- [Attribute Lists]
 - [Snippets]
 
   [Abbreviations]: ../setup/extensions/python-markdown.md#abbreviations
+  [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [Snippets]: ../setup/extensions/python-markdown-extensions.md#snippets
 
 ### Improved tooltips
@@ -60,9 +63,9 @@ Now, tooltips will be rendered for the following elements:
 
 The [Markdown syntax] allows to specify a `title` for each link, which will
 render as a beautiful tooltip when [improved tooltips] are enabled. Add a 
-tooltip to an link with the following lines:
+tooltip to a link with the following lines:
 
-``` markdown title="Link with title, inline syntax"
+``` markdown title="Link with tooltip, inline syntax"
 [Hover me](https://example.com "I'm a tooltip!")
 ```
 
@@ -74,7 +77,7 @@ tooltip to an link with the following lines:
 
 Tooltips can also be added to link references:
 
-``` markdown title="Link with title, reference syntax"
+``` markdown title="Link with tooltip, reference syntax"
 [Hover me][example]
 
   [example]: https://example.com "I'm a tooltip!"
@@ -83,6 +86,19 @@ Tooltips can also be added to link references:
 <div class="result" markdown>
 
 [Hover me](https://example.com "I'm a tooltip!")
+
+</div>
+
+For all other elements, a `title` can be added by using the [Attribute Lists]
+extension:
+
+``` markdown title="Icon with tooltip"
+:material-information-outline:{ title="Important information" }
+```
+
+<div class="result" markdown>
+
+:material-information-outline:{ title="Important information" }
 
 </div>
 
