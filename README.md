@@ -147,7 +147,7 @@ Material for MkDocs can be installed with `pip`:
 pip install mkdocs-material
 ```
 
-Add the following line to `mkdocs.yml`:
+Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:

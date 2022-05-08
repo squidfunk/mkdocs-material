@@ -1,0 +1,144 @@
+---
+template: overrides/main.html
+icon: material/comment-processing-outline
+---
+
+# Tooltips
+
+Material for MkDocs makes it trivial to add tooltips to links, abbreviations
+and all other elements, which allows for implementing glossary-like
+functionality, as well as small hints that are shown when the user hovers or 
+focuses an element.
+
+## Configuration
+
+This configuration enables support for tooltips and abbreviations and allows to 
+build a simple glossary, sourcing definitions from a central location. Add the 
+following lines to `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - abbr
+  - pymdownx.snippets
+```
+
+See additional configuration options:
+
+- [Abbreviations]
+- [Snippets]
+
+  [Abbreviations]: ../setup/extensions/python-markdown.md#abbreviations
+  [Snippets]: ../setup/extensions/python-markdown-extensions.md#snippets
+
+### Improved tooltips
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.15.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+When improved tooltips are enabled, Material for MkDocs replaces the browser's
+rendering logic for `title` attribute with beautiful little tooltips.
+Add the following lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - content.tooltips
+```
+
+Now, tooltips will be rendered for the following elements:
+
+- __Content__ – elements with a `title`, permalinks and copy-to-clipboard button
+- __Header__ – home button, header title, color palette switch and repository link
+- __Navigation__ – links that are shortened with ellipsis, i.e. `...`
+
+[Insiders]: ../insiders/index.md
+
+## Usage
+
+### Adding tooltips
+
+The [Markdown syntax] allows to specify a `title` for each link, which will
+render as a beautiful tooltip when [improved tooltips] are enabled. Add a 
+tooltip to an link with the following lines:
+
+``` markdown title="Link with title, inline syntax"
+[Hover me](https://example.com "I'm a tooltip!")
+```
+
+<div class="result" markdown>
+
+[Hover me](https://example.com "I'm a tooltip!")
+
+</div>
+
+Tooltips can also be added to link references:
+
+``` markdown title="Link with title, reference syntax"
+[Hover me][example]
+
+  [example]: https://example.com "I'm a tooltip!"
+```
+
+<div class="result" markdown>
+
+[Hover me](https://example.com "I'm a tooltip!")
+
+</div>
+
+  [Markdown syntax]: https://daringfireball.net/projects/markdown/syntax#link
+  [improved tooltips]: #improved-tooltips
+
+### Adding abbreviations
+
+Abbreviations can be defined by using a special syntax similar to [links] and 
+[footnotes], starting with a `*` and immediately followed by the term or
+acronym to be associated in square brackets:
+
+``` markdown title="Text with abbreviations"
+The HTML specification is maintained by the W3C.
+
+*[HTML]: Hyper Text Markup Language
+*[W3C]: World Wide Web Consortium
+```
+
+<div class="result" markdown>
+
+The HTML specification is maintained by the W3C.
+
+*[HTML]: Hyper Text Markup Language
+*[W3C]: World Wide Web Consortium
+
+</div>
+
+  [links]: #adding-tooltips
+  [footnotes]: footnotes.md
+
+### Adding a glossary
+
+The [Snippets] extension can be used to implement a simple glossary by moving
+all abbreviations in a dedicated file[^1], and embedding it with the
+[`--8<--` notation][Snippets notation] at the end of each document:
+
+  [^1]:
+    It's highly recommended to put the Markdown file containing the
+    abbreviations outside of the `docs` folder (here, a folder with the name 
+    `includes` is used), as MkDocs might otherwise complain about an
+    unreferenced file.
+
+=== ":octicons-file-code-16: docs/example.md"
+
+    ```` markdown
+    The HTML specification is maintained by the W3C.
+
+    --8<-- "includes/abbreviations.md"
+    ````
+
+=== ":octicons-file-code-16: includes/abbreviations.md"
+
+    ```` markdown
+    *[HTML]: Hyper Text Markup Language
+    *[W3C]: World Wide Web Consortium
+    ````
+
+  [Snippets notation]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippets-notation

@@ -51,6 +51,7 @@ theme:
   features:
     - content.code.annotate
     # - content.tabs.link
+    - content.tooltips
     # - header.autohide
     # - navigation.expand
     - navigation.indexes
@@ -73,8 +74,8 @@ theme:
         icon: material/toggle-switch
         name: Switch to dark mode
     - scheme: slate
-      primary: red
-      accent: red
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
@@ -92,6 +93,7 @@ plugins:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
         conventions.md: philosophy.md
+        reference/abbreviations.md: reference/tooltips.md
         reference/meta-tags.md: reference/index.md
         reference/variables.md: https://mkdocs-macros-plugin.readthedocs.io/
         sponsorship.md: insiders/index.md
@@ -195,7 +197,6 @@ nav:
       - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
   - Reference:
     - reference/index.md
-    - Abbreviations: reference/abbreviations.md
     - Admonitions: reference/admonitions.md
     - Annotations: reference/annotations.md
     - Buttons: reference/buttons.md
@@ -210,6 +211,7 @@ nav:
     - Images: reference/images.md
     - Lists: reference/lists.md
     - MathJax: reference/mathjax.md
+    - Tooltips: reference/tooltips.md
   - Insiders:
     - insiders/index.md
     - Getting started:

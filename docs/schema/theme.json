@@ -558,6 +558,13 @@
             ]
           },
           {
+            "title": "Improved tooltips",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/tooltips/#improved-tooltips",
+            "enum": [
+              "content.tooltips"
+            ]
+          },
+          {
             "title": "Header hides automatically when scrolling",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#automatic-hiding",
             "enum": [

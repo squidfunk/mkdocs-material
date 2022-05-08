@@ -1,6 +1,6 @@
 ---
 template: overrides/main.html
-icon: material/alphabet-greek
+icon: material/math-integral
 ---
 
 # MathJax

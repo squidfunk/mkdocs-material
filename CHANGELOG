@@ -1,3 +1,12 @@
+mkdocs-material-8.2.14+insiders-4.15.0 (2022-05-08)
+
+  * Added support for improved tooltips
+
+mkdocs-material-8.2.14 (2022-05-08)
+
+  * Fixed missing top right rounded border on admonition
+  * Fixed #3886: 4xx status codes not handled when using instant loading
+
 mkdocs-material-8.2.13+insiders-4.14.0 (2022-05-05)
 
   * Added Chinese language support to built-in search plugin

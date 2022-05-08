@@ -179,11 +179,11 @@ theme:
   palette: # (1)!
     - scheme: default
       toggle:
-        icon: material/toggle-switch-off-outline # (2)!
+        icon: material/toggle-switch # (2)!
         name: Switch to dark mode
     - scheme: slate # (3)!
       toggle:
-        icon: material/toggle-switch
+        icon: material/toggle-switch-off-outline
         name: Switch to light mode
 ```
 
@@ -214,11 +214,11 @@ The following properties must be set for each toggle:
     This property must point to a valid icon path referencing any icon bundled
     with the theme, or the build will not succeed. Some popular combinations:
 
-    * :material-toggle-switch-off-outline: + :material-toggle-switch: – `material/toggle-switch-off-outline` + `material/toggle-switch`
-    * :material-weather-sunny: + :material-weather-night: – `material/weather-sunny` + `material/weather-night`
-    * :material-eye-outline: + :material-eye: – `material/eye-outline` + `material/eye`
-    * :material-lightbulb-outline: + :material-lightbulb: – `material/lightbulb-outline` + `material/lightbulb`
-    * :material-brightness-4: + :material-brightness-7: – `material/brightness-4` + `material/brightness-7`
+    * :material-toggle-switch: + :material-toggle-switch-off-outline: – `material/toggle-switch` + `material/toggle-switch-off-outline`
+    * :material-weather-night: + :material-weather-sunny: – `material/weather-night` + `material/weather-sunny`
+    * :material-eye: + :material-eye-outline: – `material/eye` + `material/eye-outline`
+    * :material-lightbulb: + :material-lightbulb-outline: – `material/lightbulb` + `material/lightbulb-outline`
+    * :material-brightness-7: + :material-brightness-4: – `material/brightness-7` + `material/brightness-4`
 
 `name`{ #toggle-name }
 
