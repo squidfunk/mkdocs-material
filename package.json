@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "array-flat-polyfill": "^1.0.1",
-    "clipboard": "^2.0.10",
+    "clipboard": "^2.0.11",
     "escape-html": "^1.0.3",
     "focus-visible": "^5.2.0",
     "fuzzaldrin-plus": "^0.6.0",
