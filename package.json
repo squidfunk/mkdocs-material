@@ -70,7 +70,7 @@
     "chokidar": "^3.5.3",
     "cssnano": "5.1.0",
     "esbuild": "^0.14.38",
-    "eslint": "^8.14.0",
+    "eslint": "^8.15.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsdoc": "^39.2.9",
