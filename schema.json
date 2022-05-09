@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Material for MkDocs",
+  "markdownDescription": "Configuration",
+  "type": "object",
+  "properties": {
+    "INHERIT": {
+      "title": "Inherit from configuration",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance",
+      "pattern": "\\.yml$"
+    },
+    "site_name": {
+      "title": "Site name, used in header, title and drawer",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#site_name",
+      "type": "string"
+    },
+    "site_url": {
+      "title": "Site URL",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#site_url",
+      "type": "string"
+    },
+    "site_author": {
+      "title": "Site author, used in document head",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#site_author",
+      "type": "string"
+    },
+    "site_description": {
+      "title": "Site description, used in document head and in social cards",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#site_description",
+      "type": "string"
+    },
+    "repo_name": {
+      "title": "Repository name, used in header",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#repository-name",
+      "type": "string"
+    },
+    "repo_url": {
+      "title": "Repository URL",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#repository",
+      "type": "string"
+    },
+    "edit_uri": {
+      "title": "Path from repository root to directory containing Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#edit-button",
+      "type": "string"
+    },
+    "copyright": {
+      "title": "Copyright, used in footer",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#copyright-notice",
+      "type": "string"
+    },
+    "docs_dir": {
+      "title": "Directory containing the Markdown sources",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#docs_dir",
+      "type": "string",
+      "default": "docs"
+    },
+    "site_dir": {
+      "title": "Directory containing the HTML output",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#site_dir",
+      "type": "string",
+      "default": "site"
+    },
+    "use_directory_urls": {
+      "title": "Pages are located in their own directories",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#use_directory_urls",
+      "type": "boolean",
+      "default": false
+    },
+    "extra_templates": {
+      "title": "Additional HTML files to include",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#extra_templates",
+      "type": "array",
+      "items": {
+        "title": "Path to HTML file",
+        "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#extra_templates",
+        "pattern": "\\.html$"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "extra_css": {
+      "title": "Additional CSS files to include",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-css",
+      "type": "array",
+      "items": {
+        "title": "Path to CSS file",
+        "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-css",
+        "pattern": "\\.css$"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "extra_javascript": {
+      "title": "Additional JavaScript files to include",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-javascript",
+      "type": "array",
+      "items": {
+        "title": "Path to JavaScript file",
+        "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-javascript",
+        "pattern": "\\.js$"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "strict": {
+      "title": "Strict mode",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#strict",
+      "type": "boolean",
+      "default": false
+    },
+    "dev_addr": {
+      "title": "Development IP Address",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#dev_addr",
+      "type": "string",
+      "default": "127.0.0.1:8000"
+    },
+    "remote_branch": {
+      "title": "Remote branch to deploy to",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#remote_branch",
+      "type": "string",
+      "default": "gh-pages"
+    },
+    "remote_name": {
+      "title": "Remote origin to deploy to",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#remote_name",
+      "type": "string",
+      "default": "origin"
+    },
+    "theme": {
+      "$ref": "schema/theme.json"
+    },
+    "plugins": {
+      "$ref": "schema/plugins.json"
+    },
+    "markdown_extensions": {
+      "$ref": "schema/extensions.json"
+    },
+    "extra": {
+      "$ref": "schema/extra.json"
+    },
+    "nav": {
+      "$ref": "schema/nav.json"
+    }
+  },
+  "additionalProperties": false,
+  "defaultSnippets": [
+    {
+      "label": "site_author",
+      "body": "${1:Jane Doe}"
+    },
+    {
+      "label": "repo_url",
+      "body": "repo_url: https://github.com/${1:user}/${2:repo}"
+    },
+    {
+      "label": "copyright",
+      "body": "copyright: Copyright &copy; 2022 ${1:Jane Doe}"
+    }
+  ]
+}

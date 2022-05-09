@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Plugins",
+  "markdownDescription": "https://www.mkdocs.org/dev-guide/plugins/",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "$ref": "#/definitions/built-in"
+      },
+      {
+        "$ref": "#/definitions/external"
+      },
+      {
+        "$ref": "#/definitions/external-community"
+      }
+    ]
+  },
+  "uniqueItems": true,
+  "minItems": 1,
+  "definitions": {
+    "built-in": {
+      "description": "Built-in plugins",
+      "oneOf": [
+        {
+          "$ref": "plugins/offline.json"
+        },
+        {
+          "$ref": "plugins/privacy.json"
+        },
+        {
+          "$ref": "plugins/search.json"
+        },
+        {
+          "$ref": "plugins/social.json"
+        },
+        {
+          "$ref": "plugins/tags.json"
+        }
+      ]
+    },
+    "external": {
+      "description": "External plugins, schema provided by us",
+      "oneOf": [
+        {
+          "$ref": "plugins/external/git-revision-date.json"
+        },
+        {
+          "$ref": "plugins/external/git-revision-date-localized.json"
+        },
+        {
+          "$ref": "plugins/external/minify.json"
+        },
+        {
+          "$ref": "plugins/external/redirects.json"
+        }
+      ]
+    },
+    "external-community": {
+      "description": "External plugins, schema provided by the community",
+      "oneOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-include-markdown-plugin/master/schema.json"
+        },
+        {
+          "$ref": "https://mondeja.github.io/mkdocs-mdpo-plugin/schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-material-relative-language-selector/master/schema.json"
+        },
+        {
+          "$ref": "https://guts.github.io/mkdocs-rss-plugin/schema.json"
+        }
+      ]
+    }
+  }
+}

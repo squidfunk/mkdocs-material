@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Built-in offline plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/",
+      "enum": [
+        "offline"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "offline": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#enabled",
+              "type": "boolean",
+              "default": true
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

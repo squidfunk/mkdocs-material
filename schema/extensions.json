@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Markdown extensions",
+  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "$ref": "extensions/markdown.json"
+      },
+      {
+        "$ref": "extensions/pymdownx.json"
+      }
+    ]
+  },
+  "uniqueItems": true,
+  "minItems": 1
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Git revision date plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin",
+      "enum": [
+        "git-revision-date"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "git-revision-date": {
+          "markdownDescription": "https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin",
+          "type": "object",
+          "properties": {
+            "enable_if_env": {
+              "title": "Enable plugin when environment variable is set",
+              "markdownDescription": "https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin#options",
+              "type": "string"
+            },
+            "modify_md": {
+              "title": "Enable plugin to be used in Markdown files",
+              "markdownDescription": "https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin#options",
+              "type": "boolean",
+              "default": true
+            },
+            "as_datetime": {
+              "title": "Output as Python datetime",
+              "markdownDescription": "https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin#options",
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

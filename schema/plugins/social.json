@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Built-in social plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/",
+      "enum": [
+        "social"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "social": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/",
+          "type": "object",
+          "properties": {
+            "cards": {
+              "title": "Social card generation",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards",
+              "type": "boolean",
+              "default": true
+            },
+            "cards_color": {
+              "title": "Social card color palette",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-color",
+              "type": "object",
+              "properties": {
+                "fill": {
+                  "title": "Background fill color",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-color",
+                  "type": "string"
+                },
+                "text": {
+                  "title": "Foreground text color",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-color",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "fill",
+                "text"
+              ]
+            },
+            "cards_font": {
+              "$ref": "../assets/fonts.json"
+            },
+            "cards_directory": {
+              "title": "Social card directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-directory",
+              "type": "string",
+              "default": "assets/images/social"
+            }
+          },
+          "additionalProperties": false,
+          "defaultSnippets": [
+            {
+              "label": "cards_font",
+              "body": "cards_font: ${1:Roboto}"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

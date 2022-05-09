@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Markdown extensions",
+  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/",
+  "oneOf": [
+    {
+      "title": "Abbreviations – Python Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#abbreviations",
+      "enum": [
+        "markdown.extensions.abbr",
+        "abbr"
+      ]
+    },
+    {
+      "title": "Admonition – Python Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#admonition",
+      "enum": [
+        "markdown.extensions.admonition",
+        "admonition"
+      ]
+    },
+    {
+      "title": "Attribute Lists – Python Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#attribute-lists",
+      "enum": [
+        "markdown.extensions.attr_list",
+        "attr_list"
+      ]
+    },
+    {
+      "title": "Definition Lists – Python Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#definition-lists",
+      "enum": [
+        "markdown.extensions.def_list",
+        "def_list"
+      ]
+    },
+    {
+      "title": "Footnotes – Python Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#footnotes",
+      "enum": [
+        "markdown.extensions.footnotes",
+        "footnotes"
+      ]
+    },
+    {
+      "title": "Metadata – Python Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#metadata",
+      "enum": [
+        "markdown.extensions.meta",
+        "meta"
+      ]
+    },
+    {
+      "title": "Markdown in HTML – Python Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#markdown-in-html",
+      "enum": [
+        "markdown.extensions.md_in_html",
+        "md_in_html"
+      ]
+    },
+    {
+      "title": "Tables – Python Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#tables",
+      "enum": [
+        "markdown.extensions.tables",
+        "tables"
+      ]
+    },
+    {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "toc": {
+              "$ref": "#/definitions/toc"
+            },
+            "markdown.extensions.toc": {
+              "$ref": "#/definitions/toc"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "title": "Table Of Contents – Python Markdown",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents",
+          "enum": [
+            "markdown.extensions.toc",
+            "toc"
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "toc": {
+      "title": "Table Of Contents – Python Markdown",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents",
+      "type": "object",
+      "properties": {
+        "title": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-title",
+          "type": "string"
+        },
+        "permalink": {
+          "oneOf": [
+            {
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-permalink",
+              "type": "boolean"
+            },
+            {
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-permalink",
+              "type": "string"
+            }
+          ],
+          "default": true
+        },
+        "anchorlink": {
+          "markdownDescription": "https://python-markdown.github.io/extensions/toc/#usage",
+          "type": "boolean",
+          "default": false
+        },
+        "permalink_title": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-permalink-title",
+          "type": "string"
+        },
+        "slugify": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-slugify",
+          "type": "string"
+        },
+        "toc_depth": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-depth",
+          "type": "number",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "defaultSnippets": [
+        {
+          "label": "permalink",
+          "body": "permalink: true"
+        }
+      ]
+    }
+  }
+}

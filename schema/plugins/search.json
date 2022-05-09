@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Built-in search plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/",
+      "enum": [
+        "search"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "search": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/",
+          "type": "object",
+          "properties": {
+            "lang": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/lang"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/lang"
+                  },
+                  "uniqueItems": true,
+                  "minItems": 1
+                }
+              ],
+              "default": "en"
+            },
+            "separator": {
+              "title": "Separator for indexing and query tokenization",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-separator",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "definitions": {
+    "lang": {
+      "title": "Site search language",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-lang",
+      "oneOf": [
+        {
+          "title": "Site search language: Arabic",
+          "enum": [
+            "ar"
+          ]
+        },
+        {
+          "title": "Site search language: Danish",
+          "enum": [
+            "da"
+          ]
+        },
+        {
+          "title": "Site search language: German",
+          "enum": [
+            "de"
+          ]
+        },
+        {
+          "title": "Site search language: Dutch",
+          "enum": [
+            "du"
+          ]
+        },
+        {
+          "title": "Site search language: English",
+          "enum": [
+            "en"
+          ]
+        },
+        {
+          "title": "Site search language: Spanish",
+          "enum": [
+            "es"
+          ]
+        },
+        {
+          "title": "Site search language: Finnish",
+          "enum": [
+            "fi"
+          ]
+        },
+        {
+          "title": "Site search language: French",
+          "enum": [
+            "fr"
+          ]
+        },
+        {
+          "title": "Site search language: Hungarian",
+          "enum": [
+            "hu"
+          ]
+        },
+        {
+          "title": "Site search language: Italian",
+          "enum": [
+            "it"
+          ]
+        },
+        {
+          "title": "Site search language: Japanese",
+          "enum": [
+            "ja"
+          ]
+        },
+        {
+          "title": "Site search language: Norwegian",
+          "enum": [
+            "no"
+          ]
+        },
+        {
+          "title": "Site search language: Portuguese",
+          "enum": [
+            "pt"
+          ]
+        },
+        {
+          "title": "Site search language: Romanian",
+          "enum": [
+            "ro"
+          ]
+        },
+        {
+          "title": "Site search language: Russian",
+          "enum": [
+            "ru"
+          ]
+        },
+        {
+          "title": "Site search language: Swedish",
+          "enum": [
+            "sv"
+          ]
+        },
+        {
+          "title": "Site search language: Thai",
+          "enum": [
+            "th"
+          ]
+        },
+        {
+          "title": "Site search language: Turkish",
+          "enum": [
+            "tr"
+          ]
+        },
+        {
+          "title": "Site search language: Vietnamese",
+          "enum": [
+            "vi"
+          ]
+        }
+      ]
+    }
+  }
+}
+
