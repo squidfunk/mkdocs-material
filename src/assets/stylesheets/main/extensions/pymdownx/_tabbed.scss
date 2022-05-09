@@ -197,30 +197,40 @@
       }
     }
 
-    // Code block title - remove spacing and rounded borders
-    > .highlight:first-child > .filename {
-      margin: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
+    // Code block is the first child of a tab - remove margin and mirror
+    // previous (now deprecated) SuperFences code block grouping behavior
+    > .highlight:first-child {
 
-    // Code block with line numbers - unfortunately, these selectors need to be
-    // overly specific so they don't bleed into code blocks in annotations.
-    > .highlight:first-child > .highlighttable {
-      margin: 0;
-
-      // Remove rounded borders on line numbers and titles
-      > tbody > tr > .filename span.filename,
-      > tbody > tr > .linenos {
+      // Code block title - remove spacing and rounded borders
+      > .filename {
         margin: 0;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
       }
 
-      // Remove rounded borders on code blocks
-      > tbody > tr > .code > div > pre > code {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+      // Code block with line numbers - unfortunately, these selectors need to
+      // be overly specific so they don't bleed into code blocks in annotations.
+      > .highlighttable {
+        margin: 0;
+
+        // Remove rounded borders on line numbers and titles
+        > tbody > tr > .filename span.filename,
+        > tbody > tr > .linenos {
+          margin: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+
+        // Remove rounded borders on code blocks
+        > tbody > tr > .code > div > pre > code {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+
+      // Code block result container - adjust spacing
+      + .result {
+        margin-top: px2em(-2px);
       }
     }
 
