@@ -191,6 +191,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Crystal](https://crystal-lang.org/reference/),
 [Electron](https://www.electron.build/),
 [FastAPI](https://fastapi.tiangolo.com/),
+[GL.iNet](https://docs.gl-inet.com/),
 [GoReleaser](https://goreleaser.com/),
 [Knative](https://knative.dev/docs/),
 [Kubernetes](https://kops.sigs.k8s.io/),
