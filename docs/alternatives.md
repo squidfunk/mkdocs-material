@@ -90,7 +90,6 @@ functionality.
   [Sphinx]: https://www.sphinx-doc.org/
   [reStructured text]: https://en.wikipedia.org/wiki/ReStructuredText
   [Python docstrings]: https://www.python.org/dev/peps/pep-0257/
-  [Furo]: https://pradyunsg.me/furo/
   [mkdocstrings]: https://github.com/mkdocstrings/mkdocstrings
 
 ## GitBook
