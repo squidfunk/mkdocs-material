@@ -73,7 +73,7 @@ which some users find harder to use.
 __Advantages__
 
 - Very powerful, customizable and extendable
-- Generates reference documentation from [Python Docstrings]
+- Generates reference documentation from [Python docstrings]
 - Large and rich ecosystem, used by many Python projects
 
 __Challenges__
@@ -82,20 +82,14 @@ __Challenges__
 - Search is less powerful than the one provided by MkDocs
 - More time needed to get up and running
 
-If you want to chose Sphinx over MkDocs, you might want to check out
-[Immaterial], an actively maintained Sphinx port of Material for MkDocs.
-However, be warned that the search experience is pretty far from what Material
-for MkDocs offers, mainly due to limitations of Sphinx.
-
-If you want the best of both worlds, you should give [mkdocstrings] a try – a
-popular framework building on top of MkDocs that generates documentation from
-sources, similar to what Sphinx offers. The project is still young, but already
-closed many gaps between MkDocs and Sphinx.
+If you're considering using Sphinx because you need to generate reference
+documentation, you should give [mkdocstrings] a try – an actively maintained
+and popular framework building on top of MkDocs, implementing Sphinx-like
+functionality.
 
   [Sphinx]: https://www.sphinx-doc.org/
   [reStructured text]: https://en.wikipedia.org/wiki/ReStructuredText
-  [Python Docstrings]: https://www.python.org/dev/peps/pep-0257/
-  [Immaterial]: https://github.com/jbms/sphinx-immaterial
+  [Python docstrings]: https://www.python.org/dev/peps/pep-0257/
   [Furo]: https://pradyunsg.me/furo/
   [mkdocstrings]: https://github.com/mkdocstrings/mkdocstrings
 
