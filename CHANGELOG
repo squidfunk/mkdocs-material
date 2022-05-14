@@ -1,3 +1,8 @@
+mkdocs-material-8.2.15 (2022-05-14)
+
+  * Added Uzbek translations
+  * Fixed spacing for code block results in content tabs
+
 mkdocs-material-8.2.14+insiders-4.15.0 (2022-05-08)
 
   * Added support for improved tooltips

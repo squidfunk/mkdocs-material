@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.15 <small>_ May 14, 2022</small> { id="8.2.15" }
+
+- Added Uzbek translations
+- Fixed spacing for code block results in content tabs
+
 ### 8.2.14 <small>_ May 8, 2022</small> { id="8.2.14" }
 
 - Fixed missing top right rounded border on admonition
