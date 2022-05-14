@@ -84,6 +84,7 @@ The following languages are supported:
 - `th` – Thai
 - `tr` – Turkish
 - `uk` – Ukrainian
+- `uz` – Uzbek
 - `vi` – Vietnamese
 - `zh` – Chinese (Simplified)
 - `zh-Hant` – Chinese (Traditional)
