@@ -66,7 +66,7 @@ the [separator] includes the `\u200b` character:
 ``` yaml
 plugins:
   - search:
-      separator: '[\\s\\u200b\\-]'
+      separator: '[\s\u200b\-]'
 ```
 
 That's all that is necessary.
