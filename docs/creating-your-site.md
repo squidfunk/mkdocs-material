@@ -236,11 +236,6 @@ mkdocs build
 ```
 
 If you're running Material for MkDocs from within Docker, use:
-
-=== "Unix, Powershell"
-
-    ```
-    docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material build
     ```
 
 === "Windows"
