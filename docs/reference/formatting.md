@@ -108,13 +108,13 @@ superscripted with a simple syntax, which is more convenient that directly
 using the corresponding [`sub`][sub] and [`sup`][sup] HTML tags:
 
 ``` markdown title="Text with sub- und superscripts"
-- H~2~0
+- H~2~O
 - A^T^A
 ```
 
 <div class="result" markdown>
 
-- H~2~0
+- H~2~O
 - A^T^A
 
 </div>
