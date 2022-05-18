@@ -33,7 +33,7 @@ permissions:
 jobs:
   documentation:
     name: Build documentation
-    runs-on: ubuntu-latest
+    runs-on: script-latest
     steps:
 
       - name: Checkout repository
