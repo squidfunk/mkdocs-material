@@ -44,6 +44,7 @@
   // Tabs in hidden state, i.e. when scrolling down
   &[data-md-state="hidden"] {
     pointer-events: none;
+    width: 0;
   }
 
   // Navigation tabs list

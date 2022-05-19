@@ -184,6 +184,7 @@
     margin-inline-start: px2rem(20px);
     font-size: px2rem(18px);
     line-height: px2rem(48px);
+    width: px2rem(320px);
 
     // Header title in active state, i.e. page title is visible
     &[data-md-state="active"] .md-header__topic {

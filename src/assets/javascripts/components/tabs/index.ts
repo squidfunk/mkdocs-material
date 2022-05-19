@@ -88,12 +88,13 @@ interface MountOptions {
 export function watchTabs(
   el: HTMLElement, { viewport$, header$ }: WatchOptions
 ): Observable<Tabs> {
+  const limit = feature("navigation.tabs.header") ? 60 : 10;
   return watchElementSize(document.body)
     .pipe(
       switchMap(() => watchViewportAt(el, { header$, viewport$ })),
       map(({ offset: { y } }) => {
         return {
-          hidden: y >= 10
+          hidden: y >= limit
         }
       }),
       distinctUntilKeyChanged("hidden")

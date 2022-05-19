@@ -59,6 +59,7 @@ theme:
     - navigation.sections
     - navigation.tabs
     # - navigation.tabs.sticky
+    # - navigation.tabs.header
     - navigation.top
     - navigation.tracking
     - search.highlight

@@ -38,6 +38,7 @@ export type Flag =
   | "navigation.sections"              /* Section navigation */
   | "navigation.tabs"                  /* Tabs navigation */
   | "navigation.tabs.sticky"           /* Tabs navigation (sticky) */
+  | "navigation.tabs.header"           /* Tabs navigation (header) */
   | "navigation.top"                   /* Back-to-top button */
   | "navigation.tracking"              /* Anchor tracking */
   | "search.highlight"                 /* Search highlighting */
