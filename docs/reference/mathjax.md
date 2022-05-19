@@ -85,20 +85,16 @@ See additional configuration options:
 
 ### Using block syntax
 
-Blocks must be enclosed in `#!latex $$...$$` or `#!latex \[...\]` on separate
-lines:
+Blocks must be enclosed in `#!latex $$...$$` or `#!latex \[...\]` in the
+same line:
 
 ``` latex title="MathJax, block syntax"
-$$
-\operatorname{ker} f=\{g\in G:f(g)=e_{H}\}{\mbox{.}}
-$$
+$$\operatorname{ker} f=\{g\in G:f(g)=e_{H}\}{\mbox{.}}$$
 ```
 
 <div class="result" markdown>
 
-$$
-\operatorname{ker} f=\{g\in G:f(g)=e_{H}\}{\mbox{.}}
-$$
+$$\operatorname{ker} f=\{g\in G:f(g)=e_{H}\}{\mbox{.}}$$
 
 </div>
 
