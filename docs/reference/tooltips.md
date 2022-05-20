@@ -140,7 +140,9 @@ all abbreviations in a dedicated file[^1], and embedding it with the
     It's highly recommended to put the Markdown file containing the
     abbreviations outside of the `docs` folder (here, a folder with the name 
     `includes` is used), as MkDocs might otherwise complain about an
-    unreferenced file.
+    unreferenced file.  
+    You may also prefix the folder or file with a dot, which makes MkDocs
+    ignore it by default.
 
 === ":octicons-file-code-16: docs/example.md"
 
