@@ -8,7 +8,7 @@ template: overrides/main.html
 
 ### 4.15.2 <small>_ May 22, 2022</small> { id="4.15.2" }
 
-- Removed workaround for abbr on touch devices (superseded by tooltips)
+- Removed workaround for `abbr` on touch devices (superseded by tooltips)
 - Fixed #3915: Improved Chinese search query segmentation
 - Fixed #3938: Fixed tooltips position for navigation titles with ellipsis
 
