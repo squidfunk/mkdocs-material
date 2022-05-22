@@ -6,11 +6,17 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.15.2 <small>_ May 22, 2022</small> { id="4.15.2" }
+
+- Removed workaround for abbr on touch devices (superseded by tooltips)
+- Fixed #3915: Improved Chinese search query segmentation
+- Fixed #3938: Fixed tooltips position for navigation titles with ellipsis
+
 ### 4.15.1 <small>_ May 14, 2022</small> { id="4.15.1" }
 
+- Improved performance of element focus obervables
 - Fixed #3531: Added prev/next buttons to content tabs
 - Fixed tooltip positioning when host element is hidden
-- Improved performance of element focus obervables
 
 ### 4.15.0 <small>_ May 8, 2022</small> { id="4.15.0" }
 

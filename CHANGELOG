@@ -1,8 +1,14 @@
+mkdocs-material-8.2.15+insiders-4.15.2 (2022-05-22)
+
+  * Removed workaround for abbr on touch devices (superseded by tooltips)
+  * Fixed #3915: Improved Chinese search query segmentation
+  * Fixed #3938: Fixed tooltips position for navigation titles with ellipsis
+
 mkdocs-material-8.2.15+insiders-4.15.1 (2022-05-14)
 
+  * Improved performance of element focus obervables
   * Fixed #3531: Added prev/next buttons to content tabs
   * Fixed tooltip positioning when host element is hidden
-  * Improved performance of element focus obervables
 
 mkdocs-material-8.2.15 (2022-05-14)
 
