@@ -20,7 +20,7 @@ number of Chinese users.__
 <span>__Martin Donath__ · @squidfunk</span>
 <span>
 :octicons-calendar-24: May 5, 2022 ·
-:octicons-clock-24: 5 min read ·
+:octicons-clock-24: 3 min read ·
 [:octicons-tag-24: 8.2.13+insiders-4.14.0][insiders-4.14.0]
 </span>
 </aside>

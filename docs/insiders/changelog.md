@@ -6,6 +6,9 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+- Added support for navigation pruning
+- Fixed search results for non-segmented characters (4.15.2 regression)
+
 ### 4.15.2 <small>_ May 22, 2022</small> { id="4.15.2" }
 
 - Removed workaround for `abbr` on touch devices (superseded by tooltips)

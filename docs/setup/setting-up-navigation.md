@@ -181,6 +181,33 @@ theme:
   [navigation.expand enabled]: ../assets/screenshots/navigation-expand.png
   [navigation.expand disabled]: ../assets/screenshots/navigation.png
 
+### Navigation pruning
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.16.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+When pruning is enabled, only the visible navigation items are included in the 
+rendered HTML, __reducing the size of the built site by 33% or more__. Add the 
+following lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - navigation.prune # (1)!
+```
+
+1.  This feature flag is not compatible with
+    [`navigation.expand`][navigation.expand], as navigation expansion requires
+    the complete navigation structure.
+
+This feature flag is especially useful for documentation sites with 100+ or even
+1,000+ of pages, as the navigation makes up a significant fraction of the HTML.
+Navigation pruning will replace all expandable sections with links to the first
+page in that section (or the section index page).
+
+  [navigation.expand]: #navigation-expansion
+
 ### Section index pages
 
 [:octicons-tag-24: 7.3.0][navigation.indexes support] ·
@@ -194,8 +221,11 @@ following lines to `mkdocs.yml`:
 ``` yaml
 theme:
   features:
-    - navigation.indexes
+    - navigation.indexes # (1)!
 ```
+
+1.  This feature flag is not compatible with [`toc.integrate`][toc.integrate],
+    as sections cannot host the table of contents due to missing space.
 
 === ":octicons-check-circle-fill-16: Enabled"
 
@@ -217,8 +247,6 @@ nav:
     ...
     - Page n: section/page-n.md
 ```
-
-This feature flag is not compatible with [`toc.integrate`][toc.integrate].
 
   [navigation.indexes support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [navigation.indexes enabled]: ../assets/screenshots/navigation-index-on.png
@@ -257,8 +285,12 @@ to `mkdocs.yml`:
 ``` yaml
 theme:
   features:
-    - toc.integrate
+    - toc.integrate # (1)!
 ```
+
+1.  This feature flag is not compatible with
+    [`navigation.indexes`][navigation.indexes], as sections cannot host the
+    table of contents due to missing space.
 
 === ":octicons-check-circle-fill-16: Enabled"
 
@@ -267,9 +299,6 @@ theme:
 === ":octicons-skip-16: Disabled"
 
     [![toc.integrate disabled]][toc.integrate disabled]
-
-This feature flag is not compatible with [`navigation.indexes`]
-[navigation.indexes].
 
   [table of contents]: extensions/python-markdown.md#table-of-contents
   [toc.integrate support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0

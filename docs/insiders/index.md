@@ -174,9 +174,10 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Navigation pruning] :material-alert-decagram:{ title="Added on May 25, 2022" }
 - [x] [Tooltips] :material-alert-decagram:{ title="Added on May 8, 2022" }
 - [x] [Chinese search support] :material-alert-decagram:{ title="Added on May 5, 2022" }
-- [x] [Tag icons] :material-alert-decagram:{ title="Added on April 24, 2022" }
+- [x] [Tag icons]
 - [x] [Card grids]
 - [x] [Offline plugin]
 - [x] [Privacy plugin]
@@ -266,13 +267,14 @@ are released for general availability.
 - [x] [Annotations]
 - [x] [Chinese search support]
 - [x] [Navigation icons]
+- [x] [Navigation pruning]
 - [ ] Navigation status badges
-- [ ] Navigation pruning
 - [ ] Blog
 
   [Annotations]: ../reference/annotations.md
   [Chinese search support]: ../blog/2022/chinese-search-support.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
+  [Navigation pruning]: ../setup/setting.up-navigation.md#navigation-pruning
 
 #### $ 14,000 – Goat's Horn
 
