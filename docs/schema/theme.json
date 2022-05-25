@@ -593,6 +593,13 @@
             ]
           },
           {
+            "title": "Navigation pruning",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-pruning",
+            "enum": [
+              "navigation.prune"
+            ]
+          },
+          {
             "title": "Navigation sections",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-sections",
             "enum": [
