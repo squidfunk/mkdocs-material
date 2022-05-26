@@ -274,7 +274,7 @@ are released for general availability.
   [Annotations]: ../reference/annotations.md
   [Chinese search support]: ../blog/2022/chinese-search-support.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
-  [Navigation pruning]: ../setup/setting.up-navigation.md#navigation-pruning
+  [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
 
 #### $ 14,000 – Goat's Horn
 
