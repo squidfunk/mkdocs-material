@@ -6,6 +6,13 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.16.1 <small>_ May 28, 2022</small> { id="4.16.1" }
+
+- Switched feedback widget rating titles to tooltips
+- Improved contrast of link colors for light/dark color schemes
+- Fixed #3950: Sticky navigation tabs rendering broken (4.15.2 regression)
+- Fixed #3958: Links invisible when using `white` primary color
+
 ### 4.16.0 <small>_ May 25, 2022</small> { id="4.16.0" }
 
 - Added support for navigation pruning

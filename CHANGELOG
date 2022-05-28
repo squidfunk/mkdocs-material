@@ -1,3 +1,10 @@
+mkdocs-material-8.2.16+insiders-4.16.1 (2022-05-28)
+
+  * Switched feedback widget rating titles to tooltips
+  * Improved contrast of link colors for light/dark color schemes
+  * Fixed #3950: Sticky navigation tabs rendering broken (4.15.2 regression)
+  * Fixed #3958: Links invisible when using white primary color
+
 mkdocs-material-8.2.16 (2022-05-28)
 
   * Fixed #3957: Only animate code annotations when visible (save CPU cycles)
