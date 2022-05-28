@@ -282,7 +282,8 @@ are released for general availability.
 - [x] [Card grids]
 - [x] [Tooltips]
 - [ ] [Instant previews]
-- [ ] and much more, to be announced ...
+- [ ] Automatic dark-mode
+- [ ] Improved Git info
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
   [Card grids]: ../reference/grids.md
