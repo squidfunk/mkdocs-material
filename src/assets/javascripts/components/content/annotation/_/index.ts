@@ -137,7 +137,9 @@ export function mountAnnotation(
       .pipe(
         takeUntil(done$)
       )
-        .subscribe(visible => el.toggleAttribute("data-md-visible", visible))
+        .subscribe(visible => {
+          el.toggleAttribute("data-md-visible", visible)
+        })
 
     /* Track relative origin of tooltip */
     push$
