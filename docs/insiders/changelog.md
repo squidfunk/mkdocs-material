@@ -6,6 +6,8 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.16.0 <small>_ May 25, 2022</small> { id="4.16.0" }
+
 - Added support for navigation pruning
 - Fixed search results for non-segmented characters (4.15.2 regression)
 
