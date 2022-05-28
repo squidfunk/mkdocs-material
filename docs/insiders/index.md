@@ -282,8 +282,8 @@ are released for general availability.
 - [x] [Card grids]
 - [x] [Tooltips]
 - [ ] [Instant previews]
-- [ ] Automatic dark-mode
-- [ ] Improved Git info
+- [ ] Intelligent color palette (system preference)
+- [ ] Document authors/contributors
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
   [Card grids]: ../reference/grids.md
