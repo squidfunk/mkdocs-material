@@ -32,6 +32,8 @@ import {
   map,
   switchMap,
   take,
+  takeLast,
+  takeUntil,
   tap,
   throttleTime
 } from "rxjs"
@@ -42,7 +44,8 @@ import {
   getElementSize,
   watchElementContentOffset,
   watchElementFocus,
-  watchElementOffset
+  watchElementOffset,
+  watchElementVisibility
 } from "~/browser"
 
 import { Component } from "../../../_"
@@ -127,6 +130,14 @@ export function mountAnnotation(
         el.style.removeProperty("--md-tooltip-y")
       }
     })
+
+    /* Start animation only when annotation is visible */
+    const done$ = push$.pipe(takeLast(1))
+    watchElementVisibility(el)
+      .pipe(
+        takeUntil(done$)
+      )
+        .subscribe(visible => el.toggleAttribute("data-md-visible", visible))
 
     /* Track relative origin of tooltip */
     push$

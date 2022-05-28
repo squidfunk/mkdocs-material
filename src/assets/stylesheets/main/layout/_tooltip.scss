@@ -186,12 +186,15 @@
       transition:
         color            250ms,
         background-color 250ms;
-      animation: pulse 2000ms infinite;
       content: "";
 
       // [reduced motion]: Disable animation
-      @media (prefers-reduced-motion) {
-        animation: none;
+      @media not all and (prefers-reduced-motion) {
+
+        // Annotation marker is visible
+        [data-md-visible] > & {
+          animation: pulse 2000ms infinite;
+        }
       }
 
       // Annotation marker on focus/hover
