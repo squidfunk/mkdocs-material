@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.2.16 <small>_ May 28, 2022</small> { id="8.2.16" }
+
+- Fixed #3957: Only animate code annotations when visible (save CPU cycles)
+
 ### 8.2.15 <small>_ May 14, 2022</small> { id="8.2.15" }
 
 - Added Uzbek translations
