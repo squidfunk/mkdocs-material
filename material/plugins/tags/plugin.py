@@ -105,11 +105,19 @@ class TagsPlugin(BasePlugin):
     # Render the given tag and links to all pages with occurrences
     def __render_tag_links(self, tag, pages):
         content = [f"## <span class=\"md-tag\">{tag}</span>", ""]
+        first_dirname = os.path.dirname(pages[0].file.src_path)
+        if len(first_dirname) != 0:
+            content.append("#### {}".format(first_dirname))
         for page in pages:
             url = utils.get_relative_url(
                 page.file.src_path.replace(os.path.sep, "/"),
                 self.tags_file.src_path.replace(os.path.sep, "/")
             )
+            dirname = os.path.dirname(page.file.src_path)
+            if dirname != first_dirname and len(dirname) != 0:
+                content.append("#### {}".format(dirname))
+                first_dirname = dirname
+
 
             # Ensure forward slashes, as we have to use the path of the source
             # file which contains the operating system's path separator.
