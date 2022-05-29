@@ -1,3 +1,7 @@
+mkdocs-material-8.2.16+insiders-4.16.2 (2022-05-28)
+
+  * Fixed #3961: Nested sections triggered build error for navigation tabs
+
 mkdocs-material-8.2.16+insiders-4.16.1 (2022-05-28)
 
   * Switched feedback widget rating titles to tooltips

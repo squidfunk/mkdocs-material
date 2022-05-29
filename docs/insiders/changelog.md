@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.16.2 <small>_ May 29, 2022</small> { id="4.16.2" }
+
+- Fixed #3961: Nested sections triggered build error for navigation tabs
+
 ### 4.16.1 <small>_ May 28, 2022</small> { id="4.16.1" }
 
 - Switched feedback widget rating titles to tooltips
