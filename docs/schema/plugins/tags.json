@@ -20,6 +20,11 @@
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tags-file",
               "pattern": "\\.md$",
               "default": "tags.md"
+            },
+            "group_by": {
+              "title": "Grouping mode",
+              "type": "string",
+              "default": "path"
             }
           },
           "additionalProperties": false
