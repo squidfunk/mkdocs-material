@@ -216,7 +216,7 @@ The following configuration options are available:
     
     If Material for MkDocs would bundle all font files, the download size would
     be in the hundreds of megabytes, slowing down automated builds. Furthermore, 
-    authors might add external assets like third-party scripts or stylesheets 
+    authors might add external assets like third-party scripts or style sheets 
     that would need to be remembered to be defined as further local assets.
     
     This is the very reason the [built-in privacy plugin] exists — it automates
