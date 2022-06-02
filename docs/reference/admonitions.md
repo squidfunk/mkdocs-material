@@ -35,8 +35,8 @@ See additional configuration options:
 
 ### Admonition icons
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.4.0][Insiders]
+[:octicons-tag-24: 8.3.0][icon support] ·
+:octicons-beaker-24: Experimental
 
 Each of the supported admonition types has a distinct icon, which can be changed
 to any icon bundled with the theme, or even a [custom icon]. Add the following
@@ -82,12 +82,6 @@ theme:
               quote: octicons/quote-16
         ```
 
-        <div class="result" markdown>
-
-        [![Octicons]][Octicons]
-
-        </div>
-
 
     === ":fontawesome-brands-font-awesome: FontAwesome"
 
@@ -109,18 +103,10 @@ theme:
               quote: fontawesome/solid/quote-left
         ```
 
-        <div class="result" markdown>
-
-        [![FontAwesome]][FontAwesome]
-
-        </div>
-
-  [Insiders]: ../insiders/index.md
+  [icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
   [custom icon]: ../setup/changing-the-logo-and-icons.md#additional-icons
   [supported types]: #supported-types
   [icon search]: icons-emojis.md#search
-  [Octicons]: ../assets/screenshots/admonition-octicons.png
-  [FontAwesome]: ../assets/screenshots/admonition-fontawesome.png
 
 ## Usage
 

@@ -15,7 +15,7 @@
     <li class="{{ class }} md-nav__item--nested">
       {% set checked = "checked" if nav_item.active %}
       {% if "navigation.expand" in features and not checked %}
-        <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" data-md-state="indeterminate" type="checkbox" id="{{ path }}" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" checked>
       {% else %}
         <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" {{ checked }}>
       {% endif %}

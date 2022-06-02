@@ -56,6 +56,7 @@ export interface SearchIndexDocument {
   title: string                        /* Document title */
   text: string                         /* Document text */
   tags?: string[]                      /* Document tags */
+  boost?: number                       /* Document boost */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -207,7 +208,7 @@ export class Search {
 
       /* Index documents */
       for (const doc of docs)
-        this.add(doc)
+        this.add(doc, { boost: doc.boost })
     })
   }
 

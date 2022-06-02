@@ -24,6 +24,14 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// Tabbed variables
+:root {
+  --md-tabbed-icon--prev: svg-load("material/chevron-left.svg");
+  --md-tabbed-icon--next: svg-load("material/chevron-right.svg");
+}
+
+// ----------------------------------------------------------------------------
+
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
@@ -139,6 +147,7 @@
       transition:
         background-color 250ms,
         color            250ms;
+      scroll-margin-inline-start: px2rem(20px);
 
       // [print]: Intersperse labels with containers
       @media print {
@@ -239,6 +248,85 @@
       margin: 0;
     }
   }
+
+  // Tabbed button
+  .tabbed-button {
+    display: block;
+    align-self: center;
+    width: px2rem(18px);
+    height: px2rem(18px);
+    margin-top: px2rem(2px);
+    color: var(--md-default-fg-color--light);
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background-color 250ms;
+    pointer-events: initial;
+
+    // Tabbed button on hover
+    &:hover {
+      color: var(--md-accent-fg-color);
+      background-color: var(--md-accent-fg-color--transparent);
+    }
+
+    // Tabbed button icon
+    &::after {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: currentcolor;
+      transition:
+        background-color 250ms,
+        transform        250ms;
+      mask-image: var(--md-tabbed-icon--prev);
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      content: "";
+    }
+  }
+
+  // Tabbed control
+  .tabbed-control {
+    position: absolute;
+    display: flex;
+    justify-content: start;
+    width: px2rem(24px);
+    height: px2rem(38px);
+    background:
+      linear-gradient(
+        to right,
+        var(--md-default-bg-color) 60%,
+        transparent
+      );
+    transition: opacity 125ms;
+    pointer-events: none;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      transform: rotate(180deg);
+    }
+
+    // Tabbed control is hidden
+    &[hidden] {
+      opacity: 0;
+    }
+
+    // Tabbed control next
+    &--next {
+      right: 0;
+      justify-content: end;
+      background:
+        linear-gradient(
+          to left,
+          var(--md-default-bg-color) 60%,
+          transparent
+        );
+
+      // Tabbed button icon content
+      .tabbed-button::after {
+        mask-image: var(--md-tabbed-icon--next);
+      }
+    }
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -260,6 +348,20 @@
     &::after {
       padding-inline-end: px2rem(16px);
       content: "";
+    }
+
+    // Tabbed control previous
+    ~ .tabbed-control--prev {
+      width: px2rem(40px);
+      margin-inline-start: px2rem(-16px);
+      padding-inline-start: px2rem(16px);
+    }
+
+    // Tabbed control next
+    ~ .tabbed-control--next {
+      width: px2rem(40px);
+      margin-inline-end: px2rem(-16px);
+      padding-inline-end: px2rem(16px);
     }
   }
 }

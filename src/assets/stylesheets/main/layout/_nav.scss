@@ -101,8 +101,8 @@
     transition: color 125ms;
     scroll-snap-align: start;
 
-    // Navigation link in blurred state
-    &[data-md-state="blur"] {
+    // Navigation link that was passed
+    &--passed {
       color: var(--md-default-fg-color--light);
     }
 

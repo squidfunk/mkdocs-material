@@ -134,16 +134,16 @@ export function mountBackToTop(
   el: HTMLElement, { viewport$, header$, main$, target$ }: MountOptions
 ): Observable<Component<BackToTop>> {
   const push$ = new Subject<BackToTop>()
+  const done$ = push$.pipe(takeLast(1))
   push$.subscribe({
 
     /* Handle emission */
     next({ hidden }) {
+      el.classList.toggle("md-top--hidden", hidden)
       if (hidden) {
-        el.setAttribute("data-md-state", "hidden")
         el.setAttribute("tabindex", "-1")
         el.blur()
       } else {
-        el.removeAttribute("data-md-state")
         el.removeAttribute("tabindex")
       }
     },
@@ -151,7 +151,7 @@ export function mountBackToTop(
     /* Handle complete */
     complete() {
       el.style.top = ""
-      el.setAttribute("data-md-state", "hidden")
+      el.classList.add("md-top--hidden")
       el.removeAttribute("tabindex")
     }
   })
@@ -159,7 +159,7 @@ export function mountBackToTop(
   /* Watch header height */
   header$
     .pipe(
-      takeUntil(push$.pipe(endWith(0), takeLast(1))),
+      takeUntil(done$),
       distinctUntilKeyChanged("height")
     )
       .subscribe(({ height }) => {

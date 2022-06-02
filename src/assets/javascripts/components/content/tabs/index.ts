@@ -32,6 +32,7 @@ import {
   fromEvent,
   map,
   merge,
+  skip,
   startWith,
   subscribeOn,
   takeLast,
@@ -39,13 +40,18 @@ import {
   tap
 } from "rxjs"
 
+import { feature } from "~/_"
 import {
   getElement,
+  getElementContentOffset,
+  getElementContentSize,
   getElementOffset,
   getElementSize,
   getElements,
+  watchElementContentOffset,
   watchElementSize
 } from "~/browser"
+import { renderTabbedControl } from "~/templates"
 
 import { Component } from "../../_"
 
@@ -75,18 +81,15 @@ export function watchContentTabs(
   el: HTMLElement
 ): Observable<ContentTabs> {
   const inputs = getElements<HTMLInputElement>(":scope > input", el)
-  const active = inputs.find(input => input.checked) || inputs[0]
+  const initial = inputs.find(input => input.checked) || inputs[0]
   return merge(...inputs.map(input => fromEvent(input, "change")
     .pipe(
-      map(() => ({
-        active: getElement(`label[for=${input.id}]`)
-      }) as ContentTabs)
+      map(() => getElement<HTMLLabelElement>(`label[for=${input.id}]`))
     )
   ))
     .pipe(
-      startWith({
-        active: getElement(`label[for=${active.id}]`)
-      } as ContentTabs)
+      startWith(getElement<HTMLLabelElement>(`label[for=${initial.id}]`)),
+      map(active => ({ active }))
     )
 }
 
@@ -105,18 +108,29 @@ export function watchContentTabs(
 export function mountContentTabs(
   el: HTMLElement
 ): Observable<Component<ContentTabs>> {
+
+  /* Render content tab previous button for pagination */
+  const prev = renderTabbedControl("prev")
+  el.append(prev)
+
+  /* Render content tab next button for pagination */
+  const next = renderTabbedControl("next")
+  el.append(next)
+
+  /* Mount component on subscription */
   const container = getElement(".tabbed-labels", el)
   return defer(() => {
     const push$ = new Subject<ContentTabs>()
+    const done$ = push$.pipe(takeLast(1))
     combineLatest([push$, watchElementSize(el)])
       .pipe(
         auditTime(1, animationFrameScheduler),
-        takeUntil(push$.pipe(takeLast(1)))
+        takeUntil(done$)
       )
         .subscribe({
 
           /* Handle emission */
-          next([{ active }]) {
+          next([{ active }, size]) {
             const offset = getElementOffset(active)
             const { width } = getElementSize(active)
 
@@ -124,11 +138,12 @@ export function mountContentTabs(
             el.style.setProperty("--md-indicator-x", `${offset.x}px`)
             el.style.setProperty("--md-indicator-width", `${width}px`)
 
-            /* Smoothly scroll container */
-            container.scrollTo({
-              behavior: "smooth",
-              left: offset.x
-            })
+            /* Scroll container to active content tab */
+            const content = getElementContentOffset(container)
+            if (offset.x < content.x)
+              prev.click()
+            else if (offset.x + width > content.x + size.width)
+              next.click()
           },
 
           /* Handle complete */
@@ -136,6 +151,57 @@ export function mountContentTabs(
             el.style.removeProperty("--md-indicator-x")
             el.style.removeProperty("--md-indicator-width")
           }
+        })
+
+    /* Hide content tab buttons on borders */
+    combineLatest([
+      watchElementContentOffset(container),
+      watchElementSize(container)
+    ])
+      .pipe(
+        takeUntil(done$)
+      )
+        .subscribe(([offset, size]) => {
+          const content = getElementContentSize(container)
+          prev.hidden = offset.x < 16
+          next.hidden = offset.x > content.width - size.width - 16
+        })
+
+    /* Paginate content tab container on click */
+    merge(
+      fromEvent(prev, "click").pipe(map(() => -1)),
+      fromEvent(next, "click").pipe(map(() => +1))
+    )
+      .pipe(
+        takeUntil(done$)
+      )
+        .subscribe(direction => {
+          const { width } = getElementSize(container)
+          container.scrollBy({
+            left: width * direction,
+            behavior: "smooth"
+          })
+        })
+
+    /* Set up linking of content tabs, if enabled */
+    if (feature("content.tabs.link"))
+      push$.pipe(skip(1))
+        .subscribe(({ active }) => {
+          const tab = active.innerText.trim()
+          for (const set of getElements("[data-tabs]"))
+            for (const input of getElements<HTMLInputElement>(
+              ":scope > input", set
+            )) {
+              const label = getElement(`label[for=${input.id}]`)
+              if (label.innerText.trim() === tab) {
+                input.click()
+                break
+              }
+            }
+
+          /* Persist active tabs in local storage */
+          const tabs = __md_get<string[]>("__tabs") || []
+          __md_set("__tabs", [...new Set([tab, ...tabs])])
         })
 
     /* Create and return component */

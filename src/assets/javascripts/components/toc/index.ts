@@ -269,19 +269,18 @@ export function mountTableOfContents(
 ): Observable<Component<TableOfContents>> {
   return defer(() => {
     const push$ = new Subject<TableOfContents>()
+    const done$ = push$.pipe(takeLast(1))
     push$.subscribe(({ prev, next }) => {
 
       /* Look forward */
       for (const [anchor] of next) {
-        anchor.removeAttribute("data-md-state")
-        anchor.classList.remove(
-          "md-nav__link--active"
-        )
+        anchor.classList.remove("md-nav__link--passed")
+        anchor.classList.remove("md-nav__link--active")
       }
 
       /* Look backward */
       for (const [index, [anchor]] of prev.entries()) {
-        anchor.setAttribute("data-md-state", "blur")
+        anchor.classList.add("md-nav__link--passed")
         anchor.classList.toggle(
           "md-nav__link--active",
           index === prev.length - 1
@@ -293,7 +292,7 @@ export function mountTableOfContents(
     if (feature("navigation.tracking"))
       viewport$
         .pipe(
-          takeUntil(push$.pipe(takeLast(1))),
+          takeUntil(done$),
           distinctUntilKeyChanged("offset"),
           debounceTime(250),
           skip(1),

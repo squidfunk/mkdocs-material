@@ -47,8 +47,8 @@
     display: none;
   }
 
-  // Dialog in open state
-  &[data-md-state="open"] {
+  // Active dialog
+  &--active {
     transform: translateY(0);
     opacity: 1;
     transition:

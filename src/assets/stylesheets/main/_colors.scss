@@ -50,60 +50,56 @@
   --md-accent-bg-color:                hsla(0, 0%, 100%, 1);
   --md-accent-bg-color--light:         hsla(0, 0%, 100%, 0.7);
 
-  // Light theme (default)
-  > * {
+  // Code color shades
+  --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
+  --md-code-bg-color:                  hsla(0, 0%, 96%, 1);
 
-    // Code color shades
-    --md-code-fg-color:                hsla(200, 18%, 26%, 1);
-    --md-code-bg-color:                hsla(0, 0%, 96%, 1);
+  // Code highlighting color shades
+  --md-code-hl-color:                  hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
+  --md-code-hl-number-color:           hsla(0, 67%, 50%, 1);
+  --md-code-hl-special-color:          hsla(340, 83%, 47%, 1);
+  --md-code-hl-function-color:         hsla(291, 45%, 50%, 1);
+  --md-code-hl-constant-color:         hsla(250, 63%, 60%, 1);
+  --md-code-hl-keyword-color:          hsla(219, 54%, 51%, 1);
+  --md-code-hl-string-color:           hsla(150, 63%, 30%, 1);
+  --md-code-hl-name-color:             var(--md-code-fg-color);
+  --md-code-hl-operator-color:         var(--md-default-fg-color--light);
+  --md-code-hl-punctuation-color:      var(--md-default-fg-color--light);
+  --md-code-hl-comment-color:          var(--md-default-fg-color--light);
+  --md-code-hl-generic-color:          var(--md-default-fg-color--light);
+  --md-code-hl-variable-color:         var(--md-default-fg-color--light);
 
-    // Code highlighting color shades
-    --md-code-hl-color:                hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
-    --md-code-hl-number-color:         hsla(0, 67%, 50%, 1);
-    --md-code-hl-special-color:        hsla(340, 83%, 47%, 1);
-    --md-code-hl-function-color:       hsla(291, 45%, 50%, 1);
-    --md-code-hl-constant-color:       hsla(250, 63%, 60%, 1);
-    --md-code-hl-keyword-color:        hsla(219, 54%, 51%, 1);
-    --md-code-hl-string-color:         hsla(150, 63%, 30%, 1);
-    --md-code-hl-name-color:           var(--md-code-fg-color);
-    --md-code-hl-operator-color:       var(--md-default-fg-color--light);
-    --md-code-hl-punctuation-color:    var(--md-default-fg-color--light);
-    --md-code-hl-comment-color:        var(--md-default-fg-color--light);
-    --md-code-hl-generic-color:        var(--md-default-fg-color--light);
-    --md-code-hl-variable-color:       var(--md-default-fg-color--light);
+  // Typeset color shades
+  --md-typeset-color:                  var(--md-default-fg-color);
 
-    // Typeset color shades
-    --md-typeset-color:                var(--md-default-fg-color);
+  // Typeset `a` color shades
+  --md-typeset-a-color:                var(--md-primary-fg-color);
 
-    // Typeset `a` color shades
-    --md-typeset-a-color:              var(--md-primary-fg-color);
+  // Typeset `mark` color shades
+  --md-typeset-mark-color:             hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
 
-    // Typeset `mark` color shades
-    --md-typeset-mark-color:           hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
+  // Typeset `del` and `ins` color shades
+  --md-typeset-del-color:              hsla(6, 90%, 60%, 0.15);
+  --md-typeset-ins-color:              hsla(150, 90%, 44%, 0.15);
 
-    // Typeset `del` and `ins` color shades
-    --md-typeset-del-color:            hsla(6, 90%, 60%, 0.15);
-    --md-typeset-ins-color:            hsla(150, 90%, 44%, 0.15);
+  // Typeset `kbd` color shades
+  --md-typeset-kbd-color:              hsla(0, 0%, 98%, 1);
+  --md-typeset-kbd-accent-color:       hsla(0, 100%, 100%, 1);
+  --md-typeset-kbd-border-color:       hsla(0, 0%, 72%, 1);
 
-    // Typeset `kbd` color shades
-    --md-typeset-kbd-color:            hsla(0, 0%, 98%, 1);
-    --md-typeset-kbd-accent-color:     hsla(0, 100%, 100%, 1);
-    --md-typeset-kbd-border-color:     hsla(0, 0%, 72%, 1);
+  // Typeset `table` color shades
+  --md-typeset-table-color:            hsla(0, 0%, 0%, 0.12);
 
-    // Typeset `table` color shades
-    --md-typeset-table-color:          hsla(0, 0%, 0%, 0.12);
+  // Admonition color shades
+  --md-admonition-fg-color:            var(--md-default-fg-color);
+  --md-admonition-bg-color:            var(--md-default-bg-color);
 
-    // Admonition color shades
-    --md-admonition-fg-color:          var(--md-default-fg-color);
-    --md-admonition-bg-color:          var(--md-default-bg-color);
-
-    // Footer color shades
-    --md-footer-fg-color:              hsla(0, 0%, 100%, 1);
-    --md-footer-fg-color--light:       hsla(0, 0%, 100%, 0.7);
-    --md-footer-fg-color--lighter:     hsla(0, 0%, 100%, 0.3);
-    --md-footer-bg-color:              hsla(0, 0%, 0%, 0.87);
-    --md-footer-bg-color--dark:        hsla(0, 0%, 0%, 0.32);
-  }
+  // Footer color shades
+  --md-footer-fg-color:                hsla(0, 0%, 100%, 1);
+  --md-footer-fg-color--light:         hsla(0, 0%, 100%, 0.7);
+  --md-footer-fg-color--lighter:       hsla(0, 0%, 100%, 0.3);
+  --md-footer-bg-color:                hsla(0, 0%, 0%, 0.87);
+  --md-footer-bg-color--dark:          hsla(0, 0%, 0%, 0.32);
 
   // Shadow depth 1
   --md-shadow-z1:
@@ -119,4 +115,11 @@
   --md-shadow-z3:
     0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.2),
     0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.35);
+}
+
+// ----------------------------------------------------------------------------
+
+// Allow to explicitly use color schemes in nested content
+[data-md-color-scheme="default"] {
+  @extend :root;
 }

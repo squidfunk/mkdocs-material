@@ -54,9 +54,9 @@ export interface Mermaid {}
 let mermaid$: Observable<void>
 
 /**
- * Global index for Mermaid integration
+ * Global sequence number for diagrams
  */
-let index = 0
+let sequence = 0
 
 /* ----------------------------------------------------------------------------
  * Helper functions
@@ -101,7 +101,7 @@ export function mountMermaid(
   /* Render diagram */
   mermaid$.subscribe(() => {
     el.classList.add("mermaid") // Hack: mitigate https://bit.ly/3CiN6Du
-    const id = `__mermaid_${index++}`
+    const id = `__mermaid_${sequence++}`
     const host = h("div", { class: "mermaid" })
     mermaid.mermaidAPI.render(id, el.textContent, (svg: string) => {
 

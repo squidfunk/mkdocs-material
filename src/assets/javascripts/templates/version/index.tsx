@@ -54,7 +54,7 @@ function renderVersion(version: Version): HTMLElement {
   const url = new URL(`../${version.version}/`, config.base)
   return (
     <li class="md-version__item">
-      <a href={url.toString()} class="md-version__link">
+      <a href={`${url}`} class="md-version__link">
         {version.title}
       </a>
     </li>

@@ -17,8 +17,7 @@ support for many of its features.
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.10.0][Insiders] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
+:octicons-cpu-24: Plugin
 
 The built-in offline plugin makes sure that the [site search] works when you
 distribute the contents of your [site directory] as a download. Simply add

@@ -195,9 +195,6 @@ which are currently exclusively available to sponsors:
 - [x] [Excluding content from search]
 - [x] [Social cards]
 - [x] [Cookie consent]
-- [x] [Linking content tabs]
-- [x] [Boosting pages in search]
-- [x] [Custom admonition icons]
 
 </div>
 
@@ -210,16 +207,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: #00e676" } already available or 
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
-
-#### $ 6,000 – Trinidad Scorpion
-
-- [x] [Boosting pages in search]
-- [x] [Custom admonition icons]
-- [x] [Linking content tabs]
-
-  [Boosting pages in search]: ../setup/setting-up-site-search.md#search-boosting
-  [Custom admonition icons]: ../reference/admonitions.md#admonition-icons
-  [Linking content tabs]: ../reference/content-tabs.md#linked-content-tabs
 
 #### $ 7,000 – Royal Gold
 
@@ -295,6 +282,16 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 6,000 – Trinidad Scorpion
+
+- [x] [Boosting pages in search]
+- [x] [Custom admonition icons]
+- [x] [Linking content tabs]
+
+  [Boosting pages in search]: ../setup/setting-up-site-search.md#search-boosting
+  [Custom admonition icons]: ../reference/admonitions.md#admonition-icons
+  [Linking content tabs]: ../reference/content-tabs.md#linked-content-tabs
 
 #### $ 5,000 – Aji Panca
 

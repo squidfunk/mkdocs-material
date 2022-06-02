@@ -82,19 +82,27 @@
     --md-typeset-table-color:          hsla(var(--md-hue), 75%, 95%, 0.12);
 
     // Admonition color shades
-    --md-admonition-bg-color:          hsla(var(--md-hue), 0%, 100%, 0.025);
+    --md-admonition-fg-color:          var(--md-default-fg-color);
+    --md-admonition-bg-color:          var(--md-default-bg-color);
 
     // Footer color shades
     --md-footer-bg-color:              hsla(var(--md-hue), 15%, 12%, 0.87);
     --md-footer-bg-color--dark:        hsla(var(--md-hue), 15%, 10%, 1);
 
-    // Black and white primary colors
-    &[data-md-color-primary="black"],
-    &[data-md-color-primary="white"] {
+    // Shadow depth 1
+    --md-shadow-z1:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.2),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.1);
 
-      // Typeset color shades
-      --md-typeset-a-color:            hsla(#{hex2hsl($clr-indigo-400)}, 1);
-    }
+    // Shadow depth 2
+    --md-shadow-z2:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.3),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.25);
+
+    // Shadow depth 3
+    --md-shadow-z3:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.4),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.35);
 
     // Hide images for light mode
     img[src$="#only-light"],
@@ -108,6 +116,32 @@
       display: initial;
     }
   }
+
+  // --------------------------------------------------------------------------
+
+  // Adjust link colors for dark primary colors
+  @each $name, $color in (
+    "pink":                            hsl(340, 81%, 63%),
+    "purple":                          hsl(291, 43%, 63%),
+    "deep-purple":                     hsl(262, 63%, 70%),
+    "indigo":                          hsl(219, 56%, 63%),
+    "teal":                            hsl(174, 100%, 40%),
+    "green":                           hsl(122, 39%, 60%),
+    "deep-orange":                     hsl(14, 100%, 73%),
+    "brown":                           hsl(16, 45%, 60%),
+
+    // Set neutral colors to indigo
+    "grey":                            hsl(219, 56%, 63%),
+    "blue-grey":                       hsl(219, 56%, 63%),
+    "white":                           hsl(219, 56%, 63%),
+    "black":                           hsl(219, 56%, 63%)
+  ) {
+    [data-md-color-scheme="slate"][data-md-color-primary="#{$name}"] {
+      --md-typeset-a-color: #{$color};
+    }
+  }
+
+  // --------------------------------------------------------------------------
 
   // Switching in progress - disable all transitions temporarily
   [data-md-color-switching] *,

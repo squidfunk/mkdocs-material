@@ -316,8 +316,8 @@ clipboard.
 
 ### Search boosting
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.8.0][Insiders]
+[:octicons-tag-24: 8.3.0][boost support] ·
+:octicons-beaker-24: Experimental
 
 When [Metadata] is enabled, pages can be boosted in search with custom front
 matter, which will make them rank higher. Add the following lines at the top of
@@ -336,6 +336,7 @@ search:
 1.  :woman_in_lotus_position: When boosting pages, be gentle and start with
     __low values__.
 
+  [boost support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
   [Metadata]: extensions/python-markdown.md#metadata
 
 ### Search exclusion

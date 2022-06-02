@@ -33,8 +33,7 @@ See additional configuration options:
 
 ### Linked content tabs
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.9.0][Insiders] ·
+[:octicons-tag-24: 8.3.0][link support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -61,7 +60,7 @@ integrated with [instant loading] and persisted across page loads.
 
     [![content.tabs.link disabled]][content.tabs.link disabled]
 
-  [Insiders]: ../insiders/index.md
+  [link support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [content.tabs.link enabled]: ../assets/screenshots/content-tabs-link.png
   [content.tabs.link disabled]: ../assets/screenshots/content-tabs.png

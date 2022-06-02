@@ -92,6 +92,9 @@
           <meta name="theme-color" content="{{ primary }}" />
         {% endif %}
       {% endif %}
+
+      <!-- Custom icons -->
+      {% include "partials/icons.html" %}
     {% endblock %}
 
     <!-- JavaScript libraries -->
@@ -157,8 +160,6 @@
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
-
-    <!-- Retrieve features from configuration -->
     {% set features = config.theme.features or [] %}
 
     <!-- User preference: color palette -->
@@ -247,10 +248,10 @@
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
 
-          <!-- Navigation -->
+          <!-- Sidebars -->
           {% block site_nav %}
 
-            <!-- Main navigation -->
+            <!-- Navigation -->
             {% if nav %}
               {% if page and page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "navigation" in page.meta.hide %}
@@ -296,6 +297,9 @@
                 {% include "partials/content.html" %}
               {% endblock %}
             </article>
+
+            <!-- User preference: content -->
+            {% include "partials/javascripts/content.html" %}
           </div>
         </div>
 
@@ -303,9 +307,8 @@
         {% if "navigation.top" in features %}
           <a
             href="#"
-            class="md-top md-icon"
+            class="md-top md-top--hidden md-icon"
             data-md-component="top"
-            data-md-state="hidden"
           >
             {% include ".icons/material/arrow-up.svg" %}
             {{ lang.t('top.title') }}

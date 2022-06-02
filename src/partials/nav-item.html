@@ -46,9 +46,8 @@
       {% set checked = "checked" if nav_item.active %}
       {% if "navigation.expand" in features and not checked %}
         <input
-          class="md-nav__toggle md-toggle"
+          class="md-nav__toggle md-toggle md-toggle--indeterminate"
           data-md-toggle="{{ path }}"
-          data-md-state="indeterminate"
           type="checkbox"
           id="{{ path }}"
           checked

@@ -22,7 +22,7 @@
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-8.2.16">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-8.3.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page and page.meta and page.meta.title %}
@@ -34,10 +34,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.64b3143d.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.fd896c8a.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.cc9b2e1e.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.cbb835fc.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -46,6 +46,7 @@
           <meta name="theme-color" content="{{ primary }}">
         {% endif %}
       {% endif %}
+      {% include "partials/icons.html" %}
     {% endblock %}
     {% block libs %}{% endblock %}
     {% block fonts %}
@@ -164,10 +165,11 @@
                 {% include "partials/content.html" %}
               {% endblock %}
             </article>
+            {% include "partials/javascripts/content.html" %}
           </div>
         </div>
         {% if "navigation.top" in features %}
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-top--hidden md-icon" data-md-component="top">
             {% include ".icons/material/arrow-up.svg" %}
             {{ lang.t('top.title') }}
           </a>
@@ -185,7 +187,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.e82c77d7.min.js" | url
+        "search": "assets/javascripts/workers/search.b028fd86.min.js" | url
       } -%}
       {%- if config.extra.version -%}
         {%- set _ = app.update({ "version": config.extra.version }) -%}
@@ -214,7 +216,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.3a4b43e5.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.0f659f14.min.js' | url }}"></script>
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

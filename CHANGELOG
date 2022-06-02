@@ -1,3 +1,12 @@
+mkdocs-material-8.3.0 (2022-06-02)
+
+  * Added support for custom admonition icons
+  * Added support for linking of content tabs
+  * Added support for boosting pages in search
+  * Added previous/next next indicators to content tabs
+  * Improved typeset link colors in light and dark modes
+  * Fixed #3954: add option to hide footer navigation
+
 mkdocs-material-8.2.16+insiders-4.16.2 (2022-05-28)
 
   * Fixed #3961: Nested sections triggered build error for navigation tabs

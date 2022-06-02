@@ -96,8 +96,7 @@ theme:
 #### Sticky navigation tabs
 
 [:octicons-tag-24: 7.3.0][navigation.tabs.sticky support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-unlock-24: Feature flag
 
 When sticky tabs are enabled, navigation tabs will lock below the header and
 always remain visible when scrolling down. Just add the following two feature
@@ -211,8 +210,7 @@ page in that section (or the section index page).
 ### Section index pages
 
 [:octicons-tag-24: 7.3.0][navigation.indexes support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-unlock-24: Feature flag
 
 When section index pages are enabled, documents can be directly attached to
 sections, which is particularly useful for providing overview pages. Add the

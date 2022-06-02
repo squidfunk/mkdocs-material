@@ -54,8 +54,8 @@
     transform: translate(50%, 0);
   }
 
-  // Back-to-top button in hidden state
-  &[data-md-state="hidden"] {
+  // Back-to-top button is hidden
+  &--hidden {
     transform: translate(-50%, px2rem(4px));
     opacity: 0;
     transition-duration: 0ms;
