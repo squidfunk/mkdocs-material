@@ -174,9 +174,10 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Content tabs: anchor links] :material-alert-decagram:{ title="Added on June 4, 2022" }
 - [x] [Navigation pruning] :material-alert-decagram:{ title="Added on May 25, 2022" }
 - [x] [Tooltips] :material-alert-decagram:{ title="Added on May 8, 2022" }
-- [x] [Chinese search support] :material-alert-decagram:{ title="Added on May 5, 2022" }
+- [x] [Chinese search support]
 - [x] [Tag icons]
 - [x] [Card grids]
 - [x] [Offline plugin]
@@ -256,7 +257,7 @@ are released for general availability.
 - [x] [Navigation icons]
 - [x] [Navigation pruning]
 - [ ] Navigation status badges
-- [ ] Blog
+- [ ] Blog plugin
 
   [Annotations]: ../reference/annotations.md
   [Chinese search support]: ../blog/2022/chinese-search-support.md
@@ -268,13 +269,20 @@ are released for general availability.
 - [x] [Privacy plugin]
 - [x] [Card grids]
 - [x] [Tooltips]
-- [ ] [Instant previews]
+- [x] [Content tabs: anchor links]
 - [ ] Intelligent color palette (system preference)
 - [ ] Document authors/contributors
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
   [Card grids]: ../reference/grids.md
   [Tooltips]: ../reference/tooltips.md
+  [Content tabs: anchor links]: ../reference/content-tabs.md#anchor-links
+
+#### $ 16,000 – Chipotle
+
+- [ ] [Instant previews]
+- [ ] ... more to be announced
+
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed

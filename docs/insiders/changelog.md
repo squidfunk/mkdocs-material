@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.17.0 <small>_ June 4, 2022</small> { id="4.17.0" }
+
+- Added support for content tabs anchor links (deep linking)
+- Fixed #3975: Detect composition events in search interface (Chinese)
+- Fixed #3980: Search plugin doesn't use title set via front matter
+
 ### 4.16.2 <small>_ May 29, 2022</small> { id="4.16.2" }
 
 - Fixed #3961: Nested sections triggered build error for navigation tabs

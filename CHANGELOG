@@ -1,3 +1,17 @@
+mkdocs-material-8.3.1+insiders-4.17.0 (2022-06-04)
+
+  * Added support for content tabs anchor links (deep linking)
+  * Fixed #3975: Detect composition events in search interface (Chinese)
+  * Fixed #3980: Search plugin doesn't use title set via front matter
+
+mkdocs-material-8.3.1 (2022-06-04)
+
+  * Bump required Jinja version to 3.0.2
+  * Removed unnecessary conditions in templates
+  * Fixed scroll offset when content tabs are brought into view
+  * Fixed #3977: Content tabs snapping oddly in Firefox
+  * Fixed #3983: Missing condition in footer partial (8.3.0 regression)
+
 mkdocs-material-8.3.0 (2022-06-02)
 
   * Added support for custom admonition icons

@@ -148,6 +148,26 @@ extra:
   [Generator notice support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [Insiders]: ../insiders/index.md
 
+## Usage
+
+### Hiding prev/next links
+
+When [Metadata] is enabled, the footer navigation showing links to the previous
+and next page can be hidden by adding the following lines to the front matter of
+a page:
+
+``` sh
+---
+hide:
+  - footer
+---
+
+# Document title
+...
+```
+
+[Metadata]: extensions/python-markdown.md#metadata
+
 ## Customization
 
 ### Custom copyright
