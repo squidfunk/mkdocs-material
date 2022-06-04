@@ -140,10 +140,14 @@ export function mountContentTabs(
 
             /* Scroll container to active content tab */
             const content = getElementContentOffset(container)
-            if (offset.x < content.x)
-              prev.click()
-            else if (offset.x + width > content.x + size.width)
-              next.click()
+            if (
+              offset.x         < content.x              ||
+              offset.x + width > content.x + size.width
+            )
+              container.scrollTo({
+                left: Math.max(0, offset.x - 16),
+                behavior: "smooth"
+              })
           },
 
           /* Handle complete */
