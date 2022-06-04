@@ -91,7 +91,6 @@
     max-width: 100%;
     overflow: auto;
     box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest) inset;
-    scroll-snap-type: x proximity;
     -ms-overflow-style: none;          // IE, Edge
     scrollbar-width: none;             // Firefox
 
@@ -141,7 +140,6 @@
       font-size: px2rem(12.8px);
       white-space: nowrap;
       border-bottom: px2rem(2px) solid transparent;
-      scroll-snap-align: start;
       border-radius: px2rem(2px) px2rem(2px) 0 0;
       cursor: pointer;
       transition:
