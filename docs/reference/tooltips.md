@@ -133,22 +133,14 @@ The HTML specification is maintained by the W3C.
 ### Adding a glossary
 
 The [Snippets] extension can be used to implement a simple glossary by moving
-all abbreviations in a dedicated file[^1], and embedding it with the
-[`--8<--` notation][Snippets notation] at the end of each document:
+all abbreviations in a dedicated file[^1], and [auto-append] this file with the
+following configuration:
 
   [^1]:
     It's highly recommended to put the Markdown file containing the
     abbreviations outside of the `docs` folder (here, a folder with the name 
     `includes` is used), as MkDocs might otherwise complain about an
     unreferenced file.
-
-=== ":octicons-file-code-16: docs/example.md"
-
-    ```` markdown
-    The HTML specification is maintained by the W3C.
-
-    --8<-- "includes/abbreviations.md"
-    ````
 
 === ":octicons-file-code-16: includes/abbreviations.md"
 
@@ -157,4 +149,13 @@ all abbreviations in a dedicated file[^1], and embedding it with the
     *[W3C]: World Wide Web Consortium
     ````
 
-  [Snippets notation]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippets-notation
+=== ":octicons-file-code-16: mkdocs.yml"
+
+    ```` yaml
+    markdown_extensions:
+      - pymdownx.snippets:
+          auto_append:
+            - includes/abbreviations.md
+    ````
+
+  [auto-append]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#auto-append-snippets
