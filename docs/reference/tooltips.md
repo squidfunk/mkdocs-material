@@ -133,8 +133,8 @@ The HTML specification is maintained by the W3C.
 ### Adding a glossary
 
 The [Snippets] extension can be used to implement a simple glossary by moving
-all abbreviations in a dedicated file[^1], and [auto-append] this file with the
-following configuration:
+all abbreviations in a dedicated file[^1], and [auto-append] this file to all
+pages with the following configuration:
 
   [^1]:
     It's highly recommended to put the Markdown file containing the
