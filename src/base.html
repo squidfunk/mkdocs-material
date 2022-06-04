@@ -32,14 +32,14 @@
       <meta name="viewport" content="width=device-width,initial-scale=1" />
 
       <!-- Page description -->
-      {% if page and page.meta and page.meta.description %}
+      {% if page.meta and page.meta.description %}
         <meta name="description" content="{{ page.meta.description }}" />
       {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}" />
       {% endif %}
 
       <!-- Page author -->
-      {% if page and page.meta and page.meta.author %}
+      {% if page.meta and page.meta.author %}
         <meta name="author" content="{{ page.meta.author }}" />
       {% elif config.site_author %}
         <meta name="author" content="{{ config.site_author }}" />
@@ -62,9 +62,9 @@
 
     <!-- Site title -->
     {% block htmltitle %}
-      {% if page and page.meta and page.meta.title %}
+      {% if page.meta and page.meta.title %}
         <title>{{ page.meta.title }} - {{ config.site_name }}</title>
-      {% elif page and page.title and not page.is_homepage %}
+      {% elif page.title and not page.is_homepage %}
         <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
       {% else %}
         <title>{{ config.site_name }}</title>
@@ -253,7 +253,7 @@
 
             <!-- Navigation -->
             {% if nav %}
-              {% if page and page.meta and page.meta.hide %}
+              {% if page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "navigation" in page.meta.hide %}
               {% endif %}
               <div
@@ -272,7 +272,7 @@
 
             <!-- Table of contents -->
             {% if not "toc.integrate" in features %}
-              {% if page and page.meta and page.meta.hide %}
+              {% if page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "toc" in page.meta.hide %}
               {% endif %}
               <div
