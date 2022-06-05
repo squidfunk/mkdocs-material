@@ -26,6 +26,22 @@
 
 // Color variables
 :root {
+  @extend %root;
+}
+
+// ----------------------------------------------------------------------------
+
+// Allow to explicitly use color schemes in nested content
+[data-md-color-scheme="default"] {
+  @extend %root;
+}
+
+// ----------------------------------------------------------------------------
+// Placeholders
+// ----------------------------------------------------------------------------
+
+// Default theme, i.e. light mode
+%root {
 
   // Default color shades
   --md-default-fg-color:               hsla(0, 0%, 0%, 0.87);
@@ -115,11 +131,4 @@
   --md-shadow-z3:
     0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.2),
     0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.35);
-}
-
-// ----------------------------------------------------------------------------
-
-// Allow to explicitly use color schemes in nested content
-[data-md-color-scheme="default"] {
-  @extend :root;
 }
