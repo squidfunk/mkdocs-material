@@ -8,7 +8,7 @@ template: overrides/main.html
 
 ### 8.3.2 <small>_ June 4, 2022</small> { id="8.3.2" }
 
-- Fixed #3987: Custom admonitions don't work when defining color palette
+- Fixed #3987: Custom admonition icons don't work when defining color palette
 
 ### 8.3.1 <small>_ June 4, 2022</small> { id="8.3.1" }
 
