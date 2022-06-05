@@ -31,7 +31,7 @@ See additional configuration options:
   [SuperFences]: ../setup/extensions/python-markdown-extensions.md#superfences
   [Tabbed]: ../setup/extensions/python-markdown-extensions.md#tabbed
 
-### Anchor links :material-alert-decagram:{ title="Added on June 4, 2022" }
+### Anchor links :material-alert-decagram:{ .mdx-pulse title="Added on June 4, 2022" }
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.17.0][Insiders] ·

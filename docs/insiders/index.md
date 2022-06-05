@@ -174,9 +174,9 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Content tabs: anchor links] :material-alert-decagram:{ title="Added on June 4, 2022" }
-- [x] [Navigation pruning] :material-alert-decagram:{ title="Added on May 25, 2022" }
-- [x] [Tooltips] :material-alert-decagram:{ title="Added on May 8, 2022" }
+- [x] [Content tabs: anchor links] :material-alert-decagram:{ .mdx-pulse title="Added on June 4, 2022" }
+- [x] [Navigation pruning] :material-alert-decagram:{ .mdx-pulse title="Added on May 25, 2022" }
+- [x] [Tooltips] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2022" }
 - [x] [Chinese search support]
 - [x] [Tag icons]
 - [x] [Card grids]
