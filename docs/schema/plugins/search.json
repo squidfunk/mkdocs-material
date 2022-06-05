@@ -35,6 +35,16 @@
               "title": "Separator for indexing and query tokenization",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-separator",
               "type": "string"
+            },
+            "jieba_dict": {
+              "title": "Jieba dictionary replacement",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#jieba-dict",
+              "type": "string"
+            },
+            "jieba_dict_user": {
+              "title": "Jieba dictionary augmentation",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#jieba-dict",
+              "type": "string"
             }
           },
           "additionalProperties": false
