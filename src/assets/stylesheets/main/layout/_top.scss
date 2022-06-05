@@ -29,6 +29,7 @@
   position: fixed;
   top: px2rem(48px + 16px);
   z-index: 2;
+  display: block;
   margin-inline-start: 50%;
   padding: px2rem(8px) px2rem(16px);
   color: var(--md-default-fg-color--light);
@@ -55,7 +56,7 @@
   }
 
   // Back-to-top button is hidden
-  &--hidden {
+  &[hidden] {
     transform: translate(-50%, px2rem(4px));
     opacity: 0;
     transition-duration: 0ms;

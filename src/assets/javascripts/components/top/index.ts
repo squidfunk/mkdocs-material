@@ -139,7 +139,7 @@ export function mountBackToTop(
 
     /* Handle emission */
     next({ hidden }) {
-      el.classList.toggle("md-top--hidden", hidden)
+      el.hidden = hidden
       if (hidden) {
         el.setAttribute("tabindex", "-1")
         el.blur()
@@ -151,7 +151,7 @@ export function mountBackToTop(
     /* Handle complete */
     complete() {
       el.style.top = ""
-      el.classList.add("md-top--hidden")
+      el.hidden = true
       el.removeAttribute("tabindex")
     }
   })

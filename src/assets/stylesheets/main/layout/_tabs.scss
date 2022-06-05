@@ -26,6 +26,9 @@
 
 // Navigation tabs
 .md-tabs {
+  // Must be higher than the z-index of the back-to-top button, or the button
+  // will overlay the navigation tabs bar when scrolling up fast.
+  z-index: 3;
   width: 100%;
   overflow: auto;
   color: var(--md-primary-bg-color);
