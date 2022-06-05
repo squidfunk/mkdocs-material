@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.3.2 <small>_ June 4, 2022</small> { id="8.3.2" }
+
+- Fixed #3987: Custom admonitions don't work when defining color palette
+
 ### 8.3.1 <small>_ June 4, 2022</small> { id="8.3.1" }
 
 - Bump required Jinja version to 3.0.2
