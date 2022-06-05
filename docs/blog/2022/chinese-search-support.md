@@ -32,10 +32,10 @@ number of Chinese users.__
 ---
 
 After the United States and Germany, the third-largest country of origin of
-Material for MkDocs users is China. For a long time, the built-in search plugin
+Material for MkDocs users is China. For a long time, the [built-in search plugin]
 didn't allow for proper segmentation of Chinese characters, mainly due to 
-missing support in [lunr-languages] which is used for search tokenization and 
-stemming. The latest Insiders release adds long-awaited Chinese language support 
+missing support in [lunr-languages] which is used for search tokenization and
+stemming. The latest Insiders release adds long-awaited Chinese language support
 for the built-in search plugin, something that has been requested by many users.
 
 _Material for MkDocs終於​支持​中文​了！文本​被​正確​分割​並且​更​容易​找到。_
@@ -50,18 +50,19 @@ search plugin in a few minutes._
 ## Configuration
 
 Chinese language support for Material for MkDocs is provided by [jieba], an
-excellent Chinese text segmentation library. If [jieba] is installed, the 
-built-in search plugin automatically detects Chinese characters and runs them 
+excellent Chinese text segmentation library. If [jieba] is installed, the
+built-in search plugin automatically detects Chinese characters and runs them
 through the segmenter. You can install [jieba] with:
 
 ```
 pip install jieba
 ```
 
-The next step is only required if you specified the [separator] configuration
-in `mkdocs.yml`. Text is segmented with [zero-width whitespace] characters, so
-it renders exactly the same in the search modal. Adjust `mkdocs.yml` so that
-the [separator] includes the `\u200b` character:
+The next step is only required if you specified the [`separator`][separator] 
+configuration in `mkdocs.yml`. Text is segmented with [zero-width whitespace] 
+characters, so it renders exactly the same in the search modal. Adjust
+`mkdocs.yml` so that the [`separator`][separator] includes the `\u200b`
+character:
 
 ``` yaml
 plugins:

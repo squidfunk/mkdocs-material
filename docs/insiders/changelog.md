@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.17.2 <small>_ June 5, 2022</small> { id="4.17.2" }
+
+- Added support for custom jieba dictionaries (Chinese search)
+
 ### 4.17.1 <small>_ June 5, 2022</small> { id="4.17.1" }
 
 - Added support for cookie consent reject button

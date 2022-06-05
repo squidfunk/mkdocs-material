@@ -104,15 +104,15 @@ The following properties are available:
 
 :   [:octicons-tag-24: insiders-4.17.1][Insiders] · :octicons-milestone-24: 
     Default: `[accept, manage]` – This property defines which buttons are shown
-    and in which order, e.g. to allow the user to manage settings and accept
-    the cookie:
+    and in which order, e.g. to allow the user to accept cookies and manage
+    settings:
 
     ``` yaml
     extra:
       consent:
         actions:
-          - manage
           - accept
+          - manage
     ```
 
     The cookie consent form includes three types of buttons:

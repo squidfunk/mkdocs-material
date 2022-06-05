@@ -92,12 +92,6 @@ The following configuration options are supported:
     part of this list by automatically falling back to the stemmer yielding the
     best result.
 
-    !!! tip "Chinese search support – 中文搜索​支持"
-
-        Material for MkDocs recently added __experimental language support for 
-        Chinese__ as part of [Insiders]. [Read the blog article][chinese search]
-        to learn how to set up search for Chinese in a matter of minutes.
-
 `separator`{ #search-separator }
 
 :   :octicons-milestone-24: Default: _automatically set_ – The separator for
@@ -112,10 +106,9 @@ The following configuration options are supported:
     ```
 
     1.  Tokenization itself is carried out by [lunr's default tokenizer], which 
-        doesn't allow for lookahead or separators spanning multiple characters.
-
-        For more finegrained control over the tokenization process, see the
-        section on [tokenizer lookahead].
+        doesn't allow for lookahead or multi-character separators. For more
+        finegrained control over the tokenization process, see the section on
+        [tokenizer lookahead].
 
 <div class="mdx-deprecated" markdown>
 
@@ -142,14 +135,9 @@ The following configuration options are supported:
 
 </div>
 
-The other configuration options of this plugin are not officially supported
-by Material for MkDocs, which is why they may yield unexpected results. Use
-them at your own risk.
-
   [search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [lunr]: https://lunrjs.com
   [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
-  [chinese search]: ../blog/2022/chinese-search-support.md
   [lunr's default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
   [site language]: changing-the-language.md#site-language
   [tokenizer lookahead]: #tokenizer-lookahead
@@ -157,13 +145,72 @@ them at your own risk.
   [prebuilt index]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
   [50% smaller]: ../blog/2021/search-better-faster-smaller.md#benchmarks
 
+#### Chinese language support
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.14.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+[Insiders] adds search support for the Chinese language (see our [blog article]
+[chinese search] from May 2022) by integrating with the text segmentation
+library [jieba], which can be installed with `pip`.
+
+``` sh
+pip install jieba
+```
+
+If [jieba] is installed, the [built-in search plugin] automatically detects
+Chinese characters and runs them through the segmenter. The following
+configuration options are available:
+
+`jieba_dict`{ #jieba-dict }
+
+:   [:octicons-tag-24: insiders-4.17.2][Insiders] · :octicons-milestone-24:
+    Default: _none_ – This option allows for specifying a [custom dictionary]
+    to be used by [jieba] for segmenting text, replacing the default dictionary:
+
+    ``` yaml
+    plugins:
+      - search:
+          jieba_dict: dict.txt # (1)!
+    ```
+
+    1.  The following alternative dictionaries are provided by [jieba]:
+
+        - [dict.txt.small] – 占用内存较小的词典文件
+        - [dict.txt.big] – 支持繁体分词更好的词典文件
+
+`jieba_dict_user`{ #jieba-dict-user }
+
+:   [:octicons-tag-24: insiders-4.17.2][Insiders] · :octicons-milestone-24:
+    Default: _none_ – This option allows for specifying an additional
+    [user dictionary] to be used by [jieba] for segmenting text, augmenting the
+    default dictionary:
+
+    ``` yaml
+    plugins:
+      - search:
+          jieba_dict_user: user_dict.txt
+    ```
+
+    User dictionaries can be used for tuning the segmenter to preserve
+    technical terms.
+
+  [chinese search]: ../blog/2022/chinese-search-support.md
+  [jieba]: https://pypi.org/project/jieba/
+  [built-in search plugin]: #built-in-search-plugin
+  [custom dictionary]: https://github.com/fxsjy/jieba#%E5%85%B6%E4%BB%96%E8%AF%8D%E5%85%B8
+  [dict.txt.small]: https://github.com/fxsjy/jieba/raw/master/extra_dict/dict.txt.small
+  [dict.txt.big]: https://github.com/fxsjy/jieba/raw/master/extra_dict/dict.txt.big
+  [user dictionary]: https://github.com/fxsjy/jieba#%E8%BD%BD%E5%85%A5%E8%AF%8D%E5%85%B8
+
 ### Rich search previews
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-3.0.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
-Insiders ships rich search previews as part of the [new search plugin], which
+[Insiders] ships rich search previews as part of the [new search plugin], which
 will render code blocks directly in the search result, and highlight all
 occurrences inside those blocks:
 
@@ -186,7 +233,7 @@ occurrences inside those blocks:
 [:octicons-tag-24: insiders-3.0.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
-Insiders allows for more complex configurations of the [`separator`][separator] 
+[Insiders] allows for more complex configurations of the [`separator`][separator] 
 setting as part of the [new search plugin], yielding more influence on the way 
 documents are tokenized:
 

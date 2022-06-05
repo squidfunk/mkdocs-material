@@ -197,8 +197,8 @@ the following steps are taken:
     remain. Linking is necessary, as search results are grouped by page.
 
 2.  __Tokenization__: The `title` and `text` values of each section are split
-    into tokens by using the [separator] as configured in `mkdocs.yml`.
-    Tokenization itself is carried out by
+    into tokens by using the [`separator`][separator] as configured in
+    `mkdocs.yml`. Tokenization itself is carried out by
     [lunr's default tokenizer][default tokenizer], which doesn't allow for
     lookahead or separators spanning multiple characters.
 
@@ -216,7 +216,7 @@ more magic involved, e.g., search results are [post-processed] and [rescored] to
 account for some shortcomings of [lunr], but in general, this is how data gets
 into and out of the index.
 
-  [separator]: ../../setup/setting-up-site-search.md#separator
+  [separator]: ../../setup/setting-up-site-search.md#search-separator
   [default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
   [post-processed]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/_/index.ts#L249-L272
   [rescored]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/_/index.ts#L274-L275
@@ -421,9 +421,9 @@ On to the next step in the process: __tokenization__.
 ### Tokenizer lookahead
 
 The [default tokenizer] of [lunr] uses a regular expression to split a given
-string by matching each character against the [separator] as defined in
-`mkdocs.yml`. This doesn't allow for more complex separators based on
-lookahead or multiple characters.
+string by matching each character against the [`separator`][separator] as
+defined in `mkdocs.yml`. This doesn't allow for more complex separators based
+on lookahead or multiple characters.
 
 Fortunately, __our new search implementation provides an advanced tokenizer__
 that doesn't have these shortcomings and supports more complex regular
@@ -439,14 +439,14 @@ characters at which the string should be split, the following three sections
 explain the remainder of the regular expression.[^4]
 
   [^4]:
-    As a fun fact: the [separator default value] of the search plugin being
-    `[\s\-]+` always has been kind of irritating, as it suggests that multiple
-    characters can be considered being a separator. However, the `+` is
-    completely irrelevant, as regular expression groups involving multiple
-    characters were never supported by
+    As a fun fact: the [`separator`][separator] [default value] of the search
+    plugin being `[\s\-]+` always has been kind of irritating, as it suggests
+    that multiple characters can be considered being a separator. However, the
+    `+` is completely irrelevant, as regular expression groups involving
+    multiple characters were never supported by
     [lunr's default tokenizer][default tokenizer].
 
-  [separator default value]: https://www.mkdocs.org/user-guide/configuration/#separator
+  [default value]: https://www.mkdocs.org/user-guide/configuration/#separator
 
 #### Case changes
 
