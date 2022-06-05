@@ -120,12 +120,12 @@ export function mountTabs(
 
       /* Handle emission */
       next({ hidden }) {
-        el.classList.toggle("md-tabs--hidden", hidden)
+        el.hidden = hidden
       },
 
       /* Handle complete */
       complete() {
-        el.classList.remove("md-tabs--hidden")
+        el.hidden = false
       }
     })
 

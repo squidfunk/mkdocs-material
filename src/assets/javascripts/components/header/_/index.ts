@@ -182,8 +182,8 @@ export function mountHeader(
         combineLatestWith(header$)
       )
         .subscribe(([{ active }, { hidden }]) => {
-          el.classList.toggle("md-header--hidden", hidden)
           el.classList.toggle("md-header--shadow", active && !hidden)
+          el.hidden = hidden
         })
 
     /* Link to main area */

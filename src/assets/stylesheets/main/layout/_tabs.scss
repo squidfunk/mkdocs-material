@@ -29,6 +29,7 @@
   // Must be higher than the z-index of the back-to-top button, or the button
   // will overlay the navigation tabs bar when scrolling up fast.
   z-index: 3;
+  display: block;
   width: 100%;
   overflow: auto;
   color: var(--md-primary-bg-color);
@@ -46,7 +47,7 @@
   }
 
   // Navigation tabs are hidden
-  &--hidden {
+  &[hidden] {
     pointer-events: none;
   }
 
@@ -98,7 +99,7 @@
 
     // Hide tabs upon scrolling - disable transition to minimizes repaints
     // while scrolling down, while scrolling up seems to be okay
-    .md-tabs.md-tabs--hidden & {
+    .md-tabs[hidden] & {
       transform: translateY(50%);
       opacity: 0;
       transition:
