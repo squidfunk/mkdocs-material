@@ -22,7 +22,7 @@ automatically downloaded for [self-hosting].
 :octicons-milestone-24: Default: _none_
 
 Material for MkDocs ships a native and extensible cookie consent form which
-asks the user for his consent prior to sending any data via analytics. Add the
+asks the user for consent prior to sending any data via analytics. Add the
 following to `mkdocs.yml`:
 
 ``` yaml
@@ -39,61 +39,109 @@ extra:
 1.  You can add arbitrary HTML tags in the `description`, e.g. to link to your
     terms of service or other parts of the site.
 
-Note that both, `title` and `description`, are required. If Google Analytics
-was configured via `mkdocs.yml`, the cookie consent will automatically include
-a setting for the user to disable it. Furthermore, [custom cookies] can be
-integrated by using the `cookies` field:
+The following properties are available:
 
-===  "Custom cookie name"
+`title`{ #consent-title }
+
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+    This property sets the title of the cookie consent, which is rendered at the 
+    top of the form and must be set to a non-empty string.
+
+`description`{ #consent-description }
+
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+    This property sets the description of the cookie consent, is rendered below
+    the title, and may include raw HTML (e.g. a links to the terms of service).
+
+`cookies`{ #consent-cookies }
+
+:   [:octicons-tag-24: insiders-4.5.1][Insiders] · :octicons-milestone-24: 
+    Default: _none_ – This property allows to add custom cookies or change the 
+    initial `checked` state and name of the `analytics` cookie. Each cookie must 
+    receive a unique identifier which is used as a key in the `cookies` map, and
+    can be either set to a string, or to a map defining `name` and `checked`
+    state:
+
+    ===  "Custom cookie name"
+
+        ``` yaml
+        extra:
+          consent:
+            cookies:
+              analytics: Custom name
+        ```
+
+    ===  "Custom initial state"
+
+        ``` yaml
+        extra:
+          consent:
+            cookies:
+              analytics:
+                name: Google Analytics
+                checked: false
+        ```
+
+    ===  "Custom cookie"
+
+        ``` yaml
+        extra:
+          consent:
+            cookies:
+              analytics: Google Analytics # (1)!
+              custom: Custom cookie
+        ```
+
+        1.  If you define a custom cookie as part of the `cookies` property,
+            the `analytics` cookie must be added back explicitly, or analytics
+            won't be triggered.
+
+
+    If Google Analytics was configured via `mkdocs.yml`, the cookie consent will automatically include a setting for the user to disable it. [Custom cookies]
+    can be used from JavaScript.
+
+`actions`{ #consent-actions }
+
+:   [:octicons-tag-24: insiders-4.17.1][Insiders] · :octicons-milestone-24: 
+    Default: `[accept, manage]` – This property defines which buttons are shown
+    and in which order, e.g. to allow the user to accept and manage cookie
+    settings:
 
     ``` yaml
     extra:
       consent:
-        cookies:
-          analytics: Custom name # (1)!
+        actions:
+          - accept
+          - manage
     ```
 
-    1.  The default name of the `analytics` cookie is `Google Analytics`.
+    The cookie consent form includes three types of buttons:
 
-===  "Custom initial state"
-
-    ``` yaml
-    extra:
-      consent:
-        cookies:
-          analytics:
-            name: Google Analytics
-            checked: false
-    ```
-
-===  "Custom cookie"
-
-    ``` yaml
-    extra:
-      consent:
-        cookies:
-          analytics: Google Analytics # (1)!
-          custom: Custom cookie
-    ```
-
-    1.  If you add a custom cookie to the `cookies` field, the `analytics`
-        cookie  must be added back explicitly, or analytics won't be triggered.
+    - `accept` – Button to accept selected cookies
+    - `reject` – Button to reject all cookies
+    - `manage` – Button to manage settings
 
 When a user first visits your site, a cookie consent form is rendered:
 
 [![cookie consent enabled]][cookie consent enabled]
 
-In order to comply with GDPR, users must be able to change their cookie settings
-at any time. This can be done by creating a simple link as part of any document,
-e.g. your privacy policy:
+  [Insiders]: ../insiders/index.md
+  [Custom cookies]: #custom-cookies
+  [cookie consent enabled]: ../assets/screenshots/consent.png
 
-``` markdown
-[Change cookie settings](#__consent){ .md-button }
+#### Change cookie settings
+
+In order to comply with GDPR, users must be able to change their cookie settings
+at any time. This can be done by adding a simple link to your [copyright notice] 
+in `mkdocs.yml`:
+
+``` yaml
+copyright: >
+  Copyright &copy; 2016 - 2022 Martin Donath –
+  <a href="#__consent">Change cookie settings</a>
 ```
 
-  [Insiders]: ../insiders/index.md
-  [custom cookies]: #custom-cookies
-  [cookie consent enabled]: ../assets/screenshots/consent.png
+  [copyright notice]: setting-up-the-footer.md#copyright-notice
 
 ### Built-in privacy plugin
 

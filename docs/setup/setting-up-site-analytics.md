@@ -167,7 +167,7 @@ integrated with the [cookie consent] feature[^1].
 
     [![feedback report]][feedback report]
 
-The following properties must be set for each rating:
+The following properties are available for each rating:
 
 `icon`{ #feedback-rating-icon }
 

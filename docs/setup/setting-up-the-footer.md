@@ -40,7 +40,7 @@ extra:
       </div>
     </div>
 
-The following properties must be set for each link:
+The following properties are available for each link:
 
 `icon`{ #social-icon }
 

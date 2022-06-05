@@ -127,7 +127,7 @@ extra:
     used as defined. Otherwise the domain part of the [`site_url`][site_url] as
     set in `mkdocs.yml` is prepended to the link.
 
-The following properties must be set for each alternate language:
+The following properties are available for each alternate language:
 
 `name`{ #language-name }
 
