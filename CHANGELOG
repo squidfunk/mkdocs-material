@@ -1,3 +1,9 @@
+mkdocs-material-8.3.2+insiders-4.17.1 (2022-06-05)
+
+  * Added support for cookie consent reject button
+  * Added support for cookie consent custom button ordering
+  * Fixed #3988: Content tab not focused after alternating anchor links
+
 mkdocs-material-8.3.2 (2022-06-05)
 
   * Fixed #3987: Custom admonition icons don't work when defining color palette

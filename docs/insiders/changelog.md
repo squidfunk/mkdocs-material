@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.17.1 <small>_ June 5, 2022</small> { id="4.17.1" }
+
+- Added support for cookie consent reject button
+- Added support for cookie consent custom button ordering
+- Fixed #3988: Content tab not focused after alternating anchor links
+
 ### 4.17.0 <small>_ June 4, 2022</small> { id="4.17.0" }
 
 - Added support for content tabs anchor links (deep linking)

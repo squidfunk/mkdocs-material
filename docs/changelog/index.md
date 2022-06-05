@@ -6,7 +6,7 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
-### 8.3.2 <small>_ June 4, 2022</small> { id="8.3.2" }
+### 8.3.2 <small>_ June 5, 2022</small> { id="8.3.2" }
 
 - Fixed #3987: Custom admonition icons don't work when defining color palette
 
