@@ -209,8 +209,8 @@ kbd {
     font-size: px2em(13.6px);
     word-break: break-word;
     background-color: var(--md-code-bg-color);
-    box-decoration-break: clone;
     border-radius: px2rem(2px);
+    box-decoration-break: clone;
 
     // Hide outline for pointer devices
     &:not(.focus-visible) {
@@ -232,9 +232,9 @@ kbd {
       padding: px2em(10.5px, 13.6px) px2em(16px, 13.6px);
       overflow: auto;
       word-break: normal;
-      box-decoration-break: slice;
       outline-color: var(--md-accent-fg-color);
       box-shadow: none;
+      box-decoration-break: slice;
       touch-action: auto;
       scrollbar-width: thin;
       scrollbar-color: var(--md-default-fg-color--lighter) transparent;
