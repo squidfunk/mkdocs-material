@@ -98,6 +98,9 @@
   <a href="https://n8n.io" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png" height="65"
   /></a>
+  <a href="https://www.dogado.de" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-dogado.png" height="65"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
