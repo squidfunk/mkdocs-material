@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.3.3 <small>_ June 7, 2022</small> { id="8.3.3" }
+
+- Fixed #4000: Mermaid diagrams too dark in dark mode (8.3.0 regression)
+
 ### 8.3.2 <small>_ June 5, 2022</small> { id="8.3.2" }
 
 - Fixed #3987: Custom admonition icons don't work when defining color palette
