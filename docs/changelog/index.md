@@ -6,7 +6,7 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
-### 8.3.3 <small>_ June 11, 2022</small> { id="8.3.3" }
+### 8.3.4 <small>_ June 11, 2022</small> { id="8.3.4" }
 
 - Fixed #4004: Tags with multiple words not searchable
 
