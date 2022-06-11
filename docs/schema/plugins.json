@@ -63,13 +63,10 @@
           "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-include-markdown-plugin/master/schema.json"
         },
         {
-          "$ref": "https://mondeja.github.io/mkdocs-mdpo-plugin/schema.json"
-        },
-        {
           "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-material-relative-language-selector/master/schema.json"
         },
         {
-          "$ref": "https://guts.github.io/mkdocs-rss-plugin/schema.json"
+          "$ref": "https://raw.githubusercontent.com/Guts/mkdocs-rss-plugin/main/docs/schema.json"
         }
       ]
     }
