@@ -282,7 +282,7 @@ default color palette.
 
 Newer operating system allow to automatically switch between light and dark
 appearance during day and night times. [Insiders] adds support for automatic
-light/dark mode, delegating color palette selection to the user's operating
+light / dark mode, delegating color palette selection to the user's operating
 system. Add the following lines to `mkdocs.yml`:
 
 ``` yaml
