@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.18.0 <small>_ June 11, 2022</small> { id="4.18.0" }
+
+- Added support for automatic dark/light mode
+- Fixed #4009: Privacy plugin uses invalid paths for file cache on Windows
+
 ### 4.17.2 <small>_ June 5, 2022</small> { id="4.17.2" }
 
 - Added support for custom jieba dictionaries (Chinese search)

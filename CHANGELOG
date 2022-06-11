@@ -1,3 +1,12 @@
+mkdocs-material-8.3.4+insiders-4.18.0 (2022-06-11)
+
+  * Added support for automatic dark/light mode
+  * Fixed #4009: Privacy plugin uses invalid paths for file cache on Windows
+
+mkdocs-material-8.3.4 (2022-06-11)
+
+  * Fixed #4004: Tags with multiple words not searchable
+
 mkdocs-material-8.3.3 (2022-06-07)
 
   * Fixed #4000: Mermaid diagrams too dark in dark mode (8.3.0 regression)

@@ -21,8 +21,8 @@ fit your brand's identity by using [CSS variables][custom colors].
 [:octicons-tag-24: 5.2.0][palette.scheme support] ·
 :octicons-milestone-24: Default: `default`
 
-Material for MkDocs supports two color schemes: a light mode, which is just
-called `default`, and a dark mode, which is called `slate`. The color scheme
+Material for MkDocs supports two color schemes: a __light mode__, which is just
+called `default`, and a __dark mode__, which is called `slate`. The color scheme
 can be set via `mkdocs.yml`:
 
 ``` yaml
@@ -169,21 +169,24 @@ Click on a tile to change the accent color:
 [:octicons-tag-24: 7.1.0][palette.toggle support] ·
 :octicons-milestone-24: Default: _none_
 
-It's also possible to offer a list of color palettes to the user, each of which
-can include a [`scheme`][palette.scheme], [`primary`][palette.primary] and
-[`accent`][palette.accent] color each. The user can toggle between those color
-palettes:
+Offering a light _and_ dark color palette makes your documentation pleasant to
+read at different times of the day, so the user can choose accordingly. Add the
+following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
   palette: # (1)!
+
+    # Palette toggle for light mode
     - scheme: default
       toggle:
-        icon: material/toggle-switch # (2)!
+        icon: material/brightness-7 # (2)!
         name: Switch to dark mode
+
+    # Palette toggle for dark mode
     - scheme: slate # (3)!
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/brightness-4
         name: Switch to light mode
 ```
 
@@ -193,7 +196,7 @@ theme:
     click on the shortcode to copy it to your clipboard:
 
     <div class="mdx-iconsearch" data-mdx-component="iconsearch">
-      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="toggle switch" />
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="brightness" />
       <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
         <div class="mdx-iconsearch-result__meta"></div>
         <ol class="mdx-iconsearch-result__list"></ol>
@@ -206,6 +209,10 @@ theme:
     sure that the color combination of your choosing provides enough contrast
     and tweak CSS variables where necessary.
 
+This configuration will render a color palette toggle next to the search bar.
+Note that you can also define separate settings for [`scheme`][palette.scheme],
+[`primary`][palette.primary] and [`accent`][palette.accent] per color palette.
+
 The following properties must be set for each toggle:
 
 `icon`{ #toggle-icon }
@@ -214,58 +221,100 @@ The following properties must be set for each toggle:
     This property must point to a valid icon path referencing any icon bundled
     with the theme, or the build will not succeed. Some popular combinations:
 
+    * :material-brightness-7: + :material-brightness-4: – `material/brightness-7` + `material/brightness-4`
     * :material-toggle-switch: + :material-toggle-switch-off-outline: – `material/toggle-switch` + `material/toggle-switch-off-outline`
     * :material-weather-night: + :material-weather-sunny: – `material/weather-night` + `material/weather-sunny`
     * :material-eye: + :material-eye-outline: – `material/eye` + `material/eye-outline`
     * :material-lightbulb: + :material-lightbulb-outline: – `material/lightbulb` + `material/lightbulb-outline`
-    * :material-brightness-7: + :material-brightness-4: – `material/brightness-7` + `material/brightness-4`
 
 `name`{ #toggle-name }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
-    This property is used as the toggle's `title` attribute and should be set to a
-    discernable name to improve accessibility. It will appear on mouse hover.
+    This property is used as the toggle's `title` attribute and should be set to
+    a discernable name to improve accessibility. It's rendered as a [tooltip].
 
   [palette.toggle support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
   [palette.scheme]: #color-scheme
   [palette.primary]: #primary-color
   [palette.accent]: #accent-color
   [icon search]: ../reference/icons-emojis.md#search
+  [tooltip]: ../reference/tooltips.md
 
 ### System preference
 
 [:octicons-tag-24: 7.1.0][palette.media support] ·
 :octicons-milestone-24: Default: _none_
 
-In order to automatically set the color palette to the user's system preference,
-a media query can be set as part of the `media` property next to the toggle
-definition in `mkdocs.yml`:
+Each color palette can be linked to the user's system preference for light and
+dark appearance by using a media query. Simply add a `media` property next to
+the `scheme` definition in `mkdocs.yml`:
 
 ``` yaml
 theme:
   palette:
-    - media: "(prefers-color-scheme: light)" # (1)!
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
       scheme: default
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/brightness-7
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)" # (2)!
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-4
         name: Switch to light mode
 ```
-
-1.  This media query is __checked first__. It's also the __fallback__ when no
-    media query matches.
-2.  This media query is __checked second__. If it doesn't match, the first one
-    is automatically used.
 
 When the user first visits your site, the media queries are evaluated in the
 order of their definition. The first media query that matches selects the
 default color palette.
 
   [palette.media support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
+
+#### Automatic light / dark mode :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.18.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+Newer operating system allow to automatically switch between light and dark
+appearance during day and night times. [Insiders] adds support for automatic
+light/dark mode, delegating color palette selection to the user's operating
+system. Add the following lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  palette:
+
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+```
+
+Material for MkDocs will now change the color palette each time the operating
+system switches between light and dark appearance, even when the user doesn't
+reload the site.
+
+  [Insiders]: ../insiders/index.md
 
 ## Customization
 

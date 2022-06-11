@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.3.3 <small>_ June 11, 2022</small> { id="8.3.3" }
+
+- Fixed #4004: Tags with multiple words not searchable
+
 ### 8.3.3 <small>_ June 7, 2022</small> { id="8.3.3" }
 
 - Fixed #4000: Mermaid diagrams too dark in dark mode (8.3.0 regression)

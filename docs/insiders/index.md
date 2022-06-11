@@ -178,9 +178,10 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Automatic light / dark mode] :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
 - [x] [Content tabs: anchor links] :material-alert-decagram:{ .mdx-pulse title="Added on June 4, 2022" }
 - [x] [Navigation pruning] :material-alert-decagram:{ .mdx-pulse title="Added on May 25, 2022" }
-- [x] [Tooltips] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2022" }
+- [x] [Tooltips]
 - [x] [Chinese search support]
 - [x] [Tag icons]
 - [x] [Card grids]
@@ -189,6 +190,7 @@ which are currently exclusively available to sponsors:
 - [x] [Table of contents anchor following]
 - [x] [Annotations]
 - [x] [Navigation icons]
+- [x] Sidebars automatically scroll to active item
 - [x] [Code annotations: anchor links]
 - [x] [Code annotations: strip comments]
 - [x] [Dismissable announcement bar]
@@ -274,13 +276,14 @@ are released for general availability.
 - [x] [Card grids]
 - [x] [Tooltips]
 - [x] [Content tabs: anchor links]
-- [ ] Intelligent color palette (system preference)
+- [x] [Automatic light / dark mode]
 - [ ] Document authors/contributors
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
   [Card grids]: ../reference/grids.md
   [Tooltips]: ../reference/tooltips.md
   [Content tabs: anchor links]: ../reference/content-tabs.md#anchor-links
+  [Automatic light / dark mode]: ../setup/changing-the-colors.md#automatic-light-dark-mode
 
 #### $ 16,000 – Chipotle
 

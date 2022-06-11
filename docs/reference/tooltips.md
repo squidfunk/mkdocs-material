@@ -33,7 +33,7 @@ See additional configuration options:
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [Snippets]: ../setup/extensions/python-markdown-extensions.md#snippets
 
-### Improved tooltips :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2022" }
+### Improved tooltips
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.15.0][Insiders] ·
