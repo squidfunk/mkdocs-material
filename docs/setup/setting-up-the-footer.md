@@ -176,19 +176,11 @@ hide:
 :octicons-file-symlink-file-24: Customization
 
 In order to customize and override the [copyright notice], [extend the theme]
-and [override the `copyright` block][overriding blocks], which is normally set
-to the `copyright` property set in `mkdocs.yml`:
-
-``` html
-{% extends "base.html" %}
-
-{% block copyright %}
-  <!-- Add copyright here, including arbitrary HTML -->
-{% endblock %}
-```
+and [override the `copyright` partial][overriding partials], which normally
+includes the `copyright` property set in `mkdocs.yml`.
 
   [Custom copyright support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [copyright notice]: #copyright-notice
   [generator notice]: #generator-notice
   [extend the theme]: ../customization.md#extending-the-theme
-  [overriding blocks]: ../customization.md#overriding-blocks
+  [overriding partials]: ../customization.md#overriding-partials
