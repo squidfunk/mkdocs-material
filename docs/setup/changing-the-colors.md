@@ -184,7 +184,7 @@ theme:
         name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - scheme: slate # (3)!
+    - scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -203,15 +203,9 @@ theme:
       </div>
     </div>
 
-3.  With __2__ (color schemes) __x 21__ (primary colors) __x 17__ (accent color)
-    = __714__ combinations, it's impossible to ensure that all configurations
-    provide a good user experience (e.g. _yellow on light background_). Make
-    sure that the color combination of your choosing provides enough contrast
-    and tweak CSS variables where necessary.
-
 This configuration will render a color palette toggle next to the search bar.
-Note that you can also define separate settings for [`scheme`][palette.scheme],
-[`primary`][palette.primary] and [`accent`][palette.accent] per color palette.
+Note that you can also define separate settings for [`primary`][palette.primary]
+and [`accent`][palette.accent] per color palette.
 
 The following properties must be set for each toggle:
 
@@ -297,7 +291,7 @@ theme:
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: default
+      scheme: default #(1)!
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -309,6 +303,10 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
 ```
+
+1.  You can also define separate settings for [`primary`][palette.primary] and
+    [`accent`][palette.accent] per color palette, i.e. different colors for
+    light and dark mode.
 
 Material for MkDocs will now change the color palette each time the operating
 system switches between light and dark appearance, even when the user doesn't
