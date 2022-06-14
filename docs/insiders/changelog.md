@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.18.1 <small>_ June 14, 2022</small> { id="4.18.1" }
+
+- Fixed #3990: Chinese search highlighting not working on non-boundaries
+
 ### 4.18.0 <small>_ June 11, 2022</small> { id="4.18.0" }
 
 - Added support for automatic dark/light mode
