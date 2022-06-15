@@ -102,7 +102,6 @@ export function setupVersionSelector(
           filter(ev => !ev.metaKey && !ev.ctrlKey),
           withLatestFrom(current$),
           switchMap(([ev, current]) => {
-            ev.preventDefault()
             if (ev.target instanceof Element) {
               const el = ev.target.closest("a")
               if (el && !el.target && urls.has(el.href)) {
