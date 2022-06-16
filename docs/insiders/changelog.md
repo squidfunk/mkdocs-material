@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.18.2 <small>_ June 16, 2022</small> { id="4.18.2" }
+
+- Fixed #4026: Fixed tooltips not mounted for nested navigation links
+
 ### 4.18.1 <small>_ June 14, 2022</small> { id="4.18.1" }
 
 - Fixed #3990: Chinese search highlighting not working on non-boundaries
