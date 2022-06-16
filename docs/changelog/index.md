@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.3.6 <small>_ June 16, 2022</small> { id="8.3.6" }
+
+- Fixed #4028: Links not clickable when using versioning (8.3.5 regression)
+
 ### 8.3.5 <small>_ June 14, 2022</small> { id="8.3.5" }
 
 - Fixed #4012: Stay on page not working for alias of active version
