@@ -173,7 +173,7 @@ You can cancel your sponsorship anytime.[^5]
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to many additional features__ that you can start using right away, and
+access to 24 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
@@ -204,6 +204,8 @@ which are currently exclusively available to sponsors:
 - [x] [Cookie consent]
 
 </div>
+
+New features are added every other week. Be sure to come back.
 
 ## Funding <span class="mdx-sponsorship-total" data-mdx-component="sponsorship-total"></span>
 
