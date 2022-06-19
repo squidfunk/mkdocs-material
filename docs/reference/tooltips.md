@@ -1,6 +1,6 @@
 ---
 template: overrides/main.html
-icon: material/comment-processing-outline
+icon: material/tooltip-text
 ---
 
 # Tooltips
