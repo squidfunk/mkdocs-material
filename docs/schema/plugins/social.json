@@ -46,9 +46,9 @@
             "cards_font": {
               "$ref": "../assets/fonts.json"
             },
-            "cards_directory": {
+            "cards_dir": {
               "title": "Social card directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-dir",
               "type": "string",
               "default": "assets/images/social"
             }

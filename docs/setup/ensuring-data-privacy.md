@@ -206,7 +206,7 @@ The following configuration options are available:
     [customization]: ../customization.md
     [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
 
-`externals_directory`{ #externals-directory }
+`externals_dir`{ #externals-dir }
 
 :   :octicons-milestone-24: Default: `assets/externals` – This option
     specifies where the downloaded [external assets] will be stored. It's
@@ -215,7 +215,7 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - privacy:
-          externals_directory: assets/externals
+          externals_dir: assets/externals
     ```
 
 `externals_exclude`{ #externals-exclude }
