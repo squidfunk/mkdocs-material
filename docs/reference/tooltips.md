@@ -1,6 +1,6 @@
 ---
 template: overrides/main.html
-icon: material/tooltip-text
+icon: material/tooltip-plus
 ---
 
 # Tooltips
