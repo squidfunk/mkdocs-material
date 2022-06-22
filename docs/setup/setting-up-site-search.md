@@ -147,7 +147,6 @@ The following configuration options are supported:
 
 #### Chinese language support
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.14.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
