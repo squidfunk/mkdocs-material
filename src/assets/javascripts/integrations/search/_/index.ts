@@ -206,7 +206,10 @@ export class Search {
       this.field("text")
       this.field("tags", { boost: 1e6, extractor: doc => {
         const { tags = [] } = doc as SearchDocument
-        return tags.flatMap(tag => lunr.tokenizer(tag))
+        return tags.reduce((list, tag) => [
+          ...list,
+          ...lunr.tokenizer(tag)
+        ], [] as lunr.Token[])
       } })
 
       /* Index documents */
