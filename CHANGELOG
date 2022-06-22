@@ -1,3 +1,7 @@
+mkdocs-material-8.3.7 (2022-06-22)
+
+  * Fixed search being stuck initializing when using tags (8.3.4 regression)
+
 mkdocs-material-8.3.6+insiders-4.18.2 (2022-06-16)
 
   * Fixed #4026: Fixed tooltips not mounted for nested navigation links
