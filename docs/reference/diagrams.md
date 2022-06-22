@@ -15,6 +15,7 @@ popular and flexible solution for drawing diagrams.
 ## Configuration
 
 [:octicons-tag-24: 8.2.0][Diagrams support] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 :octicons-beaker-24: Experimental
 
 This configuration enables native support for [Mermaid.js] diagrams. Material
