@@ -104,6 +104,9 @@
   <a href="https://wwt.com" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png" height="65"
   /></a>
+  <a href="https://coda.io" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-coda.png" height="65"
+  /></a>
 </p>
 <p>&nbsp;</p>
 

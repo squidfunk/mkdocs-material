@@ -137,6 +137,7 @@ You can cancel your sponsorship anytime.[^5]
 [![n8n]](https://n8n.io){ target=_blank title="n8n" }
 [![Dogado]](https://www.dogado.de){ target=_blank title="Dogado" }
 [![World Wide Technology]](https://wwt.com){ target=_blank title="World Wide Technology" }
+[![Coda]](https://coda.io){ target=_blank title="Coda" }
 
 </div>
 
@@ -154,6 +155,7 @@ You can cancel your sponsorship anytime.[^5]
   [n8n]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png
   [Dogado]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-dogado.png
   [World Wide Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png
+  [Coda]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-coda.png
 
 <hr />
 
