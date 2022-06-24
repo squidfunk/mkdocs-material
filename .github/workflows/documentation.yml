@@ -44,12 +44,21 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: Set up build cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          key: ${{ runner.os }}-${{ hashFiles('.cache/**', 'authors.json') }}
+          path: |
+            .cache
+            authors.json
+
       - name: Install Python dependencies
         run: |
           pip install .
           pip install \
             "mkdocs-git-committers-plugin-2>=0.4" \
-            "mkdocs-git-revision-date-plugin>=0.3" \
+            "mkdocs-git-revision-date-localized-plugin>=1.0" \
             "mkdocs-minify-plugin>=0.3" \
             "mkdocs-redirects>=1.0"
 
