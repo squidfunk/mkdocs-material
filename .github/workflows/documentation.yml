@@ -47,10 +47,11 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install .
-          pip install mkdocs-git-committers-plugin-2>=0.4
-          pip install mkdocs-git-revision-date-plugin>=0.3
-          pip install mkdocs-minify-plugin>=0.3
-          pip install mkdocs-redirects>=1.0
+          pip install \
+            "mkdocs-git-committers-plugin-2>=0.4"
+            "mkdocs-git-revision-date-plugin>=0.3"
+            "mkdocs-minify-plugin>=0.3"
+            "mkdocs-redirects>=1.0"
 
       - name: Install Insiders build
         if: github.event.repository.fork == false
