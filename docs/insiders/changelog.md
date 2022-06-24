@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.19.0 <small>_ June 24, 2022</small> { id="4.19.0" }
+
+- Added support for document contributors
+- Updated French translations for cookie consent
+
 ### 4.18.2 <small>_ June 16, 2022</small> { id="4.18.2" }
 
 - Fixed #4026: Fixed tooltips not mounted for nested navigation links
