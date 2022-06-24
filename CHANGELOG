@@ -1,3 +1,8 @@
+mkdocs-material-8.3.8 (2022-06-22)
+
+  * Fixed #4053: Limit width of videos to content area
+  * Fixed empty tags in front matter breaking search
+
 mkdocs-material-8.3.7 (2022-06-22)
 
   * Fixed search being stuck initializing when using tags (8.3.4 regression)

@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.3.8 <small>_ June 24, 2022</small> { id="8.3.8" }
+
+- Fixed #4053: Limit width of videos to content area
+- Fixed empty tags in front matter breaking search
+
 ### 8.3.7 <small>_ June 22, 2022</small> { id="8.3.7" }
 
 - Fixed search being stuck initializing when using tags (8.3.4 regression)
