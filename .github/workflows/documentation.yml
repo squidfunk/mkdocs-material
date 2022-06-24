@@ -38,6 +38,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Python runtime
         uses: actions/setup-python@v4
@@ -74,6 +76,7 @@ jobs:
 
       - name: Deploy documentation
         env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
         run: |
           mkdocs gh-deploy --force
