@@ -180,9 +180,10 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Document contributors] :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }
 - [x] [Automatic light / dark mode] :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
 - [x] [Content tabs: anchor links] :material-alert-decagram:{ .mdx-pulse title="Added on June 4, 2022" }
-- [x] [Navigation pruning] :material-alert-decagram:{ .mdx-pulse title="Added on May 25, 2022" }
+- [x] [Navigation pruning]
 - [x] [Tooltips]
 - [x] [Chinese search support]
 - [x] [Tag icons]
@@ -281,13 +282,14 @@ are released for general availability.
 - [x] [Tooltips]
 - [x] [Content tabs: anchor links]
 - [x] [Automatic light / dark mode]
-- [ ] Document authors/contributors
+- [x] [Document contributors]
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
   [Card grids]: ../reference/grids.md
   [Tooltips]: ../reference/tooltips.md
   [Content tabs: anchor links]: ../reference/content-tabs.md#anchor-links
   [Automatic light / dark mode]: ../setup/changing-the-colors.md#automatic-light-dark-mode
+  [Document contributors]: ../setup/adding-a-git-repository.md#document-contributors
 
 #### $ 16,000 – Chipotle
 

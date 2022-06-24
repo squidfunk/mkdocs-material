@@ -43,6 +43,12 @@
       "description": "External plugins, schema provided by us",
       "oneOf": [
         {
+          "$ref": "plugins/external/git-authors.json"
+        },
+        {
+          "$ref": "plugins/external/git-committers.json"
+        },
+        {
           "$ref": "plugins/external/git-revision-date.json"
         },
         {

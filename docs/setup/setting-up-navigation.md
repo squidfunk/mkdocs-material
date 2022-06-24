@@ -180,7 +180,7 @@ theme:
   [navigation.expand enabled]: ../assets/screenshots/navigation-expand.png
   [navigation.expand disabled]: ../assets/screenshots/navigation.png
 
-### Navigation pruning :material-alert-decagram:{ .mdx-pulse title="Added on May 25, 2022" }
+### Navigation pruning
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.16.0][Insiders] ·
