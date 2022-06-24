@@ -175,7 +175,7 @@ You can cancel your sponsorship anytime.[^5]
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 24 additional features__ that you can start using right away, and
+access to 25 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
