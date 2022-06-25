@@ -64,12 +64,11 @@ calling the `super()` function at the beginning of the block:
   <!-- Reload on palette change -->
   <script>
     var palette = __md_get("__palette")
-    if (palette && typeof palette.color === "object")
-      if (palette.color.scheme === "slate") {
+    if (palette && typeof palette.color === "object") {
         var giscus = document.querySelector("script[src*=giscus]")
-        giscus.setAttribute("data-theme", "dark") // (1)!
-      }
-
+        giscus.setAttribute("data-theme", palette.color.scheme === "slate" ? "dark" : "light") // (1)!
+    }
+     
     /* Register event handlers after documented loaded */
     document.addEventListener("DOMContentLoaded", function() {
       var ref = document.querySelector("[data-md-component=palette]")
