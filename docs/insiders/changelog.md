@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.19.1 <small>_ June 25, 2022</small> { id="4.19.1" }
+
+- Added `mkdocs-git-committers-plugin` to Dockerfile
+- Added `mkdocs-git-revision-date-localized-plugin` to Dockerfile
+
 ### 4.19.0 <small>_ June 24, 2022</small> { id="4.19.0" }
 
 - Added support for document contributors

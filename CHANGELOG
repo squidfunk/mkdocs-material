@@ -1,3 +1,8 @@
+mkdocs-material-8.3.8+insiders-4.19.1 (2022-06-25)
+
+  * Added mkdocs-git-committers-plugin to Dockerfile
+  * Added mkdocs-git-revision-date-localized-plugin to Dockerfile
+
 mkdocs-material-8.3.8+insiders-4.19.0 (2022-06-24)
 
   * Added support for document contributors
