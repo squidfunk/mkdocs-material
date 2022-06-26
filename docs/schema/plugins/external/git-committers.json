@@ -11,7 +11,7 @@
     {
       "type": "object",
       "properties": {
-        "git-authors": {
+        "git-committers": {
           "markdownDescription": "https://github.com/ojacques/mkdocs-git-committers-plugin-2",
           "type": "object",
           "properties": {
