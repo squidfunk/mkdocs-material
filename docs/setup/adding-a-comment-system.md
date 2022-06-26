@@ -61,12 +61,15 @@ calling the `super()` function at the beginning of the block:
   <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
   <!-- Replace with generated snippet -->
 
-  <!-- Reload on palette change -->
+  <!-- Synchronize Giscus theme with palette -->
   <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
     var palette = __md_get("__palette")
     if (palette && typeof palette.color === "object") {
-        var giscus = document.querySelector("script[src*=giscus]")
-        giscus.setAttribute("data-theme", palette.color.scheme === "slate" ? "dark" : "light") // (1)!
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) // (1)!
     }
      
     /* Register event handlers after documented loaded */
