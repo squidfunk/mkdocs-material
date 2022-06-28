@@ -362,7 +362,7 @@ hide:
 ### Keyboard shortcuts
 
 Material for MkDocs includes several keyboard shortcuts that make it possible
-to navigate your project documentation via keyboard. There're two modes:
+to navigate your project documentation via keyboard. There are two modes:
 
 `search`{ #mode-search }
 
