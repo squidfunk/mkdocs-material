@@ -50,10 +50,8 @@ jobs:
         uses: actions/cache@v3
         id: cache
         with:
-          key: ${{ runner.os }}-${{ hashFiles('.cache/**', 'authors.json') }}
-          path: |
-            .cache
-            authors.json
+          key: ${{ runner.os }}-${{ hashFiles('.cache/**') }}
+          path: .cache
 
       - name: Install Python dependencies
         run: |
