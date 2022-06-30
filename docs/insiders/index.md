@@ -138,6 +138,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Dogado]](https://www.dogado.de){ target=_blank title="Dogado" }
 [![World Wide Technology]](https://wwt.com){ target=_blank title="World Wide Technology" }
 [![Coda]](https://coda.io){ target=_blank title="Coda" }
+[![Elastic]](https://elastic.co){ target=_blank title="Elastic" }
 
 </div>
 
@@ -156,6 +157,7 @@ You can cancel your sponsorship anytime.[^5]
   [Dogado]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-dogado.png
   [World Wide Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png
   [Coda]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-coda.png
+  [Elastic]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png
 
 <hr />
 
