@@ -84,11 +84,11 @@ export function watchContentTabs(
   const initial = inputs.find(input => input.checked) || inputs[0]
   return merge(...inputs.map(input => fromEvent(input, "change")
     .pipe(
-      map(() => getElement<HTMLLabelElement>(`label[for=${input.id}]`))
+      map(() => getElement<HTMLLabelElement>(`label[for="${input.id}"]`))
     )
   ))
     .pipe(
-      startWith(getElement<HTMLLabelElement>(`label[for=${initial.id}]`)),
+      startWith(getElement<HTMLLabelElement>(`label[for="${initial.id}"]`)),
       map(active => ({ active }))
     )
 }
@@ -196,7 +196,7 @@ export function mountContentTabs(
             for (const input of getElements<HTMLInputElement>(
               ":scope > input", set
             )) {
-              const label = getElement(`label[for=${input.id}]`)
+              const label = getElement(`label[for="${input.id}"]`)
               if (label.innerText.trim() === tab) {
                 input.click()
                 break
