@@ -105,7 +105,6 @@ export function setupVersionSelector(
             if (ev.target instanceof Element) {
               const el = ev.target.closest("a")
               if (el && !el.target && urls.has(el.href)) {
-                ev.preventDefault()
                 const url = el.href
                 // This is a temporary hack to detect if a version inside the
                 // version selector or on another part of the site was clicked.
@@ -122,6 +121,7 @@ export function setupVersionSelector(
                   if (version === current)
                     return EMPTY
                 }
+                ev.preventDefault()
                 return of(url)
               }
             }
