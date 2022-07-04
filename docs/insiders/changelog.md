@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.19.2 <small>_ July 4, 2022</small> { id="4.19.2" }
+
+- Fixed #4051: Privacy plugin fails if symlinking isn't allowed on Windows
+
 ### 4.19.1 <small>_ June 25, 2022</small> { id="4.19.1" }
 
 - Added `mkdocs-git-committers-plugin` to Dockerfile

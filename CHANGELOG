@@ -1,3 +1,7 @@
+mkdocs-material-8.3.9+insiders-4.19.2 (2022-07-04)
+
+  * Fixed #4051: Privacy plugin fails if symlinking isn't allowed on Windows
+
 mkdocs-material-8.3.9 (2022-07-04)
 
   * Updated Taiwanese translations for search
