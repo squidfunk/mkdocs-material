@@ -1,3 +1,9 @@
+mkdocs-material-8.3.9 (2022-07-04)
+
+  * Updated Taiwanese translations for search
+  * Allow ids for content tabs with special characters (for mkdocstrings)
+  * Fixed #4083: home not clickable when using versioning (8.3.5 regression)
+
 mkdocs-material-8.3.8+insiders-4.19.1 (2022-06-25)
 
   * Added mkdocs-git-committers-plugin to Dockerfile

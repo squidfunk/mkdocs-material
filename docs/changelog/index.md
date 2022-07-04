@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.3.9 <small>_ July 4, 2022</small> { id="8.3.9" }
+
+- Updated Taiwanese translations for search
+- Allow ids for content tabs with special characters (for mkdocstrings)
+- Fixed #4083: home not clickable when using versioning (8.3.5 regression)
+
 ### 8.3.8 <small>_ June 24, 2022</small> { id="8.3.8" }
 
 - Fixed #4053: Limit width of videos to content area
