@@ -79,6 +79,44 @@ a handful of them, [thanks to our awesome sponsors]!
   [completed funding goals]: #goals-completed
   [thanks to our awesome sponsors]: #how-to-become-a-sponsor
 
+## What's in for me?
+
+The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
+access to 25 additional features__ that you can start using right away, and
+which are currently exclusively available to sponsors:
+
+<div class="mdx-columns" markdown>
+
+- [x] [Document contributors] :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }
+- [x] [Automatic light / dark mode] :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
+- [x] [Content tabs: anchor links] :material-alert-decagram:{ .mdx-pulse title="Added on June 4, 2022" }
+- [x] [Navigation pruning]
+- [x] [Tooltips]
+- [x] [Chinese search support]
+- [x] [Tag icons]
+- [x] [Card grids]
+- [x] [Offline plugin]
+- [x] [Privacy plugin]
+- [x] [Table of contents anchor following]
+- [x] [Annotations]
+- [x] [Navigation icons]
+- [x] Sidebars automatically scroll to active item
+- [x] [Code annotations: anchor links]
+- [x] [Code annotations: strip comments]
+- [x] [Dismissable announcement bar]
+- [x] [Was this page helpful?]
+- [x] [Brand new search plugin]
+- [x] [Rich search previews]
+- [x] [Tokenizer with lookahead]
+- [x] [Advanced search highlighting]
+- [x] [Excluding content from search]
+- [x] [Social cards]
+- [x] [Cookie consent]
+
+</div>
+
+New features are added every other week. Be sure to come back.
+
 ## How to become a sponsor
 
 Thanks for your interest in sponsoring! In order to become an eligible sponsor
@@ -175,44 +213,6 @@ You can cancel your sponsorship anytime.[^5]
 </div>
 
   [squidfunk's sponsor profile]: https://github.com/sponsors/squidfunk
-
-## What's in for me?
-
-The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 25 additional features__ that you can start using right away, and
-which are currently exclusively available to sponsors:
-
-<div class="mdx-columns" markdown>
-
-- [x] [Document contributors] :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }
-- [x] [Automatic light / dark mode] :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
-- [x] [Content tabs: anchor links] :material-alert-decagram:{ .mdx-pulse title="Added on June 4, 2022" }
-- [x] [Navigation pruning]
-- [x] [Tooltips]
-- [x] [Chinese search support]
-- [x] [Tag icons]
-- [x] [Card grids]
-- [x] [Offline plugin]
-- [x] [Privacy plugin]
-- [x] [Table of contents anchor following]
-- [x] [Annotations]
-- [x] [Navigation icons]
-- [x] Sidebars automatically scroll to active item
-- [x] [Code annotations: anchor links]
-- [x] [Code annotations: strip comments]
-- [x] [Dismissable announcement bar]
-- [x] [Was this page helpful?]
-- [x] [Brand new search plugin]
-- [x] [Rich search previews]
-- [x] [Tokenizer with lookahead]
-- [x] [Advanced search highlighting]
-- [x] [Excluding content from search]
-- [x] [Social cards]
-- [x] [Cookie consent]
-
-</div>
-
-New features are added every other week. Be sure to come back.
 
 ## Funding <span class="mdx-sponsorship-total" data-mdx-component="sponsorship-total"></span>
 
