@@ -82,14 +82,15 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 25 additional features__ that you can start using right away, and
+access to 26 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Additional tags indexes] :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
 - [x] [Document contributors] :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }
 - [x] [Automatic light / dark mode] :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
-- [x] [Content tabs: anchor links] :material-alert-decagram:{ .mdx-pulse title="Added on June 4, 2022" }
+- [x] [Content tabs: anchor links]
 - [x] [Navigation pruning]
 - [x] [Tooltips]
 - [x] [Chinese search support]
@@ -299,9 +300,11 @@ are released for general availability.
 
 #### $ 16,000 – Chipotle
 
+- [x] [Additional tags indexes]
 - [ ] [Instant previews]
 - [ ] ... more to be announced
 
+  [Additional tags indexes]: ../setup/setting-up-tags.md#tags-extra-files
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed

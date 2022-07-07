@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.20.0 <small>_ July 7, 2022</small> { id="4.20.0" }
+
+- Added support for additional tags indexes
+- Fixed #4100: Tag icons not shown in tags index
+
 ### 4.19.2 <small>_ July 4, 2022</small> { id="4.19.2" }
 
 - Fixed #4051: Privacy plugin fails if symlinking isn't allowed on Windows

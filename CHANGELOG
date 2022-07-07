@@ -1,3 +1,8 @@
+mkdocs-material-8.3.9+insiders-4.20.0 (2022-07-07)
+
+  * Added support for additional tags indexes
+  * Fixed #4100: Tag icons not shown in tags index
+
 mkdocs-material-8.3.9+insiders-4.19.2 (2022-07-04)
 
   * Fixed #4051: Privacy plugin fails if symlinking isn't allowed on Windows
