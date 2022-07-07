@@ -178,6 +178,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Coda]](https://coda.io){ target=_blank title="Coda" }
 [![Elastic]](https://elastic.co){ target=_blank title="Elastic" }
 [![ConsenSys]](https://consensys.net){ target=_blank title="ConsenSys" }
+[![Hyperledger]](https://www.hyperledger.org){ target=_blank title="Hyperledger Foundation" }
 
 </div>
 
@@ -198,6 +199,7 @@ You can cancel your sponsorship anytime.[^5]
   [Coda]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-coda.png
   [Elastic]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png
   [ConsenSys]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-consensys.png
+  [Hyperledger]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png
 
 <hr />
 
