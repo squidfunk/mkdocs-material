@@ -99,6 +99,7 @@ The following properties are available for each link:
           name: squidfunk on Twitter
     ```
 
+  [icon search]: ../reference/icons-emojis.md#search
   [social support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [social.icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [social.name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.1.5
@@ -116,7 +117,6 @@ copyright: Copyright &copy; 2016 - 2020 Martin Donath
 ```
 
   [Copyright notice support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/footer.html
 
 ### Generator notice
 
