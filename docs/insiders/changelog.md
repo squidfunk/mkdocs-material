@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.20.1 <small>_ July 11, 2022</small> { id="4.20.1" }
+
+- Fixed #4105: Tags plugin fails if `tags_file` is not set (4.20.0 regression)
+
 ### 4.20.0 <small>_ July 7, 2022</small> { id="4.20.0" }
 
 - Added support for additional tags indexes
