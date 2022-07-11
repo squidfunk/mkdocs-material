@@ -46,8 +46,7 @@ See additional configuration options:
 ### Code annotations
 
 [:octicons-tag-24: 8.0.0][Code annotations support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-unlock-24: Feature flag
 
 Code annotations offer a comfortable and friendly way to attach arbitrary
 content to specific sections of code blocks by adding numeric markers in block
@@ -127,8 +126,7 @@ import tensorflow as tf
 
 ### Adding a title
 
-[:octicons-tag-24: 7.3.6][Title support] ·
-:octicons-beaker-24: Experimental
+[:octicons-tag-24: 7.3.6][Title support]
 
 In order to provide additional context, a custom title can be added to a code
 block by using the `title="<custom title>"` option directly after the shortcode,

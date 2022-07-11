@@ -79,6 +79,45 @@ a handful of them, [thanks to our awesome sponsors]!
   [completed funding goals]: #goals-completed
   [thanks to our awesome sponsors]: #how-to-become-a-sponsor
 
+## What's in for me?
+
+The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
+access to 26 additional features__ that you can start using right away, and
+which are currently exclusively available to sponsors:
+
+<div class="mdx-columns" markdown>
+
+- [x] [Additional tags indexes] :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
+- [x] [Document contributors] :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }
+- [x] [Automatic light / dark mode] :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
+- [x] [Content tabs: anchor links]
+- [x] [Navigation pruning]
+- [x] [Tooltips]
+- [x] [Chinese search support]
+- [x] [Tag icons]
+- [x] [Card grids]
+- [x] [Offline plugin]
+- [x] [Privacy plugin]
+- [x] [Table of contents anchor following]
+- [x] [Annotations]
+- [x] [Navigation icons]
+- [x] Sidebars automatically scroll to active item
+- [x] [Code annotations: anchor links]
+- [x] [Code annotations: strip comments]
+- [x] [Dismissable announcement bar]
+- [x] [Was this page helpful?]
+- [x] [Brand new search plugin]
+- [x] [Rich search previews]
+- [x] [Tokenizer with lookahead]
+- [x] [Advanced search highlighting]
+- [x] [Excluding content from search]
+- [x] [Social cards]
+- [x] [Cookie consent]
+
+</div>
+
+New features are added every other week. Be sure to come back.
+
 ## How to become a sponsor
 
 Thanks for your interest in sponsoring! In order to become an eligible sponsor
@@ -135,6 +174,12 @@ You can cancel your sponsorship anytime.[^5]
 [![Elli]](https://www.elli.eco/en/home){ target=_blank title="Elli - A Brand of the Volkswagen Group" }
 [![RStudio]](https://solutions.rstudio.com){ target=_blank title="RStudio" }
 [![n8n]](https://n8n.io){ target=_blank title="n8n" }
+[![Dogado]](https://www.dogado.de){ target=_blank title="Dogado" }
+[![World Wide Technology]](https://wwt.com){ target=_blank title="World Wide Technology" }
+[![Coda]](https://coda.io){ target=_blank title="Coda" }
+[![Elastic]](https://elastic.co){ target=_blank title="Elastic" }
+[![ConsenSys]](https://consensys.net){ target=_blank title="ConsenSys" }
+[![Hyperledger]](https://www.hyperledger.org){ target=_blank title="Hyperledger Foundation" }
 
 </div>
 
@@ -150,6 +195,12 @@ You can cancel your sponsorship anytime.[^5]
   [Elli]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elli.png
   [RStudio]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rstudio.png
   [n8n]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png
+  [Dogado]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-dogado.png
+  [World Wide Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png
+  [Coda]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-coda.png
+  [Elastic]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png
+  [ConsenSys]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-consensys.png
+  [Hyperledger]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png
 
 <hr />
 
@@ -166,41 +217,6 @@ You can cancel your sponsorship anytime.[^5]
 
   [squidfunk's sponsor profile]: https://github.com/sponsors/squidfunk
 
-## What's in for me?
-
-The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to many additional features__ that you can start using right away, and
-which are currently exclusively available to sponsors:
-
-<div class="mdx-columns" markdown>
-
-- [x] [Navigation pruning] :material-alert-decagram:{ title="Added on May 25, 2022" }
-- [x] [Tooltips] :material-alert-decagram:{ title="Added on May 8, 2022" }
-- [x] [Chinese search support] :material-alert-decagram:{ title="Added on May 5, 2022" }
-- [x] [Tag icons]
-- [x] [Card grids]
-- [x] [Offline plugin]
-- [x] [Privacy plugin]
-- [x] [Table of contents anchor following]
-- [x] [Annotations]
-- [x] [Navigation icons]
-- [x] [Code annotations: anchor links]
-- [x] [Code annotations: strip comments]
-- [x] [Dismissable announcement bar]
-- [x] [Was this page helpful?]
-- [x] [Brand new search plugin]
-- [x] [Rich search previews]
-- [x] [Tokenizer with lookahead]
-- [x] [Advanced search highlighting]
-- [x] [Excluding content from search]
-- [x] [Social cards]
-- [x] [Cookie consent]
-- [x] [Linking content tabs]
-- [x] [Boosting pages in search]
-- [x] [Custom admonition icons]
-
-</div>
-
 ## Funding <span class="mdx-sponsorship-total" data-mdx-component="sponsorship-total"></span>
 
 ### Goals
@@ -210,16 +226,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: #00e676" } already available or 
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
-
-#### $ 6,000 – Trinidad Scorpion
-
-- [x] [Boosting pages in search]
-- [x] [Custom admonition icons]
-- [x] [Linking content tabs]
-
-  [Boosting pages in search]: ../setup/setting-up-site-search.md#search-boosting
-  [Custom admonition icons]: ../reference/admonitions.md#admonition-icons
-  [Linking content tabs]: ../reference/content-tabs.md#linked-content-tabs
 
 #### $ 7,000 – Royal Gold
 
@@ -269,7 +275,7 @@ are released for general availability.
 - [x] [Navigation icons]
 - [x] [Navigation pruning]
 - [ ] Navigation status badges
-- [ ] Blog
+- [ ] Blog plugin
 
   [Annotations]: ../reference/annotations.md
   [Chinese search support]: ../blog/2022/chinese-search-support.md
@@ -281,13 +287,24 @@ are released for general availability.
 - [x] [Privacy plugin]
 - [x] [Card grids]
 - [x] [Tooltips]
-- [ ] [Instant previews]
-- [ ] Intelligent color palette (system preference)
-- [ ] Document authors/contributors
+- [x] [Content tabs: anchor links]
+- [x] [Automatic light / dark mode]
+- [x] [Document contributors]
 
   [Privacy plugin]: ../setup/ensuring-data-privacy.md
   [Card grids]: ../reference/grids.md
   [Tooltips]: ../reference/tooltips.md
+  [Content tabs: anchor links]: ../reference/content-tabs.md#anchor-links
+  [Automatic light / dark mode]: ../setup/changing-the-colors.md#automatic-light-dark-mode
+  [Document contributors]: ../setup/adding-a-git-repository.md#document-contributors
+
+#### $ 16,000 – Chipotle
+
+- [x] [Additional tags indexes]
+- [ ] [Instant previews]
+- [ ] ... more to be announced
+
+  [Additional tags indexes]: ../setup/setting-up-tags.md#tags-extra-files
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed
@@ -295,6 +312,16 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 6,000 – Trinidad Scorpion
+
+- [x] [Boosting pages in search]
+- [x] [Custom admonition icons]
+- [x] [Linking content tabs]
+
+  [Boosting pages in search]: ../setup/setting-up-site-search.md#search-boosting
+  [Custom admonition icons]: ../reference/admonitions.md#admonition-icons
+  [Linking content tabs]: ../reference/content-tabs.md#linked-content-tabs
 
 #### $ 5,000 – Aji Panca
 

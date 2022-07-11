@@ -6,6 +6,58 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.20.1 <small>_ July 11, 2022</small> { id="4.20.1" }
+
+- Fixed #4105: Tags plugin fails if `tags_file` is not set (4.20.0 regression)
+
+### 4.20.0 <small>_ July 7, 2022</small> { id="4.20.0" }
+
+- Added support for additional tags indexes
+- Fixed #4100: Tag icons not shown in tags index
+
+### 4.19.2 <small>_ July 4, 2022</small> { id="4.19.2" }
+
+- Fixed #4051: Privacy plugin fails if symlinking isn't allowed on Windows
+
+### 4.19.1 <small>_ June 25, 2022</small> { id="4.19.1" }
+
+- Added `mkdocs-git-committers-plugin` to Dockerfile
+- Added `mkdocs-git-revision-date-localized-plugin` to Dockerfile
+
+### 4.19.0 <small>_ June 24, 2022</small> { id="4.19.0" }
+
+- Added support for document contributors
+- Updated French translations for cookie consent
+
+### 4.18.2 <small>_ June 16, 2022</small> { id="4.18.2" }
+
+- Fixed #4026: Fixed tooltips not mounted for nested navigation links
+
+### 4.18.1 <small>_ June 14, 2022</small> { id="4.18.1" }
+
+- Fixed #3990: Chinese search highlighting not working on non-boundaries
+
+### 4.18.0 <small>_ June 11, 2022</small> { id="4.18.0" }
+
+- Added support for automatic dark/light mode
+- Fixed #4009: Privacy plugin uses invalid paths for file cache on Windows
+
+### 4.17.2 <small>_ June 5, 2022</small> { id="4.17.2" }
+
+- Added support for custom jieba dictionaries (Chinese search)
+
+### 4.17.1 <small>_ June 5, 2022</small> { id="4.17.1" }
+
+- Added support for cookie consent reject button
+- Added support for cookie consent custom button ordering
+- Fixed #3988: Content tab not focused after alternating anchor links
+
+### 4.17.0 <small>_ June 4, 2022</small> { id="4.17.0" }
+
+- Added support for content tabs anchor links (deep linking)
+- Fixed #3975: Detect composition events in search interface (Chinese)
+- Fixed #3980: Search plugin doesn't use title set via front matter
+
 ### 4.16.2 <small>_ May 29, 2022</small> { id="4.16.2" }
 
 - Fixed #3961: Nested sections triggered build error for navigation tabs

@@ -1,3 +1,107 @@
+mkdocs-material-8.3.9+insiders-4.20.1 (2022-07-11)
+
+  * Fixed #4105: Tags plugin fails if tags_file is not set (4.20.0 regression)
+
+mkdocs-material-8.3.9+insiders-4.20.0 (2022-07-07)
+
+  * Added support for additional tags indexes
+  * Fixed #4100: Tag icons not shown in tags index
+
+mkdocs-material-8.3.9+insiders-4.19.2 (2022-07-04)
+
+  * Fixed #4051: Privacy plugin fails if symlinking isn't allowed on Windows
+
+mkdocs-material-8.3.9 (2022-07-04)
+
+  * Updated Taiwanese translations for search
+  * Allow ids for content tabs with special characters (for mkdocstrings)
+  * Fixed #4083: home not clickable when using versioning (8.3.5 regression)
+
+mkdocs-material-8.3.8+insiders-4.19.1 (2022-06-25)
+
+  * Added mkdocs-git-committers-plugin to Dockerfile
+  * Added mkdocs-git-revision-date-localized-plugin to Dockerfile
+
+mkdocs-material-8.3.8+insiders-4.19.0 (2022-06-24)
+
+  * Added support for document contributors
+  * Updated French translations for cookie consent
+
+mkdocs-material-8.3.8 (2022-06-24)
+
+  * Fixed #4053: Limit width of videos to content area
+  * Fixed empty tags in front matter breaking search
+
+mkdocs-material-8.3.7 (2022-06-22)
+
+  * Fixed search being stuck initializing when using tags (8.3.4 regression)
+
+mkdocs-material-8.3.6+insiders-4.18.2 (2022-06-16)
+
+  * Fixed #4026: Fixed tooltips not mounted for nested navigation links
+
+mkdocs-material-8.3.6 (2022-06-16)
+
+  * Fixed #4028: Links not clickable when using versioning (8.3.5 regression)
+
+mkdocs-material-8.3.5+insiders-4.18.1 (2022-06-14)
+
+  * Fixed #3990: Chinese search highlighting not working on non-boundaries
+
+mkdocs-material-8.3.5 (2022-06-14)
+
+  * Fixed #4012: Stay on page not working for alias of active version
+
+mkdocs-material-8.3.4+insiders-4.18.0 (2022-06-11)
+
+  * Added support for automatic dark/light mode
+  * Fixed #4009: Privacy plugin uses invalid paths for file cache on Windows
+
+mkdocs-material-8.3.4 (2022-06-11)
+
+  * Fixed #4004: Tags with multiple words not searchable
+
+mkdocs-material-8.3.3 (2022-06-07)
+
+  * Fixed #4000: Mermaid diagrams too dark in dark mode (8.3.0 regression)
+
+mkdocs-material-8.3.2+insiders-4.17.2 (2022-06-05)
+
+  * Added support for custom jieba dictionaries (Chinese search)
+
+mkdocs-material-8.3.2+insiders-4.17.1 (2022-06-05)
+
+  * Added support for cookie consent reject button
+  * Added support for cookie consent custom button ordering
+  * Fixed #3988: Content tab not focused after alternating anchor links
+
+mkdocs-material-8.3.2 (2022-06-05)
+
+  * Fixed #3987: Custom admonition icons don't work when defining color palette
+
+mkdocs-material-8.3.1+insiders-4.17.0 (2022-06-04)
+
+  * Added support for content tabs anchor links (deep linking)
+  * Fixed #3975: Detect composition events in search interface (Chinese)
+  * Fixed #3980: Search plugin doesn't use title set via front matter
+
+mkdocs-material-8.3.1 (2022-06-04)
+
+  * Bump required Jinja version to 3.0.2
+  * Removed unnecessary conditions in templates
+  * Fixed scroll offset when content tabs are brought into view
+  * Fixed #3977: Content tabs snapping oddly in Firefox
+  * Fixed #3983: Missing condition in footer partial (8.3.0 regression)
+
+mkdocs-material-8.3.0 (2022-06-02)
+
+  * Added support for custom admonition icons
+  * Added support for linking of content tabs
+  * Added support for boosting pages in search
+  * Added support for hiding footer navigation
+  * Added previous/next indicators to content tabs
+  * Improved typeset link colors in light and dark modes
+
 mkdocs-material-8.2.16+insiders-4.16.2 (2022-05-28)
 
   * Fixed #3961: Nested sections triggered build error for navigation tabs

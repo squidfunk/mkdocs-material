@@ -6,6 +6,58 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.3.9 <small>_ July 4, 2022</small> { id="8.3.9" }
+
+- Updated Taiwanese translations for search
+- Allow ids for content tabs with special characters (for mkdocstrings)
+- Fixed #4083: home not clickable when using versioning (8.3.5 regression)
+
+### 8.3.8 <small>_ June 24, 2022</small> { id="8.3.8" }
+
+- Fixed #4053: Limit width of videos to content area
+- Fixed empty tags in front matter breaking search
+
+### 8.3.7 <small>_ June 22, 2022</small> { id="8.3.7" }
+
+- Fixed search being stuck initializing when using tags (8.3.4 regression)
+
+### 8.3.6 <small>_ June 16, 2022</small> { id="8.3.6" }
+
+- Fixed #4028: Links not clickable when using versioning (8.3.5 regression)
+
+### 8.3.5 <small>_ June 14, 2022</small> { id="8.3.5" }
+
+- Fixed #4012: Stay on page not working for alias of active version
+
+### 8.3.4 <small>_ June 11, 2022</small> { id="8.3.4" }
+
+- Fixed #4004: Tags with multiple words not searchable
+
+### 8.3.3 <small>_ June 7, 2022</small> { id="8.3.3" }
+
+- Fixed #4000: Mermaid diagrams too dark in dark mode (8.3.0 regression)
+
+### 8.3.2 <small>_ June 5, 2022</small> { id="8.3.2" }
+
+- Fixed #3987: Custom admonition icons don't work when defining color palette
+
+### 8.3.1 <small>_ June 4, 2022</small> { id="8.3.1" }
+
+- Bump required Jinja version to 3.0.2
+- Removed unnecessary conditions in templates
+- Fixed scroll offset when content tabs are brought into view
+- Fixed #3977: Content tabs snapping oddly in Firefox
+- Fixed #3983: Missing condition in footer partial (8.3.0 regression)
+
+### 8.3.0 <small>_ June 2, 2022</small> { id="8.3.0" }
+
+- Added support for custom admonition icons
+- Added support for linking of content tabs
+- Added support for boosting pages in search
+- Added support for hiding footer navigation
+- Added previous/next indicators to content tabs
+- Improved typeset link colors in light and dark modes
+
 ### 8.2.16 <small>_ May 28, 2022</small> { id="8.2.16" }
 
 - Fixed #3957: Only animate code annotations when visible (save CPU cycles)

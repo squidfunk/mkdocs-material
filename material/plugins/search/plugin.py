@@ -45,5 +45,11 @@ class SearchIndex(BaseIndex):
         entry = self._entries[index]
 
         # Add document tags
-        if "tags" in page.meta:
+        if page.meta.get("tags"):
             entry["tags"] = page.meta["tags"]
+
+        # Add document boost for search
+        if "search" in page.meta:
+            search = page.meta["search"]
+            if "boost" in search:
+                entry["boost"] = search["boost"]

@@ -40,9 +40,9 @@
               ],
               "default": "bundle"
             },
-            "externals_directory": {
+            "externals_dir": {
               "title": "External assets download directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#externals-directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#externals-dir",
               "type": "string",
               "default": "assets/externals"
             },

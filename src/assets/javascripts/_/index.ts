@@ -31,6 +31,7 @@ import { getElement, getLocation } from "~/browser"
  */
 export type Flag =
   | "content.code.annotate"            /* Code annotations */
+  | "content.tabs.link"                /* Link content tabs */
   | "header.autohide"                  /* Hide header */
   | "navigation.expand"                /* Automatic expansion */
   | "navigation.indexes"               /* Section pages */

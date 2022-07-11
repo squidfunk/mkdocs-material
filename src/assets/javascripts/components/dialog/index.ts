@@ -113,11 +113,8 @@ export function mountDialog(
   return defer(() => {
     const push$ = new Subject<Dialog>()
     push$.subscribe(({ message, active }) => {
+      el.classList.toggle("md-dialog--active", active)
       inner.textContent = message
-      if (active)
-        el.setAttribute("data-md-state", "open")
-      else
-        el.removeAttribute("data-md-state")
     })
 
     /* Create and return component */

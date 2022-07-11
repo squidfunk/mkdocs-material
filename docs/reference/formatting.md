@@ -104,7 +104,7 @@ syntax, which is more convenient that directly using the corresponding
 ### Sub- and superscripts
 
 When [Caret & Tilde][Caret, Mark & Tilde] are enabled, text can be sub- and 
-superscripted with a simple syntax, which is more convenient that directly
+superscripted with a simple syntax, which is more convenient than directly
 using the corresponding [`sub`][sub] and [`sup`][sup] HTML tags:
 
 ``` markdown title="Text with sub- und superscripts"

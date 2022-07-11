@@ -142,13 +142,7 @@
           ]
         }
       },
-      "additionalProperties": false,
-      "defaultSnippets": [
-        {
-          "label": "permalink",
-          "body": "permalink: true"
-        }
-      ]
+      "additionalProperties": false
     }
   }
 }

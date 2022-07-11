@@ -40,7 +40,7 @@ extra:
       </div>
     </div>
 
-The following properties must be set for each link:
+The following properties are available for each link:
 
 `icon`{ #social-icon }
 
@@ -99,6 +99,7 @@ The following properties must be set for each link:
           name: squidfunk on Twitter
     ```
 
+  [icon search]: ../reference/icons-emojis.md#search
   [social support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [social.icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [social.name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.1.5
@@ -116,7 +117,6 @@ copyright: Copyright &copy; 2016 - 2020 Martin Donath
 ```
 
   [Copyright notice support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/footer.html
 
 ### Generator notice
 
@@ -148,6 +148,26 @@ extra:
   [Generator notice support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [Insiders]: ../insiders/index.md
 
+## Usage
+
+### Hiding prev/next links
+
+When [Metadata] is enabled, the footer navigation showing links to the previous
+and next page can be hidden by adding the following lines to the front matter of
+a page:
+
+``` sh
+---
+hide:
+  - footer
+---
+
+# Document title
+...
+```
+
+[Metadata]: extensions/python-markdown.md#metadata
+
 ## Customization
 
 ### Custom copyright
@@ -156,19 +176,11 @@ extra:
 :octicons-file-symlink-file-24: Customization
 
 In order to customize and override the [copyright notice], [extend the theme]
-and [override the `copyright` block][overriding blocks], which is normally set
-to the `copyright` property set in `mkdocs.yml`:
-
-``` html
-{% extends "base.html" %}
-
-{% block copyright %}
-  <!-- Add copyright here, including arbitrary HTML -->
-{% endblock %}
-```
+and [override the `copyright` partial][overriding partials], which normally
+includes the `copyright` property set in `mkdocs.yml`.
 
   [Custom copyright support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [copyright notice]: #copyright-notice
   [generator notice]: #generator-notice
   [extend the theme]: ../customization.md#extending-the-theme
-  [overriding blocks]: ../customization.md#overriding-blocks
+  [overriding partials]: ../customization.md#overriding-partials

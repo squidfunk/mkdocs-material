@@ -387,7 +387,7 @@
       "pattern": "\\.(ico|png|svg|jpe?g)$",
       "defaultSnippets": [
         {
-          "body": "${1}.png"
+          "body": "${1:path/to/file}.png"
         }
       ]
     },
@@ -397,7 +397,7 @@
       "pattern": "\\.(png|svg|jpe?g)$",
       "defaultSnippets": [
         {
-          "body": "${1}.png"
+          "body": "${1:path/to/file}.png"
         }
       ]
     },

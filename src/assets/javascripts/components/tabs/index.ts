@@ -120,15 +120,12 @@ export function mountTabs(
 
       /* Handle emission */
       next({ hidden }) {
-        if (hidden)
-          el.setAttribute("data-md-state", "hidden")
-        else
-          el.removeAttribute("data-md-state")
+        el.hidden = hidden
       },
 
       /* Handle complete */
       complete() {
-        el.removeAttribute("data-md-state")
+        el.hidden = false
       }
     })
 

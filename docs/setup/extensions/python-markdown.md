@@ -168,7 +168,7 @@ No configuration options are available. See reference for usage:
 - [Setting the page icon]
 - [Setting the page template]
 - [Adding tags]
-- [Hiding the tags]
+- [Hiding tags on a page]
 - [Hiding the sidebars]
 - [Hiding the feedback widget]
 
@@ -179,7 +179,7 @@ No configuration options are available. See reference for usage:
   [Setting the page icon]: ../../reference/index.md#setting-the-page-icon
   [Setting the page template]: ../../reference/index.md#setting-the-page-template
   [Adding tags]: ../../setup/setting-up-tags.md#adding-tags
-  [Hiding the tags]: ../../setup/setting-up-tags.md#hiding-the-tags
+  [Hiding tags on a page]: ../../setup/setting-up-tags.md#hiding-tags-on-a-page
   [Hiding the sidebars]: ../../setup/setting-up-navigation.md#hiding-the-sidebars
   [Hiding the feedback widget]: ../../setup/setting-up-site-analytics.md#hiding-the-feedback-widget
 

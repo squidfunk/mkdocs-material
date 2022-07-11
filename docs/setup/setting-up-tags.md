@@ -48,7 +48,46 @@ The following configuration options are available:
     of `mkdocs.yml`. Note, however, that this options is not required – only use
     it if you want a tags index page.
 
+`tags_extra_files`{ #tags-extra-files } :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
+
+:   [:octicons-tag-24: insiders-4.20.0][Insiders] · :octicons-milestone-24: 
+    Default: _none_ – This option allows to define additional pages to render
+    subsets of the [tags index], in order to provide scoped tags indexes for
+    specific sections:
+
+    ``` yaml
+    plugins:
+      - tags:
+          tags_extra_files:
+            compatibility.md:
+              - compat #(1)!
+            web.md:
+              - html
+              - js
+              - css
+    ```
+
+    1.  Each page can be assigned a list of [tag identifiers], which must be
+        defined as part of `extra.tags` in `mkdocs.yml`:
+
+        ``` yaml
+        extra:
+          tags:
+            Compatibility: compat
+            HTML5: html
+            JavaScript: js
+            CSS: css
+        ```
+
+        In this example, all pages with the tag `Compatibility` will be included 
+        in the additional tags index on `compatibility.md`, all pages defining
+        at least one of the tags `HTML5`, `JavaScript` or `CSS` will be included
+        in the additional tags index on `web.md`.
+
+    See #3864 for additional use cases.
+
   [tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
+  [tag identifiers]: #tag-icons
 
 ### Tag icons
 

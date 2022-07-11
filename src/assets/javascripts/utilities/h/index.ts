@@ -100,11 +100,16 @@ export function h<T extends h.JSX.Element>(
 
   /* Set attributes, if any */
   if (attributes)
-    for (const attr of Object.keys(attributes))
+    for (const attr of Object.keys(attributes)) {
+      if (typeof attributes[attr] === "undefined")
+        continue
+
+      /* Set default attribute or boolean */
       if (typeof attributes[attr] !== "boolean")
         el.setAttribute(attr, attributes[attr])
-      else if (attributes[attr])
+      else
         el.setAttribute(attr, "")
+    }
 
   /* Append child nodes */
   for (const child of children)

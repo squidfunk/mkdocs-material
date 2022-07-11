@@ -31,10 +31,33 @@ See additional configuration options:
   [SuperFences]: ../setup/extensions/python-markdown-extensions.md#superfences
   [Tabbed]: ../setup/extensions/python-markdown-extensions.md#tabbed
 
-### Linked content tabs
+### Anchor links
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.9.0][Insiders] ·
+[:octicons-tag-24: insiders-4.17.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+In order to link to content tabs and share them more easily, [Insiders] adds
+an anchor link to each content tab automatically, which you can copy via right
+click or open in a new tab:
+
+=== "Open me in a new tab ..."
+
+=== "... or me ..."
+
+=== "... or even me"
+
+You can copy the link of the tab and create a link on the same or any other
+page. For example, you can [jump to the third tab above this paragraph][tab_1]
+or to the [publishing guide for Insiders][tab_2].
+
+  [Insiders]: ../insiders/index.md
+  [tab_1]: #__tabbed_1_3
+  [tab_2]: ../publishing-your-site.md#__tabbed_1_2
+
+### Linked content tabs
+
+[:octicons-tag-24: 8.3.0][link support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -61,7 +84,7 @@ integrated with [instant loading] and persisted across page loads.
 
     [![content.tabs.link disabled]][content.tabs.link disabled]
 
-  [Insiders]: ../insiders/index.md
+  [link support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [content.tabs.link enabled]: ../assets/screenshots/content-tabs-link.png
   [content.tabs.link disabled]: ../assets/screenshots/content-tabs.png

@@ -55,7 +55,7 @@ Check out the versioning example to see it in action –
     to particularly notable versions. This makes it easy to make permalinks to
     whatever version of the documentation you want to direct people to.
 
-  [version support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.2.0
+  [version support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
   [Version selector preview]: ../assets/screenshots/versioning.png
   [version example]: https://squidfunk.github.io/mkdocs-material-example-versioning/
   [Why use mike?]: https://github.com/jimporter/mike#why-use-mike

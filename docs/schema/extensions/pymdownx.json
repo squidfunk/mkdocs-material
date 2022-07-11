@@ -299,35 +299,46 @@
       ]
     },
     {
-      "type": "object",
-      "properties": {
-        "pymdownx.magiclink": {
+      "oneOf": [
+        {
           "title": "MagicLink – Python Markdown Extensions",
           "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/",
+          "enum": [
+            "pymdownx.magiclink"
+          ]
+        },
+        {
           "type": "object",
           "properties": {
-            "user": {
-              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
-              "type": "string"
-            },
-            "repo": {
-              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
-              "type": "string"
-            },
-            "repo_url_shorthand": {
-              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
-              "type": "boolean",
-              "default": true
+            "pymdownx.magiclink": {
+              "title": "MagicLink – Python Markdown Extensions",
+              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/",
+              "type": "object",
+              "properties": {
+                "user": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+                  "type": "string"
+                },
+                "repo": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+                  "type": "string"
+                },
+                "repo_url_shorthand": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+                  "type": "boolean",
+                  "default": true
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "user",
+                "repo"
+              ]
             }
           },
-          "additionalProperties": false,
-          "required": [
-            "user",
-            "repo"
-          ]
+          "additionalProperties": false
         }
-      },
-      "additionalProperties": false
+      ]
     },
     {
       "oneOf": [

@@ -102,7 +102,7 @@ The following configuration options are available:
           cards_font: Roboto
     ```
 
-`cards_directory`{ #cards-directory }
+`cards_dir`{ #cards-dir }
 
 :   :octicons-milestone-24: Default: `assets/images/social` – This option
     specifies where the generated social card images will be written to. It's
@@ -111,7 +111,7 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - social:
-          cards_directory: assets/images/social
+          cards_dir: assets/images/social
     ```
 
   [Insiders]: ../insiders/index.md

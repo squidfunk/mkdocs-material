@@ -529,6 +529,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    // Hack: omit accidental text selection on fast toggle of more button
+    user-select: none;
   }
 
   // Search result item

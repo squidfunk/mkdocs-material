@@ -33,11 +33,12 @@ number of Chinese users.__
 ---
 
 After the United States and Germany, the third-largest country of origin of
-Material for MkDocs users is China. For a long time, the built-in search plugin
+Material for MkDocs users is China. For a long time, the [built-in search plugin]
 didn't allow for proper segmentation of Chinese characters, mainly due to 
-missing support in [lunr-languages] which is used for search tokenization and 
-stemming. The latest Insiders release adds long-awaited Chinese language support 
-for the built-in search plugin, something that has been requested by many users.
+missing support in [`lunr-languages`][lunr-languages] which is used for search 
+tokenization and stemming. The latest Insiders release adds long-awaited Chinese 
+language support for the built-in search plugin, something that has been
+requested by many users.
 
   [:octicons-arrow-right-24: Continue reading][Chinese search support – 中文搜索​支持]
 

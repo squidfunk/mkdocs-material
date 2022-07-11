@@ -143,19 +143,5 @@
       "$ref": "schema/nav.json"
     }
   },
-  "additionalProperties": false,
-  "defaultSnippets": [
-    {
-      "label": "site_author",
-      "body": "${1:Jane Doe}"
-    },
-    {
-      "label": "repo_url",
-      "body": "repo_url: https://github.com/${1:user}/${2:repo}"
-    },
-    {
-      "label": "copyright",
-      "body": "copyright: Copyright &copy; 2022 ${1:Jane Doe}"
-    }
-  ]
+  "additionalProperties": false
 }

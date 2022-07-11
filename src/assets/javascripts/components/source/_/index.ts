@@ -113,7 +113,7 @@ export function mountSource(
     const push$ = new Subject<Source>()
     push$.subscribe(({ facts }) => {
       inner.appendChild(renderSourceFacts(facts))
-      inner.setAttribute("data-md-state", "done")
+      inner.classList.add("md-source__repository--active")
     })
 
     /* Create and return component */

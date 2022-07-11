@@ -56,6 +56,7 @@ export interface SearchIndexDocument {
   title: string                        /* Document title */
   text: string                         /* Document text */
   tags?: string[]                      /* Document tags */
+  boost?: number                       /* Document boost */
 }
 
 /* ------------------------------------------------------------------------- */
@@ -203,11 +204,17 @@ export class Search {
       /* Set up fields */
       this.field("title", { boost: 1e3 })
       this.field("text")
-      this.field("tags", { boost: 1e6 })
+      this.field("tags", { boost: 1e6, extractor: doc => {
+        const { tags = [] } = doc as SearchDocument
+        return tags.reduce((list, tag) => [
+          ...list,
+          ...lunr.tokenizer(tag)
+        ], [] as lunr.Token[])
+      } })
 
       /* Index documents */
       for (const doc of docs)
-        this.add(doc)
+        this.add(doc, { boost: doc.boost })
     })
   }
 

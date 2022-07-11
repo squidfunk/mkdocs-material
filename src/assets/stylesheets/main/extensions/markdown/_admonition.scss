@@ -152,6 +152,7 @@ $admonitions: (
 // Rules: flavours
 // ----------------------------------------------------------------------------
 
+// Define admonition flavors
 @each $names, $props in $admonitions {
   $name: list.nth($names, 1);
   $tint: list.nth($props, 2);

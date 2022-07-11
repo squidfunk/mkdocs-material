@@ -13,7 +13,7 @@
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 {{ page.content }}
-{% if page and page.meta and (
+{% if page.meta and (
   page.meta.git_revision_date_localized or
   page.meta.revision_date
 ) %}

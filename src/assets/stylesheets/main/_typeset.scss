@@ -391,11 +391,16 @@ kbd {
     margin-inline-start: px2em(30px);
   }
 
-  // Image or icon
+  // Image or video
   img,
-  svg {
+  svg,
+  video {
     max-width: 100%;
     height: auto;
+  }
+
+  // Image
+  img {
 
     // Adjust spacing when left-aligned
     &[align="left"] {
@@ -413,12 +418,12 @@ kbd {
     &[align]:only-child {
       margin-top: 0;
     }
-  }
 
-  // Hide images for dark mode
-  img[src$="#only-dark"],
-  img[src$="#gh-dark-mode-only"] {
-    display: none;
+    // Hide images for dark mode
+    &[src$="#only-dark"],
+    &[src$="#gh-dark-mode-only"] {
+      display: none;
+    }
   }
 
   // Figure

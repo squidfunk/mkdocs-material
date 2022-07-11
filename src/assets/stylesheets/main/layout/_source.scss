@@ -122,7 +122,7 @@
     opacity: 0.75;
 
     // Show after the data was loaded
-    [data-md-state="done"] & {
+    .md-source__repository--active & {
       animation: facts 250ms ease-in;
     }
   }
@@ -132,7 +132,7 @@
     display: inline-block;
 
     // Show after the data was loaded
-    [data-md-state="done"] & {
+    .md-source__repository--active & {
       animation: fact 400ms ease-out;
     }
 

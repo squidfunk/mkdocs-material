@@ -25,6 +25,20 @@
               "title": "Grouping mode",
               "type": "string",
               "default": "path"
+            },
+            "tags_extra_files": {
+              "title": "Markdown files to render additional tags indexes",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tags-extra-files",
+              "type": "object",
+              "patternProperties": {
+                "\\.md$": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false

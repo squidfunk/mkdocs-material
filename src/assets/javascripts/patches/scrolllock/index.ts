@@ -76,11 +76,11 @@ export function patchScrolllock(
     )
       .subscribe(([active, { offset: { y }}]) => {
         if (active) {
-          document.body.setAttribute("data-md-state", "lock")
+          document.body.setAttribute("data-md-scrolllock", "")
           document.body.style.top = `-${y}px`
         } else {
           const value = -1 * parseInt(document.body.style.top, 10)
-          document.body.removeAttribute("data-md-state")
+          document.body.removeAttribute("data-md-scrolllock")
           document.body.style.top = ""
           if (value)
             window.scrollTo(0, value)

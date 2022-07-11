@@ -27,7 +27,6 @@ from markdown.extensions.toc import slugify
 from mkdocs import utils
 from mkdocs.commands.build import DuplicateFilter
 from mkdocs.config.config_options import Type
-from mkdocs.exceptions import ConfigurationError
 from mkdocs.plugins import BasePlugin
 
 # -----------------------------------------------------------------------------

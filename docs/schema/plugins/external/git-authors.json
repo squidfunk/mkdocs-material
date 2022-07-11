@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Git authors plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://timvink.github.io/mkdocs-git-authors-plugin/",
+      "enum": [
+        "git-authors"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "git-authors": {
+          "markdownDescription": "https://timvink.github.io/mkdocs-git-authors-plugin/options.html",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-authors-plugin/options.html#enabled",
+              "type": "boolean",
+              "default": true
+            },
+            "exclude": {
+              "title": "List of Markdown file patterns",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-authors-plugin/options.html#exclude",
+              "type": "array",
+              "items": {
+                "pattern": "(\\*|\\.md)$"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}
