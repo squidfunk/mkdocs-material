@@ -96,7 +96,7 @@
     }
 
     // Adjust spacing if icon is present
-    + .md-source__repository {
+    +.md-source__repository {
       margin-inline-start: px2rem(-40px);
       padding-inline-start: px2rem(40px);
     }
@@ -114,6 +114,9 @@
 
   // Repository facts
   &__facts {
+    display: flex;
+    gap: px2rem(8px);
+    width: 100%;
     margin: px2rem(2px) 0 0;
     padding: 0;
     overflow: hidden;
@@ -129,7 +132,8 @@
 
   // Repository fact
   &__fact {
-    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     // Show after the data was loaded
     .md-source__repository--active & {
@@ -149,9 +153,9 @@
       content: "";
     }
 
-    // Adjust spacing for repository fact icon
-    &:nth-child(1n+2)::before {
-      margin-inline-start: px2rem(8px);
+    // Adjust spacing for 2nd+ fact
+    &:nth-child(1n+2) {
+      flex-shrink: 0;
     }
 
     // Repository fact: version
