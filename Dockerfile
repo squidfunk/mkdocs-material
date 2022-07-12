@@ -75,6 +75,9 @@ RUN \
     -path "*/__pycache__/*" \
     -exec rm -f {} \;
 
+# Trust git directory, required for git >= 2.35.2
+RUN git config --global --add safe.directory /docs
+
 # Set working directory
 WORKDIR /docs
 
