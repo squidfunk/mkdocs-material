@@ -405,20 +405,19 @@ can be used by all users.
 
 ### Compatibility
 
-_We're running an open source project and want to make sure that users can
-change and build the documentation without having access to Insiders. Is this
+_We're running an open source project and want to allow outside collaborators
+to run and build our documentation without having access to Insiders. Is this
 still possible?_
 
 Yes. Insiders is compatible with Material for MkDocs. Almost all new features
-are implemented behind feature flags; almost all configuration changes are 
-backward-compatible. This means that developers will be able to build the
-documentation locally with Material for MkDocs and when they push their changes,
-it can be built with Insiders (e.g. as part of GitHub Actions).
+and configuration options are either backward-compatible or implemented behind
+feature flags. This means that developers are able to build the documentation
+locally with Material for MkDocs and when they push their changes, it can be
+built with Insiders (e.g. as part of GitHub Actions).
 
-When using built-in plugins that are solely available via Insiders, it might be 
-necessary to split the `mkdocs.yml` configuration into a base configuration, and
-one with plugin overrides. Note that this is a limitation of MkDocs, which can
-be mitigated by using [configuration inheritance].
+When using built-in plugins that are exclusive to Insiders, it's recommended
+to split configuration into a base `mkdocs.yml` and one with plugin overrides
+via [configuration inheritance].
 
 See the [getting started guide] for more information.
 
