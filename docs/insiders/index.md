@@ -405,19 +405,28 @@ can be used by all users.
 
 ### Compatibility
 
-_We're running an open source project and want to allow outside collaborators
-to run and build our documentation without having access to Insiders. Is this
-still possible?_
+_We're building an open source project and want to allow outside collaborators
+to run and build our documentation locally without having access to Insiders.
+Is this still possible?_
 
 Yes. Insiders is compatible with Material for MkDocs. Almost all new features
 and configuration options are either backward-compatible or implemented behind
-feature flags. This means that developers are able to build the documentation
-locally with Material for MkDocs and when they push their changes, it can be
-built with Insiders (e.g. as part of GitHub Actions).
+feature flags. When working with outside collaborators, it should be rarely
+necessary to change the general appearance of your site. Most Insiders features
+enhance the overall experience, e.g. by adding icons to pages or providing a
+feedback widget. While this features add value for the user of your site, they
+shouldn't be necessary for previewing when making changes to content. Currently,
+the only content-related features in Insiders that can't be properly previewed
+by non-Insiders users are:
 
-When using built-in plugins that are exclusive to Insiders, it's recommended
-to split configuration into a base `mkdocs.yml` and one with plugin overrides
-via [configuration inheritance].
+- [Annotations]
+- [Card grids]
+
+This means that outside collaborators are able to build the documentation
+locally with Material for MkDocs and when they push their changes, your CI
+pipeline will build it with Insiders. When using built-in plugins that are
+exclusive to Insiders, it's recommended to split configuration into a base
+`mkdocs.yml` and one with plugin overrides via [configuration inheritance].
 
 See the [getting started guide] for more information.
 
@@ -445,8 +454,8 @@ Material for MkDocs?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license]. However, we kindly ask you to respect the following
-guidelines:
+by the [MIT license]. However, we kindly ask you to respect our
+__fair use policy__:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
   it for public, private or commercial projects, privately fork or mirror it,
