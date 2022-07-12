@@ -24,7 +24,8 @@
                 "datetime",
                 "iso_date",
                 "iso_datetime",
-                "timeago"
+                "timeago",
+                "custom"
               ],
               "default": "date"
             },
@@ -33,6 +34,11 @@
               "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/#timezone",
               "type": "string"
             },
+            "custom_format": {
+              "title": "Custom format",
+              "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options#custom_format",
+              "type": "string"
+            },            
             "locale": {
               "title": "Date locale",
               "markdownDescription": "https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/#locale",
