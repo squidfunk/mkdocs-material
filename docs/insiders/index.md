@@ -180,6 +180,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Elastic]](https://elastic.co){ target=_blank title="Elastic" }
 [![ConsenSys]](https://consensys.net){ target=_blank title="ConsenSys" }
 [![Hyperledger]](https://www.hyperledger.org){ target=_blank title="Hyperledger Foundation" }
+[![IP Fabric]](https://ipfabric.io/){ target=_blank title="IP Fabric" }
 
 </div>
 
@@ -201,6 +202,7 @@ You can cancel your sponsorship anytime.[^5]
   [Elastic]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png
   [ConsenSys]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-consensys.png
   [Hyperledger]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png
+  [IP Fabric]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png
 
 <hr />
 
