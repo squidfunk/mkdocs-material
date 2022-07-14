@@ -25,7 +25,7 @@ the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - tags
+  - material-tags
 ```
 
 The following configuration options are available:
@@ -40,7 +40,7 @@ The following configuration options are available:
 
     ``` yaml
     plugins:
-      - tags:
+      - material-tags:
           tags_file: tags.md
     ```
 
@@ -57,7 +57,7 @@ The following configuration options are available:
 
     ``` yaml
     plugins:
-      - tags:
+      - material-tags:
           tags_extra_files:
             compatibility.md:
               - compat #(1)!
@@ -240,7 +240,7 @@ desirable to hide them for a specific page, which can be achieved by using the
 ``` sh
 ---
 hide:
-  - tags
+  - material-tags
 ---
 
 # Document title

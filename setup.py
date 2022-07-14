@@ -71,7 +71,7 @@ setup(
         ],
         "mkdocs.plugins": [
             "search = material.plugins.search.plugin:SearchPlugin",
-            "tags = material.plugins.tags.plugin:TagsPlugin"
+            "material-tags = material.plugins.tags.plugin:TagsPlugin"
         ]
     },
     zip_safe = False

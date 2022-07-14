@@ -169,7 +169,7 @@ be mitigated by using [configuration inheritance]:
     plugins:
       - search
       - social
-      - tags
+      - material-tags
     ```
 
 === ":octicons-file-code-16: mkdocs.yml"
