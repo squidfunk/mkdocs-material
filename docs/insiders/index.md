@@ -181,6 +181,7 @@ You can cancel your sponsorship anytime.[^5]
 [![ConsenSys]](https://consensys.net){ target=_blank title="ConsenSys" }
 [![Hyperledger]](https://www.hyperledger.org){ target=_blank title="Hyperledger Foundation" }
 [![IP Fabric]](https://ipfabric.io/){ target=_blank title="IP Fabric" }
+[![Apex.AI]](https://www.apex.ai/){ target=_blank title="Apex.AI" }
 
 </div>
 
@@ -203,6 +204,7 @@ You can cancel your sponsorship anytime.[^5]
   [ConsenSys]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-consensys.png
   [Hyperledger]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png
   [IP Fabric]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png
+  [Apex.AI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png
 
 <hr />
 
