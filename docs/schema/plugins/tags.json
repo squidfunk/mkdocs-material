@@ -3,7 +3,7 @@
   "title": "Built-in tags plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#built-in-tags-plugin",
       "enum": [
         "tags"
       ]
@@ -12,7 +12,7 @@
       "type": "object",
       "properties": {
         "tags": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#built-in-tags-plugin",
           "type": "object",
           "properties": {
             "tags_file": {

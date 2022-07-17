@@ -3,7 +3,7 @@
   "title": "Built-in search plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#built-in-search-plugin",
       "enum": [
         "search"
       ]
@@ -12,7 +12,7 @@
       "type": "object",
       "properties": {
         "search": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#built-in-search-plugin",
           "type": "object",
           "properties": {
             "lang": {

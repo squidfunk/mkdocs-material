@@ -23,6 +23,9 @@
       "description": "Built-in plugins",
       "oneOf": [
         {
+          "$ref": "plugins/meta.json"
+        },
+        {
           "$ref": "plugins/offline.json"
         },
         {

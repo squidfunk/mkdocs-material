@@ -3,7 +3,7 @@
   "title": "Built-in social plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#built-in-social-plugin",
       "enum": [
         "social"
       ]
@@ -12,7 +12,7 @@
       "type": "object",
       "properties": {
         "social": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#built-in-social-plugin",
           "type": "object",
           "properties": {
             "cards": {

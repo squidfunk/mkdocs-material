@@ -3,7 +3,7 @@
   "title": "Built-in privacy plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#built-in-privacy-plugin",
       "enum": [
         "privacy"
       ]
@@ -12,7 +12,7 @@
       "type": "object",
       "properties": {
         "privacy": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#built-in-privacy-plugin",
           "type": "object",
           "properties": {
             "enabled": {
