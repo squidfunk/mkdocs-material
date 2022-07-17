@@ -152,3 +152,18 @@ hash fragment to the image URL:
   [color palette toggle]: ../setup/changing-the-colors.md#color-palette-toggle
   [Zelda light world]: ../assets/images/zelda-light-world.png#only-light
   [Zelda dark world]: ../assets/images/zelda-dark-world.png#only-dark
+
+## Lightbox
+
+The [mkdocs-glightbox](https://github.com/blueswen/mkdocs-glightbox) plugin supports adding the lightbox(zoom) effect on all image in each page with [GLightbox](https://github.com/biati-digital/glightbox). As always, it can be installed with pip:
+
+```bash
+pip install mkdocs-glightbox
+```
+
+Then, add the following lines to mkdocs.yml:
+
+```mk
+plugins:
+  - glightbox
+```
