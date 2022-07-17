@@ -60,7 +60,7 @@ The following configuration options are available:
       - tags:
           tags_extra_files:
             compatibility.md:
-              - compat #(1)!
+              - compat # (1)!
             web.md:
               - html
               - js
@@ -185,28 +185,30 @@ tags:
   - HTML5
   - JavaScript
   - CSS
-  - Other
 ---
 
 ...
 ```
 
 The page will now render with those tags above the main headline and within the
-search preview, which now allows to __find pages by tags__, as shown in the
-following screenshots:
+search preview, which now allows to __find pages by tags__.
 
-=== "Tags"
+??? question "How to set tags for an entire folder?"
 
-    [![Tags preview]][Tags preview]
+    With the help of the [built-in meta plugin], you can ensure that tags are
+    set for an entire section and all nested pages, by creating a `.meta.yml`
+    in the corresponding folder with the following content:
 
-=== "Tag search"
-
-    [![Tag search preview]][Tag search preview]
+    ``` yaml
+    tags:
+      - HTML5
+      - JavaScript
+      - CSS
+    ```
 
   [built-in tags plugin]: #built-in-tags-plugin
   [Metadata]: extensions/python-markdown.md#metadata
-  [Tags preview]: ../assets/screenshots/tags.png
-  [Tag search preview]: ../assets/screenshots/tags-search.png
+  [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
 
 ### Adding a tags index
 

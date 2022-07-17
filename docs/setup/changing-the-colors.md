@@ -268,7 +268,7 @@ default color palette.
 
   [palette.media support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
 
-#### Automatic light / dark mode :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
+#### Automatic light / dark mode
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.18.0][Insiders] ·
@@ -291,7 +291,7 @@ theme:
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: default #(1)!
+      scheme: default # (1)!
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode

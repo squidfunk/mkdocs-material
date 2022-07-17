@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.21.0 <small>_ July 17, 2022</small> { id="4.21.0" }
+
+- Added meta plugin: set front matter for all pages in a folder
+- Fixed #4114: Tags plugin fails if only `tags_extra_files` is set
+
 ### 4.20.1 <small>_ July 11, 2022</small> { id="4.20.1" }
 
 - Fixed #4105: Tags plugin fails if `tags_file` is not set (4.20.0 regression)
