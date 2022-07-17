@@ -6,10 +6,9 @@ template: overrides/main.html
 
 The footer of your project documentation is a great place to add links to
 websites or platforms you or your company are using as additional marketing 
-channels, e.g. :fontawesome-brands-medium:{ style="color: #00AB6C" },
-:fontawesome-brands-twitter:{ style="color: #1DA1F2" } or
-:fontawesome-brands-facebook:{ style="color: #4267B2" }, which can be
-configured via `mkdocs.yml`.
+channels, e.g. :fontawesome-brands-twitter:{ style="color: #1DA1F2" } or
+:fontawesome-brands-youtube:{ style="color: #EE0F0F" }, which you can easily
+configure via `mkdocs.yml`.
 
 ## Configuration
 
@@ -51,6 +50,7 @@ The following properties are available for each link:
 
     * :fontawesome-brands-behance: – `fontawesome/brands/behance`
     * :fontawesome-brands-docker: – `fontawesome/brands/docker`
+    * :fontawesome-brands-facebook: – `fontawesome/brands/facebook`
     * :fontawesome-brands-github: – `fontawesome/brands/github`
     * :fontawesome-brands-instagram: – `fontawesome/brands/instagram`
     * :fontawesome-brands-linkedin: – `fontawesome/brands/linkedin`
