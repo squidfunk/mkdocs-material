@@ -30,6 +30,33 @@ See additional configuration options:
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html
 
+### Lightbox
+
+[:octicons-tag-24: 0.1.0][glightbox support] ·
+[:octicons-cpu-24: Plugin][glightbox]
+
+If you want to add image zoom functionality to your documentation, the 
+[glightbox] plugin is an excellent choice, as it integrates perfectly
+with Material for MkDocs. Install it with `pip`:
+
+```
+pip install mkdocs-glightbox
+```
+
+Then, add the following lines to `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - glightbox
+```
+
+We recommend checking out the availabe
+[configuration options][glightbox options].
+
+  [glightbox support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [glightbox]: https://github.com/blueswen/mkdocs-glightbox
+  [glightbox options]: https://github.com/blueswen/mkdocs-glightbox#usage
+
 ## Usage
 
 ### Image alignment
@@ -147,23 +174,7 @@ hash fragment to the image URL:
 
 </div>
 
-
   [Light and dark mode support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.1
   [color palette toggle]: ../setup/changing-the-colors.md#color-palette-toggle
   [Zelda light world]: ../assets/images/zelda-light-world.png#only-light
   [Zelda dark world]: ../assets/images/zelda-dark-world.png#only-dark
-
-## Lightbox
-
-The [mkdocs-glightbox](https://github.com/blueswen/mkdocs-glightbox) plugin supports adding the lightbox(zoom) effect on all image in each page with [GLightbox](https://github.com/biati-digital/glightbox). As always, it can be installed with pip:
-
-```bash
-pip install mkdocs-glightbox
-```
-
-Then, add the following lines to mkdocs.yml:
-
-```mk
-plugins:
-  - glightbox
-```
