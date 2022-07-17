@@ -86,7 +86,7 @@
       "items": {
         "title": "Path to CSS file",
         "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-css",
-        "pattern": "\\.css$"
+        "pattern": "\\.css($|\\?)"
       },
       "uniqueItems": true,
       "minItems": 1
@@ -98,7 +98,7 @@
       "items": {
         "title": "Path to JavaScript file",
         "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-javascript",
-        "pattern": "\\.js$"
+        "pattern": "\\.js($|\\?)"
       },
       "uniqueItems": true,
       "minItems": 1
