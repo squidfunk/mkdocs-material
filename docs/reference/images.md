@@ -50,7 +50,7 @@ plugins:
   - glightbox
 ```
 
-We recommend checking out the availabe
+We recommend checking out the available
 [configuration options][glightbox options].
 
   [glightbox support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
