@@ -206,6 +206,11 @@ search preview, which now allows to __find pages by tags__.
       - CSS
     ```
 
+    The tags set in `.meta.yml` are merged and deduplicated with the tags
+    defined for a page, which means you can define common tags in `.meta.yml`
+    and then add specific tags for each page. The tags in `.meta.yml` are
+    appended.
+
   [built-in tags plugin]: #built-in-tags-plugin
   [Metadata]: extensions/python-markdown.md#metadata
   [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
