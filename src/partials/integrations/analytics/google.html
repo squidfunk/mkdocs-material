@@ -27,69 +27,142 @@
 
 <!-- Google Analytics 4 (G-XXXXXXXXXX) -->
 {% if property.startswith("G-") %}
-  <script>
-    window.dataLayer = window.dataLayer || []
-    function gtag() { dataLayer.push(arguments) }
+  <script id="__analytics">
+    function __md_analytics() {
+      window.dataLayer = window.dataLayer || []
+      function gtag() { dataLayer.push(arguments) }
 
-    /* Set up integration and send page view */
-    gtag("js", new Date())
-    gtag("config", "{{ property }}")
+      /* Set up integration and send page view */
+      gtag("js", new Date())
+      gtag("config", "{{ property }}")
 
-    /* Register event handlers after documented loaded */
-    document.addEventListener("DOMContentLoaded", function() {
-      if (document.forms.search) {
-        var query = document.forms.search.query
-        query.addEventListener("blur", function() {
-          if (this.value)
-            gtag("event", "search", { search_term: this.value })
-        })
-      }
+      /* Register event handlers after documented loaded */
+      document.addEventListener("DOMContentLoaded", function() {
 
-      /* Send page view on location change */
-      if (typeof location$ !== "undefined")
-        location$.subscribe(function(url) {
-          gtag("config", "{{ property }}", {
-            page_path: url.pathname
+        /* Set up search tracking */
+        if (document.forms.search) {
+          var query = document.forms.search.query
+          query.addEventListener("blur", function() {
+            if (this.value)
+              gtag("event", "search", { search_term: this.value })
           })
-        })
-    })
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ property }}">
-  </script>
+        }
 
-<!-- Google Analytics (UA-XXXXXXXX-X) -->
-{% elif property.startswith("UA-") %}
-  <script>
-    window.ga = window.ga || function() {
-      (ga.q = ga.q || []).push(arguments)
-    }
-    ga.l = +new Date()
+        /* Set up feedback, i.e. "Was this page helpful?" */
+        if (document.forms.feedback) {
+          var feedback = document.forms.feedback
+          for (var button of feedback.querySelectorAll("[type=submit]")) {
+            button.addEventListener("click", function(ev) {
+              ev.preventDefault()
 
-    /* Set up integration and send page view */
-    ga("create", "{{ property }}", "auto")
-    ga("set", "anonymizeIp", true)
-    ga("send", "pageview")
+              /* Retrieve and send data */
+              var page = document.location.pathname
+              var data = this.getAttribute("data-md-value")
+              gtag("event", "feedback", { page, data })
 
-    /* Register event handlers after documented loaded */
-    document.addEventListener("DOMContentLoaded", function() {
-      if (document.forms.search) {
-        var query = document.forms.search.query
-        query.addEventListener("blur", function() {
-          if (this.value) {
-            var path = document.location.pathname;
-            ga("send", "pageview", path + "?q=" + this.value)
+              /* Disable form and show note, if given */
+              feedback.firstElementChild.disabled = true
+              var note = feedback.querySelector(
+                ".md-feedback__note [data-md-value='" + data + "']"
+              )
+              if (note)
+                note.hidden = false
+            })
+
+            /* Show feedback */
+            feedback.hidden = false
           }
-        })
-      }
+        }
 
-      /* Send page view on location change */
-      if (typeof location$ !== "undefined")
-        location$.subscribe(function(url) {
-          ga("send", "pageview", url.pathname)
-        })
-    })
+        /* Send page view on location change */
+        if (typeof location$ !== "undefined")
+          location$.subscribe(function(url) {
+            gtag("config", "{{ property }}", {
+              page_path: url.pathname
+            })
+          })
+      })
+
+      /* Create script tag */
+      var script = document.createElement("script")
+      script.async = true
+      script.src = "https://www.googletagmanager.com/gtag/js?id={{ property }}"
+
+      /* Inject script tag */
+      var container = document.getElementById("__analytics")
+      container.insertAdjacentElement("afterEnd", script)
+    }
   </script>
-  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+<!-- Universal Analytics (UA-XXXXXXXX-X) -->
+{% elif property.startswith("UA-") %}
+  <script id="__analytics">
+    function __md_analytics() {
+      window.ga = window.ga || function() {
+        (ga.q = ga.q || []).push(arguments)
+      }
+      ga.l = +new Date()
+
+      /* Set up integration and send page view */
+      ga("create", "{{ property }}", "auto")
+      ga("set", "anonymizeIp", true)
+      ga("send", "pageview")
+
+      /* Register event handlers after documented loaded */
+      document.addEventListener("DOMContentLoaded", function() {
+
+        /* Set up search tracking */
+        if (document.forms.search) {
+          var query = document.forms.search.query
+          query.addEventListener("blur", function() {
+            if (this.value) {
+              var page = document.location.pathname;
+              ga("send", "pageview", page + "?q=" + this.value)
+            }
+          })
+        }
+
+        /* Set up feedback, i.e. "Was this page helpful?" */
+        if (document.forms.feedback) {
+          var feedback = document.forms.feedback
+          for (var button of feedback.querySelectorAll("[type=submit]")) {
+            button.addEventListener("click", function(ev) {
+              ev.preventDefault()
+
+              /* Retrieve and send data */
+              var page = document.location.pathname
+              var data = this.getAttribute("data-md-value")
+              ga("send", "event", "feedback", "click", page, data)
+
+              /* Disable form and show note, if given */
+              feedback.firstElementChild.disabled = true
+              var note = feedback.querySelector(
+                ".md-feedback__note [data-md-value='" + data + "']"
+              )
+              if (note)
+                note.hidden = false
+            })
+
+            /* Show feedback */
+            feedback.hidden = false
+          }
+        }
+
+        /* Send page view on location change */
+        if (typeof location$ !== "undefined")
+          location$.subscribe(function(url) {
+            ga("send", "pageview", url.pathname)
+          })
+      })
+
+      /* Create script tag */
+      var script = document.createElement("script")
+      script.async = true
+      script.src = "https://www.google-analytics.com/analytics.js"
+
+      /* Inject script tag */
+      var container = document.getElementById("__analytics")
+      container.insertAdjacentElement("afterEnd", script)
+    }
+  </script>
 {% endif %}
-
-

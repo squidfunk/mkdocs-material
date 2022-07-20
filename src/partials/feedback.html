@@ -1,0 +1,85 @@
+<!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+{% if config.extra.analytics %}
+  {% set feedback = config.extra.analytics.feedback %}
+{% endif %}
+
+<!-- Determine whether to show feedback -->
+{% if page and page.meta and page.meta.hide %}
+  {% if "feedback" in page.meta.hide %}
+    {% set feedback = None %}
+  {% endif %}
+{% endif %}
+
+<!-- Was this page helpful? -->
+{% if feedback %}
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        {{ feedback.title }}
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          {% for rating in feedback.ratings %}
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="{{ rating.name }}"
+              data-md-value="{{ rating.data }}"
+            >
+              {% include ".icons/" ~ rating.icon ~ ".svg" %}
+            </button>
+          {% endfor %}
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          {% for rating in feedback.ratings %}
+            <div data-md-value="{{ rating.data }}" hidden>
+              {% set url = "/" ~ page.url %}
+
+              <!-- Determine title -->
+              {% if page and page.meta and page.meta.title %}
+                {% set title = page.meta.title | urlencode %}
+              {% else %}
+                {% set title = page.title | urlencode %}
+              {% endif %}
+
+              <!-- Legacy, deprecated, removed in next major version -->
+              {% if "{}" in rating.note %}
+                {{ rating.note.format(url, title) }}
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              {% else %}
+                {{ rating.note.format(url = url, title = title) }}
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </fieldset>
+  </form>
+{% endif %}

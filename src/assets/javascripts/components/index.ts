@@ -21,6 +21,8 @@
  */
 
 export * from "./_"
+export * from "./announce"
+export * from "./consent"
 export * from "./content"
 export * from "./dialog"
 export * from "./header"

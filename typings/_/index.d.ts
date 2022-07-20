@@ -52,6 +52,15 @@ declare global {
   const __search: GlobalSearchConfig | undefined
 
   /**
+   * Compute hash from the given string
+   *
+   * @param value - String value
+   *
+   * @returns Hash
+   */
+  function __md_hash(value: string): number
+
+  /**
    * Fetch the value for a key from the given storage
    *
    * This function is defined in `partials/javascripts/base.html`, so it can be

@@ -30,6 +30,7 @@ import { getElement, getLocation } from "~/browser"
  * Feature flag
  */
 export type Flag =
+  | "announce.dismiss"                 /* Dismissable announcement bar */
   | "content.code.annotate"            /* Code annotations */
   | "content.tabs.link"                /* Link content tabs */
   | "header.autohide"                  /* Hide header */

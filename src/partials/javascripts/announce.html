@@ -20,29 +20,12 @@
   IN THE SOFTWARE.
 -->
 
-<!--
-  A collection of functions used from within some partials to allow the usage
-  of state saved in local or session storage, e.g. to model preferences.
--->
+<!-- Announcement bar -->
 <script>
-
-  /* Compute base path once to integrate with instant loading */
-  __md_scope = new URL("{{ config.extra.scope | d(base_url) }}", location)
-
-  /* Compute hash from the given string - see https://bit.ly/3pvPjXG */
-  __md_hash = v => [...v].reduce((h, c) => (h << 5) - h + c.charCodeAt(0), 0)
-
-  /* Fetch the value for a key from the given storage */
-  __md_get = (key, storage = localStorage, scope = __md_scope) => (
-    JSON.parse(storage.getItem(scope.pathname + "." + key))
-  )
-
-  /* Persist a key-value pair in the given storage */
-  __md_set = (key, value, storage = localStorage, scope = __md_scope) => {
-    try {
-      storage.setItem(scope.pathname + "." + key, JSON.stringify(value))
-    } catch (err) {
-      /* Uncritical, just swallow */
-    }
+  var el = document.querySelector("[data-md-component=announce]")
+  if (el) {
+    var content = el.querySelector(".md-typeset")
+    if (__md_hash(content.innerHTML) === __md_get("__announce"))
+      el.hidden = true
   }
 </script>

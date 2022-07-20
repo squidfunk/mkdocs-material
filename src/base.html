@@ -204,8 +204,23 @@
       {% if self.announce() %}
         <aside class="md-banner">
           <div class="md-banner__inner md-grid md-typeset">
+
+            <!-- Button to dismiss announcement -->
+            {% if "announce.dismiss" in features %}
+              <button
+                class="md-banner__button md-icon"
+                aria-label="{{ lang.t('announce.dismiss') }}"
+              >
+                {% include ".icons/material/close.svg" %}
+              </button>
+            {% endif %}
+
+            <!-- Announcement bar content -->
             {% block announce %}{% endblock %}
           </div>
+          {% if "announce.dismiss" in features %}
+            {% include "partials/javascripts/announce.html" %}
+          {% endif %}
         </aside>
       {% endif %}
     </div>
@@ -213,14 +228,14 @@
     <!-- Version warning -->
     {% if config.extra.version %}
       <div data-md-component="outdated" hidden>
-        <aside class="md-banner md-banner--warning">
-          {% if self.outdated() %}
+        {% if self.outdated() %}
+          <aside class="md-banner md-banner--warning">
             <div class="md-banner__inner md-grid md-typeset">
               {% block outdated %}{% endblock %}
             </div>
             {% include "partials/javascripts/outdated.html" %}
-          {% endif %}
-        </aside>
+          </aside>
+        {% endif %}
       </div>
     {% endif %}
 
@@ -327,6 +342,21 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
+
+    <!-- Consent -->
+    {% if config.extra.consent %}
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            {% include "partials/consent.html" %}
+          </form>
+        </aside>
+      </div>
+
+      <!-- User preference: consent -->
+      {% include "partials/javascripts/consent.html" %}
+    {% endif %}
 
     <!-- Theme-related configuration -->
     {% block config %}
