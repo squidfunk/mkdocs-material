@@ -67,6 +67,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
+          # Warning: please don't use this method when installing Insiders from
+          # CI! We have to do it this way in order to allow for overrides on our
+          # own documentation, but you should stick to the method we recommend
+          # in the publishing guide – see https://bit.ly/3zjdJtw
           git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           pip install -e mkdocs-material-insiders
           cp mkdocs-material-insiders/mkdocs.yml mkdocs.yml
