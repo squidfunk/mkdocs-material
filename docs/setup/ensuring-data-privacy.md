@@ -17,9 +17,9 @@ automatically downloaded for [self-hosting].
 
 ### Cookie consent { #native-cookie-consent }
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.10.0][Insiders] ·
-:octicons-milestone-24: Default: _none_
+[:octicons-tag-24: 8.4.0rc1][cookie consent support] ·
+:octicons-milestone-24: Default: _none_ ·
+:octicons-beaker-24: Experimental
 
 Material for MkDocs ships a native and extensible cookie consent form which
 asks the user for consent prior to sending any data via analytics. Add the
@@ -55,12 +55,11 @@ The following properties are available:
 
 `cookies`{ #consent-cookies }
 
-:   [:octicons-tag-24: insiders-4.5.1][Insiders] · :octicons-milestone-24: 
-    Default: _none_ – This property allows to add custom cookies or change the 
-    initial `checked` state and name of the `analytics` cookie. Each cookie must 
-    receive a unique identifier which is used as a key in the `cookies` map, and
-    can be either set to a string, or to a map defining `name` and `checked`
-    state:
+:   :octicons-milestone-24: Default: _none_ – This property allows to add custom 
+    cookies or change the initial `checked` state and name of the `analytics`
+    cookie. Each cookie must receive a unique identifier which is used as a key
+    in the `cookies` map, and can be either set to a string, or to a map
+    defining `name` and `checked` state:
 
     ===  "Custom cookie name"
 
@@ -102,10 +101,9 @@ The following properties are available:
 
 `actions`{ #consent-actions }
 
-:   [:octicons-tag-24: insiders-4.17.1][Insiders] · :octicons-milestone-24: 
-    Default: `[accept, manage]` – This property defines which buttons are shown
-    and in which order, e.g. to allow the user to accept cookies and manage
-    settings:
+:   :octicons-milestone-24: Default: `[accept, manage]` – This property defines
+    which buttons are shown and in which order, e.g. to allow the user to accept 
+    cookies and manage settings:
 
     ``` yaml
     extra:
@@ -125,8 +123,8 @@ When a user first visits your site, a cookie consent form is rendered:
 
 [![cookie consent enabled]][cookie consent enabled]
 
-  [Insiders]: ../insiders/index.md
   [Custom cookies]: #custom-cookies
+  [cookie consent support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0rc1
   [cookie consent enabled]: ../assets/screenshots/consent.png
 
 #### Change cookie settings
@@ -244,6 +242,7 @@ The following configuration options are available:
     dynamically created or relative URLs, which can't be resolved by the privacy
     plugin due to [technical limitations].
 
+  [Insiders]: ../insiders/index.md
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [MathJax]: ../reference/mathjax.md
   [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html

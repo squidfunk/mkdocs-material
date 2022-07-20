@@ -82,7 +82,7 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 27 additional features__ that you can start using right away, and
+access to 24 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
@@ -105,15 +105,12 @@ which are currently exclusively available to sponsors:
 - [x] Sidebars automatically scroll to active item
 - [x] [Code annotations: anchor links]
 - [x] [Code annotations: strip comments]
-- [x] [Dismissable announcement bar]
-- [x] [Was this page helpful?]
 - [x] [Brand new search plugin]
 - [x] [Rich search previews]
 - [x] [Tokenizer with lookahead]
 - [x] [Advanced search highlighting]
 - [x] [Excluding content from search]
 - [x] [Social cards]
-- [x] [Cookie consent]
 
 </div>
 
@@ -232,16 +229,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
-#### $ 7,000 – Royal Gold
-
-- [x] [Cookie consent]
-- [x] [Was this page helpful?]
-- [x] [Dismissable announcement bar]
-
-  [Cookie consent]: ../setup/ensuring-data-privacy.md#native-cookie-consent
-  [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
-  [Dismissable announcement bar]: ../setup/setting-up-the-header.md#mark-as-read
-
 #### $ 8,000 – Scotch Bonnet
 
 - [x] [Social cards]
@@ -319,6 +306,16 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 7,000 – Royal Gold
+
+- [x] [Cookie consent]
+- [x] [Was this page helpful?]
+- [x] [Dismissable announcement bar]
+
+  [Cookie consent]: ../setup/ensuring-data-privacy.md#native-cookie-consent
+  [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
+  [Dismissable announcement bar]: ../setup/setting-up-the-header.md#mark-as-read
 
 #### $ 6,000 – Trinidad Scorpion
 
