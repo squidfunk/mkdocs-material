@@ -29,6 +29,10 @@
 
   // Permalinks extension
   .headerlink {
+    &::before {
+      content: '¶';
+    }
+
     display: inline-block;
     margin-left: px2rem(10px);
     transform: translate(0, px2rem(5px));
