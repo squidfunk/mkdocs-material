@@ -214,7 +214,7 @@ adjust the ones you want to override:
 
     <!-- Re-export translations -->
     {% macro t(key) %}{{
-      override(key) or language(key) or fallback.t(key)
+      override(key) or language.t(key) or fallback.t(key)
     }}{% endmacro %}
     ```
 
