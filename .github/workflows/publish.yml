@@ -83,7 +83,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          # platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm/v8
           tags: |
             ${{ github.event.repository.full_name }}:latest
             ${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
