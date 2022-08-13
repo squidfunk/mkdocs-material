@@ -70,7 +70,7 @@ following lines to `mkdocs.yml`:
 
 ### Was this page helpful?
 
-[:octicons-tag-24: 8.4.0rc1][feedback support] ·
+[:octicons-tag-24: 8.4.0][feedback support] ·
 :octicons-milestone-24: Default: _none_ ·
 :octicons-beaker-24: Experimental
 
@@ -221,7 +221,7 @@ The following properties are available for each rating:
 
     An alternative to GitHub issues is [Google Forms].
 
-  [feedback support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0rc1
+  [feedback support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
   [feedback widget]: #feedback
   [analytics]: #google-analytics
   [feedback report]: ../assets/screenshots/feedback-report.png

@@ -17,7 +17,7 @@ automatically downloaded for [self-hosting].
 
 ### Cookie consent { #native-cookie-consent }
 
-[:octicons-tag-24: 8.4.0rc1][cookie consent support] ·
+[:octicons-tag-24: 8.4.0][cookie consent support] ·
 :octicons-milestone-24: Default: _none_ ·
 :octicons-beaker-24: Experimental
 
@@ -124,7 +124,7 @@ When a user first visits your site, a cookie consent form is rendered:
 [![cookie consent enabled]][cookie consent enabled]
 
   [Custom cookies]: #custom-cookies
-  [cookie consent support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0rc1
+  [cookie consent support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
   [cookie consent enabled]: ../assets/screenshots/consent.png
 
 #### Change cookie settings

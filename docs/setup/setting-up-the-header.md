@@ -56,7 +56,7 @@ block][overriding blocks], which is empty by default:
 
 #### Mark as read
 
-[:octicons-tag-24: 8.4.0rc1][dismiss support] ·
+[:octicons-tag-24: 8.4.0][dismiss support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -76,5 +76,5 @@ automatically.
 
 [Scroll to the top of this page][top] to see it in action.
 
-  [dismiss support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0rc1
+  [dismiss support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
   [top]: #
