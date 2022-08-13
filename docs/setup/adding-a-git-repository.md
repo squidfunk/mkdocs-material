@@ -90,10 +90,8 @@ Some popular choices:
 
 - :fontawesome-brands-git: – `fontawesome/brands/git`
 - :fontawesome-brands-git-alt: – `fontawesome/brands/git-alt`
-- :fontawesome-brands-git-square: – `fontawesome/brands/git-square`
 - :fontawesome-brands-github: – `fontawesome/brands/github`
 - :fontawesome-brands-github-alt: – `fontawesome/brands/github-alt`
-- :fontawesome-brands-github-square: – `fontawesome/brands/github-square`
 - :fontawesome-brands-gitlab: – `fontawesome/brands/gitlab`
 - :fontawesome-brands-gitkraken: – `fontawesome/brands/gitkraken`
 - :fontawesome-brands-bitbucket: – `fontawesome/brands/bitbucket`
