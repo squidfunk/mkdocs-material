@@ -11,7 +11,7 @@ template: overrides/main.html
 - Added support for cookie consent
 - Added support for feedback widget (Was this page helpful?)
 - Added support for dismissable announcement bar
-- Added Armenian, Lithunian, Tagalog and Urdu translations
+- Added Armenian, Lithuanian, Tagalog, and Urdu translations
 
 ### 8.3.9 <small>_ July 4, 2022</small> { id="8.3.9" }
 
