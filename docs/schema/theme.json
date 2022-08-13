@@ -167,6 +167,12 @@
           ]
         },
         {
+          "title": "Site language: Armenian",
+          "enum": [
+            "hy"
+          ]
+        },
+        {
           "title": "Site language: Croatian",
           "enum": [
             "hr"
