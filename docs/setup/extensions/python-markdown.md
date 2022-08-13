@@ -147,42 +147,6 @@ No configuration options are supported. See reference for usage:
   [Adding footnote references]: ../../reference/footnotes.md#adding-footnote-references
   [Adding footnote content]: ../../reference/footnotes.md#adding-footnote-content
 
-### Metadata
-
-[:octicons-tag-24: 1.0.0][Metadata support] ·
-[:octicons-workflow-24: Extension][Metadata]
-
-The [Metadata] extension adds the ability to attach arbitrary key-value pairs
-to a document via front matter written in YAML syntax before the Markdown.
-Enable it via `mkdocs.yml`:
-
-``` yaml
-markdown_extensions:
-  - meta
-```
-
-No configuration options are available. See reference for usage:
-
-- [Setting the page title]
-- [Setting the page description]
-- [Setting the page icon]
-- [Setting the page template]
-- [Adding tags]
-- [Hiding tags on a page]
-- [Hiding the sidebars]
-- [Hiding the feedback widget]
-
-  [Metadata]: https://python-markdown.github.io/extensions/meta_data/
-  [Metadata support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
-  [Setting the page title]: ../../reference/index.md#setting-the-page-title
-  [Setting the page description]: ../../reference/index.md#setting-the-page-description
-  [Setting the page icon]: ../../reference/index.md#setting-the-page-icon
-  [Setting the page template]: ../../reference/index.md#setting-the-page-template
-  [Adding tags]: ../../setup/setting-up-tags.md#adding-tags
-  [Hiding tags on a page]: ../../setup/setting-up-tags.md#hiding-tags-on-a-page
-  [Hiding the sidebars]: ../../setup/setting-up-navigation.md#hiding-the-sidebars
-  [Hiding the feedback widget]: ../../setup/setting-up-site-analytics.md#hiding-the-feedback-widget
-
 ### Markdown in HTML
 
 [:octicons-tag-24: 0.1.0][Markdown in HTML support] ·

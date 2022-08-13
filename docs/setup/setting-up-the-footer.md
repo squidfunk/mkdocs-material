@@ -152,9 +152,9 @@ extra:
 
 ### Hiding prev/next links
 
-When [Metadata] is enabled, the footer navigation showing links to the previous
-and next page can be hidden by adding the following lines to the front matter of
-a page:
+The footer navigation showing links to the previous and next page can be hidden
+with the front matter `hide` property. Add the following lines at the top of a 
+Markdown file:
 
 ``` sh
 ---
@@ -165,8 +165,6 @@ hide:
 # Document title
 ...
 ```
-
-[Metadata]: extensions/python-markdown.md#metadata
 
 ## Customization
 

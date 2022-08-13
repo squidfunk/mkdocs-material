@@ -366,9 +366,9 @@ clipboard.
 [:octicons-tag-24: 8.3.0][boost support] ·
 :octicons-beaker-24: Experimental
 
-When [Metadata] is enabled, pages can be boosted in search with custom front
-matter, which will make them rank higher. Add the following lines at the top of
-a Markdown file:
+Pages can be boosted in search with the front matter `search.boost` property,
+which will make them rank higher. Add the following lines at the top of a
+Markdown file:
 
 ``` sh
 ---
@@ -384,7 +384,6 @@ search:
     __low values__.
 
   [boost support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
-  [Metadata]: extensions/python-markdown.md#metadata
 
 ### Search exclusion
 
@@ -392,8 +391,8 @@ search:
 [:octicons-tag-24: insiders-3.1.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
-When [Metadata] is enabled, pages can be excluded from search with custom front 
-matter, removing them from the index. Add the following lines at the top of a 
+Pages can be excluded from search with the front matter `search.exclude`
+property, removing them from the index. Add the following lines at the top of a 
 Markdown file:
 
 ``` sh

@@ -11,22 +11,6 @@ within Markdown files.
 
 ## Configuration
 
-This configuration allows to set a title and description for a page, change the
-template or define an icon to be rendered in the navigation. Add the following 
-lines to `mkdocs.yml`:
-
-``` yaml
-markdown_extensions:
-  - meta
-```
-
-See additional configuration options:
-
-- [Metadata]
-
-  [front matter]: https://jekyllrb.com/docs/front-matter/
-  [Metadata]: ../setup/extensions/python-markdown.md#metadata
-
 ### Built-in meta plugin :material-alert-decagram:{ .mdx-pulse title="Added on July 17, 2022" }
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
@@ -70,8 +54,8 @@ The following configuration options are available:
 
 ### Setting the page title
 
-When [Metadata] is enabled, the page title can be overridden for a document with
-some custom front matter. Add the following lines at the top of a Markdown file:
+The page title can be overridden for a document with the front matter `title`
+property. Add the following lines at the top of a Markdown file:
 
 ``` sh
 ---
@@ -92,9 +76,8 @@ title: Lorem ipsum dolor sit amet # (1)!
 
 ### Setting the page description
 
-When [Metadata] is enabled, the page description can be overridden for a
-document with custom front matter. Add the following lines at the top of a
-Markdown file:
+The page description can be overridden for a document with the front matter
+`description` property. Add the following lines at the top of a Markdown file:
 
 ``` sh
 ---
@@ -115,8 +98,7 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 :octicons-beaker-24: Experimental
 
 An icon can be assigned to each page, which is then rendered as part of the
-navigation sidebar. Ensure [Metadata] is enabled and add the following lines
-at the top of a Markdown file:
+navigation sidebar. Add the following lines at the top of a Markdown file:
 
 ``` sh
 ---

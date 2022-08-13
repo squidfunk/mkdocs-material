@@ -325,9 +325,9 @@ theme:
 
 ### Hiding the sidebars
 
-When [Metadata] is enabled, the navigation and/or table of contents sidebars
-can be hidden for a document with custom front matter. Add the following lines
-at the top of a Markdown file:
+The navigation and/or table of contents sidebars can be hidden for a document
+with the front matter `hide` property. Add the following lines at the top of a 
+Markdown file:
 
 ``` sh
 ---
@@ -352,7 +352,6 @@ hide:
 
     [![hide.* enabled]][hide.* enabled]
 
-  [Metadata]: extensions/python-markdown.md#metadata
   [hide.navigation enabled]: ../assets/screenshots/hide-navigation.png
   [hide.toc enabled]: ../assets/screenshots/hide-toc.png
   [hide.* enabled]: ../assets/screenshots/hide-navigation-toc.png

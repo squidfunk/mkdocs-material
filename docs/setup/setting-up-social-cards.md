@@ -274,12 +274,11 @@ you don't want to use it:
 ## Usage
 
 If you want to adjust the title or set a custom description for the social card,
-you can use the [Metadata] extension, which takes precedence over the
-default values.
+you can set the front matter `title` and `description` properties, which take 
+precedence over the default values.
 
 - [Changing the title]
 - [Changing the description]
 
-  [Metadata]: extensions/python-markdown.md#metadata
   [Changing the title]: ../reference/index.md#setting-the-page-title
   [Changing the description]: ../reference/index.md#setting-the-page-description

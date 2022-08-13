@@ -233,8 +233,7 @@ The following properties are available for each rating:
 
 ### Hiding the feedback widget
 
-When [Metadata] is enabled, the [feedback widget] can be hidden for a document
-with custom front matter. Add the following lines at the top of a Markdown file:
+The [feedback widget] can be hidden for a document with the front matter `hide` property. Add the following lines at the top of a Markdown file:
 
 ``` sh
 ---
@@ -245,8 +244,6 @@ hide:
 # Document title
 ...
 ```
-
-  [Metadata]: extensions/python-markdown.md#metadata
 
 ## Customization
 

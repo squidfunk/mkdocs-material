@@ -175,9 +175,9 @@ configuration setting:
 
 ### Adding tags
 
-When both, the [built-in tags plugin] and [Metadata] extension are enabled,
-tags can be added for a document with custom front matter. Add the following
-lines at the top of a Markdown file:
+When the [built-in tags plugin] is enabled, tags can be added for a document
+with the front matter `tags` property. Add the following lines at the top of a 
+Markdown file:
 
 ``` sh
 ---
@@ -212,7 +212,6 @@ search preview, which now allows to __find pages by tags__.
     appended.
 
   [built-in tags plugin]: #built-in-tags-plugin
-  [Metadata]: extensions/python-markdown.md#metadata
   [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
 
 ### Adding a tags index
@@ -241,8 +240,8 @@ arbitrary content before and after the marker:
 ### Hiding tags on a page
 
 While the tags are rendered above the main headline, sometimes, it might be
-desirable to hide them for a specific page, which can be achieved by using the
-[Metadata] extension:
+desirable to hide them for a specific page, which can be achieved with the
+front matter `hide` property:
 
 ``` sh
 ---
