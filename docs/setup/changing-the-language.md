@@ -84,6 +84,7 @@ The following languages are supported:
 - `sr` – Serbian
 - `sv` – Swedish
 - `th` – Thai
+- `tl` – Tagalog
 - `tr` – Turkish
 - `uk` – Ukrainian
 - `ur` – Urdu

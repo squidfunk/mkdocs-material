@@ -347,6 +347,12 @@
           ]
         },
         {
+          "title": "Site language: Tagalog",
+          "enum": [
+            "tl"
+          ]
+        },
+        {
           "title": "Site language: Turkish",
           "enum": [
             "tr"
