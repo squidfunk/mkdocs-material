@@ -167,12 +167,6 @@
           ]
         },
         {
-          "title": "Site language: Armenian",
-          "enum": [
-            "hy"
-          ]
-        },
-        {
           "title": "Site language: Croatian",
           "enum": [
             "hr"
@@ -182,6 +176,12 @@
           "title": "Site language: Hungarian",
           "enum": [
             "hu"
+          ]
+        },
+        {
+          "title": "Site language: Armenian",
+          "enum": [
+            "hy"
           ]
         },
         {
@@ -350,6 +350,18 @@
           "title": "Site language: Ukrainian",
           "enum": [
             "uk"
+          ]
+        },
+        {
+          "title": "Site language: Urdu",
+          "enum": [
+            "ur"
+          ]
+        },
+        {
+          "title": "Site language: Uzbek",
+          "enum": [
+            "uz"
           ]
         },
         {

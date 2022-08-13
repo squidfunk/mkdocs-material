@@ -56,6 +56,7 @@ The following languages are supported:
 - `hi` – Hindi
 - `hr` – Croatian
 - `hu` – Hungarian
+- `hy` – Armenian
 - `id` – Indonesian
 - `is` – Icelandic
 - `it` – Italian
@@ -84,6 +85,7 @@ The following languages are supported:
 - `th` – Thai
 - `tr` – Turkish
 - `uk` – Ukrainian
+- `ur` – Urdu
 - `uz` – Uzbek
 - `vi` – Vietnamese
 - `zh` – Chinese (Simplified)
