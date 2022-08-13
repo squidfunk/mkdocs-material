@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.4.0 <small>_ August 13, 2022</small> { id="8.4.0" }
+
+- Added support for cookie consent
+- Added support for feedback widget (Was this page helpful?)
+- Added support for dismissable announcement bar
+
 ### 8.3.9 <small>_ July 4, 2022</small> { id="8.3.9" }
 
 - Updated Taiwanese translations for search

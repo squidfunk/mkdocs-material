@@ -1,3 +1,9 @@
+mkdocs-material-8.4.0 (2022-08-13)
+
+  * Added support for cookie consent
+  * Added support for feedback widget (Was this page helpful?)
+  * Added support for dismissable announcement bar
+
 mkdocs-material-8.3.9+insiders-4.21.0 (2022-07-17)
 
   * Added meta plugin: set front matter for all pages in a folder
