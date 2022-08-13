@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.21.1 <small>_ August 13, 2022</small> { id="4.21.1" }
+
+- Fixed #4176: Broken image when avatar is served by Gravatar
+- Fixed #4212: Deferred search initialization for file:// locations
+
 ### 4.21.0 <small>_ July 17, 2022</small> { id="4.21.0" }
 
 - Added meta plugin: set front matter for all pages in a folder

@@ -1,3 +1,8 @@
+mkdocs-material-8.4.0+insiders-4.21.1 (2022-08-13)
+
+  * Fixed #4176: Broken image when avatar is served by Gravatar
+  * Fixed #4212: Deferred search initialization for file:// locations
+
 mkdocs-material-8.4.0 (2022-08-13)
 
   * Added support for cookie consent
