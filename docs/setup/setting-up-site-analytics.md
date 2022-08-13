@@ -70,9 +70,9 @@ following lines to `mkdocs.yml`:
 
 ### Was this page helpful?
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-3.2.0][Insiders] ·
-:octicons-milestone-24: Default: _none_
+[:octicons-tag-24: 8.4.0rc1][feedback support] ·
+:octicons-milestone-24: Default: _none_ ·
+:octicons-beaker-24: Experimental
 
 A simple [feedback widget] can be included at the bottom of each page,
 encouraging users to give instant feedback whether a page was helpful or not.
@@ -221,7 +221,7 @@ The following properties are available for each rating:
 
     An alternative to GitHub issues is [Google Forms].
 
-  [Insiders]: ../insiders/index.md
+  [feedback support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0rc1
   [feedback widget]: #feedback
   [analytics]: #google-analytics
   [feedback report]: ../assets/screenshots/feedback-report.png
