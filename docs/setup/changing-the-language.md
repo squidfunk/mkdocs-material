@@ -63,6 +63,7 @@ The following languages are supported:
 - `ja` – Japanese
 - `ka` – Georgian
 - `kr` – Korean
+- `lt` – Lithuanian
 - `lv` – Latvian
 - `mk` – Macedonian
 - `mn` – Mongolian

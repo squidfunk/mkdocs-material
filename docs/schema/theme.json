@@ -221,6 +221,12 @@
           ]
         },
         {
+          "title": "Site language: Lithuanian",
+          "enum": [
+            "lt"
+          ]
+        },
+        {
           "title": "Site language: Latvian",
           "enum": [
             "lv"
