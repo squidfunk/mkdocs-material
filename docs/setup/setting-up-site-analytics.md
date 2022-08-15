@@ -94,7 +94,7 @@ extra:
           data: 0
           note: >- # (2)!
             Thanks for your feedback! Help us improve this page by
-            using our <a href="..." target=_blank>feedback form</a>.
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
 ```
 
 1.  This feature is natively integrated with [Google Analytics][analytics],
