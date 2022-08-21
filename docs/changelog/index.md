@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.4.1 <small>_ August 21, 2022</small> { id="8.4.1" }
+
+- Updated Croatian and Hebrew translations
+
 ### 8.4.0 <small>_ August 13, 2022</small> { id="8.4.0" }
 
 - Added support for cookie consent

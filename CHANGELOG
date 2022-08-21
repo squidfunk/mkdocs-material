@@ -1,3 +1,11 @@
+mkdocs-material-8.4.1+insiders-4.22.0 (2022-08-21)
+
+  * Added support for navigation status
+
+mkdocs-material-8.4.1 (2022-08-21)
+
+  * Updated Croatian and Hebrew translations
+
 mkdocs-material-8.4.0+insiders-4.21.1 (2022-08-13)
 
   * Fixed #4176: Broken image when avatar is served by Gravatar

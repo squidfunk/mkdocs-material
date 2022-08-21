@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "8.4.0",
+  "version": "8.4.1",
   "description": "Documentation that simply works",
   "keywords": [
     "mkdocs",
@@ -90,7 +90,7 @@
     "preact": "^10.10.6",
     "rimraf": "^3.0.2",
     "sass": "^1.54.5",
-    "stylelint": "^14.10.0",
+    "stylelint": "^14.11.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^9.0.0",
     "stylelint-config-standard-scss": "^5.0.0",
