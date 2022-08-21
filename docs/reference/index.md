@@ -123,6 +123,50 @@ icon: material/emoticon-happy # (1)!
   [Insiders]: ../insiders/index.md
   [icon search]: icons-emojis.md#search
 
+### Setting the page status
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.22.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+A status can be assigned to each page, which is then displayed as part of the
+navigation sidebar. First, associate a status identifier with a description by 
+adding the following to `mkdocs.yml`:
+
+``` yaml
+extra:
+  status:
+    <identifier>: <description> # (1)!
+```
+
+1.  The identifier can only include alphanumeric characters, as well as dashes
+    and underscores. For example, if you have a status `Recently added`, you can
+    set `new` as an identifier:
+
+    ``` yaml
+    extra:
+      status:
+        new: Recently added
+    ```
+
+The page status can now be set for a document with the front matter `status`
+property. For example, you can mark a page as `new` with the following lines at 
+the top of a Markdown file:
+
+``` sh
+---
+status: new
+---
+
+# Document title
+...
+```
+
+The following status identifiers are currently supported:
+
+- :material-alert-decagram: – `new`
+- :material-trash-can: – `deprecated`
+
 ### Setting the page template
 
 If you're using [theme extension] and created a new page template in the

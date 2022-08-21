@@ -206,7 +206,7 @@ them at your own risk.
   [git-revision-date-localized]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
   [enable_creation_date support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.4
 
-#### Document contributors :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }
+#### Document contributors
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.19.0][Insiders] ·

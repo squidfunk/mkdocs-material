@@ -82,14 +82,15 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 24 additional features__ that you can start using right away, and
+access to 25 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Navigation status] :material-alert-decagram:{ .mdx-pulse title="Added on August 21, 2022" }
 - [x] [Meta plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 17, 2022" }
 - [x] [Additional tags indexes] :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
-- [x] [Document contributors] :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }
+- [x] [Document contributors]
 - [x] [Automatic light / dark mode]
 - [x] [Content tabs: anchor links]
 - [x] [Navigation pruning]
@@ -266,13 +267,14 @@ are released for general availability.
 - [x] [Chinese search support]
 - [x] [Navigation icons]
 - [x] [Navigation pruning]
-- [ ] Navigation status badges
+- [x] [Navigation status]
 - [ ] Blog plugin
 
   [Annotations]: ../reference/annotations.md
   [Chinese search support]: ../blog/2022/chinese-search-support.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
   [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
+  [Navigation status]: ../reference/index.md#setting-the-page-status
 
 #### $ 14,000 – Goat's Horn
 
