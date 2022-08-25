@@ -89,13 +89,13 @@ theme:
         theme:
           icon:
             admonition:
-              note: fontawesome/solid/sticky-note
+              note: fontawesome/solid/note-sticky
               abstract: fontawesome/solid/book
-              info: fontawesome/solid/info-circle
+              info: fontawesome/solid/circle-info
               tip: fontawesome/solid/bullhorn
               success: fontawesome/solid/check
-              question: fontawesome/solid/question-circle
-              warning: fontawesome/solid/exclamation-triangle
+              question: fontawesome/solid/circle-question
+              warning: fontawesome/solid/triangle-exclamation
               failure: fontawesome/solid/bomb
               danger: fontawesome/solid/skull
               bug: fontawesome/solid/robot
