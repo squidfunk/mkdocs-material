@@ -266,7 +266,7 @@ export class Search {
                 location,
                 title: highlight(title),
                 text:  highlight(text),
-                ...tags && { tags: tags.map(highlight) },
+                ...tags && { tags: tags.map(tag => highlight(String(tag))) },
                 score: score * (1 + boost),
                 terms
               })
