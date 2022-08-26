@@ -26,6 +26,10 @@
     <div class="md-copyright__highlight">
       {{ config.copyright }}
     </div>
+  {% else %}
+    <div class="md-copyright__highlight">
+      Copyright © 2016 - 2022 Martin Donath
+    </div>  
   {% endif %}
   {% if not config.extra.generator == false %}
     Made with
