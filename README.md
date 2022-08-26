@@ -122,6 +122,9 @@
   <a href="https://www.apex.ai/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png" height="58"
   /></a>
+  <a href="https://jitterbit.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
