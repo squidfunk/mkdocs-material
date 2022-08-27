@@ -61,16 +61,16 @@
     "@types/fuzzaldrin-plus": "^0.6.2",
     "@types/html-minifier": "^4.0.2",
     "@types/lunr": "^2.3.4",
-    "@types/node": "^18.7.8",
+    "@types/node": "^18.7.13",
     "@types/resize-observer-browser": "^0.1.7",
     "@types/sass": "^1.43.1",
-    "@typescript-eslint/eslint-plugin": "^5.33.1",
-    "@typescript-eslint/parser": "^5.33.1",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
     "autoprefixer": "^10.4.8",
     "chokidar": "^3.5.3",
     "cssnano": "5.1.0",
     "esbuild": "^0.15.5",
-    "eslint": "^8.22.0",
+    "eslint": "^8.23.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsdoc": "^39.3.6",
@@ -81,7 +81,7 @@
     "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
-    "npm-check-updates": "^16.0.5",
+    "npm-check-updates": "^16.0.6",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.16",
     "postcss-dir-pseudo-class": "^6.0.5",
@@ -98,7 +98,7 @@
     "svgo": "^2.8.0",
     "tiny-glob": "^0.2.9",
     "ts-node": "^10.9.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.2"
   },
   "engines": {
     "node": ">= 16"
