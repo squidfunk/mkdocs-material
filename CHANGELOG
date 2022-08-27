@@ -1,3 +1,9 @@
+mkdocs-material-8.4.2 (2022-08-27)
+
+  * Updated Slovenian translations
+  * Fixed #4277: Feedback widget hidden after navigation with instant loading
+  * Fixed numeric tags in front matter breaking search functionality
+
 mkdocs-material-8.4.1+insiders-4.22.0 (2022-08-21)
 
   * Added support for navigation status

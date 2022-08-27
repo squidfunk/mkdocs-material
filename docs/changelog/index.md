@@ -6,6 +6,13 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+
+### 8.4.2 <small>_ August 27, 2022</small> { id="8.4.2" }
+
+- Updated Slovenian translations
+- Fixed #4277: Feedback widget hidden after navigation with instant loading
+- Fixed numeric tags in front matter breaking search functionality
+
 ### 8.4.1 <small>_ August 21, 2022</small> { id="8.4.1" }
 
 - Updated Croatian and Hebrew translations
