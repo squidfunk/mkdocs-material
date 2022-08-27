@@ -6,7 +6,6 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
-
 ### 8.4.2 <small>_ August 27, 2022</small> { id="8.4.2" }
 
 - Updated Slovenian translations
