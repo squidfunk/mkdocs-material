@@ -49,8 +49,12 @@
         }
 
         /* Set up feedback, i.e. "Was this page helpful?" */
-        if (document.forms.feedback) {
+        document$.subscribe(function() {
           var feedback = document.forms.feedback
+          if (typeof feedback === "undefined")
+            return
+
+          /* Send feedback to Google Analytics */
           for (var button of feedback.querySelectorAll("[type=submit]")) {
             button.addEventListener("click", function(ev) {
               ev.preventDefault()
@@ -72,15 +76,14 @@
             /* Show feedback */
             feedback.hidden = false
           }
-        }
+        })
 
         /* Send page view on location change */
-        if (typeof location$ !== "undefined")
-          location$.subscribe(function(url) {
-            gtag("config", "{{ property }}", {
-              page_path: url.pathname
-            })
+        location$.subscribe(function(url) {
+          gtag("config", "{{ property }}", {
+            page_path: url.pathname
           })
+        })
       })
 
       /* Create script tag */
@@ -123,10 +126,14 @@
         }
 
         /* Set up feedback, i.e. "Was this page helpful?" */
-        if (document.forms.feedback) {
+        document$.subscribe(function() {
           var feedback = document.forms.feedback
+          if (typeof feedback === "undefined")
+            return
+
+          /* Send feedback to Google Analytics */
           for (var button of feedback.querySelectorAll("[type=submit]")) {
-            button.addEventListener("click", function(ev) {
+            button.addEventListener("click", function (ev) {
               ev.preventDefault()
 
               /* Retrieve and send data */
@@ -146,13 +153,12 @@
             /* Show feedback */
             feedback.hidden = false
           }
-        }
+        })
 
         /* Send page view on location change */
-        if (typeof location$ !== "undefined")
-          location$.subscribe(function(url) {
-            ga("send", "pageview", url.pathname)
-          })
+        location$.subscribe(function(url) {
+          ga("send", "pageview", url.pathname)
+        })
       })
 
       /* Create script tag */
