@@ -103,8 +103,9 @@
   // Icon buttons
   &__button {
     position: relative;
+    display: flex;
+    align-items: center;
     z-index: 1;
-    margin: px2rem(4px);
     padding: px2rem(8px);
     cursor: pointer;
     transition: opacity 250ms;
@@ -143,6 +144,10 @@
         width: 100%;
         fill: currentColor;
       }
+    }
+
+    &.md-icon[for="__drawer"] {
+      border-bottom: 1px solid var(--codacy-neutral-400);
     }
 
     // Hide search icon, if JavaScript is not available.
@@ -252,35 +257,6 @@
       position: relative;
       width: 100%;
       height: 100%;
-    }
-  }
-
-  // Repository containing source
-  &__source {
-    display: none;
-
-    // [tablet landscape +]: Show the reposistory from tablet
-    @include break-from-device(tablet landscape) {
-      display: block;
-      width: px2rem(234px);
-      max-width: px2rem(234px);
-      margin-left: px2rem(20px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: px2rem(20px);
-        margin-left: initial;
-      }
-    }
-
-    // [screen +]: Increase spacing of search bar
-    @include break-from-device(screen) {
-      margin-left: px2rem(28px);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        margin-right: px2rem(28px);
-      }
     }
   }
 }

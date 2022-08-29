@@ -29,45 +29,9 @@
   font-size: px2rem(14px);
   line-height: 1.3;
 
-  &--toc{
-    font-size: ms(-1);
-  }
-
   // List title
   &__title {
-    display: block;
-    padding: 0 px2rem(12px);
-    overflow: hidden;
-    font-weight: 700;
-    text-overflow: ellipsis;
-
-    // Hide buttons by default
-    .md-nav__button {
-      display: none;
-
-      // Stretch images
-      img {
-        width: 100%;
-        height: auto;
-      }
-
-      // Logo
-      &.md-logo {
-
-        // Image or icon
-        img,
-        svg {
-          display: block;
-          width: px2rem(48px);
-          height: px2rem(48px);
-        }
-
-        // Icon
-        svg {
-          fill: currentColor;
-        }
-      }
-    }
+    display: none;
   }
 
   // List of items
@@ -83,19 +47,6 @@
     font-weight: bold;
     color: #DDE6FF;
 
-    &--toc{
-      padding: 0;
-      & > .md-nav__link {
-        padding-left: px2rem(12px);
-        line-height: px2rem(18px);
-        &--active {
-          border-left: 3px solid #6695FF;
-          position: relative;
-          left: -2px;
-        }
-      }
-    }
-
     // Add bottom spacing to last item
     &:last-child {
       padding-bottom: px2rem(12px);
@@ -108,10 +59,6 @@
       font-weight: normal;
       padding-right: 0;
 
-      &--toc{
-        padding: 0;
-      }
-
       // Adjust for right-to-left languages
       [dir="rtl"] & {
         padding-right: px2rem(12px);
@@ -123,6 +70,23 @@
         padding-bottom: 0;
       }
     }
+
+    & &:not(.md-nav__item--nested) & {
+      font-size: ms(-1);
+      padding: 0;
+
+      & > .md-nav__link {
+        padding-left: px2rem(12px);
+        line-height: px2rem(18px);
+
+        &--active {
+          border-left: 3px solid #6695FF;
+          position: relative;
+          left: -2px;
+        }
+      }
+    }
+
     &--active > label.md-nav__link{
       color: #6695FF;
       font-weight: bold;
@@ -173,6 +137,32 @@
     &:hover {
       color: var(--md-accent-fg-color);
     }
+
+    // Icon
+    .md-nav__icon {
+      float: right;
+      height: px2rem(18px);
+      transition: transform 250ms;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        float: left;
+        transform: rotate(180deg);
+      }
+
+      // Inline icon and adjust to match font size
+      svg {
+        display: inline-block;
+        width: px2rem(18px);
+        height: px2rem(18px);
+        vertical-align: px2rem(-2px);
+      }
+
+      // Rotate icon for expanded lists
+      .md-nav__item--nested .md-nav__toggle:checked ~ & {
+        transform: rotate(90deg);
+      }
+    }
   }
 
   // Repository containing source
@@ -180,9 +170,13 @@
     display: none;
   }
 
+  .md-header-nav__button.md-logo {
+    display: none;
+  }
+
   // [tablet -]: Layered navigation
   @include break-to-device(tablet) {
-    background-color: var(--md-default-bg-color);
+    background-color: var(--codacy-primary);
 
     // Stretch primary navigation to drawer
     &--primary,
@@ -203,20 +197,19 @@
       // List title and item
       .md-nav__title,
       .md-nav__item {
-        font-size: px2rem(16px);
+        font-size: px2rem(14px);
         line-height: 1.5;
       }
 
       // List title
       .md-nav__title {
+        display: block;
         position: relative;
-        height: px2rem(112px);
-        padding: px2rem(60px) px2rem(16px) px2rem(4px);
-        color: var(--md-default-fg-color--light);
-        font-weight: 400;
+        padding: px2rem(4px) px2rem(48px);
+        color: #6695FF;
+        font-weight: bold;
         line-height: px2rem(48px);
         white-space: nowrap;
-        background-color: var(--md-default-fg-color--lightest);
         cursor: pointer;
 
         // Icon
@@ -227,7 +220,7 @@
           display: block;
           width: px2rem(24px);
           height: px2rem(24px);
-          margin: px2rem(4px);
+          margin: px2rem(8px);
 
           // Adjust for right-to-left languages
           [dir="rtl"] & {
@@ -239,9 +232,7 @@
         // Main lists
         ~ .md-nav__list {
           overflow-y: auto;
-          background-color: var(--md-default-bg-color);
-          box-shadow:
-            inset 0 px2rem(1px) 0 var(--md-default-fg-color--lightest);
+          background-color: var(--codacy-primary);
           scroll-snap-type: y mandatory;
           touch-action: pan-y;
 
@@ -285,30 +276,24 @@
         flex: 1;
       }
 
+      > .md-nav__list {
+        > .md-nav__item {
+          padding: px2rem(6px);
+        }
+      }
+
       // List item
       .md-nav__item {
         padding: 0;
-        border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
           padding: 0;
         }
 
-        // Increase spacing to account for icon
-        &--nested > .md-nav__link {
-          padding-right: px2rem(48px);
-
-          // Adjust for right-to-left languages
-          [dir="rtl"] & {
-            padding-right: px2rem(16px);
-            padding-left: px2rem(48px);
-          }
-        }
-
         // Active parent item
         &--active > .md-nav__link {
-          color: var(--md-primary-fg-color);
+          color: var(--md-primary-bg-color);
 
           // Focused or hovered linl
           &:focus,
@@ -322,23 +307,7 @@
       .md-nav__link {
         position: relative;
         margin-top: 0;
-        padding: px2rem(12px) px2rem(16px);
-
-        // Icon
-        .md-nav__icon {
-          position: absolute;
-          top: 50%;
-          right: px2rem(12px);
-          margin-top: px2rem(-12px);
-          color: inherit;
-          font-size: px2rem(24px);
-
-          // Adjust for right-to-left languages
-          [dir="rtl"] & {
-            right: initial;
-            left: px2rem(12px);
-          }
-        }
+        padding: px2rem(14px) px2rem(16px) 0;
       }
 
       // Icon
@@ -442,6 +411,10 @@
         backface-visibility: hidden;
       }
     }
+
+    .md-header-nav__button.md-logo {
+      display: block;
+    }
   }
 
   // [tablet portrait -]: Show table of contents in drawer
@@ -468,14 +441,6 @@
     html [dir="rtl"] &__link {
       padding-right: px2rem(16px);
       padding-left: px2rem(48px);
-    }
-
-    // Repository containing source
-    &__source {
-      display: block;
-      padding: 0 px2rem(4px);
-      color: var(--md-primary-bg-color);
-      background-color: var(--md-primary-fg-color--dark);
     }
   }
 
@@ -528,32 +493,6 @@
     // Hide titles for nested navigation
     &__item--nested > .md-nav > &__title {
       display: none;
-    }
-
-    // Icon
-    &__icon {
-      float: right;
-      height: px2rem(18px);
-      transition: transform 250ms;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        float: left;
-        transform: rotate(180deg);
-      }
-
-      // Inline icon and adjust to match font size
-      svg {
-        display: inline-block;
-        width: px2rem(18px);
-        height: px2rem(18px);
-        vertical-align: px2rem(-2px);
-      }
-
-      // Rotate icon for expanded lists
-      .md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link & {
-        transform: rotate(90deg);
-      }
     }
   }
 }

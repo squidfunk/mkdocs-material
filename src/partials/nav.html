@@ -42,9 +42,14 @@
 
   <!-- Repository containing source -->
   {% if config.repo_url %}
-    <div class="md-nav__source">
-      {% include "partials/source.html" %}
-    </div>
+  <a
+    href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
+    title="{{ config.site_name }}"
+    class="md-header-nav__button md-logo"
+    aria-label="{{ config.site_name }}"
+  >
+    {% include "partials/logo.html" %}
+  </a>
   {% endif %}
 
   <!-- Render item list -->

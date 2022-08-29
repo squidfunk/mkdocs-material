@@ -3,9 +3,9 @@
 -#}
 <nav class="md-nav md-nav--primary" aria-label="{{ lang.t('nav.title') }}" data-md-level="0">
   {% if config.repo_url %}
-    <div class="md-nav__source">
-      {% include "partials/source.html" %}
-    </div>
+  <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-header-nav__button md-logo" aria-label="{{ config.site_name }}">
+    {% include "partials/logo.html" %}
+  </a>
   {% endif %}
   <ul class="md-nav__list" data-md-scrollfix>
     {% for nav_item in nav %}

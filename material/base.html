@@ -16,7 +16,7 @@
         <meta name="description" content="{{ config.site_description }}">
       {% endif %}
       {% if page and page.meta and page.meta.git_revision_date_localized_raw_iso_datetime %}
-        <meta http-equiv="last-modified" content="{{ page.meta.git_revision_date_localized_raw_iso_datetime }}">  
+        <meta http-equiv="last-modified" content="{{ page.meta.git_revision_date_localized_raw_iso_datetime }}">
       {% endif %}
       {% if page and page.meta and page.meta.redirect %}
         <script>var anchor=window.location.hash.substr(1);location.href="{{ page.meta.redirect }}"+(anchor?"#"+anchor:"")</script>
@@ -49,9 +49,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.b0218524.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.31f95e6b.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.d932a83f.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.041ec401.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -160,8 +160,8 @@
       </main>
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.8a62c8c7.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.fb712d40.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.d7126665.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.8bb3902f.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
