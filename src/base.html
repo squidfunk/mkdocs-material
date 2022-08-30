@@ -44,7 +44,7 @@
 
       <!-- Last review date -->
       {% if page and page.meta and page.meta.git_revision_date_localized_raw_iso_datetime %}
-        <meta http-equiv="last-modified" content="{{ page.meta.git_revision_date_localized_raw_iso_datetime }}" />  
+        <meta http-equiv="last-modified" content="{{ page.meta.git_revision_date_localized_raw_iso_datetime }}" />
       {% endif %}
 
       <!-- Redirect -->
@@ -280,19 +280,6 @@
               </div>
             </div>
           {% endif %}
-
-          <!-- Table of contents -->
-          <!-- {% if page.toc %}
-            <div
-              class="md-sidebar md-sidebar--secondary"
-            >
-              <div class="md-sidebar__scrollwrap">
-                <div class="md-sidebar__inner">
-                  {% include "partials/toc.html" %}
-                </div>
-              </div>
-            </div>
-          {% endif %} -->
         {% endblock %}
 
         <div class="md-main__inner">
@@ -303,17 +290,6 @@
 
               <!-- Content -->
               {% block content %}
-
-                <!-- Edit button -->
-                <!-- {% if page.edit_url %}
-                  <a
-                    href="{{ page.edit_url }}"
-                    title="{{ lang.t('edit.link.title') }}"
-                    class="md-content__button md-icon"
-                  >
-                    {% include ".icons/material/pencil.svg" %}
-                  </a>
-                {% endif %} -->
 
                 <!-- Link to source file -->
                 {% block source %}

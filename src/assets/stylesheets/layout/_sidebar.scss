@@ -39,10 +39,7 @@ $md-toggle__drawer--checked:
   padding: px2rem(24px) 0;
   overflow: hidden;
   background-color: var(--codacy-primary);
-
-  &--primary {
-    color: var(--md-primary-bg-color);
-  }
+  color: var(--md-primary-bg-color);
 
   // Hide for print
   @media print {
@@ -66,7 +63,7 @@ $md-toggle__drawer--checked:
       z-index: 3;
       width: px2rem(280px);
       height: 100%;
-      background-color: var(--md-default-bg-color);
+      background-color: var(--codacy-primary);
       transform: translateX(0);
       transition:
         transform  250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -92,7 +89,7 @@ $md-toggle__drawer--checked:
 
       // Hide overflow for nested navigation
       .md-sidebar__scrollwrap {
-        overflow: hidden;
+        overflow-x: hidden;
       }
     }
   }
@@ -100,8 +97,6 @@ $md-toggle__drawer--checked:
   // Secondary sidebar with table of contents
   &--secondary {
     display: none;
-    background-color: var(--md-primary-bg-color);
-    color: var(--codacy-primary);
 
     // [tablet landscape +]: Show table of contents next to body copy
     @include break-from-device(tablet landscape) {
@@ -120,16 +115,16 @@ $md-toggle__drawer--checked:
       }
     }
 
-    // // [screen +]: Limit to grid
-    // @include break-from-device(screen) {
-    //   margin-left: px2rem((1220 - 242) * 1px);
+    // [screen +]: Limit to grid
+    @include break-from-device(screen) {
+      margin-left: px2rem((1220 - 242) * 1px);
 
-    //   // Adjust for right-to-left languages
-    //   [dir="rtl"] & {
-    //     margin-right: px2rem((1220 - 242) * 1px);
-    //     margin-left: initial;
-    //   }
-    // }
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        margin-right: px2rem((1220 - 242) * 1px);
+        margin-left: initial;
+      }
+    }
   }
 
   // Wrapper for scrolling on overflow

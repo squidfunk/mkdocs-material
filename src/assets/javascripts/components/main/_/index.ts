@@ -81,10 +81,10 @@ export function mountMain(
   /* Connect to main area observable via long-living subject */
   useComponent("header")
     .pipe(
-      switchMap(header => main$
-        .pipe(
+      switchMap(_ =>
+        main$.pipe(
           distinctUntilKeyChanged("active"),
-          applyHeaderShadow(header)
+          // applyHeaderShadow(header)
         )
       )
     )

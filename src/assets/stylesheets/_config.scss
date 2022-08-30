@@ -35,15 +35,15 @@ $ms-ratio: $major-third;
 // Device-specific breakpoints
 $break-devices: (
   mobile: (
-    portrait:  px2em(0px)  px2em(1px),
-    landscape: px2em(0px)  px2em(1px)
+    portrait:  px2em(220px)  px2em(479px),
+    landscape: px2em(480px)  px2em(719px)
   ),
   tablet: (
-    portrait:  px2em(0px)  px2em(1px),
-    landscape: px2em(0px)  px2em(1px)
+    portrait:  px2em(720px)  px2em(959px),
+    landscape: px2em(960px)  px2em(1219px)
   ),
   screen: (
-    small:     px2em(2px) px2em(1599px),
+    small:     px2em(1220px) px2em(1599px),
     medium:    px2em(1600px) px2em(1999px),
     large:     px2em(2000px)
   )

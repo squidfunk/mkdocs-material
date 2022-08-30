@@ -45,9 +45,6 @@
     {% if toc | first is defined %}
       <label class="md-nav__link md-nav__link--active" for="__toc">
         {{ nav_item.title }}
-        <span class="md-nav__icon md-icon">
-          {% include ".icons/material/table-of-contents.svg" %}
-        </span>
       </label>
     {% endif %}
     <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}" class="md-nav__link md-nav__link--active">
