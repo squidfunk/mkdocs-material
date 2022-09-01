@@ -436,6 +436,9 @@
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/",
       "type": "object",
       "properties": {
+        "edit": {
+          "$ref": "#/definitions/icon"
+        },
         "logo": {
           "$ref": "#/definitions/icon"
         },
@@ -550,6 +553,10 @@
       },
       "additionalProperties": false,
       "defaultSnippets": [
+        {
+          "label": "edit",
+          "body": "edit: ${1:material/pencil}"
+        },
         {
           "label": "logo",
           "body": "logo: ${1:material/library}"

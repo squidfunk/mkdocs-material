@@ -27,7 +27,8 @@
     title="{{ lang.t('edit.link.title') }}"
     class="md-content__button md-icon"
   >
-    {% include ".icons/material/pencil.svg" %}
+    {% set icon = config.theme.icon.edit or "material/pencil" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}
   </a>
 {% endif %}
 
