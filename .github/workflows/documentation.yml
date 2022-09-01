@@ -57,7 +57,7 @@ jobs:
         run: |
           pip install .
           pip install \
-            "mkdocs-git-committers-plugin-2>=0.4.3" \
+            "mkdocs-git-committers-plugin-2<1" \
             "mkdocs-git-revision-date-localized-plugin>=1.0" \
             "mkdocs-minify-plugin>=0.3" \
             "mkdocs-redirects>=1.0"
