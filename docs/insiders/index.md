@@ -46,10 +46,10 @@ funding goal is hit, the features that are tied to it are merged back into
 Material for MkDocs and released for general availability, making them available
 to all users. Bugfixes are always released in tandem.
 
-Sponsorships start as low as [__$10 a month__][how to become a sponsor].[^2]
+Sponsorships start as low as [__$15 a month__][how to become a sponsor].[^2]
 
   [^2]:
-    Note that $10 a month is the minimum amount to become eligible for
+    Note that $15 a month is the minimum amount to become eligible for
     Insiders. While GitHub Sponsors also allows to sponsor lower amounts or
     one-time amounts, those can't be granted access to Insiders due to
     technical reasons.
@@ -121,7 +121,7 @@ New features are added every other week. Be sure to come back.
 
 Thanks for your interest in sponsoring! In order to become an eligible sponsor
 with your GitHub account, visit [squidfunk's sponsor profile], and complete
-a sponsorship of __$10 a month or more__. You can use your individual or
+a sponsorship of __$15 a month or more__. You can use your individual or
 organization GitHub account for sponsoring.
 
 __Important__: If you're sponsoring @squidfunk through a GitHub organization,
