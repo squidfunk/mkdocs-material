@@ -170,6 +170,8 @@ Then, e.g. to override the site title, add the following lines to `main.html`:
 {% endblock %}
 ```
 
+If you intend to add some code to a block rather than to replace it altogether with new content, use `{{ super() }}` before the `{% block %}` statement to include the original block content. This is particularly useful when adding some third-party widgets to your docs, e.g., for chatting with support or submitting a ticket.
+
 The following template blocks are provided by the theme:
 
 | Block name        | Purpose                                         |
