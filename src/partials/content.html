@@ -20,22 +20,13 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Edit button -->
-{% if page.edit_url %}
-  <a
-    href="{{ page.edit_url }}"
-    title="{{ lang.t('edit.link.title') }}"
-    class="md-content__button md-icon"
-  >
-    {% set icon = config.theme.icon.edit or "material/pencil" %}
-    {% include ".icons/" ~ icon ~ ".svg" %}
-  </a>
-{% endif %}
-
 <!-- Tags -->
 {% if "tags" in config.plugins %}
   {% include "partials/tags.html" %}
 {% endif %}
+
+<!-- Actions -->
+{% include "partials/actions.html" %}
 
 <!--
   Hack: check whether the content contains a h1 headline. If it doesn't, the
@@ -45,7 +36,7 @@
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 
-<!-- Markdown content -->
+<!-- Page content -->
 {{ page.content }}
 
 <!-- Source file information -->
