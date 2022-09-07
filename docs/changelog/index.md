@@ -8,7 +8,7 @@ template: overrides/main.html
 
 ### 8.4.3 <small>_ September 7, 2022</small> { id="8.4.3" }
 
-- Added Simple Icons to bundled icons (+2,3k icons)
+- Added Simple Icons to bundled icons (+2,300 icons)
 - Added support for changing edit icon
 - Moved page actions to separate partial (`actions.html`)
 - Fixed #4291: Version switching doesn't stay on page when anchors are used
