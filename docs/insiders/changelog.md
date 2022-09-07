@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.22.1 <small>_ September 7, 2022</small> { id="4.22.1" }
+
+- Fixed #4217: Tooltips in data tables render in wrong position
+
 ### 4.22.0 <small>_ August 21, 2022</small> { id="4.22.0" }
 
 - Added support for navigation status
