@@ -127,6 +127,14 @@ const assets$ = concat(
       transform: async data => minsvg(data)
     })),
 
+  /* Copy Simple icons */
+  ...["**/*.svg", "../LICENSE.md"]
+    .map(pattern => copyAll(pattern, {
+      from: "node_modules/simple-icons/icons",
+      to: `${base}/.icons/simple`,
+      transform: async data => minsvg(data)
+    })),
+
   /* Copy Lunr.js search stemmers and segmenters */
   ...["min/*.js", "tinyseg.js", "wordcut.js"]
     .map(pattern => copyAll(pattern, {

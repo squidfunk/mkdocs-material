@@ -6,7 +6,7 @@ icon: material/emoticon-happy-outline
 # Icons, Emojis
 
 One of the best features of Material for MkDocs is the possibility to use [more
-than 8,000 icons][icon search] and thousands of emojis in your project 
+than 10,000 icons][icon search] and thousands of emojis in your project 
 documentation with practically zero additional effort. Moreover, custom icons 
 can be added and used in `mkdocs.yml`, documents and templates.
 
@@ -50,6 +50,7 @@ The following icon sets are bundled with Material for MkDocs:
 - :material-material-design: – [Material Design]
 - :fontawesome-brands-font-awesome: – [FontAwesome]
 - :octicons-mark-github-16: – [Octicons]
+- :simple-simpleicons: – [Simple Icons]
 
 See additional configuration options:
 
@@ -60,6 +61,7 @@ See additional configuration options:
   [Material Design]: https://materialdesignicons.com/
   [FontAwesome]: https://fontawesome.com/search?m=free
   [Octicons]: https://octicons.github.com/
+  [Simple Icons]: https://simpleicons.org/
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
   [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom-icons
