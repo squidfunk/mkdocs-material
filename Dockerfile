@@ -32,11 +32,10 @@ WORKDIR /tmp
 
 # Copy files necessary for build
 COPY material material
-COPY MANIFEST.in MANIFEST.in
 COPY package.json package.json
 COPY README.md README.md
 COPY requirements.txt requirements.txt
-COPY setup.py setup.py
+COPY pyproject.toml pyproject.toml
 
 # Perform build and cleanup artifacts and caches
 RUN \
