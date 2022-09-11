@@ -170,18 +170,20 @@ Then, e.g. to override the site title, add the following lines to `main.html`:
 {% endblock %}
 ```
 
-If you intend to add some code to a block rather than to replace it altogether with new content, use `{{ super() }}` right after the `{% block %}` statement to include the original block content. This is particularly useful when adding some third-party widgets to your docs, e.g., for chatting with support or submitting a ticket. For example, if your widget script is hosted on `widgets.example.com`, add the following lines to `main.html`:
+If you intend to __add__ something to a block rather than to replace it
+altogether with new content, use `{{ super() }}` inside the block to include the 
+original block content. This is particularly useful when adding third-party
+scripts to your docs, e.g.
 
-```html
+``` html
 {% extends "base.html" %}
 
 {% block scripts %}
-
-{{ super() }}
-
-<script id="snippet" src="https://widgets.example.com/snippet.js> </script>
-
+  <!-- Add scripts that need to run before here -->
+  {{ super() }}
+  <!-- Add scripts that need to run afterwards here -->
 {% endblock %}
+```
 
 The following template blocks are provided by the theme:
 
