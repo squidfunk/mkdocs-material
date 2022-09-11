@@ -32,7 +32,7 @@ See additional configuration options:
 
 ### Lightbox
 
-[:octicons-tag-24: 0.1.0][glightbox support] ·
+[:octicons-tag-24: 0.1.0][Lightbox support] ·
 [:octicons-cpu-24: Plugin][glightbox]
 
 If you want to add image zoom functionality to your documentation, the 
@@ -53,7 +53,7 @@ plugins:
 We recommend checking out the available
 [configuration options][glightbox options].
 
-  [glightbox support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [Lightbox support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [glightbox]: https://github.com/blueswen/mkdocs-glightbox
   [glightbox options]: https://github.com/blueswen/mkdocs-glightbox#usage
 

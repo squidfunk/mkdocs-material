@@ -15,8 +15,8 @@ when writing your documentation in Markdown. Not enough? You can also add
 
 ### Logo
 
-[:octicons-tag-24: 0.1.0][logo support] ·
-:octicons-milestone-24: Default: [`material/library`][logo default]
+[:octicons-tag-24: 0.1.0][Logo support] ·
+:octicons-milestone-24: Default: :material-library: – `material/library`
 
 The logo can be changed to a user-provided image (any type, incl. `*.png` and
 `*.svg`) located in the `docs` folder, or to any icon bundled with the theme.
@@ -48,8 +48,7 @@ Add the following lines to `mkdocs.yml`:
           </div>
         </div>
 
-  [logo support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [logo default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/material/library.svg
+  [Logo support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [icon search]: ../reference/icons-emojis.md#search
 
 Normally, the logo in the header and sidebar links to the homepage of the
@@ -63,8 +62,8 @@ extra:
 
 ### Favicon
 
-[:octicons-tag-24: 0.1.0][favicon support] ·
-:octicons-milestone-24: Default: [`assets/images/favicon.png`][favicon default]
+[:octicons-tag-24: 0.1.0][Favicon support] ·
+:octicons-milestone-24: Default: [`assets/images/favicon.png`][Favicon default]
 
 The favicon can be changed to a path pointing to a user-provided image, which 
 must be located in the `docs` folder. Add the following lines to `mkdocs.yml`:
@@ -74,8 +73,8 @@ theme:
   favicon: images/favicon.png
 ```
 
-  [favicon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [favicon default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/assets/images/favicon.png
+  [Favicon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [Favicon default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/assets/images/favicon.png
 
 ## Customization
 

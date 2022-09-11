@@ -17,13 +17,13 @@
           "properties": {
             "tags_file": {
               "title": "Markdown file to render tags index",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tags-file",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_file",
               "pattern": "\\.md$",
               "default": "tags.md"
             },
             "tags_extra_files": {
               "title": "Markdown files to render additional tags indexes",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tags-extra-files",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_extra_files",
               "type": "object",
               "patternProperties": {
                 "\\.md$": {

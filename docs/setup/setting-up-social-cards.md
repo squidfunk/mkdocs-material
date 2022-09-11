@@ -6,8 +6,8 @@ template: overrides/main.html
 
 Social cards, also known as social previews, are images that are displayed when
 a link to your project documentation is shared on social media. Material for
-MkDocs can generate beautiful social cards automatically, using the [colors]
-[palette.primary], [fonts][font.text] and [logo][^1] defined in `mkdocs.yml`,
+MkDocs can generate beautiful social cards automatically, using the [colors], 
+[fonts] and [logo][^1] defined in `mkdocs.yml`,
 e.g.:
 
 <figure markdown>
@@ -28,8 +28,8 @@ The social preview image for the page on [setting up site analytics].
     color used in the header (white or black), which depends on the primary
     color.
 
-  [palette.primary]: changing-the-colors.md#primary-color
-  [font.text]: changing-the-fonts.md#regular-font
+  [colors]: changing-the-colors.md#primary-color
+  [fonts]: changing-the-fonts.md#regular-font
   [logo]: changing-the-logo-and-icons.md#logo
   [Social cards preview]: ../assets/screenshots/social-cards.png
   [setting up site analytics]: setting-up-site-analytics.md
@@ -59,7 +59,7 @@ plugins:
 
 The following configuration options are available:
 
-`cards`{ #cards }
+[`cards`](#+social.cards){ #+social.cards }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     to generate social card images. If you want to switch the plugin off, e.g.
@@ -71,7 +71,7 @@ The following configuration options are available:
           cards: !ENV [CARDS, false]
     ```
 
-`cards_color`{ #cards-color }
+[`cards_color`](#+social.cards_color){ #+social.cards_color }
 
 :   [:octicons-tag-24: insiders-2.13.0][Insiders] · :octicons-milestone-24:
     Default: [`theme.palette.primary`][palette.primary] – This option specifies
@@ -89,7 +89,7 @@ The following configuration options are available:
     1.  Colors can either be defined as HEX colors, or as [CSS color keywords].
         Note that HEX colors must be enclosed in quotes.
 
-`cards_font`{ #cards-font }
+[`cards_font`](#+social.cards_font){ #+social.cards_font }
 
 :   [:octicons-tag-24: insiders-4.3.0][Insiders] · :octicons-milestone-24:
     Default: [`theme.font.text`][font.text] – This option specifies which font
@@ -102,7 +102,7 @@ The following configuration options are available:
           cards_font: Roboto
     ```
 
-`cards_dir`{ #cards-dir }
+[`cards_dir`](#+social.cards_dir){ #+social.cards_dir }
 
 :   :octicons-milestone-24: Default: `assets/images/social` – This option
     specifies where the generated social card images will be written to. It's
@@ -111,13 +111,15 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - social:
-          cards_dir: assets/images/social
+          cards_dir: path/to/folder
     ```
 
   [Insiders]: ../insiders/index.md
   [dependencies]: #dependencies
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
+  [palette.primary]: changing-the-colors.md#primary-color
+  [font.text]: changing-the-fonts.md#regular-font
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
   [Google Fonts]: https://fonts.google.com

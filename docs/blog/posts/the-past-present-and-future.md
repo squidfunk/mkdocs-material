@@ -1,12 +1,11 @@
 ---
-template: overrides/blog.html
+date: 2021-12-27
+authors: [squidfunk]
 description: >
   2021 was a fantastic year for this project as we shipped many new awesome
   features and made this project sustainable
-search:
-  exclude: true
-hide:
-  - feedback
+categories:
+  - General
 ---
 
 # The past, present and future
@@ -14,20 +13,6 @@ hide:
 __2021 was a fantastic year for this project as we shipped many new awesome
 features, saw significant user growth and leveraged GitHub Sponsors to make the
 project sustainable.__
-
-<aside class="mdx-author" markdown>
-![@squidfunk][@squidfunk avatar]
-
-<span>__Martin Donath__ · @squidfunk</span>
-<span>
-:octicons-calendar-24: December 27, 2021 ·
-:octicons-clock-24: 10 min read
-</span>
-</aside>
-
-  [@squidfunk avatar]: https://avatars.githubusercontent.com/u/932156
-
----
 
 Today, together, [MkDocs] and Material for MkDocs are among the most popular
 options when it comes to choosing a static site generator and theme for your
@@ -37,6 +22,8 @@ resolution or device capabilities. It has evolved to a framework for technical
 writing, offering many features, some of which are yet to be found in other
 static site generators. However, we're far from the end, as 2022 is going to
 bring some interesting new capabilities.
+
+<!-- more -->
 
 _This article showcases all features that were added in 2021 and gives an
 outlook on what's going to drop in 2022. Additionally, it provides some context
@@ -187,7 +174,7 @@ __55__ times, `mkdocs-material-insiders` was shipped __72__ times.
   [Color palette toggle]: ../../setup/changing-the-colors.md#color-palette-toggle
   [Content tabs: improved support]: ../../reference/content-tabs.md
   [Content tabs: auto-linking]: ../../reference/content-tabs.md#linked-content-tabs
-  [Cookie consent]: ../../setup/ensuring-data-privacy.md#native-cookie-consent
+  [Cookie consent]: ../../setup/ensuring-data-privacy.md#cookie-consent
   [Custom admonition icons]: ../../reference/admonitions.md#admonition-icons
   [Dark mode support for images]: ../../reference/images.md#light-and-dark-mode
   [Dismissable announcement bar]: ../../setup/setting-up-the-header.md#mark-as-read

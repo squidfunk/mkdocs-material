@@ -6,19 +6,18 @@ template: overrides/main.html
 
 A clear and concise navigation structure is an important aspect of good project 
 documentation. Material for MkDocs provides a multitude of options to configure
-the behavior of navigational elements, including [tabs][navigation.tabs] and
-[sections][navigation.sections], and its flag-ship feature: [instant loading]
-[navigation.instant].
+the behavior of navigational elements, including [tabs] and [sections], and one
+of its flag-ship feature: [instant loading].
 
-  [navigation.tabs]: #navigation-tabs
-  [navigation.sections]: #navigation-sections
-  [navigation.instant]: #instant-loading
+  [tabs]: #navigation-tabs
+  [sections]: #navigation-sections
+  [instant loading]: #instant-loading
 
 ## Configuration
 
 ### Instant loading
 
-[:octicons-tag-24: 5.0.0][navigation.instant support] ·
+[:octicons-tag-24: 5.0.0][Instant loading support] ·
 :octicons-unlock-24: Feature flag
 
 When instant loading is enabled, clicks on all internal links will be
@@ -36,7 +35,7 @@ are rebound automatically, i.e., __Material for MkDocs now behaves like a Single
 Page Application__. Now, the search index survives navigation, which is
 especially useful for large documentation sites.
 
-  [navigation.instant support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.2.0
+  [Instant loading support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.2.0
   [XHR]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
 ### Anchor tracking
@@ -59,7 +58,7 @@ theme:
 
 ### Navigation tabs
 
-[:octicons-tag-24: 1.1.0][navigation.tabs support] ·
+[:octicons-tag-24: 1.1.0][Navigation tabs support] ·
 :octicons-unlock-24: Feature flag
 
 When tabs are enabled, top-level sections are rendered in a menu layer below
@@ -81,21 +80,21 @@ theme:
     - navigation.tabs
 ```
 
-=== ":octicons-check-circle-fill-16: Enabled"
+=== "With tabs"
 
-    [![navigation.tabs enabled]][navigation.tabs enabled]
+    [![Navigation tabs enabled]][Navigation tabs enabled]
 
-=== ":octicons-skip-16: Disabled"
+=== "Without"
 
-    [![navigation.tabs disabled]][navigation.tabs disabled]
+    [![Navigation tabs disabled]][Navigation tabs disabled]
 
-  [navigation.tabs support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.1.0
-  [navigation.tabs enabled]: ../assets/screenshots/navigation-tabs.png
-  [navigation.tabs disabled]: ../assets/screenshots/navigation.png
+  [Navigation tabs support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.1.0
+  [Navigation tabs enabled]: ../assets/screenshots/navigation-tabs.png
+  [Navigation tabs disabled]: ../assets/screenshots/navigation.png
 
 #### Sticky navigation tabs
 
-[:octicons-tag-24: 7.3.0][navigation.tabs.sticky support] ·
+[:octicons-tag-24: 7.3.0][Sticky navigation tabs support] ·
 :octicons-unlock-24: Feature flag
 
 When sticky tabs are enabled, navigation tabs will lock below the header and
@@ -109,21 +108,21 @@ theme:
     - navigation.tabs.sticky
 ```
 
-=== ":octicons-check-circle-fill-16: Enabled"
+=== "With sticky tabs"
 
-    [![navigation.tabs.sticky enabled]][navigation.tabs.sticky enabled]
+    [![Sticky navigation tabs enabled]][Sticky navigation tabs enabled]
 
-=== ":octicons-skip-16: Disabled"
+=== "Without"
 
-    [![navigation.tabs.sticky disabled]][navigation.tabs.sticky disabled]
+    [![Sticky navigation tabs disabled]][Sticky navigation tabs disabled]
 
-  [navigation.tabs.sticky support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
-  [navigation.tabs.sticky enabled]: ../assets/screenshots/navigation-tabs-sticky.png
-  [navigation.tabs.sticky disabled]: ../assets/screenshots/navigation-tabs-collapsed.png
+  [Sticky navigation tabs support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
+  [Sticky navigation tabs enabled]: ../assets/screenshots/navigation-tabs-sticky.png
+  [Sticky navigation tabs disabled]: ../assets/screenshots/navigation-tabs-collapsed.png
 
 ### Navigation sections
 
-[:octicons-tag-24: 6.2.0][navigation.sections support] ·
+[:octicons-tag-24: 6.2.0][Navigation sections support] ·
 :octicons-unlock-24: Feature flag
 
 When sections are enabled, top-level sections are rendered as groups in the
@@ -136,26 +135,25 @@ theme:
     - navigation.sections
 ```
 
-=== ":octicons-check-circle-fill-16: Enabled"
+=== "With sections"
 
-    [![navigation.sections enabled]][navigation.sections enabled]
+    [![Navigation sections enabled]][Navigation sections enabled]
 
-=== ":octicons-skip-16: Disabled"
+=== "Without"
 
-    [![navigation.sections disabled]][navigation.sections disabled]
+    [![Navigation sections disabled]][Navigation sections disabled]
 
-  [navigation.sections support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
-  [navigation.sections enabled]: ../assets/screenshots/navigation-sections.png
-  [navigation.sections disabled]: ../assets/screenshots/navigation.png
+  [Navigation sections support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
+  [Navigation sections enabled]: ../assets/screenshots/navigation-sections.png
+  [Navigation sections disabled]: ../assets/screenshots/navigation.png
 
-Both feature flags, [`navigation.tabs`][navigation.tabs] and
-[`navigation.sections`][navigation.sections], can be combined with each other.
-If both feature flags are enabled, sections are rendered for level 2 navigation
-items.
+Both feature flags, [`navigation.tabs`][tabs] and
+[`navigation.sections`][sections], can be combined with each other. If both
+feature flags are enabled, sections are rendered for level 2 navigation items.
 
 ### Navigation expansion
 
-[:octicons-tag-24: 6.2.0][navigation.expand support] ·
+[:octicons-tag-24: 6.2.0][Navigation expansion support] ·
 :octicons-unlock-24: Feature flag
 
 When expansion is enabled, the left sidebar will expand all collapsible
@@ -168,17 +166,17 @@ theme:
     - navigation.expand
 ```
 
-=== ":octicons-check-circle-fill-16: Enabled"
+=== "With expansion"
 
-    [![navigation.expand enabled]][navigation.expand enabled]
+    [![Navigation expansion enabled]][Navigation expansion enabled]
 
-=== ":octicons-skip-16: Disabled"
+=== "Without"
 
-    [![navigation.expand disabled]][navigation.expand disabled]
+    [![Navigation expansion disabled]][Navigation expansion disabled]
 
-  [navigation.expand support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
-  [navigation.expand enabled]: ../assets/screenshots/navigation-expand.png
-  [navigation.expand disabled]: ../assets/screenshots/navigation.png
+  [Navigation expansion support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
+  [Navigation expansion enabled]: ../assets/screenshots/navigation-expand.png
+  [Navigation expansion disabled]: ../assets/screenshots/navigation.png
 
 ### Navigation pruning
 
@@ -209,7 +207,7 @@ page in that section (or the section index page).
 
 ### Section index pages
 
-[:octicons-tag-24: 7.3.0][navigation.indexes support] ·
+[:octicons-tag-24: 7.3.0][Section index pages support] ·
 :octicons-unlock-24: Feature flag
 
 When section index pages are enabled, documents can be directly attached to
@@ -225,13 +223,13 @@ theme:
 1.  This feature flag is not compatible with [`toc.integrate`][toc.integrate],
     as sections cannot host the table of contents due to missing space.
 
-=== ":octicons-check-circle-fill-16: Enabled"
+=== "With section index pages"
 
-    [![navigation.indexes enabled]][navigation.indexes enabled]
+    [![Section index pages enabled]][Section index pages enabled]
 
-=== ":octicons-skip-16: Disabled"
+=== "Without"
 
-    [![navigation.indexes disabled]][navigation.indexes disabled]
+    [![Section index pages disabled]][Section index pages disabled]
 
 In order to link a page to a section, create a new document with the name
 `index.md` in the respective folder, and add it to the beginning of your
@@ -246,9 +244,9 @@ nav:
     - Page n: section/page-n.md
 ```
 
-  [navigation.indexes support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
-  [navigation.indexes enabled]: ../assets/screenshots/navigation-index-on.png
-  [navigation.indexes disabled]: ../assets/screenshots/navigation-index-off.png
+  [Section index pages support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
+  [Section index pages enabled]: ../assets/screenshots/navigation-index-on.png
+  [Section index pages disabled]: ../assets/screenshots/navigation-index-off.png
   [toc.integrate]: #navigation-integration
 
 ### Table of contents
@@ -273,7 +271,7 @@ theme:
 
 #### Navigation integration
 
-[:octicons-tag-24: 6.2.0][toc.integrate support] ·
+[:octicons-tag-24: 6.2.0][Navigation integration support] ·
 :octicons-unlock-24: Feature flag
 
 When navigation integration for the [table of contents] is enabled, it is always
@@ -290,23 +288,23 @@ theme:
     [`navigation.indexes`][navigation.indexes], as sections cannot host the
     table of contents due to missing space.
 
-=== ":octicons-check-circle-fill-16: Enabled"
+=== "With navigation integration"
 
-    [![toc.integrate enabled]][toc.integrate enabled]
+    [![Navigation integration enabled]][Navigation integration enabled]
 
-=== ":octicons-skip-16: Disabled"
+=== "Without"
 
-    [![toc.integrate disabled]][toc.integrate disabled]
+    [![Navigation integration disabled]][Navigation integration disabled]
 
   [table of contents]: extensions/python-markdown.md#table-of-contents
-  [toc.integrate support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
-  [toc.integrate enabled]: ../assets/screenshots/toc-integrate.png
-  [toc.integrate disabled]: ../assets/screenshots/navigation-tabs.png
+  [Navigation integration support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
+  [Navigation integration enabled]: ../assets/screenshots/toc-integrate.png
+  [Navigation integration disabled]: ../assets/screenshots/navigation-tabs.png
   [navigation.indexes]: #section-index-pages
 
 ### Back-to-top button
 
-[:octicons-tag-24: 7.1.0][navigation.top support] ·
+[:octicons-tag-24: 7.1.0][Back-to-top button support] ·
 :octicons-unlock-24: Feature flag
 
 A back-to-top button can be shown when the user, after scrolling down, starts
@@ -319,7 +317,7 @@ theme:
     - navigation.top
 ```
 
-  [navigation.top support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
+  [Back-to-top button support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
 
 ## Usage
 
@@ -329,7 +327,7 @@ The navigation and/or table of contents sidebars can be hidden for a document
 with the front matter `hide` property. Add the following lines at the top of a 
 Markdown file:
 
-``` sh
+``` yaml
 ---
 hide:
   - navigation
@@ -342,19 +340,19 @@ hide:
 
 === "Hide navigation"
 
-    [![hide.navigation enabled]][hide.navigation enabled]
+    [![Hide navigation enabled]][Hide navigation enabled]
 
 === "Hide table of contents"
 
-    [![hide.toc enabled]][hide.toc enabled]
+    [![Hide table of contents enabled]][Hide table of contents enabled]
 
 === "Hide both"
 
-    [![hide.* enabled]][hide.* enabled]
+    [![Hide both enabled]][Hide both enabled]
 
-  [hide.navigation enabled]: ../assets/screenshots/hide-navigation.png
-  [hide.toc enabled]: ../assets/screenshots/hide-toc.png
-  [hide.* enabled]: ../assets/screenshots/hide-navigation-toc.png
+  [Navigation hiding enabled]: ../assets/screenshots/hide-navigation.png
+  [Hide table of contents enabled]: ../assets/screenshots/hide-toc.png
+  [Hide both enabled]: ../assets/screenshots/hide-navigation-toc.png
 
 ## Customization
 
@@ -363,7 +361,7 @@ hide:
 Material for MkDocs includes several keyboard shortcuts that make it possible
 to navigate your project documentation via keyboard. There are two modes:
 
-`search`{ #mode-search }
+[`search`](#mode:search){ #mode:search }
 
 :   This mode is active when the _search is focused_. It provides several key
     bindings to make search accessible and navigable via keyboard:
@@ -372,7 +370,7 @@ to navigate your project documentation via keyboard. There are two modes:
     * ++esc++ , ++tab++ : close search dialog
     * ++enter++ : follow selected result
 
-`global`{ #mode-global }
+[`global`](#mode:global){ #mode:global }
 
 :   This mode is active when _search is not focussed_ and when there's no other
     focussed element that is susceptible to keyboard input. The following keys
@@ -386,7 +384,7 @@ Let's say you want to bind some action to the ++x++ key. By using [additional
 JavaScript], you can subscribe to the `keyboard$` observable and attach
 your custom event listener:
 
-=== ":octicons-file-code-16: docs/javascripts/shortcuts.js"
+=== ":octicons-file-code-16: `docs/javascripts/shortcuts.js`"
 
     ``` js
     keyboard$.subscribe(function(key) {
@@ -401,7 +399,7 @@ your custom event listener:
         underlying event, so the keypress will not propagate further and
         touch other event listeners.
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_javascript:
@@ -421,7 +419,7 @@ stretch to the entire available space.
 This can easily be achieved with an [additional style sheet] and a few lines
 of CSS:
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     .md-grid {
@@ -438,7 +436,7 @@ of CSS:
         }
         ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_css:

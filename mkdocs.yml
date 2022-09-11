@@ -185,6 +185,7 @@ nav:
     - Setting up site search: setup/setting-up-site-search.md
     - Setting up site analytics: setup/setting-up-site-analytics.md
     - Setting up social cards: setup/setting-up-social-cards.md
+    - Setting up a blog: setup/setting-up-a-blog.md
     - Setting up tags: setup/setting-up-tags.md
     - Setting up versioning: setup/setting-up-versioning.md
     - Setting up the header: setup/setting-up-the-header.md
@@ -221,8 +222,9 @@ nav:
   - Blog:
     - blog/index.md
     - 2022:
-      - blog/2022/chinese-search-support.md
+      - blog/posts/blog-support-just-landed.md
+      - blog/posts/chinese-search-support.md
     - 2021:
-      - blog/2021/the-past-present-and-future.md
-      - blog/2021/excluding-content-from-search.md
-      - blog/2021/search-better-faster-smaller.md
+      - blog/posts/the-past-present-and-future.md
+      - blog/posts/excluding-content-from-search.md
+      - blog/posts/search-better-faster-smaller.md

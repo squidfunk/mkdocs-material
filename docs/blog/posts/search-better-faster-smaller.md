@@ -1,12 +1,16 @@
 ---
-template: overrides/blog.html
+date: 2021-09-13
+authors: [squidfunk]
+readtime: 15
 description: >
   How we rebuilt client-side search, delivering a better user experience while
   making it faster and smaller at the same time
-search:
-  exclude: true
-hide:
-  - feedback
+categories:
+  - Search
+  - Performance
+links:
+  - setup/setting-up-site-search.md#built-in-search-plugin
+  - insiders/index.md#how-to-become-a-sponsor
 ---
 
 # Search: better, faster, smaller
@@ -14,22 +18,6 @@ hide:
 __This is the story of how we managed to completely rebuild client-side search,
 delivering a significantly better user experience while making it faster and
 smaller at the same time.__
-
-<aside class="mdx-author" markdown>
-![@squidfunk][@squidfunk avatar]
-
-<span>__Martin Donath__ · @squidfunk</span>
-<span>
-:octicons-calendar-24: September 13, 2021 ·
-:octicons-clock-24: 15 min read ·
-[:octicons-tag-24: 7.2.6+insiders-3.0.0][insiders-3.0.0]
-</span>
-</aside>
-
-  [@squidfunk avatar]: https://avatars.githubusercontent.com/u/932156
-  [insiders-3.0.0]: ../../insiders/changelog.md#3.0.0
-
----
 
 The [search] of Material for MkDocs is by far one of its best and most-loved
 assets: [multilingual], [offline-capable], and most importantly: _all
@@ -40,6 +28,8 @@ there's still some room for improvement, which is why we rebuilt the search
 plugin and integration from the ground up. This article shines some light on the
 internals of the new search, why it's much more powerful than the previous
 version, and what's about to come.
+
+<!-- more -->
 
 _The next section discusses the architecture and issues of the current search
 implementation. If you immediately want to learn what's new, skip to the
@@ -78,7 +68,7 @@ the original Markdown file:
 
 ??? example "Expand to inspect example"
 
-    === ":octicons-file-code-16: docs/page.md"
+    === ":octicons-file-code-16: `docs/page.md`"
 
         ```` markdown
         # Example
@@ -108,7 +98,7 @@ the original Markdown file:
         * Profit!
         ````
 
-    === ":octicons-codescan-16: search_index.json"
+    === ":octicons-codescan-16: `search_index.json`"
 
         ``` json
         {

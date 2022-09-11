@@ -17,7 +17,7 @@ not be compliant with privacy regulations. Moreover, search even works
 
 ### Built-in search plugin
 
-[:octicons-tag-24: 0.1.0][search support] ·
+[:octicons-tag-24: 0.1.0][Search support] ·
 :octicons-cpu-24: Plugin
 
 The built-in search plugin integrates seamlessly with Material for MkDocs,
@@ -32,7 +32,7 @@ plugins:
 
 The following configuration options are supported:
 
-`lang`{ #search-lang }
+[`lang`](#+search.lang){ #+search.lang }
 
 :   :octicons-milestone-24: Default: _automatically set_ – This option allows
     to include the language-specific stemmers provided by [lunr-languages].
@@ -92,7 +92,7 @@ The following configuration options are supported:
     part of this list by automatically falling back to the stemmer yielding the
     best result.
 
-`separator`{ #search-separator }
+[`separator`](#+search.separator){ #+search.separator }
 
 :   :octicons-milestone-24: Default: _automatically set_ – The separator for
     indexing and query tokenization can be customized, making it possible to
@@ -112,7 +112,7 @@ The following configuration options are supported:
 
 <div class="mdx-deprecated" markdown>
 
-`prebuild_index`{ #search-prebuild-index }
+[`prebuild_index`](#+search.prebuild_index){ #+search.prebuild_index }
 
 :   [:octicons-tag-24: 5.0.0][prebuilt index support] · :octicons-archive-24:
     Deprecated · :octicons-trash-24: 8.0.0 · :octicons-milestone-24: Default:
@@ -135,7 +135,7 @@ The following configuration options are supported:
 
 </div>
 
-  [search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [Search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [lunr]: https://lunrjs.com
   [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
   [lunr's default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
@@ -143,7 +143,7 @@ The following configuration options are supported:
   [tokenizer lookahead]: #tokenizer-lookahead
   [prebuilt index support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [prebuilt index]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
-  [50% smaller]: ../blog/2021/search-better-faster-smaller.md#benchmarks
+  [50% smaller]: ../blog/posts/search-better-faster-smaller.md#benchmarks
 
 #### Chinese language support
 
@@ -163,7 +163,7 @@ If [jieba] is installed, the [built-in search plugin] automatically detects
 Chinese characters and runs them through the segmenter. The following
 configuration options are available:
 
-`jieba_dict`{ #jieba-dict }
+[`jieba_dict`](#+search.jieba_dict){ #+search.jieba_dict }
 
 :   [:octicons-tag-24: insiders-4.17.2][Insiders] · :octicons-milestone-24:
     Default: _none_ – This option allows for specifying a [custom dictionary]
@@ -180,7 +180,7 @@ configuration options are available:
         - [dict.txt.small] – 占用内存较小的词典文件
         - [dict.txt.big] – 支持繁体分词更好的词典文件
 
-`jieba_dict_user`{ #jieba-dict-user }
+[`jieba_dict_user`](#+search.jieba_dict_user){ #+search.jieba_dict_user }
 
 :   [:octicons-tag-24: insiders-4.17.2][Insiders] · :octicons-milestone-24:
     Default: _none_ – This option allows for specifying an additional
@@ -196,7 +196,7 @@ configuration options are available:
     User dictionaries can be used for tuning the segmenter to preserve
     technical terms.
 
-  [chinese search]: ../blog/2022/chinese-search-support.md
+  [chinese search]: ../blog/posts/chinese-search-support.md
   [jieba]: https://pypi.org/project/jieba/
   [built-in search plugin]: #built-in-search-plugin
   [custom dictionary]: https://github.com/fxsjy/jieba#%E5%85%B6%E4%BB%96%E8%AF%8D%E5%85%B8
@@ -223,9 +223,9 @@ occurrences inside those blocks:
     ![search preview before]
 
   [Insiders]: ../insiders/index.md
-  [new search plugin]: ../blog/2021/search-better-faster-smaller.md
-  [search preview now]: ../blog/2021/search-better-faster-smaller/search-preview-now.png
-  [search preview before]: ../blog/2021/search-better-faster-smaller/search-preview-before.png
+  [new search plugin]: ../blog/posts/search-better-faster-smaller.md
+  [search preview now]: ../blog/posts/search-better-faster-smaller/search-preview-now.png
+  [search preview before]: ../blog/posts/search-better-faster-smaller/search-preview-before.png
 
 ### Tokenizer lookahead
 
@@ -290,13 +290,13 @@ The following section explains what can be achieved with tokenizer lookahead:
 
   [separator]: #search-separator
   [words are split at case changes]: ?q=searchHighlight
-  [tokenize case changes]: ../blog/2021/search-better-faster-smaller.md#case-changes
-  [tokenize version numbers]: ../blog/2021/search-better-faster-smaller.md#version-numbers
-  [tokenize html-xml tags]: ../blog/2021/search-better-faster-smaller.md#htmlxml-tags
+  [tokenize case changes]: ../blog/posts/search-better-faster-smaller.md#case-changes
+  [tokenize version numbers]: ../blog/posts/search-better-faster-smaller.md#version-numbers
+  [tokenize html-xml tags]: ../blog/posts/search-better-faster-smaller.md#htmlxml-tags
 
 ### Search suggestions
 
-[:octicons-tag-24: 7.2.0][search.suggest support] ·
+[:octicons-tag-24: 7.2.0][Search suggestions support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -310,15 +310,15 @@ theme:
     - search.suggest
 ```
 
-Searching for [:octicons-search-24: search su][search.suggest example] yields 
-^^search suggestions^^ as a suggestion.
+Searching for [:octicons-search-24: search su][Search suggestions example]
+yields ^^search suggestions^^ as a suggestion.
 
-  [search.suggest support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
-  [search.suggest example]: ?q=search+su
+  [Search suggestions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
+  [Search suggestions example]: ?q=search+su
 
 ### Search highlighting
 
-[:octicons-tag-24: 7.2.0][search.highlight support] ·
+[:octicons-tag-24: 7.2.0][Search highlighting support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -332,15 +332,15 @@ theme:
     - search.highlight
 ```
 
-Searching for [:octicons-search-24: code blocks][search.highlight example]
+Searching for [:octicons-search-24: code blocks][Search highlighting example]
 highlights all occurrences of both terms.
 
-  [search.highlight support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
-  [search.highlight example]: ../reference/code-blocks.md?h=code+blocks
+  [Search highlighting support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
+  [Search highlighting example]: ../reference/code-blocks.md?h=code+blocks
 
 ### Search sharing
 
-[:octicons-tag-24: 7.2.0][search.share support] ·
+[:octicons-tag-24: 7.2.0][Search sharing support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -357,7 +357,7 @@ theme:
 When a user clicks the share button, the URL is automatically copied to the
 clipboard.
 
-  [search.share support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
+  [Search sharing support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
 
 ## Usage
 
@@ -370,7 +370,7 @@ Pages can be boosted in search with the front matter `search.boost` property,
 which will make them rank higher. Add the following lines at the top of a
 Markdown file:
 
-``` sh
+``` yaml
 ---
 search:
   boost: 2 # (1)!
@@ -395,7 +395,7 @@ Pages can be excluded from search with the front matter `search.exclude`
 property, removing them from the index. Add the following lines at the top of a 
 Markdown file:
 
-``` sh
+``` yaml
 ---
 search:
   exclude: true
@@ -411,7 +411,7 @@ When [Attribute Lists] is enabled, specific sections of pages can be excluded
 from search by adding the `{ data-search-exclude }` pragma after a Markdown
 heading:
 
-=== ":octicons-file-code-16: docs/page.md"
+=== ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
     # Document title
@@ -425,7 +425,7 @@ heading:
     The content of this section is excluded
     ```
 
-=== ":octicons-codescan-16: search_index.json"
+=== ":octicons-codescan-16: `search_index.json`"
 
     ``` json
     {
@@ -453,7 +453,7 @@ When [Attribute Lists] is enabled, specific sections of pages can be excluded
 from search by adding the `{ data-search-exclude }` pragma after a Markdown
 inline- or block-level element:
 
-=== ":octicons-file-code-16: docs/page.md"
+=== ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
     # Document title
@@ -464,7 +464,7 @@ inline- or block-level element:
     { data-search-exclude }
     ```
 
-=== ":octicons-codescan-16: search_index.json"
+=== ":octicons-codescan-16: `search_index.json`"
 
     ``` json
     {

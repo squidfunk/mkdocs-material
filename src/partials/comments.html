@@ -20,35 +20,4 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Tags -->
-{% if "tags" in config.plugins %}
-  {% include "partials/tags.html" %}
-{% endif %}
-
-<!-- Actions -->
-{% include "partials/actions.html" %}
-
-<!--
-  Hack: check whether the content contains a h1 headline. If it doesn't, the
-  page title (or respectively site name) is used as the main headline.
--->
-{% if not "\x3ch1" in page.content %}
-  <h1>{{ page.title | d(config.site_name, true)}}</h1>
-{% endif %}
-
-<!-- Page content -->
-{{ page.content }}
-
-<!-- Source file information -->
-{% if page.meta and (
-  page.meta.git_revision_date_localized or
-  page.meta.revision_date
-) %}
-  {% include "partials/source-file.html" %}
-{% endif %}
-
-<!-- Was this page helpful? -->
-{% include "partials/feedback.html" %}
-
 <!-- Comment system -->
-{% include "partials/comments.html" %}

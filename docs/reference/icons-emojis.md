@@ -118,7 +118,7 @@ declarations into dedicated CSS classes:
   }
 </style>
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     .twitter {
@@ -126,7 +126,7 @@ declarations into dedicated CSS classes:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_css:
@@ -155,7 +155,7 @@ Similar to adding [colors], it's just as easy to add [animations] to icons by
 using an [additional style sheet], defining a `@keyframes` rule and adding a
 dedicated CSS class to the icon:
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     @keyframes heart {
@@ -171,7 +171,7 @@ dedicated CSS class to the icon:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_css:

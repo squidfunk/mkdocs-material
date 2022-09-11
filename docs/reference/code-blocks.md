@@ -126,8 +126,6 @@ import tensorflow as tf
 
 ### Adding a title
 
-[:octicons-tag-24: 7.3.6][Title support]
-
 In order to provide additional context, a custom title can be added to a code
 block by using the `title="<custom title>"` option directly after the shortcode,
 e.g. to display the name of a file:
@@ -153,8 +151,6 @@ def bubble_sort(items):
 ```
 
 </div>
-
-  [Title support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.6
 
 ### Adding annotations
 
@@ -354,7 +350,7 @@ Let's say you want to change the color of `#!js "strings"`. While there are
 several [types of string tokens], they use the same color. You can assign
 a new color by using an [additional style sheet]:
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     :root > * {
@@ -362,7 +358,7 @@ a new color by using an [additional style sheet]:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_css:
@@ -373,7 +369,7 @@ If you want to tweak a specific type of string, e.g. ``#!js `backticks` ``, you
 can lookup the specific CSS class name in the [syntax theme definition], and
 override it as part of your [additional style sheet]:
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     .highlight .sb {
@@ -381,7 +377,7 @@ override it as part of your [additional style sheet]:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_css:
@@ -400,7 +396,7 @@ If you have a lot of content hosted inside your code annotations, it can be a
 good idea to increase the width of the tooltip by adding the following as part
 of an [additional style sheet]:
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     :root {
@@ -408,7 +404,7 @@ of an [additional style sheet]:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_css:
@@ -439,7 +435,7 @@ will close them.
 If you wish to revert to the prior behavior and display code annotation numbers,
 you can add an [additional style sheet] and copy and paste the following CSS:
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     .md-typeset .md-annotation__index > ::before {
@@ -450,7 +446,7 @@ you can add an [additional style sheet] and copy and paste the following CSS:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_css:

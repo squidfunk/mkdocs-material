@@ -82,14 +82,16 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 25 additional features__ that you can start using right away, and
+access to 27 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Blog plugin]  :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
+- [x] [Blog plugin: related links]  :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
 - [x] [Navigation status] :material-alert-decagram:{ .mdx-pulse title="Added on August 21, 2022" }
 - [x] [Meta plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 17, 2022" }
-- [x] [Additional tags indexes] :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
+- [x] [Additional tags indexes]
 - [x] [Document contributors]
 - [x] [Automatic light / dark mode]
 - [x] [Content tabs: anchor links]
@@ -258,10 +260,10 @@ are released for general availability.
 - [x] [Excluding content from search]
 - [x] [Offline plugin]
 
-  [Brand new search plugin]: ../blog/2021/search-better-faster-smaller.md
-  [Rich search previews]: ../blog/2021/search-better-faster-smaller.md#rich-search-previews
-  [Tokenizer with lookahead]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
-  [Advanced search highlighting]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
+  [Brand new search plugin]: ../blog/posts/search-better-faster-smaller.md
+  [Rich search previews]: ../blog/posts/search-better-faster-smaller.md#rich-search-previews
+  [Tokenizer with lookahead]: ../blog/posts/search-better-faster-smaller.md#tokenizer-lookahead
+  [Advanced search highlighting]: ../blog/posts/search-better-faster-smaller.md#accurate-highlighting
   [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
   [Offline plugin]: ../setup/building-for-offline-usage.md
 
@@ -272,13 +274,14 @@ are released for general availability.
 - [x] [Navigation icons]
 - [x] [Navigation pruning]
 - [x] [Navigation status]
-- [ ] Blog plugin
+- [x] [Blog plugin]
 
   [Annotations]: ../reference/annotations.md
-  [Chinese search support]: ../blog/2022/chinese-search-support.md
+  [Chinese search support]: ../blog/posts/chinese-search-support.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
   [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
   [Navigation status]: ../reference/index.md#setting-the-page-status
+  [Blog plugin]: ../setup/setting-up-a-blog.md
 
 #### $ 14,000 – Goat's Horn
 
@@ -298,14 +301,17 @@ are released for general availability.
 
 #### $ 16,000 – Chipotle
 
+- [x] [Blog plugin: related links]
 - [x] [Meta plugin]
 - [x] [Additional tags indexes]
+- [ ] [Navigation subtitles]
 - [ ] [Instant previews]
 - [ ] ... more to be announced
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
   [Additional tags indexes]: ../setup/setting-up-tags.md#tags-extra-files
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
+  [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
 
 ### Goals completed
 
@@ -319,7 +325,7 @@ can be used by all users.
 - [x] [Was this page helpful?]
 - [x] [Dismissable announcement bar]
 
-  [Cookie consent]: ../setup/ensuring-data-privacy.md#native-cookie-consent
+  [Cookie consent]: ../setup/ensuring-data-privacy.md#cookie-consent
   [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
   [Dismissable announcement bar]: ../setup/setting-up-the-header.md#mark-as-read
 

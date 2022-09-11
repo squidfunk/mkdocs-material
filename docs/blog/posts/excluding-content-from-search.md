@@ -1,12 +1,15 @@
 ---
-template: overrides/blog.html
+date: 2021-09-26
+authors: [squidfunk]
 description: >
   Three new simple ways to exclude dedicated parts of a document from the search
   index, allowing for more fine-grained control
-search:
-  exclude: true
-hide:
-  - feedback
+categories:
+  - Search
+links:
+  - blog/posts/search-better-faster-smaller.md
+  - setup/setting-up-site-search.md#search-exclusion
+  - insiders/index.md#how-to-become-a-sponsor
 ---
 
 # Excluding content from search
@@ -15,22 +18,6 @@ __The latest Insiders release brings three new simple ways to exclude
 dedicated parts of a document from the search index, allowing for more
 fine-grained control.__
 
-<aside class="mdx-author" markdown>
-![@squidfunk][@squidfunk avatar]
-
-<span>__Martin Donath__ · @squidfunk</span>
-<span>
-:octicons-calendar-24: September 26, 2021 ·
-:octicons-clock-24: 5 min read ·
-[:octicons-tag-24: 7.3.0+insiders-3.1.1][insiders-3.1.1]
-</span>
-</aside>
-
-  [@squidfunk avatar]: https://avatars.githubusercontent.com/u/932156
-  [insiders-3.1.1]: ../../insiders/changelog.md#3.1.1
-
----
-
 Two weeks ago, Material for MkDocs Insiders shipped a [brand new search
 plugin], yielding [massive improvements in usability], but also in [speed
 and size] of the search index. Interestingly, as discussed in the previous
@@ -38,6 +25,8 @@ blog article, we only scratched the surface of what's now possible. This
 release brings some useful features that enhance the writing experience,
 allowing for more fine-grained control of what pages, sections and blocks of a
 Markdown file should be indexed by the built-in search functionality.
+
+<!-- more -->
 
 _The following section discusses existing solutions for excluding pages and
 sections from the search index. If you immediately want to learn what's new,
@@ -124,7 +113,7 @@ directive to the front matter of the respective Markdown file. The good thing
 is that the author now only has to check the top of the document to learn
 whether it is excluded or not:
 
-``` sh
+``` yaml
 ---
 search:
   exclude: true
@@ -137,11 +126,11 @@ search:
 ### Excluding sections
 
 If a section should be excluded, the author can use the [Attribute Lists]
-extension to add a __pragma__ called `{ data-search-exclude }` at the end of a
+extension to add a __pragma__ called `data-search-exclude` at the end of a
 heading. The pragma is not included in the final HTML, as search pragmas are
 filtered by the search plugin before the page is rendered:
 
-=== ":octicons-file-code-16: docs/page.md"
+=== ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
     # Document title
@@ -155,7 +144,7 @@ filtered by the search plugin before the page is rendered:
     The content of this section is excluded
     ```
 
-=== ":octicons-codescan-16: search_index.json"
+=== ":octicons-codescan-16: `search_index.json`"
 
     ``` json
     {
@@ -181,7 +170,7 @@ If even more fine-grained control is desired, the __pragma__ can be added to
 any [block-level element] or [inline-level element] that is officially
 supported by the [Attribute Lists] extension:
 
-=== ":octicons-file-code-16: docs/page.md"
+=== ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
     # Document title
@@ -192,7 +181,7 @@ supported by the [Attribute Lists] extension:
     { data-search-exclude }
     ```
 
-=== ":octicons-codescan-16: search_index.json"
+=== ":octicons-codescan-16: `search_index.json`"
 
     ``` json
     {

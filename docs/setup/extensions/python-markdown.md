@@ -196,7 +196,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`title`{ #toc-title }
+[`title`](#+toc.title){ #+toc.title }
 
 :   [:octicons-tag-24: 7.3.5][title support] ·
     :octicons-milestone-24: Default: _automatically set_ – This option sets the
@@ -210,7 +210,7 @@ The following configuration options are supported:
           title: On this page
     ```
 
-`permalink`{ #toc-permalink }
+[`permalink`](#+toc.permalink){ #+toc.permalink }
 
 :   :octicons-milestone-24: Default: `false` – This option adds an anchor link
     containing the paragraph symbol `¶` or another custom symbol at the end of
@@ -233,7 +233,7 @@ The following configuration options are supported:
               permalink: ⚓︎
         ```
 
-`permalink_title`{ #toc-permalink-title }
+[`permalink_title`](#+toc.permalink_title){ #+toc.permalink_title }
 
 :   :octicons-milestone-24: Default: `Permanent link` – This option sets the
     title of the anchor link which is shown on hover and read by screen readers.
@@ -246,7 +246,7 @@ The following configuration options are supported:
           permalink_title: Anchor link to this section for reference
     ```
 
-`slugify`{ #toc-slugify }
+[`slugify`](#+toc.slugify){ #+toc.slugify }
 
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for
     customization of the slug function. For some languages, the default may not
@@ -269,7 +269,7 @@ The following configuration options are supported:
               slugify: !!python/name:pymdownx.slugs.uslugify_cased
         ```
 
-`toc_depth`{ #toc-depth }
+[`toc_depth`](#+toc.toc_depth){ #+toc.toc_depth }
 
 :   :octicons-milestone-24: Default: `6` – Define the range of levels to be
     included in the table of contents. This may be useful for project

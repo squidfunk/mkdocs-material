@@ -37,7 +37,7 @@ Besides enabling the extension in `mkdocs.yml`, a MathJax configuration and
 the JavaScript runtime need to be included, which can be done with a few lines
 of [additional JavaScript]:
 
-=== ":octicons-file-code-16: docs/javascripts/mathjax.js"
+=== ":octicons-file-code-16: `docs/javascripts/mathjax.js`"
 
     ``` js
     window.MathJax = {
@@ -58,7 +58,7 @@ of [additional JavaScript]:
     })
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_javascript:
@@ -154,7 +154,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`mode`{ #critic-mode }
+[`mode`](#+pymdownx.critic.mode){ #+pymdownx.critic.mode }
 
 :   :octicons-milestone-24: Default: `view` – This option defines how the markup 
     should be parsed, i.e. whether to just `view` all suggested changes, or
@@ -237,7 +237,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`emoji_index`{ #emoji-index }
+[`emoji_index`](#+pymdownx.emoji.emoji_index){ #+pymdownx.emoji.emoji_index }
 
 :   :octicons-milestone-24: Default: `emojione` – This option defines which set
     of emojis is used for rendering. Note that the use of `emojione` is not
@@ -249,7 +249,7 @@ The following configuration options are supported:
           emoji_index: !!python/name:materialx.emoji.twemoji
     ```
 
-`emoji_generator`{ #emoji-generator }
+[`emoji_generator`](#+pymdownx.emoji.emoji_generator){ #+pymdownx.emoji.emoji_generator }
 
 :   :octicons-milestone-24: Default: `to_png` – This option defines how the
     resolved emoji or icon shortcode is render. Note that icons can only be
@@ -261,7 +261,7 @@ The following configuration options are supported:
           emoji_generator: !!python/name:materialx.emoji.to_svg
     ```
 
-`options.custom_icons`{ #custom-icons }
+[`options.custom_icons`](#+pymdownx.emoji.options.custom_icons){ #+pymdownx.emoji.options.custom_icons }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to list folders
     with additional icon sets to be used in Markdown or `mkdocs.yml`, which is 
@@ -319,7 +319,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`use_pygments`{ #highlight-use-pygments }
+[`use_pygments`](#+pymdownx.highlight.use_pygments){ #+pymdownx.highlight.use_pygments }
 
 :   :octicons-milestone-24: Default: `true` – This option allows to control
     whether highlighting should be carried out during build time using
@@ -346,7 +346,7 @@ The following configuration options are supported:
         integrated with some [additional JavaScript] and an [additional style
         sheet] in `mkdocs.yml`:
 
-        === ":octicons-file-code-16: docs/javascripts/highlight.js"
+        === ":octicons-file-code-16: `docs/javascripts/highlight.js`"
 
             ``` js
             document$.subscribe(() => {
@@ -354,7 +354,7 @@ The following configuration options are supported:
             })
             ```
 
-        === ":octicons-file-code-16: mkdocs.yml"
+        === ":octicons-file-code-16: `mkdocs.yml`"
 
             ``` yaml
             extra_javascript:
@@ -371,7 +371,7 @@ The following configuration options are supported:
     syntax highlighting using [Pygments], so they don't apply if `use_pygments`
     is set to `false`.
 
-`auto_title`{ #highlight-auto-title }
+[`auto_title`](#+pymdownx.highlight.auto_title){ #+pymdownx.highlight.auto_title }
 
 :   :octicons-milestone-24: Default: `false` – This option will automatically
     add a [title] to all code blocks that shows the name of the language being
@@ -383,7 +383,7 @@ The following configuration options are supported:
           auto_title: true
     ```
 
-`linenums`{ #highlight-linenums }
+[`linenums`](#+pymdownx.highlight.linenums){ #+pymdownx.highlight.linenums }
 
 :   :octicons-milestone-24: Default: `false` – This option will add line numbers
     to _all_ code blocks. If you wish to add line numbers to _some_, but not all
@@ -397,7 +397,7 @@ The following configuration options are supported:
           linenums: true
     ```
 
-`linenums_style`{ #highlight-linenums-style }
+[`linenums_style`](#+pymdownx.highlight.linenums_style){ #+pymdownx.highlight.linenums_style }
 
 :   :octicons-milestone-24: Default: `table` – The [Highlight] extension
     provides three ways to add line numbers, two of which are supported by
@@ -415,7 +415,7 @@ The following configuration options are supported:
     copying a code block to the clipboard. Thus, the usage of either `table`
     or `pymdownx-inline` is recommended.
 
-`anchor_linenums`{ #highlight-anchor-linenums }
+[`anchor_linenums`](#+pymdownx.highlight.anchor_linenums){ #+pymdownx.highlight.anchor_linenums }
 
 :   [:octicons-tag-24: 8.1.0][anchor_linenums support] · :octicons-milestone-24:
     Default: `false` – If a code blocks contains line numbers, enabling this
@@ -579,7 +579,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`custom_fences`{ #superfences-custom-fences }
+[`custom_fences`](#+pymdownx.superfences.custom_fences){ #+pymdownx.superfences.custom_fences }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to define a
     handler for custom fences, e.g. to preserve the definitions of [Mermaid.js]
@@ -643,11 +643,11 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`alternate_style`{ #tabbed-alternate-style }
+[`alternate_style`](#+pymdownx.tabbed.alternate_style){ #+pymdownx.tabbed:alternate_style }
 
 :   [:octicons-tag-24: 7.3.1][Tabbed alternate support] ·
-    :octicons-milestone-24: Default: `false` · :octicons-alert-24: Required – 
-    This option enables the content tabs [alternate style], which has
+    :octicons-milestone-24: Default: `false` · :octicons-alert-24: __Required__
+    –  This option enables the content tabs [alternate style], which has
     [better behavior on mobile viewports], and is the only supported style:
 
     ``` yaml
@@ -692,7 +692,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-`custom_checkbox`{ #tasklist-custom-checkbox }
+[`custom_checkbox`](#+pymdownx.tasklist.custom_checkbox){ #+pymdownx.tasklist:custom_checkbox }
 
 :   :octicons-milestone-24: Default: `false` · This option toggles the rendering
     style of checkboxes, replacing native checkbox styles with beautiful icons, 
@@ -704,7 +704,7 @@ The following configuration options are supported:
           custom_checkbox: true
     ```
 
-`clickable_checkbox`{ #tasklist-clickable-checkbox }
+[`clickable_checkbox`](#+pymdownx.tasklist.clickable_checkbox){ #+pymdownx.tasklist:clickable_checkbox }
 
 :   :octicons-milestone-24: Default: `false` · This option toggles whether
     checkboxes are clickable. As the state is not persisted, the use of this 

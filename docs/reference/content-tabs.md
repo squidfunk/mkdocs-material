@@ -57,7 +57,7 @@ or to the [publishing guide for Insiders][tab_2].
 
 ### Linked content tabs
 
-[:octicons-tag-24: 8.3.0][link support] ·
+[:octicons-tag-24: 8.3.0][Linked content tabs support] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -76,18 +76,18 @@ tabs with the same label will be activated when a user clicks a content tab
 regardless of order inside a container. Furthermore, this feature is fully
 integrated with [instant loading] and persisted across page loads.
 
-=== ":octicons-check-circle-fill-16: Enabled"
+=== "Feature enabled"
 
-    [![content.tabs.link enabled]][content.tabs.link enabled]
+    [![Linked content tabs enabled]][Linked content tabs enabled]
 
-=== ":octicons-skip-16: Disabled"
+=== "Feature disabled"
 
-    [![content.tabs.link disabled]][content.tabs.link disabled]
+    [![Linked content tabs disabled]][Linked content tabs disabled]
 
-  [link support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
+  [Linked content tabs support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
-  [content.tabs.link enabled]: ../assets/screenshots/content-tabs-link.png
-  [content.tabs.link disabled]: ../assets/screenshots/content-tabs.png
+  [Linked content tabs enabled]: ../assets/screenshots/content-tabs-link.png
+  [Linked content tabs disabled]: ../assets/screenshots/content-tabs.png
 
 ## Usage
 

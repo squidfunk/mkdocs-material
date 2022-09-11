@@ -13,7 +13,7 @@ static site, including stars and forks. Furthermore, the
 
 ### Repository
 
-[:octicons-tag-24: 0.1.0][repo_url support] ·
+[:octicons-tag-24: 0.1.0][Repository support] ·
 :octicons-milestone-24: Default: _none_
 
 In order to display a link to the repository of your project as part of your
@@ -37,14 +37,14 @@ GitHub repositories also include the tag of the latest release.[^1]
     pre-release) for the latest tag you want to display next to the number of
     stars and forks.
 
-  [repo_url support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [Repository support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [repo_url]: https://www.mkdocs.org/user-guide/configuration/#repo_url
   [latest release]: https://docs.github.com/en/rest/reference/releases#get-the-latest-release
   [create a release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release
 
 #### Repository name
 
-[:octicons-tag-24: 0.1.0][repo_name support] ·
+[:octicons-tag-24: 0.1.0][Repository name support] ·
 :octicons-milestone-24: Default: _automatically set to_ `GitHub`, `GitLab` _or_
 `Bitbucket`
 
@@ -56,14 +56,14 @@ _repository name_ automatically. If you wish to customize the name, set
 repo_name: squidfunk/mkdocs-material
 ```
 
-  [repo_name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [Repository name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [repo_name]: https://www.mkdocs.org/user-guide/configuration/#repo_name
 
 #### Repository icon
 
-[:octicons-tag-24: 5.0.0][icon.repo support] ·
+[:octicons-tag-24: 5.0.0][Repository icon support] ·
 :octicons-milestone-24: Default:
-[`fontawesome/brands/git-alt`][icon.repo default]
+:fontawesome-brands-git-alt: – `fontawesome/brands/git-alt`
 
 While the default repository icon is a generic git icon, it can be set to
 any icon bundled with the theme by referencing a valid icon path in
@@ -97,13 +97,13 @@ Some popular choices:
 - :fontawesome-brands-bitbucket: – `fontawesome/brands/bitbucket`
 - :fontawesome-solid-trash: – `fontawesome/solid/trash`
 
-  [icon.repo support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
-  [icon.repo default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/fontawesome/brands/git-alt.svg
+  [Repository icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
+  [Repository icon default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/fontawesome/brands/git-alt.svg
   [icon search]: ../reference/icons-emojis.md#search
 
 #### Edit button
 
-[:octicons-tag-24: 0.1.0][edit_uri support] ·
+[:octicons-tag-24: 0.1.0][Edit button support] ·
 :octicons-milestone-24: Default: _automatically set_
 
 If the repository URL points to a [GitHub], [GitLab] or [Bitbucket] repository,
@@ -122,7 +122,26 @@ changed by setting [`edit_uri`][edit_uri] in `mkdocs.yml`:
     edit_uri: ""
     ```
 
-  [edit_uri support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+The icon of the edit button can be changed with the following lines:
+
+``` yaml
+theme:
+  icon:
+    edit: material/pencil # (1)!
+```
+
+1.  Enter a few keywords to find the perfect icon using our [icon search] and
+    click on the shortcode to copy it to your clipboard:
+
+    <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="material file edit" />
+      <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+        <div class="mdx-iconsearch-result__meta"></div>
+        <ol class="mdx-iconsearch-result__list"></ol>
+      </div>
+    </div>
+
+  [Edit button support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [edit_uri]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
   [GitHub]: https://github.com/
   [GitLab]: https://about.gitlab.com/
@@ -140,7 +159,7 @@ links to all [contributors] or [authors] involved.
 
 #### Document dates
 
-[:octicons-tag-24: 4.6.0][git-revision-date-localized support] ·
+[:octicons-tag-24: 4.6.0][Document dates support] ·
 [:octicons-cpu-24: Plugin][git-revision-date-localized]
 
 The [git-revision-date-localized] plugin adds support for adding the date of
@@ -161,7 +180,7 @@ plugins:
 
 The following configuration options are supported:
 
-`type`{ #type }
+[`type`](#+git-revision-date-localized.type){ #+git-revision-date-localized.type }
 
 :   :octicons-milestone-24: Default: `date` – The format of the date to be
     displayed. Valid values are `date`, `datetime`, `iso_date`, `iso_datetime`
@@ -173,10 +192,9 @@ The following configuration options are supported:
           type: date
     ```
 
-`enable_creation_date`{ #enable-creation-date }
+[`enable_creation_date`](#+git-revision-date-localized.enable_creation_date){ #+git-revision-date-localized.enable_creation_date }
 
-:   [:octicons-tag-24: 7.1.4][enable_creation_date support] ·
-    :octicons-milestone-24: Default: `false` – Enables the display of the
+:   :octicons-milestone-24: Default: `false` – Enables the display of the
     creation date of the file associated with the page next to the last updated
     date at the bottom of the page:
 
@@ -186,7 +204,7 @@ The following configuration options are supported:
           enable_creation_date: true
     ```
 
-`fallback_to_build_date`{ #fallback-to-build-date }
+[`fallback_to_build_date`](#+git-revision-date-localized.fallback_to_build_date){ #+git-revision-date-localized.fallback_to_build_date }
 
 :   :octicons-milestone-24: Default: `false` – Enables falling back to
     the time when `mkdocs build` was executed. Can be used as a fallback when
@@ -202,9 +220,8 @@ The other configuration options of this extension are not officially supported
 by Material for MkDocs, which is why they may yield unexpected results. Use
 them at your own risk.
 
-  [git-revision-date-localized support]: https://github.com/squidfunk/mkdocs-material/releases/tag/4.6.0
+  [Document dates support]: https://github.com/squidfunk/mkdocs-material/releases/tag/4.6.0
   [git-revision-date-localized]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
-  [enable_creation_date support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.4
 
 #### Document contributors
 
@@ -238,9 +255,9 @@ plugins:
 
 The following configuration options are supported:
 
-`repository`{ #committers-repository }
+[`repository`](#+git-committers.repository){ #+git-committers.repository }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must be set to the slug of the repository that contains your
     documentation. The slug must follow the pattern `<username>/<repository>`:
 
@@ -250,7 +267,7 @@ The following configuration options are supported:
           repository: squidfunk/mkdocs-material
     ```
 
-`token`{ #committers-repository }
+[`token`](#+git-committers.token){ #+git-committers.token }
 
 :   :octicons-milestone-24: Default: _none_ – This property should[^3] be set to
     a [personal access token], which is used by the plugin to query GitHub's API

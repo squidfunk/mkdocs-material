@@ -4,18 +4,18 @@ icon: material/tooltip-plus
 status: new
 ---
 
-# Tooltips
+# Abbreviations
 
-Material for MkDocs makes it trivial to add tooltips to links, abbreviations
-and all other elements, which allows for implementing glossary-like
-functionality, as well as small hints that are shown when the user hovers or 
-focuses an element.
+Technical documentation often incurs the usage of many acronyms, which may
+need additional explanation, especially for new user of your project. For these
+matters, Material for MkDocs uses a combination of Markdown extensions to
+enable site-wide glossaries.
 
 ## Configuration
 
-This configuration enables support for tooltips and abbreviations and allows to 
-build a simple glossary, sourcing definitions from a central location. Add the 
-following lines to `mkdocs.yml`:
+This configuration enables abbreviations and allows to build a simple
+project-wide glossary, sourcing definitions from a central location. Add the
+following line to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
@@ -108,7 +108,7 @@ extension:
 
 ### Adding abbreviations
 
-Abbreviations can be defined by using a special syntax similar to [links] and 
+Abbreviations can be defined by using a special syntax similar to URLs and 
 [footnotes], starting with a `*` and immediately followed by the term or
 acronym to be associated in square brackets:
 
@@ -128,7 +128,6 @@ The HTML specification is maintained by the W3C.
 
 </div>
 
-  [links]: #adding-tooltips
   [footnotes]: footnotes.md
 
 ### Adding a glossary
@@ -143,14 +142,14 @@ pages with the following configuration:
     `includes` is used), as MkDocs might otherwise complain about an
     unreferenced file.
 
-=== ":octicons-file-code-16: includes/abbreviations.md"
+=== ":octicons-file-code-16: `includes/abbreviations.md`"
 
     ```` markdown
     *[HTML]: Hyper Text Markup Language
     *[W3C]: World Wide Web Consortium
     ````
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ```` yaml
     markdown_extensions:
