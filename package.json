@@ -60,7 +60,7 @@
     "@types/fuzzaldrin-plus": "^0.6.2",
     "@types/html-minifier": "^4.0.2",
     "@types/lunr": "^2.3.4",
-    "@types/node": "^18.7.15",
+    "@types/node": "^18.7.16",
     "@types/resize-observer-browser": "^0.1.7",
     "@types/sass": "^1.43.1",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
@@ -80,7 +80,7 @@
     "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
-    "npm-check-updates": "^16.1.0",
+    "npm-check-updates": "^16.1.2",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.16",
     "postcss-dir-pseudo-class": "^6.0.5",
@@ -88,8 +88,8 @@
     "postcss-logical": "^5.0.4",
     "preact": "^10.10.6",
     "rimraf": "^3.0.2",
-    "sass": "^1.54.8",
-    "simple-icons": "^7.10.0",
+    "sass": "^1.54.9",
+    "simple-icons": "^7.11.0",
     "stylelint": "^14.11.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^9.0.0",
@@ -98,7 +98,7 @@
     "svgo": "^2.8.0",
     "tiny-glob": "^0.2.9",
     "ts-node": "^10.9.1",
-    "typescript": "^4.8.2"
+    "typescript": "^4.8.3"
   },
   "engines": {
     "node": ">= 16"
