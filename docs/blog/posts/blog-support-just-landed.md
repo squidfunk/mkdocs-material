@@ -84,6 +84,7 @@ theme:
   features:
     - navigation.sections
 plugins:
+  - meta
   - blog:
       blog_dir: . # (1)!
   - search
