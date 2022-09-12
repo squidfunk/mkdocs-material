@@ -130,11 +130,11 @@ assets may also be put in the `overrides` directory:
 │  └─ toc-item.html                    # Table of contents item
 ├─ 404.html                            # 404 error page
 ├─ base.html                           # Base template
-├─ blog.html                           # Blog index
-├─ blog-archive.html                   # Blog archive index
-├─ blog-category.html                  # Blog category index
-├─ blog-post.html                      # Blog post
-└─ main.html                           # Page
+├─ blog.html                           # Blog index page
+├─ blog-archive.html                   # Blog archive index page
+├─ blog-category.html                  # Blog category index page
+├─ blog-post.html                      # Blog post page
+└─ main.html                           # Default page
 ```
 
   [custom_dir]: https://www.mkdocs.org/user-guide/configuration/#custom_dir
