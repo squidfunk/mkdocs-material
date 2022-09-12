@@ -1,3 +1,7 @@
+mkdocs-material-8.4.4+insiders-4.23.0 (2022-09-12)
+
+  * Added blogging support via built-in blog plugin
+
 mkdocs-material-8.4.4 (2022-09-12)
 
   * Moved comments integration to separate partial (comments.html)

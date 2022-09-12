@@ -22,7 +22,7 @@ __Check out our [blog], which is created with the new [built-in blog plugin]!__
 
 ## Configuration
 
-### Built-in blog plugin
+### Built-in blog plugin :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.23.0][Insiders] ·
