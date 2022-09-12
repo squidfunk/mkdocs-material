@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.4.4 <small>_ September 12, 2022</small> { id="8.4.4" }
+
+- Moved comments integration to separate partial (`comments.html`)
+
 ### 8.4.3 <small>_ September 7, 2022</small> { id="8.4.3" }
 
 - Added Simple Icons to bundled icons (+2,300 icons)
