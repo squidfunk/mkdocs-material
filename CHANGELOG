@@ -1,3 +1,7 @@
+mkdocs-material-8.4.4+insiders-4.23.1 (2022-09-12)
+
+  * Fixed #4345: Blog plugin errors with default settings
+
 mkdocs-material-8.4.4+insiders-4.23.0 (2022-09-12)
 
   * Added blogging support via built-in blog plugin

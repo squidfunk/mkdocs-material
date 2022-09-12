@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.23.1 <small>_ September 12, 2022</small> { id="4.23.1" }
+
+- Fixed #4345: Blog plugin errors with default settings
+
 ### 4.23.0 <small>_ September 12, 2022</small> { id="4.23.0" }
 
 - Added blogging support via built-in blog plugin
