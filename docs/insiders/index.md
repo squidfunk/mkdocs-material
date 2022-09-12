@@ -269,19 +269,19 @@ are released for general availability.
 
 #### $ 12,000 – Piri Piri
 
-- [x] [Annotations]
+- [x] [Blog plugin]
 - [x] [Chinese search support]
+- [x] [Annotations]
 - [x] [Navigation icons]
 - [x] [Navigation pruning]
 - [x] [Navigation status]
-- [x] [Blog plugin]
 
-  [Annotations]: ../reference/annotations.md
+  [Blog plugin]: ../setup/setting-up-a-blog.md
   [Chinese search support]: ../blog/posts/chinese-search-support.md
+  [Annotations]: ../reference/annotations.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
   [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
   [Navigation status]: ../reference/index.md#setting-the-page-status
-  [Blog plugin]: ../setup/setting-up-a-blog.md
 
 #### $ 14,000 – Goat's Horn
 
