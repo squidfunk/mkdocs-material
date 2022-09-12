@@ -91,7 +91,7 @@ which are currently exclusively available to sponsors:
 - [x] [Blog plugin: related links] :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
 - [x] [Navigation status] :material-alert-decagram:{ .mdx-pulse title="Added on August 21, 2022" }
 - [x] [Meta plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 17, 2022" }
-- [x] [Additional tags indexes]
+- [x] [Tags plugin: additional indexes]
 - [x] [Document contributors]
 - [x] [Automatic light / dark mode]
 - [x] [Content tabs: anchor links]
@@ -301,15 +301,15 @@ are released for general availability.
 
 #### $ 16,000 – Chipotle
 
-- [x] [Blog plugin: related links]
 - [x] [Meta plugin]
-- [x] [Additional tags indexes]
-- [ ] [Navigation subtitles]
+- [x] [Blog plugin: related links]
+- [x] [Tags plugin: additional indexes]
 - [ ] [Instant previews]
+- [ ] Navigation subtitles
 - [ ] ... more to be announced
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
-  [Additional tags indexes]: ../setup/setting-up-tags.md#tags-extra-files
+  [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#tags-extra-files
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
   [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
 
