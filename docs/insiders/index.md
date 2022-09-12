@@ -309,7 +309,7 @@ are released for general availability.
 - [ ] ... more to be announced
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
-  [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#tags-extra-files
+  [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#+tags.tags_extra_files
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
   [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
 
