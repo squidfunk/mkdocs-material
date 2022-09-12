@@ -1165,6 +1165,16 @@ authors, and add a `.meta.yml` file to set common properties:
       - World
     ```
 
+Note that order matters – the [built-in meta plugin] must be defined before the
+blog plugin in `mkdocs.yml`, so that all set defaults are correctly picked up
+by the [built-in blog plugin]:
+
+``` yaml
+plugins:
+  - meta
+  - blog
+```
+
 Lists and dictionaries in `.meta.yml` files are merged and deduplicated with the
 values defined for a post, which means you can define common properties in
 `.meta.yml` and then add specific properties or overrides for each post.

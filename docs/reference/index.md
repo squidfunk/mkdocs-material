@@ -24,8 +24,12 @@ tags. Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - meta
+  - meta # (1)!
 ```
+
+1.  Note that the meta plugin should be located at the beginning of the list
+    of `plugins`, so that other plugins (including the [built-in blog plugin])
+    will pick up the set defaults.
 
 > If you need to be able to build your documentation with and without
 > [Insiders], please refer to the [built-in plugins] section to learn how
@@ -48,6 +52,7 @@ The following configuration options are available:
     1.  Note that it's strongly recommended to prefix meta files with a `.`,
         since otherwise they would be included in the build output.
 
+  [built-in blog plugin]: ../setup/setting-up-a-blog.md#built-in-blog-plugin
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
 
 ## Usage
