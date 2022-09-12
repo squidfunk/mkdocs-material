@@ -750,7 +750,7 @@ The following configuration options are available for drafts:
 ### RSS
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders+4.23.1][Insiders] ·
+[:octicons-tag-24: insiders-4.23.0][Insiders] ·
 [:octicons-cpu-24: Plugin][rss]
 
 The [built-in blog plugin] integrates seamlessly with the [RSS plugin][rss],
