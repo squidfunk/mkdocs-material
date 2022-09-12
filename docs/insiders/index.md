@@ -87,8 +87,8 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Blog plugin]  :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
-- [x] [Blog plugin: related links]  :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
+- [x] [Blog plugin] :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
+- [x] [Blog plugin: related links] :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
 - [x] [Navigation status] :material-alert-decagram:{ .mdx-pulse title="Added on August 21, 2022" }
 - [x] [Meta plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 17, 2022" }
 - [x] [Additional tags indexes]
