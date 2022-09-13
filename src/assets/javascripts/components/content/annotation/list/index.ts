@@ -90,7 +90,7 @@ function findAnnotationMarkers(container: HTMLElement): Text[] {
           text = marker.splitText(id.length)
           markers.push(marker)
 
-          /* Replace entire text with marker */
+        /* Replace entire text with marker */
         } else {
           text.textContent = id
           markers.push(text)
@@ -169,16 +169,16 @@ export function mountAnnotationList(
       .pipe(
         takeUntil(done$.pipe(takeLast(1)))
       )
-      .subscribe(active => {
-        el.hidden = !active
+        .subscribe(active => {
+          el.hidden = !active
 
-        /* Show annotations in code block or list (print) */
-        for (const [inner, child] of pairs)
-          if (!active)
-            swap(child, inner)
-          else
-            swap(inner, child)
-      })
+          /* Show annotations in code block or list (print) */
+          for (const [inner, child] of pairs)
+            if (!active)
+              swap(child, inner)
+            else
+              swap(inner, child)
+        })
 
     /* Create and return component */
     return merge(...[...annotations]
