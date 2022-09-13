@@ -664,8 +664,8 @@ The following configuration options are available for author info:
           authors_file: .authors.yml
     ```
 
-    The path must be defined relative to [`docs_dir`][docs_dir]. Also see the
-    section on [adding authors].
+    The path must be defined relative to [`blog_dir`][this is configurable].
+    Also see the section on [adding authors].
 
 [`authors_in_excerpt`](#+blog.authors_in_excerpt){ #+blog.authors_in_excerpt }
 
