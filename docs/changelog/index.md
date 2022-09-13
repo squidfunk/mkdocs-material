@@ -6,6 +6,15 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.5.0 <small>_ September 13, 2022</small> { id="8.5.0" }
+
+- Added support for social cards
+- Added support for code annotation anchor links (deep linking)
+- Added support for code annotation comment stripping (syntax modifier)
+- Added support for sidebars scrolling automatically to active item
+- Added support for anchor following table of contents (= auto scroll)
+- Added support for tag icons
+
 ### 8.4.4 <small>_ September 12, 2022</small> { id="8.4.4" }
 
 - Moved comments integration to separate partial (`comments.html`)

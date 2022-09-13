@@ -83,13 +83,12 @@ theme:
 
 #### Anchor links
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.4.0][Insiders] ·
+[:octicons-tag-24: 8.5.0][Anchor links support] ·
 :octicons-beaker-24: Experimental
 
-In order to link to code annotations and share them more easily, [Insiders] adds
-an anchor link to each annotation automatically, which you can copy via right
-click or open in a new tab:
+In order to be able to link to code annotations and share them more easily, and
+anchor link is automatically added to each annotation, which you can copy via
+right click or open in a new tab:
 
 ``` yaml
 # (1)!
@@ -99,7 +98,7 @@ click or open in a new tab:
     rendered open in a new tab. You can also right-click me to __copy link
     address__ to share me with others.
 
-  [Insiders]: ../insiders/index.md
+  [Anchor links support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
 
 ## Usage
 
@@ -191,13 +190,11 @@ theme:
 
 #### Stripping comments
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.4.0][Insiders] ·
+[:octicons-tag-24: 8.5.0][Stripping comments support] ·
 :octicons-beaker-24: Experimental
 
 If you wish to strip the comment characters surrounding a code annotation,
-[Insiders] adds a new syntax that allows for just that. Simply add an `!` after
-the closing parens of the code annotation:
+simply add an `!` after the closing parenthesis of the code annotation:
 
 ```` markdown title="Code block with annotation, stripped"
 ``` yaml
@@ -220,6 +217,8 @@ the closing parens of the code annotation:
 Note that this only allows for a single code annotation to be rendered per
 comment. If you want to add multiple code annotations, comments cannot be
 stripped for technical reasons.
+
+  [Stripping comments support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
 
 ### Adding line numbers
 

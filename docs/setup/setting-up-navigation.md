@@ -203,6 +203,7 @@ This feature flag is especially useful for documentation sites with 100+ or even
 Navigation pruning will replace all expandable sections with links to the first
 page in that section (or the section index page).
 
+  [Insiders]: ../insiders/index.md
   [navigation.expand]: #navigation-expansion
 
 ### Section index pages
@@ -253,8 +254,7 @@ nav:
 
 #### Anchor following
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.8.0][Insiders] ·
+[:octicons-tag-24: 8.5.0][Anchor following support] ·
 :octicons-beaker-24: Experimental
 
 When anchor following for the [table of contents] is enabled, the sidebar is
@@ -267,7 +267,7 @@ theme:
     - toc.follow
 ```
 
-  [Insiders]: ../insiders/index.md
+  [Anchor following support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
 
 #### Navigation integration
 

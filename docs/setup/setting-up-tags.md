@@ -87,12 +87,12 @@ The following configuration options are available:
     See #3864 for additional use cases.
 
   [Tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
+  [Insiders]: ../insiders/index.md
   [tag identifiers]: #tag-icons
 
 ### Tag icons
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.13.0][Insiders] ·
+[:octicons-tag-24: 8.5.0][Tag icons support] ·
 :octicons-beaker-24: Experimental
 
 Each tag can be associated with an icon, which is then rendered inside the tag.
@@ -118,9 +118,9 @@ extra:
     Identifiers can be reused between tags. Tags which are not explicitly
     associated will use the default tag icon which is :material-pound:
 
-Next, each identifier can be associated with an icon, or even a [custom icon],
-by adding the following lines to `mkdocs.yml` under the `theme.icon`
-configuration setting:
+Next, each identifier can be associated with an icon, even a [custom icon], by
+adding the following lines to `mkdocs.yml` under the `theme.icon` configuration 
+setting:
 
 === "Tag icon"
 
@@ -167,7 +167,7 @@ configuration setting:
         CSS: css
     ```
 
-  [Insiders]: ../insiders/index.md
+  [Tag icons support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
   [custom icon]: changing-the-logo-and-icons.md#additional-icons
   [icon search]: ../reference/icons-emojis.md#search
 

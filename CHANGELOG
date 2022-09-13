@@ -1,3 +1,22 @@
+mkdocs-material-8.5.0+insiders-4.23.3 (2022-09-13)
+
+  * Fixed previous and next page links for drafts of blog posts
+
+mkdocs-material-8.5.0 (2022-09-13)
+
+  * Added support for social cards
+  * Added support for code annotation anchor links (deep linking)
+  * Added support for code annotation comment stripping (syntax modifier)
+  * Added support for sidebars scrolling automatically to active item
+  * Added support for anchor following table of contents (= auto scroll)
+  * Added support for tag icons
+
+mkdocs-material-8.4.4+insiders-4.23.2 (2022-09-13)
+
+  * Fixed #4348: Blog plugin crashes on custom `nav` title
+  * Fixed blog plugin crashing when category contained only drafts
+  * Fixed rendering of content from blog index file
+
 mkdocs-material-8.4.4+insiders-4.23.1 (2022-09-12)
 
   * Fixed #4345: Blog plugin errors with default settings

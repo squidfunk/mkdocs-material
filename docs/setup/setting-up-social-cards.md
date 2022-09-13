@@ -39,8 +39,7 @@ The social preview image for the page on [setting up site analytics].
 
 ### Built-in social plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.12.0][Insiders] ·
+[:octicons-tag-24: 8.5.0][Social cards support] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
@@ -52,10 +51,6 @@ Then, add the following lines to `mkdocs.yml`:
 plugins:
   - social
 ```
-
-> If you need to be able to build your documentation with and without
-> [Insiders], please refer to the [built-in plugins] section to learn how
-> shared configurations help to achieve this.
 
 The following configuration options are available:
 
@@ -73,10 +68,9 @@ The following configuration options are available:
 
 [`cards_color`](#+social.cards_color){ #+social.cards_color }
 
-:   [:octicons-tag-24: insiders-2.13.0][Insiders] · :octicons-milestone-24:
-    Default: [`theme.palette.primary`][palette.primary] – This option specifies
-    the colors for the background `fill` and foreground `text` when generating
-    the social card:
+:   :octicons-milestone-24: Default: [`theme.palette.primary`][palette.primary]
+    – This option specifies the colors for the background `fill` and foreground 
+    `text` when generating the social card:
 
     ``` yaml
     plugins:
@@ -91,10 +85,9 @@ The following configuration options are available:
 
 [`cards_font`](#+social.cards_font){ #+social.cards_font }
 
-:   [:octicons-tag-24: insiders-4.3.0][Insiders] · :octicons-milestone-24:
-    Default: [`theme.font.text`][font.text] – This option specifies which font
-    to use for rendering the social card, which can be any font hosted on
-    [Google Fonts]:
+:   :octicons-milestone-24: Default: [`theme.font.text`][font.text] – This
+    option specifies which font to use for rendering the social card, which can
+    be any font hosted on [Google Fonts]:
 
     ``` yaml
     plugins:
@@ -114,10 +107,9 @@ The following configuration options are available:
           cards_dir: path/to/folder
     ```
 
-  [Insiders]: ../insiders/index.md
+  [Social cards support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
   [dependencies]: #dependencies
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [palette.primary]: changing-the-colors.md#primary-color
   [font.text]: changing-the-fonts.md#regular-font
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
@@ -132,7 +124,7 @@ social preview images, both of which are based on the [Cairo Graphics] library:
 - [Pillow] – Python imaging library
 - [CairoSVG] – Converter for `*.svg` files
 
-The [Docker image] for Insiders comes with all dependencies pre-installed. If
+The [Docker image] comes with all dependencies pre-installed. If
 you don't want to use Docker, see the following section which explains how to
 install all dependencies on your system:
 
@@ -179,7 +171,7 @@ install all dependencies on your system:
   [Cairo Graphics]: https://www.cairographics.org/
   [Pillow]: https://pillow.readthedocs.io/
   [CairoSVG]: https://cairosvg.org/
-  [Docker image]: ../insiders/getting-started.md#with-docker
+  [Docker image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [Homebrew]: https://brew.sh/
   [installation guide]: https://www.cairographics.org/download/
   [GTK+]: https://www.gtk.org/docs/installations/windows/
