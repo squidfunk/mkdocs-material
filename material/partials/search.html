@@ -12,11 +12,11 @@
       </label>
       <nav class="md-search__options" aria-label="{{ lang.t('search.title') }}">
         {% if "search.share" in features %}
-          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="{{ lang.t('search.share') }}" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="{{ lang.t('search.share') }}" aria-label="{{ lang.t('search.share') }}" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
             {% include ".icons/material/share-variant.svg" %}
           </a>
         {% endif %}
-        <button type="reset" class="md-search__icon md-icon" aria-label="{{ lang.t('search.reset') }}" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="{{ lang.t('search.reset') }}" aria-label="{{ lang.t('search.reset') }}" tabindex="-1">
           {% include ".icons/material/close.svg" %}
         </button>
       </nav>

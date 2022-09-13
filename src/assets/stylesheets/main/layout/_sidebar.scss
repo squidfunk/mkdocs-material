@@ -38,11 +38,11 @@
     display: none;
   }
 
-  // [tablet -]: Show navigation as drawer
-  @include break-to-device(tablet) {
+  // Primary sidebar with navigation
+  &--primary {
 
-    // Primary sidebar with navigation
-    &--primary {
+    // [tablet -]: Show navigation as drawer
+    @include break-to-device(tablet) {
       position: fixed;
       top: 0;
       inset-inline-start: px2rem(-242px);
@@ -85,6 +85,11 @@
     // [no-js]: Switch to native sticky behavior
     .no-js & {
       height: auto;
+    }
+
+    // Adjust spacing for sticky navigation tabs
+    .md-header--lifted ~ .md-container & {
+      top: px2rem(96px);
     }
   }
 

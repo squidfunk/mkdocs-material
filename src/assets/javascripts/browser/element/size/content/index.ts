@@ -41,3 +41,27 @@ export function getElementContentSize(
     height: el.scrollHeight
   }
 }
+
+/**
+ * Retrieve the overflowing container of an element, if any
+ *
+ * @param el - Element
+ *
+ * @returns Overflowing container or nothing
+ */
+export function getElementContainer(
+  el: HTMLElement
+): HTMLElement | undefined {
+  let parent = el.parentElement
+  while (parent)
+    if (
+      el.scrollWidth <= parent.scrollWidth &&
+      el.scrollHeight <= parent.scrollHeight
+    )
+      parent = (el = parent).parentElement
+    else
+      break
+
+  /* Return overflowing container */
+  return parent ? el : undefined
+}

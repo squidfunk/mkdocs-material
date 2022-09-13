@@ -43,12 +43,17 @@ RUN \
   apk upgrade --update-cache -a \
 && \
   apk add --no-cache \
+    cairo \
+    freetype-dev \
     git \
     git-fast-import \
+    jpeg-dev \
     openssh \
+    zlib-dev \
 && \
   apk add --no-cache --virtual .build \
     gcc \
+    libffi-dev \
     musl-dev \
 && \
   pip install --no-cache-dir . \

@@ -22,7 +22,7 @@
 
 import { ComponentChild } from "preact"
 
-import { feature, translation } from "~/_"
+import { configuration, feature, translation } from "~/_"
 import {
   SearchDocument,
   SearchMetadata,
@@ -77,10 +77,11 @@ function renderSearchDocument(
     )
 
   /* Render article or section, depending on flags */
+  const { tags } = configuration()
   return (
     <a href={`${url}`} class="md-search-result__link" tabIndex={-1}>
       <article
-        class={["md-search-result__article", ...parent
+        class={["md-search-result__article", "md-typeset", ...parent
           ? ["md-search-result__article--document"]
           : []
         ].join(" ")}
@@ -93,9 +94,17 @@ function renderSearchDocument(
             {truncate(document.text, 320)}
           </p>
         }
-        {document.tags && document.tags.map(tag => (
-          <span class="md-tag">{tag}</span>
-        ))}
+        {document.tags && document.tags.map(tag => {
+          const id = tag.replace(/<[^>]+>/g, "")
+          const type = tags
+            ? id in tags
+              ? `md-tag-icon md-tag-icon--${tags[id]}`
+              : "md-tag-icon"
+            : ""
+          return (
+            <span class={`md-tag ${type}`}>{tag}</span>
+          )
+        })}
         {teaser > 0 && missing.length > 0 &&
           <p class="md-search-result__terms">
             {translation("search.result.term.missing")}: {...missing}

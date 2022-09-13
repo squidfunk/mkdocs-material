@@ -34,7 +34,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.6b80c2a2.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.bd774711.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.cbb835fc.min.css' | url }}">
@@ -61,13 +61,18 @@
         <style>:root{--md-text-font:"{{ text }}";--md-code-font:"{{ code }}"}</style>
       {% endif %}
     {% endblock %}
-    {% for path in config["extra_css"] %}
+    {% for path in config.extra_css %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
     {% include "partials/javascripts/base.html" %}
     {% block analytics %}
       {% include "partials/integrations/analytics.html" %}
     {% endblock %}
+    {% if page.meta and page.meta.meta %}
+      {% for tag in page.meta.meta %}
+        <meta {% for key, value in tag.items() %} {{ key }}="{{value}}" {% endfor %}>
+      {% endfor %}
+    {% endif %}
     {% block extrahead %}{% endblock %}
   </head>
   {% set direction = config.theme.direction or lang.t('direction') %}
@@ -167,14 +172,16 @@
               </div>
             {% endif %}
           {% endblock %}
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              {% block content %}
-                {% include "partials/content.html" %}
-              {% endblock %}
-            </article>
-            {% include "partials/javascripts/content.html" %}
-          </div>
+          {% block container %}
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                {% block content %}
+                  {% include "partials/content.html" %}
+                {% endblock %}
+              </article>
+            </div>
+          {% endblock %}
+          {% include "partials/javascripts/content.html" %}
         </div>
         {% if "navigation.top" in features %}
           <a href="#" class="md-top md-icon" data-md-component="top" hidden>
@@ -211,6 +218,9 @@
       {%- if config.extra.version -%}
         {%- set _ = app.update({ "version": config.extra.version }) -%}
       {%- endif -%}
+      {%- if config.extra.tags -%}
+        {%- set _ = app.update({ "tags": config.extra.tags }) -%}
+      {%- endif -%}
       {%- set translations = app.translations -%}
       {%- for key in [
         "clipboard.copy",
@@ -235,8 +245,8 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.2ab50757.min.js' | url }}"></script>
-      {% for path in config["extra_javascript"] %}
+      <script src="{{ 'assets/javascripts/bundle.e93b4713.min.js' | url }}"></script>
+      {% for path in config.extra_javascript %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}

@@ -26,7 +26,7 @@
 {% endif %}
 
 <!-- Determine whether to show feedback -->
-{% if page and page.meta and page.meta.hide %}
+{% if page.meta and page.meta.hide %}
   {% if "feedback" in page.meta.hide %}
     {% set feedback = None %}
   {% endif %}
@@ -62,7 +62,7 @@
               {% set url = "/" ~ page.url %}
 
               <!-- Determine title -->
-              {% if page and page.meta and page.meta.title %}
+              {% if page.meta and page.meta.title %}
                 {% set title = page.meta.title | urlencode %}
               {% else %}
                 {% set title = page.title | urlencode %}

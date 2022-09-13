@@ -94,7 +94,7 @@ export function mountContent(
 
     /* Code blocks */
     ...getElements("pre:not(.mermaid) > code", el)
-      .map(child => mountCodeBlock(child, { print$ })),
+      .map(child => mountCodeBlock(child, { target$, print$ })),
 
     /* Mermaid diagrams */
     ...getElements("pre.mermaid", el)

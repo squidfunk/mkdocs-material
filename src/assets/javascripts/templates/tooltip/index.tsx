@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -22,44 +22,21 @@
 
 import { h } from "~/utilities"
 
-import { renderTooltip } from "../tooltip"
-
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Render an annotation
+ * Render a tooltip
  *
- * @param id - Annotation identifier
- * @param prefix - Tooltip identifier prefix
+ * @param id - Tooltip identifier
  *
  * @returns Element
  */
-export function renderAnnotation(
-  id: string | number, prefix?: string
-): HTMLElement {
-  prefix = prefix ? `${prefix}_annotation_${id}` : undefined
-
-  /* Render tooltip with anchor, if given */
-  if (prefix) {
-    const anchor = prefix ? `#${prefix}` : undefined
-    return (
-      <aside class="md-annotation" tabIndex={0}>
-        {renderTooltip(prefix)}
-        <a href={anchor} class="md-annotation__index" tabIndex={-1}>
-          <span data-md-annotation-id={id}></span>
-        </a>
-      </aside>
-    )
-  } else {
-    return (
-      <aside class="md-annotation" tabIndex={0}>
-        {renderTooltip(prefix)}
-        <span class="md-annotation__index" tabIndex={-1}>
-          <span data-md-annotation-id={id}></span>
-        </span>
-      </aside>
-    )
-  }
+export function renderTooltip(id?: string): HTMLElement {
+  return (
+    <div class="md-tooltip" id={id}>
+      <div class="md-tooltip__inner md-typeset"></div>
+    </div>
+  )
 }

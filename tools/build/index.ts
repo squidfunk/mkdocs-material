@@ -25,10 +25,10 @@ import * as path from "path"
 import {
   EMPTY,
   concat,
-  concatMap,
   defer,
   map,
   merge,
+  mergeMap,
   of,
   reduce,
   scan,
@@ -162,7 +162,7 @@ const sources$ = copyAll("**/*.py", {
 /* Transform styles */
 const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
   .pipe(
-    concatMap(file => zip(
+    mergeMap(file => zip(
       of(ext(file, ".css")),
       transformStyle({
         from: `src/${file}`,
@@ -174,7 +174,7 @@ const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
 /* Transform scripts */
 const javascripts$ = resolve("**/{bundle,search}.ts", { cwd: "src" })
   .pipe(
-    concatMap(file => zip(
+    mergeMap(file => zip(
       of(ext(file, ".js")),
       transformScript({
         from: `src/${file}`,

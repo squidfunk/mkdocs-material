@@ -169,15 +169,10 @@
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       position: relative;
-      float: right;
+      float: inline-end;
       width: px2rem(234px);
       padding: px2rem(2px) 0;
       transition: width 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        float: left;
-      }
     }
 
     // Adjust appearance when search is active
@@ -647,6 +642,7 @@
       height: 100%;
       background-color: currentcolor;
       mask-image: var(--md-search-result-icon);
+      mask-position: center;
       mask-repeat: no-repeat;
       mask-size: contain;
       content: "";

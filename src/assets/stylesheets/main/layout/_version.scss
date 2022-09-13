@@ -69,7 +69,9 @@
       margin-inline-start: px2rem(8px);
       background-color: currentcolor;
       mask-image: var(--md-version-icon);
+      mask-position: center;
       mask-repeat: no-repeat;
+      mask-size: contain;
       content: "";
     }
   }

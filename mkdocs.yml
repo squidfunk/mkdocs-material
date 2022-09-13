@@ -102,6 +102,7 @@ plugins:
         upgrading.md: upgrade.md
   - minify:
       minify_html: true
+  - social
 
 # Customization
 extra:

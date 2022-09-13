@@ -20,8 +20,6 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/language.html" as lang with context %}
-
 <!-- Determine cookies (default to analytics, if present) -->
 {% set cookies = config.extra.consent.cookies %}
 {% if config.extra.analytics and not cookies %}
