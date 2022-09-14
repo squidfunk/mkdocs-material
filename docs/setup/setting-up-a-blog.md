@@ -297,7 +297,7 @@ The following configuration options are available for posts:
 [`post_excerpt_separator`](#+blog.post_excerpt_separator){ #+blog.post_excerpt_separator }
 
 :   :octicons-milestone-24: Default: `<!-- more -->` – This option specifies
-    the separator the [built-in blog plugin] will look for in a post' content
+    the separator the [built-in blog plugin] will look for in a post's content
     when generating [post excerpts]. All content after the separator is not
     considered to be part of the excerpt.
 
@@ -434,7 +434,7 @@ The following configuration options are available for archive index generation:
 
 #### Categories
 
-The following configurations options are available for category index generation:
+The following configuration options are available for category index generation:
 
 [`categories`](#+blog.categories){ #+blog.categories }
 
@@ -537,7 +537,7 @@ The following configurations options are available for category index generation
 
 #### Pagination
 
-The following configurations options are available for index pagination:
+The following configuration options are available for index pagination:
 
 [`pagination`](#+blog.pagination){ #+blog.pagination }
 
@@ -1112,13 +1112,13 @@ all links are correct.
 #### Setting the reading time
 
 When [enabled], the [readtime] package is used to compute the expected reading
-time of each post, which is the rendered as part of the post and post excerpt.
+time of each post, which is rendered as part of the post and post excerpt.
 Nowadays, many blogs show reading times, which is why the [built-in blog plugin] 
 offers this capability as well.
 
 Sometimes, however, the computed reading time might not feel accurate, or
 result in odd and unpleasant numbers. For this reason, reading time can be 
-overriden and explicitly set with the `readtime` front matter property for a
+overridden and explicitly set with the `readtime` front matter property for a
 post:
 
 ``` yaml

@@ -29,7 +29,7 @@ __Challenges__
 - More time needed to get up and running
 
 While [Docusaurus] is one of the best choices when it comes to documentation
-sites that output a single page applications, there are many more solutions,
+sites that output a single page application, there are many more solutions,
 including [Docz], [Gatsby], [Vuepress] and [Docsify] that approach
 this problem similarily.
 

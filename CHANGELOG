@@ -1,3 +1,9 @@
+mkdocs-material-8.5.0+insiders-4.23.4 (2022-09-14)
+
+  * Fixed #4365: Recursion error in blog plugin due to `deepcopy`
+  * Fixed path errors for blog plugin on Windows
+  * Fixed publishing workflow in forked repositories
+
 mkdocs-material-8.5.0+insiders-4.23.3 (2022-09-13)
 
   * Fixed previous and next page links for drafts of blog posts

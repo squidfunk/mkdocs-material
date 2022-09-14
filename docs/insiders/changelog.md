@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.23.4 <small>_ September 14, 2022</small> { id="4.23.4" }
+
+- Fixed #4365: Recursion error in blog plugin due to `deepcopy`
+- Fixed path errors for blog plugin on Windows
+- Fixed publishing workflow in forked repositories
+
 ### 4.23.3 <small>_ September 13, 2022</small> { id="4.23.3" }
 
 - Fixed previous and next page links for drafts of blog posts
