@@ -95,6 +95,72 @@ The following configuration options are available:
           cards_font: Roboto
     ```
 
+    !!! tip "Limitations of the default `Roboto` font"
+        The default font value `Roboto` has no support to CJK languages, 
+        if you tend to have these characters in your page's title, 
+        or your `site_name` and `site_description` is containing CJK letters, 
+        you may switch to Noto family (`Noto Sans` or `Noto Serif`) which provides support to CJK languages, to avoid render error.
+
+        === "Simplified Chinese"
+            === "Sans Serif Font"
+                ``` yaml
+                plugins:
+                  - social:
+                      cards_font: Noto Sans SC
+                ```
+            
+            === "Serif Font"
+                ``` yaml
+                plugins:
+                  - social:
+                      cards_font: Noto Serif SC
+                ```
+        
+        === "Traditional Chinese"
+            === "Sans Serif Font"
+                ``` yaml
+                plugins:
+                  - social:
+                      cards_font: Noto Sans TC
+                ```
+            
+            === "Serif Font"
+                ``` yaml
+                plugins:
+                  - social:
+                      cards_font: Noto Serif TC
+                ```
+
+        === "Japanese"
+            === "Sans Serif Font"
+                ``` yaml
+                plugins:
+                  - social:
+                      cards_font: Noto Sans JP
+                ```
+            
+            === "Serif Font"
+                ``` yaml
+                plugins:
+                  - social:
+                      cards_font: Noto Serif JP
+                ```
+
+        === "Korean"
+            === "Sans Serif Font"
+                ``` yaml
+                plugins:
+                  - social:
+                      cards_font: Noto Sans KR
+                ```
+            
+            === "Serif Font"
+                ``` yaml
+                plugins:
+                  - social:
+                      cards_font: Noto Serif KR
+                ```
+
 [`cards_dir`](#+social.cards_dir){ #+social.cards_dir }
 
 :   :octicons-milestone-24: Default: `assets/images/social` – This option
