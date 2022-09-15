@@ -61,7 +61,9 @@ RUN \
   if [ "${WITH_PLUGINS}" = "true" ]; then \
     pip install --no-cache-dir \
       "mkdocs-minify-plugin>=0.3" \
-      "mkdocs-redirects>=1.0"; \
+      "mkdocs-redirects>=1.0" \
+      "pillow>=9.0" \
+      "cairosvg>=2.5"; \
   fi \
 && \
   apk del .build \

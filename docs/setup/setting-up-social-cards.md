@@ -118,15 +118,18 @@ The following configuration options are available:
 
 #### Dependencies
 
-Two Python packages are installed alongside Material for MkDocs to generate the
-social preview images, both of which are based on the [Cairo Graphics] library:
+Two Python libraries must be installed alongside Material for MkDocs to generate
+the social preview images, both of which are based on [Cairo Graphics] – 
+[Pillow] and [CairoSVG]:
 
-- [Pillow] – Python imaging library
-- [CairoSVG] – Converter for `*.svg` files
+```
+pip install pillow cairosvg
+```
 
-The [Docker image] comes with all dependencies pre-installed. If
-you don't want to use Docker, see the following section which explains how to
-install all dependencies on your system:
+Both libraries are built with native extensions which need to be installed as
+well. The [Docker image] comes with all dependencies pre-installed. If you don't
+want to use Docker, see the following section which explains how to install all
+dependencies on your system:
 
 === ":material-apple: macOS"
 

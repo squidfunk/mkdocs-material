@@ -70,7 +70,7 @@ class SocialPlugin(BasePlugin):
         if not dependencies:
             log.error(
                 "Required dependencies of \"social\" plugin not found. "
-                "Install with: pip install cairosvg pillow"
+                "Install with: pip install pillow cairosvg"
             )
             sys.exit()
 
