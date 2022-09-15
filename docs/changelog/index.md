@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.5.1 <small>_ September 15, 2022</small> { id="8.5.1" }
+
+- Fixed #4366: Removed dependencies with native extensions
+
 ### 8.5.0 <small>_ September 13, 2022</small> { id="8.5.0" }
 
 - Added support for social cards

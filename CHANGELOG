@@ -1,6 +1,10 @@
+mkdocs-material-8.5.1 (2022-09-15)
+
+  * Fixed #4366: Removed dependencies with native extensions
+
 mkdocs-material-8.5.0+insiders-4.23.4 (2022-09-14)
 
-  * Fixed #4365: Recursion error in blog plugin due to `deepcopy`
+  * Fixed #4365: Recursion error in blog plugin due to deepcopy
   * Fixed path errors for blog plugin on Windows
   * Fixed publishing workflow in forked repositories
 
@@ -19,7 +23,7 @@ mkdocs-material-8.5.0 (2022-09-13)
 
 mkdocs-material-8.4.4+insiders-4.23.2 (2022-09-13)
 
-  * Fixed #4348: Blog plugin crashes on custom `nav` title
+  * Fixed #4348: Blog plugin crashes on custom nav title
   * Fixed blog plugin crashing when category contained only drafts
   * Fixed rendering of content from blog index file
 
