@@ -26,7 +26,5 @@ mkdocs-material-extensions>=1.0.3
 pygments>=2.12
 pymdown-extensions>=9.4
 
-# Requirements for social plugin
-cairosvg>=2.5
-pillow>=8.0
+# Requirements for plugins
 requests>=2.26

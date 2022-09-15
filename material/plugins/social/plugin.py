@@ -18,20 +18,28 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import logging
 import os
 import re
 import requests
+import sys
 
-from cairosvg import svg2png
 from collections import defaultdict
 from hashlib import md5
 from io import BytesIO
-from mkdocs.config.config_options import Deprecated, Type
+from mkdocs.commands.build import DuplicateFilter
+from mkdocs.config.config_options import Type
 from mkdocs.plugins import BasePlugin
-from PIL import Image, ImageDraw, ImageFont
 from shutil import copyfile
 from tempfile import TemporaryFile
 from zipfile import ZipFile
+
+try:
+    from cairosvg import svg2png
+    from PIL import Image, ImageDraw, ImageFont
+    dependencies = True
+except ImportError:
+    dependencies = False
 
 # -----------------------------------------------------------------------------
 # Class
@@ -50,9 +58,6 @@ class SocialPlugin(BasePlugin):
         ("cards_dir", Type(str, default = "assets/images/social")),
         ("cards_color", Type(dict, default = {})),
         ("cards_font", Type(str, default = None)),
-
-        # Deprecated options
-        ("cards_directory", Deprecated(moved_to = "cards_dir")),
     )
 
     # Retrieve configuration
@@ -60,6 +65,14 @@ class SocialPlugin(BasePlugin):
         self.color = colors.get("indigo")
         if not self.config["cards"]:
             return
+
+        # Check if required dependencies are installed
+        if not dependencies:
+            log.error(
+                "Required dependencies of \"social\" plugin not found. "
+                "Install with: pip install cairosvg pillow"
+            )
+            sys.exit()
 
         # Ensure presence of cache directory
         self.cache = self.config["cache_dir"]
@@ -371,6 +384,10 @@ class SocialPlugin(BasePlugin):
 # -----------------------------------------------------------------------------
 # Data
 # -----------------------------------------------------------------------------
+
+# Set up logging
+log = logging.getLogger("mkdocs")
+log.addFilter(DuplicateFilter())
 
 # Color palette
 colors = dict({
