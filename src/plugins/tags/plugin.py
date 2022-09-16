@@ -48,12 +48,12 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
         self.tags_file = None
 
         # Retrieve tags mapping from configuration
-        self.tags_map = config["extra"].get("tags")
+        self.tags_map = config.extra.get("tags")
 
         # Use override of slugify function
         toc = { "slugify": slugify, "separator": "-" }
-        if "toc" in config["mdx_configs"]:
-            toc = { **toc, **config["mdx_configs"]["toc"] }
+        if "toc" in config.mdx_configs:
+            toc = { **toc, **config.mdx_configs["toc"] }
 
         # Partially apply slugify function
         self.slugify = lambda value: (
@@ -62,7 +62,7 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
 
     # Hack: 2nd pass for tags index page(s)
     def on_nav(self, nav, config, files):
-        file = self.config.get("tags_file")
+        file = self.config.tags_file
         if file:
             self.tags_file = self._get_tags_file(files, file)
 

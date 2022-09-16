@@ -63,7 +63,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
     # Retrieve configuration
     def on_config(self, config):
         self.color = colors.get("indigo")
-        if not self.config["cards"]:
+        if not self.config.cards:
             return
 
         # Check if required dependencies are installed
@@ -75,12 +75,12 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             sys.exit()
 
         # Ensure presence of cache directory
-        self.cache = self.config["cache_dir"]
+        self.cache = self.config.cache_dir
         if not os.path.isdir(self.cache):
             os.makedirs(self.cache)
 
         # Retrieve palette from theme configuration
-        theme = config["theme"]
+        theme = config.theme
         if "palette" in theme:
             palette = theme["palette"]
 
@@ -94,7 +94,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 self.color = colors.get(primary, self.color)
 
         # Retrieve color overrides
-        self.color = { **self.color, **self.config["cards_color"] }
+        self.color = { **self.color, **self.config.cards_color }
 
         # Retrieve logo and font
         self.logo = self._load_logo(config)
@@ -102,16 +102,16 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # Create social cards
     def on_page_markdown(self, markdown, page, config, files):
-        if not self.config["cards"]:
+        if not self.config.cards:
             return
 
         # Resolve image directory
-        directory = self.config["cards_dir"]
+        directory = self.config.cards_dir
         file, _ = os.path.splitext(page.file.src_path)
 
         # Resolve path of image
         path = "{}.png".format(os.path.join(
-            config["site_dir"],
+            config.site_dir,
             directory,
             file
         ))
@@ -122,11 +122,11 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             os.makedirs(directory)
 
         # Compute site name
-        site_name = config.get("site_name")
+        site_name = config.site_name
 
         # Compute page title and description
         title = page.meta.get("title", page.title)
-        description = config.get("site_description") or ""
+        description = config.site_description or ""
         if "description" in page.meta:
             description = page.meta["description"]
 
@@ -244,22 +244,22 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # Generate meta tags
     def _generate_meta(self, page, config):
-        directory = self.config["cards_dir"]
+        directory = self.config.cards_dir
         file, _ = os.path.splitext(page.file.src_path)
 
         # Compute page title
         title = page.meta.get("title", page.title)
         if not page.is_homepage:
-            title = f"{title} - {config.get('site_name')}"
+            title = f"{title} - {config.site_name}"
 
         # Compute page description
-        description = config.get("site_description")
+        description = config.site_description
         if "description" in page.meta:
             description = page.meta["description"]
 
         # Resolve image URL
         url = "{}.png".format(os.path.join(
-            config.get("site_url"),
+            config.site_url,
             directory,
             file
         ))
@@ -291,14 +291,14 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # Retrieve logo image or icon
     def _load_logo(self, config):
-        theme = config.get("theme")
+        theme = config.theme
 
         # Handle images (precedence over icons)
         if "logo" in theme:
             _, extension = os.path.splitext(theme["logo"])
 
             # Load SVG and convert to PNG
-            path = os.path.join(config["docs_dir"], theme["logo"])
+            path = os.path.join(config.docs_dir, theme["logo"])
             if extension == ".svg":
                 return self._load_logo_svg(path)
 
@@ -336,11 +336,11 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # Retrieve font
     def _load_font(self, config):
-        name = self.config.get("cards_font")
+        name = self.config.cards_font
         if not name:
 
             # Retrieve from theme (default: Roboto)
-            theme = config["theme"]
+            theme = config.theme
             if theme["font"]:
                 name = theme["font"]["text"]
             else:
