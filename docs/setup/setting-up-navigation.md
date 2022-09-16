@@ -350,7 +350,7 @@ hide:
 
     [![Hide both enabled]][Hide both enabled]
 
-  [Navigation hiding enabled]: ../assets/screenshots/hide-navigation.png
+  [Hide navigation enabled]: ../assets/screenshots/hide-navigation.png
   [Hide table of contents enabled]: ../assets/screenshots/hide-toc.png
   [Hide both enabled]: ../assets/screenshots/hide-navigation-toc.png
 
