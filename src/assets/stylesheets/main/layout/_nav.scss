@@ -607,9 +607,9 @@
             background: var(--md-default-bg-color);
             box-shadow: 0 0 px2rem(8px) px2rem(8px) var(--md-default-bg-color);
 
-            // Make navigation link clickable
-            &--index [href] {
-              pointer-events: initial;
+            // Non-index section should not be clickable
+            &:not(.md-nav__link--index) {
+              pointer-events: none;
             }
 
             // Hide naviation icon
