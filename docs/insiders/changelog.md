@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.23.5 <small>_ September 18, 2022</small> { id="4.23.5" }
+
+- Fixed #4367: Improved blog plugin date handling for MultiMarkdown syntax
+- Fixed #4374: Fixed invalid URLs of related links to other blog posts
+
 ### 4.23.4 <small>_ September 14, 2022</small> { id="4.23.4" }
 
 - Fixed #4365: Recursion error in blog plugin due to `deepcopy`

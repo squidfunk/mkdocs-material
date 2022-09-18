@@ -1,3 +1,8 @@
+mkdocs-material-8.5.2+insiders-4.23.5 (2022-09-18)
+
+  * Fixed #4367: Improved blog plugin date handling for MultiMarkdown syntax
+  * Fixed #4374: Fixed invalid URLs of related links to other blog posts
+
 mkdocs-material-8.5.2 (2022-09-18)
 
   * Updated Mermaid.js to version 9.1.7
