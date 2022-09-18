@@ -56,7 +56,7 @@ class SearchIndex(BaseIndex):
             else:
                 log.warning(
                     "Skipping 'tags' due to invalid syntax [%s]: %s",
-                    page.file.src_path,
+                    page.file.src_uri,
                     page.meta["tags"]
                 )
 

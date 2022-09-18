@@ -121,11 +121,9 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
         content = [f"## <span class=\"{classes}\">{tag}</span>", ""]
         for page in pages:
 
-            # Ensure forward slashes, as we have to use the path of the source
-            # file which contains the operating system's path separator.
             url = utils.get_relative_url(
-                page.file.src_path.replace(os.path.sep, "/"),
-                self.tags_file.src_path.replace(os.path.sep, "/")
+                page.file.src_uri,
+                self.tags_file.src_uri
             )
 
             # Render link to page
