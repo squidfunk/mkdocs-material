@@ -81,7 +81,7 @@ function renderSearchDocument(
   return (
     <a href={`${url}`} class="md-search-result__link" tabIndex={-1}>
       <article
-        class={["md-search-result__article", "md-typeset", ...parent
+        class={["md-search-result__article", ...parent
           ? ["md-search-result__article--document"]
           : []
         ].join(" ")}
@@ -94,17 +94,21 @@ function renderSearchDocument(
             {truncate(document.text, 320)}
           </p>
         }
-        {document.tags && document.tags.map(tag => {
-          const id = tag.replace(/<[^>]+>/g, "")
-          const type = tags
-            ? id in tags
-              ? `md-tag-icon md-tag-icon--${tags[id]}`
-              : "md-tag-icon"
-            : ""
-          return (
-            <span class={`md-tag ${type}`}>{tag}</span>
-          )
-        })}
+        {document.tags && (
+          <div class="md-typeset">
+            {document.tags.map(tag => {
+              const id = tag.replace(/<[^>]+>/g, "")
+              const type = tags
+                ? id in tags
+                  ? `md-tag-icon md-tag-icon--${tags[id]}`
+                  : "md-tag-icon"
+                : ""
+              return (
+                <span class={`md-tag ${type}`}>{tag}</span>
+              )
+            })}
+          </div>
+        )}
         {teaser > 0 && missing.length > 0 &&
           <p class="md-search-result__terms">
             {translation("search.result.term.missing")}: {...missing}
