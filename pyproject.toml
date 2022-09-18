@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt", "hatch-nodejs-version"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mkdocs-material"
+dynamic = [
+  "version",
+  "dependencies",
+  "license",
+  "description",
+  "authors",
+  "keywords",
+  "urls",
+]
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Web Environment",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: JavaScript",
+  "Programming Language :: Python",
+  "Topic :: Documentation",
+  "Topic :: Software Development :: Documentation",
+  "Topic :: Text Processing :: Markup :: HTML",
+]
+
+[project.entry-points."mkdocs.plugins"]
+search = "material.plugins.search.plugin:SearchPlugin"
+social = "material.plugins.social.plugin:SocialPlugin"
+tags = "material.plugins.tags.plugin:TagsPlugin"
+
+[project.entry-points."mkdocs.themes"]
+material = "material"
+
+[tool.hatch.version]
+source = "nodejs"
+
+[tool.hatch.metadata.hooks.nodejs]
+fields = ["license", "description", "authors", "keywords", "urls"]
+
+[tool.hatch.metadata.hooks.requirements_txt]
+filename = "requirements.txt"
+
+[tool.hatch.build.targets.wheel]
+include = ["/material"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/material", "/package.json", "/requirements.txt"]
+exclude = ["/material/overrides"]

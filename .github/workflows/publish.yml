@@ -46,10 +46,10 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Set up Python dependencies
-        run: pip install --upgrade setuptools wheel twine
+        run: pip install --upgrade build twine
 
       - name: Build Python package
-        run: python setup.py build sdist bdist_wheel --universal
+        run: python -m build
 
       - name: Publish Python package
         env:
