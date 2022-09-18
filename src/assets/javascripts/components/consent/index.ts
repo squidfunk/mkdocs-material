@@ -41,6 +41,14 @@ export interface Consent {
   hidden: boolean                      /* Consent is hidden */
 }
 
+/**
+ * Consent defaults
+ */
+export interface ConsentDefaults {
+  analytics?: boolean                  /* Consent for Analytics */
+  github?: boolean                     /* Consent for GitHub */
+}
+
 /* ----------------------------------------------------------------------------
  * Helper types
  * ------------------------------------------------------------------------- */
