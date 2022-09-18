@@ -6,23 +6,23 @@ template: overrides/main.html
 
 Material for MkDocs makes compliance with data privacy regulations very easy, 
 as it offers a native [cookie consent] solution to seek explicit consent from
-users before setting up [tracking]. Additionally, external assets can be
+users before setting up [analytics]. Additionally, external assets can be
 automatically downloaded for [self-hosting].
 
   [cookie consent]: #cookie-consent
-  [tracking]: setting-up-site-analytics.md
+  [analytics]: setting-up-site-analytics.md
   [self-hosting]: #built-in-privacy-plugin
 
 ## Configuration
 
-### Cookie consent { #cookie-consent }
+### Cookie consent
 
 [:octicons-tag-24: 8.4.0][Cookie consent support] ·
 :octicons-milestone-24: Default: _none_ ·
 :octicons-beaker-24: Experimental
 
 Material for MkDocs ships a native and extensible cookie consent form which
-asks the user for consent prior to sending any data via analytics. Add the
+asks the user for consent prior to sending requests to third parties. Add the
 following to `mkdocs.yml`:
 
 ``` yaml
@@ -56,10 +56,15 @@ The following properties are available:
 [`cookies`](#+consent.cookies){ #+consent.cookies }
 
 :   :octicons-milestone-24: Default: _none_ – This property allows to add custom 
-    cookies or change the initial `checked` state and name of the `analytics`
-    cookie. Each cookie must receive a unique identifier which is used as a key
-    in the `cookies` map, and can be either set to a string, or to a map
-    defining `name` and `checked` state:
+    cookies or change the initial `checked` state and name of built-in cookies.
+    Currently, the following cookies are built-in:
+
+    - __Google Analytics__ – `analytics` (enabled by default)
+    - __GitHub__ – `github` (enabled by default)
+
+    Each cookie must receive a unique identifier which is used as a key in the
+    `cookies` map, and can be either set to a string, or to a map defining
+    `name` and `checked` state:
 
     ===  "Custom cookie name"
 
@@ -95,8 +100,8 @@ The following properties are available:
             the `analytics` cookie must be added back explicitly, or analytics
             won't be triggered.
 
-
-    If Google Analytics was configured via `mkdocs.yml`, the cookie consent will automatically include a setting for the user to disable it. [Custom cookies]
+    If Google Analytics was configured via `mkdocs.yml`, the cookie consent will
+    automatically include a setting for the user to disable it. [Custom cookies]
     can be used from JavaScript.
 
 [`actions`](#+consent.actions){ #+consent.actions }

@@ -24,9 +24,9 @@
 {% set cookies = config.extra.consent.cookies %}
 {% if config.extra.analytics and not cookies %}
   {% set cookies = { "analytics": "Google Analytics" } %}
-  {% if "github.com" in config.repo_url %}
-    {% set _ = cookies.update({ "github": "GitHub" }) %}
-  {% endif %}
+{% endif %}
+{% if "github.com" in config.repo_url and "github" not in cookies %}
+  {% set _ = cookies.update({ "github": "GitHub" }) %}
 {% endif %}
 
 <!-- Determine actions -->

@@ -155,6 +155,9 @@
           "properties": {
             "analytics": {
               "$ref": "#/definitions/cookie"
+            },
+            "github": {
+              "$ref": "#/definitions/cookie"
             }
           },
           "patternProperties": {
@@ -170,6 +173,16 @@
               "body": {
                 "analytics": {
                   "name": "Google Analytics",
+                  "checked": true
+                }
+              }
+            },
+            {
+              "label": "github (default)",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+consent.cookies",
+              "body": {
+                "analytics": {
+                  "name": "GitHub",
                   "checked": true
                 }
               }
