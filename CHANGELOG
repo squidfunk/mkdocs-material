@@ -1,3 +1,10 @@
+mkdocs-material-8.5.2 (2022-09-18)
+
+  * Updated Mermaid.js to version 9.1.7
+  * Fixed overly large headlines in search results (8.5.0 regression)
+  * Fixed #4358: Navigation sections appear as clickable (8.5.0 regression)
+  * Fixed #4356: GitHub repository statistics fetched before consent
+
 mkdocs-material-8.5.1 (2022-09-15)
 
   * Fixed #4366: Removed dependencies with native extensions
