@@ -4,7 +4,7 @@ template: overrides/main.html
 
 # Creating your site
 
-After you've [installed] Material for MkDocs, you can bootstrap your project 
+After you've [installed] Material for MkDocs, you can bootstrap your project
 documentation using the `mkdocs` executable. Go to the directory where you want
 your project to be located and enter:
 
@@ -94,23 +94,30 @@ slightly different:
 
 ???+ tip "Recommended: [configuration validation and auto-complete]"
 
-    In order to minimize friction and maximize productivity, Material for MkDocs 
+    In order to minimize friction and maximize productivity, Material for MkDocs
     provides its own [schema.json][^1] for `mkdocs.yml`. If your editor supports
     YAML schema validation, it's definitely recommended to set it up:
 
     === "Visual Studio Code"
 
         1.  Install [`vscode-yaml`][vscode-yaml] for YAML language support.
-        2.  Add the schema under the `yaml.schemas` key in your user or
-            workspace [`settings.json`][settings.json]:
+        2.  Do either of the following:
 
-            ``` json
-            {
-              "yaml.schemas": {
-                "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
-              }
-            }
-            ```
+            1.  Add the schema under the `yaml.schemas` key in your user or
+                workspace [`settings.json`][settings.json]:
+
+                ``` json
+                {
+                  "yaml.schemas": {
+                    "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+                  }
+                }
+                ```
+            2.  Or, add a schema modeline to `mkdocs.yml`:
+
+                ```yaml
+                # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+                ```
 
     === "Other"
 
