@@ -196,6 +196,7 @@ kbd {
   kbd {
     color: var(--md-code-fg-color);
     direction: ltr;
+    font-variant-ligatures: none;
 
     // [print]: Wrap text and hide scollbars
     @media print {
