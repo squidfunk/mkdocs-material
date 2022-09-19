@@ -179,6 +179,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Apex.AI]](https://www.apex.ai/){ target=_blank title="Apex.AI" }
 [![Jitterbit]](https://jitterbit.com/){ target=_blank title="Jitterbit" }
 [![Sparkfun]](https://sparkfun.com/){ target=_blank title="Sparkfun Electronics" }
+[![Automation Technology]](https://automationtechnology.de/){ target=_blank title="Automation Technology" }
 
 </div>
 
@@ -204,6 +205,7 @@ You can cancel your sponsorship anytime.[^5]
   [Apex.AI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png
   [Jitterbit]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png
   [Sparkfun]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sparkfun.png
+  [Automation Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-automation-technology.png
 
 <hr />
 
