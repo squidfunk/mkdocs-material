@@ -17,7 +17,7 @@
           "properties": {
             "enabled": {
               "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#enabled",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#+offline.enabled",
               "type": "boolean",
               "default": true
             }

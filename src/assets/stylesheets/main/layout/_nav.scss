@@ -216,6 +216,7 @@
             height: 100%;
             background-color: currentcolor;
             mask-image: var(--md-nav-icon--prev);
+            mask-position: center;
             mask-repeat: no-repeat;
             mask-size: contain;
             content: "";
@@ -295,6 +296,7 @@
             height: 100%;
             background-color: currentcolor;
             mask-image: var(--md-nav-icon--next);
+            mask-position: center;
             mask-repeat: no-repeat;
             mask-size: contain;
             content: "";
@@ -439,6 +441,13 @@
 
     // Navigation title
     &--secondary &__title {
+      position: sticky;
+      top: 0;
+      // Hack: because of the hack that we need to make .md-ellipsis work in
+      // Safari, we need to set `z-index` here as - see https://bit.ly/3s5M2jm
+      z-index: 1;
+      background: var(--md-default-bg-color);
+      box-shadow: 0 0 px2rem(8px) px2rem(8px) var(--md-default-bg-color);
 
       // Adjust snapping behavior
       &[for="__toc"] {
@@ -458,6 +467,13 @@
 
     // Navigation title
     &--primary &__title {
+      position: sticky;
+      top: 0;
+      // Hack: because of the hack that we need to make .md-ellipsis work in
+      // Safari, we need to set `z-index` here as - see https://bit.ly/3s5M2jm
+      z-index: 1;
+      background: var(--md-default-bg-color);
+      box-shadow: 0 0 px2rem(8px) px2rem(8px) var(--md-default-bg-color);
 
       // Adjust snapping behavior
       &[for="__drawer"] {
@@ -524,7 +540,6 @@
 
     // Navigation icon
     &__icon {
-      float: right;
       width: px2rem(18px);
       height: px2rem(18px);
       border-radius: 100%;
@@ -534,7 +549,6 @@
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
-        float: left;
         transform: rotate(180deg);
       }
 
@@ -551,6 +565,7 @@
         vertical-align: px2rem(-2px);
         background-color: currentcolor;
         mask-image: var(--md-nav-icon--next);
+        mask-position: center;
         mask-repeat: no-repeat;
         mask-size: contain;
         content: "";
@@ -583,14 +598,18 @@
 
           // Show navigation link as title
           > .md-nav__link {
+            position: sticky;
+            top: 0;
+            z-index: 1;
             margin-top: 0;
             padding: 0 px2rem(12px);
             font-weight: 700;
-            pointer-events: none;
+            background: var(--md-default-bg-color);
+            box-shadow: 0 0 px2rem(8px) px2rem(8px) var(--md-default-bg-color);
 
-            // Make navigation link clickable
-            &--index [href] {
-              pointer-events: initial;
+            // Non-index section should not be clickable
+            &:not(.md-nav__link--index) {
+              pointer-events: none;
             }
 
             // Hide naviation icon

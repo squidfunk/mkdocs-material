@@ -153,6 +153,7 @@ and much more:
 - [Setting up site search]
 - [Setting up site analytics]
 - [Setting up social cards]
+- [Setting up a blog]
 - [Setting up tags]
 - [Setting up versioning]
 - [Setting up the header]
@@ -164,7 +165,7 @@ and much more:
 </div>
 
 Furthermore, see the list of supported [Markdown extensions] that are natively
-integrated with Material for MkDocs, delivering a low-effort and unprecedented 
+integrated with Material for MkDocs, delivering an unprecedented low-effort
 technical writing experience.
 
   [Changing the colors]: setup/changing-the-colors.md
@@ -176,6 +177,7 @@ technical writing experience.
   [Setting up site search]: setup/setting-up-site-search.md
   [Setting up site analytics]: setup/setting-up-site-analytics.md
   [Setting up social cards]: setup/setting-up-social-cards.md
+  [Setting up a blog]: setup/setting-up-a-blog.md
   [Setting up tags]: setup/setting-up-tags.md
   [Setting up versioning]: setup/setting-up-versioning.md
   [Setting up the header]: setup/setting-up-the-header.md

@@ -15,8 +15,8 @@ modern CSS features like [custom properties] and [mask images].
 
 The following table lists all browsers for which Material for MkDocs offers full
 support, so it can be assumed that all features work without degradation. If you
-find a feature not to be working in a browser in the supported version range,
-please [open an issue]:
+find that something doesn't look right in a browser which is in the supported
+version range, please [open an issue]:
 
 <figure markdown>
 

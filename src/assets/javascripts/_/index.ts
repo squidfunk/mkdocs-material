@@ -32,6 +32,7 @@ import { getElement, getLocation } from "~/browser"
 export type Flag =
   | "announce.dismiss"                 /* Dismissable announcement bar */
   | "content.code.annotate"            /* Code annotations */
+  | "content.lazy"                     /* Lazy content elements */
   | "content.tabs.link"                /* Link content tabs */
   | "header.autohide"                  /* Hide header */
   | "navigation.expand"                /* Automatic expansion */
@@ -45,6 +46,7 @@ export type Flag =
   | "search.highlight"                 /* Search highlighting */
   | "search.share"                     /* Search sharing */
   | "search.suggest"                   /* Search suggestions */
+  | "toc.follow"                       /* Following table of contents */
   | "toc.integrate"                    /* Integrated table of contents */
 
 /* ------------------------------------------------------------------------- */
@@ -91,6 +93,7 @@ export interface Config {
   features: Flag[]                     /* Feature flags */
   translations: Translations           /* Translations */
   search: string                       /* Search worker URL */
+  tags?: Record<string, string>        /* Tags mapping */
   version?: Versioning                 /* Versioning */
 }
 

@@ -103,25 +103,37 @@ assets may also be put in the `overrides` directory:
 │  │  ├─ analytics/                    # Analytics integrations
 │  │  └─ analytics.html                # Analytics setup
 │  ├─ languages/                       # Translation languages
+│  ├─ actions.html                     # Actions
+│  ├─ comments.html                    # Comment system (empty by default)
+│  ├─ consent.html                     # Consent
 │  ├─ content.html                     # Page content
 │  ├─ copyright.html                   # Copyright and theme information
+│  ├─ feedback.html                    # Was this page helpful?
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
+│  ├─ icons.html                       # Custom icons
 │  ├─ language.html                    # Translation setup
 │  ├─ logo.html                        # Logo in header and sidebar
 │  ├─ nav.html                         # Main navigation
 │  ├─ nav-item.html                    # Main navigation item
+│  ├─ pagination.html                  # Pagination (used for blog)
 │  ├─ palette.html                     # Color palette
+│  ├─ post.html                        # Blog post excerpt
 │  ├─ search.html                      # Search interface
 │  ├─ social.html                      # Social links
 │  ├─ source.html                      # Repository information
 │  ├─ source-file.html                 # Source file information
 │  ├─ tabs.html                        # Tabs navigation
 │  ├─ tabs-item.html                   # Tabs navigation item
+│  ├─ tags.html                        # Tags
 │  ├─ toc.html                         # Table of contents
 │  └─ toc-item.html                    # Table of contents item
 ├─ 404.html                            # 404 error page
 ├─ base.html                           # Base template
+├─ blog.html                           # Blog index page
+├─ blog-archive.html                   # Blog archive index page
+├─ blog-category.html                  # Blog category index page
+├─ blog-post.html                      # Blog post page
 └─ main.html                           # Default page
 ```
 
@@ -170,6 +182,21 @@ Then, e.g. to override the site title, add the following lines to `main.html`:
 {% endblock %}
 ```
 
+If you intend to __add__ something to a block rather than to replace it
+altogether with new content, use `{{ super() }}` inside the block to include the 
+original block content. This is particularly useful when adding third-party
+scripts to your docs, e.g.
+
+``` html
+{% extends "base.html" %}
+
+{% block scripts %}
+  <!-- Add scripts that need to run before here -->
+  {{ super() }}
+  <!-- Add scripts that need to run afterwards here -->
+{% endblock %}
+```
+
 The following template blocks are provided by the theme:
 
 | Block name        | Purpose                                         |
@@ -177,6 +204,7 @@ The following template blocks are provided by the theme:
 | `analytics`       | Wraps the Google Analytics integration          |
 | `announce`        | Wraps the announcement bar                      |
 | `config`          | Wraps the JavaScript application config         |
+| `container`       | Wraps the main content container                |
 | `content`         | Wraps the main content                          |
 | `extrahead`       | Empty block to add custom meta tags             |
 | `fonts`           | Wraps the font definitions                      |

@@ -17,7 +17,7 @@
           "properties": {
             "meta_file": {
               "title": "Meta file name",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/#meta-file",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/#+meta.meta_file",
               "pattern": "\\.yml$",
               "default": "\"**/.meta.yml\""
             }

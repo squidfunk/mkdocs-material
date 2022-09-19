@@ -20,30 +20,13 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Edit and view button -->
-{% if page.edit_url %}
-  {% set edit = "https://github.com/squidfunk/mkdocs-material/edit" %}
-  {% set view = "https://raw.githubusercontent.com/squidfunk/mkdocs-material" %}
-  <a
-    href="{{ page.edit_url }}"
-    title="{{ lang.t('edit.link.title') }}"
-    class="md-content__button md-icon"
-  >
-    {% include ".icons/material/file-edit-outline.svg" %}
-  </a>
-  <a
-    href="{{ page.edit_url | replace(edit, view) }}"
-    title="View source of this page"
-    class="md-content__button md-icon"
-  >
-    {% include ".icons/material/file-eye-outline.svg" %}
-  </a>
-{% endif %}
-
 <!-- Tags -->
 {% if "tags" in config.plugins %}
   {% include "partials/tags.html" %}
 {% endif %}
+
+<!-- Actions -->
+{% include "overrides/partials/actions.html" %}
 
 <!--
   Hack: check whether the content contains a h1 headline. If it doesn't, the
@@ -53,7 +36,7 @@
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 
-<!-- Markdown content -->
+<!-- Page content -->
 {{ page.content }}
 
 <!-- Source file information -->

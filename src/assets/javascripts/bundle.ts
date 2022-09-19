@@ -213,7 +213,7 @@ const content$ = defer(() => merge(
 
   /* Content */
   ...getComponentElements("content")
-    .map(el => mountContent(el, { target$, print$ })),
+    .map(el => mountContent(el, { viewport$, target$, print$ })),
 
   /* Search highlighting */
   ...getComponentElements("content")

@@ -15,7 +15,7 @@ or another destination should be used.
 
 ### Regular font
 
-[:octicons-tag-24: 0.1.2][font support] ·
+[:octicons-tag-24: 0.1.2][Font support] ·
 :octicons-milestone-24: Default: [`Roboto`][Roboto]
 
 The regular font is used for all body copy, headlines, and essentially
@@ -31,11 +31,11 @@ theme:
 The typeface will be loaded in 300, 400, _400i_ and __700__.
 
   [Roboto]: https://fonts.google.com/specimen/Roboto
-  [font support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.2
+  [Font support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.2
 
 ### Monospaced font
 
-[:octicons-tag-24: 0.1.2][font support] ·
+[:octicons-tag-24: 0.1.2][Font support] ·
 :octicons-milestone-24: Default: [`Roboto Mono`][Roboto Mono]
 
 The _monospaced font_ is used for code blocks and can be configured separately.
@@ -54,7 +54,7 @@ The typeface will be loaded in 400.
 
 ### Autoloading
 
-[:octicons-tag-24: 1.0.0][font=false support] ·
+[:octicons-tag-24: 1.0.0][Autoloading support] ·
 :octicons-milestone-24: Default: _none_
 
 If you want to prevent typefaces from being loaded from [Google Fonts], e.g.
@@ -73,7 +73,7 @@ theme:
     by automatically downloading and self-hosting the web font files.
 
   [data privacy]: https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users
-  [font=false support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
+  [Autoloading support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [built-in privacy plugin]: ensuring-data-privacy.md#built-in-privacy-plugin
 
 ## Customization
@@ -84,7 +84,7 @@ If you want to load an (additional) font from another destination or override
 the system font, you can use an [additional style sheet] to add the
 corresponding `@font-face` definition:
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     @font-face {
@@ -93,7 +93,7 @@ corresponding `@font-face` definition:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_css:

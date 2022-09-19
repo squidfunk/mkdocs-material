@@ -90,6 +90,7 @@
       height: px2rem(20px);
       background-color: currentcolor;
       mask-image: var(--md-details-icon);
+      mask-position: center;
       mask-repeat: no-repeat;
       mask-size: contain;
       transform: rotate(0deg);

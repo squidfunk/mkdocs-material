@@ -30,6 +30,8 @@ import {
   distinctUntilChanged,
   finalize,
   map,
+  observeOn,
+  take,
   tap,
   withLatestFrom
 } from "rxjs"
@@ -37,7 +39,10 @@ import {
 import {
   Viewport,
   getElement,
-  getElementOffset
+  getElementContainer,
+  getElementOffset,
+  getElementSize,
+  getElements
 } from "~/browser"
 
 import { Component } from "../_"
@@ -166,6 +171,25 @@ export function mountSidebar(
           complete() {
             inner.style.height = ""
             el.style.top       = ""
+          }
+        })
+
+    /* Bring active item into view on initial load */
+    push$
+      .pipe(
+        observeOn(animationFrameScheduler),
+        take(1)
+      )
+        .subscribe(() => {
+          for (const item of getElements(".md-nav__link--active[href]", el)) {
+            const container = getElementContainer(item)
+            if (typeof container !== "undefined") {
+              const offset = item.offsetTop - container.offsetTop
+              const { height } = getElementSize(container)
+              container.scrollTo({
+                top: offset - height / 2
+              })
+            }
           }
         })
 

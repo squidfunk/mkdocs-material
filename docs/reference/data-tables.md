@@ -131,7 +131,7 @@ If you want to make data tables sortable, you can add [tablesort], which is
 natively integrated with Material for MkDocs and will also work with [instant
 loading] via [additional JavaScript]:
 
-=== ":octicons-file-code-16: docs/javascripts/tablesort.js"
+=== ":octicons-file-code-16: `docs/javascripts/tablesort.js`"
 
     ``` js
     document$.subscribe(function() {
@@ -142,7 +142,7 @@ loading] via [additional JavaScript]:
     })
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_javascript:

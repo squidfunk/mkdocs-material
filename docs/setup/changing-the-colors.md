@@ -18,7 +18,7 @@ fit your brand's identity by using [CSS variables][custom colors].
 
 #### Color scheme
 
-[:octicons-tag-24: 5.2.0][palette.scheme support] ·
+[:octicons-tag-24: 5.2.0][Color scheme support] ·
 :octicons-milestone-24: Default: `default`
 
 Material for MkDocs supports two color schemes: a __light mode__, which is just
@@ -50,11 +50,11 @@ Click on a tile to change the color scheme:
   })
 </script>
 
-  [palette.scheme support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.2.0
+  [Color scheme support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.2.0
 
 #### Primary color
 
-[:octicons-tag-24: 0.2.0][palette.primary support] ·
+[:octicons-tag-24: 0.2.0][Primary color support] ·
 :octicons-milestone-24: Default: `indigo`
 
 The primary color is used for the header, the sidebar, text links and several
@@ -105,11 +105,11 @@ Click on a tile to change the primary color:
   })
 </script>
 
-  [palette.primary support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.2.0
+  [Primary color support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.2.0
 
 #### Accent color
 
-[:octicons-tag-24: 0.2.0][palette.accent support] ·
+[:octicons-tag-24: 0.2.0][Accent color support] ·
 :octicons-milestone-24: Default: `indigo`
 
 The accent color is used to denote elements that can be interacted with, e.g.
@@ -162,11 +162,11 @@ Click on a tile to change the accent color:
   })
 </script>
 
-  [palette.accent support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.2.0
+  [Accent color support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.2.0
 
 ### Color palette toggle
 
-[:octicons-tag-24: 7.1.0][palette.toggle support] ·
+[:octicons-tag-24: 7.1.0][Color palette toggle support] ·
 :octicons-milestone-24: Default: _none_
 
 Offering a light _and_ dark color palette makes your documentation pleasant to
@@ -209,9 +209,9 @@ and [`accent`][palette.accent] per color palette.
 
 The following properties must be set for each toggle:
 
-`icon`{ #toggle-icon }
+[`icon`](#+palette.toggle.icon){ #+palette.toggle.icon }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must point to a valid icon path referencing any icon bundled
     with the theme, or the build will not succeed. Some popular combinations:
 
@@ -221,13 +221,13 @@ The following properties must be set for each toggle:
     * :material-eye: + :material-eye-outline: – `material/eye` + `material/eye-outline`
     * :material-lightbulb: + :material-lightbulb-outline: – `material/lightbulb` + `material/lightbulb-outline`
 
-`name`{ #toggle-name }
+[`name`](#+palette.toggle.name){ #+palette.toggle.name }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property is used as the toggle's `title` attribute and should be set to
     a discernable name to improve accessibility. It's rendered as a [tooltip].
 
-  [palette.toggle support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
+  [Color palette toggle support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
   [palette.scheme]: #color-scheme
   [palette.primary]: #primary-color
   [palette.accent]: #accent-color
@@ -236,7 +236,7 @@ The following properties must be set for each toggle:
 
 ### System preference
 
-[:octicons-tag-24: 7.1.0][palette.media support] ·
+[:octicons-tag-24: 7.1.0][System preference support] ·
 :octicons-milestone-24: Default: _none_
 
 Each color palette can be linked to the user's system preference for light and
@@ -266,7 +266,7 @@ When the user first visits your site, the media queries are evaluated in the
 order of their definition. The first media query that matches selects the
 default color palette.
 
-  [palette.media support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
+  [System preference support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
 
 #### Automatic light / dark mode
 
@@ -327,7 +327,7 @@ Let's say you're :fontawesome-brands-youtube:{ style="color: #EE0F0F" }
 __YouTube__, and want to set the primary color to your brand's palette. Just
 add:
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     :root > * {
@@ -337,7 +337,7 @@ add:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_css:
@@ -358,7 +358,7 @@ by wrapping the definitions in a `[data-md-color-scheme="..."]`
 [attribute selector], which you can then set via `mkdocs.yml` as described
 in the [color schemes][palette.scheme] section:
 
-=== ":octicons-file-code-16: docs/stylesheets/extra.css"
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
     [data-md-color-scheme="youtube"] {
@@ -368,7 +368,7 @@ in the [color schemes][palette.scheme] section:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     theme:

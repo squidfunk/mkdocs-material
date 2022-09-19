@@ -33,17 +33,17 @@
             },
             "separator": {
               "title": "Separator for indexing and query tokenization",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-separator",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.separator",
               "type": "string"
             },
             "jieba_dict": {
               "title": "Jieba dictionary replacement",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#jieba-dict",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.jieba_dict",
               "type": "string"
             },
             "jieba_dict_user": {
               "title": "Jieba dictionary augmentation",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#jieba-dict",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.jieba_dict_user",
               "type": "string"
             }
           },
@@ -56,7 +56,7 @@
   "definitions": {
     "lang": {
       "title": "Site search language",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-lang",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.lang",
       "oneOf": [
         {
           "title": "Site search language: Arabic",

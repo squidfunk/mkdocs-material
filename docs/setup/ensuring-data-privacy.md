@@ -6,23 +6,23 @@ template: overrides/main.html
 
 Material for MkDocs makes compliance with data privacy regulations very easy, 
 as it offers a native [cookie consent] solution to seek explicit consent from
-users before setting up [tracking]. Additionally, external assets can be
+users before setting up [analytics]. Additionally, external assets can be
 automatically downloaded for [self-hosting].
 
-  [cookie consent]: #native-cookie-consent
-  [tracking]: setting-up-site-analytics.md
+  [cookie consent]: #cookie-consent
+  [analytics]: setting-up-site-analytics.md
   [self-hosting]: #built-in-privacy-plugin
 
 ## Configuration
 
-### Cookie consent { #native-cookie-consent }
+### Cookie consent
 
-[:octicons-tag-24: 8.4.0][cookie consent support] ·
+[:octicons-tag-24: 8.4.0][Cookie consent support] ·
 :octicons-milestone-24: Default: _none_ ·
 :octicons-beaker-24: Experimental
 
 Material for MkDocs ships a native and extensible cookie consent form which
-asks the user for consent prior to sending any data via analytics. Add the
+asks the user for consent prior to sending requests to third parties. Add the
 following to `mkdocs.yml`:
 
 ``` yaml
@@ -41,25 +41,30 @@ extra:
 
 The following properties are available:
 
-`title`{ #consent-title }
+[`title`](#+consent.title){ #+consent.title }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property sets the title of the cookie consent, which is rendered at the 
     top of the form and must be set to a non-empty string.
 
-`description`{ #consent-description }
+[`description`](#+consent.description){ #+consent.description }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property sets the description of the cookie consent, is rendered below
     the title, and may include raw HTML (e.g. a links to the terms of service).
 
-`cookies`{ #consent-cookies }
+[`cookies`](#+consent.cookies){ #+consent.cookies }
 
 :   :octicons-milestone-24: Default: _none_ – This property allows to add custom 
-    cookies or change the initial `checked` state and name of the `analytics`
-    cookie. Each cookie must receive a unique identifier which is used as a key
-    in the `cookies` map, and can be either set to a string, or to a map
-    defining `name` and `checked` state:
+    cookies or change the initial `checked` state and name of built-in cookies.
+    Currently, the following cookies are built-in:
+
+    - __Google Analytics__ – `analytics` (enabled by default)
+    - __GitHub__ – `github` (enabled by default)
+
+    Each cookie must receive a unique identifier which is used as a key in the
+    `cookies` map, and can be either set to a string, or to a map defining
+    `name` and `checked` state:
 
     ===  "Custom cookie name"
 
@@ -95,11 +100,11 @@ The following properties are available:
             the `analytics` cookie must be added back explicitly, or analytics
             won't be triggered.
 
-
-    If Google Analytics was configured via `mkdocs.yml`, the cookie consent will automatically include a setting for the user to disable it. [Custom cookies]
+    If Google Analytics was configured via `mkdocs.yml`, the cookie consent will
+    automatically include a setting for the user to disable it. [Custom cookies]
     can be used from JavaScript.
 
-`actions`{ #consent-actions }
+[`actions`](#+consent.actions){ #+consent.actions }
 
 :   :octicons-milestone-24: Default: `[accept, manage]` – This property defines
     which buttons are shown and in which order, e.g. to allow the user to accept 
@@ -121,11 +126,11 @@ The following properties are available:
 
 When a user first visits your site, a cookie consent form is rendered:
 
-[![cookie consent enabled]][cookie consent enabled]
+[![Cookie consent enabled]][Cookie consent enabled]
 
   [Custom cookies]: #custom-cookies
-  [cookie consent support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
-  [cookie consent enabled]: ../assets/screenshots/consent.png
+  [Cookie consent support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
+  [Cookie consent enabled]: ../assets/screenshots/consent.png
 
 #### Change cookie settings
 
@@ -168,7 +173,7 @@ plugins:
 
 The following configuration options are available:
 
-`enabled`{ #enabled }
+[`enabled`](#+privacy.enabled){ #+privacy.enabled }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to switch
@@ -180,7 +185,7 @@ The following configuration options are available:
           enabled: !ENV [PRIVACY, false]
     ```
 
-`externals`{ #externals }
+[`externals`](#+privacy.externals){ #+privacy.externals }
 
 :   :octicons-milestone-24: Default: `bundle` – This option specifies what the
     plugin should do when encountering external assets. There are two options:
@@ -204,7 +209,7 @@ The following configuration options are available:
     [customization]: ../customization.md
     [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
 
-`externals_dir`{ #externals-dir }
+[`externals_dir`](#+privacy.externals_dir){ #+privacy.externals_dir }
 
 :   :octicons-milestone-24: Default: `assets/externals` – This option
     specifies where the downloaded [external assets] will be stored. It's
@@ -216,7 +221,7 @@ The following configuration options are available:
           externals_dir: assets/externals
     ```
 
-`externals_exclude`{ #externals-exclude }
+[`externals_exclude`](#+privacy.externals_exclude){ #+privacy.externals_exclude }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to exclude
     certain external assets from processing by the privacy plugin, so they will
@@ -440,7 +445,7 @@ If you've customized the [cookie consent] and added a `custom` cookie, the user
 will be prompted to accept your custom cookie. Use [additional JavaScript] to
 check whether the user accepted it:
 
-=== ":octicons-file-code-16: docs/javascripts/consent.js"
+=== ":octicons-file-code-16: `docs/javascripts/consent.js`"
 
     ``` js
     var consent = __md_get("__consent")
@@ -449,7 +454,7 @@ check whether the user accepted it:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_javascript:

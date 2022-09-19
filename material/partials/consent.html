@@ -1,10 +1,12 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% import "partials/language.html" as lang with context %}
 {% set cookies = config.extra.consent.cookies %}
 {% if config.extra.analytics and not cookies %}
   {% set cookies = { "analytics": "Google Analytics" } %}
+{% endif %}
+{% if "github.com" in config.repo_url and "github" not in cookies %}
+  {% set _ = cookies.update({ "github": "GitHub" }) %}
 {% endif %}
 {% set actions = config.extra.consent.actions %}
 {% if not actions %}

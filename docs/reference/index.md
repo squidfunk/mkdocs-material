@@ -24,8 +24,12 @@ tags. Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - meta
+  - meta # (1)!
 ```
+
+1.  Note that the meta plugin should be located at the beginning of the list
+    of `plugins`, so that other plugins (including the [built-in blog plugin])
+    will pick up the set defaults.
 
 > If you need to be able to build your documentation with and without
 > [Insiders], please refer to the [built-in plugins] section to learn how
@@ -33,7 +37,7 @@ plugins:
 
 The following configuration options are available:
 
-`meta_file`{ #meta-file }
+[`meta_file`](#+meta.meta_file){ #+meta.meta_file }
 
 :   :octicons-milestone-24: Default: `**/.meta.yml` – This option specifies the
     name of the meta files that the plugin should look for. The default setting
@@ -48,6 +52,7 @@ The following configuration options are available:
     1.  Note that it's strongly recommended to prefix meta files with a `.`,
         since otherwise they would be included in the build output.
 
+  [built-in blog plugin]: ../setup/setting-up-a-blog.md#built-in-blog-plugin
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
 
 ## Usage
@@ -57,7 +62,7 @@ The following configuration options are available:
 The page title can be overridden for a document with the front matter `title`
 property. Add the following lines at the top of a Markdown file:
 
-``` sh
+``` yaml
 ---
 title: Lorem ipsum dolor sit amet # (1)!
 ---
@@ -79,7 +84,7 @@ title: Lorem ipsum dolor sit amet # (1)!
 The page description can be overridden for a document with the front matter
 `description` property. Add the following lines at the top of a Markdown file:
 
-``` sh
+``` yaml
 ---
 description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 ---
@@ -100,7 +105,7 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 An icon can be assigned to each page, which is then rendered as part of the
 navigation sidebar. Add the following lines at the top of a Markdown file:
 
-``` sh
+``` yaml
 ---
 icon: material/emoticon-happy # (1)!
 ---
@@ -153,7 +158,7 @@ The page status can now be set for a document with the front matter `status`
 property. For example, you can mark a page as `new` with the following lines at 
 the top of a Markdown file:
 
-``` sh
+``` yaml
 ---
 status: new
 ---
@@ -173,7 +178,7 @@ If you're using [theme extension] and created a new page template in the
 `overrides` directory, you can enable it for a specific page. Add the following 
 lines at the top of a Markdown file:
 
-``` sh
+``` yaml
 ---
 template: custom.html
 ---
@@ -185,7 +190,7 @@ template: custom.html
 ??? question "How to set a page template for an entire folder?"
 
     With the help of the [built-in meta plugin], you can set a custom template
-    for an entire section and all nested pages, by creating a `.meta.yml`
+    for an entire section and all nested pages, by creating a `.meta.yml` file
     in the corresponding folder with the following content:
 
     ``` yaml

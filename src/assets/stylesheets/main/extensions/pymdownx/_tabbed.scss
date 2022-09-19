@@ -276,6 +276,7 @@
         background-color 250ms,
         transform        250ms;
       mask-image: var(--md-tabbed-icon--prev);
+      mask-position: center;
       mask-repeat: no-repeat;
       mask-size: contain;
       content: "";

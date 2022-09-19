@@ -23,7 +23,7 @@
             },
             "repository": {
               "title": "Repository slug",
-              "markdownDescription": "https://github.com/ojacques/mkdocs-git-committers-plugin-2#config",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#+git-committers.repository",
               "type": "string"
             },
           },

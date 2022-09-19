@@ -133,7 +133,7 @@ matches the new structure:
 - If you've overridden a __template__, check the respective `*.html` file for
   potential changes
 
-=== ":octicons-file-code-16: base.html"
+=== ":octicons-file-code-16: `base.html`"
 
     ``` diff
     @@ -13,11 +13,6 @@
@@ -363,7 +363,7 @@ matches the new structure:
                </div>
     ```
 
-=== ":octicons-file-code-16: partials/copyright.html"
+=== ":octicons-file-code-16: `partials/copyright.html`"
 
     ``` diff
     @@ -0,0 +1,16 @@
@@ -385,7 +385,7 @@ matches the new structure:
     +</div>
     ```
 
-=== ":octicons-file-code-16: partials/footer.html"
+=== ":octicons-file-code-16: `partials/footer.html`"
 
     ``` diff
     @@ -41,21 +40,10 @@
@@ -416,7 +416,7 @@ matches the new structure:
      </footer>
     ```
 
-=== ":octicons-file-code-16: partials/social.html"
+=== ":octicons-file-code-16: `partials/social.html`"
 
     ``` diff
     @@ -4,17 +4,15 @@
@@ -492,7 +492,7 @@ matches the new structure:
 - If you've overridden a __template__, check the respective `*.html` file for
   potential changes
 
-=== ":octicons-file-code-16: base.html"
+=== ":octicons-file-code-16: `base.html`"
 
     ``` diff
     @@ -61,7 +61,7 @@
@@ -581,7 +581,7 @@ matches the new structure:
            {% endfor %}
     ```
 
-=== ":octicons-file-code-16: partials/footer.html"
+=== ":octicons-file-code-16: `partials/footer.html`"
 
     ``` diff
     -    <div class="md-footer-nav">
@@ -653,7 +653,7 @@ matches the new structure:
          <div class="md-footer-meta__inner md-grid">
     ```
 
-=== ":octicons-file-code-16: partials/header.html"
+=== ":octicons-file-code-16: `partials/header.html`"
 
     ``` diff
     @@ -6,21 +6,21 @@
@@ -725,7 +725,7 @@ matches the new structure:
          {% endif %}
     ```
 
-=== ":octicons-file-code-16: partials/source.html"
+=== ":octicons-file-code-16: `partials/source.html`"
 
     ``` diff
     @@ -4,5 +4,5 @@
@@ -737,7 +737,7 @@ matches the new structure:
          {% include ".icons/" ~ icon ~ ".svg" %}
     ```
 
-=== ":octicons-file-code-16: partials/toc.html"
+=== ":octicons-file-code-16: `partials/toc.html`"
 
     ``` diff
     @@ -12,7 +12,7 @@
@@ -808,7 +808,7 @@ matches the new structure:
 - If you've overridden a __template__, check the respective `*.html` file for
   potential changes
 
-=== ":octicons-file-code-16: base.html"
+=== ":octicons-file-code-16: `base.html`"
 
     ``` diff
     @@ -22,13 +22,6 @@
@@ -978,7 +978,7 @@ matches the new structure:
            {%- endfor -%}
     ```
 
-=== ":octicons-file-code-16: partials/hero.html"
+=== ":octicons-file-code-16: `partials/hero.html`"
 
     ``` diff
     @@ -1,12 +0,0 @@
@@ -996,7 +996,7 @@ matches the new structure:
     -</div>
     ```
 
-=== ":octicons-file-code-16: partials/source-link"
+=== ":octicons-file-code-16: `partials/source-link`"
 
     ``` diff
     @@ -1,14 +0,0 @@
@@ -1170,7 +1170,7 @@ matches the new structure:
 - If you've overridden a __template__, check the respective `*.html` file for
   potential changes
 
-=== ":octicons-file-code-16: base.html"
+=== ":octicons-file-code-16: `base.html`"
 
     ``` diff
     @@ -4,7 +4,6 @@
@@ -1419,7 +1419,7 @@ matches the new structure:
            {% endfor %}
     ```
 
-=== ":octicons-file-code-16: partials/footer.html"
+=== ":octicons-file-code-16: `partials/footer.html`"
 
     ``` diff
     @@ -5,34 +5,34 @@
@@ -1470,7 +1470,7 @@ matches the new structure:
              {% endif %}
     ```
 
-=== ":octicons-file-code-16: partials/header.html"
+=== ":octicons-file-code-16: `partials/header.html`"
 
     ``` diff
     @@ -4,51 +4,43 @@
@@ -1559,7 +1559,7 @@ matches the new structure:
      </header>
     ```
 
-=== ":octicons-file-code-16: partials/hero.html"
+=== ":octicons-file-code-16: `partials/hero.html`"
 
     ``` diff
     @@ -4,9 +4,8 @@
@@ -1572,7 +1572,7 @@ matches the new structure:
      <div class="{{ class }}" data-md-component="hero">
     ```
 
-=== ":octicons-file-code-16: partials/language.html"
+=== ":octicons-file-code-16: `partials/language.html`"
 
     ``` diff
     @@ -4,12 +4,4 @@
@@ -1590,7 +1590,7 @@ matches the new structure:
     +{% macro t(key) %}{{ lang.t(key) | default(fallback.t(key)) }}{% endmacro %}
     ```
 
-=== ":octicons-file-code-16: partials/logo.html"
+=== ":octicons-file-code-16: `partials/logo.html`"
 
     ``` diff
     @@ -0,0 +1,9 @@
@@ -1605,7 +1605,7 @@ matches the new structure:
     +{% endif %}
     ```
 
-=== ":octicons-file-code-16: partials/nav-item.html"
+=== ":octicons-file-code-16: `partials/nav-item.html`"
 
     ``` diff
     @@ -14,9 +14,15 @@
@@ -1637,7 +1637,7 @@ matches the new structure:
          <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}" class="md-nav__link md-nav__link--active">
     ```
 
-=== ":octicons-file-code-16: partials/nav.html"
+=== ":octicons-file-code-16: `partials/nav.html`"
 
     ``` diff
     @@ -4,14 +4,10 @@
@@ -1658,7 +1658,7 @@ matches the new structure:
        </label>
     ```
 
-=== ":octicons-file-code-16: partials/search.html"
+=== ":octicons-file-code-16: `partials/search.html`"
 
     ``` diff
     @@ -6,15 +6,18 @@
@@ -1686,7 +1686,7 @@ matches the new structure:
                </div>
     ```
 
-=== ":octicons-file-code-16: partials/social.html"
+=== ":octicons-file-code-16: `partials/social.html`"
 
     ``` diff
     @@ -4,9 +4,12 @@
@@ -1705,7 +1705,7 @@ matches the new structure:
      {% endif %}
     ```
 
-=== ":octicons-file-code-16: partials/source-date.html"
+=== ":octicons-file-code-16: `partials/source-date.html`"
 
     ``` diff
     @@ -0,0 +1,15 @@
@@ -1726,7 +1726,7 @@ matches the new structure:
     +</div>
     ```
 
-=== ":octicons-file-code-16: partials/source-link.html"
+=== ":octicons-file-code-16: `partials/source-link.html`"
 
     ``` diff
     @@ -0,0 +1,13 @@
@@ -1745,7 +1745,7 @@ matches the new structure:
     +</a>
     ```
 
-=== ":octicons-file-code-16: partials/source.html"
+=== ":octicons-file-code-16: `partials/source.html`"
 
     ``` diff
     @@ -4,24 +4,11 @@
@@ -1778,7 +1778,7 @@ matches the new structure:
        </div>
     ```
 
-=== ":octicons-file-code-16: partials/tabs-item.html"
+=== ":octicons-file-code-16: `partials/tabs-item.html`"
 
     ``` diff
     @@ -4,7 +4,7 @@
@@ -1789,7 +1789,7 @@ matches the new structure:
            <a href="{{ nav_item.url | url }}" class="md-tabs__link md-tabs__link--active">
     ```
 
-=== ":octicons-file-code-16: partials/tabs.html"
+=== ":octicons-file-code-16: `partials/tabs.html`"
 
     ``` diff
     @@ -5,7 +5,7 @@
@@ -1803,7 +1803,7 @@ matches the new structure:
            {% for nav_item in nav %}
     ```
 
-=== ":octicons-file-code-16: partials/toc-item.html"
+=== ":octicons-file-code-16: `partials/toc-item.html`"
 
     ``` diff
     @@ -6,7 +6,7 @@
@@ -1817,7 +1817,7 @@ matches the new structure:
                {% include "partials/toc-item.html" %}
     ```
 
-=== ":octicons-file-code-16: partials/toc.html"
+=== ":octicons-file-code-16: `partials/toc.html`"
 
     ``` diff
     @@ -4,35 +4,22 @@

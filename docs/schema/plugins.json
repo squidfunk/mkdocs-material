@@ -23,6 +23,9 @@
       "description": "Built-in plugins",
       "oneOf": [
         {
+          "$ref": "plugins/blog.json"
+        },
+        {
           "$ref": "plugins/meta.json"
         },
         {

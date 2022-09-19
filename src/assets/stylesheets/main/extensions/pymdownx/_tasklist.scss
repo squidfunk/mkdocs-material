@@ -66,6 +66,7 @@
     height: px2em(20px);
     background-color: var(--md-default-fg-color--lightest);
     mask-image: var(--md-tasklist-icon);
+    mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
     content: "";

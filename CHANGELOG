@@ -1,3 +1,68 @@
+mkdocs-material-8.5.2+insiders-4.23.5 (2022-09-18)
+
+  * Fixed #4367: Improved blog plugin date handling for MultiMarkdown syntax
+  * Fixed #4374: Fixed invalid URLs of related links to other blog posts
+
+mkdocs-material-8.5.2 (2022-09-18)
+
+  * Updated Mermaid.js to version 9.1.7
+  * Fixed overly large headlines in search results (8.5.0 regression)
+  * Fixed #4358: Navigation sections appear as clickable (8.5.0 regression)
+  * Fixed #4356: GitHub repository statistics fetched before consent
+
+mkdocs-material-8.5.1 (2022-09-15)
+
+  * Fixed #4366: Removed dependencies with native extensions
+
+mkdocs-material-8.5.0+insiders-4.23.4 (2022-09-14)
+
+  * Fixed #4365: Recursion error in blog plugin due to deepcopy
+  * Fixed path errors for blog plugin on Windows
+  * Fixed publishing workflow in forked repositories
+
+mkdocs-material-8.5.0+insiders-4.23.3 (2022-09-13)
+
+  * Fixed previous and next page links for drafts of blog posts
+
+mkdocs-material-8.5.0 (2022-09-13)
+
+  * Added support for social cards
+  * Added support for code annotation anchor links (deep linking)
+  * Added support for code annotation comment stripping (syntax modifier)
+  * Added support for sidebars scrolling automatically to active item
+  * Added support for anchor following table of contents (= auto scroll)
+  * Added support for tag icons
+
+mkdocs-material-8.4.4+insiders-4.23.2 (2022-09-13)
+
+  * Fixed #4348: Blog plugin crashes on custom nav title
+  * Fixed blog plugin crashing when category contained only drafts
+  * Fixed rendering of content from blog index file
+
+mkdocs-material-8.4.4+insiders-4.23.1 (2022-09-12)
+
+  * Fixed #4345: Blog plugin errors with default settings
+
+mkdocs-material-8.4.4+insiders-4.23.0 (2022-09-12)
+
+  * Added blogging support via built-in blog plugin
+
+mkdocs-material-8.4.4 (2022-09-12)
+
+  * Moved comments integration to separate partial (comments.html)
+
+mkdocs-material-8.4.3+insiders-4.22.1 (2022-09-07)
+
+  * Fixed #4217: Tooltips in data tables render in wrong position
+
+mkdocs-material-8.4.3 (2022-09-07)
+
+  * Added Simple Icons to bundled icons (+2,300 icons)
+  * Added support for changing edit icon
+  * Moved page actions to separate partial (actions.html)
+  * Fixed #4291: Version switching doesn't stay on page when anchors are used
+  * Fixed #4327: Links in data tables do not receive link styling
+
 mkdocs-material-8.4.2 (2022-08-27)
 
   * Updated Slovenian translations

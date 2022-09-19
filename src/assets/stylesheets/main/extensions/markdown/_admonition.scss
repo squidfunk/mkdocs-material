@@ -141,6 +141,7 @@ $admonitions: (
       height: px2rem(20px);
       background-color: $clr-blue-a200;
       mask-image: var(--md-admonition-icon--note);
+      mask-position: center;
       mask-repeat: no-repeat;
       mask-size: contain;
       content: "";
@@ -176,8 +177,6 @@ $admonitions: (
     &::before {
       background-color: $tint;
       mask-image: var(--md-admonition-icon--#{$name});
-      mask-repeat: no-repeat;
-      mask-size: contain;
     }
   }
 }

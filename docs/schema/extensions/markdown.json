@@ -91,17 +91,17 @@
       "type": "object",
       "properties": {
         "title": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-title",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.title",
           "type": "string"
         },
         "permalink": {
           "oneOf": [
             {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-permalink",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.permalink",
               "type": "boolean"
             },
             {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-permalink",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.permalink",
               "type": "string"
             }
           ],
@@ -113,15 +113,15 @@
           "default": false
         },
         "permalink_title": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-permalink-title",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.permalink_title",
           "type": "string"
         },
         "slugify": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-slugify",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.slugify",
           "type": "string"
         },
         "toc_depth": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#toc-depth",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.toc_depth",
           "type": "number",
           "enum": [
             0,

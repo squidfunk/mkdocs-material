@@ -6,8 +6,8 @@ template: overrides/main.html
 
 Social cards, also known as social previews, are images that are displayed when
 a link to your project documentation is shared on social media. Material for
-MkDocs can generate beautiful social cards automatically, using the [colors]
-[palette.primary], [fonts][font.text] and [logo][^1] defined in `mkdocs.yml`,
+MkDocs can generate beautiful social cards automatically, using the [colors], 
+[fonts] and [logo][^1] defined in `mkdocs.yml`,
 e.g.:
 
 <figure markdown>
@@ -28,8 +28,8 @@ The social preview image for the page on [setting up site analytics].
     color used in the header (white or black), which depends on the primary
     color.
 
-  [palette.primary]: changing-the-colors.md#primary-color
-  [font.text]: changing-the-fonts.md#regular-font
+  [colors]: changing-the-colors.md#primary-color
+  [fonts]: changing-the-fonts.md#regular-font
   [logo]: changing-the-logo-and-icons.md#logo
   [Social cards preview]: ../assets/screenshots/social-cards.png
   [setting up site analytics]: setting-up-site-analytics.md
@@ -39,8 +39,7 @@ The social preview image for the page on [setting up site analytics].
 
 ### Built-in social plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.12.0][Insiders] ·
+[:octicons-tag-24: 8.5.0][Social cards support] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
@@ -53,13 +52,9 @@ plugins:
   - social
 ```
 
-> If you need to be able to build your documentation with and without
-> [Insiders], please refer to the [built-in plugins] section to learn how
-> shared configurations help to achieve this.
-
 The following configuration options are available:
 
-`cards`{ #cards }
+[`cards`](#+social.cards){ #+social.cards }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     to generate social card images. If you want to switch the plugin off, e.g.
@@ -71,12 +66,11 @@ The following configuration options are available:
           cards: !ENV [CARDS, false]
     ```
 
-`cards_color`{ #cards-color }
+[`cards_color`](#+social.cards_color){ #+social.cards_color }
 
-:   [:octicons-tag-24: insiders-2.13.0][Insiders] · :octicons-milestone-24:
-    Default: [`theme.palette.primary`][palette.primary] – This option specifies
-    the colors for the background `fill` and foreground `text` when generating
-    the social card:
+:   :octicons-milestone-24: Default: [`theme.palette.primary`][palette.primary]
+    – This option specifies the colors for the background `fill` and foreground 
+    `text` when generating the social card:
 
     ``` yaml
     plugins:
@@ -89,12 +83,11 @@ The following configuration options are available:
     1.  Colors can either be defined as HEX colors, or as [CSS color keywords].
         Note that HEX colors must be enclosed in quotes.
 
-`cards_font`{ #cards-font }
+[`cards_font`](#+social.cards_font){ #+social.cards_font }
 
-:   [:octicons-tag-24: insiders-4.3.0][Insiders] · :octicons-milestone-24:
-    Default: [`theme.font.text`][font.text] – This option specifies which font
-    to use for rendering the social card, which can be any font hosted on
-    [Google Fonts]:
+:   :octicons-milestone-24: Default: [`theme.font.text`][font.text] – This
+    option specifies which font to use for rendering the social card, which can
+    be any font hosted on [Google Fonts]:
 
     ``` yaml
     plugins:
@@ -102,7 +95,47 @@ The following configuration options are available:
           cards_font: Roboto
     ```
 
-`cards_dir`{ #cards-dir }
+    !!! question "Why do social cards render boxes for CJK languages?"
+
+        Some fonts do not contain CJK characters, like for example the
+        [default font, `Roboto`][font.text]. In case your `site_name`,
+        `site_description`, or [page title] contain CJK characters, choose
+        another font from [Google Fonts] which comes with CJK characters, e.g.
+        one from the `Noto Sans` font family:
+
+        === "Chinese (Simplified)"
+
+            ``` yaml
+            plugins:
+              - social:
+                  cards_font: Noto Sans SC
+            ```
+
+        === "Chinese (Traditional)"
+
+            ``` yaml
+            plugins:
+              - social:
+                  cards_font: Noto Sans TC
+            ```
+
+        === "Japanese"
+
+            ``` yaml
+            plugins:
+              - social:
+                  cards_font: Noto Sans JP
+            ```
+
+        === "Korean"
+
+            ``` yaml
+            plugins:
+              - social:
+                  cards_font: Noto Sans KR
+            ```
+
+[`cards_dir`](#+social.cards_dir){ #+social.cards_dir }
 
 :   :octicons-milestone-24: Default: `assets/images/social` – This option
     specifies where the generated social card images will be written to. It's
@@ -111,28 +144,33 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - social:
-          cards_dir: assets/images/social
+          cards_dir: path/to/folder
     ```
 
-  [Insiders]: ../insiders/index.md
+  [Social cards support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
   [dependencies]: #dependencies
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
+  [palette.primary]: changing-the-colors.md#primary-color
+  [font.text]: changing-the-fonts.md#regular-font
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
   [Google Fonts]: https://fonts.google.com
+  [page title]: ../reference/index.md#setting-the-page-title
 
 #### Dependencies
 
-Two Python packages are installed alongside Material for MkDocs to generate the
-social preview images, both of which are based on the [Cairo Graphics] library:
+Two Python libraries must be installed alongside Material for MkDocs to generate
+the social preview images, both of which are based on [Cairo Graphics] – 
+[Pillow] and [CairoSVG]:
 
-- [Pillow] – Python imaging library
-- [CairoSVG] – Converter for `*.svg` files
+```
+pip install pillow cairosvg
+```
 
-The [Docker image] for Insiders comes with all dependencies pre-installed. If
-you don't want to use Docker, see the following section which explains how to
-install all dependencies on your system:
+Both libraries are built with native extensions which need to be installed as
+well. The [Docker image] comes with all dependencies pre-installed. If you don't
+want to use Docker, see the following section which explains how to install all
+dependencies on your system:
 
 === ":material-apple: macOS"
 
@@ -177,7 +215,7 @@ install all dependencies on your system:
   [Cairo Graphics]: https://www.cairographics.org/
   [Pillow]: https://pillow.readthedocs.io/
   [CairoSVG]: https://cairosvg.org/
-  [Docker image]: ../insiders/getting-started.md#with-docker
+  [Docker image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [Homebrew]: https://brew.sh/
   [installation guide]: https://www.cairographics.org/download/
   [GTK+]: https://www.gtk.org/docs/installations/windows/

@@ -49,7 +49,7 @@ from the local file system.
 
 The following configuration options are available:
 
-`enabled`{ #enabled }
+[`enabled`](#+offline.enabled){ #+offline.enabled }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to switch

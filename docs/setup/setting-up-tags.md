@@ -15,7 +15,7 @@ can help to discover relevant information faster.
 
 ### Built-in tags plugin
 
-[:octicons-tag-24: 8.2.0][tags support] ·
+[:octicons-tag-24: 8.2.0][Tags support] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
@@ -30,7 +30,7 @@ plugins:
 
 The following configuration options are available:
 
-`tags_file`{ #tags-file }
+[`tags_file`](#+tags.tags_file){ #+tags.tags_file }
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies which file
     should be used to render the tags index. See the section on [adding a tags 
@@ -48,7 +48,7 @@ The following configuration options are available:
     of `mkdocs.yml`. Note, however, that this options is not required – only use
     it if you want a tags index page.
 
-`tags_extra_files`{ #tags-extra-files } :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
+[`tags_extra_files`](#+tags.tags_extra_files){ #+tags.tags_extra_files } :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
 
 :   [:octicons-tag-24: insiders-4.20.0][Insiders] · :octicons-milestone-24: 
     Default: _none_ – This option allows to define additional pages to render
@@ -86,13 +86,13 @@ The following configuration options are available:
 
     See #3864 for additional use cases.
 
-  [tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
+  [Tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
+  [Insiders]: ../insiders/index.md
   [tag identifiers]: #tag-icons
 
 ### Tag icons
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.13.0][Insiders] ·
+[:octicons-tag-24: 8.5.0][Tag icons support] ·
 :octicons-beaker-24: Experimental
 
 Each tag can be associated with an icon, which is then rendered inside the tag.
@@ -118,9 +118,9 @@ extra:
     Identifiers can be reused between tags. Tags which are not explicitly
     associated will use the default tag icon which is :material-pound:
 
-Next, each identifier can be associated with an icon, or even a [custom icon],
-by adding the following lines to `mkdocs.yml` under the `theme.icon`
-configuration setting:
+Next, each identifier can be associated with an icon, even a [custom icon], by
+adding the following lines to `mkdocs.yml` under the `theme.icon` configuration 
+setting:
 
 === "Tag icon"
 
@@ -167,7 +167,7 @@ configuration setting:
         CSS: css
     ```
 
-  [Insiders]: ../insiders/index.md
+  [Tag icons support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
   [custom icon]: changing-the-logo-and-icons.md#additional-icons
   [icon search]: ../reference/icons-emojis.md#search
 
@@ -197,7 +197,7 @@ search preview, which now allows to __find pages by tags__.
 
     With the help of the [built-in meta plugin], you can ensure that tags are
     set for an entire section and all nested pages, by creating a `.meta.yml`
-    in the corresponding folder with the following content:
+    file in the corresponding folder with the following content:
 
     ``` yaml
     tags:
@@ -232,10 +232,10 @@ The `[TAGS]` marker specifies the position of the tags index, i.e. it is
 replaced with the actual tags index when the page is rendered. You can include
 arbitrary content before and after the marker:
 
-[![Tags index][9]][9]
+[![Tags index][tags index enabled]][tags index enabled]
 
   [tags.tags_file]: #tags-file
-  [9]: ../assets/screenshots/tags-index.png
+  [tags index enabled]: ../assets/screenshots/tags-index.png
 
 ### Hiding tags on a page
 
@@ -243,7 +243,7 @@ While the tags are rendered above the main headline, sometimes, it might be
 desirable to hide them for a specific page, which can be achieved with the
 front matter `hide` property:
 
-``` sh
+``` yaml
 ---
 hide:
   - tags

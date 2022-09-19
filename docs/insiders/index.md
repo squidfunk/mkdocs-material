@@ -82,36 +82,32 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 25 additional features__ that you can start using right away, and
+access to 21 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Blog plugin] :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
+- [x] [Blog plugin: related links] :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
 - [x] [Navigation status] :material-alert-decagram:{ .mdx-pulse title="Added on August 21, 2022" }
 - [x] [Meta plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 17, 2022" }
-- [x] [Additional tags indexes] :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
+- [x] [Tags plugin: additional indexes]
 - [x] [Document contributors]
 - [x] [Automatic light / dark mode]
 - [x] [Content tabs: anchor links]
 - [x] [Navigation pruning]
 - [x] [Tooltips]
 - [x] [Chinese search support]
-- [x] [Tag icons]
 - [x] [Card grids]
 - [x] [Offline plugin]
 - [x] [Privacy plugin]
-- [x] [Table of contents anchor following]
 - [x] [Annotations]
 - [x] [Navigation icons]
-- [x] Sidebars automatically scroll to active item
-- [x] [Code annotations: anchor links]
-- [x] [Code annotations: strip comments]
 - [x] [Brand new search plugin]
 - [x] [Rich search previews]
 - [x] [Tokenizer with lookahead]
 - [x] [Advanced search highlighting]
 - [x] [Excluding content from search]
-- [x] [Social cards]
 
 </div>
 
@@ -182,6 +178,8 @@ You can cancel your sponsorship anytime.[^5]
 [![IP Fabric]](https://ipfabric.io/){ target=_blank title="IP Fabric" }
 [![Apex.AI]](https://www.apex.ai/){ target=_blank title="Apex.AI" }
 [![Jitterbit]](https://jitterbit.com/){ target=_blank title="Jitterbit" }
+[![Sparkfun]](https://sparkfun.com/){ target=_blank title="Sparkfun Electronics" }
+[![Automation Technology]](https://automationtechnology.de/){ target=_blank title="Automation Technology" }
 
 </div>
 
@@ -206,6 +204,8 @@ You can cancel your sponsorship anytime.[^5]
   [IP Fabric]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png
   [Apex.AI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png
   [Jitterbit]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png
+  [Sparkfun]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sparkfun.png
+  [Automation Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-automation-technology.png
 
 <hr />
 
@@ -232,21 +232,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
-#### $ 8,000 – Scotch Bonnet
-
-- [x] [Social cards]
-- [x] [Code annotations: anchor links]
-- [x] [Code annotations: strip comments]
-- [x] [Tag icons]
-- [x] [Table of contents anchor following]
-- [x] Sidebars automatically scroll to active item
-
-  [Social cards]: ../setup/setting-up-social-cards.md
-  [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
-  [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
-  [Tag icons]: ../setup/setting-up-tags.md#tag-icons
-  [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
-
 #### $ 10,000 – Carolina Reaper
 
 - [x] [Brand new search plugin]
@@ -256,24 +241,25 @@ are released for general availability.
 - [x] [Excluding content from search]
 - [x] [Offline plugin]
 
-  [Brand new search plugin]: ../blog/2021/search-better-faster-smaller.md
-  [Rich search previews]: ../blog/2021/search-better-faster-smaller.md#rich-search-previews
-  [Tokenizer with lookahead]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
-  [Advanced search highlighting]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
+  [Brand new search plugin]: ../blog/posts/search-better-faster-smaller.md
+  [Rich search previews]: ../blog/posts/search-better-faster-smaller.md#rich-search-previews
+  [Tokenizer with lookahead]: ../blog/posts/search-better-faster-smaller.md#tokenizer-lookahead
+  [Advanced search highlighting]: ../blog/posts/search-better-faster-smaller.md#accurate-highlighting
   [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
   [Offline plugin]: ../setup/building-for-offline-usage.md
 
 #### $ 12,000 – Piri Piri
 
-- [x] [Annotations]
+- [x] [Blog plugin]
 - [x] [Chinese search support]
+- [x] [Annotations]
 - [x] [Navigation icons]
 - [x] [Navigation pruning]
 - [x] [Navigation status]
-- [ ] Blog plugin
 
+  [Blog plugin]: ../setup/setting-up-a-blog.md
+  [Chinese search support]: ../blog/posts/chinese-search-support.md
   [Annotations]: ../reference/annotations.md
-  [Chinese search support]: ../blog/2022/chinese-search-support.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
   [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
   [Navigation status]: ../reference/index.md#setting-the-page-status
@@ -297,13 +283,16 @@ are released for general availability.
 #### $ 16,000 – Chipotle
 
 - [x] [Meta plugin]
-- [x] [Additional tags indexes]
+- [x] [Blog plugin: related links]
+- [x] [Tags plugin: additional indexes]
 - [ ] [Instant previews]
+- [ ] Navigation subtitles
 - [ ] ... more to be announced
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
-  [Additional tags indexes]: ../setup/setting-up-tags.md#tags-extra-files
+  [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#+tags.tags_extra_files
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
+  [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
 
 ### Goals completed
 
@@ -311,13 +300,28 @@ This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
 
+#### $ 8,000 – Scotch Bonnet
+
+- [x] [Social cards]
+- [x] [Code annotations: anchor links]
+- [x] [Code annotations: strip comments]
+- [x] [Tag icons]
+- [x] [Table of contents anchor following]
+- [x] Sidebars automatically scroll to active item
+
+  [Social cards]: ../setup/setting-up-social-cards.md
+  [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
+  [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
+  [Tag icons]: ../setup/setting-up-tags.md#tag-icons
+  [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
+
 #### $ 7,000 – Royal Gold
 
 - [x] [Cookie consent]
 - [x] [Was this page helpful?]
 - [x] [Dismissable announcement bar]
 
-  [Cookie consent]: ../setup/ensuring-data-privacy.md#native-cookie-consent
+  [Cookie consent]: ../setup/ensuring-data-privacy.md#cookie-consent
   [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
   [Dismissable announcement bar]: ../setup/setting-up-the-header.md#mark-as-read
 
