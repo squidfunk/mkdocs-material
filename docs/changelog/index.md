@@ -6,12 +6,17 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.5.3 <small>_ September 20, 2022</small> { id="8.5.3" }
+
+- Fixed build error when enabling cookie consent without analytics
+- Fixed #4381: Code blocks render ligatures for some fonts
+
 ### 8.5.2 <small>_ September 18, 2022</small> { id="8.5.2" }
 
 - Updated Mermaid.js to version 9.1.7
 - Fixed overly large headlines in search results (8.5.0 regression)
 - Fixed #4358: Navigation sections appear as clickable (8.5.0 regression)
-- Fixed #4356: GitHub repository statistics fetched before consent
+- Fixed #4356: GitHub repository statistics fetched before cookie consent
 
 ### 8.5.1 <small>_ September 15, 2022</small> { id="8.5.1" }
 
