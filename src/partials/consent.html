@@ -20,13 +20,17 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Determine cookies (default to analytics, if present) -->
-{% set cookies = config.extra.consent.cookies %}
-{% if config.extra.analytics and not cookies %}
-  {% set cookies = { "analytics": "Google Analytics" } %}
+<!-- Determine cookies -->
+{% set cookies = config.extra.consent.cookies | d({}) %}
+{% if config.extra.analytics %}
+  {% if "analytics" not in cookies %}
+    {% set _ = cookies.update({ "analytics": "Google Analytics" }) %}
+  {% endif %}
 {% endif %}
-{% if "github.com" in config.repo_url and "github" not in cookies %}
-  {% set _ = cookies.update({ "github": "GitHub" }) %}
+{% if "github.com" in config.repo_url %}
+  {% if "github" not in cookies %}
+    {% set _ = cookies.update({ "github": "GitHub" }) %}
+  {% endif %}
 {% endif %}
 
 <!-- Determine actions -->
