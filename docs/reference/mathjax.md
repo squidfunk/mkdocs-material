@@ -38,9 +38,9 @@ lines to `mkdocs.yml`:
     };
 
     document$.subscribe(() => { // (1)!
-    MathJax.startup.promise
-      .then(() => MathJax.typesetPromise())
-      .then(() => { /* other actions once MathJax is done */ })
+      MathJax.startup.promise
+        .then(() => MathJax.typesetPromise())
+        .then(() => { /* other actions once MathJax is done */ })
     })
     ```
 
