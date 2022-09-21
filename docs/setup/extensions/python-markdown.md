@@ -258,7 +258,7 @@ The following configuration options are supported:
         ``` yaml
         markdown_extensions:
           - toc:
-              slugify: !!python/name:pymdownx.slugs.uslugify
+              slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
         ```
 
     === "Unicode, case-sensitive"
@@ -266,7 +266,7 @@ The following configuration options are supported:
         ``` yaml
         markdown_extensions:
           - toc:
-              slugify: !!python/name:pymdownx.slugs.uslugify_cased
+              slugify: !!python/object/apply:pymdownx.slugs.slugify
         ```
 
 [`toc_depth`](#+toc.toc_depth){ #+toc.toc_depth }
