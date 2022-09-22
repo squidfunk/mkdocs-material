@@ -19,7 +19,7 @@
 # IN THE SOFTWARE.
 
 [build-system]
-requires = ["hatchling", "hatch-requirements-txt", "hatch-nodejs-version"]
+requires = ["hatchling", "hatch-requirements-txt", "hatch-nodejs-version>=0.3.0"]
 build-backend = "hatchling.build"
 
 [project]
