@@ -1,3 +1,8 @@
+mkdocs-material-8.5.3+insiders-4.23.6 (2022-09-22)
+
+  * Fixed #4389: Blog posts in first week of year in wrong archive
+  * Fixed (= switched) footer previous and next links for blog posts
+
 mkdocs-material-8.5.3 (2022-09-20)
 
   * Fixed build error when enabling cookie consent without analytics

@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.23.6 <small>_ September 22, 2022</small> { id="4.23.6" }
+
+- Fixed #4389: Blog posts in first week of year in wrong archive
+- Fixed (= switched) footer previous and next links for blog posts
+
 ### 4.23.5 <small>_ September 18, 2022</small> { id="4.23.5" }
 
 - Fixed #4367: Improved blog plugin date handling for MultiMarkdown syntax
