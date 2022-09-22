@@ -173,7 +173,7 @@ The following configuration options are available for posts:
 
 [`post_url_date_format`](#+blog.post_url_date_format){ #+blog.post_url_date_format }
 
-:   :octicons-milestone-24: Default: `YYYY/MM/dd` – This option specifies the
+:   :octicons-milestone-24: Default: `yyyy/MM/dd` – This option specifies the
     date format that is used in the URL of the post. The format string must
     adhere to [Babel]'s [pattern syntax]. Some examples:
 
@@ -182,7 +182,7 @@ The following configuration options are available for posts:
         ``` yaml
         plugins:
           - blog:
-              post_url_date_format: YYYY/MM/dd
+              post_url_date_format: yyyy/MM/dd
         ```
 
     === ":material-link: blog/2022/01/:material-dots-horizontal:/"
@@ -190,7 +190,7 @@ The following configuration options are available for posts:
         ``` yaml
         plugins:
           - blog:
-              post_url_date_format: YYYY/MM
+              post_url_date_format: yyyy/MM
         ```
 
     === ":material-link: blog/2022/:material-dots-horizontal:/"
@@ -198,7 +198,7 @@ The following configuration options are available for posts:
         ``` yaml
         plugins:
           - blog:
-              post_url_date_format: YYYY
+              post_url_date_format: yyyy
         ```
 
     If you want to exclude the date altogether, e.g. when your blog features
@@ -368,7 +368,7 @@ The following configuration options are available for archive index generation:
 
 [`archive_date_format`](#+blog.archive_date_format){ #+blog.archive_date_format }
 
-:   :octicons-milestone-24: Default: `YYYY` – This option specifies the date
+:   :octicons-milestone-24: Default: `yyyy` – This option specifies the date
     format that is used when archive indexes are rendered. The format string
     must adhere to [Babel]'s [pattern syntax]. Popular settings are:
 
@@ -377,7 +377,7 @@ The following configuration options are available for archive index generation:
         ``` yaml
         plugins:
           - blog:
-              archive_date_format: YYYY
+              archive_date_format: yyyy
         ```
 
     === "January 2022"
@@ -385,12 +385,12 @@ The following configuration options are available for archive index generation:
         ``` yaml
         plugins:
           - blog:
-              archive_date_format: MMMM YYYY
+              archive_date_format: MMMM yyyy
         ```
 
 [`archive_url_date_format`](#+blog.archive_url_date_format){ #+blog.archive_url_date_format }
 
-:   :octicons-milestone-24: Default: `YYYY` – This option specifies the date
+:   :octicons-milestone-24: Default: `yyyy` – This option specifies the date
     format that is used in the archive index URL. The format string must adhere
     to [Babel]'s [pattern syntax]. Some examples:
 
@@ -399,7 +399,7 @@ The following configuration options are available for archive index generation:
         ``` yaml
         plugins:
           - blog:
-              archive_url_date_format: YYYY
+              archive_url_date_format: yyyy
         ```
 
     === ":material-link: blog/archive/2022/01/"
@@ -407,7 +407,7 @@ The following configuration options are available for archive index generation:
         ``` yaml
         plugins:
           - blog:
-              archive_url_date_format: YYYY/MM
+              archive_url_date_format: yyyy/MM
         ```
 
 [`archive_url_format`](#+blog.archive_url_format){ #+blog.archive_url_format }

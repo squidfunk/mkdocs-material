@@ -56,16 +56,16 @@
               "oneOf": [
                 {
                   "enum": [
-                    "YYYY",
-                    "YYYY/MM",
-                    "YYYY/MM/dd"
+                    "yyyy",
+                    "yyyy/MM",
+                    "yyyy/MM/dd"
                   ]
                 },
                 {
                   "type": "string"
                 }
               ],
-              "default": "YYYY"
+              "default": "yyyy"
             },
             "post_url_format": {
               "title": "Format string for post URLs",
@@ -149,15 +149,15 @@
               "oneOf": [
                 {
                   "enum": [
-                    "YYYY",
-                    "MMMM YYYY"
+                    "yyyy",
+                    "MMMM yyyy"
                   ]
                 },
                 {
                   "type": "string"
                 }
               ],
-              "default": "YYYY"
+              "default": "yyyy"
             },
             "archive_url_date_format": {
               "title": "Format string for archive dates in URLs",
@@ -165,15 +165,15 @@
               "oneOf": [
                 {
                   "enum": [
-                    "YYYY",
-                    "YYYY/MM"
+                    "yyyy",
+                    "yyyy/MM"
                   ]
                 },
                 {
                   "type": "string"
                 }
               ],
-              "default": "YYYY"
+              "default": "yyyy"
             },
             "archive_url_format": {
               "title": "Format string for archive URLs",
