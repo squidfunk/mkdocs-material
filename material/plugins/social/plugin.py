@@ -28,7 +28,8 @@ from collections import defaultdict
 from hashlib import md5
 from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config.config_options import Type
+from mkdocs.config.base import Config
+from mkdocs.config import config_options as opt
 from mkdocs.plugins import BasePlugin
 from shutil import copyfile
 from tempfile import TemporaryFile
@@ -45,20 +46,19 @@ except ImportError:
 # Class
 # -----------------------------------------------------------------------------
 
+# Configuration scheme
+class SocialPluginConfig(Config):
+    enabled = opt.Type(bool, default = True)
+    cache_dir = opt.Type(str, default = ".cache/plugin/social")
+
+    # Options for social cards
+    cards = opt.Type(bool, default = True)
+    cards_dir = opt.Type(str, default = "assets/images/social")
+    cards_color = opt.Type(dict, default = {})
+    cards_font = opt.Optional(opt.Type(str))
+
 # Social plugin
-class SocialPlugin(BasePlugin):
-
-    # Configuration scheme
-    config_scheme = (
-        ("enabled", Type(bool, default = True)),
-        ("cache_dir", Type(str, default = ".cache/plugin/social")),
-
-        # Options for social cards
-        ("cards", Type(bool, default = True)),
-        ("cards_dir", Type(str, default = "assets/images/social")),
-        ("cards_color", Type(dict, default = {})),
-        ("cards_font", Type(str, default = None)),
-    )
+class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # Retrieve configuration
     def on_config(self, config):
