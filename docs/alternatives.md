@@ -11,7 +11,7 @@ alternative solutions.
 
 ## Docusaurus
 
-[Docusaurus] by Facebook is a very popular documentation generator and a good
+[Docusaurus] by Meta (Facebook) is a very popular documentation generator and a good
 choice if you or your company are already using [React] to build your site.
 It will generate a [single page application] which is fundamentally different
 from the site Material for MkDocs generates for you.
@@ -20,7 +20,7 @@ __Advantages__
 
 - Very powerful, customizable and extendable
 - Provides many components that aid in technical writing
-- Large and rich ecosystem, backed by Facebook
+- Large and rich ecosystem, backed by Meta (Facebook)
 
 __Challenges__
 
