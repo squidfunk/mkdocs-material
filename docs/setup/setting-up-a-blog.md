@@ -324,11 +324,21 @@ The following configuration options are available for posts:
     multiple categories, the [built-in blog plugin] can be instructed to only
     show the first `n` categories to keep it short and concise:
 
-    ``` yaml
-    plugins:
-      - blog:
-          post_excerpt_max_categories: 5
-    ```
+    === "Render up to 2 categories in excerpts"
+
+        ``` yaml
+        plugins:
+          - blog:
+              post_excerpt_max_categories: 2
+        ```
+
+    === "Disable categories in excerpts"
+
+        ``` yaml
+        plugins:
+          - blog:
+              post_excerpt_max_categories: 0
+        ```
 
 [`post_excerpt_separator`](#+blog.post_excerpt_separator){ #+blog.post_excerpt_separator }
 
