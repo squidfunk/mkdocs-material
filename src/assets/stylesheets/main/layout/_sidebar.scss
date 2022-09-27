@@ -153,6 +153,23 @@
       }
     }
   }
+
+  // Sidebar wrapper
+  &__inner {
+
+    // Hack: the scrollbar is only visible when the sidebar's contents overflow,
+    // which is nice, but leads to the problem where the chevrons of expandable
+    // sections will jump by `4px` when the sidebar is shown. We wanted to fix
+    // this problem for so long, but haven't found a clean way of doing it.
+    // Until now. The following declaration is only applied to Webkit browsers
+    // (e.g. Chrome and Safari), which support styling of scrollbars. The trick
+    // is to add conditional padding on the side of the scrollbar only if the
+    // sidebar's content doesn't overflow. This hack is inspired and adapted
+    // from Ayke van Laëthem's year old trick – see https://bit.ly/3Sb1qql
+    @supports selector(::-webkit-scrollbar) {
+      padding-inline-end: calc(100% - #{px2rem(230px)});
+    }
+  }
 }
 
 // [tablet -]: Show overlay on active drawer
