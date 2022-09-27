@@ -82,15 +82,16 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 21 additional features__ that you can start using right away, and
+access to 22 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Blog plugin] :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
+- [x] [Blog plugin: custom index pages] :material-alert-decagram:{ .mdx-pulse title="Added on September 27, 2022" }
 - [x] [Blog plugin: related links] :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
+- [x] [Blog plugin] :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
 - [x] [Navigation status] :material-alert-decagram:{ .mdx-pulse title="Added on August 21, 2022" }
-- [x] [Meta plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 17, 2022" }
+- [x] [Meta plugin]
 - [x] [Tags plugin: additional indexes]
 - [x] [Document contributors]
 - [x] [Automatic light / dark mode]
@@ -286,15 +287,16 @@ are released for general availability.
 
 - [x] [Meta plugin]
 - [x] [Blog plugin: related links]
+- [x] [Blog plugin: custom index pages]
 - [x] [Tags plugin: additional indexes]
 - [ ] [Instant previews]
 - [ ] Navigation subtitles
-- [ ] ... more to be announced
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
   [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#+tags.tags_extra_files
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
   [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
+  [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
 
 ### Goals completed
 

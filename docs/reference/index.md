@@ -11,7 +11,7 @@ within Markdown files.
 
 ## Configuration
 
-### Built-in meta plugin :material-alert-decagram:{ .mdx-pulse title="Added on July 17, 2022" }
+### Built-in meta plugin
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.21.0][Insiders] ·

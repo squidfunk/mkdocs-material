@@ -6,6 +6,16 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.24.0 <small>_ September 27, 2022</small> { id="4.24.0" }
+
+- Added support for custom content on index pages (blog)
+- Added support for keeping content on paginated index pages (blog)
+- Added support for limiting categories in post excerpts (blog)
+- Added support for simple override of templates via front matter (blog)
+- Added icon in navigation for pages with encrypted content
+- Fixed #4396: Front matter of index pages not inherited by pagination (blog)
+- Improved performance by building post excerpts once (blog)
+
 ### 4.23.6 <small>_ September 22, 2022</small> { id="4.23.6" }
 
 - Fixed #4389: Blog posts in first week of year in wrong archive
