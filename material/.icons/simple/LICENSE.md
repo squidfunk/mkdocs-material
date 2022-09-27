@@ -27,4 +27,4 @@ For these and/or other purposes and motivations, and without any expectation of 
     3. Affirmer disclaims responsibility for clearing rights of other persons that may apply to the Work or any use thereof, including without limitation any person’s Copyright and Related Rights in the Work. Further, Affirmer disclaims responsibility for obtaining any necessary consents, permissions or other rights required for any use of the Work.
     4. Affirmer understands and acknowledges that Creative Commons is not a party to this document and has no duty or obligation with respect to this CC0 or use of the Work.
 
-For more information, please see http://creativecommons.org/publicdomain/zero/1.0/.
+For more information, please see https://creativecommons.org/publicdomain/zero/1.0/.
