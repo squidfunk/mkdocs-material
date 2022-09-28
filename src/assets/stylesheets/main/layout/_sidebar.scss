@@ -130,6 +130,7 @@
     // this reason, we disable scroll snapping until this is resolved (#1667).
     // scroll-snap-type: y mandatory;
     scrollbar-width: thin;
+    scrollbar-gutter: stable;
     scrollbar-color: var(--md-default-fg-color--lighter) transparent;
 
     // Sidebar scroll wrapper on hover
@@ -154,19 +155,24 @@
     }
   }
 
-  // Sidebar wrapper
-  &__inner {
+  // Hack: the scrollbar is only visible when the sidebar's contents overflow,
+  // which is nice, but leads to the problem where the chevrons of expandable
+  // sections will jump by `4px` when the sidebar is shown. We wanted to fix
+  // this problem for so long, but haven't found a clean way of doing it.
+  // Until now. The following declaration is only applied to Webkit browsers
+  // (e.g. Chrome and Safari), which support styling of scrollbars. The trick
+  // is to add conditional padding on the side of the scrollbar only if the
+  // sidebar's content doesn't overflow. This hack is inspired and adapted
+  // from Ayke van Laëthem's year old trick – see https://bit.ly/3Sb1qql
+  @supports selector(::-webkit-scrollbar) {
 
-    // Hack: the scrollbar is only visible when the sidebar's contents overflow,
-    // which is nice, but leads to the problem where the chevrons of expandable
-    // sections will jump by `4px` when the sidebar is shown. We wanted to fix
-    // this problem for so long, but haven't found a clean way of doing it.
-    // Until now. The following declaration is only applied to Webkit browsers
-    // (e.g. Chrome and Safari), which support styling of scrollbars. The trick
-    // is to add conditional padding on the side of the scrollbar only if the
-    // sidebar's content doesn't overflow. This hack is inspired and adapted
-    // from Ayke van Laëthem's year old trick – see https://bit.ly/3Sb1qql
-    @supports selector(::-webkit-scrollbar) {
+    // Sidebar scroll wrapper
+    &__scrollwrap {
+      scrollbar-gutter: auto;
+    }
+
+    // Sidebar wrapper
+    &__inner {
       padding-inline-end: calc(100% - #{px2rem(230px)});
     }
   }
