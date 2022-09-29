@@ -7,7 +7,7 @@
     {% set _ = cookies.update({ "analytics": "Google Analytics" }) %}
   {% endif %}
 {% endif %}
-{% if "github.com" in config.repo_url %}
+{% if config.repo_url and "github.com" in config.repo_url %}
   {% if "github" not in cookies %}
     {% set _ = cookies.update({ "github": "GitHub" }) %}
   {% endif %}
