@@ -355,7 +355,7 @@ class SocialPlugin(BasePlugin):
         # Map available font weights to file paths
         font = dict()
         for file in files:
-            match = re.search("-(\w+)\.[ot]tf$", file)
+            match = re.search(r"-(\w+)\.[ot]tf$", file)
             if match:
                 font[match.group(1)] = os.path.join(self.cache, file)
 
