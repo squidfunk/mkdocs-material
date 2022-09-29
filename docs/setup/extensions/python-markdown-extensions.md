@@ -729,3 +729,58 @@ See reference for usage:
   [GitHub Flavored Markdown]: https://github.github.com/gfm/
   [Tasklist specification]: https://github.github.com/gfm/#task-list-items-extension-
   [Using task lists]: ../../reference/lists.md#using-task-lists
+  
+### MagicLink
+
+[:octicons-tag-24: 3.3.0][MagicLink support] ·
+[:octicons-workflow-24: Extension][MagicLink]
+
+The [MagicLink] extension provides a number of useful link related features.
+MagicLink can auto-link HTML, FTP, and email links. It can also auto-convert repository 
+links (GitHub, GitLab, and Bitbucket) and display them in a more concise, shorthand format. 
+Enable it via `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.magiclink:
+      user: squidfunk
+      repo: mkdocs-material
+```
+
+The following configuration options are supported:
+
+[`repo_url_shorthand`](#+pymdownx.magiclink.repo_url_shorthand){ #+pymdownx.magiclink:repo_url_shorthand }
+:   :octicons-milestone-24: Default: `true` · This option allows you to directly use a shorthand syntax to
+    represent commit, pull, issue, and mention links for repository provider and they will be auto-linked.
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.magiclink:
+          repo_url_shorthand: true
+    ```
+    
+[`user`](#+pymdownx.magiclink.user){ #+pymdownx.magiclink:user }
+:   :octicons-milestone-24: Default: `true` · :octicons-alert-24: __Required__
+    – The default user name to use for the specified provider.
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.magiclink:
+          user: squidfunk
+    ```
+    
+[`repo`](#+pymdownx.magiclink.repo){ #+pymdownx.magiclink:repo }
+:   :octicons-milestone-24: Default: `true` · :octicons-alert-24: __Required__
+    – The default repository name to use for the specified user and provider.
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.magiclink:
+          repo: mkdocs-material
+    ```
+    
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, which is why they may yield unexpected results. Use
+them at your own risk.
+
+[MagicLink]: https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
