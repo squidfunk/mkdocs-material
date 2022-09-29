@@ -643,7 +643,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-[`alternate_style`](#+pymdownx.tabbed.alternate_style){ #+pymdownx.tabbed:alternate_style }
+[`alternate_style`](#+pymdownx.tabbed.alternate_style){ #+pymdownx.tabbed.alternate_style }
 
 :   [:octicons-tag-24: 7.3.1][Tabbed alternate support] ·
     :octicons-milestone-24: Default: `false` · :octicons-alert-24: __Required__
@@ -692,7 +692,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-[`custom_checkbox`](#+pymdownx.tasklist.custom_checkbox){ #+pymdownx.tasklist:custom_checkbox }
+[`custom_checkbox`](#+pymdownx.tasklist.custom_checkbox){ #+pymdownx.tasklist.custom_checkbox }
 
 :   :octicons-milestone-24: Default: `false` · This option toggles the rendering
     style of checkboxes, replacing native checkbox styles with beautiful icons, 
@@ -704,7 +704,7 @@ The following configuration options are supported:
           custom_checkbox: true
     ```
 
-[`clickable_checkbox`](#+pymdownx.tasklist.clickable_checkbox){ #+pymdownx.tasklist:clickable_checkbox }
+[`clickable_checkbox`](#+pymdownx.tasklist.clickable_checkbox){ #+pymdownx.tasklist.clickable_checkbox }
 
 :   :octicons-milestone-24: Default: `false` · This option toggles whether
     checkboxes are clickable. As the state is not persisted, the use of this 
