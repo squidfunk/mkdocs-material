@@ -1,3 +1,8 @@
+mkdocs-material-8.5.4 (2022-09-30)
+
+  * Fixed expand icons shift on sidebar overflow (using scrollbar-gutter)
+  * Fixed #4429: Text in sequence diagrams overflows in Firefox
+
 mkdocs-material-8.5.3+insiders-4.24.0 (2022-09-27)
 
   * Added support for custom content on index pages (blog)
