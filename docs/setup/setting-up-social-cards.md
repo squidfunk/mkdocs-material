@@ -186,7 +186,8 @@ dependencies on your system:
 
     As stated in the [installation guide], the easiest way to get up and running
     with the [Cairo Graphics] library on Windows is by installing [GTK+], since
-    it has Cairo as a dependency.
+    it has Cairo as a dependency. You can also download and install a
+    precompiled [GTK runtime].
 
 === ":material-linux: Linux"
 
@@ -219,6 +220,7 @@ dependencies on your system:
   [Homebrew]: https://brew.sh/
   [installation guide]: https://www.cairographics.org/download/
   [GTK+]: https://www.gtk.org/docs/installations/windows/
+  [GTK runtime]: https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases
 
 #### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
 
