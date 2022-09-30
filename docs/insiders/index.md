@@ -183,6 +183,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Automation Technology]](https://automationtechnology.de/){ target=_blank title="Automation Technology" }
 [![Eccenca]](https://eccenca.com/){ target=_blank title="Eccenca" }
 [![SealVault]](https://sealvault.org/){ target=_blank title="SealVault" }
+[![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
 
 </div>
 
@@ -211,6 +212,7 @@ You can cancel your sponsorship anytime.[^5]
   [Automation Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-automation-technology.png
   [Eccenca]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png
   [SealVault]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sealvault.png
+  [Neptune]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png
 
 <hr />
 
