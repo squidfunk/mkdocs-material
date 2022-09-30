@@ -92,7 +92,12 @@ export function mountMermaid(
     .pipe(
       tap(() => mermaid.initialize({
         startOnLoad: false,
-        themeCSS
+        themeCSS,
+        sequence: {
+          actorFontSize: "16px", // Hack: mitigate https://bit.ly/3y0NEi3
+          messageFontSize: "16px",
+          noteFontSize: "16px"
+        }
       })),
       map(() => undefined),
       shareReplay(1)
