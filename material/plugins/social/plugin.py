@@ -20,6 +20,7 @@
 
 import logging
 import os
+import posixpath
 import re
 import requests
 import sys
@@ -28,10 +29,9 @@ from collections import defaultdict
 from hashlib import md5
 from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config.base import Config
 from mkdocs.config import config_options as opt
+from mkdocs.config.base import Config
 from mkdocs.plugins import BasePlugin
-import posixpath
 from shutil import copyfile
 from tempfile import TemporaryFile
 from zipfile import ZipFile
@@ -47,7 +47,7 @@ except ImportError:
 # Class
 # -----------------------------------------------------------------------------
 
-# Configuration scheme
+# Social plugin configuration scheme
 class SocialPluginConfig(Config):
     enabled = opt.Type(bool, default = True)
     cache_dir = opt.Type(str, default = ".cache/plugin/social")
@@ -55,8 +55,10 @@ class SocialPluginConfig(Config):
     # Options for social cards
     cards = opt.Type(bool, default = True)
     cards_dir = opt.Type(str, default = "assets/images/social")
-    cards_color = opt.Type(dict, default = {})
+    cards_color = opt.Type(dict, default = dict())
     cards_font = opt.Optional(opt.Type(str))
+
+# -----------------------------------------------------------------------------
 
 # Social plugin
 class SocialPlugin(BasePlugin[SocialPluginConfig]):
