@@ -13,6 +13,10 @@ installed with a supported version.
 
 ## Supported extensions
 
+In general, all extensions that are part of [Python Markdown Extensions] should
+work with Material for MkDocs. The following list includes all extensions that
+are natively supported, meaning they work without any further adjustments.
+
 ### Arithmatex
 
 [:octicons-tag-24: 1.0.0][Arithmatex support] ·
