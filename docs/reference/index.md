@@ -24,12 +24,8 @@ tags. Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - meta # (1)!
+  - meta
 ```
-
-1.  Note that the meta plugin should be located at the beginning of the list
-    of `plugins`, so that other plugins (including the [built-in blog plugin])
-    will pick up the set defaults.
 
 > If you need to be able to build your documentation with and without
 > [Insiders], please refer to the [built-in plugins] section to learn how
