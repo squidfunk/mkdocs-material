@@ -13,6 +13,10 @@
       },
       {
         "$ref": "#/definitions/external-community"
+      },
+      {
+        "description": "External plugins, schema not provided or unknown",
+        "type": "string"
       }
     ]
   },
