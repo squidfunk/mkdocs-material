@@ -180,6 +180,18 @@ plugins:
 
 The following configuration options are supported:
 
+[`enabled`](#+git-revision-date-localized.enabled){ #+git-revision-date-localized.enabled }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether
+    the plugin is enabled when building your project. If you want to switch
+    the plugin off, e.g. for local builds, use an [environment variable]:
+
+    ``` yaml
+    plugins:
+      - git-revision-date-localized:
+          enabled: !ENV [CI, false]
+    ```
+
 [`type`](#+git-revision-date-localized.type){ #+git-revision-date-localized.type }
 
 :   :octicons-milestone-24: Default: `date` – The format of the date to be
@@ -255,6 +267,18 @@ plugins:
 
 The following configuration options are supported:
 
+[`enabled`](#+git-committers.enabled){ #+git-committers.enabled }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether
+    the plugin is enabled when building your project. If you want to switch
+    the plugin off, e.g. for local builds, use an [environment variable]:
+
+    ``` yaml
+    plugins:
+      - git-committers:
+          enabled: !ENV [CI, false]
+    ```
+
 [`repository`](#+git-committers.repository){ #+git-committers.repository }
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
@@ -267,7 +291,7 @@ The following configuration options are supported:
           repository: squidfunk/mkdocs-material
     ```
 
-`branch`{ #committers-repository }
+[`branch`](#+git-committers.branch){ #+git-committers.branch }
 
 :   :octicons-milestone-24: Default: `master` – This property should be set to
     the branch of the repository from which to retrieve the contributors. To use the `main` branch:
@@ -284,7 +308,7 @@ them at your own risk.
 
   [Insiders]: ../insiders/index.md
   [git-committers]: https://github.com/ojacques/mkdocs-git-committers-plugin-2
-  [personal access token]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [rate limits]: https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
 
 #### Document authors :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }

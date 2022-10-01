@@ -182,7 +182,7 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - privacy:
-          enabled: !ENV [PRIVACY, false]
+          enabled: !ENV [CI, false]
     ```
 
 [`externals`](#+privacy.externals){ #+privacy.externals }
