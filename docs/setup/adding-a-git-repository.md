@@ -250,7 +250,7 @@ Then, add the following lines to `mkdocs.yml`:
 plugins:
   - git-committers:
       repository: squidfunk/mkdocs-material
-      token: !ENV GH_TOKEN
+      branch: main
 ```
 
 The following configuration options are supported:
@@ -267,21 +267,15 @@ The following configuration options are supported:
           repository: squidfunk/mkdocs-material
     ```
 
-[`token`](#+git-committers.token){ #+git-committers.token }
+`branch`{ #committers-repository }
 
-:   :octicons-milestone-24: Default: _none_ – This property should[^3] be set to
-    a [personal access token], which is used by the plugin to query GitHub's API
-    for document contributor information:
-
-      [^3]:
-        Setting a [personal access token] is not required, but recommended, as
-        GitHub has very low [rate limits] on their APIs that you'll probably run
-        into. When using a token, [rate limits] are much higher.
+:   :octicons-milestone-24: Default: `master` – This property should be set to
+    the branch of the repository from which to retrieve the contributors. To use the `main` branch:
 
     ``` yaml
     plugins:
       - git-committers:
-          token: !ENV GH_TOKEN
+          branch: main
     ```
 
 The other configuration options of this extension are not officially supported

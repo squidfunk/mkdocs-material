@@ -26,11 +26,6 @@
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#+git-committers.repository",
               "type": "string"
             },
-            "token": {
-              "title": "Personal access token",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#+git-committers.token",
-              "type": "string"
-            }
           },
           "additionalProperties": false,
           "required": [
