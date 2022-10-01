@@ -34,10 +34,11 @@ from mkdocs.plugins import BasePlugin
 # Class
 # -----------------------------------------------------------------------------
 
-# Configuration scheme
+# Tags plugin configuration scheme
 class TagsPluginConfig(Config):
     tags_file = opt.Optional(opt.Type(str))
 
+# -----------------------------------------------------------------------------
 
 # Tags plugin
 class TagsPlugin(BasePlugin[TagsPluginConfig]):
@@ -120,7 +121,6 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
         classes = " ".join(classes)
         content = [f"## <span class=\"{classes}\">{tag}</span>", ""]
         for page in pages:
-
             url = utils.get_relative_url(
                 page.file.src_uri,
                 self.tags_file.src_uri
