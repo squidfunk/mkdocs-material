@@ -1,7 +1,18 @@
+mkdocs-material-8.5.5+insiders-4.24.2 (2022-10-01)
+
+  * Updated MkDocs to 1.4
+  * Fixed compatibility issues with MkDocs 1.4
+  * Fixed incorrectly generated paths in privacy plugin
+  * Fixed blog index page not showing navigation when using meta plugin
+
 mkdocs-material-8.5.5 (2022-10-01)
 
   * Updated MkDocs to 1.4
   * Fixed compatibility issues with MkDocs 1.4
+  * Fixed #4430: build error when enabling consent without repository URL
+
+mkdocs-material-8.5.4+insiders-4.24.1 (2022-09-30)
+
   * Fixed #4430: build error when enabling consent without repository URL
 
 mkdocs-material-8.5.4 (2022-09-30)
