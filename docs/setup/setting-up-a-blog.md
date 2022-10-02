@@ -22,7 +22,7 @@ __Check out our [blog], which is created with the new [built-in blog plugin]!__
 
 ## Configuration
 
-### Built-in blog plugin :material-alert-decagram:{ .mdx-pulse title="Added on September 12, 2022" }
+### Built-in blog plugin
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.23.0][Insiders] ·
@@ -248,7 +248,9 @@ The following configuration options are available for posts:
         ``` yaml
         plugins:
           - blog:
-              post_slugify: !!python/name:pymdownx.slugs.uslugify
+              post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+                kwds:
+                  case: lower
         ```
 
     === "Unicode, case-sensitive"
@@ -256,7 +258,7 @@ The following configuration options are available for posts:
         ``` yaml
         plugins:
           - blog:
-              post_slugify: !!python/name:pymdownx.slugs.uslugify_cased
+              post_slugify: !!python/object/apply:pymdownx.slugs.slugify
         ```
 
 [`post_slugify_separator`](#+blog.post_slugify_separator){ #+blog.post_slugify_separator }
@@ -542,7 +544,9 @@ The following configuration options are available for category index generation:
         ``` yaml
         plugins:
           - blog:
-              categories_slugify: !!python/name:pymdownx.slugs.uslugify
+              categories_slugify: !!python/object/apply:pymdownx.slugs.slugify 
+                kwds:
+                  case: lower
         ```
 
     === "Unicode, case-sensitive"
@@ -550,7 +554,7 @@ The following configuration options are available for category index generation:
         ``` yaml
         plugins:
           - blog:
-              categories_slugify: !!python/name:pymdownx.slugs.uslugify_cased
+              categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
         ```
 
 [`categories_slugify_separator`](#+blog.categories_slugify_separator){ #+blog.categories_slugify_separator }
@@ -1028,7 +1032,7 @@ authors:
 Categories are an excellent way for grouping your posts thematically on
 dedicated index pages. This way, a user interested in a specific topic can
 explore all of your posts on this topic. Make sure [categories] are enabled and
-add them to the `categories` front matter property:
+add them to the front matter `categories` property:
 
 ``` yaml
 ---
@@ -1053,7 +1057,7 @@ the list.
 #### Adding tags
 
 Besides [categories], the [built-in blog plugin] also integrates with the
-[built-in tags plugin]. If you add tags in the `tags` front matter property as
+[built-in tags plugin]. If you add tags in the front matter `tags` property as
 part of a post, the post is linked from the [tags index]:
 
 ``` yaml
@@ -1079,7 +1083,7 @@ linked with their titles.
 
 Related links offer the perfect way to prominently add a _further reading_ 
 section to your post that is included in the left sidebar, guiding the user to 
-other destinations of your documentation. Use the `links` front matter property 
+other destinations of your documentation. Use the front matter `links` property 
 to add related links to a post:
 
 ``` yaml
@@ -1153,7 +1157,7 @@ offers this capability as well.
 
 Sometimes, however, the computed reading time might not feel accurate, or
 result in odd and unpleasant numbers. For this reason, reading time can be 
-overridden and explicitly set with the `readtime` front matter property for a
+overridden and explicitly set with the front matter `readtime` property for a
 post:
 
 ``` yaml
@@ -1189,8 +1193,8 @@ authors, and add a `.meta.yml` file to set common properties:
 ```
 
 1.  As already noted, you can also place a `.meta.yml` file in nested folders
-    of the `posts` directory. This file then can contain any front matter that
-    is also valid in posts, e.g.:
+    of the `posts` directory. This file then can define all front matter
+    properties that are valid in posts, e.g.:
 
     ``` yaml
     authors:
@@ -1267,8 +1271,7 @@ the [built-in blog plugin] would create it:
     - [`categories_slugify`][categories_slugify]
 
 You can now add arbitrary content to the newly created file, or set specific
-page properties for this page via front matter, e.g. to change the
-[page description]:
+front matter properties for this page, e.g. to change the [page description]:
 
 ``` yaml
 ---
@@ -1279,7 +1282,7 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
 ...
 ```
 
-All posts belonging to the category will be automatically appended.
+All post excerpts belonging to the category are automatically appended.
 
   [add the category]: #adding-categories
   [page description]: ../reference/index.md#setting-the-page-description

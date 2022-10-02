@@ -159,12 +159,10 @@
           "properties": {
             "emoji_generator": {
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.emoji_generator",
-              "type": "string",
               "default": "!!python/name:materialx.emoji.to_svg"
             },
             "emoji_index": {
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.emoji_index",
-              "type": "string",
               "default": "!!python/name:materialx.emoji.twemoji"
             },
             "options": {

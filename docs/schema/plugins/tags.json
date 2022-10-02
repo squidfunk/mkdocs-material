@@ -15,6 +15,12 @@
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#built-in-tags-plugin",
           "type": "object",
           "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.enabled",
+              "type": "boolean",
+              "default": true
+            },
             "tags_file": {
               "title": "Markdown file to render tags index",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_file",
@@ -34,6 +40,26 @@
                 }
               },
               "additionalProperties": false
+            },
+            "tags_slugify": {
+              "title": "Tags slugify function",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_slugify",
+              "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
+            },
+            "tags_slugify_separator": {
+              "title": "Tags slugify separator",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_slugify_separator",
+              "type": "string",
+              "default": "\"-\""
+            },
+            "tags_allowed": {
+              "title": "Tags allowed",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_allowed",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
             }
           },
           "additionalProperties": false

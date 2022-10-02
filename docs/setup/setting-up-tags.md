@@ -30,13 +30,24 @@ plugins:
 
 The following configuration options are available:
 
+[`enabled`](#+tags.enabled){ #+tags.enabled }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether
+    the plugin is enabled when building your project. If you want to switch
+    the plugin off, you can disable it with the following lines:
+
+    ``` yaml
+    plugins:
+      - tags:
+          enabled: false
+    ```
+
 [`tags_file`](#+tags.tags_file){ #+tags.tags_file }
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies which page
     should be used to render the tags index. See the section on [adding a tags 
     index][tags index] for more information. If this option is specified, tags
-    will become clickable, pointing to the corresponding section in the tags
-    index:
+    become clickable, pointing to the corresponding section in the tags index:
 
     ``` yaml
     plugins:
@@ -51,8 +62,8 @@ The following configuration options are available:
 [`tags_extra_files`](#+tags.tags_extra_files){ #+tags.tags_extra_files }
 
 :   [:octicons-tag-24: insiders-4.20.0][Insiders] · :octicons-milestone-24: 
-    Default: _none_ – This option allows to define additional pages to render
-    subsets of the [tags index], in order to provide scoped tags indexes for
+    Default: _none_ – This option specifies additional pages, i.e. to render
+    subsets of the [tags index], in order to provide scoped tags indexes for 
     specific sections:
 
     ``` yaml
@@ -84,11 +95,67 @@ The following configuration options are available:
         at least one of the tags `HTML5`, `JavaScript` or `CSS` will be included
         in the additional tags index on `web.md`.
 
-    See #3864 for additional use cases.
+    See #3864 for more information.
+
+[`tags_slugify`](#+tags.tags_slugify){ #+tags.tags_slugify }
+
+:   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
+    Default: `headerid.slugify` – This option specifies which function to use for 
+    generating URL-compatible slugs from tags. [Python Markdown Extensions] 
+    includes several Unicode-aware slug functions which are a good choice for 
+    non-ASCII languages:
+
+    === "Unicode"
+
+        ``` yaml
+        plugins:
+          - tags:
+              tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
+                kwds:
+                  case: lower
+        ```
+
+    === "Unicode, case-sensitive"
+
+        ``` yaml
+        plugins:
+          - tags:
+              tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
+        ```
+
+[`tags_slugify_separator`](#+tags.tags_slugify_separator){ #+tags.tags_slugify_separator }
+
+:   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
+    Default: `-` – This option specifies the separator which is used by the slug function. By default, a hyphen is used, but it can
+    be changed to any string:
+
+    ``` yaml
+    plugins:
+      - tags:
+          tags_slugify_separator: "-"
+    ```
+
+[`tags_allowed`](#+tags.tags_allowed){ #+tags.tags_allowed } :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
+
+:   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
+    Default: _none_ – This option allows the author to define explicitly which
+    tags are allowed to be used on pages. If this setting is omitted, the
+    [built-in tags plugin] won't check tag names. Use this option to define a
+    list of tags in order to catch typos:
+
+    ``` yaml
+    plugins:
+      - tags:
+          tags_allowed:
+            - HTML5
+            - JavaScript
+            - CSS
+    ```
 
   [Tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
   [Insiders]: ../insiders/index.md
   [tag identifiers]: #tag-icons
+  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
 ### Tag icons
 

@@ -85,8 +85,7 @@
             "post_slugify": {
               "title": "Post slugify function",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_slugify",
-              "type": "string",
-              "default": "!!python/name:pymdownx.slugs.uslugify"
+              "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
             },
             "post_slugify_separator": {
               "title": "Post slugify separator",
@@ -231,8 +230,7 @@
             "categories_slugify": {
               "title": "Categories slugify function",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_slugify",
-              "type": "string",
-              "default": "!!python/name:pymdownx.slugs.uslugify"
+              "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
             },
             "categories_slugify_separator": {
               "title": "Categories slugify separator",

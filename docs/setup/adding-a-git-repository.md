@@ -311,7 +311,7 @@ them at your own risk.
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [rate limits]: https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
 
-#### Document authors :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }
+#### Document authors
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.19.0][Insiders] ·

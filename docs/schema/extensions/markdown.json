@@ -118,7 +118,7 @@
         },
         "slugify": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.slugify",
-          "type": "string"
+          "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
         },
         "toc_depth": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.toc_depth",
