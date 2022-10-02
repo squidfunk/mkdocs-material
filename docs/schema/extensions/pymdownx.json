@@ -540,12 +540,16 @@
           "type": "object",
           "properties": {
             "alternate_style": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tabbed-alternate-style",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tabbed.alternate_style",
               "type": "boolean",
               "enum": [
                 true
               ],
               "default": true
+            },
+            "slugify": {
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tabbed.slugify",
+              "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
             }
           },
           "additionalProperties": false,

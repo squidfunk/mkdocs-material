@@ -51,9 +51,27 @@ You can copy the link of the tab and create a link on the same or any other
 page. For example, you can [jump to the third tab above this paragraph][tab_1]
 or to the [publishing guide for Insiders][tab_2].
 
+!!! tip "Readable anchor links"
+
+    [Python Markdown Extensions] 9.6 adds support for [slugification] of
+    content tabs, which produces nicer looking and more readable anchor links.
+    Enable the slugify function with the following lines:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tabbed:
+          slugify: !!python/object/apply:pymdownx.slugs.slugify
+            kwds:
+              case: lower
+    ```
+
+    Fore more information, please [see the extension guide][slugification].
+
   [Insiders]: ../insiders/index.md
-  [tab_1]: #__tabbed_1_3
-  [tab_2]: ../publishing-your-site.md#__tabbed_1_2
+  [tab_1]: #-or-even-me
+  [tab_2]: ../publishing-your-site.md#insiders
+  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
+  [slugification]: ../setup/extensions/python-markdown-extensions.md#+pymdownx.tabbed.slugify
 
 ### Linked content tabs
 
