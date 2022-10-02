@@ -10,7 +10,7 @@ that new features are first exclusively released to sponsors as part of
 [Insiders]. Read on to learn [what sponsorships achieve],
 [how to become a sponsor] to get access to Insiders, and [what's in for you]!
 
-<figure class="mdx-video" markdown>
+<!-- <figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
     <iframe src="https://streamable.com/e/yslhdu" allowfullscreen></iframe>
   </div>
@@ -20,7 +20,7 @@ This documentation is built with Insiders
 [squidfunk.github.io/mkdocs-material][Material for MkDocs]
 
   </figcaption>
-</figure>
+</figure> -->
 
   [Insiders]: #what-is-insiders
   [what sponsorships achieve]: #what-sponsorships-achieve
