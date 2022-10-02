@@ -32,7 +32,7 @@ The following configuration options are available:
 
 [`tags_file`](#+tags.tags_file){ #+tags.tags_file }
 
-:   :octicons-milestone-24: Default: _none_ – This option specifies which file
+:   :octicons-milestone-24: Default: _none_ – This option specifies which page
     should be used to render the tags index. See the section on [adding a tags 
     index][tags index] for more information. If this option is specified, tags
     will become clickable, pointing to the corresponding section in the tags
@@ -48,7 +48,7 @@ The following configuration options are available:
     of `mkdocs.yml`. Note, however, that this options is not required – only use
     it if you want a tags index page.
 
-[`tags_extra_files`](#+tags.tags_extra_files){ #+tags.tags_extra_files } :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
+[`tags_extra_files`](#+tags.tags_extra_files){ #+tags.tags_extra_files }
 
 :   [:octicons-tag-24: insiders-4.20.0][Insiders] · :octicons-milestone-24: 
     Default: _none_ – This option allows to define additional pages to render

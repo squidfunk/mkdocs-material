@@ -388,6 +388,46 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
 
 ## Customization
 
+### Classic admonitions
+
+Prior to version [:octicons-tag-24: 8.6.0][Admonition modern], admonitions had
+a slightly different appearance:
+
+!!! classic "Note"
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+
+If you want to restore this appearance, add the following CSS to an
+[additional style sheet]:
+
+<style>
+  .md-typeset .admonition.classic {
+    border-width: 0;
+    border-left-width: 4px;
+  }
+</style>
+
+=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
+
+    ``` css
+    .md-typeset .admonition,
+    .md-typeset details {
+      border-width: 0;
+      border-left-width: 4px;
+    }
+    ```
+
+=== ":octicons-file-code-16: `mkdocs.yml`"
+
+    ``` yaml
+    extra_css:
+      - stylesheets/extra.css
+    ```
+
+[Admonition modern]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.6.0
+
 ### Custom admonitions
 
 If you want to add a custom admonition type, all you need is a color and an

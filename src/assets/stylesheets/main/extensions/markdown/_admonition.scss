@@ -29,17 +29,17 @@
 
 /// Admonition flavours
 $admonitions: (
-  note:                       pencil $clr-blue-a200,
+  note:                       pencil-circle $clr-blue-a200,
   abstract summary tldr:      clipboard-text $clr-light-blue-a400,
   info todo:                  information $clr-cyan-a700,
   tip hint important:         fire $clr-teal-a700,
-  success check done:         check-bold $clr-green-a700,
+  success check done:         check $clr-green-a700,
   question help faq:          help-circle $clr-light-green-a700,
   warning caution attention:  alert $clr-orange-a400,
-  failure fail missing:       close-thick $clr-red-a200,
-  danger error:               lightning-bolt $clr-red-a400,
-  bug:                        bug $clr-pink-a400,
-  example:                    format-list-numbered $clr-deep-purple-a200,
+  failure fail missing:       close $clr-red-a200,
+  danger error:               lightning-bolt-circle $clr-red-a400,
+  bug:                        shield-bug $clr-pink-a400,
+  example:                    test-tube $clr-deep-purple-a200,
   quote cite:                 format-quote-close $clr-grey
 ) !default;
 
@@ -62,7 +62,8 @@ $admonitions: (
 
   // Admonition - note that all styles also apply to details tags, which are
   // rendered as collapsible admonitions with summary elements as titles.
-  :is(.admonition, details) {
+  .admonition,
+  details {
     display: flow-root;
     margin: px2em(20px, 12.8px) 0;
     padding: 0 px2rem(12px);
@@ -70,9 +71,8 @@ $admonitions: (
     font-size: px2rem(12.8px);
     page-break-inside: avoid;
     background-color: var(--md-admonition-bg-color);
-    border: 0 solid $clr-blue-a200;
-    border-inline-start-width: px2rem(4px);
-    border-radius: px2rem(2px);
+    border: px2rem(1px) solid $clr-blue-a200;
+    border-radius: px2rem(4px);
     box-shadow: var(--md-shadow-z1);
 
     // [print]: Omit shadow as it may lead to rendering errors
@@ -114,12 +114,13 @@ $admonitions: (
   }
 
   // Admonition title
-  :is(.admonition-title, summary) {
+  .admonition-title,
+  summary {
     position: relative;
     margin-block: 0;
-    margin-inline: px2rem(-16px) px2rem(-12px);
+    margin-inline: px2rem(-12px);
     padding-block: px2rem(8px);
-    padding-inline: px2rem(44px) px2rem(12px);
+    padding-inline: px2rem(40px) px2rem(12px);
     font-weight: 700;
     background-color: color.adjust($clr-blue-a200, $alpha: -0.9);
     border: none;
@@ -136,7 +137,7 @@ $admonitions: (
     &::before {
       position: absolute;
       top: px2em(10px);
-      inset-inline-start: px2rem(16px);
+      inset-inline-start: px2rem(12px);
       width: px2rem(20px);
       height: px2rem(20px);
       background-color: $clr-blue-a200;
@@ -145,6 +146,11 @@ $admonitions: (
       mask-repeat: no-repeat;
       mask-size: contain;
       content: "";
+    }
+
+    // Inline code block
+    code {
+      box-shadow: 0 0 0 px2rem(1px) var(--md-default-fg-color--lightest);
     }
   }
 }
@@ -177,6 +183,11 @@ $admonitions: (
     &::before {
       background-color: $tint;
       mask-image: var(--md-admonition-icon--#{$name});
+    }
+
+    // Details marker
+    &::after {
+      color: $tint;
     }
   }
 }
