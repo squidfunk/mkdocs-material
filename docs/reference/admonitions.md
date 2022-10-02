@@ -390,7 +390,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`:
 
 ### Classic admonitions
 
-Prior to version [:octicons-tag-24: 8.6.0][Admonition modern], admonitions had
+Prior to version [:octicons-tag-24: 8.5.6][Admonition modern], admonitions had
 a slightly different appearance:
 
 !!! classic "Note"
@@ -426,7 +426,7 @@ If you want to restore this appearance, add the following CSS to an
       - stylesheets/extra.css
     ```
 
-[Admonition modern]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.6.0
+[Admonition modern]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.6
 
 ### Custom admonitions
 

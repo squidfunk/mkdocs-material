@@ -1,3 +1,15 @@
+mkdocs-material-8.5.6+insiders-4.25.0 (2022-10-02)
+
+  * Added support for navigation subtitles
+  * Added support for defining an allow list for built-in tags plugin
+  * Added support for custom slugify functions for built-in tags plugin
+  * Improved stability of search plugin when using --dirtyreload
+
+mkdocs-material-8.5.6 (2022-10-02)
+
+  * Modernized appearance of admonitions (with fallback, see docs)
+  * Improved appearance of inline code blocks in admonition titles
+
 mkdocs-material-8.5.5+insiders-4.24.2 (2022-10-01)
 
   * Updated MkDocs to 1.4

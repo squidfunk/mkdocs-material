@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.5.6 <small>_ October 2, 2022</small> { id="8.5.6" }
+
+- Modernized appearance of admonitions (with fallback, see docs)
+- Improved appearance of inline code blocks in admonition titles
+
 ### 8.5.5 <small>_ October 1, 2022</small> { id="8.5.5" }
 
 - Updated MkDocs to 1.4
