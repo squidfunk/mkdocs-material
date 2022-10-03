@@ -45,7 +45,7 @@
     "focus-visible": "^5.2.0",
     "fuzzaldrin-plus": "^0.6.0",
     "lunr": "^2.3.9",
-    "lunr-languages": "^1.9.0",
+    "lunr-languages": "^1.10.0",
     "resize-observer-polyfill": "^1.5.1",
     "rxjs": "^7.5.7",
     "unfetch": "^4.2.0",
