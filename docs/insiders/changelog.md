@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.25.1 <small>_ October 3, 2022</small> { id="4.25.1" }
+
+- Updated `mkdocs-rss-plugin` in `Dockerfile` to fix MkDocs compat errors
+
 ### 4.25.0 <small>_ October 2, 2022</small> { id="4.25.0" }
 
 - Added support for navigation subtitles
