@@ -1120,11 +1120,13 @@ links:
 If you look closely, you'll realize that you can even use an anchor to link to
 a specific section of a document, extending the possiblities of the [`nav`][nav] 
 syntax in `mkdocs.yml`. The [built-in blog plugin] resolves the anchor and sets 
-the title of the anchor as a subtitle of the related link.
+the title of the anchor as a [subtitle] of the related link.
 
-Note that all links must be relative to [`docs_dir`][docs_dir], as is also the case for the [`nav`][nav] setting.
+Note that all links must be relative to [`docs_dir`][docs_dir], as is also the
+case for the [`nav`][nav] setting.
 
   [nav]: https://www.mkdocs.org/user-guide/configuration/#nav
+  [subtitle]: ../reference/index.md#setting-the-page-subtitle
 
 #### Linking from and to posts
 
