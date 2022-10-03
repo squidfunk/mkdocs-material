@@ -21,6 +21,16 @@
               "type": "boolean",
               "default": true
             },
+            "cache": {
+              "title": "Enable caching of downloads",
+              "type": "boolean",
+              "default": true
+            },
+            "cache_dir": {
+              "title": "Cache directory",
+              "type": "string",
+              "default": ".cache/plugin/privacy"
+            },
             "externals": {
               "title": "External assets",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.externals",
