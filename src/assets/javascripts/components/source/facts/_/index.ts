@@ -70,14 +70,14 @@ export function fetchSourceFacts(
 ): Observable<SourceFacts> {
 
   /* Try to match GitHub repository */
-  let match = url.match(/^.+github\.com\/([^/]+)\/?([^/]+)?/i)!
+  let match = url.match(/^.+github\.com\/([^/]+)\/?([^/]+)?/i)
   if (match) {
     const [, user, repo] = match
     return fetchSourceFactsFromGitHub(user, repo)
   }
 
   /* Try to match GitLab repository */
-  match = url.match(/^.+?([^/]*gitlab[^/]+)\/(.+?)\/?$/i)!
+  match = url.match(/^.+?([^/]*gitlab[^/]+)\/(.+?)\/?$/i)
   if (match) {
     const [, base, slug] = match
     return fetchSourceFactsFromGitLab(base, slug)
