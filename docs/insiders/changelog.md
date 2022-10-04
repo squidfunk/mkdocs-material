@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.25.2 <small>_ October 4, 2022</small> { id="4.25.2" }
+
+- Fixed #4452: Blog and tags plugin crash when specifying slugify function
+
 ### 4.25.1 <small>_ October 3, 2022</small> { id="4.25.1" }
 
 - Updated `mkdocs-rss-plugin` in `Dockerfile` to fix MkDocs compat errors
