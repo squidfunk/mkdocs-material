@@ -68,21 +68,21 @@ export type SourceFacts =
 export function fetchSourceFacts(
   url: string
 ): Observable<SourceFacts> {
-  const [type] = url.match(/(git(?:hub|lab))/i) || []
-  switch (type.toLowerCase()) {
 
-    /* GitHub repository */
-    case "github":
-      const [, user, repo] = url.match(/^.+github\.com\/([^/]+)\/?([^/]+)?/i)!
-      return fetchSourceFactsFromGitHub(user, repo)
-
-    /* GitLab repository */
-    case "gitlab":
-      const [, base, slug] = url.match(/^.+?([^/]*gitlab[^/]+)\/(.+?)\/?$/i)!
-      return fetchSourceFactsFromGitLab(base, slug)
-
-    /* Everything else */
-    default:
-      return EMPTY
+  /* Try to match GitHub repository */
+  let match = url.match(/^.+github\.com\/([^/]+)\/?([^/]+)?/i)!
+  if (match) {
+    const [, user, repo] = match
+    return fetchSourceFactsFromGitHub(user, repo)
   }
+
+  /* Try to match GitLab repository */
+  match = url.match(/^.+?([^/]*gitlab[^/]+)\/(.+?)\/?$/i)!
+  if (match) {
+    const [, base, slug] = match
+    return fetchSourceFactsFromGitLab(base, slug)
+  }
+
+  /* Fallback */
+  return EMPTY
 }
