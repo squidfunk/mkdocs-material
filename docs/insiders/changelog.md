@@ -6,6 +6,10 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.25.4 <small>_ October 9, 2022</small> { id="4.25.4" }
+
+- Fixed other path issues for standalone blogs (4.24.2 regression)
+
 ### 4.25.3 <small>_ October 9, 2022</small> { id="4.25.3" }
 
 - Fixed #4457: Posts not collected for standalone blog (4.24.2 regression)

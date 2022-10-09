@@ -1,3 +1,7 @@
+mkdocs-material-8.5.6+insiders-4.25.4 (2022-10-09)
+
+  * Fixed other path issues for standalone blogs (4.24.2 regression)
+
 mkdocs-material-8.5.6+insiders-4.25.3 (2022-10-09)
 
   * Fixed #4457: Posts not collected for standalone blog (4.24.2 regression)
