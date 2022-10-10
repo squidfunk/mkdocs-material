@@ -199,7 +199,7 @@ mkdocs build --config-file mkdocs.insiders.yml
           social: {}
         ```
 
-    === ":octicons-file-code-16  `mkdocs.yml`"
+    === ":octicons-file-code-16: `mkdocs.yml`"
 
         ``` yaml
         # Additional configuration above
