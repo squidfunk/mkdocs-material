@@ -41,56 +41,14 @@ This will create the following structure:
 
 ### Minimal configuration
 
-Simply add the following lines to `mkdocs.yml` to enable the theme. Note that
-since there are several [installation methods], minimal configuration might be
-slightly different:
+Simply add the following lines to `mkdocs.yml` to enable the theme:
 
-=== ":fontawesome-brands-python: pip"
-
-    ``` yaml
-    theme:
-      name: material
-    ```
-
-=== ":fontawesome-brands-docker: docker"
-
-    ``` yaml
-    theme:
-      name: material
-    ```
-
-=== ":fontawesome-brands-git-alt: git"
-
-    ``` yaml
-    theme:
-      name: null
-      custom_dir: mkdocs-material/material
-
-      # 404 page
-      static_templates:
-        - 404.html
-
-      # Necessary for search to work properly
-      include_search_page: false
-      search_index_only: true
-
-      # Default values, taken from mkdocs_theme.yml
-      language: en
-      font:
-        text: Roboto
-        code: Roboto Mono
-      favicon: assets/favicon.png
-      icon:
-        logo: logo
-    ```
-
-    When you clone from GitHub, you must list all of the themes' defaults
-    explicitly, because [`mkdocs_theme.yml`][mkdocs_theme.yml] is not
-    loaded automatically as described in the [custom theme guide].
+``` yaml
+theme:
+  name: material
+```
 
   [installation methods]: getting-started.md#installation
-  [mkdocs_theme.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
-  [custom theme guide]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 
 ???+ tip "Recommended: [configuration validation and auto-complete]"
 
