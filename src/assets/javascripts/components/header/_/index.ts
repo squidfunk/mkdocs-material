@@ -175,15 +175,16 @@ export function mountHeader(
 ): Observable<Component<Header>> {
   return defer(() => {
     const push$ = new Subject<Main>()
-    const done$ = push$.pipe(takeLast(1))
     push$
       .pipe(
         distinctUntilKeyChanged("active"),
         combineLatestWith(header$)
       )
         .subscribe(([{ active }, { hidden }]) => {
-          el.classList.toggle("md-header--shadow", active && !hidden)
-          el.hidden = hidden
+          if (active)
+            el.setAttribute("data-md-state", hidden ? "hidden" : "shadow")
+          else
+            el.removeAttribute("data-md-state")
         })
 
     /* Link to main area */
@@ -192,7 +193,7 @@ export function mountHeader(
     /* Create and return component */
     return header$
       .pipe(
-        takeUntil(done$),
+        takeUntil(push$.pipe(takeLast(1))),
         map(state => ({ ref: el, ...state }))
       )
   })

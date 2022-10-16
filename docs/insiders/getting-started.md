@@ -97,9 +97,10 @@ docker pull ghcr.io/${GH_USERNAME}/mkdocs-material-insiders
     dedicated token which you'll only use for publishing the Docker image.
 
   [^5]:
-    The Insiders repository contains two GitHub Actions workflows:
+    The Insiders repository contains three GitHub Actions workflows:
 
     - `build.yml` – Build and lint the project (disabled on forks)
+    - `documentation.yml` – Build and deploy the documentation (disabled on forks)
     - `publish.yml` – Build and publish the Docker image
 
 ### with git
@@ -150,7 +151,7 @@ pip install --upgrade git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-materi
 
 ## Caveats
 
-This section describes some aspects to consider when using Insiders together
+This sections describes some aspects to consider when using Insiders together
 with Material for MkDocs to ensure that users without access to Insiders can
 still build your documentation.
 
@@ -161,7 +162,7 @@ necessary to split the `mkdocs.yml` configuration into a base configuration, and
 one with plugin overrides. Note that this is a limitation of MkDocs, which can
 be mitigated by using [configuration inheritance]:
 
-=== ":octicons-file-code-16: `mkdocs.insiders.yml`"
+=== ":octicons-file-code-16: mkdocs.insiders.yml"
 
     ``` yaml
     INHERIT: mkdocs.yml
@@ -171,7 +172,7 @@ be mitigated by using [configuration inheritance]:
       - tags
     ```
 
-=== ":octicons-file-code-16: `mkdocs.yml`"
+=== ":octicons-file-code-16: mkdocs.yml"
 
     ``` yaml
     # Configuration with everything except Insiders plugins
@@ -191,7 +192,7 @@ mkdocs build --config-file mkdocs.insiders.yml
     the alternative key-value syntax in both files. The above example would
     then look like:
 
-    === ":octicons-file-code-16: `mkdocs.insiders.yml`"
+    === ":octicons-file-code-16: mkdocs.insiders.yml"
 
         ``` yaml
         INHERIT: mkdocs.yml
@@ -199,7 +200,7 @@ mkdocs build --config-file mkdocs.insiders.yml
           social: {}
         ```
 
-    === ":octicons-file-code-16: `mkdocs.yml`"
+    === ":octicons-file-code-16: mkdocs.yml"
 
         ``` yaml
         # Additional configuration above

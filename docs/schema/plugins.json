@@ -23,12 +23,6 @@
       "description": "Built-in plugins",
       "oneOf": [
         {
-          "$ref": "plugins/blog.json"
-        },
-        {
-          "$ref": "plugins/meta.json"
-        },
-        {
           "$ref": "plugins/offline.json"
         },
         {
@@ -49,13 +43,10 @@
       "description": "External plugins, schema provided by us",
       "oneOf": [
         {
-          "$ref": "plugins/external/git-authors.json"
-        },
-        {
-          "$ref": "plugins/external/git-committers.json"
-        },
-        {
           "$ref": "plugins/external/git-revision-date.json"
+        },
+        {
+          "$ref": "plugins/external/git-revision-date-localized.json"
         },
         {
           "$ref": "plugins/external/minify.json"
@@ -72,19 +63,13 @@
           "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-include-markdown-plugin/master/schema.json"
         },
         {
+          "$ref": "https://mondeja.github.io/mkdocs-mdpo-plugin/schema.json"
+        },
+        {
           "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-material-relative-language-selector/master/schema.json"
         },
         {
-          "$ref": "https://raw.githubusercontent.com/Guts/mkdocs-rss-plugin/main/docs/schema.json"
-        },
-        {
-          "$ref": "https://raw.githubusercontent.com/timvink/mkdocs-git-revision-date-localized-plugin/master/docs/schema.json"
-        },
-        {
-          "$ref": "https://raw.githubusercontent.com/blueswen/mkdocs-glightbox/main/schema.json"
-        },
-        {
-          "$ref": "https://raw.githubusercontent.com/prcr/mkdocs-meta-descriptions-plugin/main/schema.json"
+          "$ref": "https://guts.github.io/mkdocs-rss-plugin/schema.json"
         }
       ]
     }

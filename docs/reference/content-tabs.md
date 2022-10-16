@@ -31,51 +31,10 @@ See additional configuration options:
   [SuperFences]: ../setup/extensions/python-markdown-extensions.md#superfences
   [Tabbed]: ../setup/extensions/python-markdown-extensions.md#tabbed
 
-### Anchor links
-
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.17.0][Insiders] ·
-:octicons-beaker-24: Experimental
-
-In order to link to content tabs and share them more easily, [Insiders] adds
-an anchor link to each content tab automatically, which you can copy via right
-click or open in a new tab:
-
-=== "Open me in a new tab ..."
-
-=== "... or me ..."
-
-=== "... or even me"
-
-You can copy the link of the tab and create a link on the same or any other
-page. For example, you can [jump to the third tab above this paragraph][tab_1]
-or to the [publishing guide for Insiders][tab_2].
-
-!!! tip "Readable anchor links"
-
-    [Python Markdown Extensions] 9.6 adds support for [slugification] of
-    content tabs, which produces nicer looking and more readable anchor links.
-    Enable the slugify function with the following lines:
-
-    ``` yaml
-    markdown_extensions:
-      - pymdownx.tabbed:
-          slugify: !!python/object/apply:pymdownx.slugs.slugify
-            kwds:
-              case: lower
-    ```
-
-    Fore more information, please [see the extension guide][slugification].
-
-  [Insiders]: ../insiders/index.md
-  [tab_1]: #-or-even-me
-  [tab_2]: ../publishing-your-site.md#insiders
-  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
-  [slugification]: ../setup/extensions/python-markdown-extensions.md#+pymdownx.tabbed.slugify
-
 ### Linked content tabs
 
-[:octicons-tag-24: 8.3.0][Linked content tabs support] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.9.0][Insiders] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -94,18 +53,18 @@ tabs with the same label will be activated when a user clicks a content tab
 regardless of order inside a container. Furthermore, this feature is fully
 integrated with [instant loading] and persisted across page loads.
 
-=== "Feature enabled"
+=== ":octicons-check-circle-fill-16: Enabled"
 
-    [![Linked content tabs enabled]][Linked content tabs enabled]
+    [![content.tabs.link enabled]][content.tabs.link enabled]
 
-=== "Feature disabled"
+=== ":octicons-skip-16: Disabled"
 
-    [![Linked content tabs disabled]][Linked content tabs disabled]
+    [![content.tabs.link disabled]][content.tabs.link disabled]
 
-  [Linked content tabs support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
+  [Insiders]: ../insiders/index.md
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
-  [Linked content tabs enabled]: ../assets/screenshots/content-tabs-link.png
-  [Linked content tabs disabled]: ../assets/screenshots/content-tabs.png
+  [content.tabs.link enabled]: ../assets/screenshots/content-tabs-link.png
+  [content.tabs.link disabled]: ../assets/screenshots/content-tabs.png
 
 ## Usage
 

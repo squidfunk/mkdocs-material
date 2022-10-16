@@ -50,11 +50,11 @@ export interface Version {
 function renderVersion(version: Version): HTMLElement {
   const config = configuration()
 
-  /* Ensure trailing slash - see https://bit.ly/3rL5u3f */
+  /* Ensure trailing slash, see https://bit.ly/3rL5u3f */
   const url = new URL(`../${version.version}/`, config.base)
   return (
     <li class="md-version__item">
-      <a href={`${url}`} class="md-version__link">
+      <a href={url.toString()} class="md-version__link">
         {version.title}
       </a>
     </li>

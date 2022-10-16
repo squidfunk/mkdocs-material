@@ -29,10 +29,8 @@ import {
   defer,
   distinctUntilChanged,
   distinctUntilKeyChanged,
-  filter,
   finalize,
   map,
-  merge,
   of,
   repeat,
   scan,
@@ -50,8 +48,6 @@ import { feature } from "~/_"
 import {
   Viewport,
   getElement,
-  getElementContainer,
-  getElementSize,
   getElements,
   getLocation,
   getOptionalElement,
@@ -273,18 +269,19 @@ export function mountTableOfContents(
 ): Observable<Component<TableOfContents>> {
   return defer(() => {
     const push$ = new Subject<TableOfContents>()
-    const done$ = push$.pipe(takeLast(1))
     push$.subscribe(({ prev, next }) => {
 
       /* Look forward */
       for (const [anchor] of next) {
-        anchor.classList.remove("md-nav__link--passed")
-        anchor.classList.remove("md-nav__link--active")
+        anchor.removeAttribute("data-md-state")
+        anchor.classList.remove(
+          "md-nav__link--active"
+        )
       }
 
       /* Look backward */
       for (const [index, [anchor]] of prev.entries()) {
-        anchor.classList.add("md-nav__link--passed")
+        anchor.setAttribute("data-md-state", "blur")
         anchor.classList.toggle(
           "md-nav__link--active",
           index === prev.length - 1
@@ -292,44 +289,11 @@ export function mountTableOfContents(
       }
     })
 
-    /* Set up following, if enabled */
-    if (feature("toc.follow")) {
-
-      /* Toggle smooth scrolling only for anchor clicks */
-      const smooth$ = merge(
-        viewport$.pipe(debounceTime(1), map(() => undefined)),
-        viewport$.pipe(debounceTime(250), map(() => "smooth" as const))
-      )
-
-      /* Bring active anchor into view */
-      push$
-        .pipe(
-          filter(({ prev }) => prev.length > 0),
-          withLatestFrom(smooth$)
-        )
-          .subscribe(([{ prev }, behavior]) => {
-            const [anchor] = prev[prev.length - 1]
-            if (anchor.offsetHeight) {
-
-              /* Retrieve overflowing container and scroll */
-              const container = getElementContainer(anchor)
-              if (typeof container !== "undefined") {
-                const offset = anchor.offsetTop - container.offsetTop
-                const { height } = getElementSize(container)
-                container.scrollTo({
-                  top: offset - height / 2,
-                  behavior
-                })
-              }
-            }
-          })
-    }
-
     /* Set up anchor tracking, if enabled */
     if (feature("navigation.tracking"))
       viewport$
         .pipe(
-          takeUntil(done$),
+          takeUntil(push$.pipe(takeLast(1))),
           distinctUntilKeyChanged("offset"),
           debounceTime(250),
           skip(1),

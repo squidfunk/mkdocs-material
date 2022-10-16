@@ -122,7 +122,10 @@ export function mountDetails(
   return defer(() => {
     const push$ = new Subject<Details>()
     push$.subscribe(({ action, reveal }) => {
-      el.toggleAttribute("open", action === "open")
+      if (action === "open")
+        el.setAttribute("open", "")
+      else
+        el.removeAttribute("open")
       if (reveal)
         el.scrollIntoView()
     })

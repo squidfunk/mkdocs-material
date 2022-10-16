@@ -22,7 +22,7 @@
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
-            {% if page.meta and page.meta.title %}
+            {% if page and page.meta and page.meta.title %}
               {{ page.meta.title }}
             {% else %}
               {{ page.title }}
@@ -31,6 +31,9 @@
         </div>
       </div>
     </div>
+    {% if "navigation.tabs.header" in features %}
+      {% include "partials/tabs.html" %}
+    {% endif %}
     {% if not config.theme.palette is mapping %}
       <form class="md-header__option" data-md-component="palette">
         {% for option in config.theme.palette %}
@@ -66,7 +69,7 @@
         </div>
       </div>
     {% endif %}
-    {% if "search" in config.plugins %}
+    {% if "search" in config["plugins"] %}
       <label class="md-header__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}
       </label>
@@ -78,7 +81,7 @@
       </div>
     {% endif %}
   </nav>
-  {% if "navigation.tabs.sticky" in features %}
+  {% if "navigation.tabs.sticky" in features and not "navigation.tabs.header" in features %}
     {% if "navigation.tabs" in features %}
       {% include "partials/tabs.html" %}
     {% endif %}

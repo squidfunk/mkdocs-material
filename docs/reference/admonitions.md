@@ -35,8 +35,8 @@ See additional configuration options:
 
 ### Admonition icons
 
-[:octicons-tag-24: 8.3.0][Admonition icons support] ·
-:octicons-beaker-24: Experimental
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.4.0][Insiders]
 
 Each of the supported admonition types has a distinct icon, which can be changed
 to any icon bundled with the theme, or even a [custom icon]. Add the following
@@ -82,6 +82,12 @@ theme:
               quote: octicons/quote-16
         ```
 
+        <div class="result" markdown>
+
+        [![Octicons]][Octicons]
+
+        </div>
+
 
     === ":fontawesome-brands-font-awesome: FontAwesome"
 
@@ -89,13 +95,13 @@ theme:
         theme:
           icon:
             admonition:
-              note: fontawesome/solid/note-sticky
+              note: fontawesome/solid/sticky-note
               abstract: fontawesome/solid/book
-              info: fontawesome/solid/circle-info
+              info: fontawesome/solid/info-circle
               tip: fontawesome/solid/bullhorn
               success: fontawesome/solid/check
-              question: fontawesome/solid/circle-question
-              warning: fontawesome/solid/triangle-exclamation
+              question: fontawesome/solid/question-circle
+              warning: fontawesome/solid/exclamation-triangle
               failure: fontawesome/solid/bomb
               danger: fontawesome/solid/skull
               bug: fontawesome/solid/robot
@@ -103,10 +109,18 @@ theme:
               quote: fontawesome/solid/quote-left
         ```
 
-  [Admonition icons support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
+        <div class="result" markdown>
+
+        [![FontAwesome]][FontAwesome]
+
+        </div>
+
+  [Insiders]: ../insiders/index.md
   [custom icon]: ../setup/changing-the-logo-and-icons.md#additional-icons
   [supported types]: #supported-types
   [icon search]: icons-emojis.md#search
+  [Octicons]: ../assets/screenshots/admonition-octicons.png
+  [FontAwesome]: ../assets/screenshots/admonition-fontawesome.png
 
 ## Usage
 
@@ -231,7 +245,7 @@ Adding a `+` after the `???` token renders the block expanded:
 
 ### Inline blocks
 
-[:octicons-tag-24: 7.0.0][Inline blocks support] ·
+[:octicons-tag-24: 7.0.0][Inline support] ·
 :octicons-beaker-24: Experimental
 
 Admonitions can also be rendered as inline blocks (i.e. for sidebars), placing
@@ -283,22 +297,14 @@ prior to the content block you want to place them beside. If there's
 insufficient space to render the admonition next to the block, the admonition
 will stretch to the full width of the viewport, e.g. on mobile viewports.
 
-  [Inline blocks support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
+  [Inline support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
 
 ### Supported types
 
 Following is a list of type qualifiers provided by Material for MkDocs, whereas
-the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
+the default type, and thus fallback for unknown type qualifiers, is `note`:
 
-  [^1]:
-    Previously, some of the supported types defined more than one qualifier.
-    For example, authors could use `summary` or `tldr` as alternative qualifiers
-    to render an [`abstract`](#type:abstract) admonition. As this increased the
-    size of the CSS that is shipped with Material for MkDocs, the additional
-    type qualifiers are now all deprecated and will be removed in the next major
-    version. This will also be mentioned in the upgrade guide.
-
-[`note`](#type:note){ #type:note }
+`note`{ #type-note }
 
 :   !!! note
 
@@ -306,7 +312,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`abstract`](#type:abstract){ #type:abstract }
+`abstract`{ #type-abstract }, `summary`, `tldr`
 
 :   !!! abstract
 
@@ -314,7 +320,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`info`](#type:info){ #type:info }
+`info`{ #type-info }, `todo`
 
 :   !!! info
 
@@ -322,7 +328,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`tip`](#type:tip){ #type:tip }
+`tip`{ #type-tip }, `hint`, `important`
 
 :   !!! tip
 
@@ -330,7 +336,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`success`](#type:success){ #type:success }
+`success`{ #type-success }, `check`, `done`
 
 :   !!! success
 
@@ -338,7 +344,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`question`](#type:question){ #type:question }
+`question`{ #type-question }, `help`, `faq`
 
 :   !!! question
 
@@ -346,7 +352,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`warning`](#type:warning){ #type:warning }
+`warning`{ #type-warning }, `caution`, `attention`
 
 :   !!! warning
 
@@ -354,7 +360,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`failure`](#type:failure){ #type:failure }
+`failure`{ #type-failure }, `fail`, `missing`
 
 :   !!! failure
 
@@ -362,7 +368,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`danger`](#type:danger){ #type:danger }
+`danger`{ #type-danger }, `error`
 
 :   !!! danger
 
@@ -370,7 +376,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`bug`](#type:bug){ #type:bug }
+`bug`{ #type-bug }
 
 :   !!! bug
 
@@ -378,7 +384,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`example`](#type:example){ #type:example }
+`example`{ #type-example }
 
 :   !!! example
 
@@ -386,7 +392,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`quote`](#type:quote){ #type:quote }
+`quote`{ #type-quote }, `cite`
 
 :   !!! quote
 
@@ -395,46 +401,6 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         purus auctor massa, nec semper lorem quam in massa.
 
 ## Customization
-
-### Classic admonitions
-
-Prior to version [:octicons-tag-24: 8.5.6][Admonition modern], admonitions had
-a slightly different appearance:
-
-!!! classic "Note"
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
-
-If you want to restore this appearance, add the following CSS to an
-[additional style sheet]:
-
-<style>
-  .md-typeset .admonition.classic {
-    border-width: 0;
-    border-left-width: 4px;
-  }
-</style>
-
-=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
-
-    ``` css
-    .md-typeset .admonition,
-    .md-typeset details {
-      border-width: 0;
-      border-left-width: 4px;
-    }
-    ```
-
-=== ":octicons-file-code-16: `mkdocs.yml`"
-
-    ``` yaml
-    extra_css:
-      - stylesheets/extra.css
-    ```
-
-[Admonition modern]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.6
 
 ### Custom admonitions
 
@@ -462,7 +428,7 @@ and add the following CSS to an [additional style sheet]:
   }
 </style>
 
-=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     :root {
@@ -484,7 +450,7 @@ and add the following CSS to an [additional style sheet]:
     }
     ```
 
-=== ":octicons-file-code-16: `mkdocs.yml`"
+=== ":octicons-file-code-16: mkdocs.yml"
 
     ``` yaml
     extra_css:

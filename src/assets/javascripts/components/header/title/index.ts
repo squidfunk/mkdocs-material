@@ -116,7 +116,10 @@ export function mountHeaderTitle(
   return defer(() => {
     const push$ = new Subject<HeaderTitle>()
     push$.subscribe(({ active }) => {
-      el.classList.toggle("md-header__title--active", active)
+      if (active)
+        el.setAttribute("data-md-state", "active")
+      else
+        el.removeAttribute("data-md-state")
     })
 
     /* Obtain headline, if any */

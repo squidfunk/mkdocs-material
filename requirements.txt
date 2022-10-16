@@ -18,13 +18,10 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# Requirements for core
-jinja2>=3.0.2
+# Direct dependencies
+jinja2>=2.11.1
 markdown>=3.2
-mkdocs>=1.4.0
+mkdocs>=1.3.0
 mkdocs-material-extensions>=1.0.3
 pygments>=2.12
 pymdown-extensions>=9.4
-
-# Requirements for plugins
-requests>=2.26

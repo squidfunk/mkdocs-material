@@ -53,7 +53,6 @@ import {
  * Mount options
  */
 interface MountOptions {
-  target$: Observable<HTMLElement>     /* Location target observable */
   print$: Observable<boolean>          /* Media print observable */
 }
 
@@ -70,34 +69,17 @@ interface MountOptions {
  */
 function findAnnotationMarkers(container: HTMLElement): Text[] {
   const markers: Text[] = []
-  for (const el of getElements(".c, .c1, .cm", container)) {
-    const nodes: Text[] = []
+  for (const comment of getElements(".c, .c1, .cm", container)) {
+    let match: RegExpExecArray | null
 
-    /* Find all text nodes in current element */
-    const it = document.createNodeIterator(el, NodeFilter.SHOW_TEXT)
-    for (let node = it.nextNode(); node; node = it.nextNode())
-      nodes.push(node as Text)
-
-    /* Find all markers in each text node */
-    for (let text of nodes) {
-      let match: RegExpExecArray | null
-
-      /* Split text at marker and add to list */
-      while ((match = /(\(\d+\))(!)?/.exec(text.textContent!))) {
-        const [, id, force] = match
-        if (typeof force === "undefined") {
-          const marker = text.splitText(match.index)
-          text = marker.splitText(id.length)
-          markers.push(marker)
-
-        /* Replace entire text with marker */
-        } else {
-          text.textContent = id
-          markers.push(text)
-          break
-        }
+    /* Split text at marker and add to list */
+    let text = comment.firstChild as Text
+    if (text instanceof Text)
+      while ((match = /\((\d+)\)/.exec(text.textContent!))) {
+        const marker = text.splitText(match.index)
+        text = marker.splitText(match[0].length)
+        markers.push(marker)
       }
-    }
   }
   return markers
 }
@@ -131,20 +113,16 @@ function swap(source: HTMLElement, target: HTMLElement): void {
  * @returns Annotation component observable
  */
 export function mountAnnotationList(
-  el: HTMLElement, container: HTMLElement, { target$, print$ }: MountOptions
+  el: HTMLElement, container: HTMLElement, { print$ }: MountOptions
 ): Observable<Component<Annotation>> {
 
-  /* Compute prefix for tooltip anchors */
-  const parent = container.closest("[id]")
-  const prefix = parent?.id
-
   /* Find and replace all markers with empty annotations */
-  const annotations = new Map<string, HTMLElement>()
+  const annotations = new Map<number, HTMLElement>()
   for (const marker of findAnnotationMarkers(container)) {
     const [, id] = marker.textContent!.match(/\((\d+)\)/)!
     if (getOptionalElement(`li:nth-child(${id})`, el)) {
-      annotations.set(id, renderAnnotation(id, prefix))
-      marker.replaceWith(annotations.get(id)!)
+      annotations.set(+id, renderAnnotation(+id))
+      marker.replaceWith(annotations.get(+id)!)
     }
   }
 
@@ -152,17 +130,9 @@ export function mountAnnotationList(
   if (annotations.size === 0)
     return EMPTY
 
-  /* Mount component on subscription */
+  /* Create and return component */
   return defer(() => {
-    const done$ = new Subject()
-
-    /* Retrieve container pairs for swapping */
-    const pairs: [HTMLElement, HTMLElement][] = []
-    for (const [id, annotation] of annotations)
-      pairs.push([
-        getElement(".md-typeset", annotation),
-        getElement(`li:nth-child(${id})`, el)
-      ])
+    const done$ = new Subject<void>()
 
     /* Handle print mode - see https://bit.ly/3rgPdpt */
     print$
@@ -173,17 +143,20 @@ export function mountAnnotationList(
           el.hidden = !active
 
           /* Show annotations in code block or list (print) */
-          for (const [inner, child] of pairs)
+          for (const [id, annotation] of annotations) {
+            const inner = getElement(".md-typeset", annotation)
+            const child = getElement(`li:nth-child(${id})`, el)
             if (!active)
               swap(child, inner)
             else
               swap(inner, child)
+          }
         })
 
     /* Create and return component */
     return merge(...[...annotations]
       .map(([, annotation]) => (
-        mountAnnotation(annotation, container, { target$ })
+        mountAnnotation(annotation, container)
       ))
     )
       .pipe(

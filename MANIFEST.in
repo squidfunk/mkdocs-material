@@ -1,0 +1,11 @@
+recursive-include material *.js *.css *.map *.html *.svg *.png *.yml
+recursive-include material *.ttf *.woff *.woff2 LICENSE*
+recursive-exclude material/overrides *
+recursive-exclude site *
+recursive-exclude src *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+include LICENSE
+include package.json
+include README.md
+include requirements.txt

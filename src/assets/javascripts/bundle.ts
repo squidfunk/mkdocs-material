@@ -56,9 +56,7 @@ import {
 import {
   getComponentElement,
   getComponentElements,
-  mountAnnounce,
   mountBackToTop,
-  mountConsent,
   mountContent,
   mountDialog,
   mountHeader,
@@ -179,10 +177,6 @@ const main$ = document$
 /* Set up control component observables */
 const control$ = merge(
 
-  /* Consent */
-  ...getComponentElements("consent")
-    .map(el => mountConsent(el, { target$ })),
-
   /* Dialog */
   ...getComponentElements("dialog")
     .map(el => mountDialog(el, { alert$ })),
@@ -207,13 +201,9 @@ const control$ = merge(
 /* Set up content component observables */
 const content$ = defer(() => merge(
 
-  /* Announcement bar */
-  ...getComponentElements("announce")
-    .map(el => mountAnnounce(el)),
-
   /* Content */
   ...getComponentElements("content")
-    .map(el => mountContent(el, { viewport$, target$, print$ })),
+    .map(el => mountContent(el, { target$, print$ })),
 
   /* Search highlighting */
   ...getComponentElements("content")

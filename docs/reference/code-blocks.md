@@ -46,7 +46,8 @@ See additional configuration options:
 ### Code annotations
 
 [:octicons-tag-24: 8.0.0][Code annotations support] ·
-:octicons-unlock-24: Feature flag
+:octicons-unlock-24: Feature flag ·
+:octicons-beaker-24: Experimental
 
 Code annotations offer a comfortable and friendly way to attach arbitrary
 content to specific sections of code blocks by adding numeric markers in block
@@ -83,12 +84,13 @@ theme:
 
 #### Anchor links
 
-[:octicons-tag-24: 8.5.0][Anchor links support] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.4.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
-In order to be able to link to code annotations and share them more easily, an
-anchor link is automatically added to each annotation, which you can copy via
-right click or open in a new tab:
+In order to link to code annotations and share them more easily, [Insiders] adds
+an anchor link to each annotation automatically, which you can copy via right
+click or open in a new tab:
 
 ``` yaml
 # (1)!
@@ -98,7 +100,7 @@ right click or open in a new tab:
     rendered open in a new tab. You can also right-click me to __copy link
     address__ to share me with others.
 
-  [Anchor links support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
+  [Insiders]: ../insiders/index.md
 
 ## Usage
 
@@ -125,6 +127,9 @@ import tensorflow as tf
 
 ### Adding a title
 
+[:octicons-tag-24: 7.3.6][Title support] ·
+:octicons-beaker-24: Experimental
+
 In order to provide additional context, a custom title can be added to a code
 block by using the `title="<custom title>"` option directly after the shortcode,
 e.g. to display the name of a file:
@@ -150,6 +155,8 @@ def bubble_sort(items):
 ```
 
 </div>
+
+  [Title support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.6
 
 ### Adding annotations
 
@@ -190,11 +197,13 @@ theme:
 
 #### Stripping comments
 
-[:octicons-tag-24: 8.5.0][Stripping comments support] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.4.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
 If you wish to strip the comment characters surrounding a code annotation,
-simply add an `!` after the closing parenthesis of the code annotation:
+[Insiders] adds a new syntax that allows for just that. Simply add an `!` after
+the closing parens of the code annotation:
 
 ```` markdown title="Code block with annotation, stripped"
 ``` yaml
@@ -217,8 +226,6 @@ simply add an `!` after the closing parenthesis of the code annotation:
 Note that this only allows for a single code annotation to be rendered per
 comment. If you want to add multiple code annotations, comments cannot be
 stripped for technical reasons.
-
-  [Stripping comments support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
 
 ### Adding line numbers
 
@@ -304,7 +311,7 @@ from within a code block:
 
 ```` markdown title="Code block with external content"
 ``` title=".browserslistrc"
---8<-- ".browserslistrc"
+--8<--​ ".browserslistrc"
 ```
 ````
 
@@ -349,7 +356,7 @@ Let's say you want to change the color of `#!js "strings"`. While there are
 several [types of string tokens], they use the same color. You can assign
 a new color by using an [additional style sheet]:
 
-=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     :root > * {
@@ -357,7 +364,7 @@ a new color by using an [additional style sheet]:
     }
     ```
 
-=== ":octicons-file-code-16: `mkdocs.yml`"
+=== ":octicons-file-code-16: mkdocs.yml"
 
     ``` yaml
     extra_css:
@@ -368,7 +375,7 @@ If you want to tweak a specific type of string, e.g. ``#!js `backticks` ``, you
 can lookup the specific CSS class name in the [syntax theme definition], and
 override it as part of your [additional style sheet]:
 
-=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     .highlight .sb {
@@ -376,7 +383,7 @@ override it as part of your [additional style sheet]:
     }
     ```
 
-=== ":octicons-file-code-16: `mkdocs.yml`"
+=== ":octicons-file-code-16: mkdocs.yml"
 
     ``` yaml
     extra_css:
@@ -395,7 +402,7 @@ If you have a lot of content hosted inside your code annotations, it can be a
 good idea to increase the width of the tooltip by adding the following as part
 of an [additional style sheet]:
 
-=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     :root {
@@ -403,7 +410,7 @@ of an [additional style sheet]:
     }
     ```
 
-=== ":octicons-file-code-16: `mkdocs.yml`"
+=== ":octicons-file-code-16: mkdocs.yml"
 
     ``` yaml
     extra_css:
@@ -434,7 +441,7 @@ will close them.
 If you wish to revert to the prior behavior and display code annotation numbers,
 you can add an [additional style sheet] and copy and paste the following CSS:
 
-=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
+=== ":octicons-file-code-16: docs/stylesheets/extra.css"
 
     ``` css
     .md-typeset .md-annotation__index > ::before {
@@ -445,7 +452,7 @@ you can add an [additional style sheet] and copy and paste the following CSS:
     }
     ```
 
-=== ":octicons-file-code-16: `mkdocs.yml`"
+=== ":octicons-file-code-16: mkdocs.yml"
 
     ``` yaml
     extra_css:

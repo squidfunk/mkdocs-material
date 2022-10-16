@@ -179,12 +179,6 @@
           ]
         },
         {
-          "title": "Site language: Armenian",
-          "enum": [
-            "hy"
-          ]
-        },
-        {
           "title": "Site language: Indonesian",
           "enum": [
             "id"
@@ -218,12 +212,6 @@
           "title": "Site language: Korean",
           "enum": [
             "kr"
-          ]
-        },
-        {
-          "title": "Site language: Lithuanian",
-          "enum": [
-            "lt"
           ]
         },
         {
@@ -347,12 +335,6 @@
           ]
         },
         {
-          "title": "Site language: Tagalog",
-          "enum": [
-            "tl"
-          ]
-        },
-        {
           "title": "Site language: Turkish",
           "enum": [
             "tr"
@@ -362,18 +344,6 @@
           "title": "Site language: Ukrainian",
           "enum": [
             "uk"
-          ]
-        },
-        {
-          "title": "Site language: Urdu",
-          "enum": [
-            "ur"
-          ]
-        },
-        {
-          "title": "Site language: Uzbek",
-          "enum": [
-            "uz"
           ]
         },
         {
@@ -417,7 +387,7 @@
       "pattern": "\\.(ico|png|svg|jpe?g)$",
       "defaultSnippets": [
         {
-          "body": "${1:path/to/file}.png"
+          "body": "${1}.png"
         }
       ]
     },
@@ -427,7 +397,7 @@
       "pattern": "\\.(png|svg|jpe?g)$",
       "defaultSnippets": [
         {
-          "body": "${1:path/to/file}.png"
+          "body": "${1}.png"
         }
       ]
     },
@@ -436,9 +406,6 @@
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/",
       "type": "object",
       "properties": {
-        "edit": {
-          "$ref": "#/definitions/icon"
-        },
         "logo": {
           "$ref": "#/definitions/icon"
         },
@@ -554,10 +521,6 @@
       "additionalProperties": false,
       "defaultSnippets": [
         {
-          "label": "edit",
-          "body": "edit: ${1:material/pencil}"
-        },
-        {
           "label": "logo",
           "body": "logo: ${1:material/library}"
         },
@@ -627,13 +590,6 @@
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-loading",
             "enum": [
               "navigation.instant"
-            ]
-          },
-          {
-            "title": "Navigation pruning",
-            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-pruning",
-            "enum": [
-              "navigation.prune"
             ]
           },
           {

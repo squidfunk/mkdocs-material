@@ -6,15 +6,16 @@ template: overrides/main.html
 
 The footer of your project documentation is a great place to add links to
 websites or platforms you or your company are using as additional marketing 
-channels, e.g. :fontawesome-brands-twitter:{ style="color: #1DA1F2" } or
-:fontawesome-brands-youtube:{ style="color: #EE0F0F" }, which you can easily
-configure via `mkdocs.yml`.
+channels, e.g. :fontawesome-brands-medium:{ style="color: #00AB6C" },
+:fontawesome-brands-twitter:{ style="color: #1DA1F2" } or
+:fontawesome-brands-facebook:{ style="color: #4267B2" }, which can be
+configured via `mkdocs.yml`.
 
 ## Configuration
 
 ### Social links
 
-[:octicons-tag-24: 1.0.0][Social links support] ·
+[:octicons-tag-24: 1.0.0][social support] ·
 :octicons-milestone-24: Default: _none_
 
 Social links are rendered next to the copyright notice as part of the 
@@ -39,16 +40,17 @@ extra:
       </div>
     </div>
 
-The following properties are available for each link:
+The following properties must be set for each link:
 
-[`icon`](#+social.icon){ #+social.icon }
+`icon`{ #social-icon }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
-    This property must contain a valid path to any icon bundled with the theme,
-    or the build will not succeed. Some popular choices:
+:   [:octicons-tag-24: 5.0.0][social.icon support] · :octicons-milestone-24:
+    Default: _none_ · :octicons-alert-24: Required – This property must contain
+    a valid path to any icon bundled with the theme, or the
+    build will not succeed. Some popular choices:
 
+    * :fontawesome-brands-behance: – `fontawesome/brands/behance`
     * :fontawesome-brands-docker: – `fontawesome/brands/docker`
-    * :fontawesome-brands-facebook: – `fontawesome/brands/facebook`
     * :fontawesome-brands-github: – `fontawesome/brands/github`
     * :fontawesome-brands-instagram: – `fontawesome/brands/instagram`
     * :fontawesome-brands-linkedin: – `fontawesome/brands/linkedin`
@@ -58,9 +60,9 @@ The following properties are available for each link:
     * :fontawesome-brands-slack: – `fontawesome/brands/slack`
     * :fontawesome-brands-twitter: – `fontawesome/brands/twitter`
 
-[`link`](#+social.link){ #+social.link }
+`link`{ #social-link }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
     This property must be set to a relative or absolute URL including the URI 
     scheme. All URI schemes are supported, including `mailto` and `bitcoin`:
 
@@ -82,11 +84,12 @@ The following properties are available for each link:
               link: mailto:<email-address>
         ```
 
-[`name`](#+social.name){ #+social.name }
+`name`{ #social-name }
 
-:   :octicons-milestone-24: Default: _domain name from_ `link`_, if available_ –
-    This property is used as the link's `title` attribute and can be set to a 
-    discernable name to improve accessibility:
+:   [:octicons-tag-24: 5.1.5][social.name support] · :octicons-milestone-24: 
+    Default: _domain name from_ `link`_, if available_ – This property is used
+    as the link's `title` attribute and can be set to a discernable name to
+    improve accessibility:
 
     ``` yaml
     extra:
@@ -96,8 +99,9 @@ The following properties are available for each link:
           name: squidfunk on Twitter
     ```
 
-  [icon search]: ../reference/icons-emojis.md#search
-  [Social links support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
+  [social support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
+  [social.icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
+  [social.name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.1.5
 
 ### Copyright notice
 
@@ -112,6 +116,7 @@ copyright: Copyright &copy; 2016 - 2020 Martin Donath
 ```
 
   [Copyright notice support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/footer.html
 
 ### Generator notice
 
@@ -143,24 +148,6 @@ extra:
   [Generator notice support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [Insiders]: ../insiders/index.md
 
-## Usage
-
-### Hiding prev/next links
-
-The footer navigation showing links to the previous and next page can be hidden
-with the front matter `hide` property. Add the following lines at the top of a 
-Markdown file:
-
-``` yaml
----
-hide:
-  - footer
----
-
-# Document title
-...
-```
-
 ## Customization
 
 ### Custom copyright
@@ -169,11 +156,19 @@ hide:
 :octicons-file-symlink-file-24: Customization
 
 In order to customize and override the [copyright notice], [extend the theme]
-and [override the `copyright.html` partial][overriding partials], which normally
-includes the `copyright` property set in `mkdocs.yml`.
+and [override the `copyright` block][overriding blocks], which is normally set
+to the `copyright` property set in `mkdocs.yml`:
+
+``` html
+{% extends "base.html" %}
+
+{% block copyright %}
+  <!-- Add copyright here, including arbitrary HTML -->
+{% endblock %}
+```
 
   [Custom copyright support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [copyright notice]: #copyright-notice
   [generator notice]: #generator-notice
   [extend the theme]: ../customization.md#extending-the-theme
-  [overriding partials]: ../customization.md#overriding-partials
+  [overriding blocks]: ../customization.md#overriding-blocks

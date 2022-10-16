@@ -127,7 +127,7 @@
               "type": "object",
               "properties": {
                 "mode": {
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.critic.mode",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#critic-mode",
                   "enum": [
                     "view",
                     "accept",
@@ -158,22 +158,24 @@
           "type": "object",
           "properties": {
             "emoji_generator": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.emoji_generator",
+              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/emoji/#options",
+              "type": "string",
               "default": "!!python/name:materialx.emoji.to_svg"
             },
             "emoji_index": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.emoji_index",
+              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/emoji/#options",
+              "type": "string",
               "default": "!!python/name:materialx.emoji.twemoji"
             },
             "options": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.options.custom_icons",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#custom-icons",
               "type": "object",
               "properties": {
                 "custom_icons": {
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.options.custom_icons",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#custom-icons",
                   "type": "array",
                   "items": {
-                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.options.custom_icons",
+                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#custom-icons",
                     "type": "string"
                   },
                   "uniqueItems": true,
@@ -210,11 +212,11 @@
               "type": "object",
               "properties": {
                 "use_pygments": {
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.use_pygments",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight-use-pygments",
                   "type": "boolean"
                 },
                 "auto_title": {
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.auto_title",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight-auto-title",
                   "type": "boolean"
                 },
                 "auto_title_map": {
@@ -222,11 +224,11 @@
                   "type": "object"
                 },
                 "linenums": {
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.linenums",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight-linenums",
                   "type": "boolean"
                 },
                 "linenums_style": {
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.linenums_style",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight-linenums-style",
                   "enum": [
                     "inline",
                     "pymdownx-inline",
@@ -234,7 +236,7 @@
                   ]
                 },
                 "anchor_linenums": {
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.anchor_linenums",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight-anchor-linenums",
                   "type": "boolean"
                 }
               },
@@ -297,46 +299,35 @@
       ]
     },
     {
-      "oneOf": [
-        {
+      "type": "object",
+      "properties": {
+        "pymdownx.magiclink": {
           "title": "MagicLink – Python Markdown Extensions",
           "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/",
-          "enum": [
-            "pymdownx.magiclink"
-          ]
-        },
-        {
           "type": "object",
           "properties": {
-            "pymdownx.magiclink": {
-              "title": "MagicLink – Python Markdown Extensions",
-              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/",
-              "type": "object",
-              "properties": {
-                "user": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
-                  "type": "string"
-                },
-                "repo": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
-                  "type": "string"
-                },
-                "repo_url_shorthand": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
-                  "type": "boolean",
-                  "default": true
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "user",
-                "repo"
-              ]
+            "user": {
+              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+              "type": "string"
+            },
+            "repo": {
+              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+              "type": "string"
+            },
+            "repo_url_shorthand": {
+              "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+              "type": "boolean",
+              "default": true
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "required": [
+            "user",
+            "repo"
+          ]
         }
-      ]
+      },
+      "additionalProperties": false
     },
     {
       "oneOf": [
@@ -357,8 +348,7 @@
               "properties": {
                 "smart_mark": {
                   "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
-                  "type": "boolean",
-                  "default": true
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -385,50 +375,45 @@
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#smartsymbols",
               "type": "object",
               "properties": {
+                "smart_mark": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
+                },
                 "trademark": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/#options",
-                  "type": "boolean",
-                  "default": true
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
                 },
                 "copyright": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/#options",
-                  "type": "boolean",
-                  "default": true
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
                 },
                 "registered": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/#options",
-                  "type": "boolean",
-                  "default": true
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
                 },
                 "care_of": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/#options",
-                  "type": "boolean",
-                  "default": true
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
                 },
                 "plusminus": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/#options",
-                  "type": "boolean",
-                  "default": true
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
                 },
                 "arrows": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/#options",
-                  "type": "boolean",
-                  "default": true
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
                 },
                 "notequal": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/#options",
-                  "type": "boolean",
-                  "default": true
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
                 },
                 "fractions": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/#options",
-                  "type": "boolean",
-                  "default": true
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
                 },
                 "ordinal_numbers": {
-                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/#options",
-                  "type": "boolean",
-                  "default": true
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/mark/#options",
+                  "type": "boolean"
                 }
               },
               "additionalProperties": false
@@ -500,10 +485,10 @@
               "type": "object",
               "properties": {
                 "custom_fences": {
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.superfences.custom_fences",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#superfences-custom-fences",
                   "type": "array",
                   "items": {
-                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.superfences.custom_fences",
+                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#superfences-custom-fences",
                     "type": "object",
                     "properties": {
                       "name": {
@@ -540,16 +525,12 @@
           "type": "object",
           "properties": {
             "alternate_style": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tabbed.alternate_style",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tabbed-alternate-style",
               "type": "boolean",
               "enum": [
                 true
               ],
               "default": true
-            },
-            "slugify": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tabbed.slugify",
-              "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
             }
           },
           "additionalProperties": false,
@@ -569,12 +550,12 @@
           "type": "object",
           "properties": {
             "custom_checkbox": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tasklist.custom_checkbox",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tasklist-custom-checkbox",
               "type": "boolean",
               "default": true
             },
             "clickable_checkbox": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tasklist.clickable_checkbox",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tasklist-clickable-checkbox",
               "type": "boolean"
             }
           },

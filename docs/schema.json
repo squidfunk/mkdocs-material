@@ -86,7 +86,7 @@
       "items": {
         "title": "Path to CSS file",
         "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-css",
-        "pattern": "\\.css($|\\?)"
+        "pattern": "\\.css$"
       },
       "uniqueItems": true,
       "minItems": 1
@@ -98,7 +98,7 @@
       "items": {
         "title": "Path to JavaScript file",
         "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-javascript",
-        "pattern": "\\.js($|\\?)"
+        "pattern": "\\.js$"
       },
       "uniqueItems": true,
       "minItems": 1
@@ -143,5 +143,19 @@
       "$ref": "schema/nav.json"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "defaultSnippets": [
+    {
+      "label": "site_author",
+      "body": "${1:Jane Doe}"
+    },
+    {
+      "label": "repo_url",
+      "body": "repo_url: https://github.com/${1:user}/${2:repo}"
+    },
+    {
+      "label": "copyright",
+      "body": "copyright: Copyright &copy; 2022 ${1:Jane Doe}"
+    }
+  ]
 }

@@ -41,14 +41,56 @@ This will create the following structure:
 
 ### Minimal configuration
 
-Simply add the following lines to `mkdocs.yml` to enable the theme:
+Simply add the following lines to `mkdocs.yml` to enable the theme. Note that
+since there are several [installation methods], minimal configuration might be
+slightly different:
 
-``` yaml
-theme:
-  name: material
-```
+=== ":fontawesome-brands-python: pip"
+
+    ``` yaml
+    theme:
+      name: material
+    ```
+
+=== ":fontawesome-brands-docker: docker"
+
+    ``` yaml
+    theme:
+      name: material
+    ```
+
+=== ":fontawesome-brands-git-alt: git"
+
+    ``` yaml
+    theme:
+      name: null
+      custom_dir: mkdocs-material/material
+
+      # 404 page
+      static_templates:
+        - 404.html
+
+      # Necessary for search to work properly
+      include_search_page: false
+      search_index_only: true
+
+      # Default values, taken from mkdocs_theme.yml
+      language: en
+      font:
+        text: Roboto
+        code: Roboto Mono
+      favicon: assets/favicon.png
+      icon:
+        logo: logo
+    ```
+
+    When you clone from GitHub, you must list all of the themes' defaults
+    explicitly, because [`mkdocs_theme.yml`][mkdocs_theme.yml] is not
+    loaded automatically as described in the [custom theme guide].
 
   [installation methods]: getting-started.md#installation
+  [mkdocs_theme.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
+  [custom theme guide]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 
 ???+ tip "Recommended: [configuration validation and auto-complete]"
 
@@ -111,7 +153,6 @@ and much more:
 - [Setting up site search]
 - [Setting up site analytics]
 - [Setting up social cards]
-- [Setting up a blog]
 - [Setting up tags]
 - [Setting up versioning]
 - [Setting up the header]
@@ -123,7 +164,7 @@ and much more:
 </div>
 
 Furthermore, see the list of supported [Markdown extensions] that are natively
-integrated with Material for MkDocs, delivering an unprecedented low-effort
+integrated with Material for MkDocs, delivering a low-effort and unprecedented 
 technical writing experience.
 
   [Changing the colors]: setup/changing-the-colors.md
@@ -135,7 +176,6 @@ technical writing experience.
   [Setting up site search]: setup/setting-up-site-search.md
   [Setting up site analytics]: setup/setting-up-site-analytics.md
   [Setting up social cards]: setup/setting-up-social-cards.md
-  [Setting up a blog]: setup/setting-up-a-blog.md
   [Setting up tags]: setup/setting-up-tags.md
   [Setting up versioning]: setup/setting-up-versioning.md
   [Setting up the header]: setup/setting-up-the-header.md

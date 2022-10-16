@@ -1,6 +1,5 @@
 {
   "rules": {
-    "jsdoc/require-jsdoc": "off",
-    "jsdoc/require-returns-check": "off"
+    "jsdoc/require-jsdoc": "off"
   }
 }

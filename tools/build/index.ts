@@ -25,10 +25,10 @@ import * as path from "path"
 import {
   EMPTY,
   concat,
+  concatMap,
   defer,
   map,
   merge,
-  mergeMap,
   of,
   reduce,
   scan,
@@ -127,14 +127,6 @@ const assets$ = concat(
       transform: async data => minsvg(data)
     })),
 
-  /* Copy Simple icons */
-  ...["**/*.svg", "../LICENSE.md"]
-    .map(pattern => copyAll(pattern, {
-      from: "node_modules/simple-icons/icons",
-      to: `${base}/.icons/simple`,
-      transform: async data => minsvg(data)
-    })),
-
   /* Copy Lunr.js search stemmers and segmenters */
   ...["min/*.js", "tinyseg.js", "wordcut.js"]
     .map(pattern => copyAll(pattern, {
@@ -162,7 +154,7 @@ const sources$ = copyAll("**/*.py", {
 /* Transform styles */
 const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
   .pipe(
-    mergeMap(file => zip(
+    concatMap(file => zip(
       of(ext(file, ".css")),
       transformStyle({
         from: `src/${file}`,
@@ -174,7 +166,7 @@ const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
 /* Transform scripts */
 const javascripts$ = resolve("**/{bundle,search}.ts", { cwd: "src" })
   .pipe(
-    mergeMap(file => zip(
+    concatMap(file => zip(
       of(ext(file, ".js")),
       transformScript({
         from: `src/${file}`,

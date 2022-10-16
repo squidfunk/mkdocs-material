@@ -59,7 +59,7 @@
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
-            {% if page.meta and page.meta.title %}
+            {% if page and page.meta and page.meta.title %}
               {{ page.meta.title }}
             {% else %}
               {{ page.title }}
@@ -68,6 +68,11 @@
         </div>
       </div>
     </div>
+
+    <!-- Navigation tabs (header) -->
+    {% if "navigation.tabs.header" in features %}
+      {% include "partials/tabs.html" %}
+    {% endif %}
 
     <!-- Color palette -->
     {% if not config.theme.palette is mapping %}
@@ -135,7 +140,7 @@
     {% endif %}
 
     <!-- Button to open search modal -->
-    {% if "search" in config.plugins %}
+    {% if "search" in config["plugins"] %}
       <label class="md-header__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}
       </label>
@@ -153,7 +158,7 @@
   </nav>
 
   <!-- Navigation tabs (sticky) -->
-  {% if "navigation.tabs.sticky" in features %}
+  {% if "navigation.tabs.sticky" in features and not "navigation.tabs.header" in features %}
     {% if "navigation.tabs" in features %}
       {% include "partials/tabs.html" %}
     {% endif %}

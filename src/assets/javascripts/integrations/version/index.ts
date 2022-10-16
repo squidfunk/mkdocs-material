@@ -29,8 +29,7 @@ import {
   fromEvent,
   map,
   of,
-  switchMap,
-  withLatestFrom
+  switchMap
 } from "rxjs"
 
 import { configuration } from "~/_"
@@ -91,38 +90,24 @@ export function setupVersionSelector(
     )
 
   /* Intercept inter-version navigation */
-  versions$
+  combineLatest([versions$, current$])
     .pipe(
-      map(versions => new Map(versions.map(version => [
-        `${new URL(`../${version.version}/`, config.base)}`,
-        version
-      ]))),
+      map(([versions, current]) => new Map(versions
+        .filter(version => version !== current)
+        .map(version => [
+          `${new URL(`../${version.version}/`, config.base)}`,
+          version
+        ])
+      )),
       switchMap(urls => fromEvent<MouseEvent>(document.body, "click")
         .pipe(
           filter(ev => !ev.metaKey && !ev.ctrlKey),
-          withLatestFrom(current$),
-          switchMap(([ev, current]) => {
+          switchMap(ev => {
             if (ev.target instanceof Element) {
               const el = ev.target.closest("a")
               if (el && !el.target && urls.has(el.href)) {
-                const url = el.href
-                // This is a temporary hack to detect if a version inside the
-                // version selector or on another part of the site was clicked.
-                // If we're inside the version selector, we definitely want to
-                // find the same page, as we might have different deployments
-                // due to aliases. However, if we're outside the version
-                // selector, we must abort here, because we might otherwise
-                // interfere with instant loading. We need to refactor this
-                // at some point together with instant loading.
-                //
-                // See https://github.com/squidfunk/mkdocs-material/issues/4012
-                if (!ev.target.closest(".md-version")) {
-                  const version = urls.get(url)!
-                  if (version === current)
-                    return EMPTY
-                }
                 ev.preventDefault()
-                return of(url)
+                return of(el.href)
               }
             }
             return EMPTY
@@ -134,7 +119,7 @@ export function setupVersionSelector(
                 map(sitemap => {
                   const location = getLocation()
                   const path = location.href.replace(config.base, "")
-                  return sitemap.includes(path.split("#")[0])
+                  return sitemap.includes(path)
                     ? new URL(`../${version}/${path}`, config.base)
                     : new URL(url)
                 })

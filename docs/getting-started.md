@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+title: Getting started
 ---
 
 # Getting started
@@ -7,7 +8,7 @@ template: overrides/main.html
 Material for MkDocs is a theme for [MkDocs], a static site generator geared
 towards (technical) project documentation. If you're familiar with Python, you
 can install Material for MkDocs with [`pip`][pip], the Python package manager.
-If not, we recommend using [`docker`][docker].
+If not, we recommended using [`docker`][docker].
 
   [MkDocs]: https://www.mkdocs.org
   [pip]: #with-pip
@@ -18,8 +19,8 @@ If not, we recommend using [`docker`][docker].
 ### with pip <small>recommended</small> { #with-pip data-toc-label="with pip" }
 
 Material for MkDocs is published as a [Python package] and can be installed with
-`pip`, ideally by using a [virtual environment]. Open up a terminal and install
-Material for MkDocs with:
+`pip`, ideally by using a [virtual environment]. If not, scroll down and expand
+the help box. Install with:
 
 === "Latest"
 
@@ -37,7 +38,7 @@ Material for MkDocs with:
         good idea to limit upgrades to the current major version.
 
         This will make sure that you don't accidentally [upgrade to the next
-        major version], which may include breaking changes that silently corrupt
+        major version], which may include breaking changes that silently break
         your site. Additionally, you can use `pip freeze` to create a lockfile,
         so builds are reproducible at all times:
 
@@ -80,8 +81,8 @@ troubleshoot if you run into errors.
 ### with docker
 
 The official [Docker image] is a great way to get up and running in a few
-minutes, as it comes with all dependencies pre-installed. Open up a terminal
-and pull the image with:
+minutes, as it comes with all dependencies pre-installed. Pull the image for the 
+`latest` version with:
 
 === "Latest"
 
@@ -150,8 +151,8 @@ want to use the very latest version:
 git clone https://github.com/squidfunk/mkdocs-material.git
 ```
 
-The theme will reside in the folder `mkdocs-material/material`. After cloning
-from `git`, you must install all required dependencies with:
+The theme will reside in the folder `mkdocs-material/material`. When cloning
+from `git`, you must install all required dependencies yourself:
 
 ```
 pip install -e mkdocs-material

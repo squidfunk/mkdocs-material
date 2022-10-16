@@ -21,36 +21,28 @@
  */
 
 import {
+  EMPTY,
   Observable,
   Subject,
   animationFrameScheduler,
-  auditTime,
   combineLatest,
-  debounceTime,
   defer,
-  delay,
-  filter,
   finalize,
   fromEvent,
   map,
-  merge,
   switchMap,
   take,
-  takeLast,
-  takeUntil,
   tap,
-  throttleTime,
-  withLatestFrom
+  throttleTime
 } from "rxjs"
 
 import {
   ElementOffset,
-  getActiveElement,
+  getElement,
   getElementSize,
   watchElementContentOffset,
   watchElementFocus,
-  watchElementOffset,
-  watchElementVisibility
+  watchElementOffset
 } from "~/browser"
 
 import { Component } from "../../../_"
@@ -65,17 +57,6 @@ import { Component } from "../../../_"
 export interface Annotation {
   active: boolean                      /* Annotation is active */
   offset: ElementOffset                /* Annotation offset */
-}
-
-/* ----------------------------------------------------------------------------
- * Helper types
- * ------------------------------------------------------------------------- */
-
-/**
- * Mount options
- */
-interface MountOptions {
-  target$: Observable<HTMLElement>     /* Location target observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -98,11 +79,11 @@ export function watchAnnotation(
     watchElementContentOffset(container)
   ]))
     .pipe(
-      map(([{ x, y }, scroll]): ElementOffset => {
-        const { width, height } = getElementSize(el)
+      map(([{ x, y }, scroll]) => {
+        const { width } = getElementSize(el)
         return ({
           x: x - scroll.x + width / 2,
-          y: y - scroll.y + height / 2
+          y: y - scroll.y
         })
       })
     )
@@ -124,19 +105,14 @@ export function watchAnnotation(
  *
  * @param el - Annotation element
  * @param container - Containing element
- * @param options - Options
  *
  * @returns Annotation component observable
  */
 export function mountAnnotation(
-  el: HTMLElement, container: HTMLElement, { target$ }: MountOptions
+  el: HTMLElement, container: HTMLElement
 ): Observable<Component<Annotation>> {
-  const [tooltip, index] = Array.from(el.children)
-
-  /* Mount component on subscription */
   return defer(() => {
     const push$ = new Subject<Annotation>()
-    const done$ = push$.pipe(takeLast(1))
     push$.subscribe({
 
       /* Handle emission */
@@ -152,51 +128,11 @@ export function mountAnnotation(
       }
     })
 
-    /* Start animation only when annotation is visible */
-    watchElementVisibility(el)
-      .pipe(
-        takeUntil(done$)
-      )
-        .subscribe(visible => {
-          el.toggleAttribute("data-md-visible", visible)
-        })
-
-    /* Toggle tooltip presence to mitigate empty lines when copying */
-    merge(
-      push$.pipe(filter(({ active }) => active)),
-      push$.pipe(debounceTime(250), filter(({ active }) => !active))
-    )
-      .subscribe({
-
-        /* Handle emission */
-        next({ active }) {
-          if (active)
-            el.prepend(tooltip)
-          else
-            tooltip.remove()
-        },
-
-        /* Handle complete */
-        complete() {
-          el.prepend(tooltip)
-        }
-      })
-
-    /* Toggle tooltip visibility */
-    push$
-      .pipe(
-        auditTime(16, animationFrameScheduler)
-      )
-        .subscribe(({ active }) => {
-          tooltip.classList.toggle("md-tooltip--active", active)
-        })
-
     /* Track relative origin of tooltip */
     push$
       .pipe(
-        throttleTime(125, animationFrameScheduler),
-        filter(() => !!el.offsetParent),
-        map(() => el.offsetParent!.getBoundingClientRect()),
+        throttleTime(500, animationFrameScheduler),
+        map(() => container.getBoundingClientRect()),
         map(({ x }) => x)
       )
         .subscribe({
@@ -215,47 +151,15 @@ export function mountAnnotation(
           }
         })
 
-    /* Allow to copy link without scrolling to anchor */
-    fromEvent<MouseEvent>(index, "click")
+    /* Close open annotation on click */
+    const index = getElement(":scope > :last-child", el)
+    const blur$ = fromEvent(index, "mousedown", { once: true })
+    push$
       .pipe(
-        takeUntil(done$),
-        filter(ev => !(ev.metaKey || ev.ctrlKey))
+        switchMap(({ active }) => active ? blur$ : EMPTY),
+        tap(ev => ev.preventDefault())
       )
-        .subscribe(ev => ev.preventDefault())
-
-    /* Allow to open link in new tab or blur on close */
-    fromEvent<MouseEvent>(index, "mousedown")
-      .pipe(
-        takeUntil(done$),
-        withLatestFrom(push$)
-      )
-        .subscribe(([ev, { active }]) => {
-
-          /* Open in new tab */
-          if (ev.button !== 0 || ev.metaKey || ev.ctrlKey) {
-            ev.preventDefault()
-
-          /* Close annotation */
-          } else if (active) {
-            ev.preventDefault()
-
-            /* Focus parent annotation, if any */
-            const parent = el.parentElement!.closest(".md-annotation")
-            if (parent instanceof HTMLElement)
-              parent.focus()
-            else
-              getActiveElement()?.blur()
-          }
-        })
-
-    /* Open and focus annotation on location target */
-    target$
-      .pipe(
-        takeUntil(done$),
-        filter(target => target === tooltip),
-        delay(125)
-      )
-        .subscribe(() => el.focus())
+        .subscribe(() => el.blur())
 
     /* Create and return component */
     return watchAnnotation(el, container)

@@ -66,7 +66,7 @@ body {
   }
 
   // Body in locked state
-  &[data-md-scrolllock] {
+  &[data-md-state="lock"] {
 
     // [tablet portrait -]: Omit scroll bubbling
     @include break-to-device(tablet portrait) {

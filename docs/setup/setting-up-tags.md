@@ -15,7 +15,7 @@ can help to discover relevant information faster.
 
 ### Built-in tags plugin
 
-[:octicons-tag-24: 8.2.0][Tags support] ·
+[:octicons-tag-24: 8.2.0][tags support] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
@@ -30,24 +30,13 @@ plugins:
 
 The following configuration options are available:
 
-[`enabled`](#+tags.enabled){ #+tags.enabled }
+`tags_file`{ #tags-file }
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
-    the plugin is enabled when building your project. If you want to switch
-    the plugin off, you can disable it with the following lines:
-
-    ``` yaml
-    plugins:
-      - tags:
-          enabled: false
-    ```
-
-[`tags_file`](#+tags.tags_file){ #+tags.tags_file }
-
-:   :octicons-milestone-24: Default: _none_ – This option specifies which page
+:   :octicons-milestone-24: Default: _none_ – This option specifies which file
     should be used to render the tags index. See the section on [adding a tags 
     index][tags index] for more information. If this option is specified, tags
-    become clickable, pointing to the corresponding section in the tags index:
+    will become clickable, pointing to the corresponding section in the tags
+    index:
 
     ``` yaml
     plugins:
@@ -59,107 +48,12 @@ The following configuration options are available:
     of `mkdocs.yml`. Note, however, that this options is not required – only use
     it if you want a tags index page.
 
-[`tags_extra_files`](#+tags.tags_extra_files){ #+tags.tags_extra_files }
-
-:   [:octicons-tag-24: insiders-4.20.0][Insiders] · :octicons-milestone-24: 
-    Default: _none_ – This option specifies additional pages, i.e. to render
-    subsets of the [tags index], in order to provide scoped tags indexes for 
-    specific sections:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_extra_files:
-            compatibility.md:
-              - compat # (1)!
-            web.md:
-              - html
-              - js
-              - css
-    ```
-
-    1.  Each page can be assigned a list of [tag identifiers], which must be
-        defined as part of `extra.tags` in `mkdocs.yml`:
-
-        ``` yaml
-        extra:
-          tags:
-            Compatibility: compat
-            HTML5: html
-            JavaScript: js
-            CSS: css
-        ```
-
-        In this example, all pages with the tag `Compatibility` will be included 
-        in the additional tags index on `compatibility.md`, all pages defining
-        at least one of the tags `HTML5`, `JavaScript` or `CSS` will be included
-        in the additional tags index on `web.md`.
-
-    See #3864 for more information.
-
-[`tags_slugify`](#+tags.tags_slugify){ #+tags.tags_slugify }
-
-:   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
-    Default: `headerid.slugify` – This option specifies which function to use for 
-    generating URL-compatible slugs from tags. [Python Markdown Extensions] 
-    includes several Unicode-aware slug functions which are a good choice for 
-    non-ASCII languages:
-
-    === "Unicode"
-
-        ``` yaml
-        plugins:
-          - tags:
-              tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
-                kwds:
-                  case: lower
-        ```
-
-    === "Unicode, case-sensitive"
-
-        ``` yaml
-        plugins:
-          - tags:
-              tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
-        ```
-
-[`tags_slugify_separator`](#+tags.tags_slugify_separator){ #+tags.tags_slugify_separator }
-
-:   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
-    Default: `-` – This option specifies the separator which is used by the slug function. By default, a hyphen is used, but it can
-    be changed to any string:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_slugify_separator: "-"
-    ```
-
-[`tags_allowed`](#+tags.tags_allowed){ #+tags.tags_allowed } :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
-
-:   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
-    Default: _none_ – This option allows the author to define explicitly which
-    tags are allowed to be used on pages. If this setting is omitted, the
-    [built-in tags plugin] won't check tag names. Use this option to define a
-    list of tags in order to catch typos:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_allowed:
-            - HTML5
-            - JavaScript
-            - CSS
-    ```
-
-  [Tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
-  [Insiders]: ../insiders/index.md
-  [tag identifiers]: #tag-icons
-  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
+  [tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
 
 ### Tag icons
 
-[:octicons-tag-24: 8.5.0][Tag icons support] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.13.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
 Each tag can be associated with an icon, which is then rendered inside the tag.
@@ -185,9 +79,9 @@ extra:
     Identifiers can be reused between tags. Tags which are not explicitly
     associated will use the default tag icon which is :material-pound:
 
-Next, each identifier can be associated with an icon, even a [custom icon], by
-adding the following lines to `mkdocs.yml` under the `theme.icon` configuration 
-setting:
+Next, each identifier can be associated with an icon, or even a [custom icon],
+by adding the following lines to `mkdocs.yml` under the `theme.icon`
+configuration setting:
 
 === "Tag icon"
 
@@ -234,7 +128,7 @@ setting:
         CSS: css
     ```
 
-  [Tag icons support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
+  [Insiders]: ../insiders/index.md
   [custom icon]: changing-the-logo-and-icons.md#additional-icons
   [icon search]: ../reference/icons-emojis.md#search
 
@@ -242,9 +136,9 @@ setting:
 
 ### Adding tags
 
-When the [built-in tags plugin] is enabled, tags can be added for a document
-with the front matter `tags` property. Add the following lines at the top of a 
-Markdown file:
+When both, the [built-in tags plugin] and [Metadata] extension are enabled,
+tags can be added for a document with custom front matter. Add the following
+lines at the top of a Markdown file:
 
 ``` sh
 ---
@@ -252,34 +146,28 @@ tags:
   - HTML5
   - JavaScript
   - CSS
+  - Other
 ---
 
 ...
 ```
 
 The page will now render with those tags above the main headline and within the
-search preview, which now allows to __find pages by tags__.
+search preview, which now allows to __find pages by tags__, as shown in the
+following screenshots:
 
-??? question "How to set tags for an entire folder?"
+=== "Tags"
 
-    With the help of the [built-in meta plugin], you can ensure that tags are
-    set for an entire section and all nested pages, by creating a `.meta.yml`
-    file in the corresponding folder with the following content:
+    [![Tags preview]][Tags preview]
 
-    ``` yaml
-    tags:
-      - HTML5
-      - JavaScript
-      - CSS
-    ```
+=== "Tag search"
 
-    The tags set in `.meta.yml` are merged and deduplicated with the tags
-    defined for a page, which means you can define common tags in `.meta.yml`
-    and then add specific tags for each page. The tags in `.meta.yml` are
-    appended.
+    [![Tag search preview]][Tag search preview]
 
   [built-in tags plugin]: #built-in-tags-plugin
-  [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
+  [Metadata]: extensions/python-markdown.md#metadata
+  [Tags preview]: ../assets/screenshots/tags.png
+  [Tag search preview]: ../assets/screenshots/tags-search.png
 
 ### Adding a tags index
 
@@ -299,18 +187,18 @@ The `[TAGS]` marker specifies the position of the tags index, i.e. it is
 replaced with the actual tags index when the page is rendered. You can include
 arbitrary content before and after the marker:
 
-[![Tags index][tags index enabled]][tags index enabled]
+[![Tags index][9]][9]
 
   [tags.tags_file]: #tags-file
-  [tags index enabled]: ../assets/screenshots/tags-index.png
+  [9]: ../assets/screenshots/tags-index.png
 
 ### Hiding tags on a page
 
 While the tags are rendered above the main headline, sometimes, it might be
-desirable to hide them for a specific page, which can be achieved with the
-front matter `hide` property:
+desirable to hide them for a specific page, which can be achieved by using the
+[Metadata] extension:
 
-``` yaml
+``` sh
 ---
 hide:
   - tags

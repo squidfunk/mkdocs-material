@@ -6,8 +6,8 @@ template: overrides/main.html
 
 Social cards, also known as social previews, are images that are displayed when
 a link to your project documentation is shared on social media. Material for
-MkDocs can generate beautiful social cards automatically, using the [colors], 
-[fonts] and [logo][^1] defined in `mkdocs.yml`,
+MkDocs can generate beautiful social cards automatically, using the [colors]
+[palette.primary], [fonts][font.text] and [logo][^1] defined in `mkdocs.yml`,
 e.g.:
 
 <figure markdown>
@@ -28,8 +28,8 @@ The social preview image for the page on [setting up site analytics].
     color used in the header (white or black), which depends on the primary
     color.
 
-  [colors]: changing-the-colors.md#primary-color
-  [fonts]: changing-the-fonts.md#regular-font
+  [palette.primary]: changing-the-colors.md#primary-color
+  [font.text]: changing-the-fonts.md#regular-font
   [logo]: changing-the-logo-and-icons.md#logo
   [Social cards preview]: ../assets/screenshots/social-cards.png
   [setting up site analytics]: setting-up-site-analytics.md
@@ -39,7 +39,8 @@ The social preview image for the page on [setting up site analytics].
 
 ### Built-in social plugin
 
-[:octicons-tag-24: 8.5.0][Social cards support] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-2.12.0][Insiders] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
@@ -52,9 +53,13 @@ plugins:
   - social
 ```
 
+> If you need to be able to build your documentation with and without
+> [Insiders], please refer to the [built-in plugins] section to learn how
+> shared configurations help to achieve this.
+
 The following configuration options are available:
 
-[`cards`](#+social.cards){ #+social.cards }
+`cards`{ #cards }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     to generate social card images. If you want to switch the plugin off, e.g.
@@ -66,11 +71,12 @@ The following configuration options are available:
           cards: !ENV [CARDS, false]
     ```
 
-[`cards_color`](#+social.cards_color){ #+social.cards_color }
+`cards_color`{ #cards-color }
 
-:   :octicons-milestone-24: Default: [`theme.palette.primary`][palette.primary]
-    – This option specifies the colors for the background `fill` and foreground 
-    `text` when generating the social card:
+:   [:octicons-tag-24: insiders-2.13.0][Insiders] · :octicons-milestone-24:
+    Default: [`theme.palette.primary`][palette.primary] – This option specifies
+    the colors for the background `fill` and foreground `text` when generating
+    the social card:
 
     ``` yaml
     plugins:
@@ -83,11 +89,12 @@ The following configuration options are available:
     1.  Colors can either be defined as HEX colors, or as [CSS color keywords].
         Note that HEX colors must be enclosed in quotes.
 
-[`cards_font`](#+social.cards_font){ #+social.cards_font }
+`cards_font`{ #cards-font }
 
-:   :octicons-milestone-24: Default: [`theme.font.text`][font.text] – This
-    option specifies which font to use for rendering the social card, which can
-    be any font hosted on [Google Fonts]:
+:   [:octicons-tag-24: insiders-4.3.0][Insiders] · :octicons-milestone-24:
+    Default: [`theme.font.text`][font.text] – This option specifies which font
+    to use for rendering the social card, which can be any font hosted on
+    [Google Fonts]:
 
     ``` yaml
     plugins:
@@ -95,47 +102,7 @@ The following configuration options are available:
           cards_font: Roboto
     ```
 
-    !!! question "Why do social cards render boxes for CJK languages?"
-
-        Some fonts do not contain CJK characters, like for example the
-        [default font, `Roboto`][font.text]. In case your `site_name`,
-        `site_description`, or [page title] contain CJK characters, choose
-        another font from [Google Fonts] which comes with CJK characters, e.g.
-        one from the `Noto Sans` font family:
-
-        === "Chinese (Simplified)"
-
-            ``` yaml
-            plugins:
-              - social:
-                  cards_font: Noto Sans SC
-            ```
-
-        === "Chinese (Traditional)"
-
-            ``` yaml
-            plugins:
-              - social:
-                  cards_font: Noto Sans TC
-            ```
-
-        === "Japanese"
-
-            ``` yaml
-            plugins:
-              - social:
-                  cards_font: Noto Sans JP
-            ```
-
-        === "Korean"
-
-            ``` yaml
-            plugins:
-              - social:
-                  cards_font: Noto Sans KR
-            ```
-
-[`cards_dir`](#+social.cards_dir){ #+social.cards_dir }
+`cards_directory`{ #cards-directory }
 
 :   :octicons-milestone-24: Default: `assets/images/social` – This option
     specifies where the generated social card images will be written to. It's
@@ -144,33 +111,28 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - social:
-          cards_dir: path/to/folder
+          cards_directory: assets/images/social
     ```
 
-  [Social cards support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
+  [Insiders]: ../insiders/index.md
   [dependencies]: #dependencies
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
-  [palette.primary]: changing-the-colors.md#primary-color
-  [font.text]: changing-the-fonts.md#regular-font
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
   [Google Fonts]: https://fonts.google.com
-  [page title]: ../reference/index.md#setting-the-page-title
 
 #### Dependencies
 
-Two Python libraries must be installed alongside Material for MkDocs to generate
-the social preview images, both of which are based on [Cairo Graphics] – 
-[Pillow] and [CairoSVG]:
+Two Python packages are installed alongside Material for MkDocs to generate the
+social preview images, both of which are based on the [Cairo Graphics] library:
 
-```
-pip install pillow cairosvg
-```
+- [Pillow] – Python imaging library
+- [CairoSVG] – Converter for `*.svg` files
 
-Both libraries are built with native extensions which need to be installed as
-well. The [Docker image] comes with all dependencies pre-installed. If you don't
-want to use Docker, see the following section which explains how to install all
-dependencies on your system:
+The [Docker image] for Insiders comes with all dependencies pre-installed. If
+you don't want to use Docker, see the following section which explains how to
+install all dependencies on your system:
 
 === ":material-apple: macOS"
 
@@ -186,8 +148,7 @@ dependencies on your system:
 
     As stated in the [installation guide], the easiest way to get up and running
     with the [Cairo Graphics] library on Windows is by installing [GTK+], since
-    it has Cairo as a dependency. You can also download and install a
-    precompiled [GTK runtime].
+    it has Cairo as a dependency.
 
 === ":material-linux: Linux"
 
@@ -216,11 +177,10 @@ dependencies on your system:
   [Cairo Graphics]: https://www.cairographics.org/
   [Pillow]: https://pillow.readthedocs.io/
   [CairoSVG]: https://cairosvg.org/
-  [Docker image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
+  [Docker image]: ../insiders/getting-started.md#with-docker
   [Homebrew]: https://brew.sh/
   [installation guide]: https://www.cairographics.org/download/
   [GTK+]: https://www.gtk.org/docs/installations/windows/
-  [GTK runtime]: https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases
 
 #### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
 
@@ -314,11 +274,12 @@ you don't want to use it:
 ## Usage
 
 If you want to adjust the title or set a custom description for the social card,
-you can set the front matter `title` and `description` properties, which take 
-precedence over the default values.
+you can use the [Metadata] extension, which takes precedence over the
+default values.
 
 - [Changing the title]
 - [Changing the description]
 
+  [Metadata]: extensions/python-markdown.md#metadata
   [Changing the title]: ../reference/index.md#setting-the-page-title
   [Changing the description]: ../reference/index.md#setting-the-page-description

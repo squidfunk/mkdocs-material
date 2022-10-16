@@ -56,7 +56,8 @@ block][overriding blocks], which is empty by default:
 
 #### Mark as read
 
-[:octicons-tag-24: 8.4.0][dismiss support] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.2.0][Insiders] ·
 :octicons-unlock-24: Feature flag ·
 :octicons-beaker-24: Experimental
 
@@ -76,5 +77,5 @@ automatically.
 
 [Scroll to the top of this page][top] to see it in action.
 
-  [dismiss support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
+  [Insiders]: ../insiders/index.md
   [top]: #

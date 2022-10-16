@@ -9,7 +9,6 @@
   ],
   "rules": {
     "alpha-value-notation": "number",
-    "annotation-no-unknown": null,
     "at-rule-empty-line-before": [
       "always",
       {

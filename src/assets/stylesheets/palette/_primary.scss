@@ -26,7 +26,6 @@
 // Rules
 // ----------------------------------------------------------------------------
 
-// Define primary colors
 @each $name, $colors in (
   "red":         $clr-red-400         $clr-red-300         $clr-red-600,
   "pink":        $clr-pink-500        $clr-pink-400        $clr-pink-700,
@@ -63,26 +62,6 @@
       --md-primary-bg-color:           hsla(0, 0%, 100%, 1);
       --md-primary-bg-color--light:    hsla(0, 0%, 100%, 0.7);
     }
-
-    // Typeset color shades
-    @if index("grey" "blue-grey", $name) {
-      --md-typeset-a-color:            hsl(#{hex2hsl($clr-indigo-500)});
-    }
-  }
-}
-
-// ----------------------------------------------------------------------------
-
-// Adjust link colors for light primary colors
-@each $name, $color in (
-  "light-green":                       hsl(88, 58%, 43%),
-  "lime":                              hsl(66, 88%, 32%),
-  "yellow":                            hsl(54, 100%, 36%),
-  "amber":                             hsl(45, 100%, 41%),
-  "orange":                            hsl(36, 100%, 45%)
-) {
-  [data-md-color-primary="#{$name}"]:not([data-md-color-scheme="slate"]) {
-    --md-typeset-a-color: #{$color};
   }
 }
 
@@ -90,7 +69,7 @@
 // Rules: white
 // ----------------------------------------------------------------------------
 
-// Define primary colors for white
+// Color palette
 [data-md-color-primary="white"] {
   --md-primary-fg-color:               hsla(0, 0%, 100%, 1);
   --md-primary-fg-color--light:        hsla(0, 0%, 100%, 0.7);
@@ -98,8 +77,8 @@
   --md-primary-bg-color:               hsla(0, 0%, 0%, 0.87);
   --md-primary-bg-color--light:        hsla(0, 0%, 0%, 0.54);
 
-  // Typeset `a` color shades
-  --md-typeset-a-color:                hsl(#{hex2hsl($clr-indigo-500)});
+  // Typeset color shades
+  --md-typeset-a-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
 
   // [tablet portrait +]: Header-embedded search
   @include break-from-device(tablet landscape) {
@@ -134,7 +113,7 @@
 // Rules: black
 // ----------------------------------------------------------------------------
 
-// Define primary colors for black
+// Color palette
 [data-md-color-primary="black"] {
   --md-primary-fg-color:               hsla(0, 0%, 0%, 1);
   --md-primary-fg-color--light:        hsla(0, 0%, 0%, 0.54);
@@ -142,8 +121,8 @@
   --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
   --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
 
-  // Typeset `a` color shades
-  --md-typeset-a-color:                hsl(#{hex2hsl($clr-indigo-500)});
+  // Text color shades
+  --md-typeset-a-color:                hsla(#{hex2hsl($clr-indigo-500)}, 1);
 
   // Header
   .md-header {

@@ -63,8 +63,7 @@ export function patchIndeterminate(
   document$
     .pipe(
       switchMap(() => getElements<HTMLInputElement>(
-        // @todo `data-md-state` is deprecated and removed in v9
-        ".md-toggle--indeterminate, [data-md-state=indeterminate]"
+        "[data-md-state=indeterminate]"
       )),
       tap(el => {
         el.indeterminate = true
@@ -72,14 +71,14 @@ export function patchIndeterminate(
       }),
       mergeMap(el => fromEvent(el, "change")
         .pipe(
-          takeWhile(() => el.classList.contains("md-toggle--indeterminate")),
+          takeWhile(() => el.hasAttribute("data-md-state")),
           map(() => el)
         )
       ),
       withLatestFrom(tablet$)
     )
       .subscribe(([el, tablet]) => {
-        el.classList.remove("md-toggle--indeterminate")
+        el.removeAttribute("data-md-state")
         if (tablet)
           el.checked = false
       })

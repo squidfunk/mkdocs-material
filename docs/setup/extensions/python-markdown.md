@@ -147,6 +147,42 @@ No configuration options are supported. See reference for usage:
   [Adding footnote references]: ../../reference/footnotes.md#adding-footnote-references
   [Adding footnote content]: ../../reference/footnotes.md#adding-footnote-content
 
+### Metadata
+
+[:octicons-tag-24: 1.0.0][Metadata support] ·
+[:octicons-workflow-24: Extension][Metadata]
+
+The [Metadata] extension adds the ability to attach arbitrary key-value pairs
+to a document via front matter written in YAML syntax before the Markdown.
+Enable it via `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - meta
+```
+
+No configuration options are available. See reference for usage:
+
+- [Setting the page title]
+- [Setting the page description]
+- [Setting the page icon]
+- [Setting the page template]
+- [Adding tags]
+- [Hiding the tags]
+- [Hiding the sidebars]
+- [Hiding the feedback widget]
+
+  [Metadata]: https://python-markdown.github.io/extensions/meta_data/
+  [Metadata support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
+  [Setting the page title]: ../../reference/index.md#setting-the-page-title
+  [Setting the page description]: ../../reference/index.md#setting-the-page-description
+  [Setting the page icon]: ../../reference/index.md#setting-the-page-icon
+  [Setting the page template]: ../../reference/index.md#setting-the-page-template
+  [Adding tags]: ../../setup/setting-up-tags.md#adding-tags
+  [Hiding the tags]: ../../setup/setting-up-tags.md#hiding-the-tags
+  [Hiding the sidebars]: ../../setup/setting-up-navigation.md#hiding-the-sidebars
+  [Hiding the feedback widget]: ../../setup/setting-up-site-analytics.md#hiding-the-feedback-widget
+
 ### Markdown in HTML
 
 [:octicons-tag-24: 0.1.0][Markdown in HTML support] ·
@@ -196,7 +232,7 @@ markdown_extensions:
 
 The following configuration options are supported:
 
-[`title`](#+toc.title){ #+toc.title }
+`title`{ #toc-title }
 
 :   [:octicons-tag-24: 7.3.5][title support] ·
     :octicons-milestone-24: Default: _automatically set_ – This option sets the
@@ -210,7 +246,7 @@ The following configuration options are supported:
           title: On this page
     ```
 
-[`permalink`](#+toc.permalink){ #+toc.permalink }
+`permalink`{ #toc-permalink }
 
 :   :octicons-milestone-24: Default: `false` – This option adds an anchor link
     containing the paragraph symbol `¶` or another custom symbol at the end of
@@ -233,7 +269,7 @@ The following configuration options are supported:
               permalink: ⚓︎
         ```
 
-[`permalink_title`](#+toc.permalink_title){ #+toc.permalink_title }
+`permalink_title`{ #toc-permalink-title }
 
 :   :octicons-milestone-24: Default: `Permanent link` – This option sets the
     title of the anchor link which is shown on hover and read by screen readers.
@@ -246,7 +282,7 @@ The following configuration options are supported:
           permalink_title: Anchor link to this section for reference
     ```
 
-[`slugify`](#+toc.slugify){ #+toc.slugify }
+`slugify`{ #toc-slugify }
 
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for
     customization of the slug function. For some languages, the default may not
@@ -258,9 +294,7 @@ The following configuration options are supported:
         ``` yaml
         markdown_extensions:
           - toc:
-              slugify: !!python/object/apply:pymdownx.slugs.slugify
-                kwds:
-                  case: lower
+              slugify: !!python/name:pymdownx.slugs.uslugify
         ```
 
     === "Unicode, case-sensitive"
@@ -268,10 +302,10 @@ The following configuration options are supported:
         ``` yaml
         markdown_extensions:
           - toc:
-              slugify: !!python/object/apply:pymdownx.slugs.slugify
+              slugify: !!python/name:pymdownx.slugs.uslugify_cased
         ```
 
-[`toc_depth`](#+toc.toc_depth){ #+toc.toc_depth }
+`toc_depth`{ #toc-depth }
 
 :   :octicons-milestone-24: Default: `6` – Define the range of levels to be
     included in the table of contents. This may be useful for project

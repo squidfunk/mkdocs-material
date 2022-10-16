@@ -35,13 +35,9 @@ import {
 } from "rxjs"
 
 import { getElement } from "~/browser"
-import { ConsentDefaults } from "~/components/consent"
 import { renderSourceFacts } from "~/templates"
 
-import {
-  Component,
-  getComponentElements
-} from "../../_"
+import { Component } from "../../_"
 import {
   SourceFacts,
   fetchSourceFacts
@@ -86,24 +82,13 @@ export function watchSource(
 ): Observable<Source> {
   return fetch$ ||= defer(() => {
     const cached = __md_get<SourceFacts>("__source", sessionStorage)
-    if (cached) {
+    if (cached)
       return of(cached)
-    } else {
-
-      /* Check if consent is configured and was given */
-      const els = getComponentElements("consent")
-      if (els.length) {
-        const consent = __md_get<ConsentDefaults>("__consent")
-        if (!(consent && consent.github))
-          return EMPTY
-      }
-
-      /* Fetch repository facts */
+    else
       return fetchSourceFacts(el.href)
         .pipe(
           tap(facts => __md_set("__source", facts, sessionStorage))
         )
-    }
   })
     .pipe(
       catchError(() => EMPTY),
@@ -128,7 +113,7 @@ export function mountSource(
     const push$ = new Subject<Source>()
     push$.subscribe(({ facts }) => {
       inner.appendChild(renderSourceFacts(facts))
-      inner.classList.add("md-source__repository--active")
+      inner.setAttribute("data-md-state", "done")
     })
 
     /* Create and return component */

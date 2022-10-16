@@ -17,7 +17,8 @@ support for many of its features.
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.10.0][Insiders] ·
-:octicons-cpu-24: Plugin
+:octicons-cpu-24: Plugin ·
+:octicons-beaker-24: Experimental
 
 The built-in offline plugin makes sure that the [site search] works when you
 distribute the contents of your [site directory] as a download. Simply add
@@ -25,8 +26,19 @@ the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - offline
+  - offline # (1)!
 ```
+
+1.  Note that the offline plugin should be located at the end of the list of
+    `plugins`, as it will post-process the search index. If you want to use
+    other plugins that alter the search index together with this plugin, add
+    them before the built-in offline plugin.[^1]
+
+  [^1]:
+    Offline search was previously implemented through the third-party 
+    [localsearch] plugin, which is still possible if you don't want to use
+    [Insiders]. Note, however, that setup might be challenging if you're not
+    experienced with MkDocs.
 
 > If you need to be able to build your documentation with and without
 > [Insiders], please refer to the [built-in plugins] section to learn how
@@ -38,7 +50,7 @@ from the local file system.
 
 The following configuration options are available:
 
-[`enabled`](#+offline.enabled){ #+offline.enabled }
+`enabled`{ #enabled }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to switch
@@ -63,6 +75,7 @@ hosted on a regular server.
   [Insiders]: ../insiders/index.md
   [site search]: setting-up-site-search.md
   [site directory]: https://www.mkdocs.org/user-guide/configuration/#site_dir
+  [localsearch]: https://github.com/wilhelmer/mkdocs-localsearch/
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [use_directory_urls]: https://www.mkdocs.org/user-guide/configuration/#use_directory_urls
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables

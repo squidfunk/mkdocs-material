@@ -34,6 +34,8 @@ import {
   mergeWith,
   switchMap,
   take,
+  takeLast,
+  takeUntil,
   tap
 } from "rxjs"
 
@@ -70,7 +72,6 @@ export interface CodeBlock {
  * Mount options
  */
 interface MountOptions {
-  target$: Observable<HTMLElement>     /* Location target observable */
   print$: Observable<boolean>          /* Media print observable */
 }
 
@@ -79,7 +80,7 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Global sequence number for code blocks
+ * Global sequence number for Clipboard.js integration
  */
 let sequence = 0
 
@@ -146,11 +147,6 @@ export function watchCodeBlock(
  * Furthermore, if code annotations are enabled, they are mounted if and only
  * if the code block is currently visible, e.g., not in a hidden content tab.
  *
- * Note that code blocks may be mounted eagerly or lazily. If they're mounted
- * lazily (on first visibility), code annotation anchor links will not work,
- * as they are evaluated on initial page load, and code annotations in general
- * might feel a little bumpier.
- *
  * @param el - Code block element
  * @param options - Options
  *
@@ -202,6 +198,7 @@ export function mountCodeBlock(
             mergeWith(
               watchElementSize(container)
                 .pipe(
+                  takeUntil(push$.pipe(takeLast(1))),
                   map(({ width, height }) => width && height),
                   distinctUntilChanged(),
                   switchMap(active => active ? annotations$ : EMPTY)
@@ -220,15 +217,11 @@ export function mountCodeBlock(
       )
   })
 
-  /* Mount code block lazily */
-  if (feature("content.lazy"))
-    return watchElementVisibility(el)
-      .pipe(
-        filter(visible => visible),
-        take(1),
-        switchMap(() => factory$)
-      )
-
-  /* Mount code block */
-  return factory$
+  /* Mount code block on first sight */
+  return watchElementVisibility(el)
+    .pipe(
+      filter(visible => visible),
+      take(1),
+      switchMap(() => factory$)
+    )
 }
