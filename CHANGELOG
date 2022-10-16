@@ -1,3 +1,9 @@
+mkdocs-material-8.5.6+insiders-4.25.5 (2022-10-16)
+
+  * Updated MkDocs to 1.4.1
+  * Added namespace prefix to built-in plugins
+  * Updated content and header partial
+
 mkdocs-material-8.5.6+insiders-4.25.4 (2022-10-09)
 
   * Fixed other path issues for standalone blogs (4.24.2 regression)

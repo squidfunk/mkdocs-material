@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.25.5 <small>_ October 16, 2022</small> { id="4.25.5" }
+
+- Updated MkDocs to 1.4.1
+- Added namespace prefix to built-in plugins
+- Updated `content` and `header` partial
+
 ### 4.25.4 <small>_ October 9, 2022</small> { id="4.25.4" }
 
 - Fixed other path issues for standalone blogs (4.24.2 regression)
