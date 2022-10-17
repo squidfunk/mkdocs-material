@@ -18,6 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import functools
 import logging
 import os
 import posixpath
@@ -160,6 +161,10 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # -------------------------------------------------------------------------
 
+    @functools.lru_cache(maxsize=None)
+    def _get_font(self, kind, size):
+        return ImageFont.truetype(self.font[kind], size)
+
     # Render social card
     def _render_card(self, site_name, title, description):
         logo = self.logo
@@ -172,21 +177,21 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         )
 
         # Render site name
-        font = ImageFont.truetype(self.font["Bold"], 36)
+        font = self._get_font("Bold", 36)
         image.alpha_composite(
             self._render_text((826, 48), font, site_name, 1, 20),
             (64 + 4, 64)
         )
 
         # Render page title
-        font = ImageFont.truetype(self.font["Bold"], 92)
+        font = self._get_font("Bold", 92)
         image.alpha_composite(
             self._render_text((826, 328), font, title, 3, 30),
             (64, 160)
         )
 
         # Render page description
-        font = ImageFont.truetype(self.font["Regular"], 28)
+        font = self._get_font("Regular", 28)
         image.alpha_composite(
             self._render_text((826, 80), font, description, 2, 14),
             (64 + 4, 512)
@@ -379,7 +384,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
         # Write archive to temporary file
         tmp = TemporaryFile()
-        for chunk in res.iter_content(chunk_size = 128):
+        for chunk in res.iter_content(chunk_size = 32768):
             tmp.write(chunk)
 
         # Unzip fonts from temporary file
