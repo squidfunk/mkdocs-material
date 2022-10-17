@@ -206,26 +206,32 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
     def _render_card_background(self, size, fill):
         return Image.new(mode = "RGBA", size = size, color = fill)
 
+    @functools.lru_cache(maxsize=None)
+    def _tmp_context(self):
+        image = Image.new(mode = "RGBA", size = (50, 50))
+        return ImageDraw.Draw(image)
+
+    @functools.lru_cache(maxsize=None)
+    def _text_bounding_box(self, text, font):
+        return self._tmp_context().textbbox((0, 0), text, font = font)
+
     # Render social card text
     def _render_text(self, size, font, text, lmax, spacing = 0):
+        width = size[0]
         lines, words = [], []
 
         # Remove remnant HTML tags
         text = re.sub(r"(<[^>]+>)", "", text)
 
-        # Create temporary image
-        image = Image.new(mode = "RGBA", size = size)
-
         # Retrieve y-offset of textbox to correct for spacing
         yoffset = 0
 
         # Create drawing context and split text into lines
-        context = ImageDraw.Draw(image)
         for word in text.split(" "):
             combine = " ".join(words + [word])
-            textbox = context.textbbox((0, 0), combine, font = font)
+            textbox = self._text_bounding_box(combine, font = font)
             yoffset = textbox[1]
-            if not words or textbox[2] <= image.width:
+            if not words or textbox[2] <= width:
                 words.append(word)
             else:
                 lines.append(words)
