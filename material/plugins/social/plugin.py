@@ -18,6 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import concurrent.futures
 import functools
 import logging
 import os
@@ -64,6 +65,9 @@ class SocialPluginConfig(Config):
 # Social plugin
 class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
+    def __init__(self):
+        self._executor = concurrent.futures.ThreadPoolExecutor(4)
+
     # Retrieve configuration
     def on_config(self, config):
         self.color = colors.get("indigo")
@@ -108,7 +112,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         self.color = { **self.color, **self.config.cards_color }
 
         # Retrieve logo and font
-        self.logo = self._load_logo(config)
+        self._resized_logo_promise = self._executor.submit(self._load_resized_logo, config)
         self.font = self._load_font(config)
 
     # Create social cards
@@ -167,12 +171,10 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # Render social card
     def _render_card(self, site_name, title, description):
-        logo = self.logo
-
         # Render background and logo
         image = self._render_card_background((1200, 630), self.color["fill"])
         image.alpha_composite(
-            logo.resize((144, int(144 * logo.height / logo.width))),
+            self._resized_logo_promise.result(),
             (1200 - 228, 64 - 4)
         )
 
@@ -303,6 +305,11 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             { "name": "twitter:description", "content": description },
             { "name": "twitter:image", "content": url }
         ]
+
+    def _load_resized_logo(self, config, width = 144):
+        logo = self._load_logo(config)
+        height = int(width * logo.height / logo.width)
+        return logo.resize((width, height))
 
     # Retrieve logo image or icon
     def _load_logo(self, config):
