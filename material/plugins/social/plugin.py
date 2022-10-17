@@ -115,6 +115,8 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         self._resized_logo_promise = self._executor.submit(self._load_resized_logo, config)
         self.font = self._load_font(config)
 
+        self._image_promises = []
+
     # Create social cards
     def on_page_markdown(self, markdown, page, config, files):
         if not self.config.cards:
@@ -152,18 +154,31 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             description
         ]).encode("utf-8"))
         file = os.path.join(self.cache, f"{hash.hexdigest()}.png")
-        if not os.path.isfile(file):
-            image = self._render_card(site_name, title, description)
-            image.save(file)
-
-        # Copy file from cache
-        copyfile(file, path)
+        self._image_promises.append(self._executor.submit(
+            self._cache_image,
+            cache_path = file, dest_path = path,
+            render_function = lambda: self._render_card(site_name, title, description)
+        ))
 
         # Inject meta tags into page
         meta = page.meta.get("meta", [])
         page.meta["meta"] = meta + self._generate_meta(page, config)
 
+    def on_post_build(self, config):
+        # Check for exceptions
+        for promise in self._image_promises:
+            promise.result()
+
     # -------------------------------------------------------------------------
+
+    # Render image to cache (if not present), then copy from cache to site
+    def _cache_image(self, cache_path, dest_path, render_function):
+        if not os.path.isfile(cache_path):
+            image = render_function()
+            image.save(cache_path)
+
+        # Copy file from cache
+        copyfile(cache_path, dest_path)
 
     @functools.lru_cache(maxsize=None)
     def _get_font(self, kind, size):
