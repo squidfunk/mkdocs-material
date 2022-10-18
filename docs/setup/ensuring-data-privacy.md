@@ -159,13 +159,8 @@ the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - privacy # (1)!
+  - privacy
 ```
-
-1.  Note that the privacy plugin should be located at the end of the list of
-    `plugins`, as it will scan the resulting HTML for resources to download and
-    replace. If a plugin after the privacy plugin adds further
-    [external assets], these assets will not be downloaded.
 
 > If you need to be able to build your documentation with and without
 > [Insiders], please refer to the [built-in plugins] section to learn how
@@ -185,7 +180,14 @@ The following configuration options are available:
           enabled: !ENV [CI, false]
     ```
 
-[`externals`](#+privacy.externals){ #+privacy.externals }
+  [Insiders]: ../insiders/index.md
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
+
+#### External assets
+
+The following configuration options are available for external assets:
+
+[`external_assets`](#+privacy.external_assets){ #+privacy.external_assets }
 
 :   :octicons-milestone-24: Default: `bundle` – This option specifies what the
     plugin should do when encountering external assets. There are two options:
@@ -195,7 +197,7 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - privacy:
-          externals: bundle
+          external_assets: bundle
     ```
 
     If you've removed all external assets from your project via [customization],
@@ -206,10 +208,7 @@ The following configuration options are available:
     Using `report` in [strict mode] will make the build fail when external
     assets are detected.
 
-    [customization]: ../customization.md
-    [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
-
-[`externals_dir`](#+privacy.externals_dir){ #+privacy.externals_dir }
+[`external_assets_dir`](#+privacy.external_assets_dir){ #+privacy.external_assets_dir }
 
 :   :octicons-milestone-24: Default: `assets/externals` – This option
     specifies where the downloaded [external assets] will be stored. It's
@@ -218,10 +217,12 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - privacy:
-          externals_dir: assets/externals
+          external_assets_dir: assets/externals
     ```
 
-[`externals_exclude`](#+privacy.externals_exclude){ #+privacy.externals_exclude }
+    The path must be defined relative to [`docs_dir`][docs_dir].
+
+[`external_assets_exclude`](#+privacy.external_assets_exclude){ #+privacy.external_assets_exclude }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to exclude
     certain external assets from processing by the privacy plugin, so they will
@@ -230,7 +231,7 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - privacy:
-          externals_exclude: # (1)!
+          external_assets_exclude: # (1)!
             - cdn.jsdelivr.net/npm/mathjax@3/* 
             - giscus.app/*
     ```
@@ -247,16 +248,7 @@ The following configuration options are available:
     dynamically created or relative URLs, which can't be resolved by the privacy
     plugin due to [technical limitations].
 
-  [Insiders]: ../insiders/index.md
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-  [MathJax]: ../reference/mathjax.md
-  [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
-  [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
-  [comment system]: adding-a-comment-system.md
-  [external assets]: #how-it-works
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
-
-??? question "Why can't Material for MkDocs bundle all assets by design?"
+!!! question "Why can't Material for MkDocs bundle all assets by design?"
 
     The primary reason why Material for MkDocs can't just bundle all of its own
     assets is the integration with [Google Fonts], which offers over a thousand
@@ -273,12 +265,68 @@ The following configuration options are available:
     
     This is the very reason the [built-in privacy plugin] exists — it automates
     the process of downloading all external assets manually to ensure compliance
-    with GDPR. Note that there are some [technical limitations].
+    with GDPR with some some [technical limitations].
 
+  [customization]: ../customization.md
+  [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
+  [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
+  [MathJax]: ../reference/mathjax.md
+  [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
+  [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
+  [comment system]: adding-a-comment-system.md
+  [external assets]: #how-it-works
+  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [Google Fonts]: changing-the-fonts.md
   [regular font]: changing-the-fonts.md#regular-font
   [example]: #example
   [technical limitations]: #limitations
+
+#### External links
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.26.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+The following configuration options are available for external links:
+
+[`external_links`](#+privacy.external_links){ #+privacy.external_links }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether the
+    plugin should automatically annotate external links. By default,
+    [`rel="noopener"`][noopener] is added to all links with `target="_blank"`:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          external_links: true
+    ```
+
+[`external_links_attr_map`](#+privacy.external_links_attr_map){ #+privacy.external_links_attr_map }
+
+:   :octicons-milestone-24: Default: _None_ – This option specifies custom
+    attributes that should be added to external links, like for example
+    `target="_blank"` so all external links open in a new window:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          external_links_attr_map:
+            target: _blank
+    ```
+
+[`external_links_noopener`](#+privacy.external_links_noopener){ #+privacy.external_links_noopener }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether the
+    plugin should automatically add [`rel="noopener"`][noopener] to all links
+    with `target="_blank"` for security reasons:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          external_links_noopener: true
+    ```
+
+  [noopener]: https://mathiasbynens.github.io/rel-noopener/    
 
 #### How it works
 

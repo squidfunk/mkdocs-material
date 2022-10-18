@@ -307,9 +307,11 @@ are released for general availability.
 
 #### $ 20,000 – Jalapeño
 
+- [x] [Privacy plugin: external links]
 - [ ] [Instant previews]
 - ... more to be announced
 
+  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed

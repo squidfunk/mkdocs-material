@@ -1,3 +1,9 @@
+mkdocs-material-8.5.6+insiders-4.26.0 (2022-10-18)
+
+  * Refactored privacy plugin to prepare for new features
+  * Added support for rel=noopener links in privacy plugin
+  * Resolve encoding issues with blog and privacy plugin
+
 mkdocs-material-8.5.6+insiders-4.25.5 (2022-10-16)
 
   * Updated MkDocs to 1.4.1

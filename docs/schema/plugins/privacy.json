@@ -31,9 +31,9 @@
               "type": "string",
               "default": ".cache/plugin/privacy"
             },
-            "externals": {
+            "external_assets": {
               "title": "External assets",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.externals",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.external_assets",
               "oneOf": [
                 {
                   "title": "Bundle external assets",
@@ -50,23 +50,45 @@
               ],
               "default": "bundle"
             },
-            "externals_dir": {
+            "external_assets_dir": {
               "title": "External assets download directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.externals_dir",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.external_assets_dir",
               "type": "string",
-              "default": "assets/externals"
+              "default": "assets/external"
             },
-            "externals_exclude": {
+            "external_assets_exclude": {
               "title": "External assets to be excluded",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.externals_exclude",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.external_assets_exclude",
               "type": "array",
               "items": {
                 "title": "External assets matching this pattern will not be bundled",
-                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.externals_exclude",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.external_assets_exclude",
                 "pattern": ".*"
               },
               "uniqueItems": true,
               "minItems": 1
+            },
+            "external_links": {
+              "title": "External links",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.external_links",
+              "type": "boolean",
+              "default": true
+            },
+            "external_links_attr_map": {
+              "title": "Custom attributes to add to external links",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.external_links_attr_map",
+              "type": "object",
+              "patternProperties": {
+                "^[\\w_]+$": {
+                  "type": "string"
+                }
+              }
+            },
+            "external_links_noopener": {
+              "title": "Behavior for external links that open in new windows",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.external_links_noopener",
+              "type": "boolean",
+              "default": true
             }
           },
           "additionalProperties": false

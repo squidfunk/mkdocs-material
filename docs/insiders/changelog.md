@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.26.0 <small>_ October 18, 2022</small> { id="4.26.0" }
+
+- Refactored privacy plugin to prepare for new features
+- Added support for `rel=noopener` links in privacy plugin
+- Resolve encoding issues with blog and privacy plugin
+
 ### 4.25.5 <small>_ October 16, 2022</small> { id="4.25.5" }
 
 - Updated MkDocs to 1.4.1
