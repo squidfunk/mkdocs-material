@@ -210,14 +210,14 @@ The following configuration options are available for external assets:
 
 [`external_assets_dir`](#+privacy.external_assets_dir){ #+privacy.external_assets_dir }
 
-:   :octicons-milestone-24: Default: `assets/externals` – This option
+:   :octicons-milestone-24: Default: `assets/external` – This option
     specifies where the downloaded [external assets] will be stored. It's
     normally not necessary to change this option:
 
     ``` yaml
     plugins:
       - privacy:
-          external_assets_dir: assets/externals
+          external_assets_dir: assets/external
     ```
 
     The path must be defined relative to [`docs_dir`][docs_dir].
@@ -281,7 +281,7 @@ The following configuration options are available for external assets:
   [example]: #example
   [technical limitations]: #limitations
 
-#### External links
+#### External links :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.26.0][Insiders] ·
@@ -343,7 +343,7 @@ then replaced with the URL to the local copy. An example:
 The external script is downloaded, and the link is replaced with:
 
 ``` html
-<script src="assets/externals/example.com/script.js"></script>
+<script src="assets/external/example.com/script.js"></script>
 ```
 
 Style sheets are scanned for external `url(...)` references, e.g. images and
@@ -363,7 +363,7 @@ removed during the build process.
 
     ``` { .sh id="example" }
     .
-    └─ assets/externals/
+    └─ assets/external/
        ├─ unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
        ├─ fonts.googleapis.com/css
        ├─ fonts.gstatic.com/s/
