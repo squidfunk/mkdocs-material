@@ -326,7 +326,7 @@ The following configuration options are available for external links:
           external_links_noopener: true
     ```
 
-  [noopener]: https://mathiasbynens.github.io/rel-noopener/    
+  [noopener]: https://mathiasbynens.github.io/rel-noopener/
 
 #### How it works
 
