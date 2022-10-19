@@ -45,11 +45,11 @@ class SearchIndex(BaseIndex):
     def add_entry_from_context(self, page):
         index = len(self._entries)
         super().add_entry_from_context(page)
-        entry = self._entries[index]
 
         # Add document tags, if any
         if page.meta.get("tags"):
             if type(page.meta["tags"]) is list:
+                entry = self._entries[index]
                 entry["tags"] = [
                     str(tag) for tag in page.meta["tags"]
                 ]
@@ -64,7 +64,8 @@ class SearchIndex(BaseIndex):
         if "search" in page.meta:
             search = page.meta["search"]
             if "boost" in search:
-                entry["boost"] = search["boost"]
+                for entry in self._entries[index:]:
+                    entry["boost"] = search["boost"]
 
 # -----------------------------------------------------------------------------
 # Data
