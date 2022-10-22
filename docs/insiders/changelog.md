@@ -6,6 +6,12 @@ template: overrides/main.html
 
 ## Material for MkDocs Insiders
 
+### 4.26.1 <small>_ October 22, 2022</small> { id="4.26.1" }
+
+- Improved reporting of configuration errors in tags plugin
+- Fixed #4515: Privacy plugin fails when site URL is not defined
+- Fixed #4514: Privacy plugin doesn't fetch Google fonts (4.26.0 regression)
+
 ### 4.26.0 <small>_ October 18, 2022</small> { id="4.26.0" }
 
 - Refactored privacy plugin to prepare for new features
