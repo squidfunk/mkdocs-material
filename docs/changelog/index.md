@@ -6,6 +6,11 @@ template: overrides/main.html
 
 ## Material for MkDocs
 
+### 8.5.7 <small>_ October 22, 2022</small> { id="8.5.7" }
+
+- Deprecated additional admonition qualifiers to reduce size of CSS
+- Fixed #4511: Search boost does not apply to sections
+
 ### 8.5.6 <small>_ October 2, 2022</small> { id="8.5.6" }
 
 - Modernized appearance of admonitions (with fallback, see docs)

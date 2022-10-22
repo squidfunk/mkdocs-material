@@ -1,3 +1,8 @@
+mkdocs-material-8.5.7 (2022-10-22)
+
+  * Deprecated additional admonition qualifiers to reduce size of CSS
+  * Fixed #4511: Search boost does not apply to sections
+
 mkdocs-material-8.5.6+insiders-4.26.0 (2022-10-18)
 
   * Refactored privacy plugin to prepare for new features
