@@ -33,13 +33,13 @@ The following configuration options are available:
 [`enabled`](#+tags.enabled){ #+tags.enabled }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
-    the plugin is enabled when building your project. If you want to switch
-    the plugin off, you can disable it with the following lines:
+    the plugin is enabled when building your project. If you want to speed up
+    local builds, you can use an [environment variable]:
 
     ``` yaml
     plugins:
-      - tags:
-          enabled: false
+      - privacy:
+          enabled: !ENV [CI, false]
     ```
 
 [`tags_file`](#+tags.tags_file){ #+tags.tags_file }
@@ -95,7 +95,8 @@ The following configuration options are available:
         at least one of the tags `HTML5`, `JavaScript` or `CSS` will be included
         in the additional tags index on `web.md`.
 
-    See #3864 for more information.
+    Note that the values listed under each tags extra file must be alphanumeric
+    [tag identifiers], not tags themselves. See #3864 for more information.
 
 [`tags_slugify`](#+tags.tags_slugify){ #+tags.tags_slugify }
 
@@ -153,11 +154,12 @@ The following configuration options are available:
     ```
 
   [Tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
+  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [Insiders]: ../insiders/index.md
-  [tag identifiers]: #tag-icons
+  [tag identifiers]: #tag-icons-and-identifiers
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
-### Tag icons
+### Tag icons and identifiers
 
 [:octicons-tag-24: 8.5.0][Tag icons support] ·
 :octicons-beaker-24: Experimental

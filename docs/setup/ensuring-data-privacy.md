@@ -171,8 +171,8 @@ The following configuration options are available:
 [`enabled`](#+privacy.enabled){ #+privacy.enabled }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
-    the plugin is enabled when building your project. If you want to switch
-    the plugin off, e.g. for local builds, use an [environment variable]:
+    the plugin is enabled when building your project. If you want to speed up
+    local builds, you can use an [environment variable]:
 
     ``` yaml
     plugins:

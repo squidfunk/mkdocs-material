@@ -333,7 +333,7 @@ can be used by all users.
   [Social cards]: ../setup/setting-up-social-cards.md
   [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
-  [Tag icons]: ../setup/setting-up-tags.md#tag-icons
+  [Tag icons]: ../setup/setting-up-tags.md#tag-icons-and-identifiers
   [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
 
 #### $ 7,000 – Royal Gold
