@@ -115,8 +115,11 @@ The following properties are available:
       consent:
         actions:
           - accept
-          - manage
+          - manage # (1)!
     ```
+
+    1.  If the `manage` settings button is omitted from the `actions` property,
+        the settings are always shown.
 
     The cookie consent form includes three types of buttons:
 

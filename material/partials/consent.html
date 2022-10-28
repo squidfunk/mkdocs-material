@@ -16,11 +16,15 @@
 {% if not actions %}
   {% set actions = ["accept", "manage"] %}
 {% endif %}
+{% if not "manage" in actions %}
+  {% set checked = "checked" %}
+{% endif %}
 <h4>{{ config.extra.consent.title }}</h4>
 <p>{{ config.extra.consent.description }}</p>
-<input type="checkbox" class="md-toggle" id="__settings">
+<input class="md-toggle" type="checkbox" id="__settings" {{ checked }}>
 <div class="md-consent__settings">
   <ul class="task-list">
+    {% set checked = "" %}
     {% for type in cookies %}
       {% if cookies[type] is string %}
         {% set name = cookies[type] %}
