@@ -24,8 +24,8 @@
 <input class="md-toggle" type="checkbox" id="__settings" {{ checked }}>
 <div class="md-consent__settings">
   <ul class="task-list">
-    {% set checked = "" %}
     {% for type in cookies %}
+      {% set checked = "" %}
       {% if cookies[type] is string %}
         {% set name = cookies[type] %}
         {% set checked = "checked" %}
