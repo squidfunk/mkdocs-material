@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Changelog
 
 ## Material for MkDocs

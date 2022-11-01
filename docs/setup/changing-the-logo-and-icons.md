@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Changing the logo and icons
 
 When installing Material for MkDocs, you immediately get access to _over 8,000 

@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # How to upgrade
 
 Upgrade to the latest version with:

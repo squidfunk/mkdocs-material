@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Ensuring data privacy
 
 Material for MkDocs makes compliance with data privacy regulations very easy, 

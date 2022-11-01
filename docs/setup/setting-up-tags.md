@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Setting up tags
 
 Material for MkDocs adds first-class support for categorizing pages with tags,

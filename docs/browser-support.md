@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Browser support
 
 Material for MkDocs goes at great lengths to support the largest possible range
