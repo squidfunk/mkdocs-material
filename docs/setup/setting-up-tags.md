@@ -136,6 +136,34 @@ The following configuration options are available:
           tags_slugify_separator: "-"
     ```
 
+[`tags_compare`](#+tags.tags_compare){ #+tags.tags_compare }
+
+:   [:octicons-tag-24: insiders-4.26.2][Insiders] · :octicons-milestone-24:
+    Default: `None` – This option specifies which function to use when
+    comparing tag values for sorting. If you wish to compare tags irregardless
+    of casing, use:
+
+    ``` yaml
+    plugins:
+      - tags:
+          tags_compare: !!python/name:material.plugins.tags.plugin.casefold
+    ```
+
+    You can also define your own comparison function which must return a tag
+    value (as a string) that is used for sorting, and reference it accordingly.
+
+[`tags_compare_reverse`](#+tags.tags_compare_reverse){ #+tags.tags_compare_reverse }
+
+:   [:octicons-tag-24: insiders-4.26.2][Insiders] · :octicons-milestone-24:
+    Default: `false` – This option specifies whether tags are sorted in reverse
+    order. It is mainly provided for completeness. To change direction, use:
+
+    ``` yaml
+    plugins:
+      - tags:
+          tags_compare_reverse: true
+    ```
+
 [`tags_allowed`](#+tags.tags_allowed){ #+tags.tags_allowed } :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
 
 :   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
