@@ -184,7 +184,7 @@ theme:
 [:octicons-tag-24: insiders-4.16.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
-When pruning is enabled, only the visible navigation items are included in the 
+When pruning is enabled, only the Way visible navigation items are included in the 
 rendered HTML, __reducing the size of the built site by 33% or more__. Add the 
 following lines to `mkdocs.yml`:
 
