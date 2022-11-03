@@ -346,9 +346,9 @@ line {
   stroke: none;
 }
 
-/* make statically colored note nodes use a statically color text */
+/* Sequence note text */
 .noteText > tspan {
-  fill: #000;
+  fill: hsl(0, 0%, 0%);
 }
 
 /* Sequence arrow head */
