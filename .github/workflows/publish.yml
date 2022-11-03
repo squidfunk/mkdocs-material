@@ -91,7 +91,9 @@ jobs:
             ghcr.io/${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
 
       - name: Check Docker image
-        run:
+        working-directory: /tmp
+        run: |
+          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} new .
           docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} build
 
       - name: Publish Docker image

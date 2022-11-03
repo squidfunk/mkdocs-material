@@ -36,6 +36,7 @@ copyright: Copyright &copy; 2016 - 2022 Martin Donath
 # Configuration
 theme:
   name: material
+  custom_dir: material/overrides
   features:
     # - announce.dismiss
     - content.code.annotate
