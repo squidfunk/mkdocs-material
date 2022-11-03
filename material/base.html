@@ -37,7 +37,7 @@
       <link rel="stylesheet" href="{{ 'assets/stylesheets/main.20d9efc8.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.cbb835fc.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.815d1a91.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -245,7 +245,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.8492ddcf.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.d6c3db9e.min.js' | url }}"></script>
       {% for path in config.extra_javascript %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

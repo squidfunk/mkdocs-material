@@ -86,6 +86,10 @@ function ext(file: string, extension: string): string {
  * @returns Minified SVG data
  */
 function minsvg(data: string): string {
+  if (!data.startsWith("<"))
+    return data
+
+  /* Optimize SVG */
   const result = optimize(data, {
     plugins: [
       "preset-default",
@@ -93,7 +97,9 @@ function minsvg(data: string): string {
       { name: "removeViewBox", active: false }
     ]
   })
-  return result.data || data
+
+  /* Return minified SVG */
+  return result.data
 }
 
 /* ----------------------------------------------------------------------------

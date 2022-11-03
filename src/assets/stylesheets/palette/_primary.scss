@@ -101,6 +101,18 @@
   // Typeset `a` color shades
   --md-typeset-a-color:                hsl(#{hex2hsl($clr-indigo-500)});
 
+  // Form button
+  .md-button {
+    color: var(--md-typeset-a-color);
+
+    // Primary button
+    &--primary {
+      color: hsla(0, 0%, 100%, 1);
+      background-color: var(--md-typeset-a-color);
+      border-color: var(--md-typeset-a-color);
+    }
+  }
+
   // [tablet portrait +]: Header-embedded search
   @include break-from-device(tablet landscape) {
 
@@ -144,6 +156,18 @@
 
   // Typeset `a` color shades
   --md-typeset-a-color:                hsl(#{hex2hsl($clr-indigo-500)});
+
+  // Form button
+  .md-button {
+    color: var(--md-typeset-a-color);
+
+    // Primary button
+    &--primary {
+      color: hsla(0, 0%, 100%, 1);
+      background-color: var(--md-typeset-a-color);
+      border-color: var(--md-typeset-a-color);
+    }
+  }
 
   // Header
   .md-header {

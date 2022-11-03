@@ -88,7 +88,7 @@ which are currently exclusively available to sponsors:
 
 - [x] [Privacy plugin: external links] :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
 - [x] [Navigation subtitles] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
-- [x] [Tags plugin: allow list] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
+- [x] [Tags plugin: allow list] and [custom sorting] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
 - [x] [Blog plugin: custom index pages]
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin]
@@ -295,7 +295,7 @@ are released for general availability.
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin: custom index pages]
 - [x] [Tags plugin: additional indexes]
-- [x] [Tags plugin: allow list]
+- [x] [Tags plugin: allow list] and [custom sorting]
 - [x] [Navigation subtitles]
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
@@ -303,6 +303,7 @@ are released for general availability.
   [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
   [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#+tags.tags_extra_files
   [Tags plugin: allow list]: ../setup/setting-up-tags.md#+tags.tags_allowed
+  [custom sorting]: ../setup/setting-up-tags.md#+tags.tags_compare
   [Navigation subtitles]: ../reference/index.md#setting-the-page-subtitle
 
 #### $ 20,000 – Jalapeño
