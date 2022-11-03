@@ -1,3 +1,9 @@
+mkdocs-material-8.5.8 (2022-11-03)
+
+  * Added support for always showing settings in cookie consent
+  * Fixed #4571: Buttons invisible if primary color is white or black
+  * Fixed #4517: Illegible note in sequence diagram when using slate scheme
+
 mkdocs-material-8.5.7+insiders-4.26.0 (2022-10-22)
 
   * Improved reporting of configuration errors in tags plugin

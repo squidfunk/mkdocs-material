@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 8.5.8 <small>_ November 3, 2022</small> { id="8.5.8" }
+
+- Added support for always showing settings in cookie consent
+- Fixed #4571: Buttons invisible if primary color is `white` or `black`
+- Fixed #4517: Illegible note in sequence diagram when using `slate` scheme
+
 ### 8.5.7 <small>_ October 22, 2022</small> { id="8.5.7" }
 
 - Deprecated additional admonition qualifiers to reduce size of CSS
