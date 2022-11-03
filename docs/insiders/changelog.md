@@ -2,6 +2,18 @@
 
 ## Material for MkDocs Insiders
 
+### 4.26.2 <small>_ November 3, 2022</small> { id="4.26.2" }
+
+- Updated MkDocs to 1.4.2
+- Added support for tag compare functions when sorting on index pages
+- Fixed footnotes being rendered in post excerpts without separators
+- Fixed error in blog plugin when `toc` extension is not enabled
+- Fixed issues with invalid asset paths and linked post titles
+- Fixed #4572: Privacy plugin fails when symlinks cannot be created
+- Fixed #4545: Blog plugin doesn't automatically link headline to post
+- Fixed #4542: Blog plugin doesn't allow for multiple instances
+- Fixed #4532: Blog plugin doesn't allow for mixed use of date and datetime
+
 ### 4.26.1 <small>_ October 22, 2022</small> { id="4.26.1" }
 
 - Improved reporting of configuration errors in tags plugin
