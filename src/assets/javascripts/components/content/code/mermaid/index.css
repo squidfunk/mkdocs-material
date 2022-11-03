@@ -346,6 +346,11 @@ line {
   stroke: none;
 }
 
+/* make statically colored note nodes use a statically color text */
+.noteText > tspan {
+  fill: #000;
+}
+
 /* Sequence arrow head */
 #arrowhead path {
   fill: var(--md-mermaid-edge-color);
