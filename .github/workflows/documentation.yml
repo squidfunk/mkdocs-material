@@ -75,12 +75,15 @@ jobs:
           # in the publishing guide – see https://bit.ly/3zjdJtw
           git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           pip install -e mkdocs-material-insiders
-          cp mkdocs-material-insiders/mkdocs.yml mkdocs.yml
+          cd mkdocs-material-insiders
+          rm -rf docs
+          ln -s ../docs
 
       - name: Deploy documentation
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
         run: |
+          cd mkdocs-material-insiders
           mkdocs gh-deploy --force
           mkdocs --version
