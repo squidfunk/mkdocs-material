@@ -93,7 +93,7 @@
     "stylelint": "^14.14.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^9.0.0",
-    "stylelint-config-standard-scss": "^6.0.0",
+    "stylelint-config-standard-scss": "^6.1.0",
     "stylelint-scss": "^4.3.0",
     "svgo": "^3.0.0",
     "tiny-glob": "^0.2.9",
