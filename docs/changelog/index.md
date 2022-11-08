@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 8.5.9 <small>_ November 8, 2022</small> { id="8.5.9" }
+
+- Fixed #4600: Illegible link colors for black and white primary colors
+- Fixed #4594: Need to set schema to change link color
+
 ### 8.5.8 <small>_ November 3, 2022</small> { id="8.5.8" }
 
 - Added support for always showing settings in cookie consent
