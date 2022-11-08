@@ -186,6 +186,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Eccenca]](https://eccenca.com/){ target=_blank title="Eccenca" }
 [![SealVault]](https://sealvault.org/){ target=_blank title="SealVault" }
 [![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
+[![Cash App]](https://cash.app/){ target=_blank title="Cash App" }
 
 </div>
 
@@ -215,6 +216,7 @@ You can cancel your sponsorship anytime.[^5]
   [Eccenca]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png
   [SealVault]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sealvault.png
   [Neptune]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png
+  [Cash App]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png
 
 <hr />
 
