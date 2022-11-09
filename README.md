@@ -192,6 +192,11 @@ Material for MkDocs can be installed with `pip`:
 pip install mkdocs-material
 ```
 
+Create new site:
+```
+mkdocs new .
+```
+
 Add the following lines to `mkdocs.yml`:
 
 ``` yaml
