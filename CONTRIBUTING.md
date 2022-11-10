@@ -1,6 +1,7 @@
 # Contributing
 
-Interested in contributing to the Material for MkDocs? Have a question? Want to report a bug? Before you do, please read the following guidelines.
+Interested in contributing to the Material for MkDocs? Have a question? Want to 
+report a bug? Before you do, please read the following guidelines.
 
 ## Submission context
 
@@ -96,8 +97,8 @@ go ahead.
     your commits.
 
 2.  **Build**: Before submitting a pull request, [build the theme]. This is
-    a mandatory requirement for your PR to get accepted, as the theme should be installable through GitHub at
-    all times.
+    a mandatory requirement for your PR to get accepted, as the theme should be 
+    installable through GitHub at all times.
 
 3.  **Pull Request**: After building the theme, commit the compiled output,
     push your branch to GitHub and send a PR to `mkdocs-material:master`. If we
