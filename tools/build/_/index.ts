@@ -114,7 +114,7 @@ export function resolve(
 
       /* Build overrides */
       !process.argv.includes("--all")
-        ? filter(file => !file.startsWith("overrides/"))
+        ? filter(file => !file.startsWith(".overrides/"))
         : identity,
 
       /* Start file watcher */

@@ -225,7 +225,6 @@ const templates$ = manifest$
       to: base,
       watch: process.argv.includes("--watch"),
       transform: async data => {
-        console.log(manifest)
         const metadata = require("../../package.json")
         const banner =
           "{#-\n" +
