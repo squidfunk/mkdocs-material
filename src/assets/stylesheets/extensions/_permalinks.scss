@@ -106,4 +106,12 @@
       }
     }
   }
+  
+  // Correct anchor offsets for table row labels
+  table {
+    tr > td > p {
+      margin-top: -1 * px2rem(96px);
+      padding-top: px2rem(96px);
+    }
+  }
 }
