@@ -80,7 +80,7 @@ export function mountIconSearch(
 ): Observable<Component<IconSearch>> {
   const config = configuration()
   const index$ = requestJSON<IconSearchIndex>(
-    new URL("overrides/assets/javascripts/iconsearch_index.json", config.base)
+    new URL("assets/javascripts/iconsearch_index.json", config.base)
   )
 
   /* Retrieve query and result components */

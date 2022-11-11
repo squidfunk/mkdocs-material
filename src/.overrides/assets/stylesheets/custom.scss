@@ -36,11 +36,9 @@
 
 @import "config";
 
-@import "main/typeset";
+@import "custom/typeset";
 
-@import "main/layout/banner";
-@import "main/layout/hero";
-@import "main/layout/iconsearch";
-@import "main/layout/sponsorship";
-
-@import "main/shame";
+@import "custom/layout/banner";
+@import "custom/layout/hero";
+@import "custom/layout/iconsearch";
+@import "custom/layout/sponsorship";

@@ -68,4 +68,4 @@ include = ["/material"]
 
 [tool.hatch.build.targets.sdist]
 include = ["/material", "/package.json", "/requirements.txt"]
-exclude = ["/material/overrides"]
+exclude = ["/material/.overrides"]

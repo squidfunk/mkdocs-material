@@ -73,9 +73,9 @@
     {% if not config.theme.palette is mapping %}
       <form class="md-header__option" data-md-component="palette">
         {% for option in config.theme.palette %}
-          {% set scheme  = option.scheme  | d("default", true) %}
-          {% set primary = option.primary | d("indigo", true) %}
-          {% set accent  = option.accent  | d("indigo", true) %}
+          {% set scheme  = option.scheme | d("default", true) %}
+          {% set primary = option.primary %}
+          {% set accent  = option.accent %}
           <input
             class="md-option"
             data-md-color-media="{{ option.media }}"

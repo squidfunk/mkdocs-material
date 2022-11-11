@@ -159,9 +159,9 @@
     {% if not palette is mapping %}
       {% set palette = palette | first %}
     {% endif %}
-    {% set scheme  = palette.scheme  | d("default", true) %}
-    {% set primary = palette.primary | d("indigo", true) %}
-    {% set accent  = palette.accent  | d("indigo", true) %}
+    {% set scheme  = palette.scheme | d("default", true) %}
+    {% set primary = palette.primary %}
+    {% set accent  = palette.accent %}
     <body
       dir="{{ direction }}"
       data-md-color-scheme="{{ scheme | replace(' ', '-') }}"
