@@ -49,9 +49,9 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.63536465.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.5a797631.min.css' | url }}">
       {% if palette.primary or palette.accent %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.646262d2.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.e0da11d7.min.css' | url }}">
       {% endif %}
       {% if palette.primary %}
         {% import "partials/palette.html" as map %}
@@ -160,8 +160,8 @@
       </main>
     </div>
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/vendor.d7126665.min.js' | url }}"></script>
-      <script src="{{ 'assets/javascripts/bundle.8bb3902f.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/vendor.57114a05.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.17d77c1b.min.js' | url }}"></script>
       {%- set translations = {} -%}
       {%- for key in [
         "clipboard.copy",
@@ -185,7 +185,7 @@
           base: "{{ base_url }}",
           features: {{ config.theme.features | tojson }},
           search: Object.assign({
-            worker: "{{ 'assets/javascripts/worker/search.58d22e8e.min.js' | url }}"
+            worker: "{{ 'assets/javascripts/worker/search.5845d53c.min.js' | url }}"
           }, typeof search !== "undefined" && search)
         })
       </script>
