@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 8.5.10 <small>_ November 11, 2022</small> { id="8.5.10" }
+
+- Adjusted CSS to better allow for custom primary and accent colors
+- Fixed #4620: Primary color is not applied (8.5.9 regression)
+
 ### 8.5.9 <small>_ November 8, 2022</small> { id="8.5.9" }
 
 - Fixed #4600: Illegible link colors for black and white primary colors

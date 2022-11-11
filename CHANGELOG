@@ -1,3 +1,8 @@
+mkdocs-material-8.5.10 (2022-11-11)
+
+  * Adjusted CSS to better allow for custom primary and accent colors
+  * Fixed #4620: Primary color is not applied (8.5.9 regression)
+
 mkdocs-material-8.5.9 (2022-11-08)
 
   * Fixed #4600: Illegible link colors for black and white primary colors
