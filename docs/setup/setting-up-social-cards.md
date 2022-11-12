@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Setting up social cards
 
 Social cards, also known as social previews, are images that are displayed when

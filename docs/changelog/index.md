@@ -1,10 +1,27 @@
----
-template: overrides/main.html
----
-
 # Changelog
 
 ## Material for MkDocs
+
+### 8.5.10 <small>_ November 11, 2022</small> { id="8.5.10" }
+
+- Adjusted CSS to better allow for custom primary and accent colors
+- Fixed #4620: Primary color is not applied (8.5.9 regression)
+
+### 8.5.9 <small>_ November 8, 2022</small> { id="8.5.9" }
+
+- Fixed #4600: Illegible link colors for black and white primary colors
+- Fixed #4594: Need to set schema to change link color
+
+### 8.5.8 <small>_ November 3, 2022</small> { id="8.5.8" }
+
+- Added support for always showing settings in cookie consent
+- Fixed #4571: Buttons invisible if primary color is `white` or `black`
+- Fixed #4517: Illegible note in sequence diagram when using `slate` scheme
+
+### 8.5.7 <small>_ October 22, 2022</small> { id="8.5.7" }
+
+- Deprecated additional admonition qualifiers to reduce size of CSS
+- Fixed #4511: Search boost does not apply to sections
 
 ### 8.5.6 <small>_ October 2, 2022</small> { id="8.5.6" }
 

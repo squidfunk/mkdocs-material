@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Setting up the footer
 
 The footer of your project documentation is a great place to add links to

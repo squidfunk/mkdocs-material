@@ -1,3 +1,54 @@
+mkdocs-material-8.5.10 (2022-11-11)
+
+  * Adjusted CSS to better allow for custom primary and accent colors
+  * Fixed #4620: Primary color is not applied (8.5.9 regression)
+
+mkdocs-material-8.5.9 (2022-11-08)
+
+  * Fixed #4600: Illegible link colors for black and white primary colors
+  * Fixed #4594: Need to set schema to change link color
+
+mkdocs-material-8.5.8+insiders-4.26.2 (2022-11-03)
+
+  * Updated MkDocs to 1.4.2
+  * Added support for tag compare functions when sorting on index pages
+  * Fixed footnotes being rendered in post excerpts without separators
+  * Fixed error in blog plugin when toc extension is not enabled
+  * Fixed issues with invalid asset paths and linked post titles
+  * Fixed #4572: Privacy plugin fails when symlinks cannot be created
+  * Fixed #4545: Blog plugin doesn't automatically link headline to post
+  * Fixed #4542: Blog plugin doesn't allow for multiple instances
+  * Fixed #4532: Blog plugin doesn't allow for mixed use of date and datetime
+
+mkdocs-material-8.5.8 (2022-11-03)
+
+  * Added support for always showing settings in cookie consent
+  * Fixed #4571: Buttons invisible if primary color is white or black
+  * Fixed #4517: Illegible note in sequence diagram when using slate scheme
+
+mkdocs-material-8.5.7+insiders-4.26.1 (2022-10-22)
+
+  * Improved reporting of configuration errors in tags plugin
+  * Fixed #4515: Privacy plugin fails when site URL is not defined
+  * Fixed #4514: Privacy plugin doesn't fetch Google fonts (4.26.0 regression)
+
+mkdocs-material-8.5.7 (2022-10-22)
+
+  * Deprecated additional admonition qualifiers to reduce size of CSS
+  * Fixed #4511: Search boost does not apply to sections
+
+mkdocs-material-8.5.6+insiders-4.26.0 (2022-10-18)
+
+  * Refactored privacy plugin to prepare for new features
+  * Added support for rel=noopener links in privacy plugin
+  * Resolve encoding issues with blog and privacy plugin
+
+mkdocs-material-8.5.6+insiders-4.25.5 (2022-10-16)
+
+  * Updated MkDocs to 1.4.1
+  * Added namespace prefix to built-in plugins
+  * Updated content and header partial
+
 mkdocs-material-8.5.6+insiders-4.25.4 (2022-10-09)
 
   * Fixed other path issues for standalone blogs (4.24.2 regression)

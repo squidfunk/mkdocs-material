@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Customization
 
 Project documentation is as diverse as the projects themselves and Material for

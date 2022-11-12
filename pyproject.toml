@@ -19,7 +19,11 @@
 # IN THE SOFTWARE.
 
 [build-system]
-requires = ["hatchling", "hatch-requirements-txt", "hatch-nodejs-version>=0.3.0"]
+requires = [
+  "hatchling",
+  "hatch-requirements-txt",
+  "hatch-nodejs-version>=0.3.0"
+]
 build-backend = "hatchling.build"
 
 [project]
@@ -68,4 +72,4 @@ include = ["/material"]
 
 [tool.hatch.build.targets.sdist]
 include = ["/material", "/package.json", "/requirements.txt"]
-exclude = ["/material/overrides"]
+exclude = ["/material/.overrides"]

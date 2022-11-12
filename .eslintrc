@@ -214,7 +214,7 @@
     ],
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-extraneous-class": "error",
-    "@typescript-eslint/no-misused-promises": "error",
+    "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-parameter-properties": "off",
     "@typescript-eslint/no-floating-promises": "error",

@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Setting up versioning
 
 Material for MkDocs makes it easy to deploy multiple versions of your project

@@ -299,12 +299,12 @@
     },
     "tags": {
       "title": "Tag identifiers",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons-and-identifiers",
       "type": "object",
       "patternProperties": {
         ".*": {
           "title": "Tag identifier mapping",
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons-and-identifiers",
           "pattern": "^[\\w-]+$"
         }
       }

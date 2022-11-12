@@ -1,10 +1,36 @@
----
-template: overrides/main.html
----
-
 # Changelog
 
 ## Material for MkDocs Insiders
+
+### 4.26.2 <small>_ November 3, 2022</small> { id="4.26.2" }
+
+- Updated MkDocs to 1.4.2
+- Added support for tag compare functions when sorting on index pages
+- Fixed footnotes being rendered in post excerpts without separators
+- Fixed error in blog plugin when `toc` extension is not enabled
+- Fixed issues with invalid asset paths and linked post titles
+- Fixed #4572: Privacy plugin fails when symlinks cannot be created
+- Fixed #4545: Blog plugin doesn't automatically link headline to post
+- Fixed #4542: Blog plugin doesn't allow for multiple instances
+- Fixed #4532: Blog plugin doesn't allow for mixed use of date and datetime
+
+### 4.26.1 <small>_ October 22, 2022</small> { id="4.26.1" }
+
+- Improved reporting of configuration errors in tags plugin
+- Fixed #4515: Privacy plugin fails when site URL is not defined
+- Fixed #4514: Privacy plugin doesn't fetch Google fonts (4.26.0 regression)
+
+### 4.26.0 <small>_ October 18, 2022</small> { id="4.26.0" }
+
+- Refactored privacy plugin to prepare for new features
+- Added support for `rel=noopener` links in privacy plugin
+- Resolve encoding issues with blog and privacy plugin
+
+### 4.25.5 <small>_ October 16, 2022</small> { id="4.25.5" }
+
+- Updated MkDocs to 1.4.1
+- Added namespace prefix to built-in plugins
+- Updated `content` and `header` partial
 
 ### 4.25.4 <small>_ October 9, 2022</small> { id="4.25.4" }
 

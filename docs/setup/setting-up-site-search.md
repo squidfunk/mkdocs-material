@@ -1,5 +1,4 @@
 ---
-template: overrides/main.html
 search:
   boost: 1.05
 ---

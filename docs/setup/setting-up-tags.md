@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Setting up tags
 
 Material for MkDocs adds first-class support for categorizing pages with tags,
@@ -33,13 +29,13 @@ The following configuration options are available:
 [`enabled`](#+tags.enabled){ #+tags.enabled }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
-    the plugin is enabled when building your project. If you want to switch
-    the plugin off, you can disable it with the following lines:
+    the plugin is enabled when building your project. If you want to speed up
+    local builds, you can use an [environment variable]:
 
     ``` yaml
     plugins:
       - tags:
-          enabled: false
+          enabled: !ENV [CI, false]
     ```
 
 [`tags_file`](#+tags.tags_file){ #+tags.tags_file }
@@ -95,7 +91,8 @@ The following configuration options are available:
         at least one of the tags `HTML5`, `JavaScript` or `CSS` will be included
         in the additional tags index on `web.md`.
 
-    See #3864 for more information.
+    Note that the values listed under each tags extra file must be alphanumeric
+    [tag identifiers], not tags themselves. See #3864 for more information.
 
 [`tags_slugify`](#+tags.tags_slugify){ #+tags.tags_slugify }
 
@@ -135,6 +132,34 @@ The following configuration options are available:
           tags_slugify_separator: "-"
     ```
 
+[`tags_compare`](#+tags.tags_compare){ #+tags.tags_compare }
+
+:   [:octicons-tag-24: insiders-4.26.2][Insiders] · :octicons-milestone-24:
+    Default: `None` – This option specifies which function to use when
+    comparing tag values for sorting. If you wish to compare tags irregardless
+    of casing, use:
+
+    ``` yaml
+    plugins:
+      - tags:
+          tags_compare: !!python/name:material.plugins.tags.plugin.casefold
+    ```
+
+    You can also define your own comparison function which must return a tag
+    value (as a string) that is used for sorting, and reference it accordingly.
+
+[`tags_compare_reverse`](#+tags.tags_compare_reverse){ #+tags.tags_compare_reverse }
+
+:   [:octicons-tag-24: insiders-4.26.2][Insiders] · :octicons-milestone-24:
+    Default: `false` – This option specifies whether tags are sorted in reverse
+    order. It is mainly provided for completeness. To change direction, use:
+
+    ``` yaml
+    plugins:
+      - tags:
+          tags_compare_reverse: true
+    ```
+
 [`tags_allowed`](#+tags.tags_allowed){ #+tags.tags_allowed } :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
 
 :   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
@@ -153,11 +178,12 @@ The following configuration options are available:
     ```
 
   [Tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
+  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [Insiders]: ../insiders/index.md
-  [tag identifiers]: #tag-icons
+  [tag identifiers]: #tag-icons-and-identifiers
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
-### Tag icons
+### Tag icons and identifiers
 
 [:octicons-tag-24: 8.5.0][Tag icons support] ·
 :octicons-beaker-24: Experimental

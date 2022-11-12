@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Changing the colors
 
 As any proper Material Design implementation, Material for MkDocs supports

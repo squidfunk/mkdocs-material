@@ -77,6 +77,13 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             )
             sys.exit()
 
+        # Check if site URL is defined
+        if not config.site_url:
+            log.warning(
+                "The \"social\" plugin needs the \"site_url\" configuration "
+                "option to be defined. It will likely not work correctly."
+            )
+
         # Ensure presence of cache directory
         self.cache = self.config.cache_dir
         if not os.path.isdir(self.cache):
@@ -262,7 +269,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
         # Resolve image URL
         url = "{}.png".format(posixpath.join(
-            config.site_url,
+            config.site_url or ".",
             directory,
             file
         ))

@@ -1,5 +1,4 @@
 ---
-template: overrides/main.html
 title: Insiders
 ---
 
@@ -82,14 +81,15 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 24 additional features__ that you can start using right away, and
+access to 25 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Privacy plugin: external links] :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
 - [x] [Navigation subtitles] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
-- [x] [Tags plugin: allow list] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
-- [x] [Blog plugin: custom index pages] :material-alert-decagram:{ .mdx-pulse title="Added on September 27, 2022" }
+- [x] [Tags plugin: allow list] and [custom sorting] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
+- [x] [Blog plugin: custom index pages]
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin]
 - [x] [Navigation status]
@@ -186,6 +186,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Eccenca]](https://eccenca.com/){ target=_blank title="Eccenca" }
 [![SealVault]](https://sealvault.org/){ target=_blank title="SealVault" }
 [![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
+[![Cash App]](https://cash.app/){ target=_blank title="Cash App" }
 
 </div>
 
@@ -215,6 +216,7 @@ You can cancel your sponsorship anytime.[^5]
   [Eccenca]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png
   [SealVault]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sealvault.png
   [Neptune]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png
+  [Cash App]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png
 
 <hr />
 
@@ -295,7 +297,7 @@ are released for general availability.
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin: custom index pages]
 - [x] [Tags plugin: additional indexes]
-- [x] [Tags plugin: allow list]
+- [x] [Tags plugin: allow list] and [custom sorting]
 - [x] [Navigation subtitles]
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
@@ -303,13 +305,16 @@ are released for general availability.
   [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
   [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#+tags.tags_extra_files
   [Tags plugin: allow list]: ../setup/setting-up-tags.md#+tags.tags_allowed
+  [custom sorting]: ../setup/setting-up-tags.md#+tags.tags_compare
   [Navigation subtitles]: ../reference/index.md#setting-the-page-subtitle
 
 #### $ 20,000 – Jalapeño
 
+- [x] [Privacy plugin: external links]
 - [ ] [Instant previews]
 - ... more to be announced
 
+  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed
@@ -330,7 +335,7 @@ can be used by all users.
   [Social cards]: ../setup/setting-up-social-cards.md
   [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
-  [Tag icons]: ../setup/setting-up-tags.md#tag-icons
+  [Tag icons]: ../setup/setting-up-tags.md#tag-icons-and-identifiers
   [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
 
 #### $ 7,000 – Royal Gold

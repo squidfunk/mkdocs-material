@@ -1,5 +1,4 @@
 ---
-template: overrides/main.html
 status: new
 ---
 
@@ -77,13 +76,13 @@ The following configuration options are available:
 [`enabled`](#+blog.enabled){ #+blog.enabled }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
-    the plugin is enabled when building your project. If you want to switch
-    the plugin off, you can disable it with the following lines:
+    the plugin is enabled when building your project. If you want to speed up
+    local builds, you can use an [environment variable]:
 
     ``` yaml
     plugins:
       - blog:
-          enabled: false
+          enabled: !ENV [CI, false]
     ```
 
 [`blog_dir`](#+blog.blog_dir){ #+blog.blog_dir }
@@ -824,13 +823,13 @@ The following configuration options are supported:
 [`enabled`](#+rss.enabled){ #+rss.enabled }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
-    the plugin is enabled when building your project. If you want to switch
-    the plugin off, you can disable it with the following lines:
+    the plugin is enabled when building your project. If you want to speed up
+    local builds, you can use an [environment variable]:
 
     ``` yaml
     plugins:
       - rss:
-          enabled: false
+          enabled: !ENV [CI, false]
     ```
 
 [`match_path`](#+rss.match_path){ #+rss.match_path }
