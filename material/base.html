@@ -138,7 +138,7 @@
     <div class="md-container" data-md-component="container">
       {% block hero %}{% endblock %}
       {% block tabs %}
-        {% if not "navigation.tabs.sticky" in features %}
+        {% if "navigation.tabs.sticky" not in features %}
           {% if "navigation.tabs" in features %}
             {% include "partials/tabs.html" %}
           {% endif %}
@@ -159,7 +159,7 @@
                 </div>
               </div>
             {% endif %}
-            {% if not "toc.integrate" in features %}
+            {% if "toc.integrate" not in features %}
               {% if page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "toc" in page.meta.hide %}
               {% endif %}

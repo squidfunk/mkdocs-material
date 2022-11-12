@@ -16,7 +16,7 @@
 {% if not actions %}
   {% set actions = ["accept", "manage"] %}
 {% endif %}
-{% if not "manage" in actions %}
+{% if "manage" not in actions %}
   {% set checked = "checked" %}
 {% endif %}
 <h4>{{ config.extra.consent.title }}</h4>
