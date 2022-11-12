@@ -346,6 +346,11 @@ line {
   stroke: none;
 }
 
+/* Sequence note text */
+.noteText > tspan {
+  fill: hsl(0, 0%, 0%);
+}
+
 /* Sequence arrow head */
 #arrowhead path {
   fill: var(--md-mermaid-edge-color);

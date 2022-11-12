@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Python Markdown Extensions
 
 The [Python Markdown Extensions] package is an excellent collection of

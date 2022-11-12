@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Setting up the header
 
 Material for MkDocs' header can be customized to show an announcement bar that 

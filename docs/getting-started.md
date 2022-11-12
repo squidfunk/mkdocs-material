@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Getting started
 
 Material for MkDocs is a theme for [MkDocs], a static site generator geared

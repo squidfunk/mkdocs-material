@@ -1,6 +1,9 @@
 <p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material/">
+  <a href="https://squidfunk.github.io/mkdocs-material/#gh-light-mode-only">
     <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.svg" width="320" alt="Material for MkDocs">
+  </a>
+  <a href="https://squidfunk.github.io/mkdocs-material/#gh-dark-mode-only">
+    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo-dark.svg" width="320" alt="Material for MkDocs">
   </a>
 </p>
 
@@ -139,6 +142,9 @@
   /></a>
   <a href="https://neptune.ai/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png" height="58"
+  /></a>
+  <a href="https://cash.app/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png" height="58"
   /></a>
 </p>
 <p>&nbsp;</p>

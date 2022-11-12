@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Adding a git repository
 
 If your documentation is related to source code, Material for MkDocs provides
