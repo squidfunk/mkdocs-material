@@ -183,7 +183,7 @@ documentation works for everyone.
 
 ### Open Source
 
-Trust 10,000+ users – choose a mature and actively maintained solution built
+Trust 20,000+ users – choose a mature and actively maintained solution built
 with state-of-the-art Open Source technologies. Keep ownership of your content
 without fear of vendor lock-in. Licensed under MIT.
 
