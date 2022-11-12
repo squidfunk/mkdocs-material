@@ -55,14 +55,6 @@ icon:
 # Favicon to be rendered
 favicon: assets/images/favicon.png
 
-# Material includes the search in the header as a partial, not as a separate
-# template, so it's correct that search.html is missing
-include_search_page: false
-
-# Material doesn't use MkDocs search functionality but provides its own. For
-# this reason, only the search index needs to be built
-search_index_only: true
-
 # Static pages to build
 static_templates:
   - 404.html
