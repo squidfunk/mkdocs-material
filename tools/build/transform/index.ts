@@ -171,7 +171,7 @@ export function transformScript(
     write: false,
     bundle: true,
     sourcemap: true,
-    sourceRoot: "../../../..",
+    sourceRoot: path.relative(path.dirname(options.from), "."),
     legalComments: "inline",
     minify: process.argv.includes("--optimize"),
     plugins: [
