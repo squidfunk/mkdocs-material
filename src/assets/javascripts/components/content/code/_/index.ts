@@ -173,12 +173,16 @@ export function mountCodeBlock(
 
     /* Render button for Clipboard.js integration */
     if (ClipboardJS.isSupported()) {
-      const parent = el.closest("pre")!
-      parent.id = `__code_${++sequence}`
-      parent.insertBefore(
-        renderClipboardButton(parent.id),
-        el
-      )
+      if (el.closest(".copy") || (
+        feature("content.code.copy") && !el.closest(".no-copy")
+      )) {
+        const parent = el.closest("pre")!
+        parent.id = `__code_${++sequence}`
+        parent.insertBefore(
+          renderClipboardButton(parent.id),
+          el
+        )
+      }
     }
 
     /* Handle code annotations */

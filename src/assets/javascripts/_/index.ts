@@ -32,6 +32,7 @@ import { getElement, getLocation } from "~/browser"
 export type Flag =
   | "announce.dismiss"                 /* Dismissable announcement bar */
   | "content.code.annotate"            /* Code annotations */
+  | "content.code.copy"                /* Code copy button */
   | "content.lazy"                     /* Lazy content elements */
   | "content.tabs.link"                /* Link content tabs */
   | "header.autohide"                  /* Hide header */
