@@ -153,7 +153,7 @@
   </head>
 
   <!-- Set text direction and color palette, if defined -->
-  {% set direction = config.theme.direction or lang.t('direction') %}
+  {% set direction = config.theme.direction or lang.t("direction") %}
   {% if config.theme.palette %}
     {% set palette = config.theme.palette %}
     {% if not palette is mapping %}
@@ -205,7 +205,7 @@
       {% if page.toc | first is defined %}
         {% set skip = page.toc | first %}
         <a href="{{ skip.url | url }}" class="md-skip">
-          {{ lang.t('skip.link.title') }}
+          {{ lang.t("skip.link") }}
         </a>
       {% endif %}
     </div>
@@ -340,7 +340,7 @@
             hidden
           >
             {% include ".icons/material/arrow-up.svg" %}
-            {{ lang.t('top.title') }}
+            {{ lang.t("top") }}
           </a>
         {% endif %}
       </main>
@@ -406,7 +406,7 @@
         "search.result.more.one",
         "search.result.more.other",
         "search.result.term.missing",
-        "select.version.title"
+        "select.version"
       ] -%}
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}

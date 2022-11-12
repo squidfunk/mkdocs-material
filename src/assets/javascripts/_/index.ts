@@ -68,7 +68,7 @@ export type Translation =
   | "search.result.more.one"           /* 1 more on this page */
   | "search.result.more.other"         /* # more on this page */
   | "search.result.term.missing"       /* Missing */
-  | "select.version.title"             /* Version selector */
+  | "select.version"                   /* Version selector */
 
 /**
  * Translations
