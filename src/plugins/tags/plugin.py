@@ -42,6 +42,7 @@ class TagsPluginConfig(Config):
 
 # Tags plugin
 class TagsPlugin(BasePlugin[TagsPluginConfig]):
+    supports_multiple_instances = True
 
     # Initialize plugin
     def on_config(self, config):

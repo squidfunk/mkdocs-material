@@ -51,9 +51,9 @@ classifiers = [
 ]
 
 [project.entry-points."mkdocs.plugins"]
-search = "material.plugins.search.plugin:SearchPlugin"
-social = "material.plugins.social.plugin:SocialPlugin"
-tags = "material.plugins.tags.plugin:TagsPlugin"
+"material/search" = "material.plugins.search.plugin:SearchPlugin"
+"material/social" = "material.plugins.social.plugin:SocialPlugin"
+"material/tags" = "material.plugins.tags.plugin:TagsPlugin"
 
 [project.entry-points."mkdocs.themes"]
 material = "material"
