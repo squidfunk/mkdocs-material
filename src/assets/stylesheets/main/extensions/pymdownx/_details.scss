@@ -36,6 +36,8 @@
 
   // Details
   details {
+    @extend .admonition;
+
     display: flow-root;
     padding-top: 0;
     overflow: visible;
@@ -62,6 +64,8 @@
 
   // Details title
   summary {
+    @extend .admonition-title;
+
     display: block;
     min-height: px2rem(20px);
     padding-inline-end: px2rem(36px);

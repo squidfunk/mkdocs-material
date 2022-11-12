@@ -27,24 +27,22 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Deletion, addition or comment
-  :is(del, ins, .comment).critic {
-    box-decoration-break: clone;
-  }
-
   // Deletion
   del.critic {
     background-color: var(--md-typeset-del-color);
+    box-decoration-break: clone;
   }
 
   // Addition
   ins.critic {
     background-color: var(--md-typeset-ins-color);
+    box-decoration-break: clone;
   }
 
   // Comment
   .critic.comment {
     color: var(--md-code-hl-comment-color);
+    box-decoration-break: clone;
 
     // Comment opening mark
     &::before {

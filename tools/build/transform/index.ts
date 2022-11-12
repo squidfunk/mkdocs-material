@@ -24,7 +24,7 @@ import { createHash } from "crypto"
 import { build as esbuild } from "esbuild"
 import * as fs from "fs/promises"
 import * as path from "path"
-import postcss, { Plugin, Rule } from "postcss"
+import postcss from "postcss"
 import {
   EMPTY,
   Observable,
@@ -83,36 +83,6 @@ function digest(file: string, data: string): string {
   }
 }
 
-/**
- * Custom PostCSS plugin to polyfill newer CSS features
- *
- * @returns PostCSS plugin
- */
-function plugin(): Plugin {
-  const rules = new Set<Rule>()
-  return {
-    postcssPlugin: 'mkdocs-material',
-    Root (root) {
-
-      /* Fallback for :is() */
-      root.walkRules(/:is\(/, rule => {
-        if (!rules.has(rule)) {
-          rules.add(rule)
-
-          /* Add prefixed versions */
-          for (const pseudo of [":-webkit-any(", ":-moz-any("])
-            rule.cloneBefore({
-              selectors: rule.selectors.map(selector => (
-                selector.replace(/:is\(/g, pseudo)
-              ))
-            })
-        }
-      })
-    }
-  }
-}
-plugin.postcss = true
-
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -141,7 +111,7 @@ export function transformStyle(
         require("autoprefixer"),
         require("postcss-logical"),
         require("postcss-dir-pseudo-class"),
-        plugin,
+        require("postcss-pseudo-is"),
         require("postcss-inline-svg")({
           paths: [
             `${base}/.icons`
