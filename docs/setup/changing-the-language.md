@@ -58,7 +58,7 @@ The following languages are supported:
 - `it` – Italian
 - `ja` – Japanese
 - `ka` – Georgian
-- `kr` – Korean
+- `ko` – Korean
 - `lt` – Lithuanian
 - `lv` – Latvian
 - `mk` – Macedonian
