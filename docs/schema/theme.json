@@ -544,7 +544,7 @@
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons-and-identifiers",
           "type": "object",
           "patternProperties": {
-            "^\\w+$": {
+            "^[\\w-]+$": {
               "$ref": "#/definitions/icon"
             }
           },
