@@ -491,7 +491,7 @@
           "defaultSnippets": [
             {
               "label": "note",
-              "body": "note: ${1:material/pencil}"
+              "body": "note: ${1:material/pencil-circle}"
             },
             {
               "label": "abstract",
@@ -507,7 +507,7 @@
             },
             {
               "label": "success",
-              "body": "success: ${1:material/check-bold}"
+              "body": "success: ${1:material/check}"
             },
             {
               "label": "question",
@@ -519,19 +519,19 @@
             },
             {
               "label": "failure",
-              "body": "failure: ${1:material/close-thick}"
+              "body": "failure: ${1:material/close}"
             },
             {
               "label": "danger",
-              "body": "danger: ${1:material/lightning-bolt}"
+              "body": "danger: ${1:material/lightning-bolt-circle}"
             },
             {
               "label": "bug",
-              "body": "bug: ${1:material/bug}"
+              "body": "bug: ${1:material/shield-bug}"
             },
             {
               "label": "example",
-              "body": "example: ${1:material/format-list-numbered}"
+              "body": "example: ${1:material/test-tube}"
             },
             {
               "label": "quote",
