@@ -1,3 +1,8 @@
+mkdocs-material-8.5.10+insiders-4.26.3 (2022-11-15)
+
+  * Fixed #4637: Attachments w/o titles in related links error in blog plugin
+  * Fixed #4631: Remote favicons not downloaded and inlined by privacy plugin
+
 mkdocs-material-8.5.10 (2022-11-11)
 
   * Adjusted CSS to better allow for custom primary and accent colors
