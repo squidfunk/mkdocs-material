@@ -34,7 +34,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.975780f9.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.f561fd0c.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.2505c338.min.css' | url }}">
@@ -138,7 +138,7 @@
     <div class="md-container" data-md-component="container">
       {% block hero %}{% endblock %}
       {% block tabs %}
-        {% if not "navigation.tabs.sticky" in features %}
+        {% if not "navigation.tabs.sticky" in features and not "navigation.tabs.header" in features %}
           {% if "navigation.tabs" in features %}
             {% include "partials/tabs.html" %}
           {% endif %}
@@ -245,7 +245,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.5a2dcb6a.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.74b92542.min.js' | url }}"></script>
       {% for path in config.extra_javascript %}
         <script src="{{ path | url }}"></script>
       {% endfor %}

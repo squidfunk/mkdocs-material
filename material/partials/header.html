@@ -31,6 +31,9 @@
         </div>
       </div>
     </div>
+    {% if "navigation.tabs.header" in features %}
+      {% include "partials/tabs.html" %}
+    {% endif %}
     {% if not config.theme.palette is mapping %}
       <form class="md-header__option" data-md-component="palette">
         {% for option in config.theme.palette %}
@@ -79,7 +82,7 @@
       </div>
     {% endif %}
   </nav>
-  {% if "navigation.tabs.sticky" in features %}
+  {% if "navigation.tabs.sticky" in features and not "navigation.tabs.header" in features %}
     {% if "navigation.tabs" in features %}
       {% include "partials/tabs.html" %}
     {% endif %}
