@@ -31,7 +31,7 @@
   top: 0;
   inset-inline: 0;
   z-index: 4;
-  display: block;
+  // display: block;
   color: var(--md-primary-bg-color);
   background-color: var(--md-primary-fg-color);
   // Hack: reduce jitter by adding a transparent box shadow of the same size
@@ -181,6 +181,7 @@
   // Header title
   &__title {
     flex-grow: 1;
+    width: px2rem(320px);
     height: px2rem(48px);
     margin-inline-end: px2rem(8px);
     margin-inline-start: px2rem(20px);
