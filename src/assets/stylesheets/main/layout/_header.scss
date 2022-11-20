@@ -31,7 +31,7 @@
   top: 0;
   inset-inline: 0;
   z-index: 4;
-  // display: block;
+  display: block;
   color: var(--md-primary-bg-color);
   background-color: var(--md-primary-fg-color);
   // Hack: reduce jitter by adding a transparent box shadow of the same size
