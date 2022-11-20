@@ -31,7 +31,7 @@
   top: 0;
   inset-inline: 0;
   z-index: 4;
-  // display: block;
+  display: block;
   color: var(--md-primary-bg-color);
   background-color: var(--md-primary-fg-color);
   // Hack: reduce jitter by adding a transparent box shadow of the same size
@@ -100,6 +100,7 @@
 
     // Button with logo, pointing to `config.site_url`
     &.md-logo {
+      display: inline-block;
       margin: px2rem(4px);
       padding: px2rem(8px);
 
@@ -110,7 +111,7 @@
 
       // Image or icon
       :is(img, svg) {
-        display: inline-block;
+        display: block;
         width: auto;
         height: px2rem(24px);
         fill: currentcolor;
