@@ -1,5 +1,4 @@
 ---
-template: overrides/main.html
 icon: material/code-json
 ---
 

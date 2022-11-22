@@ -49,6 +49,7 @@ import glob from "tiny-glob"
 interface ResolveOptions {
   cwd: string                          /* Working directory */
   watch?: boolean                      /* Watch mode */
+  dot?: boolean                        /* Hidden files or directories */
 }
 
 /**
@@ -106,14 +107,14 @@ function now() {
 export function resolve(
   pattern: string, options?: ResolveOptions
 ): Observable<string> {
-  return from(glob(pattern, options))
+  return from(glob(pattern, { ...options, dot: true }))
     .pipe(
       catchError(() => EMPTY),
       concatAll(),
 
       /* Build overrides */
       !process.argv.includes("--all")
-        ? filter(file => !file.startsWith("overrides/"))
+        ? filter(file => !file.startsWith(".overrides/"))
         : identity,
 
       /* Start file watcher */

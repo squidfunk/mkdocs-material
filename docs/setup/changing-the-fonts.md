@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Changing the fonts
 
 Material for MkDocs makes it easy to change the typeface of your project

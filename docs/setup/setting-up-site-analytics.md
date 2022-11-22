@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Setting up site analytics
 
 As with any other service offered on the web, understanding how your project

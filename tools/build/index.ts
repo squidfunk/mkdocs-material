@@ -86,6 +86,10 @@ function ext(file: string, extension: string): string {
  * @returns Minified SVG data
  */
 function minsvg(data: string): string {
+  if (!data.startsWith("<"))
+    return data
+
+  /* Optimize SVG */
   const result = optimize(data, {
     plugins: [
       "preset-default",
@@ -93,7 +97,9 @@ function minsvg(data: string): string {
       { name: "removeViewBox", active: false }
     ]
   })
-  return result.data || data
+
+  /* Return minified SVG */
+  return result.data
 }
 
 /* ----------------------------------------------------------------------------
@@ -163,7 +169,7 @@ const sources$ = copyAll("**/*.py", {
 const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
   .pipe(
     mergeMap(file => zip(
-      of(ext(file, ".css")),
+      of(ext(file, ".css").replace(".overrides/", "")),
       transformStyle({
         from: `src/${file}`,
         to: ext(`${base}/${file}`, ".css")
@@ -172,10 +178,10 @@ const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
   )
 
 /* Transform scripts */
-const javascripts$ = resolve("**/{bundle,search}.ts", { cwd: "src" })
+const javascripts$ = resolve("**/{custom,bundle,search}.ts", { cwd: "src" })
   .pipe(
     mergeMap(file => zip(
-      of(ext(file, ".js")),
+      of(ext(file, ".js").replace(".overrides/", "")),
       transformScript({
         from: `src/${file}`,
         to: ext(`${base}/${file}`, ".js")
@@ -203,7 +209,10 @@ const manifest$ = merge(
   .pipe(
     scan((prev, mapping) => (
       mapping.reduce((next, [key, value]) => (
-        next.set(key, value.replace(`${base}/`, ""))
+        next.set(key, value.replace(
+          new RegExp(`${base}\\/(\.overrides\\/)?`),
+          ""
+        ))
       ), prev)
     ), new Map<string, string>()),
   )
@@ -294,7 +303,7 @@ const index$ = zip(icons$, emojis$)
       } as IconSearchIndex
     }),
     switchMap(data => write(
-      `${base}/overrides/assets/javascripts/iconsearch_index.json`,
+      `${base}/.overrides/assets/javascripts/iconsearch_index.json`,
       JSON.stringify(data)
     ))
   )

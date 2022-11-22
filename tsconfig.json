@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "paths": {
       "~/*": ["./assets/javascripts/*"],
-      "_/*": ["./overrides/assets/javascripts/*"]
+      "_/*": ["./.overrides/assets/javascripts/*"]
     },
     "removeComments": false,
     "sourceMap": true,
@@ -34,7 +34,7 @@
   },
   "include": [
     "src/assets/javascripts",
-    "src/overrides/assets/javascripts",
+    "src/.overrides/assets/javascripts",
     "tools",
     "typings"
   ]

@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "Application",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "runtimeArgs": [
         "--disable-features=Translate",
