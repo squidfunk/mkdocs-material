@@ -34,7 +34,7 @@ The following configuration options are available:
 
     ``` yaml
     plugins:
-      - tags:
+      - privacy:
           enabled: !ENV [CI, false]
     ```
 
