@@ -27,6 +27,19 @@
 // Color variables
 :root {
   @extend %root;
+
+  // Primary color shades
+  --md-primary-fg-color:               hsla(#{hex2hsl($clr-indigo-500)}, 1);
+  --md-primary-fg-color--light:        hsla(#{hex2hsl($clr-indigo-400)}, 1);
+  --md-primary-fg-color--dark:         hsla(#{hex2hsl($clr-indigo-700)}, 1);
+  --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
+  --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
+
+  // Accent color shades
+  --md-accent-fg-color:                hsla(#{hex2hsl($clr-indigo-a200)}, 1);
+  --md-accent-fg-color--transparent:   hsla(#{hex2hsl($clr-indigo-a200)}, 0.1);
+  --md-accent-bg-color:                hsla(0, 0%, 100%, 1);
+  --md-accent-bg-color--light:         hsla(0, 0%, 100%, 0.7);
 }
 
 // ----------------------------------------------------------------------------
@@ -52,19 +65,6 @@
   --md-default-bg-color--light:        hsla(0, 0%, 100%, 0.7);
   --md-default-bg-color--lighter:      hsla(0, 0%, 100%, 0.3);
   --md-default-bg-color--lightest:     hsla(0, 0%, 100%, 0.12);
-
-  // Primary color shades
-  --md-primary-fg-color:               hsla(#{hex2hsl($clr-indigo-500)}, 1);
-  --md-primary-fg-color--light:        hsla(#{hex2hsl($clr-indigo-400)}, 1);
-  --md-primary-fg-color--dark:         hsla(#{hex2hsl($clr-indigo-700)}, 1);
-  --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
-  --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
-
-  // Accent color shades
-  --md-accent-fg-color:                hsla(#{hex2hsl($clr-indigo-a200)}, 1);
-  --md-accent-fg-color--transparent:   hsla(#{hex2hsl($clr-indigo-a200)}, 0.1);
-  --md-accent-bg-color:                hsla(0, 0%, 100%, 1);
-  --md-accent-bg-color--light:         hsla(0, 0%, 100%, 0.7);
 
   // Code color shades
   --md-code-fg-color:                  hsla(200, 18%, 26%, 1);

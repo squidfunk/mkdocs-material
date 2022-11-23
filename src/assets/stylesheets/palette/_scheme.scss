@@ -132,7 +132,9 @@
 
     // Set neutral colors to indigo
     "grey":                            hsl(219, 56%, 63%),
-    "blue-grey":                       hsl(219, 56%, 63%)
+    "blue-grey":                       hsl(219, 56%, 63%),
+    "white":                           hsl(219, 56%, 63%),
+    "black":                           hsl(219, 56%, 63%)
   ) {
     [data-md-color-scheme="slate"][data-md-color-primary="#{$name}"] {
       --md-typeset-a-color: #{$color};

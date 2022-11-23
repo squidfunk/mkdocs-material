@@ -76,6 +76,8 @@ jobs:
           git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           pip install -e mkdocs-material-insiders
           cp mkdocs-material-insiders/mkdocs.yml mkdocs.yml
+          rm -rf material
+          cp -r mkdocs-material-insiders/material material
 
       - name: Deploy documentation
         env:

@@ -27,11 +27,6 @@
               "type": "string",
               "default": "blog"
             },
-            "blog_custom_dir": {
-              "title": "Blog template directory (internal)",
-              "markdownDescription": "Warning: this option is for internal use only, use at your own risk",
-              "type": "string"
-            },
             "post_date_format": {
               "title": "Format string for post dates",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_date_format",

@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Building for offline usage
 
 If you want to ship your documentation together with your product, MkDocs has

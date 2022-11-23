@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Changing the language
 
 Material for MkDocs supports internationalization (i18n) and provides

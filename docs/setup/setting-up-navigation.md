@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Setting up navigation
 
 A clear and concise navigation structure is an important aspect of good project 
