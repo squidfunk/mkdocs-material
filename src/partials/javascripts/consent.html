@@ -49,7 +49,6 @@
             input.checked = false
 
       /* Grab and serialize form data */
-      console.log(new FormData(form))
       __md_set("__consent", Object.fromEntries(
         Array.from(new FormData(form).keys())
           .map(function(key) { return [key, true] })
