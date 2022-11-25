@@ -28,12 +28,14 @@ contents:
         branches:
           - master # (2)!
           - main
+    permissions:
+      contents: write
     jobs:
       deploy:
         runs-on: ubuntu-latest
         steps:
-          - uses: actions/checkout@v2
-          - uses: actions/setup-python@v2
+          - uses: actions/checkout@v3
+          - uses: actions/setup-python@v4
             with:
               python-version: 3.x
           - run: pip install mkdocs-material # (3)!
@@ -64,13 +66,15 @@ contents:
         branches:
           - master
           - main
+    permissions:
+      contents: write
     jobs:
       deploy:
         runs-on: ubuntu-latest
         if: github.event.repository.fork == false
         steps:
-          - uses: actions/checkout@v2
-          - uses: actions/setup-python@v2
+          - uses: actions/checkout@v3
+          - uses: actions/setup-python@v4
             with:
               python-version: 3.x
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
