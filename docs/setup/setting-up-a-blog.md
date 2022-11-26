@@ -215,6 +215,8 @@ The following configuration options are available for posts:
 
     - `slug`: Replaced with a slug generated from the post's title.
 
+    - `file`: Replaced with the post's file name.
+
     === ":material-link: blog/2022/:material-dots-horizontal:/"
 
         ``` yaml
