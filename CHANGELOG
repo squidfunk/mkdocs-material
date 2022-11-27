@@ -1,3 +1,7 @@
+mkdocs-material-8.5.10+insiders-4.26.4 (2022-11-26)
+
+  * Fixed redundant file extension when using privacy plugin
+
 mkdocs-material-8.5.10+insiders-4.26.3 (2022-11-15)
 
   * Fixed #4637: Attachments w/o titles in related links error in blog plugin
