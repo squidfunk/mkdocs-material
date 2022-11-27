@@ -28,12 +28,14 @@ contents:
         branches:
           - master # (2)!
           - main
+    permissions:
+      contents: write
     jobs:
       deploy:
         runs-on: ubuntu-latest
         steps:
-          - uses: actions/checkout@v2
-          - uses: actions/setup-python@v2
+          - uses: actions/checkout@v3
+          - uses: actions/setup-python@v4
             with:
               python-version: 3.x
           - run: pip install mkdocs-material # (3)!
@@ -64,13 +66,15 @@ contents:
         branches:
           - master
           - main
+    permissions:
+      contents: write
     jobs:
       deploy:
         runs-on: ubuntu-latest
         if: github.event.repository.fork == false
         steps:
-          - uses: actions/checkout@v2
-          - uses: actions/setup-python@v2
+          - uses: actions/checkout@v3
+          - uses: actions/setup-python@v4
             with:
               python-version: 3.x
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
@@ -122,15 +126,14 @@ contents:
     image: python:latest
     pages:
       stage: deploy
-      only:
-        - master # (1)!
-        - main
       script:
         - pip install mkdocs-material
         - mkdocs build --site-dir public
       artifacts:
         paths:
           - public
+      rules:
+        - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
     ```
 
     1.  At some point, GitLab renamed `master` to `main`. If your default branch
@@ -142,15 +145,14 @@ contents:
     image: python:latest
     pages:
       stage: deploy
-      only:
-        - master
-        - main
       script: # (1)!
         - pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
         - mkdocs build --site-dir public
       artifacts:
         paths:
           - public
+      rules:
+        - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
     ```
 
     1.  Remember to set the `GH_TOKEN` environment variable to the value of your
