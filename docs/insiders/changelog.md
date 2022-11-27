@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.26.3 <small>_ November 15, 2022</small> { id="4.26.3" }
+
+- Fixed #4637: Attachments w/o titles in related links error in blog plugin
+- Fixed #4631: Remote favicons not downloaded and inlined by privacy plugin
+
 ### 4.26.2 <small>_ November 3, 2022</small> { id="4.26.2" }
 
 - Updated MkDocs to 1.4.2
