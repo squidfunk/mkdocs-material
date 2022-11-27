@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.26.5 <small>_ November 26, 2022</small> { id="4.26.5" }
+
+- Fixed #4632: Post excerpt title link doesn't point to top of the page
+
 ### 4.26.4 <small>_ November 26, 2022</small> { id="4.26.4" }
 
 - Fixed redundant file extension when using privacy plugin
