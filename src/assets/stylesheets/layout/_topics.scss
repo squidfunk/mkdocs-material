@@ -42,3 +42,12 @@
   }
 }
 
+@include break-to-device(mobile landscape) {
+  .topic-row {
+    flex-direction: column;
+
+    a.topic-card + a.topic-card {
+      margin-top: 1rem;
+    }
+  }
+}
