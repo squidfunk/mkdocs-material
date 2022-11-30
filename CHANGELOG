@@ -1,3 +1,7 @@
+mkdocs-material-8.5.11 (2022-11-30)
+
+  * Let it snow, see https://twitter.com/squidfunk/status/1597937112753766401
+
 mkdocs-material-8.5.10+insiders-4.26.6 (2022-11-28)
 
   * Fixed #4683: Tags plugin crashes when a tag is empty
