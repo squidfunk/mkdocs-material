@@ -107,15 +107,21 @@ export function mountMermaid(
   mermaid$.subscribe(() => {
     el.classList.add("mermaid") // Hack: mitigate https://bit.ly/3CiN6Du
     const id = `__mermaid_${sequence++}`
+
+    /* Create host element to replace code block */
     const host = h("div", { class: "mermaid" })
-    mermaid.mermaidAPI.render(id, el.textContent, (svg: string) => {
+    const text = el.textContent
+
+    /* Render and inject diagram */
+    mermaid.mermaidAPI.render(id, text, (svg: string, fn: Function) => {
 
       /* Create a shadow root and inject diagram */
       const shadow = host.attachShadow({ mode: "closed" })
       shadow.innerHTML = svg
 
-      /* Replace code block with diagram */
+      /* Replace code block with diagram and bind functions */
       el.replaceWith(host)
+      fn?.(shadow)
     })
   })
 

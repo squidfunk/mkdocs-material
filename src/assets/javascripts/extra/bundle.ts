@@ -49,12 +49,12 @@ const container = document.createElement("div")
 document.body.appendChild(container)
 
 /* Append button next to palette toggle */
-const header = document.querySelector(".md-header__option")
+const header = document.querySelector(".md-header__title")
 if (header) {
   const button = document.createElement("button")
   button.className = "md-header__button md-icon ᴴₒᴴₒᴴₒ__button"
   if (header.parentElement)
-    header.parentElement.insertBefore(button, header)
+    header.insertAdjacentElement("afterend", button)
 
   /* Toggle animation */
   const on$ = new ReplaySubject<boolean>(1)
