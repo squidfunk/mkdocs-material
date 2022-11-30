@@ -4,7 +4,7 @@
 
 ### 8.5.11 <small>_ November 30, 2022</small> { id="8.5.11" }
 
-- Let it snow, see https://twitter.com/squidfunk/status/1597937112753766401
+- Let it snow, see https://twitter.com/squidfunk/status/1597939243090788352
 
 ### 8.5.10 <small>_ November 11, 2022</small> { id="8.5.10" }
 
