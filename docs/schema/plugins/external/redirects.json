@@ -17,7 +17,7 @@
                 {
                   "title": "Internal redirect",
                   "markdownDescription": "https://github.com/datarobot/mkdocs-redirects#using",
-                  "pattern": "\\.md$"
+                  "pattern": "\\.md(#\\S+)?$"
                 },
                 {
                   "title": "External redirect",
