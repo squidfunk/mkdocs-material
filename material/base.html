@@ -250,5 +250,9 @@
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
+    {% if page.meta and page.meta.ᴴₒᴴₒᴴₒ %}
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.4c984a04.min.css' | url }}">
+      <script src="{{ 'assets/javascripts/extra/bundle.5f09fbc3.min.js' | url }}" defer></script>
+    {% endif %}
   </body>
 </html>
