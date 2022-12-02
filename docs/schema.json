@@ -103,6 +103,18 @@
       "uniqueItems": true,
       "minItems": 1
     },
+    "hooks": {
+      "title": "Hooks",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#hooks",
+      "type": "array",
+      "items": {
+        "title": "Path to Python file",
+        "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#hooks",
+        "pattern": "\\.py$"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
     "strict": {
       "title": "Strict mode",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#strict",
