@@ -1,6 +1,4 @@
-{#-
-  This file was automatically generated - do not edit
--#}
+<!-- Set from config but allow override -->
 {% set disqus = config.extra.disqus %} {% if page and page.meta and page.meta.disqus is string %} {% set disqus = page.meta.disqus
   %} {% endif %}
 {% set copyright = config.extra.copyright %} {% if page and page.meta and page.meta.copyright is string %} {% set copyright = page.meta.copyright
@@ -13,26 +11,45 @@
   <span><i class="md-icon">people</i>本页面贡献者：</span><span class="page_contributors">{{ authors }}</span><br>
   <span><i class="md-icon">copyright</i>本页面的全部内容在 <strong>{{ copyright }}</strong> 协议之条款下提供，附加条款亦可能应用</span>
 </blockquote>
+<!-- Comments Integration -->
 {% if not page.is_homepage and disqus %}
 {% set pageID = page.title | default("404", true) %}
-<h2 id="__comments" data-no-instant>{{ lang.t("meta.comments") }}</h2>
-<form id="gitalk-form" onsubmit="return!1" data-no-instant>
-<div id="gitalk-container" data-no-instant>
-</div>
-</form>
-<link rel="stylesheet" href="{{ 'assets/vendor/gitalk/gitalk.css' | url }}">
-<script src="{{ 'assets/vendor/gitalk/gitalk.min.js' | url }}"></script>
-<script>
-  const gitalk = new Gitalk({
-    id: '{{ page.title | default("404", true)  }}',
-    owner: 'OI-wiki',
-    repo: 'gitment',
-    admin: ['Ir1d', 'cjsoft', 'TrisolarisHD', 'Xeonacid', 'sshwy', 'Enter-tainer', 'StudyingFather'],
-    clientID: 'd6a911c8fba0194626d4',
-    clientSecret: '867ec7e13cc99b420bd147cbb62d5cfec271ba81',
-    distractionFreeMode: false,
-    pagerDirection: 'first'
-  })
-  gitalk.render('gitalk-container')
-</script>
+<div class="giscus" data-no-instant></div>
+{% if config.theme.language == 'zh' %}
+  <script src="https://giscus.app/client.js"
+          data-repo="OI-wiki/gitment"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQzODg5NjU="
+          data-category="评论"
+          data-category-id="DIC_kwDOCJszZc4CS54y"
+          data-mapping="specific"
+          data-term="{{ pageID }}"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="zh-CN"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+{% else %}
+  <script src="https://giscus.app/client.js"
+          data-repo="OI-wiki/gitment"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQzODg5NjU="
+          data-category="Comments"
+          data-category-id="DIC_kwDOCJszZc4CS53G"
+          data-mapping="specific"
+          data-term="{{ pageID }}"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en-US"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+{% endif %}
 {% endif %}

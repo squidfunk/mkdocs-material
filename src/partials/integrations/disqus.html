@@ -14,26 +14,42 @@
 <!-- Comments Integration -->
 {% if not page.is_homepage and disqus %}
 {% set pageID = page.title | default("404", true) %}
-<h2 id="__comments" data-no-instant>{{ lang.t("meta.comments") }}</h2>
-<form id="gitalk-form" onsubmit="return false;" data-no-instant>
-<div id="gitalk-container" data-no-instant>
-</div>
-</form>
-<link rel="stylesheet" href="{{ 'assets/vendor/gitalk/gitalk.css' | url }}">
-<script src="{{ 'assets/vendor/gitalk/gitalk.min.js' | url }}"></script>
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OI-wiki/gitalk@master/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/gh/OI-wiki/gitalk@master/dist/gitalk.min.js"></script> -->
-<script>
-  const gitalk = new Gitalk({
-    id: '{{ page.title | default("404", true)  }}',
-    owner: 'OI-wiki',
-    repo: 'gitment',
-    admin: ['Ir1d', 'cjsoft', 'TrisolarisHD', 'Xeonacid', 'sshwy', 'Enter-tainer', 'StudyingFather'],
-    clientID: 'd6a911c8fba0194626d4',
-    clientSecret: '867ec7e13cc99b420bd147cbb62d5cfec271ba81',
-    distractionFreeMode: false,
-    pagerDirection: 'first'
-  })
-  gitalk.render('gitalk-container')
-</script>
+<div class="giscus" data-no-instant></div>
+{% if config.theme.language == 'zh' %}
+  <script src="https://giscus.app/client.js"
+          data-repo="OI-wiki/gitment"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQzODg5NjU="
+          data-category="评论"
+          data-category-id="DIC_kwDOCJszZc4CS54y"
+          data-mapping="specific"
+          data-term="{{ pageID }}"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="zh-CN"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+{% else %}
+  <script src="https://giscus.app/client.js"
+          data-repo="OI-wiki/gitment"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDQzODg5NjU="
+          data-category="Comments"
+          data-category-id="DIC_kwDOCJszZc4CS53G"
+          data-mapping="specific"
+          data-term="{{ pageID }}"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en-US"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+{% endif %}
 {% endif %}
