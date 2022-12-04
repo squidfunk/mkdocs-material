@@ -14,7 +14,7 @@
 <!-- Comments Integration -->
 {% if not page.is_homepage and disqus %}
 {% set pageID = page.title | default("404", true) %}
-<div class="giscus" data-no-instant></div>
+<div id="__comments" class="giscus" data-no-instant></div>
 {% if config.theme.language == 'zh' %}
   <script src="https://giscus.app/client.js"
           data-repo="OI-wiki/gitment"
