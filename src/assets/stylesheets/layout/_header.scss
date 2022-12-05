@@ -77,8 +77,18 @@
       padding: px2rem(16px) px2rem(24px);
     }
 
+    @include break-to-device(mobile portrait) {
+      align-items: end;
+    }
+
     .md-search {
       flex-grow: 1;
+    }
+
+    .version-selector-container select {
+      @include break-to-device(mobile portrait) {
+        align-items: end;
+      }
     }
 
     a.cta-btn {
@@ -90,6 +100,10 @@
       padding: px2rem(10px) px2rem(14px);
       color: white;
       margin-left: px2rem(20px);
+
+      @include break-to-device(mobile portrait) {
+        white-space: nowrap;
+      }
     }
   }
 }
