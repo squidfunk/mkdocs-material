@@ -2,6 +2,18 @@
 
 ## Material for MkDocs Insiders
 
+### 4.26.6 <small>_ November 28, 2022</small> { id="4.26.6" }
+
+- Fixed #4683: Tags plugin crashes when a tag is empty
+
+### 4.26.5 <small>_ November 27, 2022</small> { id="4.26.5" }
+
+- Fixed #4632: Post excerpt title link doesn't point to top of the page
+
+### 4.26.4 <small>_ November 27, 2022</small> { id="4.26.4" }
+
+- Fixed redundant file extension when using privacy plugin
+
 ### 4.26.3 <small>_ November 15, 2022</small> { id="4.26.3" }
 
 - Fixed #4637: Attachments w/o titles in related links error in blog plugin

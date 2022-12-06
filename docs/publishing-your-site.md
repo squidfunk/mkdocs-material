@@ -136,9 +136,6 @@ contents:
         - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
     ```
 
-    1.  At some point, GitLab renamed `master` to `main`. If your default branch
-        is named `master`, you can safely remove `main`, vice versa.
-
 === "Insiders"
 
     ``` yaml

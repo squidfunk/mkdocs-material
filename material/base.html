@@ -22,7 +22,7 @@
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-8.5.11">
     {% endblock %}
     {% block htmltitle %}
       {% if page.meta and page.meta.title %}
@@ -34,7 +34,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.38cbebe6.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.47fa6176.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.2505c338.min.css' | url }}">
@@ -243,10 +243,14 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.58485186.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.cef3dc0e.min.js' | url }}"></script>
       {% for path in config.extra_javascript %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
+    {% if page.meta and page.meta.ᴴₒᴴₒᴴₒ %}
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.c2715e54.min.css' | url }}">
+      <script src="{{ 'assets/javascripts/extra/bundle.f719a234.min.js' | url }}" defer></script>
+    {% endif %}
   </body>
 </html>

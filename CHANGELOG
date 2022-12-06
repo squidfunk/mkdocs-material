@@ -1,3 +1,19 @@
+mkdocs-material-8.5.11 (2022-11-30)
+
+  * Let it snow, see https://twitter.com/squidfunk/status/1597939243090788352
+
+mkdocs-material-8.5.10+insiders-4.26.6 (2022-11-28)
+
+  * Fixed #4683: Tags plugin crashes when a tag is empty
+
+mkdocs-material-8.5.10+insiders-4.26.5 (2022-11-27)
+
+  * Fixed #4632: Post excerpt title link doesn't point to top of the page
+
+mkdocs-material-8.5.10+insiders-4.26.4 (2022-11-27)
+
+  * Fixed redundant file extension when using privacy plugin
+
 mkdocs-material-8.5.10+insiders-4.26.3 (2022-11-15)
 
   * Fixed #4637: Attachments w/o titles in related links error in blog plugin
