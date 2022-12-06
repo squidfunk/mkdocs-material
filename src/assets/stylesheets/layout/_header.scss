@@ -85,12 +85,6 @@
       flex-grow: 1;
     }
 
-    .version-selector-container select {
-      @include break-to-device(mobile portrait) {
-        align-items: end;
-      }
-    }
-
     a.cta-btn {
       background-color: #3E7AFF;
       height: px2rem(40px);
