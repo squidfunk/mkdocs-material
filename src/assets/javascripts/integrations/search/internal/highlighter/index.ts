@@ -38,7 +38,6 @@ import { Position, PositionTable } from "../tokenizer"
 export function highlighter(
   value: string, table: PositionTable, positions: Position[]
 ): string {
-  const slices: string[] = []
 
   /* Map matches to blocks */
   const blocks = new Map<number, number[]>()
@@ -56,6 +55,7 @@ export function highlighter(
   }
 
   /* Compute slices */
+  const slices: string[] = []
   for (const [block, indexes] of blocks) {
     const t = table[block]
 

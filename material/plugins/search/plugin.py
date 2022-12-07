@@ -173,9 +173,9 @@ class SearchIndex:
 
         # Create entry for section
         entry = {
+            "location": url,
             "title": title,
-            "text": text,
-            "location": url
+            "text": text
         }
 
         # Set document tags

@@ -235,6 +235,10 @@ export class Search {
               if (field in match)
                 positions.push(...match[field].position)
 
+            /* Skip field, if no highlighting is necessary */
+            if (!positions.length)
+              continue
+
             // @ts-expect-error - @todo fix typings
             if (Array.isArray(doc[field])) {
               // @ts-expect-error - @todo fix typings
