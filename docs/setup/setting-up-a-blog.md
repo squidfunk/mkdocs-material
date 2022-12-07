@@ -210,12 +210,12 @@ The following configuration options are available for posts:
     format string that is used for the URL of the post. The following
     placeholders are currently supported:
 
-    - `date`: Replaced with the post's date, as configured in 
+    - `date` – Replaced with the post's date, as configured in
       [`post_url_date_format`][post_url_date_format].
 
-    - `slug`: Replaced with a slug generated from the post's title.
+    - `slug` – Replaced with a slug generated from the post's title.
 
-    - `file`: Replaced with the post's file name.
+    - `file` – Replaced with the post's file name.
 
     === ":material-link: blog/2022/:material-dots-horizontal:/"
 
