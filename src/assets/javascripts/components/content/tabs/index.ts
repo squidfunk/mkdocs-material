@@ -37,7 +37,6 @@ import {
   skip,
   startWith,
   subscribeOn,
-  takeLast,
   takeUntil,
   tap,
   withLatestFrom
