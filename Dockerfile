@@ -35,7 +35,8 @@ COPY material material
 COPY package.json package.json
 COPY README.md README.md
 COPY requirements.txt requirements.txt
-COPY pyproject.toml pyproject.toml
+COPY MANIFEST.in MANIFEST.in
+COPY setup.py setup.py
 
 # Perform build and cleanup artifacts and caches
 RUN \
