@@ -82,7 +82,7 @@ theme:
 # Plugins
 plugins:
   - search:
-      separator: '[\s\u200b,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      separator: '[\s,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - redirects:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
