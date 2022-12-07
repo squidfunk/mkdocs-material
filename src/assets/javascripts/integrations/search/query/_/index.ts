@@ -20,6 +20,9 @@
  * IN THE SOFTWARE.
  */
 
+import { split } from "../../internal"
+import { transform } from "../transform"
+
 /* ----------------------------------------------------------------------------
  * Types
  * ------------------------------------------------------------------------- */
@@ -44,7 +47,52 @@ export type SearchQueryTerms = Record<string, boolean>
  * ------------------------------------------------------------------------- */
 
 /**
+ * Transform search query
+ *
+ * This function lexes the given search query and applies the transformation
+ * function to each term, preserving markup like `+` and `-` modifiers.
+ *
+ * @param query - Search query
+ *
+ * @returns Search query
+ */
+export function transformSearchQuery(
+  query: string
+): string {
+
+  /* Split query terms with tokenizer */
+  return transform(query, part => {
+    const terms: string[] = []
+
+    /* Initialize lexer and analyze part */
+    const lexer = new lunr.QueryLexer(part)
+    lexer.run()
+
+    /* Extract and tokenize term from lexeme */
+    for (const { type, str: term, start, end } of lexer.lexemes)
+      if (type === "TERM")
+        split(term, lunr.tokenizer.separator, (...range) => {
+          terms.push([
+            part.slice(0, start),
+            term.slice(...range),
+            part.slice(end)
+          ].join(""))
+        })
+
+    /* Return terms */
+    return terms
+  })
+}
+
+/* ------------------------------------------------------------------------- */
+
+/**
  * Parse a search query for analysis
+ *
+ * Lunr.js itself has a bug where it doesn't detect or remove wildcards for
+ * query clauses, so we must do this here.
+ *
+ * @see https://bit.ly/3DpTGtz - GitHub issue
  *
  * @param value - Query value
  *
@@ -53,11 +101,28 @@ export type SearchQueryTerms = Record<string, boolean>
 export function parseSearchQuery(
   value: string
 ): SearchQueryClause[] {
-  const query  = new (lunr as any).Query(["title", "text"])
-  const parser = new (lunr as any).QueryParser(value, query)
+  const query  = new lunr.Query(["title", "text", "tags"])
+  const parser = new lunr.QueryParser(value, query)
 
-  /* Parse and return query clauses */
+  /* Parse Search query */
   parser.parse()
+  for (const clause of query.clauses) {
+    clause.usePipeline = true
+
+    /* Handle leading wildcard */
+    if (clause.term.startsWith("*")) {
+      clause.wildcard = lunr.Query.wildcard.LEADING
+      clause.term = clause.term.slice(1)
+    }
+
+    /* Handle trailing wildcard */
+    if (clause.term.endsWith("*")) {
+      clause.wildcard = lunr.Query.wildcard.TRAILING
+      clause.term = clause.term.slice(0, -1)
+    }
+  }
+
+  /* Return query clauses */
   return query.clauses
 }
 
@@ -85,7 +150,7 @@ export function getSearchQueryTerms(
 
   /* Annotate unmatched non-stopword query clauses */
   for (const clause of clauses)
-    if (lunr.stopWordFilter?.(clause.term as any))
+    if (lunr.stopWordFilter?.(clause.term))
       result[clause.term] = false
 
   /* Return query terms */

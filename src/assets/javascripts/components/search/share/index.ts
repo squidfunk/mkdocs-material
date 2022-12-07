@@ -23,9 +23,12 @@
 import {
   Observable,
   Subject,
+  endWith,
   finalize,
   fromEvent,
+  ignoreElements,
   map,
+  takeUntil,
   tap
 } from "rxjs"
 
@@ -102,6 +105,7 @@ export function mountSearchShare(
   el: HTMLAnchorElement, options: MountOptions
 ): Observable<Component<SearchShare>> {
   const push$ = new Subject<SearchShare>()
+  const done$ = push$.pipe(ignoreElements(), endWith(true))
   push$.subscribe(({ url }) => {
     el.setAttribute("data-clipboard-text", el.href)
     el.href = `${url}`
@@ -109,7 +113,10 @@ export function mountSearchShare(
 
   /* Prevent following of link */
   fromEvent(el, "click")
-    .subscribe(ev => ev.preventDefault())
+    .pipe(
+      takeUntil(done$)
+    )
+      .subscribe(ev => ev.preventDefault())
 
   /* Create and return component */
   return watchSearchShare(el, options)

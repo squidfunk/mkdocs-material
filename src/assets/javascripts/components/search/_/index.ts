@@ -26,9 +26,7 @@ import {
   ObservableInput,
   filter,
   merge,
-  mergeWith,
-  sample,
-  take
+  mergeWith
 } from "rxjs"
 
 import { configuration } from "~/_"
@@ -41,8 +39,6 @@ import {
 import {
   SearchIndex,
   SearchResult,
-  isSearchQueryMessage,
-  isSearchReadyMessage,
   setupSearchWorker
 } from "~/integrations"
 
@@ -110,22 +106,11 @@ export function mountSearch(
 ): Observable<Component<Search>> {
   const config = configuration()
   try {
-    const url = __search?.worker || config.search
-    const worker = setupSearchWorker(url, index$)
+    const worker$ = setupSearchWorker(config.search, index$)
 
     /* Retrieve query and result components */
     const query  = getComponentElement("search-query", el)
     const result = getComponentElement("search-result", el)
-
-    /* Re-emit query when search is ready */
-    const { tx$, rx$ } = worker
-    tx$
-      .pipe(
-        filter(isSearchQueryMessage),
-        sample(rx$.pipe(filter(isSearchReadyMessage))),
-        take(1)
-      )
-        .subscribe(tx$.next.bind(tx$))
 
     /* Set up search keyboard handlers */
     keyboard$
@@ -199,7 +184,7 @@ export function mountSearch(
     /* Set up global keyboard handlers */
     keyboard$
       .pipe(
-        filter(({ mode }) => mode === "global"),
+        filter(({ mode }) => mode === "global")
       )
         .subscribe(key => {
           switch (key.type) {
@@ -218,9 +203,11 @@ export function mountSearch(
         })
 
     /* Create and return component */
-    const query$  = mountSearchQuery(query, worker)
-    const result$ = mountSearchResult(result, worker, { query$ })
-    return merge(query$, result$)
+    const query$ = mountSearchQuery(query, { worker$ })
+    return merge(
+      query$,
+      mountSearchResult(result, { worker$, query$ })
+    )
       .pipe(
         mergeWith(
 
@@ -230,7 +217,7 @@ export function mountSearch(
 
           /* Search suggestions */
           ...getComponentElements("search-suggest", el)
-            .map(child => mountSearchSuggest(child, worker, { keyboard$ }))
+            .map(child => mountSearchSuggest(child, { worker$, keyboard$ }))
         )
       )
 

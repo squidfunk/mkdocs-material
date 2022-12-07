@@ -28,6 +28,7 @@ import "url-polyfill"
 import {
   EMPTY,
   NEVER,
+  Observable,
   Subject,
   defer,
   delay,
@@ -51,6 +52,7 @@ import {
   watchLocationTarget,
   watchMedia,
   watchPrint,
+  watchScript,
   watchViewport
 } from "./browser"
 import {
@@ -87,6 +89,32 @@ import {
 import "./polyfills"
 
 /* ----------------------------------------------------------------------------
+ * Functions - @todo refactor
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Fetch search index
+ *
+ * @returns Search index observable
+ */
+function fetchSearchIndex(): Observable<SearchIndex> {
+  if (location.protocol === "file:") {
+    return watchScript(
+      `${new URL("search/search_index.js", config.base)}`
+    )
+      .pipe(
+        // @ts-ignore - @todo fix typings
+        map(() => __index),
+        shareReplay(1)
+      )
+  } else {
+    return requestJSON<SearchIndex>(
+      new URL("search/search_index.json", config.base)
+    )
+  }
+}
+
+/* ----------------------------------------------------------------------------
  * Application
  * ------------------------------------------------------------------------- */
 
@@ -109,9 +137,7 @@ const print$    = watchPrint()
 /* Retrieve search index, if search is enabled */
 const config = configuration()
 const index$ = document.forms.namedItem("search")
-  ? __search?.index || requestJSON<SearchIndex>(
-    new URL("search/search_index.json", config.base)
-  )
+  ? fetchSearchIndex()
   : NEVER
 
 /* Set up Clipboard.js integration */

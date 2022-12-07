@@ -42,7 +42,8 @@ body {
 
 // Define default fonts
 body,
-input {
+input,
+aside {
   color: var(--md-typeset-color);
   font-feature-settings: "kern", "liga";
   font-family: var(--md-text-font-family);
@@ -52,7 +53,6 @@ input {
 code,
 pre,
 kbd {
-  color: var(--md-typeset-color);
   font-feature-settings: "kern";
   font-family: var(--md-code-font-family);
 }

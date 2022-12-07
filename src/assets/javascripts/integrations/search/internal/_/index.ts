@@ -21,28 +21,57 @@
  */
 
 /* ----------------------------------------------------------------------------
- * Types
+ * Helper types
  * ------------------------------------------------------------------------- */
 
 /**
- * Search pipeline function
+ * Visitor function
+ *
+ * @param start - Start offset
+ * @param end - End offset
  */
-export type SearchPipelineFn =
-  | "trimmer"                          /* Trimmer */
-  | "stopWordFilter"                   /* Stop word filter */
-  | "stemmer"                          /* Stemmer */
+type VisitorFn = (
+  start: number, end: number
+) => void
+
+/* ----------------------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------------------- */
 
 /**
- * Search pipeline
+ * Split a string using the given separator
+ *
+ * This function intentionally takes a visitor function contrary to collecting
+ * and returning all ranges, as it's significantly more memory efficient.
+ *
+ * @param value - String value
+ * @param separator - Separator
+ * @param fn - Visitor function
  */
-export type SearchPipeline = SearchPipelineFn[]
+export function split(
+  value: string, separator: RegExp, fn: VisitorFn
+): void {
+  separator = new RegExp(separator, "g")
 
-/* ------------------------------------------------------------------------- */
+  /* Split string using separator */
+  let match: RegExpExecArray | null
+  let index = 0
+  do {
+    match = separator.exec(value)
 
-/**
- * Search options
- */
-export interface SearchOptions {
-  pipeline: SearchPipeline             /* Search pipeline */
-  suggestions: boolean                 /* Search suggestions */
+    /* Emit non-empty range */
+    const until = match?.index ?? value.length
+    if (index < until)
+      fn(index, until)
+
+    /* Update last index */
+    if (match) {
+      const [term] = match
+      index = match.index + term.length
+
+      /* Support zero-length lookaheads */
+      if (term.length === 0)
+        separator.lastIndex = match.index + 1
+    }
+  } while (match)
 }

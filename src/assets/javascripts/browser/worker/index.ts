@@ -20,15 +20,16 @@
  * IN THE SOFTWARE.
  */
 
+import "iframe-worker/shim"
 import {
   Observable,
   Subject,
+  endWith,
   fromEvent,
-  map,
+  ignoreElements,
+  mergeWith,
   share,
-  switchMap,
-  tap,
-  throttle
+  takeUntil
 } from "rxjs"
 
 /* ----------------------------------------------------------------------------
@@ -43,29 +44,38 @@ export interface WorkerMessage {
   data?: unknown                       /* Message data */
 }
 
-/**
- * Worker handler
- *
- * @template T - Message type
- */
-export interface WorkerHandler<
-  T extends WorkerMessage
-> {
-  tx$: Subject<T>                      /* Message transmission subject */
-  rx$: Observable<T>                   /* Message receive observable */
-}
-
 /* ----------------------------------------------------------------------------
- * Helper types
+ * Helper functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch options
+ * Create an observable for receiving from a web worker
  *
- * @template T - Worker message type
+ * @template T - Data type
+ *
+ * @param worker - Web worker
+ *
+ * @returns Message observable
  */
-interface WatchOptions<T extends WorkerMessage> {
-  tx$: Observable<T>                   /* Message transmission observable */
+function recv<T>(worker: Worker): Observable<T> {
+  return fromEvent<MessageEvent<T>, T>(worker, "message", ev => ev.data)
+}
+
+/**
+ * Create a subject for sending to a web worker
+ *
+ * @template T - Data type
+ *
+ * @param worker - Web worker
+ *
+ * @returns Message subject
+ */
+function send<T>(worker: Worker): Subject<T> {
+  const send$ = new Subject<T>()
+  send$.subscribe(data => worker.postMessage(data))
+
+  /* Return message subject */
+  return send$
 }
 
 /* ----------------------------------------------------------------------------
@@ -73,34 +83,31 @@ interface WatchOptions<T extends WorkerMessage> {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch a web worker
+ * Create a bidirectional communication channel to a web worker
  *
- * This function returns an observable that sends all values emitted by the
- * message observable to the web worker. Web worker communication is expected
- * to be bidirectional (request-response) and synchronous. Messages that are
- * emitted during a pending request are throttled, the last one is emitted.
+ * @template T - Data type
  *
- * @param worker - Web worker
- * @param options - Options
+ * @param url - Worker URL
+ * @param worker - Worker
  *
- * @returns Worker message observable
+ * @returns Worker subject
  */
 export function watchWorker<T extends WorkerMessage>(
-  worker: Worker, { tx$ }: WatchOptions<T>
-): Observable<T> {
+  url: string, worker = new Worker(url)
+): Subject<T> {
+  const recv$ = recv<T>(worker)
+  const send$ = send<T>(worker)
 
-  /* Intercept messages from worker-like objects */
-  const rx$ = fromEvent<MessageEvent>(worker, "message")
-    .pipe(
-      map(({ data }) => data as T)
-    )
+  /* Create worker subject and forward messages */
+  const worker$ = new Subject<T>()
+  worker$.subscribe(send$)
 
-  /* Send and receive messages, return hot observable */
-  return tx$
+  /* Return worker subject */
+  const done$ = send$.pipe(ignoreElements(), endWith(true))
+  return worker$
     .pipe(
-      throttle(() => rx$, { leading: true, trailing: true }),
-      tap(message => worker.postMessage(message)),
-      switchMap(() => rx$),
+      ignoreElements(),
+      mergeWith(recv$.pipe(takeUntil(done$))),
       share()
-    )
+    ) as Subject<T>
 }

@@ -25,28 +25,6 @@
  * ------------------------------------------------------------------------- */
 
 /**
- * Truncate a string after the given number of characters
- *
- * This is not a very reasonable approach, since the summaries kind of suck.
- * It would be better to create something more intelligent, highlighting the
- * search occurrences and making a better summary out of it, but this note was
- * written three years ago, so who knows if we'll ever fix it.
- *
- * @param value - Value to be truncated
- * @param n - Number of characters
- *
- * @returns Truncated value
- */
-export function truncate(value: string, n: number): string {
-  let i = n
-  if (value.length > i) {
-    while (value[i] !== " " && --i > 0) { /* keep eating */ }
-    return `${value.substring(0, i)}...`
-  }
-  return value
-}
-
-/**
  * Round a number for display with repository facts
  *
  * This is a reverse-engineered version of GitHub's weird rounding algorithm

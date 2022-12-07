@@ -80,7 +80,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 "Required dependencies of \"social\" plugin not found. "
                 "Install with: pip install pillow cairosvg"
             )
-            sys.exit()
+            sys.exit(1)
 
         # Check if site URL is defined
         if not config.site_url:

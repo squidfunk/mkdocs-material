@@ -25,10 +25,11 @@ import {
   Observable,
   Subject,
   defer,
+  endWith,
   finalize,
+  ignoreElements,
   merge,
   share,
-  takeLast,
   takeUntil
 } from "rxjs"
 
@@ -167,7 +168,7 @@ export function mountAnnotationList(
     /* Handle print mode - see https://bit.ly/3rgPdpt */
     print$
       .pipe(
-        takeUntil(done$.pipe(takeLast(1)))
+        takeUntil(done$.pipe(ignoreElements(), endWith(true)))
       )
         .subscribe(active => {
           el.hidden = !active

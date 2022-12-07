@@ -38,6 +38,7 @@ type Attributes =
  * Child element
  */
 type Child =
+  | ChildNode
   | HTMLElement
   | Text
   | string

@@ -42,7 +42,7 @@ import { h } from "~/utilities"
  * Create and load a `script` element
  *
  * This function returns an observable that will emit when the script was
- * successfully loaded, or throw an error if it didn't.
+ * successfully loaded, or throw an error if it wasn't.
  *
  * @param src - Script URL
  *

@@ -58,10 +58,6 @@ export type Flag =
 export type Translation =
   | "clipboard.copy"                   /* Copy to clipboard */
   | "clipboard.copied"                 /* Copied to clipboard */
-  | "search.config.lang"               /* Search language */
-  | "search.config.pipeline"           /* Search pipeline */
-  | "search.config.separator"          /* Search separator */
-  | "search.placeholder"               /* Search */
   | "search.result.placeholder"        /* Type to start searching */
   | "search.result.none"               /* No matching documents */
   | "search.result.one"                /* 1 matching document */
@@ -74,7 +70,8 @@ export type Translation =
 /**
  * Translations
  */
-export type Translations = Record<Translation, string>
+export type Translations =
+  Record<Translation, string>
 
 /* ------------------------------------------------------------------------- */
 

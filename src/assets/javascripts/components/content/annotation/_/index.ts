@@ -29,14 +29,15 @@ import {
   debounceTime,
   defer,
   delay,
+  endWith,
   filter,
   finalize,
   fromEvent,
+  ignoreElements,
   map,
   merge,
   switchMap,
   take,
-  takeLast,
   takeUntil,
   tap,
   throttleTime,
@@ -136,7 +137,7 @@ export function mountAnnotation(
   /* Mount component on subscription */
   return defer(() => {
     const push$ = new Subject<Annotation>()
-    const done$ = push$.pipe(takeLast(1))
+    const done$ = push$.pipe(ignoreElements(), endWith(true))
     push$.subscribe({
 
       /* Handle emission */

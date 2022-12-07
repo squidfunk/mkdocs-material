@@ -55,7 +55,7 @@ export function getElementContainer(
   let parent = el.parentElement
   while (parent)
     if (
-      el.scrollWidth <= parent.scrollWidth &&
+      el.scrollWidth  <= parent.scrollWidth &&
       el.scrollHeight <= parent.scrollHeight
     )
       parent = (el = parent).parentElement

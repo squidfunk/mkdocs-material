@@ -28,8 +28,10 @@ import {
   auditTime,
   combineLatest,
   defer,
+  endWith,
   finalize,
   fromEvent,
+  ignoreElements,
   map,
   merge,
   skip,
@@ -135,7 +137,7 @@ export function mountContentTabs(
   const container = getElement(".tabbed-labels", el)
   return defer(() => {
     const push$ = new Subject<ContentTabs>()
-    const done$ = push$.pipe(takeLast(1))
+    const done$ = push$.pipe(ignoreElements(), endWith(true))
     combineLatest([push$, watchElementSize(el)])
       .pipe(
         auditTime(1, animationFrameScheduler),
