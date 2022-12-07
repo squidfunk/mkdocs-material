@@ -102,15 +102,9 @@ which are currently exclusively available to sponsors:
 - [x] [Tooltips]
 - [x] [Chinese search support]
 - [x] [Card grids]
-- [x] [Offline plugin]
 - [x] [Privacy plugin]
 - [x] [Annotations]
 - [x] [Navigation icons]
-- [x] [Brand new search plugin]
-- [x] [Rich search previews]
-- [x] [Tokenizer with lookahead]
-- [x] [Advanced search highlighting]
-- [x] [Excluding content from search]
 
 </div>
 
@@ -243,22 +237,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
-#### $ 10,000 – Carolina Reaper
-
-- [x] [Brand new search plugin]
-- [x] [Rich search previews]
-- [x] [Tokenizer with lookahead]
-- [x] [Advanced search highlighting]
-- [x] [Excluding content from search]
-- [x] [Offline plugin]
-
-  [Brand new search plugin]: ../blog/posts/search-better-faster-smaller.md
-  [Rich search previews]: ../blog/posts/search-better-faster-smaller.md#rich-search-previews
-  [Tokenizer with lookahead]: ../blog/posts/search-better-faster-smaller.md#tokenizer-lookahead
-  [Advanced search highlighting]: ../blog/posts/search-better-faster-smaller.md#accurate-highlighting
-  [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
-  [Offline plugin]: ../setup/building-for-offline-usage.md
-
 #### $ 12,000 – Piri Piri
 
 - [x] [Blog plugin]
@@ -322,6 +300,22 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 10,000 – Carolina Reaper
+
+- [x] [Brand new search plugin]
+- [x] [Rich search previews]
+- [x] [Tokenizer with lookahead]
+- [x] [Advanced search highlighting]
+- [x] [Excluding content from search]
+- [x] [Offline plugin]
+
+  [Brand new search plugin]: ../blog/posts/search-better-faster-smaller.md
+  [Rich search previews]: ../blog/posts/search-better-faster-smaller.md#rich-search-previews
+  [Tokenizer with lookahead]: ../blog/posts/search-better-faster-smaller.md#tokenizer-lookahead
+  [Advanced search highlighting]: ../blog/posts/search-better-faster-smaller.md#accurate-highlighting
+  [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
+  [Offline plugin]: ../setup/building-for-offline-usage.md
 
 #### $ 8,000 – Scotch Bonnet
 
