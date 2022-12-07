@@ -91,6 +91,7 @@ between those actors:
 ```` markdown title="Sequence diagram"
 ``` mermaid
 sequenceDiagram
+  autonumber
   Alice->>John: Hello John, how are you?
   loop Healthcheck
       John->>John: Fight against hypochondria
@@ -106,6 +107,7 @@ sequenceDiagram
 
 ``` mermaid
 sequenceDiagram
+  autonumber
   Alice->>John: Hello John, how are you?
   loop Healthcheck
       John->>John: Fight against hypochondria
