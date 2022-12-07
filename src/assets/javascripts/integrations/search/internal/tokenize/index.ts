@@ -21,21 +21,7 @@
  */
 
 import { split } from "../_"
-import { extract } from "../extractor"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * Table for indexing
- */
-export type PositionTable = number[][]
-
-/**
- * Position
- */
-export type Position = number
+import { extract } from "../extract"
 
 /* ----------------------------------------------------------------------------
  * Functions

@@ -41,8 +41,8 @@ type VisitorFn = (
 /**
  * Split a string using the given separator
  *
- * This function intentionally takes a visitor function contrary to collecting
- * and returning all ranges, as it's significantly more memory efficient.
+ * This function intentionally expects a visitor function argument, as opposed
+ * to collecting and returning all sections, for better memory efficiency.
  *
  * @param value - String value
  * @param separator - Separator

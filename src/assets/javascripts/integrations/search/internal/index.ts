@@ -21,6 +21,6 @@
  */
 
 export * from "./_"
-export * from "./extractor"
-export * from "./highlighter"
-export * from "./tokenizer"
+export * from "./extract"
+export * from "./highlight"
+export * from "./tokenize"

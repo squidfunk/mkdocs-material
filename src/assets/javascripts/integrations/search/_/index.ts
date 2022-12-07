@@ -29,7 +29,7 @@ import {
 import {
   Position,
   PositionTable,
-  highlighter,
+  highlight,
   tokenize
 } from "../internal"
 import {
@@ -244,14 +244,14 @@ export class Search {
               // @ts-expect-error - @todo fix typings
               for (let i = 0; i < doc[field].length; i++) {
                 // @ts-expect-error - @todo fix typings
-                doc[field][i] = highlighter(doc[field][i],
+                doc[field][i] = highlight(doc[field][i],
                   this.table.get([doc.location, field].join(":"))!,
                   positions
                 )
               }
             } else {
               // @ts-expect-error - @todo fix typings
-              doc[field] = highlighter(doc[field],
+              doc[field] = highlight(doc[field],
                 this.table.get([doc.location, field].join(":"))!,
                 positions
               )

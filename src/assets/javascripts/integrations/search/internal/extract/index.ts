@@ -43,10 +43,10 @@ type VisitorFn = (
 /**
  * Extract all non-HTML parts of a string
  *
- * This function preprocesses the given string by isolating all non-HTML parts
- * of a string, in order to ensure that HTML tags are removed before indexing.
- * This function intentionally takes a visitor function contrary to collecting
- * and returning all sections, as it's significantly more memory efficient.
+ * This function preprocesses the given string by isolating all non-HTML parts,
+ * in order to ensure that HTML tags are removed before indexing. Note that it
+ * intentionally expects a visitor function argument, as opposed to collecting
+ * and returning all sections, for better memory efficiency.
  *
  * @param value - String value
  * @param fn - Visitor function

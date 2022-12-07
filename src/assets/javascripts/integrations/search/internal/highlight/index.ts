@@ -20,7 +20,19 @@
  * IN THE SOFTWARE.
  */
 
-import { Position, PositionTable } from "../tokenizer"
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Table for indexing
+ */
+export type PositionTable = number[][]
+
+/**
+ * Position
+ */
+export type Position = number
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -29,17 +41,22 @@ import { Position, PositionTable } from "../tokenizer"
 /**
  * Highlight all occurrences in a string
  *
+ * This function receives a field's value (e.g. like `title` or `text`), it's
+ * position table that was generated during indexing, and the positions found
+ * when executing the query. It then highlights all occurrences, and returns
+ * their concatenation. In case of multiple blocks, two are returned.
+ *
  * @param value - String value
  * @param table - Table for indexing
  * @param positions - Occurrences
  *
  * @returns Highlighted string value
  */
-export function highlighter(
+export function highlight(
   value: string, table: PositionTable, positions: Position[]
 ): string {
 
-  /* Map matches to blocks */
+  /* Map occurrences to blocks */
   const blocks = new Map<number, number[]>()
   for (const i of positions.sort((a, b) => a - b)) {
     const block = i >>> 20
@@ -59,7 +76,7 @@ export function highlighter(
   for (const [block, indexes] of blocks) {
     const t = table[block]
 
-    /* Extract start and end positions, and length */
+    /* Extract positions and length */
     const start  = t[0]            >>> 12
     const end    = t[t.length - 1] >>> 12
     const length = t[t.length - 1] >>> 2 & 0x3FF
