@@ -81,14 +81,14 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 25 additional features__ that you can start using right away, and
+access to 19 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
 - [x] [Privacy plugin: external links] :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
 - [x] [Navigation subtitles] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
-- [x] [Tags plugin: allow list] and [custom sorting] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
+- [x] [Tags plugin: allow list] + [custom sorting] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
 - [x] [Blog plugin: custom index pages]
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin]
